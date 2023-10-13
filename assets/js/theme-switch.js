@@ -5,6 +5,7 @@ function apply_color_scheme(theme) {
   const disable_theme = (theme == "dark") ? "light" : "dark";
   document.documentElement.classList.add(theme)
   document.documentElement.classList.remove(disable_theme)
+  document.documentElement.setAttribute("data-theme", theme)
   // $("#css-toggle-btn").prop( "checked", (theme == 'dark') );
 }
 

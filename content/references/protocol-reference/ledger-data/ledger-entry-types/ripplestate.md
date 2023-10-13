@@ -87,7 +87,7 @@ The two accounts connected by the trust line can each change their own settings 
 ## {{currentpage.name}} Reserve
 <a id="contributing-to-the-owner-reserve"></a>
 
-A `RippleState` entry counts as one item towards the owner reserve of [owner reserve](reserves.html#owner-reserves) of _one or both_ of the accounts it connects. In typical cases, the holder of a token owes a reserve and the issuer of the token does not.
+A `RippleState` entry counts as one item towards the [owner reserve](reserves.html#owner-reserves) of _one or both_ of the accounts it connects. In typical cases, the holder of a token owes a reserve and the issuer of the token does not.
 
 Specifically, the entry counts towards an account's reserve if that account modifies a trust line to put it in a non-default state. The `lsfLowReserve` and `lsfHighReserve` flags indicate which account(s) are responsible for the owner reserve. The protocol automatically sets these flags when it modifies a trust line.
 

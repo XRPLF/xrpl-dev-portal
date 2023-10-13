@@ -1,17 +1,17 @@
 ---
 html: ammvote.html
 parent: transaction-types.html
-blurb: 自動マーケットメーカーインスタンスの取引手数料を投票する。
+blurb: 自動マーケットメーカーインスタンスの取引手数料へ投票する。
 labels:
   - AMM
 status: not_enabled
 ---
 # AMMVote
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMVote.cpp "Source")
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMVote.cpp "Source")
 
-_([AMM amendment][] :not_enabled:が必要。)_
+_([AMM amendment][] :not_enabled:が必要です。)_
 
-[自動マーケットメーカー](automated-market-makers.html)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。各新規投票では、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
+[自動マーケットメーカー](automated-market-makers.html)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。投票を行うごとには、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
 
 ## {{currentpage.name}} JSONの例
 
@@ -35,11 +35,11 @@ _([AMM amendment][] :not_enabled:が必要。)_
 
 {% include '_snippets/tx-fields-intro.ja.md' %}
 
-| フィールド     | JSONの型 | [内部の型][] | 必須? | 説明 |
-|:-------------|:----------|:-----------|:-----|:------------|
-| `Asset`      | Object    | STIssue    | はい | AMMのプールにある資産の一つを定義します。JSONでは、`currency` と `issuer` フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
-| `Asset2`     | Object    | STIssue    | はい | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency` と `issuer` フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。|
-| `TradingFee` | Number    | UInt16     | はい | 投票に必要な手数料を100000の1の単位で指定します。最大値は1000で、1％の手数料を表します。 |
+| フィールド     | JSONの型   | [内部の型][] | 必須? | 説明 |
+|:-------------|:-----------|:-----------|:-----|:------------|
+| `Asset`      | オブジェクト | STIssue    | はい | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
+| `Asset2`     | オブジェクト | STIssue    | はい | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。|
+| `TradingFee` | 数値       | UInt16     | はい | 投票に必要な手数料を1/100,000の単位で指定します。最大値は1000で、1％の手数料を表します。 |
 
 ## エラーケース
 
@@ -47,9 +47,9 @@ _([AMM amendment][] :not_enabled:が必要。)_
 
 | エラーコード              | 説明                                          |
 |:------------------------|:---------------------------------------------|
+| `tecAMM_EMPTY`          | AMMのプールに資産がありません。この状態では、AMMを削除するか、新しい入金を行い資金を供給することしかできません。 |
 | `tecAMM_INVALID_TOKENS` | 送信者は、このAMMのLPトークンを保有していないため、投票することができません。 |
 | `tecAMM_FAILED_VOTE`    | このトランザクションの送信者よりも多くのLPトークンを保有しているアカウントからの投票が既に8件存在しています。 |
-| `terNO_ACCOUNT`         | このトランザクションで指定されたアカウントが存在しません。 |
 | `temBAD_FEE`            | このトランザクションの`TradingFee`は正しくありません。 |
 | `terNO_AMM`             | このトランザクションの資産ペアの自動マーケットメーカー インスタンスが存在しません。 |
 
