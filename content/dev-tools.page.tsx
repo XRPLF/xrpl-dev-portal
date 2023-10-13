@@ -50,7 +50,7 @@ const api_access_tools = [
     description:
       "Print raw information about an XRP Ledger account, transaction, or ledger.",
     href: "xrp-ledger-rpc-tool",
-    img: "img/dev-tools/rpc-tool.png",
+    img: require("img/dev-tools/rpc-tool.png"),
   },
   {
     id: "technical-explorer",
