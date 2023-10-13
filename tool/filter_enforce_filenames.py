@@ -27,12 +27,14 @@ def idify(utext):
     utext = re.sub(r'[\s-]+', '-', utext)
     return utext
 
-def normalized_match(filename, heading, loose=False):
+def normalized_match(filename, heading, loose=False, exclude_index=True):
     """
     Return True if the normalized versions of a filename and a heading match,
     False otherwise.
     If loose==True, allow some leeway like omitting 'and' and 'the'
     """
+    if exclude_index and filename == "index.md":
+        return True
     if filename[-3:] == ".md":
         filename = filename[:-3]
 
@@ -75,7 +77,7 @@ def compare_nav_and_fs_hierarchy(page, pages, logger):
 
     if expected_path != actual_path:
         path_parts = actual_path.split("/")
-        if len(path_parts) >= 1 and path_parts[-1] == "index":
+        if len(path_parts) >= 1 and path_parts[-1] == "index.md":
             expected_path2 = "/".join(crumbs+["index"]) + ".md"
             if actual_path == expected_path2:
                 logger.debug("Topic index is fine at {actual_path}")
