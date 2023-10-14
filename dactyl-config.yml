@@ -661,11 +661,11 @@ pages:
         targets:
             - ja
 
-    -   md: use-cases/decentralized-finance/index.md
+    -   md: use-cases/defi/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/use-cases/decentralized-finance/index.md"
+    -   md: "@i18n/ja/use-cases/defi/index.md"
         targets:
             - ja
 
@@ -2199,11 +2199,11 @@ pages:
         targets:
             - ja
 
-    -   md: references/xrp-ledger-protocol-reference/index.md
+    -   md: references/protocol-reference/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/xrp-ledger-protocol-reference/index.md"
+    -   md: "@i18n/ja/references/protocol-reference/index.md"
         targets:
             - ja
 
