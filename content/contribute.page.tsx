@@ -1,5 +1,11 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+import NetworkNodeLight from "./static/js/community/NetworkNodeLight.json";
+import GrantsDark from "./static/js/community/XRPLGrantsDark.json";
+import CareersDark from "./static/js/community/CareersDark.json";
+import { useLottie } from "lottie-react";
+import { useThemeFromClassList } from "./@theme/helpers";
+
 // This page still needs typeform integration and animations
 const platforms = [
   { name: "Twitter", id: "twitter", link: "https://twitter.com/XRPLF/" },
@@ -22,8 +28,6 @@ const platforms = [
   },
 ];
 
-
-
 const contributeLedger = [
   {
     href: "the-rippled-server",
@@ -41,7 +45,7 @@ const contributeLedger = [
     desc: "Install and update the rippled server.",
   },
   {
-    href:  "troubleshoot-the-rippled-server",
+    href: "troubleshoot-the-rippled-server",
     title: "Troubleshooting",
     desc: "Troubleshoot all kinds of problems with the rippled server.",
   },
@@ -49,6 +53,37 @@ const contributeLedger = [
 
 export default function Contribute() {
   const { translate } = useTranslate();
+  //Network Node lg
+  const options = {
+    animationData: NetworkNodeLight,
+    loop: true,
+  };
+  const NetNodeLg = useLottie(options);
+  const NetNodeLgView = NetNodeLg.View;
+  //Network Node sm
+  const NetNodeSm = useLottie(options);
+  const NetNodeSmView = NetNodeSm.View;
+
+  // Grants lg
+  const grantsOptions = {
+    animationData: GrantsDark,
+    loop: true,
+  };
+  const grantsAnimationLg = useLottie(grantsOptions);
+  const GrantsDarkAnimationLg = grantsAnimationLg.View;
+  // Grants Sm
+  const grantsAnimationSm = useLottie(grantsOptions);
+  const GrantsDarkAnimationSm = grantsAnimationSm.View;
+  //Careers lg
+  const careersOptions = {
+    animationData: CareersDark,
+    loop: true,
+  };
+  const carDarkLg = useLottie(careersOptions);
+  const CareersDarkLg = carDarkLg.View;
+  //Careers sm
+  const carDarkSm = useLottie(careersOptions);
+  const CareersDarkSm = carDarkSm.View;
 
   return (
     <div className="landing page-community">
@@ -136,7 +171,7 @@ export default function Contribute() {
         <section className="container-new" id="run-a-network-node">
           <div className="card-grid card-grid-2xN">
             <div className="col d-none d-lg-block align-self-center">
-              <div className="mt-10" id="networkNode" />
+              {NetNodeLgView}
             </div>
             <div className="col pt-lg-5">
               <div className="d-flex flex-column-reverse mb-8 pl-0">
@@ -147,9 +182,7 @@ export default function Contribute() {
                   {translate("Contribute to Consensus")}
                 </h6>
               </div>
-              <div className="col d-lg-none d-block">
-                <div className="mt-10" id="networkNode-small" />
-              </div>
+              <div className="col d-lg-none d-block">{NetNodeSmView}</div>
               <div className="pt-2 pt-lg-5 card-grid card-grid-2xN text-cards">
                 {contributeLedger.map((cc) => (
                   <div key={cc.href} className="text-card">
@@ -179,7 +212,7 @@ export default function Contribute() {
                 )}
               </p>
               <div className="d-lg-block d-none">
-                <div className="mb-4 pb-3" id="xrplGrantsDark" />
+                {GrantsDarkAnimationLg}
                 <a
                   className="btn btn-primary btn-arrow"
                   target="_blank"
@@ -218,7 +251,7 @@ export default function Contribute() {
                 />
               </div>
               <div className="d-lg-none d-block mt-4 pt-3">
-                <div className="mb-4 pb-3" id="xrplGrantsDark-small" />
+                {GrantsDarkAnimationSm}
                 <a
                   className="btn btn-primary btn-arrow"
                   target="_blank"
@@ -377,9 +410,7 @@ export default function Contribute() {
         {/* Careers */}
         <section className="container-new" id="xrpl-careers">
           <div className="card-grid card-grid-2xN">
-            <div className="col pr-2 d-lg-block d-none">
-              <div className="mb-4 pb-3" id="careersDark" />
-            </div>
+            <div className="col pr-2 d-lg-block d-none">{CareersDarkLg}</div>
             <div className="col pt-5">
               <div className="d-flex flex-column-reverse mb-lg-2 pl-0">
                 <h2 className="h4 h2-sm">
@@ -394,9 +425,7 @@ export default function Contribute() {
                   "Teams across the XRPL community are looking for talented individuals to help build their next innovation."
                 )}
               </p>
-              <div className="d-lg-none d-block">
-                <div className="mb-4 pb-3" id="careersDark-small" />
-              </div>
+              <div className="d-lg-none d-block">{CareersDarkSm}</div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow"
