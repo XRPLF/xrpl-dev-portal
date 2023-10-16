@@ -1019,6 +1019,5 @@ btn_op_cancel_offer = tk.Button(master=frm_form, text="Cancel Offer",
 btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")
 
 # Start the application
-
 window.mainloop()
 ```
