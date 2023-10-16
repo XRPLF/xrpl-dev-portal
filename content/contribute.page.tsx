@@ -407,6 +407,7 @@ export default function Contribute() {
             </div>
           </div>
         </section>
+        
         {/* Careers */}
         <section className="container-new" id="xrpl-careers">
           <div className="card-grid card-grid-2xN">
