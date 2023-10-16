@@ -6,4 +6,5 @@ template: pagetype-category.html.jinja
 blurb: Browse the documentation based on practical use cases.
 ---
 # Use Cases
+
 Browse the documentation based on practical use cases.

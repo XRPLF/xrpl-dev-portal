@@ -5,4 +5,5 @@ template: pagetype-category.html.jinja
 blurb: Customize your rippled server configuration.
 ---
 # Configure rippled
+
 Customize your rippled server configuration.

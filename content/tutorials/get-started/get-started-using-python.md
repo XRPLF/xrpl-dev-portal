@@ -94,6 +94,7 @@ This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/late
 print(test_wallet)
 
 # print output
+
 public_key:: 022FA613294CD13FFEA759D0185007DBE763331910509EF8F1635B4F84FA08AEE3
 private_key:: -HIDDEN-
 classic_address: raaFKKmgf6CRZttTVABeTcsqzRQ51bNR6Q

@@ -35,6 +35,7 @@ release_date_utc = datetime.datetime(2017,11,13,0,0,0,tzinfo=datetime.timezone.u
 release_date_ripple = int(release_date_utc.timestamp()) - 946684800
 print(release_date_ripple)
 # 563846400
+
 ```
 
 #}-->
@@ -228,6 +229,6 @@ Response:
     - [Escrow ledger object](escrow-object.html)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

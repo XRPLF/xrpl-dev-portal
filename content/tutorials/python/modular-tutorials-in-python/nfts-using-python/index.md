@@ -6,4 +6,5 @@ template: pagetype-category.html.jinja
 blurb: Mint and sell NFTs on the XRP Ledger using Python.
 ---
 # NFTs Using Python
+
 Mint and sell NFTs on the XRP Ledger using Python.

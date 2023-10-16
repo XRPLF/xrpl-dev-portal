@@ -482,6 +482,7 @@ if ((lsfDisableMaster & acct_flags) === lsfDisableMaster) {
 
 ```python
 # Assuming the JSON-RPC response above is parsed from JSON
+
 #  and saved as the variable account_info_response
 lsfDisableMaster = 0x00100000
 acct_flags = account_info_response["result"]["account_data"]["Flags"]

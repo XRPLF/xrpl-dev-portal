@@ -7,6 +7,7 @@ labels:
   - Payments
 ---
 # tx
+
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
 The `tx` method retrieves information on a single [transaction](transaction-formats.html), by its [identifying hash][].
