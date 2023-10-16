@@ -20,12 +20,8 @@ An example of the request format:
 ```json
 {
   "id": 1,
-  "command": "server_info"
-},
-{
-  "id": 1,
   "command": "server_info",
-  "counters": true
+  "counters": false
 }
 ```
 
