@@ -833,6 +833,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/networks-and-servers/amendments.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -3635,6 +3636,7 @@ pages:
 
         # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
+        outdated_translation: true
         targets:
             - en
             - ja
