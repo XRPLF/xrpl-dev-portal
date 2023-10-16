@@ -49,7 +49,7 @@ An example of the request format:
 *Commandline*
 
 ```sh
-#Syntax: server_info
+#Syntax: server_info [counters]
 rippled server_info
 rippled server_info counters # for optional performance statistics
 ```
