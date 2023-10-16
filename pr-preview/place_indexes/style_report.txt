@@ -3,13 +3,13 @@ Spell Checker
 -------------
 Found 310 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, gids, gifts
+  gifs: gies, rifs, gits
   ringtee: 
   kuressaare: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-the-xrp-ledger.html)> Unknown Words:
-  livenet: livened, livener
+  livenet: livener, livened
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -20,8 +20,8 @@ Found 310 possible spelling errors:
 
 <Page 'Transactions and Requests' (txn-and-requests.html)> Unknown Words:
   transactiontype: 
-  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
   rf1bigexwwqoi8z2uefytexswujyfv2jpn: 
+  ra5nk24kxen9ahvsdftkhsaninzsewnpcx: 
 
 <Page 'Peer-to-Peer Payments' (peer-to-peer-payments-uc.html)> Unknown Words:
   requiremen: requirement
@@ -30,7 +30,7 @@ Found 310 possible spelling errors:
   tokenization: 
 
 <Page 'Stablecoin Issuer' (stablecoin-issuer.html)> Unknown Words:
-  xapps: lapps, capps, apps
+  xapps: capps, apps, lapps
 
 <Page 'NFT Marketplace Overview' (nft-mkt-overview.html)> Unknown Words:
   arweave: 
@@ -40,15 +40,15 @@ Found 310 possible spelling errors:
   tokentaxon: 
 
 <Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
-  arbitraging: arbitrating
   investopedia: 
-  unprecented: unpresented, unprevented
-  clob: cob, clos, clod
-  30d: 3-d, 3d, 3rd
+  arbitraging: arbitrating
+  unprecented: unprevented, unpresented
+  clob: colb, clos, lob
+  30d: 3-d, 3rd, 3d
   frontrunning: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: v6, t3, vm
+  v3: v1, vi, vv
   0b0: 
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
@@ -59,7 +59,7 @@ Found 310 possible spelling errors:
   nftokencounttracking: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: offers, doffers, coffers
+  ooffers: goffers, coffers, doffers
 
 <Page 'NFT Payload Storage' (nft-storage.html)> Unknown Words:
   arweave: 
@@ -84,7 +84,7 @@ Found 310 possible spelling errors:
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slap, slae, sylas
+  slas: slask, slash, slays
 
 <Page 'Clawing Back Tokens' (clawing-back-tokens.html)> Unknown Words:
   rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
@@ -97,198 +97,198 @@ Found 310 possible spelling errors:
   ammdelete: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
-  30d: 3-d, 3d, 3rd
-  v3: v6, t3, vm
+  v3: v1, vi, vv
+  30d: 3-d, 3rd, 3d
 
 <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mods, modo, mody
+  mod1: modo, mod., mode
   testnet_url: 
   rippletest: 
   get_account_info: 
   send_xrp: 
   lesson1: lessons, lesson
-  tkinter: tinter, twinter
+  tkinter: twinter, tinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mods, modo, mody
+  mod2: modo, mod., mode
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lessons, lesson
 
 <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mods, modo, mody
+  mod3: modo, mod., mode
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mods, modo, mody
+  mod4: modo, mod., mode
   offer___index: 
   alloffers: 
   lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
-  sell___offer___index: 
   broker___fee: 
   buy___offer___index: 
+  sell___offer___index: 
   lesson5: lessons, lesson
-  btn_broker_sale: 
-  broker_get_offers: 
-  broker_broker_sale: 
-  broker_cancel_offer: 
-  btn_broker_get_account_info: 
-  nsew: nse, nsem, unsew
-  get_broker_account: 
-  frm_broker: 
   btn_broker_get_account: 
-  get_broker_account_info: 
+  frm_broker: 
+  nsew: nsw, nse, snew
+  btn_broker_sale: 
   btn_broker_get_offers: 
+  broker_get_offers: 
+  broker_cancel_offer: 
+  get_broker_account: 
   btn_broker_cancel_offer: 
+  btn_broker_get_account_info: 
+  broker_broker_sale: 
+  get_broker_account_info: 
   borderwidth: 
   frm_form: 
+  ent_standby_taxon: 
+  ent_standby_flags: 
   lbl_standy_amount: 
+  lbl_standby_account: 
   ent_standby_balance: 
-  offvalue: 
-  ent_standby_transfer_fee: 
+  ent_standby_nft_id: 
+  lbl_standby_balance: 
+  ent_standby_seed: 
+  text_standby_results: 
+  lbl_standby_transfer_fee: 
+  onvalue: unvalue, nonvalue
+  ent_standby_currency: 
+  checkbutton: 
+  ent_standby_account: 
   lbl_standby_destination: 
+  cb_standby_allow_rippling: 
+  lbl_standby_nft_id: 
+  lbl_standby_uri: 
   lbl_standby_owner: 
+  offvalue: 
+  lbl_standby_taxon: 
   ent_standby_owner: 
   lbl_standby_results: 
-  ent_standby_amount: 
-  lbl_standby_transfer_fee: 
-  lbl_standby_expiration: 
-  cb_standby_allow_rippling: 
-  lbl_standby_taxon: 
-  ent_standby_destination: 
-  ent_standby_account: 
-  lbl_standby_nft_id: 
-  checkbutton: 
-  ent_standby_seed: 
-  ent_standby_taxon: 
-  lbl_standby_uri: 
-  ent_standby_nft_offer_index: 
-  text_standby_results: 
-  ent_standby_flags: 
-  onvalue: unvalue, nonvalue
-  lbl_standby_nft_offer_index: 
-  ent_standby_currency: 
-  lbl_standby_account: 
-  ent_standby_nft_id: 
-  ent_standby_expiration: 
   standbyrippling: 
-  lbl_standby_flags: 
+  ent_standby_destination: 
   lbl_standby_currency: 
-  ent_standby_uri: 
-  lbl_standby_balance: 
+  lbl_standby_flags: 
+  ent_standby_transfer_fee: 
+  ent_standby_amount: 
+  ent_standby_nft_offer_index: 
+  lbl_standby_expiration: 
   lbl_standy_seed: 
-  ent_operational_taxon: 
-  lbl_operational_taxon: 
-  lbl_operational_currency: 
-  ent_operational_account: 
-  lbl_operational_transfer_fee: 
-  lbl_operational_account: 
-  ent_operational_flags: 
+  ent_standby_uri: 
+  ent_standby_expiration: 
+  lbl_standby_nft_offer_index: 
   lbl_operational_amount: 
-  ent_operational_uri: 
-  ent_operational_destination: 
-  lbl_operational_uri: 
-  ent_operational_nft_id: 
-  ent_operational_nft_offer_index: 
-  lbl_operational_results: 
-  lbl_operational_balance: 
-  lbl_operational_seed: 
-  ent_operational_transfer_fee: 
-  text_operational_results: 
-  lbl_operational_expiration: 
-  lbl_operational_nft_id: 
-  lbl_operational_destination: 
-  ent_operational_seed: 
-  operationalrippling: 
-  lbl_operational_flags: 
-  ent_operational_balance: 
-  lbl_operational_owner: 
-  lbl_operational_nft_offer_index: 
   ent_operational_expiration: 
-  ent_operational_currency: 
-  cb_operational_allow_rippling: 
-  ent_operational_owner: 
+  lbl_operational_account: 
+  lbl_operational_destination: 
+  lbl_operational_flags: 
+  ent_operational_destination: 
+  text_operational_results: 
   ent_operational_amount: 
-  btn_standby_mint_token: 
-  btn_standby_get_tokens: 
-  standby_cancel_offer: 
-  btn_standby_create_sell_offer: 
-  btn_standby_burn_token: 
-  btn_standby_accept_sell_offer: 
-  standby_accept_sell_offer: 
-  btn_standby_send_xrp: 
-  standby_burn_token: 
-  btn_get_standby_account_info: 
-  btn_standby_send_currency: 
-  standby_create_sell_offer: 
-  standby_create_buy_offer: 
-  standby_accept_buy_offer: 
+  cb_operational_allow_rippling: 
+  lbl_operational_owner: 
+  lbl_operational_taxon: 
+  lbl_operational_nft_offer_index: 
+  ent_operational_account: 
+  ent_operational_taxon: 
+  operationalrippling: 
+  ent_operational_nft_id: 
+  ent_operational_currency: 
+  lbl_operational_balance: 
+  ent_operational_transfer_fee: 
+  lbl_operational_results: 
+  lbl_operational_seed: 
+  ent_operational_balance: 
+  ent_operational_flags: 
+  lbl_operational_nft_id: 
+  lbl_operational_expiration: 
+  ent_operational_uri: 
+  lbl_operational_transfer_fee: 
+  lbl_operational_currency: 
+  ent_operational_seed: 
+  ent_operational_owner: 
+  lbl_operational_uri: 
+  ent_operational_nft_offer_index: 
   btn_standby_cancel_offer: 
-  btn_standby_get_offers: 
-  btn_get_standby_account: 
-  standby_get_offers: 
-  btn_standby_accept_buy_offer: 
-  standby_create_trust_line: 
-  get_standby_account: 
-  get_balances: 
   standby_send_currency: 
-  standby_send_xrp: 
-  btn_standby_create_buy_offer: 
-  btn_standby_configure_account: 
-  get_standby_account_info: 
+  btn_standby_accept_sell_offer: 
+  standby_create_trust_line: 
+  btn_standby_get_tokens: 
+  standby_create_buy_offer: 
   btn_standby_create_trust_line: 
-  standby_configure_account: 
+  btn_standby_send_xrp: 
+  standby_create_sell_offer: 
+  btn_standby_get_offers: 
+  standby_accept_buy_offer: 
+  btn_standby_mint_token: 
+  standby_send_xrp: 
+  btn_standby_create_sell_offer: 
+  standby_cancel_offer: 
+  btn_get_standby_account_info: 
   standby_get_tokens: 
+  btn_get_standby_account: 
+  get_standby_account_info: 
+  btn_standby_send_currency: 
+  btn_standby_accept_buy_offer: 
+  standby_accept_sell_offer: 
+  btn_standby_burn_token: 
+  get_standby_account: 
+  standby_burn_token: 
+  get_balances: 
+  standby_configure_account: 
+  standby_get_offers: 
   standby_mint_token: 
-  btn_get_op_account_info: 
-  op_create_buy_offer: 
-  btn_op_get_tokens: 
-  op_accept_sell_offer: 
-  btn_op_get_offers: 
-  btn_op_configure_account: 
-  btn_op_accept_sell_offer: 
-  operational_send_xrp: 
-  operational_mint_token: 
-  op_get_offers: 
-  op_accept_buy_offer: 
-  btn_op_cancel_offer: 
-  btn_op_send_xrp: 
+  btn_standby_configure_account: 
+  btn_standby_create_buy_offer: 
   op_cancel_offer: 
-  btn_op_mint_token: 
-  btn_op_create_trust_line: 
-  get_operational_account_info: 
-  btn_op_accept_buy_offer: 
-  btn_op_get_balances: 
-  get_operational_account: 
-  btn_op_create_buy_offer: 
-  operational_send_currency: 
-  op_create_sell_offer: 
-  operational_burn_token: 
-  btn_op_create_sell_offer: 
+  op_create_buy_offer: 
   btn_op_send_currency: 
-  btn_get_operational_account: 
+  get_operational_account: 
+  btn_op_accept_buy_offer: 
+  btn_op_create_buy_offer: 
+  operational_mint_token: 
   operational_get_tokens: 
   operational_create_trust_line: 
+  btn_op_mint_token: 
+  operational_send_currency: 
+  operational_send_xrp: 
+  op_accept_sell_offer: 
+  btn_op_configure_account: 
   btn_op_burn_token: 
+  operational_burn_token: 
   operational_configure_account: 
+  btn_op_create_sell_offer: 
+  op_accept_buy_offer: 
+  btn_op_send_xrp: 
+  btn_op_get_balances: 
+  op_get_offers: 
+  op_create_sell_offer: 
+  btn_op_get_offers: 
+  btn_op_create_trust_line: 
+  btn_get_op_account_info: 
+  get_operational_account_info: 
+  btn_op_get_tokens: 
+  btn_op_cancel_offer: 
+  btn_get_operational_account: 
+  btn_op_accept_sell_offer: 
   mainloop: 
 
 <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
-  mod6: mods, modo, mody
+  mod6: modo, mod., mode
   mint_other: 
   lesson6: lessons, lesson
   lesson4: lessons, lesson
 
 <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
-  ripple8: ripples, rippled, ripple
+  ripple8: rippled, ripple, ripplet
   numofseconds: 
   offersequence: 
 
@@ -318,7 +318,7 @@ Found 310 possible spelling errors:
 
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: v6, t3, vm
+  v3: v1, vi, vv
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   disallowincoming: 
@@ -372,66 +372,66 @@ Found 310 possible spelling errors:
   scalability: salability
 
 <Page 'Configure Full History' (configure-full-history.html)> Unknown Words:
-  xfs: ofs, xs, ufs
-  zfs: ofs, ufs, z's
-  ext4: ext., extg, exta
+  ext4: extg, ext., exta
   filesystems: filesystem
+  zfs: efs, mfs, z's
+  xfs: efs, mfs, afs
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixuniversalnumber: 
-  fixnftokenremint: 
-  fixreducedoffersv1: 
   fixnonfungibletokensv1_2: 
-  xrpfees: 
-  immediateofferkilled: 
   disallowincoming: 
+  fixnftokenremint: 
+  xrpfees: 
+  fixreducedoffersv1: 
+  fixuniversalnumber: 
   depositpreauthamendment: 
+  immediateofferkilled: 
   xchainbridge: 
-  38d: 3-d, 3d, 3rd
+  38d: 3-d, 3rd, 3d
   ammdelete: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingcheck: 
   asfdisallowincomingpaychan: 
+  asfdisallowincomingnftoffer: 
   asfdisallowincomingtrustline: 
-  1e: ee, fe, de
-  30d: 3-d, 3d, 3rd
+  asfdisallowincomingcheck: 
+  1e: ie, ke, e
+  30d: 3-d, 3rd, 3d
 
 <Page 'Create Custom Transactors' (create-custom-transactors.html)> Unknown Words:
   transactors: transactor
 
 <Page 'Contribute Documentation' (contribute-documentation.html)> Unknown Words:
-  scss: soss, sccs, scsi
-  _img: 
   _snippets: snippets
-  umlet: umset, amlet, unlet
-  img: cmg, im-, imm
+  _img: 
+  umlet: amlet, unlet, mulet
+  scss: sss, scsa, sccs
   _code: code
+  img: igm, imy, imp
   frontmatter: 
-  h1: ha, hi, a1
   santilli: 
-  postgres: postures
-  websockets: websocket
-  orderbook: order-book
-  xrps: xrpl, xrp, rps
-  camelcase: 
+  h1: v1, a1, hw
   trustline: 
+  postgres: postures
+  xrps: xrpl, xrp, rps
+  orderbook: order-book
+  camelcase: 
+  websockets: websocket
   fronmatter: 
   dropdown: 
   dropdowns: 
 
 <Page 'Translations' (documentation-translations.html)> Unknown Words:
+  zh: z., dh, zd
   hyperlinks: 
-  zh: bh, za, zhu
   bcp47: 
   frontmatter: 
-  utf: utp, utr, uf
+  utf: utc, otf, ctf
 
 <Page 'Creating Diagrams' (creating-diagrams.html)> Unknown Words:
   subfolder: subfolders
-  inlined: unlined, inclined, inline
-  umlet: umset, amlet, unlet
-  scss: soss, sccs, scsi
+  inlined: inline, unlined, inclined
+  umlet: amlet, unlet, mulet
+  scss: sss, scsa, sccs
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -439,7 +439,7 @@ Found 310 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 190 discouraged words/phrases:
+Found 192 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -573,6 +573,8 @@ Page: <Page 'ter Codes' (ter-codes.html)>
 Page: <Page 'ledger_data' (ledger_data.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'subscribe' (subscribe.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'ledger' (ledger-clio.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Load a Saved Ledger in Stand-Alone Mode' (load-a-saved-ledger-in-stand-alone-mode.html)>
    Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
@@ -657,7 +659,7 @@ Page Length Metrics
 Average Page Length Metrics:
   Sentences: 50
   Words: 664
-  Characters: 4,124
+  Characters: 4,120
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
