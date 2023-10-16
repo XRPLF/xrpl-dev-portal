@@ -850,10 +850,10 @@ pre code {
     color: $black !important;
   }
 
-  #xrplGrantsDark,
-  #xrplGrantsDark-small,
-  #careersDark,
-  #careersDark-small {
+  #xrplGrantsDark g,
+  #xrplGrantsDark-small g,
+  #careersDark g,
+  #careersDark-small g{
     filter: invert(100%) brightness(0.8);
   }
 }

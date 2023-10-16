@@ -211,8 +211,8 @@ export default function Contribute() {
                   "The XRPL Grants program funds select open-source projects that solve problems and grow the XRP Ledger community."
                 )}
               </p>
-              <div className="d-lg-block d-none">
-                {GrantsDarkAnimationLg}
+              <div  className="d-lg-block d-none">
+                <div id="xrplGrantsDark">{GrantsDarkAnimationLg}</div>
                 <a
                   className="btn btn-primary btn-arrow"
                   target="_blank"
@@ -250,7 +250,7 @@ export default function Contribute() {
                   src={require("./static/img/community/community-grants-3.svg")}
                 />
               </div>
-              <div className="d-lg-none d-block mt-4 pt-3">
+              <div id="xrplGrantsDark-small" className="d-lg-none d-block mt-4 pt-3">
                 {GrantsDarkAnimationSm}
                 <a
                   className="btn btn-primary btn-arrow"
@@ -411,7 +411,7 @@ export default function Contribute() {
         {/* Careers */}
         <section className="container-new" id="xrpl-careers">
           <div className="card-grid card-grid-2xN">
-            <div className="col pr-2 d-lg-block d-none">{CareersDarkLg}</div>
+            <div id="careersDark" className="col pr-2 d-lg-block d-none">{CareersDarkLg}</div>
             <div className="col pt-5">
               <div className="d-flex flex-column-reverse mb-lg-2 pl-0">
                 <h2 className="h4 h2-sm">
@@ -426,7 +426,7 @@ export default function Contribute() {
                   "Teams across the XRPL community are looking for talented individuals to help build their next innovation."
                 )}
               </p>
-              <div className="d-lg-none d-block">{CareersDarkSm}</div>
+              <div id="careersDark-small" className="d-lg-none d-block">{CareersDarkSm}</div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow"
