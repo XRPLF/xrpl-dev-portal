@@ -45,9 +45,9 @@ An example of the request format:
 *Commandline*
 
 ```sh
-#Syntax: server_info [counters]
+# Syntax: server_info [counters]
+# counters is an optional boolean value, it is used to display performance metrics
 rippled server_info
-rippled server_info counters # for optional performance statistics
 ```
 
 <!-- MULTICODE_BLOCK_END -->
