@@ -44,7 +44,7 @@ The request does not take any parameters.
 
 ## Response Format
 
-When a client connects to the Clio server over `localhost`, the response includes the `counters` and `etl` objects. These objects are omitted from the response when the client is not located on the same server, and hence does not connect over `localhost`.  
+When a client connects to the Clio server over `localhost`, the response includes the `counters` and `etl` objects. These objects are omitted from the response when the client is not located on the same server, and hence does not connect over `localhost`.
 
 An example of a successful response when client connects over `localhost`:
 
@@ -573,7 +573,7 @@ The `info` object may have some arrangement of the following fields:
 | `rpc.*.finished`                    | Number          | Number of API calls of this type that the Clio server has finished processing since startup. |
 | `rpc.*.errored`                     | Number          | Number of API calls of this type that have resulted in some sort of error since startup.  |
 | `rpc.*.forwarded`                   | Number          | Number of API calls of this type that the Clio server has forwarded to a `rippled` P2P server since startup. |
-| `rpc.*.duration_us`                 | Number          | The total number of microseconds spent processing API calls of this type since startup. | 
+| `rpc.*.duration_us`                 | Number          | The total number of microseconds spent processing API calls of this type since startup. |
 | `subscriptions`                     | Object          | _(May be omitted)_ Number of current subscribers for each stream type.  Since this is nested within the `counters` object, this is also present only if the client connects to the Clio server over `localhost`. |
 | `subscriptions.ledger`              |                 |   |
 | `subscriptions.transactions`        |                 |   |
@@ -585,7 +585,7 @@ The `info` object may have some arrangement of the following fields:
 | `subscriptions.books`               |                 |   |
 | `time`                              | String          | The current time in UTC, according to the server's clock. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE") |
 | `uptime`                            | Number          | Number of consecutive seconds that the server has been operational. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE") |
-| `amendment_blocked`                 | Boolean         | _(May be omitted)_ Whether the Clio server is [Amendment Blocked](amendments.html#amendment-blocked-in-clio-servers) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE") |
+| `amendment_blocked`                 | Boolean         | _(May be omitted)_ Whether the Clio server is [Amendment Blocked](amendments.html#amendment-blocked-clio-servers) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE") |
 | `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. |
 | `clio_version`                      | String          | The version number of the running Clio server.  |
 | `libxrpl_version`                   | String          | The version number of the `libxrpl` library this Clio server was built against. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE") |
