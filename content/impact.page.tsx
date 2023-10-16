@@ -1,38 +1,20 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 import mapDark from "./static/js/impact/mapDark.json"
-export default function Impact() {
-  const { translate } = useTranslate();
+import mapLight from "./static/js/impact/mapLight.json"
+import { useLottie } from "lottie-react";
+import { useThemeFromClassList } from "./@theme/helpers";
 
- console.log(mapDark)
-  React.useEffect(() => {
-    if (typeof window !== 'undefined') {
-      // to do: FIX THIS ANIMATION
-      // const bodymovin = require('bodymovin');
-      // Light animation
-      // const mapLightAnimation = () => {
-      //   bodymovin.loadAnimation({
-      //     wrapper: document.getElementById('map-dark'),
-      //     animType: 'svg',
-      //     loop: true,
-      //     path: mapDark
-      //   });
-      // };
-      // Dark animation
-      // const mapDarkAnimation = () => {
-      //   bodymovin.loadAnimation({
-      //     container: document.getElementById('map-dark'),
-      //     renderer: 'svg',
-      //     loop: true,
-      //     autoplay: true,
-      //     animationData: require('./static/js/impact/mapLight.json'),
-      //   });
-      // };
-      // mapLightAnimation();
-      // mapDarkAnimation();
-    }
-  }, []);
-  
+export default function Impact() {
+  const theme = useThemeFromClassList(['dark', 'light'])
+  const { translate } = useTranslate();
+  const options = React.useMemo(() => {
+  return  {
+     animationData: theme === 'dark' ? mapDark : mapLight,
+     loop: true
+   };
+  },[theme])
+  const { View } = useLottie(options);
   return (
     <div className="landing page-impact">
       <div className="overflow-hidden">
@@ -88,8 +70,9 @@ export default function Impact() {
           <div>
             {/* Large */}
             <div className="col d-none d-lg-block align-self-center">
-              <div className="mt-10" id="map-dark" />
-              <div className="mt-10" id="map-light" />
+              {/* <div className="mt-10" id="map-dark" />
+              <div className="mt-10" id="map-light" /> */}
+              {View}
             </div>
           </div>
         </section>

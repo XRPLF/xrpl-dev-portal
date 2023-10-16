@@ -24,7 +24,6 @@ export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
   const themeConfig = useThemeConfig();
   const { changeLanguage } = useI18n();
-
   const menu = themeConfig.navbar?.items;
   const logo = themeConfig.logo;
 

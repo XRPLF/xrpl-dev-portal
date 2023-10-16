@@ -12,6 +12,7 @@
   "dependencies": {
     "@redocly/portal": "^0.43.1",
     "bodymovin": "^4.13.0",
+    "lottie-react": "^2.4.0",
     "moment": "^2.29.4"
   },
   "devDependencies": {
