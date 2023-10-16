@@ -18,7 +18,7 @@ An `AMM` ledger entry describes a single [Automated Market Maker](automated-mark
 
 ```json
 {
-    "AMMAccount" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
+    "Account" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
     "Asset" : {
       "currency" : "XRP"
     },
