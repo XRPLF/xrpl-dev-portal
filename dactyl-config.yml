@@ -842,6 +842,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/networks-and-servers/the-clio-server.md"
+        outdated_translation: true
         targets:
             - ja
 
