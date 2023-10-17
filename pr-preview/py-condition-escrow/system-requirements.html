@@ -306,8 +306,10 @@
 <li>RAM: 64 GB.</li>
 <li>Network: Enterprise data center network with a gigabit network interface on the host.</li>
 </ul>
+<p>For a validator in AWS, consider <code>z1d.2xlarge</code> with an extra 1 TB disk for logging and core dump storage.</p>
 <h2 id="minimum-specifications">Minimum Specifications<a aria-hidden="true" class="hover_anchor" href="#minimum-specifications"><i class="fa fa-link"></i></a></h2>
-<p>For testing purposes or occasional use, you can run an XRP Ledger server on commodity hardware. The following minimum requirements should work for most cases, but may not always <a href="server-doesnt-sync.html">stay synced with the network</a>:</p>
+<p class="devportal-callout caution"><strong>Caution:</strong> These specifications are not enough to reliably <a href="server-doesnt-sync.html">stay synced with Mainnet</a>. For production use, follow the recommended specifications above.</p>
+<p>For testing purposes, you can run an XRP Ledger server on commodity hardware with the following minimum requirements:</p>
 <ul>
 <li>Operating System: macOS, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported).</li>
 <li>CPU: 64-bit x86_64, 4+ cores.</li>
@@ -316,7 +318,6 @@
 </ul>
 <!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2, nvme -->
 <p>Amazon EC2's <code>i3.2xlarge</code> VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.</p>
-<p>For a validator, consider <code>z1d.2xlarge</code> with an extra 1 TB disk for logging and core dump storage.</p>
 <h2 id="system-time">System Time<a aria-hidden="true" class="hover_anchor" href="#system-time"><i class="fa fa-link"></i></a></h2>
 <p>A <code>rippled</code> server relies on maintaining the correct time. It is recommended that the system synchronize time using the Network Time Protocol (NTP) with daemons such as <code>ntpd</code> or <code>chrony</code>.</p>
 <h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
