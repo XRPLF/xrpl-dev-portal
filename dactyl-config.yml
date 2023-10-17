@@ -1648,6 +1648,12 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-conditional-escrows.md
+        targets:
+            - en
+            - ja
+
     -   name: NFTs Using Python
         html: nfts-using-python.html
         parent: modular-tutorials-in-python.html
