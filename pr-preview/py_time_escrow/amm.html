@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" />
 
 
     <!-- Theme switch -->
@@ -308,7 +309,7 @@
 <p>An <code>AMM</code> ledger entry describes a single <a href="automated-market-makers.html">Automated Market Maker</a> (AMM) instance. This is always paired with a <a href="accountroot.html#special-amm-accountroot-entries">special AccountRoot entry</a>.</p>
 <h2 id="example-amm-json">Example AMM JSON<a aria-hidden="true" class="hover_anchor" href="#example-amm-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
-<span class="w">    </span><span class="nt">"AMMAccount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE54zDvgnghAoPopCgvtiqWNq3dU5y836S"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"Asset"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span>
 <span class="w">    </span><span class="p">},</span>
@@ -384,7 +385,7 @@
 <td>The definition for the other asset this AMM holds. In JSON, this is an object with <code>currency</code> and <code>issuer</code> fields.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>AMMAccount</code></td>
+<td style="text-align: left;"><code>Account</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">AccountID</td>
 <td style="text-align: left;">Yes</td>
@@ -3169,6 +3170,95 @@ $(document).ready(() => {
 })
 </script>
 
+<!-- XRPL AI -->
+<script id="xrplai-options">
+  var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
+  var PROMPT_MODE = 'prompt';
+  var RUNTIME_LOCATION = 'ripplex';
+  var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `uPcw5BckVeKgyF2NE6la4VVFtA56OBQ4`;
+  var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+  var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
+  var CHAT_ENDPOINT = '/v1/chat';
+  var PROMPT_ENDPOINT = '/v1/chat';
+  var FEEDBACK_ENDPOINT = '/v1/feedback';
+  var BASE_URL = RUNTIME_LOCATION === 'ripplex'
+    ? DEV_XRPLAI_RIPPLEX_API_BASE_URL
+    : LOCALHOST_API_BASE_URL;
+  var CHAT_API_URL = `${BASE_URL}${CHAT_ENDPOINT}`;
+  var PROMPT_API_URL = `${BASE_URL}${PROMPT_ENDPOINT}`;
+  var FEEDBACK_API_URL = `${BASE_URL}${FEEDBACK_ENDPOINT}`;
+
+  /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+  window.markprompt = {
+    projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
+    defaultView: 'prompt',
+    options: {
+      chat: {
+        enabled: PROMPT_MODE === 'chat',
+        apiUrl: CHAT_API_URL,
+      },
+      feedback: {
+        enabled: true,
+        apiUrl: FEEDBACK_API_URL,
+      },
+      prompt: {
+        apiUrl: PROMPT_API_URL,
+        systemPrompt: `
+You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "".
+
+Context sections:
+---
+
+
+Question: ""
+
+Answer (including related code snippets if available and markdown links to relevant things):
+        `.trim(),
+      },
+      references: {
+        getHref: (reference) => {
+        const { file } = reference;
+        if (file && file.path) {
+          // /\/content\/[^_][^/]*\.md/.test(file.path)
+          if (file.path.includes('content/') && !file.path.includes('content/_') && file.path.endsWith('.md')) {
+            // Remove the extension if it's a regular content page that lives on xrpl.org
+            // return file.path.replace(/\.[^.]+$/, '');
+            // Change extension to html and remove content/ from the URL
+            if (file.path.endsWith('ja.md')) {
+              // Japanese lives at /ja/<filename>.html
+              return `ja/${file.path.replace(/content\//, '').replace(/\.ja\.md$/, '.html')}`
+            }
+            return file.path.replace(/content\//, '').replace(/\.md$/, '.html')
+          } else {
+            // Otherwise link to a file on the github repo such as .js or README.md
+            return `https://github.com/XRPLF/xrpl-dev-portal/blob/master/${file.path}`;
+          }
+        } else {
+          // Handle the case where file or file.path is missing
+          return '';
+        }
+      },
+        getLabel: (reference) => {
+          return reference.meta?.leadHeading?.value || reference.file?.title;
+        },
+      },
+      showBranding: false,
+      trigger: {
+        floating: true,
+      },
+      search: {
+        enabled: true,
+        provider: {
+          name: 'algolia',
+          apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+          appId: 'R39QY3MZC7',
+          indexName: 'xrpl',
+        },
+      }
+    },
+  };
+</script>
+<script id="initjs" type="module" src="https://www.unpkg.com/@xrpl/ai-web/dist/init.js"></script>
 
 
 </body>

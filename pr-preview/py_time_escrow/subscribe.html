@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" />
 
 
     <!-- Theme switch -->
@@ -417,7 +418,7 @@
 <li><code>server</code> - Sends a message whenever the status of the <code>rippled</code> server (for example, network connectivity) changes.</li>
 <li><code>validations</code> - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual <code>rippled</code> declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)</li>
 </ul>
-<p class="devportal-callout note"><strong>Note:</strong> The following streams are not available from servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>: <code>server</code>, <code>peer_status</code>, <code>consensus</code>. Reporting Mode servers return the error <code>reportingUnsupported</code> if you request one of these streams. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p class="devportal-callout note"><strong>Note:</strong> The following streams are not available from Clio and <code>rippled</code> servers in <a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a>: <code>server</code>, <code>peer_status</code>, <code>consensus</code>. Both will return the <code>reportingUnsupported</code> error if you request one of these streams. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" target="_blank" title="Updated in: rippled 1.8.1"><img alt="Updated in: rippled 1.8.1" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.8.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/2.0" target="_blank" title="New in: Clio v2.0"><img alt="New in: Clio v2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Each member of the <code>books</code> array, if provided, is an object with the following fields:</p>
 <table class="table-responsive">
 <thead>
@@ -3777,6 +3778,95 @@ $(document).ready(() => {
 })
 </script>
 
+<!-- XRPL AI -->
+<script id="xrplai-options">
+  var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
+  var PROMPT_MODE = 'prompt';
+  var RUNTIME_LOCATION = 'ripplex';
+  var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `uPcw5BckVeKgyF2NE6la4VVFtA56OBQ4`;
+  var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+  var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
+  var CHAT_ENDPOINT = '/v1/chat';
+  var PROMPT_ENDPOINT = '/v1/chat';
+  var FEEDBACK_ENDPOINT = '/v1/feedback';
+  var BASE_URL = RUNTIME_LOCATION === 'ripplex'
+    ? DEV_XRPLAI_RIPPLEX_API_BASE_URL
+    : LOCALHOST_API_BASE_URL;
+  var CHAT_API_URL = `${BASE_URL}${CHAT_ENDPOINT}`;
+  var PROMPT_API_URL = `${BASE_URL}${PROMPT_ENDPOINT}`;
+  var FEEDBACK_API_URL = `${BASE_URL}${FEEDBACK_ENDPOINT}`;
+
+  /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+  window.markprompt = {
+    projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
+    defaultView: 'prompt',
+    options: {
+      chat: {
+        enabled: PROMPT_MODE === 'chat',
+        apiUrl: CHAT_API_URL,
+      },
+      feedback: {
+        enabled: true,
+        apiUrl: FEEDBACK_API_URL,
+      },
+      prompt: {
+        apiUrl: PROMPT_API_URL,
+        systemPrompt: `
+You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "".
+
+Context sections:
+---
+
+
+Question: ""
+
+Answer (including related code snippets if available and markdown links to relevant things):
+        `.trim(),
+      },
+      references: {
+        getHref: (reference) => {
+        const { file } = reference;
+        if (file && file.path) {
+          // /\/content\/[^_][^/]*\.md/.test(file.path)
+          if (file.path.includes('content/') && !file.path.includes('content/_') && file.path.endsWith('.md')) {
+            // Remove the extension if it's a regular content page that lives on xrpl.org
+            // return file.path.replace(/\.[^.]+$/, '');
+            // Change extension to html and remove content/ from the URL
+            if (file.path.endsWith('ja.md')) {
+              // Japanese lives at /ja/<filename>.html
+              return `ja/${file.path.replace(/content\//, '').replace(/\.ja\.md$/, '.html')}`
+            }
+            return file.path.replace(/content\//, '').replace(/\.md$/, '.html')
+          } else {
+            // Otherwise link to a file on the github repo such as .js or README.md
+            return `https://github.com/XRPLF/xrpl-dev-portal/blob/master/${file.path}`;
+          }
+        } else {
+          // Handle the case where file or file.path is missing
+          return '';
+        }
+      },
+        getLabel: (reference) => {
+          return reference.meta?.leadHeading?.value || reference.file?.title;
+        },
+      },
+      showBranding: false,
+      trigger: {
+        floating: true,
+      },
+      search: {
+        enabled: true,
+        provider: {
+          name: 'algolia',
+          apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+          appId: 'R39QY3MZC7',
+          indexName: 'xrpl',
+        },
+      }
+    },
+  };
+</script>
+<script id="initjs" type="module" src="https://www.unpkg.com/@xrpl/ai-web/dist/init.js"></script>
 
 
 </body>
