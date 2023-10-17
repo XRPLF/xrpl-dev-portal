@@ -323,7 +323,7 @@
 <!-- [Try it! >](websocket-api-tool.html#server_info) -->
 <p>The request does not take any parameters.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
-<p>When a client connects to the <code>Clio</code> server over <code>localhost</code>, the response includes the <code>counters</code> and <code>etl</code> objects. These objects are omitted from the response when the client is not located on the same server, and hence does not connect over <code>localhost</code>.  </p>
+<p>When a client connects to the Clio server over <code>localhost</code>, the response includes the <code>counters</code> and <code>etl</code> objects. These objects are omitted from the response when the client is not located on the same server, and hence does not connect over <code>localhost</code>.</p>
 <p>An example of a successful response when client connects over <code>localhost</code>:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
@@ -839,12 +839,12 @@
 <tr>
 <td style="text-align: left;"><code>counters</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>(May be omitted)</em> Stats on API calls handled since server startup. This is present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Stats on API calls handled since server startup. This is present only if the client connects to the Clio server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>(May be omitted)</em> Stats on each API call handled by the Clio server since startup. Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Stats on each API call handled by the Clio server since startup. Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the Clio server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rpc.*.started</code></td>
@@ -874,7 +874,7 @@
 <tr>
 <td style="text-align: left;"><code>subscriptions</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>(May be omitted)</em> Number of current subscribers for each stream type.  Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Number of current subscribers for each stream type.  Since this is nested within the <code>counters</code> object, this is also present only if the client connects to the Clio server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>subscriptions.ledger</code></td>
@@ -917,24 +917,49 @@
 <td style="text-align: left;"></td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>time</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The current time in UTC, according to the server's clock. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/2.0" target="_blank" title="New in: Clio v2.0"><img alt="New in: Clio v2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>uptime</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">Number of consecutive seconds that the server has been operational. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/2.0" target="_blank" title="New in: Clio v2.0"><img alt="New in: Clio v2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>amendment_blocked</code></td>
+<td style="text-align: left;">Boolean</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Whether the Clio server is <a href="amendments.html#amendment-blocked-clio-servers">Amendment Blocked</a> <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/2.0" target="_blank" title="New in: Clio v2.0"><img alt="New in: Clio v2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>load_factor</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at <code>1000</code> load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the <a href="transaction-cost.html#local-load-cost">individual server's load factor</a>, the cluster's load factor, the <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a> and the overall network's load factor. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="Updated in: rippled 0.33.0"><img alt="Updated in: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at <code>1000</code> load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the <a href="transaction-cost.html#local-load-cost">individual server's load factor</a>, the cluster's load factor, the <a href="transaction-cost.html#open-ledger-cost">open ledger cost</a> and the overall network's load factor.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>clio_version</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The version number of the running <code>Clio</code> server.</td>
+<td style="text-align: left;">The version number of the running Clio server.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>libxrpl_version</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The version number of the <code>libxrpl</code> library this Clio server was built against. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/2.0" target="_blank" title="New in: Clio v2.0"><img alt="New in: Clio v2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validation_quorum</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from <code>rippled</code>. This field may be omitted from the response if the <code>Clio</code> server is unable to connect to <code>rippled</code> for some reason.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from <code>rippled</code>. This field may be omitted from the response if the Clio server is unable to connect to <code>rippled</code> for some reason.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>rippled_version</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The version number of the running <code>rippled</code> server that the <code>Clio</code> server is connected to. This field may be omitted from the response if the <code>Clio</code> server is unable to connect to <code>rippled</code> for some reason.</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The version number of the running <code>rippled</code> server that the Clio server is connected to. This field may be omitted from the response if the Clio server is unable to connect to <code>rippled</code> for some reason.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>network_id</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(May be omitted)</em> The network ID of the network that the <code>rippled</code> this Clio server is connected to is operating on. This field may be omitted from the response if the Clio server is unable to connect to <code>rippled</code> for some reason. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/2.0" target="_blank" title="New in: Clio v2.0"><img alt="New in: Clio v2.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger</code></td>
@@ -974,7 +999,7 @@
 <tr>
 <td style="text-align: left;"><code>validator_list_expires</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Admin only)</em> Either the human readable time, in UTC, when the current validator list expires, the string <code>unknown</code> if the server has yet to load a published validator list or the string <code>never</code> if the server uses a static validator list. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Admin only)</em> Either the human readable time, in UTC, when the current validator list expires, the string <code>unknown</code> if the server has yet to load a published validator list or the string <code>never</code> if the server uses a static validator list.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>cache</code></td>
@@ -999,7 +1024,7 @@
 <tr>
 <td style="text-align: left;"><code>etl</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">The <code>rippled</code> sources (ETL sources) that the Clio server is connected to. This is present only if the client connects to the <code>Clio</code> server over <code>localhost</code>.</td>
+<td style="text-align: left;">The <code>rippled</code> sources (ETL sources) that the Clio server is connected to. This is present only if the client connects to the Clio server over <code>localhost</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>etl.etl_sources</code></td>
