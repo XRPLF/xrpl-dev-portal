@@ -17,10 +17,13 @@ For reliable performance in production environments, it is recommended to run an
 - RAM: 64 GB.
 - Network: Enterprise data center network with a gigabit network interface on the host.
 
+For a validator in AWS, consider `z1d.2xlarge` with an extra 1 TB disk for logging and core dump storage.
 
 ## Minimum Specifications
 
-For testing purposes or occasional use, you can run an XRP Ledger server on commodity hardware. The following minimum requirements should work for most cases, but may not always [stay synced with the network](server-doesnt-sync.html):
+**Caution:** These specifications are not enough to reliably [stay synced with Mainnet](server-doesnt-sync.html). For production use, follow the recommended specifications above.
+
+For testing purposes, you can run an XRP Ledger server on commodity hardware with the following minimum requirements:
 
 - Operating System: macOS, Windows (64-bit), or most Linux distributions (Red Hat, Ubuntu, and Debian supported).
 - CPU: 64-bit x86_64, 4+ cores.
@@ -30,8 +33,6 @@ For testing purposes or occasional use, you can run an XRP Ledger server on comm
 <!-- SPELLING_IGNORE: iops, ntp, x86_64, ec2, nvme -->
 
 Amazon EC2's `i3.2xlarge` VM size may be appropriate depending on your workload. A fast network connection is preferable. Any increase in a server's client-handling load increases resources needs.
-
-For a validator, consider `z1d.2xlarge` with an extra 1 TB disk for logging and core dump storage.
 
 
 ## System Time
