@@ -4136,9 +4136,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: "@i18n/ja/infrastructure/rippled/commandline-usage.md"
-        outdated_translation: true
         targets:
             - ja
 
