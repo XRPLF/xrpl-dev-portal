@@ -4293,6 +4293,12 @@ pages:
         template: pagetype-category.html.jinja
         targets:
             - en
+
+    -   name: サーバの種類
+        html: server-modes.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
             - ja
 
     -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
@@ -4318,6 +4324,12 @@ pages:
         template: pagetype-category.html.jinja
         targets:
             - en
+
+    -   name: データの保存
+        html: data-retention.html
+        parent: configure-rippled.html
+        template: pagetype-category.html.jinja
+        targets:
             - ja
 
     -   md: infrastructure/rippled/configuration/configure-full-history.md
@@ -4376,10 +4388,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/rippled/configuration/test-amendments.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/test-amendments.md"
+        targets:
             - ja
 
         # TODO: translate
@@ -4393,6 +4407,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md"
+        outdated_translation: true
         targets:
             - ja
 

@@ -6,9 +6,9 @@ labels:
   - コアサーバー
   - ブロックチェーン
 ---
-# 修正投票機能の設定
+# Amendment投票機能の設定
 
-バリデーターとして設定されたサーバーは、[feature method][]を使ってXRP Ledgerプロトコルの[修正案(amendments)](amendments.html)に投票することができます。(この方法には[管理者アクセス](get-started-using-http-websocket-apis.html#管理者アクセス権限)が必要です).
+バリデーターとして設定されたサーバーは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](amendments.html)に投票することができます。(この方法には[管理者アクセス](get-started-using-http-websocket-apis.html#管理者アクセス権限)が必要です).
 
 例えば、「SHAMapV2」Amendmentに反対票を投じるには、以下のコマンドを実行します。
 
@@ -51,7 +51,7 @@ rippled feature SHAMapV2 reject
 
 ## 設定ファイルを使用する
 
-もし、修正票の設定に設定ファイルを使いたい場合は、`[rpc_startup]` 節に行を追加して、起動時に各明示票のために自動的にコマンドを実行させることができます。例えば
+もし、Amendmentの設定に設定ファイルを使いたい場合は、`[rpc_startup]` 節に行を追加して、起動時に各明示票のために自動的にコマンドを実行させることができます。例えば
 
 ```
 [rpc_startup]
