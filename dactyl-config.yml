@@ -998,10 +998,7 @@ pages:
         targets:
             - en
 
-    # TODO: Translate to Japanese. Somehow this page's blurb got translated already.
-    -   md: concepts/transactions/source-and-destination-tags.md
-        blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
-        untranslated_warning: true
+    -   md: "@i18n/ja/concepts/transactions/source-and-destination-tags.md"
         targets:
             - ja
 
