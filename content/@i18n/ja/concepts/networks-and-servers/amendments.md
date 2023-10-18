@@ -63,6 +63,13 @@ AmendmentブロックはXRP Ledgerデータの正確性を守るためのセキ�
 最新バージョンの`rippled`にアップグレードすることで、Amendmentブロックされたサーバーのブロックを解除することができます。
 
 
+### AmendmentブロックされたClioサーバ
+<a id="amendment-blocked-clio-servers"></a>
+
+<!-- TODO: translate section -->
+
+The Clio server can become amendment blocked if it encounters an unknown field type while loading ledger data. This occurs if the field is newer than the `libxrpl` dependency that was used when building Clio. To unblock your Clio server, upgrade to a newer Clio release that was built with a compatible `libxrpl`.
+
 ## Amendmentの削除
 
 Amendmentを有効にすると、修正前の動作のソースコードは`rippled`に残ります。検証のためにレジャーの結果を再構築するなど、古いコードを保持するユースケースはありますが、Amendmentとレガシーコードの追跡は時間の経過とともに複雑さを増していきます。
