@@ -31,6 +31,7 @@ default_filters:
     - slug
     - copy_code_to_clipboard
     - enforce_filenames
+    # - make_indexes
 
 callout_class: "devportal-callout"
 callout_types:
@@ -489,21 +490,11 @@ pages:
 # Introduction -----------------------------------------------------------------
 
     # TODO: these are placed under "Docs" in nav but the files are under "Docs/Concepts"
-    -   name: Introduction
-        html: introduction.html
-        parent: docs.html
-        template: pagetype-category.html.jinja
-        blurb: This is a quick introduction to the principal features of the XRP Ledger (XRPL). Read this to get a high level understanding of the XRPL, then you can read more about areas of particular interest. The XRP Ledger is a blockchain that permanently records digital transactions of tokens between accounts. The sections below expand on the concepts introduced in that sentence.
-        top_nav_grouping: Article Types
+    -   md: introduction/index.md
         targets:
             - en
 
-    -   name: 基本
-        html: introduction.html
-        parent: docs.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledger(XRPL)の主要な機能を簡単に紹介します。これを読んでXRPLのハイレベルな理解を深め、その後、特に興味のある分野についての詳細を読むことができます。XRP Ledgerは、アカウント間のトークンのデジタルトランザクションを永続的に記録するブロックチェーンです。以下のセクションは、その文章で紹介された概念を拡張するものです。
-        top_nav_grouping: カテゴリ
+    -   md: "@i18n/ja/introduction/index.md"
         targets:
             - ja
 
@@ -565,40 +556,19 @@ pages:
 
 # Use Cases --------------------------------------------------------------------
 
-    -   name: Use Cases
-        html: use-cases.html
-        parent: docs.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Browse the documentation based on practical use cases.
+    -   md: use-cases/index.md
         targets:
             - en
 
-    -   name: ユースケース
-        html: use-cases.html
-        parent: docs.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: 実践的なユースケースに基づいたドキュメントをご覧ください。
+    -   md: "@i18n/ja/use-cases/index.md"
         targets:
             - ja
 
-
-    -   name: Payments
-        html: payments-uc.html
-        parent: use-cases.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Practical examples for using different types of payment on the XRP Ledger.
+    -   md: use-cases/payments/index.md
         targets:
-            - en
+        - en
 
-    -   name: Payment
-        html: payments-uc.html
-        parent: use-cases.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerで様々なタイプの支払いを利用するための実例を紹介します。
+    -   md: "@i18n/ja/use-cases/payments/index.md"
         targets:
             - ja
 
@@ -632,21 +602,11 @@ pages:
         targets:
             - ja
 
-    -   name: Tokenization
-        html: tokenization.html
-        parent: use-cases.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Work with a variety of tokens supported by the XRP Ledger.
+    -   md: use-cases/tokenization/index.md
         targets:
             - en
 
-    -   name: Tokenization
-        html: tokenization.html
-        parent: use-cases.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerが対応する様々なトークンを使用できます。
+    -   md: "@i18n/ja/use-cases/tokenization/index.md"
         targets:
             - ja
 
@@ -701,21 +661,11 @@ pages:
         targets:
             - ja
 
-    -   name: Decentralized Finance
-        html: defi-uc.html
-        parent: use-cases.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Enabling fast, secure financial transactions without a central authority.
+    -   md: use-cases/defi/index.md
         targets:
             - en
 
-    -   name: DeFi
-        html: defi-uc.html
-        parent: use-cases.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: 中央機関を介さずに、高速で安全な金融トランザクションを可能にします。
+    -   md: "@i18n/ja/use-cases/defi/index.md"
         targets:
             - ja
 
@@ -742,21 +692,11 @@ pages:
 
 # Concepts ---------------------------------------------------------------------
 
-    -   name: Concepts
-        html: concepts.html
-        parent: docs.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Learn the "what" and "why" behind fundamental aspects of the XRP Ledger.
+    -   md: concepts/index.md
         targets:
             - en
 
-    -   name: コンセプト
-        html: concepts.html
-        parent: docs.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの基本的な部分の背景に「何があるか」、「なぜなのか」を学びましょう。
+    -   md: "@i18n/ja/concepts/index.md"
         targets:
             - ja
 
@@ -1063,19 +1003,11 @@ pages:
             - ja
 
     # Payment Types -----------------------------------------------------------
-    -   name: Payment Types
-        html: payment-types.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
+    -   md: concepts/payment-types/index.md
         targets:
             - en
 
-    -   name: 支払いのタイプ
-        html: payment-types.html
-        parent: concepts.html
-        template: pagetype-category.html.jinja
-        blurb: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門的な支払いタイプをサポートしています。
+    -   md: "@i18n/ja/concepts/payment-types/index.md"
         targets:
             - ja
 
@@ -1584,22 +1516,11 @@ pages:
             - ja
 
     # Python -------------------------------------------------------------------
-
-    -   name: Python
-        html: python.html
-        parent: tutorials.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: XRPL tutorials in Python.
+    -   md: tutorials/python/index.md
         targets:
             - en
 
-    -   name: Python
-        html: python.html
-        parent: tutorials.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: PythonでのXRPLチュートリアルです。
+    -   md: "@i18n/ja/tutorials/python/index.md"
         targets:
             - ja
 
@@ -1614,21 +1535,11 @@ pages:
         targets:
             - ja
 
-    -   name: Modular Tutorials in Python
-        html: modular-tutorials-in-python.html
-        parent: python.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Modular XRPL tutorials in Python.
+    -   md: tutorials/python/modular-tutorials-in-python/index.md
         targets:
             - en
 
-    -   name: Pythonのモジュール形式チュートリアル
-        html: modular-tutorials-in-python.html
-        parent: python.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: Pythonによるモジュール式XRPLチュートリアル。
+    -   md: "@i18n/ja/tutorials/python/modular-tutorials-in-python/index.md"
         targets:
             - ja
 
@@ -1650,12 +1561,8 @@ pages:
             - en
             - ja
 
-    -   name: NFTs Using Python
-        html: nfts-using-python.html
-        parent: modular-tutorials-in-python.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Mint and sell NFTs on the XRP Ledger using Python.
+        # TODO: translate
+    -   md: tutorials/python/modular-tutorials-in-python/nfts-using-python/index.md
         targets:
             - en
             - ja
@@ -1691,21 +1598,11 @@ pages:
 
     # JavaScript ---------------------------------------------------------------
 
-    -   name: JavaScript
-        html: javascript.html
-        parent: tutorials.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: XRPL tutorials in JavaScript.
+    -   md: tutorials/javascript/index.md
         targets:
             - en
 
-    -   name: JavaScript
-        html: javascript.html
-        parent: tutorials.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: JavaScriptでのXRPLチュートリアルです。
+    -   md: "@i18n/ja/tutorials/javascript/index.md"
         targets:
             - ja
 
@@ -1742,21 +1639,11 @@ pages:
             - en
             - ja
 
-    -   name: Modular Tutorials in JavaScript
-        html: modular-tutorials-in-javascript.html
-        parent: javascript.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Modular XRPL tutorials in JavaScript.
+    -   md: tutorials/javascript/modular-tutorials-in-javascript/index.md
         targets:
             - en
 
-    -   name: JavaScriptのモジュール形式チュートリアル
-        html: modular-tutorials-in-javascript.html
-        parent: javascript.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: JavaScriptによるモジュール式XRPLチュートリアルです。
+    -   md: "@i18n/ja/tutorials/javascript/modular-tutorials-in-javascript/index.md"
         targets:
             - ja
 
@@ -1790,21 +1677,11 @@ pages:
             - en
             - ja
 
-    -   name: NFTs Using JavaScript
-        html: nfts-using-javascript.html
-        parent: modular-tutorials-in-javascript.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Mint and sell NFTs on the XRP Ledger using JavaScript.
+    -   md: tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index.md
         targets:
             - en
 
-    -   name: JavaScriptを使ったNFT
-        html: nfts-using-javascript.html
-        parent: modular-tutorials-in-javascript.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledger上でNFTのミントと販売を行います。
+    -   md: "@i18n/ja/tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index.md"
         targets:
             - ja
 
@@ -1861,21 +1738,11 @@ pages:
 
     # Java ---------------------------------------------------------------------
 
-    -   name: Java
-        html: java.html
-        parent: tutorials.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: XRPL tutorials in Java.
+    -   md: tutorials/java/index.md
         targets:
             - en
 
-    -   name: Java
-        html: java.html
-        parent: tutorials.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: JavaでのXRPLチュートリアルです。
+    -   md: "@i18n/ja/tutorials/java/index.md"
         targets:
             - ja
 
@@ -1892,21 +1759,11 @@ pages:
 
     # HTTP / Websocket Tutorials ---------------------------------------------------
 
-    -   name: HTTP / Websocket APIs
-        html: http-websocket-apis-tutorials.html
-        parent: tutorials.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: XRPL tutorials for HTTP / Websocket APIs.
+    -   md: tutorials/http-websocket-apis/index.md
         targets:
             - en
 
-    -   name: HTTP / Websocket API
-        html: http-websocket-apis-tutorials.html
-        parent: tutorials.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: HTTP / Websocket APIのXRPLチュートリアルです。
+    -   md: "@i18n/ja/tutorials/http-websocket-apis/index.md"
         targets:
             - ja
 
@@ -1938,39 +1795,21 @@ pages:
 
     # Tasks --------------------------------------------------------------------
 
-    -   name: Tasks
-        html: tasks.html
-        parent: tutorials.html
-        top_nav_grouping: Article Types
-        template: pagetype-category.html.jinja
-        blurb: Common tasks on the XRP Ledger.
+    -   md: tutorials/tasks/index.md
         targets:
             - en
 
-    -   name: タスク
-        html: tasks.html
-        parent: tutorials.html
-        top_nav_grouping: カテゴリ
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの代表的なタスクです。
+    -   md: "@i18n/ja/tutorials/tasks/index.md"
         targets:
             - ja
 
         # Manage Account Settings ----------------------------------------------
 
-    -   name: Manage Account Settings
-        html: manage-account-settings.html
-        parent: tasks.html
-        template: pagetype-category.html.jinja
-        blurb: Set up your XRP Ledger account to send and receive payments the way you want it to.
+    -   md: tutorials/tasks/manage-account-settings/index.md
         targets:
             - en
 
-    -   name: アカウントの設定の利用
-        html: manage-account-settings.html
-        parent: tasks.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerアカウントを設定して、思い通りの支払いをしましょう。
+    -   md: "@i18n/ja/tutorials/tasks/manage-account-settings/index.md"
         targets:
             - ja
 
@@ -2051,19 +1890,11 @@ pages:
 
         # Use Specialized Payment Types --------------------------------------------------------
 
-    -   name: Use Specialized Payment Types
-        html: use-specialized-payment-types.html
-        parent: tasks.html
-        template: pagetype-category.html.jinja
-        blurb: Use advanced features like Escrow and Payment Channels to build smart applications on the XRP Ledger.
+    -   md: tutorials/tasks/use-specialized-payment-types/index.md
         targets:
             - en
 
-    -   name: 専門的な支払いタイプの使用
-        html: use-specialized-payment-types.html
-        parent: tasks.html
-        template: pagetype-category.html.jinja
-        blurb: EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築しましょう。
+    -   md: "@i18n/ja/tutorials/tasks/use-specialized-payment-types/index.md"
         targets:
             - ja
 
@@ -2077,19 +1908,11 @@ pages:
             - en
             - ja
 
-    -   name: Use Escrows
-        html: use-escrows.html
-        parent: use-specialized-payment-types.html
-        blurb: The XRP Ledger supports escrows that can be executed only after a certain time has passed or a cryptographic condition has been fulfilled. Escrows can only send XRP, not issued currencies.
-        template: pagetype-category.html.jinja
+    -   md: tutorials/tasks/use-specialized-payment-types/use-escrows/index.md
         targets:
             - en
 
-    -   name: Escrowの使用
-        html: use-escrows.html
-        parent: use-specialized-payment-types.html
-        blurb: XRP Ledgerは、一定時間の経過後か暗号条件が満たされた場合にのみ実行されるEscrowをサポートします。Escrowが送金できるのはXRPのみで、発行済み通貨は送金できません。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/tutorials/tasks/use-specialized-payment-types/use-escrows/index.md"
         targets:
             - ja
 
@@ -2207,19 +2030,11 @@ pages:
 
         # Use Tokens ------------------------------------------------------------------
 
-    -   name: Use Tokens
-        html: use-tokens.html
-        parent: tasks.html
-        blurb: Create and trade tokens (fungible or otherwise) in the XRP Ledger.
-        template: pagetype-category.html.jinja
+    -   md: tutorials/tasks/use-tokens/index.md
         targets:
             - en
 
-    -   name: トークンの利用
-        html: use-tokens.html
-        parent: tasks.html
-        blurb: XRP Ledgerでトークン(代替型やそれ以外)を発行し、取引しましょう
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/tutorials/tasks/use-tokens/index.md"
         targets:
             - ja
 
@@ -2386,21 +2201,11 @@ pages:
         targets:
             - ja
 
-    -   name: XRP Ledger Protocol Reference
-        html: protocol-reference.html
-        parent: references.html
-        template: pagetype-category.html.jinja
-        blurb: Features and rules of the XRP Ledger protocol, regardless of how you access it.
-        eyebrow_text: Features and Rules
+    -   md: references/protocol-reference/index.md
         targets:
             - en
 
-    -   name: XRP Ledgerプロトコルリファレンス
-        html: protocol-reference.html
-        parent: references.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerプロトコルの、利用方法に依存しない特徴やルールについて。
-        eyebrow_text: 特徴とルール
+    -   md: "@i18n/ja/references/protocol-reference/index.md"
         targets:
             - ja
 
@@ -3114,19 +2919,11 @@ pages:
 
     # HTTP / Websocket APIs References ----------------------------------------------------
 
-    -   name: HTTP / WebSocket APIs
-        html: http-websocket-apis.html
-        parent: references.html
-        template: pagetype-category.html.jinja
-        blurb: Communicate directly with rippled, the core peer-to-peer server that manages the XRP Ledger.
+    -   md: references/http-websocket-apis/index.md
         targets:
             - en
 
-    -   name: HTTP / WebSocket API リファレンス
-        html: http-websocket-apis.html
-        parent: references.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerを管理するコアのピアツーピアサーバーであるrippledと直接通信します。
+    -   md: "@i18n/ja/references/http-websocket-apis/index.md"
         targets:
             - ja
 
@@ -3215,19 +3012,11 @@ pages:
             - en
             - ja
 
-    -   name: Account Methods
-        html: account-methods.html
-        parent: public-api-methods.html
-        template: pagetype-category.html.jinja
-        blurb: An account in the XRP Ledger represents a holder of XRP and a sender of transactions. Use these methods to work with account info.
+    -   md: references/http-websocket-apis/public-api-methods/account-methods/index.md
         targets:
             - en
 
-    -   name: Accountメソッド
-        html: account-methods.html
-        parent: public-api-methods.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerのアカウントとは、XRPの保有者とトランザクションの送信者を意味します。以下のメソッドを使用して、アカウント情報を処理することができます。
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/index.md"
         targets:
             - ja
 
@@ -3321,19 +3110,11 @@ pages:
         targets:
             - ja
 
-    -   name: Ledger Methods
-        html: ledger-methods.html
-        parent: public-api-methods.html
-        blurb: A ledger version contains a header, a transaction tree, and a state tree, which contain account settings, trustlines, balances, transactions, and other data. Use these methods to retrieve ledger info.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/ledger-methods/index.md
         targets:
             - en
 
-    -   name: Ledgerメソッド
-        html: ledger-methods.html
-        parent: public-api-methods.html
-        blurb: レジャーバージョンには、ヘッダー、トランザクションツリー、状態ツリーが含まれ、さらにその中にアカウント設定、トラストライン、残高、トランザクション、その他のデータが含まれます。以下のメソッドを使用して、レジャー情報を取得することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/index.md"
         targets:
             - ja
 
@@ -3378,19 +3159,11 @@ pages:
         targets:
             - ja
 
-    -   name: Transaction Methods
-        html: transaction-methods.html # watch for clashes w/ this filename
-        parent: public-api-methods.html
-        template: pagetype-category.html.jinja
-        blurb: Transactions are the only thing that can modify the shared state of the XRP Ledger. All business on the XRP Ledger takes the form of transactions. Use these methods to work with transactions. # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/transaction-methods/index.md
         targets:
             - en
 
-    -   name: Transactionメソッド
-        html: transaction-methods.html # watch for clashes w/ this filename
-        parent: public-api-methods.html
-        template: pagetype-category.html.jinja
-        blurb: トランザクションだけが、XRP Ledgerの共有されている状態を変更できます。XRP Ledgerに対するすべてのビジネスはトランザクションの形態をとります。以下のメソッドを使用して、トランザクションを処理します。
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/transaction-methods/index.md"
         targets:
             - ja
 
@@ -3434,19 +3207,11 @@ pages:
         targets:
             - ja
 
-    -   name: Path and Order Book Methods
-        html: path-and-order-book-methods.html
-        parent: public-api-methods.html
-        blurb: Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md
         targets:
             - en
 
-    -   name: PathおよびOrderBookのメソッド
-        html: path-and-order-book-methods.html
-        parent: public-api-methods.html
-        blurb: パスは、支払いが送信者から受信者に届くまでに中間ステップでたどる道筋を定義します。パスは、送信者と受信者をオーダーブックを介してつなぐことで、複数通貨間の支払いを可能にします。パスと他のオーダーブックに関しては、以下のメソッドを使用します。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md"
         targets:
             - ja
 
@@ -3504,19 +3269,11 @@ pages:
         targets:
             - ja
 
-    -   name: Payment Channel Methods
-        html: payment-channel-methods.html
-        parent: public-api-methods.html
-        blurb: Payment channels are a tool for facilitating repeated, unidirectional payments, or temporary credit between two parties. Use these methods to work with payment channels.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md
         targets:
             - en
 
-    -   name: Payment Channelメソッド
-        html: payment-channel-methods.html
-        parent: public-api-methods.html
-        blurb: Payment Channelは、2者間で繰り返される一方向の支払いや一時的な与信を可能にするためのツールです。これらのメソッドを使用して、Payment Channelを使用することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md"
         targets:
             - ja
 
@@ -3536,20 +3293,11 @@ pages:
         targets:
             - ja
 
-        # TODO: translate title & blurb
-    -   name: Subscription Methods
-        html: subscription-methods.html
-        parent: public-api-methods.html
-        blurb: Use these methods to enable the server to push updates to your client when various events happen, so that you can know and react right away. WebSocket API only.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/subscription-methods/index.md
         targets:
             - en
 
-    -   name: Subscriptionメソッド
-        html: subscription-methods.html
-        parent: public-api-methods.html
-        blurb: 以下のメソッドを使用して、さまざまなイベントが発生したときに更新情報をサーバーからクライアントにプッシュできるようになるため、即座に情報を取得することができます。WebSocket APIのみ対応しています。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/subscription-methods/index.md"
         targets:
             - ja
 
@@ -3569,19 +3317,11 @@ pages:
         targets:
             - ja
 
-    -   name: Server Info Methods
-        html: server-info-methods.html
-        parent: public-api-methods.html
-        blurb: Use these methods to retrieve information about the current state of the rippled server.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/index.md
         targets:
             - en
 
-    -   name: Server Infoメソッド
-        html: server-info-methods.html
-        parent: public-api-methods.html
-        blurb: 以下のメソッドを使用して、rippledサーバーの現在の状態についての情報を取得することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/index.md"
         targets:
             - ja
 
@@ -3619,19 +3359,11 @@ pages:
         targets:
             - ja
 
-    -   name: Clio Server
-        html: clio-methods.html
-        parent: public-api-methods.html
-        blurb: Use these methods to retrieve information using Clio server APIs.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/clio-server/index.md
         targets:
             - en
 
-    -   name: Clio Serverメソッド
-        html: clio-methods.html
-        parent: public-api-methods.html
-        blurb: 以下のメソッドを使用して、ClioサーバーのAPIから情報を取得することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-server/index.md"
         targets:
             - ja
 
@@ -3660,19 +3392,11 @@ pages:
             - en
             - ja
 
-    -   name: Utility Methods
-        html: utility-methods.html
-        parent: public-api-methods.html
-        blurb: Use these methods to perform convenient tasks, such as ping and random number generation.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/public-api-methods/utility-methods/index.md
         targets:
             - en
 
-    -   name: ユーティリティメソッド
-        html: utility-methods.html
-        parent: public-api-methods.html
-        blurb: 以下のメソッドを使用して、Pingや乱数生成などの便利な処理を行うことができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/utility-methods/index.md"
         targets:
             - ja
 
@@ -3719,19 +3443,11 @@ pages:
             - en
             - ja
 
-    -   name: Key Generation Methods
-        html: key-generation-methods.html
-        parent: admin-api-methods.html
-        blurb: Use these methods to generate and manage keys.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/admin-api-methods/key-generation-methods/index.md
         targets:
             - en
 
-    -   name: キー生成メソッド
-        html: key-generation-methods.html
-        parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用してキーを生成および管理することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/key-generation-methods/index.md"
         targets:
             - ja
 
@@ -3751,19 +3467,11 @@ pages:
         targets:
             - ja
 
-    -   name: Logging and Data Management Methods
-        html: logging-and-data-management-methods.html
-        parent: admin-api-methods.html
-        blurb: Use these methods to manage log levels and other data, such as ledgers.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/index.md
         targets:
             - en
 
-    -   name: ログとデータの管理メソッド
-        html: logging-and-data-management-methods.html
-        parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用して、ログレベルや台帳などのデータを管理することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/index.md"
         targets:
             - ja
 
@@ -3831,19 +3539,11 @@ pages:
         targets:
             - ja
 
-    -   name: Server Control Methods
-        html: server-control-methods.html
-        parent: admin-api-methods.html
-        blurb: Use these methods to manage the rippled server.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/admin-api-methods/server-control-methods/index.md
         targets:
             - en
 
-    -   name: サーバ操作メソッド
-        html: server-control-methods.html
-        parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用して、rippledサーバーを管理することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/server-control-methods/index.md"
         targets:
             - ja
 
@@ -3871,19 +3571,11 @@ pages:
         targets:
             - ja
 
-    -   name: Signing Methods
-        html: signing-methods.html
-        parent: admin-api-methods.html
-        blurb: Use these methods to work with transactions.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/admin-api-methods/signing-methods/index.md
         targets:
             - en
 
-    -   name: 署名メソッド
-        html: signing-methods.html
-        parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用して、トランザクションを扱うことができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/signing-methods/index.md"
         targets:
             - ja
 
@@ -3903,19 +3595,11 @@ pages:
         targets:
             - ja
 
-    -   name: Peer Management Methods
-        html: peer-management-methods.html
-        parent: admin-api-methods.html
-        blurb: Use these methods to manage your server's peer-to-peer connections.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/admin-api-methods/peer-management-methods/index.md
         targets:
             - en
 
-    -   name: ピア管理メソッド
-        html: peer-management-methods.html
-        parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用して、サーバーのピアツーピア接続を管理することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/peer-management-methods/index.md"
         targets:
             - ja
 
@@ -3959,19 +3643,11 @@ pages:
         targets:
             - ja
 
-    -   name: Status and Debugging Methods
-        html: status-and-debugging-methods.html
-        parent: admin-api-methods.html
-        blurb: Use these methods to check the status of the network and server.
-        template: pagetype-category.html.jinja
+    -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/index.md
         targets:
             - en
 
-    -   name: ステータスとデバッグのメソッド
-        html: status-and-debugging-methods.html
-        parent: admin-api-methods.html
-        blurb: 以下のメソッドを使用して、ネットワークとサーバーのステータスを確認することができます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/index.md"
         targets:
             - ja
 
@@ -4039,20 +3715,11 @@ pages:
         targets:
             - ja
 
-    # TODO: translate title & blurb
-    -   name: Peer Port Methods
-        html: peer-port-methods.html
-        parent: http-websocket-apis.html
-        template: pagetype-category.html.jinja
-        blurb: Special API method for sharing network topology and status metrics.
+    -   md: references/http-websocket-apis/peer-port-methods/index.md
         targets:
             - en
 
-    -   name: ピアポートメソッド
-        html: peer-port-methods.html
-        parent: http-websocket-apis.html
-        template: pagetype-category.html.jinja
-        blurb: ネットワークトポロジーやステータスメトリクスを共有するための特別なAPIメソッドです。
+    -   md: "@i18n/ja/references/http-websocket-apis/peer-port-methods/index.md"
         targets:
             - ja
 
@@ -4107,21 +3774,11 @@ pages:
 
 # Infrastructure ---------------------------------------------------------------
 
-    -   name: Infrastructure
-        html: infrastructure.html
-        parent: docs.html
-        blurb: Install, configure, and manage the software that powers the XRP Ledger.
-        template: pagetype-category.html.jinja
-        top_nav_grouping: Article Types
+    -   md: infrastructure/index.md
         targets:
             - en
 
-    -   name: インフラストラクチャ
-        html: infrastructure.html
-        parent: docs.html
-        blurb: XRP Ledgerを動かすソフトウェアのインストール、設定、管理。
-        template: pagetype-category.html.jinja
-        top_nav_grouping: カテゴリ
+    -   md: "@i18n/ja/infrastructure/index.md"
         targets:
             - ja
 
@@ -4145,20 +3802,11 @@ pages:
         targets:
             - ja
 
-    -   name: Install rippled
-        html: install-rippled.html
-        parent: infrastructure.html
-        top_nav_name: Install & Configure
-        blurb: Install and update the rippled server.
-        template: pagetype-category.html.jinja
+    -   md: infrastructure/install-rippled/index.md
         targets:
             - en
 
-    -   name: rippledのインストール
-        html: install-rippled.html
-        parent: infrastructure.html
-        blurb: rippledサーバーをインストールして更新します。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/infrastructure/install-rippled/index.md"
         targets:
             - ja
 
@@ -4276,26 +3924,16 @@ pages:
         targets:
             - ja
 
-    -   name: Configure rippled
-        html: configure-rippled.html
-        parent: infrastructure.html
-        blurb: Customize your rippled server configuration.
-        template: pagetype-category.html.jinja
+    -   md: infrastructure/configure-rippled/index.md
         targets:
             - en
 
-    -   name: rippledの設定
-        html: configure-rippled.html
-        parent: infrastructure.html
-        blurb: rippledサーバーの構成をカスタマイズします。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/infrastructure/configure-rippled/index.md"
         targets:
             - ja
 
-    -   name: Server Modes
-        html: server-modes.html
-        parent: configure-rippled.html
-        template: pagetype-category.html.jinja
+        # TODO: translate
+    -   md: infrastructure/configure-rippled/server-modes/index.md
         targets:
             - en
             - ja
@@ -4317,10 +3955,8 @@ pages:
         targets:
             - ja
 
-    -   name: Data Retention
-        html: data-retention.html
-        parent: configure-rippled.html
-        template: pagetype-category.html.jinja
+        # TODO: translate
+    -   md: infrastructure/configure-rippled/data-retention/index.md
         targets:
             - en
             - ja
@@ -4488,20 +4124,11 @@ pages:
         targets:
             - ja
 
-    -   name: Testing and Auditing
-        html: use-stand-alone-mode.html
-        parent: infrastructure.html
-        blurb: For new features and experiments, you can use Stand-Alone Mode to test features with a full network.
-        template: pagetype-category.html.jinja
+    -   md: infrastructure/testing-and-auditing/index.md
         targets:
             - en
 
-        # TODO: Translate page name.
-    -   name: スタンドアロンモードでrippledをテスト
-        html: use-stand-alone-mode.html
-        parent: infrastructure.html
-        blurb: 新機能や実験用に、スタンドアロンモードを使用してフルネットワークで機能をテストできます。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/index.md"
         targets:
             - ja
 
@@ -4529,19 +4156,11 @@ pages:
         targets:
             - ja
 
-    -   name: Troubleshooting
-        html: troubleshoot-the-rippled-server.html
-        parent: infrastructure.html
-        blurb: Troubleshoot all kinds of problems with the rippled server.
-        template: pagetype-category.html.jinja
+    -   md: infrastructure/troubleshooting/index.md
         targets:
             - en
 
-    -   name: rippledのトラブルシューティング
-        html: troubleshoot-the-rippled-server.html
-        parent: infrastructure.html
-        blurb: rippledサーバーのあらゆる種類の問題をトラブルシューティングします。
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/infrastructure/troubleshooting/index.md"
         targets:
             - ja
 
@@ -5109,20 +4728,11 @@ pages:
             - ja
 
 # Resources tab ---------------------------------------------------------------
-    -   name: Resources
-        html: resources.html
-        parent: index.html
-        # Temporary: redirect to Dev Tools Eventually this should become a real landing page.
-        template: pagetype-category.html.jinja
-        blurb: Other resources to help understand the XRP Ledger and develop on it.
+    -   md: resources/index.md
         targets:
             - en
 
-    -   name: リソース
-        html: resources.html
-        parent: index.html
-        template: pagetype-category.html.jinja
-        blurb: XRP Ledgerの理解や開発ためのリソース。Other resources to help understand the XRPL and develop on it.
+    -   md: "@i18n/ja/resources/index.md"
         targets:
             - ja
 
