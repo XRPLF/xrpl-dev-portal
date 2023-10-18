@@ -2991,6 +2991,12 @@ pages:
     -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/rippled-server-states.md"
         targets:
             - ja
+    
+    # TODO: translate
+    -   md: references/http-websocket-apis/api-conventions/ctid.md
+        targets:
+            - en
+            - ja
 
 # rippled Public Methods
 
