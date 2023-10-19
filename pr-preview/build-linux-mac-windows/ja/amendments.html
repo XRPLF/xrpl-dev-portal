@@ -275,6 +275,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amendmentプロセス">Amendmentプロセス</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendment投票">Amendment投票</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#amendmentブロックされたサーバ">Amendmentブロックされたサーバ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#amendmentブロックされたclioサーバ">AmendmentブロックされたClioサーバ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#amendmentの削除">Amendmentの削除</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
@@ -297,9 +298,6 @@
     <li class="active breadcrumb-item">Amendment</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="amendment">Amendment<a aria-hidden="true" class="hover_anchor" href="#amendment"><i class="fa fa-link"></i></a></h1>
 <p>Amendmentは、トランザクション処理における新機能またはその他の変更を表します。</p>
@@ -344,6 +342,9 @@
 </ul>
 <p><code>rippled</code>サーバーの投票設定は、そのサーバがAmendmentブロックされることに影響を与えません。<code>rippled</code>サーバは常に他のネットワークで有効になっているAmendmentに従うので、ブロックは単にルールの変更を認識するコードを持っているかどうかに基づいています。つまり、異なるAmendmentが有効になっている並列ネットワークにサーバを接続した場合も、Amendmentブロックされる可能性があるということです。例えば、XRP Ledgerの開発ネットでは通常、実験的なAmendmentが有効になっています。最新のプロダクションリリースのコードを使用している場合、あなたのサーバには実験的なAmendmentのコードが存在しない可能性が高いです。</p>
 <p>最新バージョンの<code>rippled</code>にアップグレードすることで、Amendmentブロックされたサーバーのブロックを解除することができます。</p>
+<h3 id="amendmentブロックされたclioサーバ">AmendmentブロックされたClioサーバ<a aria-hidden="true" class="hover_anchor" href="#amendmentブロックされたclioサーバ"><i class="fa fa-link"></i></a></h3>
+<p><a id="amendment-blocked-clio-servers"></a></p>
+<p>Clioサーバが台帳データのロード中に未知のフィールドに遭遇した場合、Amendmentブロックが発生することがあります。これは、Clioのビルド時に使用された<code>libxrpl</code>の依存ファイルにそれらのフィールドが存在しない場合に発生します。Amendmentブロックを解除するには、互換性のある<code>libxrpl</code>でビルドされた新しいClioリリースにアップグレードしてください。</p>
 <h2 id="amendmentの削除">Amendmentの削除<a aria-hidden="true" class="hover_anchor" href="#amendmentの削除"><i class="fa fa-link"></i></a></h2>
 <p>Amendmentを有効にすると、修正前の動作のソースコードは<code>rippled</code>に残ります。検証のためにレジャーの結果を再構築するなど、古いコードを保持するユースケースはありますが、Amendmentとレガシーコードの追跡は時間の経過とともに複雑さを増していきます。</p>
 <p><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/19" target="_blank">XRP Ledger Standard 11d <i aria-hidden="true" class="fa fa-external-link"></i></a>では、古いレジャーと関連する以前のレジャーのコードを破棄するプロセスを定義しています。メインネット上でAmendmentが2年間有効である場合、古いコードは削除することができます。Amendmentは自動的にコアプロトコルの一部となり、その後は追跡されず、Amendmentとして扱われず、Amendment前のコードはすべて削除されます。</p>
@@ -1074,6 +1075,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1977,6 +1983,11 @@
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2627,6 +2638,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.md">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       

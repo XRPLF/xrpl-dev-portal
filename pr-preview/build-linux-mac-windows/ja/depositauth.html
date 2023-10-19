@@ -317,7 +317,7 @@
 <p>金融サービスの規制やライセンスによっては、企業や組織に対して、受領するすべてのトランザクションの送信者を把握するよう義務付けています。これは、自由に生成できる偽名で参加者を識別し、デフォルトですべてのアドレスからあらゆる宛先への支払いを可能とするXRP Ledgerのような分散型システムとっては課題となります。</p>
 <p>Deposit Authorizationフラグにより、XRP Ledgerを使用するユーザーが分散型レジャーの基本的な特性を変えずにこのような規制に準拠するためのオプションを採用しました。Deposit Authorizationが有効な場合、アカウントはトランザクションを送信することで明示的に承認した資金のみを受領できます。Deposit Authorizationを使用するアカウントの所有者は、アカウントに資金を入金するトランザクションを送信する <em>前に</em> 、資金の送金元の確認に必要なデューディリジェンス（確認調査）を実施できます。</p>
 <p>Deposit Authorizationを有効にすると、<a href="known-amendments.html#checks">Checks</a>、<a href="escrow.html">Escrow</a>、および<a href="known-amendments.html#paychan">Payment Channel</a>から資金を受領できます。このような「二段階」トランザクションモデルでは、最初に送金元は資金の送金を承認するトランザクションを送信し、次に送金先は資金受領を承認するトランザクションを送信します。</p>
-<p>Deposit Authorizationが有効になっている場合に<a href="payment.html">Paymentトランザクション</a>から資金を受領するには、このような支払の送金元を<a href="#事前承認">事前承認</a>する必要があります。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>が必要です。）</em></p>
+<p>Deposit Authorizationが有効になっている場合に<a href="payment.html">Paymentトランザクション</a>から資金を受領するには、このような支払の送金元を<a href="#事前承認">事前承認</a>する必要があります。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>により追加されました。）</em></p>
 <h2 id="推奨される使い方">推奨される使い方<a aria-hidden="true" class="hover_anchor" href="#推奨される使い方"><i class="fa fa-link"></i></a></h2>
 <p>Deposit Authorizationを最大限に活用するため、以下の実施を推奨します。</p>
 <ul>
@@ -329,21 +329,21 @@
 <p>Deposit Authorizationが有効化されているアカウントの特徴は次のとおりです。</p>
 <ul>
 <li><a href="payment.html">Paymentトランザクション</a>の送信先には<strong>できません</strong>。ただし<strong>以下の例外</strong>は除きます。<ul>
-<li>送金先により、支払の送金元が<a href="#事前承認">事前承認</a>されている場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>が必要です）</em></li>
+<li>送金先により、支払の送金元が<a href="#事前承認">事前承認</a>されている場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>により追加されました。）</em></li>
 <li>アカウントのXRP残高がアカウントの最低<a href="reserves.html">必要準備金</a>以下で、XRP PaymentのAmountがアカウントの最低準備金（現時点では10XRP）以下である場合は、このアカウントを送金先に指定できます。これにより、アカウントがトランザクションを送信することも、XRPを受領することもできずに操作不可能な状態になるのを防ぎます。この場合、アカウントの所有者の準備金は関係ありません。</li>
 </ul>
 </li>
 <li><strong>以下に該当する場合にのみ</strong><a href="paymentchannelclaim.html">PaymentChannelClaimトランザクション</a>からXRPを受領できます。<ul>
 <li>PaymentChannelClaimトランザクションの送金元がPayment Channelの送金先である場合。</li>
-<li>PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を<a href="#事前承認">事前承認している</a>場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>が必要です）</em></li>
+<li>PaymentChannelClaimトランザクションの送金先がPaymentChannelClaimの送金元を<a href="#事前承認">事前承認している</a>場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>により追加されました。）</em></li>
 </ul>
 </li>
 <li><strong>以下に該当する場合にのみ</strong><a href="escrowfinish.html">EscrowFinishトランザクション</a>からXRPを受領できます。<ul>
 <li>EscrowFinishトランザクションの送金元がEscrowの送金先である場合。</li>
-<li>EscrowFinishトランザクションの送金先がEscrowFinishの送金元を<a href="#事前承認">事前承認している</a>場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>が必要です）</em></li>
+<li>EscrowFinishトランザクションの送金先がEscrowFinishの送金元を<a href="#事前承認">事前承認している</a>場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>により追加されました。）</em></li>
 </ul>
 </li>
-<li><a href="checkcash.html">CheckCash</a>トランザクションを送信してXRPまたは発行済み通貨を受領<strong>できます</strong>。 <em>（<a href="known-amendments.html#checks">Checks Amendment</a>が必要です:有効ではありません:）</em></li>
+<li><a href="checkcash.html">CheckCash</a>トランザクションを送信してXRPまたは発行済み通貨を受領<strong>できます</strong>。 <em>（<a href="known-amendments.html#checks">Checks Amendment</a>により追加されました。）</em></li>
 <li><a href="offercreate.html">OfferCreateトランザクション</a>を送信してXRPまたは発行済み通貨を受領<strong>できます</strong>。<ul>
 <li>即時には完全に実行されないOfferCreateトランザクションがアカウントから送信される場合、このアカウントは、後でオファーが他のアカウントの<a href="payment.html">Payment</a>トランザクションと<a href="offercreate.html">OfferCreate</a>トランザクションによって消費される時点で、注文済みXRPと発行済み通貨のリマインダーを受信する<strong>ことがあります</strong>。</li>
 </ul>
@@ -532,7 +532,7 @@
 <p>アカウントのDeposit Authorizationの有効化の状態を確認するには、<a href="account_info.html">account_infoメソッド</a>を使用してアカウントを調べます。<code>Flags</code>フィールド（<code>result.account_data</code>オブジェクト）の値を、<a href="accountroot.html">AccountRootレジャーオブジェクトのビット単位フラグ</a>と比較します。</p>
 <p><code>Flags</code>値と<code>lsfDepositAuth</code>フラグ値（0x01000000）のビット単位のANDの結果がゼロ以外の場合、アカウントではDepositAuthが有効になっています。結果がゼロの場合、アカウントではDepositAuthが無効になっています。</p>
 <h2 id="事前承認">事前承認<a aria-hidden="true" class="hover_anchor" href="#事前承認"><i class="fa fa-link"></i></a></h2>
-<p><em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>が必要です。）</em></p>
+<p><em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>により追加されました。）</em></p>
 <p>DepositAuthが有効なアカウントは、特定の送金元を <em>事前承認</em> することにより、DepositAuthが有効になっていても、これらの送金元からの支払を受領することができます。これにより、特定の送金元からの資金の直接送金が可能となり、受取人はトランザクションごとに個別にアクションを実行する必要がなくなります。事前承認はDepositAuthの使用にあたり必須の要件ではありませんが、事前承認により特定の操作を実行しやすくなります。</p>
 <p>事前承認は通貨に依存しません。特定の通貨のみについてアカウントを事前承認することはできません。</p>
 <p>特定の送金元を事前承認するには、<code>Authorize</code>フィールドに事前承認する別のアカウントのアドレスを指定した<a href="depositpreauth.html">DepositPreauthトランザクション</a>を送信します。事前承認を取り消すには、当該アカウントのアドレスを<code>Unauthorize</code>フィールドに指定します。通常どおり、<code>Account</code>フィールドには自分自身のアドレスを指定します。現在DepositAuthを有効にしていない場合でも、アカウントを事前承認または承認解除できます。他のアカウントに設定した事前認証ステータスは保存されますが、DepositAuthを有効にしない限り、このステータスの影響はありません。アカウントがアカウント自体を事前認証することはできません。事前認証は一方向であり、反対方向の支払には影響しません。</p>
@@ -1271,6 +1271,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2174,6 +2179,11 @@
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2824,6 +2834,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.md">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       

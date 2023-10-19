@@ -306,7 +306,7 @@
     <div class="content">
         <h1 id="paychannel">PayChannel<a aria-hidden="true" class="hover_anchor" href="#paychannel"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>（<a href="known-amendments.html#paychan">PayChan Amendment</a>が必要です。）</em></p>
+<p><em>（<a href="known-amendments.html#paychan">PayChan Amendment</a>により追加されました。）</em></p>
 <p><code>PayChannel</code>オブジェクトタイプは、Payment Channelを表します。Payment Channelにより、レジャー外で少額のXRPを迅速に支払うことができます。このような支払は、コンセンサスレジャーにより後日調整できます。Payment Channelは、このChannelが閉鎖されるまでは、特定の宛先アドレスに対してのみ支払可能なXRPの残高を保有します。Channelの閉鎖時に、未使用のXRPはChannelの所有者（Channelを作成し、資金を供給した支払元アドレス）に返金されます。</p>
 <p><a href="paymentchannelcreate.html">PaymentChannelCreateトランザクション</a>タイプは、<code>PayChannel</code>オブジェクトを作成します。<a href="paymentchannelfund.html">PaymentChannelFundトランザクション</a>タイプと<a href="paymentchannelclaim.html">PaymentChannelClaimトランザクション</a>タイプは、既存の<code>PayChannel</code>オブジェクトを変更します。</p>
 <p>有効期限切れになったPayment Channelは、まずレジャーに残ります。これは、レジャーの内容を変更できるのは新しいトランザクションだけであるためです。有効期限の経過後にトランザクションがPayment Channelにアクセスすると、トランザクション処理によりそのPayment Channelは自動的に閉鎖されます。有効期限切れのChannelを閉鎖して未使用のXRPを所有者に返金するには、一部のアドレスがそのChannelにアクセスする新しいPaymentChannelClaimトランザクションまたはPaymentChannelFundトランザクションを送信する必要があります。</p>
@@ -1178,6 +1178,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2081,6 +2086,11 @@
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2731,6 +2741,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.md">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       

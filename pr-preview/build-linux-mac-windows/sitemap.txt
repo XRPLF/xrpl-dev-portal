@@ -137,6 +137,7 @@ https://xrpl.org/py-mint-and-burn-nfts.html
 https://xrpl.org/py-transfer-nfts.html
 https://xrpl.org/py-broker-sale.html
 https://xrpl.org/py-authorize-minter.html
+https://xrpl.org/py-batch-minting.html
 https://xrpl.org/build-a-desktop-wallet-in-python.html
 https://xrpl.org/javascript.html
 https://xrpl.org/get-started-using-javascript.html
@@ -297,6 +298,7 @@ https://xrpl.org/error-formatting.html
 https://xrpl.org/markers-and-pagination.html
 https://xrpl.org/rate-limiting.html
 https://xrpl.org/rippled-server-states.html
+https://xrpl.org/ctid.html
 https://xrpl.org/public-api-methods.html
 https://xrpl.org/public-rippled-methods.html
 https://xrpl.org/account-methods.html
@@ -405,6 +407,7 @@ https://xrpl.org/update-rippled-automatically-on-centos-rhel.html
 https://xrpl.org/update-rippled-automatically-on-linux.html
 https://xrpl.org/update-rippled-manually-on-centos-rhel.html
 https://xrpl.org/update-rippled-manually-on-ubuntu.html
+https://xrpl.org/build-on-linux-mac-windows.md
 https://xrpl.org/build-run-rippled-ubuntu.html
 https://xrpl.org/build-run-rippled-macos.html
 https://xrpl.org/build-run-rippled-in-reporting-mode.html

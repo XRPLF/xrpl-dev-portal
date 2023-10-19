@@ -306,12 +306,12 @@
     <div class="content">
         <h1 id="tx">tx<a aria-hidden="true" class="hover_anchor" href="#tx"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>tx</code> method retrieves information on a single <a href="transaction-formats.html">transaction</a>, by its <a href="transactions.html#identifying-transactions">identifying hash</a>.</p>
+<p>The <code>tx</code> method retrieves information on a single <a href="transaction-formats.html">transaction</a>, by its <a href="transactions.html#identifying-transactions">identifying hash</a> or its <a href="ctid.html">CTID</a>.</p>
 <h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of the request format:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websockethash" href="#code-0-0">WebSocket (Hash)</a></li><li><a class="websocketctid" href="#code-0-1">WebSocket (CTID)</a></li><li><a class="jsonrpchash" href="#code-0-2">JSON-RPC (Hash)</a></li><li><a class="jsonrpcctid" href="#code-0-3">JSON-RPC (CTID)</a></li><li><a class="commandline" href="#code-0-4">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<div class="code_sample websockethash" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tx"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9"</span><span class="p">,</span>
@@ -319,7 +319,15 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<div class="code_sample websocketctid" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTID example"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tx"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C005523E00000000"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpchash" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tx"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
@@ -330,7 +338,18 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: tx transaction [binary]</span>
+<div class="code_sample jsonrpcctid" id="code-0-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tx"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C005523E00000000"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"binary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-0-4" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">#Syntax: tx transaction [binary]</span>
 rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9<span class="w"> </span><span class="nb">false</span>
 </code></pre></div></div>
 </div>
@@ -339,280 +358,540 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Field</th>
 <th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">Required?</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><code>ctid</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">No</td>
+<td>The <a href="ctid.html">compact transaction identifier</a> of the transaction to look up. Must use uppercase hexadecimal only. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" target="_blank" title="New in: rippled 1.12.0"><img alt="New in: rippled 1.12.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.12.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> <em>(Not supported in Clio v2.0 and earlier)</em></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>transaction</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The 256-bit hash of the transaction, as hex.</td>
+<td style="text-align: left;">No</td>
+<td>The 256-bit hash of the transaction to look up, as hexadecimal.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>binary</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return transaction data and metadata as binary <a href="serialization.html">serialized</a> to hexadecimal strings. If <code>false</code>, return transaction data and metadata as JSON. The default is <code>false</code>.</td>
+<td style="text-align: left;">No</td>
+<td>If <code>true</code>, return transaction data and metadata as binary <a href="serialization.html">serialized</a> to hexadecimal strings. If <code>false</code>, return transaction data and metadata as JSON. The default is <code>false</code>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>min_ledger</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> Use this with <code>max_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, starting with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in this range. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">No</td>
+<td>Use this with <code>max_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, starting with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in this range.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>max_ledger</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(Optional)</em> Use this with <code>min_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, ending with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in the requested range. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">No</td>
+<td>Use this with <code>min_ledger</code> to specify a range of up to 1000 <a href="basic-data-types.html#ledger-index">ledger indexes</a>, ending with this ledger (inclusive). If the server <a href="#not-found-response">cannot find the transaction</a>, it confirms whether it was able to search all the ledgers in the requested range.</td>
 </tr>
 </tbody>
 </table>
+<p>You must provide <em>either</em> <code>ctid</code> or <code>transaction</code>, but not both.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> This command may successfully find the transaction even if it is included in a ledger <em>outside</em> the range of <code>min_ledger</code> to <code>max_ledger</code>.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websockethash" href="#code-1-0">WebSocket (Hash)</a></li><li><a class="websocketctid" href="#code-1-1">WebSocket (CTID)</a></li><li><a class="jsonrpchash" href="#code-1-2">JSON-RPC (Hash)</a></li><li><a class="jsonrpcctid" href="#code-1-3">JSON-RPC (CTID)</a></li><li><a class="commandline" href="#code-1-4">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
-<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865248</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"OfferSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03B51A3EDF70E4098DA7FB053A01C5A6A0A163A30ED1445F14F87C7C3295FCB3BE"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<div class="code_sample websockethash" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865248</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"OfferSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03B51A3EDF70E4098DA7FB053A01C5A6A0A163A30ED1445F14F87C7C3295FCB3BE"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100A5023A0E64923616FCDB6D664F569644C7C9D1895772F986CD6B981B515B02A00220530C973E9A8395BC6FE2484948D2751F6B030FC7FB8575D1BFB406368AD554D9"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C363B1DD00000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">648248020</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"inLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"AffectedNodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"ExchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f04c66806cf7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGetsCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGetsIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPaysCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000000000000000434E590000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPaysIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CED6E99370D5C00EF4EBF72567DA99F5661BFB3A"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404767991"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037711</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1DECD9844E95FFBA273F1B94BA0BF2564DDF69F2804497A6D7837B52050174A2"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404768003"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4DC47B246B5EB9CCE92ABA8C482479E3BF1F946CABBEF74CA4DE36521D5F9008"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"DeletedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8F5FF57B404827F12BDA7561876A13C3E3B3095CBF75334DBFB5F227391A660C"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26AAE6CA8D29E28A47C92ADF22D5D96A0216F0551E16936856DDC8CB1AAEE93B"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"IndexNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"IndexPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"CreatedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8BAEE3C7DE04A568E96007420FA11ABD0BC9AE44D35932BB5640E9C3FB46BC9B"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"NewFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"TransactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100A5023A0E64923616FCDB6D664F569644C7C9D1895772F986CD6B981B515B02A00220530C973E9A8395BC6FE2484948D2751F6B030FC7FB8575D1BFB406368AD554D9"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">648248020</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"inLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample websocketctid" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTID example"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Paths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rD1jovjQeEpvaDwn9wKaYokkXXrqo4D23x"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rD1jovjQeEpvaDwn9wKaYokkXXrqo4D23x"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"SendMax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.01"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02EAE5DAB54DD8E1C49641D848D5B97D1B29149106174322EDF98A1B2CCE5D7F8E"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30440220791B6A3E036ECEFFE99E8D4957564E8C84D1548C8C3E80A87ED1AA646ECCFB16022037C5CAC97E34E3021EBB426479F2ACF3ACA75DB91DCC48D1BCFB4CF547CFEAA0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C005523E00000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">416445410</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"inLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">348734</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">348734</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"AffectedNodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59328999119"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">89</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E0D7BDE68B468FF0B8D948FD865576517DA987569833A05374ADB9A72E870A06"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59328999129"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C26AA6B4F7C3B9F55E17CD0D11F12032A1C7AD2757229FFD277C9447A8815E6E"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">348700</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EA4BF03B4700123CDFFB6EB09DC1D6E28D5CEB7F680FB00FC24BC1C3BB2DB959"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53354D84BAE8FDFC3F4DA879D984D24B929E7FEB9100D2AD9EFCD2E126BCCDC8"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">343570</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"TransactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"delivered_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unavailable"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
+<span class="w">  </span><span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpchash" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865248</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"OfferSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03B51A3EDF70E4098DA7FB053A01C5A6A0A163A30ED1445F14F87C7C3295FCB3BE"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100A5023A0E64923616FCDB6D664F569644C7C9D1895772F986CD6B981B515B02A00220530C973E9A8395BC6FE2484948D2751F6B030FC7FB8575D1BFB406368AD554D9"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C363B1DD00000000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">648248020</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"inLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"AffectedNodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"ExchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4f04c66806cf7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGetsCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGetsIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPaysCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000000000000000434E590000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPaysIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CED6E99370D5C00EF4EBF72567DA99F5661BFB3A"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404767991"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037711</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1DECD9844E95FFBA273F1B94BA0BF2564DDF69F2804497A6D7837B52050174A2"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404768003"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4DC47B246B5EB9CCE92ABA8C482479E3BF1F946CABBEF74CA4DE36521D5F9008"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"DeletedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8F5FF57B404827F12BDA7561876A13C3E3B3095CBF75334DBFB5F227391A660C"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26AAE6CA8D29E28A47C92ADF22D5D96A0216F0551E16936856DDC8CB1AAEE93B"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"IndexNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"IndexPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"CreatedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8BAEE3C7DE04A568E96007420FA11ABD0BC9AE44D35932BB5640E9C3FB46BC9B"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"NewFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                  </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
+<span class="w">                  </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"TransactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample jsonrpcctid" id="code-1-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"Destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Paths"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rD1jovjQeEpvaDwn9wKaYokkXXrqo4D23x"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rD1jovjQeEpvaDwn9wKaYokkXXrqo4D23x"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rB5TihdPbKgMrkFqrqUC3yLdE8hhv4BdeY"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"SendMax"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.01"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02EAE5DAB54DD8E1C49641D848D5B97D1B29149106174322EDF98A1B2CCE5D7F8E"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30440220791B6A3E036ECEFFE99E8D4957564E8C84D1548C8C3E80A87ED1AA646ECCFB16022037C5CAC97E34E3021EBB426479F2ACF3ACA75DB91DCC48D1BCFB4CF547CFEAA0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C005523E00000000"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">416445410</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"inLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">348734</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">348734</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"AffectedNodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"ExchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4F04C66806CF7400"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59328999119"</span><span class="p">,</span>
 <span class="w">              </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerGetsCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerGetsIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerPaysCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000000000000000434E590000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerPaysIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CED6E99370D5C00EF4EBF72567DA99F5661BFB3A"</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404767991"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037711</span>
+<span class="w">              </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">89</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1DECD9844E95FFBA273F1B94BA0BF2564DDF69F2804497A6D7837B52050174A2"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E0D7BDE68B468FF0B8D948FD865576517DA987569833A05374ADB9A72E870A06"</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404768003"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span>
+<span class="w">              </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59328999129"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4DC47B246B5EB9CCE92ABA8C482479E3BF1F946CABBEF74CA4DE36521D5F9008"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"DeletedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8F5FF57B404827F12BDA7561876A13C3E3B3095CBF75334DBFB5F227391A660C"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
-<span class="w">              </span><span class="p">}</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26AAE6CA8D29E28A47C92ADF22D5D96A0216F0551E16936856DDC8CB1AAEE93B"</span>
+<span class="w">            </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C26AA6B4F7C3B9F55E17CD0D11F12032A1C7AD2757229FFD277C9447A8815E6E"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">348700</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"IndexNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"IndexPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
+<span class="w">              </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-1"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3PDtZSa5LiYp1Ysn1vMuMzB59RzV3W9QH"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
 <span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
-<span class="w">          </span><span class="p">}</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"CreatedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8BAEE3C7DE04A568E96007420FA11ABD0BC9AE44D35932BB5640E9C3FB46BC9B"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"NewFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">              </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
-<span class="w">              </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
+<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EA4BF03B4700123CDFFB6EB09DC1D6E28D5CEB7F680FB00FC24BC1C3BB2DB959"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
 <span class="w">              </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53354D84BAE8FDFC3F4DA879D984D24B929E7FEB9100D2AD9EFCD2E126BCCDC8"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">343570</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">      </span><span class="p">],</span>
 <span class="w">      </span><span class="nt">"TransactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span>
+<span class="w">      </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"delivered_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unavailable"</span>
 <span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
-<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865248</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"OfferSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03B51A3EDF70E4098DA7FB053A01C5A6A0A163A30ED1445F14F87C7C3295FCB3BE"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OfferCreate"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100A5023A0E64923616FCDB6D664F569644C7C9D1895772F986CD6B981B515B02A00220530C973E9A8395BC6FE2484948D2751F6B030FC7FB8575D1BFB406368AD554D9"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">648248020</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"inLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865245</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"AffectedNodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">"ExchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerGetsCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerGetsIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000000000000000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerPaysCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000000000000000434E590000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerPaysIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CED6E99370D5C00EF4EBF72567DA99F5661BFB3A"</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404767991"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037711</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1DECD9844E95FFBA273F1B94BA0BF2564DDF69F2804497A6D7837B52050174A2"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10404768003"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4DC47B246B5EB9CCE92ABA8C482479E3BF1F946CABBEF74CA4DE36521D5F9008"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"DeletedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8F5FF57B404827F12BDA7561876A13C3E3B3095CBF75334DBFB5F227391A660C"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">56865244</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037708</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26AAE6CA8D29E28A47C92ADF22D5D96A0216F0551E16936856DDC8CB1AAEE93B"</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"IndexNext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"IndexPrevious"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47FAF5D102D8CE655574F440CDB97AC67C5A11068BB3759E87C2B9745EE94548"</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"CreatedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8BAEE3C7DE04A568E96007420FA11ABD0BC9AE44D35932BB5640E9C3FB46BC9B"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"NewFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F04C66806CF7400"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">5037710</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000000000"</span><span class="p">,</span>
-<span class="w">                            </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y"</span><span class="p">,</span>
-<span class="w">                                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160.75"</span>
-<span class="w">                            </span><span class="p">}</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">"TransactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
+<div class="code_sample commandline" id="code-1-4" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="p">{</span>
 <span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">      </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rhhh49pFH96roGyuC4E5P4CHaNjS1k8gzM"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Fee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span>
@@ -742,14 +1021,19 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 </thead>
 <tbody>
 <tr>
+<td style="text-align: left;"><code>ctid</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">The transaction's <a href="ctid.html">compact transaction identifier</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" target="_blank" title="New in: rippled 1.12.0"><img alt="New in: rippled 1.12.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.12.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a> <em>(Not supported in Clio v2.0 and earlier.)</em></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>date</code></td>
 <td style="text-align: left;">Number</td>
-<td style="text-align: left;">A <a href="basic-data-types.html#specifying-time">number of seconds</a> since January 1, 2000 (00:00 UTC) indicating the <a href="ledger-close-times.html">close time</a> of the ledger in which the transaction was applied. This value does not have a precise relationship with physical time, and is dependent on the close time resolution.</td>
+<td style="text-align: left;">The <a href="ledger-close-times.html">close time</a> of the ledger in which the transaction was applied, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The SHA-512 hash of the transaction</td>
+<td style="text-align: left;">The unique <a href="transactions.html#identifying-transactions">identifying hash</a> of the transaction</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>inLedger</code></td>
@@ -778,7 +1062,6 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> <code>rippled</code> 1.7.0 has a known issue where the <code>meta</code> field contains JSON even if the request asked for binary. (<a class="external-link" href="https://github.com/XRPLF/rippled/pull/3791" target="_blank">#3791 <i aria-hidden="true" class="fa fa-external-link"></i></a>)</p>
 <h3 id="not-found-response">Not Found Response<a aria-hidden="true" class="hover_anchor" href="#not-found-response"><i class="fa fa-link"></i></a></h3>
 <p>If the server does not find the transaction, it returns a <code>txnNotFound</code> error, which could mean two things:</p>
 <ul>
@@ -790,7 +1073,7 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">Field</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
@@ -799,14 +1082,14 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 <tr>
 <td style="text-align: left;"><code>searched_all</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Omitted unless the request provided <code>min_ledger</code> and <code>max_ledger</code>)</em> If <code>true</code>, the server was able to search all of the specified ledger versions, and the transaction was in none of them. If <code>false</code>, the server did not have all of the specified ledger versions available, so it is not sure if one of them might contain the transaction. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted unless the request provided <code>min_ledger</code> and <code>max_ledger</code>)</em> If <code>true</code>, the server was able to search all of the specified ledger versions, and the transaction was in none of them. If <code>false</code>, the server did not have all of the specified ledger versions available, so it is not sure if one of them might contain the transaction.</td>
 </tr>
 </tbody>
 </table>
 <p>An example of a <code>txnNotFound</code> response that fully searched a requested range of ledgers:</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="websocket" href="#code-2-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-2-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<div class="code_sample websocket" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"txnNotFound"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"error_code"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"error_message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction not found."</span><span class="p">,</span>
@@ -825,7 +1108,7 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
+<div class="code_sample jsonrpc" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
 
 <span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1567,6 +1850,11 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2470,6 +2758,11 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
     <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ctid.html">Compact Transaction Identifier</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3120,6 +3413,11 @@ rippled<span class="w"> </span>tx<span class="w"> </span>C53ECF838647FA5A4C78037
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-on-linux-mac-windows.md">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       
