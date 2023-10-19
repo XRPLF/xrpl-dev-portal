@@ -9,7 +9,7 @@ top_nav_grouping: Popular Pages
 ---
 # Build `rippled` on Linux, Mac, or Windows
 
-Building `rippled` across various platforms requires a C++ development environment. You will need tools like Git, Python, Conan, CMake, and a suitable C++ compiler. Familiarity with Conan and CMake will be helpful.
+Building `rippled` across various platforms requires a C++ development environment. You will need tools like Git, Python, Conan, CMake, and a suitable C++ compiler.
 
 To continue, proceed to [the latest `rippled` build instructions on GitHub](https://github.com/XRPLF/rippled/blob/develop/BUILD.md).
 
