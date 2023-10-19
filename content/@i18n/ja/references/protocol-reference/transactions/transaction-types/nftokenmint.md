@@ -106,7 +106,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 
 | エラーコード                    | 説明                                          |
 |:------------------------------|:---------------------------------------------|
-| `temDISABLED`                 | [NonFungibleTokensV1の修正][]は有効ではありません。 |
+| `temDISABLED`                 | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temBAD_NFTOKEN_TRANSFER_FEE` | `TransferFee`が許容範囲外です。 |
 | `temINVALID_FLAG`             | `Flags`値には、許可されていない、または有効なフラグでないビットが有効になっています。[fixRemoveNFTokenAutoTrustLine amendment][]が有効になっている場合、`tfTrustLine`フラグはこのエラーを発生させます。|
 | `temMALFORMED`                | トランザクションが正しく指定されていません。例えば、`URI`フィールドが256バイトより長い場合です。 |
