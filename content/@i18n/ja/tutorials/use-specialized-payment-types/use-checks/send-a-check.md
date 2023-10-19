@@ -7,7 +7,7 @@ labels:
 ---
 # Checkの送信
 
-_[Checks Amendment][]が必要です。_
+_[Checks Amendment][]により追加されました。_
 
 Checkの送信は、指定受取人にあなたからの支払いを引き出す許可を与えることに似ています。このプロセスの結果、受取人が後で現金化できる[レジャーのCheckオブジェクト](check.html)が作成されます。
 
