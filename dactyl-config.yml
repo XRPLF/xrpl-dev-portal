@@ -773,7 +773,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/networks-and-servers/amendments.md"
-        outdated_translation: true
         targets:
             - ja
 
