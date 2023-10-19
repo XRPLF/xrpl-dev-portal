@@ -297,7 +297,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="build-rippled-on-linux-mac-or-windows">Build <code>rippled</code> on Linux, Mac, or Windows<a aria-hidden="true" class="hover_anchor" href="#build-rippled-on-linux-mac-or-windows"><i class="fa fa-link"></i></a></h1>
-<p>Building <code>rippled</code> across various platforms requires a C++ development environment. You will need tools like Git, Python, Conan, CMake, and a suitable C++ compiler.</p>
+<p>Building <code>rippled</code> across various platforms such as Windows, Linux, or macOS requires a C++ development environment. You will need tools like Git, Python, Conan, CMake, and a suitable C++ compiler.</p>
 <p>To continue, proceed to <a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/BUILD.md" target="_blank">the latest <code>rippled</code> build instructions on GitHub <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <!-- -->
 <!-- -->
