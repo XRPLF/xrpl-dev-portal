@@ -85,7 +85,7 @@ The request includes the following parameters:
 
 | Field         | Type    | Required? | Description                            |
 |:--------------|:--------|:----------|----------------------------------------|
-| `ctid`        | String  | No        | The [compact transaction identifier](ctid.html) of the transaction to look up. Must use uppercase hexadecimal only. |
+| `ctid`        | String  | No        | The [compact transaction identifier](ctid.html) of the transaction to look up. Must use uppercase hexadecimal only. [New in: rippled 1.12.0][] _(Not supported in Clio v2.0 and earlier)_ |
 | `transaction` | String  | No        | The 256-bit hash of the transaction to look up, as hexadecimal. |
 | `binary`      | Boolean | No        | If `true`, return transaction data and metadata as binary [serialized](serialization.html) to hexadecimal strings. If `false`, return transaction data and metadata as JSON. The default is `false`. |
 | `min_ledger`  | Number  | No        | Use this with `max_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], starting with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in this range. |
@@ -253,7 +253,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
-| `ctid`         | String                           | The transaction's [compact transaction identifier](ctid.html). |
+| `ctid`         | String                           | The transaction's [compact transaction identifier](ctid.html). [New in: rippled 1.12.0][] _(Not supported in Clio v2.0 and earlier.)_ |
 | `date`         | Number                           | The [close time](ledger-close-times.html) of the ledger in which the transaction was applied, in [seconds since the Ripple Epoch][]. |
 | `hash`         | String                           | The unique [identifying hash][] of the transaction |
 | `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
