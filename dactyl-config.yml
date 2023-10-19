@@ -181,6 +181,7 @@ targets:
             "peer-protocol.html#node-key-pair": "peer-protocol.html#ノードキーペア"
             "transaction-cost.html#local-load-cost": "transaction-cost.html#ローカル負荷コスト"
             "transaction-cost.html#open-ledger-cost": "transaction-cost.html#オープンレジャーコスト"
+            "amendments.html#amendment-blocked-clio-servers": "amendments.html#amendmentブロックされたclioサーバ"
             # Fix links from untranslated ledger-clio.html
             "basic-data-types.html#hashes": "basic-data-types.html#ハッシュ"
             "transaction-cost.html#fee-levels": "transaction-cost.html#手数料レベル"
