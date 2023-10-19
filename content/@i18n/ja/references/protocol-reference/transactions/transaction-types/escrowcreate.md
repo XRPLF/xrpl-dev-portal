@@ -9,7 +9,7 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Escrow.cpp "Source")
 
-_[Escrow Amendment][]が必要です。_
+_[Escrow Amendment][]により追加されました。_
 
 Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 

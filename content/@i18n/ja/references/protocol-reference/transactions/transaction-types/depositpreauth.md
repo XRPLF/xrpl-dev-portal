@@ -8,7 +8,7 @@ labels:
 # DepositPreauth
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DepositPreauth.cpp "Source")
 
-_[DepositPreauth Amendment][]が必要です。_
+_[DepositPreauth Amendment][]により追加されました。_
 
 DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。これは、このトランザクションの送信者が[Deposit Authorization](depositauth.html)を使用している（または使用する予定がある）場合にのみ有用です。
 

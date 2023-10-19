@@ -8,7 +8,7 @@ labels:
 # PaymentChannelClaim
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_[PayChan Amendment][]が必要です。_
+_[PayChan Amendment][]により追加されました。_
 
 Payment Channelに対しXRPを請求するか、Payment Channelの有効期限を調整するか、またはこの両方の操作を行います。このトランザクションは、指定されたChannelでのトランザクション送信者の役割に応じてさまざまに利用できます。
 
