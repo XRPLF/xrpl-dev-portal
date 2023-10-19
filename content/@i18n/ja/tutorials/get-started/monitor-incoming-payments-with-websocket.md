@@ -19,7 +19,7 @@ WebSocketは、クライアントとサーバーが1つの接続を確立し、�
 
 - このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。
 - 安定したインターネット接続と`rippled`サーバーへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバーのプールに接続します。[独自の`rippled`サーバーを運用](install-rippled.html)する場合は、ローカルでそのサーバーに接続することもできます。
-- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[発行済み通貨](issued-currencies.html)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](currency-formats.html#xrpの精度)を参照してください。
+- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](tokens.html)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](currency-formats.html#xrpの精度)を参照してください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/vendor/big.min.js"></script>
@@ -334,7 +334,7 @@ WS_HANDLERS["transaction"] = log_tx
 
 ## {{n.next()}}. 着信ペイメントの読み取り
 
-アカウントをサブスクライブすると、 _アカウントへのすべてのトランザクションとアカウントからのすべてのトランザクション_ 、および _アカウントに間接的に影響を及ぼすトランザクション_ に関するメッセージが表示されます。この例として、[発行済み通貨](issued-currencies.html)の取引があります。アカウントが着信ペイメントを受け取った日時を認識することを目的とする場合、トランザクションストリームを絞り込んで、実際に支払われた額に基づいて支払いを処理する必要があります。以下の情報を探します。
+アカウントをサブスクライブすると、 _アカウントへのすべてのトランザクションとアカウントからのすべてのトランザクション_ 、および _アカウントに間接的に影響を及ぼすトランザクション_ に関するメッセージが表示されます。この例として、[トークン](tokens.html)の取引があります。アカウントが着信ペイメントを受け取った日時を認識することを目的とする場合、トランザクションストリームを絞り込んで、実際に支払われた額に基づいて支払いを処理する必要があります。以下の情報を探します。
 
 - **`validated`フィールド**は、トランザクションの結果が[最終的である](finality-of-results.html)ことを示します。これは、`accounts`をサブスクライブする場合に常に当てはまりますが、`accounts_proposed`または`transactions_proposed`ストリーム _も_ サブスクライブしている場合は、サーバーは未確認のトランザクションに関して同様のメッセージを同じ接続で送信します。予防策として、`validated`フィールドを常に確認することをお勧めします。
 
@@ -344,7 +344,7 @@ WS_HANDLERS["transaction"] = log_tx
 
 - **`transaction.TransactionType`フィールド**はトランザクションのタイプです。アカウントに通貨を送金できる可能性があるトランザクションのタイプは以下のとおりです。
 
-  - **[Paymentトランザクション][]** はXRPまたは[発行済み通貨](issued-currencies.html)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](basic-data-types.html#通貨額の指定)。
+  - **[Paymentトランザクション][]** はXRPまたは[トークン](tokens.html)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](basic-data-types.html#通貨額の指定)。
 
     **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](partial-payments.html#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
 
@@ -352,7 +352,7 @@ WS_HANDLERS["transaction"] = log_tx
 
   - **[EscrowFinishトランザクション][]** は、以前の[EscrowCreateトランザクション][]によって作成された[Escrow](escrow.html)を終了することでXRPを送金できます。**EscrowFinishトランザクション**のメタデータを確認すると、escrowからXRPを受け取ったアカウントと、その額を確認できます。
 
-  - **[OfferCreateトランザクション][]** はアカウントがXRP Ledgerの[分散型取引所](decentralized-exchange.html)で以前発行したオファーを消費することで、XRPまたは発行済み通貨を送金できます。オファーを発行しないと、この方法で金額を受け取ることはできません。メタデータを確認して、アカウントが受け取った通貨（この情報がある場合）と、金額を確認します。
+  - **[OfferCreateトランザクション][]** はアカウントがXRP Ledgerの[分散型取引所](decentralized-exchange.html)で以前発行したオファーを消費することで、XRPまたはトークンを送金できます。オファーを発行しないと、この方法で金額を受け取ることはできません。メタデータを確認して、アカウントが受け取った通貨（この情報がある場合）と、金額を確認します。
 
   - **[PaymentChannelClaimトランザクション][]** では、[Payment Channel](payment-channels.html)からXRPを送金できます。メタデータを確認して、トランザクションからXRPを受け取ったアカウント（この情報がある場合）を確認します。
 

@@ -1175,6 +1175,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/freezes.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -1200,6 +1201,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/transfer-fees.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -2214,6 +2216,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol-reference/data-types/basic-data-types.md"
+        outdated_translation: true
         targets:
             - ja
 

@@ -1,14 +1,14 @@
 ---
 html: rippling.html
 parent: tokens.html
-blurb: Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。
+blurb: Ripplingは、複数当事者間でのトークン残高の自動ネット決済です。
 labels:
   - トークン
   - 複数通貨間
 ---
 # Rippling
 
-XRP Ledgerでは、「Rippling」とは同一通貨の[トラストライン](trust-lines-and-issuing.html)を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingは発行済み通貨の基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザーは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の[通貨取引オーダー](offers.html)のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。
+XRP Ledgerでは、「Rippling」とは同一通貨の[トラストライン](trust-lines-and-issuing.html)を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingはトークンの基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザーは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の[通貨取引オーダー](offers.html)のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。
 
 Ripplingは、支払[パス](paths.html)でのみ発生します。[XRP間の直接決済](direct-xrp-payments.html)にはRipplingは使用されません。
 

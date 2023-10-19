@@ -17,7 +17,7 @@ XRP Ledger Checksには有効期限があり、この期限を過ぎると換金
 
 Checksは[Escrow](escrow.html)と[Payment Channel](use-payment-channels.html)に似ていますが、Checksとこれらの機能の間には重要な相違がいくつかあります。
 
-* Checksでは発行済み通貨を送金できます。Payment ChannelとEscrowで送金できるのはXRPのみです。
+* Checksではトークンを送金できます。Payment ChannelとEscrowで送金できるのはXRPのみです。
 
 * Checksは資金を凍結しません。Payment ChannelとEscrowでは、送金元が発行したクレームでXRPが清算されるか（Payment Channel）、または有効期限切れまたはCrypto-conditionsによってXRPがリリースされる（Escrow）までは、そのXRPを使用できません。
 
@@ -36,7 +36,7 @@ XRP Ledger Checksは、XRP Ledgerに固有の問題も解決できます。た�
 
 ### ユースケース: 支払いの承認
 
-**課題:** [BSA、KYC、AML、CFT](stablecoin-issuer.html#コンプライアンス指針)などの規制に準拠するにあたり、金融機関は受領する資金の送金元に関する文書を提出する必要があります。違法な資金移動を防止するため、これらの規制は金融機関に対して、処理済のすべての支払いについて、その送金元と送金先を開示するよう義務付けています。XRP Ledgerの性質上、誰でもXRPを（および該当する場合には発行済み通貨を）XRP Ledger上の金融機関のアカウントに送金することができます。金融機関のコンプライアンス部門では、このような不審な支払いへの対応にかかるコスト（罰金の可能性を含む）の増大と処理の遅れが生じます。
+**課題:** [BSA、KYC、AML、CFT](stablecoin-issuer.html#コンプライアンス指針)などの規制に準拠するにあたり、金融機関は受領する資金の送金元に関する文書を提出する必要があります。違法な資金移動を防止するため、これらの規制は金融機関に対して、処理済のすべての支払いについて、その送金元と送金先を開示するよう義務付けています。XRP Ledgerの性質上、誰でもXRPを（および該当する場合にはトークンを）XRP Ledger上の金融機関のアカウントに送金することができます。金融機関のコンプライアンス部門では、このような不審な支払いへの対応にかかるコスト（罰金の可能性を含む）の増大と処理の遅れが生じます。
 
 **解決策:** 金融機関は各自のXRP Ledgerのアカウントで、[`AccountSet`トランザクションの`asfDepositAuth`フラグを設定](accountset.html)することにより、[Deposit Authorization](depositauth.html)を有効にできます。これにより、アカウントはPaymentトランザクションを受領できなくなります。Deposit Authorizationが有効なアカウントは、Escrow、Payment Channel、またはChecksでのみ資金を受領できます。Deposit Authorizationが有効な場合、Checksが最もシンプルで使いやすく、柔軟な資金移動手段となります。
 
