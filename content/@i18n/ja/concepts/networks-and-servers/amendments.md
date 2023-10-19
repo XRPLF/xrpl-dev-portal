@@ -66,9 +66,7 @@ AmendmentブロックはXRP Ledgerデータの正確性を守るためのセキ�
 ### AmendmentブロックされたClioサーバ
 <a id="amendment-blocked-clio-servers"></a>
 
-<!-- TODO: translate section -->
-
-The Clio server can become amendment blocked if it encounters an unknown field type while loading ledger data. This occurs if the field is newer than the `libxrpl` dependency that was used when building Clio. To unblock your Clio server, upgrade to a newer Clio release that was built with a compatible `libxrpl`.
+Clioサーバが台帳データのロード中に未知のフィールドに遭遇した場合、Amendmentブロックが発生することがあります。これは、Clioのビルド時に使用された`libxrpl`の依存ファイルにそれらのフィールドが存在しない場合に発生します。Amendmentブロックを解除するには、互換性のある`libxrpl`でビルドされた新しいClioリリースにアップグレードしてください。
 
 ## Amendmentの削除
 
