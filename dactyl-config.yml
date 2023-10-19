@@ -1591,6 +1591,12 @@ pages:
             - en
             - ja
 
+        # TODO: translate
+    -   md: tutorials/quickstart/py-batch-minting.md
+        targets:
+            - en
+            - ja
+
     -   md: tutorials/build-apps/build-a-desktop-wallet-in-python.md
         targets:
           - en
