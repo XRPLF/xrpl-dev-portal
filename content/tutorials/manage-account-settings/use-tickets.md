@@ -40,7 +40,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to Network

@@ -1,22 +1,19 @@
 import xrpl
-import json
-import xrpl.clients
-import xrpl.wallet
+
+testnet_url = "https://s.altnet.rippletest.net:51234/"
 
 def get_account(seed):
     """get_account"""
-    JSON_RPC_URL = "https://s.altnet.rippletest.net:51234/"
-    client = xrpl.clients.JsonRpcClient(JSON_RPC_URL)
+    client = xrpl.clients.JsonRpcClient(testnet_url)
     if (seed == ''):
         new_wallet = xrpl.wallet.generate_faucet_wallet(client)
     else:
-        new_wallet = xrpl.wallet.Wallet(seed, sequence = 79396029)
-    return(new_wallet)
+        new_wallet = xrpl.wallet.Wallet.from_seed(seed)
+    return new_wallet
 
 def get_account_info(accountId):
     """get_account_info"""
-    JSON_RPC_URL = 'wss://s.altnet.rippletest.net:51234'
-    client = xrpl.clients.JsonRpcClient(JSON_RPC_URL)
+    client = xrpl.clients.JsonRpcClient(testnet_url)
     acct_info = xrpl.models.requests.account_info.AccountInfo(
         account=accountId,
         ledger_index="validated"
@@ -25,20 +22,15 @@ def get_account_info(accountId):
     return response.result['account_data']
 
 def send_xrp(seed, amount, destination):
-    sending_wallet = xrpl.wallet.Wallet(seed, sequence = 16237283)
-    testnet_url = "https://s.altnet.rippletest.net:51234"
+    sending_wallet = xrpl.wallet.Wallet.from_seed(seed)
     client = xrpl.clients.JsonRpcClient(testnet_url)
     payment = xrpl.models.transactions.Payment(
-        account=sending_wallet.classic_address,
+        account=sending_wallet.address,
         amount=xrpl.utils.xrp_to_drops(int(amount)),
         destination=destination,
     )
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        payment, sending_wallet, client)
-    try:
-        tx_response = xrpl.transaction.send_reliable_submission(signed_tx,client)
-        response = tx_response
-    except xrpl.transaction.XRPLReliableSubmissionException as e:
+    try:	
+        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
+    except xrpl.transaction.XRPLReliableSubmissionException as e:	
         response = f"Submit failed: {e}"
     return response
-

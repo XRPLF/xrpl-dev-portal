@@ -26,7 +26,7 @@ If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the mon
 
 {{ include_svg("img/noripple-02.svg", "Charlie --($13)-- Alice --($17)-- Bob") }}
 
-We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same [currency code][]. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
+We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same currency code. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
 
 ## The No Ripple Flag
 
@@ -65,8 +65,6 @@ The **Default Ripple** flag is an account setting that enables rippling on all _
 
 The Default Ripple setting of your account does not affect trust lines that you create; only trust lines that others open to you. If you change the Default Ripple setting of your account, trust lines that were created before the change keep their existing No Ripple settings. You can use a [TrustSet transaction][] to change the No Ripple setting of a trust line to match your address's new default.
 
-For more information, see [Default Ripple in 'Becoming an XRP Ledger Gateway'](become-an-xrp-ledger-gateway.html#default-ripple).
-
 
 ## Using No Ripple
 <!--{# TODO: move these things into their own tutorials #}-->
@@ -89,7 +87,7 @@ Using the [HTTP / WebSocket APIs](http-websocket-apis.html) or your preferred [c
 - **Concepts:**
     - [Paths](paths.html)
 - **Tutorials:**
-    - [Become an XRP Ledger Gateway](become-an-xrp-ledger-gateway.html)
+    - [Stablecoin Issuer](stablecoin-issuer.html)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

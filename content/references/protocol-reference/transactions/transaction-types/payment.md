@@ -9,7 +9,7 @@ labels:
   - Tokens
 ---
 # Payment
-[[Source]](https://github.com/ripple/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/5425a90f160711e46b2c1f1c93d68e5941e4bfb6/src/ripple/app/transactors/Payment.cpp "Source")
 
 A Payment transaction represents a transfer of value from one account to another. (Depending on the path taken, this can involve additional exchanges of value, which occur atomically.) This transaction type can be used for several [types of payments](#types-of-payments).
 
@@ -51,17 +51,17 @@ Payments are also the only way to [create accounts](#creating-accounts).
 
 ## Types of Payments
 
-The Payment transaction type is a general-purpose tool that can represent several different types of abstract actions. You can identify the transaction type based on the transaction's fields, as described in the table below:
+The `Payment` transaction type functions differently depending on how you fill in the `Payment` fields:
 
-| Payment type | `Amount`  | `SendMax`  | `Paths`   | `Address` = `Destination`? | Description |
+| Payment type | `Amount`  | `SendMax`  | `Paths`   | `Account` = `Destination`? | Description |
 |:-------------|:----------|:-----------|:----------|:---------------------------|:--|
-| [Direct XRP-to-XRP Payment][] | String (XRP) | Omitted | Omitted | No          | Transfers XRP directly from one account to another. Always delivers the exact amount. No fee applies other than the basic [transaction cost](transaction-cost.html). |
+| [Direct XRP Payment][] | String (XRP) | Omitted | Omitted | No          | Transfers XRP directly from one account to another, using one transaction. Always delivers the exact amount. No fee applies other than the basic [transaction cost](transaction-cost.html). |
 | [Creating or redeeming tokens][] | Object | Object (optional) | Optional | No | Increases or decreases the amount of a non-XRP currency or asset tracked in the XRP Ledger. [Transfer fees](transfer-fees.html) and [freezes](freezes.html) do not apply when sending and redeeming directly. |
-| [Cross-currency Payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send tokens from one holder to another. The `Amount` or `SendMax` can be XRP or tokens, but they cannot both be XRP. These payments [ripple through](rippling.html) the issuer and can take longer [paths](paths.html) through several intermediaries if the transaction specifies a path set. [Transfer fees](transfer-fees.html) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](decentralized-exchange.html) to connect between different currencies, or possibly even between currencies with the same currency code and different issuers. |
+| [Cross-currency Payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Send tokens from one holder to another. The `Amount` or `SendMax` can be XRP or tokens, but can't both be XRP. These payments [ripple through](rippling.html) the issuer and can take longer [paths](paths.html) through several intermediaries if the transaction specifies a path set. [Transfer fees](transfer-fees.html) set by the issuer(s) apply to this type of transaction. These transactions consume offers in the [decentralized exchange](decentralized-exchange.html) to connect different currencies, or currencies with the same currency code and different issuers. |
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [`tfPartialPayment` flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
-| Currency conversion | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](decentralized-exchange.html) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. The [Data API](data-api.html) tracks this type of transaction as an "exchange" and not a "payment". |
+| Currency conversion | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](decentralized-exchange.html) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. This type of transaction may be classified as an "exchange" and not a "payment". |
 
-[Direct XRP-to-XRP Payment]: direct-xrp-payments.html
+[Direct XRP Payment]: direct-xrp-payments.html
 [Creating or redeeming tokens]: tokens.html
 [Cross-currency Payment]: cross-currency-payments.html
 [Partial payment]: partial-payments.html
@@ -110,7 +110,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 ## Partial Payments
 
-A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
+A partial payment allows a payment to succeed by reducing the amount received. Partial payments are useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional costs to oneself. However, partial payments can also be used to exploit integrations that naively assume the `Amount` field of a successful transaction always describes the exact amount delivered.
 
 A partial payment is any [Payment transaction][] with the `tfPartialPayment` flag enabled. A partial payment can be successful if it delivers any positive amount greater than or equal to its `DeliverMin` field (or any positive amount at all if `DeliverMin` is not specified) without sending more than the `SendMax` value.
 

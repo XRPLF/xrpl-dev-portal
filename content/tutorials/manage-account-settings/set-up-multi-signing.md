@@ -7,7 +7,7 @@ labels:
 ---
 # Set Up Multi-Signing
 
-[Multi-signing](multi-signing.html) is one of three ways to authorize [transactions](transaction-basics.html) for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your [address](accounts.html) to allow any combination of the three methods to authorize transactions.
+[Multi-signing](multi-signing.html) is one of three ways to authorize [transactions](transactions.html) for the XRP Ledger, alongside signing with [regular keys and master keys](cryptographic-keys.html). You can configure your [address](accounts.html) to allow any combination of the three methods to authorize transactions.
 
 This tutorial demonstrates how to enable multi-signing for an address.
 
@@ -58,7 +58,7 @@ Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key
 
 ## 3. Send SignerListSet transaction
 
-[Sign and submit](transaction-basics.html#signing-and-submitting-transactions) a [SignerListSet transaction][] in the normal (single-signature) way. This associates a signer list with your XRP Ledger address, so that a combination of signatures from the members of that signer list can multi-sign later transactions on your behalf.
+[Sign and submit](transactions.html#signing-and-submitting-transactions) a [SignerListSet transaction][] in the normal (single-signature) way. This associates a signer list with your XRP Ledger address, so that a combination of signatures from the members of that signer list can multi-sign later transactions on your behalf.
 
 In this example, the signer list has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW` plus at least one signature from the other two members of the list.
 

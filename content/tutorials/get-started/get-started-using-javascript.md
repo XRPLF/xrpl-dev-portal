@@ -1,6 +1,6 @@
 ---
 html: get-started-using-javascript.html
-parent: get-started.html
+parent: javascript.html
 blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
 top_nav_name: JavaScript
 top_nav_grouping: Get Started
@@ -95,13 +95,13 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 
 The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](parallel-networks.html). When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
 
-* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](xrpl-servers.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+* By [installing the core server](install-rippled.html) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](connect-your-rippled-to-the-xrp-test-net.html). [There are good reasons to run your own core server](networks-and-servers.html#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
         const MY_SERVER = "ws://localhost:6006/"
         const client = new xrpl.Client(MY_SERVER)
         await client.connect()
 
-    See the example [core server config file](https://github.com/ripple/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
+    See the example [core server config file](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562) for more information about default values.
 
 * By using one of the available [public servers][]:
 
@@ -130,14 +130,14 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Tes
 
 ### 4. Query the XRP Ledger
 
-Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](https://xrpl.org/request-formatting.html). For example:
+Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](request-formatting.html). For example:
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Get info", end_before="// Listen to ledger close events", language="js") }}
 
 
 ### 5. Listen for Events
 
-You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](intro-to-consensus.html) produces a new [ledger version](ledgers.html). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
+You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](consensus.html) produces a new [ledger version](ledgers.html). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
 
 {{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Listen to ledger close events", end_before="// Disconnect when done", language="js") }}
 
@@ -148,7 +148,7 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
 
 * [Send XRP](send-xrp.html).
 * [Issue a Fungible Token](issue-a-fungible-token.html)
-* [Set up secure signing](set-up-secure-signing.html) for your account.
+* [Set up secure signing](secure-signing.html) for your account.
 
 
 ## See Also

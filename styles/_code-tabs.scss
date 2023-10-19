@@ -55,6 +55,7 @@ pre {
       margin-right: 0px;
       margin-left: 0px;
       border: 0;
+      clear: none;
     }
   }
 
@@ -90,9 +91,6 @@ pre {
 .clipboard-btn {
   z-index: 10;
   margin-right: 10px;
-}
-.js_interactive .codehilite > .btn-group {
-  display: none;
 }
 
 
@@ -197,7 +195,7 @@ pre {
   .si, // string, interpol
   .sr, // string, regex
   .ss, // string, symbol
-  .sx, // string, other
+  .sx // string, other
   {
     color: $green-700;
   }

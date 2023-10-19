@@ -1,6 +1,6 @@
 ---
 html: py-broker-sale.html
-parent: quickstart-python.html
+parent: nfts-using-python.html
 blurb: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
@@ -9,7 +9,7 @@ labels:
   - XRP
 ---
 
-# Broker an NFT Sale (Python)
+# Broker an NFT Sale Using Python
 
 Earlier examples showed how to make buy and sell offers directly between two accounts. Another option is to use a third account as a broker for the sale. The broker acts on behalf of the NFT owner. The seller creates an offer with the broker account as its destination. The broker gathers and evaluates buy offers and chooses which one to accept, adding an agreed-upon fee for arranging the sale. When the broker account accepts a sell offer with a buy offer, the funds and ownership of the NFT are transferred simultaneously, completing the deal. This allows an account to act as a marketplace or personal agent for NFT creators and traders.
 
@@ -23,7 +23,7 @@ This example shows how to:
 
 [![Quickstart form with Broker Account](img/quickstart-py23.png)](img/quickstart-py23.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to try each of the samples in your own browser.
 
 ## Get Accounts
 
@@ -47,6 +47,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 [![Quickstart form with Account Information](img/quickstart-py24.png)](img/quickstart-py24.png)
 
 ## Prepare a Brokered Transaction
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2dhWDnhCBuY?si=qpHSd6Y0ftVOe46E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
 	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
@@ -96,7 +100,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to examine the code samples.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to examine the code samples.
 
 ## ripplex5-broker-nfts.js
 <!-- SPELLING_IGNORE: ripplex5 -->
@@ -107,7 +111,6 @@ Import dependencies and create a global variable for `testnet_url`.
 
 ```python      
 import xrpl
-import json
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
 testnet_url = "https://s.altnet.rippletest.net:51234"
@@ -125,7 +128,7 @@ def broker_sale(seed, sell_offer_index, buy_offer_index, broker_fee):
 Get the broker wallet and establish a client connection.
 
 ```python
-    broker_wallet=Wallet(seed, sequence=16237283)
+    broker_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -140,22 +143,16 @@ Define the accept offer transaction, matching a sell offer with the selected buy
     )
 ```
 
-Sign and fill the transaction.
-
-```python
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        accept_offer_tx, broker_wallet, client)
-```
-
 Submit the transaction and report the results.
 
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(accept_offer_tx,client,broker_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
+    return reply
 ```
 
 ## lesson5-broker-nfts.py
@@ -882,4 +879,4 @@ btn_op_cancel_offer.grid(row=16, column=3, sticky="nsew")
 
 # Start the application
 window.mainloop()
-```
+```x

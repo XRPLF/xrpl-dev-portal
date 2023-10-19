@@ -1,107 +1,4 @@
-/* sticky APEX banner */
-@keyframes pulsate {}
-
-.banner-container, html.light .banner-container {
-  display: flex;
-  width: 100%;
-  position: relative;
-  background-color: $accent-blue-90;
-  color: $white;
-  overflow: hidden;
-
-  height: 36px;
-  
-  @include media-breakpoint-up(lg) {
-    height: 48px;
-  }
-
-  & > img {
-    height: 36px;
-
-    @include media-breakpoint-up(lg) {
-      height: 3rem;
-    }
-  }
-
-  & > div {
-    line-height: 36px;
-    font-family: Work Sans;
-    font-weight: 600;
-    font-size: 3vw;
-
-    @include media-breakpoint-up(lg) {
-      font-size: 22px;
-      line-height: 3rem;
-    }
-  }
-
-  .d-xxl-block { // nonstandard-breakpoint for this banner only
-    @media (min-width: 1400px) {
-      display: block !important;
-    }
-  }
-
-  .apex-reg {
-    text-align: center;
-
-    @include media-breakpoint-up(md) {
-      padding: 0 1rem;
-    }
-  }
-  .apex-highlight {
-    color: $apex-2023-green;
-  }
-
-  .apex-circled {
-    padding: 0 1rem;
-    text-transform: uppercase;
-    white-space: nowrap;
-    transition: border-color 0.5s ease;
-
-    // sm breakpoint
-    border: 2px solid $white;
-    height: 36px;
-    line-height: 32px;
-    border-radius: 32px;
-    font-size: 2vw;
-
-    @include media-breakpoint-up(lg) {
-      border-width: 3px;
-      height: 48px;
-      line-height: 42px; // height minus 2 borders
-      border-radius: 40px;
-      font-size: 16px;
-    }
-
-    @include media-breakpoint-up(xl) {
-      font-size: 19px;
-    }
-  }
-
-  &:hover {
-    text-decoration: none;
-    color: $white;
-    
-    .apex-highlight {
-      color: $apex-2023-green;
-    }
-
-    .highlight-yellow {
-      border-color: $yellow;
-    }
-
-    .highlight-purple {
-      border-color: $magenta;
-    }
-  }
-  &:active, &:focus {
-    // don't turn white on click
-    background-color: $accent-blue-90 !important;
-    color: $white;
-  }
-}
-
-/* old "pencil banner" style, currently unused */
+/* "pencil banner" style, currently unused */
 .top-banner {
   height: 46px;
   background: url(../img/backgrounds/bg-apex-banner.svg);
@@ -155,19 +52,7 @@
   }
 }
 
-.top-nav {
-    position: sticky;
-    width: 100%;
-}
-
-.right-sidebar,
-.left-sidebar {
-  @include media-breakpoint-up(lg) {
-    top: 100px;
-  }
-}
-
-$banner-top-offset: 146px;
+$banner-top-offset: 108px;
 
 .floating-nav {
   top: $banner-top-offset;
@@ -187,10 +72,6 @@ $banner-top-offset: 146px;
 
 .content h1:first-child:before {
   margin-top: -$banner-top-offset;
-}
-
-#main_content_wrapper {
-  margin-top: 53px;
 }
 
 html.light {

@@ -5,7 +5,7 @@
   "dependencies": {
     "five-bells-condition": "*",
     "ripple-lib": "^0.17.6",
-    "xrpl": "^2.8.0-beta.0"
+    "xrpl": "^2.11.0"
   },
   "//": "Intended for Node.js version ?.? and higher"
 }

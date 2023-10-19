@@ -1,0 +1,9 @@
+{
+    "id": 14,
+    "command": "ledger",
+    "ledger_index": "validated",
+    "transactions": false,
+    "expand": false,
+    "owner_funds": false,
+    "diff": false
+}

@@ -5,7 +5,7 @@
 {% block main %}
   {% if content %}
 
-  <section class="pt-3 p-md-3">
+  <section class="p-0">
     <article class="content">
       {{ content }}
 
@@ -16,7 +16,7 @@
   </section>
 
   {% else %}
-  <section class="pt-3 p-md-3">
+  <section class="p-0">
     <article class="content">
       <h1 id="main-page-header">{{ currentpage.name }}</h1>
       {% if currentpage.blurb != target.blurb %}<p class="blurb">{{ currentpage.blurb }}</p>{% endif %}

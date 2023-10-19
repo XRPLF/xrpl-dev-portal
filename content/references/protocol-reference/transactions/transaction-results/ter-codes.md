@@ -17,6 +17,7 @@ These codes indicate that the transaction has not been [applied](consensus.html)
 | `terINSUF_FEE_B` | The account sending the transaction does not have enough XRP to pay the `Fee` specified in the transaction. |
 | `terLAST`        | Used internally only. This code should never be returned. |
 | `terNO_ACCOUNT`  | The address sending the transaction is not funded in the ledger (yet). |
+| `terNO_AMM`      | The AMM-related transaction specifies an asset pair that does not currently have an AMM instance. _(Requires the [AMM amendment][] :not_enabled:)_ |
 | `terNO_AUTH`     | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
 | `terNO_LINE`     | Used internally only. This code should never be returned. |
 | `terNO_RIPPLE`   | Used internally only. This code should never be returned. |

@@ -7,9 +7,9 @@ labels:
   - Accounts
 ---
 # gateway_balances
-[[Source]](https://github.com/ripple/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
-The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](issuing-and-operational-addresses.html). [New in: rippled 0.28.2][]
+The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](account-types.html). [New in: rippled 0.28.2][]
 
 **Caution:** Some public servers disable this API method because it can require a large amount of processing.
 
@@ -63,9 +63,9 @@ The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `account`      | String                     | The [Address][] to check. This should be the [issuing address](issuing-and-operational-addresses.html) |
+| `account`      | String                     | The [Address][] to check. This should be the [issuing address](account-types.html) |
 | `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
-| `hotwallet`    | String or Array            | _(Optional)_ An [operational address](issuing-and-operational-addresses.html) to exclude from the balances issued, or an array of such addresses. |
+| `hotwallet`    | String or Array            | _(Optional)_ An [operational address](account-types.html) to exclude from the balances issued, or an array of such addresses. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
@@ -286,7 +286,7 @@ The response follows the [standard format][], with a successful result containin
 | `account`              | String - [Address][]      | The address of the account that issued the balances. |
 | `obligations`          | Object                    | (Omitted if empty) Total amounts issued to addresses not excluded, as a map of currencies to the total value issued. |
 | `balances`             | Object                    | _(Omitted if empty)_ Amounts issued to the `hotwallet` addresses from the request. The keys are addresses and the values are arrays of currency amounts they hold. |
-| `assets`               | Object                    | _(Omitted if empty)_ Total amounts held that are issued by others. In the recommended configuration, the [issuing address](issuing-and-operational-addresses.html) should have none. |
+| `assets`               | Object                    | _(Omitted if empty)_ Total amounts held that are issued by others. In the recommended configuration, the [issuing address](account-types.html) should have none. |
 | `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used to generate this response. |
 | `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
 | `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` is provided)_ The [ledger index][] of the current in-progress ledger version, which was used to retrieve this information. |

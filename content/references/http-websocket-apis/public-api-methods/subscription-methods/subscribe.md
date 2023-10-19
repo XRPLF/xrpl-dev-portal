@@ -9,7 +9,7 @@ labels:
   - Smart Contracts
 ---
 # subscribe
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
 
 The `subscribe` method requests periodic notifications from the server when certain events happen.
 
@@ -89,7 +89,7 @@ The `streams` parameter provides access to the following default streams of info
 - `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes.
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
-**Note:** The following streams are not available from servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Reporting Mode servers return the error `reportingUnsupported` if you request one of these streams. [Updated in: rippled 1.8.1][]
+**Note:** The following streams are not available from Clio and `rippled` servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Both will return the `reportingUnsupported` error if you request one of these streams. [Updated in: rippled 1.8.1][] [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE")
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -169,7 +169,7 @@ The fields from a ledger stream message are as follows:
 |:--------------------|:--------------------------|:---------------------------|
 | `type`              | String                    | `ledgerClosed` indicates this is from the ledger stream |
 | `fee_base`          | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) as of this ledger version, in [drops of XRP][]. If this ledger version includes a [SetFee pseudo-transaction](setfee.html) the new transaction cost applies starting with the following ledger version. |
-| `fee_ref`           | Number                    | The [reference transaction cost](transaction-cost.html#reference-transaction-cost) in "fee units". |
+| `fee_ref`           | Number                    | _(May be omitted)_ The [reference transaction cost](transaction-cost.html#reference-transaction-cost) in "fee units". If the _[XRPFees amendment][]_ is enabled, this field is permanently omitted as it will no longer be relevant. |
 | `ledger_hash`       | String - [Hash][]         | The identifying hash of the ledger version that was closed. |
 | `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger that was closed. |
 | `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch][] |

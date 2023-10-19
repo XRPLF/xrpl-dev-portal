@@ -29,6 +29,7 @@ $green-900: #145C35;
 $green-1000: #0A2E1B;
 $green: $green-500;
 $apex-2023-green: #00FF76;
+$token-2049-purple: #410bb9;
 
 $blue-100: #E5F5FF;
 $blue-200: #B2E0FF;
@@ -157,3 +158,13 @@ $progress-bg: $gray-900;
 $modal-content-bg: $black;
 $modal-content-border-color: $gray-200;
 $close-color: $magenta-500;
+
+// Light mode colors
+$light-bg: $gray-100;
+$light-fg: $black;
+$light-fg-muted: $gray-800;
+$light-fg-disabled: $gray-400;
+$light-form-bg: $gray-200;
+$light-box-shadow: 0px 5px 20px 0px $gray-300;
+$light-link-hover-color: $blue-purple-500;
+$light-standout-bg: $gray-050;

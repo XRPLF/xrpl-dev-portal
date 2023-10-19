@@ -1,6 +1,6 @@
 ---
 html: monitor-incoming-payments-with-websocket.html
-parent: get-started.html
+parent: http-websocket-apis-tutorials.html
 blurb: Use the WebSocket API to actively monitor for new XRP payments (and more).
 filters:
   - interactive_steps
@@ -499,7 +499,7 @@ _Python_
 ## See Also
 
 - **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
+    - [Transactions](transactions.html)
     - [Finality of Results](finality-of-results.html) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
 - **Tutorials:**
     - [Reliable Transaction Submission](reliable-transaction-submission.html)

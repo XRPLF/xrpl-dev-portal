@@ -1,8 +1,6 @@
 import xrpl
-import json
 from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
-from xrpl.models.requests.account_info import AccountInfo
 
 
 testnet_url = "https://s.altnet.rippletest.net:51234"
@@ -14,28 +12,21 @@ testnet_url = "https://s.altnet.rippletest.net:51234"
 def create_trust_line(seed, issuer, currency, amount):
     """create_trust_line"""
 # Get the client
-    receiving_wallet = Wallet(seed, sequence = 16237283)
+    receiving_wallet = Wallet.from_seed(seed)
     client = JsonRpcClient(testnet_url)
 # Define the trust line transaction
     trustline_tx=xrpl.models.transactions.TrustSet(
-        account=receiving_wallet.classic_address,
+        account=receiving_wallet.address,
         limit_amount=xrpl.models.amounts.IssuedCurrencyAmount(
             currency=currency,
             issuer=issuer,
             value=int(amount)
         )
     )
-# Sign and fill the transaction    
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        trustline_tx, receiving_wallet, client)
-# Submit the transaction and get results
-    reply = ""
-    try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
-        reply = response.result
-    except xrpl.transaction.XRPLReliableSubmissionException as e:
-        reply = f"Submit failed: {e}"
-    return reply
+
+    response =  xrpl.transaction.submit_and_wait(trustline_tx,
+        client, receiving_wallet)
+    return response.result
 
 #################
 # send_currency #
@@ -44,29 +35,20 @@ def create_trust_line(seed, issuer, currency, amount):
 def send_currency(seed, destination, currency, amount):
     """send_currency"""
 # Get the client
-    sending_wallet=Wallet(seed, sequence=16237283)
+    sending_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 # Define the payment transaction.
     send_currency_tx=xrpl.models.transactions.Payment(
-        account=sending_wallet.classic_address,
+        account=sending_wallet.address,
         amount=xrpl.models.amounts.IssuedCurrencyAmount(
             currency=currency,
             value=int(amount),
-            issuer=sending_wallet.classic_address
+            issuer=sending_wallet.address
         ),
         destination=destination
     )
-# Sign and fill the transaction    
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        send_currency_tx, sending_wallet, client)
-# Submit the transaction and get results
-    reply = ""
-    try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
-        reply = response.result
-    except xrpl.transaction.XRPLReliableSubmissionException as e:
-        reply = f"Submit failed: {e}"
-    return reply
+    response=xrpl.transaction.submit_and_wait(send_currency_tx, client, sending_wallet)
+    return response.result
 
 ###############
 # get_balance #
@@ -74,8 +56,7 @@ def send_currency(seed, destination, currency, amount):
 
 def get_balance(sb_account_id, op_account_id):
     """get_balance"""
-    JSON_RPC_URL='wss://s.altnet.rippletest.net:51234'
-    client=JsonRpcClient(JSON_RPC_URL)
+    client=JsonRpcClient(testnet_url)
     balance=xrpl.models.requests.GatewayBalances(
         account=sb_account_id,
         ledger_index="validated",
@@ -91,29 +72,18 @@ def get_balance(sb_account_id, op_account_id):
 def configure_account(seed, default_setting):
     """configure_account"""
 # Get the client
-    wallet=Wallet(seed, sequence = 16237283)
+    wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 # Create transaction
     if (default_setting):
         setting_tx=xrpl.models.transactions.AccountSet(
             account=wallet.classic_address,
-            set_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE
+            set_flag=xrpl.models.transactions.AccountSetAsfFlag.ASF_DEFAULT_RIPPLE
         )
     else:
         setting_tx=xrpl.models.transactions.AccountSet(
             account=wallet.classic_address,
-            clear_flag=xrpl.models.transactions.AccountSetFlag.ASF_DEFAULT_RIPPLE
+            clear_flag=xrpl.models.transactions.AccountSetAsfFlag.ASF_DEFAULT_RIPPLE
         )
-
-# Sign and fill the transaction    
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        setting_tx, wallet, client)
-# Submit the transaction and get results
-    reply = ""
-    try:
-        response = xrpl.transaction.send_reliable_submission(signed_tx,client)
-        reply = response.result
-    except xrpl.transaction.XRPLReliableSubmissionException as e:
-        reply = f"Submit failed: {e}"
-    return reply
-    
+    response=xrpl.transaction.submit_and_wait(setting_tx,client,wallet)
+    return response.result    

@@ -7,9 +7,10 @@ labels:
   - Core Server
 ---
 # validation_seed
-[[Source]](https://github.com/ripple/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
 
-The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server. [Disabled since: rippled 0.29.1](https://github.com/ripple/rippled/releases/tag/0.29.1-rc1 "BADGE_RED")
+[[Source]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
+
+The `validation_seed` command temporarily sets the secret value that rippled uses to sign validations. This value resets based on the config file when you restart the server. [Disabled since: rippled 0.29.1](https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1 "BADGE_RED")
 
 *The `validation_seed` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
 

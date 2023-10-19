@@ -10,7 +10,7 @@ labels:
 
 The sender of any [Payment transaction][] can enable the ["Partial Payment" flag](payment.html#payment-flags) and send a payment which delivers less than the `Amount` field indicates. When processing any Payment, use the `delivered_amount` metadata field, not the `Amount` field. The `delivered_amount` is the amount a payment actually delivered.
 
-If a Payment does not enable the Partial Payment flag, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the amount to deliver after charging for exchange rates and [transfer fees](transfer-fees.html). The Partial Payment flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](become-an-xrp-ledger-gateway.html#bouncing-payments) without incurring additional costs to oneself.
+If a Payment does not enable the Partial Payment flag, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the amount to deliver after charging for exchange rates and [transfer fees](transfer-fees.html). The Partial Payment flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](stablecoin-issuer.html#bouncing-payments) without incurring additional costs to oneself.
 
 The amount of XRP used for the [transaction cost](transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction. This transaction cost, or fee, is not included in the `Amount`.
 
@@ -120,7 +120,7 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
 - **Tools:**
     - [Transaction Sender](tx-sender.html)
 - **Concepts:**
-    - [Transaction Basics](transaction-basics.html)
+    - [Transactions](transactions.html)
 - **Tutorials:**
     - [Look Up Transaction Results](look-up-transaction-results.html)
     - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
@@ -133,6 +133,6 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
     - [tx method][]
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

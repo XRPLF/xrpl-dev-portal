@@ -1,6 +1,6 @@
 ---
 html: send-xrp.html
-parent: get-started.html
+parent: tasks.html
 blurb: Learn how to send test payments right from your browser.
 cta_text: Send XRP
 embed_xrpl_js: true
@@ -57,7 +57,7 @@ The secret key shown here is for example only. For development purposes, you can
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html).
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to a Testnet Server
@@ -417,7 +417,6 @@ After completing this tutorial, you may want to try the following:
 - Customize your [Account Settings](manage-account-settings.html).
 - Learn how [Transaction Metadata](transaction-metadata.html) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](payment-types.html) such as Escrows and Payment Channels.
-- Read best practices for [XRP Ledger Businesses](xrp-ledger-businesses.html).
 
 
 

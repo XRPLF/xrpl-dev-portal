@@ -6,14 +6,14 @@ labels:
   - Transaction Sending
 ---
 # sign
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "Source")
 
 The `sign` method takes a [transaction in JSON format](transaction-formats.html) and a [seed value](cryptographic-keys.html), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](multi-signing.html), use the [sign_for method][] instead.
 
 {% include '_snippets/public-signing-note.md' %}
 <!--_ -->
 
-**Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](client-libraries.html) instead of using this command. For more information, see [Set Up Secure Signing](set-up-secure-signing.html).
+**Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](client-libraries.html) instead of using this command. For more information, see [Set Up Secure Signing](secure-signing.html).
 
 ## Request Format
 An example of the request format:
@@ -76,7 +76,7 @@ rippled sign s██████████████████████
 
 <!-- MULTICODE_BLOCK_END -->
 
-To sign a transaction, you must provide a secret key that can [authorize the transaction](transaction-basics.html#authorizing-transactions). Typically you provide a seed value that the server derives the secret key from. You can do this in a few ways:
+To sign a transaction, you must provide a secret key that can [authorize the transaction](transactions.html#authorizing-transactions). Typically you provide a seed value that the server derives the secret key from. You can do this in a few ways:
 
 * Provide the seed in the `secret` field and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
@@ -92,7 +92,7 @@ The request includes the following parameters:
 | `passphrase`   | String  | _(Optional)_ The secret seed of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
 | `key_type`     | String  | _(Optional)_ The [signing algorithm](cryptographic-keys.html#signing-algorithms) of the cryptographic key pair provided. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. |
 | `offline`      | Boolean | _(Optional)_ If `true`, when constructing the transaction, do not try to [automatically fill](#auto-fillable-fields) any transaction details. The default is `false`. |
-| `build_path`   | Boolean | _(Optional)_ If this field is provided, the server [auto-fills](transaction-common-fields.html#auto-fillable-fields) the `Paths` field of a [Payment transaction][] before signing. You must omit this field if the transaction is a [direct XRP payment](direct-xrp-payments.html) or if it is not a Payment-type transaction. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. ([Issue #3272](https://github.com/ripple/rippled/issues/3272)) |
+| `build_path`   | Boolean | _(Optional)_ If this field is provided, the server [auto-fills](transaction-common-fields.html#auto-fillable-fields) the `Paths` field of a [Payment transaction][] before signing. You must omit this field if the transaction is a [direct XRP payment](direct-xrp-payments.html) or if it is not a Payment-type transaction. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. ([Issue #3272](https://github.com/XRPLF/rippled/issues/3272)) |
 | `fee_mult_max` | Integer | _(Optional)_ Signing fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](transaction-common-fields.html#auto-fillable-fields) would be greater than the [reference transaction cost](transaction-cost.html#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `10`. |
 | `fee_div_max`  | Integer | _(Optional)_ Signing fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](transaction-common-fields.html#auto-fillable-fields) would be greater than the [reference transaction cost](transaction-cost.html#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `1`. [New in: rippled 0.30.1][] |
 

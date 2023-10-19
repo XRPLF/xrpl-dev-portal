@@ -27,11 +27,11 @@ With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process 
 3. The customer sends a [TrustSet transaction][] to create a trust line to the issuer's address, with a positive limit.
 4. The issuer sends a TrustSet transaction to authorize the customer's trust line.
 
-**Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line. _(Added by the [TrustSetAuth amendment][].)_
+**Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line.
 
 ## As a Precaution
 
-Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](issuing-and-operational-addresses.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
+Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](account-types.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
 
 
 ## Technical Details
@@ -120,8 +120,6 @@ In the response's `result.lines` array, find the object whose `currency` field i
 - **Concepts:**
     - [Deposit Authorization](depositauth.html)
     - [Freezing Issued Currencies](freezes.html)
-- **Tutorials:**
-    - [Become a Stablecoin Issuer](become-an-xrp-ledger-gateway.html)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

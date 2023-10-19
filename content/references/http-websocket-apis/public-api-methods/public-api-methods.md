@@ -59,6 +59,7 @@ By default, the following methods are [admin-only](admin-api-methods.html). They
 
 Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
 
+* **[`amm_info`](amm_info.html)** :not_enabled: - Get info about an Automated Market Maker (AMM).
 * **[`book_offers`](book_offers.html)** - Get info about offers to exchange two currencies.
 * **[`deposit_authorized`](deposit_authorized.html)** - Look up whether one account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to -->
 * **[`nft_buy_offers`](nft_buy_offers.html)** - Retrieve a list of buy offers for a specified NFToken object.
@@ -98,7 +99,6 @@ Use these methods to retrieve information using Clio server APIs.
 
 * **[`server_info`](server_info-clio.html)** - Retrieve status of the Clio server.
 * **[`ledger`](ledger-clio.html)** - Get info about a ledger version using Clio server's `ledger` API.
-* **[`nft_history`](nft_history.html)** - Retrieve transaction history for the specified NFT using Clio server's `nft_history` API.
 * **[`nft_info`](nft_info.html)** - Retrieve information about the specified NFT using Clio server's `nft_info` API.
 
 ## [Utility Methods](utility-methods.html)

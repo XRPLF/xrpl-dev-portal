@@ -1,18 +1,8 @@
-$light-bg: $gray-100;
-$light-fg: $black;
-$light-fg-muted: $gray-800;
-$light-fg-disabled: $gray-400;
-$light-form-bg: $gray-200;
-$light-box-shadow: 0px 5px 20px 0px $gray-300;
-$light-link-hover-color: $blue-purple-500;
-$light-standout-bg: $gray-050;
-
 // General color elements ------------------------------------------------------
 .content {
   p code,
   table code,
-  ul code,
-  ol code {
+  li > code {
   background-color: $gray-200;
   color: $gray-900;
   }
@@ -143,10 +133,10 @@ h6,
     color: var(--docsearch-text-color) !important;
   }
   .DocSearch-Input{
-    color: $gray-900; 
+    color: $gray-900;
   }
   .DocSearch-Hit-Select-Icon{
-    color: $gray-900; 
+    color: $gray-900;
   }
   .DocSearch-Form {
     box-shadow: inset 0 0 0 2px $blue-purple-500;
@@ -175,7 +165,7 @@ h6,
   }
   .DocSearch-Logo svg{
     .cls-1, .cls-2{
-      fill:var(--docsearch-logo-color);; 
+      fill:var(--docsearch-logo-color);;
     }
   }
   .DocSearch-Hit-title,
@@ -709,6 +699,8 @@ pre code {
   "sustainability",
   "cbdc",
   "custody",
+  "other",
+  "carbon_markets",
   "defi" {
     ##{$usecase} {
       content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
@@ -723,7 +715,9 @@ pre code {
     background: #D2B2FF;
     color: #350080;
   }
-
+  .section-text-title {
+    color: #000;
+  }
   @each $company,$type in (
     'bitgo': 'svg',
     'sologenic-nft': 'svg',
@@ -741,7 +735,8 @@ pre code {
     'xrpscan': 'svg',
     'ripples-on-demand-liquidity': 'svg',
     'xumm-wallet': 'svg',
-    'sologenic-dex': 'svg'
+    'sologenic-dex': 'svg',
+    'Crossmark': 'png'
   ) 
   {
     #use_case_companies_list {
@@ -750,7 +745,7 @@ pre code {
           max-height: 40px;
           content: url("../img/uses/lightmode/#{$company}.#{$type}");
         }
-      } 
+      }
     }
   }
 
@@ -759,13 +754,13 @@ pre code {
   // #coil,
   #forte,
   #xrplorer,
-  #gatehub 
+  #gatehub
   {
     .biz-logo {
       filter: invert(100%);
     }
   }
-  
+
 }
 
 .landing-bg {
@@ -1042,8 +1037,8 @@ $placeholder-color: $gray-600;
 
 .footer-nav{
   .nav-item{
-    text-shadow: white 0px 0px 2px, white 1px 1px 2px, white 2px 2px 3px,
-    white 2px 2px 4px, white 2px 2px 5px, white 2px 2px 6px, white -1px -1px 2px,
-    white -2px -2px 3px, white -2px -2px 4px;
+    text-shadow: #F5F5F7 0px 0px 2px, #F5F5F7 1px 1px 2px, #F5F5F7 2px 2px 3px,
+    #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
+    #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
   }
 }

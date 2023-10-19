@@ -7,11 +7,11 @@ labels:
 ---
 # AccountDelete
 
-[[Source]](https://github.com/ripple/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/DeleteAccount.cpp "Source")
 
 _Added by the [DeletableAccounts amendment](known-amendments.html#deletableaccounts)_
 
-An AccountDelete transaction deletes an [account](accountroot.html) and any objects it owns in the XRP Ledger, if possible, sending the account's remaining XRP to a specified destination account. See [Deletion of Accounts](accounts.html#deletion-of-accounts) for the requirements to delete an account.
+An AccountDelete transaction deletes an [account](accountroot.html) and any objects it owns in the XRP Ledger, if possible, sending the account's remaining XRP to a specified destination account. See [Deleting Accounts](deleting-accounts.html) for the requirements to delete an account.
 
 ## Example {{currentpage.name}} JSON
 

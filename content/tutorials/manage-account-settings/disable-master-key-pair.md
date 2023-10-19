@@ -10,7 +10,7 @@ labels:
 
 This page describes how to disable the [master key pair](cryptographic-keys.html) that is mathematically associated with an [account](accounts.html)'s address. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](multi-signing.html) the _only_ way to submit transactions from your account.
 
-**Warning:** Disabling the master key pair removes one method of [authorizing transactions](transaction-basics.html#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.html), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.
+**Warning:** Disabling the master key pair removes one method of [authorizing transactions](transactions.html#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.html), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.
 
 **To disable the master key pair, you must use the master key pair.** However, you can _re-enable_ the master key pair using any other method of authorizing transactions.
 
@@ -18,9 +18,9 @@ This page describes how to disable the [master key pair](cryptographic-keys.html
 
 To disable the master key pair for an account, you must meet the following prerequisites:
 
-- You must have an XRP Ledger [account](accounts.html) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](set-up-secure-signing.html). Two common ways this can work are:
+- You must have an XRP Ledger [account](accounts.html) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](secure-signing.html). Two common ways this can work are:
     - You know the account's master seed value. A seed value is commonly represented as a [base58][] value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
-    - Or, you use a [dedicated signing device](set-up-secure-signing.html#use-a-dedicated-signing-device) that stores the seed value securely, so you don't need to know it.
+    - Or, you use a [dedicated signing device](secure-signing.html#use-a-dedicated-signing-device) that stores the seed value securely, so you don't need to know it.
 - Your account must have at least one method of authorizing transactions other than the master key pair. In other words, you must do one or both of the following:
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
     - [Set Up Multi-Signing](set-up-multi-signing.html).
@@ -47,7 +47,7 @@ Prepare an [AccountSet transaction][] from your account with the field `"SetValu
 
 You must use the **master key pair** to sign the transaction.
 
-**Warning:** Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](set-up-secure-signing.html#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](set-up-secure-signing.html).
+**Warning:** Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](secure-signing.html#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](secure-signing.html).
 
 #### Example Request
 

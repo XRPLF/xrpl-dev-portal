@@ -23,11 +23,11 @@ No, the XRP Ledger is a decentralized, public blockchain. Any changes that would
 
 #### Isn’t Proof of Work the best validation mechanism?
 
-Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](intro-to-consensus.html) solves the same problem in a far faster, cheaper and more energy efficient way.
+Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](consensus.html) solves the same problem in a far faster, cheaper and more energy efficient way.
 
 #### How can a blockchain be sustainable?
 
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](intro-to-consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](consensus.html)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
 
 #### Can currencies other than XRP be traded through XRPL?
 
@@ -58,7 +58,7 @@ UNLs are the lists of validators a given participant believes will not conspire 
 
 #### Which UNL should I select?
 
-Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, two publishers (Ripple, the XRP Ledger Foundation) are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the two publishers noted above.
+Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, the XRP Ledger Foundation and Ripple are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies.  However, every network participant can choose which validators it chooses as reliable and need not follow one of the publishers noted above.
 
 
 #### If Ripple recommends adoption of its UNL, doesn't that create a centralized system?

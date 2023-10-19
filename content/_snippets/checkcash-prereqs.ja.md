@@ -5,5 +5,5 @@ Checkを換金するための前提条件は、正確な金額を換金する場
 - Checkに記載されている受取人の**アドレス**と**秘密鍵**。このアドレスは、Checkオブジェクトの`Destination`アドレスと一致している必要があります。
 - 発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。
   - トラストラインと限度額について詳しくは、[発行済み通貨](issued-currencies.html)および[トラストラインと発行](trust-lines-and-issuing.html)を参照してください。
-- [トランザクションに安全に署名できる手段](set-up-secure-signing.html)。
+- [トランザクションに安全に署名できる手段](secure-signing.html)。
 - XRP Ledgerに接続できる[クライアントライブラリ](client-libraries.html)か、それとも[HTTPライブラリ、WebSocketライブラリなど](get-started-using-http-websocket-apis.html)。

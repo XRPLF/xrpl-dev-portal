@@ -27,7 +27,7 @@ Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Has
 <!--{#_ #}-->
 
 ### Hash Prefixes
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
 
 In many cases, the XRP Ledger prefixes an object's binary data with a 4-byte code before calculating its hash, so that objects of different types have different hashes even if their binary formats are the same. The existing 4-byte codes are structured as three alphabetic characters, encoded as ASCII, followed by a zero byte.
 
@@ -82,7 +82,7 @@ Many API methods require you to specify an instance of the ledger, with the data
 
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
 
-    * `validated` for the most recent ledger that has been [validated by consensus](consensus.html#validation)
+    * `validated` for the most recent ledger that has been [validated by consensus](consensus-structure.html#validation)
 
             "ledger_index": "validated"
 
@@ -129,6 +129,6 @@ The `rippled` server and its APIs represent time as an unsigned integer. This nu
 Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

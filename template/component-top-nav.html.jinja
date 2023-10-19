@@ -1,15 +1,3 @@
-<a href="https://www.apexdevsummit.com/" target="_blank" class="w-inline-block banner-container d-flex justify-content-center">
-  <img src="assets/img/apex-texture-purple-diamond.svg" alt="" class="d-none d-xl-block" />
-  <div class="apex-reg">{% trans %}Register for <span class="apex-highlight">APEX Dev Summit 2023</span>{% endtrans %}</div>
-  <img src="assets/img/apex-texture-orange-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-red-diamond.svg" alt="" class="d-md-none"/>
-  <div class="apex-circled highlight-yellow">{% trans %}Amsterdam{% endtrans %}</div>
-  <img src="assets/img/apex-texture-green-diamond.svg" alt="" class="d-none d-md-block" />
-  <img src="assets/img/apex-xrpl-logo.svg" alt="(XRPL)" class="d-none d-md-block" />
-  <img src="assets/img/apex-texture-polkadots.svg" alt="" class="d-none d-xxl-block" />
-  <div class="apex-circled d-none d-lg-block highlight-purple">{% trans %}Register Now{% endtrans %}</div>
-  <img src="assets/img/apex-texture-yellow-grid.svg" alt="" class="d-none d-xl-block" />
-</a>
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
   <a href="{% if currentpage.prefix %}{{currentpage.prefix}}{% else %}/{% endif %}" class="navbar-brand"><img class="logo"  height="40" alt="{{target.display_name}}" /></a>
   <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +19,7 @@
               <p>{{top_page.top_nav_blurb|default(top_page.blurb)}}</p>
             </div>
           </a>
-          {% else %}
+          {% elif top_page.top_nav_grouping is defined %}
           <div class="navcol col-for-{{slug(top_page.top_nav_grouping)}}">
             <h5 class="dropdown-item">{{top_page.top_nav_grouping}}</h5>
             {% set _ = printed_groupings.append(top_page.top_nav_grouping) %}

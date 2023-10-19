@@ -6,7 +6,7 @@ labels:
   - Payment Channels
 ---
 # channel_authorize
-[[Source]](https://github.com/ripple/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
 _(Added by the [PayChan amendment][] to be enabled. [New in: rippled 0.33.0][])_
 
@@ -70,7 +70,7 @@ The request includes the following parameters:
 
 The request **must** specify exactly one of `secret`, `seed`, `seed_hex`, or `passphrase`.
 
-**Warning:** Do not send secret keys to untrusted servers or through unsecured network connections. (This includes the `secret`, `seed`, `seed_hex`, or `passphrase` fields of this request.) You should only use this method on a secure, encrypted network connection to a server you run or fully trust with your funds. Otherwise, eavesdroppers could use your secret key to sign claims and take all the money from this payment channel and anything else using the same key pair. See [Set Up Secure Signing](set-up-secure-signing.html) for instructions.
+**Warning:** Do not send secret keys to untrusted servers or through unsecured network connections. (This includes the `secret`, `seed`, `seed_hex`, or `passphrase` fields of this request.) You should only use this method on a secure, encrypted network connection to a server you run or fully trust with your funds. Otherwise, eavesdroppers could use your secret key to sign claims and take all the money from this payment channel and anything else using the same key pair. See [Set Up Secure Signing](secure-signing.html) for instructions.
 
 ## Response Format
 

@@ -7,7 +7,7 @@ labels:
   - Accounts
 ---
 # account_tx
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
 The `account_tx` method retrieves a list of transactions that involved the specified account.
 
@@ -67,6 +67,7 @@ The request includes the following parameters:
 | `Field`            | Type                                       | Description |
 |:-------------------|:-------------------------------------------|:-----------|
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
+| `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. Supports any transaction type except `AMM*` (See [Transaction Types](transaction-types.html).) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE") |
 | `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
 | `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
 | `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |

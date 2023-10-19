@@ -6,11 +6,11 @@ labels:
   - Payment Channels
 ---
 # PaymentChannelFund
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
 _Added by the [PayChan amendment][]._
 
-Add additional [XRP](xrp.html) to an open [payment channel](payment-channels.html), and optionally update the expiration time of the channel. Only the source address of the channel can use this transaction.
+Add additional [XRP](what-is-xrp.html) to an open [payment channel](payment-channels.html), and optionally update the expiration time of the channel. Only the source address of the channel can use this transaction.
 
 Example PaymentChannelFund:
 

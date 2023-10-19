@@ -7,7 +7,7 @@ labels:
   - Blockchain
 ---
 # Ledger Header
-[[Source]](https://github.com/ripple/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/ledger/ReadView.h#L71 "Source")
 
 Every [ledger version](ledgers.html) has a unique header that describes the contents. You can look up a ledger's header information with the [ledger method][]. The contents of the ledger header are as follows:
 
@@ -32,7 +32,7 @@ Every [ledger version](ledgers.html) has a unique header that describes the cont
 
 ## Close Flags
 
-The ledger has only one flag defined for `closeFlags`: **`sLCF_NoConsensusTime`** (value `1`). If this flag is enabled, it means that validators had different [close times for the ledger](ledgers.html#ledger-close-times), but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, official `close_time` value of the ledger is 1 second after that of the parent ledger.
+The ledger has only one flag defined for `closeFlags`: **`sLCF_NoConsensusTime`** (value `1`). If this flag is enabled, it means that validators had different [close times for the ledger](ledger-close-times.html), but built otherwise the same ledger, so they declared consensus while "agreeing to disagree" on the close time. In this case, official `close_time` value of the ledger is 1 second after that of the parent ledger.
 
 The `closeFlags` field is not included in any JSON representations of a ledger, but is included in the binary representation of a ledger, and is one of the fields that determine the ledger's hash.
 
@@ -43,6 +43,6 @@ For ledger basics, see [Ledgers](ledgers.html).
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

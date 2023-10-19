@@ -4,7 +4,7 @@
 
 {% block main %}
   <section class="py-20 text-center">
-    <div class="col-xl-4 col-lg-6 mx-auto text-center">
+    <div class="col-xl-8 col-lg-10 mx-auto text-center">
       <div class="d-flex flex-column-reverse">
         <h1 class="mb-18">{% trans %}References and APIs{% endtrans %}</h1>
         <h6 class="eyebrow mb-3">{% trans %}Everything You Need to Know{% endtrans %}</h6>
@@ -92,10 +92,9 @@
           <p class="card-text">{{page.blurb}}</p>
         </div>
         <div class="card-footer">&nbsp;</div>
-      </a>
+      </a><!--/.card-->
       {% endif %}
       {% endfor %}
-    </div>
     {% endfor %}
     </div><!--/.card-deck-->
   </section>

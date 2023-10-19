@@ -1,6 +1,6 @@
 ---
 html: py-transfer-nfts.html
-parent: quickstart-python.html
+parent: nfts-using-python.html
 blurb: Use a Python test harness to create and accept NFT buy and sell offers.
 labels:
   - Quickstart
@@ -8,7 +8,7 @@ labels:
   - Non-fungible Tokens, NFTs
 ---
 
-# 4. Transfer NFTs (Python)
+# Transfer NFTs Using Python
 
 This example shows how to:
 
@@ -21,7 +21,7 @@ This example shows how to:
 
 [![Quickstart form with NFT transfer fields](img/quickstart-py15.png)](img/quickstart-py15.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to try each of the samples in your own browser.
 
 # Usage
 
@@ -46,6 +46,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 [![Form with account information](img/quickstart-py16.png)](img/quickstart-py16.png)
 
 ## Create a Sell Offer
+
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tL3wIJXBt7Q?si=t3LYsxIVkZU7yAx_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
 
 To create a NFT sell offer:
 
@@ -120,7 +124,7 @@ To cancel a buy or sell offer that you have created:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/quickstart.zip){.github-code-download} archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive to try each of the samples in your own browser.
 
 ## mod4.py
 This module contains the new methods `create_sell_offer`, `create_buy_offer`, `accept_sell_offer`, `accept_buy_offer`, `get_offers`, and `cancel_offer`.
@@ -152,7 +156,7 @@ def create_sell_offer(seed, amount, nftoken_id, expiration, destination):
 Get the owner wallet and create a client connection.
 
 ```python
-    owner_wallet = Wallet(seed, sequence=16237283)
+    owner_wallet = Wallet.from_seed(seed)
     client = JsonRpcClient(testnet_url)
 ```
 
@@ -169,7 +173,7 @@ Define the sell offer transaction.
 
 ```python
     sell_offer_tx=xrpl.models.transactions.NFTokenCreateOffer(
-        account=owner_wallet.classic_address,
+        account=owner_wallet.address,
         nftoken_id=nftoken_id,
         amount=amount,
 ```
@@ -192,19 +196,12 @@ Set the `flags` value to _1_, indicating that this is a sell offer.
     )
 ```
 
-Sign the transaction.
-
-```python
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        sell_offer_tx, owner_wallet, client)
-```
-
 Submit the transaction.
 
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(sell_offer_tx,client,owner_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
@@ -228,7 +225,7 @@ def accept_sell_offer(seed, offer_index):
 Get the wallet and a client instance.
 
 ```python
-    buyer_wallet=Wallet(seed, sequence=16237283)
+    buyer_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -253,7 +250,7 @@ Submit the transaction and report the results.
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(accept_offer_tx,client,buyer_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
@@ -272,7 +269,7 @@ def create_buy_offer(seed, amount, nft_id, owner, expiration, destination):
 Get the buyer wallet and a client instance.
 
 ```python
-    buyer_wallet=Wallet(seed, sequence=16237283)
+    buyer_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -289,7 +286,7 @@ Define the buy offer transaction.
 
 ```python
     buy_offer_tx=xrpl.models.transactions.NFTokenCreateOffer(
-        account=buyer_wallet.classic_address,
+        account=buyer_wallet.address,
         nftoken_id=nft_id,
         amount=amount,
         owner=owner,
@@ -314,19 +311,12 @@ Set the _flags_ value to _0_, indicating that this is a "buy" offer.
     )
 ```
 
-Sign and fill the transaction.
-
-```python
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        buy_offer_tx, buyer_wallet, client)   
-```
-
 Submit the transaction and report the results.
 
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(buy_offer_tx,client,buyer_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
@@ -345,7 +335,7 @@ def accept_buy_offer(seed, offer_index):
 Get the buyer wallet and a client instance.
 
 ```python
-    buyer_wallet=Wallet(seed, sequence=16237283)
+    buyer_wallet=Wallet.from_seed(seed)
     client=JsonRpcClient(testnet_url)
 ```
 
@@ -353,16 +343,9 @@ Define the accept offer transaction.
 
 ```python
     accept_offer_tx=xrpl.models.transactions.NFTokenAcceptOffer(
-       account=buyer_wallet.classic_address,
+       account=buyer_wallet.address,
        nftoken_buy_offer=offer_index
     )
-```
-
-Sign and fill the transaction.
-
-```python   
-    signed_tx=xrpl.transaction.safe_sign_and_autofill_transaction(
-        accept_offer_tx, buyer_wallet, client)
 ```
 
 Submit the transaction and report the results
@@ -370,7 +353,7 @@ Submit the transaction and report the results
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(accept_offer_tx,client,buyer_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
@@ -469,19 +452,12 @@ Define the cancel offer transaction.
 		)
 ```
 
-Sign the transaction.
-
-```python
-    signed_tx = xrpl.transaction.safe_sign_and_autofill_transaction(
-        cancel_offer_tx, owner_wallet, client)
-```
-
 Submit the transaction and return the result.
 
 ```python
     reply=""
     try:
-        response=xrpl.transaction.send_reliable_submission(signed_tx,client)
+        response=xrpl.transaction.submit_and_wait(cancel_offer_tx,client,owner_wallet)
         reply=response.result
     except xrpl.transaction.XRPLReliableSubmissionException as e:
         reply=f"Submit failed: {e}"
@@ -575,7 +551,7 @@ def standby_cancel_offer():
         ent_standby_nft_offer_index.get()
     )
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
 def op_create_sell_offer():
     results = create_sell_offer(
         ent_operational_seed.get(),
@@ -603,7 +579,7 @@ def op_create_buy_offer():
         ent_operational_destination.get()
     )
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))  
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 def op_accept_buy_offer():
     results = accept_buy_offer (
         ent_operational_seed.get(),
@@ -621,7 +597,7 @@ def op_cancel_offer():
         ent_operational_nft_offer_index.get()
     )
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 
 # Module 3 Handlers
@@ -714,10 +690,10 @@ def operational_configure_account():
 def get_balances():
     results = get_balance(ent_operational_account.get(), ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
     results = get_balance(ent_standby_account.get(), ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 # Module 1 Handlers
 def get_standby_account():
@@ -1020,7 +996,7 @@ btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFT",
 btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
 ```
 
-Add buttons for transferring NFTs. 
+Add buttons for transferring NFTs.
 
 ```python
 btn_op_create_sell_offer = tk.Button(master=frm_form, text="Create Sell Offer",

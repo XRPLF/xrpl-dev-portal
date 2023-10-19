@@ -1,6 +1,6 @@
 A sequence number is a 32-bit unsigned integer that is used to make sure transactions from a given sender execute only once each, and in the correct order.
 
-Every [account in the XRP Ledger](accounts.html) has a sequence number in its `Sequence` field, which increases by 1 whenever that account sends a transaction and that transaction gets included in a [validated ledger](ledgers.html). Each [transaction](transaction-basics.html) also has a sequence number in its `Sequence` field, which must match the account's current sequence number when the transaction executes. For each account, each sequence number can only be used once, in numerical order.
+Every [account in the XRP Ledger](accounts.html) has a sequence number in its `Sequence` field, which increases by 1 whenever that account sends a transaction and that transaction gets included in a [validated ledger](ledgers.html). Each [transaction](transactions.html) also has a sequence number in its `Sequence` field, which must match the account's current sequence number when the transaction executes. For each account, each sequence number can only be used once, in numerical order.
 
 [Tickets](tickets.html) make some exceptions from these rules so that it is possible to send transactions out of the normal order. Tickets represent sequence numbers reserved for later use; a transaction can use a Ticket instead of a normal sequence number.
 
