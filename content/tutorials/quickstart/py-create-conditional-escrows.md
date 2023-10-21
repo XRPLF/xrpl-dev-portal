@@ -12,7 +12,7 @@ labels:
 
 This example shows how to:
 
-1. Create escrow payments that become available when any account enters a fulfillment code.
+1. Create escrow payments that become available when an account enters a fulfillment code.
 
 2. Complete a conditional escrow transaction.
 
@@ -25,24 +25,17 @@ This example shows how to:
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive.
 
+In a terminal window, install the `cryptoconditions` module with this command:
+
+```bash
+pip install cryptoconditions`
+```
+
 ## Usage
 
-### Create Escrow
+### Create Conditional Escrow
 
-You  create a condition-based escrow using a fulfillment code associated with a condition code. Create the condition/fulfillment pair using the `five-bells-condition` application.
-
-Install `five-bells-condition`:
-
-1. In a terminal window, navigate to your local `Quickstart` directory (for convenience).
-2. Enter the command `npm install five-bells-condition`.
-
-To create a condition/fulfillment pair:
-
-1. In a terminal window, navigate to your `Quickstart` directory.
-2. Enter the command `node getConditionAndFulfillment.js`.
-3. Copy and save the generated Condition and Fulfillment pair.
-
-[![Condition and Fulfillment](img/conditional-escrow2.png)](img/conditional-escrow2.png)
+You create a condition-based escrow using a fulfillment code associated with a condition code. 
 
 To get test accounts:
  
@@ -61,7 +54,13 @@ To get test accounts:
         3. Click **Get Operational Account**.
         4. Click **Get Op Account Info**.
 
-[![Escrow Tester with Account Information](img/quickstart-py-conditional-escrow-2.png)](img/quickstart-py-conditional-escrow-2.png)
+[![Escrow Example with Account Information](img/quickstart-py-conditional-escrow-2.png)](img/quickstart-py-conditional-escrow-2.png)
+
+#### Get a Condition and Fulfillment
+
+Click **Get Condition** to generate a condition/fulfillment pair and populate the fields on the form. You can copy the values and store them in a text file for safe keeping. 
+
+[![Escrow Example with Condition and Fulfillment](img/quickstart-py-conditional-escrow-3.png)](img/quickstart-py-conditional-escrow-3.png)
 
 ### Create Conditional Escrow:
 
@@ -69,23 +68,22 @@ To get test accounts:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nWaMAr84qR0?si=LkF-vwQ3QJ4XNhJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-When you create a conditional escrow, you need to specify the `Condition` value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.  
+When you create a conditional escrow, you need to specify the `Condition` value you generated above. You can also set a cancel date and time, after which the escrow is no longer available.  
 
 To create a conditional escrow:
 
 1. Enter an **Amount** to transfer.
 2. Copy the **Operational Account** value.
 3. Paste it in the **Destination Account** field.
-4. Enter the **Escrow Condition** value.
-5. Enter the **Escrow Cancel (seconds)** value.
-6. Click **Create Escrow**.
-7. Copy and save the _Sequence Number_ of the escrow called out in the **Standby Result** field.
+4. Enter the **Escrow Cancel (seconds)** value.
+5. Click **Create Escrow**.
+6. Copy and save the _Sequence Number_ of the escrow called out in the **Standby Result** field.
 
 The escrow is created on the XRP Ledger instance, reserving your requested XRP amount plus the transaction cost.
 
 When you create an escrow, capture and save the _Sequence Number_ so that you can use it to finish the escrow transaction.
 
-[![Created Escrow Transaction](img/quickstart-py-conditional-escrow-3.png)](img/quickstart-py-conditional-escrow-3.png)
+[![Created Escrow Transaction](img/quickstart-py-conditional-escrow-4.png)](img/quickstart-py-conditional-escrow-4.png)
 
 ## Finish Conditional Escrow
 
@@ -96,11 +94,13 @@ To finish a conditional escrow:
 1. Paste the sequence number in the Operational account **Sequence Number** field.
 2. Enter the **Escrow Condition** value.
 3. Enter the **Escrow Fulfillment** code for the `Condition`.
+4. Copy the **Standby Account** value.
+5. Paste it into the **Escrow Owner** field.
 4. Click **Finish Conditional Escrow**.
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
-[![Finished Escrow Transaction](img/quickstart-py-conditional-escrow-4.png)](img/quickstart-py-conditional-escrow-4.png)
+[![Finished Escrow Transaction](img/quickstart-py-conditional-escrow-5.png)](img/quickstart-py-conditional-escrow-5.png)
 
 ## Get Escrows
 
@@ -108,7 +108,7 @@ Click **Get Escrows** for either the Standby account or the Operational account 
 
 ## Cancel Escrow
 
-When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the **Escrow Cancel** time are charged the nominal transaction cost (12 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.
+When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the **Escrow Cancel** time are charged the nominal transaction cost (about 10-15 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.
 
 ## Oh No! I Forgot to Save the Sequence Number!
 
@@ -117,75 +117,17 @@ If you forget to save the sequence number, you can find it in the escrow transac
 1. Create a new escrow as described in [Create Escrow](#create-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnLgrSeq_ value from the results.
-   ![Transaction ID in Get Escrows results](img/quickstart-py-conditional-escrow-5.png)
+   ![Transaction ID in Get Escrows results](img/quickstart-py-conditional-escrow-6.png)
 4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
-   ![Transaction to Look Up field](img/quickstart-py-conditional-escrow-6.png)
+   ![Transaction to Look Up field](img/quickstart-py-conditional-escrow-7.png)
 5. Click **Get Transaction**.
 6. Locate the _Sequence_ value in the results.
-   ![Sequence number in results](img/quickstart-py-conditional-escrow-7.png)
+
+![Sequence number in results](img/quickstart-py-conditional-escrow-8.png)
 
 # Code Walkthrough
 
 You can download the [Modular Tutorials](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} in the source repository for this website.
-
-## getConditionAndFulfillment.js
-
-To generate a condition/fulfillment pair, use Node.js to run the `getConditionAndFulfillment.js` script.
-
-```javascript
-function getConditionAndFulfillment() {
-```
-
-Instantiate the `five-bells-condition` and `crypto` libraries.
-
-```javascript
-  const cc = require('five-bells-condition')
-  const crypto = require('crypto')
-```
-
-Create a random 32-byte seed string.
-
-```javascript
-  const preimageData = crypto.randomBytes(32)
-```
-
-Create a fulfillment object.
-
-```javascript
-  const fulfillment = new cc.PreimageSha256()
-```
-
-Generate a fulfillment code.
-
-```javascript
-  fulfillment.setPreimage(preimageData)
-```
-
-Generate the condition value based on the fulfillment value.
-
-```javascript
-  const condition = fulfillment.getConditionBinary().toString('hex').toUpperCase()
-```
-
-Return the condition.
-
-```javascript
-  console.log('Condition:', condition)
-```
-
-Convert the fulfillment code to a hexadecimal string.
-
-```javascript
-  const fulfillment_hex = fulfillment.serializeBinary().toString('hex').toUpperCase()
-```
-
-Return the fulfillment code. Keep it secret until you want to finish the escrow.
-
-```javascript
-  console.log('Fulfillment:', fulfillment_hex)
-}
-getConditionAndFulfillment()
-```
 
 ## mod9.py
 
@@ -197,12 +139,41 @@ from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
 from datetime import datetime
 from xrpl.models.transactions import EscrowCreate, EscrowFinish
+from os import urandom
+from cryptoconditions import PreimageSha256
 ```
 
 Create a global variable pointing to Testnet.
 
 ```python
 testnet_url = "https://s.altnet.rippletest.net:51234"
+```
+
+### generate_condition
+
+Generate the _condition_ and _fulfillment_ values for the escrow.
+
+```python
+def generate_condition():
+```
+
+Set a variable to 32 random bytes.
+
+```python
+    randy = urandom(32)
+```
+
+Use the 32-byte random variable as the argument for the `PreimageSha256` functino.
+
+```python
+    fulfillment = PreimageSha256(preimage=randy)
+```
+
+Return the binary condition and the binary serialized (fulfillment) value.
+
+```python
+    return (fulfillment.condition_binary.hex().upper(),
+            fulfillment.serialize_binary().hex().upper())
 ```
 
 ### add_seconds
@@ -342,13 +313,20 @@ from mod8 import get_escrows, cancel_time_escrow, get_transaction
 Import new functions for conditional escrows from module 9.
 
 ```python
-from mod9 import create_conditional_escrow, finish_conditional_escrow
+from mod9 import create_conditional_escrow, finish_conditional_escrow, generate_condition
 
 ```
 
 Add handlers for creating and finishing conditional escrows.
 
 ```python
+def get_condition():
+    results = generate_condition()
+    ent_standby_escrow_condition.delete(0, tk.END)
+    ent_standby_escrow_condition.insert(0, results[0])
+    ent_operational_escrow_fulfillment.delete(0, tk.END)
+    ent_operational_escrow_fulfillment.insert(0, results[1])
+    
 def standby_create_conditional_escrow():
     results = create_conditional_escrow(
         ent_standby_seed.get(),
@@ -443,9 +421,11 @@ def operational_send_xrp():
     text_operational_results.insert("1.0",json.dumps(response.result,indent=4))
     get_standby_account_info()
     get_operational_account_info()
+```
 
+Rename the window.
 
-# Create a new window with the title "Conditional Escrow Example"
+```python
 window = tk.Tk()
 window.title("Conditional Escrow Example")
 
@@ -522,12 +502,6 @@ lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
 lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
 ent_operational_balance = tk.Entry(master=frm_form, width=50)
-lbl_operational_sequence_number = tk.Label(master=frm_form, text="Sequence Number")
-ent_operational_sequence_number = tk.Entry(master=frm_form, width=50)
-lbl_operational_escrow_owner=tk.Label(master=frm_form, text="Escrow Owner")
-ent_operational_escrow_owner=tk.Entry(master=frm_form, width=50)
-lbl_operational_look_up = tk.Label(master=frm_form, text="Transaction to Look Up")
-ent_operational_look_up = tk.Entry(master=frm_form, width=50)
 ```
 
 Add a field for the escrow fulfillment value.
@@ -535,6 +509,12 @@ Add a field for the escrow fulfillment value.
 ```python
 lbl_operational_escrow_fulfillment = tk.Label(master=frm_form, text="Escrow Fulfillment")
 ent_operational_escrow_fulfillment = tk.Entry(master=frm_form, width=50)
+lbl_operational_sequence_number = tk.Label(master=frm_form, text="Sequence Number")
+ent_operational_sequence_number = tk.Entry(master=frm_form, width=50)
+lbl_operational_escrow_owner=tk.Label(master=frm_form, text="Escrow Owner")
+ent_operational_escrow_owner=tk.Entry(master=frm_form, width=50)
+lbl_operational_look_up = tk.Label(master=frm_form, text="Transaction to Look Up")
+ent_operational_look_up = tk.Entry(master=frm_form, width=50)
 lbl_operational_results = tk.Label(master=frm_form,text='Results')
 text_operational_results = tk.Text(master=frm_form, height = 20, width = 65)
 
@@ -586,12 +566,15 @@ btn_standby_send_xrp.grid(row = 2, column = 2, sticky = "nsew")
 Add a **Create Conditional Escrow** button to the Standby grid.
 
 ```python
+btn_standby_get_condition = tk.Button(master=frm_form, text="Get Condition",
+                                      command = get_condition)
+btn_standby_get_condition.grid(row=4, column=2, sticky="nsew")
 btn_standby_create_escrow = tk.Button(master=frm_form, text="Create Conditional Escrow",
                                  command = standby_create_conditional_escrow)
-btn_standby_create_escrow.grid(row = 4, column = 2, sticky="nsew")
+btn_standby_create_escrow.grid(row=5, column = 2, sticky="nsew")
 btn_standby_cancel_escrow = tk.Button(master=frm_form, text="Cancel Escrow",
                                  command = standby_cancel_time_escrow)
-btn_standby_cancel_escrow.grid(row=5,column = 2, sticky="nsew")
+btn_standby_cancel_escrow.grid(row=6,column = 2, sticky="nsew")
 
 # Create the Operational Account Buttons
 btn_get_operational_account = tk.Button(master=frm_form,
