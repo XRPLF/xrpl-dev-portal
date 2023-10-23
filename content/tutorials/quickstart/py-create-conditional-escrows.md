@@ -28,14 +28,12 @@ Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-p
 In a terminal window, install the `cryptoconditions` module with this command:
 
 ```bash
-pip install cryptoconditions`
+pip install cryptoconditions
 ```
 
 ## Usage
 
-### Create Conditional Escrow
-
-You create a condition-based escrow using a fulfillment code associated with a condition code. 
+### Get Test Accounts
 
 To get test accounts:
  
@@ -65,10 +63,10 @@ Click **Get Condition** to generate a condition/fulfillment pair and populate th
 ### Create Conditional Escrow:
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nWaMAr84qR0?si=LkF-vwQ3QJ4XNhJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IUfSX5RKahs?si=7kV0T2NTtqsZfpvX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
-When you create a conditional escrow, you need to specify the `Condition` value you generated above. You can also set a cancel date and time, after which the escrow is no longer available.  
+When you create a conditional escrow, you need to specify the `Condition` value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.  
 
 To create a conditional escrow:
 
