@@ -3938,15 +3938,11 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/configure-rippled/server-modes/index.md
         targets:
             - en
 
-    -   name: サーバの種類
-        html: server-modes.html
-        parent: configure-rippled.html
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/infrastructure/configure-rippled/server-modes/index.md"
         targets:
             - ja
 
@@ -3967,15 +3963,11 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/configure-rippled/data-retention/index.md
         targets:
             - en
 
-    -   name: データの保存
-        html: data-retention.html
-        parent: configure-rippled.html
-        template: pagetype-category.html.jinja
+    -   md: "@i18n/ja/infrastructure/configure-rippled/data-retention/index.md"
         targets:
             - ja
 
