@@ -285,15 +285,15 @@
         <li class="nav-item level-1"><a class="nav-link" href="#create-conditional-escrows-using-python">Create Conditional Escrows Using Python</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#usage">Usage</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-escrow">Create Escrow</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#get-test-accounts">Get Test Accounts</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#create-conditional-escrow">Create Conditional Escrow:</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#finish-conditional-escrow">Finish Conditional Escrow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#get-escrows">Get Escrows</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#cancel-escrow">Cancel Escrow</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#oh-no-i-forgot-to-save-the-sequence-number">Oh No! I Forgot to Save the Sequence Number!</a></li>
         <li class="nav-item level-1"><a class="nav-link" href="#code-walkthrough">Code Walkthrough</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#getconditionandfulfillmentjs">getConditionAndFulfillment.js</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#mod9py">mod9.py</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#generate_condition">generate_condition</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#add_seconds">add_seconds</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#create_conditional_escrow">create_conditional_escrow</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#finish_conditional_escrow">finish_conditional_escrow</a></li>
@@ -327,7 +327,7 @@
 <p>This example shows how to:</p>
 <ol>
 <li>
-<p>Create escrow payments that become available when any account enters a fulfillment code.</p>
+<p>Create escrow payments that become available when an account enters a fulfillment code.</p>
 </li>
 <li>
 <p>Complete a conditional escrow transaction.</p>
@@ -339,21 +339,11 @@
 <p><a href="img/quickstart-py-conditional-escrow-1.png"><img alt="Conditional Escrow Tester Form" src="img/quickstart-py-conditional-escrow-1.png"/></a></p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <p>Download and expand the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/" target="_blank">Quickstart Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> archive.</p>
+<p>In a terminal window, install the <code>cryptoconditions</code> module with this command:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">pip<span class="w"> </span>install<span class="w"> </span>cryptoconditions
+</code></pre></div>
 <h2 id="usage">Usage<a aria-hidden="true" class="hover_anchor" href="#usage"><i class="fa fa-link"></i></a></h2>
-<h3 id="create-escrow">Create Escrow<a aria-hidden="true" class="hover_anchor" href="#create-escrow"><i class="fa fa-link"></i></a></h3>
-<p>You  create a condition-based escrow using a fulfillment code associated with a condition code. Create the condition/fulfillment pair using the <code>five-bells-condition</code> application.</p>
-<p>Install <code>five-bells-condition</code>:</p>
-<ol>
-<li>In a terminal window, navigate to your local <code>Quickstart</code> directory (for convenience).</li>
-<li>Enter the command <code>npm install five-bells-condition</code>.</li>
-</ol>
-<p>To create a condition/fulfillment pair:</p>
-<ol>
-<li>In a terminal window, navigate to your <code>Quickstart</code> directory.</li>
-<li>Enter the command <code>node getConditionAndFulfillment.js</code>.</li>
-<li>Copy and save the generated Condition and Fulfillment pair.</li>
-</ol>
-<p><a href="img/conditional-escrow2.png"><img alt="Condition and Fulfillment" src="img/conditional-escrow2.png"/></a></p>
+<h3 id="get-test-accounts">Get Test Accounts<a aria-hidden="true" class="hover_anchor" href="#get-test-accounts"><i class="fa fa-link"></i></a></h3>
 <p>To get test accounts:</p>
 <ol>
 <li>Open and run <code>lesson9-conditional-escrow.py</code>.</li>
@@ -377,10 +367,13 @@
 </ol>
 </li>
 </ol>
-<p><a href="img/quickstart-py-conditional-escrow-2.png"><img alt="Escrow Tester with Account Information" src="img/quickstart-py-conditional-escrow-2.png"/></a></p>
+<p><a href="img/quickstart-py-conditional-escrow-2.png"><img alt="Escrow Example with Account Information" src="img/quickstart-py-conditional-escrow-2.png"/></a></p>
+<h4 id="get-a-condition-and-fulfillment">Get a Condition and Fulfillment<a aria-hidden="true" class="hover_anchor" href="#get-a-condition-and-fulfillment"><i class="fa fa-link"></i></a></h4>
+<p>Click <strong>Get Condition</strong> to generate a condition/fulfillment pair and populate the fields on the form. You can copy the values and store them in a text file for safe keeping. </p>
+<p><a href="img/quickstart-py-conditional-escrow-3.png"><img alt="Escrow Example with Condition and Fulfillment" src="img/quickstart-py-conditional-escrow-3.png"/></a></p>
 <h3 id="create-conditional-escrow">Create Conditional Escrow:<a aria-hidden="true" class="hover_anchor" href="#create-conditional-escrow"><i class="fa fa-link"></i></a></h3>
 <div align="center">
-<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/nWaMAr84qR0?si=LkF-vwQ3QJ4XNhJA" title="YouTube video player" width="560"></iframe>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/IUfSX5RKahs?si=7kV0T2NTtqsZfpvX" title="YouTube video player" width="560"></iframe>
 </div>
 <p>When you create a conditional escrow, you need to specify the <code>Condition</code> value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.  </p>
 <p>To create a conditional escrow:</p>
@@ -388,14 +381,13 @@
 <li>Enter an <strong>Amount</strong> to transfer.</li>
 <li>Copy the <strong>Operational Account</strong> value.</li>
 <li>Paste it in the <strong>Destination Account</strong> field.</li>
-<li>Enter the <strong>Escrow Condition</strong> value.</li>
 <li>Enter the <strong>Escrow Cancel (seconds)</strong> value.</li>
 <li>Click <strong>Create Escrow</strong>.</li>
 <li>Copy and save the <em>Sequence Number</em> of the escrow called out in the <strong>Standby Result</strong> field.</li>
 </ol>
 <p>The escrow is created on the XRP Ledger instance, reserving your requested XRP amount plus the transaction cost.</p>
 <p>When you create an escrow, capture and save the <em>Sequence Number</em> so that you can use it to finish the escrow transaction.</p>
-<p><a href="img/quickstart-py-conditional-escrow-3.png"><img alt="Created Escrow Transaction" src="img/quickstart-py-conditional-escrow-3.png"/></a></p>
+<p><a href="img/quickstart-py-conditional-escrow-4.png"><img alt="Created Escrow Transaction" src="img/quickstart-py-conditional-escrow-4.png"/></a></p>
 <h2 id="finish-conditional-escrow">Finish Conditional Escrow<a aria-hidden="true" class="hover_anchor" href="#finish-conditional-escrow"><i class="fa fa-link"></i></a></h2>
 <p>Any account can finish the conditional escrow any time before the <em>Escrow Cancel</em> time. Following on the example above, you can use the <em>Sequence Number</em> to finish the transaction once the Escrow Cancel time has passed.</p>
 <p>To finish a conditional escrow:</p>
@@ -403,102 +395,89 @@
 <li>Paste the sequence number in the Operational account <strong>Sequence Number</strong> field.</li>
 <li>Enter the <strong>Escrow Condition</strong> value.</li>
 <li>Enter the <strong>Escrow Fulfillment</strong> code for the <code>Condition</code>.</li>
+<li>Copy the <strong>Standby Account</strong> value.</li>
+<li>Paste it into the <strong>Escrow Owner</strong> field.</li>
 <li>Click <strong>Finish Conditional Escrow</strong>.</li>
 </ol>
 <p>The transaction completes and balances are updated for both the Standby and Operational accounts.</p>
-<p><a href="img/quickstart-py-conditional-escrow-4.png"><img alt="Finished Escrow Transaction" src="img/quickstart-py-conditional-escrow-4.png"/></a></p>
+<p><a href="img/quickstart-py-conditional-escrow-5.png"><img alt="Finished Escrow Transaction" src="img/quickstart-py-conditional-escrow-5.png"/></a></p>
 <h2 id="get-escrows">Get Escrows<a aria-hidden="true" class="hover_anchor" href="#get-escrows"><i class="fa fa-link"></i></a></h2>
 <p>Click <strong>Get Escrows</strong> for either the Standby account or the Operational account to see their current list of escrows. </p>
 <h2 id="cancel-escrow">Cancel Escrow<a aria-hidden="true" class="hover_anchor" href="#cancel-escrow"><i class="fa fa-link"></i></a></h2>
-<p>When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the <strong>Escrow Cancel</strong> time are charged the nominal transaction cost (12 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.</p>
+<p>When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. Any account can cancel an escrow once the cancel time has elapsed. Accounts that try to cancel the transaction prior to the <strong>Escrow Cancel</strong> time are charged the nominal transaction cost (about 10-15 drops), but the actual escrow cannot be cancelled until after the Escrow Cancel time.</p>
 <h2 id="oh-no-i-forgot-to-save-the-sequence-number">Oh No! I Forgot to Save the Sequence Number!<a aria-hidden="true" class="hover_anchor" href="#oh-no-i-forgot-to-save-the-sequence-number"><i class="fa fa-link"></i></a></h2>
 <p>If you forget to save the sequence number, you can find it in the escrow transaction record.</p>
 <ol>
 <li>Create a new escrow as described in <a href="#create-escrow">Create Escrow</a>, above.</li>
 <li>Click <strong>Get Escrows</strong> to get the escrow information.</li>
 <li>Copy the <em>PreviousTxnLgrSeq</em> value from the results.
-   <img alt="Transaction ID in Get Escrows results" src="img/quickstart-py-conditional-escrow-5.png"/></li>
+   <img alt="Transaction ID in Get Escrows results" src="img/quickstart-py-conditional-escrow-6.png"/></li>
 <li>Paste the <em>PreviousTxnID</em> in the <strong>Transaction to Look Up</strong> field.
-   <img alt="Transaction to Look Up field" src="img/quickstart-py-conditional-escrow-6.png"/></li>
+   <img alt="Transaction to Look Up field" src="img/quickstart-py-conditional-escrow-7.png"/></li>
 <li>Click <strong>Get Transaction</strong>.</li>
-<li>Locate the <em>Sequence</em> value in the results.
-   <img alt="Sequence number in results" src="img/quickstart-py-conditional-escrow-7.png"/></li>
+<li>Locate the <em>Sequence</em> value in the results.</li>
 </ol>
+<p><img alt="Sequence number in results" src="img/quickstart-py-conditional-escrow-8.png"/></p>
 <h1 id="code-walkthrough">Code Walkthrough<a aria-hidden="true" class="hover_anchor" href="#code-walkthrough"><i class="fa fa-link"></i></a></h1>
 <p>You can download the <a class="github-code-download external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/" target="_blank">Modular Tutorials <i aria-hidden="true" class="fa fa-external-link"></i></a> in the source repository for this website.</p>
-<h2 id="getconditionandfulfillmentjs">getConditionAndFulfillment.js<a aria-hidden="true" class="hover_anchor" href="#getconditionandfulfillmentjs"><i class="fa fa-link"></i></a></h2>
-<p>To generate a condition/fulfillment pair, use Node.js to run the <code>getConditionAndFulfillment.js</code> script.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kd">function</span><span class="w"> </span><span class="nx">getConditionAndFulfillment</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</code></pre></div>
-<p>Instantiate the <code>five-bells-condition</code> and <code>crypto</code> libraries.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">cc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'five-bells-condition'</span><span class="p">)</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">crypto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'crypto'</span><span class="p">)</span>
-</code></pre></div>
-<p>Create a random 32-byte seed string.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">preimageData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">crypto</span><span class="p">.</span><span class="nx">randomBytes</span><span class="p">(</span><span class="mf">32</span><span class="p">)</span>
-</code></pre></div>
-<p>Create a fulfillment object.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fulfillment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">cc</span><span class="p">.</span><span class="nx">PreimageSha256</span><span class="p">()</span>
-</code></pre></div>
-<p>Generate a fulfillment code.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="w">  </span><span class="nx">fulfillment</span><span class="p">.</span><span class="nx">setPreimage</span><span class="p">(</span><span class="nx">preimageData</span><span class="p">)</span>
-</code></pre></div>
-<p>Generate the condition value based on the fulfillment value.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fulfillment</span><span class="p">.</span><span class="nx">getConditionBinary</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
-</code></pre></div>
-<p>Return the condition.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Condition:'</span><span class="p">,</span><span class="w"> </span><span class="nx">condition</span><span class="p">)</span>
-</code></pre></div>
-<p>Convert the fulfillment code to a hexadecimal string.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">fulfillment_hex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fulfillment</span><span class="p">.</span><span class="nx">serializeBinary</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">()</span>
-</code></pre></div>
-<p>Return the fulfillment code. Keep it secret until you want to finish the escrow.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Fulfillment:'</span><span class="p">,</span><span class="w"> </span><span class="nx">fulfillment_hex</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">getConditionAndFulfillment</span><span class="p">()</span>
-</code></pre></div>
 <h2 id="mod9py">mod9.py<a aria-hidden="true" class="hover_anchor" href="#mod9py"><i class="fa fa-link"></i></a></h2>
 <p>Import dependencies.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="kn">import</span> <span class="nn">xrpl</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="kn">import</span> <span class="nn">xrpl</span>
 <span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">xrpl.models.transactions</span> <span class="kn">import</span> <span class="n">EscrowCreate</span><span class="p">,</span> <span class="n">EscrowFinish</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">urandom</span>
+<span class="kn">from</span> <span class="nn">cryptoconditions</span> <span class="kn">import</span> <span class="n">PreimageSha256</span>
 </code></pre></div>
 <p>Create a global variable pointing to Testnet.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="n">testnet_url</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234"</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="n">testnet_url</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234"</span>
+</code></pre></div>
+<h3 id="generate_condition">generate_condition<a aria-hidden="true" class="hover_anchor" href="#generate_condition"><i class="fa fa-link"></i></a></h3>
+<p>Generate the <em>condition</em> and <em>fulfillment</em> values for the escrow.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="k">def</span> <span class="nf">generate_condition</span><span class="p">():</span>
+</code></pre></div>
+<p>Set a variable to 32 random bytes.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">    <span class="n">randy</span> <span class="o">=</span> <span class="n">urandom</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span>
+</code></pre></div>
+<p>Use the 32-byte random variable as the argument for the <code>PreimageSha256</code> functino.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">    <span class="n">fulfillment</span> <span class="o">=</span> <span class="n">PreimageSha256</span><span class="p">(</span><span class="n">preimage</span><span class="o">=</span><span class="n">randy</span><span class="p">)</span>
+</code></pre></div>
+<p>Return the binary condition and the binary serialized (fulfillment) value.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">    <span class="k">return</span> <span class="p">(</span><span class="n">fulfillment</span><span class="o">.</span><span class="n">condition_binary</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span>
+            <span class="n">fulfillment</span><span class="o">.</span><span class="n">serialize_binary</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 </code></pre></div>
 <h3 id="add_seconds">add_seconds<a aria-hidden="true" class="hover_anchor" href="#add_seconds"><i class="fa fa-link"></i></a></h3>
 <p>Create a date in the Ripple epoch, adding the specified number of seconds.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">def</span> <span class="nf">add_seconds</span><span class="p">(</span><span class="n">numOfSeconds</span><span class="p">):</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="k">def</span> <span class="nf">add_seconds</span><span class="p">(</span><span class="n">numOfSeconds</span><span class="p">):</span>
 </code></pre></div>
 <p>Create a new_date variable.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12">    <span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">    <span class="n">new_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 </code></pre></div>
 <p>Convert the date to a Ripple time object.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">    <span class="k">if</span> <span class="n">new_date</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">    <span class="k">if</span> <span class="n">new_date</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
         <span class="n">new_date</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">datetime_to_ripple_time</span><span class="p">(</span><span class="n">new_date</span><span class="p">)</span>
 </code></pre></div>
 <p>Add the requested seconds to the Ripple formatted date variable.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">        <span class="n">new_date</span> <span class="o">=</span> <span class="n">new_date</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">numOfSeconds</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">        <span class="n">new_date</span> <span class="o">=</span> <span class="n">new_date</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">numOfSeconds</span><span class="p">)</span>
 </code></pre></div>
 <p>Return the result.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">    <span class="k">return</span> <span class="n">new_date</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">    <span class="k">return</span> <span class="n">new_date</span>
 </code></pre></div>
 <h3 id="create_conditional_escrow">create_conditional_escrow<a aria-hidden="true" class="hover_anchor" href="#create_conditional_escrow"><i class="fa fa-link"></i></a></h3>
 <p>You create conditional escrows using the same <strong>EscrowCreate</strong> model you used for a time-based escrow, but instead of a finish time, you provide a condition that must be met to complete the transaction.</p>
 <p>Pass the <em>seed</em> for the sending account, the <em>amount</em> to hold in escrow, the <em>destination</em> account to receive the escrow funds, the number of seconds until the escrow will <em>cancel</em>, and a <em>condition</em> value that will be matched with a <em>fulfillment</em> value to complete the escrow.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="k">def</span> <span class="nf">create_conditional_escrow</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">cancel</span><span class="p">,</span> <span class="n">condition</span><span class="p">):</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">def</span> <span class="nf">create_conditional_escrow</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">destination</span><span class="p">,</span> <span class="n">cancel</span><span class="p">,</span> <span class="n">condition</span><span class="p">):</span>
 </code></pre></div>
 <p>Instantiate a wallet and connect to Testnet.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">    <span class="n">wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">    <span class="n">wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">client</span><span class="o">=</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div>
 <p>Create a <em>cancel_date</em> variable, adding your specified number of seconds to the current Ripple epoch date.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18">    <span class="n">cancel_date</span> <span class="o">=</span> <span class="n">add_seconds</span><span class="p">(</span><span class="n">cancel</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">    <span class="n">cancel_date</span> <span class="o">=</span> <span class="n">add_seconds</span><span class="p">(</span><span class="n">cancel</span><span class="p">)</span>
 </code></pre></div>
 <p>Define the transaction with your provided values.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19">    <span class="n">escrow_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">EscrowCreate</span><span class="p">(</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">    <span class="n">escrow_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">EscrowCreate</span><span class="p">(</span>
         <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
         <span class="n">amount</span><span class="o">=</span><span class="n">amount</span><span class="p">,</span>
         <span class="n">destination</span><span class="o">=</span><span class="n">destination</span><span class="p">,</span>
@@ -507,7 +486,7 @@
     <span class="p">)</span> 
 </code></pre></div>
 <p>Submit the transaction and return the results.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">escrow_tx</span><span class="p">,</span><span class="n">client</span><span class="p">,</span><span class="n">wallet</span><span class="p">)</span>
         <span class="n">reply</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">result</span>
@@ -518,14 +497,14 @@
 <h3 id="finish_conditional_escrow">finish_conditional_escrow<a aria-hidden="true" class="hover_anchor" href="#finish_conditional_escrow"><i class="fa fa-link"></i></a></h3>
 <p>At any time prior to the cancel date, the destination account can fulfill the escrow. </p>
 <p>Pass the <em>seed</em> for the receiving account, the <em>owner</em> (sending account), the <em>sequence</em> number for the escrow, the <em>condition</em> value, and the matching <em>fulfillment</em> value.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="k">def</span> <span class="nf">finish_conditional_escrow</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">fulfillment</span><span class="p">):</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="k">def</span> <span class="nf">finish_conditional_escrow</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">owner</span><span class="p">,</span> <span class="n">sequence</span><span class="p">,</span> <span class="n">condition</span><span class="p">,</span> <span class="n">fulfillment</span><span class="p">):</span>
 </code></pre></div>
 <p>Instantiate the account wallet and connect to Testnet.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22">    <span class="n">wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18">    <span class="n">wallet</span><span class="o">=</span><span class="n">Wallet</span><span class="o">.</span><span class="n">from_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
     <span class="n">client</span><span class="o">=</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div>
 <p>Define the <strong>EscrowFinish</strong> transaction, including both the condition and the fulfillment values.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23">    <span class="n">finish_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">EscrowFinish</span><span class="p">(</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19">    <span class="n">finish_tx</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">EscrowFinish</span><span class="p">(</span>
         <span class="n">account</span><span class="o">=</span><span class="n">wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
         <span class="n">owner</span><span class="o">=</span><span class="n">owner</span><span class="p">,</span>
         <span class="n">offer_sequence</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">sequence</span><span class="p">),</span>
@@ -534,7 +513,7 @@
     <span class="p">)</span>
 </code></pre></div>
 <p>Submit the transaction and report the results.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">    <span class="n">reply</span><span class="o">=</span><span class="s2">""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">response</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">finish_tx</span><span class="p">,</span><span class="n">client</span><span class="p">,</span><span class="n">wallet</span><span class="p">)</span>
         <span class="n">reply</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">result</span>
@@ -544,7 +523,7 @@
 </code></pre></div>
 <h2 id="lesson9-conditional-escrowpy">lesson9-conditional-escrow.py<a aria-hidden="true" class="hover_anchor" href="#lesson9-conditional-escrowpy"><i class="fa fa-link"></i></a></h2>
 <p>This example builds on <code>lesson8-time-escrow.py</code> to reuse fields, buttons, and functions that apply to both time-based and conditional escrows. Updates are highlighted below.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
 <span class="kn">import</span> <span class="nn">xrpl</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
@@ -552,10 +531,17 @@
 <span class="kn">from</span> <span class="nn">mod8</span> <span class="kn">import</span> <span class="n">get_escrows</span><span class="p">,</span> <span class="n">cancel_time_escrow</span><span class="p">,</span> <span class="n">get_transaction</span>
 </code></pre></div>
 <p>Import new functions for conditional escrows from module 9.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="kn">from</span> <span class="nn">mod9</span> <span class="kn">import</span> <span class="n">create_conditional_escrow</span><span class="p">,</span> <span class="n">finish_conditional_escrow</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kn">from</span> <span class="nn">mod9</span> <span class="kn">import</span> <span class="n">create_conditional_escrow</span><span class="p">,</span> <span class="n">finish_conditional_escrow</span><span class="p">,</span> <span class="n">generate_condition</span>
 </code></pre></div>
 <p>Add handlers for creating and finishing conditional escrows.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="k">def</span> <span class="nf">standby_create_conditional_escrow</span><span class="p">():</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="k">def</span> <span class="nf">get_condition</span><span class="p">():</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">generate_condition</span><span class="p">()</span>
+    <span class="n">ent_standby_escrow_condition</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_standby_escrow_condition</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ent_operational_escrow_fulfillment</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_operational_escrow_fulfillment</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">standby_create_conditional_escrow</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">create_conditional_escrow</span><span class="p">(</span>
         <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
         <span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -649,10 +635,9 @@
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">get_standby_account_info</span><span class="p">()</span>
     <span class="n">get_operational_account_info</span><span class="p">()</span>
-
-
-<span class="c1"># Create a new window with the title "Conditional Escrow Example"</span>
-<span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+</code></pre></div>
+<p>Rename the window.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="n">window</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
 <span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Conditional Escrow Example"</span><span class="p">)</span>
 
 <span class="c1"># Form frame</span>
@@ -672,7 +657,7 @@
 <span class="n">ent_standby_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 </code></pre></div>
 <p>Add a field for the escrow condition.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="n">lbl_standby_escrow_condition</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Escrow Condition"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="n">lbl_standby_escrow_condition</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Escrow Condition"</span><span class="p">)</span>
 <span class="n">ent_standby_escrow_condition</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_standby_escrow_cancel</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Escrow Cancel (seconds)"</span><span class="p">)</span>
 <span class="n">ent_standby_escrow_cancel</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
@@ -696,7 +681,7 @@
 <span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <p>Insert the condition field in the standby grid.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="n">lbl_standby_escrow_condition</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="n">lbl_standby_escrow_condition</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
 <span class="n">ent_standby_escrow_condition</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">lbl_standby_escrow_cancel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
 <span class="n">ent_standby_escrow_cancel</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -722,16 +707,16 @@
 <span class="n">ent_operational_destination</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
 <span class="n">ent_operational_balance</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<p>Add a field for the escrow fulfillment value.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="n">lbl_operational_escrow_fulfillment</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Escrow Fulfillment"</span><span class="p">)</span>
+<span class="n">ent_operational_escrow_fulfillment</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_sequence_number</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Sequence Number"</span><span class="p">)</span>
 <span class="n">ent_operational_sequence_number</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_escrow_owner</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Escrow Owner"</span><span class="p">)</span>
 <span class="n">ent_operational_escrow_owner</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_look_up</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Transaction to Look Up"</span><span class="p">)</span>
 <span class="n">ent_operational_look_up</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-</code></pre></div>
-<p>Add a field for the escrow fulfillment value.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="n">lbl_operational_escrow_fulfillment</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Escrow Fulfillment"</span><span class="p">)</span>
-<span class="n">ent_operational_escrow_fulfillment</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">lbl_operational_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s1">'Results'</span><span class="p">)</span>
 <span class="n">text_operational_results</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">65</span><span class="p">)</span>
 
@@ -749,7 +734,7 @@
 <span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 </code></pre></div>
 <p>Insert the <strong>Fulfillment</strong> field in the operational grid, moving the other fields down so as to align the <strong>Condition</strong> and <strong>Fulfillment</strong> fields horizontally.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-31" id="codeblock-31button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-31"><span class="n">lbl_operational_escrow_fulfillment</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="n">lbl_operational_escrow_fulfillment</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
 <span class="n">ent_operational_escrow_fulfillment</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
 <span class="n">lbl_operational_sequence_number</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
 <span class="n">ent_operational_sequence_number</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
@@ -777,12 +762,15 @@
 <span class="n">btn_standby_send_xrp</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
 </code></pre></div>
 <p>Add a <strong>Create Conditional Escrow</strong> button to the Standby grid.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-32" id="codeblock-32button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-32"><span class="n">btn_standby_create_escrow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Conditional Escrow"</span><span class="p">,</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="n">btn_standby_get_condition</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Condition"</span><span class="p">,</span>
+                                      <span class="n">command</span> <span class="o">=</span> <span class="n">get_condition</span><span class="p">)</span>
+<span class="n">btn_standby_get_condition</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_create_escrow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Conditional Escrow"</span><span class="p">,</span>
                                  <span class="n">command</span> <span class="o">=</span> <span class="n">standby_create_conditional_escrow</span><span class="p">)</span>
-<span class="n">btn_standby_create_escrow</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_create_escrow</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
 <span class="n">btn_standby_cancel_escrow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cancel Escrow"</span><span class="p">,</span>
                                  <span class="n">command</span> <span class="o">=</span> <span class="n">standby_cancel_time_escrow</span><span class="p">)</span>
-<span class="n">btn_standby_cancel_escrow</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">column</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_cancel_escrow</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">column</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
 
 <span class="c1"># Create the Operational Account Buttons</span>
 <span class="n">btn_get_operational_account</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
@@ -797,7 +785,7 @@
 <span class="n">btn_op_send_xrp</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span> <span class="o">=</span> <span class="s2">"nsew"</span><span class="p">)</span>
 </code></pre></div>
 <p>Add a <strong>Finish Escrow</strong> button to the operational grid.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="n">btn_op_finish_escrow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Finish Escrow"</span><span class="p">,</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="n">btn_op_finish_escrow</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Finish Escrow"</span><span class="p">,</span>
                             <span class="n">command</span> <span class="o">=</span> <span class="n">operational_finish_conditional_escrow</span><span class="p">)</span>
 <span class="n">btn_op_finish_escrow</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
 <span class="n">btn_op_get_escrows</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Escrows"</span><span class="p">,</span>
@@ -1523,6 +1511,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2424,6 +2417,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>

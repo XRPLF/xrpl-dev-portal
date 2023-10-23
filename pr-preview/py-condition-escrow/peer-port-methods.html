@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Peer Port Methods | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/peer-port-methods.html" />
-    <meta property="og:description" content="Special API method for sharing network topology and status metrics." />
-    <meta name="description" content="Special API method for sharing network topology and status metrics." />
+    <meta property="og:description" content="Special API methods for sharing network topology and status metrics, served on the XRPL Peer Protocol port." />
+    <meta name="description" content="Special API methods for sharing network topology and status metrics, served on the XRPL Peer Protocol port." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -253,10 +253,14 @@
     <li class="active breadcrumb-item"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
     <li class="active breadcrumb-item">Peer Port Methods</li>
   </ul>
-</nav><!--/.breadcrumbs-wrap-->  <section class="p-0">
+</nav><!--/.breadcrumbs-wrap-->
+  <section class="p-0">
     <article class="content">
-      <h1 id="main-page-header">Peer Port Methods</h1>
-<p class="blurb">Special API method for sharing network topology and status metrics.</p>
+      <h1 id="peer-port-methods">Peer Port Methods<a aria-hidden="true" class="hover_anchor" href="#peer-port-methods"><i class="fa fa-link"></i></a></h1>
+<p>Separate from the <a href="http-websocket-apis.html">WebSocket / HTTP APIs</a>, <code>rippled</code> servers provide a few special API methods from the same port they use for XRP Ledger <a href="peer-protocol.html">peer protocol</a> communications. These methods provide status information about the server itself and its connectivity to the peer-to-peer network, and are intended mainly for monitoring and administration.</p>
+<p><strong>Security:</strong> Most <code>rippled</code> servers use a self-signed TLS certificate to respond to peer port requests. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the <code>--insecure</code> flag) to display a response from those servers, or configure the server with a TLS certificate signed by a known Certificate Authority.</p>
+
+
 
 
 <div class="children-display">
@@ -268,6 +272,7 @@
   </ul>
 </div>    </article>
   </section>
+
       </main>
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
@@ -961,6 +966,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1862,6 +1872,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>

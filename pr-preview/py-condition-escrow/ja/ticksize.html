@@ -301,7 +301,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ティックサイズ">ティックサイズ<a aria-hidden="true" class="hover_anchor" href="#ティックサイズ"><i class="fa fa-link"></i></a></h1>
-<p><em>（<a href="known-amendments.html#ticksize">TickSize Amendment</a>が必要です。）</em></p>
+<p><em>（<a href="known-amendments.html#ticksize">TickSize Amendment</a>により追加されました。）</em></p>
 <p>オファーがオーダーブックに対して発行されると、そのオファーに関係する通貨のイシュアーによって設定された<code>TickSize</code>の値に基づいて、為替レートが切り捨てられます。トレーダーがXRPと発行済み通貨を交換するオファーを出した場合は、その発行済み通貨のイシュアーからの<code>TickSize</code>が適用されます。トレーダーが2種類の発行済み通貨を交換するオファーを出した場合は、小さい方の<code>TickSize</code>の値（有効数字の桁数が少ない値）がこのオファーに適用されます。いずれの通貨にも<code>TickSize</code>が設定されていない場合、デフォルトが適用されます。</p>
 <p>オーダーブックにオファーが発行されると、<code>TickSize</code> によりオファーの為替レートの <em>有効数字</em> の桁数が切り捨てられます。イシュアーは<a href="accountset.html">AccountSetトランザクション</a>を使用して<code>TickSize</code>を<code>3</code>～<code>15</code>の整数に設定できます。為替レートは有効数字と指数で表されますが、<code>TickSize</code>は指数には影響しません。これにより、XRP Ledgerでは価値が大きく異なる資産（ハイパーインフレ通貨と希少通貨など）間の為替レートを表せます。イシュアーが設定する<code>TickSize</code>が小さいほど、トレーダーはより多くの増分をオファーして、既存のオファーよりも高い為替レートと見えるようにする必要があります。</p>
 <p><code>TickSize</code>は、オファーの即時に実行可能な部分には影響しません。（この理由から、<code>tfImmediateOrCancel</code>が指定されたOfferCreateトランザクションは<code>TickSize</code> の値の影響を受けません。）オファーを完全に実行できない場合、トランザクション処理エンジンは<code>TickSize</code>に基づいて為替レートを計算して切り捨てを行います。次にエンジンは、切り捨てた後の為替レートに一致するように、「重要性が低い」側からのオファーの残額を丸めます。デフォルトのOfferCreateトランザクション（「買い」オファー）の場合、<code>TakerPays</code>の額（購入額）が丸められます。<code>tfSell</code>フラグが有効な場合（「売り」オファー）<code>TakerGets</code>の額（売却額）が丸められます。</p>
@@ -1030,6 +1030,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1931,6 +1936,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>

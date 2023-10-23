@@ -713,7 +713,7 @@
         <span class="n">ent_standby_nft_offer_index</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">op_create_sell_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">create_sell_offer</span><span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -741,7 +741,7 @@
         <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>  
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 <span class="k">def</span> <span class="nf">op_accept_buy_offer</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">accept_buy_offer</span> <span class="p">(</span>
         <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
@@ -759,7 +759,7 @@
         <span class="n">ent_operational_nft_offer_index</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
     <span class="p">)</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 
 <span class="c1"># Module 3 Handlers</span>
@@ -852,10 +852,10 @@
 <span class="k">def</span> <span class="nf">get_balances</span><span class="p">():</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_balance</span><span class="p">(</span><span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">get_balance</span><span class="p">(</span><span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span> <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
     <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
-    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>    
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="c1"># Module 1 Handlers</span>
 <span class="k">def</span> <span class="nf">get_standby_account</span><span class="p">():</span>
@@ -1148,7 +1148,7 @@
                               <span class="n">command</span> <span class="o">=</span> <span class="n">operational_burn_token</span><span class="p">)</span>
 <span class="n">btn_op_burn_token</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
 </code></pre></div>
-<p>Add buttons for transferring NFTs. </p>
+<p>Add buttons for transferring NFTs.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-46" id="codeblock-46button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-46"><span class="n">btn_op_create_sell_offer</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Create Sell Offer"</span><span class="p">,</span>
                                           <span class="n">command</span> <span class="o">=</span> <span class="n">op_create_sell_offer</span><span class="p">)</span>
 <span class="n">btn_op_create_sell_offer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
@@ -1879,6 +1879,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2780,6 +2785,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>
