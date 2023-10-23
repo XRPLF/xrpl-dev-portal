@@ -773,7 +773,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/networks-and-servers/amendments.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1589,6 +1588,12 @@ pages:
 
         # TODO: translate
     -   md: tutorials/quickstart/py-authorize-minter.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/py-batch-minting.md
         targets:
             - en
             - ja
@@ -2993,6 +2998,12 @@ pages:
 
     -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/rippled-server-states.md"
         targets:
+            - ja
+    
+    # TODO: translate
+    -   md: references/http-websocket-apis/api-conventions/ctid.md
+        targets:
+            - en
             - ja
 
 # rippled Public Methods

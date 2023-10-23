@@ -58,7 +58,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 |:--------------|:-------------|:--------------|:------------------------------|
 | `tfBurnable` | `0x00000001` | 1 | 発行者(または発行者が許可した者)が`NFToken`を破棄できるようにします。(`NFToken`の所有者は常に破棄することができます)。 |
 | `tfOnlyXRP` | `0x00000002` | 2 | 発行された`NFToken`はXRPでのみ売買が可能です。これは、トークンに送金手数料がかかり、発行者がXRP以外のトークンで手数料を受け取りたくない場合に望ましいでしょう。 |
-| `tfTrustLine` | `0x00000004` | 4 | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](trust-lines-and-issuing.html) を作成します。[fixRemoveNFTokenAutoTrustLineの修正][]により、このフラグの設定は無効となります。 |
+| `tfTrustLine` | `0x00000004` | 4 | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](trust-lines-and-issuing.html) を作成します。[fixRemoveNFTokenAutoTrustLine Amendment][]により、このフラグの設定は無効となります。 |
 | `tfTransferable` | `0x00000008` | 8 | 発行された`NFToken`は他の人に譲渡することができます。このフラグが _有効でない_ 場合、トークンは _発行者から_ 、または _発行者へ_ のみ転送することができます。 |
 
 
@@ -106,7 +106,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 
 | エラーコード                    | 説明                                          |
 |:------------------------------|:---------------------------------------------|
-| `temDISABLED`                 | [NonFungibleTokensV1の修正][]は有効ではありません。 |
+| `temDISABLED`                 | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temBAD_NFTOKEN_TRANSFER_FEE` | `TransferFee`が許容範囲外です。 |
 | `temINVALID_FLAG`             | `Flags`値には、許可されていない、または有効なフラグでないビットが有効になっています。[fixRemoveNFTokenAutoTrustLine amendment][]が有効になっている場合、`tfTrustLine`フラグはこのエラーを発生させます。|
 | `temMALFORMED`                | トランザクションが正しく指定されていません。例えば、`URI`フィールドが256バイトより長い場合です。 |

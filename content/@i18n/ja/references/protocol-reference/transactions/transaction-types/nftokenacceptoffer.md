@@ -86,7 +86,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 | エラーコード                         | 説明                                    |
 |:-----------------------------------|:----------------------------------------|
-| `temDISABLED`                 | [NonFungibleTokensV1の修正][]は有効ではありません。 |
+| `temDISABLED`                 | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temMALFORMED`                     | トランザクションのフォーマットが正しくありません。たとえば、`NFTokenSellOffer`と`NFTokenBuyOffer`のどちらも指定されていないか、`NFTokenBrokerFee`に負の値が指定されています。|
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 購入者と販売者が同じアカウントになっています。 |
 | `tecEXPIRED`                       | トランザクションで指定されたオファーの有効期限が既に切れています。 |

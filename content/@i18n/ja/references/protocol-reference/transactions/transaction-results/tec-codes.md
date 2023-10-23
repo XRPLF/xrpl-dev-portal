@@ -29,8 +29,8 @@ labels:
 | `tecINSUFF_FEE` | 136 | 指定された[トランザクションコスト](transaction-cost.html)を支払うのに十分なXRPが送金元アカウントにないため、トランザクションが失敗しました。（この場合、送金元のXRPが指定されたトランザクションコストよりも低い場合でも、トランザクション処理によってすべて消却されます。）この結果は、このトランザクションがコンセンサスセットに含まれるのに十分なネットワークに配布された*後に*アカウントの残高が減少した場合にのみ発生します。そうでない場合、トランザクションは配布される前に[`terINSUF_FEE_B`](ter-codes.html)で失敗します。 |
 | `tecINSUFFICIENT_RESERVE` | 141 | トランザクションによって[必要準備金](reserves.html)が増加し、送信側アカウントの残高を超える可能性があります。[SignerListSet][]、[PaymentChannelCreate][]、[PaymentChannelFund][]、および[EscrowCreate][]からこのエラーコードが返されることがあります。詳細は、[SignerListと準備金](signerlist.html#signerlistと準備金)を参照してください。 |
 | `tecINTERNAL` | 144 | 不明な内部エラーが発生し、トランザクションコストは適用されました。通常はこのエラーは返されません。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
-| `tecINVARIANT_FAILED` | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]が必要です。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
-| `tecKILLED` | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]が必要です。）_ |
+| `tecINVARIANT_FAILED` | 147 | このトランザクションを実行しようとしたところ、不変性チェックが失敗しました。[EnforceInvariants Amendment][]により追加されました。このエラーを再現できる場合は、[問題を報告](https://github.com/XRPLF/rippled/issues)してください。 |
+| `tecKILLED` | 150 | [OfferCreateトランザクション][]がtfFillOrKillフラグを指定しましたが、トランザクションを確定できなかったため、このトランザクションは取り消されました。_（[fix1578 Amendment][]により追加されました。）_ |
 | `tecNEED_MASTER_KEY` | 142 | このトランザクションはマスターキーを必要とする変更（[マスターキーの無効化または残高凍結能力の放棄](accountset.html#accountsetのフラグ)など）を試みました。[新規: rippled 0.28.0][] |
 | `tecNO_ALTERNATIVE_KEY` | 130 | トランザクションが唯一の[トランザクション承認](transactions.html#トランザクションの承認)メソッドを削除しようとしました。これは、レギュラーキーを削除する[SetRegularKeyトランザクション][]、SignerListを削除する[SignerListSetトランザクション][]、またはマスターキーを無効にする[AccountSetトランザクション][]である可能性があります。（`rippled` 0.30.0より前のバージョンでは、このトランザクションは`tecMASTER_DISABLED`と呼ばれていました。） |
 | `tecNO_AUTH` | 134 | トランザクションはトラストラインの残高を、`lsfRequireAuth`フラグが有効になっているアカウントに追加する必要がありましたが、そのトラストラインが承認されていなかったため、失敗しました。トラストラインが存在しない場合は、代わりに`tecNO_LINE`が発生します。 |

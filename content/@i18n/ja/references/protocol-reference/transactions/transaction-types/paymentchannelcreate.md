@@ -8,7 +8,7 @@ labels:
 # PaymentChannelCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "ソース")
 
-_[PayChan Amendment][]が必要です。_
+_[PayChan Amendment][]により追加されました。_
 
 [ペイメントチャンネル](payment-channels.html)を作成し、XRPで資金を供給します。このトランザクションを送信するアドレスが、ペイメントチャネルの「送信元アドレス」となります。
 
