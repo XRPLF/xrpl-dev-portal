@@ -7,7 +7,7 @@ labels:
 ---
 # Checkの取消し
 
-_[Checks Amendment][]が必要です。_
+_[Checks Amendment][]により追加されました。_
 
 このチュートリアルでは、[Check](checks.html)を取り消す手順を説明します。この手順を実行すると、送金を行わずに[レジャーのCheckオブジェクト](check.html)が削除されます。
 

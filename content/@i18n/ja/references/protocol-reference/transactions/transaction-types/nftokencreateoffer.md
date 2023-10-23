@@ -53,7 +53,7 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 
 | エラーコード                    | 説明                                          |
 |:---------------------------------|:------------------------------------------|
-| `temDISABLED`                    | [NonFungibleTokensV1の修正][]は有効ではありません。 |
+| `temDISABLED`                    | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額は発行済み通貨であるが`NFToken`で[`lsfOnlyXRP`フラグ](nftoken.html#nftoken-フラグ)が有効になっている場合などです。 |
 | `temBAD_EXPIRATION`              | 指定された`Expiration`は無効です（例：`0`）。 |
 | `tecDIR_FULL`                    | 送信者がレジャーにすでにあまりにも多くのオブジェクトを所有しているか、またはこのトークンの売買のオファーがあまりにも多く存在しています。 |

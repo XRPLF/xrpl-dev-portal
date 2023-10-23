@@ -52,7 +52,7 @@ IDが[NFTokenOffer](nftokenoffer.html)オブジェクトでないオブジェク
 
 | エラーコード         | 説明                                                     |
 |:-------------------|:--------------------------------------------------------|
-| `temDISABLED`                 | [NonFungibleTokensV1の修正][]は有効ではありません。 |
+| `temDISABLED`                 | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temMALFORMED`     | トランザクションが有効なフォーマットではありませんでした。たとえば、`NFTokenOffers`配列が空であるか、一度にキャンセルできるオファーの最大数を超える数を含んでいた場合です。 |
 | `tecNO_PERMISSION` | `NFTokenOffers`フィールドのIDのうち少なくとも1つが、キャンセルできないオブジェクトを参照しています。例えば、このトランザクションの送信者がオファーの所有者や`Destination`ではない場合や、オブジェクトが`NFTokenOffer`タイプのオブジェクトではなかった場合などです。 |
 

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="{{ currentpage.name|escape }} | {{ target.display_name }}">
     <meta property="og:url" content="https://xrpl.org/{% if currentpage.html != 'index.html' %}{{currentpage.html}}{% endif %}" />
-    <meta property="og:description" content="{% if currentpage.html == 'index.html' %}{{ target.blurb|escape}}{% else %}{{ currentpage.blurb|escape }}{% endif %}" />
-    <meta name="description" content="{% if currentpage.html == 'index.html' %}{{ target.blurb|escape}}{% else %}{{ currentpage.blurb|escape }}{% endif %}" />
+    <meta property="og:description" content="{% if currentpage.blurb %}{{ currentpage.blurb|escape}}{% else %}{{ target.blurb|escape }}{% endif %}" />
+    <meta name="description" content="{% if currentpage.blurb %}{{ currentpage.blurb|escape}}{% else %}{{ target.blurb|escape }}{% endif %}" />
     <meta property="og:image" content="https://xrpl.org/assets/img/{% if currentpage.fb_card %}{{currentpage.fb_card}}{% else %}xrpl-fb-li-card.png{% endif %}" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/{% if currentpage.twitter_card %}{{currentpage.twitter_card}}{% else %}xrpl-twitter-card.png{% endif %}" />

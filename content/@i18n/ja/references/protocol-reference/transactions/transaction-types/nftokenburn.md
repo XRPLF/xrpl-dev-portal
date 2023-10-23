@@ -42,7 +42,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 | エラーコード         | 説明                                                     |
 |:-------------------|:--------------------------------------------------------|
-| `temDISABLED`      | [NonFungibleTokensV1の修正][]は有効ではありません。         |
+| `temDISABLED`      | [NonFungibleTokensV1 Amendment][]は有効ではありません。         |
 | `tecNO_ENTRY`      | 指定された `TokenID` が見つかりませんでした。                 |
 | `tecNO_PERMISSION` | このアカウントにはトークンをBurnする権限がありません。          |
 

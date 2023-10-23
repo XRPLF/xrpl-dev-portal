@@ -36,6 +36,12 @@ A Clio server stores validated ledger data such as transaction metadata, account
 
 When a Clio server receives an API request, it looks up data from these data stores. For requests that require data from the P2P network, the Clio server forwards the request to a P2P server, and then passes the response back to the client.
 
+Clio will **always** forward to `rippled` if any of the following is true:
+
+- `ledger_index` is set to `current` or `closed`.
+- `accounts`, `queue` or `full` are set to `true` for the `ledger` API.
+- `queue` is set to `true` for the `account_info` API.
+- Requested API method (`"command"`) is `submit`, `submit_multisigned`, `fee`, `ledger_closed`, `ledger_current`, `ripple_path_find`, `manifest`, `channel_authorize` or `channel_verify`.
 
 ## See Also
 

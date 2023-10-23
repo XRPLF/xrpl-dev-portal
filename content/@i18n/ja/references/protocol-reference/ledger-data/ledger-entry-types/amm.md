@@ -18,7 +18,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 ```json
 {
-    "AMMAccount" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
+    "Account" : "rE54zDvgnghAoPopCgvtiqWNq3dU5y836S",
     "Asset" : {
       "currency" : "XRP"
     },
@@ -75,7 +75,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 |:-----------------|:--------------------|:------------------|:----------|--------------|
 | `Asset`          | オブジェクト          | STIssue           | はい       | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
 | `Asset2`         | オブジェクト          | STIssue           | はい       | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
-| `AMMAccount`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.html#ammの特殊なaccountrootエントリ)のアドレス。 |
+| `Account`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.html#ammの特殊なaccountrootエントリ)のアドレス。 |
 | `AuctionSlot`    | オブジェクト          | STObject          | いいえ     | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
 | `LPTokenBalance` | [通貨額][]           | Amount            | はい       | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
 | `TradingFee`     | 数値                 | UInt16            | はい       | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
