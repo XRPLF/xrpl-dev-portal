@@ -8,7 +8,7 @@ labels:
 # Escrow
 [[ソース]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
-_（[Escrow Amendment][]が必要です。）_
+_（[Escrow Amendment][]により追加されました。）_
 
 `Escrow`オブジェクトタイプは、実行または取り消しを待機している保留中のXRP支払を表します。[EscrowCreateトランザクション][]はレジャーに`Escrow`オブジェクトを作成します。[EscrowFinish][]トランザクションまたは[EscrowCancel][]トランザクションが正常に完了すると、オブジェクトが削除されます。``Escrow``オブジェクトに [_Crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)が指定されている場合、支払が成功するのは、EscrowFinishトランザクションに指定された対応する _フルフィルメント_ がその条件を満たす場合だけです。（サポートされている唯一のCrypto-conditionタイプは[PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)です。）`Escrow`オブジェクトに`FinishAfter`時刻が指定されている場合、保留中の支払はその時刻の経過後にのみ実行されます。
 

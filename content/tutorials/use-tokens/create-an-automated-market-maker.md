@@ -11,6 +11,7 @@ labels:
   - AMM
 ---
 # Create an Automated Market Maker
+
 _(Requires the [AMM amendment][] :not_enabled:)_
 
 An [Automated Market Maker (AMM)](automated-market-makers.html) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.

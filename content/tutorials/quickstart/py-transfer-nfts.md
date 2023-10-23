@@ -551,7 +551,7 @@ def standby_cancel_offer():
         ent_standby_nft_offer_index.get()
     )
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
 def op_create_sell_offer():
     results = create_sell_offer(
         ent_operational_seed.get(),
@@ -579,7 +579,7 @@ def op_create_buy_offer():
         ent_operational_destination.get()
     )
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))  
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 def op_accept_buy_offer():
     results = accept_buy_offer (
         ent_operational_seed.get(),
@@ -597,7 +597,7 @@ def op_cancel_offer():
         ent_operational_nft_offer_index.get()
     )
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 
 # Module 3 Handlers
@@ -690,10 +690,10 @@ def operational_configure_account():
 def get_balances():
     results = get_balance(ent_operational_account.get(), ent_standby_account.get())
     text_standby_results.delete("1.0", tk.END)
-    text_standby_results.insert("1.0", json.dumps(results, indent=4))    
+    text_standby_results.insert("1.0", json.dumps(results, indent=4))
     results = get_balance(ent_standby_account.get(), ent_operational_account.get())
     text_operational_results.delete("1.0", tk.END)
-    text_operational_results.insert("1.0", json.dumps(results, indent=4))    
+    text_operational_results.insert("1.0", json.dumps(results, indent=4))
 
 # Module 1 Handlers
 def get_standby_account():
@@ -996,7 +996,7 @@ btn_op_burn_token = tk.Button(master=frm_form, text="Burn NFT",
 btn_op_burn_token.grid(row=10, column=3, sticky="nsew")
 ```
 
-Add buttons for transferring NFTs. 
+Add buttons for transferring NFTs.
 
 ```python
 btn_op_create_sell_offer = tk.Button(master=frm_form, text="Create Sell Offer",
