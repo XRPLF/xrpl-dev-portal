@@ -379,7 +379,7 @@
 <li>Click <strong>Create Time-based Escrow</strong>.</li>
 <li>Copy the <em>Sequence Number</em> of the escrow called out in the <strong>Standby Result</strong> field.</li>
 </ol>
-<p>The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost. When you create an escrow, capture and save the <strong>Sequence Number</strong> so that you can use it to finish the escrow transaction.</p>
+<p>The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost and reserve requirements. When you create an escrow, capture and save the <strong>Sequence Number</strong> so that you can use it to finish the escrow transaction.</p>
 <p><a href="img/quickstart-py-escrow3.png"><img alt="Completed Create Escrow Transaction" src="img/quickstart-py-escrow3.png"/></a></p>
 <h2 id="finish-escrow">Finish Escrow<a aria-hidden="true" class="hover_anchor" href="#finish-escrow"><i class="fa fa-link"></i></a></h2>
 <p>The recipient of the XRP held in escrow can finish the transaction any time within the time window after the Escrow Finish date and time but before the Escrow Cancel date and time. Following on the example above, you can use the <em>Sequence Number</em> to finish the transaction once 10 seconds have passed.</p>
@@ -392,12 +392,11 @@
 <p>The transaction completes and balances are updated for both the Standby and Operational accounts.</p>
 <p><a href="img/quickstart-py-escrow4.png"><img alt="Completed Escrow Transaction" src="img/quickstart-py-escrow4.png"/></a></p>
 <h2 id="get-escrows">Get Escrows<a aria-hidden="true" class="hover_anchor" href="#get-escrows"><i class="fa fa-link"></i></a></h2>
-<p>Click <strong>Get Escrows</strong> to see the current list of escrows for the Operational account. If you click the buttons now, there are no escrows at the moment.</p>
-<p>For the purposes of this tutorial, follow the steps in <a href="#create-escrow">Create Escrow</a>, above, to create a new escrow transaction. Remember to capture the <em>Sequence Number</em> from the transaction results.</p>
-<p>Click <strong>Get Escrows</strong>. The <code>account_info</code> request returns the same <code>account_object</code> for both accounts, demonstrating the link between the accounts created by the escrow transaction.</p>
+<p>Click <strong>Get Escrows</strong> to see the current list of escrows for the Operational account. If you click the button now, there are no escrows at the moment.</p>
+<p>For the purposes of this tutorial, you can follow the steps in <a href="#create-escrow">Create Escrow</a>, above, to create a new escrow transaction that you can then look up. Remember to capture the <em>Sequence Number</em> from the transaction results.</p>
 <p><a href="img/quickstart-py-escrow5.png"><img alt="Get Escrows results" src="img/quickstart-py-escrow5.png"/></a></p>
 <h2 id="cancel-escrow">Cancel Escrow<a aria-hidden="true" class="hover_anchor" href="#cancel-escrow"><i class="fa fa-link"></i></a></h2>
-<p>When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. If you try to cancel the transaction prior to the <strong>Escrow Cancel</strong> time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.</p>
+<p>When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP. If you try to cancel the transaction prior to the <strong>Escrow Cancel</strong> time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.</p>
 <p>You can wait the allotted time for the escrow you created in the previous step, then use it to try out the <strong>Cancel Escrow</strong> button</p>
 <p>To cancel an expired escrow:</p>
 <ol>
@@ -1525,6 +1524,11 @@
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2424,6 +2428,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>
