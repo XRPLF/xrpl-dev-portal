@@ -64,7 +64,7 @@ To create a time-based escrow:
 6. Click **Create Time-based Escrow**.
 7. Copy the _Sequence Number_ of the escrow called out in the **Standby Result** field.
 
-The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
+The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost and reserve requirements. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
 
 [![Completed Create Escrow Transaction](img/quickstart-py-escrow3.png)](img/quickstart-py-escrow3.png)
 
@@ -84,18 +84,16 @@ The transaction completes and balances are updated for both the Standby and Oper
 
 ## Get Escrows
 
-Click **Get Escrows** to see the current list of escrows for the Operational account. If you click the buttons now, there are no escrows at the moment.
+Click **Get Escrows** to see the current list of escrows for the Operational account. If you click the button now, there are no escrows at the moment.
 
-For the purposes of this tutorial, follow the steps in [Create Escrow](#create-escrow), above, to create a new escrow transaction. Remember to capture the _Sequence Number_ from the transaction results.
-
-Click **Get Escrows**. The `account_info` request returns the same `account_object` for both accounts, demonstrating the link between the accounts created by the escrow transaction.
+For the purposes of this tutorial, you can follow the steps in [Create Escrow](#create-escrow), above, to create a new escrow transaction that you can then look up. Remember to capture the _Sequence Number_ from the transaction results.
 
 [![Get Escrows results](img/quickstart-py-escrow5.png)](img/quickstart-py-escrow5.png)
 
 
 ## Cancel Escrow
 
-When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP, less the transaction fees. If you try to cancel the transaction prior to the **Escrow Cancel** time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.
+When the Escrow Cancel time passes, the escrow is no longer available to the recipient. The initiator of the escrow can reclaim the XRP. If you try to cancel the transaction prior to the **Escrow Cancel** time, you are charged for the transaction, but the actual escrow cannot be cancelled until the time limit is reached.
 
 You can wait the allotted time for the escrow you created in the previous step, then use it to try out the **Cancel Escrow** button
 
