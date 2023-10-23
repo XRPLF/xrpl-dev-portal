@@ -62,7 +62,7 @@ Click **Get Condition** to generate a condition/fulfillment pair and populate th
 
 [![Escrow Example with Condition and Fulfillment](img/quickstart-py-conditional-escrow-3.png)](img/quickstart-py-conditional-escrow-3.png)
 
-### Create Conditional Escrow:
+### Create Conditional Escrow
 
 <div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IUfSX5RKahs?si=7kV0T2NTtqsZfpvX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -114,7 +114,7 @@ When the Escrow Cancel time passes, the escrow is no longer available to the rec
 
 If you forget to save the sequence number, you can find it in the escrow transaction record.
 
-1. Create a new escrow as described in [Create Escrow](#create-escrow), above.
+1. Create a new escrow as described in [Create Conditional Escrow](#create-conditional-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnLgrSeq_ value from the results.
    ![Transaction ID in Get Escrows results](img/quickstart-py-conditional-escrow-6.png)
