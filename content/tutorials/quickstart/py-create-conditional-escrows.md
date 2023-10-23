@@ -25,6 +25,8 @@ This example shows how to:
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive.
 
+You need the `cryptoconditions` module to generate your condition/fulfillment pair. You can install the module using [pip](https://pip.pypa.io/en/stable/).
+
 In a terminal window, install the `cryptoconditions` module with this command:
 
 ```bash
