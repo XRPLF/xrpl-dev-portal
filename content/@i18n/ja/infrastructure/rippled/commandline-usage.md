@@ -1,6 +1,6 @@
 ---
 html: commandline-usage.html
-name: コマンドラインの利用方法
+name: コマンドラインの使い方
 parent: infrastructure.html
 blurb: rippledサーバーのコマンドライン使用オプションです。
 curated_anchors:
