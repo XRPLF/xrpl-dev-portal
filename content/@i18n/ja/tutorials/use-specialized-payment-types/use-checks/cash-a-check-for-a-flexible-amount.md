@@ -7,7 +7,7 @@ labels:
 ---
 # Checkの変動金額での換金
 
-_[Checks Amendment][]が必要です。_
+_[Checks Amendment][]により追加されました。_
 
 Checkがレジャーに記録されており有効期限切れではない場合は、指定受取人は`DeliverMin`フィールドを指定した[CheckCashトランザクション][]を送信することで、Checkを変動金額で換金して受領できます。この方法でCheckを換金すると、受取人は送金を最大限受領でき、Checkの送金元からは、Checkの`SendMax`の全額が引き落とされるか、または可能な限りの額が引き落とされます。Checkの受取人に`DeliverMin`以上の額を送金できない場合は換金が失敗します。
 

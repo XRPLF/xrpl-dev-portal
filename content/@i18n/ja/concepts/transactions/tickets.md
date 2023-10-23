@@ -8,7 +8,7 @@ labels:
 ---
 # Ticket
 
-_([TicketBatch amendment][]が必要です。)_
+_([TicketBatch amendment][]により追加されました。)_
 
 XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引のために[シーケンス番号][Sequence Number]を確保する方法です。チケットを使うことで、通常の順序以外で取引を送信することができます。この使用例としては、必要な署名を集めるのに時間がかかるような[マルチサイン取引](multi-signing.html)などが挙げられます。
 

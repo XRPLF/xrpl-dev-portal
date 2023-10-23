@@ -8,7 +8,7 @@ labels:
 # PayChannel
 [[ソース]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
-_（[PayChan Amendment][]が必要です。）_
+_（[PayChan Amendment][]により追加されました。）_
 
 `PayChannel`オブジェクトタイプは、Payment Channelを表します。Payment Channelにより、レジャー外で少額のXRPを迅速に支払うことができます。このような支払は、コンセンサスレジャーにより後日調整できます。Payment Channelは、このChannelが閉鎖されるまでは、特定の宛先アドレスに対してのみ支払可能なXRPの残高を保有します。Channelの閉鎖時に、未使用のXRPはChannelの所有者（Channelを作成し、資金を供給した支払元アドレス）に返金されます。
 
