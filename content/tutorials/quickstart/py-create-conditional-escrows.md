@@ -118,7 +118,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnLgrSeq_ value from the results.
    ![Transaction ID in Get Escrows results](img/quickstart-py-conditional-escrow-6.png)
-4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
+4. Paste the _PreviousTxnLgrSeq_ in the **Transaction to Look Up** field.
    ![Transaction to Look Up field](img/quickstart-py-conditional-escrow-7.png)
 5. Click **Get Transaction**.
 6. Locate the _Sequence_ value in the results.
