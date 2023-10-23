@@ -50,6 +50,14 @@
     "category_name": _("Custody"),
     "link": "https://www.bitgo.com/",
   },
+    {
+    "id": "gatehub",
+    "title": _("Gatehub"),
+    "description": _("Gatehub XRP Ledger Markets is an explorer to track Gatehub's inssuances on the XRP Ledger."),
+    "category_id": "custody",
+    "category_name": _("Custody"),
+    "link": "https://gatehub.net/markets",
+  },
   {
     "id": "bithomp",
     "title": _("Bithomp"),
@@ -75,14 +83,6 @@
     "link": "https://www.carbonlandtrust.com/",
   },
   {
-    "id": "casino-coin",
-    "title": _("Casino Coin"),
-    "description": _("CasinoCoin (CSC) is a digital currency developed specifically for the regulated gaming industry."),
-    "category_id": "other",
-    "category_name": _("Other"),
-    "link": "https://casinocoin.im/",
-  },
-  {
     "id": "cryptum",
     "title": _("Cryptum"),
     "description": _("Cryptum is an API/SDK platform for integrating the XRP Ledger with any application."),
@@ -96,7 +96,7 @@
     "description": _("Evernode proposes a permissionless, flexible, scalable Layer 2 smart contract network built from the XRP Ledger."),
     "category_id": "developer_tooling",
     "category_name": _("Developer Tooling"),
-    "link": "https://evernode.wordpress.com/",
+    "link": "https://evernode.org/",
   },
   {
     "id": "forte",
@@ -169,6 +169,22 @@
     "category_id": "nfts",
     "category_name": _("NFTs"),
     "link": "https://peerkat.io/",
+  },
+  {
+    "id": "Crossmark",
+    "title": _("Crossmark"),
+    "description": _("Crossmark is a browser extension wallet built for interacting with the XRP Ledger."),
+    "category_id": "wallet",
+    "category_name": _("Wallet"),
+    "link": "https://github.com/crossmarkio",
+  },
+  {
+    "id": "Edge",
+    "title": _("Edge"),
+    "description": _("Edge is a secure, easy, and private way to use, store, trade, and exchange crypto assets. Edge ensures sure you’re always in control of your money and information while also providing the tools necessary to protect yourself from others and your own mistakes. Edge has rich functionality, a battle-tested security architecture, and the industry’s best customer support."),
+    "category_id": "wallet",
+    "category_name": "Wallet",
+    "link": "https://edge.app/ripple-wallet/",
   },
   {
     "id": "ripples-cbdc-platform",
@@ -291,12 +307,9 @@
   "gaming": _("Gaming"),
   "security": _("Security"),
   "payments": _("Payments"),
-  "web_monetization": _("Web Monetization"),
   "sustainability": _("Sustainability"),
   "cbdcs": _("CBDCs"),
-  "custody": _("Custody"),
-  "defi": _("DeFi"),
-  "other": _("Other"),
+  "custody": _("Custody")
 } %}
 
 
@@ -345,84 +358,150 @@
    <section class="container-new py-26 text-lg-center">
     <div class="p-3 col-lg-8 mx-lg-auto">
       <div class="d-flex flex-column-reverse">
-        <h1 class="mb-0">{% trans %}Proven Powerful for Innovation{% endtrans %}</h1>
-        <h6 class="eyebrow mb-3">{% trans %}XRPL Use Cases{% endtrans %}</h6>
+        <h1 class="mb-0">{% trans %}Powering Innovative Use Cases and Projects.{% endtrans %}</h1>
+        <h6 class="eyebrow mb-3">{% trans %}XRPL Ecosystem{% endtrans %}</h6>
       </div>
     </div>
   </section>
 
   <section class="container-new py-26">
-    <div class="col-lg-6 p-3 mb-3 mb-lg-5">
+    <div class="col-lg-5 p-3">
       <div class="d-flex flex-column-reverse">
-        <h3 class="h4 h2-sm">{% trans %}Building businesses and creating new value{% endtrans %}</h3>
-        <h6 class="eyebrow mb-3">{% trans %}XRPL Ecosystem{% endtrans %}</h6>
+      <div class="d-flex justify-content-start align-items-center"> 
+        <div class="arrow-animation" id="arrowAnimation"> </div>
+        <span class="explore-projects">Explore Featured Projects </span>
+      </div>
+        <p class="text-sm">{% trans %}The XRPL has a rich ecosystem with many contributors globally. Explore the community of developers, validators, and partners.{% endtrans %}</p>
+        <h6 class="eyebrow mb-3">{% trans %}Introducing the XRPL Ecosystem{% endtrans %}</h6>
       </div>
     </div>
+    <div class="col-lg-5 offset-lg-2 p-5 d-flex">
+          <div class="mb-4 pb-3 numbers-animation" id="numbersAnimation"></div>
+          <div class="mb-4 pb-3 numbers-animation" id="numbersAnimationLight"></div>
+          <div class="apps-built">Apps/exchanges <br/> built on the <br/> XRPL </div>
+    </div>
 
-    <ul class="card-grid card-grid-3xN ls-none mt-4 pt-lg-2" id="use-case-card-grid">
+
+    <ul class="card-grid card-grid-4xN ls-none mt-4 pt-lg-2" id="use-case-card-grid">
       {% set uses = [
-        
           {"id": "infrastructure",
             "title": _("Infrastructure"),
-            "description": _("Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.")},
+            "number": 7,
+            "description" : _("Build and operate components or systems that help the functionality of the XRP Ledger, such as Nodes, dev tools, storage, security and more.")
+            },
 
           {"id": "developer_tooling",
             "title": _("Developer Tooling"),
-            "description": _("Developers can leverage open-source libraries, SDKs and more to help build their <a href='developer-funding.html'>blockchain project</a> and across essential XRP Ledger functionality.")},
-
+            "number": 4,
+            "description" : _("Developers can leverage open-source libraries, SDKs and more to help build their project and access essential XRP Ledger functionality.")
+          },
+          {"id": "interoperability",
+            "title": _("Interoperability"),
+            "number": 3,
+            "description": _("Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.")
+          },
           {"id": "wallet",
             "title": _("Wallet"),
-            "description": _("Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.")},
-
+            "number": 4,
+            "description": _("Build digital wallets to store passwords and interact with various blockchains to send and receive digital assets, including XRP.")
+          },
           {"id": "nfts",
             "title": _("NFTs"),
-            "description": _("XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).")},
-
+            "number": 7,
+            "description": _("XRPL supports the issuance of IOUs that represent a currency of any value, as well as non-fungible tokens (NFTs).")
+          },
           {"id": "exchanges",
             "title": _("Exchanges"),
-            "description": _("Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.")},
-
+            "number": 2,
+            "description": _("Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.")
+          },
           {"id": "gaming",
             "title": _("Gaming"),
-            "description": _("The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.")},
-
+            "number": 5,
+            "description": _("The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.")
+          },
           {"id": "security",
             "title": _("Security"),
-            "description": _("Build services and tools that help prevent and combat fraudulent activity with the XRPL.")},
+            "number": 1,
+            "description": _("Build services and tools that help prevent and combat fraudulent activity with the XRPL.")
+          },
 
           {"id": "payments",
             "title": _("Payments"),
-            "description": _("Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.")},
-
-          {"id": "web_monetization",
-            "title": _("Web Monetization"),
-            "description": _("Support creators and their content directly leveraging the power of the XRP Ledger.")},
-
-          {"id": "sustainability",
-            "title": _("Sustainability"),
-            "description": _("Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).")},
+            "number": 2,
+            "description": _("Leverage the efficiency and speed of the XRP Ledger to move value all over the globe.")
+          },
 
           {"id": "cbdc",
             "title": _("CBDC"),
-            "description": _("A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs).")},
+            "number": 1,
+            "description": "A private version of the XRP Ledger provides Central Banks a secure, controlled, and flexible solution to issue and manage Central Bank Issued Digital Currencies (CBDCs)."
+          },
+
+          {"id": "sustainability",
+            "title": _("Sustainability"),
+            "number": 2,
+            "description": _("Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).")
+          },
 
           {"id": "custody",
             "title": _("Custody"),
-            "description": _("Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.")},
-
-          {"id": "defi",
-            "title": _("DeFi"),
-            "description": _("Provide access to financial products and services replacing the traditional role of financial institutions.")},
-
+            "number": 2,
+            "description": _("Use the XRP Ledger to build crypto custody and securely hold, store and use your assets.")
+          },
       ] %}
-      {% for use in uses %}
-      <li class="col ls-none p-3">
-        <img id="{{use.id}}" alt="{{use.title}} icon">
-        <h4 class="mt-3 mb-0 h5">{{use.title}}</h4>
-        <p class="mt-2 mt-md-3 mb-0">{{use.description}}</p>
-      </li>
-      {% endfor %}
+ {% for use in uses %}
+<li class="col use-case-circle ls-none p-3 open-modal" data-id="{{use.id}}" data-title="{{use.title}}" data-description="{{use.description}}" data-number="{{use.number}}" data-src="{{use.src}}">
+  <div class="circle-content">
+    <img class="circle-img" id={{use.id}} alt="use-logos">
+    <p class="circle-text">{{use.title}}</p>
+    <div class="pill-box">
+      <span class="pill-number">{{use.number}}</span>
+    </div>
+  </div>
+</li>
+{% endfor %}
+
     </ul>
+  </section>
+
+<div class="modal modal-uses" id="myModal">
+  <div class="modal-content-uses">
+      <div class="arrows-container" id="arrows-container">
+      <button class="arrow-button left-arrow" id="leftArrow">
+        <img  alt="left arrow">
+      </button>
+      <button class="arrow-button right-arrow" id="rightArrow">
+        <img  alt="right arrow">
+      </button>
+    </div>
+
+    <div class="content-section">
+      <img class="section-image" alt="section image" width="40" height="40">
+    </div>
+    <div class="content-section">
+      <p class="section-text-title">Title</p>
+    </div>
+    <div class="content-section">
+      <p class="section-text-description">Description</p>
+    </div>
+    <div class="content-section">
+      <hr class="section-separator">
+    </div>
+    <div class="content-section">
+      <div class="section-logos">Group of logos here...</div>
+    </div>
+  </div>
+</div>
+
+
+  <section class="join-xrpl-section py-26">
+  <div class="colorful-join-text-wrapper">
+    <span class="colorful-join-text"> Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page. </span>
+        <div class="mt-10">
+          <a target="_blank" class="btn btn-primary btn-arrow" href="https://xrpl.typeform.com/dev-spotlight">{% trans %}Submit Your Project{% endtrans %}</a>
+        </div>
+  </div>
   </section>
 
   <section class="container-new py-26">
@@ -491,7 +570,6 @@
   </section>
 
 </div>
-
 {% endblock %}
 
 {% block analytics %}
@@ -506,6 +584,47 @@
 {% endblock analytics %}
 
 
+
 {% block endbody %}
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/bodymovin.min.js"></script>
+<script type="application/javascript" src="{{currentpage.prefix}}assets/js/modal.js"></script>
 <script type="application/javascript" src="{{currentpage.prefix}}assets/js/use-cases.js"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/numbers-animation.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/numbers-animation-light.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/arrow-animation.json"></script>
+
+<script type="text/javascript">
+  function numAnimate(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('numbersAnimation'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      animationData: numAnimation
+    });
+  };
+
+  function numAnimateLight(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('numbersAnimationLight'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: true,
+      animationData: numAnimationLight
+    });
+  };
+
+  function arrowAnimate(){
+    bodymovin.loadAnimation({
+      container: document.getElementById('arrowAnimation'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: arrowAnimation
+    });
+  };
+  numAnimate();
+  numAnimateLight()
+  arrowAnimate()
+</script>
 {% endblock %}

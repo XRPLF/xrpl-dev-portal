@@ -56,7 +56,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## NFTokenOffer Transactions
 
-Unlike [Offers for fungible tokens](offers.html), a `NFTokenOffer` is not stored in an order book and is never automatically matched or executed. A buyer must _explicitly_ choose to accept an `NFTokenOffer` that offers to buy a `NFToken`. Similarly, a seller must _explicitly_ choose to accept a specific `NFTokenOffer` that offers to buy a `NFToken` object that they own.
+Unlike [Offers for fungible tokens](offers.html), a `NFTokenOffer` is not stored in an order book and is never automatically matched or executed. A buyer must _explicitly_ choose to accept an `NFTokenOffer` that offers to sell a `NFToken`. Similarly, a seller must _explicitly_ choose to accept a specific `NFTokenOffer` that offers to buy a `NFToken` object that they own.
 
 The transactions for `NFToken` trading are:
 

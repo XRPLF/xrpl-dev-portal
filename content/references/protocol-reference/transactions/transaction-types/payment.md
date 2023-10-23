@@ -53,7 +53,7 @@ Payments are also the only way to [create accounts](#creating-accounts).
 
 The `Payment` transaction type functions differently depending on how you fill in the `Payment` fields:
 
-| Payment type | `Amount`  | `SendMax`  | `Paths`   | `Address` = `Destination`? | Description |
+| Payment type | `Amount`  | `SendMax`  | `Paths`   | `Account` = `Destination`? | Description |
 |:-------------|:----------|:-----------|:----------|:---------------------------|:--|
 | [Direct XRP Payment][] | String (XRP) | Omitted | Omitted | No          | Transfers XRP directly from one account to another, using one transaction. Always delivers the exact amount. No fee applies other than the basic [transaction cost](transaction-cost.html). |
 | [Creating or redeeming tokens][] | Object | Object (optional) | Optional | No | Increases or decreases the amount of a non-XRP currency or asset tracked in the XRP Ledger. [Transfer fees](transfer-fees.html) and [freezes](freezes.html) do not apply when sending and redeeming directly. |

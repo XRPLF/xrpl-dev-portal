@@ -31,7 +31,9 @@
   }
 
   #benefits-list {
-    @each $benefit in "public", "streamlined", "performance", "low-cost", "community", "reliability" {
+    @each $benefit in "public", "streamlined", "performance", "low-cost",
+      "community", "reliability"
+    {
       ##{$benefit} {
         content: url("../img/icons/#{$benefit}.svg");
       }
@@ -39,7 +41,8 @@
   }
 
   #advanced-features {
-    $feature-cards: ["pink-purple", "neutral-blue", "light-green", "orange", "purple-blue-2"];
+    $feature-cards: [ "pink-purple", "neutral-blue", "light-green", "orange",
+      "purple-blue-2"];
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg");
@@ -48,7 +51,8 @@
   }
 
   #get-started {
-    $gs-cards: ["orange-yellow", "magenta-orange", "purple-blue-green", "light-blue", "green-blue"];
+    $gs-cards: [ "orange-yellow", "magenta-orange", "purple-blue-green",
+      "light-blue", "green-blue"];
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg");
@@ -56,7 +60,6 @@
     }
   }
 }
-
 
 .cta {
   position: absolute;
@@ -74,7 +77,7 @@
 .landing-bg {
   opacity: 0.6;
   @include media-breakpoint-up(md) {
-    opacity: 1.0;
+    opacity: 1;
   }
 }
 
@@ -92,7 +95,7 @@
     background-position-y: top;
     opacity: 0.6;
     @include media-breakpoint-up(md) {
-      opacity: 1.0;
+      opacity: 1;
     }
   }
 }
@@ -123,7 +126,9 @@
 
 #top-exchanges {
   // Vector logos
-  @each $exchange in "bitstamp", "kraken", "cex-io", "liquid", "lmax", "bitfinex", "etoro" {
+  @each $exchange in "bitstamp", "kraken", "cex-io", "liquid", "lmax",
+    "bitfinex", "etoro"
+  {
     #exch-#{$exchange} {
       content: url("../img/exchanges/#{$exchange}.svg");
     }
@@ -164,7 +169,6 @@
 }
 
 .page-uses {
-  
   .container-new {
     padding-left: 16px;
     padding-right: 16px;
@@ -180,7 +184,7 @@
   }
 
   .card-grid {
-    grid-gap: 8px
+    grid-gap: 8px;
   }
 
   .card-grid img {
@@ -189,7 +193,7 @@
 
   /* Cleanup bootstrap modal */
   .modal {
-    padding: 0; 
+    padding: 0;
   }
   .modal-content {
     position: relative;
@@ -199,7 +203,7 @@
     pointer-events: auto;
     background-color: $black;
 
-    background-clip: padding-box; 
+    background-clip: padding-box;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -224,12 +228,12 @@
     border: none;
     background: $gray-900;
     box-shadow: 0px -1px 2px $black;
-    
-    align-items: unset; 
+
+    align-items: unset;
     padding: 0.75rem;
     flex-direction: column;
     flex-wrap: wrap;
-  }    
+  }
 
   .card-title {
     margin-bottom: 0.5rem;
@@ -266,7 +270,11 @@
     /*color: $gray-300;*/
     color: $gray-300;
   }
-
+  .light {
+    .category-checkbox label {
+      color: #ffffff;
+    }
+  }
   .category-checkbox {
     display: flex;
     align-items: center;
@@ -278,7 +286,8 @@
     padding-left: 26px;
   }
   .category_count {
-    padding: 0px 8px;
+    margin-left: 8px;
+    padding: 2px 16px;
     width: 24px;
     height: 16px;
     background: $blue-purple-800;
@@ -294,77 +303,70 @@
     top: 10px;
   }
 
-
-  @each $usecase in "infrastructure",
-  "developer_tooling",
-  "interoperability",
-  "wallet",
-  "nfts",
-  "exchanges",
-  "gaming",
-  "security",
-  "payments",
-  "web_monetization",
-  "sustainability",
-  "cbdc",
-  "custody",
-  "defi" {
+  @each $usecase in "infrastructure", "developer_tooling", "interoperability",
+    "wallet", "nfts", "exchanges", "gaming", "security", "payments",
+    "web_monetization", "sustainability", "cbdc", "other", "carbon_markets",
+    "custody", "defi"
+  {
     ##{$usecase} {
       content: url("../img/icons/usecases/ic_#{$usecase}.png");
     }
   }
 
-// logos for cards
-// $type incase png or jpg is needed.
-  @each $company,$type in (
-    "bithomp": 'svg',
-    "onthedex": "svg",
-    "gatehub": "svg",
-    "towo-labs": "svg",
-    "xrp-toolkit": "svg",
-    "xrpl-org-ledger-explorer": "svg",
-    "xrpl-rosetta": "svg",
-    "xrpscan": "svg",
-    "evernode": "svg",
-    "cryptum": "svg",
-    "x-tokenize": "svg",
-    "multichain": "svg",
-    "xumm-wallet": "svg",
-    "gem-wallet": "svg",
-    "aesthetes": "svg",
-    "audiotarky": "svg",
-    "xrp-cafe": "svg",
-    "nft-master": "svg",
-    "onxrp": "svg",
-    "peerkat": "svg",
-    "sologenic-nft": "svg",
-    "sologenic-dex": "svg",
-    "xp-market": "svg",
-    "ledger-city": "svg",
-    "forte": "svg",
-    "anchain-ai": "svg",
-    "coil": "svg",
-    "carbonland-trust": "svg",
-    "casino-coin": "svg",
-    "bitgo": "svg",
-    "bitpay": "svg",
-    "ripples-on-demand-liquidity": "svg",
-    "ripples-cbdc-platform": "svg",
-  ) {
+  // logos for cards
+  // $type incase png or jpg is needed.
+  @each $company,
+    $type
+      in (
+        "bithomp": "svg",
+        "onthedex": "svg",
+        "gatehub": "svg",
+        "towo-labs": "svg",
+        "xrp-toolkit": "svg",
+        "xrpl-org-ledger-explorer": "svg",
+        "xrpl-rosetta": "svg",
+        "xrpscan": "svg",
+        "evernode": "svg",
+        "cryptum": "svg",
+        "x-tokenize": "svg",
+        "multichain": "svg",
+        "xumm-wallet": "svg",
+        "gem-wallet": "svg",
+        "aesthetes": "svg",
+        "audiotarky": "svg",
+        "xrp-cafe": "svg",
+        "nft-master": "svg",
+        "onxrp": "svg",
+        "peerkat": "svg",
+        "sologenic-nft": "svg",
+        "sologenic-dex": "svg",
+        "xp-market": "svg",
+        "ledger-city": "svg",
+        "forte": "svg",
+        "anchain-ai": "svg",
+        "coil": "svg",
+        "carbonland-trust": "svg",
+        "casino-coin": "svg",
+        "bitgo": "svg",
+        "bitpay": "svg",
+        "ripples-on-demand-liquidity": "svg",
+        "ripples-cbdc-platform": "svg",
+        "momento": "svg",
+        "Crossmark": "png",
+        "Edge": "png"
+      )
+  {
     #use_case_companies_list {
       ##{$company} {
         .biz-logo {
           max-height: 40px;
           content: url("../img/uses/#{$company}.#{$type}");
         }
-      } 
+      }
     }
-
   }
 
-
   @include media-breakpoint-up(lg) {
-
     h1 {
       font-size: 62px;
     }
@@ -372,24 +374,21 @@
       padding-left: 64px;
       padding-right: 64px;
     }
-    
+
     .card-grid img {
       max-height: 48px;
     }
-  
+
     .card-grid {
-      grid-gap: 48px
+      grid-gap: 48px;
     }
-  
+
     .card-uses {
       padding: 24px;
     }
   }
-
-
-
 }
-// End UseCases 
+// End UseCases
 
 // History Page
 #history-orange {
@@ -444,7 +443,6 @@
 }
 
 .page-impact {
-
   #map-light {
     display: none;
   }
@@ -462,7 +460,6 @@
 }
 
 .page-funding {
-
   .funding-list {
     @each $funding in "funding-01", "funding-02", "funding-03", "funding-04" {
       ##{$funding} {
@@ -477,9 +474,9 @@
     left: -4px;
   }
 
-// even out height on large
+  // even out height on large
   @media (min-width: 992px) {
-    .funding-box{
+    .funding-box {
       min-height: 200px;
     }
   }
@@ -487,69 +484,72 @@
 
 // Ambassadors
 .page-ambassadors {
-
-    #benefits-list {
-      @each $benefits in "benefits-01", "benefits-02", "benefits-03", "benefits-04", "benefits-05", "benefits-06" {
-        ##{$benefits} {
-          content: url("../img/ambassadors/#{$benefits}.svg");
-        }
+  #benefits-list {
+    @each $benefits in "benefits-01", "benefits-02", "benefits-03",
+      "benefits-04", "benefits-05", "benefits-06"
+    {
+      ##{$benefits} {
+        content: url("../img/ambassadors/#{$benefits}.svg");
       }
     }
-  
-    #eligibility-list {
-      @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03", "eligibility-04", "eligibility-05" {
-        ##{$eligibility} {
-          content: url("../img/ambassadors/#{$eligibility}.svg");
-        }
+  }
+
+  #eligibility-list {
+    @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
+      "eligibility-04", "eligibility-05"
+    {
+      ##{$eligibility} {
+        content: url("../img/ambassadors/#{$eligibility}.svg");
       }
     }
+  }
 
-// Button has link out arrow.
+  // Button has link out arrow.
   .btn {
-    padding: .75rem;
+    padding: 0.75rem;
   }
 
   #container-scroll {
-    height:160px; 
-    position:relative; 
-    overflow:hidden;
+    height: 160px;
+    position: relative;
+    overflow: hidden;
     margin-top: 80px;
     margin-bottom: 64px;
   }
-  
+
   .photobanner {
-    position:absolute; 
-    top:0px; 
-    left:0px; 
-    overflow:hidden; 
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
     white-space: nowrap;
     animation: bannermove 40s linear infinite;
   }
 
   .photobanner-bottom {
-    top:112px; 
+    top: 112px;
   }
-  
-  .photobanner img {    
-    margin: 0 0.5em 
+
+  .photobanner img {
+    margin: 0 0.5em;
   }
-  
+
   @keyframes bannermove {
     0% {
-        transform: translate(0, 0);
+      transform: translate(0, 0);
     }
     100% {
-        transform: translate(-50%, 0);
+      transform: translate(-50%, 0);
     }
   }
 
-// Sliding Quotes
-  #carouselSlidesOnly{
+  // Sliding Quotes
+  #carouselSlidesOnly {
     height: 392px;
     margin-bottom: 40px;
   }
   @media (min-width: 992px) {
-    #carouselSlidesOnly{
+    #carouselSlidesOnly {
       height: 320px;
       margin-bottom: 104px;
     }
@@ -558,7 +558,7 @@
   h6 {
     font-size: 1.25rem;
   }
-// Arrow links after text
+  // Arrow links after text
   .btn-arrow::after {
     display: inline-block;
     content: url(../img/icons/arrow-right-purple.svg);
@@ -577,7 +577,6 @@
     background-position: left 4px bottom 4px;
     transform: translateX(4px);
   }
-
 }
 
 // Community Page
@@ -595,12 +594,12 @@
 // Events page
 .page-events {
   #event-hero-image {
-      height: 100%;
-      min-height: 209px;
-      background: url(../img/events/event-hero1@2x.png);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
+    height: 100%;
+    min-height: 209px;
+    background: url(../img/events/event-hero1@2x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
   #events-orange {
     position: absolute;
@@ -609,113 +608,112 @@
   }
 
   .event-hero {
-      color: $gray-100;
-      p {
-          font-weight: 500;
-          font-size: 24px;
-          line-height: 32px;
-      }
+    color: $gray-100;
+    p {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 32px;
+    }
   }
   .event-save-date {
-      color: $white;
-      font-weight: bold;
-      font-size: 20px;
-      line-height: 26px;
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
   }
   .event-small-gray {
-      color: $gray-200;
+    color: $gray-200;
   }
 
   // Button has link out arrow.
   .btn {
-    padding: .75rem;
+    padding: 0.75rem;
   }
 
   .event-card {
-      max-width: 311px;
-      margin: 32px auto;
-      transition: all 0.35s ease-out;
+    max-width: 311px;
+    margin: 32px auto;
+    transition: all 0.35s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+
+    background-color: $card-bg;
+    box-shadow: 0px 5px 40px $black;
+
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 24px;
+    color: $gray-200;
+
+    .event-card-header {
       position: relative;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      word-wrap: break-word;
-      background-clip: border-box;
+      height: 176px;
+      background-size: contain !important;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
 
-      background-color: $card-bg;
-      box-shadow: 0px 5px 40px $black;
+    .event-card-title {
+      position: absolute;
+      bottom: 32px;
+      padding: 0 32px;
+      color: $gray-100;
 
-      border: 1px solid rgba(0, 0, 0, 0.125);
-      border-radius: 8px;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 28px;
+    }
 
-      font-size: 16px;
-      line-height: 24px;
-      color: $gray-200;
+    .event-card-body {
+      padding: 32px;
+    }
 
-      .event-card-header {
-          position: relative;
-          height: 176px;
-          background-size: contain !important;
-          width: 100%;
-          border-radius: 8px 8px 0 0;
-      }
+    .event-card-footer {
+      padding: 0 32px 32px;
+    }
 
-      .event-card-title {
-          position: absolute;
-          bottom: 32px;
-          padding: 0 32px;
-          color: $gray-100;
+    .event-card-footer .icon::before {
+      height: 24px;
+      width: 24px;
+      content: "";
+      margin-right: 8px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
 
-          font-weight: bold;
-          font-size: 20px;
-          line-height: 28px;
-      }
-
-      .event-card-body {
-          padding: 32px;
-      }
-
-      .event-card-footer {
-          padding: 0 32px 32px;
-      }
-
-      .event-card-footer .icon::before {
-          height: 24px;
-          width: 24px;
-          content: "";
-          margin-right: 8px;
-          background-size: contain;
-          background-repeat: no-repeat;
-      }
-
-      .icon-date::before {
-          background: url(../img/events/event-date.svg);
-      }
-      .icon-location::before {
-          background: url(../img/events/event-location.svg);
-      }
+    .icon-date::before {
+      background: url(../img/events/event-date.svg);
+    }
+    .icon-location::before {
+      background: url(../img/events/event-location.svg);
+    }
   } //end event card
 
   @media (min-width: 992px) {
-      .event-card {
-          max-width: 347px;
-          margin: 32px;
-      }
-      .event-card-header {
-          height: 197px !important;
-      }
+    .event-card {
+      max-width: 347px;
+      margin: 32px;
+    }
+    .event-card-header {
+      height: 197px !important;
+    }
   }
 
   a.event-card:hover {
-      transform: translateY(-16px);
-      text-decoration: none;
+    transform: translateY(-16px);
+    text-decoration: none;
   }
-
 
   label {
     margin: 0;
     padding-left: 8px;
-    color: $white;  
+    color: $white;
   }
 
   .events-filter h6 {
@@ -731,13 +729,12 @@
   //   -webkit-filter: opacity(0.4);
   // }
 
-
   .events-filter[type="checkbox"]::before {
     position: relative;
     display: block;
     width: 20px;
     height: 20px;
-  
+
     content: "";
     background: $gray-900;
 
@@ -746,17 +743,17 @@
     border-style: solid;
     border-color: $gray-400;
   }
-  
+
   .events-filter[type="checkbox"]::after {
     position: relative;
     display: block;
-  
+
     top: -20px;
     width: 20px;
     height: 20px;
-  
+
     content: "";
-  
+
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 4px;
@@ -764,7 +761,7 @@
     border-style: solid;
     border-color: $gray-400;
   }
-  
+
   .events-filter[type="checkbox"]:checked::before {
     background: $gray-900;
     border: none;
@@ -781,7 +778,6 @@
     border-color: $blue-purple-500;
     border-radius: 4px;
   }
-  
 
   .events-filter[type="checkbox"]:not(:disabled):checked:hover::after {
     background-image: url(../img/events/event-check.svg);
@@ -792,7 +788,6 @@
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
-  
 
   .events-filter[type="checkbox"]:not(:disabled):hover::before {
     background: $gray-900;
@@ -808,12 +803,7 @@
     border-color: $blue-purple-600;
     border-radius: 4px;
   }
-
 }
-
-
-
-
 
 #find-us-on-platforms .card-deck {
   .card:nth-child(1) .card-footer {
@@ -841,13 +831,10 @@
     background-image: url(../img/cards/4col-orange-2.svg);
   }
 
-
   .card {
     margin-bottom: 2.5rem;
   }
-
 }
-
 
 .page-faq {
   &::before {
@@ -967,7 +954,6 @@
         right: 2rem;
       }
     }
-
   }
 }
 
@@ -980,12 +966,12 @@
   .center-search {
     .input-group-text {
       height: 56px;
-      padding: .75rem .75rem .75rem 1rem;
+      padding: 0.75rem 0.75rem 0.75rem 1rem;
       line-height: 2rem;
     }
     .ds-input {
       height: 56px;
-      padding: .75rem 1rem .75rem .5rem;
+      padding: 0.75rem 1rem 0.75rem 0.5rem;
     }
   }
 
@@ -1026,7 +1012,6 @@
 
 .page-docs-index,
 .page-community {
-
   #community-heading {
     padding-top: 2.5rem;
     padding-bottom: 5rem;
@@ -1048,7 +1033,7 @@
       -o-transition: all 0.1s ease;
       transition: all 0.1s ease;
     }
-  
+
     .one {
       top: 160px;
       left: 0%;
@@ -1069,9 +1054,6 @@
       top: 120px;
       right: 0%;
     }
-
-
-
   }
 
   #run-a-network-node .card-deck {
@@ -1097,7 +1079,6 @@
       padding-bottom: 104px;
     }
 
-
     .text-cards {
       grid-gap: 40px;
 
@@ -1112,7 +1093,7 @@
         color: #fff;
         font-weight: bold;
 
-        &:hover { 
+        &:hover {
           text-decoration: none;
           background: none !important;
         }
@@ -1171,13 +1152,14 @@
       padding-bottom: 208px;
     }
   }
-
 }
 
 .page-community {
-  @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord", "youtube", "devto" {
+  @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord",
+    "youtube", "devto"
+  {
     #platform-#{$platform} {
-      content: url("../img/logos/#{$platform}.svg")
+      content: url("../img/logos/#{$platform}.svg");
     }
   }
 }
@@ -1209,7 +1191,6 @@
     }
   }
 }
-
 
 .page-dev-tools {
   @each $tool,
@@ -1289,7 +1270,7 @@ html.light {
     .nav-link {
       color: $black;
     }
-    #trasaction-sender  .card-footer{
+    #trasaction-sender .card-footer {
       background-image: url("../img/cards/3-col-light-blue-2.svg");
     }
   }
