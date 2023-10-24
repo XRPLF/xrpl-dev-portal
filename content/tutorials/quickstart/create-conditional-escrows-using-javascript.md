@@ -60,7 +60,11 @@ To get test accounts:
 
 ### Create Conditional Escrow:
 
-When you create a conditional escrow, you need to specify the `Condition` value you generated above. You must also set a cancel date and time, after which the escrow is no longer available.  
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jUQ2nM5JXjc?si=-ajV2EFw8xv4djgG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+When you create a conditional escrow, you need to specify the amount you want to reserve and the `Condition` value you generated above. You can also set a cancel date and time, after which the escrow is no longer available.  
 
 To create a conditional escrow:
 

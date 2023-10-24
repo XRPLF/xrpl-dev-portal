@@ -1561,7 +1561,6 @@ pages:
             - ja
 
         # TODO: translate
-
     -   md: tutorials/quickstart/py-create-time-based-escrows.md
         targets:
             - en
