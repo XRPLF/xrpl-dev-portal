@@ -1,6 +1,43 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
-const cards = [
+import numLight from "./static/js/ecosystem/numbers-animation-light.json";
+import numDark from "./static/js/ecosystem/numbers-animation.json";
+import arrow from "./static/js/ecosystem/arrow-animation.json";
+
+import { useLottie } from "lottie-react";
+import { useThemeFromClassList } from "./@theme/helpers";
+
+const logos = {
+  infrastructure: [
+    "XRP-Ledger",
+    "Gatehub",
+    "towoLabs",
+    "xrpscan",
+    "xrp-toolkit",
+    "bithomp",
+    "onthedex",
+  ],
+  developer_tooling: ["blockforce", "Evernode", "threezy", "tokenize"],
+  interoperability: ["Allbridge", "futureverse", "multichain"],
+  wallet: ["Bitfrost", "Crossmark", "Edge", "gem-wallet", "Xumm"],
+  nfts: [
+    "aesthetes",
+    "audiotarky",
+    "nftmaster",
+    "peerkat",
+    "sologenic_dex",
+    "xrp-cafe",
+    "xrp-oval",
+  ],
+  exchanges: ["sologenic_dex", "XPMarket"],
+  gaming: ["Forte", "Futureverse", "ledger-city", "onXRP", "styngr"],
+  security: ["Anchain"],
+  payments: ["ripple", "SuperMojo"],
+  cbdc: ["ripple"],
+  sustainability: ["carbonland-trust", "Rootmaker"],
+  custody: ["Gatehub", "Bitgo"],
+};
+const cardsData = [
   {
     id: "aesthetes",
     title: "Aesthetes",
@@ -345,7 +382,7 @@ const uses = [
   {
     id: "interoperability",
     title: "Interoperability",
-    number: 3,
+    number: 2,
     description:
       "Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.",
   },
@@ -418,114 +455,207 @@ const uses = [
   },
 ];
 
-const target = { prefix: "" }; // TODO: fixme
-
 export default function Uses() {
+  const theme = useThemeFromClassList(["dark", "light"]);
   const { translate } = useTranslate();
+  const [displayModal, setDisplayModal] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const defaultSelectedCategories = new Set(Object.keys(featured_categories));
 
+  const [selectedCategories, setSelectedCategories] = React.useState(
+    defaultSelectedCategories
+  );
+  const [cards, setCards] = React.useState(cardsData);
+
+  const toggleCategory = (category) => {
+    const newSelectedCategories = new Set(selectedCategories);
+    if (newSelectedCategories.has(category)) {
+      newSelectedCategories.delete(category);
+    } else {
+      newSelectedCategories.add(category);
+    }
+    setSelectedCategories(newSelectedCategories);
+  };
+
+  const filteredCards = cards.filter((card) =>
+    selectedCategories.has(card.category_id)
+  );
+  const featuredCount = Array.from(selectedCategories).filter(category => featured_categories.hasOwnProperty(category)).length;
+  const otherCount = Array.from(selectedCategories).filter(category => other_categories.hasOwnProperty(category)).length;
+
+  const modalRef = React.useRef(null); // Create a reference
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setDisplayModal(false);
+      }
+    };
+
+    // Attach the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Remove the event listener
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef, displayModal]);
+
+  const handleArrowClick = (direction) => {
+    let newIndex = currentIndex;
+    if (direction === "left" && currentIndex > 0) {
+      newIndex = currentIndex - 1;
+    } else if (direction === "right" && currentIndex < uses.length - 1) {
+      newIndex = currentIndex + 1;
+    }
+    setModalData(uses[newIndex]);
+    setCurrentIndex(newIndex);
+  };
+
+  React.useEffect(() => {
+    const closeOnEscape = (e) => {
+      if (e.key === "Escape") {
+        setDisplayModal(false);
+      }
+    };
+
+    if (displayModal) {
+      window.addEventListener("keydown", closeOnEscape);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [displayModal]);
+
+  const options = React.useMemo(() => {
+    return {
+      animationData: theme === "dark" ? numDark : numLight,
+      loop: false,
+    };
+  }, [theme]);
+  const [modalData, setModalData] = React.useState({
+    id: "",
+    src: "",
+    title: "",
+    description: "",
+    number: "",
+  });
+  const { View } = useLottie(options);
+
+  //arrow
+  const optionsArrow = React.useMemo(() => {
+    return {
+      animationData: arrow,
+      loop: true,
+    };
+  }, [theme]);
+
+  const arrowView = useLottie(optionsArrow);
+  const arrowAnimation = arrowView.View;
+  const UpdateModalContent = ({ id, title, description, logos }) => {
+    const logoArray = logos[id] || [];
+    const createLogoElement = (logoClassName, title, id) => {
+      return (
+        <div className={`logo-item ${logoClassName}`}>
+          {/* Whatever content here */}
+        </div>
+      );
+    };
+
+    const renderLogoRows = () => {
+      if (logoArray.length === 0) return null;
+
+      let topRow = [];
+      let bottomRow = [];
+      let bottomRowStyle = {};
+
+      if (logoArray.length === 7) {
+        topRow = logoArray.slice(0, 4);
+        bottomRow = logoArray.slice(4);
+      } else if (logoArray.length === 6) {
+        topRow = logoArray.slice(0, 3);
+        bottomRow = logoArray.slice(3);
+      } else if (logoArray.length === 5) {
+        topRow = logoArray.slice(0, 3);
+        bottomRow = logoArray.slice(3);
+        bottomRowStyle = { justifyContent: "center" };
+      } else if (logoArray.length === 4) {
+        topRow = logoArray.slice(0, 2);
+        bottomRow = logoArray.slice(2);
+        bottomRowStyle = { justifyContent: "center" };
+      } else {
+        topRow = logoArray;
+      }
+
+      return (
+        <>
+          <div className="top-row">
+            {topRow.map((logoClassName) =>
+              createLogoElement(logoClassName, title, id)
+            )}
+          </div>
+          {bottomRow.length > 0 && (
+            <div className="bottom-row" style={bottomRowStyle}>
+              {bottomRow.map((logoClassName) =>
+                createLogoElement(logoClassName, title, id)
+              )}
+            </div>
+          )}
+        </>
+      );
+    };
+
+    return (
+      <>
+        <div className="arrows-container" id="arrows-container">
+          {currentIndex !== 0 && (
+            <button
+              className="arrow-button left-arrow"
+              id="leftArrow"
+              style={{ position: "absolute", left: "0" }}
+              onClick={() => handleArrowClick("left")}
+            >
+              <img alt="left arrow" />
+            </button>
+          )}
+          {currentIndex !== uses.length - 1 && (
+            <button
+              className="arrow-button right-arrow"
+              id="rightArrow"
+              style={{ position: "absolute", right: "0" }}
+              onClick={() => handleArrowClick("right")}
+            >
+              <img alt="right arrow" />
+            </button>
+          )}
+        </div>
+        <div className="content-section">
+          <img
+            className="section-image"
+            alt="section image"
+            width={40}
+            height={40}
+            id={id}
+          />
+        </div>
+        <div className="content-section">
+          <p className="section-text-title">{title}</p>
+        </div>
+        <div className="content-section">
+          <p className="section-text-description">{description}</p>
+        </div>
+        <div className="content-section">
+          <hr className="section-separator" />
+        </div>
+        <div className="content-section">
+          <div className="section-logos px-5">{renderLogoRows()}</div>
+        </div>
+      </>
+    );
+  };
   return (
     <div className="landing page-uses landing-builtin-bg">
       <div>
-        {/* Modal */}
-        <div
-          className="modal fade "
-          id="categoryFilterModal"
-          tabIndex={-1}
-          aria-labelledby="categoryFilterModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <a className="btn cancel" data-dismiss="modal">
-                  <span className="chevron">
-                    <span />
-                    <span />
-                  </span>{" "}
-                  {translate("Cancel")}
-                </a>
-                <a className="btn apply" data-dismiss="modal">
-                  {translate("Apply")}{" "}
-                  <span className="chevron">
-                    <span />
-                    <span />
-                  </span>
-                </a>
-              </div>
-              <div className="modal-body">
-                {/*  */}
-                <div className="p-3 page-events">
-                  <form>
-                    <p className="category-header mb-4">
-                      {translate("Featured Categories")}{" "}
-                      <span
-                        id="featured_count_old"
-                        className="featured_count category_count"
-                      >
-                        2
-                      </span>
-                    </p>
-                    {/* $$ for category_id, category_name in featured_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                        defaultChecked
-                      />
-                      <label
-                        className="font-weight-bold"
-                        htmlFor="input_$$category_id$$"
-                      >
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
-                    <p className="category-header pt-5 mt-3 mb-4">
-                      {translate("Other Categories")}{" "}
-                      <span
-                        id="other_count_old"
-                        className="other_count category_count"
-                      >
-                        0
-                      </span>
-                    </p>
-                    {/* $$ for category_id, category_name in other_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                      />
-                      <label htmlFor="input_$$category_id$$">
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
-                  </form>
-                </div>
-                {/*  */}
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-dismiss="modal"
-                >
-                  {translate("Apply")}
-                </button>
-                <a className="btn " data-dismiss="modal">
-                  {translate("Cancel")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* end modal */}
         <div className="overflow-hidden">
           <section className="container-new py-26 text-lg-center">
             <div className="p-3 col-lg-8 mx-lg-auto">
@@ -542,7 +672,7 @@ export default function Uses() {
               <div className="d-flex flex-column-reverse">
                 <div className="d-flex justify-content-start align-items-center">
                   <div className="arrow-animation" id="arrowAnimation">
-                    {" "}
+                    {arrowAnimation}
                   </div>
                   <span className="explore-projects">
                     Explore Featured Projects{" "}
@@ -559,14 +689,7 @@ export default function Uses() {
               </div>
             </div>
             <div className="col-lg-5 offset-lg-2 p-5 d-flex">
-              <div
-                className="mb-4 pb-3 numbers-animation"
-                id="numbersAnimation"
-              />
-              <div
-                className="mb-4 pb-3 numbers-animation"
-                id="numbersAnimationLight"
-              />
+              <div className="mb-4 pb-3 numbers-animation">{View}</div>
               <div className="apps-built">
                 Apps/exchanges <br /> built on the <br /> XRPL{" "}
               </div>
@@ -575,7 +698,7 @@ export default function Uses() {
               className="card-grid card-grid-4xN ls-none mt-4 pt-lg-2"
               id="use-case-card-grid"
             >
-              {uses.map((use) => (
+              {uses.map((use, index) => (
                 <li
                   key={use.id}
                   className="col use-case-circle ls-none p-3 open-modal"
@@ -583,7 +706,11 @@ export default function Uses() {
                   data-title={use.title}
                   data-description={use.description}
                   data-number={use.number}
-                  // data-src={use.src}
+                  onClick={() => {
+                    setModalData(use);
+                    setDisplayModal(true);
+                    setCurrentIndex(index);
+                  }}
                 >
                   <div className="circle-content">
                     <img className="circle-img" id={use.id} alt="use-logos" />
@@ -596,36 +723,20 @@ export default function Uses() {
               ))}
             </ul>
           </section>
-          <div className="modal modal-uses" id="myModal">
-            <div className="modal-content-uses">
-              <div className="arrows-container" id="arrows-container">
-                <button className="arrow-button left-arrow" id="leftArrow">
-                  <img alt="left arrow" />
-                </button>
-                <button className="arrow-button right-arrow" id="rightArrow">
-                  <img alt="right arrow" />
-                </button>
-              </div>
-              <div className="content-section">
-                <img
-                  className="section-image"
-                  alt="section image"
-                  width={40}
-                  height={40}
-                />
-              </div>
-              <div className="content-section">
-                <p className="section-text-title">Title</p>
-              </div>
-              <div className="content-section">
-                <p className="section-text-description">Description</p>
-              </div>
-              <div className="content-section">
-                <hr className="section-separator" />
-              </div>
-              <div className="content-section">
-                <div className="section-logos">Group of logos here...</div>
-              </div>
+          <div
+            className={`modal modal-uses ${displayModal ? "d-block" : ""}`}
+            id="myModal"
+          >
+            <div
+              ref={modalRef} // Attach the reference to the modal
+              className="modal-content-uses"
+            >
+              <UpdateModalContent
+                id={modalData?.id}
+                title={modalData?.title}
+                description={modalData?.description}
+                logos={logos}
+              />
             </div>
           </div>
           <section className="join-xrpl-section py-26">
@@ -691,50 +802,57 @@ export default function Uses() {
                         id="featured_count_old"
                         className="featured_count category_count"
                       >
-                        2
+                        {featuredCount}
                       </span>
                     </p>
-                    {/* $$ for category_id, category_name in featured_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                        defaultChecked
-                      />
-                      <label
-                        className="font-weight-bold"
-                        htmlFor="input_$$category_id$$"
+                    {Object.keys(featured_categories).map((item) => (
+                      <div
+                        key={item}
+                        className="cat_checkbox category-checkbox pb-2"
                       >
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
+                        <input
+                          className={`events-filter input_${item}`}
+                          type="checkbox"
+                          name="categories"
+                          id={`input_${item}`}
+                          defaultValue={`${item}`}
+                          onChange={() => toggleCategory(item)}
+                          defaultChecked
+                        />
+                        <label
+                          className="font-weight-bold"
+                          htmlFor={`input_${item}`}
+                        >
+                          {featured_categories[item]}
+                        </label>
+                      </div>
+                    ))}
                     <p className="category-header pt-5 mt-3 mb-4">
                       {translate("Other Categories")}{" "}
                       <span
                         id="other_count_old"
                         className="other_count category_count"
                       >
-                        0
+                        {otherCount}
                       </span>
                     </p>
-                    {/* $$ for category_id, category_name in other_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                      />
-                      <label htmlFor="input_$$category_id$$">
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
+                    {Object.keys(other_categories).map((item) => (
+                      <div
+                        key={item}
+                        className="cat_checkbox category-checkbox pb-2"
+                      >
+                        <input
+                          className={`events-filter input_${item}`}
+                          type="checkbox"
+                          name="categories"
+                          id={`input_${item}`}
+                          onChange={() => toggleCategory(item)}
+                        />
+                        <label htmlFor={`input_${item}`}>
+                          {other_categories[item]}
+                        </label>
+                      </div>
+                    ))}
                   </form>
                 </div>
                 {/* End sidebar desktop */}
@@ -744,9 +862,9 @@ export default function Uses() {
                 className="right row col row-cols-lg-2 m-0 p-0"
                 id="use_case_companies_list"
               >
-                {cards.map((card) => (
+                {filteredCards.map((card) => (
                   <a
-                    className="card-uses category_{card.category_id}"
+                    className={`card-uses category_${card.category_id}`}
                     href={card.link}
                     target="_blank"
                     id={card.id}
@@ -755,13 +873,13 @@ export default function Uses() {
                       <span className="w-100 mb-3 pb-3">
                         <img
                           className="mw-100 biz-logo"
-                          alt="$$card.title|default(card.id)$$"
+                          alt={`${card.title}|default${card.id}`}
                         />
                       </span>
                       <h4 className="card-title h6">{card.title}</h4>
                       <p className="card-text">{card.description}</p>
                       <div className="align-self-end">
-                        <span className="label label-use-{card.category_id}">
+                        <span className={`label label-use-${card.category_id}`}>
                           {card.category_name}
                         </span>
                       </div>
@@ -771,7 +889,6 @@ export default function Uses() {
               </div>
               {/* end cards */}
             </div>
-            {/* end company cards */}
           </section>
         </div>
       </div>
