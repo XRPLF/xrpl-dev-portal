@@ -4,6 +4,7 @@
   left: 0;
   top: -400px;
 }
+
 #home-green {
   position: absolute;
   right: -3px;
@@ -14,6 +15,7 @@
   &:hover {
     color: $blue-purple-400;
   }
+
   &.active {
     color: $blue-purple-400;
     font-weight: bold;
@@ -32,8 +34,9 @@
 
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost",
-      "community", "reliability"
-    {
+    "community", "reliability"
+
+      {
       ##{$benefit} {
         content: url("../img/icons/#{$benefit}.svg");
       }
@@ -43,6 +46,7 @@
   #advanced-features {
     $feature-cards: [ "pink-purple", "neutral-blue", "light-green", "orange",
       "purple-blue-2"];
+
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($feature-cards, $i)}.svg");
@@ -53,6 +57,7 @@
   #get-started {
     $gs-cards: [ "orange-yellow", "magenta-orange", "purple-blue-green",
       "light-blue", "green-blue"];
+
     @for $i from 1 through 5 {
       .card:nth-child(#{$i}) .card-footer {
         background-image: url("../img/cards/3col-#{nth($gs-cards, $i)}.svg");
@@ -63,10 +68,12 @@
 
 .cta {
   position: absolute;
+
   &-top-left {
     top: 0;
     left: 0;
   }
+
   &-bottom-right {
     bottom: 0;
     right: 0;
@@ -76,6 +83,7 @@
 // Page backgrounds
 .landing-bg {
   opacity: 0.6;
+
   @include media-breakpoint-up(md) {
     opacity: 1;
   }
@@ -94,6 +102,7 @@
     background-position-x: left;
     background-position-y: top;
     opacity: 0.6;
+
     @include media-breakpoint-up(md) {
       opacity: 1;
     }
@@ -106,6 +115,7 @@
   top: 0;
   left: 0;
 }
+
 #xrp-mark-overview {
   @include media-breakpoint-down(sm) {
     height: 40px;
@@ -118,6 +128,7 @@
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
     }
+
     #wallet-bitfrost {
       content: url("../img/wallets/bitfrost.png");
     }
@@ -127,8 +138,9 @@
 #top-exchanges {
   // Vector logos
   @each $exchange in "bitstamp", "kraken", "cex-io", "liquid", "lmax",
-    "bitfinex", "etoro"
-  {
+  "bitfinex", "etoro"
+
+    {
     #exch-#{$exchange} {
       content: url("../img/exchanges/#{$exchange}.svg");
     }
@@ -147,11 +159,13 @@
   position: absolute;
   top: 40px;
   left: 0;
+
   @include media-breakpoint-down(sm) {
     top: 0;
     left: -20vw;
   }
 }
+
 #xrpl-overview-orange {
   position: absolute;
   top: 80px;
@@ -169,6 +183,15 @@
 }
 
 .page-uses {
+
+  #allbridge {
+    .biz-logo {
+      content: url(../img/uses/modalLogos/Allbridge.png);
+      max-height: 33px;
+    }
+
+  }
+
   .container-new {
     padding-left: 16px;
     padding-right: 16px;
@@ -195,6 +218,7 @@
   .modal {
     padding: 0;
   }
+
   .modal-content {
     position: relative;
     display: flex;
@@ -217,9 +241,11 @@
     background: $gray-900;
     box-shadow: 0px 1px 2px $black;
   }
+
   .modal-header .cancel .chevron {
     transform: rotate(90deg);
   }
+
   .modal-header .apply .chevron {
     transform: rotate(-90deg);
   }
@@ -239,18 +265,21 @@
     margin-bottom: 0.5rem;
     line-height: 26px;
   }
+
   .card-uses {
     padding: 16px;
     margin: 0;
     text-decoration: none;
     transition: all 0.35s ease-out;
   }
+
   .card-uses:hover {
     text-decoration: none;
     color: $gray-200;
     transform: translateY(-16px);
     text-decoration: none;
   }
+
   .card-body {
     background: $gray-800;
     border-radius: 8px;
@@ -258,6 +287,7 @@
     padding: 32px;
     margin: 0;
   }
+
   .page-events .label {
     font-weight: normal;
     font-size: 14px;
@@ -270,21 +300,25 @@
     /*color: $gray-300;*/
     color: $gray-300;
   }
+
   .light {
     .category-checkbox label {
       color: #ffffff;
     }
   }
+
   .category-checkbox {
     display: flex;
     align-items: center;
   }
+
   .category-checkbox label {
     font-weight: normal;
     font-size: 14px;
     margin: 0;
     padding-left: 26px;
   }
+
   .category_count {
     margin-left: 8px;
     padding: 2px 16px;
@@ -298,16 +332,18 @@
     line-height: 16px;
     color: $blue-purple-300;
   }
+
   .category_sidebar {
     position: sticky;
     top: 10px;
   }
 
   @each $usecase in "infrastructure", "developer_tooling", "interoperability",
-    "wallet", "nfts", "exchanges", "gaming", "security", "payments",
-    "web_monetization", "sustainability", "cbdc", "other", "carbon_markets",
-    "custody", "defi"
-  {
+  "wallet", "nfts", "exchanges", "gaming", "security", "payments",
+  "web_monetization", "sustainability", "cbdc", "other", "carbon_markets",
+  "custody", "defi"
+
+    {
     ##{$usecase} {
       content: url("../img/icons/usecases/ic_#{$usecase}.png");
     }
@@ -316,46 +352,43 @@
   // logos for cards
   // $type incase png or jpg is needed.
   @each $company,
-    $type
-      in (
-        "bithomp": "svg",
-        "onthedex": "svg",
-        "gatehub": "svg",
-        "towo-labs": "svg",
-        "xrp-toolkit": "svg",
-        "xrpl-org-ledger-explorer": "svg",
-        "xrpl-rosetta": "svg",
-        "xrpscan": "svg",
-        "evernode": "svg",
-        "cryptum": "svg",
-        "x-tokenize": "svg",
-        "multichain": "svg",
-        "xumm-wallet": "svg",
-        "gem-wallet": "svg",
-        "aesthetes": "svg",
-        "audiotarky": "svg",
-        "xrp-cafe": "svg",
-        "nft-master": "svg",
-        "onxrp": "svg",
-        "peerkat": "svg",
-        "sologenic-nft": "svg",
-        "sologenic-dex": "svg",
-        "xp-market": "svg",
-        "ledger-city": "svg",
-        "forte": "svg",
-        "anchain-ai": "svg",
-        "coil": "svg",
-        "carbonland-trust": "svg",
-        "casino-coin": "svg",
-        "bitgo": "svg",
-        "bitpay": "svg",
-        "ripples-on-demand-liquidity": "svg",
-        "ripples-cbdc-platform": "svg",
-        "momento": "svg",
-        "Crossmark": "png",
-        "Edge": "png"
-      )
-  {
+  $type in ("bithomp": "svg",
+    "onthedex": "svg",
+    "gatehub": "svg",
+    "towo-labs": "svg",
+    "xrp-toolkit": "svg",
+    "xrpl-org-ledger-explorer": "svg",
+    "xrpl-rosetta": "svg",
+    "xrpscan": "svg",
+    "evernode": "svg",
+    "cryptum": "svg",
+    "x-tokenize": "svg",
+    "multichain": "svg",
+    "xumm-wallet": "svg",
+    "gem-wallet": "svg",
+    "aesthetes": "svg",
+    "audiotarky": "svg",
+    "xrp-cafe": "svg",
+    "nft-master": "svg",
+    "onxrp": "svg",
+    "peerkat": "svg",
+    "sologenic-nft": "svg",
+    "sologenic-dex": "svg",
+    "xp-market": "svg",
+    "ledger-city": "svg",
+    "forte": "svg",
+    "anchain-ai": "svg",
+    "coil": "svg",
+    "carbonland-trust": "svg",
+    "casino-coin": "svg",
+    "bitgo": "svg",
+    "bitpay": "svg",
+    "ripples-on-demand-liquidity": "svg",
+    "ripples-cbdc-platform": "svg",
+    "momento": "svg",
+    "Crossmark": "png",
+    "Edge": "png",
+  ) {
     #use_case_companies_list {
       ##{$company} {
         .biz-logo {
@@ -370,6 +403,7 @@
     h1 {
       font-size: 62px;
     }
+
     .container-new {
       padding-left: 64px;
       padding-right: 64px;
@@ -388,6 +422,7 @@
     }
   }
 }
+
 // End UseCases
 
 // History Page
@@ -396,15 +431,18 @@
   top: 0;
   right: -4px;
 }
+
 #history-purple {
   position: absolute;
   top: -480px;
   left: -4px;
 }
+
 .hidden-section {
   overflow: hidden;
   visibility: hidden;
   height: 0;
+
   &.show {
     overflow: auto;
     visibility: visible;
@@ -419,11 +457,13 @@
   left: -4px;
   rotate: (180deg);
 }
+
 #impact-purple {
   position: absolute;
   top: 100px;
   right: -4px;
 }
+
 #impact-magenta {
   position: absolute;
   top: 100px;
@@ -436,6 +476,7 @@
   top: 0px;
   left: 0px;
 }
+
 #foundation-orange {
   position: absolute;
   top: 40px;
@@ -446,6 +487,7 @@
   #map-light {
     display: none;
   }
+
   #map-dark {
     display: block;
   }
@@ -486,8 +528,9 @@
 .page-ambassadors {
   #benefits-list {
     @each $benefits in "benefits-01", "benefits-02", "benefits-03",
-      "benefits-04", "benefits-05", "benefits-06"
-    {
+    "benefits-04", "benefits-05", "benefits-06"
+
+      {
       ##{$benefits} {
         content: url("../img/ambassadors/#{$benefits}.svg");
       }
@@ -496,8 +539,9 @@
 
   #eligibility-list {
     @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
-      "eligibility-04", "eligibility-05"
-    {
+    "eligibility-04", "eligibility-05"
+
+      {
       ##{$eligibility} {
         content: url("../img/ambassadors/#{$eligibility}.svg");
       }
@@ -538,6 +582,7 @@
     0% {
       transform: translate(0, 0);
     }
+
     100% {
       transform: translate(-50%, 0);
     }
@@ -548,6 +593,7 @@
     height: 392px;
     margin-bottom: 40px;
   }
+
   @media (min-width: 992px) {
     #carouselSlidesOnly {
       height: 320px;
@@ -558,6 +604,7 @@
   h6 {
     font-size: 1.25rem;
   }
+
   // Arrow links after text
   .btn-arrow::after {
     display: inline-block;
@@ -585,6 +632,7 @@
   top: 0px;
   left: 0px;
 }
+
 #community-purple {
   position: absolute;
   top: 160px;
@@ -601,6 +649,7 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
   #events-orange {
     position: absolute;
     top: 0px;
@@ -609,18 +658,21 @@
 
   .event-hero {
     color: $gray-100;
+
     p {
       font-weight: 500;
       font-size: 24px;
       line-height: 32px;
     }
   }
+
   .event-save-date {
     color: $white;
     font-weight: bold;
     font-size: 20px;
     line-height: 26px;
   }
+
   .event-small-gray {
     color: $gray-200;
   }
@@ -690,16 +742,20 @@
     .icon-date::before {
       background: url(../img/events/event-date.svg);
     }
+
     .icon-location::before {
       background: url(../img/events/event-location.svg);
     }
-  } //end event card
+  }
+
+  //end event card
 
   @media (min-width: 992px) {
     .event-card {
       max-width: 347px;
       margin: 32px;
     }
+
     .event-card-header {
       height: 197px !important;
     }
@@ -809,24 +865,31 @@
   .card:nth-child(1) .card-footer {
     background-image: url(../img/cards/4col-light-blue-3.svg);
   }
+
   .card:nth-child(2) .card-footer {
     background-image: url(../img/cards/4col-purple-blue-2.svg);
   }
+
   .card:nth-child(3) .card-footer {
     background-image: url(../img/cards/4col-magenta-3.svg);
   }
+
   .card:nth-child(4) .card-footer {
     background-image: url(../img/cards/4col-green-2.svg);
   }
+
   .card:nth-child(5) .card-footer {
     background-image: url(../img/cards/4col-orange-yellow-2.svg);
   }
+
   .card:nth-child(6) .card-footer {
     background-image: url(../img/cards/4col-blue-purple.svg);
   }
+
   .card:nth-child(7) .card-footer {
     background-image: url(../img/cards/4col-yellow-2.svg);
   }
+
   .card:nth-child(8) .card-footer {
     background-image: url(../img/cards/4col-orange-2.svg);
   }
@@ -839,6 +902,7 @@
 .page-faq {
   &::before {
     background-image: url(../img/backgrounds/faq-bg.svg);
+
     @include media-breakpoint-up(md) {
       background-size: contain;
     }
@@ -868,6 +932,7 @@
       margin-top: 6.5rem;
     }
   }
+
   .content h1:first-of-type {
     font-size: 2.625rem;
     line-height: 1.2;
@@ -934,7 +999,7 @@
         visibility: hidden;
       }
 
-      > a {
+      >a {
         text-decoration: none;
 
         &:hover {
@@ -969,6 +1034,7 @@
       padding: 0.75rem 0.75rem 0.75rem 1rem;
       line-height: 2rem;
     }
+
     .ds-input {
       height: 56px;
       padding: 0.75rem 1rem 0.75rem 0.5rem;
@@ -979,12 +1045,15 @@
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-green.svg);
     }
+
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/4col-light-blue.svg);
     }
+
     .card:nth-child(3) .card-footer {
       background-image: url(../img/cards/4col-orange.svg);
     }
+
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/4col-yellow.svg);
     }
@@ -994,12 +1063,15 @@
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-orange-yellow.svg);
     }
+
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/4col-magenta.svg);
     }
+
     .card:nth-child(3) .card-footer {
       background-image: url(../img/cards/4col-blue-green.svg);
     }
+
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/4col-light-blue-2.svg);
     }
@@ -1016,14 +1088,17 @@
     padding-top: 2.5rem;
     padding-bottom: 5rem;
     padding-left: 1rem;
+
     @include media-breakpoint-up(lg) {
       padding-top: 5rem;
       padding-bottom: 15rem;
       padding-left: 0;
     }
+
     @include media-breakpoint-up(xl) {
       padding-bottom: 25rem;
     }
+
     // Floating images
     .parallax {
       position: absolute;
@@ -1038,18 +1113,22 @@
       top: 160px;
       left: 0%;
     }
+
     .two {
       top: 439px;
       left: 22%;
     }
+
     .three {
       top: 517px;
       left: 52%;
     }
+
     .four {
       top: 322px;
       left: 71%;
     }
+
     .five {
       top: 120px;
       right: 0%;
@@ -1060,12 +1139,15 @@
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-yellow-2.svg);
     }
+
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/4col-purple.svg);
     }
+
     .card:nth-child(3) .card-footer {
       background-image: url(../img/cards/4col-magenta-2.svg);
     }
+
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/4col-light-green.svg);
     }
@@ -1115,6 +1197,7 @@
 
   #xrpl-grants {
     padding-bottom: 5rem;
+
     @include media-breakpoint-up(md) {
       padding-top: 104px;
       padding-bottom: 104px;
@@ -1123,6 +1206,7 @@
 
   #xrpl-blog {
     padding-bottom: 5rem;
+
     @include media-breakpoint-up(md) {
       padding-top: 104px;
       padding-bottom: 104px;
@@ -1131,6 +1215,7 @@
 
   #xrpl-events {
     padding-bottom: 5rem;
+
     @include media-breakpoint-up(md) {
       padding-top: 104px;
       padding-bottom: 104px;
@@ -1139,6 +1224,7 @@
 
   #xrpl-careers {
     padding-bottom: 5rem;
+
     @include media-breakpoint-up(md) {
       padding-top: 104px;
       padding-bottom: 104px;
@@ -1147,6 +1233,7 @@
 
   #xrpl-design-assets {
     padding-bottom: 5rem;
+
     @include media-breakpoint-up(md) {
       padding-top: 104px;
       padding-bottom: 208px;
@@ -1156,8 +1243,9 @@
 
 .page-community {
   @each $platform in "github", "twitch", "stack-overflow", "twitter", "discord",
-    "youtube", "devto"
-  {
+  "youtube", "devto"
+
+    {
     #platform-#{$platform} {
       content: url("../img/logos/#{$platform}.svg");
     }
@@ -1169,23 +1257,29 @@
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/3col-orange-2.svg);
     }
+
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/3col-green-2.svg);
     }
+
     .card:nth-child(3) .card-footer {
       background-image: url(../img/cards/3col-magenta.svg);
     }
   }
+
   #xrpl-protocol .card-deck {
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/4col-light-blue-4.svg);
     }
+
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/4col-blue-green-2.svg);
     }
+
     .card:nth-child(3) .card-footer {
       background-image: url(../img/cards/4col-yellow-3.svg);
     }
+
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/4col-purple-blue.svg);
     }
@@ -1194,29 +1288,28 @@
 
 .page-dev-tools {
   @each $tool,
-    $card-graphic
-      in (
-        "xrp-explorer": "3-col-orange",
-        "bithomp-explorer": "3-col-light-blue",
-        "xrpscan": "3-col-pink",
-        "token-list": "3-col-pink2",
-        "websocket": "3-col-purple2",
-        "rpc": "3-col-green",
-        "technical-explorer": "3-col-purple-blue",
-        "faucets": "3-col-pink2",
-        "trasaction-sender": "3-col-light-blue2",
-        "domain": "3-col-green-purple",
-        "xrp-ledger": "3-col-dark-blue",
-        "binary-visualizer": "3-col-purple-blue",
-        "token-metadata-lookup": "3-col-pink-purple"
-      )
-  {
+  $card-graphic in ("xrp-explorer": "3-col-orange",
+    "bithomp-explorer": "3-col-light-blue",
+    "xrpscan": "3-col-pink",
+    "token-list": "3-col-pink2",
+    "websocket": "3-col-purple2",
+    "rpc": "3-col-green",
+    "technical-explorer": "3-col-purple-blue",
+    "faucets": "3-col-pink2",
+    "trasaction-sender": "3-col-light-blue2",
+    "domain": "3-col-green-purple",
+    "xrp-ledger": "3-col-dark-blue",
+    "binary-visualizer": "3-col-purple-blue",
+    "token-metadata-lookup": "3-col-pink-purple"
+
+  ) {
     ##{$tool} {
       .card-footer {
         background-image: url("../img/cards/#{$card-graphic}.svg");
       }
     }
   }
+
   .nav-link {
     color: $gray-400;
     background-color: $gray-900;
@@ -1234,42 +1327,51 @@
       padding-left: 0;
       justify-content: space-between;
     }
+
     .nav-item {
       display: inline-flex;
       width: auto;
       list-style: outside none none;
     }
+
     .nav-link {
       display: inline-flex;
       width: auto;
       padding: 1em 1em;
     }
   }
+
   .nav-link.active {
     border-bottom-color: $blue-purple-400;
     color: $white;
     font-weight: bold;
   }
+
   .nav-tabs {
     border-bottom: 1px solid $gray-600;
   }
+
   .btn {
     padding: 0.75rem;
   }
 }
+
 html.light {
   .page-dev-tools {
     .nav-link {
       background-color: $gray-100;
     }
+
     .nav-link.active {
       border-bottom-color: $blue-purple-400;
       color: $black;
       font-weight: bold;
     }
+
     .nav-link {
       color: $black;
     }
+
     #trasaction-sender .card-footer {
       background-image: url("../img/cards/3-col-light-blue-2.svg");
     }

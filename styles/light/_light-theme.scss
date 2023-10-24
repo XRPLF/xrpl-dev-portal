@@ -706,7 +706,12 @@ pre code {
       content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
     }
   }
-
+  #allbridge {
+    .biz-logo {
+      content: url(../img/uses/lightmode/Allbridge.png);
+      max-height: 33px;
+    }
+  }
   .category-header {
     color: $gray-700;
   }
