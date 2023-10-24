@@ -9,7 +9,7 @@ labels:
 
 A Compact Transaction Identifier (CTID) is a unique identifier for a validated transaction that applies across any [network](parallel-networks.html), not just the XRP Ledger Mainnet.
 
-The differences between a CTID and a transaction's [identifying hash](transactions.html#identifying-hash) are as follows:
+The differences between a CTID and a transaction's [identifying hash](transactions.html#identifying-transactions) are as follows:
 
 - A CTID identifies a validated transaction based on its network ID, ledger index, and position within the ledger. Since it specifies which network a transaction has been validated on, it can be used in contexts where you are interacting with more than one network, such as connecting to sidechains. A CTID is 64 bits, typically written as 16 characters of uppercase hexadecimal starting with `C`, for example `C005523E00000000`.
 - An transaction's identifying hash identifies a signed transaction based on its contents, regardless of if that transaction has been validated on any chains. Since it's a cryptographic hash, it can also be used to prove that the transaction contents are intact. A transaction hash is 256 bits, typically written as 64 characters of hexadecimal, for example `E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7`.
