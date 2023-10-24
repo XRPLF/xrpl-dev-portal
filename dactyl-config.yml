@@ -937,10 +937,7 @@ pages:
         targets:
             - en
 
-    # TODO: Translate to Japanese. Somehow this page's blurb got translated already.
-    -   md: concepts/transactions/source-and-destination-tags.md
-        blurb: 多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。
-        untranslated_warning: true
+    -   md: "@i18n/ja/concepts/transactions/source-and-destination-tags.md"
         targets:
             - ja
 
@@ -3817,9 +3814,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: "@i18n/ja/infrastructure/rippled/commandline-usage.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3959,10 +3954,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/configure-rippled/server-modes/index.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configure-rippled/server-modes/index.md"
+        targets:
             - ja
 
     -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
@@ -3982,10 +3979,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/configure-rippled/data-retention/index.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configure-rippled/data-retention/index.md"
+        targets:
             - ja
 
     -   md: infrastructure/rippled/configuration/configure-full-history.md
@@ -4044,10 +4043,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/rippled/configuration/test-amendments.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/rippled/configuration/test-amendments.md"
+        targets:
             - ja
 
         # TODO: translate
@@ -4061,6 +4062,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md"
+        outdated_translation: true
         targets:
             - ja
 

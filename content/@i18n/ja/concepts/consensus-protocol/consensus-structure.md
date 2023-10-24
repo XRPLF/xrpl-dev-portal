@@ -172,7 +172,7 @@ XRP Ledgerに送信されたトランザクションはすぐには処理され�
 - **コンセプト:**
   - [コンセンサスについて](consensus.html)
   - [コンセンサスの研究](consensus-research.html)
-  - [Rippleコンセンサスの動画](https://www.youtube.com/watch?v=pj1QVb1vlC0)
+  - [コンセンサスの仕組み(動画)](https://www.youtube.com/watch?v=pj1QVb1vlC0)
 - **チュートリアル:**
   - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
   - [バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)

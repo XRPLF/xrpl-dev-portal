@@ -5,7 +5,7 @@ blurb: ユーザーがあなたのアドレスに送金するときに宛先タ�
 labels:
   - アカウント
 ---
-# 宛先タグの要求
+# 宛先タグの必須化
 
 `RequireDest`設定は、送金先を識別する[宛先タグ](source-and-destination-tags.html)を顧客が付け忘れている場合にあなたのアドレスに[送金](payment-types.html)できないようにするためのものです。有効にすると、XRP Ledgerは宛先タグが付いていないあなたのアドレスへの送金を拒否します。
 
@@ -82,7 +82,7 @@ Content-Type: application/json
 
 - **コンセプト:**
   - [アカウント](accounts.html)
-  - [ソースタグと宛先タグ](source-and-destination-tags.html)
+  - [送信元と宛先タグ](source-and-destination-tags.html)
   - [トランザクションコスト](transaction-cost.html)
   - [支払いタイプ](payment-types.html)
 - **リファレンス:**
