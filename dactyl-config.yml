@@ -1561,7 +1561,18 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/python/modular-tutorials-in-python/nfts-using-python/index.md
+
+    -   md: tutorials/quickstart/py-create-time-based-escrows.md
+        targets:
+            - en
+            - ja
+
+    -   name: NFTs Using Python
+        html: nfts-using-python.html
+        parent: modular-tutorials-in-python.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: Mint and sell NFTs on the XRP Ledger using Python.
         targets:
             - en
             - ja
