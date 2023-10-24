@@ -37,7 +37,7 @@ const logos = {
   sustainability: ["carbonland-trust", "Rootmaker"],
   custody: ["Gatehub", "Bitgo"],
 };
-const cards = [
+const cardsData = [
   {
     id: "aesthetes",
     title: "Aesthetes",
@@ -382,7 +382,7 @@ const uses = [
   {
     id: "interoperability",
     title: "Interoperability",
-    number: 3,
+    number: 2,
     description:
       "Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.",
   },
@@ -460,6 +460,29 @@ export default function Uses() {
   const { translate } = useTranslate();
   const [displayModal, setDisplayModal] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
+  const defaultSelectedCategories = new Set(Object.keys(featured_categories));
+
+  const [selectedCategories, setSelectedCategories] = React.useState(
+    defaultSelectedCategories
+  );
+  const [cards, setCards] = React.useState(cardsData);
+
+  const toggleCategory = (category) => {
+    const newSelectedCategories = new Set(selectedCategories);
+    if (newSelectedCategories.has(category)) {
+      newSelectedCategories.delete(category);
+    } else {
+      newSelectedCategories.add(category);
+    }
+    setSelectedCategories(newSelectedCategories);
+  };
+
+  const filteredCards = cards.filter((card) =>
+    selectedCategories.has(card.category_id)
+  );
+  const featuredCount = Array.from(selectedCategories).filter(category => featured_categories.hasOwnProperty(category)).length;
+  const otherCount = Array.from(selectedCategories).filter(category => other_categories.hasOwnProperty(category)).length;
+
   const modalRef = React.useRef(null); // Create a reference
   React.useEffect(() => {
     const handleClickOutside = (event) => {
@@ -778,7 +801,7 @@ export default function Uses() {
                         id="featured_count_old"
                         className="featured_count category_count"
                       >
-                        2
+                        {featuredCount}
                       </span>
                     </p>
                     {Object.keys(featured_categories).map((item) => (
@@ -792,6 +815,7 @@ export default function Uses() {
                           name="categories"
                           id={`input_${item}`}
                           defaultValue={`${item}`}
+                          onChange={() => toggleCategory(item)}
                           defaultChecked
                         />
                         <label
@@ -808,7 +832,7 @@ export default function Uses() {
                         id="other_count_old"
                         className="other_count category_count"
                       >
-                        0
+                        {otherCount}
                       </span>
                     </p>
                     {Object.keys(other_categories).map((item) => (
@@ -821,7 +845,7 @@ export default function Uses() {
                           type="checkbox"
                           name="categories"
                           id={`input_${item}`}
-                          defaultValue={`${item}`}
+                          onChange={() => toggleCategory(item)}
                         />
                         <label htmlFor={`input_${item}`}>
                           {other_categories[item]}
@@ -837,9 +861,9 @@ export default function Uses() {
                 className="right row col row-cols-lg-2 m-0 p-0"
                 id="use_case_companies_list"
               >
-                {cards.map((card) => (
+                {filteredCards.map((card) => (
                   <a
-                    className="card-uses category_{card.category_id}"
+                    className={`card-uses category_${card.category_id}`}
                     href={card.link}
                     target="_blank"
                     id={card.id}
@@ -848,13 +872,13 @@ export default function Uses() {
                       <span className="w-100 mb-3 pb-3">
                         <img
                           className="mw-100 biz-logo"
-                          alt="$$card.title|default(card.id)$$"
+                          alt={`${card.title}|default${card.id}`}
                         />
                       </span>
                       <h4 className="card-title h6">{card.title}</h4>
                       <p className="card-text">{card.description}</p>
                       <div className="align-self-end">
-                        <span className="label label-use-{card.category_id}">
+                        <span className={`label label-use-${card.category_id}`}>
                           {card.category_name}
                         </span>
                       </div>
@@ -864,7 +888,6 @@ export default function Uses() {
               </div>
               {/* end cards */}
             </div>
-            {/* end company cards */}
           </section>
         </div>
       </div>
