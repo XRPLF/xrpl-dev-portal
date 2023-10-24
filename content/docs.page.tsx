@@ -388,7 +388,7 @@ export default function Docs() {
               <h2 className="h4">{translate('Browse By Recommended Pages')}</h2>
               <ul className="nav flex-column">
                 {recommendedPages.map(page => (
-                  <li className="nav-item">
+                  <li className="nav-item" key={page.link}>
                     <a href={page.link} className="nav-link">
                       {translate(page.description)}
                     </a>

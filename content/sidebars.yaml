@@ -670,7 +670,8 @@
   - group: Resources
     expanded: false
     items:
-      - label: Code Samples  # TODO: migrate custom page?
+      - label: Code Samples
+        page: code-samples.page.tsx
       - group: Dev Tools
         expanded: false
         items:

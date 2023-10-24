@@ -146,7 +146,7 @@ export default function Index() {
           </div>
           <ul className="mt-10 card-grid card-grid-3xN" id="benefits-list">
             {cards.map(card => (
-              <li className="col ls-none">
+              <li className="col ls-none" key={card.id}>
                 <img id={card.id} alt={card.title + ' Icon'} />
                 <h4 className="mt-3 mb-0 h5">{card.title}</h4>
                 <p className="mt-6-until-sm mt-3 mb-0">{card.description}</p>
@@ -164,8 +164,8 @@ export default function Index() {
             <h6 className="eyebrow mb-3">{translate('Powerful Features')}</h6>
           </div>
           <div className="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="advanced-features">
-            {cards2.map(card => (
-              <a className="card" href={target.prefix + card.href}>
+            {cards2.map((card, idx) => (
+              <a className="card" href={target.prefix + card.href} key={card.href + idx}>
                 <div className="card-body">
                   <h4 className="card-title h5">{card.title}</h4>
                   <p className="card-text">{card.description}</p>
@@ -181,8 +181,8 @@ export default function Index() {
             <h6 className="eyebrow mb-3">{translate('Where to Start')}</h6>
           </div>
           <div className="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="get-started">
-            {cards3.map(card => (
-              <a className="card" id={card.id} href={target.prefix + card.href}>
+            {cards3.map((card, idx) => (
+              <a className="card" id={card.id} href={target.prefix + card.href} key={card.href + idx}>
                 <div className="card-body">
                   <h4 className="card-title h5">{card.title}</h4>
                   <p className="card-text">{card.description}</p>
@@ -218,7 +218,7 @@ export default function Index() {
           </div>
           <ul className="mt-10 card-grid card-grid-3xN">
             {features.map(feat => (
-              <li className="col ls-none pt-2">
+              <li className="col ls-none pt-2" key={feat.href}>
                 <a className="label chip-green" href={feat.href}>
                   {feat.chip}
                 </a>
@@ -230,7 +230,7 @@ export default function Index() {
         </section>
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-8-sm p-10-until-sm br-8 cta-card">
-            <img alt src={require('./img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" />
+            <img src={require('./img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" />
             <div className="z-index-1 position-relative">
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 mb-8-sm mb-10-until-sm">

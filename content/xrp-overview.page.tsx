@@ -473,7 +473,7 @@ export default function XrpOverview() {
                   id="top-exchanges"
                 >
                   {exchanges.map((exch, i) => (
-                    <li className="nav-item">
+                    <li className="nav-item" key={exch.id}>
                       <a
                         className="nav-link external-link"
                         href={exch.href}

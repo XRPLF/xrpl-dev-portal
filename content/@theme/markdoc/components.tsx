@@ -19,7 +19,7 @@ export function IndexPageItems() {
         <div className="children-display">
           <ul>
             {data.map((item: any) => (
-              <li className="level-1">
+              <li className="level-1" key={item.slug}>
                 <Link to={item.slug}>{item.title}</Link>
                 <p className='class="blurb child-blurb'>{item.blurb}</p>
               </li>
