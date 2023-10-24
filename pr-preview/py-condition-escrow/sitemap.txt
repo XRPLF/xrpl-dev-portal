@@ -132,7 +132,7 @@ https://xrpl.org/modular-tutorials-in-python.html
 https://xrpl.org/send-payments-using-python.html
 https://xrpl.org/py-create-accounts-send-xrp.html
 https://xrpl.org/py-create-trustline-send-currency.html
-https://xrpl.org/py-create-conditional-escrows.html
+https://xrpl.org/py-create-time-based-escrows.html
 https://xrpl.org/nfts-using-python.html
 https://xrpl.org/py-mint-and-burn-nfts.html
 https://xrpl.org/py-transfer-nfts.html
@@ -408,6 +408,7 @@ https://xrpl.org/update-rippled-automatically-on-centos-rhel.html
 https://xrpl.org/update-rippled-automatically-on-linux.html
 https://xrpl.org/update-rippled-manually-on-centos-rhel.html
 https://xrpl.org/update-rippled-manually-on-ubuntu.html
+https://xrpl.org/build-on-linux-mac-windows.html
 https://xrpl.org/build-run-rippled-ubuntu.html
 https://xrpl.org/build-run-rippled-macos.html
 https://xrpl.org/build-run-rippled-in-reporting-mode.html
