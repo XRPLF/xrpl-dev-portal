@@ -1,5 +1,12 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+import numLight from "./static/js/ecosystem/numbers-animation-light.json";
+import numDark from "./static/js/ecosystem/numbers-animation.json";
+import arrow from "./static/js/ecosystem/arrow-animation.json";
+
+import { useLottie } from "lottie-react";
+import { useThemeFromClassList } from "./@theme/helpers";
+
 const cards = [
   {
     id: "aesthetes",
@@ -418,114 +425,39 @@ const uses = [
   },
 ];
 
-const target = { prefix: "" }; // TODO: fixme
-
 export default function Uses() {
+  const theme = useThemeFromClassList(["dark", "light"]);
   const { translate } = useTranslate();
+  const [displayModal, setDisplayModal] = React.useState(false);
+  const options = React.useMemo(() => {
+    return {
+      animationData: theme === "dark" ? numDark : numLight,
+      loop: false,
+    };
+  }, [theme]);
+  const [modalData,setModalData] = React.useState({
+    id: '',
+    src: "",
+    title: '',
+    description: '',
+    number: ''
+  })
+  const { View } = useLottie(options);
+
+  //arrow
+  const optionsArrow = React.useMemo(() => {
+    return {
+      animationData: arrow,
+      loop: true,
+    };
+  }, [theme]);
+
+  const arrowView = useLottie(optionsArrow);
+  const arrowAnimation = arrowView.View;
 
   return (
     <div className="landing page-uses landing-builtin-bg">
       <div>
-        {/* Modal */}
-        <div
-          className="modal fade "
-          id="categoryFilterModal"
-          tabIndex={-1}
-          aria-labelledby="categoryFilterModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog">
-            <div className="modal-content">
-              <div className="modal-header">
-                <a className="btn cancel" data-dismiss="modal">
-                  <span className="chevron">
-                    <span />
-                    <span />
-                  </span>{" "}
-                  {translate("Cancel")}
-                </a>
-                <a className="btn apply" data-dismiss="modal">
-                  {translate("Apply")}{" "}
-                  <span className="chevron">
-                    <span />
-                    <span />
-                  </span>
-                </a>
-              </div>
-              <div className="modal-body">
-                {/*  */}
-                <div className="p-3 page-events">
-                  <form>
-                    <p className="category-header mb-4">
-                      {translate("Featured Categories")}{" "}
-                      <span
-                        id="featured_count_old"
-                        className="featured_count category_count"
-                      >
-                        2
-                      </span>
-                    </p>
-                    {/* $$ for category_id, category_name in featured_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                        defaultChecked
-                      />
-                      <label
-                        className="font-weight-bold"
-                        htmlFor="input_$$category_id$$"
-                      >
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
-                    <p className="category-header pt-5 mt-3 mb-4">
-                      {translate("Other Categories")}{" "}
-                      <span
-                        id="other_count_old"
-                        className="other_count category_count"
-                      >
-                        0
-                      </span>
-                    </p>
-                    {/* $$ for category_id, category_name in other_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                      />
-                      <label htmlFor="input_$$category_id$$">
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
-                  </form>
-                </div>
-                {/*  */}
-              </div>
-              <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  data-dismiss="modal"
-                >
-                  {translate("Apply")}
-                </button>
-                <a className="btn " data-dismiss="modal">
-                  {translate("Cancel")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        {/* end modal */}
         <div className="overflow-hidden">
           <section className="container-new py-26 text-lg-center">
             <div className="p-3 col-lg-8 mx-lg-auto">
@@ -542,7 +474,7 @@ export default function Uses() {
               <div className="d-flex flex-column-reverse">
                 <div className="d-flex justify-content-start align-items-center">
                   <div className="arrow-animation" id="arrowAnimation">
-                    {" "}
+                    {arrowAnimation}
                   </div>
                   <span className="explore-projects">
                     Explore Featured Projects{" "}
@@ -559,14 +491,7 @@ export default function Uses() {
               </div>
             </div>
             <div className="col-lg-5 offset-lg-2 p-5 d-flex">
-              <div
-                className="mb-4 pb-3 numbers-animation"
-                id="numbersAnimation"
-              />
-              <div
-                className="mb-4 pb-3 numbers-animation"
-                id="numbersAnimationLight"
-              />
+              <div className="mb-4 pb-3 numbers-animation">{View}</div>
               <div className="apps-built">
                 Apps/exchanges <br /> built on the <br /> XRPL{" "}
               </div>
@@ -582,7 +507,10 @@ export default function Uses() {
                   data-title={use.title}
                   data-description={use.description}
                   data-number={use.number}
-                  // data-src={use.src}
+                  onClick={() => {
+                    setModalData(use)
+                    setDisplayModal(true)
+                  }}
                 >
                   <div className="circle-content">
                     <img className="circle-img" id={use.id} alt="use-logos" />
@@ -595,7 +523,7 @@ export default function Uses() {
               ))}
             </ul>
           </section>
-          <div className="modal modal-uses" id="myModal">
+          <div className={`modal modal-uses ${displayModal && 'd-block'}`} id="myModal">
             <div className="modal-content-uses">
               <div className="arrows-container" id="arrows-container">
                 <button className="arrow-button left-arrow" id="leftArrow">
@@ -611,19 +539,20 @@ export default function Uses() {
                   alt="section image"
                   width={40}
                   height={40}
+                  src={modalData.src}
                 />
               </div>
               <div className="content-section">
-                <p className="section-text-title">Title</p>
+                <p className="section-text-title">{modalData?.title}</p>
               </div>
               <div className="content-section">
-                <p className="section-text-description">Description</p>
+                <p className="section-text-description">{modalData?.description}</p>
               </div>
               <div className="content-section">
                 <hr className="section-separator" />
               </div>
               <div className="content-section">
-                <div className="section-logos">Group of logos here...</div>
+                <div className="section-logos">  </div>
               </div>
             </div>
           </div>
@@ -693,24 +622,27 @@ export default function Uses() {
                         2
                       </span>
                     </p>
-                    {/* $$ for category_id, category_name in featured_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                        defaultChecked
-                      />
-                      <label
-                        className="font-weight-bold"
-                        htmlFor="input_$$category_id$$"
+                    {Object.keys(featured_categories).map((item) => (
+                      <div
+                        key={item}
+                        className="cat_checkbox category-checkbox pb-2"
                       >
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
+                        <input
+                          className={`events-filter input_${item}`}
+                          type="checkbox"
+                          name="categories"
+                          id={`input_${item}`}
+                          defaultValue={`${item}`}
+                          defaultChecked
+                        />
+                        <label
+                          className="font-weight-bold"
+                          htmlFor={`input_${item}`}
+                        >
+                          {featured_categories[item]}
+                        </label>
+                      </div>
+                    ))}
                     <p className="category-header pt-5 mt-3 mb-4">
                       {translate("Other Categories")}{" "}
                       <span
@@ -720,20 +652,23 @@ export default function Uses() {
                         0
                       </span>
                     </p>
-                    {/* $$ for category_id, category_name in other_categories.items() $$ */}
-                    <div className="cat_checkbox category-checkbox pb-2">
-                      <input
-                        className="events-filter input_$$category_id$$"
-                        type="checkbox"
-                        name="categories"
-                        id="input_$$category_id$$"
-                        defaultValue="$$category_id$$"
-                      />
-                      <label htmlFor="input_$$category_id$$">
-                        $$ category_name $$
-                      </label>
-                    </div>
-                    {/* )) } */}
+                    {Object.keys(other_categories).map((item) => (
+                      <div
+                        key={item}
+                        className="cat_checkbox category-checkbox pb-2"
+                      >
+                        <input
+                          className={`events-filter input_${item}`}
+                          type="checkbox"
+                          name="categories"
+                          id={`input_${item}`}
+                          defaultValue={`${item}`}
+                        />
+                        <label htmlFor={`input_${item}`}>
+                          {other_categories[item]}
+                        </label>
+                      </div>
+                    ))}
                   </form>
                 </div>
                 {/* End sidebar desktop */}
