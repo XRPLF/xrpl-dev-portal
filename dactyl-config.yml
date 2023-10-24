@@ -1560,7 +1560,8 @@ pages:
             - en
             - ja
 
-    -   md: tutorials/quickstart/py-create-conditional-escrows.md
+        # TODO: translate
+    -   md: tutorials/quickstart/py-create-time-based-escrows.md
         targets:
             - en
             - ja
@@ -3899,11 +3900,17 @@ pages:
         targets:
             - ja
 
+    # TODO: translate
+    -   md: infrastructure/rippled/installation/build-on-linux-mac-windows.md
+        targets:
+            - en
+            - ja
+
         # Redirect to build instructions on rippled repo.
     -   name: Build and Run rippled on Ubuntu
         html: build-run-rippled-ubuntu.html
         template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        redirect_url: build-on-linux-mac-windows.html
         targets:
             - en
             - ja
@@ -3912,7 +3919,7 @@ pages:
     -   name: Build and Run rippled on macOS
         html: build-run-rippled-macos.html
         template: pagetype-redirect.html.jinja
-        redirect_url: https://github.com/XRPLF/rippled/blob/release/BUILD.md
+        redirect_url: build-on-linux-mac-windows.html
         targets:
             - en
             - ja
