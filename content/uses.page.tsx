@@ -7,6 +7,36 @@ import arrow from "./static/js/ecosystem/arrow-animation.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "./@theme/helpers";
 
+const logos = {
+  infrastructure: [
+    "XRP-Ledger",
+    "Gatehub",
+    "towoLabs",
+    "xrpscan",
+    "xrp-toolkit",
+    "bithomp",
+    "onthedex",
+  ],
+  developer_tooling: ["blockforce", "Evernode", "threezy", "tokenize"],
+  interoperability: ["Allbridge", "futureverse", "multichain"],
+  wallet: ["Bitfrost", "Crossmark", "Edge", "gem-wallet", "Xumm"],
+  nfts: [
+    "aesthetes",
+    "audiotarky",
+    "nftmaster",
+    "peerkat",
+    "sologenic_dex",
+    "xrp-cafe",
+    "xrp-oval",
+  ],
+  exchanges: ["sologenic_dex", "XPMarket"],
+  gaming: ["Forte", "Futureverse", "ledger-city", "onXRP", "styngr"],
+  security: ["Anchain"],
+  payments: ["ripple", "SuperMojo"],
+  cbdc: ["ripple"],
+  sustainability: ["carbonland-trust", "Rootmaker"],
+  custody: ["Gatehub", "Bitgo"],
+};
 const cards = [
   {
     id: "aesthetes",
@@ -429,19 +459,64 @@ export default function Uses() {
   const theme = useThemeFromClassList(["dark", "light"]);
   const { translate } = useTranslate();
   const [displayModal, setDisplayModal] = React.useState(false);
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const modalRef = React.useRef(null); // Create a reference
+  React.useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setDisplayModal(false);
+      }
+    };
+
+    // Attach the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      // Remove the event listener
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef, displayModal]);
+
+  const handleArrowClick = (direction) => {
+    let newIndex = currentIndex;
+    if (direction === "left" && currentIndex > 0) {
+      newIndex = currentIndex - 1;
+    } else if (direction === "right" && currentIndex < uses.length - 1) {
+      newIndex = currentIndex + 1;
+    }
+    setModalData(uses[newIndex]);
+    setCurrentIndex(newIndex);
+  };
+
+  React.useEffect(() => {
+    const closeOnEscape = (e) => {
+      if (e.key === "Escape") {
+        setDisplayModal(false);
+      }
+    };
+
+    if (displayModal) {
+      window.addEventListener("keydown", closeOnEscape);
+    }
+
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [displayModal]);
+
   const options = React.useMemo(() => {
     return {
       animationData: theme === "dark" ? numDark : numLight,
       loop: false,
     };
   }, [theme]);
-  const [modalData,setModalData] = React.useState({
-    id: '',
+  const [modalData, setModalData] = React.useState({
+    id: "",
     src: "",
-    title: '',
-    description: '',
-    number: ''
-  })
+    title: "",
+    description: "",
+    number: "",
+  });
   const { View } = useLottie(options);
 
   //arrow
@@ -454,7 +529,107 @@ export default function Uses() {
 
   const arrowView = useLottie(optionsArrow);
   const arrowAnimation = arrowView.View;
+  const UpdateModalContent = ({ id, title, description, logos }) => {
+    const logoArray = logos[id] || [];
+    const createLogoElement = (logoClassName, title, id) => {
+      return (
+        <div className={`logo-item ${logoClassName}`}>
+          {/* Whatever content here */}
+        </div>
+      );
+    };
 
+    const renderLogoRows = () => {
+      if (logoArray.length === 0) return null;
+
+      let topRow = [];
+      let bottomRow = [];
+      let bottomRowStyle = {};
+
+      if (logoArray.length === 7) {
+        topRow = logoArray.slice(0, 4);
+        bottomRow = logoArray.slice(4);
+      } else if (logoArray.length === 6) {
+        topRow = logoArray.slice(0, 3);
+        bottomRow = logoArray.slice(3);
+      } else if (logoArray.length === 5) {
+        topRow = logoArray.slice(0, 3);
+        bottomRow = logoArray.slice(3);
+        bottomRowStyle = { justifyContent: "center" };
+      } else if (logoArray.length === 4) {
+        topRow = logoArray.slice(0, 2);
+        bottomRow = logoArray.slice(2);
+        bottomRowStyle = { justifyContent: "center" };
+      } else {
+        topRow = logoArray;
+      }
+
+      return (
+        <>
+          <div className="top-row">
+            {topRow.map((logoClassName) =>
+              createLogoElement(logoClassName, title, id)
+            )}
+          </div>
+          {bottomRow.length > 0 && (
+            <div className="bottom-row" style={bottomRowStyle}>
+              {bottomRow.map((logoClassName) =>
+                createLogoElement(logoClassName, title, id)
+              )}
+            </div>
+          )}
+        </>
+      );
+    };
+
+    return (
+      <>
+        <div className="arrows-container" id="arrows-container">
+          {currentIndex !== 0 && (
+            <button
+              className="arrow-button left-arrow"
+              id="leftArrow"
+              style={{ position: "absolute", left: "0" }}
+              onClick={() => handleArrowClick("left")}
+            >
+              <img alt="left arrow" />
+            </button>
+          )}
+          {currentIndex !== uses.length - 1 && (
+            <button
+              className="arrow-button right-arrow"
+              id="rightArrow"
+              style={{ position: "absolute", right: "0" }}
+              onClick={() => handleArrowClick("right")}
+            >
+              <img alt="right arrow" />
+            </button>
+          )}
+        </div>
+        <div className="content-section">
+          <img
+            className="section-image"
+            alt="section image"
+            width={40}
+            height={40}
+            id={id}
+          />
+        </div>
+        <div className="content-section">
+          <p className="section-text-title">{title}</p>
+        </div>
+        <div className="content-section">
+          <p className="section-text-description">{description}</p>
+        </div>
+        <div className="content-section">
+          <hr className="section-separator" />
+        </div>
+        <div className="content-section">
+          <div className="section-logos px-5">{renderLogoRows()}</div>
+        </div>
+      </>
+    );
+  };
   return (
     <div className="landing page-uses landing-builtin-bg">
       <div>
@@ -500,7 +675,7 @@ export default function Uses() {
               className="card-grid card-grid-4xN ls-none mt-4 pt-lg-2"
               id="use-case-card-grid"
             >
-              {uses.map((use) => (
+              {uses.map((use, index) => (
                 <li
                   className="col use-case-circle ls-none p-3 open-modal"
                   data-id={use.id}
@@ -508,8 +683,9 @@ export default function Uses() {
                   data-description={use.description}
                   data-number={use.number}
                   onClick={() => {
-                    setModalData(use)
-                    setDisplayModal(true)
+                    setModalData(use);
+                    setDisplayModal(true);
+                    setCurrentIndex(index);
                   }}
                 >
                   <div className="circle-content">
@@ -523,37 +699,20 @@ export default function Uses() {
               ))}
             </ul>
           </section>
-          <div className={`modal modal-uses ${displayModal && 'd-block'}`} id="myModal">
-            <div className="modal-content-uses">
-              <div className="arrows-container" id="arrows-container">
-                <button className="arrow-button left-arrow" id="leftArrow">
-                  <img alt="left arrow" />
-                </button>
-                <button className="arrow-button right-arrow" id="rightArrow">
-                  <img alt="right arrow" />
-                </button>
-              </div>
-              <div className="content-section">
-                <img
-                  className="section-image"
-                  alt="section image"
-                  width={40}
-                  height={40}
-                  src={modalData.src}
-                />
-              </div>
-              <div className="content-section">
-                <p className="section-text-title">{modalData?.title}</p>
-              </div>
-              <div className="content-section">
-                <p className="section-text-description">{modalData?.description}</p>
-              </div>
-              <div className="content-section">
-                <hr className="section-separator" />
-              </div>
-              <div className="content-section">
-                <div className="section-logos">  </div>
-              </div>
+          <div
+            className={`modal modal-uses ${displayModal ? "d-block" : ""}`}
+            id="myModal"
+          >
+            <div
+              ref={modalRef} // Attach the reference to the modal
+              className="modal-content-uses"
+            >
+              <UpdateModalContent
+                id={modalData?.id}
+                title={modalData?.title}
+                description={modalData?.description}
+                logos={logos}
+              />
             </div>
           </div>
           <section className="join-xrpl-section py-26">
