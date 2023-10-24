@@ -184,7 +184,7 @@
                       - page: tutorials/quickstart/create-trustline-send-currency-using-javascript.md
                       - page: tutorials/quickstart/create-time-based-escrows-using-javascript.md
                       - page: tutorials/quickstart/create-conditional-escrows-using-javascript.md
-                  - page: 
+                  - page:
                         tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index.md
                     expanded: false
                     items:
@@ -226,28 +226,28 @@
                     expanded: false
                     items:
                       - page: tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
-                      - page: 
+                      - page:
                             tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
                       - page: tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
                       - page: tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.md
-                      - page: 
+                      - page:
                             tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
                   - page: tutorials/use-specialized-payment-types/use-payment-channels.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
                   - page: tutorials/use-specialized-payment-types/use-checks/use-checks.md
                     expanded: false
                     items:
                       - page: tutorials/use-specialized-payment-types/use-checks/send-a-check.md
-                      - page: 
+                      - page:
                             tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
-                      - page: 
+                      - page:
                             tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
                       - page: tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md
                       - page: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
-                      - page: 
+                      - page:
                             tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
               - page: tutorials/tasks/use-tokens/index.md
                 expanded: false
@@ -274,7 +274,7 @@
                 expanded: false
                 items:
                   - page: references/protocol-reference/ledger-data/ledger-header.md
-                  - page: 
+                  - page:
                         references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
                     expanded: false
                     items:
@@ -299,7 +299,7 @@
                 expanded: false
                 items:
                   - page: references/protocol-reference/transactions/transaction-common-fields.md
-                  - page: 
+                  - page:
                         references/protocol-reference/transactions/transaction-types/transaction-types.md
                     expanded: false
                     items:
@@ -319,36 +319,36 @@
                       - page: references/protocol-reference/transactions/transaction-types/escrowcancel.md
                       - page: references/protocol-reference/transactions/transaction-types/escrowcreate.md
                       - page: references/protocol-reference/transactions/transaction-types/escrowfinish.md
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
                       - page: references/protocol-reference/transactions/transaction-types/nftokenburn.md
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
                       - page: references/protocol-reference/transactions/transaction-types/nftokenmint.md
                       - page: references/protocol-reference/transactions/transaction-types/offercancel.md
                       - page: references/protocol-reference/transactions/transaction-types/offercreate.md
                       - page: references/protocol-reference/transactions/transaction-types/payment.md
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/transaction-types/paymentchannelclaim.md
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/transaction-types/paymentchannelcreate.md
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/transaction-types/paymentchannelfund.md
                       - page: references/protocol-reference/transactions/transaction-types/setregularkey.md
                       - page: references/protocol-reference/transactions/transaction-types/signerlistset.md
                       - page: references/protocol-reference/transactions/transaction-types/ticketcreate.md
                       - page: references/protocol-reference/transactions/transaction-types/trustset.md
-                  - page: 
+                  - page:
                         references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.md
                       - page: references/protocol-reference/transactions/pseudo-transaction-types/setfee.md
                       - page: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
-                  - page: 
+                  - page:
                         references/protocol-reference/transactions/transaction-results/transaction-results.md
                     expanded: false
                     items:
@@ -397,32 +397,32 @@
                   - page: references/http-websocket-apis/public-api-methods/account-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_info.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
                       - page: references/http-websocket-apis/public-api-methods/account-methods/account_tx.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
                   - page: references/http-websocket-apis/public-api-methods/ledger-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
                       - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md
                       - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
@@ -430,60 +430,60 @@
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
                       - page: references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
-                  - page: 
+                  - page:
                         references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
-                  - page: 
+                  - page:
                         references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
                   - page: references/http-websocket-apis/public-api-methods/subscription-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
                   - page: references/http-websocket-apis/public-api-methods/server-info-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
                   - page: references/http-websocket-apis/public-api-methods/clio-server/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                       - page: references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
                       - page: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
@@ -500,76 +500,76 @@
                   - page: references/http-websocket-apis/admin-api-methods/key-generation-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
-                  - page: 
+                  - page:
                         references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
                   - page: references/http-websocket-apis/admin-api-methods/server-control-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
                       - page: references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
                   - page: references/http-websocket-apis/admin-api-methods/signing-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
                       - page: references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
-                  - page: 
+                  - page:
                         references/http-websocket-apis/admin-api-methods/peer-management-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
-                  - page: 
+                  - page:
                         references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/index.md
                     expanded: false
                     items:
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
-                      - page: 
+                      - page:
                             references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
               - page: references/http-websocket-apis/peer-port-methods/index.md
                 expanded: false
@@ -635,11 +635,11 @@
           - page: infrastructure/testing-and-auditing/index.md
             expanded: false
             items:
-              - page: 
+              - page:
                     infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
-              - page: 
+              - page:
                     infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
-              - page: 
+              - page:
                     infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
           - page: infrastructure/troubleshooting/index.md
             expanded: false
@@ -657,6 +657,7 @@
     expanded: false
     items:
       - label: Code Samples
+        page: code-samples.page.tsx
       - group: Dev Tools
         expanded: false
         items:
