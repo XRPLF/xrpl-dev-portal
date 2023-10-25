@@ -25,7 +25,7 @@ This tutorial shows the steps to [freeze an individual trust line](freezes.html#
 - You **cannot** have enabled the [No Freeze setting](freezes.html#no-freeze), which gives up your ability to freeze individual trust lines.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/freeze-individual-line.js"></script>
+<script type="application/javascript" src="static/js/tutorials/freeze-individual-line.js"></script>
 
 
 ## Example Code
@@ -126,10 +126,10 @@ Example Request:
 For purposes of this tutorial, a second test address has created a trust line to the test address for the currency "FOO", which you can see in the following example:
 
 {{ start_step("Choose Trust Line")}}
-<div class="loader collapse" id="trust-line-setup-loader"><img class="throbber" src="assets/img/xrp-loader-96.png">Waiting for setup to complete...</div>
+<div class="loader collapse" id="trust-line-setup-loader"><img class="throbber" src="static/img/xrp-loader-96.png">Waiting for setup to complete...</div>
 <input type="hidden" id="peer-seed" value="" />
 <button id="look-up-trust-lines" class="btn btn-primary" disabled="disabled" title="Wait for setup to complete...">Choose Trust Line</button>
-<div class="loader loader-looking collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Looking...</div>
+<div class="loader loader-looking collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Looking...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -183,7 +183,7 @@ _WebSocket_
 
 {{ start_step("Send TrustSet to Freeze") }}
 <button class="btn btn-primary previous-steps-required send-trustset" data-wait-step-name="Wait" data-action="start_freeze">Send TrustSet (Freeze)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -258,7 +258,7 @@ Example Response:
 
 {{ start_step("Check Freeze Status") }}
 <button id="confirm-settings" class="btn btn-primary previous-steps-required">Check Trust Line</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Checking...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -312,7 +312,7 @@ _WebSocket_
 
 {{ start_step("Send TrustSet to End Freeze") }}
 <button class="btn btn-primary previous-steps-required send-trustset" data-wait-step-name="Wait (again)" data-action="end_freeze">Send TrustSet (End Freeze)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -346,6 +346,6 @@ As before, wait for the transaction to be validated by consensus.
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

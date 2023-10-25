@@ -1,6 +1,6 @@
 # XRPL Styles
 
-This folder contains the source files for the XRP Ledger Dev Portal CSS. The combined, minified version of these styles is `assets/css/devportal.css`.
+This folder contains the source files for the XRP Ledger Dev Portal CSS. The combined, minified version of these styles is `static/css/devportal.css`.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ $ yarn run build-css
 To build the output file using sassc, run the following command from this directory:
 
 ```sh
-$ sassc xrpl.scss -t compressed -m > ../assets/css/devportal.css
+$ sassc xrpl.scss -t compressed -m > ../static/css/devportal.css
 ```
 
 You can omit the `-m` (include source map) to reduce the output file size. It provides useful information when debugging styles, about which original file specific rules came from.

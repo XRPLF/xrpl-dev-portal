@@ -15,7 +15,7 @@ labels:
 ## Prerequisites
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
+<script type="application/javascript" src="static/js/tutorials/use-tickets.js"></script>
 {% set use_network = "Testnet" %}
 
 This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
@@ -76,7 +76,7 @@ _JavaScript_
 
 {{ start_step("Check Sequence") }}
 <button id="check-sequence" class="btn btn-primary previous-steps-required">Check Sequence Number</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Querying...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Querying...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -118,7 +118,7 @@ _JavaScript_
 
 {{ start_step("Submit") }}
 <button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -255,6 +255,6 @@ You could do this in parallel for several different potential transactions as lo
     - [Transaction Common Fields](transaction-common-fields.html)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

@@ -40,7 +40,7 @@ An example of the request format:
 
 <!-- MULTICODE_BLOCK_END -->
 
-<!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
+<!-- To DO: Add an example command to the static/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
 [Try it! >](websocket-api-tool.html#nft_info)-->
 
 The request contains the following parameters:

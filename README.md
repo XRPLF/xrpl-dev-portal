@@ -33,7 +33,7 @@ If you make changes to the [Domain Verification Checker](https://xrpl.org/valida
 
 2. From the project root directory (this step may be different depending on how you installed webpack)
 
-        cd assets/js
+        cd static/js
         webpack-cli domain-verifier-checker.js --optimize-minimize -o domain-verifier-bundle.js
 
 3. Build the site:
@@ -108,11 +108,11 @@ After that, next time you build the site using Dactyl it should pull the updated
 
 ## Issues, Projects, and Project Boards
 
-Use GitHub Issues under the [`xrpl-dev-portal`](https://github.com/XRPLF/xrpl-dev-portal) repository to report bugs, feature requests, and suggestions for the XRP Ledger Documentation or the `xrpl.org` website. 
+Use GitHub Issues under the [`xrpl-dev-portal`](https://github.com/XRPLF/xrpl-dev-portal) repository to report bugs, feature requests, and suggestions for the XRP Ledger Documentation or the `xrpl.org` website.
 
 For issues related to `rippled` or client libraries (`xrpl.js`, `xrpl-py`, and others), use the respective source repository under [`https://github.com/XRPLF`](https://github.com/XRPLF).
 
-If you are a contributor, use GitHub Projects and Project Boards to plan and track updates to xrpl.org. 
+If you are a contributor, use GitHub Projects and Project Boards to plan and track updates to xrpl.org.
 
 ### Project Board `xrpl-docs`
 

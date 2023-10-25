@@ -6,7 +6,7 @@ top_nav_name: JavaScript
 top_nav_grouping: Get Started
 labels:
   - Development
-showcase_icon: assets/img/logos/javascript.svg
+showcase_icon: static/img/logos/javascript.svg
 ---
 # Get Started Using JavaScript
 

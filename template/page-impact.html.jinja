@@ -9,7 +9,7 @@
     <![endif]-->
 
       <!-- Play videos from youtube -->
-  <script src="{{currentpage.prefix}}assets/js/video.js"></script>
+  <script src="{{currentpage.prefix}}static/js/video.js"></script>
 
 {% endblock %}
 
@@ -66,7 +66,7 @@
       <div class="col">
         <iframe id="video1" style="display:none;" width="560" height="315" src="https://www.youtube.com/embed/WsmldDNGQ9s" title="What makes the XRPL sustainable?" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <a href="#" id="playvideo">
-          <img alt="Preview of man speaking with a play button" src="./assets/img/impact/video_sustainable@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
+          <img alt="Preview of man speaking with a play button" src="./static/img/impact/video_sustainable@2x.png" id="xrpl-overview-video-intro" class="w-100 video-image">
         </a>
       </div>
 
@@ -185,13 +185,13 @@
 
 {% block endbody %}
 
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/bodymovin.min.js"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}static/js/bodymovin.min.js"></script>
 
 <!-- Light -->
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/impact/map-animation-light.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}static/js/impact/map-animation-light.json"></script>
 
 <!-- Dark -->
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/impact/map-animation-dark.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}static/js/impact/map-animation-dark.json"></script>
 
 <script type="text/javascript">
 

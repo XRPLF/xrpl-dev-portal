@@ -6,7 +6,7 @@ top_nav_name: JavaScript
 top_nav_grouping: 始めましょう
 labels:
   - 開発
-showcase_icon: assets/img/logos/javascript.svg
+showcase_icon: static/img/logos/javascript.svg
 ---
 # JavaScriptを使ってみよう
 

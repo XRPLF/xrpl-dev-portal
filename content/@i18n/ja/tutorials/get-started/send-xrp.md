@@ -18,7 +18,7 @@ top_nav_grouping: 人気ページ
 ## 前提条件
 
 <!-- このチュートリアルのインタラクティブ部分のソースコード： -->
-<script type="application/javascript" src="assets/js/tutorials/send-xrp.js"></script>
+<script type="application/javascript" src="static/js/tutorials/send-xrp.js"></script>
 {% set use_network = "Testnet" %}
 
 - このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](get-started-using-javascript.html)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
@@ -178,7 +178,7 @@ _Java_
 
 {{ start_step("Submit") }}
 <button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">サンプルトランザクションを送信する</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> 送信中...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png"> 送信中...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -325,6 +325,6 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 - escrowやPayment Channelなどの[複雑な支払いタイプ](complex-payment-types.html)について調べる
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

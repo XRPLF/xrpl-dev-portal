@@ -17,7 +17,7 @@ _(Requires the [AMM amendment][] :not_enabled:)_
 An [Automated Market Maker (AMM)](automated-market-makers.html) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/create-amm.js"></script>
+<script type="application/javascript" src="static/js/tutorials/create-amm.js"></script>
 
 ## Prerequisites
 
@@ -104,7 +104,7 @@ _JavaScript_
 {{ start_step("Acquire tokens") }}
 <button id="buy-tst" class="btn btn-primary previous-steps-required">Buy TST</button>
 <button id="get-foo" class="btn btn-primary previous-steps-required">Get FOO</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Working...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Working...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -124,7 +124,7 @@ If the AMM does already exist, you should double-check that you specified the ri
 
 {{ start_step("Check for AMM") }}
 <button id="check-for-amm" class="btn btn-primary previous-steps-required">Check AMM</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -144,7 +144,7 @@ _JavaScript_
 
 {{ start_step("Look up AMMCreate cost") }}
 <button id="look-up-ammcreate-cost" class="btn btn-primary previous-steps-required">Check cost</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -203,7 +203,7 @@ _JavaScript_
   </div>
 </form>
 <button id="create-amm" class="btn btn-primary previous-steps-required">Create AMM</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -225,7 +225,7 @@ Initially, the AMM's total outstanding LP Tokens, reported in the `lp_token` fie
 
 {{ start_step("Check AMM info") }}
 <button id="check-amm-info" class="btn btn-primary previous-steps-required">Check AMM</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -247,7 +247,7 @@ The `account_lines` response shows only the tokens held by the account you looke
 
 {{ start_step("Check trust lines") }}
 <button id="check-trust-lines" class="btn btn-primary previous-steps-required">Check trust lines</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 

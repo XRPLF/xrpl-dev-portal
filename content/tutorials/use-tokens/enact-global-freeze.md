@@ -23,7 +23,7 @@ If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enact a [Gl
 - You don't need to have [issued a token](issue-a-fungible-token.html) in the XRP Ledger to enact a Global Freeze, but the main reason you would do so is if you have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/enact-global-freeze.js"></script>
+<script type="application/javascript" src="static/js/tutorials/enact-global-freeze.js"></script>
 
 ## Example Code
 
@@ -102,7 +102,7 @@ _WebSocket_
 
 {{ start_step("Send AccountSet (Start Freeze)") }}
 <button class="btn btn-primary previous-steps-required send-accountset" data-wait-step-name="Wait" data-action="start_freeze">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -173,7 +173,7 @@ Response:
 
 {{ start_step("Confirm Settings") }}
 <button id="confirm-settings" class="btn btn-primary previous-steps-required">Confirm Settings</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -226,7 +226,7 @@ _WebSocket_
 
 {{ start_step("Send AccountSet (End Freeze)") }}
 <button class="btn btn-primary previous-steps-required send-accountset" data-wait-step-name="Wait (again)" data-action="end_freeze">Send AccountSet (end the freeze)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -246,7 +246,7 @@ After the transaction is validated, you can confirm the status of the Global Fre
 
 {{ start_step("Confirm Settings (After Freeze)") }}
 <button id="confirm-settings-end" class="btn btn-primary previous-steps-required">Confirm Settings (After Freeze)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -270,6 +270,6 @@ After the transaction is validated, you can confirm the status of the Global Fre
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

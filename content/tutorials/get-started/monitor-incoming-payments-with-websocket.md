@@ -22,7 +22,7 @@ WebSocket follows a model where the client and server open one connection, then 
 - To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](tokens.html), you need even more precision. For more information, see [Currency Precision](currency-formats.html#xrp-precision).
 
 <!-- Big number support -->
-<script type="application/javascript" src="assets/vendor/big.min.js"></script>
+<script type="application/javascript" src="static/vendor/big.min.js"></script>
 <script type="application/javascript">
 // Helper stuff for this interactive tutorial specifically
 
@@ -511,6 +511,6 @@ _Python_
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

@@ -31,12 +31,12 @@
     {% set code_samples = all_code_samples() %}
 
     {% set lang_icons = {
-      "cli": "assets/img/logos/cli.svg",
-      "go": "assets/img/logos/golang.svg",
-      "java": "assets/img/logos/java.svg",
-      "js": "assets/img/logos/javascript.svg",
-      "py": "assets/img/logos/python.svg",
-      "http": "assets/img/logos/globe.svg",
+      "cli": "static/img/logos/cli.svg",
+      "go": "static/img/logos/golang.svg",
+      "java": "static/img/logos/java.svg",
+      "js": "static/img/logos/javascript.svg",
+      "py": "static/img/logos/python.svg",
+      "http": "static/img/logos/globe.svg",
     } %}
 
   <div class="row col-md-12 px-0" id="code_samples_list">
@@ -123,5 +123,5 @@
 {% endblock %}
 
 {% block endbody %}
-<script type="application/javascript" src="{{currentpage.prefix}}assets/js/code-samples.js"></script>
+<script type="application/javascript" src="{{currentpage.prefix}}static/js/code-samples.js"></script>
 {% endblock %}

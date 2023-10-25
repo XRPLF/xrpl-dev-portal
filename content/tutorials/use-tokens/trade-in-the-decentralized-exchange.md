@@ -22,7 +22,7 @@ This tutorial demonstrates how you can buy and sell tokens in the [decentralized
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
-<script type="application/javascript" src="assets/js/tutorials/trade-in-the-dex.js"></script>
+<script type="application/javascript" src="static/js/tutorials/trade-in-the-dex.js"></script>
 
 ## Example Code
 
@@ -146,7 +146,7 @@ The following block demonstrates these calculations in action:
   </div>
 </form>
 <button id="look-up-offers" class="btn btn-primary previous-steps-required">Look Up Offers</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Querying...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Querying...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -177,7 +177,7 @@ You can use this interface to send the transaction specified by the amounts in t
 
 {{ start_step("Send OfferCreate") }}
 <button id="send-offercreate" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send OfferCreate</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -215,7 +215,7 @@ You can use this interface to test it out:
 
 {{ start_step("Check Metadata") }}
 <button id="check-metadata" class="btn btn-primary previous-steps-required">Check Metadata</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Checking...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -242,11 +242,11 @@ You can use this interface to test it out:
 
 {{ start_step("Check Balances and Offers") }}
 <button id="check-balances-and-offers" class="btn btn-primary previous-steps-required">Check Balances and Offers</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Checking...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

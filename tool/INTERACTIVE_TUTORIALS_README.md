@@ -60,12 +60,12 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
         filters:
             - interactive_steps
 
-    Including the `interactive_steps` filter automatically causes the templates to load the [interactive-tutorial.js](../assets/js/interactive-tutorial.js) file on that page. This JavaScript file implements much of the functionality for interactive tutorials, and provides helper functions for a lot of other common things you might want to do.
+    Including the `interactive_steps` filter automatically causes the templates to load the [interactive-tutorial.js](../static/js/interactive-tutorial.js) file on that page. This JavaScript file implements much of the functionality for interactive tutorials, and provides helper functions for a lot of other common things you might want to do.
 
 2. For the tutorial, you're going to create (at least) two JavaScript files:
 
     - **Example Code:** The example code that you'll display on the page. You want to make sure it actually runs correctly as shown to the user, after all. You should start by making this one. You should save this file as `content/_code-samples/{YOUR TUTORIAL}/{YOUR TUTORIAL}.js`.
-    - **Interactive Code:** A modified version of the same code that will actually run, and also interact with the user interface in the browser itself. You should adapt this one from the other version after you get the other one working. While working on this version, remember to backport any changes that are also applicable to the example code version. You should save this file as `assets/js/tutorials/{YOUR_TUTORIAL}.js`.
+    - **Interactive Code:** A modified version of the same code that will actually run, and also interact with the user interface in the browser itself. You should adapt this one from the other version after you get the other one working. While working on this version, remember to backport any changes that are also applicable to the example code version. You should save this file as `static/js/tutorials/{YOUR_TUTORIAL}.js`.
 
 3. Start working on the Example Code file first.
 
@@ -100,10 +100,10 @@ To run your custom interactive code on your tutorial page, add a script tag to t
 
 ```html
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
+<script type="application/javascript" src="static/js/tutorials/use-tickets.js"></script>
 ```
 
-When you want to test changes to this code, you need a Dactyl-built version of the page. You can build just a single page using the following syntax, which also copies your updated version of the `assets/` JS to the out folder:
+When you want to test changes to this code, you need a Dactyl-built version of the page. You can build just a single page using the following syntax, which also copies your updated version of the `static/` JS to the out folder:
 
 ```sh
 dactyl_build --only your-page.html
@@ -134,7 +134,7 @@ In your Markdown file, you'll use Jinja syntax to mark the start and end of the 
 ```jinja2
 {{ start_step("Step Name") }}
 <button id="your-button-id" class="btn btn-primary previous-steps-required">Click this button</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> Doing stuff...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png"> Doing stuff...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 ```
@@ -255,7 +255,7 @@ One common pattern is that a step is sending a transaction from the account whos
 ```jinja2
 {{ start_step("Send AccountSet") }}
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 ```
@@ -328,7 +328,7 @@ The generic submit handler does all the following:
 
 ### Other Bits
 
-There are several other functions provided by the [interactive-tutorial.js](../assets/js/interactive-tutorial.js) file that may be useful for certain things; for the full details on all of them, read the source. A brief summary of what you can use:
+There are several other functions provided by the [interactive-tutorial.js](../static/js/interactive-tutorial.js) file that may be useful for certain things; for the full details on all of them, read the source. A brief summary of what you can use:
 
 - Check if a step is complete (by name or by ID)
 - Get the ID of a step that contains a given HTML element (like the one that triggered an event). You can use this to write an event handler that can process multiple different buttons similarly.
@@ -346,15 +346,15 @@ There's also some translation stuff, but it's not ready to be used outside of th
 - **Send XRP** - The original interactive tutorial. (Much improved since its inception.) Uses the `include_code` to pull in the Example Code from an HTML file that also work as a stand-alone.
     - [Markdown](../content/tutorials/use-simple-xrp-payments/send-xrp.md)
     - [Example Code](../content/_code-samples/send-xrp/)
-    - [Interactive Code](../assets/js/tutorials/send-xrp.js)
+    - [Interactive Code](../static/js/tutorials/send-xrp.js)
 - **Use Tickets** - A fairly detailed case with some advanced interactions.
     - [Markdown](../content/tutorials/manage-account-settings/use-tickets.md)
     - Example code is inlined in the Markdown file.
-    - [Interactive Code](../assets/js/tutorials/use-tickets.js)
+    - [Interactive Code](../static/js/tutorials/use-tickets.js)
 - **Require Destination Tags** - A relatively small and simple tutorial.
     - [Markdown](../content/tutorials/manage-account-settings/require-destination-tags.md)
     - [Example Code](../content/_code-samples/require-destination-tags/)
-    - [Interactive Code](../assets/js/tutorials/require-destination-tags.js)
+    - [Interactive Code](../static/js/tutorials/require-destination-tags.js)
 - **Monitor Incoming Payments with WebSocket** - An interactive tutorial that doesn't use xrpl.js.
     - [Markdown](../content/tutorials/get-started/monitor-incoming-payments-with-websocket.md)
     - [Example Code (incomplete)](../content/_code-samples/require-destination-tags/). The rest is inlined in the Markdown file.

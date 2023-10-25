@@ -517,7 +517,7 @@ a.osano-cm-link {
   .circled-logo {
     background-color: $gray-200;
 
-    img[src="assets/img/logos/globe.svg"] {
+    img[src="static/img/logos/globe.svg"] {
       filter: invert(100%);
     }
   }
@@ -737,7 +737,7 @@ pre code {
     'xumm-wallet': 'svg',
     'sologenic-dex': 'svg',
     'Crossmark': 'png'
-  ) 
+  )
   {
     #use_case_companies_list {
       ##{$company} {

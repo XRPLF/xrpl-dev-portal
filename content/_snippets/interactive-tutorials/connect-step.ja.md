@@ -15,6 +15,6 @@
 <div>
   <strong>接続ステータス：</strong>
   <span id="connection-status">接続されていません</span>
-  <div class="loader collapse" id="loader-connect"><img class="throbber" src="assets/img/xrp-loader-96.png"></div>
+  <div class="loader collapse" id="loader-connect"><img class="throbber" src="static/img/xrp-loader-96.png"></div>
 </div>
 {{ end_step() }}

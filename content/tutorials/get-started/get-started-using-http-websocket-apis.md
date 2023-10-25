@@ -7,7 +7,7 @@ top_nav_name: HTTP / WebSocket
 top_nav_grouping: Get Started
 labels:
   - Development
-showcase_icon: assets/img/logos/globe.svg
+showcase_icon: static/img/logos/globe.svg
 ---
 # Get Started Using HTTP / WebSocket APIs
 

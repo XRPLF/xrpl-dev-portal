@@ -22,7 +22,7 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 
 ## Repository Layout
 
-- [assets/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - Static files used by the site's templates.
+- [static/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - Static files used by the site's templates.
 - [content/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content) - Source files used to build the documentation. Mostly in Markdown.
     - [content/\_code-samples/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
     - [content/\_img-sources/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_img-sources) - Source files for images used in the documentation. Any `.uxf` files are diagrams made with [Umlet](https://www.umlet.com/).
@@ -160,8 +160,8 @@ The fronmatter for a Markdown file in this repo can contain arbitrary key-value 
 | `top_nav_omit`       | Boolean          | Use `true` to cause this page not to appear in the page top dropdown navigation. |
 | `top_nav_level`      | Number           | Adjust the indentation level for the page in the top nav dropdowns. Level `2` is indented to appear like a child of the page above it in the dropdown. |
 | `sidebar`            | String           | Use `disabled` to hide the left and right sidebars (if the page uses a template derived from the base template) |
-| `fb_card`            | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Facebook. |
-| `twitter_card`       | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Twitter. |
+| `fb_card`            | String           | Filename of an image (in `static/img/`) to use when unfurling links to this page on Facebook. |
+| `twitter_card`       | String           | Filename of an image (in `static/img/`) to use when unfurling links to this page on Twitter. |
 | `redirect_url`       | String           | Use with `template: pagetype-redirect.html.jinja` only. Automatically redirect the user to the provided URL when they navigate to this page. |
 | `cta_text`           | String           | Text to appear in "call to action" buttons that link to this page (on special landings). |
 | `curated_anchors`    | Array of Objects | A set of anchors in this page to show, similar to child pages, in landings. Each object in the array should have a human-readable `name` field (such as `"Available Modes"`) and an `anchor` field with the HTML ID to link to (such as `"#available-modes"`). |

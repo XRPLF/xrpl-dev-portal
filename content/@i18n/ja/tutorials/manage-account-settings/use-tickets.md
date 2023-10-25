@@ -15,7 +15,7 @@ labels:
 ## 前提条件
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
+<script type="application/javascript" src="static/js/tutorials/use-tickets.js"></script>
 {% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually. NOTE, Testnet is a few days behind Mainnet in getting the amendment one enabled -->
 
 このページでは、[xrpl.js](https://js.xrpl.org/)ライブラリを使用したJavaScriptのサンプルを提供しています。設定方法は、[JavaScriptを使ってみよう](get-started-using-javascript.html)をご覧ください。
@@ -76,7 +76,7 @@ _JavaScript_
 
 {{ start_step("Check Sequence") }}
 <button id="check-sequence" class="btn btn-primary previous-steps-required">Check Sequence Number</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Querying...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Querying...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -118,7 +118,7 @@ _JavaScript_
 
 {{ start_step("Submit") }}
 <button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -255,6 +255,6 @@ _JavaScript_
     - [トランザクションの共通フィールド](transaction-common-fields.html)
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

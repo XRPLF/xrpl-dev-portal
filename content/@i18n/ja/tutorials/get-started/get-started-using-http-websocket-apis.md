@@ -7,7 +7,7 @@ labels:
   - 開発
 top_nav_name: HTTP / WebSocket
 top_nav_grouping: 始めましょう
-showcase_icon: assets/img/logos/globe.svg
+showcase_icon: static/img/logos/globe.svg
 ---
 # HTTP / WebSocket APIの使用開始
 

@@ -61,19 +61,19 @@
       <button id="generate-creds-button" class="btn btn-primary mr-2 mb-2">Generate Testnet credentials</button>
     </div><!--/.btn-toolbar-->
     <div id='your-credentials'></div>
-    <div id='loader' style="display: none;"><img alt="(loading)" class="throbber" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png"> Generating Keys...</div>
+    <div id='loader' style="display: none;"><img alt="(loading)" class="throbber" src="{{currentpage.prefix}}static/img/xrp-loader-96.png"> Generating Keys...</div>
     <div id='address'></div>
     <div id='secret'></div>
     <div id='balance'></div>
-    <div id='sequence'> <div id='loader' style="display: none;"><img alt="(loading)" class="throbber" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png"> Waiting...</div></div>
+    <div id='sequence'> <div id='loader' style="display: none;"><img alt="(loading)" class="throbber" src="{{currentpage.prefix}}static/img/xrp-loader-96.png"> Waiting...</div></div>
   </div>
 </section>
 {% endblock %}
 
 {% block endbody %}
   {{target.ripple_lib_tag}}
-  <script type='text/javascript' src='assets/js/faucet.js'></script>
-  <script src="{{currentpage.prefix}}assets/js/multicodetab.js"></script>
+  <script type='text/javascript' src='static/js/faucet.js'></script>
+  <script src="{{currentpage.prefix}}static/js/multicodetab.js"></script>
   <script type="application/javascript">
     $(document).ready(function() {
       $(".multicode").minitabs();

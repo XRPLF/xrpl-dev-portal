@@ -20,7 +20,7 @@
   <section class="container-fluid mt-20 absolute-bottom-footer">
 
     <div class="d-lg-flex row">
-      <a href="{% if currentpage.prefix %}{{currentpage.prefix}}{% else %}/{% endif %}" class="footer-brand"><img src="{{currentpage.prefix}}assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="{{target.display_name}}" /></a>
+      <a href="{% if currentpage.prefix %}{{currentpage.prefix}}{% else %}/{% endif %}" class="footer-brand"><img src="{{currentpage.prefix}}static/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="{{target.display_name}}" /></a>
       <span class="flex-grow-1">&nbsp;</span>
       <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">{% trans %}Open Source.{% endtrans %}</a>
       </div>
@@ -31,4 +31,4 @@
 
 <!-- Jump to top button -->
 <a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="{% trans %}Jump to top of page{% endtrans %}"><i class="fa fa-arrow-up"></i></a>
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/jump-to-top.js"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}static/js/jump-to-top.js"></script>

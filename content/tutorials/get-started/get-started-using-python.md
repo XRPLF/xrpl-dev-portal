@@ -7,7 +7,7 @@ top_nav_name: Python
 top_nav_grouping: Get Started
 labels:
   - Development
-showcase_icon: assets/img/logos/python.svg
+showcase_icon: static/img/logos/python.svg
 ---
 # Get Started Using Python
 

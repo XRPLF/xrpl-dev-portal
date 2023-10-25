@@ -8,7 +8,7 @@
 
 {{ start_step("Generate") }}
 <button id="generate-creds-button" class="btn btn-primary" data-fauceturl="{{faucet_url}}">{{use_network}}の暗号鍵を作成する</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">暗号鍵を作成しています…</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">暗号鍵を作成しています…</div>
 <div class="output-area"></div>
 {{ end_step() }}
 

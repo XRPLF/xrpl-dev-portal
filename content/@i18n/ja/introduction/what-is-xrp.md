@@ -60,7 +60,7 @@ XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Br
 
 | XRPの"X"ロゴ                          | Ripple社のトリスケリオン                      |
 |:-------------------------------------|:-------------------------------------------|
-| !["X"ロゴ](assets/img/xrp-x-logo.png) | ![トリスケリオン](img/ripple-triskelion.png) |
+| !["X"ロゴ](static/img/xrp-x-logo.png) | ![トリスケリオン](img/ripple-triskelion.png) |
 
 
 ### 商標
@@ -68,5 +68,5 @@ XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Br
 「XRP」は、米国や中国、エストニアなどの国々におけるXRPL財団の登録商標です。
 
 この商標出願は2013年に米国特許商標庁（USPTO）に登録され、OpenCoin IncとRipple Labs Incが譲受人となっています。2022年に商標の譲渡が更新され、現在はMITTETULUNDUSÜHING XRP LEDGER TRUST（「XRPLF」）に譲渡されています。
- 
+
 次のページ: [暗号通貨のウォレット](crypto-wallets.html)

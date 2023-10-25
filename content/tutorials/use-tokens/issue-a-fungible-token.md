@@ -24,7 +24,7 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/issue-a-token.js"></script>
+<script type="application/javascript" src="static/js/tutorials/issue-a-token.js"></script>
 
 ## Example Code
 
@@ -53,7 +53,7 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 {% endif %}
 {{ start_step("Generate") }}
 <button id="generate-2x-creds-button" class="btn btn-primary" data-fauceturl="{{faucet_url}}">Get {{use_network}} credentials</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Generating Keys...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Generating Keys...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -191,7 +191,7 @@ _Java_
   </div>
 </form>
 <button id="config-issuer-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Issuer Setup)">Configure issuer</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -285,7 +285,7 @@ _Java_
   </div>
 </form>
 <button id="config-hot-address-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Hot Address Setup)">Configure hot address</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -366,7 +366,7 @@ _Java_
   </div>
 </form>
 <button id="create-trust-line-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (TrustSet)">Create Trust Line</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -443,7 +443,7 @@ _Java_
   </div>
 </form>
 <button id="send-token-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Payment)">Send Token</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending transaction...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -487,7 +487,7 @@ _Java_
 
 {{ start_step("Confirm Balances") }}
 <button id="confirm-balances-button" class="btn btn-primary previous-steps-required">Confirm Balances</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Checking...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 

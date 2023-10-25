@@ -50,7 +50,7 @@
       <div class="form-group" id="send_xrp_payment">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" alt="{% trans %}(loading){% endtrans %}"/></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" alt="{% trans %}(loading){% endtrans %}"/></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="send_xrp_payment_btn" disabled="disabled">{% trans %}Send XRP Payment{% endtrans %}</button>
           <input id="send_xrp_payment_amount" class="form-control" type="number" aria-describedby="send_xrp_payment_amount_help" value="100000" min="1" max="10000000000" />
@@ -71,7 +71,7 @@
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span  class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" /></span>
+            <span  class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control" type="button" id="send_partial_payment_btn" disabled="disabled" autocomplete="off" title="(Please wait for partial payments setup to finish)">{% trans %}Send Partial Payment{% endtrans %}</button>
         </div>
@@ -83,7 +83,7 @@
       <div class="form-group" id="create_escrow">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber"  alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber"  alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="create_escrow_btn" disabled="disabled">{% trans %}Create Escrow{% endtrans %}</button>
           <input class="form-control" type="number" value="60" min="5" max="10000" id="create_escrow_duration_seconds" />
@@ -108,7 +108,7 @@
       <div class="form-group" id="create_payment_channel">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="create_payment_channel_btn" disabled="disabled">{% trans %}Create Payment Channel{% endtrans %}</button>
           <input id="create_payment_channel_amount" class="form-control" type="number" aria-describedby="create_payment_channel_amount_help" value="100000" min="1" max="10000000000" />
@@ -124,7 +124,7 @@
       <div class="form-group" id="send_issued_currency">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="send_issued_currency_btn" disabled="disabled">{% trans %}Send Issued Currency{% endtrans %}</button>
           <input id="send_issued_currency_amount" class="form-control" type="text" value="100" /><!-- Note: HTML limits "number" inputs to IEEE 764 double precision, which isn't enough for the full range of issued currency amounts -->
@@ -140,7 +140,7 @@
       <div class="form-group" id="trust_for">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" /></span>
+            <span class="input-group-text loader" style="display: none"><img class="throbber" alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" /></span>
           </div>
           <button class="btn btn-primary form-control disabled needs-connection" type="button" id="trust_for_btn" disabled="disabled">{% trans %}Trust for{% endtrans %}</button>
           <input id="trust_for_amount" class="form-control disabled" type="number" value="100000" />
@@ -157,9 +157,9 @@
 {% endblock %}
 
 {% block endbody %}
-  <script type="application/javascript" src="{{currentpage.prefix}}assets/vendor/bootstrap-growl.jquery.js"></script>
-  <script type="application/javascript" src="{{currentpage.prefix}}assets/js/submit-and-verify2.js"></script>
-  <script type="application/javascript" src="{{currentpage.prefix}}assets/js/tx-sender.js"></script>
+  <script type="application/javascript" src="{{currentpage.prefix}}static/vendor/bootstrap-growl.jquery.js"></script>
+  <script type="application/javascript" src="{{currentpage.prefix}}static/js/submit-and-verify2.js"></script>
+  <script type="application/javascript" src="{{currentpage.prefix}}static/js/tx-sender.js"></script>
 {% endblock %}
 
 {% block analytics %}

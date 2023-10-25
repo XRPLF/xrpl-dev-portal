@@ -26,7 +26,7 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/require-destination-tags.js"></script>
+<script type="application/javascript" src="static/js/tutorials/require-destination-tags.js"></script>
 
 ## Example Code
 
@@ -85,7 +85,7 @@ _Python_
 
 {{ start_step("Send AccountSet") }}
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -119,7 +119,7 @@ _Python_
 
 {{ start_step("Confirm Settings") }}
 <button id="confirm-settings" class="btn btn-primary previous-steps-required">Confirm Settings</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -128,7 +128,7 @@ For further confirmation, you can send test transactions (from a different addre
 {{ start_step("Test Payments") }}
 <button class="test-payment btn btn-primary" data-dt="10">Send XRP (with Destination Tag)</button>
 <button class="test-payment btn btn-primary" data-dt="">Send XRP (without Destination Tag)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 

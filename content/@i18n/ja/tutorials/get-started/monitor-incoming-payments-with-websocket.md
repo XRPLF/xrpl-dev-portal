@@ -22,8 +22,8 @@ WebSocketは、クライアントとサーバーが1つの接続を確立し、�
 - 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[発行済み通貨](issued-currencies.html)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](currency-formats.html#xrpの精度)を参照してください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
-<script type="application/javascript" src="assets/vendor/big.min.js"></script>
-<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="static/vendor/big.min.js"></script>
+<script type="application/javascript" src="static/js/interactive-tutorial.js"></script>
 <script type="application/javascript">
 // Helper stuff for this interactive tutorial specifically
 
@@ -508,6 +508,6 @@ _Go_
   - [トランザクションの結果](transaction-results.html) - トランザクションのすべての結果コードを掲載した表一覧
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

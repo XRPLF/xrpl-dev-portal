@@ -20,7 +20,7 @@ This tutorial explains how to send a direct XRP Payment using `xrpl.js` for Java
 ## Prerequisites
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/send-xrp.js"></script>
+<script type="application/javascript" src="static/js/tutorials/send-xrp.js"></script>
 {% set use_network = "Testnet" %}
 
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
@@ -228,7 +228,7 @@ See the full list of [transaction results](transaction-results.html) for more po
 {{ start_step("Submit") }}
 <button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">Submit
 example transaction</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png"> Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -421,6 +421,6 @@ After completing this tutorial, you may want to try the following:
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

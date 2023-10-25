@@ -398,8 +398,8 @@ export default function Docs() {
             </div>
             <div className="col">
               <div className="card cta-card p-8-sm p-10-until-sm br-8">
-                <img src={require('./img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" />
-                <img src={require('./img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" />
+                <img src={require('./static/img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" />
+                <img src={require('./static/img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" />
                 <div className="z-index-1 position-relative">
                   <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Get Free Test XRP')}</h2>
                   <p className="mb-10">

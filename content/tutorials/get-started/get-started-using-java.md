@@ -10,7 +10,7 @@ top_nav_name: Java
 top_nav_grouping: Get Started
 labels:
   - Development
-showcase_icon: assets/img/logos/java.svg
+showcase_icon: static/img/logos/java.svg
 ---
 # Get Started Using Java
 

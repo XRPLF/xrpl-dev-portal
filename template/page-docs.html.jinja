@@ -30,7 +30,7 @@
 
   {% macro flatCard(href, title, description, linkText, imgClass) %}
     <a href="{{href}}" class="card flat-card float-up-on-hover">
-      <img 
+      <img
         class="mb-2 {{imgClass}}"
         alt={{title}}
       />
@@ -108,17 +108,17 @@
   {%
     set intermediateVideos = [
       {
-        "src": "./assets/img/backgrounds/docs-advanced-payment-features@2x.png",
+        "src": "./static/img/backgrounds/docs-advanced-payment-features@2x.png",
         "title": _("Advanced Payment Features"),
         "url": "https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
       {
-        "src": "./assets/img/backgrounds/docs-governance@2x.png",
+        "src": "./static/img/backgrounds/docs-governance@2x.png",
         "title": _("Governance and the Amendment Process"),
         "url": "https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
       {
-        "src": "./assets/img/backgrounds/docs-sidechains@2x.png",
+        "src": "./static/img/backgrounds/docs-sidechains@2x.png",
         "title": _("Federated Sidechains"),
         "url": "https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1",
       },
@@ -187,22 +187,22 @@
   {%
     set getStartedVideos = [
     {
-      "src": "./assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png",
+      "src": "./static/img/backgrounds/docs-intro-to-XRP-ledger@2x.png",
       "title": _("Intro to XRP Ledger"),
       "url": "https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
-      "src": "./assets/img/backgrounds/docs-accounts@2x.png",
+      "src": "./static/img/backgrounds/docs-accounts@2x.png",
       "title": _("Accounts"),
       "url": "https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
-      "src": "./assets/img/backgrounds/docs-decentralized-exchange@2x.png",
+      "src": "./static/img/backgrounds/docs-decentralized-exchange@2x.png",
       "title": _("Decentralized Exchange"),
       "url": "https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
     {
-      "src": "./assets/img/backgrounds/docs-tokenization@2x.png",
+      "src": "./static/img/backgrounds/docs-tokenization@2x.png",
       "title": _("Tokenization"),
       "url": "https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1",
     },
@@ -240,23 +240,23 @@
   <section class="container-new ">
     <div class="nav card-grid flat-card-grid card-grid-3xN">
       <div class="col">
-        {{ flatCard("./concepts.html", 
-                    _("Concepts"), 
-                    _("Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP Ledger."), 
+        {{ flatCard("./concepts.html",
+                    _("Concepts"),
+                    _("Learn the \"what\" and the \"why\" behind fundamental aspects of the XRP Ledger."),
                     _("Read the Docs"),
                     "concepts-doc-illustration") }}
       </div>
       <div class="col">
-        {{ flatCard("./tutorials.html", 
-                    _("Tutorials"), 
-                    _("Get step-by-step guidance to perform common tasks with the XRP Ledger."), 
+        {{ flatCard("./tutorials.html",
+                    _("Tutorials"),
+                    _("Get step-by-step guidance to perform common tasks with the XRP Ledger."),
                     _("View Tutorials"),
                     "tutorial-illustration") }}
       </div>
       <div class="col">
-        {{ flatCard("./references.html", 
-                    _("References"), 
-                    _("Look up reference documentation for the XRP Ledger protocol, API methods, and more."), 
+        {{ flatCard("./references.html",
+                    _("References"),
+                    _("Look up reference documentation for the XRP Ledger protocol, API methods, and more."),
                     _("View References"),
                     "ref-book-illustration") }}
       </div>
@@ -297,7 +297,7 @@
       </div>
       <div class="col">
         <div class="card-grid card-grid-2xN video-grid">
-          {% set test = "./assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png"%}
+          {% set test = "./static/img/backgrounds/docs-intro-to-XRP-ledger@2x.png"%}
           {% for video in getStartedVideos %}
             {{ videoCard(video.url, video.title, video.src) }}
           {% endfor %}
@@ -321,7 +321,7 @@
             <a href="./get-started-using-javascript.html">
               <img
                 alt="Javascript Logo"
-                src="./assets/img/logos/javascript.svg"
+                src="./static/img/logos/javascript.svg"
                 class="circled-logo"
               >
               <h5 class="btn-arrow">{% trans %}Javascript{% endtrans %}</h5>
@@ -331,7 +331,7 @@
             <a href="./get-started-using-python.html">
               <img
                 alt="Python Logo"
-                src="./assets/img/logos/python.svg"
+                src="./static/img/logos/python.svg"
                 class="circled-logo"
               >
               <h5 class="btn-arrow">{% trans %}Python{% endtrans %}</h5>
@@ -341,7 +341,7 @@
             <a href="./get-started-using-java.html">
               <img
                 alt="Java Logo"
-                src="./assets/img/logos/java.svg"
+                src="./static/img/logos/java.svg"
                 class="circled-logo"
               >
               <h5 class="btn-arrow">{% trans %}Java{% endtrans %}</h5>
@@ -394,7 +394,7 @@
   <section class="container-new " id="docs-browse-by">
     <div class="row card-grid card-grid-2xN">
       <div class="col" id="popular-topics">
-       
+
           <h2 class="h4">{% trans %}Browse By Recommended Pages{% endtrans %}</h2>
           <ul class="nav flex-column">
             {% for page in recommendedPages %}

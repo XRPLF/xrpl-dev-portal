@@ -37,7 +37,7 @@
           <button class="btn btn-outline-secondary send-request">Send request</button>
           <div class="input-group loader send-loader" style="display:none;">
             <span class="input-group-append">
-              <img alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" height="24" width="24" />
+              <img alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" height="24" width="24" />
             </span><!--/.input-group-append-->
           </div><!--/.input-group.loader-->
         </div><!--/.btn-group-->
@@ -45,7 +45,7 @@
           <button class="btn btn-outline-secondary connection" data-toggle="modal" data-target="#wstool-1-connection-settings">Offline (Mainnet)</button>
           <div class="input-group loader connect-loader" style="display:none;">
             <span class="input-group-append">
-              <img alt="(loading)" src="{{currentpage.prefix}}assets/img/xrp-loader-96.png" height="24" width="24" />
+              <img alt="(loading)" src="{{currentpage.prefix}}static/img/xrp-loader-96.png" height="24" width="24" />
             </span><!--/.input-group-append-->
           </div><!--/.input-group.loader-->
           <button class="btn btn-outline-secondary permalink" data-toggle="modal" data-target="#wstool-1-permalink" title="Permalink"><i class="fa fa-link"></i></button>
@@ -215,10 +215,10 @@
     </div><!--/.modal-dialog-->
   </div><!--/.modal-->
 
-  <script type="text/javascript" src="{{currentpage.prefix}}assets/vendor/jsonlint.js"></script>
-  <script type="text/javascript" src="{{currentpage.prefix}}assets/vendor/codemirror-js-json-lint.min.js"></script>
-  <script type="text/javascript" src="{{currentpage.prefix}}assets/js/apitool-websocket.js"></script>
-  <script type="text/javascript" src="{{currentpage.prefix}}assets/js/apitool-methods-ws.js"></script>
+  <script type="text/javascript" src="{{currentpage.prefix}}static/vendor/jsonlint.js"></script>
+  <script type="text/javascript" src="{{currentpage.prefix}}static/vendor/codemirror-js-json-lint.min.js"></script>
+  <script type="text/javascript" src="{{currentpage.prefix}}static/js/apitool-websocket.js"></script>
+  <script type="text/javascript" src="{{currentpage.prefix}}static/js/apitool-methods-ws.js"></script>
 {% endblock %}
 
 {% block analytics %}

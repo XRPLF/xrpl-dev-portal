@@ -20,7 +20,7 @@ If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enable the 
 - You don't need to have [issued a token](issue-a-fungible-token.html) in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/enable-no-freeze.js"></script>
+<script type="application/javascript" src="static/js/tutorials/enable-no-freeze.js"></script>
 
 
 ## Example Code
@@ -98,7 +98,7 @@ _WebSocket_
 
 {{ start_step("Send AccountSet") }}
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -170,7 +170,7 @@ Response:
 
 {{ start_step("Confirm Settings") }}
 <button id="confirm-settings" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Confirm Settings</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+<div class="loader collapse"><img class="throbber" src="static/img/xrp-loader-96.png">Sending...</div>
 <div class="output-area"></div>
 {{ end_step() }}
 
@@ -193,6 +193,6 @@ Response:
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

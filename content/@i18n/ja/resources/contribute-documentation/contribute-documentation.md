@@ -22,7 +22,7 @@ XRPL Dev Portalでは、開発者が開発を開始するためのサンプル�
 
 ## リポジトリの構成
 
-- [assets/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - サイトのテンプレートで使用される静的ファイル。
+- [static/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - サイトのテンプレートで使用される静的ファイル。
 - [content/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content) - ドキュメントを構築するために使用されるソースファイル。ほとんどがMarkdownです。
     - [content/\_code-samples/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) - ドキュメントで使用または参照されているコードサンプル。可能な限り、これらは完全に機能する/実行可能なスクリプトです。
     - [content/\_img-sources/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_img-sources) - ドキュメントで使用されている画像の元ファイル。`.uxf`ファイルは[Umlet](https://www.umlet.com/)で作成されたダイアグラムです。
@@ -157,8 +157,8 @@ blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This
 | `top_nav_omit`       | Boolean          | ページトップのドロップダウンナビゲーションに表示しないようにするには、`true`を使用します。 |
 | `top_nav_level`      | Number           | トップナビのドロップダウンでページのインデントレベルを調整します。レベル`2`は、ドロップダウン内でその上のページの子のように表示されるようにインデントされます。 |
 | `sidebar`            | String           | U左右のサイドバーを非表示にするには、`disabled`を使用します(ページがベーステンプレートから派生したテンプレートを使用している場合)。 |
-| `fb_card`            | String           | Facebookでこのページへのリンクを展開する際に使用する画像のファイル名（`assets/img/`内）。 |
-| `twitter_card`       | String           | Twitterでこのページへのリンクを展開する際に使用する画像のファイル名（`assets/img/`内）。 |
+| `fb_card`            | String           | Facebookでこのページへのリンクを展開する際に使用する画像のファイル名（`static/img/`内）。 |
+| `twitter_card`       | String           | Twitterでこのページへのリンクを展開する際に使用する画像のファイル名（`static/img/`内）。 |
 | `redirect_url`       | String           | `template: pagetype-redirect.html.jinja`でのみ使用します。ユーザがこのページに移動したときに、指定されたURLに自動的にリダイレクトします。 |
 | `cta_text`           | String           | このページにリンクする「call to action」ボタンに表示されるテキスト(特別なランディングページにて表示されます)。 |
 | `curated_anchors`    | Array of Objects | 子ページと同様に、ランディングページに表示するためのアンカーです。配列の各オブジェクトは、人間が読める`name`フィールド(`"Available Modes"`など) と、リンク先のHTML IDを持つ`anchor`フィールド(`"#available-modes"`など)を持つ必要があります。 |
