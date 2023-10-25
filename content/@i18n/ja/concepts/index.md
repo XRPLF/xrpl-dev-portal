@@ -2,7 +2,7 @@
 html: concepts.html
 parent: docs.html
 top_nav_grouping: カテゴリ
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # コンセプト
 

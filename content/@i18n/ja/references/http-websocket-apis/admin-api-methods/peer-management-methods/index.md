@@ -1,7 +1,7 @@
 ---
 html: peer-management-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # ピア管理メソッド
 

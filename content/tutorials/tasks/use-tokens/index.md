@@ -1,7 +1,7 @@
 ---
 html: use-tokens.html
 parent: tasks.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Use Tokens
 

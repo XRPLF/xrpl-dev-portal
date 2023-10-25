@@ -1,7 +1,7 @@
 ---
 html: utility-methods.html
 parent: public-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # ユーティリティメソッド
 

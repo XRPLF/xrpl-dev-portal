@@ -2,7 +2,7 @@
 html: configure-peering.html
 name: ピアリング
 parent: infrastructure.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 blurb: サーバをピアツーピアネットワークに接続する方法を設定します。
 labels:
   - コアサーバー

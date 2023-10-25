@@ -1,7 +1,7 @@
 ---
 html: introduction.html
 parent: docs.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 top_nav_grouping: カテゴリ
 ---
 # 基本

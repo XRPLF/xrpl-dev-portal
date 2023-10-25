@@ -1,7 +1,7 @@
 ---
 html: resources.html
 parent: index.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Resources
 

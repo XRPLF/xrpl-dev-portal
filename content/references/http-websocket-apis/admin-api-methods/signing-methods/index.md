@@ -1,7 +1,7 @@
 ---
 html: signing-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Signing Methods
 

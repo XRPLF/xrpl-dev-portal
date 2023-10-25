@@ -7,7 +7,7 @@ top_nav_grouping: About
 sidebar: disabled
 labels:
   - Blockchain
-template: page-faq2.html.jinja
+#template: page-faq2.html.jinja
 filters:
   - faq
 name: FAQ

@@ -1,7 +1,7 @@
 ---
 html: ledger-entry-types.html
 parent: ledger-data-formats.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 labels:
   - データ保持
 ---

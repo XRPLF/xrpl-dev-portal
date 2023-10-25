@@ -2,7 +2,7 @@
 html: api-conventions.html
 parent: http-websocket-apis.html
 blurb: rippled APIのデータ型とフォーマットについて説明します。
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # APIの規則
 

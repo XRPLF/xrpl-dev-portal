@@ -1,7 +1,7 @@
 ---
 html: key-generation-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # キー生成メソッド
 

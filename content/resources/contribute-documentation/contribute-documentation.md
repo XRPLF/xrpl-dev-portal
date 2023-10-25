@@ -93,7 +93,7 @@ The Markdown file itself should start with a frontmatter stanza such as the foll
 ---
 html: the-rippled-server.html
 parent: concepts.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
 ---
 ```

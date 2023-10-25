@@ -2,7 +2,7 @@
 html: use-checks.html
 parent: use-specialized-payment-types.html
 blurb: XRP LedgerのCheckは、紙の小切手と同じように、別のアカウントに資金を振り込ませることができます。
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 labels:
   - Checks
 ---

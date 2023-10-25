@@ -1,7 +1,7 @@
 ---
 html: use-specialized-payment-types.html
 parent: tasks.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # 専門的な支払いタイプの使用
 

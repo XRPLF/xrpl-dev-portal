@@ -1,7 +1,7 @@
 ---
 html: status-and-debugging-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Status and Debugging Methods
 

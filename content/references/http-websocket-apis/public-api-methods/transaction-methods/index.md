@@ -1,7 +1,7 @@
 ---
 html: transaction-methods.html         # watch for clashes w/ this filename
 parent: public-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Transaction Methods
 

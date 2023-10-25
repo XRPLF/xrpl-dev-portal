@@ -1,7 +1,7 @@
 ---
 html: server-control-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # サーバ操作メソッド
 

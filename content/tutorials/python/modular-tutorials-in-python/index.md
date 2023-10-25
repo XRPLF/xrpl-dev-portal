@@ -2,7 +2,7 @@
 html: modular-tutorials-in-python.html
 parent: python.html
 top_nav_grouping: Article Types
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 blurb: Modular XRPL tutorials in Python.
 ---
 # Modular Tutorials in Python

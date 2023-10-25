@@ -2,7 +2,7 @@
 html: transaction-types.html
 parent: transaction-formats.html
 blurb: All the different types of transactions that the XRP Ledger can process.
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 labels:
   - Blockchain
 ---

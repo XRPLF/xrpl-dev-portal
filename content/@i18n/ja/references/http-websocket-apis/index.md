@@ -1,7 +1,7 @@
 ---
 html: http-websocket-apis.html
 parent: references.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # HTTP / WebSocket API リファレンス
 

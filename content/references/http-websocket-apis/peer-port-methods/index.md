@@ -1,7 +1,7 @@
 ---
 html: peer-port-methods.html
 parent: http-websocket-apis.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 blurb: Special API methods for sharing network topology and status metrics, served on the XRPL Peer Protocol port.
 ---
 # Peer Port Methods

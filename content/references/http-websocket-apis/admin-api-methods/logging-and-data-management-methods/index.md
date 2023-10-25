@@ -1,7 +1,7 @@
 ---
 html: logging-and-data-management-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Logging and Data Management Methods
 

@@ -1,7 +1,7 @@
 ---
 html: use-escrows.html
 parent: use-specialized-payment-types.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # Escrowの使用
 

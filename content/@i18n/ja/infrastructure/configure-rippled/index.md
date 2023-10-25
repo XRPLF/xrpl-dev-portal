@@ -1,7 +1,7 @@
 ---
 html: configure-rippled.html
 parent: infrastructure.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 blurb: rippledサーバーの構成をカスタマイズします。
 ---
 # rippledの設定

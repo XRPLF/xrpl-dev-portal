@@ -1,7 +1,7 @@
 ---
 html: data-retention.html
 parent: configure-rippled.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 blurb: サーバが保存するデータの量と、古いデータを削除するタイミングを制御します。
 ---
 # データの保存

@@ -1,7 +1,7 @@
 ---
 html: manage-account-settings.html
 parent: tasks.html
-template: pagetype-category.html.jinja
+#template: pagetype-category.html.jinja
 ---
 # アカウントの設定の利用
 
