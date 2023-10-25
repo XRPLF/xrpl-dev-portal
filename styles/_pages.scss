@@ -959,7 +959,7 @@
 
 .page-docs-index {
   &::before {
-    background-image: url(../../img/backgrounds/docs-splash.svg);
+    // background-image: url(../../img/backgrounds/docs-splash.svg); // missing image.
     background-position-x: right;
   }
 
