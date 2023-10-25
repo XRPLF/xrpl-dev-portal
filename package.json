@@ -14,6 +14,9 @@
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4"
   },
+  "overrides": {
+    "react": "^17.0.2"
+  },
   "devDependencies": {
     "htmltojsx": "^0.3.0"
   }
