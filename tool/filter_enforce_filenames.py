@@ -10,6 +10,11 @@
 
 import os.path
 import re
+import ruamel.yaml
+#yaml = ruamel.yaml.YAML(typ="safe", pure=True)
+yaml = ruamel.yaml.YAML()
+yaml.default_flow_style=False
+yaml.indent(mapping=4, sequence=4, offset=2) ## For some reason this doesn't work?
 
 # only walk the overall page hierarchy once
 has_walked = False
@@ -27,14 +32,12 @@ def idify(utext):
     utext = re.sub(r'[\s-]+', '-', utext)
     return utext
 
-def normalized_match(filename, heading, loose=False, exclude_index=True):
+def normalized_match(filename, heading, loose=False):
     """
     Return True if the normalized versions of a filename and a heading match,
     False otherwise.
     If loose==True, allow some leeway like omitting 'and' and 'the'
     """
-    if exclude_index and filename == "index.md":
-        return True
     if filename[-3:] == ".md":
         filename = filename[:-3]
 
@@ -70,35 +73,29 @@ def compare_nav_and_fs_hierarchy(page, pages, logger):
     crumbs = get_hierarchy(page, pages, logger)
     crumbs = [idify(c["name"]) for c in crumbs]
     #TODO: either fix the protocol reference thing or generalize the magic string into an "allowed aliases" feature
-    #crumbs = [("protocol-reference" if c == "xrp-ledger-protocol-reference" else c) for c in crumbs]
+    crumbs = [("protocol-reference" if c == "xrp-ledger-protocol-reference" else c) for c in crumbs]
     expected_path = "/".join(crumbs) + ".md"
     actual_path = page["md"]
-    pretty_url = "/" + "/".join(crumbs)
 
     if expected_path != actual_path:
         path_parts = actual_path.split("/")
-        if len(path_parts) >= 1 and path_parts[-1] == "index.md":
-            expected_path2 = "/".join(crumbs+["index"]) + ".md"
+        if len(path_parts) >=2 and path_parts[-2]+".md" == path_parts[-1]:
+            expected_path2 = "/".join(crumbs+[crumbs[-1]]) + ".md"
             if actual_path == expected_path2:
-                logger.debug("Topic index is fine at {actual_path}")
+                logger.debug("Mismatched path {actual_path} is OK (follows 'topic/topic.md' convention)".format(actual_path=actual_path))
                 return
-        # elif len(path_parts) >=2 and path_parts[-2]+".md" == path_parts[-1]:
-        #     expected_path2 = "/".join(crumbs+[crumbs[-1]]) + ".md"
-        #     if actual_path == expected_path2:
-        #         logger.debug("Mismatched path {actual_path} is OK (follows 'topic/topic.md' convention)".format(actual_path=actual_path))
-        #         return
 
-        # Switch to the commented out print statement(s) to get
+        # Switch to the commented out print statement to get
         # tab-separated values you can paste into a spreadsheet:
-
-        #print(pretty_url, "\t", expected_path, "\t", actual_path)
+        # print(expected_path, "\t", actual_path)
         logger.warning("""File path doesn't match the recommendation based on navigation.
     Expected: {expected_path}
       Actual: {actual_path}""".format(expected_path=expected_path, actual_path=actual_path))
-    #print("/"+page["html"], "\t", pretty_url)
-
 
 def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs):
+    ### Uncomment this to build a Redocly-style sidebar and quit.
+    #redocly_sidebar(pages)
+
     if "md" not in currentpage.keys() or currentpage.get("lang") != "en":
         return
 
@@ -122,5 +119,69 @@ def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs
         return
 
     # TODO: allow configuration of loose/strict matching
-    if not normalized_match(page_filename, page_h1, loose=False):
+    if not normalized_match(page_filename, page_h1, loose=True):
         logger.warning("Filename/Title Mismatch: '{page_filename}' vs '{page_h1}'".format(page_filename=page_filename, page_h1=page_h1))
+
+def page_mapping(pages):
+    mapping = {}
+    no_md_pages = []
+    for page in pages:
+        if page.get("template", "") == "pagetype-redirect.html.jinja":
+            continue
+        if page["html"][:8] == "https://":
+            continue
+        if "md" in page.keys():
+            mapping[page["html"]] = page["md"]
+        else:
+            no_md_pages.append(page["html"])
+    s = ""
+    for html, md in mapping.items():
+        s += html + "\t" + md + "\n"
+    s += "\n"
+    for html in no_md_pages:
+        s += html + "\n"
+    return s
+
+def redocly_entry_for(page, pages):
+    """
+    Potentially recursive method for getting a sidebar entry in Redocly format from a (parsed) Dactyl page item.
+    """
+    si = {}
+    if page.get("children", []): # Checked twice, but first here so that "group" is the first key if necessary
+        si["group"] = page.get("name", "no name?")
+
+    elif page["html"][:8] == "https://":
+        # Not a markdown source, just an external link
+        si["label"] = page.get("name", "no name?")
+        si["href"] = page["html"]
+        si["external"] = True
+
+    elif not page.get("md", ""):
+        si["label"] = page.get("name", "no name?") + " # TODO"
+
+    if page.get("md", ""):
+        # Normal md source file
+        si["page"] = page["md"]
+
+    if page.get("children", []):
+        si["expanded"] = False
+        si["items"] = [redocly_entry_for(child, pages) for child in page["children"]]
+
+    return si
+
+
+def redocly_sidebar(pages, starting_point="index.html"):
+    sidebar = []
+    for page in pages:
+        if page.get("nav_omit", False):
+            # TODO: these are mostly redirects, but need to handle the ones that aren't
+            continue
+        if page.get("parent", "") == "index.html":
+            sidebar.append(redocly_entry_for(page, pages))
+    with open("exported-sidebars.yaml", "w") as f:
+        yaml.dump(sidebar, f)
+    exit()
+
+export = {
+    "page_mapping": page_mapping
+}
