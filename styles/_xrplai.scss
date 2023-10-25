@@ -18,3 +18,348 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
 .MarkpromptOverlay {
   z-index: 20;
 }
+
+$markprompt-primary: #b480ff;
+$markprompt-primary-button: #7919ff;
+$markprompt-secondary-button: #9a52ff;
+$markprompt-feedback-box-background: #232325;
+$markprompt-button-text: #f5f5f7;
+$markprompt-feedback-label-text: #e0e0e1;
+$markprompt-reference-border-color: #838386;
+$markprompt-extended-feedback-text: #111112;
+$markprompt-overlay: #00000010;
+
+.MarkpromptPromptFeedback button[data-active="true"] {
+  background-color: transparent;
+}
+
+.MarkpromptTabsList {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  padding: 1.5rem 1rem 0;
+}
+
+.MarkpromptTab {
+  &[data-state="active"] {
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid $markprompt-primary;
+  }
+}
+
+.MarkpromptPromptFeedback {
+  &[data-variant="text"],
+  &[data-variant="icons"] {
+    padding: 0.75rem 2rem 2rem;
+  }
+
+  &[data-variant="icons"] {
+    align-self: last baseline;
+  }
+}
+
+label.MarkpromptExtendedFeedbackLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.MarkpromptFeedbackButtons {
+  button[data-active="true"] {
+    svg {
+      color: #32e685;
+      fill: #145c35;
+      stroke: #32e685;
+      stroke-width: 1.5px;
+    }
+  }
+}
+
+.MarkpromptExtendedFeedbackTextInput {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  height: 5.625rem;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  color: $markprompt-extended-feedback-text;
+  line-height: 1.3125rem;
+
+  &[data-active="true"] {
+    border-color: $markprompt-primary;
+  }
+}
+
+.MarkpromptReferences {
+  position: relative;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 0.875rem;
+  overflow: hidden;
+  flex: 0 0 auto;
+  transition-property: opacity, transform;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  &[data-loading-state="indeterminate"] {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: -0.25rem;
+    list-style-type: none;
+    margin-bottom: 0;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.125rem 0.5rem;
+    color: $markprompt-secondary-button;
+    font-weight: 500;
+    transition-property: opacity;
+    transition-duration: 200ms;
+    white-space: nowrap;
+    border-radius: 1.25rem;
+    border: 1px $markprompt-reference-border-color solid;
+  }
+}
+
+.example-light-icon {
+  display: none;
+}
+
+.MarkpromptExampleContainer {
+  padding: 1rem;
+  margin: 0.5rem 1rem 1rem;
+  background: $markprompt-extended-feedback-text;
+  border-radius: 0.25rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  display: inline-flex;
+
+  .header {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    display: inline-flex;
+  }
+
+  .icon-container {
+    width: 1.75rem;
+    height: 1.75rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    position: relative;
+
+    .icon-layer {
+      width: 1.75rem;
+      height: 1.75rem;
+      left: 0;
+      top: 0;
+      position: absolute;
+      background: $markprompt-feedback-box-background;
+    }
+  }
+
+  .title {
+    color: $markprompt-button-text;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5rem;
+    word-wrap: break-word;
+  }
+
+  .example {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+  }
+
+  .text {
+    color: $markprompt-feedback-label-text;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.313rem;
+    word-wrap: break-word;
+  }
+}
+
+.example-light-icon {
+  display: none;
+}
+
+// extended
+.MarkpromptExtendedFeedback {
+  background: $markprompt-feedback-box-background;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.MarkpromptExtendedFeedbackRadioCustom {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 0.125rem solid $markprompt-primary;
+  position: relative;
+  display: inline-block;
+}
+
+.MarkpromptExtendedFeedbackRadio {
+  display: none;
+}
+
+.MarkpromptExtendedFeedbackRadio:checked
+  + .MarkpromptExtendedFeedbackRadioCustom::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: $markprompt-primary;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.MarkpromptAddtionalFeedbackButton {
+  color: $markprompt-primary;
+}
+
+.MarkpromptExtendedFeedbackLabelText {
+  color: $markprompt-feedback-label-text;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.313rem;
+}
+
+.MarkpromptAdditionalFeedbackButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.MarkpromptSubmitAdditionalFeedbackButton,
+.MarkpromptCancelAdditionalFeedbackButton {
+  height: 100%;
+  padding: 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.MarkpromptSubmitAdditionalFeedbackButton {
+  background: $markprompt-primary;
+  color: $markprompt-button-text;
+}
+
+.MarkpromptCancelAdditionalFeedbackButton {
+  color: $markprompt-primary;
+  background: transparent;
+  border: none;
+}
+
+.MarkpromptExampleContainer {
+  padding: 1rem;
+  margin: 0.5rem 1rem 1rem;
+  background: $markprompt-extended-feedback-text;
+  border-radius: 0.25rem;
+  flex-direction: column;
+  gap: 0.75rem;
+  display: inline-flex;
+
+  .header {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.75rem;
+    display: inline-flex;
+  }
+
+  .icon-container {
+    width: 1.75rem;
+    height: 1.75rem;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    position: relative;
+  }
+
+  .icon-layer {
+    width: 1.75rem;
+    height: 1.75rem;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: $markprompt-overlay;
+  }
+
+  .title {
+    color: $markprompt-button-text;
+    font-size: 1rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    line-height: 1.5rem;
+    word-wrap: break-word;
+  }
+
+  .example {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    display: inline-flex;
+  }
+
+  .text {
+    color: $markprompt-feedback-label-text;
+    font-size: 0.875rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    line-height: 1.313rem;
+    word-wrap: break-word;
+  }
+}
+
+.MarkpromptExtendedFeedbackRadioCustom {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 0.125rem solid $markprompt-primary;
+  position: relative;
+  display: inline-block;
+}
+
+.MarkpromptPrimaryIcon {
+  display: none;
+}
+
+.MarkpromptSearchIcon {
+  display: none;
+}
+
+.MarkpromptClose {
+  display: none;
+}
