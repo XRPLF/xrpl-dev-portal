@@ -32,6 +32,13 @@ default_filters:
     - copy_code_to_clipboard
     - enforce_filenames
     # - make_indexes
+    ## To run a mass find-and-replace on links in the dev portal, uncomment the update_links filter,
+    ## also comment out or empty out the three snippets files with common links:
+    ##      _snippets/rippled-api-links.md
+    ##      _snippets/tx-type-links.md
+    ##      _snippets/rippled_versions.md
+    ## And then run dactyl_build.
+    # - update_links
 
 callout_class: "devportal-callout"
 callout_types:
