@@ -11,7 +11,6 @@
 import os.path
 import re
 import ruamel.yaml
-#yaml = ruamel.yaml.YAML(typ="safe", pure=True)
 yaml = ruamel.yaml.YAML()
 yaml.default_flow_style=False
 yaml.indent(mapping=4, sequence=4, offset=2) ## For some reason this doesn't work?
@@ -93,8 +92,9 @@ def compare_nav_and_fs_hierarchy(page, pages, logger):
       Actual: {actual_path}""".format(expected_path=expected_path, actual_path=actual_path))
 
 def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs):
-    ### Uncomment this to build a Redocly-style sidebar and quit.
-    #redocly_sidebar(pages)
+    # To build a Redocly sidebar and quit, run dactyl_build --vars '{"export-redocly-sidebar": true}'
+    if currentpage.get("export-redocly-sidebar", False):
+        redocly_sidebar(pages)
 
     if "md" not in currentpage.keys() or currentpage.get("lang") != "en":
         return
@@ -147,17 +147,16 @@ def redocly_entry_for(page, pages):
     Potentially recursive method for getting a sidebar entry in Redocly format from a (parsed) Dactyl page item.
     """
     si = {}
-    if page.get("children", []): # Checked twice, but first here so that "group" is the first key if necessary
-        si["group"] = page.get("name", "no name?")
+    if not page.get("md", ""):
+        if page.get("children", []):
+            si["group"] = page.get("name", "no name?")
+        else:
+            si["label"] = page.get("name", "no name?")
 
-    elif page["html"][:8] == "https://":
+    if page["html"][:8] == "https://":
         # Not a markdown source, just an external link
-        si["label"] = page.get("name", "no name?")
         si["href"] = page["html"]
         si["external"] = True
-
-    elif not page.get("md", ""):
-        si["label"] = page.get("name", "no name?") + " # TODO"
 
     if page.get("md", ""):
         # Normal md source file
@@ -178,7 +177,7 @@ def redocly_sidebar(pages, starting_point="index.html"):
             continue
         if page.get("parent", "") == "index.html":
             sidebar.append(redocly_entry_for(page, pages))
-    with open("exported-sidebars.yaml", "w") as f:
+    with open("content/sidebars.yaml", "w") as f:
         yaml.dump(sidebar, f)
     exit()
 
