@@ -1013,11 +1013,12 @@
 .page-docs-index,
 .page-community {
   #community-heading {
-    padding-top: 2.5rem;
+    padding-top: 18.5rem;
     padding-bottom: 5rem;
     padding-left: 1rem;
+
     @include media-breakpoint-up(lg) {
-      padding-top: 5rem;
+      padding-top: 16rem;
       padding-bottom: 15rem;
       padding-left: 0;
     }

@@ -1,0 +1,100 @@
+.page-community {
+    .builders-wrap {
+        white-space: nowrap;
+    }
+
+    @media (min-width: 768px) {
+
+        .builders-wrap {
+            white-space: normal;
+        }
+    }
+
+    #community-table {
+        padding: 20px 40px;
+        width: 85%;
+        margin: 0 auto;
+        border-radius: 5px;
+        padding-top: 165px;
+    }
+
+    .eyebrow-convo {
+        text-align: start;
+        font-family: Work Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 26px;
+        /* 130% */
+    }
+
+    #community-table h4 {
+        text-align: start;
+        margin: 10px 0;
+        font-family: Work Sans;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 38px;
+        /* 118.75% */
+    }
+
+    #community-table table {
+        border: 1px solid #343437;
+        width: 100%;
+        margin-top: 31px;
+        border-collapse: collapse;
+    }
+
+    #community-table tr {
+        padding: 10px 10px;
+        border-bottom: 1px solid #343437;
+    }
+
+    #community-table img {
+        width: 52px;
+        height: 29px;
+    }
+
+    .td-img {
+        padding: 10px;
+        width: 69px;
+    }
+
+    .text-external-link {
+        display: inline-flex;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+    .external-link-contribute {
+        display: inline-block;
+        vertical-align: middle;
+        padding-right: 41px;
+        height: 16px;
+        background: url(../img/icons/arrow-up-right.svg) no-repeat center center;
+        transition: transform 0.3s ease;
+        /* smooth transition effect */
+
+    }
+
+    .text-external-link:hover .external-link-contribute {
+        transform: translate(5px, -5px);
+        /* move 5px to the right and 5px up */
+    }
+
+    table td {
+        position: relative;
+        padding-right: 25px;
+        /* Give some space for the arrow */
+    }
+
+    table td .text-external-link {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+}
