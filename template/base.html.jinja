@@ -169,7 +169,7 @@ $(document).ready(() => {
     /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
     window.markprompt = {
       projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
-      defaultView: 'prompt',
+      defaultView: 'search',
       options: {
         chat: {
           enabled: PROMPT_MODE === 'chat',
@@ -195,6 +195,8 @@ Question: "{{PROMPT}}"
 
 Answer (including related code snippets if available and markdown links to relevant things):
         `.trim(),
+          showSubmitButton: true,
+          position: "bottom",
           examples: {
             enabled: true,
           },
@@ -225,6 +227,7 @@ Answer (including related code snippets if available and markdown links to relev
           getLabel: (reference) => {
             return reference.meta?.leadHeading?.value || reference.file?.title;
           },
+          display: "in-answer-container",
         },
         showBranding: false,
         search: {
@@ -235,7 +238,13 @@ Answer (including related code snippets if available and markdown links to relev
             appId: 'R39QY3MZC7',
             indexName: 'xrpl',
           },
-        }
+        },
+        support: {
+          disclaimer: {
+            enabled: true,
+            displayedBeforeAnswer: false,
+          },
+        },
       },
     };
   </script>
