@@ -19,15 +19,18 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
   z-index: 20;
 }
 
-$markprompt-primary: #b480ff;
-$markprompt-primary-button: #7919ff;
-$markprompt-secondary-button: #9a52ff;
-$markprompt-feedback-box-background: #232325;
-$markprompt-button-text: #f5f5f7;
-$markprompt-feedback-label-text: #e0e0e1;
-$markprompt-reference-border-color: #838386;
-$markprompt-extended-feedback-text: #111112;
-$markprompt-overlay: #00000010;
+:root {
+  --markprompt-primary: #b480ff;
+  --markprompt-primary-button: #7919ff;
+  --markprompt-secondary-button: #9a52ff;
+  --markprompt-feedback-box-background: #232325;
+  --markprompt-button-text: #f5f5f7;
+  --markprompt-feedback-label-text: #e0e0e1;
+  --markprompt-reference-border-color: #838386;
+  --markprompt-extended-feedback-text: #111112;
+  --markprompt-overlay: #00000010;
+}
+
 
 .MarkpromptPromptFeedback button[data-active="true"] {
   background-color: transparent;
