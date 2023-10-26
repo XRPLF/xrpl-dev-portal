@@ -19,7 +19,7 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
   z-index: 20;
 }
 
-:root {
+[data-theme='dark']:root {
   --markprompt-primary: #b480ff;
   --markprompt-primary-button: #7919ff;
   --markprompt-secondary-button: #9a52ff;
@@ -30,7 +30,6 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
   --markprompt-extended-feedback-text: #111112;
   --markprompt-overlay: #00000010;
 }
-
 
 .MarkpromptPromptFeedback button[data-active="true"] {
   background-color: transparent;
@@ -47,7 +46,7 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
 .MarkpromptTab {
   &[data-state="active"] {
     border-top: 2px solid transparent;
-    border-bottom: 2px solid $markprompt-primary;
+    border-bottom: 2px solid var(--markprompt-primary);
   }
 }
 
@@ -86,11 +85,11 @@ label.MarkpromptExtendedFeedbackLabel {
   border-radius: 0.25rem;
   padding: 0.75rem;
   font-size: 0.875rem;
-  color: $markprompt-extended-feedback-text;
+  color: var(--markprompt-extended-feedback-text);
   line-height: 1.3125rem;
 
   &[data-active="true"] {
-    border-color: $markprompt-primary;
+    border-color: var(--markprompt-primary);
   }
 }
 
@@ -126,13 +125,13 @@ label.MarkpromptExtendedFeedbackLabel {
     display: inline-block;
     text-decoration: none;
     padding: 0.125rem 0.5rem;
-    color: $markprompt-secondary-button;
+    color: var(--markprompt-secondary-button);
     font-weight: 500;
     transition-property: opacity;
     transition-duration: 200ms;
     white-space: nowrap;
     border-radius: 1.25rem;
-    border: 1px $markprompt-reference-border-color solid;
+    border: 1px var(--markprompt-reference-border-color) solid;
   }
 }
 
@@ -143,7 +142,7 @@ label.MarkpromptExtendedFeedbackLabel {
 .MarkpromptExampleContainer {
   padding: 1rem;
   margin: 0.5rem 1rem 1rem;
-  background: $markprompt-extended-feedback-text;
+  background: var(--markprompt-extended-feedback-text);
   border-radius: 0.25rem;
   flex-direction: column;
   gap: 0.75rem;
@@ -175,12 +174,12 @@ label.MarkpromptExtendedFeedbackLabel {
       left: 0;
       top: 0;
       position: absolute;
-      background: $markprompt-feedback-box-background;
+      background: var(--markprompt-feedback-box-background);
     }
   }
 
   .title {
-    color: $markprompt-button-text;
+    color: var(--markprompt-button-text);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5rem;
@@ -195,7 +194,7 @@ label.MarkpromptExtendedFeedbackLabel {
   }
 
   .text {
-    color: $markprompt-feedback-label-text;
+    color: var(--markprompt-feedback-label-text);
     font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.313rem;
@@ -209,7 +208,7 @@ label.MarkpromptExtendedFeedbackLabel {
 
 // extended
 .MarkpromptExtendedFeedback {
-  background: $markprompt-feedback-box-background;
+  background: var(--markprompt-feedback-box-background);
   border-radius: 0.5rem;
   padding: 1.5rem;
   display: flex;
@@ -222,7 +221,7 @@ label.MarkpromptExtendedFeedbackLabel {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  border: 0.125rem solid $markprompt-primary;
+  border: 0.125rem solid var(--markprompt-primary);
   position: relative;
   display: inline-block;
 }
@@ -237,7 +236,7 @@ label.MarkpromptExtendedFeedbackLabel {
   display: block;
   width: 0.5rem;
   height: 0.5rem;
-  background: $markprompt-primary;
+  background: var(--markprompt-primary);
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -246,11 +245,11 @@ label.MarkpromptExtendedFeedbackLabel {
 }
 
 .MarkpromptAddtionalFeedbackButton {
-  color: $markprompt-primary;
+  color: var(--markprompt-primary);
 }
 
 .MarkpromptExtendedFeedbackLabelText {
-  color: $markprompt-feedback-label-text;
+  color: var(--markprompt-feedback-label-text);
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.313rem;
@@ -271,12 +270,12 @@ label.MarkpromptExtendedFeedbackLabel {
 }
 
 .MarkpromptSubmitAdditionalFeedbackButton {
-  background: $markprompt-primary;
-  color: $markprompt-button-text;
+  background: var(--markprompt-primary);
+  color: var(--markprompt-button-text);
 }
 
 .MarkpromptCancelAdditionalFeedbackButton {
-  color: $markprompt-primary;
+  color: var(--markprompt-primary);
   background: transparent;
   border: none;
 }
@@ -284,7 +283,7 @@ label.MarkpromptExtendedFeedbackLabel {
 .MarkpromptExampleContainer {
   padding: 1rem;
   margin: 0.5rem 1rem 1rem;
-  background: $markprompt-extended-feedback-text;
+  background: var(--markprompt-extended-feedback-text);
   border-radius: 0.25rem;
   flex-direction: column;
   gap: 0.75rem;
@@ -317,11 +316,11 @@ label.MarkpromptExtendedFeedbackLabel {
     left: 0;
     top: 0;
     position: absolute;
-    background: $markprompt-overlay;
+    background: var(--markprompt-overlay);
   }
 
   .title {
-    color: $markprompt-button-text;
+    color: var(--markprompt-button-text);
     font-size: 1rem;
     font-family: "Work Sans", sans-serif;
     font-weight: 600;
@@ -337,7 +336,7 @@ label.MarkpromptExtendedFeedbackLabel {
   }
 
   .text {
-    color: $markprompt-feedback-label-text;
+    color: var(--markprompt-feedback-label-text);
     font-size: 0.875rem;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
@@ -350,7 +349,7 @@ label.MarkpromptExtendedFeedbackLabel {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
-  border: 0.125rem solid $markprompt-primary;
+  border: 0.125rem solid var(--markprompt-primary);
   position: relative;
   display: inline-block;
 }
