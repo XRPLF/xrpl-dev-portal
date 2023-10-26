@@ -688,6 +688,8 @@ Amendment `fixNFTokenRemint` would change the way NFT sequence numbers are const
 
 The amendment also introduces a new account deletion restriction. An account can only be deleted if `FirstNFTSequence` + `MintedNFTokens` + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.
 
+**Warning:** This is a **breaking change** for projects & tools relying on their own locally computed NFTokenID for minted tokens. As this fix changes the way a TokenID is calculated, without updating local code the wrong NFTokenIDs will be generated locally. A [well known reference implementation in JavaScript](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760) can easily be patched with backwards compatibillity.
+
 
 ### fixNonFungibleTokensV1_2
 [fixNonFungibleTokensV1_2]: #fixnonfungibletokensv1_2
