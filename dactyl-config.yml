@@ -1486,6 +1486,22 @@ pages:
             - ja
 
 
+    # XRPL Sidechains -----------------------------------------------------------
+    -   md: concepts/xrpl-sidechains/xrpl-sidechains.md
+        targets:
+            - en
+            - ja
+    
+    -   md: concepts/xrpl-sidechains/cross-chain-bridges.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/xrpl-sidechains/witness-servers.md
+        targets:
+            - en
+            - ja
+
 
 # Tutorials --------------------------------------------------------------------
 
@@ -2320,6 +2336,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/bridge.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.md
         targets:
             - en
@@ -2708,6 +2729,46 @@ pages:
 
     -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/trustset.md"
         targets:
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchainaccountcreatecommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchainaddaccountcreateattestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchainaddclaimattestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchainclaim.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincreatebridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchaincreateclaimid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/transactions/transaction-types/xchainmodifybridge.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md

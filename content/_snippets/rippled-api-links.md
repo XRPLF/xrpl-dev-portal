@@ -249,6 +249,7 @@
   "Tickets",
   "TickSize",
   "TrustSetAuth",
+  "XChainBridge",
   "XRPFees"
 ] %}
 

@@ -1,4 +1,5 @@
 ---
+html: tokens.html
 parent: concepts.html
 blurb: Anyone can make tokens representing digital value on the XRP Ledger.
 labels:
