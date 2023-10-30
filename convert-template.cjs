@@ -24,7 +24,7 @@ const mainBlock = content.substring(mainBlockOffset + 16, mainBlockEndOffset);
 const classes = content.match(/{% block mainclasses %}(.+?){% endblock %}/)?.[1] || '';
 
 const setStatements = mainBlock.match(/{% set ([\w\d]+) = ((.|\n)+?)%}/g);
-const sets = setStatements?.map(setStatement => {
+const sets = setStatements.map(setStatement => {
   const setStatementParts = setStatement.split(' = ');
   const setStatementName = setStatementParts[0].replace('{% set ', '');
   const setStatementValue = setStatementParts[1].replace(/%}/g, '');
@@ -74,7 +74,7 @@ const jsxWithReplacedTranslate = jsxWithReplacedForLoops.replace(
 const output = `import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 
-${sets?.map(set => `const ${set.name} = ${set.value};`).join('\n\n')}
+${sets.map(set => `const ${set.name} = ${set.value};`).join('\n\n')}
 
 const target= {prefix: ''}; // TODO: fixme
 
