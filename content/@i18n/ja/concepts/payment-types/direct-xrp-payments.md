@@ -70,8 +70,8 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 ## 他の支払いタイプとの比較
 
 - **XRPによる直接支払**は、単一のトランザクションでXRPを送受信する唯一の方法です。この方法は、速度、シンプルさ、低コストの面でバランスが取れています。
-- [通貨間の支払い](cross-currency-payments.html)でも[Payment][]トランザクションタイプを使用しますが、XRPとXRP以外の[発行済み通貨](issued-currencies.html)を組み合わせて送金できます。ただし、XRP間の支払いは除きます。また、[Partial Payment](partial-payments.html)でも使用できます。通貨間の支払いは、XRPで指定されていない支払いや、[分散型取引所](decentralized-exchange.html)で裁定取引の機会を得るのに適しています。
-- [Checks](checks.html)すぐに送金せずに送金元に債務を設定してもらいます。受取人は有効期間内であればいつでも換金できますが、その金額は保証されません。Checksでは、XRPまたは発行済み通貨のいずれかを送金できます。Checksは、受取人に支払いを請求する自律性を与えるのに適しています。
+- [通貨間の支払い](cross-currency-payments.html)でも[Payment][]トランザクションタイプを使用しますが、XRPとXRP以外の[トークン](tokens.html)を組み合わせて送金できます。ただし、XRP間の支払いは除きます。また、[Partial Payment](partial-payments.html)でも使用できます。通貨間の支払いは、XRPで指定されていない支払いや、[分散型取引所](decentralized-exchange.html)で裁定取引の機会を得るのに適しています。
+- [Checks](checks.html)すぐに送金せずに送金元に債務を設定してもらいます。受取人は有効期間内であればいつでも換金できますが、その金額は保証されません。Checksでは、XRPまたはトークンのいずれかを送金できます。Checksは、受取人に支払いを請求する自律性を与えるのに適しています。
 - [Escrow](escrow.html)では、特定の条件が満たされたときに、意図した受取人が要求できるXRPを確保します。XRPの金額は完全に保証されており、Escrowの有効期限が切れない限り、送金元が使用することはできません。Escrowは、巨額のスマートコントラクトに適しています。
 - [Payment Channel](payment-channels.html)では、XRPが確保されます。受取人は、署名による認証を使用して、チャネルから一括でXRPを要求できます。XRP Ledgerの全トランザクションを送信せずに、認証を個々に確認できます。Payment Channelは、極めて大量の小口決済または「ストリーミング」支払いに適しています。
 

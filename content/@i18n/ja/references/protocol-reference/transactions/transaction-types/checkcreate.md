@@ -44,7 +44,7 @@ _（[Checks Amendment][]が必要です）_
 - `Destination`がトランザクションの送信者である場合、トランザクションは結果コード`temREDUNDANT`で失敗します。
 - `Destination`[アカウント](accounts.html)がレジャーに存在していない場合、トランザクションは結果コード`tecNO_DST`で失敗します。
 - `Destination`アカウントでRequireDestフラグが有効であるが、トランザクションに`DestinationTag`フィールドが含まれていない場合、トランザクションは結果コード`tecDST_TAG_NEEDED`で失敗します。
-- `SendMax`に[凍結](freezes.html)されている発行済み通貨が指定されている場合、トランザクションは結果コード`tecFROZEN`で失敗します。
+- `SendMax`に[凍結](freezes.html)されているトークンが指定されている場合、トランザクションは結果コード`tecFROZEN`で失敗します。
 - トランザクションの`Expiration`が過去の日時である場合、トランザクションは結果コード`tecEXPIRED`で失敗します。
 - Checkの追加後に送金元が[所有者準備金](reserves.html#所有者準備金)条件を満たすのに十分なXRPを保有していない場合、トランザクションは結果コード`tecINSUFFICIENT_RESERVE`で失敗します。
 - Checkの送金元または送金先のいずれかがレジャーでこれ以上のオブジェクトを所有できない場合、トランザクションは結果コード`tecDIR_FULL`で失敗します。

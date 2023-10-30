@@ -49,7 +49,7 @@ TrustSetタイプのトランザクションについては、[`Flags`フィー�
 
 | フラグ名           | 16進数値      | 10進数値       | 説明                   |
 |:------------------|:-------------|:--------------|:----------------------|
-| `tfSetfAuth`      | `0x00010000` | 65536         | [このアカウントから発行された通貨](issued-currencies.html)を相手方に保有させることを許可します。（[*asfRequireAuth* AccountSet フラグ](accountset.html#accountsetのフラグ)を使用しない場合は効果がありません。）設定を解除できません。 |
+| `tfSetfAuth`      | `0x00010000` | 65536         | [このアカウントから発行された通貨](tokens.html)を相手方に保有させることを許可します。（[*asfRequireAuth* AccountSet フラグ](accountset.html#accountsetのフラグ)を使用しない場合は効果がありません。）設定を解除できません。 |
 | `tfSetNoRipple`   | `0x00020000` | 131072        | 2つのトラストラインの両方でこのフラグが有効になっている場合、同じ通貨のトラストライン間の[リップリング](rippling.html)をブロックする No Ripple フラグを有効にします。 |
 | `tfClearNoRipple` | `0x00040000` | 262144        | No Rippleフラグを無効にし、このトラストラインで[リップリング](rippling.html)を許可します。 |
 | `tfSetFreeze`     | `0x00100000` | 1048576       | トラストラインを[凍結](freezes.html)します。 |
