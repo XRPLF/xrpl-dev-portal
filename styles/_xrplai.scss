@@ -350,12 +350,16 @@ label.MarkpromptExtendedFeedbackLabel {
     background-image: url(../img/icons/close.png);
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
   }
 
   .MarkpromptContentDialog {
     max-height: 100vh;
     height: 100vh;
+  }
+
+  .MarkpromptTabsList {
+    justify-content: center;
   }
 }
 
