@@ -321,20 +321,41 @@ label.MarkpromptExtendedFeedbackLabel {
   display: none;
 }
 
-.MarkpromptClose {
-  content: "";
-  display: none;
+.MarkpromptContentDialog {
+  z-index: 1999;
+}
+
+@media (min-width: 767px) {
+  .MarkpromptClose {
+    content: "";
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
+  .MarkpromptClose {
+    content: "";
+    font-size: 0;
+    background-color: transparent;
+    border: none;
+    kbd {
+      padding: 0;
+    }
+  }
   .MarkpromptClose::before {
     content: "";
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: 2rem;
+    height: 2rem;
     background-image: url(../img/icons/close.png);
     background-size: cover;
     background-repeat: no-repeat;
+    margin-bottom: 3rem;
+  }
+
+  .MarkpromptContentDialog {
+    max-height: 100vh;
+    height: 100vh;
   }
 }
 
@@ -541,4 +562,8 @@ html.light [aria-selected="true"] .MarkpromptSearchResultSubtitle {
 
 html.light [aria-selected="true"] .MarkpromptSearchResultIcon {
   color: var(--markprompt-mutedForeground) !important;
+}
+
+#searchButton {
+  margin-top: 1rem;
 }
