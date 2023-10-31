@@ -13,7 +13,7 @@ curated_anchors:
   - name: タイプリスト
     anchor: "#タイプリスト"
 ---
-# シリアル化フォーマット
+# バイナリフォーマット
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
 このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバー間のピアツーピア通信](peer-protocol.html)を含む他の用途にも使用されます。通常、[`rippled` API](http-websocket-apis.html)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
