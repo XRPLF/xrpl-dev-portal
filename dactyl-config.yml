@@ -1252,6 +1252,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/automated-market-makers.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -2501,6 +2502,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammcreate.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -3003,7 +3005,7 @@ pages:
     -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/rippled-server-states.md"
         targets:
             - ja
-    
+
     # TODO: translate
     -   md: references/http-websocket-apis/api-conventions/ctid.md
         targets:
