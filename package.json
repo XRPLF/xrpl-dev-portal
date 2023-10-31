@@ -10,7 +10,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@redocly/portal": "0.57.0",
+    "@redocly/portal": "^0.65.3",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4"
   },
