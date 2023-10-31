@@ -51,7 +51,7 @@ For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchan
 
 Anyone can deposit assets to an existing AMM. When they do, they receive new LP Tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP Tokens they hold compared to the total number of LP Tokens outstanding.
 
-LP Tokens are like other tokens in the XRP Ledger, so you can use them in many [types of payments](payment-types.html) or trade them in the decentralized exchange. (To receive LP Tokens as payment, you must set up a [trust line](trust-lines-and-issuing.html) with a nonzero limit with the AMM Account as the issuer.) However, you can _only_ send LP Tokens directly to the AMM (redeeming them) using the [AMMWithdraw][] transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit][] transaction type.
+LP Tokens are like other tokens in the XRP Ledger, so you can use them in many [types of payments](payment-types.html) or trade them in the decentralized exchange. (To receive LP Tokens as payment, you must set up a [trust line](trust-lines-and-issuing.html) with a non-zero limit with the AMM Account as the issuer.) However, you can _only_ send LP Tokens directly to the AMM (redeeming them) using the [AMMWithdraw][] transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit][] transaction type.
 
 The AMM is designed so that an AMM's asset pool is empty if and only if the AMM has no outstanding LP Tokens. This situation can only occur as the result of an [AMMWithdraw][] transaction; when it does, the AMM is automatically deleted.
 
