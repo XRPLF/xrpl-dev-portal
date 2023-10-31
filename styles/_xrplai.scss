@@ -10,17 +10,12 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
   color: $black;
 }
 
-.MarkpromptExtendedFeedbackTextInput {
-  background-color: $white;
-  color: $black;
-}
-
 .MarkpromptOverlay {
   z-index: 20;
 }
 
-[data-theme='dark']:root {
-  --markprompt-primary: #7919FF;
+[data-theme="dark"]:root {
+  --markprompt-primary: #7919ff;
   --markprompt-primary-button: #b480ff;
   --markprompt-secondary-button: #9a52ff;
   --markprompt-feedback-box-background: #232325;
@@ -54,7 +49,7 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
   display: flex;
   justify-content: left;
   gap: 1rem;
-  padding: 1.5rem 1rem 0;
+  padding: 0.5rem 1rem 0;
   margin-bottom: 1rem;
   border-bottom: 1px solid var(--markprompt-tab-border-bottom);
 }
@@ -110,6 +105,16 @@ label.MarkpromptExtendedFeedbackLabel {
   }
 }
 
+.MarkpromptAutoScroller {
+  padding-bottom: 0;
+}
+
+.MarkpromptAnswerContainer {
+  &[data-loading-state="indeterminate"] {
+    display: none;
+  }
+}
+
 .MarkpromptReferences {
   position: relative;
   padding-top: 1rem;
@@ -156,78 +161,11 @@ label.MarkpromptExtendedFeedbackLabel {
   display: none;
 }
 
-.MarkpromptExampleContainer {
-  padding: 1rem;
-  margin: 0 1rem 0;
-  background: var(--markprompt-extended-feedback-text);
-  border-radius: 0.25rem;
-  flex-direction: column;
-  gap: 0.75rem;
-  display: inline-flex;
-
-  .header {
-    justify-content: flex-start;
-    align-items: center;
-    gap: 0.75rem;
-    display: inline-flex;
-  }
-
-  .icon-container {
-    width: 1.75rem;
-    height: 1.75rem;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  .icon {
-    width: 1.75rem;
-    height: 1.75rem;
-    position: relative;
-
-    .icon-layer {
-      width: 1.75rem;
-      height: 1.75rem;
-      left: 0;
-      top: 0;
-      position: absolute;
-      background: var(--markprompt-feedback-box-background);
-    }
-  }
-
-  .title {
-    color: var(--markprompt-button-text);
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.5rem;
-    word-wrap: break-word;
-  }
-
-  .example {
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
-    display: inline-flex;
-  }
-
-  .text {
-    color: var(--markprompt-feedback-label-text);
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.313rem;
-    word-wrap: break-word;
-  }
-}
-
-.example-light-icon {
-  display: none;
-}
-
 // extended
 .MarkpromptExtendedFeedback {
-  background: var(--markprompt-feedback-box-background);
-  border-radius: 0.5rem;
   padding: 1.5rem;
+  background-color: var(--markprompt-background);
+  border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -275,6 +213,10 @@ label.MarkpromptExtendedFeedbackLabel {
 .MarkpromptAdditionalFeedbackButtons {
   display: flex;
   gap: 1rem;
+}
+
+.MarkpromptAdditionalFeedbackButtons:hover {
+  background-color: inherit;
 }
 
 .MarkpromptSubmitAdditionalFeedbackButton,
@@ -380,29 +322,35 @@ label.MarkpromptExtendedFeedbackLabel {
 }
 
 .MarkpromptClose {
+  content: "";
   display: none;
+}
+
+@media (max-width: 767px) {
+  .MarkpromptClose::before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background-image: url(../img/icons/close.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
 }
 
 .MarkpromptForm {
   display: flex;
   flex: 1 1 auto;
   align-items: center;
-  border-bottom: 1px solid var(--markprompt-border);
   padding: 0 1rem 0 1rem;
+  border-bottom: none;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
 .MarkpromptContentDialog {
   background-color: var(--markprompt-background);
-}
-
-.MarkpromptPrompt {
-  background-color: var(--markprompt-extended-feedback-text);
-  height: 2.5rem;
-  &[type='search']::before {
-    background-image: url(../img/icons/search.png);
-  }
+  width: 100%;
 }
 
 .MarkpromptAnswer {
@@ -429,11 +377,6 @@ label.MarkpromptExtendedFeedbackLabel {
   margin: 0;
 }
 
-.MarkpromptExtendedFeedback {
-  padding: 0;
-  background-color: var(--markprompt-extended-feedback-text);
-}
-
 .MarkpromptBaseIcon {
   display: none;
 }
@@ -442,20 +385,32 @@ label.MarkpromptExtendedFeedbackLabel {
   display: none;
 }
 
-.MarkpromptPrompt[type='search'] {
-  background-image: url(../img/icons/search.png);  
-  background-repeat: no-repeat;     
-  background-position: 0.625rem center; 
-  background-size: 1.25rem 1.25rem;       
+.MarkpromptPrompt[type="search"] {
+  background-image: url(../img/icons/search.png);
+  background-repeat: no-repeat;
+  background-position: 0.625rem center;
+  background-size: 1.25rem 1.25rem;
   padding-left: 2.1875rem;
 }
 
+.MarkpromptPrompt[type="text"] {
+  margin-top: 1rem;
+}
+
+.MarkpromptPrompt {
+  background-color: var(--markprompt-extended-feedback-text);
+  height: 2.5rem;
+  &[type="search"]::before {
+    background-image: url(../img/icons/search.png);
+  }
+}
+
 button.MarkpromptTab[id="radix-P0-0-trigger-prompt"]::after {
-  content: '';
+  content: "";
   display: inline-block;
-  width: 3rem;   
-  height: 3rem;  
-  margin-left: 0.5rem;  
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.5rem;
   background-image: url(../img/icons/new.png);
   background-repeat: no-repeat;
   background-position: center;
@@ -463,9 +418,127 @@ button.MarkpromptTab[id="radix-P0-0-trigger-prompt"]::after {
   vertical-align: middle;
 }
 
-
 .MarkpromptPromptFeedback button[data-active="true"]:hover {
   background-color: transparent;
 }
 
+.MarkpromptDisclaimer {
+  color: var(--markprompt-reference-border-color);
+  align-items: unset;
+  margin-left: 1rem;
+  svg {
+    display: none;
+  }
+  p {
+    font-size: 0.75rem;
+  }
+}
 
+html.light:root {
+  --markprompt-primary: #7919ff;
+  --markprompt-secondary-button: #9a52ff;
+  --markprompt-feedback-box-background: #232325;
+  --markprompt-button-text: #111112;
+  --markprompt-feedback-label-text: #111112;
+  --markprompt-reference-border-color: #838386;
+  --markprompt-extended-feedback-text: #f5f5f7;
+  --markprompt-overlay: #0000001;
+  --markprompt-background: #ffffff;
+  --markprompt-foreground: #838386;
+  --markprompt-feedback-textbox-background: #e0e0e1;
+  --markprompt-muted: #171717;
+  --markprompt-mutedForeground: #838386;
+  --markprompt-border: #262626;
+  --markprompt-input: #111112;
+  --markprompt-primaryForeground: #fff;
+  --markprompt-primaryMuted: #8285f4;
+  --markprompt-secondary: #0e0e0e;
+  --markprompt-secondaryForeground: #fff;
+  --markprompt-primaryHighlight: #ec4899;
+  --markprompt-secondaryHighlight: #a855f7;
+  --markprompt-overlay: #00000040;
+  --markprompt-tab-border-bottom: #454549;
+}
+
+html.light .MarkpromptAnswer {
+  color: var(--markprompt-input);
+}
+
+html.light .MarkpromptReferences::before {
+  background-image: none;
+}
+html.light .MarkpromptReferences::after {
+  background-image: none;
+}
+
+html.light .MarkpromptExtendedFeedback {
+  background-color: var(--markprompt-feedback-textbox-background);
+}
+
+html.light button.MarkpromptTab[id="radix-P0-0-trigger-prompt"]::after {
+  content: "";
+  display: inline-block;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 0.5rem;
+  background-image: url(../img/icons/new-light.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+html.light .example-icon {
+  background-image: url(../img/icons/lightmode/example.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+html.light .MarkpromptFeedbackButtons button[data-active="true"] svg {
+  fill: #84f0b6;
+}
+
+html.light .MarkpromptSubmitAdditionalFeedbackButton:hover {
+  background-color: var(--markprompt-primary);
+}
+
+html.light .MarkpromptCancelAdditionalFeedbackButton:hover {
+  background-color: var(--markprompt-feedback-textbox-background);
+}
+
+html.light .MarkpromptCancelAdditionalFeedbackButton {
+  border: none;
+}
+
+html.light .MarkpromptExtendedFeedbackTextInput {
+  color: var(--markprompt-reference-border-color);
+}
+
+html.light .MarkpromptSubmitAdditionalFeedbackButton {
+  color: var(--markprompt-extended-feedback-text);
+}
+
+html.light .MarkpromptGhostThumbButton:hover {
+  background-color: inherit;
+}
+
+html.light .MarkpromptSearchResultHeading {
+  background-color: var(--markprompt-primaryForeground);
+}
+
+html.light .MarkpromptSearchResultIconWrapperBordered {
+  background-color: var(--markprompt-primaryForeground);
+}
+
+html.light .MarkpromptMatch[aria-selected="true"] {
+  border-color: var(--markprompt-primaryForeground) !important;
+  color: var(--markprompt-primary-button) !important;
+}
+
+html.light [aria-selected="true"] .MarkpromptSearchResultSubtitle {
+  color: var(--markprompt-mutedForeground) !important;
+}
+
+html.light [aria-selected="true"] .MarkpromptSearchResultIcon {
+  color: var(--markprompt-mutedForeground) !important;
+}

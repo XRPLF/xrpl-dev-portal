@@ -1,86 +1,98 @@
 <!DOCTYPE html>
 <html lang="{{target.lang}}">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>{{ currentpage.name }} - {{target.display_name}}</title>
-    <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="{{ currentpage.name|escape }} | {{ target.display_name }}">
-    <meta property="og:url" content="https://xrpl.org/{% if currentpage.html != 'index.html' %}{{currentpage.html}}{% endif %}" />
-    <meta property="og:description" content="{% if currentpage.blurb %}{{ currentpage.blurb|escape}}{% else %}{{ target.blurb|escape }}{% endif %}" />
-    <meta name="description" content="{% if currentpage.blurb %}{{ currentpage.blurb|escape}}{% else %}{{ target.blurb|escape }}{% endif %}" />
-    <meta property="og:image" content="https://xrpl.org/assets/img/{% if currentpage.fb_card %}{{currentpage.fb_card}}{% else %}xrpl-fb-li-card.png{% endif %}" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image" content="https://xrpl.org/assets/img/{% if currentpage.twitter_card %}{{currentpage.twitter_card}}{% else %}xrpl-twitter-card.png{% endif %}" />
-    {% if currentpage.canonical_url %}<link rel="canonical" href="{{currentpage.canonical_url}}" />{% endif %}
-    <meta name="robots" content="index, follow" />
-    <meta name="docsearch:language" content="{{target.lang}}" />
-    {% for lang in config.languages %}
-    <link rel="alternate" href="https://xrpl.org{{lang.prefix}}{{currentpage.html}}" hreflang="{{lang.code}}" />
-    {% endfor %}
-    <link rel="alternate" href="https://xrpl.org/{{currentpage.html}}" hreflang="x-default" /><!-- Default: US english -->
-
-
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{currentpage.prefix}}assets/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{currentpage.prefix}}assets/favicons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{currentpage.prefix}}assets/favicons/favicon-32x32.png">
-    <link rel="manifest" href="{{currentpage.prefix}}assets/favicons/site.webmanifest">
-    <link rel="shortcut icon" href="favicon.ico">
-    <meta name="msapplication-TileColor" content="#25A768">
-    <meta name="msapplication-config" content="{{currentpage.prefix}}assets/favicons/browserconfig.xml">
-    <meta name="theme-color" content="#25A768">
-    {% if target.light_theme_enabled %}
-    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
-    <meta name="color-scheme" content="dark light">
-    {% endif %}
-
-    <!-- jQuery -->
-    <script src="{{currentpage.prefix}}assets/vendor/jquery-3.7.1.min.js"></script>
-
-    <!-- Google Tag Manager -->
-    {% block analytics %}{% endblock %}
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+  <title>{{ currentpage.name }} - {{target.display_name}}</title>
+  <meta name="viewport" content="width=device-width">
+  <meta property="og:title" content="{{ currentpage.name|escape }} | {{ target.display_name }}">
+  <meta property="og:url"
+    content="https://xrpl.org/{% if currentpage.html != 'index.html' %}{{currentpage.html}}{% endif %}" />
+  <meta property="og:description"
+    content="{% if currentpage.blurb %}{{ currentpage.blurb|escape}}{% else %}{{ target.blurb|escape }}{% endif %}" />
+  <meta name="description"
+    content="{% if currentpage.blurb %}{{ currentpage.blurb|escape}}{% else %}{{ target.blurb|escape }}{% endif %}" />
+  <meta property="og:image"
+    content="https://xrpl.org/assets/img/{% if currentpage.fb_card %}{{currentpage.fb_card}}{% else %}xrpl-fb-li-card.png{% endif %}" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:image"
+    content="https://xrpl.org/assets/img/{% if currentpage.twitter_card %}{{currentpage.twitter_card}}{% else %}xrpl-twitter-card.png{% endif %}" />
+  {% if currentpage.canonical_url %}
+  <link rel="canonical" href="{{currentpage.canonical_url}}" />{% endif %}
+  <meta name="robots" content="index, follow" />
+  <meta name="docsearch:language" content="{{target.lang}}" />
+  {% for lang in config.languages %}
+  <link rel="alternate" href="https://xrpl.org{{lang.prefix}}{{currentpage.html}}" hreflang="{{lang.code}}" />
+  {% endfor %}
+  <link rel="alternate" href="https://xrpl.org/{{currentpage.html}}" hreflang="x-default" /><!-- Default: US english -->
 
 
-    <!-- Stylesheet -->
-    {% if target.lang=="ja" %}
-    <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
-    {% endif %}
-    <link rel="stylesheet" href="{{currentpage.prefix}}assets/css/xrplai.css" />
-    <link href="{{currentpage.prefix}}assets/css/devportal2022-v25.css" rel="stylesheet" />
+  <!-- favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{currentpage.prefix}}assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{currentpage.prefix}}assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{currentpage.prefix}}assets/favicons/favicon-32x32.png">
+  <link rel="manifest" href="{{currentpage.prefix}}assets/favicons/site.webmanifest">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta name="msapplication-TileColor" content="#25A768">
+  <meta name="msapplication-config" content="{{currentpage.prefix}}assets/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#25A768">
+  {% if target.light_theme_enabled %}
+  <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+  <meta name="color-scheme" content="dark light">
+  {% endif %}
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <!-- jQuery -->
+  <script src="{{currentpage.prefix}}assets/vendor/jquery-3.7.1.min.js"></script>
 
-    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+  <!-- Google Tag Manager -->
+  {% block analytics %}{% endblock %}
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KCQZ3L8');</script>
 
-    {% if "js_editor" in currentpage.filters %}
-    <script src="{{currentpage.prefix}}assets/vendor/jshint.js"></script>
-    <script src="{{currentpage.prefix}}assets/vendor/codemirror-js-json-lint.min.js"></script>
-    <script src="{{currentpage.prefix}}assets/vendor/cm-javascript-lint.js"></script>
-    <script src="{{currentpage.prefix}}assets/js/js-editor.js"></script>
-    {% endif %}
 
-    {% if target.light_theme_enabled %}
-    <!-- Theme switch -->
-    <script src="{{currentpage.prefix}}assets/js/theme-switch.js"></script>
-    {% endif %}
+  <!-- Stylesheet -->
+  {% if target.lang=="ja" %}
+  <link href="{{currentpage.prefix}}assets/css/fonts-ja.css" rel="stylesheet" />
+  {% endif %}
+  <link rel="stylesheet" href="{{currentpage.prefix}}assets/css/xrplai.css" />
+  <link href="{{currentpage.prefix}}assets/css/devportal2022-v25.css" rel="stylesheet" />
 
-    {% block head %}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
-    {% endblock %}
+  <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+
+  {% if "js_editor" in currentpage.filters %}
+  <script src="{{currentpage.prefix}}assets/vendor/jshint.js"></script>
+  <script src="{{currentpage.prefix}}assets/vendor/codemirror-js-json-lint.min.js"></script>
+  <script src="{{currentpage.prefix}}assets/vendor/cm-javascript-lint.js"></script>
+  <script src="{{currentpage.prefix}}assets/js/js-editor.js"></script>
+  {% endif %}
+
+  {% if target.light_theme_enabled %}
+  <!-- Theme switch -->
+  <script src="{{currentpage.prefix}}assets/js/theme-switch.js"></script>
+  {% endif %}
+
+  {% block head %}
+
+  {% endblock %}
 
 </head>
 
-<body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}sidebar-primary {% endif %}lang-{{target.lang}} {% block bodyclasses %}{% endblock %}" data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+<body class="xrp-ledger-dev-portal {% if currentpage.sidebar is undefined or currentpage.sidebar != " disabled"
+  %}sidebar-primary {% endif %}lang-{{target.lang}} {% block bodyclasses %}{% endblock %}" data-spy="scroll"
+  data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
   {% include 'component-top-nav.html.jinja' %}
@@ -88,73 +100,76 @@
   <div class="container-fluid" role="document" id="main_content_wrapper">
     <div class="row">
       <!-- Right sidebar first so it's at the beginning for mobile layouts -->
-      {% if currentpage.sidebar is undefined or (currentpage.sidebar != "disabled" and currentpage.sidebar != "left_only") %}
+      {% if currentpage.sidebar is undefined or (currentpage.sidebar != "disabled" and currentpage.sidebar !=
+      "left_only") %}
       <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
-          {% block right_sidebar %}{% endblock %}
+        {% block right_sidebar %}{% endblock %}
       </aside>
       {% endif %}
 
       <!-- main column -->
-      <main class="main {% if currentpage.sidebar is defined and currentpage.sidebar == "disabled" %}col-md-12{% elif currentpage.sidebar == "left_only" %}col-lg-9 col-md-7{% else %}col-md-7 col-lg-6{% endif %} order-md-3  {% block mainclasses %}{% endblock %}" role="main" id="main_content_body">
-          {% block breadcrumbs %}
-            {% include 'component-breadcrumbs.html.jinja' %}
-          {% endblock %}
-          {% block main %}{% endblock %}
+      <main class="main {% if currentpage.sidebar is defined and currentpage.sidebar == " disabled" %}col-md-12{% elif
+        currentpage.sidebar=="left_only" %}col-lg-9 col-md-7{% else %}col-md-7 col-lg-6{% endif %} order-md-3 {% block
+        mainclasses %}{% endblock %}" role="main" id="main_content_body">
+        {% block breadcrumbs %}
+        {% include 'component-breadcrumbs.html.jinja' %}
+        {% endblock %}
+        {% block main %}{% endblock %}
       </main>
       {% if currentpage.sidebar is undefined or currentpage.sidebar != "disabled" %}
       <!-- Left sidebar last so it's at the end for mobile -->
       <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
-          {% block left_sidebar %}
-            {% set docs_top = pages|selectattr('html', 'defined_and_equalto', 'docs.html')|list|first %}
-            {% if docs_top.is_ancestor_of(currentpage.html) %}
-              {% set tree_top = docs_top %}
-            {% endif %}
-            {% include "component-tree-nav.html.jinja" %}
-          {% endblock %}
-          {% block bottom_left_sidebar %}
-          {% endblock %}
+        {% block left_sidebar %}
+        {% set docs_top = pages|selectattr('html', 'defined_and_equalto', 'docs.html')|list|first %}
+        {% if docs_top.is_ancestor_of(currentpage.html) %}
+        {% set tree_top = docs_top %}
+        {% endif %}
+        {% include "component-tree-nav.html.jinja" %}
+        {% endblock %}
+        {% block bottom_left_sidebar %}
+        {% endblock %}
       </aside>
       {% endif %}
     </div><!--/.row (main layout)-->
   </div>
 
-{% include 'component-footer.html.jinja' %}
+  {% include 'component-footer.html.jinja' %}
 
 
-<!-- Non-blocking resources -->
-<!-- Bootstrap JS -->
-<script src="{{currentpage.prefix}}assets/vendor/bootstrap.min.js"></script>
-<!-- fontawesome icons -->
-<link rel="stylesheet" href="{{currentpage.prefix}}assets/vendor/fontawesome/css/font-awesome.min.css" />
+  <!-- Non-blocking resources -->
+  <!-- Bootstrap JS -->
+  <script src="{{currentpage.prefix}}assets/vendor/bootstrap.min.js"></script>
+  <!-- fontawesome icons -->
+  <link rel="stylesheet" href="{{currentpage.prefix}}assets/vendor/fontawesome/css/font-awesome.min.css" />
 
-<!-- Algolia DocSearch -->
-<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-<script type="text/javascript">
-$(document).ready(() => {
-  const ds = docsearch({
-  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
-  indexName: 'xrpl',
-  container: '#topsearchboxcontainer',
-  appId: 'R39QY3MZC7',
-  searchParameters: { 'facetFilters': ["lang:{{target.lang}}"] },
-  debug: false
-  });
-  const search_params = new URLSearchParams(window.location.search)
-  if (search_params.has("q")) {
-    $(".navbar-toggler").click() // Show nav on mobile since search is in there
-    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
-    ds.autocomplete.autocomplete.open()
-  }
-})
-</script>
+  {# <!-- Algolia DocSearch -->
+  <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    $(document).ready(() => {
+      const ds = docsearch({
+        apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+        indexName: 'xrpl',
+        container: '#topsearchboxcontainer',
+        appId: 'R39QY3MZC7',
+        searchParameters: { 'facetFilters': ["lang:{{target.lang}}"] },
+        debug: false
+      });
+      const search_params = new URLSearchParams(window.location.search)
+      if (search_params.has("q")) {
+        $(".navbar-toggler").click() // Show nav on mobile since search is in there
+        ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+        ds.autocomplete.autocomplete.open()
+      }
+    })
+  </script> #}
 
   <!-- XRPL AI -->
   <script id="xrplai-options">
     var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
     var PROMPT_MODE = 'prompt';
     var RUNTIME_LOCATION = 'ripplex';
-    var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `sk_test_i4WeLrhPtulIx1wHkcb15XouWrGiY9bf`;
-    var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+    var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = 'sk_test_i4WeLrhPtulIx1wHkcb15XouWrGiY9bf';
+    var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.xrplai.dev.ripplex.io';
     var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
     var CHAT_ENDPOINT = '/v1/chat';
     var PROMPT_ENDPOINT = '/v1/chat';
@@ -168,8 +183,8 @@ $(document).ready(() => {
 
     /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
     window.markprompt = {
+      // NOTE: This is the development key, DO NOT USE THIS IN PRODCTION
       projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
-      defaultView: 'search',
       options: {
         chat: {
           enabled: PROMPT_MODE === 'chat',
@@ -178,12 +193,19 @@ $(document).ready(() => {
         feedback: {
           enabled: true,
           apiUrl: FEEDBACK_API_URL,
+          heading: "Do you want to leave additional feedback?",
           extended: {
             enabled: true,
+            extendedButtonText: "Submit",
           }
         },
         prompt: {
+          examples: {
+            enabled: true,
+          },
+          position: 'bottom',
           apiUrl: PROMPT_API_URL,
+          showSubmitButton: true,
           systemPrompt: `
 You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "{{I_DONT_KNOW}}".
 
@@ -194,14 +216,10 @@ Context sections:
 Question: "{{PROMPT}}"
 
 Answer (including related code snippets if available and markdown links to relevant things):
-        `.trim(),
-          showSubmitButton: true,
-          position: "bottom",
-          examples: {
-            enabled: true,
-          },
+              `.trim(),
         },
         references: {
+          display: 'end',
           getHref: (reference) => {
             const { file } = reference;
             if (file && file.path) {
@@ -227,9 +245,12 @@ Answer (including related code snippets if available and markdown links to relev
           getLabel: (reference) => {
             return reference.meta?.leadHeading?.value || reference.file?.title;
           },
-          display: "in-answer-container",
         },
         showBranding: false,
+        trigger: {
+          customElement: true,
+          customElementId: "topsearchboxcontainer",
+        },
         search: {
           enabled: true,
           provider: {
@@ -241,9 +262,8 @@ Answer (including related code snippets if available and markdown links to relev
         },
         support: {
           disclaimer: {
-            enabled: true,
             displayedBeforeAnswer: false,
-          },
+          }
         },
       },
     };
@@ -251,16 +271,17 @@ Answer (including related code snippets if available and markdown links to relev
   <script type="module" src="{{currentpage.prefix}}assets/js/xrplai.js"></script>
   {#
   <script id="initjs" type="module" src="{{currentpage.prefix}}assets/js/xrplai.js"></script> #}
-{% if currentpage.embed_xrpl_js %}
-<!-- ripple-lib & prerequisites -->
-{{currentpage.ripple_lib_tag}}
-{% endif %}
+  {% if currentpage.embed_xrpl_js %}
+  <!-- ripple-lib & prerequisites -->
+  {{currentpage.ripple_lib_tag}}
+  {% endif %}
 
-{% if "interactive_steps" in currentpage.filters %}
-<!-- Helper for interactive tutorials -->
-<script type="application/javascript" src="{{currentpage.prefix}}assets/js/interactive-tutorial.js"></script>
-{% endif %}
+  {% if "interactive_steps" in currentpage.filters %}
+  <!-- Helper for interactive tutorials -->
+  <script type="application/javascript" src="{{currentpage.prefix}}assets/js/interactive-tutorial.js"></script>
+  {% endif %}
 
-{% block endbody %}{% endblock %}
+  {% block endbody %}{% endblock %}
 </body>
+
 </html>
