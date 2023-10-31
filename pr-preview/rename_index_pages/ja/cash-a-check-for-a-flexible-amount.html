@@ -324,7 +324,7 @@
 <li>例えば、以下の例では、あるCheckのIDとして<code>838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334</code>を使用していますが、各ステップをご自分で行う際には、異なるIDを使用する必要があります。</li>
 <li>Checkに記載されている受取人の<strong>アドレス</strong>と<strong>秘密鍵</strong>。このアドレスは、Checkオブジェクトの<code>Destination</code>アドレスと一致している必要があります。</li>
 <li>発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。</li>
-<li>トラストラインと限度額について詳しくは、<a href="issued-currencies.html">発行済み通貨</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
+<li>トラストラインと限度額について詳しくは、<a href="tokens.html">トークン</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
 <li><a href="secure-signing.html">トランザクションに安全に署名できる手段</a>。</li>
 <li>XRP Ledgerに接続できる<a href="client-libraries.html">クライアントライブラリ</a>か、それとも<a href="get-started-using-http-websocket-apis.html">HTTPライブラリ、WebSocketライブラリなど</a>。<!--#{ fix md highlighting_ #}--></li>
 </ul>
@@ -357,7 +357,7 @@
 <tr>
 <td style="text-align: left;"><code>DeliverMin</code></td>
 <td style="text-align: left;">文字列またはオブジェクト（額）</td>
-<td style="text-align: left;">Checkから受領する最小額。この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。XRPの場合、XRPのdrop数を示す文字列でなければなりません。発行済み通貨の場合、これは<code>currency</code>、<code>issuer</code>、および<code>value</code> フィールドを持つオブジェクトです。<code>currency</code>フィールドと<code>issuer</code>フィールドは、Checkオブジェクトの対応するフィールドに一致しており、<code>value</code>はCheckオブジェクトの額以下でなければなりません。詳細は、<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。</td>
+<td style="text-align: left;">Checkから受領する最小額。この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。XRPの場合、XRPのdrop数を示す文字列でなければなりません。トークンの場合、これは<code>currency</code>、<code>issuer</code>、および<code>value</code> フィールドを持つオブジェクトです。<code>currency</code>フィールドと<code>issuer</code>フィールドは、Checkオブジェクトの対応するフィールドに一致しており、<code>value</code>はCheckオブジェクトの額以下でなければなりません。詳細は、<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
@@ -660,7 +660,7 @@
 </tr>
 <tr>
 <td><code>tecPATH_PARTIAL</code></td>
-<td>トラストラインの限度額、または送金元に送金通貨の残高（イシュアーの<a href="transfer-fees.html">送金手数料</a>がある場合はこの手数料を含む）が十分になかったことが原因で、Checkでは十分な発行済み通貨を送金できませんでした。</td>
+<td>トラストラインの限度額、または送金元に送金通貨の残高（イシュアーの<a href="transfer-fees.html">送金手数料</a>がある場合はこの手数料を含む）が十分になかったことが原因で、Checkでは十分なトークンを送金できませんでした。</td>
 <td>原因がトラストラインの限度額である場合は、（希望する場合には）限度額を引き上げる<a href="trustset.html">TrustSetトランザクション</a>を送信するか、または通貨の一部を消費して残高を減らしてから、Checkの換金を再試行します。原因が送金元の残高である場合は、送金元にCheckの通貨が積み増しされるまで待つか、または以前よりも低い額でCheckの換金を再試行します。</td>
 </tr>
 <tr>
@@ -704,14 +704,14 @@
 </code></pre></div>
 </li>
 <li>
-<p>Checkの送金元または受取人がイシュアーである発行済み通貨の場合、これらのアカウント間のトラストラインを表す<code>RippleState</code>オブジェクトでは、<code>Balance</code>がCheckの受取人に有利な方法で調整されています。</p>
+<p>Checkの送金元または受取人がイシュアーであるトークンの場合、これらのアカウント間のトラストラインを表す<code>RippleState</code>オブジェクトでは、<code>Balance</code>がCheckの受取人に有利な方法で調整されています。</p>
 <!-- -->
 </li>
 <li>
-<p>イシュアーが第三者である発行済み通貨の場合、2つの<code>RippleState</code>（送金元からイシュアーへのトラストラインとイシュアーから受取人へのトラストライン）に対する変更があります。Checkの送金元とイシュアーの関係を表す<code>RippleState</code>オブジェクトではその<code>Balance</code>がイシュアーに有利に変更され、イシュアーと受取人の間の関係を表す<code>RippleState</code>オブジェクトではその<code>Balance</code>が受取人に有利に変更されます。</p>
+<p>イシュアーが第三者であるトークンの場合、2つの<code>RippleState</code>（送金元からイシュアーへのトラストラインとイシュアーから受取人へのトラストライン）に対する変更があります。Checkの送金元とイシュアーの関係を表す<code>RippleState</code>オブジェクトではその<code>Balance</code>がイシュアーに有利に変更され、イシュアーと受取人の間の関係を表す<code>RippleState</code>オブジェクトではその<code>Balance</code>が受取人に有利に変更されます。</p>
 <!-- -->
 <ul>
-<li>発行済み通貨に<a href="transfer-fees.html">送金手数料</a>がある場合、受取人への入金額を上回る額がCheckの送金元から引き落とされます。（この差額が送金手数料であり、これがイシュアーに戻されることによりイシュアーの正味の債務は減少します。）</li>
+<li>トークンに<a href="transfer-fees.html">送金手数料</a>がある場合、受取人への入金額を上回る額がCheckの送金元から引き落とされます。（この差額が送金手数料であり、これがイシュアーに戻されることによりイシュアーの正味の債務は減少します。）</li>
 </ul>
 </li>
 </ul>
@@ -1223,7 +1223,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       

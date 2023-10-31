@@ -343,12 +343,12 @@
 <li>EscrowFinishトランザクションの送金先がEscrowFinishの送金元を<a href="#事前承認">事前承認している</a>場合。<em>（<a href="known-amendments.html#depositpreauth">DepositPreauth Amendment</a>により追加されました。）</em></li>
 </ul>
 </li>
-<li><a href="checkcash.html">CheckCash</a>トランザクションを送信してXRPまたは発行済み通貨を受領<strong>できます</strong>。 <em>（<a href="known-amendments.html#checks">Checks Amendment</a>により追加されました。）</em></li>
-<li><a href="offercreate.html">OfferCreateトランザクション</a>を送信してXRPまたは発行済み通貨を受領<strong>できます</strong>。<ul>
-<li>即時には完全に実行されないOfferCreateトランザクションがアカウントから送信される場合、このアカウントは、後でオファーが他のアカウントの<a href="payment.html">Payment</a>トランザクションと<a href="offercreate.html">OfferCreate</a>トランザクションによって消費される時点で、注文済みXRPと発行済み通貨のリマインダーを受信する<strong>ことがあります</strong>。</li>
+<li><a href="checkcash.html">CheckCash</a>トランザクションを送信してXRPまたはトークンを受領<strong>できます</strong>。 <em>（<a href="known-amendments.html#checks">Checks Amendment</a>により追加されました。）</em></li>
+<li><a href="offercreate.html">OfferCreateトランザクション</a>を送信してXRPまたはトークンを受領<strong>できます</strong>。<ul>
+<li>即時には完全に実行されないOfferCreateトランザクションがアカウントから送信される場合、このアカウントは、後でオファーが他のアカウントの<a href="payment.html">Payment</a>トランザクションと<a href="offercreate.html">OfferCreate</a>トランザクションによって消費される時点で、注文済みXRPとトークンのリマインダーを受信する<strong>ことがあります</strong>。</li>
 </ul>
 </li>
-<li>アカウントが<a href="rippling.html">NoRippleフラグ</a>を有効にせずにトラストラインを作成している場合、またはDefaultRippleフラグを有効にして通貨を発行した場合は、アカウントはRipplingの結果として、<a href="payment.html">Paymentトランザクション</a>でそれらのトラストラインの発行済み通貨を受領<strong>できます</strong>。このようなトランザクションの送金先にすることはできません。</li>
+<li>アカウントが<a href="rippling.html">NoRippleフラグ</a>を有効にせずにトラストラインを作成している場合、またはDefaultRippleフラグを有効にして通貨を発行した場合は、アカウントはRipplingの結果として、<a href="payment.html">Paymentトランザクション</a>でそれらのトラストラインのトークンを受領<strong>できます</strong>。このようなトランザクションの送金先にすることはできません。</li>
 <li>一般的に、以下のすべての条件に該当する場合は、XRP LedgerのアカウントはXRP LedgerでXRP以外の通貨を受領<strong>できません</strong>。（このルールは、DepositAuthフラグに特有のものではありません。）<ul>
 <li>アカウントにより、ゼロ以外の限度を指定したトラストラインが作成されていない。</li>
 <li>アカウントが、その他のアカウントにより作成されたトラストラインで通貨を発行していない。</li>
@@ -1070,7 +1070,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       

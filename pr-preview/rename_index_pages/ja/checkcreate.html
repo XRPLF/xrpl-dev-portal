@@ -367,7 +367,7 @@
 <li><code>Destination</code>がトランザクションの送信者である場合、トランザクションは結果コード<code>temREDUNDANT</code>で失敗します。</li>
 <li><code>Destination</code><a href="accounts.html">アカウント</a>がレジャーに存在していない場合、トランザクションは結果コード<code>tecNO_DST</code>で失敗します。</li>
 <li><code>Destination</code>アカウントでRequireDestフラグが有効であるが、トランザクションに<code>DestinationTag</code>フィールドが含まれていない場合、トランザクションは結果コード<code>tecDST_TAG_NEEDED</code>で失敗します。</li>
-<li><code>SendMax</code>に<a href="freezes.html">凍結</a>されている発行済み通貨が指定されている場合、トランザクションは結果コード<code>tecFROZEN</code>で失敗します。</li>
+<li><code>SendMax</code>に<a href="freezes.html">凍結</a>されているトークンが指定されている場合、トランザクションは結果コード<code>tecFROZEN</code>で失敗します。</li>
 <li>トランザクションの<code>Expiration</code>が過去の日時である場合、トランザクションは結果コード<code>tecEXPIRED</code>で失敗します。</li>
 <li>Checkの追加後に送金元が<a href="reserves.html#所有者準備金">所有者準備金</a>条件を満たすのに十分なXRPを保有していない場合、トランザクションは結果コード<code>tecINSUFFICIENT_RESERVE</code>で失敗します。</li>
 <li>Checkの送金元または送金先のいずれかがレジャーでこれ以上のオブジェクトを所有できない場合、トランザクションは結果コード<code>tecDIR_FULL</code>で失敗します。</li>
@@ -881,7 +881,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       

@@ -562,7 +562,7 @@
 <td style="text-align: left;">6</td>
 <td style="text-align: left;">64または384</td>
 <td style="text-align: left;">いいえ</td>
-<td>XRPまたは発行済み通貨の額。フィールドの長さは、XRPの場合は64ビット、発行済み通貨の場合は384ビット（64+160+160）です。</td>
+<td>XRPまたはトークンの金額。フィールドの長さは、XRPの場合は64ビット、トークンの場合は384ビット（64+160+160）です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#ブロブフィールド">Blob</a></td>
@@ -691,23 +691,23 @@
 <p>スタンドアロンフィールドとして表示されるAccountID（<code>Account</code>や<code>Destination</code>など）の長さは固定長の160ビットですが、<a href="#長さプレフィクスを付加する">長さプレフィクスが付加</a>されます。その結果、これらのフィールドの長さインディケーターは常に<code>0x14</code>バイトになります。特殊フィールドの子として示されるAccountID（<a href="#amountフィールド">Amount <code>issuer</code></a>、<a href="#pathsetフィールド">PathSet <code>account</code></a>など）では長さプレフィクスは付加 <em>されません</em> 。</p>
 <h3 id="amountフィールド">Amountフィールド<a aria-hidden="true" class="hover_anchor" href="#amountフィールド"><i class="fa fa-link"></i></a></h3>
 <!-- TODO: update translation based on the English version, which moves in content from the Currency Formats page -->
-<p>「Amount」タイプは、通貨（XRPまたは発行済み通貨）の額を表す特殊なフィールドタイプです。このタイプは2つのサブタイプで構成されます。</p>
+<p>「Amount」タイプは、通貨（XRPまたはトークン）の額を表す特殊なフィールドタイプです。このタイプは2つのサブタイプで構成されます。</p>
 <ul>
 <li><strong>XRP</strong></li>
 </ul>
 <p>XRPは64ビット符号なし整数（ビッグエンディアンオーダー）としてシリアル化されます。ただし、XRPであることを示すため最上位ビットが常に0であり、プラスの値であることを示す最上位から2番目のビットは<code>1</code>となります。XRPの最大額（10<sup>17</sup> drop）には57ビットが必要であるため、XRPのシリアル化フォーマットを計算するには、標準の64ビット符号なし整数をとり、<code>0x4000000000000000</code>のビットOR演算を行います。</p>
 <ul>
-<li><strong>発行済み通貨</strong></li>
+<li><strong>トークン</strong></li>
 </ul>
-<p>発行済み通貨は以下の3つのセグメントで構成され、セグメントの順序は以下のとおりです。</p>
+<p>トークンは以下の3つのセグメントで構成され、セグメントの順序は以下のとおりです。</p>
 <ol>
-<li><a href="currency-formats.html#発行済み通貨の計算">内部通貨フォーマット</a>の額を示す64ビット。1番目のビットは、これがXRPではないことを示す<code>1</code>です。</li>
+<li><a href="currency-formats.html#トークンの計算">内部通貨フォーマット</a>の額を示す64ビット。1番目のビットは、これがXRPではないことを示す<code>1</code>です。</li>
 <li><a href="currency-formats.html#通貨コード">通貨コード</a>を示す160ビット。標準APIでは、<a href="currency-formats.html#標準通貨コード">標準通貨コードフォーマット</a>を使用して「USD」などの3文字のコードが160ビットのコードに変換されますが、160ビットのカスタムコードも使用できます。</li>
 <li>イシュアーのアカウントIDを示す160ビット。（関連項目: <a href="addresses.html#アドレスのエンコード">アカウントアドレスエンコード</a></li>
 </ol>
-<p>1番目のビットに基づいて2つのサブタイプのいずれに該当するかを確認できます。<code>0</code>の場合はXRP、<code>1</code>の場合は発行済み通貨です。</p>
-<p>以下の図に、XRPの額と発行済み通貨の額のシリアル化フォーマットを示します。</p>
-<p><img alt="「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成される発行済み通貨の額。" src="img/serialization-amount.ja.png"/></p>
+<p>1番目のビットに基づいて2つのサブタイプのいずれに該当するかを確認できます。<code>0</code>の場合はXRP、<code>1</code>の場合はトークンです。</p>
+<p>以下の図に、XRPの額とトークン額のシリアル化フォーマットを示します。</p>
+<p><img alt="「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。" src="img/serialization-amount.ja.png"/></p>
 <h3 id="配列フィールド">配列フィールド<a aria-hidden="true" class="hover_anchor" href="#配列フィールド"><i class="fa fa-link"></i></a></h3>
 <p>一部のトランザクションフィールド（<a href="signerlistset.html">SignerListSetトランザクション</a>の<code>SignerEntries</code>や<a href="transaction-common-fields.html#memosフィールド"><code>Memos</code></a>など）はオブジェクトの配列です（「STArray」タイプと呼ばれます）。</p>
 <p>配列には、さまざまな<a href="#オブジェクトフィールド">オブジェクトフィールド</a>がそのネイティブバイナリフォーマットで特定の順序で含まれています。JSONでは、各配列メンバーが1つのフィールド（メンバーオブジェクトフィールドの名前）を含むJSON「ラッパー」オブジェクトです。そのフィールドの値は（「内部」）オブジェクト自体です。</p>
@@ -1298,7 +1298,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       

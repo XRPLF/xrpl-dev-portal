@@ -355,7 +355,7 @@
 <tr>
 <td style="text-align: left;"><code>SendMax</code></td>
 <td style="text-align: left;">文字列またはオブジェクト（額）</td>
-<td style="text-align: left;">Checkが現金化されるときに送金元から引き出される最大額。XRPの場合、XRPのdrop数を示す文字列を使用します。発行済み通貨の場合、<code>currency</code>、<code>issuer</code>、および<code>value</code> フィールドを含むオブジェクトを使用します。詳細は、<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。受取人がXRP以外の通貨で正確な額のCheckを換金できるようにし、かつ<a href="transfer-fees.html">送金手数料</a>を含めるには、送金手数料分の追加パーセンテージを必ず指定してください。（たとえば受取人が送金手数料2%でCheckをイシュアーからの100 CADに現金化できるようにするには、<code>SendMax</code>をイシュアーからの102 CADに設定する必要があります。）</td>
+<td style="text-align: left;">Checkが現金化されるときに送金元から引き出される最大額。XRPの場合、XRPのdrop数を示す文字列を使用します。トークンの場合、<code>currency</code>、<code>issuer</code>、および<code>value</code> フィールドを含むオブジェクトを使用します。詳細は、<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。受取人がXRP以外の通貨で正確な額のCheckを換金できるようにし、かつ<a href="transfer-fees.html">送金手数料</a>を含めるには、送金手数料分の追加パーセンテージを必ず指定してください。（たとえば受取人が送金手数料2%でCheckをイシュアーからの100 CADに現金化できるようにするには、<code>SendMax</code>をイシュアーからの102 CADに設定する必要があります。）</td>
 </tr>
 </tbody>
 </table>
@@ -1411,7 +1411,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       

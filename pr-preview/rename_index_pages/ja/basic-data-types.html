@@ -270,7 +270,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#アカウントシーケンス">アカウントシーケンス</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#レジャーインデックス">レジャーインデックス</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#レジャーの指定">レジャーの指定</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#通貨">通貨</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#通貨額の指定">通貨額の指定</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#通貨コード">通貨コード</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#時間の指定">時間の指定</a></li>
@@ -294,6 +293,9 @@
     <li class="active breadcrumb-item">基本的なデータ型</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="基本的なデータ型">基本的なデータ型<a aria-hidden="true" class="hover_anchor" href="#基本的なデータ型"><i class="fa fa-link"></i></a></h1>
 <p>さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。</p>
@@ -446,43 +448,6 @@
 <p>上記3つのフォーマットすべてを受け入れる、廃止予定の<code>ledger</code>パラメーターもあります。このパラメーターは使用<em>しないでください</em>。今後予告なしに廃止される可能性があります。</p>
 <p>レジャーを指定しない場合、デフォルトで<code>current</code>（処理中）レジャーが選択されます。レジャーを指定するフィールドを複数指定した場合、廃止予定の<code>ledger</code>フィールドが最初に使用され（存在する場合）、<code>ledger_hash</code>に戻ります。<code>ledger_index</code>フィールドは、他の2つのフィールドがいずれも存在しない場合を除いて無視されます。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> レジャーを指定する際に上記のデフォルトの動作に頼らないでください。変更される場合があります。可能であれば、常に要求にてレジャーバージョンを指定してください。</p>
-<h2 id="通貨">通貨<a aria-hidden="true" class="hover_anchor" href="#通貨"><i class="fa fa-link"></i></a></h2>
-<p>XRP Ledgerには2種類の通貨があります。XRPとその他のあらゆる通貨です。この2つには多くの相違点があります。</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;"><code>XRP</code></th>
-<th style="text-align: left;">発行済み通貨</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">発行者なし</td>
-<td style="text-align: left;">必ずXRP Ledgerアカウントが発行</td>
-</tr>
-<tr>
-<td style="text-align: left;">文字列として指定</td>
-<td style="text-align: left;">オブジェクトとして指定</td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="accountroot.html">アカウント</a>内で追跡</td>
-<td style="text-align: left;"><a href="ripplestate.html">トラストライン</a>内で追跡</td>
-</tr>
-<tr>
-<td style="text-align: left;">作成は一切不可、消却のみ可能</td>
-<td style="text-align: left;">自由に発行または清算可能</td>
-</tr>
-<tr>
-<td style="text-align: left;">最大値: <code>100000000000</code>（<code>1e11</code>）</td>
-<td style="text-align: left;">最大値: <code>9999999999999999e80</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><a href="#xrp">「drop」</a>（0.000001 XRP）に近い精度</td>
-<td style="text-align: left;">10進15桁の精度で非ゼロの最少絶対値は <code>1000000000000000e-96</code></td>
-</tr>
-</tbody>
-</table>
-<p class="devportal-callout 注意"><strong>注意:</strong> XRP Ledgerでは、通常の浮動小数点数とは異なる精度の小数点計算を使用するため、通貨額は常に文字列として表されます。</p>
 <h3 id="通貨額の指定">通貨額の指定<a aria-hidden="true" class="hover_anchor" href="#通貨額の指定"><i class="fa fa-link"></i></a></h3>
 <p>一部のAPIメソッドでは、通貨額を指定する必要があります。取扱通貨がネットワーク固有のXRP通貨であるかその他の通貨単位（<em>イシュアンス</em>）であるかによって、指定方法が大きく異なります。</p>
 <h4 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h4>
@@ -1051,7 +1016,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
