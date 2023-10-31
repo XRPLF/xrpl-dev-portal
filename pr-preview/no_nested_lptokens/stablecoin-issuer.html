@@ -1,0 +1,3548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Stablecoin Issuer - XRPL.org</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Stablecoin Issuer | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/stablecoin-issuer.html" />
+    <meta property="og:description" content="Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger." />
+    <meta name="description" content="Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger." />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="en" />
+    <link rel="alternate" href="https://xrpl.org/stablecoin-issuer.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/stablecoin-issuer.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/stablecoin-issuer.html" hreflang="x-default" /><!-- Default: US english -->
+
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
+
+    <!-- jQuery -->
+    <script src="assets/vendor/jquery-3.7.1.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script type="application/javascript">
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      "event": "page_info",
+      "page_type": "Document",
+      "page_group": "Docs",
+      "page_funnel": "Other",
+      "page_labels": ['Tokens']
+    })
+    </script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
+
+
+    <!-- Stylesheet -->
+    <link href="assets/css/devportal2022-v25.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" />
+
+
+    <!-- Theme switch -->
+    <script src="assets/js/theme-switch.js"></script>
+
+
+
+    <!-- expandable code samples -->
+    <script src="assets/js/expandcode.js"></script>
+    <!-- multi-code selection tabs -->
+    <script src="assets/js/multicodetab.js"></script>
+    <!-- copy code button -->
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".multicode").minitabs();
+            make_code_expandable();
+            new ClipboardJS('.clipboard-btn');
+        });
+    </script>
+
+
+</head>
+
+<body class="xrp-ledger-dev-portal sidebar-primary lang-en " data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+<nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
+  <a href="/" class="navbar-brand"><img class="logo"  height="40" alt="XRPL.org" /></a>
+  <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#top-main-nav" aria-controls="navbarHolder" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"><div></div></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <ul class="nav navbar-nav" id="topnav-pages">
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="xrp-ledger-overview.html" id="topnav_xrp-ledger-overviewhtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>About</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_xrp-ledger-overviewhtml" id="topnav_dd_xrp-ledger-overviewhtml">
+          <div class="navcol col-for-xrp-ledger">
+            <h5 class="dropdown-item">XRP Ledger</h5>
+            <a class="dropdown-item " href="xrp-ledger-overview.html">XRPL Overview</a>
+            <a class="dropdown-item" href="uses.html">Use Cases & Featured Projects</a>
+            <a class="dropdown-item" href="history.html">History</a>
+          </div><!--./col-->
+          <div class="navcol col-for-xrp">
+            <h5 class="dropdown-item">XRP</h5>
+            <a class="dropdown-item" href="xrp-overview.html">XRP Overview</a>
+          </div><!--./col-->
+          <div class="navcol col-for-sustainability">
+            <h5 class="dropdown-item">Sustainability</h5>
+            <a class="dropdown-item" href="impact.html">Impact</a>
+          </div><!--./col-->
+          <div class="navcol col-for-about">
+            <h5 class="dropdown-item">About</h5>
+            <a class="dropdown-item external-link" href="https://foundation.xrpl.org/" target="_blank">XRPL Foundation</a>
+            <a class="dropdown-item" href="faq.html">FAQ</a>
+            <a class="dropdown-item" href="privacy-policy.html">Privacy Policy</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="docs.html" id="topnav_docshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Docs</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_docshtml" id="topnav_dd_docshtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-documentation" href="docs.html">
+            <img id="top-nav-hero-docs" alt="Documentation icon" />
+            <div class="dropdown-hero-text">
+              <h4>Documentation</h4>
+              <p>Dive into XRP Ledger technology and start integrating.</p>
+            </div>
+          </a>
+          <div class="navcol col-for-article-types">
+            <h5 class="dropdown-item">Article Types</h5>
+            <a class="dropdown-item" href="introduction.html">Introduction</a>
+            <a class="dropdown-item" href="use-cases.html">Use Cases</a>
+            <a class="dropdown-item" href="concepts.html">Concepts</a>
+            <a class="dropdown-item" href="tutorials.html">Tutorials</a>
+            <a class="dropdown-item" href="references.html">References</a>
+            <a class="dropdown-item" href="infrastructure.html">Infrastructure</a>
+          </div><!--./col-->
+          <div class="navcol col-for-get-started">
+            <h5 class="dropdown-item">Get Started</h5>
+            <a class="dropdown-item" href="get-started-using-python.html">Python</a>
+            <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
+            <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
+          </div><!--./col-->
+          <div class="navcol col-for-popular-pages">
+            <h5 class="dropdown-item">Popular Pages</h5>
+            <a class="dropdown-item" href="send-xrp.html">Send XRP</a>
+            <a class="dropdown-item" href="reserves.html">Reserves</a>
+            <a class="dropdown-item" href="xrp-testnet-faucet.html">XRP Faucets</a>
+            <a class="dropdown-item" href="run-rippled-as-a-validator.html">Join UNL</a>
+            <a class="dropdown-item" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="public-api-methods.html">API Methods</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="resources.html" id="topnav_resourceshtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Resources</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_resourceshtml" id="topnav_dd_resourceshtml">
+          <div class="navcol col-for-development">
+            <h5 class="dropdown-item">Development</h5>
+            <a class="dropdown-item" href="code-samples.html">Code Samples</a>
+            <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
+            <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+          </div><!--./col-->
+          <div class="navcol col-for-current-status">
+            <h5 class="dropdown-item">Current Status</h5>
+            <a class="dropdown-item external-link" href="https://livenet.xrpl.org/" target="_blank">Ledger Explorer</a>
+            <a class="dropdown-item" href="known-amendments.html">Known Amendments</a>
+          </div><!--./col-->
+          <div class="navcol col-for-join-in">
+            <h5 class="dropdown-item">Join In</h5>
+            <a class="dropdown-item" href="contribute-code.html">Contribute Code</a>
+            <a class="dropdown-item" href="contribute-documentation.html">Contribute Documentation</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+            <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="contribute.html" id="topnav_contributehtml" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Community</span></a>
+        <div class="dropdown-menu" aria-labelledby="topnav_contributehtml" id="topnav_dd_contributehtml">
+          <a class="dropdown-item dropdown-hero" id="dropdown-hero-for-contribute-to-the-xrpl-community" href="contribute.html">
+            <img id="top-nav-hero-contribute" alt="Contribute to the XRPL Community icon" />
+            <div class="dropdown-hero-text">
+              <h4>Contribute to the XRPL Community</h4>
+              <p>Join the conversation</p>
+            </div>
+          </a>
+          <div class="navcol col-for-ungrouped">
+            <a class="dropdown-item" href="events.html">Events</a>
+            <a class="dropdown-item" href="ambassadors.html">Ambassadors</a>
+            <a class="dropdown-item" href="developer-funding.html">Developer Funding</a>
+            <a class="dropdown-item external-link" href="https://jobs.xrpl.org/" target="_blank">XRPL Jobs</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
+            <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
+            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
+            <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
+          </div><!--./col-->
+        </div><!--/.dropdown-menu-->
+      </li>
+
+    </ul><!-- /.navbar-nav -->
+
+    <div class="nav-item search" id="topnav-search">
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-inline">
+          <div class="input-group" id="topsearchboxcontainer">
+            <label class="input-group-prepend" for="topsearchbox"><i class="fa fa-search input-group-text"></i><span class="sr-only">Search</span></label>
+            <input id="topsearchbox" name="q" type="text" class="form-control searchinput" placeholder="Search site...">
+          </div><!--/.input-group-->
+        </div>
+      </form>
+    </div><!--/#topnav-search-->
+
+    <div class="nav-item" id="topnav-language">
+      <div class="dropdown">
+        <a class="nav-link dropdown-toggle with-caret" id="language_selector_header_btn" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          English
+          <span class="chevron"><span></span><span></span></span>
+        </a>
+        <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
+          <hr />
+          <a class="dropdown-item" href="/ja/stablecoin-issuer.html">
+            日本語
+          </a>
+          <hr />
+        </div><!--/.dropdown-menu-->
+      </div><!--/.dropdown-->
+    </div><!--/.language-selector-->
+
+    <div class="nav-item" id="topnav-theme">
+      <form class="form-inline">
+        <div class="custom-control custom-theme-toggle form-inline-item" title="" data-toggle="tooltip" data-placement="left" data-original-title="Toggle Dark Mode">
+          <input type="checkbox" class="custom-control-input" id="css-toggle-btn">
+          <label class="custom-control-label" for="css-toggle-btn"><span class="d-lg-none">Light/Dark Theme</span></label>
+        </div>
+      </form>
+    </div><!--/#topnav-theme-->
+  </div><!--/#top-main-nav-->
+</nav>
+  <div class="container-fluid" role="document" id="main_content_wrapper">
+    <div class="row">
+      <!-- Right sidebar first so it's at the beginning for mobile layouts -->
+      <aside class="right-sidebar col-lg-3 order-lg-4" role="complementary">
+  <a class="with-caret expander collapsed d-lg-none" id="toc-expander" role="button" data-toggle="collapse" data-target="#page-toc-wrapper" aria-expanded="false">
+    Page Toolbar
+    <span class="chevron"><span></span><span></span></span>
+  </a>
+  <div id="page-toc-wrapper" class="collapse d-lg-block">
+<div class="github-edit-wrap">
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/no_nested_lptokens/content/use-cases/tokenization/stablecoin-issuer.md?pr=/XRPLF/xrpl-dev-portal/pull/2245" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+</div><!-- /.github-edit --><div class="labels-wrap">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+      <span class="label label-tokens">Tokens</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+    </li>
+  </ul>
+</div><!--/.labels-wrap-->
+    <div class="toc-header">
+      <h4>In this document</h4>
+    </div>
+    <ul class="page-toc nav flex-column" role="directory">
+        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-issuer">Stablecoin Issuer</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#background-information">Background Information</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#trust-lines-and-tokens">Trust Lines and Tokens</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#xrp">XRP</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#liquidity-and-trading">Liquidity and Trading</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#suggested-business-practices">Suggested Business Practices</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#hot-and-cold-wallets">Hot and Cold Wallets</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#fees-and-revenue-sources">Fees and Revenue Sources</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#choosing-fee-rates">Choosing Fee Rates</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#compliance-guidelines">Compliance Guidelines</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#know-your-customer-kyc">Know Your Customer (KYC)</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft">Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT)</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#source-of-funds">Source of Funds</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#suspicious-activity-reporting">Suspicious Activity Reporting</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#travel-rule">Travel Rule</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fee-disclosure-and-tracing-funds">Fee Disclosure and Tracing Funds</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#office-of-foreign-assets-control-ofac">Office of Foreign Assets Control (OFAC)</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#guidance-on-virtual-currency-and-money-service-business">Guidance on Virtual Currency and Money Service Business</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#xrp-ledger-integration">XRP Ledger Integration</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#before-integration">Before Integration</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#sending-into-the-xrp-ledger">Sending into the XRP Ledger</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#sending-from-xrp-ledger">Sending from XRP Ledger</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#precautions">Precautions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#trading-on-the-xrp-ledger">Trading on the XRP Ledger</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#freeze">Freeze</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#authorized-trust-lines">Authorized Trust Lines</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#source-and-destination-tags">Source and Destination Tags</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#technical-details">Technical Details</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#infrastructure">Infrastructure</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#apis-and-middleware">APIs and Middleware</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#tool-security">Tool Security</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#issuer-setup">Issuer Setup</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#default-ripple">Default Ripple</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#deposit-authorization">Deposit Authorization</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#disallow-xrp">Disallow XRP</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#require-auth">Require Auth</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#tick-size">Tick Size</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#transfer-fees">Transfer Fees</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#robustly-monitoring-for-payments">Robustly Monitoring for Payments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#sending-payments-to-customers">Sending Payments to Customers</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#bouncing-payments">Bouncing Payments</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledgertoml-file">xrp-ledger.toml File</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+      </ul>
+  </div>
+      </aside>
+
+      <!-- main column -->
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+<nav class="breadcrumbs-wrap" aria-label="breadcrumb">
+  <ul class="breadcrumb">
+    
+
+
+
+
+    <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
+    <li class="active breadcrumb-item"><a href="use-cases.html">Use Cases</a></li>
+    <li class="active breadcrumb-item"><a href="tokenization.html">Tokenization</a></li>
+    <li class="active breadcrumb-item">Stablecoin Issuer</li>
+  </ul>
+</nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="content">
+        <h1 id="stablecoin-issuer">Stablecoin Issuer<a aria-hidden="true" class="hover_anchor" href="#stablecoin-issuer"><i class="fa fa-link"></i></a></h1>
+<p><strong>Stablecoin</strong> are <a href="tokens.html">tokens</a> that are backed by assets in the outside world. Stablecoins allow users to transact in familiar currencies, and provide a convenient way to get funds into and out of the blockchain. In exchange for providing these services, stablecoin issuers can earn revenue in various ways, such as fees on withdrawals or transfers of the stablecoin.</p>
+<p>While anyone can issue a token with any currency code in the XRP Ledger, stablecoins' value comes from the promise that they can be redeemed for the corresponding assets. Issuing a stablecoin may also involve regulatory obligations, which vary by jurisdiction. For these reasons, issuing a stablecoin generally requires a reputable business.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Stablecoin issuers on the XRP Ledger were formerly called "gateways".</p>
+<p>This article provides information you should know before issuing a stablecoin, summarizes the choices involved in setting up a stablecoin issuer, and provides resources for implementing the technical integration with the XRP Ledger.</p>
+<h2 id="background-information">Background Information<a aria-hidden="true" class="hover_anchor" href="#background-information"><i class="fa fa-link"></i></a></h2>
+<h3 id="trust-lines-and-tokens">Trust Lines and Tokens<a aria-hidden="true" class="hover_anchor" href="#trust-lines-and-tokens"><i class="fa fa-link"></i></a></h3>
+<p>All assets in the XRP Ledger, except for the native cryptocurrency XRP, are represented as <em>tokens</em>, which are tied to a specific issuer who defines their meaning. The XRP Ledger has a system of directional accounting relationships, called <em>trust lines</em>, to make sure that users can only hold and receive the tokens they want.</p>
+<p>Tokens that are backed by funds in some outside system are sometimes called <em>stablecoins</em>. This includes tokens backed by fiat currency in a bank account, by cryptocurrencies on another blockchain, or other types of assets and forms of value. The term "stablecoin" comes from the idea that the exchange rate between the token and the asset it represents should be "stable" at 1:1 (minus fees).</p>
+<p>For more information, see <a href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>.</p>
+<h3 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h3>
+<p><strong>XRP</strong> is the native cryptocurrency of the XRP Ledger. XRP can be sent directly from any XRP Ledger address to any other. This helps make XRP a convenient bridge currency.</p>
+<p>Token issuers do not need to accumulate or exchange XRP. They must only hold a small balance of XRP to meet the reserve requirement and pay the cost of sending transactions through the network. The XRP equivalent of $10 USD should be enough for at least one year of transaction costs for a busy issuer.</p>
+<p>For more information, see <a href="what-is-xrp.html">What is XRP?</a>, <a href="reserves.html">Reserves</a>, and <a href="transaction-cost.html">Transaction Cost</a></p>
+<h3 id="liquidity-and-trading">Liquidity and Trading<a aria-hidden="true" class="hover_anchor" href="#liquidity-and-trading"><i class="fa fa-link"></i></a></h3>
+<p>The XRP Ledger contains a decentralized exchange, where any user can place and fulfill bids to exchange XRP and tokens in any combination. The decentralized exchange also provides the liquidity that makes atomic <a href="cross-currency-payments.html">cross-currency payments</a> possible.</p>
+<p>Stablecoin issuers aren't required to use the decentralized exchange directly, but all tokens are automatically available for trading. If a token is widely used, users should naturally trade it among themselves, creating liquidity to other popular assets. An issuer <em>may</em> want to provide liquidity to XRP or other popular tokens at a baseline rate, especially when their token is new. If a stablecoin issuer does provide liquidity, a best practice is to <strong>use different addresses for trading and for issuing.</strong></p>
+<p>For more information on the decentralized exchange, see <a href="decentralized-exchange.html">Decentralized Exchange</a>.</p>
+<h2 id="suggested-business-practices">Suggested Business Practices<a aria-hidden="true" class="hover_anchor" href="#suggested-business-practices"><i class="fa fa-link"></i></a></h2>
+<p>The value of a stablecoin issuer's tokens in the XRP Ledger comes directly from the trust that customers can redeem the tokens when needed. To reduce the risk of business interruptions, you should follow these best practices:</p>
+<ul>
+<li>Use separate <a href="account-types.html">Issuing and Operational Addresses</a> to limit your risk profile on the network.</li>
+<li>Follow anti-money-laundering regulations for your jurisdiction, such as the <a class="external-link" href="http://en.wikipedia.org/wiki/Bank_Secrecy_Act" target="_blank">Bank Secrecy Act <i aria-hidden="true" class="fa fa-external-link"></i></a>. This usually includes requirements to collect <a class="external-link" href="http://en.wikipedia.org/wiki/Know_your_customer" target="_blank">"Know-Your-Customer" (KYC) information <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li>Complete the XRP Ledger Foundation's <a class="external-link" href="https://foundation.xrpl.org/token-assessment-framework/" target="_blank">token issuer self-assessment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li>Publicize all your policies and fees.</li>
+<li>Provide an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a> with domain verification so client applications can display relevant details about you.</li>
+</ul>
+<h3 id="hot-and-cold-wallets">Hot and Cold Wallets<a aria-hidden="true" class="hover_anchor" href="#hot-and-cold-wallets"><i class="fa fa-link"></i></a></h3>
+<p>In the XRP Ledger, financial institutions typically use multiple XRP Ledger addresses to minimize the risk associated with a compromised secret key. The industry standard is to separate roles as follows:</p>
+<ul>
+<li>One <strong>issuing address</strong>, also known as a "cold wallet." This address is the hub of the financial institution's accounting relationships in the ledger, but sends as few transactions as possible. <!-- STYLE_OVERRIDE: cold wallet, wallet --></li>
+<li>One or more <strong>operational addresses</strong>, also known as "hot wallets." Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners. <!-- STYLE_OVERRIDE: hot wallet, wallet --></li>
+<li>Optional <strong>standby addresses</strong>, also known as "warm wallets." Trusted human operators use these addresses to transfer money to the operational addresses. <!-- STYLE_OVERRIDE: warm wallet, wallet --></li>
+</ul>
+<p>Main article: <a href="account-types.html">Issuing and Operational Addresses</a></p>
+<h2 id="fees-and-revenue-sources">Fees and Revenue Sources<a aria-hidden="true" class="hover_anchor" href="#fees-and-revenue-sources"><i class="fa fa-link"></i></a></h2>
+<p>A stablecoin issuer can earn revenue in a variety of ways, including:</p>
+<ul>
+<li>Withdrawal or Deposit fees. The issuer can charge a small fee (such as 1%) for the service of moving money into or out of the XRP Ledger. This fee isn't assessed on the XRP Ledger, but in the issuer's own systems when deciding how much to issue or credit users.</li>
+<li>Transfer fees. The issuer can set a percentage fee to charge when users transfer the stablecoin within the XRP Ledger. This amount is debited from the XRP Ledger whenever users transact, decreasing the total obligation the stablecoin issuer owes to its users in the ledger without decreasing the amount of assets the issuer holds outside of the ledger.</li>
+<li>Indirect revenue from value added. Stablecoins provide convenient functionality that can ease the adoption of other, adjacent services.</li>
+<li>Interest on collateral. The issuer can hold the assets backing the stablecoin in an interest-earning account. Of course, they must make sure that they can always access enough funds to serve customer withdrawals.</li>
+<li>Financial exchange. The business can buy and sell its own stablecoins in the decentralized exchange, providing liquidity to cross-currency payments and possibly making a profit. (As with all financial exchange, profits are not guaranteed.)</li>
+</ul>
+<h3 id="choosing-fee-rates">Choosing Fee Rates<a aria-hidden="true" class="hover_anchor" href="#choosing-fee-rates"><i class="fa fa-link"></i></a></h3>
+<p>Fees on tokens are optional. Higher fees earn more revenue when those tokens are used. On the other hand, high fees discourage customers from using your services. Consider the fees that are charged by other issuers, especially others with tokens backed by the same type of assets, as well as traditional payment systems outside of the XRP Ledger, such as wire fees. Choosing the right fee structure is a matter of balancing your pricing with what the market is willing to pay.</p>
+<h2 id="compliance-guidelines">Compliance Guidelines<a aria-hidden="true" class="hover_anchor" href="#compliance-guidelines"><i class="fa fa-link"></i></a></h2>
+<p>Token issuers are responsible for complying with local regulations and reporting to the appropriate agencies. Regulations vary by country and state, but may include the reporting and compliance requirements described in the following sections. Before issuing a token, you should seek professional legal advice on the requirements for your jurisdiction and use case. The following resources may be useful background reading.</p>
+<h3 id="know-your-customer-kyc">Know Your Customer (KYC)<a aria-hidden="true" class="hover_anchor" href="#know-your-customer-kyc"><i class="fa fa-link"></i></a></h3>
+<p>Know Your Customer (KYC) refers to due diligence activities conducted by a financial institution to determine and verify the identity of its customers to prevent use of the institution for criminal activity. Criminal activity in financial terms may include money laundering, terrorist financing, financial fraud, and identity theft. Customers may be individuals, intermediaries, or businesses.</p>
+<p>The KYC process generally aims to:</p>
+<ul>
+<li>
+<p>Identify the customer (and, in the case of organizations and businesses, any beneficial owners)</p>
+</li>
+<li>
+<p>Understand the purpose and intended nature of the business relationship</p>
+</li>
+<li>
+<p>Understand the expected transaction activity.</p>
+</li>
+</ul>
+<p>KYC is critical for financial institutions and related businesses to mitigate risk, especially legal and reputational risk. Having an inadequate or nonexistent KYC program may result in civil and criminal penalties for the institution or individual employees.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/Introduction/01" target="_blank">(USA) Bank Secrecy Act / Anti-Money Laundering Examination Manual <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+<li>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">The Non-US Standard on KYC set by the Financial Action Task Force (FATF) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+</ul>
+<!-- SPELLING_IGNORE: ffiec -->
+<h3 id="anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft">Anti-Money Laundering (AML) and Combating the Financing of Terrorism (CFT)<a aria-hidden="true" class="hover_anchor" href="#anti-money-laundering-aml-and-combating-the-financing-of-terrorism-cft"><i class="fa fa-link"></i></a></h3>
+<p>Money laundering is the process of moving illegal funds by disguising the source, nature or ownership so that funds can be legally accessed or distributed via legitimate financial channels and credible institutions. In short, it is converting “dirty money” into “clean money.” Anti-Money Laundering (AML) refers to the laws and procedures designed to stop money laundering from occurring.</p>
+<p>Terrorist financing is the solicitation, collection, or provision of funds to organizations engaged in terrorist activity or organizations that support terrorism and its proliferation. Combating the Financing of Terrorism (CFT) refers to the process of identifying, reporting, and blocking flows of funds used to finance terrorism.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">“International Standards on Combating Money Laundering and the Financing of Terrorism &amp; Proliferation.” FATF, 2012 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+<li>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/methodsandtrends/documents/virtual-currency-definitions-aml-cft-risk.html" target="_blank">“Virtual Currencies: Key Definitions and Potential AML/CFT Risks.” FATF, 2014 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+</ul>
+<!-- SPELLING_IGNORE: fatf, cft -->
+<h3 id="source-of-funds">Source of Funds<a aria-hidden="true" class="hover_anchor" href="#source-of-funds"><i class="fa fa-link"></i></a></h3>
+<p>To prevent illicit funds from passing through their systems, financial institutions must be able to determine within reason if the source of a customer’s funds is linked to criminal activity.</p>
+<p>Determining the exact source of funds for every customer may not be administratively feasible. As a result, some regulatory authorities may not provide specific regulation or guidance for all accounts. In specific cases, however, authorities may require financial institutions to identify and report the source of funds. Guidance by the FATF recommends that where the risks of money laundering or terrorist financing are higher (commonly referred to as a “risk-based approach”), financial institutions conduct enhanced due diligence, including but not limited to determining the customer’s source of funds.</p>
+<!-- STYLE_OVERRIDE: feasible -->
+<h3 id="suspicious-activity-reporting">Suspicious Activity Reporting<a aria-hidden="true" class="hover_anchor" href="#suspicious-activity-reporting"><i class="fa fa-link"></i></a></h3>
+<p>If a financial institution suspects that funds may be related to criminal activity, the institution must file a Suspicious Activity Report (SAR) with the appropriate regulatory authority. Failure to report suspicious activity may result in in penalties for the institution.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a class="external-link" href="https://bsaaml.ffiec.gov/manual/RegulatoryRequirements/04_ep" target="_blank">Suspicious Activity Reporting Overview (USA FFIEC) <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+<li>
+<p><a class="external-link" href="http://www.fatf-gafi.org/publications/fatfrecommendations/documents/fatf-recommendations.html" target="_blank">FATF Recommendation 16: Reporting of suspicious transactions and compliance <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+</ul>
+<h3 id="travel-rule">Travel Rule<a aria-hidden="true" class="hover_anchor" href="#travel-rule"><i class="fa fa-link"></i></a></h3>
+<p>The Travel Rule is a Bank Secrecy Act (BSA) rule requiring funds-transmitting financial institutions to forward certain information to the next financial institution if the funds transmittal equals or exceeds the USD equivalent of $3,000. The following information must be included in the transmittal order:</p>
+<ul>
+<li>The name of the transmittor,</li>
+<li>The account number of the transmittor, if used,</li>
+<li>The address of the transmittor,</li>
+<li>The identity of the transmittor's financial institution,</li>
+<li>The amount of the transmittal order,</li>
+<li>The execution date of the transmittal order, and</li>
+<li>The identity of the recipient's financial institution.</li>
+</ul>
+<!-- SPELLING_IGNORE: transmittor -->
+<p>See also:</p>
+<ul>
+<li><a class="external-link" href="https://www.fincen.gov/resources/statutes-regulations/guidance/funds-travel-regulations-questions-answers" target="_blank">Funds “Travel” Regulations: Questions &amp; Answers  <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+<h3 id="fee-disclosure-and-tracing-funds">Fee Disclosure and Tracing Funds<a aria-hidden="true" class="hover_anchor" href="#fee-disclosure-and-tracing-funds"><i class="fa fa-link"></i></a></h3>
+<ul>
+<li>
+<p>In the United States, Dodd Frank 1073 Electronic Fund Transfer Act (Regulation E) requires banks to provide information on cost and delivery terms for international payments originating in the US including exchange rate, fees, and the amount to be received by the designated recipient in the foreign country. "Pre-payment disclosure" is provided to a consumer when requesting an international electronic payment and “receipt disclosure” is provided to a consumer at the time consumer authorizes the transfer.</p>
+<p>See also:</p>
+<ul>
+<li><a class="external-link" href="https://www.consumerfinance.gov/rules-policy/final-rules/electronic-fund-transfers-regulation-e/#rule" target="_blank">The Consumer Financial Protection Bureau description of the regulation and extensions for banks <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+</li>
+<li>
+<p>In the European Union, EU Funds Transfer Regulation requires that the originator’s bank, the beneficiary’s bank, and any intermediary banks include certain details of the payer and payee in transaction details to detect, investigate, and prevent money laundering and terrorist financing.</p>
+<p>See also:</p>
+<ul>
+<li>
+<p><a class="external-link" href="http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2006:345:0001:0009:EN:PDF" target="_blank">EU Regulation (EC) No 1781/2006 description <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+<li>
+<p><a class="external-link" href="http://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32015R0847" target="_blank">Effective June 26, 2017: Regulation 2015/847 on information accompanying transfers of funds <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="office-of-foreign-assets-control-ofac">Office of Foreign Assets Control (OFAC)<a aria-hidden="true" class="hover_anchor" href="#office-of-foreign-assets-control-ofac"><i class="fa fa-link"></i></a></h3>
+<p>The Office of Foreign Assets Control (OFAC) is an agency of the US Department of Treasury that administers and enforces economic and trade sanctions in support of U.S. foreign policy and national security objectives. All U.S. persons and U.S. incorporated entities and their foreign branches must follow OFAC regulations. Under OFAC regulations, U.S. financial institutions are prohibited—unless authorized by OFAC or expressly exempted by statute—from conducting transactions and other dealings with individuals, entities, or countries under sanctions or embargo programs administered and enforced by OFAC.</p>
+<p>See also:</p>
+<ul>
+<li><a class="external-link" href="https://www.treasury.gov/resource-center/faqs/Sanctions/Pages/ques_index.aspx" target="_blank">A list of OFAC resources <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+<!-- SPELLING_IGNORE: ofac -->
+<h3 id="guidance-on-virtual-currency-and-money-service-business">Guidance on Virtual Currency and Money Service Business<a aria-hidden="true" class="hover_anchor" href="#guidance-on-virtual-currency-and-money-service-business"><i class="fa fa-link"></i></a></h3>
+<ul>
+<li>
+<p>United States:</p>
+<ul>
+<li>
+<p><a class="external-link" href="https://www.fincen.gov/resources/statutes-regulations/guidance/application-fincens-regulations-persons-administering" target="_blank">FinCEN Guidance and Definitions around Virtual Currency, March 18, 2013 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+<li>
+<p><a class="external-link" href="https://www.fincen.gov/news/news-releases/fincen-publishes-two-rulings-virtual-currency-miners-and-investors" target="_blank">FinCEN Publishes Two Rulings on Virtual Currency Miners and Investors, January 30, 2014 <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Europe:</p>
+<ul>
+<li><a class="external-link" href="http://www.eba.europa.eu/documents/10180/657547/EBA-Op-2014-08+Opinion+on+Virtual+Currencies.pdf" target="_blank">European Banking Authority Opinion on Virtual Currencies, July 4, 2014 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+</li>
+<li>
+<p>FATF Guidance for Money Service Businesses:</p>
+<ul>
+<li><a class="external-link" href="http://www.fatf-gafi.org/media/fatf/documents/reports/Guidance-RBA-money-value-transfer-services.pdf" target="_blank">Financial Action Task Force, July 2009 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+</ul>
+</li>
+</ul>
+<h1 id="xrp-ledger-integration">XRP Ledger Integration<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger-integration"><i class="fa fa-link"></i></a></h1>
+<p>This document uses the example of a fictional cryptocurrency exchange called ACME Exchange which decides to issue an EUR stablecoin on the XRP Ledger, to illustrate the overall process and flow of funds for a stablecoin.</p>
+<h2 id="before-integration">Before Integration<a aria-hidden="true" class="hover_anchor" href="#before-integration"><i class="fa fa-link"></i></a></h2>
+<p>ACME, as a cryptocurrency exchange, already accepts withdrawals and deposits from customers using some system (such as an app or website). ACME has a <em>system of record</em> to track how much each user holds with the exchange in each of several types of assets. Such a system can be modeled with a simple balance sheet, although in practice it probably involves databases, application servers, and various other infrastructure to ensure its reliability, information security, and so on.</p>
+<p>In the following diagram, ACME Exchange starts with €5 on hand, including €1 that belongs to Bob, €2 that belongs to Charlie, and an additional €2 of equity that belongs to ACME itself. Alice deposits €5, so ACME adds her to its balance sheet and ends up with €10.</p>
+<p><img alt="Diagram: Alice sends €5 to ACME. ACME adds her balance to its balance sheet." src="img/e2g-01.png"/></p>
+<p><strong>Assumptions:</strong> To integrate with the XRP Ledger, we assume that an exchange such as ACME meets the following assumptions:</p>
+<ul>
+<li>ACME already has a system to accept deposits and withdrawals from some outside payment source.</li>
+<li>ACME waits for deposits to clear before crediting them in ACME's system of record.</li>
+<li>ACME always keeps enough funds on-hand to pay withdrawals on demand, subject to their terms and conditions.<ul>
+<li>ACME can set fees, minimum withdrawals, and delay times for deposits and withdrawals as their business model demands.</li>
+</ul>
+</li>
+</ul>
+<h2 id="sending-into-the-xrp-ledger">Sending into the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-into-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>Sending money <em>into</em> the XRP Ledger involves issuing new stablecoins for an amount that ACME holds on behalf of one of its users. An example flow might look like this:</p>
+<ol>
+<li>Alice asks to send €3 of her ACME balance into the XRP Ledger.</li>
+<li>In its system of record, ACME debits Alice's balance €3.</li>
+<li>ACME submits an XRP Ledger transaction, sending €3 to Alice's XRP Ledger address. The €3 is marked in the XRP Ledger as being "issued" by ACME (3 EUR.ACME).</li>
+</ol>
+<p><strong>Assumptions:</strong></p>
+<ul>
+<li>Alice already has an address in the XRP Ledger separate from her ACME account. Alice manages her XRP Ledger address using a third-party client application (wallet).</li>
+</ul>
+<p><img alt="Diagram: ACME issues 3 EUR.ACME to Alice on the XRP Ledger" src="img/e2g-02.png"/></p>
+<!-- -->
+<p>After this, Alice can send or trade her EUR.ACME to other users in the XRP Ledger at her discretion. At any time, ACME can query the XRP Ledger to see who currently holds its tokens. </p>
+<h3 id="requirements-for-sending-to-xrp-ledger">Requirements for Sending to XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#requirements-for-sending-to-xrp-ledger"><i class="fa fa-link"></i></a></h3>
+<p>There are several prerequisites that ACME must meet for this to happen:</p>
+<ul>
+<li>ACME sets aside the funds that back its stablecoin. There are several ways ACME may do this:<ul>
+<li>ACME may create a XRP Ledger collateral account in ACME's system of record.</li>
+<li>ACME can store the funds allocated to the XRP Ledger in a separate bank account.</li>
+<li>If the stablecoin is backed by cryptocurrency, ACME can create a separate wallet to hold the funds allocated to the XRP Ledger, as publicly-verifiable proof of its reserves.</li>
+</ul>
+</li>
+<li>ACME should control two separate XRP Ledger addresses. See <a href="account-types.html">Issuing and Operational Addresses</a> for details.<ul>
+<li>ACME must enable the Default Ripple flag on its issuing address for customers to send and receive its tokens.</li>
+</ul>
+</li>
+<li>Alice must create an accounting relationship (trust line) from her XRP Ledger address to ACME's issuing address. She can do this from any XRP Ledger client application as long as she knows ACME's issuing address.<ul>
+<li>ACME should publicize its issuing address on its website where customers can find it. It can also use an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a> to publish the issuing address to automated systems.</li>
+<li>Alternatively, instead of sending a Payment, ACME can write Alice as a Check in the XRP Ledger. This does not move any money right away, but creates both the trust line and the tokens together when Alice cashes the Check.</li>
+</ul>
+</li>
+<li>ACME must create a user interface for Alice to request for her funds from ACME to be sent into the XRP Ledger.<ul>
+<li>ACME needs to know Alice's XRP Ledger address. ACME can have Alice input her XRP Ledger address as part of the interface, or ACME can require Alice to input and verify her XRP Ledger address in advance.</li>
+</ul>
+</li>
+</ul>
+<h2 id="sending-from-xrp-ledger">Sending from XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#sending-from-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>A payment out of the XRP Ledger means the issuer receives a payment in the XRP Ledger, and credits a user in the issuer's system of record.</p>
+<p>An example flow of a payment out of the XRP Ledger:</p>
+<ol>
+<li>Bob sends an XRP Ledger transaction of €1 to ACME's issuing address.</li>
+<li>In ACME's system of record, ACME credits Bob's balance €1.</li>
+<li>Later, Bob can use ACME's own interface to withdraw the money to a separate account, such as requesting a bank deposit over the SEPA system (Europe) or ACH (United States), receiving a payment on another blockchain, or something else.</li>
+</ol>
+<p>XRP Ledger Payments going to an issuer can be single-currency or cross-currency payments, but the amount the issuer receives is typically denominated in the stablecoin it issued.</p>
+<h3 id="requirements-for-receiving-from-xrp-ledger">Requirements for Receiving from XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#requirements-for-receiving-from-xrp-ledger"><i class="fa fa-link"></i></a></h3>
+<p>In addition to the requirements for sending into the XRP Ledger, there are several prerequisites that ACME must meet to process payments coming from the XRP Ledger:</p>
+<ul>
+<li>ACME must monitor its XRP Ledger addresses for incoming payments.</li>
+<li>ACME must know which user to credit in its system of record for the incoming payments.<ul>
+<li>ACME should bounce unrecognized incoming payments back to their sender.</li>
+<li>Typically, the preferred method of recognizing incoming payments is through <a href="source-and-destination-tags.html">destination tags</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="precautions">Precautions<a aria-hidden="true" class="hover_anchor" href="#precautions"><i class="fa fa-link"></i></a></h2>
+<p>Processing payments to and from the XRP Ledger naturally comes with some risks, so an issuer should be sure to take care in implementing these processes. As a stablecoin issuer, you should take the following precautions:</p>
+<ul>
+<li>Protect yourself against reversible deposits. XRP Ledger payments are irreversible, but many digital payments are not. Scammers can abuse this to take their fiat money back by canceling a deposit after receiving tokens in the XRP Ledger.</li>
+<li>When sending into the XRP Ledger, always specify your issuing address as the issuer of the token. Otherwise, you might accidentally use paths that deliver the same currency issued by other addresses.</li>
+<li>Before sending a payment into the XRP Ledger, double check the cost of the payment. A payment from your operational address to a customer should not cost more than the destination amount plus any transfer fee you have set.</li>
+<li>Before processing a payment out of the XRP Ledger, make sure you know the customer's identity. This makes it harder for anonymous attackers to scam you. Most anti-money-laundering regulations require this anyway. This is especially important because the users sending money from the XRP Ledger could be different than the ones that initially received the money in the XRP Ledger.</li>
+<li>Follow the guidelines for <a href="#reliable-transaction-submission">reliable transaction submission</a> when sending XRP Ledger transactions.</li>
+<li><a href="#robustly-monitoring-for-payments">Robustly monitor for incoming payments</a>, and read the correct amount. Don't mistakenly credit someone the full amount if they only sent a <a href="partial-payments.html">partial payment</a>.</li>
+<li>Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.</li>
+<li>Avoid ambiguous situations. We recommend the following:<ul>
+<li>Enable the <code>Disallow XRP</code> flag for the issuing address and all operational addresses, so customers do not accidentally send you XRP. (Private exchanges should <em>not</em> set this flag, since they trade XRP normally.)</li>
+<li>Enable the <a href="require-destination-tags.html"><code>RequireDest</code> flag</a> for the issuing address and all operational addresses, so customers do not accidentally send a payment without the destination tag to indicate who should be credited.</li>
+<li>Enable the <code>RequireAuth</code> flag on all operational addresses so they cannot issue tokens by accident.</li>
+</ul>
+</li>
+<li>Monitor for suspicious or abusive behavior. For example, a user could repeatedly send funds into and out of the XRP Ledger, as a denial of service attack that effectively empties an operational address's balance. Suspend customers whose addresses are involved in suspicious behavior by not processing their XRP Ledger payments.</li>
+</ul>
+<h2 id="trading-on-the-xrp-ledger">Trading on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#trading-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
+<p>After the tokens have been created in the XRP Ledger, they can be freely transferred and traded by XRP Ledger users. There are several consequences of this situation:</p>
+<ul>
+<li>Anyone can buy/sell EUR.ACME on the XRP Ledger. If ACME issues multiple tokens, a separate trust line is necessary for each.<ul>
+<li>This includes XRP Ledger users who do not have an account in ACME Exchange's systems. To withdraw the funds successfully from ACME, users still have to register with ACME.</li>
+<li>Optionally, ACME uses the <a href="#authorized-trust-lines">Authorized Trust Lines</a> feature to limit who can hold EUR.ACME in the XRP Ledger.</li>
+<li>If ACME determines that a customer has acted in bad faith, ACME can <a href="#freeze">Freeze</a> that user's accounting relationships to ACME in the XRP Ledger, so that the user can no longer trade in the issuer's tokens.</li>
+</ul>
+</li>
+<li>XRP Ledger users trading and sending EUR.ACME to one another requires no intervention by ACME.</li>
+<li>All exchanges and balances in the XRP Ledger are publicly viewable.</li>
+</ul>
+<p>The following diagram depicts an XRP Ledger payment sending 2 EUR.ACME from Alice to Charlie. ACME can query the XRP Ledger to see updates to its balances any time after the transaction has occurred:</p>
+<p><img alt="Diagram: Alice's sends 2 EUR.ACME from her trust line to Charlie's" src="img/e2g-03.png"/></p>
+<h2 id="freeze">Freeze<a aria-hidden="true" class="hover_anchor" href="#freeze"><i class="fa fa-link"></i></a></h2>
+<p>An issuer can freeze accounting relationships in the XRP Ledger to meet regulatory requirements:</p>
+<ul>
+<li>Issuers can freeze individual accounting relationships, in case a customer address shows suspicious activity or violates a issuer's terms of use.</li>
+<li>Issuers can freeze all tokens they issue, in case of a major security compromise or for migrating to a new issuing address.</li>
+<li>Furthermore, issuers can permanently opt out of their ability to freeze accounting relationships. This allows an issuer to assure its customers that it will continue to provide "physical-money-like" services. <!-- STYLE_OVERRIDE: will --></li>
+</ul>
+<p>For more information, see the <a href="freezes.html">Freeze article</a>.</p>
+<h2 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h2>
+<p>The XRP Ledger's Authorized Trust Lines feature (formerly called "Authorized Accounts") enables an issuer to limit who can hold that issuer's tokens, so that unknown XRP Ledger addresses cannot hold the tokens.</p>
+<p>For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
+<h2 id="source-and-destination-tags">Source and Destination Tags<a aria-hidden="true" class="hover_anchor" href="#source-and-destination-tags"><i class="fa fa-link"></i></a></h2>
+<p><em>Destination Tags</em> are a feature of XRP Ledger payments can be used to indicate the beneficiary or destination for a payment. For example, an XRP Ledger payment to an issuer may include a destination tag to indicate which customer should be credited for the payment. An issuer should keep a mapping of destination tags to accounts in the issuer's system of record.</p>
+<p>Similarly, <em>Source Tags</em> indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to bounce the payment. When you bounce an incoming payment, use the Source Tag from the incoming payment as the Destination Tag of the outgoing (bounce) payment.</p>
+<p>You can generate a destination tag on-demand when a customer intends to send money to you. For greater customer privacy, you should consider that destination tag valid only for that payment with the expected amount, and bounce or ignore any other transactions that reuse the same destination tag.</p>
+<p><a href="require-destination-tags.html">Enable the Require Destination Tag setting</a> on your issuing and operational addresses so that customers must use a destination tag to indicate where funds should be credited when they send payments to you.</p>
+<p>For more information, see <a href="source-and-destination-tags.html">Source and Destination Tags</a>.</p>
+<h1 id="technical-details">Technical Details<a aria-hidden="true" class="hover_anchor" href="#technical-details"><i class="fa fa-link"></i></a></h1>
+<h2 id="infrastructure">Infrastructure<a aria-hidden="true" class="hover_anchor" href="#infrastructure"><i class="fa fa-link"></i></a></h2>
+<p>For your own security as well as the stability of the network, each XRP Ledger business should <a href="install-rippled.html">run its own XRP Ledger servers</a> including one <a href="rippled-server-modes.html#validators">validator</a>.</p>
+<h3 id="apis-and-middleware">APIs and Middleware<a aria-hidden="true" class="hover_anchor" href="#apis-and-middleware"><i class="fa fa-link"></i></a></h3>
+<p>There are several interfaces you can use to connect to the XRP Ledger, depending on your needs and your existing software:</p>
+<ul>
+<li><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> can be used as a low-level interface to all core XRP Ledger functionality.</li>
+<li><a href="client-libraries.html">Client Libraries</a> are available in several programming languages to provide convenient utilities for accessing the XRP Ledger.</li>
+<li>Other tools such as <a class="external-link" href="https://xumm.readme.io/docs/xapps" target="_blank">xApps <i aria-hidden="true" class="fa fa-external-link"></i></a> are also available.</li>
+<li>Third party wallet applications may also be useful, especially for humans in charge of standby addresses.</li>
+</ul>
+<h2 id="tool-security">Tool Security<a aria-hidden="true" class="hover_anchor" href="#tool-security"><i class="fa fa-link"></i></a></h2>
+<p>Any time you submit an XRP Ledger transaction, it must be signed using your secret key. The secret key gives full control over your XRP Ledger address. <strong>Never</strong> send your secret key to a server run by someone else. Either use your own server, or sign the transactions locally using a client library.</p>
+<p>For instructions and examples of secure configurations, see <a href="secure-signing.html">Set Up Secure Signing</a>.</p>
+<h2 id="issuer-setup">Issuer Setup<a aria-hidden="true" class="hover_anchor" href="#issuer-setup"><i class="fa fa-link"></i></a></h2>
+<p>There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see the <a href="issue-a-fungible-token.html">Issue a Fungible Token tutorial</a>.</p>
+<p>Settings you may want to configure include:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>Setting</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Default Ripple</td>
+<td>Issuers <strong>must</strong> enable this field.</td>
+</tr>
+<tr>
+<td>Deposit Authorization</td>
+<td>Block all incoming payments from users you haven't explicitly approved.</td>
+</tr>
+<tr>
+<td>Require Auth</td>
+<td>Restrict your tokens to being held by users you've explicitly approved.</td>
+</tr>
+<tr>
+<td>Tick Size</td>
+<td>Round off exchange rates in the decentralized exchange to facilitate faster price discovery.</td>
+</tr>
+<tr>
+<td>Transfer Fee</td>
+<td>Charge a percentage fee when users send your token to each other.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="default-ripple">Default Ripple<a aria-hidden="true" class="hover_anchor" href="#default-ripple"><i class="fa fa-link"></i></a></h3>
+<p>The Default Ripple flag controls whether the balances on a trust line are <a href="rippling.html">allowed to ripple</a> by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address.</p>
+<p>Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.</p>
+<h3 id="deposit-authorization">Deposit Authorization<a aria-hidden="true" class="hover_anchor" href="#deposit-authorization"><i class="fa fa-link"></i></a></h3>
+<p>The Deposit Authorization setting blocks all incoming payments to your account, unless either:</p>
+<ul>
+<li>You have previously preauthorized the sender.</li>
+<li>You send a transaction to receive the funds. For example, you could finish an Escrow that was initiated by a stranger.</li>
+</ul>
+<p>Deposit Authorization is most useful for blocking unwanted XRP payments, because you already can't receive tokens unless you've created a trust line to their issuer. However, as a stablecoin issuer, you need to be able to receive payments from users in order for them to redeem the stablecoin for its off-ledger value; you can preauthorize your customers but doing so requires storing an object in the ledger for each custom address, increasing your reserve requirement substantially.</p>
+<p>Therefore, Deposit Authorization is not recommended for stablecoin issuers unless you need it to meet regulatory requirements about receiving money from unknown or sanctioned entities.</p>
+<p>For more information, see <a href="depositauth.html">Deposit Authorization</a>.</p>
+<h3 id="disallow-xrp">Disallow XRP<a aria-hidden="true" class="hover_anchor" href="#disallow-xrp"><i class="fa fa-link"></i></a></h3>
+<p>The Disallow XRP setting is designed to discourage XRP Ledger users from sending XRP to an address by accident. This reduces the costs and effort of bouncing undesired payments from addresses that aren't intended to receive and hold XRP. The Disallow XRP flag is not enforced at the protocol level, because doing so could allow addresses to become permanently unusable if they run out of XRP. Client applications should honor the Disallow XRP flag by default, but may allow users to ignore it.</p>
+<p>The Disallow XRP flag is optional, but if you don't intend to receive XRP from customers you may want to enable it on your issuing address and all your operational addresses.</p>
+<h3 id="require-auth">Require Auth<a aria-hidden="true" class="hover_anchor" href="#require-auth"><i class="fa fa-link"></i></a></h3>
+<p>The Require Auth setting blocks users from holding the tokens you issue unless you explicitly approve their trust lines first. You can use this setting to meet regulatory requirements if it matters who holds your tokens within the XRP Ledger. However, this can reduce the utility of your tokens since your approval becomes a bottleneck for users to use them.</p>
+<p>Also, you must use your issuing address each time you authorize a trust line; if you must authorize a lot of trust lines, this can undermine the security of your issuing address because you have to use it so often. (If you only need to use the issuing address sparingly, you can put greater protections on its secret keys. The more often you use it, the more of a burden those protections become.)</p>
+<p>For more information, see <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
+<h3 id="tick-size">Tick Size<a aria-hidden="true" class="hover_anchor" href="#tick-size"><i class="fa fa-link"></i></a></h3>
+<p>The Tick Size setting controls how many decimal places are used when calculating exchange rates in the <a href="decentralized-exchange.html">Decentralized Exchange</a>. A higher Tick Size means more precision and less rounding in the amounts of various trades. Too much precision can be inconvenient because trades are ranked primarily based on exchange rate, so a trader can offer a minuscule amount more to the top of the list. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by irrelevantly small amounts. However, a smaller Tick Size results in more rounding, which can increase the costs of trading, and sometimes has surprising results because two Offers that seemed like an exact match before rounding no longer match after rounding.</p>
+<p>The Tick Size is an account-level setting and applies to all tokens issued by the same address.</p>
+<p>Tick Size only controls the precision of <em>exchange rates</em>, not the precision of the token itself. Users can send and hold very large or very small amounts regardless of the Tick Size set by the token's issuer.</p>
+<p>For more information, see <a href="ticksize.html">Tick Size</a>.</p>
+<h3 id="transfer-fees">Transfer Fees<a aria-hidden="true" class="hover_anchor" href="#transfer-fees"><i class="fa fa-link"></i></a></h3>
+<p>A transfer fee setting charges users a percentage fee when sending your tokens to each other. The transfer fee does not apply when issuing tokens or redeeming them directly with the issuing address. (It <em>does</em> apply when users send payments to your hot wallet.) If you issue multiple tokens from the same address, the same transfer fee applies to all of them.</p>
+<p>When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.</p>
+<p>At a protocol level, the transfer fee is defined by the <code>TransferRate</code> account setting, which is an integer from 1 billion to 2 billion.</p>
+<p>For more information, see <a href="transfer-fees.html">Transfer Fees</a>.</p>
+<h3 id="transfer-fees-with-operational-and-standby-addresses">Transfer Fees with Operational and Standby Addresses<a aria-hidden="true" class="hover_anchor" href="#transfer-fees-with-operational-and-standby-addresses"><i class="fa fa-link"></i></a></h3>
+<p>All XRP Ledger addresses, including operational and standby addresses, are subject to the issuer's transfer fees when sending tokens. If you set a nonzero transfer fee, then you must send extra (to pay the transfer fee) when making payments from your operational address or standby address. In other words, your addresses must pay back a little of the balance your issuing address created, each time you make a payment.</p>
+<p>Set the <a href="payment.html"><code>SendMax</code> transaction parameter</a> higher than the destination <code>Amount</code> parameter by a percentage based on the <code>TransferRate</code> setting.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Transfer fees do not apply when sending tokens directly from or to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.</p>
+<p>For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address <em>and</em> the transfer fee, giving the customer €5,05 in ACME's systems.</p>
+<h2 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments<a aria-hidden="true" class="hover_anchor" href="#robustly-monitoring-for-payments"><i class="fa fa-link"></i></a></h2>
+<p>To robustly check for incoming payments, issuers should do the following:</p>
+<ul>
+<li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
+<li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
+<li>Look out for <a href="partial-payments.html">Partial Payments</a>. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.<ul>
+<li>Check the transaction for a <a href="partial-payments.html#the-delivered_amount-field"><code>delivered_amount</code> field</a>. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
+<li>In xrpl.js, you can use the <a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
+</ul>
+</li>
+<li>Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero transfer fee, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's tokens.</li>
+</ul>
+<p>To make things simpler for your customers, we recommend accepting payments to both your operational address and your issuing addresses.</p>
+<p>As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.</p>
+<ul>
+<li>Use the <code>gateway_balances</code> method to check your balances.</li>
+<li>If you have a Transfer Fee set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your tokens among themselves.</li>
+</ul>
+<p>For more details on how to read the details of incoming transactions, see <a href="look-up-transaction-results.html">Look Up Transaction Results</a>.</p>
+<h2 id="sending-payments-to-customers">Sending Payments to Customers<a aria-hidden="true" class="hover_anchor" href="#sending-payments-to-customers"><i class="fa fa-link"></i></a></h2>
+<p>When you build an automated system to send payments into the XRP Ledger for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find ways to trick a system into paying them more money than it should.</p>
+<p>Generally, when sending stablecoins, you use a <a href="payment.html">Payment transaction</a>. Some of the details are different depending on whether you are issuing tokens for the first time or transferring them from a hot wallet to a customer. Things to note include:</p>
+<ul>
+<li>When issuing new tokens from your issuing address, you should omit the <code>SendMax</code> field. Otherwise, malicious users can arrange their settings so that you issue the full <code>SendMax</code> amount instead of just the intended destination <code>Amount</code>.</li>
+<li>When sending tokens <em>from a hot wallet</em>, you must specify <code>SendMax</code> if you have a nonzero transfer fee. In this case, set the <code>SendMax</code> field to the amount specified in the <code>Amount</code> field plus the transfer fee. (You may want to round up slightly, in case the precision of your calculations doesn't exactly match the XRP Ledger's.) For example, if you send a transaction whose <code>Amount</code> field specifies 99.47 USD, and your transfer fee is 0.25%, you should set the <code>SendMax</code> field to 124.3375, or 124.34 USD if you round up.</li>
+<li>Omit the <code>Paths</code> field. This field is unnecessary when sending directly from the issuer, or from a hot wallet as long as the tokens being sent and the tokens being received have the same currency code and issuer—that is, they're the same stablecoin. The <code>Paths</code> field is intended for <a href="cross-currency-payments.html">Cross-Currency Payments</a> and longer multi-hop (rippling) payments. If you naively perform pathfinding and attach the paths to your transaction, your payment may take a more expensive indirect route rather than failing if the direct path is not available; malicious users can even set this up to </li>
+<li>If you get a <code>tecPATH_DRY</code> result code, this usually indicates that either the customer doesn't have the necessary trust line set up already, or your issuer's rippling settings aren't configured correctly.</li>
+</ul>
+<p>For a detailed tutorial on issuing a token on the XRP Ledger, whether a stablecoin or otherwise, see <a href="issue-a-fungible-token.html">Issue a Fungible Token</a>.</p>
+<h2 id="bouncing-payments">Bouncing Payments<a aria-hidden="true" class="hover_anchor" href="#bouncing-payments"><i class="fa fa-link"></i></a></h2>
+<p>When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.</p>
+<p>The first requirement to bouncing payments is <a href="#robustly-monitoring-for-payments">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) Malicious users can take advantage of a naive integration by sending <a href="partial-payments.html#partial-payments-exploit">partial payments</a>.</p>
+<p>Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.</p>
+<p>To send a Partial Payment, enable the <a href="payment.html#payment-flags"><code>tfPartialPayment</code> flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field. You should use the <code>SourceTag</code> value from the incoming payment as the <code>DestinationTag</code> value for the return payment.</p>
+<p>To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again.</p>
+<h2 id="reliable-transaction-submission">Reliable Transaction Submission<a aria-hidden="true" class="hover_anchor" href="#reliable-transaction-submission"><i class="fa fa-link"></i></a></h2>
+<p>The goal of reliably submitting transactions is to achieve the following two properties in a finite amount of time:</p>
+<ul>
+<li>Idempotency - Transactions should be processed once and only once, or not at all.</li>
+<li>Verifiability - Applications can determine the final result of a transaction.</li>
+</ul>
+<p>To submit transactions reliably, follow these guidelines:</p>
+<ul>
+<li>Persist details of the transaction before submitting it.</li>
+<li>Use the <code>LastLedgerSequence</code> parameter. (Many <a href="client-libraries.html">client libraries</a> do this by default.)</li>
+<li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#ledger-index">ledger index</a> is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
+</ul>
+<p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
+<h2 id="xrp-ledgertoml-file">xrp-ledger.toml File<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml-file"><i class="fa fa-link"></i></a></h2>
+<p>You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an <a href="xrp-ledger-toml.html"><code>xrp-ledger.toml</code> file</a>. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.</p>
+<!-- STYLE_OVERRIDE: gateway, gateways -->
+<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<ul>
+<li><strong>Concepts:</strong><ul>
+<li><a href="tokens.html">Tokens</a></li>
+<li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
+<li><a href="source-and-destination-tags.html">Source and Destination Tags</a></li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="install-rippled.html">Install <code>rippled</code></a></li>
+<li><a href="secure-signing.html">Set Up Secure Signing</a></li>
+<li><a href="issue-a-fungible-token.html">Issue a Fungible Token</a></li>
+<li><a href="enable-no-freeze.html">Enable No Freeze</a></li>
+<li><a href="freeze-a-trust-line.html">Freeze a Trust Line</a></li>
+<li><a href="enact-global-freeze.html">Enact Global Freeze</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="payment.html">Payment transaction</a></li>
+<li><a href="accountset.html">AccountSet transaction</a></li>
+<li><a href="trustset.html">TrustSet transaction</a></li>
+<li><a href="ripplestate.html">RippleState object</a></li>
+<li><a href="account_lines.html">account_lines method</a></li>
+<li><a href="gateway_balances.html">gateway_balances method</a></li>
+</ul>
+</li>
+</ul>
+<!-- -->
+<!-- -->
+<!-- API object types -->
+<!-- -->
+<!-- -->
+<!-- -->
+<!-- rippled release notes links -->
+    </div>
+  </article>
+<!-- Feedback Widget -->
+<script src="assets/vendor/feedback-widget.js"></script>
+<div id="feedback-content"></div>
+<script>
+  // Options
+  const options = {
+    analyticsConfig: [
+      // { name: 'ga', id: 'UA-45576805-2' },
+      { name: 'gtm', id: 'GTM-KCQZ3L8' },
+    ],
+    analyticsName: 'Feedback Widget Tracker',
+    theme: 'xrpl',
+    currentPath: window.location.pathname,
+    parentElement: '#feedback-content',
+  };
+
+  // Init WidgetClass
+  const r = new WidgetClass(options);
+</script>      </main>
+      <!-- Left sidebar last so it's at the end for mobile -->
+      <aside class="left-sidebar col-md-5 col-lg-3 order-md-1" role="complementary">
+
+
+<nav class="nav flex-column dactyl-tree-nav">
+  <div class="nav-item nav-parent">
+    <a class="nav-link" href="docs.html">Documentation</a>
+  </div>
+    
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2" aria-expanded="false" aria-controls="tree_nav_group_2"></a>
+
+        <a class="nav-link" href="introduction.html">Introduction</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-the-xrp-ledger.html">What is the XRP Ledger?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="what-is-xrp.html">What is XRP?</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crypto-wallets.html">Crypto Wallets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="txn-and-requests.html">Transactions and Requests</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="software-ecosystem.html">Software Ecosystem</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
+
+        <a class="nav-link" href="use-cases.html">Use Cases</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_1" aria-expanded="false" aria-controls="tree_nav_group_3_1"></a>
+
+        <a class="nav-link" href="payments-uc.html">Payments</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-to-peer-payments-uc.html">Peer-to-Peer Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="restricting-deposits-uc.html">Restricting Deposits</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-uc.html">Smart Contracts</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item active-parent">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_2" aria-expanded="true" aria-controls="tree_nav_group_3_2"></a>
+
+        <a class="nav-link" href="tokenization.html">Tokenization</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_3_2">
+      
+  <div class="nav-item active">
+    <a class="nav-link nav-leaf" href="stablecoin-issuer.html">Stablecoin Issuer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_3_2_2"></a>
+
+        <a class="nav-link" href="nft-mkt-overview.html">NFT Marketplace Overview</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-marketplace.html">NFT Marketplace</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-minter.html">Authorized Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="digital-artist.html">Digital Artist</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+
+        <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4" aria-expanded="false" aria-controls="tree_nav_group_4"></a>
+
+        <a class="nav-link" href="concepts.html">Concepts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_1" aria-expanded="false" aria-controls="tree_nav_group_4_1"></a>
+
+        <a class="nav-link" href="networks-and-servers.html">Networks and Servers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-modes.html">rippled Server Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clustering.html">Clustering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-history.html">Ledger History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-protocol.html">Peer Protocol</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-censorship-detection.html">Transaction Censorship Detection</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="parallel-networks.html">Parallel Networks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="the-clio-server.html">The Clio Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_2" aria-expanded="false" aria-controls="tree_nav_group_4_2"></a>
+
+        <a class="nav-link" href="consensus.html">Consensus Protocol</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-structure.html">Consensus Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-principles-and-rules.html">Consensus Principles and Rules</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-protections.html">Consensus Protections Against Attacks and Failure Modes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="invariant-checking.html">Invariant Checking</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee-voting.html">Fee Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negative-unl.html">Negative UNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus-research.html">Consensus Research</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_3" aria-expanded="false" aria-controls="tree_nav_group_4_3"></a>
+
+        <a class="nav-link" href="ledgers.html">Ledgers</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-structure.html">Ledger Structure</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-closed-validated-ledgers.html">Open, Closed, and Validated Ledgers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-close-times.html">Ledger Close Times</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4" aria-expanded="false" aria-controls="tree_nav_group_4_4"></a>
+
+        <a class="nav-link" href="transactions.html">Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fees.html">Fees (Disambiguation)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reliable-transaction-submission.html">Reliable Transaction Submission</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="secure-signing.html">Secure Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="source-and-destination-tags.html">Source and Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-cost.html">Transaction Cost</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-queue.html">Transaction Queue</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_4_7"></a>
+
+        <a class="nav-link" href="finality-of-results.html">Finality of Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-transaction-results.html">Look Up Transaction Results</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-malleability.html">Transaction Malleability</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="canceling-a-transaction.html">Canceling a Transaction</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_5" aria-expanded="false" aria-controls="tree_nav_group_4_5"></a>
+
+        <a class="nav-link" href="payment-types.html">Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="direct-xrp-payments.html">Direct XRP Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cross-currency-payments.html">Cross-Currency Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checks.html">Checks</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="partial-payments.html">Partial Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
+
+        <a class="nav-link" href="tokens.html">Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+
+        <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offers.html">Offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="autobridging.html">Auto-Bridging</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticksize.html">Tick Size</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="automated-market-makers.html">Automated Market Makers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_7" aria-expanded="false" aria-controls="tree_nav_group_4_7"></a>
+
+        <a class="nav-link" href="accounts.html">Accounts</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deleting-accounts.html">Deleting Accounts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="reserves.html">Reserves</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="addresses.html">Addresses</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cryptographic-keys.html">Cryptographic Keys</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5" aria-expanded="false" aria-controls="tree_nav_group_5"></a>
+
+        <a class="nav-link" href="tutorials.html">Tutorials</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="public-servers.html">Public Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2" aria-expanded="false" aria-controls="tree_nav_group_5_2"></a>
+
+        <a class="nav-link" href="python.html">Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-python.html">Get Started Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-python.html">Modular Tutorials in Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-python.html">Send Payments Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-accounts-send-xrp.html">Create Accounts and Send XRP Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-time-based-escrows.html">Create Time-based Escrows Using Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_2_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_2_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-python.html">NFTs Using Python</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_2_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-mint-and-burn-nfts.html">Mint and Burn NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-transfer-nfts.html">Transfer NFTs Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-broker-sale.html">Broker an NFT Sale Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-batch-minting.html">Batch Mint NFTs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-python.html">Build a Desktop Wallet in Python</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_3"></a>
+
+        <a class="nav-link" href="javascript.html">JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-javascript.html">Get Started Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2"></a>
+
+        <a class="nav-link" href="modular-tutorials-in-javascript.html">Modular Tutorials in JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_1"></a>
+
+        <a class="nav-link" href="send-payments-using-javascript.html">Send Payments Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-accounts-send-xrp-using-javascript.html">Create Accounts and Send XRP Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-trustline-send-currency-using-javascript.html">Create Trust Line and Send Currency Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-time-based-escrows-using-javascript.html">Create Time-based Escrows Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-conditional-escrows-using-javascript.html">Create Conditional Escrows Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_5_3_2_2"></a>
+
+        <a class="nav-link" href="nfts-using-javascript.html">NFTs Using JavaScript</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="mint-and-burn-nfts-using-javascript.html">Mint and Burn NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfer-nfts-using-javascript.html">Transfer NFTs Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="broker-an-nft-sale-using-javascript.html">Broker an NFT Sale Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-mint-nfts-using-javascript.html">Batch Mint NFTs Using JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-browser-wallet-in-javascript.html">Build a Browser Wallet in JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-a-desktop-wallet-in-javascript.html">Build a Desktop Wallet in JavaScript</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
+
+        <a class="nav-link" href="java.html">Java</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-java.html">Get Started Using Java</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="monitor-incoming-payments-with-websocket.html">Monitor Incoming Payments with WebSocket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="tasks.html">Tasks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+
+        <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="change-or-remove-a-regular-key-pair.html">Change or Remove a Regular Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="disable-master-key-pair.html">Disable Master Key Pair</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-up-multi-signing.html">Set Up Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-multi-signed-transaction.html">Send a Multi-Signed Transaction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="require-destination-tags.html">Require Destination Tags</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offline-account-setup.html">Offline Account Setup Tutorial</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-tickets.html">Use Tickets</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-xrp.html">Send XRP</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+
+        <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+
+        <a class="nav-link" href="use-escrows.html">Use Escrows</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-conditionally-held-escrow.html">Send a Conditionally-Held Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-an-expired-escrow.html">Cancel an Expired Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-escrows.html">Look up Escrows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-an-escrow-as-a-smart-contract.html">Use an Escrow as a Smart Contract</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+
+        <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+
+        <a class="nav-link" href="use-checks.html">Use Checks</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-an-exact-amount.html">Cash a Check for an Exact Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cash-a-check-for-a-flexible-amount.html">Cash a Check for a Flexible Amount</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cancel-a-check.html">Cancel a Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-sender.html">Look Up Checks by Sender</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="look-up-checks-by-recipient.html">Look Up Checks by Recipient</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+
+        <a class="nav-link" href="use-tokens.html">Use Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-no-freeze.html">Enable No Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enact-global-freeze.html">Enact Global Freeze</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="freeze-a-trust-line.html">Freeze a Trust Line</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="create-an-automated-market-maker.html">Create an Automated Market Maker <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
+
+        <a class="nav-link" href="references.html">References</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1" aria-expanded="false" aria-controls="tree_nav_group_6_1"></a>
+
+        <a class="nav-link" href="protocol-reference.html">XRP Ledger Protocol Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_1" aria-expanded="false" aria-controls="tree_nav_group_6_1_1"></a>
+
+        <a class="nav-link" href="basic-data-types.html">Basic Data Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="base58-encodings.html">base58 Encodings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="currency-formats.html">Currency Formats</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftoken.html">NFToken</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2"></a>
+
+        <a class="nav-link" href="ledger-data-formats.html">Ledger Data Formats</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-header.html">Ledger Header</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
+
+        <a class="nav-link" href="ledger-entry-types.html">Ledger Entry Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountroot.html">AccountRoot</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amendments-object.html">Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm.html">AMM <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="check.html">Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth-object.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="directorynode.html">DirectoryNode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrow-object.html">Escrow</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feesettings.html">FeeSettings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledgerhashes.html">LedgerHashes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="negativeunl.html">NegativeUNL</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenoffer.html">NFTokenOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenpage.html">NFTokenPage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offer.html">Offer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paychannel.html">PayChannel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripplestate.html">RippleState</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlist.html">SignerList</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticket.html">Ticket</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
+
+        <a class="nav-link" href="transaction-formats.html">Transaction Reference</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-common-fields.html">Transaction Common Fields</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_2"></a>
+
+        <a class="nav-link" href="transaction-types.html">Transaction Types</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountset.html">AccountSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="accountdelete.html">AccountDelete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammbid.html">AMMBid <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammcreate.html">AMMCreate <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdelete.html">AMMDelete <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammdeposit.html">AMMDeposit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammvote.html">AMMVote <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ammwithdraw.html">AMMWithdraw <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcancel.html">CheckCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcash.html">CheckCash</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="checkcreate.html">CheckCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawback.html">Clawback <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="depositpreauth.html">DepositPreauth</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcancel.html">EscrowCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowcreate.html">EscrowCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="escrowfinish.html">EscrowFinish</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenacceptoffer.html">NFTokenAcceptOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenburn.html">NFTokenBurn</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencanceloffer.html">NFTokenCancelOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokencreateoffer.html">NFTokenCreateOffer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nftokenmint.html">NFTokenMint</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercancel.html">OfferCancel</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="offercreate.html">OfferCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="payment.html">Payment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelclaim.html">PaymentChannelClaim</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelcreate.html">PaymentChannelCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paymentchannelfund.html">PaymentChannelFund</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setregularkey.html">SetRegularKey</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="signerlistset.html">SignerListSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ticketcreate.html">TicketCreate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="trustset.html">TrustSet</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_3"></a>
+
+        <a class="nav-link" href="pseudo-transaction-types.html">Pseudo-Transactions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enableamendment.html">EnableAmendment</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="setfee.html">SetFee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unlmodify.html">UNLModify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_1_3_4"></a>
+
+        <a class="nav-link" href="transaction-results.html">Transaction Results</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tec-codes.html">tec Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tef-codes.html">tef Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tel-codes.html">tel Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tem-codes.html">tem Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ter-codes.html">ter Codes</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tes-success.html">tes Success</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction-metadata.html">Transaction Metadata</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2" aria-expanded="false" aria-controls="tree_nav_group_6_2"></a>
+
+        <a class="nav-link" href="client-libraries.html">Client Libraries</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_2_1"></a>
+
+        <a class="nav-link external-link" target="_blank" href="https://js.xrpl.org/">JavaScript / TypeScript Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrpljs2-migration-guide.html">Migration Guide for ripple-lib 1.x to xrpl.js 2.x</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://xrpl-py.readthedocs.io/">Python Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://javadoc.io/doc/org.xrpl/">Java Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf external-link" target="_blank" href="https://www.rubydoc.info/gems/xrbp">Ruby Client Library <i aria-hidden="true" class="fa fa-external-link"></i></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
+
+        <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_1"></a>
+
+        <a class="nav-link" href="api-conventions.html">API Conventions</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="request-formatting.html">Request Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="response-formatting.html">Response Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="error-formatting.html">Error Formatting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="markers-and-pagination.html">Markers and Pagination</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rate-limiting.html">Rate Limiting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ctid.html">Compact Transaction Identifier</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2"></a>
+
+        <a class="nav-link" href="public-api-methods.html">Public API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_1"></a>
+
+        <a class="nav-link" href="account-methods.html">Account Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_channels.html">account_channels</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_currencies.html">account_currencies</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_info.html">account_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_lines.html">account_lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_nfts.html">account_nfts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_objects.html">account_objects</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_offers.html">account_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="account_tx.html">account_tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="gateway_balances.html">gateway_balances</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="noripple_check.html">noripple_check</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_2"></a>
+
+        <a class="nav-link" href="ledger-methods.html">Ledger Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_closed.html">ledger_closed</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_current.html">ledger_current</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_data.html">ledger_data</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_entry.html">ledger_entry</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_3"></a>
+
+        <a class="nav-link" href="transaction-methods.html">Transaction Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit.html">submit</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="submit_multisigned.html">submit_multisigned</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transaction_entry.html">transaction_entry</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx.html">tx</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tx_history.html">tx_history</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_4"></a>
+
+        <a class="nav-link" href="path-and-order-book-methods.html">Path and Order Book Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="amm_info.html">amm_info <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="book_offers.html">book_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="deposit_authorized.html">deposit_authorized</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_buy_offers.html">nft_buy_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_sell_offers.html">nft_sell_offers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="path_find.html">path_find</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ripple_path_find.html">ripple_path_find</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_5"></a>
+
+        <a class="nav-link" href="payment-channel-methods.html">Payment Channel Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_authorize.html">channel_authorize</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="channel_verify.html">channel_verify</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_6"></a>
+
+        <a class="nav-link" href="subscription-methods.html">Subscription Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="subscribe.html">subscribe</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="unsubscribe.html">unsubscribe</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_7" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_7"></a>
+
+        <a class="nav-link" href="server-info-methods.html">Server Info Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fee.html">fee</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info.html">server_info (rippled)</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_state.html">server_state</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_8" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_8"></a>
+
+        <a class="nav-link" href="clio-methods.html">Clio Server</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_info-clio.html">server_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger-clio.html">ledger</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft_info.html">nft_info</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_2_9" aria-expanded="false" aria-controls="tree_nav_group_6_3_2_9"></a>
+
+        <a class="nav-link" href="utility-methods.html">Utility Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_2_9">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="json.html">json</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ping.html">ping</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="random.html">random</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
+
+        <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_1" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_1"></a>
+
+        <a class="nav-link" href="key-generation-methods.html">Key Generation Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_create.html">validation_create</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="wallet_propose.html">wallet_propose</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_2" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_2"></a>
+
+        <a class="nav-link" href="logging-and-data-management-methods.html">Logging and Data Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="can_delete.html">can_delete</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="crawl_shards.html">crawl_shards</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="download_shard.html">download_shard</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_cleaner.html">ledger_cleaner</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_request.html">ledger_request</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="log_level.html">log_level</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="logrotate.html">logrotate</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="node_to_shard.html">node_to_shard</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_3"></a>
+
+        <a class="nav-link" href="server-control-methods.html">Server Control Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_3">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ledger_accept.html">ledger_accept</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stop.html">stop</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validation_seed.html">validation_seed <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_4"></a>
+
+        <a class="nav-link" href="signing-methods.html">Signing Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign.html">sign</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sign_for.html">sign_for</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
+
+        <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect.html">connect</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_add.html">peer_reservations_add</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_del.html">peer_reservations_del</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer_reservations_list.html">peer_reservations_list</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peers.html">peers</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_6" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_6"></a>
+
+        <a class="nav-link" href="status-and-debugging-methods.html">Status and Debugging Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="consensus_info.html">consensus_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="feature.html">feature</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fetch_info.html">fetch_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get_counts.html">get_counts</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="print.html">print</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_info.html">validator_info</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator_list_sites.html">validator_list_sites</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validators.html">validators</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_4" aria-expanded="false" aria-controls="tree_nav_group_6_3_4"></a>
+
+        <a class="nav-link" href="peer-port-methods.html">Peer Port Methods</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check.html">Health Check</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="peer-crawler.html">Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="validator-list.html">Validator List Method</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="xrp-ledger-toml.html">xrp-ledger.toml File</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+    
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7" aria-expanded="false" aria-controls="tree_nav_group_7"></a>
+
+        <a class="nav-link" href="infrastructure.html">Infrastructure</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="commandline-usage.html">Commandline Usage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
+
+        <a class="nav-link" href="install-rippled.html">Install rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="system-requirements.html">System Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-centos-rhel-with-yum.html">Install on CentOS/Red Hat with yum</a>
+  </div>
+
+      
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-automatically-on-linux.html">Update Automatically on Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-centos-rhel.html">Update Manually on CentOS/Red Hat</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="capacity-planning.html">Capacity Planning</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippled-1-3-migration-instructions.html">rippled v1.3.x Migration Instructions <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
+
+        <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
+
+        <a class="nav-link" href="server-modes.html">Server Modes</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-validator.html">Run rippled as a Validator</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="run-rippled-as-a-stock-server.html">Run rippled as a Stock Server</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
+
+        <a class="nav-link" href="data-retention.html">Data Retention</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-full-history.html">Configure Full History</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="online-deletion.html">Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-online-deletion.html">Configure Online Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-advisory-deletion.html">Configure Advisory Deletion</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="history-sharding.html">History Sharding</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-history-sharding.html">Configure History Sharding</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+
+        <a class="nav-link" href="configure-peering.html">Peering</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-a-private-server.html">Configure a Private Server</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-link-compression.html">Enable Link Compression</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="forward-ports-for-peering.html">Forward Ports for Peering</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="manually-connect-to-a-specific-peer.html">Manually Connect to a Specific Peer</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="set-max-number-of-peers.html">Set Maximum Number of Peers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="use-a-peer-reservation.html">Use a Peer Reservation</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+
+        <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="load-a-saved-ledger-in-stand-alone-mode.html">Load a Saved Ledger in Stand-Alone Mode</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+
+        <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="health-check-interventions.html">Health Check Interventions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="understanding-log-messages.html">Understanding Log Messages</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-doesnt-sync.html">rippled Server Doesn't Sync</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server-wont-start.html">rippled Server Won't Start</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="fix-sqlite-tx-db-page-size-issue.html">Fix SQLite Transaction Database Page Size Issue <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+</nav>      </aside>
+    </div><!--/.row (main layout)-->
+  </div>
+
+<footer class="xrpl-footer" role="contentinfo">
+  <section class="container-fluid">
+    <div class="row">
+        <div class="col-lg">
+          <h5>About</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="xrp-ledger-overview.html" class="nav-link">XRPL Overview</a></li>
+            <li class="nav-item"><a href="uses.html" class="nav-link">Use Cases & Featured Projects</a></li>
+            <li class="nav-item"><a href="history.html" class="nav-link">History</a></li>
+            <li class="nav-item"><a href="xrp-overview.html" class="nav-link">XRP Overview</a></li>
+            <li class="nav-item"><a href="impact.html" class="nav-link">Impact</a></li>
+            <li class="nav-item"><a href="https://foundation.xrpl.org/" class="nav-link external-link">XRPL Foundation</a></li>
+            <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li class="nav-item"><a href="privacy-policy.html" class="nav-link">Privacy Policy</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Docs</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="docs.html" class="nav-link">Documentation</a></li>
+            <li class="nav-item"><a href="introduction.html" class="nav-link">Introduction</a></li>
+            <li class="nav-item"><a href="use-cases.html" class="nav-link">Use Cases</a></li>
+            <li class="nav-item"><a href="concepts.html" class="nav-link">Concepts</a></li>
+            <li class="nav-item"><a href="tutorials.html" class="nav-link">Tutorials</a></li>
+            <li class="nav-item"><a href="references.html" class="nav-link">References</a></li>
+            <li class="nav-item"><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Resources</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+            <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
+            <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
+            <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
+            <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
+            <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
+            <li class="nav-item"><a href="contribute-documentation.html" class="nav-link">Contribute Documentation</a></li>
+          </ul>
+        </div><!--/.col -->
+
+        <div class="col-lg">
+          <h5>Community</h5>
+          <ul class="nav footer-nav flex-column">
+            <li class="nav-item"><a href="contribute.html" class="nav-link">Contribute to the XRPL Community</a></li>
+            <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+            <li class="nav-item"><a href="ambassadors.html" class="nav-link">Ambassadors</a></li>
+            <li class="nav-item"><a href="developer-funding.html" class="nav-link">Developer Funding</a></li>
+            <li class="nav-item"><a href="https://jobs.xrpl.org/" class="nav-link external-link">XRPL Jobs</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
+            <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
+            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
+            <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
+          </ul>
+        </div><!--/.col -->
+
+  </section>
+
+  <section class="container-fluid mt-20 absolute-bottom-footer">
+
+    <div class="d-lg-flex row">
+      <a href="/" class="footer-brand"><img src="assets/img/XRPLedger_DevPortal-white.svg" class="logo"  height="24" alt="XRPL.org" /></a>
+      <span class="flex-grow-1">&nbsp;</span>
+      <div class="copyright-license">&copy; 2023 XRP Ledger. <a href="https://raw.githubusercontent.com/XRPLF/xrpl-dev-portal/master/LICENSE">Open Source.</a>
+      </div>
+    </div><!-- /.absolute_bottom_footer -->
+
+  </section>
+</footer>
+
+<!-- Jump to top button -->
+<a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="Jump to top of page"><i class="fa fa-arrow-up"></i></a>
+<script type="text/javascript" src="assets/js/jump-to-top.js"></script>
+
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="assets/vendor/fontawesome/css/font-awesome.min.css" />
+
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:en"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
+
+<!-- XRPL AI -->
+<script id="xrplai-options">
+  var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
+  var PROMPT_MODE = 'prompt';
+  var RUNTIME_LOCATION = 'ripplex';
+  var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `uPcw5BckVeKgyF2NE6la4VVFtA56OBQ4`;
+  var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+  var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
+  var CHAT_ENDPOINT = '/v1/chat';
+  var PROMPT_ENDPOINT = '/v1/chat';
+  var FEEDBACK_ENDPOINT = '/v1/feedback';
+  var BASE_URL = RUNTIME_LOCATION === 'ripplex'
+    ? DEV_XRPLAI_RIPPLEX_API_BASE_URL
+    : LOCALHOST_API_BASE_URL;
+  var CHAT_API_URL = `${BASE_URL}${CHAT_ENDPOINT}`;
+  var PROMPT_API_URL = `${BASE_URL}${PROMPT_ENDPOINT}`;
+  var FEEDBACK_API_URL = `${BASE_URL}${FEEDBACK_ENDPOINT}`;
+
+  /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+  window.markprompt = {
+    projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
+    defaultView: 'prompt',
+    options: {
+      chat: {
+        enabled: PROMPT_MODE === 'chat',
+        apiUrl: CHAT_API_URL,
+      },
+      feedback: {
+        enabled: true,
+        apiUrl: FEEDBACK_API_URL,
+      },
+      prompt: {
+        apiUrl: PROMPT_API_URL,
+        systemPrompt: `
+You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "".
+
+Context sections:
+---
+
+
+Question: ""
+
+Answer (including related code snippets if available and markdown links to relevant things):
+        `.trim(),
+      },
+      references: {
+        getHref: (reference) => {
+        const { file } = reference;
+        if (file && file.path) {
+          // /\/content\/[^_][^/]*\.md/.test(file.path)
+          if (file.path.includes('content/') && !file.path.includes('content/_') && file.path.endsWith('.md')) {
+            // Remove the extension if it's a regular content page that lives on xrpl.org
+            // return file.path.replace(/\.[^.]+$/, '');
+            // Change extension to html and remove content/ from the URL
+            if (file.path.endsWith('ja.md')) {
+              // Japanese lives at /ja/<filename>.html
+              return `ja/${file.path.replace(/content\//, '').replace(/\.ja\.md$/, '.html')}`
+            }
+            return file.path.replace(/content\//, '').replace(/\.md$/, '.html')
+          } else {
+            // Otherwise link to a file on the github repo such as .js or README.md
+            return `https://github.com/XRPLF/xrpl-dev-portal/blob/master/${file.path}`;
+          }
+        } else {
+          // Handle the case where file or file.path is missing
+          return '';
+        }
+      },
+        getLabel: (reference) => {
+          return reference.meta?.leadHeading?.value || reference.file?.title;
+        },
+      },
+      showBranding: false,
+      trigger: {
+        floating: true,
+      },
+      search: {
+        enabled: true,
+        provider: {
+          name: 'algolia',
+          apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+          appId: 'R39QY3MZC7',
+          indexName: 'xrpl',
+        },
+      }
+    },
+  };
+</script>
+<script id="initjs" type="module" src="https://www.unpkg.com/@xrpl/ai-web/dist/init.js"></script>
+
+
+</body>
+</html>
