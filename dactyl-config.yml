@@ -702,11 +702,11 @@ pages:
 
     # Networks and Servers -----------------------------------------------------------------
 
-    -   md: concepts/networks-and-servers/networks-and-servers.md
+    -   md: concepts/networks-and-servers/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/networks-and-servers/networks-and-servers.md"
+    -   md: "@i18n/ja/concepts/networks-and-servers/index.md"
         targets:
             - ja
 
@@ -736,11 +736,11 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/networks-and-servers/ledger-history/ledger-history.md
+    -   md: concepts/networks-and-servers/ledger-history/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/ledger-history.md"
+    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/index.md"
         targets:
             - ja
 
@@ -788,11 +788,11 @@ pages:
     # Consensus Protocol ------------------------------------------------------
 
         # TODO: "consensus" subpages are nested in nav but not filesystem; also, might be a mismatch with other contents here
-    -   md: concepts/consensus-protocol/consensus.md
+    -   md: concepts/consensus-protocol/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/consensus-protocol/consensus.md"
+    -   md: "@i18n/ja/concepts/consensus-protocol/index.md"
         targets:
             - ja
 
@@ -856,11 +856,11 @@ pages:
 
     # Ledgers -----------------------------------------------------------------
 
-    -   md: concepts/ledgers/ledgers.md
+    -   md: concepts/ledgers/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/ledgers/ledgers.md"
+    -   md: "@i18n/ja/concepts/ledgers/index.md"
         targets:
             - ja
 
@@ -892,11 +892,11 @@ pages:
         #       server management topics.
 
     # Transactions ------------------------------------------------------------
-    -   md: concepts/transactions/transactions.md
+    -   md: concepts/transactions/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/transactions/transactions.md"
+    -   md: "@i18n/ja/concepts/transactions/index.md"
         targets:
             - ja
 
@@ -916,20 +916,11 @@ pages:
         targets:
             - ja
 
-        # TODO: rename these to "secure-signing.md"
-    -   md: concepts/transactions/set-up-secure-signing.md
+    -   md: concepts/transactions/secure-signing.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/transactions/set-up-secure-signing.md"
-        targets:
-            - ja
-
-    -   md: concepts/transactions/multi-signing.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/transactions/multi-signing.md"
+    -   md: "@i18n/ja/concepts/transactions/secure-signing.md"
         targets:
             - ja
 
@@ -957,44 +948,35 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/transactions/finality-of-results.md
+    -   md: concepts/transactions/finality-of-results/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/transactions/finality-of-results.md"
+    -   md: "@i18n/ja/concepts/transactions/finality-of-results/index.md"
         targets:
             - ja
 
-    -   md: concepts/transactions/look-up-transaction-results.md
+    -   md: concepts/transactions/finality-of-results/look-up-transaction-results.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/transactions/look-up-transaction-results.md"
+    -   md: "@i18n/ja/concepts/transactions/finality-of-results/look-up-transaction-results.md"
         targets:
             - ja
 
-    -   md: concepts/transactions/transaction-malleability.md
+    -   md: concepts/transactions/finality-of-results/transaction-malleability.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/transactions/transaction-malleability.md"
+    -   md: "@i18n/ja/concepts/transactions/finality-of-results/transaction-malleability.md"
         targets:
             - ja
 
-    # TODO: match filename to page title
-    -   md: concepts/transactions/about-canceling-a-transaction.md
+    -   md: concepts/transactions/finality-of-results/canceling-a-transaction.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/transactions/about-canceling-a-transaction.md"
-        targets:
-            - ja
-
-    -   md: concepts/transactions/tickets.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/transactions/tickets.md"
+    -   md: "@i18n/ja/concepts/transactions/finality-of-results/canceling-a-transaction.md"
         targets:
             - ja
 
@@ -1307,12 +1289,28 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/accounts/multi-signing.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/accounts/multi-signing.md"
+        targets:
+            - ja
+
     -   md: concepts/accounts/depositauth.md
         targets:
             - en
 
     # TODO: translate table(depositauth-semantics-table.html)
     -   md: "@i18n/ja/concepts/accounts/depositauth.md"
+        targets:
+            - ja
+
+    -   md: concepts/accounts/tickets.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/concepts/accounts/tickets.md"
         targets:
             - ja
 
@@ -2216,79 +2214,79 @@ pages:
         targets:
             - ja
 
-    -   md: references/protocol-reference/index.md
+    -   md: references/protocol/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/index.md"
+    -   md: "@i18n/ja/references/protocol/index.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/data-types/basic-data-types.md
+    -   md: references/protocol/data-types/basic-data-types.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/data-types/basic-data-types.md"
+    -   md: "@i18n/ja/references/protocol/data-types/basic-data-types.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/data-types/base58-encodings.md
+    -   md: references/protocol/data-types/base58-encodings.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/data-types/base58-encodings.md"
+    -   md: "@i18n/ja/references/protocol/data-types/base58-encodings.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/data-types/currency-formats.md
+    -   md: references/protocol/data-types/currency-formats.md
         targets:
             - en
 
         # TODO: update translation to add a table like in the English version
-    -   md: "@i18n/ja/references/protocol-reference/data-types/currency-formats.md"
+    -   md: "@i18n/ja/references/protocol/data-types/currency-formats.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/data-types/nftoken.md
+    -   md: references/protocol/data-types/nftoken.md
         targets:
             - en
 
         # TODO: update translation to use the term "sequence number" rather than
         # "dumb sequential"
-    -   md: "@i18n/ja/references/protocol-reference/data-types/nftoken.md"
+    -   md: "@i18n/ja/references/protocol/data-types/nftoken.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-data-formats.md
+    -   md: references/protocol/ledger-data/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-data-formats.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/index.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-header.md
+    -   md: references/protocol/ledger-data/ledger-header.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-header.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-header.md"
         targets:
             - ja
 
         # TODO: translate
-    -   md: references/protocol-reference/ledger-data/ledger-entry-common-fields.md
+    -   md: references/protocol/ledger-data/common-fields.md
         targets:
             - en
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/index.md"
         targets:
             - ja
 
@@ -2312,517 +2310,517 @@ pages:
             - en
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/accountroot.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/accountroot.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amendments.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/amendments.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/amendments.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/amendments.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/amm.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/amm.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/amm.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/amm.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/check.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/check.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/check.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/check.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/directorynode.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/directorynode.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/directorynode.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/escrow.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/escrow.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/escrow.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/escrow.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/feesettings.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/feesettings.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/negativeunl.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/negativeunl.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/nftokenpage.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/offer.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/offer.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/offer.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/offer.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/paychannel.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/paychannel.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/ripplestate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/ripplestate.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/signerlist.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/signerlist.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/ledger-data/ledger-entry-types/ticket.md
+    -   md: references/protocol/ledger-data/ledger-entry-types/ticket.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/ledger-data/ledger-entry-types/ticket.md"
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/ticket.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-formats.md
+    -   md: references/protocol/transactions/index.md
         targets:
             - en
 
         # TODO: update blurb translation based on English version
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-formats.md"
+    -   md: "@i18n/ja/references/protocol/transactions/index.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-common-fields.md
+    -   md: references/protocol/transactions/common-fields.md
         targets:
             - en
 
         # TODO: update translation with rippled 1.11.0 changes
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-common-fields.md"
+    -   md: "@i18n/ja/references/protocol/transactions/common-fields.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/transaction-types.md
+    -   md: references/protocol/transactions/types/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/transaction-types.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/index.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/accountset.md
+    -   md: references/protocol/transactions/types/accountset.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/accountset.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/accountset.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/accountdelete.md
+    -   md: references/protocol/transactions/types/accountdelete.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/accountdelete.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/accountdelete.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammbid.md
+    -   md: references/protocol/transactions/types/ammbid.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammbid.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ammbid.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammcreate.md
+    -   md: references/protocol/transactions/types/ammcreate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammcreate.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ammcreate.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammdelete.md
+    -   md: references/protocol/transactions/types/ammdelete.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammdelete.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ammdelete.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammdeposit.md
+    -   md: references/protocol/transactions/types/ammdeposit.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammdeposit.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ammdeposit.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammvote.md
+    -   md: references/protocol/transactions/types/ammvote.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammvote.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ammvote.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
+    -   md: references/protocol/transactions/types/ammwithdraw.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ammwithdraw.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ammwithdraw.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/checkcancel.md
+    -   md: references/protocol/transactions/types/checkcancel.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/checkcancel.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/checkcancel.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/checkcash.md
+    -   md: references/protocol/transactions/types/checkcash.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/checkcash.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/checkcash.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/checkcreate.md
+    -   md: references/protocol/transactions/types/checkcreate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/checkcreate.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/checkcreate.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/clawback.md
+    -   md: references/protocol/transactions/types/clawback.md
         status: not_enabled
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/clawback.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/clawback.md"
         status: not_enabled
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/depositpreauth.md
+    -   md: references/protocol/transactions/types/depositpreauth.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/depositpreauth.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/depositpreauth.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/escrowcancel.md
+    -   md: references/protocol/transactions/types/escrowcancel.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/escrowcancel.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/escrowcancel.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/escrowcreate.md
+    -   md: references/protocol/transactions/types/escrowcreate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/escrowcreate.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/escrowcreate.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/escrowfinish.md
+    -   md: references/protocol/transactions/types/escrowfinish.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/escrowfinish.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/escrowfinish.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
+    -   md: references/protocol/transactions/types/nftokenacceptoffer.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/nftokenacceptoffer.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenburn.md
+    -   md: references/protocol/transactions/types/nftokenburn.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokenburn.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/nftokenburn.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
+    -   md: references/protocol/transactions/types/nftokencanceloffer.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/nftokencanceloffer.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
+    -   md: references/protocol/transactions/types/nftokencreateoffer.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/nftokencreateoffer.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/nftokenmint.md
+    -   md: references/protocol/transactions/types/nftokenmint.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokenmint.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/nftokenmint.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/offercancel.md
+    -   md: references/protocol/transactions/types/offercancel.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/offercancel.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/offercancel.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/offercreate.md
+    -   md: references/protocol/transactions/types/offercreate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/offercreate.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/offercreate.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/payment.md
+    -   md: references/protocol/transactions/types/payment.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/payment.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/payment.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelclaim.md
+    -   md: references/protocol/transactions/types/paymentchannelclaim.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/paymentchannelclaim.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/paymentchannelclaim.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelcreate.md
+    -   md: references/protocol/transactions/types/paymentchannelcreate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/paymentchannelcreate.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/paymentchannelcreate.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/paymentchannelfund.md
+    -   md: references/protocol/transactions/types/paymentchannelfund.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/paymentchannelfund.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/paymentchannelfund.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/setregularkey.md
+    -   md: references/protocol/transactions/types/setregularkey.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/setregularkey.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/setregularkey.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/signerlistset.md
+    -   md: references/protocol/transactions/types/signerlistset.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/signerlistset.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/signerlistset.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/ticketcreate.md
+    -   md: references/protocol/transactions/types/ticketcreate.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/ticketcreate.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/ticketcreate.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-types/trustset.md
+    -   md: references/protocol/transactions/types/trustset.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-types/trustset.md"
+    -   md: "@i18n/ja/references/protocol/transactions/types/trustset.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md
+    -   md: references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md"
+    -   md: "@i18n/ja/references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.md
+    -   md: references/protocol/transactions/pseudo-transaction-types/enableamendment.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.md"
+    -   md: "@i18n/ja/references/protocol/transactions/pseudo-transaction-types/enableamendment.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/setfee.md
+    -   md: references/protocol/transactions/pseudo-transaction-types/setfee.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/setfee.md"
+    -   md: "@i18n/ja/references/protocol/transactions/pseudo-transaction-types/setfee.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
+    -   md: references/protocol/transactions/pseudo-transaction-types/unlmodify.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md"
+    -   md: "@i18n/ja/references/protocol/transactions/pseudo-transaction-types/unlmodify.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/transaction-results.md
+    -   md: references/protocol/transactions/transaction-results/transaction-results.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/transaction-results.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/transaction-results.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/tec-codes.md
+    -   md: references/protocol/transactions/transaction-results/tec-codes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tec-codes.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tec-codes.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/tef-codes.md
+    -   md: references/protocol/transactions/transaction-results/tef-codes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tef-codes.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tef-codes.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/tel-codes.md
+    -   md: references/protocol/transactions/transaction-results/tel-codes.md
         targets:
             - en
 
         # TODO: update translation
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tel-codes.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tel-codes.md"
         outdated_translation: true
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/tem-codes.md
+    -   md: references/protocol/transactions/transaction-results/tem-codes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tem-codes.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tem-codes.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/ter-codes.md
+    -   md: references/protocol/transactions/transaction-results/ter-codes.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/ter-codes.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/ter-codes.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-results/tes-success.md
+    -   md: references/protocol/transactions/transaction-results/tes-success.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-results/tes-success.md"
+    -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tes-success.md"
         targets:
             - ja
 
-    -   md: references/protocol-reference/transactions/transaction-metadata.md
+    -   md: references/protocol/transactions/metadata.md
         targets:
             - en
 
         # TODO: update translation to latest English version
-    -   md: "@i18n/ja/references/protocol-reference/transactions/transaction-metadata.md"
+    -   md: "@i18n/ja/references/protocol/transactions/metadata.md"
         outdated_translation: true
         targets:
             - ja
@@ -2836,12 +2834,12 @@ pages:
             - en
             - ja
 
-    -   md: references/protocol-reference/serialization.md
+    -   md: references/protocol/binary-format.md
         targets:
             - en
 
         # TODO: update translation with new/updated sections from the English version
-    -   md: "@i18n/ja/references/protocol-reference/serialization.md"
+    -   md: "@i18n/ja/references/protocol/binary-format.md"
         outdated_translation: true
         targets:
             - ja
@@ -2955,11 +2953,11 @@ pages:
             - en
             - ja
 
-    -   md: references/http-websocket-apis/api-conventions/api-conventions.md
+    -   md: references/http-websocket-apis/api-conventions/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/api-conventions.md"
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/index.md"
         targets:
             - ja
 
@@ -3017,11 +3015,11 @@ pages:
 
 # rippled Public Methods
 
-    -   md: references/http-websocket-apis/public-api-methods/public-api-methods.md
+    -   md: references/http-websocket-apis/public-api-methods/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/public-api-methods.md"
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/index.md"
         targets:
             - ja
 
@@ -3447,11 +3445,11 @@ pages:
         targets:
             - ja
 
-    -   md: references/http-websocket-apis/admin-api-methods/admin-api-methods.md
+    -   md: references/http-websocket-apis/admin-api-methods/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/admin-api-methods.md"
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/index.md"
         targets:
             - ja
 
@@ -4997,12 +4995,13 @@ pages:
 
     # Contribute Documentation ------------------------------------------------
 
-    -   md: resources/contribute-documentation/contribute-documentation.md
+    -   md: resources/contribute-documentation/index.md
         top_nav_grouping: Join In
         targets:
             - en
 
-    -   md: "@i18n/ja/resources/contribute-documentation/contribute-documentation.md"
+    -   md: "@i18n/ja/resources/contribute-documentation/index.md"
+        outdated_translation: true
         top_nav_grouping: 参加する
         targets:
             - ja
