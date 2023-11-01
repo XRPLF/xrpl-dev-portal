@@ -1,17 +1,17 @@
 /* Use Cases ---------------------------------------------------------------- */
 
 // Define each category's logos
-$infrastructure-logos: "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
-$developer-tooling-logos: "blockforce", "Evernode", "threezy", "tokenize";
-$interoperability-logos: "Allbridge", "futureverse", "multichain";
+$infrastructure-logos:  "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
+$developer-tooling-logos: "Cryptum", "Evernode", "threezy", "tokenize";
+$interoperability-logos: "multichain";
 $wallet-logos:  "Crossmark", "Edge", "gem-wallet", "Xumm";
 $nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
 $exchanges-logos: "sologenic_dex", "XPMarket";
-$gaming-logos: "Forte", "Futureverse", "ledger-city", "onXRP", "styngr";
+$gaming-logos: "Forte", "ledger-city";
 $security-logos: "Anchain";
 $payments-logos: "ripple", "SuperMojo";
 $cbdc-logos: "ripple";
-$carbon-markets-logos: "carbonland-trust", "Rootmaker";
+$carbon-markets-logos: "carbonland-trust";
 $custody-logos: "Gatehub", "Bitgo";
 
 // Create a mixin to handle the common logic
@@ -28,7 +28,19 @@ $custody-logos: "Gatehub", "Bitgo";
     }
   }
 }
-
+#use_case_companies_list {
+  #threezy {
+    .biz-logo {
+      max-height: 40px;
+      content: url("../img/uses/modalLogos/threezy.png");
+    }
+  }
+}
+html.light{
+  .Cryptum{
+    content: url(../img/uses/lightmode/cryptum.svg)
+  }
+}
 // Use the mixin for each category
 @include create-logo-classes($infrastructure-logos);
 @include create-logo-classes($developer-tooling-logos);

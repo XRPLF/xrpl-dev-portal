@@ -10,12 +10,12 @@ $(document).ready(() => {
       "onthedex",
     ],
     developer_tooling: [
-      "blockforce",
+      "Cryptum",
       "Evernode",
       "threezy",
       "tokenize",
     ],
-    interoperability: ["Allbridge", "futureverse", "multichain"],
+    interoperability: ["multichain"],
     wallet: [
       "Bitfrost",
       "Crossmark",
@@ -35,15 +35,12 @@ $(document).ready(() => {
     exchanges: ["sologenic_dex", "XPMarket"],
     gaming: [
       "Forte",
-      "Futureverse",
       "ledger-city",
-      "onXRP",
-      "styngr",
     ],
     security: ["Anchain"],
     payments: ["ripple", "SuperMojo"],
     cbdc: ["ripple"],
-    sustainability: ["carbonland-trust", "Rootmaker"],
+    sustainability: ["carbonland-trust"],
     custody: ["Gatehub", "Bitgo"],
   };
   // Helper function to create a logo element
@@ -129,6 +126,16 @@ $(document).ready(() => {
           topRowDiv.appendChild(logoElem);
         }
         for (let i = 4; i < 7; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+      }else if (logoArray.length === 8) {
+        // 4 on top, 4 on bottom
+        for (let i = 0; i < 4; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 4; i < 8; i++) {
           const logoElem = createLogoElement(logoArray[i], title, id);
           bottomRowDiv.appendChild(logoElem);
         }
