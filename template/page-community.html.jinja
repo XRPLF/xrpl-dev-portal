@@ -16,7 +16,101 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block main %}
-
+{% set events = [
+    { "name": "Q3 2023 Ripple XRP Meetup",      
+    "description": "Join your fellow Ripple XRP Enthusiasts for a 90-minute discussion. Topics: XRP, Flare, XRPL, Ripple (Company), General Crypto QA.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/ripple-xrp-community/events/292740612",
+    "location": "Online",
+    "date": "July 13, 2023",
+    "image": "Virtual-Event.png",
+    "end_date": "July 13, 2023"
+    },
+    { "name": "XRPL Toronto Meetup",      
+    "description": "Prepare for an evening of XRPL Toronto Meetup – a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    "location": "Downtown Toronto",
+    "date": "August 14, 2023",
+    "image": "event-meetup-toronto@2x.jpg",
+    "end_date": "August 14, 2023"
+    },
+    { "name": "XRPL London Meetup (Accelerator Edition)",      
+    "description": "Join us for a Happy Hour hosted by the XRPL Accelerator Team! Connect with fellow start-ups in the blockchain space and gain insights into cutting-edge projects and founders.",
+    "type": "meetup",
+    "link": "https://lu.ma/xrplacceleratorhappyhour",
+    "location": "Central London",
+    "date": "September 04, 2023",
+    "image": "event-meetup-london.png",
+    "end_date": "September 04, 2023"
+    },
+    {
+    "name": "XRPL Accelerator Demo Day",      
+    "description": "​​Join us for our very first XRPL Accelerator Demo Day in London. Witness pitches from nine portfolio startups, engage in Q&A sessions, and network with founders and investors. ",
+    "type": "conference",
+    "link": "https://lu.ma/xrplaccelerator",
+    "location": "Central London and Online",
+    "date": "September 05, 2023",
+    "image": "Conference.png",
+    "end_date": "September 05, 2023" 
+    },
+    { "name": "XRPL Hackathon - Apex 2023",      
+    "description": "Join the XRPL Hackathon - APEX 2023, a week before the XRP Ledger's annual developer conference. Explore the Future of Finance and Web3 tracks, collaborate, learn, and compete for 10K USD in prizes.",
+    "type": "hackathon",
+    "link": "https://lu.ma/4h3bqfw1",
+    "location": "Delft, Netherlands ",
+    "date": "August 30, 2023 - August 31, 2023",
+    "image": "Hackathons.png",
+    "end_date": "August 31, 2023"
+    },
+    { "name": "XRPL Grants Info Session: Financial Inclusion Focused",      
+    "description": "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.",
+    "type": "info-session",
+    "link": "https://www.youtube.com/watch?v=TgLaAXTZY7Q",
+    "location": "Virtual - Zoom",
+    "date": "September 05, 2023",
+    "image": "InfoSessions.png",
+    "end_date": "September 05, 2023"
+    },
+    { "name": "XRPL South Korea Meetup - XCCESS",      
+    "description": "We are excited to introduce the XRP Ledger XCCESS - an exclusive meetup bringing together the brightest minds, innovators, and enthusiasts from South Korea's blockchain industry. Join us for an engaging experience during the Korea Blockchain Week.",
+    "type": "meetup",
+    "link": "https://lu.ma/xrplxccess",
+    "location": "South Korea - JBK Tower",
+    "date": "September 06, 2023",
+    "image": "SouthKoreaMeetup.png",
+    "end_date": "September 06, 2023"
+    },
+    { "name": "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",      
+    "description": "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
+    "type": "info-session",
+    "link": "https://www.youtube.com/watch?v=BbGu0QC5WEE",
+    "location": "Virtual - Zoom",
+    "date": "September 06, 2023",
+    "image": "InfoSessions.png",
+    "end_date": "September 06, 2023"
+    },
+    { "name": "XRPL Developers Discord AMA: Edge Wallet",      
+    "description": "Join us for a live chat on Discord and learn more about Edge Wallet and how they are building on the XRP Ledger.",
+    "type": "ama",
+    "link": "http://xrpldevs.org/",
+    "location": "XRPL Developers Discord",
+    "date": "October 13, 2023",
+    "image": "AMAs.png",
+    "end_date": "October 13, 2023"
+    },
+    
+    { "name": "XRPL Developers Reddit AMA: Real World Assets",      
+    "description": "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
+    "type": "ama",
+    "link": "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
+    "location": "Virtual - Reddit",
+    "date": "October 17, 2023",
+    "image": "AMAs.png",
+    "end_date": "October 17, 2023"
+    },
+]
+%}
 
 <section class="text-center" id="community-heading" style="position: relative;">
 
@@ -49,29 +143,176 @@
         <tr>
             <td class="td-img"><img src="./assets/img/community/ic_Discord.png" alt="discord icon"></td>
             <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
+             </td>
+             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img src="./assets/img/community/ic_Twitter.png" alt="twitter icon"></td>
             <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
+             </td>
+<td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img src="./assets/img/community/ic_Youtube.png" alt="youtube icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
+            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+            <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img src="./assets/img/community/ic_XRPL.png" alt="youtube icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
+            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+            <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
     </table>
 </section>
+
+<section class="xrpl-events-section">
+<div class="header-div">
+    <div class="header">
+        <h6>XRPL Events</h6>
+        <h4>Check out global events hosted <br class="d-none-sm" /> by the XRPL community</h4>
+    </div>
+    <p class="description">Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.</p>
+    <a class="btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
+</div>
+    <div class="upcoming-event">
+        <p class="upcoming-label">UPCOMING EVENT</p>
+        <div class="days-count">13 days</div>
+        <h5>XRPL Warsaw Meetup 2023</h5>
+
+        <p class="event-details mb-2 d-flex icon"> <span class="icon-location"> </span>September 08-09, 2023</p>
+        <p class="event-location d-flex icon"> <span class="icon-date"> </span>Warsaw, Poland</p>
+    </div>
+</section>
+<section class="carousel">
+    <div class="image-container">
+      <img id="left-image" src="" alt="Left Event Image">
+      <div class="center-image-wrapper">
+          <img id="center-image" src="" alt="Featured Event Image">
+          <div class="event-info">
+              <span class="name" id="event-name"></span>
+              <div class="flex-align">
+                <span class="icon-location"> </span>
+                <span id="event-location"></span>
+              </div>
+              <div class="flex-align">
+                <span class="icon-date">  </span>
+                <span id="event-date"> </span>
+              </div>
+          </div>
+      </div>
+      <img id="right-image" src="" alt="Right Event Image">
+    </div>
+
+    <div class="arrow-wrapper">
+      <button class="arrow-button left-arrow" id="prev-btn">
+        <img  alt="left arrow">
+      </button>
+      <button class="arrow-button right-arrow" id="next-btn">
+        <img  alt="right arrow">
+      </button>
+    </div>
+</section>
+
+<section class="community-funding">
+    <div class="stats">
+        <div class="stacked-stats">
+            <div class="stat">
+                <span class="small-text">funding been awarded</span>
+                <div class="number" >$13M+</div>
+            </div>
+            <div class="stat">
+                <span class="small-text">teams awarded globally</span>
+                <div class="number" >120+</div>
+            </div>
+        </div>
+        <div class="stat">
+            <span class="small-text">countries represented</span>
+            <div class="number">28+</div>
+        </div>
+    </div>
+    <div class="funding-section">
+        <span class="small-text">XRPL Developer Funding</span>
+        <h2>Funding Opportunities for Blockchain Businesses</h2>
+        <p>If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.</p>
+     <a class="btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
+    </div>
+</section>
+
+<section class="community-spotlight-wrapper">
+    <div class="community-spotlight">
+        <h6 class="spotlight-title">XRPL Community Spotlight</h6>
+        <h4 class="spotlight-subtitle">Showcase your blockchain project, application, or product</h4>
+        <p class="spotlight-description">Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.</p>
+        <a class="w-222 btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Submit Your Project{% endtrans %}</a>
+    </div>
+    <div class="projects-wrapper">
+        <div class="project-card top-left">
+            <div class="card-image"></div>
+            <div class="card-details">
+              <h6 class="project-title">XRPCafe</h6>
+              <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <a href="" class="view-project external-link">View Project</a>
+            </div>
+        </div>
+        <div class="project-card bottom-right">
+              <div class="card-image"></div>
+            <div class="card-details">
+              <h6 class="project-title">XRPCafe</h6>
+              <p class="project-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <a href="" class="view-project external-link">View Project</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bottom-cards-section">
+  <div class="com-card">
+    <img class="top-left-img" />
+    <div class="card-content">
+      <h6 class="card-title">Contribute to Consensus </h6>
+      <h6 class="card-subtitle">Run an XRP Ledger network node </h6>
+      <p class="card-description">Thank you for your interest in contributing to XRPL.org. </p>
+      <div class="card-links">
+        <a class="com-card-link" href="">{% trans %}The Rippled Server{% endtrans %}</a>
+        <a class="com-card-link">Join UNL </a>
+        <a class="com-card-link">Install & Configure</a>
+        <a class="com-card-link">Troubleshooting</a>    
+      </div>
+     </div>
+  </div>
+  <div class="com-card">
+    <img class="bottom-right-img" />
+    <div class="card-content">
+      <h6 class="card-title">XRPL Careers </h6>
+      <h6 class="card-subtitle">Discover your next career opportunity in the XRPL community </h6>
+      <p class="card-description">Teams across the XRPL community are looking for talented individuals to help build their next innovation. </p>
+      <div class="card-links">
+      <a class="com-card-link">View Open Roles</a>
+      </div>
+    </div>
+  </div>
+  <div class="com-card">
+    <img class="top-right-img" />
+    <div class="card-content">
+      <h6 class="card-title">Contribute to XRPL.org </h6>
+      <h6 class="card-subtitle">A Community-Driven Resource for All Things XRPL.org </h6>
+      <p class="card-description">Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes. </p>
+      <div class="card-links">
+      <a class="com-card-link">Read Contributor Guidelines </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 {% endblock %}
 
 
@@ -82,14 +323,8 @@
 
 <!-- Light version for network node looks ok for both light/dark.-->
 <!-- Dark version for other two and using filter invert and adjust brightness for light mode -->
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/network-node-light.json"></script>
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/XRPL-grants-dark.json"></script>
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/community/careers-dark.json"></script>
-
-
+<script type="application/javascript" src="{{currentpage.prefix}}assets/js/contribute-carousel.js"></script>
 {% endblock %}
-
-
 {% block analytics %}
     <script type="application/javascript">
     window.dataLayer = window.dataLayer || [];

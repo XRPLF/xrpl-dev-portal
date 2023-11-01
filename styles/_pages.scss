@@ -579,6 +579,12 @@
   }
 }
 
+.autoscroll-content {
+  animation: autoscroll 15s linear infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 300px; /* adjust this value based on your design requirements */
+}
 // Community Page
 #community-magenta {
   position: absolute;
