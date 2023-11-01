@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/@i18n/ja/concepts/transactions/look-up-transaction-results.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/@i18n/ja/concepts/transactions/finality-of-results/look-up-transaction-results.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -522,18 +522,18 @@
 </code></pre></div>
 <p>トランザクションメタデータを処理する際に探すその他の項目は、トランザクションのタイプによって異なります。</p>
 <h3 id="支払い">支払い<a aria-hidden="true" class="hover_anchor" href="#支払い"><i class="fa fa-link"></i></a></h3>
-<p><a href="payment.html">Paymentトランザクション</a>はXRP間の直接トランザクション、<a href="cross-currency-payments.html">複数通貨間の支払い</a>、または<a href="issued-currencies.html">（XRP以外の）発行済み通貨</a>での直接トランザクションを表します。発行済み通貨からXRPへのトランザクション、またはXRPから発行済み通貨へのトランザクションなど、XRP間の直接トランザクション以外はすべて<a href="partial-payments.html">partial payment</a>が可能です。</p>
+<p><a href="payment.html">Paymentトランザクション</a>はXRP間の直接トランザクション、<a href="cross-currency-payments.html">複数通貨間の支払い</a>、または<a href="tokens.html">（XRP以外の）トークン</a>での直接トランザクションを表します。トークンからXRPへのトランザクション、またはXRPからトークンへのトランザクションなど、XRP間の直接トランザクション以外はすべて<a href="partial-payments.html">partial payment</a>が可能です。</p>
 <p>XRPの額は、<code>AccountRoot</code>オブジェクトの<code>Balance</code>フィールドで追跡されます。（XRPは<a href="escrow-object.html">Escrowオブジェクト</a>および<a href="paychannel.html">PayChannelオブジェクト</a>にも存在する可能性がありますが、Paymentトランザクションがそれらに影響を及ぼすことはありません。）</p>
 <p>支払いでいくら支払われたかを確認するには、必ず<a href="partial-payments.html#delivered_amountフィールド">delivered_amountフィールド</a>を使用する必要があります。</p>
 <p>支払いにLedgerEntryTypeが<code>AccountRoot</code>の<code>CreatedNode</code>が含まれている場合は、その支払いによってレジャーの<a href="accounts.html#アカウントの作成">新しいアカウントへの資金供給</a>が行われたことを意味します。</p>
-<h4 id="発行済み通貨での支払い">発行済み通貨での支払い<a aria-hidden="true" class="hover_anchor" href="#発行済み通貨での支払い"><i class="fa fa-link"></i></a></h4>
-<p>発行済み通貨を利用する支払いは、多少複雑です。</p>
-<p>発行済み通貨残高の変更は、<a href="trust-lines-and-issuing.html">トラストライン</a>を表す<a href="ripplestate.html">RippleStateオブジェクト</a>にすべて反映されます。一方の当事者のトラストラインで残高が増加すると、相手側当事者の残高は同じ額だけ減少すると考えられます。このことは、メタデータには、RippleStateオブジェクトの共有<code>Balance</code>に対する1回の変更としてのみ記録されます。この変更が「増加」または「減少」のどちらで記録されるかは、どちらのアカウントのアドレスが数値として大きいかによって決まります。</p>
+<h4 id="トークンでの支払い">トークンでの支払い<a aria-hidden="true" class="hover_anchor" href="#トークンでの支払い"><i class="fa fa-link"></i></a></h4>
+<p>トークンを利用する支払いは、多少複雑です。</p>
+<p>トークン残高の変更は、<a href="trust-lines-and-issuing.html">トラストライン</a>を表す<a href="ripplestate.html">RippleStateオブジェクト</a>にすべて反映されます。一方の当事者のトラストラインで残高が増加すると、相手側当事者の残高は同じ額だけ減少すると考えられます。このことは、メタデータには、RippleStateオブジェクトの共有<code>Balance</code>に対する1回の変更としてのみ記録されます。この変更が「増加」または「減少」のどちらで記録されるかは、どちらのアカウントのアドレスが数値として大きいかによって決まります。</p>
 <p>1回の支払いは、複数のトラストラインとオーダーブックで構成される長い<a href="paths.html">パス</a>をたどる場合があります。間接的に当事者間を接続する複数のトラストラインの残高を変更するプロセスを<a href="rippling.html">Rippling</a>と呼びます。トランザクションの<code>Amount</code>フィールドに指定された<code>issuer</code>に応じて、支払先アカウントに結び付けられている複数のトラストライン（<code>RippleState</code>アカウント）で支払額を分割することもできます。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> 変更されたオブジェクトがメタデータに表示される順序は、支払いを処理するときにこれらのオブジェクトにアクセスした順序とは必ずしも一致しません。<code>AffectedNodes</code>メンバーを並べ替えて資金がレジャーまでたどったパスを再構成すると、支払いの実行の詳細を把握しやすくなります。</p>
 <p>複数通貨間の支払いでは、<a href="offer.html">オファー</a>の一部または全額を消費して、通貨コードとイシュアーが異なる通貨間で変更が行われます。トランザクションで<code>Offer</code>タイプの<code>DeletedNode</code>オブジェクトが示される場合は、全額が消費されたオファーを示しているか、または処理の時点で<a href="offers.html#オファーのライフサイクル">期限切れになるか、または資金化されない</a>ことがわかったオファーを示している可能性があります。トランザクションで<code>Offer</code>タイプの<code>ModifiedNode</code>が示される場合は、オファーの一部が消費されたことを示します。</p>
-<p><a href="trustset.html">トラストラインの<code>QualityIn</code>および<code>QualityOut</code>設定</a>は、トラストラインの一方の側における発行済み通貨の額に影響を与える可能性があるため、残高の数値の変化は、送金元におけるその通貨の額と異なります。<code>delivered_amount</code>は、受取人による評価額でいくら送金されたのかを示します。</p>
-<p>送金額と受取額が<a href="currency-formats.html#発行済み通貨の精度">発行済み通貨の精度</a>の範囲外である場合は、一方のトランザクションで0に丸められる金額が、他方から引き出される可能性があります。そのため、両当事者が、お互いの残高に10<sup>16</sup>倍の差があるときに取引をすると、丸めることによって少額の発行済み通貨が「作成」または「消却」される可能性があります。（XRPは丸められないので、XRPではこの状況は発生しません。）</p>
+<p><a href="trustset.html">トラストラインの<code>QualityIn</code>および<code>QualityOut</code>設定</a>は、トラストラインの一方の側におけるトークンの金額に影響を与える可能性があるため、残高の数値の変化は、送金元におけるその通貨の額と異なります。<code>delivered_amount</code>は、受取人による評価額でいくら送金されたのかを示します。</p>
+<p>送金額と受取額が<a href="currency-formats.html#トークンの精度">トークンの精度</a>の範囲外である場合は、一方のトランザクションで0に丸められる金額が、他方から引き出される可能性があります。そのため、両当事者が、お互いの残高に10<sup>16</sup>倍の差があるときに取引をすると、丸めることによって少額のトークンが「作成」または「消却」される可能性があります。（XRPは丸められないので、XRPではこの状況は発生しません。）</p>
 <p><a href="paths.html">パス</a>の長さに応じて、複数通貨間の支払いのメタデータは <em>長く</em> なります。例えば、<a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">トランザクション8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B <i aria-hidden="true" class="fa fa-external-link"></i></a>では、rHaaans...が発行した2.788 GCBを送金しXRPを支払いますが、2人のイシュアーのUSDを経由し、2つのアカウントにXRPを支払います。r9ZoLsJからのEURをETHと交換する資金供給されていないオファーを削除し、変更された合計17の異なるレジャーオブジェクトのブックキーピングを行います。</p>
 <h3 id="オファー">オファー<a aria-hidden="true" class="hover_anchor" href="#オファー"><i class="fa fa-link"></i></a></h3>
 <p><a href="offercreate.html">OfferCreateトランザクション</a>では、成立した額や、トランザクションが<code>tfImmediateOrCancel</code>などのフラグを使用したかどうかによって、レジャーにオブジェクトが作成される場合と作成されない場合があります。トランザクションがレジャーのオーダーブックに新しいオファーを追加したどうかを確認するには、LedgerEntryTypeが<code>Offer</code>の<code>CreatedNode</code>エントリーを探します。例:</p>
@@ -556,7 +556,7 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>タイプ<code>Offer</code>の<code>ModifiedNode</code>は、成立し、かつ一部が消費されたオファーを示します。1つのトランザクションで多数のオファーを消費できます。2種類の発行済み通貨を交換するオファーが、<a href="autobridging.html">オートブリッジング</a>によってXRPを交換するオファーを消費することもあります。両替取引のすべてまたは一部をオートブリッジングできます。</p>
+<p>タイプ<code>Offer</code>の<code>ModifiedNode</code>は、成立し、かつ一部が消費されたオファーを示します。1つのトランザクションで多数のオファーを消費できます。2種類のトークンを交換するオファーが、<a href="autobridging.html">オートブリッジング</a>によってXRPを交換するオファーを消費することもあります。両替取引のすべてまたは一部をオートブリッジングできます。</p>
 <p>LedgerEntryTypeが<code>Offer</code>の<code>DeletedNode</code>は、すべて消費された成立オファー、処理の時点で<a href="offers.html#オファーのライフサイクル">期限切れになるか、または資金化されない</a>ことがわかったオファー、または新しいオファーを発行する過程でキャンセルされたオファーを示すことができます。キャンセルされたオファーは識別できます。これは、キャンセルされたオファーを発行した<code>Account</code>は、そのオファーを削除するトランザクションの送信元であるためです。</p>
 <p>削除されたオファーの例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
@@ -585,7 +585,7 @@
 </code></pre></div>
 <p>オファーでは、両方のタイプの<a href="directorynode.html">DirectoryNodeオブジェクト</a>を作成、削除、変更して、オファーの発行者と、どのオファーがどのような為替レートで利用可能になっているのかを追跡できます。一般的に、ユーザーがこのブックキーピングに細かな注意を払う必要はありません。</p>
 <p>削除するオファーがなかった場合でも、<a href="offercancel.html">OfferCancelトランザクション</a>には、コード<code>tesSUCCESS</code>が含まれる可能性があります。トランザクションが実際にオファーを削除したことを確認するには、LedgerEntryTypeが<code>Offer</code>の<code>DeletedNode</code>を探します。削除されていなかった場合は、そのオファーは以前のトランザクションによってすでに削除された可能性があります。またはOfferCancelトランザクションで、<code>OfferSequence</code>フィールドに誤ったシーケンス番号が使用された可能性があります。</p>
-<p>OfferCreateトランザクションが、タイプが<code>RippleState</code>の<code>CreatedNode</code>を示す場合は、取引で受け取った発行済み通貨を保持するために、<a href="offers.html#オファーとトラスト">オファーがトラストラインを作成した</a>ことを示しています。</p>
+<p>OfferCreateトランザクションが、タイプが<code>RippleState</code>の<code>CreatedNode</code>を示す場合は、取引で受け取ったトークンを保持するために、<a href="offers.html#オファーとトラスト">オファーがトラストラインを作成した</a>ことを示しています。</p>
 <h3 id="escrow">Escrow<a aria-hidden="true" class="hover_anchor" href="#escrow"><i class="fa fa-link"></i></a></h3>
 <p>成功した<a href="escrowcreate.html">EscrowCreateトランザクション</a>は、レジャーに<a href="escrow-object.html">Escrowオブジェクト</a>を作成します。LedgerEntryTypeが<code>Escrow</code>の<code>CreatedNode</code>エントリーを探します。<code>NewFields</code>には、escrowに預託されたXRPと同じ<code>Amount</code>と、指定したその他のプロパティが示されます。</p>
 <p>成功したEscrowCreateトランザクションは、送金元から同じ額のXRPを引き出します。最終的なフィールドの<code>Account</code>がトランザクションの指示にある<code>Account</code>のアドレスと一致する、LedgerEntryTypeが<code>AccountRoot</code>の<code>ModifiedNode</code>を探します。XRPの<code>Balance</code>は、（トランザクションコストの支払いのためにXRPが消却されたのに加えて）XRPがescrowに預託されたため減少します。</p>
@@ -1218,7 +1218,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -1296,16 +1296,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1331,7 +1321,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -2235,7 +2235,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

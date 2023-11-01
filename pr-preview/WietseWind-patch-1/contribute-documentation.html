@@ -257,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/resources/contribute-documentation/contribute-documentation.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/resources/contribute-documentation/index.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit -->    <div class="toc-header">
       <h4>In this document</h4>
     </div>
@@ -362,8 +362,7 @@
 <li>For code samples, try to keep lines no longer than 80 columns wide.</li>
 <li>When in doubt, follow <a class="external-link" href="https://cirosantilli.com/markdown-style-guide/" target="_blank">Ciro Santilli's Markdown Style Guide (Writability Profile) <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
 <li>
-<p>Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be <code>accounts/accounts.md</code> with the HTML filename <code>accounts.html</code>.</p>
-<p class="devportal-callout warning"><strong>Warning:</strong> Don't use <code>index.md</code>.</p>
+<p>The page within a category should be in a subfolder named for that category but can be less verbose (especially if the page title includes words also in the parent directories), should have the filename <code>index.md</code>, and a title that is similar to the folder name. For example, the "Protocol Reference" index page is at <code>references/protocol/index.md</code>.</p>
 </li>
 <li>
 <p>Don't use tab characters for indentation in Markdown or code samples. Use 4 spaces per indent, except in <strong>JavaScript</strong> code samples, which should use 2 spaces per indent.</p>
@@ -1220,16 +1219,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
   </div>
 
@@ -1255,7 +1244,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
     </nav>
@@ -2164,7 +2163,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+    <a class="nav-link nav-leaf" href="serialization.html">Binary Format</a>
   </div>
 
     </nav>

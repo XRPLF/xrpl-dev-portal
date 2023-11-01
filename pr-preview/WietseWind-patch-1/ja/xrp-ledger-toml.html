@@ -553,7 +553,7 @@ https://xrp.services.example.com/.well-known/xrp-ledger.toml
 </table>
 <p>このセクションのすべてのURLの末尾にスラッシュを付けることが推奨されます。省略された場合、クライアントアプリケーションでは、末尾にスラッシュが含まれていると想定します。</p>
 <h3 id="通貨">通貨<a aria-hidden="true" class="hover_anchor" href="#通貨"><i class="fa fa-link"></i></a></h3>
-<p>XRP Ledgerで資産、トークン、または通貨を発行する場合は、<code>[[CURRENCIES]]</code>リストでそれらに関する情報を提供できます。通貨リストは、（存在する場合）各エントリが二重角括弧を含んだヘッダー<code>[[CURRENCIES]]</code>を使用する複数のテーブルの配列でなければなりません。各エントリは、個別の発行済み通貨または資産を示します。 <em>各</em><code>[[CURRENCIES]]</code>エントリごと <em>に</em> 、以下から任意のフィールドを指定することができます。</p>
+<p>XRP Ledgerで資産、トークン、または通貨を発行する場合は、<code>[[CURRENCIES]]</code>リストでそれらに関する情報を提供できます。通貨リストは、（存在する場合）各エントリが二重角括弧を含んだヘッダー<code>[[CURRENCIES]]</code>を使用する複数のテーブルの配列でなければなりません。各エントリは、個別のまたは資産を示します。 <em>各</em><code>[[CURRENCIES]]</code>エントリごと <em>に</em> 、以下から任意のフィールドを指定することができます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -1163,7 +1163,7 @@ https://xrp.services.example.com/.well-known/xrp-ledger.toml
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -1241,16 +1241,6 @@ https://xrp.services.example.com/.well-known/xrp-ledger.toml
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1276,7 +1266,17 @@ https://xrp.services.example.com/.well-known/xrp-ledger.toml
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -2180,7 +2180,7 @@ https://xrp.services.example.com/.well-known/xrp-ledger.toml
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

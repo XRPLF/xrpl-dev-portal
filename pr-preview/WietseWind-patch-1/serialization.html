@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Serialization Format - XRPL.org</title>
+    <title>Binary Format - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Serialization Format | XRPL.org">
+    <meta property="og:title" content="Binary Format | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/serialization.html" />
     <meta property="og:description" content="Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects." />
     <meta name="description" content="Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects." />
@@ -257,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/references/protocol-reference/serialization.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/references/protocol/binary-format.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -274,7 +274,7 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#serialization-format">Serialization Format</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#binary-format">Binary Format</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#examples">Examples</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#sample-code">Sample Code</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#internal-format">Internal Format</a></li>
@@ -311,11 +311,11 @@
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="references.html">References</a></li>
     <li class="active breadcrumb-item"><a href="protocol-reference.html">XRP Ledger Protocol Reference</a></li>
-    <li class="active breadcrumb-item">Serialization Format</li>
+    <li class="active breadcrumb-item">Binary Format</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="serialization-format">Serialization Format<a aria-hidden="true" class="hover_anchor" href="#serialization-format"><i class="fa fa-link"></i></a></h1>
+        <h1 id="binary-format">Binary Format<a aria-hidden="true" class="hover_anchor" href="#binary-format"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>This page describes the XRP Ledger's canonical binary format for transactions and other data. This binary format is necessary to create and verify digital signatures of those transactions' contents, and is also used in other places including in the <a href="peer-protocol.html">peer-to-peer communications between servers</a>. The <a href="http-websocket-apis.html"><code>rippled</code> APIs</a> typically use JSON to communicate with client applications. However, JSON is unsuitable as a format for serializing transactions for being digitally signed, because JSON can represent the same data in many different but equivalent ways.</p>
 <p>The process of serializing a transaction from JSON or any other representation into their canonical binary format can be summarized with these steps:</p>
@@ -1402,16 +1402,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
   </div>
 
@@ -1437,7 +1427,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
     </nav>
@@ -2346,7 +2346,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+    <a class="nav-link nav-leaf" href="serialization.html">Binary Format</a>
   </div>
 
     </nav>

@@ -280,6 +280,7 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#automated-market-makers">Automated Market Makers</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#how-the-amm-works">How the AMM Works</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#restrictions-on-assets">Restrictions on Assets</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#lp-tokens">LP Tokens</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#lp-token-currency-codes">LP Token Currency Codes</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trading-fees">Trading Fees</a></li>
@@ -325,12 +326,19 @@
 <p>An AMM sets its exchange rate based on the balance of assets in the pool. When you trade against an AMM, the exchange rate adjusts based on how much your trade shifts the balance of assets the AMM holds. As its supply of one asset goes down, the price of that asset goes up; as its supply of an asset goes up, the price of that asset goes down. An AMM gives generally better exchange rates when it has larger overall amounts in its pool. This is because any given trade causes a smaller shift in the balance of the AMM's assets. The more a trade unbalances the AMM's supply of the two assets, the more extreme the exchange rate becomes.</p>
 <p>The AMM also charges a percentage trading fee on top of the exchange rate.</p>
 <p>The XRP Ledger's implements a <em>geometric mean</em> AMM with a weight parameter of 0.5, so it functions like a <em>constant product</em> market maker. For a detailed explanation of the <em>constant product</em> AMM formula and the economics of AMMs in general, see <a class="external-link" href="https://www.machow.ski/posts/an_introduction_to_automated_market_makers/" target="_blank">Kris Machowski's Introduction to Automated Market Makers <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h3 id="restrictions-on-assets">Restrictions on Assets<a aria-hidden="true" class="hover_anchor" href="#restrictions-on-assets"><i class="fa fa-link"></i></a></h3>
+<p>To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:</p>
+<ul>
+<li>The asset must not be an LP Token from another AMM.</li>
+<li>If the asset is a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a>, the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.</li>
+<li>If the <a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.</li>
+</ul>
 <h2 id="lp-tokens">LP Tokens<a aria-hidden="true" class="hover_anchor" href="#lp-tokens"><i class="fa fa-link"></i></a></h2>
 <!-- TODO: add diagrams showcasing flow of funds -->
 <p>Whoever creates the AMM becomes the first liquidity provider, and receives LP Tokens that represent 100% ownership of assets in the AMM's pool. They can redeem some or all of those LP Tokens to withdraw assets from the AMM in proportion to the amounts currently there. (The proportions shift over time as people trade against the AMM.) The AMM does not charge a fee when withdrawing both assets.</p>
 <p>For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchanged 1.26 USD for 1 ETH, the pool now has 4 ETH and 6.26 USD in it. You can spend half your LP Tokens to withdraw 2 ETH and 3.13 USD.</p>
 <p>Anyone can deposit assets to an existing AMM. When they do, they receive new LP Tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP Tokens they hold compared to the total number of LP Tokens outstanding.</p>
-<p>LP Tokens are like other tokens in the XRP Ledger, so you can use them in many <a href="payment-types.html">types of payments</a>, trade them in the decentralized exchange, or even deposit them as assets for new AMMs. (To receive LP Tokens as payment, you must set up a <a href="trust-lines-and-issuing.html">trust line</a> with a nonzero limit with the AMM Account as the issuer.) However, you can <em>only</em> send LP Tokens directly to the AMM (redeeming them) using the <a href="ammwithdraw.html">AMMWithdraw</a> transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the <a href="ammdeposit.html">AMMDeposit</a> transaction type.</p>
+<p>LP Tokens are like other tokens in the XRP Ledger, so you can use them in many <a href="payment-types.html">types of payments</a> or trade them in the decentralized exchange. (To receive LP Tokens as payment, you must set up a <a href="trust-lines-and-issuing.html">trust line</a> with a non-zero limit with the AMM Account as the issuer.) However, you can <em>only</em> send LP Tokens directly to the AMM (redeeming them) using the <a href="ammwithdraw.html">AMMWithdraw</a> transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the <a href="ammdeposit.html">AMMDeposit</a> transaction type.</p>
 <p>The AMM is designed so that an AMM's asset pool is empty if and only if the AMM has no outstanding LP Tokens. This situation can only occur as the result of an <a href="ammwithdraw.html">AMMWithdraw</a> transaction; when it does, the AMM is automatically deleted.</p>
 <h3 id="lp-token-currency-codes">LP Token Currency Codes<a aria-hidden="true" class="hover_anchor" href="#lp-token-currency-codes"><i class="fa fa-link"></i></a></h3>
 <p>LP Tokens use a special type of currency code in the 160-bit hexadecimal <a href="currency-formats.html#nonstandard-currency-codes">"non-standard" format</a>. These codes have the first 8 bits <code>0x03</code>. The remainder of the code is a SHA-512 hash, truncated to the first 152 bits, of the two assets' currency codes and their issuers. (The assets are placed in a "canonical order" with the numerically lower currency+issuer pair first.) As a result, the LP Tokens for a given asset pair's AMM have a predictable, consistent currency code.</p>
@@ -954,16 +962,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
   </div>
 
@@ -989,7 +987,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
     </nav>
@@ -1898,7 +1906,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+    <a class="nav-link nav-leaf" href="serialization.html">Binary Format</a>
   </div>
 
     </nav>

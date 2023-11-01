@@ -297,14 +297,14 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="nftのコンセプトの概要">NFTのコンセプトの概要<a aria-hidden="true" class="hover_anchor" href="#nftのコンセプトの概要"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerは、<em>IOUs</em> としても知られる<a href="tokens.html">発行済み通貨</a>のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。</p>
+<p>XRP Ledgerは、<em>IOUs</em> としても知られる<a href="tokens.html">トークン</a>のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。</p>
 <blockquote>
 <p>代替可能性</p>
 <ol>
 <li>個々の単位が本質的に交換可能であり、各部分が別の部分と区別できない商品または商品の特性である</li>
 </ol>
 </blockquote>
-<p>代替可能トークンは、XRP Ledgerの分散型取引所において、ユーザー間でXRPや他の発行済み通貨と手軽に交換することができます。そのため、決済に適しています。</p>
+<p>代替可能トークンは、XRP Ledgerの分散型取引所において、ユーザー間でXRPや他のトークンと手軽に交換することができます。そのため、決済に適しています。</p>
 <p>例えば、切手などがそうです。1919年当時、あなたが航空便で手紙を送る必要がある場合、24セントの切手を購入し、封筒に張ったでしょう。もしその切手をなくしてしまったら、別の24セント切手を使うか、10セント切手2枚と2セント切手2枚を使うことができます。非常に使い勝手がいいのです。</p>
 <p><img alt="Jenny Stamps" src="img/nft-concepts1.png" title="Jenny Stamps"/></p>
 <p>しかし、1919年という時代のことですから、切手の飛行機が偶然にも逆さまに印刷されている24セントの航空郵便切手が出回るかもしれません。これが世界的に有名な「インバート・ジェニー」切手です。1枚の切手シートで100枚しか流通しなかったため、非常に希少で人気の高い切手です。現在、鑑定では一枚150万円以上の価値があるとされています。</p>
@@ -323,7 +323,7 @@
 <li>転送が許可されている場合、発行者は販売価格に対する一定の割合で手数料を徴収することができます。</li>
 </ul>
 </li>
-<li>NFTokenを<a href="tokens.html">発行済み通貨</a>で売却できるか、XRPのみでしか売却できないか。</li>
+<li>NFTokenを<a href="tokens.html">トークン</a>で売却できるか、XRPのみでしか売却できないか。</li>
 </ul>
 <h2 id="nftokenのライフサイクル"><code>NFToken</code>のライフサイクル<a aria-hidden="true" class="hover_anchor" href="#nftokenのライフサイクル"><i class="fa fa-link"></i></a></h2>
 <p>誰もが <a href="nftokenmint.html">NFTokenMint トランザクション</a> を使って新しい <code>NFToken</code> を作成することができます。<code>NFToken</code> は発行者アカウントの <a href="nftokenpage.html">NFTokenPage オブジェクト</a> に格納されます。所有者または利害関係者は <a href="nftokencreateoffer.html">NFTokenCreateOffer トランザクション</a>を送信して <code>NFToken</code> の売買を提案できます。レジャーは提案された転送を <a href="nftokenoffer.html">NFTokenOffer オブジェクト</a>として追跡し、一方が承諾またはキャンセルすると <code>NFTokenOffer</code> を削除します。<code>NFToken</code> が転送可能であれば、アカウント間で複数回取引することができます。</p>
@@ -863,7 +863,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -941,16 +941,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -976,7 +966,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1880,7 +1880,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Rippling | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/rippling.html" />
-    <meta property="og:description" content="Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。" />
-    <meta name="description" content="Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。" />
+    <meta property="og:description" content="Ripplingは、複数当事者間でのトークン残高の自動ネット決済です。" />
+    <meta name="description" content="Ripplingは、複数当事者間でのトークン残高の自動ネット決済です。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -306,7 +306,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="rippling">Rippling<a aria-hidden="true" class="hover_anchor" href="#rippling"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerでは、「Rippling」とは同一通貨の<a href="trust-lines-and-issuing.html">トラストライン</a>を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingは発行済み通貨の基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザーは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の<a href="offers.html">通貨取引オーダー</a>のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。</p>
+<p>XRP Ledgerでは、「Rippling」とは同一通貨の<a href="trust-lines-and-issuing.html">トラストライン</a>を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingはトークンの基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザーは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の<a href="offers.html">通貨取引オーダー</a>のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。</p>
 <p>Ripplingは、支払<a href="paths.html">パス</a>でのみ発生します。<a href="direct-xrp-payments.html">XRP間の直接決済</a>にはRipplingは使用されません。</p>
 <p>発行アカウント以外のアカウントでは、Ripplingが望ましくない場合があります。Ripplingを使えば、他のユーザーが同一通貨のイシュアー間で債権債務を移動できるようになるためです。このため、アカウントの<a href="#defaultrippleフラグ">DefaultRippleフラグ</a>を有効にして、アカウントがデフォルトでRipplingを有効にしない限り、デフォルトでは<a href="#norippleフラグ">NoRippleフラグ</a>により着信トラストラインでのRipplingが無効になっています。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> 別のアドレスへのトラストラインを作成する場合、そのトラストラインのあなたの側でRipplingをブロックするには、tfSetNoRippleフラグを明示的に有効にする必要があります。</p>
@@ -863,7 +863,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -941,16 +941,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -976,7 +966,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1880,7 +1880,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

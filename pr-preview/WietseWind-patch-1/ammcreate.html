@@ -257,7 +257,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/references/protocol-reference/transactions/transaction-types/ammcreate.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/references/protocol/transactions/types/ammcreate.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -358,7 +358,7 @@
 </tr>
 </tbody>
 </table>
-<p>One or both of <code>Amount</code> and <code>Amount2</code> can be <a href="tokens.html">tokens</a>; at most one of them can be <a href="xrp.html">XRP</a>. They cannot both have the same currency code and issuer. The tokens' issuers must have <a href="rippling.html#the-default-ripple-flag">Default Ripple</a> enabled. If the <a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is enabled, those issuers must not have enabled the Allow Clawback flag. An AMM's LP tokens <em>can</em> be used as one of the assets for another AMM.</p>
+<p>One or both of <code>Amount</code> and <code>Amount2</code> can be <a href="tokens.html">tokens</a>; at most one of them can be <a href="xrp.html">XRP</a>. They cannot both have the same currency code and issuer. The tokens' issuers must have <a href="rippling.html#the-default-ripple-flag">Default Ripple</a> enabled. If the <a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is enabled, those issuers must not have enabled the Allow Clawback flag. The assets <em>cannot</em> be LP tokens for another AMM.</p>
 <h2 id="special-transaction-cost">Special Transaction Cost<a aria-hidden="true" class="hover_anchor" href="#special-transaction-cost"><i class="fa fa-link"></i></a></h2>
 <p>Since each AMM instance involves an AccountRoot ledger entry, an AMM ledger entry, and a trust line for each token in its pool, an AMMCreate transaction requires a much higher than usual <a href="transaction-cost.html">transaction cost</a> to deter ledger spam. Instead of the standard minimum of 0.00001 XRP, AMMCreate must destroy at least the incremental owner reserve amount, currently 2 XRP. This is the same special transaction cost as <a href="accountdelete.html">AccountDelete transactions</a>.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
@@ -1008,16 +1008,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
   </div>
 
@@ -1043,7 +1033,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
     </nav>
@@ -1952,7 +1952,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+    <a class="nav-link nav-leaf" href="serialization.html">Binary Format</a>
   </div>
 
     </nav>

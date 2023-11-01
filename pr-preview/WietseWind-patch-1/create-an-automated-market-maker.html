@@ -406,7 +406,7 @@
 </div>
 <h3 id="3-select-and-acquire-assets">3. Select and acquire assets<a aria-hidden="true" class="hover_anchor" href="#3-select-and-acquire-assets"><i class="fa fa-link"></i></a></h3>
 <p>As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's crucial to choose assets carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.</p>
-<p>You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, including LP Tokens from another AMM. If you use a token, you must hold some amount of that token. (If a token's issuer uses, <a href="authorized-trust-lines.html">authorized trust lines</a>, that means you have to be authorized first.)</p>
+<p>You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, as long as they meet the <a href="automated-market-makers.html#restrictions-on-assets">restrictions on AMM assets</a>.</p>
 <p>For each of the two assets, you need to know its currency code and issuer; as an exception, XRP has no issuer. For each of the assets, you must hold a balance of the asset (or <em>be</em> the issuer). The following sample code acquires two assets, "TST" (which it buys using XRP) and "FOO" (which it receives from the issuer).</p>
 <div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li></ul>
 
@@ -1375,16 +1375,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
   </div>
 
@@ -1410,7 +1400,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
     </nav>
@@ -2319,7 +2319,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+    <a class="nav-link nav-leaf" href="serialization.html">Binary Format</a>
   </div>
 
     </nav>

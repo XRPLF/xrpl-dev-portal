@@ -281,6 +281,7 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#自動マーケットメーカー">自動マーケットメーカー</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ammの仕組み">AMMの仕組み</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#資産の制限">資産の制限 </a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#lpトークン">LPトークン</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#lpトークンの通貨コード">LPトークンの通貨コード</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#取引手数料">取引手数料</a></li>
@@ -309,6 +310,9 @@
     <li class="active breadcrumb-item">自動マーケットメーカー</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="自動マーケットメーカー">自動マーケットメーカー<a aria-hidden="true" class="hover_anchor" href="#自動マーケットメーカー"><i class="fa fa-link"></i></a></h1>
 <p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
@@ -326,6 +330,14 @@
 <p>AMMは、プール内の資産残高に基づき取引レートを設定します。AMMに対して取引を行うと、AMMが保有する資産残高の変動に応じて、取引レートが調整されます。一方の資産の量が減れば、その資産の価格が上がり、他方の資産の量が増えれば、その資産の価格が下がります。AMMは、プール内の残高が多いほど、一般的により良い取引レートを提供します。同一取引であればプール内の残高が大きい方がAMMの資産バランスに生じる変化は小さくなるからです。AMMの2つの資産のバランスが崩れれば崩れるほど、交換レートは極端に悪化します。</p>
 <p>また、AMMは交換レートに加え、一定割合の取引手数料を徴収しています。</p>
 <p>XRP Ledgerの実装は、重みパラメータを0.5とした <em>幾何平均</em> AMMですので、<em>定積</em> マーケットメーカーのように機能します。 <em>定積</em> AMMの公式や一般的なAMMの経済学についての詳しい説明は、<a class="external-link" href="https://www.machow.ski/posts/an_introduction_to_automated_market_makers/" target="_blank">Kris Machowski's Introduction to Automated Market Makers <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<h3 id="資産の制限">資産の制限 <a id="restrictions-on-assets"></a><a aria-hidden="true" class="hover_anchor" href="#資産の制限"><i class="fa fa-link"></i></a></h3>
+<!-- TODO: translate this section -->
+<p>To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:</p>
+<ul>
+<li>The asset must not be an LP Token from another AMM.</li>
+<li>If the asset is a token whose issuer uses <a href="authorized-trust-lines.html">Authorized Trust Lines</a>, the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.</li>
+<li>If the <a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.</li>
+</ul>
 <h2 id="lpトークン">LPトークン<a aria-hidden="true" class="hover_anchor" href="#lpトークン"><i class="fa fa-link"></i></a></h2>
 <!-- TODO: add diagrams showcasing flow of funds -->
 <p>AMMの作成者は、最初の流動性供給者となり、AMMのプール内の資産の100％の所有権を表すLPトークンを受け取ります。LPトークンの一部または全部を交換して、現在のプール残高に比例した資産をAMMから引き出せます。(この比率は、人々がAMMに対して取引を行うにつれて変化します）AMMは、同時に両方の資産を引き出す際に手数料はかかりません。</p>
@@ -877,7 +889,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -955,16 +967,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -990,7 +992,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1894,7 +1906,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

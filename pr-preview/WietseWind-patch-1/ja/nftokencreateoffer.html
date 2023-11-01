@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/@i18n/ja/references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/WietseWind-patch-1/content/@i18n/ja/references/protocol/transactions/types/nftokencreateoffer.md?pr=/XRPLF/xrpl-dev-portal/pull/2236" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -395,7 +395,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_AMOUNT</code></td>
-<td style="text-align: left;"><code>Amount</code>フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額は発行済み通貨であるが<code>NFToken</code>で<a href="nftoken.html#nftoken-フラグ"><code>lsfOnlyXRP</code>フラグ</a>が有効になっている場合などです。</td>
+<td style="text-align: left;"><code>Amount</code>フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが<code>NFToken</code>で<a href="nftoken.html#nftoken-フラグ"><code>lsfOnlyXRP</code>フラグ</a>が有効になっている場合などです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temBAD_EXPIRATION</code></td>
@@ -411,7 +411,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecFROZEN</code></td>
-<td style="text-align: left;"><code>Amount</code>は発行済み通貨で、このオファーからトークンを受け取るトラストラインは<a href="freezes.html">凍結</a>されています。これは売却者のトラストラインか、<code>NFToken</code>の発行者のトラストライン（<code>NFToken</code>に送金手数料がある場合）である可能性があります。</td>
+<td style="text-align: left;"><code>Amount</code>はトークンで、このオファーからトークンを受け取るトラストラインは<a href="freezes.html">凍結</a>されています。これは売却者のトラストラインか、<code>NFToken</code>の発行者のトラストライン（<code>NFToken</code>に送金手数料がある場合）である可能性があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecINSUFFICIENT_RESERVE</code></td>
@@ -431,7 +431,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_LINE</code></td>
-<td style="text-align: left;"><code>Amount</code>フィールドは発行済み通貨ですが、<code>NFToken</code>の発行者はそのトークンのトラストラインを持っておらず、<code>NFToken</code>は<a href="nftoken.html#nftoken-フラグ"><code>lsfTrustLine</code>フラグ</a>が有効ではありません。</td>
+<td style="text-align: left;"><code>Amount</code>フィールドはトークンですが、<code>NFToken</code>の発行者はそのトークンのトラストラインを持っておらず、<code>NFToken</code>は<a href="nftoken.html#nftoken-フラグ"><code>lsfTrustLine</code>フラグ</a>が有効ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecNO_PERMISSION</code></td>
@@ -439,7 +439,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecUNFUNDED_OFFER</code></td>
-<td style="text-align: left;">購入オファーの場合、送信者は<code>Amount</code>フィールドで指定された通貨を利用可能です。もし<code>Amount</code>がXRPである場合、これは準備不足によるものかもしれません。もし<code>Amount</code>が発行済み通貨である場合、これは<a href="freezes.html">凍結</a>されている可能性があります。</td>
+<td style="text-align: left;">購入オファーの場合、送信者は<code>Amount</code>フィールドで指定された通貨を利用可能です。もし<code>Amount</code>がXRPである場合、これは準備不足によるものかもしれません。もし<code>Amount</code>がトークンである場合、これは<a href="freezes.html">凍結</a>されている可能性があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tefNFTOKEN_IS_NOT_TRANSFERABLE</code></td>
@@ -956,7 +956,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -1034,16 +1034,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1069,7 +1059,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1973,7 +1973,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

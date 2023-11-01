@@ -60,7 +60,6 @@ https://xrpl.org/transactions.html
 https://xrpl.org/fees.html
 https://xrpl.org/reliable-transaction-submission.html
 https://xrpl.org/secure-signing.html
-https://xrpl.org/multi-signing.html
 https://xrpl.org/source-and-destination-tags.html
 https://xrpl.org/transaction-cost.html
 https://xrpl.org/transaction-queue.html
@@ -68,7 +67,6 @@ https://xrpl.org/finality-of-results.html
 https://xrpl.org/look-up-transaction-results.html
 https://xrpl.org/transaction-malleability.html
 https://xrpl.org/canceling-a-transaction.html
-https://xrpl.org/tickets.html
 https://xrpl.org/payment-types.html
 https://xrpl.org/direct-xrp-payments.html
 https://xrpl.org/cross-currency-payments.html
@@ -107,7 +105,9 @@ https://xrpl.org/deleting-accounts.html
 https://xrpl.org/reserves.html
 https://xrpl.org/addresses.html
 https://xrpl.org/cryptographic-keys.html
+https://xrpl.org/multi-signing.html
 https://xrpl.org/depositauth.html
+https://xrpl.org/tickets.html
 https://xrpl.org/intro-to-consensus.html
 https://xrpl.org/set-up-secure-signing.html
 https://xrpl.org/transaction-basics.html

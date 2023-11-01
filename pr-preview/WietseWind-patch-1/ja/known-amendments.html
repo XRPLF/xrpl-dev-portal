@@ -1018,7 +1018,7 @@
 </tbody>
 </table>
 <p>新しいアカウントフラグ<code>DepositAuth</code>を追加します。これにより、他のアカウントから送信されたトランザクションに係る入金が厳密に拒否されます。企業はこのフラグを使用することで、あらゆる送金人からの送金を受け入れる前に規則に準拠して適切に対処することができます。</p>
-<p>支払先のアカウントのこのフラグが有効になっている場合、支払いがXRPでなされるか、発行済み通貨でなされるかにかかわらず、Paymentトランザクションは失敗となります。アカウントが支払先である場合、支払先アカウント自体から上記のトランザクションが送信されなければ、EscrowFinishトランザクションとPaymentChannelClaimトランザクションは失敗します。<a href="#checks">Checks</a> amendmentが有効である場合、CheckCashトランザクションを送信することによってXRPまたは発行済み通貨をアカウントで受け取ることができます。</p>
+<p>支払先のアカウントのこのフラグが有効になっている場合、支払いがXRPでなされるか、トークンでなされるかにかかわらず、Paymentトランザクションは失敗となります。アカウントが支払先である場合、支払先アカウント自体から上記のトランザクションが送信されなければ、EscrowFinishトランザクションとPaymentChannelClaimトランザクションは失敗します。<a href="#checks">Checks</a> amendmentが有効である場合、CheckCashトランザクションを送信することによってXRPまたはトークンをアカウントで受け取ることができます。</p>
 <p>例外として、<code>DepositAuth</code>が有効になっているアカウントでは、現在のXRP残高がアカウントの準備金を下回る場合、少額のXRP（<a href="reserves.html">アカウント準備金</a>の最低額以下）のPaymentトランザクションを受け取ることができます。</p>
 <p>また、EscrowCreateトランザクションとPaymentChannelCreateトランザクションで誤ってDisallowXRPフラグを適用してしまうバグも修正します。これは強制力のない勧告フラグとするものです。（レジャー自体にDisallowXRPフラグを適用しないことで、<a href="reserves.html">アカウント準備金</a>を満たし<a href="transaction-cost.html">トランザクションコスト</a>を支払うのに必要なXRPを、アカウントが引き続き受け取ることができます。）</p>
 <h3 id="depositpreauth">DepositPreauth<a aria-hidden="true" class="hover_anchor" href="#depositpreauth"><i class="fa fa-link"></i></a></h3>
@@ -1248,7 +1248,7 @@
 </tr>
 </tbody>
 </table>
-<p><a href="transfer-fees.html">送金手数料</a>に限度を正しく導入し、100%の料金にします。これは、<code>TransferRate</code>値の最大値である<code>2000000000</code>を表します。（この場合の100%の料金とは、送信する1ユニットごとに2ユニットの発行済み通貨を送信する必要があることを意味します。）この修正を行わない場合、有効な限度は<code>TransferRate</code>値の2<sup>32</sup>-1、つまり約329%の料金となります。</p>
+<p><a href="transfer-fees.html">送金手数料</a>に限度を正しく導入し、100%の料金にします。これは、<code>TransferRate</code>値の最大値である<code>2000000000</code>を表します。（この場合の100%の料金とは、送信する1ユニットごとに2ユニットのトークンを送信する必要があることを意味します。）この修正を行わない場合、有効な限度は<code>TransferRate</code>値の2<sup>32</sup>-1、つまり約329%の料金となります。</p>
 <p>この修正を行う場合、<a href="accountset.html">AccountSet</a>トランザクションの<code>TransferRate</code>を<code>2000000000</code>より高く設定すると、トランザクションは結果コード<code>temBAD_TRANSFER_RATE</code>にて失敗します。以前のルールに従って高い値が設定されている既存のすべての<code>TransferRate</code>には、そのまま高い率が適用されます。</p>
 <h3 id="fix1368">fix1368<a aria-hidden="true" class="hover_anchor" href="#fix1368"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
@@ -3392,7 +3392,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_5">
       
@@ -3470,16 +3470,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -3505,7 +3495,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -4409,7 +4409,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

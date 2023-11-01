@@ -408,10 +408,10 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 <li>ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、<a href="require-destination-tags.html">宛先タグを要求する</a>。</li>
 <li>アカウントセキュリティを強化するために、<a href="set-up-multi-signing.html">マルチシグを設定する</a>。</li>
 <li>明示的に承認した送金、または事前に承認した相手からの送金のみを受け取れるようにするために、<a href="depositauth.html">DepositAuthを有効にする</a>。</li>
-<li>ユーザーがあなたの許可なくあなたへの<a href="trust-lines-and-issuing.html">トラストライン</a>を開けないようにするために、<a href="authorized-trust-lines.html#requireauthの有効化">RequireAuthを有効にする</a>。XRP Ledgerの分散型取引所や発行済み通貨機能を使用する予定がない場合は、これを対策として行うことをお勧めします。</li>
-<li>発行済み通貨<a href="stablecoin-issuer.html">ゲートウェイ</a>には次のような追加の設定がある場合があります。</li>
-<li>発行済み通貨を送金するユーザーに対して<a href="stablecoin-issuer.html#transfer-fees">TransferRateを設定する</a>。</li>
-<li>このアドレスを発行済み通貨のみに使用する予定の場合は、<a href="stablecoin-issuer.html#disallow-xrp">XRPペイメントを禁止する</a>。</li>
+<li>ユーザーがあなたの許可なくあなたへの<a href="trust-lines-and-issuing.html">トラストライン</a>を開けないようにするために、<a href="authorized-trust-lines.html#requireauthの有効化">RequireAuthを有効にする</a>。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。</li>
+<li>トークン<a href="stablecoin-issuer.html">ゲートウェイ</a>には次のような追加の設定がある場合があります。</li>
+<li>トークンを送金するユーザーに対して<a href="stablecoin-issuer.html#transfer-fees">TransferRateを設定する</a>。</li>
+<li>このアドレスをトークンのみに使用する予定の場合は、<a href="stablecoin-issuer.html#disallow-xrp">XRPペイメントを禁止する</a>。</li>
 </ul>
 <p>この段階では、トランザクションに署名をするだけで、まだ送信しません。各トランザクションに対して、<code>Fee</code>（<a href="transaction-cost.html">トランザクションコスト</a>）や<code>Sequence</code>（<a href="basic-data-types.html#アカウントシーケンス">シーケンス番号</a>）など、通常は自動入力可能なフィールドを含めて、すべてのフィールドに入力する必要があります。一度に複数のトランザクションを準備する場合は、トランザクションの実行順にシーケンシャルに増やした<code>Sequence</code>番号を使用する必要があります。</p>
 <p>例（RequireAuthを有効にする）:</p>
@@ -1075,7 +1075,7 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -1153,16 +1153,6 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1188,7 +1178,17 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -2092,7 +2092,7 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

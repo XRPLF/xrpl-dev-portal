@@ -334,13 +334,13 @@
 </ul>
 <h3 id="delivered_amountフィールド"><code>delivered_amount</code>フィールド<a aria-hidden="true" class="hover_anchor" href="#delivered_amountフィールド"><i class="fa fa-link"></i></a></h3>
 <p>Partial Paymentでの実際の送金額を把握できるように、正常に完了したPaymentトランザクションのメタデータには<code>delivered_amount</code>フィールドが含まれています。このフィールドには送金額が<code>Amount</code>フィールドと<a href="basic-data-types.html#通貨額の指定">同じフォーマット</a>で示されています。</p>
-<p>Partial Payment以外の場合、トランザクションのメタデータの<code>delivered_amount</code>フィールドは、トランザクションの<code>Amount</code>フィールドと同じです。支払が発行済み通貨で行われた場合、丸め方により<code>delivered_amount</code>が<code>Amount</code>フィールドとやや異なることがあります。</p>
+<p>Partial Payment以外の場合、トランザクションのメタデータの<code>delivered_amount</code>フィールドは、トランザクションの<code>Amount</code>フィールドと同じです。支払がトークンで行われた場合、丸め方により<code>delivered_amount</code>が<code>Amount</code>フィールドとやや異なることがあります。</p>
 <p>次の<strong>両方</strong>の条件に該当するトランザクションでは、送金額を<strong>使用できません</strong>。</p>
 <ul>
 <li>Partial Paymentである</li>
 <li>2014-01-20以前の検証済みレジャーに含まれている</li>
 </ul>
-<p>この両方の条件に該当する場合、<code>delivered_amount</code>には実際の金額ではなく文字列値<code>unavailable</code>が示されます。この状況で実際の送金額を確認する唯一の方法は、トランザクションのメタデータでAffectedNodesを参照することです。発行済み通貨を送金するトランザクションで、<code>Amount</code>の<code>issuer</code>が<code>Destination</code>アドレスと同じアカウントである場合、送金額は異なる取引相手へのトラストラインを表す複数の<code>AffectedNodes</code>メンバー間で分割できます。</p>
+<p>この両方の条件に該当する場合、<code>delivered_amount</code>には実際の金額ではなく文字列値<code>unavailable</code>が示されます。この状況で実際の送金額を確認する唯一の方法は、トランザクションのメタデータでAffectedNodesを参照することです。トークンを送金するトランザクションで、<code>Amount</code>の<code>issuer</code>が<code>Destination</code>アドレスと同じアカウントである場合、送金額は異なる取引相手へのトラストラインを表す複数の<code>AffectedNodes</code>メンバー間で分割できます。</p>
 <p><code>delivered_amount</code>フィールドは以下のフィールドに含まれています。</p>
 <table class="table-responsive">
 <thead>
@@ -929,7 +929,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -1007,16 +1007,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1042,7 +1032,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1946,7 +1946,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>

@@ -321,7 +321,7 @@
 <li>例えば、以下の例では、あるCheckのIDとして<code>838766BA2B995C00744175F69A1B11E32C3DBC40E64801A4056FCBD657F57334</code>を使用していますが、各ステップをご自分で行う際には、異なるIDを使用する必要があります。</li>
 <li>Checkに記載されている受取人の<strong>アドレス</strong>と<strong>秘密鍵</strong>。このアドレスは、Checkオブジェクトの<code>Destination</code>アドレスと一致している必要があります。</li>
 <li>発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。</li>
-<li>トラストラインと限度額について詳しくは、<a href="issued-currencies.html">発行済み通貨</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
+<li>トラストラインと限度額について詳しくは、<a href="tokens.html">トークン</a>および<a href="trust-lines-and-issuing.html">トラストラインと発行</a>を参照してください。</li>
 <li><a href="secure-signing.html">トランザクションに安全に署名できる手段</a>。</li>
 <li>XRP Ledgerに接続できる<a href="client-libraries.html">クライアントライブラリ</a>か、それとも<a href="get-started-using-http-websocket-apis.html">HTTPライブラリ、WebSocketライブラリなど</a>。 <!--#{ fix md highlighting_ #}--></li>
 </ul>
@@ -354,7 +354,7 @@
 <tr>
 <td style="text-align: left;"><code>Amount</code></td>
 <td style="text-align: left;">文字列またはオブジェクト（額）</td>
-<td style="text-align: left;">Checkから精算する額。XRPの場合、XRPのdrop数を示す文字列でなければなりません。発行済み通貨の場合、これは<code>currency</code>、<code>issuer</code>、および<code>value</code> フィールドを持つオブジェクトです。<code>currency</code>フィールドと<code>issuer</code>フィールドは、Checkオブジェクトの対応するフィールドに一致しており、<code>value</code>はCheckオブジェクトの額以下でなければなりません。（送金手数料のかかる通貨の場合、<code>SendMax</code>で送金手数料を支払えるように、<code>SendMax</code>よりも低い額を換金する必要があります。）この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。詳細は、<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。</td>
+<td style="text-align: left;">Checkから精算する額。XRPの場合、XRPのdrop数を示す文字列でなければなりません。トークンの場合、これは<code>currency</code>、<code>issuer</code>、および<code>value</code> フィールドを持つオブジェクトです。<code>currency</code>フィールドと<code>issuer</code>フィールドは、Checkオブジェクトの対応するフィールドに一致しており、<code>value</code>はCheckオブジェクトの額以下でなければなりません。（送金手数料のかかる通貨の場合、<code>SendMax</code>で送金手数料を支払えるように、<code>SendMax</code>よりも低い額を換金する必要があります。）この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。詳細は、<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
@@ -503,7 +503,7 @@
 <p>スタンドアロンモードで<code>rippled</code>を実行している場合は、<a href="ledger_accept.html">ledger_acceptメソッド</a>を使用してレジャーを手動で閉鎖します。 <!--#{ fix md highlighting_ #}--></p>
 <h2 id="5最終結果の確認">5.最終結果の確認<a aria-hidden="true" class="hover_anchor" href="#5最終結果の確認"><i class="fa fa-link"></i></a></h2>
 <p>トランザクションのステータスを確認するには、CheckCashトランザクションの識別用ハッシュを指定した<a href="tx.html">txメソッド</a>を使用します。トランザクションが成功したことを示す<code>"TransactionResult": "tesSUCCESS"</code>フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す<code>"validated": true</code>フィールドを結果から検索します。</p>
-<p>Checkが正確な<code>Amount</code>で換金された場合は、受取人に対し正確な額が入金されたと想定できます（発行済み通貨の金額が極めて大きい場合や小さい場合は、金額が丸められることがあります）。</p>
+<p>Checkが正確な<code>Amount</code>で換金された場合は、受取人に対し正確な額が入金されたと想定できます（トークンの金額が極めて大きい場合や小さい場合は、金額が丸められることがあります）。</p>
 <p>Checkを換金できない場合、Checkはレジャーに残るため、後日換金を再試行できます。代わりに<a href="cash-a-check-for-a-flexible-amount.html">Checkを変動金額で換金する</a>ことができます。</p>
 <h3 id="要求の例-2">要求の例<a aria-hidden="true" class="hover_anchor" href="#要求の例-2"><i class="fa fa-link"></i></a></h3>
 <div class="multicode" id="code-5"><ul class="codetabs"><li><a class="コマンドライン" href="#code-5-0">コマンドライン</a></li></ul>
@@ -1132,7 +1132,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
 
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
       
@@ -1210,16 +1210,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1245,7 +1235,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -2149,7 +2149,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>
