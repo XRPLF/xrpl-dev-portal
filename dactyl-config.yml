@@ -3144,6 +3144,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md"
+        outdated_translation: true
         targets:
             - ja
 
