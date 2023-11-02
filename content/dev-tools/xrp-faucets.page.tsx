@@ -7,6 +7,7 @@ import { Client, Wallet } from 'xrpl'; // - TODO: Uncomment when xrpl.js is work
 const { translate } = useTranslate();
 
 // TODO - Use `translate` on all text - Jackson
+
 interface FaucetInfo {
   id: string,
   wsUrl: string,
@@ -15,7 +16,7 @@ interface FaucetInfo {
   desc: string,
 }
 
-async function waitForSequence(client, address) {
+async function waitForSequence(client: Client, address: string): Promise<{ sequence: string, balance: string }> {
   let response;
   while (true) {
     try {
@@ -36,7 +37,7 @@ async function waitForSequence(client, address) {
 
 function FaucetEndpoints({ faucet, key } : { faucet: FaucetInfo, key: string}) {
   return (<div key={key}>
-    <h4>{faucet.shortName} Servers</h4>
+    <h4>{translate(faucet.shortName)} {translate("Servers")}</h4>
     <pre>
       <code>// WebSocket
         {faucet.wsUrl}
@@ -85,25 +86,29 @@ export default function XRPFaucets() {
   const [selectedFaucet, setSelectedFaucet] = useState(faucets[0])
 
   return (
-    <div>
-      <FaucetSidebar faucets={faucets}/>
-      <section className="container-fluid pt-3 p-md-3">
-        <h1>{translate("XRP Faucets")}</h1>
-        <div className="content">
-            <p>{translate("These ")}<a href="parallel-networks.html">{translate("parallel XRP Ledger test networks")}</a> {translate("provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
-            <p>{translate("These funds are intended for")} <strong>{translate("testing")}</strong> {translate("only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
-            <p>{translate("All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
-            <h3>{translate("Choose Network:")}</h3>
-            { faucets.map((net) => (
-            <div className="form-check" key={"network-" + net.shortName}>
-                <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" name="faucet-selector" id={net.id} data-jsonrpcurl={net.jsonRpcUrl} data-wsurl={net.wsUrl} data-shortName={net.shortName} checked={selectedFaucet.shortName == net.shortName} />
-                <label className="form-check-label" htmlFor={net.id}><strong>{translate(net.shortName)}</strong>: {translate(net.desc)}</label>
-            </div>
-            )) }
-            <p className="mb-3"><b>{translate("Hooks Testnet")}</b>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" className="external-link">{translate("See the Hooks Faucet")}</a></p>
-            <TestCredentials selectedFaucet={selectedFaucet}/>
-        </div>
-      </section>
+    <div className="container-fluid" role="document" id="main_content_wrapper">
+      <div className="row">
+        <FaucetSidebar faucets={faucets}/>
+      </div>
+      <div className="row">
+        <section className="container-fluid pt-3 p-md-3">
+          <h1>{translate("XRP Faucets")}</h1>
+          <div className="content">
+              <p>{translate("These ")}<a href="parallel-networks.html">{translate("parallel XRP Ledger test networks")}</a> {translate("provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
+              <p>{translate("These funds are intended for")} <strong>{translate("testing")}</strong> {translate("only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
+              <p>{translate("All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
+              <h3>{translate("Choose Network:")}</h3>
+              { faucets.map((net) => (
+              <div className="form-check" key={"network-" + net.shortName}>
+                  <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" name="faucet-selector" id={net.id} data-jsonrpcurl={net.jsonRpcUrl} data-wsurl={net.wsUrl} data-shortName={net.shortName} checked={selectedFaucet.shortName == net.shortName} />
+                  <label className="form-check-label" htmlFor={net.id}><strong>{translate(net.shortName)}</strong>: {translate(net.desc)}</label>
+              </div>
+              )) }
+              <p className="mb-3"><b>{translate("Hooks Testnet")}</b>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" className="external-link">{translate("See the Hooks Faucet")}</a></p>
+              <TestCredentials selectedFaucet={selectedFaucet}/>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }
