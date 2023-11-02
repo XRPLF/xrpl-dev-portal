@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { Client, Wallet } from 'xrpl'; // - TODO: Uncomment when xrpl.js is working
 
+const { translate } = useTranslate();
 
 // TODO - Use `translate` on all text - Jackson
 interface FaucetInfo {
@@ -83,25 +84,23 @@ export default function XRPFaucets() {
 
   const [selectedFaucet, setSelectedFaucet] = useState(faucets[0])
 
-  const { translate } = useTranslate();
-
   return (
     <div>
       <FaucetSidebar faucets={faucets}/>
       <section className="container-fluid pt-3 p-md-3">
-        <h1>XRP Faucets</h1>
+        <h1>{translate("XRP Faucets")}</h1>
         <div className="content">
-            <p>These <a href="parallel-networks.html">parallel XRP Ledger test networks</a> provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.</p>
-            <p>These funds are intended for <strong>testing</strong> only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.</p>
-            <p>All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.</p>
-            <h3>Choose Network:</h3>
+            <p>{translate("These ")}<a href="parallel-networks.html">{translate("parallel XRP Ledger test networks")}</a> {translate("provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
+            <p>{translate("These funds are intended for")} <strong>{translate("testing")}</strong> {translate("only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
+            <p>{translate("All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
+            <h3>{translate("Choose Network:")}</h3>
             { faucets.map((net) => (
             <div className="form-check" key={"network-" + net.shortName}>
                 <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" name="faucet-selector" id={net.id} data-jsonrpcurl={net.jsonRpcUrl} data-wsurl={net.wsUrl} data-shortName={net.shortName} checked={selectedFaucet.shortName == net.shortName} />
-                <label className="form-check-label" htmlFor={net.id}><strong>{net.shortName}</strong>: {net.desc}</label>
+                <label className="form-check-label" htmlFor={net.id}><strong>{translate(net.shortName)}</strong>: {translate(net.desc)}</label>
             </div>
             )) }
-            <p className="mb-3"><b>Hooks Testnet</b>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" className="external-link">See the Hooks Faucet</a></p>
+            <p className="mb-3"><b>{translate("Hooks Testnet")}</b>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" className="external-link">{translate("See the Hooks Faucet")}</a></p>
             <TestCredentials selectedFaucet={selectedFaucet}/>
         </div>
       </section>
@@ -152,13 +151,13 @@ function TestCredentials({selectedFaucet}) {
 
     {/* Displays after account is funded */}
     {generatedCredentialsFaucet && <div id="your-credentials"><h2>Your {generatedCredentialsFaucet} Credentials</h2></div>}
-    <div id="loader" style={{display: address ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> Generating Keys...</div>
-    {address && <div id="address"><h3>Address</h3>{address}</div>}
-    {secret && <div id="secret"><h3>Secret</h3>{secret}</div>}
-    {balance && <div id="balance"><h3>Balance</h3>{(Number(balance) * 0.000001).toLocaleString("en")} XRP</div>}
-    {sequence && <div id="sequence"><h3>Sequence Number</h3>{sequence}
-      ((secret && !sequence) && (<img className="throbber" src="assets/img/xrp-loader-96.png"/> Waiting...'))
+    <div id="loader" style={{display: address ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Generating Keys...")}</div>
+    {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
+    {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
+    {balance && <div id="balance"><h3>{translate("Balance")}</h3>{(Number(balance) * 0.000001).toLocaleString("en")} {translate("XRP")}</div>}
+    {sequence && <div id="sequence"><h3>{translate("Sequence Number")}</h3>{sequence}
+      ((secret && !sequence) && (<img className="throbber" src="assets/img/xrp-loader-96.png"/> {translate("Waiting...")}))
     </div>}
-    <div id="loader" style={{display: sequence ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> Waiting...</div>
+    <div id="loader" style={{display: sequence ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}</div>
   </div>)
 }
