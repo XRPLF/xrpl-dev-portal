@@ -55,7 +55,6 @@ const events = [
 let currentIndex = 1;
 
 function updateCarousel() {
-    console.log({events,currentIndex})
     if(!!events[currentIndex - 1]) {
         document.getElementById('prev-btn').style = 'opacity:1;'
         document.getElementById('left-image').style = 'visibility:visible;'

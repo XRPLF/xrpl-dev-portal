@@ -838,6 +838,51 @@ pre code {
 
 .page-docs-index,
 .page-community {
+  .main-title{
+    color: #111112;
+  }
+  .event-location{
+    color: #232325 !important;
+  }
+  .event-details{
+    color: #232325 !important;
+  }
+  .upcoming-event{
+    .event-name{
+      color: #111112;
+    }
+  }
+  .upcoming-label{
+    color: #232325 !important;
+  }
+  .description{
+    color: #232325;
+  }
+  .events-text{
+    color: #111112;
+  }
+  .discord-icon {
+      content: url(../img/community/ic_Discord_light.png)
+    }
+  
+    .twitter-icon {
+      content: url(../img/community/ic_Twitter_light.png);
+    }
+  
+    .youtube-icon {
+      content: url(../img/community/ic_Youtube_light.png);
+    }
+  
+    .xrpl-icon {
+      content: url(../img/community/ic_XRPL_light.png);
+    }
+    .github-icon {
+      content: url(../img/community/ic_GitHub_light.png);
+    }
+    
+    .stackoverflow-icon {
+      content: url(../img/community/ic_StackOverflow_light.png);
+    }
   #run-a-network-node .card-deck {
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-green.svg);
@@ -1005,7 +1050,6 @@ $placeholder-color: $gray-600;
     filter: invert(100%) brightness(0.8);
   }
 }
-
 .page-impact {
 
   .connect-list {

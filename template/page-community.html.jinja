@@ -124,7 +124,7 @@
 
 <div class="col-lg-6 mx-auto text-left text-md-center" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);">
     <div class="d-flex flex-column-reverse">
-<h1 class="mb-0">
+<h1 class="mb-0 main-title">
     {% trans %}A Global Blockchain 
     <br class="until-sm"/>
     Community of <span class="builders-wrap">Builders</span>
@@ -141,7 +141,7 @@
     <h4 >Hot Topics Happening Now</h4>
     <table>
         <tr>
-            <td class="td-img"><img src="./assets/img/community/ic_Discord.png" alt="discord icon"></td>
+            <td class="td-img"><img class="discord-icon" alt="discord icon"></td>
             <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
              </td>
              <td>
@@ -149,7 +149,7 @@
              </td>
         </tr>
         <tr>
-            <td class="td-img"><img src="./assets/img/community/ic_Twitter.png" alt="twitter icon"></td>
+            <td class="td-img"><img class="twitter-icon" alt="twitter icon"></td>
             <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
              </td>
 <td>
@@ -157,14 +157,28 @@
              </td>
         </tr>
         <tr>
-            <td class="td-img"><img src="./assets/img/community/ic_Youtube.png" alt="youtube icon"></td>
+            <td class="td-img"><img class="youtube-icon" alt="youtube icon"></td>
+            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+            <td>
+                <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
+             </td>
+        </tr>
+         <tr>
+            <td class="td-img"><img class="github-icon" alt="xrpl icon"></td>
+            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+            <td>
+                <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
+             </td>
+        </tr>
+         <tr>
+            <td class="td-img"><img class="stackoverflow-icon" alt="xrpl icon"></td>
             <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
-            <td class="td-img"><img src="./assets/img/community/ic_XRPL.png" alt="youtube icon"></td>
+            <td class="td-img"><img class="xrpl-icon" alt="xrpl icon"></td>
             <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
@@ -176,20 +190,21 @@
 <section class="xrpl-events-section">
 <div class="header-div">
     <div class="header">
-        <h6>XRPL Events</h6>
-        <h4>Check out global events hosted <br class="d-none-sm" /> by the XRPL community</h4>
+        <h6 class="events-text">XRPL Events</h6>
+        <h4 class="events-text">Check out global events hosted <br class="d-none-sm" /> by the XRPL community</h4>
     </div>
     <p class="description">Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.</p>
-    <a class="btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
+    <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
 </div>
     <div class="upcoming-event">
         <p class="upcoming-label">UPCOMING EVENT</p>
         <div class="days-count">13 days</div>
-        <h5>XRPL Warsaw Meetup 2023</h5>
+        <h5 class="event-name">XRPL Warsaw Meetup 2023</h5>
 
         <p class="event-details mb-2 d-flex icon"> <span class="icon-location"> </span>September 08-09, 2023</p>
         <p class="event-location d-flex icon"> <span class="icon-date"> </span>Warsaw, Poland</p>
     </div>
+    <a class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
 </section>
 <section class="carousel">
     <div class="image-container">
@@ -222,6 +237,7 @@
 </section>
 
 <section class="community-funding">
+    <a class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
     <div class="stats">
         <div class="stacked-stats">
             <div class="stat">
@@ -242,7 +258,7 @@
         <span class="small-text">XRPL Developer Funding</span>
         <h2>Funding Opportunities for Blockchain Businesses</h2>
         <p>If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.</p>
-     <a class="btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
+     <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
     </div>
 </section>
 

@@ -1,4 +1,37 @@
 .page-community {
+    .main-title {
+        color: var(--black-black-0, #FFF);
+        text-align: center;
+
+        /* Desktop / H1 */
+        font-family: Work Sans;
+        font-size: 62px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 70px;
+
+        @media (max-width: 768px) {
+            font-size: 42px;
+        }
+    }
+
+    .get-funding-btn {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .cd-none-sm {
+            display: none !important;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .cd-none-lg {
+            display: none !important;
+        }
+    }
+
     .icon-date {
         padding-right: 4px;
         content: url(../img/events/event-date.svg);
@@ -14,7 +47,6 @@
     }
 
     @media (min-width: 768px) {
-
         .builders-wrap {
             white-space: normal;
         }
@@ -69,7 +101,7 @@
         white-space: nowrap;
         overflow: auto;
         max-width: 65vw;
-
+        padding-left: 10px;
     }
 
     #community-table img {
@@ -80,7 +112,32 @@
     .td-img {
         padding: 10px;
         width: 69px;
+
+        .discord-icon {
+            content: url(../img/community/ic_Discord.png)
+        }
+
+        .twitter-icon {
+            content: url(../img/community/ic_Twitter.png);
+        }
+
+        .youtube-icon {
+            content: url(../img/community/ic_Youtube.png);
+        }
+
+        .xrpl-icon {
+            content: url(../img/community/ic_XRPL.png);
+        }
+
+        .github-icon {
+            content: url(../img/community/ic_GitHub.png);
+        }
+
+        .stackoverflow-icon {
+            content: url(../img/community/ic_StackOverflow.png);
+        }
     }
+
 
     .text-external-link {
         display: inline-flex;
@@ -115,6 +172,23 @@
         right: 5px;
         top: 50%;
         transform: translateY(-50%);
+    }
+
+    @media (max-width: 768px) {
+        #community-table td {
+            white-space: nowrap;
+            overflow: scroll;
+        }
+
+        #community-table img {
+            width: 96px;
+            height: 29px;
+        }
+
+        .td-img {
+            min-width: 60px;
+            /* Remove fixed width for mobile view */
+        }
     }
 
     .xrpl-events-section {
@@ -301,6 +375,12 @@
         display: flex;
         justify-content: space-between;
         padding: 20px;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+            align-items: start;
+            text-align: start;
+        }
     }
 
     .stacked-stats {
@@ -313,6 +393,12 @@
         align-self: center;
         text-align: center;
         margin: 0 auto;
+
+        @media (max-width: 768px) {
+            margin: 0px;
+            text-align: start;
+            align-self: start;
+        }
     }
 
     .number {
@@ -323,10 +409,6 @@
     @media screen and (max-width: 768px) {
         .community-funding {
             flex-direction: column-reverse;
-        }
-
-        .stacked-stats {
-            gap: 25px;
         }
 
         .funding-section,
@@ -340,10 +422,15 @@
         width: 950px;
         margin: 0 auto;
         margin-top: 106px;
+        max-width: 100%; // Make the carousel responsive
 
         .flex-align {
             display: flex;
             align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            width: 100%; // Make the carousel full width on small screens
         }
     }
 
@@ -351,6 +438,13 @@
         position: relative;
         width: 60%;
         margin: 0 48px;
+
+        @media (max-width: 768px) {
+            margin: 0 auto; // Remove margin on small screens
+            position: relative;
+            width: 86%;
+            right: 11px;
+        }
     }
 
     .image-container {
@@ -373,6 +467,12 @@
     #right-image {
         width: 15%;
         opacity: 0.7;
+
+        // Styles for smaller screens
+        @media (max-width: 768px) {
+            display: none;
+            margin: 0; // Adjust center image margin on small screens
+        }
     }
 
     .nav-btn {
@@ -463,7 +563,13 @@
         width: 205px;
         background-color: #232325;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+        @media (max-width: 768px) {
+            width: 99%;
+        }
     }
+
+    // Styles for smaller screens
 
     .project-card.top-left {
         top: 0;
@@ -576,7 +682,7 @@
         .com-card {
             padding: 36px;
             background: #232325;
-            width: 352px;
+            min-width: 352px;
             height: 442px;
             position: relative;
 

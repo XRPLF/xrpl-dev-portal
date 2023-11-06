@@ -429,6 +429,11 @@
     display: none;
   }
 }
+.d-none-lg {
+  @include media-breakpoint-up(lg) {
+    display: none;
+  }
+}
 .d-block {
   display: block;
 }
