@@ -1,10 +1,11 @@
 // General color elements ------------------------------------------------------
 .content {
+
   p code,
   table code,
-  li > code {
-  background-color: $gray-200;
-  color: $gray-900;
+  li>code {
+    background-color: $gray-200;
+    color: $gray-900;
   }
 }
 
@@ -12,6 +13,7 @@ body {
   background-color: $light-bg;
   color: $light-fg;
 }
+
 #topnav-theme .custom-theme-toggle {
   .custom-control-label::before {
     background-color: transparent;
@@ -35,6 +37,7 @@ h6,
   &:not(.chip) {
     color: $light-fg;
   }
+
   &.green-500 {
     color: $green-700;
     text-shadow: white 0 0 2px, white -1px -1px 2px, white 1px 1px 2px;
@@ -44,6 +47,7 @@ h6,
 .bg-grey-800 {
   background-color: $light-standout-bg;
 }
+
 .grey-400 {
   color: $gray-600;
 }
@@ -51,12 +55,15 @@ h6,
 .text-muted {
   color: $light-fg-muted !important;
 }
+
 .longform {
   color: $light-fg-muted;
 }
+
 .numbers {
   color: $black;
 }
+
 .stat-highlight,
 .eyebrow {
   color: $gray-900;
@@ -115,88 +122,115 @@ h6,
   .DocSearch-Modal {
     background: $white;
   }
-  .DocSearch-Prefill{
+
+  .DocSearch-Prefill {
     color: $blue-purple-500;
   }
+
   .DocSearch-Button {
     background: var(--docsearch-searchbox-background);
   }
+
   .DocSearch-Button:hover {
     box-shadow: inset 0 0 0 2px $blue-purple-500;
     border-radius: 40px;
     background: var(--docsearch-searchbox-background);
+
     .DocSearch-Button-Placeholder {
       color: var(--docsearch-text-color);
     }
   }
+
   .DocSearch-Search-Icon {
     color: var(--docsearch-text-color) !important;
   }
-  .DocSearch-Input{
+
+  .DocSearch-Input {
     color: $gray-900;
   }
-  .DocSearch-Hit-Select-Icon{
+
+  .DocSearch-Hit-Select-Icon {
     color: $gray-900;
   }
+
   .DocSearch-Form {
     box-shadow: inset 0 0 0 2px $blue-purple-500;
     background-color: var(--docsearch-searchbox-focus-background);
   }
+
   .DocSearch-Hit-source {
     color: $blue-purple-500;
     background: $white;
   }
+
   .DocSearch-Hits mark {
     color: $blue-purple-500;
   }
+
   .DocSearch-Hit-Container {
     background: $white;
   }
+
   .DocSearch-Hit a {
     background-color: $white;
   }
+
   .DocSearch-Hit-content-wrapper {
     .DocSearch-Hit-title {
       color: $black !important;
     }
+
     .DocSearch-Hit-path {
       color: $black-60 !important;
     }
   }
-  .DocSearch-Logo svg{
-    .cls-1, .cls-2{
-      fill:var(--docsearch-logo-color);;
+
+  .DocSearch-Logo svg {
+
+    .cls-1,
+    .cls-2 {
+      fill: var(--docsearch-logo-color);
+      ;
     }
   }
+
   .DocSearch-Hit-title,
   .DocSearch-Hit-path,
   .DocSearch-Label,
   .DocSearch-Help {
     color: $black-60 !important;
   }
+
   .DocSearch-Hit[aria-selected="true"] a {
     background: $black-10;
+
     .DocSearch-Hit-Container {
-      background-color:  $black-10;
+      background-color: $black-10;
     }
+
     .DocSearch-Hit-content-wrapper {
       .DocSearch-Hit-title {
         color: $black !important;
       }
+
       .DocSearch-Hit-path {
         color: $black-60 !important;
       }
     }
+
     .DocSearch-Hit-icon svg {
       color: $black !important;
     }
+
     .DocSearch-Hit-action .DocSearch-Hit-action-button svg {
       color: $black !important;
     }
+
     mark {
       color: $blue-purple-500 !important;
     }
   }
+
   .DocSearch-Footer {
     background: var(--docsearch-footer-background);
   }
@@ -206,37 +240,40 @@ h6,
     .ds-dropdown-menu [class^="ds-dataset-"] {
       background-color: $light-standout-bg;
     }
+
     .ds-dropdown-menu::before {
       background-color: $light-standout-bg;
     }
+
     .algolia-docsearch-suggestion {
       background-color: $light-standout-bg;
     }
+
     .algolia-docsearch-suggestion--category-header {
       color: $black;
       border-bottom-color: $blue-purple-500;
     }
+
     .algolia-docsearch-suggestion--subcategory-column {
       color: $black;
     }
+
     .algolia-docsearch-suggestion--title {
       color: $black;
     }
+
     .algolia-docsearch-suggestion--text {
       color: $light-fg-muted;
     }
+
     .algolia-docsearch-suggestion--highlight {
       color: $black;
       background-color: $gray-300;
     }
-    .algolia-docsearch-suggestion--category-header
-      .algolia-docsearch-suggestion--category-header-lvl0
-      .algolia-docsearch-suggestion--highlight,
-    .algolia-docsearch-suggestion--category-header
-      .algolia-docsearch-suggestion--category-header-lvl1
-      .algolia-docsearch-suggestion--highlight,
-    .algolia-docsearch-suggestion--text
-      .algolia-docsearch-suggestion--highlight {
+
+    .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl0 .algolia-docsearch-suggestion--highlight,
+    .algolia-docsearch-suggestion--category-header .algolia-docsearch-suggestion--category-header-lvl1 .algolia-docsearch-suggestion--highlight,
+    .algolia-docsearch-suggestion--text .algolia-docsearch-suggestion--highlight {
       background-color: $gray-300;
     }
   }
@@ -298,6 +335,7 @@ a.card:hover,
 .breadcrumb {
   background: $light-bg;
 }
+
 .breadcrumb-item a {
   color: $gray-600;
 
@@ -326,6 +364,7 @@ a.card:hover,
   #top-nav-hero-docs {
     content: url(../img/icons/lightmode/docs.svg);
   }
+
   #top-nav-hero-contribute {
     content: url(../img/icons/lightmode/contribute.svg);
   }
@@ -341,13 +380,15 @@ a.card:hover,
     }
 
     .dropdown-item.dropdown-hero {
-      > img {
+      >img {
         background-color: $gray-050;
       }
+
       p {
         color: $gray-700;
       }
     }
+
     .dropdown-item.active {
       color: $light-link-hover-color;
     }
@@ -368,6 +409,7 @@ a.card:hover,
   @include media-breakpoint-down(md) {
     .navbar-toggler {
       .navbar-toggler-icon {
+
         &::after,
         &::before,
         div {
@@ -377,7 +419,7 @@ a.card:hover,
     }
 
     .navbar-nav .nav-link,
-    .navbar-collapse > .nav-item {
+    .navbar-collapse>.nav-item {
       background: $gray-200;
     }
   }
@@ -387,16 +429,18 @@ a.card:hover,
 aside .sidenav_cat_title {
   color: $black;
 }
+
 .page-toc .level-1 a,
 .command-list .separator {
   color: $black;
 }
+
 aside a:hover,
 aside .sidenav_cat_title:hover,
 aside a.active,
 aside a.active:hover,
-aside .active > a,
-aside .active > a:hover {
+aside .active>a,
+aside .active>a:hover {
   color: $light-link-hover-color;
 }
 
@@ -409,7 +453,7 @@ aside .active > a:hover {
       border-left-color: $light-link-hover-color;
     }
 
-    .active > .nav-link {
+    .active>.nav-link {
       border-left-color: $light-link-hover-color;
     }
   }
@@ -424,6 +468,7 @@ aside .active > a:hover {
   }
 
   li a {
+
     &:hover,
     .active {
       border-left-color: $light-link-hover-color;
@@ -456,14 +501,17 @@ a.osano-cm-link {
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
 }
+
 #code-samples-deck {
   .card {
     box-shadow: $light-box-shadow;
   }
+
   .card-header {
     border-bottom: none;
     background-color: $light-standout-bg;
   }
+
   .card-footer {
     background-color: $light-standout-bg;
   }
@@ -483,16 +531,25 @@ a.osano-cm-link {
     color: $light-fg;
     box-shadow: $light-box-shadow;
 
-    > h4 a.expander:hover {
+    >h4 a.expander:hover {
       color: $light-fg;
     }
   }
 }
 
 .page-community {
+  .com-card {
+    background: #FFFFFF;
+  }
+
+  .project-description {
+    color: #343437;
+  }
+
   #platform-stack-overflow {
     content: url("../img/logos/lightmode/stack-overflow.svg");
   }
+
   #platform-discord {
     content: url("../img/logos/lightmode/discord.svg");
   }
@@ -533,7 +590,7 @@ a.osano-cm-link {
 .devportal-callout.注意 {
   border-color: $yellow-700;
 
-  > strong:first-child::before {
+  >strong:first-child::before {
     color: $yellow-700;
   }
 }
@@ -542,7 +599,7 @@ a.osano-cm-link {
 .devportal-callout.ヒント {
   border-color: $green-600;
 
-  > strong:first-child::before {
+  >strong:first-child::before {
     color: $green-600;
   }
 }
@@ -562,14 +619,17 @@ pre code {
 .multicode {
   a {
     color: $black;
+
     &.current {
       color: $white;
     }
+
     &:hover {
       text-decoration: none;
       background-color: $light-form-bg;
       color: $white;
     }
+
     &:focus {
       background-color: $gray-800;
     }
@@ -613,8 +673,9 @@ pre code {
 
   #benefits-list {
     @each $benefit in "public", "streamlined", "performance", "low-cost",
-      "community", "reliability"
-    {
+    "community", "reliability"
+
+      {
       ##{$benefit} {
         content: url("../img/icons/lightmode/#{$benefit}.svg");
       }
@@ -633,15 +694,19 @@ pre code {
   #wallet-xumm {
     content: url("../img/wallets/lightmode/xumm.svg");
   }
+
   #wallet-bitfrost {
     content: url("../img/wallets/lightmode/bitfrost.png");
   }
+
   #wallet-towo {
     content: url("../img/wallets/lightmode/towo.svg");
   }
+
   #wallet-keystone {
     content: url("../img/wallets/lightmode/keystone.svg");
   }
+
   #wallet-dcent {
     content: url("../img/wallets/lightmode/dcent.svg");
   }
@@ -715,11 +780,12 @@ pre code {
     background: #D2B2FF;
     color: #350080;
   }
+
   .section-text-title {
     color: #000;
   }
-  @each $company,$type in (
-    'bitgo': 'svg',
+
+  @each $company, $type in ('bitgo': 'svg',
     'sologenic-nft': 'svg',
     'carbonland-trust': 'svg',
     'x-tokenize': 'svg',
@@ -737,8 +803,8 @@ pre code {
     'xumm-wallet': 'svg',
     'sologenic-dex': 'svg',
     'Crossmark': 'png'
-  ) 
-  {
+
+  ) {
     #use_case_companies_list {
       ##{$company} {
         .biz-logo {
@@ -754,8 +820,7 @@ pre code {
   // #coil,
   #forte,
   #xrplorer,
-  #gatehub
-  {
+  #gatehub {
     .biz-logo {
       filter: invert(100%);
     }
@@ -765,13 +830,16 @@ pre code {
 
 .landing-bg {
   opacity: 0.4;
+
   @include media-breakpoint-up(md) {
     opacity: 1;
   }
 }
+
 .landing-builtin-bg {
   &::before {
     opacity: 0.4;
+
     @include media-breakpoint-up(md) {
       opacity: 1;
     }
@@ -822,13 +890,16 @@ pre code {
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/lightmode/4col-green.svg);
     }
+
     .card:nth-child(2) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-blue.svg);
     }
+
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-yellow.svg);
     }
   }
+
   #doc-types .card-deck {
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-blue-2.svg);
@@ -838,56 +909,84 @@ pre code {
 
 .page-docs-index,
 .page-community {
-  .main-title{
+  #community-table table{
+    border: 1px solid #34343740;
+  }
+  #community-table tr{
+    border-bottom: 1px solid #34343740;
+  }
+  .card-description {
+    color: #343437 !important;
+  }
+
+  .card-subtitle {
+    color: #111112 !important;
+  }
+
+  .card-title {
+    color: #111112 !important;
+  }
+
+  .main-title {
     color: #111112;
   }
-  .event-location{
+
+  .event-location {
     color: #232325 !important;
   }
-  .event-details{
+
+  .event-details {
     color: #232325 !important;
   }
-  .upcoming-event{
-    .event-name{
+
+  .upcoming-event {
+    .event-name {
       color: #111112;
     }
   }
-  .upcoming-label{
+
+  .upcoming-label {
     color: #232325 !important;
   }
-  .description{
+
+  .description {
     color: #232325;
   }
-  .events-text{
+
+  .events-text {
     color: #111112;
   }
+
   .discord-icon {
-      content: url(../img/community/ic_Discord_light.png)
-    }
-  
-    .twitter-icon {
-      content: url(../img/community/ic_Twitter_light.png);
-    }
-  
-    .youtube-icon {
-      content: url(../img/community/ic_Youtube_light.png);
-    }
-  
-    .xrpl-icon {
-      content: url(../img/community/ic_XRPL_light.png);
-    }
-    .github-icon {
-      content: url(../img/community/ic_GitHub_light.png);
-    }
-    
-    .stackoverflow-icon {
-      content: url(../img/community/ic_StackOverflow_light.png);
-    }
+    content: url(../img/community/ic_Discord_light.png)
+  }
+
+  .twitter-icon {
+    content: url(../img/community/ic_Twitter_light.png);
+  }
+
+  .youtube-icon {
+    content: url(../img/community/ic_Youtube_light.png);
+  }
+
+  .xrpl-icon {
+    content: url(../img/community/ic_XRPL_light.png);
+  }
+
+  .github-icon {
+    content: url(../img/community/ic_GitHub_light.png);
+  }
+
+  .stackoverflow-icon {
+    content: url(../img/community/ic_StackOverflow_light.png);
+  }
+
   #run-a-network-node .card-deck {
     .card:nth-child(4) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-green.svg);
     }
   }
+
   #run-a-network-node .text-cards a {
     color: $black;
   }
@@ -920,6 +1019,7 @@ pre code {
       background-image: url(../img/cards/lightmode/3col-green-2.svg);
     }
   }
+
   #xrpl-protocol .card-deck {
     .card:nth-child(1) .card-footer {
       background-image: url(../img/cards/lightmode/4col-light-blue-4.svg);
@@ -929,19 +1029,23 @@ pre code {
 
 // Placeholder text colors (search bars, etc.)
 $placeholder-color: $gray-600;
+
 ::-webkit-input-placeholder {
   /* Chrome */
   color: $placeholder-color;
 }
+
 :-ms-input-placeholder {
   /* IE 10+ */
   color: $placeholder-color;
 }
+
 ::-moz-placeholder {
   /* Firefox 19+ */
   color: $placeholder-color;
   opacity: 1;
 }
+
 :-moz-placeholder {
   /* Firefox 4 - 18 */
   color: $placeholder-color;
@@ -959,6 +1063,7 @@ $placeholder-color: $gray-600;
     background-color: $gray-050;
     box-shadow: 0px 5px 20px 0px $gray-300;
   }
+
   a.event-card:hover {
     color: $black;
   }
@@ -1010,6 +1115,7 @@ $placeholder-color: $gray-600;
   .events-filter[type="checkbox"]:not(:disabled):hover::before {
     background-color: $gray-100;
   }
+
   .events-filter[type="checkbox"]:not(:disabled):hover::after {
     background-color: $gray-100;
   }
@@ -1018,8 +1124,9 @@ $placeholder-color: $gray-600;
 .page-ambassadors {
   #benefits-list {
     @each $benefits in "benefits-01", "benefits-02", "benefits-03",
-      "benefits-04", "benefits-05", "benefits-06"
-    {
+    "benefits-04", "benefits-05", "benefits-06"
+
+      {
       ##{$benefits} {
         content: url("../img/ambassadors/lightmode/#{$benefits}.svg");
       }
@@ -1028,8 +1135,9 @@ $placeholder-color: $gray-600;
 
   #eligibility-list {
     @each $eligibility in "eligibility-01", "eligibility-02", "eligibility-03",
-      "eligibility-04", "eligibility-05"
-    {
+    "eligibility-04", "eligibility-05"
+
+      {
       ##{$eligibility} {
         content: url("../img/ambassadors/lightmode/#{$eligibility}.svg");
       }
@@ -1050,6 +1158,7 @@ $placeholder-color: $gray-600;
     filter: invert(100%) brightness(0.8);
   }
 }
+
 .page-impact {
 
   .connect-list {
@@ -1063,6 +1172,7 @@ $placeholder-color: $gray-600;
   #map-light {
     display: block;
   }
+
   #map-dark {
     display: none;
   }
@@ -1079,10 +1189,10 @@ $placeholder-color: $gray-600;
   }
 }
 
-.footer-nav{
-  .nav-item{
+.footer-nav {
+  .nav-item {
     text-shadow: #F5F5F7 0px 0px 2px, #F5F5F7 1px 1px 2px, #F5F5F7 2px 2px 3px,
-    #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
-    #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
+      #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
+      #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
   }
 }
