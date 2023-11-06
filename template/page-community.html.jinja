@@ -142,44 +142,42 @@
     <table>
         <tr>
             <td class="td-img"><img class="discord-icon" alt="discord icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
-             </td>
+            <td>Prepare for an evening of XRPL Toronto Meetup – a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.</td>
              <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img class="twitter-icon" alt="twitter icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis 
-             </td>
-<td>
+              <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis  1 Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis  2 Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis  </td>
+            <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img class="youtube-icon" alt="youtube icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+              <td>We are excited to introduce the XRP Ledger XCCESS - an exclusive meetup bringing together the brightest minds, innovators, and enthusiasts from South Korea's blockchain industry. Join us for an engaging experience during the Korea Blockchain Week. </td>
             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
          <tr>
             <td class="td-img"><img class="github-icon" alt="xrpl icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+              <td>Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.</td>
             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
-         <tr>
+         <tr> 
             <td class="td-img"><img class="stackoverflow-icon" alt="xrpl icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+              <td>Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects. </td>
             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img class="xrpl-icon" alt="xrpl icon"></td>
-            <td>Donec venenatis orci ac turpis aliquet aliquam. Etiam vehicula sem nec justo lobortis </td>
+              <td>Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.</td>
             <td>
                 <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
@@ -330,9 +328,19 @@
 
 
 {% endblock %}
-
-
 {% block endbody %}
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  const cells = document.querySelectorAll("#community-table td");
+
+  cells.forEach(function(cell) {
+    if (cell.scrollWidth > cell.clientWidth) { // If the text overflows
+      const text = cell.innerText;
+      cell.innerHTML = '<div class="scrolling-text">' + text + '</div>';
+    }
+  });
+});
+</script>
 
 <!-- TypeFrom for blog -->
 <script src="//embed.typeform.com/next/embed.js"></script>

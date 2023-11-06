@@ -98,11 +98,38 @@
     }
 
     #community-table td {
+        overflow: hidden; // Hide the overflow
+        max-width: 34vw; // Your current max width
+        position: relative; // To position the pseudo-element
         white-space: nowrap;
-        overflow: auto;
-        max-width: 65vw;
-        padding-left: 10px;
+
+        &::after {
+            // Pseudo-element for gradient fade effect
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100px; // Width of the fade effect
+            height: 100%;
+        }
     }
+
+    @keyframes scroll-text {
+        0% {
+            transform: translateX(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .scrolling-text {
+        display: inline-block;
+        white-space: nowrap;
+        animation: scroll-text 30s linear infinite; // Adjust time as needed
+    }
+
 
     #community-table img {
         width: 52px;
@@ -451,11 +478,13 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
+        overflow: hidden;
+        /* Hide overflow to keep the sliding effect clean */
     }
 
-    img {
+    .image-container img {
         max-width: 100%;
-        transition: all 0.3s ease-in-out;
+        transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
     }
 
     #center-image {
@@ -473,6 +502,31 @@
             display: none;
             margin: 0; // Adjust center image margin on small screens
         }
+    }
+
+    /* Additional styles for animating the left and right images off-screen */
+    #left-image.exit,
+    #right-image.exit {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    #left-image.enter,
+    #right-image.enter {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    #center-image.exit {
+        transform: scale(0.8);
+        /* Shrink the center image a bit when exiting */
+        opacity: 0;
+    }
+
+    #center-image.enter {
+        transform: scale(1);
+        /* Return to normal size when entering */
+        opacity: 1;
     }
 
     .nav-btn {
@@ -562,6 +616,7 @@
         position: absolute;
         width: 205px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
         @media (max-width: 768px) {
             width: 99%;
         }
