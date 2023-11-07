@@ -67,7 +67,7 @@
         - label: Send XRP
           href: /tutorials/send-xrp/
         - label: XRP Faucets
-          href: /docs/dev-tools/xrp-faucets/
+          href: /dev-tools/xrp-faucets/
         - label: XRPL Servers
           href: /infrastructure/xrpl-servers/
     - label: Dev Tools
