@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
+import { XRPLGuard } from 'content/static/js/xrpl-guard';
 
-import { Client, Wallet } from 'xrpl'; // - TODO: Uncomment when xrpl.js is working
-
-// TODO - Use `translate` on all text - Jackson
+// TODO: Directly import xrpl when xrpl.js 3.0 is released.
+// xrpl is imported via <script> tag below to avoid webpack issues. 
+// import { Client, Wallet } from 'xrpl'; 
 
 interface FaucetInfo {
   id: string,
@@ -14,7 +15,7 @@ interface FaucetInfo {
   desc: string,
 }
 
-async function waitForSequence(client: Client, address: string): Promise<{ sequence: string, balance: string }> {
+async function waitForSequence(client, address: string): Promise<{ sequence: string, balance: string }> {
   let response;
   while (true) {
     try {
@@ -33,10 +34,10 @@ async function waitForSequence(client: Client, address: string): Promise<{ seque
   return { sequence: response.result.account_data.Sequence, balance: response.result.account_data.Balance}
 }
 
-function FaucetEndpoints({ faucet, key } : { faucet: FaucetInfo, key: string}) {
+function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: string}) {
   const { translate } = useTranslate();
 
-  return (<div key={key}>
+  return (<div key={givenKey}>
     <h4>{translate(faucet.shortName)} {translate("Servers")}</h4>
     <pre>
       <code>
@@ -53,7 +54,7 @@ function FaucetEndpoints({ faucet, key } : { faucet: FaucetInfo, key: string}) {
 function FaucetSidebar({ faucets }: { faucets: FaucetInfo[]}) {
   return (<aside className="right-sidebar col-lg-6 order-lg-4" role="complementary"> 
     {faucets.map(
-      (faucet) => <FaucetEndpoints faucet={faucet} key={faucet.shortName + " Endpoints"}/>
+      (faucet) => <FaucetEndpoints faucet={faucet} givenKey={faucet.shortName + " Endpoints"}/>
     )}
   </aside>)
 }
@@ -82,7 +83,7 @@ export default function XRPFaucets() {
       jsonRpcUrl: "https://amm.devnet.rippletest.net:51234/",
       shortName: "AMM-Devnet",
       desc: "XLS-30d Automated Market Makers preview network."
-    }
+    },
   ]
 
   const [selectedFaucet, setSelectedFaucet] = useState(faucets[0])
@@ -101,7 +102,7 @@ export default function XRPFaucets() {
                 <h3>{translate("Choose Network:")}</h3>
                 { faucets.map((net) => (
                 <div className="form-check" key={"network-" + net.shortName}>
-                    <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" name="faucet-selector" id={net.id} data-jsonrpcurl={net.jsonRpcUrl} data-wsurl={net.wsUrl} data-shortName={net.shortName} checked={selectedFaucet.shortName == net.shortName} />
+                    <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" name="faucet-selector" id={net.id} checked={selectedFaucet.shortName == net.shortName} />
                     <label className="form-check-label" htmlFor={net.id}><strong>{translate(net.shortName)}</strong>: {translate(net.desc)}</label>
                 </div>
                 )) }
@@ -122,10 +123,14 @@ async function generateFaucetCredentials(selectedFaucet, setGeneratedCredentials
   setSecret("")
   setBalance("")
   setSequence("")
+  const { translate } = useTranslate();
 
-  const wallet = Wallet.generate() // { address: "r123...", seed: "s123..." } // TODO - Replace when xrpl.js is working - Wallet.generate()
 
-  const client = new Client(selectedFaucet.url)
+  // @ts-expect-error - xrpl is added via a script tag
+  const wallet = xrpl.Wallet.generate()
+  
+  // @ts-expect-error - xrpl is added via a script tag
+  const client = new xrpl.Client(selectedFaucet.wsUrl)
   await client.connect()
 
   try {
@@ -140,7 +145,7 @@ async function generateFaucetCredentials(selectedFaucet, setGeneratedCredentials
     setBalance(response.balance)
 
   } catch (e) {
-    alert("There was an error with the " + selectedFaucet.shortName + " faucet. Please try again.")
+    alert(translate("There was an error with the " + selectedFaucet.shortName + " faucet. Please try again."))
   }
 }
 
@@ -153,20 +158,23 @@ function TestCredentials({selectedFaucet}) {
   const [balance, setBalance] = useState("")
   const [sequence, setSequence] = useState("")
 
-  return (<div>
-    <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
-      <button id="generate-creds-button" onClick={() => generateFaucetCredentials(selectedFaucet, setGeneratedCredentialsFaucet, setAddress, setSecret, setBalance, setSequence)} className="btn btn-primary mr-2 mb-2">Generate {selectedFaucet.shortName} credentials</button>
-    </div>
+return (<div>
+    <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
+    <XRPLGuard>
+      <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
+        <button id="generate-creds-button" onClick={() => generateFaucetCredentials(selectedFaucet, setGeneratedCredentialsFaucet, setAddress, setSecret, setBalance, setSequence)} className="btn btn-primary mr-2 mb-2">Generate {selectedFaucet.shortName} credentials</button>
+      </div>
+    </XRPLGuard>
 
-    {/* Displays after account is funded */}
-    {generatedCredentialsFaucet && <div id="your-credentials"><h2>Your {generatedCredentialsFaucet} Credentials</h2></div>}
-    <div id="loader" style={{display: address ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Generating Keys...")}</div>
+    {generatedCredentialsFaucet && <div id="your-credentials"><h2>{translate("Your")} {generatedCredentialsFaucet} {translate("Credentials")}</h2></div>}
+    
     {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
     {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
+    {(address && !balance) && (<div><br/><div id="loader" style={{display: (address && !balance) ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}</div></div>)}
+    
     {balance && <div id="balance"><h3>{translate("Balance")}</h3>{(Number(balance) * 0.000001).toLocaleString("en")} {translate("XRP")}</div>}
-    {sequence && <div id="sequence"><h3>{translate("Sequence Number")}</h3>{sequence}
-      ((secret && !sequence) && (<img className="throbber" src="assets/img/xrp-loader-96.png"/> {translate("Waiting...")}))
-    </div>}
-    <div id="loader" style={{display: sequence ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}</div>
-  </div>)
+    {sequence && <div id="sequence"><h3>{translate("Sequence Number")}</h3>{sequence}</div>}
+    {(secret && !sequence) && (<div id="loader" style={{display: sequence ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}</div>)}
+  </div>
+)
 }
