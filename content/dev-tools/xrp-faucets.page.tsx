@@ -54,7 +54,7 @@ function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: 
 function FaucetSidebar({ faucets }: { faucets: FaucetInfo[]}) {
   return (<aside className="right-sidebar col-lg-6 order-lg-4" role="complementary"> 
     {faucets.map(
-      (faucet) => <FaucetEndpoints faucet={faucet} givenKey={faucet.shortName + " Endpoints"}/>
+      (faucet) => <FaucetEndpoints faucet={faucet} key={faucet.shortName + " Endpoints"} givenKey={faucet.shortName + " Endpoints"}/>
     )}
   </aside>)
 }
@@ -160,11 +160,11 @@ function TestCredentials({selectedFaucet}) {
 
 return (<div>
     <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
-    <XRPLGuard>
+    {/* <XRPLGuard> TODO: Re-add this once we find a good way to avoid browser/server mismatch errors */}
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
         <button id="generate-creds-button" onClick={() => generateFaucetCredentials(selectedFaucet, setGeneratedCredentialsFaucet, setAddress, setSecret, setBalance, setSequence)} className="btn btn-primary mr-2 mb-2">Generate {selectedFaucet.shortName} credentials</button>
       </div>
-    </XRPLGuard>
+    {/* </XRPLGuard> */}
 
     {generatedCredentialsFaucet && <div id="your-credentials"><h2>{translate("Your")} {generatedCredentialsFaucet} {translate("Credentials")}</h2></div>}
     
