@@ -112,9 +112,7 @@ Use the following conventions when creating a page:
 - Don't hard-wrap text in Markdown files.
 - For code samples, try to keep lines no longer than 80 columns wide.
 - When in doubt, follow [Ciro Santilli's Markdown Style Guide (Writability Profile)](https://cirosantilli.com/markdown-style-guide/).
-- Landing pages should be in subfolders and should have the same filename as the folder. For example, the landing page of the "Accounts" page group should be `accounts/accounts.md` with the HTML filename `accounts.html`.
-
-    **Warning:** Don't use `index.md`.
+- The page within a category should be in a subfolder named for that category but can be less verbose (especially if the page title includes words also in the parent directories), should have the filename `index.md`, and a title that is similar to the folder name. For example, the "Protocol Reference" index page is at `references/protocol/index.md`.
 
 - Don't use tab characters for indentation in Markdown or code samples. Use 4 spaces per indent, except in **JavaScript** code samples, which should use 2 spaces per indent.
 
