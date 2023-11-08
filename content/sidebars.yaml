@@ -670,6 +670,8 @@
             href: /dev-tools/xrp-faucets
             page: /dev-tools/xrp-faucets.page.tsx
           - label: Transaction Sender
+            href: /dev-tools/tx-sender
+            page: /dev-tools/tx-sender.page.tsx
       - label: XRPL Learning Portal
         href: https://learn.xrpl.org/
         external: true
