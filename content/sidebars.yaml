@@ -666,7 +666,7 @@
           - label: xrp-ledger.toml Checker
           - label: Domain Verification Checker
           - label: XRP Faucets
-          - label: Transaction Sender
+          - page: /dev-tools/tx-sender.page.tsx
       - label: XRPL Learning Portal
         href: https://learn.xrpl.org/
         external: true
