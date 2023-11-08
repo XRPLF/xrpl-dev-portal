@@ -22,6 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+/**
+ * Replaced by react-alert after the Redocly migration. 
+ * Please see tx-sender.page.tsx for an example of react-alerts in action.
+ */
+
 (function() {
   var $;
 
