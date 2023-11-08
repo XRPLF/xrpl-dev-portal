@@ -38,6 +38,9 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
   --markprompt-secondaryHighlight: #a855f7;
   --markprompt-overlay: #00000040;
   --markprompt-tab-border-bottom: #454549;
+  --markprompt-hover-color: #5f00e5;
+  --markprompt-ternary-hover: #4a00b2;
+  --markprompt-ternary-text: #f0e5ff;
 }
 
 .MarkpromptPromptFeedback button[data-active="true"] {
@@ -88,6 +91,11 @@ label.MarkpromptExtendedFeedbackLabel {
       stroke-width: 1.5px;
     }
   }
+}
+
+.MarkpromptFeedbackButtons > button:nth-of-type(2)[data-active="true"] svg {
+  stroke: #ff198b;
+  fill: #80003f;
 }
 
 .MarkpromptExtendedFeedbackTextInput {
@@ -222,10 +230,11 @@ label.MarkpromptExtendedFeedbackLabel {
 .MarkpromptSubmitAdditionalFeedbackButton,
 .MarkpromptCancelAdditionalFeedbackButton {
   height: 100%;
-  padding: 0.375rem;
+  padding: 0.375rem !important;
   border-radius: 0.25rem;
   font-size: 0.875rem;
   font-weight: 600;
+  border: none !important;
 }
 
 .MarkpromptSubmitAdditionalFeedbackButton {
@@ -233,10 +242,14 @@ label.MarkpromptExtendedFeedbackLabel {
   color: var(--markprompt-button-text);
 }
 
+.MarkpromptSubmitAdditionalFeedbackButton:hover {
+  background: var(--markprompt-hover-color) !important;
+}
+
 .MarkpromptCancelAdditionalFeedbackButton {
   color: var(--markprompt-primary);
   background: transparent;
-  border: none;
+  border: none !important;
 }
 
 .MarkpromptExampleContainer {
@@ -330,6 +343,9 @@ label.MarkpromptExtendedFeedbackLabel {
     content: "";
     display: none;
   }
+  .MarkpromptFloatingTrigger {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -350,18 +366,25 @@ label.MarkpromptExtendedFeedbackLabel {
     background-image: url(../img/icons/close.png);
     background-size: cover;
     background-repeat: no-repeat;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .MarkpromptContentDialog {
     max-height: 100vh;
     height: 100vh;
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
+    overflow-y: scroll;
   }
 
   .MarkpromptTabsList {
     justify-content: center;
+  }
+}
+
+@media (max-width: 767px) and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .MarkpromptContentDialog {
+    padding-bottom: 2rem;
   }
 }
 
@@ -392,7 +415,8 @@ label.MarkpromptExtendedFeedbackLabel {
 .MarkpromptReferences {
   background-color: var(--markprompt-extended-feedback-text);
   margin: 0 1rem;
-  margin: 0 1rem;
+  border-top: none;
+  padding-top: 0;
 }
 
 .MarkpromptPromptFeedback {
@@ -430,6 +454,7 @@ label.MarkpromptExtendedFeedbackLabel {
   &[type="search"]::before {
     background-image: url(../img/icons/search.png);
   }
+  padding: 1rem;
 }
 
 button.MarkpromptTab[id="radix-P0-0-trigger-prompt"]::after {
@@ -464,6 +489,7 @@ button.MarkpromptTab[id="radix-P0-0-trigger-prompt"]::after {
 html.light:root {
   --markprompt-primary: #7919ff;
   --markprompt-secondary-button: #9a52ff;
+  --markprompt-primary-button: #b480ff;
   --markprompt-feedback-box-background: #232325;
   --markprompt-button-text: #111112;
   --markprompt-feedback-label-text: #111112;
@@ -485,6 +511,9 @@ html.light:root {
   --markprompt-secondaryHighlight: #a855f7;
   --markprompt-overlay: #00000040;
   --markprompt-tab-border-bottom: #454549;
+  --markprompt-hover-color: #5f00e5;
+  --markprompt-ternary-hover: #f0e5ff;
+  --markprompt-ternary-text: #7919ff;
 }
 
 html.light .MarkpromptAnswer {
@@ -515,22 +544,36 @@ html.light button.MarkpromptTab[id="radix-P0-0-trigger-prompt"]::after {
   vertical-align: middle;
 }
 
+.example-icon {
+  background-image: url(../img/icons/example.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 html.light .example-icon {
   background-image: url(../img/icons/lightmode/example.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-html.light .MarkpromptFeedbackButtons button[data-active="true"] svg {
+html.light
+  .MarkpromptFeedbackButtons
+  > button:first-child[data-active="true"]
+  svg {
   fill: #84f0b6;
 }
 
-html.light .MarkpromptSubmitAdditionalFeedbackButton:hover {
-  background-color: var(--markprompt-primary);
+html.light
+  .MarkpromptFeedbackButtons
+  > button:nth-of-type(2)[data-active="true"]
+  svg {
+  fill: #ff80bf;
+  stroke: #ff198b;
 }
 
-html.light .MarkpromptCancelAdditionalFeedbackButton:hover {
-  background-color: var(--markprompt-feedback-textbox-background);
+.MarkpromptCancelAdditionalFeedbackButton:hover {
+  background-color: var(--markprompt-ternary-hover) !important;
+  color: var(--markprompt-ternary-text) !important;
 }
 
 html.light .MarkpromptCancelAdditionalFeedbackButton {
@@ -572,4 +615,40 @@ html.light [aria-selected="true"] .MarkpromptSearchResultIcon {
 
 #searchButton {
   margin-top: 1rem;
+}
+
+html.light .MarkpromptPrompt:focus {
+  color: var(--markprompt-button-text);
+}
+
+// #searchButton[aria-disabled="true"] svg rect {
+//   fill: var(--markprompt-secondary-button);
+//   opacity: 50%;
+// }
+
+// #searchButton[aria-disabled="true"] svg path {
+//   stroke: var(--markprompt-primaryForeground);
+//   opacity: 50%;
+// }
+
+#searchButton[aria-disabled="true"] {
+  background-image: url(../img/icons/submitdisabled.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+#searchButton[aria-disabled="true"] svg {
+  visibility: hidden;
+}
+
+html.light #searchButton[aria-disabled="true"] {
+  background-image: url(../img/icons/submitdisabledlight.png);
+}
+
+.MarkpromptFloatingTrigger {
+  background-image: url(../img/icons/askXRPL.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: transparent;
 }
