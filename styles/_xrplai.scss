@@ -343,6 +343,7 @@ label.MarkpromptExtendedFeedbackLabel {
     content: "";
     display: none;
   }
+
   .MarkpromptFloatingTrigger {
     display: none;
   }
@@ -620,16 +621,6 @@ html.light [aria-selected="true"] .MarkpromptSearchResultIcon {
 html.light .MarkpromptPrompt:focus {
   color: var(--markprompt-button-text);
 }
-
-// #searchButton[aria-disabled="true"] svg rect {
-//   fill: var(--markprompt-secondary-button);
-//   opacity: 50%;
-// }
-
-// #searchButton[aria-disabled="true"] svg path {
-//   stroke: var(--markprompt-primaryForeground);
-//   opacity: 50%;
-// }
 
 #searchButton[aria-disabled="true"] {
   background-image: url(../img/icons/submitdisabled.png);
