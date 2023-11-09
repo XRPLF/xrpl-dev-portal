@@ -11,6 +11,7 @@ interface FaucetInfo {
   id: string,
   wsUrl: string,
   jsonRpcUrl: string,
+  faucetUrl: string,
   shortName: string,
   desc: string,
 }
@@ -67,6 +68,7 @@ export default function XRPFaucets() {
       id: "faucet-select-testnet",
       wsUrl: "wss://s.altnet.rippletest.net:51233/",
       jsonRpcUrl: "https://s.altnet.rippletest.net:51234/",
+      faucetUrl: "faucet.altnet.rippletest.net",
       shortName: "Testnet",
       desc: "Mainnet-like network for testing applications."
     },
@@ -74,6 +76,7 @@ export default function XRPFaucets() {
       id: "faucet-select-devnet",
       wsUrl: "wss://s.devnet.rippletest.net:51233/",
       jsonRpcUrl: "https://s.devnet.rippletest.net:51234/",
+      faucetUrl: "faucet.devnet.rippletest.net",
       shortName: "Devnet",
       desc: "Preview of upcoming amendments."
     },
@@ -81,6 +84,7 @@ export default function XRPFaucets() {
       id: "faucet-select-ammdevnet",
       wsUrl: "wss://amm.devnet.rippletest.net:51233/",
       jsonRpcUrl: "https://amm.devnet.rippletest.net:51234/",
+      faucetUrl: "ammfaucet.devnet.rippletest.net",
       shortName: "AMM-Devnet",
       desc: "XLS-30d Automated Market Makers preview network."
     },
@@ -138,9 +142,10 @@ async function generateFaucetCredentials(selectedFaucet, setGeneratedCredentials
     setAddress(wallet.address)
     setSecret(wallet.seed)
 
-    await client.fundWallet(wallet, { usageContext: "xrpl.org-faucet" })
+    await client.fundWallet(wallet, { faucetHost: selectedFaucet.faucetUrl, usageContext: "xrpl.org-faucet" })
 
     const response = await waitForSequence(client, wallet.address)
+
     setSequence(response.sequence)
     setBalance(response.balance)
 
