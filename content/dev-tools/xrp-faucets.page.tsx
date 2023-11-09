@@ -103,13 +103,18 @@ export default function XRPFaucets() {
                 <p>{translate("These ")}<a href="parallel-networks.html">{translate("parallel XRP Ledger test networks")}</a> {translate("provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
                 <p>{translate("These funds are intended for")} <strong>{translate("testing")}</strong> {translate("only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
                 <p>{translate("All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
+
                 <h3>{translate("Choose Network:")}</h3>
                 { faucets.map((net) => (
                 <div className="form-check" key={"network-" + net.shortName}>
-                    <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" name="faucet-selector" id={net.id} checked={selectedFaucet.shortName == net.shortName} />
-                    <label className="form-check-label" htmlFor={net.id}><strong>{translate(net.shortName)}</strong>: {translate(net.desc)}</label>
+                    <input onChange={() => setSelectedFaucet(net)} className="form-check-input" type="radio" 
+                      name="faucet-selector" id={net.id} checked={selectedFaucet.shortName == net.shortName} />
+                    <label className="form-check-label" htmlFor={net.id}>
+                      <strong>{translate(net.shortName)}</strong>: {translate(net.desc)}
+                    </label>
                 </div>
                 )) }
+
                 <p className="mb-3"><b>{translate("Hooks Testnet")}</b>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" className="external-link">{translate("See the Hooks Faucet")}</a></p>
                 <TestCredentials selectedFaucet={selectedFaucet}/>
             </div>
@@ -120,7 +125,14 @@ export default function XRPFaucets() {
   )
 }
 
-async function generateFaucetCredentials(selectedFaucet, setGeneratedCredentialsFaucet, setAddress, setSecret, setBalance, setSequence) {
+async function generateFaucetCredentialsAndUpdateUI(
+  selectedFaucet: FaucetInfo, 
+  setGeneratedCredentialsFaucet: React.Dispatch<React.SetStateAction<string>>, 
+  setAddress: React.Dispatch<React.SetStateAction<string>>, 
+  setSecret: React.Dispatch<React.SetStateAction<string>>, 
+  setBalance: React.Dispatch<React.SetStateAction<string>>, 
+  setSequence: React.Dispatch<React.SetStateAction<string>>): Promise<void> {
+
   // Clear existing credentials
   setGeneratedCredentialsFaucet(selectedFaucet.shortName)
   setAddress("")
@@ -164,22 +176,53 @@ function TestCredentials({selectedFaucet}) {
   const [sequence, setSequence] = useState("")
 
 return (<div>
+    {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
     <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
+
     {/* <XRPLGuard> TODO: Re-add this once we find a good way to avoid browser/server mismatch errors */}
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
-        <button id="generate-creds-button" onClick={() => generateFaucetCredentials(selectedFaucet, setGeneratedCredentialsFaucet, setAddress, setSecret, setBalance, setSequence)} className="btn btn-primary mr-2 mb-2">Generate {selectedFaucet.shortName} credentials</button>
+        <button id="generate-creds-button" onClick={
+            () => generateFaucetCredentialsAndUpdateUI(
+              selectedFaucet, 
+              setGeneratedCredentialsFaucet, 
+              setAddress, 
+              setSecret, 
+              setBalance, 
+              setSequence)
+          } className="btn btn-primary mr-2 mb-2">
+            Generate {selectedFaucet.shortName} credentials
+        </button>
       </div>
     {/* </XRPLGuard> */}
 
-    {generatedCredentialsFaucet && <div id="your-credentials"><h2>{translate("Your")} {generatedCredentialsFaucet} {translate("Credentials")}</h2></div>}
+    {generatedCredentialsFaucet && <div id="your-credentials">
+      <h2>{translate("Your")} {generatedCredentialsFaucet} {translate("Credentials")}</h2>
+    </div>}
     
     {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
+
     {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
-    {(address && !balance) && (<div><br/><div id="loader" style={{display: (address && !balance) ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}</div></div>)}
+    {(address && !balance) && (<div><br/>
+        <div id="loader" style={{display: (address && !balance) ? "inline" : "none"}}>
+          <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}
+        </div>
+      </div>)}
     
-    {balance && <div id="balance"><h3>{translate("Balance")}</h3>{(Number(balance) * 0.000001).toLocaleString("en")} {translate("XRP")}</div>}
-    {sequence && <div id="sequence"><h3>{translate("Sequence Number")}</h3>{sequence}</div>}
-    {(secret && !sequence) && (<div id="loader" style={{display: sequence ? "inline" : "none"}}><img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}</div>)}
+    {balance && <div id="balance">
+      <h3>{translate("Balance")}</h3>
+      {(Number(balance) * 0.000001).toLocaleString("en")} {translate("XRP")}
+    </div>}
+    
+    {sequence && <div id="sequence">
+      <h3>{translate("Sequence Number")}</h3>
+      {sequence}
+    </div>}
+    
+    {(secret && !sequence) && 
+      (<div id="loader" style={{display: sequence ? "inline" : "none"}}>
+        <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}
+      </div>)}
+
   </div>
 )
 }
