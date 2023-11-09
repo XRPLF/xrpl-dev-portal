@@ -1,7 +1,7 @@
 ---
 html: account_tx.html
 parent: account-methods.html
-blurb: Get info about an account's transactions.
+blurb: Get a list of transactions affecting an account.
 labels:
   - Payments
   - Accounts
@@ -9,7 +9,7 @@ labels:
 # account_tx
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountTx.cpp "Source")
 
-The `account_tx` method retrieves a list of transactions that involved the specified account.
+The `account_tx` method retrieves a list of validated transactions that involve a given account.
 
 ## Request Format
 
