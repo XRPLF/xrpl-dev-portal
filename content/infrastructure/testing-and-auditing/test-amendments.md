@@ -1,6 +1,6 @@
 ---
 html: test-amendments.html
-parent: configure-rippled.html
+parent: use-stand-alone-mode.html # "Testing and Auditing"
 blurb: You can test proposed amendments before they're enabled on the network.
 labels:
   - Blockchain

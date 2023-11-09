@@ -736,11 +736,11 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/networks-and-servers/ledger-history/index.md
+    -   md: concepts/networks-and-servers/ledger-history.md
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/index.md"
+    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history.md"
         targets:
             - ja
 
@@ -3803,356 +3803,307 @@ pages:
         targets:
             - ja
 
-        # Redirect old landing
-    -   name: Manage the rippled server
-        html: manage-the-rippled-server.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: install-rippled-on-ubuntu.html
+
+    -   md: infrastructure/commandline-usage.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/commandline-usage.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/installation/index.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/installation/index.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/installation/system-requirements.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/installation/system-requirements.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/installation/install-rippled-on-centos-rhel-with-yum.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/installation/install-rippled-on-centos-rhel-with-yum.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/installation/install-rippled-on-ubuntu.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/installation/install-rippled-on-ubuntu.md"
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/installation/install-clio-on-ubuntu.md
         targets:
             - en
             - ja
 
-    -   md: infrastructure/rippled/commandline-usage.md
+    -   md: infrastructure/installation/update-rippled-automatically-on-linux.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/commandline-usage.md"
+    -   md: "@i18n/ja/infrastructure/installation/update-rippled-automatically-on-linux.md"
         targets:
             - ja
 
-    -   md: infrastructure/install-rippled/index.md
+    -   md: infrastructure/installation/update-rippled-manually-on-centos-rhel.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/install-rippled/index.md"
+    -   md: "@i18n/ja/infrastructure/installation/update-rippled-manually-on-centos-rhel.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/installation/system-requirements.md
+    -   md: infrastructure/installation/update-rippled-manually-on-ubuntu.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/installation/system-requirements.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.md"
-        targets:
-            - ja
-
-    # Redirect old Alien-based install
-    -   name: Install rippled on Ubuntu with Alien
-        html: install-rippled-on-ubuntu-with-alien.html
-        parent: install-rippled.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: install-rippled-on-ubuntu.html
-        targets:
-            - en
-            - ja
-
-    -   md: infrastructure/rippled/installation/install-rippled-on-ubuntu.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/installation/install-rippled-on-ubuntu.md"
-        targets:
-            - ja
-
-    # Redirect old CentOS/RHEL install
-    -   name: Update rippled Automatically on CentOS/RHEL
-        html: update-rippled-automatically-on-centos-rhel.html
-        template: pagetype-redirect.html.jinja
-        nav_omit: true
-        redirect_url: update-rippled-automatically-on-linux.html
-        targets:
-            - en
-            - ja
-
-    -   md: infrastructure/rippled/installation/update-rippled-automatically-on-linux.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/installation/update-rippled-automatically-on-linux.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.md"
+    -   md: "@i18n/ja/infrastructure/installation/update-rippled-manually-on-ubuntu.md"
         targets:
             - ja
 
     # TODO: translate
-    -   md: infrastructure/rippled/installation/build-on-linux-mac-windows.md
+    -   md: infrastructure/installation/build-on-linux-mac-windows.md
         targets:
             - en
             - ja
 
-        # Redirect to build instructions on rippled repo.
-    -   name: Build and Run rippled on Ubuntu
-        html: build-run-rippled-ubuntu.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: build-on-linux-mac-windows.html
-        targets:
-            - en
-            - ja
-
-        # Redirect to build instructions on rippled repo.
-    -   name: Build and Run rippled on macOS
-        html: build-run-rippled-macos.html
-        template: pagetype-redirect.html.jinja
-        redirect_url: build-on-linux-mac-windows.html
-        targets:
-            - en
-            - ja
-
-    -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
+    -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
 
         # TODO: translate
-    -   md: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
+    -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
         top_nav_grouping: 人気ページ
         untranslated_warning: true
         targets:
             - ja
 
-    -   md: infrastructure/rippled/installation/capacity-planning.md
+    -   md: infrastructure/installation/capacity-planning.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/installation/capacity-planning.md"
+    -   md: "@i18n/ja/infrastructure/installation/capacity-planning.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/installation/rippled-1-3-migration-instructions.md
+    -   md: infrastructure/installation/rippled-1-3-migration-instructions.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/installation/rippled-1-3-migration-instructions.md"
+    -   md: "@i18n/ja/infrastructure/installation/rippled-1-3-migration-instructions.md"
         targets:
             - ja
 
-    -   md: infrastructure/configure-rippled/index.md
+    -   md: infrastructure/configuration/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/configure-rippled/index.md"
+    -   md: "@i18n/ja/infrastructure/configuration/index.md"
         targets:
             - ja
 
-    -   md: infrastructure/configure-rippled/server-modes/index.md
+    -   md: infrastructure/configuration/server-modes/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/configure-rippled/server-modes/index.md"
+    -   md: "@i18n/ja/infrastructure/configuration/server-modes/index.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
+    -   md: infrastructure/configuration/server-modes/run-rippled-as-a-validator.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/run-rippled-as-a-validator.md"
+    -   md: "@i18n/ja/infrastructure/configuration/server-modes/run-rippled-as-a-validator.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configuration/run-rippled-as-a-stock-server.md
+    -   md: infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md
         targets:
             - en
 
         # TODO: update this translation and rename the file like in the English version
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/run-rippled-as-a-wallet-server.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/configure-rippled/data-retention/index.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/configure-rippled/data-retention/index.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-full-history.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-full-history.md"
-        targets:
-            - ja
-
-    -   md: concepts/networks-and-servers/ledger-history/online-deletion.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/online-deletion.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-online-deletion.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-online-deletion.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-advisory-deletion.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-advisory-deletion.md"
-        targets:
-            - ja
-
-    -   md: concepts/networks-and-servers/ledger-history/history-sharding.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/concepts/networks-and-servers/ledger-history/history-sharding.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-history-sharding.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-history-sharding.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/configure-amendment-voting.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/configure-amendment-voting.md"
-        targets:
-            - ja
-
-    -   md: infrastructure/rippled/configuration/test-amendments.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/test-amendments.md"
-        targets:
-            - ja
-
-        # TODO: translate
-    -   md: infrastructure/rippled/configuration/configure-statsd.md
-        targets:
-            - en
-            - ja
-
-    -   md: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md
-        targets:
-            - en
-
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md"
+    -   md: "@i18n/ja/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md"
         outdated_translation: true
         targets:
             - ja
 
-        # TODO: translate page
-    -   md: infrastructure/rippled/configuration/configure-grpc.md
-        targets:
-            - en
-            - ja
-
-    -   md: infrastructure/rippled/configuration/enable-public-signing.md
+    -   md: infrastructure/configuration/data-retention/index.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configuration/enable-public-signing.md"
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/index.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/configure-peering.md
+    -   md: infrastructure/configuration/data-retention/configure-full-history.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/configure-peering.md"
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/configure-full-history.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/cluster-rippled-servers.md
+    -   md: infrastructure/configuration/data-retention/online-deletion.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/cluster-rippled-servers.md"
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/online-deletion.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/configure-a-private-server.md
+    -   md: infrastructure/configuration/data-retention/configure-online-deletion.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/configure-a-private-server.md"
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/configure-online-deletion.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
+    -   md: infrastructure/configuration/data-retention/configure-advisory-deletion.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/configure-advisory-deletion.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/data-retention/history-sharding.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/history-sharding.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/data-retention/configure-history-sharding.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/data-retention/configure-history-sharding.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/peering/index.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/peering/index.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/peering/cluster-rippled-servers.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/peering/cluster-rippled-servers.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/peering/configure-a-private-server.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/peering/configure-a-private-server.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/peering/configure-the-peer-crawler.md
         targets:
             - en
 
     # TODO: translate this page. # For now we just have a translated blurb.
-    -   md: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
+    -   md: infrastructure/configuration/peering/configure-the-peer-crawler.md
         blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
         untranslated_warning: true
         targets:
             - ja
 
     # TODO: translate this page
-    -   md: infrastructure/rippled/configure-peering/enable-link-compression.md
+    -   md: infrastructure/configuration/peering/enable-link-compression.md
         targets:
             - en
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/forward-ports-for-peering.md
+    -   md: infrastructure/configuration/peering/forward-ports-for-peering.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/forward-ports-for-peering.md"
+    -   md: "@i18n/ja/infrastructure/configuration/peering/forward-ports-for-peering.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.md
+    -   md: infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.md"
+    -   md: "@i18n/ja/infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/set-max-number-of-peers.md
+    -   md: infrastructure/configuration/peering/set-max-number-of-peers.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/set-max-number-of-peers.md"
+    -   md: "@i18n/ja/infrastructure/configuration/peering/set-max-number-of-peers.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/configure-peering/use-a-peer-reservation.md
+    -   md: infrastructure/configuration/peering/use-a-peer-reservation.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/configure-peering/use-a-peer-reservation.md"
+    -   md: "@i18n/ja/infrastructure/configuration/peering/use-a-peer-reservation.md"
+        targets:
+            - ja
+
+    -   md: infrastructure/configuration/configure-amendment-voting.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/configure-amendment-voting.md"
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/configuration/configure-statsd.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md"
+        outdated_translation: true
+        targets:
+            - ja
+
+        # TODO: translate page
+    -   md: infrastructure/configuration/configure-grpc.md
+        targets:
+            - en
+            - ja
+
+    -   md: infrastructure/configuration/enable-public-signing.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/enable-public-signing.md"
         targets:
             - ja
 
@@ -4164,29 +4115,43 @@ pages:
         targets:
             - ja
 
-    -   md: infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
+    -   md: infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md"
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
+    -   md: infrastructure/testing-and-auditing/load-a-saved-ledger-in-stand-alone-mode.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md"
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/load-a-saved-ledger-in-stand-alone-mode.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
+    -   md: infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md"
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md"
         targets:
             - ja
+
+    -   md: infrastructure/testing-and-auditing/test-amendments.md
+        targets:
+            - en
+
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/test-amendments.md"
+        targets:
+            - ja
+
+        # TODO: translate
+    -   md: infrastructure/testing-and-auditing/run-private-network-with-docker.md
+        targets:
+        - en
+        - ja
 
     -   md: infrastructure/troubleshooting/index.md
         targets:
@@ -4196,71 +4161,103 @@ pages:
         targets:
             - ja
 
-    -   md: infrastructure/rippled/troubleshooting/diagnosing-problems.md
+    -   md: infrastructure/troubleshooting/diagnosing-problems.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/diagnosing-problems.md"
+    -   md: "@i18n/ja/infrastructure/troubleshooting/diagnosing-problems.md"
         targets:
             - ja
 
         # TODO: translate
-    -   md: infrastructure/rippled/troubleshooting/health-check-interventions.md
+    -   md: infrastructure/troubleshooting/health-check-interventions.md
         targets:
             - en
             - ja
 
-    -   md: infrastructure/rippled/troubleshooting/understanding-log-messages.md
+    -   md: infrastructure/troubleshooting/understanding-log-messages.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/understanding-log-messages.md"
+    -   md: "@i18n/ja/infrastructure/troubleshooting/understanding-log-messages.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/troubleshooting/server-doesnt-sync.md
+    -   md: infrastructure/troubleshooting/server-doesnt-sync.md
         targets:
             - en
 
         # TODO: translate the blurb in this page's frontmatter
-    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/server-doesnt-sync.md"
+    -   md: "@i18n/ja/infrastructure/troubleshooting/server-doesnt-sync.md"
         targets:
             - ja
 
         # TODO: translate
-    -   md: infrastructure/rippled/troubleshooting/server-is-amendment-blocked.md
+    -   md: infrastructure/troubleshooting/server-is-amendment-blocked.md
         targets:
             - en
             - ja
 
-    -   md: infrastructure/rippled/troubleshooting/server-wont-start.md
+    -   md: infrastructure/troubleshooting/server-wont-start.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/server-wont-start.md"
+    -   md: "@i18n/ja/infrastructure/troubleshooting/server-wont-start.md"
         targets:
             - ja
 
-    -   md: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
+    -   md: infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
         targets:
             - en
 
-    -   md: "@i18n/ja/infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.md"
+    -   md: "@i18n/ja/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md"
         targets:
             - ja
 
-        # TODO: translate
-    -   md: infrastructure/clio/install-clio-on-ubuntu.md
+    # Redirects for old infrastructure pages
+
+    -   name: Manage the rippled server
+        html: manage-the-rippled-server.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: install-rippled-on-ubuntu.html
         targets:
             - en
             - ja
 
-        # TODO: translate
-    -   md: infrastructure/rippled/run-private-network-with-docker.md
+    -   name: Build and Run rippled on Ubuntu
+        html: build-run-rippled-ubuntu.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: build-on-linux-mac-windows.html
         targets:
-        - en
-        - ja
+            - en
+            - ja
 
+    -   name: Build and Run rippled on macOS
+        html: build-run-rippled-macos.html
+        template: pagetype-redirect.html.jinja
+        redirect_url: build-on-linux-mac-windows.html
+        targets:
+            - en
+            - ja
+
+    -   name: Update rippled Automatically on CentOS/RHEL
+        html: update-rippled-automatically-on-centos-rhel.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: update-rippled-automatically-on-linux.html
+        targets:
+            - en
+            - ja
+
+    -   name: Install rippled on Ubuntu with Alien
+        html: install-rippled-on-ubuntu-with-alien.html
+        template: pagetype-redirect.html.jinja
+        nav_omit: true
+        redirect_url: install-rippled-on-ubuntu.html
+        targets:
+            - en
+            - ja
 
     # # Landing pages for labels -------------------------------------------------
     # -   name: Accounts
