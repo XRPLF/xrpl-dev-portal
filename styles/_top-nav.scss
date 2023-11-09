@@ -1,7 +1,13 @@
 /* Top navigation ----------------------------------------------------------- */
+$nav-height: 80px;
+
+[data-component-name="Layout/RootLayout"] {
+  padding-top: $nav-height;
+}
+
 .top-nav {
   background-color: $gray-900;
-  height: 80px;
+  height: $nav-height;
   padding: 0;
   // Logo
   .navbar-brand {
