@@ -417,6 +417,7 @@ pages:
             - get-started-using-python.html
             - get-started-using-javascript.html
             - get-started-using-java.html
+            - get-started-using-php.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
             - send-xrp.html
@@ -452,6 +453,7 @@ pages:
             - get-started-using-python.html
             - get-started-using-javascript.html
             - get-started-using-java.html
+            - get-started-using-php.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
             - send-xrp.html
@@ -1879,12 +1881,43 @@ pages:
         targets:
             - en
 
-        # TODO: translate
+    # TODO: translate
     -   md: tutorials/get-started/get-started-using-java.md
         top_nav_grouping: 始めましょう
         untranslated_warning: true
         targets:
             - ja
+
+    # PHP ---------------------------------------------------------------------
+
+    -   name: PHP
+        html: php.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in PHP.
+        targets:
+            - en
+
+    - name: PHP
+      html: php.html
+      parent: tutorials.html
+      top_nav_grouping: カテゴリ
+      template: pagetype-category.html.jinja
+      blurb: PHPでのXRPLチュートリアルです。
+      targets:
+          - ja
+
+    -   md: tutorials/get-started/get-started-using-php.md
+        targets:
+            - en
+
+    # TODO: translate
+    - md: tutorials/get-started/get-started-using-php.md
+      top_nav_grouping: 始めましょう
+      untranslated_warning: true
+      targets:
+          - ja
 
     # HTTP / Websocket Tutorials ---------------------------------------------------
 

@@ -7,3 +7,7 @@ package-lock.json
 yarn-error.log
 /.idea
 .venv/
+
+# PHP
+vendor/
+composer.lock

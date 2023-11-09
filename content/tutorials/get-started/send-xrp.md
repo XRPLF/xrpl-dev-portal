@@ -13,7 +13,7 @@ top_nav_grouping: Popular Pages
 ---
 # Send XRP
 
-This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, or xrpl4j for Java. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
+This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP`for PHP. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
 
 **Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
 
@@ -28,6 +28,7 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
 - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
 - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](get-started-using-java.html) for setup steps.
+- **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](get-started-using-php.html) for setup steps.
 
 
 ## Send a Payment on the Test Net
@@ -50,6 +51,10 @@ _Python_
 _Java_
 
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", end_before="// Connect", language="java") }}
+
+_PHP_
+
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Example credentials", end_before="// Create", language="php") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -79,6 +84,10 @@ _Python_
 _Java_
 
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Connect", end_before="// Prepare transaction", language="java") }}
+
+_PHP_
+
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Create a client", end_before="// Transaction definition", language="php") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -131,6 +140,10 @@ _Java_
 
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
 
+_Java_
+
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Transaction definition", end_before="// Sign", language="php") }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 {{ start_step("Prepare") }}
@@ -158,6 +171,7 @@ Signing a transaction uses your credentials to authorize the transaction on your
 - **JavaScript:** Use the [`sign()` method of a `Wallet` instance](https://js.xrpl.org/classes/Wallet.html#sign) to sign the transaction with `xrpl.js`.
 - **Python:** Use the [`xrpl.transaction.safe_sign_transaction()` method](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction) with a model and `Wallet` object.
 - **Java:** Use a [`SignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html) instance to sign the transaction. For this tutorial, use the [`SingleKeySignatureService`](https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html).
+- **PHP:** Use a [`sign()` method of a `Wallet` instance](https://alexanderbuzz.github.io/xrpl-php-docs/wallet.html#signing-a-transaction) instance to sign the transaction. The input to this step is a completed array of transaction instructions.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -176,6 +190,12 @@ _Java_
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java",
     start_with="// Sign", end_before="// Submit", language="java" ) }}
 
+
+_Java_
+
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php",
+start_with="// Sign", end_before="// Submit", language="php" ) }}
+
 <!-- MULTICODE_BLOCK_END -->
 
 The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical [binary format](serialization.html), called a "blob".
@@ -183,6 +203,7 @@ The result of the signing operation is a transaction object containing a signatu
 - In `xrpl.js`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 - In `xrpl-py`, you can get the transaction's hash in the response to submitting it in the next step.
 - In xrpl4j, `SignatureService.sign` returns a `SignedTransaction`, which contains the transaction's hash, which you can use to look up the transaction later.
+- In `XRPL_PHP`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 
 {{ start_step("Sign") }}
 <button id="sign-button" class="btn btn-primary previous-steps-required">Sign
@@ -198,6 +219,7 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 - **JavaScript:** Use the [`submitAndWait()` method of the Client](https://js.xrpl.org/classes/Client.html#submitAndWait) to submit a signed transaction to the network and wait for the response, or use [`submitSigned()`](https://js.xrpl.org/classes/Client.html#submitSigned) to submit a transaction and get only the preliminary response.
 - **Python:** Use the [`xrpl.transaction.submit_and_wait()` method](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait) to submit a transaction to the network and wait for a response.
 - **Java:** Use the [`XrplClient.submit(SignedTransaction)` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)) to submit a transaction to the network. Use the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method to get the latest validated ledger index.
+- **PHP:** Use the [`submitAndWait()` method of the Client](https://alexanderbuzz.github.io/xrpl-php-docs/client.html) to submit a transaction to the network and wait for the response.
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -211,6 +233,9 @@ _Python_
 
 _Java_
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Submit", end_before="// Wait", language="java" ) }}
+
+_PHP_
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Submit", end_before="// Wait", language="php" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -243,6 +268,8 @@ Most transactions are accepted into the next ledger version after they're submit
 
 - **Java** Poll the [`XrplClient.transaction()` method](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the `LastLedgerIndex` of the transaction using the [`XrplClient.ledger()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)) method.
 
+- **PHP:**  If you used the [`.submitAndWait()` method](https://alexanderbuzz.github.io/xrpl-php-docs/client.html), you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.
+
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
@@ -256,6 +283,10 @@ _Python_
 _Java_
 
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Wait", end_before="// Check", language="java" ) }}
+
+_PHP_
+
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Wait", end_before="// Check", language="php" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -276,6 +307,8 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 - **Java:** Use the [`XrplClient.transaction()`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)) method to check the status of a transaction.
 
+- **PHP:** Use the response from `submitAndWait()` or call the `tx method` using [`$client->syncRequest()`](https://alexanderbuzz.github.io/xrpl-php-docs/client.html).
+
 <!-- MULTICODE_BLOCK_START -->
 
 _JavaScript_
@@ -289,6 +322,10 @@ _Python_
 _Java_
 
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Check", language="java" ) }}
+
+_PHP_
+
+{{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Check", language="php" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -340,6 +377,17 @@ System.out.println(wallet.classicAddress()); // Example: rGCkuB7PBr5tNy68tPEABEt
 System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
 
+_PHP_
+
+```php
+use XRPL_PHP\Wallet\Wallet;
+
+$wallet = Wallet::generate();
+
+print_r("Address: " . $wallet->getAddress());  // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
+print_r("Seed: " . $wallet->getSeed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
+```
+
 <!-- MULTICODE_BLOCK_END -->
 
 **Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.
@@ -374,6 +422,15 @@ final HttpUrl rippledUrl = HttpUrl.get("https://xrplcluster.com");
 XrplClient xrplClient = new XrplClient(rippledUrl);
 ```
 
+_PHP_
+
+```
+use XRPL_PHP\Client\JsonRpcClient;
+
+$client = new JsonRpcClient("https://xrplcluster.com");
+```
+
+
 <!-- MULTICODE_BLOCK_END -->
 
 If you [install `rippled`](install-rippled.html) yourself, it connects to the production network by default. (You can also [configure it to connect to the test net](connect-your-rippled-to-the-xrp-test-net.html) instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has [various benefits](xrpl-servers.html). The following example shows how to connect to a server running the default configuration:
@@ -400,6 +457,13 @@ _Java_
 ```java
 final HttpUrl rippledUrl = HttpUrl.get("http://localhost:5005");
 XrplClient xrplClient = new XrplClient(rippledUrl);
+```
+
+_PHP_
+```php
+use XRPL_PHP\Client\JsonRpcClient;
+
+$client = new JsonRpcClient("http://localhost:5005");
 ```
 
 <!-- MULTICODE_BLOCK_END -->
