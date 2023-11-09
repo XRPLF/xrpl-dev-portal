@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>xrp-ledger.tomlチェッカー - XRPL.org (日本語)</title>
-  <meta name="viewport" content="width=device-width">
-  <meta property="og:title" content="xrp-ledger.tomlチェッカー | XRPL.org (日本語)">
-  <meta property="og:url"
-    content="https://xrpl.org/xrp-ledger-toml-checker.html" />
-  <meta property="og:description"
-    content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
-  <meta name="description"
-    content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
-  <meta property="og:image"
-    content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:image"
-    content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
-  <meta name="robots" content="index, follow" />
-  <meta name="docsearch:language" content="ja" />
-  <link rel="alternate" href="https://xrpl.org/xrp-ledger-toml-checker.html" hreflang="en" />
-  <link rel="alternate" href="https://xrpl.org/ja/xrp-ledger-toml-checker.html" hreflang="ja" />
-  <link rel="alternate" href="https://xrpl.org/xrp-ledger-toml-checker.html" hreflang="x-default" /><!-- Default: US english -->
+    <title>xrp-ledger.tomlチェッカー - XRPL.org (日本語)</title>
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="xrp-ledger.tomlチェッカー | XRPL.org (日本語)">
+    <meta property="og:url" content="https://xrpl.org/xrp-ledger-toml-checker.html" />
+    <meta property="og:description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
+    <meta name="description" content="XRPL.org は、オープンソースのパブリックブロックチェーンである XRP Ledger (XRPL) のコミュニティによるサイトです。技術ドキュメント、参考資料、ツールなどを入手できます。" />
+    <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
+    <meta name="robots" content="index, follow" />
+    <meta name="docsearch:language" content="ja" />
+    <link rel="alternate" href="https://xrpl.org/xrp-ledger-toml-checker.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/xrp-ledger-toml-checker.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/xrp-ledger-toml-checker.html" hreflang="x-default" /><!-- Default: US english -->
 
 
-  <!-- favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
-  <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
-  <link rel="shortcut icon" href="favicon.ico">
-  <meta name="msapplication-TileColor" content="#25A768">
-  <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
-  <meta name="theme-color" content="#25A768">
-  <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
-  <meta name="color-scheme" content="dark light">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/ja/assets/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/ja/assets/favicons/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/ja/assets/favicons/favicon-32x32.png">
+    <link rel="manifest" href="/ja/assets/favicons/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#25A768">
+    <meta name="msapplication-config" content="/ja/assets/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#25A768">
+    <!-- The page supports both dark and light color schemes, and the page author prefers dark. -->
+    <meta name="color-scheme" content="dark light">
 
-  <!-- jQuery -->
-  <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
+    <!-- jQuery -->
+    <script src="/ja/assets/vendor/jquery-3.7.1.min.js"></script>
 
-  <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
     <script type="application/javascript">
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({
@@ -51,38 +45,35 @@
       "page_labels": []
     })
     </script>
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KCQZ3L8');</script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KCQZ3L8');</script>
 
 
-  <!-- Stylesheet -->
-  <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/ja/assets/css/xrplai.css" />
-  <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
+    <!-- Stylesheet -->
+    <link href="/ja/assets/css/fonts-ja.css" rel="stylesheet" />
+    <link href="/ja/assets/css/devportal2022-v25.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
-  <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <!-- <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" /> -->
+    <link rel="stylesheet" href="/ja/assets/css/xrplai.css" />
 
 
-  <!-- Theme switch -->
-  <script src="/ja/assets/js/theme-switch.js"></script>
+    <!-- Theme switch -->
+    <script src="/ja/assets/js/theme-switch.js"></script>
 
 
 
 </head>
 
-<body class="xrp-ledger-dev-portal sidebar-primary lang-ja toml-checker" data-spy="scroll"
-  data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
+<body class="xrp-ledger-dev-portal sidebar-primary lang-ja toml-checker" data-spy="scroll" data-target=".page-toc" data-offset="0" id="xrp-ledger-dev-portal">
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8" height="0" width="0"
-      style="display:none;visibility:hidden"></iframe></noscript>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KCQZ3L8"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
 <nav class="top-nav navbar navbar-expand-lg navbar-dark fixed-top">
@@ -249,7 +240,7 @@
       </aside>
 
       <!-- main column -->
-      <main class="main col-md-7 col-lg-6 order-md-3 " role="main" id="main_content_body">
+      <main class="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
 <nav class="breadcrumbs-wrap" aria-label="breadcrumb">
   <ul class="breadcrumb">
     
@@ -3155,14 +3146,34 @@
 <a href="#main_content_wrapper" class="jump-to-top btn btn-primary" role="button" title="ページの先頭へ"><i class="fa fa-arrow-up"></i></a>
 <script type="text/javascript" src="/ja/assets/js/jump-to-top.js"></script>
 
-  <!-- Non-blocking resources -->
-  <!-- Bootstrap JS -->
-  <script src="/ja/assets/vendor/bootstrap.min.js"></script>
-  <!-- fontawesome icons -->
-  <link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
+<!-- Non-blocking resources -->
+<!-- Bootstrap JS -->
+<script src="/ja/assets/vendor/bootstrap.min.js"></script>
+<!-- fontawesome icons -->
+<link rel="stylesheet" href="/ja/assets/vendor/fontawesome/css/font-awesome.min.css" />
 
+<!-- Algolia DocSearch -->
+<script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+$(document).ready(() => {
+  const ds = docsearch({
+  apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+  indexName: 'xrpl',
+  container: '#topsearchboxcontainer',
+  appId: 'R39QY3MZC7',
+  searchParameters: { 'facetFilters': ["lang:ja"] },
+  debug: false
+  });
+  const search_params = new URLSearchParams(window.location.search)
+  if (search_params.has("q")) {
+    $(".navbar-toggler").click() // Show nav on mobile since search is in there
+    ds.autocomplete.autocomplete.setVal(search_params.get("q"))
+    ds.autocomplete.autocomplete.open()
+  }
+})
+</script>
 
-  <!-- XRPL AI -->
+ <!-- XRPL AI -->
   <script id="xrplai-options">
     var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
     var PROMPT_MODE = 'prompt';
@@ -3270,8 +3281,10 @@ Answer (including related code snippets if available and markdown links to relev
     };
   </script>
   <script type="module" src="/ja/assets/js/xrplai.js"></script>
-  <!-- ripple-lib & prerequisites -->
-  <script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>
+
+
+<!-- ripple-lib & prerequisites -->
+<script type="application/javascript" src="assets/js/xrpl-2.11.0.min.js"></script>
 
 
   <script type="application/javascript" src="/ja/assets/js/xrp-ledger-toml-checker.js"></script>
@@ -3279,5 +3292,4 @@ Answer (including related code snippets if available and markdown links to relev
   <!-- TOML tool -->
   <script type="application/javascript" src="/ja/assets/vendor/iarna-toml-parse.js"></script>
 </body>
-
 </html>
