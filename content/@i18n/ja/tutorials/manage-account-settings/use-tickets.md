@@ -51,7 +51,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Connect to", end_before="// Get credentials") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Connect to" before="// Get credentials" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -70,7 +70,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Check Sequence", end_before="// Prepare and Sign TicketCreate") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Check Sequence" before="// Prepare and Sign TicketCreate" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -90,7 +90,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Prepare and Sign TicketCreate", end_before="// Submit TicketCreate") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Prepare and Sign TicketCreate" before="// Submit TicketCreate" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -112,7 +112,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Submit TicketCreate", end_before="// Wait for Validation") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Submit TicketCreate" before="// Wait for Validation" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -131,7 +131,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Wait for Validation", end_before="// Check Available") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Wait for Validation" before="// Check Available" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -163,7 +163,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Check Available Tickets", end_before="// Prepare and Sign Ticketed") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Check Available Tickets" before="// Prepare and Sign Ticketed" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -185,7 +185,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Prepare and Sign Ticketed", end_before="// Submit Ticketed Transaction") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Prepare and Sign Ticketed" before="// Submit Ticketed Transaction" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -212,7 +212,7 @@ _JavaScript_
 
 _JavaScript_
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Submit Ticketed Transaction", end_before="// Wait for Validation (again)") }}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Submit Ticketed Transaction" before="// Wait for Validation (again)" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 

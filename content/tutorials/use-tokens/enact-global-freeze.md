@@ -56,7 +56,7 @@ You must be connected to the network to submit transactions to it. The following
 
 _JavaScript_
 
-{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
+{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -77,7 +77,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/set-global-freeze.js", language="js", start_with="// Prepare an AccountSet", end_before="// Investigate") }}
+{% code-snippet file="/_code-samples/freeze/js/set-global-freeze.js" from="// Prepare an AccountSet" before="// Investigate" language="js" /%}
 
 _WebSocket_
 
@@ -124,7 +124,7 @@ After the transaction is validated, you can check your issuing account's setting
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/check-global-freeze.js", language="js", start_with="// Request account info", end_before="await client.disconnect()") }}
+{% code-snippet file="/_code-samples/freeze/js/check-global-freeze.js" from="// Request account info" before="await client.disconnect()" language="js" /%}
 
 _WebSocket_
 
@@ -201,7 +201,7 @@ For example:
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/set-global-freeze.js", language="js", start_with="// Now we disable", end_before="// Global freeze disabled") }}
+{% code-snippet file="/_code-samples/freeze/js/set-global-freeze.js" from="// Now we disable" before="// Global freeze disabled" language="js" /%}
 
 _WebSocket_
 

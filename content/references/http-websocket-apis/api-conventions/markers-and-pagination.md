@@ -13,10 +13,10 @@ The format of the `marker` field is intentionally undefined. Each server can def
 
 _Python_
 
-{{ include_code("_code-samples/markers-and-pagination/py/pagination-with-markers.py", language="py") }}
+{% code-snippet file="/_code-samples/markers-and-pagination/py/pagination-with-markers.py" language="py" /%}
 
 _JavaScript_
 
-{{ include_code("_code-samples/markers-and-pagination/js/pagination-with-markers.js", language="js") }}
+{% code-snippet file="/_code-samples/markers-and-pagination/js/pagination-with-markers.js" language="js" /%}
 
 <!-- MULTICODE_BLOCK_END -->

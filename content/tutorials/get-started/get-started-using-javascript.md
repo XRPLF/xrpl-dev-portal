@@ -89,7 +89,7 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 
 **Tip:** Many network functions in `xrpl.js` use [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) to return values asynchronously. The code samples here use the [`async/await` pattern](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await) to wait for the actual result of the Promises.
 
-{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
+{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
 
 #### Connect to the XRP Ledger Mainnet
 
@@ -114,7 +114,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 The `xrpl.js` library has a `Wallet` class for handling the keys and address of an XRP Ledger account. On Testnet, you can fund a new account like this:
 
-{{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Create a wallet", end_before="// Get info", language="js") }}
+{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Create a wallet" before="// Get info" language="js" /%}
 
 If you only want to generate keys, you can create a new `Wallet` instance like this:
 
@@ -132,14 +132,14 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Tes
 
 Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](request-formatting.html). For example:
 
-{{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Get info", end_before="// Listen to ledger close events", language="js") }}
+{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Get info" before="// Listen to ledger close events" language="js" /%}
 
 
 ### 5. Listen for Events
 
 You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](consensus.html) produces a new [ledger version](ledgers.html). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
 
-{{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Listen to ledger close events", end_before="// Disconnect when done", language="js") }}
+{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Listen to ledger close events" before="// Disconnect when done" language="js" /%}
 
 
 ## Keep on Building

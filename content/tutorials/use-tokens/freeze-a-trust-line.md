@@ -51,7 +51,7 @@ You must be connected to the network to submit transactions to it. The following
 
 _JavaScript_
 
-{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
+{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
 
 _WebSocket_
 
@@ -80,7 +80,7 @@ There can be multiple [trust lines](trust-lines-and-issuing.html) between two ac
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Look up current trust lines", end_before="// Send a TrustSet") }}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Look up current trust lines" before="// Send a TrustSet" language="js" /%}
 
 _WebSocket_
 
@@ -154,7 +154,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Send a TrustSet", end_before="// Investigate") }}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Send a TrustSet" before="// Investigate" language="js" /%}
 
 _WebSocket_
 
@@ -215,7 +215,7 @@ In the response, the field `"freeze": true` indicates that the account from the 
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Confirm trust line status", end_before="// Investigate") }}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Confirm trust line status" before="// Investigate" language="js" /%}
 
 _WebSocket_
 
@@ -283,7 +283,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 _JavaScript_
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Clear the individual", end_before="// End main") }}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Clear the individual" before="// End main" language="js" /%}
 
 _WebSocket_
 

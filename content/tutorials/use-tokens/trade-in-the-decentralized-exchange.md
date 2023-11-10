@@ -49,11 +49,11 @@ You must be connected to the network to submit transactions to it. Additionally,
 
 _JavaScript_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/base-with-bignumber.js", language="js") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/base-with-bignumber.js" language="js" /%}
 
 _Python_
 
-{{ include_code("_code-samples/get-started/py/base-async.py", language="py") }}
+{% code-snippet file="/_code-samples/get-started/py/base-async.py" language="py" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -75,11 +75,11 @@ When you're [building production-ready software](production-readiness.html), you
 
 _JavaScript_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Get credentials", end_before="// Define the proposed trade") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Get credentials" before="// Define the proposed trade" language="js" /%}
 
 _Python_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Get credentials", end_before="# Define the proposed trade") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Get credentials" before="# Define the proposed trade" language="py" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -95,11 +95,11 @@ The following code shows how to look up existing Offers and compare them to a pr
 
 _JavaScript_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Define the proposed trade", end_before="// Send OfferCreate") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Define the proposed trade" before="// Send OfferCreate" language="js" /%}
 
 _Python_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Define the proposed trade", end_before="# Send OfferCreate") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Define the proposed trade" before="# Send OfferCreate" language="py" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -165,11 +165,11 @@ The following code shows how to prepare, sign, and submit the transaction:
 
 _JavaScript_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Send OfferCreate", end_before="// Check metadata") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Send OfferCreate" before="// Check metadata" language="js" /%}
 
 _Python_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Send OfferCreate", end_before="# Check metadata") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Send OfferCreate" before="# Check metadata" language="py" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -203,11 +203,11 @@ The following code demonstrates how to check the metadata of the transaction:
 
 _JavaScript_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check metadata", end_before="// Check balances") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Check metadata" before="// Check balances" language="js" /%}
 
 _Python_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check metadata", end_before="# Check balances") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Check metadata" before="# Check balances" language="py" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -230,11 +230,11 @@ The following code demonstrates how to look up balances using the [account_lines
 
 _JavaScript_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check balances", end_before="client.disconnect()") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Check balances" before="client.disconnect()" language="js" /%}
 
 _Python_
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check balances", end_before="# End main()") }}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Check balances" before="# End main()" language="py" /%}
 
 <!-- MULTICODE_BLOCK_END -->
 

@@ -91,7 +91,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl4j`,
 you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/3.0.1/org/xrpl/xrpl4j/client/XrplClient.html):
 
-{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Construct a network client", end_before="// Create a random KeyPair", language="java") }}
+{% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Construct a network client" before="// Create a random KeyPair" language="java" /%}
 
 #### Connect to the production XRP Ledger
 
@@ -115,7 +115,7 @@ To store value and execute transactions on the XRP Ledger, you need to get an ac
 
 To generate a new account, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 
-{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Create a random KeyPair", end_before="// Derive the Classic and X-Addresses from testWallet", language="java") }}
+{% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Create a random KeyPair" before="// Derive the Classic and X-Addresses from testWallet" language="java" /%}
 
 
 The result of a call to `walletFactory.randomWallet(true).wallet()` is a [`Wallet` instance](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/Wallet.html):
@@ -135,7 +135,7 @@ Wallet {
 
 For testing and development purposes, you can use a `FaucetClient` connected to the XRP Ledger [Testnet](parallel-networks.html):
 
-{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Fund the account using the testnet Faucet", end_before="// Look up your Account Info", language="java") }}
+{% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Fund the account using the testnet Faucet" before="// Look up your Account Info" language="java" /%}
 
 ### {{n.next()}}. Query the XRP Ledger
 
@@ -143,7 +143,7 @@ You can query the XRP Ledger to get information about [a specific account](accou
 
 Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [account we got](#2-get-account) in the previous step.
 
-{{ include_code("_code-samples/get-started/java/GetAccountInfo.java", start_with="// Look up your Account Info", end_before="// Print the result", language="java") }}
+{% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Look up your Account Info" before="// Print the result" language="java" /%}
 
 
 ### {{n.next()}}. Putting it all together

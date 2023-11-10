@@ -461,7 +461,7 @@ We will ask the user for address of the account to monitor by using a HTML dialo
 1. In the project root, create a new directory named `library`. Inside this directory, create a file `3_helpers.js` with the following content:
 
 `3_helpers.js`
-{{ include_code("_code-samples/build-a-desktop-wallet/js/library/3_helpers.js", language="js") }}
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" language="js" /%}
 
 Here we define three utility functions that will transform data we receive from the ledger into flat value objects for easy digestion in the frontend code. As we progress in this tutorial, we will keep this pattern of adding functionality by adding files that are prefixed by the step number.
 
@@ -631,7 +631,7 @@ onEnterAccountAddress: (address) => {
 
 6. To incorporate the refactored markup, handle the HTML dialog element and well as the new account data section replace the contents of `view/renderer.js` with the following code:
 
-{{ include_code("_code-samples/build-a-desktop-wallet/js/3-account/view/renderer.js", language="js") }}
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/3-account/view/renderer.js" language="js" /%}
 
 The parts at the beginning and end are totally new, but the section in the middle is _almost_ the same as before. The difference is that the names of a few fields have changed, since we're now passing them from `prepareLedgerData(...)`. For example `ledger.ledger_time` is now `ledger.ledgerCloseTime` instead.
 
@@ -667,7 +667,7 @@ At this point, our wallet shows the account's balance getting updated, but doesn
 
 1. In the `library` folder, add a new file `4_helpers.js`. Then add the following helper function to that file:
 
-{{ include_code("_code-samples/build-a-desktop-wallet/js/library/4_helpers.js", language="js") }}
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" language="js" /%}
 
 2. Now, in `index.js`, require the new helper function at the bottom of the import section like so:
 
@@ -838,7 +838,7 @@ In this step we will query the user for a seed and a password they can use to ac
 
 1. In the `library` folder, add a new file `5_helpers.js` with the following content:
 
-{{ include_code("_code-samples/build-a-desktop-wallet/js/library/5_helpers.js", language="js") }}
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" language="js" /%}
 
 2. Modify the import section at the top of `index.js` to look like this:
 
@@ -1248,7 +1248,7 @@ Up until now we have enabled our app to query and display data from the XRPL. No
 
 1. Create the file `library/7_helpers.js` and add the following contents:
 
-{{ include_code("_code-samples/build-a-desktop-wallet/js/library/7_helpers.js", language="js") }}
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/7_helpers.js" language="js" /%}
 
 
 (There was no `6-helpers.js`, so don't worry!)
@@ -1399,7 +1399,7 @@ One type of check we could make is to verify the domain name associated with an 
 
 1. In the `library` folder, add a new file `8_helpers.js`. Then add the following contents to that file:
 
-{{ include_code("_code-samples/build-a-desktop-wallet/js/library/8_helpers.js", language="js") }}
+{% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/8_helpers.js" language="js" /%}
 
 The code in `8_helpers.js` looks up the account on the ledger by sending an [`account_info`](account_info.html) request.
 
