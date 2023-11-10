@@ -40,68 +40,68 @@ const set_up_tx_sender = async function() {
   // Connection / Setup
   //////////////////////////////////////////////////////////////////////////////
 
-  const FAUCET_URL = "https://faucet.altnet.rippletest.net/accounts"
-  const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+  // const FAUCET_URL = "https://faucet.altnet.rippletest.net/accounts"
+  // const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
-  let connection_ready = false
-  api = new xrpl.Client(TESTNET_URL)
+  // let connection_ready = false
+  // api = new xrpl.Client(TESTNET_URL)
 
-  let sending_wallet
-  let xrp_balance = "TBD"
+  // let sending_wallet
+  // let xrp_balance = "TBD"
 
-  function enable_buttons_if_ready() {
-    if ( (typeof sending_wallet) === "undefined") {
-      console.debug("No sending address yet...")
-      return false
-    }
+  // function enable_buttons_if_ready() {
+  //   if ( (typeof sending_wallet) === "undefined") {
+  //     console.debug("No sending address yet...")
+  //     return false
+  //   }
 
-    if (!connection_ready) {
-      console.debug("API not connected yet...")
-      return false
-    }
+  //   if (!connection_ready) {
+  //     console.debug("API not connected yet...")
+  //     return false
+  //   }
 
-    $(".needs-connection").prop("disabled", false)
-    $(".needs-connection").removeClass("disabled")
-    set_up_for_partial_payments()
-    return true
-  }
+  //   $(".needs-connection").prop("disabled", false)
+  //   $(".needs-connection").removeClass("disabled")
+  //   set_up_for_partial_payments()
+  //   return true
+  // }
 
-  $("#init_button").click(async (evt) => {
-    console.log("Connecting to Testnet WebSocket...")
-    await api.connect()
+  // $("#init_button").click(async (evt) => {
+  //   console.log("Connecting to Testnet WebSocket...")
+  //   await api.connect()
 
-    console.debug("Getting a sending address from the faucet...")
-    try {
-      const fund_response = await api.fundWallet()
-      sending_wallet = fund_response.wallet
-      xrp_balance = xrpl.dropsToXrp(fund_response.balance)
-    } catch(error) {
-      console.error(error)
-      errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
-      return
-    }
+  //   console.debug("Getting a sending address from the faucet...")
+  //   try {
+  //     const fund_response = await api.fundWallet()
+  //     sending_wallet = fund_response.wallet
+  //     xrp_balance = xrpl.dropsToXrp(fund_response.balance)
+  //   } catch(error) {
+  //     console.error(error)
+  //     errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
+  //     return
+  //   }
 
-    $("#balance-item").text(xrp_balance)
+  //   $("#balance-item").text(xrp_balance)
 
-    $(".sending-address-item").text(sending_wallet.address)
-    $("#init_button").prop("disabled", "disabled")
-    $("#init_button").addClass("disabled")
-    $("#init_button").attr("title", "Done")
-    $("#init_button").append('&nbsp;<i class="fa fa-check-circle"></i>')
-    enable_buttons_if_ready()
-  })
+  //   $(".sending-address-item").text(sending_wallet.address)
+  //   $("#init_button").prop("disabled", "disabled")
+  //   $("#init_button").addClass("disabled")
+  //   $("#init_button").attr("title", "Done")
+  //   $("#init_button").append('&nbsp;<i class="fa fa-check-circle"></i>')
+  //   enable_buttons_if_ready()
+  // })
 
-  api.on('connected', () => {
-    connection_ready = true
-    $("#connection-status-item").text("Connected")
-    $("#connection-status-item").removeClass("disabled").addClass("active")
-    enable_buttons_if_ready()
-  })
-  api.on('disconnected', (code) => {
-    connection_ready = false
-    $("#connection-status-item").text("Not connected")
-    $("#connection-status-item").removeClass("active").addClass("disabled")
-  })
+  // api.on('connected', () => {
+  //   connection_ready = true
+  //   $("#connection-status-item").text("Connected")
+  //   $("#connection-status-item").removeClass("disabled").addClass("active")
+  //   enable_buttons_if_ready()
+  // })
+  // api.on('disconnected', (code) => {
+  //   connection_ready = false
+  //   $("#connection-status-item").text("Not connected")
+  //   $("#connection-status-item").removeClass("active").addClass("disabled")
+  // })
 
   //////////////////////////////////////////////////////////////////////////////
   // Generic Transaction Submission
