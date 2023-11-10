@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
+import { useState } from 'react'
+import { clsx } from 'clsx'
 
 // TODO:
 // - Change all links that previously went to tx-sender.html to dev-tools/tx-sender
@@ -10,32 +12,102 @@ import { useTranslate } from '@portal/hooks';
 // - Add the proper top-level divs to match what's live (Currently has an empty classname Div as the main wrapper)
 // - Componentize the repeated sections
 
-export default function TxSender() {
-  const { translate } = useTranslate();
+function canSendTransaction(connectionReady, sendingAddress) {
+    return connectionReady && sendingAddress
+}
 
-  return (
-    <div className="row">
-        <aside className="right-sidebar col-lg-6 order-lg-4">
-            <div id="connection-status" className="card">
-                <div className="card-header">
-                    <h4>{translate("Status")}</h4>
-                </div>
-                <div className="card-body">
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item" id="connection-status-label">{translate("XRP Testnet:")}</li>
-                        <li className="list-group-item disabled" id="connection-status-item">{translate("Not Connected")}</li>
-                        <li className="list-group-item" id="sending-address-label">{translate("Sending Address:")}</li>
-                        <li className="list-group-item disabled sending-address-item">{translate("(None)")}</li>
-                        <li className="list-group-item" id="balance-label">{translate("Testnet XRP Available:")}</li>
-                        <li className="list-group-item disabled" id="balance-item">{translate("(None)")}</li>
-                    </ul>
-                    <div id="tx-sender-history">
-                        <h5 className="m-3">{translate("Transaction History")}</h5>
-                        <ul className="list-group list-group-flush"></ul>
-                    </div>
+function StatusSidebar({balance, sendingWallet, connectionReady, txHistory}) {
+    const { translate } = useTranslate();
+
+    return (<aside className="right-sidebar col-lg-6 order-lg-4">
+        <div id="connection-status" className="card">
+            <div className="card-header">
+                <h4>{translate("Status")}</h4>
+            </div>
+            <div className="card-body">
+                <ul className="list-group list-group-flush">
+                    <li className="list-group-item" id="connection-status-label">{translate("XRP Testnet:")}</li>
+                    <li className={clsx("list-group-item", (connectionReady ? 'active' : 'disabled'))} id="connection-status-item">{connectionReady ? translate("Connected") : translate("Not Connected")}</li>
+                    <li className="list-group-item" id="sending-address-label">{translate("Sending Address:")}</li>
+                    <li className="list-group-item disabled sending-address-item">{sendingWallet ? sendingWallet.address : translate("(None)")}</li>
+                    <li className="list-group-item" id="balance-label">{translate("Testnet XRP Available:")}</li>
+                    <li className="list-group-item disabled" id="balance-item">{balance ? translate(balance.toString()) : translate("(None)")}</li>
+                </ul>
+                <div id="tx-sender-history">
+                    <h5 className="m-3">{translate("Transaction History")}</h5>
+                    <ul className="list-group list-group-flush"></ul>
+                    {/* TODO: This has a lot of detailed formatting */}
+                    {txHistory}
                 </div>
             </div>
-        </aside>
+        </div>
+    </aside>)
+}
+
+function errorNotif(msg) {
+    alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+}
+
+function setUpForPartialPayments() {
+    console.log("TODO - Implement setUpForPartialPayments! (see tx-sender.js for details)")
+}
+
+async function onInitClick(existingApi, setApi, setBalance, setSendingWallet, setIsInitEnabled, setConnectionReady) {
+    if(existingApi) {
+        console.log("Already initializing!")
+        return
+    }
+
+    console.log("Connecting to Testnet WebSocket...")
+    // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
+    const api = new xrpl.Client(TESTNET_URL)
+    api.on('connected', () => {
+        setConnectionReady(true)
+    })
+
+    api.on('disconnected', (code) => {
+        setConnectionReady(false)
+    })
+    setApi(api)
+    await api.connect()
+
+    console.debug("Getting a sending address from the faucet...")
+    try {
+      const fund_response = await api.fundWallet()
+      setSendingWallet(fund_response.wallet)
+      // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
+      setBalance(xrpl.dropsToXrp(fund_response.balance))
+    } catch(error) {
+      console.error(error)
+      errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
+      return
+    }
+
+    setIsInitEnabled(false)
+    setUpForPartialPayments()
+}
+
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+
+export default function TxSender() {
+    const { translate } = useTranslate();
+
+    const [api, setApi] = useState(undefined)
+
+    // Sidebar variables
+    const [balance, setBalance] = useState(0)
+    const [sendingWallet, setSendingWallet] = useState(undefined)
+    const [connectionReady, setConnectionReady] = useState(false)
+    const [txHistory, setTxHistory] = useState([])
+
+    const [isInitEnabled, setIsInitEnabled] = useState(true)
+
+    
+    return (
+    <div className="row">
+        {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
+        <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
+        <StatusSidebar balance={balance} sendingWallet={sendingWallet} connectionReady={connectionReady} txHistory={txHistory}/>
         <main className="main col-md-7 col-lg-6 order-md-3" role="main" id="main_content_body">
             <section className="container-fluid pt-3 p-md-3">
                 <h1>{translate("Transaction Sender")}</h1>
@@ -46,9 +118,15 @@ export default function TxSender() {
                     </p>
                     <form>
                         <div className="form-group">
-                            <button className="btn btn-primary form-control" type="button" id="init_button">
-                                {translate("Initialize")}
+                            <button className={clsx("btn btn-primary form-control", isInitEnabled ? "" : "disabled")} 
+                                type="button" id="init_button" 
+                                onClick={() => onInitClick(api, setApi, setBalance, setSendingWallet, setIsInitEnabled, setConnectionReady)}
+                                disabled={!isInitEnabled}
+                                title={isInitEnabled ? "" : "done"}>
+                                {translate("Initialize")}   
                             </button>
+                            {!isInitEnabled && (<div>&nbsp;<i className="fa fa-check-circle"></i></div>)}
+
                             <small className="form-text text-muted">
                                 {translate("Set up the necessary Testnet XRP addresses to send test payments.")}
                             </small>
@@ -73,8 +151,9 @@ export default function TxSender() {
                                         <img className="throbber" src="/img/xrp-loader-96.png" alt={translate("(loading)")} />
                                     </span>
                                 </div>
-                                <button className="btn btn-primary form-control disabled needs-connection" 
-                                    type="button" id="send_xrp_payment_btn" disabled={true}>
+                                <button className={clsx("btn btn-primary form-control needs-connection", 
+                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))} 
+                                    type="button" id="send_xrp_payment_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
                                         {translate("Send XRP Payment")}
                                 </button>
                                 <input id="send_xrp_payment_amount" className="form-control" type="number" 
@@ -124,8 +203,9 @@ export default function TxSender() {
                                         <img className="throbber" alt={translate("(loading)")} src="/img/xrp-loader-96.png" />
                                     </span>
                                 </div>
-                                <button className="btn btn-primary form-control disabled needs-connection" 
-                                    type="button" id="create_escrow_btn" disabled={true}>
+                                <button className={clsx("btn btn-primary form-control needs-connection", 
+                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))}
+                                    type="button" id="create_escrow_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
                                         {translate("Create Escrow")}
                                 </button>
                                 <input className="form-control" type="number" defaultValue={60} min={5} max={10000} id="create_escrow_duration_seconds" />
@@ -162,8 +242,9 @@ export default function TxSender() {
                                     </span>
                                 </div>
                                 {/* TODO: Componentize these buttons? (Just change name?) */}
-                                <button className="btn btn-primary form-control disabled needs-connection" 
-                                    type="button" id="create_payment_channel_btn" disabled={true}>
+                                <button className={clsx("btn btn-primary form-control needs-connection", 
+                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))} 
+                                    type="button" id="create_payment_channel_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
                                         {translate("Create Payment Channel")}
                                 </button>
                                 <input id="create_payment_channel_amount" className="form-control" 
@@ -188,8 +269,8 @@ export default function TxSender() {
                                         <img className="throbber" alt="(loading)" src="/img/xrp-loader-96.png" />
                                     </span>
                                 </div>
-                                <button className="btn btn-primary form-control disabled needs-connection" 
-                                    type="button" id="send_issued_currency_btn" disabled={true}>
+                                <button className={clsx("btn btn-primary form-control needs-connection", (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))} 
+                                    type="button" id="send_issued_currency_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
                                     {translate("Send Issued Currency")}
                                 </button>
                                 <input id="send_issued_currency_amount" className="form-control" type="text" defaultValue={100} />
@@ -213,9 +294,10 @@ export default function TxSender() {
                                     <span className="input-group-text loader" style={{display: 'none'}}>
                                     <img className="throbber" alt="(loading)" src="/img/xrp-loader-96.png" /></span>
                                 </div>
-                                <button className="btn btn-primary form-control disabled needs-connection" 
-                                type="button" id="trust_for_btn" disabled={true}>
-                                    {translate("Trust for")}
+                                <button className={clsx("btn btn-primary form-control needs-connection", 
+                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))}
+                                    type="button" id="trust_for_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
+                                        {translate("Trust for")}
                                 </button>
                                 <input id="trust_for_amount" className="form-control disabled" type="number" defaultValue={100000} />
                                 <div className="input-group-append">
@@ -232,5 +314,5 @@ export default function TxSender() {
             </section>
         </main>
     </div>
-  )
+    )
 }
