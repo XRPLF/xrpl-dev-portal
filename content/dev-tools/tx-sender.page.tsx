@@ -12,6 +12,75 @@ import { clsx } from 'clsx'
 // - Add the proper top-level divs to match what's live (Currently has an empty classname Div as the main wrapper)
 // - Componentize the repeated sections
 
+// Helpers
+
+
+function errorNotif(msg) {
+    alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+}
+
+function successNotif(msg) {
+    alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+}
+
+function setUpForPartialPayments() {
+    console.log("TODO - Implement setUpForPartialPayments! (see tx-sender.js for details)")
+}
+
+function logTx(tx, hash, finalResult) {
+    console.log("TODO - Implement logTx with the code at the top of tx-sender.js")
+}
+
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function update_xrp_balance(api, sendingWallet, setBalance) {
+    setBalance((await api.getBalances(sendingWallet.address, {currency: "XRP"})).value)
+}
+
+// TODO: Make sure all calls to this function specify the wallet used!
+async function submit_and_notify(api, tx_object, sendingWallet, silent: boolean) {
+    let prepared;
+    try {
+      // Auto-fill fields like Fee and Sequence
+      prepared = await api.autofill(tx_object)
+      console.debug("Prepared:", prepared)
+    } catch(error) {
+      console.log(error)
+      if (!silent) {
+        errorNotif("Error preparing tx: "+error)
+      }
+      return
+    }
+
+    try {
+      const {tx_blob, hash} = sendingWallet.sign(prepared)
+      const final_result_data = await api.submitAndWait(tx_blob)
+      console.log("final_result_data is", final_result_data)
+      let final_result = final_result_data.result.meta.TransactionResult
+      if (!silent) {
+        if (final_result === "tesSUCCESS") {
+          successNotif(`${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
+        } else {
+          errorNotif(`${tx_object.TransactionType} tx failed w/ code ${final_result}
+                      (hash: ${hash})`)
+        }
+        logTx(tx_object.TransactionType, hash, final_result)
+      }
+      return final_result_data
+    } catch (error) {
+      console.log(error)
+      if (!silent) {
+        errorNotif(`Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
+      }
+      return
+    }
+  }
+
+  // TODO: Call this after EVERY submit_and_notify!
+  // update_xrp_balance(api, sendingWallet, setBalance)
+
 function canSendTransaction(connectionReady, sendingAddress) {
     return connectionReady && sendingAddress
 }
@@ -42,14 +111,6 @@ function StatusSidebar({balance, sendingWallet, connectionReady, txHistory}) {
             </div>
         </div>
     </aside>)
-}
-
-function errorNotif(msg) {
-    alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
-}
-
-function setUpForPartialPayments() {
-    console.log("TODO - Implement setUpForPartialPayments! (see tx-sender.js for details)")
 }
 
 async function onInitClick(existingApi, setApi, setBalance, setSendingWallet, setIsInitEnabled, setConnectionReady) {
@@ -87,6 +148,25 @@ async function onInitClick(existingApi, setApi, setBalance, setSendingWallet, se
     setUpForPartialPayments()
 }
 
+// TODO: Mid-migration on this function. - Pull out the variables we'll need, and add the dynamicism to the proper spot in the React component.
+//   // 1. Send XRP Payment Handler -------------------------------------------
+// async function on_click_send_xrp_payment(destinationAddress, dropsToSendAmount, ) {
+
+//     const destination_address = $("#destination_address").val()
+//     const xrp_drops_input = $("#send_xrp_payment_amount").val()
+//     $("#send_xrp_payment .loader").show()
+//     $("#send_xrp_payment button").prop("disabled","disabled")
+//     await submit_and_notify({
+//         TransactionType: "Payment",
+//         Account: sending_wallet.address,
+//         Destination: destination_address,
+//         Amount: xrp_drops_input
+//     })
+//     $("#send_xrp_payment .loader").hide()
+//     $("#send_xrp_payment button").prop("disabled",false)
+// }
+// $("#send_xrp_payment button").click(on_click_send_xrp_payment)
+
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 export default function TxSender() {
@@ -100,6 +180,8 @@ export default function TxSender() {
     const [connectionReady, setConnectionReady] = useState(false)
     const [txHistory, setTxHistory] = useState([])
 
+    const [destinationAddress, setDestinationAddress] = useState("rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
+    
     const [isInitEnabled, setIsInitEnabled] = useState(true)
 
     
@@ -132,14 +214,21 @@ export default function TxSender() {
                             </small>
                         </div>{/*/.form-group*/}
                         <div className="form-group">
-                            <label htmlFor="destination_address">{translate("Destination Address")}</label>
+                            <label htmlFor="destination_address">
+                                {translate("Destination Address")}
+                            </label>
+                            {/* TODO: Assign className `is-valid` if destinationAddress passes xrpl.isValidAddress, and set className
+                                is-invalid if it does not. For some reason can't import xrpl at this part of the code. */}
                             <input type="text" className="form-control" id="destination_address" 
-                                aria-describedby="destination_address_help" defaultValue="rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe" />
+                                aria-describedby="destination_address_help" defaultValue={destinationAddress} />
                             <small id="destination_address_help" className="form-text text-muted">
                                 {translate("Send transactions to this XRP Testnet address")}
                             </small>
                         </div>
-                        <p className="devportal-callout caution collapse" id="x-address-warning">
+                        <p className="devportal-callout caution collapse" 
+                            // TODO: Enable this warning if it's a valid address AND starts with 'X' (xrpl can't be imported here seemingly...)
+                            // (!(typeof xrpl !== undefined && xrpl?.isValidAddress(destinationAddress) || destinationAddress[0] === "X")) && "hidden")} 
+                            id="x-address-warning">
                             <strong>{translate("Caution:")}</strong>
                             {translate(" This X-address is intended for use on Mainnet. Testnet addresses have a \"T\" prefix instead.")}
                         </p>

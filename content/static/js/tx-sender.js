@@ -108,57 +108,57 @@ const set_up_tx_sender = async function() {
   //////////////////////////////////////////////////////////////////////////////
 
   // Helper function for await-able timeouts
-  function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
+  // function timeout(ms) {
+  //   return new Promise(resolve => setTimeout(resolve, ms));
+  // }
 
-  async function update_xrp_balance() {
-    balances = await api.getBalances(sending_wallet.address, {currency: "XRP"})
-    $("#balance-item").text(balances[0].value)
-  }
+  // async function update_xrp_balance() {
+  //   balances = await api.getBalances(sending_wallet.address, {currency: "XRP"})
+  //   $("#balance-item").text(balances[0].value)
+  // }
 
 
-  async function submit_and_notify(tx_object, use_wallet, silent) {
-    if (use_wallet === undefined) {
-      use_wallet = sending_wallet
-    }
-    try {
-      // Auto-fill fields like Fee and Sequence
-      prepared = await api.autofill(tx_object)
-      console.debug("Prepared:", prepared)
-    } catch(error) {
-      console.log(error)
-      if (!silent) {
-        errorNotif("Error preparing tx: "+error)
-      }
-      return
-    }
+  // async function submit_and_notify(tx_object, use_wallet, silent) {
+  //   if (use_wallet === undefined) {
+  //     use_wallet = sending_wallet
+  //   }
+  //   try {
+  //     // Auto-fill fields like Fee and Sequence
+  //     prepared = await api.autofill(tx_object)
+  //     console.debug("Prepared:", prepared)
+  //   } catch(error) {
+  //     console.log(error)
+  //     if (!silent) {
+  //       errorNotif("Error preparing tx: "+error)
+  //     }
+  //     return
+  //   }
 
-    try {
-      const {tx_blob, hash} = use_wallet.sign(prepared)
-      const final_result_data = await api.submitAndWait(tx_blob)
-      console.log("final_result_data is", final_result_data)
-      let final_result = final_result_data.result.meta.TransactionResult
-      if (!silent) {
-        if (final_result === "tesSUCCESS") {
-          successNotif(`${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
-        } else {
-          errorNotif(`${tx_object.TransactionType} tx failed w/ code ${final_result}
-                      (hash: ${hash})`)
-        }
-        logTx(tx_object.TransactionType, hash, final_result)
-      }
-      update_xrp_balance()
-      return final_result_data
-    } catch (error) {
-      console.log(error)
-      if (!silent) {
-        errorNotif(`Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
-      }
-      return
-    }
+  //   try {
+  //     const {tx_blob, hash} = use_wallet.sign(prepared)
+  //     const final_result_data = await api.submitAndWait(tx_blob)
+  //     console.log("final_result_data is", final_result_data)
+  //     let final_result = final_result_data.result.meta.TransactionResult
+  //     if (!silent) {
+  //       if (final_result === "tesSUCCESS") {
+  //         successNotif(`${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
+  //       } else {
+  //         errorNotif(`${tx_object.TransactionType} tx failed w/ code ${final_result}
+  //                     (hash: ${hash})`)
+  //       }
+  //       logTx(tx_object.TransactionType, hash, final_result)
+  //     }
+  //     update_xrp_balance()
+  //     return final_result_data
+  //   } catch (error) {
+  //     console.log(error)
+  //     if (!silent) {
+  //       errorNotif(`Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
+  //     }
+  //     return
+  //   }
 
-  }
+  // }
 
   //////////////////////////////////////////////////////////////////////////////
   // Issuer Setup for Partial Payments
@@ -260,46 +260,46 @@ const set_up_tx_sender = async function() {
   // Button/UI Handlers
   //////////////////////////////////////////////////////////////////////////////
 
-  // Destination Address box -----------------------------------------------
-  async function on_dest_address_update(event) {
-    const d_a = $("#destination_address").val()
-    if (xrpl.isValidAddress(d_a)) {
-      $("#destination_address").addClass("is-valid").removeClass("is-invalid")
-      if (d_a[0] == "X") {
-        $("#x-address-warning").show()
-      } else {
-        $("#x-address-warning").hide()
-      }
-    } else {
-      $("#destination_address").addClass("is-invalid").removeClass("is-valid")
-      $("#x-address-warning").hide()
-    }
-  }
-  $("#destination_address").change(on_dest_address_update)
-  const search_params = new URLSearchParams(window.location.search)
-  if (search_params.has("destination")) {
-    const d_a = search_params.get("destination")
-    $("#destination_address").val(d_a)
-    on_dest_address_update()
-  }
+  // // Destination Address box -----------------------------------------------
+  // async function on_dest_address_update(event) {
+  //   const d_a = $("#destination_address").val()
+  //   if (xrpl.isValidAddress(d_a)) {
+  //     $("#destination_address").addClass("is-valid").removeClass("is-invalid")
+  //     if (d_a[0] == "X") {
+  //       $("#x-address-warning").show()
+  //     } else {
+  //       $("#x-address-warning").hide()
+  //     }
+  //   } else {
+  //     $("#destination_address").addClass("is-invalid").removeClass("is-valid")
+  //     $("#x-address-warning").hide()
+  //   }
+  // }
+  // $("#destination_address").change(on_dest_address_update)
+  // const search_params = new URLSearchParams(window.location.search)
+  // if (search_params.has("destination")) {
+  //   const d_a = search_params.get("destination")
+  //   $("#destination_address").val(d_a)
+  //   on_dest_address_update()
+  // }
 
-  // 1. Send XRP Payment Handler -------------------------------------------
-  async function on_click_send_xrp_payment(event) {
-    const destination_address = $("#destination_address").val()
-    const xrp_drops_input = $("#send_xrp_payment_amount").val()
-    $("#send_xrp_payment .loader").show()
-    $("#send_xrp_payment button").prop("disabled","disabled")
-    await submit_and_notify({
-      TransactionType: "Payment",
-      Account: sending_wallet.address,
-      Destination: destination_address,
-      Amount: xrp_drops_input
-    })
-    $("#send_xrp_payment .loader").hide()
-    $("#send_xrp_payment button").prop("disabled",false)
+  // // 1. Send XRP Payment Handler -------------------------------------------
+  // async function on_click_send_xrp_payment(event) {
+  //   const destination_address = $("#destination_address").val()
+  //   const xrp_drops_input = $("#send_xrp_payment_amount").val()
+  //   $("#send_xrp_payment .loader").show()
+  //   $("#send_xrp_payment button").prop("disabled","disabled")
+  //   await submit_and_notify({
+  //     TransactionType: "Payment",
+  //     Account: sending_wallet.address,
+  //     Destination: destination_address,
+  //     Amount: xrp_drops_input
+  //   })
+  //   $("#send_xrp_payment .loader").hide()
+  //   $("#send_xrp_payment button").prop("disabled",false)
 
-  }
-  $("#send_xrp_payment button").click(on_click_send_xrp_payment)
+  // }
+  // $("#send_xrp_payment button").click(on_click_send_xrp_payment)
 
   // 2. Send Partial Payment Handler ---------------------------------------
   async function on_click_send_partial_payment(event) {
