@@ -1,7 +1,7 @@
 ---
 html: amm_info.html
 parent: path-and-order-book-methods.html
-blurb: Get info about an Automted Market Maker (AMM) instance.
+blurb: Get info about an Automated Market Maker (AMM) instance.
 status: not_enabled
 labels:
   - Decentralized Exchange
