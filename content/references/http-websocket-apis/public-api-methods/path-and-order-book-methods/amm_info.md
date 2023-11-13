@@ -1,7 +1,7 @@
 ---
 html: amm_info.html
 parent: path-and-order-book-methods.html
-blurb: Get info about an Automted Market Maker (AMM) instance.
+blurb: Get info about an Automated Market Maker (AMM) instance.
 status: not_enabled
 labels:
   - Decentralized Exchange
@@ -83,7 +83,7 @@ An example of a successful response:
 {
   "result": {
     "amm": {
-      "amm_account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
+      "account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
       "amount": "296890496",
       "amount2": {
         "currency": "TST",
@@ -140,7 +140,7 @@ An example of a successful response:
 {
   "result": {
     "amm": {
-      "amm_account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
+      "account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
       "amount": "296890496",
       "amount2": {
         "currency": "TST",
@@ -207,7 +207,7 @@ The `amm` field is an object describing the current status of an Automated Marke
 
 | Field           | Type                | Description |
 |-----------------|---------------------|-------------|
-| `amm_account`   | String              | The [Address][] of the AMM Account. |
+| `account`   | String              | The [Address][] of the AMM Account. |
 | `amount`        | [Currency Amount][] | The total amount of one asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
 | `amount2`       | [Currency Amount][] | The total amount of the other asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
 | `asset_frozen`  | Boolean             | _(Omitted for XRP)_ If `true`, the `amount` currency is currently [frozen](freezes.html). |

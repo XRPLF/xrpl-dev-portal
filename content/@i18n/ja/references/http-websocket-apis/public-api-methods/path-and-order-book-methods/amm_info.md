@@ -83,7 +83,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 {
   "result": {
     "amm": {
-      "amm_account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
+      "account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
       "amount": "296890496",
       "amount2": {
         "currency": "TST",
@@ -140,7 +140,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 {
   "result": {
     "amm": {
-      "amm_account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
+      "account": "rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM",
       "amount": "296890496",
       "amount2": {
         "currency": "TST",
