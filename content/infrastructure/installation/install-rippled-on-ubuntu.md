@@ -91,12 +91,12 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 9. Optional: configure core dumps
 
-    By default Ubuntu is not configured to produce core files useful for debuggin crashes. 
+    By default Ubuntu is not configured to produce core files useful for debugging crashes. 
     First run:
     
             ulimit -c unlimited
     
-    Now run `sudo systemctl edit rippled`. An editor will open and add 
+    Now run `sudo systemctl edit rippled`. The default editor should open and add 
 
         [Service]
         LimitCORE=infinity
