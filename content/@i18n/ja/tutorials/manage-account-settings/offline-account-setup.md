@@ -145,10 +145,10 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 - ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグを要求する](require-destination-tags.html)。
 - アカウントセキュリティを強化するために、[マルチシグを設定する](set-up-multi-signing.html)。
 - 明示的に承認した送金、または事前に承認した相手からの送金のみを受け取れるようにするために、[DepositAuthを有効にする](depositauth.html)。
-- ユーザーがあなたの許可なくあなたへの[トラストライン](trust-lines-and-issuing.html)を開けないようにするために、[RequireAuthを有効にする](authorized-trust-lines.html#requireauthの有効化)。XRP Ledgerの分散型取引所や発行済み通貨機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
-- 発行済み通貨[ゲートウェイ](stablecoin-issuer.html)には次のような追加の設定がある場合があります。
-  - 発行済み通貨を送金するユーザーに対して[TransferRateを設定する](stablecoin-issuer.html#transfer-fees)。
-  - このアドレスを発行済み通貨のみに使用する予定の場合は、[XRPペイメントを禁止する](stablecoin-issuer.html#disallow-xrp)。
+- ユーザーがあなたの許可なくあなたへの[トラストライン](trust-lines-and-issuing.html)を開けないようにするために、[RequireAuthを有効にする](authorized-trust-lines.html#requireauthの有効化)。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
+- トークン[ゲートウェイ](stablecoin-issuer.html)には次のような追加の設定がある場合があります。
+  - トークンを送金するユーザーに対して[TransferRateを設定する](stablecoin-issuer.html#transfer-fees)。
+  - このアドレスをトークンのみに使用する予定の場合は、[XRPペイメントを禁止する](stablecoin-issuer.html#disallow-xrp)。
 
 この段階では、トランザクションに署名をするだけで、まだ送信しません。各トランザクションに対して、`Fee`（[トランザクションコスト](transaction-cost.html)）や`Sequence`（[シーケンス番号][]）など、通常は自動入力可能なフィールドを含めて、すべてのフィールドに入力する必要があります。一度に複数のトランザクションを準備する場合は、トランザクションの実行順にシーケンシャルに増やした`Sequence`番号を使用する必要があります。
 

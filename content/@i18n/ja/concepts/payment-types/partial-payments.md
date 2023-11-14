@@ -52,14 +52,14 @@ Partial Paymentには次の制限事項があります。
 
 Partial Paymentでの実際の送金額を把握できるように、正常に完了したPaymentトランザクションのメタデータには`delivered_amount`フィールドが含まれています。このフィールドには送金額が`Amount`フィールドと[同じフォーマット](basic-data-types.html#通貨額の指定)で示されています。
 
-Partial Payment以外の場合、トランザクションのメタデータの`delivered_amount`フィールドは、トランザクションの`Amount`フィールドと同じです。支払が発行済み通貨で行われた場合、丸め方により`delivered_amount`が`Amount`フィールドとやや異なることがあります。
+Partial Payment以外の場合、トランザクションのメタデータの`delivered_amount`フィールドは、トランザクションの`Amount`フィールドと同じです。支払がトークンで行われた場合、丸め方により`delivered_amount`が`Amount`フィールドとやや異なることがあります。
 
 次の**両方**の条件に該当するトランザクションでは、送金額を**使用できません**。
 
 - Partial Paymentである
 - 2014-01-20以前の検証済みレジャーに含まれている
 
-この両方の条件に該当する場合、`delivered_amount`には実際の金額ではなく文字列値`unavailable`が示されます。この状況で実際の送金額を確認する唯一の方法は、トランザクションのメタデータでAffectedNodesを参照することです。発行済み通貨を送金するトランザクションで、`Amount`の`issuer`が`Destination`アドレスと同じアカウントである場合、送金額は異なる取引相手へのトラストラインを表す複数の`AffectedNodes`メンバー間で分割できます。
+この両方の条件に該当する場合、`delivered_amount`には実際の金額ではなく文字列値`unavailable`が示されます。この状況で実際の送金額を確認する唯一の方法は、トランザクションのメタデータでAffectedNodesを参照することです。トークンを送金するトランザクションで、`Amount`の`issuer`が`Destination`アドレスと同じアカウントである場合、送金額は異なる取引相手へのトラストラインを表す複数の`AffectedNodes`メンバー間で分割できます。
 
 `delivered_amount`フィールドは以下のフィールドに含まれています。
 

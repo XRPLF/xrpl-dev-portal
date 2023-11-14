@@ -57,7 +57,7 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
 2. 受取アドレスが、資金供給されたアカウントかどうかを確認します。
 
-   - 受取アドレスに資金が供給されている場合は、[DepositAuth](depositauth.html)や[RequireDest](source-and-destination-tags.html#requiring-tags)など、支払いの受け取りに関する制限が受取アドレスにあるかどうかを確認します。そのような制限を支払いが満たしていない場合、支払いは失敗します。
+   - 受取アドレスに資金が供給されている場合は、[DepositAuth](depositauth.html)や[RequireDest](source-and-destination-tags.html#タグの必須化)など、支払いの受け取りに関する制限が受取アドレスにあるかどうかを確認します。そのような制限を支払いが満たしていない場合、支払いは失敗します。
    - 受取アドレスに資金が供給されていない場合は、[必要準備金](reserves.html)の最低額を満たすのに十分なXRPが支払いで送金されるかどうかを確認します。十分でない場合、支払いは失敗します。
 
 3. `Amount`フィールドで指定されたXRPの金額と、[トランザクションコスト](transaction-cost.html)用に消却されるXRPの金額の合計を送金元アカウントから引き落とし、受取アカウントに同じ金額を送金します。
@@ -70,8 +70,8 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 ## 他の支払いタイプとの比較
 
 - **XRPによる直接支払**は、単一のトランザクションでXRPを送受信する唯一の方法です。この方法は、速度、シンプルさ、低コストの面でバランスが取れています。
-- [通貨間の支払い](cross-currency-payments.html)でも[Payment][]トランザクションタイプを使用しますが、XRPとXRP以外の[発行済み通貨](issued-currencies.html)を組み合わせて送金できます。ただし、XRP間の支払いは除きます。また、[Partial Payment](partial-payments.html)でも使用できます。通貨間の支払いは、XRPで指定されていない支払いや、[分散型取引所](decentralized-exchange.html)で裁定取引の機会を得るのに適しています。
-- [Checks](checks.html)すぐに送金せずに送金元に債務を設定してもらいます。受取人は有効期間内であればいつでも換金できますが、その金額は保証されません。Checksでは、XRPまたは発行済み通貨のいずれかを送金できます。Checksは、受取人に支払いを請求する自律性を与えるのに適しています。
+- [通貨間の支払い](cross-currency-payments.html)でも[Payment][]トランザクションタイプを使用しますが、XRPとXRP以外の[トークン](tokens.html)を組み合わせて送金できます。ただし、XRP間の支払いは除きます。また、[Partial Payment](partial-payments.html)でも使用できます。通貨間の支払いは、XRPで指定されていない支払いや、[分散型取引所](decentralized-exchange.html)で裁定取引の機会を得るのに適しています。
+- [Checks](checks.html)すぐに送金せずに送金元に債務を設定してもらいます。受取人は有効期間内であればいつでも換金できますが、その金額は保証されません。Checksでは、XRPまたはトークンのいずれかを送金できます。Checksは、受取人に支払いを請求する自律性を与えるのに適しています。
 - [Escrow](escrow.html)では、特定の条件が満たされたときに、意図した受取人が要求できるXRPを確保します。XRPの金額は完全に保証されており、Escrowの有効期限が切れない限り、送金元が使用することはできません。Escrowは、巨額のスマートコントラクトに適しています。
 - [Payment Channel](payment-channels.html)では、XRPが確保されます。受取人は、署名による認証を使用して、チャネルから一括でXRPを要求できます。XRP Ledgerの全トランザクションを送信せずに、認証を個々に確認できます。Payment Channelは、極めて大量の小口決済または「ストリーミング」支払いに適しています。
 

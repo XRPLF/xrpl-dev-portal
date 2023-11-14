@@ -89,7 +89,7 @@ The `streams` parameter provides access to the following default streams of info
 - `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes.
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
-**Note:** The following streams are not available from Clio and `rippled` servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Both will return the `reportingUnsupported` error if you request one of these streams. [Updated in: rippled 1.8.1][] [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0 "BADGE_BLUE")
+**Note:** The following streams are not available from Clio and `rippled` servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Both will return the `reportingUnsupported` error if you request one of these streams. [Updated in: rippled 1.8.1][] [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE")
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
