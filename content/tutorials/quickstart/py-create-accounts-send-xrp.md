@@ -71,7 +71,7 @@ To transfer XRP from the Operational account to the Standby account:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} in the source repository for this website.
+You can clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} in the source repository for this website.
 
 ## mod1.py
 

@@ -60,7 +60,6 @@ def get_balance(sb_account_id, op_account_id):
     balance=xrpl.models.requests.GatewayBalances(
         account=sb_account_id,
         ledger_index="validated",
-        hotwallet=[op_account_id]
     )
     response = client.request(balance)
     return response.result

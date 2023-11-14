@@ -1561,6 +1561,12 @@ pages:
             - ja
 
         # TODO: translate
+    -   md: tutorials/quickstart/py-checks.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
     -   md: tutorials/python/modular-tutorials-in-python/nfts-using-python/index.md
         targets:
             - en
