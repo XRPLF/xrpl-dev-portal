@@ -1,4 +1,61 @@
 .page-community {
+    .numbers-animation {
+        width: 218px;
+        height: 96px;
+      }
+      
+    @keyframes bounce {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      
+      .bounce-arrow {
+        animation: bounce 1.5s infinite;
+        animation-timing-function: ease-in-out;
+        height: 26px;
+        width: 26px;
+        position: relative;
+        top: 24px;
+      }
+      
+    .m-gif{
+        height: 108px;
+    }
+    .middle-image{
+        margin: 0 auto;
+        height: 35px;
+    }
+
+    .bg-hero{
+        width: 100%;
+        height: 635px;
+    }
+    #center-image{
+        cursor: pointer;
+    }
+    .gradient-num-three{
+        background: linear-gradient(35deg, #84F0B6 -0.3%, #B480FF 99.7%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .gradient-num-two{
+        background: linear-gradient(35deg, #EA80FF -0.3%, #80CCFF 99.7%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .gradient-num{
+        background: linear-gradient(35deg, #B480FF -0.3%, #FFAA80 99.7%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
     .main-title {
         color: var(--black-black-0, #FFF);
         text-align: center;
@@ -12,6 +69,7 @@
 
         @media (max-width: 768px) {
             font-size: 42px;
+            text-align: left;
         }
     }
 
@@ -59,6 +117,10 @@
         border-radius: 5px;
         padding-top: 165px;
 
+        @include media-breakpoint-up(lg) {
+            padding-top: 512px;
+          }
+      
         @media (max-width: 768px) {
             margin: 0;
         }
@@ -101,38 +163,16 @@
         overflow: hidden; // Hide the overflow
         max-width: 34vw; // Your current max width
         position: relative; // To position the pseudo-element
-        white-space: nowrap;
-
-        &::after {
-            // Pseudo-element for gradient fade effect
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 0;
-            width: 100px; // Width of the fade effect
-            height: 100%;
-        }
-    }
-
-    @keyframes scroll-text {
-        0% {
-            transform: translateX(0);
-        }
-
-        100% {
-            transform: translateX(-100%);
-        }
+        vertical-align: middle;
     }
 
     .scrolling-text {
         display: inline-block;
-        white-space: nowrap;
-        animation: scroll-text 30s linear infinite; // Adjust time as needed
     }
 
 
     #community-table img {
-        width: 52px;
+        max-width: 52px;
         height: 29px;
     }
 
@@ -202,14 +242,12 @@
     }
 
     @media (max-width: 768px) {
-        #community-table td {
-            white-space: nowrap;
-            overflow: scroll;
-        }
-
         #community-table img {
             width: 96px;
             height: 29px;
+        }
+        #community-table  {
+            width: 100%;
         }
 
         .td-img {
@@ -336,8 +374,11 @@
 
             .days-count {
                 font-size: 4rem; // Assuming a larger font for the days count. Adjust as needed.
-                // Add additional styles if required
-            }
+                background: linear-gradient(35deg, #B480FF -0.3%, #FFAA80 99.7%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                display: inline-block; /* Necessary to apply the gradient to text only and not the entire line/block */            }
 
             h5 {
                 font-family: 'Work Sans', sans-serif;
@@ -401,7 +442,7 @@
         flex: 1;
         display: flex;
         justify-content: space-between;
-        padding: 20px;
+        padding: 35px;
 
         @media (max-width: 768px) {
             flex-direction: column;
@@ -420,7 +461,8 @@
         align-self: center;
         text-align: center;
         margin: 0 auto;
-
+        display: flex;
+        flex-direction: column;
         @media (max-width: 768px) {
             margin: 0px;
             text-align: start;
@@ -601,6 +643,7 @@
         display: flex;
         flex-direction: column;
         padding-right: 10px;
+        
         /* for spacing */
     }
 
@@ -608,11 +651,14 @@
         flex: 1;
         position: relative;
         margin-left: 70px;
-        margin-right: 70px
+        margin-right: 70px;
+        @media (max-width: 768px) {
+            gap: 30px;
+        }
     }
 
     .project-card {
-        height: 291px;
+        height: fit-content;
         position: absolute;
         width: 205px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -630,15 +676,17 @@
     }
 
     .project-card.bottom-right {
-        bottom: 0;
+        bottom: -25px;
         right: 0;
     }
 
     .card-image {
-        height: 44%;
+        height: 144px;
         /* adjust as per your design */
         background-color: rgb(44, 43, 43);
         /* placeholder */
+        display: flex;
+        align-items: center;
     }
 
     .spotlight-title,
@@ -688,6 +736,7 @@
         font-weight: 400;
         line-height: 16px;
         cursor: pointer;
+        text-decoration: none;
     }
 
     @media (max-width: 992px) {
@@ -714,6 +763,7 @@
         .project-card {
             position: static;
             margin: 20px 0;
+            height: fit-content;
             /* Space between the cards */
         }
     }
@@ -722,7 +772,28 @@
         width: 222px;
     }
 
+    .bottom-cards-section .com-card .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Add this line */
+        gap: 16px;
+        position: relative;
+        z-index: 1;
+        height: 100%; /* Add this line to make card-content full height */
+    }
 
+    .bottom-cards-section .com-card {
+        padding: 36px;
+        background: #232325;
+        min-width: 352px;
+        height: 442px; /* You have a fixed height for the cards */
+        max-width: 352px;
+        position: relative;
+        display: flex; /* This makes sure your card content is a flex container */
+        flex-direction: column; /* Align children vertically */
+        justify-content: space-between; /* This will push the links to the bottom */
+    }
+    
 
     .bottom-cards-section {
         display: flex;
@@ -737,11 +808,13 @@
             background: #232325;
             min-width: 352px;
             height: 442px;
+            max-width: 352px;
             position: relative;
 
             .top-left-img {
                 position: absolute;
                 top: 0;
+                height: 292px;
                 left: 0;
                 content: url(../img/community/card-bg-1.png);
             }
@@ -750,10 +823,12 @@
                 position: absolute;
                 bottom: 0;
                 right: 0;
+                height: 333px;
                 content: url(../img/community/card-bg-2.png);
             }
 
             .top-right-img {
+                height: 390px;
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -764,7 +839,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
-
+                position: relative;
+                z-index: 1;
                 .card-title {
                     color: var(--black-black-0-white, #FFF);
                     white-space: nowrap;
@@ -806,6 +882,7 @@
                 }
 
                 .com-card-link {
+                    text-decoration: none;
                     cursor: pointer;
                     color: #7919FF;
                     font-family: Work Sans;
