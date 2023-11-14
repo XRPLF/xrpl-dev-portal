@@ -13,7 +13,8 @@
     "@redocly/portal": "0.57.0",
     "clsx": "^2.0.0",
     "lottie-react": "^2.4.0",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "xrpl": "^2.13.0"
   },
   "overrides": {
     "react": "^17.0.2"
