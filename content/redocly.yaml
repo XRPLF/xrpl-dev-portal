@@ -34,6 +34,8 @@ theme:
     # hide:
     items:
       $ref: top-nav.yaml
+  markdown:
+    partialsFolders: ["_snippets", "_code-samples", "_api-examples"]
   # footer:
   #   # hide:
   #   copyrightText: © 2022-2023, Redocly Inc. All right reserved.
