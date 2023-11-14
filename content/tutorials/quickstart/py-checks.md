@@ -24,7 +24,7 @@ Checks offer another option for transferring funds between accounts. Checks have
 2. The receiver can choose to accept less than the full amount of the check. This allows you to authorize a maximum amount when the actual cost is not finalized. 
 
 
-[![Empty Check Form](img/quickstart-py37.png)](img/quickstart-py37.png)
+[![Empty Check Form](img/quickstart-py37c.png)](img/quickstart-py37c.png)
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ To get test accounts:
 5. Click **Get Operational Account Info**.
 5. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
 
-[![Form with New Accounts](img/quickstart-py38.png)](img/quickstart-py38.png)
+[![Form with New Accounts](img/quickstart-py38c.png)](img/quickstart-py38c.png)
 
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
 
@@ -66,7 +66,7 @@ To send a check for XRP from the Standby account to the Operational account:
 3. Set the **Currency** to _XRP_.
 4. Click **Send Check**.
 
-[![Send Check Settings](img/quickstart-py39.png)](img/quickstart-py39.png)
+[![Send Check Settings](img/quickstart-py39c.png)](img/quickstart-py39c.png)
 
 ### Send a Check for an Issued Currency
 
@@ -78,14 +78,14 @@ To send a check for an issued currency token from the Standby account to the Ope
 4. Enter the **Currency** code for your token.
 5. Click **Send Check**.
 
-[![Send Token Check Settings](img/quickstart-py40.png)](img/quickstart-py40.png)
+[![Send Token Check Settings](img/quickstart-py40c.png)](img/quickstart-py40c.png)
 
 
 ### Get Checks
 
 Click **Get Checks** to get a list of the current checks you have sent or received. To uniquely identify a check (for existence, when cashing a check), capture the **index** value for the check.
 
-[![Get Checks with index highlighted](img/quickstart-py41.png)](img/quickstart-py41.png)
+[![Get Checks with index highlighted](img/quickstart-py41c.png)](img/quickstart-py41c.png)
 
 ### Cash Check
 
@@ -100,14 +100,14 @@ To cash a check you have received:
 	    2. Enter the **Currency** code for the token.
 4. Click **Cash Check**.
 
-[![Cashed check results](img/quickstart-py42.png)](img/quickstart-py42.png)
+[![Cashed check results](img/quickstart-py42c.png)](img/quickstart-py42c.png)
 
 
 ### Get Balances
 
 Click **Get Balances** to get a list of obligations and assets for each account.
 
-[![Account Balances](img/quickstart-py43.png)](img/quickstart-py43.png)
+[![Account Balances](img/quickstart-py43c.png)](img/quickstart-py43c.png)
 
 ### Cancel Check
 
@@ -116,7 +116,7 @@ To cancel a check you have previously sent to another account.
 1. Enter the **Check ID** (**index** value).
 2. Click **Cancel Check**.
 
-[![Canceled check results](img/quickstart-py44.png)](img/quickstart-py44.png)
+[![Canceled check results](img/quickstart-py44c.png)](img/quickstart-py44c.png)
 
 
 # Code Walkthrough
