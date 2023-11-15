@@ -19,7 +19,7 @@ XRP Ledger上でアプリケーションを構築する場合は、XRP Ledger AP
 ピアツーピアサーバーのXRP Ledgerネットワークは世界で共有されている台帳であり、ここから、アプリケーションはこの台帳の内容の状態に関して信頼できる情報を得ることができます。この状態に関する情報には以下の内容が含まれます。
 
 - 各[アカウント](accounts.html)の設定
-- XRPおよび[発行済み通貨](issued-currencies.html)の残高
+- XRPおよび[トークン](tokens.html)の残高
 - 分散型取引所でのオファー（注文）
 - ネットワーク設定（例: [トランザクションコスト](transaction-cost.html)と[準備金](reserves.html)の金額）
 - タイムスタンプ
@@ -172,7 +172,7 @@ XRP Ledgerに送信されたトランザクションはすぐには処理され�
 - **コンセプト:**
   - [コンセンサスについて](consensus.html)
   - [コンセンサスの研究](consensus-research.html)
-  - [Rippleコンセンサスの動画](https://www.youtube.com/watch?v=pj1QVb1vlC0)
+  - [コンセンサスの仕組み(動画)](https://www.youtube.com/watch?v=pj1QVb1vlC0)
 - **チュートリアル:**
   - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
   - [バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)
