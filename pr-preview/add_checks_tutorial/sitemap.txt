@@ -133,7 +133,7 @@ https://xrpl.org/send-payments-using-python.html
 https://xrpl.org/py-create-accounts-send-xrp.html
 https://xrpl.org/py-create-trustline-send-currency.html
 https://xrpl.org/py-create-time-based-escrows.html
-https://xrpl.org/py-checks.html
+https://xrpl.org/py-send-and-cash-checks.html
 https://xrpl.org/nfts-using-python.html
 https://xrpl.org/py-mint-and-burn-nfts.html
 https://xrpl.org/py-transfer-nfts.html
@@ -151,6 +151,7 @@ https://xrpl.org/create-accounts-send-xrp-using-javascript.html
 https://xrpl.org/create-trustline-send-currency-using-javascript.html
 https://xrpl.org/create-time-based-escrows-using-javascript.html
 https://xrpl.org/create-conditional-escrows-using-javascript.html
+https://xrpl.org/send-and-cash-checks.html
 https://xrpl.org/nfts-using-javascript.html
 https://xrpl.org/mint-and-burn-nfts-using-javascript.html
 https://xrpl.org/transfer-nfts-using-javascript.html

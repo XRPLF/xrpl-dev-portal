@@ -7,7 +7,7 @@
     <title>Send and Cash Checks - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Send and Cash Checks | XRPL.org (日本語)">
-    <meta property="og:url" content="https://xrpl.org/py-checks.html" />
+    <meta property="og:url" content="https://xrpl.org/py-send-and-cash-checks.html" />
     <meta property="og:description" content="Send checks to facilitate a two-step payment." />
     <meta name="description" content="Send checks to facilitate a two-step payment." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
@@ -15,9 +15,9 @@
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="ja" />
-    <link rel="alternate" href="https://xrpl.org/py-checks.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/py-checks.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/py-checks.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/py-send-and-cash-checks.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/py-send-and-cash-checks.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/py-send-and-cash-checks.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -230,7 +230,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/py-checks.html">
+          <a class="dropdown-item" href="/py-send-and-cash-checks.html">
             English
           </a>
           <hr />
@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/add_checks_tutorial/content/tutorials/quickstart/py-checks.md?pr=/XRPLF/xrpl-dev-portal/pull/2263" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/add_checks_tutorial/content/tutorials/quickstart/py-send-and-cash-checks.md?pr=/XRPLF/xrpl-dev-portal/pull/2263" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -302,6 +302,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#cash_check">cash_check</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#cancel_check">cancel_check</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#get_checks">get_checks</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#lesson10-checkpy">lesson10-check.py</a></li>
       </ul>
   </div>
       </aside>
@@ -394,7 +395,7 @@
 <li>Enter the <strong>Amount</strong> you want to collect, up to the full amount of the check.</li>
 <li>Enter the currency code.
    a. If you cashing a check for XRP, enter <em>XRP</em> in the <strong>Currency</strong> field.
-        If you are cashing a check for an issued currency token:
+     b. If you are cashing a check for an issued currency token:
         1. Enter the <strong>Issuer</strong> of the token.
         2. Enter the <strong>Currency</strong> code for the token.</li>
 <li>Click <strong>Cash Check</strong>.</li>
@@ -530,6 +531,333 @@
 <p>Send the request and report the results.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">    <span class="n">response</span><span class="o">=</span><span class="n">client</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">acct_checks</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">result</span>
+</code></pre></div>
+<h2 id="lesson10-checkpy">lesson10-check.py<a aria-hidden="true" class="hover_anchor" href="#lesson10-checkpy"><i class="fa fa-link"></i></a></h2>
+<p>This example builds on <code>lesson2-send-currency.py</code>. Changes are noted below. </p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="kn">import</span> <span class="nn">tkinter</span> <span class="k">as</span> <span class="nn">tk</span>
+<span class="kn">import</span> <span class="nn">xrpl</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="kn">from</span> <span class="nn">mod1</span> <span class="kn">import</span> <span class="n">get_account</span><span class="p">,</span> <span class="n">get_account_info</span><span class="p">,</span> <span class="n">send_xrp</span>
+<span class="kn">from</span> <span class="nn">mod2</span> <span class="kn">import</span> <span class="n">get_balance</span>
+</code></pre></div>
+<p>Import check-specific functions.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kn">from</span> <span class="nn">mod10</span> <span class="kn">import</span> <span class="n">send_check</span><span class="p">,</span> <span class="n">cash_check</span><span class="p">,</span> <span class="n">cancel_check</span><span class="p">,</span> <span class="n">get_checks</span>
+
+<span class="c1">#############################################</span>
+<span class="c1">## Handlers #################################</span>
+<span class="c1">#############################################</span>
+</code></pre></div>
+<p>Add handlers for module 10.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="c1">## Mod 10 Handlers</span>
+
+<span class="k">def</span> <span class="nf">standby_send_check</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">send_check</span><span class="p">(</span>
+        <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_destination</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_currency</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_issuer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">standby_cash_check</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">cash_check</span><span class="p">(</span>
+        <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_check_id</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_currency</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_issuer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">standby_cancel_check</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">cancel_check</span><span class="p">(</span>
+        <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_check_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">standby_get_checks</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">get_checks</span><span class="p">(</span>
+        <span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">standby_get_balance</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">get_balance</span><span class="p">(</span>
+        <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">operational_send_check</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">send_check</span><span class="p">(</span>
+        <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_currency</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_issuer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">operational_cash_check</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">cash_check</span><span class="p">(</span>
+        <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_check_id</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_currency</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_issuer</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">operational_cancel_check</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">cancel_check</span><span class="p">(</span>
+        <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_operational_check_id</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">operational_get_checks</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">get_checks</span><span class="p">(</span>
+        <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+    <span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">operational_get_balance</span><span class="p">():</span>
+    <span class="n">results</span><span class="o">=</span><span class="n">get_balance</span><span class="p">(</span>
+        <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+        <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="c1">## Mod 1 Handlers</span>
+
+<span class="k">def</span> <span class="nf">get_standby_account</span><span class="p">():</span>
+    <span class="n">new_wallet</span><span class="o">=</span><span class="n">get_account</span><span class="p">(</span><span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">ent_standby_account</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_standby_account</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>
+    <span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_standby_account_info</span><span class="p">():</span>
+    <span class="n">accountInfo</span><span class="o">=</span><span class="n">get_account_info</span><span class="p">(</span><span class="n">ent_standby_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">accountInfo</span><span class="p">[</span><span class="s1">'Balance'</span><span class="p">])</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">accountInfo</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">standby_send_xrp</span><span class="p">():</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">send_xrp</span><span class="p">(</span><span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span><span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+                       <span class="n">ent_standby_destination</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_standby_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">get_standby_account_info</span><span class="p">()</span>
+    <span class="n">get_operational_account_info</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">get_operational_account</span><span class="p">():</span>
+    <span class="n">new_wallet</span><span class="o">=</span><span class="n">get_account</span><span class="p">(</span><span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_operational_account</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">classic_address</span><span class="p">)</span>
+    <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">new_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_operational_account_info</span><span class="p">():</span>
+    <span class="n">accountInfo</span><span class="o">=</span><span class="n">get_account_info</span><span class="p">(</span><span class="n">ent_operational_account</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">accountInfo</span><span class="p">[</span><span class="s1">'Balance'</span><span class="p">])</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">accountInfo</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">operational_send_xrp</span><span class="p">():</span>
+    <span class="n">response</span><span class="o">=</span><span class="n">send_xrp</span><span class="p">(</span><span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span><span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">get</span><span class="p">(),</span>
+                        <span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+    <span class="n">text_operational_results</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s2">"1.0"</span><span class="p">,</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="n">get_standby_account_info</span><span class="p">()</span>
+    <span class="n">get_operational_account_info</span><span class="p">()</span>
+
+
+<span class="c1"># Create a new window with the title "Check Example"</span>
+<span class="n">window</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Check Example"</span><span class="p">)</span>
+
+<span class="c1"># Form frame</span>
+<span class="n">frm_form</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">relief</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">SUNKEN</span><span class="p">,</span> <span class="n">borderwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">frm_form</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1"># Create the Label and Entry widgets for "Standby Account"</span>
+<span class="n">lbl_standy_seed</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Standby Seed"</span><span class="p">)</span>
+<span class="n">ent_standby_seed</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_account</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Standby Account"</span><span class="p">)</span>
+<span class="n">ent_standby_account</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_balance</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
+<span class="n">ent_standby_balance</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standy_amount</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">)</span>
+<span class="n">ent_standby_amount</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_destination</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Destination"</span><span class="p">)</span>
+<span class="n">ent_standby_destination</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<p>Add fields for <em>Issuer</em> and <em>Check ID</em>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="n">lbl_standby_issuer</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Issuer"</span><span class="p">)</span>
+<span class="n">ent_standby_issuer</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_check_id</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Check ID"</span><span class="p">)</span>
+<span class="n">ent_standby_check_id</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_currency</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Currency"</span><span class="p">)</span>
+<span class="n">ent_standby_currency</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_standby_results</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Results"</span><span class="p">)</span>
+<span class="n">text_standby_results</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">65</span><span class="p">)</span>
+
+<span class="c1"># Place fields in a grid.</span>
+<span class="n">lbl_standy_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standby_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standby_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standy_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standby_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<p>Place the <em>Issuer</em> and <em>Check ID</em> fields in the grid.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="n">lbl_standby_issuer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_issuer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standby_check_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_check_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standby_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_standby_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">lbl_standby_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
+<span class="n">text_standby_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nw"</span><span class="p">)</span>
+
+<span class="c1">###############################################</span>
+<span class="c1">## Operational Account ########################</span>
+<span class="c1">###############################################</span>
+
+<span class="c1"># Create the Label and Entry widgets for "Operational Account"</span>
+
+<span class="n">lbl_operational_seed</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Operational Seed"</span><span class="p">)</span>
+<span class="n">ent_operational_seed</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_account</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Operational Account"</span><span class="p">)</span>
+<span class="n">ent_operational_account</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_balance</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"XRP Balance"</span><span class="p">)</span>
+<span class="n">ent_operational_balance</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_amount</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Amount"</span><span class="p">)</span>
+<span class="n">ent_operational_amount</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_destination</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Destination"</span><span class="p">)</span>
+<span class="n">ent_operational_destination</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<p>Add fields for the <em>Issuer</em> and <em>Check ID</em>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="n">lbl_operational_issuer</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Issuer"</span><span class="p">)</span>
+<span class="n">ent_operational_issuer</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_check_id</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Check ID"</span><span class="p">)</span>
+<span class="n">ent_operational_check_id</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_currency</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Currency"</span><span class="p">)</span>
+<span class="n">ent_operational_currency</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">lbl_operational_results</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span><span class="n">text</span><span class="o">=</span><span class="s1">'Results'</span><span class="p">)</span>
+<span class="n">text_operational_results</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">65</span><span class="p">)</span>
+
+<span class="c1">#Place the widgets in a grid</span>
+<span class="n">lbl_operational_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_seed</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">lbl_operational_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">lbl_operational_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_balance</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">lbl_operational_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_amount</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">lbl_operational_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_destination</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+</code></pre></div>
+<p>Place the <em>Issuer</em> and <em>Check ID</em> fields in the grid.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="n">lbl_operational_issuer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_issuer</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">lbl_operational_check_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_check_id</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"w"</span><span class="p">)</span>
+<span class="n">lbl_operational_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"e"</span><span class="p">)</span>
+<span class="n">ent_operational_currency</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">lbl_operational_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"ne"</span><span class="p">)</span>
+<span class="n">text_operational_results</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nw"</span><span class="p">)</span>
+
+<span class="c1">#############################################</span>
+<span class="c1">## Buttons ##################################</span>
+<span class="c1">#############################################</span>
+
+<span class="c1"># Create the Get Standby Account Buttons</span>
+<span class="n">btn_get_standby_account</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Standby Account"</span><span class="p">,</span>
+                                    <span class="n">command</span><span class="o">=</span><span class="n">get_standby_account</span><span class="p">)</span>
+<span class="n">btn_get_standby_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_get_standby_account_info</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
+                                         <span class="n">text</span><span class="o">=</span><span class="s2">"Get Standby Account Info"</span><span class="p">,</span>
+                                         <span class="n">command</span><span class="o">=</span><span class="n">get_standby_account_info</span><span class="p">)</span>
+<span class="n">btn_get_standby_account_info</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_send_xrp</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Send XRP &gt;"</span><span class="p">,</span>
+                                 <span class="n">command</span><span class="o">=</span><span class="n">standby_send_xrp</span><span class="p">)</span>
+<span class="n">btn_standby_send_xrp</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+</code></pre></div>
+<p>Add standby buttons for <strong>Send Check</strong>, <strong>Get Checks</strong>, <strong>Cash Check</strong>, <strong>Cancel Check</strong>, and <strong>Get Balances</strong>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="n">btn_standby_send_check</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Send  Check"</span><span class="p">,</span>
+                                 <span class="n">command</span><span class="o">=</span><span class="n">standby_send_check</span><span class="p">)</span>
+<span class="n">btn_standby_send_check</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_get_checks</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Checks"</span><span class="p">,</span>
+                                 <span class="n">command</span><span class="o">=</span><span class="n">standby_get_checks</span><span class="p">)</span>
+<span class="n">btn_standby_get_checks</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_cash_check</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cash  Check"</span><span class="p">,</span>
+                                 <span class="n">command</span><span class="o">=</span><span class="n">standby_cash_check</span><span class="p">)</span>
+<span class="n">btn_standby_cash_check</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_cancel_check</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Cancel  Check"</span><span class="p">,</span>
+                                 <span class="n">command</span><span class="o">=</span><span class="n">standby_cancel_check</span><span class="p">)</span>
+<span class="n">btn_standby_cancel_check</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_standby_get_balances</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Balances"</span><span class="p">,</span>
+                            <span class="n">command</span><span class="o">=</span><span class="n">standby_get_balance</span><span class="p">)</span>
+<span class="n">btn_standby_get_balances</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+
+<span class="c1"># Create the Operational Account Buttons</span>
+<span class="n">btn_get_operational_account</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span>
+                                        <span class="n">text</span><span class="o">=</span><span class="s2">"Get Operational Account"</span><span class="p">,</span>
+                                        <span class="n">command</span><span class="o">=</span><span class="n">get_operational_account</span><span class="p">)</span>
+<span class="n">btn_get_operational_account</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_get_op_account_info</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"Get Op Account Info"</span><span class="p">,</span>
+                                    <span class="n">command</span><span class="o">=</span><span class="n">get_operational_account_info</span><span class="p">)</span>
+<span class="n">btn_get_op_account_info</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="n">btn_op_send_xrp</span><span class="o">=</span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="o">=</span><span class="n">frm_form</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">"&lt; Send XRP"</span><span class="p">,</span>
+                            <span class="n">command</span><span class="o">=</span><span class="n">operational_send_xrp</span><span class="p">)</span>
+<span class="n">btn_op_send_xrp</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+</code></pre></div>
+<p>Add operational buttons for <strong>Send Check</strong>, <strong>Get Checks</strong>, <strong>Cash Check</strong>, <strong>Cancel Check</strong>, and <strong>Get Balances</strong>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="nx">btn_op_send_check</span><span class="o">=</span><span class="nx">tk</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="nx">master</span><span class="o">=</span><span class="nx">frm_form</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">=</span><span class="s2">"Send Check"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nx">command</span><span class="o">=</span><span class="nx">operational_send_check</span><span class="p">)</span>
+<span class="nx">btn_op_send_check</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">row</span><span class="o">=</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="o">=</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="nx">btn_op_get_checks</span><span class="o">=</span><span class="nx">tk</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="nx">master</span><span class="o">=</span><span class="nx">frm_form</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">=</span><span class="s2">"Get Checks"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nx">command</span><span class="o">=</span><span class="nx">operational_get_checks</span><span class="p">)</span>
+<span class="nx">btn_op_get_checks</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">row</span><span class="o">=</span><span class="mf">5</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="o">=</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="nx">btn_op_cash_check</span><span class="o">=</span><span class="nx">tk</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="nx">master</span><span class="o">=</span><span class="nx">frm_form</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">=</span><span class="s2">"Cash Check"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nx">command</span><span class="o">=</span><span class="nx">operational_cash_check</span><span class="p">)</span>
+<span class="nx">btn_op_cash_check</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">row</span><span class="o">=</span><span class="mf">6</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="o">=</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="nx">btn_op_cancel_check</span><span class="o">=</span><span class="nx">tk</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="nx">master</span><span class="o">=</span><span class="nx">frm_form</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">=</span><span class="s2">"Cancel Check"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nx">command</span><span class="o">=</span><span class="nx">operational_cancel_check</span><span class="p">)</span>
+<span class="nx">btn_op_cancel_check</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">row</span><span class="o">=</span><span class="mf">7</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="o">=</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+<span class="nx">btn_op_get_balances</span><span class="o">=</span><span class="nx">tk</span><span class="p">.</span><span class="nx">Button</span><span class="p">(</span><span class="nx">master</span><span class="o">=</span><span class="nx">frm_form</span><span class="p">,</span><span class="w"> </span><span class="nx">text</span><span class="o">=</span><span class="s2">"Get Balances"</span><span class="p">,</span>
+<span class="w">                            </span><span class="nx">command</span><span class="o">=</span><span class="nx">operational_get_balance</span><span class="p">)</span>
+<span class="nx">btn_op_get_balances</span><span class="p">.</span><span class="nx">grid</span><span class="p">(</span><span class="nx">row</span><span class="o">=</span><span class="mf">8</span><span class="p">,</span><span class="w"> </span><span class="nx">column</span><span class="o">=</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="nx">sticky</span><span class="o">=</span><span class="s2">"nsew"</span><span class="p">)</span>
+
+<span class="err">#</span><span class="w"> </span><span class="nx">Start</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">application</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">mainloop</span><span class="p">()</span>
 </code></pre></div>
     </div>
   </article>
@@ -1211,7 +1539,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/py-checks.html">Send and Cash Checks</a>
+    <a class="nav-link nav-leaf" href="/ja/py-send-and-cash-checks.html">Send and Cash Checks</a>
   </div>
 
     </nav>
@@ -1315,6 +1643,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/create-conditional-escrows-using-javascript.html">Create Conditional Escrows Using JavaScript</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/send-and-cash-checks.html">Send and Cash Checks</a>
   </div>
 
     </nav>
