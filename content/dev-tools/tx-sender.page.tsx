@@ -36,8 +36,105 @@ function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function update_xrp_balance(api, sendingWallet, setBalance) {
-    setBalance((await api.getBalances(sendingWallet.address, {currency: "XRP"})).value)
+// TODO: Migrate this function
+// async function on_click_send_partial_payment(event) {
+//     const destination_address = $("#destination_address").val()
+//     $("#send_partial_payment .loader").show()
+//     $("#send_partial_payment button").prop("disabled","disabled")
+
+//     await submit_and_notify({
+//       TransactionType: "Payment",
+//       Account: sending_wallet.address,
+//       Destination: destination_address,
+//       Amount: "1000000000000000", // 1 billion XRP
+//       SendMax: {
+//         value: (Math.random()*.01).toPrecision(15), // random very small amount
+//         currency: pp_sending_currency,
+//         issuer: pp_issuer_wallet.address
+//       },
+//       Flags: xrpl.PaymentFlags.tfPartialPayment
+//     })
+//     $("#send_partial_payment .loader").hide()
+//     $("#send_partial_payment button").prop("disabled",false)
+//   }
+//   $("#send_partial_payment button").click(on_click_send_partial_payment)
+
+
+function TransactionButton({
+    api,
+    setBalance,
+    connectionReady,
+    transaction,
+    sendingWallet,
+    ids,
+    content,
+    inputSettings,
+}: {
+    api: Client,
+    setBalance: React.Dispatch<React.SetStateAction<number>>,
+    connectionReady: boolean,
+    transaction: Transaction,
+    sendingWallet: Wallet | undefined
+    ids: {
+        formId: string, // Helper text for this form has an id which appends _help to this.
+        buttonId: string,
+        inputId: string,
+    },
+    content: {
+        buttonText: string,
+        units: string, // Displays after the input number
+        longerDescription: React.JSX.Element // JSX allows for embedding links within the longer description
+    },
+    inputSettings: {
+        defaultValue: number, // Should NOT be a dynamic number
+        setInputValue: React.Dispatch<React.SetStateAction<number>>, 
+        min: number,
+        max: number,
+        expectInt: boolean, // Otherwise expects float - ex. For issued currency amounts.
+    }
+}) {
+    const { translate } = useTranslate()
+
+    const [waitingForTransaction, setWaitingForTransaction] = useState(false)
+
+    return (
+    <div>
+        <div className="form-group" id={ids.formId}>
+            <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                    <span className="input-group-text loader" style={{display: waitingForTransaction ? '' : 'none'}}>
+                        <img className="throbber" src="/img/xrp-loader-96.png" alt={translate("(loading)")} />
+                    </span>
+                </div>
+                <button className={clsx("btn btn-primary form-control needs-connection", 
+                    ((!canSendTransaction(connectionReady, sendingWallet?.address) || waitingForTransaction) && "disabled"))} 
+                    type="button" id={ids.buttonId} disabled={(!canSendTransaction(connectionReady, sendingWallet?.address) || waitingForTransaction)}
+                    onClick={async () => {
+                        setWaitingForTransaction(true)
+                        await submit_and_notify(api, sendingWallet!, setBalance, transaction)
+                        setWaitingForTransaction(false)
+                    }}
+                    >
+                        {translate(content.buttonText)}
+                </button>
+                <input id={ids.inputId} className="form-control" type="number" 
+                    aria-describedby={ids.inputId + "_help"} defaultValue={inputSettings.defaultValue} min={1} max={inputSettings.max}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+                        inputSettings.setInputValue(inputSettings.expectInt ? parseInt(e.target.value) : parseFloat(e.target.value))
+                } />
+                <div className="input-group-append">
+                    <span className="input-group-text" id={ids.formId + "_help"}>
+                        {translate(content.units)}
+                    </span>
+                </div>
+                {/* Future feature: Optional custom destination tag */}
+            </div>
+            <small className="form-text text-muted">
+                {content.longerDescription}
+            </small>
+        </div>
+        <hr />
+    </div>)
 }
 
 // TODO: Make sure all calls to this function specify the wallet used!
@@ -118,9 +215,9 @@ function StatusSidebar(
 
 async function onInitClick(
     existingApi: Client, 
-    setApi: React.Dispatch<React.SetStateAction<Client>>, 
+    setApi: React.Dispatch<React.SetStateAction<Client | undefined>>, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
-    setSendingWallet: React.Dispatch<React.SetStateAction<Wallet>>, 
+    setSendingWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
     setIsInitEnabled: React.Dispatch<React.SetStateAction<boolean>>, 
     setConnectionReady: React.Dispatch<React.SetStateAction<boolean>>): Promise<void> {
     
@@ -163,11 +260,11 @@ const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 export default function TxSender() {
     const { translate } = useTranslate();
 
-    const [api, setApi] = useState(undefined)
+    const [api, setApi] = useState<Client | undefined>(undefined)
 
     // Sidebar variables
     const [balance, setBalance] = useState(0)
-    const [sendingWallet, setSendingWallet] = useState(undefined)
+    const [sendingWallet, setSendingWallet] = useState<Wallet | undefined>(undefined)
     const [connectionReady, setConnectionReady] = useState(false)
     const [txHistory, setTxHistory] = useState([])
 
@@ -176,11 +273,9 @@ export default function TxSender() {
     
     const [isInitEnabled, setIsInitEnabled] = useState(true)
 
-    // TODO: Componentize these buttons / forms (They seem separatable)
     // Payment button variables
-    const [dropsToSendForPayment, setDropsToSendForPayment] = useState(100000)
-    const [paymentIsLoading, setPaymentIsLoading] = useState(false)
-
+    const defaultDropsToSend = 100000
+    const [dropsToSendForPayment, setDropsToSendForPayment] = useState(defaultDropsToSend)
     
     return (
     <div className="row">
@@ -200,8 +295,7 @@ export default function TxSender() {
                             <button className={clsx("btn btn-primary form-control", isInitEnabled ? "" : "disabled")} 
                                 type="button" id="init_button" 
                                 onClick={() => {
-                                    onInitClick(api, setApi, setBalance, setSendingWallet, setIsInitEnabled, setConnectionReady)
-
+                                    onInitClick(api!, setApi, setBalance, setSendingWallet, setIsInitEnabled, setConnectionReady)
                                 }}
                                 disabled={!isInitEnabled}
                                 title={isInitEnabled ? "" : "done"}>
@@ -233,44 +327,39 @@ export default function TxSender() {
                             {translate(" This X-address is intended for use on Mainnet. Testnet addresses have a \"T\" prefix instead.")}
                         </p>
                         <h3>{translate("Send Transaction")}</h3>
-                        <div className="form-group" id="send_xrp_payment">
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text loader" style={{display: paymentIsLoading ? '' : 'none'}}>
-                                        <img className="throbber" src="/img/xrp-loader-96.png" alt={translate("(loading)")} />
-                                    </span>
-                                </div>
-                                <button className={clsx("btn btn-primary form-control needs-connection", 
-                                    ((!canSendTransaction(connectionReady, sendingWallet?.address) || paymentIsLoading) && "disabled"))} 
-                                    type="button" id="send_xrp_payment_btn" disabled={(!canSendTransaction(connectionReady, sendingWallet?.address) || paymentIsLoading)}
-                                    onClick={async () => {
-                                        setPaymentIsLoading(true)
-                                        await submit_and_notify(api, sendingWallet, setBalance, {
-                                            TransactionType: "Payment",
-                                            Account: sendingWallet.address,
-                                            Destination: destinationAddress,
-                                            Amount: dropsToSendForPayment.toString()
-                                        })
-                                        setPaymentIsLoading(false)
-                                    }}
-                                    >
-                                        {translate("Send XRP Payment")}
-                                </button>
-                                <input id="send_xrp_payment_amount" className="form-control" type="number" 
-                                    aria-describedby="send_xrp_payment_amount_help" defaultValue={dropsToSendForPayment} min={1} max={10000000000}
-                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDropsToSendForPayment(parseInt(e.target.value))} />
-                                <div className="input-group-append">
-                                    <span className="input-group-text" id="send_xrp_payment_amount_help">
-                                        {translate("drops of XRP")}
-                                    </span>
-                                </div>
-                                {/* Future feature: Optional custom destination tag */}
-                            </div>
-                            <small className="form-text text-muted">{translate("Send a ")}
-                                <a href="send-xrp.html">{translate("simple XRP-to-XRP payment")}</a>{translate(".")}
-                            </small>
-                        </div>{/* /#send_xrp_payment */}
-                        <hr />
+                        <TransactionButton 
+                            api={api!}
+                            setBalance={setBalance}
+                            connectionReady={connectionReady}
+                            sendingWallet={sendingWallet}
+                            transaction={
+                            {
+                                TransactionType: "Payment",
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                Account: sendingWallet?.address,
+                                Destination: destinationAddress,
+                                Amount: dropsToSendForPayment.toString()
+                            }}
+                            ids={{
+                                formId: "send_xrp_payment",
+                                buttonId: "send_xrp_payment_btn",
+                                inputId: "send_xrp_payment_amount",
+                            }}
+                            content=
+                            {{
+                                buttonText: "Send XRP Payment",
+                                units: "drops of XRP",
+                                longerDescription: (<div>{translate("Send a ")}<a href="send-xrp.html">{translate("simple XRP-to-XRP payment")}</a>{translate(".")}</div>),
+                            }}
+                            inputSettings={
+                            {
+                                defaultValue: defaultDropsToSend,
+                                setInputValue: setDropsToSendForPayment,
+                                min: 1,
+                                max: 10000000000,
+                                expectInt: true,
+                            }}
+                        />
                         <div className="form-group" id="send_partial_payment">
                             <div className="progress mb-1" id="pp_progress">
                                 <div className="progress-bar progress-bar-striped w-0">&nbsp;</div>
@@ -382,7 +471,7 @@ export default function TxSender() {
                                 </div>
                             </div>
                             <small className="form-text text-muted">
-                                {translate("Your destination address needs a")}
+                                {translate("Your destination address needs a ")}
                                 <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>{translate(" to ")}
                                 <span className="sending-address-item">{translate("(the test sender)")}</span>
                                 {translate(" for the currency in question. Otherwise, you'll get tecPATH_DRY.")}
