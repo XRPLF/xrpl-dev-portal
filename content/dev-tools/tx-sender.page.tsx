@@ -16,6 +16,11 @@ import { type Client, type Transaction, type TransactionMetadata, type Wallet } 
 // - Standardize the use of `client` instead of `api`
 
 // Helpers
+function isoTimeToRippleTime(isoSeconds: number) {
+    const RIPPLE_EPOCH_DIFF = 0x386d4380
+    return Math.round(isoSeconds / 1000) - RIPPLE_EPOCH_DIFF
+}
+
 function errorNotif(msg) {
     alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
 }
@@ -276,6 +281,11 @@ export default function TxSender() {
     // Payment button variables
     const defaultDropsToSend = 100000
     const [dropsToSendForPayment, setDropsToSendForPayment] = useState(defaultDropsToSend)
+
+    // Escrow variables
+    const defaultFinishAfter = 60
+    const [finishAfter, setFinishAfter] = useState(defaultFinishAfter)
+
     
     return (
     <div className="row">
@@ -386,7 +396,64 @@ export default function TxSender() {
                             </small>
                         </div>{/* /.form group for partial payment */}
                         <hr />
-                        <div className="form-group" id="create_escrow">
+                        {/* Escrow */}
+                        <TransactionButton
+                            api={api!}
+                            setBalance={setBalance}
+                            connectionReady={connectionReady}
+                            sendingWallet={sendingWallet}
+                            transaction={
+                            {
+                                TransactionType: "EscrowCreate",
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                Account: sendingWallet?.address,
+                                Destination: destinationAddress,
+                                Amount: "1000000",
+                                FinishAfter:  isoTimeToRippleTime(new Date().getTime()) + finishAfter
+                            }}
+                            ids={{
+                                formId: "create_escrow",
+                                buttonId: "create_escrow_btn",
+                                inputId: "create_escrow_duration_seconds",
+                            }}
+                            content=
+                            {{
+                                buttonText: translate("Create Escrow"),
+                                units: translate("seconds"),
+                                longerDescription: (<div>{translate("Create a ")}<a href="escrow.html">{translate("time-based escrow")}</a>
+                                {translate(" of 1 XRP for the specified number of seconds.")}</div>),
+                            }}
+                            inputSettings={
+                            {
+                                defaultValue: defaultFinishAfter,
+                                setInputValue: setFinishAfter,
+                                min: 5,
+                                max: 10000,
+                                expectInt: true,
+                            }}
+                            // TODO: Add Checkbox
+                            /*
+                                <span className="input-group-text">
+                                    (
+                                    <input type="checkbox" id="create_escrow_release_automatically" defaultValue={1} />
+                                    <label className="form-check-label" htmlFor="create_escrow_release_automatically">
+                                        {translate("Finish automatically")}
+                                    </label>)
+                                </span>
+
+                                and down after the "small" - some explainer text which appears during it
+
+                                <div className="progress mb-1" style={{display: 'none'}} id="escrow_progress">
+                                    <div className="progress-bar progress-bar-striped w-0">&nbsp;</div>
+                                    <small className="justify-content-center d-flex position-absolute w-100">
+                                        {translate("(Waiting to release Escrow when it's ready)")}
+                                    </small>
+                                </div>
+                            */
+                            // TODO: Add logic to automatically finish the escrow
+                            // TODO: Add the loading bar logic
+                        />
+                        {/* <div className="form-group" id="create_escrow">
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text loader" style={{display: 'none'}}>
@@ -422,8 +489,7 @@ export default function TxSender() {
                                     {translate("(Waiting to release Escrow when it's ready)")}
                                 </small>
                             </div>
-                        </div>{/* /.form group for create escrow */}
-                        <hr />
+                        </div>/.form group for create escrow */}
                         <div className="form-group" id="create_payment_channel">
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
