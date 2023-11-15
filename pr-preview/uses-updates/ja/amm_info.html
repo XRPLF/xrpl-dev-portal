@@ -396,7 +396,7 @@
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"amm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"amm_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296890496"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"amount2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span>
@@ -450,7 +450,7 @@
 <span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"amm"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"amm_account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rp9E3FN3gNmvePGhYnf414T2TkUuoxu8vM"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"296890496"</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"amount2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TST"</span><span class="p">,</span>
@@ -1263,16 +1263,6 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1298,7 +1288,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -2202,7 +2202,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>
@@ -2936,9 +2936,13 @@
   </div>
 
       
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
       
@@ -3059,11 +3063,6 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Amendmentのテスト</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -3080,6 +3079,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enable-public-signing.html">パブリック署名の有効化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Amendmentのテスト</a>
   </div>
 
     </nav>
@@ -3161,6 +3165,11 @@
     <a class="nav-link nav-leaf" href="/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3210,16 +3219,6 @@
 
     </nav>
 
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
   </div>
 
     </nav>

@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>シリアル化フォーマット - XRPL.org (日本語)</title>
+    <title>バイナリフォーマット - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="シリアル化フォーマット | XRPL.org (日本語)">
+    <meta property="og:title" content="バイナリフォーマット | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/serialization.html" />
     <meta property="og:description" content="XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。" />
     <meta name="description" content="XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。" />
@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uses-updates/content/@i18n/ja/references/protocol-reference/serialization.md?pr=/XRPLF/xrpl-dev-portal/pull/2247" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/uses-updates/content/@i18n/ja/references/protocol/binary-format.md?pr=/XRPLF/xrpl-dev-portal/pull/2247" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -275,7 +275,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#シリアル化フォーマット">シリアル化フォーマット</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#バイナリフォーマット">バイナリフォーマット</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#例">例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#サンプルコード">サンプルコード</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#内部フォーマット">内部フォーマット</a></li>
@@ -311,14 +311,14 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a></li>
-    <li class="active breadcrumb-item">シリアル化フォーマット</li>
+    <li class="active breadcrumb-item">バイナリフォーマット</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
       <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
     </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="シリアル化フォーマット">シリアル化フォーマット<a aria-hidden="true" class="hover_anchor" href="#シリアル化フォーマット"><i class="fa fa-link"></i></a></h1>
+        <h1 id="バイナリフォーマット">バイナリフォーマット<a aria-hidden="true" class="hover_anchor" href="#バイナリフォーマット"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、<a href="peer-protocol.html">サーバー間のピアツーピア通信</a>を含む他の用途にも使用されます。通常、<a href="http-websocket-apis.html"><code>rippled</code> API</a>は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。</p>
 <p>トランザクションをJSONまたはその他の表現から正規バイナリフォーマットへシリアル化するプロセスのステップを、以下にまとめます。</p>
@@ -1376,16 +1376,6 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
   </div>
 
@@ -1411,7 +1401,17 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -2315,7 +2315,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>
@@ -3049,9 +3049,13 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
   </div>
 
       
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
       
@@ -3172,11 +3176,6 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Amendmentのテスト</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
   </div>
 
@@ -3193,6 +3192,11 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/enable-public-signing.html">パブリック署名の有効化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Amendmentのテスト</a>
   </div>
 
     </nav>
@@ -3274,6 +3278,11 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
     <a class="nav-link nav-leaf" href="/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3323,16 +3332,6 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
     </nav>
 
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
   </div>
 
     </nav>
