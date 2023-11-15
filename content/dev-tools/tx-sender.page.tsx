@@ -290,6 +290,10 @@ export default function TxSender() {
     const defaultPaymentChannelAmount = 100000
     const [paymentChannelAmount, setPaymentChannelAmount] = useState(defaultPaymentChannelAmount)
 
+    // Issued Currency / Trust Line Variables
+    const trustCurrencyCode = "FOO"
+    const defaultTrustLimit = 100000
+    const [trustLimit, setTrustLimit] = useState(defaultTrustLimit)
     
     return (
     <div className="row">
@@ -516,7 +520,7 @@ export default function TxSender() {
                             }}
                             ids={{
                                 formId: "create_payment_channel",
-                                buttonId: "create_payment_channel_buttons",
+                                buttonId: "create_payment_channel_btn",
                                 inputId: "create_payment_channel_amount",
                             }}
                             content={{
@@ -560,27 +564,43 @@ export default function TxSender() {
                             </small>
                         </div>{/* /.form group for issued currency payment */}
                         <hr />
-                        <div className="form-group" id="trust_for">
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text loader" style={{display: 'none'}}>
-                                    <img className="throbber" alt="(loading)" src="/img/xrp-loader-96.png" /></span>
-                                </div>
-                                <button className={clsx("btn btn-primary form-control needs-connection", 
-                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))}
-                                    type="button" id="trust_for_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
-                                        {translate("Trust for")}
-                                </button>
-                                <input id="trust_for_amount" className="form-control disabled" type="number" defaultValue={100000} />
-                                <div className="input-group-append">
-                                    <span className="input-group-text" id="trust_for_currency_code">{translate("FOO")}</span>
-                                </div>
-                            </div>
-                            <small className="form-text text-muted">{translate("The test sender creates a ")}
+                        <TransactionButton
+                            api={api!}
+                            setBalance={setBalance}
+                            connectionReady={connectionReady}
+                            sendingWallet={sendingWallet}
+                            transaction={
+                                {
+                                TransactionType: "TrustSet",
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                Account: sendingWallet?.address,
+                                LimitAmount: {
+                                    currency: trustCurrencyCode,
+                                    value: trustLimit.toString(),
+                                    issuer: destinationAddress
+                                }
+                            }}
+                            ids={{
+                                formId: "trust_for",
+                                buttonId: "trust_for_btn",
+                                inputId: "trust_for_amount",
+                            }}
+                            content={{
+                                buttonText: translate("Trust for"),
+                                units: translate(trustCurrencyCode),
+                                longerDescription: (<div>{translate("The test sender creates a ")}
                                 <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>
-                                {translate(" to your account for the given currency.")}
-                            </small>
-                        </div>{/* /.form group for create trust line */}
+                                {translate(" to your account for the given currency.")}</div>),
+                            }}
+                            inputSettings={
+                            {
+                                defaultValue: defaultTrustLimit,
+                                setInputValue: setTrustLimit,
+                                min: 1,
+                                max: 10000000000,
+                                expectInt: false,
+                            }}
+                        />
                     </form>
                 </div>
             </section>
