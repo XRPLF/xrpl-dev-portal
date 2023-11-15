@@ -292,6 +292,10 @@ export default function TxSender() {
 
     // Issued Currency / Trust Line Variables
     const trustCurrencyCode = "FOO"
+
+    const defaultIssueAmount = 100
+    const [issueAmount, setIssueAmount] = useState(defaultIssueAmount)
+
     const defaultTrustLimit = 100000
     const [trustLimit, setTrustLimit] = useState(defaultTrustLimit)
     
@@ -345,6 +349,7 @@ export default function TxSender() {
                             {translate(" This X-address is intended for use on Mainnet. Testnet addresses have a \"T\" prefix instead.")}
                         </p>
                         <h3>{translate("Send Transaction")}</h3>
+                        {/* Send Payment  */}
                         <TransactionButton 
                             api={api!}
                             setBalance={setBalance}
@@ -378,6 +383,7 @@ export default function TxSender() {
                                 expectInt: true,
                             }}
                         />
+                        {/* TODO: Migrate partial payments (had a loading bar, so left for last) */}
                         <div className="form-group" id="send_partial_payment">
                             <div className="progress mb-1" id="pp_progress">
                                 <div className="progress-bar progress-bar-striped w-0">&nbsp;</div>
@@ -538,32 +544,49 @@ export default function TxSender() {
                                 expectInt: true,
                             }}
                         />
-                        <div className="form-group" id="send_issued_currency">
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text loader" style={{display: 'none'}}>
-                                        <img className="throbber" alt="(loading)" src="/img/xrp-loader-96.png" />
-                                    </span>
-                                </div>
-                                <button className={clsx("btn btn-primary form-control needs-connection", (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))} 
-                                    type="button" id="send_issued_currency_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
-                                    {translate("Send Issued Currency")}
-                                </button>
-                                <input id="send_issued_currency_amount" className="form-control" type="text" defaultValue={100} />
-                                {/* Note: HTML limits "number" inputs to IEEE 764 double precision, which isn't enough for the full range of issued currency amounts */}
-                                <div className="input-group-append">
-                                    {/* TODO: custom currency codes */}
-                                    <span className="input-group-text" id="send_issued_currency_code">FOO</span>
-                                </div>
-                            </div>
-                            <small className="form-text text-muted">
-                                {translate("Your destination address needs a ")}
+                        {/* Send Issued Currency */}
+                            {/* TODO: Add ability to configure custom currency codes */}
+                            <TransactionButton
+                            api={api!}
+                            setBalance={setBalance}
+                            connectionReady={connectionReady}
+                            sendingWallet={sendingWallet}
+                            transaction={
+                                {
+                                TransactionType: "Payment",
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                Account: sendingWallet?.address,
+                                Destination: destinationAddress,
+                                Amount: {
+                                    currency: trustCurrencyCode,
+                                    value: issueAmount?.toString(),
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    issuer: sendingWallet?.address
+                                }
+                            }}
+                            ids={{
+                                formId: "send_issued_currency",
+                                buttonId: "send_issued_currency_btn",
+                                inputId: "send_issued_currency_amount",
+                            }}
+                            content={{
+                                buttonText: translate("Send Issued Currency"),
+                                units: translate(trustCurrencyCode),
+                                longerDescription: (<div>{translate("Your destination address needs a ")}
                                 <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>{translate(" to ")}
                                 <span className="sending-address-item">{translate("(the test sender)")}</span>
-                                {translate(" for the currency in question. Otherwise, you'll get tecPATH_DRY.")}
-                            </small>
-                        </div>{/* /.form group for issued currency payment */}
-                        <hr />
+                                {translate(" for the currency in question. Otherwise, you'll get tecPATH_DRY.")}</div>),
+                            }}
+                            inputSettings={
+                            {
+                                defaultValue: defaultIssueAmount,
+                                setInputValue: setIssueAmount,
+                                min: 1,
+                                max: 10000000000,
+                                expectInt: false,
+                            }}
+                        />
+                        {/* Create Trust Line */}
                         <TransactionButton
                             api={api!}
                             setBalance={setBalance}
