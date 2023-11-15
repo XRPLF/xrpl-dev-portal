@@ -326,6 +326,7 @@ const set_up_tx_sender = async function() {
 
 
   // 3. Create Escrow Handler ----------------------------------------------
+  // TODO: Migrate the loader & automatic finish. The basic button has been migrated - Jackson
   async function on_click_create_escrow(event) {
     const destination_address = $("#destination_address").val()
     const duration_seconds_txt = $("#create_escrow_duration_seconds").val()
@@ -393,27 +394,27 @@ const set_up_tx_sender = async function() {
   $("#create_escrow button").click(on_click_create_escrow)
 
   // 4. Create Payment Channel Handler -------------------------------------
-  async function on_click_create_payment_channel(event) {
-    const destination_address = $("#destination_address").val()
-    const xrp_drops_input = $("#create_payment_channel_amount").val()
-    const pubkey = sending_wallet.publicKey
-    $("#create_payment_channel .loader").show()
-    $("#create_payment_channel button").prop("disabled","disabled")
-    await submit_and_notify({
-      TransactionType: "PaymentChannelCreate",
-      Account: sending_wallet.address,
-      Destination: destination_address,
-      Amount: xrp_drops_input,
-      SettleDelay: 30,
-      PublicKey: pubkey
-    })
-    $("#create_payment_channel .loader").hide()
-    $("#create_payment_channel button").prop("disabled",false)
+  // async function on_click_create_payment_channel(event) {
+  //   const destination_address = $("#destination_address").val()
+  //   const xrp_drops_input = $("#create_payment_channel_amount").val()
+  //   const pubkey = sending_wallet.publicKey
+  //   $("#create_payment_channel .loader").show()
+  //   $("#create_payment_channel button").prop("disabled","disabled")
+  //   await submit_and_notify({
+  //     TransactionType: "PaymentChannelCreate",
+  //     Account: sending_wallet.address,
+  //     Destination: destination_address,
+  //     Amount: xrp_drops_input,
+  //     SettleDelay: 30,
+  //     PublicKey: pubkey
+  //   })
+  //   $("#create_payment_channel .loader").hide()
+  //   $("#create_payment_channel button").prop("disabled",false)
 
-    // Future feature: figure out channel ID and enable a button that creates
-    //   valid claims for the given payment channel to help test redeeming
-  }
-  $("#create_payment_channel button").click(on_click_create_payment_channel)
+  //   // Future feature: figure out channel ID and enable a button that creates
+  //   //   valid claims for the given payment channel to help test redeeming
+  // }
+  // $("#create_payment_channel button").click(on_click_create_payment_channel)
 
 
   // 5. Send Issued Currency Handler ---------------------------------------

@@ -286,6 +286,10 @@ export default function TxSender() {
     const defaultFinishAfter = 60
     const [finishAfter, setFinishAfter] = useState(defaultFinishAfter)
 
+    // Payment Channel variables
+    const defaultPaymentChannelAmount = 100000
+    const [paymentChannelAmount, setPaymentChannelAmount] = useState(defaultPaymentChannelAmount)
+
     
     return (
     <div className="row">
@@ -490,34 +494,46 @@ export default function TxSender() {
                                 </small>
                             </div>
                         </div>/.form group for create escrow */}
-                        <div className="form-group" id="create_payment_channel">
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text loader" style={{display: 'none'}}>
-                                        <img className="throbber" alt="(loading)" src="/img/xrp-loader-96.png" />
-                                    </span>
-                                </div>
-                                {/* TODO: Componentize these buttons? (Just change name?) */}
-                                <button className={clsx("btn btn-primary form-control needs-connection", 
-                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))} 
-                                    type="button" id="create_payment_channel_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
-                                        {translate("Create Payment Channel")}
-                                </button>
-                                <input id="create_payment_channel_amount" className="form-control" 
-                                    type="number" aria-describedby="create_payment_channel_amount_help" 
-                                    defaultValue={100000} min={1} max={10000000000} />
-                                <div className="input-group-append">
-                                    <span className="input-group-text" id="create_payment_channel_amount_help">
-                                        {translate("drops of XRP")}
-                                    </span>
-                                </div>
-                            </div>
-                            <small className="form-text text-muted">
-                                {translate("Create a ")}<a href="payment-channels.html">{translate("payment channel")}</a>
-                                {translate(" and fund it with the specified amount of XRP.")}
-                            </small>
-                        </div>{/* /.form group for create paychan */}
-                        <hr />
+                        {/* Payment Channels */}
+                        {/*     
+                            // Future feature: figure out channel ID and enable a button that creates
+                            //   valid claims for the given payment channel to help test redeeming 
+                        */}
+                        <TransactionButton
+                            api={api!}
+                            setBalance={setBalance}
+                            connectionReady={connectionReady}
+                            sendingWallet={sendingWallet}
+                            transaction={{
+                                TransactionType: "PaymentChannelCreate",
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                Account: sendingWallet?.address,
+                                Destination: destinationAddress,
+                                Amount: paymentChannelAmount.toString(),
+                                SettleDelay: 30,
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                PublicKey: sendingWallet?.publicKey
+                            }}
+                            ids={{
+                                formId: "create_payment_channel",
+                                buttonId: "create_payment_channel_buttons",
+                                inputId: "create_payment_channel_amount",
+                            }}
+                            content={{
+                                buttonText: translate("Create Payment Channel"),
+                                units: translate("drops of XRP"),
+                                longerDescription: (<div>{translate("Create a ")}<a href="payment-channels.html">{translate("payment channel")}</a>
+                                {translate(" and fund it with the specified amount of XRP.")}</div>),
+                            }}
+                            inputSettings={
+                            {
+                                defaultValue: defaultPaymentChannelAmount,
+                                setInputValue: setPaymentChannelAmount,
+                                min: 1,
+                                max: 10000000000,
+                                expectInt: true,
+                            }}
+                        />
                         <div className="form-group" id="send_issued_currency">
                             <div className="input-group mb-3">
                                 <div className="input-group-prepend">
