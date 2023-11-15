@@ -412,7 +412,7 @@ events = [
     "link": "https://www.eventbrite.co.uk/e/xrpl-demo-day-tickets-740650023157?aff=oddtdtcreator",
     "location": "Hybrid Singapore/Virtual Webinar",
     "date": "November 14, 2023",
-    "image": "SouthKoreaMeetup.png",
+    "image": "singapore.png",
     "end_date": "November 14, 2023"
     },
     { "name": "New Horizon: Innovate Without Limits: New Horizons Await",      
@@ -431,7 +431,7 @@ events = [
     "link": "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
     "location": "Paris, France",
     "date": "November 28, 7pm - 9pm",
-    "image": "SouthKoreaMeetup.png",
+    "image": "paris.png",
     "end_date": "November 28, 2023"
     },
     {
