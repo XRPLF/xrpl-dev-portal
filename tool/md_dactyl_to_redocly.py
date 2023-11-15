@@ -69,6 +69,7 @@ def repl_code_samples(ftext):
 
 COMMON_LINKS_INCLUDES = [
     "<!--{# common link defs #}-->",
+    "<!--_ -->",
     "{% include '_snippets/rippled-api-links.md' %}",
     "{% include '_snippets/tx-type-links.md' %}",
     "{% include '_snippets/rippled_versions.md' %}",
@@ -97,6 +98,20 @@ def includes_to_partials(ftext):
         ftext2 = ftext2.replace(raw_string, repl_string)
     return ftext2
 
+VAR_REGEX = re.compile(r"\{\{ *(target|currentpage)\.(?P<var>[a-z_]+) *}}")
+def update_vars_syntax(ftext):
+    ftext2 = ftext
+    for m in re.finditer(VAR_REGEX, ftext):
+        raw_string = m.group(0)
+        print("found Dactyl var:", m.group("var"))
+        if m.group("var") == "name":
+            repl_string = '{% $frontmatter.title %}'
+        else:
+            repl_string = '{% $env.PUBLIC_'+m.group("var").upper()+" %}"
+        ftext2 = ftext2.replace(raw_string, repl_string)
+    return ftext2
+
+
 def main():
     all_mds = list_mds("content")
     for fname in all_mds:
@@ -105,8 +120,9 @@ def main():
         ftext2 = repl_code_samples(ftext)
         ftext2 = rm_common_links_includes(ftext2)
         ftext2 = includes_to_partials(ftext2)
+        ftext2 = update_vars_syntax(ftext2)
         if ftext2 != ftext:
-            print("performing syntax conversion in", fname)
+            #print("performing syntax conversion in", fname)
             with open(fname, "w") as f:
                 f.write(ftext2)
 
