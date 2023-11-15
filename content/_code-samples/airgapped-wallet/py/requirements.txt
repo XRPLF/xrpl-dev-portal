@@ -5,7 +5,7 @@ certifi==2023.7.22
 cffi==1.15.0
 colorama==0.4.4
 cryptography==41.0.4
-Django==3.2.20
+Django==3.2.23
 ECPy==1.2.5
 h11==0.12.0
 httpcore==0.13.6
