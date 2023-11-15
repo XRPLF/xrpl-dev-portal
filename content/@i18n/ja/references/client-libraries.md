@@ -17,4 +17,3 @@ blurb: これらのライブラリを使用して、お好みのプログラミ�
 | **Java** | `xrpl4j` | [Javaを使ってみよう](get-started-using-java.html) | [API リファレンス](https://javadoc.io/doc/org.xrpl/)  | [リポジトリ](https://github.com/XRPLF/xrpl4j) |
 | **Ruby** | `xrbp` | | [API リファレンス](https://www.rubydoc.info/gems/xrbp) | [リポジトリ](https://github.com/DevNullProd/xrbp) |
 
-**ヒント:** ここに掲載されていないクライアントライブラリを追加するには、[このページの変更を提案]({{target.github_forkurl}}/edit/{{target.github_branch}}/content/{{currentpage.md}})してください！

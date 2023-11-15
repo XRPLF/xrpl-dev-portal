@@ -4,12 +4,9 @@
 
 `rippled`が残りのネットワークと同期されたら、ストック`rippled`サーバーが完全に機能するようになります。このサーバーを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`rippled`サーバーがネットワークと同期されているかどうかを判別するには、[`rippled`サーバーの状況](rippled-server-states.html)を使用します。[`rippled`のコマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用すれば、これを迅速にテストできます。
 
-{% if currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md" or
-      currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" %}
-    $ ./rippled server_info
-{% else %}
-    $ /opt/ripple/bin/rippled server_info
-{% endif %}
+```sh
+rippled server_info
+```
 
 rippled APIを使用した`rippled`サーバーとの通信について詳しくは、[rippled API reference](http-websocket-apis.html)を参照してください。
 
@@ -26,20 +23,6 @@ rippled APIを使用した`rippled`サーバーとの通信について詳しく
 すべての構成オプションの説明については、[`rippled` GitHubリポジトリー](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)を参照してください。
 
 構成の変更を有効にするには、`rippled`を再起動する必要があります。
-
-{% if currentpage.md == "tutorials/manage-the-rippled-server/installation/install-rippled-on-ubuntu.md" or
-      currentpage.md == "tutorials/manage-the-rippled-server/installation/install-rippled-on-centos-rhel-with-yum" %}
-        $ sudo systemctl restart rippled.service
-
-{% elif currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-ubuntu.md" or
-        currentpage.md == "tutorials/manage-the-rippled-server/installation/build-run-rippled-macos.md" %}
-
-
-* Ctrl-Cを使用して`rippled`を停止し、その後再起動します。
-
-      $ ./rippled
-
-{% endif %}
 
 `[debug_logfile]`セクションまたは`[database_path]`セクションを変更すると、`rippled`を実行するユーザーに、新しく構成したパスの所有権を付与する必要が生じる場合があります。
 
