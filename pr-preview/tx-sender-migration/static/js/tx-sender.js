@@ -440,26 +440,26 @@ const set_up_tx_sender = async function() {
   }
   $("#send_issued_currency button").click(on_click_send_issued_currency)
 
-  // 6. Trust For Handler
-  async function on_trust_for(event) {
-    const destination_address = $("#destination_address").val()
-    const trust_limit = $("#trust_for_amount").val()
-    const trust_currency_code = $("#trust_for_currency_code").text()
-    $("#trust_for .loader").show()
-    $("#trust_for button").prop("disabled","disabled")
-    await submit_and_notify({
-      TransactionType: "TrustSet",
-      Account: sending_wallet.address,
-      LimitAmount: {
-        currency: trust_currency_code,
-        value: trust_limit,
-        issuer: destination_address
-      }
-    })
-    $("#trust_for .loader").hide()
-    $("#trust_for button").prop("disabled",false)
-  }
-  $("#trust_for button").click(on_trust_for)
+//   // 6. Trust For Handler
+//   async function on_trust_for(event) {
+//     const destination_address = $("#destination_address").val()
+//     const trust_limit = $("#trust_for_amount").val()
+//     const trust_currency_code = $("#trust_for_currency_code").text()
+//     $("#trust_for .loader").show()
+//     $("#trust_for button").prop("disabled","disabled")
+//     await submit_and_notify({
+//       TransactionType: "TrustSet",
+//       Account: sending_wallet.address,
+//       LimitAmount: {
+//         currency: trust_currency_code,
+//         value: trust_limit,
+//         issuer: destination_address
+//       }
+//     })
+//     $("#trust_for .loader").hide()
+//     $("#trust_for button").prop("disabled",false)
+//   }
+//   $("#trust_for button").click(on_trust_for)
 
 }
 
