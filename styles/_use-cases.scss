@@ -38,7 +38,13 @@ $custody-logos: "Gatehub", "Bitgo";
 }
 html.light{
   .Cryptum{
-    content: url(../img/uses/lightmode/cryptum.svg)
+    content: url(../img/uses/lightmode/cryptum.jpg) !important;
+    height: 58px;
+    max-width: max-content;
+    width: 184px;
+    max-height: none;
+    margin: 0px;
+    padding-bottom: 10px;
   }
 }
 // Use the mixin for each category
