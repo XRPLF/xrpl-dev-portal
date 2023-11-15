@@ -1561,7 +1561,7 @@ pages:
             - ja
 
         # TODO: translate
-    -   md: tutorials/quickstart/py-checks.md
+    -   md: tutorials/quickstart/py-send-and-cash-checks.md
         targets:
             - en
             - ja
@@ -1684,6 +1684,12 @@ pages:
 
         # TODO: translate
     -   md: tutorials/quickstart/create-conditional-escrows-using-javascript.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: tutorials/quickstart/send-and-cash-checks.md
         targets:
             - en
             - ja
