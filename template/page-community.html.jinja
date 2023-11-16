@@ -28,7 +28,7 @@
   </div>
 
 <div class="mx-auto text-left col-lg-6 text-md-center hero-title" >
-    <div class="d-flex flex-column-reverse align-items-center">
+    <div class="d-flex flex-column-reverse align-items-center sm-align-items-start">
       <img src="../assets/img/icons/arrow-down.svg" class="bounce-arrow" alt="Down Arrow" />
       <h1 class="mb-0 main-title">
           {% trans %}A Global Blockchain 
@@ -84,7 +84,7 @@
              </td>
         </tr>
         #}
-        <tr>
+        <tr class="final-tr">
             <td class="td-img"><img class="xrpl-icon" alt="xrpl icon"></td>
               <td>Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more.</td>
             <td>
@@ -102,16 +102,18 @@
         <h4 class="events-text">Check out global events hosted <br class="d-none-sm" /> by the XRPL community</h4>
     </div>
     <p class="description">Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.</p>
-    <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
+    <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" target="_blank" href="events.html">{% trans %}View All Events{% endtrans %}</a>
 </div>
     <div class="upcoming-event" id="upcoming-events-section">
         <p class="upcoming-label">UPCOMING EVENT</p>
-        <div id="days-count" class="days-count">13 days</div>
+        <div id="days-count" class="days-count">13</div>
+        <div class="days-word">days</div>
+        <div class="num-separator"></div>
         <h5 id="upcoming-event-name" class="event-name">XRPL Warsaw Meetup 2023</h5>
         <p class="mb-2 event-details d-flex icon"> <span class="icon-location"> </span><span id="upcoming-event-date">September 08-09, 2023</span></p>
         <p class="event-location d-flex icon"> <span class="icon-date" id="upcoming-event-location"> </span>Warsaw, Poland</p>
     </div>
-    <a class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
+    <a target="_blank" class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn" href="events.html">{% trans %}View All Events{% endtrans %}</a>
 </section>
 <section class="carousel">
     <div class="image-container">
@@ -144,37 +146,48 @@
 </section>
 
 <section class="community-funding">
-    <a class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
+    <a target="_blank" class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
     <div class="stats">
         <div class="stacked-stats">
             <div class="stat">
                 <span class="small-text">funding been awarded</span>
-                  <div id="staticImage" class="number gradient-num" >$13M+</div> 
+                  <div id="staticImage" class="number gradient-num" >
+                  <span class="surround-gradient">$</span>
+                  13
+                  <span class="surround-gradient">M+</span>
+             </div> 
+                  <div class=" ml-8 stat-separator"></div>
+                          
+
             </div>
             <div class="stat">
                 <span class="small-text">teams awarded globally</span>
-                <div class="number gradient-num-two" >120+</div>
+                <div class="number gradient-num-two" >120+
+                </div>
+                <div class="ml-14 stat-separator"></div>
             </div>
         </div>
         <div class="stat">
             <span class="small-text">countries represented</span>
-            <div class="number gradient-num-three">28+</div>
+            <div class="number gradient-num-three">28+
+            </div>
+            <div class="ml-19 stat-separator"></div>
         </div>
     </div>
     <div class="funding-section">
-        <span class="small-text">XRPL Developer Funding</span>
+        <span class="funding-text">XRPL Developer Funding</span>
         <h2>Funding Opportunities for Blockchain Businesses</h2>
         <p>If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.</p>
-     <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
+     <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" target="_blank" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
     </div>
 </section>
 
 <section class="community-spotlight-wrapper">
     <div class="community-spotlight">
-        <h6 class="spotlight-title">XRPL Community Spotlight</h6>
-        <h4 class="spotlight-subtitle">Showcase your blockchain project, application, or product</h4>
+        <h6 class="funding-text">XRPL Community Spotlight</h6>
+        <h2 class="spotlight-subtitle">Showcase your blockchain project, application, or product</h2>
         <p class="spotlight-description">Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.</p>
-        <a class="w-222 btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Submit Your Project{% endtrans %}</a>
+        <a target="_blank" class="w-222 btn btn-primary btn-arrow view-all-events-btn" href="developer-funding.html">{% trans %}Submit Your Project{% endtrans %}</a>
     </div>
     <div class="projects-wrapper">
         <div class="project-card top-left">
@@ -332,7 +345,7 @@ const parseDate = (dateString) => {
   });
 
   if (closestEvent) {
-    document.getElementById('days-count').textContent = `${minDaysDiff} days`;
+    document.getElementById('days-count').textContent = `${minDaysDiff}`;
     document.getElementById('upcoming-event-name').textContent = closestEvent.name;
     document.getElementById('upcoming-event-date').textContent = closestEvent.date;
     document.getElementById('upcoming-event-location').textContent = closestEvent.location;

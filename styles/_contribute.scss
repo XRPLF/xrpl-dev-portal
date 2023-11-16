@@ -1,61 +1,86 @@
 .page-community {
+
+    @media (max-width: 768px) {
+        .sm-align-items-start {
+            align-items: start !important;
+        }
+    }
+
     .numbers-animation {
         width: 218px;
         height: 96px;
-      }
-      
+    }
+
     @keyframes bounce {
-        0%, 100% {
-          transform: translateY(0);
+
+        0%,
+        100% {
+            transform: translateY(0);
         }
+
         50% {
-          transform: translateY(-10px);
+            transform: translateY(-10px);
         }
-      }
-      
-      .bounce-arrow {
+    }
+
+    .bounce-arrow {
         animation: bounce 1.5s infinite;
         animation-timing-function: ease-in-out;
         height: 26px;
         width: 26px;
         position: relative;
         top: 24px;
-      }
-      
-    .m-gif{
+    }
+
+    .m-gif {
         height: 108px;
     }
-    .middle-image{
+
+    .middle-image {
         margin: 0 auto;
         height: 35px;
     }
 
-    .bg-hero{
+    .bg-hero {
         width: 100%;
         height: 635px;
     }
-    #center-image{
+
+    #center-image {
         cursor: pointer;
     }
-    .gradient-num-three{
+
+
+    .gradient-num-three {
         background: linear-gradient(35deg, #84F0B6 -0.3%, #B480FF 99.7%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
-    .gradient-num-two{
+
+    .gradient-num-two {
         background: linear-gradient(35deg, #EA80FF -0.3%, #80CCFF 99.7%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
 
-    .gradient-num{
+    .gradient-num {
         background: linear-gradient(35deg, #B480FF -0.3%, #FFAA80 99.7%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }
+
+    .surround-gradient {
+        background: linear-gradient(35deg, #B480FF -0.3%, #FFAA80 99.7%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
     .main-title {
         color: var(--black-black-0, #FFF);
         text-align: center;
@@ -111,16 +136,16 @@
     }
 
     #community-table {
-        padding: 20px 40px;
-        width: 85%;
+        padding: 20px 93px;
+        max-width: 1280px;
         margin: 0 auto;
         border-radius: 5px;
         padding-top: 165px;
 
         @include media-breakpoint-up(lg) {
             padding-top: 512px;
-          }
-      
+        }
+
         @media (max-width: 768px) {
             margin: 0;
         }
@@ -133,7 +158,12 @@
         font-style: normal;
         font-weight: 700;
         line-height: 26px;
+        padding-bottom: 5px;
         /* 130% */
+    }
+
+    .final-tr {
+        border: none !important;
     }
 
     #community-table h4 {
@@ -148,7 +178,6 @@
     }
 
     #community-table table {
-        border: 1px solid #343437;
         width: 100%;
         margin-top: 31px;
         border-collapse: collapse;
@@ -246,7 +275,8 @@
             width: 96px;
             height: 29px;
         }
-        #community-table  {
+
+        #community-table {
             width: 100%;
         }
 
@@ -256,13 +286,25 @@
         }
     }
 
+    .funding-text {
+        color: var(--black-black-0, #FFF);
+        /* Desktop/H6 */
+        font-family: Work Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 44px;
+        padding-bottom: 4px;
+        /* 130% */
+    }
+
     .xrpl-events-section {
-        margin-top: 150px;
         padding: 50px 40px;
-        margin: 0 auto;
+        margin: 100px auto;
         display: flex;
         justify-content: space-around;
         align-items: center;
+        max-width: 1280px;
 
         // Responsive Styles for Mobile
         @media screen and (max-width: 768px) {
@@ -299,9 +341,9 @@
 
             .description {
                 text-align: start;
-                margin-top: 1rem;
+                margin-top: 2rem;
                 font-family: Work Sans;
-                font-size: 20px;
+                font-size: 24px;
                 font-style: normal;
                 font-weight: 500;
                 line-height: 28px;
@@ -365,6 +407,8 @@
             margin-top: 2rem;
 
             .upcoming-label {
+                position: relative;
+                top: 7px;
                 font-family: 'Work Sans', sans-serif;
                 font-size: 12px;
                 font-weight: 600;
@@ -372,13 +416,31 @@
                 color: var(--black-black-30, #C1C1C2);
             }
 
+
             .days-count {
-                font-size: 4rem; // Assuming a larger font for the days count. Adjust as needed.
-                background: linear-gradient(35deg, #B480FF -0.3%, #FFAA80 99.7%);
+                font-weight: 300;
+                margin-bottom: 21px;
+                line-height: 99px;
+                font-size: 88px;
+                background: linear-gradient(35deg, #B480FF -.3%, #FFAA80 99.7%);
                 -webkit-background-clip: text;
                 background-clip: text;
                 color: transparent;
-                display: inline-block; /* Necessary to apply the gradient to text only and not the entire line/block */            }
+                display: inline-block;
+            }
+
+            .days-word {
+                vertical-align: bottom;
+                font-weight: normal;
+                margin-bottom: 21px;
+                line-height: 99px;
+                font-size: 40px;
+                background: linear-gradient(35deg, #B480FF -.3%, #FFAA80 99.7%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                display: inline-block;
+            }
 
             h5 {
                 font-family: 'Work Sans', sans-serif;
@@ -401,7 +463,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        max-width: 1200px;
+        max-width: 1280px;
         margin: 0 auto;
         margin-top: 120px;
     }
@@ -421,6 +483,8 @@
         line-height: 16px;
         /* 133.333% */
         text-transform: uppercase;
+        padding-left: 11px;
+        text-align: start;
     }
 
     .funding-section h2 {
@@ -428,6 +492,7 @@
         font-weight: 700;
         line-height: 38px;
         margin-top: 10px;
+        margin-bottom: 40px;
     }
 
     .funding-section p {
@@ -435,14 +500,13 @@
         font-size: 24px;
         font-weight: 500;
         line-height: 32px;
-        margin-top: 20px;
+        margin-bottom: 40px;
     }
 
     .stats {
         flex: 1;
         display: flex;
         justify-content: space-between;
-        padding: 35px;
 
         @media (max-width: 768px) {
             flex-direction: column;
@@ -463,6 +527,7 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
+
         @media (max-width: 768px) {
             margin: 0px;
             text-align: start;
@@ -471,13 +536,19 @@
     }
 
     .number {
-        font-size: 54px;
+        font-size: 88px;
+        display: flex;
         padding: 10px;
+        align-items: center;
+        line-height: 96px;
+        font-weight: 300;
     }
 
     @media screen and (max-width: 768px) {
         .community-funding {
             flex-direction: column-reverse;
+            padding-left: 16px;
+            padding-right: 16px;
         }
 
         .funding-section,
@@ -488,7 +559,7 @@
 
     .carousel {
         position: relative;
-        width: 950px;
+        width: 1280px;
         margin: 0 auto;
         margin-top: 106px;
         max-width: 100%; // Make the carousel responsive
@@ -505,8 +576,13 @@
 
     .center-image-wrapper {
         position: relative;
-        width: 60%;
-        margin: 0 48px;
+        width: 552px;
+        height: 314px;
+
+        @media (max-width: 1118px) {
+            width: 55%;
+            height: auto;
+        }
 
         @media (max-width: 768px) {
             margin: 0 auto; // Remove margin on small screens
@@ -531,13 +607,19 @@
 
     #center-image {
         width: 100%;
-        margin: 0 15px;
+
     }
 
     #left-image,
     #right-image {
-        width: 15%;
+        width: 252px;
+        height: 144px;
         opacity: 0.7;
+
+        @media (max-width: 1118px) {
+            width: 15%;
+            height: auto;
+        }
 
         // Styles for smaller screens
         @media (max-width: 768px) {
@@ -632,10 +714,13 @@
 
     .community-spotlight-wrapper {
         display: flex;
-        justify-content: space-between;
         padding: 20px;
-        margin-top: 100px;
-        min-height: 562px;
+        max-width: 1280px;
+        min-height: 582px;
+        margin: 100px auto;
+        gap: 48px;
+        padding-right: 54px;
+        padding-left: 73px;
     }
 
     .community-spotlight {
@@ -643,25 +728,29 @@
         display: flex;
         flex-direction: column;
         padding-right: 10px;
-        
+
         /* for spacing */
     }
 
     .projects-wrapper {
         flex: 1;
         position: relative;
-        margin-left: 70px;
-        margin-right: 70px;
+        display: flex;
+        justify-content: center;
+        gap: 48px;
+
         @media (max-width: 768px) {
-            gap: 30px;
+            gap: 48px;
         }
     }
 
     .project-card {
+        background-color: #232325;
+        border-radius: 4px;
         height: fit-content;
-        position: absolute;
-        width: 205px;
+        width: 252px;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        max-height: 456px;
 
         @media (max-width: 768px) {
             width: 99%;
@@ -670,18 +759,20 @@
 
     // Styles for smaller screens
 
-    .project-card.top-left {
-        top: 0;
-        left: 0;
-    }
+    // .project-card.top-left {
+    //     top: 0;
+    //     left: 0;
+    // }
 
     .project-card.bottom-right {
-        bottom: -25px;
-        right: 0;
+        align-self: end;
     }
 
     .card-image {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         height: 144px;
+        width: 252px;
         /* adjust as per your design */
         background-color: rgb(44, 43, 43);
         /* placeholder */
@@ -722,10 +813,15 @@
     }
 
     .card-details {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: #232325;
         display: flex;
         flex-direction: column;
         text-align: start;
         padding: 15px;
+        height: fit-content;
+        border-bottom-left-radius: 4;
+        border-bottom-right-radius: 4;
     }
 
     .view-project {
@@ -739,10 +835,17 @@
         text-decoration: none;
     }
 
-    @media (max-width: 992px) {
+    @media (max-width: 1076px) {
+        .project-card.bottom-right {
+            align-self: auto;
+        }
+
         .community-spotlight-wrapper {
             flex-direction: column;
             align-items: center;
+            margin-left: 0px;
+            padding-right: 26px;
+            padding-left: 26px;
         }
 
         .community-spotlight,
@@ -760,6 +863,15 @@
             position: static;
         }
 
+        .card-image {
+            width: 100%;
+        }
+
+        .card-details {
+            gap: 16px;
+            margin-top: 10px;
+        }
+
         .project-card {
             position: static;
             margin: 20px 0;
@@ -775,32 +887,39 @@
     .bottom-cards-section .com-card .card-content {
         display: flex;
         flex-direction: column;
-        justify-content: space-between; /* Add this line */
+        justify-content: space-between;
+        /* Add this line */
         gap: 16px;
         position: relative;
         z-index: 1;
-        height: 100%; /* Add this line to make card-content full height */
+        height: 100%;
+        /* Add this line to make card-content full height */
     }
 
     .bottom-cards-section .com-card {
+        border-radius: 8px;
         padding: 36px;
         background: #232325;
         min-width: 352px;
-        height: 442px; /* You have a fixed height for the cards */
+        height: 442px;
+        /* You have a fixed height for the cards */
         max-width: 352px;
         position: relative;
-        display: flex; /* This makes sure your card content is a flex container */
-        flex-direction: column; /* Align children vertically */
-        justify-content: space-between; /* This will push the links to the bottom */
+        display: flex;
+        /* This makes sure your card content is a flex container */
+        flex-direction: column;
+        /* Align children vertically */
+        justify-content: space-between;
+        /* This will push the links to the bottom */
     }
-    
+
 
     .bottom-cards-section {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: center;
         gap: 48px;
-        padding: 104px 64px;
+        max-width: 1280px;
         margin: 0 auto;
 
         .com-card {
@@ -841,7 +960,9 @@
                 gap: 16px;
                 position: relative;
                 z-index: 1;
+
                 .card-title {
+                    margin-bottom: 0px !important;
                     color: var(--black-black-0-white, #FFF);
                     white-space: nowrap;
                     /* Desktop/H6 */
@@ -861,6 +982,7 @@
                     font-weight: 700;
                     line-height: 32px;
                     /* 133.333% */
+                    margin-top: 2px;
                 }
 
                 .card-description {
@@ -953,6 +1075,59 @@
             margin-bottom: 15px;
             /* Add some space between the image and the card content */
         }
+    }
+
+    .num-separator {
+        width: 32px;
+        height: 1px;
+        background: var(--black-black-70, #343437);
+        margin-bottom: 32px;
+        margin-top: 1px;
+    }
+
+    .stat-separator {
+        width: 32px;
+        height: 1px;
+        background: var(--black-black-70, #343437);
+        margin-bottom: 32px;
+        margin-top: 8px;
+    }
+
+    .ml-8 {
+        margin-left: 8px;
+    }
+
+    .ml-19 {
+        margin-left: 19px;
+    }
+
+    .ml-14 {
+        margin-left: 11px;
+    }
+
+    .header-div {
+        .header {
+            gap: 10px;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 35px
+        }
+    }
+
+    .spotlight-subtitle {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 38px;
+        margin-top: 10px;
+        margin-bottom: 40px;
+    }
+
+    .spotlight-description {
+        color: var(--black-black-20);
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 32px;
+        margin-bottom: 40px;
     }
 
 }

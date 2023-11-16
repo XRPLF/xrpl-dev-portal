@@ -909,12 +909,30 @@ pre code {
 
 .page-docs-index,
 .page-community {
-  #community-table table{
-    border: 1px solid #34343740;
+  .funding-text{
+    color: #232325;
   }
-  #community-table tr{
+  .stat{
+    .small-text{
+      color: #232325;
+    }
+  }
+  .project-card{
+    background-color: rgb(255, 255, 255);
+
+  }
+  .card-details {
+    background-color: rgb(255, 255, 255);
+  }
+
+  .card-image {
+    background: #E0E0E1;
+  }
+
+  #community-table tr {
     border-bottom: 1px solid #34343740;
   }
+
   .card-description {
     color: #343437 !important;
   }

@@ -1085,9 +1085,11 @@
 .page-community {
   #community-heading {
     padding-top: 25rem;
+
     @media (max-width: 768px) {
       padding-top: 31rem;
     }
+
     .hero-title {
       position: absolute;
       bottom: 0;
@@ -1131,8 +1133,8 @@
 
     .three {
       top: 145px;
-      right: 17%;
-      height: 40px;
+      right: 16%;
+      height: 67px;
     }
 
     .four {
