@@ -13,7 +13,7 @@ top_nav_grouping: Popular Pages
 ---
 # Send XRP
 
-This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP`for PHP. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
+This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP` for PHP. First, we step through the process with the [XRP Ledger Testnet](parallel-networks.html). Then, we compare that to the additional requirements for doing the equivalent in production.
 
 **Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
 
