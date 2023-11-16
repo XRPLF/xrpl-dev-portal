@@ -31,12 +31,12 @@
     <div class="d-flex flex-column-reverse align-items-center sm-align-items-start">
       <img src="../assets/img/icons/arrow-down.svg" class="bounce-arrow" alt="Down Arrow" />
       <h1 class="mb-0 main-title">
-          {% trans %}A Global Blockchain 
+          {% trans %}A Global Blockchain {% endtrans %}
           <br class="until-sm"/>
-          Community of 
+          {% trans %}Community of {% endtrans %}
           <span class="builders-wrap">Builders</span>
           <br class="until-sm" />
-          and Innovators{% endtrans %}
+        {% trans %}  and Innovators{% endtrans %}
       </h1>
       <h6 class="mb-3 eyebrow">{% trans %}XRPL Community{% endtrans %}</h6>
     </div>
@@ -44,49 +44,33 @@
 </section>
 
 <section id="community-table" class="hot-topics">
-    <h6 class="eyebrow-convo">Join the Conversation</h6>
+    <h6 class="eyebrow-convo">{% trans %}Join the Conversation{% endtrans %}</h6>
     <h4 >Hot Topics Happening Now</h4>
     <table>
         <tr>
             <td class="td-img"><img class="discord-icon" alt="discord icon"></td>
-            <td>AMA with Edge Wallet: Learn more about Edge Wallet and how they are building on the XRP Ledger.</td>
+            <td>{% trans %}AMA with Edge Wallet: Learn more about Edge Wallet and how they are building on the XRP Ledger.{% endtrans %}</td>
              <td>
                 <a href="https://discord.com/channels/886050993802985492/950893687313940582/1162480612209332345" target="_blank" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img class="twitter-icon" alt="twitter icon"></td>
-              <td>Clawback: A newly proposed feature that adds to the XRP Ledger's token asset control capabilities.</td>
+              <td>{% trans %}Clawback: A newly proposed feature that adds to the XRP Ledger's token asset control capabilities.{% endtrans %}</td>
             <td>
                 <a href="https://x.com/RippleXDev/status/1708889238471950610?s=20" target="_blank" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
         <tr>
             <td class="td-img"><img class="youtube-icon" alt="youtube icon"></td>
-              <td>APEX 2023: View keynote sessions from the annual developer summit where developers, contributors, and thought leaders come together to learn, build, and celebrate all things XRP Ledger.</td>
+              <td>{% trans %}APEX 2023: View keynote sessions from the annual developer summit where developers, contributors, and thought leaders come together to learn, build, and celebrate all things XRP Ledger.{% endtrans %}</td>
             <td>
                 <a href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZBdGc33An5Is6IFMxw3D7u" target="_blank" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
         </tr>
-        {# 
-         <tr>
-            <td class="td-img"><img class="github-icon" alt="xrpl icon"></td>
-              <td>Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.</td>
-            <td>
-                <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
-             </td>
-        </tr>
-         <tr> 
-            <td class="td-img"><img class="stackoverflow-icon" alt="xrpl icon"></td>
-              <td>Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more.</td>
-            <td>
-                <a href="YOUR_LINK_HERE" class="text-external-link"><span class="external-link-contribute"></span></a>
-             </td>
-        </tr>
-        #}
         <tr class="final-tr">
             <td class="td-img"><img class="xrpl-icon" alt="xrpl icon"></td>
-              <td>Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more.</td>
+              <td>{% trans %}Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more.{% endtrans %}</td>
             <td>
                 <a href="https://learn.xrpl.org/course/deep-dive-into-xrpl-defi/" target="_blank" class="text-external-link"><span class="external-link-contribute"></span></a>
              </td>
@@ -98,18 +82,18 @@
 <section class="xrpl-events-section">
 <div class="header-div">
     <div class="header">
-        <h6 class="events-text">XRPL Events</h6>
-        <h4 class="events-text">Check out global events hosted <br class="d-none-sm" /> by the XRPL community</h4>
+        <h6 class="events-text">{% trans %}XRPL Events{% endtrans %}</h6>
+        <h4 class="events-text">{% trans %}Check out global events hosted <br class="d-none-sm" /> by the XRPL community{% endtrans %}</h4>
     </div>
-    <p class="description">Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.</p>
+    <p class="description">{% trans %}Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.{% endtrans %}</p>
     <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" target="_blank" href="events.html">{% trans %}View All Events{% endtrans %}</a>
 </div>
     <div class="upcoming-event" id="upcoming-events-section">
-        <p class="upcoming-label">UPCOMING EVENT</p>
+        <p class="upcoming-label">{% trans %}UPCOMING EVENT{% endtrans %}</p>
         <div id="days-count" class="days-count">13</div>
-        <div class="days-word">days</div>
+        <div class="days-word">{% trans %}days{% endtrans %}</div>
         <div class="num-separator"></div>
-        <h5 id="upcoming-event-name" class="event-name">XRPL Warsaw Meetup 2023</h5>
+        <h5 id="upcoming-event-name" class="event-name">{% trans %}XRPL Warsaw Meetup 2023{% endtrans %}</h5>
         <p class="mb-2 event-details d-flex icon"> <span class="icon-location"> </span><span id="upcoming-event-date">September 08-09, 2023</span></p>
         <p class="event-location d-flex icon"> <span class="icon-date" id="upcoming-event-location"> </span>Warsaw, Poland</p>
     </div>
@@ -150,7 +134,7 @@
     <div class="stats">
         <div class="stacked-stats">
             <div class="stat">
-                <span class="small-text">funding been awarded</span>
+                <span class="small-text">{% trans %}funding been awarded{% endtrans %}</span>
                   <div id="staticImage" class="number gradient-num" >
                   <span class="surround-gradient">$</span>
                   13
@@ -161,7 +145,7 @@
 
             </div>
             <div class="stat">
-                <span class="small-text">teams awarded globally</span>
+                <span class="small-text">{% trans %}teams awarded globally{% endtrans %}</span>
                 <div class="number gradient-num-two" >120
                                   <span class="surround-gradient-two">+</span>
                 </div>
@@ -169,7 +153,7 @@
             </div>
         </div>
         <div class="stat">
-            <span class="small-text">countries represented</span>
+            <span class="small-text">{% trans %}countries represented{% endtrans %}</span>
             <div class="number gradient-num-three">28
                               <span class="surround-gradient-three">+</span>
             </div>
@@ -177,18 +161,18 @@
         </div>
     </div>
     <div class="funding-section">
-        <span class="funding-text">XRPL Developer Funding</span>
-        <h2>Funding Opportunities for Blockchain Businesses</h2>
-        <p>If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.</p>
+        <span class="funding-text">{% trans %}XRPL Developer Funding{% endtrans %}</span>
+        <h2>{% trans %}Funding Opportunities for Blockchain Businesses{% endtrans %}</h2>
+        <p>{% trans %}If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.{% endtrans %}</p>
      <a class="cd-none-sm btn btn-primary btn-arrow view-all-events-btn" target="_blank" href="developer-funding.html">{% trans %}Get Funding{% endtrans %}</a>
     </div>
 </section>
 
 <section class="community-spotlight-wrapper">
     <div class="community-spotlight">
-        <h6 class="funding-text">XRPL Community Spotlight</h6>
-        <h2 class="spotlight-subtitle">Showcase your blockchain project, application, or product</h2>
-        <p class="spotlight-description">Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.</p>
+        <h6 class="funding-text">{% trans %}XRPL Community Spotlight{% endtrans %}</h6>
+        <h2 class="spotlight-subtitle">{% trans %}Showcase your blockchain project, application, or product{% endtrans %}</h2>
+        <p class="spotlight-description">{% trans %}Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.{% endtrans %}</p>
         <a target="_blank" class="w-222 btn btn-primary btn-arrow view-all-events-btn" data-tf-popup="ssHZA7Ly" data-tf-iframe-props="title=Developer Reflections" data-tf-medium="snippet">{% trans %}Submit Your Project{% endtrans %}</a>
     </div>
     <div class="projects-wrapper">
@@ -198,8 +182,8 @@
             </div>
             <div class="card-details">
               <h6 class="project-title">Blockdaemon</h6>
-              <p class="project-description">Your go-to independent blockchain infrastructure provider, offering secure and scalable blockchain services, including wallets, nodes, staking, protocols, and integrations for developers and institutions alike.</p>
-              <a href="https://xrpl.org/blog/2023/blockdaemon.html" target="_blank" class="view-project external-link">View Project</a>
+              <p class="project-description">{% trans %}Your go-to independent blockchain infrastructure provider, offering secure and scalable blockchain services, including wallets, nodes, staking, protocols, and integrations for developers and institutions alike.{% endtrans %}</p>
+              <a href="https://xrpl.org/blog/2023/blockdaemon.html" target="_blank" class="view-project external-link">{% trans %}View Project{% endtrans %}</a>
             </div>
         </div>
         <div class="project-card bottom-right">
@@ -208,8 +192,8 @@
               </div>
             <div class="card-details">
               <h6 class="project-title">XRPCafe</h6>
-              <p class="project-description">A premier NFT marketplace dedicated to fostering mass adoption of the XRP Ledger.</p>
-              <a href="https://xrpl.org/blog/2023/xrpcafe.html" target="_blank" class="view-project external-link">View Project</a>
+              <p class="project-description">{% trans %}A premier NFT marketplace dedicated to fostering mass adoption of the XRP Ledger.{% endtrans %}</p>
+              <a href="https://xrpl.org/blog/2023/xrpcafe.html" target="_blank" class="view-project external-link">{% trans %}View Project{% endtrans %}</a>
             </div>
         </div>
     </div>
@@ -219,36 +203,36 @@
   <div class="com-card">
     <img class="top-left-img" />
     <div class="card-content">
-      <h6 class="card-title">Contribute to Consensus </h6>
-      <h6 class="card-subtitle">Run an XRP Ledger network node </h6>
-      <p class="card-description">Thank you for your interest in contributing to XRPL.org. </p>
+      <h6 class="card-title">{% trans %}Contribute to Consensus{% endtrans %} </h6>
+      <h6 class="card-subtitle">{% trans %}Run an XRP Ledger network node{% endtrans %} </h6>
+      <p class="card-description">{% trans %}Thank you for your interest in contributing to XRPL.org. {% endtrans %}</p>
       <div class="card-links">
         <a class="com-card-link" target="_blank" href="the-rippled-server.html">{% trans %}The Rippled Server{% endtrans %}</a>
-        <a class="com-card-link" href="run-rippled-as-a-validator.html" target="_blank">Join UNL </a>
-        <a class="com-card-link" target="_blank" href="install-rippled.html">Install & Configure</a>
-        <a class="com-card-link" target="_blank" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>    
+        <a class="com-card-link" href="run-rippled-as-a-validator.html" target="_blank">{% trans %}Join UNL{% endtrans %} </a>
+        <a class="com-card-link" target="_blank" href="install-rippled.html">{% trans %}Install & Configure {% endtrans %}</a>
+        <a class="com-card-link" target="_blank" href="troubleshoot-the-rippled-server.html">{% trans %}Troubleshooting{% endtrans %}</a>    
       </div>
      </div>
   </div>
   <div class="com-card">
     <img class="bottom-right-img" />
     <div class="card-content">
-      <h6 class="card-title">XRPL Careers </h6>
-      <h6 class="card-subtitle">Discover your next career opportunity in the XRPL community </h6>
-      <p class="card-description">Teams across the XRPL community are looking for talented individuals to help build their next innovation. </p>
+      <h6 class="card-title">{% trans %}XRPL Careers {% endtrans %}</h6>
+      <h6 class="card-subtitle">{% trans %}Discover your next career opportunity in the XRPL community {% endtrans %}</h6>
+      <p class="card-description">{% trans %}Teams across the XRPL community are looking for talented individuals to help build their next innovation.{% endtrans %} </p>
       <div class="card-links">
-      <a class="com-card-link" target="_blank" href="https://jobs.xrpl.org/jobs">View Open Roles</a>
+      <a class="com-card-link" target="_blank" href="https://jobs.xrpl.org/jobs">{% trans %}View Open Roles{% endtrans %}</a>
       </div>
     </div>
   </div>
   <div class="com-card">
     <img class="top-right-img" />
     <div class="card-content">
-      <h6 class="card-title">Contribute to XRPL.org </h6>
-      <h6 class="card-subtitle">A Community-Driven Resource for All Things XRPL.org </h6>
-      <p class="card-description">Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes. </p>
+      <h6 class="card-title">{% trans %}Contribute to XRPL.org{% endtrans %} </h6>
+      <h6 class="card-subtitle">{% trans %}A Community-Driven Resource for All Things XRPL.org {% endtrans %}</h6>
+      <p class="card-description">{% trans %}Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes.{% endtrans %} </p>
       <div class="card-links">
-      <a class="com-card-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">Read Contributor Guidelines </a>
+      <a class="com-card-link" target="_blank" href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">{% trans %}Read Contributor Guidelines{% endtrans %} </a>
       </div>
     </div>
   </div>
