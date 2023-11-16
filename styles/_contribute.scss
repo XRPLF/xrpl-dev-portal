@@ -57,6 +57,10 @@
         background-clip: text;
         color: transparent;
     }
+    .middle-image-two{
+        margin: 0 auto;
+        height: 52px;
+    }
 
     .gradient-num-two {
         background: linear-gradient(35deg, #EA80FF -0.3%, #80CCFF 99.7%);
@@ -74,6 +78,24 @@
 
     .surround-gradient {
         background: linear-gradient(35deg, #B480FF -0.3%, #FFAA80 99.7%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    .surround-gradient-two {
+        background: linear-gradient(35deg, #EA80FF -0.3%, #80CCFF 99.7%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    .surround-gradient-three {
+        background: linear-gradient(35deg, #84F0B6 -0.3%, #B480FF 99.7%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
@@ -148,6 +170,8 @@
 
         @media (max-width: 768px) {
             margin: 0;
+            padding: 20px;
+            margin-top: 100px !important;
         }
     }
 
@@ -464,7 +488,9 @@
         flex-wrap: wrap;
         justify-content: space-between;
         max-width: 1280px;
-        margin: 0 auto;
+        margin: 100px auto;
+        padding-right: 54px;
+        padding-left: 73px;
         margin-top: 120px;
     }
 
@@ -512,6 +538,7 @@
             flex-direction: column;
             align-items: start;
             text-align: start;
+            padding-left: 7px;
         }
     }
 
@@ -586,9 +613,7 @@
 
         @media (max-width: 768px) {
             margin: 0 auto; // Remove margin on small screens
-            position: relative;
             width: 86%;
-            right: 11px;
         }
     }
 
@@ -679,6 +704,9 @@
         flex-direction: column;
         gap: 4px;
 
+        @media (max-width: 768px) {
+            left: 7px;
+        }
         span {
             color: #FFF;
             font-family: Work Sans;
