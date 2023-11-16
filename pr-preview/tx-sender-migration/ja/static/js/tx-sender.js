@@ -417,28 +417,28 @@ const set_up_tx_sender = async function() {
   // $("#create_payment_channel button").click(on_click_create_payment_channel)
 
 
-  // 5. Send Issued Currency Handler ---------------------------------------
-  async function on_click_send_issued_currency(event) {
-    const destination_address = $("#destination_address").val()
-    const issue_amount = $("#send_issued_currency_amount").val()
-    const issue_code = $("#send_issued_currency_code").text()
-    $("#send_issued_currency .loader").show()
-    $("#send_issued_currency button").prop("disabled","disabled")
-    // Future feature: cross-currency sending with paths?
-    await submit_and_notify({
-      TransactionType: "Payment",
-      Account: sending_wallet.address,
-      Destination: destination_address,
-      Amount: {
-        "currency": issue_code,
-        "value": issue_amount,
-        "issuer": sending_wallet.address
-      }
-    })
-    $("#send_issued_currency .loader").hide()
-    $("#send_issued_currency button").prop("disabled",false)
-  }
-  $("#send_issued_currency button").click(on_click_send_issued_currency)
+  // // 5. Send Issued Currency Handler ---------------------------------------
+  // async function on_click_send_issued_currency(event) {
+  //   const destination_address = $("#destination_address").val()
+  //   const issue_amount = $("#send_issued_currency_amount").val()
+  //   const issue_code = $("#send_issued_currency_code").text()
+  //   $("#send_issued_currency .loader").show()
+  //   $("#send_issued_currency button").prop("disabled","disabled")
+  //   // Future feature: cross-currency sending with paths?
+  //   await submit_and_notify({
+  //     TransactionType: "Payment",
+  //     Account: sending_wallet.address,
+  //     Destination: destination_address,
+  //     Amount: {
+  //       "currency": issue_code,
+  //       "value": issue_amount,
+  //       "issuer": sending_wallet.address
+  //     }
+  //   })
+  //   $("#send_issued_currency .loader").hide()
+  //   $("#send_issued_currency button").prop("disabled",false)
+  // }
+  // $("#send_issued_currency button").click(on_click_send_issued_currency)
 
 //   // 6. Trust For Handler
 //   async function on_trust_for(event) {
