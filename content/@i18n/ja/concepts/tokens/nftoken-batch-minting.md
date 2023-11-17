@@ -1,5 +1,5 @@
 ---
-html: batch-minting.html
+html: nft-batch-minting.html
 parent: nft-index.html
 blurb: NFTokenオブジェクトを一括でMintする。
 labels:

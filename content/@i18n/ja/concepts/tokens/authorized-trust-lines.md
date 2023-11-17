@@ -1,6 +1,6 @@
 ---
 html: authorized-trust-lines.html
-parent: ft-index.html
+parent: tokens.html
 blurb: 認可トラストラインとは、トークンを保有できる人を制限するための設定です。
 labels:
   - トークン

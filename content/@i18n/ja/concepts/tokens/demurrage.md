@@ -1,6 +1,6 @@
 ---
 html: demurrage.html
-parent: ft-index.html
+parent: tokens.html
 blurb: (廃止) 一部の古いXRP Ledgerツールは、組み込み金利やマイナス金利を持つ通貨コードをサポートしていました。.
 status: removed
 ---

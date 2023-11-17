@@ -1,6 +1,6 @@
 ---
 html: clawing-back-tokens.html
-parent: ft-index.html
+parent: tokens.html
 blurb: 発行者は、トークンを発行する前にClawback機能を有効にすると、規制遵守の目的でトークンを取り戻すことができます。
 labels:
   - トークン

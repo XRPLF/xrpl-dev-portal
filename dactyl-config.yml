@@ -1088,32 +1088,32 @@ pages:
     -   md: concepts/tokens/fungible-tokens/stablecoins/index.md
         targets:
             - en
-            - ja
+#            - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/stablecoin-settings.md
         targets:
             - en
-            - ja
+#            - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/stablecoin-configuration.md
         targets:
             - en
-            - ja
+#            - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/stablecoin-precautions.md
         targets:
             - en
-            - ja
+#            - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/stablecoin-compliance-guidelines.md
         targets:
             - en
-            - ja
+#            - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/stablecoin-technical-details.md
         targets:
             - en
-            - ja
+#            - ja
 
 # TODO - Translate
     -   md: concepts/tokens/fungible-tokens/clawing-back-tokens.md
