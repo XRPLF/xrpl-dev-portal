@@ -1,5 +1,5 @@
 ---
-html: auctions.html
+html: running-an-nft-auction.html
 parent: nft-index.html
 blurb: You can assign another account to mint NFTs in your stead.
 labels:

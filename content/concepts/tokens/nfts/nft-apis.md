@@ -44,10 +44,7 @@ Clio servers enhance overall network performance by handling requests for inform
 
 - [nft_info](nft_info.html) - Get current status information about the specified NFT.
 - [nft_history](nft_history.html) - Get past transaction metadata for the specified NFT.
-
-<!-- 
-[nfts_by_issuer](nfts_by_issuer.html) - Get a list of all NFTs created by the specified issuer.
--->
+- [nfts_by_issuer](nfts_by_issuer.html) - Get a list of all NFTs created by the specified issuer.
 
 You can access a public Clio server by sending a request to its URL and Clio port (typically 51233). Public Clio API servers come with no SLAs nor any responsibility to be fixed on priority. If your business use case requires continual monitoring and information requests, consider setting up your own Clio server instance. See [install-clio-on-ubuntu](install-clio-on-ubuntu.html).
 

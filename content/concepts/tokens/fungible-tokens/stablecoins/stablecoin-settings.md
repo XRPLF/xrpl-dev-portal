@@ -6,7 +6,7 @@ labels:
   - XRP
   - Stablecoin
 ---
-# Stabelcoin Settings
+# Stablecoin Settings
 
 Before you mint your new stablecoin, you need to configure settings, some of which are immutable once you issue the first coin.
 

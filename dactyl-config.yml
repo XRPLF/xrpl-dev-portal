@@ -1247,20 +1247,21 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/nfts/storage.md
+    -   md: concepts/tokens/nfts/nft-payload-storage.md
         targets:
             - en
             - ja
 
-    -   md: concepts/tokens/nfts/transfers.md
+    -   md: concepts/tokens/nfts/trading-nfts.md
         targets:
             - en
 
+## TODO Translate
     -   md: concepts/tokens/nfts/transfers.ja.md
         targets:
             - ja
 
-    -   md: concepts/tokens/nfts/reserve-requirements.md
+    -   md: concepts/tokens/nfts/nft-reserve-requirements.md
         targets:
             - en
 
@@ -1276,7 +1277,7 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/nfts/authorized-minting.md
+    -   md: concepts/tokens/nfts/authorizing-another-minter.md
         targets:
             - en
 
@@ -1284,7 +1285,7 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/nfts/auctions.md
+    -   md: concepts/tokens/nfts/running-an-nft-auction.md
         targets:
             - en
 
@@ -1292,7 +1293,7 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/nfts/collections.md
+    -   md: concepts/tokens/nfts/minting-nfts-into-collections.md
         targets:
             - en
 
@@ -1300,7 +1301,7 @@ pages:
         targets:
             - ja
 
-    -   md: concepts/tokens/nfts/fixed-supply.md
+    -   md: concepts/tokens/nfts/guaranteeing-a-fixed-supply-of-nfts.md
         targets:
             - en
 
@@ -3706,6 +3707,12 @@ pages:
 
         # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
+        targets:
+            - en
+            - ja
+
+        # TODO: translate
+    -   md: references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
         targets:
             - en
             - ja

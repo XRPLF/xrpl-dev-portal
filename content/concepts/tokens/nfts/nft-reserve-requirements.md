@@ -1,5 +1,5 @@
 ---
-html: reserve-requirements.html
+html: nft-reserve-requirements.html
 parent: nft-index.html
 blurb: Understand reserve requirements for minting and holding NFTs.
 labels:

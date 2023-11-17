@@ -14,7 +14,7 @@ Stablecoins are tokens that are backed by assets outside of the XRPL. Stablecoin
 
 The mechanics of issuing a stablecoin are not complicated.
 
-1. Decide on the 3-character name for your stablecoin.
+1. Decide on the name for your stablecoin (either following the 3-character ISO standard or using a 160-bit hex string. See [Currency Codes](currency-formats.html#currency-codes)).
 2. Create a trust line between the issuing account and a consuming account establishing a maximum number of stablecoins to transfer.
 3. Send a payment of stablecoins to the consumer up to the maximum amount in the trust line.
 
@@ -112,11 +112,36 @@ For additional considerations, see:
 - [Stablecoin Issuer - Compliance Guidelines](stablecoin-compliance-guidelines.html)
 - [Issue a Fungible Token](issue-a-fungible-token.html)
 
+### Create a Trust Line
+
+Trust lines are structures in the XRP Ledger for holding tokens. Trust lines enforce the XRP Ledger's rule that you cannot cause someone else to hold a token they don't want. This precaution is necessary to enable the XRP Ledger's use case for community credit, among other benefits.
+
+Each "trust line" is a bidirectional relationship consisting of:
+
+- The identifiers for the two accounts that the trust line connects.
+- A single, shared balance, which is positive from the perspective of one account and negative from the other perspective.
+- Various settings and metadata. Each of the two accounts can control its own settings on the trust line. Each side sets a limit on the trust line.
+
+Each trust line is specific to a given currency code. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.
+
+See [Trust Lines](ft-index.html#trust-lines).
+
+### Authorized Trust Lines
+
+The Authorized Trust Lines feature enables issuers to create tokens that can only be held by accounts that the issuer specifically authorizes. This feature only applies to tokens, not XRP.
+
+To use the Authorized Trust Lines feature, enable the `Require Auth` flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
+
+See [Authorized Trust Lines](authorized-trust-lines.html).
+
+
 ### Freeze a Trust Line
 
-If an account shows suspicious activity or violates your institution's terms of use, you have the option of freezing the trust line while you resolve the issue (provided you have not set the `enableNoFreeze` tag on your issuing account).
+If you issue tokens in the XRP Ledger, you can enable the _No Freeze_ setting to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.) 
 
-See [Freeze a Trust Line](freeze-a-trust-line.html).
+If you do not enable the _No Freeze_ setting, when an account shows suspicious activity or violates your institution's terms of use, you have the option of freezing the trust line while you resolve the issue.
+
+See [Freezing Tokens](freezes.html).
 
 
 ### Global Freeze
@@ -130,7 +155,7 @@ See [Enact Global Freeze](enact-global-freeze.html)
 
 ### Clawback
 
-For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
+Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers _must_ have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 
 See [Clawback](clawback.html).
 

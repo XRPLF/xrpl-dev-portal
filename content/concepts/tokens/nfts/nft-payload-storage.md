@@ -1,5 +1,5 @@
 ---
-html: storage.html
+html: nft-payload-storage.html
 parent: nft-index.html
 blurb: Storage options for the payload of your NFT.
 labels:

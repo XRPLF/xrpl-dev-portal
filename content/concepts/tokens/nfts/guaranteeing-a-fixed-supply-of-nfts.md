@@ -1,5 +1,5 @@
 ---
-html: fixed-supply.html
+html: guaranteeing-a-fixed-supply-of-nfts.html
 parent: nft-index.html
 blurb: Use a new account to mint a fixed number of NFTs, then black hole the account.
 labels:
