@@ -2,7 +2,7 @@
 
 // Define each category's logos
 $infrastructure-logos:  "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
-$developer-tooling-logos: "Cryptum", "Evernode", "threezy", "tokenize";
+$developer-tooling-logos: "cryptum", "Evernode", "threezy", "tokenize";
 $interoperability-logos: "multichain";
 $wallet-logos:  "Crossmark", "Edge", "gem-wallet", "Xumm";
 $nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
@@ -37,7 +37,7 @@ $custody-logos: "Gatehub", "Bitgo";
   }
 }
 html.light{
-  .Cryptum{
+  .cryptum{
     content: url(../img/uses/lightmode/cryptum.jpg) !important;
     height: 58px;
     max-width: max-content;

@@ -10,7 +10,7 @@ $(document).ready(() => {
       "onthedex",
     ],
     developer_tooling: [
-      "Cryptum",
+      "cryptum",
       "Evernode",
       "threezy",
       "tokenize",
