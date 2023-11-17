@@ -76,7 +76,7 @@ COMMON_LINKS_INCLUDES = [
 ]
 def rm_common_links_includes(ftext):
     """
-    Remove (with no replacement) the includes that define common links at the 
+    Remove (with no replacement) the includes that define common links at the
     end of a file. Trim out extra whitespace (except last \n)
     """
     for s in COMMON_LINKS_INCLUDES:
@@ -95,6 +95,27 @@ def includes_to_partials(ftext):
     for m in re.finditer(SNIPPET_REGEX, ftext):
         raw_string = m.group(0)
         repl_string = '{{% partial file="/{fpath}" /%}}'.format(fpath=m.group("path"))
+        ftext2 = ftext2.replace(raw_string, repl_string)
+    return ftext2
+
+REPOLINK_REGEX = re.compile(r"\[(?P<linktext>[^\]]+)\]\(\{\{ *target\.github_forkurl *\}\}/(tree|blob)/\{\{ *target\.github_branch *\}\}/(?P<path>[^\)]+)\)")
+def repl_repo_link_vars(ftext):
+    """
+    Replace links that use {{github_forkurl}} and {{github_branch}} with the
+    custom repo-link component which pulls info from .env, since variables
+    can't be evaluated inside the href of a link.
+
+    Note, this has to be run before update_vars_syntax since it covers a
+    special case that's larger than one variable.
+    """
+    # example old syntax:
+    # 4. Add styling to your [index.css]({{target.github_forkurl}}/tree/{{target.github_branch}}/content/_code-samples/build-a-browser-wallet/js/index.css) file by following the link.
+    # example new syntax:
+    # 3. Copy the contents of {% repo-link path="content/_code-samples/build-a-browser-wallet/js/index.html" %}`index.html`{% /repo-link %} in your code.
+    ftext2 = ftext
+    for m in re.finditer(REPOLINK_REGEX, ftext):
+        raw_string = m.group(0)
+        repl_string = '{% repo-link path="'+m.group("path")+'" %}'+m.group("linktext")+'{% /repo-link %}'
         ftext2 = ftext2.replace(raw_string, repl_string)
     return ftext2
 
@@ -120,6 +141,7 @@ def main():
         ftext2 = repl_code_samples(ftext)
         ftext2 = rm_common_links_includes(ftext2)
         ftext2 = includes_to_partials(ftext2)
+        ftext2 = repl_repo_link_vars(ftext2)
         ftext2 = update_vars_syntax(ftext2)
         if ftext2 != ftext:
             #print("performing syntax conversion in", fname)
