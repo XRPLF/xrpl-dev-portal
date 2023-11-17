@@ -166,95 +166,95 @@ const set_up_tx_sender = async function() {
   //  an issuer for a fake currency to ripple through.)
   //////////////////////////////////////////////////////////////////////////////
 
-  let pp_issuer_wallet
-  let pp_sending_currency = "BAR"
-  async function set_up_for_partial_payments() {
-    while (!connection_ready) {
-      console.debug("... waiting for connection before doing partial payment setup")
-      await timeout(200)
-    }
-    console.debug("Starting partial payment setup...")
-    $("#pp_progress .progress-bar").addClass("progress-bar-animated")
-    // 1. Get a funded address to use as issuer
-    try {
-      const fund_response = await api.fundWallet()
-      pp_issuer_wallet = fund_response.wallet
-    } catch(error) {
-      console.log("Error getting issuer address for partial payments:", error)
-      return
-    }
-    $("#pp_progress .progress-bar").width("20%")
+  // let pp_issuer_wallet
+  // let pp_sending_currency = "BAR"
+  // async function set_up_for_partial_payments() {
+  //   while (!connection_ready) {
+  //     console.debug("... waiting for connection before doing partial payment setup")
+  //     await timeout(200)
+  //   }
+  //   console.debug("Starting partial payment setup...")
+  //   $("#pp_progress .progress-bar").addClass("progress-bar-animated")
+  //   // 1. Get a funded address to use as issuer
+  //   try {
+  //     const fund_response = await api.fundWallet()
+  //     pp_issuer_wallet = fund_response.wallet
+  //   } catch(error) {
+  //     console.log("Error getting issuer address for partial payments:", error)
+  //     return
+  //   }
+  //   $("#pp_progress .progress-bar").width("20%")
 
-    // 2. Set Default Ripple on issuer
-    let resp = await submit_and_notify({
-      TransactionType: "AccountSet",
-      Account: pp_issuer_wallet.address,
-      SetFlag: xrpl.AccountSetAsfFlags.asfDefaultRipple
-    }, pp_issuer_wallet, true)
-    if (resp === undefined) {
-      console.log("Couldn't set Default Ripple for partial payment issuer")
-      return
-    }
-    $("#pp_progress .progress-bar").width("40%")
+  //   // 2. Set Default Ripple on issuer
+  //   let resp = await submit_and_notify({
+  //     TransactionType: "AccountSet",
+  //     Account: pp_issuer_wallet.address,
+  //     SetFlag: xrpl.AccountSetAsfFlags.asfDefaultRipple
+  //   }, pp_issuer_wallet, true)
+  //   if (resp === undefined) {
+  //     console.log("Couldn't set Default Ripple for partial payment issuer")
+  //     return
+  //   }
+  //   $("#pp_progress .progress-bar").width("40%")
 
-    // 3. Make a trust line from sending address to issuer
-    resp = await submit_and_notify({
-      TransactionType: "TrustSet",
-      Account: sending_wallet.address,
-      LimitAmount: {
-        currency: pp_sending_currency,
-        value: "1000000000", // arbitrarily, 1 billion fake currency
-        issuer: pp_issuer_wallet.address
-      }
-    }, sending_wallet, true)
-    if (resp === undefined) {
-      console.log("Error making trust line to partial payment issuer")
-      return
-    }
-    $("#pp_progress .progress-bar").width("60%")
+  //   // 3. Make a trust line from sending address to issuer
+  //   resp = await submit_and_notify({
+  //     TransactionType: "TrustSet",
+  //     Account: sending_wallet.address,
+  //     LimitAmount: {
+  //       currency: pp_sending_currency,
+  //       value: "1000000000", // arbitrarily, 1 billion fake currency
+  //       issuer: pp_issuer_wallet.address
+  //     }
+  //   }, sending_wallet, true)
+  //   if (resp === undefined) {
+  //     console.log("Error making trust line to partial payment issuer")
+  //     return
+  //   }
+  //   $("#pp_progress .progress-bar").width("60%")
 
-    // 4. Issue fake currency to main sending address
-    resp = await submit_and_notify({
-      TransactionType: "Payment",
-      Account: pp_issuer_wallet.address,
-      Destination: sending_wallet.address,
-      Amount: {
-        currency: pp_sending_currency,
-        value: "1000000000",
-        issuer: pp_issuer_wallet.address
-      }
-    }, pp_issuer_wallet, true)
-    if (resp === undefined) {
-      console.log("Error sending fake currency from partial payment issuer")
-      return
-    }
-    $("#pp_progress .progress-bar").width("80%")
+  //   // 4. Issue fake currency to main sending address
+  //   resp = await submit_and_notify({
+  //     TransactionType: "Payment",
+  //     Account: pp_issuer_wallet.address,
+  //     Destination: sending_wallet.address,
+  //     Amount: {
+  //       currency: pp_sending_currency,
+  //       value: "1000000000",
+  //       issuer: pp_issuer_wallet.address
+  //     }
+  //   }, pp_issuer_wallet, true)
+  //   if (resp === undefined) {
+  //     console.log("Error sending fake currency from partial payment issuer")
+  //     return
+  //   }
+  //   $("#pp_progress .progress-bar").width("80%")
 
-    // 5. Place offer to buy issued currency for XRP
-    // When sending the partial payment, the sender consumes their own offer (!)
-    // so they end up paying themselves issued currency then delivering XRP.
-    resp = await submit_and_notify({
-      TransactionType: "OfferCreate",
-      Account: sending_wallet.address,
-      TakerGets: "1000000000000000", // 1 billion XRP
-      TakerPays: {
-        currency: pp_sending_currency,
-        value: "1000000000",
-        issuer: pp_issuer_wallet.address
-      }
-    }, sending_wallet, true)
-    if (resp === undefined) {
-      console.log("Error placing order to enable partial payments")
-      return
-    }
-    $("#pp_progress .progress-bar").width("100%").removeClass("progress-bar-animated")
-    $("#pp_progress").hide()
+  //   // 5. Place offer to buy issued currency for XRP
+  //   // When sending the partial payment, the sender consumes their own offer (!)
+  //   // so they end up paying themselves issued currency then delivering XRP.
+  //   resp = await submit_and_notify({
+  //     TransactionType: "OfferCreate",
+  //     Account: sending_wallet.address,
+  //     TakerGets: "1000000000000000", // 1 billion XRP
+  //     TakerPays: {
+  //       currency: pp_sending_currency,
+  //       value: "1000000000",
+  //       issuer: pp_issuer_wallet.address
+  //     }
+  //   }, sending_wallet, true)
+  //   if (resp === undefined) {
+  //     console.log("Error placing order to enable partial payments")
+  //     return
+  //   }
+  //   $("#pp_progress .progress-bar").width("100%").removeClass("progress-bar-animated")
+  //   $("#pp_progress").hide()
 
-    // Done. Enable "Send Partial Payment" button
-    console.log("Done getting ready to send partial payments.")
-    $("#send_partial_payment button").prop("disabled",false)
-    $("#send_partial_payment button").attr("title", "")
-  }
+  //   // Done. Enable "Send Partial Payment" button
+  //   console.log("Done getting ready to send partial payments.")
+  //   $("#send_partial_payment button").prop("disabled",false)
+  //   $("#send_partial_payment button").attr("title", "")
+  // }
 
   //////////////////////////////////////////////////////////////////////////////
   // Button/UI Handlers
