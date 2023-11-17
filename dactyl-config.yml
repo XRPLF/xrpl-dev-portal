@@ -4946,7 +4946,7 @@ pages:
         targets:
             - ja
     -   name: XRPL Brand Kit
-        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Brand_Kit.zip
+        html: https://xrpl.org/assets/XRPL_Brand_Kit.zip
         parent: resources.html
         blurb: Review guidelines for using XRPL design assets.
         top_nav_grouping: Development
@@ -4954,7 +4954,7 @@ pages:
             - en
 
     -   name: XRPLブランドキット
-        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Brand_Kit.zip
+        html: https://xrpl.org/assets/XRPL_Brand_Kit.zip
         parent: resources.html
         blurb: XRPLのデザインアセットのガイドラインを確認しましょう。
         top_nav_grouping: 開発
