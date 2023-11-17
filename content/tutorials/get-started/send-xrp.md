@@ -32,7 +32,6 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 
 
 ## Send a Payment on the Test Net
-{% set n = cycler(* range(1,99)) %}
 
 ### 1. Get Credentials
 

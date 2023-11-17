@@ -44,7 +44,6 @@ composer require hardcastle/xrpl_php
 
 
 ## Start Building
-{% set n = cycler(* range(1,99)) %}
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](accounts.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](tokens.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
