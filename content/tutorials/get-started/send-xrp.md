@@ -34,7 +34,7 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 ## Send a Payment on the Test Net
 {% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Get Credentials
+### 1. Get Credentials
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. The address and secret key look like this:
 
@@ -65,7 +65,7 @@ The secret key shown here is for example only. For development purposes, you can
 When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
-### {{n.next()}}. Connect to a Testnet Server
+### 2. Connect to a Testnet Server
 
 First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to [automatically fill in some required fields of a transaction](transaction-common-fields.html#auto-fillable-fields). You also must be connected to the network to submit transactions to it.
 
@@ -96,7 +96,7 @@ For this tutorial, click the following button to connect:
 {% include '_snippets/interactive-tutorials/connect-step.md' %}
 
 
-### {{n.next()}}. Prepare Transaction
+### 3. Prepare Transaction
 
 Typically, we create XRP Ledger transactions as objects in the JSON [transaction format](transaction-formats.html). The following example shows a minimal Payment specification:
 
@@ -164,7 +164,7 @@ _Java_
 {{ end_step() }}
 
 
-### {{n.next()}}. Sign the Transaction Instructions
+### 4. Sign the Transaction Instructions
 
 Signing a transaction uses your credentials to authorize the transaction on your behalf. The input to this step is a completed set of transaction instructions (usually JSON), and the output is a binary blob containing the instructions and a signature from the sender.
 
@@ -258,7 +258,7 @@ example transaction</button>
 {{ end_step() }}
 
 
-### {{n.next()}}. Wait for Validation
+### 5. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
@@ -295,7 +295,7 @@ _PHP_
 {{ end_step() }}
 
 
-### {{n.next()}}. Check Transaction Status
+### 6. Check Transaction Status
 
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.
 

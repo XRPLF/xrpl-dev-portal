@@ -55,7 +55,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 
-### {{n.next()}}. Connect to the XRP Ledger
+### 1. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `XRPL_PHP`, you can use the [`JsonRpcClient`](hhttps://alexanderbuzz.github.io/xrpl-php-docs/client.html):
 
@@ -94,7 +94,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
         const MAINNET_JSON_RPC_URL = "https://s2.ripple.com:51234/";
         $client = new JsonRpcClient("MAINNET_JSON_RPC_URL");
 
-### {{n.next()}}. Get account
+### 2. Get account
 
 To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](addresses.html) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](secure-signing.html).
 
@@ -158,7 +158,7 @@ $wallet = Wallet::generate();
 $fundWalletResponse = fundWallet($client, $wallet);
 ```
 
-### {{n.next()}}. Query the XRP Ledger
+### 3. Query the XRP Ledger
 
 You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
 
@@ -196,7 +196,7 @@ $accountInfoResponse = $client->syncRequest(($accountInfoRequest));
 print_r($accountInfoResponse);
 ```
 
-### {{n.next()}}. Starting the script
+### 4. Starting the script
 
 Now, we have a simple application that:
 
