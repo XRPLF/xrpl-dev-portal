@@ -1,7 +1,7 @@
 ---
 html: robustly-monitoring-for-payments.html
 parent: payment-types.html
-blurb: Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger.
+blurb: Recommendations for monitoring incoming payments for a variety of possible irregularities.
 labels:
   - Tokens
 ---
@@ -13,9 +13,9 @@ To robustly check for incoming payments, issuers should do the following:
 * Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.
 * Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code `tesSUCCESS` can change non-XRP balances. Only transactions from a validated ledger are final.
 * Look out for [Partial Payments](partial-payments.html). Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.
-    * Check the transaction for a [`delivered_amount` field](partial-payments.html#the-delivered_amount-field). If present, that field indicates how much money *actually* got delivered to the `Destination` address.
+    * Check the transaction for a [`delivered_amount` field](partial-payments.html#the-delivered_amount-field). If present, that field indicates how much money _actually_ got delivered to the `Destination` address.
     * In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
-* Some transactions change your balances without being payments directly to or from one of your addresses. For example, if ACME sets a nonzero transfer fee, then ACME's issuing address's outstanding obligations decrease each time Bob and Charlie exchange ACME's tokens.
+* Some transactions change your balances without being payments directly to or from one of your addresses.
 
 To make things simpler for your customers, we recommend accepting payments to both your operational address and your issuing addresses.
 
