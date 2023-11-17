@@ -699,6 +699,8 @@ pre code {
   "sustainability",
   "cbdc",
   "custody",
+  "other",
+  "carbon_markets",
   "defi" {
     ##{$usecase} {
       content: url("../img/icons/usecases/lightmode/ic_#{$usecase}.png");
@@ -713,7 +715,9 @@ pre code {
     background: #D2B2FF;
     color: #350080;
   }
-
+  .section-text-title {
+    color: #000;
+  }
   @each $company,$type in (
     'bitgo': 'svg',
     'sologenic-nft': 'svg',
@@ -731,8 +735,9 @@ pre code {
     'xrpscan': 'svg',
     'ripples-on-demand-liquidity': 'svg',
     'xumm-wallet': 'svg',
-    'sologenic-dex': 'svg'
-  )
+    'sologenic-dex': 'svg',
+    'Crossmark': 'png'
+  ) 
   {
     #use_case_companies_list {
       ##{$company} {

@@ -43,6 +43,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         
 ## Authorize an Account to Create NFTs
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/miVhXbph2ls?si=U1mRxlzul3k30R6O" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 To authorize another account to create NFTs for your account (for example, allow the operational account to mint NFTs for the standby account):
 
 1. Copy the **Operational Account** value.

@@ -62,6 +62,9 @@ The voting configuration of a `rippled` server has no impact on it becoming amen
 
 You can unblock amendment blocked servers by upgrading to the newest version of `rippled`.
 
+### Amendment Blocked Clio Servers
+
+The Clio server can become amendment blocked if it encounters an unknown field type while loading ledger data. This occurs if the field is newer than the `libxrpl` dependency that was used when building Clio. To unblock your Clio server, upgrade to a newer Clio release that was built with a compatible `libxrpl`.
 
 ## Retiring Amendments
 

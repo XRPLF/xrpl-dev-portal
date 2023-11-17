@@ -1,11 +1,76 @@
 /* Use Cases ---------------------------------------------------------------- */
+
+// Define each category's logos
+$infrastructure-logos: "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
+$developer-tooling-logos: "blockforce", "Evernode", "threezy", "tokenize";
+$interoperability-logos: "Allbridge", "futureverse", "multichain";
+$wallet-logos:  "Crossmark", "Edge", "gem-wallet", "Xumm";
+$nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
+$exchanges-logos: "sologenic_dex", "XPMarket";
+$gaming-logos: "Forte", "Futureverse", "ledger-city", "onXRP", "styngr";
+$security-logos: "Anchain";
+$payments-logos: "ripple", "SuperMojo";
+$cbdc-logos: "ripple";
+$carbon-markets-logos: "carbonland-trust", "Rootmaker";
+$custody-logos: "Gatehub", "Bitgo";
+
+// Create a mixin to handle the common logic
+@mixin create-logo-classes($logo-list) {
+  @each $logo in $logo-list {
+    .#{$logo} {
+      content: url(../img/uses/modalLogos/#{$logo}.png);
+    }
+
+    html.light {
+      .#{$logo} {
+        content: url(../img/uses/lightmode/#{$logo}.png);
+      }
+    }
+  }
+}
+
+// Use the mixin for each category
+@include create-logo-classes($infrastructure-logos);
+@include create-logo-classes($developer-tooling-logos);
+@include create-logo-classes($interoperability-logos);
+@include create-logo-classes($wallet-logos);
+@include create-logo-classes($nfts-logos);
+@include create-logo-classes($exchanges-logos);
+@include create-logo-classes($gaming-logos);
+@include create-logo-classes($security-logos);
+@include create-logo-classes($payments-logos);
+@include create-logo-classes($cbdc-logos);
+@include create-logo-classes($carbon-markets-logos);
+@include create-logo-classes($custody-logos);
+
+.arrow-button.left-arrow img {
+  content: url(../img/uses/left-arrow.svg);
+}
+
+.arrow-button.right-arrow img {
+  content: url(../img/uses/right-arrow.svg);
+}
+
+
+.html.light {
+  .arrow-button.left-arrow img {
+    content: url(../img/uses/left-arrow-light.svg);
+  }
+
+  .arrow-button.right-arrow img {
+    content: url(../img/uses/right-arrow-light.svg);
+  }
+}
+
 .related-tasks-links a {
   color: $gray-600;
   text-decoration: none;
 }
+
 .related-tasks-links a:hover {
   color: $black;
 }
+
 .use-case-external-link {
   border: 1px solid $gray-300;
 }
@@ -21,13 +86,418 @@
   color: #eae7e6;
   font-size: 5.16em;
   font-weight: 400;
-  font-family: 'Space Mono', sans-serif;
+  font-family: "Space Mono", sans-serif;
 }
 
 .use-case-step-length {
   float: right;
   color: #888;
   font-size: 1rem;
+}
+
+.arrows-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  @media only screen and (max-width: 768px) {
+    top: 30px;
+  }
+}
+
+.arrow-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.arrow-button img {
+  width: 40px;
+  height: 40px;
+}
+
+.left-arrow {
+  margin-left: 40px;
+  @media only screen and (max-width: 768px) {
+    margin-left: 0px;
+  }
+}
+
+.right-arrow {
+  margin-right: 40px;
+  @media only screen and (max-width: 768px) {
+    margin-right: 0px;
+  }
+}
+
+.modal-uses {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-uses {
+  position: relative;
+  /* Add position: relative to modal-content-uses */
+  background-color: #232325;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  width: 60% !important;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+.modal-content-uses::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      #b480ff -0.32%,
+      #5f00e6 32.7%,
+      #1aa4ff 61.53%,
+      #19ff83 100.32%,
+      #19ff83 100.32%);
+}
+
+.content-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.section-image {
+  display: block;
+}
+
+.section-text-title {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.section-text-description {
+  max-width: 320px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #c1c1c2;
+}
+
+.apps-built {
+  position: relative;
+  top: 17px;
+  left: 50px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #e0e0e1;
+}
+
+.numbers-animation {
+  width: 218px;
+  height: 96px;
+}
+
+.arrow-animation {
+  position: relative;
+  right: 23px;
+  top: -11px;
+  width: 60px !important;
+}
+
+.explore-projects {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7919ff;
+  position: relative;
+  top: -9px;
+  right: 27px;
+}
+
+.section-separator {
+  width: 50%;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.threezy-logo {
+  margin: 4px;
+  max-height: 38px;
+}
+
+.blockforce-logo {
+  margin: 0px !important;
+  max-height: 45px !important;
+}
+
+.Evernode-logo {
+  margin-right: 39px;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 8px;
+  justify-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.top-row,
+.bottom-row {
+  display: flex;
+  justify-content: center;
+  @media only screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
+}
+
+.logo-item {
+  max-height: 30px;
+  max-width: 130px;
+  margin: 10px 11px;
+}
+
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.use-case-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1; // Maintain aspect ratio
+  border: 1px solid #343437;
+  border-radius: 50%;
+  margin-bottom: 30px;
+  cursor: pointer;
+
+  // Media query for medium screens
+  @include media-breakpoint-up(md) {
+    aspect-ratio: 1 / 1; // Maintain aspect ratio
+    min-width: 200px !important; // Set a minimum width
+    min-height: 200px !important; // Set a minimum height
+  }
+
+  // Media query for large screens
+  @include media-breakpoint-up(lg) {
+    aspect-ratio: 1 / 1; // Maintain aspect ratio
+    min-width: 250px !important; // Set a minimum width
+    min-height: 250px !important; // Set a minimum height
+  }
+}
+
+.use-case-circle:hover {
+  border-color: #838386;
+
+}
+
+.circle-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+  /* Adjust the space between the elements */
+}
+
+.circle-img {
+  width: 40px;
+  height: 40px;
+}
+
+.circle-text {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+  font-size: 16px;
+  margin-bottom: 0px;
+}
+
+.join-xrpl-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.colorful-join-text-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 5%;
+  /* Percentage-based padding to make it responsive */
+  box-sizing: border-box;
+}
+
+@include media-breakpoint-up(lg) {
+  .colorful-join-text-wrapper {
+    padding: 0 4%;
+    /* Percentage-based padding to make it responsive */
+  }
+}
+
+.colorful-join-text {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 38px;
+  background: linear-gradient(90deg,
+      #feff01 0%,
+      #ff2d9a 30.82%,
+      #e24cff 64.01%,
+      #9a52ff 100%);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+#numbersAnimation {
+  display: block;
+}
+
+#numbersAnimationLight {
+  display: none;
+}
+
+html.light {
+  .section-separator {
+    background: #C1C1C2;
+  }
+
+  .section-text-description {
+    color: #343437;
+  }
+
+  .modal-content-uses {
+    background: #ffffff;
+  }
+
+  #numbersAnimation {
+    display: none;
+  }
+
+  #numbersAnimationLight {
+    display: block;
+  }
+
+  .apps-built {
+    position: relative;
+    top: 17px;
+    left: 50px;
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+    color: #232325;
+  }
+
+  .colorful-join-text {
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: "Work Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+    background: linear-gradient(90deg,
+        #b480ff -0.32%,
+        #5f00e6 32.7%,
+        #1aa4ff 61.53%,
+        #19ff83 100.32%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @include media-breakpoint-up(lg) {
+    .colorful-join-text {
+      width: 750px;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .colorful-join-text {
+    width: 750px;
+  }
+}
+
+.pill-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.69087px 29.527px;
+  width: 73.05px;
+  height: 37.38px;
+  /* Blue-Purple/Blue-Purple 50 */
+  background: #7919ff;
+  /* Blue-Purple/Blue-Purple 60 */
+  border: 3.69087px solid #5f00e5;
+  border-radius: 184.543px;
+}
+
+.pill-number {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22.1452px;
+  color: #f0e5ff;
 }
 
 .use-case-steps h2 {
@@ -37,6 +507,7 @@
   line-height: 32px;
   font-weight: 700;
 }
+
 .use-case-steps h2 a {
   text-decoration: none;
 }
@@ -49,10 +520,12 @@
   font-size: 2.4em;
   padding-bottom: 10px;
 }
+
 .use-case-steps h2:before {
   margin-top: -30px;
   height: 0;
 }
+
 .use-case-steps h2:first-of-type {
   margin-top: -30px;
 }
@@ -61,15 +534,18 @@
   list-style-type: none;
   padding-left: 0;
 }
+
 .related-tasks-links ul li {
   margin: 0px;
   padding-top: 2px;
 }
+
 .related-tasks-links a:hover::after {
-  padding-left: .5em;
+  padding-left: 0.5em;
 }
+
 .related-tasks-links a::after {
   content: " ➝";
   padding-left: 0;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }

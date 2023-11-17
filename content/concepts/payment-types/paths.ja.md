@@ -1,14 +1,19 @@
 ---
 html: paths.html
+<<<<<<<< HEAD:content/concepts/payment-types/paths.ja.md
 parent: payment-types.html
 blurb: 発行済み通貨の支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
+========
+parent: tokens.html
+blurb: トークンによる支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
+>>>>>>>> 82da0e53a8d6cdf2b94a80594541d868b4d03b94:content/@i18n/ja/concepts/tokens/paths.md
 labels:
   - 支払い
   - 複数通貨間
 ---
 # パス
 
-XRP Ledgerでは、[発行済み通貨](tokens.html)の支払いが送金元から受取人に届くまでにたどる中間ステップの道筋をパスによって定義します。パスは、XRP Ledgerの[分散型取引所](decentralized-exchange.html)のオーダーを介して送金元と受取人を結び付けることで、[複数通貨間の支払い](cross-currency-payments.html)を可能にします。また、負債を相殺するような複雑な決済もパスにより可能になります。
+XRP Ledgerでは、[トークン](tokens.html)の支払いが送金元から受取人に届くまでにたどる中間ステップの道筋をパスによって定義します。パスは、XRP Ledgerの[分散型取引所](decentralized-exchange.html)のオーダーを介して送金元と受取人を結び付けることで、[複数通貨間の支払い](cross-currency-payments.html)を可能にします。また、負債を相殺するような複雑な決済もパスにより可能になります。
 
 XRP Ledgerでは1つのPaymentトランザクションは複数のパスを使用でき、複数のソースの流動性を組み合わせて必要な額を送金することができます。そのため、トランザクションには使用可能なパスをまとめた _パスセット_ が含まれます。パスセットの中のパスでは開始時と終了時には同一通貨が使用される必要があります。
 

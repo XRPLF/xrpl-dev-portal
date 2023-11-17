@@ -34,6 +34,14 @@ The AMM also charges a percentage trading fee on top of the exchange rate.
 
 The XRP Ledger's implements a _geometric mean_ AMM with a weight parameter of 0.5, so it functions like a _constant product_ market maker. For a detailed explanation of the _constant product_ AMM formula and the economics of AMMs in general, see [Kris Machowski's Introduction to Automated Market Makers](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/).
 
+### Restrictions on Assets
+
+To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
+
+- The asset must not be an LP Token from another AMM.
+- If the asset is a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
+- If the [Clawback amendment][] :not_enabled: is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
+
 
 ## LP Tokens
 <!-- TODO: add diagrams showcasing flow of funds -->
@@ -43,7 +51,7 @@ For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchan
 
 Anyone can deposit assets to an existing AMM. When they do, they receive new LP Tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP Tokens they hold compared to the total number of LP Tokens outstanding.
 
-LP Tokens are like other tokens in the XRP Ledger, so you can use them in many [types of payments](payment-types.html), trade them in the decentralized exchange, or even deposit them as assets for new AMMs. (To receive LP Tokens as payment, you must set up a [trust line](trust-lines-and-issuing.html) with a nonzero limit with the AMM Account as the issuer.) However, you can _only_ send LP Tokens directly to the AMM (redeeming them) using the [AMMWithdraw][] transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit][] transaction type.
+LP Tokens are like other tokens in the XRP Ledger, so you can use them in many [types of payments](payment-types.html) or trade them in the decentralized exchange. (To receive LP Tokens as payment, you must set up a [trust line](trust-lines-and-issuing.html) with a non-zero limit with the AMM Account as the issuer.) However, you can _only_ send LP Tokens directly to the AMM (redeeming them) using the [AMMWithdraw][] transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit][] transaction type.
 
 The AMM is designed so that an AMM's asset pool is empty if and only if the AMM has no outstanding LP Tokens. This situation can only occur as the result of an [AMMWithdraw][] transaction; when it does, the AMM is automatically deleted.
 
