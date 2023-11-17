@@ -1899,25 +1899,25 @@ pages:
         targets:
             - en
 
-    - name: PHP
-      html: php.html
-      parent: tutorials.html
-      top_nav_grouping: カテゴリ
-      template: pagetype-category.html.jinja
-      blurb: PHPでのXRPLチュートリアルです。
-      targets:
-          - ja
+    -   name: PHP
+        html: php.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: PHPでのXRPLチュートリアルです。
+        targets:
+            - ja
 
     -   md: tutorials/get-started/get-started-using-php.md
         targets:
-            - en
+           - en
 
     # TODO: translate
-    - md: tutorials/get-started/get-started-using-php.md
-      top_nav_grouping: 始めましょう
-      untranslated_warning: true
-      targets:
-          - ja
+    -   md: tutorials/get-started/get-started-using-php.md
+        top_nav_grouping: 始めましょう
+        untranslated_warning: true
+        targets:
+           - ja
 
     # HTTP / Websocket Tutorials ---------------------------------------------------
 
