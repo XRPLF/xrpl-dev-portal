@@ -130,30 +130,6 @@ function timeout(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// TODO: Migrate this function
-// async function on_click_send_partial_payment(event) {
-//     const destination_address = $("#destination_address").val()
-//     $("#send_partial_payment .loader").show()
-//     $("#send_partial_payment button").prop("disabled","disabled")
-
-//     await submit_and_notify({
-//       TransactionType: "Payment",
-//       Account: sending_wallet.address,
-//       Destination: destination_address,
-//       Amount: "1000000000000000", // 1 billion XRP
-//       SendMax: {
-//         value: (Math.random()*.01).toPrecision(15), // random very small amount
-//         currency: ppCurrencyCode,
-//         issuer: pp_issuer_wallet.address
-//       },
-//       Flags: xrpl.PaymentFlags.tfPartialPayment
-//     })
-//     $("#send_partial_payment .loader").hide()
-//     $("#send_partial_payment button").prop("disabled",false)
-//   }
-//   $("#send_partial_payment button").click(on_click_send_partial_payment)
-
-
 function TransactionButton({
     api,
     setBalance,
@@ -163,6 +139,7 @@ function TransactionButton({
     ids,
     content,
     inputSettings,
+    loadingBar
 }: {
     api: Client,
     setBalance: React.Dispatch<React.SetStateAction<number>>,
@@ -178,13 +155,20 @@ function TransactionButton({
         buttonText: string,
         units: string, // Displays after the input number
         longerDescription: React.JSX.Element // JSX allows for embedding links within the longer description
+        buttonTitle?: string // Only used while loading bar is activated
     },
-    inputSettings: {
+    inputSettings?: {
         defaultValue: number, // Should NOT be a dynamic number
         setInputValue: React.Dispatch<React.SetStateAction<number>>, 
         min: number,
         max: number,
         expectInt: boolean, // Otherwise expects float - ex. For issued currency amounts.
+    },
+    loadingBar?: {
+        id: string,
+        widthPercent: number,
+        description: string,
+        defaultOn: boolean,
     }
 }) {
     const { translate } = useTranslate()
@@ -194,6 +178,19 @@ function TransactionButton({
     return (
     <div>
         <div className="form-group" id={ids.formId}>
+            {/* Optional loading bar - Used for partial payments as an example - TODO: Maybe split into own component? */}
+            {loadingBar?.id && <div className="progress mb-1" id={loadingBar?.id ?? ""}>
+                <div className={
+                    clsx("progress-bar progress-bar-striped w-0", 
+                        (loadingBar?.widthPercent < 100 && loadingBar?.widthPercent > 0) && "progress-bar-animated")}
+                    style={{width: (Math.min(loadingBar?.widthPercent + (loadingBar?.defaultOn ? 1 : 0), 100)).toString() + "%",
+                    display: (loadingBar?.widthPercent >= 100) ? 'none' : ''}}>
+                        &nbsp;
+                </div>
+                <small className="justify-content-center d-flex position-absolute w-100">
+                    {translate(loadingBar?.description)}
+                </small>
+            </div>}
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
                     <span className="input-group-text loader" style={{display: waitingForTransaction ? '' : 'none'}}>
@@ -201,26 +198,36 @@ function TransactionButton({
                     </span>
                 </div>
                 <button className={clsx("btn btn-primary form-control needs-connection", 
-                    ((!canSendTransaction(connectionReady, sendingWallet?.address) || waitingForTransaction) && "disabled"))} 
-                    type="button" id={ids.buttonId} disabled={(!canSendTransaction(connectionReady, sendingWallet?.address) || waitingForTransaction)}
+                    ((!canSendTransaction(connectionReady, sendingWallet?.address) 
+                        || waitingForTransaction 
+                        || (loadingBar?.widthPercent && loadingBar.widthPercent < 100)) && "disabled"))} 
+                    type="button" id={ids.buttonId} 
+                    disabled={(!canSendTransaction(connectionReady, sendingWallet?.address) 
+                        || waitingForTransaction
+                        || (loadingBar?.widthPercent && loadingBar.widthPercent < 100))}
                     onClick={async () => {
                         setWaitingForTransaction(true)
                         await submit_and_notify(api, sendingWallet!, setBalance, transaction)
                         setWaitingForTransaction(false)
                     }}
-                    >
-                        {translate(content.buttonText)}
+                    title={(loadingBar && (loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100)) ? translate(content.buttonTitle) : ""}
+                >
+                    {translate(content.buttonText)}
                 </button>
-                <input id={ids.inputId} className="form-control" type="number" 
-                    aria-describedby={ids.inputId + "_help"} defaultValue={inputSettings.defaultValue} min={1} max={inputSettings.max}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
-                        inputSettings.setInputValue(inputSettings.expectInt ? parseInt(e.target.value) : parseFloat(e.target.value))
-                } />
-                <div className="input-group-append">
-                    <span className="input-group-text" id={ids.formId + "_help"}>
-                        {translate(content.units)}
-                    </span>
-                </div>
+                {/* If there are no input settings, we don't need the form, or the units */}
+                {inputSettings &&
+                    <input id={ids.inputId} className="form-control" type="number" 
+                        aria-describedby={ids.inputId + "_help"} defaultValue={inputSettings?.defaultValue} min={1} max={inputSettings?.max}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
+                            inputSettings?.setInputValue(inputSettings?.expectInt ? parseInt(e.target.value) : parseFloat(e.target.value))
+                    } />}
+
+                {inputSettings && <div className="input-group-append">
+                        <span className="input-group-text" id={ids.formId + "_help"}>
+                            {translate(content.units)}
+                        </span>
+                    </div>
+                }
                 {/* Future feature: Optional custom destination tag */}
             </div>
             <small className="form-text text-muted">
@@ -315,6 +322,7 @@ async function onInitClick(
     setIsInitEnabled: React.Dispatch<React.SetStateAction<boolean>>, 
     setConnectionReady: React.Dispatch<React.SetStateAction<boolean>>,
     setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>,
+    ppCurrencyCode: string,
     setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
     ): Promise<void> {
     
@@ -350,7 +358,7 @@ async function onInitClick(
         setBalance,
         setPpIssuerWallet, 
         setPpWidthPercent, 
-        "BAR",  
+        ppCurrencyCode,  
       )  
     } catch(error) {
       console.error(error)
@@ -380,6 +388,8 @@ export default function TxSender() {
     // Partial Payment variables
     const [ppWidthPercent, setPpWidthPercent] = useState(0)
     const [ppIssuerWallet, setPpIssuerWallet] = useState<Wallet | undefined>(undefined)
+    const ppCurrencyCode = "BAR"
+    
 
     // Payment button variables
     const defaultDropsToSend = 100000
@@ -428,6 +438,7 @@ export default function TxSender() {
                                         setIsInitEnabled, 
                                         setConnectionReady,
                                         setPpIssuerWallet,
+                                        ppCurrencyCode,
                                         setPpWidthPercent,)
                                 }}
                                 disabled={!isInitEnabled}
@@ -494,41 +505,47 @@ export default function TxSender() {
                                 expectInt: true,
                             }}
                         />
-                        {/* TODO: Migrate partial payments (had a loading bar, so left for last) */}
-                        <div className="form-group" id="send_partial_payment">
-                            <div className="progress mb-1" id="pp_progress">
-                                <div className={
-                                    clsx("progress-bar progress-bar-striped w-0", 
-                                        (ppWidthPercent < 100 && ppWidthPercent > 0) && "progress-bar-animated")}
-                                    style={{width: (Math.min(ppWidthPercent + 1, 100)).toString() + "%",
-                                    display: (ppWidthPercent >= 100) ? 'none' : ''}}>
-                                        &nbsp;
-                                </div>
-                                <small className="justify-content-center d-flex position-absolute w-100">
-                                    {translate("(Getting ready to send partial payments)")}
-                                </small>
-                            </div>
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text loader" style={{display: 'none'}}>
-                                        <img className="throbber" alt="(loading)" src="/img/xrp-loader-96.png" />
-                                    </span>
-                                </div>
-                                <button className="btn btn-primary form-control" 
-                                    // TODO: Keep this "disabled" logic custom when using the Component!
-                                    type="button" id="send_partial_payment_btn" disabled={ppWidthPercent < 100} 
-                                    // TODO: Keep this unique element when using the Component!
-                                    title={(ppWidthPercent > 0 && ppWidthPercent < 100) ? translate("(Please wait for partial payments setup to finish)") : ""}>
-                                        {translate("Send Partial Payment")}
-                                </button>
-                            </div>
-                            <small className="form-text text-muted">
-                                {translate("Deliver a small amount of XRP with a large ")}
+                        {/* Partial Payments */}
+                        <TransactionButton 
+                            api={api!}
+                            setBalance={setBalance}
+                            connectionReady={connectionReady}
+                            sendingWallet={sendingWallet}
+                            transaction={
+                            {
+                                TransactionType: "Payment",
+                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                Account: sendingWallet?.address,
+                                Destination: destinationAddress,
+                                Amount: "1000000000000000", // 1 billion XRP
+                                SendMax: {
+                                    value: (Math.random()*.01).toPrecision(15), // random very small amount
+                                    currency: ppCurrencyCode,
+                                    issuer: ppIssuerWallet?.address
+                                },
+                                Flags: 0x00020000 // tfPartialPayment
+                            }}
+                            ids={{
+                                formId: "send_partial_payment",
+                                buttonId: "send_partial_payment_btn",
+                                inputId: "send_partial_payment_amount",
+                            }}
+                            content=
+                            {{
+                                buttonText: "Send Partial Payment",
+                                units: "drops of XRP",
+                                longerDescription: <div>{translate("Deliver a small amount of XRP with a large ")}
                                 <code>{translate("Amount")}</code>{translate(" value, to test your handling of ")}
-                                <a href="partial-payments.html">{translate("partial payments")}</a>{translate(".")}
-                            </small>
-                        </div>{/* /.form group for partial payment */}
-                        <hr />
+                                <a href="partial-payments.html">{translate("partial payments")}</a>{translate(".")}</div>,
+                                buttonTitle: "(Please wait for partial payments setup to finish)",
+                            }}
+                            loadingBar={{
+                                id: "pp_progress",
+                                widthPercent: ppWidthPercent,
+                                description: "(Getting ready to send partial payments)",
+                                defaultOn: true,
+                            }}
+                        />
                         {/* Escrow */}
                         <TransactionButton
                             api={api!}
