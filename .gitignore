@@ -9,5 +9,4 @@ yarn-error.log
 .venv/
 
 # PHP
-vendor/
 composer.lock
