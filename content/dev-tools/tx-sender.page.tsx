@@ -14,6 +14,7 @@ import { type Client, type Transaction, type TransactionMetadata, type Wallet } 
 // - Componentize the repeated sections
 
 // - Standardize the use of `client` instead of `api`
+// - Most of these "ids" aren't necessary for our css - we can do better (and simplify parameters as a result!
 
 // Helpers
 function isoTimeToRippleTime(isoSeconds: number) {
@@ -122,6 +123,68 @@ async function setUpForPartialPayments
     console.log("Done getting ready to send partial payments.")
 }
 
+async function onClickCreateEscrow(
+    api: Client, 
+    sendingWallet: Wallet, 
+    setBalance: React.Dispatch<React.SetStateAction<number>>, 
+    destinationAddress: string, 
+    duration_seconds: number, 
+    setEscrowWidthPercent: React.Dispatch<React.SetStateAction<number>>, 
+    release_auto: boolean) {
+    if (Number.isNaN(duration_seconds) || duration_seconds < 1) {
+        errorNotif("Error: Escrow duration must be a positive number of seconds")
+        return
+    }
+
+    const finish_after = isoTimeToRippleTime(new Date().getTime()) + duration_seconds
+
+    const escrowcreate_tx_data = await submit_and_notify(api, sendingWallet, setBalance, {
+        TransactionType: "EscrowCreate",
+        Account: sendingWallet.address,
+        Destination: destinationAddress,
+        Amount: "1000000",
+        FinishAfter: finish_after
+      })
+
+    if (escrowcreate_tx_data && release_auto) {
+        // Wait until there's a ledger with a close time > FinishAfter
+        // to submit the EscrowFinish
+        setEscrowWidthPercent(1)
+
+        let latest_close_time = -1
+        while (latest_close_time <= finish_after) {
+            const seconds_left = (finish_after - isoTimeToRippleTime(new Date().getTime()))
+
+            setEscrowWidthPercent(Math.min(99, Math.max(0, (1-(seconds_left / duration_seconds)) * 100)))
+
+            if (seconds_left <= 0) {
+                // System time has advanced past FinishAfter. But is there a new
+                //  enough validated ledger?
+                latest_close_time = (await api.request({
+                    command: "ledger",
+                    "ledger_index": "validated"}
+                )).result.ledger.close_time
+            }
+            // Update the progress bar & check again in 1 second.
+            await timeout(1000)
+        }
+        setEscrowWidthPercent(0)
+  
+        // Now submit the EscrowFinish
+        // Future feature: submit from a different sender, just to prove that
+        // escrows can be finished by a third party
+        await submit_and_notify(api, sendingWallet, setBalance, {
+          Account: sendingWallet.address,
+          TransactionType: "EscrowFinish",
+          Owner: sendingWallet.address,
+          OfferSequence: escrowcreate_tx_data.result.Sequence
+        })
+      }
+
+      // Reset in case they click the button again
+      setEscrowWidthPercent(0) 
+}
+
 function logTx(tx, hash, finalResult) {
     console.log("TODO - Implement logTx with the code at the top of tx-sender.js")
 }
@@ -139,7 +202,9 @@ function TransactionButton({
     ids,
     content,
     inputSettings,
-    loadingBar
+    loadingBar,
+    checkBox,
+    customOnClick
 }: {
     api: Client,
     setBalance: React.Dispatch<React.SetStateAction<number>>,
@@ -169,7 +234,13 @@ function TransactionButton({
         widthPercent: number,
         description: string,
         defaultOn: boolean,
+    },
+    checkBox?: {
+        setCheckValue: React.Dispatch<React.SetStateAction<boolean>>,
+        defaultValue: boolean,
+        description: string,
     }
+    customOnClick?: Function
 }) {
     const { translate } = useTranslate()
 
@@ -187,9 +258,10 @@ function TransactionButton({
                     display: (loadingBar?.widthPercent >= 100) ? 'none' : ''}}>
                         &nbsp;
                 </div>
-                <small className="justify-content-center d-flex position-absolute w-100">
-                    {translate(loadingBar?.description)}
-                </small>
+                {(loadingBar?.widthPercent < 100 && loadingBar?.widthPercent > 0 || (loadingBar.defaultOn && loadingBar?.widthPercent === 0)) 
+                    && <small className="justify-content-center d-flex position-absolute w-100">
+                        {translate(loadingBar?.description)}
+                    </small>}
             </div>}
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
@@ -207,7 +279,7 @@ function TransactionButton({
                         || (loadingBar?.widthPercent && loadingBar.widthPercent < 100))}
                     onClick={async () => {
                         setWaitingForTransaction(true)
-                        await submit_and_notify(api, sendingWallet!, setBalance, transaction)
+                        customOnClick ? await customOnClick() : await submit_and_notify(api, sendingWallet!, setBalance, transaction)
                         setWaitingForTransaction(false)
                     }}
                     title={(loadingBar && (loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100)) ? translate(content.buttonTitle) : ""}
@@ -228,6 +300,16 @@ function TransactionButton({
                         </span>
                     </div>
                 }
+                {checkBox && <span className="input-group-text">
+                    (
+                    <input type="checkbox" 
+                        id={ids.formId + "_checkbox"} 
+                        defaultValue={checkBox.defaultValue ? 1 : 0}
+                        onChange={(event) => checkBox.setCheckValue(event.target.checked)} />
+                    <label className="form-check-label" htmlFor={ids.formId + "_checkbox"}>
+                        {translate(checkBox.description)}
+                    </label>)
+                </span>}
                 {/* Future feature: Optional custom destination tag */}
             </div>
             <small className="form-text text-muted">
@@ -239,7 +321,13 @@ function TransactionButton({
 }
 
 // TODO: Make sure all calls to this function specify the wallet used!
-async function submit_and_notify(api: Client, sendingWallet: Wallet, setBalance, tx_object: Transaction, silent: boolean = false) {
+async function submit_and_notify(
+    api: Client, 
+    sendingWallet: Wallet, 
+    setBalance: React.Dispatch<React.SetStateAction<number>>, 
+    tx_object: Transaction, 
+    silent: boolean = false) {
+
     let prepared;
     try {
       // Auto-fill fields like Fee and Sequence
@@ -268,7 +356,7 @@ async function submit_and_notify(api: Client, sendingWallet: Wallet, setBalance,
         logTx(tx_object.TransactionType, hash, final_result)
       }
 
-      setBalance(await api.getXrpBalance(sendingWallet.address))
+      setBalance(parseFloat(await api.getXrpBalance(sendingWallet.address)))
       return final_result_data
     } catch (error) {
       console.log(error)
@@ -276,7 +364,7 @@ async function submit_and_notify(api: Client, sendingWallet: Wallet, setBalance,
         errorNotif(`Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
       }
 
-      setBalance(await api.getXrpBalance(sendingWallet.address))
+      setBalance(parseFloat(await api.getXrpBalance(sendingWallet.address)))
       return
     }
   }
@@ -398,6 +486,8 @@ export default function TxSender() {
     // Escrow variables
     const defaultFinishAfter = 60
     const [finishAfter, setFinishAfter] = useState(defaultFinishAfter)
+    const [finishEscrowAutomatically, setFinishEscrowAutomatically] = useState(false)
+    const [escrowWidthPercent, setEscrowWidthPercent] = useState(0)
 
     // Payment Channel variables
     const defaultPaymentChannelAmount = 100000
@@ -581,69 +671,30 @@ export default function TxSender() {
                                 max: 10000,
                                 expectInt: true,
                             }}
-                            // TODO: Add Checkbox
-                            /*
-                                <span className="input-group-text">
-                                    (
-                                    <input type="checkbox" id="create_escrow_release_automatically" defaultValue={1} />
-                                    <label className="form-check-label" htmlFor="create_escrow_release_automatically">
-                                        {translate("Finish automatically")}
-                                    </label>)
-                                </span>
-
-                                and down after the "small" - some explainer text which appears during it
-
-                                <div className="progress mb-1" style={{display: 'none'}} id="escrow_progress">
-                                    <div className="progress-bar progress-bar-striped w-0">&nbsp;</div>
-                                    <small className="justify-content-center d-flex position-absolute w-100">
-                                        {translate("(Waiting to release Escrow when it's ready)")}
-                                    </small>
-                                </div>
-                            */
-                            // TODO: Add logic to automatically finish the escrow
-                            // TODO: Add the loading bar logic
+                            loadingBar={{
+                                id: "escrow_progress",
+                                widthPercent: escrowWidthPercent,
+                                description: translate("(Waiting to release Escrow when it's ready)"),
+                                defaultOn: false,
+                            }}
+                            checkBox={{
+                                setCheckValue: setFinishEscrowAutomatically,
+                                defaultValue: finishEscrowAutomatically,
+                                description: translate("Finish automatically"),
+                            }}
+                            customOnClick={() => onClickCreateEscrow(
+                                api, 
+                                sendingWallet, 
+                                setBalance, 
+                                destinationAddress, 
+                                finishAfter, 
+                                setEscrowWidthPercent, 
+                                finishEscrowAutomatically)}
                         />
-                        {/* <div className="form-group" id="create_escrow">
-                            <div className="input-group mb-3">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text loader" style={{display: 'none'}}>
-                                        <img className="throbber" alt={translate("(loading)")} src="/img/xrp-loader-96.png" />
-                                    </span>
-                                </div>
-                                <button className={clsx("btn btn-primary form-control needs-connection", 
-                                    (!canSendTransaction(connectionReady, sendingWallet?.address) && "disabled"))}
-                                    type="button" id="create_escrow_btn" disabled={!canSendTransaction(connectionReady, sendingWallet?.address)}>
-                                        {translate("Create Escrow")}
-                                </button>
-                                <input className="form-control" type="number" defaultValue={60} min={5} max={10000} id="create_escrow_duration_seconds" />
-                                <div className="input-group-append">
-                                    <span className="input-group-text">
-                                        {translate("seconds")}
-                                    </span>
-                                </div>
-                                <span className="input-group-text">
-                                    (
-                                    <input type="checkbox" id="create_escrow_release_automatically" defaultValue={1} />
-                                    <label className="form-check-label" htmlFor="create_escrow_release_automatically">
-                                        {translate("Finish automatically")}
-                                    </label>)
-                                </span>
-                            </div>
-                            <small className="form-text text-muted">
-                                {translate("Create a ")}<a href="escrow.html">{translate("time-based escrow")}</a>
-                                {translate(" of 1 XRP for the specified number of seconds.")}
-                            </small>
-                            <div className="progress mb-1" style={{display: 'none'}} id="escrow_progress">
-                                <div className="progress-bar progress-bar-striped w-0">&nbsp;</div>
-                                <small className="justify-content-center d-flex position-absolute w-100">
-                                    {translate("(Waiting to release Escrow when it's ready)")}
-                                </small>
-                            </div>
-                        </div>/.form group for create escrow */}
-                        {/* Payment Channels */}
-                        {/*     
-                            // Future feature: figure out channel ID and enable a button that creates
-                            //   valid claims for the given payment channel to help test redeeming 
+                        {/* Payment Channels 
+                            
+                            - Future feature: figure out channel ID and enable a button that creates
+                              valid claims for the given payment channel to help test redeeming 
                         */}
                         <TransactionButton
                             api={api!}

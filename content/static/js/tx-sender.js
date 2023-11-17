@@ -302,96 +302,96 @@ const set_up_tx_sender = async function() {
   // $("#send_xrp_payment button").click(on_click_send_xrp_payment)
 
   // 2. Send Partial Payment Handler ---------------------------------------
-  async function on_click_send_partial_payment(event) {
-    const destination_address = $("#destination_address").val()
-    $("#send_partial_payment .loader").show()
-    $("#send_partial_payment button").prop("disabled","disabled")
+  // async function on_click_send_partial_payment(event) {
+  //   const destination_address = $("#destination_address").val()
+  //   $("#send_partial_payment .loader").show()
+  //   $("#send_partial_payment button").prop("disabled","disabled")
 
-    await submit_and_notify({
-      TransactionType: "Payment",
-      Account: sending_wallet.address,
-      Destination: destination_address,
-      Amount: "1000000000000000", // 1 billion XRP
-      SendMax: {
-        value: (Math.random()*.01).toPrecision(15), // random very small amount
-        currency: pp_sending_currency,
-        issuer: pp_issuer_wallet.address
-      },
-      Flags: xrpl.PaymentFlags.tfPartialPayment
-    })
-    $("#send_partial_payment .loader").hide()
-    $("#send_partial_payment button").prop("disabled",false)
-  }
-  $("#send_partial_payment button").click(on_click_send_partial_payment)
+  //   await submit_and_notify({
+  //     TransactionType: "Payment",
+  //     Account: sending_wallet.address,
+  //     Destination: destination_address,
+  //     Amount: "1000000000000000", // 1 billion XRP
+  //     SendMax: {
+  //       value: (Math.random()*.01).toPrecision(15), // random very small amount
+  //       currency: pp_sending_currency,
+  //       issuer: pp_issuer_wallet.address
+  //     },
+  //     Flags: xrpl.PaymentFlags.tfPartialPayment
+  //   })
+  //   $("#send_partial_payment .loader").hide()
+  //   $("#send_partial_payment button").prop("disabled",false)
+  // }
+  // $("#send_partial_payment button").click(on_click_send_partial_payment)
 
 
-  // 3. Create Escrow Handler ----------------------------------------------
-  // TODO: Migrate the loader & automatic finish. The basic button has been migrated - Jackson
-  async function on_click_create_escrow(event) {
-    const destination_address = $("#destination_address").val()
-    const duration_seconds_txt = $("#create_escrow_duration_seconds").val()
-    const release_auto = $("#create_escrow_release_automatically").prop("checked")
+  // // 3. Create Escrow Handler ----------------------------------------------
+  // // TODO: Migrate the loader & automatic finish. The basic button has been migrated - Jackson
+  // async function on_click_create_escrow(event) {
+  //   const destination_address = $("#destination_address").val()
+  //   const duration_seconds_txt = $("#create_escrow_duration_seconds").val()
+  //   const release_auto = $("#create_escrow_release_automatically").prop("checked")
 
-    const duration_seconds = parseInt(duration_seconds_txt, 10)
-    if (duration_seconds === NaN || duration_seconds < 1) {
-      errorNotif("Error: Escrow duration must be a positive number of seconds")
-      return
-    }
-    const finish_after = xrpl.isoTimeToRippleTime(Date()) + duration_seconds
+  //   const duration_seconds = parseInt(duration_seconds_txt, 10)
+  //   if (duration_seconds === NaN || duration_seconds < 1) {
+  //     errorNotif("Error: Escrow duration must be a positive number of seconds")
+  //     return
+  //   }
+  //   const finish_after = xrpl.isoTimeToRippleTime(Date()) + duration_seconds
 
-    $("#create_escrow .loader").show()
-    $("#create_escrow button").prop("disabled","disabled")
-    const escrowcreate_tx_data = await submit_and_notify({
-      TransactionType: "EscrowCreate",
-      Account: sending_wallet.address,
-      Destination: destination_address,
-      Amount: "1000000",
-      FinishAfter: finish_after
-    })
+  //   $("#create_escrow .loader").show()
+  //   $("#create_escrow button").prop("disabled","disabled")
+  //   const escrowcreate_tx_data = await submit_and_notify({
+  //     TransactionType: "EscrowCreate",
+  //     Account: sending_wallet.address,
+  //     Destination: destination_address,
+  //     Amount: "1000000",
+  //     FinishAfter: finish_after
+  //   })
 
-    if (escrowcreate_tx_data && release_auto) {
-      // Wait until there's a ledger with a close time > FinishAfter
-      // to submit the EscrowFinish
-      $("#escrow_progress .progress-bar").width("0%").addClass("progress-bar-animated")
-      $("#escrow_progress").show()
-      let seconds_left
-      let pct_done
-      let latestCloseTimeRipple
-      while (true) {
-        seconds_left = (finish_after - xrpl.isoTimeToRippleTime(Date()))
-        pct_done = Math.min(99, Math.max(0, (1-(seconds_left / duration_seconds)) * 100))
-        $("#escrow_progress .progress-bar").width(pct_done+"%")
-        if (seconds_left <= 0) {
-          // System time has advanced past FinishAfter. But is there a new
-          //  enough validated ledger?
-          latest_close_time = (await api.request({
-              command: "ledger",
-              "ledger_index": "validated"}
-            )).result.ledger.close_time
-          if (latest_close_time > finish_after) {
-            $("#escrow_progress .progress-bar").width("100%").removeClass("progress-bar-animated")
-            break
-          }
-        }
-        // Update the progress bar & check again in 1 second.
-        await timeout(1000)
-      }
-      $("#escrow_progress").hide()
+  //   if (escrowcreate_tx_data && release_auto) {
+  //     // Wait until there's a ledger with a close time > FinishAfter
+  //     // to submit the EscrowFinish
+  //     $("#escrow_progress .progress-bar").width("0%").addClass("progress-bar-animated")
+  //     $("#escrow_progress").show()
+  //     let seconds_left
+  //     let pct_done
+  //     let latestCloseTimeRipple
+  //     while (true) {
+  //       seconds_left = (finish_after - xrpl.isoTimeToRippleTime(Date()))
+  //       pct_done = Math.min(99, Math.max(0, (1-(seconds_left / duration_seconds)) * 100))
+  //       $("#escrow_progress .progress-bar").width(pct_done+"%")
+  //       if (seconds_left <= 0) {
+  //         // System time has advanced past FinishAfter. But is there a new
+  //         //  enough validated ledger?
+  //         latest_close_time = (await api.request({
+  //             command: "ledger",
+  //             "ledger_index": "validated"}
+  //           )).result.ledger.close_time
+  //         if (latest_close_time > finish_after) {
+  //           $("#escrow_progress .progress-bar").width("100%").removeClass("progress-bar-animated")
+  //           break
+  //         }
+  //       }
+  //       // Update the progress bar & check again in 1 second.
+  //       await timeout(1000)
+  //     }
+  //     $("#escrow_progress").hide()
 
-      // Now submit the EscrowFinish
-      // Future feature: submit from a different sender, just to prove that
-      //   escrows can be finished by a third party
-      await submit_and_notify({
-        Account: sending_wallet.address,
-        TransactionType: "EscrowFinish",
-        Owner: sending_wallet.address,
-        OfferSequence: escrowcreate_tx_data.result.Sequence
-      })
-    }
-    $("#create_escrow .loader").hide()
-    $("#create_escrow button").prop("disabled",false)
-  }
-  $("#create_escrow button").click(on_click_create_escrow)
+  //     // Now submit the EscrowFinish
+  //     // Future feature: submit from a different sender, just to prove that
+  //     //   escrows can be finished by a third party
+  //     await submit_and_notify({
+  //       Account: sending_wallet.address,
+  //       TransactionType: "EscrowFinish",
+  //       Owner: sending_wallet.address,
+  //       OfferSequence: escrowcreate_tx_data.result.Sequence
+  //     })
+  //   }
+  //   $("#create_escrow .loader").hide()
+  //   $("#create_escrow button").prop("disabled",false)
+  // }
+  // $("#create_escrow button").click(on_click_create_escrow)
 
   // 4. Create Payment Channel Handler -------------------------------------
   // async function on_click_create_payment_channel(event) {
