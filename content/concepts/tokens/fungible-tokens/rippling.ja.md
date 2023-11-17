@@ -1,12 +1,7 @@
 ---
 html: rippling.html
-<<<<<<<< HEAD:content/concepts/tokens/fungible-tokens/rippling.ja.md
-parent: ft-index.html
-blurb: Ripplingは、複数当事者間での発行済み通貨残高の自動ネット決済です。
-========
 parent: tokens.html
 blurb: Ripplingは、複数当事者間でのトークン残高の自動ネット決済です。
->>>>>>>> 82da0e53a8d6cdf2b94a80594541d868b4d03b94:content/@i18n/ja/concepts/tokens/rippling.md
 labels:
   - トークン
   - 複数通貨間

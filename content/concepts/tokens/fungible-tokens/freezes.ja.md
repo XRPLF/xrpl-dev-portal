@@ -1,12 +1,7 @@
 ---
 html: freezes.html
-<<<<<<<< HEAD:content/concepts/tokens/fungible-tokens/freezes.ja.md
-parent: ft-index.html
-blurb: 凍結では、コンプライアンス目的で発行済み通貨の取引を停止できます。
-========
 parent: tokens.html
 blurb: 発行者はコンプライアンス目的でトークンの取引を停止できます。
->>>>>>>> 82da0e53a8d6cdf2b94a80594541d868b4d03b94:content/@i18n/ja/concepts/tokens/freezes.md
 labels:
   - トークン
 ---
