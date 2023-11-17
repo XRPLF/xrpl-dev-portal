@@ -4945,6 +4945,21 @@ pages:
         top_nav_grouping: 開発
         targets:
             - ja
+    -   name: XRPL Brand Kit
+        html: https://xrpl.org/assets/XRPL_Brand_Kit.zip
+        parent: resources.html
+        blurb: Review guidelines for using XRPL design assets.
+        top_nav_grouping: Development
+        targets:
+            - en
+
+    -   name: XRPLブランドキット
+        html: https://xrpl.org/assets/XRPL_Brand_Kit.zip
+        parent: resources.html
+        blurb: XRPLのデザインアセットのガイドラインを確認しましょう。
+        top_nav_grouping: 開発
+        targets:
+            - ja
 
     -   name: Ledger Explorer
         html: https://livenet.xrpl.org/
@@ -5193,20 +5208,6 @@ pages:
         html: https://github.com/XRPLF/xrpl-dev-portal/
         parent: contribute.html
         blurb: XRP LedgerのソースコードをGitHubで閲覧し、変更を提案することができます。
-        targets:
-            - ja
-
-    -   name: XRPL Brand Kit
-        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
-        parent: contribute.html
-        blurb: Review guidelines for using XRPL design assets.
-        targets:
-            - en
-
-    -   name: XRPLブランドキット
-        html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
-        parent: contribute.html
-        blurb: XRPLのデザインアセットのガイドラインを確認しましょう。
         targets:
             - ja
 
