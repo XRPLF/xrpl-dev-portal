@@ -4957,7 +4957,7 @@ pages:
         html: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Brand_Kit.zip
         parent: resources.html
         blurb: XRPLのデザインアセットのガイドラインを確認しましょう。
-        top_nav_grouping: Development
+        top_nav_grouping: 開発
         targets:
             - ja
 
