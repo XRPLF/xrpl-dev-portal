@@ -59,6 +59,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" />
 
 
     <!-- Theme switch -->
@@ -169,6 +170,7 @@
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" target="_blank">XRPL Brand Kit</a>
           </div><!--./col-->
           <div class="navcol col-for-current-status">
             <h5 class="dropdown-item">Current Status</h5>
@@ -201,7 +203,6 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -306,11 +307,9 @@
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
-<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_ledger_req"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ledger"</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"expand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"owner_funds"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
@@ -322,8 +321,6 @@
 <span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"accounts"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"expand"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
 <span class="w">            </span><span class="nt">"owner_funds"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
@@ -363,18 +360,6 @@ rippled ledger validated
 <td>The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>full</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">No</td>
-<td><strong>Admin only</strong> If <code>true</code>, return full information on the entire ledger. Ignored if you did not specify a ledger version. The default is <code>false</code>. (Equivalent to enabling <code>transactions</code>, <code>accounts</code>, and <code>expand</code>.) The <a href="the-clio-server.html">Clio server</a> does not support this field. <strong>Caution:</strong> On Mainnet, this can be gigabytes worth of data, so the request is likely to time out.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>accounts</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">No</td>
-<td><strong>Admin only.</strong> If <code>true</code>, return the ledger's entire state data. Ignored if you did not specify a ledger version. The default is <code>false</code>. <strong>Caution:</strong> On Mainnet, this can be gigabytes worth of data, so the request is likely to time out. Use <a href="ledger_data.html">ledger_data</a> instead to fetch state data across multiple paginated requests.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>transactions</code></td>
 <td style="text-align: left;">Boolean</td>
 <td style="text-align: left;">No</td>
@@ -396,7 +381,7 @@ rippled ledger validated
 <td style="text-align: left;"><code>binary</code></td>
 <td style="text-align: left;">Boolean</td>
 <td style="text-align: left;">No</td>
-<td>If <code>true</code>, and <code>transactions</code> and <code>expand</code> are both also <code>true</code>, return transaction information in binary format (hexadecimal string) instead of JSON format. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.28.0" target="_blank" title="New in: rippled 0.28.0"><img alt="New in: rippled 0.28.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.28.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td>If <code>true</code>, and <code>transactions</code> and <code>expand</code> are both also <code>true</code>, return transaction information in binary format (hexadecimal string) instead of JSON format.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>queue</code></td>
@@ -404,107 +389,89 @@ rippled ledger validated
 <td style="text-align: left;">No</td>
 <td>If <code>true</code>, and the command is requesting the <code>current</code> ledger, includes an array of <a href="transaction-cost.html#queued-transactions">queued transactions</a> in the results.</td>
 </tr>
-<tr>
-<td style="text-align: left;"><code>type</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">No</td>
-<td>Filter by a ledger entry type. The valid types are: <code>account</code>, <code>amendments</code>, <code>amm</code> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>,  <code>check</code>, <code>deposit_preauth</code>, <code>directory</code>, <code>escrow</code>, <code>fee</code>, <code>hashes</code>, <code>nft_offer</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>state</code> (trust line), and <code>ticket</code>. Ignored unless you request <code>accounts</code> (state data).</td>
-</tr>
 </tbody>
 </table>
-<p>The <code>ledger</code> field is deprecated and may be removed without further notice.</p>
+<p>The <code>ledger</code> field is deprecated and may be removed without further notice. The <code>full</code>, <code>accounts</code>, and <code>type</code> fields (admin-only) are also deprecated; the Clio server does not implement these parameters.</p>
 <h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
 <p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
-<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53BD4650A024E27DEB52DBB6A52EDB26528B987EC61C895C48D1EB44CEDD9AD3"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">638329241</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-Mar-24 01:40:41.000000000 UTC"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1723099E269C77C4BDE86C83FA6415D71CF20AA5CB4A94E5C388ED97123FB55B"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1723099E269C77C4BDE86C83FA6415D71CF20AA5CB4A94E5C388ED97123FB55B"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54300932"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">638329240</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DF68B3BCABD31097634BABF0BDC87932D43D26E458BFEEFD36ADF2B3D94998C0"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"seqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54300932"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"totalCoins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99991024049648900"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99991024049648900"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50B3A8FE2C5620E43AA57564209AEDFEA3E868CFA2F6E4AB4B9E55A7A62AAF7B"</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example_ledger_req"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B8B2C0C3F9E75E3AEE31D467B2544AB56244E618890BA58679707D6BFC0AF41D"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">752188602</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Nov-01 21:16:42.000000000 UTC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1BEECD5D21592EABDEF98D8E4BC038AD10B5700FF7E98011870DF5D6C2A2F39B"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83626901"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">752188601</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6B32CFC42B32C5FB90019AE17F701D96B499A4C8E148A002E18135A434A19D98"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99988256314388830"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21586C664DC47E12AF34F22EBF1DB55D23F8C98972542BAC0C39B1009CAC84D4"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1BEECD5D21592EABDEF98D8E4BC038AD10B5700FF7E98011870DF5D6C2A2F39B"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">83626901</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1723099E269C77C4BDE86C83FA6415D71CF20AA5CB4A94E5C388ED97123FB55B"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">54300932</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
 
 <span class="p">{</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"accepted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B258A8BB4743FB74CBBD6E9F67E4A56C4432EA09E5805E4CC2DA26F2DBE8F3D1"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">638329271</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-Mar-24 01:41:11.000000000 UTC"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3652D7FD0576BC452C0D2E9B747BDD733075971D1A9A1D98125055DEF428721A"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3652D7FD0576BC452C0D2E9B747BDD733075971D1A9A1D98125055DEF428721A"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54300940"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">638329270</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AE996778246BC81F85D5AF051241DAA577C23BCA04C034A7074F93700194520D"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"seqNum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54300940"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"totalCoins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99991024049618156"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99991024049618156"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FC6FFCB71B2527DDD630EE5409D38913B4D4C026AA6C3B14A3E9D4ED45CFE30D"</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3652D7FD0576BC452C0D2E9B747BDD733075971D1A9A1D98125055DEF428721A"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">54300940</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23C1C8F8ACCEFACBDD9A1804CC25E652A324F9EABD7D0BEF103DA56D6E0306E7"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">752188801</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Nov-01 21:20:01.000000000 UTC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140B769E9ED61FCD675A6EEC1F005084614314C1D675C2CFDD11A1024BBD2C96"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83626952"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">752188800</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7D169A530960AFA8A0E38D036D8EF960BC2C2E02C4A0CE848A4200B9376AC99C"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99988256304478252"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77226182F58D9B5C798262F0E9D8C575D174E434F0C3C7119FB658BA70004CE9"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140B769E9ED61FCD675A6EEC1F005084614314C1D675C2CFDD11A1024BBD2C96"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">83626952</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
-<span class="mi">2020-</span><span class="err">Mar</span><span class="mi">-24</span><span class="w"> </span><span class="mi">01</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mf">42.622264591</span><span class="w"> </span><span class="err">UTC</span><span class="w"> </span><span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span><span class="w"> </span><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
+<span class="mi">2023-</span><span class="err">Nov</span><span class="mi">-01</span><span class="w"> </span><span class="mi">21</span><span class="p">:</span><span class="mi">38</span><span class="p">:</span><span class="mf">14.638871262</span><span class="w"> </span><span class="err">UTC</span><span class="w"> </span><span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span><span class="w"> </span><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
-<span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"ledger"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">"accepted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"account_hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"6B3101BE8F1431C5AC5B43D9731F1F3A747D24B3BEF89B687F0F3039E10EB65A"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"close_flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"close_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">638329360</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"close_time_human"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-Mar-24 01:42:40.000000000 UTC"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"close_time_resolution"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"closed"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"C88A0EEC0E785A4C3E99F2A8B8EE0D7BDF3DE6C786C39B1B01547F6DAE5A4B7F"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"ledger_hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"C88A0EEC0E785A4C3E99F2A8B8EE0D7BDF3DE6C786C39B1B01547F6DAE5A4B7F"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"ledger_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"54300962"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"parent_close_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">638329352</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"parent_hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"96D2D70DC540BA4614A00C77FCFDED20E7D58AF3238E36655C38C407A56982A3"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"seqNum"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"54300962"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"totalCoins"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"99991024049218063"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"total_coins"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"99991024049218063"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"transaction_hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"47AC79011652D2A56AE04D3DD618C60A6669E3F94308C803554E890D2BD94481"</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23C1C8F8ACCEFACBDD9A1804CC25E652A324F9EABD7D0BEF103DA56D6E0306E7"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">752188801</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time_human"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Nov-01 21:20:01.000000000 UTC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"close_time_resolution"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"closed"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140B769E9ED61FCD675A6EEC1F005084614314C1D675C2CFDD11A1024BBD2C96"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83626952"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parent_close_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">752188800</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"parent_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7D169A530960AFA8A0E38D036D8EF960BC2C2E02C4A0CE848A4200B9376AC99C"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"total_coins"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99988256304478252"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"transaction_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77226182F58D9B5C798262F0E9D8C575D174E434F0C3C7119FB658BA70004CE9"</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"C88A0EEC0E785A4C3E99F2A8B8EE0D7BDF3DE6C786C39B1B01547F6DAE5A4B7F"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"ledger_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">54300962</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"validated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">   </span><span class="p">}</span>
+<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140B769E9ED61FCD675A6EEC1F005084614314C1D675C2CFDD11A1024BBD2C96"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">83626952</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
@@ -521,42 +488,37 @@ rippled ledger validated
 <tr>
 <td style="text-align: left;"><code>ledger</code></td>
 <td style="text-align: left;">Object</td>
-<td style="text-align: left;">The complete header data of this ledger.</td>
+<td style="text-align: left;">The complete <a href="ledger-header.html">ledger header data</a> of this ledger, with some additional fields added for convenience.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.account_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash of all account state information in this ledger, as hex</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>ledger.accountState</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">(Omitted unless requested) All the <a href="ledger-data-formats.html">account-state information</a> in this ledger.</td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a> of all account state information in this ledger, as hexadecimal.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_flags</code></td>
-<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Number</td>
 <td style="text-align: left;">A bit-map of <a href="ledger-header.html#close-flags">flags relating to the closing of this ledger</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The time this ledger was closed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">The time this ledger was closed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time_human</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The time this ledger was closed, in human-readable format. Always uses the UTC time zone. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="Updated in: rippled 1.5.0"><img alt="Updated in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">The time this ledger was closed, in human-readable format. Always uses the UTC time zone.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time_resolution</code></td>
-<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Number</td>
 <td style="text-align: left;">Ledger close times are rounded to within this many seconds.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.closed</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Whether or not this ledger has been closed</td>
+<td style="text-align: left;">Whether or not this ledger has been closed.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.ledger_hash</code></td>
@@ -566,17 +528,17 @@ rippled ledger validated
 <tr>
 <td style="text-align: left;"><code>ledger.ledger_index</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of this ledger, as a quoted integer</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of this ledger, as a quoted integer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.parent_close_time</code></td>
-<td style="text-align: left;">Integer</td>
+<td style="text-align: left;">Number</td>
 <td style="text-align: left;">The time at which the previous ledger was closed.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.parent_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">Unique identifying hash of the ledger that came immediately before this one.</td>
+<td style="text-align: left;">The unique identifying hash of the ledger that came immediately before this one, as hexadecimal.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.total_coins</code></td>
@@ -586,17 +548,17 @@ rippled ledger validated
 <tr>
 <td style="text-align: left;"><code>ledger.transaction_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash of the transaction information included in this ledger, as hex</td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a> of the transaction information included in this ledger.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.transactions</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#hashes">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
+<td style="text-align: left;"><em>(Omitted unless requested)</em> Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#hashes">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">Unique identifying hash of the entire ledger.</td>
+<td style="text-align: left;">The unique identifying hash of the entire ledger, as hexadecimal.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
@@ -611,11 +573,12 @@ rippled ledger validated
 <tr>
 <td style="text-align: left;"><code>queue_data</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><em>(Omitted unless requested with the <code>queue</code> parameter)</em> Array of objects describing queued transactions, in the same order as the queue. If the request specified <code>expand</code> as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified <code>binary</code> as true. Added by the <a href="known-amendments.html#feeescalation">FeeEscalation amendment</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.0" target="_blank" title="New in: rippled 0.70.0"><img alt="New in: rippled 0.70.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%200.70.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>(Omitted unless requested with the <code>queue</code> parameter)</em> Array of objects describing queued transactions, in the same order as the queue. If the request specified <code>expand</code> as true, members contain full representations of the transactions, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
 </tr>
 </tbody>
 </table>
-<p>The following fields are deprecated and may be removed without further notice: <code>accepted</code>, <code>hash</code> (use <code>ledger_hash</code> instead), <code>seqNum</code> (use <code>ledger_index</code> instead), <code>totalCoins</code> (use <code>total_coins</code> instead).</p>
+<p>The <code>ledger.accountState</code> field (omitted unless requested with <code>"full": true</code> or <code>"accounts": true</code>) is deprecated.</p>
+<p>The following deprecated fields have been removed: <code>accepted</code>, <code>hash</code> (use <code>ledger_hash</code> instead), <code>seqNum</code> (use <code>ledger_index</code> instead), <code>totalCoins</code> (use <code>total_coins</code> instead). <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" target="_blank" title="Updated in: rippled 1.12.0"><img alt="Updated in: rippled 1.12.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.12.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>Each member of the <code>queue_data</code> array represents one transaction in the queue. Some fields of this object may be omitted because they have not yet been calculated. The fields of this object are as follows:</p>
 <table class="table-responsive">
 <thead>
@@ -695,7 +658,7 @@ rippled ledger validated
 <li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
 <li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
 <li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
-<li><code>noPermission</code> - If you specified <code>full</code> or <code>accounts</code> as true, but are not connected to the server as an admin (usually, admin requires connecting on a local port).</li>
+<li><code>noPermission</code> - If you specified <code>full</code> or <code>accounts</code> as true, but are not connected to the server as an admin (usually, admin requires connecting on localhost).</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1117,6 +1080,26 @@ rippled ledger validated
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1126,7 +1109,7 @@ rippled ledger validated
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6" aria-expanded="false" aria-controls="tree_nav_group_4_6"></a>
 
-        <a class="nav-link" href="tokens.html">Tokens</a>
+        <a class="nav-link" href="tk-index.html">Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
       
@@ -1134,66 +1117,9 @@ rippled ledger validated
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+        <a class="nav-link" href="ft-index.html">Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-auctions.html">Running an NFT Auction</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft-collections.html">Minting NFTs into Collections</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
-
-        <a class="nav-link" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
@@ -1201,12 +1127,15 @@ rippled ledger validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-types.html">Stablecoin Types</a>
-  </div>
 
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="sc-index.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stabelcoin Settings</a>
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
   </div>
 
       
@@ -1229,14 +1158,8 @@ rippled ledger validated
     <a class="nav-link nav-leaf" href="stablecoin-technical-details.html">Stablecoin Technical Details</a>
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
-  </div>
+    </nav>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
   </div>
 
       
@@ -1247,18 +1170,14 @@ rippled ledger validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_11" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_11"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
 
         <a class="nav-link" href="freezes.html">Freezing Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_11">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
   </div>
 
     </nav>
@@ -1272,27 +1191,83 @@ rippled ledger validated
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
+
+        <a class="nav-link" href="nft-index.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-payload-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="transfers.html">Trading NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-reserve-requirements.html">NFT Reserve Requirements</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="batch-minting.html">Batch Minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-another-minter.html">Authorizing Another Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="running-an-nft-auction.html">Running an NFT Auction</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="minting-nfts-into-collections.html">Minting NFTs into Collections</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="guaranteeing-a-fixed-supply-of-nfts.html">Guaranteeing a Fixed Supply of NFTs</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nft-apis.html">NFT APIs</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
-      
-  <div class="nav-item ">
+        <a class="nav-link" href="de-index.html">Decentralized Exchange</a>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_7" aria-expanded="false" aria-controls="tree_nav_group_4_6_7"></a>
-
-        <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_7">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>
@@ -1331,16 +1306,6 @@ rippled ledger validated
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="account-types.html">Account Types</a>
   </div>
 
@@ -1366,7 +1331,17 @@ rippled ledger validated
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="multi-signing.html">Multi-Signing</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="tickets.html">Tickets</a>
   </div>
 
     </nav>
@@ -1429,6 +1404,11 @@ rippled ledger validated
     <a class="nav-link nav-leaf" href="py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-create-time-based-escrows.html">Create Time-based Escrows Using Python</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1459,6 +1439,11 @@ rippled ledger validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -2265,7 +2250,7 @@ rippled ledger validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="serialization.html">Serialization Format</a>
+    <a class="nav-link nav-leaf" href="serialization.html">Binary Format</a>
   </div>
 
     </nav>
@@ -2360,6 +2345,11 @@ rippled ledger validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="rippled-server-states.html">rippled Server States</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>
@@ -2654,6 +2644,11 @@ rippled ledger validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="nfts_by_issuer.html">nfts_by_issuer</a>
   </div>
 
       
@@ -2980,7 +2975,7 @@ rippled ledger validated
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_2" aria-expanded="false" aria-controls="tree_nav_group_7_2"></a>
 
-        <a class="nav-link" href="install-rippled.html">Install rippled</a>
+        <a class="nav-link" href="install-rippled.html">Installation</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_2">
       
@@ -2994,9 +2989,13 @@ rippled ledger validated
   </div>
 
       
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="install-rippled-on-ubuntu.html">Install on Ubuntu or Debian Linux</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
       
@@ -3012,6 +3011,11 @@ rippled ledger validated
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="update-rippled-manually-on-ubuntu.html">Update Manually on Ubuntu or Debian</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       
@@ -3038,7 +3042,7 @@ rippled ledger validated
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3" aria-expanded="false" aria-controls="tree_nav_group_7_3"></a>
 
-        <a class="nav-link" href="configure-rippled.html">Configure rippled</a>
+        <a class="nav-link" href="configure-rippled.html">Configuration</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_3">
       
@@ -3107,46 +3111,12 @@ rippled ledger validated
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_3" aria-expanded="false" aria-controls="tree_nav_group_7_3_3"></a>
 
         <a class="nav-link" href="configure-peering.html">Peering</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="cluster-rippled-servers.html">Cluster rippled Servers</a>
@@ -3193,12 +3163,41 @@ rippled ledger validated
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-amendment-voting.html">Configure Amendment Voting</a>
+  </div>
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-statsd.html">Configure StatsD</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="connect-your-rippled-to-the-xrp-test-net.html">Connect Your rippled to a Parallel Network</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="configure-grpc.html">Configure gRPC</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="enable-public-signing.html">Enable Public Signing</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
 
         <a class="nav-link" href="use-stand-alone-mode.html">Testing and Auditing</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="start-a-new-genesis-ledger-in-stand-alone-mode.html">Start a New Genesis Ledger in Stand-Alone Mode</a>
@@ -3214,6 +3213,16 @@ rippled ledger validated
     <a class="nav-link nav-leaf" href="advance-the-ledger-in-stand-alone-mode.html">Advance the Ledger in Stand-Alone Mode</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="test-amendments.html">Test Amendments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3221,11 +3230,11 @@ rippled ledger validated
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_6" aria-expanded="false" aria-controls="tree_nav_group_7_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_5" aria-expanded="false" aria-controls="tree_nav_group_7_5"></a>
 
         <a class="nav-link" href="troubleshoot-the-rippled-server.html">Troubleshooting</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_7_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_7_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="diagnosing-problems.html">Diagnosing Problems with rippled</a>
@@ -3263,16 +3272,6 @@ rippled ledger validated
 
     </nav>
 
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="private-network-with-docker.html">Run a Private Network with Docker</a>
   </div>
 
     </nav>
@@ -3320,6 +3319,7 @@ rippled ledger validated
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
@@ -3338,7 +3338,6 @@ rippled ledger validated
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
@@ -3388,6 +3387,95 @@ $(document).ready(() => {
 })
 </script>
 
+<!-- XRPL AI -->
+<script id="xrplai-options">
+  var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
+  var PROMPT_MODE = 'prompt';
+  var RUNTIME_LOCATION = 'ripplex';
+  var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `uPcw5BckVeKgyF2NE6la4VVFtA56OBQ4`;
+  var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+  var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
+  var CHAT_ENDPOINT = '/v1/chat';
+  var PROMPT_ENDPOINT = '/v1/chat';
+  var FEEDBACK_ENDPOINT = '/v1/feedback';
+  var BASE_URL = RUNTIME_LOCATION === 'ripplex'
+    ? DEV_XRPLAI_RIPPLEX_API_BASE_URL
+    : LOCALHOST_API_BASE_URL;
+  var CHAT_API_URL = `${BASE_URL}${CHAT_ENDPOINT}`;
+  var PROMPT_API_URL = `${BASE_URL}${PROMPT_ENDPOINT}`;
+  var FEEDBACK_API_URL = `${BASE_URL}${FEEDBACK_ENDPOINT}`;
+
+  /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+  window.markprompt = {
+    projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
+    defaultView: 'prompt',
+    options: {
+      chat: {
+        enabled: PROMPT_MODE === 'chat',
+        apiUrl: CHAT_API_URL,
+      },
+      feedback: {
+        enabled: true,
+        apiUrl: FEEDBACK_API_URL,
+      },
+      prompt: {
+        apiUrl: PROMPT_API_URL,
+        systemPrompt: `
+You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "".
+
+Context sections:
+---
+
+
+Question: ""
+
+Answer (including related code snippets if available and markdown links to relevant things):
+        `.trim(),
+      },
+      references: {
+        getHref: (reference) => {
+        const { file } = reference;
+        if (file && file.path) {
+          // /\/content\/[^_][^/]*\.md/.test(file.path)
+          if (file.path.includes('content/') && !file.path.includes('content/_') && file.path.endsWith('.md')) {
+            // Remove the extension if it's a regular content page that lives on xrpl.org
+            // return file.path.replace(/\.[^.]+$/, '');
+            // Change extension to html and remove content/ from the URL
+            if (file.path.endsWith('ja.md')) {
+              // Japanese lives at /ja/<filename>.html
+              return `ja/${file.path.replace(/content\//, '').replace(/\.ja\.md$/, '.html')}`
+            }
+            return file.path.replace(/content\//, '').replace(/\.md$/, '.html')
+          } else {
+            // Otherwise link to a file on the github repo such as .js or README.md
+            return `https://github.com/XRPLF/xrpl-dev-portal/blob/master/${file.path}`;
+          }
+        } else {
+          // Handle the case where file or file.path is missing
+          return '';
+        }
+      },
+        getLabel: (reference) => {
+          return reference.meta?.leadHeading?.value || reference.file?.title;
+        },
+      },
+      showBranding: false,
+      trigger: {
+        floating: true,
+      },
+      search: {
+        enabled: true,
+        provider: {
+          name: 'algolia',
+          apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+          appId: 'R39QY3MZC7',
+          indexName: 'xrpl',
+        },
+      }
+    },
+  };
+</script>
+<script id="initjs" type="module" src="https://www.unpkg.com/@xrpl/ai-web/dist/init.js"></script>
 
 
 </body>

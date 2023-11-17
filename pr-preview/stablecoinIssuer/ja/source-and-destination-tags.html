@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Source and Destination Tags - XRPL.org (日本語)</title>
+    <title>送信元タグと宛先タグ - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Source and Destination Tags | XRPL.org (日本語)">
+    <meta property="og:title" content="送信元タグと宛先タグ | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/source-and-destination-tags.html" />
-    <meta property="og:description" content="多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。" />
-    <meta name="description" content="多目的アドレスとの間で支払いのやり取りをする具体的な目的を示すためにソースタグと宛先タグを使用します。" />
+    <meta property="og:description" content="送信元タグと宛先タグを使用して、多目的アドレスからの、または多目的アドレスへの支払いを行います。" />
+    <meta name="description" content="送信元タグと宛先タグを使用して、多目的アドレスからの、または多目的アドレスへの支払いを行います。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Payments', 'Accounts', 'Security']
+      "page_labels": ['支払い', 'アカウント', 'セキュリティ']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -60,6 +60,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" />
 
 
     <!-- Theme switch -->
@@ -170,6 +171,7 @@
             <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" target="_blank">XRPLブランドキット</a>
           </div><!--./col-->
           <div class="navcol col-for-現在のステータス">
             <h5 class="dropdown-item">現在のステータス</h5>
@@ -202,7 +204,6 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
             <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -257,20 +258,20 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/concepts/transactions/source-and-destination-tags.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/@i18n/ja/concepts/transactions/source-and-destination-tags.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-payments">Payments</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Payments" -->
+      <span class="label label-支払い">支払い</span>
+      <!-- TEMPLATE WARNING: no label landing found for "支払い" -->
     </li>
     <li class="list-inline-item">
-      <span class="label label-accounts">Accounts</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Accounts" -->
+      <span class="label label-アカウント">アカウント</span>
+      <!-- TEMPLATE WARNING: no label landing found for "アカウント" -->
     </li>
     <li class="list-inline-item">
-      <span class="label label-security">Security</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Security" -->
+      <span class="label label-セキュリティ">セキュリティ</span>
+      <!-- TEMPLATE WARNING: no label landing found for "セキュリティ" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -278,11 +279,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#source-and-destination-tags">Source and Destination Tags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#rationale">Rationale</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#use-cases">Use Cases</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#requiring-tags">Requiring Tags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#送信元タグと宛先タグ">送信元タグと宛先タグ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#理由">理由</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ユースケース">ユースケース</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#タグの必須化">タグの必須化</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -300,38 +301,35 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/transactions.html">トランザクション</a></li>
-    <li class="active breadcrumb-item">Source and Destination Tags</li>
+    <li class="active breadcrumb-item">送信元タグと宛先タグ</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="source-and-destination-tags">Source and Destination Tags<a aria-hidden="true" class="hover_anchor" href="#source-and-destination-tags"><i class="fa fa-link"></i></a></h1>
-<p><em>Source tags</em> and <em>destination tags</em> are a feature of XRP Ledger <a href="payment-types.html">payments</a> that can indicate specific purposes for payments from and to multi-purpose addresses. Source and destination tags do not have direct on-ledger functionality; source and destination tags merely provide information about how off-ledger systems should process a payment. In transactions, both source and destination tags are formatted as 32-bit unsigned integers.</p>
-<p>Destination tags indicate the beneficiary or destination for a payment. For example, a payment to an <a href="list-xrp-as-an-exchange.html">exchange</a> or <a href="stablecoin-issuer.html">stablecoin issuer</a> address can use a destination tag to indicate which customer to credit for the amount of the payment in that business's own systems. A payment to a merchant could indicate what item or cart the payment is buying.</p>
-<p>Source tags indicate the originator or source of a payment. Most commonly, a Source Tag is included so that the recipient of the payment knows where to send a return, or "bounced", payment. When returning an incoming payment, you should use the source tag from the incoming payment as the destination tag of the outgoing (return) payment.</p>
-<p>The practice of giving customers the ability to send and receive transactions from your XRP Ledger address using another interface is called providing <em>hosted accounts</em>. Hosted accounts typically use source and destination tags for each customer.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> An <a class="external-link" href="https://xrpaddress.info/" target="_blank">X-address <i aria-hidden="true" class="fa fa-external-link"></i></a> combines a classic address with a tag into a single address that encodes both. If you are showing a deposit address to customers, it may be easier for your customers to use an X-address rather than making them keep track of two pieces of information. (The tag in an X-address acts as a source tag when sending and a destination tag when receiving.)</p>
-<h2 id="rationale">Rationale<a aria-hidden="true" class="hover_anchor" href="#rationale"><i class="fa fa-link"></i></a></h2>
-<p>In other distributed ledgers, it is common to use different deposit addresses for each customer. In the XRP Ledger, an address must be a funded, permanent <a href="accounts.html">account</a> to receive payments. Using this approach in the XRP Ledger wastefully consumes resources of all servers in the network, and is costly because the <a href="reserves.html">reserve</a> amount must be set aside indefinitely for each address.</p>
-<p>Source and destination tags provide a more lightweight way to map deposits and payments to individual customers.</p>
-<h2 id="use-cases">Use Cases<a aria-hidden="true" class="hover_anchor" href="#use-cases"><i class="fa fa-link"></i></a></h2>
-<p>A business may want to use source and destination tags for several purposes:</p>
+        <h1 id="送信元タグと宛先タグ">送信元タグと宛先タグ<a aria-hidden="true" class="hover_anchor" href="#送信元タグと宛先タグ"><i class="fa fa-link"></i></a></h1>
+<p>_送信元タグ_と_宛先タグ_は、XRP Ledgerの<a href="payment-types.html">支払い</a>機能で、多目的アドレスからの支払いや多目的アドレスへの支払いの特定の目的を示すことができます。送信元タグと宛先タグは、台帳上の直接的な機能を持ちません。送信元タグと宛先タグは、台帳外のシステムがどのように支払いを処理すべきかについての情報を提供するだけです。トランザクションでは、送信元タグも宛先タグも 32ビット符号なし整数の形式です。</p>
+<p>宛先タグは、支払いの受取人または宛先を示します。例えば、<a href="list-xrp-as-an-exchange.html">取引所</a> や <a href="stablecoin-issuer.html">ステーブルコインの発行者</a>アドレスへの支払いは、宛先タグを使用して、そのビジネス自体のシステム内で支払額を与信するユーザを表すことができます。店舗・業者への支払いは、その支払いがどの商品を購入するのかを表すことができます。</p>
+<p>送信元タグは、支払いの送信者または送信元を示します。最も一般的なのは、受取人に対する返金時の送信先として送信元タグを使用することです。返金する場合は、受領した支払いの送信元タグを返金支払いの宛先タグとして使用する必要があります。</p>
+<p>顧客に、別のインターフェースを使用してXRP Ledgerアドレスからトランザクションを送受信する機能を提供することを、_ホストされたアカウント_の提供と呼びます。ホストされたアカウントでは通常、顧客ごとに送信元タグと宛先タグを使用します。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> <a class="external-link" href="https://xrpaddress.info/" target="_blank">Xアドレス <i aria-hidden="true" class="fa fa-external-link"></i></a>は、従来のアドレスとタグを組み合わせて、両方をエンコードして1つのアドレスにしたものです。顧客に入金アドレスを示す場合、顧客にアドレスとタグの2つの情報を管理させるよりも、Xアドレスを使用する方が顧客にとって簡単かもしれません。(Xアドレスのタグは、送信時には送信元タグとして、受信時には宛先タグとして機能します)。</p>
+<h2 id="理由">理由<a aria-hidden="true" class="hover_anchor" href="#理由"><i class="fa fa-link"></i></a></h2>
+<p>他の分散型台帳では、顧客ごとに異なる入金アドレスを使用するのが一般的です。XRP Ledgerでは、支払いを受け取るためには、そのアドレスは入金され有効化済みの<a href="accounts.html">アカウント</a>でなければなりません。XRP Ledgerで他と同じアプローチを用いると、ネットワーク内の全てのサーバのリソースを無駄に消費し、各アドレスに対して<a href="reserves.html">準備金</a>の金額を無制限に確保しなければならな苦なり、大きなコストがかかります。</p>
+<p>送信元タグと宛先タグは、入金と支払いを個別の顧客にマッピングする、より軽量な方法を提供します。</p>
+<h2 id="ユースケース">ユースケース<a aria-hidden="true" class="hover_anchor" href="#ユースケース"><i class="fa fa-link"></i></a></h2>
+<p>ビジネスにおいては、複数の目的で送信元タグと宛先タグを使用する場合があります：</p>
 <ul>
-<li>Direct mappings to customer accounts.</li>
-<li>Matching return payments to the outgoing payments that prompted them.</li>
-<li>Mapping payments to quotes that expire.</li>
-<li>Providing disposable tags that customers can generate for specific deposits.</li>
+<li>顧客アカウントへの直接マッピング</li>
+<li>返金された支払いを、その支払いを行った支払元にマッピング</li>
+<li>期限切れの見積もりへの支払いのマッピング</li>
+<li>顧客が特定の入金に対して生成できる使い捨てタグの提供</li>
 </ul>
-<p>To prevent overlap while protecting privacy, a business can divide the total range of tags available into sections for each purpose, then assign tags in an unpredictable order within the range. For example, use a cryptographic hash function like <a class="external-link" href="https://en.wikipedia.org/wiki/SHA-2" target="_blank">SHA-256 <i aria-hidden="true" class="fa fa-external-link"></i></a>, then use the <a class="external-link" href="https://en.wikipedia.org/wiki/Modulo_operation" target="_blank">modulo operator <i aria-hidden="true" class="fa fa-external-link"></i></a> to map the output to the size of the relevant section. To be safe, check for collisions with old tags before using a new tag.</p>
-<p>Assigning tags in numerical order provides less privacy to customers. Since all XRP Ledger transactions are public, assigning tags in this way can make it possible to guess which tags correspond to various users' addresses or to derive information about users' accounts based on the tags used.</p>
-<h2 id="requiring-tags">Requiring Tags<a aria-hidden="true" class="hover_anchor" href="#requiring-tags"><i class="fa fa-link"></i></a></h2>
-<p>For an XRP Ledger address that may receive payments intended for several customer accounts, receiving a payment <em>without</em> a destination tag can be a problem: it is not immediately obvious which customer to credit, which can require a manual intervention and a discussion with the sender to figure out who was the intended recipient. To reduce cases like this, you can <a href="require-destination-tags.html">enable the <code>RequireDest</code> setting</a>. That way, if a user forgets to include a destination tag in a payment, the XRP Ledger rejects their payment instead of giving you money you don't know what to do with. The user can then send the payment again, using the tag as they should have.</p>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<p>プライバシーを保護しながらタグの重複を防ぐために、ビジネスでは利用可能なタグの全範囲を目的ごとに分割し、その範囲内でタグを予測不可能な順序で割り当てることができます。例えば、<a class="external-link" href="https://ja.wikipedia.org/wiki/SHA-2" target="_blank">SHA-256 <i aria-hidden="true" class="fa fa-external-link"></i></a>のような暗号ハッシュ関数を使用し、<a class="external-link" href="https://ja.wikipedia.org/wiki/剰余演算" target="_blank">剰余演算 <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して出力を関連するセクションのサイズにマッピングします。安全のため、新しいタグを使う前に古いタグとの衝突をチェックしてください。</p>
+<p>タグを番号順に割り当てると、顧客のプライバシーが損なわれます。XRP Ledgerのトランザクションはすべて公開されているため、番号順でタグを割り当てると、タグとユーザのアドレスの対応を推測したり、使用されているタグに基づいてユーザのアカウントに関する情報を導き出したりすることが可能になります。</p>
+<h2 id="タグの必須化">タグの必須化<a aria-hidden="true" class="hover_anchor" href="#タグの必須化"><i class="fa fa-link"></i></a></h2>
+<p>複数の顧客口座への支払いを受け取る可能性があるXRP Ledgerアドレスにとって、宛先タグなしで支払いを受け取ることは問題です。どの顧客に入金すべきかがすぐに分からないため、手作業が必要になったり、誰が受取人であったかを特定するために送金者とやり取りをしなければならなくなったりします。このようなケースを減らすために、<a href="require-destination-tags.html"><code>RequireDest</code>設定を有効にする</a>ことができます。そうすることで、もしユーザが支払先にタグを設定し忘れた場合、XRP Ledgerはその支払いを拒否します。その後、ユーザはそのタグを使って再度支払いを行うことができます。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><a href="require-destination-tags.html">Require Destination Tags</a></li>
-<li><a href="payment-types.html">Payment Types</a></li>
+<li><a href="require-destination-tags.html">宛先タグの必須化</a></li>
+<li><a href="payment-types.html">支払いのタイプ</a></li>
 </ul>
 <!-- -->
 <!-- -->
@@ -671,7 +669,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/source-and-destination-tags.html">Source and Destination Tags</a>
+    <a class="nav-link nav-leaf" href="/ja/source-and-destination-tags.html">送信元タグと宛先タグ</a>
   </div>
 
       
@@ -753,6 +751,26 @@
     <a class="nav-link nav-leaf" href="/ja/payment-channels.html">Payment Channel</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
+  </div>
+
     </nav>
 
   </div>
@@ -767,50 +785,97 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
-
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
+
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_6" aria-expanded="false" aria-controls="tree_nav_group_4_6_6"></a>
+
+        <a class="nav-link" href="/ja/nft-index.html">NFTのコンセプトの概要</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-payload-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfers.html">NFTの取引 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/reserve-requirements.html">NFTの準備金要件</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorized-another-minter.html">Authorizing Another Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/auctions.html">NFTオークションの実施</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
       
@@ -824,96 +889,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
-
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-types.html">Stablecoin Types</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stabelcoin Settings</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
-
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transfer-fees.html">送金手数料</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
   </div>
 
       
@@ -924,11 +900,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_9"></a>
 
-        <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
+        <a class="nav-link" href="/ja/de-index.ja.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -937,11 +913,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/autobridging.html">オートブリッジング</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticksize.html">ティックサイズ</a>
   </div>
 
       
@@ -965,16 +936,6 @@
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
@@ -1002,7 +963,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1060,6 +1031,11 @@
     <a class="nav-link nav-leaf" href="/ja/py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-create-time-based-escrows.html">Create Time-based Escrows Using Python</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1090,6 +1066,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1299,7 +1280,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/require-destination-tags.html">宛先タグの要求</a>
+    <a class="nav-link nav-leaf" href="/ja/require-destination-tags.html">宛先タグの必須化</a>
   </div>
 
       
@@ -1896,7 +1877,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>
@@ -1991,6 +1972,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>
@@ -2285,6 +2271,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nfts_by_issuer.html">nfts_by_issuer</a>
   </div>
 
       
@@ -2603,7 +2594,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">Commandline Usage</a>
+    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">コマンドラインの使い方</a>
   </div>
 
       
@@ -2625,9 +2616,13 @@
   </div>
 
       
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
       
@@ -2643,6 +2638,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       
@@ -2677,7 +2677,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
 
-        <a class="nav-link" href="/ja/server-modes.html">Server Modes</a>
+        <a class="nav-link" href="/ja/server-modes.html">サーバの種類</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
       
@@ -2699,7 +2699,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
 
-        <a class="nav-link" href="/ja/data-retention.html">Data Retention</a>
+        <a class="nav-link" href="/ja/data-retention.html">データの保存</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
       
@@ -2738,12 +2738,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">修正投票機能の設定</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Test Amendments</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">Amendment投票機能の設定</a>
   </div>
 
       
@@ -2766,6 +2761,11 @@
     <a class="nav-link nav-leaf" href="/ja/enable-public-signing.html">パブリック署名の有効化</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Amendmentのテスト</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2775,7 +2775,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
 
-        <a class="nav-link" href="/ja/configure-peering.html">Peering</a>
+        <a class="nav-link" href="/ja/configure-peering.html">ピアリング</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
       
@@ -2845,6 +2845,11 @@
     <a class="nav-link nav-leaf" href="/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
@@ -2896,16 +2901,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
-  </div>
-
     </nav>
 
   </div>
@@ -2951,6 +2946,7 @@
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
@@ -2969,7 +2965,6 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
             <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
@@ -3019,6 +3014,95 @@ $(document).ready(() => {
 })
 </script>
 
+<!-- XRPL AI -->
+<script id="xrplai-options">
+  var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
+  var PROMPT_MODE = 'prompt';
+  var RUNTIME_LOCATION = 'ripplex';
+  var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `uPcw5BckVeKgyF2NE6la4VVFtA56OBQ4`;
+  var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+  var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
+  var CHAT_ENDPOINT = '/v1/chat';
+  var PROMPT_ENDPOINT = '/v1/chat';
+  var FEEDBACK_ENDPOINT = '/v1/feedback';
+  var BASE_URL = RUNTIME_LOCATION === 'ripplex'
+    ? DEV_XRPLAI_RIPPLEX_API_BASE_URL
+    : LOCALHOST_API_BASE_URL;
+  var CHAT_API_URL = `${BASE_URL}${CHAT_ENDPOINT}`;
+  var PROMPT_API_URL = `${BASE_URL}${PROMPT_ENDPOINT}`;
+  var FEEDBACK_API_URL = `${BASE_URL}${FEEDBACK_ENDPOINT}`;
+
+  /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+  window.markprompt = {
+    projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
+    defaultView: 'prompt',
+    options: {
+      chat: {
+        enabled: PROMPT_MODE === 'chat',
+        apiUrl: CHAT_API_URL,
+      },
+      feedback: {
+        enabled: true,
+        apiUrl: FEEDBACK_API_URL,
+      },
+      prompt: {
+        apiUrl: PROMPT_API_URL,
+        systemPrompt: `
+You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "".
+
+Context sections:
+---
+
+
+Question: ""
+
+Answer (including related code snippets if available and markdown links to relevant things):
+        `.trim(),
+      },
+      references: {
+        getHref: (reference) => {
+        const { file } = reference;
+        if (file && file.path) {
+          // /\/content\/[^_][^/]*\.md/.test(file.path)
+          if (file.path.includes('content/') && !file.path.includes('content/_') && file.path.endsWith('.md')) {
+            // Remove the extension if it's a regular content page that lives on xrpl.org
+            // return file.path.replace(/\.[^.]+$/, '');
+            // Change extension to html and remove content/ from the URL
+            if (file.path.endsWith('ja.md')) {
+              // Japanese lives at /ja/<filename>.html
+              return `ja/${file.path.replace(/content\//, '').replace(/\.ja\.md$/, '.html')}`
+            }
+            return file.path.replace(/content\//, '').replace(/\.md$/, '.html')
+          } else {
+            // Otherwise link to a file on the github repo such as .js or README.md
+            return `https://github.com/XRPLF/xrpl-dev-portal/blob/master/${file.path}`;
+          }
+        } else {
+          // Handle the case where file or file.path is missing
+          return '';
+        }
+      },
+        getLabel: (reference) => {
+          return reference.meta?.leadHeading?.value || reference.file?.title;
+        },
+      },
+      showBranding: false,
+      trigger: {
+        floating: true,
+      },
+      search: {
+        enabled: true,
+        provider: {
+          name: 'algolia',
+          apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+          appId: 'R39QY3MZC7',
+          indexName: 'xrpl',
+        },
+      }
+    },
+  };
+</script>
+<script id="initjs" type="module" src="https://www.unpkg.com/@xrpl/ai-web/dist/init.js"></script>
 
 
 </body>

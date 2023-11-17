@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="AMMDeposit | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/ammdeposit.html" />
-    <meta property="og:description" content="LPTokenと引き換えに、自動マーケットメーカーに資金を預けます。" />
-    <meta name="description" content="LPTokenと引き換えに、自動マーケットメーカーに資金を預けます。" />
+    <meta property="og:description" content="自動マーケットメーカーに資金を預け、LPTokenを受け取ります。" />
+    <meta name="description" content="自動マーケットメーカーに資金を預け、LPTokenを受け取ります。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -60,6 +60,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
 
     <script src="https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js"></script>
+    <link rel="stylesheet" href="https://www.unpkg.com/@xrpl/ai-css/xrplai.css" />
 
 
     <!-- Theme switch -->
@@ -170,6 +171,7 @@
             <a class="dropdown-item" href="/ja/code-samples.html">サンプルコード</a>
             <a class="dropdown-item" href="/ja/dev-tools.html">開発者ツール</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL学習ポータル</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" target="_blank">XRPLブランドキット</a>
           </div><!--./col-->
           <div class="navcol col-for-現在のステータス">
             <h5 class="dropdown-item">現在のステータス</h5>
@@ -202,7 +204,6 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">開発者ブログ</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/" target="_blank">GitHub</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPLブランドキット</a>
             <a class="dropdown-item" href="/ja/report-a-scam.html">詐欺の報告</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -257,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/references/protocol-reference/transactions/transaction-types/ammdeposit.ja.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinIssuer/content/@i18n/ja/references/protocol/transactions/types/ammdeposit.md?pr=/XRPLF/xrpl-dev-portal/pull/2132" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -274,8 +275,9 @@
         <li class="nav-item level-2"><a class="nav-link" href="#ammdeposit-jsonの例">AMMDeposit JSONの例</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#ammdeposit-フィールド">AMMDeposit フィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ammdepositモード">AMMDepositモード</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#シングルアセット入金手数料">シングルアセット入金手数料</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#ammdepositフラグ">AMMDepositフラグ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#シングルアセット入金の手数料">シングルアセット入金の手数料</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#空のammの場合の特殊なケース">空のAMMの場合の特殊なケース</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ammdepositのフラグ">AMMDepositのフラグ</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#エラーケース">エラーケース</a></li>
       </ul>
   </div>
@@ -301,14 +303,11 @@
     <li class="active breadcrumb-item">AMMDeposit</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="ammdeposit">AMMDeposit<a aria-hidden="true" class="hover_anchor" href="#ammdeposit"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMDeposit.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要。)</em></p>
-<p><a href="automated-market-makers.html">自動マーケットメーカー</a>（AMM）インスタンスに資金を預け、引き換えにAMMの流動性プロバイダートークン（ <em>LPトークン</em> ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMDeposit.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><em>(<a href="known-amendments.html#amm">AMM amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>が必要です。)</em></p>
+<p><a href="automated-market-makers.html">自動マーケットメーカー</a>（AMM）インスタンスに資金を預け、AMMの流動性プロバイダートークン（ <em>LPトークン</em> ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。</p>
 <p>トランザクションが成功すると、LPトークンを保持するためにAMMアカウント(リミット0)に<a href="trust-lines-and-issuing.html">トラストライン</a>が作成されます。</p>
 <h2 id="ammdeposit-jsonの例">AMMDeposit JSONの例<a aria-hidden="true" class="hover_anchor" href="#ammdeposit-jsonの例"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -390,10 +389,10 @@
 </tbody>
 </table>
 <h3 id="ammdepositモード">AMMDepositモード<a aria-hidden="true" class="hover_anchor" href="#ammdepositモード"><i class="fa fa-link"></i></a></h3>
-<p>このトランザクションには5つのモードがあり、どのフラグを指定するかで定義されます。それぞれのモードは、特定のフィールドの組み合わせを必要とし、次の2つのカテゴリーに分類されます。</p>
+<p>このトランザクションには5つのモードがあり、どのフラグを指定するかで定義されます。それぞれのモードは、特定のフィールドの組み合わせを必要とし、次の2つのカテゴリに分類されます。</p>
 <ul>
-<li><strong>ダブルアセット入金</strong>: AMMのプールにある両方(2つ)の資産を、既存の資産の残高に比例して預けます。この預け入れは手数料の対象外です。</li>
-<li><strong>シングルアセット入金</strong>, AMMの2つの資産のうち1つだけを預けます。AMMは、この預け入れによってプール内の資産残高がどれだけ変化したかによって、対価として支払われるLPトークンから差し引く手数料を設定します。</li>
+<li><strong>ダブルアセット入金</strong>: AMMのプールにある両方(2つ)の資産を、既存の資産の残高に比例して預けます。この預け入れでは手数料は徴収されません。</li>
+<li><strong>シングルアセット入金</strong>: AMMの2つの資産のうち1つだけを預けます。AMMは、この預け入れによってプール内の資産残高がどれだけ変化したかによって、対価として支払われるLPトークンから差し引く手数料を設定します。</li>
 </ul>
 <p>以下の項目の組み合わせは、<strong>ダブルアセット入金</strong>について示しています。</p>
 <table class="table-responsive">
@@ -410,13 +409,19 @@
 <td><code>tfLPToken</code></td>
 <td><code>0x00010000</code></td>
 <td><code>LPTokenOut</code>のみ</td>
-<td>指定された量のLPトークンを受け取るように計算された金額の、このAMMの両資産を預けます。預ける金額は、AMMの保有する2つの資産の割合と等しくなります。</td>
+<td>指定された量のLPトークンを受け取るようにこのAMMの2つの資産を預けます。預ける金額は、AMMの保有する2つの資産の割合と等しくなります。</td>
 </tr>
 <tr>
 <td><code>tfTwoAsset</code></td>
 <td><code>0x00100000</code></td>
 <td><code>Amount</code>と<code>Amount2</code></td>
-<td>このAMMの両資産を指定された金額まで預けます。実際に預ける金額は、AMMがすでに保有している資産と同じ割合を維持する必要があるため、どちらか一方の預け入れ金額が指定金額より少なくてもかまいません。引き換えに得られるLPトークンの金額は、預けた金額の合計に基づきます。</td>
+<td>このAMMの両資産を指定した金額まで預けます。実際に預ける金額は、AMMがすでに保有している資産と同じ割合を維持する必要があるため、どちらか一方の預け入れ金額が指定金額より少なくてもかまいません。得られるLPトークンの金額は、預けた金額の合計から算出されます。</td>
+</tr>
+<tr>
+<td><code>tfTwoAssetIfEmpty</code></td>
+<td><code>0x00800000</code></td>
+<td><code>Amount</code>と<code>Amount2</code></td>
+<td>プールが空のAMMに、このAMMの資産を指定した金額預け入れます。得られるLPトークンの量は、預け入れた合計額から算出されます。</td>
 </tr>
 </tbody>
 </table>
@@ -452,8 +457,8 @@
 </tbody>
 </table>
 <p>これ以外のフィールドとフラグの組み合わせは無効です。</p>
-<h3 id="シングルアセット入金手数料">シングルアセット入金手数料<a aria-hidden="true" class="hover_anchor" href="#シングルアセット入金手数料"><i class="fa fa-link"></i></a></h3>
-<p>シングルアセット入金の手数料は、AMMを使って預け入れ金額の一部を他の資産と交換し、ダブルアセット入金を行った場合と同じになるように計算されます。AMMの取引手数料は、取引に必要な金額には適用されますが、残りの預け入れ金額には適用されません。 <em>例えば、AMMの資産プールがUSDとEURで完全に均等に分割されている場合、100USDを預けようとすると、受け取るLPトークンの量は、50EUR+50USDを預けた場合よりもわずかに少なくなります。</em></p>
+<h3 id="シングルアセット入金の手数料">シングルアセット入金の手数料<a aria-hidden="true" class="hover_anchor" href="#シングルアセット入金の手数料"><i class="fa fa-link"></i></a></h3>
+<p>シングルアセット入金の手数料は、AMMを使って預け入れ金額の一部を他の資産と交換し、結果的にダブルアセット入金を行った場合と同じになるように計算されます。AMMの取引手数料は、一部の資産の交換に必要な金額には適用されますが、残りの預け入れ金額には適用されません。 <em>例えば、AMMの資産プールがUSDとEURで完全に均等に分割されている場合、100USDを預けようとすると、受け取るLPトークンの量は、50EUR+50USDを預けた場合よりもわずかに少なくなります。</em></p>
 <p>ダブルアセット入金の場合、LPトークンを受け取る数は、以下の計算式で算出できます。</p>
 <figure><a href="img/amm-single-asset-deposit-formula.svg" title="L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="70 100 380 120" width="380" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/amm-single-asset-deposit-formula.svg__genericDefs"></defs><g><defs id="img/amm-single-asset-deposit-formula.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath2"><path d="M0 0 L0 30 L40 30 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath3"><path d="M0 0 L0 20 L160 20 L160 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath4"><path d="M0 0 L0 30 L30 30 L30 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath5"><path d="M0 0 L0 80 L40 80 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath6"><path d="M0 0 L0 70 L40 70 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath7"><path d="M0 0 L0 50 L40 50 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath8"><path d="M0 0 L0 30 L70 30 L70 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/amm-single-asset-deposit-formula.svg__clipPath9"><path d="M0 0 L0 30 L180 30 L180 0 Z"></path></clippath></defs><g font-family="sans-serif" font-size="14px" transform="translate(170,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">1 +</text></g><g font-family="sans-serif" font-size="14px" transform="translate(200,140)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath3)" stroke="none" x="5" xml:space="preserve" y="18.1094">B - (F × (1 - W) × B)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(260,160)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">P</text></g><g font-family="sans-serif" font-size="60px" transform="translate(390,120)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="61.2188">]</text></g><g font-family="sans-serif" font-size="60px" transform="translate(150,120)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="61.2188">[</text></g><g font-family="sans-serif" font-size="40px" transform="translate(340,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="42.4844">)</text></g><g font-family="sans-serif" font-size="40px" transform="translate(160,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="42.4844">(</text></g><g font-family="sans-serif" font-size="14px" transform="translate(350,130)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">W</text></g><g font-family="sans-serif" font-size="14px" transform="translate(370,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">- 1</text></g><g font-family="sans-serif" font-size="14px" transform="translate(90,150)"><text clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="18.1094">L = T ×</text></g><g transform="translate(190,150)"><path clip-path="url(#img/amm-single-asset-deposit-formula.svg__clipPath9)" d="M10.5 10.5 L160.5 10.5" fill="none"></path></g></g></svg></a></figure>
 <!-- TODO: improve graphic -->
@@ -465,8 +470,11 @@
 <li><code>W</code>: プール内の預金資産の重みです。これはすべてのAMMプールで0.5と定義されています（50/50の分割を意味します）ので、Wによる累乗は平方根を取ることと同一です。</li>
 <li><code>P</code>: 預け入れ前のプール内の預金資産の合計額</li>
 </ul>
-<h3 id="ammdepositフラグ">AMMDepositフラグ<a aria-hidden="true" class="hover_anchor" href="#ammdepositフラグ"><i class="fa fa-link"></i></a></h3>
-<p>AMMDepositタイプのトランザクションは、以下のように<a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code>フィールド</a>の値を追加でサポートしています。</p>
+<h3 id="空のammの場合の特殊なケース">空のAMMの場合の特殊なケース<a aria-hidden="true" class="hover_anchor" href="#空のammの場合の特殊なケース"><i class="fa fa-link"></i></a></h3>
+<p>場合によっては、プール内に資産がない状態で AMM が存在することがあります。このような状態の AMM には通常の入金を行うことができません。なぜなら資産間の比率が未定義 (0/0) だからです。その代わりに、フラグ <code>tfTwoAssetIfEmpty</code> と両方の資産の正確な金額を指定した“空AMM”への特殊な入金を行うことができます。これはAMMを作成する<a href="ammcreate.html">AMMCreateトランザクション</a>が行うのと同じように、資産間の比率を直接設定します。ダブルアセット入金と同様に、これは手数料を徴収されません。</p>
+<p>AMMが空の場合のみ、「空のAMM」への特別な入金を行うことができます。</p>
+<h3 id="ammdepositのフラグ">AMMDepositのフラグ<a aria-hidden="true" class="hover_anchor" href="#ammdepositのフラグ"><i class="fa fa-link"></i></a></h3>
+<p>AMMDepositトランザクションは、以下のような<a href="transaction-common-fields.html#flagsフィールド"><code>Flags</code>フィールド</a>の値をサポートしています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -507,9 +515,15 @@
 <td style="text-align: left;">4194304</td>
 <td style="text-align: left;">有効価格を指定して、シングルアセット入金を行います。</td>
 </tr>
+<tr>
+<td style="text-align: left;"><code>tfTwoAssetIfEmpty</code></td>
+<td style="text-align: left;"><code>0x00800000</code></td>
+<td style="text-align: left;">8388608</td>
+<td style="text-align: left;">空のプールを持つAMMに特別なダブルアセット入金を行います。</td>
+</tr>
 </tbody>
 </table>
-<p>これらのフラグのうちの <strong>1つのみ</strong> と、任意の<a href="transaction-common-fields.html#グローバルフラグ">グローバルフラグ</a>を指定する必要があります。</p>
+<p>これらのフラグのうちの<strong>1つのみ</strong>と、任意の<a href="transaction-common-fields.html#グローバルフラグ">グローバルフラグ</a>を指定する必要があります。</p>
 <h2 id="エラーケース">エラーケース<a aria-hidden="true" class="hover_anchor" href="#エラーケース"><i class="fa fa-link"></i></a></h2>
 <p>すべてのトランザクションで発生する可能性のあるエラーに加えて、AMMDepositトランザクションでは、次の<a href="transaction-results.html">トランザクション結果コード</a>が発生する可能性があります。</p>
 <table class="table-responsive">
@@ -521,44 +535,40 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>temBAD_AMM_OPTIONS</code></td>
-<td style="text-align: left;">トランザクションで無効なフィールドの組み合わせが指定されました。詳細は、<a href="#ammdepositモード">AMMDepositモード</a>を参照してください。</td>
+<td style="text-align: left;"><code>tecAMM_EMPTY</code></td>
+<td style="text-align: left;">現在、AMM は資産を保有していないため、通常の入金はできません。代わりに、空のAMMの場合の特殊な入金を行う必要があります。</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>tecFROZEN</code></td>
-<td style="text-align: left;">トランザクションは<a href="freezes.html">凍結</a>されているトークンを預けようとしました。</td>
+<td style="text-align: left;"><code>tecAMM_NOT_EMPTY</code></td>
+<td style="text-align: left;">The transaction specified <code>tfTwoAssetIfEmpty</code>, but the AMM was not empty.</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>tecAMM_BALANCE</code></td>
-<td style="text-align: left;">AMMが預け入れを行うのに十分な量の資産を保有していない（たとえば、シングルアセット入金に必要な残高を保有していない）、または送信者が指定されたトークンを十分に保有していない場合など。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>temBAD_AMM_TOKENS</code></td>
-<td style="text-align: left;">トランザクションでLPトークンが正しく指定されています。例えば、<code>issuer</code>がAMMのAccountRootアドレスでない、<code>currency</code>がこのAMMのLPトークンの通貨コードでない、またはトランザクションがAssetフィールドのいずれかにこのAMMのLPトークンを指定した、など。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>tecAMM_FAILED_DEPOSIT</code></td>
+<td style="text-align: left;"><code>tecAMM_FAILED</code></td>
 <td style="text-align: left;">預け入れの条件が成立しませんでした。例えば、<code>EPrice</code>フィールドに指定された実効価格が低すぎる場合など。</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>tecAMM_INVALID_TOKENS</code></td>
-<td style="text-align: left;">このトークンペアのAMMが存在しないか、計算の結果、預け入れ金額がゼロに丸められました。</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>tecFROZEN</code></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>tecINSUF_RESERVE_LINE</code></td>
 <td style="text-align: left;">このトランザクションの送信者は、この処理による<a href="reserves.html">準備金要件</a>の増加の対象であり、LPトークンを保持するための新しいトラストラインが必要で、そのための追加の所有者準備金分のXRPを保有していないためと思われます。</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>tecNO_AUTH</code></td>
-<td style="text-align: left;">送信者は、預け入れ資産のいずれかを保有する権限を持っ ていません。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>tecNO_LINE</code></td>
-<td style="text-align: left;">送信者が預け入れ資産のうち1つに対し、トラストラインを保有していません。</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>tecUNFUNDED_AMM</code></td>
 <td style="text-align: left;">送信者の残高が、指定された預け入れを行うのに十分な量ではありません。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temBAD_AMOUNT</code></td>
+<td style="text-align: left;">トランザクションで指定された金額が無効です。例えば、金額がマイナスなど。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temBAD_FEE</code></td>
+<td style="text-align: left;">トランザクションで指定された手数料の値が無効です。例えば、取引手数料が許容範囲外など。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>temMALFORMED</code></td>
+<td style="text-align: left;">トランザクションで無効なフィールドの組み合わせが指定されました。詳細は、<a href="#ammdepositモード">AMMDepositモード</a>を参照してください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>terNO_ACCOUNT</code></td>
@@ -908,7 +918,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/source-and-destination-tags.html">Source and Destination Tags</a>
+    <a class="nav-link nav-leaf" href="/ja/source-and-destination-tags.html">送信元タグと宛先タグ</a>
   </div>
 
       
@@ -990,6 +1000,26 @@
     <a class="nav-link nav-leaf" href="/ja/payment-channels.html">Payment Channel</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1004,50 +1034,97 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6">
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
-
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/non-fungible-token-transfers.html">NFTの取引</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-reserve-requirements.html">NFTの準備金要件</a>
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
+
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
+  </div>
+
+    </nav>
+
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-auctions.html">NFTオークションの実施</a>
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_6" aria-expanded="false" aria-controls="tree_nav_group_4_6_6"></a>
+
+        <a class="nav-link" href="/ja/nft-index.html">NFTのコンセプトの概要</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_6">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nft-batch-minting.html">バッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-collections.html">NFTのコレクション化</a>
+    <a class="nav-link nav-leaf" href="/ja/authorized-minting.html">代理Mint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-payload-storage.html">NFT Payload Storage</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/transfers.html">NFTの取引 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/reserve-requirements.html">NFTの準備金要件</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/batch-minting.html">Batch Minting</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorized-another-minter.html">Authorizing Another Minter</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/auctions.html">NFTオークションの実施</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/collections.html">NFTのコレクション化</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/fixed-supply.html">NFTの一定の供給量を保証する</a>
   </div>
 
       
@@ -1061,96 +1138,7 @@
 
       
   <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
-
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-types.html">Stablecoin Types</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stabelcoin Settings</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-technical-details.html">Stablecoin Technical Details</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_2_10"></a>
-
-        <a class="nav-link" href="/ja/freezes.html">発行済み通貨の凍結</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2_10">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/transfer-fees.html">送金手数料</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
   </div>
 
       
@@ -1161,11 +1149,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_8" aria-expanded="false" aria-controls="tree_nav_group_4_6_8"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_9" aria-expanded="false" aria-controls="tree_nav_group_4_6_9"></a>
 
-        <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
+        <a class="nav-link" href="/ja/de-index.ja.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_8">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_9">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1174,11 +1162,6 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/autobridging.html">オートブリッジング</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ticksize.html">ティックサイズ</a>
   </div>
 
       
@@ -1202,16 +1185,6 @@
         <a class="nav-link" href="/ja/accounts.html">アカウント</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_7">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
-  </div>
-
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/account-types.html">アカウントの種類</a>
@@ -1239,7 +1212,17 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/multi-signing.html">マルチシグ</a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/depositauth.html">Deposit Authorization</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/tickets.html">Ticket</a>
   </div>
 
     </nav>
@@ -1297,6 +1280,11 @@
     <a class="nav-link nav-leaf" href="/ja/py-create-trustline-send-currency.html">Create Trust Line and Send Currency Using Python</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-create-time-based-escrows.html">Create Time-based Escrows Using Python</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1327,6 +1315,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/py-authorize-minter.html">Assign an Authorized Minter Using Python</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/py-batch-minting.html">Batch Mint NFTs</a>
   </div>
 
     </nav>
@@ -1536,7 +1529,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/require-destination-tags.html">宛先タグの要求</a>
+    <a class="nav-link nav-leaf" href="/ja/require-destination-tags.html">宛先タグの必須化</a>
   </div>
 
       
@@ -2133,7 +2126,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/serialization.html">シリアル化フォーマット</a>
+    <a class="nav-link nav-leaf" href="/ja/serialization.html">バイナリフォーマット</a>
   </div>
 
     </nav>
@@ -2228,6 +2221,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/rippled-server-states.html">rippledサーバーの状態</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
   </div>
 
     </nav>
@@ -2522,6 +2520,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft_history.html">nft_history</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/nfts_by_issuer.html">nfts_by_issuer</a>
   </div>
 
       
@@ -2840,7 +2843,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_7">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">Commandline Usage</a>
+    <a class="nav-link nav-leaf" href="/ja/commandline-usage.html">コマンドラインの使い方</a>
   </div>
 
       
@@ -2862,9 +2865,13 @@
   </div>
 
       
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/install-rippled-on-ubuntu.html">UbuntuまたはDebian Linuxへのインストール</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
   </div>
 
       
@@ -2880,6 +2887,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/update-rippled-manually-on-ubuntu.html">UbuntuまたはDebianでの手動更新</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
   </div>
 
       
@@ -2914,7 +2926,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_7_3_1"></a>
 
-        <a class="nav-link" href="/ja/server-modes.html">Server Modes</a>
+        <a class="nav-link" href="/ja/server-modes.html">サーバの種類</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_3_1">
       
@@ -2936,7 +2948,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_7_3_2"></a>
 
-        <a class="nav-link" href="/ja/data-retention.html">Data Retention</a>
+        <a class="nav-link" href="/ja/data-retention.html">データの保存</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_3_2">
       
@@ -2975,12 +2987,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">修正投票機能の設定</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Test Amendments</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-amendment-voting.html">Amendment投票機能の設定</a>
   </div>
 
       
@@ -3003,6 +3010,11 @@
     <a class="nav-link nav-leaf" href="/ja/enable-public-signing.html">パブリック署名の有効化</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/test-amendments.html">Amendmentのテスト</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3012,7 +3024,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_7_4" aria-expanded="false" aria-controls="tree_nav_group_7_4"></a>
 
-        <a class="nav-link" href="/ja/configure-peering.html">Peering</a>
+        <a class="nav-link" href="/ja/configure-peering.html">ピアリング</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_7_4">
       
@@ -3082,6 +3094,11 @@
     <a class="nav-link nav-leaf" href="/ja/advance-the-ledger-in-stand-alone-mode.html">スタンドアロンモードでレジャーを進める</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+  </div>
+
     </nav>
 
   </div>
@@ -3133,16 +3150,6 @@
 
   </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
-  </div>
-
     </nav>
 
   </div>
@@ -3188,6 +3195,7 @@
             <li class="nav-item"><a href="/ja/code-samples.html" class="nav-link">サンプルコード</a></li>
             <li class="nav-item"><a href="/ja/dev-tools.html" class="nav-link">開発者ツール</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL学習ポータル</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">XRP Ledger エクスプローラ</a></li>
             <li class="nav-item"><a href="/ja/known-amendments.html" class="nav-link">既知のAmendment</a></li>
             <li class="nav-item"><a href="/ja/contribute-code.html" class="nav-link">コードへの貢献</a></li>
@@ -3206,7 +3214,6 @@
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">開発者ブログ</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPLブランドキット</a></li>
             <li class="nav-item"><a href="/ja/report-a-scam.html" class="nav-link">詐欺の報告</a></li>
           </ul>
         </div><!--/.col -->
@@ -3256,6 +3263,95 @@ $(document).ready(() => {
 })
 </script>
 
+<!-- XRPL AI -->
+<script id="xrplai-options">
+  var TARGET_XRPL_DEV_PORTAL_BRANCH = 'main';
+  var PROMPT_MODE = 'prompt';
+  var RUNTIME_LOCATION = 'ripplex';
+  var DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY = `uPcw5BckVeKgyF2NE6la4VVFtA56OBQ4`;
+  var DEV_XRPLAI_RIPPLEX_API_BASE_URL = 'https://api.ai.xrpl.org';
+  var LOCALHOST_API_BASE_URL = 'http://api.localhost:3000';
+  var CHAT_ENDPOINT = '/v1/chat';
+  var PROMPT_ENDPOINT = '/v1/chat';
+  var FEEDBACK_ENDPOINT = '/v1/feedback';
+  var BASE_URL = RUNTIME_LOCATION === 'ripplex'
+    ? DEV_XRPLAI_RIPPLEX_API_BASE_URL
+    : LOCALHOST_API_BASE_URL;
+  var CHAT_API_URL = `${BASE_URL}${CHAT_ENDPOINT}`;
+  var PROMPT_API_URL = `${BASE_URL}${PROMPT_ENDPOINT}`;
+  var FEEDBACK_API_URL = `${BASE_URL}${FEEDBACK_ENDPOINT}`;
+
+  /** @type {import('@xrpl/ai-react').MarkpromptOptions} */
+  window.markprompt = {
+    projectKey: DEV_XRPLAI_RIPPLEX_IO_PROJECT_KEY,
+    defaultView: 'prompt',
+    options: {
+      chat: {
+        enabled: PROMPT_MODE === 'chat',
+        apiUrl: CHAT_API_URL,
+      },
+      feedback: {
+        enabled: true,
+        apiUrl: FEEDBACK_API_URL,
+      },
+      prompt: {
+        apiUrl: PROMPT_API_URL,
+        systemPrompt: `
+You are a very enthusiastic company representative who loves to help people! Given the following sections from the documentation (preceded by a section id), answer the question using only that information, outputted in Markdown format. If you are unsure and the answer is not explicitly written in the documentation, say "".
+
+Context sections:
+---
+
+
+Question: ""
+
+Answer (including related code snippets if available and markdown links to relevant things):
+        `.trim(),
+      },
+      references: {
+        getHref: (reference) => {
+        const { file } = reference;
+        if (file && file.path) {
+          // /\/content\/[^_][^/]*\.md/.test(file.path)
+          if (file.path.includes('content/') && !file.path.includes('content/_') && file.path.endsWith('.md')) {
+            // Remove the extension if it's a regular content page that lives on xrpl.org
+            // return file.path.replace(/\.[^.]+$/, '');
+            // Change extension to html and remove content/ from the URL
+            if (file.path.endsWith('ja.md')) {
+              // Japanese lives at /ja/<filename>.html
+              return `ja/${file.path.replace(/content\//, '').replace(/\.ja\.md$/, '.html')}`
+            }
+            return file.path.replace(/content\//, '').replace(/\.md$/, '.html')
+          } else {
+            // Otherwise link to a file on the github repo such as .js or README.md
+            return `https://github.com/XRPLF/xrpl-dev-portal/blob/master/${file.path}`;
+          }
+        } else {
+          // Handle the case where file or file.path is missing
+          return '';
+        }
+      },
+        getLabel: (reference) => {
+          return reference.meta?.leadHeading?.value || reference.file?.title;
+        },
+      },
+      showBranding: false,
+      trigger: {
+        floating: true,
+      },
+      search: {
+        enabled: true,
+        provider: {
+          name: 'algolia',
+          apiKey: '3431349deec23b0bc3dcd3424beb9a6e',
+          appId: 'R39QY3MZC7',
+          indexName: 'xrpl',
+        },
+      }
+    },
+  };
+</script>
+<script id="initjs" type="module" src="https://www.unpkg.com/@xrpl/ai-web/dist/init.js"></script>
 
 
 </body>
