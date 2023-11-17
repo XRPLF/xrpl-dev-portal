@@ -29,15 +29,104 @@ function successNotif(msg) {
     alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
 }
 
-function setUpForPartialPayments() {
-    console.log("TODO - Implement setUpForPartialPayments! (see tx-sender.js for details)")
+async function setUpForPartialPayments
+    (
+    api: Client,
+    sendingWallet: Wallet,
+    setBalance: React.Dispatch<React.SetStateAction<number>>,
+    setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
+    setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
+    ppCurrencyCode: string, 
+    ) {
+    console.debug("Starting partial payment setup...")
+ 
+    // Causing loader to appear because no longer 0%
+    setPpWidthPercent(1)
+    let ppIssuerWallet;
+
+    // 1. Get a funded address to use as issuer
+    try {
+        ppIssuerWallet = (await api.fundWallet()).wallet
+        setPpIssuerWallet(ppIssuerWallet)
+    } catch(error) {
+        console.log("Error getting issuer address for partial payments:", error)
+        return
+    }
+    setPpWidthPercent(20)
+    
+    // 2. Set Default Ripple on issuer
+    let resp = await submit_and_notify(api, ppIssuerWallet, setBalance, {
+        TransactionType: "AccountSet",
+        Account: ppIssuerWallet.address,
+        SetFlag: 8 // asfDefaultRipple
+    }, true)
+    if (resp === undefined) {
+        console.log("Couldn't set Default Ripple for partial payment issuer")
+        return
+    }
+    setPpWidthPercent(40)
+    
+    // 3. Make a trust line from sending address to issuer
+    resp = await submit_and_notify(api, sendingWallet, setBalance, {
+        TransactionType: "TrustSet",
+        Account: sendingWallet.address,
+        LimitAmount: {
+            currency: ppCurrencyCode,
+            value: "1000000000", // arbitrarily, 1 billion fake currency
+            issuer: ppIssuerWallet.address
+        }
+    }, true)
+    if (resp === undefined) {
+        console.log("Error making trust line to partial payment issuer")
+        return
+    }
+    setPpWidthPercent(60)
+    
+        // 4. Issue fake currency to main sending address
+    resp = await submit_and_notify(api, ppIssuerWallet, setBalance, {
+        TransactionType: "Payment",
+        Account: ppIssuerWallet.address,
+        Destination: sendingWallet.address,
+        Amount: {
+            currency: ppCurrencyCode,
+            value: "1000000000",
+            issuer: ppIssuerWallet.address
+        }
+    }, true)
+    if (resp === undefined) {
+        console.log("Error sending fake currency from partial payment issuer")
+        return
+    }
+    setPpWidthPercent(80)
+    
+    // 5. Place offer to buy issued currency for XRP
+    // When sending the partial payment, the sender consumes their own offer (!)
+    // so they end up paying themselves issued currency then delivering XRP.
+    resp = await submit_and_notify(api, sendingWallet, setBalance, {
+        TransactionType: "OfferCreate",
+        Account: sendingWallet.address,
+        TakerGets: "1000000000000000", // 1 billion XRP
+        TakerPays: {
+            currency: ppCurrencyCode,
+            value: "1000000000",
+            issuer: ppIssuerWallet.address
+        }
+    }, true)
+    if (resp === undefined) {
+        console.log("Error placing order to enable partial payments")
+        return
+    }
+    setPpWidthPercent(100)
+
+    // Done. Enable "Send Partial Payment" button
+    console.log("Done getting ready to send partial payments.")
 }
 
 function logTx(tx, hash, finalResult) {
     console.log("TODO - Implement logTx with the code at the top of tx-sender.js")
 }
 
-function timeout(ms) {
+function timeout(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
@@ -54,7 +143,7 @@ function timeout(ms) {
 //       Amount: "1000000000000000", // 1 billion XRP
 //       SendMax: {
 //         value: (Math.random()*.01).toPrecision(15), // random very small amount
-//         currency: pp_sending_currency,
+//         currency: ppCurrencyCode,
 //         issuer: pp_issuer_wallet.address
 //       },
 //       Flags: xrpl.PaymentFlags.tfPartialPayment
@@ -224,7 +313,10 @@ async function onInitClick(
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setSendingWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
     setIsInitEnabled: React.Dispatch<React.SetStateAction<boolean>>, 
-    setConnectionReady: React.Dispatch<React.SetStateAction<boolean>>): Promise<void> {
+    setConnectionReady: React.Dispatch<React.SetStateAction<boolean>>,
+    setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>,
+    setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
+    ): Promise<void> {
     
     if(existingApi) {
         console.log("Already initializing!")
@@ -246,18 +338,25 @@ async function onInitClick(
 
     console.debug("Getting a sending address from the faucet...")
     try {
-      const fund_response = await api.fundWallet()
-      setSendingWallet(fund_response.wallet)
+      const fundResponse = await api.fundWallet()
+      const sendingWallet = fundResponse.wallet
+      setSendingWallet(sendingWallet)
       // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
-      setBalance(xrpl.dropsToXrp(fund_response.balance))
+      setBalance(xrpl.dropsToXrp(fundResponse.balance))
+      setIsInitEnabled(false)
+      await setUpForPartialPayments(
+        api, 
+        sendingWallet, 
+        setBalance,
+        setPpIssuerWallet, 
+        setPpWidthPercent, 
+        "BAR",  
+      )  
     } catch(error) {
       console.error(error)
       errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
       return
     }
-
-    setIsInitEnabled(false)
-    setUpForPartialPayments()
 }
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
@@ -277,6 +376,10 @@ export default function TxSender() {
     const [destinationAddress, setDestinationAddress] = useState("rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
     
     const [isInitEnabled, setIsInitEnabled] = useState(true)
+
+    // Partial Payment variables
+    const [ppWidthPercent, setPpWidthPercent] = useState(0)
+    const [ppIssuerWallet, setPpIssuerWallet] = useState<Wallet | undefined>(undefined)
 
     // Payment button variables
     const defaultDropsToSend = 100000
@@ -317,7 +420,15 @@ export default function TxSender() {
                             <button className={clsx("btn btn-primary form-control", isInitEnabled ? "" : "disabled")} 
                                 type="button" id="init_button" 
                                 onClick={() => {
-                                    onInitClick(api!, setApi, setBalance, setSendingWallet, setIsInitEnabled, setConnectionReady)
+                                    onInitClick(
+                                        api!, 
+                                        setApi, 
+                                        setBalance, 
+                                        setSendingWallet, 
+                                        setIsInitEnabled, 
+                                        setConnectionReady,
+                                        setPpIssuerWallet,
+                                        setPpWidthPercent,)
                                 }}
                                 disabled={!isInitEnabled}
                                 title={isInitEnabled ? "" : "done"}>
@@ -386,7 +497,13 @@ export default function TxSender() {
                         {/* TODO: Migrate partial payments (had a loading bar, so left for last) */}
                         <div className="form-group" id="send_partial_payment">
                             <div className="progress mb-1" id="pp_progress">
-                                <div className="progress-bar progress-bar-striped w-0">&nbsp;</div>
+                                <div className={
+                                    clsx("progress-bar progress-bar-striped w-0", 
+                                        (ppWidthPercent < 100 && ppWidthPercent > 0) && "progress-bar-animated")}
+                                    style={{width: (Math.min(ppWidthPercent + 1, 100)).toString() + "%",
+                                    display: (ppWidthPercent >= 100) ? 'none' : ''}}>
+                                        &nbsp;
+                                </div>
                                 <small className="justify-content-center d-flex position-absolute w-100">
                                     {translate("(Getting ready to send partial payments)")}
                                 </small>
@@ -398,8 +515,10 @@ export default function TxSender() {
                                     </span>
                                 </div>
                                 <button className="btn btn-primary form-control" 
-                                    type="button" id="send_partial_payment_btn" disabled={true} 
-                                    title={translate("(Please wait for partial payments setup to finish)")}>
+                                    // TODO: Keep this "disabled" logic custom when using the Component!
+                                    type="button" id="send_partial_payment_btn" disabled={ppWidthPercent < 100} 
+                                    // TODO: Keep this unique element when using the Component!
+                                    title={(ppWidthPercent > 0 && ppWidthPercent < 100) ? translate("(Please wait for partial payments setup to finish)") : ""}>
                                         {translate("Send Partial Payment")}
                                 </button>
                             </div>
