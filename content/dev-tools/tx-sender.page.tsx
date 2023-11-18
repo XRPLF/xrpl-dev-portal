@@ -13,8 +13,16 @@ import { type Client, type Transaction, type TransactionMetadata, type Wallet } 
 // - Add the proper top-level divs to match what's live (Currently has an empty classname Div as the main wrapper)
 // - Componentize the repeated sections
 
+// Refactoring:
 // - Standardize the use of `client` instead of `api`
 // - Most of these "ids" aren't necessary for our css - we can do better (and simplify parameters as a result!
+
+// All unchanging information needed to submit & log data
+interface SubmitConstData {
+    api: Client, 
+    setBalance: React.Dispatch<React.SetStateAction<number>>, 
+    setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>,
+}
 
 // Helpers
 function isoTimeToRippleTime(isoSeconds: number) {
@@ -23,18 +31,19 @@ function isoTimeToRippleTime(isoSeconds: number) {
 }
 
 function errorNotif(msg) {
-    alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+    console.log(msg)
+    // alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
 }
 
 function successNotif(msg) {
-    alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+    console.log(msg)
+    // alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
 }
 
 async function setUpForPartialPayments
     (
-    api: Client,
+    submitConstData: SubmitConstData,
     sendingWallet: Wallet,
-    setBalance: React.Dispatch<React.SetStateAction<number>>,
     setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
     setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
     ppCurrencyCode: string, 
@@ -44,6 +53,7 @@ async function setUpForPartialPayments
     // Causing loader to appear because no longer 0%
     setPpWidthPercent(1)
     let ppIssuerWallet;
+    const { api } = submitConstData
 
     // 1. Get a funded address to use as issuer
     try {
@@ -56,7 +66,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(20)
     
     // 2. Set Default Ripple on issuer
-    let resp = await submit_and_notify(api, ppIssuerWallet, setBalance, {
+    let resp = await submit_and_notify(submitConstData, ppIssuerWallet, {
         TransactionType: "AccountSet",
         Account: ppIssuerWallet.address,
         SetFlag: 8 // asfDefaultRipple
@@ -68,7 +78,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(40)
     
     // 3. Make a trust line from sending address to issuer
-    resp = await submit_and_notify(api, sendingWallet, setBalance, {
+    resp = await submit_and_notify(submitConstData, sendingWallet, {
         TransactionType: "TrustSet",
         Account: sendingWallet.address,
         LimitAmount: {
@@ -84,7 +94,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(60)
     
         // 4. Issue fake currency to main sending address
-    resp = await submit_and_notify(api, ppIssuerWallet, setBalance, {
+    resp = await submit_and_notify(submitConstData, ppIssuerWallet, {
         TransactionType: "Payment",
         Account: ppIssuerWallet.address,
         Destination: sendingWallet.address,
@@ -103,7 +113,7 @@ async function setUpForPartialPayments
     // 5. Place offer to buy issued currency for XRP
     // When sending the partial payment, the sender consumes their own offer (!)
     // so they end up paying themselves issued currency then delivering XRP.
-    resp = await submit_and_notify(api, sendingWallet, setBalance, {
+    resp = await submit_and_notify(submitConstData, sendingWallet, {
         TransactionType: "OfferCreate",
         Account: sendingWallet.address,
         TakerGets: "1000000000000000", // 1 billion XRP
@@ -124,9 +134,8 @@ async function setUpForPartialPayments
 }
 
 async function onClickCreateEscrow(
-    api: Client, 
+    submitConstData: SubmitConstData,
     sendingWallet: Wallet, 
-    setBalance: React.Dispatch<React.SetStateAction<number>>, 
     destinationAddress: string, 
     duration_seconds: number, 
     setEscrowWidthPercent: React.Dispatch<React.SetStateAction<number>>, 
@@ -138,7 +147,7 @@ async function onClickCreateEscrow(
 
     const finish_after = isoTimeToRippleTime(new Date().getTime()) + duration_seconds
 
-    const escrowcreate_tx_data = await submit_and_notify(api, sendingWallet, setBalance, {
+    const escrowcreate_tx_data = await submit_and_notify(submitConstData, sendingWallet, {
         TransactionType: "EscrowCreate",
         Account: sendingWallet.address,
         Destination: destinationAddress,
@@ -150,6 +159,8 @@ async function onClickCreateEscrow(
         // Wait until there's a ledger with a close time > FinishAfter
         // to submit the EscrowFinish
         setEscrowWidthPercent(1)
+
+        const { api } = submitConstData
 
         let latest_close_time = -1
         while (latest_close_time <= finish_after) {
@@ -173,7 +184,7 @@ async function onClickCreateEscrow(
         // Now submit the EscrowFinish
         // Future feature: submit from a different sender, just to prove that
         // escrows can be finished by a third party
-        await submit_and_notify(api, sendingWallet, setBalance, {
+        await submit_and_notify(submitConstData, sendingWallet, {
           Account: sendingWallet.address,
           TransactionType: "EscrowFinish",
           Owner: sendingWallet.address,
@@ -185,8 +196,20 @@ async function onClickCreateEscrow(
       setEscrowWidthPercent(0) 
 }
 
-function logTx(tx, hash, finalResult) {
-    console.log("TODO - Implement logTx with the code at the top of tx-sender.js")
+function logTx(tx, hash, finalResult, setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>) {
+    let classes
+    let icon
+    const txLink = "https://testnet.xrpl.org/transactions/" + hash
+    if (finalResult === "tesSUCCESS") {
+      classes = "text-muted"
+      icon = <i className="fa fa-check-circle"></i>
+    } else {
+      classes = "list-group-item-danger"
+      icon = <i className="fa fa-times-circle"></i>
+    }
+    const li = <li key={hash} className={clsx("list-group-item fade-in p-1", classes)}>{icon} {tx}: <a href={txLink} target="_blank" className="external-link">{hash}</a></li>
+
+    setTxHistory((prevState) => [li].concat(prevState))
 }
 
 function timeout(ms: number): Promise<void> {
@@ -194,8 +217,7 @@ function timeout(ms: number): Promise<void> {
 }
 
 function TransactionButton({
-    api,
-    setBalance,
+    submitConstData,
     connectionReady,
     transaction,
     sendingWallet,
@@ -206,8 +228,7 @@ function TransactionButton({
     checkBox,
     customOnClick
 }: {
-    api: Client,
-    setBalance: React.Dispatch<React.SetStateAction<number>>,
+    submitConstData: SubmitConstData,
     connectionReady: boolean,
     transaction: Transaction,
     sendingWallet: Wallet | undefined
@@ -227,7 +248,6 @@ function TransactionButton({
         setInputValue: React.Dispatch<React.SetStateAction<number>>, 
         min: number,
         max: number,
-        expectInt: boolean, // Otherwise expects float - ex. For issued currency amounts.
     },
     loadingBar?: {
         id: string,
@@ -279,7 +299,7 @@ function TransactionButton({
                         || (loadingBar?.widthPercent && loadingBar.widthPercent < 100))}
                     onClick={async () => {
                         setWaitingForTransaction(true)
-                        customOnClick ? await customOnClick() : await submit_and_notify(api, sendingWallet!, setBalance, transaction)
+                        customOnClick ? await customOnClick() : await submit_and_notify(submitConstData, sendingWallet!, transaction)
                         setWaitingForTransaction(false)
                     }}
                     title={(loadingBar && (loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100)) ? translate(content.buttonTitle) : ""}
@@ -289,9 +309,20 @@ function TransactionButton({
                 {/* If there are no input settings, we don't need the form, or the units */}
                 {inputSettings &&
                     <input id={ids.inputId} className="form-control" type="number" 
-                        aria-describedby={ids.inputId + "_help"} defaultValue={inputSettings?.defaultValue} min={1} max={inputSettings?.max}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => 
-                            inputSettings?.setInputValue(inputSettings?.expectInt ? parseInt(e.target.value) : parseFloat(e.target.value))
+                        aria-describedby={ids.inputId + "_help"} 
+                        defaultValue={inputSettings?.defaultValue} 
+                        min={inputSettings?.min} 
+                        max={inputSettings?.max}
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                            // Enforce min / max values
+                            let { value, min, max } = event.target;
+                        
+                            const newValue = Math.max(Number(min), Math.min(Number(max), Number(value)));
+                            this.setState({ value: newValue.toString() })
+
+                            // Share the value so other logic can update based on it
+                            inputSettings?.setInputValue(newValue)
+                        }
                     } />}
 
                 {inputSettings && <div className="input-group-append">
@@ -322,11 +353,12 @@ function TransactionButton({
 
 // TODO: Make sure all calls to this function specify the wallet used!
 async function submit_and_notify(
-    api: Client, 
-    sendingWallet: Wallet, 
-    setBalance: React.Dispatch<React.SetStateAction<number>>, 
+    submitData: SubmitConstData,
+    sendingWallet: Wallet,
     tx_object: Transaction, 
     silent: boolean = false) {
+
+    const { api, setBalance, setTxHistory } = submitData
 
     let prepared;
     try {
@@ -353,7 +385,7 @@ async function submit_and_notify(
           errorNotif(`${tx_object.TransactionType} tx failed w/ code ${final_result}
                       (hash: ${hash})`)
         }
-        logTx(tx_object.TransactionType, hash, final_result)
+        logTx(tx_object.TransactionType, hash, final_result, setTxHistory)
       }
 
       setBalance(parseFloat(await api.getXrpBalance(sendingWallet.address)))
@@ -373,8 +405,18 @@ function canSendTransaction(connectionReady, sendingAddress) {
     return connectionReady && sendingAddress
 }
 
-function StatusSidebar(
-    {balance, sendingWallet, connectionReady, txHistory}) {
+function StatusSidebar({
+    balance,
+    sendingWallet, 
+    connectionReady, 
+    txHistory
+}:
+{
+    balance: number,
+    sendingWallet: Wallet,
+    connectionReady: boolean,
+    txHistory: React.JSX.Element[],
+}) {
     const { translate } = useTranslate();
 
     return (<aside className="right-sidebar col-lg-6 order-lg-4">
@@ -393,9 +435,9 @@ function StatusSidebar(
                 </ul>
                 <div id="tx-sender-history">
                     <h5 className="m-3">{translate("Transaction History")}</h5>
-                    <ul className="list-group list-group-flush"></ul>
-                    {/* TODO: This has a lot of detailed formatting */}
-                    {txHistory}
+                    <ul className="list-group list-group-flush">
+                        {txHistory}
+                    </ul>
                 </div>
             </div>
         </div>
@@ -403,6 +445,7 @@ function StatusSidebar(
 }
 
 async function onInitClick(
+    submitConstData: SubmitConstData,
     existingApi: Client, 
     setApi: React.Dispatch<React.SetStateAction<Client | undefined>>, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
@@ -410,8 +453,8 @@ async function onInitClick(
     setIsInitEnabled: React.Dispatch<React.SetStateAction<boolean>>, 
     setConnectionReady: React.Dispatch<React.SetStateAction<boolean>>,
     setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>,
-    ppCurrencyCode: string,
     setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
+    ppCurrencyCode: string,
     ): Promise<void> {
     
     if(existingApi) {
@@ -441,9 +484,8 @@ async function onInitClick(
       setBalance(xrpl.dropsToXrp(fundResponse.balance))
       setIsInitEnabled(false)
       await setUpForPartialPayments(
-        api, 
+        submitConstData, 
         sendingWallet, 
-        setBalance,
         setPpIssuerWallet, 
         setPpWidthPercent, 
         ppCurrencyCode,  
@@ -467,6 +509,13 @@ export default function TxSender() {
     const [sendingWallet, setSendingWallet] = useState<Wallet | undefined>(undefined)
     const [connectionReady, setConnectionReady] = useState(false)
     const [txHistory, setTxHistory] = useState([])
+
+    // Used when submitting transactions to trace all transactions in the UI
+    const submitConstData = {
+        api,
+        setBalance,
+        setTxHistory,
+    }
 
     // TODO: setDestinationAddress when input changes :)
     const [destinationAddress, setDestinationAddress] = useState("rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
@@ -502,6 +551,7 @@ export default function TxSender() {
     const defaultTrustLimit = 100000
     const [trustLimit, setTrustLimit] = useState(defaultTrustLimit)
     
+
     return (
     <div className="row">
         {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
@@ -521,6 +571,7 @@ export default function TxSender() {
                                 type="button" id="init_button" 
                                 onClick={() => {
                                     onInitClick(
+                                        submitConstData,
                                         api!, 
                                         setApi, 
                                         setBalance, 
@@ -528,8 +579,9 @@ export default function TxSender() {
                                         setIsInitEnabled, 
                                         setConnectionReady,
                                         setPpIssuerWallet,
+                                        setPpWidthPercent,
                                         ppCurrencyCode,
-                                        setPpWidthPercent,)
+                                    )
                                 }}
                                 disabled={!isInitEnabled}
                                 title={isInitEnabled ? "" : "done"}>
@@ -563,8 +615,7 @@ export default function TxSender() {
                         <h3>{translate("Send Transaction")}</h3>
                         {/* Send Payment  */}
                         <TransactionButton 
-                            api={api!}
-                            setBalance={setBalance}
+                            submitConstData={submitConstData}
                             connectionReady={connectionReady}
                             sendingWallet={sendingWallet}
                             transaction={
@@ -592,13 +643,11 @@ export default function TxSender() {
                                 setInputValue: setDropsToSendForPayment,
                                 min: 1,
                                 max: 10000000000,
-                                expectInt: true,
                             }}
                         />
                         {/* Partial Payments */}
                         <TransactionButton 
-                            api={api!}
-                            setBalance={setBalance}
+                            submitConstData={submitConstData}
                             connectionReady={connectionReady}
                             sendingWallet={sendingWallet}
                             transaction={
@@ -638,8 +687,7 @@ export default function TxSender() {
                         />
                         {/* Escrow */}
                         <TransactionButton
-                            api={api!}
-                            setBalance={setBalance}
+                            submitConstData={submitConstData}
                             connectionReady={connectionReady}
                             sendingWallet={sendingWallet}
                             transaction={
@@ -669,7 +717,6 @@ export default function TxSender() {
                                 setInputValue: setFinishAfter,
                                 min: 5,
                                 max: 10000,
-                                expectInt: true,
                             }}
                             loadingBar={{
                                 id: "escrow_progress",
@@ -683,9 +730,8 @@ export default function TxSender() {
                                 description: translate("Finish automatically"),
                             }}
                             customOnClick={() => onClickCreateEscrow(
-                                api, 
+                                submitConstData, 
                                 sendingWallet, 
-                                setBalance, 
                                 destinationAddress, 
                                 finishAfter, 
                                 setEscrowWidthPercent, 
@@ -697,8 +743,7 @@ export default function TxSender() {
                               valid claims for the given payment channel to help test redeeming 
                         */}
                         <TransactionButton
-                            api={api!}
-                            setBalance={setBalance}
+                            submitConstData={submitConstData}
                             connectionReady={connectionReady}
                             sendingWallet={sendingWallet}
                             transaction={{
@@ -728,14 +773,12 @@ export default function TxSender() {
                                 setInputValue: setPaymentChannelAmount,
                                 min: 1,
                                 max: 10000000000,
-                                expectInt: true,
                             }}
                         />
                         {/* Send Issued Currency */}
                             {/* TODO: Add ability to configure custom currency codes */}
                             <TransactionButton
-                            api={api!}
-                            setBalance={setBalance}
+                            submitConstData={submitConstData}
                             connectionReady={connectionReady}
                             sendingWallet={sendingWallet}
                             transaction={
@@ -770,13 +813,11 @@ export default function TxSender() {
                                 setInputValue: setIssueAmount,
                                 min: 1,
                                 max: 10000000000,
-                                expectInt: false,
                             }}
                         />
                         {/* Create Trust Line */}
                         <TransactionButton
-                            api={api!}
-                            setBalance={setBalance}
+                            submitConstData={submitConstData}
                             connectionReady={connectionReady}
                             sendingWallet={sendingWallet}
                             transaction={
@@ -808,7 +849,6 @@ export default function TxSender() {
                                 setInputValue: setTrustLimit,
                                 min: 1,
                                 max: 10000000000,
-                                expectInt: false,
                             }}
                         />
                     </form>
