@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { useState } from 'react'
 import { clsx } from 'clsx'
-import { type Client, type Transaction, type TransactionMetadata, type Wallet } from 'xrpl'
+import { TxResponse, type Client, type Transaction, type TransactionMetadata, type Wallet } from 'xrpl'
 
 // TODO:
 // - Change all links that previously went to tx-sender.html to dev-tools/tx-sender
@@ -40,9 +40,11 @@ function successNotif(msg) {
     // alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
 }
 
+// TODO: I appear to have broken this with my latest refactor, not sure how. (Probably with submit_and_notify syntax)
+// It gets to the 1% trigger (animation starts after init button) - but it does not actually progress to 20%
 async function setUpForPartialPayments
     (
-    submitConstData: SubmitConstData,
+    api: Client,
     sendingWallet: Wallet,
     setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
     setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
@@ -53,7 +55,6 @@ async function setUpForPartialPayments
     // Causing loader to appear because no longer 0%
     setPpWidthPercent(1)
     let ppIssuerWallet;
-    const { api } = submitConstData
 
     // 1. Get a funded address to use as issuer
     try {
@@ -63,14 +64,15 @@ async function setUpForPartialPayments
         console.log("Error getting issuer address for partial payments:", error)
         return
     }
+    
     setPpWidthPercent(20)
     
     // 2. Set Default Ripple on issuer
-    let resp = await submit_and_notify(submitConstData, ppIssuerWallet, {
+    let resp: TxResponse = await api.submitAndWait({
         TransactionType: "AccountSet",
         Account: ppIssuerWallet.address,
         SetFlag: 8 // asfDefaultRipple
-    }, true)
+    }, { wallet: ppIssuerWallet })
     if (resp === undefined) {
         console.log("Couldn't set Default Ripple for partial payment issuer")
         return
@@ -78,7 +80,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(40)
     
     // 3. Make a trust line from sending address to issuer
-    resp = await submit_and_notify(submitConstData, sendingWallet, {
+    resp = await api.submitAndWait({
         TransactionType: "TrustSet",
         Account: sendingWallet.address,
         LimitAmount: {
@@ -86,7 +88,7 @@ async function setUpForPartialPayments
             value: "1000000000", // arbitrarily, 1 billion fake currency
             issuer: ppIssuerWallet.address
         }
-    }, true)
+    }, { wallet: sendingWallet })
     if (resp === undefined) {
         console.log("Error making trust line to partial payment issuer")
         return
@@ -94,7 +96,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(60)
     
         // 4. Issue fake currency to main sending address
-    resp = await submit_and_notify(submitConstData, ppIssuerWallet, {
+    resp = await api.submitAndWait({
         TransactionType: "Payment",
         Account: ppIssuerWallet.address,
         Destination: sendingWallet.address,
@@ -103,7 +105,7 @@ async function setUpForPartialPayments
             value: "1000000000",
             issuer: ppIssuerWallet.address
         }
-    }, true)
+    }, { wallet: ppIssuerWallet })
     if (resp === undefined) {
         console.log("Error sending fake currency from partial payment issuer")
         return
@@ -113,7 +115,7 @@ async function setUpForPartialPayments
     // 5. Place offer to buy issued currency for XRP
     // When sending the partial payment, the sender consumes their own offer (!)
     // so they end up paying themselves issued currency then delivering XRP.
-    resp = await submit_and_notify(submitConstData, sendingWallet, {
+    resp = await api.submitAndWait({
         TransactionType: "OfferCreate",
         Account: sendingWallet.address,
         TakerGets: "1000000000000000", // 1 billion XRP
@@ -122,7 +124,7 @@ async function setUpForPartialPayments
             value: "1000000000",
             issuer: ppIssuerWallet.address
         }
-    }, true)
+    }, { wallet: sendingWallet })
     if (resp === undefined) {
         console.log("Error placing order to enable partial payments")
         return
@@ -484,7 +486,7 @@ async function onInitClick(
       setBalance(xrpl.dropsToXrp(fundResponse.balance))
       setIsInitEnabled(false)
       await setUpForPartialPayments(
-        submitConstData, 
+        api, 
         sendingWallet, 
         setPpIssuerWallet, 
         setPpWidthPercent, 
