@@ -150,6 +150,7 @@ desc = "Test Net public server cluster"
 [[PRINCIPALS]]
 name = "Rome Reginelli" # Primary spec author
 email = "rome@example.com" # Not my real email address
+x = "Rome" # Not Rome's real X username/handle
 
 [[CURRENCIES]]
 code = "LOL"
@@ -209,10 +210,11 @@ The accounts list provides information about XRP Ledger accounts you own. If pre
 
 The principals list provides information about the people (or business entities) involved in your XRP Ledger businesses and services. If present, the principals list MUST BE presented as an array of tables, with each entry using the header `[[PRINCIPALS]]`, including double square brackets. Each entry describes a different point of contact. For _each_ `[[PRINCIPALS]]` entry, you MAY provide any of the following fields:
 
-| Field   | Type   | Description                                              |
-|:--------|:-------|:---------------------------------------------------------|
-| `name`  | String | The name of this principal.                              |
-| `email` | String | The email address where this principal can be contacted. |
+| Field   | Type   | Description                                                  |
+|:--------|:-------|:-------------------------------------------------------------|
+| `name`  | String | The name of this principal.                                  |
+| `email` | String | The email address where this principal can be contacted.     |
+| `x`     | String | The X username/handle where this principal can be contacted. |
 
 You may provide other contact information as desired. (See [Custom Fields](#custom-fields) for information about custom fields.)
 
