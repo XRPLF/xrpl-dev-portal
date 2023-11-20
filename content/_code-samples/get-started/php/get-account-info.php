@@ -18,11 +18,14 @@ $wallet = Wallet::generate();
 // Fund (and activate) the wallet
 fundWallet($client, $wallet);
 
+// Create an AccountInfoRequest method
 $accountInfoRequest = new AccountInfoRequest(
     account: $wallet->getAddress(),
     ledgerIndex: 'validated'
  );
 
-$accountInfoResponse = $client->syncRequest(($accountInfoRequest));
+//  Send the request to the XRPL
+$accountInfoResponse = $client->syncRequest($accountInfoRequest);
 
+// Print formatted response
 print_r($accountInfoResponse);

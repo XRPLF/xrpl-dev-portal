@@ -136,26 +136,7 @@ print_r([
 
 For testing and development purposes, you can use the `fundWallet()` helper function on the XRP Ledger [Testnet](parallel-networks.html):
 
-```php
-<?php
-
-// Use the Composer autoloader
-require __DIR__ . '/vendor/autoload.php';
-
-// Imports
-use XRPL_PHP\Client\JsonRpcClient;
-use XRPL_PHP\Wallet\Wallet;
-use function XRPL_PHP\Sugar\fundWallet;
-
-// Create a client using the Testnet
-$client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
-
-// Create a new wallet
-$wallet = Wallet::generate();
-
-// Fund (and activate) the wallet
-$fundWalletResponse = fundWallet($client, $wallet);
-```
+{{ include_code("_code-samples/get-started/php/get-account-info.php", start_with="<?php", end_before="// Create an AccountInfoRequest", language="php") }}
 
 ### 3. Query the XRP Ledger
 
@@ -163,37 +144,7 @@ You can query the XRP Ledger to get information about [a specific account](accou
 
 Here, we'll use the [`JsonRpcClient` we constructed](#1-connect-to-the-xrp-ledger) to look up information about the [account we got](#2-get-account) in the previous step.
 
-```php
-<?php
-
-// Use the Composer autoloader
-require __DIR__ . '/vendor/autoload.php';
-
-// Imports
-use XRPL_PHP\Client\JsonRpcClient;
-use XRPL_PHP\Wallet\Wallet;
-use function XRPL_PHP\Sugar\fundWallet;
-
-// Create a client using the Testnet
-$client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");
-
-// Create a new wallet
-$wallet = Wallet::generate();
-
-// Fund (and activate) the wallet
-$fundWalletResponse = fundWallet($client, $wallet);
-
-// Create an AccountInfo request "method"
-$accountInfoRequest = new AccountInfoRequest(
-    account: $wallet->getAddress(),
-    ledgerIndex: 'validated'
- );
-
-// Send AccountInfo request
-$accountInfoResponse = $client->syncRequest(($accountInfoRequest));
-
-print_r($accountInfoResponse);
-```
+{{ include_code("_code-samples/get-started/php/get-account-info.php", language="php", start_with="// Create an AccountInfoRequest") }}
 
 ### 4. Starting the script
 
@@ -207,7 +158,7 @@ To run the app, you can copy the code from [this website's GitHub Repository]({{
 
 ```console
 composer require hardcastle/xrpl_php
-php get-acct-info.php
+php get-account-info.php
 ```
 
 You should see output similar to this example:

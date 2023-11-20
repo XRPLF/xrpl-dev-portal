@@ -16,3 +16,11 @@ $wallet = Wallet::generate();
 
 // Fund (and activate) the wallet
 fundWallet($client, $wallet);
+
+// print wallet properties
+print_r([
+  'publicKey' => $wallet->getPublicKey(),
+  'privateKey' => $wallet->getPrivateKey(),
+  'classicAddress' => $wallet->getAddress(),
+  'seed' => $wallet->getSeed()
+]);

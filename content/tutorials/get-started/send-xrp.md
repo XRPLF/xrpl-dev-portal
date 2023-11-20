@@ -139,9 +139,10 @@ _Java_
 
 {{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
 
-_Java_
+_PHP_
 
 {{ include_code("_code-samples/send-xrp/php/send-xrp.php", start_with="// Transaction definition", end_before="// Sign", language="php") }}
+
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -190,7 +191,7 @@ _Java_
     start_with="// Sign", end_before="// Submit", language="java" ) }}
 
 
-_Java_
+_PHP_
 
 {{ include_code("_code-samples/send-xrp/php/send-xrp.php",
 start_with="// Sign", end_before="// Submit", language="php" ) }}
@@ -211,7 +212,7 @@ The result of the signing operation is a transaction object containing a signatu
 {{ end_step() }}
 
 
-### {{n.next()}}. Submit the Signed Blob
+### 5. Submit the Signed Blob
 
 Now that you have a signed transaction, you can submit it to an XRP Ledger server, which relays it through the network. It's also a good idea to take note of the latest validated ledger index before you submit. The earliest ledger version that your transaction could get into as a result of this submission is one higher than the latest validated ledger when you submit it. Of course, if the same transaction was previously submitted, it could already be in a previous ledger. (It can't succeed a second time, but you may not realize it succeeded if you aren't looking in the right ledger versions.)
 
@@ -257,7 +258,7 @@ example transaction</button>
 {{ end_step() }}
 
 
-### 5. Wait for Validation
+### 6. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For more information on expiration of unconfirmed transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
 
@@ -294,7 +295,7 @@ _PHP_
 {{ end_step() }}
 
 
-### 6. Check Transaction Status
+### 7. Check Transaction Status
 
 To know for sure what a transaction did, you must look up the outcome of the transaction when it appears in a validated ledger version.
 
