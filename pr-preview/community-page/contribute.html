@@ -160,6 +160,7 @@
             <a class="dropdown-item" href="code-samples.html">Code Samples</a>
             <a class="dropdown-item" href="dev-tools.html">Dev Tools</a>
             <a class="dropdown-item external-link" href="https://learn.xrpl.org/" target="_blank">XRPL Learning Portal</a>
+            <a class="dropdown-item external-link" href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" target="_blank">XRPL Brand Kit</a>
           </div><!--./col-->
           <div class="navcol col-for-current-status">
             <h5 class="dropdown-item">Current Status</h5>
@@ -192,7 +193,6 @@
             <a class="dropdown-item external-link" href="https://xrpl.org/blog/" target="_blank">Dev Blog</a>
             <a class="dropdown-item external-link" href="https://xrplgrants.org/" target="_blank">XRPL Grants</a>
             <a class="dropdown-item external-link" href="https://github.com/XRPLF" target="_blank">GitHub</a>
-            <a class="dropdown-item external-link" href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" target="_blank">XRPL Brand Kit</a>
             <a class="dropdown-item" href="report-a-scam.html">Report a Scam</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -319,7 +319,7 @@ Community of           <span class="builders-wrap">Builders</span>
         <div class="num-separator"></div>
         <h5 id="upcoming-event-name" class="event-name">XRPL Warsaw Meetup 2023</h5>
         <p class="mb-2 event-details d-flex icon"> <span class="icon-location"> </span><span id="upcoming-event-date">September 08-09, 2023</span></p>
-        <p class="event-location d-flex icon"> <span class="icon-date" id="upcoming-event-location"> </span>Warsaw, Poland</p>
+        <p class="event-location d-flex icon"> <span class="icon-date" id="upcoming-event-location"> </span><span id="location-tag"> Warsaw, Poland </span></p>
     </div>
     <a target="_blank" class="cd-none-lg btn btn-primary btn-arrow view-all-events-btn" href="events.html">View All Events</a>
 </section>
@@ -502,6 +502,7 @@ Community of           <span class="builders-wrap">Builders</span>
             <li class="nav-item"><a href="code-samples.html" class="nav-link">Code Samples</a></li>
             <li class="nav-item"><a href="dev-tools.html" class="nav-link">Dev Tools</a></li>
             <li class="nav-item"><a href="https://learn.xrpl.org/" class="nav-link external-link">XRPL Learning Portal</a></li>
+            <li class="nav-item"><a href="https://xrpl.org/assets/XRPL_Brand_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="https://livenet.xrpl.org/" class="nav-link external-link">Ledger Explorer</a></li>
             <li class="nav-item"><a href="known-amendments.html" class="nav-link">Known Amendments</a></li>
             <li class="nav-item"><a href="contribute-code.html" class="nav-link">Contribute Code</a></li>
@@ -520,7 +521,6 @@ Community of           <span class="builders-wrap">Builders</span>
             <li class="nav-item"><a href="https://xrpl.org/blog/" class="nav-link external-link">Dev Blog</a></li>
             <li class="nav-item"><a href="https://xrplgrants.org/" class="nav-link external-link">XRPL Grants</a></li>
             <li class="nav-item"><a href="https://github.com/XRPLF" class="nav-link external-link">GitHub</a></li>
-            <li class="nav-item"><a href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip" class="nav-link external-link">XRPL Brand Kit</a></li>
             <li class="nav-item"><a href="report-a-scam.html" class="nav-link">Report a Scam</a></li>
           </ul>
         </div><!--/.col -->
@@ -665,6 +665,38 @@ Answer (including related code snippets if available and markdown links to relev
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
 const events = [
+  { "name": "New Horizon: Innovate Without Limits: New Horizons Await",      
+    "description": "Join our EVM-compatible chain launch for a chance to win $50,000 in prizes! Unleash your creativity in DeFi and NFTs, with judging criteria focused on novelty, impact, and community engagement.",
+    "type": "hackathon",
+    "link": "https://newhorizon.devpost.com/",
+    "location": "Virtual",
+    "date": "October 19, 2023 - December 22, 2023",
+    "image": "Hackathons.png",
+    "end_date": "December 22, 2023",
+    "start_date": "October 19, 2023"
+    },
+  {
+    "name": "XRPL Community Report Launch Party",      
+    "description": "Celebrate the XRPL Community Report launch at 7pm! Join blockchain enthusiasts, connect with experts, and discover opportunities in the XRP Ledger ecosystem. Limited space available, so register now for a night of celebration and networking!",
+    "type": "meetup",
+    "link": "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
+    "location": "Paris, France",
+    "date": "November 28, 7pm - 9pm",
+    "image": "paris.png",
+    "end_date": "November 28, 2023",
+    "start_date": "November 28, 2023"
+    },
+   {
+    "name": "XRPL Toronto Meetup Community - Celebrate with Us!",      
+    "description": "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    "location": "Downtown, Toronto",
+    "date": "December 7th, 6pm - 9pm",
+    "image": "event-meetup-toronto@2x.jpg",
+    "end_date": "December 7, 2023",
+    "start_date": "December 7, 2023"
+    },
   {
     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
     description:
@@ -675,6 +707,7 @@ const events = [
     date: "September 06, 2023",
     image: "InfoSessions.png",
     end_date: "September 06, 2023",
+    start_date: "September 06, 2023",
   },
   {
     name: "APEX 2024: The XRPL Developer Summit",
@@ -686,6 +719,7 @@ const events = [
     date: "June 11 - 13, 2024",
     image: "Conference.png",
     end_date: "June 13, 2024",
+    start_date: "June 11, 2024",
   },
   {
     name: "XRPL Developers Reddit AMA: Real World Assets",
@@ -697,17 +731,8 @@ const events = [
     date: "October 17, 2023",
     image: "AMAs.png",
     end_date: "October 17, 2023",
-  },
-  {
-    name: "New Horizon: Innovate Without Limits: New Horizons Await",
-    description:
-      "Join us to kickstart the ecosystem of the upcoming EVM-compatible chain, opening new possibilities for developers to explore the limitless potential of our platform.",
-    type: "hackathon",
-    link: "https://newhorizon.devpost.com/",
-    location: "Virtual",
-    date: "October 19, 2023 - December 22, 2023",
-    image: "Hackathons.png",
-    end_date: "December 22, 2023",
+    start_date: "October 17, 2023",
+
   },
 ];
  // Function to convert string date to Date object
@@ -730,7 +755,7 @@ const parseDate = (dateString) => {
   let minDaysDiff = Infinity;
 
   events.forEach(event => {
-    const eventEndDate = parseDate(event.end_date);
+    const eventEndDate = parseDate(event.start_date);
     const diffTime = eventEndDate - today;
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
@@ -744,7 +769,7 @@ const parseDate = (dateString) => {
     document.getElementById('days-count').textContent = `${minDaysDiff}`;
     document.getElementById('upcoming-event-name').textContent = closestEvent.name;
     document.getElementById('upcoming-event-date').textContent = closestEvent.date;
-    document.getElementById('upcoming-event-location').textContent = closestEvent.location;
+    document.getElementById('location-tag').textContent = closestEvent.location;
   } else {
     console.log('No upcoming events found. Hiding upcoming events section');
     document.getElementById('upcoming-events-section').style = 'display:none' 
