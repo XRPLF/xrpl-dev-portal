@@ -1,6 +1,7 @@
 from datetime import datetime
 events = [
-{ "name": "Hackathon: 2021",      
+     {
+      "name": "Hackathon: 2021",      
       "description": "Explore the exciting project submissions from the fall 2021 XRPL Hackathon that focused on the NFT and Hooks smart contract functionalities on the ledger.",
       "type": "hackathon",
       "link": "https://xrpl-hackathon-2021.devpost.com/project-gallery",
@@ -8,8 +9,7 @@ events = [
       "date": "September 13-October 6, 2021",
       "image": "Hackathons.png",
       "end_date": "October 6, 2021",
-      },
-      
+    },  
     { "name": "XRPL Community Meetup: San Diego",      
       "description": "The first official Meetup hosted by the XRPL Community. Community members in Southern California gathered around a firepit and shared their experiences with the XRPL.",
       "type": "meetup",
@@ -396,15 +396,6 @@ events = [
     "image": "AMAs.png",
     "end_date": "October 17, 2023"
     },
-    { "name": "XRPL Accelerator Demo Day",      
-    "description": "Join us for XRPL Accelerator Demo Day in Singapore! Explore pitches from 11 promising startups building on the XRP Ledger, network with founders and investors, and kickstart the Singapore FinTech Festival. Webinar link coming soon!",
-    "type": "meetup",
-    "link": "https://www.eventbrite.co.uk/e/xrpl-demo-day-tickets-740650023157?aff=oddtdtcreator",
-    "location": "Hybrid Singapore/Virtual Webinar",
-    "date": "November 14, 2023",
-    "image": "SouthKoreaMeetup.png",
-    "end_date": "November 14, 2023"
-    },
     { "name": "XRPL Blockhack Hackathon",      
     "description": "Join us at George Brown College's Waterfront Campus for workshops and talks on promoting growth for blockchain projects and ventures. We are supporting a for the most innovative application built on XRPL.",
     "type": "hackathon",
@@ -414,9 +405,17 @@ events = [
     "image": "Hackathons.png",
     "end_date": "October 22, 2023"
     },
-    
+    { "name": "XRPL Accelerator Demo Day",      
+    "description": "Join us for XRPL Accelerator Demo Day in Singapore! Explore pitches from 11 promising startups building on the XRP Ledger, network with founders and investors, and kickstart the Singapore FinTech Festival. Webinar link coming soon!",
+    "type": "meetup",
+    "link": "https://www.eventbrite.co.uk/e/xrpl-demo-day-tickets-740650023157?aff=oddtdtcreator",
+    "location": "Hybrid Singapore/Virtual Webinar",
+    "date": "November 14, 2023",
+    "image": "singapore.png",
+    "end_date": "November 14, 2023"
+    },
     { "name": "New Horizon: Innovate Without Limits: New Horizons Await",      
-    "description": "Join us to kickstart the ecosystem of the upcoming EVM-compatible chain, opening new possibilities for developers to explore the limitless potential of our platform.",
+    "description": "Join our EVM-compatible chain launch for a chance to win $50,000 in prizes! Unleash your creativity in DeFi and NFTs, with judging criteria focused on novelty, impact, and community engagement.",
     "type": "hackathon",
     "link": "https://newhorizon.devpost.com/",
     "location": "Virtual",
@@ -424,6 +423,27 @@ events = [
     "image": "Hackathons.png",
     "end_date": "December 22, 2023"
     },
+    {
+    "name": "XRPL Community Report Launch Party",      
+    "description": "Celebrate the XRPL Community Report launch at 7pm! Join blockchain enthusiasts, connect with experts, and discover opportunities in the XRP Ledger ecosystem. Limited space available, so register now for a night of celebration and networking!",
+    "type": "meetup",
+    "link": "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
+    "location": "Paris, France",
+    "date": "November 28, 7pm - 9pm",
+    "image": "paris.png",
+    "end_date": "November 28, 2023"
+    },
+    {
+    "name": "XRPL Toronto Meetup Community - Celebrate with Us!",      
+    "description": "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
+    "type": "meetup",
+    "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    "location": "Downtown, Toronto",
+    "date": "December 7th, 6pm - 9pm",
+    "image": "event-meetup-toronto@2x.jpg",
+    "end_date": "December 7, 2023"
+    },
+    
 ]
 def categorize_dates():
     past = []
