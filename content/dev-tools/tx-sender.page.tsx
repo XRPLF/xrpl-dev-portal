@@ -64,7 +64,7 @@ async function setUpForPartialPayments
         console.log("Error getting issuer address for partial payments:", error)
         return
     }
-    
+
     setPpWidthPercent(20)
     
     // 2. Set Default Ripple on issuer
@@ -501,6 +501,13 @@ async function onInitClick(
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
+function onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress) {
+    const newAddress = event.target.value
+    setDestinationAddress(newAddress)
+    // @ts-expect-error - xrpl is guaranteed to be defined by the time this field is changed.
+    setIsValidDestinationAddress(xrpl.isValidAddress(newAddress))
+}
+
 export default function TxSender() {
     const { translate } = useTranslate();
 
@@ -520,7 +527,9 @@ export default function TxSender() {
     }
 
     // TODO: setDestinationAddress when input changes :)
-    const [destinationAddress, setDestinationAddress] = useState("rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe")
+    const defaultDestinationAddress = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+    const [destinationAddress, setDestinationAddress] = useState(defaultDestinationAddress)
+    const [isValidDestinationAddress, setIsValidDestinationAddress] = useState(true)
     
     const [isInitEnabled, setIsInitEnabled] = useState(true)
 
@@ -599,20 +608,20 @@ export default function TxSender() {
                             <label htmlFor="destination_address">
                                 {translate("Destination Address")}
                             </label>
-                            {/* TODO: Assign className `is-valid` if destinationAddress passes xrpl.isValidAddress, and set className
-                                is-invalid if it does not. For some reason can't import xrpl at this part of the code. */}
-                            <input type="text" className="form-control" id="destination_address" 
+                            <input type="text" className={clsx("form-control", 
+                                // Defaults to not having "is-valid" / "is-invalid" classes
+                                (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
+                                id="destination_address" 
+                                onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
                                 aria-describedby="destination_address_help" defaultValue={destinationAddress} />
                             <small id="destination_address_help" className="form-text text-muted">
                                 {translate("Send transactions to this XRP Testnet address")}
                             </small>
                         </div>
-                        <p className="devportal-callout caution collapse" 
-                            // TODO: Enable this warning if it's a valid address AND starts with 'X' (xrpl can't be imported here seemingly...)
-                            // (!(typeof xrpl !== undefined && xrpl?.isValidAddress(destinationAddress) || destinationAddress[0] === "X")) && "hidden")} 
+                        <p className={clsx("devportal-callout caution", !(isValidDestinationAddress && destinationAddress[0] === 'X') && "collapse")}
                             id="x-address-warning">
                             <strong>{translate("Caution:")}</strong>
-                            {translate(" This X-address is intended for use on Mainnet. Testnet addresses have a \"T\" prefix instead.")}
+                            {translate(" This X-address is intended for use on Mainnet. Testnet X-addresses have a \"T\" prefix instead.")}
                         </p>
                         <h3>{translate("Send Transaction")}</h3>
                         {/* Send Payment  */}
