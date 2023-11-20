@@ -34,6 +34,14 @@ AMMは、プール内の資産残高に基づき取引レートを設定しま�
 
 XRP Ledgerの実装は、重みパラメータを0.5とした _幾何平均_ AMMですので、_定積_ マーケットメーカーのように機能します。 _定積_ AMMの公式や一般的なAMMの経済学についての詳しい説明は、[Kris Machowski's Introduction to Automated Market Makers](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/)をご覧ください。
 
+### 資産の制限 <a id="restrictions-on-assets"></a>
+<!-- TODO: translate this section -->
+
+To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
+
+- The asset must not be an LP Token from another AMM.
+- If the asset is a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
+- If the [Clawback amendment][] :not_enabled: is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
 
 ## LPトークン
 <!-- TODO: add diagrams showcasing flow of funds -->

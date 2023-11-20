@@ -7,7 +7,7 @@ labels:
 ---
 # 送金元に基づくCheckの検索
 
-_[Checks Amendment][]が必要です。_
+_[Checks Amendment][]により追加されました。_
 
 このチュートリアルでは、[Check](checks.html)をその送金元で検索する方法を説明します。[Checkを受取人で検索する](look-up-checks-by-recipient.html)こともできます。
 
