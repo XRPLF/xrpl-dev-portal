@@ -379,7 +379,7 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 <p><code>rippled</code>が残りのネットワークと同期されるまでには数分かかることがあります。その間、レジャーがない旨を知らせる警告が出力されます。</p>
 <p><code>rippled</code>ログメッセージの詳細は、<a href="understanding-log-messages.html">ログメッセージについて</a>を参照してください。</p>
 <p><code>rippled</code>が残りのネットワークと同期されたら、ストック<code>rippled</code>サーバーが完全に機能するようになります。このサーバーを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。<code>rippled</code>サーバーがネットワークと同期されているかどうかを判別するには、<a href="rippled-server-states.html"><code>rippled</code>サーバーの状況</a>を使用します。<a href="get-started-using-http-websocket-apis.html#コマンドライン"><code>rippled</code>のコマンドラインインターフェイス</a>を使用すれば、これを迅速にテストできます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">$<span class="w"> </span>/opt/ripple/bin/rippled<span class="w"> </span>server_info
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">rippled<span class="w"> </span>server_info
 </code></pre></div>
 <p>rippled APIを使用した<code>rippled</code>サーバーとの通信について詳しくは、<a href="http-websocket-apis.html">rippled API reference</a>を参照してください。</p>
 <p>ストック<code>rippled</code>サーバーを実行できたら、次に検証サーバーとして実行してみましょう。検証サーバーについて、そして検証サーバーを実行する理由については、<a href="run-rippled-as-a-validator.html">バリデータとしてのrippledの実行</a>を参照してください。</p>

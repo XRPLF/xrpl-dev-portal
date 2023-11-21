@@ -308,7 +308,6 @@
 <p><strong>注記:</strong> <a href="source-and-destination-tags.html">宛先タグ</a>をアドレスに「組み込む」<strong>X</strong>アドレス形式もあります。これらのアドレスは<code>X</code>（メインネット用）または<code>T</code>（<a href="parallel-networks.html">テストネットワーク</a>用）で始まります。取引所とウォレットは、顧客が知る必要のあるすべてのデータを1つの値で表すためにXアドレスを使用できます。詳細については、<a class="external-link" href="https://xrpaddress.info/" target="_blank">Xアドレスフォーマットサイト <i aria-hidden="true" class="fa fa-external-link"></i></a>と<a class="external-link" href="https://github.com/xrp-community/xrpl-tagged-address-codec" target="_blank">コーデック <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください</p>
 <p>XRP Ledgerプロトコルは「クラシック」アドレスのみをネイティブにサポートしていますが、多くの<a href="client-libraries.html">クライアントライブラリ</a>はXアドレスもサポートしています。</p>
 </blockquote>
-<p>詳しくは、<a href="accounts.html">アカウント</a>と<a href="base58-encodings.html">base58エンコード</a>をご覧ください。</p>
 <p>有効なアドレスであれば、資金を入金することで<a href="accounts.html#アカウントの作成">XRP Ledgerのアカウントになる</a>ことができます。また、<a href="cryptographic-keys.html">レギュラーキー</a>や<a href="multi-signing.html">署名者リスト</a>のメンバーとして、資金提供されていないアドレスを使用することもできます。資金を供給されたアカウントだけがトランザクションの送信者になることができます。</p>
 <p>キーペアの生成を始めとする有効なアドレスの作成は、厳密には数学的な作業です。キーペアの生成とアドレスの計算は、XRP Ledgerや他のいかなる第三者とも通信することなく、完全にオフラインで行うことができます。公開鍵からアドレスへの変換には一方向ハッシュ関数が使用されるため、公開鍵とアドレスの一致を確認することは可能ですが、アドレスのみから公開鍵を導き出すことは不可能です。(これが署名付きトランザクションに公開鍵と送信者のアドレスを含める理由の一部です)。</p>
 <h2 id="特別なアドレス">特別なアドレス<a aria-hidden="true" class="hover_anchor" href="#特別なアドレス"><i class="fa fa-link"></i></a></h2>

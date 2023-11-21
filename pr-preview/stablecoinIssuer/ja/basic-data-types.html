@@ -315,7 +315,6 @@
 <p><strong>注記:</strong> <a href="source-and-destination-tags.html">宛先タグ</a>をアドレスに「組み込む」<strong>X</strong>アドレス形式もあります。これらのアドレスは<code>X</code>（メインネット用）または<code>T</code>（<a href="parallel-networks.html">テストネットワーク</a>用）で始まります。取引所とウォレットは、顧客が知る必要のあるすべてのデータを1つの値で表すためにXアドレスを使用できます。詳細については、<a class="external-link" href="https://xrpaddress.info/" target="_blank">Xアドレスフォーマットサイト <i aria-hidden="true" class="fa fa-external-link"></i></a>と<a class="external-link" href="https://github.com/xrp-community/xrpl-tagged-address-codec" target="_blank">コーデック <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください</p>
 <p>XRP Ledgerプロトコルは「クラシック」アドレスのみをネイティブにサポートしていますが、多くの<a href="client-libraries.html">クライアントライブラリ</a>はXアドレスもサポートしています。</p>
 </blockquote>
-<p>詳しくは、<a href="accounts.html">アカウント</a>と<a href="base58-encodings.html">base58エンコード</a>をご覧ください。</p>
 <!-- -->
 <h2 id="ハッシュ">ハッシュ<a aria-hidden="true" class="hover_anchor" href="#ハッシュ"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledger内の多くのオブジェクト、特にトランザクションとレジャーは、256ビットのハッシュ値で一意に識別されます。通常、この値は「SHA-512ハーフ」として算出されます。SHA-512ハーフは、あるコンテンツから<a class="external-link" href="http://dx.doi.org/10.6028/NIST.FIPS.180-4" target="_blank">SHA-512 <i aria-hidden="true" class="fa fa-external-link"></i></a>ハッシュを計算し、出力の前半を取得したものです。（これは256ビット、つまり32バイトで、16進数表記では64文字です。）オブジェクトのハッシュは、極めて競合の発生しにくい方法でコンテンツから生成されるため、2つのオブジェクトが同じハッシュを持つ場合、それらのオブジェクトは同じものと見なされます。</p>

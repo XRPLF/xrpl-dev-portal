@@ -1,27 +1,30 @@
 $(document).ready(() => {
+  // Note: Use lowercase filenames here to avoid case inconsistency between
+  // dev environments like macOS and Windows which are not case-sensitive,
+  // and production Linux servers which use case-sensitive file systems.
   const logos = {
     infrastructure: [
-      "XRP-Ledger",
-      "Gatehub",
-      "towoLabs",
+      "xrp-ledger",
+      "gatehub",
+      "towolabs",
       "xrpscan",
       "xrp-toolkit",
       "bithomp",
       "onthedex",
     ],
     developer_tooling: [
-      "blockforce",
-      "Evernode",
+      "cryptum",
+      "evernode",
       "threezy",
       "tokenize",
     ],
-    interoperability: ["Allbridge", "futureverse", "multichain"],
+    interoperability: ["multichain"],
     wallet: [
-      "Bitfrost",
-      "Crossmark",
-      "Edge",
+      "bitfrost",
+      "crossmark",
+      "edge",
       "gem-wallet",
-      "Xumm",
+      "xumm",
     ],
     nfts: [
       "aesthetes",
@@ -32,19 +35,16 @@ $(document).ready(() => {
       "xrp-cafe",
       "xrp-oval",
     ],
-    exchanges: ["sologenic_dex", "XPMarket"],
+    exchanges: ["sologenic_dex", "xpmarket"],
     gaming: [
-      "Forte",
-      "Futureverse",
+      "forte",
       "ledger-city",
-      "onXRP",
-      "styngr",
     ],
-    security: ["Anchain"],
-    payments: ["ripple", "SuperMojo"],
+    security: ["anchain"],
+    payments: ["ripple", "supermojo"],
     cbdc: ["ripple"],
-    sustainability: ["carbonland-trust", "Rootmaker"],
-    custody: ["Gatehub", "Bitgo"],
+    sustainability: ["carbonland-trust"],
+    custody: ["gatehub", "bitgo"],
   };
   // Helper function to create a logo element
   function createLogoElement(logoSrc, title, id) {
@@ -129,6 +129,16 @@ $(document).ready(() => {
           topRowDiv.appendChild(logoElem);
         }
         for (let i = 4; i < 7; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          bottomRowDiv.appendChild(logoElem);
+        }
+      }else if (logoArray.length === 8) {
+        // 4 on top, 4 on bottom
+        for (let i = 0; i < 4; i++) {
+          const logoElem = createLogoElement(logoArray[i], title, id);
+          topRowDiv.appendChild(logoElem);
+        }
+        for (let i = 4; i < 8; i++) {
           const logoElem = createLogoElement(logoArray[i], title, id);
           bottomRowDiv.appendChild(logoElem);
         }
