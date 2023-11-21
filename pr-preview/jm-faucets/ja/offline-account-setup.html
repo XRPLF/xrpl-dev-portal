@@ -366,7 +366,7 @@ Loading:<span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</
 <p><code>master_key</code>、<code>master_seed</code>、<code>master_seed_hex</code>の値はどこにも共有<strong>しないでください</strong>。これらはこのアドレスに関連付けられている秘密鍵を再作成するために使用できます。</p>
 <h3 id="3新しいアドレスへの資金の供給">3.新しいアドレスへの資金の供給<a aria-hidden="true" class="hover_anchor" href="#3新しいアドレスへの資金の供給"><i class="fa fa-link"></i></a></h3>
 <p>オンラインマシンから、ステップ1でメモした<strong>アカウントアドレス</strong> に十分なXRPを送金します。詳細は、<a href="accounts.html#アカウントの作成">アカウントの作成</a>を参照してください。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> テストの目的で、<a href="xrp-testnet-faucet.html">Testnet Faucet</a>を使用して、テスト用のXRPが入った新しいアカウントを取得できます。そのアカウントを使用して、オフラインで生成されたアドレスに資金を供給します。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> テストの目的で、<a href="/dev-tools/xrp-faucets">Testnet Faucet</a>を使用して、テスト用のXRPが入った新しいアカウントを取得できます。そのアカウントを使用して、オフラインで生成されたアドレスに資金を供給します。</p>
 <h3 id="4アカウントの詳細の確認">4.アカウントの詳細の確認<a aria-hidden="true" class="hover_anchor" href="#4アカウントの詳細の確認"><i class="fa fa-link"></i></a></h3>
 <p>前のステップからのトランザクションがコンセンサスにより検証されたら、アカウントが作成されたことになります。オンラインマシンから、<a href="account_info.html">account_infoメソッド</a>を使用して、アカウントのステータスを確認します。応答に<code>"validated": true</code>が含まれていることを確認し、この結果が最終的なものであることを確認します。</p>
 <p>結果の<code>account_data</code>の<code>Sequence</code>フィールドにある、アカウントのシーケンス番号をメモします。この後のステップでアカウントのトランザクションに署名するために、このシーケンス番号を把握しておく必要があります。</p>
