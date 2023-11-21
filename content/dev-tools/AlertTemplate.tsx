@@ -18,8 +18,17 @@ function typeToClass(type: string): string {
     return ""
   }
 }
+
+interface AlertTemplateProps {
+  message: string
+  options: {
+    type: string
+  }
+  style: any
+  close: any // Callback to close the alert early
+}
   
-export default function AlertTemplate ({ message, options, style, close }) {
+export default function AlertTemplate ({ message, options, style, close }: AlertTemplateProps): React.JSX.Element {
   return(
     <div className={clsx("bootstrap-growl alert alert-dismissible", typeToClass(options.type))} style={{ ...alertStyle, ...style }}>
       <button className="close" data-dismiss="alert" type="button" onClick={close}>

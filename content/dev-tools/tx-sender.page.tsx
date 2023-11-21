@@ -1,140 +1,25 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
 import { useState } from 'react'
-import { clsx } from 'clsx'
-import { TxResponse, type Client, type Transaction, type TransactionMetadata, type Wallet } from 'xrpl'
+import { useTranslate } from '@portal/hooks';
 
-import AlertTemplate from './alert-template';
+import AlertTemplate from './AlertTemplate';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import { useAlert } from 'react-alert'
+
+import { type Client, type Wallet } from 'xrpl'
+
+import { errorNotif, SubmitConstData, isoTimeToRippleTime, timeout, submitAndUpdateUI } from './utils';
+
+import { InitButton } from './InitButton';
+import { DestinationAddressInput } from './DestinationAddressInput';
+import { StatusSidebar } from './StatusSidebar';
+import { TransactionButton } from './TransactionButton';
 
 
 // TODO:
 // - Change all links that previously went to tx-sender.html to dev-tools/tx-sender
 //   - Top nav, homepage, ctrl + shift + F for tx-sender in a link
 // - Add this to the sidebar
-// - Componentize the repeated sections
-
-// Refactoring:
-
-const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
-
-// All unchanging information needed to submit & log data
-interface SubmitConstData {
-    client: Client, 
-    setBalance: React.Dispatch<React.SetStateAction<number>>, 
-    setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>,
-    alert,
-}
-
-// Helpers
-function isoTimeToRippleTime(isoSeconds: number) {
-    const RIPPLE_EPOCH_DIFF = 0x386d4380
-    return Math.round(isoSeconds / 1000) - RIPPLE_EPOCH_DIFF
-}
-
-function errorNotif(alert, msg: string) {
-    console.log(msg)
-    alert.error(msg)
-}
-
-function successNotif(alert, msg) {
-    console.log(msg)
-    alert.show(msg, { type: 'success' })
-}
-
-async function setUpForPartialPayments
-    (
-    client: Client,
-    sendingWallet: Wallet,
-    setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
-    setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
-    ppCurrencyCode: string, 
-    ) {
-    console.debug("Starting partial payment setup...")
- 
-    // Causing loader to appear because no longer 0%
-    setPpWidthPercent(1)
-    let ppIssuerWallet;
-
-    // 1. Get a funded address to use as issuer
-    try {
-        ppIssuerWallet = (await client.fundWallet()).wallet
-        setPpIssuerWallet(ppIssuerWallet)
-    } catch(error) {
-        console.log("Error getting issuer address for partial payments:", error)
-        return
-    }
-
-    setPpWidthPercent(20)
-    
-    // 2. Set Default Ripple on issuer
-    let resp: TxResponse = await client.submitAndWait({
-        TransactionType: "AccountSet",
-        Account: ppIssuerWallet.address,
-        SetFlag: 8 // asfDefaultRipple
-    }, { wallet: ppIssuerWallet })
-    if (resp === undefined) {
-        console.log("Couldn't set Default Ripple for partial payment issuer")
-        return
-    }
-    setPpWidthPercent(40)
-    
-    // 3. Make a trust line from sending address to issuer
-    resp = await client.submitAndWait({
-        TransactionType: "TrustSet",
-        Account: sendingWallet.address,
-        LimitAmount: {
-            currency: ppCurrencyCode,
-            value: "1000000000", // arbitrarily, 1 billion fake currency
-            issuer: ppIssuerWallet.address
-        }
-    }, { wallet: sendingWallet })
-    if (resp === undefined) {
-        console.log("Error making trust line to partial payment issuer")
-        return
-    }
-    setPpWidthPercent(60)
-    
-        // 4. Issue fake currency to main sending address
-    resp = await client.submitAndWait({
-        TransactionType: "Payment",
-        Account: ppIssuerWallet.address,
-        Destination: sendingWallet.address,
-        Amount: {
-            currency: ppCurrencyCode,
-            value: "1000000000",
-            issuer: ppIssuerWallet.address
-        }
-    }, { wallet: ppIssuerWallet })
-    if (resp === undefined) {
-        console.log("Error sending fake currency from partial payment issuer")
-        return
-    }
-    setPpWidthPercent(80)
-    
-    // 5. Place offer to buy issued currency for XRP
-    // When sending the partial payment, the sender consumes their own offer (!)
-    // so they end up paying themselves issued currency then delivering XRP.
-    resp = await client.submitAndWait({
-        TransactionType: "OfferCreate",
-        Account: sendingWallet.address,
-        TakerGets: "1000000000000000", // 1 billion XRP
-        TakerPays: {
-            currency: ppCurrencyCode,
-            value: "1000000000",
-            issuer: ppIssuerWallet.address
-        }
-    }, { wallet: sendingWallet })
-    if (resp === undefined) {
-        console.log("Error placing order to enable partial payments")
-        return
-    }
-    setPpWidthPercent(100)
-
-    // Done. Enable "Send Partial Payment" button
-    console.log("Done getting ready to send partial payments.")
-}
 
 async function onClickCreateEscrow(
     submitConstData: SubmitConstData,
@@ -199,354 +84,6 @@ async function onClickCreateEscrow(
       setEscrowWidthPercent(0) 
 }
 
-function logTx(tx, hash, finalResult, setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>) {
-    let classes
-    let icon
-    const txLink = "https://testnet.xrpl.org/transactions/" + hash
-    if (finalResult === "tesSUCCESS") {
-      classes = "text-muted"
-      icon = <i className="fa fa-check-circle"></i>
-    } else {
-      classes = "list-group-item-danger"
-      icon = <i className="fa fa-times-circle"></i>
-    }
-    const li = <li key={hash} className={clsx("list-group-item fade-in p-1", classes)}>{icon} {tx}: <a href={txLink} target="_blank" className="external-link">{hash}</a></li>
-
-    setTxHistory((prevState) => [li].concat(prevState))
-}
-
-function timeout(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function TransactionButton({
-    submitConstData,
-    connectionReady,
-    transaction,
-    sendingWallet,
-    id,
-    content,
-    inputSettings,
-    loadingBar,
-    checkBox,
-    customOnClick
-}: {
-    submitConstData: SubmitConstData,
-    connectionReady: boolean,
-    transaction: Transaction,
-    sendingWallet: Wallet | undefined
-    id: string, // Used to set all ids within component
-    content: {
-        buttonText: string,
-        units: string, // Displays after the input number
-        longerDescription: React.JSX.Element // JSX allows for embedding links within the longer description
-        buttonTitle?: string // Only used while loading bar is activated
-    },
-    inputSettings?: {
-        defaultValue: number, // Should NOT be a dynamic number
-        setInputValue: React.Dispatch<React.SetStateAction<number>>, 
-        min: number,
-        max: number,
-    },
-    loadingBar?: {
-        id: string,
-        widthPercent: number,
-        description: string,
-        defaultOn: boolean,
-    },
-    checkBox?: {
-        setCheckValue: React.Dispatch<React.SetStateAction<boolean>>,
-        defaultValue: boolean,
-        description: string,
-    }
-    customOnClick?: Function
-}) {
-    const { translate } = useTranslate()
-
-    const [waitingForTransaction, setWaitingForTransaction] = useState(false)
-
-    return (
-    <div>
-        <div className="form-group" id={id}>
-            {/* Optional loading bar - Used for partial payments as an example - TODO: Maybe split into own component? */}
-            {loadingBar?.id && <div className="progress mb-1" id={loadingBar?.id ?? ""}>
-                <div className={
-                    clsx("progress-bar progress-bar-striped w-0", 
-                        (loadingBar?.widthPercent < 100 && loadingBar?.widthPercent > 0) && "progress-bar-animated")}
-                    style={{width: (Math.min(loadingBar?.widthPercent + (loadingBar?.defaultOn ? 1 : 0), 100)).toString() + "%",
-                    display: (loadingBar?.widthPercent >= 100) ? 'none' : ''}}>
-                        &nbsp;
-                </div>
-                {(loadingBar?.widthPercent < 100 && loadingBar?.widthPercent > 0 || (loadingBar.defaultOn && loadingBar?.widthPercent === 0)) 
-                    && <small className="justify-content-center d-flex position-absolute w-100">
-                        {translate(loadingBar?.description)}
-                    </small>}
-            </div>}
-            <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text loader" style={{display: waitingForTransaction ? '' : 'none'}}>
-                        <img className="throbber" src="/img/xrp-loader-96.png" alt={translate("(loading)")} />
-                    </span>
-                </div>
-                <button className={clsx("btn btn-primary form-control needs-connection", 
-                    ((!canSendTransaction(connectionReady, sendingWallet?.address) 
-                        || waitingForTransaction 
-                        || (loadingBar?.widthPercent && loadingBar.widthPercent < 100)) && "disabled"))} 
-                    type="button" id={id + "_btn"} 
-                    disabled={(!canSendTransaction(connectionReady, sendingWallet?.address) 
-                        || waitingForTransaction
-                        || (loadingBar?.widthPercent && loadingBar.widthPercent < 100))}
-                    onClick={async () => {
-                        setWaitingForTransaction(true)
-                        customOnClick ? await customOnClick() : await submitAndUpdateUI(submitConstData, sendingWallet!, transaction)
-                        setWaitingForTransaction(false)
-                    }}
-                    title={(loadingBar && (loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100)) ? translate(content.buttonTitle) : ""}
-                >
-                    {translate(content.buttonText)}
-                </button>
-                {/* If there are no input settings, we don't need the form, or the units */}
-                {inputSettings &&
-                    <input id={id + "_amount"} className="form-control" type="number" 
-                        aria-describedby={id + "amount_help"} 
-                        defaultValue={inputSettings?.defaultValue} 
-                        min={inputSettings?.min} 
-                        max={inputSettings?.max}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                            // Enforce min / max values
-                            let { value, min, max } = event.target;
-                        
-                            const newValue = Math.max(Number(min), Math.min(Number(max), Number(value)));
-
-                            // Share the value so other logic can update based on it
-                            inputSettings?.setInputValue(newValue)
-                        }
-                    } />}
-
-                {inputSettings && <div className="input-group-append">
-                        <span className="input-group-text" id={id + "_help"}>
-                            {translate(content.units)}
-                        </span>
-                    </div>
-                }
-                {checkBox && <span className="input-group-text">
-                    (
-                    <input type="checkbox" 
-                        id={id + "_checkbox"} 
-                        defaultValue={checkBox.defaultValue ? 1 : 0}
-                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => checkBox.setCheckValue(event.target.checked)} />
-                    <label className="form-check-label" htmlFor={id + "_checkbox"}>
-                        {translate(checkBox.description)}
-                    </label>)
-                </span>}
-                {/* Future feature: Optional custom destination tag */}
-            </div>
-            <small className="form-text text-muted">
-                {content.longerDescription}
-            </small>
-        </div>
-        <hr />
-    </div>)
-}
-
-async function submitAndUpdateUI(
-    submitConstData: SubmitConstData,
-    sendingWallet: Wallet,
-    tx: Transaction,
-    silent: boolean = false) {
-
-    const { client, setBalance, setTxHistory } = submitConstData
-
-    let prepared;
-    try {
-      // Auto-fill fields like Fee and Sequence
-      prepared = await client.autofill(tx)
-      console.debug("Prepared:", prepared)
-    } catch(error) {
-      console.log(error)
-      if (!silent) {
-        errorNotif(alert, "Error preparing tx: "+error)
-      }
-      return
-    }
-
-    try {
-      const {tx_blob, hash} = sendingWallet.sign(prepared)
-      const result = await client.submitAndWait(tx_blob)
-      console.log("The result of submitAndWait is ", result)
-      let finalResult = (result.result.meta as TransactionMetadata).TransactionResult
-      if (!silent) {
-        if (finalResult === "tesSUCCESS") {
-          successNotif(submitConstData.alert, `${tx.TransactionType} tx succeeded (hash: ${hash})`)
-        } else {
-          errorNotif(submitConstData.alert, `${tx.TransactionType} tx failed with code ${finalResult}
-                      (hash: ${hash})`)
-        }
-        logTx(tx.TransactionType, hash, finalResult, setTxHistory)
-      }
-
-      setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
-      return result
-    } catch (error) {
-      console.log(error)
-      if (!silent) {
-        errorNotif(submitConstData.alert, `Error signing & submitting ${tx.TransactionType} tx: ${error}`)
-      }
-
-      setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
-      return
-    }
-  }
-
-function canSendTransaction(connectionReady, sendingAddress) {
-    return connectionReady && sendingAddress
-}
-
-function StatusSidebar({
-    balance,
-    sendingWallet, 
-    connectionReady, 
-    txHistory
-}:
-{
-    balance: number,
-    sendingWallet: Wallet,
-    connectionReady: boolean,
-    txHistory: React.JSX.Element[],
-}) {
-    const { translate } = useTranslate();
-
-    return (<aside className="right-sidebar col-lg-6 order-lg-4">
-        <div id="connection-status" className="card">
-            <div className="card-header">
-                <h4>{translate("Status")}</h4>
-            </div>
-            <div className="card-body">
-                <ul className="list-group list-group-flush">
-                    <li className="list-group-item" id="connection-status-label">{translate("XRP Testnet:")}</li>
-                    <li className={clsx("list-group-item", (connectionReady ? 'active' : 'disabled'))} id="connection-status-item">{connectionReady ? translate("Connected") : translate("Not Connected")}</li>
-                    <li className="list-group-item" id="sending-address-label">{translate("Sending Address:")}</li>
-                    <li className="list-group-item disabled sending-address-item">{sendingWallet ? sendingWallet.address : translate("(None)")}</li>
-                    <li className="list-group-item" id="balance-label">{translate("Testnet XRP Available:")}</li>
-                    <li className="list-group-item disabled" id="balance-item">{balance ? translate(balance.toString()) : translate("(None)")}</li>
-                </ul>
-                <div id="tx-sender-history">
-                    <h5 className="m-3">{translate("Transaction History")}</h5>
-                    <ul className="list-group list-group-flush">
-                        {txHistory}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </aside>)
-}
-
-async function onInitClick(
-    existingClient: Client, 
-    alert, // From useAlert()
-    setClient: React.Dispatch<React.SetStateAction<Client | undefined>>, 
-    setBalance: React.Dispatch<React.SetStateAction<number>>, 
-    setSendingWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
-    setIsInitEnabled: React.Dispatch<React.SetStateAction<boolean>>, 
-    setConnectionReady: React.Dispatch<React.SetStateAction<boolean>>,
-    setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>,
-    setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
-    ppCurrencyCode: string,
-    ): Promise<void> {
-    
-    if(existingClient) {
-        console.log("Already initializing!")
-        return
-    }
-
-    console.log("Connecting to Testnet WebSocket...")
-    // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
-    const client = new xrpl.Client(TESTNET_URL)
-    client.on('connected', () => {
-        setConnectionReady(true)
-    })
-
-    client.on('disconnected', (code) => {
-        setConnectionReady(false)
-    })
-    setClient(client)
-    await client.connect()
-
-    console.debug("Getting a sending address from the faucet...")
-    try {
-      const fundResponse = await client.fundWallet()
-      const sendingWallet = fundResponse.wallet
-      setSendingWallet(sendingWallet)
-      // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
-      setBalance(xrpl.dropsToXrp(fundResponse.balance))
-      setIsInitEnabled(false)
-      await setUpForPartialPayments(
-        client, 
-        sendingWallet, 
-        setPpIssuerWallet, 
-        setPpWidthPercent, 
-        ppCurrencyCode,  
-      )  
-    } catch(error) {
-      console.error(error)
-      errorNotif(alert, "There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
-      return
-    }
-}
-
-function onDestinationAddressChange(
-    event: React.ChangeEvent<HTMLInputElement>, 
-    setDestinationAddress: React.Dispatch<React.SetStateAction<string>>, 
-    setIsValidDestinationAddress: React.Dispatch<React.SetStateAction<boolean>>
-): void {
-    const newAddress = event.target.value
-    setDestinationAddress(newAddress)
-    // @ts-expect-error - xrpl is guaranteed to be defined by the time this field is changed.
-    setIsValidDestinationAddress(xrpl.isValidAddress(newAddress))
-}
-
-function DestinationAddressInput(
-    {
-        defaultDestinationAddress, 
-        destinationAddress, 
-        setDestinationAddress, 
-        isValidDestinationAddress, 
-        setIsValidDestinationAddress
-    } : {
-        defaultDestinationAddress: string, 
-        destinationAddress: string, 
-        setDestinationAddress: React.Dispatch<React.SetStateAction<string>>, 
-        isValidDestinationAddress: boolean, 
-        setIsValidDestinationAddress: React.Dispatch<React.SetStateAction<boolean>>
-    }
-    
-    ): React.JSX.Element {
-    const { translate } = useTranslate()
-    
-    return (
-    <div>
-        <div className="form-group">
-            <label htmlFor="destination_address">
-                {translate("Destination Address")}
-            </label>
-            <input type="text" className={clsx("form-control", 
-                // Defaults to not having "is-valid" / "is-invalid" classes
-                (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
-                id="destination_address" 
-                onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
-                aria-describedby="destination_address_help" defaultValue={destinationAddress} />
-            <small id="destination_address_help" className="form-text text-muted">
-                {translate("Send transactions to this XRP Testnet address")}
-            </small>
-        </div>
-        <p className={clsx("devportal-callout caution", !(isValidDestinationAddress && destinationAddress[0] === 'X') && "collapse")}
-            id="x-address-warning">
-            <strong>{translate("Caution:")}</strong>
-            {translate(" This X-address is intended for use on Mainnet. Testnet X-addresses have a \"T\" prefix instead.")}
-        </p>
-    </div>)
-}
-
 function TxSenderBody(): React.JSX.Element {
     const { translate } = useTranslate();
 
@@ -579,7 +116,11 @@ function TxSenderBody(): React.JSX.Element {
     const [ppWidthPercent, setPpWidthPercent] = useState(0)
     const [ppIssuerWallet, setPpIssuerWallet] = useState<Wallet | undefined>(undefined)
     const ppCurrencyCode = "BAR"
-    
+    const partialPaymentParams = { 
+        setPpIssuerWallet,
+        setPpWidthPercent,
+        ppCurrencyCode,
+    }
 
     // Payment button variables
     const defaultDropsToSend = 100000
@@ -603,13 +144,20 @@ function TxSenderBody(): React.JSX.Element {
 
     const defaultTrustLimit = 100000
     const [trustLimit, setTrustLimit] = useState(defaultTrustLimit)
-    
 
+    const commonTxButtonParams = {
+        submitConstData,
+        connectionReady,
+        sendingWallet
+    }
+    
     return (
         <div className="row">
             {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
             <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
+            
             <StatusSidebar balance={balance} sendingWallet={sendingWallet} connectionReady={connectionReady} txHistory={txHistory}/>
+            
             <main className="main col-md-7 col-lg-6 order-md-3 page-tx-sender" role="main" id="main_content_body">
                 <section className="container-fluid pt-3 p-md-3">
                     <h1>{translate("Transaction Sender")}</h1>
@@ -619,33 +167,19 @@ function TxSenderBody(): React.JSX.Element {
                             {translate(" address of your choice so you can test how you monitor and respond to incoming transactions.")}
                         </p>
                         <form>
-                            <div className="form-group">
-                                <button className={clsx("btn btn-primary form-control", isInitEnabled ? "" : "disabled")} 
-                                    type="button" id="init_button" 
-                                    onClick={() => {
-                                        onInitClick(
-                                            client!, 
-                                            alert,
-                                            setClient, 
-                                            setBalance, 
-                                            setSendingWallet, 
-                                            setIsInitEnabled, 
-                                            setConnectionReady,
-                                            setPpIssuerWallet,
-                                            setPpWidthPercent,
-                                            ppCurrencyCode,
-                                        )
-                                    }}
-                                    disabled={!isInitEnabled}
-                                    title={isInitEnabled ? "" : "done"}>
-                                    {translate("Initialize")}   
-                                </button>
-                                {!isInitEnabled && (<div>&nbsp;<i className="fa fa-check-circle"></i></div>)}
+                            <InitButton 
+                                isInitEnabled={isInitEnabled}
+                                toInit={{
+                                    existingClient: client,
+                                    alert,
+                                    setClient,
+                                    setBalance,
+                                    setSendingWallet,
+                                    setIsInitEnabled,
+                                    setConnectionReady,
+                                    partialPaymentParams
+                            }}/>
 
-                                <small className="form-text text-muted">
-                                    {translate("Set up the necessary Testnet XRP addresses to send test payments.")}
-                                </small>
-                            </div>
                             <DestinationAddressInput 
                                 {...{defaultDestinationAddress, 
                                 destinationAddress, 
@@ -657,9 +191,8 @@ function TxSenderBody(): React.JSX.Element {
                             
                             {/* Send Payment  */}
                             <TransactionButton 
-                                submitConstData={submitConstData}
-                                connectionReady={connectionReady}
-                                sendingWallet={sendingWallet}
+                                id="send_xrp_payment"
+                                {...commonTxButtonParams}
                                 transaction={
                                 {
                                     TransactionType: "Payment",
@@ -668,7 +201,6 @@ function TxSenderBody(): React.JSX.Element {
                                     Destination: destinationAddress,
                                     Amount: dropsToSendForPayment.toString()
                                 }}
-                                id="send_xrp_payment"
                                 content=
                                 {{
                                     buttonText: "Send XRP Payment",
@@ -685,9 +217,8 @@ function TxSenderBody(): React.JSX.Element {
                             />
                             {/* Partial Payments */}
                             <TransactionButton 
-                                submitConstData={submitConstData}
-                                connectionReady={connectionReady}
-                                sendingWallet={sendingWallet}
+                                id="send_partial_payment"
+                                {...commonTxButtonParams}
                                 transaction={
                                 {
                                     TransactionType: "Payment",
@@ -702,7 +233,6 @@ function TxSenderBody(): React.JSX.Element {
                                     },
                                     Flags: 0x00020000 // tfPartialPayment
                                 }}
-                                id="send_partial_payment"
                                 content=
                                 {{
                                     buttonText: "Send Partial Payment",
@@ -721,9 +251,8 @@ function TxSenderBody(): React.JSX.Element {
                             />
                             {/* Escrow */}
                             <TransactionButton
-                                submitConstData={submitConstData}
-                                connectionReady={connectionReady}
-                                sendingWallet={sendingWallet}
+                                id="create_escrow"
+                                {...commonTxButtonParams}
                                 transaction={
                                 {
                                     TransactionType: "EscrowCreate",
@@ -733,7 +262,6 @@ function TxSenderBody(): React.JSX.Element {
                                     Amount: "1000000",
                                     FinishAfter:  isoTimeToRippleTime(new Date().getTime()) + finishAfter
                                 }}
-                                id="create_escrow"
                                 content=
                                 {{
                                     buttonText: translate("Create Escrow"),
@@ -773,9 +301,8 @@ function TxSenderBody(): React.JSX.Element {
                                 valid claims for the given payment channel to help test redeeming 
                             */}
                             <TransactionButton
-                                submitConstData={submitConstData}
-                                connectionReady={connectionReady}
-                                sendingWallet={sendingWallet}
+                                id="create_payment_channel"
+                                {...commonTxButtonParams}
                                 transaction={{
                                     TransactionType: "PaymentChannelCreate",
                                     // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
@@ -786,7 +313,6 @@ function TxSenderBody(): React.JSX.Element {
                                     // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
                                     PublicKey: sendingWallet?.publicKey
                                 }}
-                                id="create_payment_channel"
                                 content={{
                                     buttonText: translate("Create Payment Channel"),
                                     units: translate("drops of XRP"),
@@ -803,10 +329,9 @@ function TxSenderBody(): React.JSX.Element {
                             />
                             {/* Send Issued Currency */}
                             {/* Future feature: Add ability to configure custom currency codes */}
-                                <TransactionButton
-                                submitConstData={submitConstData}
-                                connectionReady={connectionReady}
-                                sendingWallet={sendingWallet}
+                            <TransactionButton
+                                id="send_issued_currency"
+                                {...commonTxButtonParams}
                                 transaction={
                                     {
                                     TransactionType: "Payment",
@@ -820,7 +345,6 @@ function TxSenderBody(): React.JSX.Element {
                                         issuer: sendingWallet?.address
                                     }
                                 }}
-                                id="send_issued_currency"
                                 content={{
                                     buttonText: translate("Send Issued Currency"),
                                     units: translate(trustCurrencyCode),
@@ -839,9 +363,8 @@ function TxSenderBody(): React.JSX.Element {
                             />
                             {/* Create Trust Line */}
                             <TransactionButton
-                                submitConstData={submitConstData}
-                                connectionReady={connectionReady}
-                                sendingWallet={sendingWallet}
+                                id="trust_for"
+                                {...commonTxButtonParams}
                                 transaction={
                                     {
                                     TransactionType: "TrustSet",
@@ -853,7 +376,6 @@ function TxSenderBody(): React.JSX.Element {
                                         issuer: destinationAddress
                                     }
                                 }}
-                                id="trust_for"
                                 content={{
                                     buttonText: translate("Trust for"),
                                     units: translate(trustCurrencyCode),
@@ -877,9 +399,9 @@ function TxSenderBody(): React.JSX.Element {
     )
 }
 
+// Wrapper to allow for dynamic alerts when transactions complete
 export default function TxSender(): React.JSX.Element {
-    // Wrapper to allow for dynamic alerts when transactions complete
-
+    
     const alertOptions = {
         position: positions.BOTTOM_RIGHT,
         timeout: 7000,
