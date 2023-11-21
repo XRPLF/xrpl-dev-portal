@@ -1,9 +1,12 @@
 $(document).ready(() => {
+  // Note: Use lowercase filenames here to avoid case inconsistency between
+  // dev environments like macOS and Windows which are not case-sensitive,
+  // and production Linux servers which use case-sensitive file systems.
   const logos = {
     infrastructure: [
-      "XRP-Ledger",
-      "Gatehub",
-      "towoLabs",
+      "xrp-ledger",
+      "gatehub",
+      "towolabs",
       "xrpscan",
       "xrp-toolkit",
       "bithomp",
@@ -11,17 +14,17 @@ $(document).ready(() => {
     ],
     developer_tooling: [
       "cryptum",
-      "Evernode",
+      "evernode",
       "threezy",
       "tokenize",
     ],
     interoperability: ["multichain"],
     wallet: [
-      "Bitfrost",
-      "Crossmark",
-      "Edge",
+      "bitfrost",
+      "crossmark",
+      "edge",
       "gem-wallet",
-      "Xumm",
+      "xumm",
     ],
     nfts: [
       "aesthetes",
@@ -32,16 +35,16 @@ $(document).ready(() => {
       "xrp-cafe",
       "xrp-oval",
     ],
-    exchanges: ["sologenic_dex", "XPMarket"],
+    exchanges: ["sologenic_dex", "xpmarket"],
     gaming: [
-      "Forte",
+      "forte",
       "ledger-city",
     ],
-    security: ["Anchain"],
-    payments: ["ripple", "SuperMojo"],
+    security: ["anchain"],
+    payments: ["ripple", "supermojo"],
     cbdc: ["ripple"],
     sustainability: ["carbonland-trust"],
-    custody: ["Gatehub", "Bitgo"],
+    custody: ["gatehub", "bitgo"],
   };
   // Helper function to create a logo element
   function createLogoElement(logoSrc, title, id) {

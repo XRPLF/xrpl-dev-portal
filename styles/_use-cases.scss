@@ -1,24 +1,24 @@
 /* Use Cases ---------------------------------------------------------------- */
 
 // Define each category's logos
-$infrastructure-logos:  "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
-$developer-tooling-logos: "cryptum", "Evernode", "threezy", "tokenize";
+$infrastructure-logos:  "xrp-ledger", "gatehub", "towolabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
+$developer-tooling-logos: "cryptum", "evernode", "threezy", "tokenize";
 $interoperability-logos: "multichain";
-$wallet-logos:  "Crossmark", "Edge", "gem-wallet", "Xumm";
+$wallet-logos:  "crossmark", "edge", "gem-wallet", "xumm";
 $nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
-$exchanges-logos: "sologenic_dex", "XPMarket";
-$gaming-logos: "Forte", "ledger-city";
-$security-logos: "Anchain";
-$payments-logos: "ripple", "SuperMojo";
+$exchanges-logos: "sologenic_dex", "xpmarket";
+$gaming-logos: "forte", "ledger-city";
+$security-logos: "anchain";
+$payments-logos: "ripple", "supermojo";
 $cbdc-logos: "ripple";
 $carbon-markets-logos: "carbonland-trust";
-$custody-logos: "Gatehub", "Bitgo";
+$custody-logos: "gatehub", "bitgo";
 
 // Create a mixin to handle the common logic
 @mixin create-logo-classes($logo-list) {
   @each $logo in $logo-list {
     .#{$logo} {
-      content: url(../img/uses/modalLogos/#{$logo}.png);
+      content: url(../img/uses/modallogos/#{$logo}.png);
     }
 
     html.light {
@@ -32,7 +32,7 @@ $custody-logos: "Gatehub", "Bitgo";
   #threezy {
     .biz-logo {
       max-height: 40px;
-      content: url("../img/uses/modalLogos/threezy.png");
+      content: url("../img/uses/modallogos/threezy.png");
     }
   }
 }
