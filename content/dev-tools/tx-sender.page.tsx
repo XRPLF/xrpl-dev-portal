@@ -17,43 +17,49 @@ import { TransactionButton } from './TransactionButton';
 
 async function onClickCreateEscrow(
     submitConstData: SubmitConstData,
-    sendingWallet: Wallet, 
+    sendingWallet: Wallet | undefined, 
     destinationAddress: string, 
-    duration_seconds: number, 
+    durationSeconds: number, 
     setEscrowWidthPercent: React.Dispatch<React.SetStateAction<number>>, 
-    release_auto: boolean) {
-    if (Number.isNaN(duration_seconds) || duration_seconds < 1) {
+    alsoSendEscrowFinish: boolean) {
+    if (Number.isNaN(durationSeconds) || durationSeconds < 1) {
         errorNotif(submitConstData.alert, "Error: Escrow duration must be a positive number of seconds")
         return
     }
 
-    const finish_after = isoTimeToRippleTime(new Date().getTime()) + duration_seconds
+    // This should never happen
+    if(sendingWallet === undefined) {
+        errorNotif(submitConstData.alert, "Error: No sending wallet specified, so unable to submit EscrowCreate")
+        return
+    }
 
-    const escrowcreate_tx_data = await submitAndUpdateUI(submitConstData, sendingWallet, {
+    const finishAfter = isoTimeToRippleTime(new Date().getTime()) + durationSeconds
+
+    const escrowCreateResponse = await submitAndUpdateUI(submitConstData, sendingWallet, {
         TransactionType: "EscrowCreate",
         Account: sendingWallet.address,
         Destination: destinationAddress,
         Amount: "1000000",
-        FinishAfter: finish_after
+        FinishAfter: finishAfter
       })
 
-    if (escrowcreate_tx_data && release_auto) {
+    if (escrowCreateResponse && alsoSendEscrowFinish) {
         // Wait until there's a ledger with a close time > FinishAfter
         // to submit the EscrowFinish
         setEscrowWidthPercent(1)
 
         const { client } = submitConstData
 
-        let latest_close_time = -1
-        while (latest_close_time <= finish_after) {
-            const seconds_left = (finish_after - isoTimeToRippleTime(new Date().getTime()))
+        let latestCloseTime = -1
+        while (latestCloseTime <= finishAfter) {
+            const secondsLeft = (finishAfter - isoTimeToRippleTime(new Date().getTime()))
 
-            setEscrowWidthPercent(Math.min(99, Math.max(0, (1-(seconds_left / duration_seconds)) * 100)))
+            setEscrowWidthPercent(Math.min(99, Math.max(0, (1-(secondsLeft / durationSeconds)) * 100)))
 
-            if (seconds_left <= 0) {
+            if (secondsLeft <= 0) {
                 // System time has advanced past FinishAfter. But is there a new
                 //  enough validated ledger?
-                latest_close_time = (await client.request({
+                latestCloseTime = (await client.request({
                     command: "ledger",
                     "ledger_index": "validated"}
                 )).result.ledger.close_time
@@ -62,20 +68,32 @@ async function onClickCreateEscrow(
             await timeout(1000)
         }
         setEscrowWidthPercent(0)
-  
-        // Now submit the EscrowFinish
-        // Future feature: submit from a different sender, just to prove that
-        // escrows can be finished by a third party
-        await submitAndUpdateUI(submitConstData, sendingWallet, {
-          Account: sendingWallet.address,
-          TransactionType: "EscrowFinish",
-          Owner: sendingWallet.address,
-          OfferSequence: escrowcreate_tx_data.result.Sequence
-        })
-      }
 
-      // Reset in case they click the button again
-      setEscrowWidthPercent(0) 
+        if(escrowCreateResponse.result.Sequence === undefined) {
+            
+            errorNotif(submitConstData.alert, 
+                "Error: Unable to get the sequence number from EscrowCreate, so cannot submit an EscrowFinish transaction.")
+            
+            console.error(`EscrowCreate did not return a sequence number. 
+            This may be because we were unable to look up the transaction in a validated ledger. 
+            The EscrowCreate response was ${escrowCreateResponse}`)
+
+        } else {
+            
+            // Now submit the EscrowFinish
+            // Future feature: submit from a different sender, just to prove that
+            // escrows can be finished by a third party
+            await submitAndUpdateUI(submitConstData, sendingWallet, {
+                Account: sendingWallet.address,
+                TransactionType: "EscrowFinish",
+                Owner: sendingWallet.address,
+                OfferSequence: escrowCreateResponse.result.Sequence
+            })
+        }
+    }
+
+    // Reset in case they click the button again
+    setEscrowWidthPercent(0)
 }
 
 function TxSenderBody(): React.JSX.Element {
@@ -92,12 +110,15 @@ function TxSenderBody(): React.JSX.Element {
     const [txHistory, setTxHistory] = useState([])
 
     // Used when submitting transactions to trace all transactions in the UI
+    // We cast here since client may be undefined to begin with, but will never be undefined
+    // When actually used since all buttons / transactions are disallowed before the Inititalization
+    // function where Client is defined. (This saves us many unnecessary type assertions later on)
     const submitConstData = {
         client,
         setBalance,
         setTxHistory,
         alert, 
-    }
+    } as SubmitConstData
 
     // Manage the destinationAddress
     const defaultDestinationAddress = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
@@ -224,6 +245,7 @@ function TxSenderBody(): React.JSX.Element {
                                     SendMax: {
                                         value: (Math.random()*.01).toPrecision(15), // random very small amount
                                         currency: ppCurrencyCode,
+                                        // @ts-expect-error - ppIssuerWallet is guaranteed to be defined by the time this button is clicked.
                                         issuer: ppIssuerWallet?.address
                                     },
                                     Flags: 0x00020000 // tfPartialPayment

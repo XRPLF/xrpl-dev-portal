@@ -50,7 +50,7 @@ function shouldDisableButton(
 ): boolean {
     return !canSendTransaction(connectionReady, sendingWallet?.address) 
     || waitingForTransaction 
-    || (loadingBar?.widthPercent && loadingBar.widthPercent < 100)
+    || (!!(loadingBar?.widthPercent) && loadingBar.widthPercent < 100)
 }
 
 export function TransactionButton({

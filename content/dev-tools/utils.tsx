@@ -31,12 +31,14 @@ export function logTx(txName: string, hash: string, finalResult: string, setTxHi
     const txLink = "https://testnet.xrpl.org/transactions/" + hash
     if (finalResult === "tesSUCCESS") {
       classes = "text-muted"
-      icon = <i className="fa fa-check-circle"></i>
+      icon = <i className="fa fa-check-circle"/>
     } else {
       classes = "list-group-item-danger"
-      icon = <i className="fa fa-times-circle"></i>
+      icon = <i className="fa fa-times-circle"/>
     }
-    const li = <li key={hash} className={clsx("list-group-item fade-in p-1", classes)}>{icon} {txName}: <a href={txLink} target="_blank" className="external-link">{hash}</a></li>
+    const li = <li key={hash} className={clsx("list-group-item fade-in p-1", classes)}>
+      {icon} {txName}: <a href={txLink} target="_blank" className="external-link">{hash}</a>
+    </li>
 
     setTxHistory((prevState) => [li].concat(prevState))
 }
@@ -53,7 +55,7 @@ export async function submitAndUpdateUI(
     submitConstData: SubmitConstData,
     sendingWallet: Wallet,
     tx: Transaction,
-    silent: boolean = false): Promise<TxResponse<Transaction>> {
+    silent: boolean = false): Promise<TxResponse<Transaction> | undefined> {
 
     const { client, setBalance, setTxHistory } = submitConstData
 
@@ -98,6 +100,6 @@ export async function submitAndUpdateUI(
     }
   }
 
-export function canSendTransaction(connectionReady: boolean, sendingAddress: string): boolean {
+export function canSendTransaction(connectionReady: boolean, sendingAddress: string | undefined): boolean {
     return connectionReady && !!sendingAddress
 }

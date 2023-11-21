@@ -12,7 +12,7 @@ export function StatusSidebar({
 }:
 {
     balance: number,
-    sendingWallet: Wallet,
+    sendingWallet: Wallet | undefined,
     connectionReady: boolean,
     txHistory: React.JSX.Element[],
 }) {
