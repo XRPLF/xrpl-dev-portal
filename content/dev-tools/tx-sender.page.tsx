@@ -16,8 +16,6 @@ import { useAlert } from 'react-alert'
 // - Componentize the repeated sections
 
 // Refactoring:
-// - Standardize the use of `client` instead of `api`
-// - Most of these "ids" aren't necessary for our css - we can do better (and simplify parameters as a result!
 
 const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
@@ -152,7 +150,7 @@ async function onClickCreateEscrow(
 
     const finish_after = isoTimeToRippleTime(new Date().getTime()) + duration_seconds
 
-    const escrowcreate_tx_data = await submit_and_notify(submitConstData, sendingWallet, {
+    const escrowcreate_tx_data = await submitAndUpdateUI(submitConstData, sendingWallet, {
         TransactionType: "EscrowCreate",
         Account: sendingWallet.address,
         Destination: destinationAddress,
@@ -189,7 +187,7 @@ async function onClickCreateEscrow(
         // Now submit the EscrowFinish
         // Future feature: submit from a different sender, just to prove that
         // escrows can be finished by a third party
-        await submit_and_notify(submitConstData, sendingWallet, {
+        await submitAndUpdateUI(submitConstData, sendingWallet, {
           Account: sendingWallet.address,
           TransactionType: "EscrowFinish",
           Owner: sendingWallet.address,
@@ -226,7 +224,7 @@ function TransactionButton({
     connectionReady,
     transaction,
     sendingWallet,
-    ids,
+    id,
     content,
     inputSettings,
     loadingBar,
@@ -237,11 +235,7 @@ function TransactionButton({
     connectionReady: boolean,
     transaction: Transaction,
     sendingWallet: Wallet | undefined
-    ids: {
-        formId: string, // Helper text for this form has an id which appends _help to this.
-        buttonId: string,
-        inputId: string,
-    },
+    id: string, // Used to set all ids within component
     content: {
         buttonText: string,
         units: string, // Displays after the input number
@@ -273,7 +267,7 @@ function TransactionButton({
 
     return (
     <div>
-        <div className="form-group" id={ids.formId}>
+        <div className="form-group" id={id}>
             {/* Optional loading bar - Used for partial payments as an example - TODO: Maybe split into own component? */}
             {loadingBar?.id && <div className="progress mb-1" id={loadingBar?.id ?? ""}>
                 <div className={
@@ -298,13 +292,13 @@ function TransactionButton({
                     ((!canSendTransaction(connectionReady, sendingWallet?.address) 
                         || waitingForTransaction 
                         || (loadingBar?.widthPercent && loadingBar.widthPercent < 100)) && "disabled"))} 
-                    type="button" id={ids.buttonId} 
+                    type="button" id={id + "_btn"} 
                     disabled={(!canSendTransaction(connectionReady, sendingWallet?.address) 
                         || waitingForTransaction
                         || (loadingBar?.widthPercent && loadingBar.widthPercent < 100))}
                     onClick={async () => {
                         setWaitingForTransaction(true)
-                        customOnClick ? await customOnClick() : await submit_and_notify(submitConstData, sendingWallet!, transaction)
+                        customOnClick ? await customOnClick() : await submitAndUpdateUI(submitConstData, sendingWallet!, transaction)
                         setWaitingForTransaction(false)
                     }}
                     title={(loadingBar && (loadingBar.widthPercent > 0 && loadingBar.widthPercent < 100)) ? translate(content.buttonTitle) : ""}
@@ -313,8 +307,8 @@ function TransactionButton({
                 </button>
                 {/* If there are no input settings, we don't need the form, or the units */}
                 {inputSettings &&
-                    <input id={ids.inputId} className="form-control" type="number" 
-                        aria-describedby={ids.inputId + "_help"} 
+                    <input id={id + "_amount"} className="form-control" type="number" 
+                        aria-describedby={id + "amount_help"} 
                         defaultValue={inputSettings?.defaultValue} 
                         min={inputSettings?.min} 
                         max={inputSettings?.max}
@@ -330,7 +324,7 @@ function TransactionButton({
                     } />}
 
                 {inputSettings && <div className="input-group-append">
-                        <span className="input-group-text" id={ids.formId + "_help"}>
+                        <span className="input-group-text" id={id + "_help"}>
                             {translate(content.units)}
                         </span>
                     </div>
@@ -338,10 +332,10 @@ function TransactionButton({
                 {checkBox && <span className="input-group-text">
                     (
                     <input type="checkbox" 
-                        id={ids.formId + "_checkbox"} 
+                        id={id + "_checkbox"} 
                         defaultValue={checkBox.defaultValue ? 1 : 0}
-                        onChange={(event) => checkBox.setCheckValue(event.target.checked)} />
-                    <label className="form-check-label" htmlFor={ids.formId + "_checkbox"}>
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => checkBox.setCheckValue(event.target.checked)} />
+                    <label className="form-check-label" htmlFor={id + "_checkbox"}>
                         {translate(checkBox.description)}
                     </label>)
                 </span>}
@@ -355,11 +349,10 @@ function TransactionButton({
     </div>)
 }
 
-// TODO: Make sure all calls to this function specify the wallet used!
-async function submit_and_notify(
+async function submitAndUpdateUI(
     submitConstData: SubmitConstData,
     sendingWallet: Wallet,
-    tx_object: Transaction,
+    tx: Transaction,
     silent: boolean = false) {
 
     const { client, setBalance, setTxHistory } = submitConstData
@@ -367,7 +360,7 @@ async function submit_and_notify(
     let prepared;
     try {
       // Auto-fill fields like Fee and Sequence
-      prepared = await client.autofill(tx_object)
+      prepared = await client.autofill(tx)
       console.debug("Prepared:", prepared)
     } catch(error) {
       console.log(error)
@@ -379,25 +372,25 @@ async function submit_and_notify(
 
     try {
       const {tx_blob, hash} = sendingWallet.sign(prepared)
-      const final_result_data = await client.submitAndWait(tx_blob)
-      console.log("final_result_data is", final_result_data)
-      let final_result = (final_result_data.result.meta as TransactionMetadata).TransactionResult
+      const result = await client.submitAndWait(tx_blob)
+      console.log("The result of submitAndWait is ", result)
+      let finalResult = (result.result.meta as TransactionMetadata).TransactionResult
       if (!silent) {
-        if (final_result === "tesSUCCESS") {
-          successNotif(submitConstData.alert, `${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
+        if (finalResult === "tesSUCCESS") {
+          successNotif(submitConstData.alert, `${tx.TransactionType} tx succeeded (hash: ${hash})`)
         } else {
-          errorNotif(submitConstData.alert, `${tx_object.TransactionType} tx failed with code ${final_result}
+          errorNotif(submitConstData.alert, `${tx.TransactionType} tx failed with code ${finalResult}
                       (hash: ${hash})`)
         }
-        logTx(tx_object.TransactionType, hash, final_result, setTxHistory)
+        logTx(tx.TransactionType, hash, finalResult, setTxHistory)
       }
 
       setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
-      return final_result_data
+      return result
     } catch (error) {
       console.log(error)
       if (!silent) {
-        errorNotif(submitConstData.alert, `Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
+        errorNotif(submitConstData.alert, `Error signing & submitting ${tx.TransactionType} tx: ${error}`)
       }
 
       setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
@@ -449,8 +442,8 @@ function StatusSidebar({
 }
 
 async function onInitClick(
-    client: Client, 
-    alert,
+    existingClient: Client, 
+    alert, // From useAlert()
     setClient: React.Dispatch<React.SetStateAction<Client | undefined>>, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setSendingWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
@@ -461,7 +454,7 @@ async function onInitClick(
     ppCurrencyCode: string,
     ): Promise<void> {
     
-    if(client) {
+    if(existingClient) {
         console.log("Already initializing!")
         return
     }
@@ -501,14 +494,60 @@ async function onInitClick(
     }
 }
 
-function onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress) {
+function onDestinationAddressChange(
+    event: React.ChangeEvent<HTMLInputElement>, 
+    setDestinationAddress: React.Dispatch<React.SetStateAction<string>>, 
+    setIsValidDestinationAddress: React.Dispatch<React.SetStateAction<boolean>>
+): void {
     const newAddress = event.target.value
     setDestinationAddress(newAddress)
     // @ts-expect-error - xrpl is guaranteed to be defined by the time this field is changed.
     setIsValidDestinationAddress(xrpl.isValidAddress(newAddress))
 }
 
-function TxSenderBody() {
+function DestinationAddressInput(
+    {
+        defaultDestinationAddress, 
+        destinationAddress, 
+        setDestinationAddress, 
+        isValidDestinationAddress, 
+        setIsValidDestinationAddress
+    } : {
+        defaultDestinationAddress: string, 
+        destinationAddress: string, 
+        setDestinationAddress: React.Dispatch<React.SetStateAction<string>>, 
+        isValidDestinationAddress: boolean, 
+        setIsValidDestinationAddress: React.Dispatch<React.SetStateAction<boolean>>
+    }
+    
+    ): React.JSX.Element {
+    const { translate } = useTranslate()
+    
+    return (
+    <div>
+        <div className="form-group">
+            <label htmlFor="destination_address">
+                {translate("Destination Address")}
+            </label>
+            <input type="text" className={clsx("form-control", 
+                // Defaults to not having "is-valid" / "is-invalid" classes
+                (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
+                id="destination_address" 
+                onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
+                aria-describedby="destination_address_help" defaultValue={destinationAddress} />
+            <small id="destination_address_help" className="form-text text-muted">
+                {translate("Send transactions to this XRP Testnet address")}
+            </small>
+        </div>
+        <p className={clsx("devportal-callout caution", !(isValidDestinationAddress && destinationAddress[0] === 'X') && "collapse")}
+            id="x-address-warning">
+            <strong>{translate("Caution:")}</strong>
+            {translate(" This X-address is intended for use on Mainnet. Testnet X-addresses have a \"T\" prefix instead.")}
+        </p>
+    </div>)
+}
+
+function TxSenderBody(): React.JSX.Element {
     const { translate } = useTranslate();
 
     const [client, setClient] = useState<Client | undefined>(undefined)
@@ -606,27 +645,16 @@ function TxSenderBody() {
                                 <small className="form-text text-muted">
                                     {translate("Set up the necessary Testnet XRP addresses to send test payments.")}
                                 </small>
-                            </div>{/*/.form-group*/}
-                            <div className="form-group">
-                                <label htmlFor="destination_address">
-                                    {translate("Destination Address")}
-                                </label>
-                                <input type="text" className={clsx("form-control", 
-                                    // Defaults to not having "is-valid" / "is-invalid" classes
-                                    (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
-                                    id="destination_address" 
-                                    onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
-                                    aria-describedby="destination_address_help" defaultValue={destinationAddress} />
-                                <small id="destination_address_help" className="form-text text-muted">
-                                    {translate("Send transactions to this XRP Testnet address")}
-                                </small>
                             </div>
-                            <p className={clsx("devportal-callout caution", !(isValidDestinationAddress && destinationAddress[0] === 'X') && "collapse")}
-                                id="x-address-warning">
-                                <strong>{translate("Caution:")}</strong>
-                                {translate(" This X-address is intended for use on Mainnet. Testnet X-addresses have a \"T\" prefix instead.")}
-                            </p>
+                            <DestinationAddressInput 
+                                {...{defaultDestinationAddress, 
+                                destinationAddress, 
+                                setDestinationAddress, 
+                                isValidDestinationAddress, 
+                                setIsValidDestinationAddress}}/>
+
                             <h3>{translate("Send Transaction")}</h3>
+                            
                             {/* Send Payment  */}
                             <TransactionButton 
                                 submitConstData={submitConstData}
@@ -640,11 +668,7 @@ function TxSenderBody() {
                                     Destination: destinationAddress,
                                     Amount: dropsToSendForPayment.toString()
                                 }}
-                                ids={{
-                                    formId: "send_xrp_payment",
-                                    buttonId: "send_xrp_payment_btn",
-                                    inputId: "send_xrp_payment_amount",
-                                }}
+                                id="send_xrp_payment"
                                 content=
                                 {{
                                     buttonText: "Send XRP Payment",
@@ -678,11 +702,7 @@ function TxSenderBody() {
                                     },
                                     Flags: 0x00020000 // tfPartialPayment
                                 }}
-                                ids={{
-                                    formId: "send_partial_payment",
-                                    buttonId: "send_partial_payment_btn",
-                                    inputId: "send_partial_payment_amount",
-                                }}
+                                id="send_partial_payment"
                                 content=
                                 {{
                                     buttonText: "Send Partial Payment",
@@ -713,11 +733,7 @@ function TxSenderBody() {
                                     Amount: "1000000",
                                     FinishAfter:  isoTimeToRippleTime(new Date().getTime()) + finishAfter
                                 }}
-                                ids={{
-                                    formId: "create_escrow",
-                                    buttonId: "create_escrow_btn",
-                                    inputId: "create_escrow_duration_seconds",
-                                }}
+                                id="create_escrow"
                                 content=
                                 {{
                                     buttonText: translate("Create Escrow"),
@@ -770,11 +786,7 @@ function TxSenderBody() {
                                     // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
                                     PublicKey: sendingWallet?.publicKey
                                 }}
-                                ids={{
-                                    formId: "create_payment_channel",
-                                    buttonId: "create_payment_channel_btn",
-                                    inputId: "create_payment_channel_amount",
-                                }}
+                                id="create_payment_channel"
                                 content={{
                                     buttonText: translate("Create Payment Channel"),
                                     units: translate("drops of XRP"),
@@ -808,11 +820,7 @@ function TxSenderBody() {
                                         issuer: sendingWallet?.address
                                     }
                                 }}
-                                ids={{
-                                    formId: "send_issued_currency",
-                                    buttonId: "send_issued_currency_btn",
-                                    inputId: "send_issued_currency_amount",
-                                }}
+                                id="send_issued_currency"
                                 content={{
                                     buttonText: translate("Send Issued Currency"),
                                     units: translate(trustCurrencyCode),
@@ -845,11 +853,7 @@ function TxSenderBody() {
                                         issuer: destinationAddress
                                     }
                                 }}
-                                ids={{
-                                    formId: "trust_for",
-                                    buttonId: "trust_for_btn",
-                                    inputId: "trust_for_amount",
-                                }}
+                                id="trust_for"
                                 content={{
                                     buttonText: translate("Trust for"),
                                     units: translate(trustCurrencyCode),
@@ -873,7 +877,7 @@ function TxSenderBody() {
     )
 }
 
-export default function TxSender() {
+export default function TxSender(): React.JSX.Element {
     // Wrapper to allow for dynamic alerts when transactions complete
 
     const alertOptions = {
