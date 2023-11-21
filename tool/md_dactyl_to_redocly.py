@@ -34,6 +34,8 @@ def should_include(fname):
     """
     if fname == "node_modules":
         return False
+    if fname == "_snippets":
+        return True
     if fname[:1] == "_":
         return False
     if ".git" in fname:
@@ -122,11 +124,24 @@ class IncludeSvgReplacer(RegexReplacer):
         return '<figure><a href="'+m.group("fname")+'" title="'+m.group("caption")+'">{% inline-svg file="/' + m.group("fname") + '" /%}</a></figure>'
 regex_todos.append(IncludeSvgReplacer())
 
+class PrefixedCodeSnippetReplacer(RegexReplacer):
+    # TODO: Redocly's code-snippet component doesn't support prefix yet. If and
+    # when it does, uncomment/modify the commented out "replace" accordingly.
+    # code-snippet component doesn't support yet.
+    regex = re.compile(r"""```(?P<language>\w*)\n(?P<prefix>[^{`]+)\n\{% include ['"](?P<path>[^'"]+)['"] %\}\s*```""")
+    #replace = staticmethod(lambda m: '{% code-snippet file="/'+m.group("path")+'" language="'+m.group("language")+'" prefix="'+m.group("prefix").replace("\n","\\n")+'" /%}')
+    replace = staticmethod(lambda m: '{% code-snippet file="/'+m.group("path")+'" language="'+m.group("language")+'" /%}')
+regex_todos.append(PrefixedCodeSnippetReplacer())
+
+class PlainCodeIncludeReplacer(RegexReplacer):
+    regex = re.compile(re.compile(r"""```(?P<language>\w*)\n\{% include ['"](?P<path>[^'"]+)['"] %\}\s*```"""))
+    replace = staticmethod(lambda m: '{% code-snippet file="/'+m.group("path")+'" language="'+m.group("language")+'" /%}')
+regex_todos.append(PlainCodeIncludeReplacer())
+
 class SnippetReplacer(RegexReplacer):
-    ## TODO: require ending in `.md` and handle code includes separately.
-    ## Redocly doesn't allow snippets to be other file types due to Markdoc
-    ## limitations.
-    regex = re.compile(r"\{% *include *'(?P<path>_[^']+)' *%\}")
+    # Redocly requires partials to end in md due to Mardoc limitations.
+    # Other includes need to be converted to code-snippet instances instead.
+    regex = re.compile(r"\{% *include *'(?P<path>_[^']+\.md)' *%\}")
     replace = staticmethod(lambda m: '{{% partial file="/{fpath}" /%}}'.format(fpath=m.group("path")))
 regex_todos.append(SnippetReplacer())
 
