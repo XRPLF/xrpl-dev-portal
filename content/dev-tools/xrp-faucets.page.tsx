@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
-import { XRPLGuard } from 'content/static/js/xrpl-guard';
-
-// TODO: Directly import xrpl when xrpl.js 3.0 is released.
-// xrpl is imported via <script> tag below to avoid webpack issues. 
-// import { Client, Wallet } from 'xrpl'; 
+import { type Client, type Wallet } from 'xrpl'; 
 
 interface FaucetInfo {
   id: string,
@@ -16,7 +12,9 @@ interface FaucetInfo {
   desc: string,
 }
 
-async function waitForSequence(client, address: string): Promise<{ sequence: string, balance: string }> {
+async function waitForSequence(client: Client, address: string): 
+  Promise<{ sequence: string, balance: string }> 
+  {
   let response;
   while (true) {
     try {
@@ -52,7 +50,7 @@ function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: 
   </div>)
 }
 
-function FaucetSidebar({ faucets }: { faucets: FaucetInfo[]}) {
+function FaucetSidebar({ faucets }: { faucets: FaucetInfo[] }): React.JSX.Element {
   return (<aside className="right-sidebar col-lg-6 order-lg-4" role="complementary"> 
     {faucets.map(
       (faucet) => <FaucetEndpoints faucet={faucet} key={faucet.shortName + " Endpoints"} givenKey={faucet.shortName + " Endpoints"}/>
@@ -60,7 +58,7 @@ function FaucetSidebar({ faucets }: { faucets: FaucetInfo[]}) {
   </aside>)
 }
 
-export default function XRPFaucets() {
+export default function XRPFaucets(): React.JSX.Element {
   const { translate } = useTranslate();
 
   const faucets: FaucetInfo[] = [
@@ -146,10 +144,10 @@ async function generateFaucetCredentialsAndUpdateUI(
 
 
   // @ts-expect-error - xrpl is added via a script tag
-  const wallet = xrpl.Wallet.generate()
+  const wallet: Wallet = xrpl.Wallet.generate()
   
   // @ts-expect-error - xrpl is added via a script tag
-  const client = new xrpl.Client(selectedFaucet.wsUrl)
+  const client: Client = new xrpl.Client(selectedFaucet.wsUrl)
   await client.connect()
 
   try {
@@ -181,9 +179,6 @@ function TestCredentials({selectedFaucet}) {
   const [buttonClicked, setButtonClicked] = useState(false)
 
 return (<div>
-    {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
-    <script src="https://unpkg.com/xrpl@3.0.0-beta.0/build/xrpl-latest-min.js" async />
-
     {/* <XRPLGuard> TODO: Re-add this once we find a good way to avoid browser/server mismatch errors */}
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
         <button id="generate-creds-button" onClick={
