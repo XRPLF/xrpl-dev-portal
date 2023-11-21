@@ -30,13 +30,12 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-* `XRPL_PHP` requires PHP 8.1.
-* Recommended for increased performance are the PHP extensions [GMP](http://php.net/manual/en/book.gmp.php) and / or [BCMATH](https://www.php.net/manual/de/book.bc.php)
-
-
+* `XRPL_PHP` requires PHP 8.1 and the PHP extension  [GMP](http://php.net/manual/en/book.gmp.php).
+* Recommended for increased performance is the PHP extensions [BCMATH](https://www.php.net/manual/de/book.bc.php)
+ 
 ## Installation
 
-`XRPL_PHP` can be installed via [Composer](http://getcomposer.org/doc/00-intro.html):
+`XRPL_PHP` can be installed via [Composer](https://getcomposer.org/doc/00-intro.md):
 
 ```console
 composer require hardcastle/xrpl_php
@@ -56,7 +55,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
 ### 1. Connect to the XRP Ledger
 
-To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `XRPL_PHP`, you can use the [`JsonRpcClient`](hhttps://alexanderbuzz.github.io/xrpl-php-docs/client.html):
+To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `XRPL_PHP`, you can use the [`JsonRpcClient`](https://alexanderbuzz.github.io/xrpl-php-docs/client.html):
 
 ```php
 <?php
@@ -97,7 +96,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](addresses.html) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](secure-signing.html).
 
-To generate a new account, `PHP_XRPL` provides the static `generate()`method in the `Wallet` class:
+To generate a new account, `PHP_XRPL` provides the static `generate()` method in the `Wallet` class:
 
 ```php
 <?php
