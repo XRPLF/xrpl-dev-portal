@@ -177,7 +177,7 @@ function TestCredentials({selectedFaucet}) {
 
 return (<div>
     {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
-    <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
+    <script src="https://unpkg.com/xrpl@3.0.0-beta.0/build/xrpl-latest-min.js" async />
 
     {/* <XRPLGuard> TODO: Re-add this once we find a good way to avoid browser/server mismatch errors */}
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
