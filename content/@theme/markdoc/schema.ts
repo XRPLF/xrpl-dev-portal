@@ -24,4 +24,21 @@ export const repoLink: Schema & { tagName: string } = {
         return new Tag(this.render, attributes, children);
     },
     render: 'RepoLink',
-  };
+};
+
+export const codePageName: Schema & { tagName: string } = {
+  tagName: 'code-page-name',
+  attributes: {
+    name: {
+      type: 'String',
+      required: false,
+    },
+  },
+  transform(node, config) {
+    const attributes = node.transformAttributes(config);
+    attributes["name"] = config.variables.frontmatter.seo.title;
+    return new Tag(this.render, attributes);
+  },
+  render: 'CodePageName',
+  selfClosing: true,
+};

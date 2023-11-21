@@ -17,3 +17,11 @@ export function RepoLink(props: {
         <Link to={href}>{dynamicReact(props.children, React, {})}</Link>
     )
 }
+
+export function CodePageName(props: {
+    name: string;
+}) {
+    return (
+        <code>{props.name}</code>
+    )
+}
