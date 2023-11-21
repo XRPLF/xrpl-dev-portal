@@ -27,7 +27,7 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 
 また、トランザクションの送信先`rippled`サーバーも必要です。このチュートリアルの例では、`rippled`サーバーがテストマシン（`localhost`）で稼働しており、このテストマシンはポート**5005**で非暗号化JSON-RPC APIエンドポイントに接続しています。
 
-実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する[XRP Ledger Testnet](xrp-testnet-faucet.html)のアドレスを使用できます。XRP Ledger Test Netを使用する場合、`http://localhost:5005/`ではなく`https://api.altnet.rippletest.net:51234`に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。
+実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する[XRP Ledger Testnet](/dev-tools/xrp-faucets)のアドレスを使用できます。XRP Ledger Test Netを使用する場合、`http://localhost:5005/`ではなく`https://api.altnet.rippletest.net:51234`に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。
 
 Payment Channelに使用できるXRPの額に制限はありません。このチュートリアルで使用されているサンプルの値では、Payment Channelで100 XRP（`100000000` drop）が少なくとも1日間は確保されます。
 

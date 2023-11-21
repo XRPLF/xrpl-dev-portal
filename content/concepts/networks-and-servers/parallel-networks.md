@@ -19,7 +19,7 @@ To help members of the XRP Ledger community interact with XRP Ledger technology 
 | [Hooks V3 Testnet](https://hooks-testnet-v3.xrpl-labs.com/) | [Hooks server](https://github.com/XRPL-Labs/xrpld-hooks) | A preview of on-chain smart contract functionality using [hooks](https://xrpl-hooks.readme.io/). |
 | AMM-Devnet | [XLS-30d pre-release](https://github.com/gregtatcam/rippled/tree/amm-core-functionality/) | A preview of the [XLS-30d](https://github.com/XRPLF/XRPL-Standards/discussions/78) standard for Automated Market Makers on the XRP Ledger. <!-- SPELLING_IGNORE: 30d --> [Binary builds for testing](https://github.com/legleux/scheduled/releases) are also available. Library support: [xrpl.js 2.6.0-beta.0](https://www.npmjs.com/package/xrpl/v/2.6.0-beta.0), [xrpl-py 1.8.0b0](https://pypi.org/project/xrpl-py/1.8.0b0/) |
 
-Each altnet has its own separate supply of test XRP, which is [given away for free](xrp-testnet-faucet.html) to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.
+Each altnet has its own separate supply of test XRP, which is [given away for free](/dev-tools/xrp-faucets) to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.
 
 **Caution:** Unlike the XRP Ledger Mainnet, test networks are usually _centralized_ and there are no guarantees about the stability and availability of these networks. They have been and continue to be used to test various properties of server configuration, network topology, and network performance.
 

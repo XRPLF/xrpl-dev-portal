@@ -21,7 +21,7 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl.js`.
-* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl.js`.
+* How to get an account on the [Testnet](/dev-tools/xrp-faucets) using `xrpl.js`.
 * How to use the `xrpl.js` library to look up information about an account on the XRP Ledger.
 * How to put these steps together to create a JavaScript app or web-app.
 

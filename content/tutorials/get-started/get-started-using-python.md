@@ -21,7 +21,7 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl-py`.
-* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl-py`.
+* How to get an account on the [Testnet](/dev-tools/xrp-faucets) using `xrpl-py`.
 * How to use the `xrpl-py` library to look up information about an account on the XRP Ledger.
 * How to put these steps together to create a Python app.
 
@@ -80,7 +80,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](addresses.html) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger.
 
-For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](secure-signing.html). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
+For testing and development purposes, you can use the [XRP Faucets](/dev-tools/xrp-faucets) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](secure-signing.html). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
 
 To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
 

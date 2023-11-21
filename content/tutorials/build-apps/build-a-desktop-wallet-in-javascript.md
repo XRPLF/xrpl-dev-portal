@@ -641,7 +641,7 @@ Now you need an XRPL account address to monitor. If you already have one or know
 npm run start
 ```
 
-If you need a Testnet address, [you can get one from the faucet](xrp-testnet-faucet.html). Then you can paste that address into the [Transaction Sender](tx-sender.html) to send XRP transactions that your app can see.
+If you need a Testnet address, [you can get one from the faucet](/dev-tools/xrp-faucets). Then you can paste that address into the [Transaction Sender](tx-sender.html) to send XRP transactions that your app can see.
 
 On, startup, the application should display a simple dialog prompting the user for an XRPL account address. After entering the address the application should display some basic information about that account and about the ledger.
 
@@ -1056,7 +1056,7 @@ npm run start
 
 On first run, It should first prompt you for an account seed and then for a password.
 
-You can generate a test account's seed via the [testnet faucet here](https://xrpl.org/xrp-testnet-faucet.html).
+You can generate a test account's seed via the [testnet faucet here](https://xrpl.org//dev-tools/xrp-faucets).
 
 After you have created a wallet this way, you should close the application and start it up a second time: On second run it should prompt you for the password, and you should see the same result as in the last step.
 

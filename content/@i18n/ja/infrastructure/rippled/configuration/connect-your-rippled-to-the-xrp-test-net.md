@@ -17,12 +17,12 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
 
 1. `rippled.cfg`ファイルで以下の手順に従います。
 
-   a. [Testnet](xrp-testnet-faucet.html)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
+   a. [Testnet](/dev-tools/xrp-faucets)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
 
         [ips]
         s.altnet.rippletest.net 51235
 
-   b. [Devnet](xrp-testnet-faucet.html)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
+   b. [Devnet](/dev-tools/xrp-faucets)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
 
         [ips]
         s.devnet.rippletest.net 51235
@@ -94,7 +94,7 @@ Rippleは[代替となるテスト用および開発用ネットワーク](paral
 ## 関連項目
 
 - **ツール:**
-  - [XRP Faucet](xrp-testnet-faucet.html)
+  - [XRP Faucet](/dev-tools/xrp-faucets)
   - [WebSocket APIツール](websocket-api-tool.html) - 接続オプションで「Testnet公開サーバー」を選択します。
 - **コンセプト:**
   - [並列ネットワーク](parallel-networks.html)

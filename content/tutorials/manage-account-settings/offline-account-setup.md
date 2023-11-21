@@ -86,7 +86,7 @@ Take note of the following values:
 
 From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](accounts.html#creating-accounts).
 
-**Tip:** For testing purposes, you can use the [Testnet Faucet](xrp-testnet-faucet.html) to get a new account with Test XRP, then use that account to fund the address you generated offline.
+**Tip:** For testing purposes, you can use the [Testnet Faucet](/dev-tools/xrp-faucets) to get a new account with Test XRP, then use that account to fund the address you generated offline.
 
 
 

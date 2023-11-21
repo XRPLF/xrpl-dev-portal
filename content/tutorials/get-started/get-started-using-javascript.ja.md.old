@@ -177,7 +177,7 @@ const api = new RippleAPI({
 
 - この`server`設定例では、セキュアなWebSocket接続を使用して、Ripple社が運営している公開サーバーの1つに接続しています。
 - `server`オプションを記述しない場合、RippleAPIは、ネットワーク接続の不要なメソッドのみが提供される[オフラインモード](rippleapi-reference.html#offline-functionality)で実行されます。
-- 代わりに[XRP Ledgerテストネット](xrp-testnet-faucet.html)サーバーを指定すると、本番環境のXRP Ledgerではなく、別空間のテストネットワークに接続できます。
+- 代わりに[XRP Ledgerテストネット](/dev-tools/xrp-faucets)サーバーを指定すると、本番環境のXRP Ledgerではなく、別空間のテストネットワークに接続できます。
 - [独自の`rippled`を運用している](install-rippled.html)場合は、ローカルサーバーに接続するよう指示できます。例えば、代わりに`server: 'ws://localhost:5005'`と記述します。
 
 
