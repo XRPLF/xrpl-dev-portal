@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
 import { type Client, type Wallet } from 'xrpl'; 
+import * as faucetData from './faucets.json'
 
 interface FaucetInfo {
   id: string,
@@ -61,32 +62,7 @@ function FaucetSidebar({ faucets }: { faucets: FaucetInfo[] }): React.JSX.Elemen
 export default function XRPFaucets(): React.JSX.Element {
   const { translate } = useTranslate();
 
-  const faucets: FaucetInfo[] = [
-    {
-      id: "faucet-select-testnet",
-      wsUrl: "wss://s.altnet.rippletest.net:51233/",
-      jsonRpcUrl: "https://s.altnet.rippletest.net:51234/",
-      faucetUrl: "faucet.altnet.rippletest.net",
-      shortName: "Testnet",
-      desc: "Mainnet-like network for testing applications."
-    },
-    {
-      id: "faucet-select-devnet",
-      wsUrl: "wss://s.devnet.rippletest.net:51233/",
-      jsonRpcUrl: "https://s.devnet.rippletest.net:51234/",
-      faucetUrl: "faucet.devnet.rippletest.net",
-      shortName: "Devnet",
-      desc: "Preview of upcoming amendments."
-    },
-    {
-      id: "faucet-select-ammdevnet",
-      wsUrl: "wss://amm.devnet.rippletest.net:51233/",
-      jsonRpcUrl: "https://amm.devnet.rippletest.net:51234/",
-      faucetUrl: "ammfaucet.devnet.rippletest.net",
-      shortName: "AMM-Devnet",
-      desc: "XLS-30d Automated Market Makers preview network."
-    },
-  ]
+  const faucets: FaucetInfo[] = faucetData.knownFaucets
 
   const [selectedFaucet, setSelectedFaucet] = useState(faucets[0])
 
