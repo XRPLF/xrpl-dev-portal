@@ -15,12 +15,6 @@ import { DestinationAddressInput } from './DestinationAddressInput';
 import { StatusSidebar } from './StatusSidebar';
 import { TransactionButton } from './TransactionButton';
 
-
-// TODO:
-// - Change all links that previously went to tx-sender.html to dev-tools/tx-sender
-//   - Top nav, homepage, ctrl + shift + F for tx-sender in a link
-// - Add this to the sidebar
-
 async function onClickCreateEscrow(
     submitConstData: SubmitConstData,
     sendingWallet: Wallet, 

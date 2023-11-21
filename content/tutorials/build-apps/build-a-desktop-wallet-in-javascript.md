@@ -641,7 +641,7 @@ Now you need an XRPL account address to monitor. If you already have one or know
 npm run start
 ```
 
-If you need a Testnet address, [you can get one from the faucet](xrp-testnet-faucet.html). Then you can paste that address into the [Transaction Sender](tx-sender.html) to send XRP transactions that your app can see.
+If you need a Testnet address, [you can get one from the faucet](xrp-testnet-faucet.html). Then you can paste that address into the [Transaction Sender](/dev-tools/tx-sender) to send XRP transactions that your app can see.
 
 On, startup, the application should display a simple dialog prompting the user for an XRPL account address. After entering the address the application should display some basic information about that account and about the ledger.
 

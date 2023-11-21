@@ -289,7 +289,7 @@ const log_tx = function(tx) {
 WS_HANDLERS["transaction"] = log_tx
 ```
 
-For the following example, try opening the [Transaction Sender](tx-sender.html) in a different window or even on a different device and sending transactions to the address you subscribed to:
+For the following example, try opening the [Transaction Sender](/dev-tools/tx-sender) in a different window or even on a different device and sending transactions to the address you subscribed to:
 
 {{ start_step("Subscribe") }}
 <label for="subscribe_address">Test Net Address:</label>
