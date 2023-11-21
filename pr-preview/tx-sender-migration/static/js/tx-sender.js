@@ -1,40 +1,40 @@
-const set_up_tx_sender = async function() {
+// const set_up_tx_sender = async function() {
   //////////////////////////////////////////////////////////////////////////////
   // Notification helpers
   //////////////////////////////////////////////////////////////////////////////
 
-  function successNotif(msg) {
-    $.bootstrapGrowl(msg, {
-      delay: 7000,
-      offset: {from: 'bottom', amount: 68},
-      type: 'success',
-      width: 'auto'
-    })
-  }
-  function errorNotif(msg) {
-    $.bootstrapGrowl(msg, {
-      delay: 7000,
-      offset: {from: 'bottom', amount: 68},
-      type: 'danger',
-      width: 'auto'
-    })
-  }
+  // function successNotif(msg) {
+  //   $.bootstrapGrowl(msg, {
+  //     delay: 7000,
+  //     offset: {from: 'bottom', amount: 68},
+  //     type: 'success',
+  //     width: 'auto'
+  //   })
+  // }
+  // function errorNotif(msg) {
+  //   $.bootstrapGrowl(msg, {
+  //     delay: 7000,
+  //   offset: {from: 'bottom', amount: 68},
+  //     type: 'danger',
+  //     width: 'auto'
+  //   })
+  // }
 
-  function logTx(txtype, hash, result) {
-    let classes
-    let icon
-    const txlink = "https://testnet.xrpl.org/transactions/" + hash
-    if (result === "tesSUCCESS") {
-      classes = "text-muted"
-      icon = '<i class="fa fa-check-circle"></i>'
-    } else {
-      classes = "list-group-item-danger"
-      icon = '<i class="fa fa-times-circle"></i>'
-    }
-    const li = `<li class="list-group-item fade-in p-1 ${classes}">${icon} ${txtype}: <a href="${txlink}" target="_blank" class="external-link">${hash}</a></li>`
+  // function logTx(txtype, hash, result) {
+  //   let classes
+  //   let icon
+  //   const txlink = "https://testnet.xrpl.org/transactions/" + hash
+  //   if (result === "tesSUCCESS") {
+  //     classes = "text-muted"
+  //     icon = '<i class="fa fa-check-circle"></i>'
+  //   } else {
+  //     classes = "list-group-item-danger"
+  //     icon = '<i class="fa fa-times-circle"></i>'
+  //   }
+  //   const li = `<li class="list-group-item fade-in p-1 ${classes}">${icon} ${txtype}: <a href="${txlink}" target="_blank" class="external-link">${hash}</a></li>`
 
-    $("#tx-sender-history ul").prepend(li)
-  }
+  //   $("#tx-sender-history ul").prepend(li)
+  // }
 
   //////////////////////////////////////////////////////////////////////////////
   // Connection / Setup
@@ -461,9 +461,9 @@ const set_up_tx_sender = async function() {
 //   }
 //   $("#trust_for button").click(on_trust_for)
 
-}
+// }
 
 
-$(document).ready( function() {
-  set_up_tx_sender()
-} )
+// $(document).ready( function() {
+//   set_up_tx_sender()
+// } )
