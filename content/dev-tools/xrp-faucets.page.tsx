@@ -127,11 +127,14 @@ export default function XRPFaucets() {
 
 async function generateFaucetCredentialsAndUpdateUI(
   selectedFaucet: FaucetInfo, 
+  setButtonClicked: React.Dispatch<React.SetStateAction<boolean>>,
   setGeneratedCredentialsFaucet: React.Dispatch<React.SetStateAction<string>>, 
   setAddress: React.Dispatch<React.SetStateAction<string>>, 
   setSecret: React.Dispatch<React.SetStateAction<string>>, 
   setBalance: React.Dispatch<React.SetStateAction<string>>, 
   setSequence: React.Dispatch<React.SetStateAction<string>>): Promise<void> {
+
+  setButtonClicked(true)
 
   // Clear existing credentials
   setGeneratedCredentialsFaucet(selectedFaucet.shortName)
@@ -164,6 +167,7 @@ async function generateFaucetCredentialsAndUpdateUI(
   } catch (e) {
     alert(translate("There was an error with the " + selectedFaucet.shortName + " faucet. Please try again."))
   }
+  setButtonClicked(false)
 }
 
 function TestCredentials({selectedFaucet}) {
@@ -174,6 +178,7 @@ function TestCredentials({selectedFaucet}) {
   const [secret, setSecret] = useState("")
   const [balance, setBalance] = useState("")
   const [sequence, setSequence] = useState("")
+  const [buttonClicked, setButtonClicked] = useState(false)
 
 return (<div>
     {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
@@ -183,7 +188,8 @@ return (<div>
       <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
         <button id="generate-creds-button" onClick={
             () => generateFaucetCredentialsAndUpdateUI(
-              selectedFaucet, 
+              selectedFaucet,
+              setButtonClicked, 
               setGeneratedCredentialsFaucet, 
               setAddress, 
               setSecret, 
@@ -195,15 +201,25 @@ return (<div>
       </div>
     {/* </XRPLGuard> */}
 
+
     {generatedCredentialsFaucet && <div id="your-credentials">
       <h2>{translate("Your")} {generatedCredentialsFaucet} {translate("Credentials")}</h2>
     </div>}
-    
+
+    {(buttonClicked && address === "") &&
+      (<div>
+        <br/>
+        <div id="loader" style={{ display: "inline" }}>
+          <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Generating keys..")}
+        </div>
+      </div>)
+    }
+
     {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
 
     {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
     {(address && !balance) && (<div><br/>
-        <div id="loader" style={{display: (address && !balance) ? "inline" : "none"}}>
+        <div id="loader" style={{ display: "inline" }}>
           <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}
         </div>
       </div>)}
