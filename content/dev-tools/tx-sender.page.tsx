@@ -4,6 +4,11 @@ import { useState } from 'react'
 import { clsx } from 'clsx'
 import { TxResponse, type Client, type Transaction, type TransactionMetadata, type Wallet } from 'xrpl'
 
+import AlertTemplate from './alert-template';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
+import { useAlert } from 'react-alert'
+
+
 // TODO:
 // - Change all links that previously went to tx-sender.html to dev-tools/tx-sender
 //   - Top nav, homepage, ctrl + shift + F for tx-sender in a link
@@ -17,11 +22,14 @@ import { TxResponse, type Client, type Transaction, type TransactionMetadata, ty
 // - Standardize the use of `client` instead of `api`
 // - Most of these "ids" aren't necessary for our css - we can do better (and simplify parameters as a result!
 
+const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
+
 // All unchanging information needed to submit & log data
 interface SubmitConstData {
     api: Client, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>,
+    alert,
 }
 
 // Helpers
@@ -30,14 +38,14 @@ function isoTimeToRippleTime(isoSeconds: number) {
     return Math.round(isoSeconds / 1000) - RIPPLE_EPOCH_DIFF
 }
 
-function errorNotif(msg) {
+function errorNotif(alert, msg: string) {
     console.log(msg)
-    // alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+    alert.error(msg)
 }
 
-function successNotif(msg) {
+function successNotif(alert, msg) {
     console.log(msg)
-    // alert(msg) // TODO: Replace this with a modern version of what's at the top of tx-sender.js
+    alert.show(msg, { type: 'success' })
 }
 
 // TODO: I appear to have broken this with my latest refactor, not sure how. (Probably with submit_and_notify syntax)
@@ -143,7 +151,7 @@ async function onClickCreateEscrow(
     setEscrowWidthPercent: React.Dispatch<React.SetStateAction<number>>, 
     release_auto: boolean) {
     if (Number.isNaN(duration_seconds) || duration_seconds < 1) {
-        errorNotif("Error: Escrow duration must be a positive number of seconds")
+        errorNotif(submitConstData.alert, "Error: Escrow duration must be a positive number of seconds")
         return
     }
 
@@ -320,7 +328,6 @@ function TransactionButton({
                             let { value, min, max } = event.target;
                         
                             const newValue = Math.max(Number(min), Math.min(Number(max), Number(value)));
-                            this.setState({ value: newValue.toString() })
 
                             // Share the value so other logic can update based on it
                             inputSettings?.setInputValue(newValue)
@@ -355,12 +362,12 @@ function TransactionButton({
 
 // TODO: Make sure all calls to this function specify the wallet used!
 async function submit_and_notify(
-    submitData: SubmitConstData,
+    submitConstData: SubmitConstData,
     sendingWallet: Wallet,
-    tx_object: Transaction, 
+    tx_object: Transaction,
     silent: boolean = false) {
 
-    const { api, setBalance, setTxHistory } = submitData
+    const { api, setBalance, setTxHistory } = submitConstData
 
     let prepared;
     try {
@@ -370,7 +377,7 @@ async function submit_and_notify(
     } catch(error) {
       console.log(error)
       if (!silent) {
-        errorNotif("Error preparing tx: "+error)
+        errorNotif(alert, "Error preparing tx: "+error)
       }
       return
     }
@@ -382,9 +389,9 @@ async function submit_and_notify(
       let final_result = (final_result_data.result.meta as TransactionMetadata).TransactionResult
       if (!silent) {
         if (final_result === "tesSUCCESS") {
-          successNotif(`${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
+          successNotif(submitConstData.alert, `${tx_object.TransactionType} tx succeeded (hash: ${hash})`)
         } else {
-          errorNotif(`${tx_object.TransactionType} tx failed w/ code ${final_result}
+          errorNotif(submitConstData.alert, `${tx_object.TransactionType} tx failed with code ${final_result}
                       (hash: ${hash})`)
         }
         logTx(tx_object.TransactionType, hash, final_result, setTxHistory)
@@ -395,7 +402,7 @@ async function submit_and_notify(
     } catch (error) {
       console.log(error)
       if (!silent) {
-        errorNotif(`Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
+        errorNotif(submitConstData.alert, `Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
       }
 
       setBalance(parseFloat(await api.getXrpBalance(sendingWallet.address)))
@@ -447,8 +454,8 @@ function StatusSidebar({
 }
 
 async function onInitClick(
-    submitConstData: SubmitConstData,
     existingApi: Client, 
+    alert,
     setApi: React.Dispatch<React.SetStateAction<Client | undefined>>, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setSendingWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
@@ -494,12 +501,10 @@ async function onInitClick(
       )  
     } catch(error) {
       console.error(error)
-      errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
+      errorNotif(alert, "There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
       return
     }
 }
-
-const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 function onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress) {
     const newAddress = event.target.value
@@ -508,10 +513,12 @@ function onDestinationAddressChange(event, setDestinationAddress, setIsValidDest
     setIsValidDestinationAddress(xrpl.isValidAddress(newAddress))
 }
 
-export default function TxSender() {
+function TxSenderBody() {
     const { translate } = useTranslate();
 
     const [api, setApi] = useState<Client | undefined>(undefined)
+
+    const alert = useAlert()
 
     // Sidebar variables
     const [balance, setBalance] = useState(0)
@@ -524,6 +531,7 @@ export default function TxSender() {
         api,
         setBalance,
         setTxHistory,
+        alert, 
     }
 
     // TODO: setDestinationAddress when input changes :)
@@ -564,308 +572,325 @@ export default function TxSender() {
     
 
     return (
-    <div className="row">
-        {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
-        <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
-        <StatusSidebar balance={balance} sendingWallet={sendingWallet} connectionReady={connectionReady} txHistory={txHistory}/>
-        <main className="main col-md-7 col-lg-6 order-md-3 page-tx-sender" role="main" id="main_content_body">
-            <section className="container-fluid pt-3 p-md-3">
-                <h1>{translate("Transaction Sender")}</h1>
-                <div className="content">
-                    <p>{translate("This tool sends transactions to the ")}
-                        <a href="dev-tools/xrp-faucets">{translate("XRP Testnet")}</a>
-                        {translate(" address of your choice so you can test how you monitor and respond to incoming transactions.")}
-                    </p>
-                    <form>
-                        <div className="form-group">
-                            <button className={clsx("btn btn-primary form-control", isInitEnabled ? "" : "disabled")} 
-                                type="button" id="init_button" 
-                                onClick={() => {
-                                    onInitClick(
-                                        submitConstData,
-                                        api!, 
-                                        setApi, 
-                                        setBalance, 
-                                        setSendingWallet, 
-                                        setIsInitEnabled, 
-                                        setConnectionReady,
-                                        setPpIssuerWallet,
-                                        setPpWidthPercent,
-                                        ppCurrencyCode,
-                                    )
-                                }}
-                                disabled={!isInitEnabled}
-                                title={isInitEnabled ? "" : "done"}>
-                                {translate("Initialize")}   
-                            </button>
-                            {!isInitEnabled && (<div>&nbsp;<i className="fa fa-check-circle"></i></div>)}
-
-                            <small className="form-text text-muted">
-                                {translate("Set up the necessary Testnet XRP addresses to send test payments.")}
-                            </small>
-                        </div>{/*/.form-group*/}
-                        <div className="form-group">
-                            <label htmlFor="destination_address">
-                                {translate("Destination Address")}
-                            </label>
-                            <input type="text" className={clsx("form-control", 
-                                // Defaults to not having "is-valid" / "is-invalid" classes
-                                (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
-                                id="destination_address" 
-                                onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
-                                aria-describedby="destination_address_help" defaultValue={destinationAddress} />
-                            <small id="destination_address_help" className="form-text text-muted">
-                                {translate("Send transactions to this XRP Testnet address")}
-                            </small>
-                        </div>
-                        <p className={clsx("devportal-callout caution", !(isValidDestinationAddress && destinationAddress[0] === 'X') && "collapse")}
-                            id="x-address-warning">
-                            <strong>{translate("Caution:")}</strong>
-                            {translate(" This X-address is intended for use on Mainnet. Testnet X-addresses have a \"T\" prefix instead.")}
+        <div className="row">
+            {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
+            <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
+            <StatusSidebar balance={balance} sendingWallet={sendingWallet} connectionReady={connectionReady} txHistory={txHistory}/>
+            <main className="main col-md-7 col-lg-6 order-md-3 page-tx-sender" role="main" id="main_content_body">
+                <section className="container-fluid pt-3 p-md-3">
+                    <h1>{translate("Transaction Sender")}</h1>
+                    <div className="content">
+                        <p>{translate("This tool sends transactions to the ")}
+                            <a href="dev-tools/xrp-faucets">{translate("XRP Testnet")}</a>
+                            {translate(" address of your choice so you can test how you monitor and respond to incoming transactions.")}
                         </p>
-                        <h3>{translate("Send Transaction")}</h3>
-                        {/* Send Payment  */}
-                        <TransactionButton 
-                            submitConstData={submitConstData}
-                            connectionReady={connectionReady}
-                            sendingWallet={sendingWallet}
-                            transaction={
-                            {
-                                TransactionType: "Payment",
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                Account: sendingWallet?.address,
-                                Destination: destinationAddress,
-                                Amount: dropsToSendForPayment.toString()
-                            }}
-                            ids={{
-                                formId: "send_xrp_payment",
-                                buttonId: "send_xrp_payment_btn",
-                                inputId: "send_xrp_payment_amount",
-                            }}
-                            content=
-                            {{
-                                buttonText: "Send XRP Payment",
-                                units: "drops of XRP",
-                                longerDescription: (<div>{translate("Send a ")}<a href="send-xrp.html">{translate("simple XRP-to-XRP payment")}</a>{translate(".")}</div>),
-                            }}
-                            inputSettings={
-                            {
-                                defaultValue: defaultDropsToSend,
-                                setInputValue: setDropsToSendForPayment,
-                                min: 1,
-                                max: 10000000000,
-                            }}
-                        />
-                        {/* Partial Payments */}
-                        <TransactionButton 
-                            submitConstData={submitConstData}
-                            connectionReady={connectionReady}
-                            sendingWallet={sendingWallet}
-                            transaction={
-                            {
-                                TransactionType: "Payment",
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                Account: sendingWallet?.address,
-                                Destination: destinationAddress,
-                                Amount: "1000000000000000", // 1 billion XRP
-                                SendMax: {
-                                    value: (Math.random()*.01).toPrecision(15), // random very small amount
-                                    currency: ppCurrencyCode,
-                                    issuer: ppIssuerWallet?.address
-                                },
-                                Flags: 0x00020000 // tfPartialPayment
-                            }}
-                            ids={{
-                                formId: "send_partial_payment",
-                                buttonId: "send_partial_payment_btn",
-                                inputId: "send_partial_payment_amount",
-                            }}
-                            content=
-                            {{
-                                buttonText: "Send Partial Payment",
-                                units: "drops of XRP",
-                                longerDescription: <div>{translate("Deliver a small amount of XRP with a large ")}
-                                <code>{translate("Amount")}</code>{translate(" value, to test your handling of ")}
-                                <a href="partial-payments.html">{translate("partial payments")}</a>{translate(".")}</div>,
-                                buttonTitle: "(Please wait for partial payments setup to finish)",
-                            }}
-                            loadingBar={{
-                                id: "pp_progress",
-                                widthPercent: ppWidthPercent,
-                                description: "(Getting ready to send partial payments)",
-                                defaultOn: true,
-                            }}
-                        />
-                        {/* Escrow */}
-                        <TransactionButton
-                            submitConstData={submitConstData}
-                            connectionReady={connectionReady}
-                            sendingWallet={sendingWallet}
-                            transaction={
-                            {
-                                TransactionType: "EscrowCreate",
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                Account: sendingWallet?.address,
-                                Destination: destinationAddress,
-                                Amount: "1000000",
-                                FinishAfter:  isoTimeToRippleTime(new Date().getTime()) + finishAfter
-                            }}
-                            ids={{
-                                formId: "create_escrow",
-                                buttonId: "create_escrow_btn",
-                                inputId: "create_escrow_duration_seconds",
-                            }}
-                            content=
-                            {{
-                                buttonText: translate("Create Escrow"),
-                                units: translate("seconds"),
-                                longerDescription: (<div>{translate("Create a ")}<a href="escrow.html">{translate("time-based escrow")}</a>
-                                {translate(" of 1 XRP for the specified number of seconds.")}</div>),
-                            }}
-                            inputSettings={
-                            {
-                                defaultValue: defaultFinishAfter,
-                                setInputValue: setFinishAfter,
-                                min: 5,
-                                max: 10000,
-                            }}
-                            loadingBar={{
-                                id: "escrow_progress",
-                                widthPercent: escrowWidthPercent,
-                                description: translate("(Waiting to release Escrow when it's ready)"),
-                                defaultOn: false,
-                            }}
-                            checkBox={{
-                                setCheckValue: setFinishEscrowAutomatically,
-                                defaultValue: finishEscrowAutomatically,
-                                description: translate("Finish automatically"),
-                            }}
-                            customOnClick={() => onClickCreateEscrow(
-                                submitConstData, 
-                                sendingWallet, 
-                                destinationAddress, 
-                                finishAfter, 
-                                setEscrowWidthPercent, 
-                                finishEscrowAutomatically)}
-                        />
-                        {/* Payment Channels 
-                            
-                            - Future feature: figure out channel ID and enable a button that creates
-                              valid claims for the given payment channel to help test redeeming 
-                        */}
-                        <TransactionButton
-                            submitConstData={submitConstData}
-                            connectionReady={connectionReady}
-                            sendingWallet={sendingWallet}
-                            transaction={{
-                                TransactionType: "PaymentChannelCreate",
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                Account: sendingWallet?.address,
-                                Destination: destinationAddress,
-                                Amount: paymentChannelAmount.toString(),
-                                SettleDelay: 30,
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                PublicKey: sendingWallet?.publicKey
-                            }}
-                            ids={{
-                                formId: "create_payment_channel",
-                                buttonId: "create_payment_channel_btn",
-                                inputId: "create_payment_channel_amount",
-                            }}
-                            content={{
-                                buttonText: translate("Create Payment Channel"),
-                                units: translate("drops of XRP"),
-                                longerDescription: (<div>{translate("Create a ")}<a href="payment-channels.html">{translate("payment channel")}</a>
-                                {translate(" and fund it with the specified amount of XRP.")}</div>),
-                            }}
-                            inputSettings={
-                            {
-                                defaultValue: defaultPaymentChannelAmount,
-                                setInputValue: setPaymentChannelAmount,
-                                min: 1,
-                                max: 10000000000,
-                            }}
-                        />
-                        {/* Send Issued Currency */}
-                            {/* TODO: Add ability to configure custom currency codes */}
-                            <TransactionButton
-                            submitConstData={submitConstData}
-                            connectionReady={connectionReady}
-                            sendingWallet={sendingWallet}
-                            transaction={
+                        <form>
+                            <div className="form-group">
+                                <button className={clsx("btn btn-primary form-control", isInitEnabled ? "" : "disabled")} 
+                                    type="button" id="init_button" 
+                                    onClick={() => {
+                                        onInitClick(
+                                            api!, 
+                                            alert,
+                                            setApi, 
+                                            setBalance, 
+                                            setSendingWallet, 
+                                            setIsInitEnabled, 
+                                            setConnectionReady,
+                                            setPpIssuerWallet,
+                                            setPpWidthPercent,
+                                            ppCurrencyCode,
+                                        )
+                                    }}
+                                    disabled={!isInitEnabled}
+                                    title={isInitEnabled ? "" : "done"}>
+                                    {translate("Initialize")}   
+                                </button>
+                                {!isInitEnabled && (<div>&nbsp;<i className="fa fa-check-circle"></i></div>)}
+
+                                <small className="form-text text-muted">
+                                    {translate("Set up the necessary Testnet XRP addresses to send test payments.")}
+                                </small>
+                            </div>{/*/.form-group*/}
+                            <div className="form-group">
+                                <label htmlFor="destination_address">
+                                    {translate("Destination Address")}
+                                </label>
+                                <input type="text" className={clsx("form-control", 
+                                    // Defaults to not having "is-valid" / "is-invalid" classes
+                                    (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
+                                    id="destination_address" 
+                                    onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
+                                    aria-describedby="destination_address_help" defaultValue={destinationAddress} />
+                                <small id="destination_address_help" className="form-text text-muted">
+                                    {translate("Send transactions to this XRP Testnet address")}
+                                </small>
+                            </div>
+                            <p className={clsx("devportal-callout caution", !(isValidDestinationAddress && destinationAddress[0] === 'X') && "collapse")}
+                                id="x-address-warning">
+                                <strong>{translate("Caution:")}</strong>
+                                {translate(" This X-address is intended for use on Mainnet. Testnet X-addresses have a \"T\" prefix instead.")}
+                            </p>
+                            <h3>{translate("Send Transaction")}</h3>
+                            {/* Send Payment  */}
+                            <TransactionButton 
+                                submitConstData={submitConstData}
+                                connectionReady={connectionReady}
+                                sendingWallet={sendingWallet}
+                                transaction={
                                 {
-                                TransactionType: "Payment",
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                Account: sendingWallet?.address,
-                                Destination: destinationAddress,
-                                Amount: {
-                                    currency: trustCurrencyCode,
-                                    value: issueAmount?.toString(),
+                                    TransactionType: "Payment",
                                     // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                    issuer: sendingWallet?.address
-                                }
-                            }}
-                            ids={{
-                                formId: "send_issued_currency",
-                                buttonId: "send_issued_currency_btn",
-                                inputId: "send_issued_currency_amount",
-                            }}
-                            content={{
-                                buttonText: translate("Send Issued Currency"),
-                                units: translate(trustCurrencyCode),
-                                longerDescription: (<div>{translate("Your destination address needs a ")}
-                                <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>{translate(" to ")}
-                                <span className="sending-address-item">{translate("(the test sender)")}</span>
-                                {translate(" for the currency in question. Otherwise, you'll get tecPATH_DRY.")}</div>),
-                            }}
-                            inputSettings={
-                            {
-                                defaultValue: defaultIssueAmount,
-                                setInputValue: setIssueAmount,
-                                min: 1,
-                                max: 10000000000,
-                            }}
-                        />
-                        {/* Create Trust Line */}
-                        <TransactionButton
-                            submitConstData={submitConstData}
-                            connectionReady={connectionReady}
-                            sendingWallet={sendingWallet}
-                            transaction={
+                                    Account: sendingWallet?.address,
+                                    Destination: destinationAddress,
+                                    Amount: dropsToSendForPayment.toString()
+                                }}
+                                ids={{
+                                    formId: "send_xrp_payment",
+                                    buttonId: "send_xrp_payment_btn",
+                                    inputId: "send_xrp_payment_amount",
+                                }}
+                                content=
+                                {{
+                                    buttonText: "Send XRP Payment",
+                                    units: "drops of XRP",
+                                    longerDescription: (<div>{translate("Send a ")}<a href="send-xrp.html">{translate("simple XRP-to-XRP payment")}</a>{translate(".")}</div>),
+                                }}
+                                inputSettings={
                                 {
-                                TransactionType: "TrustSet",
-                                // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
-                                Account: sendingWallet?.address,
-                                LimitAmount: {
-                                    currency: trustCurrencyCode,
-                                    value: trustLimit.toString(),
-                                    issuer: destinationAddress
-                                }
-                            }}
-                            ids={{
-                                formId: "trust_for",
-                                buttonId: "trust_for_btn",
-                                inputId: "trust_for_amount",
-                            }}
-                            content={{
-                                buttonText: translate("Trust for"),
-                                units: translate(trustCurrencyCode),
-                                longerDescription: (<div>{translate("The test sender creates a ")}
-                                <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>
-                                {translate(" to your account for the given currency.")}</div>),
-                            }}
-                            inputSettings={
-                            {
-                                defaultValue: defaultTrustLimit,
-                                setInputValue: setTrustLimit,
-                                min: 1,
-                                max: 10000000000,
-                            }}
-                        />
-                    </form>
-                </div>
-            </section>
-        </main>
-    </div>
+                                    defaultValue: defaultDropsToSend,
+                                    setInputValue: setDropsToSendForPayment,
+                                    min: 1,
+                                    max: 10000000000,
+                                }}
+                            />
+                            {/* Partial Payments */}
+                            <TransactionButton 
+                                submitConstData={submitConstData}
+                                connectionReady={connectionReady}
+                                sendingWallet={sendingWallet}
+                                transaction={
+                                {
+                                    TransactionType: "Payment",
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    Account: sendingWallet?.address,
+                                    Destination: destinationAddress,
+                                    Amount: "1000000000000000", // 1 billion XRP
+                                    SendMax: {
+                                        value: (Math.random()*.01).toPrecision(15), // random very small amount
+                                        currency: ppCurrencyCode,
+                                        issuer: ppIssuerWallet?.address
+                                    },
+                                    Flags: 0x00020000 // tfPartialPayment
+                                }}
+                                ids={{
+                                    formId: "send_partial_payment",
+                                    buttonId: "send_partial_payment_btn",
+                                    inputId: "send_partial_payment_amount",
+                                }}
+                                content=
+                                {{
+                                    buttonText: "Send Partial Payment",
+                                    units: "drops of XRP",
+                                    longerDescription: <div>{translate("Deliver a small amount of XRP with a large ")}
+                                    <code>{translate("Amount")}</code>{translate(" value, to test your handling of ")}
+                                    <a href="partial-payments.html">{translate("partial payments")}</a>{translate(".")}</div>,
+                                    buttonTitle: "(Please wait for partial payments setup to finish)",
+                                }}
+                                loadingBar={{
+                                    id: "pp_progress",
+                                    widthPercent: ppWidthPercent,
+                                    description: "(Getting ready to send partial payments)",
+                                    defaultOn: true,
+                                }}
+                            />
+                            {/* Escrow */}
+                            <TransactionButton
+                                submitConstData={submitConstData}
+                                connectionReady={connectionReady}
+                                sendingWallet={sendingWallet}
+                                transaction={
+                                {
+                                    TransactionType: "EscrowCreate",
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    Account: sendingWallet?.address,
+                                    Destination: destinationAddress,
+                                    Amount: "1000000",
+                                    FinishAfter:  isoTimeToRippleTime(new Date().getTime()) + finishAfter
+                                }}
+                                ids={{
+                                    formId: "create_escrow",
+                                    buttonId: "create_escrow_btn",
+                                    inputId: "create_escrow_duration_seconds",
+                                }}
+                                content=
+                                {{
+                                    buttonText: translate("Create Escrow"),
+                                    units: translate("seconds"),
+                                    longerDescription: (<div>{translate("Create a ")}<a href="escrow.html">{translate("time-based escrow")}</a>
+                                    {translate(" of 1 XRP for the specified number of seconds.")}</div>),
+                                }}
+                                inputSettings={
+                                {
+                                    defaultValue: defaultFinishAfter,
+                                    setInputValue: setFinishAfter,
+                                    min: 5,
+                                    max: 10000,
+                                }}
+                                loadingBar={{
+                                    id: "escrow_progress",
+                                    widthPercent: escrowWidthPercent,
+                                    description: translate("(Waiting to release Escrow when it's ready)"),
+                                    defaultOn: false,
+                                }}
+                                checkBox={{
+                                    setCheckValue: setFinishEscrowAutomatically,
+                                    defaultValue: finishEscrowAutomatically,
+                                    description: translate("Finish automatically"),
+                                }}
+                                customOnClick={() => onClickCreateEscrow(
+                                    submitConstData, 
+                                    sendingWallet, 
+                                    destinationAddress, 
+                                    finishAfter, 
+                                    setEscrowWidthPercent, 
+                                    finishEscrowAutomatically)}
+                            />
+                            {/* Payment Channels 
+                                
+                                - Future feature: figure out channel ID and enable a button that creates
+                                valid claims for the given payment channel to help test redeeming 
+                            */}
+                            <TransactionButton
+                                submitConstData={submitConstData}
+                                connectionReady={connectionReady}
+                                sendingWallet={sendingWallet}
+                                transaction={{
+                                    TransactionType: "PaymentChannelCreate",
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    Account: sendingWallet?.address,
+                                    Destination: destinationAddress,
+                                    Amount: paymentChannelAmount.toString(),
+                                    SettleDelay: 30,
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    PublicKey: sendingWallet?.publicKey
+                                }}
+                                ids={{
+                                    formId: "create_payment_channel",
+                                    buttonId: "create_payment_channel_btn",
+                                    inputId: "create_payment_channel_amount",
+                                }}
+                                content={{
+                                    buttonText: translate("Create Payment Channel"),
+                                    units: translate("drops of XRP"),
+                                    longerDescription: (<div>{translate("Create a ")}<a href="payment-channels.html">{translate("payment channel")}</a>
+                                    {translate(" and fund it with the specified amount of XRP.")}</div>),
+                                }}
+                                inputSettings={
+                                {
+                                    defaultValue: defaultPaymentChannelAmount,
+                                    setInputValue: setPaymentChannelAmount,
+                                    min: 1,
+                                    max: 10000000000,
+                                }}
+                            />
+                            {/* Send Issued Currency */}
+                                {/* TODO: Add ability to configure custom currency codes */}
+                                <TransactionButton
+                                submitConstData={submitConstData}
+                                connectionReady={connectionReady}
+                                sendingWallet={sendingWallet}
+                                transaction={
+                                    {
+                                    TransactionType: "Payment",
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    Account: sendingWallet?.address,
+                                    Destination: destinationAddress,
+                                    Amount: {
+                                        currency: trustCurrencyCode,
+                                        value: issueAmount?.toString(),
+                                        // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                        issuer: sendingWallet?.address
+                                    }
+                                }}
+                                ids={{
+                                    formId: "send_issued_currency",
+                                    buttonId: "send_issued_currency_btn",
+                                    inputId: "send_issued_currency_amount",
+                                }}
+                                content={{
+                                    buttonText: translate("Send Issued Currency"),
+                                    units: translate(trustCurrencyCode),
+                                    longerDescription: (<div>{translate("Your destination address needs a ")}
+                                    <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>{translate(" to ")}
+                                    <span className="sending-address-item">{translate("(the test sender)")}</span>
+                                    {translate(" for the currency in question. Otherwise, you'll get tecPATH_DRY.")}</div>),
+                                }}
+                                inputSettings={
+                                {
+                                    defaultValue: defaultIssueAmount,
+                                    setInputValue: setIssueAmount,
+                                    min: 1,
+                                    max: 10000000000,
+                                }}
+                            />
+                            {/* Create Trust Line */}
+                            <TransactionButton
+                                submitConstData={submitConstData}
+                                connectionReady={connectionReady}
+                                sendingWallet={sendingWallet}
+                                transaction={
+                                    {
+                                    TransactionType: "TrustSet",
+                                    // @ts-expect-error - sendingWallet is guaranteed to be defined by the time this button is clicked.
+                                    Account: sendingWallet?.address,
+                                    LimitAmount: {
+                                        currency: trustCurrencyCode,
+                                        value: trustLimit.toString(),
+                                        issuer: destinationAddress
+                                    }
+                                }}
+                                ids={{
+                                    formId: "trust_for",
+                                    buttonId: "trust_for_btn",
+                                    inputId: "trust_for_amount",
+                                }}
+                                content={{
+                                    buttonText: translate("Trust for"),
+                                    units: translate(trustCurrencyCode),
+                                    longerDescription: (<div>{translate("The test sender creates a ")}
+                                    <a href="trust-lines-and-issuing.html">{translate("trust line")}</a>
+                                    {translate(" to your account for the given currency.")}</div>),
+                                }}
+                                inputSettings={
+                                {
+                                    defaultValue: defaultTrustLimit,
+                                    setInputValue: setTrustLimit,
+                                    min: 1,
+                                    max: 10000000000,
+                                }}
+                            />
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </div>
+    )
+}
+
+export default function TxSender() {
+    // Wrapper to allow for dynamic alerts when transactions complete
+
+    const alertOptions = {
+        position: positions.BOTTOM_RIGHT,
+        timeout: 7000,
+        offset: '8px',
+        transition: transitions.FADE
+    }
+
+    return (
+        <AlertProvider template={AlertTemplate} {...alertOptions}>
+            <TxSenderBody/>
+        </AlertProvider>
     )
 }
