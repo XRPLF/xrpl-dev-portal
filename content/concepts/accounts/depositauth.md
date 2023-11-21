@@ -59,7 +59,7 @@ An account with Deposit Authorization enabled:
 
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:
 
-{% include '_snippets/depositauth-semantics-table.html' %}
+{% include '_snippets/depositauth-semantics-table.md' %}
 <!--{#_ #}-->
 
 
@@ -114,6 +114,6 @@ You can use the [deposit_authorized method][] to see if an account is authorized
 
 <!--{# common link defs #}-->
 [DepositPreauth amendment]: known-amendments.html#depositpreauth
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

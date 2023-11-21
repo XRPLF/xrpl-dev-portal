@@ -59,7 +59,7 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 以下の表に、トランザクションタイプ別にDepositAuthが有効または無効な状態での入金の可否をまとめました。
 
-{% include '_snippets/depositauth-semantics-table.html' %}
+{% include '_snippets/depositauth-semantics-table.md' %}
 <!--{#_ #}-->
 
 
@@ -114,6 +114,6 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 
 <!--{# common link defs #}-->
 [DepositPreauth Amendment]: known-amendments.html#depositpreauth
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
