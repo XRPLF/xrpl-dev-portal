@@ -209,6 +209,7 @@ function TxSenderBody(): React.JSX.Element {
                                     max: 10000000000,
                                 }}
                             />
+                            
                             {/* Partial Payments */}
                             <TransactionButton 
                                 id="send_partial_payment"
@@ -243,6 +244,7 @@ function TxSenderBody(): React.JSX.Element {
                                     defaultOn: true,
                                 }}
                             />
+
                             {/* Escrow */}
                             <TransactionButton
                                 id="create_escrow"
@@ -289,6 +291,7 @@ function TxSenderBody(): React.JSX.Element {
                                     setEscrowWidthPercent, 
                                     finishEscrowAutomatically)}
                             />
+
                             {/* Payment Channels 
                                 
                                 - Future feature: figure out channel ID and enable a button that creates
@@ -321,6 +324,7 @@ function TxSenderBody(): React.JSX.Element {
                                     max: 10000000000,
                                 }}
                             />
+
                             {/* Send Issued Currency */}
                             {/* Future feature: Add ability to configure custom currency codes */}
                             <TransactionButton
@@ -355,6 +359,7 @@ function TxSenderBody(): React.JSX.Element {
                                     max: 10000000000,
                                 }}
                             />
+
                             {/* Create Trust Line */}
                             <TransactionButton
                                 id="trust_for"
