@@ -12,7 +12,7 @@
 ## 3) owner / account reserve variables
 ## 4) include_code() macro → code-snippet component
 ## 5) category template → child pages component
-## 6) include_svg() macro?? TBD
+## 6) include_svg() → inline-svg component
 ###############################################################################
 
 import os
@@ -64,6 +64,17 @@ def repl_code_samples(ftext):
         if m.group("language"):
             repl_string += 'language="'+m.group("language")+'" '
         repl_string += '/%}'
+        ftext2 = ftext2.replace(raw_string, repl_string)
+    return ftext2
+
+INCLUDE_SVG_REGEX = re.compile(r'\{\{ *include_svg\( *"(?P<fname>[^"]+)"[, ]*("(?P<caption>[^"]+)")?\) *}}')
+# TODO: handle 'classes="floating-diagram"' case from ledger-structure.md
+def repl_svg_includes(ftext):
+    ftext2 = ftext
+    for m in re.finditer(INCLUDE_SVG_REGEX, ftext):
+        raw_string = m.group(0)
+        repl_string = '{% inline-svg file="/' + m.group("fname") + '" /%}'
+        ## TODO: use caption, link full version of diagram. Maybe wrap in <figure>.
         ftext2 = ftext2.replace(raw_string, repl_string)
     return ftext2
 
@@ -124,7 +135,7 @@ def update_vars_syntax(ftext):
     ftext2 = ftext
     for m in re.finditer(VAR_REGEX, ftext):
         raw_string = m.group(0)
-        print("found Dactyl var:", m.group("var"))
+        #print("found Dactyl var:", m.group("var"))
         if m.group("var") == "name":
             repl_string = '{% $frontmatter.title %}'
         else:
@@ -143,6 +154,7 @@ def main():
         ftext2 = includes_to_partials(ftext2)
         ftext2 = repl_repo_link_vars(ftext2)
         ftext2 = update_vars_syntax(ftext2)
+        ftext2 = repl_svg_includes(ftext2)
         if ftext2 != ftext:
             #print("performing syntax conversion in", fname)
             with open(fname, "w") as f:
