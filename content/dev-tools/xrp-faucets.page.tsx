@@ -37,7 +37,7 @@ function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: 
   const { translate } = useTranslate();
 
   return (<div key={givenKey}>
-    <h4>{translate(faucet.shortName)} {translate("Servers")}</h4>
+    <h4>{translate(`${faucet.shortName} Servers`)}</h4>
     <pre>
       <code>
         // WebSocket<br/>
@@ -163,7 +163,7 @@ async function generateFaucetCredentialsAndUpdateUI(
     setBalance(response.balance)
 
   } catch (e) {
-    alert(translate("There was an error with the " + selectedFaucet.shortName + " faucet. Please try again."))
+    alert(translate(`There was an error with the ${selectedFaucet.shortName} faucet. Please try again.`))
   }
   setButtonClicked(false)
 }
@@ -191,14 +191,14 @@ return (<div>
               setBalance, 
               setSequence)
           } className="btn btn-primary mr-2 mb-2">
-            Generate {selectedFaucet.shortName} credentials
+            {translate(`Generate ${selectedFaucet.shortName} credentials`)}
         </button>
       </div>
     {/* </XRPLGuard> */}
 
 
     {generatedCredentialsFaucet && <div id="your-credentials">
-      <h2>{translate("Your")} {generatedCredentialsFaucet} {translate("Credentials")}</h2>
+      <h2>{translate(`Your ${generatedCredentialsFaucet} Credentials`)}</h2>
     </div>}
 
     {(buttonClicked && address === "") &&
