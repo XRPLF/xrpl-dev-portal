@@ -13,9 +13,6 @@ import { useAlert } from 'react-alert'
 // - Change all links that previously went to tx-sender.html to dev-tools/tx-sender
 //   - Top nav, homepage, ctrl + shift + F for tx-sender in a link
 // - Add this to the sidebar
-// - Figure out how this code is dynamic (the js files) and then translate that over in a React-like way
-//   - Specifically, look at `tx-sender.js`
-// - Add the proper top-level divs to match what's live (Currently has an empty classname Div as the main wrapper)
 // - Componentize the repeated sections
 
 // Refactoring:
@@ -26,7 +23,7 @@ const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
 
 // All unchanging information needed to submit & log data
 interface SubmitConstData {
-    api: Client, 
+    client: Client, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setTxHistory: React.Dispatch<React.SetStateAction<React.JSX.Element[]>>,
     alert,
@@ -48,11 +45,9 @@ function successNotif(alert, msg) {
     alert.show(msg, { type: 'success' })
 }
 
-// TODO: I appear to have broken this with my latest refactor, not sure how. (Probably with submit_and_notify syntax)
-// It gets to the 1% trigger (animation starts after init button) - but it does not actually progress to 20%
 async function setUpForPartialPayments
     (
-    api: Client,
+    client: Client,
     sendingWallet: Wallet,
     setPpIssuerWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
     setPpWidthPercent: React.Dispatch<React.SetStateAction<number>>,
@@ -66,7 +61,7 @@ async function setUpForPartialPayments
 
     // 1. Get a funded address to use as issuer
     try {
-        ppIssuerWallet = (await api.fundWallet()).wallet
+        ppIssuerWallet = (await client.fundWallet()).wallet
         setPpIssuerWallet(ppIssuerWallet)
     } catch(error) {
         console.log("Error getting issuer address for partial payments:", error)
@@ -76,7 +71,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(20)
     
     // 2. Set Default Ripple on issuer
-    let resp: TxResponse = await api.submitAndWait({
+    let resp: TxResponse = await client.submitAndWait({
         TransactionType: "AccountSet",
         Account: ppIssuerWallet.address,
         SetFlag: 8 // asfDefaultRipple
@@ -88,7 +83,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(40)
     
     // 3. Make a trust line from sending address to issuer
-    resp = await api.submitAndWait({
+    resp = await client.submitAndWait({
         TransactionType: "TrustSet",
         Account: sendingWallet.address,
         LimitAmount: {
@@ -104,7 +99,7 @@ async function setUpForPartialPayments
     setPpWidthPercent(60)
     
         // 4. Issue fake currency to main sending address
-    resp = await api.submitAndWait({
+    resp = await client.submitAndWait({
         TransactionType: "Payment",
         Account: ppIssuerWallet.address,
         Destination: sendingWallet.address,
@@ -123,7 +118,7 @@ async function setUpForPartialPayments
     // 5. Place offer to buy issued currency for XRP
     // When sending the partial payment, the sender consumes their own offer (!)
     // so they end up paying themselves issued currency then delivering XRP.
-    resp = await api.submitAndWait({
+    resp = await client.submitAndWait({
         TransactionType: "OfferCreate",
         Account: sendingWallet.address,
         TakerGets: "1000000000000000", // 1 billion XRP
@@ -170,7 +165,7 @@ async function onClickCreateEscrow(
         // to submit the EscrowFinish
         setEscrowWidthPercent(1)
 
-        const { api } = submitConstData
+        const { client } = submitConstData
 
         let latest_close_time = -1
         while (latest_close_time <= finish_after) {
@@ -181,7 +176,7 @@ async function onClickCreateEscrow(
             if (seconds_left <= 0) {
                 // System time has advanced past FinishAfter. But is there a new
                 //  enough validated ledger?
-                latest_close_time = (await api.request({
+                latest_close_time = (await client.request({
                     command: "ledger",
                     "ledger_index": "validated"}
                 )).result.ledger.close_time
@@ -367,12 +362,12 @@ async function submit_and_notify(
     tx_object: Transaction,
     silent: boolean = false) {
 
-    const { api, setBalance, setTxHistory } = submitConstData
+    const { client, setBalance, setTxHistory } = submitConstData
 
     let prepared;
     try {
       // Auto-fill fields like Fee and Sequence
-      prepared = await api.autofill(tx_object)
+      prepared = await client.autofill(tx_object)
       console.debug("Prepared:", prepared)
     } catch(error) {
       console.log(error)
@@ -384,7 +379,7 @@ async function submit_and_notify(
 
     try {
       const {tx_blob, hash} = sendingWallet.sign(prepared)
-      const final_result_data = await api.submitAndWait(tx_blob)
+      const final_result_data = await client.submitAndWait(tx_blob)
       console.log("final_result_data is", final_result_data)
       let final_result = (final_result_data.result.meta as TransactionMetadata).TransactionResult
       if (!silent) {
@@ -397,7 +392,7 @@ async function submit_and_notify(
         logTx(tx_object.TransactionType, hash, final_result, setTxHistory)
       }
 
-      setBalance(parseFloat(await api.getXrpBalance(sendingWallet.address)))
+      setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
       return final_result_data
     } catch (error) {
       console.log(error)
@@ -405,7 +400,7 @@ async function submit_and_notify(
         errorNotif(submitConstData.alert, `Error signing & submitting ${tx_object.TransactionType} tx: ${error}`)
       }
 
-      setBalance(parseFloat(await api.getXrpBalance(sendingWallet.address)))
+      setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
       return
     }
   }
@@ -454,9 +449,9 @@ function StatusSidebar({
 }
 
 async function onInitClick(
-    existingApi: Client, 
+    client: Client, 
     alert,
-    setApi: React.Dispatch<React.SetStateAction<Client | undefined>>, 
+    setClient: React.Dispatch<React.SetStateAction<Client | undefined>>, 
     setBalance: React.Dispatch<React.SetStateAction<number>>, 
     setSendingWallet: React.Dispatch<React.SetStateAction<Wallet | undefined>>, 
     setIsInitEnabled: React.Dispatch<React.SetStateAction<boolean>>, 
@@ -466,34 +461,34 @@ async function onInitClick(
     ppCurrencyCode: string,
     ): Promise<void> {
     
-    if(existingApi) {
+    if(client) {
         console.log("Already initializing!")
         return
     }
 
     console.log("Connecting to Testnet WebSocket...")
     // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
-    const api = new xrpl.Client(TESTNET_URL)
-    api.on('connected', () => {
+    const client = new xrpl.Client(TESTNET_URL)
+    client.on('connected', () => {
         setConnectionReady(true)
     })
 
-    api.on('disconnected', (code) => {
+    client.on('disconnected', (code) => {
         setConnectionReady(false)
     })
-    setApi(api)
-    await api.connect()
+    setClient(client)
+    await client.connect()
 
     console.debug("Getting a sending address from the faucet...")
     try {
-      const fundResponse = await api.fundWallet()
+      const fundResponse = await client.fundWallet()
       const sendingWallet = fundResponse.wallet
       setSendingWallet(sendingWallet)
       // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
       setBalance(xrpl.dropsToXrp(fundResponse.balance))
       setIsInitEnabled(false)
       await setUpForPartialPayments(
-        api, 
+        client, 
         sendingWallet, 
         setPpIssuerWallet, 
         setPpWidthPercent, 
@@ -516,7 +511,7 @@ function onDestinationAddressChange(event, setDestinationAddress, setIsValidDest
 function TxSenderBody() {
     const { translate } = useTranslate();
 
-    const [api, setApi] = useState<Client | undefined>(undefined)
+    const [client, setClient] = useState<Client | undefined>(undefined)
 
     const alert = useAlert()
 
@@ -528,13 +523,13 @@ function TxSenderBody() {
 
     // Used when submitting transactions to trace all transactions in the UI
     const submitConstData = {
-        api,
+        client,
         setBalance,
         setTxHistory,
         alert, 
     }
 
-    // TODO: setDestinationAddress when input changes :)
+    // Manage the destinationAddress
     const defaultDestinationAddress = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
     const [destinationAddress, setDestinationAddress] = useState(defaultDestinationAddress)
     const [isValidDestinationAddress, setIsValidDestinationAddress] = useState(true)
@@ -590,9 +585,9 @@ function TxSenderBody() {
                                     type="button" id="init_button" 
                                     onClick={() => {
                                         onInitClick(
-                                            api!, 
+                                            client!, 
                                             alert,
-                                            setApi, 
+                                            setClient, 
                                             setBalance, 
                                             setSendingWallet, 
                                             setIsInitEnabled, 
@@ -795,7 +790,7 @@ function TxSenderBody() {
                                 }}
                             />
                             {/* Send Issued Currency */}
-                                {/* TODO: Add ability to configure custom currency codes */}
+                            {/* Future feature: Add ability to configure custom currency codes */}
                                 <TransactionButton
                                 submitConstData={submitConstData}
                                 connectionReady={connectionReady}
