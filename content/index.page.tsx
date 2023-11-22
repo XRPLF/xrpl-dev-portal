@@ -230,7 +230,7 @@ export default function Index() {
         </section>
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-8-sm p-10-until-sm br-8 cta-card">
-            <img src={require('./img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" />
+            <img src={require('./static/img/backgrounds/cta-home-magenta.svg')} className="cta cta-bottom-right" />
             <div className="z-index-1 position-relative">
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 mb-8-sm mb-10-until-sm">
