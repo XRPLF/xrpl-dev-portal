@@ -1483,6 +1483,11 @@ pages:
             - ja
 
 
+    -   md: concepts/decentralized-identifiers.md
+        targets:
+            - en
+            - ja
+
 
 # Tutorials --------------------------------------------------------------------
 
@@ -2350,6 +2355,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol/ledger-data/ledger-entry-types/did.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol/ledger-data/ledger-entry-types/directorynode.md
         targets:
             - en
@@ -2579,6 +2589,16 @@ pages:
 
     -   md: "@i18n/ja/references/protocol/transactions/types/depositpreauth.md"
         targets:
+            - ja
+
+    -   md: references/protocol/transactions/types/diddelete.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/didset.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol/transactions/types/escrowcancel.md
