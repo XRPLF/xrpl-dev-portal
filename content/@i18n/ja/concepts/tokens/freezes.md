@@ -1,7 +1,7 @@
 ---
 html: freezes.html
 parent: tokens.html
-blurb: 凍結では、コンプライアンス目的で発行済み通貨の取引を停止できます。
+blurb: 発行者はコンプライアンス目的でトークンの取引を停止できます。
 labels:
   - トークン
 ---

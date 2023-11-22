@@ -1,6 +1,6 @@
 ---
 html: automated-market-makers.html
-parent: de-index.ja.html
+parent: decentralized-exchange.html
 blurb: 自動マーケットメーカー（AMM）は、資産ペア間の流動性を提供し、分散型取引所のオーダーブックを補完すると同時に、流動性提供者に利益を提供します。
 status: not_enabled
 labels:

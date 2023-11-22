@@ -1,5 +1,5 @@
 ---
-html: de-index.ja.html
+html: decentralized-exchange.html
 parent: tokens.html
 template: pagetype-category.html.jinja
 blurb: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーはトークンをXRPに、あるいはXRPをトークンにに交換できます。

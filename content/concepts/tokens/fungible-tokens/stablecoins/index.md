@@ -14,7 +14,7 @@ A stablecoin issuer should offer _deposits_ and _withdrawals_ to exchange the to
 
 In practice, the XRP Ledger is a computer system that cannot enforce any rules outside of itself, so stablecoins on the XRP Ledger depend on their issuer's integrity. If you can't count on the stablecoin's issuer to redeem your tokens for the real thing on demand, then you shouldn't expect the stablecoin to hold its value. As a user, you should be mindful of who's issuing the tokens: are they reliable, lawful, and solvent? If not, it's probably best not to hold those tokens.
 
-There are five common types of stablecoin traded on the XRP Ledger.
+There are five common types of currency token traded on the XRP Ledger.
 
 ## Fiat Backed
 
@@ -34,4 +34,4 @@ A stablecoin can be backed by financial instruments such as bonds or equity shar
 
 ## Non-collateralized
 
-A non-collateralized stablecoin relies on algorithm-generated smart contracts to supply or sell tokens, similar to a central bank's approach to printing and destroying currency. No collateral is required to mint currency. Value is controlled by supply and demand through algorithms that stabilize the price. Non-collateralized stablecoins are a less popular option due to their volatility.
+A non-collateralized currency token relies on algorithm-generated smart contracts to supply or sell tokens, similar to a central bank's approach to printing and destroying currency. No collateral is required to mint currency. Value is controlled by supply and demand through algorithms that stabilize the price. Non-collateralized currency tokens are a less popular option due to their volatility.

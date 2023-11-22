@@ -30,7 +30,7 @@ The first step is to decide the type of stablecoin you want to create. Your choi
 
 ![Stablecoin](img/uc-stablecoin-stable-coin.png)
 
-There are five common types of stablecoin you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See [Stablecoin Types](sc-index.html).
+There are five common types of currency tokens you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See [Stablecoins](sc-index.html).
 
 ## Set Up Your Node Services
 
@@ -64,10 +64,11 @@ Publish standard information about your stablecoin to enable potential traders t
 
 Choose a 3-character string for your currency code. Per ISO 4217, supranational currency codes begin with the letter _X_ for a currency that is not associated with a country. See [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217#X_currencies_(funds,_precious_metals,_supranationals,_other)).
 
+Currency codes do not have to be unique. For instance, if you're issuing a stablecoin backed by a national fiat currency, it's better to use the official code for that currency, such as _EUR_.
 
 ### xrp-ledger.toml 
 
-You can use the _Currencies_ table in an XRPL TOML file to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](xrp-ledger-toml.html#currencies).
+You can use the _Currencies_ table in an XRPL TOML file on your website to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](xrp-ledger-toml.html#currencies).
 
 
 ## Account and Key Management
@@ -161,6 +162,14 @@ See [Clawback](clawback.html).
 
 ![Clawback](img/uc-stablecoin-clawback.png)
 
+### Partial Payments
+
+Look out for partial payments. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.
+* Check the transaction for a `delivered_amount` field. If present, that field indicates how much money _actually_ got delivered to the `Destination` address.
+* In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
+
+See [Partial Payments](partial-payments.html).
+
 ### Burn
 
 One way to manage the value of a stablecoin is to destroy, or _burn_ stablecoins. When you burn stablecoins, you reduce the number of tokens in circulation. That will typically increase the value of the remaining tokens as supply falls.
@@ -168,7 +177,6 @@ One way to manage the value of a stablecoin is to destroy, or _burn_ stablecoins
 To destroy stablecoins, you can transfer them to a "black hole" account (an account address where no one knows the secret key).
 
 See [Disable Master Key Pair](disable-master-key-pair.html).
-
 
 ### Reliable Transaction Submission
 
@@ -192,7 +200,6 @@ Decentralized exchanges are integral to the decentralized finance ecosystem. Lis
 
 ### List on an AMM
 _(Requires the [AMM amendment][] :not_enabled:)_
-
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 
