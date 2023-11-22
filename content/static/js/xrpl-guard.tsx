@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { useEffect, useState } from 'react'
 import React = require('react');
 import XRPLoader from '../components/XRPLoader';
+import * as xrpl from 'xrpl'
 
 export const MIN_LOADER_MS = 1250
 export const DEFAULT_TIMEOUT = 1000
@@ -65,7 +66,6 @@ export const XRPLGuard: FC<{ testCheck?: () => boolean, children }> = ({
 
   const { translate } = useTranslate();
   const isXRPLLoaded = useThrottledCheck(
-      // @ts-expect-error - xrpl is added via a script tag (TODO: Directly import when xrpl.js 3.0 is released)
       testCheck ?? (() => typeof xrpl === 'object'),
       MIN_LOADER_MS,
   )
