@@ -291,6 +291,7 @@
         <li class="nav-item level-3"><a class="nav-link" href="#freeze-a-trust-line">Freeze a Trust Line</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#global-freeze">Global Freeze</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#clawback">Clawback</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#partial-payments">Partial Payments</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#burn">Burn</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#reliable-transaction-submission">Reliable Transaction Submission</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#list-on-an-xrpl-native-dex">List on an XRPL Native DEX</a></li>
@@ -331,7 +332,7 @@
 <h2 id="choose-the-type-of-stablecoin">Choose the Type of Stablecoin<a aria-hidden="true" class="hover_anchor" href="#choose-the-type-of-stablecoin"><i class="fa fa-link"></i></a></h2>
 <p>The first step is to decide the type of stablecoin you want to create. Your choice of stablecoin type might require additional steps, such as signing on financial or audit partners.</p>
 <p><img alt="Stablecoin" src="img/uc-stablecoin-stable-coin.png"/></p>
-<p>There are five common types of stablecoin you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See <a href="sc-index.html">Stablecoin Types</a>.</p>
+<p>There are five common types of currency tokens you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See <a href="sc-index.html">Stablecoins</a>.</p>
 <h2 id="set-up-your-node-services">Set Up Your Node Services<a aria-hidden="true" class="hover_anchor" href="#set-up-your-node-services"><i class="fa fa-link"></i></a></h2>
 <p>For lighter use cases and individual servers, you can often rely on free public servers. However, the more serious your use of the XRP Ledger becomes, the more important it becomes to have your own infrastructure.</p>
 <p>There are many reasons you might want to run your own servers, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. See <a href="networks-and-servers.html#reasons-to-run-your-own-server">Reasons to Run Your Own Server</a>.</p>
@@ -347,8 +348,9 @@
 <p>Publish standard information about your stablecoin to enable potential traders to verify the coin's stability.  </p>
 <h3 id="asset-nomenclature">Asset Nomenclature<a aria-hidden="true" class="hover_anchor" href="#asset-nomenclature"><i class="fa fa-link"></i></a></h3>
 <p>Choose a 3-character string for your currency code. Per ISO 4217, supranational currency codes begin with the letter <em>X</em> for a currency that is not associated with a country. See <a class="external-link" href="https://en.wikipedia.org/wiki/ISO_4217#X_currencies_(funds,_precious_metals,_supranationals,_other)" target="_blank">ISO 4217 <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p>Currency codes do not have to be unique. For instance, if you're issuing a stablecoin backed by a national fiat currency, it's better to use the official code for that currency, such as <em>EUR</em>.</p>
 <h3 id="xrp-ledgertoml">xrp-ledger.toml<a aria-hidden="true" class="hover_anchor" href="#xrp-ledgertoml"><i class="fa fa-link"></i></a></h3>
-<p>You can use the <em>Currencies</em> table in an XRPL TOML file to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See <a href="xrp-ledger-toml.html#currencies">xrp-ledger.toml File</a>.</p>
+<p>You can use the <em>Currencies</em> table in an XRPL TOML file on your website to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See <a href="xrp-ledger-toml.html#currencies">xrp-ledger.toml File</a>.</p>
 <h2 id="account-and-key-management">Account and Key Management<a aria-hidden="true" class="hover_anchor" href="#account-and-key-management"><i class="fa fa-link"></i></a></h2>
 <h3 id="multisignature-schemes">Multisignature Schemes<a aria-hidden="true" class="hover_anchor" href="#multisignature-schemes"><i class="fa fa-link"></i></a></h3>
 <p>By using multiple keys and signing weights, issuers and asset holders can distribute trust and responsibility for approving transactions for an account between different users and systems. This gives you the flexibility to gate those signatures using internal processes and controls.</p>
@@ -408,6 +410,11 @@ How to transparently report the current number of stablecoins held in reserve.
 <p>Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers <em>must</em> have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
 <p>See <a href="clawback.html">Clawback</a>.</p>
 <p><img alt="Clawback" src="img/uc-stablecoin-clawback.png"/></p>
+<h3 id="partial-payments">Partial Payments<a aria-hidden="true" class="hover_anchor" href="#partial-payments"><i class="fa fa-link"></i></a></h3>
+<p>Look out for partial payments. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.
+* Check the transaction for a <code>delivered_amount</code> field. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.
+* In xrpl.js, you can use the <a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.</p>
+<p>See <a href="partial-payments.html">Partial Payments</a>.</p>
 <h3 id="burn">Burn<a aria-hidden="true" class="hover_anchor" href="#burn"><i class="fa fa-link"></i></a></h3>
 <p>One way to manage the value of a stablecoin is to destroy, or <em>burn</em> stablecoins. When you burn stablecoins, you reduce the number of tokens in circulation. That will typically increase the value of the remaining tokens as supply falls.</p>
 <p>To destroy stablecoins, you can transfer them to a "black hole" account (an account address where no one knows the secret key).</p>
