@@ -665,6 +665,8 @@
           - label: ripple.txt Validator
           - label: xrp-ledger.toml Checker
           - label: Domain Verification Checker
+            href: /dev-tools/domain-verifier
+            page: /dev-tools/domain-verifier.page.tsx
           - label: XRP Faucets
           - label: Transaction Sender
       - label: XRPL Learning Portal
