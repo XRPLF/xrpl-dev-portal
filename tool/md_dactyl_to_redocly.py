@@ -210,13 +210,20 @@ class TabsReplacer(RegexReplacer):
                 print(m.group(1))
                 exit(1)
         for m2 in re.finditer(code_tab_regex, m.group(1)):
-            print("m2", m2)
             repl_string += '{% tab label="'+m2.group("tabname")+'" %}\n'
             repl_string += m2.group("codeblock").strip() + "\n"
             repl_string += '{% /tab %}\n\n'
         repl_string += indent+"{% /tabs %}"
         return repl_string
 regex_todos.append(TabsReplacer())
+
+category_regex = re.compile(r'^#?template: *pagetype-category\.html\.jinja\n', re.MULTILINE)
+def convert_category_page(ftext):
+    if not category_regex.search(ftext):
+        return ftext
+    ftext2 = re.sub(category_regex, "", ftext)
+    ftext2 = ftext2 + "\n{% child-pages /%}\n"
+    return ftext2
 
 def main():
     all_mds = list_mds("content")
@@ -227,6 +234,8 @@ def main():
 
         for replacer in regex_todos:
             ftext2 = replacer.replace_all(ftext2)
+
+        ftext2 = convert_category_page(ftext2)
 
         if ftext2 != ftext:
             #print("performing syntax conversion in", fname)

@@ -1,7 +1,24 @@
 import * as React from 'react';
 // @ts-ignore
 import dynamicReact from '@markdoc/markdoc/dist/react';
+import { usePageSharedData } from '@portal/hooks';
 import { Link } from '@portal/Link';
+
+export function IndexPageItems() {
+    const data = usePageSharedData('index-page-items') as any[];
+    return (
+        <div className="children-display">
+            <ul>
+              {data.map((item: any) => (
+                <li className="level-1">
+                  <Link to={item.slug}>{item.title}</Link>
+                  <p className='class="blurb child-blurb'>{item.blurb}</p>
+                </li>
+              ))}
+            </ul>
+        </div>
+    );
+}
 
 export function RepoLink(props: {
         children: React.ReactNode;

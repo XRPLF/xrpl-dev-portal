@@ -1,5 +1,11 @@
 import { Schema, Tag } from '@markdoc/markdoc';
 
+export const indexPageList: Schema & { tagName: string } = {
+  tagName: 'child-pages',
+  render: 'IndexPageItems',
+  selfClosing: true,
+};
+
 export const repoLink: Schema & { tagName: string } = {
     tagName: 'repo-link',
     attributes: {
