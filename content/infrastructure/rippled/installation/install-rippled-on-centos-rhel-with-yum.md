@@ -65,7 +65,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
         REPOFILE
 
-    <!-- MULTICODE_BLOCK_START -->
+    <!-- MULTICODE_BLOCK_END -->
 
 2. Fetch the latest repo updates:
 
