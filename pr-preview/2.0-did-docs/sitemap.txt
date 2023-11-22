@@ -124,6 +124,7 @@ https://xrpl.org/intro-to-evm-sidechain.html
 https://xrpl.org/the-rippled-server.html
 https://xrpl.org/nft-concepts.html
 https://xrpl.org/nft-conceptual-overview.html
+https://xrpl.org/decentralized-identifiers.html
 https://xrpl.org/tutorials.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/python.html
@@ -227,6 +228,7 @@ https://xrpl.org/amendments-object.html
 https://xrpl.org/amm.html
 https://xrpl.org/check.html
 https://xrpl.org/depositpreauth-object.html
+https://xrpl.org/did.html
 https://xrpl.org/directorynode.html
 https://xrpl.org/escrow-object.html
 https://xrpl.org/feesettings.html
@@ -255,6 +257,8 @@ https://xrpl.org/checkcash.html
 https://xrpl.org/checkcreate.html
 https://xrpl.org/clawback.html
 https://xrpl.org/depositpreauth.html
+https://xrpl.org/diddelete.html
+https://xrpl.org/didset.html
 https://xrpl.org/escrowcancel.html
 https://xrpl.org/escrowcreate.html
 https://xrpl.org/escrowfinish.html
