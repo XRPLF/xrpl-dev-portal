@@ -59,6 +59,12 @@ export default function TomlChecker() {
                     </div>
                 </div>
             </section>
+            
+            {/* TODO: See if you actually even need these (also the imports are relative, so that's probably broken) */}
+            <script type="application/javascript" src="{{currentpage.prefix}}static/js/xrp-ledger-toml-checker.js"></script>
+
+            {/* TOML tool */}
+            <script type="application/javascript" src="{{currentpage.prefix}}static/vendor/iarna-toml-parse.js"></script>
         </main>
     </div>
   )
