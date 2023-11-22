@@ -5,9 +5,9 @@ import { clsx } from 'clsx'
 import { type Client } from 'xrpl'
 
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
-const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
-const TIPS_1 = '<p>Make sure you are entering a valid XRP Ledger address.</p>'
-const TIPS_2 = '<p>Make sure the account has the Domain field set.</p>'
+const TIPS = <p>Check if the file is actually hosted at the URL above, check your server's HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>
+const TIPS_1 = <p>Make sure you are entering a valid XRP Ledger address.</p>
+const TIPS_2 = <p>Make sure the account has the Domain field set.</p>
 const CLASS_GOOD = "badge badge-success"
 const CLASS_BAD = "badge badge-danger"
 
@@ -88,7 +88,7 @@ function ResultBullet({
     }
 
     return (
-        <li>{translate(`${message} `)}{icon}{response.followUpContent}</li>
+        <li>{translate(`${message} `)}{icon}{response?.followUpContent}</li>
     )
 
 }
@@ -99,13 +99,26 @@ function fetchWallet(
     socket?: WebSocket) 
 {
     const {translate} = useTranslate()
+    
+    // TODO: Replace this closing logic elsewhere 
+    // (I'm not sure exactly how to store the state of 'socket' so it actually closes, or what readyState < 2 means)
+    // if (typeof socket !== "undefined" && socket.readyState < 2) {
+    //     socket.close()
+    // }
 
-    const [checkingDomain, setCheckingDomain] = useState<ResultBulletProps>({
-        message: translate(`Checking domain of account`),
-        response: undefined 
+    // const [checkingDomain, setCheckingDomain] = useState<ResultBulletProps>()
+    const baseResultBulletMessage = translate(`Checking domain of account`)
+
+    setAccountLogEntries((prev) => {
+        const updated = [].concat(prev)
+        updated.push(<ResultBullet {...{
+            message: baseResultBulletMessage,
+            key: `account-log-1`,
+            response: undefined 
+        }}/>)
+        return updated
     })
-
-    setAccountLogEntries([<li>{translate('Checking domain of account')}</li>])
+    
     // const checkingLog = makeLogEntryWallet('Checking domain of account')
     const url = "wss://xrplcluster.com"
     if (typeof socket !== "undefined" && socket.readyState < 2) {
@@ -119,27 +132,55 @@ function fetchWallet(
     socket = new WebSocket(url)
     socket.addEventListener('message', (event) => {
       let data;
+      let response: StatusResponse;
       try {
         data = JSON.parse(event.data)
         if (data.status === 'success') {
             if (data.result.account_data.Domain) {
               try {
-                setAccountLogEntries((prev) => {
-                    return prev + <ResultBullet/>
-                })
-                checkingLog.resolve('SUCCESS').addClass(CLASS_GOOD)
-                decodeHexWallet(data.result.account_data.Domain)
+                response = {
+                    iconLabel: 'SUCCESS',
+                    iconType: 'SUCCESS',
+                }
+                // TODO: decodeHexWallet
+                // decodeHexWallet(data.result.account_data.Domain)
               } catch(e) {
                 console.log(e)
-                checkingLog.resolve('ERROR').addClass(CLASS_BAD).after('<p>Error decoding domain field: ' + data.result.account_data.Domain + '</p>')
+                response = {
+                    iconLabel: `ERROR`,
+                    iconType: `ERROR`,
+                    followUpContent: <p>Error decoding domain field: {data.result.account_data.Domain}</p>
+                }
               }
             } else {
-              checkingLog.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_2)
+                response = {
+                    iconLabel: `ERROR`,
+                    iconType: `ERROR`,
+                    followUpContent: TIPS_2
+                }            
             }
         } else {
-          checkingLog.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_1)
+            response = {
+                iconLabel: `ERROR`,
+                iconType: `ERROR`,
+                followUpContent: TIPS_1
+            }     
         }
+
+        // Update with the success / error message + debug tip
+        console.log(`Setting account log response to: ${JSON.stringify(response)}`)
+        setAccountLogEntries((prev) => {
+            const updated = [].concat(prev)
+            const index = updated.length - 1
+            updated[index] = (<ResultBullet 
+                message={baseResultBulletMessage} 
+                key={`account-log-${index}`} response={response}/>)
+            return updated
+        })
+
       } catch {
+        // TODO: This is new, so double check this makes sense
+        socket.close()
         return false
       }
     })
@@ -148,6 +189,8 @@ function fetchWallet(
     })
   }
 
+// TODO: Standardize the param order for things like setAccountLogEntries / domainAddress
+// TODO: Find better names for these parameters.
 function handleSubmitWallet(
     event: React.FormEvent<HTMLFormElement>, 
     setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
@@ -155,7 +198,7 @@ function handleSubmitWallet(
 
     event.preventDefault()
     setAccountLogEntries(undefined)  
-    fetchWallet(domainAddress)
+    fetchWallet(domainAddress, setAccountLogEntries)
 }
 
 function handleSubmitDomain() {
@@ -171,8 +214,6 @@ export default function TomlChecker() {
   // Look up by account variables
   const [domainAddress, setDomainAddress] = useState("")
   const [accountLogEntries, setAccountLogEntries] = useState<JSX.Element[]>(undefined)
-
-  
 
   return (
     <div className="toml-checker row">
