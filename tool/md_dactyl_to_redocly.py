@@ -96,8 +96,13 @@ class RegexReplacer():
 
 regex_todos = [] # List of RegexReplacer child instances to run, in order, on each page
 
+class TabsToSpaces(RegexReplacer):
+    regex = re.compile(r'\t')
+    replace = staticmethod(lambda m: "    ")
+regex_todos.append(TabsToSpaces())
+
 class IncludeCodeReplacer(RegexReplacer):
-    regex = re.compile(r'\{\{ *include_code\( *"(?P<fname>[^"]+)"[, ]*(start_with="(?P<start_with>[^"]+)"[, ]*|end_before="(?P<end_before>[^"]+)"[, ]*|language="(?P<language>[^"]+)"[, ]*)* *\) *\}\}')
+    regex = re.compile(r'\{\{ *include_code\( *"(?P<fname>[^"]+)"[,\s]*(start_with="(?P<start_with>[^"]+)"[,\s]*|end_before="(?P<end_before>[^"]+)"[,\s]*|language="(?P<language>[^"]+)"[,\s]*)* *\) *\}\}')
     @staticmethod
     def replace(m: re.Match):
         """
@@ -167,6 +172,51 @@ class VarReplacer(RegexReplacer):
         else:
             return '{% $env.PUBLIC_'+m.group("var").upper()+" %}"
 regex_todos.append(VarReplacer())
+
+class TabsReplacer(RegexReplacer):
+    """
+    Meat to run after all the code block replacers
+    """
+    regex = re.compile(r'<!-- MULTICODE_BLOCK_START -->(.*?)<!-- MULTICODE_BLOCK_END -->', re.DOTALL)
+    @staticmethod
+    def replace(m: re.Match):
+        repl_string = "{% tabs %}\n\n"
+        indent = ""
+        code_tab_regex = re.compile(r'^[*_](?P<tabname>[^_*]+)[*_]\n+(?P<codeblock>```.+?```|\{% code-snippet .+? /%\}$)', re.MULTILINE|re.DOTALL)
+        if not code_tab_regex.search(m.group(1)):
+            indented_code_tab_regex = re.compile(r'^(?P<indentation> {4,})[*_](?P<tabname>[^_*]+)[*_]\n\n(?P<codeblock>( {8,}.*|\n)+)\n\n', re.MULTILINE)
+            double_indented_code_tab_regex = re.compile(r'^(?P<indentation> {8,})[*_](?P<tabname>[^_*]+)[*_]\n\n(?P<codeblock>( {12,}.*|\n)+)\n\n', re.MULTILINE) # Same as above except one level of indent more.
+
+            if indented_code_tab_regex.search(m.group(1)):
+                use_regex = indented_code_tab_regex
+                if double_indented_code_tab_regex.search(m.group(1)):
+                    use_regex = double_indented_code_tab_regex
+                for m2 in re.finditer(use_regex, m.group(1)):
+                    indent = m2.group("indentation")
+                    repl_string += indent + '```{% label="'+m2.group("tabname")+'" %}\n'
+                    for codeline in m2.group("codeblock").split("\n"):
+                        if not codeline.strip():
+                            repl_string += "\n"
+                        else:
+                            # Remove extra level of indentation since we're changing it to a fence.
+                            # If the codeline isn't long enough, the md file probably has a syntax error.
+                            repl_string += codeline[4:]+"\n"
+
+                    # trim any excess trailing newlines
+                    repl_string = repl_string.rstrip()+"\n"
+                    repl_string += indent+'```\n\n'
+            else:
+                print("ERROR, no tab found in code tabs")
+                print(m.group(1))
+                exit(1)
+        for m2 in re.finditer(code_tab_regex, m.group(1)):
+            print("m2", m2)
+            repl_string += '{% tab label="'+m2.group("tabname")+'" %}\n'
+            repl_string += m2.group("codeblock").strip() + "\n"
+            repl_string += '{% /tab %}\n\n'
+        repl_string += indent+"{% /tabs %}"
+        return repl_string
+regex_todos.append(TabsReplacer())
 
 def main():
     all_mds = list_mds("content")
