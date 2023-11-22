@@ -1,46 +1,46 @@
-const TOML_PATH = "/.well-known/xrp-ledger.toml"
-const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
-const TIPS_1 = '<p>Make sure you are entering a valid XRP Ledger address.</p>'
-const TIPS_2 = '<p>Make sure the account has the Domain field set.</p>'
-const CLASS_GOOD = "badge badge-success"
-const CLASS_BAD = "badge badge-danger"
+// const TOML_PATH = "/.well-known/xrp-ledger.toml"
+// const TIPS = '<p>Check if the file is actually hosted at the URL above, check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>'
+// const TIPS_1 = '<p>Make sure you are entering a valid XRP Ledger address.</p>'
+// const TIPS_2 = '<p>Make sure the account has the Domain field set.</p>'
+// const CLASS_GOOD = "badge badge-success"
+// const CLASS_BAD = "badge badge-danger"
 
-const ACCOUNT_FIELDS = [
-  "address",
-  "network",
-  "desc"
-]
-const VALIDATOR_FIELDS = [
-  "public_key",
-  "network",
-  "owner_country",
-  "server_country",
-  "unl"
-]
-const PRINCIPAL_FIELDS = [
-  "name",
-  "email"
-]
-const SERVER_FIELDS = [
-  "json_rpc",
-  "ws",
-  "peer",
-  "network"
-]
-const CURRENCY_FIELDS = [
-  "code",
-  "display_decimals",
-  "issuer",
-  "network",
-  "symbol"
-]
+// const ACCOUNT_FIELDS = [
+//   "address",
+//   "network",
+//   "desc"
+// ]
+// const VALIDATOR_FIELDS = [
+//   "public_key",
+//   "network",
+//   "owner_country",
+//   "server_country",
+//   "unl"
+// ]
+// const PRINCIPAL_FIELDS = [
+//   "name",
+//   "email"
+// ]
+// const SERVER_FIELDS = [
+//   "json_rpc",
+//   "ws",
+//   "peer",
+//   "network"
+// ]
+// const CURRENCY_FIELDS = [
+//   "code",
+//   "display_decimals",
+//   "issuer",
+//   "network",
+//   "symbol"
+// ]
 
-function VerificationError(message, tips) {
-  this.name = "VerificationError"
-  this.message = message || ""
-  this.tips = tips || ""
-}
-VerificationError.prototype = Error.prototype
+// function VerificationError(message, tips) {
+//   this.name = "VerificationError"
+//   this.message = message || ""
+//   this.tips = tips || ""
+// }
+// VerificationError.prototype = Error.prototype
 
 function makeLogEntry(text, raw) {
   let log
@@ -282,45 +282,45 @@ function makeLogEntryWallet(text, raw) {
   return log
 }
 
-function fetchWallet() {
-  wallet = $('#verify-domain').val()
-  const checkingLog = makeLogEntryWallet('Checking domain of account')
-  const url = "wss://xrplcluster.com"
-  if (typeof socket !== "undefined" && socket.readyState < 2) {
-    socket.close()
-  }
-  const data = {
-    "command": "account_info",
-    "account": wallet,
-  }
-  socket = new WebSocket(url)
-  socket.addEventListener('message', (event) => {
-    let data;
-    try {
-      data = JSON.parse(event.data)
-      if (data.status === 'success') {
-          if (data.result.account_data.Domain) {
-            try {
-              checkingLog.resolve('SUCCESS').addClass(CLASS_GOOD)
-              decodeHexWallet(data.result.account_data.Domain)
-            } catch(e) {
-              console.log(e)
-              checkingLog.resolve('ERROR').addClass(CLASS_BAD).after('<p>Error decoding domain field: ' + data.result.account_data.Domain + '</p>')
-            }
-          } else {
-            checkingLog.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_2)
-          }
-      } else {
-        checkingLog.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_1)
-      }
-    } catch {
-      return false
-    }
-  })
-  socket.addEventListener('open', () => {
-    socket.send(JSON.stringify(data))
-  })
-}
+// function fetchWallet() {
+//   wallet = $('#verify-domain').val()
+//   const checkingLog = makeLogEntryWallet('Checking domain of account')
+//   const url = "wss://xrplcluster.com"
+//   if (typeof socket !== "undefined" && socket.readyState < 2) {
+//     socket.close()
+//   }
+//   const data = {
+//     "command": "account_info",
+//     "account": wallet,
+//   }
+//   socket = new WebSocket(url)
+//   socket.addEventListener('message', (event) => {
+//     let data;
+//     try {
+//       data = JSON.parse(event.data)
+//       if (data.status === 'success') {
+//           if (data.result.account_data.Domain) {
+//             try {
+//               checkingLog.resolve('SUCCESS').addClass(CLASS_GOOD)
+//               decodeHexWallet(data.result.account_data.Domain)
+//             } catch(e) {
+//               console.log(e)
+//               checkingLog.resolve('ERROR').addClass(CLASS_BAD).after('<p>Error decoding domain field: ' + data.result.account_data.Domain + '</p>')
+//             }
+//           } else {
+//             checkingLog.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_2)
+//           }
+//       } else {
+//         checkingLog.resolve('ERROR').addClass(CLASS_BAD).after(TIPS_1)
+//       }
+//     } catch {
+//       return false
+//     }
+//   })
+//   socket.addEventListener('open', () => {
+//     socket.send(JSON.stringify(data))
+//   })
+// }
 
 async function parseXRPLTomlWallet(data) {
   let parsed
@@ -399,18 +399,18 @@ function decodeHexWallet(hex) {
     fetchFile(str)
 }
 
-function handleSubmitWallet(event) {
-  event.preventDefault();
+// function handleSubmitWallet(event) {
+//   event.preventDefault();
 
-  $('#verify-domain-result-title').show()
-  $('#verify-domain-result').show()
-  $('#verify-domain-log').empty()
+//   $('#verify-domain-result-title').show()
+//   $('#verify-domain-result').show()
+//   $('#verify-domain-log').empty()
 
-  fetchWallet()
-}
+//   fetchWallet()
+// }
 
 
-$(document).ready(() => {
-  $('#domain-entry').submit(handleSubmitDomain)
-  $('#domain-verification').submit(handleSubmitWallet)
-})
+// $(document).ready(() => {
+//   // $('#domain-entry').submit(handleSubmitDomain)
+//   // $('#domain-verification').submit(handleSubmitWallet)
+// })
