@@ -4,6 +4,7 @@ import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
 // TODO: Double check if axios is the best option to use for basic html requests
 import axios, { type AxiosError } from 'axios'
+import TOML from '../static/vendor/iarna-toml-parse.js'
 
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
 const TIPS = <p>Check if the file is actually hosted at the URL above, check your server's HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>
@@ -49,19 +50,6 @@ function VerificationError(message, tips) {
 }
 VerificationError.prototype = Error.prototype
 
-// TODO: Migrate this function :)
-// function makeLogEntry(text: string, raw: boolean) {
-//     let log
-//     if (raw) {
-//         log = $('<li></li>').appendTo('#log').append(text)
-//     } else {
-//         log = $('<li></li>').text(text+" ").appendTo('#log')
-//     }
-//     log.resolve = function(text) {
-//         return $('<span></span>').html(text).appendTo(log) // This is the icon!
-//     }
-//     return log
-// }
 interface StatusResponse {
     iconLabel: string,
     iconType: "SUCCESS" | "ERROR"
@@ -93,12 +81,218 @@ function ResultBullet({
     return (
         <li id={id}>{translate(`${message} `)}{icon}{response?.followUpContent}</li>
     )
-
 }
+
+async function parseXRPLTomlWallet(
+    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
+    data) {
+    const { translate } = useTranslate()
+
+    const parsingTomlId = 'parsing-toml-data-log'
+    const parsingTomlLogEntry: ResultBulletProps = {
+        message: translate("Parsing TOML data..."),
+        id: parsingTomlId,
+    }
+    addNewLogEntry(setLogEntries, parsingTomlLogEntry)
+    let parsed
+    try {
+      parsed = TOML(data)
+      updateLogEntry(setLogEntries, {...parsingTomlLogEntry, response: {
+        iconLabel: "SUCCESS",
+        iconType: "SUCCESS",
+      }})
+    } catch(e) {
+        updateLogEntry(setLogEntries, {...parsingTomlLogEntry, response: {
+            iconLabel: e,
+            iconType: "ERROR",
+        }})
+        return
+    }
+  
+    if (parsed.hasOwnProperty("METADATA")) {
+        const metadataId = 'metadata-log'
+        const metadataLogEntry = {
+            message: translate("Metadata section: "),
+            id: metadataId
+        }
+        addNewLogEntry(setLogEntries, metadataLogEntry)
+      if (Array.isArray(parsed.METADATA)) {
+        updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
+            iconLabel: "Wrong type - should be table",
+            iconType: "ERROR",
+        }})
+      } else {
+        updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
+            iconLabel: "Found",
+            iconType: "SUCCESS",
+        }})  
+
+        if (parsed.METADATA.modified) {
+          const modifiedLogId = 'modified-date-log'
+          const modifiedLogEntry = {
+            message: translate("Modified date: "),
+            id: modifiedLogId
+          }
+          addNewLogEntry(setLogEntries, modifiedLogEntry)
+          try {
+            updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
+                iconLabel: parsed.METADATA.modified.toISOString(),
+                iconType: "SUCCESS",
+            }})
+          } catch(e) {
+            updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
+                iconLabel: "INVALID",
+                iconType: "ERROR",
+            }})
+          }
+        }
+      }
+    }
+  
+    // TODO: Migrate from here @Jackson
+    async function listEntriesWallet(name, list, fields) {
+      let found = false;
+      let list_wrap = $("<p>"+name+"</p>")
+      let list_ol = $("<ol>").appendTo(list_wrap)
+      for (i=0; i<list.length; i++) {
+        let entry_def = $("<ul>").appendTo(list_ol)
+        let entry = list[i]
+        for (j=0; j<fields.length; j++) {
+          let fieldname = fields[j]
+          if (entry['address'] === wallet) {
+              let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
+              $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
+              found=true;
+          }
+        }
+      }
+      
+      if(found) {
+        // TODO: For this one, we'll need to extend makeLogEntryWallet to allow for JSX.Elements :)
+        makeLogEntryWallet(list_wrap, true)
+        makeLogEntryWallet('Account has been found in TOML file and validated.').resolve('DOMAIN VALIDATED <i class="fa fa-check-circle"></i>').addClass(CLASS_GOOD)
+      } else {
+        let entry_def = $("<ul>").appendTo(list_ol)
+        let field_def = $("<li><strong>address: </strong>").appendTo(entry_def)
+        $(" <span class='address'>").text('Not found ').appendTo(field_def).append(' <li class="badge badge-danger">ERROR</li>')
+        
+        makeLogEntryWallet(list_wrap, true)
+        makeLogEntryWallet('Account not found in TOML file. Domain can not be verified.').resolve('VALIDATION FAILED').addClass(CLASS_BAD)
+      }
+    }
+    if (parsed.ACCOUNTS) {
+      if (!Array.isArray(parsed.ACCOUNTS)) {
+        makeLogEntryWallet("Account:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+      } else {
+        listEntriesWallet("Account:", parsed.ACCOUNTS, ACCOUNT_FIELDS)
+      }
+    }
+  }
+
+// TODO: Migrate this one next :)
+// async function parseXRPLToml(
+//     setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+//     data, 
+//     domain: string) {
+//     let parsed
+//     let logTOML = makeLogEntry("Parsing TOML data...")
+//     try {
+//       parsed = TOML(data)
+//       logTOML.resolve("SUCCESS").addClass(CLASS_GOOD)
+//     } catch(e) {
+//       logTOML.resolve(e).addClass(CLASS_BAD)
+//       return
+//     }
+  
+//     if (parsed.hasOwnProperty("METADATA")) {
+//       const metadata_type = makeLogEntry("Metadata section: ")
+//       if (Array.isArray(parsed.METADATA)) {
+//         metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
+//       } else {
+//         metadata_type.resolve("Found").addClass(CLASS_GOOD)
+  
+//         if (parsed.METADATA.modified) {
+//           const mod_log = makeLogEntry("Modified date: ")
+//           try {
+//             mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
+//           } catch(e) {
+//             mod_log.resolve("INVALID").addClass(CLASS_BAD)
+//           }
+//         }
+//       }
+//     }
+  
+//     async function listEntries(name, list, fields, validate) {
+//       let list_wrap = $("<p>"+name+"</p>")
+//       let list_ol = $("<ol>").appendTo(list_wrap)
+//       for (i=0; i<list.length; i++) {
+//         let entry_wrap = $("<li>").appendTo(list_ol)
+//         let entry_def = $("<ul class='mb-3'>").appendTo(entry_wrap)
+//         let entry = list[i]
+//         for (j=0; j<fields.length; j++) {
+//           let fieldname = fields[j]
+//           if (entry[fieldname] !== undefined) {
+//             let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
+//             $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
+//           }
+//         }
+//         if (validate) {
+//           validate(entry).then((validated) => {
+//             if (validated === true) {
+//               entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
+//             }
+//           })
+//         }
+//       }
+//       makeLogEntry(list_wrap, true)
+//     }
+  
+//     if (parsed.ACCOUNTS) {
+//       if (!Array.isArray(parsed.ACCOUNTS)) {
+//         makeLogEntry("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//       } else {
+//         listEntries("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
+//           if (acct.address === undefined) {return undefined}
+//           let net
+//           if (acct.network === undefined) { net = "main" } else { net = acct.network }
+//           return await validateAddressDomainOnNet(acct.address, domain, net)
+//         })
+//       }
+//     }
+//     if (parsed.VALIDATORS) {
+//       if (!Array.isArray(parsed.VALIDATORS)) {
+//         makeLogEntry("Validators:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//       } else {
+//         listEntries("Validators:", parsed.VALIDATORS, VALIDATOR_FIELDS)
+//       }
+//     }
+//     if (parsed.PRINCIPALS) {
+//       if (!Array.isArray(parsed.PRINCIPALS)) {
+//         makeLogEntry("Principals:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//       } else {
+//         listEntries("Principals:", parsed.PRINCIPALS, PRINCIPAL_FIELDS)
+//       }
+//     }
+//     if (parsed.SERVERS) {
+//       if (!Array.isArray(parsed.SERVERS)) {
+//         makeLogEntry("Servers:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//       } else {
+//         listEntries("Servers:", parsed.SERVERS, SERVER_FIELDS)
+//       }
+//     }
+//     if (parsed.CURRENCIES) {
+//       if (!Array.isArray(parsed.CURRENCIES)) {
+//         makeLogEntry("Currencies:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//       } else {
+//         listEntries("Currencies:", parsed.CURRENCIES, CURRENCY_FIELDS)
+//       }
+//     }
+//   }
 
 async function fetchFile(
     setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
-    domain: string, 
+    domain: string,
+    verifyAccount: boolean // Otherwise we verify the validator settings 
 ) {
     const { translate } = useTranslate()
 
@@ -114,16 +308,18 @@ async function fetchFile(
 
     try {
         const response = await axios.get(url)
-        const data = response.data
+        const data: string = response.data
         console.log(data)
         updateLogEntry(setLogEntries, {...logEntry, response: {
             iconLabel: "FOUND",
             iconType: "SUCCESS",
         }})
+        
+        if (verifyAccount){
+            parseXRPLTomlWallet(setLogEntries, data)
+        } 
         // TODO: Next functions to migrate :)
-        // if (typeof walletDomain !== 'undefined'){
-        //     parseXRPLTomlWallet(data)
-        //   } else{
+        //   else{
         //     parseXRPLToml(data, domain)
         //   }
     } catch (e) {
@@ -195,7 +391,7 @@ function decodeHexWallet(setAccountLogEntries, hex) {
         iconType: 'SUCCESS',
     }})
 
-    fetchFile(setAccountLogEntries, decodedDomain)
+    fetchFile(setAccountLogEntries, decodedDomain, true)
 }
 
 function fetchWallet(
