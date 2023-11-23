@@ -2,7 +2,8 @@ import * as React from 'react';
 import { useState } from 'react'
 import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
-import { type Client } from 'xrpl'
+// TODO: Double check if axios is the best option to use for basic html requests
+import axios, { type AxiosError } from 'axios'
 
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
 const TIPS = <p>Check if the file is actually hosted at the URL above, check your server's HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>
@@ -95,12 +96,66 @@ function ResultBullet({
 
 }
 
+async function fetchFile(
+    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
+    domain: string, 
+) {
+    const { translate } = useTranslate()
+
+    const url = "https://" + domain + TOML_PATH
+    const checkUrlId = `check-url-log`
+    const logEntry = {
+        message: translate(`Checking ${url} ...`),
+        id: checkUrlId,
+    }
+    addNewLogEntry(setLogEntries, logEntry)
+    // TODO: For the straight to domain button, call this function (then delete this line, originally this is how that value was accessed)
+    // const urlDomain = $('#domain').val()
+
+    try {
+        const response = await axios.get(url)
+        const data = response.data
+        console.log(data)
+        updateLogEntry(setLogEntries, {...logEntry, response: {
+            iconLabel: "FOUND",
+            iconType: "SUCCESS",
+        }})
+        // TODO: Next functions to migrate :)
+        // if (typeof walletDomain !== 'undefined'){
+        //     parseXRPLTomlWallet(data)
+        //   } else{
+        //     parseXRPLToml(data, domain)
+        //   }
+    } catch (e) {
+        const error = e as AxiosError
+        console.log(error.status)
+        console.error(error.response);
+        const status = error?.status
+        
+        let errCode;
+        if(status === 408) {
+            errCode = 'TIMEOUT'
+        } else if(status >= 400 && status < 500) {
+            errCode = 'CLIENT ERROR'
+        } else if (status >= 500 && status < 600) {
+            errCode = 'SERVER ERROR'
+        } else {
+            errCode = 'UNKNOWN'
+        }
+
+        updateLogEntry(setLogEntries, {...logEntry, response: {
+            iconLabel: errCode,
+            iconType: "ERROR",
+            followUpContent: TIPS
+        }})
+    }
+  }
 
 function addNewLogEntry(
-    setLogEntry: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
     entry: ResultBulletProps)
 {
-    setLogEntry((prev) => {
+    setLogEntries((prev) => {
         const updated: JSX.Element[] = [].concat(prev)
         const index = updated.length
         updated.push(<ResultBullet 
@@ -113,9 +168,9 @@ function addNewLogEntry(
 
 // Uses entry.id to find the existing entry to update
 function updateLogEntry(
-    setLogEntry: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
     entry: ResultBulletProps) {
-    setLogEntry((prev) => {
+    setLogEntries((prev) => {
         const updated = [].concat(prev ?? [])
         const index = updated.findIndex((log) => {
             return log.props.id === entry.id
@@ -129,9 +184,9 @@ function updateLogEntry(
 }
 
 function decodeHexWallet(setAccountLogEntries, hex) {
-    let str = '';
+    let decodedDomain = '';
     for (let i = 0; i < hex.length; i += 2) {
-      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+        decodedDomain += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
     }
     const { translate } = useTranslate()
     const logId = 'decoding-domain-hex'
@@ -140,8 +195,7 @@ function decodeHexWallet(setAccountLogEntries, hex) {
         iconType: 'SUCCESS',
     }})
 
-    // TODO: Next function to port over :)
-    // fetchFile(str)
+    fetchFile(setAccountLogEntries, decodedDomain)
 }
 
 function fetchWallet(
@@ -265,6 +319,7 @@ export default function TomlChecker() {
                     <a href="https://xrpl.org/xrp-ledger-toml.html"><code>{translate(`xrp-ledger.toml`)}</code>{translate(` file`)}</a>.</p>
                 </div>
 
+                {/* TODO: These buttons / look ups can be componentized potentially, there seems to be heavy overlap */}
                 <div className="p-3 pb-5">
                     <form id="domain-entry" onSubmit={handleSubmitDomain}>
                         <h4>{translate(`Look Up By Domain`)}</h4>
@@ -278,12 +333,12 @@ export default function TomlChecker() {
                             <button className="btn btn-primary form-control">{translate(`Check toml file`)}</button>
                         </div>{/*/.input-group*/}
                     </form>
-                    <div id="result">
+                    {domainLogEntries && <div id="result">
                         <h5 className="result-title">{translate(`Result`)}</h5>
-                        <ul id="log">
-                            {domainLogEntries}
-                        </ul>
-                    </div>
+                            <ul id="log">
+                                {domainLogEntries}
+                            </ul>
+                    </div>}
                 </div>
                 
                 <div className="p-3 pt-5">

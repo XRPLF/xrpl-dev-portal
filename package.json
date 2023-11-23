@@ -19,6 +19,7 @@
     "@uiw/react-codemirror": "^4.21.21",
     "@uiw/codemirror-themes": "4.21.21",
     "clsx": "^2.0.0",
+    "axios": "^1.6.2",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "react": "^18.2.0",
