@@ -69,11 +69,13 @@ interface StatusResponse {
 
 interface ResultBulletProps {
     message: string
+    id: string // Used to look up & update when response is done
     response?: StatusResponse
 }
 
 function ResultBullet({
-    message, 
+    message,
+    id,
     response
 }: ResultBulletProps) 
 {
@@ -88,9 +90,58 @@ function ResultBullet({
     }
 
     return (
-        <li>{translate(`${message} `)}{icon}{response?.followUpContent}</li>
+        <li id={id}>{translate(`${message} `)}{icon}{response?.followUpContent}</li>
     )
 
+}
+
+
+function addNewLogEntry(
+    setLogEntry: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+    entry: ResultBulletProps)
+{
+    setLogEntry((prev) => {
+        const updated: JSX.Element[] = [].concat(prev)
+        const index = updated.length
+        updated.push(<ResultBullet 
+            message={entry.message}
+            id={entry.id}
+            key={`log-${index}`} response={entry.response}/>)
+        return updated
+    })
+}
+
+// Uses entry.id to find the existing entry to update
+function updateLogEntry(
+    setLogEntry: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+    entry: ResultBulletProps) {
+    setLogEntry((prev) => {
+        const updated = [].concat(prev ?? [])
+        const index = updated.findIndex((log) => {
+            return log.props.id === entry.id
+        })
+        updated[index] = (<ResultBullet 
+            message={entry.message} 
+            id={entry.id}
+            key={`log-${index}`} response={entry.response}/>)
+        return updated
+    })
+}
+
+function decodeHexWallet(setAccountLogEntries, hex) {
+    let str = '';
+    for (let i = 0; i < hex.length; i += 2) {
+      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+    }
+    const { translate } = useTranslate()
+    const logId = 'decoding-domain-hex'
+    addNewLogEntry(setAccountLogEntries, { message: translate('Decoding domain hex'), id: logId, response: {
+        iconLabel: 'SUCCESS',
+        iconType: 'SUCCESS',
+    }})
+
+    // TODO: Next function to port over :)
+    // fetchFile(str)
 }
 
 function fetchWallet(
@@ -106,20 +157,14 @@ function fetchWallet(
     //     socket.close()
     // }
 
-    // const [checkingDomain, setCheckingDomain] = useState<ResultBulletProps>()
     const baseResultBulletMessage = translate(`Checking domain of account`)
 
-    setAccountLogEntries((prev) => {
-        const updated = [].concat(prev)
-        updated.push(<ResultBullet {...{
-            message: baseResultBulletMessage,
-            key: `account-log-1`,
-            response: undefined 
-        }}/>)
-        return updated
-    })
-    
-    // const checkingLog = makeLogEntryWallet('Checking domain of account')
+    // Reset the logs
+    setAccountLogEntries([])
+
+    const logId = 'check-domain-account'
+    addNewLogEntry(setAccountLogEntries, { message: baseResultBulletMessage, id: logId, response: undefined })
+
     const url = "wss://xrplcluster.com"
     if (typeof socket !== "undefined" && socket.readyState < 2) {
       socket.close()
@@ -142,8 +187,7 @@ function fetchWallet(
                     iconLabel: 'SUCCESS',
                     iconType: 'SUCCESS',
                 }
-                // TODO: decodeHexWallet
-                // decodeHexWallet(data.result.account_data.Domain)
+                decodeHexWallet(setAccountLogEntries, data.result.account_data.Domain)
               } catch(e) {
                 console.log(e)
                 response = {
@@ -169,17 +213,9 @@ function fetchWallet(
 
         // Update with the success / error message + debug tip
         console.log(`Setting account log response to: ${JSON.stringify(response)}`)
-        setAccountLogEntries((prev) => {
-            const updated = [].concat(prev)
-            const index = updated.length - 1
-            updated[index] = (<ResultBullet 
-                message={baseResultBulletMessage} 
-                key={`account-log-${index}`} response={response}/>)
-            return updated
-        })
-
+        updateLogEntry(setAccountLogEntries, { message: baseResultBulletMessage, id: logId, response: response })
       } catch {
-        // TODO: This is new, so double check this makes sense
+        // TODO: This is new to replace the socket.close() logic, so double check this makes sense
         socket.close()
         return false
       }

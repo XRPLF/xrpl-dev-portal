@@ -389,15 +389,15 @@ async function parseXRPLTomlWallet(data) {
   }
 }
 
-function decodeHexWallet(hex) {
-    let str = '';
-    for (let i = 0; i < hex.length; i += 2) {
-      str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
-    }
-    const decodeLog = makeLogEntryWallet('Decoding domain hex')
-    decodeLog.resolve("SUCCESS").addClass(CLASS_GOOD)
-    fetchFile(str)
-}
+// function decodeHexWallet(hex) {
+//     let str = '';
+//     for (let i = 0; i < hex.length; i += 2) {
+//       str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+//     }
+//     const decodeLog = makeLogEntryWallet('Decoding domain hex')
+//     decodeLog.resolve("SUCCESS").addClass(CLASS_GOOD)
+//     fetchFile(str)
+// }
 
 // function handleSubmitWallet(event) {
 //   event.preventDefault();
