@@ -42,156 +42,156 @@
 // }
 // VerificationError.prototype = Error.prototype
 
-function makeLogEntry(text, raw) {
-  let log
-  if (raw) {
-    log = $('<li></li>').appendTo('#log').append(text)
-  } else {
-    log = $('<li></li>').text(text+" ").appendTo('#log')
-  }
-  log.resolve = function(text) {
-    return $('<span></span>').html(text).appendTo(log)
-  }
-  return log
-}
+// function makeLogEntry(text, raw) {
+//   let log
+//   if (raw) {
+//     log = $('<li></li>').appendTo('#log').append(text)
+//   } else {
+//     log = $('<li></li>').text(text+" ").appendTo('#log')
+//   }
+//   log.resolve = function(text) {
+//     return $('<span></span>').html(text).appendTo(log)
+//   }
+//   return log
+// }
 
-function fetchFile(walletDomain) {
-  var url;
-  var log;
-  const domain = $('#domain').val()
-  if (walletDomain !== undefined) {
-    url = "https://" + walletDomain + TOML_PATH
-    log = makeLogEntryWallet('Checking ' + url + '...')
-  } else {
-    url = "https://" + domain + TOML_PATH
-    log = makeLogEntry('Checking ' + url + '...')
-  }
+// function fetchFile(walletDomain) {
+//   var url;
+//   var log;
+//   const domain = $('#domain').val()
+//   if (walletDomain !== undefined) {
+//     url = "https://" + walletDomain + TOML_PATH
+//     log = makeLogEntryWallet('Checking ' + url + '...')
+//   } else {
+//     url = "https://" + domain + TOML_PATH
+//     log = makeLogEntry('Checking ' + url + '...')
+//   }
 
-  $.ajax({
-    url: url,
-    dataType: 'text',
-    success: function(data) {
-      log.resolve('FOUND').addClass(CLASS_GOOD)
-      if (typeof walletDomain !== 'undefined'){
-        parseXRPLTomlWallet(data)
-      } else{
-        parseXRPLToml(data, domain)
-      }
-    },
-    error: function(jqxhr, status, error) {
-      switch (status) {
-        case 'timeout':
-          err = 'TIMEOUT'
-          break
-        case 'abort':
-          err = 'ABORTED'
-          break
-        case 'error':
-          err = 'ERROR'
-          break
-        default:
-          err = 'UNKNOWN'
-      }
-      log.resolve(err).addClass(CLASS_BAD).after(TIPS)
-    }
-  })
-}
+//   $.ajax({
+//     url: url,
+//     dataType: 'text',
+//     success: function(data) {
+//       log.resolve('FOUND').addClass(CLASS_GOOD)
+//       if (typeof walletDomain !== 'undefined'){
+//         parseXRPLTomlWallet(data)
+//       } else{
+//         parseXRPLToml(data, domain)
+//       }
+//     },
+//     error: function(jqxhr, status, error) {
+//       switch (status) {
+//         case 'timeout':
+//           err = 'TIMEOUT'
+//           break
+//         case 'abort':
+//           err = 'ABORTED'
+//           break
+//         case 'error':
+//           err = 'ERROR'
+//           break
+//         default:
+//           err = 'UNKNOWN'
+//       }
+//       log.resolve(err).addClass(CLASS_BAD).after(TIPS)
+//     }
+//   })
+// }
 
-async function parseXRPLToml(data, domain) {
-  let parsed
-  let logTOML = makeLogEntry("Parsing TOML data...")
-  try {
-    parsed = TOML(data)
-    logTOML.resolve("SUCCESS").addClass(CLASS_GOOD)
-  } catch(e) {
-    logTOML.resolve(e).addClass(CLASS_BAD)
-    return
-  }
+// async function parseXRPLToml(data, domain) {
+//   let parsed
+//   let logTOML = makeLogEntry("Parsing TOML data...")
+//   try {
+//     parsed = TOML(data)
+//     logTOML.resolve("SUCCESS").addClass(CLASS_GOOD)
+//   } catch(e) {
+//     logTOML.resolve(e).addClass(CLASS_BAD)
+//     return
+//   }
 
-  if (parsed.hasOwnProperty("METADATA")) {
-    const metadata_type = makeLogEntry("Metadata section: ")
-    if (Array.isArray(parsed.METADATA)) {
-      metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
-    } else {
-      metadata_type.resolve("Found").addClass(CLASS_GOOD)
+//   if (parsed.hasOwnProperty("METADATA")) {
+//     const metadata_type = makeLogEntry("Metadata section: ")
+//     if (Array.isArray(parsed.METADATA)) {
+//       metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
+//     } else {
+//       metadata_type.resolve("Found").addClass(CLASS_GOOD)
 
-      if (parsed.METADATA.modified) {
-        const mod_log = makeLogEntry("Modified date: ")
-        try {
-          mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
-        } catch(e) {
-          mod_log.resolve("INVALID").addClass(CLASS_BAD)
-        }
-      }
-    }
-  }
+//       if (parsed.METADATA.modified) {
+//         const mod_log = makeLogEntry("Modified date: ")
+//         try {
+//           mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
+//         } catch(e) {
+//           mod_log.resolve("INVALID").addClass(CLASS_BAD)
+//         }
+//       }
+//     }
+//   }
 
-  async function listEntries(name, list, fields, validate) {
-    let list_wrap = $("<p>"+name+"</p>")
-    let list_ol = $("<ol>").appendTo(list_wrap)
-    for (i=0; i<list.length; i++) {
-      let entry_wrap = $("<li>").appendTo(list_ol)
-      let entry_def = $("<ul class='mb-3'>").appendTo(entry_wrap)
-      let entry = list[i]
-      for (j=0; j<fields.length; j++) {
-        let fieldname = fields[j]
-        if (entry[fieldname] !== undefined) {
-          let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
-          $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
-        }
-      }
-      if (validate) {
-        validate(entry).then((validated) => {
-          if (validated === true) {
-            entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
-          }
-        })
-      }
-    }
-    makeLogEntry(list_wrap, true)
-  }
+//   async function listEntries(name, list, fields, validate) {
+//     let list_wrap = $("<p>"+name+"</p>")
+//     let list_ol = $("<ol>").appendTo(list_wrap)
+//     for (i=0; i<list.length; i++) {
+//       let entry_wrap = $("<li>").appendTo(list_ol)
+//       let entry_def = $("<ul class='mb-3'>").appendTo(entry_wrap)
+//       let entry = list[i]
+//       for (j=0; j<fields.length; j++) {
+//         let fieldname = fields[j]
+//         if (entry[fieldname] !== undefined) {
+//           let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
+//           $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
+//         }
+//       }
+//       if (validate) {
+//         validate(entry).then((validated) => {
+//           if (validated === true) {
+//             entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
+//           }
+//         })
+//       }
+//     }
+//     makeLogEntry(list_wrap, true)
+//   }
 
-  if (parsed.ACCOUNTS) {
-    if (!Array.isArray(parsed.ACCOUNTS)) {
-      makeLogEntry("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-    } else {
-      listEntries("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
-        if (acct.address === undefined) {return undefined}
-        let net
-        if (acct.network === undefined) { net = "main" } else { net = acct.network }
-        return await validateAddressDomainOnNet(acct.address, domain, net)
-      })
-    }
-  }
-  if (parsed.VALIDATORS) {
-    if (!Array.isArray(parsed.VALIDATORS)) {
-      makeLogEntry("Validators:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-    } else {
-      listEntries("Validators:", parsed.VALIDATORS, VALIDATOR_FIELDS)
-    }
-  }
-  if (parsed.PRINCIPALS) {
-    if (!Array.isArray(parsed.PRINCIPALS)) {
-      makeLogEntry("Principals:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-    } else {
-      listEntries("Principals:", parsed.PRINCIPALS, PRINCIPAL_FIELDS)
-    }
-  }
-  if (parsed.SERVERS) {
-    if (!Array.isArray(parsed.SERVERS)) {
-      makeLogEntry("Servers:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-    } else {
-      listEntries("Servers:", parsed.SERVERS, SERVER_FIELDS)
-    }
-  }
-  if (parsed.CURRENCIES) {
-    if (!Array.isArray(parsed.CURRENCIES)) {
-      makeLogEntry("Currencies:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-    } else {
-      listEntries("Currencies:", parsed.CURRENCIES, CURRENCY_FIELDS)
-    }
-  }
-}
+//   if (parsed.ACCOUNTS) {
+//     if (!Array.isArray(parsed.ACCOUNTS)) {
+//       makeLogEntry("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//     } else {
+//       listEntries("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
+//         if (acct.address === undefined) {return undefined}
+//         let net
+//         if (acct.network === undefined) { net = "main" } else { net = acct.network }
+//         return await validateAddressDomainOnNet(acct.address, domain, net)
+//       })
+//     }
+//   }
+//   if (parsed.VALIDATORS) {
+//     if (!Array.isArray(parsed.VALIDATORS)) {
+//       makeLogEntry("Validators:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//     } else {
+//       listEntries("Validators:", parsed.VALIDATORS, VALIDATOR_FIELDS)
+//     }
+//   }
+//   if (parsed.PRINCIPALS) {
+//     if (!Array.isArray(parsed.PRINCIPALS)) {
+//       makeLogEntry("Principals:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//     } else {
+//       listEntries("Principals:", parsed.PRINCIPALS, PRINCIPAL_FIELDS)
+//     }
+//   }
+//   if (parsed.SERVERS) {
+//     if (!Array.isArray(parsed.SERVERS)) {
+//       makeLogEntry("Servers:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//     } else {
+//       listEntries("Servers:", parsed.SERVERS, SERVER_FIELDS)
+//     }
+//   }
+//   if (parsed.CURRENCIES) {
+//     if (!Array.isArray(parsed.CURRENCIES)) {
+//       makeLogEntry("Currencies:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//     } else {
+//       listEntries("Currencies:", parsed.CURRENCIES, CURRENCY_FIELDS)
+//     }
+//   }
+// }
 
 // Decode a hexadecimal string into a regular string, assuming 8-bit characters.
 // Not proper unicode decoding, but it'll work for domains which are supposed
@@ -266,21 +266,21 @@ function handleSubmitDomain(event) {
 }
 
 // ------------------------------------------ DOMAIN VERIFICATION VIA ACCOUNT BELOW ------------------------------------------
-let wallet;
-let socket;
+// let wallet;
+// let socket;
 
-function makeLogEntryWallet(text, raw) {
-  let log
-  if (raw) {
-    log = $('<li></li>').appendTo('#verify-domain-log').append(text)
-  } else {
-    log = $('<li></li>').text(text+" ").appendTo('#verify-domain-log')
-  }
-  log.resolve = function(text) {
-    return $('<span></span>').html(text).appendTo(log)
-  }
-  return log
-}
+// function makeLogEntryWallet(text, raw) {
+//   let log
+//   if (raw) {
+//     log = $('<li></li>').appendTo('#verify-domain-log').append(text)
+//   } else {
+//     log = $('<li></li>').text(text+" ").appendTo('#verify-domain-log')
+//   }
+//   log.resolve = function(text) {
+//     return $('<span></span>').html(text).appendTo(log)
+//   }
+//   return log
+// }
 
 // function fetchWallet() {
 //   wallet = $('#verify-domain').val()
@@ -322,72 +322,72 @@ function makeLogEntryWallet(text, raw) {
 //   })
 // }
 
-async function parseXRPLTomlWallet(data) {
-  let parsed
-  let logTOML = makeLogEntryWallet("Parsing TOML data...")
-  try {
-    parsed = TOML(data)
-    logTOML.resolve("SUCCESS").addClass(CLASS_GOOD)
-  } catch(e) {
-    logTOML.resolve(e).addClass(CLASS_BAD)
-    return
-  }
+// async function parseXRPLTomlWallet(data) {
+//   let parsed
+//   let logTOML = makeLogEntryWallet("Parsing TOML data...")
+//   try {
+//     parsed = TOML(data)
+//     logTOML.resolve("SUCCESS").addClass(CLASS_GOOD)
+//   } catch(e) {
+//     logTOML.resolve(e).addClass(CLASS_BAD)
+//     return
+//   }
 
-  if (parsed.hasOwnProperty("METADATA")) {
-    const metadata_type = makeLogEntryWallet("Metadata section: ")
-    if (Array.isArray(parsed.METADATA)) {
-      metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
-    } else {
-      metadata_type.resolve("Found").addClass(CLASS_GOOD)
+//   if (parsed.hasOwnProperty("METADATA")) {
+//     const metadata_type = makeLogEntryWallet("Metadata section: ")
+//     if (Array.isArray(parsed.METADATA)) {
+//       metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
+//     } else {
+//       metadata_type.resolve("Found").addClass(CLASS_GOOD)
 
-      if (parsed.METADATA.modified) {
-        const mod_log = makeLogEntryWallet("Modified date: ")
-        try {
-          mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
-        } catch(e) {
-          mod_log.resolve("INVALID").addClass(CLASS_BAD)
-        }
-      }
-    }
-  }
+//       if (parsed.METADATA.modified) {
+//         const mod_log = makeLogEntryWallet("Modified date: ")
+//         try {
+//           mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
+//         } catch(e) {
+//           mod_log.resolve("INVALID").addClass(CLASS_BAD)
+//         }
+//       }
+//     }
+//   }
 
-  async function listEntriesWallet(name, list, fields) {
-    let found = false;
-    let list_wrap = $("<p>"+name+"</p>")
-    let list_ol = $("<ol>").appendTo(list_wrap)
-    for (i=0; i<list.length; i++) {
-      let entry_def = $("<ul>").appendTo(list_ol)
-      let entry = list[i]
-      for (j=0; j<fields.length; j++) {
-        let fieldname = fields[j]
-        if (entry['address'] === wallet) {
-            let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
-            $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
-            found=true;
-        }
-      }
-    }
+//   async function listEntriesWallet(name, list, fields) {
+//     let found = false;
+//     let list_wrap = $("<p>"+name+"</p>")
+//     let list_ol = $("<ol>").appendTo(list_wrap)
+//     for (i=0; i<list.length; i++) {
+//       let entry_def = $("<ul>").appendTo(list_ol)
+//       let entry = list[i]
+//       for (j=0; j<fields.length; j++) {
+//         let fieldname = fields[j]
+//         if (entry['address'] === wallet) {
+//             let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
+//             $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
+//             found=true;
+//         }
+//       }
+//     }
     
-    if(found) {
-      makeLogEntryWallet(list_wrap, true)
-      makeLogEntryWallet('Account has been found in TOML file and validated.').resolve('DOMAIN VALIDATED <i class="fa fa-check-circle"></i>').addClass(CLASS_GOOD)
-    } else {
-      let entry_def = $("<ul>").appendTo(list_ol)
-      let field_def = $("<li><strong>address: </strong>").appendTo(entry_def)
-      $(" <span class='address'>").text('Not found ').appendTo(field_def).append(' <li class="badge badge-danger">ERROR</li>')
+//     if(found) {
+//       makeLogEntryWallet(list_wrap, true)
+//       makeLogEntryWallet('Account has been found in TOML file and validated.').resolve('DOMAIN VALIDATED <i class="fa fa-check-circle"></i>').addClass(CLASS_GOOD)
+//     } else {
+//       let entry_def = $("<ul>").appendTo(list_ol)
+//       let field_def = $("<li><strong>address: </strong>").appendTo(entry_def)
+//       $(" <span class='address'>").text('Not found ').appendTo(field_def).append(' <li class="badge badge-danger">ERROR</li>')
       
-      makeLogEntryWallet(list_wrap, true)
-      makeLogEntryWallet('Account not found in TOML file. Domain can not be verified.').resolve('VALIDATION FAILED').addClass(CLASS_BAD)
-    }
-  }
-  if (parsed.ACCOUNTS) {
-    if (!Array.isArray(parsed.ACCOUNTS)) {
-      makeLogEntryWallet("Account:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-    } else {
-      listEntriesWallet("Account:", parsed.ACCOUNTS, ACCOUNT_FIELDS)
-    }
-  }
-}
+//       makeLogEntryWallet(list_wrap, true)
+//       makeLogEntryWallet('Account not found in TOML file. Domain can not be verified.').resolve('VALIDATION FAILED').addClass(CLASS_BAD)
+//     }
+//   }
+//   if (parsed.ACCOUNTS) {
+//     if (!Array.isArray(parsed.ACCOUNTS)) {
+//       makeLogEntryWallet("Account:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
+//     } else {
+//       listEntriesWallet("Account:", parsed.ACCOUNTS, ACCOUNT_FIELDS)
+//     }
+//   }
+// }
 
 // function decodeHexWallet(hex) {
 //     let str = '';
