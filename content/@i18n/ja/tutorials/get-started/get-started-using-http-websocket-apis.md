@@ -72,7 +72,7 @@ Content-Type: application/json
 
 レスポンスには、サーバの現在のステータスが表示されます。
 
-さらに見る: [リクエストのフォーマット >](request-formatting.html#json-rpc-format) [レスポンスのフォーマット >](response-formatting.html) [server_infoメソッドについて >][server_info method]
+さらに見る: [リクエストのフォーマット >](request-formatting.html#json-rpcフォーマット) [レスポンスのフォーマット >](response-formatting.html) [server_infoメソッドについて >][server_info method]
 
 ## コマンドライン
 
