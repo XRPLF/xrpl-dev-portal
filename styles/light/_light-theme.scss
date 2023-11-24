@@ -748,6 +748,16 @@ pre code {
       }
     }
   }
+  #use_case_companies_list {
+    #threezy {
+      .biz-logo {
+        max-height: 40px;
+        content: url("../img/uses/lightmode/threezy.png");
+      }
+    }
+  }
+
+
 
   // Monochrome logos; invert.
   #bitpay,

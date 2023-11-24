@@ -77,7 +77,7 @@ _JavaScript_
 
 As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's crucial to choose assets carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.
 
-You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, including LP Tokens from another AMM. If you use a token, you must hold some amount of that token. (If a token's issuer uses, [authorized trust lines](authorized-trust-lines.html), that means you have to be authorized first.)
+You can choose any pair of fungible assets in the XRP Ledger, including XRP or tokens, as long as they meet the [restrictions on AMM assets](automated-market-makers.html#restrictions-on-assets).
 
 For each of the two assets, you need to know its currency code and issuer; as an exception, XRP has no issuer. For each of the assets, you must hold a balance of the asset (or _be_ the issuer). The following sample code acquires two assets, "TST" (which it buys using XRP) and "FOO" (which it receives from the issuer).
 

@@ -1,24 +1,24 @@
 /* Use Cases ---------------------------------------------------------------- */
 
 // Define each category's logos
-$infrastructure-logos: "XRP-Ledger", "Gatehub", "towoLabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
-$developer-tooling-logos: "blockforce", "Evernode", "threezy", "tokenize";
-$interoperability-logos: "Allbridge", "futureverse", "multichain";
-$wallet-logos:  "Crossmark", "Edge", "gem-wallet", "Xumm";
+$infrastructure-logos:  "xrp-ledger", "gatehub", "towolabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
+$developer-tooling-logos: "cryptum", "evernode", "threezy", "tokenize";
+$interoperability-logos: "multichain";
+$wallet-logos:  "crossmark", "edge", "gem-wallet", "xumm";
 $nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
-$exchanges-logos: "sologenic_dex", "XPMarket";
-$gaming-logos: "Forte", "Futureverse", "ledger-city", "onXRP", "styngr";
-$security-logos: "Anchain";
-$payments-logos: "ripple", "SuperMojo";
+$exchanges-logos: "sologenic_dex", "xpmarket";
+$gaming-logos: "forte", "ledger-city";
+$security-logos: "anchain";
+$payments-logos: "ripple", "supermojo";
 $cbdc-logos: "ripple";
-$carbon-markets-logos: "carbonland-trust", "Rootmaker";
-$custody-logos: "Gatehub", "Bitgo";
+$carbon-markets-logos: "carbonland-trust";
+$custody-logos: "gatehub", "bitgo";
 
 // Create a mixin to handle the common logic
 @mixin create-logo-classes($logo-list) {
   @each $logo in $logo-list {
     .#{$logo} {
-      content: url(../img/uses/modalLogos/#{$logo}.png);
+      content: url(../img/uses/modallogos/#{$logo}.png);
     }
 
     html.light {
@@ -28,7 +28,25 @@ $custody-logos: "Gatehub", "Bitgo";
     }
   }
 }
-
+#use_case_companies_list {
+  #threezy {
+    .biz-logo {
+      max-height: 40px;
+      content: url("../img/uses/modallogos/threezy.png");
+    }
+  }
+}
+html.light{
+  .cryptum{
+    content: url(../img/uses/lightmode/cryptum.jpg) !important;
+    height: 58px;
+    max-width: max-content;
+    width: 184px;
+    max-height: none;
+    margin: 0px;
+    padding-bottom: 10px;
+  }
+}
 // Use the mixin for each category
 @include create-logo-classes($infrastructure-logos);
 @include create-logo-classes($developer-tooling-logos);
