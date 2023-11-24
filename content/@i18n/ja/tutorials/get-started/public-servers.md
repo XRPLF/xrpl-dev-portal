@@ -18,12 +18,13 @@ labels:
 | XRPL Labs   | Testnet       | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | CORSをサポートする Testnet 公開サーバー |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet 公開サーバー |
 | Ripple[¹][]   | AMM-Devnet  | `https://amm.devnet.rippletest.net:51234/` | `wss://amm.devnet.rippletest.net:51233/` | [XLS-30d Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78)開発用の特別なdevnetサーバー |
+| XRPL Labs     | Hooks-Testnet| `https://hooks-testnet-v3.xrpl-labs.com` | `wss://hooks-testnet-v3.xrpl-labs.com` | Hooks V3 Testnet |
 
 [ネットワーク]: parallel-networks.html
 [¹]: #footnote-1
 [²]: #footnote-2
 
-<a id="footnote-1"></a>¹ Ripple社の公開サーバーは、持続的な利用やビジネスでの利用には適しておらず、いつでも利用できなくなる可能性があります。定期的に使用する場合は、ご自身で `rippled` サーバーを運用するか、信頼できる人と契約してください。リップル社では、公開クラスターに[Reporting Mode][]サーバーが含まれています。
+<a id="footnote-1"></a>¹ Ripple社の公開サーバーは、持続的な利用やビジネスでの利用には適しておらず、いつでも利用できなくなる可能性があります。定期的に使用する場合は、ご自身で`rippled`サーバーを運用するか、信頼できる人と契約してください。Ripple社の公開クラスターには[Reporting Mode][]サーバが含まれています。
 
 <a id="footnote-2"></a>² `xrpl.ws` は `xrplcluster.com` のエイリアスです。しかし、`.ws` というトップレベルドメインの信頼性は、本番での使用には適さないかもしれません。
 

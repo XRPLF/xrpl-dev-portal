@@ -48,7 +48,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
 
-4. Add the appropriate Ripple repository for your operating system version:
+5. Add the appropriate Ripple repository for your operating system version:
 
         echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
@@ -67,15 +67,15 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     **Warning:** Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.
 
-5. Fetch the Ripple repository.
+6. Fetch the Ripple repository.
 
         sudo apt -y update
 
-6. Install the `rippled` software package:
+7. Install the `rippled` software package:
 
         sudo apt -y install rippled
 
-7. Check the status of the `rippled` service:
+8. Check the status of the `rippled` service:
 
         systemctl status rippled.service
 
@@ -84,7 +84,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         sudo systemctl start rippled.service
 
 
-8. Optional: allow `rippled` to bind to privileged ports.
+9. Optional: allow `rippled` to bind to privileged ports.
 
     This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)
 
