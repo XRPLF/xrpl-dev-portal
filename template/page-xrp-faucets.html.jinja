@@ -24,6 +24,14 @@
     "shortname": "AMM-Devnet",
     "faucet": "https://ammfaucet.devnet.rippletest.net/accounts",
     "desc": "XLS-30d Automated Market Makers preview network."
+  },
+  {
+    "id": "faucet-select-xahau",
+    "ws_url": "wss://xahau-test.net/",
+    "jsonrpc_url": "https://xahau-test.net/",
+    "shortname": "Xahau-Testnet",
+    "faucet": "https://xahau-test.net/accounts",
+    "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
   }
 ] %}
 
@@ -56,7 +64,6 @@
       <label class="form-check-label" for="{{net.id}}"><strong>{{net.shortname}}</strong>: {{net.desc}}</label>
     </div>
     {% endfor %}
-    <p class="mb-3"><strong>Hooks Testnet</strong>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" class="external-link">See the Hooks Faucet</a></p>
     <div class="btn-toolbar" role="toolbar" aria-label="Button">
       <button id="generate-creds-button" class="btn btn-primary mr-2 mb-2">Generate Testnet credentials</button>
     </div><!--/.btn-toolbar-->
