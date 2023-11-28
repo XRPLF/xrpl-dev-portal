@@ -11,7 +11,7 @@ The `NFToken` object represents a single non-fungible token (NFT). It is not sto
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
-Example {{currentpage.name}} JSON
+## Example {{currentpage.name}} JSON
 
 ```json
 {

@@ -781,7 +781,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/networks-and-servers/the-clio-server.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1153,7 +1152,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/freezes.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1179,7 +1177,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/transfer-fees.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1236,7 +1233,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/automated-market-makers.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2227,7 +2223,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/data-types/basic-data-types.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2243,9 +2238,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation to add a table like in the English version
     -   md: "@i18n/ja/references/protocol/data-types/currency-formats.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2253,10 +2246,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation to use the term "sequence number" rather than
-        # "dumb sequential"
     -   md: "@i18n/ja/references/protocol/data-types/nftoken.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2450,9 +2440,7 @@ pages:
         targets:
             - en
 
-        # TODO: update blurb translation based on English version
     -   md: "@i18n/ja/references/protocol/transactions/index.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2503,7 +2491,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/transactions/types/ammcreate.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2785,9 +2772,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tel-codes.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2819,9 +2804,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation to latest English version
     -   md: "@i18n/ja/references/protocol/transactions/metadata.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2838,9 +2821,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with new/updated sections from the English version
     -   md: "@i18n/ja/references/protocol/binary-format.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -5014,7 +4995,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/resources/contribute-documentation/index.md"
-        outdated_translation: true
         top_nav_grouping: 参加する
         targets:
             - ja
