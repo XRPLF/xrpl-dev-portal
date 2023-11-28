@@ -3007,10 +3007,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: references/http-websocket-apis/api-conventions/ctid.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/ctid.md"
+        targets:
             - ja
 
 # rippled Public Methods
