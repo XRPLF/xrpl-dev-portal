@@ -13,6 +13,8 @@ _(Requires the [DID amendment][] :not_enabled:)_
 
 Delete the [DID ledger entry](did.html) associated with the specified `Account` field.
 
+**Note:** This transaction only uses the [common fields][].
+
 
 ## Example {{currentpage.name}} JSON
 
@@ -26,6 +28,15 @@ Delete the [DID ledger entry](did.html) associated with the specified `Account` 
     "TxnSignature":"3044022011E9A7EE3C7AE9D202848390522E6840F7F3ED098CD13E..."
 }
 ```
+
+## Error Cases
+
+Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+
+| Error Code          | Description                                  |
+|:--------------------|:---------------------------------------------|
+| `tecNO_ENTRY`       | The account doesn't have a DID.              |
+
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
