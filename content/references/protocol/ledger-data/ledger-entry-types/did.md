@@ -1,7 +1,7 @@
 ---
 html: did.html
 parent: ledger-entry-types.html
-blurb: The definition and details of a Decentralized Identifier(DID).
+blurb: The definition and details of a Decentralized Identifier (DID).
 labels:
   - DID
 status: not_enabled
@@ -11,7 +11,7 @@ status: not_enabled
 
 _(Requires the [DID amendment][] :not_enabled:)_
 
-A `DID` ledger entry holds references to, or data associated w ith a single [DID](decentralized-identifiers.html).
+A `DID` ledger entry holds references to, or data associated with, a single [DID](decentralized-identifiers.html).
 
 
 ## Example DID JSON
