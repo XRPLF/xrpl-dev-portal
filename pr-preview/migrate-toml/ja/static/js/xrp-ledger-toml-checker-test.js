@@ -16,6 +16,7 @@ const ACCOUNT_FIELDS = [
 const WORKS = 'rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV'
 const NOTOML = 'rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz'
 const NODOMAIN = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh'
+// validator.xrpl-labs.com (Works for the domain side)
 
 let socket;
 
