@@ -273,6 +273,7 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#diddelete">DIDDelete</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#example-diddelete-json">Example DIDDelete JSON</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#error-cases">Error Cases</a></li>
       </ul>
   </div>
       </aside>
@@ -305,6 +306,7 @@
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Requires the [DID amendment][] <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <p>Delete the <a href="did.html">DID ledger entry</a> associated with the specified <code>Account</code> field.</p>
+<p class="devportal-callout note"><strong>Note:</strong> This transaction only uses the <a href="transaction-common-fields.html">common fields</a>.</p>
 <h2 id="example-diddelete-json">Example DIDDelete JSON<a aria-hidden="true" class="hover_anchor" href="#example-diddelete-json"><i class="fa fa-link"></i></a></h2>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DIDDelete"</span><span class="p">,</span><span class="w"> </span>
@@ -315,6 +317,22 @@
 <span class="w">    </span><span class="nt">"TxnSignature"</span><span class="p">:</span><span class="s2">"3044022011E9A7EE3C7AE9D202848390522E6840F7F3ED098CD13E..."</span>
 <span class="p">}</span>
 </code></pre></div>
+<h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
+<p>Besides errors that can occur for all transactions, DIDDelete transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Error Code</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>tecNO_ENTRY</code></td>
+<td style="text-align: left;">The account doesn't have a DID.</td>
+</tr>
+</tbody>
+</table>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1960,7 +1978,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
