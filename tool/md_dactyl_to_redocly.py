@@ -126,7 +126,9 @@ class IncludeSvgReplacer(RegexReplacer):
     regex = re.compile(r'\{\{ *include_svg\( *"(?P<fname>[^"]+)"[, ]*("(?P<caption>[^"]+)")?\) *}}')
     @staticmethod
     def replace(m):
-        return '<figure><a href="'+m.group("fname")+'" title="'+m.group("caption")+'">{% inline-svg file="/' + m.group("fname") + '" /%}</a></figure>'
+        # TODO: maybe wrap in something like this, except make it work?
+        # <figure><a href="'+m.group("fname")+'" title="'+m.group("caption")+'"> ... </a></figure>
+        return '{% inline-svg file="/' + m.group("fname") + '" /%}'
 regex_todos.append(IncludeSvgReplacer())
 
 class PrefixedCodeSnippetReplacer(RegexReplacer):
@@ -221,7 +223,7 @@ category_regex = re.compile(r'^#?template: *pagetype-category\.html\.jinja\n', r
 def convert_category_page(ftext):
     if not category_regex.search(ftext):
         return ftext
-    ftext2 = re.sub(category_regex, "", ftext)
+    ftext2 = re.sub(category_regex, "metadata:\n  indexPage: true\n", ftext)
     ftext2 = ftext2 + "\n{% child-pages /%}\n"
     return ftext2
 
@@ -235,7 +237,9 @@ def main():
         for replacer in regex_todos:
             ftext2 = replacer.replace_all(ftext2)
 
-        ftext2 = convert_category_page(ftext2)
+
+        # Temporarily commented out because of a Redocly bug that causes it to hang
+        # ftext2 = convert_category_page(ftext2)
 
         if ftext2 != ftext:
             #print("performing syntax conversion in", fname)
