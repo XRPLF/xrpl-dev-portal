@@ -48,7 +48,7 @@ You must be connected to the network to query it and submit transactions. The fo
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/connect.js" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/connect.js", language="js") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -68,7 +68,7 @@ When you're [building production-ready software](production-readiness.html), you
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Get credentials" before="// Acquire tokens" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Get credentials", end_before="// Acquire tokens") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -85,7 +85,7 @@ For each of the two assets, you need to know its currency code and issuer; as an
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Acquire tokens" before="// Check if AMM already exists" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Acquire tokens", end_before="// Check if AMM already exists") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -97,7 +97,7 @@ The helper function for issuing follows an abbreviated version of the steps in t
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="/* Issue tokens" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="/* Issue tokens") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -116,7 +116,7 @@ Since there can only be one AMM for a specific pair of assets, it's best to chec
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Check if AMM already exists" before="// Look up AMM transaction cost" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Check if AMM already exists", end_before="// Look up AMM transaction cost") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -138,7 +138,7 @@ It is also a good practice to display this value and give a human operator a cha
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Look up AMM transaction cost" before="// Create AMM" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Look up AMM transaction cost", end_before="// Create AMM") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -168,7 +168,7 @@ For the two starting assets, it does not matter which is `Asset` and which is `A
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Create AMM" before="// Confirm that AMM exists" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Create AMM", end_before="// Confirm that AMM exists") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -215,7 +215,7 @@ If the AMMCreate transaction succeeded, it creates the AMM and related objects i
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Confirm that AMM exists" before="// Check token balances" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Confirm that AMM exists", end_before="// Check token balances") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -237,7 +237,7 @@ You can also use the [account_lines method][] to get an updated view of your tok
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/create-amm/js/create-amm.js" from="// Check token balances" before="// Disconnect" language="js" /%}
+{{ include_code("_code-samples/create-amm/js/create-amm.js", language="js", start_with="// Check token balances", end_before="// Disconnect") }}
 
 <!-- MULTICODE_BLOCK_END -->
 

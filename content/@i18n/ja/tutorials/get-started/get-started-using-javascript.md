@@ -89,7 +89,7 @@ const xrpl = require("xrpl")
 
 **Tip:** `xrpl.js` の多くのネットワーク関数は、[Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)を使って非同期に値を返します。ここで紹介するコードサンプルでは、[`async/await` パターン](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await)を使用して、Promises の実際の結果を待ちます。
 
-{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 #### XRP Ledger メインネットへの接続
 
@@ -114,7 +114,7 @@ const xrpl = require("xrpl")
 
 `xrpl.js` ライブラリには、XRP Ledgerアカウントのキーとアドレスを扱うための "Wallet "クラスが用意されています。Testnetでは、次のようにして新しいウォレットに資金を供給することができます。
 
-{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Create a wallet" before="// Get info" language="js" /%}
+{{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Create a wallet", end_before="// Get info", language="js") }}
 
 キーを生成するだけであれば、次のように新しいWalletインスタンスを作成することができます。
 
@@ -132,14 +132,14 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // テ
 
 クライアントの`request()`メソッドを使って、XRP Ledgerの[WebSocket API](request-formatting.html)にアクセスします。例えば、以下のようになります。
 
-{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Get info" before="// Listen to ledger close events" language="js" /%}
+{{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Get info", end_before="// Listen to ledger close events", language="js") }}
 
 
 ### 5. イベントのListen
 
 XRP Ledgerの[コンセンサス プロセス](consensus.html)が新しい[レジャーバージョン](ledgers.html)を生成したときなど、`xrpl.js`ではさまざまなタイプのイベントのハンドラを設定することができます。そのためには、まず[subscribeメソッド][]を呼び出して欲しいイベントの種類を取得し、クライアントの`on(eventType, callback)`メソッドを使ってイベントハンドラをアタッチします。
 
-{% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Listen to ledger close events" before="// Disconnect when done" language="js" /%}
+{{ include_code("_code-samples/get-started/js/get-acct-info.js", start_with="// Listen to ledger close events", end_before="// Disconnect when done", language="js") }}
 
 
 ## 作り続けましょう

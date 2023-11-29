@@ -70,15 +70,15 @@ You must be connected to the network to submit transactions to it. The following
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/issue-a-token/py/issue-a-token.py" from="# Connect" before="# Get credentials" language="py" /%}
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/issue-a-token/java/IssueToken.java" from="// Construct a network client" before="// Create cold" language="java" /%}
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Construct a network client", end_before="// Create cold", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -127,15 +127,15 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/issue-a-token/js/issue-a-token.js" from="// Configure issuer" before="// Configure hot" language="js" /%}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Configure issuer", end_before="// Configure hot", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/issue-a-token/py/issue-a-token.py" from="# Configure issuer" before="# Configure hot" language="py" /%}
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Configure issuer", end_before="# Configure hot", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/issue-a-token/java/IssueToken.java" from="// Configure issuer" before="// Configure hot" language="java" /%}
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Configure issuer", end_before="// Configure hot", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -230,15 +230,15 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/issue-a-token/js/issue-a-token.js" from="// Configure hot address" before="// Create trust line" language="js" /%}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Configure hot address", end_before="// Create trust line", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/issue-a-token/py/issue-a-token.py" from="# Configure hot address" before="# Create trust line" language="py" /%}
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Configure hot address", end_before="# Create trust line", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/issue-a-token/java/IssueToken.java" from="// Configure hot address" before="// Create trust line" language="java" /%}
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Configure hot address", end_before="// Create trust line", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -323,15 +323,15 @@ The following code sample shows how to send a [TrustSet transaction][] from the 
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/issue-a-token/js/issue-a-token.js" from="// Create trust line" before="// Send token" language="js" /%}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Create trust line", end_before="// Send token", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/issue-a-token/py/issue-a-token.py" from="# Create trust line" before="# Send token" language="py" /%}
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Create trust line", end_before="# Send token", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/issue-a-token/java/IssueToken.java" from="// Create trust line" before="// Send token" language="java" /%}
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Create trust line", end_before="// Send token", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -407,15 +407,15 @@ The following code sample shows how to send a [Payment transaction][] to issue 8
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/issue-a-token/js/issue-a-token.js" from="// Send token" before="// Check balances" language="js" /%}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Send token", end_before="// Check balances", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/issue-a-token/py/issue-a-token.py" from="# Send token" before="# Check balances" language="py" /%}
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Send token", end_before="# Check balances", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/issue-a-token/java/IssueToken.java" from="// Send token" before="// Check balances" language="java" /%}
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Send token", end_before="// Check balances", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -473,15 +473,15 @@ The following code sample shows how to use both methods:
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/issue-a-token/js/issue-a-token.js" from="// Check balances" before="// End of" language="js" /%}
+{{ include_code("_code-samples/issue-a-token/js/issue-a-token.js", start_with="// Check balances", end_before="// End of", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/issue-a-token/py/issue-a-token.py" from="# Check balances" language="py" /%}
+{{ include_code("_code-samples/issue-a-token/py/issue-a-token.py", start_with="# Check balances", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/issue-a-token/java/IssueToken.java" from="// Check balances" before="// Helper" language="java" /%}
+{{ include_code("_code-samples/issue-a-token/java/IssueToken.java", start_with="// Check balances", end_before="// Helper", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 

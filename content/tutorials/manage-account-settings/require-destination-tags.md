@@ -53,11 +53,11 @@ You must be connected to the network to submit transactions to it. The following
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/get-started/py/base-async.py" language="py" /%}
+{{ include_code("_code-samples/get-started/py/base-async.py", language="py") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -75,11 +75,11 @@ For example:
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/require-destination-tags/js/require-destination-tags.js" from="// Send AccountSet" before="// Confirm Account" language="js" /%}
+{{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Send AccountSet", end_before="// Confirm Account") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/require-destination-tags/py/require-destination-tags.py" from="# Send AccountSet" before="# Confirm Account" language="py" /%}
+{{ include_code("_code-samples/require-destination-tags/py/require-destination-tags.py", language="py", start_with="# Send AccountSet", end_before="# Confirm Account") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -108,11 +108,11 @@ After the transaction is validated, you can check your account's settings to con
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/require-destination-tags/js/require-destination-tags.js" from="// Confirm Account" before="// End main()" language="js" /%}
+{{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Confirm Account", end_before="// End main()") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/require-destination-tags/py/require-destination-tags.py" from="# Confirm Account" before="# End main()" language="py" /%}
+{{ include_code("_code-samples/require-destination-tags/py/require-destination-tags.py", language="py", start_with="# Confirm Account", end_before="# End main()") }}
 
 <!-- MULTICODE_BLOCK_END -->
 

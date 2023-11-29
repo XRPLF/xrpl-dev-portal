@@ -55,7 +55,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
-{% code-snippet file="/_code-samples/get-started/py/get-acct-info.py" from="# Define the network client" before="# Create a wallet using the testnet faucet:" language="py" /%}
+{{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Define the network client", end_before="# Create a wallet using the testnet faucet:", language="py") }}
 
 #### Connect to the production XRP Ledger
 
@@ -84,7 +84,7 @@ For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-
 
 To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
 
-{% code-snippet file="/_code-samples/get-started/py/get-acct-info.py" from="# Create a wallet using the testnet faucet:" before="# Create an account str from the wallet" language="py" /%}
+{{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Create a wallet using the testnet faucet:", end_before="# Create an account str from the wallet", language="py") }}
 
 
 This method returns a [`Wallet` instance](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.Wallet):
@@ -108,7 +108,7 @@ In this tutorial we only query details about the generated account from the XRP 
 
 To prepare the transaction:
 
-{% code-snippet file="/_code-samples/get-started/py/prepare-payment.py" from="# Prepare payment" before="# print prepared payment" language="py" /%}
+{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Prepare payment", end_before="# print prepared payment", language="py") }}
 
 
 
@@ -116,14 +116,14 @@ To prepare the transaction:
 
 To sign and submit the transaction:
 
-{% code-snippet file="/_code-samples/get-started/py/prepare-payment.py" from="# Sign and submit the transaction" before="# Print tx response" language="py" /%}
+{{ include_code("_code-samples/get-started/py/prepare-payment.py", start_with="# Sign and submit the transaction", end_before="# Print tx response", language="py") }}
 
 
 ##### Derive an X-address
 
 You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.core.addresscodec.html) module to derive an [X-address](https://xrpaddress.info/) from the `Wallet.address` field:
 
-{% code-snippet file="/_code-samples/get-started/py/get-acct-info.py" from="# Derive an x-address from the classic address:" before="# Look up info about your account" language="py" /%}
+{{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Derive an x-address from the classic address:", end_before="# Look up info about your account", language="py") }}
 
 The X-address format [packs the address and destination tag](https://github.com/XRPLF/XRPL-Standards/issues/6) into a more user-friendly value.
 
@@ -135,7 +135,7 @@ You can query the XRP Ledger to get information about [a specific account](accou
 Here, we use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html) module to look up information about the [account we got](#2-get-account) in the previous step.
 
 
-{% code-snippet file="/_code-samples/get-started/py/get-acct-info.py" from="# Look up info about your account" language="py" /%}
+{{ include_code("_code-samples/get-started/py/get-acct-info.py", start_with="# Look up info about your account", language="py")  }}
 
 
 

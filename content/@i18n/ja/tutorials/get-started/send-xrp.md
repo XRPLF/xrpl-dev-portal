@@ -40,15 +40,15 @@ top_nav_grouping: 人気ページ
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Connect" before="# Get credentials" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Connect" before="// Prepare transaction" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Connect", end_before="// Prepare transaction", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -84,15 +84,15 @@ XRP送金に対して指定する必要がある必要最小限の指示は次�
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Prepare" before="// Sign" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Prepare", end_before="// Sign", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Prepare" before="# Sign" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Prepare", end_before="# Sign", language="py" ) }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Prepare" before="// Sign" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -154,14 +154,14 @@ _Java_
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Submit" before="// Wait" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Submit", end_before="// Wait", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Submit" before="# Wait" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Submit", end_before="# Wait", language="py") }}
 
 _Java_
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Submit" before="// Wait" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Submit", end_before="// Wait", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -190,15 +190,15 @@ _Java_
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Wait" before="// Check" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Wait", end_before="// Check", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Wait" before="# Check" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Wait", end_before="# Check", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Wait" before="// Check" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Wait", end_before="// Check", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -215,15 +215,15 @@ _Java_
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Check" before="// End of" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Check", end_before="// End of", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Check" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Check", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Check" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Check", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 

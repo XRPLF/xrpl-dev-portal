@@ -41,15 +41,15 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Example credentials" before="// Connect" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Example credentials", end_before="// Connect", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" before="# Connect" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", end_before="# Connect", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" before="// Connect" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", end_before="// Connect", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -70,15 +70,15 @@ The following code connects to a public Testnet servers:
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Connect" before="# Get credentials" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Connect" before="// Prepare transaction" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Connect", end_before="// Prepare transaction", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -121,15 +121,15 @@ Here's an example of preparing the above payment:
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Prepare" before="// Sign" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Prepare", end_before="// Sign", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Prepare" before="# Sign" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Prepare", end_before="# Sign", language="py" ) }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Prepare" before="// Sign" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -203,14 +203,14 @@ Now that you have a signed transaction, you can submit it to an XRP Ledger serve
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Submit" before="// Wait" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Submit", end_before="// Wait", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Submit" before="# Wait" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Submit", end_before="# Wait", language="py") }}
 
 _Java_
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Submit" before="// Wait" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Submit", end_before="// Wait", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -247,15 +247,15 @@ Most transactions are accepted into the next ledger version after they're submit
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Wait" before="// Check" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Wait", end_before="// Check", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Wait" before="# Check" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Wait", end_before="# Check", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Wait" before="// Check" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Wait", end_before="// Check", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
@@ -280,15 +280,15 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 _JavaScript_
 
-{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Check" before="// End of" language="js" /%}
+{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Check", end_before="// End of", language="js" ) }}
 
 _Python_
 
-{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Check" language="py" /%}
+{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Check", language="py") }}
 
 _Java_
 
-{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Check" language="java" /%}
+{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Check", language="java" ) }}
 
 <!-- MULTICODE_BLOCK_END -->
 
