@@ -4,8 +4,7 @@ import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
 // TODO: Double check if axios is the best option to use for basic html requests
 import axios, { type AxiosError } from 'axios'
-import TOML from '@ltd/j-toml'
-//'content/static/vendor/iarna-toml-parse.js'
+import { parse } from 'smol-toml'
 
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
 const TIPS = <p>Check if the file is actually hosted at the URL above, check your server's HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>
@@ -55,6 +54,7 @@ interface XrplToml {
   SERVERS?: ServerFields[],
   CURRENCIES?: CurrencyFields[],
   METADATA?: {
+    // TODO: There could be other fields here, but this is all the existing code used
     modified: Date
   }
 }
@@ -103,10 +103,90 @@ function ResultBullet({
     )
 }
 
-async function parseXRPLTomlWallet(
+/**
+ * Log a list of fields from a toml file or display a relevant error message. 
+ * Will return true if successfully displays at least one field from fields without erroring.
+ * 
+ * @param setLogEntries A setter to update the logs with the new fields.
+ * @param headerText The initial message to include as a header for the list.
+ * @param fields A set of fields to parse and display. May be undefined, but if so, 
+ *               this function will simply return false. Simplifies typing.
+ * @param additionalCheck A function to verify something about fields before displaying the list of fields.
+ * @param filterDisplayedFieldsTo Limits the displayed fields to ones which match the predicate.
+ * @returns True if displayed any fields (after applying any given filters)
+ */
+function validateAndDisplayFields(
+  setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+  headerText: string, 
+  fields?: Object[],
+  additionalCheck?: Function,
+  filterDisplayedFieldsTo?: Function): boolean {
+  
+  // If there's no data, do nothing
+  if(!fields) {
+    return false
+  }
+
+  // Otherwise display all relevant data in the toml file for these field
+  if(Array.isArray(fields)) {
+    if(additionalCheck) {
+      additionalCheck(fields)
+    }
+    const formattedEntries = getListEntries(fields, filterDisplayedFieldsTo)
+    if(formattedEntries.length > 0) {
+      addNewLogEntry(setLogEntries, 
+        {
+          message: headerText,
+          id: headerText,
+          response: {
+            followUpContent: (
+              <ol>
+                {formattedEntries}
+              </ol>
+            )
+          }
+        }
+      )
+
+      return true
+    
+    } else {
+      
+      return false
+    
+    }
+  } else {
+    // Invalid toml data
+    addNewLogEntry(setLogEntries, {
+      message: headerText,
+      id: headerText,
+      response: {
+        icon: {
+          label: "Wrong type - should be table-array",
+          type: "ERROR",
+        }
+      }
+    })
+
+    return false
+
+  }
+}
+
+/**
+ * Read in a toml file and verify it has the proper fields, then display those fields in the logs.
+ * 
+ * @param setLogEntries A setter to update the logs.
+ * @param tomlData Toml data to parse.
+ * @param addressToVerify The address we're actively looking to verify matches with this toml file.
+ * @param domain A website to look up further information about the toml file.
+ * @returns Nothing.
+ */
+async function parseXRPLToml(
   setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
   tomlData,
-  addressToVerify: string) {
+  addressToVerify: string,
+  domain?: string) {
   const { translate } = useTranslate()
 
   const parsingTomlId = 'parsing-toml-data-log'
@@ -115,9 +195,9 @@ async function parseXRPLTomlWallet(
       id: parsingTomlId,
   }
   addNewLogEntry(setLogEntries, parsingTomlLogEntry)
-  let parsed: XrplToml
+  let parsed
   try {
-    parsed = TOML.parse(tomlData)
+    parsed = parse(tomlData)
     updateLogEntry(setLogEntries, {...parsingTomlLogEntry, response: {
       icon: {
         label: "SUCCESS",
@@ -133,7 +213,6 @@ async function parseXRPLTomlWallet(
       }})
       return
   }
-
   if (parsed?.METADATA) {
       const metadataId = 'metadata-log'
       const metadataLogEntry = {
@@ -184,217 +263,109 @@ async function parseXRPLTomlWallet(
 
   // TODO: Potentially separate these functions here because top half is totally separate from down here?
 
-  // Used to display the attributes from any matching accounts in the toml that are found
-  const tomlAccountLogProps: ResultBulletProps = {
-      message: translate("Account:"),
-      id: 'toml-account-entry-log',
-  }
-  addNewLogEntry(setLogEntries, tomlAccountLogProps)
+  const accountHeader = "Accounts:"
+  if(domain) {
+    // ONLY USED FOR TOP BUTTON, NOT WALLET - TODO: Ensure it stays that way before merging
+    const additionalCheck = (accounts) => {
+      accounts.forEach((curr) => {
+        if(curr.address) {
+          const net = curr.network ?? "main"
+        // TODO: Migrate this next
+        // return await validateAddressDomainOnNet(curr.address, domain, net) 
+        }
+      })
+    }
+    validateAndDisplayFields(setLogEntries, accountHeader, parsed.ACCOUNTS, additionalCheck)
+    validateAndDisplayFields(setLogEntries, "Validators:", parsed.VALIDATORS)
+    validateAndDisplayFields(setLogEntries, "Principals:", parsed.PRINCIPALS)
+    validateAndDisplayFields(setLogEntries, "Servers:", parsed.SERVERS)
+    validateAndDisplayFields(setLogEntries, "Currencies:", parsed.CURRENCIES)
+  } else {
 
-  if(parsed.ACCOUNTS) {
-    if (!Array.isArray(parsed.ACCOUNTS)) {
-      updateLogEntry(setLogEntries, {
-        ...tomlAccountLogProps,
+    const filterToSpecificAccount = (entry: AccountFields) => entry.address === addressToVerify
+    const accountFound = validateAndDisplayFields(
+      setLogEntries, 
+      accountHeader, 
+      parsed.ACCOUNTS, 
+      undefined, 
+      filterToSpecificAccount)
+ 
+    const statusLogId = 'account-found-status-log'
+    if(accountFound) {
+      // Then share whether the domain / account pair as a whole has been validated
+      addNewLogEntry(setLogEntries, {
+        message: 'Account has been found in TOML file and validated.',
+        id: statusLogId,
         response: {
           icon: {
-            label: "Wrong type - should be table-array",
-            type: "ERROR",
+            label: "DOMAIN VALIDATED",
+            type: "SUCCESS",
+            check: true,
           }
         }
       })
     } else {
-      const formattedEntries: JSX.Element[] = []
-      parsed.ACCOUNTS.forEach((entry) => {
-        // Display the toml file fields for any matching accounts
-        if(entry.address === addressToVerify) {
-          const fieldNames = Object.keys(entry)
-          const displayedFields: JSX.Element[] = []
-          fieldNames.forEach((fieldName) => {
-            displayedFields.push(
-            <li key={fieldName}>
-              <strong>{fieldName}: </strong>
-              <span className={`fieldName`}>
-                {entry[fieldName]}
-              </span>
-            </li>)
-          })
-          formattedEntries.push((<ul key={`entry-${formattedEntries.length}`}>{displayedFields}</ul>))
+      // validateAndDisplayFields does not display an entry for parsing `Account:` in the toml file if it fails to 
+      // find any matching entries for addressToVerify, so we need to display that error first.
+      addNewLogEntry(setLogEntries, {
+        message: translate("Account:"),
+        id: 'toml-account-entry-log',
+        response: {
+          icon: {
+            label: "NOT FOUND",
+            type: "ERROR"
+          }
         }
       })
-      
-      const statusLogId = 'account-found-status-log'
-      const foundAddressInToml = formattedEntries.length > 0
-      
-      if(foundAddressInToml) {
-        // Display the list of fields in the toml file that correspond to addressToVerify
-        updateLogEntry(setLogEntries, {
-          ...tomlAccountLogProps,
-          response: {
-            followUpContent: (
-              <ol>
-                {formattedEntries}
-              </ol>
-            )
-          }
-        })
 
-        // Then share whether the domain / account pair as a whole has been validated
-        addNewLogEntry(setLogEntries, {
-          message: 'Account has been found in TOML file and validated.',
-          id: statusLogId,
-          response: {
-            icon: {
-              label: "DOMAIN VALIDATED",
-              type: "SUCCESS",
-              check: true,
-            }
+      addNewLogEntry(setLogEntries, {
+        message: "Account not found in TOML file. Domain can not be verified.",
+        id: statusLogId,
+        response: {
+          icon: {
+            label: "VALIDATION FAILED",
+            type: "ERROR",
           }
-        })            
-      } else {
-        // Share that the account couldn't be found in the toml file
-        updateLogEntry(setLogEntries, {
-          ...tomlAccountLogProps,
-          response: {
-            icon: {
-              label: "NOT FOUND",
-              type: "ERROR"
-            }
-          }
-        })
-
-        addNewLogEntry(setLogEntries, {
-          message: "Account not found in TOML file. Domain can not be verified.",
-          id: statusLogId,
-          response: {
-            icon: {
-              label: "VALIDATION FAILED",
-              type: "ERROR",
-            }
-          }
-        })
-      }
+        }
+      })
     }
   }
 }
 
-// TODO: Migrate this one next :)
-// A lot of this is actually the same as above
-async function parseXRPLToml(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-    data, 
-    domain: string) {
-    let parsed: XrplToml
-    let logTOML = makeLogEntry("Parsing TOML data...")
-    try {
-      parsed = TOML.parse(data)
-      logTOML.resolve("SUCCESS").addClass(CLASS_GOOD)
-    } catch(e) {
-      logTOML.resolve(e).addClass(CLASS_BAD)
-      return
+/**
+ * Get an array of HTML lists that can be used to display toml data. 
+ * If no data exists or none matches the filter it will return an empty array instead.
+ * 
+ * @param fields An array of objects to parse into bullet points
+ * @param filter Optional function to filter displayed fields to only ones which return true.
+ */
+function getListEntries(fields: Object[], filter?: Function) {
+  const formattedEntries: JSX.Element[] = []
+  fields.forEach((entry) => {
+    if(!filter || filter(entry)) {
+      const fieldNames = Object.keys(entry)
+      const displayedFields: JSX.Element[] = []
+      fieldNames.forEach((fieldName) => {
+        displayedFields.push(
+        <li key={fieldName}>
+          <strong>{fieldName}: </strong>
+          <span className={`fieldName`}>
+            {entry[fieldName]}
+          </span>
+        </li>)
+      })
+      /* TODO: Potentially need to optionally add mb-3 to this classname for the top button path through the code. */
+      formattedEntries.push((<ul key={`entry-${formattedEntries.length}`}>{displayedFields}</ul>))
     }
-  
-    if (parsed.hasOwnProperty("METADATA")) {
-      const metadata_type = makeLogEntry("Metadata section: ")
-      if (Array.isArray(parsed.METADATA)) {
-        metadata_type.resolve("Wrong type - should be table").addClass(CLASS_BAD)
-      } else {
-        metadata_type.resolve("Found").addClass(CLASS_GOOD)
-  
-        if (parsed.METADATA.modified) {
-          const mod_log = makeLogEntry("Modified date: ")
-          try {
-            mod_log.resolve(parsed.METADATA.modified.toISOString()).addClass(CLASS_GOOD)
-          } catch(e) {
-            mod_log.resolve("INVALID").addClass(CLASS_BAD)
-          }
-        }
-      }
-    }
-  
-    // This version is very similar to the previous listEntries function, but it also has a validate function!
-    async function listEntries(name, list, fields, validate) {
-      let list_wrap = $("<p>"+name+"</p>")
-      let list_ol = $("<ol>").appendTo(list_wrap)
-      for (i=0; i<list.length; i++) {
-        let entry_wrap = $("<li>").appendTo(list_ol)
-        // NEW! - This line is different (class = 'mb-3')
-        let entry_def = $("<ul class='mb-3'>").appendTo(entry_wrap)
-        // END OF NEW
-        let entry = list[i]
-        for (j=0; j<fields.length; j++) {
-          let fieldname = fields[j]
-          if (entry[fieldname] !== undefined) {
-            let field_def = $("<li><strong>"+fieldname+": </strong>").appendTo(entry_def)
-            $(" <span class='"+fieldname+"'>").text(entry[fieldname]).appendTo(field_def)
-          }
-        }
-        // NEW! - Only used one time to say "if the account exists, all good!"
-        if (validate) {
-          validate(entry).then((validated) => {
-            if (validated === true) {
-              entry_def.append('<li class="badge badge-success">Domain Validated <i class="fa fa-check-circle"></i></li>')
-            }
-          })
-        }
-        // END OF NEW
-      }
-      makeLogEntry(list_wrap, true)
-    }
-  
-    if (parsed.ACCOUNTS) {
-      if (!Array.isArray(parsed.ACCOUNTS)) {
-        makeLogEntry("Accounts:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-      } else {
-        parsed.ACCOUNTS.reduce()
-        listEntries("Accounts:", parsed.ACCOUNTS, ACCOUNT_FIELDS, async function(acct) {
-          if (acct.address === undefined) {
-            return undefined
-          }
-          // let net
-          // if (acct.network === undefined) { net = "main" } else { net = acct.network }
-          const net = acct.network ?? "main"
-          // TODO: Migrate this next
-          // return await validateAddressDomainOnNet(acct.address, domain, net) 
-        })
-      }
-    }
-    // TODO: Break this into applications of a single function
-    // Make a log entry - If it's missing the field, error it instantly. Otherwise, list out the details of the field
-    if (parsed.VALIDATORS) {
-      if (!Array.isArray(parsed.VALIDATORS)) {
-        makeLogEntry("Validators:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-      } else {
-        listEntries("Validators:", parsed.VALIDATORS, VALIDATOR_FIELDS)
-      }
-    }
-    if (parsed.PRINCIPALS) {
-      if (!Array.isArray(parsed.PRINCIPALS)) {
-        makeLogEntry("Principals:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-      } else {
-        listEntries("Principals:", parsed.PRINCIPALS, PRINCIPAL_FIELDS)
-      }
-    }
-    if (parsed.SERVERS) {
-      if (!Array.isArray(parsed.SERVERS)) {
-        makeLogEntry("Servers:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-      } else {
-        listEntries("Servers:", parsed.SERVERS, SERVER_FIELDS)
-      }
-    }
-    if (parsed.CURRENCIES) {
-      if (!Array.isArray(parsed.CURRENCIES)) {
-        makeLogEntry("Currencies:").resolve("Wrong type - should be table-array").addClass(CLASS_BAD)
-      } else {
-        listEntries("Currencies:", parsed.CURRENCIES, CURRENCY_FIELDS)
-      }
-    }
-  }
+  })
+  return formattedEntries
+}
 
 async function fetchFile(
     setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     domain: string,
-    // verifyAccount: boolean // Otherwise we verify the validator settings TODO: Clean up 
-    accountToVerify?: string
+    accountToVerify: string,
+    verifyAccount: boolean,
 ) {
     const { translate } = useTranslate()
 
@@ -419,11 +390,10 @@ async function fetchFile(
             },
         }})
         
-        if (accountToVerify){
-            parseXRPLTomlWallet(setLogEntries, data, accountToVerify)
+        if (verifyAccount){
+          parseXRPLToml(setLogEntries, data, accountToVerify)
         } else {
-          // TODO: Next functions to migrate :) - May or may not also need the wallet address we're trying to verify
-          parseXRPLToml(setLogEntries, data, domain)
+          parseXRPLToml(setLogEntries, data, accountToVerify, domain)
         }
     } catch (e) {
         const error = e as AxiosError
@@ -502,7 +472,7 @@ function decodeHexWallet(
         },
     }})
 
-    fetchFile(setAccountLogEntries, decodedDomain, accountToVerify)
+    fetchFile(setAccountLogEntries, decodedDomain, accountToVerify, true)
 }
 
 function fetchWallet(
@@ -680,9 +650,6 @@ export default function TomlChecker() {
                     </div>}
                 </div>
             </section>
-
-            {/* TOML tool */}
-            <script type="application/javascript" src="{{currentpage.prefix}}static/vendor/iarna-toml-parse.js"></script>
         </main>
     </div>
   )
