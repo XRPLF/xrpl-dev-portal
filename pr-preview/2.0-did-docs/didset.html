@@ -328,13 +328,6 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>URI</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Blob</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">The Universal Resource Identifier associated with the DID.</td>
-</tr>
-<tr>
 <td style="text-align: left;"><code>Data</code></td>
 <td style="text-align: left;">String</td>
 <td style="text-align: left;">Blob</td>
@@ -348,10 +341,17 @@
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The DID document associated with the DID.</td>
 </tr>
+<tr>
+<td style="text-align: left;"><code>URI</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Blob</td>
+<td style="text-align: left;">No</td>
+<td style="text-align: left;">The Universal Resource Identifier associated with the DID.</td>
+</tr>
 </tbody>
 </table>
-<p>You must include either <code>URI</code>, <code>Data</code>, or <code>DIDDocument</code> when you submit the <code>DIDSet</code> transaction. If all three fields are missing, the transaction fails.</p>
-<p class="devportal-callout note"><strong>Note:</strong> To delete the <code>URI</code>, <code>Data</code>, or <code>DIDDocument</code> field from an existing DID ledger entry, add the field as an empty string.</p>
+<p>You must include either <code>Data</code>, <code>DIDDocument</code>, or <code>URI</code> when you submit the <code>DIDSet</code> transaction. If all three fields are missing, the transaction fails.</p>
+<p class="devportal-callout note"><strong>Note:</strong> To delete the <code>Data</code>, <code>DIDDocument</code>, or <code>URI</code> field from an existing DID ledger entry, add the field as an empty string.</p>
 <h2 id="error-cases">Error Cases<a aria-hidden="true" class="hover_anchor" href="#error-cases"><i class="fa fa-link"></i></a></h2>
 <p>Besides errors that can occur for all transactions, DIDSet transactions can result in the following <a href="transaction-results.html">transaction result codes</a>:</p>
 <table class="table-responsive">
@@ -364,11 +364,11 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>tecEMPTY_DID</code></td>
-<td style="text-align: left;">The transaction will create an empty DID ledger entry. Check that your updates don't remove the <code>URI</code>, <code>Data</code>, and <code>DIDDocument</code> fields.</td>
+<td style="text-align: left;">The transaction will create an empty DID ledger entry. Check that your updates don't remove the <code>Data</code>, <code>DIDDocument</code>, and <code>URI</code> fields.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>temEMPTY_DID</code></td>
-<td style="text-align: left;">The transaction is malformed and missing any DID information. Include either the <code>URI</code>, <code>Data</code>, or <code>DIDDocument</code> fields.</td>
+<td style="text-align: left;">The transaction is malformed and missing any DID information. Include either the <code>Data</code>, <code>DIDDocument</code>, or <code>URI</code> fields.</td>
 </tr>
 </tbody>
 </table>
