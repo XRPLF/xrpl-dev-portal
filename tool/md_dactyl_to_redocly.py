@@ -272,9 +272,7 @@ def main():
         for replacer in regex_todos:
             ftext2 = replacer.replace_all(ftext2)
 
-
-        # Temporarily commented out because of a Redocly bug that causes it to hang
-        # ftext2 = convert_category_page(ftext2)
+        ftext2 = convert_category_page(ftext2)
 
         if ftext2 != ftext:
             #print("performing syntax conversion in", fname)

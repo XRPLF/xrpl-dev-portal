@@ -27,11 +27,9 @@ export function indexPages() {
         const childRoutes = childrenPaths.map(fsPath => actions.getRouteByFsPath(fsPath));
         const childRoutesData = await Promise.all(
           childRoutes.map(async route => {
-            const {
-              parsed: { data },
-            } = contentProvider.loadContent(route.fsPath, 'frontmatter');
+            const { parsed } = contentProvider.loadContent(route.fsPath, 'frontmatter');
             return {
-              ...data,
+              ...parsed?.data,
               slug: route.slug,
               title: await route.getNavText(),
             };
