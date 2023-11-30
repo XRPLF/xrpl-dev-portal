@@ -404,7 +404,8 @@ async function parseXRPLToml(
  */
 async function getListEntries(fields: Object[], filter?: Function, domainToVerify?: string) {
   const formattedEntries: JSX.Element[] = []
-  fields.forEach(async (entry) => {
+  for(let i = 0; i < fields.length; i++) {
+    const entry = fields[i]
     if(!filter || filter(entry)) {
       const fieldNames = Object.keys(entry)
       const displayedFields: JSX.Element[] = []
@@ -417,10 +418,8 @@ async function getListEntries(fields: Object[], filter?: Function, domainToVerif
           </span>
         </li>)
       })
-      /* TODO: Potentially need to optionally add mb-3 to this classname for the top button path through the code. */
-      const key = `entry-${formattedEntries.length}`
 
-      // TODO: Figure out why this removes the `accounts` section when used here. (Specifically the `await validateAddres... causes it maybe because promise takes time to resolve?`)
+      const key = `entry-${formattedEntries.length}`
       if(domainToVerify) {
         const accountEntry = entry as AccountFields
         if(accountEntry.address) {
@@ -431,11 +430,9 @@ async function getListEntries(fields: Object[], filter?: Function, domainToVerif
           }
         } 
       }
-
-      formattedEntries.push((<ul key={key}>{displayedFields}</ul>))
-
+      formattedEntries.push((<ul className={clsx(domainToVerify && 'mb-3')} key={key}>{displayedFields}</ul>))
     }
-  })
+  }
   return formattedEntries
 }
 
@@ -454,8 +451,6 @@ async function fetchFile(
         id: checkUrlId,
     }
     addNewLogEntry(setLogEntries, logEntry)
-    // TODO: For the straight to domain button, call this function (then delete this line, originally this is how that value was accessed)
-    // const urlDomain = $('#domain').val()
 
     try {
         const response = await axios.get(url)
