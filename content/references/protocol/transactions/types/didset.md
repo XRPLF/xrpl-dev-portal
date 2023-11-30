@@ -47,8 +47,8 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|
-| `tecEMPTY_DID` | The DID doesn't have an associated `URI`, `Data`, or `DIDDocument`. Include at least one of these fields. |
-| `temEMPTY_DID` | The DID doesn't have an associated `URI`, `Data`, or `DIDDocument`. Include at least one of these fields. |
+| `tecEMPTY_DID`      | The transaction will create an empty DID ledger entry. Check that your updates don't remove the `URI`, `Data`, and `DIDDocument` fields. |
+| `temEMPTY_DID`      | The transaction is malformed and missing any DID information. Include either the `URI`, `Data`, or `DIDDocument` fields. |
 
 
 <!--{# common link defs #}-->

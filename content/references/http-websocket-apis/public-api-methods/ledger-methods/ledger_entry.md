@@ -29,18 +29,24 @@ The `generator` and `ledger` parameters are deprecated and may be removed withou
 
 In addition to the general fields above, you must specify *exactly 1* of the following fields to indicate what type of entry to retrieve, along with its sub-fields as appropriate. The valid fields are:
 
-- [`index`](#get-ledger-object-by-id)
-- [`account_root`](#get-accountroot-object)
-- [`amm`](#get-amm-object) :not_enabled:
-- [`directory`](#get-directorynode-object)
-- [`offer`](#get-offer-object)
-- [`ripple_state`](#get-ripplestate-object)
-- [`check`](#get-check-object)
-- [`escrow`](#get-escrow-object)
-- [`payment_channel`](#get-paychannel-object)
-- [`deposit_preauth`](#get-depositpreauth-object)
-- [`ticket`](#get-ticket-object)
-- [`nft_page`](#get-nft-page)
+- [ledger\_entry](#ledger_entry)
+  - [Request Format](#request-format)
+    - [General Fields](#general-fields)
+    - [Get Ledger Object by ID](#get-ledger-object-by-id)
+    - [Get AccountRoot Object](#get-accountroot-object)
+    - [Get AMM Object](#get-amm-object)
+    - [Get DID Object](#get-did-object)
+    - [Get DirectoryNode Object](#get-directorynode-object)
+    - [Get Offer Object](#get-offer-object)
+    - [Get RippleState Object](#get-ripplestate-object)
+    - [Get Check Object](#get-check-object)
+    - [Get Escrow Object](#get-escrow-object)
+    - [Get PayChannel Object](#get-paychannel-object)
+    - [Get DepositPreauth Object](#get-depositpreauth-object)
+    - [Get Ticket Object](#get-ticket-object)
+    - [Get NFT Page](#get-nft-page)
+  - [Response Format](#response-format)
+  - [Possible Errors](#possible-errors)
 
 **Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
 
@@ -209,6 +215,45 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 <!-- MULTICODE_BLOCK_END -->
 
 [Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+
+
+### Get DID Object
+
+_(Requires the [DID amendment][] :not_enabled:)_
+
+Retrieve a Decentralized Identifier (DID) object from the ledger.
+
+| Field   | Type   | Description                                               |
+|:--------|:-------|:----------------------------------------------------------|
+| `did`   | TBD    | TBD                                                       |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+
+}
+```
+
+*Commandline*
+
+```sh
+
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[Try it! >](websocket-api-tool.html#ledger_entry-did)
 
 
 
