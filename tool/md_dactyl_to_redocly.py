@@ -219,6 +219,41 @@ class TabsReplacer(RegexReplacer):
         return repl_string
 regex_todos.append(TabsReplacer())
 
+callout_mapping = {
+    # lowercase callout name → admonition type
+    "tip": "success",
+    "note": "info",
+    "caution": "warning",
+    "warning": "danger",
+    "ヒント": "success",
+    "注記": "info",
+    "注意": "warning",
+    "警告": "danger",
+}
+class BQCalloutReplacer(RegexReplacer):
+    regex = re.compile(r'^\> [*_]{1,2}(?P<label>Tip|Note|Caution|Warning|ヒント|注記|注意|警告):?[*_]{1,2} (?P<content>(.*)(\n\> ?.*)*)$', re.MULTILINE|re.I)
+    @staticmethod
+    def replace(m: re.Match):
+        admontype = callout_mapping[m.group("label").lower()]
+        bq_start = re.compile(r'^\> |^\>$', re.MULTILINE)
+        content = bq_start.sub('', m.group("content"))
+        repl_string = '{% admonition type="'+admontype+'" name="'+m.group("label")+'" %}\n'+content+'\n{% /admonition %}'
+        return repl_string
+regex_todos.append(BQCalloutReplacer())
+
+class OnelineCalloutReplacer(RegexReplacer):
+    regex = re.compile(r'^(?P<indentation>\s*)[*_]{1,2}(?P<label>Tip|Note|Caution|Warning|ヒント|注記|注意|警告):?[*_]{1,2} (?P<content>.*)$', re.I)
+    @staticmethod
+    def replace(m: re.Match):
+        admontype = callout_mapping[m.group("label").lower()]
+        if m.group("indentation"):
+            repl_string = m.group("indentation")+'{% admonition type="'+admontype+'" name="'+m.group("label")+'" %}'+m.group("content")+'{% /admonition %}'
+        else:
+            repl_string = '{% admonition type="'+admontype+'" name="'+m.group("label")+'" %}\n'+m.group("content")+'\n{% /admonition %}'
+        return repl_string
+regex_todos.append(OnelineCalloutReplacer())
+
+
 category_regex = re.compile(r'^#?template: *pagetype-category\.html\.jinja\n', re.MULTILINE)
 def convert_category_page(ftext):
     if not category_regex.search(ftext):
