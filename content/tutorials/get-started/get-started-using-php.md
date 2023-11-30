@@ -30,8 +30,8 @@ In this tutorial, you'll learn:
 
 ## Requirements
 
-* `XRPL_PHP` requires PHP 8.1 and the PHP extension  [GMP](http://php.net/manual/en/book.gmp.php).
-* Recommended for increased performance is the PHP extensions [BCMATH](https://www.php.net/manual/de/book.bc.php)
+* `XRPL_PHP` requires PHP 8.1 and the PHP extension [GMP](http://php.net/manual/en/book.gmp.php).
+* The PHP extension [BCMATH](https://www.php.net/manual/de/book.bc.php) is recommended for increased performance.
  
 ## Installation
 
