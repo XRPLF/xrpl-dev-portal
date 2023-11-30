@@ -275,6 +275,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amendments-in-development">Amendments in Development</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#obsolete-amendments">Obsolete Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#details-about-known-amendments">Details about Known Amendments</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#did">DID</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#amm">AMM</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checks">Checks</a></li>
@@ -374,6 +375,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><a href="#did">DID</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2023/rippled-2.0.0.html" target="_blank" title="Open for Voting: 2023-12-04"><img alt="Open for Voting: 2023-12-04" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2023--12--04-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
 <tr>
 <td style="text-align: left;"><a href="#amm">AMM</a></td>
 <td style="text-align: left;">v1.12.0</td>
@@ -740,6 +746,41 @@
 </tbody>
 </table>
 <h2 id="details-about-known-amendments">Details about Known Amendments<a aria-hidden="true" class="hover_anchor" href="#details-about-known-amendments"><i class="fa fa-link"></i></a></h2>
+<h3 id="did">DID<a aria-hidden="true" class="hover_anchor" href="#did"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">TBD</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds Decentralized Identifier (DID) functionality to the ledger that conforms to the <a class="external-link" href="https://www.w3.org/press-releases/2022/did-rec/" target="_blank">World Wide Web Consortium <i aria-hidden="true" class="fa fa-external-link"></i></a> standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.</p>
+<p>Adds new transactions:</p>
+<ul>
+<li>DIDDelete - Delete the DID associated with your XRPL account.</li>
+<li>DIDSet - Create a new DID or update an existing one.</li>
+</ul>
+<p>Adds a new <code>DID</code> ledger entry type.</p>
+<p>Adds several new transaction result codes.</p>
 <h3 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
