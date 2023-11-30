@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-09-22 20:20+0000\n"
+"POT-Creation-Date: 2023-09-27 01:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -929,7 +929,7 @@ msgid "See Upcoming Events"
 msgstr ""
 
 #: template/page-funding.html.jinja:67 template/page-funding.html.jinja:156
-#: template/page-funding.html.jinja:239 template/page-funding.html.jinja:316
+#: template/page-funding.html.jinja:239
 msgid "Best for"
 msgstr ""
 
@@ -940,7 +940,6 @@ msgstr ""
 #: template/page-funding.html.jinja:75 template/page-funding.html.jinja:104
 #: template/page-funding.html.jinja:164 template/page-funding.html.jinja:192
 #: template/page-funding.html.jinja:247 template/page-funding.html.jinja:276
-#: template/page-funding.html.jinja:324 template/page-funding.html.jinja:352
 msgid "Required"
 msgstr ""
 
@@ -949,7 +948,7 @@ msgid "Some coding experience"
 msgstr ""
 
 #: template/page-funding.html.jinja:82 template/page-funding.html.jinja:171
-#: template/page-funding.html.jinja:254 template/page-funding.html.jinja:331
+#: template/page-funding.html.jinja:254
 msgid "Level"
 msgstr ""
 
@@ -960,7 +959,6 @@ msgstr ""
 #: template/page-funding.html.jinja:91 template/page-funding.html.jinja:112
 #: template/page-funding.html.jinja:179 template/page-funding.html.jinja:200
 #: template/page-funding.html.jinja:263 template/page-funding.html.jinja:284
-#: template/page-funding.html.jinja:340 template/page-funding.html.jinja:360
 msgid "Funding Levels"
 msgstr ""
 
@@ -1058,42 +1056,6 @@ msgstr ""
 
 #: template/page-funding.html.jinja:264 template/page-funding.html.jinja:285
 msgid "$50,000 (grant) + pitch for venture funding"
-msgstr ""
-
-#: template/page-funding.html.jinja:305
-msgid "XRPL Bounties"
-msgstr ""
-
-#: template/page-funding.html.jinja:306
-msgid "Go Deep"
-msgstr ""
-
-#: template/page-funding.html.jinja:308
-msgid ""
-"Bounties are awards for developing software and integrations that enable "
-"and improve specific use cases for the XRP Ledger."
-msgstr ""
-
-#: template/page-funding.html.jinja:317
-msgid "Software developers and teams"
-msgstr ""
-
-#: template/page-funding.html.jinja:325
-msgid ""
-"Coding experience <span style=\"color: #7919FF;\">&bull;</span> "
-"Specialized skills (depending on the bounty)"
-msgstr ""
-
-#: template/page-funding.html.jinja:332 template/page-funding.html.jinja:353
-msgid "Intermediate to advanced (prior XRPL experience not required)"
-msgstr ""
-
-#: template/page-funding.html.jinja:341 template/page-funding.html.jinja:361
-msgid "$500 - $100,000 per milestone"
-msgstr ""
-
-#: template/page-funding.html.jinja:368
-msgid "Visit XRPL Bounties"
 msgstr ""
 
 #: template/page-history.html.jinja:28

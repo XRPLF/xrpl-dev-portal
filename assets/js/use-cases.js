@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
     //show these featured on load. 
     const show_cats_arr = ["infrastructure", "developer_tooling"]
 

@@ -1,0 +1,28 @@
+{
+  "result": {
+    "ledger_hash": "4E2F27F997943EAF522FB0D6AE4B25B1F54FDDE531E0469EF436B18391CFC7D9",
+    "ledger_index": 82681548,
+    "validated": true,
+    "ledger": {
+      "account_hash": "608FCCDB3261FEF57B6EB76C89E3FE11B7C8D198DF443831BABF33D08FC8C12A",
+      "close_flags": 0,
+      "close_time": 748569290,
+      "close_time_human": "2023-Sep-20 23:54:50.000000000 UTC",
+      "close_time_resolution": 10,
+      "closed": true,
+      "ledger_hash": "4E2F27F997943EAF522FB0D6AE4B25B1F54FDDE531E0469EF436B18391CFC7D9",
+      "ledger_index": "82681548",
+      "parent_close_time": 748569282,
+      "parent_hash": "DCECE701AE72CD9E3C1161EC6C98048DFF5797045CD49AD6038BE6D4610EED93",
+      "total_coins": "99988406204467365",
+      "transaction_hash": "95491C538DC25D4980AADC5E2ABAB90E1D4E20A02E772EA6A1C514BFC19987E4"
+    },
+    "status": "success"
+  },
+  "warnings": [
+    {
+      "id": 2001,
+      "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+    }
+  ]
+}

@@ -41,6 +41,10 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 ## Prepare a Brokered Transaction
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GemQ-t7g9fo?si=zVTLXFg3v-XX4Rf_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
 1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
 	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
 	2. Set the **Flags** field to _1_.

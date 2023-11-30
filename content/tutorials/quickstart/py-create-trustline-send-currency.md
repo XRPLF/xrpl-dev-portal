@@ -39,6 +39,11 @@ Open the Quickstart window and get accounts:
 
 ## Create Trust Line
 
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6KWP0PV6J8Y?si=SSxFGrvfTo6pOPLD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+
+
 To create a trust line between accounts:
 
 1. Enter a [currency code](https://www.iban.com/currency-codes) in the **Currency** field.

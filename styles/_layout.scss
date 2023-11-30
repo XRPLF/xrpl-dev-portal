@@ -117,6 +117,17 @@ section {
     min-width: 100%;
   }
 
+  &.card-grid-4xN {
+    /* 4 equal columns and any number of auto-sized rows. */
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+    
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+
   &.card-grid-3xN {
     /* 3 equal columns and any number of auto-sized rows. */
     grid-auto-rows: auto;

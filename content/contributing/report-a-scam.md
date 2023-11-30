@@ -3,6 +3,7 @@ html: report-a-scam.html
 parent: contribute.html
 ---
 # Report a Scam
+
 In an evolving industry where trust and security are critical, scams continue to impede progress in crypto and blockchain. Individuals and teams across the XRP Ledger community, like the Xrplorer forensics team, help mitigate these scammers by providing free tools to report scams.
 
 ## Take Action
@@ -12,7 +13,7 @@ If you think you've been scammed, make sure to collect as much information as yo
 
 1. Submit the scammer's wallet address to [Xrplorer's forensics team](https://xrplorer.com/forensics/submit).
 
-     This helps to flag accounts used for illicit activity and include them in additional monitoring, auto-tracing, and warnings for other users, wallets, and exchanges. 
+     This helps to flag accounts used for illicit activity and include them in additional monitoring, auto-tracing, and warnings for other users, wallets, and exchanges.
 
 2. Report your case to your local law enforcement. If the scammer is caught, you may be able to get your money back.
 

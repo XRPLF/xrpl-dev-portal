@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: XRPL.org v0.0\n"
 "Report-Msgid-Bugs-To: docs@ripple.com\n"
-"POT-Creation-Date: 2023-09-22 20:20+0000\n"
+"POT-Creation-Date: 2023-09-27 01:30+0000\n"
 "PO-Revision-Date: 2020-05-12 15:25-0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -998,7 +998,7 @@ msgid "See Upcoming Events"
 msgstr "今後のイベントを見る"
 
 #: template/page-funding.html.jinja:67 template/page-funding.html.jinja:156
-#: template/page-funding.html.jinja:239 template/page-funding.html.jinja:316
+#: template/page-funding.html.jinja:239
 #, fuzzy
 msgid "Best for"
 msgstr "こんな方に最適"
@@ -1010,7 +1010,6 @@ msgstr "XRP Ledger上のソフトウェア開発者やXRP Ledger上で直接開�
 #: template/page-funding.html.jinja:75 template/page-funding.html.jinja:104
 #: template/page-funding.html.jinja:164 template/page-funding.html.jinja:192
 #: template/page-funding.html.jinja:247 template/page-funding.html.jinja:276
-#: template/page-funding.html.jinja:324 template/page-funding.html.jinja:352
 msgid "Required"
 msgstr "必須要件"
 
@@ -1019,7 +1018,7 @@ msgid "Some coding experience"
 msgstr "コーディング経験"
 
 #: template/page-funding.html.jinja:82 template/page-funding.html.jinja:171
-#: template/page-funding.html.jinja:254 template/page-funding.html.jinja:331
+#: template/page-funding.html.jinja:254
 msgid "Level"
 msgstr "レベル"
 
@@ -1030,7 +1029,6 @@ msgstr "XRPLの初級開発者から上級開発者まで"
 #: template/page-funding.html.jinja:91 template/page-funding.html.jinja:112
 #: template/page-funding.html.jinja:179 template/page-funding.html.jinja:200
 #: template/page-funding.html.jinja:263 template/page-funding.html.jinja:284
-#: template/page-funding.html.jinja:340 template/page-funding.html.jinja:360
 #, fuzzy
 msgid "Funding Levels"
 msgstr "資金調達の規模"
@@ -1146,43 +1144,6 @@ msgstr ""
 #: template/page-funding.html.jinja:264 template/page-funding.html.jinja:285
 msgid "$50,000 (grant) + pitch for venture funding"
 msgstr "$50,000(助成金)＋ベンチャー資金へのピッチ"
-
-#: template/page-funding.html.jinja:305
-msgid "XRPL Bounties"
-msgstr ""
-
-#: template/page-funding.html.jinja:306
-msgid "Go Deep"
-msgstr "より深く"
-
-#: template/page-funding.html.jinja:308
-msgid ""
-"Bounties are awards for developing software and integrations that enable "
-"and improve specific use cases for the XRP Ledger."
-msgstr "Bounties は、XRP Ledger の特定のユースケースを可能にし、改善するソフトウェアや統合を開発するための報奨金です。"
-
-#: template/page-funding.html.jinja:317
-#, fuzzy
-msgid "Software developers and teams"
-msgstr "ソフトウェア開発者や開発チーム"
-
-#: template/page-funding.html.jinja:325
-msgid ""
-"Coding experience <span style=\"color: #7919FF;\">&bull;</span> "
-"Specialized skills (depending on the bounty)"
-msgstr "コーディング経験 <span style=\"color:#7919FF;\">&bull;</span>専門スキル(報奨金による)"
-
-#: template/page-funding.html.jinja:332 template/page-funding.html.jinja:353
-msgid "Intermediate to advanced (prior XRPL experience not required)"
-msgstr "中級開発者から上級開発者(XRPLの経験は必要ありません)"
-
-#: template/page-funding.html.jinja:341 template/page-funding.html.jinja:361
-msgid "$500 - $100,000 per milestone"
-msgstr "マイルストーンごとに$500～$100,000"
-
-#: template/page-funding.html.jinja:368
-msgid "Visit XRPL Bounties"
-msgstr "XRPL Bountiesを見る"
 
 #: template/page-history.html.jinja:28
 msgid "Provide a Better Alternative to Bitcoin"
@@ -3250,10 +3211,9 @@ msgid ""
 "project, explore the XRPL now and consider applying for funding on your "
 "next <a href='developer-funding.html'>blockchain project</a>."
 msgstr ""
-"XRP "
-"Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。"
-"もしあなたが次の大きな<a href='developer-funding.html'>ブロックチェーン・プロジェクト</a>"
-"を始める準備ができているなら、今すぐXRPLを試し、XRPL開発者向け資金提供プログラムへの応募を検討しましょう。"
+"XRP Ledgerのイノベーションは、皆さんのような開発者が共有するコミュニティーの経験を大切にしています。もしあなたが次の大きな<a href"
+"='developer-"
+"funding.html'>ブロックチェーン・プロジェクト</a>を始める準備ができているなら、今すぐXRPLを試し、XRPL開発者向け資金提供プログラムへの応募を検討しましょう。"
 
 #: template/page-xrpl-overview.html.jinja:169
 #, fuzzy
@@ -5083,4 +5043,35 @@ msgstr "目次"
 #~ "XRP "
 #~ "Ledger上でNFTを作成することを検討しているクリエイターで、技術的な経験がない場合は、Ripple社のCreator "
 #~ "Fundをチェックしてみてください。"
+
+#~ msgid "XRPL Bounties"
+#~ msgstr ""
+
+#~ msgid "Go Deep"
+#~ msgstr "より深く"
+
+#~ msgid ""
+#~ "Bounties are awards for developing "
+#~ "software and integrations that enable "
+#~ "and improve specific use cases for "
+#~ "the XRP Ledger."
+#~ msgstr "Bounties は、XRP Ledger の特定のユースケースを可能にし、改善するソフトウェアや統合を開発するための報奨金です。"
+
+#~ msgid "Software developers and teams"
+#~ msgstr "ソフトウェア開発者や開発チーム"
+
+#~ msgid ""
+#~ "Coding experience <span style=\"color: "
+#~ "#7919FF;\">&bull;</span> Specialized skills "
+#~ "(depending on the bounty)"
+#~ msgstr "コーディング経験 <span style=\"color:#7919FF;\">&bull;</span>専門スキル(報奨金による)"
+
+#~ msgid "Intermediate to advanced (prior XRPL experience not required)"
+#~ msgstr "中級開発者から上級開発者(XRPLの経験は必要ありません)"
+
+#~ msgid "$500 - $100,000 per milestone"
+#~ msgstr "マイルストーンごとに$500～$100,000"
+
+#~ msgid "Visit XRPL Bounties"
+#~ msgstr "XRPL Bountiesを見る"
 

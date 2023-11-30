@@ -87,9 +87,9 @@ The following is a list of [amendments](amendments.html) that are being develope
 
 **Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
 
-## Vetoed or Obsolete Amendments
+## Obsolete Amendments
 
-The following is a list of known [amendments](amendments.html) that have been vetoed and removed in a previous version, or are obsolete and have been marked for removal.
+The following is a list of known [amendments](amendments.html) that have been removed in a previous version, or are obsolete and have been marked for removal.
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
@@ -97,10 +97,10 @@ The following is a list of known [amendments](amendments.html) that have been ve
 | [fixNFTokenDirV1][]               | v1.9.1     | [Obsolete: To Be Removed]( "BADGE_RED") |
 | [NonFungibleTokensV1][]           | v1.9.0     | [Obsolete: To Be Removed]( "BADGE_RED") |
 | [CryptoConditionsSuite][]         | v0.60.0    | [Obsolete: To Be Removed]( "BADGE_RED") |
-| [SHAMapV2][]                      | v0.32.1    | [Vetoed: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
-| [FlowV2][]                        | v0.32.1    | [Vetoed: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
-| [SusPay][]                        | v0.31.0    | [Vetoed: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
-| [Tickets][]                       | v0.30.1    | [Vetoed: Removed in v0.90.0](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
+| [SHAMapV2][]                      | v0.32.1    | [Obsolete: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
+| [FlowV2][]                        | v0.32.1    | [Obsolete: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
+| [SusPay][]                        | v0.31.0    | [Obsolete: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
+| [Tickets][]                       | v0.30.1    | [Obsolete: Removed in v0.90.0](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
 
 
 ## Details about Known Amendments
@@ -687,6 +687,8 @@ Amendment `fixNFTokenRemint` would change the way NFT sequence numbers are const
 - Compute the sequence of a newly minted NFT as `FirstNFTSequence` + `MintedNFTokens` (after which, `MintedNFTokens` increments by 1).
 
 The amendment also introduces a new account deletion restriction. An account can only be deleted if `FirstNFTSequence` + `MintedNFTokens` + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.
+
+**Warning:** This is a **breaking change** for projects & tools relying on their own locally computed NFTokenID for minted tokens. If you have code to calculate NFTokenIDs, you must update it to match the new fomula. For an example of how to do so with backwards compatibility, see this [well known reference implementation in JavaScript](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).
 
 
 ### fixNonFungibleTokensV1_2
