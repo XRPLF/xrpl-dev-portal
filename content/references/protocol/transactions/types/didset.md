@@ -32,13 +32,13 @@ Creates a new [DID ledger entry](did.html) or updates the fields of an existing 
 
 | Field         | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------|:----------|:------------------|:----------|:------------|
-| `URI`         | String    | Blob              | No        | The Universal Resource Identifier associated with the DID. |
 | `Data`        | String    | Blob              | No        | The public attestations of identity credentials associated with the DID. |
 | `DIDDocument` | String    | Blob              | No        | The DID document associated with the DID. |
+| `URI`         | String    | Blob              | No        | The Universal Resource Identifier associated with the DID. |
 
-You must include either `URI`, `Data`, or `DIDDocument` when you submit the `DIDSet` transaction. If all three fields are missing, the transaction fails.
+You must include either `Data`, `DIDDocument`, or `URI` when you submit the `DIDSet` transaction. If all three fields are missing, the transaction fails.
 
-**Note:** To delete the `URI`, `Data`, or `DIDDocument` field from an existing DID ledger entry, add the field as an empty string.
+**Note:** To delete the `Data`, `DIDDocument`, or `URI` field from an existing DID ledger entry, add the field as an empty string.
 
 
 ## Error Cases
@@ -47,8 +47,8 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|
-| `tecEMPTY_DID`      | The transaction will create an empty DID ledger entry. Check that your updates don't remove the `URI`, `Data`, and `DIDDocument` fields. |
-| `temEMPTY_DID`      | The transaction is malformed and missing any DID information. Include either the `URI`, `Data`, or `DIDDocument` fields. |
+| `tecEMPTY_DID`      | The transaction will create an empty DID ledger entry. Check that your updates don't remove the `Data`, `DIDDocument`, and `URI` fields. |
+| `temEMPTY_DID`      | The transaction is malformed and missing any DID information. Include either the `Data`, `DIDDocument`, or `URI` fields. |
 
 
 <!--{# common link defs #}-->
