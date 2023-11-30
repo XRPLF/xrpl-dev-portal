@@ -1059,6 +1059,9 @@ pages:
     -   md: concepts/tokens/nft-storage.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/nft-storage.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
@@ -1117,10 +1120,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: concepts/tokens/nft-apis.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/nft-apis.md"
+        targets:
             - ja
 
         # TODO: maybe fungible tokens should be in their own folder?
@@ -3298,16 +3303,20 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md"
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
@@ -3437,16 +3446,21 @@ pages:
             - en
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md"
+        targets:
             - ja
 
         # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/utility-methods/index.md
