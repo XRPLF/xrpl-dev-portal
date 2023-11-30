@@ -169,7 +169,7 @@ XRP Ledgerネットワークの各サーバーは、ネットワークのすべ�
 
 ##### Amazon Web Services
 
-Amazon Web Services（AWS）は、人気のある仮想化ホスト環境です。AWSで`rippled`を実行することはできますが、RippleではElastic Block Storage（EBS）の使用はお勧めしません。Elastic Block Storageの最大IOPS数（5,000）は、非常に高額であるにもかかわらず、`rippled`の最大負荷には不十分です。
+Amazon Web Services（AWS）は、人気のある仮想化ホスト環境です。AWSで`rippled`を実行することはできますが、Elastic Block Storage（EBS）は使用しないでください。詳しくは[システム要件](system-requirements.html)をご覧ください。
 
 AWSインスタンスストア（`ephemeral`ストレージ）では適切なパフォーマンスが提供されます。しかし、インスタンスを開始/停止するときなど、いくつかの状況でデータが失われる可能性があります。しかし、個々のXRP Ledgerサーバーは、通常、失われたレジャーの履歴を他サーバーから再取得することができるので、これは許容範囲内でしょう。設定内容は、より信頼性の高いストレージに保存する必要があります。
 
