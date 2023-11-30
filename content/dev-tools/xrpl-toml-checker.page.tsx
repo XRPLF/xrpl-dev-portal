@@ -4,6 +4,7 @@ import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
 // TODO: Double check if axios is the best option to use for basic html requests
 import axios, { type AxiosError } from 'axios'
+import { type Client } from 'xrpl'
 import { parse } from 'smol-toml'
 
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
@@ -111,16 +112,16 @@ function ResultBullet({
  * @param headerText The initial message to include as a header for the list.
  * @param fields A set of fields to parse and display. May be undefined, but if so, 
  *               this function will simply return false. Simplifies typing.
- * @param additionalCheck A function to verify something about fields before displaying the list of fields.
+ * @param additionalCheck A function to verify something about fields before displaying the list of fields. Must return true / false.
  * @param filterDisplayedFieldsTo Limits the displayed fields to ones which match the predicate.
  * @returns True if displayed any fields (after applying any given filters)
  */
-function validateAndDisplayFields(
+async function validateAndDisplayFields(
   setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
   headerText: string, 
   fields?: Object[],
-  additionalCheck?: Function,
-  filterDisplayedFieldsTo?: Function): boolean {
+  domainToVerify?: string,
+  filterDisplayedFieldsTo?: Function): Promise<boolean> {
   
   // If there's no data, do nothing
   if(!fields) {
@@ -129,10 +130,8 @@ function validateAndDisplayFields(
 
   // Otherwise display all relevant data in the toml file for these field
   if(Array.isArray(fields)) {
-    if(additionalCheck) {
-      additionalCheck(fields)
-    }
-    const formattedEntries = getListEntries(fields, filterDisplayedFieldsTo)
+    let icon = undefined;
+    const formattedEntries = await getListEntries(fields, filterDisplayedFieldsTo, domainToVerify)
     if(formattedEntries.length > 0) {
       addNewLogEntry(setLogEntries, 
         {
@@ -143,17 +142,14 @@ function validateAndDisplayFields(
               <ol>
                 {formattedEntries}
               </ol>
-            )
+            ),
+            icon: icon
           }
         }
       )
-
       return true
-    
     } else {
-      
       return false
-    
     }
   } else {
     // Invalid toml data
@@ -173,6 +169,83 @@ function validateAndDisplayFields(
   }
 }
 
+// Decode a hexadecimal string into a regular string, assuming 8-bit characters.
+// Not proper unicode decoding, but it'll work for domains which are supposed
+// to be a subset of ASCII anyway.
+function decodeHex(hex) {
+  let str = '';
+  for (let i = 0; i < hex.length; i += 2) {
+    str += String.fromCharCode(parseInt(hex.substr(i, 2), 16))
+  }
+  return str
+}
+
+function getWsUrlForNetwork(net: string) {
+  let wsNetworkUrl: string
+  if (net === "main") {
+    wsNetworkUrl = 'wss://s1.ripple.com:51233'
+  } else if (net == "testnet") {
+    wsNetworkUrl = 'wss://s.altnet.rippletest.net:51233'
+  } else if (net === "devnet") {
+    wsNetworkUrl = 'wss://s.devnet.rippletest.net:51233/'
+  } else if (net === "xahau") {
+    wsNetworkUrl = 'wss://xahau-test.net:51233'
+  } else {
+    wsNetworkUrl = undefined
+  }
+  return wsNetworkUrl
+}
+async function validateAddressDomainOnNet(addressToVerify: string, domain: string, net: string) {
+  if (!domain) { return undefined } // Can't validate an empty domain value
+  
+  const wsNetworkUrl = getWsUrlForNetwork(net)
+  if(!wsNetworkUrl) {
+    console.error(`The XRPL TOML Checker does not currently support verifying addresses on ${net}. 
+      Please open an issue to add support for this network.`)
+    return undefined
+  }
+  // @ts-expect-error -- xrpl is imported as a script once the page loads
+  const api: Client = new xrpl.Client(wsNetworkUrl)
+  await api.connect()
+
+  let accountInfoResponse
+  try {
+    accountInfoResponse = await api.request({
+      "command": "account_info",
+      "account": addressToVerify
+    })
+  } catch(e) {
+    console.warn(`failed to look up address ${addressToVerify} on ${net} network"`, e)
+    return undefined
+  } finally {
+    await api.disconnect()
+  }
+
+  if (accountInfoResponse.result.account_data.Domain === undefined) {
+    console.info(`Address ${addressToVerify} has no Domain defined on-ledger`)
+    return undefined
+  }
+
+  let domain_decoded
+  try {
+    domain_decoded = decodeHex(accountInfoResponse.result.account_data.Domain)
+  } catch(e) {
+    console.warn("error decoding domain value", accountInfoResponse.result.account_data.Domain, e)
+    return undefined
+  }
+
+  if(domain_decoded) {
+    const doesDomainMatch = domain_decoded === domain
+    if(!doesDomainMatch) {
+      console.debug(addressToVerify, ": Domain mismatch ("+domain_decoded+" vs. "+domain+")")
+    }
+    return doesDomainMatch
+  } else {
+    console.debug(addressToVerify, ": Domain is undefined in settings")
+    return undefined
+  }
+}
+
 /**
  * Read in a toml file and verify it has the proper fields, then display those fields in the logs.
  * 
@@ -185,7 +258,7 @@ function validateAndDisplayFields(
 async function parseXRPLToml(
   setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
   tomlData,
-  addressToVerify: string,
+  addressToVerify?: string,
   domain?: string) {
   const { translate } = useTranslate()
 
@@ -195,7 +268,7 @@ async function parseXRPLToml(
       id: parsingTomlId,
   }
   addNewLogEntry(setLogEntries, parsingTomlLogEntry)
-  let parsed
+  let parsed: XrplToml
   try {
     parsed = parse(tomlData)
     updateLogEntry(setLogEntries, {...parsingTomlLogEntry, response: {
@@ -223,14 +296,14 @@ async function parseXRPLToml(
     if (Array.isArray(parsed.METADATA)) {
       updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
           icon: {
-            label: "Wrong type - should be table",
+            label: "WRONG TYPE - SHOULD BE TABLE",
             type: "ERROR",
           },
       }})
     } else {
       updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
           icon: {
-            label: "Found",
+            label: "FOUND",
             type: "SUCCESS",
           },
       }})  
@@ -265,25 +338,15 @@ async function parseXRPLToml(
 
   const accountHeader = "Accounts:"
   if(domain) {
-    // ONLY USED FOR TOP BUTTON, NOT WALLET - TODO: Ensure it stays that way before merging
-    const additionalCheck = (accounts) => {
-      accounts.forEach((curr) => {
-        if(curr.address) {
-          const net = curr.network ?? "main"
-        // TODO: Migrate this next
-        // return await validateAddressDomainOnNet(curr.address, domain, net) 
-        }
-      })
-    }
-    validateAndDisplayFields(setLogEntries, accountHeader, parsed.ACCOUNTS, additionalCheck)
-    validateAndDisplayFields(setLogEntries, "Validators:", parsed.VALIDATORS)
-    validateAndDisplayFields(setLogEntries, "Principals:", parsed.PRINCIPALS)
-    validateAndDisplayFields(setLogEntries, "Servers:", parsed.SERVERS)
-    validateAndDisplayFields(setLogEntries, "Currencies:", parsed.CURRENCIES)
+    await validateAndDisplayFields(setLogEntries, accountHeader, parsed.ACCOUNTS, domain)
+    await validateAndDisplayFields(setLogEntries, "Validators:", parsed.VALIDATORS)
+    await validateAndDisplayFields(setLogEntries, "Principals:", parsed.PRINCIPALS)
+    await validateAndDisplayFields(setLogEntries, "Servers:", parsed.SERVERS)
+    await validateAndDisplayFields(setLogEntries, "Currencies:", parsed.CURRENCIES)
   } else {
 
     const filterToSpecificAccount = (entry: AccountFields) => entry.address === addressToVerify
-    const accountFound = validateAndDisplayFields(
+    const accountFound = await validateAndDisplayFields(
       setLogEntries, 
       accountHeader, 
       parsed.ACCOUNTS, 
@@ -339,9 +402,9 @@ async function parseXRPLToml(
  * @param fields An array of objects to parse into bullet points
  * @param filter Optional function to filter displayed fields to only ones which return true.
  */
-function getListEntries(fields: Object[], filter?: Function) {
+async function getListEntries(fields: Object[], filter?: Function, domainToVerify?: string) {
   const formattedEntries: JSX.Element[] = []
-  fields.forEach((entry) => {
+  fields.forEach(async (entry) => {
     if(!filter || filter(entry)) {
       const fieldNames = Object.keys(entry)
       const displayedFields: JSX.Element[] = []
@@ -355,7 +418,22 @@ function getListEntries(fields: Object[], filter?: Function) {
         </li>)
       })
       /* TODO: Potentially need to optionally add mb-3 to this classname for the top button path through the code. */
-      formattedEntries.push((<ul key={`entry-${formattedEntries.length}`}>{displayedFields}</ul>))
+      const key = `entry-${formattedEntries.length}`
+
+      // TODO: Figure out why this removes the `accounts` section when used here. (Specifically the `await validateAddres... causes it maybe because promise takes time to resolve?`)
+      if(domainToVerify) {
+        const accountEntry = entry as AccountFields
+        if(accountEntry.address) {
+          const net = accountEntry.network ?? "main"
+          const domainIsValid = await validateAddressDomainOnNet(accountEntry.address, domainToVerify, net) 
+          if(domainIsValid) {
+            displayedFields.push(<li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>)
+          }
+        } 
+      }
+
+      formattedEntries.push((<ul key={key}>{displayedFields}</ul>))
+
     }
   })
   return formattedEntries
@@ -364,8 +442,8 @@ function getListEntries(fields: Object[], filter?: Function) {
 async function fetchFile(
     setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     domain: string,
-    accountToVerify: string,
     verifyAccount: boolean,
+    accountToVerify?: string,
 ) {
     const { translate } = useTranslate()
 
@@ -393,12 +471,12 @@ async function fetchFile(
         if (verifyAccount){
           parseXRPLToml(setLogEntries, data, accountToVerify)
         } else {
-          parseXRPLToml(setLogEntries, data, accountToVerify, domain)
+          parseXRPLToml(setLogEntries, data, undefined, domain)
         }
     } catch (e) {
         const error = e as AxiosError
-        console.log(error.status)
-        console.error(error.response);
+        console.log(error?.status)
+        console.error(error?.response);
         const status = error?.status
         
         let errCode;
@@ -412,13 +490,17 @@ async function fetchFile(
             errCode = 'UNKNOWN'
         }
 
-        updateLogEntry(setLogEntries, {...logEntry, response: {
-            icon: {
-              label: errCode,
-              type: "ERROR",
-            },
-            followUpContent: TIPS
-        }})
+        console.log("A")
+        const errorUpdate: ResultBulletProps = {...logEntry, response: {
+          icon: {
+            label: errCode,
+            type: "ERROR",
+          },
+          followUpContent: TIPS
+        }}
+        console.log(errorUpdate)
+        updateLogEntry(setLogEntries, errorUpdate)
+        console.log("B")
     }
   }
 
@@ -444,7 +526,7 @@ function updateLogEntry(
     setLogEntries((prev) => {
         const updated = [].concat(prev ?? [])
         const index = updated.findIndex((log) => {
-            return log.props.id === entry.id
+            return log?.props?.id && log.props.id === entry.id
         })
         updated[index] = (<ResultBullet 
             message={entry.message} 
@@ -472,7 +554,7 @@ function decodeHexWallet(
         },
     }})
 
-    fetchFile(setAccountLogEntries, decodedDomain, accountToVerify, true)
+    fetchFile(setAccountLogEntries, decodedDomain, true, accountToVerify)
 }
 
 function fetchWallet(
@@ -569,26 +651,33 @@ function fetchWallet(
 function handleSubmitWallet(
     event: React.FormEvent<HTMLFormElement>, 
     setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
-    domainAddress: string) {
+    addressToVerify: string) {
 
     event.preventDefault()
     setAccountLogEntries(undefined)  
-    fetchWallet(domainAddress, setAccountLogEntries)
+    fetchWallet(addressToVerify, setAccountLogEntries)
 }
 
-function handleSubmitDomain() {
+function handleSubmitDomain(
+  event: React.FormEvent<HTMLFormElement>, 
+  setDomainLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
+  domainAddress: string) {
 
+  event.preventDefault();
+  setDomainLogEntries(undefined)  
+  fetchFile(setDomainLogEntries, domainAddress, false)
 }
 
 export default function TomlChecker() {
   const { translate } = useTranslate();
 
   // Look up by domain variables
-  const [domainLogEntries, setDomainLogEntries] = useState([])
-  
-  // Look up by account variables
+  const [domainLogEntries, setDomainLogEntries] = useState<JSX.Element[]>(undefined)
   const [domainAddress, setDomainAddress] = useState("")
+
+  // Look up by account variables
   const [accountLogEntries, setAccountLogEntries] = useState<JSX.Element[]>(undefined)
+  const [addressToVerify, setAddressToVerify] = useState("")
 
   return (
     <div className="toml-checker row">
@@ -606,14 +695,15 @@ export default function TomlChecker() {
 
                 {/* TODO: These buttons / look ups can be componentized potentially, there seems to be heavy overlap */}
                 <div className="p-3 pb-5">
-                    <form id="domain-entry" onSubmit={handleSubmitDomain}>
+                    <form id="domain-entry" onSubmit={(event) => handleSubmitDomain(event, setDomainLogEntries, domainAddress)}>
                         <h4>{translate(`Look Up By Domain`)}</h4>
                         <p>{translate(`This tool allows you to verify that your `)}<code>{translate(`xrp-ledger.toml`)}</code>
                             {translate(` file is syntactically correct and deployed properly.`)}</p>
                         <div className="input-group">
                             <input id="domain" type="text" className="form-control" required 
                                 placeholder="example.com (Domain name to check)" 
-                                pattern="^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z][a-zA-Z-]{0,22}[a-zA-Z]$" />
+                                onChange={(event) => setDomainAddress(event.target.value)}
+                                />
                             <br />
                             <button className="btn btn-primary form-control">{translate(`Check toml file`)}</button>
                         </div>{/*/.input-group*/}
@@ -631,12 +721,12 @@ export default function TomlChecker() {
                     <p>{translate(`Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.`)}</p>
                     
                     <form id="domain-verification" onSubmit={
-                        (event: React.FormEvent<HTMLFormElement>) => handleSubmitWallet(event, setAccountLogEntries, domainAddress)
+                        (event: React.FormEvent<HTMLFormElement>) => handleSubmitWallet(event, setAccountLogEntries, addressToVerify)
                     }>
                         <div className="input-group">
                             {/* TODO Rename these id's since they're confusing with the above ids also being 'domain' based */}
                             <input id="verify-domain" type="text" className="form-control" required 
-                                placeholder="r... (Wallet Address to check)" onChange={(event) => setDomainAddress(event.target.value)}/>
+                                placeholder="r... (Wallet Address to check)" onChange={(event) => setAddressToVerify(event.target.value)}/>
                             <br />
                             <button className="btn btn-primary form-control">{translate(`Check account`)}</button>
                         </div>{/*/.input-group*/}
