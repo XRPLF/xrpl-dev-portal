@@ -15,10 +15,10 @@ html.light .MarkpromptContentDialog h3:not(.chip) {
 }
 
 [data-theme="dark"]:root {
-  --markprompt-primary: #7919ff;
-  --markprompt-primary-button: #b480ff;
-  --markprompt-secondary-button: #9a52ff;
-  --markprompt-feedback-box-background: #232325;
+  --markprompt-primary: #7919ff!important;
+  --markprompt-primary-button: #b480ff!important;
+  --markprompt-secondary-button: #9a52ff!important;
+  --markprompt-feedback-box-background: #232325!important;;
   --markprompt-button-text: #f5f5f7;
   --markprompt-feedback-label-text: #e0e0e1;
   --markprompt-reference-border-color: #838386;
