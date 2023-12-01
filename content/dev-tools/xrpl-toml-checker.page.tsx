@@ -7,10 +7,24 @@ import axios, { type AxiosError } from 'axios'
 import { type Client } from 'xrpl'
 import { parse } from 'smol-toml'
 
+/**
+ * Example data to test the tool with
+ * 
+ * Domains:
+ * - Valid: validator.xrpl-labs.com
+ * - Not valid: sologenic.com
+ * 
+ * Addresses:
+ * - Valid: rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV
+ * - No toml: rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz
+ * - No domain: rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh
+ */
+
+// TODO: Translate all text fields within functions with useTranslate
+// TODO: Split this into separate files (especially the types)
+// TODO: Separate functions into step-by-step flow + helpers
+
 const TOML_PATH = "/.well-known/xrp-ledger.toml"
-const TIPS = <p>Check if the file is actually hosted at the URL above, check your server's HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>
-const TIPS_1 = <p>Make sure you are entering a valid XRP Ledger address.</p>
-const TIPS_2 = <p>Make sure the account has the Domain field set.</p>
 const CLASS_GOOD = "badge badge-success"
 const CLASS_BAD = "badge badge-danger"
 
@@ -48,16 +62,18 @@ interface CurrencyFields {
   symbol: string
 }
 
+interface MetadataField {
+  // TODO: There could be other fields here, but this is all the existing code used
+  modified: Date
+}
+
 interface XrplToml {
   ACCOUNTS?: AccountFields[],
   VALIDATORS?: ValidatorFields[],
   PRINCIPALS?: PrincipalFields[],
   SERVERS?: ServerFields[],
   CURRENCIES?: CurrencyFields[],
-  METADATA?: {
-    // TODO: There could be other fields here, but this is all the existing code used
-    modified: Date
-  }
+  METADATA?: MetadataField
 }
 
 function VerificationError(message, tips) {
@@ -246,6 +262,63 @@ async function validateAddressDomainOnNet(addressToVerify: string, domain: strin
   }
 }
 
+function validateAndDisplayMetadata(
+  setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+  metadata?: MetadataField) {
+
+  const { translate } = useTranslate()
+
+  if (metadata) {
+    const metadataId = 'metadata-log'
+    const metadataLogEntry = {
+        message: translate("Metadata section: "),
+        id: metadataId
+    }
+    addNewLogEntry(setLogEntries, metadataLogEntry)
+    
+    // Uniquely checks if array, instead of if not array
+    if (Array.isArray(metadata)) {
+      updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
+          icon: {
+            label: "WRONG TYPE - SHOULD BE TABLE",
+            type: "ERROR",
+          },
+      }})
+    } else {
+      updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
+          icon: {
+            label: "FOUND",
+            type: "SUCCESS",
+          },
+      }})  
+
+      if (metadata.modified) {
+        const modifiedLogId = 'modified-date-log'
+        const modifiedLogEntry = {
+          message: translate("Modified date: "),
+          id: modifiedLogId
+        }
+        addNewLogEntry(setLogEntries, modifiedLogEntry)
+        try {
+          updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
+              icon: {
+                label: metadata.modified.toISOString(),
+                type: "SUCCESS",
+              },
+          }})
+        } catch(e) {
+          updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
+              icon: { 
+                label: "INVALID",
+                type: "ERROR",
+              },
+          }})
+        }
+      }
+    }
+  }
+}
+
 /**
  * Read in a toml file and verify it has the proper fields, then display those fields in the logs.
  * 
@@ -262,12 +335,12 @@ async function parseXRPLToml(
   domain?: string) {
   const { translate } = useTranslate()
 
-  const parsingTomlId = 'parsing-toml-data-log'
   const parsingTomlLogEntry: ResultBulletProps = {
       message: translate("Parsing TOML data..."),
-      id: parsingTomlId,
+      id: 'parsing-toml-data-log',
   }
   addNewLogEntry(setLogEntries, parsingTomlLogEntry)
+  
   let parsed: XrplToml
   try {
     parsed = parse(tomlData)
@@ -286,55 +359,8 @@ async function parseXRPLToml(
       }})
       return
   }
-  if (parsed?.METADATA) {
-      const metadataId = 'metadata-log'
-      const metadataLogEntry = {
-          message: translate("Metadata section: "),
-          id: metadataId
-      }
-      addNewLogEntry(setLogEntries, metadataLogEntry)
-    if (Array.isArray(parsed.METADATA)) {
-      updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
-          icon: {
-            label: "WRONG TYPE - SHOULD BE TABLE",
-            type: "ERROR",
-          },
-      }})
-    } else {
-      updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
-          icon: {
-            label: "FOUND",
-            type: "SUCCESS",
-          },
-      }})  
 
-      if (parsed.METADATA.modified) {
-        const modifiedLogId = 'modified-date-log'
-        const modifiedLogEntry = {
-          message: translate("Modified date: "),
-          id: modifiedLogId
-        }
-        addNewLogEntry(setLogEntries, modifiedLogEntry)
-        try {
-          updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
-              icon: {
-                label: parsed.METADATA.modified.toISOString(),
-                type: "SUCCESS",
-              },
-          }})
-        } catch(e) {
-          updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
-              icon: { 
-                label: "INVALID",
-                type: "ERROR",
-              },
-          }})
-        }
-      }
-    }
-  }
-
-  // TODO: Potentially separate these functions here because top half is totally separate from down here?
+  validateAndDisplayMetadata(setLogEntries, parsed.METADATA)
 
   const accountHeader = "Accounts:"
   if(domain) {
@@ -396,6 +422,22 @@ async function parseXRPLToml(
 }
 
 /**
+ * A formatted list item displaying content from a single field of a toml file.
+ * 
+ * @param props Field info to display
+ * @returns A formatted list item
+ */
+function FieldListItem(props: { fieldName: string, fieldValue: string}) {
+  return (
+  <li key={props.fieldName}>
+    <strong>{props.fieldName}: </strong>
+    <span className={`fieldName`}>
+      {props.fieldValue}
+    </span>
+  </li>)
+}
+
+/**
  * Get an array of HTML lists that can be used to display toml data. 
  * If no data exists or none matches the filter it will return an empty array instead.
  * 
@@ -411,12 +453,8 @@ async function getListEntries(fields: Object[], filter?: Function, domainToVerif
       const displayedFields: JSX.Element[] = []
       fieldNames.forEach((fieldName) => {
         displayedFields.push(
-        <li key={fieldName}>
-          <strong>{fieldName}: </strong>
-          <span className={`fieldName`}>
-            {entry[fieldName]}
-          </span>
-        </li>)
+          <FieldListItem key={fieldName} fieldName={fieldName} fieldValue={entry[fieldName]}/>
+        )
       })
 
       const key = `entry-${formattedEntries.length}`
@@ -426,7 +464,9 @@ async function getListEntries(fields: Object[], filter?: Function, domainToVerif
           const net = accountEntry.network ?? "main"
           const domainIsValid = await validateAddressDomainOnNet(accountEntry.address, domainToVerify, net) 
           if(domainIsValid) {
-            displayedFields.push(<li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>)
+            displayedFields.push(
+              <li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>
+            )
           }
         } 
       }
@@ -455,7 +495,6 @@ async function fetchFile(
     try {
         const response = await axios.get(url)
         const data: string = response.data
-        console.log(data)
         updateLogEntry(setLogEntries, {...logEntry, response: {
             icon: {
               label: "FOUND",
@@ -470,8 +509,6 @@ async function fetchFile(
         }
     } catch (e) {
         const error = e as AxiosError
-        console.log(error?.status)
-        console.error(error?.response);
         const status = error?.status
         
         let errCode;
@@ -485,17 +522,18 @@ async function fetchFile(
             errCode = 'UNKNOWN'
         }
 
-        console.log("A")
         const errorUpdate: ResultBulletProps = {...logEntry, response: {
           icon: {
             label: errCode,
             type: "ERROR",
           },
-          followUpContent: TIPS
+          followUpContent: (<p>
+            Check if the file is actually hosted at the URL above, 
+            check your server's HTTPS settings and certificate, and make sure your server provides the required 
+            <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a>
+          </p>)
         }}
-        console.log(errorUpdate)
         updateLogEntry(setLogEntries, errorUpdate)
-        console.log("B")
     }
   }
 
@@ -558,12 +596,6 @@ function fetchWallet(
     socket?: WebSocket) 
 {
     const {translate} = useTranslate()
-    
-    // TODO: Replace this closing logic elsewhere 
-    // (I'm not sure exactly how to store the state of 'socket' so it actually closes, or what readyState < 2 means)
-    // if (typeof socket !== "undefined" && socket.readyState < 2) {
-    //     socket.close()
-    // }
 
     const baseResultBulletMessage = translate(`Checking domain of account`)
 
@@ -614,7 +646,7 @@ function fetchWallet(
                       label: `ERROR`,
                       type: `ERROR`,
                     },
-                    followUpContent: TIPS_2
+                    followUpContent: <p>Make sure the account has the Domain field set.</p>
                 }            
             }
         } else {
@@ -623,7 +655,7 @@ function fetchWallet(
                   label: `ERROR`,
                   type: `ERROR`,
                 },
-                followUpContent: TIPS_1
+                followUpContent: <p>Make sure you are entering a valid XRP Ledger address.</p>
             }     
         }
 
@@ -631,7 +663,6 @@ function fetchWallet(
         console.log(`Setting account log response to: ${JSON.stringify(response)}`)
         updateLogEntry(setAccountLogEntries, { message: baseResultBulletMessage, id: logId, response: response })
       } catch {
-        // TODO: This is new to replace the socket.close() logic, so double check this makes sense
         socket.close()
         return false
       }
@@ -644,8 +675,8 @@ function fetchWallet(
 // TODO: Standardize the param order for things like setAccountLogEntries / domainAddress
 // TODO: Find better names for these parameters.
 function handleSubmitWallet(
-    event: React.FormEvent<HTMLFormElement>, 
     setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
+    event: React.FormEvent<HTMLFormElement>, 
     addressToVerify: string) {
 
     event.preventDefault()
@@ -676,7 +707,7 @@ export default function TomlChecker() {
 
   return (
     <div className="toml-checker row">
-        {/* Empty, but keeps the formatting similar to other pages */}
+        {/* This aside is empty but it keeps the formatting similar to other pages */}
         <aside className="right-sidebar col-lg-3 order-lg-4" role="complementary"/>
         
         <main className="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
@@ -688,7 +719,6 @@ export default function TomlChecker() {
                     <a href="https://xrpl.org/xrp-ledger-toml.html"><code>{translate(`xrp-ledger.toml`)}</code>{translate(` file`)}</a>.</p>
                 </div>
 
-                {/* TODO: These buttons / look ups can be componentized potentially, there seems to be heavy overlap */}
                 <div className="p-3 pb-5">
                     <form id="domain-entry" onSubmit={(event) => handleSubmitDomain(event, setDomainLogEntries, domainAddress)}>
                         <h4>{translate(`Look Up By Domain`)}</h4>
@@ -696,12 +726,12 @@ export default function TomlChecker() {
                             {translate(` file is syntactically correct and deployed properly.`)}</p>
                         <div className="input-group">
                             <input id="domain" type="text" className="form-control" required 
-                                placeholder="example.com (Domain name to check)" 
+                                placeholder={translate("example.com (Domain name to check)")} 
                                 onChange={(event) => setDomainAddress(event.target.value)}
-                                />
+                            />
                             <br />
                             <button className="btn btn-primary form-control">{translate(`Check toml file`)}</button>
-                        </div>{/*/.input-group*/}
+                        </div>
                     </form>
                     {domainLogEntries && <div id="result">
                         <h5 className="result-title">{translate(`Result`)}</h5>
@@ -715,21 +745,20 @@ export default function TomlChecker() {
                     <h4>{translate(`Look Up By Account`)}</h4>
                     <p>{translate(`Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.`)}</p>
                     
-                    <form id="domain-verification" onSubmit={
-                        (event: React.FormEvent<HTMLFormElement>) => handleSubmitWallet(event, setAccountLogEntries, addressToVerify)
+                    <form id="address-verification" onSubmit={
+                        (event: React.FormEvent<HTMLFormElement>) => handleSubmitWallet(setAccountLogEntries, event, addressToVerify)
                     }>
                         <div className="input-group">
-                            {/* TODO Rename these id's since they're confusing with the above ids also being 'domain' based */}
-                            <input id="verify-domain" type="text" className="form-control" required 
-                                placeholder="r... (Wallet Address to check)" onChange={(event) => setAddressToVerify(event.target.value)}/>
+                            <input id="verify-address" type="text" className="form-control" required 
+                                placeholder={`r... (${translate("Wallet Address to check")})`} onChange={(event) => setAddressToVerify(event.target.value)}/>
                             <br />
                             <button className="btn btn-primary form-control">{translate(`Check account`)}</button>
-                        </div>{/*/.input-group*/}
+                        </div>
                     </form>
 
-                    {accountLogEntries && <div id="verify-domain-result">
-                        <h5 id="verify-domain-result-title" className="result-title">{translate(`Result`)}</h5>
-                        <ul id="verify-domain-log">
+                    {accountLogEntries && <div id="verify-address-result">
+                        <h5 id="verify-address-result-title" className="result-title">{translate(`Result`)}</h5>
+                        <ul id="verify-address-log">
                             {accountLogEntries}
                         </ul>
                     </div>}
