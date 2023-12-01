@@ -676,7 +676,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 | Amendment    | fixNFTokenRemint |
 |:-------------|:-----------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -766,7 +766,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 | Amendment    | fixReducedOffersV1 |
 |:-------------|:-------------------|
 | Amendment ID | 27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | No |
 | Amendment前の機能は廃止? | No |
 

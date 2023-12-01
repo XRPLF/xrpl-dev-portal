@@ -676,7 +676,7 @@ This amendment has no effect unless the [NonFungibleTokensV1][] amendment is ena
 | Amendment    | fixNFTokenRemint |
 |:-------------|:-----------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -768,7 +768,7 @@ This amendment has no known impact on transaction processing.
 | Amendment    | fixReducedOffersV1 |
 |:-------------|:-------------------|
 | Amendment ID | 27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
