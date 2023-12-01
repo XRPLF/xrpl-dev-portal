@@ -1,3 +1,5 @@
+**TODO:** Add sidechain devnet faucets.
+
 {% extends "base.html.jinja" %}
 
 {% set faucets = [
@@ -24,6 +26,14 @@
     "shortname": "AMM-Devnet",
     "faucet": "https://ammfaucet.devnet.rippletest.net/accounts",
     "desc": "XLS-30d Automated Market Makers preview network."
+  },
+  {
+    "id": "faucet-select-sidechain-devnet",
+    "ws_url": "wss://sidechain-net2.devnet.rippletest.net:51233/",
+    "jsonrpc_url": "sidechain-net2.devnet.rippletest.net:51234/",
+    "shortname": "Sidechain-Devnet",
+    "faucet": "https://sidechain-faucet.devnet.rippletest.net",
+    "desc": "Sidechain devnet to test cross-chain bridges with Devnet."
   }
 ] %}
 

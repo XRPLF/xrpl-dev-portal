@@ -1,14 +1,13 @@
 ---
 html: xchainownedcreateaccountclaimid.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: The `XChainOwnedCreateAccountClaimID` ledger object is used to collect attestations for creating an account via a cross-chain transfer. 
 labels:
   - Interoperability
 status: not_enabled
 ---
 # XChainOwnedCreateAccountClaimID
-
-<embed src="/snippets/_xchain-bridges-disclaimer.md" />
+_(Requires the [XChainBridge amendment][] :not_enabled:)_
 
 [[Source]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L296-L306 "Source")
 
@@ -67,7 +66,7 @@ The ledger object is destroyed when all the attestations have been received and 
 | `XChainCreateAccountAttestations` | `array`        | `ARRAY`           | Yes       | Attestations collected from the witness servers. This includes the parameters needed to recreate the message that was signed, including the amount, destination, signature reward amount, and reward account for that signature. With the exception of the reward account, all signatures must sign the message created with common parameters. |
 
 
-### XChainCreateAccountAttestations
+### XChainCreateAccountAttestations Fields
 
 | Field                         | JSON Type         | Internal Type | Required | Description |
 |-------------------------------|-------------------|---------------|----------|-------------|
@@ -80,4 +79,17 @@ The ledger object is destroyed when all the attestations have been received and 
 | `WasLockingChainSend`         | `number`          | `UINT8`       | Yes      | A boolean representing the chain where the event occurred. |
 
 
-<embed src="/docs/xls-38d-cross-chain-bridge/snippets/_xchainbridge-serialization.md" />
+### XChainBridge Fields
+
+| Field               | JSON Type | Internal Type     | Required? | Description     |
+|:--------------------|:----------|:------------------|:----------|:----------------|
+| `IssuingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
+| `LockingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the locking chain. |
+| `LockingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is locked and unlocked on the locking chain. |
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

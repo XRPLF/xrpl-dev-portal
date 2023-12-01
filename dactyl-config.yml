@@ -2453,6 +2453,16 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/xchainownedclaimid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol-reference/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
+        targets:
+            - en
+            - ja    
+
     -   md: references/protocol-reference/transactions/transaction-formats.md
         targets:
             - en

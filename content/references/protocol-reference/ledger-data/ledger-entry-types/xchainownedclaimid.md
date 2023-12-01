@@ -1,14 +1,13 @@
 ---
 html: xchainownedclaimid.html
-parent: ledger-object-types.html
+parent: ledger-entry-types.html
 blurb: An `XChainOwnedClaimID` object represents *one* cross-chain transfer of value. 
 labels:
   - Interoperability
 status: not_enabled
 ---
 # XChainOwnedClaimID
-
-<embed src="/snippets/_xchain-bridges-disclaimer.md" />
+_(Requires the [XChainBridge amendment][] :not_enabled:)_
 
 [[Source]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L281-L293 "Source")
 
@@ -82,7 +81,7 @@ An `XChainCreateClaimID` transaction is used to create a new `XChainOwnedClaimID
 | `XChainClaimID`           | `string`          | `UINT64`          | Yes       | The unique sequence number for a cross-chain transfer. |
 
 
-### XChainClaimAttestations
+### XChainClaimAttestations Fields
 
 | Field                         | JSON Type         | Internal Type | Required | Description |
 |-------------------------------|-------------------|---------------|----------|-------------|
@@ -95,4 +94,16 @@ An `XChainCreateClaimID` transaction is used to create a new `XChainOwnedClaimID
 | `WasLockingChainSend`         | `number`          | `UINT8`       | Yes      | A boolean representing the chain where the event occurred. |
 
 
-<embed src="/docs/xls-38d-cross-chain-bridge/snippets/_xchainbridge-serialization.md" />
+### XChainBridge Fields
+
+| Field               | JSON Type | Internal Type     | Required? | Description     |
+|:--------------------|:----------|:------------------|:----------|:----------------|
+| `IssuingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
+| `LockingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the locking chain. |
+| `LockingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is locked and unlocked on the locking chain. |
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

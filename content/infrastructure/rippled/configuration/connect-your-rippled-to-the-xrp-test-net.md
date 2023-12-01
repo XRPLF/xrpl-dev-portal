@@ -47,6 +47,11 @@ Edit your `rippled.cfg` file.
         [ips]
         amm.devnet.rippletest.net 51235
 
+    *Sidechain-Devnet*
+
+        [ips]
+        sidechain-net2.devnet.rippletest.net 51235
+
     <!-- MULTICODE_BLOCK_END -->
 
 2. Comment out the previous `[ips]` stanza, if there is one:
@@ -79,6 +84,11 @@ Edit your `rippled.cfg` file.
 
         [network_id]
         25
+
+    *Sidechain-Devnet*
+
+        [ips]
+        262   
 
     <!-- MULTICODE_BLOCK_END -->
 
@@ -126,6 +136,14 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
         [validator_list_keys]
         03553F67DC5A6FE0EBFE1B3B4742833D14AF7C65E79E5760EC76EC56EAFD254CE9
+
+    *Sidechain-Devnet*
+
+        [validator_list_sites]
+        https://vlsidechain-net2.devnet.rippletest.net
+
+        [validator_list_keys]
+        EDA5504C7133743FADA46342229B4E9CBBE1CF9BCA19D16633574F7CBB72F79569
 
     <!-- MULTICODE_BLOCK_END -->
 
@@ -183,6 +201,20 @@ _AMM-Devnet_
 ```
 [features]
 AMM
+```
+
+_Sidechain-Devnet (Locking Chain)_
+
+```
+[features]
+XChainBridge
+```
+
+_Sidechain-Devnet (Issuing Chain)_
+
+```
+[features]
+XChainBridge
 ```
 
 <!-- MULTICODE_BLOCK_END -->
