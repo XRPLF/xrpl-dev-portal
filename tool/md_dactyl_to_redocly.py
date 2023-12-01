@@ -121,14 +121,10 @@ class IncludeCodeReplacer(RegexReplacer):
 regex_todos.append(IncludeCodeReplacer())
 
 class IncludeSvgReplacer(RegexReplacer):
-    # TODO: handle 'classes="floating-diagram"' case from ledger-structure.md
-    # TODO: use caption, link full version of diagram. Maybe wrap in <figure>.
-    regex = re.compile(r'\{\{ *include_svg\( *"(?P<fname>[^"]+)"[, ]*("(?P<caption>[^"]+)")?\) *}}')
+    regex = re.compile(r'\{\{ *include_svg\( *"(?P<fname>[^"]+)"[, ]*("(?P<caption>[^"]*)")?[, ]*(classes="(?P<classes>[^"]*)")?\) *}}')
     @staticmethod
     def replace(m):
-        # TODO: maybe wrap in something like this, except make it work?
-        # <figure><a href="'+m.group("fname")+'" title="'+m.group("caption")+'"> ... </a></figure>
-        return '{% inline-svg file="/' + m.group("fname") + '" /%}'
+        return '[{% inline-svg file="/' + m.group("fname") + '" /%}](/'+m.group("fname")+' "'+m.group("caption")+'")'
 regex_todos.append(IncludeSvgReplacer())
 
 class PrefixedCodeSnippetReplacer(RegexReplacer):
