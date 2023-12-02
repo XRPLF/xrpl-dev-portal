@@ -31,13 +31,7 @@ An example of the request format:
 {
     "method": "server_info",
     "params": [
-        {}
-    ]
-},
-{
-    "method": "server_info",
-    "params": [
-        {"counters" : true}
+        {"counters" : false}
     ]
 }
 ```
