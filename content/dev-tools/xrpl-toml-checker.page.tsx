@@ -2,10 +2,11 @@ import * as React from 'react';
 import { useState } from 'react'
 import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
-// TODO: Double check if axios is the best option to use for basic html requests
 import axios, { type AxiosError } from 'axios'
 import { type Client } from 'xrpl'
 import { parse } from 'smol-toml'
+import { type AccountFields, type XrplToml, type MetadataField, TOML_PATH } from './toml-checker/XrplToml';
+import { addNewLogEntry, CLASS_GOOD, type LogEntryProps, type LogEntryStatus, updateLogEntry } from './toml-checker/LogEntry';
 
 /**
  * Example data to test the tool with
@@ -23,102 +24,6 @@ import { parse } from 'smol-toml'
 // TODO: Translate all text fields within functions with useTranslate
 // TODO: Split this into separate files (especially the types)
 // TODO: Separate functions into step-by-step flow + helpers
-
-const TOML_PATH = "/.well-known/xrp-ledger.toml"
-const CLASS_GOOD = "badge badge-success"
-const CLASS_BAD = "badge badge-danger"
-
-interface AccountFields {
-  address: string,
-  network: string,
-  desc: string
-}
-
-interface ValidatorFields {
-  public_key: string,
-  network: string,
-  owner_country: string,
-  server_country: string,
-  unl: string
-}
-
-interface PrincipalFields {
-  name: string,
-  email: string,
-}
-
-interface ServerFields {
-  json_rpc: string,
-  ws: string,
-  peer: string,
-  network: string,
-}
-
-interface CurrencyFields {
-  code: string,
-  display_decimals: string,
-  issuer: string,
-  network: string,
-  symbol: string
-}
-
-interface MetadataField {
-  // TODO: There could be other fields here, but this is all the existing code used
-  modified: Date
-}
-
-interface XrplToml {
-  ACCOUNTS?: AccountFields[],
-  VALIDATORS?: ValidatorFields[],
-  PRINCIPALS?: PrincipalFields[],
-  SERVERS?: ServerFields[],
-  CURRENCIES?: CurrencyFields[],
-  METADATA?: MetadataField
-}
-
-function VerificationError(message, tips) {
-  this.name = "VerificationError"
-  this.message = message || ""
-  this.tips = tips || ""
-}
-VerificationError.prototype = Error.prototype
-
-interface StatusResponse {
-    icon?: {
-      label: string,
-      type: "SUCCESS" | "ERROR"
-      check?: boolean
-    }
-    followUpContent?: JSX.Element
-}
-
-interface ResultBulletProps {
-    message: string
-    id: string // Used to look up & update when response is done
-    response?: StatusResponse
-}
-
-function ResultBullet({
-    message,
-    id,
-    response
-}: ResultBulletProps) 
-{
-    const {translate} = useTranslate()
-    let icon = undefined
-    if(!!response) {
-        icon = <span className={
-            clsx(response.icon?.type === "SUCCESS" && CLASS_GOOD, 
-            response.icon?.type === "ERROR" && CLASS_BAD)}>
-                {response.icon?.label}
-                {response.icon?.check && <i className="fa fa-check-circle"/>}
-        </span>
-    }
-
-    return (
-        <li id={id}>{translate(`${message} `)}{icon}{response?.followUpContent}</li>
-    )
-}
 
 /**
  * Log a list of fields from a toml file or display a relevant error message. 
@@ -153,8 +58,8 @@ async function validateAndDisplayFields(
         {
           message: headerText,
           id: headerText,
-          response: {
-            followUpContent: (
+          status: {
+            followUpMessage: (
               <ol>
                 {formattedEntries}
               </ol>
@@ -172,7 +77,7 @@ async function validateAndDisplayFields(
     addNewLogEntry(setLogEntries, {
       message: headerText,
       id: headerText,
-      response: {
+      status: {
         icon: {
           label: "Wrong type - should be table-array",
           type: "ERROR",
@@ -278,14 +183,14 @@ function validateAndDisplayMetadata(
     
     // Uniquely checks if array, instead of if not array
     if (Array.isArray(metadata)) {
-      updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
+      updateLogEntry(setLogEntries, {...metadataLogEntry, status: {
           icon: {
             label: "WRONG TYPE - SHOULD BE TABLE",
             type: "ERROR",
           },
       }})
     } else {
-      updateLogEntry(setLogEntries, {...metadataLogEntry, response: {
+      updateLogEntry(setLogEntries, {...metadataLogEntry, status: {
           icon: {
             label: "FOUND",
             type: "SUCCESS",
@@ -300,14 +205,14 @@ function validateAndDisplayMetadata(
         }
         addNewLogEntry(setLogEntries, modifiedLogEntry)
         try {
-          updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
+          updateLogEntry(setLogEntries, { ...modifiedLogEntry, status: {
               icon: {
                 label: metadata.modified.toISOString(),
                 type: "SUCCESS",
               },
           }})
         } catch(e) {
-          updateLogEntry(setLogEntries, { ...modifiedLogEntry, response: {
+          updateLogEntry(setLogEntries, { ...modifiedLogEntry, status: {
               icon: { 
                 label: "INVALID",
                 type: "ERROR",
@@ -335,7 +240,7 @@ async function parseXRPLToml(
   domain?: string) {
   const { translate } = useTranslate()
 
-  const parsingTomlLogEntry: ResultBulletProps = {
+  const parsingTomlLogEntry: LogEntryProps = {
       message: translate("Parsing TOML data..."),
       id: 'parsing-toml-data-log',
   }
@@ -344,14 +249,14 @@ async function parseXRPLToml(
   let parsed: XrplToml
   try {
     parsed = parse(tomlData)
-    updateLogEntry(setLogEntries, {...parsingTomlLogEntry, response: {
+    updateLogEntry(setLogEntries, {...parsingTomlLogEntry, status: {
       icon: {
         label: "SUCCESS",
         type: "SUCCESS",
       },
     }})
   } catch(e) {
-      updateLogEntry(setLogEntries, {...parsingTomlLogEntry, response: {
+      updateLogEntry(setLogEntries, {...parsingTomlLogEntry, status: {
           icon: {
             label: e,
             type: "ERROR",
@@ -363,14 +268,7 @@ async function parseXRPLToml(
   validateAndDisplayMetadata(setLogEntries, parsed.METADATA)
 
   const accountHeader = "Accounts:"
-  if(domain) {
-    await validateAndDisplayFields(setLogEntries, accountHeader, parsed.ACCOUNTS, domain)
-    await validateAndDisplayFields(setLogEntries, "Validators:", parsed.VALIDATORS)
-    await validateAndDisplayFields(setLogEntries, "Principals:", parsed.PRINCIPALS)
-    await validateAndDisplayFields(setLogEntries, "Servers:", parsed.SERVERS)
-    await validateAndDisplayFields(setLogEntries, "Currencies:", parsed.CURRENCIES)
-  } else {
-
+  if(addressToVerify) {
     const filterToSpecificAccount = (entry: AccountFields) => entry.address === addressToVerify
     const accountFound = await validateAndDisplayFields(
       setLogEntries, 
@@ -385,7 +283,7 @@ async function parseXRPLToml(
       addNewLogEntry(setLogEntries, {
         message: 'Account has been found in TOML file and validated.',
         id: statusLogId,
-        response: {
+        status: {
           icon: {
             label: "DOMAIN VALIDATED",
             type: "SUCCESS",
@@ -399,7 +297,7 @@ async function parseXRPLToml(
       addNewLogEntry(setLogEntries, {
         message: translate("Account:"),
         id: 'toml-account-entry-log',
-        response: {
+        status: {
           icon: {
             label: "NOT FOUND",
             type: "ERROR"
@@ -410,7 +308,7 @@ async function parseXRPLToml(
       addNewLogEntry(setLogEntries, {
         message: "Account not found in TOML file. Domain can not be verified.",
         id: statusLogId,
-        response: {
+        status: {
           icon: {
             label: "VALIDATION FAILED",
             type: "ERROR",
@@ -418,6 +316,12 @@ async function parseXRPLToml(
         }
       })
     }
+  } else { 
+    await validateAndDisplayFields(setLogEntries, accountHeader, parsed.ACCOUNTS, domain)
+    await validateAndDisplayFields(setLogEntries, "Validators:", parsed.VALIDATORS)
+    await validateAndDisplayFields(setLogEntries, "Principals:", parsed.PRINCIPALS)
+    await validateAndDisplayFields(setLogEntries, "Servers:", parsed.SERVERS)
+    await validateAndDisplayFields(setLogEntries, "Currencies:", parsed.CURRENCIES)
   }
 }
 
@@ -452,9 +356,19 @@ async function getListEntries(fields: Object[], filter?: Function, domainToVerif
       const fieldNames = Object.keys(entry)
       const displayedFields: JSX.Element[] = []
       fieldNames.forEach((fieldName) => {
-        displayedFields.push(
-          <FieldListItem key={fieldName} fieldName={fieldName} fieldValue={entry[fieldName]}/>
-        )
+        if(entry[fieldName] && Array.isArray(entry[fieldName])) {
+          const internalList = []
+          entry[fieldName].forEach((value) => {
+            internalList.push(
+              <FieldListItem key={value} fieldName={fieldName} fieldValue={value}/>
+            )
+          })
+          displayedFields.push(<ol key={`ol-${displayedFields.length}`}>{internalList}</ol>)
+        } else {
+          displayedFields.push(
+            <FieldListItem key={fieldName} fieldName={fieldName} fieldValue={entry[fieldName]}/>
+          )
+        }
       })
 
       const key = `entry-${formattedEntries.length}`
@@ -470,16 +384,29 @@ async function getListEntries(fields: Object[], filter?: Function, domainToVerif
           }
         } 
       }
-      formattedEntries.push((<ul className={clsx(domainToVerify && 'mb-3')} key={key}>{displayedFields}</ul>))
+      formattedEntries.push((<li key={key}><ul className={clsx(domainToVerify && 'mb-3')} key={key + "-ul"}>{displayedFields}</ul></li>))
     }
   }
   return formattedEntries
 }
 
+function getHttpErrorCode(status?: number) {
+  let errCode;
+  if(status === 408) {
+      errCode = 'TIMEOUT'
+  } else if(status >= 400 && status < 500) {
+      errCode = 'CLIENT ERROR'
+  } else if (status >= 500 && status < 600) {
+      errCode = 'SERVER ERROR'
+  } else {
+      errCode = 'UNKNOWN'
+  }
+  return errCode
+}
+
 async function fetchFile(
     setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     domain: string,
-    verifyAccount: boolean,
     accountToVerify?: string,
 ) {
     const { translate } = useTranslate()
@@ -495,39 +422,23 @@ async function fetchFile(
     try {
         const response = await axios.get(url)
         const data: string = response.data
-        updateLogEntry(setLogEntries, {...logEntry, response: {
+        updateLogEntry(setLogEntries, {...logEntry, status: {
             icon: {
               label: "FOUND",
               type: "SUCCESS",
             },
         }})
         
-        if (verifyAccount){
-          parseXRPLToml(setLogEntries, data, accountToVerify)
-        } else {
-          parseXRPLToml(setLogEntries, data, undefined, domain)
-        }
-    } catch (e) {
-        const error = e as AxiosError
-        const status = error?.status
-        
-        let errCode;
-        if(status === 408) {
-            errCode = 'TIMEOUT'
-        } else if(status >= 400 && status < 500) {
-            errCode = 'CLIENT ERROR'
-        } else if (status >= 500 && status < 600) {
-            errCode = 'SERVER ERROR'
-        } else {
-            errCode = 'UNKNOWN'
-        }
+        // Continue to the next step of verification
+        parseXRPLToml(setLogEntries, data, accountToVerify, domain)
 
-        const errorUpdate: ResultBulletProps = {...logEntry, response: {
+    } catch (e) {
+        const errorUpdate: LogEntryProps = {...logEntry, status: {
           icon: {
-            label: errCode,
+            label: getHttpErrorCode((e as AxiosError)?.status),
             type: "ERROR",
           },
-          followUpContent: (<p>
+          followUpMessage: (<p>
             Check if the file is actually hosted at the URL above, 
             check your server's HTTPS settings and certificate, and make sure your server provides the required 
             <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a>
@@ -537,73 +448,43 @@ async function fetchFile(
     }
   }
 
-function addNewLogEntry(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-    entry: ResultBulletProps)
-{
-    setLogEntries((prev) => {
-        const updated: JSX.Element[] = [].concat(prev)
-        const index = updated.length
-        updated.push(<ResultBullet 
-            message={entry.message}
-            id={entry.id}
-            key={`log-${index}`} response={entry.response}/>)
-        return updated
-    })
-}
 
-// Uses entry.id to find the existing entry to update
-function updateLogEntry(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-    entry: ResultBulletProps) {
-    setLogEntries((prev) => {
-        const updated = [].concat(prev ?? [])
-        const index = updated.findIndex((log) => {
-            return log?.props?.id && log.props.id === entry.id
-        })
-        updated[index] = (<ResultBullet 
-            message={entry.message} 
-            id={entry.id}
-            key={`log-${index}`} response={entry.response}/>)
-        return updated
-    })
-}
-
-// TODO: Rename, or separate the decoding from the "next step" function (This function is doing more than the name implies)
-function decodeHexWallet(
+function displayDecodedWalletLog(
   setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
-  hex: string, 
-  accountToVerify: string) {
+) {
+  const { translate } = useTranslate()
+  const logId = 'decoding-domain-hex'
+  addNewLogEntry(setAccountLogEntries, { message: translate('Decoding domain hex'), id: logId, status: {
+      icon: {
+        label: 'SUCCESS',
+        type: 'SUCCESS',
+      },
+  }})
+}
+
+function decodeHexWallet(hex: string) {
     let decodedDomain = '';
     for (let i = 0; i < hex.length; i += 2) {
         decodedDomain += String.fromCharCode(parseInt(hex.substring(i, i + 2), 16))
     }
-    const { translate } = useTranslate()
-    const logId = 'decoding-domain-hex'
-    addNewLogEntry(setAccountLogEntries, { message: translate('Decoding domain hex'), id: logId, response: {
-        icon: {
-          label: 'SUCCESS',
-          type: 'SUCCESS',
-        },
-    }})
-
-    fetchFile(setAccountLogEntries, decodedDomain, true, accountToVerify)
+    return decodedDomain
 }
 
 function fetchWallet(
-    domainAddress: string, 
+    accountToVerify: string, 
     setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     socket?: WebSocket) 
 {
     const {translate} = useTranslate()
 
-    const baseResultBulletMessage = translate(`Checking domain of account`)
-
     // Reset the logs
     setAccountLogEntries([])
 
-    const logId = 'check-domain-account'
-    addNewLogEntry(setAccountLogEntries, { message: baseResultBulletMessage, id: logId, response: undefined })
+    const walletLogEntry = { 
+      message: translate(`Checking domain of account`), 
+      id: 'check-domain-account', 
+    }
+    addNewLogEntry(setAccountLogEntries, walletLogEntry)
 
     const url = "wss://xrplcluster.com"
     if (typeof socket !== "undefined" && socket.readyState < 2) {
@@ -612,56 +493,44 @@ function fetchWallet(
 
     const data = {
       "command": "account_info",
-      "account": domainAddress,
+      "account": accountToVerify,
     }
     socket = new WebSocket(url)
     socket.addEventListener('message', (event) => {
       let data;
-      let response: StatusResponse;
+      // Defaults to error to simplify logic later on
+      let response: LogEntryStatus = {
+        icon: { 
+          label: `ERROR`,
+          type: `ERROR`,
+        },
+      };
       try {
         data = JSON.parse(event.data)
         if (data.status === 'success') {
-            if (data.result.account_data.Domain) {
-              try {
-                response = {
-                    icon: {
-                      label: 'SUCCESS',
-                      type: 'SUCCESS',
-                    },
-                }
-                decodeHexWallet(setAccountLogEntries, data.result.account_data.Domain, domainAddress)
-              } catch(e) {
-                console.log(e)
-                response = {
-                    icon: {
-                      label: `ERROR`,
-                      type: `ERROR`,
-                    },
-                    followUpContent: <p>Error decoding domain field: {data.result.account_data.Domain}</p>
-                }
+          if (data.result.account_data.Domain) {
+            try {
+              response = {
+                  icon: {
+                    label: 'SUCCESS',
+                    type: 'SUCCESS',
+                  },
               }
-            } else {
-                response = {
-                    icon: {
-                      label: `ERROR`,
-                      type: `ERROR`,
-                    },
-                    followUpContent: <p>Make sure the account has the Domain field set.</p>
-                }            
+              // Continue to the next step of validation
+              const decodedDomain = decodeHexWallet(data.result.account_data.Domain)
+              displayDecodedWalletLog(setAccountLogEntries)
+              fetchFile(setAccountLogEntries, decodedDomain, accountToVerify)
+            } catch(e) {
+              console.log(e)
+              response.followUpMessage = <p>Error decoding domain field: {data.result.account_data.Domain}</p>
             }
+          } else {
+            response.followUpMessage = <p>Make sure the account has the Domain field set.</p>
+          }
         } else {
-            response = {
-                icon: { 
-                  label: `ERROR`,
-                  type: `ERROR`,
-                },
-                followUpContent: <p>Make sure you are entering a valid XRP Ledger address.</p>
-            }     
+            response.followUpMessage = <p>Make sure you are entering a valid XRP Ledger address.</p>
         }
-
-        // Update with the success / error message + debug tip
-        console.log(`Setting account log response to: ${JSON.stringify(response)}`)
-        updateLogEntry(setAccountLogEntries, { message: baseResultBulletMessage, id: logId, response: response })
+        updateLogEntry(setAccountLogEntries, { ...walletLogEntry, status: response })
       } catch {
         socket.close()
         return false
@@ -691,7 +560,7 @@ function handleSubmitDomain(
 
   event.preventDefault();
   setDomainLogEntries(undefined)  
-  fetchFile(setDomainLogEntries, domainAddress, false)
+  fetchFile(setDomainLogEntries, domainAddress)
 }
 
 export default function TomlChecker() {
