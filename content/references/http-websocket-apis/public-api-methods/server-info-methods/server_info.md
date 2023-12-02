@@ -54,7 +54,11 @@ rippled server_info
 
 [Try it! >](websocket-api-tool.html#server_info)
 
-The request takes in an optional `counters` parameter. It will render metrics, including those that pertain to Job Queue, nodestore and RPC call counters.
+The request includes the following parameters:
+
+| Field                 | Type    | Required? | Description |
+|:----------------------|:--------|:----------|-------------|
+| `counters`            | Boolean | No        | If `true`, return metrics about the job queue, ledger store, and API method activity. The default is `false`. |
 
 ## Response Format
 
