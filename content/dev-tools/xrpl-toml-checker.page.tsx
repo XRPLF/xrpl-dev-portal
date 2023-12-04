@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react'
 import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
 import axios, { type AxiosError } from 'axios'
@@ -7,7 +6,7 @@ import { type Client } from 'xrpl'
 import { parse } from 'smol-toml'
 import { type AccountFields, type XrplToml, type MetadataField, TOML_PATH } from './toml-checker/XrplToml';
 import { addNewLogEntry, CLASS_GOOD, type LogEntryProps, type LogEntryStatus, updateLogEntry } from './toml-checker/LogEntry';
-
+import { TextLookupForm, type TextLookupFormProps } from './toml-checker/TextLookupForm';
 /**
  * Example data to test the tool with
  * 
@@ -117,6 +116,7 @@ function getWsUrlForNetwork(net: string) {
   }
   return wsNetworkUrl
 }
+
 async function validateAddressDomainOnNet(addressToVerify: string, domain: string, net: string) {
   if (!domain) { return undefined } // Can't validate an empty domain value
   
@@ -549,10 +549,9 @@ function fetchWallet(
   }
 
 // TODO: Standardize the param order for things like setAccountLogEntries / domainAddress
-// TODO: Find better names for these parameters.
 function handleSubmitWallet(
-    setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     event: React.FormEvent<HTMLFormElement>, 
+    setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
     addressToVerify: string) {
 
     event.preventDefault()
@@ -573,13 +572,22 @@ function handleSubmitDomain(
 export default function TomlChecker() {
   const { translate } = useTranslate();
 
-  // Look up by domain variables
-  const [domainLogEntries, setDomainLogEntries] = useState<JSX.Element[]>(undefined)
-  const [domainAddress, setDomainAddress] = useState("")
+  const domainButtonProps: TextLookupFormProps = {
+    title: `Look Up By Domain`,
+    description: <p>{translate(`This tool allows you to verify that your `)}<code>{translate(`xrp-ledger.toml`)}</code>
+    {translate(` file is syntactically correct and deployed properly.`)}</p>,
+    buttonDescription: `Check toml file`,
+    formPlaceholder: "example.com (Domain name to check)",
+    handleSubmit: handleSubmitDomain,
+  }
 
-  // Look up by account variables
-  const [accountLogEntries, setAccountLogEntries] = useState<JSX.Element[]>(undefined)
-  const [addressToVerify, setAddressToVerify] = useState("")
+  const addressButtonProps: TextLookupFormProps = {
+    title: `Look Up By Account`,
+    description: <p>{translate(`Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.`)}</p>,
+    buttonDescription: `Check account`,
+    formPlaceholder: `r... (${translate("Wallet Address to check")})`,
+    handleSubmit: handleSubmitWallet
+  }
 
   return (
     <div className="toml-checker row">
@@ -595,50 +603,8 @@ export default function TomlChecker() {
                     <a href="https://xrpl.org/xrp-ledger-toml.html"><code>{translate(`xrp-ledger.toml`)}</code>{translate(` file`)}</a>.</p>
                 </div>
 
-                <div className="p-3 pb-5">
-                    <form id="domain-entry" onSubmit={(event) => handleSubmitDomain(event, setDomainLogEntries, domainAddress)}>
-                        <h4>{translate(`Look Up By Domain`)}</h4>
-                        <p>{translate(`This tool allows you to verify that your `)}<code>{translate(`xrp-ledger.toml`)}</code>
-                            {translate(` file is syntactically correct and deployed properly.`)}</p>
-                        <div className="input-group">
-                            <input id="domain" type="text" className="form-control" required 
-                                placeholder={translate("example.com (Domain name to check)")} 
-                                onChange={(event) => setDomainAddress(event.target.value)}
-                            />
-                            <br />
-                            <button className="btn btn-primary form-control">{translate(`Check toml file`)}</button>
-                        </div>
-                    </form>
-                    {domainLogEntries && <div id="result">
-                        <h5 className="result-title">{translate(`Result`)}</h5>
-                            <ul id="log">
-                                {domainLogEntries}
-                            </ul>
-                    </div>}
-                </div>
-                
-                <div className="p-3 pt-5">
-                    <h4>{translate(`Look Up By Account`)}</h4>
-                    <p>{translate(`Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.`)}</p>
-                    
-                    <form id="address-verification" onSubmit={
-                        (event: React.FormEvent<HTMLFormElement>) => handleSubmitWallet(setAccountLogEntries, event, addressToVerify)
-                    }>
-                        <div className="input-group">
-                            <input id="verify-address" type="text" className="form-control" required 
-                                placeholder={`r... (${translate("Wallet Address to check")})`} onChange={(event) => setAddressToVerify(event.target.value)}/>
-                            <br />
-                            <button className="btn btn-primary form-control">{translate(`Check account`)}</button>
-                        </div>
-                    </form>
-
-                    {accountLogEntries && <div id="verify-address-result">
-                        <h5 id="verify-address-result-title" className="result-title">{translate(`Result`)}</h5>
-                        <ul id="verify-address-log">
-                            {accountLogEntries}
-                        </ul>
-                    </div>}
-                </div>
+                <TextLookupForm {...domainButtonProps} />
+                <TextLookupForm {...addressButtonProps} />
             </section>
         </main>
     </div>
