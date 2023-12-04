@@ -3880,10 +3880,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/installation/install-clio-on-ubuntu.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/installation/install-clio-on-ubuntu.md"
+        targets:
             - ja
 
     -   md: infrastructure/installation/update-rippled-automatically-on-linux.md
@@ -3910,20 +3912,19 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: infrastructure/installation/build-on-linux-mac-windows.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/installation/build-on-linux-mac-windows.md"
+        targets:
             - ja
 
     -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
 
-        # TODO: translate
-    -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
-        top_nav_grouping: 人気ページ
-        untranslated_warning: true
+    -   md: "@i18n/ja/infrastructure/installation/build-run-rippled-in-reporting-mode.md"
         targets:
             - ja
 

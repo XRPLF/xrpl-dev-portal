@@ -37,7 +37,7 @@ labels:
 
         gpg /usr/local/share/keyrings/ripple-key.gpg
 
-   出力に、次のようなRipple用のエントリーが含まれています。
+   出力に、次のようなRipple用のエントリーが含まれていることを確認してください。
 
         gpg: WARNING: no command supplied.  Trying to guess what you mean ...
         pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
@@ -52,7 +52,7 @@ labels:
         echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
-   上記の例は、**Ubuntu 20.04 Focal Fossa**に適切です。その他のオペレーティングシステムについては、`focal`という単語を次のいずれかに置き換えます。
+   上記の例は、**Ubuntu 20.04 Focal Fossa**向けのものです。。その他のオペレーティングシステムについては、`focal`という単語を次のいずれかに置き換えます。
 
     - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `buster` for **Debian 10 Buster**
