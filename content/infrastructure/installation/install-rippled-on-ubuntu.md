@@ -107,8 +107,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
         gdb <path_to_rippled> <path_to_core_file>
 
-    provided the `rippled-dbgsym` package has been installed. 
-    You will need permission to read files in the core dump directory.
+    **Note:** To debug a core file this way, you must have the `rippled-dbgsym` package installed, and you need permission to read files in the core dump directory.
 
 
 ## Next Steps
