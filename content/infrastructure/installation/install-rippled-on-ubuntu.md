@@ -101,9 +101,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         [Service]
         LimitCORE=infinity
 
-    This creates `/etc/systemd/system/rippled.service.d/override.conf` saving core dumps while not interfering 
-    with the service file provided by the `rippled` package.
-    Core dumps appearing in `/var/lib/apport/coredump/` can be loaded into `gdb` with
+    This creates the file `/etc/systemd/system/rippled.service.d/override.conf` and configures the OS to save core dumps, without changing the service file provided by the `rippled` package. If your server crashes, you can find the core dump in `/var/lib/apport/coredump/`. To load the core dump for inspection, use a command such as the following:
 
         gdb <path_to_rippled> <path_to_core_file>
 
