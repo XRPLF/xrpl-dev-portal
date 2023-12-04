@@ -4182,10 +4182,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/testing-and-auditing/run-private-network-with-docker.md
         targets:
         - en
+
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/run-private-network-with-docker.md"
+        targets:
         - ja
 
     -   md: infrastructure/troubleshooting/index.md
