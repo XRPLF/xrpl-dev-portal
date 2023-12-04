@@ -94,7 +94,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     By default Ubuntu is not configured to produce core files useful for debugging crashes.
     First run:
     
-            ulimit -c unlimited
+        ulimit -c unlimited
     
     Now run `sudo systemctl edit rippled`. The default editor should open and add
 
