@@ -4204,10 +4204,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/troubleshooting/health-check-interventions.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/troubleshooting/health-check-interventions.md"
+        targets:
             - ja
 
     -   md: infrastructure/troubleshooting/understanding-log-messages.md
@@ -4222,15 +4224,16 @@ pages:
         targets:
             - en
 
-        # TODO: translate the blurb in this page's frontmatter
     -   md: "@i18n/ja/infrastructure/troubleshooting/server-doesnt-sync.md"
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/troubleshooting/server-is-amendment-blocked.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/troubleshooting/server-is-amendment-blocked.md"
+        targets:
             - ja
 
     -   md: infrastructure/troubleshooting/server-wont-start.md

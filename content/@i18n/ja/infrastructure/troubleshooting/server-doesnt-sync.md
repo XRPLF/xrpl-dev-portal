@@ -1,7 +1,7 @@
 ---
 html: server-doesnt-sync.html
 parent: troubleshoot-the-rippled-server.html
-blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+blurb: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
   - コアサーバー
 ---
