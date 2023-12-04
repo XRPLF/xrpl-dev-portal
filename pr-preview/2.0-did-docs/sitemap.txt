@@ -162,6 +162,8 @@ https://xrpl.org/build-a-browser-wallet-using-javascript.html
 https://xrpl.org/build-a-desktop-wallet-in-javascript.html
 https://xrpl.org/java.html
 https://xrpl.org/get-started-using-java.html
+https://xrpl.org/php.html
+https://xrpl.org/get-started-using-php.html
 https://xrpl.org/http-websocket-apis-tutorials.html
 https://xrpl.org/get-started-with-the-rippled-api.html
 https://xrpl.org/get-started-using-http-websocket-apis.html

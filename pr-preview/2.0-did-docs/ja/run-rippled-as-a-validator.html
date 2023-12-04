@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -326,25 +327,29 @@
 <p>バリデータが <em>特異である</em> のは、検証メッセージも発行するという点です。これらのメッセージは、<a href="consensus-principles-and-rules.html#コンセンサスの仕組み">コンセンサスプロセス</a>の進行中、XRP Ledgerネットワークによる評価の対象となる候補のトランザクションです。</p>
 <p>ただし、単に検証メッセージを発行するだけで、バリデータにコンセンサスプロセスでの発言権が自動的に付与されるわけではありません。他のサーバーがバリデータ（モードのサーバー）を彼らのユニークノードリスト（UNL）に追加しない限り、彼らは（バリデータモードのサーバーからの）検証メッセージを無視します。バリデータがUNLに含まれている場合、 <em>信頼できる</em> バリデータであり、その提案は、信頼する側のサーバーによってコンセンサスプロセスで検討されます。</p>
 <p>バリデータが <em>信頼できる</em> バリデータではない場合も、ネットワークの全体的な健全性に関して、重要な役割を果たすことに変わりはありません。これらのバリデータは、信頼できるバリデータを評価するための基準の確立を支援します。例えば、信頼できるバリデータが、UNLに含まれていない多数のバリデータに対して異議を唱えている場合、問題があることを示しているおそれがあります。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> バリデータは外部からはアクセスするべきものではありません。バリデータサーバへの一般からのWebSocketアクセスやその他の一般からのアクセスを許可してはいけません。</p>
 <h2 id="1-優れたバリデータの特徴の理解">1. 優れたバリデータの特徴の理解<a aria-hidden="true" class="hover_anchor" href="#1-優れたバリデータの特徴の理解"><i class="fa fa-link"></i></a></h2>
-<p>バリデータ（サーバー）が以下の特質を常に備えるよう努めます。優れたバリデータであることは、<code>rippled</code>サーバーの運用者や<a class="external-link" href="https://vl.ripple.com" target="_blank">https://vl.ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a>などのバリデータリスト発行者が、バリデータを彼らのUNLに追加する際に、バリデータを信頼する上で後押しになります。</p>
+<p>バリデータ（サーバー）が以下の特質を常に備えるよう努めます。優れたバリデータであることは、<code>rippled</code>サーバーの運用者やバリデータリスト発行者(https://vl.ripple.com や https://vl.xrplf.orgなど)が、バリデータを彼らのUNLに追加する際に、バリデータを信頼する上で後押しになります。</p>
 <ul>
-<li><strong>可用性</strong></li>
-</ul>
+<li>
+<p><strong>可用性</strong></p>
 <p>優れたバリデータは、常に稼働し、提案されるあらゆるレジャーについて検証投票を送信します。100%のアップタイムを実現するよう努めてください。</p>
-<ul>
-<li><strong>合意</strong></li>
-</ul>
+</li>
+<li>
+<p><strong>合意</strong></p>
 <p>優れたバリデータの投票は、可能な限り高い頻度で、コンセンサスプロセスの結果と合致します。これに該当しない場合は、バリデータのソフトウェアが最新のものではないか、不具合があるか、意図的な偏りがあることを示唆している可能性があります。常に<a class="external-link" href="https://github.com/XRPLF/rippled/tree/master" target="_blank">最新の<code>rippled</code>リリース <i aria-hidden="true" class="fa fa-external-link"></i></a>を、修正を加えることなく実行します。新規リリースについて知るために、<a class="external-link" href="https://github.com/XRPLF/rippled/releases" target="_blank"><code>rippled</code>のリリースを確認 <i aria-hidden="true" class="fa fa-external-link"></i></a>してください。</p>
-<ul>
-<li><strong>適時の投票</strong></li>
-</ul>
+</li>
+<li>
+<p><strong>適時の投票</strong></p>
 <p>優れたバリデータの投票は、コンセンサスラウンドが終了する前に、素早く届きます。適時の投票を維持するには、バリデータが推奨される<a href="system-requirements.html">システム要件</a>を満たしていることを確認してください。これには、高速のインターネット接続が含まれます。</p>
-<ul>
-<li><strong>身元の確さ</strong></li>
-</ul>
+<p>バリデータを使って新しいトランザクションを送信したりデータを検索したりすることは可能ですが、APIクエリの負荷が高くなるとバリデータがコンセンサスに追いつけなくなる可能性があります。APIの負荷が十分軽ければ、サーバを両方の目的に使うことができます。理想的には、バリデータはコンセンサスに参加するために特化したものであるべきです。</p>
+</li>
+<li>
+<p><strong>身元の確さ</strong></p>
 <p>優れたバリデータには、身元が明確な所有者が存在します。<a href="#6-ドメイン検証の提供">ドメイン検証</a>を提供することは、その第一歩になります。XRP LedgerネットワークのUNLに、多くの法的な管轄域および地域のさまざまな所有者によって運営されているバリデータが含まれていると理想的です。結果として、信頼できるバリデータの公正な運用が地域特有の事象によって損なわれるおそれが低減されます。</p>
-<p>Ripple社は、推奨される一連のバリデータを記載した<a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt" target="_blank">バリデータリスト <i aria-hidden="true" class="fa fa-external-link"></i></a>を公開しています。本番環境のサーバーでは、このリストを使用することを強くお勧めします。</p>
+</li>
+</ul>
+<p>運用者は<a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/cfg/validators-example.txt" target="_blank">exampleファイル <i aria-hidden="true" class="fa fa-external-link"></i></a>に存在するバリデータリストを使用することを強くお勧めします。</p>
 <h2 id="2-rippledサーバーのインストール">2. <code>rippled</code>サーバーのインストール<a aria-hidden="true" class="hover_anchor" href="#2-rippledサーバーのインストール"><i class="fa fa-link"></i></a></h2>
 <p>詳細は、<a href="install-rippled.html"><code>rippled</code>のインストール</a>を参照してください。</p>
 <h2 id="3-rippledサーバーで検証を有効化">3. <code>rippled</code>サーバーで検証を有効化<a aria-hidden="true" class="hover_anchor" href="#3-rippledサーバーで検証を有効化"><i class="fa fa-link"></i></a></h2>
@@ -1464,9 +1469,26 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1484,19 +1506,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1549,19 +1571,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1594,11 +1616,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1611,11 +1633,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1657,11 +1679,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
