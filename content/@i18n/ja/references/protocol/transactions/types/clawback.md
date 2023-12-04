@@ -46,8 +46,8 @@ Clawback機能はデフォルトで無効になっています。使用するに
 |:-----------|:------------|
 | `temDISABLED` | [Clawback amendment](known-amendments.html#clawback)が有効ではありません。 |
 | `temBAD_AMOUNT` | 保有者の残高が0です。回収しようとする金額が保有者の残高を超えていてもエラーにはなりません。また、`Amount`に記載されている相手がこのトランザクションを発行している`Account`と同じ場合にもエラーが発生します。 |
-| `tecNO-LINE` | 取引相手とのトラストラインがない、またはトラストラインの残高が0です。 |
-| `tecNO-PERMISSION` | `lsfNoFreeze`が設定されているときに`lsfAllowTrustlineClawback`を設定、または`lsfAllowTrustLineClawback`が設定されているときに`lsfNoFreeze`を設定しようとしています。 |
+| `tecNO_LINE` | 取引相手とのトラストラインがない、またはトラストラインの残高が0です。 |
+| `tecNO_PERMISSION` | `lsfNoFreeze`が設定されているときに`lsfAllowTrustlineClawback`を設定、または`lsfAllowTrustLineClawback`が設定されているときに`lsfNoFreeze`を設定しようとしています。 |
 
 <!-- {# common link defs #} -->
 {% include '_snippets/rippled-api-links.md' %}
