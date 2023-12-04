@@ -16950,7 +16950,10 @@ function convertIndentedToFenced(filePath) {
         const value2 = stripIndent(node2.value);
         const from = node2.position.start.offset;
         const to = node2.position.end.offset;
-        const newBlock = "```\n" + indentString(value2 + "\n```", node2.position.start.column - 1);
+        const indentLevel = Math.round(node2.position.start.column / 4) * 4;
+        const newBlock = " ".repeat(
+          Math.max(0, indentLevel - node2.position.start.column + 1)
+        ) + "```\n" + indentString(value2 + "\n```", indentLevel);
         outputDoc.splice(
           from + changeOffset,
           to - from,

@@ -128,12 +128,11 @@ class IncludeSvgReplacer(RegexReplacer):
 regex_todos.append(IncludeSvgReplacer())
 
 class PrefixedCodeSnippetReplacer(RegexReplacer):
-    # TODO: Redocly's code-snippet component doesn't support prefix yet. If and
-    # when it does, uncomment/modify the commented out "replace" accordingly.
-    # code-snippet component doesn't support yet.
     regex = re.compile(r"""```(?P<language>\w*)\n(?P<prefix>[^{`]+)\n\{% include ['"](?P<path>[^'"]+)['"] %\}\s*```""")
-    #replace = staticmethod(lambda m: '{% code-snippet file="/'+m.group("path")+'" language="'+m.group("language")+'" prefix="'+m.group("prefix").replace("\n","\\n")+'" /%}')
-    replace = staticmethod(lambda m: '{% code-snippet file="/'+m.group("path")+'" language="'+m.group("language")+'" /%}')
+    @staticmethod
+    def replace(m: re.Match):
+        escaped_prefix = m.group("prefix").replace("\n","\\n").replace('"', '\\"')+"\\n"
+        return '{% code-snippet file="/'+m.group("path")+'" language="'+m.group("language")+'" prefix="'+escaped_prefix+'" /%}'
 regex_todos.append(PrefixedCodeSnippetReplacer())
 
 class PlainCodeIncludeReplacer(RegexReplacer):
