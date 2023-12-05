@@ -3785,10 +3785,7 @@ pages:
         targets:
             - en
 
-    # TODO: translate page (currently only the blurb is translated)
-    -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
-        blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
-        untranslated_warning: true
+    -   md: "@i18n/ja/references/http-websocket-apis/peer-port-methods/peer-crawler.md"
         targets:
             - ja
 
@@ -3875,10 +3872,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/installation/install-clio-on-ubuntu.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/installation/install-clio-on-ubuntu.md"
+        targets:
             - ja
 
     -   md: infrastructure/installation/update-rippled-automatically-on-linux.md
@@ -3905,20 +3904,19 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: infrastructure/installation/build-on-linux-mac-windows.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/installation/build-on-linux-mac-windows.md"
+        targets:
             - ja
 
     -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
 
-        # TODO: translate
-    -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
-        top_nav_grouping: 人気ページ
-        untranslated_warning: true
+    -   md: "@i18n/ja/infrastructure/installation/build-run-rippled-in-reporting-mode.md"
         targets:
             - ja
 
@@ -3966,9 +3964,7 @@ pages:
         targets:
             - en
 
-        # TODO: update this translation and rename the file like in the English version
     -   md: "@i18n/ja/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -4056,17 +4052,16 @@ pages:
         targets:
             - en
 
-    # TODO: translate this page. # For now we just have a translated blurb.
-    -   md: infrastructure/configuration/peering/configure-the-peer-crawler.md
-        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
-        untranslated_warning: true
+    -   md: "@i18n/ja/infrastructure/configuration/peering/configure-the-peer-crawler.md"
         targets:
             - ja
 
-    # TODO: translate this page
     -   md: infrastructure/configuration/peering/enable-link-compression.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/peering/enable-link-compression.md"
+        targets:
             - ja
 
     -   md: infrastructure/configuration/peering/forward-ports-for-peering.md
@@ -4109,10 +4104,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/configuration/configure-statsd.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/configure-statsd.md"
+        targets:
             - ja
 
     -   md: infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
@@ -4124,10 +4121,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate page
     -   md: infrastructure/configuration/configure-grpc.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/configure-grpc.md"
+        targets:
             - ja
 
     -   md: infrastructure/configuration/enable-public-signing.md
@@ -4178,10 +4177,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/testing-and-auditing/run-private-network-with-docker.md
         targets:
         - en
+
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/run-private-network-with-docker.md"
+        targets:
         - ja
 
     -   md: infrastructure/troubleshooting/index.md
@@ -4200,10 +4201,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/troubleshooting/health-check-interventions.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/troubleshooting/health-check-interventions.md"
+        targets:
             - ja
 
     -   md: infrastructure/troubleshooting/understanding-log-messages.md
@@ -4218,15 +4221,16 @@ pages:
         targets:
             - en
 
-        # TODO: translate the blurb in this page's frontmatter
     -   md: "@i18n/ja/infrastructure/troubleshooting/server-doesnt-sync.md"
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/troubleshooting/server-is-amendment-blocked.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/troubleshooting/server-is-amendment-blocked.md"
+        targets:
             - ja
 
     -   md: infrastructure/troubleshooting/server-wont-start.md

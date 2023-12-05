@@ -14,7 +14,7 @@ labels:
 
 - [sign][signメソッド]
 - [sign_for][sign_forメソッド]
-- [submit][submitメソッド](in "sign-and-submit" mode)
+- [submit][submitメソッド]("sign-and-submit"モード)
 
 これらのメソッドを使用するにあたり、管理者接続からパブリック署名を有効にする必要は**ありません**。
 
@@ -26,7 +26,7 @@ labels:
 
         vim /etc/opt/ripple/rippled.cfg
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 2. 以下のスタンザを構成ファイルに追加し、変更を保存します。
 

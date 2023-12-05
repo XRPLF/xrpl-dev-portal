@@ -1,7 +1,7 @@
 ---
 html: server-doesnt-sync.html
 parent: troubleshoot-the-rippled-server.html
-blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+blurb: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
   - コアサーバー
 ---
@@ -89,7 +89,7 @@ labels:
         [database_path]
          /var/lib/rippled/db_new
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 4. `rippled`サーバーを再起動します。
 

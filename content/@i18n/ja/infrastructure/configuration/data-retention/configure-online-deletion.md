@@ -42,7 +42,7 @@ labels:
 
     `online_delete`を、オンライン削除の実行後に維持するレジャーバージョンの最小数に設定します。自動削除が設定されている場合（デフォルト）、サーバーは通常、この数の約2倍のレジャーバージョンが蓄積されると削除を実行します。
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 0. `rippled`サービスを起動（または再起動）します。
 

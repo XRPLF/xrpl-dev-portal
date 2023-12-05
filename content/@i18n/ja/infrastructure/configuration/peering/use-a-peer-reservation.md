@@ -60,7 +60,7 @@ lables:
 
         vim /etc/opt/ripple/rippled.cfg
 
-   {% include '_snippets/conf-file-location.md' %}<!--_ -->
+   {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 3. 前のステップで生成した`validation_seed`値を使用して、`[node_seed]`スタンザを追加します。
 

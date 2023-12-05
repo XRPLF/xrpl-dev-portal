@@ -5,9 +5,9 @@ blurb: XRPを統合する人のための汎用的な構成。
 labels:
   - コアサーバー
 ---
-# ウォレットサーバーとしてrippledを実行する
+# ウォレットサーバーとしてのrippledの実行
 
-ウォレットサーバーは `rippled` のための汎用的な構成です。ウォレットサーバーを利用することで、XRP Ledger へのトランザクションの送信、レジャーの履歴へのアクセス、XRP と統合するための最新の [ツール](software-ecosystem.html) を利用することができます。
+ストックサーバは`rippled`用の汎用的な設定です。ストックサーバを利用することで、XRP Ledgerにトランザクションを送信したり、レジャーの履歴にアクセスしたり、XRPやXRP Ledgerと統合するための最新の[ツール](software-ecosystem.html)を利用したりすることができます。このサーバを使って、クライアントアプリケーションをXRP Ledgerに接続することができます。
 
 
 ウォレットサーバーは、次のすべてのことを行います。
@@ -18,35 +18,28 @@ labels:
 
 - 完全な共有グローバル[レジャー](ledgers.html)のローカルコピーを維持
 
-- [コンセンサスプロセス](consensus.html)にバリデーターとして参加
+
+バリデータとして[コンセンサスプロセス](consensus.html)に参加するには、代わりに[バリデータとしてrippledを実行](run-rippled-as-a-validator.html)してください。
 
 
-## 1. `rippled` のインストール
+## `rippled`のインストールと実行
 
-詳しくは、[`rippled` のインストール](install-rippled.html) を参照してください。
+デフォルトのパッケージインストールでは、取引履歴の少ないストックサーバーがインストールされます。インストール手順については、[`rippled`のインストール](install-rippled.html)をご覧ください。
 
-## 2. ウォレットサーバーでのバリデーションを有効にする
-
-詳しくは、[rippledサーバーで検証を有効化](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server) を参照してください。
-
-**注意:** バリデーターは、一般にアクセスできないようにする必要があります。ウォレットサーバーへのWebSocketアクセスなど、一般からのアクセスを許可しないでください。
-
-## 3. ドメイン検証の提供
-
-詳しくは、[ドメイン検証の提供](run-rippled-as-a-validator.html#6-provide-domain-verification)をご覧ください。
+インストール後、サーバーが一度に保存する履歴の量を調整することができます。この方法については、[オンライン削除の設定](configure-online-deletion.html)をご覧ください。
 
 ## トラブルシューティング
 
-詳しくは、[`rippled`のトラブルシューティング](troubleshoot-the-rippled-server.html) を参照してください。
+詳しくは、[`rippled`のトラブルシューティング](troubleshoot-the-rippled-server.html)をご覧ください。
 
 
 ## 関連項目
 
 - **コンセプト:**
     - [XRP Ledgerの概要](xrp-ledger-overview.html)
-    - [`rippled`サーバー](xrpl-servers.html)
+    - [`rippled`サーバ](xrpl-servers.html)
 - **チュートリアル:**
-    - [rippledサーバーのクラスター化](cluster-rippled-servers.html)
+    - [rippledサーバのクラスター化](cluster-rippled-servers.html)
     - [`rippled`のインストール](install-rippled.html)
     - [容量の計画](capacity-planning.html)
 - **リファレンス:**
