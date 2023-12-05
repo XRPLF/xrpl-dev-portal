@@ -273,6 +273,7 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nft_sell_offers">nft_sell_offers</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#sell-offers">Sell Offers</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
       </ul>
@@ -338,27 +339,34 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>tokenid</code></td>
+<td style="text-align: left;"><code>nft_id</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique identifier of a NFToken object.</td>
+<td style="text-align: left;">The unique identifier of a <a href="nftoken.html">NFToken</a> object.</td>
 </tr>
 <tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>ledger_hash</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
-<td style="text-align: left;">## Response Format</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;">String or Number</td>
+<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
-<td style="text-align: left;">An example of a successful response:</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>limit</code></td>
+<td style="text-align: left;">Integer</td>
+<td style="text-align: left;"><em>(Optional)</em> Limit the number of NFT sell offers to retrieve. This value cannot be lower than 50 or more than 500. Positive values outside this range are replaced with the closest valid option. The default is 250.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>marker</code></td>
+<td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
+<td style="text-align: left;"><em>(Optional)</em> Value from a previous paginated response. Resume retrieving data where that response left off.</td>
 </tr>
 </tbody>
 </table>
+<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
+<p>An example of a successful response:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>

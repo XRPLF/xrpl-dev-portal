@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="nft_info | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nft_info.html" />
-    <meta property="og:description" content="Retrieve information about the specified NFT using Clio server&#39;s `nft_info` API." />
-    <meta name="description" content="Retrieve information about the specified NFT using Clio server&#39;s `nft_info` API." />
+    <meta property="og:description" content="Clioサーバの`nft_info`APIを使用して、指定したNFTに関する情報を取得します。" />
+    <meta name="description" content="Clioサーバの`nft_info`APIを使用して、指定したNFTに関する情報を取得します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Non-fungible Tokens, NFTs']
+      "page_labels": ['非代替性トークン, NFT']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -158,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-amm-dev/content/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md?pr=/XRPLF/xrpl-dev-portal/pull/2288" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-amm-dev/content/@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md?pr=/XRPLF/xrpl-dev-portal/pull/2288" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+      <span class="label label-非代替性トークン-nft">非代替性トークン, NFT</span>
+      <!-- TEMPLATE WARNING: no label landing found for "非代替性トークン, NFT" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -273,9 +273,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nft_info">nft_info</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リクエストのフォーマット">リクエストのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
       </aside>
@@ -300,15 +300,12 @@
     <li class="active breadcrumb-item">nft_info</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nft_info">nft_info<a aria-hidden="true" class="hover_anchor" href="#nft_info"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>nft_info</code> command asks the Clio server for information about the <a href="non-fungible-tokens.html">NFT</a> being queried. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/1.1.0" target="_blank" title="New in: Clio v1.1.0"><img alt="New in: Clio v1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v1.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of the request format:</p>
+<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>nft_info</code>コマンドはクエリ対象の<a href="non-fungible-tokens.html">NFT</a>に関する情報をClioサーバに問い合わせます。<a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/1.1.0" target="_blank" title="新規: Clio v1.1.0"><img alt="新規: Clio v1.1.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-Clio%20v1.1.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<h2 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>リクエストフォーマットの例：</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -329,37 +326,37 @@
 </code></pre></div></div>
 </div>
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
-[Try it! >](websocket-api-tool.html#nft_info)-->
-<p>The request contains the following parameters:</p>
+[試してみる >](websocket-api-tool.html#nft_info)-->
+<p>リクエストには以下のパラメーターが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>nft_id</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">A unique identifier for the non-fungible token (NFT).</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">非代替性トークン(NFT)の一意の識別子。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーのバージョンを示す20バイトの16進文字列。<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the <code>ledger_index</code> as <code>closed</code> or <code>current</code>; doing so forwards the request to the P2P <code>rippled</code> server and the <code>nft_info</code> API is not available on <code>rippled</code>. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;">文字列 または 符号なし整数</td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>あるいは、レジャーを自動的に選択するためのショートカット文字列。<code>ledger_index</code>に<code>closed</code>や<code>current</code>を指定しないでください。指定した場合、P2Pの<code>rippled</code>サーバにリクエストが転送されますが、<code>nft_info</code>APIは<code>rippled</code>では利用できません。<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）。</td>
 </tr>
 </tbody>
 </table>
-<p>If you do not specify a ledger version, Clio uses the latest validated ledger.</p>
-<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of a successful response:</p>
+<p>レジャーのバージョンを指定しない場合、Clioは検証済みの最新のレジャーを使用します。</p>
+<h2 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>処理が成功したレスポンスの例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
@@ -419,71 +416,71 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing an <code>nft_info</code> response object with some arrangement of the following fields:</p>
+<p>レスポンスは<a href="response-formatting.html">標準フォーマット</a> に従い、成功すると以下のフィールドをいくつか並べた<code>nft_info</code>レスポンスオブジェクトが返されます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>nft_id</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">A unique identifier for the non-fungible token (NFT).</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">非代替性トークン(NFT)の一意の識別子。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted (created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger.</td>
+<td style="text-align: left;">整数</td>
+<td style="text-align: left;">NFT がミント(作成)された、所有者が変わった(取引された)、バーンされた(破棄された)など、このNFTの状態が変更された最新のレジャーバージョンの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>。返される情報には、リクエストされたレジャーと比較して直近に起こったことが含まれます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>owner</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The account ID of this NFT's owner at this ledger index.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このレジャーインデックスにおけるこのNFTの所有者のアカウントID。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>is_burned</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Returns <code>true</code> if the NFT is burned at this ledger, or <code>false</code> otherwise.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;">NFTがこのレジャーでバーンされていれば<code>true</code>を、そうでなければ<code>false</code>を返します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>flags</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The flag set of this NFT.</td>
+<td style="text-align: left;">整数</td>
+<td style="text-align: left;">このNFTのフラグ</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>transfer_fee</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The transfer fee of this NFT. See <a href="nftokenmint.html#nftokenmint-フィールド">NFTokenMint Fields</a> for more information on transfer fees.</td>
+<td style="text-align: left;">整数</td>
+<td style="text-align: left;">このNFTの送金手数料。送金手数料の詳細については、<a href="nftokenmint.html#nftokenmint-フィールド">NFTokenMintのフィールド</a>をご覧ください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>issuer</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The account ID which denotes the issuer of this NFT.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このNFTの発行者を示すアカウントID。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>nft_taxon</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The NFT’s taxon.</td>
+<td style="text-align: left;">整数</td>
+<td style="text-align: left;">このNFTのTaxon。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>nft_sequence</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The NFT’s sequence number.</td>
+<td style="text-align: left;">整数</td>
+<td style="text-align: left;">このNFTのシーケンス番号.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>uri</code></td>
-<td style="text-align: left;">String or <code>null</code></td>
-<td style="text-align: left;"><em>(Omitted if the NFT is burned at this ledger.)</em>. This field is <code>null</code> if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request <code>nft_info</code> for this token, specifying the <code>ledger_index</code> as the one previous to the index where this token was burned ({<em>ledger-index-where-token-was-burned</em>} - 1).</td>
+<td style="text-align: left;">文字列 または <code>null</code></td>
+<td style="text-align: left;"><em>(NFTがこのレジャーでバーンされている場合は省略)</em> NFTがこのレジャーでバーンされておらず、URIを持っていない場合、このフィールドは<code>null</code>です。NFTがこのレジャーでバーンされておらず、URIを持っている場合、このフィールドはNFTのデコードされたURIを含む文字列です。注意: バーンされたトークンのURIを取得する必要がある場合、トークンの<code>nft_info</code>をリクエストし直してください。その際、<code>ledger_index</code>にはトークンがバーンされたインデックスの一つ前（{<em>トークンがバーンされたレジャーインデックス</em>} - 1）を指定してください。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
+<li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -927,7 +924,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -967,7 +964,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1773,7 +1770,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2703,7 +2700,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2768,7 +2765,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2788,12 +2785,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2833,7 +2830,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2889,7 +2886,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2899,7 +2896,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2936,12 +2933,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -3015,7 +3012,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -3030,7 +3027,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

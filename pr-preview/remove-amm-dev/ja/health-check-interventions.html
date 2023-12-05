@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Health Check Interventions - XRPL.org (日本語)</title>
+    <title>ヘルスチェックの導入 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Health Check Interventions | XRPL.org (日本語)">
+    <meta property="og:title" content="ヘルスチェックの導入 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/health-check-interventions.html" />
-    <meta property="og:description" content="Use the rippled server&#39;s health check as part of automated infrastructure monitoring." />
-    <meta name="description" content="Use the rippled server&#39;s health check as part of automated infrastructure monitoring." />
+    <meta property="og:description" content="自動化されたインフラ監視の一環として、rippledサーバのヘルスチェックを使用します。" />
+    <meta name="description" content="自動化されたインフラ監視の一環として、rippledサーバのヘルスチェックを使用します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Core Server']
+      "page_labels": ['コアサーバー']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -158,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-amm-dev/content/infrastructure/troubleshooting/health-check-interventions.md?pr=/XRPLF/xrpl-dev-portal/pull/2288" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-amm-dev/content/@i18n/ja/infrastructure/troubleshooting/health-check-interventions.md?pr=/XRPLF/xrpl-dev-portal/pull/2288" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-コアサーバー">コアサーバー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバー" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,15 +272,15 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#health-check-interventions">Health Check Interventions</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#momentary-failures">Momentary Failures</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#special-cases">Special Cases</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#suggested-interventions">Suggested Interventions</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#redirect-traffic">Redirect Traffic</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#restart">Restart</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#upgrade">Upgrade</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#investigate-network">Investigate Network</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#replace-hardware">Replace Hardware</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#ヘルスチェックの導入">ヘルスチェックの導入</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#瞬間的な障害">瞬間的な障害</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#特殊なケース">特殊なケース</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#推奨される対策">推奨される対策</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#トラフィックのリダイレクト">トラフィックのリダイレクト</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#再起動">再起動</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#更新">更新</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ネットワークの調査">ネットワークの調査</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ハードウェアの交換">ハードウェアの交換</a></li>
       </ul>
   </div>
       </aside>
@@ -298,74 +298,71 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/infrastructure.html">インフラストラクチャ</a></li>
     <li class="active breadcrumb-item"><a href="/ja/troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a></li>
-    <li class="active breadcrumb-item">Health Check Interventions</li>
+    <li class="active breadcrumb-item">ヘルスチェックの導入</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="health-check-interventions">Health Check Interventions<a aria-hidden="true" class="hover_anchor" href="#health-check-interventions"><i class="fa fa-link"></i></a></h1>
-<p>The <a href="health-check.html">Health Check method</a> can be used by automated monitoring to recognize when a <code>rippled</code> server is not healthy and prompt interventions such as restarting the server or alerting a human administrator.</p>
-<p>Infrastructure monitoring, and reliability engineering more generally, is an advanced discipline that involves using multiple sources of data to make decisions in context. This document provides some suggestions for how to use the health check most effectively, but these recommendations are only meant as guidelines as part of a larger strategy.</p>
-<h2 id="momentary-failures">Momentary Failures<a aria-hidden="true" class="hover_anchor" href="#momentary-failures"><i class="fa fa-link"></i></a></h2>
-<p>Some <a href="health-check.html#response-format">metrics</a> in the health check can rapidly fluctuate into unhealthy ranges and then recover automatically shortly afterward. It is unnecessary and undesirable to raise alerts every single time the health check reports an unhealthy status. An automated monitoring system should call the health check method often, but only escalate to a higher level of intervention if the problem is severe and consistent.</p>
-<p>For example, if you check the health of the server once per second, you might raise an alert if the server reports "warning" status three times in a row, or four times in a five-second span. You might also raise an alert if the server reports "critical" status twice in a five-second span. It is usually excessive to raise an alert every single time the server reports "warning".</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> The server normally reports a "critical" status for the first few seconds after startup, switches to a "warning" status after it establishes a connection to the network, and finally reports a "healthy" status when it has fully synced to the network. After a restart, you should give a server 5–15 minutes to sync before taking additional interventions.</p>
-<h2 id="special-cases">Special Cases<a aria-hidden="true" class="hover_anchor" href="#special-cases"><i class="fa fa-link"></i></a></h2>
-<p>Certain server configurations may always report a <code>warning</code> status even when operating normally. If your server qualifies as a special case, you must configure your automated monitoring to recognize the difference between the normal status and an actual problem. This probably involves parsing the JSON response body for the health check method and comparing the values there with expected normal ranges.</p>
-<p>Some examples of special cases that may occur include:</p>
+        <h1 id="ヘルスチェックの導入">ヘルスチェックの導入<a aria-hidden="true" class="hover_anchor" href="#ヘルスチェックの導入"><i class="fa fa-link"></i></a></h1>
+<p><a href="health-check.html">Health Checkメソッド</a>は、自動監視によって<code>rippled</code>サーバが正常でないことを認識し、サーバの再起動や人間の管理者への警告などの介入を促すために利用することができます。</p>
+<p>インフラモニタリング、そしてより一般的な信頼性の設計は、複数のデータソースを利用して状況に応じて意思決定を行う高度な学問分野です。本書では、ヘルスチェックを最も効果的に使用する方法についていくつかの提案を行いますが、これらの提案は、より大きな対策の一環としてのガイドラインに過ぎません。</p>
+<h2 id="瞬間的な障害">瞬間的な障害<a aria-hidden="true" class="hover_anchor" href="#瞬間的な障害"><i class="fa fa-link"></i></a></h2>
+<p>ヘルスチェックの<a href="health-check.html#response-format">metrics</a>の中には、急速に正常でない範囲に変動し、その後すぐに自動的に回復するものがあります。ヘルスチェックが不正常なステータスを報告するたびにアラートを上げることは不要であり、望ましくありません。自動化されたモニタリングシステムは、health checkメソッドを頻繁に呼び出しますが、問題が深刻で一貫している場合にのみ、より高いレベルの介入に拡張する必要があります。</p>
+<p>例えば、1秒に1回サーバーのヘルスチェックを行う場合、サーバが「警告」ステータスを3回連続して報告した場合、または5秒間に4回報告した場合にアラートを発生させることができます。また、サーバが5秒間に2回"critical"ステータスを報告した場合にも、アラートを発生させることができます。通常、サーバが"warning"と報告するたびにアラートを発生させるのは過剰です。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> サーバは通常、起動後の最初の数秒間は"critical"ステータスを報告し、ネットワークへの接続が確立されると"warning"ステータスに切り替わり、ネットワークへの同期が完了すると"healthy"ステータスを報告します。再起動後、追加の介入を行う前に、サーバーの同期に5～15分ほど時間が必要です。</p>
+<h2 id="特殊なケース">特殊なケース<a aria-hidden="true" class="hover_anchor" href="#特殊なケース"><i class="fa fa-link"></i></a></h2>
+<p>サーバの構成によっては、正常に動作していても常に”warning"ステータスを報告する場合があります。あなたのサーバがこのような特殊なケースに当てはまる場合は、正常なステータスと実際の問題の違いを認識できるように自動監視を設定する必要があります。これにはおそらく、ヘルスチェックメソッドのJSONレスポンスボディを解析し、その値を期待される正常な範囲と比較することが含まれます。</p>
+<p>特殊なケースの例としては、次のようなものがあります。</p>
 <ul>
-<li>A <a href="peer-protocol.html#プライベートピア">private peer</a> typically has a very small number of peer-to-peer connections to known servers only, but the health check reports a warning on the <code>peers</code> metric if the server is connected to 7 or fewer peers. You should know the exact number of peers your server is configured to have and check for that value.</li>
-<li>On a <a href="parallel-networks.html">parallel or test network</a> where new transactions are not being sent continuously, the network waits up to 20 seconds for new transactions before attempting to validate a new ledger version, but the health check reports a warning on the <code>validated_ledger</code> metric if the latest validated ledger is 7 or more seconds old. If you are running <code>rippled</code> on a non-production network, you may want to ignore <code>warning</code> messages for this metric unless you know that there should be transactions being regularly sent. You may still want to alert on the <code>critical</code> level of 20 seconds, because the XRP Ledger protocol is designed to validate new ledger versions at least once every 20 seconds even if there are no new transactions to process.</li>
+<li><a href="peer-protocol.html#プライベートピア">プライベートピア</a>は通常、既知のサーバのみに接続するごく少数のピアツーピア接続を持ちますが、サーバが7つ以下のピアに接続している場合、ヘルスチェックは<code>peers</code>メトリックで警告を報告します。サーバが設定されているピア数を正確に把握し、その値をチェックする必要があります。</li>
+<li>新しいトランザクションが継続的に送信されていない<a href="parallel-networks.html">並列ネットワークまたはテストネットワーク</a>では、ネットワークは新しいトランザクションを最大20秒待ってから新しいレジャーバージョンの検証を試みますが、検証された最新のレジャーが7秒以上古い場合、ヘルスチェックは<code>validated_ledger</code>メトリックで警告を報告します。本番環境でないネットワークで<code>rippled</code>を実行している場合、トランザクションが定期的に送信されていることが分かっていない限り、これに対する<code>warning</code>メッセージを無視することができます。XRP Ledgerプロトコルは、処理する新しいトランザクションがなくても、少なくとも20秒に一度は新しいレジャーバージョンを検証するように設計されているからです。</li>
 </ul>
-<h2 id="suggested-interventions">Suggested Interventions<a aria-hidden="true" class="hover_anchor" href="#suggested-interventions"><i class="fa fa-link"></i></a></h2>
-<p>When a health check fails, and it's not just a <a href="#momentary-failures">momentary failure</a>, the action to take to recover from the outage varies based on the cause. You may be able to configure your infrastructure to fix some types of failures automatically. Other failures require the intervention of a human administrator who can investigate and take the necessary steps to resolve more complex or critical failures; depending on the structure of your organization, you may have different levels of human administrator so that less skilled, lower level administrators can fix certain issues independently, but need to escalate to higher level administrators to fix larger or more complex issues. How and when you respond is likely to depend on your unique situation, but the metrics reported in the health check result can be a factor in these decisions. <!-- STYLE_OVERRIDE: just --></p>
-<p>The following sections suggest some common interventions you may want to attempt and the health check statuses most likely to prompt those interventions. Automated systems and human administrators may selectively escalate through these and other interventions:</p>
+<h2 id="推奨される対策">推奨される対策<a aria-hidden="true" class="hover_anchor" href="#推奨される対策"><i class="fa fa-link"></i></a></h2>
+<p>ヘルスチェックに失敗し、それが単なる<a href="#瞬間的な障害">瞬間的な障害</a>でない場合、障害から回復するために取るべき行動は原因によって異なります。インフラストラクチャを設定することで、いくつかのタイプの障害を自動的に修正できるかもしれません。組織の構造によっては、管理者のレベルが異なり、スキルの低い下位レベルの管理者が単独で特定の問題を解決できても、より大規模で複雑な問題を解決するには上位レベルの管理者に連絡する必要があります。いつ、どのように対応するかは、固有の状況によって異なりますが、ヘルスチェックの結果で報告される情報は、これらの決定の要因になる可能性があります。</p>
+<p>以下のセクションでは、試みるべき一般的な介入と、それらの介入を促す可能性が最も高いヘルスチェックのステータスを提案します。自動化されたシステムや人間の管理者は、これらの介入やその他の介入によって選択的に状況を確認することができます。</p>
 <ul>
-<li><a href="#redirect-traffic">Redirect traffic</a> away from the affected server</li>
-<li><a href="#restart">Restart</a> the server software or hardware</li>
-<li><a href="#upgrade">Upgrade</a> the <code>rippled</code> software</li>
-<li><a href="#investigate-network">Investigate network</a> in case the problem originates elsewhere</li>
-<li><a href="#replace-hardware">Replace hardware</a></li>
+<li><a href="#トラフィックのリダイレクト">トラフィックのリダイレクト</a>: 影響を受けたサーバーからトラフィックをリダイレクトします。</li>
+<li><a href="#再起動">再起動</a>: サーバーソフトウェアまたはハードウェアを再起動します。</li>
+<li><a href="#更新">更新</a>: <code>rippled</code>をアップグレードします。</li>
+<li><a href="#ネットワークの調査">ネットワークの調査</a>: 問題が他の場所で発生した場合のためにネットワークを調査します。</li>
+<li><a href="#ハードウェアの交換">ハードウェアの交換</a></li>
 </ul>
-<h3 id="redirect-traffic">Redirect Traffic<a aria-hidden="true" class="hover_anchor" href="#redirect-traffic"><i class="fa fa-link"></i></a></h3>
-<p>A common reliability technique is to run a pool of redundant servers through one or more load-balancing proxies. You can do this with <code>rippled</code> servers, but should not do this with <a href="rippled-server-modes.html">validators</a>. In some cases, the load balancers can monitor the health of servers in their pools and direct traffic only to the servers that are currently reporting themselves as healthy. This allows servers to recover from being temporarily overloaded and automatically rejoin the pool of active servers.</p>
-<p>Redirecting traffic away from a server that is unhealthy is an appropriate response, especially for servers that report a <code>health</code> status of <code>warning</code>. Servers in the <code>critical</code> range may need more significant interventions.</p>
-<h3 id="restart">Restart<a aria-hidden="true" class="hover_anchor" href="#restart"><i class="fa fa-link"></i></a></h3>
-<p>The most straightforward intervention is to restart the server. This can resolve temporary issues with several types of failures, including any of the following <a href="health-check.html#response-format">metrics</a>:</p>
+<h3 id="トラフィックのリダイレクト">トラフィックのリダイレクト<a aria-hidden="true" class="hover_anchor" href="#トラフィックのリダイレクト"><i class="fa fa-link"></i></a></h3>
+<p>一般的な信頼性のためのテクニックは、1つ以上の負荷分散プロキシを通して冗長なサーバのプールを実行することです。これは<code>rippled</code>サーバではできますが、<a href="rippled-server-modes.html">バリデータ</a>ではすべきではありません。場合によっては、ロードバランサはプール内のサーバの健全性を監視し、現在健全であると報告しているサーバだけにトラフィックを向けることができます。これにより、サーバは一時的な過負荷から回復し、自動的にアクティブなサーバのプールに戻ることができます。</p>
+<p>特に<code>health</code>ステータスが<code>warning</code>と表示されたサーバに対しては、不健全なサーバからトラフィックをリダイレクトすることが適切な対応です。<code>critical</code>の範囲にあるサーバはより重要な介入が必要かもしれません。</p>
+<h3 id="再起動">再起動<a aria-hidden="true" class="hover_anchor" href="#再起動"><i class="fa fa-link"></i></a></h3>
+<p>最も簡単な方法は、サーバを再起動することです。これにより、以下の<a href="health-check.html#response-format">metrics</a>のいずれかを含む、いくつかのタイプの障害の一時的な問題を解決できます。</p>
 <ul>
 <li><code>load_factor</code></li>
 <li><code>peers</code></li>
 <li><code>server_state</code></li>
 <li><code>validated_ledger</code></li>
 </ul>
-<p>To restart only the <code>rippled</code> service, use <code>systemctl</code>:</p>
+<p><code>rippled</code>サービスのみを再起動するには、<code>systemctl</code>を使ってください：</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>rippled.service
 </code></pre></div>
-<p>A stronger intervention is to restart the entire machine.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> After a server starts, it typically needs up to 15 minutes to sync to the network. During this time, the health check is likely to report a critical or warning status. You should be sure your automated systems give servers enough time to sync before restarting them again.</p>
-<h3 id="upgrade">Upgrade<a aria-hidden="true" class="hover_anchor" href="#upgrade"><i class="fa fa-link"></i></a></h3>
-<p>If the server reports <code>"amendment_blocked": true</code> in the health check, this indicates that the XRP Ledger has enabled a <a href="amendments.html">protocol amendment</a> that your server does not understand. As a precaution against misinterpreting the revised rules of the network in a way that causes you to lose money, such servers become "amendment blocked" instead of operating normally.</p>
-<p>To resolve being amendment blocked, <a href="install-rippled.html">update your server</a> to a newer software version that understands the amendment.</p>
-<p>Also, software bugs can cause a server to get <a href="server-doesnt-sync.html">stuck not syncing</a>. In this case, the <code>server_state</code> metric is likely to be in a warning or critical state. If you are not using the latest stable release, you should upgrade to get the latest fixes for any known issues that could cause this.</p>
-<h3 id="investigate-network">Investigate Network<a aria-hidden="true" class="hover_anchor" href="#investigate-network"><i class="fa fa-link"></i></a></h3>
-<p>An unreliable or insufficient network connection can cause a server to report outages. Warning or critical values in the following <a href="health-check.html#response-format">metrics</a> can indicate network problems:</p>
+<p>より強力な介入は、マシン全体を再起動することです。</p>
+<p><strong>注意n:</strong> サーバの起動後、ネットワークへの同期には通常最大15分を要します。この間、ヘルスチェックはcriticalまたはwarningステータスを報告する可能性があります。自動化システムでは、サーバを再起動する前に、同期に十分な時間をかける必要があります。</p>
+<h3 id="更新">更新<a aria-hidden="true" class="hover_anchor" href="#更新"><i class="fa fa-link"></i></a></h3>
+<p>サーバがヘルスチェックで<code>"amendment_blocked": true</code>と報告した場合、これはXRP Ledgerがサーバが理解できない<a href="amendments.html">プロトコルの修正(Amendment)</a>を有効にしたことを示しています。ネットワークの改訂されたルールを誤って解釈して損害を被らないようにするため、このようなサーバーは正常に動作する代わりに"amendment blocked(Amendmentブロック)"となります。</p>
+<p>Amendmentブロックを解消するには、<a href="install-rippled.html">サーバをアップデート</a>して、Amendmentプログラムを理解できる新しいバージョンのソフトウェアにしてください。</p>
+<p>また、ソフトウェアのバグによってサーバが<a href="server-doesnt-sync.html">同期できない</a>状態になることもあります。この場合、<code>server_state</code>メトリクスはwarningまたはcriticalな状態になっている可能性があります。最新の安定版リリースを使用していない場合は、アップグレードして、この問題を引き起こす可能性のある既知の問題に対する最新の修正を入手してください。</p>
+<h3 id="ネットワークの調査">ネットワークの調査<a aria-hidden="true" class="hover_anchor" href="#ネットワークの調査"><i class="fa fa-link"></i></a></h3>
+<p>信頼性の低いネットワーク接続や不十分なネットワーク接続が原因で、サーバーが停止を報告することがあります。以下の<a href="health-check.html#response-format">Metrics</a>のwarningまたはcriticalの値は、ネットワークの問題を示している可能性があります。</p>
 <ul>
 <li><code>peers</code></li>
 <li><code>server_state</code></li>
 <li><code>validated_ledger</code></li>
 </ul>
-<p>In this case, the necessary interventions may involve changes to other systems, such as:</p>
+<p>この場合、必要な介入には、次のような他のシステムへの変更が含まれることがあります。</p>
 <ul>
-<li>Adjusting firewall rules to allow necessary traffic to reach a server, or to block harmful traffic from outside</li>
-<li>Restarting or replacing network interfaces, switches, routers, or cabling</li>
-<li>Contacting other network service providers to resolve an issue on their end</li>
+<li>必要なトラフィックがサーバに到達できるようにする、または外部からの有害なトラフィックをブロックするためのファイアウォールルールの調整</li>
+<li>ネットワークインターフェース、スイッチ、ルーター、ケーブルの再起動または交換</li>
+<li>他のネットワークサービスプロバイダーに連絡して、そのプロバイダー側での問題の解決</li>
 </ul>
-<h3 id="replace-hardware">Replace Hardware<a aria-hidden="true" class="hover_anchor" href="#replace-hardware"><i class="fa fa-link"></i></a></h3>
-<p>If the outage is caused by a hardware failure or by higher load than the hardware is capable of handling, you may need to replace some components or even the entire server.</p>
-<p>The amount of load on a server in the XRP Ledger depends in part on transaction volume in the network, which varies organically. Load also depends on your usage pattern. See <a href="capacity-planning.html">Capacity Planning</a> for how to plan the appropriate hardware and settings for your situation.</p>
-<p>Warning or critical values for the following <a href="health-check.html#response-format">metrics</a> may indicate insufficient hardware:</p>
+<h3 id="ハードウェアの交換">ハードウェアの交換<a aria-hidden="true" class="hover_anchor" href="#ハードウェアの交換"><i class="fa fa-link"></i></a></h3>
+<p>ハードウェアの故障や、ハードウェアの処理能力を超える高負荷が原因で障害が発生した場合、コンポーネントの交換やサーバ全体の交換が必要になることがあります。</p>
+<p>XRP Ledgerのサーバにかかる負荷の量は、ネットワークのトランザクション量に一部依存し、それはランダムに変化します。また、負荷は利用者の利用パターンにも依存します。状況に応じて適切なハードウェアと設定を計画する方法については、<a href="capacity-planning.html">容量の計画</a>をご覧ください。</p>
+<p>次の <a href="health-check.html#response-format">metrics</a>のwarningまたはcriticalの値は、ハードウェアが十分でないことを示している可能性があります。</p>
 <ul>
 <li><code>load_factor</code></li>
 <li><code>server_state</code></li>
@@ -813,7 +810,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -853,7 +850,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1659,7 +1656,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2589,7 +2586,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2654,7 +2651,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2674,12 +2671,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2719,7 +2716,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2775,7 +2772,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2785,7 +2782,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2822,12 +2819,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2901,7 +2898,7 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2916,7 +2913,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

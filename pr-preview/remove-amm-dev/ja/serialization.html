@@ -158,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -290,8 +290,9 @@
         <li class="nav-item level-3"><a class="nav-link" href="#accountidフィールド">AccountIDフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#amountフィールド">Amountフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#配列フィールド">配列フィールド</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#ブロブフィールド">ブロブフィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#blobフィールド">Blobフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#ハッシュフィールド">ハッシュフィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#issueフィールド">Issueフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#オブジェクトフィールド">オブジェクトフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#pathsetフィールド">PathSetフィールド</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#uintフィールド">UIntフィールド</a></li>
@@ -315,9 +316,6 @@
     <li class="active breadcrumb-item">バイナリフォーマット</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="バイナリフォーマット">バイナリフォーマット<a aria-hidden="true" class="hover_anchor" href="#バイナリフォーマット"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -342,8 +340,8 @@
 <p>フィールド（プレフィクスを含む）をソート順に連結します。</p>
 </li>
 </ol>
-<p>その結果、ECDSA（secp256k1楕円曲線を使用）やEd25519などの既知の署名アルゴリズムを使用して署名できるバイナリブロブが1つ作成されます。XRP Ledgerのために、適切なプレフィクス（シングル署名の場合は<code>0x53545800</code>、マルシグの場合は<code>0x534D5400</code>）を使用してデータを<a href="basic-data-types.html#ハッシュ">ハッシュ化</a>する必要があります。署名後に、指定されている<code>TxnSignature</code>フィールドを使用してトランザクションを再度シリアル化する必要があります。 <!-- --></p>
-<p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledgerでは、<a href="ledger-object-types.html">レジャーオブジェクト</a>や処理済みのトランザクションなど他のタイプのデータを表す場合にも同じシリアル化フォーマットが使用されます。ただし、署名されるトランザクションに追加するのに適切なフィールドは限られています。（たとえば署名自体が指定されている<code>TxnSignature</code>フィールドは、署名するバイナリブロブに含まれていてはなりません。）このように、「署名」フィールドとされてオブジェクトに署名するときにオブジェクトに含まれるフィールドもあれば、「非署名」とされてオブジェクトに含まれないフィールドもあります。</p>
+<p>その結果、ECDSA（secp256k1楕円曲線を使用）やEd25519などの既知の署名アルゴリズムを使用して署名できるバイナリBlobが1つ作成されます。XRP Ledgerのために、適切なプレフィクス（シングル署名の場合は<code>0x53545800</code>、マルシグの場合は<code>0x534D5400</code>）を使用してデータを<a href="basic-data-types.html#ハッシュ">ハッシュ化</a>する必要があります。署名後に、指定されている<code>TxnSignature</code>フィールドを使用してトランザクションを再度シリアル化する必要があります。 <!-- --></p>
+<p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledgerでは、<a href="ledger-object-types.html">レジャーオブジェクト</a>や処理済みのトランザクションなど他のタイプのデータを表す場合にも同じシリアル化フォーマットが使用されます。ただし、署名されるトランザクションに追加するのに適切なフィールドは限られています。（たとえば署名自体が指定されている<code>TxnSignature</code>フィールドは、署名するバイナリBlobに含まれていてはなりません。）このように、「署名」フィールドとされてオブジェクトに署名するときにオブジェクトに含まれるフィールドもあれば、「非署名」とされてオブジェクトに含まれないフィールドもあります。</p>
 <h3 id="例">例<a aria-hidden="true" class="hover_anchor" href="#例"><i class="fa fa-link"></i></a></h3>
 <p>署名済みトランザクションと未署名のトランザクションはいずれも、JSONフォーマットとバイナリフォーマットの両方で表すことができます。同じ署名済みトランザクションのJSONフォーマットとバイナリフォーマットの例を以下に示します。</p>
 <p><strong>JSON:</strong></p>
@@ -455,7 +453,7 @@
 <h3 id="フィールドid">フィールドID<a aria-hidden="true" class="hover_anchor" href="#フィールドid"><i class="fa fa-link"></i></a></h3>
 <p><a class="external-link" href="https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L117-L148" target="_blank" title="Source">[ソース - エンコード] <i aria-hidden="true" class="fa fa-external-link"></i></a>
 <a class="external-link" href="https://github.com/seelabs/rippled/blob/cecc0ad75849a1d50cc573188ad301ca65519a5b/src/ripple/protocol/impl/Serializer.cpp#L484-L509" target="_blank" title="Source">[ソース - デコード] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>フィールドのタイプコードとフィールドコードを結合すると、フィールドの一意のIDになります。このIDは、最終的なシリアル化ブロブでこのフィールドの前に付加されます。フィールドIDのサイズは、タイプコードとその結合対象のフィールドコードに応じて1～3バイトとなります。以下の表を参照してください。</p>
+<p>フィールドのタイプコードとフィールドコードを結合すると、フィールドの一意のIDになります。このIDは、最終的なシリアル化Blobでこのフィールドの前に付加されます。フィールドIDのサイズは、タイプコードとその結合対象のフィールドコードに応じて1～3バイトとなります。以下の表を参照してください。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -566,7 +564,7 @@
 <td>XRPまたはトークンの金額。フィールドの長さは、XRPの場合は64ビット、トークンの場合は384ビット（64+160+160）です。</td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#ブロブフィールド">Blob</a></td>
+<td style="text-align: left;"><a href="#blobフィールド">Blob</a></td>
 <td style="text-align: left;">7</td>
 <td style="text-align: left;">可変</td>
 <td style="text-align: left;">はい</td>
@@ -608,6 +606,13 @@
 <td>可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、<a href="transaction-common-fields.html#memosフィールド">memos</a>や<a href="multi-signing.html">マルチ署名</a>で使用される署名者のリストがあります。</td>
 </tr>
 <tr>
+<td style="text-align: left;"><a href="#issueフィールド">STIssue</a></td>
+<td style="text-align: left;">24</td>
+<td style="text-align: left;">160 or 320</td>
+<td style="text-align: left;">いいえ</td>
+<td>数量を含まない、資産(XRPまたはトークン)を指定します。</td>
+</tr>
+<tr>
 <td style="text-align: left;"><a href="#オブジェクトフィールド">STObject</a></td>
 <td style="text-align: left;">14</td>
 <td style="text-align: left;">可変</td>
@@ -637,7 +642,6 @@
 </tr>
 </tbody>
 </table>
-<!-- | [STIssue][]   | 24        | 320        | いいえ                   | <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> 数量を含まない、資産(XRPまたはトークン)を指定します。 | -->
 <p>上記のフィールドタイプの他に、<a href="ledger-object-types.html">レジャーオブジェクト</a>や<a href="transaction-metadata.html">トランザクションメタデータ</a>などのコンテキストでは以下のタイプが含まれることがあります。</p>
 <table class="table-responsive">
 <thead>
@@ -702,37 +706,58 @@
 </ul>
 <p>トークンは以下の3つのセグメントで構成され、セグメントの順序は以下のとおりです。</p>
 <ol>
-<li><a href="currency-formats.html#トークンの計算">内部通貨フォーマット</a>の額を示す64ビット。1番目のビットは、これがXRPではないことを示す<code>1</code>です。</li>
+<li><a href="#トークンの数量フォーマット">トークンの数量フォーマット</a>の額を示す64ビット。1番目のビットは、これがXRPではないことを示す<code>1</code>です。</li>
 <li><a href="currency-formats.html#通貨コード">通貨コード</a>を示す160ビット。標準APIでは、<a href="currency-formats.html#標準通貨コード">標準通貨コードフォーマット</a>を使用して「USD」などの3文字のコードが160ビットのコードに変換されますが、160ビットのカスタムコードも使用できます。</li>
 <li>イシュアーのアカウントIDを示す160ビット。（関連項目: <a href="addresses.html#アドレスのエンコード">アカウントアドレスエンコード</a></li>
 </ol>
 <p>1番目のビットに基づいて2つのサブタイプのいずれに該当するかを確認できます。<code>0</code>の場合はXRP、<code>1</code>の場合はトークンです。</p>
 <p>以下の図に、XRPの額とトークン額のシリアル化フォーマットを示します。</p>
-<p><img alt="「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。" src="img/serialization-amount.ja.png"/></p>
+<p><img alt="「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。" src="img/serialization-amount.ja.svg"/></p>
+<h4 id="トークンの数量フォーマット">トークンの数量フォーマット<a aria-hidden="true" class="hover_anchor" href="#トークンの数量フォーマット"><i class="fa fa-link"></i></a></h4>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<figure><a href="img/currency-number-format.ja.svg" title="トークンの数量フォーマットの図"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="0 0 700 380" width="700" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/currency-number-format.ja.svg__genericDefs"></defs><g><defs id="img/currency-number-format.ja.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath2"><path d="M0 0 L0 30 L280 30 L280 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath3"><path d="M0 0 L0 30 L630 30 L630 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath4"><path d="M0 0 L0 70 L650 70 L650 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath5"><path d="M0 0 L0 90 L150 90 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath6"><path d="M0 0 L0 30 L270 30 L270 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath7"><path d="M0 0 L0 30 L260 30 L260 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath8"><path d="M0 0 L0 30 L410 30 L410 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath9"><path d="M0 0 L0 30 L150 30 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath10"><path d="M0 0 L0 30 L20 30 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath11"><path d="M0 0 L0 60 L90 60 L90 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath12"><path d="M0 0 L0 100 L50 100 L50 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath13"><path d="M0 0 L0 130 L50 130 L50 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-number-format.ja.svg__clipPath14"><path d="M0 0 L0 90 L40 90 L40 0 Z"></path></clippath></defs><g font-family="sans-serif" font-size="14px" transform="translate(130,330)"><text clip-path="url(#img/currency-number-format.ja.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">最上位bitが1、残りが0</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(40,280)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath3)" height="28.5" stroke="none" width="628.5" x="0.5" y="0.5"></rect></g><g transform="translate(40,280)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath3)" fill="none" height="28.5" width="628.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-number-format.ja.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="128" xml:space="preserve" y="18.1094">0x8000000000000000000000000000000000000000</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(20,20)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" d="M0.5 0.5 L260.5 0.5 L260.5 21.6094 L649 21.6094 L649 69 L0.5 69 Z" stroke="none"></path></g><g transform="translate(20,20)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" d="M0.5 0.5 L260.5 0.5 L260.5 21.6094 L649 21.6094 L649 69 L0.5 69 Z" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" d="M0.5 21.6094 L260.5 21.6094" fill="none"></path><text clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="16.1094">トークンの数量フォーマット</text></g><g font-family="sans-serif" font-size="14px" transform="translate(530,110)"><text clip-path="url(#img/currency-number-format.ja.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="38.1094">(10¹⁵、10¹⁶-1)</text><text clip-path="url(#img/currency-number-format.ja.svg__clipPath5)" stroke="none" x="5" xml:space="preserve" y="54.2188">の範囲で正規化</text></g><g font-family="sans-serif" font-size="14px" transform="translate(210,100)"><text clip-path="url(#img/currency-number-format.ja.svg__clipPath2)" stroke="none" x="5" xml:space="preserve" y="18.1094">符号なし整数; 元の値+97</text></g><g font-family="sans-serif" font-size="14px" transform="translate(60,170)"><text clip-path="url(#img/currency-number-format.ja.svg__clipPath6)" stroke="none" x="5" xml:space="preserve" y="18.1094">"非XRP" bit (0=XRP, 1=非XRP)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(80,130)"><text clip-path="url(#img/currency-number-format.ja.svg__clipPath7)" stroke="none" x="5" xml:space="preserve" y="18.1094">符号 bit (0=負数, 1=正数)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(250,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath8)" height="28.5" stroke="none" width="408.5" x="0.5" y="0.5"></rect></g><g transform="translate(250,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath8)" fill="none" height="28.5" width="408.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-number-format.ja.svg__clipPath8)" font-family="sans-serif" font-size="14px" stroke="none" x="115" xml:space="preserve" y="18.1094">有効数字 (54 bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(90,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath9)" height="28.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(90,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath9)" fill="none" height="28.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-number-format.ja.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="14" xml:space="preserve" y="18.1094">指数 (8 bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(60,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath10)" height="28.5" stroke="none" width="18.5" x="0.5" y="0.5"></rect></g><g transform="translate(60,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath10)" fill="none" height="28.5" width="18.5" x="0.5" y="0.5"></rect></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(30,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath10)" height="28.5" stroke="none" width="18.5" x="0.5" y="0.5"></rect></g><g transform="translate(30,50)"><rect clip-path="url(#img/currency-number-format.ja.svg__clipPath10)" fill="none" height="28.5" width="18.5" x="0.5" y="0.5"></rect></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(30,250)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" d="M0.5 0.5 L312.0068 0.5 L312.0068 21.6094 L649 21.6094 L649 69 L0.5 69 Z" stroke="none"></path></g><g transform="translate(30,250)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" d="M0.5 0.5 L312.0068 0.5 L312.0068 21.6094 L649 21.6094 L649 69 L0.5 69 Z" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" d="M0.5 21.6094 L312.0068 21.6094" fill="none"></path><text clip-path="url(#img/currency-number-format.ja.svg__clipPath4)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="16.1094">特殊なケース(トークンの数量 = 0)</text></g><g transform="translate(60,300)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M10.5 11.5 L10.5 40.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M10.5 40.5 L70.5 40.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g><g transform="translate(500,70)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath12)" d="M10.5 11.5 L10.5 80.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath12)" d="M10.5 80.5 L30.5 80.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath12)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath12)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g><g transform="translate(140,70)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M10.5 11.5 L10.5 40.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M10.5 40.5 L70.5 40.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g><g transform="translate(30,70)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath13)" d="M10.5 11.5 L10.5 110.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath13)" d="M10.5 110.5 L30.5 110.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath13)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath13)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g><g transform="translate(60,70)"><path clip-path="url(#img/currency-number-format.ja.svg__clipPath14)" d="M10.5 11.5 L10.5 70.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath14)" d="M10.5 70.5 L20.5 70.5" fill="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath14)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-number-format.ja.svg__clipPath14)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g></g></svg></a></figure>
+<p>XRP Ledgerは64ビットを使って(代替可能な)トークンの金額をシリアライズします。(JSONフォーマットでは、通貨量オブジェクトの<code>value</code>フィールドが数値量になります)。バイナリ形式では、数値は"非XRP"ビット、符号ビット、指数、有効数字の順で構成されます。</p>
+<ol>
+<li>トークン数量の最初の(最上位)ビットは<code>1</code>で、XRP数量ではないことを示します。(XRPの金額は、このフォーマットと区別するために、最上位ビットが常に<code>0</code>に設定されています)。</li>
+<li>符号ビットは、金額がプラスかマイナスかを示します。標準的な<a class="external-link" href="https://ja.wikipedia.org/wiki/2の補数" target="_blank">2の補数 <i aria-hidden="true" class="fa fa-external-link"></i></a>整数とは異なり、XRP Ledgerフォーマットでは<code>1</code>は<strong>正</strong>を表し、<code>0</code>は<strong>負</strong>を表します。</li>
+<li>次の8ビットは指数を符号なし整数で表します。指数は、-96から+80(含む)の範囲でスケール（有効桁を10の何乗にするか）を示します。しかし、シリアライズするときには、指数に97を加えて符号なし整数としてシリアライズできるようにします。したがって、シリアル化された値<code>1</code>は指数<code>-96</code>を表し、シリアル化された値<code>177</code>は指数<code>80</code>を表します。</li>
+<li>残りの54ビットは、符号なし整数として有効数字(<em>mantissa</em> と呼ばれることもあります)を表します。シリアライズするとき、この値は10<sup>15</sup>(<code>1000000000000000</code>)から10<sup>16</sup>-1(<code>9999999999</code>)の範囲に正規化されます。0の特別なケースでは、符号ビット、指数、有効数字はすべて0ですので、64ビットの値は<code>0x800000000000000000000000</code>としてシリアライズされます。</li>
+</ol>
+<p>数値の金額は、<a href="currency-formats.html#通貨コード">通貨コード</a>および発行者とともにシリアライズされ、完全な<a href="#amountフィールド">トークン金額</a>を形成します。</p>
+<h4 id="通貨コード">通貨コード<a aria-hidden="true" class="hover_anchor" href="#通貨コード"><i class="fa fa-link"></i></a></h4>
+<p>プロトコルレベルでは、XRP Ledgerの通貨コードは任意の160bit値ですが、以下の値には特別な意味があります。</p>
+<ul>
+<li>通貨コード<code>0x0000000000000000000000005852500000000000</code>は<strong>使用できません</strong> 。(これは"標準フォーマット"において"XRP"を表します)。</li>
+<li>通貨コード<code>0x0000000000000000000000000000000000000000</code>(すべてゼロ)は、<strong>許可されません</strong>。通常、XRPの金額を通貨コードで指定することはありません。しかし、XRPの通貨コードを指定しなければならないフィールドが存在する場合、このコードはXRPを示すために使用されます。</li>
+</ul>
+<p><a href="http-websocket-apis.html"><code>rippled</code> API</a>は、3文字のASCIIコードを160ビットの16進数に変換するための<strong>標準フォーマット</strong>を以下のようにサポートしています。</p>
+<figure><a href="img/currency-code-format.ja.svg" title="標準通貨コードのフォーマット"><svg color-interpolation="auto" color-rendering="auto" fill="black" fill-opacity="1" font-family="'Dialog'" font-size="12px" font-style="normal" font-weight="normal" height="100%" image-rendering="auto" shape-rendering="auto" stroke="black" stroke-dasharray="none" stroke-dashoffset="0" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="10" stroke-opacity="1" stroke-width="1" text-rendering="auto" viewbox="10 20 660 290" width="660" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><!--Generated by the Batik Graphics2D SVG Generator--><defs id="img/currency-code-format.ja.svg__genericDefs"></defs><g><defs id="img/currency-code-format.ja.svg__defs1"><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath1"><path d="M0 0 L2147483647 0 L2147483647 2147483647 L0 2147483647 L0 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath2"><path d="M0 0 L0 30 L600 30 L600 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath3"><path d="M0 0 L0 70 L620 70 L620 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath4"><path d="M0 0 L0 40 L130 40 L130 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath5"><path d="M0 0 L0 30 L150 30 L150 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath6"><path d="M0 0 L0 30 L180 30 L180 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath7"><path d="M0 0 L0 30 L220 30 L220 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath8"><path d="M0 0 L0 60 L200 60 L200 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath9"><path d="M0 0 L0 30 L20 30 L20 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath10"><path d="M0 0 L0 60 L40 60 L40 0 Z"></path></clippath><clippath clippathunits="userSpaceOnUse" id="img/currency-code-format.ja.svg__clipPath11"><path d="M0 0 L0 60 L60 60 L60 0 Z"></path></clippath></defs><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(40,250)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath2)" height="28.5" stroke="none" width="598.5" x="0.5" y="0.5"></rect></g><g transform="translate(40,250)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath2)" fill="none" height="28.5" width="598.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.ja.svg__clipPath2)" font-family="sans-serif" font-size="14px" stroke="none" x="51" xml:space="preserve" y="18.1094">0x00000000000000000000000000000000000000000 (0の160bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(30,220)"><path clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" stroke="none"></path></g><g transform="translate(30,220)"><path clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" fill="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" d="M0.5 21.6094 L248.5 21.6094" fill="none"></path><text clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="16.1094">XRPの特殊なケース</text></g><g font-family="sans-serif" font-size="14px" transform="translate(330,110)"><text clip-path="url(#img/currency-code-format.ja.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="18.1094">ASCII 3文字</text><text clip-path="url(#img/currency-code-format.ja.svg__clipPath4)" stroke="none" x="5" xml:space="preserve" y="34.2188">("XRP"以外)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(30,40)"><path clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" stroke="none"></path></g><g transform="translate(30,40)"><path clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" d="M0.5 0.5 L248.5 0.5 L248.5 21.6094 L619 21.6094 L619 69 L0.5 69 Z" fill="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" d="M0.5 21.6094 L248.5 21.6094" fill="none"></path><text clip-path="url(#img/currency-code-format.ja.svg__clipPath3)" font-family="sans-serif" font-size="14px" stroke="none" x="5" xml:space="preserve" y="16.1094">トークンの通貨コードのフォーマット</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(300,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath5)" height="28.5" stroke="none" width="148.5" x="0.5" y="0.5"></rect></g><g transform="translate(300,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath5)" fill="none" height="28.5" width="148.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.ja.svg__clipPath5)" font-family="sans-serif" font-size="14px" stroke="none" x="12" xml:space="preserve" y="18.1094">ISOコード (24 bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(460,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath6)" height="28.5" stroke="none" width="178.5" x="0.5" y="0.5"></rect></g><g transform="translate(460,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath6)" fill="none" height="28.5" width="178.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.ja.svg__clipPath6)" font-family="sans-serif" font-size="14px" stroke="none" x="25" xml:space="preserve" y="18.1094">予約済み (40 bits)</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(70,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath7)" height="28.5" stroke="none" width="218.5" x="0.5" y="0.5"></rect></g><g transform="translate(70,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath7)" fill="none" height="28.5" width="218.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.ja.svg__clipPath7)" font-family="sans-serif" font-size="14px" stroke="none" x="45" xml:space="preserve" y="18.1094">予約済み (88 bits)</text></g><g font-family="sans-serif" font-size="14px" transform="translate(80,120)"><text clip-path="url(#img/currency-code-format.ja.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="18.1094">種類コード (8 bits)</text><text clip-path="url(#img/currency-code-format.ja.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="34.2188">ISO 4217向けの0x00</text><text clip-path="url(#img/currency-code-format.ja.svg__clipPath8)" stroke="none" x="5" xml:space="preserve" y="50.3281">または擬似ISO通貨</text></g><g fill="rgb(255,255,255)" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="0" transform="translate(40,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath9)" height="28.5" stroke="none" width="18.5" x="0.5" y="0.5"></rect></g><g transform="translate(40,70)"><rect clip-path="url(#img/currency-code-format.ja.svg__clipPath9)" fill="none" height="28.5" width="18.5" x="0.5" y="0.5"></rect><text clip-path="url(#img/currency-code-format.ja.svg__clipPath9)" font-family="sans-serif" font-size="14px" stroke="none" x="1" xml:space="preserve" y="18.1094">00</text></g><g transform="translate(310,90)"><path clip-path="url(#img/currency-code-format.ja.svg__clipPath10)" d="M10.5 11.5 L10.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath10)" d="M10.5 40.5 L20.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath10)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath10)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g><g transform="translate(40,90)"><path clip-path="url(#img/currency-code-format.ja.svg__clipPath11)" d="M10.5 11.5 L10.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath11)" d="M10.5 40.5 L40.5 40.5" fill="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="white" stroke="none"></path><path clip-path="url(#img/currency-code-format.ja.svg__clipPath11)" d="M4 22.2583 L10.5 11 L17 22.2583 Z" fill="none"></path></g></g></svg></a></figure>
+<ol>
+<li>最初の8ビットは<code>0x00</code>でなければなりません。</li>
+<li>次の88ビットは予約済みで、すべて<code>0</code>でなければなりません。</li>
+<li>次の24ビットはASCIIの3文字を表します。
+    <a class="external-link" href="https://www.xe.com/iso4217.php" target="_blank">ISO 4217 <i aria-hidden="true" class="fa fa-external-link"></i></a> コード、または "BTC"のような一般的な擬似 ISO 4217コードの使用を推奨します。すべての大文字と小文字、数字、記号 <code>?</code>, <code>!</code>, <code>@</code>, <code>#</code>, <code>$</code>, <code>%</code>, <code>^</code>, <code>&amp;</code>, <code>*</code>, <code>&lt;</code>, <code>&gt;</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>[</code>, <code>]</code>, <code>|</code>が利用可能です。 通貨コード<code>XRP</code>(すべて大文字)はXRPのために予約済みであり、トークンで使用することはできません。</li>
+<li>次の40ビットは予約済みで、すべて<code>0</code>でなければなりません。</li>
+</ol>
+<p><strong>非標準フォーマット</strong>は、最初の8ビットが<code>0x00</code>以外の160ビットのデータです。</p>
 <h3 id="配列フィールド">配列フィールド<a aria-hidden="true" class="hover_anchor" href="#配列フィールド"><i class="fa fa-link"></i></a></h3>
 <p>一部のトランザクションフィールド（<a href="signerlistset.html">SignerListSetトランザクション</a>の<code>SignerEntries</code>や<a href="transaction-common-fields.html#memosフィールド"><code>Memos</code></a>など）はオブジェクトの配列です（「STArray」タイプと呼ばれます）。</p>
 <p>配列には、さまざまな<a href="#オブジェクトフィールド">オブジェクトフィールド</a>がそのネイティブバイナリフォーマットで特定の順序で含まれています。JSONでは、各配列メンバーが1つのフィールド（メンバーオブジェクトフィールドの名前）を含むJSON「ラッパー」オブジェクトです。そのフィールドの値は（「内部」）オブジェクト自体です。</p>
 <p>バイナリフォーマットでは、配列の各メンバーにはフィールドIDプレフィクス（ラッパーオブジェクトの単一キーに基づく）と内容（<a href="#オブジェクトフィールド">オブジェクトとしてシリアル化された</a>内部オブジェクトからなる）が含まれています。配列の終わりをマークするため、アイテムにフィールドID <code>0xf1</code>（配列のタイプコードとフィールドコード1）を付加し、内容は指定しません。</p>
 <p>以下の例は、配列のシリアル化フォーマットを示します（<code>SignerEntries</code>フィールド）。</p>
 <p><img alt="配列フィールドID、各配列要素のフィールドIDと内容、および「配列の終わり」を示すフィールドID" src="img/serialization-array.ja.png"/></p>
-<h3 id="ブロブフィールド">ブロブフィールド<a aria-hidden="true" class="hover_anchor" href="#ブロブフィールド"><i class="fa fa-link"></i></a></h3>
-<p>ブロブタイプは、任意のデータを持つ<a href="#長さプレフィクスを付加する">長さプレフィクスが付加されている</a>フィールドです。このタイプを使用する2種類の一般的なフィールドとして、<code>SigningPubKey</code>と<code>TxnSignature</code>があります。これらのフィールドにはそれぞれ、トランザクションの実行を承認する公開鍵と署名が含まれています。</p>
+<h3 id="blobフィールド">Blobフィールド<a aria-hidden="true" class="hover_anchor" href="#blobフィールド"><i class="fa fa-link"></i></a></h3>
+<p>Blobタイプは、任意のデータを持つ<a href="#長さプレフィクスを付加する">長さプレフィクスが付加されている</a>フィールドです。このタイプを使用する2種類の一般的なフィールドとして、<code>SigningPubKey</code>と<code>TxnSignature</code>があります。これらのフィールドにはそれぞれ、トランザクションの実行を承認する公開鍵と署名が含まれています。</p>
 <p>両方のフィールドにはこれ以上の内容構造がないため、フィールドIDと長さプレフィクスの後に可変長エンコードで示される正確なバイト数で構成されます。</p>
 <h3 id="ハッシュフィールド">ハッシュフィールド<a aria-hidden="true" class="hover_anchor" href="#ハッシュフィールド"><i class="fa fa-link"></i></a></h3>
 <p>XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256があります。これらのフィールドには特定のビット数のバイナリデータが含まれており、それらのデータはハッシュ演算の結果を表す場合とそうでない場合があります。</p>
 <p>これらのフィールドは、長さインディケーターを使用せずに、ビッグエンディアンバイトオーダーで特定数のビットとしてシリアル化されます。</p>
-<!--
-### Issueフィールド
-[STIssue]: #issueフィールド -->
-<!-- TODO: translate this section -->
-<!--
-_(The "Issue" or "STIssue" type is part of multiple proposed extensions to the XRP Ledger protocol, including [XLS-30d: Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> and [Federated Sidechains](federated-sidechains.html) <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)_
--->
-<!--
-Some fields specify a _type_ of asset, which could be XRP or a fungible [token](tokens.html), without an amount. These fields have consist of two 160-bit segments in order:
-
-1. The first 160 bits are the [currency code](currency-formats.html#通貨コード) of the asset. For XRP, this is all 0's.
-2. The next 160 bits are the [AccountID of the token issuer](#accountidフィールド). For XRP, this is all 0's. -->
+<h3 id="issueフィールド">Issueフィールド<a aria-hidden="true" class="hover_anchor" href="#issueフィールド"><i class="fa fa-link"></i></a></h3>
+<p>いくつかのフィールドは、XRPや<a href="tokens.html">トークン</a>といったアセットタイプを指定します。これらのフィールドは、1つまたは2つの160ビットから構成されています：</p>
+<ol>
+<li>最初の160ビットはアセットの<a href="#通貨コード">通貨コード</a>です。XRPの場合、これはすべて0です。</li>
+<li>最初の160ビットが全て0の場合(アセットがXRPの場合)、フィールドはそこで終了します。そうでない場合、アセットはトークンであり、次の160ビットは<a href="#accountidフィールド">トークン発行者のAccountID</a>です。</li>
+</ol>
 <h3 id="オブジェクトフィールド">オブジェクトフィールド<a aria-hidden="true" class="hover_anchor" href="#オブジェクトフィールド"><i class="fa fa-link"></i></a></h3>
 <p>トランザクションフィールドの一部（<a href="signerlistset.html">SignerListSetトランザクション</a>の<code>SignerEntry</code>や<code>Memos</code>配列の<code>Memo</code>など）はオブジェクトです（「STObject」タイプと呼ばれます）。オブジェクトのシリアル化は配列のシリアル化に似ていますが、唯一異なる点としてオブジェクトフィールド内では<strong>オブジェクトのメンバーを正規順序に従って配置する必要がある</strong>点があげられます。配列フィールドではすでに順序が明示的に設定されています。</p>
 <p>オブジェクトフィールドの<a href="#フィールドの正規順序">正規フィールド順序</a>は、すべての最上位フィールドの正規フィールド順序と同じですが、オブジェクトのメンバーはオブジェクト内でソートする必要があります。最終メンバーの後には、「オブジェクトの終わり」を示すフィールドID（<code>0xe1</code>）があり、このフィールドには内容がありません。</p>
@@ -1232,7 +1257,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -1272,7 +1297,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -2078,7 +2103,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -3008,7 +3033,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -3073,7 +3098,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -3093,12 +3118,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -3138,7 +3163,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -3194,7 +3219,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -3204,7 +3229,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -3241,12 +3266,12 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -3320,7 +3345,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -3335,7 +3360,7 @@ Some fields specify a _type_ of asset, which could be XRP or a fungible [token](
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

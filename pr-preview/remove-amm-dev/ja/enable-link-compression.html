@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Enable Link Compression - XRPL.org (日本語)</title>
+    <title>回線圧縮の有効化 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Enable Link Compression | XRPL.org (日本語)">
+    <meta property="og:title" content="回線圧縮の有効化 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/enable-link-compression.html" />
-    <meta property="og:description" content="Save bandwidth by compressing peer-to-peer communications." />
-    <meta name="description" content="Save bandwidth by compressing peer-to-peer communications." />
+    <meta property="og:description" content="ピアツーピア通信を圧縮して帯域幅を節約します。" />
+    <meta name="description" content="ピアツーピア通信を圧縮して帯域幅を節約します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Core Server']
+      "page_labels": ['コアサーバ']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -158,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-amm-dev/content/infrastructure/configuration/peering/enable-link-compression.md?pr=/XRPLF/xrpl-dev-portal/pull/2288" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/remove-amm-dev/content/@i18n/ja/infrastructure/configuration/peering/enable-link-compression.md?pr=/XRPLF/xrpl-dev-portal/pull/2288" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-コアサーバ">コアサーバ</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバ" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,12 +272,12 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#enable-link-compression">Enable Link Compression</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#steps">Steps</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#1-edit-your-rippled-servers-config-file">1. Edit your rippled server's config file.</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#2-in-the-config-file-add-or-uncomment-the-compression-stanza">2. In the config file, add or uncomment the [compression] stanza.</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#3-restart-the-rippled-server">3. Restart the rippled server</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#回線圧縮の有効化">回線圧縮の有効化</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#手順">手順</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#1-rippledサーバの設定ファイルを編集します">1. rippledサーバの設定ファイルを編集します。</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#2-設定ファイルにcompressionを追加またはコメントアウトします">2. 設定ファイルに[compression]を追加またはコメントアウトします。</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#3-rippled-サーバを再起動します">3. rippled サーバを再起動します。</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -295,35 +295,32 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/infrastructure.html">インフラストラクチャ</a></li>
     <li class="active breadcrumb-item"><a href="/ja/configure-peering.html">ピアリング</a></li>
-    <li class="active breadcrumb-item">Enable Link Compression</li>
+    <li class="active breadcrumb-item">回線圧縮の有効化</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="enable-link-compression">Enable Link Compression<a aria-hidden="true" class="hover_anchor" href="#enable-link-compression"><i class="fa fa-link"></i></a></h1>
-<p>The <code>rippled</code> server can save bandwidth by compressing its <a href="peer-protocol.html">peer-to-peer communications</a>, at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled.</p>
-<h2 id="steps">Steps<a aria-hidden="true" class="hover_anchor" href="#steps"><i class="fa fa-link"></i></a></h2>
-<p>To enable link compression on your server, complete the following steps:</p>
-<h3 id="1-edit-your-rippled-servers-config-file">1. Edit your <code>rippled</code> server's config file.<a aria-hidden="true" class="hover_anchor" href="#1-edit-your-rippled-servers-config-file"><i class="fa fa-link"></i></a></h3>
+        <h1 id="回線圧縮の有効化">回線圧縮の有効化<a aria-hidden="true" class="hover_anchor" href="#回線圧縮の有効化"><i class="fa fa-link"></i></a></h1>
+<p><code>rippled</code>サーバは<a href="peer-protocol.html">ピアツーピア通信</a>を圧縮することで帯域幅を節約できますが、その代償としてCPU使用率が高くなります。回線圧縮を有効にすると、サーバーは回線圧縮を有効にしているピアサーバとの通信を自動的に圧縮します。</p>
+<h2 id="手順">手順<a aria-hidden="true" class="hover_anchor" href="#手順"><i class="fa fa-link"></i></a></h2>
+<p>サーバで回線圧縮を有効にするには、以下の手順を実行します。</p>
+<h3 id="1-rippledサーバの設定ファイルを編集します">1. <code>rippled</code>サーバの設定ファイルを編集します。<a aria-hidden="true" class="hover_anchor" href="#1-rippledサーバの設定ファイルを編集します"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">$<span class="w"> </span>vim<span class="w"> </span>/etc/opt/ripple/rippled.cfg
 </code></pre></div>
-<p>The <a href="install-rippled.html">recommended installation</a> uses the config file <code>/etc/opt/ripple/rippled.cfg</code> by default. Other places you can put a config file include <code>$HOME/.config/ripple/rippled.cfg</code> (where <code>$HOME</code> is the home directory of the user running <code>rippled</code>), <code>$HOME/.local/ripple/rippled.cfg</code>, or the current working directory from where you start <code>rippled</code>.<!--_ --></p>
-<h3 id="2-in-the-config-file-add-or-uncomment-the-compression-stanza">2. In the config file, add or uncomment the <code>[compression]</code> stanza.<a aria-hidden="true" class="hover_anchor" href="#2-in-the-config-file-add-or-uncomment-the-compression-stanza"><i class="fa fa-link"></i></a></h3>
-<p>To enable compression:</p>
+<p><a href="install-rippled.html">推奨インストール</a>では、デフォルトで<code>/etc/opt/ripple/rippled.cfg</code>という設定ファイルを使用します。その他の場所としては、<code>$HOME/.config/ripple/rippled.cfg</code>(<code>$HOME</code>は<code>rippled</code>を実行しているユーザーのホームディレクトリです)、<code>$HOME/.local/ripple/rippled.cfg</code>または<code>rippled</code>を起動した現在の作業ディレクトリがあります。<!--_ --></p>
+<h3 id="2-設定ファイルにcompressionを追加またはコメントアウトします">2. 設定ファイルに<code>[compression]</code>を追加またはコメントアウトします。<a aria-hidden="true" class="hover_anchor" href="#2-設定ファイルにcompressionを追加またはコメントアウトします"><i class="fa fa-link"></i></a></h3>
+<p>圧縮を有効にするには</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">[compression]
 true
 </code></pre></div>
-<p>Use <code>false</code> to disable compression (the default).</p>
-<h3 id="3-restart-the-rippled-server">3. Restart the <code>rippled</code> server<a aria-hidden="true" class="hover_anchor" href="#3-restart-the-rippled-server"><i class="fa fa-link"></i></a></h3>
+<p>圧縮を無効にするには<code>false</code>を使用します（デフォルト）。</p>
+<h3 id="3-rippled-サーバを再起動します">3. <code>rippled</code> サーバを再起動します。<a aria-hidden="true" class="hover_anchor" href="#3-rippled-サーバを再起動します"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">$<span class="w"> </span>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>rippled.service
 </code></pre></div>
-<p>After the restart, your server automatically uses link compression with other peers that also have link compression enabled.</p>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<p>再起動後、サーバは回線圧縮を有効にしている他のピアとの間で自動的に回線圧縮を使用します。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><a href="capacity-planning.html">Capacity Planning</a></li>
-<li><a href="peer-protocol.html">Peer Protocol</a></li>
+<li><a href="capacity-planning.html">容量の計画</a></li>
+<li><a href="peer-protocol.html">ピアプロトコル</a></li>
 </ul>
 <!-- -->
 <!-- -->
@@ -767,7 +764,7 @@ true
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -807,7 +804,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1613,7 +1610,7 @@ true
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2543,7 +2540,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2608,7 +2605,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2628,12 +2625,12 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2673,7 +2670,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2729,7 +2726,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2739,7 +2736,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2776,12 +2773,12 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2855,7 +2852,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2870,7 +2867,7 @@ true
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

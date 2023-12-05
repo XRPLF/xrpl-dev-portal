@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="トランザクションのメタデータ | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/transaction-metadata.html" />
-    <meta property="og:description" content="トランザクションのメタデータは、トランザクションの処理後にトランザクションに追加されるひとまとまりのデータです。" />
-    <meta name="description" content="トランザクションのメタデータは、トランザクションの処理後にトランザクションに追加されるひとまとまりのデータです。" />
+    <meta property="og:description" content="トランザクションのメタデータは、トランザクションが成功したかどうかに関係なく、トランザクションの結果を詳細に記述します。" />
+    <meta name="description" content="トランザクションのメタデータは、トランザクションが成功したかどうかに関係なく、トランザクションの結果を詳細に記述します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -158,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -273,6 +273,12 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#トランザクションのメタデータ">トランザクションのメタデータ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#メタデータの例">メタデータの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#affectednodes">AffectedNodes</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#creatednodeのフィールド">CreatedNodeのフィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#deletednodeのフィールド">DeletedNodeのフィールド</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#modifiednodeのフィールド">ModifiedNodeのフィールド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nftのフィールド">NFTのフィールド</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#delivered_amount">delivered_amount</a></li>
       </ul>
   </div>
@@ -292,13 +298,10 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/transaction-formats.html">トランザクションのフォーマット</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/transaction-formats.html">トランザクションリファレンス</a></li>
     <li class="active breadcrumb-item">トランザクションのメタデータ</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="トランザクションのメタデータ">トランザクションのメタデータ<a aria-hidden="true" class="hover_anchor" href="#トランザクションのメタデータ"><i class="fa fa-link"></i></a></h1>
 <p>トランザクションのメタデータは、トランザクションの処理後にトランザクションに追加されるひとまとまりのデータです。レジャーに記録されるトランザクションは、トランザクションが成功するかどうかにかかわらず、メタデータを保持しています。トランザクションのメタデータには、トランザクションの結果の詳細が含まれます。</p>
@@ -340,14 +343,630 @@
 </tr>
 </tbody>
 </table>
+<h2 id="メタデータの例">メタデータの例<a aria-hidden="true" class="hover_anchor" href="#メタデータの例"><i class="fa fa-link"></i></a></h2>
+<p>次のJSONオブジェクトは、<a class="external-link" href="https://livenet.xrpl.org/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">複雑なクロスカレンシー支払い <i aria-hidden="true" class="fa fa-external-link"></i></a>のメタデータを示しています。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"AffectedNodes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9ZoLsJHzMMJLpvsViWQ4Jgx17N8cz1997"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"77349986"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1E7E658C2D3DF91EFAE5A12573284AD6F526B8F64DD12F013C6F889EF45BEA97"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55C11248ACEFC2EFD59755BF88867783AC18EA078517108F942069C2FBE4CF5C"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">35707468</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2298.927882138068"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000006B"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpvvAvaZ7TXHkNLM8UJwCTU6yBU2jDTJ1P"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000007"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"220DDA7164F3F41F3C5223FA3125D4CD368EBB4FB954B5FBFFB6D1EA6DACDD5E"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2297.927882138068"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1DB2F9C67C3F42F7B8AB02BA2264254A78A201EC8A9974A1CACEFD51545B1263"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43081739</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33403.80553244443"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000001A40"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rd5Sx93pCMgfxwBuofjen2csoFYmY8VrT"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38569918AF54B520463CFDDD00EB5ADD8768039BD94E61A5E25C387EA4FDC9A3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33402.80752845242"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38A0E82ADC2DA6C6D59929B73E9812CD1E1384E452FD23D0717EA0037E2FC9E3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251694</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBndiPPKs9k5rjBb7HsEiqXKrz8AfUnqWq"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4627DFFCFF8B5A265EDBD8AE8C14A52325DBFEDAF4F5C32E5B09B13AC59DBA5E"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">407556</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75.1379833998197"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"204986996"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"557BDD35E40EAFFE0AC98108A0F4AC4BB812A168CFD5B4E35475F42A60ABD9C8"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76.1399833998197"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"207720593"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"961C575073788979815F103D065CEE449D2EA6EFE8FC8C33C26EC08586925D90"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251680</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9KG7Du7aFmABzMvDnwuvPaEoMu4Eurwok"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080207629"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578765</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5A667CB5FBAB4143EDEFBD6EDDD4B6D19C905209C8EE16486D5D7CD6CB083E78"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080152531"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578764</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E3CDFD288620871455634DC1E56439136AACA1DDBCE987BE12F97486AB477375"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251694</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"DeletedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9ZoLsJHzMMJLpvsViWQ4Jgx17N8cz1997"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A6D5D1C1CC92D56FDDFD4434FB10BD31F63EB991DA3C756653071AFD498D0000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DB028A461E98B0398CAD65F2871B381A6D0B9A21662CA5B033438D83C518C0F2"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">35686129</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rcA8X3TVMST1n3CJeAdGk1RdRCHii7N2h"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.05"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6AA7E5121FEB456F0A899E3D6F25D62ABB408BB67B91C9270E13714401ED72B5"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rd5Sx93pCMgfxwBuofjen2csoFYmY8VrT"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8251028196"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">274</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6F830A1B38F827CD4BEC946A40F1E2DF726FC22AFC3918FD621567AF17F49F3A"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8253816902"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38A0E82ADC2DA6C6D59929B73E9812CD1E1384E452FD23D0717EA0037E2FC9E3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251694</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rd5Sx93pCMgfxwBuofjen2csoFYmY8VrT"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79C54A4EBD69AB2EADCE313042F36092BE432423CC6A4F784E0CB6D74F25A336"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">273</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8246341599"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2951.147613535471"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7FD1EAAE17B7D68AE640FFC56CECC3999B4F938EFFF6EA6887B6CC8BD9DBDC63"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8249130305"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2952.145617527486"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38A0E82ADC2DA6C6D59929B73E9812CD1E1384E452FD23D0717EA0037E2FC9E3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251694</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-11.68225001668339"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000000000000004A"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"826CF5BFD28F3934B518D0BDF3231259CBD3FD0946E3C3CA0C97D2C75D2D1A09"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-10.68225001668339"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28B271F7C27C1A267F32FFCD8B1795C5D3B1DC761AD705E3A480139AA8B61B09"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43237130</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBndiPPKs9k5rjBb7HsEiqXKrz8AfUnqWq"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8276201534"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">407558</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"880C6FB7B9C0083211F950E4449AD45895C0EC1114B5112CE1320AC7275E3237"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8273467937"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CB4B54942F11510A47D2731C3260429093F24016B366CBF15D8EC4B705372F02"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251683</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-6557.745685633666"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2228224</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBndiPPKs9k5rjBb7HsEiqXKrz8AfUnqWq"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000512"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8A9FEE5192E334195314B5C162BC78F7452ADB14E06839D48943BAE05EE1967F"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-6558.747685633666"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"961C575073788979815F103D065CEE449D2EA6EFE8FC8C33C26EC08586925D90"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251680</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9990651675.348776"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">3211264</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHaans8PtgwbacHvXAL3u6TG28gTAtCwr8"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9KG7Du7aFmABzMvDnwuvPaEoMu4Eurwok"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000000"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A2B41EE7818A5756B6A2276BDBB3CE0ED3A3B350787FD6B76E5EA1354A8F20D2"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9990651678.137482"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"961C575073788979815F103D065CEE449D2EA6EFE8FC8C33C26EC08586925D90"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251680</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"DeletedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"ExchangeRate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53071AFD498D0000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A6D5D1C1CC92D56FDDFD4434FB10BD31F63EB991DA3C756653071AFD498D0000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerGetsCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000004555520000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerGetsIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2ADB0B3959D60A6E6991F729E1918B7163925230"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerPaysCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000000000004554480000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerPaysIssuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06CC4A6D023E68AA3499C6DE3E9F2DC52B8BA254"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A6D5D1C1CC92D56FDDFD4434FB10BD31F63EB991DA3C756653071AFD498D0000"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9ZoLsJHzMMJLpvsViWQ4Jgx17N8cz1997"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"RootIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A83C1B192A27582EDB320EBD7A3FE58D7042CE04B67A2B3D87FDD63D871E12D7"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DirectoryNode"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A83C1B192A27582EDB320EBD7A3FE58D7042CE04B67A2B3D87FDD63D871E12D7"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000002"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C493ABA2619D0FC6355BA862BC8312DF8266FBE76AFBA9636E857F7EAC874A99"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"28B271F7C27C1A267F32FFCD8B1795C5D3B1DC761AD705E3A480139AA8B61B09"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43237130</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9KG7Du7aFmABzMvDnwuvPaEoMu4Eurwok"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookDirectory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E6E8A9842EA2ED1FD5D0599343692CE1EBF977AEA751B7DC5B038D7EA4C68000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"BookNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"OwnerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">39018</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHaans8PtgwbacHvXAL3u6TG28gTAtCwr8"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9990651675.348776"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9990651675348776"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Offer"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C939B9B2C5803DD6D89B792E72470F79CBE9F9E999691789E0B68C3808BDDD8E"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"TakerGets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHaans8PtgwbacHvXAL3u6TG28gTAtCwr8"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9990651678.137482"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"TakerPays"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9990651678137482"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"961C575073788979815F103D065CEE449D2EA6EFE8FC8C33C26EC08586925D90"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43251680</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"ModifiedNode"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"FinalFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2963.413395452545"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">65536</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000001A97"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpvvAvaZ7TXHkNLM8UJwCTU6yBU2jDTJ1P"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000007"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"LedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E4D1FBD5CB72A1D3EE38C21F3BCB13E454FCB469CD01C1366E0008A031E6A7FC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousFields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2964.413395452545"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1DB2F9C67C3F42F7B8AB02BA2264254A78A201EC8A9974A1CACEFD51545B1263"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">43081739</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"DeliveredAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHaans8PtgwbacHvXAL3u6TG28gTAtCwr8"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.788706"</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"TransactionIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"TransactionResult"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"delivered_amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GCB"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rHaans8PtgwbacHvXAL3u6TG28gTAtCwr8"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.788706"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="affectednodes">AffectedNodes<a aria-hidden="true" class="hover_anchor" href="#affectednodes"><i class="fa fa-link"></i></a></h2>
+<p><code>AffectedNodes</code>配列には、このトランザクションが何らかの変更を加えた<a href="ledger-object-types.html">レジャーエントリ</a>の完全なリストが格納されます。この配列の各項目は、何が起こったかを示すトップレベルのフィールドを1つ持つオブジェクトです。</p>
+<ul>
+<li><code>CreatedNode</code>: トランザクションが新しいレジャーエントリを作成したことを示します。</li>
+<li><code>DeletedNode</code>: トランザクションが新しいレジャーエントリを削除したことを示します。</li>
+<li><code>ModifiedNode</code>: トランザクションが既存のレジャーエントリを更新したことを示します。</li>
+</ul>
+<p>これらの各フィールドの値は、レジャーエントリに行われた変更を記述するJSONオブジェクトです。</p>
+<h3 id="creatednodeのフィールド">CreatedNodeのフィールド<a aria-hidden="true" class="hover_anchor" href="#creatednodeのフィールド"><i class="fa fa-link"></i></a></h3>
+<p><code>CreatedNode</code>オブジェクトは次のフィールドを含みます。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">作成された<a href="ledger-object-types.html">レジャーエントリの種類</a>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerIndex</code></td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
+<td style="text-align: left;">レジャーの<a href="ledgers.html">状態ツリー</a>内のこの<a href="ledger-object-ids.html">レジャーエントリのID</a>。<strong>注意:</strong> 名前が非常に似ていますがこれは<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>とは<strong>異なります</strong>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>NewFields</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">新しく作成されたレジャー エントリの内容を示すフィールド。どのフィールドが存在するかは、作成されたレジャーエントリの種類によって異なります。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deletednodeのフィールド">DeletedNodeのフィールド<a aria-hidden="true" class="hover_anchor" href="#deletednodeのフィールド"><i class="fa fa-link"></i></a></h3>
+<p><code>DeletedNode</code>オブジェクトは次のフィールドを含みます。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">削除された<a href="ledger-object-types.html">レジャーエントリの種類</a>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerIndex</code></td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
+<td style="text-align: left;">レジャーの<a href="ledgers.html">状態ツリー</a>内のこの<a href="ledger-object-ids.html">レジャーエントリのID</a>。<strong>注意:</strong> 名前が非常に似ていますがこれは<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>とは<strong>異なります</strong></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FinalFields</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">削除されたレジャーエントリの最後の内容を示すフィールド。どのフィールドが存在するかは、削除されたレジャーエントリの種類によって異なります。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modifiednodeのフィールド">ModifiedNodeのフィールド<a aria-hidden="true" class="hover_anchor" href="#modifiednodeのフィールド"><i class="fa fa-link"></i></a></h3>
+<p><code>ModifiedNode</code>オブジェクトは次のフィールドを含みます。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>LedgerEntryType</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">更新された<a href="ledger-object-types.html">レジャーエントリの種類</a>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>LedgerIndex</code></td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
+<td style="text-align: left;">レジャーの<a href="ledgers.html">状態ツリー</a>内のこの<a href="ledger-object-ids.html">レジャーエントリのID</a>。<strong>注意:</strong> 名前が非常に似ていますがこれは<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>とは<strong>異なります</strong>。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>FinalFields</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">このトランザクションからの変更を適用した後のレジャーエントリの内容を示すフィールド。どのフィールドが存在するかは、作成されたレジャーエントリの種類によって異なります。ほとんどのタイプのレジャーエントリには<code>PreviousTxnID</code>フィールドと<code>PreviousTxnLgrSeq</code>フィールドがありますが、これは省略されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PreviousFields</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">このトランザクションの結果として変更されたオブジェクトのすべてのフィールドの以前の値。トランザクションがオブジェクトにフィールドを追加しただけの場合、このフィールドは空のオブジェクトです。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PreviousTxnID</code></td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
+<td style="text-align: left;"><em>(省略可能)</em> このレジャーエントリを変更する前のトランザクションの<a href="transactions.html#トランザクションの識別">識別用ハッシュ</a>。<code>PreviousTxnID</code>フィールドを持たないレジャーエントリの種類では省略されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>PreviousTxnLgrSeq</code></td>
+<td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;"><em>(省略可能)</em> このレジャーエントリを変更する前のトランザクションを含むレジャーバージョンの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>。<code>PreviousTxnLgrSeq</code>フィールドを持たないレジャーエントリの種類では省略されます。</td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout 注記"><strong>注記:</strong> 変更されたレジャーエントリに<code>PreviousTxnID</code>フィールドと<code>PreviousTxnLgrSeq</code>フィールドがある場合、トランザクションは常にトランザクションの識別ハッシュとトランザクションを含むレジャーバージョンのインデックスでそれらを更新しますが、これらのフィールドの新しい値は<code>ModifiedNode</code>オブジェクトの<code>FinalFields</code>にはリストされず、以前の値はネストされた<code>PreviousFields</code>オブジェクトではなく <code>ModifiedNode</code> オブジェクトのトップレベルにリストされます。</p>
+<h2 id="nftのフィールド">NFTのフィールド<a aria-hidden="true" class="hover_anchor" href="#nftのフィールド"><i class="fa fa-link"></i></a></h2>
+<p>NFTを含むトランザクション（<code>tx</code> と <code>account_tx</code>）はメタデータに以下のフィールドを含むことができます。これらの値はリクエスト時にサーバによって追加され、ハッシュ化されたバイナリメタデータには格納されません。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">フィールド</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>nftoken_id</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">トランザクションの結果、レジャー上で変更された<code>NFToken</code>の<code>NFTokenID</code>を示します。トランザクションが<code>NFTokenMint</code>または<code>NFTokenAcceptOffer</code>の場合のみ表示されます。<a href="nftoken.html#nftokenid">NFTokenID</a>をご覧ください。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>nftoken_ids</code></td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">トランザクションの結果、レジャー上で変更された<code>NFToken</code>のすべての<code>NFTokenID</code>を表示します。トランザクションが <code>NFTokenCancelOffer</code>の場合のみ表示されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>offer_id</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><code>NFTokenCreateOffer</code>トランザクションからのレスポンスに、新しい<code>NFTokenOffer</code>の<code>OfferID</code>を表示します。</td>
+</tr>
+</tbody>
+</table>
 <h2 id="delivered_amount">delivered_amount<a aria-hidden="true" class="hover_anchor" href="#delivered_amount"><i class="fa fa-link"></i></a></h2>
-<p><a href="payment.html">Paymentトランザクション</a>の<code>Amount</code>。<code>Destination</code>に送金された金額を示し、トランザクションが成功すると、<strong><a href="partial-payments.html">Partial Payments</a>であった場合を除いて、</strong> 宛先は当該の金額を受取ります（Partial Paymentsの場合、<code>Amount</code>を上限とする正の金額が受取られます）。<code>Amount</code>フィールドを信頼するかどうかを選択するのではなく、メタデータの<code>delivered_amount</code>フィールドを使用して、宛先に実際に到達する金額を確認してください。</p>
+<p><a href="payment.html">Paymentトランザクション</a>によって<code>Destination</code>に実際送金された金額を表します。トランザクションが成功すると、<strong><a href="partial-payments.html">Partial Payments</a>であった場合を除いて、</strong> 宛先は当該の金額を受取ります（Partial Paymentsの場合、<code>Amount</code>を上限とする正の金額が受取られます）。<code>Amount</code>フィールドを信頼するかどうかを選択するのではなく、メタデータの<code>delivered_amount</code>フィールドを使用して、宛先に実際に到達する金額を確認してください。</p>
 <p>トランザクションのメタデータの<code>delivered_amount</code>フィールドは、成功したすべてのPaymentトランザクションが保持しており、フォーマットは通常の通貨額と同様です。ただし、送金額は、以下の両方の条件に該当するトランザクションについては使用できません。</p>
 <ul>
 <li>Partial Paymentsである</li>
 <li>2014-01-20よりも前の検証済みレジャーに含まれている</li>
 </ul>
 <p>両方の条件に該当する場合、<code>delivered_amount</code>には、実際の金額ではなく文字列値<code>unavailable</code>が記述されます。この場合、トランザクションのメタデータにあるAffectedNodesを読み取ることが、実際に送金された金額を割り出せる唯一の手段になります。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> <code>delivered_amount</code>フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの<a href="basic-data-types.html#ハッシュ">ハッシュ</a>を計算する際にも使用されません。一方、<code>DeliveredAmount</code>フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに <em>含まれます</em> 。</p>
 <p>関連項目: <a href="partial-payments.html">Partial Payments</a></p>
 <!-- -->
 <!-- -->
@@ -791,7 +1410,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -831,7 +1450,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1637,7 +2256,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_6_1_3">
       
@@ -2567,7 +3186,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2632,7 +3251,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2652,12 +3271,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2697,7 +3316,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2753,7 +3372,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2763,7 +3382,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2800,12 +3419,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2879,7 +3498,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2894,7 +3513,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

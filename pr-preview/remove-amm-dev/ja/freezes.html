@@ -158,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -297,22 +297,17 @@
     <li class="active breadcrumb-item">トークンの凍結</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="トークンの凍結">トークンの凍結<a aria-hidden="true" class="hover_anchor" href="#トークンの凍結"><i class="fa fa-link"></i></a></h1>
-<p>XRPはトークンではありません。XRPはXRP Ledgerのネイティブ資産であり、XRP Ledgerでのトランザクションの実行に必要となります。XRPは取引相手を必要としません。つまり、XRPを保有しているということは負債ではなく実際の通貨であるXRPを保有していることになります。このため、<em><strong><u>いかなる組織または個人もXRPを凍結できません</u></strong></em>。</p>
-<p>XRP Ledgerでは、XRP以外の通貨はすべてトークンとして表すことができます。このようなトークン（「イシュアンス」または「IOU」とも呼ばれます）は、「トラストライン」と呼ばれるアドレス間の会計上の関係で管理されます。トークンは通常、負債とも資産とも見なされるため、トラストラインの残高は、見る視点によってマイナスにもプラスにもなります。どのアドレスも（XRP以外の）通貨を自由に発行できますが、他のアドレスが希望する保有量によってのみ制限されます。</p>
+<p>発行者は発行したトークンをXRP Ledgerで凍結することができます。<strong>これはXRP LedgerのネイティブアセットであるXRPには適用されません。</strong></p>
 <p>特定のケースでは、法的要件への準拠や、疑わしい活動の調査のために、取引所またはゲートウェイが、XRP以外のトークンの残高を急きょ凍結することがあります。</p>
-<p class="devportal-callout ヒント"><strong>ヒント:</strong> 誰もXRPを凍結することはできません。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> 誰もXRP LedgerのXRPを凍結することはできません。しかし、カストディアル取引所は、自らの裁量で常に保管資金を凍結することができます。詳しくは、<a href="common-misconceptions-about-freezes.html">凍結に関するよくある誤解</a>をご覧ください。</p>
 <p>凍結については、3種類の設定があります。</p>
 <ul>
-<li><a href="#individual-freeze"><strong>Individual Freeze</strong></a> - 1件の取引相手を凍結します。</li>
-<li><a href="#global-freeze"><strong>Global Freeze</strong></a> - 取引相手全員を凍結します。</li>
-<li><a href="#no-freeze"><strong>No Freeze</strong></a> - 個々の取引相手の凍結機能と、Global Freezeを終了できる機能を永久に放棄します。</li>
+<li><a href="#individual-freeze"><strong>Individual Freeze(個別の凍結)</strong></a> - 1件の取引相手を凍結します。</li>
+<li><a href="#global-freeze"><strong>Global Freeze(全体の凍結)</strong></a> - 取引相手全員を凍結します。</li>
+<li><a href="#no-freeze"><strong>No Freeze(凍結機能の放棄)</strong></a> - 個々の取引相手の凍結機能と、Global Freeze機能を永久に放棄します。</li>
 </ul>
-<p>凍結機能はトークンにのみ適用されます。XRP Ledgerには特権的な立場の当事者は存在しないため、凍結機能では、取引相手が、XRPまたはその他の取引相手が発行した資金で取引を実行することを阻止できません。Rippleを含め誰もXRPを凍結することはできません。</p>
 <p>凍結対象の残高がプラス、マイナスにかかわらず、すべての凍結設定を行うことができます。通貨イシュアーまたは通貨保持者のいずれかがトラストラインを凍結できますが、通貨保持者がイシュアーを凍結しても、その影響はわずかです。</p>
 <h2 id="individual-freeze">Individual Freeze<a aria-hidden="true" class="hover_anchor" href="#individual-freeze"><i class="fa fa-link"></i></a></h2>
 <p><strong>Individual Freeze</strong>機能は、<a href="trust-lines-and-issuing.html">トラストライン</a>に関する設定です。発行アドレスがIndividual Freeze設定を有効にすると、そのトラストラインの通貨に対して以下のルールが適用されます。</p>
@@ -322,7 +317,7 @@
 <li>取引相手は、凍結されたトラストライン上で引き続きその他の当事者からの支払を受け取ることができます。</li>
 <li>取引相手が凍結されたトラストライン上のトークンの売りオファーを出した場合、<a href="offers.html#オファーのライフサイクル">資金不足とみなされます</a>。</li>
 </ul>
-<p>確認事項: トラストラインではXRPは保持されません。XRPは凍結できません。</p>
+<p>再確認: トラストラインではXRPは保持されません。XRPは凍結できません。</p>
 <p>金融機関は、疑わしい活動を行う取引相手や、金融機関の利用規約に違反する取引相手にリンクしているトラストラインを凍結できます。金融機関は、同機関が運用する、XRP Ledgerに接続されているその他のシステムにおいても、その取引相手を凍結する必要があります。（凍結しないと、アドレスから金融機関経由で支払を送金することで、望ましくない活動を行うことが依然として可能となります。）</p>
 <p>各個別アドレスは金融機関とのトラストラインを凍結できます。これは金融機関とその他のユーザーの間の取引には影響しません。ただし、他のアドレス（<a href="account-types.html">運用アドレス</a>を含む）からその個別アドレスに対しては、その金融機関のイシュアンスを送信できなくなります。このようなIndividual Freezeは、オファーには影響しません。</p>
 <p>Individual Freezeは1つの通貨にのみ適用されます。特定の取引相手の複数通貨を凍結するには、アドレスが各通貨のトラストラインで、個別にIndividual Freezeを有効にする必要があります。</p>
@@ -334,7 +329,7 @@
 <li>凍結された発行アドレスの取引相手は、発行アドレスとの直接的な支払の送受信を引き続き行うことができます。</li>
 <li>凍結アドレスによるトークンの売りオファーはすべて、<a href="offers.html#オファーのライフサイクル">資金不足とみなされます</a>。</li>
 </ul>
-<p>確認事項: アドレスはXRPを発行できません。Global FreezeはXRPには適用されません。</p>
+<p>再確認: アドレスはXRPを発行できません。Global FreezeはXRPには適用されません。</p>
 <p>運用アドレスのシークレットキーが漏えいした場合には、運用アドレスの制御を取り戻した後であっても金融機関の<a href="account-types.html">発行アドレス</a>に対してGlobal Freezeを有効にすることが有益です。これにより資金流出を止め、攻撃者がそれ以上の資金を盗むことを防止し、少なくともそれまでの経過の追跡が容易になります。XRP LedgerでGlobal Freezeを行う他に、金融機関は外部システムへのコネクターでの疑わしい活動を停止する必要があります。</p>
 <p>また、金融機関が新しい<a href="account-types.html">発行アドレス</a>への移行や、営業の停止を予定している場合にも、Global Freezeを有効にすることが有用です。これにより、特定の時点で資金がロックされるため、ユーザーは他の通貨で取引することができなくなります。</p>
 <p>Global Freezeは、当該アドレスによって発行および保有されている <em>すべての</em> 通貨に適用されます。1つの通貨のみに対してGlobal Freezeを有効にすることはできません。一部の通貨のみを凍結できるようにしたい場合は、通貨ごとに異なるアドレスを使用してください。</p>
@@ -350,10 +345,28 @@
 <p>XRP Ledgerは金融機関に対し、その発行資金が表す債務を履行することを強制できません。このため、Global Freezeを有効にする機能を放棄しても顧客を保護できません。ただし、Global Freezeを <em>無効にする</em> 機能を放棄することで、Global Freeze機能が一部の顧客に対して不当に適用されないようにすることができます。</p>
 <p>No Freeze設定は、アドレスに対して発行される通貨と、アドレスから発行される通貨のすべてに適用されます。一部の通貨のみを凍結できるようにしたい場合は、通貨ごとに異なるアドレスを使用してください。</p>
 <p>No Freeze設定は、アドレスのマスターキーのシークレットキーにより署名されたトランザクションでのみ有効にできます。<a href="setregularkey.html">レギュラーキー</a>または<a href="multi-signing.html">マルチシグトランザクション</a>を使用してNo Freezeを有効にすることはできません。</p>
-<!-- -->
 <h1 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h1>
 <ul>
 <li><a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze" target="_blank">凍結コードの例 <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="trust-lines-and-issuing.html">トラストラインとトークンの発行</a></li>
+</ul>
+</li>
+<li><strong>Tutorials:</strong><ul>
+<li><a href="enable-no-freeze.html">No Freezeを有効化</a></li>
+<li><a href="enact-global-freeze.html">Global Freezeの実行</a></li>
+<li><a href="freeze-a-trust-line.html">トラストラインの凍結</a></li>
+</ul>
+</li>
+<li><strong>References:</strong><ul>
+<li><a href="account_lines.html">account_linesメソッド</a></li>
+<li><a href="account_info.html">account_infoメソッド</a></li>
+<li><a href="accountset.html">AccountSetトランザクション</a></li>
+<li><a href="trustset.html">TrustSetトランザクション</a></li>
+<li><a href="accountroot.html#accountrootのフラグ">AccountRootフラグ</a></li>
+<li><a href="ripplestate.html#ripplestateのフラグ">RippleState(trust line)フラグ</a></li>
+</ul>
+</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -797,7 +810,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -837,7 +850,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1643,7 +1656,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2573,7 +2586,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2638,7 +2651,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2658,12 +2671,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2703,7 +2716,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2759,7 +2772,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2769,7 +2782,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2806,12 +2819,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2885,7 +2898,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2900,7 +2913,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       
