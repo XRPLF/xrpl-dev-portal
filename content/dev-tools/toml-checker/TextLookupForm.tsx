@@ -24,9 +24,10 @@ export interface TextLookupFormProps {
      * setLogEntries is internally used to display logs to the user as handleSubmit executes.
      * fieldValue represents the value they submitted with the form.
      */
-    handleSubmit: (event: React.FormEvent<HTMLFormElement>, 
-      setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-      fieldValue: string) => void
+    handleSubmit: (
+        setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+        event: React.FormEvent<HTMLFormElement>, 
+        fieldValue: string) => void
     /** 
      * Optionally include this as an example in the form to hint to users what they should type in. 
      */
@@ -49,7 +50,7 @@ export interface TextLookupFormProps {
   
     return (
     <div className="p-3 pb-5">
-      <form id="text-lookup-form" onSubmit={(event) => handleSubmit(event, setLogEntries, fieldValue)}>
+      <form id="text-lookup-form" onSubmit={(event) => handleSubmit(setLogEntries, event, fieldValue)}>
           <h4>{translate(title)}</h4>
           {description}
           <div className="input-group">
