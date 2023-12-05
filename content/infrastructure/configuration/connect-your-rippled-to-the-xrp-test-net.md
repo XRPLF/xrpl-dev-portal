@@ -42,11 +42,6 @@ Edit your `rippled.cfg` file.
 
         # No [ips] stanza. Use the default hubs to connect to Mainnet.
 
-    *AMM-Devnet*
-
-        [ips]
-        amm.devnet.rippletest.net 51235
-
     <!-- MULTICODE_BLOCK_END -->
 
 2. Comment out the previous `[ips]` stanza, if there is one:
@@ -74,11 +69,6 @@ Edit your `rippled.cfg` file.
 
         [network_id]
         main
-
-    *AMM-Devnet*
-
-        [network_id]
-        25
 
     <!-- MULTICODE_BLOCK_END -->
 
@@ -119,19 +109,11 @@ Edit your `validators.txt` file. This file is located in the same folder as your
         [validator_list_keys]
         ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
-    *AMM-Devnet*
-
-        [validator_list_sites]
-        http://vlamm.devnet.rippletest.net/
-
-        [validator_list_keys]
-        03553F67DC5A6FE0EBFE1B3B4742833D14AF7C65E79E5760EC76EC56EAFD254CE9
-
     <!-- MULTICODE_BLOCK_END -->
 
     **Tip:** Preview packages might come with the necessary stanzas pre-configured, but check them just in case.
 
-1. Comment out any previous `[validator_list_sites]`, `[validator_list_keys]`, or `[validators]` stanzas.
+2. Comment out any previous `[validator_list_sites]`, `[validator_list_keys]`, or `[validators]` stanzas.
 
     For example:
 
@@ -176,13 +158,6 @@ _Mainnet_
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Mainnet.
-```
-
-_AMM-Devnet_
-
-```
-[features]
-AMM
 ```
 
 <!-- MULTICODE_BLOCK_END -->
