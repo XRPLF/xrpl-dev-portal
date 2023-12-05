@@ -3,7 +3,7 @@ html: nftoken.html
 parent: basic-data-types.html
 blurb: XRPL NFTの紹介
 labels:
-  - Non-fungible Tokens, NFTs
+  - 非代替性トークン, NFT
 ---
 # NFToken
 

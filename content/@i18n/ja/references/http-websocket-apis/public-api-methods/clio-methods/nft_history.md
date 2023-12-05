@@ -1,20 +1,20 @@
 ---
 html: nft_history.html
 parent: clio-methods.html
-blurb: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
+blurb: Clioサーバの`nft_history`API を使用して、指定した NFT の所有権と移動の履歴を取得します。
 labels:
-  - Non-fungible Tokens, NFTs
+  - 非代替性トークン, NFT
 ---
 # nft_history
 
-[[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTHistory.cpp "Source")
+[[ソース]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTHistory.cpp "ソース")
 
-The `nft_history` command asks the Clio server for past transaction metadata for the [NFT](non-fungible-tokens.html) being queried. [New in: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
+`nft_history`コマンドはクエリ対象の[NFT](non-fungible-tokens.html)の過去のトランザクションメタデータをClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
 
-**Note** `nft_history` returns only _successful_ transactions associated with the NFT.
+**注記** `nft_history`はNFTに関連する成功したトランザクションのみを返します。
 
-## Request Format
-An example of the request format:
+## リクエストのフォーマット
+リクエストフォーマットの例：
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -44,27 +44,27 @@ An example of the request format:
 <!-- MULTICODE_BLOCK_END -->
 
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
-[Try it! >](websocket-api-tool.html#nft_history)-->
+[試してみる >](websocket-api-tool.html#nft_history)-->
 
-The request contains the following parameters:
+リクエストには以下のパラメーターが含まれます。
 
-| `Field`        | Type                       | Description                    |
-|:---------------|:---------------------------|:-------------------------------|
-| `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer                | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available.  |
-| `ledger_index_max` | Integer                | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`   | String                      | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_history` API is not available on `rippled`. (See [Specifying Ledgers][]) |
-| `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
-| `forward`          | Boolean                 | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
-| `limit`        | UInt32 | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
-| `marker`       | Marker | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
+| `Field`            | 型                     | 説明                            |
+|:-------------------|:-----------------------|:-------------------------------|
+| `nft_id`           | 文字列                  | 非代替性トークン(NFT)の一意の識別子。 |
+| `ledger_index_min` | 整数                    | _(省略可)_ NFTを含む最も古いレジャーを指定します。値`-1`を指定すると、検証済みの最も古いレジャーのバージョンを使用するようにサーバに指示します。  |
+| `ledger_index_max` | 整数                    | _(省略可)_ NFTを含める最新のレジャーを指定します。値`-1`を指定すると、利用可能な最新の有効なレジャーのバージョンを使用するようにサーバに指示します。 |
+| `ledger_hash`      | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定][]をご覧ください）。 |
+| `ledger_index`     | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス][]あるいは、レジャーを自動的に選択するためのショートカット文字列。 `ledger_index`に`closed`や `current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_history`APIは`rippled`では利用できません。[レジャーの指定][]をご覧ください）。 |
+| `binary`           | 真偽値                  | _(省略可)_ デフォルトは`false`。`true`に設定すると、トランザクションをJSONではなく16進数の文字列で返します。 |
+| `forward`          | 真偽値                  | _(省略可)_ デフォルトは`false`。`true`に設定すると、最も古いレジャーからインデックスを付けて返します。そうでない場合は、新しいレジャーからインデックスが付けられます。(結果の各ページは内部的には順序付けされていないかもしれませんが、ページ全体としては順序付けされています)。 |
+| `limit`            | UInt32                 | _(省略可)_ 取得するNFTの数を制限します。サーバはこの値を守る必要はありません。 |
+| `marker`           | マーカー                | 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。サーバで使用可能なレジャーの範囲が変更された場合、この値は変化する可能性があります。"検証済み"レジャーを照会している場合、ページング中に新しいNFTが作成される可能性があります。 |
 
-**Note** If you do not specify a ledger version, Clio uses the latest validated ledger.
+**注記** レジャーのバージョンを指定しない場合、Clioは検証済みの最新のレジャーを使用します。
 
-## Response Format
+## レスポンスのフォーマット
 
-An example of a successful response:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -238,7 +238,7 @@ An example of a successful response:
 
 <!-- MULTICODE_BLOCK_END -->
 
-With the `binary` parameter set to _true_, you receive a compact response that uses hex strings. It's not human readable, but much more concise.
+`binary`パラメータを_true_に設定すると、16進数文字列を使用したコンパクトなレスポンスを受け取ります。人間が読めるものではありませんが、より簡潔です。
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -302,39 +302,39 @@ With the `binary` parameter set to _true_, you receive a compact response that u
 ```
 <!-- MULTICODE_BLOCK_END -->
 
-The response follows the [standard format][], with a successful result containing the following fields:
+このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
-| `Field`            | Type                       | Description                |
-|:-------------------|:---------------------------|:---------------------------|
-| `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
-| `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
-| `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
-| `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
+| `Field`            | 型                          | 説明                        |
+|:-------------------|:----------------------------|:---------------------------|
+| `nft_id`           | 文字列                       | 非代替性トークン(NFT)の一意の識別子。 |
+| `ledger_index_min` | 整数 - [レジャーインデックス][] | 実際にトランザクションを検索した最も古いレジャーのレジャーインデックス。 |
+| `ledger_index_max` | 整数 - [レジャーインデックス][] | 実際にトランザクションを検索した最新のレジャーのレジャーインデックス。 |
+| `limit`            | 整数                         | リクエストで使われる`limit`の値。(これはサーバによって強制される実際の値とは異なるかもしれません)。 |
+| `marker`           | [マーカー][]                  | レスポンスがページ分割されていることを示す、サーバ定義の値。この値を次の呼び出しに渡すと、この呼び出しが中断したところから再開します。 |
+| `transactions`     | 配列                         | 以下に説明するように、リクエストの条件に一致するトランザクションの配列。 |
+| `validated`        | 真偽値                       | レスポンスに含まれ、`true`に設定されている場合、このレスポンスの情報は検証済みのレジャーのバージョンに基づきます。`false`の場合、情報は変更される可能性があります。 |
 
-**Note:** The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.
+**注記:** 例えば、指定したバージョンが手元にない場合、サーバはリクエストで指定した値とは異なる`ledger_index_min`と`ledger_index_max`を返すことがあります。
 
-Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
+各トランザクションオブジェクトは、JSONまたは16進文字列(`"binary":true`)のどちらの形式でリクエストされたかに応じて、以下のフィールドを含みます。
 
-| `Field`        | Type                             | Description              |
-|:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
-| `meta`         | Object (JSON) or String (Binary) | If `binary` is True, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
-| `tx`           | Object                           | (JSON mode only) JSON object defining the transaction |
-| `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |
-| `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
+| `Field`        | 型                                   | 説明              |
+|:---------------|:-------------------------------------|:-------------------------|
+| `ledger_index` | 整数                                  | このトランザクションを含むレジャーバージョンの[レジャーインデックス][]。 |
+| `meta`         | オブジェクト(JSON) または 文字列(バイナリ) | `binary`が`true`の場合、トランザクションメタデータの16文字列が格納されます。`false`の場合は、トランザクションメタデータがJSON 形式で格納されます。 |
+| `tx`           | オブジェクト                           | (JSONのみ) トランザクションを定義するJSONオブジェクト |
+| `tx_blob`      | 文字列                                | (Binaryのみ) トランザクションを表す一意のハッシュ化された文字列。 |
+| `validated`    | 真偽値                                | トランザクションが検証済みレジャーに含まれているかどうか。まだ有効なレジャーに含まれていないトランザクションは、変更される可能性があります。 |
 
-For definitions of the fields returned in the `tx` object, see [Transaction Metadata](transaction-metadata.html).
+`tx`オブジェクトで返されるフィールドの定義については、[トランザクションメタデータ](transaction-metadata.html)をご覧ください。
 
-## Possible Errors
+## 考えられるエラー
 
-* Any of the [universal error types][].
-* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
-* `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
+* いずれかの[汎用エラータイプ][]。
+* `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
+* `actMalformed` - リクエストの`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
+* `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定されたレジャーが存在しないか、存在してもサーバに保存されていません。
+* `lgrIdxsInvalid` - リクエストが`ledger_index_min`よりも前の`ledger_index_max`を指定しているか、サーバが[ネットワークと同期していない](server-doesnt-sync.html)ために有効なレジャー範囲を持っていません。
 
 {% include '_snippets/rippled_versions.md' %}
 {% include '_snippets/rippled-api-links.md' %}
