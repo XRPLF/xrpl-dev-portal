@@ -44,7 +44,7 @@ AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](accountroot
 | `Amount2`    | [通貨額][] | Amount     | はい   | このAMMの最初の資金となる2つの資産のうち、2つ目の資産です。これは正数である必要があります。 |
 | `TradingFee` | 数値       | UInt16     | はい  | このAMMインスタンスに対する取引に課される手数料を1/100,000単位で指定します（値1は0.001%に相当）。最大値は`1000`で、1%の手数料を意味します。最小値は `0`です。 |
 
-`Amount`と`Amount2`の一方または両方は[トークン](tokens.html)であり、最大でどちらか一方を[XRP](xrp.html)にすることが可能です。通貨コードと発行者が同じものは使用できません。AMMのLPトークンは、別のAMMの資産の1つとして使用することができます。トークンの発行者は[Default Ripple](rippling.html#defaultrippleフラグ)を有効にしていなければなりません。[Clawback Amendment][] :not_enabled: が有効になっている場合、それらの発行者はAllow Clawbackフラグを有効にしていてはいけません。AMMのLPトークンは、別のAMMの資産の一つとして使用することができます。
+`Amount`と`Amount2`の一方または両方は[トークン](tokens.html)であり、最大でどちらか一方を[XRP](xrp.html)にすることが可能です。通貨コードと発行者が同じものは使用できません。AMMのLPトークンは、別のAMMの資産の1つとして使用することができます。トークンの発行者は[Default Ripple](rippling.html#defaultrippleフラグ)を有効にしていなければなりません。[Clawback Amendment][] :not_enabled: が有効になっている場合、それらの発行者はAllow Clawbackフラグを有効にしていてはいけません。AMMのLPトークンは、別のAMMの資産の一つとして使用することはできません。
 
 ## 特殊なトランザクションコスト
 

@@ -17,7 +17,7 @@ Some fields that may appear in transaction metadata include:
 
 ## Example Metadata
 
-The following JSON object shows the metadata for [a complex cross-currency payment](https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B):
+The following JSON object shows the metadata for [a complex cross-currency payment](https://livenet.xrpl.org/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B):
 
 ```json
 {% include '_api-examples/metadata/cross-currency-payment.json' %}
@@ -59,7 +59,7 @@ A `ModifiedNode` object contains the following fields:
 
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
-| `LedgerEntryType`   | String                    | The [type of ledger entry](ledger-object-types.html) that was deleted. |
+| `LedgerEntryType`   | String                    | The [type of ledger entry](ledger-object-types.html) that was modified. |
 | `LedgerIndex`       | String - [Hash][]         | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](ledgers.html). **Note:** This is **not the same** as a [ledger index](basic-data-types.html#ledger-index), even though the field name is very similar. |
 | `FinalFields`       | Object                    | The content fields of the ledger entry after applying any changes from this transaction. Which fields are present depends on what type of ledger entry was created. This omits the `PreviousTxnID` and `PreviousTxnLgrSeq` fields, even though most types of ledger entries have them. |
 | `PreviousFields`    | Object                    | The previous values for all fields of the object that were changed as a result of this transaction. If the transaction _only added_ fields to the object, this field is an empty object. |
@@ -76,7 +76,7 @@ Transactions (`tx` and `account_tx`) involving NFTs can contain the following fi
 |:--------------------|:--------------------------|:---------------------------|
 | `nftoken_id`        | String                    | Shows the `NFTokenID` for the `NFToken` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenMint` or `NFTokenAcceptOffer`. See [NFTokenID](nftoken.html#nftokenid). |
 | `nftoken_ids`       | Array                     | Shows all the `NFTokenIDs` for the `NFTokens` that changed on the ledger as a result of the transaction. Only present if the transaction is `NFTokenCancelOffer`. |
-| `offer_id`          | String                    | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction.
+| `offer_id`          | String                    | Shows the `OfferID`of a new `NFTokenOffer` in a response from a `NFTokenCreateOffer` transaction. |
 
 ## delivered_amount
 

@@ -36,6 +36,12 @@ Clioサーバーは、トランザクションメタデータ、アカウント�
 
 ClioサーバーはAPIリクエストを受信すると、これらのデータストアからデータを検索します。P2Pネットワークからのデータを必要とするリクエストについては、ClioサーバーはリクエストをP2Pサーバーに転送し、レスポンスをクライアントに返します。
 
+以下のいずれかが当てはまる場合、Clioは**常に**`rippled`に転送します。
+
+- `ledger_index`に`current`または`closed`を設定している場合
+- `ledger`APIにおいて`accounts`、`queue`または`full`が`true`に設定されている場合
+- `account_info`APIにおいて`queue`に`true`が設定されている場合
+- リクエストAPIメソッド(`"command"`)において`submit`、`submit_multisigned`、`fee`、`ledger_closed`、`ledger_current`、`ripple_path_find`、`manifest`、`channel_authorize`または`channel_verify`が設定されている場合
 
 ## 関連項目
 

@@ -148,7 +148,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 - `Sequence`値は376から377に増えます。
 
-- このアカウントのXRPの`Balance`は、`396015176`から`396015164`（[XRPのdrop数](basic-data-types.html#xrp)）に変わります。残高から差し引かれた12dropは[トランザクションコスト](transaction-cost.html)で、このトランザクションの`Fee`フィールドに指定されています。
+- このアカウントのXRPの`Balance`は、`396015176`から`396015164`（[XRPのdrop数][]）に変わります。残高から差し引かれた12dropは[トランザクションコスト](transaction-cost.html)で、このトランザクションの`Fee`フィールドに指定されています。
 
 - このトランザクションが、このアドレスから送信された最新のトランザクションとなったことを反映して[`AccountTxnID`](transaction-common-fields.html#accounttxnid)が変わります。
 
