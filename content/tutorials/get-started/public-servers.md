@@ -17,8 +17,7 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 | Ripple[¹][]   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net:51233/` | Testnet public server |
 | XRPL Labs     | Testnet     | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | Testnet public server with CORS support |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet public server |
-| Ripple[¹][]   | AMM-Devnet  | `https://amm.devnet.rippletest.net:51234/` | `wss://amm.devnet.rippletest.net:51233/` | Special devnet for [XLS-30d Automated Market Maker](https://github.com/XRPLF/XRPL-Standards/discussions/78) development. |
-| XRPL Labs     | Hooks-Testnet| `https://hooks-testnet-v3.xrpl-labs.com` | `wss://hooks-testnet-v3.xrpl-labs.com` | Hooks V3 Testnet |
+| XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks-enabled](https://hooks.xrpl.org/) Xahau Testnet |
 
 [Network]: parallel-networks.html
 [¹]: #footnote-1
@@ -29,6 +28,6 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 <a id="footnote-2"></a>² `xrpl.ws` is an alias for `xrplcluster.com`. However, the `.ws` top-level domain's reliability may be unsuitable for production uses.
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
