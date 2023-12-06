@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
-import { type Client, type Wallet } from 'xrpl'; 
+import { Client, Wallet } from 'xrpl'; 
 import * as faucetData from './faucets.json'
 
 interface FaucetInfo {
@@ -119,11 +119,9 @@ async function generateFaucetCredentialsAndUpdateUI(
   const { translate } = useTranslate();
 
 
-  // @ts-expect-error - xrpl is added via a script tag
-  const wallet: Wallet = xrpl.Wallet.generate()
+  const wallet = Wallet.generate()
   
-  // @ts-expect-error - xrpl is added via a script tag
-  const client: Client = new xrpl.Client(selectedFaucet.wsUrl)
+  const client = new Client(selectedFaucet.wsUrl)
   await client.connect()
 
   try {

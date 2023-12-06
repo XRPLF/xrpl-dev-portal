@@ -13,7 +13,7 @@
     "@redocly/portal": "0.57.0",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
-    "xrpl": "^3.0.0-beta.0"
+    "xrpl": "^3.0.0-beta.1"
   },
   "overrides": {
     "react": "^17.0.2"
