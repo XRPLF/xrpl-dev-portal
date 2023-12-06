@@ -14,8 +14,7 @@ Like the [Peer Crawler](peer-crawler.html), the validator list method is availab
 
 ## Request Format
 
-To request the Validator List information, make the following HTTP
-request:
+To request the Validator List information, make the following HTTP request:
 
 - **Protocol:** https
 - **HTTP Method:** GET

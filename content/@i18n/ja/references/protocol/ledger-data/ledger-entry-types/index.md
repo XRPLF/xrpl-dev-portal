@@ -5,6 +5,6 @@ template: pagetype-category.html.jinja
 labels:
   - データ保持
 ---
-# レジャーオブジェクトのタイプ
+# レジャーエントリのタイプ
 
 {% include '_snippets/ledger-objects-intro.ja.md' %}

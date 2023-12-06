@@ -2304,10 +2304,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/protocol/ledger-data/common-fields.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/ledger-data/common-fields.md"
+        targets:
             - ja
 
     -   md: references/protocol/ledger-data/ledger-entry-types/index.md
@@ -2486,9 +2488,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with rippled 1.11.0 changes
     -   md: "@i18n/ja/references/protocol/transactions/common-fields.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2865,7 +2865,6 @@ pages:
 
     # Client Libraries ---------------------------------------------------------
 
-        # TODO: translate page & blurb
     -   md: references/client-libraries.md
         targets:
             - en
@@ -3012,10 +3011,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: references/http-websocket-apis/api-conventions/rate-limiting.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/rate-limiting.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/api-conventions/rippled-server-states.md
@@ -3074,9 +3075,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3084,9 +3083,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_info.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3094,9 +3091,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3112,9 +3107,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_objects.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3122,9 +3115,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/account-methods/account_offers.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3165,7 +3156,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3197,7 +3187,6 @@ pages:
         targets:
             - en
 
-        # TODO: update the translation of this page
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md"
         targets:
             - ja
@@ -3262,9 +3251,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3380,19 +3367,19 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
         targets:
             - en
 
-        # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3400,9 +3387,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with reporting fields, ports field, ETL source object, corrected state_account.*.transitions field
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3414,17 +3399,20 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
-        outdated_translation: true
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md"
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
@@ -3435,7 +3423,6 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
         targets:
             - en
@@ -3715,9 +3702,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation for rippled v1.11.0
     -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3745,10 +3730,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
@@ -3775,10 +3762,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate page & blurb
     -   md: references/http-websocket-apis/peer-port-methods/health-check.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/peer-port-methods/health-check.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
@@ -3789,10 +3778,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate page & blurb
     -   md: references/http-websocket-apis/peer-port-methods/validator-list.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/peer-port-methods/validator-list.md"
+        targets:
             - ja
 
         # Placeholder / redirect for XRP-API docs.

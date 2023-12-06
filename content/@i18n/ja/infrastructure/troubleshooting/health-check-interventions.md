@@ -111,7 +111,7 @@ XRP Ledgerのサーバにかかる負荷の量は、ネットワークのトラ�
 
 
 <!--{# common link defs #}-->
-[metrics]: health-check.html#response-format
+[metrics]: health-check.html#レスポンスのフォーマット
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
