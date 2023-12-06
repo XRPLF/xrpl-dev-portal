@@ -3,6 +3,7 @@ import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
 import { Client, dropsToXrp, Wallet } from 'xrpl'; 
 import * as faucetData from './faucets.json'
+import XRPLoader from 'content/static/components/XRPLoader';
 
 interface FaucetInfo {
   id: string,
@@ -174,23 +175,16 @@ function TestCredentials({selectedFaucet}) {
         <h2>{translate(`Your ${generatedCredentialsFaucet} Credentials`)}</h2>
       </div>}
 
-      {(buttonClicked && address === "") &&
-        (<div>
-          <br/>
-          <div id="loader" style={{ display: "inline" }}>
-            <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Generating keys..")}
-          </div>
-        </div>)
-      }
+      {(buttonClicked && address === "") && <XRPLoader message={translate("Generating keys..")}/>}
 
       {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
 
       {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
-      {(address && !balance) && (<div><br/>
-          <div id="loader" style={{ display: "inline" }}>
-            <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}
-          </div>
-        </div>)}
+      
+      {(address && !balance) && (<div>
+        <br/>
+        <XRPLoader message={translate("Funding account...")}/>
+      </div>)}
       
       {balance && <div id="balance">
         <h3>{translate("Balance")}</h3>
@@ -202,10 +196,7 @@ function TestCredentials({selectedFaucet}) {
         {sequence}
       </div>}
       
-      {(secret && !sequence) && 
-        (<div id="loader" style={{display: sequence ? "inline" : "none"}}>
-          <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}
-        </div>)}
+      {(secret && !sequence) && <XRPLoader message={translate("Waiting...")}/>}
 
     </div>
   )
