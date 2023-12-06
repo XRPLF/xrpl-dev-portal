@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
-import { Client, Wallet } from 'xrpl'; 
+import { Client, dropsToXrp, Wallet } from 'xrpl'; 
 import * as faucetData from './faucets.json'
 
 interface FaucetInfo {
@@ -195,7 +195,7 @@ return (<div>
     
     {balance && <div id="balance">
       <h3>{translate("Balance")}</h3>
-      {(Number(balance) * 0.000001).toLocaleString("en")} {translate("XRP")}
+      {dropsToXrp(balance).toLocaleString("en")} {translate("XRP")}
     </div>}
     
     {sequence && <div id="sequence">
