@@ -17,14 +17,6 @@
             "desc": "Preview of upcoming amendments."
         },
         {
-            "id": "faucet-select-ammdevnet",
-            "wsUrl": "wss://amm.devnet.rippletest.net:51233/",
-            "jsonRpcUrl": "https://amm.devnet.rippletest.net:51234/",
-            "faucetUrl": "ammfaucet.devnet.rippletest.net",
-            "shortName": "AMM-Devnet",
-            "desc": "XLS-30d Automated Market Makers preview network."
-        },
-        {
             "id": "faucet-select-xahau",
             "wsUrl": "wss://xahau-test.net/",
             "jsonRpcUrl": "https://xahau-test.net/",

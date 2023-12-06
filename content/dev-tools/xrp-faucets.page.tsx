@@ -125,7 +125,6 @@ async function generateFaucetCredentialsAndUpdateUI(
   await client.connect()
 
   try {
-
     setAddress(wallet.address)
     setSecret(wallet.seed)
 
@@ -152,62 +151,62 @@ function TestCredentials({selectedFaucet}) {
   const [sequence, setSequence] = useState("")
   const [buttonClicked, setButtonClicked] = useState(false)
 
-return (<div>
-    {/* <XRPLGuard> TODO: Re-add this once we find a good way to avoid browser/server mismatch errors */}
-      <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
-        <button id="generate-creds-button" onClick={
-            () => generateFaucetCredentialsAndUpdateUI(
-              selectedFaucet,
-              setButtonClicked, 
-              setGeneratedCredentialsFaucet, 
-              setAddress, 
-              setSecret, 
-              setBalance, 
-              setSequence)
-          } className="btn btn-primary mr-2 mb-2">
-            {translate(`Generate ${selectedFaucet.shortName} credentials`)}
-        </button>
-      </div>
-    {/* </XRPLGuard> */}
-
-
-    {generatedCredentialsFaucet && <div id="your-credentials">
-      <h2>{translate(`Your ${generatedCredentialsFaucet} Credentials`)}</h2>
-    </div>}
-
-    {(buttonClicked && address === "") &&
-      (<div>
-        <br/>
-        <div id="loader" style={{ display: "inline" }}>
-          <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Generating keys..")}
+  return (<div>
+      {/* <XRPLGuard> TODO: Re-add this once we find a good way to avoid browser/server mismatch errors */}
+        <div className="btn-toolbar" role="toolbar" aria-label="Button"> 
+          <button id="generate-creds-button" onClick={
+              () => generateFaucetCredentialsAndUpdateUI(
+                selectedFaucet,
+                setButtonClicked, 
+                setGeneratedCredentialsFaucet, 
+                setAddress, 
+                setSecret, 
+                setBalance, 
+                setSequence)
+            } className="btn btn-primary mr-2 mb-2">
+              {translate(`Generate ${selectedFaucet.shortName} credentials`)}
+          </button>
         </div>
-      </div>)
-    }
+      {/* </XRPLGuard> */}
 
-    {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
 
-    {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
-    {(address && !balance) && (<div><br/>
-        <div id="loader" style={{ display: "inline" }}>
-          <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}
-        </div>
-      </div>)}
-    
-    {balance && <div id="balance">
-      <h3>{translate("Balance")}</h3>
-      {dropsToXrp(balance).toLocaleString("en")} {translate("XRP")}
-    </div>}
-    
-    {sequence && <div id="sequence">
-      <h3>{translate("Sequence Number")}</h3>
-      {sequence}
-    </div>}
-    
-    {(secret && !sequence) && 
-      (<div id="loader" style={{display: sequence ? "inline" : "none"}}>
-        <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}
-      </div>)}
+      {generatedCredentialsFaucet && <div id="your-credentials">
+        <h2>{translate(`Your ${generatedCredentialsFaucet} Credentials`)}</h2>
+      </div>}
 
-  </div>
-)
+      {(buttonClicked && address === "") &&
+        (<div>
+          <br/>
+          <div id="loader" style={{ display: "inline" }}>
+            <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Generating keys..")}
+          </div>
+        </div>)
+      }
+
+      {address && <div id="address"><h3>{translate("Address")}</h3>{address}</div>}
+
+      {secret && <div id="secret"><h3>{translate("Secret")}</h3>{secret}</div>}
+      {(address && !balance) && (<div><br/>
+          <div id="loader" style={{ display: "inline" }}>
+            <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" /> {translate("Funding account...")}
+          </div>
+        </div>)}
+      
+      {balance && <div id="balance">
+        <h3>{translate("Balance")}</h3>
+        {dropsToXrp(balance).toLocaleString("en")} {translate("XRP")}
+      </div>}
+      
+      {sequence && <div id="sequence">
+        <h3>{translate("Sequence Number")}</h3>
+        {sequence}
+      </div>}
+      
+      {(secret && !sequence) && 
+        (<div id="loader" style={{display: sequence ? "inline" : "none"}}>
+          <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Waiting...")}
+        </div>)}
+
+    </div>
+  )
 }
