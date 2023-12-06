@@ -23,6 +23,14 @@
             "faucetUrl": "ammfaucet.devnet.rippletest.net",
             "shortName": "AMM-Devnet",
             "desc": "XLS-30d Automated Market Makers preview network."
+        },
+        {
+            "id": "faucet-select-xahau",
+            "wsUrl": "wss://xahau-test.net/",
+            "jsonRpcUrl": "https://xahau-test.net/",
+            "faucetUrl": "xahau-test.net",
+            "shortName": "Xahau-Testnet",
+            "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
         }
     ]
 }

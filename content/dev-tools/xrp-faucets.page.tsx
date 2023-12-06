@@ -89,7 +89,7 @@ export default function XRPFaucets(): React.JSX.Element {
                 </div>
                 )) }
 
-                <p className="mb-3"><b>{translate("Hooks Testnet")}</b>: <a href="https://hooks-testnet-v3.xrpl-labs.com/" className="external-link">{translate("See the Hooks Faucet")}</a></p>
+                <br/>
                 <TestCredentials selectedFaucet={selectedFaucet}/>
             </div>
           </section>
