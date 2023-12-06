@@ -5,7 +5,7 @@ client = JsonRpcClient(JSON_RPC_URL)
 
 
 # Create a wallet using the testnet faucet:
-# https://xrpl.org//dev-tools/xrp-faucets
+# https://xrpl.org/xrp-testnet-faucet.html
 from xrpl.wallet import generate_faucet_wallet
 test_wallet = generate_faucet_wallet(client, debug=True)
 

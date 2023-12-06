@@ -18,7 +18,7 @@ XRP Ledgerコミュニティのメンバーが、メインネットに影響を�
 | Devnet     | ベータ版リリース  | 次期リリースのプレビューネットワークです。XRP Ledgerのコアソフトウェアへの不安定な変更がテストされます。このAltNetを使用すると、開発者はまだMainnetで有効になっていないXRPLの計画段階の新機能やAmendmentを操作したり学習したりすることができます。 |
 | [Hooks V3 Testnet](https://hooks-testnet-v3.xrpl-labs.com/) | [Hooksサーバ](https://github.com/XRPL-Labs/xrpld-hooks) | [Hooks](https://xrpl-hooks.readme.io/)を使用したオンチェーン・スマートコントラクト機能のプレビューネットワークです。 |
 
-テスト用XRPは、XRP Ledgerの実験やアプリケーションの開発、統合に興味のある人々に[無償で提供](/dev-tools/xrp-faucets)されています。テスト用のXRPは実際には価値を持たず、ネットワークがリセットされると失われます。
+テスト用XRPは、XRP Ledgerの実験やアプリケーションの開発、統合に興味のある人々に[無償で提供](xrp-testnet-faucet.html)されています。テスト用のXRPは実際には価値を持たず、ネットワークがリセットされると失われます。
 
 **注意:** XRP Ledgerメインネットとは異なり、テストネットワークは通常「中央集権型」であり、これらのネットワークの安定性や可用性については保証されていません。これらのネットワークは、サーバ構成、ネットワークトポロジー、ネットワークパフォーマンスのさまざまな特性をテストする目的でこれまで使用され、またこれからも同様に使用されます。
 
@@ -33,7 +33,7 @@ Ripple社は、TestnetとDevnetでメインサーバーを運用しています�
 ## 関連項目
 
 - **ツール:**
-  - [XRP Testnet Faucet](/dev-tools/xrp-faucets)
+  - [XRP Testnet Faucet](xrp-testnet-faucet.html)
 - **コンセプト:**
   - [コンセンサスについて](consensus.html)
   - [Amendment](amendments.html)

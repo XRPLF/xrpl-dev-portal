@@ -65,7 +65,7 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-上記の例では、[Test Net](/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
+上記の例では、[Test Net](xrp-testnet-faucet.html)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')

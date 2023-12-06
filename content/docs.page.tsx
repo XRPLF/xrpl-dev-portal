@@ -8,7 +8,7 @@ const recommendedPages = [
   },
   {
     description: 'XRP Faucet',
-    link: '../dev-tools/xrp-faucets',
+    link: '..xrp-testnet-faucet.html',
   },
   {
     description: 'Getting Started with Python',
@@ -123,7 +123,7 @@ const getStartedVideos = [
 const devTools = [
   {
     title: 'Faucets',
-    link: '../dev-tools/xrp-faucets',
+    link: '..xrp-testnet-faucet.html',
     description: 'Get credentials and test-XRP for XRP Ledger Testnet or Devnet.',
   },
   {
@@ -407,7 +407,7 @@ export default function Docs() {
                       'Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.'
                     )}
                   </p>
-                  <a className="btn btn-primary btn-arrow" href="../dev-tools/xrp-faucets">
+                  <a className="btn btn-primary btn-arrow" href="..xrp-testnet-faucet.html">
                     {translate('Generate Testnet Credentials')}
                   </a>
                 </div>

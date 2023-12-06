@@ -69,7 +69,7 @@ Escrowは、少量の大口決済に適した大きな保証を提供してい�
 
 ## Escrowの利用可能性
 
-条件付き決済は、2017-03-31以降XRP Ledgerコンセンサスプロトコルに対する[「Escrow」Amendment](known-amendments.html#escrow)により利用可能になりました。同機能の以前のバージョンは、2016年に「Suspended Payments」（SusPay）という名称で[XRP Ledger Testnet](/dev-tools/xrp-faucets)で利用可能になりました。
+条件付き決済は、2017-03-31以降XRP Ledgerコンセンサスプロトコルに対する[「Escrow」Amendment](known-amendments.html#escrow)により利用可能になりました。同機能の以前のバージョンは、2016年に「Suspended Payments」（SusPay）という名称で[XRP Ledger Testnet](xrp-testnet-faucet.html)で利用可能になりました。
 
 [スタンドアロンモード](rippled-server-modes.html#スタンドアロンモード)でのテストの際には、Amendmentのステータスに関係なく、Escrow機能をローカルで強制的に有効にできます。次のスタンザを`rippled.cfg`に追加してください。
 

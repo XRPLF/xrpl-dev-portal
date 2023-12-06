@@ -21,7 +21,7 @@ showcase_icon: static/img/logos/javascript.svg
 
 * XRP Ledgerベースのアプリケーションの基本構成要素。
 * xrpl.jsを使ったXRP Ledgerへの接続方法。
-* xrpl.jsを使った[テストネット](/dev-tools/xrp-faucets)でのウォレット生成方法。
+* xrpl.jsを使った[テストネット](xrp-testnet-faucet.html)でのウォレット生成方法。
 * `xrpl.js`ライブラリを使った、XRP Ledgerアカウント情報の検索方法。
 * How to put these steps together to create a simple JavaScript app or web-app.
 

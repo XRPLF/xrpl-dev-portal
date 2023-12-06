@@ -214,7 +214,7 @@ You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_i
 ## See Also
 
 - **Tools:**
-    - [XRP Faucets](/dev-tools/xrp-faucets)
+    - [XRP Faucets](xrp-testnet-faucet.html)
     - [WebSocket API Tool](websocket-api-tool.html) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
 - **Concepts:**
     - [Parallel Networks](parallel-networks.html)
