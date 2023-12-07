@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Install Clio on Ubuntu Linux - XRPL.org (日本語)</title>
+    <title>Ubuntu LinuxへのClioのインストール - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Install Clio on Ubuntu Linux | XRPL.org (日本語)">
+    <meta property="og:title" content="Ubuntu LinuxへのClioのインストール | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/install-clio-on-ubuntu.html" />
-    <meta property="og:description" content="Install a precompiled Clio binary on Ubuntu Linux." />
-    <meta name="description" content="Install a precompiled Clio binary on Ubuntu Linux." />
+    <meta property="og:description" content="Ubuntu Linuxにコンパイル済みのClioバイナリをインストールします。" />
+    <meta name="description" content="Ubuntu Linuxにコンパイル済みのClioバイナリをインストールします。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Clio Server']
+      "page_labels": ['Clioサーバ']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -258,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/infrastructure/installation/install-clio-on-ubuntu.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/infrastructure/installation/install-clio-on-ubuntu.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-clio-server">Clio Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Clio Server" -->
+      <span class="label label-clioサーバ">Clioサーバ</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Clioサーバ" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -271,10 +272,10 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#install-clio-on-ubuntu-linux">Install Clio on Ubuntu Linux</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#installation-steps">Installation Steps</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#ubuntu-linuxへのclioのインストール">Ubuntu LinuxへのClioのインストール</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#前提条件">前提条件</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#インストールの手順">インストールの手順</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -292,111 +293,108 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/infrastructure.html">インフラストラクチャ</a></li>
     <li class="active breadcrumb-item"><a href="/ja/install-rippled.html">rippledのインストール</a></li>
-    <li class="active breadcrumb-item">Install Clio on Ubuntu Linux</li>
+    <li class="active breadcrumb-item">Ubuntu LinuxへのClioのインストール</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="install-clio-on-ubuntu-linux">Install Clio on Ubuntu Linux<a aria-hidden="true" class="hover_anchor" href="#install-clio-on-ubuntu-linux"><i class="fa fa-link"></i></a></h1>
-<p>This page describes the recommended instructions for installing the latest stable version of Clio on <strong>Ubuntu Linux 20.04 or higher</strong> using the <a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> utility.</p>
-<p>These instructions install a binary that has been compiled by Ripple. For instructions on how to build Clio from source, see the <a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clio source code repository <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
-<p>Before you install Clio, you must meet the following requirements.</p>
+        <h1 id="ubuntu-linuxへのclioのインストール">Ubuntu LinuxへのClioのインストール<a aria-hidden="true" class="hover_anchor" href="#ubuntu-linuxへのclioのインストール"><i class="fa fa-link"></i></a></h1>
+<p>このページでは、<a class="external-link" href="https://ubuntu.com/server/docs" target="_blank"><code>apt</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用して、<strong>Ubuntu Linux 20.04 以降</strong>にClioの最新安定版をインストールするための推奨手順を説明します。</p>
+<p>これらの手順はRippleによってコンパイルされたバイナリをインストールします。Clioをソースからビルドする方法については、<a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clioソースコードリポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
+<p>Clioをインストールする前に、以下の条件を満たしている必要があります。</p>
 <ul>
 <li>
-<p>Ensure that your system meets the <a href="system-requirements.html">system requirements</a>.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Clio has the same system requirements as the <code>rippled</code> server, except Clio needs less disk space to store the same amount of ledger history.</p>
+<p>お使いのシステムが<a href="system-requirements.html">システム要件</a>を満たしていることを確認してください。</p>
+<p class="devportal-callout note"><strong>Note:</strong> Clioのシステム要件は<code>rippled</code>サーバと同じですが、同じ量のレジャー履歴を保存するのに必要なディスク容量はClioの方が少なくなります。</p>
 </li>
 <li>
-<p>You need compatible versions of CMake and Boost. Clio requires C++20 and Boost 1.75.0 or higher.</p>
+<p>互換性のあるバージョンのCMakeとBoostが必要です。ClioにはC++20とBoost 1.75.0以上が必要です。</p>
 </li>
 <li>
-<p>Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the <a class="external-link" href="https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html" target="_blank">Cassandra installation instructions <i aria-hidden="true" class="fa fa-external-link"></i></a>, or run Cassandra on a Docker container using one of the following commands.</p>
+<p>ローカルまたはリモートで実行されているCassandraクラスタにアクセスします。<a class="external-link" href="https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html" target="_blank">Cassandraのインストールほうほ <i aria-hidden="true" class="fa fa-external-link"></i></a>に従ってCassandraクラスタを手動でインストールして構成するか、次のコマンドのいずれかを使用してDockerコンテナ上でCassandraを実行できます。</p>
 <ul>
 <li>
-<p>If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data:</p>
+<p>Clioデータを永続化する場合は、DockerコンテナでCassandraを実行し、Clioデータを格納する空のディレクトリを指定します：</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="n">docker</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">it</span><span class="w"> </span><span class="o">--</span><span class="n">network</span><span class="o">=</span><span class="n">host</span><span class="w"> </span><span class="o">--</span><span class="n">name</span><span class="w"> </span><span class="n">cassandra</span><span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="w"> </span><span class="o">$</span><span class="n">PWD</span><span class="o">/</span><span class="n">cassandra_data</span><span class="p">:</span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span>
 <span class="n">cassandra</span><span class="w"> </span><span class="n">cassandra</span><span class="p">:</span><span class="mf">4.0</span><span class="o">.</span><span class="mi">4</span>
 </code></pre></div>
 </li>
 <li>
-<p>If you do not wish to persist Clio data, run the following command:</p>
+<p>Clioのデータを永続化したくない場合は、以下のコマンドを実行してください。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">docker run --rm -it --network=host --name cassandra cassandra:4.0.4
 </code></pre></div>
 </li>
 </ul>
 </li>
 <li>
-<p>You need gRPC access to one or more <code>rippled</code> servers in P2P mode. The <code>rippled</code> servers can either be local or remote, but you must trust them. The most reliable way to do this is to <a href="install-rippled.html">install <code>rippled</code> yourself</a>.</p>
+<p>P2Pモードでは1つ以上の<code>rippled</code>サーバにgRPCでアクセスする必要があります。この<code>rippled</code>サーバはローカルでもリモートでも構いませんが、信頼する必要があります。最も確実な方法は、<a href="install-rippled.html"><code>rippled</code>を自分でインストール</a>することです。</p>
 </li>
 </ul>
-<h2 id="installation-steps">Installation Steps<a aria-hidden="true" class="hover_anchor" href="#installation-steps"><i class="fa fa-link"></i></a></h2>
+<h2 id="インストールの手順">インストールの手順<a aria-hidden="true" class="hover_anchor" href="#インストールの手順"><i class="fa fa-link"></i></a></h2>
 <ol>
 <li>
-<p>Update repositories:</p>
+<p>リポジトリを更新します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo apt -y update
 </code></pre></div>
-<p class="devportal-callout tip"><strong>Tip:</strong> If you have already installed an up-to-date version of <code>rippled</code> on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the <code>rippled</code> install process. Resume from step 5, "Fetch the Ripple repository."</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> すでに同じマシンに<code>rippled</code>の最新版をインストールしている場合、Rippleのパッケージリポジトリと署名キーを追加する以下のステップは省略できます。ステップ5の"Rippleリポジトリを取得します。"から再開します。</p>
 </li>
 <li>
-<p>Install utilities:</p>
+<p>ユーティリティをインストールします。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">sudo apt -y install apt-transport-https ca-certificates wget gnupg
 </code></pre></div>
 </li>
 <li>
-<p>Add Ripple's package-signing GPG key to your list of trusted keys:</p>
+<p>Rippleのパッケージ署名用のGPGキーを、信頼できるキーのリストに追加します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">sudo mkdir /usr/local/share/keyrings/
 wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor &gt; ripple-key.gpg
 sudo mv ripple-key.gpg /usr/local/share/keyrings
 </code></pre></div>
 </li>
 <li>
-<p>Check the fingerprint of the newly-added key:</p>
+<p>追加したキーのフィンガープリントを確認します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">gpg /usr/local/share/keyrings/ripple-key.gpg
 </code></pre></div>
-<p>The output should include an entry for Ripple such as the following:</p>
+<p>出力に、次のようなRipple用のエントリーが含まれていることを確認してください。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="nl">gpg</span><span class="p">:</span><span class="w"> </span><span class="nl">WARNING</span><span class="p">:</span><span class="w"> </span><span class="k">no</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="n">supplied</span><span class="p">.</span><span class="w">  </span><span class="n">Trying</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">guess</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="p">...</span>
 <span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span>
 <span class="w">    </span><span class="n">C0010EC205B35A3310DC90DE395F97FFCCAFD9A2</span>
 <span class="n">uid</span><span class="w">           </span><span class="n">TechOps</span><span class="w"> </span><span class="n">Team</span><span class="w"> </span><span class="k">at</span><span class="w"> </span><span class="n">Ripple</span><span class="w"> </span><span class="o">&lt;</span><span class="n">techops</span><span class="o">+</span><span class="n">rippled</span><span class="nv">@ripple</span><span class="p">.</span><span class="n">com</span><span class="o">&gt;</span>
 <span class="n">sub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">E</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span>
 </code></pre></div>
-<p>In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the third line, starting with <code>C001</code>.)</p>
+<p>特に、フィンガープリントが一致することを確認してください。（上記の例では、フィンガープリントは三行目の<code>C001</code>で始まる部分です。）</p>
 </li>
 <li>
-<p>Add the appropriate Ripple repository for your operating system version:</p>
+<p>使用しているオペレーティングシステムのバージョンに対応する適切なRippleリポジトリを追加します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
     sudo tee -a /etc/apt/sources.list.d/ripple.list
 </code></pre></div>
-<p>The above example is appropriate for <strong>Ubuntu 20.04 Focal Fossa</strong>.</p>
+<p>上記の例は、<strong>Ubuntu 20.04 Focal Fossa</strong>向けのものです。</p>
 </li>
 <li>
-<p>Fetch the Ripple repository.</p>
+<p>Rippleリポジトリを取得します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">sudo apt -y update
 </code></pre></div>
 </li>
 <li>
-<p>Install the Clio software package. There are two options:</p>
+<p>Clioソフトウェアパッケージをインストールします。オプションは2つあります。</p>
 <ul>
 <li>
-<p>To run <code>rippled</code> on the same machine, install the <code>clio</code> package, which sets up both servers:</p>
+<p>同じマシン上で<code>rippled</code>を実行するには、両方のサーバーをセットアップする<code>clio</code>パッケージをインストールしてください：</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo apt -y install clio
 </code></pre></div>
 </li>
 <li>
-<p>To run Clio on a separate machine from <code>rippled</code>, install the <code>clio-server</code> package, which sets up Clio only:</p>
+<p>Clio を<code>rippled</code>とは別のマシンで実行するには、Clioのみをセットアップする<code>clio-server</code>パッケージをインストールしてください：</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">sudo apt -y install clio-server
 </code></pre></div>
 </li>
 </ul>
 </li>
 <li>
-<p>If you are running <code>rippled</code> on a separate machine, modify your Clio config file to point to it. You can skip this step if you used the <code>clio</code> package to install both on the same machine.</p>
+<p>別のマシンで<code>rippled</code>を実行している場合は、Clioの設定ファイルを修正して、そちらを指すようにします。<code>clio</code>パッケージを使って同じマシンに両方をインストールした場合は、この手順を省略できます。</p>
 <ol>
 <li>
-<p>Edit the Clio server's config file to modify the connection information for the <code>rippled</code> server. The package installs this file at <code>/opt/clio/etc/config.json</code>.</p>
+<p>Clioサーバの設定ファイルを編集して<code>rippled</code>サーバの接続情報を変更します。パッケージはこのファイルを<code>/opt/clio/etc/config.json</code>にインストールします。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">"etl_sources":
 [
     {
@@ -406,20 +404,20 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
     }
 ]
 </code></pre></div>
-<p>This includes:</p>
+<p>以下の情報が含まれます。</p>
 <ul>
-<li>The IP of <code>rippled</code> server.</li>
-<li>The port where <code>rippled</code> accepts unencrypted WebSocket connections.</li>
-<li>The port where <code>rippled</code> accepts gRPC requests.</li>
+<li><code>rippled</code>サーバのIPアドレス</li>
+<li><code>rippled</code>が暗号化されていないWebSocket接続を受け付けるポート番号</li>
+<li><code>rippled</code>がgRPCリクエストを受け付けるポート番号</li>
 </ul>
-<p class="devportal-callout note"><strong>Note</strong> You can use multiple <code>rippled</code> servers as a data source by add more entries to the <code>etl_sources</code> section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the <code>rippled</code> servers is synced.</p>
-<p>The <a class="external-link" href="https://github.com/XRPLF/clio/blob/develop/example-config.json" target="_blank">example config file <i aria-hidden="true" class="fa fa-external-link"></i></a> accesses the <code>rippled</code> server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.</p>
+<p class="devportal-callout 注記"><strong>注記</strong> <code>etl_sources</code>セクションに項目を追加することで、複数の<code>rippled</code>サーバをデータソースとして使用することができます。そうすると、Clioはリスト内のすべてのサーバでリクエストを負荷分散し、少なくとも<code>rippled</code>サーバの一つが同期している限り、ネットワークに追いつくことができます。</p>
+<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/develop/example-config.json" target="_blank">設定ファイル例 <i aria-hidden="true" class="fa fa-external-link"></i></a>は、ローカルのループバックネットワーク(127.0.0.1)上で動作している<code>rippled</code>サーバに、ポート6006のWebSocket(WS)とポート50051のgRPCでアクセスします。</p>
 </li>
 <li>
-<p>Update the <code>rippled</code> server's config file to allow the Clio server to connect to it. The package installs this file at <code>/etc/opt/ripple/rippled.cfg</code>.</p>
+<p>Clioサーバが接続できるように<code>rippled</code>サーバの設定ファイルを更新します。パッケージはこのファイルを<code>/etc/opt/ripple/rippled.cfg</code>にインストールします。</p>
 <ul>
 <li>
-<p>Open a port to accept unencrypted WebSocket connections.</p>
+<p>暗号化されていないWebSocket接続を受け付けるポートを開きます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[port_ws_public]</span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">6005</span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span>
@@ -427,35 +425,35 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings
 </code></pre></div>
 </li>
 <li>
-<p>Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the <code>secure_gateway</code> entry.</p>
+<p>gRPCリクエストを処理するポートを開き、<code>secure_gateway</code>項目にClioサーバのIPを指定します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="k">[port_grpc]</span>
 <span class="na">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">50051</span>
 <span class="na">ip</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0</span>
 <span class="na">secure_gateway</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">127.0.0.1</span>
 </code></pre></div>
-<p class="devportal-callout tip"><strong>Tip:</strong> If you are not running Clio on the same machine as <code>rippled</code>, change the <code>secure_gateway</code> in the example stanza to use the IP address of the Clio server.</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> もし<code>rippled</code>と同じマシンでClioを実行していない場合は、サンプルの<code>secure_gateway</code>を変更して、ClioサーバのIPアドレスを使用してください。</p>
 </li>
 </ul>
 </li>
 </ol>
 </li>
 <li>
-<p>Enable and start the Clio systemd service.</p>
+<p>Clioのsystemdサービスを有効にして起動します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">sudo systemctl enable clio
 </code></pre></div>
 </li>
 <li>
-<p>Start the <code>rippled</code> and Clio servers.</p>
+<p><code>rippled</code>サーバとClioサーバを起動します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">sudo systemctl start rippled
 sudo systemctl start clio
 </code></pre></div>
-<p>If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for <code>rippled</code> to sync before extracting ledgers.</p>
+<p>新しいデータベースで始める場合、Clioは完全なレジャーをダウンロードする必要があります。これには時間がかかります。両方のサーバを初めて起動する場合、Clioはレジャーを抽出する前に<code>rippled</code>の同期を待つため、さらに時間がかかることがあります。</p>
 </li>
 </ol>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>Concepts:</strong><ul>
-<li><a href="the-clio-server.html">The Clio Server</a></li>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="the-clio-server.html">Clioサーバ</a></li>
 </ul>
 </li>
 </ul>
@@ -894,7 +892,7 @@ sudo systemctl start clio
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -934,7 +932,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1321,9 +1319,26 @@ sudo systemctl start clio
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1341,19 +1356,19 @@ sudo systemctl start clio
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1406,19 +1421,19 @@ sudo systemctl start clio
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1451,11 +1466,11 @@ sudo systemctl start clio
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1468,11 +1483,11 @@ sudo systemctl start clio
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1514,11 +1529,11 @@ sudo systemctl start clio
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1723,7 +1738,7 @@ sudo systemctl start clio
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2077,7 +2092,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -2653,7 +2668,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2718,7 +2733,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2738,12 +2753,12 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2783,7 +2798,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2839,7 +2854,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2849,7 +2864,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2886,12 +2901,12 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2965,7 +2980,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2980,7 +2995,7 @@ sudo systemctl start clio
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

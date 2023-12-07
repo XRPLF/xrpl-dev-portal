@@ -148,6 +148,7 @@
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-popular-pages">
@@ -317,14 +318,14 @@
 </li>
 <li>
 <p>Add Ripple's package-signing GPG key to your list of trusted keys:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo mkdir /usr/local/share/keyrings/
-wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor &gt; ripple-key.gpg
-sudo mv ripple-key.gpg /usr/local/share/keyrings/
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">sudo install -m 0755 -d /etc/apt/keyrings &amp;&amp; \
+    wget -qO- https://repos.ripple.com/repos/api/gpg/key/public | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/ripple.gpg
 </code></pre></div>
 </li>
 <li>
 <p>Check the fingerprint of the newly-added key:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="o">--</span><span class="n">import</span><span class="o">-</span><span class="n">options</span> <span class="n">show</span><span class="o">-</span><span class="n">only</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">keyrings</span><span class="o">/</span><span class="n">ripple</span><span class="o">-</span><span class="n">key</span><span class="o">.</span><span class="n">gpg</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="nv">gpg</span><span class="w"> </span><span class="o">--</span><span class="k">show</span><span class="o">-</span><span class="nv">keys</span><span class="w"> </span><span class="o">/</span><span class="nv">etc</span><span class="o">/</span><span class="nv">apt</span><span class="o">/</span><span class="nv">keyrings</span><span class="o">/</span><span class="nv">ripple</span>.<span class="nv">gpg</span>
 </code></pre></div>
 <p>The output should include an entry for Ripple such as the following:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="n">pub</span><span class="w">   </span><span class="n">rsa3072</span><span class="w"> </span><span class="mi">2019</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">14</span><span class="w"> </span><span class="o">[</span><span class="n">SC</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">expires: 2026-02-17</span><span class="o">]</span>
@@ -336,14 +337,15 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
 </li>
 <li>
 <p>Add the appropriate Ripple repository for your operating system version:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5">echo "deb [signed-by=/etc/apt/keyrings/ripple.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
     sudo tee -a /etc/apt/sources.list.d/ripple.list
 </code></pre></div>
 <p>The above example is appropriate for <strong>Ubuntu 20.04 Focal Fossa</strong>. For other operating systems, replace the word <code>focal</code> with one of the following:</p>
 <ul>
-<li><code>bionic</code> for <strong>Ubuntu 18.04 Bionic Beaver</strong></li>
 <li><code>buster</code> for <strong>Debian 10 Buster</strong></li>
 <li><code>bullseye</code> for <strong>Debian 11 Bullseye</strong></li>
+<li><code>bookworm</code> for <strong>Debian 12 Bookworm</strong></li>
+<li><code>bionic</code> for <strong>Ubuntu 18.04 Bionic Beaver</strong></li>
 <li><code>jammy</code> for <strong>Ubuntu 22.04 Jammy Jellyfish</strong></li>
 </ul>
 <p>If you want access to development or pre-release versions of <code>rippled</code>, use one of the following instead of <code>stable</code>:</p>
@@ -354,34 +356,44 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
 <p class="devportal-callout warning"><strong>Warning:</strong> Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.</p>
 </li>
 <li>
-<p>Fetch the Ripple repository.</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">sudo apt -y update
-</code></pre></div>
-</li>
-<li>
-<p>Install the <code>rippled</code> software package:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">sudo apt -y install rippled
+<p>Update the package index to include Ripple's repo and install <code>rippled</code>.</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">sudo apt -y update &amp;&amp; sudo apt -y install rippled
 </code></pre></div>
 </li>
 <li>
 <p>Check the status of the <code>rippled</code> service:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">systemctl status rippled.service
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7">systemctl status rippled.service
 </code></pre></div>
 <p>The <code>rippled</code> service should start automatically. If not, you can start it manually:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo systemctl start rippled.service
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">sudo systemctl start rippled.service
 </code></pre></div>
 </li>
 <li>
 <p>Optional: allow <code>rippled</code> to bind to privileged ports.</p>
 <p>This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9">sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
 </code></pre></div>
+</li>
+<li>
+<p>Optional: configure core dumps</p>
+<p>By default Ubuntu is not configured to produce core files useful for debugging crashes.
+First run:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10">ulimit -c unlimited
+</code></pre></div>
+<p>Now run <code>sudo systemctl edit rippled</code>. The default editor should open and add</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">[Service]</span>
+<span class="na">LimitCORE</span><span class="o">=</span><span class="s">infinity</span>
+</code></pre></div>
+<p>This creates the file <code>/etc/systemd/system/rippled.service.d/override.conf</code> and configures the OS to save core dumps, without changing the service file provided by the <code>rippled</code> package. If your server crashes, you can find the core dump in <code>/var/lib/apport/coredump/</code>. To load the core dump for inspection, use a command such as the following:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="n">gdb</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ripple</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">rippled</span><span class="w"> </span><span class="o">/</span><span class="k">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">apport</span><span class="o">/</span><span class="n">coredump</span><span class="o">/</span><span class="n">core</span>
+</code></pre></div>
+<p class="devportal-callout note"><strong>Note:</strong> To debug a core file this way, you must have the <code>rippled-dbgsym</code> package installed, and you need permission to read files in the core dump directory.</p>
 </li>
 </ol>
 <h2 id="next-steps">Next Steps<a aria-hidden="true" class="hover_anchor" href="#next-steps"><i class="fa fa-link"></i></a></h2>
 <p>It can take several minutes to sync with the rest of the XRP Ledger network, during which time the server outputs various warnings. For information about log messages, see <a href="understanding-log-messages.html">Understanding Log Messages</a>.</p>
 <p>You can use the <a href="get-started-using-http-websocket-apis.html#commandline"><code>rippled</code> commandline interface</a> to see if your server is synced with the network:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11">rippled<span class="w"> </span>server_info
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">rippled<span class="w"> </span>server_info
 </code></pre></div>
 <p>If the <code>server_state</code> in the response is <code>full</code> or <code>proposing</code>, then your server is fully synced to the network. Otherwise, you may need to wait longer. Fresh servers usually sync within 15 minutes; servers that already have <a href="ledger-history.html">ledger history</a> stored can take longer.</p>
 <p>After your server has synchronized with the rest of the network, you have a fully functional XRP Ledger peer-to-peer server that you can use to submit transactions or get API access to the XRP Ledger. See <a href="client-libraries.html">Client Libraries</a> or <a href="http-websocket-apis.html">HTTP / WebSocket APIs</a> for different ways to communicate with the server.</p>
@@ -1293,9 +1305,26 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
 
-        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+        <a class="nav-link" href="php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
@@ -1313,19 +1342,19 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7" aria-expanded="false" aria-controls="tree_nav_group_5_7"></a>
 
         <a class="nav-link" href="tasks.html">Tasks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_1" aria-expanded="false" aria-controls="tree_nav_group_5_7_1"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1378,19 +1407,19 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3" aria-expanded="false" aria-controls="tree_nav_group_5_7_3"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_7_3_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1423,11 +1452,11 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_7_3_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1440,11 +1469,11 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_7_3_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1486,11 +1515,11 @@ sudo mv ripple-key.gpg /usr/local/share/keyrings/
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_4" aria-expanded="false" aria-controls="tree_nav_group_5_7_4"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>

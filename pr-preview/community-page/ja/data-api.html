@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Ripple Data API v2 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/data-api.html" />
-    <meta property="og:description" content="XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。" />
-    <meta name="description" content="XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。" />
+    <meta property="og:description" content="(非推奨)XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。" />
+    <meta name="description" content="(非推奨)XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -264,6 +265,7 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ripple-data-api-v2">Ripple Data API v2</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#alternatives">Alternatives</a></li>
       </ul>
   </div>
       </aside>
@@ -284,9 +286,11 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="ripple-data-api-v2">Ripple Data API v2<a aria-hidden="true" class="hover_anchor" href="#ripple-data-api-v2"><i class="fa fa-link"></i></a></h1>
-<p class="devportal-callout 警告"><strong>警告:</strong> Ripple Data API v2は廃止されました。代わりに<a href="http-websocket-apis.html">HTTP / WebSocket API</a>を使って下さい。</p>
-<p>Ripple Data API v2を使用すると、XRP Ledgerの変更に関する情報（トランザクション履歴や処理済みの分析データなど）にアクセスできます。このような情報は専用データベースに保管されるので、<code>rippled</code>サーバーで保持する必要のある履歴レジャーバージョンの数が少なくなります。Data API v2は<a class="external-link" href="https://xrpcharts.ripple.com/" target="_blank">XRP Charts <i aria-hidden="true" class="fa fa-external-link"></i></a>や<a class="external-link" href="https://www.ripple.com" target="_blank">ripple.com <i aria-hidden="true" class="fa fa-external-link"></i></a>などのアプリケーションのデータソースとしても機能します。</p>
-<p>廃止されましたRipple Data APIについては<a class="external-link" href="https://github.com/ripple/rippled-historical-database" target="_blank">rippled-historical-database レポジトリー <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧下さい.</p>
+<p class="devportal-callout 警告"><strong>警告:</strong> Ripple Data API v2は非推奨となりました。代わりに<a href="http-websocket-apis.html">HTTP / WebSocket API</a>を使って下さい。</p>
+<p>古いData APIについては<a class="external-link" href="https://github.com/ripple/rippled-historical-database" target="_blank">rippled-historical-database リポジトリ <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください.</p>
+<h2 id="alternatives">Alternatives<a aria-hidden="true" class="hover_anchor" href="#alternatives"><i class="fa fa-link"></i></a></h2>
+<p>アカウト残高や取引履歴のリクエストなど、ほとんどの一般的な操作では、<a href="get-started-using-http-websocket-apis.html#websocket-api">WebSocket接続</a>または<a href="get-started-using-http-websocket-apis.html#json-rpc">JSON-RPC（HTTP POST）</a>を使用して、セルフホストまたは<a href="public-servers.html">公開XRP Ledgerサーバー</a>にリクエストすることとができます。</p>
+<p>詳細については、<a href="get-started-using-http-websocket-apis.html">HTTP / WebSocket APIsの使用を開始する</a>ページをご覧ください。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -722,7 +726,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -762,7 +766,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1149,9 +1153,26 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1169,19 +1190,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1234,19 +1255,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1279,11 +1300,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1296,11 +1317,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1342,11 +1363,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1551,7 +1572,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -1905,7 +1926,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -2481,7 +2502,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2550,7 +2571,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2570,12 +2591,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2615,7 +2636,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2671,7 +2692,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2681,7 +2702,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2718,12 +2739,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2797,7 +2818,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2812,7 +2833,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

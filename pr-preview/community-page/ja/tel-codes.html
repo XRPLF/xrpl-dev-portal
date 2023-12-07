@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -291,14 +292,11 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/protocol-reference.html">XRP Ledgerプロトコルリファレンス</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/transaction-formats.html">トランザクションのフォーマット</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/transaction-formats.html">トランザクションリファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/transaction-results.html">トランザクションの結果</a></li>
     <li class="active breadcrumb-item">telコード</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="telコード">telコード<a aria-hidden="true" class="hover_anchor" href="#telコード"><i class="fa fa-link"></i></a></h1>
 <p>これらのコードは、トランザクションを処理するローカルサーバーでのエラーを示します。構成や負荷レベルが異なる別のサーバーでは同じトランザクションが正常に処理される場合があります。-399から-300までの数値が含まれています。実際のエラーに対して数値は変更される可能性がありますので、これに頼らないでください。</p>
@@ -313,7 +311,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>telBAD_DOMAIN</code></td>
-<td style="text-align: left;">トランザクションで指定されたドメイン値（<a href="accountset.html">AccountSetトランザクション</a>の<code>Domain</code>フィールドなど）は、レジャーに保管するには長すぎるために使用できません。</td>
+<td style="text-align: left;">トランザクションで指定されたドメイン値（<a href="accountset.html">AccountSetトランザクション</a>の<code>Domain</code>フィールドなど）は、レジャーに保管するには長すぎます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telBAD_PATH_COUNT</code></td>
@@ -321,7 +319,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>telBAD_PUBLIC_KEY</code></td>
-<td style="text-align: left;">トランザクションで指定された公開鍵値（<a href="accountset.html">AccountSetトランザクション</a>の<code>MessageKey</code>フィールドなど）は長すぎるために使用できません。</td>
+<td style="text-align: left;">トランザクションで指定された公開鍵値（<a href="accountset.html">AccountSetトランザクション</a>の<code>MessageKey</code>フィールドなど）の長すぎます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE</code></td>
@@ -329,23 +327,23 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_BALANCE</code></td>
-<td style="text-align: left;">トランザクションが<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、またすでにキューに入っているトランザクションの予測XRPコストの合計が、アカウントの予想残高よりも大きいために、このトランザクションはトランザクションキューに追加されませんでした。後で再試行するか、別のサーバーへの送信を試みることができます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.2" target="_blank" title="新規: rippled 0.70.2"><img alt="新規: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">トランザクションが<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、またすでにキューに入っているトランザクションの予測XRPコストの合計が、アカウントの予想残高よりも大きいために、このトランザクションはトランザクションキューに追加されませんでした。後で再試行するか、別のサーバーへの送信を試みることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_BLOCKS</code></td>
-<td style="text-align: left;">トランザクションは<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、トランザクションキューにも追加されませんでした。このトランザクションはキュー内の既存のトランザクションを置き換えることができませんでした。これは、認証メソッドを変更することで、すでにキューに入っている同じ送信者からのトランザクションがブロックされる可能性があるためです。（これには<a href="setregularkey.html">SetRegularKey</a>トランザクションと<a href="signerlistset.html">SignerListSet</a>トランザクションのすべて、およびRequireAuth/OptionalAuth、DisableMaster、AccountTxnIDフラグを変更する<a href="accountset.html">AccountSet</a>トランザクションなどがあります。）後で再試行するか、別のサーバーへの送信を試みることができます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.2" target="_blank" title="新規: rippled 0.70.2"><img alt="新規: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">トランザクションは<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、トランザクションキューにも追加されませんでした。このトランザクションはキュー内の既存のトランザクションを置き換えることができませんでした。これは、認証メソッドを変更することで、すでにキューに入っている同じ送信者からのトランザクションがブロックされる可能性があるためです。（これには<a href="setregularkey.html">SetRegularKey</a>トランザクションと<a href="signerlistset.html">SignerListSet</a>トランザクションのすべて、およびRequireAuth/OptionalAuth、DisableMaster、AccountTxnIDフラグを変更する<a href="accountset.html">AccountSet</a>トランザクションなどがあります。）後で再試行するか、別のサーバーへの送信を試みることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_BLOCKED</code></td>
-<td style="text-align: left;">トランザクションが<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、トランザクションキューにも追加されませんでした。これは、このトランザクションの前にキューに入れられた同じ送信者のトランザクションによってブロックされるためです。（これには<a href="setregularkey.html">SetRegularKey</a>トランザクションと<a href="signerlistset.html">SignerListSet</a>トランザクションのすべて、およびRequireAuth/OptionalAuth、DisableMaster、AccountTxnIDフラグを変更する<a href="accountset.html">AccountSet</a>トランザクションなどがあります。）後で再試行するか、別のサーバーへの送信を試みることができます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.2" target="_blank" title="新規: rippled 0.70.2"><img alt="新規: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">トランザクションが<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、トランザクションキューにも追加されませんでした。これは、このトランザクションの前にキューに入れられた同じ送信者のトランザクションによってブロックされるためです。（これには<a href="setregularkey.html">SetRegularKey</a>トランザクションと<a href="signerlistset.html">SignerListSet</a>トランザクションのすべて、およびRequireAuth/OptionalAuth、DisableMaster、AccountTxnIDフラグを変更する<a href="accountset.html">AccountSet</a>トランザクションなどがあります。）後で再試行するか、別のサーバーへの送信を試みることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_FEE</code></td>
-<td style="text-align: left;">トランザクションは<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、トランザクションキューにも追加されませんでした。このコードは、送信者とシーケンス番号が同じトランザクションがすでにキューに入れられており、新しいトランザクションが、既存のトランザクションを置き換えるのに十分なトランザクションコストを支払わない場合に発生します。キュー内のトランザクションを置き換えるには、新しいトランザクションの<code>Fee</code>値に25%以上の上乗せ（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>で評価）が必要となります。<code>Fee</code>の値を大きくして再試行するか、大きな数字の<code>Sequence</code>番号でこのトランザクションを送信して既存のトランザクションを置き換えないようにするか、別のサーバーへ送信を試みることができます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.2" target="_blank" title="新規: rippled 0.70.2"><img alt="新規: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">トランザクションは<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、トランザクションキューにも追加されませんでした。このコードは、送信者とシーケンス番号が同じトランザクションがすでにキューに入れられており、新しいトランザクションが、既存のトランザクションを置き換えるのに十分なトランザクションコストを支払わない場合に発生します。キュー内のトランザクションを置き換えるには、新しいトランザクションの<code>Fee</code>値に25%以上の上乗せ（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>で評価）が必要となります。<code>Fee</code>の値を大きくして再試行するか、大きな数字の<code>Sequence</code>番号でこのトランザクションを送信して既存のトランザクションを置き換えないようにするか、別のサーバーへ送信を試みることができます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telCAN_NOT_QUEUE_FULL</code></td>
-<td style="text-align: left;">このトランザクションは<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、またこのサーバーのトランザクションキューが一杯であるため、サーバーはこのトランザクションをキューに入れませんでした。<code>Fee</code>の値を大きくして再試行するか、後で試してみるか、別のサーバーへの送信を試みることができます。新しいトランザクションのトランザクションコスト（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>で評価）は、キュー内でトランザクションコストが最も低いトランザクションよりも高くなければなりません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.70.2" target="_blank" title="新規: rippled 0.70.2"><img alt="新規: rippled 0.70.2" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.70.2-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">このトランザクションは<a href="transaction-cost.html">オープンレジャーコスト</a>を満たしておらず、またこのサーバーのトランザクションキューが一杯であるため、サーバーはこのトランザクションをキューに入れませんでした。<code>Fee</code>の値を大きくして再試行するか、後で試してみるか、別のサーバーへの送信を試みることができます。新しいトランザクションのトランザクションコスト（<a href="transaction-cost.html#手数料レベル">手数料レベル</a>で評価）は、キュー内でトランザクションコストが最も低いトランザクションよりも高くなければなりません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>telFAILED_PROCESSING</code></td>
@@ -360,8 +358,20 @@
 <td style="text-align: left;">不明なローカルエラー。</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>telNETWORK_ID_MAKES_TX_NON_CANONICAL</code></td>
+<td style="text-align: left;">トランザクションは<a href="transaction-common-fields.html#networkidフィールド"><code>NetworkID</code>フィールド</a>を指定していますが、現在のネットワークルールでは<code>NetworkID</code>フィールドは指定しないことになっています。(メインネットやその他のチェーンIDが1024以下のネットワークではこのフィールドは使用されません)。もしトランザクションが<code>NetworkID</code>を使用しないネットワーク向けであった場合、そのフィールドを削除して再試行してください。トランザクションが別のネットワーク向けだった場合は、正しいネットワークに接続されているサーバに送信してください。 <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="新規: rippled 1.11.0"><img alt="新規: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>telNO_DST</code>_<code>PARTIAL</code></td>
-<td style="text-align: left;">トランザクションは、新しいアカウントに資金を供給するXRPの支払ですが、<a href="partial-payments.html">tfPartialPaymentフラグ</a>が有効になっていました。これは許可されていません。</td>
+<td style="text-align: left;">トランザクションは、新しいアカウントに資金を供給するためのXRPによる支払いですが、<a href="partial-payments.html">tfPartialPaymentフラグ</a>が有効になっていました。これは許可されていません。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>telREQUIRES_NETWORK_ID</code></td>
+<td style="text-align: left;">トランザクションは<a href="transaction-common-fields.html#networkidフィールド"><code>NetworkID</code>フィールド</a>を指定していません。トランザクションが<code>NetworkID</code>を必要とするネットワーク向けであった場合、フィールドを追加して再試行してください。トランザクションが別のネットワーク向けであった場合、正しいネットワークに接続されているサーバに送信してください。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="新規: rippled 1.11.0"><img alt="新規: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>telWRONG_NETWORK</code></td>
+<td style="text-align: left;">トランザクションが現在のネットワークに対して間違った <a href="transaction-common-fields.html#networkidフィールド"><code>NetworkID</code> 値</a> を指定しています。目的のネットワークに対して正しい <code>NetworkID</code>値を指定するか、正しいネットワークに接続されているサーバーにトランザクションを送信してください。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="新規: rippled 1.11.0"><img alt="新規: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 </tbody>
 </table>
@@ -807,7 +817,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -847,7 +857,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1234,9 +1244,26 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1254,19 +1281,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1319,19 +1346,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1364,11 +1391,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1381,11 +1408,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1427,11 +1454,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1636,7 +1663,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="true" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_6_1_3">
       
@@ -1990,7 +2017,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -2566,7 +2593,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2631,7 +2658,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2651,12 +2678,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2696,7 +2723,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2752,7 +2779,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2762,7 +2789,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2799,12 +2826,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2878,7 +2905,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2893,7 +2920,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

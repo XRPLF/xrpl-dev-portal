@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="nft_sell_offers | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nft_sell_offers.html" />
-    <meta property="og:description" content="Get a list of all sell offers for a NFToken." />
-    <meta name="description" content="Get a list of all sell offers for a NFToken." />
+    <meta property="og:description" content="NFTokenに対するすべての売却オファーのリストを取得します。" />
+    <meta name="description" content="NFTokenに対するすべての売却オファーのリストを取得します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Non-fungible Tokens, NFTs, NFTokens']
+      "page_labels": ['非代替性トークン, NFT, NFToken']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -258,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts-nftokens">Non-fungible Tokens, NFTs, NFTokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs, NFTokens" -->
+      <span class="label label-非代替性トークン-nft-nftoken">非代替性トークン, NFT, NFToken</span>
+      <!-- TEMPLATE WARNING: no label landing found for "非代替性トークン, NFT, NFToken" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,9 +273,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nft_sell_offers">nft_sell_offers</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#sell-offers">Sell Offers</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リクエストのフォーマット">リクエストのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#売却オファー">売却オファー</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
       </aside>
@@ -299,17 +301,14 @@
     <li class="active breadcrumb-item">nft_sell_offers</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nft_sell_offers">nft_sell_offers<a aria-hidden="true" class="hover_anchor" href="#nft_sell_offers"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>nft_sell_offers</code> method returns a list of sell offers for a given <a href="nftoken.html">NFToken</a> object.</p>
-<p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
-<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of the request format:</p>
-<p class="devportal-callout note"><strong>Note:</strong> There is no commandline syntax for this method. You can use the <a href="json.html">json method</a> to access this method from the commandline instead.</p>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>nft_sell_offers</code>メソッドは、与えられた<a href="nftoken.html">NFToken</a>オブジェクトに対する売却オファーのリストを返します。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>により追加されました。)</em></p>
+<h2 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>リクエストフォーマットの例：</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> このメソッドにはコマンドライン構文がありません。代わりに<a href="json.html">jsonメソッド</a>を使って、コマンドラインからこのメソッドにアクセスすることができます。</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -329,39 +328,46 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p><a class="btn btn-primary" href="websocket-api-tool.html#nft_sell_offers">Try it!</a></p>
-<p>The request includes the following parameters:</p>
+<p><a class="btn btn-primary" href="websocket-api-tool.html#nft_sell_offers">試してみる</a></p>
+<p>リクエストには以下のパラメーターが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>tokenid</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The unique identifier of a NFToken object.</td>
+<td style="text-align: left;"><code>nft_id</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><a href="nftoken.html">NFToken</a> オブジェクトの一意の識別子。</td>
 </tr>
 <tr>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>ledger_hash</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーのバージョンを示す20バイトの16進文字列。<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）。</td>
 </tr>
 <tr>
-<td style="text-align: left;">## Response Format</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>ledger_index</code></td>
+<td style="text-align: left;">文字列 または 数値</td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）。</td>
 </tr>
 <tr>
-<td style="text-align: left;">An example of a successful response:</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>limit</code></td>
+<td style="text-align: left;">整数値</td>
+<td style="text-align: left;"><em>(省略可)</em> 取得するNFTの売却オファーの数を制限します。この値は50未満または500を超えることはできません。この範囲外の正の値は、最も近い有効な値に置き換えられます。デフォルトは250です。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>marker</code></td>
+<td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
+<td style="text-align: left;"><em>(省略可)</em> 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。</td>
 </tr>
 </tbody>
 </table>
+<h2 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>処理が成功したレスポンスの例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
@@ -397,77 +403,77 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
+<p>このレスポンスは<a href="response-formatting.html">標準フォーマット</a>に従っており、正常に完了した場合は結果に次のフィールドが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>nft_id</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The NFToken these offers are for, as specified in the request.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">リクエストで指定された NFToken</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>offers</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">A list of buy offers for the token. Each of these is formatted as a <strong>Sell Offer</strong> (see below).</td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">トークンの売却オファー一覧。各オファーは <strong>売却オファー</strong> (下記参照)の形式で表示されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The <code>limit</code>, as specified in the request.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;"><em>(省略可)</em> リクエストで指定された<code>limit</code>。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
-<td style="text-align: left;"><a href="markers-and-pagination.html">Marker</a></td>
-<td style="text-align: left;"><em>(May be omitted)</em> Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one.</td>
+<td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
+<td style="text-align: left;"><em>(省略可)</em> レスポンスがページ分割されていることを示す、サーバ定義の値。これを次の呼び出しに渡すと、この呼び出しが中断したところから再開します。この後に情報のページがない場合は省略されます。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="sell-offers">Sell Offers<a aria-hidden="true" class="hover_anchor" href="#sell-offers"><i class="fa fa-link"></i></a></h3>
-<p>Each member of the <code>offers</code> array represents one <a href="nftokenoffer.html">NFTokenOffer object</a> to buy the NFT in question and has the following fields:</p>
+<h3 id="売却オファー">売却オファー<a aria-hidden="true" class="hover_anchor" href="#売却オファー"><i class="fa fa-link"></i></a></h3>
+<p><code>offers</code>配列の各メンバーは、対象のNFTを売却するための1つの<a href="nftokenoffer.html">NFTokenOfferオブジェクト</a>を表し、以下のフィールドを持ちます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>amount</code></td>
-<td style="text-align: left;">String or Object</td>
-<td style="text-align: left;">The amount offered to sell the NFT for, as a String representing an amount in drops of XRP, or an object representing an amount of a fungible token. (See <a href="basic-data-types.html#通貨額の指定">Specifying Currency Amounts</a>)</td>
+<td style="text-align: left;">文字列 または オブジェクト</td>
+<td style="text-align: left;">NFTを売却するために提示される金額で、XRPのドロップ数を表す文字列、または(代替可能)トークンの金額を表すオブジェクトです。(<a href="basic-data-types.html#通貨額の指定">通貨金額の指定</a>をご覧ください)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>flags</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">A set of bit-flags for this offer. See <a href="nftokenoffer.html#nftokenoffer-フラグ">NFTokenOffer flags</a> for possible values.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このオファーのためのフラグ。指定できる値については、<a href="nftokenoffer.html#nftokenofferのフラグ">NFTokenOfferのフラグ</a>をご覧ください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>nft_offer_index</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="ledger-object-ids.html">ledger object ID</a> of this offer.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このオファーの<a href="ledger-object-ids.html">レジャーオブジェクトID</a>。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>owner</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The account that placed this offer.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このオファーを作成アカウント。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
-<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>actNotFound</code> - The <a href="basic-data-types.html#アドレス">Address</a> specified in the <code>account</code> field of the request does not correspond to an account in the ledger.</li>
-<li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
+<li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
+<li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
+<li><code>actNotFound</code> - リクエストの<code>account</code>フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。</li>
+<li><code>lgrNotFound</code> - <code>ledger_hash</code>または<code>ledger_index</code>で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。</li>
 </ul>
 <!-- rippled release notes links -->
 <!-- -->
@@ -910,7 +916,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -950,7 +956,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1337,9 +1343,26 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1357,19 +1380,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1422,19 +1445,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1467,11 +1490,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1484,11 +1507,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1530,11 +1553,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1739,7 +1762,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2093,7 +2116,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -2669,7 +2692,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2734,7 +2757,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2754,12 +2777,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2799,7 +2822,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2855,7 +2878,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2865,7 +2888,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2902,12 +2925,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2981,7 +3004,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2996,7 +3019,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

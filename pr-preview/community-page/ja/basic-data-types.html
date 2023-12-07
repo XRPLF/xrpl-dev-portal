@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="基本的なデータ型 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/basic-data-types.html" />
-    <meta property="og:description" content="さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。" />
-    <meta name="description" content="さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。" />
+    <meta property="og:description" content="アドレス、レジャーインデックス、通貨コードなどの基本的なデータタイプのフォーマットと意味について説明します。" />
+    <meta name="description" content="アドレス、レジャーインデックス、通貨コードなどの基本的なデータタイプのフォーマットと意味について説明します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -271,7 +272,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#レジャーインデックス">レジャーインデックス</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#レジャーの指定">レジャーの指定</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#通貨額の指定">通貨額の指定</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#通貨コード">通貨コード</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#時間の指定">時間の指定</a></li>
       </ul>
   </div>
@@ -293,13 +293,10 @@
     <li class="active breadcrumb-item">基本的なデータ型</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="基本的なデータ型">基本的なデータ型<a aria-hidden="true" class="hover_anchor" href="#基本的なデータ型"><i class="fa fa-link"></i></a></h1>
 <p>さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。</p>
-<p><a href="accounts.html">アカウント</a>は<a href="basic-data-types.html#アドレス">アドレス</a>で識別されます。例えば、<code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>など。アドレスは常に「r」で始まります。<code>rippled</code>メソッドの多くは、16進数表記に対応しています。</p>
+<p><a href="accounts.html">アカウント</a>は<code>"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</code>のような<a href="basic-data-types.html#アドレス">アドレス</a>で一意に識別されます。アドレスは常に「r」で始まります。<code>rippled</code>メソッドの多くは、16進数表記に対応しています。</p>
 <p><a href="transaction-formats.html">トランザクション</a>は、トランザクションのバイナリフォーマットの<a href="basic-data-types.html#ハッシュ">ハッシュ</a>で識別されます。また、トランザクションは送信アカウントと<a href="basic-data-types.html#アカウントシーケンス">シーケンス番号</a>でも識別できます。</p>
 <p>閉鎖された各<a href="ledger-data-formats.html">レジャー</a>は、<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>と<a href="basic-data-types.html#ハッシュ">ハッシュ</a>値を保有します。<a href="#レジャーの指定">レジャーを指定する</a>場合、いずれか1つを使用できます。</p>
 <h2 id="アドレス">アドレス<a aria-hidden="true" class="hover_anchor" href="#アドレス"><i class="fa fa-link"></i></a></h2>
@@ -435,76 +432,60 @@
 <h3 id="レジャーの指定">レジャーの指定<a aria-hidden="true" class="hover_anchor" href="#レジャーの指定"><i class="fa fa-link"></i></a></h3>
 <p>APIメソッドの多くは、レジャーのインスタンスを指定する必要があります。その場合、共有されたレジャーの特定バージョンで最新と見なされるデータで指定する必要があります。レジャーバージョンを受け入れるコマンドは、すべて同様に機能します。使用するレジャーを指定するには、以下の3つの方法があります。</p>
 <ol>
-<li><code>ledger_index</code>パラメーターにレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>を指定します。閉鎖された各レジャーには識別用のレジャーインデックスが付いていて、その前に検証されたレジャーより1つ大きい番号になります。（最初のレジャーのインデックスは1です。）</li>
-<li><code>ledger_hash</code>パラメーターにレジャーの<a href="basic-data-types.html#ハッシュ">ハッシュ</a>値を指定します。</li>
-<li><code>ledger_index</code>パラメーターに以下のいずれかのショートカットを指定します。<ul>
-<li><code>validated</code>: ネットワーク全体で検証された最新のレジャー</li>
-<li><code>closed</code>: 変更できないように閉鎖され、検証を提案されている最新のレジャー</li>
-<li><code>current</code>: サーバーで現在処理中のレジャーバージョン</li>
+<li>
+<p><code>ledger_index</code>パラメータにレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>を指定します。閉鎖された各レジャーには識別用のレジャーインデックスが付いていて、その前に検証されたレジャーより1つ大きい番号になります。（最初のレジャーのインデックスは1です。）</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">"ledger_index": 61546724
+</code></pre></div>
+</li>
+<li>
+<p><code>ledger_hash</code>パラメータにレジャーの<a href="basic-data-types.html#ハッシュ">ハッシュ</a>値を指定します。</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">"ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+</code></pre></div>
+</li>
+<li>
+<p><code>ledger_index</code>パラメータに以下のいずれかのショートカットを指定します。</p>
+<ul>
+<li>
+<p><code>validated</code>: <a href="consensus-structure.html#検証">コンセンサスで検証</a>された最新のレジャー</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">"ledger_index": "validated"
+</code></pre></div>
+</li>
+<li>
+<p><code>closed</code>: 変更できないように閉鎖され、検証を提案されている最新のレジャー</p>
+</li>
+<li>
+<p><code>current</code>: サーバーで現在処理中のレジャーバージョン</p>
+</li>
 </ul>
 </li>
 </ol>
 <p>上記3つのフォーマットすべてを受け入れる、廃止予定の<code>ledger</code>パラメーターもあります。このパラメーターは使用<em>しないでください</em>。今後予告なしに廃止される可能性があります。</p>
-<p>レジャーを指定しない場合、デフォルトで<code>current</code>（処理中）レジャーが選択されます。レジャーを指定するフィールドを複数指定した場合、廃止予定の<code>ledger</code>フィールドが最初に使用され（存在する場合）、<code>ledger_hash</code>に戻ります。<code>ledger_index</code>フィールドは、他の2つのフィールドがいずれも存在しない場合を除いて無視されます。</p>
-<p class="devportal-callout 注記"><strong>注記:</strong> レジャーを指定する際に上記のデフォルトの動作に頼らないでください。変更される場合があります。可能であれば、常に要求にてレジャーバージョンを指定してください。</p>
+<p>レジャーを指定しない場合、デフォルトで<code>current</code>（処理中）レジャーが選択されます。レジャーを指定しなかった場合、サーバはリクエストにどのレジャーを使うかを決めます。デフォルトでは、サーバは<code>current</code>(進行中)のレジャーを選択します。<a href="rippled-server-modes.html#レポートモード">レポートモード</a>では、サーバは最新の検証済みレジャーを使います。レジャーを指定するフィールドは複数指定しないでください。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> レジャーを指定する際に上記のデフォルトの動作に頼らないでください。変更される場合があります。可能であれば、常にリクエストでレジャーバージョンを指定してください。</p>
+<p>レポートモードでは、検証済みとなるまでレジャーデータは記録されません。レポートモードサーバに<code>current</code>または<code>closed</code>のレジャーをリクエストすると、サーバはそのリクエストを P2Pモードサーバに転送します。検証されていないレジャー番号またはハッシュを要求した場合、レポートモードのサーバは<code>lgrNotFound</code>エラーを返します。</p>
 <h3 id="通貨額の指定">通貨額の指定<a aria-hidden="true" class="hover_anchor" href="#通貨額の指定"><i class="fa fa-link"></i></a></h3>
-<p>一部のAPIメソッドでは、通貨額を指定する必要があります。取扱通貨がネットワーク固有のXRP通貨であるかその他の通貨単位（<em>イシュアンス</em>）であるかによって、指定方法が大きく異なります。</p>
-<h4 id="xrp">XRP<a aria-hidden="true" class="hover_anchor" href="#xrp"><i class="fa fa-link"></i></a></h4>
-<p>XRPの額は文字列で表します。（XRPの精度は64ビット整数と同等ですが、JSON 整数は32ビットに制限されるため、JSON整数で表す場合はXRPがオーバーフローする恐れがあります。）XRPは正式には「drop」で指定します。これは0.000001（百万分の1）のXRPと等価です。したがって、JSON文書で1.0 XRPを表示するには、次のように書きます。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">"1000000"
+<p>XRP LedgerにはXRPとトークンの2種類の通貨があります。これら2種類の通貨は、異なるフォーマット、異なる精度と丸め動作で指定されます。</p>
+<p><a href="payment.html">Paymentトランザクション</a>で送金する<code>Amount</code>のようないくつかのフィールドは、どちらのタイプにもすることができます。<code>Fee</code>フィールド（<a href="transaction-cost.html">トランザクションコスト</a>）のように、XRPのみを使用可能なフィールドもあります。</p>
+<p>XRPは、XRPの “drop"数を含む整数の文字列として指定され、100万ドロップが1XRPに相当します。トークンは、10進数の金額、通貨コード、発行者のフィールドを持つオブジェクトとして指定されます。</p>
+<ul>
+<li>
+<p><strong>XRP</strong> - <code>Amount</code>フィールドに13.1 XRPを指定するには:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">"Amount": "13100000"
 </code></pre></div>
-<p><strong>XRPをオブジェクトに指定しないでください。</strong></p>
-<p>単体テストでは、XRPの値（dropではありません）を小数点を使用して指定できます。例えば、「1.23」は1.23 XRPを意味します。それ以外のすべての場合では、XRPは常にdrop単位で指定し、小数点は使用しません。例えば、「1230000」は1.23 XRPを意味します。</p>
-<h4 id="非xrp">非XRP<a aria-hidden="true" class="hover_anchor" href="#非xrp"><i class="fa fa-link"></i></a></h4>
-<p>XRP以外の通貨（法定通貨としてのドル、貴金属、暗号資産、その他のカスタム通貨を含む）を指定する場合、通貨指定オブジェクトを使用して指定する必要があります。以下は、3つのフィールドを持つJSONオブジェクトです。</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">型</th>
-<th style="text-align: left;">説明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>currency</code></td>
-<td style="text-align: left;">文字列 - <a href="currency-formats.html#通貨コード">通貨コード</a></td>
-<td style="text-align: left;">通貨を発行するための任意コード。<code>XRP</code>は使用できません。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>value</code></td>
-<td style="text-align: left;">文字列</td>
-<td style="text-align: left;">通貨の金額を表す引用符付き10進数表記。これには科学的記数法が含まれ、例えば<code>1.23e11</code>は123,000,000,000を意味します。<code>e</code>と<code>E</code>のどちらも使用できます。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>issuer</code></td>
-<td style="text-align: left;">文字列</td>
-<td style="text-align: left;">通貨を発行する組織の一意のアカウントアドレス。つまり、通貨を清算できる個人または企業です。</td>
-</tr>
-</tbody>
-</table>
-<p class="devportal-callout 注意"><strong>注意:</strong> これらのフィールド名は大文字小文字の区別があります。</p>
-<p>例えば、アカウント<code>r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59</code>によって発行された$153.75 USドルは、以下のように指定します。</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
-    "currency": "USD",
-    "value": "153.75",
-    "issuer": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
+</li>
+<li>
+<p><strong>トークン</strong> - <code>rf1B...</code>が発行した13.1 FOOという値で<code>Amount</code>フィールドを指定するには：</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">"Amount": {
+    "value": "13.1",
+    "currency": "FOO",
+    "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
 }
 </code></pre></div>
-<p>単体テストでは、非XRP通貨の金額値をスラッシュで区切られた文字列で指定できます。例えば、<code>"amount/currency/issuer"</code>のフォーマットになります。その他すべての場合では、前述のJSONオブジェクトのフォーマットを使用する必要があります。</p>
-<h4 id="金額なしでの通貨の指定">金額なしでの通貨の指定<a aria-hidden="true" class="hover_anchor" href="#金額なしでの通貨の指定"><i class="fa fa-link"></i></a></h4>
-<p>XRP以外の通貨を金額なしで指定する場合は（主に、通貨取引オファーのオーダーブックを定義する場合など）、上記のように指定しますが、<code>value</code>フィールドは省略します。</p>
-<p>XRPを金額なしで指定する場合は（主に、オーダーブックを定義する場合など）、JSONオブジェクトとして指定しますが、使用するフィールドは<code>currency</code>フィールド <em>のみ</em> です。XRPの場合は<code>issuer</code>フィールドを指定してはいけません。</p>
-<p>最後に、支払いの受取人アカウントが複数のイシュアー（通貨発行者）を信頼している場合は、受取人が受け入れているイシュアーがどのように組み合わされても支払いが行われるように指定できます。これを行うには、受取人アカウントのアドレスをJSONオブジェクトに<code>issuer</code>値として指定します。</p>
-<h3 id="通貨コード">通貨コード<a aria-hidden="true" class="hover_anchor" href="#通貨コード"><i class="fa fa-link"></i></a></h3>
-<p>XRP Ledgerには、以下の2種類の通貨コードがあります。</p>
-<ul>
-<li>3文字の通貨コード。<a class="external-link" href="https://www.xe.com/iso4217.php" target="_blank">ISO 4217の通貨コード <i aria-hidden="true" class="fa fa-external-link"></i></a>をすべて大文字で使用することをお勧めします。しかし、次の文字の組み合わせであれば、いずれも許可されます。すなわち、すべての大文字と小文字、数字、記号（<code>?</code>、<code>!</code>、<code>@</code>、<code>#</code>、<code>$</code>、<code>%</code>、<code>^</code>、<code>&amp;</code>、<code>*</code>、<code>&lt;</code>、<code>&gt;</code>、<code>(</code>、<code>)</code>、<code>{</code>、<code>}</code>、<code>[</code>、<code>]</code>）、および<code>|</code>です。通貨コード<code>XRP</code>（すべて大文字）はXRP用に予約されているため、発行済み通貨には使用できません。</li>
-<li>160ビットの16進値。例えば<code>0158415500000000C1F76FF6ECB0BAC600000000</code>など、XRP Ledgerの内部<a href="currency-formats.html">通貨フォーマット</a>に準じたものです。この表記は一般的ではありません。</li>
+</li>
 </ul>
-<!-- -->
+<p>詳しくは<a href="currency-formats.html">通貨フォーマット</a>をご覧ください。</p>
 <h2 id="時間の指定">時間の指定<a aria-hidden="true" class="hover_anchor" href="#時間の指定"><i class="fa fa-link"></i></a></h2>
-<p><code>rippled</code>サーバーとそのAPIでは、時間を符号なし整数で表します。この数値は、「Rippleエポック」である2000年1月1日（00:00 UTC）から経過した秒数を表しています。これは<a class="external-link" href="http://en.wikipedia.org/wiki/Unix_time" target="_blank">UNIXエポック <i aria-hidden="true" class="fa fa-external-link"></i></a>と同様に機能しますが、RippleエポックはUNIXエポックより946684800秒遅れています。</p>
+<p><code>rippled</code>サーバとそのAPIでは、時間を符号なし整数で表します。この数値は、「Rippleエポック」である2000年1月1日（00:00 UTC）から経過した秒数を表しています。これは<a class="external-link" href="http://en.wikipedia.org/wiki/Unix_time" target="_blank">UNIXエポック <i aria-hidden="true" class="fa fa-external-link"></i></a>と同様に機能しますが、RippleエポックはUNIXエポックより946684800秒遅れています。</p>
 <p>Rippleエポック時間を32ビット変数でUNIXエポック時間に変換しないでください。整数のオーバーフローが発生する恐れがあります。</p>
 <!-- -->
 <!-- -->
@@ -948,7 +929,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -988,7 +969,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1375,9 +1356,26 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1395,19 +1393,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1460,19 +1458,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1505,11 +1503,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1522,11 +1520,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1568,11 +1566,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1777,7 +1775,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2131,7 +2129,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -2707,7 +2705,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2772,7 +2770,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2792,12 +2790,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2837,7 +2835,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2893,7 +2891,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2903,7 +2901,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2940,12 +2938,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -3019,7 +3017,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -3034,7 +3032,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

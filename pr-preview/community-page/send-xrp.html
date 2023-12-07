@@ -148,6 +148,7 @@
             <a class="dropdown-item" href="get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-popular-pages">
@@ -310,7 +311,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="send-xrp">Send XRP<a aria-hidden="true" class="hover_anchor" href="#send-xrp"><i class="fa fa-link"></i></a></h1>
-<p>This tutorial explains how to send a direct XRP Payment using <code>xrpl.js</code> for JavaScript, <code>xrpl-py</code> for Python, or xrpl4j for Java. First, we step through the process with the <a href="parallel-networks.html">XRP Ledger Testnet</a>. Then, we compare that to the additional requirements for doing the equivalent in production.</p>
+<p>This tutorial explains how to send a direct XRP Payment using <code>xrpl.js</code> for JavaScript, <code>xrpl-py</code> for Python, <code>xrpl4j</code> for Java or <code>XRPL_PHP</code> for PHP. First, we step through the process with the <a href="parallel-networks.html">XRP Ledger Testnet</a>. Then, we compare that to the additional requirements for doing the equivalent in production.</p>
 <p class="devportal-callout tip"><strong>Tip:</strong> Check out the <a class="external-link" href="https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples" target="_blank">Code Samples <i aria-hidden="true" class="fa fa-external-link"></i></a> for a complete version of the code used in this tutorial.</p>
 <h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -320,11 +321,12 @@
 <li><strong>JavaScript</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl.js/" target="_blank">xrpl.js library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-javascript.html">Get Started Using JavaScript</a> for setup steps.</li>
 <li><strong>Python</strong> with the <a class="external-link" href="https://xrpl-py.readthedocs.io/" target="_blank"><code>xrpl-py</code> library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-python.html">Get Started using Python</a> for setup steps.</li>
 <li><strong>Java</strong> with the <a class="external-link" href="https://github.com/XRPLF/xrpl4j" target="_blank">xrpl4j library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-java.html">Get Started Using Java</a> for setup steps.</li>
+<li><strong>PHP</strong> with the <a class="external-link" href="https://github.com/AlexanderBuzz/xrpl-php" target="_blank">XRPL_PHP library <i aria-hidden="true" class="fa fa-external-link"></i></a>. See <a href="get-started-using-php.html">Get Started Using PHP</a> for setup steps.</li>
 </ul>
 <h2 id="send-a-payment-on-the-test-net">Send a Payment on the Test Net<a aria-hidden="true" class="hover_anchor" href="#send-a-payment-on-the-test-net"><i class="fa fa-link"></i></a></h2>
 <h3 id="1-get-credentials">1. Get Credentials<a aria-hidden="true" class="hover_anchor" href="#1-get-credentials"><i class="fa fa-link"></i></a></h3>
 <p>To transact on the XRP Ledger, you need an address and secret key, and some XRP. The address and secret key look like this:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li><li><a class="java" href="#code-0-2">Java</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="javascript" href="#code-0-0">JavaScript</a></li><li><a class="python" href="#code-0-1">Python</a></li><li><a class="java" href="#code-0-2">Java</a></li><li><a class="php" href="#code-0-3">PHP</a></li></ul>
 
 <div class="code_sample javascript" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="c1">// Example credentials</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">.</span><span class="nx">fromSeed</span><span class="p">(</span><span class="s2">"sn3nxiW7v8KXzPzAqzyHXbSSKNuN9"</span><span class="p">)</span>
@@ -343,6 +345,11 @@
 
 <span class="c1">// Get the Classic address from testWallet</span>
 <span class="n">Address</span><span class="w"> </span><span class="n">classicAddress</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">publicKey</span><span class="p">().</span><span class="na">deriveAddress</span><span class="p">();</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-0-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="x">// Example credentials</span>
+<span class="x">$wallet = Wallet::fromSeed("sEd7zwWAu7vXMCBkkzokJHEXiKw2B2s");</span>
+<span class="x">print_r('Wallet Address: ' . $wallet-&gt;getAddress() .PHP_EOL); // rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH</span>
 </code></pre></div></div>
 </div>
 <p>The secret key shown here is for example only. For development purposes, you can get your own credentials, pre-funded with XRP, on the Testnet using the following interface:</p>
@@ -364,9 +371,9 @@
 <h3 id="2-connect-to-a-testnet-server">2. Connect to a Testnet Server<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-a-testnet-server"><i class="fa fa-link"></i></a></h3>
 <p>First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to <a href="transaction-common-fields.html#auto-fillable-fields">automatically fill in some required fields of a transaction</a>. You also must be connected to the network to submit transactions to it.</p>
 <p>The following code connects to a public Testnet servers:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li><li><a class="java" href="#code-1-2">Java</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="javascript" href="#code-1-0">JavaScript</a></li><li><a class="python" href="#code-1-1">Python</a></li><li><a class="java" href="#code-1-2">Java</a></li><li><a class="php" href="#code-1-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
+<div class="code_sample javascript" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1">// In browsers, use a &lt;script&gt; tag. In Node.js, uncomment the following line:</span>
 <span class="c1">// const xrpl = require('xrpl')</span>
 
 <span class="c1">// Wrap code in an async function so we can use await</span>
@@ -385,15 +392,19 @@
 <span class="nx">main</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Connect ----------------------------------------------------------------------</span>
+<div class="code_sample python" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1"># Connect ----------------------------------------------------------------------</span>
 <span class="kn">import</span> <span class="nn">xrpl</span>
 <span class="n">testnet_url</span> <span class="o">=</span> <span class="s2">"https://s.altnet.rippletest.net:51234"</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">clients</span><span class="o">.</span><span class="n">JsonRpcClient</span><span class="p">(</span><span class="n">testnet_url</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="c1">// Connect --------------------------------------------------------------------</span>
+<div class="code_sample java" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="c1">// Connect --------------------------------------------------------------------</span>
 <span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://s.altnet.rippletest.net:51234/"</span><span class="p">);</span>
 <span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-1-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="x">// Create a client using the Testnet</span>
+<span class="x">$client = new JsonRpcClient("https://s.altnet.rippletest.net:51234");</span>
 </code></pre></div></div>
 </div>
 <p>For this tutorial, click the following button to connect:</p>
@@ -415,7 +426,7 @@
 </div>
 <h3 id="3-prepare-transaction">3. Prepare Transaction<a aria-hidden="true" class="hover_anchor" href="#3-prepare-transaction"><i class="fa fa-link"></i></a></h3>
 <p>Typically, we create XRP Ledger transactions as objects in the JSON <a href="transaction-formats.html">transaction format</a>. The following example shows a minimal Payment specification:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6"><span class="p">{</span>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"Amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000"</span><span class="p">,</span>
@@ -440,9 +451,9 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 </li>
 </ul>
 <p>Here's an example of preparing the above payment:</p>
-<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li><li><a class="java" href="#code-2-2">Java</a></li></ul>
+<div class="multicode" id="code-2"><ul class="codetabs"><li><a class="javascript" href="#code-2-0">JavaScript</a></li><li><a class="python" href="#code-2-1">Python</a></li><li><a class="java" href="#code-2-2">Java</a></li><li><a class="php" href="#code-2-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="c1">// Prepare transaction -------------------------------------------------------</span>
+<div class="code_sample javascript" id="code-2-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Prepare transaction -------------------------------------------------------</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">prepared</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">autofill</span><span class="p">({</span>
 <span class="w">    </span><span class="s2">"TransactionType"</span><span class="o">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
 <span class="w">    </span><span class="s2">"Account"</span><span class="o">:</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">,</span>
@@ -455,7 +466,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction expires after ledger:"</span><span class="p">,</span><span class="w"> </span><span class="nx">max_ledger</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8"><span class="c1"># Prepare transaction ----------------------------------------------------------</span>
+<div class="code_sample python" id="code-2-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1"># Prepare transaction ----------------------------------------------------------</span>
 <span class="n">my_payment</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">transactions</span><span class="o">.</span><span class="n">Payment</span><span class="p">(</span>
     <span class="n">account</span><span class="o">=</span><span class="n">test_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">,</span>
     <span class="n">amount</span><span class="o">=</span><span class="n">xrpl</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">xrp_to_drops</span><span class="p">(</span><span class="mi">22</span><span class="p">),</span>
@@ -464,7 +475,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Payment object:"</span><span class="p">,</span> <span class="n">my_payment</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"><span class="c1">// Prepare transaction --------------------------------------------------------</span>
+<div class="code_sample java" id="code-2-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1">// Prepare transaction --------------------------------------------------------</span>
 <span class="c1">// Look up your Account Info</span>
 <span class="n">AccountInfoRequestParams</span><span class="w"> </span><span class="n">requestParams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AccountInfoRequestParams</span><span class="p">.</span><span class="na">builder</span><span class="p">()</span>
 <span class="w">  </span><span class="p">.</span><span class="na">account</span><span class="p">(</span><span class="n">classicAddress</span><span class="p">)</span>
@@ -501,6 +512,21 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <span class="w">  </span><span class="p">.</span><span class="na">build</span><span class="p">();</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Constructed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
 </code></pre></div></div>
+
+<div class="code_sample php" id="code-2-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="x">// Transaction definition</span>
+<span class="x">$paymentTx = [</span>
+<span class="x">    "TransactionType" =&gt; "Payment",</span>
+<span class="x">    "Account" =&gt; $wallet-&gt;getAddress(),</span>
+<span class="x">    "Amount" =&gt; xrpToDrops('50'),</span>
+<span class="x">    "Destination" =&gt; "rfmMDuKPsXUgpkCvJeS132wtfXWujjHqiW",</span>
+<span class="x">    "DestinationTag" =&gt; 12345</span>
+<span class="x">];</span>
+
+<span class="x">// Autofill mandatory values like Sequence, Fee and LastLedgerSequence</span>
+<span class="x">$preparedTx = $client-&gt;autofill($paymentTx);</span>
+<span class="x">print_r("Prepared tx: " . PHP_EOL);</span>
+<span class="x">print_r($preparedTx);</span>
+</code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="3" data-totalsteps="7" id="interactive-prepare">
 <div class="interactive-block-inner">
@@ -530,16 +556,17 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Wallet.html#sign" target="_blank"><code>sign()</code> method of a <code>Wallet</code> instance <i aria-hidden="true" class="fa fa-external-link"></i></a> to sign the transaction with <code>xrpl.js</code>.</li>
 <li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.transaction.html#xrpl.transaction.safe_sign_transaction" target="_blank"><code>xrpl.transaction.safe_sign_transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> with a model and <code>Wallet</code> object.</li>
 <li><strong>Java:</strong> Use a <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-core/latest/org/xrpl/xrpl4j/crypto/signing/SignatureService.html" target="_blank"><code>SignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> instance to sign the transaction. For this tutorial, use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-crypto-bouncycastle/latest/org/xrpl/xrpl4j/crypto/signing/SingleKeySignatureService.html" target="_blank"><code>SingleKeySignatureService</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</li>
+<li><strong>PHP:</strong> Use a <a class="external-link" href="https://alexanderbuzz.github.io/xrpl-php-docs/wallet.html#signing-a-transaction" target="_blank"><code>sign()</code> method of a <code>Wallet</code> instance <i aria-hidden="true" class="fa fa-external-link"></i></a> instance to sign the transaction. The input to this step is a completed array of transaction instructions.</li>
 </ul>
-<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="python" href="#code-3-1">Python</a></li><li><a class="java" href="#code-3-2">Java</a></li></ul>
+<div class="multicode" id="code-3"><ul class="codetabs"><li><a class="javascript" href="#code-3-0">JavaScript</a></li><li><a class="python" href="#code-3-1">Python</a></li><li><a class="java" href="#code-3-2">Java</a></li><li><a class="php" href="#code-3-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="c1">// Sign prepared instructions ------------------------------------------------</span>
+<div class="code_sample javascript" id="code-3-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Sign prepared instructions ------------------------------------------------</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">signed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wallet</span><span class="p">.</span><span class="nx">sign</span><span class="p">(</span><span class="nx">prepared</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">hash</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Signed blob:"</span><span class="p">,</span><span class="w"> </span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="c1"># Sign transaction -------------------------------------------------------------</span>
+<div class="code_sample python" id="code-3-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1"># Sign transaction -------------------------------------------------------------</span>
 <span class="n">signed_tx</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">autofill_and_sign</span><span class="p">(</span>
         <span class="n">my_payment</span><span class="p">,</span> <span class="n">client</span><span class="p">,</span> <span class="n">test_wallet</span><span class="p">)</span>
 <span class="n">max_ledger</span> <span class="o">=</span> <span class="n">signed_tx</span><span class="o">.</span><span class="n">last_ledger_sequence</span>
@@ -550,7 +577,7 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Identifying hash:"</span><span class="p">,</span> <span class="n">tx_id</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="c1">// Sign transaction -----------------------------------------------------------</span>
+<div class="code_sample java" id="code-3-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Sign transaction -----------------------------------------------------------</span>
 <span class="c1">// Construct a SignatureService to sign the Payment</span>
 <span class="n">SignatureService</span><span class="o">&lt;</span><span class="n">PrivateKey</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signatureService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BcSignatureService</span><span class="p">();</span>
 
@@ -558,12 +585,19 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <span class="n">SingleSignedTransaction</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">signedPayment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">signatureService</span><span class="p">.</span><span class="na">sign</span><span class="p">(</span><span class="n">randomKeyPair</span><span class="p">.</span><span class="na">privateKey</span><span class="p">(),</span><span class="w"> </span><span class="n">payment</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Signed Payment: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">signedTransaction</span><span class="p">());</span>
 </code></pre></div></div>
+
+<div class="code_sample php" id="code-3-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="x">// Sign prepared transaction</span>
+<span class="x">$signedTx = $wallet-&gt;sign($preparedTx);</span>
+<span class="x">print_r("Identifying hash: " . $signedTx['hash'] . PHP_EOL);</span>
+<span class="x">print_r("Signed blob: " . $signedTx['tx_blob'] . PHP_EOL);</span>
+</code></pre></div></div>
 </div>
 <p>The result of the signing operation is a transaction object containing a signature. Typically, XRP Ledger APIs expect a signed transaction to be the hexadecimal representation of the transaction's canonical <a href="serialization.html">binary format</a>, called a "blob".</p>
 <ul>
 <li>In <code>xrpl.js</code>, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.</li>
 <li>In <code>xrpl-py</code>, you can get the transaction's hash in the response to submitting it in the next step.</li>
 <li>In xrpl4j, <code>SignatureService.sign</code> returns a <code>SignedTransaction</code>, which contains the transaction's hash, which you can use to look up the transaction later.</li>
+<li>In <code>XRPL_PHP</code>, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.</li>
 </ul>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="4" data-totalsteps="7" id="interactive-sign">
 <div class="interactive-block-inner">
@@ -584,23 +618,28 @@ account of a <code>Transaction</code> at the time of construction, as well as a 
 <li><strong>JavaScript:</strong> Use the <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitAndWait" target="_blank"><code>submitAndWait()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a signed transaction to the network and wait for the response, or use <a class="external-link" href="https://js.xrpl.org/classes/Client.html#submitSigned" target="_blank"><code>submitSigned()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction and get only the preliminary response.</li>
 <li><strong>Python:</strong> Use the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait" target="_blank"><code>xrpl.transaction.submit_and_wait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network and wait for a response.</li>
 <li><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#submit(org.xrpl.xrpl4j.crypto.signing.SignedTransaction)" target="_blank"><code>XrplClient.submit(SignedTransaction)</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network. Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to get the latest validated ledger index.</li>
+<li><strong>PHP:</strong> Use the <a class="external-link" href="https://alexanderbuzz.github.io/xrpl-php-docs/client.html" target="_blank"><code>submitAndWait()</code> method of the Client <i aria-hidden="true" class="fa fa-external-link"></i></a> to submit a transaction to the network and wait for the response.</li>
 </ul>
-<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li></ul>
+<div class="multicode" id="code-4"><ul class="codetabs"><li><a class="javascript" href="#code-4-0">JavaScript</a></li><li><a class="python" href="#code-4-1">Python</a></li><li><a class="java" href="#code-4-2">Java</a></li><li><a class="php" href="#code-4-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
+<div class="code_sample javascript" id="code-4-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1">// Submit signed blob --------------------------------------------------------</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">submitAndWait</span><span class="p">(</span><span class="nx">signed</span><span class="p">.</span><span class="nx">tx_blob</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14"><span class="c1"># Submit transaction -----------------------------------------------------------</span>
+<div class="code_sample python" id="code-4-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1"># Submit transaction -----------------------------------------------------------</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">tx_response</span> <span class="o">=</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">submit_and_wait</span><span class="p">(</span><span class="n">signed_tx</span><span class="p">,</span> <span class="n">client</span><span class="p">)</span>
 <span class="k">except</span> <span class="n">xrpl</span><span class="o">.</span><span class="n">transaction</span><span class="o">.</span><span class="n">XRPLReliableSubmissionException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">exit</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Submit failed: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15"><span class="c1">// Submit transaction ---------------------------------------------------------</span>
+<div class="code_sample java" id="code-4-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="c1">// Submit transaction ---------------------------------------------------------</span>
 <span class="n">SubmitResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">paymentSubmitResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xrplClient</span><span class="p">.</span><span class="na">submit</span><span class="p">(</span><span class="n">signedPayment</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">paymentSubmitResult</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-4-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="x">// Submit signed blob and wait for validation</span>
+<span class="x">$txResponse = $client-&gt;submitAndWait($signedTx['tx_blob']);</span>
 </code></pre></div></div>
 </div>
 <p>This method returns the <strong>tentative</strong> result of trying to apply the transaction to the open ledger. This result <em>can</em> change when the transaction is included in a validated ledger: transactions that succeed initially might ultimately fail, and transactions that fail initially might ultimately succeed. Still, the tentative result often matches the final result, so it's OK to get excited if you see <code>tesSUCCESS</code> here. 😁</p>
@@ -638,18 +677,21 @@ example transaction</button>
 <li>
 <p><strong>Java</strong> Poll the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see if your transaction has a final result. Periodically check that the latest validated ledger index has not passed the <code>LastLedgerIndex</code> of the transaction using the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#ledger(org.xrpl.xrpl4j.model.client.ledger.LedgerRequestParams)" target="_blank"><code>XrplClient.ledger()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method.</p>
 </li>
+<li>
+<p><strong>PHP:</strong>  If you used the <a class="external-link" href="https://alexanderbuzz.github.io/xrpl-php-docs/client.html" target="_blank"><code>.submitAndWait()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a>, you can wait until the returned Promise resolves. Other, more asynchronous approaches are also possible.</p>
+</li>
 </ul>
-<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li></ul>
+<div class="multicode" id="code-5"><ul class="codetabs"><li><a class="javascript" href="#code-5-0">JavaScript</a></li><li><a class="python" href="#code-5-1">Python</a></li><li><a class="java" href="#code-5-2">Java</a></li><li><a class="php" href="#code-5-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16"><span class="c1">// Wait for validation -------------------------------------------------------</span>
+<div class="code_sample javascript" id="code-5-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="c1">// Wait for validation -------------------------------------------------------</span>
 <span class="w">  </span><span class="c1">// submitAndWait() handles this automatically, but it can take 4-7s.</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17"><span class="c1"># Wait for validation ----------------------------------------------------------</span>
+<div class="code_sample python" id="code-5-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="c1"># Wait for validation ----------------------------------------------------------</span>
 <span class="c1"># submit_and_wait() handles this automatically, but it can take 4-7s.</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18"><span class="c1">// Wait for validation --------------------------------------------------------</span>
+<div class="code_sample java" id="code-5-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="c1">// Wait for validation --------------------------------------------------------</span>
 <span class="n">TransactionResult</span><span class="o">&lt;</span><span class="n">Payment</span><span class="o">&gt;</span><span class="w"> </span><span class="n">transactionResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
 
 <span class="kt">boolean</span><span class="w"> </span><span class="n">transactionValidated</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
@@ -680,6 +722,10 @@ example transaction</button>
 <span class="w">      </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Payment not yet validated."</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-5-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="x">// Wait for validation</span>
+<span class="x">// submitAndWait() handles this automatically, but it can take 4-7s.</span>
 </code></pre></div></div>
 </div>
 <!--/.interactive-block--><div class="interactive-block" data-stepnumber="6" data-totalsteps="7" id="interactive-wait">
@@ -724,15 +770,18 @@ example transaction</button>
 <li>
 <p><strong>Java:</strong> Use the <a class="external-link" href="https://javadoc.io/doc/org.xrpl/xrpl4j-client/latest/org/xrpl/xrpl4j/client/XrplClient.html#transaction(org.xrpl.xrpl4j.model.client.transactions.TransactionRequestParams,java.lang.Class)" target="_blank"><code>XrplClient.transaction()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method to check the status of a transaction.</p>
 </li>
+<li>
+<p><strong>PHP:</strong> Use the response from <code>submitAndWait()</code> or call the <code>tx method</code> using <a class="external-link" href="https://alexanderbuzz.github.io/xrpl-php-docs/client.html" target="_blank"><code>$client-&gt;syncRequest()</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+</li>
 </ul>
-<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="javascript" href="#code-6-0">JavaScript</a></li><li><a class="python" href="#code-6-1">Python</a></li><li><a class="java" href="#code-6-2">Java</a></li></ul>
+<div class="multicode" id="code-6"><ul class="codetabs"><li><a class="javascript" href="#code-6-0">JavaScript</a></li><li><a class="python" href="#code-6-1">Python</a></li><li><a class="java" href="#code-6-2">Java</a></li><li><a class="php" href="#code-6-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19"><span class="c1">// Check transaction results -------------------------------------------------</span>
+<div class="code_sample javascript" id="code-6-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="c1">// Check transaction results -------------------------------------------------</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Transaction result:"</span><span class="p">,</span><span class="w"> </span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">.</span><span class="nx">TransactionResult</span><span class="p">)</span>
 <span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Balance changes:"</span><span class="p">,</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">getBalanceChanges</span><span class="p">(</span><span class="nx">tx</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">meta</span><span class="p">),</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">))</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20"><span class="c1"># Check transaction results ----------------------------------------------------</span>
+<div class="code_sample python" id="code-6-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="c1"># Check transaction results ----------------------------------------------------</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tx_response</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Explorer link: https://testnet.xrpl.org/transactions/</span><span class="si">{</span><span class="n">tx_id</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -744,7 +793,7 @@ example transaction</button>
                 <span class="n">metadata</span><span class="p">[</span><span class="s2">"delivered_amount"</span><span class="p">]))</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21"><span class="c1">// Check transaction results --------------------------------------------------</span>
+<div class="code_sample java" id="code-6-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="c1">// Check transaction results --------------------------------------------------</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">transactionResult</span><span class="p">);</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Explorer link: https://testnet.xrpl.org/transactions/"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">signedPayment</span><span class="p">.</span><span class="na">hash</span><span class="p">());</span>
 <span class="n">transactionResult</span><span class="p">.</span><span class="na">metadata</span><span class="p">().</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">metadata</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -753,6 +802,13 @@ example transaction</button>
 <span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"XRP Delivered: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">((</span><span class="n">XrpCurrencyAmount</span><span class="p">)</span><span class="w"> </span><span class="n">deliveredAmount</span><span class="p">).</span><span class="na">toXrp</span><span class="p">()));</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">);</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-6-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="x">// Check transaction results</span>
+<span class="x">$result = $txResponse-&gt;getResult();</span>
+<span class="x">print_r("Transaction result:" . $result['meta']['TransactionResult'] . PHP_EOL);</span>
+
+<span class="x">print_r("You can check wallets/accounts and transactions on https://test.bithomp.com"  . PHP_EOL . PHP_EOL);</span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout caution"><strong>Caution:</strong> XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in <a href="tx.html">tx method</a> response, be sure to look for <code>"validated": true</code> to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see <a href="finality-of-results.html">Finality of Results</a>.</p>
@@ -776,59 +832,77 @@ example transaction</button>
 </ul>
 <h3 id="getting-a-real-xrp-account">Getting a Real XRP Account<a aria-hidden="true" class="hover_anchor" href="#getting-a-real-xrp-account"><i class="fa fa-link"></i></a></h3>
 <p>This tutorial uses a button to get an address that's already funded with Test Net XRP, which only works because Test Net XRP is not worth anything. For actual XRP, you need to get XRP from someone who already has some. (For example, you might buy it on an exchange.) You can generate an address and secret that'll work on either production or the Testnet as follows:</p>
-<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="javascript" href="#code-7-0">JavaScript</a></li><li><a class="python" href="#code-7-1">Python</a></li><li><a class="java" href="#code-7-2">Java</a></li></ul>
+<div class="multicode" id="code-7"><ul class="codetabs"><li><a class="javascript" href="#code-7-0">JavaScript</a></li><li><a class="python" href="#code-7-1">Python</a></li><li><a class="java" href="#code-7-2">Java</a></li><li><a class="php" href="#code-7-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22"><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span>
+<div class="code_sample javascript" id="code-7-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="kd">const</span><span class="w"> </span><span class="nx">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Wallet</span><span class="p">()</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">address</span><span class="p">)</span><span class="w"> </span><span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">wallet</span><span class="p">.</span><span class="nx">seed</span><span class="p">)</span><span class="w"> </span><span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23"><span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
+<div class="code_sample python" id="code-7-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">Wallet</span>
 <span class="n">my_wallet</span> <span class="o">=</span> <span class="n">Wallet</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="c1"># Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_wallet</span><span class="o">.</span><span class="n">seed</span><span class="p">)</span>            <span class="c1"># Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24"><span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
+<div class="code_sample java" id="code-7-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-31" id="codeblock-31button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-31"><span class="n">WalletFactory</span><span class="w"> </span><span class="n">walletFactory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DefaultWalletFactory</span><span class="p">.</span><span class="na">getInstance</span><span class="p">();</span>
 <span class="n">SeedWalletGenerationResult</span><span class="w"> </span><span class="n">generationResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">walletFactory</span><span class="p">.</span><span class="na">randomWallet</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
 <span class="n">Wallet</span><span class="w"> </span><span class="n">wallet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">generationResult</span><span class="p">.</span><span class="na">wallet</span><span class="p">();</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">wallet</span><span class="p">.</span><span class="na">classicAddress</span><span class="p">());</span><span class="w"> </span><span class="c1">// Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">generationResult</span><span class="p">.</span><span class="na">seed</span><span class="p">());</span><span class="w"> </span><span class="c1">// Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-7-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-32" id="codeblock-32button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-32"><span class="x">use XRPL_PHP\Wallet\Wallet;</span>
+
+<span class="x">$wallet = Wallet::generate();</span>
+
+<span class="x">print_r("Address: " . $wallet-&gt;getAddress());  // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f</span>
+<span class="x">print_r("Seed: " . $wallet-&gt;getSeed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs</span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout warning"><strong>Warning:</strong> You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.</p>
 <p>Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to <a href="accounts.html#creating-accounts">fund the account</a>. A common way to acquire XRP is to buy it from an <a href="exchanges.html">exchange</a>, then withdraw it to your own address.</p>
 <h3 id="connecting-to-the-production-xrp-ledger">Connecting to the Production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connecting-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>When you instantiate your client's connect to the XRP Ledger, you must specify a server that's synced with the appropriate <a href="parallel-networks.html">network</a>. For many cases, you can use <a href="public-servers.html">public servers</a>, such as in the following example:</p>
-<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="javascript" href="#code-8-0">JavaScript</a></li><li><a class="python" href="#code-8-1">Python</a></li><li><a class="java" href="#code-8-2">Java</a></li></ul>
+<div class="multicode" id="code-8"><ul class="codetabs"><li><a class="javascript" href="#code-8-0">JavaScript</a></li><li><a class="python" href="#code-8-1">Python</a></li><li><a class="java" href="#code-8-2">Java</a></li><li><a class="php" href="#code-8-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
+<div class="code_sample javascript" id="code-8-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-33" id="codeblock-33button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-33"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'wss://xrplcluster.com'</span><span class="p">)</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<div class="code_sample python" id="code-8-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-34" id="codeblock-34button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-34"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"https://xrplcluster.com"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-27" id="codeblock-27button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-27"><span class="kd">final</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://xrplcluster.com"</span><span class="p">);</span>
+<div class="code_sample java" id="code-8-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-35" id="codeblock-35button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-35"><span class="kd">final</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"https://xrplcluster.com"</span><span class="p">);</span>
 <span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-8-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-36" id="codeblock-36button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-36"><span class="nt">use</span><span class="w"> </span><span class="nt">XRPL_PHP</span><span class="err">\</span><span class="nt">Client</span><span class="err">\</span><span class="nt">JsonRpcClient</span><span class="o">;</span>
+
+<span class="o">$</span><span class="nt">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">JsonRpcClient</span><span class="o">(</span><span class="s2">"https://xrplcluster.com"</span><span class="o">);</span>
 </code></pre></div></div>
 </div>
 <p>If you <a href="install-rippled.html">install <code>rippled</code></a> yourself, it connects to the production network by default. (You can also <a href="connect-your-rippled-to-the-xrp-test-net.html">configure it to connect to the test net</a> instead.) After the server has synced (typically within about 15 minutes of starting it up), you can connect to it locally, which has <a href="xrpl-servers.html">various benefits</a>. The following example shows how to connect to a server running the default configuration:</p>
-<div class="multicode" id="code-9"><ul class="codetabs"><li><a class="javascript" href="#code-9-0">JavaScript</a></li><li><a class="python" href="#code-9-1">Python</a></li><li><a class="java" href="#code-9-2">Java</a></li></ul>
+<div class="multicode" id="code-9"><ul class="codetabs"><li><a class="javascript" href="#code-9-0">JavaScript</a></li><li><a class="python" href="#code-9-1">Python</a></li><li><a class="java" href="#code-9-2">Java</a></li><li><a class="php" href="#code-9-3">PHP</a></li></ul>
 
-<div class="code_sample javascript" id="code-9-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-28" id="codeblock-28button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-28"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
+<div class="code_sample javascript" id="code-9-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-37" id="codeblock-37button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-37"><span class="kd">const</span><span class="w"> </span><span class="nx">xrpl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'xrpl'</span><span class="p">)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">api</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">xrpl</span><span class="p">.</span><span class="nx">Client</span><span class="p">(</span><span class="s1">'ws://localhost:6006'</span><span class="p">)</span>
 <span class="nx">api</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
 </code></pre></div></div>
 
-<div class="code_sample python" id="code-9-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-29" id="codeblock-29button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-29"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
+<div class="code_sample python" id="code-9-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-38" id="codeblock-38button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-38"><span class="kn">from</span> <span class="nn">xrpl.clients</span> <span class="kn">import</span> <span class="n">JsonRpcClient</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">JsonRpcClient</span><span class="p">(</span><span class="s2">"http://localhost:5005"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<div class="code_sample java" id="code-9-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-30" id="codeblock-30button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-30"><span class="kd">final</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"http://localhost:5005"</span><span class="p">);</span>
+<div class="code_sample java" id="code-9-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-39" id="codeblock-39button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-39"><span class="kd">final</span><span class="w"> </span><span class="n">HttpUrl</span><span class="w"> </span><span class="n">rippledUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HttpUrl</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"http://localhost:5005"</span><span class="p">);</span>
 <span class="n">XrplClient</span><span class="w"> </span><span class="n">xrplClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">XrplClient</span><span class="p">(</span><span class="n">rippledUrl</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="code_sample php" id="code-9-3" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-40" id="codeblock-40button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-40"><span class="x">use XRPL_PHP\Client\JsonRpcClient;</span>
+
+<span class="x">$client = new JsonRpcClient("http://localhost:5005");</span>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout tip"><strong>Tip:</strong> The local connection uses an unencrypted protocol (<code>ws</code> or <code>http</code>) rather than the TLS-encrypted version (<code>wss</code> or <code>https</code>). This is secure only because the communications never leave the same machine, and is easier to set up because it does not require a TLS certificate. For connections on an outside network, always use <code>wss</code> or <code>https</code>.</p>
@@ -1718,9 +1792,26 @@ example transaction</button>
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
 
-        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+        <a class="nav-link" href="php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
+
+        <a class="nav-link" href="http-websocket-apis-tutorials.html">HTTP / Websocket APIs</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="get-started-using-http-websocket-apis.html">Get Started Using HTTP / WebSocket APIs</a>
@@ -1738,19 +1829,19 @@ example transaction</button>
       
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="true" aria-controls="tree_nav_group_5_6"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_5_7" aria-expanded="true" aria-controls="tree_nav_group_5_7"></a>
 
         <a class="nav-link" href="tasks.html">Tasks</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_5_6">
+    <nav class="nav flex-column show " id="tree_nav_group_5_7">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_1" aria-expanded="false" aria-controls="tree_nav_group_5_7_1"></a>
 
         <a class="nav-link" href="manage-account-settings.html">Manage Account Settings</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="assign-a-regular-key-pair.html">Assign a Regular Key Pair</a>
@@ -1803,19 +1894,19 @@ example transaction</button>
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3" aria-expanded="false" aria-controls="tree_nav_group_5_7_3"></a>
 
         <a class="nav-link" href="use-specialized-payment-types.html">Use Specialized Payment Types</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_7_3_1"></a>
 
         <a class="nav-link" href="use-escrows.html">Use Escrows</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-time-held-escrow.html">Send a Time-Held Escrow</a>
@@ -1848,11 +1939,11 @@ example transaction</button>
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_7_3_2"></a>
 
         <a class="nav-link" href="use-payment-channels.html">Use Payment Channels</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1865,11 +1956,11 @@ example transaction</button>
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_7_3_3"></a>
 
         <a class="nav-link" href="use-checks.html">Use Checks</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="send-a-check.html">Send a Check</a>
@@ -1911,11 +2002,11 @@ example transaction</button>
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_7_4" aria-expanded="false" aria-controls="tree_nav_group_5_7_4"></a>
 
         <a class="nav-link" href="use-tokens.html">Use Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_7_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="issue-a-fungible-token.html">Issue a Fungible Token</a>

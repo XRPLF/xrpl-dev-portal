@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="Run a Private Network with Docker | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/private-network-with-docker.html" />
-    <meta property="og:description" content="Learn how to set up your own XRP private ledger network with Docker and Docker Compose." />
-    <meta name="description" content="Learn how to set up your own XRP private ledger network with Docker and Docker Compose." />
+    <meta property="og:description" content="DockerとDocker Composeを使って独自のXRPプライベートレジャーネットワークを構築する方法を紹介します。" />
+    <meta name="description" content="DockerとDocker Composeを使って独自のXRPプライベートレジャーネットワークを構築する方法を紹介します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Other",
-      "page_labels": ['Core Server']
+      "page_labels": ['コアサーバー']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -258,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/infrastructure/testing-and-auditing/run-private-network-with-docker.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/infrastructure/testing-and-auditing/run-private-network-with-docker.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-コアサーバー">コアサーバー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバー" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -271,19 +272,19 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#run-a-private-network-with-docker">Run a Private Network with Docker</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#learning-goals">Learning Goals</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#prerequisites">Prerequisites</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#generate-the-validator-keys">Generate the Validator Keys</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#configure-the-network">Configure the Network</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-the-node-directories">Create the node directories</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-the-validator-configuration-files">Create the validator configuration files</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#create-the-validatorstxt-files">Create the validators.txt files</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#start-the-network">Start the Network</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#verify-the-network">Verify the Network</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#perform-a-test-transaction">Perform a test transaction</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#stop-the-network">Stop the Network</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#プライベートネットワークをdockerで構築する">プライベートネットワークをDockerで構築する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#学習のゴール">学習のゴール</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#前提条件">前提条件</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#バリデータキーの生成">バリデータキーの生成</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ネットワークの設定">ネットワークの設定</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ノードのディレクトリを作成">ノードのディレクトリを作成</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#バリデータ設定ファイルの作成">バリデータ設定ファイルの作成</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#validatorstxtファイルの作成">validators.txtファイルの作成</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ネットワークを開始する">ネットワークを開始する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ネットワークを検証する">ネットワークを検証する</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#テストトランザクションの実行">テストトランザクションの実行</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ネットワークを停止する">ネットワークを停止する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -304,29 +305,26 @@
     <li class="active breadcrumb-item">Run a Private Network with Docker</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="run-a-private-network-with-docker">Run a Private Network with Docker<a aria-hidden="true" class="hover_anchor" href="#run-a-private-network-with-docker"><i class="fa fa-link"></i></a></h1>
-<p>This tutorial describes how to run a private XRP Ledger network on your computer with <a class="external-link" href="https://docs.docker.com/get-docker/" target="_blank">Docker <i aria-hidden="true" class="fa fa-external-link"></i></a> and the latest version of <a class="external-link" href="https://hub.docker.com/r/xrpllabsofficial/xrpld" target="_blank">rippled <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>While you can easily use the public XRP Testnet servers, running a private network can be useful when trying to understand how the XRP Ledger works, or when testing new features in isolation.</p>
-<p class="devportal-callout caution"><strong>Caution:</strong> This tutorial is suited for development or testing purposes only, and does not involve using real money. You should <strong>not</strong> use this configuration for a production network.</p>
-<h2 id="learning-goals">Learning Goals<a aria-hidden="true" class="hover_anchor" href="#learning-goals"><i class="fa fa-link"></i></a></h2>
-<p>In this tutorial, you will learn:</p>
+        <h1 id="プライベートネットワークをdockerで構築する">プライベートネットワークをDockerで構築する<a aria-hidden="true" class="hover_anchor" href="#プライベートネットワークをdockerで構築する"><i class="fa fa-link"></i></a></h1>
+<p>このチュートリアルでは、<a class="external-link" href="https://docs.docker.com/get-docker/" target="_blank">Docker <i aria-hidden="true" class="fa fa-external-link"></i></a>と最新バージョンの<a class="external-link" href="https://hub.docker.com/r/xrpllabsofficial/xrpld" target="_blank">rippled <i aria-hidden="true" class="fa fa-external-link"></i></a>を使って、あなたのコンピュータ上でプライベートなXRP Ledgerネットワークを実行する方法を説明します。</p>
+<p>公開されているXRPテストネットのサーバを利用することは簡単ですが、プライベートネットワークを実行することは、XRP Ledgerの仕組みを理解しようとするときや、新しい機能を単独でテストするときに便利です。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> このチュートリアルは開発またはテスト目的のみに適しており、実際の資金を使用するものではありません。本番ネットワークではこの設定を使用しないでください。</p>
+<h2 id="学習のゴール">学習のゴール<a aria-hidden="true" class="hover_anchor" href="#学習のゴール"><i class="fa fa-link"></i></a></h2>
+<p>このチュートリアルでは、次のことを学びます：</p>
 <ul>
 <li>
-<p>How to set up and configure a <em>small</em> network with three <code>rippled</code> validator nodes, including how to generate the keys for each node.</p>
+<p>3つの<code>rippled</code>バリデータノードを持つ <em>小規模な</em> ネットワークのセットアップと設定方法(各ノードの鍵の生成方法を含む)</p>
 </li>
 <li>
-<p>How to run the network with <a class="external-link" href="https://docs.docker.com/compose/" target="_blank">Docker Compose <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><a class="external-link" href="https://docs.docker.com/compose/" target="_blank">Docker Compose <i aria-hidden="true" class="fa fa-external-link"></i></a>でネットワークを動かす方法.</p>
 </li>
 <li>
-<p>How to verify the network is up and running.</p>
+<p>ネットワークが稼働していることを確認する方法</p>
 </li>
 </ul>
-<p>The following diagram shows a high-level overview of the containerized private network that you will set up.</p>
-<figure><a href="img/xrp-ledger-private-network-docker.svg" title="Figure 1: Diagram of a three node containerized private ledger network"><svg fill="none" height="100%" viewbox="0 0 1380 663" width="1380" xmlns="http://www.w3.org/2000/svg">
+<p>次の図は、これからセットアップするコンテナ型プライベートネットワークの概要を示したものです。</p>
+<figure><a href="img/xrp-ledger-private-network-docker.svg" title="図1：3つのノードのコンテナ型プライベートレジャーネットワークの構成図"><svg fill="none" height="100%" viewbox="0 0 1380 663" width="1380" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 260H335V504H0V260Z" fill="#232325"></path>
 <path d="M144.437 423.519C144.37 424.373 144.881 424.89 148.306 424.83H167.476V422.999L144.437 423.519Z" fill="url(#img/xrp-ledger-private-network-docker.svg__paint0_linear_9_36)"></path>
 <path d="M190.517 423.519C190.583 424.373 190.073 424.89 186.647 424.83H167.477V422.999L190.517 423.519Z" fill="url(#img/xrp-ledger-private-network-docker.svg__paint1_linear_9_36)"></path>
@@ -432,37 +430,37 @@
 </lineargradient>
 </defs>
 </svg></a></figure>
-<h2 id="prerequisites">Prerequisites<a aria-hidden="true" class="hover_anchor" href="#prerequisites"><i class="fa fa-link"></i></a></h2>
-<p>To follow along with this tutorial, ensure that you have the latest version of <strong>Docker</strong> installed on your preferred platform.</p>
-<h2 id="generate-the-validator-keys">Generate the Validator Keys<a aria-hidden="true" class="hover_anchor" href="#generate-the-validator-keys"><i class="fa fa-link"></i></a></h2>
-<p>Generate the keys for <strong>each</strong> of your validator nodes by using the <code>validator-keys</code> tool provided with <code>rippled</code>. The generated keys should be saved in a text file on your computer for later use.</p>
+<h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
+<p>このチュートリアルに従うには、最新の<strong>Docker</strong>があなたの選択したプラットフォームにインストールされていることを確認してください。</p>
+<h2 id="バリデータキーの生成">バリデータキーの生成<a aria-hidden="true" class="hover_anchor" href="#バリデータキーの生成"><i class="fa fa-link"></i></a></h2>
+<p><code>rippled</code>で提供されている<code>validator-keys</code>ツールを使って、バリデータノードの<strong>それぞれ</strong>のキーを生成します。生成されたキーは、後で使用するためにコンピュータのテキストファイルに保存しておく必要があります。</p>
 <ol>
 <li>
-<p>In your terminal, run the following to execute commands within the <code>rippled</code> Docker container shell:</p>
+<p>ターミナルで以下を実行し、<code>rippled</code>のDockerコンテナシェル内でコマンドを実行します：</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">docker run -it --entrypoint /bin/bash xrpllabsofficial/xrpld:latest
 </code></pre></div>
-<p class="devportal-callout note"><strong>Note:</strong> For Apple M1 or M2 chips, run <code>docker run -it --platform linux/amd64 --entrypoint /bin/bash xrpllabsofficial/xrpld:latest</code> instead.</p>
-<p>Sample output:</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> Apple M1またはM2チップの場合は、代わりに<code>docker run -it --platform linux/amd64 --entrypoint /bin/bash xrpllabsofficial/xrpld:latest</code>を実行してください。</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="n">root</span><span class="mi">@7732</span><span class="n">bd585b14</span><span class="o">:/</span><span class="err">#</span>
 </code></pre></div>
 </li>
 <li>
-<p>Generate a validator keypair using the <code>create_keys</code> command.</p>
+<p><code>create_keys</code>コマンドを使ってバリデータのキーペアを生成します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">cd /opt/ripple/bin &amp;&amp;
     ./validator-keys create_keys --keyfile /PATH/TO/YOUR/validator-&lt;NUMBER&gt;-keys.json
 </code></pre></div>
-<p>Sample output:</p>
-<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">Validator keys stored in /PATH/TO/YOUR/validator-&lt;NUMBER&gt;-keys.json
+<p>出力の例:</p>
+<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3">バリデータのキーは/PATH/TO/YOUR/validator-&lt;NUMBER&gt;-keys.jsonに保存されています。
 
-This file should be stored securely and not shared.
+このファイルは安全に保管し、決して他人と共有しないようにしてください。
 </code></pre></div>
-<p class="devportal-callout warning"><strong>Warning:</strong> In a production or test environment you should follow best practices always and store the generated keys in a secure, offline, and recoverable location, such as an encrypted USB flash drive. However, as this tutorial is an example of a local development setup, storing the keys on your computer is sufficient.</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> 本番環境やテスト環境では、常にベストプラクティスに従い、生成された鍵は暗号化されたUSBフラッシュドライブなど、安全でオフラインかつ復元可能な場所に保管してください。しかし、このチュートリアルはローカルの開発セットアップの例なので、鍵をコンピュータに保存するだけで十分です。</p>
 </li>
 <li>
-<p>Copy the <strong>public_key</strong> value from the JSON output, and store it in a text file on your computer.</p>
+<p>JSON出力から<strong>public_key</strong>の値をコピーし、コンピュータ上のテキストファイルに保存します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">cat /PATH/TO/YOUR/validator-&lt;NUMBER&gt;-keys.json
 </code></pre></div>
-<p>Sample output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
 <span class="w">   </span><span class="s">"key_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"ed25519"</span><span class="p">,</span>
 <span class="w">   </span><span class="s">"public_key"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"nHD9jtA9y1nWC2Fs1HeRkEisqV3iFpk12wHmHi3mQxQwUP1ywUKs"</span><span class="p">,</span>
@@ -473,10 +471,10 @@ This file should be stored securely and not shared.
 </code></pre></div>
 </li>
 <li>
-<p>Create a validator token using the <code>create_token</code> command.</p>
+<p><code>create_token</code>コマンドを使ってバリデータトークンを作成します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-6" id="codeblock-6button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-6">./validator-keys create_token --keyfile /PATH/TO/YOUR/validator-&lt;NUMBER&gt;-keys.json
 </code></pre></div>
-<p>Copy the token value from the output and save it in a text file on your computer. For example:</p>
+<p>出力から次のようなトークンの値をコピーし、コンピュータ上のテキストファイルに保存します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-7" id="codeblock-7button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-7"><span class="k">[validator_token]</span>
 <span class="na">eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT</span>
 <span class="na">QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl</span>
@@ -489,14 +487,14 @@ This file should be stored securely and not shared.
 </code></pre></div>
 </li>
 <li>
-<p>Repeat steps <strong>2-4</strong> for the remaining validator nodes. Once you have generated the keys and tokens for <em>all</em> validators, enter <code>exit</code> in your terminal to exit the Docker container.</p>
+<p>残りのバリデータノードについても<strong>2-4</strong>の手順を繰り返します。すべてのバリデータのキーとトークンを生成したら、ターミナルで<code>exit</code>と入力してDockerコンテナを終了します。</p>
 </li>
 </ol>
-<h2 id="configure-the-network">Configure the Network<a aria-hidden="true" class="hover_anchor" href="#configure-the-network"><i class="fa fa-link"></i></a></h2>
-<p>This section describes how to configure the validator nodes in your network.</p>
-<p class="devportal-callout note"><strong>Note:</strong> The configuration in this tutorial enables the network to retain <em>some</em> ledger history, but the amount of transaction history stored will depend on how long the network has been online.</p>
-<h3 id="create-the-node-directories">Create the node directories<a aria-hidden="true" class="hover_anchor" href="#create-the-node-directories"><i class="fa fa-link"></i></a></h3>
-<p>On your computer, create the directories for all nodes in the private network, and their respective configuration folders.</p>
+<h2 id="ネットワークの設定">ネットワークの設定<a aria-hidden="true" class="hover_anchor" href="#ネットワークの設定"><i class="fa fa-link"></i></a></h2>
+<p>このセクションでは、ネットワーク内のバリデータノードを設定する方法について説明します。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> このチュートリアルの設定により、ネットワークはある程度のレジャー履歴を保持できるようになりますが、保存される取引履歴の量は、ネットワークがオンラインになってからの時間によって異なります。</p>
+<h3 id="ノードのディレクトリを作成">ノードのディレクトリを作成<a aria-hidden="true" class="hover_anchor" href="#ノードのディレクトリを作成"><i class="fa fa-link"></i></a></h3>
+<p>コンピュータに、プライベートネットワーク内のすべてのノードのディレクトリと、それぞれの設定フォルダを作成します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-8" id="codeblock-8button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-8">xrpl-private-network/
     ├── validator_1/
     │   └── config
@@ -505,17 +503,17 @@ This file should be stored securely and not shared.
     └── validator_3/
         └── config
 </code></pre></div>
-<p>In your terminal, run the following command to create the directories:</p>
+<p>ターミナルで以下のコマンドを実行し、ディレクトリを作成します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-9" id="codeblock-9button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-9"> mkdir -p xrpl-private-network/{validator_1/config,validator_2/config,validator_3/config}
 </code></pre></div>
-<h3 id="create-the-validator-configuration-files">Create the validator configuration files<a aria-hidden="true" class="hover_anchor" href="#create-the-validator-configuration-files"><i class="fa fa-link"></i></a></h3>
-<p>For each validator node, follow these steps:</p>
+<h3 id="バリデータ設定ファイルの作成">バリデータ設定ファイルの作成<a aria-hidden="true" class="hover_anchor" href="#バリデータ設定ファイルの作成"><i class="fa fa-link"></i></a></h3>
+<p>各バリデータノードについて、以下の手順を実行します。</p>
 <ol>
 <li>
-<p>In the validator's <code>config</code> directory, create a <code>rippled.cfg</code> file.</p>
+<p>バリデータの<code>config</code>ディレクトリに<code>rippled.cfg</code>ファイルを作成します。</p>
 </li>
 <li>
-<p>Copy the information from the <code>rippled.cfg</code> template below into the file.</p>
+<p>以下の<code>rippled.cfg</code>テンプレートの情報をファイルにコピーします。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-10" id="codeblock-10button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-10"><span class="k">[server]</span>
 <span class="na">port_rpc_admin_local</span>
 <span class="na">port_rpc</span>
@@ -614,7 +612,7 @@ This file should be stored securely and not shared.
 </code></pre></div>
 </li>
 <li>
-<p>Add the generated validator token that you created at the <a href="#generate-the-validator-keys">beginning</a> of the tutorial. For example:</p>
+<p>チュートリアルの<a href="#バリデータキーの生成">最初</a>に作成した次のようなバリデータトークンを追加します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-11" id="codeblock-11button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-11"><span class="k">[validator_token]</span>
 <span class="na">eyJtYW5pZmVzdCI6IkpBQUFBQUZ4SWUwcVd3ZnpLZ2tacWJTL01QVGxHVXlOeTVJZ2kzYzlG</span>
 <span class="na">V1JvTDFIMGoydkNobk1oQTBOc2RHeFNXbWF6b0xkdU5NeDVmaVVZU2h3bjk2SnpSaUFReFJz</span>
@@ -625,29 +623,29 @@ This file should be stored securely and not shared.
 <span class="na">eSI6IjZFNTNFQjA1M0IwNEM1RTczNDc4M0VCMEU0RTBFOTg1NDVDNDQ0QzI3OTBFQjdBMzA2</span>
 <span class="na">NUQzMUVBOTU1QjQyMTIifQ</span><span class="o">=</span><span class="s">=</span>
 </code></pre></div>
-<p>Each validator node must have its own unique token.</p>
+<p>各バリデータノードは固有のトークンを持たなければなりません。</p>
 </li>
 </ol>
-<h3 id="create-the-validatorstxt-files">Create the validators.txt files<a aria-hidden="true" class="hover_anchor" href="#create-the-validatorstxt-files"><i class="fa fa-link"></i></a></h3>
-<p>Now that you have created the configuration files for your validators, you need to add a <code>validator.txt</code> file. This file defines which validators are trusted by your network.</p>
-<p>For each node, follow these steps:</p>
+<h3 id="validatorstxtファイルの作成">validators.txtファイルの作成<a aria-hidden="true" class="hover_anchor" href="#validatorstxtファイルの作成"><i class="fa fa-link"></i></a></h3>
+<p>バリデータの設定ファイルを作成したので、次は<code>validator.txt</code>ファイルを追加します。このファイルは、どのバリデータがネットワークから信頼されるかを定義します。</p>
+<p>各ノードにて以下の手順を実行します：</p>
 <ol>
-<li>Create a <code>validators.txt</code> file in the configuration directory.</li>
-<li>Copy the public keys from the <code>validator-keys.json</code> files that you generated at the <a href="#generate-the-validator-keys">beginning</a> of the tutorial.</li>
-<li>Add the public keys of <em>all</em> the validators. For example:<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[validators]</span>
+<li>設定ディレクトリに<code>validators.txt</code>ファイルを作成します。</li>
+<li>チュートリアルの<a href="#バリデータキーの生成">最初</a>に生成した<code>validator-keys.json</code>ファイルから公開鍵をコピーします。</li>
+<li>次のようにすべてのバリデータの公開鍵を追加します。<div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-12" id="codeblock-12button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-12"><span class="k">[validators]</span>
 <span class="w">    </span><span class="na">nHBgaEDL8buUECuk4Rck4QBYtmUgbAoeYJLpWLzG9iXsznTRYrQu</span>
 <span class="w">    </span><span class="na">nHBCHX7iLDTyap3LumqBNuKgG7JLA5tc6MSJxpLs3gjkwpu836mY</span>
 <span class="w">    </span><span class="na">nHU5STUKTgWdreVqJDx6TopLUymzRUZshTSGcWNtjfByJkYdiiRc</span>
 </code></pre></div>
 </li>
 </ol>
-<h2 id="start-the-network">Start the Network<a aria-hidden="true" class="hover_anchor" href="#start-the-network"><i class="fa fa-link"></i></a></h2>
-<p>Docker Compose lets you manage multiple containers on your computer with a simple <code>yaml</code> file configuration. This section describes how to run the network with Docker Compose, and how to verify that the network is running successfully.</p>
-<p class="devportal-callout note"><strong>Note:</strong>  Docker Compose ensures the containers are part of the same Docker virtual network by default, so you don't need to take any additional steps for the <code>rippled</code> containers to communicate with each other.</p>
-<p>To start running your private network, follow these steps:</p>
+<h2 id="ネットワークを開始する">ネットワークを開始する<a aria-hidden="true" class="hover_anchor" href="#ネットワークを開始する"><i class="fa fa-link"></i></a></h2>
+<p>Docker Composeを使用すると、簡単な<code>yaml</code>ファイルの設定でコンピュータ上の複数のコンテナを管理することができます。このセクションでは、Docker Composeでネットワークを実行する方法と、ネットワークが正常に実行されていることを確認する方法について説明します。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> Docker Composeはデフォルトでコンテナが同じDocker仮想ネットワークに属していることを保証するので、<code>rippled</code>コンテナ同士が通信するために追加の手順を踏む必要はありません。</p>
+<p>プライベートネットワークの使用を始めるには、次の手順を実行します。</p>
 <ol>
 <li>
-<p>Create a <code>docker-compose.yml</code> file in the root of the private network directory, <code>xrpl-private-network</code>, and add the following content:</p>
+<p><code>xrpl-private-network</code>ディレクトリのルートに<code>docker-compose.yml</code>ファイルを作成し、次の内容を追加します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-13" id="codeblock-13button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-13">version: "3.9"
 services:
   validator_1:
@@ -684,10 +682,10 @@ services:
     volumes:
       <span class="k">-</span> ./validator_3/config:/config/
 </code></pre></div>
-<p>The <code>volumes</code> key in each <code>service</code> represents the location where your config files are stored. For example, <code>./validator_1/config:/config/</code> maps the <code>/validator_1/config</code> directory on your host computer to <code>/config/</code> in the Docker container. Any changes made in the host directory will be reflected in the container automatically.</p>
+<p>各 <code>service</code>の<code>volumes</code>キーは、設定ファイルが保存されている場所を表します。例えば、<code>./validator_1/config:/config/</code>はホストコンピュータの<code>/validator_1/config</code>ディレクトリをDockerコンテナの<code>/config/</code>マップします。ホストのディレクトリで行われた変更は、自動的にコンテナに反映されます。</p>
 </li>
 <li>
-<p>From your terminal, in the location where you created the <code>docker-compose.yml</code> file, run <code>docker-compose up -d</code>. You should see a similar output to the one below:</p>
+<p>ターミナルから<code>docker-compose.yml</code>ファイルを作成した場所で<code>docker-compose up -d</code>を実行してください。以下のような出力が表示されるはずです。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-14" id="codeblock-14button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-14">[+] Running 4/4
  ✔ Network xrpl-private-network_default    Created                             0.0s
  ✔ Container validator_3                   Started                             0.5s
@@ -696,34 +694,33 @@ services:
 </code></pre></div>
 </li>
 </ol>
-<h2 id="verify-the-network">Verify the Network<a aria-hidden="true" class="hover_anchor" href="#verify-the-network"><i class="fa fa-link"></i></a></h2>
-<p>Now that the private ledger network is up, you need to verify that <strong>each</strong> validator node is running as expected:</p>
+<h2 id="ネットワークを検証する">ネットワークを検証する<a aria-hidden="true" class="hover_anchor" href="#ネットワークを検証する"><i class="fa fa-link"></i></a></h2>
+<p>プライベートレジャーのネットワークが立ち上がったので、<strong>各</strong>バリデータノードが期待通りに動作していることを確認する必要があります。</p>
 <ol>
 <li>
-<p>In your terminal, run <code>docker exec -it &lt;validator_name&gt; bin/bash</code> to execute commands in the validator Docker container. Replace <code>&lt;validator_name&gt;</code> with the name of the container (e.g., <code>validator_1</code>).</p>
+<p>ターミナルで<code>docker exec -it &lt;validator_name&gt; bin/bash</code>を実行し、バリデータのDockerコンテナでコマンドを実行します。<code>&lt;validator_name&gt;</code>はコンテナ名に置き換えてください(例:<code>validator_1</code>)。</p>
 </li>
 <li>
-<p>Run the <code>rippled server_info</code> command to check the state of the validator:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-15" id="codeblock-15button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-15">rippled server_info | grep server_state
 </code></pre></div>
-<p>Sample Output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-16" id="codeblock-16button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-16">"server_state" : "proposing"
 </code></pre></div>
-<p class="devportal-callout note"><strong>Note:</strong> If the state is not updated to <strong>proposing</strong>, repeat step <strong>2</strong> after a few minutes as the ledger can take some time to update.</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> server_stateが<strong>proposing</strong>に更新されない場合は、レジャーの更新に時間がかかることがあるため、数分後にステップ<strong>2</strong>を繰り返してください。</p>
 </li>
 <li>
-<p>Verify the number of peers connected to the validator.</p>
+<p>バリデータに接続しているピア数を確認します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-17" id="codeblock-17button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-17">rippled server_info | grep peers
 </code></pre></div>
-<p>Sample Output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-18" id="codeblock-18button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-18">"peers" : 2
 </code></pre></div>
 </li>
 <li>
-<p>Run the following command to check the genesis account information:</p>
+<p>以下のコマンドを実行して、genesisのアカウント情報を確認します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-19" id="codeblock-19button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-19">rippled account_info rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh validated strict
 </code></pre></div>
-<p>Sample Output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-20" id="codeblock-20button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-20">{
   "result" : {
       "account_data" : {
@@ -746,18 +743,18 @@ services:
 <p>}</p>
 </li>
 <li>
-<p>To leave the Docker container shell, enter <code>exit</code> in the terminal.</p>
+<p>Dockerコンテナシェルから抜けるには、ターミナルで<code>exit</code>と入力します。</p>
 </li>
 </ol>
-<h3 id="perform-a-test-transaction">Perform a test transaction<a aria-hidden="true" class="hover_anchor" href="#perform-a-test-transaction"><i class="fa fa-link"></i></a></h3>
-<p>Perform a <strong>test</strong> transaction to ensure you can send money to an account.</p>
+<h3 id="テストトランザクションの実行">テストトランザクションの実行<a aria-hidden="true" class="hover_anchor" href="#テストトランザクションの実行"><i class="fa fa-link"></i></a></h3>
+<p>アカウントに送金できることを確認するため、<strong>テスト</strong>トランザクションを実行してください。</p>
 <ol>
 <li>
-<p>In your terminal, run the the following command to submit a transaction:</p>
+<p>ターミナルで以下のコマンドを実行し、トランザクションを送信します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-21" id="codeblock-21button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-21">docker exec -it validator_1 \
     rippled submit 'snoPBrXtMeMyMHUVTgbuqAfg1SUTb' '{ "Account": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "Amount": "1000000000", "Destination": "r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs", "TransactionType": "Payment", "Fee": "10" }'
 </code></pre></div>
-<p>Sample Output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-22" id="codeblock-22button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-22">{
   "result" : {
       "engine_result" : "tesSUCCESS",
@@ -782,11 +779,11 @@ services:
 </code></pre></div>
 </li>
 <li>
-<p>For each validator, verify that the destination account <code>r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs</code> has 1000000000 XRP. For example:</p>
+<p>各バリデータについて、宛先アカウント <code>r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs</code> に 1000000000 XRP があることを確認します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-23" id="codeblock-23button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-23">docker exec -it validator_1 \
     rippled account_info r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs validated strict
 </code></pre></div>
-<p>Sample Output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-24" id="codeblock-24button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-24">{
    "result" : {
        "account_data" : {
@@ -807,18 +804,18 @@ services:
    }
 }
 </code></pre></div>
-<p>All validator nodes should respond with the same balance of 1000000000 XRP for the <code>r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs</code> account.</p>
+<p>すべてのバリデータノードは、<code>r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs</code>アカウントの同じ残高1000000000XRPで応答する必要があります。</p>
 </li>
 </ol>
-<h2 id="stop-the-network">Stop the Network<a aria-hidden="true" class="hover_anchor" href="#stop-the-network"><i class="fa fa-link"></i></a></h2>
-<p>If you wish to stop running the private network:</p>
+<h2 id="ネットワークを停止する">ネットワークを停止する<a aria-hidden="true" class="hover_anchor" href="#ネットワークを停止する"><i class="fa fa-link"></i></a></h2>
+<p>プライベートネットワークの使用を終了したい場合、</p>
 <ol>
-<li>In your terminal, go to the <code>xrpl-private-network</code> directory.</li>
+<li>ターミナルで<code>xrpl-private-network</code>ディレクトリに移動します。</li>
 <li>
-<p>Run the following command to shut down the network:</p>
+<p>以下のコマンドを実行して、ネットワークをシャットダウンします。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-25" id="codeblock-25button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-25">docker-compose down
 </code></pre></div>
-<p>Sample Output:</p>
+<p>出力の例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-26" id="codeblock-26button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-26">[+] Running 4/4
  ✔ Container validator_3                 Removed                                                       1.7s
  ✔ Container validator_1                 Removed                                                       1.6s
@@ -827,18 +824,18 @@ services:
 </code></pre></div>
 </li>
 </ol>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
-<p><strong>Networks and Servers:</strong></p>
+<p><strong>ネットワークとサーバ:</strong></p>
 <ul>
-<li><a href="peer-protocol.html">Peer Protocol</a></li>
+<li><a href="peer-protocol.html">ピアプロトコル</a></li>
 </ul>
 </li>
 <li>
 <p><strong>References:</strong></p>
 <ul>
-<li><a class="external-link" href="https://github.com/UNIC-IFF/xrpl-docker-testnet" target="_blank">XRPL Testnet Setup Scripts for Docker <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
+<li><a class="external-link" href="https://github.com/UNIC-IFF/xrpl-docker-testnet" target="_blank">XRPL TestnetのDocker用セットアップスクリプト <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
 </li>
 </ul>
@@ -1277,7 +1274,7 @@ services:
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -1317,7 +1314,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1704,9 +1701,26 @@ services:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1724,19 +1738,19 @@ services:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1789,19 +1803,19 @@ services:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1834,11 +1848,11 @@ services:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1851,11 +1865,11 @@ services:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1897,11 +1911,11 @@ services:
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -2106,7 +2120,7 @@ services:
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -2460,7 +2474,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -3036,7 +3050,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -3101,7 +3115,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -3121,12 +3135,12 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -3166,7 +3180,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -3222,7 +3236,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -3232,7 +3246,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -3269,12 +3283,12 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -3348,7 +3362,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -3363,7 +3377,7 @@ services:
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       

@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>NFT Payload Storage - XRPL.org (日本語)</title>
+    <title>NFTペイロードのストレージ - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="NFT Payload Storage | XRPL.org (日本語)">
+    <meta property="og:title" content="NFTペイロードのストレージ | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nft-storage.html" />
-    <meta property="og:description" content="Storage options for the payload of your NFT." />
-    <meta name="description" content="Storage options for the payload of your NFT." />
+    <meta property="og:description" content="NFTのペイロードのストレージオプション。" />
+    <meta name="description" content="NFTのペイロードのストレージオプション。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Non-fungible Tokens, NFTs']
+      "page_labels": ['非代替性トークン, NFT']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -149,6 +149,7 @@
             <a class="dropdown-item" href="/ja/get-started-using-python.html">Python</a>
             <a class="dropdown-item" href="/ja/get-started-using-javascript.html">JavaScript</a>
             <a class="dropdown-item" href="/ja/get-started-using-java.html">Java</a>
+            <a class="dropdown-item" href="/ja/get-started-using-php.html">PHP</a>
             <a class="dropdown-item" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket</a>
           </div><!--./col-->
           <div class="navcol col-for-人気ページ">
@@ -157,7 +158,7 @@
             <a class="dropdown-item" href="/ja/reserves.html">準備金</a>
             <a class="dropdown-item" href="/ja/xrp-testnet-faucet.html">XRP Faucets</a>
             <a class="dropdown-item" href="/ja/run-rippled-as-a-validator.html">UNLに参加しよう</a>
-            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+            <a class="dropdown-item" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
             <a class="dropdown-item" href="/ja/public-api-methods.html">APIのメソッド</a>
           </div><!--./col-->
         </div><!--/.dropdown-menu-->
@@ -258,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nft-storage.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/concepts/tokens/nft-storage.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+      <span class="label label-非代替性トークン-nft">非代替性トークン, NFT</span>
+      <!-- TEMPLATE WARNING: no label landing found for "非代替性トークン, NFT" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -271,10 +272,10 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#nft-payload-storage">NFT Payload Storage</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#on-the-xrp-ledger">On the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#decentralized-off-the-xrp-ledger">Decentralized, off the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#centralized-off-the-xrp-ledger">Centralized, off the XRP Ledger</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#nftペイロードのストレージ">NFTペイロードのストレージ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledger上">XRP Ledger上</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#分散型-xrp-ledger外">分散型, XRP Ledger外</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#中央集権型-xrp-ledger外">中央集権型, XRP Ledger外</a></li>
       </ul>
   </div>
       </aside>
@@ -294,24 +295,21 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a></li>
-    <li class="active breadcrumb-item">NFT Payload Storage</li>
+    <li class="active breadcrumb-item">NFTペイロードのストレージ</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="nft-payload-storage">NFT Payload Storage<a aria-hidden="true" class="hover_anchor" href="#nft-payload-storage"><i class="fa fa-link"></i></a></h1>
-<p>NFTs are created on the blockchain. But the payload of the NFT, including media, metadata, and attributes can be stored in a variety of ways, including on the XRP Ledger; decentralized, off the XRP Ledger; and centralized, off the XRP Ledger.</p>
-<h2 id="on-the-xrp-ledger">On the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>If your data is smaller than 256 bytes, you can consider using a <code>data://</code> URI and embedding it directly in the URI field. This has the advantage of storing the data in a reliable, persistent, and responsive database.</p>
-<h2 id="decentralized-off-the-xrp-ledger">Decentralized, off the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#decentralized-off-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>You can use any of the existing decentralized storage solutions for your NFT metadata.</p>
-<p>IPFS and Arweave offer solutions for decentralization. However, fetching the metadata efficiently can be a problem. Querying IPFS or Arweave directly to fetch metadata is not fast enough for modern websites that require immediate responses from users that are scrolling through multiple pages of NFTs that include high-quality media.</p>
-<p>See the blog post <a class="external-link" href="https://dev.to/ripplexdev/nft-payload-storage-options-569i" target="_blank">NFT Payload Storage Options <i aria-hidden="true" class="fa fa-external-link"></i></a> for some examples of cloud storage solutions.</p>
-<h2 id="centralized-off-the-xrp-ledger">Centralized, off the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#centralized-off-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>You can use the URI field to point to a webserver you maintain from which the payload is served.</p>
-<p>As an alternative, and to save space on the ledger, you can set the <code>Domain</code> field of the issuer using <code>AccountSet</code> and treat the NFT ID of the token as a path on that domain. For example, if the NFT has an ID of <code>123ABC</code> and the domain on the issuer is <code>example.com</code>, you could serve the payload from <code>example.com/tokens/123ABC</code>.</p>
+        <h1 id="nftペイロードのストレージ">NFTペイロードのストレージ<a aria-hidden="true" class="hover_anchor" href="#nftペイロードのストレージ"><i class="fa fa-link"></i></a></h1>
+<p>NFTはブロックチェーン上で作成されます。しかし、メディア、メタデータ、属性を含むNFTのコンテンツは、XRP Ledger上、XRP Ledger外の分散型、XRP Ledger外の中央集権型など、様々な方法で保存することができます。</p>
+<h2 id="xrp-ledger上">XRP Ledger上<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger上"><i class="fa fa-link"></i></a></h2>
+<p>データが256バイトより小さい場合は、<code>data://</code>URIを使用し、URIフィールドに直接埋め込むことを検討することができます。これには、信頼性が高く、永続的で、応答性の高いデータベースにデータを保存できるという利点があります。</p>
+<h2 id="分散型-xrp-ledger外">分散型, XRP Ledger外<a aria-hidden="true" class="hover_anchor" href="#分散型-xrp-ledger外"><i class="fa fa-link"></i></a></h2>
+<p>NFTのメタデータには、既存の分散ストレージソリューションを使用できます。</p>
+<p>IPFSやArweaveは分散化ソリューションを提供しています。しかし、メタデータの効率的なフェッチが問題になることがあります。IPFSやArweaveに直接クエリしてメタデータをフェッチするのは、高品質なメディアを含むNFTの複数ページをスクロールするユーザからのすばやいレスポンスを必要とする最新のウェブサイトには十分な速度ではありません。</p>
+<p>クラウドストレージソリューションの例については、ブログポスト<a class="external-link" href="https://dev.to/ripplexdev/nft-payload-storage-options-569i" target="_blank">NFT Payload Storage Options <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<h2 id="中央集権型-xrp-ledger外">中央集権型, XRP Ledger外<a aria-hidden="true" class="hover_anchor" href="#中央集権型-xrp-ledger外"><i class="fa fa-link"></i></a></h2>
+<p>URIフィールドを使用して、ペイロードが提供されるWebサーバを指定できます。</p>
+<p>別の方法として、レジャー上のスペースを節約するために、<code>AccountSet</code>を使用して発行者の<code>Domain</code>フィールドを設定し、トークンのNFT IDをそのドメイン上のパスとして扱うこともできます。例えば、NFTのIDが<code>123ABC</code>で、発行者のドメインが<code>example.com</code>の場合、ペイロードは<code>example.com/tokens/123ABC</code>から送信されます。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -747,7 +745,7 @@
     <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFT Payload Storage</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
   </div>
 
       
@@ -787,7 +785,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
@@ -1174,9 +1172,26 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_4"></a>
 
-        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+        <a class="nav-link" href="/ja/php.html">PHP</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_5_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/get-started-using-php.html">Get Started Using PHP</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+
+        <a class="nav-link" href="/ja/http-websocket-apis-tutorials.html">HTTP / Websocket API</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/get-started-using-http-websocket-apis.html">HTTP / WebSocket APIの使用開始</a>
@@ -1194,19 +1209,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5" aria-expanded="false" aria-controls="tree_nav_group_5_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6" aria-expanded="false" aria-controls="tree_nav_group_5_6"></a>
 
         <a class="nav-link" href="/ja/tasks.html">タスク</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_1"></a>
 
         <a class="nav-link" href="/ja/manage-account-settings.html">アカウントの設定の利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/assign-a-regular-key-pair.html">レギュラーキーペアの割り当て</a>
@@ -1259,19 +1274,19 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3"></a>
 
         <a class="nav-link" href="/ja/use-specialized-payment-types.html">専門的な支払いタイプの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3">
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_1" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_1"></a>
 
         <a class="nav-link" href="/ja/use-escrows.html">Escrowの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_1">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-time-held-escrow.html">時間に基づくEscrowの送信</a>
@@ -1304,11 +1319,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_2"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_2" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_2"></a>
 
         <a class="nav-link" href="/ja/use-payment-channels.html">Payment Channelの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_2">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/open-a-payment-channel-to-enable-an-inter-exchange-network.html">Open a Payment Channel to Enable an Inter-Exchange Network</a>
@@ -1321,11 +1336,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_5_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_5_6_3_3"></a>
 
         <a class="nav-link" href="/ja/use-checks.html">Checkの使用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/send-a-check.html">Checkの送信</a>
@@ -1367,11 +1382,11 @@
       
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_5_4" aria-expanded="false" aria-controls="tree_nav_group_5_5_4"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_5_6_4" aria-expanded="false" aria-controls="tree_nav_group_5_6_4"></a>
 
         <a class="nav-link" href="/ja/use-tokens.html">トークンの利用</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_5_5_4">
+    <nav class="nav flex-column collapse" id="tree_nav_group_5_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/issue-a-fungible-token.html">Issue a Fungible Token</a>
@@ -1576,7 +1591,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_3" aria-expanded="false" aria-controls="tree_nav_group_6_1_3"></a>
 
-        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションのフォーマット</a>
+        <a class="nav-link" href="/ja/transaction-formats.html">トランザクションリファレンス</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_3">
       
@@ -1930,7 +1945,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/ctid.html">Compact Transaction Identifier</a>
+    <a class="nav-link nav-leaf" href="/ja/ctid.html">トランザクション軽量識別子</a>
   </div>
 
     </nav>
@@ -2506,7 +2521,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/peer-crawler.html">ピアクローラ</a>
   </div>
 
       
@@ -2571,7 +2586,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Install Clio on Ubuntu Linux</a>
+    <a class="nav-link nav-leaf" href="/ja/install-clio-on-ubuntu.html">Ubuntu LinuxへのClioのインストール</a>
   </div>
 
       
@@ -2591,12 +2606,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Build rippled on Linux, Mac, or Windows</a>
+    <a class="nav-link nav-leaf" href="/ja/build-on-linux-mac-windows.html">Linux、Mac（macOS）、Windows上でのrippledのビルド</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">Build and Run rippled in Reporting Mode</a>
+    <a class="nav-link nav-leaf" href="/ja/build-run-rippled-in-reporting-mode.html">レポートモードでのrippledのビルドと実行</a>
   </div>
 
       
@@ -2636,7 +2651,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてrippledを実行する</a>
+    <a class="nav-link nav-leaf" href="/ja/run-rippled-as-a-stock-server.html">ウォレットサーバーとしてのrippledの実行</a>
   </div>
 
     </nav>
@@ -2692,7 +2707,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">Configure StatsD</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-statsd.html">StatsDの設定</a>
   </div>
 
       
@@ -2702,7 +2717,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">Configure gRPC</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-grpc.html">gRPCの設定</a>
   </div>
 
       
@@ -2739,12 +2754,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">Configure the Peer Crawler</a>
+    <a class="nav-link nav-leaf" href="/ja/configure-the-peer-crawler.html">ピアクローラの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">Enable Link Compression</a>
+    <a class="nav-link nav-leaf" href="/ja/enable-link-compression.html">回線圧縮の有効化</a>
   </div>
 
       
@@ -2818,7 +2833,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">Health Check Interventions</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check-interventions.html">ヘルスチェックの導入</a>
   </div>
 
       
@@ -2833,7 +2848,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippled Server is Amendment Blocked</a>
+    <a class="nav-link nav-leaf" href="/ja/server-is-amendment-blocked.html">rippledサーバがAmendmentブロックされた</a>
   </div>
 
       
