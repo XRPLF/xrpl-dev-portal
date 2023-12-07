@@ -265,6 +265,7 @@ pre {
   .CodeMirror-gutters {
     background-color: $code-bg;
     white-space: nowrap;
+    border-right: none;
   }
 
   /* CURSOR */
