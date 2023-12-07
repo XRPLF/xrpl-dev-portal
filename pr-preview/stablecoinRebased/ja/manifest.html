@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="manifest | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/manifest.html" />
-    <meta property="og:description" content="Look up the public information about a known validator." />
-    <meta name="description" content="Look up the public information about a known validator." />
+    <meta property="og:description" content="既知のバリデータに関する公開情報を調べます。" />
+    <meta name="description" content="既知のバリデータに関する公開情報を調べます。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Blockchain']
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -273,9 +273,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#manifest">manifest</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#リクエストのフォーマット">リクエストのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
       </aside>
@@ -300,16 +300,13 @@
     <li class="active breadcrumb-item">manifest</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="manifest">manifest<a aria-hidden="true" class="hover_anchor" href="#manifest"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>manifest</code> method reports the current "manifest" information for a given validator public key. The "manifest" is a block of data that authorizes an ephemeral signing key with a signature from the validator's master key pair. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="Updated in: rippled 1.7.0"><img alt="Updated in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/Updated%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of the request format:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>manifest</code>メソッドは、指定したバリデータ公開鍵の現在の"マニフェスト"情報を報告します。"マニフェスト"は、バリデータのマスターキーペアから署名付きの公開鍵(ephemeral signing key)を認証するためのデータブロックです。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<h3 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h3>
+<p>リクエストのフォーマットの例:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"manifest"</span><span class="p">,</span>
@@ -325,31 +322,30 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: manifest public_key</span>
+<div class="code_sample コマンドライン" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: manifest public_key</span>
 rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
 </code></pre></div></div>
 </div>
-<p>The request includes the following parameters:</p>
+<p>リクエストには以下のパラメータが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型   　</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>public_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="base58-encodings.html">base58</a>-encoded public key of the validator to look up. This can be the master public key or ephemeral public key.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">検索するバリデータの<a href="base58-encodings.html">base58</a>エンコードされた公開鍵。マスター公開鍵あるいはエフェメラル公開鍵を指定します。</td>
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout note"><strong>Note:</strong> The commandline format for this method does not work in rippled v1.5.0. See <a class="external-link" href="https://github.com/XRPLF/rippled/issues/3317" target="_blank">issue #3317 <i aria-hidden="true" class="fa fa-external-link"></i></a> for details.</p>
-<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
+<h3 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h3>
+<p>成功したレスポンスの例:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -384,7 +380,7 @@ rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3S
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/rippled.cfg"</span>
+<div class="code_sample コマンドライン" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/rippled.cfg"</span>
 <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
@@ -403,71 +399,71 @@ rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3S
 </code></pre></div></div>
 </div>
 <!-- Note, the CLI response above is mocked up to compensate for https://github.com/XRPLF/rippled/issues/3317 -->
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
+<p>レスポンスは<a href="response-formatting.html">標準フォーマット</a>に従い、成功した結果には以下のフィールドが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>details</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The data contained in this manifest. Omitted if the server does not have a manifest for the <code>public_key</code> from the request. See <strong>Details Object</strong> below for a full description of its contents.</td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> このマニフェストに含まれるデータ。サーバがリクエストからの<code>public_key</code>に対するマニフェストを持っていない場合は省略されます。その内容の完全な説明については、以下の <strong>オブジェクトの詳細</strong> をご覧ください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>manifest</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The full manifest data in base64 format. This data is <a href="serialization.html">serialized</a> to binary before being base64-encoded. Omitted if the server does not have a manifest for the <code>public_key</code> from the request.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> base64形式の完全なマニフェストデータ。このデータは<a href="serialization.html">シリアライズ</a>され、base64エンコードされる前にバイナリになります。サーバがリクエストからの<code>public_key</code>に対するマニフェストを持っていない場合は省略されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>requested</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The <code>public_key</code> from the request.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">リクエストの<code>public_key</code>。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="details-object">Details Object<a aria-hidden="true" class="hover_anchor" href="#details-object"><i class="fa fa-link"></i></a></h4>
-<p>If provided, the <code>details</code> object contains the following fields:</p>
+<h4 id="オブジェクトの詳細">オブジェクトの詳細<a aria-hidden="true" class="hover_anchor" href="#オブジェクトの詳細"><i class="fa fa-link"></i></a></h4>
+<p>もし指定された場合、<code>details</code>オブジェクトは以下のフィールドを含みます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>domain</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The domain name this validator claims to be associated with. If the manifest does not contain a domain, this is an empty string.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータが関連していると示すドメイン名。マニフェストにドメインが含まれていない場合、これは空文字列になります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ephemeral_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The ephemeral public key for this validator, in <a href="base58-encodings.html">base58</a>.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータのエフェメラル公開鍵を、<a href="base58-encodings.html">base58</a>で指定します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>master_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The master public key for this validator, in <a href="base58-encodings.html">base58</a>.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータのマスター公開鍵を、<a href="base58-encodings.html">base58</a>で指定します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>seq</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">The sequence number of this manifest. This number increases whenever the validator operator updates the validator's token to rotate ephemeral keys or change settings.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このマニフェストのシーケンス番号。この番号は、バリデータのオペレータがバリデータのトークンを更新してエフェメラルキーをローテーションしたり、設定を変更したりするたびに増加します。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
-<li><code>invalidParams</code> - The <code>public_key</code> field was missing or specified incorrectly.</li>
-<li><code>reportingUnsupported</code> - (<a href="rippled-server-modes.html#レポートモード">Reporting Mode</a> servers only) This method is not available in Reporting Mode.</li>
+<li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
+<li><code>invalidParams</code> - <code>public_key</code>フィールドが見つからないか、正しく指定されていません。</li>
+<li><code>reportingUnsupported</code> - (<a href="rippled-server-modes.html#レポートモード">レポートモード</a>サーバのみ) このメソッドはレポートモードでは使用できません。</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1710,7 +1706,7 @@ rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3S
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2155,7 +2151,7 @@ rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3S
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2736,7 +2732,7 @@ rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3S
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2746,7 +2742,7 @@ rippled<span class="w"> </span>manifest<span class="w"> </span>nHUFE9prPXPrHcG3S
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

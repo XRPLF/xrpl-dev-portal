@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Health Check - XRPL.org (日本語)</title>
+    <title>ヘルスチェック - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Health Check | XRPL.org (日本語)">
+    <meta property="og:title" content="ヘルスチェック | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/health-check.html" />
-    <meta property="og:description" content="Special API method for reporting server health." />
-    <meta name="description" content="Special API method for reporting server health." />
+    <meta property="og:description" content="サーバの状態を報告するための特別なAPIメソッドです。" />
+    <meta name="description" content="サーバの状態を報告するための特別なAPIメソッドです。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Core Server']
+      "page_labels": ['コアサーバー']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/references/http-websocket-apis/peer-port-methods/health-check.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/@i18n/ja/references/http-websocket-apis/peer-port-methods/health-check.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-コアサーバー">コアサーバー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバー" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,11 +272,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#health-check">Health Check</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example-response">Example Response</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#ヘルスチェック">ヘルスチェック</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リクエストのフォーマット">リクエストのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#レスポンスの例">レスポンスの例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -296,30 +296,28 @@
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/peer-port-methods.html">ピアポートメソッド</a></li>
-    <li class="active breadcrumb-item">Health Check</li>
+    <li class="active breadcrumb-item">ヘルスチェック</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="health-check">Health Check<a aria-hidden="true" class="hover_anchor" href="#health-check"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The Health Check is a special <a href="peer-port-methods.html">peer port method</a> for reporting on the health of an individual <code>rippled</code> server. This method is intended for use in automated monitoring to recognize outages and prompt automated or manual interventions such as restarting the server. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="New in: rippled 1.6.0"><img alt="New in: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.</p>
-<p class="devportal-callout note"><strong>Note:</strong> Since the health check is a <a href="peer-port-methods.html">peer port method</a>, it is not available when testing the server in <a href="rippled-server-modes.html#スタンドアロンモード">stand-alone mode</a>.</p>
-<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
-<p>To request the Health Check information, make the following HTTP request:</p>
+        <h1 id="ヘルスチェック">ヘルスチェック<a aria-hidden="true" class="hover_anchor" href="#ヘルスチェック"><i class="fa fa-link"></i></a></h1>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>ヘルスチェックは、個々の<code>rippled</code>サーバの状態を報告するための特別な<a href="peer-port-methods.html">peer portメソッド</a>です。このメソッドは、自動化された監視において、機能停止を認識し、サーバの再起動のような自動または手動による介入を促すために使用することを意図しています。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" target="_blank" title="新規: rippled 1.6.0"><img alt="新規: rippled 1.6.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.6.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>このメソッドは、複数の情報をチェックして、一般に正常とみなされる範囲にあるかどうかを確認します。すべての情報が正常な範囲にある場合、このメソッドは、サーバが正常であることを報告します。いずれかの情報が正常な範囲外の場合、このメソッドは、サーバが正常でないことを報告し、正常でない情報を報告します。</p>
+<p>情報によっては、急速に正常範囲から外れる情報もあるため、ヘルスチェックが複数回連続して失敗しない限り、アラートを発生させないようにしてください。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> ヘルスチェックは<a href="peer-port-methods.html">peer portメソッド</a>であるため、<a href="rippled-server-modes.html#スタンドアロンモード">スタンドアロンモード</a>でサーバをテストしているときは利用できません。</p>
+<h2 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>ヘルスチェック情報をリクエストするには、以下のHTTPリクエストを行ってください。</p>
 <ul>
-<li><strong>Protocol:</strong> https</li>
-<li><strong>HTTP Method:</strong> GET</li>
-<li><strong>Host:</strong> (any <code>rippled</code> server, by hostname or IP address)</li>
-<li><strong>Port:</strong> (the port number where the <code>rippled</code> server uses the Peer Protocol, typically 51235)</li>
-<li><strong>Path:</strong> <code>/health</code></li>
-<li><strong>Security:</strong> Most <code>rippled</code> servers use a self-signed certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the <code>--insecure</code> flag) to display a response from those servers.</li>
+<li><strong>プロトコル:</strong> https</li>
+<li><strong>HTTPメソッド:</strong> GET</li>
+<li><strong>ホスト:</strong> (任意の<code>rippled</code>サーバ(ホスト名またはIPアドレスによる))</li>
+<li><strong>ポート:</strong> (<code>rippled</code>サーバがピアプロトコルを使用するポート番号、通常は51235です。)</li>
+<li><strong>パス:</strong> <code>/health</code></li>
+<li><strong>セキュリティ:</strong> ほとんどの<code>rippled</code>サーバはリクエストに応答するために自己署名証明書を使います。デフォルトでは、(Webブラウザを含む)ほとんどのツールは、そのようなレスポンスは信頼できないとしてフラグを立てたりブロックしたりします。これらのサーバからの応答を表示するには、証明書のチェックを無視しなければなりません (たとえば、cURLを使用している場合は<code>--insecure</code>フラグを追加します)。</li>
 </ul>
 <!-- TODO: link a tutorial for how to run rippled with a non-self-signed TLS cert -->
-<h2 id="example-response">Example Response<a aria-hidden="true" class="hover_anchor" href="#example-response"><i class="fa fa-link"></i></a></h2>
+<h2 id="レスポンスの例">レスポンスの例<a aria-hidden="true" class="hover_anchor" href="#レスポンスの例"><i class="fa fa-link"></i></a></h2>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="healthy" href="#code-0-0">Healthy</a></li><li><a class="warning" href="#code-0-1">Warning</a></li><li><a class="critical" href="#code-0-2">Critical</a></li></ul>
 
 <div class="code_sample healthy" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
@@ -362,74 +360,74 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
-<p>The response's HTTP status code indicates the health of the server:</p>
+<h2 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>レスポンスのHTTPステータスコードは、サーバの状態を示します。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Status Code</th>
-<th style="text-align: left;">Health Status</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">ステータスコード</th>
+<th style="text-align: left;">現在の状態</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>200 OK</strong></td>
 <td style="text-align: left;">Healthy</td>
-<td style="text-align: left;">All health metrics are within acceptable ranges.</td>
+<td style="text-align: left;">すべての指標は許容範囲内です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>503 Service Unavailable</strong></td>
 <td style="text-align: left;">Warning</td>
-<td style="text-align: left;">One or more metrics are in the warning range. Manual intervention may or may not be necessary.</td>
+<td style="text-align: left;">1つ以上の指標が警告範囲にあります。手動介入が必要な場合と不要な場合があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><strong>500 Internal Server Error</strong></td>
 <td style="text-align: left;">Critical</td>
-<td style="text-align: left;">One or more metrics are in the critical range. There is a serious problem that probably needs manual intervention to fix.</td>
+<td style="text-align: left;">1つ以上のメトリクスが深刻な範囲にあります。おそらく手動による修正が必要な深刻な問題があります。</td>
 </tr>
 </tbody>
 </table>
-<p>The response body is a JSON object with a single <code>info</code> object at the top level. The <code>info</code> object contains values for each metric that is in a warning or critical range. The response omits metrics that are in a healthy range, so a fully healthy server has an empty object.</p>
-<p>The <code>info</code> object may contain the following fields:</p>
+<p>レスポンスボディは JSON オブジェクトで、トップレベルに <code>info</code>オブジェクトが 1 つあります。<code>info</code>オブジェクトには、warningまたはcriticalの範囲にある指標ごとの値が含まれます。正常な範囲にある指標は省略されるため、完全に正常なサーバは空のオブジェクトを持ちます。</p>
+<p><code>info</code>オブジェクトは以下のフィールドを含むことができます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>amendment_blocked</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, the server is <a href="amendments.html#amendment-blocked">amendment blocked</a> and must be upgraded to remain synced with the network; this state is critical. If the server is not amendment blocked, this field is omitted.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> <code>true</code>の場合、サーバは<a href="amendments.html#amendment-blocked">amendmentブロック</a>状態で、ネットワークとの同期を維持するためにアップグレードする必要があります。この状態は非常に重要です。サーバがAmendmentブロックされていない場合、このフィールドは省略されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> A measure of the overall load the server is under. This reflects I/O, CPU, and memory limitations. This is a warning if the load factor is over 100, or critical if the load factor is 1000 or higher.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> サーバが受けている全体的な負荷の指標。I/O、CPU、メモリの制限が反映されます。負荷率が100以上の場合はwarning、1000以上の場合はcriticalです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peers</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The number of <a href="peer-protocol.html">peer servers</a> this server is connected to. This is a warning if connected to 7 or fewer peers, and critical if connected to zero peers.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> このサーバが接続している<a href="peer-protocol.html">ピアサーバ</a>の数。7つ以下のピアに接続されている場合はwarning、0つのピアに接続されている場合はcriticalです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>server_state</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The current <a href="rippled-server-states.html">server state</a>. This is a warning if the server is in the <code>tracking</code>, <code>syncing</code>, or <code>connected</code> states. This is critical if the server is in the <code>disconnected</code> state.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> 現在の<a href="rippled-server-states.html">サーバの状態</a>。サーバの状態が<code>tracking</code>、<code>syncing</code>、<code>connected</code>の場合はwarningです。サーバが<code>disconnected</code>状態の場合はcriticalです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The number of seconds since the last time a ledger was validated by <a href="consensus.html">consensus</a>. If there is no validated ledger available (<a href="server-doesnt-sync.html#通常の同期動作">as during the initial sync period when starting the server</a>), this is the value <code>-1</code> and is considered a warning. This metric is also a warning if the last validated ledger was at least 7 seconds ago, or critical if the last validated ledger was at least 20 seconds ago.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> レジャーが最後に<a href="consensus.html">コンセンサス</a>によって検証されてから何秒経ったかを表します。検証されたレジャーがない場合(<a href="server-doesnt-sync.html#通常の同期動作">サーバ起動時の初期同期期間</a>)、この値は<code>-1</code>となり、warningとみなされます。また、最後に検証されたレジャーが少なくとも7秒前であればwarningとなり、最後に検証されたレジャーが少なくとも20秒前であればcriticalとなります。</td>
 </tr>
 </tbody>
 </table>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
-<p>For guidance interpreting the results of the health check, see <a href="health-check-interventions.html">Health Check Interventions</a>.</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
+<p>ヘルスチェックの結果を判断するガイダンスについては、<a href="health-check-interventions.html">ヘルスチェックの導入</a>をご覧ください。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -1671,7 +1669,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2116,7 +2114,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2697,7 +2695,7 @@
     <nav class="nav flex-column show " id="tree_nav_group_6_3_4">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2707,7 +2705,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

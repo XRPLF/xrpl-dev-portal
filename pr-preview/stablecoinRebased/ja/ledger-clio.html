@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="ledger | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/ledger-clio.html" />
-    <meta property="og:description" content="Get info about a ledger version." />
-    <meta name="description" content="Get info about a ledger version." />
+    <meta property="og:description" content="レジャーのバージョン情報を取得します。" />
+    <meta name="description" content="レジャーのバージョン情報を取得します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Blockchain']
+      "page_labels": ['ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -273,10 +273,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#ledger">ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#response-when-diff-is-true">Response When diff is true</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リクエストのフォーマット">リクエストのフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#diffにtrueを設定した場合のレスポンス">diffにtrueを設定した場合のレスポンス</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
       </aside>
@@ -301,16 +301,13 @@
     <li class="active breadcrumb-item">ledger</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="ledger">ledger<a aria-hidden="true" class="hover_anchor" href="#ledger"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/Ledger.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>ledger</code> command retrieves information about the public <a href="ledgers.html">ledger</a>. <a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/1.0.0" target="_blank" title="New in: Clio v1.0.0"><img alt="New in: Clio v1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-Clio%20v1.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Note that the Clio server returns validated ledger data by default.</p>
-<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of the request format:</p>
+<p><a class="external-link" href="https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/Ledger.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>ledger</code>コマンドは公開されている<a href="ledgers.html">レジャー</a>の情報を取得します。<a class="external-link" href="https://github.com/XRPLF/clio/releases/tag/1.0.0" target="_blank" title="新規: Clio v1.0.0"><img alt="新規: Clio v1.0.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-Clio%20v1.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>Clioサーバはデフォルトで検証済みのレジャーデータを返すことに注意してください。</p>
+<h2 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>リクエストフォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
@@ -339,65 +336,65 @@
 </code></pre></div></div>
 </div>
 <!-- [Try it! >](websocket-api-tool.html#ledger) -->
-<p>The request can contain the following parameters:</p>
+<p>リクエストには以下のパラメータを含めることができます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>).</td>
+<td style="text-align: left;"><a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーバージョンの20バイトの16進文字列。(<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>ご覧ください。)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
-<td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#レジャーインデックス">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#レジャーの指定">Specifying Ledgers</a>)</td>
+<td style="text-align: left;"><a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;"><em>(省略可)</em> 使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。(<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>transactions</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, return information on transactions in the specified ledger version. Defaults to <code>false</code>. Ignored if you did not specify a ledger version.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略可)</em> <code>true</code>の場合、指定されたレジャーバージョンのトランザクションに関する情報が返されます。デフォルトでは<code>false</code>です。レジャーバージョンを指定しない場合は無視されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>expand</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to <code>false</code>. Ignored unless you request transactions.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略可)</em> ハッシュのみではなく、トランザクション/アカウントの完全な情報がJSONフォーマットで提供されます。デフォルトでは<code>false</code>です。トランザクション、アカウント、またはその両方をリクエストしない場合は無視されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>owner_funds</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, include <code>owner_funds</code> field in the metadata of OfferCreate transactions in the response. Defaults to <code>false</code>. Ignored unless transactions are included and <code>expand</code> is true.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略可)</em> <code>true</code>の場合、応答のOfferCreateトランザクションのメタデータに<code>owner_funds</code>フィールドが含まれます。デフォルトでは<code>false</code>です。トランザクションが含まれておらず、<code>expand</code>がtrueではない場合には無視されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>binary</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, and <code>transactions</code> and <code>expand</code> are both also <code>true</code>, return transaction information in binary format (hexadecimal string) instead of JSON format.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略可)</em> <code>true</code>で、かつ<code>transactions</code>と<code>expand</code>が両方とも<code>true</code>の場合、JSONフォーマットではなくバイナリフォーマット（16進文字列）でトランザクション情報が返されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>diff</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(Optional)</em> If <code>true</code>, returns all objects that were added, modified, or deleted as part of applying transactions in the specified ledger.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略可)</em> <code>true</code>の場合、指定したレジャーのトランザクションの一部として追加、変更、または削除されたすべてのオブジェクトを返します。</td>
 </tr>
 </tbody>
 </table>
-<p>The <code>ledger</code> field is deprecated and may be removed without further notice.</p>
-<blockquote class="devportal-callout note">
-<p><strong>Note:</strong> The <code>ledger</code> command in Clio does not support the following fields that are supported by <a href="ledger.html">ledger command in rippled</a>:</p>
+<p><code>ledger</code>フィールドは廃止予定であり、今後予告なしに削除される可能性があります。</p>
+<blockquote class="devportal-callout 注記">
+<p><strong>注記:</strong> Clioの<code>ledger</code>コマンドは、<a href="ledger.html">rippledのledgerコマンド</a>でサポートされている以下のフィールドをサポートしていません。</p>
 <ul>
 <li><code>accounts</code></li>
 <li><code>full</code></li>
 <li><code>queue</code></li>
 </ul>
-<p>Clio will <strong>always</strong> forward the request to <code>rippled</code> when any of the above fields is set to <code>true</code>.</p>
+<p>上記のフィールドのいずれかが<code>true</code>に設定されている場合、Clioは<strong>常に</strong>リクエストを<code>rippled</code>に転送します。</p>
 </blockquote>
-<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
-<p>An example of a successful response:</p>
+<h2 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>処理が成功したレスポンスの例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
@@ -463,153 +460,153 @@
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing information about the ledger, including the following fields:</p>
+<p>レスポンスは<a href="response-formatting.html">標準フォーマット</a>に従っており、正常に完了した場合は結果にレジャーに関する情報を表す次のフィールドが含まれています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>ledger</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;">The complete header data of this ledger.</td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">このレジャーの完全なヘッダーデータ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.account_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash of all account state information in this ledger, as hex</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このレジャーのすべてのアカウントの状態情報のハッシュ値。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.accountState</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">(Omitted unless requested) All the <a href="ledger-data-formats.html">account-state information</a> in this ledger.</td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">(リクエストで指定がない場合省略) このレジャーのすべての<a href="ledger-data-formats.html">アカウント状態情報</a>(16進数)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_flags</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">A bit-map of <a href="ledger-header.html#closeフラグ">flags relating to the closing of this ledger</a>.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このレジャーの<a href="ledger-header.html#closeフラグ">クローズに関するフラグ</a>のビットマップ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The time this ledger was closed, in <a href="basic-data-types.html#時間の指定">seconds since the Ripple Epoch</a></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">レジャーが閉鎖された時刻（<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time_human</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The time this ledger was closed, in human-readable format. Always uses the UTC time zone.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">人間が読めるフォーマットでのこのレジャーが閉鎖された時刻。常にUTCタイムゾーンを使用します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time_resolution</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">Ledger close times are rounded to within this many seconds.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">レジャー閉鎖時刻が丸められる秒数の範囲。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.closed</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Whether or not this ledger has been closed</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;">このレジャーが閉鎖されているかどうか。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Unique identifying hash of the entire ledger.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">レジャー全体の一意の識別用ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.ledger_index</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#レジャーインデックス">Ledger Index</a> of this ledger, as a quoted integer</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>。整数を引用符で囲んだ形式で示されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.parent_close_time</code></td>
-<td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The time at which the previous ledger was closed.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">前のレジャーが閉鎖された時刻。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.parent_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Unique identifying hash of the ledger that came immediately before this one.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このレジャーの直前のレジャーの一意の識別用ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.total_coins</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.)</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">ネットワークのXRPの合計（drop数）。整数を引用符で囲んだ形式で示されます。（トランザクションコストによりXRPが焼却されると、この値は減少します。）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.transaction_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash of the transaction information included in this ledger, as hex</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このレジャーに記録されているトランザクション情報のハッシュ（16進数）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.transactions</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">(Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying <a href="basic-data-types.html#ハッシュ">Hash</a> strings. If the request specified <code>expand</code> as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified <code>binary</code> as true.</td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">(リクエストで指定がない場合省略) このレジャーバージョンで適用されたトランザクション。デフォルトでは、メンバーはトランザクションの識別用<a href="basic-data-types.html#ハッシュ">ハッシュ</a>文字列です。リクエストで<code>expand</code>がtrueとして指定されている場合は、メンバーはJSONフォーマットまたはバイナリフォーマットでのトランザクションの完全な表現です。フォーマットは、リクエストで<code>binary</code>がtrueとして指定されていたかどうかに応じて決まります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Unique identifying hash of the entire ledger.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">レジャー全体の一意の識別用ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#レジャーインデックス">Ledger Index</a> of this ledger.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
-<td style="text-align: left;">Boolean</td>
-<td style="text-align: left;"><em>(May be omitted)</em> If <code>true</code>, this is a validated ledger version. If omitted or set to <code>false</code>, this ledger's data is not final.</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> <code>true</code>の場合、このレジャーは最終バージョンです。省略または <code>false</code> の場合、このレジャーのデータは最終版ではありません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>diff</code></td>
-<td style="text-align: left;">Object</td>
-<td style="text-align: left;"><em>(Omitted unless requested with the <code>diff</code> parameter)</em> Object containing an array of hashes that were added, modified, or deleted as part of applying transactions for the ledger.</td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;"><em>(リクエストで<code>diff</code>パラメータの指定がない場合省略)</em> レジャーのトランザクションの一部として追加、変更、または削除されたハッシュの配列を含むオブジェクト。</td>
 </tr>
 </tbody>
 </table>
-<p>If the request specified <code>"owner_funds": true</code> and expanded transactions, the response has a field <code>owner_funds</code> in the <code>metaData</code> object of each <a href="offercreate.html">OfferCreate transaction</a>. The purpose of this field is to make it easier to track the <a href="offers.html#オファーのライフサイクル">funding status of offers</a> with each new validated ledger. This field is defined slightly differently than the version of this field in <a href="subscribe.html#オーダーブックストリーム">Order Book subscription streams</a>:</p>
+<p>リクエストに<code>"owner_funds": true</code>が指定されておりトランザクションが展開されている場合、応答には、各<a href="offercreate.html">OfferCreateトランザクション</a>の<code>metaData</code>オブジェクトの<code>owner_funds</code>フィールドが含まれています。このフィールドの目的は、新しい検証済みレジャーごとに<a href="offers.html#オファーのライフサイクル">オファーの資金化ステータス</a>を容易に追跡できるようにすることです。このフィールドの定義は、<a href="subscribe.html#オーダーブックストリーム">オーダーブックサブスクリプションストリーム</a>でのこのフィールドのバージョンとはわずかに異なります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>owner_funds</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Numeric amount of the <code>TakerGets</code> currency that the <code>Account</code> sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is <a href="freezes.html">frozen</a>.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このレジャーのすべてのトランザクションの実行後に、このOfferCreateトランザクションを送信する<code>Account</code>が保有する<code>TakerGets</code>通貨の額。この通貨額が<a href="freezes.html">凍結</a>されているかどうかはチェックされません。</td>
 </tr>
 </tbody>
 </table>
-<p>If the request specified <code>"diff: true</code>, the response has an object <code>diff</code>. The fields of this object are as follows:</p>
+<p>リクエストで<code>”diff": true</code>を指定した場合、レスポンスにはオブジェクト<code>diff</code>が含まれます。このオブジェクトのフィールドは以下の通りです。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>object_id</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The object identifier.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">オブジェクトのID</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Hashes</code></td>
-<td style="text-align: left;">Object or Hex String</td>
-<td style="text-align: left;">Depending on whether the request set <code>binary</code> to true or false, this field returns the contents of the object that was created, the new value of an object that was modified, or an empty string if the object was deleted.</td>
+<td style="text-align: left;">オブジェクトまたは16進文字列</td>
+<td style="text-align: left;">リクエストが<code>binary</code>をtrueに設定したかfalseに設定したかに応じて、このフィールドは作成されたオブジェクトの内容、変更されたオブジェクトの新しい値、またはオブジェクトが削除された場合は空の文字列を返します。</td>
 </tr>
 </tbody>
 </table>
-<h3 id="response-when-diff-is-true">Response When <code>diff</code> is <code>true</code><a aria-hidden="true" class="hover_anchor" href="#response-when-diff-is-true"><i class="fa fa-link"></i></a></h3>
+<h3 id="diffにtrueを設定した場合のレスポンス"><code>diff</code>に<code>true</code>を設定した場合のレスポンス<a aria-hidden="true" class="hover_anchor" href="#diffにtrueを設定した場合のレスポンス"><i class="fa fa-link"></i></a></h3>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0C445F6F348AA5FF25A631C904F7277980F7FD2A6BACBB3A74FCF95F671D4884"</span><span class="p">,</span>
@@ -701,11 +698,11 @@
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h2>
+<h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
-<li><code>invalidParams</code> - One or more fields are specified incorrectly, or one or more required fields are missing.</li>
-<li><code>lgrNotFound</code> - The ledger specified by the <code>ledger_hash</code> or <code>ledger_index</code> does not exist, or it does exist but the server does not have it.</li>
+<li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
+<li><code>invalidParams</code> - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。</li>
+<li><code>lgrNotFound</code> - <code>ledger_hash</code>または<code>ledger_index</code>で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1948,7 +1945,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2393,7 +2390,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2974,7 +2971,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2984,7 +2981,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

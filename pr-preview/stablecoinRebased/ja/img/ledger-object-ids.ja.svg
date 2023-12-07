@@ -230,7 +230,7 @@
     /></g
     ><g font-family="sans-serif" font-size="14px" transform="translate(420,40)"
     ><text x="5" xml:space="preserve" y="18.1094" clip-path="url(#clipPath10)" stroke="none"
-      >レジャーオブジェクトID</text
+      >一意なオブジェクトID</text
     ></g
     ><g fill="red" transform="translate(420,80)" stroke="red"
     ><rect x="0.5" width="158.5" height="18.5" y="0.5" clip-path="url(#clipPath5)" stroke="none"

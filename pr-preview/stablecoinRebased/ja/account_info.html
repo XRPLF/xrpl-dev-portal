@@ -304,9 +304,6 @@
     <li class="active breadcrumb-item">account_info</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="account_info">account_info<a aria-hidden="true" class="hover_anchor" href="#account_info"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountInfo.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -315,31 +312,29 @@
 <p>account_info要求の例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
-  "id": 2,
-  "command": "account_info",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-  "strict": true,
-  "ledger_index": "current",
-  "queue": true
-}
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_info"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"queue"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
-    "method": "account_info",
-    "params": [
-        {
-            "account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
-            "strict": true,
-            "ledger_index": "current",
-            "queue": true
-        }
-    ]
-}
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_info"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"current"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"queue"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample コマンドライン" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="n">#Syntax</span><span class="err">:</span><span class="w"> </span><span class="n">account_info</span><span class="w"> </span><span class="n">account</span><span class="w"> </span><span class="o">[</span><span class="n">ledger_index|ledger_hash</span><span class="o">]</span><span class="w"> </span><span class="o">[</span><span class="n">strict</span><span class="o">]</span>
-<span class="n">rippled</span><span class="w"> </span><span class="n">account_info</span><span class="w"> </span><span class="n">r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59</span><span class="w"> </span><span class="k">true</span>
+<div class="code_sample コマンドライン" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_info account [ledger_index|ledger_hash]</span>
+rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn<span class="w"> </span>validated
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#account_info">試してみる</a></p>
@@ -349,137 +344,160 @@
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">型</th>
+<th style="text-align: left;">必須?</th>
 <th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">文字列</td>
-<td style="text-align: left;">アカウントの一意のIDであり、最もよく使用されるのはアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>です。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>strict</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">（省略可能、デフォルトはFalse）Trueに設定すると、<code>account</code>フィールドに指定できる項目は公開鍵またはXRP Ledgerアドレスのみになります。</td>
+<td style="text-align: left;">文字列  - <a href="basic-data-types.html#アドレス">アドレス</a></td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">検索するアカウント。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="更新: rippled 1.11.0"><img alt="更新: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;"><em>（省略可能）</em> 使用するレジャーバージョンの20バイトの16進文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください。)</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">使用するレジャーバージョンの20バイトの16進文字列。(<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください。)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">文字列または符号なし整数</td>
-<td style="text-align: left;"><em>（省略可能）</em> 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください。)</td>
+<td style="text-align: left;">文字列または整数</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。(<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください。)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>queue</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><em>（省略可能）</em> <code>true</code>にして<a href="known-amendments.html#feeescalation">FeeEscalation Amendment</a>を有効にすると、このアカウントに関連するキューに入れられたトランザクションについてのステータスも返されます。これを使用できるのは、現在開いているレジャーのデータを問い合わせる場合のみです。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントに関連するキューに入れられたトランザクションについてのステータスも返されます。これを使用するのは、現在のオープンレジャーのデータを問い合わせる場合のみです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><em>（省略可能）</em><code>true</code>にして<a href="known-amendments.html#multisign">MultiSign Amendment</a>を有効にすると、このアカウントに関連するすべての<a href="signerlist.html">SignerListオブジェクト</a>も返されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントに関連するすべての<a href="signerlist.html">SignerListオブジェクト</a>も返されます。</td>
 </tr>
 </tbody>
 </table>
-<p>次のフィールドは廃止予定のため、指定しないでください。<code>ident</code>、<code>ledger</code>。</p>
+<p>次のフィールドは廃止予定のため、指定しないでください。<code>ident</code>、<code>ledger</code>,<code>strict</code></p>
 <h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
-<span class="w">    </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"response"</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s">"account_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"999999999960"</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8388608</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s">"AccountRoot"</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"index"</span><span class="p">:</span><span class="w"> </span><span class="s">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999999960"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8388608</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="s">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"queue_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="s">"auth_change_queued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"highest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"lowest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"max_spend_drops_total"</span><span class="p">:</span><span class="w"> </span><span class="s">"500"</span><span class="p">,</span>
-<span class="w">            </span><span class="s">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"queue_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"auth_change_queued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"highest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"lowest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"max_spend_drops_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="s">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"2560"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">                    </span><span class="nt">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2560"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
 <span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="o">...</span><span class="p">(</span><span class="nx">trimmed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="o">...</span>
+<span class="w">                </span><span class="err">...(</span><span class="kc">tr</span><span class="err">immed</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">le</span><span class="kc">n</span><span class="err">g</span><span class="kc">t</span><span class="err">h)</span><span class="w"> </span><span class="err">...</span>
 <span class="w">                </span><span class="p">{</span>
-<span class="w">                    </span><span class="s">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s">"2560"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s">"100"</span><span class="p">,</span>
-<span class="w">                    </span><span class="s">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">                    </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2560"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
 <span class="w">                </span><span class="p">}</span>
 <span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="s">"txn_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">            </span><span class="nt">"txn_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="s">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4">{
-    "result": {
-        "account_data": {
-            "Account": "rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn",
-            "Balance": "999999999960",
-            "Flags": 8388608,
-            "LedgerEntryType": "AccountRoot",
-            "OwnerCount": 0,
-            "PreviousTxnID": "4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42",
-            "PreviousTxnLgrSeq": 3,
-            "Sequence": 6,
-            "index": "92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"
-        },
-        "ledger_current_index": 4,
-        "queue_data": {
-            "auth_change_queued": true,
-            "highest_sequence": 10,
-            "lowest_sequence": 6,
-            "max_spend_drops_total": "500",
-            "transactions": [
-                {
-                    "auth_change": false,
-                    "fee": "100",
-                    "fee_level": "2560",
-                    "max_spend_drops": "100",
-                    "seq": 6
-                },
-                ...(trimmed for length) ...
-                {
-                    "LastLedgerSequence": 10,
-                    "auth_change": true,
-                    "fee": "100",
-                    "fee_level": "2560",
-                    "max_spend_drops": "100",
-                    "seq": 10
-                }
-            ],
-            "txn_count": 5
-        },
-        "status": "success",
-        "validated": false
-    }
-}
+<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"999999999960"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">8388608</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"OwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4294BEBE5B569A18C0A2702387C9B1E7146DC3A5850C1E87204951C6FDAA4C42"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"ledger_current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"queue_data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"auth_change_queued"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"highest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"lowest_sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"max_spend_drops_total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2560"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="err">...(</span><span class="kc">tr</span><span class="err">immed</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">le</span><span class="kc">n</span><span class="err">g</span><span class="kc">t</span><span class="err">h)</span><span class="w"> </span><span class="err">...</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">"LastLedgerSequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"auth_change"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"fee_level"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2560"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"max_spend_drops"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"txn_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
+<span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"account_data"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">"Account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"Balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"9986"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"Flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1114112</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"LedgerEntryType"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountRoot"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"OwnerCount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"PreviousTxnID"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0705FE3F52057924C288296EF0EBF668E0C1A3646FBA8FAF9B73DCC0A797B4B2"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"PreviousTxnLgrSeq"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">51948740</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"RegularKey"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rhLkGGNZdjSpnHJw4XAFw1Jy7PD8TqxoET"</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"Sequence"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">192220</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">"index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"92FA6A9FC8EA6018D5D16532D7795C91BFB0831355BDFDA177E86C8BF997985F"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"ledger_hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"8169428EDF7F046F817CE44F5F1DF23AD9FAEFFA2CBA7645C3254D66AA79B46E"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">56843712</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 </div>
 <p>応答は<a href="response-formatting.html">標準フォーマット</a>に従い、要求されたアカウントとそのデータ、アカウントの適用先レジャーが結果として表示されます。以下のフィールドが含まれます。</p>
@@ -498,29 +516,111 @@
 <td style="text-align: left;">このアカウントの情報を含む<a href="accountroot.html">AccountRootレジャーオブジェクト</a>がレジャーに保管されているとおりに表示されます。</td>
 </tr>
 <tr>
+<td style="text-align: left;"><code>account_flags</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;">アカウントの<code>Flags</code>フィールドに基づく、アカウントのフラグ情報(下記参照)。 <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="新規: rippled 1.11.0"><img alt="新規: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">配列</td>
-<td style="text-align: left;">（要求に<code>signer_lists</code>が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略されます。）<a href="multi-signing.html">マルチシグ</a>用にアカウントに関連付けられた<a href="signerlist.html">SignerListレジャーオブジェクト</a>の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">(要求に<code>signer_lists</code>が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略)<a href="multi-signing.html">マルチシグ</a>用にアカウントに関連付けられた<a href="signerlist.html">SignerListレジャーオブジェクト</a>の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（<code>ledger_index</code>が代わりに指定されている場合は省略されます。）この情報を取得したときに使用されていた最新のレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。</td>
+<td style="text-align: left;">(<code>ledger_index</code>が代わりに指定されている場合は省略) この情報を取得したときに使用されていた最新のレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（<code>ledger_current_index</code>が代わりに指定されている場合は省略されます。）この情報を取得したときに使用されていたレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。</td>
+<td style="text-align: left;">(<code>ledger_current_index</code>が代わりに指定されている場合は省略) この情報を取得したときに使用されていたレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>queue_data</code></td>
 <td style="text-align: left;">オブジェクト</td>
-<td style="text-align: left;">（<code>queue</code>が<code>true</code>と指定され、現在開いているレジャーを問い合わせている場合を除いて省略されます。）このアカウントによって送信された<a href="transaction-cost.html#キューに入れられたトランザクション">キューに入れられたトランザクション</a>についての情報。この情報にはローカル<code>rippled</code>サーバーの状態が示されますが、コンセンサスネットワーク内の他のサーバーとは異なる場合があります。示される値はキューイングメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。</td>
+<td style="text-align: left;">(<code>queue</code>が<code>true</code>と指定され、現在開いているレジャーを問い合わせている場合を除いて省略) このアカウントによって送信された<a href="transaction-cost.html#キューに入れられたトランザクション">キューに入れられたトランザクション</a>についての情報。この情報にはローカル<code>rippled</code>サーバの状態が示されますが、コンセンサスネットワーク内の他のサーバとは異なる場合があります。示される値はキューメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">このデータが検証済みのレジャーバージョンのものである場合はTrueです。省略されているかFalseが設定されている場合、このデータは最終のものではありません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.0" target="_blank" title="新規: rippled 0.26.0"><img alt="新規: rippled 0.26.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+</tbody>
+</table>
+<p><code>account_flags</code>フィールドは以下のネストしたフィールドを含みます：</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>defaultRipple</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、アカウントはデフォルトでトラストラインの<a href="rippling.html">rippling</a>を許可します。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>depositAuth</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは<a href="depositauth.html">Deposit Authorization</a>を使用しており、未知の第三者からの入金を受け付けていません。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disableMasterKey</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、アカウントの<a href="cryptographic-keys.html">マスターキーペア</a>が無効になっています。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disallowIncomingCheck</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは第三者からの<a href="checks.html">Check</a>の送信を許可してません。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>が必要です)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disallowIncomingNFTokenOffer</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは第三者からの<a href="non-fungible-token-transfers.html">NFT売買オファー</a>の作成を許可してません。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>が必要です)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disallowIncomingPayChan</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは第三者からの<a href="payment-channels.html">ペイメントチャンネル</a>の作成を許可していません。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>が必要です)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disallowIncomingTrustline</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは第三者が<a href="trust-lines-and-issuing.html">トラストライン</a>を作ることを許可していません。 <em>(<a href="known-amendments.html#disallowincoming">DisallowIncoming amendment</a>が必要です)</em></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disallowIncomingXRP</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは他者からXRPを受け取りたくありません。(これは参考情報であり、プロトコルレベルでは強制されません)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>globalFreeze</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントによって発行されたすべてのトークンは現在凍結されています。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>noFreeze</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは個々のトラストラインを凍結したり、グローバル凍結を行う機能を永久に放棄しています。詳細は<a href="freezes.html#no-freeze">No Freeze</a>をご覧ください。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>passwordSpent</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>false</code>の場合、このアカウントはトランザクションコスト0の特別な<a href="transaction-cost.html#key-resetトランザクション">キーリセットトランザクション</a>を送信できます。プロトコルはこのフラグを自動的にオン/オフします。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>requireAuthorization</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは<a href="authorized-trust-lines.html">認可トラストライン</a>を使って、発行するトークンを保持できる人を制限しています。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>requireDestinationTag</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><code>true</code>の場合、このアカウントは受け取るすべての支払いに<a href="require-destination-tags.html">宛先タグ</a>を要求しています。</td>
 </tr>
 </tbody>
 </table>
@@ -541,7 +641,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>auth_change_queued</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">（省略される場合があります）キュー内のトランザクションがこのアドレスの<a href="transactions.html#トランザクションの承認">トランザクションの承認方法</a>を変更するかどうかを示します。<code>true</code>の場合、トランザクションが実行されているかキューから除外されるまで、このアドレスはトランザクションをこれ以上キューに入れることができません。</td>
 </tr>
 <tr>
@@ -566,7 +666,7 @@
 </tr>
 </tbody>
 </table>
-<p><code>transactions</code>配列内の各オブジェクト（存在する場合）には、以下のフィールドのいずれかまたはすべてが含まれます。</p>
+<p><code>queue_data</code>の<code>transactions</code>配列内の各オブジェクト（存在する場合）には、以下のフィールドのいずれかまたはすべてが含まれます。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -578,7 +678,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>auth_change</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">このトランザクションがこのアドレスの<a href="transactions.html#トランザクションの承認">トランザクション承認の方法</a>を変更するかどうかを示します。</td>
 </tr>
 <tr>
@@ -1850,7 +1950,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2295,7 +2395,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2876,7 +2976,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2886,7 +2986,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

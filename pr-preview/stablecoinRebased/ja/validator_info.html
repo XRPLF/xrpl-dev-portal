@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="validator_info | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/validator_info.html" />
-    <meta property="og:description" content="Get the server&#39;s validation settings, if configured as a validator." />
-    <meta name="description" content="Get the server&#39;s validation settings, if configured as a validator." />
+    <meta property="og:description" content="バリデータとして設定されている場合、サーバのバリデーション設定を取得します。" />
+    <meta name="description" content="バリデータとして設定されている場合、サーバのバリデーション設定を取得します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -259,7 +259,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/@i18n/ja/references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -277,9 +277,9 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#validator_info">validator_info</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#リクエストのフォーマット">リクエストのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
       </aside>
@@ -304,17 +304,14 @@
     <li class="active breadcrumb-item">validator_info</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="validator_info">validator_info<a aria-hidden="true" class="hover_anchor" href="#validator_info"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>validator_info</code> method returns the current validator settings of the server, if it is configured as a validator.</p>
-<p><em>The <code>validator_info</code> method is an <a href="admin-api-methods.html">admin method</a> that cannot be run by unprivileged users.</em></p>
-<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of the request format:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>validator_info</code>メソッドは、サーバがバリデータとして設定されている場合に、現在のバリデータの設定を返します。</p>
+<p><em><code>validator_info</code>メソッドは<a href="admin-api-methods.html">管理メソッド</a>で、権限のないユーザは実行できません。</em></p>
+<h3 id="リクエストのフォーマット">リクエストのフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストのフォーマット"><i class="fa fa-link"></i></a></h3>
+<p>リクエストのフォーマットの例:</p>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
 
 <div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validator_info"</span>
@@ -326,14 +323,14 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: validator_info</span>
+<div class="code_sample コマンドライン" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: validator_info</span>
 rippled<span class="w"> </span>validator_info
 </code></pre></div></div>
 </div>
-<p>The request does not accept any parameters.</p>
-<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
+<p>リクエストはパラメータを使用しません。</p>
+<h3 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h3>
+<p>成功したレスポンスの例:</p>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -362,7 +359,7 @@ rippled<span class="w"> </span>validator_info
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/rippled.cfg"</span>
+<div class="code_sample コマンドライン" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/rippled.cfg"</span>
 <span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
 
 <span class="p">{</span>
@@ -377,48 +374,48 @@ rippled<span class="w"> </span>validator_info
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
+<p>レスポンスは<a href="response-formatting.html">標準フォーマット</a>に従い、成功した結果には以下のフィールドが含まれます.</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>domain</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The domain name associated with this validator, if one has been configured.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> このバリデータに関連付けられたドメイン名 (ドメイン名が設定されている場合)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ephemeral_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The public key of the ephemeral key pair this server uses to sign validation messages, in <a href="base58-encodings.html">base58</a>. This key changes if the validator's configured token changes.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> このサーバが検証メッセージに署名する際に使用する公開鍵。この鍵は、バリデータが設定したトークンを変更した際に変更されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>manifest</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The public "manifest" corresponding to this validator's configured token, <a href="serialization.html">serialized to binary</a> and then encoded in base64. This field does not contain any private information.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> このバリデータが設定したトークンに対応するパブリックな「マニフェスト」を<a href="serialization.html">バイナリにシリアライズ</a>して、base64でエンコードしたもの。このフィールドには個人情報は含まれません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>master_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The public key of this validator's master key pair, in <a href="base58-encodings.html">base58</a>. This key uniquely identifies the validator and remains the same if the validator rotates ephemeral keys. If the server is configured using a <code>[validation_seed]</code> instead of a <code>[validator_token]</code>, this is the only field in the response.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータのマスターキーペアの公開鍵。このキーはバリデータを一意に識別するもので、バリデータが公開鍵をローテーションする場合でも同じです。サーバが<code>[validator_token]</code>ではなく<code>[validation_seed]</code>を用いて設定されている場合、レスポンスのフィールドはこれだけとなります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>seq</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;"><em>(May be omitted)</em> A sequence number for this validator's configured validation token and settings. This number increases whenever the validator operator updates the validator's token to rotate ephemeral keys or change settings.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;"><em>(省略される場合があります)</em> このバリデータのバリデーション用トークンおよび設定のシーケンス番号。この番号は、バリデータのオペレータがトークンを更新して鍵をローテーションしたり設定を変更したりするたびに増加します。</td>
 </tr>
 </tbody>
 </table>
-<p>For more information on validator tokens and key rotation, see the <a class="external-link" href="https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md" target="_blank">validator-keys-tool Guide <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
+<p>バリデータトークンとキーローテーションの詳細については、<a class="external-link" href="https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md" target="_blank">validator-keys-toolガイド <i aria-hidden="true" class="fa fa-external-link"></i></a>をご覧ください。</p>
+<h3 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h3>
 <ul>
-<li>Any of the <a href="error-formatting.html#汎用エラー">universal error types</a>.</li>
-<li><code>invalidParams</code> - The server returns this error with <code>"error_message" : "not a validator"</code> if the server is not <a href="run-rippled-as-a-validator.html">configured as a validator</a>.</li>
+<li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
+<li><code>invalidParams</code> - サーバが<a href="run-rippled-as-a-validator.html">バリデータとして設定されていない</a>場合、サーバはこのエラーを<code>"error_message" : "not a validator"</code>と共に返します。</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1661,7 +1658,7 @@ rippled<span class="w"> </span>validator_info
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2106,7 +2103,7 @@ rippled<span class="w"> </span>validator_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2687,7 +2684,7 @@ rippled<span class="w"> </span>validator_info
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2697,7 +2694,7 @@ rippled<span class="w"> </span>validator_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

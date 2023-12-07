@@ -300,9 +300,6 @@
     <li class="active breadcrumb-item">account_currencies</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="account_currencies">account_currencies<a aria-hidden="true" class="hover_anchor" href="#account_currencies"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -311,25 +308,25 @@
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
-   "command": "account_currencies",
-   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-   "strict": true,
-   "ledger_index": "validated"
-}
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">   </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_currencies"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
-   "method": "account_currencies",
-   "params": [
-       {
-           "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59",
-           "account_index": 0,
-           "ledger_index": "validated",
-           "strict": true
-       }
-   ]
-}
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">   </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_currencies"</span><span class="p">,</span>
+<span class="w">   </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">       </span><span class="p">{</span>
+<span class="w">           </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">"account_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validated"</span><span class="p">,</span>
+<span class="w">           </span><span class="nt">"strict"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">   </span><span class="p">]</span>
+<span class="p">}</span>
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#account_currencies">試してみる</a></p>
@@ -346,7 +343,7 @@
 <tr>
 <td style="text-align: left;"><code>account</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">アカウントの一意のIDであり、通常はアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>です。</td>
+<td style="text-align: left;">このアカウントが送受信できる通貨を検索します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="更新: rippled 1.11.0"><img alt="更新: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>strict</code></td>
@@ -356,16 +353,16 @@
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーバージョンの20バイトの16進文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください）</td>
+<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーバージョンの20バイトの16進文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">文字列または符号なし整数</td>
-<td style="text-align: left;"><em>（省略可）</em> 使用する<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください）</td>
+<td style="text-align: left;"><em>（省略可）</em> 使用する<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）</td>
 </tr>
 </tbody>
 </table>
-<p>以下のフィールドは廃止予定であるため、指定しないでください。<code>account_index</code>.</p>
+<p>次のフィールドは廃止予定であるため、指定しないでください。<code>account_index</code>.</p>
 <h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
@@ -479,6 +476,7 @@
 <li><code>actNotFound</code> - 要求の<code>account</code>フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。</li>
 <li><code>lgrNotFound</code> - <code>ledger_hash</code>または<code>ledger_index</code>で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。</li>
 </ul>
+<!-- rippled release notes links -->
 <!-- -->
 <!-- API object types -->
 <!-- -->
@@ -1718,7 +1716,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2163,7 +2161,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2744,7 +2742,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2754,7 +2752,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

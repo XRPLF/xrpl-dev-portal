@@ -347,12 +347,12 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">String</td>
+<td style="text-align: left;"><a href="basic-data-types.html#hashes">Hash</a></td>
 <td style="text-align: left;"><em>(Optional)</em> A 20-byte hex string for the ledger version to use. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">String or Unsigned Integer</td>
+<td style="text-align: left;"><a href="basic-data-types.html#ledger-index">Ledger Index</a></td>
 <td style="text-align: left;"><em>(Optional)</em> The <a href="basic-data-types.html#ledger-index">ledger index</a> of the ledger to use, or a shortcut string to choose a ledger automatically. (See <a href="basic-data-types.html#specifying-ledgers">Specifying Ledgers</a>)</td>
 </tr>
 <tr>
@@ -492,7 +492,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.close_time</code></td>
 <td style="text-align: left;">Integer</td>
-<td style="text-align: left;">The time this ledger was closed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a></td>
+<td style="text-align: left;">The time this ledger was closed, in <a href="basic-data-types.html#specifying-time">seconds since the Ripple Epoch</a>.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.close_time_human</code></td>
@@ -507,7 +507,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.closed</code></td>
 <td style="text-align: left;">Boolean</td>
-<td style="text-align: left;">Whether or not this ledger has been closed</td>
+<td style="text-align: left;">Whether or not this ledger has been closed.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.ledger_hash</code></td>
@@ -517,7 +517,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.ledger_index</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of this ledger, as a quoted integer</td>
+<td style="text-align: left;">The <a href="basic-data-types.html#ledger-index">Ledger Index</a> of this ledger, as a quoted integer.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.parent_close_time</code></td>
@@ -537,7 +537,7 @@
 <tr>
 <td style="text-align: left;"><code>ledger.transaction_hash</code></td>
 <td style="text-align: left;">String</td>
-<td style="text-align: left;">Hash of the transaction information included in this ledger, as hex</td>
+<td style="text-align: left;">Hash of the transaction information included in this ledger, as hex.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger.transactions</code></td>
@@ -583,7 +583,7 @@
 </tr>
 </tbody>
 </table>
-<p>If the request specified <code>"diff: true</code>, the response has an object <code>diff</code>. The fields of this object are as follows:</p>
+<p>If the request specified <code>"diff": true</code>, the response has an object <code>diff</code>. The fields of this object are as follows:</p>
 <table class="table-responsive">
 <thead>
 <tr>

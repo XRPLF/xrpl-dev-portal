@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Rate Limiting - XRPL.org (日本語)</title>
+    <title>レート制限 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Rate Limiting | XRPL.org (日本語)">
+    <meta property="og:title" content="レート制限 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/rate-limiting.html" />
-    <meta property="og:description" content="Information on how public APIs limit clients from making too many requests." />
-    <meta name="description" content="Information on how public APIs limit clients from making too many requests." />
+    <meta property="og:description" content="パブリックAPIがどのようにクライアントのリクエスト数を制限しているかについての説明です。" />
+    <meta name="description" content="パブリックAPIがどのようにクライアントのリクエスト数を制限しているかについての説明です。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Core Server']
+      "page_labels": ['コアサーバー']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/references/http-websocket-apis/api-conventions/rate-limiting.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/@i18n/ja/references/http-websocket-apis/api-conventions/rate-limiting.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-コアサーバー">コアサーバー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバー" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,11 +272,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#rate-limiting">Rate Limiting</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#websocket-api-disconnect-message">WebSocket API Disconnect Message</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#json-rpc-rate-limited-error">JSON-RPC Rate Limited Error</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#rate-per-request">Rate Per Request</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#レート制限">レート制限</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#websocket-apiの切断メッセージ">WebSocket APIの切断メッセージ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#json-rpcのレート制限エラー">JSON-RPCのレート制限エラー</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リクエストあたりのレート">リクエストあたりのレート</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -296,20 +296,17 @@
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/api-conventions.html">APIの規則</a></li>
-    <li class="active breadcrumb-item">Rate Limiting</li>
+    <li class="active breadcrumb-item">レート制限</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="rate-limiting">Rate Limiting<a aria-hidden="true" class="hover_anchor" href="#rate-limiting"><i class="fa fa-link"></i></a></h1>
-<p>The <code>rippled</code> server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind <a class="external-link" href="https://en.wikipedia.org/wiki/Network_address_translation" target="_blank">network address translation <i aria-hidden="true" class="fa fa-external-link"></i></a> share a limit based on their public IP address.</p>
-<p class="devportal-callout tip"><strong>Tip:</strong> Rate limiting does not apply when the client is connected <a href="get-started-using-http-websocket-apis.html#管理者アクセス権限">as an admin</a>.</p>
-<p>When a client is approaching the rate limit, the server adds the field <code>"warning": "load"</code> at the top level of an <a href="response-formatting.html">API response</a>. This warning is not added to every response, but the server may send several such warnings before it disconnects a client.</p>
-<p>If a client goes past the rate limit, the server disconnects that client and does not serve further requests from the client's API address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.</p>
-<h2 id="websocket-api-disconnect-message">WebSocket API Disconnect Message<a aria-hidden="true" class="hover_anchor" href="#websocket-api-disconnect-message"><i class="fa fa-link"></i></a></h2>
-<p>For the WebSocket API, the server closes the connection and provides a close message and code. The way you access these messages depends on your WebSocket client implementation. For example, using the <a class="external-link" href="https://github.com/websockets/ws" target="_blank">Node.js ws library <i aria-hidden="true" class="fa fa-external-link"></i></a>, the following code prints the close reason when disconnected:</p>
+        <h1 id="レート制限">レート制限<a aria-hidden="true" class="hover_anchor" href="#レート制限"><i class="fa fa-link"></i></a></h1>
+<p><code>rippled</code>サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、<a class="external-link" href="https://ja.wikipedia.org/wiki/ネットワークアドレス変換" target="_blank">ネットワークアドレス変換 <i aria-hidden="true" class="fa fa-external-link"></i></a>の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。</p>
+<p class="devportal-callout ヒント"><strong>ヒント:</strong> レート制限は、クライアントが<a href="get-started-using-http-websocket-apis.html#管理者アクセス権限">管理者</a>として接続されているときには適用されません</p>
+<p>クライアントがレート制限に近づいている場合、サーバーは<a href="response-formatting.html">APIレスポンス</a>のトップレベルにフィールド<code>"warning"： "load"</code>というフィールドを<a href="response-formatting.html">APIレスポンス</a>のトップレベルに追加します。この警告はすべてのレスポンスに追加されるわけではありませんが、サーバはクライアントを切断する前に何度かこのような警告を送ることがあります。</p>
+<p>クライアントがレート制限を超えると、サーバーはそのクライアントを切断し、しばらくの間、クライアントのAPIアドレスからの要求を受け付けません。WebSocket APIとJSON-RPC APIでは、異なる切断メッセージを使用します。</p>
+<h2 id="websocket-apiの切断メッセージ">WebSocket APIの切断メッセージ<a aria-hidden="true" class="hover_anchor" href="#websocket-apiの切断メッセージ"><i class="fa fa-link"></i></a></h2>
+<p>WebSocket APIの場合、サーバは接続を閉じ、切断メッセージとコードを提供します。これらのメッセージにアクセスする方法は、WebSocket クライアントの実装に依存します。例えば、<a class="external-link" href="https://github.com/websockets/ws" target="_blank">Node.js ws ライブラリ <i aria-hidden="true" class="fa fa-external-link"></i></a>を使用する場合、次のコードは切断時に切断理由を表示します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="kd">const</span><span class="w"> </span><span class="nx">WebSocket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'ws'</span><span class="p">)</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">ws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">WebSocket</span><span class="p">(</span><span class="s1">'ws://localhost:6007/'</span><span class="p">)</span>
 <span class="nx">ws</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'close'</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">code</span><span class="p">,</span><span class="nx">reason</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
@@ -321,32 +318,32 @@
 <span class="c1">// code:  1008</span>
 <span class="c1">// reason:  threshold exceeded</span>
 </code></pre></div>
-<p>If the connection is closed because of rate limiting, the close code is <code>1008</code> and the close message is the string <code>threshold exceeded</code>.</p>
-<h2 id="json-rpc-rate-limited-error">JSON-RPC Rate Limited Error<a aria-hidden="true" class="hover_anchor" href="#json-rpc-rate-limited-error"><i class="fa fa-link"></i></a></h2>
-<p>For a JSON-RPC API request, the server responds with the HTTP status code <strong>503 Service Unavailable</strong> when the client is over the rate limit. This response has a text (not JSON) body stating that the server is overloaded:</p>
+<p>レート制限のために接続が切断された場合、切断コードは<code>1008</code>で、切断メッセージは<code>threshold exceeded</code>という文字列になります。</p>
+<h2 id="json-rpcのレート制限エラー">JSON-RPCのレート制限エラー<a aria-hidden="true" class="hover_anchor" href="#json-rpcのレート制限エラー"><i class="fa fa-link"></i></a></h2>
+<p>JSON-RPC APIリクエストの場合、クライアントがレート制限を超えると、サーバーはHTTPステータスコード<strong>503 Service Unavailable</strong>でレスポンスします。このレスポンスには、サーバに負荷がかかっていることを示すテキスト（JSONではありません）の本文が含まれます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">503 Service Unavailable
 
 Server is overloaded
 </code></pre></div>
-<h2 id="rate-per-request">Rate Per Request<a aria-hidden="true" class="hover_anchor" href="#rate-per-request"><i class="fa fa-link"></i></a></h2>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/resource/Fees.h" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the <a href="subscribe.html">subscribe method</a> and <a href="path_find.html">path_find method</a> also count towards a client's usage rate.</p>
-<p>The usage rate drops off exponentially over time, so a client that does not make requests automatically has its access restored after a period of seconds to minutes.</p>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<h2 id="リクエストあたりのレート">リクエストあたりのレート<a aria-hidden="true" class="hover_anchor" href="#リクエストあたりのレート"><i class="fa fa-link"></i></a></h2>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/resource/Fees.h" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>サーバは時間の経過とともに行われるリクエストの数に基づいてクライアントの使用率を計算し、サーバがリクエストに応答するためにどれだけの作業をしなければならないかに基づいて、異なるタイプのリクエストに重みをつけます。<a href="subscribe.html">subscribeメソッド</a>と<a href="path_find.html">path_findメソッド</a>に対するサーバからの後続メッセージもクライアントの使用率にカウントされます。</p>
+<p>使用率は時間とともに指数関数的に低下するため、リクエストを自動的に行わないクライアントは、数秒から数分後にアクセスが回復します。</p>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>Concepts:</strong><ul>
-<li><a href="xrpl-servers.html">The <code>rippled</code> Server</a></li>
-<li><a href="software-ecosystem.html">Software Ecosystem</a></li>
+<li><strong>コンセプト:</strong><ul>
+<li><a href="xrpl-servers.html"><code>rippled</code>サーバ</a></li>
+<li><a href="software-ecosystem.html">ソフトウェアエコシステム</a></li>
 </ul>
 </li>
-<li><strong>Tutorials:</strong><ul>
-<li><a href="get-started-using-http-websocket-apis.html">Getting Started with XRP Ledger APIs</a></li>
-<li><a href="troubleshoot-the-rippled-server.html">Troubleshooting rippled</a></li>
+<li><strong>チュートリアル:</strong><ul>
+<li><a href="get-started-using-http-websocket-apis.html">XRP Ledger APIの使用開始</a></li>
+<li><a href="troubleshoot-the-rippled-server.html">rippledのトラブルシューティング</a></li>
 </ul>
 </li>
-<li><strong>References:</strong><ul>
-<li><a href="http-websocket-apis.html">rippled API Reference</a><ul>
-<li><a href="error-formatting.html">Error Formatting</a></li>
+<li><strong>リファレンス:</strong><ul>
+<li><a href="http-websocket-apis.html">rippled APIリファレンス</a><ul>
+<li><a href="error-formatting.html">エラーのフォーマット</a></li>
 </ul>
 </li>
 </ul>
@@ -1593,7 +1590,7 @@ Server is overloaded
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2038,7 +2035,7 @@ Server is overloaded
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2619,7 +2616,7 @@ Server is overloaded
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2629,7 +2626,7 @@ Server is overloaded
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

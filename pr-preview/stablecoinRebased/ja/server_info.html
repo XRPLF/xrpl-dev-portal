@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="server_info (rippled) | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/server_info.html" />
-    <meta property="og:description" content="rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。" />
-    <meta name="description" content="rippledサーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。" />
+    <meta property="og:description" content="サーバについての各種情報を、人間が読めるフォーマットでサーバに要求します。" />
+    <meta name="description" content="サーバについての各種情報を、人間が読めるフォーマットでサーバに要求します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -275,6 +275,8 @@
         <li class="nav-item level-1"><a class="nav-link" href="#server_info-rippled">server_info (rippled)</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#要求フォーマット">要求フォーマット</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#応答フォーマット">応答フォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#etlソースオブジェクト">ETLソースオブジェクト</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#ポート記述子オブジェクト">ポート記述子オブジェクト</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#考えられるエラー">考えられるエラー</a></li>
       </ul>
   </div>
@@ -300,13 +302,10 @@
     <li class="active breadcrumb-item">server_info (rippled)</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="server_info-rippled">server_info (rippled)<a aria-hidden="true" class="hover_anchor" href="#server_info-rippled"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><code>server_info</code>コマンドは、問い合わせ中の<code>rippled</code>サーバーについての各種情報を、人間が読めるフォーマットでサーバーに要求します。</p>
+<p><code>server_info</code>コマンドは、問い合わせ中の<code>rippled</code>サーバについての各種情報を、人間が読めるフォーマットでサーバに要求します。<a href="the-clio-server.html">Clioサーバ</a>については、<a href="server_info-clio.html"><code>server_info</code> (Clio)</a>をご覧ください。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-0-2">コマンドライン</a></li></ul>
@@ -333,232 +332,275 @@ rippled<span class="w"> </span>server_info
 <p>要求にパラメーターは何も含まれません。</p>
 <h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
-<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"build_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.30.1-rc3"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18611104-18614732"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"hostid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trace"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"io_latency_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"last_close"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"converge_time_s"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.003</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"proposers"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">"load"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"job_types"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"build_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.12.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32570-82521701"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"hostid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEST"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"initial_sync_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190181187"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"io_latency_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"jq_trans_overflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"last_close"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"converge_time_s"</span><span class="p">:</span><span class="w"> </span><span class="mf">3.001</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"proposers"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"load_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peer_disconnects"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peer_disconnects_resources"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peers"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"untrustedProposal"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7777"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"ws"</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"in_progress"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"clientCommand"</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"ws"</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"transaction"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"http"</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">},</span>
 <span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batch"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"writeObjects"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"trustedProposal"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peerCommand"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">108</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"diskAccess"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processTransaction"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"WriteNode"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"per_second"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51235"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"peer"</span>
+<span class="w">            </span><span class="p">]</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"threads"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">"load_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"load_factor_net"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"peers"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"pubkey_node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n94UE1ukbq6pfZY9j54sv2A1UrEeHZXLbns3xK5CzU9NbNREytaa"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"pubkey_validator"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"server_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"proposing"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"server_state_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="mi">92762334</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"state_accounting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"connected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"150510079"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="nt">"pubkey_node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9KQK8yvTDcZdGyhu2EGdDnFPEBSsY5wEgpU5GgpygTgLFsjQyPt"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"server_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"server_state_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91535211664"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"state_accounting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"connected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83091928"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"disconnected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104836801"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91535211664"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"syncing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2252409"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"disconnected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1827731"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Sep-13 22:08:48.097189 UTC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"uptime"</span><span class="p">:</span><span class="w"> </span><span class="mi">91725</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated_ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"base_fee_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5825332DC66029ECCD896CACB3BBB79E4F5372A8DCA91AA2874A1A1A87B79F84"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"reserve_base_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"reserve_inc_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">82521701</span>
 <span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"166972201508"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="mi">1853</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"syncing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6249156726"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="mi">1854</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13035222"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="mi">1854</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">"uptime"</span><span class="p">:</span><span class="w"> </span><span class="mi">173379</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"validated_ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"base_fee_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04F7CF4EACC57140C8088F6BFDC8A824BB3ED5717C3DAA6642101F9FB446226C"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"reserve_base_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"reserve_inc_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">18614732</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">"validation_quorum"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"validator_list_expires"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-Oct-12 16:06:36"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">"validation_quorum"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
 
 <span class="p">{</span>
-<span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"info"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="nt">"build_version"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33.0-hf1"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"complete_ledgers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"24900901-24900984,24901116-24901158"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"hostid"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trace"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"io_latency_ms"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"last_close"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"converge_time_s"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">2.001</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"proposers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">"load"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"job_types"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"in_progress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"clientCommand"</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"transaction"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"batch"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"in_progress"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"advanceLedger"</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trustedValidation"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"avg_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">77</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"writeObjects"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"over_target"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"peak_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2990</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"trustedProposal"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"peerCommand"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">205</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"avg_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">771</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"diskAccess"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"over_target"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"peak_time"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1934</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"processTransaction"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"SyncReadNode"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span>
-<span class="w">               </span><span class="p">},</span>
-<span class="w">               </span><span class="p">{</span>
-<span class="w">                  </span><span class="nt">"job_type"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"WriteNode"</span><span class="p">,</span>
-<span class="w">                  </span><span class="nt">"per_second"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">235</span>
-<span class="w">               </span><span class="p">}</span>
-<span class="w">            </span><span class="p">],</span>
-<span class="w">            </span><span class="nt">"threads"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">"load_factor"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.765625</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"load_factor_local"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">4.765625</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"peers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"pubkey_node"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"n9McNsnzzXQPbg96PEUrrQ6z3wrvgtU4M7c97tncMpSoDzaQvPar"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"pubkey_validator"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"n9KM73uq5BM3Fc6cxG3k5TruvbLc8Ffq17JZBmWC4uP4csL4rFST"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"published_ledger"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">24901158</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"server_state"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"proposing"</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"server_state_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="mi">708078257</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"state_accounting"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"connected"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">"duration_us"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"854824665"</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">"transitions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"disconnected"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">"duration_us"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2183055"</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">"transitions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"full"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">"duration_us"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"944104343"</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">"transitions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"syncing"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">"duration_us"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"9233178"</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">"transitions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nt">"tracking"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">               </span><span class="nt">"duration_us"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
-<span class="w">               </span><span class="nt">"transitions"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">"uptime"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1792</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"validated_ledger"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"age"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"base_fee_xrp"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">1e-05</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"hash"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"D2C122281EB72E64D19B9654A8D3D0FC4207373D3FE5D91AE516685A58874621"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"reserve_base_xrp"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"reserve_inc_xrp"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"seq"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">24901185</span>
-<span class="w">         </span><span class="p">},</span>
-<span class="w">         </span><span class="nt">"validation_quorum"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">         </span><span class="nt">"validator_list_expires"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-Oct-12 16:06:36"</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"build_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.12.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32570-82521761"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"hostid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEST"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"initial_sync_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190181187"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"io_latency_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"jq_trans_overflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"last_close"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"converge_time_s"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"proposers"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"load_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peer_disconnects"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peer_disconnects_resources"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peers"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7777"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"ws"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"ws"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"http"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51235"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"peer"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"pubkey_node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9KQK8yvTDcZdGyhu2EGdDnFPEBSsY5wEgpU5GgpygTgLFsjQyPt"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"server_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"server_state_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91758491912"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"state_accounting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"connected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83091928"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"disconnected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104836801"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91758491912"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"syncing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2252409"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Sep-13 22:12:31.377492 UTC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"uptime"</span><span class="p">:</span><span class="w"> </span><span class="mi">91948</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated_ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"base_fee_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6872A6612DCEBCFC717FEBC66EB8CC2A4D5EEB2B0F15FC3DCD060049FCA47F31"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"reserve_base_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"reserve_inc_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">82521761</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"validation_quorum"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span>
-<span class="w">   </span><span class="p">}</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample コマンドライン" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/opt/ripple/rippled.cfg"</span>
+<span class="mi">2023-</span><span class="err">Sep</span><span class="mi">-13</span><span class="w"> </span><span class="mi">22</span><span class="p">:</span><span class="mi">19</span><span class="p">:</span><span class="mf">39.404596100</span><span class="w"> </span><span class="err">UTC</span><span class="w"> </span><span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span><span class="w"> </span><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"build_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.12.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"complete_ledgers"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32570-82521761"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"hostid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LEST"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"initial_sync_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"190181187"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"io_latency_ms"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"jq_trans_overflow"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"last_close"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"converge_time_s"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"proposers"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"load_factor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"network_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peer_disconnects"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peer_disconnects_resources"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"peers"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"ports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7777"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"ws"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8080"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"ws"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"http"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51235"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="s2">"peer"</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"pubkey_node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9KQK8yvTDcZdGyhu2EGdDnFPEBSsY5wEgpU5GgpygTgLFsjQyPt"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"server_state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"full"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"server_state_duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91758491912"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"state_accounting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"connected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"83091928"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"disconnected"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"104836801"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"full"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91758491912"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"syncing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2252409"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"tracking"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"duration_us"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"transitions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Sep-13 22:12:31.377492 UTC"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"uptime"</span><span class="p">:</span><span class="w"> </span><span class="mi">91948</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"validated_ledger"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"base_fee_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00001</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6872A6612DCEBCFC717FEBC66EB8CC2A4D5EEB2B0F15FC3DCD060049FCA47F31"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"reserve_base_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"reserve_inc_xrp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"seq"</span><span class="p">:</span><span class="w"> </span><span class="mi">82521761</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"validation_quorum"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 </div>
 <p>応答は<a href="response-formatting.html">標準フォーマット</a>に従い、結果が正常な場合<code>info</code>オブジェクトが唯一のフィールドとして含まれます。</p>
-<p><code>info</code>オブジェクトには、以下のフィールドがいくつか配置される場合があります。</p>
+<p><code>info</code>オブジェクトは以下のフィールドを含むことがあります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -570,13 +612,13 @@ rippled<span class="w"> </span>server_info
 <tbody>
 <tr>
 <td style="text-align: left;"><code>amendment_blocked</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;"><em>（省略される場合があります）</em><code>true</code>の場合、このサーバーは<a href="amendments.html#amendment-blocked">Amendment blocked</a>の状態です。サーバーがAmendment blockedの状態でない場合、このフィールドは応答から省略されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.80.0" target="_blank" title="新規: rippled 0.80.0"><img alt="新規: rippled 0.80.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>（省略される場合があります）</em><code>true</code>の場合、このサーバは<a href="amendments.html#amendment-blocked">Amendmentブロック</a>の状態です。サーバがAmendmentブロックの状態でない場合、このフィールドは応答から省略されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>build_version</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">実行中の<code>rippled</code>バージョンのバージョン番号。</td>
+<td style="text-align: left;">実行中の<code>rippled</code>のバージョン番号。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>closed_ledger</code></td>
@@ -586,117 +628,162 @@ rippled<span class="w"> </span>server_info
 <tr>
 <td style="text-align: left;"><code>complete_ledgers</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">ローカル<code>rippled</code>がデータベース内に有するレジャーのバージョンのシーケンス番号の範囲を示す表現。例えば、<code>24900901-24900984,24901116-24901158</code>のように、互いに素なシーケンスの場合があります。サーバーに完全なレジャーがない場合（例えば、ネットワークとの同期を始めたばかりの場合）、文字列<code>empty</code>になります。</td>
+<td style="text-align: left;">ローカル<code>rippled</code>がデータベース内に有するレジャーのバージョンのシーケンス番号の範囲を示す表現。例えば、<code>24900901-24900984,24901116-24901158</code>のように、互いに素なシーケンスの場合があります。サーバに完全なレジャーがない場合（例えば、ネットワークとの同期を始めたばかりの場合）、文字列<code>empty</code>になります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>hostid</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">admin要求の場合、<code>rippled</code>インスタンスを実行するサーバーのホスト名が返されます。それ以外の要求の場合、一意の4文字の単語が返されます。</td>
+<td style="text-align: left;">admin要求の場合、<code>rippled</code>インスタンスを実行するサーバのホスト名が返されます。それ以外の要求の場合、一意の4文字の単語が返されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>io_latency_ms</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">I/O処理の待ち時間（ミリ秒単位）。この数値がそれほど低くない場合、<code>rippled</code>サーバーは深刻な負荷の問題を抱えている可能性があります。</td>
+<td style="text-align: left;">I/O処理の待ち時間（ミリ秒単位）。この数値がそれほど低くない場合、<code>rippled</code>サーバは深刻な負荷の問題を抱えている可能性があります。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>jq_trans_overflow</code></td>
+<td style="text-align: left;">文字列-数値</td>
+<td style="text-align: left;">このサーバが一度に処理待ちのトランザクションが250回を超えた回数（起動以来）。この数値が大きい場合、サーバがXRP Ledgerネットワークのトランザクション負荷に対応できていない可能性があります。将来を見据えたサーバの詳細な推奨仕様については、<a href="capacity-planning.html">容量の計画</a>をご覧ください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>last_close</code></td>
 <td style="text-align: left;">オブジェクト</td>
-<td style="text-align: left;">サーバーが最後にレジャーを閉鎖したときの情報。これには、コンセンサスの取得に要した時間や、参加した信頼できるバリデータ（検証者）の数が含まれます。</td>
+<td style="text-align: left;">サーバが最後にレジャーを閉鎖したときの情報。これには、コンセンサスの取得に要した時間や、参加した信頼できるバリデータ（検証者）の数が含まれます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>last_close.converge_time_s</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">直近で検証されたレジャーバージョンでコンセンサスに達するまでにかかった時間(秒)。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>last_close.proposers</code></td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">直近に検証されたレジャーバージョンのコンセンサスプロセスで、サーバが考慮した信頼できるバリデータの数（バリデータとして設定されている場合は自分自身を含む）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load</code></td>
 <td style="text-align: left;">オブジェクト</td>
-<td style="text-align: left;"><em>（管理者のみ）</em> サーバーの現在の負荷状態についての詳細な情報。</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> サーバの現在の負荷状態についての詳細な情報。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load.job_types</code></td>
 <td style="text-align: left;">配列</td>
-<td style="text-align: left;"><em>（管理者のみ）</em> サーバーが実行している各種ジョブのレートや、各ジョブにかかる時間についての情報。</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> サーバが実行している各種ジョブのレートや、各ジョブにかかる時間についての情報。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load.threads</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;"><em>（管理者のみ）</em> サーバーの主要なジョブプール内のスレッドの数。</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> サーバの主要なジョブプール内のスレッドの数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーが現在施行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数<code>1000</code>でリファレンストランザクションコストがXRP 10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、<a href="transaction-cost.html#ローカル負荷コスト">個々のサーバーの負荷係数</a>の最高値、クラスターの負荷係数、<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>、ネットワーク全体の負荷係数によって決まります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="更新: rippled 0.33.0"><img alt="更新: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバが現在実行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数<code>1000</code>でリファレンストランザクションコストが10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、<a href="transaction-cost.html#ローカル負荷コスト">個々のサーバの負荷係数</a>の最高値、クラスターの負荷係数、<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>、ネットワーク全体の負荷係数によって決まります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_local</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）このサーバーに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
+<td style="text-align: left;">（省略される場合があります）このサーバに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_net</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）ネットワークのその他の部分で使用されている、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（他のサーバーから報告された負荷値から推定します）。</td>
+<td style="text-align: left;">（省略される場合があります）ネットワークのその他の部分で使用されている、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数（他のサーバから報告された負荷値から推定します）。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_cluster</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）<a href="clustering.html">このクラスター</a>内のサーバーに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
+<td style="text-align: left;">（省略される場合があります）<a href="clustering.html">このクラスター</a>内のサーバに対する負荷に基づく、<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_escalation</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）オープンレジャーに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）オープンレジャーに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_fee_queue</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）キューが一杯になっている場合に、キューに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" target="_blank" title="新規: rippled 0.32.0"><img alt="新規: rippled 0.32.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.32.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）キューが一杯になっている場合に、キューに入るために取引が支払う必要がある<a href="transaction-cost.html">トランザクションコスト</a>に適用される現在の乗数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>load_factor_server</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">（省略される場合があります）サーバーが実施中の負荷係数。<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>は含まれません。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" target="_blank" title="新規: rippled 0.33.0"><img alt="新規: rippled 0.33.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.33.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略される場合があります）サーバが実施中の負荷係数。<a href="transaction-cost.html#オープンレジャーコスト">オープンレジャーコスト</a>は含まれません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peers</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">このサーバーが現在接続している、他の<code>rippled</code>サーバーの数。</td>
+<td style="text-align: left;">このサーバが現在接続している、他の<code>rippled</code>サーバの数。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ports</code></td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">サーバがAPIコマンドを待ち受けているポートの一覧。配列の各エントリは<a href="#ポート記述子オブジェクト">ポート記述子オブジェクト</a> となります。 <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" target="_blank" title="新規: rippled 1.12.0"><img alt="新規: rippled 1.12.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.12.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>pubkey_node</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">ピアツーピア通信の中でこのサーバーを検証するために使用する公開鍵。この_ノードのキーペア_は、サーバーを初めて起動すると自動的に生成されます。（削除された場合、サーバーは新たなキーペアを作成できます。）構成ファイルにて<code>[node_seed]</code>設定オプションを使用すると、永続値を設定できます。これは<a href="clustering.html">クラスター化</a>に便利です。</td>
+<td style="text-align: left;">ピアツーピア通信の中でこのサーバを検証するために使用する公開鍵。この <em>ノードのキーペア</em> は、サーバを初めて起動すると自動的に生成されます。（削除された場合、サーバは新たなキーペアを作成できます。）構成ファイルにて<code>[node_seed]</code>設定オプションを使用すると、永続値を設定できます。これは<a href="clustering.html">クラスター化</a>に便利です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>pubkey_validator</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;"><em>（管理者のみ）</em> このノードがレジャーの検証の署名に使用する公開鍵。この_検証キーペア_は、<code>[validator_token]</code>または<code>[validation_seed]</code>設定フィールドにて生成されます。</td>
+<td style="text-align: left;"><em>（管理者のみ）</em> このノードがレジャーの検証の署名に使用する公開鍵。この <em>検証キーペア</em> は、<code>[validator_token]</code>または<code>[validation_seed]</code>設定フィールドにて生成されます。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reporting</code></td>
+<td style="text-align: left;">オブジェクト</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html">レポートモード</a>サーバのみ)</em> このサーバのレポートモード固有の設定に関する情報。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reporting.etl_sources</code></td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html">レポートモード</a>サーバのみ)</em> このレポートモードがデータを取得するP2Pモードサーバのリスト。この配列の各エントリは<a href="#etlソースオブジェクト">ETLソースオブジェクト</a>です。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reporting.is_writer</code></td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;"><em>(<a href="rippled-server-modes.html">レポートモード</a>サーバのみ)</em> <code>true</code>の場合、このサーバは外部データベースにレジャーデータを書き込んでいます。<code>false</code>の場合、他のレポートモードサーバが共有データベースにデータを書き込んでいるか、読み取り専用に設定されているため、現在は書き込んでいません。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>reporting.last_publish_time</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">_(<a href="rippled-server-modes.html">レポートモード</a>サーバのみ)_このサーバが最後に有効なレジャーを<a href="subscribe.html">サブスクリプションストリーム</a>に公開した日時を示すISO 8601タイムスタンプ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>server_state</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">サーバーのネットワークへの参加の度合いを示す文字列。詳細は、<a href="rippled-server-states.html">考えられるサーバーの状態</a>を参照してください。</td>
+<td style="text-align: left;">サーバのネットワークへの参加の度合いを示す文字列。詳細は、<a href="rippled-server-states.html">考えられるサーバの状態</a>を参照してください。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>server_state_duration_us</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーが現在の状態になってから経過したマイクロ秒数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" target="_blank" title="新規: rippled 1.2.0"><img alt="新規: rippled 1.2.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.2.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバが現在の状態になってから経過したマイクロ秒数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting</code></td>
 <td style="text-align: left;">オブジェクト</td>
-<td style="text-align: left;">各種<a href="rippled-server-states.html">サーバー状態</a>のマップと、サーバーが各状態に費やした時間についての情報。これは、サーバーのネットワーク接続について長期的な健全性を追跡するのに便利です。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">各種<a href="rippled-server-states.html">サーバ状態</a>のマップと、サーバが各状態に費やした時間についての情報。これは、サーバのネットワーク接続について長期的な健全性を追跡するのに便利です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting.*.duration_us</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">サーバーがこの状態になってから費やしたマイクロ秒数。（サーバーが別の状態に移行するたびに更新されます。）<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバがこの状態になってから費やしたマイクロ秒数。（サーバが別の状態に移行するたびに更新されます。）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>state_accounting.*.transitions</code></td>
-<td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーがこの状態に移行した回数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">サーバがこの状態に移行した回数。</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>time</code></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">サーバの時計によるUTCでの現在時刻。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>uptime</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">サーバーが連続して稼働している秒数。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" target="_blank" title="新規: rippled 0.30.1"><img alt="新規: rippled 0.30.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.30.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">サーバが連続して稼働している秒数。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger</code></td>
@@ -730,22 +817,91 @@ rippled<span class="w"> </span>server_info
 </tr>
 <tr>
 <td style="text-align: left;"><code>validated_ledger.seq</code></td>
-<td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;">数値</td>
 <td style="text-align: left;">最新の検証済みレジャーのレジャーインデックス</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validation_quorum</code></td>
 <td style="text-align: left;">数値</td>
-<td style="text-align: left;">レジャーバージョンの検証に、最低限必要となる信頼できる検証の数。場合によっては、サーバーがさらに検証を要求する場合があります。</td>
+<td style="text-align: left;">レジャーバージョンの検証に、最低限必要となる信頼できる検証の数。場合によっては、サーバがさらに検証を要求する場合があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validator_list_expires</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;"><em>（管理者のみ）</em> 現在のバリデータリストの有効期限が切れるタイミングを人間が読み取れる時間でを表示、または、サーバーが発行済みのバリデータリストをロードしていない場合は文字列<code>unknown</code>、サーバーが静的なバリデータリストを使用する場合は文字列<code>never</code>のいずれかを表示します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" target="_blank" title="新規: rippled 0.80.1"><img alt="新規: rippled 0.80.1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.80.1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（管理者のみ）</em> 現在のバリデータリストの有効期限が切れるタイミングを人間が読み取れる時間でを表示、または、サーバが発行済みのバリデータリストをロードしていない場合は文字列<code>unknown</code>、サーバが静的なバリデータリストを使用する場合は文字列<code>never</code>のいずれかを表示します。</td>
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout 注記"><strong>注記:</strong> <code>closed_ledger</code>フィールドがあり、<code>seq</code>の値が小さい（8桁未満）場合、<code>rippled</code>には現在、ピアツーピアネットワークから取得した検証済みレジャーのコピーがないことを表しています。これは、サーバーが現在も同期中である可能性を示しています。接続速度とハードウェア仕様にもよりますが、通常はネットワークとの同期に約5分かかります。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> <code>closed_ledger</code>フィールドがあり、<code>seq</code>の値が小さい（8桁未満）場合、<code>rippled</code>には現在、ピアツーピアネットワークから取得した検証済みレジャーのコピーがないことを表しています。これは、サーバが現在も同期中である可能性を示しています。接続速度とハードウェア仕様にもよりますが、通常はネットワークとの同期に約5分かかります。</p>
+<h3 id="etlソースオブジェクト">ETLソースオブジェクト<a aria-hidden="true" class="hover_anchor" href="#etlソースオブジェクト"><i class="fa fa-link"></i></a></h3>
+<!-- このネストされたオブジェクトの定義は、server_stateとserver_infoで共通です。 -->
+<p>レポートモードサーバでは、<code>etl_sources</code>フィールドの各メンバは以下のフィールドを持つオブジェクトです。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>フィールド</th>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>connected</code></td>
+<td>真偽値</td>
+<td><code>true</code>の場合、レポートモードサーバがこのP2Pモードサーバに接続していることを示します。<code>false</code>の場合、サーバに接続していないことを示します。これは設定ミスやネットワーク障害によるものか、P2Pモードサーバが停止している可能性があります。</td>
+</tr>
+<tr>
+<td><code>grpc_port</code></td>
+<td>文字列</td>
+<td>このレポート モードサーバが接続し、gRPCを介してレジャーデータを取得するように設定されている P2P モード サーバのポート番号。</td>
+</tr>
+<tr>
+<td><code>ip</code></td>
+<td>文字列</td>
+<td>P2PモードサーバのIPアドレス（IPv4またはIPv6）。</td>
+</tr>
+<tr>
+<td><code>last_message_arrival_time</code></td>
+<td>文字列</td>
+<td>レポートモードサーバがこのP2Pサーバからメッセージを受信した最新の時刻を示すISO 8601タイムスタンプ。</td>
+</tr>
+<tr>
+<td><code>validated_ledgers_range</code></td>
+<td>文字列</td>
+<td><code>complete_ledgers</code>と同じ形式で、このP2Pモードサーバが利用可能であると報告する、有効なレジャーのバージョンの範囲。</td>
+</tr>
+<tr>
+<td><code>websocket_port</code></td>
+<td>文字列</td>
+<td>このレポートモードサーバが、レポートモードから直接提供できないWebSocketリクエストを転送するように設定されているP2Pサーバのポート番号。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ポート記述子オブジェクト">ポート記述子オブジェクト<a aria-hidden="true" class="hover_anchor" href="#ポート記述子オブジェクト"><i class="fa fa-link"></i></a></h3>
+<!-- このネストされたオブジェクトの定義は、server_stateとserver_infoで共通です。 -->
+<p><code>ports</code>配列の各メンバーは以下のフィールドを持つオブジェクトです。</p>
+<table class="table-responsive">
+<thead>
+<tr>
+<th>フィールド</th>
+<th>値</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>port</code></td>
+<td>文字列 - 数値</td>
+<td>サーバがリッスンしているポート番号。</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td>文字列の配列</td>
+<td>このポートに接続されているプロトコルの一覧。有効なプロトコルには、JSON-RPCの<code>http</code>または<code>https</code>、WebSocketの<code>ws</code>、<code>ws2</code>、<code>wss</code>、<code>wss2</code>、<a href="configure-grpc.html">gRPC</a>の<code>grpc</code>、<a href="peer-protocol.html">XRP Ledgerピアプロトコル</a>の<code>peer</code>があります。</td>
+</tr>
+</tbody>
+</table>
+<p class="devportal-callout 注記"><strong>注記:</strong> ネットワークインフラによっては、ここで報告されるポートやプロトコルが、外部のネットワークからサーバに到達する方法と一致しないことがあります。例えば、TLSがロードバランサやプロキシで終了する場合、サーバはあるポートで<code>http</code>と報告するかもしれませんが、外部からはポート443の<code>https</code>でしか到達できないかもしれません。</p>
 <h2 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>いずれかの<a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>。</li>
@@ -1990,7 +2146,7 @@ rippled<span class="w"> </span>server_info
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2435,7 +2591,7 @@ rippled<span class="w"> </span>server_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -3016,7 +3172,7 @@ rippled<span class="w"> </span>server_info
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -3026,7 +3182,7 @@ rippled<span class="w"> </span>server_info
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

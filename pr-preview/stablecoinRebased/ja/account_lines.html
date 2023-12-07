@@ -300,32 +300,33 @@
     <li class="active breadcrumb-item">account_lines</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="account_lines">account_lines<a aria-hidden="true" class="hover_anchor" href="#account_lines"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountLines.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><code>account_lines</code>メソッドは、アカウントのトラストラインに関する情報（XRP以外のあらゆる通貨の残高と資産など）を返します。取得された情報はすべて、特定バージョンのレジャーに関連付けられています。</p>
 <h2 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>要求フォーマットの例:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
 
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0">{
-  "id": 1,
-  "command": "account_lines",
-  "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-}
+<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
+<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span>
+<span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">{
-    "method": "account_lines",
-    "params": [
-        {
-            "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
-        }
-    ]
-}
+<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"account_lines"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: account_lines &lt;account&gt; [&lt;peer&gt;] [&lt;ledger_index&gt;|&lt;ledger_hash&gt;]</span>
+rippled<span class="w"> </span>account_lines<span class="w"> </span>r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 </code></pre></div></div>
 </div>
 <p><a class="btn btn-primary" href="websocket-api-tool.html#account_lines">試してみる</a></p>
@@ -342,17 +343,17 @@
 <tr>
 <td style="text-align: left;"><code>account</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;">アカウントの一意のIDであり、通常はアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>です。</td>
+<td style="text-align: left;">トラストラインを検索するアカウント。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">文字列</td>
-<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーバージョンの20バイトの16進文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください）</td>
+<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーバージョンの20バイトの16進文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">文字列または符号なし整数</td>
-<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください）</td>
+<td style="text-align: left;">文字列または整数</td>
+<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを自動的に選択するためのショートカット文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください）</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peer</code></td>
@@ -362,101 +363,346 @@
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略可、デフォルト値は可変）取得するトラストラインの数を制限します。サーバーはこの値を受け入れる必要はありません。10以上400以下の範囲で値を指定する必要があります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="新規: rippled 0.26.4"><img alt="新規: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">（省略可、デフォルト値は可変）取得するトラストラインの数を制限します。サーバはこの値を受け入れる必要はありません。10以上400以下の範囲で値を指定する必要があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
-<td style="text-align: left;"><em>（省略可）</em> 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="新規: rippled 0.26.4"><img alt="新規: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略可）</em> 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。</td>
 </tr>
 </tbody>
 </table>
 <p>以下のパラメーターは廃止予定であり、今後予告なしに削除される可能性があります。<code>ledger</code>および<code>peer_index</code>。</p>
 <h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="p">{</span>
-<span class="w">    </span><span class="s">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"type"</span><span class="p">:</span><span class="w"> </span><span class="s">"response"</span><span class="p">,</span>
-<span class="w">    </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASP"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"no_ripple_peer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XAU"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"no_ripple_peer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">            </span><span class="p">},</span>
 <span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"3.497605752725159"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"USD"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s">"5"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.497605752725159"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
 <span class="w">            </span><span class="p">}</span>
 <span class="w">        </span><span class="p">]</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="mf">200</span><span class="w"> </span><span class="n">OK</span>
-<span class="err">{</span>
-<span class="w">    </span><span class="s">"result"</span><span class="p">:</span><span class="w"> </span><span class="err">{</span>
-<span class="w">        </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"lines"</span><span class="p">:</span><span class="w"> </span><span class="err">[</span>
-<span class="w">            </span><span class="err">{</span>
-<span class="w">                </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"ASP"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s">"10"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span>
-<span class="w">            </span><span class="err">}</span><span class="p">,</span>
-<span class="w">            </span><span class="err">{</span>
-<span class="w">                </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"XAU"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="n">true</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"no_ripple_peer"</span><span class="p">:</span><span class="w"> </span><span class="n">true</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span>
-<span class="w">            </span><span class="err">}</span><span class="p">,</span>
-<span class="w">            </span><span class="err">{</span>
-<span class="w">                </span><span class="s">"account"</span><span class="p">:</span><span class="w"> </span><span class="s">"rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s">"015841551A748AD2C1F76FF6ECB0CCCD00000000"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s">"10.01037626125837"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s">"0"</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="n">true</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span>
-<span class="w">                </span><span class="s">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mf">0</span>
-<span class="w">            </span><span class="err">}</span>
-<span class="w">        </span><span class="err">]</span><span class="p">,</span>
-<span class="w">        </span><span class="s">"status"</span><span class="p">:</span><span class="w"> </span><span class="s">"success"</span>
-<span class="w">    </span><span class="err">}</span>
-<span class="err">}</span>
+<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
+
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ASP"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XAU"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"no_ripple_peer"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"015841551A748AD2C1F76FF6ECB0CCCD00000000"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01037626125837"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"limit_peer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"no_ripple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"quality_out"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="code_sample コマンドライン" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
+<span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_current_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">56867265</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"lines"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"ASP"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"XAU"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rMwjYedjc7qqtKYVLiAccJSmCwih4LnE2q"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rHpXfibHgSb64n8kK9QWDpdbfqSpYbM9a4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"481.992867407479"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"MXN"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1000"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.793598266778297"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rnuF96W4SZoCJmbHYBFoJZpR8eCaxNvekK"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rGwUWgN5BEg3QGNY3RX2HfYowjUTZdid3E"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1.336889190631542"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"DYM"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3488146605801446"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CHF"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"11.68225001668339"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"5000"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rpgKWEmNqSDAGFhy5WDnsyPqfQxbWxKeVd"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.00111"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rBJ3YjwXi2MGbg7GVLuTXUWQ8DjL7tDXh4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-0.0008744482690504699"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rLEsXccBGNR3UPuPu2hUXPjziKC3qKSBun"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"razqQKzJRdB4UxFPWf5NEpEG3WMkmwgcXA"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"9.07619790068559"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"CNY"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"7.292695098901099"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JPY"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"r3vi7mWxru9rJCxETCyA1CHvzL96eZWx5z"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"AUX"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"r9vbV3EHvXWjSkeQ6CAcYVPGeq7TuiXY2X"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0004557360418801623"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"12.41688780720394"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"EUR"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rfF3PNkwkq1DygW2wum2HK3RGfgkJjdPVD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"35"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"500"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rwUVoVMSURqNyvocPCcvLu3ygJzZyw8qwp"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"-5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JOE"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"50"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rE6R3DWF9fBD7CyiQciePF9SqK58Ubp8o2"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"JOE"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rs9M85karFkCRjvc6KMWn8Coigm9cbcgcx"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"015841551A748AD2C1F76FF6ECB0CCCD00000000"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"10.01037626125837"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"no_ripple"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rEhDDUUNxpXgEHVJtC2cjXAgyx5VCFxdMF"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"balance"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"limit_peer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_in"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality_out"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div></div>
 </div>
 <p>この応答は<a href="response-formatting.html">標準フォーマット</a>に従っており、正常に完了した場合には、アカウントのアドレスとトラストラインオブジェクトの配列が含まれています。具体的には、結果オブジェクトには以下のフィールドが含まれます。</p>
@@ -482,22 +728,22 @@
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
 <td style="text-align: left;">整数 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
-<td style="text-align: left;"><em>（<code>ledger_hash</code>または<code>ledger_index</code>が指定されている場合は省略）</em> この情報の取得時に使用した、現行のオープンレジャーのレジャーインデックス。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="新規: rippled 0.26.4-sp1"><img alt="新規: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（<code>ledger_hash</code>または<code>ledger_index</code>が指定されている場合は省略）</em> この情報の取得時に使用した、現行のオープンレジャーのレジャーインデックス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">整数 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
-<td style="text-align: left;"><em>（<code>ledger_current_index</code>が代わりに指定されている場合は省略）</em> このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="新規: rippled 0.26.4-sp1"><img alt="新規: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（<code>ledger_current_index</code>が指定されている場合は省略）</em> このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
-<td style="text-align: left;"><em>（省略される場合があります）</em> このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="新規: rippled 0.26.4-sp1"><img alt="新規: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略される場合があります）</em> このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
-<td style="text-align: left;">応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に追加のページがない場合は省略されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="新規: rippled 0.26.4"><img alt="新規: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">応答がページネーションされていることを示す、サーバが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に追加のページがない場合は省略されます</td>
 </tr>
 </tbody>
 </table>
@@ -548,32 +794,32 @@
 </tr>
 <tr>
 <td style="text-align: left;"><code>no_ripple</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">（省略される場合があります）このアカウントでこのラインに対し<a href="rippling.html">NoRippleフラグ</a>が有効な場合は、<code>true</code>。省略されている場合は、<code>false</code>と同じです。</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;">（省略される場合があります）<code>true</code>の場合、このアカウントはこのトラストラインの<a href="rippling.html">No Rippleフラグ</a>を有効にしています。もし<code>false</code>であれば、このアカウントは<a href="ripplestate.html#所有者の準備金への資金供給">No Rippleフラグ</a>を無効にしていますが、これは<a href="ripplestate.html#所有者の準備金への資金供給">デフォルト値</a>ではありません。。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグは無効で、Default Rippleが有効となります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>no_ripple_peer</code></td>
-<td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">（省略される場合があります）ピアアカウントでこのラインに対し<a href="rippling.html">NoRippleフラグ</a>が有効な場合は<code>true</code>。省略されている場合は、<code>false</code>と同じです。</td>
+<td style="text-align: left;">真偽値</td>
+<td style="text-align: left;">（省略される場合があります）<code>true</code>の場合、ピアアカウントはこのトラストラインで<a href="rippling.html">No Rippleフラグ</a>を有効にしています。もし<code>false</code>なら、このアカウントはNo Rippleフラグを無効にしていますが、このアカウントはDefault Rippleフラグも無効にしているため、<a href="ripplestate.html#所有者の準備金への資金供給">デフォルト値</a>とはみなされません。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグが無効で、Default Rippleが有効です。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>authorized</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">（省略される場合があります）このアカウントが<a href="authorized-trust-lines.html">このトラストラインを承認した</a>場合は、<code>true</code>。省略されている場合は、<code>false</code>と同じです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>peer_authorized</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">（省略される場合があります）ピアアカウントが<a href="authorized-trust-lines.html">このトラストラインを承認した</a>場合は<code>true</code>。省略されている場合は、<code>false</code>と同じです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>freeze</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">（省略される場合があります）このアカウントがこのトラストラインを<a href="freezes.html">凍結</a>した場合は<code>true</code>。省略されている場合は、<code>false</code>と同じです。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>freeze_peer</code></td>
-<td style="text-align: left;">ブール値</td>
+<td style="text-align: left;">真偽値</td>
 <td style="text-align: left;">（省略される場合があります）ピアアカウントがこのトラストラインを<a href="freezes.html">凍結</a>した場合は、<code>true</code>。省略されている場合は、<code>false</code>と同じです。</td>
 </tr>
 </tbody>
@@ -1826,7 +2072,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2271,7 +2517,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2852,7 +3098,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2862,7 +3108,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

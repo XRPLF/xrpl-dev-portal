@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <meta property="og:title" content="feature | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/feature.html" />
-    <meta property="og:description" content="Amendmentに関してこのサーバーが認識している情報を返します。" />
-    <meta name="description" content="Amendmentに関してこのサーバーが認識している情報を返します。" />
+    <meta property="og:description" content="Amendmentに関してこのサーバが認識している情報を返します。" />
+    <meta name="description" content="Amendmentに関してこのサーバが認識している情報を返します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -304,14 +304,11 @@
     <li class="active breadcrumb-item">feature</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="feature">feature<a aria-hidden="true" class="hover_anchor" href="#feature"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><code>feature</code>コマンドは、<a href="amendments.html">Amendment</a>に関してこのサーバーが認識している情報（Amendmentが有効であるかどうか、サーバーが<a href="amendments.html#amendmentプロセス">Amendmentプロセス</a>でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><code>feature</code>コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバーを一時的に設定できます。この変更は、サーバーの再起動後も保持されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>feature</code>コマンドは、<a href="amendments.html">Amendment</a>に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが<a href="amendments.html#amendmentプロセス">Amendmentプロセス</a>でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" target="_blank" title="新規: rippled 0.31.0"><img alt="新規: rippled 0.31.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.31.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p><code>feature</code>コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを一時的に設定できます。この変更は、サーバの再起動後も保持されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="更新: rippled 1.7.0"><img alt="更新: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%9B%B4%E6%96%B0-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em><code>feature</code>メソッドは、権限のないユーザーは実行できない<a href="admin-api-methods.html">管理メソッド</a>です。</em></p>
 <h3 id="要求フォーマット">要求フォーマット<a aria-hidden="true" class="hover_anchor" href="#要求フォーマット"><i class="fa fa-link"></i></a></h3>
 <p>要求フォーマットの例:</p>
@@ -364,11 +361,11 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 <tr>
 <td style="text-align: left;"><code>vetoed</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">（省略可、<code>feature</code>が指定されていない場合は無視されます）trueの場合、サーバーに対し<code>feature</code>で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバーに対しAmendmentに賛成票を投じるように指示します。</td>
+<td style="text-align: left;">（省略可、<code>feature</code>が指定されていない場合は無視されます）trueの場合、サーバに対し<code>feature</code>で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバに対しAmendmentに賛成票を投じるように指示します。</td>
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout 注記"><strong>注記:</strong> サーバーが新しいAmendmentの適用方法を現在認識していない場合でも、<code>feature</code>フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバーを設定できます。たとえば、Amendmentを <em>確かに</em> サポートする新しい<code>rippled</code>バージョンに間もなくアップグレードする予定がある場合などにこのように設定できます。</p>
+<p class="devportal-callout 注記"><strong>注記:</strong> サーバが新しいAmendmentの適用方法を現在認識していない場合でも、<code>feature</code>フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい<code>rippled</code>バージョンに <em>確実に</em> アップグレードする予定がある場合などにこのように設定できます。</p>
 <h3 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h3>
 <p>処理が成功した応答の例:</p>
 <div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocketすべてリスト" href="#code-1-0">WebSocket - すべてリスト</a></li><li><a class="websocket拒否" href="#code-1-1">WebSocket - 拒否</a></li><li><a class="jsonrpc" href="#code-1-2">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-3">コマンドライン</a></li></ul>
@@ -485,7 +482,7 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 <tr>
 <td style="text-align: left;"><code>supported</code></td>
 <td style="text-align: left;">ブール値</td>
-<td style="text-align: left;">サーバーがこのAmendmentの適用方法を認識しているかどうか。このフィールドが<code>false</code>（サーバーがこのAmendmentの適用方法を認識していない）に設定されており、<code>enabled</code>が<code>true</code>（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバーが<a href="amendments.html#amendment-blocked">Amendmentブロック</a>される可能性があります。</td>
+<td style="text-align: left;">サーバがこのAmendmentの適用方法を認識しているかどうか。このフィールドが<code>false</code>（サーバがこのAmendmentの適用方法を認識していない）に設定されており、<code>enabled</code>が<code>true</code>（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバが<a href="amendments.html#amendment-blocked">Amendmentブロック</a>される可能性があります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>vetoed</code></td>
@@ -494,11 +491,12 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 </tr>
 </tbody>
 </table>
-<p class="devportal-callout 注意"><strong>注意:</strong> Amendmentの<code>name</code>は、Amendmentの内容を厳密に示すものではありません。サーバー間でこの名前が一意であることや整合性があることは保証されません。</p>
+<p class="devportal-callout 注意"><strong>注意:</strong> Amendmentの<code>name</code>は、Amendmentの内容を厳密に示すものではありません。サーバ間でこの名前が一意であることや整合性があることは保証されません。</p>
 <h3 id="考えられるエラー">考えられるエラー<a aria-hidden="true" class="hover_anchor" href="#考えられるエラー"><i class="fa fa-link"></i></a></h3>
 <ul>
 <li><a href="error-formatting.html#汎用エラー">汎用エラータイプ</a>のすべて。</li>
-<li><code>badFeature</code> - 指定されている<code>feature</code>のフォーマットが正しくないか、サーバーがその名前のAmendmentを認識していません。</li>
+<li><code>badFeature</code> - 指定されている<code>feature</code>のフォーマットが正しくないか、サーバがその名前のAmendmentを認識していません。</li>
+<li><code>reportingUnsupported</code> - (<a href="rippled-server-modes.html#レポートモード">レポートモード</a>サーバのみ) このメソッドはレポートモードでは使用できません。</li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1741,7 +1739,7 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2186,7 +2184,7 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2767,7 +2765,7 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2777,7 +2775,7 @@ rippled<span class="w"> </span>feature<span class="w"> </span>4C97EBA926031A7CF7
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

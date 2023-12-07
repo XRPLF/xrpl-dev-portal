@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Validator List Method - XRPL.org (日本語)</title>
+    <title>バリデータリストメソッド - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Validator List Method | XRPL.org (日本語)">
+    <meta property="og:title" content="バリデータリストメソッド | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/validator-list.html" />
-    <meta property="og:description" content="Special API method for sharing recommended validator lists." />
-    <meta name="description" content="Special API method for sharing recommended validator lists." />
+    <meta property="og:description" content="推奨バリデータリストを共有するための特別なAPIメソッド。" />
+    <meta name="description" content="推奨バリデータリストを共有するための特別なAPIメソッド。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "References",
-      "page_labels": ['Core Server', 'Blockchain']
+      "page_labels": ['コアサーバー', 'ブロックチェーン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,16 +259,16 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/references/http-websocket-apis/peer-port-methods/validator-list.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/stablecoinRebased/content/@i18n/ja/references/http-websocket-apis/peer-port-methods/validator-list.md?pr=/XRPLF/xrpl-dev-portal/pull/2296" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-コアサーバー">コアサーバー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "コアサーバー" -->
     </li>
     <li class="list-inline-item">
-      <span class="label label-blockchain">Blockchain</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Blockchain" -->
+      <span class="label label-ブロックチェーン">ブロックチェーン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ブロックチェーン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -276,13 +276,13 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#validator-list-method">Validator List Method</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#manifest-data">Manifest Data</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#blob-data">Blob Data</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#example">Example</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#バリデータリストメソッド">バリデータリストメソッド</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#リクエストフォーマット">リクエストフォーマット</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#レスポンスのフォーマット">レスポンスのフォーマット</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#マニフェストデータ">マニフェストデータ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#blobデータ">Blobデータ</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#例">例</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -302,175 +302,171 @@
     <li class="active breadcrumb-item"><a href="/ja/references.html">リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/http-websocket-apis.html">HTTP / WebSocket API リファレンス</a></li>
     <li class="active breadcrumb-item"><a href="/ja/peer-port-methods.html">ピアポートメソッド</a></li>
-    <li class="active breadcrumb-item">Validator List Method</li>
+    <li class="active breadcrumb-item">バリデータリストメソッド</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="validator-list-method">Validator List Method<a aria-hidden="true" class="hover_anchor" href="#validator-list-method"><i class="fa fa-link"></i></a></h1>
-<p>The validator list method is a special API endpoint that fetches a current, trusted validator list a <code>rippled</code> server is using. This often represents the exact list of validators a server trusts. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="New in: rippled 1.5.0"><img alt="New in: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>Like the <a href="peer-crawler.html">Peer Crawler</a>, the validator list method is available by default on a non-privileged basis through the <a href="peer-protocol.html">Peer Protocol</a> port, which is also used for <code>rippled</code> servers' peer-to-peer communications.</p>
-<h2 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h2>
-<p>To request the Validator List information, make the following HTTP
-request:</p>
+        <h1 id="バリデータリストメソッド">バリデータリストメソッド<a aria-hidden="true" class="hover_anchor" href="#バリデータリストメソッド"><i class="fa fa-link"></i></a></h1>
+<p>バリデータリストメソッドは特別なAPIエンドポイントで、<code>rippled</code>サーバが現在使用している信頼できるバリデータリストを取得します。これは多くの場合、サーバが信頼するバリデータの正確なリストを表します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" target="_blank" title="新規: rippled 1.5.0"><img alt="新規: rippled 1.5.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.5.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
+<p><a href="peer-crawler.html">ピアクローラ</a>と同様に、バリデータリストメソッドはデフォルトで非root権限で<a href="peer-protocol.html">ピアプロトコル</a>ポートから利用できます。</p>
+<h2 id="リクエストフォーマット">リクエストフォーマット<a aria-hidden="true" class="hover_anchor" href="#リクエストフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>バリデータリストの情報をリクエストするには、以下のHTTPリクエストを実行します。</p>
 <ul>
-<li><strong>Protocol:</strong> https</li>
-<li><strong>HTTP Method:</strong> GET</li>
-<li><strong>Host:</strong> (any <code>rippled</code> server, by hostname or IP address)</li>
-<li><strong>Port:</strong> (the port number where the <code>rippled</code> server uses the Peer Protocol, typically 51235)</li>
+<li><strong>プロトコル:</strong> https</li>
+<li><strong>HTTPメソッド:</strong> GET</li>
+<li><strong>ホスト:</strong> (任意の<code>rippled</code>サーバ(ホスト名またはIPアドレス))</li>
+<li><strong>ポート:</strong> (<code>rippled</code>サーバがピアプロトコルを使用するポート番号)</li>
 <li>
-<p><strong>Path:</strong> <code>/vl/{public_key}</code></p>
-<p>The <code>{public_key}</code> is the list publisher's public key, in hexadecimal. This key identifies the publisher and is also used to verify that the contents of the list are authentic and complete.</p>
+<p><strong>パス:</strong> <code>/vl/{public_key}</code></p>
+<p><code>{public_key}</code>はリスト発行者の公開鍵で、16進数です。この鍵は発行者を識別し、リストの内容が真正で完全であることを確認するためにも使われます。</p>
 </li>
 <li>
-<p><strong>Security:</strong> Most <code>rippled</code> servers use a self-signed TLS certificate to respond to the request. By default, most tools (including web browsers) flag or block such responses for being untrusted. You must ignore the certificate checking (for example, if using cURL, add the <code>--insecure</code> flag) to display a response from those servers.</p>
-<p>The validator list contents are signed with a separate cryptographic key, so you can verify their integrity regardless of the TLS certificate used.</p>
+<p><strong>セキュリティ:</strong> ほとんどの<code>rippled</code>サーバはリクエストに応答するために自己署名したTLS証明書を使います。デフォルトでは、(Webブラウザを含む)ほとんどのツールはそのようなレスポンスが信頼できないものであるとしてフラグを立てたりブロックしたりします。これらのサーバからの応答を表示するには、証明書のチェックを無視しなければなりません(たとえばcURLを使う場合は<code>--insecure</code>フラグを追加します)。</p>
+<p>バリデータリストの内容は別の暗号鍵で署名されているので、使用するTLS証明書にかかわらずその完全性を検証できます。</p>
 </li>
 </ul>
-<h2 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h2>
-<p>The response has the status code <strong>200 OK</strong> and a JSON object in the message body. The response body is very similar to the format used for validator list sites such as <a class="external-link" href="https://vl.ripple.com/" target="_blank">https://vl.ripple.com/ <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
-<p>The JSON object has the following fields:</p>
+<h2 id="レスポンスのフォーマット">レスポンスのフォーマット<a aria-hidden="true" class="hover_anchor" href="#レスポンスのフォーマット"><i class="fa fa-link"></i></a></h2>
+<p>レスポンスにはステータスコード <strong>200 OK</strong> とメッセージボディにJSONオブジェクトがあります。レスポンスボディは、<a class="external-link" href="https://vl.ripple.com/" target="_blank">https://vl.ripple.com/ <i aria-hidden="true" class="fa fa-external-link"></i></a>のようなバリデータリストサイトで使われる書式に非常によく似ています。</p>
+<p>JSONオブジェクトには以下のフィールドがあります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>manifest</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The list publisher's <a href="#manifest-data">manifest data</a>, in either base64 or hexadecimal.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">リスト発行者の<a href="#マニフェストデータ">マニフェストデータ</a>をbase64または16進数で表します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>blob</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">Base64-encoded JSON data representing the validator list.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">バリデータリストを表すBase64エンコードされたJSONデータ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>signature</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The signature of the <code>blob</code> data, in hexadecimal.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">16進数で表した<code>blob</code>データの署名。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>version</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">The version of the validator list protocol this object uses. The current version is <strong>1</strong>. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このオブジェクトが使用するバリデータリストプロトコルのバージョン。現在のバージョンは <strong>1</strong> です。それ以上のバージョン番号は、バリデータリストプロトコルの以前のバージョンとの下位互換性を表します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>public_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte <code>0xED</code>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="New in: rippled 1.7.0"><img alt="New in: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータリストのデータを検証するために使用する公開鍵。これは32バイトのEd25519公開鍵で、先頭に<code>0xED</code>というバイトが付きます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" target="_blank" title="新規: rippled 1.7.0"><img alt="新規: rippled 1.7.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.7.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>.</td>
 </tr>
 </tbody>
 </table>
-<h3 id="manifest-data">Manifest Data<a aria-hidden="true" class="hover_anchor" href="#manifest-data"><i class="fa fa-link"></i></a></h3>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a <strong>validator</strong> or a <strong>list publisher</strong>. A validator's manifest contains the <em>public</em> information from that <a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化">validator's token</a>. A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard <a href="serialization.html">binary serialization format</a>. (There is no standard JSON representation of a manifest.)</p>
-<p>One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the <a href="consensus.html">consensus process</a> and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that <a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化">the validator administrator adds to the <code>rippled.cfg</code> config file</a>.)</p>
-<p>The data encoded in a manifest is as follows:</p>
+<h3 id="マニフェストデータ">マニフェストデータ<a aria-hidden="true" class="hover_anchor" href="#マニフェストデータ"><i class="fa fa-link"></i></a></h3>
+<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66" target="_blank" title="ソース">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
+<p>"マニフェスト"には、コンセンサスプロセスに関与する個人または組織（<strong><em>バリデータ</em>*または</strong>リスト発行者**）を一意に識別する情報が含まれます。バリデータのマニフェストには、その<a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化">バリデータのトークン</a>の <em>公開</em> 情報が含まれます。リスト発行者のマニフェストはリスト発行者に関する情報を提供します。どちらも通常、XRP Ledgerの標準的な<a href="serialization.html">バイナリフォーマット</a>でバイナリにエンコードされます。(マニフェストの標準的なJSON形式はありません)。</p>
+<p>マニフェストの主な目的の1つは、バリデータ鍵のローテーションです。バリデータはそのエフェメラル鍵ペアを変更すると、新しいエフェメラル公開鍵を共有するために新しいマニフェストを発行します。バリデータは<a href="consensus.html">コンセンサスプロセス</a>の一部としてバリデーションに署名するためにエフェメラル鍵ペアを使用し、新しいマニフェストに署名するためにのみマスター鍵ペアを使用します。(マニフェストは、<a href="run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化">バリデータ管理者が<code>rippled.cfg</code>設定ファイルに追加する</a>プライベートデータと一緒にバリデータトークンに組み込まれます)。</p>
+<p>マニフェストでエンコードされるデータは次のとおりです。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th style="text-align: left;">Field</th>
-<th style="text-align: left;">Internal Type</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;"><code>Field</code></th>
+<th style="text-align: left;">内部の型</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>sfPublicKey</code></td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;">The master public key that uniquely identifies this person or organization. This can be a 33-byte secp256k1 public key, or a 32-byte Ed25519 public key prefixed with the byte <code>0xED</code>.</td>
+<td style="text-align: left;">この個人または組織を一意に識別するマスター公開鍵。これは33バイトのsecp256k1公開鍵か、32バイトのEd25519公開鍵の前に<code>0xED</code>というバイトを付加したものになります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sfMasterSignature</code></td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;">A signature of this manifest data from the master key pair. This proves the authenticity of the manifest.</td>
+<td style="text-align: left;">マスターキーペアからの、このマニフェストデータの署名。これにより、マニフェストの信頼性が証明されます。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sfSequence</code></td>
 <td style="text-align: left;">UInt32</td>
-<td style="text-align: left;">A sequence number for this manifest. A higher number indicates a newer manifest that invalidates all older manifests from the same master public key.</td>
+<td style="text-align: left;">このマニフェストのシーケンス番号。番号が大きいほど新しいマニフェストであり、同じマスター公開鍵からの古いマニフェストはすべて無効になります。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sfVersion</code></td>
 <td style="text-align: left;">UInt16</td>
-<td style="text-align: left;">A version number indicating the manifest format used. A higher number indicates a newer manifest format, including breaking changes compared to the previous manifest format.</td>
+<td style="text-align: left;">使用されているマニフェスト形式を示すバージョン番号。数値が高いほど、以前のマニフェスト形式と比較して、変更点を含む新しいマニフェスト形式であることを示します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sfDomain</code></td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> A domain name owned by this person or organization, ASCII-encoded.</td>
+<td style="text-align: left;"><em>(省略可)</em> ASCIIエンコードされた、この個人または組織が所有するドメイン名。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sfSigningPubKey</code></td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> The ephemeral public key of the key pair that this person or organization is currently using. This must be a 33-byte secp256k1 public key.</td>
+<td style="text-align: left;"><em>(省略可)</em> この個人または組織が現在使用している鍵ペアのエフェメラル公開鍵。これは33バイトのsecp256k1公開鍵でなければなりません。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>sfSignature</code></td>
 <td style="text-align: left;">Blob</td>
-<td style="text-align: left;"><em>(Optional)</em> A signature of this manifest data from the ephemeral key pair.</td>
+<td style="text-align: left;"><em>(省略可)</em> エフェメラルキーペアからのこのマニフェストデータの署名。</td>
 </tr>
 </tbody>
 </table>
-<p>The <code>sfMasterSignature</code> and <code>sfSignature</code> signatures are created from signing the <a href="serialization.html">serialized</a> binary data of the manifest, excluding the signature fields (<code>sfMasterSignature</code> and <code>sfSignature</code>) themselves.</p>
-<h3 id="blob-data">Blob Data<a aria-hidden="true" class="hover_anchor" href="#blob-data"><i class="fa fa-link"></i></a></h3>
-<p>If you decode the <code>blob</code> from base64, the result is a JSON object with the following fields:</p>
+<p><code>sfMasterSignature</code>と<code>sfSignature</code>の署名は、署名フィールド(<code>sfMasterSignature</code>と<code>sfSignature</code>)自体を除いて、マニフェストの<a href="serialization.html">シリアライズされた</a>バイナリデータに署名することで作成されます。</p>
+<h3 id="blobデータ">Blobデータ<a aria-hidden="true" class="hover_anchor" href="#blobデータ"><i class="fa fa-link"></i></a></h3>
+<p>base64から<code>blob</code>をデコードすると、以下のフィールドを持つJSONオブジェクトになります。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">解説</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>sequence</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">Unique sequence number for this list. A larger sequence number indicates a newer list; only the newest list is valid at a time.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このリスト固有のシーケンス番号。一度に最新のリストのみが有効です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>expiration</code></td>
-<td style="text-align: left;">Number</td>
-<td style="text-align: left;">The time this list expires, in <a href="basic-data-types.html#時間の指定">seconds since the Ripple Epoch</a>.</td>
+<td style="text-align: left;">数値</td>
+<td style="text-align: left;">このリストが期限切れになる時間(<a href="basic-data-types.html#時間の指定">Rippleエポック以降の経過秒数</a>)。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>validators</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">A list of recommended validators.</td>
+<td style="text-align: left;">配列</td>
+<td style="text-align: left;">推奨されるバリデータのリスト。</td>
 </tr>
 </tbody>
 </table>
-<p>Each member of the <code>validators</code> array has the following fields:</p>
+<p><code>validators</code>配列の各メンバーは以下のフィールドを持っています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Value</th>
-<th style="text-align: left;">Description</th>
+<th style="text-align: left;">値</th>
+<th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>validation_public_key</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The master public key that uniquely identifies this validator.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータを一意に識別するマスター公開鍵。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>manifest</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">This validator's <a href="#manifest-data">manifest data</a>, in either base64 or hexadecimal.</td>
+<td style="text-align: left;">文字列</td>
+<td style="text-align: left;">このバリデータの<a href="#マニフェストデータ">マニフェストデータ</a>をbase64または16進数で表します。</td>
 </tr>
 </tbody>
 </table>
-<h4 id="example-decoded-blob">Example Decoded Blob<a aria-hidden="true" class="hover_anchor" href="#example-decoded-blob"><i class="fa fa-link"></i></a></h4>
+<h4 id="デコードされたblobの例">デコードされたBlobの例<a aria-hidden="true" class="hover_anchor" href="#デコードされたblobの例"><i class="fa fa-link"></i></a></h4>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">    </span><span class="nt">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="mi">644371200</span><span class="p">,</span>
@@ -622,8 +618,8 @@ request:</p>
 <span class="w">    </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="example">Example<a aria-hidden="true" class="hover_anchor" href="#example"><i class="fa fa-link"></i></a></h2>
-<p>Request:</p>
+<h2 id="例">例<a aria-hidden="true" class="hover_anchor" href="#例"><i class="fa fa-link"></i></a></h2>
+<p>リクエスト:</p>
 <div class="multicode" id="code-0"><ul class="codetabs"><li><a class="http" href="#code-0-0">HTTP</a></li><li><a class="curl" href="#code-0-1">cURL</a></li></ul>
 
 <div class="code_sample http" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1">GET https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
@@ -632,7 +628,7 @@ request:</p>
 <div class="code_sample curl" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2">curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 </code></pre></div></div>
 </div>
-<p>Response:</p>
+<p>レスポンス:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
 
 <span class="p">{</span>
@@ -643,10 +639,10 @@ request:</p>
 <span class="w">  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
+<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><a href="peer-protocol.html">Peer Protocol</a></li>
-<li><a href="consensus.html">Consensus</a></li>
+<li><a href="peer-protocol.html">ピアプロトコル</a></li>
+<li><a href="consensus.html">コンセンサス</a></li>
 </ul>
 <!-- -->
 <!-- -->
@@ -1889,7 +1885,7 @@ request:</p>
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2334,7 +2330,7 @@ request:</p>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2915,7 +2911,7 @@ request:</p>
     <nav class="nav flex-column show " id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2925,7 +2921,7 @@ request:</p>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

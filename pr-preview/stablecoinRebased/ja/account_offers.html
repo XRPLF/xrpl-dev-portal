@@ -300,9 +300,6 @@
     <li class="active breadcrumb-item">account_offers</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="account_offers">account_offers<a aria-hidden="true" class="hover_anchor" href="#account_offers"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
@@ -339,46 +336,47 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 <tr>
 <th style="text-align: left;"><code>Field</code></th>
 <th style="text-align: left;">型</th>
+<th style="text-align: left;">必須?</th>
 <th style="text-align: left;">説明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align: left;"><code>account</code></td>
-<td style="text-align: left;">文字列</td>
-<td style="text-align: left;">アカウントの一意のIDであり、通常はアカウントの<a href="basic-data-types.html#アドレス">アドレス</a>です。</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>ledger</code></td>
-<td style="text-align: left;">符号なし整数または文字列</td>
-<td style="text-align: left;"><em>（<strong>廃止予定</strong>、省略可）</em> 使用するレジャーバージョンの一意のID（レジャーインデックス、ハッシュ、「validated」などのショートカットなど）。</td>
+<td style="text-align: left;">文字列 - <a href="basic-data-types.html#アドレス">Address</a></td>
+<td style="text-align: left;">はい</td>
+<td style="text-align: left;">このアカウントからのオファーを検索します。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
-<td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
-<td style="text-align: left;"><em>（省略可）</em> 使用するレジャーバージョンを識別する20バイトの16進文字列。</td>
+<td style="text-align: left;"><a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">使用するレジャーバージョンを識別する20バイトの16進文字列。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
-<td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
-<td style="text-align: left;">（省略可、デフォルトでは<code>current</code>）使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、またはレジャーを動的に選択するための「current」、「closed」、「validated」のいずれか。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>を参照してください）</td>
+<td style="text-align: left;"><a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">使用するレジャーの<a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a>、レジャーを自動的に選択するためのショートカット文字列。（<a href="basic-data-types.html#レジャーの指定">レジャーの指定</a>をご覧ください</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>limit</code></td>
 <td style="text-align: left;">整数</td>
-<td style="text-align: left;">（省略可、デフォルト値は可変）取得するトランザクションの数を制限します。サーバーはこの値を受け入れる必要はありません。10以上400以下の範囲で値を指定する必要があります。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="新規: rippled 0.26.4"><img alt="新規: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">取得するオファーの数を制限します。サーバはこの数より少ない結果を返すことがあります。10～400の範囲内でなければなりません。この範囲外の正の値は、最も近い有効なオプションに置き換えられます。デフォルトは200です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
-<td style="text-align: left;"><em>（省略可）</em> 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="新規: rippled 0.26.4"><img alt="新規: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。</td>
 </tr>
 </tbody>
 </table>
-<p>以下のパラメーターは廃止予定であり、今後予告なしに削除される可能性があります。<code>ledger</code>。</p>
+<p>以下のパラメーターは廃止予定であり、今後予告なしに削除される可能性があります。<code>ledger</code>,<code>strict</code></p>
 <h2 id="応答フォーマット">応答フォーマット<a aria-hidden="true" class="hover_anchor" href="#応答フォーマット"><i class="fa fa-link"></i></a></h2>
 <p>処理が成功した応答の例:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li></ul>
+<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="コマンドライン" href="#code-1-2">コマンドライン</a></li></ul>
 
 <div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span>
@@ -418,6 +416,7 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 </code></pre></div></div>
 
 <div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="mi">200</span><span class="w"> </span><span class="err">OK</span>
+
 <span class="p">{</span>
 <span class="w">    </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"</span><span class="p">,</span>
@@ -462,6 +461,29 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
+
+<div class="code_sample コマンドライン" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="p">{</span>
+<span class="w">   </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"account"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ledger_current_index"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">57110969</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"offers"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">         </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"flags"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"quality"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"1499850014.892974"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"seq"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">7916201</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"taker_gets"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">               </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"BCH"</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">"issuer"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"rcyS4CeCZVYvTiKcxj6Sx32ibKwcDHLds"</span><span class="p">,</span>
+<span class="w">               </span><span class="nt">"value"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"0.5268598580881351"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"taker_pays"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"790210766"</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"validated"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
 </div>
 <p>この応答は<a href="response-formatting.html">標準フォーマット</a>に従っており、正常に完了した場合は結果に次のフィールドが含まれます。</p>
 <table class="table-responsive">
@@ -486,22 +508,22 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
 <td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
-<td style="text-align: left;"><em>（<code>ledger_hash</code>または<code>ledger_index</code>が指定されている場合は省略可）</em> このデータの取得時に使用した、現在処理中のレジャーバージョンのレジャーインデックス。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="新規: rippled 0.26.4-sp1"><img alt="新規: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（<code>ledger_hash</code>または<code>ledger_index</code>が指定されている場合は省略可）</em> このデータの取得時に使用した、現在処理中のレジャーバージョンのレジャーインデックス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_index</code></td>
 <td style="text-align: left;">数値 - <a href="basic-data-types.html#レジャーインデックス">レジャーインデックス</a></td>
-<td style="text-align: left;"><em>（<code>ledger_current_index</code>が代わりに指定されている場合は省略可）</em> 要求に従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="新規: rippled 0.26.4-sp1"><img alt="新規: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（<code>ledger_current_index</code>が指定されている場合は省略可）</em> 要求に従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_hash</code></td>
 <td style="text-align: left;">文字列 - <a href="basic-data-types.html#ハッシュ">ハッシュ</a></td>
-<td style="text-align: left;"><em>（省略される場合があります）</em> このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1" target="_blank" title="新規: rippled 0.26.4-sp1"><img alt="新規: rippled 0.26.4-sp1" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4--sp1-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略される場合があります）</em> このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>marker</code></td>
 <td style="text-align: left;"><a href="markers-and-pagination.html">マーカー</a></td>
-<td style="text-align: left;"><em>（省略される場合があります）</em> 応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に情報ページがない場合は省略されます。<a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/0.26.4" target="_blank" title="新規: rippled 0.26.4"><img alt="新規: rippled 0.26.4" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%200.26.4-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><em>（省略される場合があります）</em> 応答がページネーションされていることを示す、サーバが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に情報ページがない場合は省略されます。</td>
 </tr>
 </tbody>
 </table>
@@ -528,12 +550,12 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 <tr>
 <td style="text-align: left;"><code>taker_gets</code></td>
 <td style="text-align: left;">文字列またはオブジェクト</td>
-<td style="text-align: left;">オファーを受け入れるアカウントが受領する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。（<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。）</td>
+<td style="text-align: left;">オファーを受け入れるアカウントが受領する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。(<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>をご覧ください。)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>taker_pays</code></td>
 <td style="text-align: left;">文字列またはオブジェクト</td>
-<td style="text-align: left;">オファーを受け入れるアカウントが提供する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。（<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>を参照してください。）</td>
+<td style="text-align: left;">オファーを受け入れるアカウントが提供する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。(<a href="basic-data-types.html#通貨額の指定">通貨額の指定</a>をご覧ください。)</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>quality</code></td>
@@ -1795,7 +1817,7 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2240,7 +2262,7 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2821,7 +2843,7 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2831,7 +2853,7 @@ rippled<span class="w"> </span>account_offers<span class="w"> </span>r9cZA1mLK5R
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>
