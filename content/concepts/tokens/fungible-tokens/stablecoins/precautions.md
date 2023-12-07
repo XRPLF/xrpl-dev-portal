@@ -47,7 +47,7 @@ If you accept payments from in external systems, such as bank deposits or credit
 Additionally, follow the [Reliable Transaction Submission guidelines](reliable-transaction-submission.html) to ensure that you know the final outcome of your XRP Ledger transactions even in rare circumstances like power failures or network outages.
 
 
-## Other precautions
+## Other Precautions
 
 - Track your obligations and balances within the XRP Ledger, and compare with the assets in your collateral account. If they do not match up, stop processing withdrawals and deposits until you resolve the discrepancy.
 - Avoid ambiguous situations. Setting up the appropriate settings on all your addresses helps to avoid cases like accidentally issuing tokens from the wrong address or users sending money to the wrong place. For recommendations, see [Stablecoin Configuration](stablecoin-configuration.html).
