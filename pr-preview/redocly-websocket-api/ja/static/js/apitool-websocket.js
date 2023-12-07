@@ -289,90 +289,90 @@ const requestlist = [];
 //   $("#curl-box-1").text(curl_syntax)
 // }
 
-function server_from_params(params) {
-  const server = params.get("server")
-  if (server) {
-    const server_checkbox = $("input[value='"+server+"']")
-    if (server_checkbox.length === 1) {
-      server_checkbox.prop("checked", true)
-      // relies on connect_socket() being run shortly thereafter
-    }
-  }
-}
+// function server_from_params(params) {
+//   const server = params.get("server")
+//   if (server) {
+//     const server_checkbox = $("input[value='"+server+"']")
+//     if (server_checkbox.length === 1) {
+//       server_checkbox.prop("checked", true)
+//       // relies on connect_socket() being run shortly thereafter
+//     }
+//   }
+// }
 
-function req_from_params(params) {
-  let req_body = params.get("req")
-  let cmd_name = ""
-  if (req_body) {
-    try {
-      req_body_json = JSON.parse(req_body)
-      req_body = JSON.stringify(req_body_json, null, 2)
-      cmd_name = req_body_json.command
-    } catch(e) {
-      console.warn("Loaded request body is invalid JSON:", e)
-    }
+// function req_from_params(params) {
+//   let req_body = params.get("req")
+//   let cmd_name = ""
+//   if (req_body) {
+//     try {
+//       req_body_json = JSON.parse(req_body)
+//       req_body = JSON.stringify(req_body_json, null, 2)
+//       cmd_name = req_body_json.command
+//     } catch(e) {
+//       console.warn("Loaded request body is invalid JSON:", e)
+//     }
 
-    $(".selected_command").text(cmd_name)
-    if (requests.hasOwnProperty(slugify(cmd_name))) {
-      const req = requests[slugify(cmd_name)]
-      $(".selected_command").attr('href', req.link)
-      $(".api-method-description-wrapper .blurb").html(req.description)
-      $(".api-method-description-wrapper .api-readmore").attr("href", req.link)
-      $(".api-method-description-wrapper .api-readmore").show()
-    } else {
-      console.debug("Unknown command:", cmd_name)
-      $(".selected_command").attr('href', "")
-      $(".api-method-description-wrapper .blurb").empty()
-      $(".api-method-description-wrapper .api-readmore").hide()
-    }
-    cm_request.setValue(req_body)
-  }
-}
+//     $(".selected_command").text(cmd_name)
+//     if (requests.hasOwnProperty(slugify(cmd_name))) {
+//       const req = requests[slugify(cmd_name)]
+//       $(".selected_command").attr('href', req.link)
+//       $(".api-method-description-wrapper .blurb").html(req.description)
+//       $(".api-method-description-wrapper .api-readmore").attr("href", req.link)
+//       $(".api-method-description-wrapper .api-readmore").show()
+//     } else {
+//       console.debug("Unknown command:", cmd_name)
+//       $(".selected_command").attr('href', "")
+//       $(".api-method-description-wrapper .blurb").empty()
+//       $(".api-method-description-wrapper .api-readmore").hide()
+//     }
+//     cm_request.setValue(req_body)
+//   }
+// }
 
-$(document).ready(function() {
-    //wait for the Requests to be populated by another file
-    generate_table_of_contents()
-    make_commands_clickable()
+// $(document).ready(function() {
+//     //wait for the Requests to be populated by another file
+//     generate_table_of_contents()
+//     make_commands_clickable()
 
-    const search_params = new URLSearchParams(window.location.search)
+//     const search_params = new URLSearchParams(window.location.search)
 
-    if (window.location.hash) {
-      var cmd   = window.location.hash.slice(1).toLowerCase();
-      if (!select_request(cmd)) {
-        // Didn't find a definition for the request from the hash. Use the
-        // default instead.
-        select_request()
-      }
-    } else if (search_params.has("req")) {
-      req_from_params(search_params)
-    } else {
-      select_request()
-    }
+//     if (window.location.hash) {
+//       var cmd   = window.location.hash.slice(1).toLowerCase();
+//       if (!select_request(cmd)) {
+//         // Didn't find a definition for the request from the hash. Use the
+//         // default instead.
+//         select_request()
+//       }
+//     } else if (search_params.has("req")) {
+//       req_from_params(search_params)
+//     } else {
+//       select_request()
+//     }
 
-    if (search_params.has("server")) {
-      server_from_params(search_params)
-    }
+//     if (search_params.has("server")) {
+//       server_from_params(search_params)
+//     }
 
-    connect_socket()
+//     connect_socket()
 
-    request_button.click(send_request)
+//     request_button.click(send_request)
 
-    $("input[name='wstool-1-connection']").click(handle_select_server)
-    stream_pause.click((event) => {
-      STREAM_PAUSED = true
-      stream_pause.hide()
-      stream_unpause.show()
-    })
-    stream_unpause.click((event) => {
-      STREAM_PAUSED = false
-      stream_pause.show()
-      stream_unpause.hide()
-    })
+//     $("input[name='wstool-1-connection']").click(handle_select_server)
+//     stream_pause.click((event) => {
+//       STREAM_PAUSED = true
+//       stream_pause.hide()
+//       stream_unpause.show()
+//     })
+//     stream_unpause.click((event) => {
+//       STREAM_PAUSED = false
+//       stream_pause.show()
+//       stream_unpause.hide()
+//     })
 
-    trash_button.click((event) => {
-      response_wrapper.empty()
-    })
-    permalink_button.click(update_permalink)
-    curl_button.click(update_curl)
+//     trash_button.click((event) => {
+//       response_wrapper.empty()
+//     })
+//     permalink_button.click(update_permalink)
+//     curl_button.click(update_curl)
 
-});
+// });
