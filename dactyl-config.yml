@@ -1095,11 +1095,6 @@ pages:
             - en
             - ja
 
-    -   md: concepts/tokens/fungible-tokens/stablecoins/technical-details.md
-        targets:
-            - en
-            - ja
-
     -   md: concepts/tokens/fungible-tokens/clawing-back-tokens.md
         status: not_enabled
         targets:

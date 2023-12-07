@@ -26,6 +26,8 @@ The Default Ripple flag controls whether the balances on a trust line are allowe
 
 Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.
 
+You should _not_ enable the Default Ripple flag on other addresses, such as your operational or standby wallets.
+
 
 ## Deposit Authorization
 
@@ -39,6 +41,13 @@ Deposit Authorization is most useful for blocking unwanted XRP payments, because
 Therefore, Deposit Authorization is not recommended for stablecoin issuers unless you need it to meet regulatory requirements about receiving money from unknown or sanctioned entities.
 
 For more information, see [Deposit Authorization](depositauth.html).
+
+
+## Disallow Incoming Trust Line
+
+The Disallow Incoming Trust Line setting prevents other users from opening trust lines to an address. As a precaution, you should enable this setting on your operational and standby addresses so that those addresses cannot issue tokens even inadvertently. Do not enable this setting on your issuing address.
+
+To enable this setting, send an [AccountSet transaction](accountset.html) with `"SetFlag": 15` (`asfDisallowIncomingTrustline`).
 
 
 ## Disallow XRP
