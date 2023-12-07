@@ -44,7 +44,7 @@ XRP Ledgerには分散型取引所があり、どのユーザもXRPとトーク�
 
 分散型取引所の詳細については、[分散型取引所](decentralized-exchange.html)をご覧ください。
 
-<!-- TODO: figure out what to do with this 
+<!-- TODO: figure out what to do with this
 Liquidity providers can use the [HTTP / WebSocket APIs](http-websocket-apis.html), [client libraries](client-libraries.html), or another application to access the distributed exchange. It may also help client applications to display information about your business if you provide an [`xrp-ledger.toml` file](xrp-ledger-toml.html).
 -->
 

@@ -71,7 +71,7 @@ See [Authorized Minter](nftoken-authorized-minting.html).
 
 Minted NFTs are listed on a `NFTokenPage`. There is a reserve requirement of 2 XRP for every `NFTokenPage` on your account. See [NFT Reserve Requirements](nft-reserve-requirements.html).
 
-Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or _lazy minting_). See [Lazy minting](nftoken-batch-minting.html#mint-on-demand-lazy-minting) vs [Scripted minting](nftoken-batch-minting.html#scripted-minting).
+Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or _lazy minting_). For details of different approaches, see [Batch minting](nftoken-batch-minting.html).
 
 
 ### Setting up a wallet
@@ -114,7 +114,7 @@ The most straightforward payment for XRPL NFTs is XRP. For examples of selling a
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
 
-<!-- 
+<!--
 
 - Fiat payment ([Cross-currency payments](cross-currency-payments.html))
 - On-chain validation of completing transactions [No link- isn’t this just a cross-currency payment?] (Query after the transaction is completed.]
@@ -122,7 +122,7 @@ For trade in other currencies, you can leverage the DEX to accept and convert is
 
 ## Indexing NFTs
 
-When listing NFTs for sale, it can be useful to use object metadata to organize them. 
+When listing NFTs for sale, it can be useful to use object metadata to organize them.
 
 ![Indexing NFTs](img/uc-nft-indexing.png)
 
@@ -130,12 +130,12 @@ You can use queries in the XRPL libraries, the Clio server, and extensions in th
 
 See:
 
-- [Clio setup](install-clio-on-ubuntu.html) 
+- [Clio setup](install-clio-on-ubuntu.html)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
 
-<!-- 
+<!--
 Sorting and filtering [No link]
     Creator - nft_info (issuer field)
     Price - nft_sell_offer->offers->amount field)
@@ -154,7 +154,7 @@ Supplement Information [No link]
  -->
 
 ## NFT Caching
-<!-- 
+<!--
 
 Image optimization for web experience [No link]
 
@@ -170,11 +170,11 @@ Cloudflare, Infura, and many other providers are increasingly focusing on storin
 
 See [NFT Caching](nftoken.html#retrieving-nftoken-data-and-metadata).
 
-<!-- 
-You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing) 
+<!--
+You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing)
 
-We can derive inspiration for the need of caching and point to some of their docs 
-[https://docs.pinata.cloud/gateways](https://docs.pinata.cloud/gateways) 
+We can derive inspiration for the need of caching and point to some of their docs
+[https://docs.pinata.cloud/gateways](https://docs.pinata.cloud/gateways)
  -->
 
 

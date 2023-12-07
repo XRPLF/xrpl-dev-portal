@@ -331,7 +331,7 @@ As before, wait for the transaction to be validated by consensus.
 
 - **Concepts:**
     - [Freezing Issued Currencies](freezes.html)
-    - [Trust Lines and Issuing](trust-lines-and-issuing.html)
+    - [Trust Lines](trust-lines-and-issuing.html)
 - **Tutorials:**
     - [Enable No Freeze](enable-no-freeze.html)
     - [Enact Global Freeze](enact-global-freeze.html)
@@ -346,6 +346,6 @@ As before, wait for the transaction to be validated by consensus.
 
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}

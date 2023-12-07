@@ -132,6 +132,6 @@ https://example.com/.well-known/xrpl-nft/{nftokenid}
 You create `NFToken` objects using the `NFTokenMint` transaction. You can optionally destroy `NFToken` objects using the `NFTokenBurn` transaction.
 
 <!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
 {% include '_snippets/rippled_versions.md' %}
