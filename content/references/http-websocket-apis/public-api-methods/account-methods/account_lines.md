@@ -413,10 +413,10 @@ The response follows the [standard format][], with a successful result containin
 |:-----------------------|:---------------------------|:-----------------------|
 | `account`              | String                     | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
 | `lines`                | Array                      | Array of trust line objects, as described below. If the number of trust lines is large, only returns up to the `limit` at a time. |
-| `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. [New in: rippled 0.26.4-sp1][] |
-| `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. [New in: rippled 0.26.4][] |
+| `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. |
+| `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. |
+| `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. |
+| `marker`               | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 
 Each trust line object has some combination of the following fields:
 

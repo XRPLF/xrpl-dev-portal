@@ -9,7 +9,7 @@ label:
 # ledger_entry
 [[ソース]](https://github.com/xrplf/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-`ledger_entry`メソッドは、XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。取得可能な各種オブジェクトについては、[レジャーフォーマット][]を参照してください。
+`ledger_entry`メソッドは、XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。取得可能な各種オブジェクトについては、[レジャーフォーマット][]をご覧ください。
 
 ## 要求フォーマット
 
@@ -22,8 +22,8 @@ label:
 | フィールド                | 型                     | 説明                   |
 |:------------------------|:-----------------------|:----------------------|
 | `binary`                | ブール値                 | _（省略可）_ `true`の場合、要求したレジャーオブジェクトの内容がXRP Ledgerの[バイナリ形式](serialization.html)の16進数の文字列として返されます。それ以外の場合はデータがJSONフォーマットで返されます。デフォルトは`false`です。[更新: rippled 1.2.0][] |
-| `ledger_hash`           | 文字列                  | _（省略可）_ 使用するレジャーバージョンの20バイトの16進数の文字列。（[レジャーの指定][]を参照してください |
-| `ledger_index`          | 文字列 または 符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列("validated"や"closed"、"current"など)。（[レジャーの指定][]を参照してください） |
+| `ledger_hash`           | 文字列                  | _（省略可）_ 使用するレジャーバージョンの20バイトの16進数の文字列。（[レジャーの指定][]をご覧ください。 |
+| `ledger_index`          | 文字列 または 符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列("validated"や"closed"、"current"など)。（[レジャーの指定][]をご覧ください。 |
 
 `generator`と`ledger`パラメータは非推奨であり、予告なく削除される可能性があります。
 
@@ -32,6 +32,7 @@ label:
 - [`index`](#idからレジャーオブジェクトを取得する)
 - [`account_root`](#accountrootオブジェクトを取得する)
 - [`directory`](#directorynodeオブジェクトを取得する)
+- [`amm`](#ammオブジェクトを取得する) :not_enabled:
 - [`offer`](#offerオブジェクトを取得する)
 - [`ripple_state`](#ripplestateオブジェクトを取得する)
 - [`check`](#checkオブジェクトを取得する)
@@ -41,7 +42,7 @@ label:
 - [`ticket`](#ticketオブジェクトを取得する)
 - [`nft_page`](#nft-pageを取得する)
 
-**注意:** リクエストでこれらの型固有のフィールドを1つ以上指定した場合、サーバはそのうちの1つだけの結果を取得します。サーバがどれを選択するかは定義されていないため、こうした行為は避けるべきです。
+**注意:** リクエストでこれらの型固有のフィールドを1つ以上指定した場合、サーバはそのうちの1つだけの結果を取得します。サーバがどれを選択するかは定義されていないため、こうした指定方法は避けるべきです。
 
 
 ### IDからレジャーオブジェクトを取得する
@@ -141,6 +142,73 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 <!-- MULTICODE_BLOCK_END -->
 
 [試してみる >](websocket-api-tool.html#ledger_entry-accountroot)
+
+
+
+### AMMオブジェクトを取得する
+
+_([AMM amendment][] :not_enabled:が必要です。)_
+
+レジャーからAutomated Market-Maker(AMM)オブジェクトを取得します。これは[amm_infoメソッド][]と似ていますが、`ledger_entry`は保存されているレジャーエントリのみを返します。
+
+| フィールド    | 型                    | 説明                   |
+|:-------------|:---------------------|:----------------------|
+| `amm`        | オブジェクトまたは文字列 | 取得する[AMM](amm.html)。文字列を指定する場合は、AMMの[オブジェクトID](ledger-object-ids.html)を16進数で指定しなければなりません。オブジェクトを指定する場合は、`asset`と`asset2`のサブフィールドを含む必要があります。 |
+| `amm.asset`  | オブジェクト           | このAMMのプールにある2つの資産のうちのひとつを、[金額なしの通貨オブジェクト](currency-formats.html#金額なしでの通貨の指定)として指定します。 |
+| `amm.asset2` | オブジェクト           | このAMMのプールにある2つの資産のうちのもうひとつを、[金額なしの通貨オブジェクト](currency-formats.html#金額なしでの通貨の指定)として指定します。 |
+
+<!-- MULTICODE_BLOCK_START -->
+
+*WebSocket*
+
+```json
+{
+  "id": 3,
+  "command": "ledger_entry",
+  "amm": {
+    "asset": {
+      "currency": "XRP"
+    },
+    "asset2": {
+      "currency" : "TST",
+      "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+    }
+  }
+  "ledger_index": "validated"
+}
+```
+
+*JSON-RPC*
+
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+          "amm": {
+            "asset": {
+              "currency": "XRP"
+            },
+            "asset2": {
+              "currency" : "TST",
+              "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+            }
+          },
+          "ledger_index": "validated"
+        }
+    ]
+}
+```
+
+*Commandline*
+
+```sh
+rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
+```
+
+<!-- MULTICODE_BLOCK_END -->
+
+[試してみる >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
 
 
 

@@ -12,6 +12,7 @@
 [通貨コード]: currency-formats.html#通貨コード
 [drops of XRP]: basic-data-types.html#specifying-currency-amounts
 [fee levels]: transaction-cost.html#fee-levels
+[手数料レベル]: transaction-cost.html#手数料レベル
 [XRPのdrop数]: basic-data-types.html#通貨額の指定
 [Hash]: basic-data-types.html#hashes
 [ハッシュ]: basic-data-types.html#ハッシュ
@@ -38,6 +39,7 @@
 [result code]: transaction-results.html
 [seconds since the Ripple Epoch]: basic-data-types.html#specifying-time
 [Reporting Mode]: rippled-server-modes.html#reporting-mode
+[レポートモード]: rippled-server-modes.html#レポートモード
 [Rippleエポック以降の経過秒数]: basic-data-types.html#時間の指定
 [Sequence Number]: basic-data-types.html#account-sequence
 [シーケンス番号]: basic-data-types.html#アカウントシーケンス
@@ -49,6 +51,7 @@
 [Specifying Time]: basic-data-types.html#specifying-time
 [時間の指定]: basic-data-types.html#時間の指定
 [stand-alone mode]: rippled-server-modes.html#stand-alone-mode
+[スタンドアロンモード]: rippled-server-modes.html#スタンドアロンモード
 [standard format]: response-formatting.html
 [標準フォーマット]: response-formatting.html
 [Transaction Cost]: transaction-cost.html

@@ -1,7 +1,7 @@
 ---
 html: feature.html
 parent: status-and-debugging-methods.html
-blurb: Amendmentに関してこのサーバーが認識している情報を返します。
+blurb: Amendmentに関してこのサーバが認識している情報を返します。
 labels:
   - ブロックチェーン
   - コアサーバー
@@ -9,9 +9,9 @@ labels:
 # feature
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
-`feature`コマンドは、[Amendment](amendments.html)に関してこのサーバーが認識している情報（Amendmentが有効であるかどうか、サーバーが[Amendmentプロセス](amendments.html#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。[新規: rippled 0.31.0][]
+`feature`コマンドは、[Amendment](amendments.html)に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが[Amendmentプロセス](amendments.html#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。[新規: rippled 0.31.0][]
 
-`feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバーを一時的に設定できます。この変更は、サーバーの再起動後も保持されます。[更新: rippled 1.7.0][]
+`feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを一時的に設定できます。この変更は、サーバの再起動後も保持されます。[更新: rippled 1.7.0][]
 
 _`feature`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
 
@@ -68,9 +68,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 | `Field`   | 型    | 説明                                            |
 |:----------|:--------|:-------------------------------------------------------|
 | `feature` | 文字列  | _（省略可）_ Amendmentの一意のID（16進数）またはAmendmentの短い名前。指定されている場合は、応答が1つのAmendmentに限定されます。それ以外の場合は応答にすべてのAmendmentのリストが表示されます。 |
-| `vetoed`  | ブール値 | （省略可、`feature`が指定されていない場合は無視されます）trueの場合、サーバーに対し`feature`で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバーに対しAmendmentに賛成票を投じるように指示します。 |
+| `vetoed`  | ブール値 | （省略可、`feature`が指定されていない場合は無視されます）trueの場合、サーバに対し`feature`で指定されたAmendmentに反対票を投じるように指示します。falseの場合、サーバに対しAmendmentに賛成票を投じるように指示します。 |
 
-**注記:** サーバーが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバーを設定できます。たとえば、Amendmentを _確かに_ サポートする新しい`rippled`バージョンに間もなくアップグレードする予定がある場合などにこのように設定できます。
+**注記:** サーバが新しいAmendmentの適用方法を現在認識していない場合でも、`feature`フィールドにAmendment IDを指定すれば、新しいAmendmentに賛成票を投じるようにサーバを設定できます。たとえば、Amendmentをサポートする新しい`rippled`バージョンに _確実に_ アップグレードする予定がある場合などにこのように設定できます。
 
 ### 応答フォーマット
 
@@ -187,15 +187,16 @@ Connecting to 127.0.0.1:5005
 |:------------|:--------|:-----------------------------------------------------|
 | `enabled`   | ブール値 | 最新レジャーでこのAmendmentが現在有効であるかどうか。 |
 | `name`      | 文字列  | （省略される場合があります）このAmendmentの人間が読める形式の名前（判明している場合）。 |
-| `supported` | ブール値 | サーバーがこのAmendmentの適用方法を認識しているかどうか。このフィールドが`false`（サーバーがこのAmendmentの適用方法を認識していない）に設定されており、`enabled`が`true`（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバーが[Amendmentブロック](amendments.html#amendment-blocked)される可能性があります。 |
+| `supported` | ブール値 | サーバがこのAmendmentの適用方法を認識しているかどうか。このフィールドが`false`（サーバがこのAmendmentの適用方法を認識していない）に設定されており、`enabled`が`true`（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバが[Amendmentブロック](amendments.html#amendment-blocked)される可能性があります。 |
 | `vetoed`    | ブール値 または 文字列 | ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに`Obsolete`という文字列を指定します。[更新: rippled 1.11.0][]. |
 
-**注意:** Amendmentの`name`は、Amendmentの内容を厳密に示すものではありません。サーバー間でこの名前が一意であることや整合性があることは保証されません。
+**注意:** Amendmentの`name`は、Amendmentの内容を厳密に示すものではありません。サーバ間でこの名前が一意であることや整合性があることは保証されません。
 
 ### 考えられるエラー
 
 * [汎用エラータイプ][]のすべて。
-* `badFeature` - 指定されている`feature`のフォーマットが正しくないか、サーバーがその名前のAmendmentを認識していません。
+* `badFeature` - 指定されている`feature`のフォーマットが正しくないか、サーバがその名前のAmendmentを認識していません。
+- `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

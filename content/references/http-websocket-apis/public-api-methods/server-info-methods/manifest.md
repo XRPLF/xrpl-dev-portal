@@ -52,7 +52,6 @@ The request includes the following parameters:
 |:-------------|:-------|:-----------------------------------|
 | `public_key` | String | The [base58][]-encoded public key of the validator to look up. This can be the master public key or ephemeral public key. |
 
-**Note:** The commandline format for this method does not work in rippled v1.5.0. See [issue #3317](https://github.com/XRPLF/rippled/issues/3317) for details.
 
 ### Response Format
 

@@ -128,27 +128,25 @@ MemoTypeフィールドとMemoFormatフィールドには、以下の文字の�
 ## NetworkIDフィールド <a id="networkid-field"></a>
 [新規: rippled 1.11.0][]
 
-<!-- TODO: translate section -->
+`NetworkID`フィールドは「クロスチェーン」トランザクションのリプレイ攻撃に対する保護であり、同じトランザクションがコピーされ、意図していない[ネットワーク](parallel-networks.html)で実行されることを防ぎます。既存のチェーンとの互換性のため、ネットワークIDが1024以下のネットワークでは`NetworkID`フィールドを省略する必要がありますが、ネットワークIDが1025以上のネットワークでは`NetworkID`フィールドを含める必要があります。以下の表は、さまざまな既知のネットワークのステータスと値を示しています。
 
-The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](parallel-networks.html) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
+| ネットワーク    | ID | `NetworkID`フィールド |
+|---------------|----|---------------------|
+| Mainnet       | 0  | 使用不可             |
+| Testnet       | 1  | 使用不可             |
+| Devnet        | 2  | 使用不可             |
+| AMM Devnet    | 25 | 使用不可             |
+| Sidechains Devnet Locking Chain | 2551 | 使用不可, ただし、アップデート後に必要となる予定です。 |
+| Sidechains Devnet Issuing Chain | 2552 | 使用不可, ただし、アップデート後に必要となる予定です。 |
+| Hooks V3 Testnet | 21338 | 必須    |
 
-| Network       | ID | `NetworkID` Field |
-|---------------|----|-------------------|
-| Mainnet       | 0  | Disallowed        |
-| Testnet       | 1  | Disallowed        |
-| Devnet        | 2  | Disallowed        |
-| AMM Devnet    | 25 | Disallowed        |
-| Sidechains Devnet Locking Chain | 2551 | Disallowed, but will become required after an update |
-| Sidechains Devnet Issuing Chain | 2552 | Disallowed, but will become required after an update |
-| Hooks V3 Testnet | 21338 | Required    |
+トランザクションのリプレイ攻撃は理論的には可能ですが、2つ目のネットワークに特定の条件が必要です。次のすべてが真でなければなりません。
 
-Transaction replay attacks are theoretically possible, but require specific conditions on the second network. All of the following must be true:
-
-- The transaction's sender is a funded account on the second network.
-- The sender's `Sequence` number on the second network matches the transaction's `Sequence`, or the transaction uses a [Ticket](tickets.html) that's available on the second network.
-- Either the transaction does not have a `LastLedgerSequence` field, or it specifies a value that is higher than the current ledger index on the second ledger.
-    - Mainnet generally has a higher ledger index than test networks or sidechains, so it is easier to replay Mainnet transactions on a sidechain or test network than the other way around, when transactions use `LastLedgerSequence` as intended.
-- Either the networks both have IDs of 1024 or less, both networks use the same ID, or the second network does not require the `NetworkID` field.
+- トランザクションの送信者が2つ目のネットワーク上の資金提供アカウントである。
+- 2つ目のネットワーク上の送信者の`Sequence`がトランザクションの`Sequence`と一致するか、トランザクションが第二のネットワークで利用可能な[Ticket](tickets.html)を使用している。
+- トランザクションが`LastLedgerSequence`フィールドを持っていないか、2つ目レジャーの現在のレジャーインデックスよりも高い値を指定している。
+    - メインネットは一般的に、テストネットワークやサイドチェーンよりもレジャーインデックスが高いため、トランザクションが`LastLedgerSequence`を本来の意図通りに使用している場合、メインネットのトランザクションをサイドチェーンやテストネットワークでリプレイする方が現実的です。
+- ネットワークが両方とも1024以下のIDを持っているか、両方のネットワークが同じIDを使用しているか、2つ目のネットワークが`NetworkID`フィールドを必要としないかのいずれか。
 
 
 ## Signersフィールド

@@ -55,8 +55,8 @@ A request can include the following parameters:
 | Field          | Type                 | Required? | Description |
 |:---------------|:---------------------|:----------|-------------|
 | `account`      | String - [Address][] | Yes       | Look up Offers placed by this account. |
-| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash][]             | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_index` | [Ledger Index][]     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Number               | No        | Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. Positive values outside this range are replaced with the closest valid option.The default is 200. |
 | `marker`       | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
@@ -157,6 +157,7 @@ An example of a successful response:
     }
 }
 ```
+
 *Commandline*
 
 ```json
@@ -191,10 +192,10 @@ The response follows the [standard format][], with a successful result containin
 |:-----------------------|:--------------------------|:------------------------|
 | `account`              | String                    | Unique [Address][] identifying the account that made the offers |
 | `offers`               | Array                     | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
-| `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current in-progress ledger version, which was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `ledger_index`         | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data, as requested. [New in: rippled 0.26.4-sp1][] |
-| `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data. [New in: rippled 0.26.4-sp1][] |
-| `marker`               | [Marker][]                | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. [New in: rippled 0.26.4][] |
+| `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current in-progress ledger version, which was used when retrieving this data. |
+| `ledger_index`         | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
+| `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data. |
+| `marker`               | [Marker][]                | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
 
 
 Each offer object contains the following fields:

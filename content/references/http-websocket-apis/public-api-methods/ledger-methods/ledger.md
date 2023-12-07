@@ -46,7 +46,7 @@ An example of the request format:
 
 *Commandline*
 
-```
+```sh
 #Syntax: ledger ledger_index|ledger_hash [full|tx]
 # "full" is equivalent to "full": true
 # "tx" is equivalent to "transactions": true
