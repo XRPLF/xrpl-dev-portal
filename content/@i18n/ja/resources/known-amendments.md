@@ -18,14 +18,14 @@ labels:
 |:----------------------------------|:-----------|:------------------------------------|
 | [AMM][]                           | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
-| [fixReducedOffersV1][]            | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
-| [fixNFTokenRemint][]              | v1.11.0    | [投票中: 2023-06-21](https://xrpl.org/blog/2023/rippled-1.11.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
+| [fixReducedOffersV1][]            | v1.12.0    | [有効: 2023-11-24](https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1 "BADGE_GREEN") |
+| [fixNFTokenRemint][]              | v1.11.0    | [有効: 2023-11-27](https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF "BADGE_GREEN") |
 | [DisallowIncoming][]              | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
 | [fixNonFungibleTokensV1_2][]      | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E "BADGE_GREEN") |
 | [fixTrustLinesToSelf][]           | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43 "BADGE_GREEN") |
 | [fixUniversalNumber][]            | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3 "BADGE_GREEN") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B "BADGE_BLUE") |
+| [ImmediateOfferKilled][]          | v1.10.0    | [有効: 2023-08-21](https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B "BADGE_GREEN") |
 | [CheckCashMakesTrustLine][]       | v1.8.0     | [有効: 2022/01/23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
 | [NonFungibleTokensV1_1][]         | v1.9.2     | [有効: 2022/10/31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
 | [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [有効: 2022/10/27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
@@ -676,7 +676,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 | Amendment    | fixNFTokenRemint |
 |:-------------|:-----------------|
 | Amendment ID | AE35ABDEFBDE520372B31C957020B34A7A4A9DC3115A69803A44016477C84D6E |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -766,7 +766,7 @@ NFTオファーに宛先を設定した場合、その宛先のみが仲介で�
 | Amendment    | fixReducedOffersV1 |
 |:-------------|:-------------------|
 | Amendment ID | 27CD95EE8E1E5A537FF2F89B6CEB7C622E78E9374EBD7DCBEDFAE21CD6F16E0A |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | No |
 | Amendment前の機能は廃止? | No |
 

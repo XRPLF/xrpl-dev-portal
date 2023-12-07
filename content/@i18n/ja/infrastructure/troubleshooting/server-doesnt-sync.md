@@ -1,7 +1,7 @@
 ---
 html: server-doesnt-sync.html
 parent: troubleshoot-the-rippled-server.html
-blurb: Troubleshoot problems that make a rippled server unable to sync with the rest of the XRP Ledger.
+blurb: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
   - コアサーバー
 ---
@@ -10,6 +10,7 @@ labels:
 このページでは、[`rippled`サーバー](xrpl-servers.html)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](rippled-server-states.html)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.html)を参照してください。）
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](install-rippled.html)されていることを前提としています。
+
 
 ## 通常の同期動作
 
@@ -23,6 +24,7 @@ labels:
 
 サーバーがこれらのタスクを行うときにネットワークに同調して対応できなかった場合は、サーバーはネットワークと同期しない状態になります。
 
+
 ## 最初のステップ: 再起動
 
 多くの同期の問題は、サーバーを再起動することで解決できます。最初に同期が失敗した原因がどのようなものであっても、2回目では成功する場合があります。
@@ -30,6 +32,7 @@ labels:
 [server_infoメソッド][]で[`server_state`](rippled-server-states.html)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
 
 問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/XRPLF/rippled/issues)し、「Syncing issue」ラベルを追加します。
+
 
 ## 同期の問題のよくある原因
 
@@ -40,6 +43,7 @@ labels:
 -  **品質の悪いネットワーク接続。** ネットワーク要件は、主にXRP Ledgerをユーザーがどのよう使うかによって左右されますが、接続が低速または不安定な場合、XRP Ledgerに追加された新しいトランザクションやデータとの同期がとれなくなる可能性があります。
 
 同期の問題が解消されない場合は、サーバーがシステム要件を満たしているかもう一度確認してください。サーバーの使用方法によっては、「最小」要件よりも高い「推奨」要件を満たす必要があります。「推奨」要件を満たしていても、まだ同期ができない場合は、このページの他の原因を試してみてください。
+
 
 ## バリデータリストを読み込めない
 
@@ -85,7 +89,7 @@ labels:
         [database_path]
          /var/lib/rippled/db_new
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 4. `rippled`サーバーを再起動します。
 

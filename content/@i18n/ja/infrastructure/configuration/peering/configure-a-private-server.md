@@ -27,7 +27,7 @@ labels:
 
         vim /etc/opt/ripple/rippled.cfg
 
-   {% include '_snippets/conf-file-location.md' %}<!--_ -->
+   {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 2. プライベートピアリングを有効にします。
 

@@ -26,7 +26,6 @@ labels:
 <!-- TODO: translate diagrams -->
 {{ include_svg("img/insecure-signing-options.svg", "安全でない構成の図") }}
 
-
 外部のソースからあなたの秘密鍵にアクセスできる構成は危険で、不正使用者によってあなたのすべてのXRP（およびあなたのXRP Ledgerのアドレスにあるすべてのもの）が盗まれる可能性があります。そのような構成の例としては、インターネット経由で他の人の`rippled`サーバーの[signメソッド][]を使用する構成や、秘密鍵をインターネットを経由してプレーンテキストで自己所有サーバーに送信する構成などがあります。
 
 秘密鍵の秘匿性は常に保持する必要があります。自分にメールで送信したり、人の目に触れるところで入力したりしてはいけません。秘密鍵を使用しないときは、決してプレーンテキストではなく、暗号化された形式で保存する必要があります。セキュリティと利便性のバランスは、アドレスの保有額によっても変わります。さまざまな目的に合わせてさまざまなセキュリティ構成の複数のアドレスを使用することをお勧めします。
@@ -70,21 +69,32 @@ labels:
 
 ## ローカル署名機能のあるクライアントライブラリを使用する
 
-{{ include_svg("img/secure-signing-client-library.svg", "[ローカル署名機能のあるクライアントライブラリを使用する構成の図") }}
+{{ include_svg("img/secure-signing-client-library.svg", "ローカル署名機能のあるクライアントライブラリを使用する構成の図") }}
 
-この構成では、トランザクションにローカルで署名するために使用しているプログラミング言語のクライアントライブラリを使用します。使用しているプログラミング言語に対応するクライアントライブラリが必要です。Rippleは、XRP Ledgerのトランザクションにローカルで署名することができる次のクライアントライブラリを公開しています。
+この構成では、使用するプログラミング言語で、署名を組み込んだクライアントライブラリを使用します。ローカル署名を実行できるライブラリの一覧は、[クライアントライブラリ](client-libraries.html)を参照してください。
 
-- **xrpl.js (JavaScript / TypeScript)**
-    - [設定](get-started-using-javascript.html)
-    - [APIリファレンス](https://js.xrpl.org/)
-- **Signing Library for C++**（`rippled`に付属）
-    - [ドキュメント](https://github.com/XRPLF/rippled/tree/develop/Builds/linux#signing-library)
+### 署名ライブラリのセキュリティベストプラクティス
 
-Rippleが公開したものでないクライアントライブラリを使用する場合は、そのライブラリが実装している署名アルゴリズムの実装が適切で安全であることを確認してください。（例えば、クライアントライブラリがデフォルトのECDSAアルゴリズムを使用している場合は、そのライブラリは[RFC6979](https://tools.ietf.org/html/rfc6979)に記載されているとおりに決定論的ノンスを使用している必要があります。)Rippleが公開している上記のすべてのライブラリは、業界のベストプラクティスに従っています。
+署名ライブラリのセキュリティを最適化するために、次のベストプラクティスを使用してください。
 
-最高レベルのセキュリティを実現するために、クライアントライブラリを安定した最新バージョンの状態に保ってください。
+* 使用する署名ライブラリが、署名アルゴリズムを適切かつ安全に実装 していることを確認してください。例えば、ライブラリがデフォルトのECDSAアルゴリズムを使用する場合、[RFC-6979](https://tools.ietf.org/html/rfc6979)に記述されているように、決定論的なnoncesも使用すべきです。
 
-### クライアントライブラリを使用したローカル署名の例
+    上記のすべての公開ライブラリは、業界のベストプラクティスに従っています。
+
+
+* クライアントライブラリを最新の安定版に更新してください。
+
+* セキュリティ強化のため、[Vault](https://www.vaultproject.io/)などの管理ツールから秘密鍵を読み込みます。
+
+### ローカル署名の例
+
+以下は、以下の言語とライブラリを使用して、ローカルでトランザクションに署名する方法の例です。
+
+* **JavaScript** / **TypeScript** - [`xrpl.js`](https://github.com/XRPLF/xrpl.js)
+
+* **Python** - [`xrpl-py`](https://github.com/XRPLF/xrpl-py)
+
+* **Java** - [`xrpl4j`](https://github.com/XRPLF/xrpl4j)
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -106,9 +116,6 @@ Rippleが公開したものでないクライアントライブラリを使用�
 {% include '_code-samples/secure-signing/java/SignPayment.java' %}
 ```
 <!-- MULTICODE_BLOCK_END -->
-
-
-セキュリティを強化するために、[Vault](https://www.vaultproject.io/)などの管理ツールから秘密鍵を読み込みます。
 
 
 ## 専用の署名デバイスを使用する
@@ -144,6 +151,8 @@ Rippleが公開したものでないクライアントライブラリを使用�
     - [submitメソッド][]
     - [xrpl.jsリファレンス](https://js.xrpl.org/)
     - [`xrpl-py`リファレンス](https://xrpl-py.readthedocs.io/)
+    - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
+
 
 
 

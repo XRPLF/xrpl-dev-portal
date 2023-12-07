@@ -29,14 +29,14 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 3. Add Ripple's package-signing GPG key to your list of trusted keys:
 
-        sudo mkdir /usr/local/share/keyrings/
-        wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
-        sudo mv ripple-key.gpg /usr/local/share/keyrings/
+        sudo install -m 0755 -d /etc/apt/keyrings && \
+            wget -qO- https://repos.ripple.com/repos/api/gpg/key/public | \
+            sudo gpg --dearmor -o /etc/apt/keyrings/ripple.gpg
 
 
 4. Check the fingerprint of the newly-added key:
 
-        gpg --import --import-options show-only /usr/local/share/keyrings/ripple-key.gpg
+        gpg --show-keys /etc/apt/keyrings/ripple.gpg
 
     The output should include an entry for Ripple such as the following:
 
@@ -48,16 +48,17 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the second line, starting with `C001`.)
 
-4. Add the appropriate Ripple repository for your operating system version:
+5. Add the appropriate Ripple repository for your operating system version:
 
-        echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
+        echo "deb [signed-by=/etc/apt/keyrings/ripple.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
             sudo tee -a /etc/apt/sources.list.d/ripple.list
 
     The above example is appropriate for **Ubuntu 20.04 Focal Fossa**. For other operating systems, replace the word `focal` with one of the following:
 
-    - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `buster` for **Debian 10 Buster**
     - `bullseye` for **Debian 11 Bullseye**
+    - `bookworm` for **Debian 12 Bookworm**
+    - `bionic` for **Ubuntu 18.04 Bionic Beaver**
     - `jammy` for **Ubuntu 22.04 Jammy Jellyfish**
 
     If you want access to development or pre-release versions of `rippled`, use one of the following instead of `stable`:
@@ -67,13 +68,10 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
     **Warning:** Unstable and nightly builds may be broken at any time. Do not use these builds for production servers.
 
-5. Fetch the Ripple repository.
+6. Update the package index to include Ripple's repo and install `rippled`.
 
-        sudo apt -y update
+        sudo apt -y update && sudo apt -y install rippled
 
-6. Install the `rippled` software package:
-
-        sudo apt -y install rippled
 
 7. Check the status of the `rippled` service:
 
@@ -89,6 +87,25 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     This allows you to serve incoming API requests on port 80 or 443. (If you want to do so, you must also update the config file's port settings.)
 
         sudo setcap 'cap_net_bind_service=+ep' /opt/ripple/bin/rippled
+
+
+9. Optional: configure core dumps
+
+    By default Ubuntu is not configured to produce core files useful for debugging crashes.
+    First run:
+    
+        ulimit -c unlimited
+    
+    Now run `sudo systemctl edit rippled`. The default editor should open and add
+
+        [Service]
+        LimitCORE=infinity
+
+    This creates the file `/etc/systemd/system/rippled.service.d/override.conf` and configures the OS to save core dumps, without changing the service file provided by the `rippled` package. If your server crashes, you can find the core dump in `/var/lib/apport/coredump/`. To load the core dump for inspection, use a command such as the following:
+
+        gdb /opt/ripple/bin/rippled /var/lib/apport/coredump/core
+
+    **Note:** To debug a core file this way, you must have the `rippled-dbgsym` package installed, and you need permission to read files in the core dump directory.
 
 
 ## Next Steps

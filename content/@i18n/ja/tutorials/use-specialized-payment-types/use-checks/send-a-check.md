@@ -7,8 +7,6 @@ labels:
 ---
 # Checkの送信
 
-_[Checks Amendment][]により追加されました。_
-
 Checkの送信は、指定受取人にあなたからの支払いを引き出す許可を与えることに似ています。このプロセスの結果、受取人が後で現金化できる[レジャーのCheckオブジェクト](check.html)が作成されます。
 
 多くの場合、Checkではなく[Payment][]が送信されます。これは、Paymentでは1つのステップで受取人に直接送金できるためです。ただし、指定受取人が[DepositAuth](depositauth.html)を使用している場合はPaymentを直接送信できないため、代替手段としてCheckが適切です。
@@ -42,13 +40,19 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ### CheckCreateトランザクションの準備の例
 
-以下の例は、BoxSend SG（rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za）がGrand Payments（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに作成した100 XRPのCheckです。追加（オプション）のメタデータとして、BoxSend SGはGrand Paymentsの請求書のIDを追加しています。これによりGrand PaymentsはこのCheckがどの請求書に対する支払いかを確認できます。
+以下の例は、BoxSend SG（`rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za`）がGrand Payments（`rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`）宛てに作成した100 XRPのCheckです。追加（オプション）のメタデータとして、BoxSend SGはGrand Paymentsの請求書のIDを追加しています。これによりGrand PaymentsはこのCheckがどの請求書に対する支払いかを確認できます。
 
 <!-- MULTICODE_BLOCK_START -->
 
+*ripple-lib 1.x*
+
+```js
+{% include '_code-samples/checks/js/prepareCreate.js' %}
+```
+
 *JSON-RPC、WebSocket、またはコマンドライン*
 
-```
+```json
 {
  "TransactionType":"CheckCreate",
  "Account":"rBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za",
@@ -56,12 +60,6 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
  "SendMax":"100000000",
  "InvoiceID":"46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"
 }
-```
-
-*ripple-lib 1.x*
-
-```js
-{% include '_code-samples/checks/js/prepareCreate.js' %}
 ```
 
 <!-- MULTICODE_BLOCK_END -->
@@ -75,7 +73,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/signCreate.js' %}
@@ -99,7 +97,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/sign-create-resp.txt' %}
@@ -129,7 +127,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submitCreate.js' %}
@@ -153,7 +151,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```js
 {% include '_code-samples/checks/js/submit-create-resp.txt' %}
@@ -185,13 +183,11 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 トランザクションのメタデータで、`LedgerEntryType`が `"Check"`の`CreatedNode`オブジェクトを探します。これは、トランザクションにより[Checkレジャーオブジェクト](check.html)が作成されたことを示します。このオブジェクトの`LedgerIndex` がCheckのIDです。以下の例ではCheckのIDは`84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`です。
 
-**注記:** RippleAPIでは、CheckCreateトランザクションの検索時にCheckのIDが報告されません。この回避策として、以下のRippleAPIコードの例に示すように[Check IDフォーマット](check.html#check-idのフォーマット)からCheckのIDを計算することができます。 <!--{# TODO: Remove this and update the code samples if ripple-lib #876 gets fixed. #}-->
-
 ### 要求の例
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```
 {% include '_code-samples/checks/js/getCreateTx.js' %}
@@ -215,7 +211,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_START -->
 
-*RippleAPI*
+*ripple-lib 1.x*
 
 ```
 {% include '_code-samples/checks/js/get-create-tx-resp.txt' %}

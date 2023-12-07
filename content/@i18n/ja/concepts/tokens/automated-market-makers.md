@@ -35,13 +35,12 @@ AMMは、プール内の資産残高に基づき取引レートを設定しま�
 XRP Ledgerの実装は、重みパラメータを0.5とした _幾何平均_ AMMですので、_定積_ マーケットメーカーのように機能します。 _定積_ AMMの公式や一般的なAMMの経済学についての詳しい説明は、[Kris Machowski's Introduction to Automated Market Makers](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/)をご覧ください。
 
 ### 資産の制限 <a id="restrictions-on-assets"></a>
-<!-- TODO: translate this section -->
 
-To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
+不正利用を防ぐため、AMMで利用できる資産にはいくつかの制限があります。これらの制約を満たさない資産でAMMを作成しようとすると、トランザクションは失敗します。ルールは以下のとおりです。
 
-- The asset must not be an LP Token from another AMM.
-- If the asset is a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
-- If the [Clawback amendment][] :not_enabled: is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
+- 他のAMMのLPTokenをAMMの資産として利用することはできません。
+- 資産が、発行者が[認可トラストライン](authorized-trust-lines.html)を使用しているトークンである場合、AMMの作成者はそれらのトークンを保有する権限がなければなりません。トラストラインが認可されているユーザだけが、そのトークンをAMMに預けたり引き出したりすることができます。
+- [Clawback Amendment][] :not_enabled: が有効な場合、Clawbackが有効なトークンでAMMを作成することはできません。
 
 ## LPトークン
 <!-- TODO: add diagrams showcasing flow of funds -->

@@ -3,15 +3,15 @@ html: nftoken.html
 parent: basic-data-types.html
 blurb: XRPL NFTの紹介
 labels:
-  - Non-fungible Tokens, NFTs
+  - 非代替性トークン, NFT
 ---
 # NFToken
 
-`NFToken`オブジェクトは、1つの非代替性トークン(NFT)を表します。単体では保存されず、他のNFTと共に[NFTokenPage オブジェクト][]に格納されます。
+`NFToken`オブジェクトは、1つの非代替性トークン(NFT)を表します。単体では保存されず、他の`NFToken`オブジェクトと共に[NFTokenPage オブジェクト][]に格納されます。
 
 _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
-{{currentpage.name}} JSONの例
+## {{currentpage.name}} JSONの例
 
 ```json
 {
@@ -20,10 +20,11 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 }
 ```
 
-通常の[ledger entries](ledger-object-types.html)とは異なり、`NFToken`にはオブジェクトのタイプや現在の所有者を特定するフィールドはありません。`NFToken`オブジェクトは、そのオブジェクトのタイプを暗黙的に定義し、所有者を特定するページにグループ化されます。
+通常の[レジャーエントリ](ledger-object-types.html)とは異なり、`NFToken`にはオブジェクトのタイプや現在の所有者を特定するフィールドはありません。`NFToken`オブジェクトは、そのオブジェクトのタイプを暗黙的に定義し、所有者を特定するページにグループ化されます。
 
 
 ## NFTokenID
+
 
 NFTokenID, 任意, 文字列, Hash256
 
@@ -43,7 +44,6 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 
 16ビットのフラグ、送金手数料フィールド、32ビットの`NFTokenTaxon`、シーケンス番号フィールドはビッグエンディアン形式で格納されます。
 
-
 ## NFToken フラグ
 
 フラグは、`NFToken`オブジェクトに関連するプロパティやその他のオプションです。
@@ -53,15 +53,15 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 |:------------------|:-----------|:--------------------------------------------|
 | `lsfBurnable`     | `0x0001`   | 設定されている場合、発行者（または発行者が許可したエンティティ）が`NFToken`を破棄できることを示します。オブジェクトの所有者は常に破棄することができます。 |
 | `lsfOnlyXRP`      | `0x0002`   | 設定されている場合、`NFToken`はXRPに対してのみオファーまたは売却できることを示します。 |
-| `lsfTrustLine`    | `0x0004`   | **廃止** 設定されている場合、送金手数料を保持するための[トラストライン](trust-lines-and-issuing.html)を自動的に作成します。設定されていない場合、発行者がそのトークンのトラストラインを持っていない場合、この`NFToken`をそのトークンで売買することは失敗します。[fixRemoveNFTokenAutoTrustLine amendment][]により、このフラグは利用できなくなります。|
+| `lsfTrustLine`    | `0x0004`   | **廃止予定** 設定されている場合、送金手数料を保持するための[トラストライン](trust-lines-and-issuing.html)を自動的に作成します。設定されていない場合、発行者がそのトークンのトラストラインを持っていない場合、この`NFToken`をそのトークンで売買することは失敗します。[fixRemoveNFTokenAutoTrustLine amendment][]により、このフラグは利用できなくなります。|
 | `lsfTransferable` | `0x0008`   | 設定されている場合、この`NFToken`は所有者から別の所有者に転送することができます。設定されていない場合、所有者は発行者との間でのみ譲渡が可能です。 |
-| `lsfReservedFlag` | `0x8000`   | 本提案では、このフラグを将来の使用に備えて確保します。このフラグを設定しようとすると失敗します。 |
+| `lsfReservedFlag` | `0x8000`   | 将来の使用に備えて確保されています。このフラグを設定しようとすると失敗します。 |
 
 `NFToken`のフラグは変更できません。[NFTokenMint トランザクション][]でのみ設定可能で、後で変更することはできません。
 
 ### 例
 
-この例では、`lsfBurnable`(0x0001), `lsfOnlyXRP`(0x0002), `lsfTransferable`(0x0008)の3つのフラグを設定しています。1+2+8 = 11、つまりビッグエンディアン形式で0x000Bです。
+この例では、`lsfBurnable`(`0x0001`), `lsfOnlyXRP`(`0x0002`), `lsfTransferable`(`0x0008`)の3つのフラグを設定しています。1+2+8 = 11、つまりビッグエンディアン形式で`0x000B`です。
 
 ![フラグ](img/nftokena.png "フラグ")
 
@@ -84,13 +84,14 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 
 ### NFTokenTaxon(分類群)
 
-4番目のセクションは、発行者が作成する`NFTokenTaxon`です。
 
-![NFTokenTaxon](img/nftokend.png)
+4番目のセクションは、発行者が指定する`NFTokenTaxon`です。
+
+![`NFTokenTaxon` の概要図](img/nftokend.png)
 
 発行者は同じ`NFTokenTaxon`を持つ複数の`NFToken`を発行する可能性があります。`NFToken`が複数のページにまたがるようにするため、`NFTokenTaxon`は第5セクションの連番を乱数発生器のシード値として乱数化されています。乱数化された値は`NFToken`と共に保存されますが、乱数化されていない値が実際の`NFTokenTaxon`となります。
 
-`NFTokenTaxon`の値は`0xBC8B858E`ですが、これは発行者が指定した`NFTokenTaxon`の値が乱数化されたものであることに注意してください。`NFTokenTaxon`の実際の値は乱数化されていない値です。
+`NFTokenTaxon`の値は`0xBC8B858E`ですが、これは発行者が指定した`NFTokenTaxon`の値が乱数化されたものであることに注意してください。`NFTokenTaxon`の実際の値は _乱数化されていない_ 値です。
 
 ### トークン連番
 
@@ -99,7 +100,6 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 ![シーケンス番号](img/nftokene.png "シーケンス番号")
 
 [NFTokenMint トランザクション][]では`NFTokenID`のこのフィールドを`Issuer`アカウントの`MintedNFTokens`フィールドを基に自動的に設定します。発行者の[AccountRoot オブジェクト][]が`MintedNFTokens`フィールドを持っていない場合、そのフィールドは値 0 と見なされます。フィールドの値は1ずつ増加します。
-
 
 ## URI
 

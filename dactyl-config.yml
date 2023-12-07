@@ -418,6 +418,7 @@ pages:
             - get-started-using-python.html
             - get-started-using-javascript.html
             - get-started-using-java.html
+            - get-started-using-php.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
             - send-xrp.html
@@ -452,6 +453,7 @@ pages:
             - get-started-using-python.html
             - get-started-using-javascript.html
             - get-started-using-java.html
+            - get-started-using-php.html
             - get-started-using-http-websocket-apis.html
             # Popular pages
             - send-xrp.html
@@ -781,7 +783,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/networks-and-servers/the-clio-server.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1057,6 +1058,9 @@ pages:
     -   md: concepts/tokens/nft-storage.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/nft-storage.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/non-fungible-token-transfers.md
@@ -1115,10 +1119,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: concepts/tokens/nft-apis.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/nft-apis.md"
+        targets:
             - ja
 
         # TODO: maybe fungible tokens should be in their own folder?
@@ -1153,7 +1159,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/freezes.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1179,7 +1184,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/transfer-fees.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1236,7 +1240,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/automated-market-makers.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1763,12 +1766,43 @@ pages:
         targets:
             - en
 
-        # TODO: translate
+    # TODO: translate
     -   md: tutorials/get-started/get-started-using-java.md
         top_nav_grouping: 始めましょう
         untranslated_warning: true
         targets:
             - ja
+
+    # PHP ---------------------------------------------------------------------
+
+    -   name: PHP
+        html: php.html
+        parent: tutorials.html
+        top_nav_grouping: Article Types
+        template: pagetype-category.html.jinja
+        blurb: XRPL tutorials in PHP.
+        targets:
+            - en
+
+    -   name: PHP
+        html: php.html
+        parent: tutorials.html
+        top_nav_grouping: カテゴリ
+        template: pagetype-category.html.jinja
+        blurb: PHPでのXRPLチュートリアルです。
+        targets:
+            - ja
+
+    -   md: tutorials/get-started/get-started-using-php.md
+        targets:
+           - en
+
+    # TODO: translate
+    -   md: tutorials/get-started/get-started-using-php.md
+        top_nav_grouping: 始めましょう
+        untranslated_warning: true
+        targets:
+           - ja
 
     # HTTP / Websocket Tutorials ---------------------------------------------------
 
@@ -2227,7 +2261,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/data-types/basic-data-types.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2243,9 +2276,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation to add a table like in the English version
     -   md: "@i18n/ja/references/protocol/data-types/currency-formats.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2253,10 +2284,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation to use the term "sequence number" rather than
-        # "dumb sequential"
     -   md: "@i18n/ja/references/protocol/data-types/nftoken.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2450,9 +2478,7 @@ pages:
         targets:
             - en
 
-        # TODO: update blurb translation based on English version
     -   md: "@i18n/ja/references/protocol/transactions/index.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2503,7 +2529,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/transactions/types/ammcreate.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2785,9 +2810,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation
     -   md: "@i18n/ja/references/protocol/transactions/transaction-results/tel-codes.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2819,9 +2842,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation to latest English version
     -   md: "@i18n/ja/references/protocol/transactions/metadata.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -2838,9 +2859,7 @@ pages:
         targets:
             - en
 
-        # TODO: update translation with new/updated sections from the English version
     -   md: "@i18n/ja/references/protocol/binary-format.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -3007,10 +3026,12 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: references/http-websocket-apis/api-conventions/ctid.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/api-conventions/ctid.md"
+        targets:
             - ja
 
 # rippled Public Methods
@@ -3263,16 +3284,20 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md"
+        targets:
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
@@ -3402,16 +3427,21 @@ pages:
             - en
             - ja
 
-        # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md"
+        targets:
             - ja
 
         # TODO: translate
     -   md: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md"
+        targets:
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/utility-methods/index.md
@@ -3755,10 +3785,7 @@ pages:
         targets:
             - en
 
-    # TODO: translate page (currently only the blurb is translated)
-    -   md: references/http-websocket-apis/peer-port-methods/peer-crawler.md
-        blurb: ネットワークトポロジーとステータスメトリックを共有するための特殊なAPIメソッドです。
-        untranslated_warning: true
+    -   md: "@i18n/ja/references/http-websocket-apis/peer-port-methods/peer-crawler.md"
         targets:
             - ja
 
@@ -3845,10 +3872,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/installation/install-clio-on-ubuntu.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/installation/install-clio-on-ubuntu.md"
+        targets:
             - ja
 
     -   md: infrastructure/installation/update-rippled-automatically-on-linux.md
@@ -3875,20 +3904,19 @@ pages:
         targets:
             - ja
 
-    # TODO: translate
     -   md: infrastructure/installation/build-on-linux-mac-windows.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/installation/build-on-linux-mac-windows.md"
+        targets:
             - ja
 
     -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
         targets:
             - en
 
-        # TODO: translate
-    -   md: infrastructure/installation/build-run-rippled-in-reporting-mode.md
-        top_nav_grouping: 人気ページ
-        untranslated_warning: true
+    -   md: "@i18n/ja/infrastructure/installation/build-run-rippled-in-reporting-mode.md"
         targets:
             - ja
 
@@ -3936,9 +3964,7 @@ pages:
         targets:
             - en
 
-        # TODO: update this translation and rename the file like in the English version
     -   md: "@i18n/ja/infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -4026,17 +4052,16 @@ pages:
         targets:
             - en
 
-    # TODO: translate this page. # For now we just have a translated blurb.
-    -   md: infrastructure/configuration/peering/configure-the-peer-crawler.md
-        blurb: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
-        untranslated_warning: true
+    -   md: "@i18n/ja/infrastructure/configuration/peering/configure-the-peer-crawler.md"
         targets:
             - ja
 
-    # TODO: translate this page
     -   md: infrastructure/configuration/peering/enable-link-compression.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/peering/enable-link-compression.md"
+        targets:
             - ja
 
     -   md: infrastructure/configuration/peering/forward-ports-for-peering.md
@@ -4079,10 +4104,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/configuration/configure-statsd.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/configure-statsd.md"
+        targets:
             - ja
 
     -   md: infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
@@ -4094,10 +4121,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate page
     -   md: infrastructure/configuration/configure-grpc.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/configuration/configure-grpc.md"
+        targets:
             - ja
 
     -   md: infrastructure/configuration/enable-public-signing.md
@@ -4148,10 +4177,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/testing-and-auditing/run-private-network-with-docker.md
         targets:
         - en
+
+    -   md: "@i18n/ja/infrastructure/testing-and-auditing/run-private-network-with-docker.md"
+        targets:
         - ja
 
     -   md: infrastructure/troubleshooting/index.md
@@ -4170,10 +4201,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/troubleshooting/health-check-interventions.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/troubleshooting/health-check-interventions.md"
+        targets:
             - ja
 
     -   md: infrastructure/troubleshooting/understanding-log-messages.md
@@ -4188,15 +4221,16 @@ pages:
         targets:
             - en
 
-        # TODO: translate the blurb in this page's frontmatter
     -   md: "@i18n/ja/infrastructure/troubleshooting/server-doesnt-sync.md"
         targets:
             - ja
 
-        # TODO: translate
     -   md: infrastructure/troubleshooting/server-is-amendment-blocked.md
         targets:
             - en
+
+    -   md: "@i18n/ja/infrastructure/troubleshooting/server-is-amendment-blocked.md"
+        targets:
             - ja
 
     -   md: infrastructure/troubleshooting/server-wont-start.md
@@ -5014,7 +5048,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/resources/contribute-documentation/index.md"
-        outdated_translation: true
         top_nav_grouping: 参加する
         targets:
             - ja

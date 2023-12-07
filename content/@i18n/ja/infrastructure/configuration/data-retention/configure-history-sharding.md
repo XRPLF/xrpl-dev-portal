@@ -30,7 +30,7 @@ labels:
 
 `rippled.cfg`ファイルを編集し、`[shard_db]`スタンザを追加します。
 
-{% include '_snippets/conf-file-location.md' %}<!--_ -->
+{% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
 
 以下のスニペットに、`[shard_db]`スタンザの例を示します。
 

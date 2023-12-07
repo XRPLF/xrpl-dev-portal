@@ -7,21 +7,17 @@ labels:
 ---
 # トークンの凍結
 
-XRPはトークンではありません。XRPはXRP Ledgerのネイティブ資産であり、XRP Ledgerでのトランザクションの実行に必要となります。XRPは取引相手を必要としません。つまり、XRPを保有しているということは負債ではなく実際の通貨であるXRPを保有していることになります。このため、_**<u>いかなる組織または個人もXRPを凍結できません</u>**_。
-
-XRP Ledgerでは、XRP以外の通貨はすべてトークンとして表すことができます。このようなトークン（「イシュアンス」または「IOU」とも呼ばれます）は、「トラストライン」と呼ばれるアドレス間の会計上の関係で管理されます。トークンは通常、負債とも資産とも見なされるため、トラストラインの残高は、見る視点によってマイナスにもプラスにもなります。どのアドレスも（XRP以外の）通貨を自由に発行できますが、他のアドレスが希望する保有量によってのみ制限されます。
+発行者は発行したトークンをXRP Ledgerで凍結することができます。**これはXRP LedgerのネイティブアセットであるXRPには適用されません。**
 
 特定のケースでは、法的要件への準拠や、疑わしい活動の調査のために、取引所またはゲートウェイが、XRP以外のトークンの残高を急きょ凍結することがあります。
 
-**ヒント:** 誰もXRPを凍結することはできません。
+**ヒント:** 誰もXRP LedgerのXRPを凍結することはできません。しかし、カストディアル取引所は、自らの裁量で常に保管資金を凍結することができます。詳しくは、[凍結に関するよくある誤解](common-misconceptions-about-freezes.html)をご覧ください。
 
 凍結については、3種類の設定があります。
 
-* [**Individual Freeze**](#individual-freeze) - 1件の取引相手を凍結します。
-* [**Global Freeze**](#global-freeze) - 取引相手全員を凍結します。
-* [**No Freeze**](#no-freeze) - 個々の取引相手の凍結機能と、Global Freezeを終了できる機能を永久に放棄します。
-
-凍結機能はトークンにのみ適用されます。XRP Ledgerには特権的な立場の当事者は存在しないため、凍結機能では、取引相手が、XRPまたはその他の取引相手が発行した資金で取引を実行することを阻止できません。Rippleを含め誰もXRPを凍結することはできません。
+* [**Individual Freeze(個別の凍結)**](#individual-freeze) - 1件の取引相手を凍結します。
+* [**Global Freeze(全体の凍結)**](#global-freeze) - 取引相手全員を凍結します。
+* [**No Freeze(凍結機能の放棄)**](#no-freeze) - 個々の取引相手の凍結機能と、Global Freeze機能を永久に放棄します。
 
 凍結対象の残高がプラス、マイナスにかかわらず、すべての凍結設定を行うことができます。通貨イシュアーまたは通貨保持者のいずれかがトラストラインを凍結できますが、通貨保持者がイシュアーを凍結しても、その影響はわずかです。
 
@@ -35,7 +31,7 @@ XRP Ledgerでは、XRP以外の通貨はすべてトークンとして表すこ�
 * 取引相手は、凍結されたトラストライン上で引き続きその他の当事者からの支払を受け取ることができます。
 * 取引相手が凍結されたトラストライン上のトークンの売りオファーを出した場合、[資金不足とみなされます](offers.html#オファーのライフサイクル)。
 
-確認事項: トラストラインではXRPは保持されません。XRPは凍結できません。
+再確認: トラストラインではXRPは保持されません。XRPは凍結できません。
 
 金融機関は、疑わしい活動を行う取引相手や、金融機関の利用規約に違反する取引相手にリンクしているトラストラインを凍結できます。金融機関は、同機関が運用する、XRP Ledgerに接続されているその他のシステムにおいても、その取引相手を凍結する必要があります。（凍結しないと、アドレスから金融機関経由で支払を送金することで、望ましくない活動を行うことが依然として可能となります。）
 
@@ -54,7 +50,7 @@ Individual Freezeは1つの通貨にのみ適用されます。特定の取引�
 * 凍結された発行アドレスの取引相手は、発行アドレスとの直接的な支払の送受信を引き続き行うことができます。
 * 凍結アドレスによるトークンの売りオファーはすべて、[資金不足とみなされます](offers.html#オファーのライフサイクル)。
 
-確認事項: アドレスはXRPを発行できません。Global FreezeはXRPには適用されません。
+再確認: アドレスはXRPを発行できません。Global FreezeはXRPには適用されません。
 
 運用アドレスのシークレットキーが漏えいした場合には、運用アドレスの制御を取り戻した後であっても金融機関の[発行アドレス](account-types.html)に対してGlobal Freezeを有効にすることが有益です。これにより資金流出を止め、攻撃者がそれ以上の資金を盗むことを防止し、少なくともそれまでの経過の追跡が容易になります。XRP LedgerでGlobal Freezeを行う他に、金融機関は外部システムへのコネクターでの疑わしい活動を停止する必要があります。
 
@@ -83,12 +79,23 @@ No Freeze設定は、アドレスに対して発行される通貨と、アド�
 No Freeze設定は、アドレスのマスターキーのシークレットキーにより署名されたトランザクションでのみ有効にできます。[レギュラーキー](setregularkey.html)または[マルチシグトランザクション](multi-signing.html)を使用してNo Freezeを有効にすることはできません。
 
 
-<!--{# TODO: update "See Also" with new tutorials' technical details #}-->
-
 
 # 関連項目
 
-* [凍結コードの例](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
+- [凍結コードの例](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
+- **コンセプト:**
+    - [トラストラインとトークンの発行](trust-lines-and-issuing.html)
+- **Tutorials:**
+    - [No Freezeを有効化](enable-no-freeze.html)
+    - [Global Freezeの実行](enact-global-freeze.html)
+    - [トラストラインの凍結](freeze-a-trust-line.html)
+- **References:**
+    - [account_linesメソッド][]
+    - [account_infoメソッド][]
+    - [AccountSetトランザクション][]
+    - [TrustSetトランザクション][]
+    - [AccountRootフラグ](accountroot.html#accountrootのフラグ)
+    - [RippleState(trust line)フラグ](ripplestate.html#ripplestateのフラグ)
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}			
