@@ -12,15 +12,21 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@redocly/portal": "^0.66.1",
+    "@codemirror/state": "6.3.3",
+    "@codemirror/view": "^6.22.2",
+    "@lezer/highlight": "^1.2.0",
+    "@redocly/portal": "0.67.1",
+    "@uiw/react-codemirror": "^4.21.21",
+    "@uiw/codemirror-themes": "4.21.21",
     "clsx": "^2.0.0",
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
+    "react": "^18.0.0",
     "react-alert": "^7.0.3",
     "xrpl": "^3.0.0-beta.1"
   },
   "overrides": {
-    "react": "^17.0.2"
+    "react": "^18.0.0"
   },
   "devDependencies": {
     "htmltojsx": "^0.3.0",
