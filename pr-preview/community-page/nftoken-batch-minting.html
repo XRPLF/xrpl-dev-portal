@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Batch minting - XRPL.org</title>
+    <title>Batch Minting - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Batch minting | XRPL.org">
+    <meta property="og:title" content="Batch Minting | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/nftoken-batch-minting.html" />
-    <meta property="og:description" content="Minting NFToken objects in batches." />
-    <meta name="description" content="Minting NFToken objects in batches." />
+    <meta property="og:description" content="Minting NFTs in batches." />
+    <meta name="description" content="Minting NFTs in batches." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nftoken-batch-minting.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nfts/batch-minting.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -271,7 +271,7 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#batch-minting">Batch minting</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#batch-minting">Batch Minting</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#mint-on-demand-lazy-minting">Mint On Demand (Lazy Minting)</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#benefits">Benefits</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#downside">Downside</a></li>
@@ -297,31 +297,31 @@
     <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
     <li class="active breadcrumb-item"><a href="tokens.html">Tokens</a></li>
     <li class="active breadcrumb-item"><a href="non-fungible-tokens.html">Non-Fungible Tokens</a></li>
-    <li class="active breadcrumb-item">Batch minting</li>
+    <li class="active breadcrumb-item">Batch Minting</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="batch-minting">Batch minting<a aria-hidden="true" class="hover_anchor" href="#batch-minting"><i class="fa fa-link"></i></a></h1>
-<p>There are two common approaches to minting NFToken objects in batches: mint on demand and scripted minting.</p>
+        <h1 id="batch-minting">Batch Minting<a aria-hidden="true" class="hover_anchor" href="#batch-minting"><i class="fa fa-link"></i></a></h1>
+<p>There are two common approaches to minting NFTs in batches: mint on demand and scripted minting.</p>
 <h2 id="mint-on-demand-lazy-minting">Mint On Demand (Lazy Minting)<a aria-hidden="true" class="hover_anchor" href="#mint-on-demand-lazy-minting"><i class="fa fa-link"></i></a></h2>
-<p>When using a mint on demand model, you and potential customers make buy or sell offers for initial sales of a NFToken object off the XRP Ledger. When you are ready to start the initial sale, you mint the token, create a sell offer or accept a buy offer, then complete the transaction.</p>
+<p>When using a mint on demand model, you and potential customers make buy or sell offers for initial sales of an NFT off the XRP Ledger. When you are ready to start the initial sale, you mint the token, create a sell offer or accept a buy offer, then complete the transaction.</p>
 <h3 id="benefits">Benefits<a aria-hidden="true" class="hover_anchor" href="#benefits"><i class="fa fa-link"></i></a></h3>
 <ul>
-<li>There is no reserve requirement for holding unsold NFToken objects.</li>
-<li>You mint NFToken objects in real time when you know that it will sell. <!-- STYLE_OVERRIDE: will --></li>
+<li>There is no reserve requirement for holding unsold NFTs.</li>
+<li>You mint NFTs in real time when you know that it will sell. <!-- STYLE_OVERRIDE: will --></li>
 </ul>
 <h3 id="downside">Downside<a aria-hidden="true" class="hover_anchor" href="#downside"><i class="fa fa-link"></i></a></h3>
-<p>Any market activity before the initial sale of the NFToken object is not recorded on the XRP Ledger. This might not be an issue for some applications.</p>
+<p>Any market activity before the initial sale of the NFT is not recorded on the XRP Ledger. This might not be an issue for some applications.</p>
 <h2 id="scripted-minting">Scripted Minting<a aria-hidden="true" class="hover_anchor" href="#scripted-minting"><i class="fa fa-link"></i></a></h2>
 <p>Use a program or script to mint many tokens at once. You might find that <a href="tickets.html">Tickets</a> help you submit transactions in parallel, up to a current limit of 200 transactions in one group.</p>
 <p>For a practical example, see the <a href="batch-mint-nfts-using-javascript.html">Batch Mint NFTs Using JavaScript</a> tutorial.</p>
 <h3 id="benefits-1">Benefits<a aria-hidden="true" class="hover_anchor" href="#benefits-1"><i class="fa fa-link"></i></a></h3>
 <ul>
-<li>NFToken objects are minted ahead of time</li>
-<li>Market activity for the initial sale of the NFToken object is captured on the ledger</li>
+<li>NFTs are minted ahead of time.</li>
+<li>Market activity for the initial sale of the NFT is captured on the ledger.</li>
 </ul>
 <h3 id="downside-1">Downside<a aria-hidden="true" class="hover_anchor" href="#downside-1"><i class="fa fa-link"></i></a></h3>
-<p>You need to meet the <a href="reserves.html">reserve requirement</a> for all of the <code>NFToken</code> objects you mint. As a rule of thumb, this is roughly 1/12th XRP per NFToken object at the current reserve rate. In the event that you do not have enough XRP in reserve, your mint transactions fail until you get more XRP.</p>
+<p>You need to meet the <a href="reserves.html">reserve requirement</a> for all of the NFTs you mint. As a rule of thumb, this is roughly 1/12th XRP per NFT at the current reserve rate. In the event that you do not have enough XRP in reserve, your mint transactions fail until you get more XRP.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -735,6 +735,21 @@
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -748,13 +763,99 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6">
       
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="true" aria-controls="tree_nav_group_4_6_2"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column show " id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -762,7 +863,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -772,12 +873,12 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -806,64 +907,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

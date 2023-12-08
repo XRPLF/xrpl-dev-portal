@@ -303,9 +303,6 @@
     <li class="active breadcrumb-item">トランザクションの共通フィールド</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="トランザクションの共通フィールド">トランザクションの共通フィールド<a aria-hidden="true" class="hover_anchor" href="#トランザクションの共通フィールド"><i class="fa fa-link"></i></a></h1>
 <p>どのトランザクションについても、共通する一連のフィールドに加え、<a href="transaction-types.html">トランザクションのタイプ</a>に応じた追加のフィールドがあります。フィールドの名前では、大文字と小文字が区別されます。すべてのトランザクションに共通するフィールドは、以下のとおりです。</p>
@@ -525,63 +522,62 @@
 </code></pre></div>
 <h2 id="networkidフィールド">NetworkIDフィールド <a id="networkid-field"></a><a aria-hidden="true" class="hover_anchor" href="#networkidフィールド"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" target="_blank" title="新規: rippled 1.11.0"><img alt="新規: rippled 1.11.0" class="dactyl_badge" src="https://img.shields.io/badge/%E6%96%B0%E8%A6%8F-rippled%201.11.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<!-- TODO: translate section -->
-<p>The <code>NetworkID</code> field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a <a href="parallel-networks.html">parallel network</a> that it wasn't intended for. For compatibility with existing chains, the <code>NetworkID</code> field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:</p>
+<p><code>NetworkID</code>フィールドは「クロスチェーン」トランザクションのリプレイ攻撃に対する保護であり、同じトランザクションがコピーされ、意図していない<a href="parallel-networks.html">ネットワーク</a>で実行されることを防ぎます。既存のチェーンとの互換性のため、ネットワークIDが1024以下のネットワークでは<code>NetworkID</code>フィールドを省略する必要がありますが、ネットワークIDが1025以上のネットワークでは<code>NetworkID</code>フィールドを含める必要があります。以下の表は、さまざまな既知のネットワークのステータスと値を示しています。</p>
 <table class="table-responsive">
 <thead>
 <tr>
-<th>Network</th>
+<th>ネットワーク</th>
 <th>ID</th>
-<th><code>NetworkID</code> Field</th>
+<th><code>NetworkID</code>フィールド</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Mainnet</td>
 <td>0</td>
-<td>Disallowed</td>
+<td>使用不可</td>
 </tr>
 <tr>
 <td>Testnet</td>
 <td>1</td>
-<td>Disallowed</td>
+<td>使用不可</td>
 </tr>
 <tr>
 <td>Devnet</td>
 <td>2</td>
-<td>Disallowed</td>
+<td>使用不可</td>
 </tr>
 <tr>
 <td>AMM Devnet</td>
 <td>25</td>
-<td>Disallowed</td>
+<td>使用不可</td>
 </tr>
 <tr>
 <td>Sidechains Devnet Locking Chain</td>
 <td>2551</td>
-<td>Disallowed, but will become required after an update</td>
+<td>使用不可, ただし、アップデート後に必要となる予定です。</td>
 </tr>
 <tr>
 <td>Sidechains Devnet Issuing Chain</td>
 <td>2552</td>
-<td>Disallowed, but will become required after an update</td>
+<td>使用不可, ただし、アップデート後に必要となる予定です。</td>
 </tr>
 <tr>
 <td>Hooks V3 Testnet</td>
 <td>21338</td>
-<td>Required</td>
+<td>必須</td>
 </tr>
 </tbody>
 </table>
-<p>Transaction replay attacks are theoretically possible, but require specific conditions on the second network. All of the following must be true:</p>
+<p>トランザクションのリプレイ攻撃は理論的には可能ですが、2つ目のネットワークに特定の条件が必要です。次のすべてが真でなければなりません。</p>
 <ul>
-<li>The transaction's sender is a funded account on the second network.</li>
-<li>The sender's <code>Sequence</code> number on the second network matches the transaction's <code>Sequence</code>, or the transaction uses a <a href="tickets.html">Ticket</a> that's available on the second network.</li>
-<li>Either the transaction does not have a <code>LastLedgerSequence</code> field, or it specifies a value that is higher than the current ledger index on the second ledger.<ul>
-<li>Mainnet generally has a higher ledger index than test networks or sidechains, so it is easier to replay Mainnet transactions on a sidechain or test network than the other way around, when transactions use <code>LastLedgerSequence</code> as intended.</li>
+<li>トランザクションの送信者が2つ目のネットワーク上の資金提供アカウントである。</li>
+<li>2つ目のネットワーク上の送信者の<code>Sequence</code>がトランザクションの<code>Sequence</code>と一致するか、トランザクションが第二のネットワークで利用可能な<a href="tickets.html">Ticket</a>を使用している。</li>
+<li>トランザクションが<code>LastLedgerSequence</code>フィールドを持っていないか、2つ目レジャーの現在のレジャーインデックスよりも高い値を指定している。<ul>
+<li>メインネットは一般的に、テストネットワークやサイドチェーンよりもレジャーインデックスが高いため、トランザクションが<code>LastLedgerSequence</code>を本来の意図通りに使用している場合、メインネットのトランザクションをサイドチェーンやテストネットワークでリプレイする方が現実的です。</li>
 </ul>
 </li>
-<li>Either the networks both have IDs of 1024 or less, both networks use the same ID, or the second network does not require the <code>NetworkID</code> field.</li>
+<li>ネットワークが両方とも1024以下のIDを持っているか、両方のネットワークが同じIDを使用しているか、2つ目のネットワークが<code>NetworkID</code>フィールドを必要としないかのいずれか。</li>
 </ul>
 <h2 id="signersフィールド">Signersフィールド<a aria-hidden="true" class="hover_anchor" href="#signersフィールド"><i class="fa fa-link"></i></a></h2>
 <p><code>Signers</code>フィールドには、最大8つのキーペアから取得された署名を保持し、トランザクションを承認するための<a href="multi-signing.html">マルチシグ</a>が含まれています。<code>Signers</code>リストはオブジェクトの配列であり、各オブジェクトが1つの<code>Signer</code>フィールドを保持しています。<code>Signer</code>フィールドには、以下の入れ子フィールドがあります。</p>
@@ -1037,6 +1033,21 @@
     <a class="nav-link nav-leaf" href="/ja/payment-channels.html">Payment Channel</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -1054,9 +1065,95 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/demurrage.html">デマレージ <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
+
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
@@ -1099,48 +1196,11 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
 
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
   </div>
 
       
@@ -1150,22 +1210,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/demurrage.html">デマレージ <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1804,7 +1854,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -2249,7 +2299,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2830,7 +2880,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2840,7 +2890,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>

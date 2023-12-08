@@ -346,7 +346,7 @@
 <p>Once the authorized minter has finished creating NFTs for you, you can revoke their privileges so that they no longer have any control over your NFTs.</p>
 <p>See <a href="nftoken-authorized-minting.html">Authorized Minter</a>.</p>
 <p>Minted NFTs are listed on a <code>NFTokenPage</code>. There is a reserve requirement of 2 XRP for every <code>NFTokenPage</code> on your account. See <a href="nft-reserve-requirements.html">NFT Reserve Requirements</a>.</p>
-<p>Each <code>NFTokenPage</code> holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or <em>lazy minting</em>). See <a href="nftoken-batch-minting.html#mint-on-demand-lazy-minting">Lazy minting</a> vs <a href="nftoken-batch-minting.html#scripted-minting">Scripted minting</a>.</p>
+<p>Each <code>NFTokenPage</code> holds 16-32 NFTs. Minting a large number of NFTs can tie up a great deal of your XRP. You can keep your XRP liquid by minting on demand (or <em>lazy minting</em>). For details of different approaches, see <a href="nftoken-batch-minting.html">Batch minting</a>.</p>
 <h3 id="setting-up-a-wallet">Setting up a wallet<a aria-hidden="true" class="hover_anchor" href="#setting-up-a-wallet"><i class="fa fa-link"></i></a></h3>
 <p>Set up a new wallet. See <a class="external-link" href="https://xumm.app/" target="_blank">Xumm <i aria-hidden="true" class="fa fa-external-link"></i></a>.</p>
 <p>When you set up your account, keep in mind that there is a base reserve requirement of 10 XRP. See <a href="reserves.html#base-reserve-and-owner-reserve">Reserves</a>.</p>
@@ -370,22 +370,22 @@
 <p>The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see <a href="transfer-nfts-using-javascript.html">Transfer NFTokens</a>.</p>
 <p><img alt="Checkout" src="img/uc-nft-checkout.png"/></p>
 <p>For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See <a href="trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange">Trade in the Decentralized Exchange</a>.</p>
-<!-- 
+<!--
 
 - Fiat payment ([Cross-currency payments](cross-currency-payments.html))
 - On-chain validation of completing transactions [No link- isn’t this just a cross-currency payment?] (Query after the transaction is completed.]
  -->
 <h2 id="indexing-nfts">Indexing NFTs<a aria-hidden="true" class="hover_anchor" href="#indexing-nfts"><i class="fa fa-link"></i></a></h2>
-<p>When listing NFTs for sale, it can be useful to use object metadata to organize them. </p>
+<p>When listing NFTs for sale, it can be useful to use object metadata to organize them.</p>
 <p><img alt="Indexing NFTs" src="img/uc-nft-indexing.png"/></p>
 <p>You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.</p>
 <p>See:</p>
 <ul>
-<li><a href="install-clio-on-ubuntu.html">Clio setup</a> </li>
+<li><a href="install-clio-on-ubuntu.html">Clio setup</a></li>
 <li><a class="external-link" href="https://api.xrpldata.com/docs/static/index.html#/" target="_blank">XRPL Data API <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://docs.bithomp.com/#nft-xls-20" target="_blank">Bithomp <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<!-- 
+<!--
 Sorting and filtering [No link]
     Creator - nft_info (issuer field)
     Price - nft_sell_offer->offers->amount field)
@@ -403,7 +403,7 @@ Supplement Information [No link]
         Price History
  -->
 <h2 id="nft-caching">NFT Caching<a aria-hidden="true" class="hover_anchor" href="#nft-caching"><i class="fa fa-link"></i></a></h2>
-<!-- 
+<!--
 
 Image optimization for web experience [No link]
 
@@ -414,11 +414,11 @@ See  [HERE](https://xrp.cafe/nft/00081770CCE71D9E7BD07E3A771C7619DA982D62CD37325
 <p>Although IPFS / Arweave are great solutions to promote decentralization, fetching the metadata efficiently is a problem. Reaching IPFS / Arweave directly to fetch metadata is not fast enough for modern websites that require immediate responses from users that are scrolling through multiple pages of NFTs with high-quality media. Many NFT marketplaces on XRPL today are storing cached versions of the IPFS originals to have fast and reliable responsive websites, but this process is expensive and inefficient.</p>
 <p>Cloudflare, Infura, and many other providers are increasingly focusing on storing these decentralized files and retrieving them fast for users.</p>
 <p>See <a href="nftoken.html#retrieving-nftoken-data-and-metadata">NFT Caching</a>.</p>
-<!-- 
-You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing) 
+<!--
+You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing)
 
-We can derive inspiration for the need of caching and point to some of their docs 
-[https://docs.pinata.cloud/gateways](https://docs.pinata.cloud/gateways) 
+We can derive inspiration for the need of caching and point to some of their docs
+[https://docs.pinata.cloud/gateways](https://docs.pinata.cloud/gateways)
  -->
     </div>
   </article>
@@ -833,6 +833,21 @@ We can derive inspiration for the need of caching and point to some of their doc
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -850,9 +865,95 @@ We can derive inspiration for the need of caching and point to some of their doc
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -860,7 +961,7 @@ We can derive inspiration for the need of caching and point to some of their doc
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -870,12 +971,12 @@ We can derive inspiration for the need of caching and point to some of their doc
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -904,64 +1005,17 @@ We can derive inspiration for the need of caching and point to some of their doc
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

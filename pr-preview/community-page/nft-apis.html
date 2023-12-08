@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nft-apis.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nfts/nft-apis.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,11 +272,10 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nft-apis">NFT APIs</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nft-objects">NFT Objects</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-ledger-entries">NFT Ledger Entries</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nft-transactions">NFT Transactions</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nft-requests">NFT requests</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#clio">Clio</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#clio-specific-nft-requests">Clio-specific NFT requests</a></li>
       </ul>
   </div>
       </aside>
@@ -302,12 +301,12 @@
     <div class="content">
         <h1 id="nft-apis">NFT APIs<a aria-hidden="true" class="hover_anchor" href="#nft-apis"><i class="fa fa-link"></i></a></h1>
 <p>This page lists the transactions and requests associated with NFTs as a handy reference.</p>
-<h2 id="nft-objects">NFT Objects<a aria-hidden="true" class="hover_anchor" href="#nft-objects"><i class="fa fa-link"></i></a></h2>
+<h2 id="nft-ledger-entries">NFT Ledger Entries<a aria-hidden="true" class="hover_anchor" href="#nft-ledger-entries"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><a href="nftoken.html">NFToken</a> data type - The NFT object stored on the ledger.</li>
-<li>Ledger Objects<ul>
-<li><a href="nftokenoffer.html">NFTokenOffer object</a> - An offer to buy or sell an NFT.</li>
-<li><a href="nftokenpage.html">NFTokenPage object</a> - An NFT page holds a maximum of 32 NFT objects. In practice, each NFT page typically holds 16-24 NFTs.</li>
+<li>Ledger Entries<ul>
+<li><a href="nftokenoffer.html">NFTokenOffer entry</a> - An offer to buy or sell an NFT.</li>
+<li><a href="nftokenpage.html">NFTokenPage entry</a> - An NFT page holds a maximum of 32 NFTs. In practice, each NFT page typically holds 16-24 NFTs.</li>
 </ul>
 </li>
 </ul>
@@ -338,15 +337,11 @@
 <li><a href="unsubscribe.html">unsubscribe method</a> - Stop listening for updates about an NFT.</li>
 </ul>
 <h2 id="clio">Clio<a aria-hidden="true" class="hover_anchor" href="#clio"><i class="fa fa-link"></i></a></h2>
-<p>Clio servers enhance overall network performance by handling requests for information based on cached information, freeing up validators on the XRP Ledger to focus on processing transactions. In addition to all of the common XRP Ledger request types, the Clio server handles additional request types that provide more detailed responses.</p>
-<h3 id="clio-specific-nft-requests">Clio-specific NFT requests<a aria-hidden="true" class="hover_anchor" href="#clio-specific-nft-requests"><i class="fa fa-link"></i></a></h3>
+<p><a href="the-clio-server.html">Clio servers</a> also provide the following APIs related to NFTs:</p>
 <ul>
 <li><a href="nft_info.html">nft_info</a> - Get current status information about the specified NFT.</li>
 <li><a href="nft_history.html">nft_history</a> - Get past transaction metadata for the specified NFT.</li>
 </ul>
-<!-- 
-[nfts_by_issuer](nfts_by_issuer.html) - Get a list of all NFTs created by the specified issuer.
--->
 <p>You can access a public Clio server by sending a request to its URL and Clio port (typically 51233). Public Clio API servers come with no SLAs nor any responsibility to be fixed on priority. If your business use case requires continual monitoring and information requests, consider setting up your own Clio server instance. See <a href="install-clio-on-ubuntu.html">install-clio-on-ubuntu</a>.</p>
 <!-- -->
 <!-- -->
@@ -768,6 +763,21 @@
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -781,13 +791,99 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6">
       
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="true" aria-controls="tree_nav_group_4_6_2"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column show " id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -795,7 +891,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -805,12 +901,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -839,64 +935,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

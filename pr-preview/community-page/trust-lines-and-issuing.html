@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Trust Lines and Issuing - XRPL.org</title>
+    <title>Fungible Tokens - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Trust Lines and Issuing | XRPL.org">
+    <meta property="og:title" content="Fungible Tokens | XRPL.org">
     <meta property="og:url" content="https://xrpl.org/trust-lines-and-issuing.html" />
     <meta property="og:description" content="Learn about the properties and rationale of trust lines." />
     <meta name="description" content="Learn about the properties and rationale of trust lines." />
@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/trust-lines-and-issuing.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/fungible-tokens/index.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -271,7 +271,8 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#trust-lines-and-issuing">Trust Lines and Issuing</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#fungible-tokens">Fungible Tokens</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#trust-lines">Trust Lines</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#creation">Creation</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#going-above-the-limit">Going Above the Limit</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trust-line-settings">Trust Line Settings</a></li>
@@ -295,25 +296,29 @@
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
     <li class="active breadcrumb-item"><a href="concepts.html">Concepts</a></li>
     <li class="active breadcrumb-item"><a href="tokens.html">Tokens</a></li>
-    <li class="active breadcrumb-item">Trust Lines and Issuing</li>
+    <li class="active breadcrumb-item">Fungible Tokens</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="trust-lines-and-issuing">Trust Lines and Issuing<a aria-hidden="true" class="hover_anchor" href="#trust-lines-and-issuing"><i class="fa fa-link"></i></a></h1>
-<p>Trust lines are structures in the XRP Ledger for holding <a href="tokens.html">tokens</a>. Trust lines enforce the XRP Ledger's rule that you cannot cause someone else to hold a token they don't want. This precaution is necessary to enable the XRP Ledger's use case for <a href="tokens.html#community-credit">community credit</a> among other benefits.</p>
+        <h1 id="fungible-tokens">Fungible Tokens<a aria-hidden="true" class="hover_anchor" href="#fungible-tokens"><i class="fa fa-link"></i></a></h1>
+<p>Anyone can issue fungible tokens on the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more.</p>
+<p>Fungible tokens are interchangeable and indistinguishable from one another. They can be swapped and substituted for other tokens of equivalent value. To create fungible tokens, you set up a <em>trust line</em>, a form of accounting relationship, between two accounts, then send payments between them. For most use cases, there are also some settings you should configure first.</p>
+<h2 id="trust-lines">Trust Lines<a aria-hidden="true" class="hover_anchor" href="#trust-lines"><i class="fa fa-link"></i></a></h2>
+<p>Trust lines are structures in the XRP Ledger for holding fungible <a href="tokens.html">tokens</a>. Trust lines enforce the XRP Ledger's rule that you cannot cause someone else to hold a token they don't want. This precaution is necessary to enable the XRP Ledger's use case for <a href="tokens.html#community-credit">community credit</a> among other benefits.</p>
 <p>Each "trust line" is a <em>bidirectional</em> relationship consisting of:</p>
 <ul>
-<li>The identifiers for the <strong>two <a href="accounts.html">accounts</a></strong> that the trust line connects.</li>
-<li>A single, shared <strong>balance</strong>, which is positive from the perspective of one account and negative from the other perspective.<ul>
+<li>The identifiers for the two <a href="accounts.html">accounts</a> that the trust line connects.</li>
+<li>A single, shared balance, which is positive from the perspective of one account and negative from the other perspective.<ul>
 <li>The account with a negative balance is generally considered the "issuer" of the tokens. However, in the <a href="http-websocket-apis.html">APIs</a>, the name <code>issuer</code> can refer to either side.</li>
 </ul>
 </li>
-<li>Various <strong>settings</strong> and metadata. <em>Each</em> of the two accounts can control its own settings on the trust line.<ul>
-<li>Most importantly, each side sets a <strong>limit</strong> on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except <a href="#going-above-the-limit">through that account's own actions</a>.</li>
+<li>Various settings and metadata. <em>Each</em> of the two accounts can control its own settings on the trust line.<ul>
+<li>Most importantly, each side sets a limit on the trust line, which is 0 by default. Each account's balance (from its perspective on the trust line) can't go above that account's limit, except <a href="#going-above-the-limit">through that account's own actions</a>.</li>
 </ul>
 </li>
 </ul>
 <p>Each trust line is specific to a given <a href="currency-formats.html#currency-codes">currency code</a>. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.</p>
+<p>The balance on a trust line is negative or positive depending on which side you view it from. The side with the negative balance is called the "issuer" and can control some properties of how those tokens behave. When you send tokens to another account that isn't the issuer, those tokens "ripple" through the issuer and possibly other accounts using the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the <a href="rippling.html">No Ripple flag</a> on trust lines to prevent those trust lines from rippling.</p>
 <h2 id="creation">Creation<a aria-hidden="true" class="hover_anchor" href="#creation"><i class="fa fa-link"></i></a></h2>
 <p>Any account can unilaterally "trust" another account to issue a token by sending a <a href="trustset.html">TrustSet transaction</a> with a nonzero limit and their own settings. This creates a line with a zero balance, and sets the other side's settings to the default.</p>
 <p>Trust lines can be implicitly created by some transactions, such as when you buy a token in the <a href="decentralized-exchange.html">decentralized exchange</a>. In this case, the trust line uses entirely default settings.</p>
@@ -783,6 +788,21 @@
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -796,13 +816,99 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6">
       
+  <div class="nav-item active">
+
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
+
+    <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
   <div class="nav-item ">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -810,7 +916,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -820,12 +926,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -853,65 +959,18 @@
   </div>
 
       
-  <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

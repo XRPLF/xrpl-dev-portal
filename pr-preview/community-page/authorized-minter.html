@@ -304,7 +304,7 @@
         <h1 id="authorized-minter">Authorized Minter<a aria-hidden="true" class="hover_anchor" href="#authorized-minter"><i class="fa fa-link"></i></a></h1>
 <p><em>As an authorized minter, I want to mint tokens for a token issuer at an agreed upon rate and sell the tokens at a profit, with royalties returning to the issuer.</em></p>
 <p>You can act as an authorized minter for token issuers. When you do this, you own the NFToken, but royalties flow to the NFToken issuer. When you make a sale of that NFToken, the proceeds of the initial sale go to you. You can have an agreement with your issuer to pay them some or all of your portion of the initial sale amount.</p>
-<p>You can learn more in the tutorial <a href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter</a>. </p>
+<p>You can learn more in the tutorial <a href="assign-an-authorized-minter-using-javascript.html">Assign an Authorized Minter</a>.</p>
 <p><a href="img/nft-mkt-auth-minter.png"><img alt="Authorized Minter Flow" src="img/nft-mkt-auth-minter.png" title="Authorized Minter Flow"/></a></p>
 <h2 id="set-up-a-rippled-instance">Set up a rippled instance<a aria-hidden="true" class="hover_anchor" href="#set-up-a-rippled-instance"><i class="fa fa-link"></i></a></h2>
 <p>If you want to set up a larger site with high volume, it might be worth investing in your own XRP Ledger server instance. See <a href="install-rippled.html">Install rippled</a>.</p>
@@ -320,7 +320,7 @@
 <p>Considerations that might be most interesting to you:</p>
 <ul>
 <li><a href="nft-collections.html">Minting NFTs into Collections</a>
-Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose. </li>
+Use the TokenTaxon field to gather a set of NFTs centered around a specific theme or purpose.</li>
 <li><a href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>
 You can assure scarcity of NFTs you create by creating them with what might be characterized as a “burner” account that you use to mint a set number of NFTs for another account, then delete the account you used to mint the NFTs. See <a href="nft-fixed-supply.html">Guaranteeing a Fixed Supply of NFTs</a>.</li>
 </ul>
@@ -348,12 +348,12 @@ You can assure scarcity of NFTs you create by creating them with what might be c
 <p><img alt="Indexing NFTs" src="img/uc-nft-indexing.png"/></p>
 <p>See:</p>
 <ul>
-<li><a href="install-clio-on-ubuntu.html">Clio setup</a> </li>
+<li><a href="install-clio-on-ubuntu.html">Clio setup</a></li>
 <li><a class="external-link" href="https://api.xrpldata.com/docs/static/index.html#/" target="_blank">XRPL Data API <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 <li><a class="external-link" href="https://docs.bithomp.com/#nft-xls-20" target="_blank">Bithomp <i aria-hidden="true" class="fa fa-external-link"></i></a></li>
 </ul>
-<!-- 
-[Clio setup](install-clio-on-ubuntu.html) 
+<!--
+[Clio setup](install-clio-on-ubuntu.html)
 
 [https://api.xrpldata.com/docs/static/index.html#/](https://api.xrpldata.com/docs/static/index.html#/)
 
@@ -788,6 +788,21 @@ Supplement Information [No link]
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -805,9 +820,95 @@ Supplement Information [No link]
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -815,7 +916,7 @@ Supplement Information [No link]
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -825,12 +926,12 @@ Supplement Information [No link]
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -859,64 +960,17 @@ Supplement Information [No link]
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

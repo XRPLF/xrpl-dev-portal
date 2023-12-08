@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/tokens.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/index.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -276,7 +276,6 @@
         <li class="nav-item level-2"><a class="nav-link" href="#community-credit">Community Credit</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#other-tokens">Other Tokens</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#token-properties">Token Properties</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#see-also">See Also</a></li>
       </ul>
   </div>
       </aside>
@@ -297,54 +296,26 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="tokens">Tokens<a aria-hidden="true" class="hover_anchor" href="#tokens"><i class="fa fa-link"></i></a></h1>
-<p>All assets other than XRP can be represented in the XRP Ledger as <strong>tokens</strong>. Standard tokens are tracked in relationships called <a href="trust-lines-and-issuing.html">trust lines</a> between accounts. Any account can issue tokens to other recipients who are willing to hold them, but you cannot unilaterally give tokens away to users who don't want them. Tokens can represent any type of value, including "stablecoins" backed by assets that exist outside of the ledger, purely digital tokens created specifically on the XRP Ledger, community credit, and more.</p>
+<p>All assets other than XRP can be represented in the XRP Ledger as <em>tokens</em>.</p>
+<p>Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Tokens can be used for <a href="cross-currency-payments.html">cross-currency payments</a> and can be traded in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
 <p class="devportal-callout note"><strong>Note:</strong> Tokens on the XRP Ledger have also been called "IOUs" (as in <a class="external-link" href="https://en.wikipedia.org/wiki/IOU" target="_blank">I-owe-you <i aria-hidden="true" class="fa fa-external-link"></i></a>) and "issued currencies" in the past. However, these terms are not preferred because they do not cover the full range of digital assets that XRP Ledger tokens can represent. <!-- STYLE_OVERRIDE: ious --></p>
-<p>Standard tokens are fungible: meaning, all units of that token are interchangeable and indistinguishable. Non-fungible tokens are also possible: see <a href="non-fungible-tokens.html">Non-Fungible Tokens</a> for details of the XRP Ledger's native support.</p>
-<p>Tokens can used for <a href="cross-currency-payments.html">cross-currency payments</a> and can be traded in the <a href="decentralized-exchange.html">decentralized exchange</a>.</p>
-<p>The balance on a trust line is negative or positive depending on which side you view it from. The side with the negative balance is called the "issuer" and can control some properties of how those tokens behave. When you send tokens to another account that isn't the issuer, those tokens "ripple" through the issuer and possibly other accounts using the same currency code. This is useful in some cases, but can cause unexpected and undesirable behavior in others. You can use the <a href="rippling.html">No Ripple flag</a> on trust lines to prevent those trust lines from rippling.</p>
+<p>Tokens can also be non-fungible. Non-fungible tokens (NFTs) serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.</p>
+<p>See <a href="trust-lines-and-issuing.html">Fungible Tokens</a> and <a href="non-fungible-tokens.html">Non-fungible Tokens</a>.</p>
 <h2 id="stablecoins">Stablecoins<a aria-hidden="true" class="hover_anchor" href="#stablecoins"><i class="fa fa-link"></i></a></h2>
-<p>A common model for tokens in the XRP Ledger is that an issuer holds assets of equivalent value outside of the XRP Ledger, and issues tokens representing that value on the ledger. This type of issuer is sometimes called a <em>gateway</em> because currency can move into and out of the XRP Ledger through their service. If the assets that back a token use the same amounts and denomination as the tokens in the ledger, that token can be considered a "stablecoin" because—in theory—the exchange rate between that token and its off-ledger representation should be stable at 1:1.</p>
-<p>A stablecoin issuer should offer <em>deposits</em> and <em>withdrawals</em> to exchange the tokens for the actual currency or asset in the world outside the XRP Ledger.</p>
-<p>In practice, the XRP Ledger is a computer system that cannot enforce any rules outside of itself, so stablecoins on the XRP Ledger depend on their issuer's integrity. If you can't count on the stablecoin's issuer to redeem your tokens for the real thing on demand, then you shouldn't expect the stablecoin to hold its value. As a user, you should be mindful of who's issuing the tokens: are they reliable, lawful, and solvent? If not, it's probably best not to hold those tokens.</p>
-<p>For more information, see <a href="stablecoin-issuer.html">Stablecoin Issuer</a>.</p>
+<p>Stablecoins are a common model for tokens in the XRP Ledger. The issuer holds assets of  value outside of the XRP Ledger, and issues tokens representing the equivalent value on the ledger.</p>
+<p>See <a href="stablecoins.html">Stablecoins</a>.</p>
 <h2 id="community-credit">Community Credit<a aria-hidden="true" class="hover_anchor" href="#community-credit"><i class="fa fa-link"></i></a></h2>
-<p>Another way you can use the XRP Ledger is for "community credit", a system where individuals who know each other can use the XRP Ledger to track who owes who else how much money. A powerful feature of the XRP Ledger is that it can automatically and atomically use these debts to settle payments through <a href="rippling.html">rippling</a>.</p>
-<p>For example, if Asheesh owes Marcus $20, and Marcus owes Bharath $50, Bharath can "pay" Asheesh $20 by canceling that much of Marcus's debt to him in exchange for canceling Asheesh's debt to Marcus. The reverse is also possible: Asheesh can pay Bharath through Marcus by increasing their respective debts. The XRP Ledger can settle complex chains of exchanges like this in a single transaction without the accounts in the middle needing to do anything manually.</p>
+<p>Another way you can use the XRP Ledger is for "community credit", a system where individuals who know each other can use the XRP Ledger to track who owes whom how much money. One feature of the XRP Ledger is that it can automatically and atomically use these debts to settle payments through <a href="rippling.html">rippling</a>.</p>
 <p>For more on this type of usage, see <a href="paths.html">paths</a>. <!-- --></p>
 <h2 id="other-tokens">Other Tokens<a aria-hidden="true" class="hover_anchor" href="#other-tokens"><i class="fa fa-link"></i></a></h2>
 <p>There are other use cases for tokens issued in the XRP Ledger. For example, you can create an "Initial Coin Offering" (ICO) by issuing a fixed amount of currency to a secondary address, then "throwing away the key" to the issuer.</p>
-<p class="devportal-callout warning"><strong>Warning:</strong> ICOs may be <a class="external-link" href="https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings" target="_blank">regulated as securities <i aria-hidden="true" class="fa fa-external-link"></i></a> in the USA. <!-- SPELLING_IGNORE: ico, icos --></p>
+<p class="devportal-callout warning"><strong>Warning:</strong> ICOs might be <a class="external-link" href="https://www.sec.gov/oiea/investor-alerts-and-bulletins/ib_coinofferings" target="_blank">regulated as securities <i aria-hidden="true" class="fa fa-external-link"></i></a> in the USA. <!-- SPELLING_IGNORE: ico, icos --></p>
 <p>Be sure to research the relevant regulations before engaging in any financial service business.</p>
 <h2 id="token-properties">Token Properties<a aria-hidden="true" class="hover_anchor" href="#token-properties"><i class="fa fa-link"></i></a></h2>
-<p>Tokens in the XRP Ledger are <a href="currency-formats.html#comparison">fundamentally different than XRP</a>. Tokens always exist <em>in trust lines</em>, and all transfers of tokens move along trust lines. You cannot cause someone else's account to hold more of a token than the <em>limit</em> configured on their trust line. (You <em>can</em> cause your own trust line to go over the limit, for example by buying more of it in the <a href="decentralized-exchange.html">decentralized exchange</a> or by decreasing the limit after you already have a positive balance.)</p>
+<p>Tokens in the XRP Ledger are fundamentally different than XRP. Tokens always exist in <em>trust lines</em>, and all transfers of tokens move along trust lines. You cannot cause someone else's account to hold more of a token than the <em>limit</em> configured on their trust line. (You <em>can</em> cause your own trust line to go over the limit, for example by buying more of it in the decentralized exchange or by decreasing the limit after you already have a positive balance.)</p>
+<p>Anyone can issue tokens by sending a <a href="payment.html">Payment transaction</a> if the necessary trust lines are in place. You can "burn" tokens by sending them back to the issuer. In some cases, cross-currency payments or trades can also create more tokens according to an issuer's settings.</p>
+<p>Issuers have options with tokens that are not available with XRP. Issuers can charge a <a href="transfer-fees.html">transfer fee</a> that is automatically deducted when users transfer their tokens. Issuers can also define a <a href="ticksize.html">tick size</a> for exchanges rates involving their tokens. Both issuers and regular accounts can <a href="freezes.html">freeze</a> trust lines, which limits how the tokens in those trust lines can be used.</p>
 <p>Tokens use decimal (base-10) math with 15 digits of precision and an exponent that allows them to express very large values (up to 9999999999999999 × 10<sup>80</sup>) and very small values (down to 1.0 × 10<sup>-81</sup>).</p>
-<p>Anyone can issue tokens by sending a <a href="payment.html">Payment transaction</a> if the necessary trust lines are in place. You can "burn" tokens by sending them back to the issuer. In some cases, <a href="cross-currency-payments.html">cross-currency payments</a> or trades can also create more tokens according to an issuer's settings.</p>
-<p>Issuers can charge a <a href="transfer-fees.html">transfer fee</a> that is automatically deducted when users transfer their tokens. Issuers can also define a <a href="ticksize.html">tick size</a> for exchanges rates involving their tokens. Both issuers and regular accounts can <a href="freezes.html">freeze</a> trust lines, which limits how the tokens in those trust lines can be used. (None of these things applies to XRP.)</p>
-<p>For a tutorial of the technical steps involved in issuing a token, see <a href="issue-a-fungible-token.html">Issue a Fungible Token</a>.</p>
-<h2 id="see-also">See Also<a aria-hidden="true" class="hover_anchor" href="#see-also"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li><strong>Concepts:</strong><ul>
-<li><a href="what-is-xrp.html">What is XRP?</a></li>
-<li><a href="cross-currency-payments.html">Cross-Currency Payments</a></li>
-<li><a href="decentralized-exchange.html">Decentralized Exchange</a></li>
-</ul>
-</li>
-<li><strong>Tutorials:</strong><ul>
-<li><a href="issue-a-fungible-token.html">Issue a Fungible Token</a></li>
-<li><a href="look-up-transaction-results.html">Look Up Transaction Results</a></li>
-<li><a href="use-specialized-payment-types.html">Use Specialized Payment Types</a></li>
-</ul>
-</li>
-<li><strong>References:</strong><ul>
-<li><a href="payment.html">Payment transaction</a></li>
-<li><a href="trustset.html">TrustSet transaction</a></li>
-<li><a href="ripplestate.html">RippleState object</a></li>
-<li><a href="account_lines.html">account_lines method</a></li>
-<li><a href="account_currencies.html">account_currencies method</a></li>
-<li><a href="gateway_balances.html">gateway_balances method</a></li>
-</ul>
-</li>
-</ul>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -765,6 +736,21 @@
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -782,9 +768,95 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
+
+        <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -792,7 +864,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -802,12 +874,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -836,64 +908,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

@@ -258,7 +258,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/non-fungible-tokens.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nfts/index.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -272,9 +272,8 @@
     </div>
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#non-fungible-tokens">Non-Fungible Tokens</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#background">Background</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nfts-on-the-xrp-ledger">NFTs on the XRP Ledger</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftoken-lifecycle">NFToken Lifecycle</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-lifecycle">NFT Lifecycle</a></li>
       </ul>
   </div>
       </aside>
@@ -299,40 +298,24 @@
         <h1 id="non-fungible-tokens">Non-Fungible Tokens<a aria-hidden="true" class="hover_anchor" href="#non-fungible-tokens"><i class="fa fa-link"></i></a></h1>
 <p>The XRP Ledger natively supports non-fungible tokens (NFTs, or “nifties” in the vernacular).  Non-fungible tokens serve to encode ownership of unique physical, non-physical, or purely digital goods, such as works of art or in-game items.</p>
 <p><em>(Added by the <a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>.)</em></p>
-<h2 id="background">Background<a aria-hidden="true" class="hover_anchor" href="#background"><i class="fa fa-link"></i></a></h2>
-<p>The XRP Ledger offers support for <a href="tokens.html">tokens</a>. Such assets are, primarily, fungible.</p>
-<blockquote>
-<p>Fun·gi·ble /´fənjəbəl/ (adj) <!-- SPELLING_IGNORE: fənjəbəl --></p>
-<ol>
-<li>able to replace or be replaced by another identical item; mutually interchangeable. <!-- STYLE_OVERRIDE: identical --></li>
-</ol>
-</blockquote>
-<p>Fungible tokens can be traded between users for XRP or other issued assets on the XRP Ledger's decentralized exchange. This makes them ideal for payments.</p>
-<p>A good example of a fungible item might be a postage stamp. If you are standing around in 1919 and need to send a letter by airmail, you would buy a 24-cent stamp and affix it to your envelope. If you lost that stamp, you could use a different 24-cent stamp or use 2 10-cent stamps and 2 2-cent stamps. Very fungible.</p>
-<p><img alt="Jenny Stamps" src="img/nft-concepts1.png" title="Jenny Stamps"/></p>
-<p>But since you are standing around in 1919, you might be offered 24-cent airmail stamps where the aeroplane on the stamp is accidentally printed upside down. These are the world famous “Inverted Jenny” stamps. Only 100 were circulated on a single sheet of stamps, making them extremely rare and sought after. The current value of each mint condition stamp is appraised at over $1.5 million dollars.</p>
-<p><img alt="Jenny Stamps" src="img/nft-concepts2.png" title="Jenny Stamps"/></p>
-<p>Those stamps cannot be replaced by an ordinary 24-cent stamp. They have become <em>non-fungible</em>.</p>
 <p>To represent digital assets similar to these, use the XRP Ledger's Non-Fungible Tokens feature (sometimes referred to by its standards draft number, <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20 <i aria-hidden="true" class="fa fa-external-link"></i></a>).</p>
 <h2 id="nfts-on-the-xrp-ledger">NFTs on the XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#nfts-on-the-xrp-ledger"><i class="fa fa-link"></i></a></h2>
-<p>On the XRP Ledger, a non-fungible token is represented as a <a href="nftoken.html">NFToken</a> object. A <code>NFToken</code> is a unique, indivisible unit that is not used for payments. Users can mint (create), hold, buy, sell, and burn (destroy) such tokens.</p>
-<p>The ledger stores up to 32 <code>NFToken</code> objects owned by the same account in a single <a href="nftokenpage.html">NFTokenPage object</a> to save space. As a result, the owner's <a href="reserves.html">reserve requirement</a> for <code>NFToken</code> objects only increases when the ledger needs to make a new page to store additional tokens.</p>
-<p>Accounts can also name a broker, or "Authorized Minter", who can mint and sell <code>NFToken</code> objects on their behalf.</p>
-<p><code>NFToken</code> objects have several settings that are defined when the token is minted and cannot be changed later. These include:</p>
+<p>On the XRP Ledger, an NFT is represented as a <a href="nftoken.html">NFToken</a> object. An NFT is a unique, indivisible unit that is not used for payments. Users can mint (create), hold, buy, sell, and burn (destroy) NFTs.</p>
+<p>The ledger stores up to 32 NFTa owned by the same account in a single <a href="nftokenpage.html">NFTokenPage object</a> to save space. As a result, the owner's <a href="reserves.html">reserve requirement</a> for NFTs only increases when the ledger needs to make a new page to store additional tokens.</p>
+<p>Accounts can also name a <em>Broker</em> or an <em>Authorized Minter</em> who can sell or mint NFTs on their behalf.</p>
+<p>NFTs have several immutable settings that are defined when the token is minted. These include:</p>
 <ul>
-<li>Various identifying data that uniquely defines the token.</li>
-<li>Whether the issuer can burn the token regardless of who currently holds it.</li>
-<li>Whether the holder of the token can transfer it to others. (The <code>NFToken</code> can always be sent to or from the issuer directly.)<ul>
+<li>Identifying data that uniquely defines the token.</li>
+<li>Whether the issuer can burn the token, regardless of who currently holds it.</li>
+<li>Whether the holder of the token can transfer it to others. (An NFT can always be sent to or from the issuer directly.)</li>
 <li>If transfers are allowed, the issuer can charge a transfer fee as a percentage of the sale price.</li>
+<li>Whether the holder can sell the NFT for <a href="trust-lines-and-issuing.html">fungible token</a> amounts, or only for XRP.</li>
 </ul>
-</li>
-<li>Whether the holder can sell the <code>NFToken</code> for <a href="tokens.html">fungible token</a> amounts, or only for XRP.</li>
-</ul>
-<h2 id="nftoken-lifecycle"><code>NFToken</code> Lifecycle<a aria-hidden="true" class="hover_anchor" href="#nftoken-lifecycle"><i class="fa fa-link"></i></a></h2>
-<p>Anyone can create a new <code>NFToken</code> using the <a href="nftokenmint.html">NFTokenMint transaction</a> type. The <code>NFToken</code> lives on the <a href="nftokenpage.html">NFTokenPage object</a> of the issuing account. Either the owner or an interested party can send a <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a> to propose buying or selling the <code>NFToken</code>; the ledger tracks the proposed transfer as a <a href="nftokenoffer.html">NFTokenOffer object</a>, and deletes the <code>NFTokenOffer</code> when either side accepts or cancels the offer. If the <code>NFToken</code> is transferable, it can be traded multiple times between accounts.</p>
-<p>You can destroy a <code>NFToken</code> you own using the <a href="nftokenburn.html">NFTokenBurn transaction</a>. If the issuer minted the token with <code>tfBurnable</code> flag enabled, the issuer can also burn the token regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event which is used up at some point.)</p>
+<h2 id="nft-lifecycle">NFT Lifecycle<a aria-hidden="true" class="hover_anchor" href="#nft-lifecycle"><i class="fa fa-link"></i></a></h2>
+<p>Anyone can create a new NFT using the <a href="nftokenmint.html">NFTokenMint transaction</a>. The NFT lives on the <a href="nftokenpage.html">NFTokenPage object</a> of the issuing account. Either the owner or an interested party can send a <a href="nftokencreateoffer.html">NFTokenCreateOffer transaction</a> to propose buying or selling the NFT; the ledger tracks the proposed transfer as a <a href="nftokenoffer.html">NFTokenOffer object</a>, and deletes the <code>NFTokenOffer</code> when either side accepts or cancels the offer. If the NFT is transferable, it can be traded multiple times between accounts.</p>
+<p>You can destroy an NFT you own using the <a href="nftokenburn.html">NFTokenBurn transaction</a>. If the issuer minted the token with the <code>tfBurnable</code> flag enabled, the issuer can also burn the token, regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event that is used up at some point.)</p>
 <p><img alt="The NFT Lifecycle" src="img/nft-lifecycle.png" title="NFT Lifecycle Image"/></p>
-<p>For more info about transferring <code>NFToken</code> objects, see <a href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>.</p>
+<p>For more info about transferring NFTs, see <a href="non-fungible-token-transfers.html">Trading NFTs on the XRP Ledger</a>.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -753,6 +736,21 @@
     <a class="nav-link nav-leaf" href="payment-channels.html">Payment Channels</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -766,13 +764,99 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6">
       
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="trust-lines-and-issuing.html">Fungible Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item active">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="true" aria-controls="tree_nav_group_4_6_2"></a>
 
         <a class="nav-link" href="non-fungible-tokens.html">Non-Fungible Tokens</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column show " id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="nft-storage.html">NFT Payload Storage</a>
@@ -780,7 +864,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTokens on the XRP Ledger</a>
+    <a class="nav-link nav-leaf" href="non-fungible-token-transfers.html">Trading NFTs</a>
   </div>
 
       
@@ -790,12 +874,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch minting</a>
+    <a class="nav-link nav-leaf" href="nftoken-batch-minting.html">Batch Minting</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Account to Mint Your NFTs</a>
+    <a class="nav-link nav-leaf" href="nftoken-authorized-minting.html">Authorizing Another Minter</a>
   </div>
 
       
@@ -824,64 +908,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="trust-lines-and-issuing.html">Trust Lines and Issuing</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="authorized-trust-lines.html">Authorized Trust Lines</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="clawing-back-tokens.html">Clawing Back Tokens <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="freezes.html">Freezing Tokens</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="common-misconceptions-about-freezes.html">Common Misunderstandings about Freezes</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="rippling.html">Rippling</a>
-  </div>
-
-      
-  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="transfer-fees.html">Transfer Fees</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="paths.html">Paths</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="demurrage.html">Demurrage <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="decentralized-exchange.html">Decentralized Exchange</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="offers.html">Offers</a>

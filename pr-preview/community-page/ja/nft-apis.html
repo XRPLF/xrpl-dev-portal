@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>NFTのAPI - XRPL.org (日本語)</title>
+    <title>NFT APIs - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="NFTのAPI | XRPL.org (日本語)">
+    <meta property="og:title" content="NFT APIs | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/nft-apis.html" />
-    <meta property="og:description" content="専用のAPIを使用すると、有用なNFTメタデータにアクセスできます。" />
-    <meta name="description" content="専用のAPIを使用すると、有用なNFTメタデータにアクセスできます。" />
+    <meta property="og:description" content="Specialized APIs let you access useful NFT metadata." />
+    <meta name="description" content="Specialized APIs let you access useful NFT metadata." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['非代替性トークン, NFT']
+      "page_labels": ['Non-fungible Tokens, NFTs']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/concepts/tokens/nft-apis.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/nfts/nft-apis.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-非代替性トークン-nft">非代替性トークン, NFT</span>
-      <!-- TEMPLATE WARNING: no label landing found for "非代替性トークン, NFT" -->
+      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,12 +272,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#nftのapi">NFTのAPI</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftのオブジェクト">NFTのオブジェクト</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftのトランザクション">NFTのトランザクション</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#nftのリクエスト">NFTのリクエスト</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#nft-apis">NFT APIs</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-ledger-entries">NFT Ledger Entries</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-transactions">NFT Transactions</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#nft-requests">NFT requests</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#clio">Clio</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#clio特有のnftのリクエスト">Clio特有のNFTのリクエスト</a></li>
       </ul>
   </div>
       </aside>
@@ -297,58 +296,57 @@
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
     <li class="active breadcrumb-item"><a href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a></li>
-    <li class="active breadcrumb-item">NFTのAPI</li>
+    <li class="active breadcrumb-item">NFT APIs</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
+    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
+      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
+    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="nftのapi">NFTのAPI<a aria-hidden="true" class="hover_anchor" href="#nftのapi"><i class="fa fa-link"></i></a></h1>
-<p>このページでは、NFTに関連するトランザクションとリクエストを一覧でご紹介します。</p>
-<h2 id="nftのオブジェクト">NFTのオブジェクト<a aria-hidden="true" class="hover_anchor" href="#nftのオブジェクト"><i class="fa fa-link"></i></a></h2>
+        <h1 id="nft-apis">NFT APIs<a aria-hidden="true" class="hover_anchor" href="#nft-apis"><i class="fa fa-link"></i></a></h1>
+<p>This page lists the transactions and requests associated with NFTs as a handy reference.</p>
+<h2 id="nft-ledger-entries">NFT Ledger Entries<a aria-hidden="true" class="hover_anchor" href="#nft-ledger-entries"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><a href="nftoken.html">NFToken</a>データ型 - 台帳に保存されるNFTのオブジェクト。</li>
-<li>レジャーオブジェクト<ul>
-<li><a href="nftokenoffer.html">NFTokenOfferオブジェクト</a> - NFTを売買するためのオファー。</li>
-<li><a href="nftokenpage.html">NFTokenPageオブジェクト</a> - NFTページは最大32個のNFTオブジェクトを保持します。実際には、各NFTページは通常16～24個のNFTを保持します。</li>
+<li><a href="nftoken.html">NFToken</a> data type - The NFT object stored on the ledger.</li>
+<li>Ledger Entries<ul>
+<li><a href="nftokenoffer.html">NFTokenOffer entry</a> - An offer to buy or sell an NFT.</li>
+<li><a href="nftokenpage.html">NFTokenPage entry</a> - An NFT page holds a maximum of 32 NFTs. In practice, each NFT page typically holds 16-24 NFTs.</li>
 </ul>
 </li>
 </ul>
-<h2 id="nftのトランザクション">NFTのトランザクション<a aria-hidden="true" class="hover_anchor" href="#nftのトランザクション"><i class="fa fa-link"></i></a></h2>
+<h2 id="nft-transactions">NFT Transactions<a aria-hidden="true" class="hover_anchor" href="#nft-transactions"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li>
-<p><a href="nftokenmint.html">NFTokenMint</a> - NFTをミントする。</p>
+<p><a href="nftokenmint.html">NFTokenMint</a> - Create an NFT.</p>
 </li>
 <li>
-<p><a href="nftokencreateoffer.html">NFTokenCreateOffer</a> - NFTを売買するためのオファーを作成します。</p>
+<p><a href="nftokencreateoffer.html">NFTokenCreateOffer</a> - Create an offer to buy or sell an NFT.</p>
 </li>
 <li>
-<p><a href="nftokencanceloffer.html">NFTokenCancelOffer</a> - NFTを売買するためのオファーをキャンセルします。</p>
+<p><a href="nftokencanceloffer.html">NFTokenCancelOffer</a> - Cancel an offer to buy or sell an NFT.</p>
 </li>
 <li>
-<p><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a> - NFTを売買するためのオファーを承認します。</p>
+<p><a href="nftokenacceptoffer.html">NFTokenAcceptOffer</a> - Accept an offer to buy or sell an NFT.</p>
 </li>
 <li>
-<p><a href="nftokenburn.html">NFTokenBurn</a> - 永久的にNFTをバーンします。</p>
+<p><a href="nftokenburn.html">NFTokenBurn</a> - Permanently destroy an NFT.</p>
 </li>
 </ul>
-<h2 id="nftのリクエスト">NFTのリクエスト<a aria-hidden="true" class="hover_anchor" href="#nftのリクエスト"><i class="fa fa-link"></i></a></h2>
+<h2 id="nft-requests">NFT requests<a aria-hidden="true" class="hover_anchor" href="#nft-requests"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><a href="account_nfts.html">account_nftsメソッド</a> - アカウントが所有するNFTのリストを取得します。</li>
-<li><a href="nft_buy_offers.html">nft_buy_offersメソッド</a> - 指定したNFTokenオブジェクトの購入オファーのリストを取得します。</li>
-<li><a href="nft_sell_offers.html">nft_sell_offersメソッド</a> - 指定したNFTokenオブジェクトの売却オファーのリストを取得します。</li>
-<li><a href="subscribe.html">subscribeメソッド</a> - 特定のテーマに関する最新情報をリッスンします。例えば、マーケットプレイスは、自身のプラットフォームに出品されているNFTのステータスに関する最新情報をリアルタイムで提供することができます。</li>
-<li><a href="unsubscribe.html">unsubscribeメソッド</a> - 特定のテーマに関する最新情報のリッスンを停止します。</li>
+<li><a href="account_nfts.html">account_nfts method</a> - Get a list of non-fungible tokens owned by an account.</li>
+<li><a href="nft_buy_offers.html">nft_buy_offers method</a> - Get a list of buy offers for a specified NFToken object.</li>
+<li><a href="nft_sell_offers.html">nft_sell_offers method</a> - Get a list of sell offers for a specified NFToken object.</li>
+<li><a href="subscribe.html">subscribe method</a> - Listen for updates about a particular subject. For example, a marketplace can publish real-time updates on the status of NFTs listed on their platform.</li>
+<li><a href="unsubscribe.html">unsubscribe method</a> - Stop listening for updates about an NFT.</li>
 </ul>
 <h2 id="clio">Clio<a aria-hidden="true" class="hover_anchor" href="#clio"><i class="fa fa-link"></i></a></h2>
-<p>Clioサーバは、キャッシュに基づいて情報のリクエストを処理することで、ネットワーク全体のパフォーマンスを向上させ、XRP Ledger上のバリデータをトランザクション処理に集中させることができます。一般的なXRP Ledgerのリクエストタイプに加えて、Clioサーバはより詳細なレスポンスを提供する追加のリクエストタイプを処理します。</p>
-<h3 id="clio特有のnftのリクエスト">Clio特有のNFTのリクエスト<a aria-hidden="true" class="hover_anchor" href="#clio特有のnftのリクエスト"><i class="fa fa-link"></i></a></h3>
+<p><a href="the-clio-server.html">Clio servers</a> also provide the following APIs related to NFTs:</p>
 <ul>
-<li><a href="nft_info.html">nft_info</a> - 指定されたNFTに関する現在のステータスを取得します。</li>
-<li><a href="nft_history.html">nft_history</a> - 指定されたNFTの過去のトランザクションメタデータを取得します。</li>
+<li><a href="nft_info.html">nft_info</a> - Get current status information about the specified NFT.</li>
+<li><a href="nft_history.html">nft_history</a> - Get past transaction metadata for the specified NFT.</li>
 </ul>
-<!-- 
-[nfts_by_issuer](nfts_by_issuer.html) - 指定した発行者が作成したNFTの一覧を取得します。
--->
-<p>パブリックClioサーバにアクセスするには、そのURLとClioポート（通常51233）にリクエストを送信します。パブリックClio APIサーバには、SLAも優先的に処理する責任もありません。ビジネスユースケースで継続的な監視や情報リクエストが必要な場合は、独自のClioサーバインスタンスをセットアップすることを検討してください。<a href="install-clio-on-ubuntu.html">UbuntuにClioをインストール</a>をご覧ください。</p>
+<p>You can access a public Clio server by sending a request to its URL and Clio port (typically 51233). Public Clio API servers come with no SLAs nor any responsibility to be fixed on priority. If your business use case requires continual monitoring and information requests, consider setting up your own Clio server instance. See <a href="install-clio-on-ubuntu.html">install-clio-on-ubuntu</a>.</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -769,6 +767,21 @@
     <a class="nav-link nav-leaf" href="/ja/payment-channels.html">Payment Channel</a>
   </div>
 
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+  </div>
+
     </nav>
 
   </div>
@@ -782,13 +795,99 @@
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6">
       
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
+
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
+
+        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_4"></a>
+
+        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_4">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/demurrage.html">デマレージ <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
+      
   <div class="nav-item active-parent">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="true" aria-controls="tree_nav_group_4_6_2"></a>
 
         <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
+    <nav class="nav flex-column show " id="tree_nav_group_4_6_2">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/nft-storage.html">NFTペイロードのストレージ</a>
@@ -831,48 +930,11 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
   </div>
 
     </nav>
 
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/authorized-trust-lines.html">認可トラストライン</a>
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/clawing-back-tokens.html">トークンの回収 <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_5" aria-expanded="false" aria-controls="tree_nav_group_4_6_5"></a>
-
-        <a class="nav-link" href="/ja/freezes.html">トークンの凍結</a>
-
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_5">
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/common-misconceptions-about-freezes.html">トークンの凍結に関するよくある誤解</a>
-  </div>
-
-    </nav>
-
-  </div>
-
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rippling.html">Rippling</a>
   </div>
 
       
@@ -882,22 +944,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/paths.html">パス</a>
-  </div>
 
-      
-  <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/demurrage.html">デマレージ <span class="status removed" title="This page describes a legacy feature that has been removed."><i class="fa fa-trash-o"></i></span></a>
-  </div>
-
-      
-  <div class="nav-item ">
-
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_10" aria-expanded="false" aria-controls="tree_nav_group_4_6_10"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_4" aria-expanded="false" aria-controls="tree_nav_group_4_6_4"></a>
 
         <a class="nav-link" href="/ja/decentralized-exchange.html">分散型取引所</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_10">
+    <nav class="nav flex-column collapse" id="tree_nav_group_4_6_4">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/offers.html">オファー</a>
@@ -1536,7 +1588,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_1_2_2" aria-expanded="false" aria-controls="tree_nav_group_6_1_2_2"></a>
 
-        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーオブジェクトのタイプ</a>
+        <a class="nav-link" href="/ja/ledger-entry-types.html">レジャーエントリのタイプ</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_6_1_2_2">
       
@@ -1981,7 +2033,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">Rate Limiting</a>
+    <a class="nav-link nav-leaf" href="/ja/rate-limiting.html">レート制限</a>
   </div>
 
       
@@ -2562,7 +2614,7 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_6_3_4">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/health-check.html">Health Check</a>
+    <a class="nav-link nav-leaf" href="/ja/health-check.html">ヘルスチェック</a>
   </div>
 
       
@@ -2572,7 +2624,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/validator-list.html">Validator List Method</a>
+    <a class="nav-link nav-leaf" href="/ja/validator-list.html">バリデータリストメソッド</a>
   </div>
 
     </nav>
