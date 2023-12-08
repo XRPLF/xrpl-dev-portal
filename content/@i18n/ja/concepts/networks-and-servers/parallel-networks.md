@@ -33,7 +33,7 @@ Ripple社は、TestnetとDevnetでメインサーバーを運用しています�
 ## 関連項目
 
 - **ツール:**
-  - [XRP Testnet Faucet](xrp-testnet-faucet.html)
+  - [XRP Testnet Faucet](xrp-test-net-faucet.html)
 - **コンセプト:**
   - [コンセンサスについて](consensus.html)
   - [Amendment](amendments.html)
