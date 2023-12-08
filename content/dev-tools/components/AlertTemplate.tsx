@@ -1,5 +1,6 @@
-import clsx = require('clsx');
+import clsx from 'clsx'
 import * as React from 'react';
+import { useTranslate } from '@portal/hooks';
   
 const alertStyle = {
   position: "relative",
@@ -29,11 +30,12 @@ interface AlertTemplateProps {
 }
   
 export default function AlertTemplate ({ message, options, style, close }: AlertTemplateProps): React.JSX.Element {
+  const { translate } = useTranslate()
   return(
     <div className={clsx("bootstrap-growl alert alert-dismissible", typeToClass(options.type))} style={{ ...alertStyle, ...style }}>
       <button className="close" data-dismiss="alert" type="button" onClick={close}>
         <span aria-hidden="true">×</span>
-        <span className="sr-only">Close</span>
+        <span className="sr-only">{translate("Close")}</span>
       </button>
       {message}
     </div>

@@ -139,7 +139,7 @@ const devTools = [
   },
   {
     title: 'Transaction Sender',
-    link: './dev-tools/tx-sender.html',
+    link: './tx-sender.html',
     description:
       'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
   },

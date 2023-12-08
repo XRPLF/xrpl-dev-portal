@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react'
 import { useTranslate } from '@portal/hooks';
 
-import AlertTemplate from './AlertTemplate';
+import AlertTemplate from './components/AlertTemplate';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import { useAlert } from 'react-alert'
 
@@ -10,10 +10,10 @@ import { type Client, type Wallet } from 'xrpl'
 
 import { errorNotif, SubmitConstData, isoTimeToRippleTime, timeout, submitAndUpdateUI } from './utils';
 
-import { InitButton } from './InitButton';
-import { DestinationAddressInput } from './DestinationAddressInput';
-import { StatusSidebar } from './StatusSidebar';
-import { TransactionButton } from './TransactionButton';
+import { InitButton } from './components/InitButton';
+import { DestinationAddressInput } from './components/DestinationAddressInput';
+import { StatusSidebar } from './components/StatusSidebar';
+import { TransactionButton } from './components/TransactionButton';
 
 async function onClickCreateEscrow(
     submitConstData: SubmitConstData,
@@ -167,10 +167,7 @@ function TxSenderBody(): React.JSX.Element {
     }
     
     return (
-        <div className="row">
-            {/* TODO: Once xrpl.js 3.0 is released, replace this with a direct xrpl.js import */}
-            <script src="https://unpkg.com/xrpl@2.5.0-beta.0/build/xrpl-latest-min.js" async />
-            
+        <div className="row">            
             <StatusSidebar balance={balance} sendingWallet={sendingWallet} connectionReady={connectionReady} txHistory={txHistory}/>
             
             <main className="main col-md-7 col-lg-6 order-md-3 page-tx-sender" role="main" id="main_content_body">

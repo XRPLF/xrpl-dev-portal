@@ -5,7 +5,7 @@ import { clsx } from 'clsx'
 
 import { type Transaction, type Wallet } from 'xrpl'
 
-import { SubmitConstData, submitAndUpdateUI, canSendTransaction } from './utils';
+import { SubmitConstData, submitAndUpdateUI, canSendTransaction } from '../utils';
 
 
 export interface TransactionButtonProps {

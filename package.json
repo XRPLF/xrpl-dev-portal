@@ -15,7 +15,7 @@
     "lottie-react": "^2.4.0",
     "moment": "^2.29.4",
     "react-alert": "^7.0.3",
-    "xrpl": "^2.13.0"
+    "xrpl": "^3.0.0-beta.1"
   },
   "overrides": {
     "react": "^17.0.2"

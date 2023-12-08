@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
+import { isValidAddress } from 'xrpl'
 
 function onDestinationAddressChange(
     event: React.ChangeEvent<HTMLInputElement>, 
@@ -9,8 +10,7 @@ function onDestinationAddressChange(
 ): void {
     const newAddress = event.target.value
     setDestinationAddress(newAddress)
-    // @ts-expect-error - xrpl is guaranteed to be defined by the time this field is changed.
-    setIsValidDestinationAddress(xrpl.isValidAddress(newAddress))
+    setIsValidDestinationAddress(isValidAddress(newAddress))
 }
 
 export interface DestinationAddressInputProps {
@@ -43,7 +43,8 @@ export function DestinationAddressInput(
                 (destinationAddress !== defaultDestinationAddress) && (isValidDestinationAddress ? "is-valid" : "is-invalid"))}
                 id="destination_address" 
                 onChange={(event) => onDestinationAddressChange(event, setDestinationAddress, setIsValidDestinationAddress)}
-                aria-describedby="destination_address_help" defaultValue={destinationAddress} />
+                aria-describedby="destination_address_help" 
+                defaultValue={destinationAddress} />
             <small id="destination_address_help" className="form-text text-muted">
                 {translate("Send transactions to this XRP Testnet address")}
             </small>

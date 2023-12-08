@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
 
-import { type Client, type Wallet, type TxResponse,  } from 'xrpl'
-import { errorNotif, TESTNET_URL } from './utils'
+import { Client, type Wallet, type TxResponse, dropsToXrp } from 'xrpl'
+import { errorNotif, TESTNET_URL } from '../utils'
 
 
 export interface InitializationProps {
@@ -135,8 +135,7 @@ async function onInitClick(
     }
 
     console.log("Connecting to Testnet WebSocket...")
-    // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
-    const client = new xrpl.Client(TESTNET_URL)
+    const client = new Client(TESTNET_URL)
     client.on('connected', () => {
         setConnectionReady(true)
     })
@@ -152,8 +151,9 @@ async function onInitClick(
       const fundResponse = await client.fundWallet()
       const sendingWallet = fundResponse.wallet
       setSendingWallet(sendingWallet)
-      // @ts-expect-error - xrpl is imported via a script tag. TODO: Replace with real import once xrpl.js 3.0 is released.
-      setBalance(xrpl.dropsToXrp(fundResponse.balance))
+      // Using Number(...) can result in loss of precision since Number is smaller than the precision of XRP,
+      // but this shouldn't affect the learning tool as that much XRP is not given to any test account.
+      setBalance(Number(dropsToXrp(fundResponse.balance)))
       setIsInitEnabled(false)
       await setUpForPartialPayments(
         client, 
