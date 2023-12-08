@@ -1,14 +1,9 @@
 import * as React from 'react'
-import { type Client, type Wallet, type Transaction, type TransactionMetadata, type TxResponse } from 'xrpl'
+import { type Client, type Wallet, type Transaction, type TransactionMetadata, type TxResponse, SubmittableTransaction } from 'xrpl'
 import { clsx } from 'clsx'
 
 
 export const TESTNET_URL = "wss://s.altnet.rippletest.net:51233"
-
-export function isoTimeToRippleTime(isoSeconds: number): number {
-    const RIPPLE_EPOCH_DIFF = 0x386d4380
-    return Math.round(isoSeconds / 1000) - RIPPLE_EPOCH_DIFF
-}
 
 export function timeout(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -54,7 +49,7 @@ export interface SubmitConstData {
 export async function submitAndUpdateUI(
     submitConstData: SubmitConstData,
     sendingWallet: Wallet,
-    tx: Transaction,
+    tx: SubmittableTransaction,
     silent: boolean = false): Promise<TxResponse<Transaction> | undefined> {
 
     const { client, setBalance, setTxHistory } = submitConstData
@@ -87,7 +82,7 @@ export async function submitAndUpdateUI(
         logTx(tx.TransactionType, hash, finalResult, setTxHistory)
       }
 
-      setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
+      setBalance(await client.getXrpBalance(sendingWallet.address))
       return result
     } catch (error) {
       console.log(error)
@@ -95,7 +90,7 @@ export async function submitAndUpdateUI(
         errorNotif(submitConstData.alert, `Error signing & submitting ${tx.TransactionType} tx: ${error}`)
       }
 
-      setBalance(parseFloat(await client.getXrpBalance(sendingWallet.address)))
+      setBalance(await client.getXrpBalance(sendingWallet.address))
       return
     }
   }

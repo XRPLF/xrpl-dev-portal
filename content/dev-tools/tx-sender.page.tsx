@@ -6,9 +6,9 @@ import AlertTemplate from './components/AlertTemplate';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import { useAlert } from 'react-alert'
 
-import { type Client, type Wallet } from 'xrpl'
+import { isoTimeToRippleTime, type Client, type Wallet } from 'xrpl'
 
-import { errorNotif, SubmitConstData, isoTimeToRippleTime, timeout, submitAndUpdateUI } from './utils';
+import { errorNotif, SubmitConstData, timeout, submitAndUpdateUI } from './utils';
 
 import { InitButton } from './components/InitButton';
 import { DestinationAddressInput } from './components/DestinationAddressInput';
@@ -33,7 +33,7 @@ async function onClickCreateEscrow(
         return
     }
 
-    const finishAfter = isoTimeToRippleTime(new Date().getTime()) + durationSeconds
+    const finishAfter = isoTimeToRippleTime(new Date()) + durationSeconds
 
     const escrowCreateResponse = await submitAndUpdateUI(submitConstData, sendingWallet, {
         TransactionType: "EscrowCreate",
@@ -52,7 +52,7 @@ async function onClickCreateEscrow(
 
         let latestCloseTime = -1
         while (latestCloseTime <= finishAfter) {
-            const secondsLeft = (finishAfter - isoTimeToRippleTime(new Date().getTime()))
+            const secondsLeft = (finishAfter - isoTimeToRippleTime(new Date()))
 
             setEscrowWidthPercent(Math.min(99, Math.max(0, (1-(secondsLeft / durationSeconds)) * 100)))
 
@@ -275,7 +275,7 @@ function TxSenderBody(): React.JSX.Element {
                                     Account: sendingWallet?.address,
                                     Destination: destinationAddress,
                                     Amount: "1000000",
-                                    FinishAfter:  isoTimeToRippleTime(new Date().getTime()) + finishAfter
+                                    FinishAfter:  isoTimeToRippleTime(new Date()) + finishAfter
                                 }}
                                 content=
                                 {{
