@@ -310,7 +310,7 @@
 <ul>
 <li>The basic building blocks of XRP Ledger-based applications.</li>
 <li>How to connect to the XRP Ledger using <code>xrpl-py</code>.</li>
-<li>How to get an account on the <a href="/dev-tools/xrp-faucets">Testnet</a> using <code>xrpl-py</code>.</li>
+<li>How to get an account on the <a href="xrp-testnet-faucet.html">Testnet</a> using <code>xrpl-py</code>.</li>
 <li>How to use the <code>xrpl-py</code> library to look up information about an account on the XRP Ledger.</li>
 <li>How to put these steps together to create a Python app.</li>
 </ul>
@@ -356,10 +356,10 @@
 </ul>
 <h3 id="2-get-account">2. Get account<a aria-hidden="true" class="hover_anchor" href="#2-get-account"><i class="fa fa-link"></i></a></h3>
 <p>To store value and execute transactions on the XRP Ledger, you need an account: a <a href="cryptographic-keys.html#キーの生成">set of keys</a> and an <a href="addresses.html">address</a> that's been <a href="accounts.html#アカウントの作成">funded with enough XRP</a> to meet the <a href="reserves.html">account reserve</a>. The address is the identifier of your account and you use the <a href="cryptographic-keys.html#キーの生成">private key</a> to sign transactions that you submit to the XRP Ledger.</p>
-<p>For testing and development purposes, you can use the <a href="/dev-tools/xrp-faucets">XRP Faucets</a> to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a <a href="secure-signing.html">secure signing method</a>. Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.</p>
+<p>For testing and development purposes, you can use the <a href="xrp-testnet-faucet.html">XRP Faucets</a> to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a <a href="secure-signing.html">secure signing method</a>. Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.</p>
 <p>To create and fund an account on the Testnet, <code>xrpl-py</code> provides the <a class="external-link" href="https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet" target="_blank"><code>generate_faucet_wallet</code> <i aria-hidden="true" class="fa fa-external-link"></i></a> method:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="c1"># Create a wallet using the testnet faucet:</span>
-<span class="c1"># https://xrpl.org//dev-tools/xrp-faucets</span>
+<span class="c1"># https://xrpl.org/xrp-testnet-faucet.html</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">generate_faucet_wallet</span>
 <span class="n">test_wallet</span> <span class="o">=</span> <span class="n">generate_faucet_wallet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
@@ -432,7 +432,7 @@
 
 
 <span class="c1"># Create a wallet using the testnet faucet:</span>
-<span class="c1"># https://xrpl.org//dev-tools/xrp-faucets</span>
+<span class="c1"># https://xrpl.org/xrp-testnet-faucet.html</span>
 <span class="kn">from</span> <span class="nn">xrpl.wallet</span> <span class="kn">import</span> <span class="n">generate_faucet_wallet</span>
 <span class="n">test_wallet</span> <span class="o">=</span> <span class="n">generate_faucet_wallet</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 

@@ -3,6 +3,7 @@ import { isFunction } from './type-helpers'
 import { FC } from 'react'
 import { useEffect, useState } from 'react'
 import React = require('react');
+import XRPLoader from '../components/XRPLoader';
 
 export const MIN_LOADER_MS = 1250
 export const DEFAULT_TIMEOUT = 1000
@@ -77,10 +78,8 @@ export const XRPLGuard: FC<{ testCheck?: () => boolean, children }> = ({
         ) : (
           children
         )
-      ) : (
-        <div id="loader">
-            <img alt="(loading)" className="throbber" src="/img/xrp-loader-96.png" />{translate("Loading...")}
-        </div>)}
+      ) : <XRPLoader message={translate("Loading...")}/>
+        }
     </>
   )
 }

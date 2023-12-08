@@ -345,7 +345,7 @@
 </table>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> この例では、Channelの公開鍵は支払人のマスターキーペアの公開鍵です。これは完全に安全であり有効です。また、支払人のみが異なるキーペアの公開鍵と秘密鍵を把握している場合に限り、そのキーペアを使用することも完全に安全であり有効です。 <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. --></p>
 <p>また、トランザクションの送信先<code>rippled</code>サーバーも必要です。このチュートリアルの例では、<code>rippled</code>サーバーがテストマシン（<code>localhost</code>）で稼働しており、このテストマシンはポート<strong>5005</strong>で非暗号化JSON-RPC APIエンドポイントに接続しています。</p>
-<p>実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する<a href="/dev-tools/xrp-faucets">XRP Ledger Testnet</a>のアドレスを使用できます。XRP Ledger Test Netを使用する場合、<code>http://localhost:5005/</code>ではなく<code>https://api.altnet.rippletest.net:51234</code>に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。</p>
+<p>実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する<a href="xrp-testnet-faucet.html">XRP Ledger Testnet</a>のアドレスを使用できます。XRP Ledger Test Netを使用する場合、<code>http://localhost:5005/</code>ではなく<code>https://api.altnet.rippletest.net:51234</code>に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。</p>
 <p>Payment Channelに使用できるXRPの額に制限はありません。このチュートリアルで使用されているサンプルの値では、Payment Channelで100 XRP（<code>100000000</code> drop）が少なくとも1日間は確保されます。</p>
 <h2 id="フローチャート">フローチャート<a aria-hidden="true" class="hover_anchor" href="#フローチャート"><i class="fa fa-link"></i></a></h2>
 <p>次の図は、Payment Channelのライフサイクルの概要を示します。</p>
