@@ -41,17 +41,17 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 関連項目:
 
-* [コンプライアンス指針](stablecoin-issuer.html#コンプライアンス指針) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
+* [コンプライアンス指針](stablecoin-compliance-guidelines.html) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
-* [XRP Ledgerへ送金するための要件](stablecoin-issuer.html#xrp-ledgerへ送金するための要件)
+<!-- * [XRP Ledgerへ送金するための要件](stablecoin-issuer.html#xrp-ledgerへ送金するための要件)
 
-*  [XRP Ledgerへの入金の要件](stablecoin-issuer.html#xrp-ledgerへの入金の要件)
+*  [XRP Ledgerへの入金の要件](stablecoin-issuer.html#xrp-ledgerへの入金の要件) -->
 
-* [注意事項](stablecoin-issuer.html#注意事項)
+* [注意事項](stablecoin-precautions.html)
 
 ### Partial Payments
 
-追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](stablecoin-issuer.html#不明な入金の返金)に便利です。
+追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](bouncing-payments.html)に便利です。
 
 #### Partial Paymentsに関する警告
 

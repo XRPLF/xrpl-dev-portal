@@ -1,12 +1,11 @@
 ---
-name: 代理Mint
 html: nftoken-authorized-minting.html
 parent: non-fungible-tokens.html
 blurb: NFTのMintを他のアカウントに代行してもらうことができます。
 labels:
  - 非代替性トークン, NFT
 ---
-# 他のアカウントでNFTを処理することを許可する
+# NFT処理を他のアカウントに委任
 
 各アカウントは、自分に代わってNFTをMintすることができる認可されたMinterを最大一人設定することができまます。認可Minter機能を利用することで、クリエイターは別のアカウントにNFTをMintさせることができ、より多くのNFTを作ることに集中することができます。
 

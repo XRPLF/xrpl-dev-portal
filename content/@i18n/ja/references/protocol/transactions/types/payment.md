@@ -33,6 +33,8 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 }
 ```
 
+[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
+
 {% include '_snippets/tx-fields-intro.ja.md' %}
 <!--{# fix md highlighting_ #}-->
 
@@ -64,7 +66,10 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 [クロスカレンシー（通貨間）決済]: cross-currency-payments.html
 [Partial payment]: partial-payments.html
 
+
 ## SendMaxおよびAmountで使用する特殊なissuerの値
+
+
 
 ほとんどの場合、XRP以外の[通貨額][]の`issuer`フィールドは、金融機関の[発行アドレス](account-types.html)を示しています。ただし、支払いを記述するにあたって、支払いの`Amount`フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
 
@@ -97,15 +102,15 @@ Payment型のトランザクションでは、資金供給のないアドレス�
 
 Payment型のトランザクションについては、[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)で以下の値が追加でサポートされます。
 
-| フラグの名前        | 16進値  | 10進値 | 説明                  |
-|:-----------------|:-----------|:--------------|:-----------------------------|
-| tfNoDirectRipple | 0x00010000 | 65536         | デフォルトパスを使用せず、`Paths`フィールドに含まれているパスのみ使用します。これによりトランザクションは強制的に裁定機会を活用することになります。ほとんどのクライアントでは、これは必要ありません。 |
-| tfPartialPayment | 0x00020000 | 131072        | `SendMax`を超えていないのに指定された`Amount`を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、[Partial Payments](partial-payments.html)を参照してください。 |
-| tfLimitQuality   | 0x00040000 | 262144        | すべての変換で、入力と出力との比率が`Amount`と`SendMax`との比率と同一であるか、さらに有利となるパスのみを採用します。詳細は、[クオリティの制限](#クオリティの制限)を参照してください。 |
+| フラグの名前         | 16進値        | 10進値        | 説明                  |
+|:-------------------|:-------------|:--------------|:-----------------------------|
+| `tfNoDirectRipple` | `0x00010000` | 65536         | デフォルトパスを使用せず、`Paths`フィールドに含まれているパスのみ使用します。これによりトランザクションは強制的に裁定機会を活用することになります。ほとんどのクライアントでは、これは必要ありません。 |
+| `tfPartialPayment` | `0x00020000` | 131072        | `SendMax`を超えていないのに指定された`Amount`を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、[Partial Payments](partial-payments.html)を参照してください。 |
+| `tfLimitQuality`   | `0x00040000` | 262144        | すべての変換で、入力と出力との比率が`Amount`と`SendMax`との比率と同一であるか、さらに有利となるパスのみを採用します。詳細は、[クオリティの制限](#クオリティの制限)を参照してください。 |
 
 ## Partial Payments
 
-Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](stablecoin-issuer.html#不明な入金の返金)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
+Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに[支払いを返金](bouncing-payments.html)する場合です。その一方で、成功したトランザクションの`Amount`フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。
 
 Partial Paymentsとは、**tfPartialPayment**フラグが有効になっている[Paymentトランザクション][]です。Partial Paymentsは、`SendMax`値を超える金額を送金することなく、`DeliverMin`フィールド以上の正の金額（`DeliverMin`が指定されていない場合、任意の正の金額）を送金する場合に成功します。
 

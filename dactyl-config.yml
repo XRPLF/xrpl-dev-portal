@@ -1025,22 +1025,28 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: concepts/payment-types/robustly-monitoring-for-payments.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/payment-types/robustly-monitoring-for-payments.md" 
+        targets:
             - ja
 
-        # TODO: translate
     -   md: concepts/payment-types/sending-payments-to-customers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/payment-types/sending-payments-to-customers.md"
+        targets:
             - ja
 
-        # TODO: translate
     -   md: concepts/payment-types/bouncing-payments.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/payment-types/bouncing-payments.md"
+        targets:
             - ja
 
     # Tokens ------------------------------------------------------------------
@@ -1057,7 +1063,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/fungible-tokens/index.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1069,30 +1074,44 @@ pages:
         targets:
             - ja
 
-# TODO - Translate all files under /stablecoins/ directory
     -   md: concepts/tokens/fungible-tokens/stablecoins/index.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/stablecoins/index.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/settings.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/stablecoins/settings.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/configuration.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/stablecoins/configuration.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/precautions.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/stablecoins/precautions.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/fungible-tokens/clawing-back-tokens.md
@@ -1182,7 +1201,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/nfts/authorizing-another-minter.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1191,7 +1209,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/nfts/running-an-nft-auction.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -1211,10 +1228,12 @@ pages:
         targets:
             - ja
 
-        # TODO: translate
     -   md: concepts/tokens/nfts/nft-apis.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/tokens/nfts/nft-apis.md"
+        targets:
             - ja
 
     -   md: concepts/tokens/transfer-fees.md
@@ -1270,7 +1289,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/decentralized-exchange/automated-market-makers.md"
-        outdated_translation: true
         targets:
             - ja
 

@@ -8,7 +8,6 @@ labels:
   - 分散型取引所
   - AMM
 ---
-
 # 自動マーケットメーカー
 _([AMM amendment][] :not_enabled:が必要です。)_
 
