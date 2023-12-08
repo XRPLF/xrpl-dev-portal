@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { useTranslate } from '@portal/hooks';
 import { clsx } from 'clsx'
 import { isValidAddress } from 'xrpl'
@@ -17,8 +18,6 @@ export interface DestinationAddressInputProps {
     defaultDestinationAddress: string, 
     destinationAddress: string, 
     setDestinationAddress: React.Dispatch<React.SetStateAction<string>>, 
-    isValidDestinationAddress: boolean, 
-    setIsValidDestinationAddress: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export function DestinationAddressInput(
@@ -26,11 +25,10 @@ export function DestinationAddressInput(
         defaultDestinationAddress, 
         destinationAddress, 
         setDestinationAddress, 
-        isValidDestinationAddress, 
-        setIsValidDestinationAddress
     } : DestinationAddressInputProps
 ): React.JSX.Element {
     const { translate } = useTranslate()
+    const [ isValidDestinationAddress, setIsValidDestinationAddress ] = useState(true)
     
     return (
     <div>

@@ -123,7 +123,6 @@ function TxSenderBody(): React.JSX.Element {
     // Manage the destinationAddress
     const defaultDestinationAddress = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
     const [destinationAddress, setDestinationAddress] = useState(defaultDestinationAddress)
-    const [isValidDestinationAddress, setIsValidDestinationAddress] = useState(true)
     
     const [isInitEnabled, setIsInitEnabled] = useState(true)
 
@@ -195,9 +194,8 @@ function TxSenderBody(): React.JSX.Element {
                             <DestinationAddressInput 
                                 {...{defaultDestinationAddress, 
                                 destinationAddress, 
-                                setDestinationAddress, 
-                                isValidDestinationAddress, 
-                                setIsValidDestinationAddress}}/>
+                                setDestinationAddress,
+                                }}/>
 
                             <h3>{translate("Send Transaction")}</h3>
                             
