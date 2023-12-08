@@ -112,9 +112,7 @@ blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This
 - Markdownファイルのテキストを折り返さないでください。
 - コードサンプルの場合、行は80文字以下になるようにしてください。
 - 迷ったら、[Ciro SantilliのMarkdownスタイルガイド (Writability Profile)](https://cirosantilli.com/markdown-style-guide/)に従ってください。
-- ランディングページはサブフォルダに入れ、フォルダと同じファイル名とします。例えば、"Accounts"ページグループのランディングページは`accounts/accounts.md`で、HTMLファイル名は`accounts.html`です。
-
-    **注意:** `index.md`は利用しないでください。
+- カテゴリ内のページはそのカテゴリの名前のサブフォルダにあるべきですが、（特にページのタイトルが親ディレクトリにもある単語を含んでいる場合は）あまり冗長でなく、ファイル名`index.md`とフォルダ名に似たタイトルを持つべきです。例えば、「プロトコルリファレンス」のインデックスページは`references/protocol/index.md`です。
 
 - Markdownやコードサンプルでは、インデントにタブ文字を使用しないでください。**JavaScript**のコードサンプルでは、1字下げにつき2個のスペースを使用してください。
 
