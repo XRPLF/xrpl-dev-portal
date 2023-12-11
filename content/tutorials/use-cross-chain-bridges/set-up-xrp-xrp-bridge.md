@@ -7,9 +7,11 @@ labels:
 ---
 # Set Up an XRP-XRP Bridge
 
-<embed src="/snippets/_xchain-bridges-disclaimer.md" />
+_(Requires the [XChainBridge amendment][] :not_enabled:)_
 
-Setting up an XRP-XRP bridge on a new issuing chain is somewhat complex because there are no accounts on the issuing chain, even for witnesses. The issuing chain must use its genesis account as a door account to submit attestations and create transaction submission accounts for witnesses.
+Setting up an XRP-XRP bridge enables you to move XRP between chains. The set up requires using the genesis account on the issuing chain as a door account to submit attestations and create transaction submission accounts for witnesses.
+
+**Note**: The code samples on this page illustrate how a bridge was set up between *Devnet* and *Sidechain-Devnet*, using a supported [client library](client-libraries.html) to query and submit transactions. This bridge is already created, so the process can't be reproduced on these networks.
 
 
 ## Prerequisites
@@ -21,35 +23,212 @@ Setting up an XRP-XRP bridge on a new issuing chain is somewhat complex because 
 
 ## Steps
 
-1. Submit an `XChainCreateBridge` transaction from the door account on the locking chain.
+### 1. Connect to the locking chain (Devnet) and issuing chain (Sidechain-Devnet).
 
-    **Note:** The `MinAccountCreateAmount` value should at least be equal to the account reserve on the issuing chain.
+```javascript
+const xrpl = require('xrpl')
 
-2. Submit a `SignerListSet` transaction from the door account on the locking chain, using the witnesses' signing keys as the signers.
+const WS_URL_lockingchain = 'wss://s.devnet.rippletest.net:51233/' // Locking chain
+const WS_URL_issuingchain = 'wss://sidechain-net2.devnet.rippletest.net:51233/' // Issuing chain
 
-4. Disable the master key on the locking chain's door account with an `AccountSet` transaction.
+// Define the XChainBridge
+const xchainbridge = {
+  "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", // Locking chain door account
+  "LockingChainIssue": {
+    "currency": "XRP"
+  },
+  "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", // Use the genesis address hardcoded in rippled
+  "IssuingChainIssue": {
+    "currency": "XRP"
+  }
+}
 
-5. Submit an `XChainCreateBridge` transaction from the genesis account on the issuing chain.
+async function main() {
+  // Define the network clients.
+  const client_lockingchain = new xrpl.Client(WS_URL_lockingchain)
+  await client_lockingchain.connect()
 
-6. Submit `XChainAccountCreateCommit` transactions from the witnesses' locking chain accounts to create corresponding accounts on the issuing chain.
+  const client_issuingchain = new xrpl.Client(WS_URL_issuingchain)
+  await client_issuingchain.connect()
 
-7. Create an attestation for each `XChainAccountCreateCommit` transaction. These attestations must be signed by the genesis seed.
+  // ... custom code goes here
 
-    **Note:** This can also be done by a witness server that is set up to not submit transactions.
+  // Disconnect when done (If you omit this, Node.js won't end the process)
+  await client_lockingchain.disconnect()
+  await client_issuingchain.disconnect()
+}
 
-8.  Submit the attestations with the `XChainAddAccountCreateAttestation` transaction on the issuing chain, using the genesis account.
+main()
+```
 
-9.  Submit a `SignerListSet` transaction from the genesis account on the issuing chain, using the witnesses' signing keys as the signers.
+### 2. Submit an `XChainCreateBridge` transaction from the door account on the locking chain.
 
-10. Disable the master key on the issuing chain's genesis account with an `AccountSet` transaction.
+```javascript
+  const wallet_lockingchain = xrpl.Wallet.fromSeed('s████████████████████████████') // Locking chain door account
+  const xchaincreatebridge_lockingchain = await client_lockingchain.submitAndWait({
+    "TransactionType": "XChainCreateBridge",
+    "Account": wallet_lockingchain.address,
+    "XChainBridge": xchainbridge,
+  "SignatureReward": 200,
+  "MinAccountCreateAmount": 1000000 // This value should at least be equal to the account reserve on the issuing chain.
+  }, {autofill: true, wallet: wallet_lockingchain})
+```
 
+### 3. Submit a `SignerListSet` transaction from the door account on the locking chain.
 
-## See Also
+```javascript
+  const signerlistset_lockingchain = await client_lockingchain.submitAndWait({
+    "TransactionType": "SignerListSet",
+    "Account": wallet_lockingchain.address,
+    "Fee": "12",
+    "SignerQuorum": 2,    
+    // Use the witness servers' submitting accounts on the locking chain.
+    "SignerEntries": [
+        {
+            "SignerEntry": {
+                "Account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+                "SignerWeight": 1
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v",
+                "SignerWeight": 1
+            }
+        }
+    ]
+  }, {autofill: true, wallet: wallet_lockingchain})
+```
 
-- **Transactions:**
-  - [AccountSet](https://xrpl.org/accountset.html)
-  - [SignerListSet](https://xrpl.org/signerlistset.html)
-  - [XChainCreateBridge](../transaction-types/xchaincreatebridge.md)
-  - [XChainAccountCreateCommit](../transaction-types/xchainaccountcreatecommit.md)
-  - [XChainAddAccountCreateAttestation](../transaction-types/xchainaddaccountcreateattestation.md)
-- [List of Parallel Networks](../parallel-networks-list.md)
+### 4. Disable the master key on the locking chain's door account with an `AccountSet` transaction.
+
+```javascript
+const disablekey_lockingchain = await client_lockingchain.submitAndWait({
+    "TransactionType": "AccountSet",
+    "Account": wallet_lockingchain.address,
+    "SetFlag": 4
+  }, {autofill: true, wallet: wallet_lockingchain})
+```
+
+### 5. Submit an `XChainCreateBridge` transaction from the genesis account on the issuing chain.
+
+```javascript
+  const wallet_issuingchain = xrpl.Wallet.fromSeed('snoPBrXtMeMyMHUVTgbuqAfg1SUTb') // Use the genesis secret hardcoded in rippled.
+  const xchaincreatebridge_issuingchain = await client_issuingchain.submitAndWait({
+    "TransactionType": "XChainCreateBridge",
+    "Account": wallet_issuingchain.address,
+    "XChainBridge": xchainbridge,
+  "SignatureReward": 200,
+  "MinAccountCreateAmount": 1000000
+  }, {autofill: true, wallet: wallet_issuingchain})
+```
+
+### 6. Submit `XChainAccountCreateCommit` transactions from the witnesses' locking chain accounts to create corresponding accounts on the issuing chain.
+
+```javascript
+  const wallet_witness_1 = xrpl.Wallet.fromSeed('s████████████████████████████') // Witness server 1 from `SignerListSet`: rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW
+  const wallet_witness_2 = xrpl.Wallet.fromSeed('s████████████████████████████') // Witness server 2 from `SignerListSet`: rUpy3eEg8rqjqfUoLeBnZkscbKbFsKXC3v
+  
+  const xchainaccountcreatecommit_witness_1 = await client_lockingchain.submitAndWait({
+    "TransactionType": "XChainAccountCreateCommit",
+    "Account": wallet_witness_1.address,
+    "Destination": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo", // The account to create and fund for witness 1 on the issuing chain.
+    "TransactionType": "XChainAccountCreateCommit",
+    "Amount": "20000000",
+    "SignatureReward": "100",
+    "XChainBridge": xchainbridge
+  }, {autofill: true, wallet: wallet_witness_1})
+
+    const xchainaccountcreatecommit_witness_2 = await client_lockingchain.submitAndWait({
+    "TransactionType": "XChainAccountCreateCommit",
+    "Account": wallet_witness_2.address,
+    "Destination": "rJMfWNVbyjcCtds8kpoEjEbYQ41J5B6MUd", // The account to create and fund for witness 2 on the issuing chain.
+    "TransactionType": "XChainAccountCreateCommit",
+    "Amount": "20000000",
+    "SignatureReward": "100",
+    "XChainBridge": xchainbridged
+  }, {autofill: true, wallet: wallet_witness_1})
+```
+
+### 7. Submit attestations for each `XChainAccountCreateCommit` transaction.
+
+Use the `XChainAddAccountCreateAttestation` transaction to submit each attestation on the issuing chain. Sign these transactions with the genesis account on the issuing chain.
+
+```javascript
+  // Witness 1 attestation
+  const xchainaddaccountcreateattestation_witness_1 = await client_issuingchain.submitAndWait({
+    "TransactionType": "XChainAddAccountCreateAttestation",
+    "Account": wallet_issuingchain.address,
+    "OtherChainSource": wallet_witness_1.address,
+    "Destination": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo",
+    "Amount": "2000000000",
+    "PublicKey": wallet_witness_1.publicKey,
+    "Signature": xchainaccountcreatecommit_witness_1["result"]["TxnSignature"],
+    "WasLockingChainSend": 1,
+    "AttestationRewardAccount": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo",
+    "AttestationSignerAccount": wallet_witness_1.address,
+    "XChainAccountCreateCount": "1",
+    "SignatureReward": "204",
+    "XChainBridge": xchainbridge,
+    "Fee": "20"
+  }, {autofill: true, wallet: wallet_issuingchain})
+
+  // Witness 2 attestation
+    const xchainaddaccountcreateattestation_witness_2 = await client_issuingchain.submitAndWait({
+    "TransactionType": "XChainAddAccountCreateAttestation",
+    "Account": wallet_issuingchain.address,
+    "OtherChainSource": wallet_witness_2.address,
+    "Destination": "rJMfWNVbyjcCtds8kpoEjEbYQ41J5B6MUd",
+    "Amount": "2000000000",
+    "PublicKey": wallet_witness_2.publicKey,
+    "Signature": xchainaccountcreatecommit_witness_2["result"]["TxnSignature"],
+    "WasLockingChainSend": 1,
+    "AttestationRewardAccount": "rJMfWNVbyjcCtds8kpoEjEbYQ41J5B6MUd",
+    "AttestationSignerAccount": wallet_witness_2.address,
+    "XChainAccountCreateCount": "1",
+    "SignatureReward": "204",
+    "XChainBridge": xchainbridge,
+    "Fee": "20"
+  }, {autofill: true, wallet: wallet_issuingchain})
+```
+
+### 8. Submit a `SignerListSet` transaction from the genesis account on the issuing chain, using the witnesses' signing keys as the signers.
+
+```javascript
+  const signerlistset_issuingchain = await client_issuingchain.submitAndWait({
+    "TransactionType": "SignerListSet",
+    "Account": wallet_issuingchain.address,
+    "Fee": "12",
+    "SignerQuorum": 2,    
+    // Use the witness servers' submitting accounts on the issuing chain created in step 7
+    "SignerEntries": [
+        {
+            "SignerEntry": {
+                "Account": "rD323VyRjgzzhY4bFpo44rmyh2neB5d8Mo",
+                "SignerWeight": 1
+            }
+        },
+        {
+            "SignerEntry": {
+                "Account": "rJMfWNVbyjcCtds8kpoEjEbYQ41J5B6MUd",
+                "SignerWeight": 1
+            }
+        }
+    ]
+  }, {autofill: true, wallet: wallet_issuingchain})
+```
+
+### 9. Disable the master key on the issuing chain's genesis account with an `AccountSet` transaction.
+
+```javascript
+const disablekey_issuingchain = await client_issuingchain.submitAndWait({
+    "TransactionType": "AccountSet",
+    "Account": wallet_issuingchain.address,
+    "SetFlag": 4
+  }, {autofill: true, wallet: wallet_issuingchain})
+```
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

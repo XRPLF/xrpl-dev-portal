@@ -7,18 +7,17 @@ labels:
 ---
 # Set Up an IOU-IOU Bridge
 
-<embed src="/snippets/_xchain-bridges-disclaimer.md" />
+_(Requires the [XChainBridge amendment][] :not_enabled:)_
 
 ## Prerequisites
 
 - An XRP-XRP bridge must be set up between the locking and issuing chain.
 - Ensure the witnesses' transaction submission accounts are funded on the locking and issuing chains.
-- Door accounts exist for the bridge on the locking and issuing chains.
-
+- You must issue a fungible token to use. See: [Issue a Fungible Token](issue-a-fungible-token.html)
 
 ## Steps
 
-1. Submit an `XChainCreateBridge` transaction from the door account on the locking chain.
+### 1. Submit an `XChainCreateBridge` transaction from the door account on the locking chain.
   
     **Note:** Don't include a `MinAccountCreateAmount` value.
 
@@ -40,3 +39,9 @@ labels:
   - [SignerListSet](https://xrpl.org/signerlistset.html)
   - [AccountSet](https://xrpl.org/accountset.html)
 - [List of Parallel Networks](../parallel-networks-list.md)
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}

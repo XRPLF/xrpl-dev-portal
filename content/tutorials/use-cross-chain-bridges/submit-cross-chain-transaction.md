@@ -7,7 +7,7 @@ labels:
 ---
 # Submit Cross-chain Transactions
 
-<embed src="/snippets/_xchain-bridges-disclaimer.md" />
+_(Requires the [XChainBridge amendment][] :not_enabled:)_
 
 ## Prerequisites
 
@@ -41,3 +41,9 @@ labels:
   - [XChainAddClaimAttestation](../transaction-types/xchainaddclaimattestation.md)
   - [XChainClaim](../transaction-types/xchainclaim.md)
 - [List of Parallel Networks](../parallel-networks-list.md)
+
+
+<!--{# common link defs #}-->
+{% include '_snippets/rippled-api-links.md' %}
+{% include '_snippets/tx-type-links.md' %}
+{% include '_snippets/rippled_versions.md' %}
