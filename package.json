@@ -5,6 +5,9 @@
   "type": "module",
   "description": "The XRP Ledger Dev Portal is the authoritative source for XRP Ledger documentation, including the `rippled` server, client libraries, and other open-source XRP Ledger software.",
   "scripts": {
+    "build-css": "sass --load-path styles/scss styles/xrpl.scss ./content/static/css/devportal2022-v25.css --style compressed --no-source-map",
+    "build-css-out": "sass --load-path styles/scss styles/xrpl.scss ./out/static/css/devportal2022-v25.css --style compressed --source-map true",
+    "build-css-watch-out": "sass --recursive --watch  --load-path styles/scss styles/xrpl.scss ./out/static/css/devportal2022-v25.css --style compressed --source-map true",
     "start": "portal develop -d content"
   },
   "keywords": [],
@@ -18,6 +21,7 @@
     "react": "^17.0.2"
   },
   "devDependencies": {
-    "htmltojsx": "^0.3.0"
+    "htmltojsx": "^0.3.0",
+    "sass": "1.26.10"
   }
 }
