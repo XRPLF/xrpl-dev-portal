@@ -35,7 +35,7 @@ $base-size: 16px;
 $line-height-base: 1.5;
 
 // Bootstrap v4
-@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 
 // Import site styles
 @import "_font.scss";
