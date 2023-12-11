@@ -54,7 +54,9 @@ See [Rippling](rippling.html).
 
 ## Enable Destination Tags
 
-If your stablecoin application handles transactions on behalf of several customers, it might not be immediately obvious to which account you should credit. Destination tags help to avoid this situation by requiring the sender to specify the beneficiary or destination for a payment. To enable the `RequireDest` flag, set the `asfRequireDest` value (1) in the `SetFlag` field of an `AccountSet` transaction. See [Source and Destination Tags](source-and-destination-tags.html).
+If your stablecoin application handles transactions on behalf of several customers, it might not be immediately obvious to which account you should credit. Destination tags help to avoid this situation by requiring the sender to specify the beneficiary or destination for a payment. To enable the `RequireDest` flag, set the `asfRequireDest` value (1) in the `SetFlag` field of an `AccountSet` transaction.
+
+See [Source and Destination Tags](source-and-destination-tags.html).
 
 ## Asset Control Features
 

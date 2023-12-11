@@ -153,7 +153,7 @@ If you see signs of suspicious activity, you can enact a global freeze on your a
 
 ![Global Freeze](img/uc-stablecoin-global-freeze.png)
 
-See [Enact Global Freeze](enact-global-freeze.html)
+See [Enact Global Freeze](enact-global-freeze.html).
 
 
 ### Clawback
@@ -195,7 +195,7 @@ To submit transactions reliably, follow these guidelines:
 
 * Persist details of the transaction before submitting it.
 * Use the `LastLedgerSequence` parameter. (Many [client libraries](client-libraries.html) do this by default.)
-* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is less than or equal to the transaction's `LastLedgerSequence` parameter.
+* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is bigger than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
 
