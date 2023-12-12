@@ -396,7 +396,6 @@ events = [
     "image": "AMAs.png",
     "end_date": "October 17, 2023"
     },
-
     { "name": "XRPL Blockhack Hackathon",      
     "description": "Join us at George Brown College's Waterfront Campus for workshops and talks on promoting growth for blockchain projects and ventures. We are supporting a for the most innovative application built on XRPL.",
     "type": "hackathon",
