@@ -338,6 +338,7 @@
 <span class="w">  </span><span class="nt">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><a class="btn btn-primary" href="websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&amp;req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D">Query example transaction.</a></p>
 <h2 id="payment-フィールド">Payment フィールド<a aria-hidden="true" class="hover_anchor" href="#payment-フィールド"><i class="fa fa-link"></i></a></h2>
 <p><a href="transaction-common-fields.html">共通フィールド</a>に加えて、Paymentトランザクションは以下のフィールドを使用します。</p>
 <!-- -->
@@ -484,27 +485,27 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;">tfNoDirectRipple</td>
-<td style="text-align: left;">0x00010000</td>
+<td style="text-align: left;"><code>tfNoDirectRipple</code></td>
+<td style="text-align: left;"><code>0x00010000</code></td>
 <td style="text-align: left;">65536</td>
 <td style="text-align: left;">デフォルトパスを使用せず、<code>Paths</code>フィールドに含まれているパスのみ使用します。これによりトランザクションは強制的に裁定機会を活用することになります。ほとんどのクライアントでは、これは必要ありません。</td>
 </tr>
 <tr>
-<td style="text-align: left;">tfPartialPayment</td>
-<td style="text-align: left;">0x00020000</td>
+<td style="text-align: left;"><code>tfPartialPayment</code></td>
+<td style="text-align: left;"><code>0x00020000</code></td>
 <td style="text-align: left;">131072</td>
 <td style="text-align: left;"><code>SendMax</code>を超えていないのに指定された<code>Amount</code>を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、<a href="partial-payments.html">Partial Payments</a>を参照してください。</td>
 </tr>
 <tr>
-<td style="text-align: left;">tfLimitQuality</td>
-<td style="text-align: left;">0x00040000</td>
+<td style="text-align: left;"><code>tfLimitQuality</code></td>
+<td style="text-align: left;"><code>0x00040000</code></td>
 <td style="text-align: left;">262144</td>
 <td style="text-align: left;">すべての変換で、入力と出力との比率が<code>Amount</code>と<code>SendMax</code>との比率と同一であるか、さらに有利となるパスのみを採用します。詳細は、<a href="#クオリティの制限">クオリティの制限</a>を参照してください。</td>
 </tr>
 </tbody>
 </table>
 <h2 id="partial-payments">Partial Payments<a aria-hidden="true" class="hover_anchor" href="#partial-payments"><i class="fa fa-link"></i></a></h2>
-<p>Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに<a href="stablecoin-issuer.html#不明な入金の返金">支払いを返金</a>する場合です。その一方で、成功したトランザクションの<code>Amount</code>フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。</p>
+<p>Partial Paymentsを利用すると、受取られる金額を減額することによって、支払いを成功させることができます。Partial Paymentsが有用なのは、追加的なコストを発生させずに<a href="bouncing-payments.html">支払いを返金</a>する場合です。その一方で、成功したトランザクションの<code>Amount</code>フィールドに、送金された金額が常に正しく記述されていることを前提としている環境において、悪用されるおそれもあります。</p>
 <p>Partial Paymentsとは、<strong>tfPartialPayment</strong>フラグが有効になっている<a href="payment.html">Paymentトランザクション</a>です。Partial Paymentsは、<code>SendMax</code>値を超える金額を送金することなく、<code>DeliverMin</code>フィールド以上の正の金額（<code>DeliverMin</code>が指定されていない場合、任意の正の金額）を送金する場合に成功します。</p>
 <p>支払いのメタデータにある<a href="transaction-metadata.html#delivered_amount"><code>delivered_amount</code></a>フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。</p>
 <p>詳細は、<a href="partial-payments.html">Partial Payments</a>の全文を参照してください。</p>
@@ -938,17 +939,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">入金のモニタリング</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">顧客への送金</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">不明な入金の返金</a>
   </div>
 
     </nav>
@@ -968,7 +969,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">代替可能トークン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
@@ -981,27 +982,27 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
 
-        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+        <a class="nav-link" href="/ja/stablecoins.html">ステーブルコイン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">ステーブルコインの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">ステーブルコイン発行者の設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">ステーブルコインに関する注意事項</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">ステーブルコインのコンプライアンス指針</a>
   </div>
 
     </nav>
@@ -1074,12 +1075,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">NFTのバッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">NFT処理を他のアカウントに委任</a>
   </div>
 
       
@@ -1094,12 +1095,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの固定供給</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>

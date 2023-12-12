@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Robustly Monitoring for Payments - XRPL.org (日本語)</title>
+    <title>入金のモニタリング - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Robustly Monitoring for Payments | XRPL.org (日本語)">
+    <meta property="og:title" content="入金のモニタリング | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/robustly-monitoring-for-payments.html" />
-    <meta property="og:description" content="Recommendations for monitoring incoming payments for a variety of possible irregularities." />
-    <meta name="description" content="Recommendations for monitoring incoming payments for a variety of possible irregularities." />
+    <meta property="og:description" content="不正な入金がないかを監視するための推奨事項を説明します。" />
+    <meta name="description" content="不正な入金がないかを監視するための推奨事項を説明します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Tokens']
+      "page_labels": ['トークン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/payment-types/robustly-monitoring-for-payments.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/concepts/payment-types/robustly-monitoring-for-payments.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-tokens">Tokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+      <span class="label label-トークン">トークン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トークン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,7 +272,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#robustly-monitoring-for-payments">Robustly Monitoring for Payments</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#入金のモニタリング">入金のモニタリング</a></li>
       </ul>
   </div>
       </aside>
@@ -290,32 +290,29 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payment-types.html">支払いのタイプ</a></li>
-    <li class="active breadcrumb-item">Robustly Monitoring for Payments</li>
+    <li class="active breadcrumb-item">入金のモニタリング</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="robustly-monitoring-for-payments">Robustly Monitoring for Payments<a aria-hidden="true" class="hover_anchor" href="#robustly-monitoring-for-payments"><i class="fa fa-link"></i></a></h1>
-<p>To robustly check for incoming payments, issuers should do the following:</p>
+        <h1 id="入金のモニタリング">入金のモニタリング<a aria-hidden="true" class="hover_anchor" href="#入金のモニタリング"><i class="fa fa-link"></i></a></h1>
+<p>入金チェックを確実に行うために、発行者は以下のことを行う必要があります。</p>
 <ul>
-<li>Keep a record of the most-recently-processed transaction and ledger. That way, if you temporarily lose connectivity, you know how far to go back.</li>
-<li>Check the result code of every incoming payment. Some payments go into the ledger to charge an anti-spam fee, even though they failed. Only transactions with the result code <code>tesSUCCESS</code> can change non-XRP balances. Only transactions from a validated ledger are final.</li>
-<li>Look out for <a href="partial-payments.html">Partial Payments</a>. Payments with the partial payment flag enabled can be considered "successful" if any non-zero amount is delivered, even minuscule amounts.<ul>
-<li>Check the transaction for a <a href="partial-payments.html#delivered_amountフィールド"><code>delivered_amount</code> field</a>. If present, that field indicates how much money <em>actually</em> got delivered to the <code>Destination</code> address.</li>
-<li>In xrpl.js, you can use the <a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code> method <i aria-hidden="true" class="fa fa-external-link"></i></a> to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.</li>
+<li>直近に処理したトランザクションとレジャーを記録しておく。そうすれば、一時的に接続ができなくなったとしても、どこまで遡ればいいのか分かります。</li>
+<li>受信したすべての支払いの結果コードを確認する。一部の支払いは、失敗したにもかかわらず、スパム対策料金を請求するためにレジャーに登録されます。結果コード<code>tesSUCCESS</code>を持つトランザクションだけが、XRP以外の残高を変更できます。また、検証されたレジャーからのトランザクションのみが確定的なものとなります。</li>
+<li><a href="partial-payments.html">部分支払い</a>に注意してください。partial paymentフラグを有効にした場合、0以上の金額であれば、少額でも「成功」と判断されることがあります。<ul>
+<li>トランザクションに<a href="partial-payments.html#delivered_amountフィールド"><code>delivered_amount</code>フィールド</a>があるかどうか確認してください。もし存在すれば、そのフィールドは<code>Destination</code>アドレスに実際にどれだけの金額が支払われたかを示しています。</li>
+<li>xrpl.jsでは、<a class="external-link" href="https://js.xrpl.org/modules.html#getBalanceChanges" target="_blank"><code>xrpl.getBalanceChanges()</code>メソッド <i aria-hidden="true" class="fa fa-external-link"></i></a>を使って、各アドレスがいくら受け取ったかを見ることができます。場合によっては、これを異なるトラストラインで複数回に分けて表示することも可能です</li>
 </ul>
 </li>
-<li>Some transactions change your balances without being payments directly to or from one of your addresses.</li>
+<li>トランザクションの中には、アドレスの1つへの直接の支払いやアドレスからの支払いでなくても、残高を変更するものがあります。</li>
 </ul>
-<p>To make things simpler for your customers, we recommend accepting payments to both your operational address and your issuing addresses.</p>
-<p>As an added precaution, we recommend comparing the balances of your issuing address with the collateral funds in your internal accounting system as of each new XRP Ledger ledger version. The issuing address's negative balances should match the assets you have allocated to XRP Ledger outside the network. If the two do not match up, then you should suspend processing payments into and out of the XRP Ledger until you have resolved the discrepancy.</p>
+<p>顧客の利便性を高めるため、運用アドレスと発行アドレスの両方への支払いを受け付けることをお勧めします。</p>
+<p>追加の防止策として、新しいXRP Ledgerの各レジャーバージョンにおいて、発行アドレスの残高と内部会計システムにおける担保資金を比較することをお勧めします。発行アドレスのマイナス残高は、ネットワーク外のXRP Ledgerに割り当てた資産と一致するはずです。もし両者が一致しないのであれば、その不一致を解決するまでXRP Ledgerへの出入りの支払い処理を中断する必要があります。</p>
 <ul>
-<li>Use the <code>gateway_balances</code> method to check your balances.</li>
-<li>If you have a Transfer Fee set, then your obligations within the XRP Ledger decrease slightly whenever other XRP Ledger addresses transfer your tokens among themselves.</li>
+<li>残高を確認するには、<code>gateway_balances</code>メソッドを使用します。</li>
+<li>Transfer Feeが設定されている場合、他のXRP Ledgerアドレスがあなたのトークンを転送するたびに、XRP Ledger内でのあなたの負債はわずかに減少します。</li>
 </ul>
-<p>For more details on how to read the details of incoming transactions, see <a href="look-up-transaction-results.html">Look Up Transaction Results</a>.</p>
+<p>受信したトランザクションの詳細を確認する方法については、<a href="look-up-transaction-results.html">トランザクションの結果の確認</a>をご覧ください。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -731,17 +728,17 @@
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">入金のモニタリング</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">顧客への送金</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">不明な入金の返金</a>
   </div>
 
     </nav>
@@ -761,7 +758,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">代替可能トークン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
@@ -774,27 +771,27 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
 
-        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+        <a class="nav-link" href="/ja/stablecoins.html">ステーブルコイン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">ステーブルコインの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">ステーブルコイン発行者の設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">ステーブルコインに関する注意事項</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">ステーブルコインのコンプライアンス指針</a>
   </div>
 
     </nav>
@@ -867,12 +864,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">NFTのバッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">NFT処理を他のアカウントに委任</a>
   </div>
 
       
@@ -887,12 +884,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの固定供給</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>

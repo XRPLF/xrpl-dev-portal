@@ -407,7 +407,7 @@ How to transparently report the current number of stablecoins held in reserve.
 <h3 id="global-freeze">Global Freeze<a aria-hidden="true" class="hover_anchor" href="#global-freeze"><i class="fa fa-link"></i></a></h3>
 <p>If you see signs of suspicious activity, you can enact a global freeze on your account to prevent users from sending your tokens to each other and trading your token in the decentralized exchange.</p>
 <p><img alt="Global Freeze" src="img/uc-stablecoin-global-freeze.png"/></p>
-<p>See <a href="enact-global-freeze.html">Enact Global Freeze</a></p>
+<p>See <a href="enact-global-freeze.html">Enact Global Freeze</a>.</p>
 <h3 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h3>
 <p><em>(Requires the <a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
 <p>Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers <em>must</em> have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or <em>claw back</em>, the funds.</p>
@@ -433,7 +433,7 @@ How to transparently report the current number of stablecoins held in reserve.
 <ul>
 <li>Persist details of the transaction before submitting it.</li>
 <li>Use the <code>LastLedgerSequence</code> parameter. (Many <a href="client-libraries.html">client libraries</a> do this by default.)</li>
-<li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#ledger-index">ledger index</a> is less than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
+<li>Resubmit a transaction if it has not appeared in a validated ledger whose <a href="basic-data-types.html#ledger-index">ledger index</a> is bigger than or equal to the transaction's <code>LastLedgerSequence</code> parameter.</li>
 </ul>
 <p>For more information, see <a href="reliable-transaction-submission.html">Reliable Transaction Submission</a>.</p>
 <h3 id="list-on-the-xrpl-native-dex">List on the XRPL Native DEX<a aria-hidden="true" class="hover_anchor" href="#list-on-the-xrpl-native-dex"><i class="fa fa-link"></i></a></h3>

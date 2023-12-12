@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>トラストラインと発行 - XRPL.org (日本語)</title>
+    <title>代替可能トークン - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="トラストラインと発行 | XRPL.org (日本語)">
+    <meta property="og:title" content="代替可能トークン | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/trust-lines-and-issuing.html" />
     <meta property="og:description" content="トラストラインの特性と根本原理について説明します。" />
     <meta name="description" content="トラストラインの特性と根本原理について説明します。" />
@@ -272,12 +272,13 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#トラストラインと発行">トラストラインと発行</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#代替可能トークン">代替可能トークン</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#トラストライン">トラストライン</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#作成">作成</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#限度額以上を保有する">限度額以上を保有する</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#トラストラインの設定">トラストラインの設定</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#準備金と削除">準備金と削除</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#free-trust-lines">Free Trust Lines</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#無料のトラストライン">無料のトラストライン</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#trustsetトランザクション-トラストラインを作成変更するトランザクション">TrustSetトランザクション - トラストラインを作成・変更するトランザクション</a></li>
       </ul>
@@ -297,14 +298,14 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
-    <li class="active breadcrumb-item">トラストラインと発行</li>
+    <li class="active breadcrumb-item">代替可能トークン</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="トラストラインと発行">トラストラインと発行<a aria-hidden="true" class="hover_anchor" href="#トラストラインと発行"><i class="fa fa-link"></i></a></h1>
+        <h1 id="代替可能トークン">代替可能トークン<a aria-hidden="true" class="hover_anchor" href="#代替可能トークン"><i class="fa fa-link"></i></a></h1>
+<p>非公式な"借用書"から、法定通貨を担保とするステーブルコイン、純粋なデジタルファンジブルトークンやセミファンジブルトークンなど、誰でもXRP Ledger上で代替可能なトークンを発行することができます。</p>
+<p>代替可能トークンは交換可能で、互いに区別がつきません。トークンは交換可能で、同等の価値を持つ他のトークンと置き換えることができます。交換可能なトークンを作成するには、2つのアカウント間で会計関係の一種である「トラストライン」を設定し、それらのアカウント間で支払いを送信します。ほとんどのユースケースでは、最初に設定する必要がある設定もあります。</p>
+<h2 id="トラストライン">トラストライン<a aria-hidden="true" class="hover_anchor" href="#トラストライン"><i class="fa fa-link"></i></a></h2>
 <p>トラストラインとは、XRP Ledgerにおける<a href="tokens.html">トークン</a>を保持するための仕組みを指します。トラストラインは、XRP Ledgerのルールである「不要なトークンを他者に保有させることはできない」という原則を強制するものです。この制限は、XRP Ledgerのユースケースである<a href="tokens.html#コミュニティクレジット">コミュニティクレジット</a>などを実現するために不可欠なものです。</p>
 <p>それぞれの「トラストライン」は、以下のような <em>双方向</em> の関係から成り立っています。</p>
 <ul>
@@ -319,6 +320,7 @@
 </li>
 </ul>
 <p>各トラストラインは、特定の<a href="currency-formats.html#通貨コード">通貨コード</a>に固有です。2つのアカウント間に作成できる各種通貨コードのトラストラインの数に制限はありませんが、どの通貨コードについても、作成できるトラストラインは1方向に1つだけです。</p>
+<p>トラストラインの残高は、それをどちらの側から見るかによって負または正になります。負の残高を持つ側は「発行者」と呼ばれ、トークンの振る舞いに関するいくつかのプロパティを制御できます。トークンを発行者ではない別のアカウントに送ると、そのトークンは発行者や、おそらく同じ通貨コードを使用している他のアカウントを通じて「ripple(波及)」します。これは便利な場合もありますが、予期しない望ましくない動作を引き起こす場合もあります。トラストラインに<a href="rippling.html">No Rippleフラグ</a>を使用することで、トラストラインが波及しないようにすることができます。</p>
 <h2 id="作成">作成<a aria-hidden="true" class="hover_anchor" href="#作成"><i class="fa fa-link"></i></a></h2>
 <p>アカウントはいずれも、ゼロでない上限と独自の設定を持つ<a href="trustset.html">TrustSetトランザクション</a>を送信することによって、他のアカウントに対して一方的にトークンを「トラスト」することができます。これによって、残高ゼロのトラストラインが作成され、相手側の設定がデフォルトとして設定されます。</p>
 <p>トラストラインは、<a href="decentralized-exchange.html">分散型取引所</a>でトークンを購入するときなど、いくつかのトランザクションによって暗黙的に作成されることがあります。この場合、トラストラインはデフォルト設定をそのまま使用します。</p>
@@ -348,7 +350,7 @@
 </ol>
 <p>残高がマイナス（あなたが発行者）の場合や、相手側の設定が初期状態でない場合、トラストラインを完全に削除させることはできませんが、同様の手順で所有者準備金にカウントされないようにすることが可能です。</p>
 <p><strong>Authorized</strong> の設定は、一度オンにするとオフにできないため、トラストラインの初期状態にはカウントされません。</p>
-<h2 id="free-trust-lines">Free Trust Lines<a aria-hidden="true" class="hover_anchor" href="#free-trust-lines"><i class="fa fa-link"></i></a></h2>
+<h2 id="無料のトラストライン">無料のトラストライン<a aria-hidden="true" class="hover_anchor" href="#無料のトラストライン"><i class="fa fa-link"></i></a></h2>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/72377e7bf25c4eaee5174186d2db3c6b4210946f/src/ripple/app/tx/impl/SetTrust.cpp#L148-L168" target="_blank">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p>トラストラインはXRP Ledgerの強力な機能であるため、アカウントの最初の2つのトラストラインを「無料」にする特別な機能が用意されています。</p>
 <p>アカウントが新しいトラストラインを作成する際、台帳の中で新しいトラストラインを含む最大2つのオブジェクトを所有している場合、アカウントの所有者準備金は通常の量ではなく、0として扱われます。これにより、アカウントが台帳内のオブジェクトを所有するために必要な準備金の増加分を満たすだけのXRPを保有していない場合でも、取引を成功させることができます。</p>
@@ -792,17 +794,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">入金のモニタリング</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">顧客への送金</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">不明な入金の返金</a>
   </div>
 
     </nav>
@@ -822,7 +824,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">代替可能トークン</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
       
@@ -835,27 +837,27 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
 
-        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+        <a class="nav-link" href="/ja/stablecoins.html">ステーブルコイン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">ステーブルコインの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">ステーブルコイン発行者の設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">ステーブルコインに関する注意事項</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">ステーブルコインのコンプライアンス指針</a>
   </div>
 
     </nav>
@@ -928,12 +930,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">NFTのバッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">NFT処理を他のアカウントに委任</a>
   </div>
 
       
@@ -948,12 +950,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの固定供給</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>

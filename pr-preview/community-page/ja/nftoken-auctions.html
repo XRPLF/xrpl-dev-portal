@@ -274,8 +274,8 @@
     <ul class="page-toc nav flex-column" role="directory">
         <li class="nav-item level-1"><a class="nav-link" href="#nftオークションの実施">NFTオークションの実施</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#xrpl外でオークションを行いxrpl上で取引を成立させる">XRPL外でオークションを行い、XRPL上で取引を成立させる</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#最低落札価格ありのオークションを実施する">最低落札価格ありのオークションを実施する</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#最低落札価格なしのオークションを実施する">最低落札価格なしのオークションを実施する</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#最低落札価格ありのオークション">最低落札価格ありのオークション</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#最低落札価格なしのオークション">最低落札価格なしのオークション</a></li>
       </ul>
   </div>
       </aside>
@@ -298,9 +298,6 @@
     <li class="active breadcrumb-item">NFTオークションの実施</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>このページは、最新の英語版のコンテンツと一致していない場合があります。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべての翻訳ページが最新版として提供されているわけではありません。コンテンツの更新にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="nftオークションの実施">NFTオークションの実施<a aria-hidden="true" class="hover_anchor" href="#nftオークションの実施"><i class="fa fa-link"></i></a></h1>
 <p>オークションの運営にはいくつかの方法があり、それぞれにメリットとデメリットがあります。</p>
@@ -311,7 +308,7 @@
 <li>落札額の一部を手数料として徴収します。</li>
 <li>買い手/売り手へXRPLトランザクションを送信し、取引を完了させます。</li>
 </ol>
-<h2 id="最低落札価格ありのオークションを実施する">最低落札価格ありのオークションを実施する<a aria-hidden="true" class="hover_anchor" href="#最低落札価格ありのオークションを実施する"><i class="fa fa-link"></i></a></h2>
+<h2 id="最低落札価格ありのオークション">最低落札価格ありのオークション<a aria-hidden="true" class="hover_anchor" href="#最低落札価格ありのオークション"><i class="fa fa-link"></i></a></h2>
 <p>最低落札価格ありのオークションとして、ブローカー方式で運営する。</p>
 <p><img alt="ブローカー方式で最低落札価格ありのオークション" src="img/nft-auction1.png" title="ブローカー方式で最低落札価格ありのオークション"/></p>
 <ol>
@@ -330,7 +327,7 @@
 <li>売り手とブローカーの間には、ブローカーが事前に合意したレート以上を取らないという暗黙の信頼関係が必要です。最低落札価格が1XRPで、落札価格が1000XRPだった場合、ブローカーが999XRPを手数料として徴収し、売り手には最低落札価格の利益しか残らないということが起き得ます。これを防ぐオンチェーンの仕組みは存在しません。</li>
 </ul>
 <p>このデメリットの大きな軽減要素は、もしこのような行動が起これば、ブローカーは市場シェアをすべて失うことになるため、売り手はこの点を理解すべきです。</p>
-<h2 id="最低落札価格なしのオークションを実施する">最低落札価格なしのオークションを実施する<a aria-hidden="true" class="hover_anchor" href="#最低落札価格なしのオークションを実施する"><i class="fa fa-link"></i></a></h2>
+<h2 id="最低落札価格なしのオークション">最低落札価格なしのオークション<a aria-hidden="true" class="hover_anchor" href="#最低落札価格なしのオークション"><i class="fa fa-link"></i></a></h2>
 <p>この3つのうち、最も複雑なワークフローとなります。</p>
 <p><img alt="ブローカー方式で最低落札価格なしのオークション" src="img/nft-auction2.png" title="ブローカー方式で最低落札価格なしのオークション"/></p>
 <ol>
@@ -766,17 +763,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">入金のモニタリング</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">顧客への送金</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">不明な入金の返金</a>
   </div>
 
     </nav>
@@ -796,7 +793,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">代替可能トークン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
@@ -809,27 +806,27 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
 
-        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+        <a class="nav-link" href="/ja/stablecoins.html">ステーブルコイン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">ステーブルコインの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">ステーブルコイン発行者の設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">ステーブルコインに関する注意事項</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">ステーブルコインのコンプライアンス指針</a>
   </div>
 
     </nav>
@@ -902,12 +899,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">NFTのバッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">NFT処理を他のアカウントに委任</a>
   </div>
 
       
@@ -922,12 +919,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの固定供給</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>

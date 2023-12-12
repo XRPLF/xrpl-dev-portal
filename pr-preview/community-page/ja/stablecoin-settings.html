@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Stablecoin Settings - XRPL.org (日本語)</title>
+    <title>ステーブルコインの設定 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Stablecoin Settings | XRPL.org (日本語)">
+    <meta property="og:title" content="ステーブルコインの設定 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/stablecoin-settings.html" />
     <meta property="og:description" content="Settings to configure before issuing your stablecoin." />
     <meta name="description" content="Settings to configure before issuing your stablecoin." />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['XRP', 'Stablecoin']
+      "page_labels": ['XRP', 'ステーブルコイン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,7 +259,7 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/tokens/fungible-tokens/stablecoins/settings.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/concepts/tokens/fungible-tokens/stablecoins/settings.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
@@ -267,8 +267,8 @@
       <!-- TEMPLATE WARNING: no label landing found for "XRP" -->
     </li>
     <li class="list-inline-item">
-      <span class="label label-stablecoin">Stablecoin</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Stablecoin" -->
+      <span class="label label-ステーブルコイン">ステーブルコイン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "ステーブルコイン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -276,17 +276,17 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#stablecoin-settings">Stablecoin Settings</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#create-your-issuing-and-distribution-accounts">Create Your Issuing and Distribution Accounts</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#set-your-transfer-fee">Set Your Transfer Fee</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#set-your-tick-size">Set Your Tick Size</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#set-the-default-ripple-flag">Set the Default Ripple Flag</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#enable-destination-tags">Enable Destination Tags</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#asset-control-features">Asset Control Features</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#authorized-trust-lines">Authorized Trust Lines</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#freeze-flags">Freeze Flags</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#clawback-flags">Clawback Flags</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#fixed-supply">Fixed Supply</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#ステーブルコインの設定">ステーブルコインの設定</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#発行および配布アカウントの作成">発行および配布アカウントの作成</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#取引手数料の設定">取引手数料の設定</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#ティックサイズの設定">ティックサイズの設定</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#default-rippleフラグの設定">Default Rippleフラグの設定</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#宛先タグの有効化">宛先タグの有効化</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#資産の管理機能">資産の管理機能</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#認可トラストライン">認可トラストライン</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#freezeフラグ">Freezeフラグ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#clawbackフラグ">Clawbackフラグ</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#固定供給量">固定供給量</a></li>
       </ul>
   </div>
       </aside>
@@ -306,60 +306,58 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a></li>
-    <li class="active breadcrumb-item"><a href="/ja/stablecoins.html">Stablecoins</a></li>
-    <li class="active breadcrumb-item">Stablecoin Settings</li>
+    <li class="active breadcrumb-item"><a href="/ja/trust-lines-and-issuing.html">代替可能トークン</a></li>
+    <li class="active breadcrumb-item"><a href="/ja/stablecoins.html">ステーブルコイン</a></li>
+    <li class="active breadcrumb-item">ステーブルコインの設定</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="stablecoin-settings">Stablecoin Settings<a aria-hidden="true" class="hover_anchor" href="#stablecoin-settings"><i class="fa fa-link"></i></a></h1>
-<p>Before you mint your new stablecoin, you need to configure settings, some of which are immutable once you issue the first coin.</p>
-<h2 id="create-your-issuing-and-distribution-accounts">Create Your Issuing and Distribution Accounts<a aria-hidden="true" class="hover_anchor" href="#create-your-issuing-and-distribution-accounts"><i class="fa fa-link"></i></a></h2>
-<p>Create a new account that you designate as the <em>issuer</em>, sometimes called the "cold" wallet. There is nothing different or special about the account itself, only the way you use it. Use the account to mint your stablecoins.</p>
-<p>Many implementations use a <em>standby</em> account as a "warm" wallet. Trusted human operators use the standby account to distribute stablecoins to <em>operational</em> accounts.</p>
+        <h1 id="ステーブルコインの設定">ステーブルコインの設定<a aria-hidden="true" class="hover_anchor" href="#ステーブルコインの設定"><i class="fa fa-link"></i></a></h1>
+<p>新しいステーブルコインを発行する前に、最初にコインを発行すると変更不可能とする設定を行う必要があります。</p>
+<h2 id="発行および配布アカウントの作成">発行および配布アカウントの作成<a aria-hidden="true" class="hover_anchor" href="#発行および配布アカウントの作成"><i class="fa fa-link"></i></a></h2>
+<p>「コールド」ウォレットと呼ばれることもある、「発行者」として指定する新しいアカウントを作成します。アカウント自体には特別な違いはありません。このアカウントを使ってステーブルコインを発行します。</p>
+<p>ほとんどの実装では、"ウォーム"ウォレットとしてスタンバイアカウントを使用します。信頼できる人間のオペレータは、スタンバイアカウントを使用してステーブルコインを運用アカウントに配布します。</p>
 <div align="center">
 <img height="50%" src="img/uc-stablecoin-distribution-flow.png" width="50%"/>
 </div>
-<p>Operational accounts, or "hot" wallets, trade with other accounts on the XRPL. Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners.</p>
-<p>Using standby and operational accounts helps to insulate the issuing account against hacking attacks, and also makes it easier to monitor the creation and destruction of your stablecoins.</p>
-<h2 id="set-your-transfer-fee">Set Your Transfer Fee<a aria-hidden="true" class="hover_anchor" href="#set-your-transfer-fee"><i class="fa fa-link"></i></a></h2>
-<p>A transfer fee setting charges users a percentage fee when transferring tokens between accounts.</p>
-<p>When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.</p>
-<p>For more information, see <a href="transfer-fees.html">Transfer Fees</a>.</p>
-<h2 id="set-your-tick-size">Set Your Tick Size<a aria-hidden="true" class="hover_anchor" href="#set-your-tick-size"><i class="fa fa-link"></i></a></h2>
-<p>The Tick Size setting controls how many decimal places are used when calculating exchange rates in the <a href="decentralized-exchange.html">Decentralized Exchange</a>. A higher Tick Size (more decimal places) means more precision and less rounding in the amounts of various trades. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by unreasonably small amounts.</p>
-<p>The Tick Size is an account-level setting and applies to all tokens issued by the same address.</p>
-<p>See <a href="ticksize.html">Tick Size</a>.</p>
-<h2 id="set-the-default-ripple-flag">Set the Default Ripple Flag<a aria-hidden="true" class="hover_anchor" href="#set-the-default-ripple-flag"><i class="fa fa-link"></i></a></h2>
-<p>The Default Ripple flag controls whether the balances on a trust line are allowed to <em>ripple</em> by default. Rippling is what allows customers to send and trade tokens among themselves. An issuer MUST allow rippling on all the trust lines to its issuing address.</p>
-<p>Before asking customers to create trust lines to your issuing address, enable the Default Ripple flag on that address. Otherwise, you must individually disable the No Ripple flag for each trust line that other addresses have created.</p>
-<p>See <a href="rippling.html">Rippling</a>.</p>
-<h2 id="enable-destination-tags">Enable Destination Tags<a aria-hidden="true" class="hover_anchor" href="#enable-destination-tags"><i class="fa fa-link"></i></a></h2>
-<p>If your stablecoin application handles transactions on behalf of several customers, it might not be immediately obvious to which account you should credit. Destination tags help to avoid this situation by requiring the sender to specify the beneficiary or destination for a payment. To enable the <code>RequireDest</code> flag, set the <code>asfRequireDest</code> value (1) in the <code>SetFlag</code> field of an <code>AccountSet</code> transaction. See <a href="source-and-destination-tags.html">Source and Destination Tags</a>.</p>
-<h2 id="asset-control-features">Asset Control Features<a aria-hidden="true" class="hover_anchor" href="#asset-control-features"><i class="fa fa-link"></i></a></h2>
-<p>You have several options for controlling the creation and distribution of your stablecoins.</p>
-<h3 id="authorized-trust-lines">Authorized Trust Lines<a aria-hidden="true" class="hover_anchor" href="#authorized-trust-lines"><i class="fa fa-link"></i></a></h3>
-<p>When you need to follow compliance rules such as Know Your Customer (KYC) and Anti-Money Laundering (AML), you can use trust lines to create permissioned pools for the distribution of your stablecoin. This allows you to be certain to whom the funds are transferred.</p>
-<p>See <a href="authorized-trust-lines.html">Authorized Trust Lines</a>.</p>
-<h3 id="freeze-flags">Freeze Flags<a aria-hidden="true" class="hover_anchor" href="#freeze-flags"><i class="fa fa-link"></i></a></h3>
-<p>You have the ability to freeze your stablecoins in your holder accounts. You might do this when you suspect fraudulent activity, or to enforce holds. You can freeze individual trust lines, or enact a global freeze of all activity.</p>
-<p>Conversely, you can set the No Freeze feature, which permanently gives up the ability to freeze tokens. This makes your stablecoin more like fiat currency, in the sense that you cannot interfere with counterparties trading the tokens among themselves.</p>
-<p>See <a href="freezes.html">Freezing Tokens</a>.</p>
-<h3 id="clawback-flags">Clawback Flags<a aria-hidden="true" class="hover_anchor" href="#clawback-flags"><i class="fa fa-link"></i></a></h3>
-<p><em>(Requires the <a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p>Clawback allows you to retrieve, or <em>clawback</em>, stablecoins from a trust line under specific circumstances. This gives you added ability to respond to challenges such as lost account access or malicious activity.</p>
-<p>See <a href="clawback.html">Clawback</a>.</p>
-<h3 id="fixed-supply">Fixed Supply<a aria-hidden="true" class="hover_anchor" href="#fixed-supply"><i class="fa fa-link"></i></a></h3>
-<p>Restricting your stablecoins to a fixed number guarantees that stablecoin value will not be diluted in the future if you decide to issue more tokens.</p>
-<p>To create a fixed supply:</p>
+<p>運用アカウント、または「ホット」ウォレットは、XRPL上で他のアカウントと取引します。自動化されたインターネット接続システムは、これらのアドレスの秘密鍵を使用して、顧客やパートナーへの送金などの日常業務を行います。</p>
+<p>スタンバイアカウントと運用アカウントを使用することで、発行アカウントをハッキング攻撃から守ることができ、またステーブルコインの作成と破棄を監視しやすくなります。</p>
+<h2 id="取引手数料の設定">取引手数料の設定<a aria-hidden="true" class="hover_anchor" href="#取引手数料の設定"><i class="fa fa-link"></i></a></h2>
+<p>送金手数料の設定は、アカウント間でトークンを送金する際にパーセンテージの手数料をユーザに請求します。</p>
+<p>ユーザが送金手数料ありのトークンを送信すると、送信側からは送信金額に加えて送金手数料が引き落とされ、受信側には送信金額のみが入金されます。送金手数料の金額はXRP Ledgerから「消滅」します。つまり、ユーザが送金手数料を支払うたびに、担保として保持する必要のある金額が減少するのです。</p>
+<p>詳しくは<a href="transfer-fees.html">送金手数料</a>をご覧ください。</p>
+<h2 id="ティックサイズの設定">ティックサイズの設定<a aria-hidden="true" class="hover_anchor" href="#ティックサイズの設定"><i class="fa fa-link"></i></a></h2>
+<p>ティックサイズは、<a href="decentralized-exchange.html">分散型取引所</a>で取引レートを計算する際に使用される小数点以下の桁数を制御します。ティックサイズが大きいほど(小数点以下の桁数が多いほど)精度が高くなり、さまざまな取引金額の四捨五入が少なくなります。ティックサイズが小さいほど、オークションにおける最低入札額と同じように機能し、無駄に小さい金額で徐々に価格を競り上げる時間と労力を節約できます。</p>
+<p>ティックサイズはアカウントレベルの設定で、同じアドレスで発行されたすべてのトークンに適用されます。</p>
+<p><a href="ticksize.html">ティックサイズ</a>をご覧ください。</p>
+<h2 id="default-rippleフラグの設定">Default Rippleフラグの設定<a aria-hidden="true" class="hover_anchor" href="#default-rippleフラグの設定"><i class="fa fa-link"></i></a></h2>
+<p>Default Rippleフラグはトラストラインの残高をデフォルトでRipple(波及)させるかどうかを制御します。Ripplingは顧客間でトークンを送ったり取引したりすることを可能にするものです。発行者はその発行アドレスへの全てのトラストラインでRipplingを許可しなければなりません(MUST)。</p>
+<p>顧客に発行アドレスへのトラストラインの作成を依頼する前に、発行アドレスのDefault Rippleフラグを有効にしてください。そうでない場合は、他のアドレスが作成したトラストラインごとに、個別にNo Rippleフラグを無効にする必要があります。</p>
+<p><a href="rippling.html">Rippling</a>をご覧ください。</p>
+<h2 id="宛先タグの有効化">宛先タグの有効化<a aria-hidden="true" class="hover_anchor" href="#宛先タグの有効化"><i class="fa fa-link"></i></a></h2>
+<p>ステーブルコインのアプリケーションが複数の顧客の代わりにトランザクションを処理する場合、どのアカウントに入金すべきかがわからないことがあります。宛先タグは、送金者に受取人や送金先を指定させることで、このような状況を回避するのに役立ちます。RequireDestフラグを有効にするには、<code>AccountSet</code>トランザクションの<code>SetFlag</code>フィールドに<code>asfRequireDest</code>値(1)を設定してください。</p>
+<p><a href="source-and-destination-tags.html">送信元と送信先のタグ</a>をご覧ください。</p>
+<h2 id="資産の管理機能">資産の管理機能<a aria-hidden="true" class="hover_anchor" href="#資産の管理機能"><i class="fa fa-link"></i></a></h2>
+<p>ステーブルコインの作成と配布をコントロールするには、いくつかのオプションがあります。</p>
+<h3 id="認可トラストライン">認可トラストライン<a aria-hidden="true" class="hover_anchor" href="#認可トラストライン"><i class="fa fa-link"></i></a></h3>
+<p>KYC(Know Your Customer)やAML(Anti-Money Laundering)などのコンプライアンスルールに従う必要がある場合、トラストラインを使用して、ステーブルコインの配布を許可されたプールを作成することができます。これにより、資金が誰に送金されるかを確認することができます。</p>
+<p><a href="authorized-trust-lines.html">認可トラストライン</a>をご覧ください。</p>
+<h3 id="freezeフラグ">Freezeフラグ<a aria-hidden="true" class="hover_anchor" href="#freezeフラグ"><i class="fa fa-link"></i></a></h3>
+<p>保有者アカウント内のステーブルコインを凍結することができます。これは、詐欺行為が疑われる場合、または保有を強制する場合に行うことができます。個々のトラストラインを凍結することも、グローバルに凍結することもできます。</p>
+<p>逆に、トークンを凍結する能力を永久に放棄する「No Freeze」を設定することもできます。これにより、発行者がトークン同士の取引を妨害でき無くなるという意味で、そのステーブルコインはより現実の通貨に近くなります。</p>
+<p><a href="freezes.html">トークンの凍結</a>をご覧ください。</p>
+<h3 id="clawbackフラグ">Clawbackフラグ<a aria-hidden="true" class="hover_anchor" href="#clawbackフラグ"><i class="fa fa-link"></i></a></h3>
+<p><em>(<a href="known-amendments.html#clawback">Clawback amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span> が必要です。)</em></p>
+<p>Clawbackにより、特定の状況下でトラストラインからステーブルコインを回収(クローバック)することができます。これにより、アカウントへのアクセス不能や悪意のある活動などの課題に対応する能力が追加されます。</p>
+<p><a href="clawback.html">Clawback</a>をご覧ください。</p>
+<h3 id="固定供給量">固定供給量<a aria-hidden="true" class="hover_anchor" href="#固定供給量"><i class="fa fa-link"></i></a></h3>
+<p>ステーブルコインを固定枚数に制限することで、将来さらにトークンを発行することになっても、ステーブルコインの価値が希釈されないことが保証されます。</p>
+<p>固定供給とするためには、</p>
 <ol>
-<li>Create a distribution wallet with settings similar to your issuing wallet.</li>
-<li>Set up a trust line between the issuing wallet and the distribution wallet.</li>
-<li>Send all tokens from the issuing wallet to the distribution wallet.</li>
-<li>Black hole the issuing account.</li>
+<li>発行するウォレットと同様の設定で配布ウォレットを作成します。</li>
+<li>発行ウォレットと配布ウォレットの間にトラストラインを設定します。</li>
+<li>発行ウォレットから配布ウォレットにすべてのトークンを送信します。</li>
+<li>発行アカウントをブラックホール化します。</li>
 </ol>
     </div>
   </article>
@@ -776,17 +774,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">入金のモニタリング</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">顧客への送金</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">不明な入金の返金</a>
   </div>
 
     </nav>
@@ -806,7 +804,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="true" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">代替可能トークン</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6_1">
       
@@ -819,27 +817,27 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="true" aria-controls="tree_nav_group_4_6_1_2"></a>
 
-        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+        <a class="nav-link" href="/ja/stablecoins.html">ステーブルコイン</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">ステーブルコインの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">ステーブルコイン発行者の設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">ステーブルコインに関する注意事項</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">ステーブルコインのコンプライアンス指針</a>
   </div>
 
     </nav>
@@ -912,12 +910,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">NFTのバッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">NFT処理を他のアカウントに委任</a>
   </div>
 
       
@@ -932,12 +930,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの固定供給</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>

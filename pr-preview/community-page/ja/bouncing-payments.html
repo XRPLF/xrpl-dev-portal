@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Bouncing Payments - XRPL.org (日本語)</title>
+    <title>不明な入金の返金 - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="Bouncing Payments | XRPL.org (日本語)">
+    <meta property="og:title" content="不明な入金の返金 | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/bouncing-payments.html" />
-    <meta property="og:description" content="When the purpose of a payment is unclear, return it to the sender." />
-    <meta name="description" content="When the purpose of a payment is unclear, return it to the sender." />
+    <meta property="og:description" content="支払いの目的が不明確な場合は、送り主に返却してください。" />
+    <meta name="description" content="支払いの目的が不明確な場合は、送り主に返却してください。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Tokens']
+      "page_labels": ['トークン']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -259,12 +259,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/concepts/payment-types/bouncing-payments.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/community-page/content/@i18n/ja/concepts/payment-types/bouncing-payments.md?pr=/XRPLF/xrpl-dev-portal/pull/2262" target="_blank" class="btn btn-primary github-edit">ページを編集</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-tokens">Tokens</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Tokens" -->
+      <span class="label label-トークン">トークン</span>
+      <!-- TEMPLATE WARNING: no label landing found for "トークン" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,7 +272,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#bouncing-payments">Bouncing Payments</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#不明な入金の返金">不明な入金の返金</a></li>
       </ul>
   </div>
       </aside>
@@ -290,19 +290,16 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payment-types.html">支払いのタイプ</a></li>
-    <li class="active breadcrumb-item">Bouncing Payments</li>
+    <li class="active breadcrumb-item">不明な入金の返金</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
-    <div class="mb-5 devportal-callout note"><strong>申し訳ありませんが、このページはお使いの言語では提供されていません。</strong>
-      <p class="mb-0">XRP Ledger Dev Portalをさまざまな言語で提供するよう取り組んでいますが、すべてのページがすべての言語で提供されているわけではありません。コンテンツの翻訳にご協力いただける場合は、<a href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md">ぜひ貢献をお願いいたします</a></p>
-    </div><!--/.devportal-callout-->
     <div class="content">
-        <h1 id="bouncing-payments">Bouncing Payments<a aria-hidden="true" class="hover_anchor" href="#bouncing-payments"><i class="fa fa-link"></i></a></h1>
-<p>When one of your addresses receives a payment whose purpose is unclear, we recommend that you try to return the money to its sender. While this is more work than pocketing the money, it demonstrates good faith towards customers. You can have an operator bounce payments manually, or create a system to do so automatically.</p>
-<p>The first requirement to bouncing payments is <a href="robustly-monitoring-for-payments.html">robustly monitoring for incoming payments</a>. You do not want to accidentally refund a customer for more than they sent you! (This is particularly important if your bounce process is automated.) Malicious users can take advantage of a naive integration by sending <a href="partial-payments.html#partial-paymentの悪用">partial payments</a>.</p>
-<p>Second, you should send bounced payments as Partial Payments. Since third parties can manipulate the cost of pathways between addresses, Partial Payments allow you to divest yourself of the full amount without being concerned about exchange rates within the XRP Ledger. You should publicize your bounced payments policy as part of your terms of use. Send the bounced payment from either an operational address or a standby address.</p>
-<p>To send a Partial Payment, enable the <a href="payment.html#paymentのフラグ"><code>tfPartialPayment</code> flag</a> on the transaction. Set the <code>Amount</code> field to the amount you received and omit the <code>SendMax</code> field. You should use the <code>SourceTag</code> value from the incoming payment as the <code>DestinationTag</code> value for the return payment.</p>
-<p>To prevent two systems from bouncing payments back and forth indefinitely, you can set a new Source Tag for the outgoing return payment. If you receive an unexpected payment whose Destination Tag matches the Source Tag of a return you sent, then do not bounce it back again.</p>
+        <h1 id="不明な入金の返金">不明な入金の返金<a aria-hidden="true" class="hover_anchor" href="#不明な入金の返金"><i class="fa fa-link"></i></a></h1>
+<p>アドレスが不明な支払いを受け取った場合、送金者に返金することが推奨されます。これは、資金を保管するよりも手間がかかりますが、顧客に対する誠意を示すことになります。オペレーターが手動で支払いを返金することもできますし、自動的に返金するシステムを構築することもできます。</p>
+<p>返金の失敗を防ぐための第一の条件は、<a href="robustly-monitoring-for-payments.html">入金を適切に監視する</a>ことです。顧客から送られてきた金額以上の金額を誤って返金してしまうことは避けなければなりません！(悪意のあるユーザは、<a href="partial-payments.html#partial-paymentの悪用">部分支払い</a>を送信して、脆弱なシステムを利用します。)</p>
+<p>第二に、返金を部分支払い(Partial Payment)として送信することです。第三者はアドレス間のパスのコストを操作することができるので、部分支払いを使えば、XRP Ledger内の取引レートを気にすることなく、支払い金額の全額を手放すことができます。利用規約の一部に、支払い失敗時のポリシーを公表する必要があります。失敗された支払いを、運用中のアドレスまたは待機中のアドレスのいずれかから送信します。</p>
+<p>部分支払いを送信するには、トランザクションの<a href="payment.html#paymentのフラグ"><code>tfPartialPayment</code>フラグ</a>を有効にします。<code>Amount</code>フィールドに受け取った金額を設定し、<code>SendMax</code>フィールドは省略します。受信した支払いの<code>SourceTag</code>値を、返金する支払いの<code>DestinationTag</code>値として使用する必要があります。</p>
+<p>2つのシステムで返金が繰り返されるのを防ぐため、送信する返金に新しい送信タグを設定することができます。もしシステムが予期しない支払いを受け取った場合で、その支払いの宛先タグが送信した返金の送信元タグと一致する場合は、その支払いを再び返金させないようにします。</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -718,17 +715,17 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">Robustly Monitoring for Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/robustly-monitoring-for-payments.html">入金のモニタリング</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">Sending Payments to Customers</a>
+    <a class="nav-link nav-leaf" href="/ja/sending-payments-to-customers.html">顧客への送金</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">Bouncing Payments</a>
+    <a class="nav-link nav-leaf" href="/ja/bouncing-payments.html">不明な入金の返金</a>
   </div>
 
     </nav>
@@ -748,7 +745,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1" aria-expanded="false" aria-controls="tree_nav_group_4_6_1"></a>
 
-        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">トラストラインと発行</a>
+        <a class="nav-link" href="/ja/trust-lines-and-issuing.html">代替可能トークン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1">
       
@@ -761,27 +758,27 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_1_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_1_2"></a>
 
-        <a class="nav-link" href="/ja/stablecoins.html">Stablecoins</a>
+        <a class="nav-link" href="/ja/stablecoins.html">ステーブルコイン</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_1_2">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">Stablecoin Settings</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-settings.html">ステーブルコインの設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">Stablecoin Configuration</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-configuration.html">ステーブルコイン発行者の設定</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">Stablecoin Precautions</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-precautions.html">ステーブルコインに関する注意事項</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">Stablecoin Compliance Guidelines</a>
+    <a class="nav-link nav-leaf" href="/ja/stablecoin-compliance-guidelines.html">ステーブルコインのコンプライアンス指針</a>
   </div>
 
     </nav>
@@ -854,12 +851,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">バッチMint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-batch-minting.html">NFTのバッチMint</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">代理Mint</a>
+    <a class="nav-link nav-leaf" href="/ja/nftoken-authorized-minting.html">NFT処理を他のアカウントに委任</a>
   </div>
 
       
@@ -874,12 +871,12 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの一定の供給量を保証する</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-fixed-supply.html">NFTの固定供給</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFT APIs</a>
+    <a class="nav-link nav-leaf" href="/ja/nft-apis.html">NFTのAPI</a>
   </div>
 
     </nav>
