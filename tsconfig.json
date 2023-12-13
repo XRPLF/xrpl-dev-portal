@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react",
+    "resolveJsonModule": true,
     "paths": {
       "@theme/*": [
         "./@theme/*",
