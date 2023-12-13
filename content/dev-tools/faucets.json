@@ -1,0 +1,28 @@
+{
+    "knownFaucets": [
+        {
+            "id": "faucet-select-testnet",
+            "wsUrl": "wss://s.altnet.rippletest.net:51233/",
+            "jsonRpcUrl": "https://s.altnet.rippletest.net:51234/",
+            "faucetUrl": "faucet.altnet.rippletest.net",
+            "shortName": "Testnet",
+            "desc": "Mainnet-like network for testing applications."
+        },
+        {
+            "id": "faucet-select-devnet",
+            "wsUrl": "wss://s.devnet.rippletest.net:51233/",
+            "jsonRpcUrl": "https://s.devnet.rippletest.net:51234/",
+            "faucetUrl": "faucet.devnet.rippletest.net",
+            "shortName": "Devnet",
+            "desc": "Preview of upcoming amendments."
+        },
+        {
+            "id": "faucet-select-xahau",
+            "wsUrl": "wss://xahau-test.net/",
+            "jsonRpcUrl": "https://xahau-test.net/",
+            "faucetUrl": "xahau-test.net",
+            "shortName": "Xahau-Testnet",
+            "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
+        }
+    ]
+}
