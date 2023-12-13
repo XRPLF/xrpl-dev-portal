@@ -433,17 +433,64 @@ events = [
     "image": "paris.png",
     "end_date": "November 28, 2023"
     },
+    # { "name": "XRP Ledger Zone ETHDenver",      
+    # "description": "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+    # "type": "zone",
+    # "link": "https://xrplzone-consensus.splashthat.com/",  need to update
+    # "location": "Denver, Colorado",
+    # "date": "April 27, 2023",  need to update
+    # "image": "XRPLZone.png",
+    # "end_date": "April 27, 2023" need to update
+    # },
+         { "name": "RippleX’s Research: <br/> Stanford Engineering Campus Research Initiatives",      
+      "description": "Learn more about RippleX’s ongoing research projects on the XRP Ledger, addressing issues like frontrunning defense, the significance of threshold signatures, and challenges in cross-chain communication, including the construction of bridges on XRPL.",
+      "type": "conference",
+      "link": "https://stanford.zoom.us/meeting/register/tJ0vcOCorjMpGdPnS4_aBkWhphhnzld7sUKr",
+      "location": "Virtual",
+      "date": "December 12, 2023 4:15pm PST",
+      "image": "Conference.png",
+      "end_date": "December 12, 2023",
+      },
+
+   { "name": "Paris Blockchain Week",      
+      "description": "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+      "type": "conference",
+      "link": "https://www.parisblockchainweek.com/",
+      "location": "Paris, France",
+      "date": "April 9 - 12, 2024",
+      "image": "Conference.png",
+      "end_date": "April 12, 2024",
+      },
+      
+   { "name": "Consensus",      
+      "description": "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+      "type": "conference",
+      "link": "https://consensus2024.coindesk.com/sponsors/",
+      "location": "Austin, Texas",
+      "date": "May 29 - June 1, 2024",
+      "image": "Conference.png",
+      "end_date": "June 1, 2024",
+      },
+    { "name": "Permissionless",      
+      "description": "Come see XRP Ledger at Permissionless: the world's largest DeFi conference.",
+      "type": "conference",
+      "link": "https://blockworks.co/event/permissionless-iii/home",
+      "location": "Salt Lake City, Utah",
+      "date": "October 9 - 11, 2024",
+      "image": "Conference.png",
+      "end_date": "October 11, 2024",
+    },
+ 
     {
     "name": "XRPL Toronto Meetup Community - Celebrate with Us!",      
     "description": "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
     "type": "meetup",
     "link": "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
     "location": "Downtown, Toronto",
-    "date": "December 7th, 6pm - 9pm",
+    "date": "TBD",
     "image": "event-meetup-toronto@2x.jpg",
-    "end_date": "December 7, 2023"
+    "end_date": "January 31, 2024"
     },
-    
 ]
 def categorize_dates():
     past = []
