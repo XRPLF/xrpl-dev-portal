@@ -7,7 +7,7 @@ top_nav_grouping: 概要
 sidebar: disabled
 labels:
   - ブロックチェーン
-template: page-faq2.html.jinja
+#template: page-faq2.html.jinja
 filters:
   - faq
 name: よくある質問

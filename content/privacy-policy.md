@@ -1,10 +1,10 @@
 ---
 html: privacy-policy.html
 parent: xrp-ledger-overview.html
-blurb: 
+blurb:
 subtitle: Privacy Policy
 top_nav_grouping: About
-template: page-privacy-policy.html.jinja
+#template: page-privacy-policy.html.jinja
 name: Privacy Policy
 ---
 # XRPL.org Privacy Policy
