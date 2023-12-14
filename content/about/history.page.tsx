@@ -18,7 +18,7 @@ export default function History() {
         <div className="position-relative">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/history-orange.svg")}
+            src={require("../img/backgrounds/history-orange.svg")}
             className="landing-bg"
             id="history-orange"
           />
@@ -55,7 +55,7 @@ export default function History() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/history-purple.svg")}
+            src={require("../img/backgrounds/history-purple.svg")}
             id="history-purple"
           />
         </div>

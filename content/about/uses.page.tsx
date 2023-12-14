@@ -1,11 +1,11 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
-import numLight from "./static/js/ecosystem/numbers-animation-light.json";
-import numDark from "./static/js/ecosystem/numbers-animation.json";
-import arrow from "./static/js/ecosystem/arrow-animation.json";
+import numLight from "../static/js/ecosystem/numbers-animation-light.json";
+import numDark from "../static/js/ecosystem/numbers-animation.json";
+import arrow from "../static/js/ecosystem/arrow-animation.json";
 
 import { useLottie } from "lottie-react";
-import { useThemeFromClassList } from "./@theme/helpers";
+import { useThemeFromClassList } from "../@theme/helpers";
 
 const logos = {
   infrastructure: [
@@ -798,7 +798,7 @@ export default function Uses() {
             >
               <span className="mr-3">
                 <img
-                  src={require("./static/img/uses/usecase-filter.svg")}
+                  src={require("../static/img/uses/usecase-filter.svg")}
                   alt="Filter button"
                 />
               </span>

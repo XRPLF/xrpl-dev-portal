@@ -1,19 +1,25 @@
   - group: XRPL Overview
+    page: about/index.page.tsx
     expanded: false
     items:
       - label: Use Cases & Featured Projects
+        page: about/uses.page.tsx
       - label: History
+        page: about/history.page.tsx
       - label: XRP
+        page: about/xrp.page.tsx
       - label: Impact
+        page: about/impact.page.tsx
       - label: XRPL Foundation
         href: https://foundation.xrpl.org/
         external: true
-      - page: faq.md
-      - page: privacy-policy.md
+      - page: about/faq.md
+      - page: about/privacy-policy.md
   - group: Documentation
+    page: docs.page.tsx
+    href: /docs/
     expanded: false
     items:
-      - label: Documentation Index
       - page: introduction/index.md
         expanded: false
         items:
@@ -592,8 +598,9 @@
     expanded: false
     items:
       - label: Code Samples
-        page: code-samples.page.tsx
+        page: resources/code-samples.page.tsx
       - group: Dev Tools
+        page: resources/dev-tools/index.page.tsx
         expanded: false
         items:
           - label: RPC Tool
@@ -632,6 +639,8 @@
           - page: resources/contribute-documentation/tutorial-guidelines.md
           - page: resources/contribute-documentation/tutorial-structure.md
   - group: Contribute to the XRPL Community
+    page: contribute.page.tsx
+    href: /community
     expanded: false
     items:
       - label: Events

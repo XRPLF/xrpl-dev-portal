@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
-import mapDark from "./static/js/impact/mapDark.json"
-import mapLight from "./static/js/impact/mapLight.json"
+import mapDark from "../static/js/impact/mapDark.json";
+import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
-import { useThemeFromClassList } from "./@theme/helpers";
+import { useThemeFromClassList } from "../@theme/helpers";
 
 export default function Impact() {
   const theme = useThemeFromClassList(['dark', 'light'])
@@ -21,7 +21,7 @@ export default function Impact() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/community-purple.svg")}
+            src={require("../img/backgrounds/community-purple.svg")}
             className="landing-bg"
             id="impact-purple"
           />
@@ -41,7 +41,7 @@ export default function Impact() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/home-green.svg")}
+            src={require("../img/backgrounds/home-green.svg")}
             id="impact-green"
           />
         </div>
@@ -94,7 +94,7 @@ export default function Impact() {
               <a href="#" id="playvideo">
                 <img
                   alt="Preview of man speaking with a play button"
-                  src={require("./static/img/impact/video_sustainable@2x.png")}
+                  src={require("../static/img/impact/video_sustainable@2x.png")}
                   id="xrpl-overview-video-intro"
                   className="w-100 video-image"
                 />
@@ -125,12 +125,12 @@ export default function Impact() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("./img/backgrounds/cta-community-purple.svg")}
+              src={require("../img/backgrounds/cta-community-purple.svg")}
               className="cta cta-top-left"
             />
             <img
               alt="default-alt-text"
-              src={require("./img/backgrounds/cta-calculator-green.svg")}
+              src={require("../img/backgrounds/cta-calculator-green.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">

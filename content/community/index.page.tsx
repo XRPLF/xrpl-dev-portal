@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
-import NetworkNodeLight from "./static/js/community/NetworkNodeLight.json";
-import GrantsDark from "./static/js/community/XRPLGrantsDark.json";
-import CareersDark from "./static/js/community/CareersDark.json";
+import NetworkNodeLight from "../static/js/community/NetworkNodeLight.json";
+import GrantsDark from "../static/js/community/XRPLGrantsDark.json";
+import CareersDark from "../static/js/community/CareersDark.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "./@theme/helpers";
 
@@ -95,35 +95,35 @@ export default function Contribute() {
               className="parallax one"
               width="220px"
               height="160px"
-              src={require("./static/img/community/community-one.png")}
+              src={require("../static/img/community/community-one.png")}
             />
             <img
               alt="Person speaking at a conference"
               className="parallax two"
               width="120px"
               height="160px"
-              src={require("./static/img/community/community-two.png")}
+              src={require("../static/img/community/community-two.png")}
             />
             <img
               alt="Person sitting and speaking"
               className="parallax three"
               width="102px"
               height="102px"
-              src={require("./static/img/community/community-three.png")}
+              src={require("../static/img/community/community-three.png")}
             />
             <img
               alt="People chatting"
               className="parallax four"
               width="120px"
               height="160px"
-              src={require("./static/img/community/community-four@2x.png")}
+              src={require("../static/img/community/community-four@2x.png")}
             />
             <img
               alt="Person speaking at Apex"
               className="parallax five"
               width="216px"
               height="160px"
-              src={require("./static/img/community/community-five@2x.png")}
+              src={require("../static/img/community/community-five@2x.png")}
             />
           </div>
           <div className="col-lg-6 mx-auto text-left text-md-center">
@@ -229,7 +229,7 @@ export default function Contribute() {
                 </h6>
                 <img
                   alt="$10K - $200K"
-                  src={require("./static/img/community/community-grants-1.svg")}
+                  src={require("../static/img/community/community-grants-1.svg")}
                 />
               </div>
               <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
@@ -238,7 +238,7 @@ export default function Contribute() {
                 </h6>
                 <img
                   alt="$6.0M"
-                  src={require("./static/img/community/community-grants-2.svg")}
+                  src={require("../static/img/community/community-grants-2.svg")}
                 />
               </div>
               <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
@@ -247,7 +247,7 @@ export default function Contribute() {
                 </h6>
                 <img
                   alt="50+"
-                  src={require("./static/img/community/community-grants-3.svg")}
+                  src={require("../static/img/community/community-grants-3.svg")}
                 />
               </div>
               <div id="xrplGrantsDark-small" className="d-lg-none d-block mt-4 pt-3">
@@ -269,7 +269,7 @@ export default function Contribute() {
             <div className="col pr-2 d-lg-block d-none">
               <img
                 alt="Bubbles with people inside"
-                src={require("./static/img/community/community-blog@2x.png")}
+                src={require("../static/img/community/community-blog@2x.png")}
                 className="w-100 blog-graphic"
               />
             </div>
@@ -292,7 +292,7 @@ export default function Contribute() {
               <div className="d-lg-none d-block">
                 <img
                   alt="Bubbles with people inside"
-                  src={require("./static/img/community/community-blog@2x.png")}
+                  src={require("../static/img/community/community-blog@2x.png")}
                   className="w-100 blog-graphic"
                 />
               </div>
@@ -325,7 +325,7 @@ export default function Contribute() {
                 <div className=" pr-1 mr-3 align-self-start">
                   <img
                     alt="People standing at Apex"
-                    src={require("./static/img/community/community-events-apex-small@2x.png")}
+                    src={require("../static/img/community/community-events-apex-small@2x.png")}
                     className="w-100"
                   />
                   <p className="bold text-light mt-3">
@@ -335,7 +335,7 @@ export default function Contribute() {
                 <div className=" px-1 mx-3 align-self-center">
                   <img
                     alt="People standing in a circle"
-                    src={require("./static/img/community/community-events-meetup-small@2x.png")}
+                    src={require("../static/img/community/community-events-meetup-small@2x.png")}
                     className="w-100"
                   />
                   <p className="bold text-light mt-3">
@@ -345,7 +345,7 @@ export default function Contribute() {
                 <div className=" pl-1 ml-3 align-self-end">
                   <img
                     alt="Blue and pink card"
-                    src={require("./static/img/community/community-events-hackathon-small@2x.png")}
+                    src={require("../static/img/community/community-events-hackathon-small@2x.png")}
                     className="w-100"
                   />
                   <p className="bold text-light mt-3">
@@ -373,7 +373,7 @@ export default function Contribute() {
                 <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
                   <img
                     alt="People standing at Apex"
-                    src={require("./static/img/community/community-events-apex@2x.png")}
+                    src={require("../static/img/community/community-events-apex@2x.png")}
                     className="w-100"
                   />
                   <h6 className="mt-3">{translate("Welcome to Apex 2021")}</h6>
@@ -381,7 +381,7 @@ export default function Contribute() {
                 <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
                   <img
                     alt="People standing in a circle"
-                    src={require("./static/img/community/community-events-meetup@2x.png")}
+                    src={require("../static/img/community/community-events-meetup@2x.png")}
                     className="w-100"
                   />
                   <h6 className="mt-3">{translate("XRPL Community Meetup")}</h6>
@@ -389,7 +389,7 @@ export default function Contribute() {
                 <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
                   <img
                     alt="Blue and pink card"
-                    src={require("./static/img/community/community-events-hackathon@2x.png")}
+                    src={require("../static/img/community/community-events-hackathon@2x.png")}
                     className="w-100"
                   />
                   <h6 className="mt-3">{translate("XRPL Hackathon 2022")}</h6>
@@ -458,7 +458,7 @@ export default function Contribute() {
                 <div className=" pr-1 mr-3">
                   <img
                     alt="Preview of xrpl community design assets webpages"
-                    src={require("./static/img/community/community-design-assets.png")}
+                    src={require("../static/img/community/community-design-assets.png")}
                     className="w-100"
                   />
                 </div>
@@ -477,7 +477,7 @@ export default function Contribute() {
               <div className=" pr-1 mr-3">
                 <img
                   alt="Preview of xrpl community design assets webpages"
-                  src={require("./static/img/community/community-design-assets.png")}
+                  src={require("../static/img/community/community-design-assets.png")}
                   className="w-100"
                 />
               </div>
@@ -488,12 +488,12 @@ export default function Contribute() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("./img/backgrounds/cta-community-purple.svg")}
+              src={require("../img/backgrounds/cta-community-purple.svg")}
               className="d-none-sm cta cta-top-left"
             />
             <img
               alt="default-alt-text"
-              src={require("./img/backgrounds/cta-community-green.svg")}
+              src={require("../img/backgrounds/cta-community-green.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">
