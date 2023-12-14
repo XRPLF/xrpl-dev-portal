@@ -192,7 +192,7 @@ Use the `XChainAddAccountCreateAttestation` transaction to submit each attestati
   }, {autofill: true, wallet: wallet_issuingchain})
 ```
 
-### 8. Submit a `SignerListSet` transaction from the genesis account on the issuing chain, using the witnesses' signing keys as the signers.
+### 8. Submit a `SignerListSet` transaction from the genesis account on the issuing chain.
 
 ```javascript
   const signerlistset_issuingchain = await client_issuingchain.submitAndWait({
