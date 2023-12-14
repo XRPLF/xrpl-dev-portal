@@ -340,7 +340,7 @@
                       <label class="font-weight-bold" for="input_{{category_id}}">{{ category_name }}</label>
                   </div>
                 {% endfor %}
-              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>    
+              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>
                 {% for category_id, category_name in other_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
@@ -375,7 +375,7 @@
   <section class="container-new py-26">
     <div class="col-lg-5 p-3">
       <div class="d-flex flex-column-reverse">
-      <div class="d-flex justify-content-start align-items-center"> 
+      <div class="d-flex justify-content-start align-items-center">
         <div class="arrow-animation" id="arrowAnimation"> </div>
         <span class="explore-projects">Explore Featured Projects </span>
       </div>
@@ -539,8 +539,8 @@
                       <label class="font-weight-bold" for="input_{{category_id}}">{{ category_name }}</label>
                   </div>
                 {% endfor %}
-  
-              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>    
+
+              <p class="category-header pt-5 mt-3 mb-4">{% trans %}Other Categories{% endtrans %} <span id="other_count_old" class="other_count category_count">0</span></p>
                 {% for category_id, category_name in other_categories.items() %}
                   <div class="cat_checkbox category-checkbox pb-2">
                       <input class="events-filter input_{{category_id}}" type="checkbox" name="categories" id="input_{{category_id}}" value="{{category_id}}">
@@ -572,7 +572,7 @@
       </div>
       <!-- end cards -->
 
-    </div> 
+    </div>
     <!-- end company cards -->
 
   </section>
@@ -599,7 +599,7 @@
 <script type="application/javascript" src="{{currentpage.prefix}}assets/js/use-cases.js"></script>
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/numbers-animation.json"></script>
 <script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/numbers-animation-light.json"></script>
-<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/arrow-animation.json"></script>
+<script type="text/javascript" src="{{currentpage.prefix}}assets/js/ecosystem/arrow-animation.js"></script>
 
 <script type="text/javascript">
   function numAnimate(){
