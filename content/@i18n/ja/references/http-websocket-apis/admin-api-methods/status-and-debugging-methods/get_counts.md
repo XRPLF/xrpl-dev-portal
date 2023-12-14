@@ -10,15 +10,14 @@ labels:
 
 `get_counts`コマンドは、サーバーの健全性に関するさまざまな統計情報を提供します。そのほとんどは、現在メモリーに格納されている各種オブジェクトの数です。
 
-_`get_counts`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`get_counts`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 90,
@@ -26,9 +25,9 @@ _`get_counts`メソッドは、権限のないユーザーは実行できない[
    "min_count": 100
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "get_counts",
@@ -39,15 +38,16 @@ _`get_counts`メソッドは、権限のないユーザーは実行できない[
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: get_counts [min_count]
 rippled get_counts 100
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
@@ -59,10 +59,9 @@ rippled get_counts 100
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -97,9 +96,9 @@ rippled get_counts 100
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -137,10 +136,11 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-応答は[標準フォーマット][]に従っています。結果に含まれるフィールドのリストは、予告なく変更される可能性がありますが、（特に）以下のいずれかが含まれます。
+応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っています。結果に含まれるフィールドのリストは、予告なく変更される可能性がありますが、（特に）以下のいずれかが含まれます。
 
 | `Field`       | 型   | 説明                                         |
 |:--------------|:-------|:----------------------------------------------------|
@@ -152,10 +152,5 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

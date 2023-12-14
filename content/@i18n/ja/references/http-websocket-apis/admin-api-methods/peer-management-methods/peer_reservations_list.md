@@ -8,42 +8,42 @@ labels:
 # peer_reservations_list
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
-`{{currentpage.name}}`メソッドは、[ピアリザベーション][]を一覧表示します。[新規: rippled 1.4.0][]
+`{% $frontmatter.seo.title %}`メソッドは、[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)を一覧表示します。[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
-_`{{currentpage.name}}`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`{% $frontmatter.seo.title %}`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 
 ### 要求フォーマット
 
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_list_example_1",
-  "command": "{{currentpage.name}}"
+  "command": "{% $frontmatter.seo.title %}"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}"
+    "method": "{% $frontmatter.seo.title %}"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
-#Syntax: {{currentpage.name}}
-rippled {{currentpage.name}}
+#Syntax: {% $frontmatter.seo.title %}
+rippled {% $frontmatter.seo.title %}
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 この要求にはパラメーターは含まれません。
 
@@ -52,10 +52,9 @@ rippled {{currentpage.name}}
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_list_example_1",
@@ -74,9 +73,9 @@ rippled {{currentpage.name}}
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -93,9 +92,9 @@ rippled {{currentpage.name}}
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 2019-Dec-27 21:56:07.253260422 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -115,27 +114,23 @@ Loading: "/etc/rippled.cfg"
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`        | 型    | 説明                                                |
 |:---------------|:------|:----------------------------------------------------|
-| `reservations` | 配列 | 既存の[ピアリザベーション][]のリスト。各メンバーはピアリザベーションオブジェクトです。詳細は以下のとおりです。 |
+| `reservations` | 配列 | 既存の[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)のリスト。各メンバーはピアリザベーションオブジェクトです。詳細は以下のとおりです。 |
 
 #### ピアリザベーションオブジェクト
 
-`reservations`配列の各メンバーは、1つの[ピアリザベーション][]を表すJSONオブジェクトです。このオブジェクトのフィールドを次に示します。
+`reservations`配列の各メンバーは、1つの[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)を表すJSONオブジェクトです。このオブジェクトのフィールドを次に示します。
 
-{% include '_snippets/peer_reservation_object.ja.md' %}
-<!--_ -->
+{% partial file="/_snippets/peer_reservation_object.ja.md" /%}
+
 
 ### 考えられるエラー
 
-- いずれかの[汎用エラータイプ][]。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+- いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。

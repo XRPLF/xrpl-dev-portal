@@ -45,7 +45,7 @@ Walk through the code, one chunk at a time. Don’t belabor topics that have bee
 
 An important thing to emphasize is that every interaction with the XRPL is either a transaction or a request, and that all transactions and requests are essentially the same. The sample code we provide shows how to prepare the transaction or request, and how to process the returned results. Knowing how to submit and respond to one transaction or request gives a pretty good idea for how to submit and respond to any transaction or request.
 
-(Technically there is third category, similar to a request: a notification from a subscription stream. See [Subscription Methods](subscription-methods.html).)
+(Technically there is third category, similar to a request: a notification from a subscription stream. See [Subscription Methods](../../references/http-websocket-apis/public-api-methods/subscription-methods/index.md).)
 
 ## See Also
 

@@ -8,14 +8,14 @@ labels:
 ---
 # アカウントの種類
 
-{% include '_snippets/issuing-and-operational-addresses-intro.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/issuing-and-operational-addresses-intro.ja.md" /%}
+
 
 ## 資金のライフサイクル
 
 トークン発行者がこのような役割を分担すると、以下の図のように資金が一方向に流れるようになります。
 
-{{ include_svg("img/issued-currency-funds-flow.ja.svg", "図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー")}}
+[{% inline-svg file="/img/issued-currency-funds-flow.ja.svg" /%}](/img/issued-currency-funds-flow.ja.svg "図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー")
 
 発行アドレスは、待機アドレスに支払いを送信することでトークンを作成します。これらのトークンは(多くの場合)債務を表すため、発行アドレスの観点からはマイナスの価値を持ちます。同じトークンは、待機アドレスの観点も含めると、他の観点からはプラスの価値を持ちます。
 
@@ -39,7 +39,7 @@ labels:
 
 ### 複数の発行アドレス
 
-金融機関はXRP Ledgerで1つの発行アドレスから複数の通貨を発行することができます。ただし、[送金手数料](transfer-fees.html)のパーセンテージや[Global Freeze](freezes.html)の状態など、1つのアドレスから発行される全ての(代替可能)トークンに等しく適用される設定もあります。トークンの種類ごとに設定を変えて柔軟に管理したい場合、金融機関は通貨ごとに異なる発行アドレスを使用する必要があります。
+金融機関はXRP Ledgerで1つの発行アドレスから複数の通貨を発行することができます。ただし、[送金手数料](../tokens/transfer-fees.md)のパーセンテージや[Global Freeze](../tokens/fungible-tokens/freezes.md)の状態など、1つのアドレスから発行される全ての(代替可能)トークンに等しく適用される設定もあります。トークンの種類ごとに設定を変えて柔軟に管理したい場合、金融機関は通貨ごとに異なる発行アドレスを使用する必要があります。
 
 
 ## 運用アドレス
@@ -69,17 +69,12 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [アカウント](accounts.html)
-    - [暗号鍵](cryptographic-keys.html)
+    - [アカウント](accounts.md)
+    - [暗号鍵](cryptographic-keys.md)
 - **チュートリアル:**
-    - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
-    - [レギュラーキーペアの変更または削除](change-or-remove-a-regular-key-pair.html)
+    - [レギュラーキーペアの割り当て](../../tutorials/manage-account-settings/assign-a-regular-key-pair.md)
+    - [レギュラーキーペアの変更または削除](../../tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **リファレンス:**
     - [account_infoメソッド][]
     - [SetRegularKeyトランザクション][]
-    - [AccountRootオブジェクト](accountroot.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)

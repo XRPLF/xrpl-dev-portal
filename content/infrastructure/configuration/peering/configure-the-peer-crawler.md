@@ -8,7 +8,7 @@ labels:
 ---
 # Configure the Peer Crawler
 
-By default, [`rippled` servers](xrpl-servers.html) provide statistics publicly to anyone who asks using the [peer crawler API](peer-crawler.html), to make it easier to track the health and topology of [the XRP Ledger's peer-to-peer network](peer-protocol.html). You can configure your server to provide more or less information, or to reject peer crawler requests entirely.
+By default, [`rippled` servers](xrpl-servers.html) provide statistics publicly to anyone who asks using the [peer crawler API](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md), to make it easier to track the health and topology of [the XRP Ledger's peer-to-peer network](../../../concepts/networks-and-servers/peer-protocol.md). You can configure your server to provide more or less information, or to reject peer crawler requests entirely.
 
 This document contains steps for two options:
 
@@ -21,23 +21,29 @@ To configure how much information your server provides in response to peer crawl
 
 1. Edit your `rippled`'s config file.
 
-        vim /etc/opt/ripple/rippled.cfg
+    ```
+    vim /etc/opt/ripple/rippled.cfg
+    ```
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 2. Add or update the `[crawl]` stanza in your config file, and save the changes:
 
-        [crawl]
-        overlay = 1
-        server = 1
-        counts = 0
-        unl = 1
+    ```
+    [crawl]
+    overlay = 1
+    server = 1
+    counts = 0
+    unl = 1
+    ```
 
-    The fields in this stanza control which fields the server returns in the [peer crawler response](peer-crawler.html#response-format). The names of the config fields match the fields of the API response. A setting with a value of `1` means to include the field in the response. A value of `0` means to omit that field from the response. This example shows the default values for each setting.
+    The fields in this stanza control which fields the server returns in the [peer crawler response](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md#response-format). The names of the config fields match the fields of the API response. A setting with a value of `1` means to include the field in the response. A value of `0` means to omit that field from the response. This example shows the default values for each setting.
 
 3. After saving the changes to the config file, restart your `rippled` server to apply the updated configuration:
 
-        systemctl restart rippled
+    ```
+    systemctl restart rippled
+    ```
 
 
 ## Disable the Peer Crawler
@@ -46,34 +52,35 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 
 1. Edit your `rippled`'s config file.
 
-        vim /etc/opt/ripple/rippled.cfg
+    ```
+    vim /etc/opt/ripple/rippled.cfg
+    ```
 
-    {% include '_snippets/conf-file-location.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 2. Add or update the `[crawl]` stanza in your config file, and save the changes:
 
-        [crawl]
-        0
+    ```
+    [crawl]
+    0
+    ```
 
     Remove or comment out all other contents of the crawl stanza.
 
 3. After saving the changes to the config file, restart your `rippled` server to apply the updated configuration:
 
-        systemctl restart rippled
+    ```
+    systemctl restart rippled
+    ```
 
 
 ## See Also
 
 - **Concepts:**
-    - [Peer Protocol](peer-protocol.html)
+    - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 - **Tutorials:**
     - [Manage the rippled Server](manage-the-rippled-server.html)
 - **References:**
-    - [server_info method][]
-    - [peers method][]
-    - [Peer Crawler](peer-crawler.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+    - [server_info method](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)
+    - [peers method](../../../references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md)
+    - [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)

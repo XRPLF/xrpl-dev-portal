@@ -8,9 +8,9 @@ labels:
 ---
 # Assign a Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](cryptographic-keys.html)_, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your [account](accounts.html) and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
+The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions. If the private key of a regular key pair is compromised, you can remove or replace it without changing the rest of your [account](../../concepts/accounts/accounts.md) and re-establishing its relationships to other accounts. You can also rotate a regular key pair proactively. (Neither of those things is possible for the master key pair of an account, which is intrinsically linked to the account's address.)
 
-For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](../../concepts/accounts/cryptographic-keys.md).
 
 This tutorial walks through the steps required to assign a regular key pair to your account:
 
@@ -24,13 +24,12 @@ This tutorial walks through the steps required to assign a regular key pair to y
 
 Generate a key pair that you'll assign to your account as a regular key pair.
 
-This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the [wallet_propose method][] of a server you run. This might look as follows:
+This key pair is the same data type as a master key pair, so you can generate it the same way: you can use the client library of your choice or use the [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) of a server you run. This might look as follows:
 
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```json
 // Request:
 
@@ -54,9 +53,9 @@ _WebSocket_
   "type": "response"
 }
 ```
+{% /tab %}
 
-_JSON-RPC_
-
+{% tab label="JSON-RPC" %}
 ```json
 // Request:
 
@@ -79,9 +78,9 @@ _JSON-RPC_
     }
 }
 ```
+{% /tab %}
 
-_Commandline_
-
+{% tab label="Commandline" %}
 ```sh
 $ rippled wallet_propose
 
@@ -98,50 +97,51 @@ $ rippled wallet_propose
    }
 }
 ```
+{% /tab %}
 
-_Python_
-
+{% tab label="Python" %}
 ```py
 keypair = xrpl.wallet.Wallet.create()
 print("seed:", keypair.seed)
 print("classic address:", keypair.address)
 ```
+{% /tab %}
 
-_JavaScript_
-
+{% tab label="JavaScript" %}
 ```js
 const keypair = new xrpl.Wallet()
 console.log("seed:", keypair.seed)
 console.log("classic address:", keypair.classicAddress)
 ```
+{% /tab %}
 
-_Java_
-
+{% tab label="Java" %}
 ```java
 WalletFactory walletFactory = DefaultWalletFactory.getInstance();
 Wallet keypair = walletFactory.randomWallet(true).wallet();
 System.out.println(keypair);
 System.out.println(keypair.privateKey().get());
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 In the next step, you'll use the address from this response (`account_id` in the API response) to assign the key pair as a regular key pair to your account. Also, save the seed value from this key pair (`master_seed` in the API response) somewhere securely; you'll use that key to sign transactions later. (Everything else, you can forget about.)
 
 
 ## 2. Assign the Key Pair to Your Account as a Regular Key Pair
 
-Use a [SetRegularKey transaction][] to assign the key pair you generated in step 1 to your account as a regular key pair.
+Use a [SetRegularKey transaction](../../references/protocol/transactions/types/setregularkey.md) to assign the key pair you generated in step 1 to your account as a regular key pair.
 
-When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are [several ways of securely signing transactions](secure-signing.html), but this tutorial uses a local `rippled` server.
+When assigning a regular key pair to your account for the first time, the SetRegularKey transaction requires signing with your account's master private key (secret). There are [several ways of securely signing transactions](../../concepts/transactions/secure-signing.md), but this tutorial uses a local `rippled` server.
 
-When you send later SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.html). Note that you should still not submit your regular private key across the network.
+When you send later SetRegularKey transactions, you can sign using the existing regular private key to replace or [remove itself](change-or-remove-a-regular-key-pair.md). Note that you should still not submit your regular private key across the network.
 
 
 ### Sign Your Transaction
 
-{% include '_snippets/tutorial-sign-step.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
+
 
 Populate the request fields with the following values:
 
@@ -156,10 +156,9 @@ Populate the request fields with the following values:
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "sign",
@@ -171,9 +170,9 @@ An example of the request format:
    "secret": "ssCATR7CBvn4GLd1UuU2bqqQffHki"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "sign",
@@ -189,25 +188,25 @@ An example of the request format:
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: sign secret tx_json
 rippled sign ssCATR7CBvn4GLd1UuU2bqqQffHki '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93", "RegularKey": "rsprUqu6BHAffAeG4HpSdjBNvnA6gdnZV7"}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -228,9 +227,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -250,9 +249,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -272,8 +271,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
 
@@ -282,25 +282,24 @@ Next, use the `submit` command to send the transaction blob (`tx_blob` or `signe
 
 ### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method][].
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md).
 
 #### Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "submit",
     "tx_blob": "1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"submit",
@@ -311,25 +310,25 @@ An example of the request format:
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: submit tx_blob
 rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75F26E0917F001338BD3C9AA1A39B9FBD583DFFFD96CF2E2D7A7446304402204BCD5663F3A2BA02D2CE374439096EC6D27273522CD6E6E0BDBFB518730EAAE402200ECD02D8D2525D6FA4642613E71E395ECCEA01C42C35A668BF092A00EB649C268114830923439D307E642CED308FD91EF701A7BAA74788141620D685FB08D81A70D0B668749CF2E130EA7540
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -353,9 +352,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -378,9 +377,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -403,24 +402,25 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
-Note that the response contains a `hash` of the transaction, which you can use to [look up the transaction's final outcome](tx.html).
+Note that the response contains a `hash` of the transaction, which you can use to [look up the transaction's final outcome](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md).
 
 
 ## 3. Verify the Regular Key Pair
 
-At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. **To avoid losing control of your account,** it is important that you test your regular key before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.html). If you make a mistake and lose access to your account, no one can restore it for you.
+At this point, the regular key pair is assigned to your account and you should be able to send transactions using the regular key pair. **To avoid losing control of your account,** it is important that you test your regular key before you take any additional steps such as [disabling the master key pair](disable-master-key-pair.md). If you make a mistake and lose access to your account, no one can restore it for you.
 
-To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction][] from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local `rippled` server as a [way of securely signing transactions](secure-signing.html).
+To verify that your account has the regular key pair set correctly, submit an [AccountSet transaction](../../references/protocol/transactions/types/accountset.md) from your account, signing it with the regular private key you assigned to your account in step 2. As in step 1, this tutorial uses a local `rippled` server as a [way of securely signing transactions](../../concepts/transactions/secure-signing.md).
 
 
 ### Sign Your Transaction
 
-{% include '_snippets/tutorial-sign-step.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
+
 
 Populate the request fields with the following values:
 
@@ -435,10 +435,9 @@ Populate the request fields with the following values:
 Here's an example of the request format. Note that the request does not include any `AccountSet` options. This means that a successful transaction has no effect other than to confirm that the regular key pair is set correctly for your account (and to destroy the transaction cost).
 
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "sign",
@@ -449,9 +448,9 @@ Here's an example of the request format. Note that the request does not include 
    "secret": "sh8i92YRnEjJy3fpFkL8txQSCVo79"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "sign",
@@ -466,25 +465,25 @@ Here's an example of the request format. Note that the request does not include 
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: sign secret tx_json
 rippled sign sh8i92YRnEjJy3fpFkL8txQSCVo79 '{"TransactionType": "AccountSet", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -504,9 +503,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -525,9 +524,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -546,8 +545,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
 
@@ -556,25 +556,24 @@ Next, use the `submit` command to send the transaction blob (`tx_blob` or `signe
 
 ### Submit Your Transaction
 
-Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method][].
+Take the `signedTransaction` value from the offline signing response or the `tx_blob` value from the `sign` command response and submit it as the `tx_blob` value using the [submit method](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md).
 
 #### Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "submit",
     "tx_blob": "1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"submit",
@@ -585,25 +584,25 @@ An example of the request format:
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: submit tx_blob
 rippled submit 1200032280000000240000000468400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100A50E867D3B1B5A39F23F1ABCA5C7C3EC755442FDAA357EFD897B865ACA7686DB02206077BF459BCE39BCCBFE1A128DA986D1E00CBEC5F0D6B0E11710F60BE2976FB88114623B8DA4A0BFB3B61AB423391A182DC693DC159E
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -626,9 +625,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -650,9 +649,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -674,15 +673,16 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-If the transaction fails with the following [result codes](transaction-results.html), here are some things to check:
+If the transaction fails with the following [result codes](../../references/protocol/transactions/transaction-results/transaction-results.md), here are some things to check:
 
 - **`tefBAD_AUTH`**: The regular key you signed your test transaction with doesn't match the regular key you set in the previous step. Check that the secret and address for your regular key pair match and double-check which values you used in each step.
-- **`tefBAD_AUTH_MASTER`** or **`temBAD_AUTH_MASTER`**: Your account doesn't have a regular key assigned. Check that the SetRegularKey transaction executed successfully. You can also use the [account_info method][] to confirm that your regular key is set in the `RegularKey` field as expected.
+- **`tefBAD_AUTH_MASTER`** or **`temBAD_AUTH_MASTER`**: Your account doesn't have a regular key assigned. Check that the SetRegularKey transaction executed successfully. You can also use the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) to confirm that your regular key is set in the `RegularKey` field as expected.
 
-For possible causes of other result codes, see [Transaction Results](transaction-results.html).
+For possible causes of other result codes, see [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md).
 
 
 ## See Also
@@ -690,24 +690,15 @@ For possible causes of other result codes, see [Transaction Results](transaction
 Now that you're familiar with the benefits of assigning a regular key pair to an account, consider taking a look at these related topics and tutorials:
 
 - **Concepts:**
-    - [Cryptographic Keys](cryptographic-keys.html)
-    - [Multi-Signing](multi-signing.html)
-    - [Issuing and Operational Addresses](account-types.html)
+    - [Cryptographic Keys](../../concepts/accounts/cryptographic-keys.md)
+    - [Multi-Signing](../../concepts/accounts/multi-signing.md)
+    - [Issuing and Operational Addresses](../../concepts/accounts/account-types.md)
 - **Tutorials:**
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
-    - [Set Up Multi-Signing](set-up-multi-signing.html)
-    - [List XRP as an Exchange](list-xrp-as-an-exchange.html)
+    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
+    - [Set Up Multi-Signing](set-up-multi-signing.md)
+    - [List XRP as an Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **References:**
-    - [wallet_propose method][]
-    - [sign method][]
-    - [SetRegularKey transaction][]
-    - [AccountRoot object](accountroot.html) where the regular key is stored in the field `RegularKey`
-
-
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+    - [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md)
+    - [sign method](../../references/http-websocket-apis/admin-api-methods/signing-methods/sign.md)
+    - [SetRegularKey transaction](../../references/protocol/transactions/types/setregularkey.md)
+    - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) where the regular key is stored in the field `RegularKey`

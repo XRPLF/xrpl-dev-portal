@@ -24,9 +24,9 @@ When the flow of funds between the two assets in a pool is relatively active and
 
 ## How the AMM Works
 
-An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](tokens.html). Tokens with different issuers are considered different assets for this purpose. This means that there can be an AMM for two tokens with the same currency code but different issuers ("FOO issued by WayGate" is different than "FOO issued by StableFoo"), or the same issuer but different currency codes. The order does not matter; the AMM for FOO.WayGate to XRP is the same as for XRP to FOO.WayGate.
+An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](../index.md). Tokens with different issuers are considered different assets for this purpose. This means that there can be an AMM for two tokens with the same currency code but different issuers ("FOO issued by WayGate" is different than "FOO issued by StableFoo"), or the same issuer but different currency codes. The order does not matter; the AMM for FOO.WayGate to XRP is the same as for XRP to FOO.WayGate.
 
-When users want to trade in the decentralized exchange, their [Offers](offers.html) and [Cross-Currency Payments](cross-currency-payments.html) can automatically use AMMs to complete the trade. A single transaction might execute by matching Offers, AMMs, or a mix of both, depending on what's cheaper.
+When users want to trade in the decentralized exchange, their [Offers](offers.md) and [Cross-Currency Payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching Offers, AMMs, or a mix of both, depending on what's cheaper.
 
 An AMM sets its exchange rate based on the balance of assets in the pool. When you trade against an AMM, the exchange rate adjusts based on how much your trade shifts the balance of assets the AMM holds. As its supply of one asset goes down, the price of that asset goes up; as its supply of an asset goes up, the price of that asset goes down. An AMM gives generally better exchange rates when it has larger overall amounts in its pool. This is because any given trade causes a smaller shift in the balance of the AMM's assets. The more a trade unbalances the AMM's supply of the two assets, the more extreme the exchange rate becomes.
 
@@ -39,7 +39,7 @@ The XRP Ledger's implements a _geometric mean_ AMM with a weight parameter of 0.
 To prevent misuse, some restrictions apply to the assets used in an AMM. If you try to create an AMM with an asset that does not meet these restrictions, the transaction fails. The rules are as follows:
 
 - The asset must not be an LP Token from another AMM.
-- If the asset is a token whose issuer uses [Authorized Trust Lines](authorized-trust-lines.html), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
+- If the asset is a token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
 - If the [Clawback amendment][] :not_enabled: is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
 
 
@@ -51,13 +51,13 @@ For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchan
 
 Anyone can deposit assets to an existing AMM. When they do, they receive new LP Tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP Tokens they hold compared to the total number of LP Tokens outstanding.
 
-LP Tokens are like other tokens in the XRP Ledger, so you can use them in many [types of payments](payment-types.html) or trade them in the decentralized exchange. (To receive LP Tokens as payment, you must set up a [trust line](trust-lines-and-issuing.html) with a non-zero limit with the AMM Account as the issuer.) However, you can _only_ send LP Tokens directly to the AMM (redeeming them) using the [AMMWithdraw][] transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit][] transaction type.
+LP Tokens are like other tokens in the XRP Ledger, so you can use them in many [types of payments](../../payment-types/index.md) or trade them in the decentralized exchange. (To receive LP Tokens as payment, you must set up a [trust line](../fungible-tokens/index.md) with a non-zero limit with the AMM Account as the issuer.) However, you can _only_ send LP Tokens directly to the AMM (redeeming them) using the [AMMWithdraw](../../../references/protocol/transactions/types/ammwithdraw.md) transaction type, not through other types of payments. Similarly, you can only send assets to the AMM's pool through the [AMMDeposit](../../../references/protocol/transactions/types/ammdeposit.md) transaction type.
 
-The AMM is designed so that an AMM's asset pool is empty if and only if the AMM has no outstanding LP Tokens. This situation can only occur as the result of an [AMMWithdraw][] transaction; when it does, the AMM is automatically deleted.
+The AMM is designed so that an AMM's asset pool is empty if and only if the AMM has no outstanding LP Tokens. This situation can only occur as the result of an [AMMWithdraw](../../../references/protocol/transactions/types/ammwithdraw.md) transaction; when it does, the AMM is automatically deleted.
 
 ### LP Token Currency Codes
 
-LP Tokens use a special type of currency code in the 160-bit hexadecimal ["non-standard" format](currency-formats.html#nonstandard-currency-codes). These codes have the first 8 bits `0x03`. The remainder of the code is a SHA-512 hash, truncated to the first 152 bits, of the two assets' currency codes and their issuers. (The assets are placed in a "canonical order" with the numerically lower currency+issuer pair first.) As a result, the LP Tokens for a given asset pair's AMM have a predictable, consistent currency code.
+LP Tokens use a special type of currency code in the 160-bit hexadecimal ["non-standard" format](../../../references/protocol/data-types/currency-formats.md#nonstandard-currency-codes). These codes have the first 8 bits `0x03`. The remainder of the code is a SHA-512 hash, truncated to the first 152 bits, of the two assets' currency codes and their issuers. (The assets are placed in a "canonical order" with the numerically lower currency+issuer pair first.) As a result, the LP Tokens for a given asset pair's AMM have a predictable, consistent currency code.
 
 
 ## Trading Fees
@@ -66,7 +66,7 @@ Trading fees are a source of passive income for liquidity providers, and they of
 
 Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%. Liquidity providers have an incentive to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the amount of LP Tokens those liquidity providers hold.
 
-To vote, a liquidity provider sends an [AMMVote transaction][]. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes weighted by how many LP Tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote then only the top 8 votes (by most LP Tokens held) are counted. Even though liquidity providers' share of LP Tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.html)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
+To vote, a liquidity provider sends an [AMMVote transaction](../../../references/protocol/transactions/types/ammvote.md). Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes weighted by how many LP Tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote then only the top 8 votes (by most LP Tokens held) are counted. Even though liquidity providers' share of LP Tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.md)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
 
 ### Auction Slot
 
@@ -79,20 +79,20 @@ With any AMM, when the price of its assets shifts significantly in external mark
 
 In the ledger's state data, an AMM consists of multiple [ledger entries](ledger-object-types.html):
 
-- An [AMM entry][] describing the automated market maker itself.
+- An [AMM entry](../../../references/protocol/ledger-data/ledger-entry-types/amm.md) describing the automated market maker itself.
 
-- A special [AccountRoot entry][] that issues the AMM's LP Tokens, and holds the AMM's XRP (if it has any).
+- A special [AccountRoot entry](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) that issues the AMM's LP Tokens, and holds the AMM's XRP (if it has any).
 
     The address of this AccountRoot is chosen somewhat randomly when the AMM is created, and it is different if the AMM is deleted and re-created. This is to prevent people from funding the AMM account with excess XRP in advance.
 
-- [Trust lines](trust-lines-and-issuing.html) to the special AMM Account for the tokens in the AMM's pool.
+- [Trust lines](../fungible-tokens/index.md) to the special AMM Account for the tokens in the AMM's pool.
 
-These ledger entries are not owned by any account, so the [reserve requirement](reserves.html) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](transaction-cost.html) that requires the sender to burn a larger than usual amount of XRP.
+These ledger entries are not owned by any account, so the [reserve requirement](../../accounts/reserves.md) does not apply to them. However, to prevent spam, the transaction to create an AMM has a special [transaction cost](../../transactions/transaction-cost.md) that requires the sender to burn a larger than usual amount of XRP.
 
 
 ## Deletion
 
-An AMM is deleted when an [AMMWithdraw transaction][] withdraws all assets from its pool. This only happens by redeeming all of the AMM's outstanding LP Tokens. Deleting the AMM includes removes all the ledger entries associated with it, such as:
+An AMM is deleted when an [AMMWithdraw transaction](../../../references/protocol/transactions/types/ammwithdraw.md) withdraws all assets from its pool. This only happens by redeeming all of the AMM's outstanding LP Tokens. Deleting the AMM includes removes all the ledger entries associated with it, such as:
 
 - AMM
 - AccountRoot
@@ -101,11 +101,6 @@ An AMM is deleted when an [AMMWithdraw transaction][] withdraws all assets from 
 
 If there are more than 512 trust lines attached to the AMM account when it would be deleted, the withdraw succeeds and deletes as many trust lines as it can, but leaves the AMM in the ledger with no assets in its pool.
 
-While an AMM has no assets in its pool, anyone can delete it by sending an [AMMDelete transaction][]; if the remaining number of trust lines is still greater than the limit, multiple AMMDelete transactions may be necessary to fully delete the AMM. Alternatively, anyone can perform a [special deposit](ammdeposit.html#empty-amm-special-case) to fund the AMM as if it were new. No other operations are valid on an AMM with an empty asset pool.
+While an AMM has no assets in its pool, anyone can delete it by sending an [AMMDelete transaction](../../../references/protocol/transactions/types/ammdelete.md); if the remaining number of trust lines is still greater than the limit, multiple AMMDelete transactions may be necessary to fully delete the AMM. Alternatively, anyone can perform a [special deposit](../../../references/protocol/transactions/types/ammdeposit.md#empty-amm-special-case) to fund the AMM as if it were new. No other operations are valid on an AMM with an empty asset pool.
 
 There is no refund or incentive for deleting an empty AMM.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

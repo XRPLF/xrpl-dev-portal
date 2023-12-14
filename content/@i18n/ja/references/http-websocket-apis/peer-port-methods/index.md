@@ -1,8 +1,11 @@
 ---
 html: peer-port-methods.html
 parent: http-websocket-apis.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # ピアポートメソッド
 
 ネットワークトポロジーやステータスメトリクスを共有するための特別なAPIメソッドです。
+
+{% child-pages /%}

@@ -10,15 +10,14 @@ labels:
 
 `log_level`コマンドは`rippled`サーバーのログ詳細レベルを変更するか、各ログメッセージカテゴリー（_パーティション_）の現在のログレベルを返します。
 
-_`log_level`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`log_level`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": "ll1",
@@ -27,15 +26,16 @@ _`log_level`メソッドは、権限のないユーザーは実行できない[�
    "partition": "PathRequest"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: log_level [[partition] severity]
 rippled log_level PathRequest debug
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
@@ -48,10 +48,9 @@ rippled log_level PathRequest debug
 
 成功した場合の応答例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン（ログレベルの設定）*
-
+{% tab label="コマンドライン（ログレベルの設定）" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -62,9 +61,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン（ログレベルの確認）*
-
+{% tab label="コマンドライン（ログレベルの確認）" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -127,10 +126,11 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-応答は[標準フォーマット][]に従っています。応答フォーマットは、要求に`severity`が指定されているかどうかに応じて異なります。指定されていた場合はログレベルが変更され、成功した場合の結果には追加フィールドが含まれません。
+応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っています。応答フォーマットは、要求に`severity`が指定されているかどうかに応じて異なります。指定されていた場合はログレベルが変更され、成功した場合の結果には追加フィールドが含まれません。
 
 それ以外の場合、要求には以下のフィールドが含まれます。
 
@@ -140,10 +140,5 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

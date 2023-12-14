@@ -66,4 +66,4 @@ The XRPL is open to anyone who wants to set up their own instance of the rippled
 
 For developers or new users who want to try out the features of XRPL without investing their own funds, there are two developer environments, _Testnet_ and _Devnet_. Users can create an account funded with 1,000 (fake) XRP and connect to either environment to interact with the XRPL.
 
-Next: [What is XRP?](what-is-xrp.html)
+Next: [What is XRP?](what-is-xrp.md)

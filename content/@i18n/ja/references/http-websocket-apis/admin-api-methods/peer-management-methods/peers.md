@@ -8,31 +8,31 @@ labels:
 # peers
 [[ソース]](https://github.com/XRPLF/rippled/blob/52f298f150fc1530d201d3140c80d3eaf781cb5f/src/ripple/rpc/handlers/Peers.cpp "Source")
 
-`peers`コマンドは、[ピアプロトコル](peer-protocol.html)でこのサーバーに現在接続されているその他のすべての`rippled`サーバーのリスト（各サーバーの接続状況と同期状況を含む）を返します。
+`peers`コマンドは、[ピアプロトコル](../../../../concepts/networks-and-servers/peer-protocol.md)でこのサーバーに現在接続されているその他のすべての`rippled`サーバーのリスト（各サーバーの接続状況と同期状況を含む）を返します。
 
-*`peers`要求は、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`peers`要求は、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 2,
    "command": "peers"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled peers
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 この要求には追加パラメーターはありません。
 
@@ -40,10 +40,9 @@ rippled peers
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": 2,
@@ -156,9 +155,9 @@ rippled peers
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -269,9 +268,9 @@ rippled peers
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -375,14 +374,15 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドからなるJSONオブジェクトが含まれます。
+応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドからなるJSONオブジェクトが含まれます。
 
 | `Field`   | 型   | 説明                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `cluster` | オブジェクト | [クラスターとして構成されている](clustering.html)場合は、同じクラスター内の他の`rippled`サーバーの概要。[新規: rippled 0.30.1][] |
+| `cluster` | オブジェクト | [クラスターとして構成されている](../../../../concepts/networks-and-servers/clustering.md)場合は、同じクラスター内の他の`rippled`サーバーの概要。[新規: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 | `peers`   | 配列  | peerオブジェクトからなる配列。                                  |
 
 `cluster`オブジェクトの各フィールドは、該当する`rippled`サーバーの識別用キーペアの公開鍵です。（これは、[server_infoメソッド][]で当該サーバーから`pubkey_node`として返される値と同じです。）そのフィールドの内容は、以下のフィールドを持つオブジェクトです。
@@ -390,7 +390,7 @@ Connecting to 127.0.0.1:5005
 | `Field` | 型   | 説明                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `tag`   | 文字列 | 構成ファイルで定義されているこのクラスターメンバーの表示名。 |
-| `fee`   | 数値 | （省略される場合があります）このクラスターメンバーが[トランザクションコスト](transaction-cost.html)に適用する負荷乗数。 |
+| `fee`   | 数値 | （省略される場合があります）このクラスターメンバーが[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用する負荷乗数。 |
 | `age`   | 数値 | このクラスターメンバーからの最終クラスターレポート以降の経過秒数。 |
 
 `peers`配列の各メンバーは、以下のフィールドを持つpeerオブジェクトです。
@@ -409,14 +409,9 @@ Connecting to 127.0.0.1:5005
 | `public_key`       | 文字列  | （省略される場合があります）ピアのメッセージの整合性の検証に使用できる公開鍵。これは、検証に使用する公開鍵とは異なりますが、フォーマットは同じです。 |
 | `sanity`           | 文字列  | （省略される場合があります）このピアが現行サーバーと同じルールとレジャーシーケンスに従っているかどうか。値が`insane`の場合、ピアは並列ネットワークの一部である可能性があります。値が`unknown`の場合、現行サーバーはピアに互換性があるかどうかを把握していません。 <!-- STYLE_OVERRIDE: insane --> |
 | `status`           | 文字列  | （省略される場合があります）ピアからの最新のステータスメッセージ。`connecting`、`connected`、`monitoring`、`validating`、`shutting`のいずれかです。 |
-| `uptime`           | 数値  | `rippled`サーバーがこのピアに継続して接続していた秒数。[新規: rippled 0.30.1][] |
+| `uptime`           | 数値  | `rippled`サーバーがこのピアに継続して接続していた秒数。[新規: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 | `version`          | 文字列  | （省略される場合があります）ピアサーバーの`rippled`バージョン番号 |
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。

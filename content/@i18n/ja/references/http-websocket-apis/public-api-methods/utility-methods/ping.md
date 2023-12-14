@@ -13,19 +13,18 @@ labels:
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":1,
    "command":"ping"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"ping",
@@ -34,15 +33,16 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: ping
 rippled ping
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#ping)
 
@@ -52,10 +52,9 @@ rippled ping
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":1,
@@ -64,9 +63,9 @@ rippled ping
    "type":"response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -76,16 +75,12 @@ rippled ping
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果にフィールドが含まれません。クライアントは要求から応答までのラウンドトリップ時間を遅延として測定できます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果にフィールドが含まれません。クライアントは要求から応答までのラウンドトリップ時間を遅延として測定できます。
 
 ## 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。

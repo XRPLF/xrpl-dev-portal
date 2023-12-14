@@ -15,10 +15,9 @@ labels:
 
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -31,9 +30,9 @@ labels:
   "forward": false
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_tx",
@@ -49,15 +48,16 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax account_tx account ledger_index_min ledger_index_max [offset] [limit] [binary] [count] [forward]
 rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#account_tx)
 
@@ -68,16 +68,16 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 | `account` | 文字列 | アカウントの一意のIDであり、最も一般的にはアカウントのアドレスが使用されます。 |
 | `ledger_index_min` | 整数 | _（省略可能）_ 含めるトランザクションのレジャーのうち最古のものを指定するのに使用します。`-1`の値は、使用可能な検証済みレジャーのうち最古のバージョンを使用するよう、サーバーに指示します。 |
 | `ledger_index_max` | 整数 | _（省略可能）_ 含めるトランザクションのレジャーのうち最新のものを指定するのに使用します。`-1`の値は、使用可能な検証済みレジャーのうち最新のバージョンを使用するよう、サーバーに指示します。 |
-| `ledger_hash` | 文字列 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定][]を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定][]を参照してください） |
+| `ledger_hash` | 文字列 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
 | `binary` | ブール値 | _（省略可能）_ デフォルトは`false`です。`true`に設定すると、JSONの代わりに16進文字列でトランザクションが返されます。 |
 | `forward` | ブール値 | _（省略可能）_ デフォルトは`false`です。`true`に設定すると、最も古いレジャーを先頭としてインデックスが付けられた値が返されます。そうしない場合、最新のレジャーを先頭として結果にインデックスが付けられます。（結果を示した各ページの中身は順序よく整理されていない場合がありますが、ページ全体としては順序付けされています。） |
 | `limit` | 整数 | _（省略可能）_ デフォルトは変化します。取得するトランザクションの数を制限します。サーバーはこの値を受け入れる必要はありません。 |
-| `marker` | [マーカー][] | 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。サーバーが使用できるレジャーの範囲に変更があっても、この値は変わりません。 |
+| `marker` | [マーカー](../../api-conventions/markers-and-pagination.md) | 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。サーバーが使用できるレジャーの範囲に変更があっても、この値は変わりません。 |
 
 次の各フィールドは省略可能とされていますが、要求内で**1つ以上は使用する必要があります**: `ledger_index`、`ledger_hash`、`ledger_index_min`、または`ledger_index_max`。
 
-次のフィールドは廃止されました： `offset`、`count`、`descending`、`ledger_max`、`ledger_min`。 [削除: rippled 1.7.0][]
+次のフィールドは廃止されました： `offset`、`count`、`descending`、`ledger_max`、`ledger_min`。 [削除: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_RED")
 
 ### 照会されたデータの繰り返し
 
@@ -89,10 +89,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 2,
@@ -326,9 +325,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 {
@@ -561,18 +560,19 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`            | 型                         | 説明                       |
 |:-------------------|:---------------------------|:---------------------------|
-| `account` | 文字列 | 関連するアカウントを識別する一意の[アドレス][]。 |
-| `ledger_index_min` | 整数 - [レジャーインデックス][] | トランザクションで実際に検索された最古のレジャーのレジャーインデックス。 |
-| `ledger_index_max` | 整数 - [レジャーインデックス][] | トランザクションで実際に検索された最新のレジャーのレジャーインデックス。 |
+| `account` | 文字列 | 関連するアカウントを識別する一意の[アドレス](basic-data-types.html#アドレス)。 |
+| `ledger_index_min` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | トランザクションで実際に検索された最古のレジャーのレジャーインデックス。 |
+| `ledger_index_max` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | トランザクションで実際に検索された最新のレジャーのレジャーインデックス。 |
 | `limit` | 整数 | 要求で使用される`limit`値。（サーバーによって強制される実際の制限値とは異なる場合があります。） |
-| `marker` | [マーカー][] | 応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。 |
+| `marker` | [マーカー](../../api-conventions/markers-and-pagination.md) | 応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。 |
 | `transactions` | 配列 | 以降で説明する、要求の基準を満たすトランザクションの配列。 |
 | `validated` | ブール値 | このフィールドが含まれていて`true`に設定されている場合、この応答内の情報は検証済みのレジャーバージョンから取得されています。そうでない場合、情報は変更されることがあります。 |
 
@@ -582,7 +582,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 | `Field`        | 型                               | 説明                     |
 |:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | 整数 | このトランザクションを含むレジャーバージョンの[レジャーインデックス][]。 |
+| `ledger_index` | 整数 | このトランザクションを含むレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 | `meta` | オブジェクト（JSON）または文字列（バイナリ） | `binary`がTrueの場合、これは16進文字列のトランザクションメタデータです。そうでない場合、トランザクションメタデータはJSONフォーマットになります。 |
 | `tx` | オブジェクト | （JSONモードのみ）トランザクションを定義するJSONオブジェクト。 |
 | `tx_blob` | 文字列 | （バイナリモードのみ）トランザクションを表す一意のハッシュ化された文字列。 |
@@ -590,12 +590,8 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actMalformed` - 要求の`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
+* `actMalformed` - 要求の`account`フィールドに指定した[アドレス](basic-data-types.html#アドレス)が、正しいフォーマットではありません。
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-* `lgrIdxsInvalid` - 要求で`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](troubleshoot-the-rippled-server.html)されていないためにサーバーに検証済みレジャーの範囲が存在しません。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+* `lgrIdxsInvalid` - 要求で`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](../../../../infrastructure/troubleshooting/index.md)されていないためにサーバーに検証済みレジャーの範囲が存在しません。

@@ -2,7 +2,8 @@
 html: pseudo-transaction-types.html
 parent: transaction-formats.html
 blurb: バリデータがXRP Ledgerに適用する場合がある疑似トランザクションのフォーマットです。
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 labels:
   - ブロックチェーン
 ---
@@ -19,3 +20,5 @@ labels:
 | Fee           | 0                                                        |
 | SigningPubKey | ""                                                       |
 | Signature     | ""                                                       |
+
+{% child-pages /%}

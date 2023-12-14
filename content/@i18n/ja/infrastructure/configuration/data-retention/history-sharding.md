@@ -8,7 +8,7 @@ labels:
 ---
 # 履歴シャーディング
 
-[導入: rippled 0.90.0][]
+[導入: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE")
 
 稼働中のサーバーは、ネットワーク実行時に検知または取得したレジャーに関するデータを格納したデータベースを作成します。各`rippled`サーバーは、そのレジャーのデータをレジャーストアーに保存しますが、保存されたレジャー数が設定された容量制限を超えると、オンライン削除ロジックによりこれらのデータベースがローテーションされます。
 
@@ -34,11 +34,6 @@ labels:
 
 ## 関連項目
 
-- [履歴シャーディングの設定](configure-history-sharding.html)
+- [履歴シャーディングの設定](configure-history-sharding.md)
 - [download_shardメソッド][]
 - [crawl_shardsメソッド][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

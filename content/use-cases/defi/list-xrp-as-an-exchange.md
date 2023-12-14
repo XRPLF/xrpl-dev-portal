@@ -41,7 +41,7 @@ To support XRP, Alpha Exchange must:
 
 See also:
 
-* [Compliance Guidelines](stablecoin-compliance-guidelines.html) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
+* [Compliance Guidelines](../../concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md) — Token issuers and exchanges are different, but exchanges should also ensure that they are complying with local regulations and reporting to the appropriate agencies.
 
 <!-- These sections need to be topics of their own, without the story.
 * [Requirements for Sending to XRP Ledger](stablecoin-issuer.html#requirements-for-sending-to-xrp-ledger)
@@ -49,25 +49,25 @@ See also:
 * [Requirements for Receiving from XRP Ledger](stablecoin-issuer.html#requirements-for-receiving-from-xrp-ledger)
 -->
 
-* [Precautions](stablecoin-precautions.html)
+* [Precautions](../../concepts/tokens/fungible-tokens/stablecoins/precautions.md)
 
 ### Partial Payments
 
-Before integrating, exchanges should be aware of the [partial payments](partial-payments.html) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](bouncing-payments.html) without incurring additional cost as the sender.
+Before integrating, exchanges should be aware of the [partial payments](../../concepts/payment-types/partial-payments.md) feature. This feature allows XRP Ledger users to send successful payments that reduce the amount received instead of increasing the `SendMax`. This feature can be useful for [returning payments](../../concepts/payment-types/bouncing-payments.md) without incurring additional cost as the sender.
 
 #### Partial Payments Warning
 
-When the [`tfPartialPayment` flag](payment.html#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
+When the [`tfPartialPayment` flag](../../references/protocol/transactions/types/payment.md#payment-flags) is enabled, the `Amount` field **_is not guaranteed to be the amount received_**. The `delivered_amount` field of a payment's metadata indicates the amount of currency actually received by the destination account. When receiving a payment, use `delivered_amount` instead of the Amount field to determine how much your account received instead.
 
-**Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](partial-payments.html).
+**Warning:** Be aware that malicious actors could exploit this. For more information, see [Partial Payments](../../concepts/payment-types/partial-payments.md).
 
 ### Accounts
 
-XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](deleting-accounts.html). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
+XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](../../concepts/accounts/deleting-accounts.md). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](../../concepts/accounts/reserves.md) that cannot be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
 
-To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](account-types.html) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+To follow Ripple's recommended best practices, Alpha Exchange should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](../../concepts/accounts/account-types.md) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
 
-* A [_cold wallet_](account-types.html#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
+* A [_cold wallet_](../../concepts/accounts/account-types.md#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
 
     If a malicious actor compromises an exchange's cold wallet, the possible consequences are:
 
@@ -81,24 +81,24 @@ To follow Ripple's recommended best practices, Alpha Exchange should create at l
 
         * The malicious actor could issue tokens in the XRP Ledger by using the cold wallet, but those tokens should not be valued by anyone (unless the exchange is also a token issuer).
 
-        * If a malicious actor enables the [Authorized Trust Lines](authorized-trust-lines.html) setting for the account, that cannot be unset, although this only relates to issuing tokens and should not affect an exchange that is not also an issuer. Any other settings a malicious actor changes with a master key can be reverted.
+        * If a malicious actor enables the [Authorized Trust Lines](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md) setting for the account, that cannot be unset, although this only relates to issuing tokens and should not affect an exchange that is not also an issuer. Any other settings a malicious actor changes with a master key can be reverted.
 
-* One or more [_hot wallets_](account-types.html#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
+* One or more [_hot wallets_](../../concepts/accounts/account-types.md#operational-addresses) to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.
 
-    For more information about the possible consequences of a compromised hot wallet, see [Operational Account Compromise](account-types.html#operational-address-compromise).
+    For more information about the possible consequences of a compromised hot wallet, see [Operational Account Compromise](../../concepts/accounts/account-types.md#operational-address-compromise).
 
-* Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement [multi-signing](multi-signing.html) to increase security.
+* Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet does not need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement [multi-signing](../../concepts/accounts/multi-signing.md) to increase security.
 
-    For more information about the possible consequences of a compromised warm wallet, see [Standby Account Compromise](account-types.html#standby-address-compromise).
+    For more information about the possible consequences of a compromised warm wallet, see [Standby Account Compromise](../../concepts/accounts/account-types.md#standby-address-compromise).
 
 
 See also:
 
-* [Issuing and Operational Addresses](account-types.html)
+* [Issuing and Operational Addresses](../../concepts/accounts/account-types.md)
 
-* [Creating Accounts](accounts.html#creating-accounts)
+* [Creating Accounts](../../concepts/accounts/accounts.md#creating-accounts)
 
-* [Reserves](reserves.html)
+* [Reserves](../../concepts/accounts/reserves.md)
 
 ### Balance Sheets
 
@@ -198,7 +198,7 @@ For more information, see [Specifying Currency Amounts][].
 
 With exchanges like _Alpha Exchange_, XRP can be "on-ledger" or "off-ledger":
 
-* **On-Ledger XRP**: XRP that can be queried through the public XRP Ledger by specifying the public [address](addresses.html) of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see [XRP](what-is-xrp.html).
+* **On-Ledger XRP**: XRP that can be queried through the public XRP Ledger by specifying the public [address](../../concepts/accounts/addresses.md) of the XRP holder. The counterparty to these balances is the XRP Ledger. For more information, see [XRP](../../introduction/what-is-xrp.md).
 
 * **Off-Ledger XRP**: XRP that is held by the accounting system of an exchange and can be queried through the exchange interface. Off-ledger XRP balances are credit-based. The counterparty is the exchange holding the XRP.
 
@@ -311,7 +311,7 @@ A user named Charlie wants to deposit 50,000 XRP to Alpha Exchange. Doing this i
 
 1. Charlie submits a payment of 50,000  XRP to Alpha Exchange's [cold wallet](#accounts).
 
-    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](source-and-destination-tags.html). (To use this, Alpha Exchange should have set the `asfRequireDest` flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](accountset.html#accountset-flags)).
+    a. Charlie adds an identifier (in this case, `789`) to the payment to associate it with his account at Alpha Exchange. This is called a [_destination tag_](../../concepts/transactions/source-and-destination-tags.md). (To use this, Alpha Exchange should have set the `asfRequireDest` flag on all of its accounts to require all incoming payments to have a destination tag like Charlie's. For more information, see [AccountSet Flags](../../references/protocol/transactions/types/accountset.md#accountset-flags)).
 
 2. The software at Alpha Exchange detects the incoming payment, and recognizes `789` as the destination tag for Charlie’s account.
 
@@ -412,14 +412,14 @@ XRP Balances</i></b></td>
 
 Alpha Exchange users (like Charlie) can trade credit-based balances on Alpha Exchange. Alpha Exchange should keep track of user balances on its new balance sheet as these trades are made. These trades are _off-ledger_ and independent from the XRP Ledger, so the balance changes are not recorded on the XRP Ledger.
 
-Customers who hold XRP in their own XRP Ledger accounts can also use the distributed exchange built into the XRP Ledger to trade currencies issued by gateways. For more information about trading _on_ the XRP Ledger, see [Lifecycle of an Offer](offers.html#lifecycle-of-an-offer).
+Customers who hold XRP in their own XRP Ledger accounts can also use the distributed exchange built into the XRP Ledger to trade currencies issued by gateways. For more information about trading _on_ the XRP Ledger, see [Lifecycle of an Offer](../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer).
 
 
 ### Rebalance XRP Holdings
 
-Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a [transaction cost](transaction-cost.html), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be enough to cover the XRP Ledger's transaction costs.)
+Exchanges can adjust the balances between their hot and cold wallets at any time. Each balance adjustment consumes a [transaction cost](../../concepts/transactions/transaction-cost.md), but does not otherwise affect the aggregate balance of all the accounts. The aggregate, on-ledger balance should always exceed the total balance available for trade on the exchange. (The excess should be enough to cover the XRP Ledger's transaction costs.)
 
-The following table demonstrates a balance adjustment of 80,000 XRP (via a [Payment transaction][] on the XRP Ledger) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debiting the hot wallet and crediting the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.
+The following table demonstrates a balance adjustment of 80,000 XRP (via a [Payment transaction](../../references/protocol/transactions/types/payment.md) on the XRP Ledger) between Alpha Exchange's cold wallet and its hot wallet, where the cold wallet was debited and the hot wallet was credited. If the payment were reversed (debiting the hot wallet and crediting the cold wallet), the hot wallet balance would decrease. Balance adjustments like these allow an exchange to limit the risks associated with holding XRP in online hot wallets.
 
 
 <table>
@@ -607,22 +607,16 @@ Off-Ledger Balances</td>
 ## See Also
 
 - **Concepts:**
-    - [Accounts](accounts.html)
-    - [Direct XRP Payments](direct-xrp-payments.html)
-    - [Partial Payments](partial-payments.html)
-    - [Source and Destination Tags](source-and-destination-tags.html)
+    - [Accounts](../../concepts/accounts/accounts.md)
+    - [Direct XRP Payments](../../concepts/payment-types/direct-xrp-payments.md)
+    - [Partial Payments](../../concepts/payment-types/partial-payments.md)
+    - [Source and Destination Tags](../../concepts/transactions/source-and-destination-tags.md)
 - **Tutorials:**
-    - [Install `rippled`](install-rippled.html)
-    - [Send XRP](send-xrp.html)
-    - [Set Up Secure Signing](secure-signing.html)
-    - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
+    - [Install `rippled`](../../infrastructure/installation/index.md)
+    - [Send XRP](../../tutorials/get-started/send-xrp.md)
+    - [Set Up Secure Signing](../../concepts/transactions/secure-signing.md)
+    - [Monitor Incoming Payments with WebSocket](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
 - **References:**
-    - [Payment transaction][]
-    - [account_info method][]
-    - [AccountRoot object](accountroot.html)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+    - [Payment transaction](../../references/protocol/transactions/types/payment.md)
+    - [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)
+    - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)

@@ -7,7 +7,7 @@ labels:
 ---
 # rippled Server States
 
-Depending on how the `rippled` server is configured, how long it has been running, and other factors, a server may be participating in the global XRP Ledger peer-to-peer network to different degrees. This is represented as the `server_state` field in the responses to the [server_info method][] and [server_state method][]. The possible responses follow a range of ascending interaction, with each later value superseding the previous one. Their definitions are as follows (in order of increasing priority):
+Depending on how the `rippled` server is configured, how long it has been running, and other factors, a server may be participating in the global XRP Ledger peer-to-peer network to different degrees. This is represented as the `server_state` field in the responses to the [server_info method](../public-api-methods/server-info-methods/server_info.md) and [server_state method](../public-api-methods/server-info-methods/server_state.md). The possible responses follow a range of ascending interaction, with each later value superseding the previous one. Their definitions are as follows (in order of increasing priority):
 
 | `Value`        | Description                                                 |
 |:---------------|:------------------------------------------------------------|
@@ -20,8 +20,3 @@ Depending on how the `rippled` server is configured, how long it has been runnin
 | `proposing`    | The server is participating in validation of the ledger and currently proposing its own version. |
 
 **Note:** The distinction between `full`, `validating`, and `proposing` is based on synchronization with the rest of the global network, and it is normal for a server to fluctuate between these states as a course of general operation.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

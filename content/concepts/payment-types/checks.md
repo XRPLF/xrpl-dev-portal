@@ -17,21 +17,21 @@ XRP Ledger Checks can have expiration times after which they may no longer be ca
 
 - Checks allow people to exchange funds using a process that is familiar to and accepted by the banking industry.
 
-- If your intended recipient uses [Deposit Authorization](depositauth.html) to block direct payments from strangers, a check is a good alternative.
+- If your intended recipient uses [Deposit Authorization](../accounts/depositauth.md) to block direct payments from strangers, a check is a good alternative.
 
 - Flexible check cashes. The recipient can redeem the Check for between a minimum and maximum amount.
 
 
 ## Check Lifecycle
 
-1. The sender sends a [CheckCreate transaction][], which defines:
+1. The sender sends a [CheckCreate transaction](../../references/protocol/transactions/types/checkcreate.md), which defines:
     - The recipient.
     - An expiration date.
     - The maximum amount that can be debited from their account.
 
-2. When the transaction is processed, the XRP Ledger creates a `Check` object. The check can be canceled by the sender or receiver with a [CheckCancel transaction][].
+2. When the transaction is processed, the XRP Ledger creates a `Check` object. The check can be canceled by the sender or receiver with a [CheckCancel transaction](../../references/protocol/transactions/types/checkcancel.md).
 
-3. The recipient submits a [CheckCash transaction][] that transfers the funds and destroys the `Check` object. Recipients have two options for cashing checks:
+3. The recipient submits a [CheckCash transaction](../../references/protocol/transactions/types/checkcash.md) that transfers the funds and destroys the `Check` object. Recipients have two options for cashing checks:
     - Exact Amount: They specify an exact amount to cash that doesn't exceed the check maximum.
     - Flexible Amount: They specify a minimum amount to cash and the XRP Ledger delivers as much as possible up to the check maximum. If the sender doesn't have the funds to at least meet the specified minimum, the transaction fails.
 
@@ -43,27 +43,21 @@ XRP Ledger Checks can have expiration times after which they may no longer be ca
 
 For more information about Checks in the XRP Ledger, see:
 
-- [Transaction Reference](transaction-types.html)
-    - [CheckCreate][]
-    - [CheckCash][]
-    - [CheckCancel][]
-- [Checks Tutorials](use-checks.html)
-    - [Send a Check](send-a-check.html)
-    - [Look up Checks by sender address](look-up-checks-by-sender.html)
-    - [Look up Checks by recipient address](look-up-checks-by-recipient.html)
-    - [Cash a Check for an exact amount](cash-a-check-for-an-exact-amount.html)
-    - [Cash a Check for a flexible amount](cash-a-check-for-a-flexible-amount.html)
-    - [Cancel a Check](cancel-a-check.html)
+- [Transaction Reference](../../references/protocol/transactions/types/index.md)
+    - [CheckCreate](../../references/protocol/transactions/types/checkcreate.md)
+    - [CheckCash](../../references/protocol/transactions/types/checkcash.md)
+    - [CheckCancel](../../references/protocol/transactions/types/checkcancel.md)
+- [Checks Tutorials](../../tutorials/use-specialized-payment-types/use-checks/use-checks.md)
+    - [Send a Check](../../tutorials/use-specialized-payment-types/use-checks/send-a-check.md)
+    - [Look up Checks by sender address](../../tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md)
+    - [Look up Checks by recipient address](../../tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md)
+    - [Cash a Check for an exact amount](../../tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
+    - [Cash a Check for a flexible amount](../../tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
+    - [Cancel a Check](../../tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md)
 - [Checks amendment][]
 
 For more information about related features, see:
 
-* [Deposit Authorization](depositauth.html)
-* [Escrow](escrow.html)
-* [Payment Channels Tutorial](use-payment-channels.html)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+* [Deposit Authorization](../accounts/depositauth.md)
+* [Escrow](escrow.md)
+* [Payment Channels Tutorial](../../tutorials/use-specialized-payment-types/use-payment-channels.md)

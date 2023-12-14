@@ -8,54 +8,54 @@ labels:
 # peer_reservations_add
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")
 
-この`{{currentpage.name}}`メソッドは、XRP Ledger[ピアツーピアネットワーク](peer-protocol.html)内の特定のピアサーバーの予約済みスロットを追加または更新します。[新規: rippled 1.4.0][]
+この`{% $frontmatter.seo.title %}`メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバーの予約済みスロットを追加または更新します。[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
-_`{{currentpage.name}}`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`{% $frontmatter.seo.title %}`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 
 ### 要求フォーマット
 
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "peer_reservations_add_example_1",
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
     "description": "Ripple s1 server 'WOOL'"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
       "description": "Ripple s1 server 'WOOL'"
     }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
-#Syntax: {{currentpage.name}} <public_key> [<description>]
-rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
+#Syntax: {% $frontmatter.seo.title %} <public_key> [<description>]
+rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
 | `Field`       | 型     | 説明                                                |
 |:--------------|:-------|:----------------------------------------------------|
-| `public_key` | 文字列 | [base58][]での予約を追加するピアリザベーションの[ノード公開鍵][] 。 |
+| `public_key` | 文字列 | [base58](base58-encodings.html)での予約を追加するピアリザベーションの[ノード公開鍵](peer-protocol.html#ノードキーペア) 。 |
 | `description` | 文字列 | _(省略可)_ ピアリザベーションに関するカスタムの説明。64文字を超える部分は、再起動時にサーバーによって切り捨てられます。 |
 
 
@@ -64,10 +64,9 @@ rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG9
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_add_example_1",
@@ -81,9 +80,9 @@ rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG9
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -95,9 +94,9 @@ rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG9
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -112,32 +111,28 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`    | 型     | 説明                                                   |
 |:-----------|:-------|:-------------------------------------------------------|
-| `previous` | オブジェクト | _（省略される場合があります）_ 同じ[ノード公開鍵][]の以前のエントリ（同じノード公開鍵を使用した予約がすでに存在する場合）。以下で説明するように、このオブジェクトは、**ピアリザベーションオブジェクト**というフォーマットになります。 |
+| `previous` | オブジェクト | _（省略される場合があります）_ 同じ[ノード公開鍵](peer-protocol.html#ノードキーペア)の以前のエントリ（同じノード公開鍵を使用した予約がすでに存在する場合）。以下で説明するように、このオブジェクトは、**ピアリザベーションオブジェクト**というフォーマットになります。 |
 
-同じ[ノード公開鍵][]に以前のエントリがなかった場合、`result`オブジェクトは空です。
+同じ[ノード公開鍵](peer-protocol.html#ノードキーペア)に以前のエントリがなかった場合、`result`オブジェクトは空です。
 
 #### ピアリザベーションオブジェクト
 
 `previous`フィールドが指定されている場合は、このピアリザベーションの以前のステータスが次のフィールドとともに表示されます。
 
-{% include '_snippets/peer_reservation_object.ja.md' %}
-<!--_ -->
+{% partial file="/_snippets/peer_reservation_object.ja.md" /%}
+
 
 
 ### 考えられるエラー
 
-- いずれかの[汎用エラータイプ][]。
+- いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 - `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58][]フォーマットの有効なノード公開鍵である必要があります。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58](base58-encodings.html)フォーマットの有効なノード公開鍵である必要があります。

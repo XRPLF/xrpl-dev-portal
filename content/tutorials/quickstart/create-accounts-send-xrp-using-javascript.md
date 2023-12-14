@@ -25,7 +25,7 @@ When you create an account, you receive a public/private key pair offline. Your 
 To get started, create a new folder on your local disk and install the JavaScript library using `npm`.
 
 ```
-    npm install xrpl
+npm install xrpl
 ```
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} archive.
@@ -326,13 +326,13 @@ The _Payment_ transaction expects the XRP to be expressed in drops, or 1/million
 Sign the prepared transaction.
 
 ```
-  const signed = standby_wallet.sign(prepared)
+const signed = standby_wallet.sign(prepared)
 ```
 
 Submit the transaction and wait for the results.
 
 ```
-  const tx = await client.submitAndWait(signed.tx_blob)
+const tx = await client.submitAndWait(signed.tx_blob)
 ```
 
 Request the balance changes caused by the transaction and report the results.

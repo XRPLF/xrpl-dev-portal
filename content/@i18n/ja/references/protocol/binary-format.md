@@ -16,13 +16,13 @@ curated_anchors:
 # バイナリフォーマット
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp#L696-L718 "Source")
 
-このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバー間のピアツーピア通信](peer-protocol.html)を含む他の用途にも使用されます。通常、[`rippled` API](http-websocket-apis.html)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
+このページでは、XRP Ledgerのトランザクションとその他のデータの正規バイナリフォーマットについて説明します。このバイナリフォーマットは、トランザクションの内容のデジタル署名を作成および検証するために必要であり、[サーバー間のピアツーピア通信](../../concepts/networks-and-servers/peer-protocol.md)を含む他の用途にも使用されます。通常、[`rippled` API](../http-websocket-apis/index.md)は、JSONを使用してクライアントアプリケーションと通信します。ただしJSONは、同じデータをさまざまな同等の方法で表現できるため、デジタル署名を付与するトランザクションをシリアル化するのに適したフォーマットではありません。
 
 トランザクションをJSONまたはその他の表現から正規バイナリフォーマットへシリアル化するプロセスのステップを、以下にまとめます。
 
 1. すべての必須フィールドが指定されていること（必須の[「自動入力可能」フィールド](transaction-common-fields.html#自動入力可能なフィールド)を含む）を確認します。
 
-   [トランザクションフォーマットリファレンス](transaction-formats.html)に、XRP Ledgerトランザクションの必須フィールドと省略可能なフィールドが定義されています。
+   [トランザクションフォーマットリファレンス](transactions/index.md)に、XRP Ledgerトランザクションの必須フィールドと省略可能なフィールドが定義されています。
 
    **注記:** `SigningPubKey`もこのステップで指定する必要があります。署名の際に、署名用に指定された秘密鍵から[このキーを導出](cryptographic-keys.html#鍵導出)できます。
 
@@ -44,15 +44,11 @@ curated_anchors:
 
 **JSON:**
 
-```json
-{% include '_code-samples/tx-serialization/py/test-cases/tx1.json' %}
-```
+{% code-snippet file="/_code-samples/tx-serialization/py/test-cases/tx1.json" language="json" /%}
 
 **バイナリ（16進数として表現）:**
 
-```text
-{% include '_code-samples/tx-serialization/py/test-cases/tx1-binary.txt' %}
-```
+{% code-snippet file="/_code-samples/tx-serialization/py/test-cases/tx1-binary.txt" language="text" /%}
 
 ## サンプルコード
 
@@ -60,7 +56,7 @@ curated_anchors:
 
 - C++: [`rippled`コードベース](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp)
 - JavaScript: [`ripple-binary-codec`](https://github.com/ripple/ripple-binary-codec/)パッケージ
-- Python 3: [このリポジトリのコードサンプルセクション]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/tx-serialization/)
+- Python 3: {% repo-link path="content/_code-samples/tx-serialization/" %}このリポジトリのコードサンプルセクション{% /repo-link %}
 
 これらのすべての実装には、一般利用が可能なオープンソースライセンスが提供されているので、学習のためにドキュメントと合わせて使用するだけでなく、必要に応じてコードをインポート、使用、または変更することができます。
 
@@ -68,9 +64,9 @@ curated_anchors:
 
 ## 内部フォーマット
 
-各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、`rippled`ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、[`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp)のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）[トランザクションフォーマットリファレンス](transaction-formats.html)にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。
+各フィールドには「内部」バイナリフォーマットがあります。このフォーマットは、`rippled`ソースコードで署名時に（およびその他のほとんどの場合に）そのフィールドを表示するのに使用されます。すべてのフィールドの内部フォーマットは、[`SField.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/SField.cpp)のソースコードに定義されています。（このフィールドには、トランザクションフィールド以外のフィールドも含まれています。）[トランザクションフォーマットリファレンス](transactions/index.md)にも、すべてのトランザクションフィールドの内部フォーマットが記載されています。
 
-たとえば`Flags`[共通トランザクションフィールド](transaction-common-fields.html)はUInt32（32ビット符号なし整数）になります。
+たとえば`Flags`[共通トランザクションフィールド](transactions/common-fields.md)はUInt32（32ビット符号なし整数）になります。
 
 ### 定義ファイル
 
@@ -83,10 +79,10 @@ curated_anchors:
 | フィールド             | 内容                                                 |
 |:----------------------|:-----------------------------------------------------|
 | `TYPES` | フィールドIDの作成と正規順序でのフィールドのソートのためのデータタイプからその[「タイプコード」](#タイプコード)へのマップ。1未満のコードは実際のデータには含まれません。10000を超えるコードは、他のオブジェクト内部ではシリアル化できない「トランザクション」などの特殊な「上位」オブジェクトタイプを表します。各タイプのシリアル化方法についての詳細は、[タイプリスト](#タイプリスト)を参照してください。 |
-| `LEDGER_ENTRY_TYPES` | [レジャーオブジェクト](ledger-object-types.html)から対応するデータタイプへのマップ。これはレジャー状態データと、処理されたトランザクションの[メタデータ](transaction-metadata.html)の「affected nodes」セクションに含まれます。 |
+| `LEDGER_ENTRY_TYPES` | [レジャーオブジェクト](ledger-object-types.html)から対応するデータタイプへのマップ。これはレジャー状態データと、処理されたトランザクションの[メタデータ](transactions/metadata.md)の「affected nodes」セクションに含まれます。 |
 | `FIELDS` | トランザクション、レジャーオブジェクト、あるいはその他のデータに含まれる可能性があるすべてのフィールドを表すタプルからなるソート済み配列。各タプルの1番目のメンバーはフィールドの文字列名であり、2番目のメンバーはそのフィールドのプロパティーが含まれているオブジェクトです。（これらのフィールドの定義については、以下の「フィールドプロパティー」の表を参照してください。） |
-| `TRANSACTION_RESULTS` | [トランザクション結果コード](transaction-results.html)から対応する数値へのマップ。レジャーに含まれない結果タイプにはマイナスの値が含まれています。`tesSUCCESS`に数値0が含まれています。[`tec`クラスコード](tec-codes.html)は、レジャーに含まれている失敗を示しています。 |
-| `TRANSACTION_TYPES` | [トランザクションのタイプ](transaction-types.html)から対応する数値へのマップ。 |
+| `TRANSACTION_RESULTS` | [トランザクション結果コード](transactions/transaction-results/transaction-results.md)から対応する数値へのマップ。レジャーに含まれない結果タイプにはマイナスの値が含まれています。`tesSUCCESS`に数値0が含まれています。[`tec`クラスコード](transactions/transaction-results/tec-codes.md)は、レジャーに含まれている失敗を示しています。 |
+| `TRANSACTION_TYPES` | [トランザクションのタイプ](transactions/types/index.md)から対応する数値へのマップ。 |
 
 署名と送信のためにトランザクションをシリアル化するという目的から、`FIELDS`、`TYPES`、および`TRANSACTION_TYPES`フィールドが必要です。
 
@@ -133,11 +129,15 @@ curated_anchors:
 
 - フィールドに193～12480バイトのデータが含まれている場合、最初の2バイトは以下の式で算出されるフィールドの長さを示します。
 
-        193 + ((byte1 - 193) * 256) + byte2
+    ```
+    193 + ((byte1 - 193) * 256) + byte2
+    ```
 
 - フィールドに12481～918744バイトのデータが含まれている場合、最初の3バイトは以下の式で算出されるフィールドの長さを示します。
 
-        12481 + ((byte1 - 241) * 65536) + (byte2 * 256) + byte3
+    ```
+    12481 + ((byte1 - 241) * 65536) + (byte2 * 256) + byte3
+    ```
 
 - 長さプレフィクスが付加されているフィールドに格納できる最大データは918744バイトです。
 
@@ -176,14 +176,14 @@ curated_anchors:
 
 | タイプ名       | タイプコード | ビット長 | [長さプレフィクスを付加する]? | 説明    |
 |:--------------|:----------|:-----------|:-------------------|----------------|
-| [AccountID][] | 8 | 160 | はい | [アカウント](accounts.html)の一意のID。 |
+| [AccountID][] | 8 | 160 | はい | [アカウント](../../concepts/accounts/accounts.md)の一意のID。 |
 | [Amount][] | 6 | 64または384 | いいえ | XRPまたはトークンの金額。フィールドの長さは、XRPの場合は64ビット、トークンの場合は384ビット（64+160+160）です。 |
 | [Blob][] | 7 | 可変 | はい | 任意のバイナリデータ。このようなフィールドの中で重要なフィールドとして、`TxnSignature`（トランザクションを承認する署名）があります。 |
 | [Hash128][] | 4 | 128 | いいえ | 128ビットの任意のバイナリ値。該当する唯一のフィールドは`EmailHash`です。これは、[Gravatar](https://www.gravatar.com/)を取得する目的でアカウント所有者のメールのMD-5ハッシュを保管するフィールドです。 |
 | [Hash160][] | 17 | 160 | いいえ | 160ビットの任意のバイナリ値。これにより通貨コードまたはイシュアーが定義されます。 |
 | [Hash256][] | 5 | 256 | いいえ | 256ビットの任意のバイナリ値。これは通常、トランザクション、レジャーバージョン、またはレジャーデータオブジェクトの「SHA-512ハーフ」ハッシュを表します。 |
-| [PathSet][] | 18 | 可変 | いいえ | [複数通貨間ペイメント](cross-currency-payments.html)の有効な[ペイメントパス](paths.html)のセット。 |
-| [STArray][] | 15 | 可変 | いいえ | 可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、[memos](transaction-common-fields.html#memosフィールド)や[マルチ署名](multi-signing.html)で使用される署名者のリストがあります。 |
+| [PathSet][] | 18 | 可変 | いいえ | [複数通貨間ペイメント](../../concepts/payment-types/cross-currency-payments.md)の有効な[ペイメントパス](../../concepts/tokens/fungible-tokens/paths.md)のセット。 |
+| [STArray][] | 15 | 可変 | いいえ | 可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、[memos](transaction-common-fields.html#memosフィールド)や[マルチ署名](../../concepts/accounts/multi-signing.md)で使用される署名者のリストがあります。 |
 | [STIssue][]   | 24        | 160 or 320 | いいえ                   | 数量を含まない、資産(XRPまたはトークン)を指定します。 |
 | [STObject][] | 14 | 可変 | いいえ | 1つ以上のネストされたフィールドを含むオブジェクト。 |
 | [UInt8][] | 16 | 8 | いいえ | 8ビットの符号なし整数。 |
@@ -193,22 +193,22 @@ curated_anchors:
 
 [長さプレフィクスを付加する]: #長さプレフィクスを付加する
 
-上記のフィールドタイプの他に、[レジャーオブジェクト](ledger-object-types.html)や[トランザクションメタデータ](transaction-metadata.html)などのコンテキストでは以下のタイプが含まれることがあります。
+上記のフィールドタイプの他に、[レジャーオブジェクト](ledger-object-types.html)や[トランザクションメタデータ](transactions/metadata.md)などのコンテキストでは以下のタイプが含まれることがあります。
 
 | タイプ名     | タイプコード | [長さプレフィクスを付加する]? | 説明                 |
 |:------------|:----------|:-------------------|:------------------------------|
-| Transaction | 10001 | いいえ | [トランザクション](transaction-formats.html)全体を含む「上位」タイプ。 |
+| Transaction | 10001 | いいえ | [トランザクション](transactions/index.md)全体を含む「上位」タイプ。 |
 | LedgerEntry | 10002 | いいえ | [レジャーオブジェクト](ledger-object-types.html)全体を含む「上位」タイプ。 |
-| Validation | 10003 | いいえ | ピアツーピア通信で[コンセンサスプロセス](consensus.html)の検証投票を表すために使用される「上位」タイプ。 |
-| Metadata | 10004 | いいえ | [1つのトランザクションのメタデータ](transaction-metadata.html)を含む「上位」タイプ。 |
+| Validation | 10003 | いいえ | ピアツーピア通信で[コンセンサスプロセス](../../concepts/consensus-protocol/index.md)の検証投票を表すために使用される「上位」タイプ。 |
+| Metadata | 10004 | いいえ | [1つのトランザクションのメタデータ](transactions/metadata.md)を含む「上位」タイプ。 |
 | [UInt64][] | 3 | いいえ | 64ビットの符号なし整数。このタイプはトランザクションの指示には含まれませんが、さまざまなレジャーオブジェクトでこのタイプのフィールドが使用されます。 |
-| Vector256 | 19 | はい | このタイプはトランザクションの指示には含まれませんが、[Amendmentレジャーオブジェクト](amendments-object.html)の`Amendments`フィールドでは、現在有効な[Amendment](amendments.html)を示すためにこのタイプが使用されます。 |
+| Vector256 | 19 | はい | このタイプはトランザクションの指示には含まれませんが、[Amendmentレジャーオブジェクト](ledger-data/ledger-entry-types/amendments.md)の`Amendments`フィールドでは、現在有効な[Amendment](../../concepts/networks-and-servers/amendments.md)を示すためにこのタイプが使用されます。 |
 
 
 ### AccountIDフィールド
 [AccountID]: #accountidフィールド
 
-このタイプのフィールドには、XRP Ledger[アカウント](accounts.html)の160ビットのIDが含まれています。JSONではこれらのフィールドは[base58][] XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また[アドレスのbase58エンコード](addresses.html#アドレスのエンコード)で使用される`0x00`「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）
+このタイプのフィールドには、XRP Ledger[アカウント](../../concepts/accounts/accounts.md)の160ビットのIDが含まれています。JSONではこれらのフィールドは[base58](base58-encodings.html) XRP Ledger「アドレス」および追加のチェックサムデータとして表示されます。このため、スペルミスが有効なアドレスとなることがありません。（このエンコードは「Base58Check」とも呼ばれ、誤ったアドレスへの送金を防止します。）これらのフィールドのバイナリフォーマットにはチェックサムデータは含まれておらず、また[アドレスのbase58エンコード](addresses.html#アドレスのエンコード)で使用される`0x00`「タイププレフィクス」も含まれていません。（ただし、バイナリフォーマットは主に署名済みトランザクションに使用されるため、署名済みトランザクションを転記する際にスペルミスなどのエラーが発生すると署名が無効となり、送金できなくなります。）
 
 スタンドアロンフィールドとして表示されるAccountID（`Account`や`Destination`など）の長さは固定長の160ビットですが、[長さプレフィクスが付加](#長さプレフィクスを付加する)されます。その結果、これらのフィールドの長さインディケーターは常に`0x14`バイトになります。特殊フィールドの子として示されるAccountID（[Amount `issuer`][Amount]、[PathSet `account`][PathSet]など）では長さプレフィクスは付加 _されません_ 。
 
@@ -240,7 +240,7 @@ curated_anchors:
 #### トークンの数量フォーマット
 [[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "ソース")
 
-{{ include_svg("img/currency-number-format.ja.svg", "トークンの数量フォーマットの図") }}
+[{% inline-svg file="/img/currency-number-format.ja.svg" /%}](/img/currency-number-format.ja.svg "トークンの数量フォーマットの図")
 
 XRP Ledgerは64ビットを使って(代替可能な)トークンの金額をシリアライズします。(JSONフォーマットでは、通貨量オブジェクトの`value`フィールドが数値量になります)。バイナリ形式では、数値は"非XRP"ビット、符号ビット、指数、有効数字の順で構成されます。
 
@@ -258,9 +258,9 @@ XRP Ledgerは64ビットを使って(代替可能な)トークンの金額をシ
 - 通貨コード`0x0000000000000000000000005852500000000000`は**使用できません** 。(これは"標準フォーマット"において"XRP"を表します)。
 - 通貨コード`0x0000000000000000000000000000000000000000`(すべてゼロ)は、**許可されません**。通常、XRPの金額を通貨コードで指定することはありません。しかし、XRPの通貨コードを指定しなければならないフィールドが存在する場合、このコードはXRPを示すために使用されます。
 
-[`rippled` API](http-websocket-apis.html)は、3文字のASCIIコードを160ビットの16進数に変換するための**標準フォーマット**を以下のようにサポートしています。
+[`rippled` API](../http-websocket-apis/index.md)は、3文字のASCIIコードを160ビットの16進数に変換するための**標準フォーマット**を以下のようにサポートしています。
 
-{{ include_svg("img/currency-code-format.ja.svg", "標準通貨コードのフォーマット") }}
+[{% inline-svg file="/img/currency-code-format.ja.svg" /%}](/img/currency-code-format.ja.svg "標準通貨コードのフォーマット")
 
 1. 最初の8ビットは`0x00`でなければなりません。
 2. 次の88ビットは予約済みで、すべて`0`でなければなりません。
@@ -305,7 +305,7 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 ### Issueフィールド
 [STIssue]: #issueフィールド
 
-いくつかのフィールドは、XRPや[トークン](tokens.html)といったアセットタイプを指定します。これらのフィールドは、1つまたは2つの160ビットから構成されています：
+いくつかのフィールドは、XRPや[トークン](../../concepts/tokens/index.md)といったアセットタイプを指定します。これらのフィールドは、1つまたは2つの160ビットから構成されています：
 
 1. 最初の160ビットはアセットの[通貨コード](#通貨コード)です。XRPの場合、これはすべて0です。
 2. 最初の160ビットが全て0の場合(アセットがXRPの場合)、フィールドはそこで終了します。そうでない場合、アセットはトークンであり、次の160ビットは[トークン発行者のAccountID](#accountidフィールド)です。
@@ -325,7 +325,7 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 ### PathSetフィールド
 [PathSet]: #pathsetフィールド
 
-複数通貨間[Paymentトランザクション][]の`Paths`フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、[パス](paths.html)を参照してください。
+複数通貨間[Paymentトランザクション][]の`Paths`フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、[パス](../../concepts/tokens/fungible-tokens/paths.md)を参照してください。
 
 PathSetは、**1～6**の個別パスとして順序どおりにシリアル化されます[[ソース]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source")。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。
 
@@ -366,8 +366,3 @@ XRP Ledgerには符号なし整数タイプUInt8、UInt16、UInt32、UInt64が�
 JSONオブジェクトにこれらのフィールドが含まれている場合、ほとんどはデフォルトでJSONの数値として表されます。例外として、UInt64は文字列として表されます。これは、一部のJSONデコーダーがこれらの整数を64ビットの「倍精度」浮動小数点数として表現しようとするためです。64ビットの「倍精度」浮動小数点数では、すべてのUInt64値を完全な精度で表現することができません。
 
 もう1つの特殊なケースとして`TransactionType`フィールドがあります。JSONではこのフィールドは便宜上、トランザクションタイプの名前の文字列として表現されますが、バイナリではこのフィールドはUInt16です。[定義ファイル](#定義ファイル)内の`TRANSACTION_TYPES`オブジェクトにより、これらの文字列が特定の数値にマップされます。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

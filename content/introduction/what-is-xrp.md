@@ -57,7 +57,7 @@ Since then, the company has regularly sold XRP, used it to strengthen XRP market
 
 ### Naming
 
-Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments [to ripple through multiple hops and currencies](rippling.html). For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) standard. The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
+Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments [to ripple through multiple hops and currencies](../concepts/tokens/fungible-tokens/rippling.md). For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) standard. The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
 
 | XRP "X" Logo                           | Ripple triskelion                   |
 |:---------------------------------------|:------------------------------------|
@@ -70,4 +70,4 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 
 The trademark application was registered with the United States Patent and Trademark Office (USPTO) in 2013 with OpenCoin Inc and Ripple Labs Inc as assignees. In 2022, the trademark assignment was updated and is now assigned to the MITTETULUNDUSÜHING XRP LEDGER TRUST (“XRPLF”).
  
-Next: [Crypto Wallets](crypto-wallets.html)
+Next: [Crypto Wallets](crypto-wallets.md)

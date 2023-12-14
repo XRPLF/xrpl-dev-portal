@@ -10,14 +10,14 @@ labels:
 
 _（[Escrow Amendment][]により追加されました。）_
 
-`Escrow`オブジェクトタイプは、実行または取り消しを待機している保留中のXRP支払を表します。[EscrowCreateトランザクション][]はレジャーに`Escrow`オブジェクトを作成します。[EscrowFinish][]トランザクションまたは[EscrowCancel][]トランザクションが正常に完了すると、オブジェクトが削除されます。``Escrow``オブジェクトに [_Crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)が指定されている場合、支払が成功するのは、EscrowFinishトランザクションに指定された対応する _フルフィルメント_ がその条件を満たす場合だけです。（サポートされている唯一のCrypto-conditionタイプは[PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)です。）`Escrow`オブジェクトに`FinishAfter`時刻が指定されている場合、保留中の支払はその時刻の経過後にのみ実行されます。
+`Escrow`オブジェクトタイプは、実行または取り消しを待機している保留中のXRP支払を表します。[EscrowCreateトランザクション][]はレジャーに`Escrow`オブジェクトを作成します。[EscrowFinish](../../transactions/types/escrowfinish.md)トランザクションまたは[EscrowCancel](../../transactions/types/escrowcancel.md)トランザクションが正常に完了すると、オブジェクトが削除されます。``Escrow``オブジェクトに [_Crypto-condition_](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02)が指定されている場合、支払が成功するのは、EscrowFinishトランザクションに指定された対応する _フルフィルメント_ がその条件を満たす場合だけです。（サポートされている唯一のCrypto-conditionタイプは[PREIMAGE-SHA-256](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)です。）`Escrow`オブジェクトに`FinishAfter`時刻が指定されている場合、保留中の支払はその時刻の経過後にのみ実行されます。
 
 `Escrow`オブジェクトには次の2つのアドレスが関連付けられています。
 
 - `Escrow`オブジェクトの作成時にXRPを供給する所有者。保留中の支払が取り消されると、XRPは所有者に返金されます。
 - 保留中の支払が成功するとXRPが支払われる宛先。宛先は所有者と同じにできます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -39,37 +39,32 @@ _（[Escrow Amendment][]により追加されました。）_
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `Escrow`オブジェクトのフィールドは次のとおりです。
 
-| 名前              | JSONの型 | [内部の型][] | 説明 |
+| 名前              | JSONの型 | [内部の型](../../binary-format.md) | 説明 |
 |-------------------|-----------|---------------|-------------|
 | `LedgerEntryType`   | 文字列    | UInt16    | 値`0x0075`が文字列`Escrow`にマッピングされている場合は、このオブジェクトが`Escrow`オブジェクトであることを示します。 |
 | `Account`           | 文字列 | AccountID | この保留中の支払の所有者（送金元）のアドレス。これはXRPを供給し、保留中の支払が取り消された場合にXRPが返金されるアカウントです。 |
 | `Destination`       | 文字列 | AccountID | 保留中の支払が成功するとXRPが支払われる宛先アドレス。 |
 | `Amount`            | 文字列 | Amount    | 保留中の支払から送金されるXRPの額（drop単位）。 |
 | `Condition`         | 文字列 | VariableLength | _（省略可）_ [PREIMAGE-SHA-256 Crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1)（16進数）。指定されている場合、[EscrowFinishトランザクション][]にこの条件を満たすフルフィルメントが含まれている必要があります。 |
-| `CancelAfter`       | 数値 | UInt32 | _（省略可）_ このフィールドがあり、 _かつ_ 指定されている時刻を経過している場合にのみ、保留中の支払を取り消すことができます。具体的には、これは[Rippleエポック以降の経過秒数][]として指定され、前の検証済みレジャーの閉鎖時刻よりも早い場合に「経過した」ことになります。 |
-| `FinishAfter`       | 数値 | UInt32 | _（省略可）_ [Rippleエポック以降の経過秒数][]で示される時刻が経過した後、保留中の支払を完了できます。この時刻より前の[EscrowFinishトランザクション][]はすべて失敗します。（特にこれは、前の検証済みレジャーの閉鎖時刻と比較されます。） |
+| `CancelAfter`       | 数値 | UInt32 | _（省略可）_ このフィールドがあり、 _かつ_ 指定されている時刻を経過している場合にのみ、保留中の支払を取り消すことができます。具体的には、これは[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)として指定され、前の検証済みレジャーの閉鎖時刻よりも早い場合に「経過した」ことになります。 |
+| `FinishAfter`       | 数値 | UInt32 | _（省略可）_ [Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)で示される時刻が経過した後、保留中の支払を完了できます。この時刻より前の[EscrowFinishトランザクション][]はすべて失敗します。（特にこれは、前の検証済みレジャーの閉鎖時刻と比較されます。） |
 | `Flags`             | 数値 | UInt32 | ブールフラグのビットマップ。Escrowタイプにはフラグが定義されていないため、この値は常に`0`です。 |
 | `SourceTag`         | 数値 | UInt32 | _（省略可）_ この保留中の支払の支払元（所有者のアドレスにホスティングされている受取人など）を詳しく指定するための任意のタグ。 |
 | `DestinationTag`    | 数値 | UInt32 | _（省略可）_ この保留中の支払の宛先（宛先アドレスにホスティングされている受取人など）を詳しく指定するための任意のタグ。 |
 | `OwnerNode`         | 文字列    | UInt64    | 所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。**注記:** このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
 | `DestinationNode`   | 文字列    | UInt64    | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fix1523 Amendment][]を有効にする前に作成されたEscrowでは省略されています。 |
 | `PreviousTxnID`     | 文字列 | Hash256 | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値 | UInt32 | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
+| `PreviousTxnLgrSeq` | 数値 | UInt32 | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 
 
 ## Escrow IDのフォーマット
 
-`Escrow`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+`Escrow`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](basic-data-types.html#ハッシュ)です。
 
 * Escrowスペースキー（`0x0075`）
 * `Escrow`オブジェクトを作成した[EscrowCreateトランザクション][]の送信者のAccountID。
 * `Escrow`オブジェクトを作成した[EscrowCreateトランザクション][]のシーケンス番号。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

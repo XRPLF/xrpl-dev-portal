@@ -8,13 +8,13 @@ labels:
 ---
 # Transfer Fees
 
-[Token](tokens.html) issuers can charge a _transfer fee_ that applies when users transfer those tokens among themselves. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee.
+[Token](index.md) issuers can charge a _transfer fee_ that applies when users transfer those tokens among themselves. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee.
 
 For standard tokens, the tokens paid in the transfer fee are burned, and no longer tracked in the XRP Ledger. If the token is backed by off-ledger assets, this reduces the amount of those assets the issuer has to hold in reserve to meet its obligations in the XRP Ledger. Transfer fees are usually not appropriate for tokens that aren't backed with outside assets.
 
-Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](non-fungible-tokens.html).
+Non-fungible tokens can also have transfer fees, but they work differently. For details, see [Non-Fungible Tokens](nfts/index.md).
 
-The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address](account-types.html) to another user.
+The transfer fee does not apply when sending or receiving _directly_ to and from the issuing account, but it does apply when transferring from an [operational address](../accounts/account-types.md) to another user.
 
 XRP never has a transfer fee, because it never has an issuer.
 
@@ -24,11 +24,11 @@ In this example, ACME Bank issues a EUR stablecoin on the XRP Ledger. ACME Bank 
 
 The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
-{{ include_svg("img/transfer-fees.svg", "Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger") }}
+[{% inline-svg file="/img/transfer-fees.svg" /%}](/img/transfer-fees.svg "Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger")
 
 In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have changed like this:
 
-{{ include_svg("img/transfer-fees-balance-sheets.svg", "Alice's assets are down 2,02€, Charlie's are up 2,00€, and ACME's liabilities are down 0,02€") }}
+[{% inline-svg file="/img/transfer-fees-balance-sheets.svg" /%}](/img/transfer-fees-balance-sheets.svg "Alice's assets are down 2,02€, Charlie's are up 2,00€, and ACME's liabilities are down 0,02€")
 
 
 
@@ -38,7 +38,7 @@ In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have chan
 
 A transfer fee applies whenever an individual transfer would move tokens from one party to another (except when going to/from the issuing account directly). In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:
 
-{{ include_svg("img/transfer-fees-in-paths.svg", "Diagram of cross-currency payment with transfer fees") }}
+[{% inline-svg file="/img/transfer-fees-in-paths.svg" /%}](/img/transfer-fees-in-paths.svg "Diagram of cross-currency payment with transfer fees")
 
 In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to deliver 100 USD issued by WayGate to Rosa (the recipient). FXMaker is a trader with the best offer in the order book, at a rate of 1 USD.WayGate for every 0.9 EUR.ACME. If there were no transfer fees, Salazar could deliver 100 USD to Rosa by sending 90 EUR. However, ACME has a transfer fee of 1% and WayGate has a transfer fee of 0.2%. This means:
 
@@ -54,32 +54,26 @@ The transfer fee is controlled by a setting on the issuer's account. The transfe
 
 The transfer fee is specified in the `TransferRate` field, as an integer which represents the amount you must send for the recipient to get 1 billion units of the same token. A `TransferRate` of `1005000000` is equivalent to a transfer fee of 0.5%. By default, the `TransferRate` is set to no fee. The value of `TransferRate` cannot be set to less than `1000000000` ("0%" fee) or more than `2000000000` (a "100%" fee). The value `0` is special case for no fee, equivalent to `1000000000`.
 
-A token issuer can submit an [AccountSet transaction][] to change the `TransferRate` for all its tokens.
+A token issuer can submit an [AccountSet transaction](../../references/protocol/transactions/types/accountset.md) to change the `TransferRate` for all its tokens.
 
-Anyone can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
+Anyone can check an account's `TransferRate` with the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md). If the `TransferRate` is omitted, then that indicates no fee.
 
 **Note:** The ledger may contain accounts with a transfer fee larger than the current maximum. The [fix1201 amendment](known-amendments.html#fix1201), enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). Transfer fees that were already set continue to apply at their stated rate.
 
 ## Client Library Support
 
-Some [client libraries](client-libraries.html) have convenience functions for getting and setting `TransferRate` functions.
+Some [client libraries](../../references/client-libraries.md) have convenience functions for getting and setting `TransferRate` functions.
 
 **JavaScript:** Use `xrpl.percentToTransferRate()` to convert a percentage transfer fee from a string to the corresponding `TransferRate` value.
 
 ## See Also
 
 - **Concepts:**
-    - [Fees (Disambiguation)](fees.html)
-    - [Transaction Cost](transaction-cost.html)
-    - [Paths](paths.html)
+    - [Fees (Disambiguation)](../transactions/fees.md)
+    - [Transaction Cost](../transactions/transaction-cost.md)
+    - [Paths](fungible-tokens/paths.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+    - [account_lines method](../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md)
+    - [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)
+    - [AccountSet transaction](../../references/protocol/transactions/types/accountset.md)
+    - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)

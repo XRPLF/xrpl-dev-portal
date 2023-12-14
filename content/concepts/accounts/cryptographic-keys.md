@@ -8,15 +8,15 @@ labels:
 ---
 # Cryptographic Keys
 
-In the XRP Ledger, a digital signature _authorizes_ a [transaction](transactions.html) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
+In the XRP Ledger, a digital signature _authorizes_ a [transaction](../transactions/index.md) to do a specific set of actions. Only signed transactions can be submitted to the network and included in a validated ledger.
 
-To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.html), regardless of what algorithm was used to generate it.
+To make a digital signature, you use a cryptographic key pair associated with the transaction's sending account. A key pair may be generated using any of the XRP Ledger's supported [cryptographic signing algorithms](#signing-algorithms). A key pair can be used as a [master key pair](#master-key-pair), [regular key pair](#regular-key-pair) or a member of a [signer list](multi-signing.md), regardless of what algorithm was used to generate it.
 
 **Warning:** It is important to maintain proper security over your cryptographic keys. Digital signatures are the only way of authorizing transactions in the XRP Ledger, and there is no privileged administrator who can undo or reverse any transactions after they have applied. If someone else knows the seed or private key of your XRP Ledger account, that person can create digital signatures to authorize any transaction the same as you could.
 
 ## Generating Keys
 
-Many [client libraries](client-libraries.html) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
+Many [client libraries](../../references/client-libraries.md) and applications can generate a key pair suitable for use with the XRP Ledger. However, you should only use key pairs that were generated with devices and software you trust. Compromised applications can expose your secret to malicious users who can then send transactions from your account later.
 
 
 ## Key Components
@@ -25,7 +25,7 @@ A cryptographic key pair is a **private key** and a **public key** that are conn
 
 When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.
 
-{{ include_svg("img/cryptographic-keys.svg", "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address") }}
+[{% inline-svg file="/img/cryptographic-keys.svg" /%}](/img/cryptographic-keys.svg "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address")
 _Figure: A simplified view of the relationship between cryptographic key values._
 
 The passphrase, seed, and private key are **secrets**: if you know any of these values for an account, you can make valid signatures and you have full control over that account. If you own an account, be **very careful** with your account's secret information. If you don't have it, you can't use your account. If someone else can access it, they can take control of your account.
@@ -42,7 +42,7 @@ The passphrase is secret information, so you must protect it very carefully. Any
 
 ### Seed
 
-A _seed_ value is a compact value that is used to [derive](#key-derivation) the actual private and public keys for an account. In a [wallet_propose method][] response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to sign transactions. Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
+A _seed_ value is a compact value that is used to [derive](#key-derivation) the actual private and public keys for an account. In a [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) response, the `master_key`, `master_seed`, and `master_seed_hex` all represent the same seed value, in various formats. Any of these formats can be used to sign transactions. Despite being prefixed with `master_`, the keys this seed represents are not necessarily the master keys for an account; you can use a key pair as a regular key or a member of a multi-signing list as well.
 
 The seed value is secret information, so you must protect it very carefully. Anyone who knows an address's seed value has effectively full control over that address.
 
@@ -54,40 +54,40 @@ Like the seed, the private key is secret information, so you must protect it ver
 
 ### Public Key
 
-The _public key_ is the value used to verify the authenticity of a digital signature. The public key is derived from the private key as part of key derivation. In a [wallet_propose method][] response, the `public_key` and `public_key_hex` both represent the same public key value.
+The _public key_ is the value used to verify the authenticity of a digital signature. The public key is derived from the private key as part of key derivation. In a [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) response, the `public_key` and `public_key_hex` both represent the same public key value.
 
 Transactions in the XRP Ledger must include the public keys so that the network can verify the transactions' signatures. The public key cannot be used to create valid signatures, so it is safe to share publicly.
 
 
 ### Account ID and Address
 
-The **Account ID** is the core identifier for an [account](accounts.html) or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:
+The **Account ID** is the core identifier for an [account](accounts.md) or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:
 
-- A "classic address" writes an Account ID in [base58][] with a checksum. In a [wallet_propose method][] response, this is the `account_id` value.
-- An "X-Address" combines an Account ID _and_ a [Destination Tag](source-and-destination-tags.html) and writes the combined value in [base58][] with a checksum.
+- A "classic address" writes an Account ID in [base58](base58-encodings.html) with a checksum. In a [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) response, this is the `account_id` value.
+- An "X-Address" combines an Account ID _and_ a [Destination Tag](../transactions/source-and-destination-tags.md) and writes the combined value in [base58](base58-encodings.html) with a checksum.
 
 The checksum in both formats is there so that small changes result in an invalid address, instead of changing it to refer to a different, but still potentially valid, account. This way, if you make a typo or a transmission error occurs, you don't send money to the wrong place.
 
-It is important to know that not all Account IDs (or addresses) refer to accounts in the ledger. Deriving keys and addresses is purely a mathematical operation. For an account to have a record in the XRP Ledger, it must [receive a payment of XRP](accounts.html#creating-accounts) that funds its [reserve requirement](reserves.html). An account cannot send any transactions until after it has been funded.
+It is important to know that not all Account IDs (or addresses) refer to accounts in the ledger. Deriving keys and addresses is purely a mathematical operation. For an account to have a record in the XRP Ledger, it must [receive a payment of XRP](accounts.md#creating-accounts) that funds its [reserve requirement](reserves.md). An account cannot send any transactions until after it has been funded.
 
-Even if an Account ID or address does not refer to a funded account, you _can_ use that Account ID or address to represent a [regular key pair](#regular-key-pair) or a [member of a signer list](multi-signing.html).
+Even if an Account ID or address does not refer to a funded account, you _can_ use that Account ID or address to represent a [regular key pair](#regular-key-pair) or a [member of a signer list](multi-signing.md).
 
 ### Key Type
 
 The XRP Ledger supports more than one [cryptographic signing algorithm](#signing-algorithms). Any given key pair is only valid for a specific cryptographic signing algorithm. Some private keys may technically qualify as valid keys for more than one algorithm, but those private keys would have different public keys for each algorithm, and you should not reuse private keys anyway.
 
-The `key_type` field in the [wallet_propose method][] refers to the cryptographic signing algorithm to use.
+The `key_type` field in the [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) refers to the cryptographic signing algorithm to use.
 
 
 ## Master Key Pair
 
 The master key pair consists of a private key and a public key. The address of an account is derived from the account's master key pair, so they are intrinsically related. You cannot change or remove the master key pair, but you can disable it.
 
-The [wallet_propose method][] is one way of generating a master key pair. The response from this method shows the account's seed, address, and master public key together. For some other ways of setting up master key pairs, see [Secure Signing](secure-signing.html).
+The [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) is one way of generating a master key pair. The response from this method shows the account's seed, address, and master public key together. For some other ways of setting up master key pairs, see [Secure Signing](../transactions/secure-signing.md).
 
 **Warning:** If a malicious actor learns your master private key (or seed), they have full control over your account, unless your master key pair is disabled. They can take all the money your account holds and do other irreparable harm. Treat your secret values with care!
 
-Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](offline-account-setup.html) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
+Because changing a master key pair is impossible, you should treat it with care proportionate to the value it holds. A good practice is to [keep your master key pair offline](../../tutorials/manage-account-settings/offline-account-setup.md) and set up a regular key pair to sign transactions from your account instead. By keeping the master key pair enabled but offline, you can be reasonably certain that no one can get access to it using the internet, but you can still go find it to use in an emergency.
 
 Keeping your master key pair offline means not putting the secret information (passphrase, seed, or private key) anywhere that malicious actors can get access to it. In general, this means it is not within reach of a computer program that interacts with the internet at large. For example, you could keep it on an air-gapped machine that never connects to the internet, on a piece of paper stored in a safe, or have it completely memorized. (Memorization has some drawbacks, though, including making it impossible to pass the key on after you are dead.)
 
@@ -97,15 +97,15 @@ Keeping your master key pair offline means not putting the secret information (p
 
 **Only** the master key pair can authorize transactions to do certain things:
 
-- Send an account's very first transaction, because accounts cannot be initialized with another way of [authorizing transactions](transactions.html#authorizing-transactions).
+- Send an account's very first transaction, because accounts cannot be initialized with another way of [authorizing transactions](../transactions/index.md#authorizing-transactions).
 
 - Disable the master key pair.
 
-- Permanently give up the ability to [freeze](freezes.html#no-freeze).
+- Permanently give up the ability to [freeze](../tokens/fungible-tokens/freezes.md#no-freeze).
 
-- Send a special [key reset transaction](transaction-cost.html#key-reset-transaction) with a transaction cost of 0 XRP.
+- Send a special [key reset transaction](../transactions/transaction-cost.md#key-reset-transaction) with a transaction cost of 0 XRP.
 
-A regular key or [multi-signature](multi-signing.html) can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](deleting-accounts.html) if it meets the requirements for deletion.
+A regular key or [multi-signature](multi-signing.md) can do anything else the same as the master key pair. Notably, after you have disabled the master key pair, you can re-enable it using a regular key pair or multi-signature. You can also [delete an account](deleting-accounts.md) if it meets the requirements for deletion.
 
 
 ## Regular Key Pair
@@ -116,9 +116,9 @@ A regular key pair can authorize most of the same types of transactions as the m
 
 A good security practice is to save your master private key somewhere offline, and use a regular key pair most of the time. As a precaution, you can change the regular key pair regularly. If a malicious user learns your regular private key, you can get the master key pair out of offline storage and use it to change or remove the regular key pair. This way, you can regain control of your account. Even if you are not fast enough to stop the malicious user from stealing your money, at least you don't need to move to a new account and re-create all your settings and relationships from scratch.
 
-Regular key pairs have the same format as master key pairs. You generate them the same way (for example, using the [wallet_propose method][]). The only difference is that a regular key pair is not intrinsically tied to the account it signs transactions for. It is possible (but not a good idea) to use the master key pair from one account as the regular key pair for another account.
+Regular key pairs have the same format as master key pairs. You generate them the same way (for example, using the [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md)). The only difference is that a regular key pair is not intrinsically tied to the account it signs transactions for. It is possible (but not a good idea) to use the master key pair from one account as the regular key pair for another account.
 
-The [SetRegularKey transaction][] assigns or changes the regular key pair for an account. For a tutorial on assigning or changing a regular key pair, see [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
+The [SetRegularKey transaction](../../references/protocol/transactions/types/setregularkey.md) assigns or changes the regular key pair for an account. For a tutorial on assigning or changing a regular key pair, see [Assign a Regular Key Pair](../../tutorials/manage-account-settings/assign-a-regular-key-pair.md).
 
 
 ## Signing Algorithms
@@ -132,9 +132,9 @@ The XRP Ledger supports the following cryptographic signing algorithms:
 | `secp256k1` | [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) using the elliptic curve [secp256k1](https://en.bitcoin.it/wiki/Secp256k1) | This is the same scheme Bitcoin uses. The XRP Ledger uses these key types by default. |
 | `ed25519`   | [EdDSA](https://tools.ietf.org/html/rfc8032) using the elliptic curve [Ed25519](https://ed25519.cr.yp.to/) | This is a newer algorithm which has better performance and other convenient properties. Since Ed25519 public keys are one byte shorter than secp256k1 keys, `rippled` prefixes Ed25519 public keys with the byte `0xED` so both types of public key are 33 bytes. |
 
-When you generate a key pair with the [wallet_propose method][], you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
+When you generate a key pair with the [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md), you can specify the `key_type` to choose which cryptographic signing algorithm to use to derive the keys. If you generated a key type other than the default, you must also specify the `key_type` when signing transactions.
 
-The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](addresses.html#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
+The supported types of key pairs can be used interchangeably throughout the XRP Ledger as master key pairs, regular key pairs, and members of signer lists. The process of [deriving an address](addresses.md#address-encoding) is the same for secp256k1 and Ed25519 key pairs.
 
 
 ### Future Algorithms
@@ -154,13 +154,13 @@ The key derivation processes described here are implemented in multiple places a
     - [Seed definition](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
     - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-- In Python 3 in [this repository's code samples section]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_code-samples/key-derivation/py/key_derivation.py).
+- In Python 3 in {% repo-link path="content/_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
 [[Source]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
-{{ include_svg("img/key-derivation-ed25519.svg", "Passphrase → Seed → Secret Key → Prefix + Public Key") }}
+[{% inline-svg file="/img/key-derivation-ed25519.svg" /%}](/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
 1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
 
@@ -174,14 +174,14 @@ The key derivation processes described here are implemented in multiple places a
 
     If you are implementing code to sign transactions, remove the `0xED` prefix and use the 32-byte key for the actual signing process.
 
-4. When serializing an account public key to [base58][], use the account public key prefix `0x23`.
+4. When serializing an account public key to [base58](base58-encodings.html), use the account public key prefix `0x23`.
 
     Validator ephemeral keys cannot be Ed25519.
 
 ### secp256k1 Key Derivation
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
-{{ include_svg("img/key-derivation-secp256k1.svg", "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair") }}
+[{% inline-svg file="/img/key-derivation-secp256k1.svg" /%}](/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 
 Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
@@ -204,7 +204,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
-    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58][] serialization for validator public keys uses the prefix `0x1c`.
+    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58](base58-encodings.html) serialization for validator public keys uses the prefix `0x1c`.
 
 2. Convert the root public key to its 33-byte compressed form.
 
@@ -212,7 +212,9 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     You can convert an uncompressed public key to the compressed form with the `openssl` commandline tool. For example, if the uncompressed public key is in the file `ec-pub.pem`, you can output the compressed form like this:
 
-        $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
+    ```
+    $ openssl ec -in ec-pub.pem -pubin -text -noout -conv_form compressed
+    ```
 
 3. Derive an "intermediate key pair" from the compressed root public key you, as follows:
 
@@ -235,25 +237,20 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 5. Convert the master public key to its 33-byte compressed form, as before.
 
-6. When serializing an account's public key to its [base58][] format, use the account public key prefix, `0x23`.
+6. When serializing an account's public key to its [base58](base58-encodings.html) format, use the account public key prefix, `0x23`.
 
-    See [Address Encoding](addresses.html#address-encoding) for information and sample code to convert from an account's public key to its address.
+    See [Address Encoding](addresses.md#address-encoding) for information and sample code to convert from an account's public key to its address.
 
 
 ## See Also
 
 - **Concepts:**
-    - [Issuing and Operational Addresses](account-types.html)
+    - [Issuing and Operational Addresses](account-types.md)
 - **Tutorials:**
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
+    - [Assign a Regular Key Pair](../../tutorials/manage-account-settings/assign-a-regular-key-pair.md)
+    - [Change or Remove a Regular Key Pair](../../tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
-    - [SetRegularKey transaction][]
-    - [AccountRoot ledger object](accountroot.html)
-    - [wallet_propose method][]
-    - [account_info method][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+    - [SetRegularKey transaction](../../references/protocol/transactions/types/setregularkey.md)
+    - [AccountRoot ledger object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
+    - [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md)
+    - [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)

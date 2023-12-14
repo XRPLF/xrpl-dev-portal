@@ -10,15 +10,14 @@ labels:
 
 The `ledger_request` command tells server to fetch a specific ledger version from its connected peers. This only works if one of the server's immediately-connected peers has that ledger. You may need to run the command several times to completely fetch a ledger.
 
-*The `ledger_request` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
+*The `ledger_request` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 102,
@@ -26,14 +25,15 @@ An example of the request format:
     "ledger_index": 13800000
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```
 rippled ledger_request 13800000
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -46,16 +46,15 @@ You must provide either `ledger_index` or `ledger_hash` but not both.
 
 ### Response Format
 
-The response follows the [standard format][]. However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
+The response follows the [standard format](../../api-conventions/response-formatting.md). However, the request returns a failure response if it does not have the specified ledger _even if it successfully instructed the `rippled` server to start retrieving the ledger_.
 
-**Note:** To retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [connect method][] or the `fixed_ips` section of the config file to add Ripple's full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
+**Note:** To retrieve a ledger, the rippled server must have a direct peer with that ledger in its history. If none of the peers have the requested ledger, you can use the [connect method](../peer-management-methods/connect.md) or the `fixed_ips` section of the config file to add Ripple's full-history server at `s2.ripple.com` and then make the `ledger_request` request again.
 
-A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [ledger method][].
+A failure response indicates the status of fetching the ledger. A successful response contains the information for the ledger in a similar format to the [ledger method](../../public-api-methods/ledger-methods/ledger.md).
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline (failure)*
-
+{% tab label="Commandline (failure)" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -79,9 +78,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-*Commandline (in-progress)*
-
+{% tab label="Commandline (in-progress)" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -126,9 +125,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-*Commandline (success)*
-
+{% tab label="Commandline (success)" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -157,14 +156,15 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The three possible response formats are as follows:
 
 1. When returning a `lgrNotFound` error, the response has a field, `acquiring` with a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
 2. When the response shows the server is currently fetching the ledger, the body of the result is a [Ledger Request Object](#ledger-request-object) indicating the progress of fetching the ledger from the peer-to-peer network.
-3. When the ledger is fully available, the response is a representation of the [ledger header](ledger-header.html).
+3. When the ledger is fully available, the response is a representation of the [ledger header](../../../protocol/ledger-data/ledger-header.md).
 
 ### Ledger Request Object
 
@@ -185,10 +185,5 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 - Any of the [universal error types][].
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
-- `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.) [Updated in: rippled 0.30.1][]
+- `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.) [Updated in: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE")
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

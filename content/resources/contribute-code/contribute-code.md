@@ -91,4 +91,4 @@ The general development path breaks down as follows:
 ## See Also
 
 - **Concepts:**
-    - [Amendments](amendments.html)
+    - [Amendments](../../concepts/networks-and-servers/amendments.md)

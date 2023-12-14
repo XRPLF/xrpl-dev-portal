@@ -10,17 +10,16 @@ labels:
 
 The `account_nfts` method returns a list of `NFToken` objects for the specified account.
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
 
 ## Request Format
 An example of the request format:
 
-{% include '_snippets/no-cli-syntax.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "account_nfts",
@@ -28,9 +27,9 @@ An example of the request format:
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "account_nfts",
@@ -40,8 +39,9 @@ An example of the request format:
   }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#account_nfts)
 
@@ -53,16 +53,15 @@ The request includes the following parameters:
 | `ledger_hash`  | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Number | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Integer          | _(Optional)_ Limit the number of [token pages][NFTokenPage object] to retrieve. Each page can contain up to 32 NFTs. The `limit` value cannot be lower than 20 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 100. |
-| `marker`       | [Marker][]       | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)       | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 
 ## Response Format
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -93,9 +92,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -125,10 +124,11 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
@@ -141,14 +141,14 @@ The response follows the [standard format][], with a successful result containin
 
 ### NFT Objects
 
-Each object in the `account_nfts` array represents one [NFToken][] and has the following fields:
+Each object in the `account_nfts` array represents one [NFToken](../../../protocol/data-types/nftoken.md) and has the following fields:
 
 | `Field`        | Type                 | Description                          |
 |:---------------|:---------------------|:-------------------------------------|
-| `Flags`        | Number               | A bit-map of boolean flags enabled for this NFToken. See [NFToken Flags](nftoken.html#nftoken-flags) for possible values. |
+| `Flags`        | Number               | A bit-map of boolean flags enabled for this NFToken. See [NFToken Flags](../../../protocol/data-types/nftoken.md#nftoken-flags) for possible values. |
 | `Issuer`       | String - [Address][] | The account that issued this NFToken. |
 | `NFTokenID`    | String               | The unique identifier of this NFToken, in hexadecimal. |
-| `NFTokenTaxon` | Number               | The unscrambled version of this token's [taxon](nftoken.html#nftokentaxon). Several tokens with the same taxon might represent instances of a limited series. |
+| `NFTokenTaxon` | Number               | The unscrambled version of this token's [taxon](../../../protocol/data-types/nftoken.md#nftokentaxon). Several tokens with the same taxon might represent instances of a limited series. |
 | `URI`          | String               | The URI data associated with this NFToken, in hexadecimal. |
 | `nft_serial`   | Number               | The token sequence number of this NFToken, which is unique for its issuer. |
 
@@ -158,7 +158,3 @@ Each object in the `account_nfts` array represents one [NFToken][] and has the f
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

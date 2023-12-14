@@ -605,4 +605,3 @@ btn_op_get_transaction.grid(row = 6, column = 3, sticky = "nsew")
 # Start the application
 window.mainloop()
 ```
-

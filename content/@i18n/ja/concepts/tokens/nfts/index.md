@@ -8,7 +8,7 @@ labels:
 
 # NFTのコンセプトの概要
 
-XRP Ledgerは、_IOUs_ としても知られる[トークン](tokens.html)のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。
+XRP Ledgerは、_IOUs_ としても知られる[トークン](../index.md)のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。
 
 > 代替可能性
 >
@@ -27,12 +27,12 @@ XRP Ledgerは、_IOUs_ としても知られる[トークン](tokens.html)のサ
 
 これらの切手は、他の24セント切手と交換することはできません。非代替(Non-fungible)になってしまったのです。
 
-[NonFungibleTokensV1の修正][] :現在有効ではありません: は、XRP Ledgerに非代替性トークン（NFT）のサポートをネイティブで追加するものです。 非代替性トークンは、芸術品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権をコード化する役割を果たします。
+[NonFungibleTokensV1の修正](known-amendments.html#nonfungibletokensv1) :現在有効ではありません: は、XRP Ledgerに非代替性トークン（NFT）のサポートをネイティブで追加するものです。 非代替性トークンは、芸術品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権をコード化する役割を果たします。
 
 
 ## XRP Ledger上のNFT
 
-XRP Ledger上では、non-fungible tokenは[NFToken][]オブジェクトとして表されます。NFTokenはユニークで分割できない単位で、決済には使用できません。ユーザーはこのようなトークンを発行（作成）、保有、購入、売却、焼却（破棄）することができます。
+XRP Ledger上では、non-fungible tokenは[NFToken](../../../references/protocol/data-types/nftoken.md)オブジェクトとして表されます。NFTokenはユニークで分割できない単位で、決済には使用できません。ユーザーはこのようなトークンを発行（作成）、保有、購入、売却、焼却（破棄）することができます。
 
 XRP Ledgerでは、容量を節約するために、一つのアカウントで最大32個の `NFToken` オブジェクトを一つの[NFTokenPageオブジェクト][]に格納します。その結果、所有者の `NFToken` オブジェクトに対する [準備金] (reserves.html) は、追加のトークンを格納するためにレジャーが新しいページを作成する場合にのみ増加します。
 
@@ -44,7 +44,7 @@ XRP Ledgerでは、容量を節約するために、一つのアカウントで�
 - 発行者が、現在の保有者に関係なく、トークンを焼却できるかどうか。
 - トークンの保持者がトークンを他者に転送できるかどうか。( `NFToken` は常に発行者に直接送信したり、発行者から送信することが可能です)。
     - 転送が許可されている場合、発行者は販売価格に対する一定の割合で手数料を徴収することができます。
-- NFTokenを[トークン](tokens.html)で売却できるか、XRPのみでしか売却できないか。
+- NFTokenを[トークン](../index.md)で売却できるか、XRPのみでしか売却できないか。
 
 
 ## `NFToken`のライフサイクル
@@ -55,12 +55,12 @@ XRP Ledgerでは、容量を節約するために、一つのアカウントで�
 
 ![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
 
-`NFToken` オブジェクトの転送に関する詳細は、[XRP Ledger上でNFTokenを売買する](non-fungible-token-transfers.html) を参照してください。
+`NFToken` オブジェクトの転送に関する詳細は、[XRP Ledger上でNFTokenを売買する](trading.md) を参照してください。
 
 
 ## 関連項目
 
-- [NFToken][] データ型
+- [NFToken](../../../references/protocol/data-types/nftoken.md) データ型
 - レジャーオブジェクト
     - [NFTokenOffer オブジェクト][]
     - [NFTokenPage オブジェクト][]
@@ -75,8 +75,3 @@ XRP Ledgerでは、容量を節約するために、一つのアカウントで�
     - [nft_sell_offers メソッド][]
     - [nft_buy_offers メソッド][]
     - [nft_info メソッド][] (Clioサーバのみ)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

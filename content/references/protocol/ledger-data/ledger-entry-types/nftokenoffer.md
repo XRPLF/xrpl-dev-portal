@@ -7,11 +7,11 @@ labels:
 ---
 # NFTokenOffer
 
-An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](non-fungible-tokens.html).
+An `NFTokenOffer` entry represents an offer to buy, sell or transfer an [NFT](../../../../concepts/tokens/nfts/index.md).
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -29,9 +29,9 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ```
 
 
-### {{currentpage.name}} Fields
+### {% $frontmatter.seo.title %} Fields
 
-| Name                |JSON Type         | [Internal Type][] | Required?   | Description |
+| Name                |JSON Type         | [Internal Type](../../binary-format.md) | Required?   | Description |
 |:--------------------|:-----------------|:------------------|:------------|:-----------|
 | `Amount`            | [Currency Amount][] | AMOUNT            | Yes         | Amount expected or offered for the NFToken. If the token has the `lsfOnlyXRP` flag set, the amount must be specified in XRP. Sell offers that specify assets other than XRP must specify a non-zero amount. Sell offers that specify XRP can be 'free' (that is, the Amount field can be equal to `"0"`). |
 | `Destination`       | string           | AccountID         | No          | The AccountID for which this offer is intended. If present, only that account can accept the offer. |
@@ -45,9 +45,9 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 | `PreviousTxnLgrSeq` | number           | UInt32            | Yes         | Index of the ledger that contains the transaction that most recently modified this object. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-{{currentpage.name}} entries can have the following flags combined in the `Flags` field:
+{% $frontmatter.seo.title %} entries can have the following flags combined in the `Flags` field:
 
 | Flag Name        | Hex Value    | Decimal Value | Description |
 |------------------|--------------|---------------|-------------|
@@ -56,23 +56,23 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## NFTokenOffer Transactions
 
-Unlike [Offers for fungible tokens](offers.html), a `NFTokenOffer` is not stored in an order book and is never automatically matched or executed. A buyer must _explicitly_ choose to accept an `NFTokenOffer` that offers to sell a `NFToken`. Similarly, a seller must _explicitly_ choose to accept a specific `NFTokenOffer` that offers to buy a `NFToken` object that they own.
+Unlike [Offers for fungible tokens](../../../../concepts/tokens/decentralized-exchange/offers.md), a `NFTokenOffer` is not stored in an order book and is never automatically matched or executed. A buyer must _explicitly_ choose to accept an `NFTokenOffer` that offers to sell a `NFToken`. Similarly, a seller must _explicitly_ choose to accept a specific `NFTokenOffer` that offers to buy a `NFToken` object that they own.
 
 The transactions for `NFToken` trading are:
 
-- [NFTokenCreateOffer][]
-- [NFTokenCancelOffer][]
-- [NFTokenAcceptOffer][]
+- [NFTokenCreateOffer](../../transactions/types/nftokencreateoffer.md)
+- [NFTokenCancelOffer](../../transactions/types/nftokencanceloffer.md)
+- [NFTokenAcceptOffer](../../transactions/types/nftokenacceptoffer.md)
 
 
 ## Locating NFTokenOffer entries
 
-Each unique NFT has up to two [directories](directorynode.html): one contains offers to buy the token and the other contains offers to sell the token. (These two directories are created as necessary and deleted if empty.) Marketplaces or other client applications can use these directories to find and display offers to trade `NFToken` objects to users or even automatically match them and accept them.
+Each unique NFT has up to two [directories](directorynode.md): one contains offers to buy the token and the other contains offers to sell the token. (These two directories are created as necessary and deleted if empty.) Marketplaces or other client applications can use these directories to find and display offers to trade `NFToken` objects to users or even automatically match them and accept them.
 
 
 ### NFTokenOffer Reserve
 
-`{{currentpage.name}}` entries each count as one item towards the owner reserve of the account placing the offer, as long as the entry is in the ledger. Accepting or canceling the offer frees up the reserve.
+`{% $frontmatter.seo.title %}` entries each count as one item towards the owner reserve of the account placing the offer, as long as the entry is in the ledger. Accepting or canceling the offer frees up the reserve.
 
 
 ### NFTokenOffer ID Format
@@ -82,9 +82,3 @@ The unique ID (`NFTokenOfferID`) of a `NFTokenOffer` object is the result of the
 * The `NFTokenOffer` space key, `0x0037`;
 * The `AccountID` of the account placing the offer; and
 * The `Sequence` (or `Ticket`) of the `NFTokenCreateOffer` transaction that created the `NFTokenOffer`.
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

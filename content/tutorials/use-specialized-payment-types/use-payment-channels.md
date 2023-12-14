@@ -8,9 +8,9 @@ labels:
 ---
 # Use Payment Channels
 
-[Payment Channels](payment-channels.html) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](http-websocket-apis.html) of a local [`rippled` server](xrpl-servers.html).
+[Payment Channels](../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../references/http-websocket-apis/index.md) of a local [`rippled` server](xrpl-servers.html).
 
-Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](accounts.html). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
+Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](../../concepts/accounts/accounts.md). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
 ## Example Values
 
@@ -19,7 +19,7 @@ The example addresses used in this tutorial are:
 | | |
 |--|--|
 | **Payer's address** | `rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH` |
-| **Public key used for channel (in the XRP Ledger's [base58][] encoded string format)** | `aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3`
+| **Public key used for channel (in the XRP Ledger's [base58](base58-encodings.html) encoded string format)** | `aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3`
 | **Public key used for channel (in hex)** | `023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6` |
 | **Payee's address** | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` |
 
@@ -53,13 +53,13 @@ You can match up the numbered steps in this diagram with the steps of this tutor
 
 ## 1. The payer creates a payment channel to a particular recipient.
 
-This is a [PaymentChannelCreate transaction][]. As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel. <!-- STYLE_OVERRIDE: will -->
+This is a [PaymentChannelCreate transaction](../../references/protocol/transactions/types/paymentchannelcreate.md). As part of this process, the payer sets certain specifics of the channel like an expiration time and a settlement delay, which affect the guarantees around the claims in the channel. The payer also sets the public key that will be used to verify claims against the channel. <!-- STYLE_OVERRIDE: will -->
 
 **Tip:** The "settlement delay" does not delay the settlement, which can happen as fast as a ledger version closes (3-5 seconds). The "settlement delay" is a forced delay on closing the channel so that the payee has a chance to finish with settlement.
 
-The following example shows creation of a payment channel by [submitting](submit.html#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
+The following example shows creation of a payment channel by [submitting](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode) to a local `rippled` server with the JSON-RPC API. The payment channel allocates 100 XRP from the [example payer](#example-values) (`rN7n7...`) to the [example payee](#example-values) (`rf1Bi...`) with a settlement delay of 1 day. The public key is the example payer's master public key, in hexadecimal.
 
-**Note:** A payment channel counts as one object toward the payer's [owner reserve](reserves.html#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
+**Note:** A payment channel counts as one object toward the payer's [owner reserve](../../concepts/accounts/reserves.md#owner-reserves). The owner must keep at least enough XRP to satisfy the reserve after subtracting the XRP allocated to the payment channel.
 
 Request:
 
@@ -169,14 +169,14 @@ Response:
 In the response from the JSON-RPC, the payer should look for the following:
 
 - In the transaction's `meta` field, confirm that the `TransactionResult` is `tesSUCCESS`.
-- Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](finality-of-results.html) if it appears in a validated ledger version.)
+- Confirm that the response has `"validated":true` to indicate the data comes from a validated ledger. (The result `tesSUCCESS` is only [final](../../concepts/transactions/finality-of-results/index.md) if it appears in a validated ledger version.)
 - In the `AffectedNodes` array of the transaction's `meta` field, look for a `CreatedNode` object with the `LedgerEntryType` of `PayChannel`. The `LedgerIndex` field of the `CreatedNode` object indicates the Channel ID. (In the above example, this is a hex string starting with "`5DB0`...") The Channel ID is necessary later to sign claims.
-    For more information on the PayChannel ledger object type, see [PayChannel ledger object](paychannel.html).
+    For more information on the PayChannel ledger object type, see [PayChannel ledger object](../../references/protocol/ledger-data/ledger-entry-types/paychannel.md).
 
 
 ## 2. The payee checks specifics of the payment channel.
 
-You can look up payment channels with the [account_channels method][], using the payer of the channel, as in the following example (using the JSON-RPC API):
+You can look up payment channels with the [account_channels method](../../references/http-websocket-apis/public-api-methods/account-methods/account_channels.md), using the payer of the channel, as in the following example (using the JSON-RPC API):
 
 Request:
 
@@ -233,9 +233,9 @@ Since there can be multiple channels between the same two parties, it is importa
 
 The amounts of these claims depends on the specific goods or services the payer wants to pay for.
 
-Each claim must be for a cumulative amount. In other words, to buy two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A [PaymentChannelFund][] transaction can increase the total amount of XRP allocated to the channel.)
+Each claim must be for a cumulative amount. In other words, to buy two items at 10 XRP each, the first claim should have an amount of 10 XRP and the second claim should have an amount of 20 XRP. The claim can never be more than the total amount of XRP allocated to the channel. (A [PaymentChannelFund](../../references/protocol/transactions/types/paymentchannelfund.md) transaction can increase the total amount of XRP allocated to the channel.)
 
-You can create claims with the [channel_authorize method][]. The following example authorizes 1 XRP from the channel:
+You can create claims with the [channel_authorize method](../../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md). The following example authorizes 1 XRP from the channel:
 
 Request:
 
@@ -281,7 +281,7 @@ The payee also needs to know the Public Key associated with the channel, which i
 
 ## 5. The payee verifies the claims.
 
-You can verify claims using the [channel_verify method][]. The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services bought so far.)
+You can verify claims using the [channel_verify method](../../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md). The payee should confirm that the amount of the claim is equal to or greater than the total price of goods and services provided. (Since the amount is cumulative, this is the total price of all goods and services bought so far.)
 
 Example of using `channel_verify` with the JSON-RPC API:
 
@@ -315,7 +315,7 @@ Response:
 }
 ```
 
-If the response shows `"signature_verified": true` then the claim's signature is genuine. The payee must **also** confirm that the channel has enough XRP available to honor the claim. To do this, the payee uses the [account_channels method][] to confirm the most recent validated state of the payment channel.
+If the response shows `"signature_verified": true` then the claim's signature is genuine. The payee must **also** confirm that the channel has enough XRP available to honor the claim. To do this, the payee uses the [account_channels method](../../references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) to confirm the most recent validated state of the payment channel.
 
 Request:
 
@@ -361,14 +361,14 @@ The payee should check the following:
 
 - Find the object in the `channels` array whose `channel_id` matches the Channel ID of the claim. It is possible to have multiple payment channels, even between the same parties, but a claim can only be redeemed against the channel with the matching ID.
 - Confirm that the `expiration` (mutable expiration) of the channel, if present, is not too soon. The payee must redeem claims before this time.
-- Confirm that the `amount` of the claim is equal or less than the `amount` of the channel. If the `amount` of the claim is higher, the claim cannot be redeemed unless the payer uses a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.
+- Confirm that the `amount` of the claim is equal or less than the `amount` of the channel. If the `amount` of the claim is higher, the claim cannot be redeemed unless the payer uses a [PaymentChannelFund transaction](../../references/protocol/transactions/types/paymentchannelfund.md) to increase the total amount of XRP available to the channel.
 - Confirm that the `balance` of the channel matches the amount the payee expects to have already received from the channel. If these do not match up, the payee should double-check the channel's transaction history. Some possible explanations for a mismatch include:
-    - The payer used a [PaymentChannelClaim][] transaction to deliver XRP from the channel to the payee, but the payee did not notice and record the incoming transaction.
-    - The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the [tx method][] to look up the state of individual transactions to check this.
+    - The payer used a [PaymentChannelClaim](../../references/protocol/transactions/types/paymentchannelclaim.md) transaction to deliver XRP from the channel to the payee, but the payee did not notice and record the incoming transaction.
+    - The payee's records include transactions that are "in flight" or have not yet been included in the latest validated ledger version. The payee can use the [tx method](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md) to look up the state of individual transactions to check this.
     - The `account_channels` request did not specify the correct ledger version. (Use `"ledger_index": "validated"` to get the latest validated ledger version)
     - The payee previously redeemed XRP but forgot to record it.
     - The payee attempted to redeem XRP and recorded the tentative result, but the transaction's final validated result was not the same and the payee neglected to record the final validated result.
-    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method][] to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/XRPLF/rippled/issues/).)
+    - The `rippled` server the payee queried has lost sync with the rest of the network or is experiencing an unknown bug. Use the [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md) to check the state of the server. (If you can reproduce this situation, please [report an issue](https://github.com/XRPLF/rippled/issues/).)
 
 After confirming both the signature and the current state of the payment channel, the payee has not yet received the XRP, but is certain that he or she _can_ redeem the XRP as long as the transaction to do so is processed before the channel expires.
 
@@ -384,16 +384,16 @@ For purposes of this tutorial, the payee can give the payer a high-five or equiv
 
 The payer and payee can repeat steps 3 through 6 (creating, transmitting, and verifying claims in exchange for goods and services) as many times and as often as they like without waiting for the XRP Ledger itself. The two main limits of this process are:
 
-- The amount of XRP in the payment channel. (If necessary, the payer can send a [PaymentChannelFund transaction][] to increase the total amount of XRP available to the channel.)
+- The amount of XRP in the payment channel. (If necessary, the payer can send a [PaymentChannelFund transaction](../../references/protocol/transactions/types/paymentchannelfund.md) to increase the total amount of XRP available to the channel.)
 
-- The immutable expiration of the payment channel, if one is set. (The `cancel_after` field in the response to the [account_channels method][] shows this.)
+- The immutable expiration of the payment channel, if one is set. (The `cancel_after` field in the response to the [account_channels method](../../references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) shows this.)
 
 
 ## 8. When ready, the payee redeems a claim for the authorized amount.
 
 This is the point where the payee finally receives some XRP from the channel.
 
-This is a [PaymentChannelClaim transaction][] with the `Balance`, `Amount`, `Signature`, and `PublicKey` fields provided. Because claim values are cumulative, the payee only needs to redeem the largest (most recent) claim to get the full amount. The payee is not required to redeem the claim for the full amount authorized.
+This is a [PaymentChannelClaim transaction](../../references/protocol/transactions/types/paymentchannelclaim.md) with the `Balance`, `Amount`, `Signature`, and `PublicKey` fields provided. Because claim values are cumulative, the payee only needs to redeem the largest (most recent) claim to get the full amount. The payee is not required to redeem the claim for the full amount authorized.
 
 The payee can do this multiple times, to settle partially while still doing business, if desired.
 
@@ -454,11 +454,11 @@ Response:
 }
 ```
 
-The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+The payee should confirm that this transaction is successful in a validated ledger. For the full details, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
 ## 9. When the payer and payee are done doing business, the payer requests for the channel to be closed.
 
-This is a [PaymentChannelClaim transaction][] with the `tfClose` flag set, or a [PaymentChannelFund transaction][] with the `Expiration` field set. _(9a in the [flow diagram][])_.
+This is a [PaymentChannelClaim transaction](../../references/protocol/transactions/types/paymentchannelclaim.md) with the `tfClose` flag set, or a [PaymentChannelFund transaction](../../references/protocol/transactions/types/paymentchannelfund.md) with the `Expiration` field set. _(9a in the [flow diagram][])_.
 
 If the channel has no XRP remaining in it when the payer requests to close the channel, it closes immediately.
 
@@ -468,7 +468,7 @@ The payee can also close a payment channel immediately after processing a claim 
 
 <!-- SPELLING_IGNORE: 9a, 9b -->
 
-Example of [submitting a transaction](submit.html#sign-and-submit-mode) requesting a channel to close:
+Example of [submitting a transaction](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode) requesting a channel to close:
 
 ```json
 {
@@ -486,7 +486,7 @@ Example of [submitting a transaction](submit.html#sign-and-submit-mode) requesti
 }
 ```
 
-After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the [account_channels method][]. Be sure to specify `"ledger_index": "validated"` to get data from the latest validated ledger version.
+After the transaction is included in a validated ledger, either party can look up the currently-scheduled expiration of the channel using the [account_channels method](../../references/http-websocket-apis/public-api-methods/account-methods/account_channels.md). Be sure to specify `"ledger_index": "validated"` to get data from the latest validated ledger version.
 
 Example `account_channels` response:
 
@@ -519,13 +519,13 @@ In this example, the `expiration` value 547073182 in [seconds since the Ripple E
 
 After the settlement delay has passed or the channel has reached its planned expiration time, the channel is expired. Any further transaction that would affect the channel can only close it, returning unclaimed XRP to the payer.
 
-The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so _someone_ must send a transaction to cause the expired channel to close. As long as the channel remains on the ledger, it counts as an object owned by the payer for purposes of the [owner reserve](reserves.html#owner-reserves).
+The channel can remain on the ledger in an expired state indefinitely. This is because the ledger cannot change except as the results of a transaction, so _someone_ must send a transaction to cause the expired channel to close. As long as the channel remains on the ledger, it counts as an object owned by the payer for purposes of the [owner reserve](../../concepts/accounts/reserves.md#owner-reserves).
 
-Ripple recommends that the payer sends a second [PaymentChannelClaim transaction][] with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
+Ripple recommends that the payer sends a second [PaymentChannelClaim transaction](../../references/protocol/transactions/types/paymentchannelclaim.md) with the `tfClose` flag for this purpose. However, other accounts, even those not involved in the payment channel, can cause an expired channel to close.
 
-The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](transaction-common-fields.html#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
+The command to submit the transaction is the same as the previous example requesting channel expiration. (However, its resulting [auto-filled](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) `Sequence` number, signature, and identifying hash are unique.)
 
-Example of [submitting](submit.html#sign-and-submit-mode) a transaction to close an expired channel:
+Example of [submitting](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode) a transaction to close an expired channel:
 
 ```json
 {
@@ -545,7 +545,7 @@ Example of [submitting](submit.html#sign-and-submit-mode) a transaction to close
 
 When the transaction has been included in a validated ledger, you can look at the metadata of the transaction to confirm that it deleted the channel and returned the XRP to the sender.
 
-Example response from using the [tx method][] to look up the transaction from this step:
+Example response from using the [tx method](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md) to look up the transaction from this step:
 
 ```json
 {
@@ -648,23 +648,17 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
 ## See Also
 
 - **Concepts:**
-    - [What is XRP?](what-is-xrp.html)
-    - [Payment Types](payment-types.html)
-        - [Payment Channels](payment-channels.html)
+    - [What is XRP?](../../introduction/what-is-xrp.md)
+    - [Payment Types](../../concepts/payment-types/index.md)
+        - [Payment Channels](../../concepts/payment-types/payment-channels.md)
 - **Tutorials:**
-    - [Send XRP](send-xrp.html)
-    - [Look Up Transaction Results](look-up-transaction-results.html)
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Send XRP](../get-started/send-xrp.md)
+    - [Look Up Transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+    - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
-    - [PaymentChannelClaim transaction][]
-    - [PaymentChannelCreate transaction][]
-    - [PaymentChannelFund transaction][]
-    - [channel_authorize method][]
-    - [channel_verify method][]
-    - [PayChannel ledger object](paychannel.html)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [PaymentChannelClaim transaction](../../references/protocol/transactions/types/paymentchannelclaim.md)
+    - [PaymentChannelCreate transaction](../../references/protocol/transactions/types/paymentchannelcreate.md)
+    - [PaymentChannelFund transaction](../../references/protocol/transactions/types/paymentchannelfund.md)
+    - [channel_authorize method](../../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md)
+    - [channel_verify method](../../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md)
+    - [PayChannel ledger object](../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)

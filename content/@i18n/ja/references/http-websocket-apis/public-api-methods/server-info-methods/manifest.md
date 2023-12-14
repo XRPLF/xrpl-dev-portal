@@ -8,59 +8,58 @@ labels:
 # manifest
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "ソース")
 
-`{{currentpage.name}}`メソッドは、指定したバリデータ公開鍵の現在の"マニフェスト"情報を報告します。"マニフェスト"は、バリデータのマスターキーペアから署名付きの公開鍵(ephemeral signing key)を認証するためのデータブロックです。[更新: rippled 1.7.0][].
+`{% $frontmatter.seo.title %}`メソッドは、指定したバリデータ公開鍵の現在の"マニフェスト"情報を報告します。"マニフェスト"は、バリデータのマスターキーペアから署名付きの公開鍵(ephemeral signing key)を認証するためのデータブロックです。[更新: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE").
 
 
 ### リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
         "public_key":"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
     }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
-#Syntax: {{currentpage.name}} public_key
-rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
+#Syntax: {% $frontmatter.seo.title %} public_key
+rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメータが含まれます。
 
 | `Field`      | 型   　| 説明                               |
 |:-------------|:------|:-----------------------------------|
-| `public_key` | 文字列 | 検索するバリデータの[base58][]エンコードされた公開鍵。マスター公開鍵あるいはエフェメラル公開鍵を指定します。 |
+| `public_key` | 文字列 | 検索するバリデータの[base58](base58-encodings.html)エンコードされた公開鍵。マスター公開鍵あるいはエフェメラル公開鍵を指定します。 |
 
 
 ### レスポンスのフォーマット
 
 成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -77,9 +76,9 @@ rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -97,9 +96,9 @@ rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -118,17 +117,18 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- Note, the CLI response above is mocked up to compensate for https://github.com/XRPLF/rippled/issues/3317 -->
 
-レスポンスは[標準フォーマット][]に従い、成功した結果には以下のフィールドが含まれます。
+レスポンスは[標準フォーマット](../../api-conventions/response-formatting.md)に従い、成功した結果には以下のフィールドが含まれます。
 
 | `Field`     | 型         | 説明                                                   |
 |:------------|:-----------|:------------------------------------------------------|
 | `details`   | オブジェクト | _(省略される場合があります)_ このマニフェストに含まれるデータ。サーバがリクエストからの`public_key`に対するマニフェストを持っていない場合は省略されます。その内容の完全な説明については、以下の **オブジェクトの詳細** をご覧ください。 |
-| `manifest`  | 文字列      | _(省略される場合があります)_ base64形式の完全なマニフェストデータ。このデータは[シリアライズ](serialization.html)され、base64エンコードされる前にバイナリになります。サーバがリクエストからの`public_key`に対するマニフェストを持っていない場合は省略されます。 |
+| `manifest`  | 文字列      | _(省略される場合があります)_ base64形式の完全なマニフェストデータ。このデータは[シリアライズ](../../../protocol/binary-format.md)され、base64エンコードされる前にバイナリになります。サーバがリクエストからの`public_key`に対するマニフェストを持っていない場合は省略されます。 |
 | `requested` | 文字列      | リクエストの`public_key`。                               |
 
 #### オブジェクトの詳細
@@ -138,18 +138,13 @@ Connecting to 127.0.0.1:5005
 | `Field`         | 型    | 説明                                       |
 |:----------------|:------|:--------------------------------------------------|
 | `domain`        | 文字列 | このバリデータが関連していると示すドメイン名。マニフェストにドメインが含まれていない場合、これは空文字列になります。 |
-| `ephemeral_key` | 文字列 | このバリデータのエフェメラル公開鍵を、[base58][]で指定します。 |
-| `master_key`    | 文字列 | このバリデータのマスター公開鍵を、[base58][]で指定します。 |
+| `ephemeral_key` | 文字列 | このバリデータのエフェメラル公開鍵を、[base58](base58-encodings.html)で指定します。 |
+| `master_key`    | 文字列 | このバリデータのマスター公開鍵を、[base58](base58-encodings.html)で指定します。 |
 | `seq`           | 数値   | このマニフェストのシーケンス番号。この番号は、バリデータのオペレータがバリデータのトークンを更新してエフェメラルキーをローテーションしたり、設定を変更したりするたびに増加します。 |
 
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 - `invalidParams` - `public_key`フィールドが見つからないか、正しく指定されていません。
 - `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

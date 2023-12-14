@@ -10,15 +10,14 @@ labels:
 
 `connect`コマンドは、`rippled`サーバーを特定のピア`rippled`サーバーに強制的に接続します。
 
-*`connect`要求は、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`connect`要求は、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "command": "connect",
@@ -26,9 +25,9 @@ labels:
    "port": 51235
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "connect",
@@ -40,32 +39,31 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: connect ip [port]
 rippled connect 192.170.145.88 51235
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
 | `Field` | 型   | 説明                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `ip`    | 文字列 | 接続するサーバーのIPアドレス。                    |
-| `port`  | 数値 | _（省略可）_ 接続時に使用するポート番号。デフォルトでは**2459**です。 [新規: rippled 1.6.0][] |
+| `port`  | 数値 | _（省略可）_ 接続時に使用するポート番号。デフォルトでは**2459**です。 [新規: rippled 1.6.0](https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE") |
 
 ### 応答フォーマット
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -74,9 +72,9 @@ rippled connect 192.170.145.88 51235
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -88,10 +86,11 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
 | `Field`   | 型   | 説明                                            |
 |:----------|:-------|:-------------------------------------------------------|
@@ -99,11 +98,6 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * スタンドアロンモードでは接続できません - スタンドアロンモードではネットワーク関連のコマンドが無効にされています。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

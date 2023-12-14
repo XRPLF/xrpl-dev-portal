@@ -23,9 +23,3 @@ _（[TickSize Amendment][]により追加されました。）_
 - [Dev Blog: Introducing the TickSize Amendment](https://ripple.com/dev-blog/ticksize-amendment-open-voting/#ticksize-amendment-overview)
 
 - [AccountSetトランザクション][]
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

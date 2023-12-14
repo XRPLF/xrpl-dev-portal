@@ -7,24 +7,24 @@ blurb: Format and meaning of fundamental data types like addresses, ledger index
 
 Different types of objects are uniquely identified in different ways:
 
-[Accounts](accounts.html) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
+[Accounts](../../../concepts/accounts/accounts.md) are identified by their [Address][], for example `"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`. Addresses always start with "r". Many `rippled` methods also accept a hexadecimal representation.
 
-[Transactions](transaction-formats.html) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
+[Transactions](../transactions/index.md) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
-Each closed [Ledger](ledger-data-formats.html) has a [Ledger Index][] and a [Hash][] value. When [Specifying Ledgers][] you can use either one.
+Each closed [Ledger](../ledger-data/index.md) has a [Ledger Index][] and a [Hash][] value. When [Specifying Ledgers][] you can use either one.
 
 ## Addresses
 [Address]: #addresses
 
-{% include '_snippets/data_types/address.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/address.md" /%}
+
 
 
 ## Hashes
 [Hash]: #hashes
 
-{% include '_snippets/data_types/hash.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/hash.md" /%}
+
 
 ### Hash Prefixes
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
@@ -57,15 +57,15 @@ Some types of hash appear in API requests and responses. Others are only calcula
 ## Account Sequence
 [Sequence Number]: #account-sequence
 
-{% include '_snippets/data_types/account_sequence.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/account_sequence.md" /%}
+
 
 
 ## Ledger Index
 [Ledger Index]: #ledger-index
 
-{% include '_snippets/data_types/ledger_index.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/ledger_index.md" /%}
+
 
 
 ### Specifying Ledgers
@@ -74,17 +74,23 @@ Many API methods require you to specify an instance of the ledger, with the data
 
 1. Specify a ledger by its [Ledger Index][] in the `ledger_index` parameter. Each closed ledger has a ledger index that is 1 higher than the previous ledger. (The very first ledger had ledger index 1.)
 
-        "ledger_index": 61546724
+    ```
+    "ledger_index": 61546724
+    ```
 
 2. Specify a ledger by its [Hash][] value in the `ledger_hash` parameter.
 
-        "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+    ```
+    "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+    ```
 
 3. Specify a ledger by one of the following shortcuts, in the `ledger_index` parameter:
 
-    * `validated` for the most recent ledger that has been [validated by consensus](consensus-structure.html#validation)
+    * `validated` for the most recent ledger that has been [validated by consensus](../../../concepts/consensus-protocol/consensus-structure.md#validation)
 
-            "ledger_index": "validated"
+        ```
+        "ledger_index": "validated"
+        ```
 
     * `closed` for the most recent ledger that has been closed for modifications and proposed for validation
 
@@ -92,7 +98,7 @@ Many API methods require you to specify an instance of the ledger, with the data
 
 There is also a deprecated `ledger` parameter which accepts any of the above three formats. *Do not* use this parameter; it may be removed without further notice.
 
-If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the `current` (in-progress) ledger. In [Reporting Mode](rippled-server-modes.html#reporting-mode), the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers.
+If you do not specify a ledger, the server decides which ledger to use to serve the request. By default, the server chooses the `current` (in-progress) ledger. In [Reporting Mode](../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode), the server uses the most recent validated ledger instead. Do not provide more than one field specifying ledgers.
 
 **Note:** Do not rely on the default behavior for specifying a ledger; it is subject to change. Always specify a ledger version in the request if you can.
 
@@ -103,23 +109,27 @@ Reporting Mode does not record ledger data until it has been validated. If you m
 
 There are two kinds of currencies in the XRP Ledger: XRP and tokens. These two types of currencies are specified in different formats, with different precision and rounding behavior.
 
-Some fields, such as the destination `Amount` of a [Payment transaction][], can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](transaction-cost.html)).
+Some fields, such as the destination `Amount` of a [Payment transaction](../transactions/types/payment.md), can be either type. Some fields only accept XRP specifically, such as the `Fee` field ([transaction cost](../../../concepts/transactions/transaction-cost.md)).
 
 XRP is specified as a string containing an integer number of "drops" of XRP, where 1 million drops equals 1 XRP. Tokens are instead specified as an object with fields for the decimal amount, currency code, and issuer. For example:
 
 - **XRP** - To specify an `Amount` field with a value of 13.1 XRP:
 
-        "Amount": "13100000"
+    ```
+    "Amount": "13100000"
+    ```
 
 - **Token** - To specify an `Amount` field with a value of 13.1 FOO issued by or to `rf1B...`:
 
-        "Amount": {
-            "value": "13.1",
-            "currency": "FOO",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-        }
+    ```
+    "Amount": {
+        "value": "13.1",
+        "currency": "FOO",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+    }
+    ```
 
-For more information, see [Currency Formats](currency-formats.html).
+For more information, see [Currency Formats](currency-formats.md).
 
 
 ## Specifying Time
@@ -127,8 +137,3 @@ For more information, see [Currency Formats](currency-formats.html).
 The `rippled` server and its APIs represent time as an unsigned integer. This number measures the number of seconds since the "Ripple Epoch" of January 1, 2000 (00:00 UTC). This is like the way the [Unix epoch](http://en.wikipedia.org/wiki/Unix_time) works, except the Ripple Epoch is 946684800 seconds after the Unix Epoch.
 
 Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

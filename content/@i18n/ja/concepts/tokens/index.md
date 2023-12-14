@@ -7,15 +7,15 @@ labels:
 ---
 # トークン
 
-XRP以外のすべての資産は、XRP Ledgerでは **トークン** として扱うことができます。通常のトークンは、アカウント間の[トラストライン](trust-lines-and-issuing.html) と呼ばれる関係で管理されます。すべてのアカウントは、トークンを保有することを許可する他のアカウントにあトークンを発行できますが、トークンを必要としないアカウントに一方的にトークンを配付することはできません。トークンは、台帳の外に存在する資産に裏付けられた「ステーブルコイン」、XRP Ledger上で独自に作成された純粋なデジタルトークン、コミュニティクレジットなど、様々な種類の価値を表すことが出来ます。
+XRP以外のすべての資産は、XRP Ledgerでは **トークン** として扱うことができます。通常のトークンは、アカウント間の[トラストライン](fungible-tokens/index.md) と呼ばれる関係で管理されます。すべてのアカウントは、トークンを保有することを許可する他のアカウントにあトークンを発行できますが、トークンを必要としないアカウントに一方的にトークンを配付することはできません。トークンは、台帳の外に存在する資産に裏付けられた「ステーブルコイン」、XRP Ledger上で独自に作成された純粋なデジタルトークン、コミュニティクレジットなど、様々な種類の価値を表すことが出来ます。
 
 **注記:** XRP Ledger上のトークンは、過去に「IOUs」（[I-owe-you](https://en.wikipedia.org/wiki/IOU)の略）および「発行済み通貨」とも呼ばれてきました。しかし、これらの呼称は、XRP Ledgerのトークンが表すことのできるデジタル資産の全範囲をカバーしていないため、望ましくないとされています。<!-- STYLE_OVERRIDE: ious -->
 
-通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、[非代替トークン(NFT)](non-fungible-tokens.html)を参照してください。
+通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、[非代替トークン(NFT)](nfts/index.md)を参照してください。
 
-トークンは[複数通貨間の支払い](cross-currency-payments.html)に使用でき、[分散型取引所(DEX)](decentralized-exchange.html)で取引することができます。
+トークンは[複数通貨間の支払い](../payment-types/cross-currency-payments.md)に使用でき、[分散型取引所(DEX)](decentralized-exchange/index.md)で取引することができます。
 
-トラストラインの残高は、どちら側から見るかによって、プラスまたはマイナスで表されます。マイナスの残高を持つ側は「発行者」と呼ばれ、そのトークンに関するいくつかの機能を設定することができます。発行者ではない別のアカウントにトークンを送ると、それらのトークンは発行者、場合によっては同じ通貨コードを使用している他のアカウントに「ripple」します。これは便利な場合もありますが、想定外の挙動を引き起こす可能性もあります。トラストラインに[No Ripple flag](rippling.html)を使用すると、トラストラインがripplingしないように設定することができます。
+トラストラインの残高は、どちら側から見るかによって、プラスまたはマイナスで表されます。マイナスの残高を持つ側は「発行者」と呼ばれ、そのトークンに関するいくつかの機能を設定することができます。発行者ではない別のアカウントにトークンを送ると、それらのトークンは発行者、場合によっては同じ通貨コードを使用している他のアカウントに「ripple」します。これは便利な場合もありますが、想定外の挙動を引き起こす可能性もあります。トラストラインに[No Ripple flag](fungible-tokens/rippling.md)を使用すると、トラストラインがripplingしないように設定することができます。
 
 ## ステーブルコイン
 
@@ -25,15 +25,15 @@ XRP Ledger におけるトークンの代表的なモデルとして、発行者
 
 実際には、XRP Ledger はただのシステムであり、その外側にいかなるルールも適用することはできません。そのため、XRP Ledger上のステーブルコインは、その発行者を信頼し、その発行者が要求に応じてトークンを現物資産へ交換することができなければ、そのステーブルコインの価値が維持されないと考えるべきでしょう。ユーザは、誰がトークンを発行しているのか、信頼できるのか、合法的なのか、支払能力があるのか、という点について十分に注意をしなければなりません。信頼できない場合は、そのトークンを保有するべきではないでしょう。
 
-[Stablecoin Issuer](stablecoin-issuer.html)をご覧ください。
+[Stablecoin Issuer](../../use-cases/tokenization/stablecoin-issuer.md)をご覧ください。
 
 ## コミュニティクレジット
 
-XRP Ledgerのもう一つの利用方法として、「コミュニティクレジット」という、知人同士がXRP Ledgerを利用して、誰が誰にいくら借金があるのかを把握する仕組みがあります。この借金を自動的かつアトミックに活用し、[rippling](rippling.html)を通じて支払いを決済できるのが、XRP Ledgerの優れた機能です。
+XRP Ledgerのもう一つの利用方法として、「コミュニティクレジット」という、知人同士がXRP Ledgerを利用して、誰が誰にいくら借金があるのかを把握する仕組みがあります。この借金を自動的かつアトミックに活用し、[rippling](fungible-tokens/rippling.md)を通じて支払いを決済できるのが、XRP Ledgerの優れた機能です。
 
 例えば、AsheeshがMarcusに20ドル、MarcusがBharathに50ドルの借金がある場合、BharathはAsheeshのMarcusに対する借金を帳消しにする代わりに、その分のMarcusに対する借金を帳消しすることによってAsheeshに20ドルを「支払う」ことができる。逆もまた可能である。AsheeshはMarcusを通してBharathに支払うことで、それぞれの負債を減らすことができるのです。XRP Ledgerは、このように複雑な連鎖的な取引を、中間にいるアカウントが何もせずとも、単一の取引で決済することができるのです。
 
-このタイプの使用法については、[paths](paths.html)を参照してください。<!--{# TODO: コミュニティクレジットのもっと例示的なページへのリンクができるといいですね。#}-->
+このタイプの使用法については、[paths](fungible-tokens/paths.md)を参照してください。<!--{# TODO: コミュニティクレジットのもっと例示的なページへのリンクができるといいですね。#}-->
 
 ## その他のトークン
 
@@ -45,36 +45,31 @@ XRP Ledgerで発行されるトークンには、その他にも使用例があ�
 
 ## トークンの特性
 
-XRP Ledgerにおけるトークンは、[XRPと異なる性質](currency-formats.html#comparison)を持ちます。トークンは常に _トラストライン内_ に存在し、トークンのすべての移動はトラストラインに沿って行われます。他のアカウントに、トラストラインに設定された上限を超えるトークンを保有させることはできません。(自分のトラストラインを制限以上に増やすことは _可能_ です。例えば、[分散型取引所](decentralized-exchange.html)でさらに購入したり、すでにプラスの残高がある状態で上限値を下げたりすることができます。)
+XRP Ledgerにおけるトークンは、[XRPと異なる性質](currency-formats.html#comparison)を持ちます。トークンは常に _トラストライン内_ に存在し、トークンのすべての移動はトラストラインに沿って行われます。他のアカウントに、トラストラインに設定された上限を超えるトークンを保有させることはできません。(自分のトラストラインを制限以上に増やすことは _可能_ です。例えば、[分散型取引所](decentralized-exchange/index.md)でさらに購入したり、すでにプラスの残高がある状態で上限値を下げたりすることができます。)
 
 トークンは、精度が15桁の10進数（基数10）と指数を用いて、非常に大きな値（最大9999999999999999×10<sup>80</sup>）から、非常に小さな値（最小1.0×10<sup>-81</sup>まで）を表現することができます。
 
-必要なトラストラインが設定されていれば、誰でも[Paymentトランザクション][]を送信することでトークンを発行することができます。トークンを発行者に送り返せば、トークンを「burn」することができます。また、発行者の設定により、[複数通貨間の支払い](cross-currency-payments.html)やトレードでトークンをさらに生み出せるケースもあります。
+必要なトラストラインが設定されていれば、誰でも[Paymentトランザクション][]を送信することでトークンを発行することができます。トークンを発行者に送り返せば、トークンを「burn」することができます。また、発行者の設定により、[複数通貨間の支払い](../payment-types/cross-currency-payments.md)やトレードでトークンをさらに生み出せるケースもあります。
 
-発行者は、ユーザがトークンを送金する際に自動で差し引かれる「送金手数料」(transfer-fees.html)を設定することができます。発行者は、自分のトークンを含む取引レートの[ティックサイズ](ticksize.html)を定義することもできます。発行者と一般アカウントのどちらも、トラストラインを[凍結](freezes.html)することができ、トラストライン内のトークンの使用方法を制限することができます。( XRPにはこのいずれも適用されません。)
+発行者は、ユーザがトークンを送金する際に自動で差し引かれる「送金手数料」(transfer-fees.html)を設定することができます。発行者は、自分のトークンを含む取引レートの[ティックサイズ](decentralized-exchange/ticksize.md)を定義することもできます。発行者と一般アカウントのどちらも、トラストラインを[凍結](fungible-tokens/freezes.md)することができ、トラストライン内のトークンの使用方法を制限することができます。( XRPにはこのいずれも適用されません。)
 
-トークン発行の技術的な手順については、[代替可能トークンの発行](issue-a-fungible-token.html) を参照してください。
+トークン発行の技術的な手順については、[代替可能トークンの発行](../../../../tutorials/use-tokens/issue-a-fungible-token.md) を参照してください。
 
 ## 関連項目
 
 - **コンセプト:**
-  - [XRP?](what-is-xrp.html)
-  - [複数通貨間の支払い](cross-currency-payments.html)
-  - [分散型取引所](decentralized-exchange.html)
+  - [XRP?](../../introduction/what-is-xrp.md)
+  - [複数通貨間の支払い](../payment-types/cross-currency-payments.md)
+  - [分散型取引所](decentralized-exchange/index.md)
 - **チュートリアル:**
-  - [代替可能トークンの発行](issue-a-fungible-token.html)
-  - [XRP Ledgerゲートウェイの開設](stablecoin-issuer.html)
-  - [トランザクションの結果の確認](look-up-transaction-results.html)
-  - [専門化した支払いタイプの使用](use-specialized-payment-types.html)
+  - [代替可能トークンの発行](../../../../tutorials/use-tokens/issue-a-fungible-token.md)
+  - [XRP Ledgerゲートウェイの開設](../../use-cases/tokenization/stablecoin-issuer.md)
+  - [トランザクションの結果の確認](../transactions/finality-of-results/look-up-transaction-results.md)
+  - [専門化した支払いタイプの使用](../../tutorials/tasks/use-specialized-payment-types/index.md)
 - **リファレンス:**
   - [Paymentトランザクション][]
   - [TrustSetトランザクション][]
-  - [RippleStateオブジェクト](ripplestate.html)
+  - [RippleStateオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)
   - [account_linesメソッド][]
   - [account_currenciesメソッド][]
   - [gateway_balancesメソッド][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

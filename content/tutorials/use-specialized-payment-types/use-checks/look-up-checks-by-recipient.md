@@ -7,52 +7,42 @@ labels:
 ---
 # Look Up Checks by Recipient
 
-This tutorial shows how to look up [Checks](checks.html) by their recipient. You may also want to [look up Checks by sender](look-up-checks-by-sender.html).
+This tutorial shows how to look up [Checks](../../../concepts/payment-types/checks.md) by their recipient. You may also want to [look up Checks by sender](look-up-checks-by-sender.md).
 
 ## 1. Look up all Checks for the address
 
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command with the recipient account's address and set the `type` field of the request to `checks`.
 
 <!-- Moved this note to the account_objects method page. -->
-**Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [json method][] to send the JSON-RPC format request on the commandline instead.
+**Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [json method](../../../references/http-websocket-apis/public-api-methods/utility-methods/json.md) to send the JSON-RPC format request on the commandline instead.
 
 ### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*ripple-lib 1.x*
+{% tab label="ripple-lib 1.x" %}
+{% code-snippet file="/_code-samples/checks/js/getChecks.js" language="js" /%}
+{% /tab %}
 
-```js
-{% include '_code-samples/checks/js/getChecks.js' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_code-samples/checks/json-rpc/account_objects-req.json" language="json" /%}
+{% /tab %}
 
-*JSON-RPC*
-
-```json
-{% include '_code-samples/checks/json-rpc/account_objects-req.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*ripple-lib 1.x*
+{% tab label="ripple-lib 1.x" %}
+{% code-snippet file="/_code-samples/checks/js/get-checks-resp.txt" language="" /%}
+{% /tab %}
 
-```
-{% include '_code-samples/checks/js/get-checks-resp.txt' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_code-samples/checks/json-rpc/account_objects-resp.json" language="json" prefix="200 OK\n\n" /%}
+{% /tab %}
 
-*JSON-RPC*
-
-```json
-200 OK
-
-{% include '_code-samples/checks/json-rpc/account_objects-resp.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## 2. Filter the responses by recipient
@@ -78,5 +68,3 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 ```
 
 <!--{# common links #}-->
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled-api-links.md' %}

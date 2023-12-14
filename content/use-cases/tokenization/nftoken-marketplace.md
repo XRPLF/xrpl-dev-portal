@@ -20,24 +20,24 @@ NFToken Marketplaces act as intermediaries between NFToken creators and collecto
 
 ## Set up a rippled instance
 
-When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install rippled](install-rippled.html).
+When you set up a serious marketplace site with high volume, it justifies the decision to set up your own XRP Ledger server instance. See [Install rippled](../../infrastructure/installation/index.md).
 
 
 ### Setting up a wallet
 
 Set up a new wallet. See [Xumm](https://xumm.app/).
 
-Base reserve requirements See [Reserves](reserves.html#base-reserve-and-owner-reserve).
+Base reserve requirements See [Reserves](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve).
 
 ### Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](transfer-nfts-using-javascript.html).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
 ![Transferring NFTs](img/uc-nft-transferring-nfts.png)
 
-You can sell your NFTs in an auction format. See [Running an NFT Auction](nftoken-auctions.html).
+You can sell your NFTs in an auction format. See [Running an NFT Auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](broker-an-nft-sale-using-javascript.html).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md).
 
 
 ### Reserve requirements
@@ -52,23 +52,23 @@ When you post the `NFTokenOffer` or sell the NFT, there are trivial transfer fee
 
 See:
 
-1. [NFTokenOffer](nft-reserve-requirements.html#nftokenoffer-reserve)
-2. NFToken page ([Owner reserve](nft-reserve-requirements.html#owner-reserve))
-3. Trivial [transfer fees](transfer-fees.html)
+1. [NFTokenOffer](../../concepts/tokens/nfts/reserve-requirements.md#nftokenoffer-reserve)
+2. NFToken page ([Owner reserve](../../concepts/tokens/nfts/reserve-requirements.md#owner-reserve))
+3. Trivial [transfer fees](../../concepts/tokens/transfer-fees.md)
 
-You can learn more about brokered sales in the topic [Trading Tokens on the XRP Ledger](non-fungible-token-transfers.html).
+You can learn more about brokered sales in the topic [Trading Tokens on the XRP Ledger](../../concepts/tokens/nfts/trading.md).
 
-Learn more about token transfer fees in the topic [Transfer Fees](transfer-fees.html).
+Learn more about token transfer fees in the topic [Transfer Fees](../../concepts/tokens/transfer-fees.md).
 
-You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](broker-an-nft-sale-using-javascript.html).
+You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md).
 
 ### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](transfer-nfts-using-javascript.html).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
 ![Checkout](img/uc-nft-checkout.png)
 
-For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange).
+For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
 ## Indexing NFTs
 
@@ -78,7 +78,7 @@ When listing NFTs for sale, it can be useful to use object metadata to organize 
 
 See:
 
-- [Clio setup](install-clio-on-ubuntu.html)
+- [Clio setup](../../infrastructure/installation/install-clio-on-ubuntu.md)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
@@ -102,4 +102,3 @@ Supplement Information [No link]
         Price History
 
  -->
-

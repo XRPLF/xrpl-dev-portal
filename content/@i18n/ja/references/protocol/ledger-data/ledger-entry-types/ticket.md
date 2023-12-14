@@ -11,9 +11,9 @@ labels:
 
 _([TicketBatch amendment][]が必要です)_
 
-`Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](basic-data-types.html#アカウントシーケンス)を追跡する[Ticket](tickets.html)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。[New in: rippled 1.7.0][].
+`Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](basic-data-types.html#アカウントシーケンス)を追跡する[Ticket](../../../../concepts/accounts/tickets.md)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。[New in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE").
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -27,29 +27,24 @@ _([TicketBatch amendment][]が必要です)_
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `Ticket`オブジェクトのフィールドは次のとおりです。
 
 | フィールド            | JSONの型   | 内部の型       | 説明        　　　　         |
 |:--------------------|:----------|:--------------|:---------------------------|
-| `LedgerEntryType`   | 文字列     | UInt16        | 文字列 `Ticket` にマッピングされた値 `0x0054` は、このオブジェクトが {{currentpage.name}} オブジェクトであることを示しています。 |
-| `Account`           | 文字列     | AccountID     | このチケットを所有する[アカウント](accounts.html)です。 |
+| `LedgerEntryType`   | 文字列     | UInt16        | 文字列 `Ticket` にマッピングされた値 `0x0054` は、このオブジェクトが {% $frontmatter.seo.title %} オブジェクトであることを示しています。 |
+| `Account`           | 文字列     | AccountID     | このチケットを所有する[アカウント](../../../../concepts/accounts/accounts.md)です。 |
 | `Flags`             | Number    | UInt32        | ブール値フラグのビットマップ。Ticketにはフラグが定義されていないため、この値は常に0です。 |
 | `OwnerNode`         | 文字列     | UInt64        | 送金元の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。注記: このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
-| `PreviousTxnID`     | 文字列     | Hash256       | 最後にこのオブジェクトを変更した[トランザクション](transactions.html)の識別用ハッシュ。 |
+| `PreviousTxnID`     | 文字列     | Hash256       | 最後にこのオブジェクトを変更した[トランザクション](../../../../concepts/transactions/index.md)の識別用ハッシュ。 |
 | `PreviousTxnLgrSeq` | 数値       | UInt32        | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][Ledger Index]。 |
-| `TicketSequence`    | 数値       | UInt32        | 本チケットが設定する[シーケンス番号][]。 |
+| `TicketSequence`    | 数値       | UInt32        | 本チケットが設定する[シーケンス番号](basic-data-types.html#アカウントシーケンス)。 |
 
-## {{currentpage.name}} IDのフォーマット
+## {% $frontmatter.seo.title %} IDのフォーマット
 
 TicketオブジェクトのIDは、以下の値がこの順序で連結されているSHA-512ハーフです
 
 * Ticketスペースキー (`0x0054`)
 * チケットの所有者のアカウントID
 * チケットの`TicketSequence`
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

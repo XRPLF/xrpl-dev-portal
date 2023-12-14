@@ -14,10 +14,9 @@ The `account_lines` method returns information about an account's trust lines, w
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -25,9 +24,9 @@ An example of the request format:
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_lines",
@@ -38,15 +37,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
 rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#account_lines)
 
@@ -59,7 +59,7 @@ The request accepts the following parameters: /Users/peterchen/xrpl-dev-portal/c
 | `ledger_index` | Number or String     | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `peer`         | String - [Address][] | _(Optional)_ A second account; if provided, filter results to trust lines connecting the two accounts. |
 | `limit`        | Number               | _(Optional)_ Limit the number of trust lines to retrieve. The server may return less than the specified limit, even if there are more pages of results. Must be within the inclusive range 10 to 400.  Positive values outside this range are replaced with the closest valid option. The default is 200. |
-| `marker`       | [Marker][]           | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)           | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The following parameters are deprecated and may be removed without further notice: `ledger` and `peer_index`.
 
@@ -67,10 +67,9 @@ The following parameters are deprecated and may be removed without further notic
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -113,9 +112,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -158,8 +157,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -404,10 +404,11 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the address of the account and an array of trust line objects. Specifically, the result object contains the following fields:
 
 | `Field`                | Type                       | Description            |
 |:-----------------------|:---------------------------|:-----------------------|
@@ -416,7 +417,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. |
 | `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. |
 | `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. |
-| `marker`               | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
+| `marker`               | [Marker](../../api-conventions/markers-and-pagination.md)                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 
 Each trust line object has some combination of the following fields:
 
@@ -429,12 +430,12 @@ Each trust line object has some combination of the following fields:
 | `limit_peer`     | String           | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | `quality_in`     | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
 | `quality_out`    | Unsigned Integer | Rate at which the account values outgoing balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
-| `no_ripple`      | Boolean          | _(May be omitted)_ If `true`, this account has enabled the [No Ripple flag](rippling.html) for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered [the default state](ripplestate.html#contributing-to-the-owner-reserve). If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0][] |
-| `no_ripple_peer` | Boolean          | _(May be omitted)_ If `true`, the peer account has enabled the [No Ripple flag](rippling.html) for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered [the default state](ripplestate.html#contributing-to-the-owner-reserve). If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0][] |
-| `authorized`     | Boolean          | _(May be omitted)_ If `true`, this account has [authorized this trust line](authorized-trust-lines.html). The default is `false`. |
-| `peer_authorized`| Boolean          | _(May be omitted)_ If `true`, the peer account has [authorized this trust line](authorized-trust-lines.html). The default is `false`. |
-| `freeze`         | Boolean          | _(May be omitted)_ If `true`, this account has [frozen](freezes.html) this trust line. The default is `false`. |
-| `freeze_peer`    | Boolean          | _(May be omitted)_ If `true`, the peer account has [frozen](freezes.html) this trust line. The default is `false`. |
+| `no_ripple`      | Boolean          | _(May be omitted)_ If `true`, this account has enabled the [No Ripple flag](../../../../concepts/tokens/fungible-tokens/rippling.md) for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered [the default state](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md#contributing-to-the-owner-reserve). If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE") |
+| `no_ripple_peer` | Boolean          | _(May be omitted)_ If `true`, the peer account has enabled the [No Ripple flag](../../../../concepts/tokens/fungible-tokens/rippling.md) for this trust line. If present and `false`, this account has disabled the No Ripple flag, but, because the account also has the Default Ripple flag disabled, that is not considered [the default state](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md#contributing-to-the-owner-reserve). If omitted, the account has the No Ripple flag disabled for this trust line and Default Ripple enabled. [Updated in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE") |
+| `authorized`     | Boolean          | _(May be omitted)_ If `true`, this account has [authorized this trust line](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md). The default is `false`. |
+| `peer_authorized`| Boolean          | _(May be omitted)_ If `true`, the peer account has [authorized this trust line](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md). The default is `false`. |
+| `freeze`         | Boolean          | _(May be omitted)_ If `true`, this account has [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) this trust line. The default is `false`. |
+| `freeze_peer`    | Boolean          | _(May be omitted)_ If `true`, the peer account has [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) this trust line. The default is `false`. |
 
 ## Possible Errors
 
@@ -443,7 +444,3 @@ Each trust line object has some combination of the following fields:
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - If the `marker` field provided is not acceptable.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

@@ -14,7 +14,7 @@ If vulnerable software submits malleable transactions and assumes they can only 
 
 On the XRP Ledger mainnet, only **multi-signed transactions** can be malleable, if they have more signatures than necessary, or if an authorized signer provides an additional signature beyond what is necessary. Good operational security can protect against these problems. See [Mitigations for Multi-Signature Malleability](#mitigations-for-multi-signature-malleability) for guidelines.
 
-Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the [RequireFullyCanonicalSig amendment][] became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](cryptographic-keys.html#signing-algorithms) were never vulnerable to this problem.)
+Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the [RequireFullyCanonicalSig amendment][] became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](../../accounts/cryptographic-keys.md#signing-algorithms) were never vulnerable to this problem.)
 
 
 
@@ -22,8 +22,8 @@ Before 2014, single-signed transactions could be malleable due to properties of 
 
 In the XRP Ledger, a transaction cannot execute unless:
 
-- All [fields of a transaction](transaction-common-fields.html) are signed, except the signature itself.
-- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](transactions.html#authorizing-transactions).
+- All [fields of a transaction](../../../references/protocol/transactions/common-fields.md) are signed, except the signature itself.
+- The key pair(s) used to sign the transaction are [authorized to send transactions on behalf of that account](../index.md#authorizing-transactions).
 - The signature is _canonical_ and matches the transaction instructions.
 
 Any change to the signed fields, no matter how small, would invalidate the signature, so no part of the transaction can be malleable except for the signature itself. In most cases, any change to a signature itself also invalidates the signature, but there are some specific exceptions, described below.
@@ -46,7 +46,7 @@ Thus, to have _fully_ canonical signatures, one must choose which of the two pos
 
 With the [RequireFullyCanonicalSig amendment][] (enabled in 2020), all transactions must use _fully canonical_ signatures only.
 
-Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](transaction-common-fields.html#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the [RequireFullyCanonicalSig amendment][] is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
+Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](../../../references/protocol/transactions/common-fields.md#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the [RequireFullyCanonicalSig amendment][] is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
 
 
 ### Malleability with Multi-Signatures
@@ -68,8 +68,8 @@ Even if your authorized signers are not intentionally malicious, confusion or po
 - Do not collect more signatures than necessary.
 - Either appoint one party to assemble a transaction after collecting the necessary number of signatures, or instruct signers pass the transaction instructions forward to be signed in a set order.
 - Do not add unnecessary or untrusted signers to your multi-signing lists, even if the `weight` values associated with their keys are insufficient to authorize a transaction.
-- Be prepared for the possibility that a transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method][]).
-- Monitor the `Sequence` number of your account (for example, using the [account_info method][]). This number always increases by exactly one when your account sends a transaction successfully, and never any other way. If the number does not match what you expect, you should check your recent transactions to confirm why. (Aside from malleable transactions, there are other ways this could happen, too. Perhaps you configured another application to send transactions for you. Maybe a malicious user gained access to your secret key. Or perhaps your application lost data and forgot about a transaction you sent already.)
+- Be prepared for the possibility that a transaction executes with a different hash and set of signatures than you expected. Carefully monitor your account's sent transactions (for example, using the [account_tx method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md)).
+- Monitor the `Sequence` number of your account (for example, using the [account_info method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)). This number always increases by exactly one when your account sends a transaction successfully, and never any other way. If the number does not match what you expect, you should check your recent transactions to confirm why. (Aside from malleable transactions, there are other ways this could happen, too. Perhaps you configured another application to send transactions for you. Maybe a malicious user gained access to your secret key. Or perhaps your application lost data and forgot about a transaction you sent already.)
 - If you re-create transactions to be multi-signed, _do not_ change the `Sequence` number unless you have manually confirmed that the intended actions have not already executed.
 - Confirm that the `tfFullyCanonicalSig` flag is enabled before signing.
 
@@ -122,7 +122,7 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 
     If the transaction included the `LastLedgerSequence` field, this would occur after the specified ledger index has passed.
 
-    If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: if no other transaction from the same sender uses the same `Sequence` number, then the transaction could theoretically succeed later regardless of how much time has passed. (See [Reliable Transaction Submission](reliable-transaction-submission.html) for details.)
+    If the transaction omitted the `LastLedgerSequence` field, this could be wrong in another way: if no other transaction from the same sender uses the same `Sequence` number, then the transaction could theoretically succeed later regardless of how much time has passed. (See [Reliable Transaction Submission](../reliable-transaction-submission.md) for details.)
 
 8. The vulnerable system takes action assuming that the transaction has failed.
 
@@ -134,18 +134,13 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 ## See Also
 
 - **Concepts:**
-    - [Transactions](transactions.html)
-    - [Finality of Results](finality-of-results.html)
+    - [Transactions](../index.md)
+    - [Finality of Results](index.md)
 - **Tutorials:**
-    - [Look Up Transaction Results](look-up-transaction-results.html)
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Look Up Transaction Results](look-up-transaction-results.md)
+    - [Reliable Transaction Submission](../reliable-transaction-submission.md)
 - **References:**
-    - [Basic Data Types - Hashes](basic-data-types.html#hashes)
-    - [Transaction Common Fields - Global Flags](transaction-common-fields.html#global-flags)
-    - [Transaction Results](transaction-results.html)
-    - [Serialization Format](serialization.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [Basic Data Types - Hashes](../../../references/protocol/data-types/basic-data-types.md#hashes)
+    - [Transaction Common Fields - Global Flags](../../../references/protocol/transactions/common-fields.md#global-flags)
+    - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [Serialization Format](../../../references/protocol/binary-format.md)

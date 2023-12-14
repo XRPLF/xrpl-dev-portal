@@ -20,7 +20,7 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 
 ## rippledインスタンスのセットアップ
 
-取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](install-rippled.html)をご覧ください。
+取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](../../infrastructure/installation/index.md)をご覧ください。
 
 
 ### ウォレットのセットアップ
@@ -34,11 +34,11 @@ Current wallet options on XRPL: This is a good opportunity for XRPL to highlight
 
 ### NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-an-nft-sale-using-javascript.html)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md)をご覧ください。
 
 
 ### 準備金要件
@@ -53,20 +53,20 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 1. [NFTokenOffer](nft-reserve-requirements.html#nftokenoffer-reserve)
 2. NFToken page ([所有者準備金](nft-reserve-requirements.html#owner-reserve))
-3. 少額の[取引手数料](transfer-fees.html)
+3. 少額の[取引手数料](../../concepts/tokens/transfer-fees.md)
 
 
-ブローカー販売については、トピック[XRP Ledgerでのトークン取引](non-fungible-token-transfers.html)で詳しく説明しています。
+ブローカー販売については、トピック[XRP Ledgerでのトークン取引](../../concepts/tokens/nfts/trading.md)で詳しく説明しています。
 
-トークン取引手数料については、[取引手数料](transfer-fees.html)で詳しく解説しています。
+トークン取引手数料については、[取引手数料](../../concepts/tokens/transfer-fees.md)で詳しく解説しています。
 
-[NFToken Saleの仲介](broker-an-nft-sale-using-javascript.html)の手順に従って、ブローカー販売市場の構築を開始することができます。
+[NFToken Saleの仲介](../../../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md)の手順に従って、ブローカー販売市場の構築を開始することができます。
 
 #### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
 
-他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
+他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 
 ## NFTのインデックス化
 
@@ -74,7 +74,7 @@ NFTを出品する際、オブジェクトのメタデータを使って分類�
 
 関連項目:
 
-- [Clioのセットアップ](install-clio-on-ubuntu.html)
+- [Clioのセットアップ](../../infrastructure/installation/install-clio-on-ubuntu.md)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 

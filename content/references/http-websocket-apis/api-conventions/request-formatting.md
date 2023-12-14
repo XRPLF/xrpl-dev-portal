@@ -7,10 +7,9 @@ blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and 
 
 ## Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -21,9 +20,9 @@ blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and 
   "api_version": 1
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 POST http://s1.ripple.com:51234/
 Content-Type: application/json
@@ -40,14 +39,15 @@ Content-Type: application/json
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated strict
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## WebSocket Format  
@@ -56,12 +56,12 @@ After you open a WebSocket to the `rippled` server, you can send commands as a [
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `command`           | String    | The name of the [API method](public-api-methods.html). |
+| `command`           | String    | The name of the [API method](../public-api-methods/index.md). |
 | `id`                | (Various) | _(Optional)_ A unique value to identify this request. The response to this request uses the same `id` field. This way, even if responses arrive out of order, you know which request prompted which response. |
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
 | (Method Parameters) | (Various) | Provide any parameters to the method at the top level. |
 
-See [Response Formatting](response-formatting.html) for the response from the server.
+See [Response Formatting](response-formatting.md) for the response from the server.
 
 ## JSON-RPC Format
 
@@ -76,23 +76,23 @@ Send request body as a [JSON](https://en.wikipedia.org/wiki/JSON) object with th
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `method`            | String    | The name of the [API method](public-api-methods.html). |
+| `method`            | String    | The name of the [API method](../public-api-methods/index.md). |
 | `params`            | Array     | _(Optional)_ A **one-item array** containing a nested JSON object with the parameters to this method. You may omit this field if the method does not require any parameters. |
 
 The object inside the `params` array can contain the following fields:
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
 | (Method Parameters) | (Various) | Provide any parameters to the method here. |
 
-See [Response Formatting](response-formatting.html) for the response from the server.
+See [Response Formatting](response-formatting.md) for the response from the server.
 
 ## Commandline Format
 
-Put the API method name after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them. Not all methods have commandline API syntax. For more information, see [Commandline Usage](commandline-usage.html#client-mode-options).
+Put the API method name after any normal (dash-prefaced) commandline options, followed by a limited set of parameters, separated by spaces. For any parameter values that might contain spaces or other unusual characters, use single-quotes to encapsulate them. Not all methods have commandline API syntax. For more information, see [Commandline Usage](../../../infrastructure/commandline-usage.md#client-mode-options).
 
-The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.html).
+The commandline calls JSON-RPC, so its responses always match the JSON-RPC [response format](response-formatting.md).
 
 The commandline always uses the latest [API version](#api-versioning).
 
@@ -100,7 +100,7 @@ The commandline always uses the latest [API version](#api-versioning).
 
 ## API Versioning
 
-The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.) [New in: rippled 1.5.0][]
+The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.) [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE")
 
 Future versions of `rippled` that introduce breaking changes will introduce a new API version number, such as `2`. The server will support a range of API versions, which it reports in the `version` API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when `version` method is documented. --> <!-- Uncomment when multiple API versions exist: Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a server_info request using API version 2 and then make another server_info request using API version 1 from the same connection. -->
 
@@ -131,8 +131,3 @@ The following types of changes are **non-breaking changes** and may occur withou
 
 - Adding a new field to a request or response, not including positional parameters.
 - Adding a new API method.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

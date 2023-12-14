@@ -7,9 +7,9 @@ labels:
 ---
 # ter Codes
 
-These codes indicate that the transaction has not been [applied](consensus.html) yet, and generally will be automatically retried by the server that returned the result code. The transaction could apply successfully in the future; for example, if a certain other transaction applies first. These codes have numerical values in the range -99 to -1, but the exact code for any given error is subject to change, so don't rely on it.
+These codes indicate that the transaction has not been [applied](../../../../concepts/consensus-protocol/index.md) yet, and generally will be automatically retried by the server that returned the result code. The transaction could apply successfully in the future; for example, if a certain other transaction applies first. These codes have numerical values in the range -99 to -1, but the exact code for any given error is subject to change, so don't rely on it.
 
-**Note:** Transactions with `ter` codes have not been applied to the current ledger and have not yet changed the XRP Ledger state. A transaction that provisionally got a `ter` result may still succeed or fail with a different code after being automatically applied later. For more information, see [Finality of Results](finality-of-results.html) and [Reliable Transaction Submission](reliable-transaction-submission.html).
+**Note:** Transactions with `ter` codes have not been applied to the current ledger and have not yet changed the XRP Ledger state. A transaction that provisionally got a `ter` result may still succeed or fail with a different code after being automatically applied later. For more information, see [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../../../concepts/transactions/reliable-transaction-submission.md).
 
 | Code             | Explanation                                               |
 |:-----------------|:----------------------------------------------------------|
@@ -21,14 +21,9 @@ These codes indicate that the transaction has not been [applied](consensus.html)
 | `terNO_AUTH`     | The transaction would involve adding currency issued by an account with `lsfRequireAuth` enabled to a trust line that is not authorized. For example, you placed an offer to buy a currency you aren't authorized to hold. |
 | `terNO_LINE`     | Used internally only. This code should never be returned. |
 | `terNO_RIPPLE`   | Used internally only. This code should never be returned. |
-| `terOWNERS`      | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](accountset.html#accountset-flags) flag if it has any trust lines or available offers. |
+| `terOWNERS`      | The transaction requires that account sending it has a nonzero "owners count", so the transaction cannot succeed. For example, an account cannot enable the [`lsfRequireAuth`](../types/accountset.md#accountset-flags) flag if it has any trust lines or available offers. |
 | `terPRE_SEQ`     | The `Sequence` number of the current transaction is higher than the current sequence number of the account sending the transaction. |
-| `terPRE_TICKET`  | The transaction attempted to use a [Ticket](tickets.html), but the specified `TicketSequence` number does not exist in the ledger. However, the Ticket could still be created by another transaction. |
-| `terQUEUED`      | The transaction met the load-scaled [transaction cost](transaction-cost.html) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
+| `terPRE_TICKET`  | The transaction attempted to use a [Ticket](../../../../concepts/accounts/tickets.md), but the specified `TicketSequence` number does not exist in the ledger. However, the Ticket could still be created by another transaction. |
+| `terQUEUED`      | The transaction met the load-scaled [transaction cost](../../../../concepts/transactions/transaction-cost.md) but did not meet the open ledger requirement, so the transaction has been queued for a future ledger. |
 | `terRETRY`       | Unspecified retriable error.                              |
 | `terSUBMITTED`   | Transaction has been submitted, but not yet applied.      |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

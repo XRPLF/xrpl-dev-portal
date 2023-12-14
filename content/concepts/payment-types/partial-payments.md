@@ -8,11 +8,11 @@ labels:
 ---
 # Partial Payments
 
-The sender of any [Payment transaction][] can enable the ["Partial Payment" flag](payment.html#payment-flags) and send a payment which delivers less than the `Amount` field indicates. When processing any Payment, use the `delivered_amount` metadata field, not the `Amount` field. The `delivered_amount` is the amount a payment actually delivered.
+The sender of any [Payment transaction](../../references/protocol/transactions/types/payment.md) can enable the ["Partial Payment" flag](../../references/protocol/transactions/types/payment.md#payment-flags) and send a payment which delivers less than the `Amount` field indicates. When processing any Payment, use the `delivered_amount` metadata field, not the `Amount` field. The `delivered_amount` is the amount a payment actually delivered.
 
-If a Payment does not enable the Partial Payment flag, the `Amount` field of a [Payment transaction][] in the XRP Ledger specifies the amount to deliver after charging for exchange rates and [transfer fees](transfer-fees.html). The Partial Payment flag ([`tfPartialPayment`](payment.html#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](bouncing-payments.html) without incurring additional costs to oneself.
+If a Payment does not enable the Partial Payment flag, the `Amount` field of a [Payment transaction](../../references/protocol/transactions/types/payment.md) in the XRP Ledger specifies the amount to deliver after charging for exchange rates and [transfer fees](../tokens/transfer-fees.md). The Partial Payment flag ([`tfPartialPayment`](../../references/protocol/transactions/types/payment.md#payment-flags)) allows a payment to succeed by reducing the amount received instead of increasing the amount sent. Partial payments are useful for [returning payments](bouncing-payments.md) without incurring additional costs to oneself.
 
-The amount of XRP used for the [transaction cost](transaction-cost.html) is always deducted from the sender’s account, regardless of the type of transaction. This transaction cost, or fee, is not included in the `Amount`.
+The amount of XRP used for the [transaction cost](../transactions/transaction-cost.md) is always deducted from the sender’s account, regardless of the type of transaction. This transaction cost, or fee, is not included in the `Amount`.
 
 Partial payments can be used to exploit naive integrations with the XRP Ledger to steal money from exchanges and gateways. The [Partial Payments Exploit](#partial-payments-exploit) section of this document describes how this exploit works and how you can avoid it.
 
@@ -24,11 +24,13 @@ When sending a Payment that does not use the Partial Payment flag, the `Amount` 
 
 In other words:
 
-    Amount + (fees) = (sent amount) ≤ SendMax
+```
+Amount + (fees) = (sent amount) ≤ SendMax
+```
 
-In this formula, "fees" refers to [transfer fees](transfer-fees.html) and currency exchange rates. The "sent amount" and the delivered amount (`Amount`) may be denominated in different currencies and converted by consuming Offers in the XRP Ledger's decentralized exchange.
+In this formula, "fees" refers to [transfer fees](../tokens/transfer-fees.md) and currency exchange rates. The "sent amount" and the delivered amount (`Amount`) may be denominated in different currencies and converted by consuming Offers in the XRP Ledger's decentralized exchange.
 
-**Note:** The `Fee` field of the transaction refers to the XRP [transaction cost](transaction-cost.html), which is destroyed to relay the transaction to the network. The exact transaction cost specified is always debited from the sender and is completely separate from the fee calculations for any type of payment.
+**Note:** The `Fee` field of the transaction refers to the XRP [transaction cost](../transactions/transaction-cost.md), which is destroyed to relay the transaction to the network. The exact transaction cost specified is always debited from the sender and is completely separate from the fee calculations for any type of payment.
 
 ### With Partial Payments
 
@@ -38,7 +40,9 @@ The optional `DeliverMin` field specifies a minimum amount to deliver. The `Send
 
 In other words:
 
-    Amount ≥ (Delivered Amount) = SendMax - (Fees) ≥ DeliverMin > 0
+```
+Amount ≥ (Delivered Amount) = SendMax - (Fees) ≥ DeliverMin > 0
+```
 
 ### Partial Payment Limitations
 
@@ -52,9 +56,9 @@ Partial Payments have the following limitations:
 
 ### The `delivered_amount` Field
 
-To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](basic-data-types.html#specifying-currency-amounts) as the `Amount` field.
+To help understand how much a partial payment actually delivered, the metadata of a successful Payment transaction includes a `delivered_amount` field. This field describes the amount actually delivered, in the [same format](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) as the `Amount` field.
 
-For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers [tokens](tokens.html), the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
+For non-partial payments, the `delivered_amount` field of the transaction metadata is equal to the `Amount` field of the transaction. When a payment delivers [tokens](../tokens/index.md), the `delivered_amount` may be slightly different than the `Amount` field due to rounding.
 
 The delivered amount is **not available** for transactions that meet **both** of the following criteria:
 
@@ -67,11 +71,11 @@ You can find the `delivered_amount` field in the following places:
 
 | API | Method | Field |
 |-----|--------|-------|
-| [JSON-RPC / WebSocket][] | [account_tx method][] | `result.transactions` array members' `meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [tx method][] | `result.meta.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [transaction_entry method][] | `result.metadata.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [ledger method][] (with transactions expanded) | `result.ledger.transactions` array members' `metaData.delivered_amount` [New in: rippled 1.2.1][] |
-| [WebSocket][] | [Transaction subscriptions](subscribe.html#transaction-streams) | Subscription messages' `meta.delivered_amount` [New in: rippled 1.2.1][] |
+| [JSON-RPC / WebSocket][] | [account_tx method](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) | `result.transactions` array members' `meta.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [tx method](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md) | `result.meta.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [transaction_entry method](../../references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md) | `result.metadata.delivered_amount` |
+| [JSON-RPC / WebSocket][] | [ledger method](../../references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md) (with transactions expanded) | `result.ledger.transactions` array members' `metaData.delivered_amount` [New in: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE") |
+| [WebSocket][] | [Transaction subscriptions](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Subscription messages' `meta.delivered_amount` [New in: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE") |
 | ripple-lib v1.x | `getTransaction` method | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` method | array members' `outcome.deliveredAmount` |
 
@@ -120,19 +124,14 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
 - **Tools:**
     - [Transaction Sender](tx-sender.html)
 - **Concepts:**
-    - [Transactions](transactions.html)
+    - [Transactions](../transactions/index.md)
 - **Tutorials:**
-    - [Look Up Transaction Results](look-up-transaction-results.html)
-    - [Monitor Incoming Payments with WebSocket](monitor-incoming-payments-with-websocket.html)
-    - [Use Specialized Payment Types](use-specialized-payment-types.html)
-    - [List XRP as an Exchange](list-xrp-as-an-exchange.html)
+    - [Look Up Transaction Results](../transactions/finality-of-results/look-up-transaction-results.md)
+    - [Monitor Incoming Payments with WebSocket](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+    - [Use Specialized Payment Types](../../tutorials/tasks/use-specialized-payment-types/index.md)
+    - [List XRP as an Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **References:**
-    - [Payment transaction][]
-    - [Transaction Metadata](transaction-metadata.html)
-    - [account_tx method][]
-    - [tx method][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [Payment transaction](../../references/protocol/transactions/types/payment.md)
+    - [Transaction Metadata](../../references/protocol/transactions/metadata.md)
+    - [account_tx method](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md)
+    - [tx method](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md)

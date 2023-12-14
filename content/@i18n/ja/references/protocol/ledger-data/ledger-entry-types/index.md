@@ -1,10 +1,13 @@
 ---
 html: ledger-entry-types.html
 parent: ledger-data-formats.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 labels:
   - データ保持
 ---
 # レジャーエントリのタイプ
 
-{% include '_snippets/ledger-objects-intro.ja.md' %}
+{% partial file="/_snippets/ledger-objects-intro.ja.md" /%}
+
+{% child-pages /%}

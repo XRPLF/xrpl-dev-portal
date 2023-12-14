@@ -10,29 +10,29 @@ labels:
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 
-*`print`要求は、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`print`要求は、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": "print_req_1",
    "command": "print"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled print
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求にはパラメーターが含まれていません。
 
@@ -40,10 +40,9 @@ rippled print
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -229,16 +228,12 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-応答は[標準フォーマット][]に従っています。結果に含まれる追加フィールドは、`rippled`サーバーの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
+応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っています。結果に含まれる追加フィールドは、`rippled`サーバーの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。

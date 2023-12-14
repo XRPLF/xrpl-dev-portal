@@ -25,9 +25,9 @@ NFTokenオブジェクトの初回販売以前の市場活動は、XRP Ledgerに
 
 ## スクリプトMinting
 
-プログラムまたはスクリプトを使用して、一度に多数のトークンをMintします。[チケット](tickets.html)を使えば、1度に200件までのトランザクションを並行して処理することができます。
+プログラムまたはスクリプトを使用して、一度に多数のトークンをMintします。[チケット](../../accounts/tickets.md)を使えば、1度に200件までのトランザクションを並行して処理することができます。
 
-実用例としては、チュートリアルの[JavaScriptでNFTをバッチMint](batch-mint-nfts-using-javascript.html)をご覧ください
+実用例としては、チュートリアルの[JavaScriptでNFTをバッチMint](../../../../../tutorials/quickstart/batch-mint-nfts-using-javascript.md)をご覧ください
 
 ### メリット
 
@@ -36,4 +36,4 @@ NFTokenオブジェクトの初回販売以前の市場活動は、XRP Ledgerに
 
 ### デメリット
 
-NFTokenオブジェクトをMintする際には、[準備金要件](reserves.html)を満たす必要があります。目安としては、現在の準備金レートで、NFTokenオブジェクトあたりおよそ1/12XRPです。十分なXRPがない場合は、XRPが調達できるまで、Mintトランザクションは失敗します。
+NFTokenオブジェクトをMintする際には、[準備金要件](../../accounts/reserves.md)を満たす必要があります。目安としては、現在の準備金レートで、NFTokenオブジェクトあたりおよそ1/12XRPです。十分なXRPがない場合は、XRPが調達できるまで、Mintトランザクションは失敗します。

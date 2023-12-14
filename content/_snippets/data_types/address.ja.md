@@ -6,7 +6,8 @@ XRP Ledgerのアカウントは、XRP Ledgerの[base58][]フォーマットの�
 * 大文字と小文字を区別
 * 4バイトのチェックサムが含まれており、ランダムな文字から有効なアドレスが生成される確率はおよそ2<sup>32</sup>分の1
 
-> **注記:** [宛先タグ](source-and-destination-tags.html)をアドレスに「組み込む」**X**アドレス形式もあります。これらのアドレスは`X`（メインネット用）または`T`（[テストネットワーク](parallel-networks.html)用）で始まります。取引所とウォレットは、顧客が知る必要のあるすべてのデータを1つの値で表すためにXアドレスを使用できます。詳細については、[Xアドレスフォーマットサイト](https://xrpaddress.info/)と[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)をご覧ください
->
-> XRP Ledgerプロトコルは「クラシック」アドレスのみをネイティブにサポートしていますが、多くの[クライアントライブラリ](client-libraries.html)はXアドレスもサポートしています。
+{% admonition type="info" name="注記" %}
+[宛先タグ](source-and-destination-tags.html)をアドレスに「組み込む」**X**アドレス形式もあります。これらのアドレスは`X`（メインネット用）または`T`（[テストネットワーク](parallel-networks.html)用）で始まります。取引所とウォレットは、顧客が知る必要のあるすべてのデータを1つの値で表すためにXアドレスを使用できます。詳細については、[Xアドレスフォーマットサイト](https://xrpaddress.info/)と[コーデック](https://github.com/xrp-community/xrpl-tagged-address-codec)をご覧ください
 
+XRP Ledgerプロトコルは「クラシック」アドレスのみをネイティブにサポートしていますが、多くの[クライアントライブラリ](client-libraries.html)はXアドレスもサポートしています。
+{% /admonition %}

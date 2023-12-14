@@ -28,7 +28,7 @@ Typically, the example functions for interacting with the XRP Ledger involve fou
 3. Get the state of accounts and tokens on the XRP Ledger using requests.
 4. Disconnect from the XRP Ledger.
 
-Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you cannot wait, you can follow the prerequisites below, then jump to lesson 4, [Transfer NFTs](transfer-nfts-using-javascript.html), and try out the complete test harness right away.
+Each lesson shows you how to build the Token Test Harness one section at a time. Each module lets you try out meaningful interactions with the test ledger, with complete JavaScript and HTML code samples and a code walkthrough. There is also a link to the complete source code for each section that can be modified with a text editor and run in a browser. If you cannot wait, you can follow the prerequisites below, then jump to lesson 4, [Transfer NFTs](transfer-nfts-using-javascript.md), and try out the complete test harness right away.
 
 This quickstart tutorial introduces you to the API used to implement features and explore the capabilities of XRP Ledger. It does not represent *all* of the capabilities of the API and this example is not intended for production or secure payment use.
 
@@ -39,7 +39,7 @@ Much of this is “brute force” code that sacrifices conciseness for readabili
 To get started, create a new folder on your local disk and install the JavaScript library using `npm`.
 
 ```
-    npm install xrpl
+npm install xrpl
 ```
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download}.

@@ -39,7 +39,7 @@ You send the transaction to the ledger as a command from JavaScript, Python, the
 
 When 80% of the validators approve a current set of proposed transactions, they are recorded as part of the permanent ledger. The rippled server returns the results of the transaction you sent.
 
-For more information on Transactions, see [Transactions](transactions.html).
+For more information on Transactions, see [Transactions](../concepts/transactions/index.md).
 
 ## How Do Requests Work?
 
@@ -109,7 +109,6 @@ The request returns a wealth of information. Here is an example response for an 
     }
 }
 ```
-For information on the fields in an Account record, see [Accounts](accounts.html).
+For information on the fields in an Account record, see [Accounts](../concepts/accounts/accounts.md).
 
-Next: [Software Ecosystem](software-ecosystem.html)
-
+Next: [Software Ecosystem](software-ecosystem.md)

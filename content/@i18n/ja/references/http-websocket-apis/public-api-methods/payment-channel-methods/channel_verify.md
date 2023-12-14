@@ -8,17 +8,16 @@ labels:
 # channel_verify
 [[ソース]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
 
-_（[PayChan Amendment][]が有効になっている必要があります。[新規: rippled 0.33.0][]）_
+_（[PayChan Amendment][]が有効になっている必要があります。[新規: rippled 0.33.0](https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE")）_
 
 `channel_verify`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
 
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":1,
@@ -29,9 +28,9 @@ _（[PayChan Amendment][]が有効になっている必要があります。[新
    "amount":"1000000"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"channel_verify",
@@ -43,33 +42,33 @@ _（[PayChan Amendment][]が有効になっている必要があります。[新
    }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: channel_verify <public_key> <channel_id> <amount> <signature>
 rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000 304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
-| `amount` | 文字列 | 指定された`signature`で承認する[XRP、drop単位][]の額。 |
+| `amount` | 文字列 | 指定された`signature`で承認する[XRP、drop単位](basic-data-types.html#通貨額の指定)の額。 |
 | `channel_id` | 文字列 | XRPを供給するChannelのChannel ID。これは64文字の16進文字列です。 |
-| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58][]形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
+| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58](base58-encodings.html)形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
 | `signature` | 文字列 | 検証する署名（16進数）。 |
 
 ## 応答フォーマット
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":1,
@@ -80,9 +79,9 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
    }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -93,9 +92,9 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
    }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 {
    "result":{
@@ -104,10 +103,11 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
@@ -117,12 +117,8 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 
 ## 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `publicMalformed` - 要求の`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](base58-encodings.html)。16進表現は66文字です。
 * `channelMalformed` - 要求の`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
 * `channelAmtMalformed` - 要求の`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

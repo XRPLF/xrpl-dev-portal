@@ -7,7 +7,7 @@ labels:
 ---
 # ピアの最大数の設定
 
-`rippled`サーバーには、接続先の[ピア](peer-protocol.html)の数を定める設定可能なソフト最大数があります。ピアのデフォルトの最大数は**21**です。
+`rippled`サーバーには、接続先の[ピア](../../../concepts/networks-and-servers/peer-protocol.md)の数を定める設定可能なソフト最大数があります。ピアのデフォルトの最大数は**21**です。
 
 **注記:** 内部的に、サーバーは受信ピアと送信ピアのおおよそのクォータを生成します。[固定ピアやピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)を使用している場合、あるいは[connectメソッド][]を使用して追加のピアに手動で接続している場合は、このソフト最大数を超える可能性があります。
 
@@ -15,14 +15,18 @@ labels:
 
 1. `rippled`の構成ファイルを編集します。
 
-        $ vim /etc/opt/ripple/rippled.cfg
+    ```
+    $ vim /etc/opt/ripple/rippled.cfg
+    ```
 
-   {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+   {% partial file="/_snippets/conf-file-location.ja.md" /%}
 
 2. 構成ファイルで、`[peers_max]`スタンザのコメントを解除して編集するか、まだない場合は追加します。
 
-        [peers_max]
-        30
+    ```
+    [peers_max]
+    30
+    ```
 
    スタンザの内容は、許可するピアの合計数を示す整数のみである必要があります。デフォルトでは、サーバーは受信ピアが約85%、送信ピアが約15%という比率を維持するように試みますが、送信ピアの最小数が10であるため、68未満の値にしても、サーバーが行う送信ピア接続の数は増えません。
 
@@ -32,24 +36,21 @@ labels:
 
 3. `rippled`サーバーを再起動します。
 
-        $ sudo systemctl restart rippled.service
+    ```
+    $ sudo systemctl restart rippled.service
+    ```
 
 
 ## 関連項目
 
 - **コンセプト:**
-  - [ピアプロトコル](peer-protocol.html)
+  - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
   - [`rippled`サーバー](xrpl-servers.html)
 - **チュートリアル:**
-  - [容量の計画](capacity-planning.html)
-  - [`rippled`サーバーのトラブルシューティング](troubleshoot-the-rippled-server.html)
+  - [容量の計画](../../installation/capacity-planning.md)
+  - [`rippled`サーバーのトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [connectメソッド][]
   - [peersメソッド][]
   - [printメソッド][]
   - [server_infoメソッド][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

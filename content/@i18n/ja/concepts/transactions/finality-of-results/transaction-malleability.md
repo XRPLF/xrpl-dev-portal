@@ -22,7 +22,7 @@ XRP Ledgerのメインネット上では、**マルチ署名**トランザクシ
 
 XRP Ledgerでは、以下の条件に該当しない場合にはトランザクションを実行できません。
 
-- 署名自体を除く[トランザクションのすべてのフィールド](transaction-common-fields.html)に署名がなされている。
+- 署名自体を除く[トランザクションのすべてのフィールド](../../../references/protocol/transactions/common-fields.md)に署名がなされている。
 - トランザクションの署名に使用されるキーペアが、[そのアカウントの代理としてトランザクションを送信することが承認されている](transactions.html#トランザクションの承認)。
 - 署名は _正規_ であり、トランザクションの指示に一致している。
 
@@ -122,7 +122,7 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
 
     トランザクションに`LastLedgerSequence`フィールドが含まれている場合は、指定されたレジャーインデックスを経過した後でこの状況が発生します。
 
-    トランザクションで`LastLedgerSequence`フィールドが省略されている場合は、別の意味で誤っている可能性があります。つまり、同じ送信者からの他のトランザクションでは同じ`Sequence`番号が使用されていない場合、トランザクションはその後、時間の経過に関係なく、理論上成功します。（詳細は、[確実なトランザクションの送信](reliable-transaction-submission.html)を参照してください。）
+    トランザクションで`LastLedgerSequence`フィールドが省略されている場合は、別の意味で誤っている可能性があります。つまり、同じ送信者からの他のトランザクションでは同じ`Sequence`番号が使用されていない場合、トランザクションはその後、時間の経過に関係なく、理論上成功します。（詳細は、[確実なトランザクションの送信](../reliable-transaction-submission.md)を参照してください。）
 
 8. 脆弱なシステムは、トランザクションが失敗したと想定してアクションを実行します。
 
@@ -134,18 +134,13 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
 ## 関連項目
 
 - **コンセプト:**
-    - [トランザクション](transactions.html)
-    - [結果のファイナリティー](finality-of-results.html)
+    - [トランザクション](../index.md)
+    - [結果のファイナリティー](index.md)
 - **チュートリアル:**
-    - [トランザクションの結果の確認](look-up-transaction-results.html)
-    - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
+    - [トランザクションの結果の確認](look-up-transaction-results.md)
+    - [信頼できるトランザクションの送信](../reliable-transaction-submission.md)
 - **リファレンス:**
     - [基本的なデータ型 - ハッシュ](basic-data-types.html#ハッシュ)
     - [トランザクションの共通フィールド](transaction-common-fields.html#グローバルフラグ)
-    - [トランザクションの結果](transaction-results.html)
-    - [シリアル化フォーマット](serialization.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [シリアル化フォーマット](../../../references/protocol/binary-format.md)

@@ -8,11 +8,11 @@ labels:
 ---
 # Paths
 
-In the XRP Ledger, paths define a way for [tokens](tokens.html) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](cross-currency-payments.html) by connecting sender and receiver through orders in the XRP Ledger's [decentralized exchange](decentralized-exchange.html). Paths also enable complex settlement of offsetting debts.
+In the XRP Ledger, paths define a way for [tokens](../index.md) to flow through intermediary steps as part of a payment. Paths enable [cross-currency payments](../../payment-types/cross-currency-payments.md) by connecting sender and receiver through orders in the XRP Ledger's [decentralized exchange](../decentralized-exchange/index.md). Paths also enable complex settlement of offsetting debts.
 
 A single Payment transaction in the XRP Ledger can use multiple paths, combining liquidity from different sources to deliver the desired amount. Thus, a transaction includes a _path set_, which is a collection of possible paths to take. All paths in a path set must start with the same currency, and must also end with the same currency as each other.
 
-Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](direct-xrp-payments.html) does not use any paths.
+Since XRP can be sent directly to any address, an [XRP-to-XRP transaction](../../payment-types/direct-xrp-payments.md) does not use any paths.
 
 ## Path Steps
 
@@ -21,13 +21,13 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 * Rippling through another address with the same currency
 * Trading tokens or XRP using an order book
 
-[Rippling](rippling.html) is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
+[Rippling](rippling.md) is the process of exchanging equivalent tokens using the same currency code. In the typical case, rippling through an issuer involves reducing the tokens issued to one party and increasing the tokens issued to another party by an equal amount. The path step specifies which account to ripple through.
 
-[Trading tokens and possibly XRP](decentralized-exchange.html) involves going to an order book and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
+[Trading tokens and possibly XRP](../decentralized-exchange/index.md) involves going to an order book and finding the best exchange rate between the assets involved for the amount being sent. The path step specifies which currency to change to, but does not record the state of the Offers in the order book. The canonical order of transactions is not final until a ledger is validated, so you cannot know for certain which Offers a transaction will take, until after the transaction has been validated. (You can make an educated guess, since each transaction takes the best available Offers at the time it executes in the final ledger.) <!-- STYLE_OVERRIDE: will -->
 
-In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](transfer-fees.html), trust line quality settings, or rounding.
+In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](../transfer-fees.md), trust line quality settings, or rounding.
 
-{{ include_svg("img/paths-examples.svg", "Diagram of three example paths") }}
+[{% inline-svg file="/img/paths-examples.svg" /%}](/img/paths-examples.svg "Diagram of three example paths")
 
 
 
@@ -35,9 +35,9 @@ In both types of steps, each intermediate address gains and loses approximately 
 
 ## Pathfinding
 
-The `rippled` API has two methods that can be used for pathfinding. The [ripple_path_find method][] does a one-time lookup of possible path sets. The [path_find method][] (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
+The `rippled` API has two methods that can be used for pathfinding. The [ripple_path_find method](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md) does a one-time lookup of possible path sets. The [path_find method](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md) (WebSocket only) expands on the search with follow-up responses whenever a ledger closes or the server finds a better path.
 
-You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method][] or [`submit` command (sign-and-submit mode)](submit.html#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
+You can have `rippled` automatically fill in paths when you sign it, by including the `build_path` field in a request to the [sign method](../../../references/http-websocket-apis/admin-api-methods/signing-methods/sign.md) or [`submit` command (sign-and-submit mode)](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#sign-and-submit-mode). However, we recommend pathfinding separately and confirming the results before signing, to avoid surprises.
 
 **Caution:** Although `rippled` is designed to search for the cheapest paths possible, it may not always find them. Untrustworthy `rippled` instances could also be modified to change this behavior for profit. The actual cost to execute a payment along a path can change between submission and transaction execution.
 
@@ -46,11 +46,11 @@ Finding paths is a very challenging problem that changes slightly every few seco
 
 ## Implied Steps
 
-By convention, several steps of a path are implied by the [fields of the Payment transaction](payment.html): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
+By convention, several steps of a path are implied by the [fields of the Payment transaction](../../../references/protocol/transactions/types/payment.md): specifically, the `Account` (sender), `Destination` (receiver), `Amount` (currency and amount to be delivered) and `SendMax` (currency and amount to be sent, if specified). The implied steps are as follows:
 
 * The first step of a path is always implied to be the sender of the transaction, as defined by the transaction's `Account` field.
 * If the transaction includes a `SendMax` field with an `issuer` that is not the sender of the transaction, that issuer is implied to be the second step of the path.
-    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines for the given currency code. See [special values for `SendMax` and `Amount`](payment.html#special-issuer-values-for-sendmax-and-amount) for details.
+    * If `issuer` of the `SendMax` _is_ the sending address, then the path starts at the sending address, and may use any of that address's trust lines for the given currency code. See [special values for `SendMax` and `Amount`](../../../references/protocol/transactions/types/payment.md#special-issuer-values-for-sendmax-and-amount) for details.
 * If the `Amount` field of the transaction includes an `issuer` that is not the same as the `Destination` of the transaction, that issuer is implied to be the second-to-last step of the path.
 * Finally, last step of a path is always implied to be the receiver of a transaction, as defined by the transaction's `Destination` field.
 
@@ -68,9 +68,9 @@ The default path could be any of the following:
 
 The following diagram enumerates all possible default paths:
 
-{{ include_svg("img/default-paths.svg", "Diagram of default paths") }}
+[{% inline-svg file="/img/default-paths.svg" /%}](/img/default-paths.svg "Diagram of default paths")
 
-You can use the [`tfNoDirectRipple` flag](payment.html#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
+You can use the [`tfNoDirectRipple` flag](../../../references/protocol/transactions/types/payment.md#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
 
 
 ## Path Specifications
@@ -106,16 +106,10 @@ The `type` field, used for the binary serialization of a path set, is actually c
 ## See Also
 
 - **Concepts:**
-    - [Cross-Currency Payments](cross-currency-payments.html)
-    - [Decentralized Exchange](decentralized-exchange.html)
-    - [Partial Payments](partial-payments.html)
+    - [Cross-Currency Payments](../../payment-types/cross-currency-payments.md)
+    - [Decentralized Exchange](../decentralized-exchange/index.md)
+    - [Partial Payments](../../payment-types/partial-payments.md)
 - **References:**
-    - [Payment transaction][]
-    - [path_find method][] (WebSocket only)
-    - [ripple_path_find method][]
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [Payment transaction](../../../references/protocol/transactions/types/payment.md)
+    - [path_find method](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md) (WebSocket only)
+    - [ripple_path_find method](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md)

@@ -7,7 +7,7 @@ labels:
 ---
 # Enable Link Compression
 
-The `rippled` server can save bandwidth by compressing its [peer-to-peer communications](peer-protocol.html), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled.
+The `rippled` server can save bandwidth by compressing its [peer-to-peer communications](../../../concepts/networks-and-servers/peer-protocol.md), at a cost of greater CPU usage. If you enable link compression, the server automatically compresses communications with peer servers that also have link compression enabled.
 
 ## Steps
 
@@ -19,7 +19,7 @@ To enable link compression on your server, complete the following steps:
 $ vim /etc/opt/ripple/rippled.cfg
 ```
 
-{% include '_snippets/conf-file-location.md' %}<!--_ -->
+{% partial file="/_snippets/conf-file-location.md" /%}
 
 ### 2. In the config file, add or uncomment the `[compression]` stanza.
 
@@ -42,10 +42,5 @@ After the restart, your server automatically uses link compression with other pe
 
 ## See Also
 
-- [Capacity Planning](capacity-planning.html)
-- [Peer Protocol](peer-protocol.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+- [Capacity Planning](../../installation/capacity-planning.md)
+- [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)

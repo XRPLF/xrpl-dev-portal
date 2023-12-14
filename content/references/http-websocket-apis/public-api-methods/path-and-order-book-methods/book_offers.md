@@ -9,15 +9,14 @@ labels:
 # book_offers
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/BookOffers.cpp "Source")
 
-The `book_offers` method retrieves a list of [Offers](offers.html) between two currencies, also known as an _order book_. The response omits [unfunded Offers](offers.html#lifecycle-of-an-offer) and reports how much of each remaining Offer's total is currently funded.
+The `book_offers` method retrieves a list of [Offers](../../../../concepts/tokens/decentralized-exchange/offers.md) between two currencies, also known as an _order book_. The response omits [unfunded Offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) and reports how much of each remaining Offer's total is currently funded.
 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 4,
@@ -33,9 +32,9 @@ An example of the request format:
   "limit": 10
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "book_offers",
@@ -54,15 +53,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#book_offers)
 
@@ -70,8 +70,8 @@ The request includes the following parameters:
 
 | `Field`        | Type             | Required? | Description |
 |:---------------|:-----------------|:----------|-------------|
-| `taker_gets`   | Object           | Yes       | The asset the account taking the Offer would receive, as a [currency without an amount](currency-formats.html#specifying-without-amounts). |
-| `taker_pays`   | Object           | Yes       | The asset the account taking the Offer would pay, as a [currency without an amount](currency-formats.html#specifying-without-amounts). |
+| `taker_gets`   | Object           | Yes       | The asset the account taking the Offer would receive, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `taker_pays`   | Object           | Yes       | The asset the account taking the Offer would pay, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 | `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Number           | No        | The maximum number of Offers to return. The response may include fewer results. |
@@ -82,10 +82,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 11,
@@ -144,9 +143,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -159,9 +158,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -231,17 +230,18 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`                | Type             | Description             |
 |:-----------------------|:-----------------|:------------------------|
 | `ledger_current_index` | [Ledger Index][] | _(Omitted if `ledger_current_index` is provided)_ The [ledger index][] of the current in-progress ledger version, which was used to retrieve this information. |
 | `ledger_index`         | [Ledger Index][] | _(Omitted if `ledger_current_index` provided)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
 | `ledger_hash`          | [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data, as requested. |
-| `offers`               | Array            | Array of offer objects, each of which has the fields of an [Offer object](offer.html) |
+| `offers`               | Array            | Array of offer objects, each of which has the fields of an [Offer object](../../../protocol/ledger-data/ledger-entry-types/offer.md) |
 
 In addition to the standard Offer fields, the following fields may be included in members of the `offers` array:
 
@@ -262,9 +262,3 @@ In addition to the standard Offer fields, the following fields may be included i
 * `srcIsrMalformed` - The `issuer` field of the `taker_pays` field in the request is not valid.
 * `dstIsrMalformed` - The `issuer` field of the `taker_gets` field in the request is not valid.
 * `badMarket` - The desired order book does not exist; for example, offers to exchange a currency for itself.
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

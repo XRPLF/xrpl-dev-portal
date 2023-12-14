@@ -7,24 +7,24 @@ blurb: アドレス、レジャーインデックス、通貨コードなどの�
 
 さまざまなタイプのオブジェクトがそれぞれ異なる方法で一意に識別されます。
 
-[アカウント](accounts.html)は`"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`のような[アドレス][]で一意に識別されます。アドレスは常に「r」で始まります。`rippled`メソッドの多くは、16進数表記に対応しています。
+[アカウント](../../../concepts/accounts/accounts.md)は`"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"`のような[アドレス][]で一意に識別されます。アドレスは常に「r」で始まります。`rippled`メソッドの多くは、16進数表記に対応しています。
 
-[トランザクション](transaction-formats.html)は、トランザクションのバイナリフォーマットの[ハッシュ][]で識別されます。また、トランザクションは送信アカウントと[シーケンス番号][]でも識別できます。
+[トランザクション](../transactions/index.md)は、トランザクションのバイナリフォーマットの[ハッシュ][]で識別されます。また、トランザクションは送信アカウントと[シーケンス番号][]でも識別できます。
 
-閉鎖された各[レジャー](ledger-data-formats.html)は、[レジャーインデックス][]と[ハッシュ][]値を保有します。[レジャーを指定する](#レジャーの指定)場合、いずれか1つを使用できます。
+閉鎖された各[レジャー](../ledger-data/index.md)は、[レジャーインデックス][]と[ハッシュ][]値を保有します。[レジャーを指定する](#レジャーの指定)場合、いずれか1つを使用できます。
 
 ## アドレス
 [アドレス]: #アドレス
 
-{% include '_snippets/data_types/address.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/address.ja.md" /%}
+
 
 
 ## ハッシュ
 [ハッシュ]: #ハッシュ
 
-{% include '_snippets/data_types/hash.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/hash.ja.md" /%}
+
 
 ### ハッシュプレフィクス
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/HashPrefix.h "Source")
@@ -57,15 +57,15 @@ blurb: アドレス、レジャーインデックス、通貨コードなどの�
 ## アカウントシーケンス
 [シーケンス番号]: #アカウントシーケンス
 
-{% include '_snippets/data_types/account_sequence.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/account_sequence.ja.md" /%}
+
 
 
 ## レジャーインデックス
 [レジャーインデックス]: #レジャーインデックス
 
-{% include '_snippets/data_types/ledger_index.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/ledger_index.ja.md" /%}
+
 
 
 ### レジャーの指定
@@ -74,17 +74,23 @@ APIメソッドの多くは、レジャーのインスタンスを指定する�
 
 1. `ledger_index`パラメータにレジャーの[レジャーインデックス][]を指定します。閉鎖された各レジャーには識別用のレジャーインデックスが付いていて、その前に検証されたレジャーより1つ大きい番号になります。（最初のレジャーのインデックスは1です。）
 
-        "ledger_index": 61546724
+    ```
+    "ledger_index": 61546724
+    ```
 
 2. `ledger_hash`パラメータにレジャーの[ハッシュ][]値を指定します。
 
-        "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+    ```
+    "ledger_hash": "8BB204CE37CFA7A021A16B5F6143400831C4D1779E6FE538D9AC561ABBF4A929"
+    ```
 
 3. `ledger_index`パラメータに以下のいずれかのショートカットを指定します。
 
     * `validated`: [コンセンサスで検証](consensus-structure.html#検証)された最新のレジャー
 
-            "ledger_index": "validated"
+        ```
+        "ledger_index": "validated"
+        ```
 
     * `closed`: 変更できないように閉鎖され、検証を提案されている最新のレジャー
 
@@ -103,23 +109,27 @@ APIメソッドの多くは、レジャーのインスタンスを指定する�
 
 XRP LedgerにはXRPとトークンの2種類の通貨があります。これら2種類の通貨は、異なるフォーマット、異なる精度と丸め動作で指定されます。
 
-[Paymentトランザクション][]で送金する`Amount`のようないくつかのフィールドは、どちらのタイプにもすることができます。`Fee`フィールド（[トランザクションコスト](transaction-cost.html)）のように、XRPのみを使用可能なフィールドもあります。
+[Paymentトランザクション][]で送金する`Amount`のようないくつかのフィールドは、どちらのタイプにもすることができます。`Fee`フィールド（[トランザクションコスト](../../../concepts/transactions/transaction-cost.md)）のように、XRPのみを使用可能なフィールドもあります。
 
 XRPは、XRPの “drop"数を含む整数の文字列として指定され、100万ドロップが1XRPに相当します。トークンは、10進数の金額、通貨コード、発行者のフィールドを持つオブジェクトとして指定されます。
 
 - **XRP** - `Amount`フィールドに13.1 XRPを指定するには:
 
-        "Amount": "13100000"
+    ```
+    "Amount": "13100000"
+    ```
 
 - **トークン** - `rf1B...`が発行した13.1 FOOという値で`Amount`フィールドを指定するには：
 
-        "Amount": {
-            "value": "13.1",
-            "currency": "FOO",
-            "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
-        }
+    ```
+    "Amount": {
+        "value": "13.1",
+        "currency": "FOO",
+        "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
+    }
+    ```
 
-詳しくは[通貨フォーマット](currency-formats.html)をご覧ください。
+詳しくは[通貨フォーマット](currency-formats.md)をご覧ください。
 
 
 ## 時間の指定
@@ -127,8 +137,3 @@ XRPは、XRPの “drop"数を含む整数の文字列として指定され、10
 `rippled`サーバとそのAPIでは、時間を符号なし整数で表します。この数値は、「Rippleエポック」である2000年1月1日（00:00 UTC）から経過した秒数を表しています。これは[UNIXエポック](http://en.wikipedia.org/wiki/Unix_time)と同様に機能しますが、RippleエポックはUNIXエポックより946684800秒遅れています。
 
 Rippleエポック時間を32ビット変数でUNIXエポック時間に変換しないでください。整数のオーバーフローが発生する恐れがあります。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

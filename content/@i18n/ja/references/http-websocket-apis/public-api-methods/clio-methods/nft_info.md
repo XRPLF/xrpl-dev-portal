@@ -8,15 +8,14 @@ labels:
 # nft_info
 [[ソース]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "ソース")
 
-`nft_info`コマンドはクエリ対象の[NFT](non-fungible-tokens.html)に関する情報をClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
+`nft_info`コマンドはクエリ対象の[NFT](../../../../concepts/tokens/nfts/index.md)に関する情報をClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
 
 ## リクエストのフォーマット
 リクエストフォーマットの例：
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -24,9 +23,9 @@ labels:
   "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "nft_info",
@@ -37,8 +36,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
 [試してみる >](websocket-api-tool.html#nft_info)-->
@@ -48,8 +48,8 @@ labels:
 | `Field`        | 型                     | 説明                    |
 |:---------------|:-----------------------|:-----------------------|
 | `nft_id`       | 文字列                  | 非代替性トークン(NFT)の一意の識別子。 |
-| `ledger_hash`  | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定][]をご覧ください）。 |
-| `ledger_index` | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス][]あるいは、レジャーを自動的に選択するためのショートカット文字列。`ledger_index`に`closed`や`current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_info`APIは`rippled`では利用できません。[レジャーの指定][]をご覧ください）。 |
+| `ledger_hash`  | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
+| `ledger_index` | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)あるいは、レジャーを自動的に選択するためのショートカット文字列。`ledger_index`に`closed`や`current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_info`APIは`rippled`では利用できません。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
 
 レジャーのバージョンを指定しない場合、Clioは検証済みの最新のレジャーを使用します。
 
@@ -57,10 +57,9 @@ labels:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -90,9 +89,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -121,15 +120,16 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-レスポンスは[標準フォーマット][] に従い、成功すると以下のフィールドをいくつか並べた`nft_info`レスポンスオブジェクトが返されます。
+レスポンスは[標準フォーマット](../../api-conventions/response-formatting.md) に従い、成功すると以下のフィールドをいくつか並べた`nft_info`レスポンスオブジェクトが返されます。
 
 | `Field`                           | 型                  | 説明                 |
 |:----------------------------------|:-------------------|:---------------------|
 | `nft_id`                          | 文字列              | 非代替性トークン(NFT)の一意の識別子。 |
-| `ledger_index`                    | 整数                | NFT がミント(作成)された、所有者が変わった(取引された)、バーンされた(破棄された)など、このNFTの状態が変更された最新のレジャーバージョンの[レジャーインデックス][]。返される情報には、リクエストされたレジャーと比較して直近に起こったことが含まれます。 |
+| `ledger_index`                    | 整数                | NFT がミント(作成)された、所有者が変わった(取引された)、バーンされた(破棄された)など、このNFTの状態が変更された最新のレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。返される情報には、リクエストされたレジャーと比較して直近に起こったことが含まれます。 |
 | `owner`                           | 文字列              | このレジャーインデックスにおけるこのNFTの所有者のアカウントID。 |
 | `is_burned`                       | 真偽値              | NFTがこのレジャーでバーンされていれば`true`を、そうでなければ`false`を返します。 |
 | `flags `                          | 整数                | このNFTのフラグ |
@@ -142,9 +142,4 @@ labels:
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。

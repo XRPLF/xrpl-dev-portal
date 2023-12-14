@@ -12,7 +12,7 @@ labels:
 
 XRP Ledgerではどのアカウントにも権限がないため、`RippleState`オブジェクトはアカウントアドレスを数値順にソートし、正規の形式になるようにします。数値順の低いアドレスは「低位アカウント」と見なされ、数値順の高いアドレスは「高位アカウント」と見なされます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -41,7 +41,7 @@ XRP Ledgerではどのアカウントにも権限がないため、`RippleState`
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `RippleState`オブジェクトのフィールドは次のとおりです。
 
@@ -53,7 +53,7 @@ XRP Ledgerではどのアカウントにも権限がないため、`RippleState`
 | `LowLimit`        | オブジェクト    | Amount | 低位アカウントがトラストラインに設定した限度額。`issuer`は、この限度額を設定した低位アカウントのアドレスです。 |
 | `HighLimit`       | オブジェクト    | Amount | 高位アカウントがトラストラインに設定した限度額。`issuer`は、この限度額を設定した高位アカウントのアドレスです。 |
 | `PreviousTxnID`   | 文字列    | Hash256 | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値  | UInt32 | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
+| `PreviousTxnLgrSeq` | 数値  | UInt32 | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 | `LowNode`         | 文字列    | UInt64 | （一部の履歴レジャーでは省略されます）低位アカウントの所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `HighNode`        | 文字列    | UInt64 | （一部の履歴レジャーでは省略されます）高位アカウントの所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `LowQualityIn`    | 数値    | UInt32 | （省略可）暗黙の比率（LowQualityIn:1,000,000,000）で整数として低位アカウントにより設定された着信品質。値が0の場合は10億または額面価格と同等です。 |
@@ -73,8 +73,8 @@ RippleStateオブジェクトには以下のフラグ値を指定できます。
 | lsfHighReserve | 0x00020000 |131072 | このRippleStateオブジェクトは[高位アカウント所有者の準備金に資金を供給します](#所有者の準備金への資金供給)。 | （なし） |
 | lsfLowAuth | 0x00040000 | 262144 | 低位アカウントにより、高位アカウントが低位アカウントのイシュアンスを保有することが承認されています。 | tfSetAuth |
 | lsfHighAuth | 0x00080000 | 524288 |  高位アカウントにより、低位アカウントが高位アカウントのイシュアンスを保有することが承認されています。 | tfSetAuth |
-| lsfLowNoRipple | 0x00100000 | 1048576 | 低位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](rippling.html)。 | tfSetNoRipple |
-| lsfHighNoRipple | 0x00200000 | 2097152 | 高位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](rippling.html)。 | tfSetNoRipple |
+| lsfLowNoRipple | 0x00100000 | 1048576 | 低位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 | tfSetNoRipple |
+| lsfHighNoRipple | 0x00200000 | 2097152 | 高位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 | tfSetNoRipple |
 | lsfLowFreeze | 0x00400000 | 4194304 | 低位アカウントがトラストラインを凍結しており、高位アカウントから資産を移動できません。 | tfSetFreeze |
 | lsfHighFreeze | 0x00800000 | 8388608 | 高位アカウントがトラストラインを凍結しており、低位アカウントから資産を移動できません。 | tfSetFreeze |
 
@@ -103,14 +103,9 @@ RippleStateオブジェクトには以下のフラグ値を指定できます。
 
 ## RippleState IDのフォーマット
 
-RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+RippleStateオブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](basic-data-types.html#ハッシュ)です。
 
 * RippleStateスペースキー（`0x0072`）
 * 低位アカウントのAccountID
 * 高位アカウントのAccountID
 * トラストラインの160ビットの通貨コード
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

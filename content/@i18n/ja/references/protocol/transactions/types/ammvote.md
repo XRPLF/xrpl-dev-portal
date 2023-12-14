@@ -11,9 +11,9 @@ status: not_enabled
 
 _([AMM amendment][] :not_enabled:が必要です。)_
 
-[自動マーケットメーカー](automated-market-makers.html)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。投票を行うごとには、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
+[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。投票を行うごとには、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -33,9 +33,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 
-| フィールド     | JSONの型   | [内部の型][] | 必須? | 説明 |
+| フィールド     | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明 |
 |:-------------|:-----------|:-----------|:-----|:------------|
 | `Asset`      | オブジェクト | STIssue    | はい | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Asset2`     | オブジェクト | STIssue    | はい | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。|
@@ -43,7 +43,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード              | 説明                                          |
 |:------------------------|:---------------------------------------------|
@@ -52,9 +52,3 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 | `tecAMM_FAILED_VOTE`    | このトランザクションの送信者よりも多くのLPトークンを保有しているアカウントからの投票が既に8件存在しています。 |
 | `temBAD_FEE`            | このトランザクションの`TradingFee`は正しくありません。 |
 | `terNO_AMM`             | このトランザクションの資産ペアの自動マーケットメーカー インスタンスが存在しません。 |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

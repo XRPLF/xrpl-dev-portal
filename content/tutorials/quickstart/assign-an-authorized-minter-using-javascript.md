@@ -208,7 +208,7 @@ Report success
   standbyResultField.value = results    
 ```
       
-This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nfts-using-javascript.html#mint-token), with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nfts-using-javascript.md#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const tx_json = {
@@ -514,25 +514,25 @@ Update the form with fields and buttons to support the new functions.
                       <td><input type="text" id="standbyOwnerField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Authorized Minter</td>
-                    	<td><input type="text" id="standbyMinterField" value="" size="80"/></td>
+                        <td align="right">Authorized Minter</td>
+                        <td><input type="text" id="standbyMinterField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Issuer</td>
-                    	<td><input type="text" id="standbyIssuerField" value="" size="80"/></td>
+                        <td align="right">Issuer</td>
+                        <td><input type="text" id="standbyIssuerField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Destination</td>
-                    	<td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
+                        <td align="right">Destination</td>
+                        <td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
                     </tr>
-				            <tr>
-					            <td align="right">Expiration</td>
-					            <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
-				            </tr>
-				            <tr>
-				  	          <td align="right">Transfer Fee</td>
-					            <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-				            </tr>
+                            <tr>
+                                <td align="right">Expiration</td>
+                                <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Transfer Fee</td>
+                                <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+                            </tr>
                   </table>
                   <p align="left">
                   <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
@@ -715,25 +715,25 @@ Update the form with fields and buttons to support the new functions.
                             <td><input type="text" id="operationalOwnerField" value="" size="80"/></td>
                           </tr>
                           <tr>
-                    	<td align="right">Authorized Minter</td>
-                    	<td><input type="text" id="operationalMinterField" value="" size="80"/></td>
+                        <td align="right">Authorized Minter</td>
+                        <td><input type="text" id="operationalMinterField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Issuer</td>
-                    	<td><input type="text" id="operationalIssuerField" value="" size="80"/></td>
+                        <td align="right">Issuer</td>
+                        <td><input type="text" id="operationalIssuerField" value="" size="80"/></td>
                     </tr>
-							<tr>
-							  <td align="right">Destination</td>
-							  <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
-							</tr>
-							<tr>
-							  <td align="right">Expiration</td>
-							  <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
-							</tr>
-							<tr>
-							  <td align="right">Transfer Fee</td>
-							  <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
-							            </tr>
+                            <tr>
+                              <td align="right">Destination</td>
+                              <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                              <td align="right">Expiration</td>
+                              <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                              <td align="right">Transfer Fee</td>
+                              <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
+                                        </tr>
                         </table>
                         <p align="right">
                           <textarea id="operationalResultField" cols="80" rows="20" ></textarea>

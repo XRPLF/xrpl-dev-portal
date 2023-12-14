@@ -1,8 +1,11 @@
 ---
 html: signing-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # Signing Methods
 
 Use these methods to work with transactions.
+
+{% child-pages /%}

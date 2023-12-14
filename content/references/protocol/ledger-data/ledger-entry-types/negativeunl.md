@@ -9,11 +9,11 @@ labels:
 
 _(Added by the [NegativeUNL amendment][].)_
 
-The `NegativeUNL` ledger entry type contains the current status of the [Negative UNL](negative-unl.html), a list of trusted validators currently believed to be offline.
+The `NegativeUNL` ledger entry type contains the current status of the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), a list of trusted validators currently believed to be offline.
 
 Each ledger version contains **at most one** `NegativeUNL` entry. If no validators are currently disabled or scheduled to be disabled, there is no `NegativeUNL` entry.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -31,11 +31,11 @@ Each ledger version contains **at most one** `NegativeUNL` entry. If no validato
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), the `{{currentpage.name}}` ledger entry has the following fields:
+In addition to the [common fields](../common-fields.md), the `{% $frontmatter.seo.title %}` ledger entry has the following fields:
 
-| Name                  | JSON Type | [Internal Type][] | Required? | Description          |
+| Name                  | JSON Type | [Internal Type](../../binary-format.md) | Required? | Description          |
 |:----------------------|:----------|:------------------|:----------|:---------------------|
 | `DisabledValidators`  | Array     | Array             | No        | A list of `DisabledValidator` objects (see below), each representing a trusted validator that is currently disabled. |
 | `LedgerEntryType`     | String    | UInt16            | Yes       | The value `0x004E`, mapped to the string `NegativeUNL`, indicates that this entry is the Negative UNL. |
@@ -47,15 +47,15 @@ In addition to the [common fields](ledger-entry-common-fields.html), the `{{curr
 
 Each `DisabledValidator` object represents one disabled validator. In JSON, a `DisabledValidator` object has one field, `DisabledValidator`, which in turn contains another object with the following fields:
 
-| Name                  | JSON Type | [Internal Type][] | Description          |
+| Name                  | JSON Type | [Internal Type](../../binary-format.md) | Description          |
 |:----------------------|:----------|:------------------|:---------------------|
 | `FirstLedgerSequence` | Number    | UInt32            | The [ledger index][] when the validator was added to the Negative UNL. |
 | `PublicKey`           | String    | Blob              | The master public key of the validator, in hexadecimal. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for the `{{currentpage.name}}` entry.
+There are no flags defined for the `{% $frontmatter.seo.title %}` entry.
 
 
 ## NegativeUNL ID Format
@@ -65,8 +65,3 @@ The ID of the `NegativeUNL` entry is the hash of the `NegativeUNL` space key (`0
 ```
 2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244
 ```
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -9,7 +9,7 @@ labels:
 # ripple_path_find
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
 
-`ripple_path_find`メソッドは、[path_findメソッド][]のシンプルなバージョンであり、すぐに利用できる[ペイメントパス](paths.html)を含む1つの応答を返します。WebSocket APIとJSON-RPC APIの両方で使用できます。ただし、結果は時間の経過とともに古くなる傾向にあります。最新の状態を維持するために複数のコールを実行する代わりに、可能な場合には[path_findメソッド][]を使用して、継続的な更新をサブスクライブします。
+`ripple_path_find`メソッドは、[path_findメソッド][]のシンプルなバージョンであり、すぐに利用できる[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を含む1つの応答を返します。WebSocket APIとJSON-RPC APIの両方で使用できます。ただし、結果は時間の経過とともに古くなる傾向にあります。最新の状態を維持するために複数のコールを実行する代わりに、可能な場合には[path_findメソッド][]を使用して、継続的な更新をサブスクライブします。
 
 `rippled`サーバーは支払いを行うため最も安価なパスまたはパスの組み合わせを探索しますが、このメソッドで返されるパスが最良のパスであることは保証されません。
 
@@ -18,10 +18,9 @@ labels:
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":8,
@@ -43,9 +42,9 @@ labels:
    }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"ripple_path_find",
@@ -70,15 +69,16 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax ripple_path_find json ledger_index|ledger_hash
 rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies":[ { "currency":"XRP" }, { "currency":"USD" } ], "destination_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount":{ "value":"0.001", "currency":"USD", "issuer":"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#ripple_path_find)
 
@@ -88,20 +88,19 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 |:----------------------|:---------------------------|:------------------------|
 | `source_account`      | 文字列                     | トランザクションで資金を送金するアカウントの一意のアドレス。 |
 | `destination_account` | 文字列                     | トランザクションで資金を受領するアカウントの一意のアドレス。 |
-| `destination_amount`  | 文字列またはオブジェクト           | 送金先アカウントがトランザクションで受領する[通貨額][]。**特殊なケース:** [新規: rippled 0.30.0][]`value`フィールドには`"-1"`（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし`send_max`が指定されている場合は、指定されている額を上回る額が支払われることはありません。 |
-| `send_max`            | 文字列またはオブジェクト           | _（省略可）_ トランザクションで使用する[通貨額][]。`source_currencies`と同時に使用することはできません。[新規: rippled 0.30.0][] |
-| `source_currencies`   | 配列                      | _（省略可）_ 送信元アカウントが使用する通貨の配列。この配列の各エントリーは、必須の`currency`フィールドとオプションの`issuer`フィールドを有するJSONオブジェクトです（[通貨額][]の指定方法と同様）。指定できる送金元通貨は**18**種類以下です。デフォルトでは、あらゆる送金元通貨を使用し、最大で**88**の異なる通貨/イシュアーペアに使用できます。 |
-| `ledger_hash`         | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]を参照してください） |
-| `ledger_index`        | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください） |
+| `destination_amount`  | 文字列またはオブジェクト           | 送金先アカウントがトランザクションで受領する[通貨額](basic-data-types.html#通貨額の指定)。**特殊なケース:** [新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE")`value`フィールドには`"-1"`（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし`send_max`が指定されている場合は、指定されている額を上回る額が支払われることはありません。 |
+| `send_max`            | 文字列またはオブジェクト           | _（省略可）_ トランザクションで使用する[通貨額](basic-data-types.html#通貨額の指定)。`source_currencies`と同時に使用することはできません。[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
+| `source_currencies`   | 配列                      | _（省略可）_ 送信元アカウントが使用する通貨の配列。この配列の各エントリーは、必須の`currency`フィールドとオプションの`issuer`フィールドを有するJSONオブジェクトです（[通貨額](basic-data-types.html#通貨額の指定)の指定方法と同様）。指定できる送金元通貨は**18**種類以下です。デフォルトでは、あらゆる送金元通貨を使用し、最大で**88**の異なる通貨/イシュアーペアに使用できます。 |
+| `ledger_hash`         | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_index`        | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
 
 ## 応答フォーマット
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":8,
@@ -208,9 +207,9 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
    }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -317,10 +316,11 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`                  | 型   | 説明                              |
 |:-------------------------|:-------|:-----------------------------------------|
@@ -332,14 +332,14 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 
 | `Field`          | 型             | 説明                            |
 |:-----------------|:-----------------|:---------------------------------------|
-| `paths_computed` | 配列            | （省略可）[ペイメントパス](paths.html)を定義するオブジェクトの配列。 |
-| `source_amount`  | 文字列またはオブジェクト | 送金先が希望額を受領できるよう、送金元がこのパスで送金する必要のある[通貨額][]。 |
+| `paths_computed` | 配列            | （省略可）[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を定義するオブジェクトの配列。 |
+| `source_amount`  | 文字列またはオブジェクト | 送金先が希望額を受領できるよう、送金元がこのパスで送金する必要のある[通貨額](basic-data-types.html#通貨額の指定)。 |
 
 次のフィールドは廃止予定のため、省略される可能性があります。`paths_canonical`および`paths_expanded`。出力される場合は無視してください。
 
 ## 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `tooBusy` - サーバーの負荷が高すぎるため、パスを計算できません。管理者として接続している場合は、このエラーが返されることはありません。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `srcActMissing` - `source_account`フィールドが要求で省略されています。
@@ -348,7 +348,3 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 * `dstActMalformed` - 要求の`destination_account`フィールドのフォーマットが適切ではありません。
 * `srcCurMalformed` - `source_currencies`フィールドのフォーマットが適切ではありません。
 * `srcIsrMalformed` - 要求の1つ以上の通貨オブジェクトの`issuer`フィールドが有効ではありません。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

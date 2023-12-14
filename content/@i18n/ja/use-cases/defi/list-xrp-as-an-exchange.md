@@ -41,27 +41,27 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 関連項目:
 
-* [コンプライアンス指針](stablecoin-compliance-guidelines.html) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
+* [コンプライアンス指針](../../concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md) — ゲートウェイと取引所は異なりますが、取引所は地域の規制に準拠し、適切な当局の監督下になければなりません。
 
 <!-- * [XRP Ledgerへ送金するための要件](stablecoin-issuer.html#xrp-ledgerへ送金するための要件)
 
 *  [XRP Ledgerへの入金の要件](stablecoin-issuer.html#xrp-ledgerへの入金の要件) -->
 
-* [注意事項](stablecoin-precautions.html)
+* [注意事項](../../concepts/tokens/fungible-tokens/stablecoins/precautions.md)
 
 ### Partial Payments
 
-追加の前に、取引所は[Partial Payments](partial-payments.html)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](bouncing-payments.html)に便利です。
+追加の前に、取引所は[Partial Payments](../../concepts/payment-types/partial-payments.md)機能について知っておく必要があります。この機能を使用すると、XRP Ledgerのユーザーは、`SendMax`を増やさずに、受取金額を減額して、支払いを正常に送信できます。この機能は、送信者側に追加費用が発生せず、[支払いの返金](../../concepts/payment-types/bouncing-payments.md)に便利です。
 
 #### Partial Paymentsに関する警告
 
 [tfPartialPaymentフラグ](payment.html#paymentのフラグ)が有効にされると、`Amount`フィールド **_は受取り金額とは同じでなくなることがあります_** 。支払いのメタデータにある`delivered_amount`フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。支払いを受信するときに、Amountフィールドの代わりに、`delivered_amount`を使用してアカウントで受信した金額を判断します。
 
-**警告:** この機能が悪用されることがあります。詳細については、[Partial Payments](partial-payments.html)を参照してください。
+**警告:** この機能が悪用されることがあります。詳細については、[Partial Payments](../../concepts/payment-types/partial-payments.md)を参照してください。
 
 ### アカウント
 
-XRPは、XRP Ledgerの _アカウント_ （ _ウォレット_ や _アドレス_ とも呼ばれる）で保持されます。XRP Ledgerのアカウントは、例えばBitcoinのような、アカウントに経費がほとんどまたは一切かからない他のブロックチェーンの台帳とは異なります。XRP Ledgerでは、[アカウントの削除](deleting-accounts.html)は可能が、各アカウントは個別の、他の人に送信することのできない、[XRPの準備金](reserves.html)を保持する必要があります。このような理由から、Rippleでは利用機関に対し、必要のない過剰なアカウントを作成しないように勧めています。
+XRPは、XRP Ledgerの _アカウント_ （ _ウォレット_ や _アドレス_ とも呼ばれる）で保持されます。XRP Ledgerのアカウントは、例えばBitcoinのような、アカウントに経費がほとんどまたは一切かからない他のブロックチェーンの台帳とは異なります。XRP Ledgerでは、[アカウントの削除](../../concepts/accounts/deleting-accounts.md)は可能が、各アカウントは個別の、他の人に送信することのできない、[XRPの準備金](../../concepts/accounts/reserves.md)を保持する必要があります。このような理由から、Rippleでは利用機関に対し、必要のない過剰なアカウントを作成しないように勧めています。
 
 <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet -->
 
@@ -87,18 +87,18 @@ Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、
 
     不正使用されたホットウォレットによって発生するおそれのある結果についての詳細は、[Operational Account Compromise](account-types.html#運用アドレスの漏えい)を参照してください。
 
-* オプションとして、コールドウォレットとホットウォレットの間で追加のセキュリティ層を提供する、1つ以上のウォームウォレット。ホットウォレットとは異なり、ウォームウォレットのシークレットキーはオンラインである必要はありません。さらに、ウォームウォレットのシークレットキーを複数の人に分散し、[マルチシグ](multi-signing.html)を導入してセキュリティを強化することもできます。
+* オプションとして、コールドウォレットとホットウォレットの間で追加のセキュリティ層を提供する、1つ以上のウォームウォレット。ホットウォレットとは異なり、ウォームウォレットのシークレットキーはオンラインである必要はありません。さらに、ウォームウォレットのシークレットキーを複数の人に分散し、[マルチシグ](../../concepts/accounts/multi-signing.md)を導入してセキュリティを強化することもできます。
 
     不正使用されたウォームウォレットによって発生するおそれのある結果についての詳細は、[スタンバイアドレスの漏えい](account-types.html#スタンバイアドレスの漏えい)を参照してください。
 
 
 関連項目:
 
-* [発行アドレスと運用アドレス](account-types.html)
+* [発行アドレスと運用アドレス](../../concepts/accounts/account-types.md)
 
 * [アカウントの作成](accounts.html#アカウントの作成)
 
-* [準備金](reserves.html)
+* [準備金](../../concepts/accounts/reserves.md)
 
 ### バランスシート
 
@@ -192,13 +192,13 @@ XRPの額は、XRP Ledgerで、符号なし整数の _drop_ として示され�
 
 1drop（.000001XRP）はこれ以上分割できません。XRPと他の資産の間でFXレートを計算して表示するときには、この点にご注意ください。
 
-詳細は、[通貨額の指定][]を参照してください。
+詳細は、[通貨額の指定](basic-data-types.html#通貨額の指定)を参照してください。
 
 #### 台帳上と台帳外
 
  _Alpha Exchange_ のような取引所では、XRPは「台帳上」または「台帳外」に存在します。
 
-* **台帳上のXRP**: XRP保有者のパブリック[アドレス](addresses.html)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](what-is-xrp.html)を参照してください。
+* **台帳上のXRP**: XRP保有者のパブリック[アドレス](../../concepts/accounts/addresses.md)を指定し、パブリックのXRP Ledgerを通じて照会できるXRP。これらの残高の取引相手はXRP Ledgerです。詳細については、[XRP](../../introduction/what-is-xrp.md)を参照してください。
 
 * **台帳外のXRP**: 取引所の会計システムに保持されている、取引所のインターフェイスで照会できるXRP。台帳外のXRP残高はクレジットペースです。取引相手は、XRPを保有している取引所です。
 
@@ -311,7 +311,7 @@ CharlieというユーザーがAlpha Exchangeに50,000XRPを入金したいと�
 
 1. Charlieは50,000XRPの支払いを、Alpha Exchangeの[コールドウォレット](#アカウント)に送信します。
 
-    a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](source-and-destination-tags.html)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](accountset.html#accountsetのフラグ)を参照してください。）
+    a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](../../concepts/transactions/source-and-destination-tags.md)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](accountset.html#accountsetのフラグ)を参照してください。）
 
 2. Alpha Exchangeのソフトウェアは、受信される支払を検出し、`789`をチャーリーのアカウントの宛先タグとして認識します。
 
@@ -417,7 +417,7 @@ XRPを自身のXRP Ledgerアカウントに保有している顧客は、XRP Led
 
 ### XRPの保有高のリバランス
 
-取引所は、いつでもホットウォレットとコールドウォレットの間で残高を調整できます。各残高調整には、[トランザクションコスト](transaction-cost.html)がかかりますが、それ以外にはすべてのアカウントの合計残高に影響はありません。台帳上の合計残高は、取引所で取引に使用できる合計残高を常に上回る必要があります。（XRP Ledgerのトランザクションコストをカバーできるだけの十分な余剰が必要です。）
+取引所は、いつでもホットウォレットとコールドウォレットの間で残高を調整できます。各残高調整には、[トランザクションコスト](../../concepts/transactions/transaction-cost.md)がかかりますが、それ以外にはすべてのアカウントの合計残高に影響はありません。台帳上の合計残高は、取引所で取引に使用できる合計残高を常に上回る必要があります。（XRP Ledgerのトランザクションコストをカバーできるだけの十分な余剰が必要です。）
 
 以下の表は、（XRP Ledgerで[Paymentトランザクション][]を介した）Alpha Exchangeのコールドウォレットとホットウォレットの間での80,000XRPの残高調整を示すものです。コールドウォレットから引き落としが行われ、ホットウォレットに入金が行われました。この支払いを逆にすると（ホットウォレットから引き落としが行われ、コールドウォレットに入金が行われる）、ホットウォレットの残高は減少します。このような残高調整は、取引所がオンラインホットウォレットにXRPを保持することに関連するリスクを抑えるために役立ちます。
 
@@ -602,9 +602,3 @@ XRPを自身のXRP Ledgerアカウントに保有している顧客は、XRP Led
     <td></td>
   </tr>
 </table>
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

@@ -24,32 +24,26 @@ PaymentChannelFundの例:
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 <!--{# fix md highlighting_ #}-->
 
-| フィールド    | JSONの型  | [内部の型][]       | 説明                          |
+| フィールド    | JSONの型  | [内部の型](../../binary-format.md)       | 説明                          |
 |:-------------|:----------|:------------------|:------------------------------|
 | `Channel` | 文字列 | Hash256 | 資金供給するChannelの一意のID（64文字の16進文字列）。 |
 | `Amount` | 文字列 | Amount | Channelに追加する[XRP、drop単位][通貨額]の正の額。 |
-| `Expiration` | 数値 | UInt32 | _（省略可）_ Channelに新たに設定する`Expiration`の時刻（Rippleエポック以降の経過秒数）。現行時刻にChannelの`SettleDelay`を加えた時刻よりも後であるか、またはChannelの既存の`Expiration`よりも後である必要があります。`Expiration`時刻の経過後には、トランザクションがそのChannelにアクセスするとChannelが閉鎖し、トランザクションの通常の処理は行われません。Channelの閉鎖時には未使用のXRPはすべて支払元アドレスに返金されます。（`Expiration`は、Channelの不変の`CancelAfter`時刻とは別のものです。）詳細は、[PayChannelレジャーオブジェクトタイプ](paychannel.html)を参照してください。 |
+| `Expiration` | 数値 | UInt32 | _（省略可）_ Channelに新たに設定する`Expiration`の時刻（Rippleエポック以降の経過秒数）。現行時刻にChannelの`SettleDelay`を加えた時刻よりも後であるか、またはChannelの既存の`Expiration`よりも後である必要があります。`Expiration`時刻の経過後には、トランザクションがそのChannelにアクセスするとChannelが閉鎖し、トランザクションの通常の処理は行われません。Channelの閉鎖時には未使用のXRPはすべて支払元アドレスに返金されます。（`Expiration`は、Channelの不変の`CancelAfter`時刻とは別のものです。）詳細は、[PayChannelレジャーオブジェクトタイプ](../../ledger-data/ledger-entry-types/paychannel.md)を参照してください。 |
 
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード | 説明        |
 |:-----------|:------------|
-| `tecINSUFFICIENT_RESERVE` | 支払元アカウントが[必要準備金](reserves.html)のXRPを持っていません。|
-| `tecNO_DST`               | 送金先アカウントが削除されていました。 この可能性は、Payment Channelの作成時は[fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir)が有効になった（2020-05-01）前の場合だけです。|
+| `tecINSUFFICIENT_RESERVE` | 支払元アカウントが[必要準備金](../../../../concepts/accounts/reserves.md)のXRPを持っていません。|
+| `tecNO_DST`               | 送金先アカウントが削除されていました。 この可能性は、Payment Channelの作成時は[fixPayChanRecipientOwnerDir amendment](../../../../resources/known-amendments.md#fixpaychanrecipientownerdir)が有効になった（2020-05-01）前の場合だけです。|
 | `tecNO_ENTRY`             | `Channel`フィールドに指定されたPayment Channelがありません。 |
 | `tecNO_PERMISSION`        | トランザクションの送金元アカウントはPayment Channelの支払元アカウントではありまっせん。|
-| `tecUNFUNDED`             | 送金元アカウントは[必要準備金](reserves.html)以上に指定されたXRPを持っていません。|
+| `tecUNFUNDED`             | 送金元アカウントは[必要準備金](../../../../concepts/accounts/reserves.md)以上に指定されたXRPを持っていません。|
 | `temBAD_AMOUNT`           | トランザクションの`Amount`フィールドの指定が正しくない。負もゼロも無効です。|
 | `temBAD_EXPIRATION`       | `Expiration`フィールドの指定が正しくない。|
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

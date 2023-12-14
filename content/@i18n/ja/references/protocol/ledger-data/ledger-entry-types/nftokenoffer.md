@@ -9,9 +9,9 @@ labels:
 
 `lsfTransferable`フラグが設定されているトークンは、オファーを使って参加者間で転送することができます。`NFTokenOffer`オブジェクトは`NFToken`オブジェクトの購入、売却、または譲渡のオファーを表します。`NFToken`の所有者は`NFTokenCreateOffer`を使用して売買を行うことができます。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -31,9 +31,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ### `NFTokenOffer`のフィールド
 
-| 名前                | JSONの型     | [内部の型][]        | 必須？ | 説明        |
+| 名前                | JSONの型     | [内部の型](../../binary-format.md)        | 必須？ | 説明        |
 |:--------------------|:------------|:------------------|:------|:-----------|
-| `Amount`            | [通貨額][]   | AMOUNT            | はい   | NFTokenに対して見込まれる、または提示される金額です。トークンに`lsfOnlyXRP`フラグが設定されている場合、金額はXRPで指定する必要があります。XRP以外の資産を指定する売却オファーは、0以外の金額を指定する必要があります。XRPを指定する売却オファーは、`無料`にすることができます（つまり、このフィールドは`"0"`とすることができます）。 |
+| `Amount`            | [通貨額](basic-data-types.html#通貨額の指定)   | AMOUNT            | はい   | NFTokenに対して見込まれる、または提示される金額です。トークンに`lsfOnlyXRP`フラグが設定されている場合、金額はXRPで指定する必要があります。XRP以外の資産を指定する売却オファーは、0以外の金額を指定する必要があります。XRPを指定する売却オファーは、`無料`にすることができます（つまり、このフィールドは`"0"`とすることができます）。 |
 | `Destination`       | 文字列       | AccountID         | いいえ | このオファーの対象となるAccountID。存在する場合、そのアカウントのみがオファーを受け入れることができます。 |
 | `Expiration`        | 数値         | UInt32            | いいえ | オファーが有効でなくなる時刻。値は、リップルエポックからの秒数です。 |
 | `Flags`             | 数値         | UInt32            | はい   | このオブジェクトに関連付けられたフラグのセットで、様々なオプションや設定を指定するために使用されます。フラグは、以下の表に示すとおりです。 |
@@ -55,18 +55,18 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## `NFTokenOffer`トランザクション
 
-[代替可能トークンに対するOffer](offers.html)とは異なり、`NFTokenOffer`はオーダーブックに保存されず、自動的にマッチングされたり約定されたりすることはありません。買い手は売り手により提示されてた`NFTokenOffer`の受け入れを明示的に選択する必要があります。同様に、売り手は自分が所有する`NFToken`オブジェクトを買いたいと申し出た買い手の`NFTokenOffer`を受け入れることを明示的に選択しなければなりません。
+[代替可能トークンに対するOffer](../../../../concepts/tokens/decentralized-exchange/offers.md)とは異なり、`NFTokenOffer`はオーダーブックに保存されず、自動的にマッチングされたり約定されたりすることはありません。買い手は売り手により提示されてた`NFTokenOffer`の受け入れを明示的に選択する必要があります。同様に、売り手は自分が所有する`NFToken`オブジェクトを買いたいと申し出た買い手の`NFTokenOffer`を受け入れることを明示的に選択しなければなりません。
 
 `NFToken`の取引のためのトランザクションは3つあります。
 
-- [NFTokenCreateOffer][]
-- [NFTokenCancelOffer][]
-- [NFTokenAcceptOffer][]
+- [NFTokenCreateOffer](../../transactions/types/nftokencreateoffer.md)
+- [NFTokenCancelOffer](../../transactions/types/nftokencanceloffer.md)
+- [NFTokenAcceptOffer](../../transactions/types/nftokenacceptoffer.md)
 
 
 ### `NFTokenOffer`オブジェクトの検索
 
-各`NFToken`は、2つの[ディレクトリ](directorynode.html)があります。1つはトークンを購入するためのオファー、もう1つはトークンを売却するためのオファーが含まれています。マーケットプレイスやその他のクライアントアプリケーションは、ユーザに対し`NFToken`オブジェクトの取引オファーを提示したり、自動的にマッチングすることができます。
+各`NFToken`は、2つの[ディレクトリ](directorynode.md)があります。1つはトークンを購入するためのオファー、もう1つはトークンを売却するためのオファーが含まれています。マーケットプレイスやその他のクライアントアプリケーションは、ユーザに対し`NFToken`オブジェクトの取引オファーを提示したり、自動的にマッチングすることができます。
 
 
 ### `NFTokenOffer`の準備金
@@ -81,9 +81,3 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 * `NFTokenOffer`のスペースキー、`0x0074`
 * オファーを出すアカウントの`AccountID`
 * `NFTokenCreateOffer`トランザクションが生成する`NFTokenCreateOffer`の`Sequence`(または`Ticket`)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

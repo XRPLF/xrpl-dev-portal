@@ -7,7 +7,7 @@ labels:
 ---
 # ピアリングのポート転送
 
-XRP Ledgerのピアツーピアネットワーク内にあるサーバーは、[ピアプロトコル](peer-protocol.html)を介して通信します。セキュリティとネットワークの他の部分との接続を両立させるために、ファイアウォールを使用して、サーバーをほとんどのポートから保護し、ピアプロトコルポートだけを開放するか転送するようにする必要があります。
+XRP Ledgerのピアツーピアネットワーク内にあるサーバーは、[ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)を介して通信します。セキュリティとネットワークの他の部分との接続を両立させるために、ファイアウォールを使用して、サーバーをほとんどのポートから保護し、ピアプロトコルポートだけを開放するか転送するようにする必要があります。
 
 `rippled`サーバーの稼動中に、[server_infoメソッド][]を実行すると、いくつのピアがあるか確認することができます。`info`オブジェクトの`peers`フィールドは、サーバーに現在接続しているピアの数を示します。この数が10または11の場合、通常はファイアウォールが着信接続をブロックしていることを示します。
 
@@ -49,18 +49,13 @@ $ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
 ## 関連項目
 
 - **コンセプト:**
-  - [ピアプロトコル](peer-protocol.html)
+  - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
   - [`rippled`サーバー](xrpl-servers.html)
 - **チュートリアル:**
-  - [容量の計画](capacity-planning.html)
-  - [`rippled`サーバーのトラブルシューティング](troubleshoot-the-rippled-server.html)
+  - [容量の計画](../../installation/capacity-planning.md)
+  - [`rippled`サーバーのトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [connectメソッド][]
   - [peersメソッド][]
   - [printメソッド][]
   - [server_infoメソッド][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

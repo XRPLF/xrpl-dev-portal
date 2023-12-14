@@ -8,7 +8,7 @@ labels:
 ---
 # 履歴シャーディングの設定
 
-[履歴シャーディング](history-sharding.html)では、各サーバーで完全な履歴を保管することなく、履歴XRP Ledgerデータを保存できます。デフォルトでは`rippled`サーバーは履歴シャードを保管しません。
+[履歴シャーディング](history-sharding.md)では、各サーバーで完全な履歴を保管することなく、履歴XRP Ledgerデータを保存できます。デフォルトでは`rippled`サーバーは履歴シャードを保管しません。
 
 **ヒント:** バリデータおよび`rippled`追跡（またはストック）サーバーの両方で履歴シャードを保管するように設定できます。ただし`rippled`バリデータサーバーの経費を抑えるために、バリデータサーバーでシャードを保管するように設定 _しない_ ことが推奨されます。バリデータを実行していて、XRP Ledger履歴を保管したい場合は、履歴シャーディングを有効にして別の`rippled`サーバーを実行することが推奨されます。
 
@@ -30,7 +30,7 @@ labels:
 
 `rippled.cfg`ファイルを編集し、`[shard_db]`スタンザを追加します。
 
-{% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+{% partial file="/_snippets/conf-file-location.ja.md" /%}
 
 以下のスニペットに、`[shard_db]`スタンザの例を示します。
 
@@ -41,9 +41,9 @@ path=/var/lib/rippled/db/shards/nudb
 max_size_gb=50
 ```
 
-`type`フィールドは省略できます。省略しない場合は、`NuDB`である _必要があります_ 。[新規: rippled 1.3.1][]
+`type`フィールドは省略できます。省略しない場合は、`NuDB`である _必要があります_ 。[新規: rippled 1.3.1](https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE")
 
-**注意:** `rippled`がシャードストアーパスで不適切なデータを検出すると、[起動できない](server-wont-start.html)可能性があります。シャードストアーには新しいフォルダーを使用する必要があります。以前にRocksDBシャードストアー（`rippled` 1.2.x以前）を使用していた場合は、別のパスを使用するか、RocksDBシャードデータを削除します。
+**注意:** `rippled`がシャードストアーパスで不適切なデータを検出すると、[起動できない](../../troubleshooting/server-wont-start.md)可能性があります。シャードストアーには新しいフォルダーを使用する必要があります。以前にRocksDBシャードストアー（`rippled` 1.2.x以前）を使用していた場合は、別のパスを使用するか、RocksDBシャードデータを削除します。
 
 詳細は、[rippled.cfgの設定例](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)の`[shard_db]`の例を参照してください。
 
@@ -61,24 +61,19 @@ systemctl restart rippled
 
 [download_shardメソッド][]を使用して、サーバーにアーカイブファイルからシャードをダウンロードしてインポートするように指示できます。
 
-サーバーとそのピアが使用できるシャードのリストを表示するには、[crawl_shardsメソッド][]か[ピアクローラー](peer-crawler.html)を使用します。
+サーバーとそのピアが使用できるシャードのリストを表示するには、[crawl_shardsメソッド][]か[ピアクローラー](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)を使用します。
 
 
 ## 関連項目
 
 - **コンセプト:**
-  - [レジャー履歴](ledger-history.html)
-    - [オンライン削除](online-deletion.html)
+  - [レジャー履歴](../../../concepts/networks-and-servers/ledger-history.md)
+    - [オンライン削除](online-deletion.md)
 - **チュートリアル:**
-  - [オンライン削除の設定](configure-online-deletion.html)
-  - [ピアクローラーの設定](configure-the-peer-crawler.html)
-  - [容量の計画](capacity-planning.html)
+  - [オンライン削除の設定](configure-online-deletion.md)
+  - [ピアクローラーの設定](../peering/configure-the-peer-crawler.md)
+  - [容量の計画](../../installation/capacity-planning.md)
 - **リファレンス:**
   - [download_shardメソッド][]
   - [crawl_shardsメソッド][]
-  - [レジャーデータフォーマット](ledger-data-formats.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+  - [レジャーデータフォーマット](../../../references/protocol/ledger-data/index.md)

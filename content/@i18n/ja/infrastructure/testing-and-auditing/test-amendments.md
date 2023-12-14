@@ -14,13 +14,14 @@ labels:
 
 機能を強制的に有効にするには、`rippled.cfg` ファイルに `[features]`節とAmendmentの短い名前を追加してください。各Amendmentにはそれぞれ行が必要です。
 
-<!-- MULTICODE_BLOCK_START -->
-_Example_
+{% tabs %}
 
+{% tab label="Example" %}
 ```
 [features]
 MultiSign
 TrustSetAuth
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}

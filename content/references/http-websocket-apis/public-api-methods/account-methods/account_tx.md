@@ -15,10 +15,9 @@ The `account_tx` method retrieves a list of validated transactions that involve 
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -31,9 +30,9 @@ An example of the request format:
   "forward": false
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_tx",
@@ -49,16 +48,17 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 # Syntax: account_tx account [ledger_index_min [ledger_index_max]] [limit] [offset] [binary] [count] [descending]
 # For binary/count/descending, use the parameter name for true and omit for false.
 rippled -- account_tx rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w -1 -1 2 0 binary descending
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#account_tx)
 
@@ -67,7 +67,7 @@ The request includes the following parameters:
 | `Field`            | Type                                       | Description |
 |:-------------------|:-------------------------------------------|:-----------|
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
-| `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. Supports any transaction type except `AMM*` (See [Transaction Types](transaction-types.html).) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
+| `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. Supports any transaction type except `AMM*` (See [Transaction Types](../../../protocol/transactions/types/index.md).) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
 | `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
 | `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
 | `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
@@ -75,11 +75,11 @@ The request includes the following parameters:
 | `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
 | `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
-| `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
+| `marker`           | [Marker](../../api-conventions/markers-and-pagination.md) | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
 **You must use at least one of the following fields** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
 
-The following legacy fields are no longer supported: `offset`, `count`, `ledger_min`, `ledger_max`. [Removed in: rippled 1.7.0][]
+The following legacy fields are no longer supported: `offset`, `count`, `ledger_min`, `ledger_max`. [Removed in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_RED")
 
 
 ### Iterating over queried data
@@ -92,10 +92,9 @@ In the time between requests, `"ledger_index_min": -1` and `"ledger_index_max": 
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -243,9 +242,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 {
@@ -393,9 +392,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -426,10 +425,11 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`            | Type                       | Description                |
 |:-------------------|:---------------------------|:---------------------------|
@@ -437,7 +437,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
 | `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
 | `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
-| `marker`           | [Marker][]                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
+| `marker`           | [Marker](../../api-conventions/markers-and-pagination.md)                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 | `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
@@ -459,8 +459,4 @@ Each transaction object includes the following fields, depending on whether it w
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
 * `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).

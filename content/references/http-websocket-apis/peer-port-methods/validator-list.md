@@ -8,9 +8,9 @@ labels:
 ---
 # Validator List Method
 
-The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0][]
+The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE")
 
-Like the [Peer Crawler](peer-crawler.html), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications.
+Like the [Peer Crawler](peer-crawler.md), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `rippled` servers' peer-to-peer communications.
 
 ## Request Format
 
@@ -41,14 +41,14 @@ The JSON object has the following fields:
 | `blob`           | String | Base64-encoded JSON data representing the validator list. |
 | `signature`      | String | The signature of the `blob` data, in hexadecimal. |
 | `version`        | Number | The version of the validator list protocol this object uses. The current version is **1**. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol. |
-| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. [New in: rippled 1.7.0][] |
+| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. [New in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE") |
 
 ### Manifest Data
 [[Source]](https://github.com/XRPLF/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "Source")
 
-A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that [validator's token](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server). A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard [binary serialization format](serialization.html). (There is no standard JSON representation of a manifest.)
+A "manifest" contains information uniquely identifying a person or organization involved in the consensus process, either a **validator** or a **list publisher**. A validator's manifest contains the _public_ information from that [validator's token](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server). A list publisher's manifest provides information about the list publisher. Both are typically encoded to binary in the XRP Ledger's standard [binary serialization format](../../protocol/binary-format.md). (There is no standard JSON representation of a manifest.)
 
-One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the [consensus process](consensus.html) and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that [the validator administrator adds to the `rippled.cfg` config file](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).)
+One of the main purposes of manifests relates to rotating validator keys. When a validator changes its ephemeral key pair, the validator publishes a new manifest to share its new ephemeral public key, using the validator's master key pair to sign the manifest to prove its authenticity. A validator uses its ephemeral key pair to sign validations as part of the [consensus process](../../../concepts/consensus-protocol/index.md) and uses its master key pair only to sign new manifests. (The manifest is incorporated into a validator token, alongside private data, that [the validator administrator adds to the `rippled.cfg` config file](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).)
 
 The data encoded in a manifest is as follows:
 
@@ -62,7 +62,7 @@ The data encoded in a manifest is as follows:
 | `sfSigningPubKey`   | Blob          | _(Optional)_ The ephemeral public key of the key pair that this person or organization is currently using. This must be a 33-byte secp256k1 public key. |
 | `sfSignature`       | Blob          | _(Optional)_ A signature of this manifest data from the ephemeral key pair. |
 
-The `sfMasterSignature` and `sfSignature` signatures are created from signing the [serialized](serialization.html) binary data of the manifest, excluding the signature fields (`sfMasterSignature` and `sfSignature`) themselves.
+The `sfMasterSignature` and `sfSignature` signatures are created from signing the [serialized](../../protocol/binary-format.md) binary data of the manifest, excluding the signature fields (`sfMasterSignature` and `sfSignature`) themselves.
 
 
 ### Blob Data
@@ -85,45 +85,34 @@ Each member of the `validators` array has the following fields:
 
 #### Example Decoded Blob
 
-```json
-{% include '_api-examples/vl/vl-blob.json' %}
-```
+{% code-snippet file="/_api-examples/vl/vl-blob.json" language="json" /%}
 
 ## Example
 
 Request:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*HTTP*
-
+{% tab label="HTTP" %}
 ```
 GET https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 ```
+{% /tab %}
 
-*cURL*
-
+{% tab label="cURL" %}
 ```
 curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 Response:
 
-```json
-200 OK
-
-{% include '_api-examples/vl/vl.json' %}
-```
+{% code-snippet file="/_api-examples/vl/vl.json" language="json" prefix="200 OK\n\n" /%}
 
 
 ## See Also
 
-- [Peer Protocol](peer-protocol.html)
-- [Consensus](consensus.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+- [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
+- [Consensus](../../../concepts/consensus-protocol/index.md)

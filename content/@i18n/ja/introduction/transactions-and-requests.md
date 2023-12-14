@@ -39,7 +39,7 @@ JavaScript、Python、コマンドライン、または互換性のあるサー�
 
 バリデータの80%超が提案された現在のトランザクションを承認すると、その取引は永久的にレジャーの一部として記録されます。rippledサーバは、送信したトランザクションの結果を返します。
 
-トランザクションについてのより詳しい解説は、[トランザクション](transactions.html)をご覧ください。
+トランザクションについてのより詳しい解説は、[トランザクション](../concepts/transactions/index.md)をご覧ください。
 
 ## リクエストの仕組み
 
@@ -109,6 +109,6 @@ ClioサーバはXRPL上の他のrippledサーバの負荷の一部を軽減し�
     }
 }
 ```
-Accountのフィールドについては、[アカウント](accounts.html)をご覧ください。
+Accountのフィールドについては、[アカウント](../concepts/accounts/accounts.md)をご覧ください。
 
-次のページ: [ソフトウェアエコシステム](software-ecosystem.html)
+次のページ: [ソフトウェアエコシステム](software-ecosystem.md)

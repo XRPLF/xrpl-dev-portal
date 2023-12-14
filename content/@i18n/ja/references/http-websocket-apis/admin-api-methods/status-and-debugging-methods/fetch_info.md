@@ -10,15 +10,14 @@ labels:
 
 `fetch_info`コマンドは、このサーバーが現在ネットワークからフェッチしているオブジェクトに関する情報と、その情報を所有しているピアの数を返します。これは現在の取得操作をリセットする場合にも使用できます。
 
-_`fetch_info`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`fetch_info`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 91,
@@ -26,9 +25,9 @@ _`fetch_info`メソッドは、権限のないユーザーは実行できない[
    "clear": false
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "fetch_info",
@@ -39,15 +38,16 @@ _`fetch_info`メソッドは、権限のないユーザーは実行できない[
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: fetch_info [clear]
 rippled fetch_info
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
@@ -59,10 +59,9 @@ rippled fetch_info
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -98,9 +97,9 @@ rippled fetch_info
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -139,10 +138,11 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
 | `Field` | 型   | 説明                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -161,9 +161,4 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。

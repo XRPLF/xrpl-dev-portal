@@ -11,9 +11,9 @@ status: not_enabled
 
 _([AMM amendment][] :not_enabled:が必要です。)_
 
-AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスから資産を引き出します。
+AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -38,16 +38,16 @@ AMMの流動性プロバイダトークン（LPトークン）を返却するこ
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 
-| フィールド     | JSONの型   | [内部の型][] | 必須? | 説明         |
+| フィールド     | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明         |
 |:-------------|:-----------|:-----------|:------|:------------|
 | `Asset`      | オブジェクト | STIssue    | はい   | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Asset2`     | オブジェクト | STIssue    | はい   | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトです(XRPの場合は`issuer`を省略)。|
-| `Amount`     | [通貨額][]  | Amount     | いいえ | AMMから引き出す1つの資産の量。これは、AMMのプールにある資産の1つ（トークンまたはXRP）と一致する必要があります。 |
-| `Amount2`    | [通貨額][]  | Amount     | いいえ | AMMから引き出す他の資産の量。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じにすることはできません。 |
-| `EPrice`     | [通貨額][]  | Amount     | いいえ | 引き出しに必要な、資産の1単位あたりに支払う最低有効価格（LPトークンの返却単位）。 |
-| `LPTokenIn`  | [通貨額][]  | Amount     | いいえ | AMMのLPトークンの引き替え数。 |
+| `Amount`     | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMから引き出す1つの資産の量。これは、AMMのプールにある資産の1つ（トークンまたはXRP）と一致する必要があります。 |
+| `Amount2`    | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMから引き出す他の資産の量。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じにすることはできません。 |
+| `EPrice`     | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | 引き出しに必要な、資産の1単位あたりに支払う最低有効価格（LPトークンの返却単位）。 |
+| `LPTokenIn`  | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMのLPトークンの引き替え数。 |
 
 **注記:** ダブルアセット出金の場合、`Asset1`と`Amount1`または`Amount2`が対応していれば、`Asset2`はもう一方に対応することが可能です。しかし、両者を一致させることをお勧めします(つまり、`Amount2`は`Asset2`で定義されたアセットの金額です)。その方が混乱を招きにくくなります。
 
@@ -106,7 +106,7 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード               | 説明                                          |
 |:-------------------------|:---------------------------------------------|
@@ -114,15 +114,9 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 | `tecAMM_BALANCE`         | トランザクションによって、プールから1つの資産をすべて引き出そうとしている、もしくは`tfWithdrawAll`の場合に端数処理によって0以外の金額が残ってしまっています。 |
 | `tecAMM_FAILED` | 例えば、`EPrice`フィールドに指定された有効価格が低過ぎる場合など、出金に関する条件が成立しませんでした。 |
 | `tecAMM_INVALID_TOKENS`  | トークンペアのAMMが存在しないか、計算の結果、引き出し額がゼロに丸められました。 |
-| `tecFROZEN`              | トランザクションは[凍結](freezes.html)されたトークンを引き出そうとしました。 |
-| `tecINSUF_RESERVE_LINE`  | トランザクションの送信者は、このトランザクションを処理するための[準備金要件](reserves.html)の増加に対応できません。おそらく、引き出される資産の1つを保持するために少なくとも1つの新しいトラストラインが必要ですが、新しいトラストラインのための追加の所有者準備金分のXRPを持っていないためでしょう。 |
+| `tecFROZEN`              | トランザクションは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されたトークンを引き出そうとしました。 |
+| `tecINSUF_RESERVE_LINE`  | トランザクションの送信者は、このトランザクションを処理するための[準備金要件](../../../../concepts/accounts/reserves.md)の増加に対応できません。おそらく、引き出される資産の1つを保持するために少なくとも1つの新しいトラストラインが必要ですが、新しいトラストラインのための追加の所有者準備金分のXRPを持っていないためでしょう。 |
 | `tecNO_AUTH`             | 送信者は、引き出し資産のいずれかを保有する権限を有していません。 |
 | `temMALFORMED`     | トランザクションで無効なフィールドの組み合わせが指定されました。[AMMWithdrawモード](#ammwithdrawモード)を参照してください。 |
 | `temBAD_AMM_TOKENS`      | 例えば、`issuer`がAMMの関連するAccountRootアドレスでない、`currency`がこのAMMのLPトークンの通貨コードでない、またはトランザクションがこのAMMのLPトークンをAssetフィールドの1つに指定した、などです。 |
 | `terNO_AMM`              | トランザクションで指定した資産ペアの自動マーケットメーカーインスタンスが存在しません。 |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

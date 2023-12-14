@@ -9,11 +9,11 @@ labels:
 
 _(Added by the [NegativeUNL amendment][].)_
 
-A `UNLModify` [pseudo-transaction](pseudo-transaction-types.html) marks a change to the [Negative UNL](negative-unl.html), indicating that a trusted validator has gone offline or come back online.
+A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change to the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), indicating that a trusted validator has gone offline or come back online.
 
 **Note:** You cannot send a pseudo-transaction, but you may find one when processing ledgers.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -28,18 +28,12 @@ A `UNLModify` [pseudo-transaction](pseudo-transaction-types.html) marks a change
 }
 ```
 
-{% include '_snippets/pseudo-tx-fields-intro.md' %}
+{% partial file="/_snippets/pseudo-tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
-| Name                 | JSON Type | [Internal Type][] | Description           |
+| Name                 | JSON Type | [Internal Type](../../binary-format.md) | Description           |
 |:---------------------|:----------|:------------------|:----------------------|
 | `TransactionType`    | String    | UInt16            | The value `0x0066`, mapped to the string `UNLModify`, indicates that this object is an `UNLModify` pseudo-transaction. |
 | `LedgerSequence`     | Number    | UInt32            | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 | `UNLModifyDisabling` | Number    | UInt8             | If `1`, this change represents adding a validator to the Negative UNL. If `0`, this change represents removing a validator from the Negative UNL. (No other values are allowed.) |
 | `UNLModifyValidator` | String    | Blob              | The validator to add or remove, as identified by its master public key. |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

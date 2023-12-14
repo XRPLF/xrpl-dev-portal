@@ -8,9 +8,9 @@ labels:
 ---
 # Rippling
 
-XRP Ledgerでは、「Rippling」とは同一通貨の[トラストライン](trust-lines-and-issuing.html)を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingはトークンの基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザーは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の[通貨取引オーダー](offers.html)のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。
+XRP Ledgerでは、「Rippling」とは同一通貨の[トラストライン](index.md)を有する複数の接続当事者間での非可分なネット決済のプロセスを指しています。Ripplingはトークンの基幹的なプロセスです。Ripplingを利用すれば、同一イシュアーを信頼するユーザーは、そのイシュアーを受動的な仲介機関として発行済み残高を相互に送金できるようになります。Ripplingは、受動的かつ双方向の[通貨取引オーダー](../decentralized-exchange/offers.md)のようなもので、制限がなく、通貨コードが同一でイシュアーが異なる2つの通貨間の為替レートは1:1です。
 
-Ripplingは、支払[パス](paths.html)でのみ発生します。[XRP間の直接決済](direct-xrp-payments.html)にはRipplingは使用されません。
+Ripplingは、支払[パス](paths.md)でのみ発生します。[XRP間の直接決済](../../payment-types/direct-xrp-payments.md)にはRipplingは使用されません。
 
 発行アカウント以外のアカウントでは、Ripplingが望ましくない場合があります。Ripplingを使えば、他のユーザーが同一通貨のイシュアー間で債権債務を移動できるようになるためです。このため、アカウントの[DefaultRippleフラグ](#defaultrippleフラグ)を有効にして、アカウントがデフォルトでRipplingを有効にしない限り、デフォルトでは[NoRippleフラグ](#norippleフラグ)により着信トラストラインでのRipplingが無効になっています。
 
@@ -26,7 +26,7 @@ BobがCharlieに$3を支払いたい場合、BobはAliceに対して「Alice、�
 
 ![Charlie --（$13）-- Alice --（$17）-- Bob](img/noripple-02.png)
 
-2つのアドレスが、アドレス間のトラストライン上の残高を調整することで相互に支払うこのプロセスを「Rippling」と呼びます。これはXRP Ledgerの有用で重要な機能です。Ripplingは、同一の[通貨コード][]を使用するトラストラインによってアドレスがリンクされている場合に起こります。イシュアーが同一でなくてもかまいません。実際、大規模なチェーンでは常にイシュアーが変更されます。
+2つのアドレスが、アドレス間のトラストライン上の残高を調整することで相互に支払うこのプロセスを「Rippling」と呼びます。これはXRP Ledgerの有用で重要な機能です。Ripplingは、同一の[通貨コード](currency-formats.html#通貨コード)を使用するトラストラインによってアドレスがリンクされている場合に起こります。イシュアーが同一でなくてもかまいません。実際、大規模なチェーンでは常にイシュアーが変更されます。
 
 ## NoRippleフラグ
 
@@ -73,20 +73,20 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
 
 トラストライン上のNoRippleフラグは、トラストライン上のアドレスの残高がプラスまたはゼロの場合に限り、有効にできます。これにより、この機能を悪用してトラストラインの残高に示される債務を不履行にすることができなくなります。（ただし、アドレスを放棄すれば債務を不履行にできます。）
 
-[`rippled` API](http-websocket-apis.html)でNoRippleフラグを有効にするには、`tfSetNoRipple`フラグを設定した[TrustSetトランザクション][]を送信します。NoRippleを無効にする（Ripplingを有効にする）には、`tfClearNoRipple`フラグを使用します。
+[`rippled` API](../../../references/http-websocket-apis/index.md)でNoRippleフラグを有効にするには、`tfSetNoRipple`フラグを設定した[TrustSetトランザクション][]を送信します。NoRippleを無効にする（Ripplingを有効にする）には、`tfClearNoRipple`フラグを使用します。
 
 
 ### NoRippleステータスの確認
 
 相互に信頼し合っている2つのアカウントの場合、NoRippleフラグはアカウントごとに管理されます。
 
-[`rippled` API](http-websocket-apis.html)でアドレスに関連付けられているトラストラインを確認するには、[account_linesメソッド][]を使用します。各トラストラインの`no_ripple`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`no_ripple_peer`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
+[`rippled` API](../../../references/http-websocket-apis/index.md)でアドレスに関連付けられているトラストラインを確認するには、[account_linesメソッド][]を使用します。各トラストラインの`no_ripple`フィールドには、現在のアドレスがそのトラストラインに対してNoRippleフラグを有効にしているか否かが表示され、`no_ripple_peer`フィールドには、取引相手がNoRippleフラグを有効にしているか否かが表示されます。
 
 
 ## 関連項目
 
 - **コンセプト:**
-  - [パス](paths.html)
+  - [パス](paths.md)
 - **リファレンス:**
   - [account_linesメソッド][]
   - [account_infoメソッド][]
@@ -94,8 +94,3 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
   - [TrustSetトランザクション][]
   - [AccountRootのフラグ](accountroot.html#accountrootのフラグ)
   - [RippleState（トラストライン）のフラグ](ripplestate.html#ripplestateのフラグ)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

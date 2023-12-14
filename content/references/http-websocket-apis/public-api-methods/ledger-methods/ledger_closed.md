@@ -13,19 +13,18 @@ The `ledger_closed` method returns the unique identifiers of the most recently c
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 2,
    "command": "ledger_closed"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_closed",
@@ -34,15 +33,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: ledger_closed
 rippled ledger_closed
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_closed)
 
@@ -51,10 +51,9 @@ This method accepts no parameters.
 ## Response Format
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -66,9 +65,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -80,9 +79,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -92,10 +91,11 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
@@ -105,7 +105,3 @@ The response follows the [standard format][], with a successful result containin
 ## Possible Errors
 
 * Any of the [universal error types][].
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

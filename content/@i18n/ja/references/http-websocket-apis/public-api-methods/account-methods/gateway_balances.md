@@ -9,15 +9,14 @@ labels:
 # gateway_balances
 [[ソース]](https://github.com/XRPLF/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
-`gateway_balances`コマンドは、特定のアカウントから発行された残高の合計を計算します。オプションで、[運用アドレス](account-types.html)が保有する額を除外できます。[新規: rippled 0.28.2][]
+`gateway_balances`コマンドは、特定のアカウントから発行された残高の合計を計算します。オプションで、[運用アドレス](../../../../concepts/accounts/account-types.md)が保有する額を除外できます。[新規: rippled 0.28.2](https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE")
 
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "example_gateway_balances_1",
@@ -28,9 +27,9 @@ labels:
     "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "gateway_balances",
@@ -47,27 +46,27 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 要求には以下のパラメーターが含まれます。
 
 | `Field`        | 型                         | 説明                           |
 |:---------------|:---------------------------|:-------------------------------|
-| `account` | 文字列 | チェックする[アドレス][]。[発行アドレス](account-types.html)である必要があります。 |
+| `account` | 文字列 | チェックする[アドレス](basic-data-types.html#アドレス)。[発行アドレス](../../../../concepts/accounts/account-types.md)である必要があります。 |
 | `strict` | ブール値 | _（省略可）_ trueの場合は、アカウントパラメーターにアドレスまたは公開鍵だけを受け入れます。デフォルトではfalseです。 |
-| `hotwallet` | 文字列または配列 | _（省略可）_ 発行済み残高から除外する[運用アドレス](account-types.html)、またはそのようなアドレスの配列。 |
-| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーバージョンの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください） |
+| `hotwallet` | 文字列または配列 | _（省略可）_ 発行済み残高から除外する[運用アドレス](../../../../concepts/accounts/account-types.md)、またはそのようなアドレスの配列。 |
+| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
 
 ## 応答フォーマット
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 3,
@@ -133,9 +132,9 @@ labels:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 {
@@ -200,31 +199,28 @@ labels:
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **注記:** このメソッドのコマンドライン構文はありません。コマンドラインからアクセスするには[jsonメソッド][]を使用してください。
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`                | 型                        | 説明                    |
 |:-----------------------|:--------------------------|:------------------------|
-| `account` | 文字列 - [アドレス][] | 残高を発行したアカウントのアドレス。 |
+| `account` | 文字列 - [アドレス](basic-data-types.html#アドレス) | 残高を発行したアカウントのアドレス。 |
 | `obligations` | オブジェクト | （空の場合は省略）除外されていないアドレスに発行された額の合計。発行された価値の合計に対する通貨のマップとして示されます。 |
 | `balances` | オブジェク | _（空の場合は省略）_ 要求から`hotwallet`アドレスに発行された額。キーはアドレスであり、値はアドレスが保有する通貨額の配列です。 |
-| `assets` | オブジェクト | _（空の場合は省略）_ 他から発行された保有額の合計。推奨される構成では、[発行アドレス](account-types.html)の保有額はありません。 |
-| `ledger_hash` | 文字列 - [ハッシュ][] | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンの識別用ハッシュ。 |
-| `ledger_index` | 数値 - [レジャーインデックス][] | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 | |
-| `ledger_current_index` | 数値 - [レジャーインデックス][] | _（`ledger_current_index`が指定されている場合は省略）_ この情報の取得時に使用した、現在処理中のレジャーバージョンの[レジャーインデックス][]。 |
+| `assets` | オブジェクト | _（空の場合は省略）_ 他から発行された保有額の合計。推奨される構成では、[発行アドレス](../../../../concepts/accounts/account-types.md)の保有額はありません。 |
+| `ledger_hash` | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンの識別用ハッシュ。 |
+| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 | |
+| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略）_ この情報の取得時に使用した、現在処理中のレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `invalidHotWallet` - `hotwallet`フィールドに指定されている1つ以上のアドレスが、要求に指定されているアカウントが発行した通貨を保有しているアカウントの[アドレス][]ではありません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
+* `invalidHotWallet` - `hotwallet`フィールドに指定されている1つ以上のアドレスが、要求に指定されているアカウントが発行した通貨を保有しているアカウントの[アドレス](basic-data-types.html#アドレス)ではありません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

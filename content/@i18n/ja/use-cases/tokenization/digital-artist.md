@@ -17,13 +17,13 @@ NFTokenを作成すると、実際の物理的またはデジタル資産の実�
 
 [Xumm](https://xumm.app)などのアプリを使用してNFTokenを作成することができます。
 
-より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](mint-and-burn-nfts-using-javascript.html)をご覧ください。
+より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](../../../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md)をご覧ください。
 
 [![デジタルアーティストのフロー](img/nft-mkt-digital-artist.png "デジタルアーティストのフロー")](img/nft-mkt-digital-artist.png)
 
 ## 公開サーバを利用する
 
-開始当初は、トランザクションは比較的少ないでしょう。無料のXRP Ledger公開サーバの1つで作業することができます。ビジネスが成長するにつれて、増加する販売トラフィックを処理するために、独自のXRP Ledgerインスタンスを検討することができます。[パブリックサーバ](public-servers.html)をご覧ください。
+開始当初は、トランザクションは比較的少ないでしょう。無料のXRP Ledger公開サーバの1つで作業することができます。ビジネスが成長するにつれて、増加する販売トラフィックを処理するために、独自のXRP Ledgerインスタンスを検討することができます。[パブリックサーバ](../../tutorials/get-started/public-servers.md)をご覧ください。
 
 ## NFTの作成
 
@@ -34,16 +34,16 @@ NFTをミントして販売することで、マーケットプレイスを構�
 * <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](nftoken.html#transferfee)を参照してください。
 * NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 <!--[Add link to blog post about alternative NFT cache options.] -->
-* `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](nft-collections.html)をご覧ください。
+* `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](../../concepts/tokens/nfts/collections.md)をご覧ください。
 * 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](nftoken.html#nftoken-flags)および[Transferableフラグ](nftoken.html#nftoken-flags)をご覧ください。
 
-[NFTokenのミントとバーン](mint-and-burn-nfts-using-javascript.html)をご覧ください。
+[NFTokenのミントとバーン](../../../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md)をご覧ください。
 
 ## NFTの販売
 
-NFTを売却する場合は、売却オファーを作成する必要があります。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
+NFTを売却する場合は、売却オファーを作成する必要があります。[NFTokensの取引](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](transfer-nfts-using-javascript.html)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
 
 ### 準備金要件
 
@@ -57,13 +57,13 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 1. [NFTokenOffer](nft-reserve-requirements.html#nftokenoffer-reserve)
 2. NFToken page ([所有者準備金](nft-reserve-requirements.html#owner-reserve))
-3. 少額の[取引手数料](transfer-fees.html)
+3. 少額の[取引手数料](../../concepts/tokens/transfer-fees.md)
 
 ### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html))をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md))をご覧ください。
 
-他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
+他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 
 ## NFTのインデックス化
 
@@ -71,7 +71,7 @@ NFTを出品する際、オブジェクトのメタデータを使って分類�
 
 関連項目:
 
-- [Clioのセットアップ](install-clio-on-ubuntu.html)
+- [Clioのセットアップ](../../infrastructure/installation/install-clio-on-ubuntu.md)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 

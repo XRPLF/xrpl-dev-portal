@@ -9,9 +9,9 @@ labels:
 
 The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
-**Tip:** Rate limiting does not apply when the client is connected [as an admin](get-started-using-http-websocket-apis.html#admin-access).
+**Tip:** Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#admin-access).
 
-When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.html). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
+When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.md). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 
 If a client goes past the rate limit, the server disconnects that client and does not serve further requests from the client's API address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.
 
@@ -47,7 +47,7 @@ Server is overloaded
 ## Rate Per Request
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/resource/Fees.h "Source")
 
-The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method][] and [path_find method][] also count towards a client's usage rate.
+The server calculates a client's usage rate based on the number of requests made over time, and weighs different types of requests based on approximately how much work the server must do to serve them. Follow-up messages from the server for the [subscribe method](../public-api-methods/subscription-methods/subscribe.md) and [path_find method](../public-api-methods/path-and-order-book-methods/path_find.md) also count towards a client's usage rate.
 
 The usage rate drops off exponentially over time, so a client that does not make requests automatically has its access restored after a period of seconds to minutes.
 
@@ -55,15 +55,10 @@ The usage rate drops off exponentially over time, so a client that does not make
 
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
-    - [Software Ecosystem](software-ecosystem.html)
+    - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
-    - [Getting Started with XRP Ledger APIs](get-started-using-http-websocket-apis.html)
-    - [Troubleshooting rippled](troubleshoot-the-rippled-server.html)
+    - [Getting Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)
+    - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [Error Formatting](error-formatting.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [rippled API Reference](../index.md)
+        - [Error Formatting](error-formatting.md)

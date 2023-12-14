@@ -1,8 +1,11 @@
 ---
 html: signing-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # 署名メソッド
 
 以下のメソッドを使用して、トランザクションを扱うことができます。
+
+{% child-pages /%}

@@ -11,11 +11,11 @@ status: not_enabled
 
 _([AMM amendment][] :not_enabled:が必要です。)_
 
-[自動マーケットメーカー](automated-market-makers.html)（AMM）インスタンスに資金を預け、AMMの流動性プロバイダートークン（ _LPトークン_ ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。
+[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)（AMM）インスタンスに資金を預け、AMMの流動性プロバイダートークン（ _LPトークン_ ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。
 
-トランザクションが成功すると、LPトークンを保持するためにAMMアカウント(リミット0)に[トラストライン](trust-lines-and-issuing.html)が作成されます。
+トランザクションが成功すると、LPトークンを保持するためにAMMアカウント(リミット0)に[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)が作成されます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -40,16 +40,16 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 
-| フィールド      | JSONの型   | [内部の型][] | 必須? | 説明 |
+| フィールド      | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明 |
 |:--------------|:-----------|:-----------|:------|:------------|
 | `Asset`       | オブジェクト | STIssue    | はい   | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Asset2`      | オブジェクト | STIssue    | はい   | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
-| `Amount`      | [通貨額][]  | Amount     | いいえ | AMMに預ける1つの資産の量を指定します。存在する場合、これはAMMのプールにある資産の一つ（トークンまたはXRP）と一致する必要があります。 |
-| `Amount2`     | [通貨額][]  | Amount     | いいえ | AMMに追加する別の資産の量を指定します。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じ資産にすることはできません。 |
-| `EPrice`      | [通貨額][]  | Amount     | いいえ | 受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。 |
-| `LPTokenOut`  | [通貨額][]  | Amount     | いいえ | AMMのLPトークンの購入数量。 |
+| `Amount`      | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMに預ける1つの資産の量を指定します。存在する場合、これはAMMのプールにある資産の一つ（トークンまたはXRP）と一致する必要があります。 |
+| `Amount2`     | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMに追加する別の資産の量を指定します。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じ資産にすることはできません。 |
+| `EPrice`      | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | 受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。 |
+| `LPTokenOut`  | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMのLPトークンの購入数量。 |
 
 
 ### AMMDepositモード
@@ -84,7 +84,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
  ダブルアセット入金の場合、LPトークンを受け取る数は、以下の計算式で算出できます。
 
-{{ include_svg("img/amm-single-asset-deposit-formula.svg", "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)") }}
+[{% inline-svg file="/img/amm-single-asset-deposit-formula.svg" /%}](/img/amm-single-asset-deposit-formula.svg "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)")
 <!-- TODO: improve graphic -->
 
 
@@ -121,7 +121,7 @@ AMMDepositトランザクションは、以下のような[`Flags`フィール�
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード              | 説明                                          |
 |:------------------------|:---------------------------------------------|
@@ -129,16 +129,10 @@ AMMDepositトランザクションは、以下のような[`Flags`フィール�
 | `tecAMM_NOT_EMPTY`      | The transaction specified `tfTwoAssetIfEmpty`, but the AMM was not empty. |
 | `tecAMM_FAILED`    | 預け入れの条件が成立しませんでした。例えば、`EPrice`フィールドに指定された実効価格が低すぎる場合など。 |
 || `tecFROZEN`             | トランザクションは[凍結](freezes.html)されているトークンを預けようとしました。 |
-| `tecINSUF_RESERVE_LINE` | このトランザクションの送信者は、この処理による[準備金要件](reserves.html)の増加の対象であり、LPトークンを保持するための新しいトラストラインが必要で、そのための追加の所有者準備金分のXRPを保有していないためと思われます。 |
+| `tecINSUF_RESERVE_LINE` | このトランザクションの送信者は、この処理による[準備金要件](../../../../concepts/accounts/reserves.md)の増加の対象であり、LPトークンを保持するための新しいトラストラインが必要で、そのための追加の所有者準備金分のXRPを保有していないためと思われます。 |
 | `tecUNFUNDED_AMM`       | 送信者の残高が、指定された預け入れを行うのに十分な量ではありません。 |
 | `temBAD_AMOUNT`         | トランザクションで指定された金額が無効です。例えば、金額がマイナスなど。 |
 | `temBAD_FEE`            | トランザクションで指定された手数料の値が無効です。例えば、取引手数料が許容範囲外など。 |
 | `temMALFORMED`          | トランザクションで無効なフィールドの組み合わせが指定されました。詳細は、[AMMDepositモード](#ammdepositモード)を参照してください。 |
 | `terNO_ACCOUNT`         | リクエストで参照されたいずれかのアカウントが存在しません。 |
 | `terNO_AMM`             | このトランザクションの資産ペアの自動マーケットメーカーインスタンスが存在しません。 |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

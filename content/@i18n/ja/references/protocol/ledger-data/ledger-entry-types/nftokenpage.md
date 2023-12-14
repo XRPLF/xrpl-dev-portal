@@ -9,10 +9,10 @@ labels:
 
 `NFTokenPage` オブジェクトは、同じアカウントが所有する `NFToken` オブジェクトのコレクションを表します。一つのアカウントは複数の `NFTokenPage` 型のレジャーオブジェクトを持つことができ、それらは双方向リストを形成します。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -41,12 +41,12 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 ページのサイズを最小にし、ストレージを最適化するために、`Owner`フィールドは存在しません。なぜなら、それはオブジェクトのレジャー識別子の一部としてエンコードされているからです。
 
 
-## {{currentpage.name}} フィールド
+## {% $frontmatter.seo.title %} フィールド
 
 `NFTokenPage` オブジェクトは、以下の必須フィールドと任意フィールドを持つことができます。
 
 
-| 名前                | JSONの型   | [内部の型][] | 必須？ | 説明        |
+| 名前                | JSONの型   | [内部の型](../../binary-format.md) | 必須？ | 説明        |
 |:--------------------|:----------|:-----------|:----------|:------------|
 | `LedgerEntryType`   | 文字列    | UInt16      | はい   | レジャーオブジェクトのタイプを識別文字列です。予約されているレジャーの種類は、0x0050 です。|
 | `NextPageMin`       | 文字列    | Hash256     | いいえ | 次のページの位置情報(もしあれば)。このフィールドの詳細および使用方法については、NFTokenPageID の構築についての説明以降に記載しています。|
@@ -99,8 +99,3 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | 5 XRP               | 5 XRP     | 0.625 XRP  | 0.3125 XRP  | 0.15625 XRP | 0.07812 XRP |
 | 2 XRP               | 2 XRP     | 0.25 XRP   | 0.125 XRP   | 0.0625 XRP  | 0.03125 XRP |
 | 1 XRP               | 1 XRP     | 0.125 XRP  | 0.0625 XRP  | 0.03125 XRP | 0.01562 XRP |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

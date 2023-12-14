@@ -13,15 +13,14 @@ The `DirectoryNode` ledger entry type provides a list of links to other entries 
 
 There are two kinds of Directories:
 
-* **Owner directories** list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.html) or [`Offer`](offer.html) entries.
-* **Offer directories** list the offers available in the [decentralized exchange](decentralized-exchange.html). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
+* **Owner directories** list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.md) or [`Offer`](offer.md) entries.
+* **Offer directories** list the offers available in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Offer Directory*
-
+{% tab label="Offer Directory" %}
 ```json
 {
     "ExchangeRate": "4F069BA8FF484000",
@@ -38,9 +37,9 @@ There are two kinds of Directories:
     "index": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000"
 }
 ```
+{% /tab %}
 
-*Owner Directory*
-
+{% tab label="Owner Directory" %}
 ```json
 {
     "Flags": 0,
@@ -54,12 +53,13 @@ There are two kinds of Directories:
     "index": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-| Name                | JSON Type | [Internal Type][] | Required? | Description |
+| Name                | JSON Type | [Internal Type](../../binary-format.md) | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
 | `ExchangeRate`      | String    | UInt64            | No        | (Offer Directories only) **DEPRECATED**. Do not use. |
 | `Flags`             | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `DirectoryNode` objects. The value is always `0`. |
@@ -75,14 +75,14 @@ There are two kinds of Directories:
 | `TakerPaysIssuer`   | String    | Hash160           | No        | (Offer Directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for `{{currentpage.name}}` entries.
+There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-`{{currentpage.name}}` entries do not require a reserve.
+`{% $frontmatter.seo.title %}` entries do not require a reserve.
 
 
 ## Directory ID Formats
@@ -113,8 +113,3 @@ The lower 64 bits of an Offer Directory's ID represent the `TakerPays` amount di
 * The DirectoryNode space key (`0x0064`)
 * The ID of the root DirectoryNode
 * The page number of this object. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

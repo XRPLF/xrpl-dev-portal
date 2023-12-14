@@ -11,21 +11,21 @@ _私は認可Minterとして、トークン発行者のために合意された�
 
 トークン発行者の認可Minterとして動作することができます。この場合、あなたはNFTokenを所有しますが、ロイヤリティはNFTokenの発行者が受け取ります。そのNFTokenを売却する場合、最初の売却益はあなたに入ります。発行者と合意の上、初回売却額の一部または全部を発行者に支払うことができます。
 
-チュートリアル[認可Minterの割り当て](assign-an-authorized-minter-using-javascript.html)で詳しく説明されています。
+チュートリアル[認可Minterの割り当て](../../../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md)で詳しく説明されています。
 
 [![認可Minterのフロー](img/nft-mkt-auth-minter.png "認可Minterのフロー")](img/nft-mkt-auth-minter.png)
 
 ## rippledインスタンスのセットアップ
 
-取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](install-rippled.html)をご覧ください。
+取引量の多い本格的なマーケットプレイスサイトを立ち上げる場合、独自のXRP Ledgerサーバインスタンスを立ち上げるという判断が当然となります。[rippledのインストール](../../infrastructure/installation/index.md)をご覧ください。
 
 ## マーケットプレイスのセットアップ
 
-NFTを自分で設計するのではなく、NFTクリエイターと連携して認可Minterとなり、NFTの生成を代行することができます。これにより、NFTクリエイターは新しいNFTの生成に専念でき、あなたはNFTのミントと販売を担当することができます。[認可Minter](nftoken-authorized-minting.html)をご覧ください。
+NFTを自分で設計するのではなく、NFTクリエイターと連携して認可Minterとなり、NFTの生成を代行することができます。これにより、NFTクリエイターは新しいNFTの生成に専念でき、あなたはNFTのミントと販売を担当することができます。[認可Minter](../../concepts/tokens/nfts/authorizing-another-minter.md)をご覧ください。
 
-NFTの作成を終了すると、作成者は認可Minterの権限を取り消し、NFTに対する権限を取り戻すことができます。また、NFTの販売を行うマーケットプレイスにトークンを譲渡することもできます。あなたは、売りオファーと買いオファーのマッチングを行うブローカーとして機能することができます。[NFTオークションの実行](nftoken-auctions.html)を参照してください。
+NFTの作成を終了すると、作成者は認可Minterの権限を取り消し、NFTに対する権限を取り戻すことができます。また、NFTの販売を行うマーケットプレイスにトークンを譲渡することもできます。あなたは、売りオファーと買いオファーのマッチングを行うブローカーとして機能することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)を参照してください。
 
-他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](assign-an-authorized-minter-using-javascript.html)をご覧ください。
+他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](../../../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md)をご覧ください。
 
 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](nftoken.html#nftoken-flags)および[Transferableフラグ](nftoken.html#nftoken-flags)を参照してください。
 
@@ -35,18 +35,18 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 最も気になるであろう留意点：
 
-* [コレクションとしてNFTをミントする](nft-collections.html)
+* [コレクションとしてNFTをミントする](../../concepts/tokens/nfts/collections.md)
 TokenTaxonフィールドを使用して、特定のテーマや目的をもったNFTのセットを作成します。
-* [NFTの固定供給](nft-fixed-supply.html)
-また、「使い捨て」アカウントでNFTを作成し、別のアカウントで一定数のNFTを取得した後、ミントに使用した「使い捨て」アカウントを削除することで、作成したNFTの希少性を確保することができます。[NFTの固定供給](nft-fixed-supply.html)をご覧ください。
+* [NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)
+また、「使い捨て」アカウントでNFTを作成し、別のアカウントで一定数のNFTを取得した後、ミントに使用した「使い捨て」アカウントを削除することで、作成したNFTの希少性を確保することができます。[NFTの固定供給](../../concepts/tokens/nfts/guaranteeing-a-fixed-supply.md)をご覧ください。
 
 ## NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](transfer-nfts-using-javascript.html)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](nftoken-auctions.html)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](broker-an-nft-sale-using-javascript.html)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md)をご覧ください。
 
 ### 準備金要件
 
@@ -60,13 +60,13 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 1. [NFTokenOffer](nft-reserve-requirements.html#nftokenoffer-reserve)
 2. NFToken page ([所有者準備金](nft-reserve-requirements.html#owner-reserve))
-3. 少額の[取引手数料](transfer-fees.html)
+3. 少額の[取引手数料](../../concepts/tokens/transfer-fees.md)
 
 ### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](transfer-nfts-using-javascript.html)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
 
-他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](trade-in-the-decentralized-exchange.html#trade-in-the-decentralized-exchange)をご覧ください。
+他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 
 ## NFTのインデックス
 
@@ -74,12 +74,12 @@ NFTを出品する際、オブジェクトのメタデータを使って分類�
 
 関連項目:
 
-- [Clioのセットアップ](install-clio-on-ubuntu.html)
+- [Clioのセットアップ](../../infrastructure/installation/install-clio-on-ubuntu.md)
 - [XRPL Data API](https://api.xrpldata.com/docs/static/index.html#/)
 - [Bithomp](https://docs.bithomp.com/#nft-xls-20)
 
 <!--
-[Clio setup](install-clio-on-ubuntu.html)
+[Clio setup](../../infrastructure/installation/install-clio-on-ubuntu.md)
 
 [https://api.xrpldata.com/docs/static/index.html#/](https://api.xrpldata.com/docs/static/index.html#/)
 

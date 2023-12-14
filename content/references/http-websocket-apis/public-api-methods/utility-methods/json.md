@@ -12,25 +12,24 @@ The `json` method is a proxy to running other commands, and accepts the paramete
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 # Syntax: json method json_stanza
 rippled -q json ledger_closed '{}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "result" : {
@@ -40,11 +39,8 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with whichever fields are appropriate to the type of command made.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+The response follows the [standard format](../../api-conventions/response-formatting.md), with whichever fields are appropriate to the type of command made.

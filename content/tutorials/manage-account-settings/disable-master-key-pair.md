@@ -8,9 +8,9 @@ labels:
 ---
 # Disable Master Key Pair
 
-This page describes how to disable the [master key pair](cryptographic-keys.html) that is mathematically associated with an [account](accounts.html)'s address. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](multi-signing.html) the _only_ way to submit transactions from your account.
+This page describes how to disable the [master key pair](../../concepts/accounts/cryptographic-keys.md) that is mathematically associated with an [account](../../concepts/accounts/accounts.md)'s address. You should do this if your account's master key pair may have been compromised, or if you want to make [multi-signing](../../concepts/accounts/multi-signing.md) the _only_ way to submit transactions from your account.
 
-**Warning:** Disabling the master key pair removes one method of [authorizing transactions](transactions.html#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.html), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.
+**Warning:** Disabling the master key pair removes one method of [authorizing transactions](../../concepts/transactions/index.md#authorizing-transactions). You should be sure you can use one of the other ways of authorizing transactions, such as with a regular key or by multi-signing, before you disable the master key pair. (For example, if you [assigned a regular key pair](assign-a-regular-key-pair.md), make sure that you can successfully submit transactions with that regular key.) Due to the decentralized nature of the XRP Ledger, no one can restore access to your account if you cannot use the remaining ways of authorizing transactions.
 
 **To disable the master key pair, you must use the master key pair.** However, you can _re-enable_ the master key pair using any other method of authorizing transactions.
 
@@ -18,12 +18,12 @@ This page describes how to disable the [master key pair](cryptographic-keys.html
 
 To disable the master key pair for an account, you must meet the following prerequisites:
 
-- You must have an XRP Ledger [account](accounts.html) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](secure-signing.html). Two common ways this can work are:
-    - You know the account's master seed value. A seed value is commonly represented as a [base58][] value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
-    - Or, you use a [dedicated signing device](secure-signing.html#use-a-dedicated-signing-device) that stores the seed value securely, so you don't need to know it.
+- You must have an XRP Ledger [account](../../concepts/accounts/accounts.md) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](../../concepts/transactions/secure-signing.md). Two common ways this can work are:
+    - You know the account's master seed value. A seed value is commonly represented as a [base58](base58-encodings.html) value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
+    - Or, you use a [dedicated signing device](../../concepts/transactions/secure-signing.md#use-a-dedicated-signing-device) that stores the seed value securely, so you don't need to know it.
 - Your account must have at least one method of authorizing transactions other than the master key pair. In other words, you must do one or both of the following:
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html).
-    - [Set Up Multi-Signing](set-up-multi-signing.html).
+    - [Assign a Regular Key Pair](assign-a-regular-key-pair.md).
+    - [Set Up Multi-Signing](set-up-multi-signing.md).
 
 ## Steps
 
@@ -31,7 +31,7 @@ To disable the master key pair for an account, you must meet the following prere
 
 ### {{n.next()}}. Construct Transaction JSON
 
-Prepare an [AccountSet transaction][] from your account with the field `"SetValue": 4`. This is the value for the AccountSet flag "Disable Master" (`asfDisableMaster`). The only other required fields for this transaction are the required [common fields](transaction-common-fields.html). For example, if you leave off the [auto-fillable fields](transaction-common-fields.html#auto-fillable-fields), the following transaction instructions are enough:
+Prepare an [AccountSet transaction](../../references/protocol/transactions/types/accountset.md) from your account with the field `"SetValue": 4`. This is the value for the AccountSet flag "Disable Master" (`asfDisableMaster`). The only other required fields for this transaction are the required [common fields](../../references/protocol/transactions/common-fields.md). For example, if you leave off the [auto-fillable fields](../../references/protocol/transactions/common-fields.md#auto-fillable-fields), the following transaction instructions are enough:
 
 ```json
 {
@@ -41,20 +41,19 @@ Prepare an [AccountSet transaction][] from your account with the field `"SetValu
 }
 ```
 
-**Tip:** It is strongly recommended to also provide the `LastLedgerSequence` field so that you can [reliably get the outcome of the transaction in a predictable amount of time](reliable-transaction-submission.html).
+**Tip:** It is strongly recommended to also provide the `LastLedgerSequence` field so that you can [reliably get the outcome of the transaction in a predictable amount of time](../../concepts/transactions/reliable-transaction-submission.md).
 
 ### {{n.next()}}. Sign Transaction
 
 You must use the **master key pair** to sign the transaction.
 
-**Warning:** Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](secure-signing.html#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](secure-signing.html).
+**Warning:** Do not submit your secret to a server you don't control, and do not send it over the network unencrypted. These examples assume you are using a [local `rippled` server](../../concepts/transactions/secure-signing.md#run-rippled-locally). You should adapt these instructions if you are using another [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 #### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "sign",
@@ -66,9 +65,9 @@ You must use the **master key pair** to sign the transaction.
   "secret": "s████████████████████████████"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "sign",
@@ -84,22 +83,22 @@ You must use the **master key pair** to sign the transaction.
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 $ rippled sign s████████████████████████████ '{"TransactionType":"AccountSet",
     "Account":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "SetFlag":4}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 #### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -121,9 +120,9 @@ $ rippled sign s█████████████████████�
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -145,9 +144,9 @@ $ rippled sign s█████████████████████�
 }
 
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:13:24.783570867 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -171,8 +170,9 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 Look for `"status": "success"` to indicate that the server successfully signed the transaction. If you get `"status": "error"` instead, check the `error` and `error_message` fields for more information. Some common possibilities include:
 
@@ -187,19 +187,18 @@ Submit the signed transaction blob from the previous step to the XRP Ledger.
 
 #### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "submit",
     "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"submit",
@@ -210,21 +209,21 @@ Submit the signed transaction blob from the previous step to the XRP Ledger.
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```
 $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 #### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -248,9 +247,9 @@ $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103A
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -273,9 +272,9 @@ $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103A
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:25:49.361743460 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -301,19 +300,20 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account does not have another method of authorizing transactions currently enabled. You must [assign a regular key pair](assign-a-regular-key-pair.html) or [set up multi-signing](set-up-multi-signing.html), then try again to disable the master key pair.
+If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account does not have another method of authorizing transactions currently enabled. You must [assign a regular key pair](assign-a-regular-key-pair.md) or [set up multi-signing](set-up-multi-signing.md), then try again to disable the master key pair.
 
 
 ### {{n.next()}}. Wait for validation
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ### {{n.next()}}. Confirm Account Flags
 
-Confirm that your account's master key is disabled using the [account_info method][]. Be sure to specify the following parameters:
+Confirm that your account's master key is disabled using the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md). Be sure to specify the following parameters:
 
 | Field          | Value                                                       |
 |:---------------|:------------------------------------------------------------|
@@ -322,10 +322,9 @@ Confirm that your account's master key is disabled using the [account_info metho
 
 #### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "account_info",
@@ -333,9 +332,9 @@ Confirm that your account's master key is disabled using the [account_info metho
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_info",
@@ -345,22 +344,22 @@ Confirm that your account's master key is disabled using the [account_info metho
     }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -390,9 +389,9 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -421,9 +420,9 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:41:38.642710734 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -455,18 +454,18 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 In the response's `account_data` object, compare the `Flags` field with the `lsfDisableMaster` flag value (`0x00100000` in hex, or `1048576` in decimal) using bitwise-AND (the `&` operator in most common programming languages).
 
 Example code:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JavaScript*
-
+{% tab label="JavaScript" %}
 ```js
 // Assuming the JSON-RPC response above is saved as account_info_response
 const lsfDisableMaster = 0x00100000;
@@ -477,9 +476,9 @@ if ((lsfDisableMaster & acct_flags) === lsfDisableMaster) {
   console.log("Master key pair is available for use");
 }
 ```
+{% /tab %}
 
-*Python*
-
+{% tab label="Python" %}
 ```python
 # Assuming the JSON-RPC response above is parsed from JSON
 #  and saved as the variable account_info_response
@@ -490,19 +489,13 @@ if lsfDisableMaster & acct_flags == lsfDisableMaster:
 else:
     print("Master key pair is available for use")
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 This operation has only two possible outcomes:
 
 - A nonzero result, equal to the `lsfDisableMaster` value, indicates **the master key has been successfully disabled**.
 - A zero result indicates the account's master key is not disabled.
 
-If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method][]) and it should have the result code `tesSUCCESS`. If you see any other [result code](transaction-results.html), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md)) and it should have the result code `tesSUCCESS`. If you see any other [result code](../../references/protocol/transactions/transaction-results/transaction-results.md), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.

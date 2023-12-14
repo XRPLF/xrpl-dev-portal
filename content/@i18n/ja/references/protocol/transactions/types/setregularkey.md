@@ -13,7 +13,7 @@ labels:
 
 アカウントを保護するには、レギュラーキーペアをアカウントに割り当て、トランザクションに署名するときに、可能な場合には常にマスターキーペアの代わりにレギュラーキーペアを使用します。レギュラーキーペアが漏えいしても、マスターキーペアが漏えいしていない場合は、`SetRegularKey`トランザクションを使用してアカウントの制御を取り戻すことができます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -25,22 +25,17 @@ labels:
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 <!--{# fix md highlighting_ #}-->
 
-| フィールド    | JSONの型  | [内部の型][]       | 説明                          |
+| フィールド    | JSONの型  | [内部の型](../../binary-format.md)       | 説明                          |
 |:-------------|:----------|:------------------|:------------------------------|
-| `RegularKey` | 文字列 | AccountID | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス][]。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
+| `RegularKey` | 文字列 | AccountID | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス](basic-data-types.html#アドレス)。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
 
 ## 関連項目
 
-レギュラーキーペアとマスターキーペアの詳細は、[暗号鍵](cryptographic-keys.html)を参照してください。
+レギュラーキーペアとマスターキーペアの詳細は、[暗号鍵](../../../../concepts/accounts/cryptographic-keys.md)を参照してください。
 
-アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](assign-a-regular-key-pair.html)を参照してください。
+アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](../../../../tutorials/manage-account-settings/assign-a-regular-key-pair.md)を参照してください。
 
-セキュリティを強化するために[マルチシグ](multi-signing.html)を使用できますが、マルチシグを使用する場合には[トランザクションコスト][]および[準備金](reserves.html)に追加のXRPが必要となります。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+セキュリティを強化するために[マルチシグ](../../../../concepts/accounts/multi-signing.md)を使用できますが、マルチシグを使用する場合には[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)および[準備金](../../../../concepts/accounts/reserves.md)に追加のXRPが必要となります。

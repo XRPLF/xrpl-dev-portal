@@ -18,7 +18,7 @@ Having trouble getting your server started? See [rippled Server Won't Start](ser
 
 `rippled` should connect to the XRP Ledger with the default configuration. However, you can change your settings by editing the `rippled.cfg` file. For recommendations about configuration settings, see [Capacity Planning](capacity-planning.html).
 
-{% include '_snippets/conf-file-location.md' %}
+{% partial file="/_snippets/conf-file-location.md" /%}
 
 See [the `rippled` GitHub repository](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) for a description of all configuration options.
 

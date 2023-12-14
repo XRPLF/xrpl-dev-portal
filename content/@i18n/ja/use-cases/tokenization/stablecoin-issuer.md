@@ -30,7 +30,7 @@ _金融の専門家として、私はステーブルコインを発行し、ス�
 
 ![ステーブルコイン](img/uc-stablecoin-stable-coin.png)
 
-XRPLで作成できる通貨トークンには、法定通貨担保、暗号資産担保、コモディティ担保、金融商品担保、非担保の5つの一般的なタイプがあります。[ステーブルコイン](stablecoins.html)をご覧ください。
+XRPLで作成できる通貨トークンには、法定通貨担保、暗号資産担保、コモディティ担保、金融商品担保、非担保の5つの一般的なタイプがあります。[ステーブルコイン](../../concepts/tokens/fungible-tokens/stablecoins/index.md)をご覧ください。
 
 ## 自身のノードサービスを設定する
 
@@ -51,9 +51,9 @@ XRPLで作成できる通貨トークンには、法定通貨担保、暗号資�
 
 新しいステーブルコインを発行する前に、最初にコインを発行すると変更不可能とする設定を行う必要があります。
 
-[ステーブルコインの設定](stablecoin-settings.html)をご覧ください。
+[ステーブルコインの設定](../../concepts/tokens/fungible-tokens/stablecoins/settings.md)をご覧ください。
 
-設定機能の詳細については[ステーブルコイン発行者の設定](stablecoin-configuration.html)をご覧ください。
+設定機能の詳細については[ステーブルコイン発行者の設定](../../concepts/tokens/fungible-tokens/stablecoins/configuration.md)をご覧ください。
 
 ## 資産の情報
 
@@ -79,7 +79,7 @@ _Currencies_ テーブルを使って、あなたのステーブルコインに�
 
 複数のキーと署名の重みを使用することで、発行者と資産保有者は、異なるユーザとシステム間で、アカウントのトランザクションを承認するための信頼と責任を分散することができます。これにより、内部プロセスやコントロールを使用して署名を管理する柔軟性が生まれます。
 
-[マルチシグ](multi-signing.html)をご覧ください。
+[マルチシグ](../../concepts/accounts/multi-signing.md)をご覧ください。
 
 <!--
 ### Omnibus Wallets
@@ -111,9 +111,9 @@ How to transparently report the current number of stablecoins held in reserve.
 
 その他の考慮事項については、こちらをご覧ください、
 
-- [ステーブルコイン発行者 - 注意事項](stablecoin-precautions.html)
-- [ステーブルコイン発行者 - コンプライアンス指針](stablecoin-compliance-guidelines.html)
-- [代替可能トークンの発行](issue-a-fungible-token.html)
+- [ステーブルコイン発行者 - 注意事項](../../concepts/tokens/fungible-tokens/stablecoins/precautions.md)
+- [ステーブルコイン発行者 - コンプライアンス指針](../../concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md)
+- [代替可能トークンの発行](../../../../tutorials/use-tokens/issue-a-fungible-token.md)
 
 ### トラストラインの作成
 
@@ -135,7 +135,7 @@ How to transparently report the current number of stablecoins held in reserve.
 
 認可トラストライン機能を使用するには、発行アカウントで`Require Auth`フラグを有効にします。この設定を有効にしている間、他のアカウントはあなたが発行したトークンを保持することができます。
 
-[認可トラストライン](authorized-trust-lines.html)をご覧ください。
+[認可トラストライン](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)をご覧ください。
 
 
 ### トラストラインのFreeze
@@ -144,7 +144,7 @@ XRP Ledgerでトークンを発行する場合、_No Freeze_ 設定を有効に�
 
 _No Freeze_ 設定を有効にしない場合、アカウントが疑わしい動きを示したり、金融機関の利用規約に違反したりした場合、問題を解決する間、トラストラインを凍結する選択肢があります。
 
-[トラストラインの凍結](freezes.html)をご覧ください。
+[トラストラインの凍結](../../concepts/tokens/fungible-tokens/freezes.md)をご覧ください。
 
 
 ### Global Freeze
@@ -153,7 +153,7 @@ _No Freeze_ 設定を有効にしない場合、アカウントが疑わしい�
 
 ![Global Freeze](img/uc-stablecoin-global-freeze.png)
 
-[Global Freezeの実行](enact-global-freeze.html)をご覧ください。
+[Global Freezeの実行](../../../../tutorials/use-tokens/enact-global-freeze.md)をご覧ください。
 
 
 ### Clawback
@@ -162,7 +162,7 @@ _([Clawback amendment][] :not_enabled: が必要です。)_
 
 Clawbackは、ステーブルコインの配布を開始する前に選択できるオプション設定です。規制上の目的から、発行者の中には発行されたトークンをアカウントに配布した後に回収する能力を持たなければならない場合があります。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を回収することができます。
 
-[Clawback](clawback.html)をご覧ください。
+[Clawback](../../references/protocol/transactions/types/clawback.md)をご覧ください。
 
 ![Clawback](img/uc-stablecoin-clawback.png)
 
@@ -172,7 +172,7 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 * トランザクションに`delivered_amount`フィールドがあるか確認してください。もし存在すれば、そのフィールドは`Destination`アドレスに実際にいくら着金したかを示します。
 * xrpl.jsでは、[`xrpl.getBalanceChanges()`メソッド](https://js.xrpl.org/modules.html#getBalanceChanges)を使って、各アドレスがいくら受け取ったかを見ることができます。場合によっては、これを複数のトラストラインに分けることもできます。
 * 
-[Partial Payments](partial-payments.html)をご覧ください。
+[Partial Payments](../../concepts/payment-types/partial-payments.md)をご覧ください。
 
 ### バーン
 
@@ -182,7 +182,7 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 
 **注意:** ブラックホール済アカウントはトランザクションを送信する手段を持たないため、その後アカウントに関する設定を更新したり、メンテナンスを行ったりすることはできません！
 
-[マスターキーペアの無効化](disable-master-key-pair.html)をご覧ください。
+[マスターキーペアの無効化](../../tutorials/manage-account-settings/disable-master-key-pair.md)をご覧ください。
 
 ### 信頼できるトランザクションの送信
 
@@ -194,10 +194,10 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 トランザクションを確実に送信するには、以下のガイドラインに従ってください。
 
 * トランザクションを送信する前にトランザクションの内容を永続化すること。
-* `LastLedgerSequence`パラメーターを使用すること。(多くの[クライアントライブラリ](client-libraries.html)はデフォルトでそうなっています)。
-* 現在の[レジャーインデックス][]がトランザクションの`LastLedgerSequence`パラメータ以下である検証済みのレジャーにトランザクションが表示されていない場合、トランザクションを再送信してください。
+* `LastLedgerSequence`パラメーターを使用すること。(多くの[クライアントライブラリ](../../references/client-libraries.md)はデフォルトでそうなっています)。
+* 現在の[レジャーインデックス](basic-data-types.html#レジャーインデックス)がトランザクションの`LastLedgerSequence`パラメータ以下である検証済みのレジャーにトランザクションが表示されていない場合、トランザクションを再送信してください。
 
-詳しくは[信頼できるトランザクションの送信](reliable-transaction-submission.html)をご覧ください。
+詳しくは[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。
 
 ### XRPLネイティブDEXへのリスト
 
@@ -211,9 +211,4 @@ _([AMM amendment][] :not_enabled: が必要です。)_
 
 どの資産ペアに対しても、レジャーには最大1つのAMMが存在します。資産ペアのAMMがまだ存在しない場合は、新しいトークンでAMMを作成するか、別の既存のAMMに預けることができます。AMMに資産を預ける人は、流動性提供者(LP)と呼ばれ、AMMからLPトークンを受け取ります。
 
-[自動マーケットメーカー](automated-market-makers.html)をご覧ください。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+[自動マーケットメーカー](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)をご覧ください。

@@ -13,19 +13,18 @@ label:
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 2,
    "command": "ledger_closed"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_closed",
@@ -34,15 +33,16 @@ label:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 #Syntax: ledger_closed
 rippled ledger_closed
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#ledger_closed)
 
@@ -51,10 +51,9 @@ rippled ledger_closed
 ## 応答フォーマット
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -66,9 +65,9 @@ rippled ledger_closed
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -80,20 +79,17 @@ rippled ledger_closed
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`        | 型               | 説明                                     |
 |:---------------|:-----------------|:-----------------------------------------|
-| `ledger_hash` | 文字列 | このレジャーバージョンの一意の[ハッシュ][]（16進数）。 |
-| `ledger_index` | 符号なし整数 | このレジャーバージョンの[レジャーインデックス][]。 |
+| `ledger_hash` | 文字列 | このレジャーバージョンの一意の[ハッシュ](basic-data-types.html#ハッシュ)（16進数）。 |
+| `ledger_index` | 符号なし整数 | このレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。

@@ -8,16 +8,15 @@ labels:
 # account_offers
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
-The `account_offers` method retrieves a list of [offers](offers.html) made by a given [account](accounts.html) that are outstanding as of a particular [ledger version](ledgers.html).
+The `account_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) made by a given [account](../../../../concepts/accounts/accounts.md) that are outstanding as of a particular [ledger version](../../../../concepts/ledgers/index.md).
 
 ## Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 9,
@@ -25,9 +24,9 @@ An example of the request format:
   "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_offers",
@@ -38,15 +37,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: account_offers account [ledger_index]
 rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#account_offers)
 
@@ -58,7 +58,7 @@ A request can include the following parameters:
 | `ledger_hash`  | [Hash][]             | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | [Ledger Index][]     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`        | Number               | No        | Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. Positive values outside this range are replaced with the closest valid option.The default is 200. |
-| `marker`       | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 The following parameters are deprecated should not be provided: `ledger`, `strict`.
 
@@ -66,10 +66,9 @@ The following parameters are deprecated should not be provided: `ledger`, `stric
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 9,
@@ -107,9 +106,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -157,9 +156,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -183,10 +182,11 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`                | Type                      | Description             |
 |:-----------------------|:--------------------------|:------------------------|
@@ -195,7 +195,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current in-progress ledger version, which was used when retrieving this data. |
 | `ledger_index`         | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
 | `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data. |
-| `marker`               | [Marker][]                | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
+| `marker`               | [Marker](../../api-conventions/markers-and-pagination.md)                | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
 
 
 Each offer object contains the following fields:
@@ -203,11 +203,11 @@ Each offer object contains the following fields:
 | `Field`      | Type             | Description                                |
 |:-------------|:-----------------|:-------------------------------------------|
 | `flags`      | Unsigned integer | Options set for this offer entry as bit-flags. |
-| `seq`        | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](basic-data-types.html#account-sequence) are relative to accounts.) |
+| `seq`        | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](../../../protocol/data-types/basic-data-types.md#account-sequence) are relative to accounts.) |
 | `taker_gets` | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
 | `taker_pays` | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
-| `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0][] |
-| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as the number of [seconds since the Ripple Epoch][]. See also: [Offer Expiration](offers.html#offer-expiration). [New in: rippled 0.30.1][] |
+| `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0](https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE") |
+| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as the number of [seconds since the Ripple Epoch][]. See also: [Offer Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration). [New in: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 
 ## Possible Errors
 
@@ -216,7 +216,3 @@ Each offer object contains the following fields:
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - The `marker` field provided is incorrect.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

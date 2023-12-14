@@ -9,14 +9,14 @@ labels:
 # submit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Submit.cpp "Source")
 
-The `submit` method applies a [transaction](transaction-formats.html) and sends it to the network to be confirmed and included in future ledgers.
+The `submit` method applies a [transaction](../../../protocol/transactions/index.md) and sends it to the network to be confirmed and included in future ledgers.
 
 This command has two modes:
 
 * Submit-only mode takes a signed, serialized transaction as a binary blob, and submits it to the network as-is. Since signed transaction objects are immutable, no part of the transaction can be modified or automatically filled in after submission.
-* Sign-and-submit mode takes a JSON-formatted Transaction object, completes and signs the transaction in the same manner as the [sign method][], and then submits the signed transaction. We recommend only using this mode for testing and development.
+* Sign-and-submit mode takes a JSON-formatted Transaction object, completes and signs the transaction in the same manner as the [sign method](../../admin-api-methods/signing-methods/sign.md), and then submits the signed transaction. We recommend only using this mode for testing and development.
 
-To send a transaction as robustly as possible, you should construct and [sign][sign method] it in advance, persist it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [tx method][] command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction.
+To send a transaction as robustly as possible, you should construct and [sign][sign method] it in advance, persist it somewhere that you can access even after a power outage, then `submit` it as a `tx_blob`. After submission, monitor the network with the [tx method](tx.md) command to see if the transaction was successfully applied; if a restart or other problem occurs, you can safely re-submit the `tx_blob` transaction: it won't be applied twice since it has the same sequence number as the old transaction.
 
 ## Submit-Only Mode
 
@@ -24,15 +24,14 @@ A submit-only request includes the following parameters:
 
 | `Field`     | Type    | Required? | Description                                          |
 |:------------|:--------|:----------|:-----------------------------------------------------|
-| `tx_blob`   | String  | Yes       | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](multi-signing.html). |
+| `tx_blob`   | String  | Yes       | Hex representation of the signed transaction to submit. This can be a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md). |
 | `fail_hard` | Boolean | No        | If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. |
 
 ### Request Format
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 3,
@@ -40,9 +39,9 @@ A submit-only request includes the following parameters:
     "tx_blob": "1200002280000000240000001E61D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000B732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210095D23D8AF107DF50651F266259CC7139D0CD0C64ABBA3A958156352A0D95A21E02207FCF9B77D7510380E49FF250C21B57169E14E9B4ACFD314CEDC79DDD0A38B8A681144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "submit",
@@ -53,55 +52,55 @@ A submit-only request includes the following parameters:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: submit tx_blob
 submit 1200002280000000240000000361D4838D7EA4C6800000000000000000000000000055534400000000004B4E9C06F24296074F7BC48F92A97916C6DC5EA968400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB74473045022100D184EB4AE5956FF600E7536EE459345C7BBCF097A84CC61A93B9AF7197EDB98702201CEA8009B7BEEBAA2AACC0359B41C427C1C5B550A4CA4B80CF2174AF2D6D5DCE81144B4E9C06F24296074F7BC48F92A97916C6DC5EA983143E9D4A2B8AA0780F682D136F7A56D6724EF53754
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#submit)
 
 
 ## Sign-and-Submit Mode
 
-This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](multi-signing.html).
+This mode signs a transaction and immediately submits it. This mode is intended to be used for testing. You cannot use this mode for [multi-signed transactions](../../../../concepts/accounts/multi-signing.md).
 
-_By default, sign-and-submit mode is [admin-only](admin-api-methods.html)._ It can be used as a public method if the server has [enabled public signing](enable-public-signing.html).
+_By default, sign-and-submit mode is [admin-only](../../admin-api-methods/index.md)._ It can be used as a public method if the server has [enabled public signing](../../../../infrastructure/configuration/enable-public-signing.md).
 
 You can provide the secret key used to sign the transaction in the following ways:
 
-* Provide a `secret` value and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58][] seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide a `secret` value and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58](base58-encodings.html) seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
 
 The request includes the following parameters:
 
 | `Field`        | Type    | Description                                       |
 |:---------------|:--------|:--------------------------------------------------|
-| `tx_json`      | Object  | [Transaction definition](transaction-formats.html) in JSON format, optionally omitting any auto-fillable fields. |
+| `tx_json`      | Object  | [Transaction definition](../../../protocol/transactions/index.md) in JSON format, optionally omitting any auto-fillable fields. |
 | `secret`       | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58][] format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| `seed`         | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58](base58-encodings.html) format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | `passphrase`   | String  | _(Optional)_ Secret key of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
 | `key_type`     | String  | _(Optional)_ Type of cryptographic key provided in this request. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. **Caution:** Ed25519 support is experimental. |
-| `fail_hard`    | Boolean | _(Optional)_ If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. [Updated in: rippled 1.5.0][] |
+| `fail_hard`    | Boolean | _(Optional)_ If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. [Updated in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
 | `offline`      | Boolean | _(Optional)_ If `true`, when constructing the transaction, do not try to automatically fill in or validate values. The default is `false`. |
-| `build_path`   | Boolean | _(Optional)_ If this field is provided, the server [auto-fills](transaction-common-fields.html#auto-fillable-fields) the `Paths` field of a [Payment transaction][] before signing. You must omit this field if the transaction is a [direct XRP payment](direct-xrp-payments.html) or if it is not a Payment-type transaction. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. ([Issue #3272](https://github.com/XRPLF/rippled/issues/3272)) |
-| `fee_mult_max` | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](transaction-common-fields.html#auto-fillable-fields) would be greater than the [reference transaction cost](transaction-cost.html#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `10`. |
-| `fee_div_max`  | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](transaction-common-fields.html#auto-fillable-fields) would be greater than the [reference transaction cost](transaction-cost.html#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `1`. [New in: rippled 0.30.1][] |
+| `build_path`   | Boolean | _(Optional)_ If this field is provided, the server [auto-fills](../../../protocol/transactions/common-fields.md#auto-fillable-fields) the `Paths` field of a [Payment transaction](../../../protocol/transactions/types/payment.md) before signing. You must omit this field if the transaction is a [direct XRP payment](../../../../concepts/payment-types/direct-xrp-payments.md) or if it is not a Payment-type transaction. **Caution:** The server looks for the presence or absence of this field, not its value. This behavior may change. ([Issue #3272](https://github.com/XRPLF/rippled/issues/3272)) |
+| `fee_mult_max` | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](../../../protocol/transactions/common-fields.md#auto-fillable-fields) would be greater than the [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `10`. |
+| `fee_div_max`  | Integer | _(Optional)_ Sign-and-submit fails with the error `rpcHIGH_FEE` if the [auto-filled `Fee` value](../../../protocol/transactions/common-fields.md#auto-fillable-fields) would be greater than the [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#special-transaction-costs) × `fee_mult_max` ÷ `fee_div_max`. This field has no effect if you explicitly specify the `Fee` field of the transaction. The default is `1`. [New in: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 
-See the [sign method][] for detailed information on how the server automatically fills in certain fields.
+See the [sign method](../../admin-api-methods/signing-methods/sign.md) for detailed information on how the server automatically fills in certain fields.
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -121,9 +120,9 @@ An example of the request format:
    "fee_mult_max": 1000
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "submit",
@@ -146,15 +145,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: submit secret json [offline]
 rippled submit s████████████████████████████ '{"Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Amount": { "currency": "USD", "issuer": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "value": "1" }, "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "TransactionType": "Payment", "Fee": "10000"}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#submit)
 
@@ -162,10 +162,9 @@ rippled submit s█████████████████████�
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -204,9 +203,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -243,9 +242,9 @@ An example of a successful response:
     "validated_ledger_index" : 21184416
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -285,29 +284,30 @@ Connecting to 127.0.0.1:5005
     "validated_ledger_index" : 21184416
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
-| `engine_result`         | String  | Text [result code](transaction-results.html) indicating the preliminary result of the transaction, for example `tesSUCCESS` |
-| `engine_result_code`    | Integer | Numeric version of the [result code](transaction-results.html). **Not recommended.** |
+| `engine_result`         | String  | Text [result code](../../../protocol/transactions/transaction-results/transaction-results.md) indicating the preliminary result of the transaction, for example `tesSUCCESS` |
+| `engine_result_code`    | Integer | Numeric version of the [result code](../../../protocol/transactions/transaction-results/transaction-results.md). **Not recommended.** |
 | `engine_result_message` | String  | Human-readable explanation of the transaction's preliminary result |
 | `tx_blob`               | String  | The complete transaction in hex string format |
 | `tx_json`               | Object  | The complete transaction in JSON format  |
-| `accepted`              | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was applied, queued, broadcast, or kept for later. The value `false` indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again and have not already submitted it another time. [New in: rippled 1.5.0][] |
-| `account_sequence_available` | Number | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] available for the sending account after all pending and [queued](transaction-queue.html) transactions. [New in: rippled 1.5.0][] |
-| `account_sequence_next` | number  | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] for the sending account after all transactions that have been provisionally applied, but not transactions in the [queue](transaction-queue.html). [New in: rippled 1.5.0][] |
-| `applied`               | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. [New in: rippled 1.5.0][] |
-| `broadcast`             | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode][], the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0][] |
-| `kept`                  | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was kept to be retried later. [New in: rippled 1.5.0][] |
-| `queued`                | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates the transaction was put in the [Transaction Queue](transaction-queue.html), which means it is likely to be included in a future ledger version. [New in: rippled 1.5.0][] |
-| `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](transaction-cost.html#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](transaction-queue.html). [New in: rippled 1.5.0][] |
+| `accepted`              | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was applied, queued, broadcast, or kept for later. The value `false` indicates that none of those happened, so the transaction cannot possibly succeed as long as you do not submit it again and have not already submitted it another time. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `account_sequence_available` | Number | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] available for the sending account after all pending and [queued](../../../../concepts/transactions/transaction-queue.md) transactions. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `account_sequence_next` | number  | _(Omitted in sign-and-submit mode)_ The next [Sequence Number][] for the sending account after all transactions that have been provisionally applied, but not transactions in the [queue](../../../../concepts/transactions/transaction-queue.md). [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `applied`               | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that this transaction was applied to the open ledger. In this case, the transaction is likely, but not guaranteed, to be validated in the next ledger version. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `broadcast`             | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates this transaction was broadcast to peer servers in the peer-to-peer XRP Ledger network. (Note: if the server has no peers, such as in [stand-alone mode][], the server uses the value `true` for cases where it _would_ have broadcast the transaction.) The value `false` indicates the transaction was not broadcast to any other servers. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `kept`                  | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates that the transaction was kept to be retried later. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `queued`                | Boolean | _(Omitted in sign-and-submit mode)_ The value `true` indicates the transaction was put in the [Transaction Queue](../../../../concepts/transactions/transaction-queue.md), which means it is likely to be included in a future ledger version. [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](../../../../concepts/transactions/transaction-cost.md#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](../../../../concepts/transactions/transaction-queue.md). [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
 | `validated_ledger_index` | Integer  | _(Omitted in sign-and-submit mode)_ The [ledger index][] of the newest validated ledger at the time of submission. This provides a lower bound on the ledger versions that the transaction can appear in as a result of this request. (The transaction could only have been validated in this ledger version or earlier if it had already been submitted before.) |
 
-**Warning:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](transaction-results.html) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+**Warning:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](../../../protocol/transactions/transaction-results/transaction-results.md) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
 **Caution:** If this command results in an error message, the message can contain the secret key from the request. (This can only happen in sign-and-submit mode.) Make sure that these errors are not visible to others.
 
@@ -319,7 +319,7 @@ The response follows the [standard format][], with a successful result containin
 ## Possible Errors
 
 * Any of the [universal error types][].
-* `amendmentBlocked` - The transaction cannot be submitted to the network because the `rippled` server is [amendment blocked](amendments.html#amendment-blocked-servers).
+* `amendmentBlocked` - The transaction cannot be submitted to the network because the `rippled` server is [amendment blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers).
 * `highFee` - The `fee_mult_max` parameter was specified, but the server's current fee multiplier exceeds the specified one. (Sign-and-Submit mode only)
 * `internalJson` - An internal error occurred when serializing the transaction to JSON. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
 * `internalSubmit` - An internal error occurred when submitting the transaction. This could be caused by many aspects of the transaction, including a bad signature or some fields being malformed.
@@ -328,10 +328,4 @@ The response follows the [standard format][], with a successful result containin
 * `invalidTransaction` - The transaction is malformed or otherwise invalid.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur. (Sign-and-Submit mode only)
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
-* `notSupported` - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected [as an admin](admin-api-methods.html), or you could [enable public signing](enable-public-signing.html). [New in: rippled 1.1.0][]
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* `notSupported` - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected [as an admin](../../admin-api-methods/index.md), or you could [enable public signing](../../../../infrastructure/configuration/enable-public-signing.md). [New in: rippled 1.1.0](https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE")

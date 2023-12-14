@@ -1,9 +1,12 @@
 ---
 html: install-rippled.html
 parent: infrastructure.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 blurb: rippledサーバーをインストールして更新します。
 ---
 # rippledのインストール
 
 rippledサーバーをインストールして更新します。
+
+{% child-pages /%}

@@ -13,7 +13,7 @@ _[Escrow Amendment][]により追加されました。_
 
 保留中の支払いから受取人へXRPを送金します。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -26,11 +26,11 @@ _[Escrow Amendment][]により追加されました。_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
-| フィールド       | JSONの型         | [内部の型][]       | 説明                |
+| フィールド       | JSONの型         | [内部の型](../../binary-format.md)       | 説明                |
 |:----------------|:-----------------|:------------------|:--------------------|
 | `Owner` | 文字列 | AccountID | 保留中の支払いに資金を供給した支払元アカウントのアドレス。 |
 | `OfferSequence` | 符号なし整数 | UInt32 | 終了する保留中の支払いを作成した[EscrowCreateトランザクション][]のトランザクションシーケンス。 |
@@ -43,11 +43,6 @@ _[Escrow Amendment][]により追加されました。_
 - 保留中の支払いに`Condition`が指定されている場合に、その条件に対応する`Fulfillment`を指定しないと、この支払いを実行できません。
 - 有効期限切れの保留中の支払いは実行できません。具体的には、対応する[EscrowCreateトランザクション][]で指定されている`CancelAfter`時刻が、最後に閉鎖されたレジャーの閉鎖時刻よりも前の場合、EscrowFinishトランザクションは失敗します。
 
-**注記:** EscrowFinishトランザクションにフルフィルメントが含まれている場合、このトランザクションを送信するための最小[トランザクションコスト](transaction-cost.html)が増加します。トランザクションにフルフィルメントが含まれていない場合、トランザクションコストは標準の10 dropです。トランザクションにフルフィルメントが含まれている場合、トランザクションコストは330 [XRP drop][XRPのdrop数]に加えて、プリイメージサイズの16バイトごとに更に10 dropです。
+**注記:** EscrowFinishトランザクションにフルフィルメントが含まれている場合、このトランザクションを送信するための最小[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)が増加します。トランザクションにフルフィルメントが含まれていない場合、トランザクションコストは標準の10 dropです。トランザクションにフルフィルメントが含まれている場合、トランザクションコストは330 [XRP drop][XRPのdrop数]に加えて、プリイメージサイズの16バイトごとに更に10 dropです。
 
-[本番環境以外のネットワーク](parallel-networks.html)では、保留中のescrowの送金先アカウントを[削除](deleting-accounts.html)できる場合があります。この場合、 escrowを終了しようとしても結果`tecNO_TARGET`で失敗しますが、 escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 escrowは正常に終了できます。escrowの送金先アカウントは、[fix1523 Amendment](known-amendments.html#fix1523)が有効になる前にescrowが作成された場合にのみ削除できます。本番環境の XRP Ledgerにはそのようなescrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とescrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、[新しいジェネシスレジャーを開始](start-a-new-genesis-ledger-in-stand-alone-mode.html)するときのデフォルトです。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+[本番環境以外のネットワーク](../../../../concepts/networks-and-servers/parallel-networks.md)では、保留中のescrowの送金先アカウントを[削除](../../../../concepts/accounts/deleting-accounts.md)できる場合があります。この場合、 escrowを終了しようとしても結果`tecNO_TARGET`で失敗しますが、 escrowオブジェクトは通常期限切れになる場合を除き、維持されます。別の支払いで送金先アカウントが再作成された場合、 escrowは正常に終了できます。escrowの送金先アカウントは、[fix1523 Amendment](known-amendments.html#fix1523)が有効になる前にescrowが作成された場合にのみ削除できます。本番環境の XRP Ledgerにはそのようなescrowは存在しないため、本番環境のXRP Ledgerではこのようなエッジケースには対応できません。また、このエッジケースは、fix1523とescrowのAmendmentを同時に有効にするテストネットワークでも不可能です。これは、[新しいジェネシスレジャーを開始](../../../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md)するときのデフォルトです。

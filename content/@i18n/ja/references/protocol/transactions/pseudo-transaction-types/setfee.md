@@ -7,7 +7,7 @@ labels:
 ---
 # SetFee
 
-[手数料投票](fee-voting.html)の結果として[トランザクションコスト](transaction-cost.html)または[アカウント準備金](reserves.html)の要件が変更されます。
+[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)の結果として[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)または[アカウント準備金](../../../../concepts/accounts/reserves.md)の要件が変更されます。
 
 **注記:** 疑似トランザクションは送信できませんが、レジャーの処理時に疑似トランザクションが見つかることがあります。
 
@@ -28,17 +28,12 @@ labels:
   }
 ```
 
-| フィールド        | JSONの型          | [内部の型][]      | 説明               |
+| フィールド        | JSONの型          | [内部の型](../../binary-format.md)      | 説明               |
 |:------------------|:-----------------|:------------------|:------------------|
-| BaseFee | 文字列 | UInt64 | リファレンストランザクションの手数料（XRPのdrop数、16進数）。（これは、負荷スケーリング前の[トランザクションコスト](transaction-cost.html)です。） |
+| BaseFee | 文字列 | UInt64 | リファレンストランザクションの手数料（XRPのdrop数、16進数）。（これは、負荷スケーリング前の[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)です。） |
 | ReferenceFeeUnits | 符号なし整数 | UInt32 | リファレンストランザクションのコスト（手数料単位） |
 | ReserveBase | 符号なし整数 | UInt32 | 基本準備金（drop数） |
 | ReserveIncrement | 符号なし整数 | UInt32 | 増分準備金（drop数） |
 | LedgerSequence | 数値 | UInt32 | _（過去に発生した`SetFee`疑似トランザクションの場合は省略）_ この擬似トランザクションが表示されるレジャーバージョンのインデックス。これにより、この疑似トランザクションと別途発生する同様の変更が区別されます。 |
 
-{% include '_snippets/setfee_uniqueness_note.ja.md' %}
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% partial file="/_snippets/setfee_uniqueness_note.ja.md" /%}

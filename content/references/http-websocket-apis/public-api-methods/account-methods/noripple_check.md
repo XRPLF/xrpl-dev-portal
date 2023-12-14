@@ -8,18 +8,17 @@ labels:
 # noripple_check
 [[Source]](https://github.com/XRPLF/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
 
-The `noripple_check` command provides a quick way to check the status of [the Default Ripple field for an account and the No Ripple flag of its trust lines](rippling.html), compared with the recommended settings.
+The `noripple_check` command provides a quick way to check the status of [the Default Ripple field for an account and the No Ripple flag of its trust lines](../../../../concepts/tokens/fungible-tokens/rippling.md), compared with the recommended settings.
 
 
 ## Request Format
 An example of the request format:
 
-{% include '_snippets/no-cli-syntax.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 0,
@@ -31,9 +30,9 @@ An example of the request format:
     "transactions": true
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "noripple_check",
@@ -48,8 +47,9 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 The request includes the following parameters:
@@ -58,7 +58,7 @@ The request includes the following parameters:
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | String                     | A unique identifier for the account, most commonly the account's address. |
 | `role`         | String                     | Whether the address refers to a `gateway` or `user`. Recommendations depend on the role of the account. Issuers must have Default Ripple enabled and must disable No Ripple on all trust lines. Users should have Default Ripple disabled, and should enable No Ripple on all trust lines. |
-| `transactions` | Boolean                    | _(Optional)_ If `true`, include an array of suggested [transactions](transaction-formats.html), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
+| `transactions` | Boolean                    | _(Optional)_ If `true`, include an array of suggested [transactions](../../../protocol/transactions/index.md), as JSON objects, that you can sign and submit to fix the problems. Defaults to false. |
 | `limit`        | Unsigned Integer           | _(Optional)_ The maximum number of trust line problems to include in the results. Defaults to 300. |
 | `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
@@ -67,10 +67,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -120,9 +119,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -172,16 +171,17 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`                | Type   | Description                                |
 |:-----------------------|:-------|:-------------------------------------------|
 | `ledger_current_index` | Number | The [ledger index][] of the ledger used to calculate these results. |
 | `problems`             | Array  | Array of strings with human-readable descriptions of the problems. This includes up to one entry if the account's Default Ripple setting is not as recommended, plus up to `limit` entries for trust lines whose No Ripple setting is not as recommended. |
-| `transactions`         | Array  | (May be omitted) If the request specified `transactions` as `true`, this is an array of JSON objects, each of which is the JSON form of a [transaction](transaction-formats.html) that should fix one of the described problems. The length of this array is the same as the `problems` array, and each entry is intended to fix the problem described at the same index into that array. |
+| `transactions`         | Array  | (May be omitted) If the request specified `transactions` as `true`, this is an array of JSON objects, each of which is the JSON form of a [transaction](../../../protocol/transactions/index.md) that should fix one of the described problems. The length of this array is the same as the `problems` array, and each entry is intended to fix the problem described at the same index into that array. |
 
 ## Possible Errors
 
@@ -189,7 +189,3 @@ The response follows the [standard format][], with a successful result containin
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

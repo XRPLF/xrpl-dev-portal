@@ -8,25 +8,24 @@ labels:
 # server_info
 [[ソース]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "ソース")
 
-`server_info`コマンドは[Clioサーバ](the-clio-server.html)にクエリされるClioサーバに関する様々な情報を人間が読める形で問い合わせます。`rippled`サーバについては、代わりに[`server_info` (`rippled`)](server_info.html)をご覧ください。[新規: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
+`server_info`コマンドは[Clioサーバ](../../../../concepts/networks-and-servers/the-clio-server.md)にクエリされるClioサーバに関する様々な情報を人間が読める形で問い合わせます。`rippled`サーバについては、代わりに[`server_info` (`rippled`)](../server-info-methods/server_info.md)をご覧ください。[新規: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
 
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
   "command": "server_info"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "server_info",
@@ -35,8 +34,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- [Try it! >](websocket-api-tool.html#server_info) -->
 
@@ -48,10 +48,9 @@ labels:
 
 クライアントが`localhost`経由で接続した場合の成功したレスポンスの例：
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -261,9 +260,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -474,15 +473,15 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 クライアントが`localhost`経由で接続しなかった場合の成功レスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -518,9 +517,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -557,10 +556,11 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-レスポンスは[標準フォーマット][]に従い、結果が正常な場合`info`オブジェクトが唯一のフィールドとして含まれます。
+レスポンスは[標準フォーマット](../../api-conventions/response-formatting.md)に従い、結果が正常な場合`info`オブジェクトが唯一のフィールドとして含まれます。
 
 `info`オブジェクトは以下のフィールドを含むことがあります。
 
@@ -585,7 +585,7 @@ labels:
 | `subscriptions.books`                  |               |   |
 | `time`                                 | 文字列         | サーバの時計によるUTCでの現在時刻。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
 | `uptime`                               | 数値           | サーバが連続して稼働している秒数。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
-| `amendment_blocked`                    | 真偽値         | _(省略される場合があります)_ Clioサーバが[Amendmentブロック](amendments.html#amendment-blocked-clio-servers)がされているかどうか。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
+| `amendment_blocked`                    | 真偽値         | _(省略される場合があります)_ Clioサーバが[Amendmentブロック](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-clio-servers)がされているかどうか。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
 | `load_factor`                          | 数値           | サーバが現在実行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数`1000`でリファレンストランザクションコストが10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、[個々のサーバの負荷係数](transaction-cost.html#ローカル負荷コスト)の最高値、クラスターの負荷係数、[オープンレジャーコスト](transaction-cost.html#オープンレジャーコスト)、ネットワーク全体の負荷係数によって決まります。 |
 | `clio_version`                         | 文字列         | 実行中のClioサーバのバージョン番号。 |
 | `libxrpl_version`                      | 文字列         | このClioサーバがビルドされた`libxrpl`ライブラリのバージョン番号。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
@@ -605,7 +605,7 @@ labels:
 | `cache`                                | オブジェクト    | Clioの状態データのキャッシュに関する情報。 |
 | `cache.size`                           | 数値           | 現在キャッシュ内にある状態データオブジェクトの数。 |
 | `cache.is_full`                        | 真偽値         | キャッシュに特定のレジャーのすべての状態データが含まれている場合はtrue、そうでない場合はfalse。[book_offersメソッド][] などの一部の API 呼び出しは、キャッシュが完全な場合、より高速に処理されます。 |
-| `cache.latest_ledger_seq`              | 数値           | キャッシュに保存されている、検証済みの最新のレジャーの[レジャーインデックス][]。 |
+| `cache.latest_ledger_seq`              | 数値           | キャッシュに保存されている、検証済みの最新のレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 | `etl`                                  | オブジェクト    | Clioサーバが接続している`rippled`ソース(ETLソース)。クライアントが`localhost`経由で Clioサーバに接続した場合のみ表示されます。 |
 | `etl.etl_sources`                      | オブジェクト配列 | Clioサーバが接続され、データを抽出する`rippled`ソース(ETLソース)を表示します。 |
 | `etl.etl_sources.validated_range`      | 文字列         | P2Pの`rippled`サーバから取得した有効なレジャーの範囲。 |
@@ -623,10 +623,4 @@ labels:
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。

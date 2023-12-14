@@ -12,7 +12,7 @@ labels:
 * 1つのオファーを受け入れることを許可する。これは _ダイレクト_ モードと呼ばれます。
 * 2つの異なるオファー、1つは与えられた`NFToken`の購入を提案し、もう1つは同じ`NFToken`の売却を提案し、アトミックに受け入れられることを許可します。これは _ブローカー_ モードと呼ばれます。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
 
 
 ## ブローカー vs. ダイレクト モード
@@ -64,13 +64,13 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## フィールド
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 
-| フィールド           | JSONの型            | [内部の型][]        | 説明          |
+| フィールド           | JSONの型            | [内部の型](../../binary-format.md)        | 説明          |
 |:-------------------|:--------------------|:------------------|:--------------|
 | `NFTokenSellOffer` | 文字列              | Hash256           | _(省略可)_ `NFToken`の売却を提案する`NFTokenOffer`の識別情報です。 |
 | `NFTokenBuyOffer`  | 文字列              | Hash256           | _(省略可)_ `NFToken`の購入を提案する`NFTokenOffer`の識別情報です。 |
-| `NFTokenBrokerFee` | [通貨額][] | Amount            | _(省略可)_ このフィールドはブローカーモードでのみ有効であり、2つのオファーをまとめるための手数料としてブローカーが保持する金額を指定します。残りの金額は`NFToken`の販売者に送られます。指定する場合、発行者が課す送金手数料を考慮する前に、販売者が受け取る金額が少なくとも売却オファーで示された金額になるように手数料を設定しなければなりません。 |
+| `NFTokenBrokerFee` | [通貨額](basic-data-types.html#通貨額の指定) | Amount            | _(省略可)_ このフィールドはブローカーモードでのみ有効であり、2つのオファーをまとめるための手数料としてブローカーが保持する金額を指定します。残りの金額は`NFToken`の販売者に送られます。指定する場合、発行者が課す送金手数料を考慮する前に、販売者が受け取る金額が少なくとも売却オファーで示された金額になるように手数料を設定しなければなりません。 |
 
 ダイレクトモードでは、`NFTokenSellOffer`または`NFTokenBuyOffer`フィールドの**いずれか**を指定する必要があります。ブローカーモードでは、**両方**のフィールドを指定する必要があります。
 
@@ -82,7 +82,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード                         | 説明                                    |
 |:-----------------------------------|:----------------------------------------|
@@ -90,15 +90,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | `temMALFORMED`                     | トランザクションのフォーマットが正しくありません。たとえば、`NFTokenSellOffer`と`NFTokenBuyOffer`のどちらも指定されていないか、`NFTokenBrokerFee`に負の値が指定されています。|
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 購入者と販売者が同じアカウントになっています。 |
 | `tecEXPIRED`                       | トランザクションで指定されたオファーの有効期限が既に切れています。 |
-| `tecINSUFFICIENT_FUNDS`            | 購入者が申し出た金額を全額持っていない。購入額がXRPで指定されている場合、[所有者準備金](reserves.html)が原因である可能性があります。購入額がトークンである場合、トークンが[凍結](freezes.html) されていることが原因と考えられます。 |
+| `tecINSUFFICIENT_FUNDS`            | 購入者が申し出た金額を全額持っていない。購入額がXRPで指定されている場合、[所有者準備金](../../../../concepts/accounts/reserves.md)が原因である可能性があります。購入額がトークンである場合、トークンが[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md) されていることが原因と考えられます。 |
 | `tecINSUFFICIENT_PAYMENT`          | ブローカーモードにおいて、提示された購入額は、`BrokerFee` _および_ `NFToken`の売却コストを支払うには十分な額ではありません。 |
 | `tecOBJECT_NOT_FOUND`              | トランザクションで指定されたオファーがレジャーに存在しません。 |
 | `tecNFTOKEN_BUY_SELL_MISMATCH`     | ブローカーモードにおいて、2つのオファーが有効なマッチングではありません。例えば、販売者が購入者の提示額よりも高い金額を提示している、購入と売却のオファーが異なる通貨で提示されている、販売者が購入者や ブローカーとは異なる販売先を指定している、などです。 |
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | `NFTokenBuyOffer`で識別されるオブジェクトが実際には購入オファーでない、または`NFTokenSellOffer`で識別されるオブジェクトが実際には売却オファーでない場合です。|
 | `tecNO_PERMISSION`                 | 販売者が売却する`NFToken`を所有していません。または、マッチングオファーが、オファーを受け入れるアカウントとは異なる`Destination`アカウントを指定しています。 |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

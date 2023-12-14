@@ -45,4 +45,4 @@ Software wallets on the other hand, are entirely digital. While this makes them 
 The XRP Ledger is an opensource project with publicly available client libraries and API methods. While you can technically interact with the ledger using HTTP/WebSocket tools, it isn't practical for day-to-day use. You can create your own wallet to interact with the ledger, but you'll need to understand exactly how accounts, transactions, and the ledger work together before committing to this option.
 
 
-Next: [Transactions and Requests](txn-and-requests.html)
+Next: [Transactions and Requests](transactions-and-requests.md)

@@ -14,10 +14,9 @@ labels:
 
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -25,9 +24,9 @@ labels:
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_lines",
@@ -38,15 +37,16 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
 rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#account_lines)
 
@@ -55,11 +55,11 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 | `Field`       | 型             | 説明           |
 |:--------------|:---------------|:---------------|
 | `account`     | 文字列          | トラストラインを検索するアカウント。 |
-| `ledger_hash` | 文字列          | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]をご覧ください） |
-| `ledger_index` | 文字列または整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]をご覧ください） |
-| `peer`         | 文字列         | _（省略可）_ 2番目のアカウントの[アドレス][]。指定されている場合は、2つのアカウントを結ぶトラストラインだけが出力されます。 |
+| `ledger_hash` | 文字列          | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください） |
+| `ledger_index` | 文字列または整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください） |
+| `peer`         | 文字列         | _（省略可）_ 2番目のアカウントの[アドレス](basic-data-types.html#アドレス)。指定されている場合は、2つのアカウントを結ぶトラストラインだけが出力されます。 |
 | `limit`        | 整数           | （省略可、デフォルト値は可変）取得するトラストラインの数を制限します。サーバはこの値を受け入れる必要はありません。10以上400以下の範囲で値を指定する必要があります。 |
-| `marker`       | [マーカー][]    | _（省略可）_ 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。 |
+| `marker`       | [マーカー](../../api-conventions/markers-and-pagination.md)    | _（省略可）_ 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。 |
 
 以下のパラメーターは廃止予定であり、今後予告なしに削除される可能性があります。`ledger`および`peer_index`。
 
@@ -67,10 +67,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -113,9 +112,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -158,8 +157,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
 ```json
 {
    "result" : {
@@ -404,46 +404,43 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合には、アカウントのアドレスとトラストラインオブジェクトの配列が含まれています。具体的には、結果オブジェクトには以下のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合には、アカウントのアドレスとトラストラインオブジェクトの配列が含まれています。具体的には、結果オブジェクトには以下のフィールドが含まれます。
 
 | `Field`                | 型                          | 説明                   |
 |:-----------------------|:----------------------------|:-----------------------|
-| `account`              | 文字列                       | この要求に対応するアカウントの一意の[アドレス][]。トラストラインのための「パースペクティブアカウント」です。 |
+| `account`              | 文字列                       | この要求に対応するアカウントの一意の[アドレス](basic-data-types.html#アドレス)。トラストラインのための「パースペクティブアカウント」です。 |
 | `lines`                | 配列                         | トラストラインオブジェクトからなる配列。以下で説明します。トラストラインの数が多い場合は、一度に`limit`の数までのトラストラインが返されます。 |
-| `ledger_current_index` | 整数 - [レジャーインデックス][] | _（`ledger_hash`または`ledger_index`が指定されている場合は省略）_ この情報の取得時に使用した、現行のオープンレジャーのレジャーインデックス。 |
-| `ledger_index`         | 整数 - [レジャーインデックス][] | _（`ledger_current_index`が指定されている場合は省略）_ このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
-| `ledger_hash`          | 文字列 - [ハッシュ][]         | _（省略される場合があります）_ このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
-| `marker`               | [マーカー][]                  | 応答がページネーションされていることを示す、サーバが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に追加のページがない場合は省略されます |
+| `ledger_current_index` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_hash`または`ledger_index`が指定されている場合は省略）_ この情報の取得時に使用した、現行のオープンレジャーのレジャーインデックス。 |
+| `ledger_index`         | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略）_ このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
+| `ledger_hash`          | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ)         | _（省略される場合があります）_ このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
+| `marker`               | [マーカー](../../api-conventions/markers-and-pagination.md)                  | 応答がページネーションされていることを示す、サーバが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に追加のページがない場合は省略されます |
 
 各トラストラインオブジェクトには以下のフィールドの組み合わせが含まれています。
 
 | `Field`           | 型         | 説明                                   |
 |:------------------|:-----------|:---------------------------------------|
-| `account`         | 文字列      | このトラストラインの相手側の一意の[アドレス][]。 |
+| `account`         | 文字列      | このトラストラインの相手側の一意の[アドレス](basic-data-types.html#アドレス)。 |
 | `balance`         | 文字列      | 現在このラインに対して保留されている残高（数値）の表示。残高がプラスの場合はパースペクティブアカウントがその額を保有しており、マイナスの場合はパースペクティブアカウントがその額を借用しています。 |
-| `currency`        | 文字列      | このトラストラインが保有できる通貨を示す[通貨コード][]。 |
+| `currency`        | 文字列      | このトラストラインが保有できる通貨を示す[通貨コード](currency-formats.html#通貨コード)。 |
 | `limit`           | 文字列      | このアカウントがピアアカウントからの借用を希望する特定の通貨の上限額。 |
 | `limit_peer`      | 文字列      | 相手側アカウントがパースペクティブアカウントからの借用を希望する特定の通貨の上限額。 |
 | `quality_in`      | 符号なし整数 | このアカウントが、このトラストラインの入金時残高を評価する際のレート（この数値対10億単位の比率）。（たとえば5億の場合は0.5:1の比率を表します。）特殊なケースとして、0は1:1の比率として扱われます。 |
 | `quality_out`     | 符号なし整数 | このアカウントが、このトラストラインの出金時残高を評価する際のレート（この数値対10億単位の比率）。（たとえば5億の場合は0.5:1の比率を表します。）特殊なケースとして、0は1:1の比率として扱われます。 |
-| `no_ripple`       | 真偽値      | （省略される場合があります）`true`の場合、このアカウントはこのトラストラインの[No Rippleフラグ](rippling.html)を有効にしています。もし`false`であれば、このアカウントは[No Rippleフラグ](ripplestate.html#所有者の準備金への資金供給)を無効にしていますが、これは[デフォルト値](ripplestate.html#所有者の準備金への資金供給)ではありません。。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグは無効で、Default Rippleが有効となります。[更新: rippled 1.7.0][] |
-| `no_ripple_peer`  | 真偽値      | （省略される場合があります）`true`の場合、ピアアカウントはこのトラストラインで[No Rippleフラグ](rippling.html)を有効にしています。もし`false`なら、このアカウントはNo Rippleフラグを無効にしていますが、このアカウントはDefault Rippleフラグも無効にしているため、[デフォルト値](ripplestate.html#所有者の準備金への資金供給)とはみなされません。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグが無効で、Default Rippleが有効です。[更新: rippled 1.7.0][]  |
-| `authorized`      | 真偽値      | （省略される場合があります）このアカウントが[このトラストラインを承認した](authorized-trust-lines.html)場合は、`true`。省略されている場合は、`false`と同じです。 |
-| `peer_authorized` | 真偽値      | （省略される場合があります）ピアアカウントが[このトラストラインを承認した](authorized-trust-lines.html)場合は`true`。省略されている場合は、`false`と同じです。 |
-| `freeze`          | 真偽値      | （省略される場合があります）このアカウントがこのトラストラインを[凍結](freezes.html)した場合は`true`。省略されている場合は、`false`と同じです。 |
-| `freeze_peer`     | 真偽値      | （省略される場合があります）ピアアカウントがこのトラストラインを[凍結](freezes.html)した場合は、`true`。省略されている場合は、`false`と同じです。 |
+| `no_ripple`       | 真偽値      | （省略される場合があります）`true`の場合、このアカウントはこのトラストラインの[No Rippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)を有効にしています。もし`false`であれば、このアカウントは[No Rippleフラグ](ripplestate.html#所有者の準備金への資金供給)を無効にしていますが、これは[デフォルト値](ripplestate.html#所有者の準備金への資金供給)ではありません。。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグは無効で、Default Rippleが有効となります。[更新: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE") |
+| `no_ripple_peer`  | 真偽値      | （省略される場合があります）`true`の場合、ピアアカウントはこのトラストラインで[No Rippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)を有効にしています。もし`false`なら、このアカウントはNo Rippleフラグを無効にしていますが、このアカウントはDefault Rippleフラグも無効にしているため、[デフォルト値](ripplestate.html#所有者の準備金への資金供給)とはみなされません。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグが無効で、Default Rippleが有効です。[更新: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE")  |
+| `authorized`      | 真偽値      | （省略される場合があります）このアカウントが[このトラストラインを承認した](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)場合は、`true`。省略されている場合は、`false`と同じです。 |
+| `peer_authorized` | 真偽値      | （省略される場合があります）ピアアカウントが[このトラストラインを承認した](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)場合は`true`。省略されている場合は、`false`と同じです。 |
+| `freeze`          | 真偽値      | （省略される場合があります）このアカウントがこのトラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は`true`。省略されている場合は、`false`と同じです。 |
+| `freeze_peer`     | 真偽値      | （省略される場合があります）ピアアカウントがこのトラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は、`true`。省略されている場合は、`false`と同じです。 |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `actMalformed` - 指定されている`marker`フィールドが受け入れられない場合。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

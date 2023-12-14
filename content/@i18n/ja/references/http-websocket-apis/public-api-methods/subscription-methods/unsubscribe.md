@@ -16,10 +16,9 @@ labels:
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":"Unsubscribe a lot of stuff",
@@ -41,8 +40,9 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#unsubscribe)
 
@@ -51,7 +51,7 @@ labels:
 | `Field`             | 型  | 説明                                    |
 |:--------------------|:------|:-----------------------------------------------|
 | `streams`           | 配列 | _（省略可）_ サブスクライブを解除する汎用ストリームの文字列名の配列（`ledger`、`server`、`transactions`、`transactions_proposed`など）。 |
-| `accounts`          | 配列 | _（省略可）_ 更新の受信を停止する一意のアカウントアドレスの配列（XRP Ledgerの[base58][]フォーマット）。（以前にこれらのアカウントをサブスクライブしていた場合にのみ、メッセージが停止されます。一般のトランザクションストリームからアカウントを除外する目的では使用できません。） |
+| `accounts`          | 配列 | _（省略可）_ 更新の受信を停止する一意のアカウントアドレスの配列（XRP Ledgerの[base58](base58-encodings.html)フォーマット）。（以前にこれらのアカウントをサブスクライブしていた場合にのみ、メッセージが停止されます。一般のトランザクションストリームからアカウントを除外する目的では使用できません。） |
 | `accounts_proposed` | 配列 | _（省略可）_`accounts`と同様ですが、未検証のトランザクションを含む`accounts_proposed`サブスクリプションを対象としています。 |
 | `books`             | 配列 | _（省略可）_ 以下に説明するように、サブスクライブ解除するオーダーブックを定義するオブジェクトの配列。 |
 
@@ -61,18 +61,17 @@ labels:
 
 | `Field`      | 型    | 説明                                         |
 |:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | オブジェクト  | オファーを受諾するアカウントが受け取る通貨を、[通貨額][]と同様、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
-| `taker_pays` | オブジェクト  | オファーを受諾するアカウントが支払う通貨を、[通貨額][]と同様、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
+| `taker_gets` | オブジェクト  | オファーを受諾するアカウントが受け取る通貨を、[通貨額](basic-data-types.html#通貨額の指定)と同様、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
+| `taker_pays` | オブジェクト  | オファーを受諾するアカウントが支払う通貨を、[通貨額](basic-data-types.html#通貨額の指定)と同様、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
 | `both`       | ブール値 | （省略可、デフォルトではfalse）trueの場合は、オーダーブックの両サイドからサブスクリプションを削除します。 |
 
 ## 応答フォーマット
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":"Unsubscribe a lot of stuff",
@@ -81,14 +80,15 @@ labels:
    "type":"response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果にフィールドが含まれません。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果にフィールドが含まれません。
 
 ## 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `noPermission` - 要求に`url`フィールドが指定されていますが、管理者として接続していません。
 * `malformedStream` - 要求の`streams`フィールドのフォーマットが適切ではありません。
@@ -99,7 +99,3 @@ labels:
 * `srcIsrMalformed` - 要求の`books`フィールドの1つ以上の`taker_pays`サブフィールドの`issuer`フィールドが無効です。
 * `dstIsrMalformed` - 要求の`books`フィールドの1つ以上の`taker_gets`サブフィールドの`issuer`フィールドが無効です。
 * `badMarket` - `books` フィールドに指定されている1つ以上のオーダーブックが存在していません（ある通貨をその通貨自体と交換するオファーなど）。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

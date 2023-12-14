@@ -11,9 +11,9 @@ status: not_enabled
 
 _(Requires the [AMM amendment][] :not_enabled:)_
 
-Withdraw assets from an [Automated Market Maker](automated-market-makers.html) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
+Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -38,9 +38,9 @@ Withdraw assets from an [Automated Market Maker](automated-market-makers.html) (
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
-| Field        | JSON Type           | [Internal Type][] | Required? | Description |
+| Field        | JSON Type           | [Internal Type](../../binary-format.md) | Required? | Description |
 |:-------------|:--------------------|:------------------|:----------|:------------|
 | `Asset`      | Object              | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
 | `Asset2`     | Object              | STIssue           | Yes       | The definition for the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
@@ -85,11 +85,11 @@ The fee for a single asset withdrawal is calculated to be the same as if you had
 
 ### AMM Deletion
 
-If the transaction withdraws the last of the AMM's assets, it automatically tries to delete the AMM along with all associated trust lines. However, there is a limit to how many empty trust lines can be removed in one transaction. If too many empty trust lines exist, the AMM remains in the ledger in an empty state; it can be deleted with further [AMMDelete transactions][], or it can be refilled with a special "empty AMM" two-asset [AMMDeposit transaction][]. While an AMM is empty, no other operations on it are valid.
+If the transaction withdraws the last of the AMM's assets, it automatically tries to delete the AMM along with all associated trust lines. However, there is a limit to how many empty trust lines can be removed in one transaction. If too many empty trust lines exist, the AMM remains in the ledger in an empty state; it can be deleted with further [AMMDelete transactions](ammdelete.md), or it can be refilled with a special "empty AMM" two-asset [AMMDeposit transaction](ammdeposit.md). While an AMM is empty, no other operations on it are valid.
 
 ### AMMWithdraw Flags
 
-Transactions of the AMMWithdraw type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
+Transactions of the AMMWithdraw type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
 
 | Flag Name               | Hex Value    | Decimal Value | Description           |
 |:------------------------|:-------------|:--------------|:----------------------|
@@ -101,12 +101,12 @@ Transactions of the AMMWithdraw type support additional values in the [`Flags` f
 | `tfOneAssetLPToken`     | `0x00200000` | 2097152       | Perform a single-asset withdrawal and receive the specified amount of LP Tokens. |
 | `tfLimitLPToken`        | `0x00400000` | 4194304       | Perform a single-asset withdrawal with a specified effective price. |
 
-You must specify **exactly one** of these flags, plus any [global flags](transaction-common-fields.html#global-flags).
+You must specify **exactly one** of these flags, plus any [global flags](../common-fields.md#global-flags).
 
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code              | Description                                  |
 |:------------------------|:---------------------------------------------|
@@ -114,15 +114,9 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `tecAMM_BALANCE`        | The transaction would withdraw all of one asset from the pool, or rounding would cause a "withdraw all" to leave a nonzero amount behind. |
 | `tecAMM_FAILED`         | The conditions on the withdrawal could not be satisfied; for example, the requested effective price in the `EPrice` field is too low. |
 | `tecAMM_INVALID_TOKENS` | The AMM for this token pair does not exist, or one of the calculations resulted in a withdrawal amount rounding to zero. |
-| `tecFROZEN`             | The transaction tried to withdraw a [frozen](freezes.html) token. |
-| `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](reserves.html) of processing this transaction, probably because they need at least one new trust line to hold one of the assets to be withdrawn, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecFROZEN`             | The transaction tried to withdraw a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) token. |
+| `tecINSUF_RESERVE_LINE` | The sender of this transaction does not meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need at least one new trust line to hold one of the assets to be withdrawn, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
 | `tecNO_AUTH`            | The sender is not authorized to hold one of the AMM assets. |
 | `temMALFORMED`          | The transaction specified an invalid combination of fields. See [AMMWithdraw Modes](#ammwithdraw-modes). (This error can also occur if the transaction is malformed in other ways.) |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly; for example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields.  |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

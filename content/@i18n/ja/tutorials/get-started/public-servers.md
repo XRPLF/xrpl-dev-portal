@@ -7,7 +7,7 @@ labels:
 ---
 # 公開サーバー
 
-[自分で`rippled`サーバーを運営しない](install-rippled.html)場合は、以下の公開サーバーを利用して、トランザクションを送信したり、レジャーからデータを取得したりすることができます。
+[自分で`rippled`サーバーを運営しない](../../infrastructure/installation/index.md)場合は、以下の公開サーバーを利用して、トランザクションを送信したり、レジャーからデータを取得したりすることができます。
 
 | 運営者  | [ネットワーク][] | JSON-RPC URL | WebSocket URL | 尾行                |
 |:----------|:------------|:-------------|:--------------|:---------------------|
@@ -26,8 +26,3 @@ labels:
 <a id="footnote-1"></a>¹ Ripple社の公開サーバーは、持続的な利用やビジネスでの利用には適しておらず、いつでも利用できなくなる可能性があります。定期的に使用する場合は、ご自身で`rippled`サーバーを運用するか、信頼できる人と契約してください。Ripple社の公開クラスターには[Reporting Mode][]サーバが含まれています。
 
 <a id="footnote-2"></a>² `xrpl.ws` は `xrplcluster.com` のエイリアスです。しかし、`.ws` というトップレベルドメインの信頼性は、本番での使用には適さないかもしれません。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

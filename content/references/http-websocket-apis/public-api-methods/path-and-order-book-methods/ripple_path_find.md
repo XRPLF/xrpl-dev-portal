@@ -9,7 +9,7 @@ labels:
 # ripple_path_find
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/RipplePathFind.cpp "Source")
 
-The `ripple_path_find` method is a simplified version of the [path_find method][] that provides a single response with a [payment path](paths.html) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should instead use the [path_find method][] to subscribe to continued updates where possible.
+The `ripple_path_find` method is a simplified version of the [path_find method](path_find.md) that provides a single response with a [payment path](../../../../concepts/tokens/fungible-tokens/paths.md) you can use right away. It is available in both the WebSocket and JSON-RPC APIs. However, the results tend to become outdated as time passes. Instead of making multiple calls to stay updated, you should instead use the [path_find method](path_find.md) to subscribe to continued updates where possible.
 
 Although the `rippled` server tries to find the cheapest path or combination of paths for making a payment, it is not guaranteed that the paths returned by this method are, in fact, the best paths.
 
@@ -18,10 +18,9 @@ Although the `rippled` server tries to find the cheapest path or combination of 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 8,
@@ -43,9 +42,9 @@ An example of the request format:
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ripple_path_find",
@@ -70,15 +69,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax ripple_path_find json ledger_index|ledger_hash
 rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "source_currencies": [ { "currency": "XRP" }, { "currency": "USD" } ], "destination_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "destination_amount": { "value": "0.001", "currency": "USD", "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B" } }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ripple_path_find)
 
@@ -88,8 +88,8 @@ The request includes the following parameters:
 |:----------------------|:---------------------------|:------------------------|
 | `source_account`      | String                     | Unique address of the account that would send funds in a transaction |
 | `destination_account` | String                     | Unique address of the account that would receive funds in a transaction |
-| `destination_amount`  | String or Object           | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object           | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0][] |
+| `destination_amount`  | String or Object           | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| `send_max`            | String or Object           | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
 | `source_currencies`   | Array                      | _(Optional)_ Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts][Currency Amount] are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
 | `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
@@ -98,10 +98,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 8,
@@ -208,9 +207,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -317,8 +316,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -419,10 +419,11 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`                  | Type   | Description                              |
 |:-------------------------|:-------|:-----------------------------------------|
@@ -434,7 +435,7 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 | `Field`          | Type             | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
-| `paths_computed` | Array            | Array of arrays of objects defining [payment paths](paths.html) |
+| `paths_computed` | Array            | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
 | `source_amount`  | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount |
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
@@ -450,7 +451,3 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 * `dstActMalformed` - The `destination_account` field in the request is not formatted properly.
 * `srcCurMalformed` - The `source_currencies` field is not formatted properly.
 * `srcIsrMalformed` - The `issuer` field of one or more of the currency objects in the request is not valid.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

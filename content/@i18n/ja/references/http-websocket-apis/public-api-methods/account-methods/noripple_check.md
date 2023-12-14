@@ -8,15 +8,14 @@ labels:
 # noripple_check
 [[ソース]](https://github.com/XRPLF/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/NoRippleCheck.cpp "Source")
 
-`noripple_check`コマンドを使用すると、[アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグ](rippling.html)の状態を、推奨される設定と比較して迅速にチェックできます。
+`noripple_check`コマンドを使用すると、[アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)の状態を、推奨される設定と比較して迅速にチェックできます。
 
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 0,
@@ -28,9 +27,9 @@ labels:
    "transactions": true
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "noripple_check",
@@ -45,8 +44,9 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **注記:** このメソッドのコマンドライン構文はありません。コマンドラインからアクセスするには[jsonメソッド][]を使用してください。
 
@@ -56,19 +56,18 @@ labels:
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | 文字列                     | アカウントの一意のIDであり、通常はアカウントのアドレスです。 |
 | `role`         | 文字列                     | アドレスが`gateway`と`user`のいずれを指しているか。推奨事項はアカウントの役割に応じて異なります。イシュアーのDefaultRippleを有効にし、すべてのトラストラインでNoRippleを無効にする必要があります。ユーザーのDefaultRippleを無効にし、すべてのトラストラインでNoRippleを有効にする必要があります。 |
-| `transactions` | ブール値                    | _（省略可）_ `true`の場合、提案される[トランザクション](transaction-formats.html)（JSONオブジェクト）の配列を指定します。問題を修正するために、これらのトランザクションに署名して送信することができます。デフォルトではfalseです。 |
+| `transactions` | ブール値                    | _（省略可）_ `true`の場合、提案される[トランザクション](../../../protocol/transactions/index.md)（JSONオブジェクト）の配列を指定します。問題を修正するために、これらのトランザクションに署名して送信することができます。デフォルトではfalseです。 |
 | `limit`        | 符号なし整数           | _（省略可）_ 結果に含めることができるトラストライン問題の最大数。デフォルトでは300です。 |
-| `ledger_hash`  | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進数文字列。（[レジャーの指定][]を参照してください。) |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください。) |
+| `ledger_hash`  | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進数文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください。) |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください。) |
 
 ## 応答フォーマット
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": 0,
@@ -118,9 +117,9 @@ labels:
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 {
@@ -169,24 +168,21 @@ labels:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
+応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
 | `Field`                | 型   | 説明                                |
 |:-----------------------|:-------|:-------------------------------------------|
 | `ledger_current_index` | 数値 | これらの結果の計算に使用するレジャーのシーケンス番号。 |
 | `problems`             | 配列  | 人間が読み取ることができる形式の問題の記述が含まれている文字列の配列。アカウントのDefaultRipple設定が推奨に従っていない場合は、最大1つのエントリーが含まれます。加えて、NoRipple設定が推奨に従っていないトラストラインのエントリー（最大で`limit`に指定されている数）も含まれます。 |
-| `transactions`         | 配列  | （省略される場合があります）要求で`transactions`が`true`に指定されている場合、これはJSONオブジェクトの配列です。各JSONオブジェクトは、JSON形式の[トランザクション](transaction-formats.html)で、記述されている問題の1つを修正します。この配列の長さは`problems`配列と同じであり、各エントリーは、その配列の同じインデックスで記述されている問題の修正を目的としています。 |
+| `transactions`         | 配列  | （省略される場合があります）要求で`transactions`が`true`に指定されている場合、これはJSONオブジェクトの配列です。各JSONオブジェクトは、JSON形式の[トランザクション](../../../protocol/transactions/index.md)で、記述されている問題の1つを修正します。この配列の長さは`problems`配列と同じであり、各エントリーは、その配列の同じインデックスで記述されている問題の修正を目的としています。 |
 
 ## 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`に指定されているレジャーが存在しないか、存在しているがサーバーにはありません。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

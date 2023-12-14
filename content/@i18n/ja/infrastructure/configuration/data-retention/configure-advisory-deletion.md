@@ -16,7 +16,7 @@ labels:
 
 - サポートされているオペレーティングシステムを使用している。Ubuntu Linux、Red Hat Enterprise Linux（RHEL）、CentOS
 
-- `rippled`サーバーがすでに[インストール](install-rippled.html)されており、[オンライン削除](online-deletion.html)が有効になっている。
+- `rippled`サーバーがすでに[インストール](../../installation/index.md)されており、[オンライン削除](online-deletion.md)が有効になっている。
 
     デフォルトの構成ファイルは、レジャーバージョンが2000個を超えるとオンライン削除を実行するよう設定されています。
 
@@ -26,11 +26,13 @@ labels:
 
     RHELまたはCentOSでは、以下の`cronie`パッケージをインストールできます。
 
-        $ sudo yum install cronie
+    ```
+    $ sudo yum install cronie
+    ```
 
 - 選択した量の履歴をレジャーストアーに保管するのに十分なディスク容量がサーバーにある。
 
-    各種設定で必要なストレージの容量についての詳細は、[容量計画](capacity-planning.html)を参照してください。指示による削除が有効な場合、削除が実行されるまでにサーバーに蓄積可能な履歴の最大数は、`online_delete`設定で設定したレジャーバージョン数と、オンライン削除の指示の間隔を**加算**したものに相当します。
+    各種設定で必要なストレージの容量についての詳細は、[容量計画](../../installation/capacity-planning.md)を参照してください。指示による削除が有効な場合、削除が実行されるまでにサーバーに蓄積可能な履歴の最大数は、`online_delete`設定で設定したレジャーバージョン数と、オンライン削除の指示の間隔を**加算**したものに相当します。
 
 - サーバーの使用率が最も低い時間帯を把握している。
 
@@ -40,30 +42,36 @@ labels:
 
 1. `rippled`の構成ファイルの`[node_db]`スタンザで`advisory_delete`を有効にします。
 
-        [node_db]
-        # Other settings unchanged ...
-      	online_delete=2000
-      	advisory_delete=1
+    ```
+    [node_db]
+    # Other settings unchanged ...
+      online_delete=2000
+      advisory_delete=1
+    ```
 
     - 指示された場合にのみオンライン削除を実行するには、`advisory_delete`を`1`に設定します。（`0`に設定すると、新しいレジャーバージョンが使用可能になると自動的にオンライン削除が実行されます。）
     - `online_delete`を、オンライン削除の実行後に維持するレジャーバージョンの最小数に設定します。オンライン削除が実行されるまでに蓄積される履歴は、この値よりも多くなります。
 
-    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.ja.md" /%}
 
 2. サーバーに対してオンライン削除を指示する[can_deleteメソッド][]の実行をテストします。
 
     このコマンドの実行には[`rippled`コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用できます。例:
 
-        $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
+    ```
+    $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
+    ```
 
     応答は、サーバーがそのレジャーストアーから削除するレジャーインデックスの最大値を示します。たとえば、以下のメッセージはレジャーインデックス43633667以下のレジャーバージョンを削除できることを示します。
 
-        {
-          "result": {
-            "can_delete": 43633667,
-            "status": "success"
-          }
-        }
+    ```
+    {
+      "result": {
+        "can_delete": 43633667,
+        "status": "success"
+      }
+    }
+    ```
 
     サーバー内の _新しい_ 検証済みレジャーバージョンの数が、`online_delete`の設定以上となった場合にのみ、レジャーバージョンが削除されます。
 
@@ -71,11 +79,15 @@ labels:
 
     `cron` 設定を編集します。
 
-        $ crontab -e
+    ```
+    $ crontab -e
+    ```
 
     以下の例では、サーバー時刻で毎日1:05 AMにサーバーが削除を実行するように設定されています。
 
-        5 1 * * * rippled --conf /etc/opt/ripple/rippled.cfg can_delete now
+    ```
+    5 1 * * * rippled --conf /etc/opt/ripple/rippled.cfg can_delete now
+    ```
 
     サーバーで設定されているタイムゾーンに基づいてコマンドが実行されるようにスケジュールしてください。
 
@@ -83,7 +95,9 @@ labels:
 
 4. `rippled`サービスを起動（または再起動）します。
 
-        $ sudo systemctl restart rippled
+    ```
+    $ sudo systemctl restart rippled
+    ```
 
 5. [server_infoメソッド][]を使用してサーバーの`complete_ledgers`範囲を定期的に調べ、レジャーがスケジュール通りに削除されていることを確認します。
 
@@ -99,8 +113,3 @@ labels:
 - cronジョブの構文とこのジョブの実行予定時刻を確認します。
 - `rippled`実行可能ファイルが`cron`設定で指定したパスで使用可能であることを確認します。必要に応じて実行可能ファイルの絶対パス（`/opt/ripple/bin/rippled`など）を指定します。
 - `rippled`ログで、`SHAMapStore::WRN`で始まるメッセージを調べます。このメッセージが出力されている場合、サーバーがネットワークと同期していない状態になったために[オンライン削除が中断されている](online-deletion.html#オンライン削除の中断)可能性があります。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

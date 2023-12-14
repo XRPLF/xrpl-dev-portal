@@ -53,22 +53,22 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 </div>
 
 1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
-	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-	2. Enter the **NFT ID** of the NFT you want to sell.
-	3. Optionally, enter a number of seconds until **Expiration**.
-	4. Enter the Broker account number as the **Destination**.
-	5. Click **Create Sell Offer**.
-	6. Click **Get Offers** to see the new offer.
+    1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
+    2. Enter the **NFT ID** of the NFT you want to sell.
+    3. Optionally, enter a number of seconds until **Expiration**.
+    4. Enter the Broker account number as the **Destination**.
+    5. Click **Create Sell Offer**.
+    6. Click **Get Offers** to see the new offer.
 
 
 [![Sell Offer with Destination](img/quickstart25.png)](img/quickstart25.png)
 
 2. Use the Operational account to create a NFT Buy Offer.
-	1. Enter the **Amount** of your offer.
-	2. Enter the **NFT ID**.
-	3. Enter the owner’s account string in the **Owner** field.
-	4. Optionally enter the number of seconds until **Expiration**.
-	5. Click **Create Buy Offer**.
+    1. Enter the **Amount** of your offer.
+    2. Enter the **NFT ID**.
+    3. Enter the owner’s account string in the **Owner** field.
+    4. Optionally enter the number of seconds until **Expiration**.
+    5. Click **Create Buy Offer**.
 
 [![Buy Offer](img/quickstart-py26.png)](img/quickstart-py26.png)
 

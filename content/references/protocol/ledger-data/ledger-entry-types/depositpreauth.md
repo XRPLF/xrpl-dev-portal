@@ -8,11 +8,11 @@ labels:
 # DepositPreauth
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L172-L178 "Source")
 
-A `DepositPreauth` entry tracks a preauthorization from one account to another. [DepositPreauth transactions][] create these entries.
+A `DepositPreauth` entry tracks a preauthorization from one account to another. [DepositPreauth transactions](../../transactions/types/depositpreauth.md) create these entries.
 
-This has no effect on processing of transactions unless the account that provided the preauthorization requires [Deposit Authorization](depositauth.html). In that case, the account that was preauthorized can send payments and other transactions directly to the account that provided the preauthorization. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
+This has no effect on processing of transactions unless the account that provided the preauthorization requires [Deposit Authorization](../../../../concepts/accounts/depositauth.md). In that case, the account that was preauthorized can send payments and other transactions directly to the account that provided the preauthorization. Preauthorizations are one-directional, and have no effect on payments going the opposite direction.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -27,11 +27,11 @@ This has no effect on processing of transactions unless the account that provide
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.title %}` entries have the following fields:
 
-| Field               | JSON Type        | [Internal Type][] | Required? | Description     |
+| Field               | JSON Type        | [Internal Type](../../binary-format.md) | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
 | `Account`           | String           | Account           | Yes       | The account that granted the preauthorization. (The destination of the preauthorized payments.) |
 | `Authorize`         | String           | Account           | Yes       | The account that received the preauthorization. (The sender of the preauthorized payments.) |
@@ -41,23 +41,18 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for `{{currentpage.name}}` entries.
+There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-`{{currentpage.name}}` entries count as one item towards the owner reserve of the account that granted preauthorization, as long as the entry is in the ledger. Unauthorizing the counterparty frees up the reserve.
+`{% $frontmatter.seo.title %}` entries count as one item towards the owner reserve of the account that granted preauthorization, as long as the entry is in the ledger. Unauthorizing the counterparty frees up the reserve.
 
 ## DepositPreauth ID Format
 
 The ID of a `DepositPreauth` object is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The DepositPreauth space key (`0x0070`)
-* The AccountID of the owner of this object (the sender of the [DepositPreauth transaction][] that created this object; in other words, the one that granted the preauthorization)
-* The AccountID of the preauthorized account (the `Authorized` field of the [DepositPreauth transaction][] that created this object; in other words, the one that received the preauthorization)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* The AccountID of the owner of this object (the sender of the [DepositPreauth transaction](../../transactions/types/depositpreauth.md) that created this object; in other words, the one that granted the preauthorization)
+* The AccountID of the preauthorized account (the `Authorized` field of the [DepositPreauth transaction](../../transactions/types/depositpreauth.md) that created this object; in other words, the one that received the preauthorization)

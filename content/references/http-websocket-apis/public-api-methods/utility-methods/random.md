@@ -14,19 +14,18 @@ The `random` command provides a random number to be used as a source of entropy 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
     "command": "random"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "random",
@@ -35,15 +34,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: random
 rippled random
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes no parameters.
 
@@ -51,10 +51,9 @@ The request includes no parameters.
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -65,9 +64,9 @@ An example of a successful response:
     "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -78,9 +77,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -89,10 +88,11 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following field:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following field:
 
 | `Field`  | Type   | Description               |
 |:---------|:-------|:--------------------------|
@@ -102,8 +102,3 @@ The response follows the [standard format][], with a successful result containin
 
 * Any of the [universal error types][].
 * `internal` - Some internal error occurred, possibly relating to the random number generator.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -91,4 +91,4 @@ XLSドラフトを作成した後、その変更にAmendmentが必要かどう�
 ## 関連項目
 
 - **コンセプト:**
-    - [Amendment](amendments.html)
+    - [Amendment](../../concepts/networks-and-servers/amendments.md)

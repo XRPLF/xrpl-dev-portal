@@ -2,7 +2,8 @@
 html: transaction-types.html
 parent: transaction-formats.html
 blurb: All the different types of transactions that the XRP Ledger can process.
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 labels:
   - Blockchain
 ---
@@ -12,6 +13,8 @@ The type of a transaction (`TransactionType` field) is the most fundamental info
 
 All transactions have certain fields in common:
 
-* [Common Fields](transaction-common-fields.html)
+* [Common Fields](../common-fields.md)
 
 Each transaction type has additional fields relevant to the type of action it causes.
+
+{% child-pages /%}

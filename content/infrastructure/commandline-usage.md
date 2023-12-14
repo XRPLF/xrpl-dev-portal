@@ -45,9 +45,9 @@ The following generic options affect the amount of information written to standa
 
 | Option      | Short Version | Description                                    |
 |:------------|:--------------|:-----------------------------------------------|
-| `--debug`   |               | **DEPRECATED** Enables trace-level debugging (alias for `--verbose`). Use the [log_level method][] instead. |
+| `--debug`   |               | **DEPRECATED** Enables trace-level debugging (alias for `--verbose`). Use the [log_level method](../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md) instead. |
 | `--silent`  |               | Don't write logs to standard out and standard error during startup. Recommended when starting `rippled` as a systemd unit to reduce redundant logging. |
-| `--verbose` | `-v`          | **DEPRECATED** Enables trace-level debugging. Use the [log_level method][] instead. |
+| `--verbose` | `-v`          | **DEPRECATED** Enables trace-level debugging. Use the [log_level method](../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md) instead. |
 
 
 
@@ -65,10 +65,10 @@ Daemon mode is the default mode of operation for `rippled`. In addition to the [
 | `--import`          | Before fully starting, import ledger data from another `rippled` server's ledger store. Requires a valid `[import_db]` stanza in the config file. |
 | `--newnodeid`       | Generate a random node identity for the server. |
 | `--nodeid {VALUE}`  | Specify a node identity. `{VALUE}` can also be a parameter associated with the container or hardware running the server, such as `$HOSTNAME`. |
-| `--nodetoshard`     | Before fully starting, copy any complete [history shards](history-sharding.html) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
-| `--quorum {QUORUM}` | This option is intended for starting [test networks](parallel-networks.html). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
+| `--nodetoshard`     | Before fully starting, copy any complete [history shards](configuration/data-retention/history-sharding.md) from the ledger store into the shard store, up to the shard store's configured maximum disk space. Uses large amounts of CPU and I/O. Caution: this command copies data (instead of moving it), so you must have enough disk space to store the data in both the shard store and the ledger store. <!--{# Task for writing a tutorial to use this: DOC-1639 #}--> |
+| `--quorum {QUORUM}` | This option is intended for starting [test networks](../concepts/networks-and-servers/parallel-networks.md). Override the minimum quorum for validation by requiring an agreement of `{QUORUM}` trusted validators. By default, the quorum for validation is automatically set to a safe number of trusted validators based on how many there are. If some validators are not online, this option can allow progress with a lower than normal quorum. **Warning:** If you set the quorum manually, it may be too low to prevent your server from diverging from the rest of the network. Only use this option if you have a deep understanding of consensus and have a need to use a non-standard configuration. |
 
-The following option has been removed: `--validateShards`. [Removed in: rippled 1.7.0][]
+The following option has been removed: `--validateShards`. [Removed in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_RED")
 
 ## Stand-Alone Mode Options
 
@@ -76,7 +76,7 @@ The following option has been removed: `--validateShards`. [Removed in: rippled 
 rippled --standalone [OPTIONS]
 rippled -a [OPTIONS]
 ```
-Run in [stand-alone mode](rippled-server-modes.html). In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
+Run in [stand-alone mode](../concepts/networks-and-servers/rippled-server-modes.md). In this mode, `rippled` does not connect to the network or perform consensus. (Otherwise, `rippled` runs in daemon mode.)
 
 ## Initial Ledger Options
 
@@ -85,11 +85,11 @@ The following options determine which ledger to load first when starting up. The
 | Option                | Description                                          |
 |:----------------------|:-----------------------------------------------------|
 | `--ledger {LEDGER}`   | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
-| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided [`ledger-file.json`]({{target.github_forkurl}}/blob/{{target.github_branch}}/content/_api-examples/rippled-cli/ledger-file.json). |
+| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided {% repo-link path="content/_api-examples/rippled-cli/ledger-file.json" %}`ledger-file.json`{% /repo-link %}. |
 | `--load`              | Use only the ledger store on disk when loading the initial ledger. |
 | `--net`               | Use only data from the network when loading the initial ledger. |
 | `--replay`            | Use with `--ledger` to replay a specific ledger. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
-| `--start`             | Start with a new genesis ledger that has known amendments enabled, based on their default votes. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](amendments.html). See also: [Start a New Genesis Ledger in Stand-Alone Mode](start-a-new-genesis-ledger-in-stand-alone-mode.html). |
+| `--start`             | Start with a new genesis ledger that has known amendments enabled, based on their default votes. This makes the functionality of those amendments available right away, instead of needing to wait two weeks for the [Amendment Process](../concepts/networks-and-servers/amendments.md). See also: [Start a New Genesis Ledger in Stand-Alone Mode](testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md). |
 | `--valid`             | Consider the initial ledger a valid network ledger even before fully syncing with the network. This can be used for starting networks or rolling back an entire network to a known previous state, as long as 80% of that network's validators load the same ledger at around the same time. |
 
 ## Client Mode Options
@@ -100,7 +100,7 @@ rippled [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
 
 In client mode, the `rippled` executable acts as a client to another `rippled` service. (The service may be the same executable running in a separate process locally, or it could be a `rippled` server on another server.)
 
-To run in client mode, provide the [commandline syntax](request-formatting.html#commandline-format) for one of the [`rippled` API](http-websocket-apis.html) methods.
+To run in client mode, provide the [commandline syntax](../references/http-websocket-apis/api-conventions/request-formatting.md#commandline-format) for one of the [`rippled` API](../references/http-websocket-apis/index.md) methods.
 
 Besides the individual commands, client mode accepts the [Generic Options](#generic-options) and the following options:
 
@@ -138,7 +138,7 @@ While running unit tests, you can specify the [Generic Options](#generic-options
 
 | Option                             | Short Version | Description             |
 |:-----------------------------------|:--------------|:------------------------|
-| `--unittest-ipv6`                  |               | Use [IPv6](https://en.wikipedia.org/wiki/IPv6) to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. [New in: rippled 1.1.0][] |
+| `--unittest-ipv6`                  |               | Use [IPv6](https://en.wikipedia.org/wiki/IPv6) to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. [New in: rippled 1.1.0](https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE") |
 | `--unittest-jobs {NUMBER_OF_JOBS}` |               | Use the specified number of processes to run unit tests. This can finish running tests faster on multi-core systems. The `{NUMBER_OF_JOBS}` should be a positive integer indicating the number of processes to use. |
 | `--unittest-log`                   |               | Allow unit tests to write to logs even if `--quiet` is specified. (No effect otherwise.) |
 | `--quiet`                          | `-q`          | Print fewer diagnostic messages when running unit tests. |
@@ -181,9 +181,3 @@ Certain manual unit tests accept an argument. You can provide the argument with 
 | Option                  | Description                                        |
 |:------------------------|:---------------------------------------------------|
 | `--unittest-arg {ARG}`  | Provide the argument `{ARG}` to the unit test(s) currently being run. Each unit test that accepts arguments defines its own argument format.  |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

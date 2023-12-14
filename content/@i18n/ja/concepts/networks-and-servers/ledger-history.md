@@ -9,7 +9,7 @@ labels:
 ---
 # レジャー履歴
 
-[コンセンサスプロセス](consensus.html)により、[検証済みレジャーバージョン](ledgers.html)のチェーンが作成されます。各バージョンは、以前のバージョンに[トランザクション](transactions.html)のセットを適用して生成されます。各[`rippled`サーバー](xrpl-servers.html)には、レジャーバージョンとトランザクション履歴がローカルに保管されます。サーバーに保管されるトランザクション履歴の量は、サーバーがオンラインであった期間と、サーバーが取得し、保持する履歴量の設定に応じて異なります。
+[コンセンサスプロセス](../consensus-protocol/index.md)により、[検証済みレジャーバージョン](../ledgers/index.md)のチェーンが作成されます。各バージョンは、以前のバージョンに[トランザクション](../transactions/index.md)のセットを適用して生成されます。各[`rippled`サーバー](xrpl-servers.html)には、レジャーバージョンとトランザクション履歴がローカルに保管されます。サーバーに保管されるトランザクション履歴の量は、サーバーがオンラインであった期間と、サーバーが取得し、保持する履歴量の設定に応じて異なります。
 
 ピアツーピアのXRP Ledgerネットワーク内のサーバーは、コンセンサスプロセスの一環としてトランザクションやその他のデータを相互に共有します。各サーバーは個別に新しいレジャーバージョンを作成し、その結果を信頼できるバリデータと比較して、整合性を維持します。（信頼できるバリデータのコンセンサスがサーバーの結果と一致しない場合は、サーバーがピアから必要なデータを取得して整合性を維持します。）サーバーはピアから古いデータをダウンロードして、利用可能な履歴のギャップを埋めることができます。レジャーはデータの暗号[ハッシュ](basic-data-types.html#ハッシュ)を使用した構造となっているため、すべてのサーバーがデータの整合性の検証を行えます。
 
@@ -29,18 +29,18 @@ labels:
 
 `rippled`サーバーは起動されると、最優先で最新の検証済みレジャーの完全なコピーを取得します。その後、サーバーは常にレジャーの進行状況を把握します。レジャー履歴を埋め戻すように設定されているサーバーでは、レジャー履歴が設定量に達するまで埋め戻されます。この設定量は、オンライン削除による削除が開始されるカットオフ値以下でなければなりません。
 
-履歴の埋め戻しは、サーバーの最も低い優先順位の1つであるため、特にサーバーが忙しい場合や、ハードウェアやネットワークのスペックが十分でない場合、不足する履歴を埋めるのに長い時間がかかることがあります。ハードウェアのスペックに関する推奨事項は、[容量計画](capacity-planning.html)を参照してください。また、履歴を埋め戻すには、サーバーのダイレクトピアのうち少なくとも1つが該当する履歴を持っていることが必要です。サーバーのピアツーピア接続の管理については、[ピアリングの設定](configure-peering.html)を参照してください。
+履歴の埋め戻しは、サーバーの最も低い優先順位の1つであるため、特にサーバーが忙しい場合や、ハードウェアやネットワークのスペックが十分でない場合、不足する履歴を埋めるのに長い時間がかかることがあります。ハードウェアのスペックに関する推奨事項は、[容量計画](../../infrastructure/installation/capacity-planning.md)を参照してください。また、履歴を埋め戻すには、サーバーのダイレクトピアのうち少なくとも1つが該当する履歴を持っていることが必要です。サーバーのピアツーピア接続の管理については、[ピアリングの設定](../../infrastructure/configuration/peering/index.md)を参照してください。
 
-XRP Ledgerは、コンテンツの一意のハッシュを使用して（さまざまなレベルの）データを識別します。XRP Ledgerの状態データには、レジャーの履歴の概要が[LedgerHashesオブジェクトタイプ](ledgerhashes.html)の形式で含まれています。サーバーはLedgerHashesオブジェクトを使用して取得するレジャーバージョンを認識し、受信するレジャーデータが正しく完全であることを確認します。
+XRP Ledgerは、コンテンツの一意のハッシュを使用して（さまざまなレベルの）データを識別します。XRP Ledgerの状態データには、レジャーの履歴の概要が[LedgerHashesオブジェクトタイプ](../../references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md)の形式で含まれています。サーバーはLedgerHashesオブジェクトを使用して取得するレジャーバージョンを認識し、受信するレジャーデータが正しく完全であることを確認します。
 
 
 <a id="with-advisory-deletion"></a>
 ### 履歴の埋め戻し
-[新規: rippled 1.6.0][]
+[新規: rippled 1.6.0](https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE")
 
-サーバーがダウンロードしようとする履歴の量は、その設定に依存します。サーバーは自動的に、**最も古い台帳までの履歴**をダウンロードしてギャップを埋めようとします。`[ledger_history]`設定を使用すると、サーバーがそれ以降の履歴を埋め戻すようにすることができます。ただし、[削除](online-deletion.html)が予定されている台帳は、サーバーがダウンロードすることはありません。
+サーバーがダウンロードしようとする履歴の量は、その設定に依存します。サーバーは自動的に、**最も古い台帳までの履歴**をダウンロードしてギャップを埋めようとします。`[ledger_history]`設定を使用すると、サーバーがそれ以降の履歴を埋め戻すようにすることができます。ただし、[削除](../../infrastructure/configuration/data-retention/online-deletion.md)が予定されている台帳は、サーバーがダウンロードすることはありません。
 
-`[ledger_history]`設定は、現在有効な台帳の前から蓄積する台帳の最小数を定義します。ネットワークの[完全な履歴](#すべての履歴)をダウンロードするには、特別な値`full`を使用します。`[ledger_history]`設定を使用して、サーバーに _より少ない_ 履歴をダウンロードさせることはできません。サーバーが保存する履歴の量を減らすには、代わりに[オンライン削除](online-deletion.html)設定を変更してください。
+`[ledger_history]`設定は、現在有効な台帳の前から蓄積する台帳の最小数を定義します。ネットワークの[完全な履歴](#すべての履歴)をダウンロードするには、特別な値`full`を使用します。`[ledger_history]`設定を使用して、サーバーに _より少ない_ 履歴をダウンロードさせることはできません。サーバーが保存する履歴の量を減らすには、代わりに[オンライン削除](../../infrastructure/configuration/data-retention/online-deletion.md)設定を変更してください。
 
 ## すべての履歴
 
@@ -51,35 +51,30 @@ XRP Ledger財団は、コミュニティメンバーが運営する一連の全�
 
 **ヒント:** 一部の暗号資産ネットワークとは異なり、XRP Ledgerのサーバーは、現在の状態を認識して最新のトランザクションを把握するのにすべての履歴を必要としません。
 
-すべての履歴の設定については、[完全な履歴の設定](configure-full-history.html)を参照してください。
+すべての履歴の設定については、[完全な履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)を参照してください。
 
 ## 履歴シャーディング
 
-XRP Ledgerのすべての履歴を1台の高価なマシンに保管する代わりに、複数のサーバーがレジャー履歴の一部分を保管するように構成できます。これは[履歴シャーディング](history-sharding.html)機能によって実現します。一定範囲のレジャー履歴が _シャードストアー_ という個別の保管領域に保管されます。ピアサーバーから（上記の[履歴の取得](#履歴の取得)で説明したとおり）特定のデータが要求されると、サーバーはレジャーストアーまたはシャードストアーのデータを使用して応答できます。
+XRP Ledgerのすべての履歴を1台の高価なマシンに保管する代わりに、複数のサーバーがレジャー履歴の一部分を保管するように構成できます。これは[履歴シャーディング](../../infrastructure/configuration/data-retention/history-sharding.md)機能によって実現します。一定範囲のレジャー履歴が _シャードストアー_ という個別の保管領域に保管されます。ピアサーバーから（上記の[履歴の取得](#履歴の取得)で説明したとおり）特定のデータが要求されると、サーバーはレジャーストアーまたはシャードストアーのデータを使用して応答できます。
 
 オンライン削除ではシャードストアーのデータは削除**されません**。ただし、32768個以上のレジャーバージョンをサーバーのレジャーストアーに保持するようにオンライン削除が設定されていれば、レジャーストアーからデータが自動的に削除される前に、サーバーはレジャーストアーからシャードストアーにすべてのシャードをコピーできます。
 
-詳細は、[履歴シャーディングの設定](configure-history-sharding.html)を参照してください。
+詳細は、[履歴シャーディングの設定](../../infrastructure/configuration/data-retention/configure-history-sharding.md)を参照してください。
 
 ## 関連項目
 
 - **コンセプト:**
-    - [レジャー](ledgers.html)
-    - [コンセンサス](consensus.html)
+    - [レジャー](../ledgers/index.md)
+    - [コンセンサス](../consensus-protocol/index.md)
 - **チュートリアル:**
-    - [`rippled`の設定](configure-rippled.html)
-        - [オンライン削除の設定](configure-online-deletion.html)
-        - [指示による削除の設定](configure-advisory-deletion.html)
-        - [履歴シャーディングの設定](configure-history-sharding.html)
-        - [全履歴の設定](configure-full-history.html)
+    - [`rippled`の設定](../../infrastructure/configuration/index.md)
+        - [オンライン削除の設定](../../infrastructure/configuration/data-retention/configure-online-deletion.md)
+        - [指示による削除の設定](../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
+        - [履歴シャーディングの設定](../../infrastructure/configuration/data-retention/configure-history-sharding.md)
+        - [全履歴の設定](../../infrastructure/configuration/data-retention/configure-full-history.md)
 - **リファレンス:**
     - [ledgerメソッド][]
     - [server_infoメソッド][]
     - [ledger_requestメソッド][]
     - [can_deleteメソッド][]
     - [ledger_cleanerメソッド][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

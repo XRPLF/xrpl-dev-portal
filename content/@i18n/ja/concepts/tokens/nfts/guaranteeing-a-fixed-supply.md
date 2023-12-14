@@ -12,10 +12,10 @@ labels:
 一定数のNFTを保証するためには、
 
 1. 新しいアカウント、_発行者_ を作成し、資金を提供します。このアカウントは、コレクション内のトークンの発行者となります。[アカウントの作成](accounts.html#アカウントの作成)を参照してください。
-1. `AccountSet`を使用して、自分の運用するウォレットを発行者の認可Minterとして割り当てます。[代理Mint](nftoken-authorized-minting.html)を参照してください。
-1. 運用アカウントで`NFTokenMint`を使ってトークンをミントします。運用中のウォレットには、発行者のためにMintされたすべてのトークンが保管されます。[Mintのバッチ処理](nftoken-batch-minting.html)をご覧ください
+1. `AccountSet`を使用して、自分の運用するウォレットを発行者の認可Minterとして割り当てます。[代理Mint](authorizing-another-minter.md)を参照してください。
+1. 運用アカウントで`NFTokenMint`を使ってトークンをミントします。運用中のウォレットには、発行者のためにMintされたすべてのトークンが保管されます。[Mintのバッチ処理](batch-minting.md)をご覧ください
 1. 発行者の認可Minterである自分の運用するウォレットを削除するために、`AccountSet`を使用します。
-1. 発行者アカウントを"ブラックホール化"する。[マスターキーペアの無効化](disable-master-key-pair.html)をご覧ください。
+1. 発行者アカウントを"ブラックホール化"する。[マスターキーペアの無効化](../../../tutorials/manage-account-settings/disable-master-key-pair.md)をご覧ください。
 
 この時点で、発行者のアドレスを発行アカウントとする新たなトークンのミントは不可能となります。
 

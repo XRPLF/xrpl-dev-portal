@@ -13,10 +13,10 @@ NFTokenBurnトランザクションは、`NFToken`オブジェクトを保持し
 
 この操作に成功すると、対応する`NFToken`が削除されます。この操作によって`NFToken`を保持している`NFTokenPage`が空になるか、統合されて`NFTokenPage`が削除されると、所有者準備金が1つ減ります。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -28,9 +28,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 
-| フィールド          | JSONの型  | [内部の型][]        | 説明                      |
+| フィールド          | JSONの型  | [内部の型](../../binary-format.md)        | 説明                      |
 |:------------------|:----------|:------------------|:-------------------------|
 | `NFTokenID`       | 文字列    | Hash256           | このトランザクションによって削除される`NFToken`を指定します。 |
 | `Owner`           | 文字列    | AccountID         | _(省略可)_ Burnする`NFToken`の所有者。所有者がこのトランザクションを送信するアカウントと異なる場合にのみ使用されます。発行者または許可された発行者は、`lsfBurnable`フラグが有効なNFTをBurnするために、このフィールドを使用することができます。 |
@@ -38,15 +38,10 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード         | 説明                                                     |
 |:-------------------|:--------------------------------------------------------|
 | `temDISABLED`      | [NonFungibleTokensV1 Amendment][]は有効ではありません。         |
 | `tecNO_ENTRY`      | 指定された `TokenID` が見つかりませんでした。                 |
 | `tecNO_PERMISSION` | このアカウントにはトークンをBurnする権限がありません。          |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

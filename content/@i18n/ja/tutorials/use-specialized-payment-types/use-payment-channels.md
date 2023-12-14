@@ -8,9 +8,9 @@ labels:
 ---
 # Payment Channelの使用
 
-Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](payment-channels.html)の使用方法を、ローカル`rippled`サーバーの[JSON-RPC API](http-websocket-apis.html)を使用する例を使って説明します。
+Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](../../concepts/payment-types/payment-channels.md)の使用方法を、ローカル`rippled`サーバーの[JSON-RPC API](../../references/http-websocket-apis/index.md)を使用する例を使って説明します。
 
-このチュートリアルを進めるにあたって[資金供給されているXRP Ledgerアカウント](accounts.html)を所有するユーザーが2名いれば理想的です。ただし、2つのXRP Ledgerアドレスを管理する1名のユーザーとしてこのチュートリアルを進めることもできます。
+このチュートリアルを進めるにあたって[資金供給されているXRP Ledgerアカウント](../../concepts/accounts/accounts.md)を所有するユーザーが2名いれば理想的です。ただし、2つのXRP Ledgerアドレスを管理する1名のユーザーとしてこのチュートリアルを進めることもできます。
 
 ## サンプルの値
 
@@ -19,7 +19,7 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 | | |
 |--|--|
 | **支払人のアドレス** | rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH |
-| **Channelに使用する公開鍵（XRP Ledgerの[base58][]エンコード文字列フォーマット）** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
+| **Channelに使用する公開鍵（XRP Ledgerの[base58](base58-encodings.html)エンコード文字列フォーマット）** | aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3
 | **Channelに使用する公開鍵（16進数）** | 023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6 |
 | **受取人のアドレス** | rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn |
 
@@ -63,107 +63,115 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelCreate",
-                "Amount": "100000000",
-                "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "SettleDelay": 86400,
-                "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "DestinationTag": 20170428
-            },
-            "fee_mult_max": 1000
-        }]
-    }
+{
+    "method": "submit",
+    "params": [{
+        "secret": "s████████████████████████████",
+        "tx_json": {
+            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "TransactionType": "PaymentChannelCreate",
+            "Amount": "100000000",
+            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "SettleDelay": 86400,
+            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "DestinationTag": 20170428
+        },
+        "fee_mult_max": 1000
+    }]
+}
+```
 
 応答:
 
-    200 OK
+```
+200 OK
 
-    {
-        "result": {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied.Only final in a validated ledger.",
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied.Only final in a validated ledger.",
+        ...
+        "tx_json": {
             ...
-            "tx_json": {
-                ...
-                "TransactionType": "PaymentChannelCreate",
-                "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
-            }
+            "TransactionType": "PaymentChannelCreate",
+            "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
         }
     }
+}
+```
 
 
 `submit`要求に対する直接の応答には、トランザクションを識別する`hash`値を含む _暫定的な_ 結果が含まれています。支払人は、検証済みレジャーでトランザクションの _最終_ 結果を確認し、メタデータからChannel IDを取得する必要があります。この処理は`tx`コマンドを使用して実行できます。
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "tx",
-        "params": [{
-            "transaction": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
-        }]
-    }
+{
+    "method": "tx",
+    "params": [{
+        "transaction": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D"
+    }]
+}
+```
 
 応答:
 
-    200 OK
+```
+200 OK
 
-    {
-        "result": {
-            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "Amount": "100000000",
-            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            ...
-            "TransactionType": "PaymentChannelCreate",
-            ...
-            "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D",
-            "inLedger": 29380080,
-            "ledger_index": 29380080,
-            "meta": {
-                "AffectedNodes": [
-                    ...
-                    {
-                        "CreatedNode": {
-                            "LedgerEntryType": "PayChannel",
-                            "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                            "NewFields": {
-                                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "Amount": "100000000",
-                                "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                                "DestinationTag": 20170428,
-                                "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                                "SettleDelay": 86400
-                            }
+{
+    "result": {
+        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "Amount": "100000000",
+        "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        ...
+        "TransactionType": "PaymentChannelCreate",
+        ...
+        "hash": "3F93C482C0BC2A1387D9E67DF60BECBB76CC2160AE98522C77AF0074D548F67D",
+        "inLedger": 29380080,
+        "ledger_index": 29380080,
+        "meta": {
+            "AffectedNodes": [
+                ...
+                {
+                    "CreatedNode": {
+                        "LedgerEntryType": "PayChannel",
+                        "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                        "NewFields": {
+                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "Amount": "100000000",
+                            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                            "DestinationTag": 20170428,
+                            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                            "SettleDelay": 86400
                         }
-                    },
-                    ...
-                ],
-                "TransactionIndex": 16,
-                "TransactionResult": "tesSUCCESS"
-            },
-            "status": "success",
-            "validated": true
-        }
+                    }
+                },
+                ...
+            ],
+            "TransactionIndex": 16,
+            "TransactionResult": "tesSUCCESS"
+        },
+        "status": "success",
+        "validated": true
     }
+}
+```
 
 支払人はJSON-RPCからの応答で以下を確認する必要があります。
 
 - トランザクションの`meta`フィールドで、`TransactionResult`が`tesSUCCESS`であることを確認します。
-- データが検証済みレジャーのデータであることを示す`"validated":true`が応答に含まれていることを確認します。（結果`tesSUCCESS`は、検証済みレジャーバージョンに記録されている場合にのみ[最終的な](finality-of-results.html)結果です。）
+- データが検証済みレジャーのデータであることを示す`"validated":true`が応答に含まれていることを確認します。（結果`tesSUCCESS`は、検証済みレジャーバージョンに記録されている場合にのみ[最終的な](../../concepts/transactions/finality-of-results/index.md)結果です。）
 - トランザクションの`meta`フィールドの`AffectedNodes`配列で、`LedgerEntryType`が`PayChannel`である`CreatedNode`オブジェクトを検索します。`CreatedNode`オブジェクトの`LedgerIndex`フィールドはChannel IDを示します。（上記の例では、これは「5DB0...」で始まる16進文字列です。）Channel IDは、後でクレームに署名する際に必要です。
-    PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](paychannel.html)を参照してください。
+    PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)を参照してください。
 
 
 ## 2. 受取人がPayment Channelの特性を確認します。
@@ -172,39 +180,43 @@ Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）�
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "account_channels",
-        "params": [{
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "ledger_index": "validated"
-        }]
-    }
+{
+    "method": "account_channels",
+    "params": [{
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "ledger_index": "validated"
+    }]
+}
+```
 
 応答:
 
-    200 OK
+```
+200 OK
 
-    {
-        "result": {
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
             "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "channels": [{
-                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "amount": "100000000",
-                "balance": "0",
-                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "destination_tag": 20170428,
-                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "settle_delay": 86400
-            }],
-            "status": "success"
-        }
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
     }
+}
+```
 
 受取人は、以下のすべての点を含め、Payment Channelのパラメーターが特定のユースケースに適していることを確認します。
 
@@ -221,32 +233,36 @@ Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）�
 
 これらのクレームの額は、支払人が購入する具体的な商品またはサービスに応じて異なります。
 
-各クレームの額は累計額でなければなりません。つまり、2つのアイテムをそれぞれ10 XRPで購入する場合、1番目のクレームの額は10 XRPで、2番目のクレームの額は20 XRPである必要があります。クレームは、Channelに割り当てられているXRPの合計額を超えることはありません。（[PaymentChannelFund][]トランザクションでは、Channelに割り当てられるXRPの合計額を増加できます。）
+各クレームの額は累計額でなければなりません。つまり、2つのアイテムをそれぞれ10 XRPで購入する場合、1番目のクレームの額は10 XRPで、2番目のクレームの額は20 XRPである必要があります。クレームは、Channelに割り当てられているXRPの合計額を超えることはありません。（[PaymentChannelFund](../../references/protocol/transactions/types/paymentchannelfund.md)トランザクションでは、Channelに割り当てられるXRPの合計額を増加できます。）
 
 [channel_authorizeメソッド][]を使用してクレームを作成できます。以下の例では、Channelから1 XRPが承認されます。
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "channel_authorize",
-        "params": [{
-            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "secret": "s████████████████████████████",
-            "amount": "1000000"
-        }]
-    }
+{
+    "method": "channel_authorize",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "secret": "s████████████████████████████",
+        "amount": "1000000"
+    }]
+}
+```
 
 応答:
 
-    {
-        "result": {
-            "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-            "status": "success"
-        }
+```
+{
+    "result": {
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "status": "success"
     }
+}
+```
 
 
 ## 4. 支払人が、商品またはサービスに対する支払いとしてクレームを受取人に送信します。
@@ -271,67 +287,75 @@ JSON-RPC APIで`channel_verify`を使用する例:
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "channel_verify",
-        "params": [{
-            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-            "amount": "1000000"
-        }]
-    }
+{
+    "method": "channel_verify",
+    "params": [{
+        "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+        "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+        "amount": "1000000"
+    }]
+}
+```
 
 応答:
 
-    200 OK
+```
+200 OK
 
-    {
-        "result": {
-            "signature_verified":true,
-            "status":"success"
-        }
+{
+    "result": {
+        "signature_verified":true,
+        "status":"success"
     }
+}
+```
 
 応答に`"signature_verified": true`が含まれている場合、クレームの署名は真正です。受取人は、クレームを換金できる十分なXRPがChannelにあること**も**確認する必要があります。このためには、受取人は[account_channelsメソッド][]を使用して、Payment Channelの最新の検証済み状態を確認します。
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "account_channels",
-        "params": [{
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-            "ledger_index": "validated"
-        }]
-    }
+{
+    "method": "account_channels",
+    "params": [{
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+        "ledger_index": "validated"
+    }]
+}
+```
 
 応答:
 
-    200 OK
+```
+200 OK
 
-    {
-        "result": {
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [{
             "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "channels": [{
-                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "amount": "100000000",
-                "balance": "0",
-                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                "destination_tag": 20170428,
-                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "settle_delay": 86400
-            }],
-            "status": "success"
-        }
+            "amount": "100000000",
+            "balance": "0",
+            "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "destination_tag": 20170428,
+            "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+            "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "settle_delay": 86400
+        }],
+        "status": "success"
     }
+}
+```
 
 受取人は以下の点を確認する必要があります:
 
@@ -339,7 +363,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
 - Channelの`expiration`（変更可能な有効期限）がある場合は、この期限が早過ぎないことを確認します。受取人はこの期限の前にクレームを清算する必要があります。
 - クレームの`amount`がChannelの`amount`以下であることを確認します。クレームの`amount`の方が大きい場合、支払人が[PaymentChannelFundトランザクション][]を使用してChannelで使用可能なXRPの合計額を増加しない限り、クレームを清算できません。
 - Channelの`balance`が、受取人がすでにChannelから受領していると予測している額と一致していることを確認します。これらの金額が一致しない場合、受取人はChannelのトランザクション履歴を再度確認する必要があります。不一致の原因として以下のものが考えられます。
-    - 支払人が[PaymentChannelClaim][]トランザクションを使用してChannelから受取人にXRPを送金したところ、受取人がこれに気付かず、着信トランザクションを記録していなかった。
+    - 支払人が[PaymentChannelClaim](../../references/protocol/transactions/types/paymentchannelclaim.md)トランザクションを使用してChannelから受取人にXRPを送金したところ、受取人がこれに気付かず、着信トランザクションを記録していなかった。
     - 受取人のレコードに、「処理中」のトランザクションや、最新の検証済みレジャーバージョンにはまだ記録されていないトランザクションが含まれていた。受取人は[txメソッド][]を使用して個々のトランザクションの状態を調べ、この点を確認できます。
     - `account_channels`要求に正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
     - 受取人は以前にXRPを清算したものの、記録し忘れていた。
@@ -377,56 +401,60 @@ ChannelからXRPを清算する例:
 
 要求:
 
-    POST http://localhost:5005/
-    Content-Type: application/json
+```
+POST http://localhost:5005/
+Content-Type: application/json
 
-    {
-        "method": "submit",
-        "params": [{
-                "secret": "s████████████████████████████",
-                "tx_json": {
-                    "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                    "TransactionType": "PaymentChannelClaim",
-                    "Amount": "1000000",
-                    "Balance": "1000000",
-                    "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                    "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                    "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064"
-                },
-                "fee_mult_max": 1000
-            }]
-    }
-
-応答:
-
-    200 OK
-
-    {
-        "result": {
-            "engine_result": "tesSUCCESS",
-            "engine_result_code": 0,
-            "engine_result_message": "The transaction was applied.Only final in a validated ledger.",
-            "status": "success",
-            "tx_blob": "12000F2280000000240000017450165DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB36140000000000F42406240000000000F424068400000000000000A7121023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C7646304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF5029006481144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+{
+    "method": "submit",
+    "params": [{
+            "secret": "s████████████████████████████",
             "tx_json": {
                 "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "TransactionType": "PaymentChannelClaim",
                 "Amount": "1000000",
                 "Balance": "1000000",
                 "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Fee": "10",
-                "Flags": 2147483648,
                 "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                "Sequence": 372,
-                "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
-                "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
-                "TransactionType": "PaymentChannelClaim",
-                "TxnSignature": "304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C",
-                "hash": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB"
-            }
+                "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064"
+            },
+            "fee_mult_max": 1000
+        }]
+}
+```
+
+応答:
+
+```
+200 OK
+
+{
+    "result": {
+        "engine_result": "tesSUCCESS",
+        "engine_result_code": 0,
+        "engine_result_message": "The transaction was applied.Only final in a validated ledger.",
+        "status": "success",
+        "tx_blob": "12000F2280000000240000017450165DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB36140000000000F42406240000000000F424068400000000000000A7121023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7447304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C7646304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF5029006481144B4E9C06F24296074F7BC48F92A97916C6DC5EA9",
+        "tx_json": {
+            "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+            "Amount": "1000000",
+            "Balance": "1000000",
+            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "Fee": "10",
+            "Flags": 2147483648,
+            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+            "Sequence": 372,
+            "Signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
+            "SigningPubKey": "03AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB",
+            "TransactionType": "PaymentChannelClaim",
+            "TxnSignature": "304502210096B933BC24DA77D8C4057B4780B282BA66C668DFE1ACF4EEC063AD6661725797022037C8823669CE91AACA8CC754C9F041359F85B0B32384AEA141EBC3603798A24C",
+            "hash": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB"
         }
     }
+}
+```
 
-受取人は検証済みレジャーでこのトランザクションが正常に処理されたことを確認します。詳細は、[確実なトランザクションの送信](reliable-transaction-submission.html)を参照してください。
+受取人は検証済みレジャーでこのトランザクションが正常に処理されたことを確認します。詳細は、[確実なトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を参照してください。
 
 ## 9. 支払人と受取人の取引完了後、支払人はChannelの閉鎖を要求します。
 
@@ -440,46 +468,50 @@ ChannelにXRPが _残っている_ 場合は、このChannelの閉鎖要求は�
 
 Channelの閉鎖を要求する[トランザクションを送信する](submit.html#署名と送信モード)例:
 
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelClaim",
-                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
-            },
-            "fee_mult_max": 1000
-        }]
-    }
+```
+{
+    "method": "submit",
+    "params": [{
+        "secret": "s████████████████████████████",
+        "tx_json": {
+            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "TransactionType": "PaymentChannelClaim",
+            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "Flags": 2147614720
+        },
+        "fee_mult_max": 1000
+    }]
+}
+```
 
 トランザクションが検証済みレジャーに記録されたら、いずれの当事者も[account_channelsメソッド][]を使用して現在スケジュールされているChannelの有効期限を確認できます。最新の検証済みレジャーバージョンからデータを取得するには、`"ledger_index": "validated"`を必ず指定してください。
 
 `account_channels`応答の例:
 
-    {
-        "result": {
-            "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "channels": [
-                {
-                    "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                    "amount": "100000000",
-                    "balance": "1000000",
-                    "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                    "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                    "destination_tag": 20170428,
-                    "expiration": 547073182,
-                    "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
-                    "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                    "settle_delay": 86400
-                }
-            ],
-            "status": "success"
-        }
+```
+{
+    "result": {
+        "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "channels": [
+            {
+                "account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                "amount": "100000000",
+                "balance": "1000000",
+                "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+                "destination_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                "destination_tag": 20170428,
+                "expiration": 547073182,
+                "public_key": "aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3",
+                "public_key_hex": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                "settle_delay": 86400
+            }
+        ],
+        "status": "success"
     }
+}
+```
 
-この例に示されている`expiration`の値547073182（[Rippleエポック以降の経過秒数][]） は2017-05-02T20:46:22Zに対応しています。このため、この時刻までに決済されなかったクレームはすべて無効になります。
+この例に示されている`expiration`の値547073182（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)） は2017-05-02T20:46:22Zに対応しています。このため、この時刻までに決済されなかったクレームはすべて無効になります。
 
 ## 10. 有効期限切れのChannelは誰でも閉鎖できます。
 
@@ -493,107 +525,111 @@ Channelは期限切れ状態で永久にレジャーに残ることがありま�
 
 有効期限切れのChannelを閉鎖するトランザクションを[送信する](submit.html#署名と送信モード)例:
 
-    {
-        "method": "submit",
-        "params": [{
-            "secret": "s████████████████████████████",
-            "tx_json": {
-                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                "TransactionType": "PaymentChannelClaim",
-                "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-                "Flags": 2147614720
-            },
-            "fee_mult_max": 1000
-        }]
-    }
+```
+{
+    "method": "submit",
+    "params": [{
+        "secret": "s████████████████████████████",
+        "tx_json": {
+            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+            "TransactionType": "PaymentChannelClaim",
+            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+            "Flags": 2147614720
+        },
+        "fee_mult_max": 1000
+    }]
+}
+```
 
 トランザクションが検証済みレジャーに記録されたら、そのトランザクションのメタデータを調べて、Channelが削除され、XRPが送金元に返金されたことを確認できます。
 
 このステップのトランザクションを検索する[txメソッド][]を使用した場合の応答の例:
 
-    {
-        "result": {
-            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-            "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
-            "Fee": "5606",
-            "Flags": 2147614720,
-            "Sequence": 41,
-            "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-            "TransactionType": "PaymentChannelClaim",
-            "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
-            "date": 547091262,
-            "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
-            "inLedger": 29480670,
-            "ledger_index": 29480670,
-            "meta": {
-                "AffectedNodes": [
-                    {
-                        "ModifiedNode": {
-                            "LedgerEntryType": "AccountRoot",
-                            "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
-                            "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
-                            "PreviousTxnLgrSeq": 29385089
-                        }
-                    },
-                    {
-                        "DeletedNode": {
-                            "FinalFields": {
-                                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "Amount": "100000000",
-                                "Balance": "1000000",
-                                "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
-                                "DestinationTag": 20170428,
-                                "Expiration": 547073182,
-                                "Flags": 0,
-                                "OwnerNode": "0000000000000000",
-                                "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
-                                "PreviousTxnLgrSeq": 29451256,
-                                "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
-                                "SettleDelay": 86400
-                            },
-                            "LedgerEntryType": "PayChannel",
-                            "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
-                        }
-                    },
-                    {
-                        "ModifiedNode": {
-                            "FinalFields": {
-                                "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "Balance": "1041862844",
-                                "Flags": 0,
-                                "OwnerCount": 2,
-                                "Sequence": 42
-                            },
-                            "LedgerEntryType": "AccountRoot",
-                            "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
-                            "PreviousFields": {
-                                "Balance": "942868450",
-                                "OwnerCount": 3,
-                                "Sequence": 41
-                            },
-                            "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
-                            "PreviousTxnLgrSeq": 29451256
-                        }
-                    },
-                    {
-                        "ModifiedNode": {
-                            "FinalFields": {
-                                "Flags": 0,
-                                "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
-                                "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
-                            },
-                            "LedgerEntryType": "DirectoryNode",
-                            "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
-                        }
+```
+{
+    "result": {
+        "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+        "Channel": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
+        "Fee": "5606",
+        "Flags": 2147614720,
+        "Sequence": 41,
+        "SigningPubKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+        "TransactionType": "PaymentChannelClaim",
+        "TxnSignature": "3044022008922FEB6F7D35D42006685BCBB007103D2A40AFAA69A7CFC10DF529F94BB6A402205D67816F50BBAEE0A2709AA3A93707304EC21133550FD2FF7436AD0C3CA6CE27",
+        "date": 547091262,
+        "hash": "9C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33",
+        "inLedger": 29480670,
+        "ledger_index": 29480670,
+        "meta": {
+            "AffectedNodes": [
+                {
+                    "ModifiedNode": {
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "13F1A95D7AAB7108D5CE7EEAF504B2894B8C674E6D68499076441C4837282BF8",
+                        "PreviousTxnID": "C9FE08FC88CF76C3B06622ADAA47AE99CABB3380E4D195E7751274CFD87910EB",
+                        "PreviousTxnLgrSeq": 29385089
                     }
-                ],
-                "TransactionIndex": 7,
-                "TransactionResult": "tesSUCCESS"
-            },
-            "status": "success",
-            "validated": true
-        }
+                },
+                {
+                    "DeletedNode": {
+                        "FinalFields": {
+                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "Amount": "100000000",
+                            "Balance": "1000000",
+                            "Destination": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
+                            "DestinationTag": 20170428,
+                            "Expiration": 547073182,
+                            "Flags": 0,
+                            "OwnerNode": "0000000000000000",
+                            "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+                            "PreviousTxnLgrSeq": 29451256,
+                            "PublicKey": "023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6",
+                            "SettleDelay": 86400
+                        },
+                        "LedgerEntryType": "PayChannel",
+                        "LedgerIndex": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3"
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Account": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "Balance": "1041862844",
+                            "Flags": 0,
+                            "OwnerCount": 2,
+                            "Sequence": 42
+                        },
+                        "LedgerEntryType": "AccountRoot",
+                        "LedgerIndex": "B1CB040A17F9469BC00376EC8719535655824AD16CB5F539DD5765FEA88FDBE3",
+                        "PreviousFields": {
+                            "Balance": "942868450",
+                            "OwnerCount": 3,
+                            "Sequence": 41
+                        },
+                        "PreviousTxnID": "C5C70B2BCC515165B7F62ACC8126F8F8B655EB6E1D949A49B2358262BDA986B4",
+                        "PreviousTxnLgrSeq": 29451256
+                    }
+                },
+                {
+                    "ModifiedNode": {
+                        "FinalFields": {
+                            "Flags": 0,
+                            "Owner": "rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH",
+                            "RootIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+                        },
+                        "LedgerEntryType": "DirectoryNode",
+                        "LedgerIndex": "E590FC40B4F24D18341569BD3702A2D4E07E7BC04D11CE63608B67979E67030C"
+                    }
+                }
+            ],
+            "TransactionIndex": 7,
+            "TransactionResult": "tesSUCCESS"
+        },
+        "status": "success",
+        "validated": true
     }
+}
+```
 
 トランザクションメタデータで以下のエントリを検索します。
 
@@ -606,10 +642,3 @@ Channelは期限切れ状態で永久にレジャーに残ることがありま�
 ## 結論
 
 これでPayment Channelの使用法のチュートリアルを終了します。ユーザーが、Payment Channelのスピードと利便性を最大限に活用できる独特で興味深い用途を考えることが推奨されます。
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

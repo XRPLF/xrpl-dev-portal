@@ -10,15 +10,14 @@ labels:
 
 The `connect` command forces the `rippled` server to connect to a specific peer `rippled` server.
 
-*The `connect` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users!*
+*The `connect` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "connect",
@@ -26,9 +25,9 @@ An example of the request format:
     "port": 51235
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "connect",
@@ -40,32 +39,31 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: connect ip [port]
 rippled connect 192.170.145.88 51235
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `ip`    | String | IP address of the server to connect to                    |
-| `port`  | Number | _(Optional)_ Port number to use when connecting. The default is **2459**. [Updated in: rippled 1.6.0][] |
+| `port`  | Number | _(Optional)_ Port number to use when connecting. The default is **2459**. [Updated in: rippled 1.6.0](https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE") |
 
 ### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -74,9 +72,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -88,10 +86,11 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`   | Type   | Description                                            |
 |:----------|:-------|:-------------------------------------------------------|
@@ -103,8 +102,3 @@ The response follows the [standard format][], with a successful result containin
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - Cannot connect in stand-alone mode - Network-related commands are disabled in stand-alone mode.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -10,9 +10,9 @@ labels:
 
 _(Added by the [Checks amendment][].)_
 
-A `Check` entry describes a [check](checks.html), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
+A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -33,14 +33,14 @@ A `Check` entry describes a [check](checks.html), similar to a paper personal ch
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.title %}` entries have the following fields:
 
-| Field               | JSON Type        | [Internal Type][] | Required? | Description     |
+| Field               | JSON Type        | [Internal Type](../../binary-format.md) | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
 | `Account`           | String           | Account           | Yes       | The sender of the Check. Cashing the Check debits this address's balance. |
-| `Destination`       | String           | Account           | Yes       | The intended recipient of the Check. Only this address can cash the Check, using a [CheckCash transaction][]. |
+| `Destination`       | String           | Account           | Yes       | The intended recipient of the Check. Only this address can cash the Check, using a [CheckCash transaction](../../transactions/types/checkcash.md). |
 | `DestinationNode`   | String           | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. |
 | `DestinationTag`    | Number           | UInt32            | No        | An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
 | `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
@@ -50,18 +50,18 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `PreviousTxnID`     | String           | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       |The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `SendMax`           | String or Object | Amount            | Yes       | The maximum amount of currency this Check can debit the sender. If the Check is successfully cashed, the destination is credited in the same currency for up to this amount. |
-| `Sequence`          | Number           | UInt32            | Yes       | The sequence number of the [CheckCreate transaction][] that created this check. |
+| `Sequence`          | Number           | UInt32            | Yes       | The sequence number of the [CheckCreate transaction](../../transactions/types/checkcreate.md) that created this check. |
 | `SourceTag`         | Number           | UInt32            | No        | An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for `{{currentpage.name}}` entries.
+There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-`{{currentpage.name}}` entries count as one item towards the owner reserve of the sender of the Check as long as the entry is in the ledger. This reserve is freed up when the check is cashed or canceled.
+`{% $frontmatter.seo.title %}` entries count as one item towards the owner reserve of the sender of the Check as long as the entry is in the ledger. This reserve is freed up when the check is cashed or canceled.
 
 
 ## Check ID Format
@@ -70,13 +70,8 @@ There are no flags defined for `{{currentpage.name}}` entries.
 The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Check space key (`0x0043`)
-* The AccountID of the sender of the [CheckCreate transaction][] that created the `Check`
-* The `Sequence` number of the [CheckCreate transaction][] that created the `Check`.
-    If the CheckCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
+* The AccountID of the sender of the [CheckCreate transaction](../../transactions/types/checkcreate.md) that created the `Check`
+* The `Sequence` number of the [CheckCreate transaction](../../transactions/types/checkcreate.md) that created the `Check`.
+    If the CheckCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
-See the tutorial showing how to [Send a Check](send-a-check.html).
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+See the tutorial showing how to [Send a Check](../../../../tutorials/use-specialized-payment-types/use-checks/send-a-check.md).

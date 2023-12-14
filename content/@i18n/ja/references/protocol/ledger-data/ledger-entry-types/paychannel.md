@@ -16,9 +16,9 @@ _（[PayChan Amendment][]により追加されました。）_
 
 有効期限切れになったPayment Channelは、まずレジャーに残ります。これは、レジャーの内容を変更できるのは新しいトランザクションだけであるためです。有効期限の経過後にトランザクションがPayment Channelにアクセスすると、トランザクション処理によりそのPayment Channelは自動的に閉鎖されます。有効期限切れのChannelを閉鎖して未使用のXRPを所有者に返金するには、一部のアドレスがそのChannelにアクセスする新しいPaymentChannelClaimトランザクションまたはPaymentChannelFundトランザクションを送信する必要があります。
 
-Payment Channelの使用例については、[Payment Channelのチュートリアル](use-payment-channels.html)を参照してください。
+Payment Channelの使用例については、[Payment Channelのチュートリアル](../../../../tutorials/use-specialized-payment-types/use-payment-channels.md)を参照してください。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -41,25 +41,25 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `PayChannel`オブジェクトのフィールドは次のとおりです。
 
-| 名前                | JSONの型 | [内部の型][] | 説明            |
+| 名前                | JSONの型 | [内部の型](../../binary-format.md) | 説明            |
 |:--------------------|:----------|:------------------|:-----------------------|
 | `LedgerEntryType`   | 文字列    | UInt16            | 値`0x0078`が文字列`PayChannel`にマッピングされている場合は、このオブジェクトがPayment Channelオブジェクトであることを示します。 |
 | `Account`           | 文字列    | AccountID         | このPayment Channelを所有する支払元アドレス。これは、Channelを作成したトランザクションの送信側アドレスから取得されます。 |
 | `Destination`       | 文字列    | AccountID         | このPayment Channelの宛先アドレス。Payment Channelが開いている場合、このアドレスは、このChannelからXRPを受領できる唯一のアドレスです。これは、Channelを作成したトランザクションの`Destination`フィールドから取得されます。 |
-| `Amount`            | 文字列    | Amount            | このChannelに割り当てられている [XRP、drop単位][]の合計です。これには宛先アドレスに支払われたXRPも含まれます。最初にChannelを作成したトランザクションにより設定され、支払元アドレスがPaymentChannelFundトランザクションを送信する場合に増加できます。 |
-| `Balance`           | 文字列    | Amount            | このChannelがすでに支払った[XRP、drop単位][]の合計。この値と`Amount`フィールドの差異は、PaymentChannelClaimトランザクションの宛先アドレスに対して支払うことができるXRPの量を示します。Channelが閉鎖すると、残りの差額は支払元アドレスに返されます。 |
+| `Amount`            | 文字列    | Amount            | このChannelに割り当てられている [XRP、drop単位](basic-data-types.html#通貨額の指定)の合計です。これには宛先アドレスに支払われたXRPも含まれます。最初にChannelを作成したトランザクションにより設定され、支払元アドレスがPaymentChannelFundトランザクションを送信する場合に増加できます。 |
+| `Balance`           | 文字列    | Amount            | このChannelがすでに支払った[XRP、drop単位](basic-data-types.html#通貨額の指定)の合計。この値と`Amount`フィールドの差異は、PaymentChannelClaimトランザクションの宛先アドレスに対して支払うことができるXRPの量を示します。Channelが閉鎖すると、残りの差額は支払元アドレスに返されます。 |
 | `PublicKey`         | 文字列    | PubKey            | このChannelに対するクレームの署名に使用できるキーペアの公開鍵（16進数）。有効なsecp256k1公開鍵またはEd25519公開鍵を指定できます。Channelを作成したトランザクションによって設定されます。Channelに対するクレームに使用される公開鍵と一致している必要があります。Channelの支払元アドレスは、署名付きクレームなしでこのChannelから宛先にXRPを送金することもできます。 |
 | `SettleDelay`       | 数値    | UInt32            | ChannelにXRPがまだある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する秒数。値が小さい場合、支払元アドレスがChannelの閉鎖を要求した後で、宛先アドレスが未処理のクレームを精算できる時間が短くなります。32ビットの符号なし整数に収まる値（0～2^32-1）であれば任意の値を指定できます。これは、Channelを作成するトランザクションにより設定されます。 |
 | `OwnerNode`         | 文字列    | UInt64            | 支払元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `PreviousTxnID`     | 文字列    | Hash256           | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値    | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
+| `PreviousTxnLgrSeq` | 数値    | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 | `Flags`             | 数値    | UInt32            | このPayment Channelに対して有効になっているブールフラグのビットマップ。現在、プロトコルでは`PayChannel` オブジェクトのフラグは定義されていません。 |
-| `Expiration`        | 数値    | UInt32            | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
-| `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
+| `Expiration`        | 数値    | UInt32            | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
+| `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
 | `SourceTag`         | 数値    | UInt32            | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationTag`    | 数値    | UInt32            | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationNode`   | 文字列    | UInt64    | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。 |
@@ -67,7 +67,7 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 
 ## Channel有効期限の設定
 
-Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールドが表す不変の有効期限とは対照的な変更可能な有効期限です。Channelの有効期限は常に、前のレジャーの[`close_time`フィールド](ledger-header.html)を基準にしているものとみなされます。`PayChannel`オブジェクトの作成時には、`Expiration`フィールドが省略されます。`PayChannel`オブジェクトの`Expiration`フィールドはさまざまな方法で更新できます。要約すると、Channelが最初の閉鎖試行操作の後、`SettleDelay`秒以上常に開いたままであれば、Channelの支払元アドレスはChannelの`Expiration`を自由に設定できます。
+Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールドが表す不変の有効期限とは対照的な変更可能な有効期限です。Channelの有効期限は常に、前のレジャーの[`close_time`フィールド](../ledger-header.md)を基準にしているものとみなされます。`PayChannel`オブジェクトの作成時には、`Expiration`フィールドが省略されます。`PayChannel`オブジェクトの`Expiration`フィールドはさまざまな方法で更新できます。要約すると、Channelが最初の閉鎖試行操作の後、`SettleDelay`秒以上常に開いたままであれば、Channelの支払元アドレスはChannelの`Expiration`を自由に設定できます。
 
 ### 支払元アドレス
 
@@ -96,14 +96,9 @@ Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールド�
 
 ## PayChannel IDのフォーマット
 
-`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+`PayChannel`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](basic-data-types.html#ハッシュ)です。
 
 * PayChannelスペースキー（`0x0078`）
 * 支払元アカウントのAccountID
 * 宛先アカウントのAccountID
 * Channelを作成したトランザクションのシーケンス番号
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

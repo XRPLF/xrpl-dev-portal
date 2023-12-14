@@ -9,9 +9,9 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateOffer.cpp "ソース")
 
-OfferCreateトランザクションは[分散型取引所](decentralized-exchange.html)で[注文](offers.html)を作成します。
+OfferCreateトランザクションは[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で[注文](../../../../concepts/tokens/decentralized-exchange/offers.md)を作成します。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -30,16 +30,16 @@ OfferCreateトランザクションは[分散型取引所](decentralized-exchang
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
-| フィールド         | JSONの型   | [内部の型][] | 説明       |
+| フィールド         | JSONの型   | [内部の型](../../binary-format.md) | 説明       |
 |:-----------------|:----------|:------------|:-----------|
-| [Expiration](offers.html#オファーの有効期限)   | 数字       | UInt32      | _（省略可）_ オファーがアクティブでなくなるまでの時間（[Rippleエポック以降の経過秒数][]）。 |
-| `OfferSequence`  | 数字       | UInt32      | _（省略可）_ 最初に削除されるオファー（[OfferCancel][]と同様に指定されます）。 |
-| `TakerGets`      | [通貨額][] | Amount      | オファーの作成者によって作成される金額および通貨の種類。 |
-| `TakerPays`      | [通貨額][] | Amount      | オファーの作成者によって要求される金額および通貨の種類。 |
+| [Expiration](offers.html#オファーの有効期限)   | 数字       | UInt32      | _（省略可）_ オファーがアクティブでなくなるまでの時間（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。 |
+| `OfferSequence`  | 数字       | UInt32      | _（省略可）_ 最初に削除されるオファー（[OfferCancel](offercancel.md)と同様に指定されます）。 |
+| `TakerGets`      | [通貨額](basic-data-types.html#通貨額の指定) | Amount      | オファーの作成者によって作成される金額および通貨の種類。 |
+| `TakerPays`      | [通貨額](basic-data-types.html#通貨額の指定) | Amount      | オファーの作成者によって要求される金額および通貨の種類。 |
 
 ## OfferCreateフラグ
 
@@ -48,8 +48,8 @@ OfferCreate型のトランザクションについては、[`Flags`フィール�
 | フラグ名               | 16進数        | 10進数         | 説明               |
 |:----------------------|:-------------|:--------------|:-------------------|
 | `tfPassive`           | `0x00010000` | 65536         | 有効な場合、オファーはオファーが完全に約定するオファーを消費せず、代わりにレジャーのOfferオブジェクトになります。それはまだクロスしたオファーを消費します。 |
-| `tfImmediateOrCancel` | `0x00020000` | 131072        | オファーを[IOC注文](http://en.wikipedia.org/wiki/Immediate_or_cancel)として扱います。有効な場合、オファーはレジャーオブジェクトにはなりません。レジャー内の既存のオファーと約定させようとするだけです。即時にオファーがどのオファーとも約定しない場合、どの通貨とも取引せずに「正常に」実行します。この場合、トランザクションは`tesSUCCESS`の[結果コード](transaction-results.html)を返しますが、レジャー内には、[Offerオブジェクト](offer.html)を作成しません。 |
-| `tfFillOrKill`        | `0x00040000` | 262144        | オファーを[FOK注文](http://en.wikipedia.org/wiki/Fill_or_kill)として扱います。レジャー内の既存のオファーのみを約定しようとします。またこれは、全`TakerPays`の数量が取得できる場合に限られます。[fix1578 amendment][]が有効な場合でオファーを配置した時に実行できない場合、トランザクションは`tecKILLED`の[結果コード](transaction-results.html)を返します。そうでない場合は、トランザクションは、どの通貨とも取り引きせずにキャンセルされた場合でも`tesSUCCESS`の結果コードを返します。 |
+| `tfImmediateOrCancel` | `0x00020000` | 131072        | オファーを[IOC注文](http://en.wikipedia.org/wiki/Immediate_or_cancel)として扱います。有効な場合、オファーはレジャーオブジェクトにはなりません。レジャー内の既存のオファーと約定させようとするだけです。即時にオファーがどのオファーとも約定しない場合、どの通貨とも取引せずに「正常に」実行します。この場合、トランザクションは`tesSUCCESS`の[結果コード](../transaction-results/transaction-results.md)を返しますが、レジャー内には、[Offerオブジェクト](../../ledger-data/ledger-entry-types/offer.md)を作成しません。 |
+| `tfFillOrKill`        | `0x00040000` | 262144        | オファーを[FOK注文](http://en.wikipedia.org/wiki/Fill_or_kill)として扱います。レジャー内の既存のオファーのみを約定しようとします。またこれは、全`TakerPays`の数量が取得できる場合に限られます。[fix1578 amendment](known-amendments.html#fix1578)が有効な場合でオファーを配置した時に実行できない場合、トランザクションは`tecKILLED`の[結果コード](../transaction-results/transaction-results.md)を返します。そうでない場合は、トランザクションは、どの通貨とも取り引きせずにキャンセルされた場合でも`tesSUCCESS`の結果コードを返します。 |
 | `tfSell`              | `0x00080000` | 524288        | 取引所で`TakerPays`Amountよりも多く取得することになっても、`TakerGets` Amountを交換します。 |
 
 ## エラーケース
@@ -66,14 +66,9 @@ OfferCreate型のトランザクションについては、[`Flags`フィール�
 | `temBAD_CURRENCY`        | トランザクションで通貨コードが"XRP"のトークンが指定された場合に発生します。 |
 | `temBAD_ISSUER`          | トランザクションが無効な`issuer`値を持つトークンを指定した場合に発生します。 |
 | `tecNO_ISSUER`           | トランザクションで、`issuer`の値が台帳の有効化されたアカウントでないトークンを指定した場合に発生します。|
-| `tecFROZEN`              | [凍結](freezes.html)されたトラストライン(ローカルおよびグローバルの凍結を含む)上のトークンを含むトランザクションの場合に発生します。 |
+| `tecFROZEN`              | [凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されたトラストライン(ローカルおよびグローバルの凍結を含む)上のトークンを含むトランザクションの場合に発生します。 |
 | `tecUNFUNDED_OFFER`      | トランザクションの送信者が`TakerGets`の通貨を正の値で保有していない場合に発生する。(例外: `TakerGets`にトランザクションの送信者が発行するトークンを指定した場合、トランザクションは成功します)。 |
-| `tecNO_LINE`             | 発行者が[Authorized Trust Lines](authorized-trust-lines.html)を使用しているトークンを含むトランザクションで、必要なトラストラインが存在しない場合に発生します。 |
-| `tecNO_AUTH`             | 発行者が[Authorized Trust Lines](authorized-trust-lines.html)を使用しているトークンを含むトランザクションで、トークンを受け取るトラストラインが存在するが認証されていない場合に発生します。 |
+| `tecNO_LINE`             | 発行者が[Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使用しているトークンを含むトランザクションで、必要なトラストラインが存在しない場合に発生します。 |
+| `tecNO_AUTH`             | 発行者が[Authorized Trust Lines](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使用しているトークンを含むトランザクションで、トークンを受け取るトラストラインが存在するが認証されていない場合に発生します。 |
 | `tecINSUF_RESERVE_OFFER` | 所有者が台帳に新しいOfferオブジェクトを追加するための準備要件を満たすのに十分なXRPを持っておらず、トランザクションがどの通貨も変換しなかった場合に発生します。(トランザクションが何らかの金額のトレードに成功した場合、トランザクションは結果コード`tesSUCCESS`で成功しますが、残りは台帳にOfferオブジェクトを作成しません)。 |
 | `tecDIR_FULL`            | トランザクションの送信者が台帳で多くのアイテムを所有している場合、またはオーダーブックに同じ取引レートのオファーがすでに多く含まれている場合に発生します。 |
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

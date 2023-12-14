@@ -14,10 +14,9 @@ labels:
 
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 4,
@@ -26,9 +25,9 @@ labels:
   "ledger_index": 348734
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "transaction_entry",
@@ -40,15 +39,16 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#transaction_entry)
 
@@ -56,8 +56,8 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 | `Field`        | 型                         | 説明                           |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください） |
+| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
 | `tx_hash` | 文字列 | 検索するトランザクションの一意のハッシュ |
 
 **注記:** このメソッドでは、現在進行中のレジャーから情報を取得する操作はサポートされていません。`ledger_index`または`ledger_hash`でレジャーバージョンを指定する必要があります。
@@ -66,10 +66,9 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 4,
@@ -197,17 +196,18 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
     "type": "response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`        | 型                        | 説明                            |
 |:---------------|:--------------------------|:--------------------------------|
-| `ledger_index` | 数値 - [レジャーインデックス][] | トランザクションが検出されたレジャーバージョンのレジャーインデックス。これは要求のレジャーインデックスと同じです。 |
-| `ledger_hash` | 文字列 - [ハッシュ][] | _（省略される場合があります）_ トランザクションが検出されたレジャーバージョンの識別用ハッシュ。これは要求のハッシュと同じです。 |
-| `metadata` | オブジェクト | [トランザクションのメタデータ](transaction-metadata.html)。トランザクションの正確な結果を詳細に表示します。 |
-| `tx_json` | オブジェクト | [Transactionオブジェクト](transaction-formats.html)のJSON表現。 |
+| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | トランザクションが検出されたレジャーバージョンのレジャーインデックス。これは要求のレジャーインデックスと同じです。 |
+| `ledger_hash` | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | _（省略される場合があります）_ トランザクションが検出されたレジャーバージョンの識別用ハッシュ。これは要求のハッシュと同じです。 |
+| `metadata` | オブジェクト | [トランザクションのメタデータ](../../../protocol/transactions/metadata.md)。トランザクションの正確な結果を詳細に表示します。 |
+| `tx_json` | オブジェクト | [Transactionオブジェクト](../../../protocol/transactions/index.md)のJSON表現。 |
 
 サーバーがトランザクションの検出に失敗する原因として、次のようなものが考えられます。
 
@@ -217,12 +217,8 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `fieldNotFoundTransaction` - `tx_hash`フィールドが要求で省略されています。
 * `notYetImplemented` - レジャーバージョンが要求に指定されていません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `transactionNotFound` - 要求に指定されているトランザクションが指定のレジャーで見つかりませんでした。（トランザクションが異なるレジャーバージョンにあるか、またはトランザクションがまったく使用できない可能性があります。）
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

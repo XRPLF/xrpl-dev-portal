@@ -8,42 +8,42 @@ labels:
 # peer_reservations_list
 [[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
-The `{{currentpage.name}}` method lists [peer reservations][]. [New in: rippled 1.4.0][]
+The `{% $frontmatter.seo.title %}` method lists [peer reservations][]. [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `{% $frontmatter.seo.title %}` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 
 ### Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_list_example_1",
-  "command": "{{currentpage.name}}"
+  "command": "{% $frontmatter.seo.title %}"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}"
+    "method": "{% $frontmatter.seo.title %}"
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
-#Syntax: {{currentpage.name}}
-rippled {{currentpage.name}}
+#Syntax: {% $frontmatter.seo.title %}
+rippled {% $frontmatter.seo.title %}
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 This request does not take any parameters.
 
@@ -52,10 +52,9 @@ This request does not take any parameters.
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_list_example_1",
@@ -74,9 +73,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -93,9 +92,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 2019-Dec-27 21:56:07.253260422 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -115,10 +114,11 @@ Loading: "/etc/rippled.cfg"
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`        | Type  | Description                                         |
 |:---------------|:------|:----------------------------------------------------|
@@ -128,15 +128,10 @@ The response follows the [standard format][], with a successful result containin
 
 Each member of the `reservations` array is a JSON object describing one [peer reservation][]. This object has the following fields:
 
-{% include '_snippets/peer_reservation_object.md' %}
-<!--_ -->
+{% partial file="/_snippets/peer_reservation_object.md" /%}
+
 
 ### Possible Errors
 
 - Any of the [universal error types][].
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

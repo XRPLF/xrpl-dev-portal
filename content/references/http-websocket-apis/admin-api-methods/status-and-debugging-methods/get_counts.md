@@ -10,15 +10,14 @@ labels:
 
 The `get_counts` command provides various stats about the health of the server, mostly the number of objects of different types that it currently holds in memory.
 
-_The `get_counts` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `get_counts` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 90,
@@ -26,9 +25,9 @@ An example of the request format:
     "min_count": 100
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "get_counts",
@@ -39,15 +38,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: get_counts [min_count]
 rippled get_counts 100
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -59,10 +59,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -97,9 +96,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -137,10 +136,11 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][]. The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
+The response follows the [standard format](../../api-conventions/response-formatting.md). The list of fields contained in the result is subject to change without notice, but it may contain any of the following (among others):
 
 | `Field`       | Type   | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
@@ -154,8 +154,3 @@ For most other entries, the value indicates the number of objects of that type c
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -2,20 +2,21 @@
 html: networks-and-servers.html
 parent: concepts.html
 blurb: rippledは、XRP Ledgerを管理するコアとなるピアツーピアサーバーです。
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # ネットワークとサーバ
 
 XRP Ledgerを動かすサーバーソフトウェアは、主に2種類あります。
 
 - コアサーバーである`rippled`は、トランザクションを処理し、その結果についてコンセンサスを得るピアツーピアネットワークを実行します。
-- APIサーバーである[Clio](the-clio-server.html)は、台帳からデータをフェッチしたりクエリしたりするための強力なインターフェイスを提供します。
+- APIサーバーである[Clio](the-clio-server.md)は、台帳からデータをフェッチしたりクエリしたりするための強力なインターフェイスを提供します。
 
 誰でも必要に応じて、これらのタイプのサーバーの1つまたは両方のインスタンスを実行することができます。
 
 ## 独自サーバーを運用する理由
 
-簡単なユースケースや個別のサーバーであれば、無料の[公開サーバー][]を利用することも多いでしょう。しかし、XRP Ledgerの利用が本格化すればするほど、独自のインフラを持つことが重要になってきます。
+簡単なユースケースや個別のサーバーであれば、無料の[公開サーバー](../../tutorials/get-started/public-servers.md)を利用することも多いでしょう。しかし、XRP Ledgerの利用が本格化すればするほど、独自のインフラを持つことが重要になってきます。
 
 独自のサーバーを運用したいと思う理由はたくさんありますが、そのほとんどは、「自分のサーバーを信頼できる」「ワークロードをコントロールできる」「いつ、どのようにアクセスできるかを他人の判断に左右されない」ということに集約されます。もちろん、悪意のあるハッカーからサーバーを守るために、優れたネットワークセキュリティを実践する必要があります。
 
@@ -33,7 +34,4 @@ XRP Ledgerを動かすサーバーソフトウェアは、主に2種類ありま
 
 <!-- provided by the auto-generated table of children -->
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% child-pages /%}

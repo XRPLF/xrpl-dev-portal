@@ -8,21 +8,21 @@ labels:
 
 # Trading NFTs
 
-You can transfer NFTs between accounts on the XRP Ledger. You can offer to buy or sell an NFT, or accept offers from other accounts to buy an NFT you own. You can even give away an NFT by offering to sell it at a price of 0.  All offers are created using [NFTokenCreateOffer transaction][].
+You can transfer NFTs between accounts on the XRP Ledger. You can offer to buy or sell an NFT, or accept offers from other accounts to buy an NFT you own. You can even give away an NFT by offering to sell it at a price of 0.  All offers are created using [NFTokenCreateOffer transaction](../../../references/protocol/transactions/types/nftokencreateoffer.md).
 
-_(Added by the [NonFungibleTokensV1_1 amendment][].)_
+_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
 
 ## Reserve Requirements
 
 Every `NFTokenOffer` object requires that your account increase its owner reserve, currently 2 XRP per `NFTokenSellOffer` and 2 XRP per `NFTokenBuyOffer`. This is to prevent accounts from spamming the ledger with offers they don't intend to complete.
 
-See [NFT Reserve Requirements](nft-reserve-requirements.html).
+See [NFT Reserve Requirements](reserve-requirements.md).
 
 ## Sell Offers
 
 ### Create a Sell Offer
 
-As the owner of an NFT, you can create a sell offer using a [NFTokenCreateOffer transaction][] with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to buy the NFT.
+As the owner of an NFT, you can create a sell offer using a [NFTokenCreateOffer transaction](../../../references/protocol/transactions/types/nftokencreateoffer.md) with the `tfSellToken` flag. You provide the `NFTokenID` and the `Amount` you are willing to accept in payment. You can optionally specify an `Expiration` date, after which the offer is no longer valid, and a `Destination` account, which is the only account that is allowed to buy the NFT.
 
 ### Accept a Sell Offer
 
@@ -32,7 +32,7 @@ To buy an NFT that is offered for sale, you use a `NFTokenAcceptOffer` transacti
 
 ### Create a Buy Offer
 
-Any account can offer to buy an NFT. You can create a buy offer using [NFTokenCreateOffer][] _without_ the `tfSellToken` flag. You provide the `Owner` account, `NFTokenID`, and the `Amount` of your offer.
+Any account can offer to buy an NFT. You can create a buy offer using [NFTokenCreateOffer](../../../references/protocol/transactions/types/nftokencreateoffer.md) _without_ the `tfSellToken` flag. You provide the `Owner` account, `NFTokenID`, and the `Amount` of your offer.
 
 ### Accept a Buy Offer
 
@@ -69,8 +69,3 @@ Another potential workflow would give the creator more control over the sale. In
 ![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)
 
 The same workflows can be used when an owner resells an NFT created by another account.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -11,12 +11,12 @@ status: not_enabled
 
 _(Requires the [AMM amendment][] :not_enabled:)_
 
-Bid on an [Automated Market Maker](automated-market-makers.html)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.
+Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.
 
 You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
 
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -52,9 +52,9 @@ You bid using the AMM's LP Tokens; the amount of a winning bid is returned to th
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
-| Field          | JSON Type           | [Internal Type][] | Required? | Description |
+| Field          | JSON Type           | [Internal Type](../../binary-format.md) | Required? | Description |
 |:---------------|:--------------------|:------------------|:----------|:------------|
 | `Asset`        | Object              | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
 | `Asset2`       | Object              | STIssue           | Yes       | The definition for the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
@@ -68,7 +68,7 @@ You cannot specify both `BidMin` and `BidMax`.
 
 Each member of the `AuthAccounts` array must be an object with the following field:
 
-| Field          | JSON Type | [Internal Type][] | Required? | Description |
+| Field          | JSON Type | [Internal Type](../../binary-format.md) | Required? | Description |
 |:---------------|:----------|:------------------|:----------|:------------|
 | `Account`      | String    | AccountID         | Yes       | The address of the account to authorize. |
 
@@ -84,7 +84,9 @@ If successful, the transaction automatically outbids the previous slot owner and
 
 - Otherwise, the price to outbid the current holder is calculated using the following formula:
 
-        P = B × 1.05 × (1 - t⁶⁰) + M
+    ```
+    P = B × 1.05 × (1 - t⁶⁰) + M
+    ```
 
     - `P` is the price to outbid, in LP Tokens.
     - `B` is the price of the current bid, in LP Tokens.
@@ -93,13 +95,17 @@ If successful, the transaction automatically outbids the previous slot owner and
 
     There are two special cases for the cost to outbid someone. In the **first interval** after someone wins the bid, the price to outbid them is the minimum bid plus 5% more than the existing bid:
 
-        P = B × 1.05 + M
+    ```
+    P = B × 1.05 + M
+    ```
 
     In the **last interval** of someone's slot, the cost to outbid someone is only the minimum bid:
 
-        P = M
+    ```
+    P = M
+    ```
 
-**Note:** To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](ledger-close-times.html) of the previous ledger, which is approximate.
+**Note:** To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](../../../../concepts/ledgers/ledger-close-times.md) of the previous ledger, which is approximate.
 
 ## Bid Refunds
 
@@ -115,11 +121,11 @@ R = B × (1 - t)
 
 As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.
 
-**Note:** As with all XRP Ledger times, transaction processing uses the [official close time](ledger-close-times.html) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
+**Note:** As with all XRP Ledger times, transaction processing uses the [official close time](../../../../concepts/ledgers/ledger-close-times.md) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
 
 
 ## Error Cases
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code              | Description                                  |
 |:------------------------|:---------------------------------------------|
@@ -131,9 +137,3 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `temMALFORMED`          | The transaction specified invalid options, such as a list of `AuthAccounts` that is too long. |
 | `terNO_ACCOUNT`         | One of the accounts specified in this request do not exist. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

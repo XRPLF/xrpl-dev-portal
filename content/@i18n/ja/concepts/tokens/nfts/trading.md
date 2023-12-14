@@ -11,7 +11,7 @@ labels:
 
 XRP Ledger上のアカウント間で`NFToken`オブジェクトを転送することができます。`NFToken`の売買をオファーしたり、他のアカウントから自分が保有するNFTokenへの売買オファーを受け入れることができます。`NFToken`を無料(価格が0)で売却することで、`NFToken`を配布することもできます。すべてのオファーは[NFTokenCreateOfferトランザクション][]を使って作成されます。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
 
 ## 売却オファー
 
@@ -31,7 +31,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ### 購入オファーの作成
 
-どのアカウントでも`NFToken`の購入オファーを作成することができます。`tfSellToken`のフラグを指定せずに、[NFTokenCreateOffer][]を使用することで、購入オファーを作成することが可能です。`Owner`アカウント、`NFTokenID`、オファーの`Amount`を指定します。
+どのアカウントでも`NFToken`の購入オファーを作成することができます。`tfSellToken`のフラグを指定せずに、[NFTokenCreateOffer](../../../references/protocol/transactions/types/nftokencreateoffer.md)を使用することで、購入オファーを作成することが可能です。`Owner`アカウント、`NFTokenID`、オファーの`Amount`を指定します。
 
 
 ### 購入オファーを受け入れる
@@ -76,9 +76,3 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
 所有者が他のアカウントで作成した`NFToken`をリセールする場合にも、同じワークフローを使用することができます。
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

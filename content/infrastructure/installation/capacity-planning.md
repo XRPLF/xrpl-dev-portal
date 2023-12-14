@@ -10,7 +10,7 @@ labels:
 
 This document describes configuration, network, and hardware recommendations that you can use to tune and optimize the performance of an XRP Ledger server.
 
-The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of [API calls](http-websocket-apis.html) put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
+The load on an XRP Ledger server varies based on multiple factors. One is the activity in the network. The total size of data in the shared ledger and the total volume of transactions being sent vary based on organic factors throughout the global XRP Ledger community. Another factor is API usage; different types of [API calls](../../references/http-websocket-apis/index.md) put different load on the server. The performance characteristics can be very different between servers that provide a public API, provide a private API to specific integration software, or provide no API at all.
 
 You should consider these factors to ensure that your server has the capacity to handle XRP Ledger network activity today and in the future.
 
@@ -25,7 +25,7 @@ The settings in this section are parameters in the `rippled.cfg` file. You can a
 
 ### Node Size
 
-The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) [Updated in: rippled 1.8.1][]
+The `[node_size]` parameter should match the overall hardware capacity of your server. You can omit this parameter to have the server automatically choose an appropriate setting based on the system's total RAM and number of CPU threads. You can set this value explicitly if the automatic setting is wrong for your system, for example if some of the system's RAM or threads need to be set aside for other software, or the amounts reported by the operating system are inaccurate. (This can occur in some containers.) [Updated in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE")
 
 As a general rule, you should always use the largest node size your available RAM can support. See the following table for recommended settings.
 
@@ -43,7 +43,7 @@ To tune your server, it may be useful to start with `tiny` and increase the size
 | 32 GB         | `large`           | **Not recommended.** In practice, this setting performs worse than `huge` in most circumstances. Always use `huge` if you want stability. |
 | 64 GB         | `huge`            | Recommended for production servers.      |
 
-If you set the `[node_size]` parameter to an invalid value, the [server fails to start](server-wont-start.html#bad-node_size-value).
+If you set the `[node_size]` parameter to an invalid value, the [server fails to start](../troubleshooting/server-wont-start.md#bad-node_size-value).
 
 
 ### Node DB Type
@@ -97,7 +97,7 @@ online_delete=2000
 advisory_delete=0
 ```
 
-Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](configure-online-deletion.html) and [Configure Advisory Deletion](configure-advisory-deletion.html).
+Adjust the `path` to the directory where you want to keep the ledger store on disk. Adjust the `online_delete` and `advisory_delete` settings as desired for your configuration. For more details about these settings, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) and [Configure Advisory Deletion](../configuration/data-retention/configure-advisory-deletion.md).
 
 
 ### Log Level
@@ -113,7 +113,7 @@ Each server in the XRP Ledger network performs all of the transaction processing
 
 ### Recommendation
 
-See [System Requirements](system-requirements.html) for a summary of the recommended hardware specs.
+See [System Requirements](system-requirements.md) for a summary of the recommended hardware specs.
 
 #### CPU Utilization and Virtualization
 <!-- STYLE_OVERRIDE: utilization -->
@@ -131,9 +131,9 @@ The speed of storage is one of the most important factors in a server's capacity
 
 #### Disk Space
 
-The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger history](ledger-history.html). The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
+The `[node_db]` stanza controls the server's _ledger store_, which holds [ledger history](../../concepts/networks-and-servers/ledger-history.md). The amount of disk space you need depends on how much history you plan to keep available locally. An XRP Ledger server does not need to store more than the most recent 256 ledger versions to follow the consensus process and report the complete state of the ledger, but you can only query your server for transactions that executed in ledger versions it has stored locally. Configure the `path` of the `[node_db]` to point to your chosen storage location for the ledger store.
 
-You can control how much data you keep with [online deletion](online-deletion.html); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
+You can control how much data you keep with [online deletion](../configuration/data-retention/online-deletion.md); the default config file has the server keep the latest 2000 ledger versions. Without online deletion, the server's disk requirements grow without bounds.
 
 The following table approximates the requirements for different amounts of history, at the time of writing (2023-07-19):
 
@@ -152,18 +152,18 @@ These numbers are estimates. They depend on several factors, most importantly th
 
 The `online_delete` setting tells the server how many ledger versions to keep after deleting old history. You should plan for enough disk space to store twice that many ledger versions at maximum (right before online deletion runs).
 
-For instructions on how to change the amount of history you keep, see [Configure Online Deletion](configure-online-deletion.html).
+For instructions on how to change the amount of history you keep, see [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md).
 
 The `[database_path]` configures separate bookkeeping databases: these include transaction data as well as some runtime configurations.
 
-As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](configure-amendment-voting.html) and [peer reservations](use-a-peer-reservation.html).
+As a general rule, you can safely delete the database files (both the ledger store and the bookkeeping databases) for a `rippled` server when it isn't running; this clears any stored ledger history the server has, but it can re-acquire that data from the network. However, if you delete the `wallet.db` file in the `[database_path]`, you must manually reapply runtime configuration changes such as [amendment votes](../configuration/configure-amendment-voting.md) and [peer reservations](../configuration/peering/use-a-peer-reservation.md).
 
-If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](history-sharding.html) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza.
+If you want to contribute to storing ledger history but you do not have enough disk space to store full history, you can use the [History Sharding](../configuration/data-retention/history-sharding.md) feature to store a randomized range of ledgers in a separate shard store. History sharding is configured in the `[shard_db]` stanza.
 
 
 ##### Amazon Web Services
 
-Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but do not use Elastic Block Storage (EBS). See [System Requirements](system-requirements.html). <!-- SPELLING_IGNORE: ebs, aws -->
+Amazon Web Services (AWS) is a popular virtualized hosting environment. You can run `rippled` in AWS, but do not use Elastic Block Storage (EBS). See [System Requirements](system-requirements.md). <!-- SPELLING_IGNORE: ebs, aws -->
 
 AWS instance stores (`ephemeral` storage) provide suitable performance, but you may lose data in some circumstances, including when you start/stop an instance. This may be acceptable, since an individual XRP Ledger server can usually re-acquire lost ledger history from its peers. Configuration settings should be stored on more permanent storage.
 
@@ -175,7 +175,7 @@ Memory requirements are mainly a function of the `node_size` configuration setti
 
 #### Network
 
-Any enterprise or carrier-class data center should have enough network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](ledger-history.html)) also affects network use. Consumer-grade home internet is generally not enough to run a reliable server.
+Any enterprise or carrier-class data center should have enough network bandwidth to support running XRP Ledger servers. The actual bandwidth necessary varies significantly based on the current transaction volume in the network. Server behavior (such as backfilling [ledger history](../../concepts/networks-and-servers/ledger-history.md)) also affects network use. Consumer-grade home internet is generally not enough to run a reliable server.
 
 During exceptionally high periods of transaction volume, some operators have reported that their servers have completely saturated a 100 megabit/s network link, so a gigabit network interface is required for reliable performance.
 
@@ -188,26 +188,21 @@ Here are examples of observed uncompressed network bandwidth use for common task
 | Serve historical ledger and transaction reports | 100 Mbps up            |
 | Start up `rippled`                              | 20 Mbps down           |
 
-You can save bandwidth by [enabling compression on peer-to-peer communications](enable-link-compression.html), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
+You can save bandwidth by [enabling compression on peer-to-peer communications](../configuration/peering/enable-link-compression.md), at a cost of higher CPU. Many hardware configurations have spare CPU capacity during normal use, so this can be an economical option if your network bandwidth is limited.
 
 
 ## See Also
 
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
-    - [Consensus](consensus.html)
+    - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure rippled](configure-rippled.html)
-        - [Configure Online Deletion](configure-online-deletion.html) - Adjust how many historical ledger versions your server should keep at a time.
-    - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
+    - [Configure rippled](../configuration/index.md)
+        - [Configure Online Deletion](../configuration/data-retention/configure-online-deletion.md) - Adjust how many historical ledger versions your server should keep at a time.
+    - [Troubleshoot rippled](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [`rippled` Commandline Usage](commandline-usage.html)
-        - [logrotate method][] - Closes and reopens the server's debug log so you can rotate it with standard tools.
-        - [server_info method][] - General information about the server including sync status and how many historical ledger versions it has available on disk.
-        - [get_counts method][] - Additional health information, especially how many objects of various types it holds in RAM.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+        - [`rippled` Commandline Usage](../commandline-usage.md)
+        - [logrotate method](../../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md) - Closes and reopens the server's debug log so you can rotate it with standard tools.
+        - [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md) - General information about the server including sync status and how many historical ledger versions it has available on disk.
+        - [get_counts method](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md) - Additional health information, especially how many objects of various types it holds in RAM.

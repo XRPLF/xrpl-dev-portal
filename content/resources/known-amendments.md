@@ -10,7 +10,7 @@ labels:
 
 ## Known Amendments on Mainnet
 
-The following is a comprehensive list of all known [amendments](amendments.html) and their status on the production XRP Ledger:
+The following is a comprehensive list of all known [amendments](../concepts/networks-and-servers/amendments.md) and their status on the production XRP Ledger:
 
 **Tip:** This list is updated manually. For a live view of amendment voting, see the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments).
 
@@ -77,7 +77,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 ## Amendments in Development
 
-The following is a list of [amendments](amendments.html) that are being developed and a private network is available to test the changes.
+The following is a list of [amendments](../concepts/networks-and-servers/amendments.md) that are being developed and a private network is available to test the changes.
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
@@ -89,7 +89,7 @@ The following is a list of [amendments](amendments.html) that are being develope
 
 ## Obsolete Amendments
 
-The following is a list of known [amendments](amendments.html) that have been removed in a previous version, or are obsolete and have been marked for removal.
+The following is a list of known [amendments](../concepts/networks-and-servers/amendments.md) that have been removed in a previous version, or are obsolete and have been marked for removal.
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
@@ -146,9 +146,9 @@ Adds several new transaction result codes.
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
+Adjusts the [CheckCash transaction](../references/protocol/transactions/types/checkcash.md) so that cashing a [Check](../concepts/payment-types/checks.md) for an issued token automatically creates a [trust line](../concepts/tokens/fungible-tokens/index.md) to hold the token. The new behavior is similar to how the [OfferCreate transaction](../references/protocol/transactions/types/offercreate.md) behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
 
-Without this amendment, users have to separately send a [TrustSet transaction][] before they can cash a Check for an issued token.
+Without this amendment, users have to separately send a [TrustSet transaction](../references/protocol/transactions/types/trustset.md) before they can cash a Check for an issued token.
 
 This amendment does not change the fact that you cannot force anyone to hold tokens they don't want in the XRP Ledger.
 
@@ -223,7 +223,7 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions.
+This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate](../references/protocol/transactions/types/escrowcreate.md) and [EscrowFinish](../references/protocol/transactions/types/escrowfinish.md) transactions.
 
 However, the amendment was added to `rippled` v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.
 
@@ -238,7 +238,7 @@ However, the amendment was added to `rippled` v0.60.0 before implementation was 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Makes it possible to delete [accounts](accounts.html).
+Makes it possible to delete [accounts](../concepts/accounts/accounts.md).
 
 Without this amendment, new accounts always start with their `Sequence` numbers at 1, and there is no way to remove accounts from the state data of the ledger.
 
@@ -259,9 +259,9 @@ Adds a new account flag, `DepositAuth`, which lets an account strictly reject an
 
 When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or a token. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the [Checks][] amendment is enabled, the account can receive XRP or tokens by sending CheckCash transactions.
 
-As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](reserves.html)) if their current XRP balance is below the account reserve.
+As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](../concepts/accounts/reserves.md)) if their current XRP balance is below the account reserve.
 
-Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](reserves.html) and pay [transaction costs](transaction-cost.html).)
+Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](../concepts/accounts/reserves.md) and pay [transaction costs](../concepts/transactions/transaction-cost.md).)
 
 
 ### DepositPreauth
@@ -274,7 +274,7 @@ Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Provides users of [deposit authorization](depositauth.html) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
+Provides users of [deposit authorization](../concepts/accounts/depositauth.md) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
 
 Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, `deposit_authorized`, to query whether an account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to -->
 
@@ -323,9 +323,9 @@ Introduces two new transaction error codes, `tecINVARIANT_FAILED` and `tefINVARI
 
 Examples of invariant checks:
 
-- The total amount of XRP destroyed by a transaction must match the [transaction cost](transaction-cost.html) exactly.
+- The total amount of XRP destroyed by a transaction must match the [transaction cost](../concepts/transactions/transaction-cost.md) exactly.
 - XRP cannot be created.
-- [`AccountRoot` objects in the ledger](accountroot.html) cannot be deleted unless [DeletableAccounts](#deletableaccounts) is enabled. (See also: [Deleting Accounts](deleting-accounts.html).)
+- [`AccountRoot` objects in the ledger](../references/protocol/ledger-data/ledger-entry-types/accountroot.md) cannot be deleted unless [DeletableAccounts](#deletableaccounts) is enabled. (See also: [Deleting Accounts](../concepts/accounts/deleting-accounts.md).)
 - [An entry in the ledger](ledger-object-types.html) cannot change its type. (The `LedgerEntryType` field is immutable.)
 - There cannot be a trust line for XRP.
 
@@ -359,7 +359,7 @@ This amendment expands the maximum signer list size and allows each signer to ha
 
 Without this amendment, the maximum signer list size is 8 entries, and each entry has exactly two fields, `Account` and `SignerWeight`.
 
-With this amendment, the maximum [SignerList object][] size is 32 entries. Additionally, each `SignerEntry` object can contain an optional 256-bit (32-byte) `WalletLocator` field containing arbitrary data. This amendment changes the [SignerListSet transaction][] accordingly.
+With this amendment, the maximum [SignerList object](../references/protocol/ledger-data/ledger-entry-types/signerlist.md) size is 32 entries. Additionally, each `SignerEntry` object can contain an optional 256-bit (32-byte) `WalletLocator` field containing arbitrary data. This amendment changes the [SignerListSet transaction](../references/protocol/transactions/types/signerlistset.md) accordingly.
 
 
 ### FeeEscalation
@@ -372,7 +372,7 @@ With this amendment, the maximum [SignerList object][] size is 32 entries. Addit
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Changes the way the [transaction cost](transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
+Changes the way the [transaction cost](../concepts/transactions/transaction-cost.md) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
 
 This amendment introduces a fixed-size transaction queue for transactions that were not able to be included in the previous consensus round. If the `rippled` servers in the consensus network are under heavy load, they queue the transactions with the lowest transaction cost for later ledgers. Each consensus round prioritizes transactions from the queue with the largest transaction cost (`Fee` value), and includes as many transactions as the consensus network can process. If the transaction queue is full, transactions drop from the queue entirely, starting with the ones that have the lowest transaction cost.
 
@@ -381,7 +381,7 @@ While the consensus network is under heavy load, legitimate users can pay a high
 A transaction remains in the queue until one of the following happens:
 
 * It gets applied to a validated ledger (regardless of success or failure)
-* It becomes invalid (for example, the [`LastLedgerSequence`](transaction-common-fields.html) causes it to expire)
+* It becomes invalid (for example, the [`LastLedgerSequence`](../references/protocol/transactions/common-fields.md) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
 
@@ -395,9 +395,9 @@ A transaction remains in the queue until one of the following happens:
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Correctly implements a limit on [transfer fees](transfer-fees.html) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
+Correctly implements a limit on [transfer fees](../concepts/tokens/transfer-fees.md) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
 
-With this amendment enabled, an [AccountSet][] transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` which was set to a higher value under the previous rules continues to apply at the higher rate.
+With this amendment enabled, an [AccountSet](../references/protocol/transactions/types/accountset.md) transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` which was set to a higher value under the previous rules continues to apply at the higher rate.
 
 
 ### fix1368
@@ -423,9 +423,9 @@ Fixes a minor bug in transaction processing that causes some payments to fail wh
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](paths.html) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
+Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](../concepts/tokens/fungible-tokens/paths.md) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
 
-The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](paths.html#path-specifications) include conflicting fields and paths that loop through the same object more than once.
+The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](../concepts/tokens/fungible-tokens/paths.md#path-specifications) include conflicting fields and paths that loop through the same object more than once.
 
 
 ### fix1512
@@ -438,7 +438,7 @@ The fix1373 amendment corrects the issue so that the paths are properly prepared
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Fixes a bug in transaction processing that causes some invalid [PaymentChannelClaim][] transactions to fail with the wrong error code. Without this amendment, the transactions have a `tec`-class result code despite not being included in a ledger.
+Fixes a bug in transaction processing that causes some invalid [PaymentChannelClaim](../references/protocol/transactions/types/paymentchannelclaim.md) transactions to fail with the wrong error code. Without this amendment, the transactions have a `tec`-class result code despite not being included in a ledger.
 
 With this amendment, the transactions fail with a more appropriate result code, `temBAD_AMOUNT`, instead.
 
@@ -487,9 +487,9 @@ In both cases, transaction processing can still complete by using liquidity from
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Adds tracking by destination account to [escrows](escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [account_objects method][], excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [account_tx method][].
+Adds tracking by destination account to [escrows](../concepts/payment-types/escrow.md). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [account_objects method](../references/http-websocket-apis/public-api-methods/account-methods/account_objects.md), excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions](../references/protocol/transactions/types/escrowcreate.md) appear in the destination's transaction history, as viewed with the [account_tx method](../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md).
 
-With this amendment, new escrows are added to the [owner directories](directorynode.html) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](escrow-object.html), indicating which page of the destination's owner directory contains the escrow.
+With this amendment, new escrows are added to the [owner directories](../references/protocol/ledger-data/ledger-entry-types/directorynode.md) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](../references/protocol/ledger-data/ledger-entry-types/escrow.md), indicating which page of the destination's owner directory contains the escrow.
 
 
 ### fix1528
@@ -523,8 +523,8 @@ Without this amendment, transactions of certain types are considered valid even 
 
 The affected transaction types are:
 
-- Escrow transactions: [EscrowCancel][], [EscrowCreate][], and [EscrowFinish][]
-- Payment Channel transactions: [PaymentChannelClaim][], [PaymentChannelCreate][], and [PaymentChannelFund][]
+- Escrow transactions: [EscrowCancel](../references/protocol/transactions/types/escrowcancel.md), [EscrowCreate](../references/protocol/transactions/types/escrowcreate.md), and [EscrowFinish](../references/protocol/transactions/types/escrowfinish.md)
+- Payment Channel transactions: [PaymentChannelClaim](../references/protocol/transactions/types/paymentchannelclaim.md), [PaymentChannelCreate](../references/protocol/transactions/types/paymentchannelcreate.md), and [PaymentChannelFund](../references/protocol/transactions/types/paymentchannelfund.md)
 
 
 ### fix1571
@@ -539,7 +539,7 @@ The affected transaction types are:
 
 Changes Escrow to fix the following issues:
 
-- Changes the [EscrowCreate transaction][] to require the `Condition` or `FinishAfter` field (or both). Escrows with neither `Condition` nor `FinishAfter` that were created before this amendment can be finished by anyone at any time before their `CancelAfter` time.
+- Changes the [EscrowCreate transaction](../references/protocol/transactions/types/escrowcreate.md) to require the `Condition` or `FinishAfter` field (or both). Escrows with neither `Condition` nor `FinishAfter` that were created before this amendment can be finished by anyone at any time before their `CancelAfter` time.
 - Fixes a flaw that incorrectly prevents time-based Escrows from being finished in some circumstances.
 
 
@@ -555,8 +555,8 @@ Changes Escrow to fix the following issues:
 
 Changes the result codes returned by two transaction types:
 
-- Changes the [OfferCreate transaction][] to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
-- Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [No Ripple flag](rippling.html#the-no-ripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the No Ripple flag, but the transaction result is `tesSUCCESS` nonetheless.
+- Changes the [OfferCreate transaction](../references/protocol/transactions/types/offercreate.md) to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
+- Changes the [TrustSet transaction](../references/protocol/transactions/types/trustset.md) to fail with `tecNO_PERMISSION` if it tries to enable the [No Ripple flag](../concepts/tokens/fungible-tokens/rippling.md#the-no-ripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the No Ripple flag, but the transaction result is `tesSUCCESS` nonetheless.
 
 
 ### fix1623
@@ -571,9 +571,9 @@ Changes the result codes returned by two transaction types:
 
 Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the [Checks](#checks) amendment is enabled.)
 
-With this amendment enabled, transaction processing adds a `DeliveredAmount` field to the metadata of [CheckCash transactions][] for a variable amount (using the `DeliverMin` field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the [tx method][] and [account_tx method][] return a [`delivered_amount` field](transaction-metadata.html#delivered_amount) for CheckCash transactions. (The `delivered_amount` field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)
+With this amendment enabled, transaction processing adds a `DeliveredAmount` field to the metadata of [CheckCash transactions](../references/protocol/transactions/types/checkcash.md) for a variable amount (using the `DeliverMin` field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the [tx method](../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md) and [account_tx method](../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) return a [`delivered_amount` field](../references/protocol/transactions/metadata.md#delivered_amount) for CheckCash transactions. (The `delivered_amount` field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)
 
-The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed amount (using the `Amount` field) or any other transaction types.
+The fix1623 amendment has no effect on [CheckCash transactions](../references/protocol/transactions/types/checkcash.md) for a fixed amount (using the `Amount` field) or any other transaction types.
 
 
 ### fix1781
@@ -588,9 +588,9 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
-Without this amendment, it is possible to have a [payment path](paths.html) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.
+Without this amendment, it is possible to have a [payment path](../concepts/tokens/fungible-tokens/paths.md) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.
 
-With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
+With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](../references/protocol/transactions/transaction-results/tem-codes.md) instead.
 
 
 ### fixAmendmentMajorityCalc
@@ -618,9 +618,9 @@ Without this amendment, the minimum threshold for amendment activation is any va
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](accounts.html) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](accountroot.html), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
+Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](../concepts/accounts/accounts.md) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](../references/protocol/ledger-data/ledger-entry-types/accountroot.md), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
-Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
+Without this amendment, Checks transactions ([CheckCreate](../references/protocol/transactions/types/checkcreate.md), [CheckCash](../references/protocol/transactions/types/checkcash.md), and [CheckCancel](../references/protocol/transactions/types/checkcancel.md)) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
 
 ### fixMasterKeyAsRegularKey
@@ -742,7 +742,7 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](payment-channels.html) to the recipient's [owner directory](directorynode.html). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
+Changes the [PaymentChannelCreate transaction](../references/protocol/transactions/types/paymentchannelcreate.md) type so that it adds new [payment channels](../concepts/payment-types/payment-channels.md) to the recipient's [owner directory](../references/protocol/ledger-data/ledger-entry-types/directorynode.md). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
 This change prevents accounts from being deleted if they are the recipient for open payment channels, except for channels created before this amendment.
 
@@ -794,7 +794,7 @@ Without this amendment, an offer with very small amounts remaining can have a a 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; new `NFToken` objects cannot be minted with the flag.
+Removes the `tfTrustLine` setting on [non-fungible tokens](../concepts/tokens/nfts/index.md), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](../references/protocol/transactions/types/nftokenmint.md) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; new `NFToken` objects cannot be minted with the flag.
 
 Without this amendment, an attacker could create new, meaningless fungible tokens and sell a `NFToken` back and forth for those tokens, creating many useless trust lines tied to the issuer and increasing the issuer's reserve requirement.
 
@@ -830,7 +830,7 @@ With this amendment, payments and trades can remove these types of Offers the sa
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
+Fixes an edge case in [deserializing](../references/protocol/binary-format.md) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
 
 
 ### fixTakerDryOfferRemoval
@@ -843,9 +843,9 @@ Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Wi
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Fixes a bug in [auto-bridging](autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
+Fixes a bug in [auto-bridging](../concepts/tokens/decentralized-exchange/autobridging.md) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
-Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](reserves.html#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
+Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](../concepts/accounts/reserves.md#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
 
 With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.
 
@@ -905,7 +905,7 @@ The Flow Engine also makes it easier to improve and expand the payment engine wi
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the [Flow](#flow) amendment to power offer crossing, so [OfferCreate transactions][] and [Payment transactions][] share more code. This has subtle differences in how offers are processed:
+Streamlines the offer crossing logic in the XRP Ledger's decentralized exchange. Uses the updated code from the [Flow](#flow) amendment to power offer crossing, so [OfferCreate transactions](../references/protocol/transactions/types/offercreate.md) and [Payment transactions](../references/protocol/transactions/types/payment.md) share more code. This has subtle differences in how offers are processed:
 
 - Rounding is slightly different in some cases.
 - Due to differences in rounding, some combinations of offers may be ranked higher or lower than by the old logic, and taken preferentially.
@@ -990,13 +990,13 @@ Without this amendment, "Immediate or Cancel" Offers that failed to move any fun
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Introduces [multi-signing](multi-signing.html) as a way to authorize transactions. Creates the [`SignerList` ledger object type](signerlist.html) and the [`SignerListSet` transaction type](signerlistset.html). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
+Introduces [multi-signing](../concepts/accounts/multi-signing.md) as a way to authorize transactions. Creates the [`SignerList` ledger object type](../references/protocol/ledger-data/ledger-entry-types/signerlist.md) and the [`SignerListSet` transaction type](../references/protocol/transactions/types/signerlistset.md). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
 
 This amendment allows addresses to have a list of signers who can authorize transactions from that address in a multi-signature. The list has a quorum and 1 to 8 weighted signers. This allows various configurations, such as "any 3-of-5" or "signature from A plus any other two signatures."
 
 Signers can be funded or unfunded addresses. Funded addresses in a signer list can sign using a regular key (if defined) or master key (unless disabled). Unfunded addresses can sign with a master key. Multi-signed transactions have the same permissions as transactions signed with a regular key.
 
-An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](transaction-results.html):
+An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](../references/protocol/transactions/transaction-results/transaction-results.md):
 
 * `temBAD_SIGNER`
 * `temBAD_QUORUM`
@@ -1017,11 +1017,11 @@ An address with a SignerList can disable the master key even if a regular key is
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Reduces the [owner reserve](reserves.html#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](multi-signing.html) SignerList.
+Reduces the [owner reserve](../concepts/accounts/reserves.md#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](../concepts/accounts/multi-signing.md) SignerList.
 
 Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.
 
-With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](signerlistset.html) to replace the SignerList after this amendment has been enabled. (The replacement can be the same as the previous version.)
+With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](../references/protocol/transactions/types/signerlistset.md) to replace the SignerList after this amendment has been enabled. (The replacement can be the same as the previous version.)
 
 
 ### NegativeUNL
@@ -1047,26 +1047,26 @@ Implements a "Negative UNL" system, where the network can track which validators
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds native support for [non-fungible tokens](non-fungible-tokens.html). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
+Adds native support for [non-fungible tokens](../concepts/tokens/nfts/index.md). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
-**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment][].
+**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).
 
 This amendment adds 5 new transaction types:
 
-- [NFTokenAcceptOffer][]
-- [NFTokenBurn][]
-- [NFTokenCancelOffer][]
-- [NFTokenCreateOffer][]
-- [NFTokenMint][]
+- [NFTokenAcceptOffer](../references/protocol/transactions/types/nftokenacceptoffer.md)
+- [NFTokenBurn](../references/protocol/transactions/types/nftokenburn.md)
+- [NFTokenCancelOffer](../references/protocol/transactions/types/nftokencanceloffer.md)
+- [NFTokenCreateOffer](../references/protocol/transactions/types/nftokencreateoffer.md)
+- [NFTokenMint](../references/protocol/transactions/types/nftokenmint.md)
 
 It also adds 2 new ledger object types:
 
-- [NFTokenOffer object][]
-- [NFTokenPage object][]
+- [NFTokenOffer object](../references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md)
+- [NFTokenPage object](../references/protocol/ledger-data/ledger-entry-types/nftokenpage.md)
 
-Additionally, it modifies the [AccountRoot object][] type to add 3 new optional fields: `MintedNFTokens`, `BurnedNFTokens`, and `NFTokenMinter`.
+Additionally, it modifies the [AccountRoot object](../references/protocol/ledger-data/ledger-entry-types/accountroot.md) type to add 3 new optional fields: `MintedNFTokens`, `BurnedNFTokens`, and `NFTokenMinter`.
 
-It also modifies the [AccountSet transaction][] type to allow you to set the `NFTokenMinter` field.
+It also modifies the [AccountSet transaction](../references/protocol/transactions/types/accountset.md) type to allow you to set the `NFTokenMinter` field.
 
 
 ### NonFungibleTokensV1_1
@@ -1079,7 +1079,7 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds native support for [non-fungible tokens](non-fungible-tokens.html), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
+Adds native support for [non-fungible tokens](../concepts/tokens/nfts/index.md), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
 
 This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:
 
@@ -1102,7 +1102,7 @@ It has no other effects.
 | Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | No |
 
-Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](offercreate.html) and [Payment](payment.html) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](../concepts/tokens/transfer-fees.md) are calculated between [OfferCreate](../references/protocol/transactions/types/offercreate.md) and [Payment](../references/protocol/transactions/types/payment.md) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
@@ -1121,9 +1121,9 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. This feature is expected to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the combined content of many small Claims later, as long as it is within the expiration.
 
-Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](paychannel.html). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](channel_authorize.html) (creates a signed Claim), [`channel_verify`](channel_verify.html) (verifies a signed Claim), and [`account_channels`](account_channels.html) (lists Channels associated with an account).
+Creates three new transaction types: [PaymentChannelCreate](../references/protocol/transactions/types/paymentchannelcreate.md), [PaymentChannelClaim](../references/protocol/transactions/types/paymentchannelclaim.md), and [PaymentChannelFund](../references/protocol/transactions/types/paymentchannelfund.md). Creates a new ledger object type, [PayChannel](../references/protocol/ledger-data/ledger-entry-types/paychannel.md). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md) (creates a signed Claim), [`channel_verify`](../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md) (verifies a signed Claim), and [`account_channels`](../references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) (lists Channels associated with an account).
 
-For more information, see the [Payment Channels Tutorial](use-payment-channels.html).
+For more information, see the [Payment Channels Tutorial](../tutorials/use-specialized-payment-types/use-payment-channels.md).
 
 
 ### RequireFullyCanonicalSig
@@ -1136,11 +1136,11 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of only transactions with the [`tfFullyCanonicalSig` flag](transaction-common-fields.html#global-flags) enabled.
+Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](../concepts/transactions/finality-of-results/transaction-malleability.md) on _all_ transactions, instead of only transactions with the [`tfFullyCanonicalSig` flag](../references/protocol/transactions/common-fields.md#global-flags) enabled.
 
 Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have `tfFullyCanonicalSig` enabled. Most signing utilities enable `tfFullyCanonicalSig` by default, but there are exceptions.
 
-With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the `tfFullyCanonicalSig` flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
+With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](../concepts/transactions/finality-of-results/transaction-malleability.md#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the `tfFullyCanonicalSig` flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
 
 For more information, see [`rippled` issue #3042](https://github.com/XRPLF/rippled/issues/3042).
 
@@ -1169,9 +1169,9 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
+Sorts the entries in [DirectoryNode ledger objects](../references/protocol/ledger-data/ledger-entry-types/directorynode.md) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](install-rippled.html) to `rippled` version 0.80.0 or later.
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](../infrastructure/installation/index.md) to `rippled` version 0.80.0 or later.
 
 
 ### SusPay
@@ -1183,7 +1183,7 @@ Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixe
 | Status       | Vetoed |
 | Pre-amendment functionality retired? | No |
 
-This amendment was replaced by the [Escrow](escrow-object.html) amendment.
+This amendment was replaced by the [Escrow](../references/protocol/ledger-data/ledger-entry-types/escrow.md) amendment.
 
 
 ### TicketBatch
@@ -1196,7 +1196,7 @@ This amendment was replaced by the [Escrow](escrow-object.html) amendment.
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds [Tickets](tickets.html) as a way of sending transactions out of the typical sequence number order.
+This amendment adds [Tickets](../concepts/accounts/tickets.md) as a way of sending transactions out of the typical sequence number order.
 
 Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16). <!-- SPELLING_IGNORE: xls, 13d -->
 
@@ -1223,9 +1223,9 @@ This amendment was replaced by the [TicketBatch][] amendment.
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Changes the way [Offers](offers.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
+Changes the way [Offers](../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
-Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](accountset.html). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
+Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](../references/protocol/transactions/types/accountset.md). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
 
 
 ### TrustSetAuth
@@ -1238,9 +1238,9 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](authorized-trust-lines.html).
+Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](../concepts/tokens/fungible-tokens/authorized-trust-lines.md).
 
-With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [`asfRequireAuth` flag enabled](accountset.html#accountset-flags).
+With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](../references/protocol/transactions/types/trustset.md#trustset-flags) can create a new [`RippleState` ledger object](../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags) by sending an [AccountSet transaction](../references/protocol/transactions/types/accountset.md) with the [`asfRequireAuth` flag enabled](../references/protocol/transactions/types/accountset.md#accountset-flags).
 
 
 ### XChainBridge
@@ -1273,9 +1273,3 @@ Simplifies transaction cost calculations to use XRP directly rather than calcula
 - Updates the SetFee transaction type. Replaces `BaseFee`, `ReferenceFeeUnits`, `ReserveBase`, `ReserveIncrement` fields with `BaseFeeDrops`, `ReserveBaseDrops`, `ReserveIncrementDrops`.
 
 Without this amendment, the format of the transaction and ledger entry are the same.
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

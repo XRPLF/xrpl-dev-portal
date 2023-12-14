@@ -11,7 +11,7 @@ Follow these instructions to migrate JavaScript / TypeScript code using the **ri
 
 ## High-Level Differences
 
-Many fields and functions have "new" names in xrpl.js v2.0; or more accurately, xrpl.js now uses the same names as the [HTTP / WebSocket APIs](http-websocket-apis.html). Structures that were unique to ripple-lib such as an `orderCancellation` object are gone; in their place the library uses the XRP Ledger's native [transaction types](transaction-types.html) like "OfferCancel". Many API methods that return these structures in ripple-lib 1.x are gone; with 2.0, you make requests and get responses in the same format as in the WebSocket API.
+Many fields and functions have "new" names in xrpl.js v2.0; or more accurately, xrpl.js now uses the same names as the [HTTP / WebSocket APIs](http-websocket-apis/index.md). Structures that were unique to ripple-lib such as an `orderCancellation` object are gone; in their place the library uses the XRP Ledger's native [transaction types](protocol/transactions/types/index.md) like "OfferCancel". Many API methods that return these structures in ripple-lib 1.x are gone; with 2.0, you make requests and get responses in the same format as in the WebSocket API.
 
 The catch-all `RippleAPI` class from ripple-lib 1.x is also gone. With xrpl.js 2.x, there's a `Client` class to handle network operations, and all other operations are strictly offline. There's a new `Wallet` class for addresses & keys, and other classes and properties under the top-level `xrpl` object.
 
@@ -54,11 +54,11 @@ const xrpl = require("xrpl");
 
 ## Validated Results
 
-By default, most methods in ripple-lib 1.x only returned results that were validated by the [consensus process](consensus.html) and therefore final. <!-- STYLE_OVERRIDE: therefore --> The xrpl.js equivalents of many methods use the [`Client.request()` method](https://js.xrpl.org/classes/Client.html#request) to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data which is not final.
+By default, most methods in ripple-lib 1.x only returned results that were validated by the [consensus process](../concepts/consensus-protocol/index.md) and therefore final. <!-- STYLE_OVERRIDE: therefore --> The xrpl.js equivalents of many methods use the [`Client.request()` method](https://js.xrpl.org/classes/Client.html#request) to call the WebSocket API, where the XRP Ledger server's default settings often use the current (pending) ledger to serve data which is not final.
 
-Sometimes you want to use the current open ledger because it has the pending results of many transactions that are likely to succeed, such as when looking up the state of the [decentralized exchange](decentralized-exchange.html). In other cases, you want to use a validated ledger, which only incorporates the results of transactions that are finalized.
+Sometimes you want to use the current open ledger because it has the pending results of many transactions that are likely to succeed, such as when looking up the state of the [decentralized exchange](../concepts/tokens/decentralized-exchange/index.md). In other cases, you want to use a validated ledger, which only incorporates the results of transactions that are finalized.
 
-When making API requests with xrpl.js 2.0 using `Client.request()`, you should explicitly [specify what ledger to use](basic-data-types.html#specifying-ledgers). For example, to look up trust lines using the latest _validated ledger_:
+When making API requests with xrpl.js 2.0 using `Client.request()`, you should explicitly [specify what ledger to use](protocol/data-types/basic-data-types.md#specifying-ledgers). For example, to look up trust lines using the latest _validated ledger_:
 
 **ripple-lib 1.x:**
 
@@ -83,8 +83,8 @@ console.log(trustlines.result)
 
 In xrpl.js, there are specific helper functions for signing and submitting transactions and waiting for the XRP Ledger blockchain to confirm those transactions' final outcomes:
 
-- Use `submitAndWait()` to submit a transaction and wait for its [final outcome](finality-of-results.html). If the transaction becomes validated, this resolves to a [tx method][] response; otherwise, it raises an exception. An exception does not guarantee that the transaction was not validated. For example, if the server has a [ledger gap](reliable-transaction-submission.html#ledger-gaps), then the transaction could have been validated in that gap.
-- Use `submit()` to submit and return immediately. This resolves to a [submit method][] response, which shows the preliminary (non-final) result. This method only raises an exception if there was a problem sending the transaction to the XRP Ledger server.
+- Use `submitAndWait()` to submit a transaction and wait for its [final outcome](../concepts/transactions/finality-of-results/index.md). If the transaction becomes validated, this resolves to a [tx method](http-websocket-apis/public-api-methods/transaction-methods/tx.md) response; otherwise, it raises an exception. An exception does not guarantee that the transaction was not validated. For example, if the server has a [ledger gap](../concepts/transactions/reliable-transaction-submission.md#ledger-gaps), then the transaction could have been validated in that gap.
+- Use `submit()` to submit and return immediately. This resolves to a [submit method](http-websocket-apis/public-api-methods/transaction-methods/submit.md) response, which shows the preliminary (non-final) result. This method only raises an exception if there was a problem sending the transaction to the XRP Ledger server.
 
 For both methods, you can pass a signed transaction to the method directly, or you can sign the transaction right before submitting, by passing prepared transaction instructions and a [`Wallet` instance](#keys-and-wallets).
 
@@ -105,7 +105,7 @@ try {
 }
 ```
 
-Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitAndWait(tx_blob)` to submit it. This can be useful for building [reliable transaction submission](reliable-transaction-submission.html) that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
+Alternatively, you can use the `sign` method of a wallet to sign a transaction and then use `submitAndWait(tx_blob)` to submit it. This can be useful for building [reliable transaction submission](../concepts/transactions/reliable-transaction-submission.md) that can recover from power outages and other disasters. (The library does not handle disaster recovery on its own.)
 
 ### Controlling LastLedgerSequence
 <!-- SPELLING_IGNORE: lastledgersequence -->
@@ -142,7 +142,7 @@ const prepared = await client.autofill({
 ## Keys and Wallets
 <!-- STYLE_OVERRIDE: wallet -->
 
-xrpl.js 2.0 introduces a new [`Wallet` class](https://js.xrpl.org/classes/Wallet.html) for managing [cryptographic keys](cryptographic-keys.html) and signing transactions. This replaces functions that took seed or secret values in ripple-lib 1.x, and handles various address encoding and generation tasks as well.
+xrpl.js 2.0 introduces a new [`Wallet` class](https://js.xrpl.org/classes/Wallet.html) for managing [cryptographic keys](../concepts/accounts/cryptographic-keys.md) and signing transactions. This replaces functions that took seed or secret values in ripple-lib 1.x, and handles various address encoding and generation tasks as well.
 
 ### Generating Keys
 
@@ -212,9 +212,9 @@ const signed = wallet.sign(tx_json)
 
 In 1.x, you could subscribe to ledger events and API errors using the `.on()` method of the `RippleAPI` class; or you could subscribe to specific WebSocket message types using `.connection.on()`. These have been merged into the [`Client.on()` method](https://js.xrpl.org/classes/Client.html#on). Additionally, the client library no longer automatically subscribes to ledger close events when connecting to an XRP Ledger server. To get ledger close events, you still add a handler, but **you must also explicitly subscribe to the ledger stream**.
 
-To subscribe to ledger close events, use `Client.request(method)` to call the [subscribe method][] with `"streams": ["ledger"]`. To attach event handlers, use `Client.on(event_type, callback)`. You can make these calls in either order.
+To subscribe to ledger close events, use `Client.request(method)` to call the [subscribe method](http-websocket-apis/public-api-methods/subscription-methods/subscribe.md) with `"streams": ["ledger"]`. To attach event handlers, use `Client.on(event_type, callback)`. You can make these calls in either order.
 
-The RippleAPI-specific `ledger` event type from 1.x has been removed; instead, use `ledgerClosed` events. These event messages contain the same data, but the format matches the [Ledger Stream](subscribe.html#ledger-stream) messages in the WebSocket API.
+The RippleAPI-specific `ledger` event type from 1.x has been removed; instead, use `ledgerClosed` events. These event messages contain the same data, but the format matches the [Ledger Stream](http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#ledger-stream) messages in the WebSocket API.
 
 Example:
 
@@ -256,7 +256,7 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | RippleAPI instance method / property | xrpl.js method / property | Notes |
 |-------------------|----------------|---|
 | `new ripple.RippleAPI({server: url})` | [`new xrpl.Client(url)`](https://js.xrpl.org/classes/Client.html#constructor) | Use `xrpl.BroadcastClient([url1, url2, ..])` to connect to multiple servers. |
-| `request(command, options)` | [`Client.request(options)`](https://js.xrpl.org/classes/Client.html#request) | <ul><li>The `command` field moved into the `options` object for consistency with the WebSocket API.</li><li>In 1.x the return value of this method (when the Promise resolves) was only the `result` object. Now it returns the whole [WebSocket response format](response-formatting.html); to get the equivalent value, read the `result` field of the return value. |
+| `request(command, options)` | [`Client.request(options)`](https://js.xrpl.org/classes/Client.html#request) | <ul><li>The `command` field moved into the `options` object for consistency with the WebSocket API.</li><li>In 1.x the return value of this method (when the Promise resolves) was only the `result` object. Now it returns the whole [WebSocket response format](http-websocket-apis/api-conventions/response-formatting.md); to get the equivalent value, read the `result` field of the return value. |
 | `hasNextPage()` | [`xrpl.hasNextPage(response)`](https://js.xrpl.org/modules.html#hasNextPage) | See also: [`Client.requestNextPage()`](https://js.xrpl.org/classes/Client.html#requestNextPage) and [`Client.requestAll()`](https://js.xrpl.org/classes/Client.html#requestAll) |
 | `requestNextPage()` | [`Client.requestNextPage()`](https://js.xrpl.org/classes/Client.html#requestNextPage) | |
 | `computeBinaryTransactionHash()` | [`xrpl.hashes.hashTx()`](https://js.xrpl.org/modules.html#hashes) | |
@@ -267,39 +267,39 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `connect()` | [`Client.connect()`](https://js.xrpl.org/classes/Client.html#connect) | |
 | `disconnect()` | [`Client.disconnect()`](https://js.xrpl.org/classes/Client.html#disconnect) | |
 | `isConnected()` | [`Client.isConnected()`](https://js.xrpl.org/classes/Client.html#isConnected) | |
-| `getServerInfo()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [server_info method][] instead. |
-| `getFee()` | (Removed - see Notes column) | Use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) to provide a sensible [transaction cost][] automatically, or use `Client.request({"command": "fee"})` to look up information about the current transaction cost (in _drops of XRP_). |
+| `getServerInfo()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [server_info method](http-websocket-apis/public-api-methods/server-info-methods/server_info.md) instead. |
+| `getFee()` | (Removed - see Notes column) | Use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) to provide a sensible [transaction cost](../concepts/transactions/transaction-cost.md) automatically, or use `Client.request({"command": "fee"})` to look up information about the current transaction cost (in _drops of XRP_). |
 | `getLedgerVersion()` | [`Client.getLedgerIndex()`](https://js.xrpl.org/classes/Client.html#getLedgerIndex) | |
-| `getTransaction()` | [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [tx method][] instead. **Warning:** Unlike `getTransaction()`, the `tx` method can return [results that are not validated and final](#validated-results). Be sure to look for `"validated": true` in the response object before taking action in response to a transaction. |
-| `getTransactions()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_tx method][] instead. |
-| `getTrustlines()` |  (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call [account_lines method][] instead. **Warning:** Unlike `getTrustlines()`, `account_lines` can return [results that are not validated and final](#validated-results). |
+| `getTransaction()` | [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [tx method](http-websocket-apis/public-api-methods/transaction-methods/tx.md) instead. **Warning:** Unlike `getTransaction()`, the `tx` method can return [results that are not validated and final](#validated-results). Be sure to look for `"validated": true` in the response object before taking action in response to a transaction. |
+| `getTransactions()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_tx method](http-websocket-apis/public-api-methods/account-methods/account_tx.md) instead. |
+| `getTrustlines()` |  (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call [account_lines method](http-websocket-apis/public-api-methods/account-methods/account_lines.md) instead. **Warning:** Unlike `getTrustlines()`, `account_lines` can return [results that are not validated and final](#validated-results). |
 | `getBalances()` | [`Client.getBalances()`](https://js.xrpl.org/classes/Client.html#getBalances) | |
-| `getBalanceSheet()` | (Removed - see Notes column) | Use [`Client.getBalances()`](https://js.xrpl.org/classes/Client.html#getBalances) instead, or use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [gateway_balances method][]. |
-| `getPaths()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call [ripple_path_find method][] instead. |
-| `getOrders()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_offers method][] instead. |
+| `getBalanceSheet()` | (Removed - see Notes column) | Use [`Client.getBalances()`](https://js.xrpl.org/classes/Client.html#getBalances) instead, or use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [gateway_balances method](http-websocket-apis/public-api-methods/account-methods/gateway_balances.md). |
+| `getPaths()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call [ripple_path_find method](http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md) instead. |
+| `getOrders()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_offers method](http-websocket-apis/public-api-methods/account-methods/account_offers.md) instead. |
 | `getOrderbook()` | [`Client.getOrderbook()`](https://js.xrpl.org/classes/Client.html#getOrderbook) | |
-| `getSettings()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_info method][] instead. Use `xrpl.parseAccountRootFlags()` on the `Flags` field to get the boolean values of individual flag settings. **Warning:** Unlike `getSettings()`, `account_info` can return [results that are not validated and final](#validated-results). |
-| `getAccountInfo(address, options)` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_info method][] instead. **Warning:** Unlike `getAccountInfo()`, `account_info` can return [results that are not validated and final](#validated-results). |
-| `getAccountObjects(address, options)` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_objects method][] instead. **Warning:** Unlike `getAccountObjects()`, `account_objects` can return [results that are not validated and final](#validated-results). |
-| `getPaymentChannel()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [ledger_entry method](ledger_entry.html#get-paychannel-object) instead. **Warning:** Unlike `getPaymentChannel()`, `ledger_entry` can return [results that are not validated and final](#validated-results). |
-| `getLedger()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [ledger method][] exactly. **Warning:** Unlike `getLedger()`, `ledger` can return [ledgers that are not validated and final](#validated-results). |
+| `getSettings()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_info method](http-websocket-apis/public-api-methods/account-methods/account_info.md) instead. Use `xrpl.parseAccountRootFlags()` on the `Flags` field to get the boolean values of individual flag settings. **Warning:** Unlike `getSettings()`, `account_info` can return [results that are not validated and final](#validated-results). |
+| `getAccountInfo(address, options)` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_info method](http-websocket-apis/public-api-methods/account-methods/account_info.md) instead. **Warning:** Unlike `getAccountInfo()`, `account_info` can return [results that are not validated and final](#validated-results). |
+| `getAccountObjects(address, options)` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [account_objects method](http-websocket-apis/public-api-methods/account-methods/account_objects.md) instead. **Warning:** Unlike `getAccountObjects()`, `account_objects` can return [results that are not validated and final](#validated-results). |
+| `getPaymentChannel()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [ledger_entry method](http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md#get-paychannel-object) instead. **Warning:** Unlike `getPaymentChannel()`, `ledger_entry` can return [results that are not validated and final](#validated-results). |
+| `getLedger()` | (Removed - see Notes column) | Use [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) to call the [ledger method](http-websocket-apis/public-api-methods/ledger-methods/ledger.md) exactly. **Warning:** Unlike `getLedger()`, `ledger` can return [ledgers that are not validated and final](#validated-results). |
 | `parseAccountFlags()` | [`xrpl.parseAccountRootFlags()`](https://js.xrpl.org/modules.html#parseAccountRootFlags) | Now a static method on the module. |
 | `prepareTransaction()` | [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) | See [Transaction Submission](#transaction-submission) for details. |
-| `preparePayment()` | (Removed - see Notes column) | Construct a [Payment transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareTrustline()` | (Removed - see Notes column) | Construct a [TrustSet transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareOrder()` | (Removed - see Notes column) | Construct an [OfferCreate transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareOrderCancellation()` | (Removed - see Notes column) | Construct an [OfferCancel transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareSettings()` | (Removed - see Notes column) | For most settings, construct an [AccountSet transaction][] instead. To rotate change a regular key, construct a [SetRegularKey transaction][]. To add or update multi-signing settings, construct a [SignerListSet transaction][] instead. In all three cases, use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) to prepare the transaction. |
-| `prepareEscrowCreation()` | (Removed - see Notes column) | Construct an [EscrowCreate transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareEscrowCancellation()` | (Removed - see Notes column) | Construct an [EscrowCancel transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareEscrowExecution()` | (Removed - see Notes column) | Construct an [EscrowFinish transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `preparePaymentChannelCreate()` | (Removed - see Notes column) | Construct a [PaymentChannelCreate transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `preparePaymentChannelClaim()` | (Removed - see Notes column) | Construct a [PaymentChannelClaim transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `preparePaymentChannelFund()` | (Removed - see Notes column) | Construct a [PaymentChannelFund transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareCheckCreate()` | (Removed - see Notes column) | Construct a [CheckCreate transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareCheckCancel()` | (Removed - see Notes column) | Construct a [CheckCancel transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareCheckCash()` | (Removed - see Notes column) | Construct a [CheckCash transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
-| `prepareTicketCreate()` | (Removed - see Notes column) | Construct a [TicketCreate transaction][] and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `preparePayment()` | (Removed - see Notes column) | Construct a [Payment transaction](protocol/transactions/types/payment.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareTrustline()` | (Removed - see Notes column) | Construct a [TrustSet transaction](protocol/transactions/types/trustset.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareOrder()` | (Removed - see Notes column) | Construct an [OfferCreate transaction](protocol/transactions/types/offercreate.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareOrderCancellation()` | (Removed - see Notes column) | Construct an [OfferCancel transaction](protocol/transactions/types/offercancel.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareSettings()` | (Removed - see Notes column) | For most settings, construct an [AccountSet transaction](protocol/transactions/types/accountset.md) instead. To rotate change a regular key, construct a [SetRegularKey transaction](protocol/transactions/types/setregularkey.md). To add or update multi-signing settings, construct a [SignerListSet transaction](protocol/transactions/types/signerlistset.md) instead. In all three cases, use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) to prepare the transaction. |
+| `prepareEscrowCreation()` | (Removed - see Notes column) | Construct an [EscrowCreate transaction](protocol/transactions/types/escrowcreate.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareEscrowCancellation()` | (Removed - see Notes column) | Construct an [EscrowCancel transaction](protocol/transactions/types/escrowcancel.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareEscrowExecution()` | (Removed - see Notes column) | Construct an [EscrowFinish transaction](protocol/transactions/types/escrowfinish.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `preparePaymentChannelCreate()` | (Removed - see Notes column) | Construct a [PaymentChannelCreate transaction](protocol/transactions/types/paymentchannelcreate.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `preparePaymentChannelClaim()` | (Removed - see Notes column) | Construct a [PaymentChannelClaim transaction](protocol/transactions/types/paymentchannelclaim.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `preparePaymentChannelFund()` | (Removed - see Notes column) | Construct a [PaymentChannelFund transaction](protocol/transactions/types/paymentchannelfund.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareCheckCreate()` | (Removed - see Notes column) | Construct a [CheckCreate transaction](protocol/transactions/types/checkcreate.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareCheckCancel()` | (Removed - see Notes column) | Construct a [CheckCancel transaction](protocol/transactions/types/checkcancel.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareCheckCash()` | (Removed - see Notes column) | Construct a [CheckCash transaction](protocol/transactions/types/checkcash.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
+| `prepareTicketCreate()` | (Removed - see Notes column) | Construct a [TicketCreate transaction](protocol/transactions/types/ticketcreate.md) and use [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) instead. |
 | `sign()` | [`Wallet.sign()`](https://js.xrpl.org/classes/Wallet.html#sign) | See [Keys and Wallets](#keys-and-wallets) for details. |
 | `combine()` | [`xrpl.multisign()`](https://js.xrpl.org/modules.html#multisign) | |
 | `submit()` | [`Client.submit()`](https://js.xrpl.org/classes/Client.html#submit) | Reliable transaction submission is now also available; for details, see [Transaction Submission](#transaction-submission). |
@@ -332,9 +332,3 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `.on("error", callback)` | [`Client.on("error", callback)`](https://js.xrpl.org/classes/Client.html#on) | |
 | `.on("connected", callback)` | [`Client.on("connected", callback)`](https://js.xrpl.org/classes/Client.html#on) | |
 | `.on("disconnected", callback)` | [`Client.on("connected", callback)`](https://js.xrpl.org/classes/Client.html#on) | |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

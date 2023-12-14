@@ -10,15 +10,14 @@ labels:
 
 The `fetch_info` command returns information about objects that this server is currently fetching from the network, and how many peers have that information. It can also be used to reset current fetches.
 
-_The `fetch_info` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `fetch_info` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 91,
@@ -26,9 +25,9 @@ An example of the request format:
     "clear": false
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "fetch_info",
@@ -39,15 +38,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: fetch_info [clear]
 rippled fetch_info
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -59,10 +59,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -98,9 +97,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -139,10 +138,11 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -163,8 +163,3 @@ The fields describing a fetch in progress are subject to change without notice. 
 
 - Any of the [universal error types][].
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

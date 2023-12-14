@@ -8,7 +8,7 @@ labels:
 ---
 # ピアクローラ
 
-ピアクローラは、ピアツーピアネットワークの健全性と統計情報を報告するための特別な[peer portメソッド](peer-port-methods.html)です。このAPIメソッドは、デフォルトでは[ピアプロトコル](peer-protocol.html)のポートを通して非rootベースで利用可能で、コンセンサスやレジャーの履歴、その他の必要な情報についての`rippled`サーバのピアツーピア通信にも使用されます。
+ピアクローラは、ピアツーピアネットワークの健全性と統計情報を報告するための特別な[peer portメソッド](index.md)です。このAPIメソッドは、デフォルトでは[ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)のポートを通して非rootベースで利用可能で、コンセンサスやレジャーの履歴、その他の必要な情報についての`rippled`サーバのピアツーピア通信にも使用されます。
 
 ピアクローラによって報告された情報は事実上公開され、XRP Ledgerのネットワーク全体やその健全性、統計情報について報告するために使用することができます。
 
@@ -34,18 +34,18 @@ JSONオブジェクトは次のフィールドを含んでいます。
 |:-----------------|:-----------|:-------------------------------------------------|
 | `counts`         | オブジェクト | _(省略可)_ [get_countsメソッド][]のレスポンスと同じように、このサーバの状態に関する統計情報を返します。デフォルトの設定では、このフィールドは報告されません。報告される情報には、レジャーデータベースとトランザクションデータベースのサイズ、アプリケーション内キャッシュのキャッシュヒット率、さまざまな種類のオブジェクトがメモリにキャッシュされている数などがあります。メモリに保存されるオブジェクトの種類には、レジャー(`Ledger`)、トランザクション(`STTx`)、検証メッセージ (`STValidation`)などがあります。 |
 | `overlay`        | オブジェクト | _(省略可)_ [peersメソッド][]のレスポンスに似ています。`active`というフィールドがあり、これはオブジェクトの配列です(下記参照)。 |
-| `server`         | オブジェクト | _(省略可)_ このサーバに関する情報。[server_stateメソッド][]の公開フィールドを含みます。どの`rippled`バージョン(`build_version`)か、どの[レジャーバージョン](ledger-history.html)が利用可能か(`complete_ledgers`)、サーバーの負荷量などです。[更新: rippled 1.2.1][]. |
-| `unl`            | オブジェクト | _(省略可)_ [validatorsメソッド][]や[validator_list_sitesメソッド][]のレスポンスと同様です。[更新: rippled 1.2.1][]. |
-| `version`        | 数値        | このピアクローラのレスポンスフォーマットのバージョンを示します。現在のピアクローラのバージョン番号は`2`です。[更新: rippled 1.2.1][]. |
+| `server`         | オブジェクト | _(省略可)_ このサーバに関する情報。[server_stateメソッド][]の公開フィールドを含みます。どの`rippled`バージョン(`build_version`)か、どの[レジャーバージョン](../../../concepts/networks-and-servers/ledger-history.md)が利用可能か(`complete_ledgers`)、サーバーの負荷量などです。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
+| `unl`            | オブジェクト | _(省略可)_ [validatorsメソッド][]や[validator_list_sitesメソッド][]のレスポンスと同様です。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
+| `version`        | 数値        | このピアクローラのレスポンスフォーマットのバージョンを示します。現在のピアクローラのバージョン番号は`2`です。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
 
 `overlay.active`配列の各メンバーは、次のフィールドを持つオブジェクトです。
 
 | `Field`            | 値                     | 説明                                |
 |:-------------------|:-----------------------|:-----------------------------------|
-| `complete_ledgers` | 文字列                  | このピアで利用可能な[レジャーバージョン](ledger-history.html)の範囲。 |
-| `complete_shards`  | 文字列                  | _(省略可)_ このピアが利用可能な[レジャー履歴シャード](history-sharding.html)の範囲。 |
-| `ip`               | 文字列 (IPv4アドレス)    | _(省略可)_この接続ピアの IPアドレス。ピアがバリデータまたは[プライベートピア](peer-protocol.html#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1][]. |
-| `port`             | 文字列 (数値)            | _(省略可)_ RTXPを提供するピアサーバのポート番号。通常は`51235`。ピアがバリデータまたは[プライベートピア](peer-protocol.html#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1][]. |
+| `complete_ledgers` | 文字列                  | このピアで利用可能な[レジャーバージョン](../../../concepts/networks-and-servers/ledger-history.md)の範囲。 |
+| `complete_shards`  | 文字列                  | _(省略可)_ このピアが利用可能な[レジャー履歴シャード](../../../infrastructure/configuration/data-retention/history-sharding.md)の範囲。 |
+| `ip`               | 文字列 (IPv4アドレス)    | _(省略可)_この接続ピアの IPアドレス。ピアがバリデータまたは[プライベートピア](peer-protocol.html#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
+| `port`             | 文字列 (数値)            | _(省略可)_ RTXPを提供するピアサーバのポート番号。通常は`51235`。ピアがバリデータまたは[プライベートピア](peer-protocol.html#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
 | `public_key`       | 文字列 (Base64エンコード) | このピアがRTXPメッセージに署名するために使用するECDSA鍵ペアの公開鍵。(これはピアサーバの[server_infoメソッド][]で報告される`pubkey_node`と同じデータです)。 |
 | `type`             | 文字列                  | `in`または`out`の値で、ピアへのTCP接続が着信か発信かを示します。 |
 | `uptime`           | 数値                    | サーバがこのピアに接続している秒数。 |
@@ -55,39 +55,29 @@ JSONオブジェクトは次のフィールドを含んでいます。
 
 リクエスト:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*HTTP*
-
+{% tab label="HTTP" %}
 ```
 GET https://localhost:51235/crawl
 ```
+{% /tab %}
 
-*cURL*
-
+{% tab label="cURL" %}
 ```
 curl --insecure https://localhost:51235/crawl
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンス:
 
-```json
-200 OK
-
-{% include '_api-examples/peer-crawler/crawl.json' %}
-```
+{% code-snippet file="/_api-examples/peer-crawler/crawl.json" language="json" prefix="200 OK\n\n" /%}
 
 
 ## 関連項目
 
-- [ピアプロトコル](peer-protocol.html)
-- [ピアクローラの設定](configure-the-peer-crawler.html)
+- [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
+- [ピアクローラの設定](../../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
 - [Validator History Service](https://github.com/ripple/validator-history-service)は、検証関連データの取り込み、集計、保存、配布にピアクローラを使用するサービスの一例です。
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}

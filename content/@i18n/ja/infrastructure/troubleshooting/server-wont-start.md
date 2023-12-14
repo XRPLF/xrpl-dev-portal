@@ -9,7 +9,7 @@ labels:
 
 このページでは、[`rippled`サーバー](xrpl-servers.html)が起動しない際に考えられる原因とその修正方法を説明します。
 
-以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](install-rippled.html)されていることを前提としています。
+以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
 
 ## ファイル記述子の制限
 
@@ -24,22 +24,30 @@ limit the number of simultaneous connections.
 
 1. 次の行を`/etc/security/limits.conf`ファイルの終わりに追加します。
 
-        *                soft    nofile          65536
-        *                hard    nofile          65536
+    ```
+    *                soft    nofile          65536
+    *                hard    nofile          65536
+    ```
 
 2. [開くことができるファイルの数のハード制限](https://ss64.com/bash/ulimit.html)が現在`65536`であることを確認します。
 
-        ulimit -Hn
+    ```
+    ulimit -Hn
+    ```
 
    このコマンドの出力は`65536`になるはずです。
 
 3. `rippled`をもう一度起動します。
 
-        systemctl start rippled
+    ```
+    systemctl start rippled
+    ```
 
 4. それでも`rippled`が起動しない場合は、`/etc/sysctl.conf`を開き、以下のカーネルレベル設定を付加します。
 
-        fs.file-max = 65536
+    ```
+    fs.file-max = 65536
+    ```
 
 
 ## /etc/opt/ripple/rippled.cfgを開くことができない
@@ -61,7 +69,7 @@ Aborted (core dumped)
 
     **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
-- `--conf`[コマンドラインオプション](commandline-usage.html)を使用して、使用する構成ファイルのパスを指定します。
+- `--conf`[コマンドラインオプション](../commandline-usage.md)を使用して、使用する構成ファイルのパスを指定します。
 
 ## バリデータファイルを開くことができない
 
@@ -83,11 +91,13 @@ Aborted (core dumped)
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を削除します。バリデータ設定を`rippled.cfg`ファイルに直接追加します。例:
 
-        [validator_list_sites]
-        https://vl.ripple.com
+    ```
+    [validator_list_sites]
+    https://vl.ripple.com
 
-        [validator_list_keys]
-        ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+    [validator_list_keys]
+    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+    ```
 
 
 ## データベースパスを作成できない
@@ -177,7 +187,7 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 
 ## シャードパスが欠落している
 
-以下のようなエラーが出力される場合は、`rippled.cfg`の[履歴シャーディング](history-sharding.html)の設定が不完全です。
+以下のようなエラーが出力される場合は、`rippled.cfg`の[履歴シャーディング](../configuration/data-retention/history-sharding.md)の設定が不完全です。
 
 ```text
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
@@ -187,7 +197,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'shard path missin
 
 ## サポート対象外のシャードストアータイプ: RocksDB
 
-RocksDBは、[履歴シャーディング](history-sharding.html)のバックエンドとしてサポートされなくなりました。RocksDBシャードストアーを定義している既存の構成がある場合は、サーバーが起動に失敗します。[新規: rippled 1.3.1][]
+RocksDBは、[履歴シャーディング](../configuration/data-retention/history-sharding.md)のバックエンドとしてサポートされなくなりました。RocksDBシャードストアーを定義している既存の構成がある場合は、サーバーが起動に失敗します。[新規: rippled 1.3.1](https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE")
 
 この場合、log startupコマンドの直後にプロセスが終了し、出力ログの早い段階で次のようなメッセージが表示されます。
 
@@ -208,14 +218,9 @@ ShardStore:ERR Unsupported shard store type: RocksDB
     - [`rippled`サーバー](xrpl-servers.html)
     - [技術に関するよくある質問](technical-faq.html)
 - **チュートリアル:**
-    - [ログメッセージについて](understanding-log-messages.html)
-    - [容量の計画](capacity-planning.html)
+    - [ログメッセージについて](understanding-log-messages.md)
+    - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](http-websocket-apis.html)
-      - [`rippled`コマンドラインの使用](commandline-usage.html)
+    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`rippled`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

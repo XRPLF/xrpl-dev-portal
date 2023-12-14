@@ -10,17 +10,16 @@ labels:
 
 `account_nfts`メソッドは、指定したアカウントの`NFToken`オブジェクトの一覧を返します。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました。)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました。)_
 
 ## 要求フォーマット
 要求フォーマットの例
 
-{% include '_snippets/no-cli-syntax.ja.md' %}
+{% partial file="/_snippets/no-cli-syntax.ja.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "account_nfts",
@@ -28,9 +27,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "account_nfts",
@@ -40,8 +39,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#account_nfts)
 
@@ -49,20 +49,19 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 | フィールド       | 型               | 説明                                      |
 |:---------------|:-----------------|:-----------------------------------------|
-| `account`      | 文字列            | アカウントの一意の識別子で、通常はアカウントの[アドレス][]です。このリクエストは、このアカウントが所有するNFTのリストを返します。 |
-| `ledger_hash`  | 文字列            | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進数の文字列。([レジャーの指定][]を参照)。 |
-| `ledger_index` | 文字列 または 数値  | _(省略可)_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。([レジャーの指定][]を参照)。 |
+| `account`      | 文字列            | アカウントの一意の識別子で、通常はアカウントの[アドレス](basic-data-types.html#アドレス)です。このリクエストは、このアカウントが所有するNFTのリストを返します。 |
+| `ledger_hash`  | 文字列            | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進数の文字列。([レジャーの指定](basic-data-types.html#レジャーの指定)を参照)。 |
+| `ledger_index` | 文字列 または 数値  | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。([レジャーの指定](basic-data-types.html#レジャーの指定)を参照)。 |
 | `limit`        | 整数              | _(省略可)_ 取得する[トークンのページ][NFTokenPage オブジェクト]の数を制限します。各ページには最大32個のNFTを含めることができます。`limit`の値は20以上・400以下で指定します。この範囲外の正の値は、最も近い有効な値に置き換えられます。デフォルトは100です。 |
-| `marker`       | [マーカー][]       | _(省略可)_ 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。 |
+| `marker`       | [マーカー](../../api-conventions/markers-and-pagination.md)       | _(省略可)_ 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。 |
 
 
 ## 応答フォーマット
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -93,9 +92,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -125,28 +124,29 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`                | 型                          | 説明                                     |
 |:-----------------------|:----------------------------|:----------------------------------------|
 | `account`              | 文字列                       | NFTの一覧を所有するアカウント |
 | `account_nfts`         | 配列                         | アカウントが所有するNFTのリストで、**NFTオブジェクト**（下記参照）としてフォーマットされます。 |
 | `ledger_hash`          | 文字列                       | _(省略可能)_ このレスポンスの生成に使用されたレジャーの識別ハッシュ。 |
-| `ledger_index`         | 数値 - [レジャーインデックス][] | _(省略可能)_ このレスポンスの生成に使用されたレジャーのインデックス。 |
-| `ledger_current_index` | 数値 - [レジャーインデックス][] | _(省略可能)_ このレスポンスの生成に使用された、現在進行中のレジャーバージョンのレジャーインデックス。 |
+| `ledger_index`         | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _(省略可能)_ このレスポンスの生成に使用されたレジャーのインデックス。 |
+| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _(省略可能)_ このレスポンスの生成に使用された、現在進行中のレジャーバージョンのレジャーインデックス。 |
 | `validated`            | ブール値                     | このレスポンスに含まれ、`true`に設定されている場合、このレスポンスの情報は検証済みのレジャーバージョンから取得したものです。そうでない場合、情報は変更される可能性があります。 |
 
 ### NFTオブジェクト
 
-`account_nfts`配列の各オブジェクトは1つの[NFToken][]を表し、以下のフィールドを保持しています
+`account_nfts`配列の各オブジェクトは1つの[NFToken](../../../protocol/data-types/nftoken.md)を表し、以下のフィールドを保持しています
 
 | `Field`        | 型                  | 説明                                  |
 |:---------------|:------------------- |:-------------------------------------|
 | `Flags`        | 数値                | このNFTokenで有効なブール値フラグのビットマップ。指定できる値については、[NFTokenフラグ](nftoken.html#nftoken-フラグ)を参照してください。 |
-| `Issuer`       | 文字列 - [アドレス][] | このNFTokenを発行したアカウント。 |
+| `Issuer`       | 文字列 - [アドレス](basic-data-types.html#アドレス) | このNFTokenを発行したアカウント。 |
 | `NFTokenID`    | 文字列               | このNFTokenの一意の識別子（16進数）。 |
 | `NFTokenTaxon` | 数値                | このトークンの[taxon](nftoken.html#nftokentaxon分類群)の非乱数化した値。同じtaxonを持つ複数のトークンは、一つの限定されたシリーズのインスタンスを表すかもしれません。 |
 | `URI`          | String              | このNFTokenに関連付けられた16進数のURI データ。 |
@@ -154,11 +154,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

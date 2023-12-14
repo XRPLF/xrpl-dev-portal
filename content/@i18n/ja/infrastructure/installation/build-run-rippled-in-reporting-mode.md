@@ -9,13 +9,13 @@ top_nav_grouping: 人気ページ
 ---
 # レポートモードでの`rippled`のビルドと実行
 
-[レポートモード](rippled-server-modes.html)は、[HTTPとWebSocket API](http-websocket-apis.html)の提供に特化したXRP Ledgerのコアサーバのモードです。
+[レポートモード](../../concepts/networks-and-servers/rippled-server-modes.md)は、[HTTPとWebSocket API](../../references/http-websocket-apis/index.md)の提供に特化したXRP Ledgerのコアサーバのモードです。
 
 レポートモードでは、サーバはピアツーピアネットワークに接続しません。その代わりに、gRPCを使用して、P2Pネットワークに接続されている1つまたは複数の信頼できるサーバから有効なデータを取得します。
 
 そしてAPIコールを効率的に処理し、P2Pモードで動作している`rippled`サーバの負荷を軽減することができます。
 
-{{ include_svg("img/reporting-mode-basic-architecture.svg", "図 1: レポートモードでの`rippled`の動作") }}
+[{% inline-svg file="/img/reporting-mode-basic-architecture.svg" /%}](/img/reporting-mode-basic-architecture.svg "図 1: レポートモードでの`rippled`の動作")
 
 `rippled`のレポートモードでは2種類のデータストアを使用します。
 
@@ -31,7 +31,7 @@ top_nav_grouping: 人気ページ
 
 ### 前提条件
 
-1. お使いのシステムが[システム要件](system-requirements.html)を満たしていることを確認してください。
+1. お使いのシステムが[システム要件](system-requirements.md)を満たしていることを確認してください。
 
     **注記:** データベースとしてCassandraを選択した場合、データがローカルディスクに保存されないため、`rippled`のディスク要件は低くなります。
 
@@ -47,7 +47,9 @@ top_nav_grouping: 人気ページ
 
     3. macOSでは、Cassandraのcppライバを手動でインストールする必要があります。その他のプラットフォームでは、Cassandraドライバは`rippled`ビルドの一部としてビルドされます。
         
-            brew install cassandra-cpp-driver
+        ```
+        brew install cassandra-cpp-driver
+        ```
 
 #### PostgreSQLのインストール
     
@@ -57,29 +59,35 @@ top_nav_grouping: 人気ページ
         
 2. `psql`を使用してPostgreSQLデータベースサーバに接続し、ユーザ`newuser`とデータベース`reporting`を作成します。
 
-        psql postgres
-	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newuser CREATEDB;
-        \q
-        psql postgres -U newuser
-        postgres=# create database reporting;
+    ```
+    psql postgres
+        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+        ALTER ROLE newuser CREATEDB;
+    \q
+    psql postgres -U newuser
+    postgres=# create database reporting;
+    ```
 
 
 **macOSにPostgreSQLをインストール**
 
 1. macOSにPostgreSQLをダウンロードしてインストールします。
 
-        brew install postgres
-        brew services start postgres
+    ```
+    brew install postgres
+    brew services start postgres
+    ```
 
 2. `psql` を使用してPostgreSQLデータベースサーバに接続し、ユーザ`newuser`とデータベース`reporting`を作成します。
 
-        psql postgres
-	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newuser CREATEDB;
-        \q
-        psql postgres -U newuser
-        postgres=# create database reporting;
+    ```
+    psql postgres
+        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+        ALTER ROLE newuser CREATEDB;
+    \q
+    psql postgres -U newuser
+    postgres=# create database reporting;
+    ```
 
 #### プライマリ永続データストアのインストールと設定
 
@@ -89,9 +97,11 @@ Cassandraをインストールし、レプリケーションを使用して`ripp
 
 レプリケーション係数は3が推奨されますが、ローカルで実行する場合はレプリケーションは不要なので、`replication_factor`を1に設定することができます。
         
-    $ cqlsh [host] [port]
-    > CREATE KEYSPACE `rippled` WITH REPLICATION =
-    {'class' : 'SimpleStrategy', 'replication_factor' : 1    };
+```
+$ cqlsh [host] [port]
+> CREATE KEYSPACE `rippled` WITH REPLICATION =
+{'class' : 'SimpleStrategy', 'replication_factor' : 1    };
+```
 
 **NuDB** 
 
@@ -104,29 +114,30 @@ NuDBは`rippled`ビルドセットアップの一部としてインストール�
 
 1. [UbuntuまたはmacOS](https://github.com/XRPLF/rippled/blob/release/BUILD.md)のレポートモード用に`rippled`をビルド。
 
-    <!-- MULTICODE_BLOCK_START -->
+    {% tabs %}
 
-    *Linux*
+    ```{% label="Linux" %}
+    wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
+    sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir 
+    cmake -B build -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug 
+    cmake --build build --parallel $(nproc)
+    ```
 
-        wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
-        sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir 
-        cmake -B build -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug 
-        cmake --build build --parallel $(nproc)
+    ```{% label="macOS" %}
+    cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
+    cmake --build build --parallel $(nproc)
+    ```
 
-
-    *macOS*
-
-	    cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
-        cmake --build build --parallel $(nproc)
-
-    <!-- MULTICODE_BLOCK_END -->
+    {% /tabs %}
 
 2. レポートモードで`rippled`を実行するための設定ファイルを作成します。
 
     設定ファイル例`rippled-example.cfg`をコピーして、非rootユーザで`rippled`を実行できる場所に`rippled-reporting-mode.cfg`として保存してください。例えば
     
-        mkdir -p $HOME/.config/ripple
-        cp <RIPPLED_SOURCE>/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
+    ```
+    mkdir -p $HOME/.config/ripple
+    cp <RIPPLED_SOURCE>/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
+    ```
 
 3. rippled-reporting-mode.cfgを編集して必要なファイルパスを設定してください。あなたが`rippled`を実行する予定のユーザは、ここで指定したすべてのパスに書き込み権限を持っている必要があります。
 
@@ -142,75 +153,89 @@ NuDBは`rippled`ビルドセットアップの一部としてインストール�
 
     1. `[reporting]`スタンザのコメントを外すか、新しいスタンザを追加してください：
 
-            [reporting]
-            etl_source
-            read_only=0
+        ```
+        [reporting]
+        etl_source
+        read_only=0
+        ```
 
     2. データを抽出する`rippled`ソース(ETLソース)をリストアップします。これらの`rippled`サーバはgRPCが有効になっている必要があります。
     
         注記: レポートモードはP2Pネットワークに接続しないため、データがネットワークのコンセンサスレジャーと実際に一致しているかどうかを検証できないため、信頼できるサーバだけを含めるようにしてください。
         
-            [etl_source]
-            source_grpc_port=50051
-            source_ws_port=6006
-            source_ip=127.0.0.1
+        ```
+        [etl_source]
+        source_grpc_port=50051
+        source_ws_port=6006
+        source_ip=127.0.0.1
+        ```
 
 5. データベースの設定
 
     1. `[ledger_tx_tables]`にPostgres DBを指定します。
 
-            [ledger_tx_tables]
-            conninfo = postgres://newuser:password@127.0.0.1/reporting
-            use_tx_tables=1
+        ```
+        [ledger_tx_tables]
+        conninfo = postgres://newuser:password@127.0.0.1/reporting
+        use_tx_tables=1
+        ```
 
     2. `[node_db]` にデータベースを指定します。
 
-        <!-- MULTICODE_BLOCK_START -->
+        {% tabs %}
 
-        *NuDB*
+        ```{% label="NuDB" %}
+        [node_db]
+        type=NuDB
+        path=/home/ubuntu/ripple/
 
-            [node_db]
-            type=NuDB
-            path=/home/ubuntu/ripple/
+        [ledger_history]
+        1000000
+        ```
 
-            [ledger_history]
-            1000000
+        ```{% label="Cassandra" %}
+        [node_db]
+        type=Cassandra
 
-        *Cassandra*
+        [ledger_history]
+        1000000
+        ```
 
-            [node_db]
-            type=Cassandra
-
-            [ledger_history]
-            1000000
-
-        <!-- MULTICODE_BLOCK_END -->
+        {% /tabs %}
 
 6. `rippled`の設定を変更してポートを開放してください。
 
     1. パブリックWebSocketのポートを開きます。
 
-            [port_ws_admin_local]
-            port = 6006
-            ip = 127.0.0.1
-            admin = 127.0.0.1
-            protocol = ws
+        ```
+        [port_ws_admin_local]
+        port = 6006
+        ip = 127.0.0.1
+        admin = 127.0.0.1
+        protocol = ws
+        ```
 
 
     2. ポートを開きます。
 
-            [port_grpc]
-            port = 60051
-            ip = 0.0.0.0
+        ```
+        [port_grpc]
+        port = 60051
+        ip = 0.0.0.0
+        ```
 
 
     3. レポートシステムのIPに安全なゲートウェイを追加します。
 
-            secure_gateway = 127.0.0.1
+        ```
+        secure_gateway = 127.0.0.1
+        ```
 
 7. レポートモードで`rippled`を実行します。
 
-        ./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
+    ```
+    ./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
+    ```
 
 
 ### 予想される結果
@@ -280,22 +305,22 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 2021-Dec-09 21:31:53.291048 UTC NetworkOPs:NFO STATE->full
 2021-Dec-09 21:31:53.291192 UTC Application:FTL Startup RPC: 
 {
-	"command" : "log_level",
-	"severity" : "debug"
+    "command" : "log_level",
+    "severity" : "debug"
 }
 
 
 2021-Dec-09 21:31:53.291347 UTC RPCHandler:DBG RPC call log_level completed in 2.2e-08seconds
 2021-Dec-09 21:31:53.291440 UTC Application:FTL Result: 
 {
-	"warnings" : 
-	[
-		
-		{
-			"id" : 1004,
-			"message" : "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
-		}
-	]
+    "warnings" : 
+    [
+        
+        {
+            "id" : 1004,
+            "message" : "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+        }
+    ]
 }
 
 
@@ -332,7 +357,7 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 
 最後に、P2Pモードサーバはごく最近の履歴しか保持する必要がありませんが、レポートモードサーバは長期間の履歴を保持します。
 
-`rippled`を実行するためのシステム要件については、[`rippled`のシステム要件](system-requirements.html)をご覧ください。
+`rippled`を実行するためのシステム要件については、[`rippled`のシステム要件](system-requirements.md)をご覧ください。
 
 **PostgreSQLまたはCassandraデータベースから送られてくるデータの信頼性を確認するにはどうすればよいですか。**
 
@@ -341,8 +366,3 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 **APIを使用するのではなく、リレーショナルデータベースに対して従来のSQLクエリを実行することは可能ですか？**
 
 技術的には、データベースに直接アクセスすることも*可能*です。しかし、データはバイナリーBlobとして保存されており、その中のデータにアクセスするにはBlobをデコードしなければなりません。このため、従来のSQLクエリは、データの個々のフィールドを検索したりフィルタリングしたりすることができず、あまり役に立ちません。
-
-<!--{# common link defs #}--> 
-{% include '_snippets/rippled-api-links.md' %} 
-{% include '_snippets/tx-type-links.md' %} 
-{% include '_snippets/rippled_versions.md' %}

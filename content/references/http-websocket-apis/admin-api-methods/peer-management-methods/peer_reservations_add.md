@@ -8,54 +8,54 @@ labels:
 # peer_reservations_add
 [[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")
 
-The `{{currentpage.name}}` method adds or updates a reserved slot for a specific peer server in the XRP Ledger [peer-to-peer network](peer-protocol.html). [New in: rippled 1.4.0][]
+The `{% $frontmatter.seo.title %}` method adds or updates a reserved slot for a specific peer server in the XRP Ledger [peer-to-peer network](../../../../concepts/networks-and-servers/peer-protocol.md). [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `{% $frontmatter.seo.title %}` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 
 ### Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "peer_reservations_add_example_1",
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
     "description": "Ripple s1 server 'WOOL'"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99",
       "description": "Ripple s1 server 'WOOL'"
     }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
-#Syntax: {{currentpage.name}} <public_key> [<description>]
-rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
+#Syntax: {% $frontmatter.seo.title %} <public_key> [<description>]
+rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99 "Ripple s1 server 'WOOL'"
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
 | `Field`       | Type   | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `public_key`  | String | The [node public key][] of the peer reservation to add a reservation for, in [base58][]. |
+| `public_key`  | String | The [node public key][] of the peer reservation to add a reservation for, in [base58](base58-encodings.html). |
 | `description` | String | _(Optional)_ A custom description for the peer reservation. The server truncates descriptions longer than 64 characters when it restarts. |
 
 
@@ -64,10 +64,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_add_example_1",
@@ -81,9 +80,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -95,9 +94,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -112,10 +111,11 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`    | Type   | Description                                            |
 |:-----------|:-------|:-------------------------------------------------------|
@@ -127,18 +127,13 @@ If there was not a previous entry for the same [node public key][], the `result`
 
 If the `previous` field is provided, it shows the previous status of this peer reservation, with the following fields:
 
-{% include '_snippets/peer_reservation_object.md' %}
-<!--_ -->
+{% partial file="/_snippets/peer_reservation_object.md" /%}
+
 
 
 ### Possible Errors
 
 - Any of the [universal error types][].
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-- `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58][] format.
+- `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58](base58-encodings.html) format.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

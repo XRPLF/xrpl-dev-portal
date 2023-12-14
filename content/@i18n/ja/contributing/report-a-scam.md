@@ -24,7 +24,7 @@ parent: contribute.html
     - [Uphold](https://support.uphold.com/hc/en-us/requests/new)
     - [Bitrue](https://www.bitrue.com/exchange-web/footer/contactus.html)
 
-4. 詐欺業者がXRP Ledger上でXRPを他のトークンと交換した場合、そのトークンの発行者に連絡してください。発行者は[詐欺業者のトラストラインを凍結する](freeze-a-trust-line.html)ことができるかもしれません。
+4. 詐欺業者がXRP Ledger上でXRPを他のトークンと交換した場合、そのトークンの発行者に連絡してください。発行者は[詐欺業者のトラストラインを凍結する](../../../tutorials/use-tokens/freeze-a-trust-line.md)ことができるかもしれません。
 
 詐欺業者の報告に関する詳細は、[Xrplorer Forensicsのヘルプ](https://xrplorer.com/forensics/help)をご覧ください。
 

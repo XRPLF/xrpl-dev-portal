@@ -447,9 +447,9 @@ Define the cancel offer transaction.
 ```python
     nftSellOffers="No sell offers"
     cancel_offer_tx=xrpl.models.transactions.NFTokenCancelOffer(
-				account=owner_wallet.classic_address,
-				nftoken_offers=tokenOfferIDs
-		)
+                account=owner_wallet.classic_address,
+                nftoken_offers=tokenOfferIDs
+        )
 ```
 
 Submit the transaction and return the result.

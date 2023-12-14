@@ -97,14 +97,14 @@ Connect to the ledger
 Get the account wallets.
 
 ```
-  if (type=='standby') {
-    my_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  } else {
-    my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-    resultField = 'operationalResultField'
-  }
-  results += '\nRipple Default Setting: ' + defaultRippleSetting
-  resultField.value = results
+if (type=='standby') {
+  my_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
+} else {
+  my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+  resultField = 'operationalResultField'
+}
+results += '\nRipple Default Setting: ' + defaultRippleSetting
+resultField.value = results
 ```
 
 Prepare the transaction. If the `rippleDefault` argument is true, set the `asfDefaultRipple` flag. If it is false, clear the `asfDefaultRipple` flag.

@@ -14,14 +14,16 @@ Theme-aware recoloring uses a single source file in SVG format for diagrams, and
 To include a theme-aware diagram in a document, use the `include_svg` filter with syntax such as the following:
 
 ```jinja
-{{ include_svg("img/anatomy-of-a-ledger-complete.svg", "Figure 1: XRP Ledger Elements") }}
+[{% inline-svg file="/img/anatomy-of-a-ledger-complete.svg" /%}](/img/anatomy-of-a-ledger-complete.svg "Figure 1: XRP Ledger Elements")
 ```
 
 Leave empty lines before and after this syntax. The SVG file in question should be in the [`img/`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/img) folder at the top level of the repo, or a subfolder of it. The second argument is _title text_, which appears when the user hovers their mouse over the diagram, and can also be used by other software (such as screen readers) to caption the diagram.
 
 The resulting SVG file is inlined directly into the Markdown file. One limitation is that you can't use it inside other Markdown structures such as bulleted lists or tables.
 
-> **Note:** The filter source code is [`tool/filter_include_svg.py`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/filter_include_svg.py). This is also the reason that `lxml` is one of the dependencies for building the site.
+{% admonition type="info" name="Note" %}
+The filter source code is [`tool/filter_include_svg.py`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/tool/filter_include_svg.py). This is also the reason that `lxml` is one of the dependencies for building the site.
+{% /admonition %}
 
 ## Making Diagrams
 

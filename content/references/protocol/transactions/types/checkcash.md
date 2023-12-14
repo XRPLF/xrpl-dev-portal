@@ -10,11 +10,11 @@ labels:
 
 _(Added by the [Checks amendment][].)_
 
-Attempts to redeem a Check object in the ledger to receive up to the amount authorized by the corresponding [CheckCreate transaction][]. Only the `Destination` address of a Check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment][] initiated by the destination.
+Attempts to redeem a Check object in the ledger to receive up to the amount authorized by the corresponding [CheckCreate transaction](checkcreate.md). Only the `Destination` address of a Check can cash it with a CheckCash transaction. Cashing a check this way is similar to executing a [Payment](payment.md) initiated by the destination.
 
 Since the funds for a check are not guaranteed, redeeming a Check can fail because the sender does not have a high enough balance or because there is not enough liquidity to deliver the funds. If this happens, the Check remains in the ledger and the destination can try to cash it again later, or for a different amount.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -28,12 +28,12 @@ Since the funds for a check are not guaranteed, redeeming a Check can fail becau
 
 [Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_CheckCash%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%2267B71B13601CDA5402920691841AC27A156463678E106FABD45357175F9FF406%22%2C%22binary%22%3Afalse%7D)
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
-| Field        | JSON Type           | [Internal Type][] | Description         |
+| Field        | JSON Type           | [Internal Type](../../binary-format.md) | Description         |
 |:-------------|:--------------------|:------------------|:--------------------|
-| `CheckID`    | String              | Hash256           | The ID of the [Check ledger object](check.html) to cash, as a 64-character hexadecimal string. |
+| `CheckID`    | String              | Hash256           | The ID of the [Check ledger object](../../ledger-data/ledger-entry-types/check.md) to cash, as a 64-character hexadecimal string. |
 | `Amount`     | [Currency Amount][] | Amount            | _(Optional)_ Redeem the Check for exactly this amount, if possible. The currency must match that of the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `DeliverMin`. |
 | `DeliverMin` | [Currency Amount][] | Amount            | _(Optional)_ Redeem the Check for at least this amount and for as much as possible. The currency must match that of the `SendMax` of the corresponding CheckCreate transaction. You must provide either this field or `Amount`. |
 
@@ -47,8 +47,3 @@ The transaction ***must*** include either `Amount` or `DeliverMin`, but not both
 - If the destination of the Check has the `RequireDest` flag enabled but the Check, as created, does not have a destination tag, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If the transaction specifies both `Amount` and `DeliverMin`, or omits both, the transaction fails with the result `temMALFORMED`.
 - If the `Amount` or `DeliverMin` does not match the currency (and issuer, if not XRP) of the Check, the transaction fails with the result `temBAD_CURRENCY`.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -6,7 +6,7 @@ status: removed
 ---
 # Fix SQLite Transaction Database Page Size Issue
 
-`rippled` servers with full [ledger history](ledger-history.html) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to have this problem. <!-- STYLE_OVERRIDE: encounter -->
+`rippled` servers with full [ledger history](../../concepts/networks-and-servers/ledger-history.md) (or a very large amount of transaction history) and a database that was initially created with a `rippled` version earlier than 0.40.0 (released January 2017) may encounter a problem with their SQLite database page size that stops the server from operating properly. Servers that store only recent transaction history (the default configuration) and servers whose database files were created with `rippled` version 0.40.0 and later are not likely to have this problem. <!-- STYLE_OVERRIDE: encounter -->
 
 This document describes steps to detect and correct this problem if it occurs.
 
@@ -16,7 +16,7 @@ This document describes steps to detect and correct this problem if it occurs.
 
 The capacity of the SQLite database is a result of the database's _page size_ parameter, which cannot be easily changed after the database is created. (For more information on SQLite's internals, see [the official SQLite documentation](https://www.sqlite.org/fileformat.html).) The database can reach its capacity even if there is still free space on the disk and filesystem where it is stored. As described in the [Fix](#fix) below, reconfiguring the page size to avoid this problem requires a somewhat time-consuming migration process. <!-- STYLE_OVERRIDE: easily -->
 
-**Tip:** Full history is not necessary for most use cases. Servers with full transaction history may be useful for long-term analysis and archive purposes or as a precaution against disasters. For a less resource-intense way to contribute to the storage of transaction history, see [History Sharding](history-sharding.html).
+**Tip:** Full history is not necessary for most use cases. Servers with full transaction history may be useful for long-term analysis and archive purposes or as a precaution against disasters. For a less resource-intense way to contribute to the storage of transaction history, see [History Sharding](../configuration/data-retention/history-sharding.md).
 
 
 ## Detection
@@ -77,17 +77,21 @@ You can fix this issue using `rippled` on supported Linux systems according to t
 
 - You must be running **[rippled version 1.1.0][New in: rippled 1.1.0] or later**.
 
-    - [Upgrade rippled](install-rippled.html) to the latest stable version before starting this process.
+    - [Upgrade rippled](../installation/index.md) to the latest stable version before starting this process.
 
     - You can check what version of `rippled` you have installed locally by running the following command:
 
-            rippled --version
+        ```
+        rippled --version
+        ```
 
 - You must have enough free space to temporarily store a second copy of the transaction database, in a directory that is writable by the `rippled` user. This free space does not need to be in the same filesystem as the existing transaction database.
 
     The transaction database is stored in the `transaction.db` file in the folder specified by your configuration's `[database_path]` setting. You can check the size of this file to see how much free space you need. For example:
 
-        ls -l /var/lib/rippled/db/transaction.db
+    ```
+    ls -l /var/lib/rippled/db/transaction.db
+    ```
 
 ### Migration Process
 
@@ -97,78 +101,108 @@ To migrate your transaction database to a larger page size, perform the followin
 
 2. Create a folder to store temporary files during the migration process.
 
-        mkdir /tmp/rippled_txdb_migration
+    ```
+    mkdir /tmp/rippled_txdb_migration
+    ```
 
 3. Grant the `rippled` user ownership of the temporary folder so it can write files there. (This is not necessary if your temporary folder is somewhere the `rippled` user already has write access to.)
 
-        chown rippled /tmp/rippled_txdb_migration
+    ```
+    chown rippled /tmp/rippled_txdb_migration
+    ```
 
 4. Confirm that your temporary folder has enough free space to store a copy of the transaction database.
 
     For example, compare the `Avail` output from the `df` command to the [size of your `transaction.db` file](#prerequisites).
 
-        df -h /tmp/rippled_txdb_migration
+    ```
+    df -h /tmp/rippled_txdb_migration
 
-        Filesystem      Size  Used Avail Use% Mounted on
-        /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
+    ```
 
 5. If `rippled` is still running, stop it:
 
-        sudo systemctl stop rippled
+    ```
+    sudo systemctl stop rippled
+    ```
 
 6. Open a `screen` session (or other similar tool) so that the process does not stop when you log out:
 
-        screen
+    ```
+    screen
+    ```
 
 7. Become the `rippled` user:
 
-        sudo su - rippled
+    ```
+    sudo su - rippled
+    ```
 
 8. Run `rippled` executable directly, providing the `--vacuum` command with the path to the temporary directory:
 
-        /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    ```
+    /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    ```
 
     The `rippled` executable immediately displays the following message:
 
-        VACUUM beginning. page_size: 1024
+    ```
+    VACUUM beginning. page_size: 1024
+    ```
 
 9. Wait for the process to complete. This can take more than two full days.
 
     When the process is complete, the `rippled` executable displays the following message, then exits:
 
-        VACUUM finished. page_size: 4096
+    ```
+    VACUUM finished. page_size: 4096
+    ```
 
     While you wait, you can detach your `screen` session by pressing **CTRL-A**, then **D**. Later, you can reattach your screen session with a command such as the following:
 
-        screen -x -r
+    ```
+    screen -x -r
+    ```
 
     When the process is over, exit the screen session:
 
-        exit
+    ```
+    exit
+    ```
 
     For more information on the `screen` command, see [the official Screen User's Manual](https://www.gnu.org/software/screen/manual/screen.html) or any of the other many resources available online.
 
 10. Restart the `rippled` service.
 
-        sudo systemctl start rippled
+    ```
+    sudo systemctl start rippled
+    ```
 
 11. Confirm that the `rippled` service started successfully.
 
-    You can use the [commandline interface](get-started-using-http-websocket-apis.html#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
+    You can use the [commandline interface](../../tutorials/get-started/get-started-using-http-websocket-apis.md#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
 
-        /opt/ripple/bin/rippled server_info
+    ```
+    /opt/ripple/bin/rippled server_info
+    ```
 
-    For a description of the expected response from this command, see the [server_info method][] documentation.
+    For a description of the expected response from this command, see the [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md) documentation.
 
 12. Watch the server's debug log to confirm that the `SQLite page size` is now 4096:
 
-        tail -F /var/log/rippled/debug.log
+    ```
+    tail -F /var/log/rippled/debug.log
+    ```
 
     The [periodic log message](#proactive-detection) should also show significantly more free pages and free pages than it did before the migration.
 
 13. Optionally, you may now remove the temporary folder you created for the migration process.
 
-        rm -r /tmp/rippled_txdb_migration
+    ```
+    rm -r /tmp/rippled_txdb_migration
+    ```
 
     If you mounted additional storage to hold the temporary copy of the transaction database, you can unmount and remove it now.
 
@@ -177,17 +211,11 @@ To migrate your transaction database to a larger page size, perform the followin
 
 - **Concepts:**
     - [The `rippled` Server](xrpl-servers.html)
-    - [Ledger History](ledger-history.html)
+    - [Ledger History](../../concepts/networks-and-servers/ledger-history.md)
 - **Tutorials:**
-    - [Understanding Log Messages](understanding-log-messages.html)
-    - [Configure Full History](configure-full-history.html)
+    - [Understanding Log Messages](understanding-log-messages.md)
+    - [Configure Full History](../configuration/data-retention/configure-full-history.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [`rippled` Commandline Usage](commandline-usage.html)
-        - [server_info method][]
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+        - [`rippled` Commandline Usage](../commandline-usage.md)
+        - [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)

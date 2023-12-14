@@ -11,7 +11,7 @@ labels:
 ---
 # Freeze a Trust Line
 
-This tutorial shows the steps to [freeze an individual trust line](freezes.html#individual-freeze). The issuer of a token in the XRP Ledger may freeze the trust line to a particular counterparty if that account is engaged in suspicious activity.
+This tutorial shows the steps to [freeze an individual trust line](../../concepts/tokens/fungible-tokens/freezes.md#individual-freeze). The issuer of a token in the XRP Ledger may freeze the trust line to a particular counterparty if that account is engaged in suspicious activity.
 
 **Tip:** As a reminder, freezes only apply to issued tokens, not XRP.
 
@@ -20,9 +20,9 @@ This tutorial shows the steps to [freeze an individual trust line](freezes.html#
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
-- This tutorial assumes **you have already [issued a token](issue-a-fungible-token.html)** in the XRP Ledger.
-- You **cannot** have enabled the [No Freeze setting](freezes.html#no-freeze), which gives up your ability to freeze individual trust lines.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../get-started/get-started-using-javascript.md) for setup steps.
+- This tutorial assumes **you have already [issued a token](issue-a-fungible-token.md)** in the XRP Ledger.
+- You **cannot** have enabled the [No Freeze setting](../../concepts/tokens/fungible-tokens/freezes.md#no-freeze), which gives up your ability to freeze individual trust lines.
 
 <!-- Source for this specific tutorial's interactive bits: -->
 <script type="application/javascript" src="assets/js/tutorials/freeze-individual-line.js"></script>
@@ -39,31 +39,31 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](account-types.html), you need the keys to the _cold address_, which is the **issuer** of the token.
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](../../concepts/accounts/account-types.md), you need the keys to the _cold address_, which is the **issuer** of the token.
 
-{% include '_snippets/interactive-tutorials/generate-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
 ### {{n.next()}}. Connect to the Network
 
-You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md):
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
-
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```
 (Connect to wss:// URL of an XRP Ledger server using your preferred client.)
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 For purposes of this tutorial, use the following interface to connect and perform setup:
 
-{% include '_snippets/interactive-tutorials/connect-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### {{n.next()}}. Choose Trust Line
@@ -74,16 +74,15 @@ You can only freeze one trust line per transaction, so you need to know which tr
 - The address of the account linked to yours via the trust line.
 - The currency code of the trust line.
 
-There can be multiple [trust lines](trust-lines-and-issuing.html) between two accounts, each for a different currency. If you suspect a particular account is behaving maliciously, you may want to freeze all the trust lines between your accounts, one at a time. Use the [account_lines method][] with a pair of accounts to find all trust lines between those accounts, then choose a trust line to freeze from among the results. For example:
+There can be multiple [trust lines](../../concepts/tokens/fungible-tokens/index.md) between two accounts, each for a different currency. If you suspect a particular account is behaving maliciously, you may want to freeze all the trust lines between your accounts, one at a time. Use the [account_lines method](../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md) with a pair of accounts to find all trust lines between those accounts, then choose a trust line to freeze from among the results. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Look up current trust lines" before="// Send a TrustSet" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Look up current trust lines", end_before="// Send a TrustSet") }}
-
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```json
 Example Request:
 
@@ -120,8 +119,9 @@ Example Request:
   "type": "response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 For purposes of this tutorial, a second test address has created a trust line to the test address for the currency "FOO", which you can see in the following example:
 
@@ -136,7 +136,7 @@ For purposes of this tutorial, a second test address has created a trust line to
 
 ### {{n.next()}}. Send TrustSet Transaction to Freeze the Trust Line
 
-To enable or disable an Individual Freeze on a specific trust line, send a [TrustSet transaction][] with the [`tfSetFreeze` flag enabled](trustset.html#trustset-flags). The fields of the transaction should be as follows:
+To enable or disable an Individual Freeze on a specific trust line, send a [TrustSet transaction](../../references/protocol/transactions/types/trustset.md) with the [`tfSetFreeze` flag enabled](../../references/protocol/transactions/types/trustset.md#trustset-flags). The fields of the transaction should be as follows:
 
 | Field                    | Value  | Description |
 |--------------------------|--------|-------------|
@@ -150,14 +150,13 @@ To enable or disable an Individual Freeze on a specific trust line, send a [Trus
 
 As always, to send a transaction, you _prepare_ it by filling in all the necessary fields, _sign_ it with your cryptographic keys, and _submit_ it to the network. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Send a TrustSet" before="// Investigate" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Send a TrustSet", end_before="// Investigate") }}
-
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_freeze_individual_line",
@@ -178,8 +177,9 @@ _WebSocket_
   "secret": "s████████████████████████████"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Send TrustSet to Freeze") }}
 <button class="btn btn-primary previous-steps-required send-trustset" data-wait-step-name="Wait" data-action="start_freeze">Send TrustSet (Freeze)</button>
@@ -187,20 +187,20 @@ _WebSocket_
 <div class="output-area"></div>
 {{ end_step() }}
 
-**Note:** If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](basic-data-types.html#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->
+**Note:** If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](../../references/protocol/data-types/basic-data-types.md#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->
 
 
 ### {{n.next()}}. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
 {{ start_step("Wait") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 ### {{n.next()}}. Check Trust Line Freeze Status
 
-At this point, the trust line from the counterparty should be frozen. You can check the freeze status of any trust line using the [account_lines method][] with the following fields:
+At this point, the trust line from the counterparty should be frozen. You can check the freeze status of any trust line using the [account_lines method](../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md) with the following fields:
 
 | Field     | Value  | Description                                        |
 |:----------|:-------|:---------------------------------------------------|
@@ -211,14 +211,13 @@ At this point, the trust line from the counterparty should be frozen. You can ch
 
 In the response, the field `"freeze": true` indicates that the account from the request has enabled an Individual Freeze on that trust line. The field `"freeze_peer": true` indicates that the counterparty (`peer`) from the request has frozen the trust line. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Confirm trust line status" before="// Investigate" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Confirm trust line status", end_before="// Investigate") }}
-
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```json
 Example Request:
 
@@ -253,8 +252,9 @@ Example Response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Check Freeze Status") }}
 <button id="confirm-settings" class="btn btn-primary previous-steps-required">Check Trust Line</button>
@@ -265,7 +265,7 @@ Example Response:
 
 ### {{n.next()}}. (Optional) Send TrustSet Transaction to End the Freeze
 
-If you decide that the trust line no longer needs to be frozen (for example, you investigated and decided that the suspicious activity was benign), you can end the individual freeze in almost the same way that you froze the trust line in the first place. To end an individual freeze, send a [TrustSet transaction][] with the [`tfClearFreeze` flag enabled](trustset.html#trustset-flags). The other fields of the transaction should be the same as when you froze the trust line:
+If you decide that the trust line no longer needs to be frozen (for example, you investigated and decided that the suspicious activity was benign), you can end the individual freeze in almost the same way that you froze the trust line in the first place. To end an individual freeze, send a [TrustSet transaction](../../references/protocol/transactions/types/trustset.md) with the [`tfClearFreeze` flag enabled](../../references/protocol/transactions/types/trustset.md#trustset-flags). The other fields of the transaction should be the same as when you froze the trust line:
 
 | Field                    | Value  | Description |
 |--------------------------|--------|-------------|
@@ -279,14 +279,13 @@ If you decide that the trust line no longer needs to be frozen (for example, you
 
 As always, to send a transaction, you _prepare_ it by filling in all the necessary fields, _sign_ it with your cryptographic keys, and _submit_ it to the network. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/freeze/js/set-individual-freeze.js" from="// Clear the individual" before="// End main" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/freeze/js/set-individual-freeze.js", language="js", start_with="// Clear the individual", end_before="// End main") }}
-
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_end_individual_freeze",
@@ -307,8 +306,9 @@ _WebSocket_
   "secret": "s████████████████████████████"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Send TrustSet to End Freeze") }}
 <button class="btn btn-primary previous-steps-required send-trustset" data-wait-step-name="Wait (again)" data-action="end_freeze">Send TrustSet (End Freeze)</button>
@@ -322,7 +322,7 @@ _WebSocket_
 As before, wait for the transaction to be validated by consensus.
 
 {{ start_step("Wait (again)") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 
@@ -330,22 +330,16 @@ As before, wait for the transaction to be validated by consensus.
 ## See Also
 
 - **Concepts:**
-    - [Freezing Issued Currencies](freezes.html)
-    - [Trust Lines](trust-lines-and-issuing.html)
+    - [Freezing Issued Currencies](../../concepts/tokens/fungible-tokens/freezes.md)
+    - [Trust Lines](../../concepts/tokens/fungible-tokens/index.md)
 - **Tutorials:**
-    - [Enable No Freeze](enable-no-freeze.html)
-    - [Enact Global Freeze](enact-global-freeze.html)
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
+    - [Enable No Freeze](enable-no-freeze.md)
+    - [Enact Global Freeze](enact-global-freeze.md)
+    - [Change or Remove a Regular Key Pair](../manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
-    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [account_lines method](../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md)
+    - [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)
+    - [AccountSet transaction](../../references/protocol/transactions/types/accountset.md)
+    - [TrustSet transaction](../../references/protocol/transactions/types/trustset.md)
+    - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+    - [RippleState (trust line) Flags](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)

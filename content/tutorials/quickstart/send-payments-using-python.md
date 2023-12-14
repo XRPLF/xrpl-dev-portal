@@ -36,12 +36,12 @@ Much of this is “brute force” code that sacrifices conciseness for readabili
 
 In this quickstart, you can:
 
-1. [Create Accounts and Send XRP](py-create-accounts-send-xrp.html)
-2. [Create Trust Line and Send Currency](py-create-trustline-send-currency.html).
-3. [Mint and Burn NFTs](py-mint-and-burn-nfts.html).
-4. [Transfer NFTs](py-transfer-nfts.html).
+1. [Create Accounts and Send XRP](py-create-accounts-send-xrp.md)
+2. [Create Trust Line and Send Currency](py-create-trustline-send-currency.md).
+3. [Mint and Burn NFTs](py-mint-and-burn-nfts.md).
+4. [Transfer NFTs](py-transfer-nfts.md).
 
-There are also expanded lessons demonstrating how to [Broker an NFT Sale](py-broker-sale.html) and [Assign an Authorized Minter](py-authorize-minter.html).
+There are also expanded lessons demonstrating how to [Broker an NFT Sale](py-broker-sale.md) and [Assign an Authorized Minter](py-authorize-minter.md).
 
 
 ## Prerequisites
@@ -49,7 +49,7 @@ There are also expanded lessons demonstrating how to [Broker an NFT Sale](py-bro
 To get started, create a new folder on your local disk and install the Python library (xrpl-py) using `pip`.
 
 ```
-    pip3 install xrpl-py
+pip3 install xrpl-py
 ```
 
 Download the python [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download}.

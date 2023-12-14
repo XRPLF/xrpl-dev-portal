@@ -9,17 +9,16 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTHistory.cpp "ソース")
 
-`nft_history`コマンドはクエリ対象の[NFT](non-fungible-tokens.html)の過去のトランザクションメタデータをClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
+`nft_history`コマンドはクエリ対象の[NFT](../../../../concepts/tokens/nfts/index.md)の過去のトランザクションメタデータをClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
 
 **注記** `nft_history`はNFTに関連する成功したトランザクションのみを返します。
 
 ## リクエストのフォーマット
 リクエストフォーマットの例：
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -27,9 +26,9 @@ labels:
   "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "nft_history",
@@ -40,8 +39,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
 [試してみる >](websocket-api-tool.html#nft_history)-->
@@ -53,8 +53,8 @@ labels:
 | `nft_id`           | 文字列                  | 非代替性トークン(NFT)の一意の識別子。 |
 | `ledger_index_min` | 整数                    | _(省略可)_ NFTを含む最も古いレジャーを指定します。値`-1`を指定すると、検証済みの最も古いレジャーのバージョンを使用するようにサーバに指示します。  |
 | `ledger_index_max` | 整数                    | _(省略可)_ NFTを含める最新のレジャーを指定します。値`-1`を指定すると、利用可能な最新の有効なレジャーのバージョンを使用するようにサーバに指示します。 |
-| `ledger_hash`      | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定][]をご覧ください）。 |
-| `ledger_index`     | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス][]あるいは、レジャーを自動的に選択するためのショートカット文字列。 `ledger_index`に`closed`や `current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_history`APIは`rippled`では利用できません。[レジャーの指定][]をご覧ください）。 |
+| `ledger_hash`      | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
+| `ledger_index`     | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)あるいは、レジャーを自動的に選択するためのショートカット文字列。 `ledger_index`に`closed`や `current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_history`APIは`rippled`では利用できません。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
 | `binary`           | 真偽値                  | _(省略可)_ デフォルトは`false`。`true`に設定すると、トランザクションをJSONではなく16進数の文字列で返します。 |
 | `forward`          | 真偽値                  | _(省略可)_ デフォルトは`false`。`true`に設定すると、最も古いレジャーからインデックスを付けて返します。そうでない場合は、新しいレジャーからインデックスが付けられます。(結果の各ページは内部的には順序付けされていないかもしれませんが、ページ全体としては順序付けされています)。 |
 | `limit`            | UInt32                 | _(省略可)_ 取得するNFTの数を制限します。サーバはこの値を守る必要はありません。 |
@@ -66,10 +66,9 @@ labels:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -152,9 +151,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -235,15 +234,15 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 `binary`パラメータを_true_に設定すると、16進数文字列を使用したコンパクトなレスポンスを受け取ります。人間が読めるものではありませんが、より簡潔です。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -271,9 +270,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -300,17 +299,19 @@ labels:
 }
 
 ```
-<!-- MULTICODE_BLOCK_END -->
+{% /tab %}
 
-このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+{% /tabs %}
+
+このレスポンスは[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`            | 型                          | 説明                        |
 |:-------------------|:----------------------------|:---------------------------|
 | `nft_id`           | 文字列                       | 非代替性トークン(NFT)の一意の識別子。 |
-| `ledger_index_min` | 整数 - [レジャーインデックス][] | 実際にトランザクションを検索した最も古いレジャーのレジャーインデックス。 |
-| `ledger_index_max` | 整数 - [レジャーインデックス][] | 実際にトランザクションを検索した最新のレジャーのレジャーインデックス。 |
+| `ledger_index_min` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | 実際にトランザクションを検索した最も古いレジャーのレジャーインデックス。 |
+| `ledger_index_max` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | 実際にトランザクションを検索した最新のレジャーのレジャーインデックス。 |
 | `limit`            | 整数                         | リクエストで使われる`limit`の値。(これはサーバによって強制される実際の値とは異なるかもしれません)。 |
-| `marker`           | [マーカー][]                  | レスポンスがページ分割されていることを示す、サーバ定義の値。この値を次の呼び出しに渡すと、この呼び出しが中断したところから再開します。 |
+| `marker`           | [マーカー](../../api-conventions/markers-and-pagination.md)                  | レスポンスがページ分割されていることを示す、サーバ定義の値。この値を次の呼び出しに渡すと、この呼び出しが中断したところから再開します。 |
 | `transactions`     | 配列                         | 以下に説明するように、リクエストの条件に一致するトランザクションの配列。 |
 | `validated`        | 真偽値                       | レスポンスに含まれ、`true`に設定されている場合、このレスポンスの情報は検証済みのレジャーのバージョンに基づきます。`false`の場合、情報は変更される可能性があります。 |
 
@@ -320,22 +321,18 @@ labels:
 
 | `Field`        | 型                                   | 説明              |
 |:---------------|:-------------------------------------|:-------------------------|
-| `ledger_index` | 整数                                  | このトランザクションを含むレジャーバージョンの[レジャーインデックス][]。 |
+| `ledger_index` | 整数                                  | このトランザクションを含むレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
 | `meta`         | オブジェクト(JSON) または 文字列(バイナリ) | `binary`が`true`の場合、トランザクションメタデータの16文字列が格納されます。`false`の場合は、トランザクションメタデータがJSON 形式で格納されます。 |
 | `tx`           | オブジェクト                           | (JSONのみ) トランザクションを定義するJSONオブジェクト |
 | `tx_blob`      | 文字列                                | (Binaryのみ) トランザクションを表す一意のハッシュ化された文字列。 |
 | `validated`    | 真偽値                                | トランザクションが検証済みレジャーに含まれているかどうか。まだ有効なレジャーに含まれていないトランザクションは、変更される可能性があります。 |
 
-`tx`オブジェクトで返されるフィールドの定義については、[トランザクションメタデータ](transaction-metadata.html)をご覧ください。
+`tx`オブジェクトで返されるフィールドの定義については、[トランザクションメタデータ](../../../protocol/transactions/metadata.md)をご覧ください。
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actMalformed` - リクエストの`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
+* `actMalformed` - リクエストの`account`フィールドに指定した[アドレス](basic-data-types.html#アドレス)が、正しいフォーマットではありません。
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定されたレジャーが存在しないか、存在してもサーバに保存されていません。
-* `lgrIdxsInvalid` - リクエストが`ledger_index_min`よりも前の`ledger_index_max`を指定しているか、サーバが[ネットワークと同期していない](server-doesnt-sync.html)ために有効なレジャー範囲を持っていません。
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
-
+* `lgrIdxsInvalid` - リクエストが`ledger_index_min`よりも前の`ledger_index_max`を指定しているか、サーバが[ネットワークと同期していない](../../../../infrastructure/troubleshooting/server-doesnt-sync.md)ために有効なレジャー範囲を持っていません。

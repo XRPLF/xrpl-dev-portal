@@ -8,7 +8,7 @@ labels:
 ---
 # Configure History Sharding
 
-[History Sharding](history-sharding.html) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
+[History Sharding](history-sharding.md) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
 
 **Tip:** While both validator and tracking (or stock) `rippled` servers can be configured to store history shards, Ripple recommends _not_ configuring validator `rippled` servers to store shards, to reduce overhead on those servers. If you run a validator and want to contribute to storing XRP Ledger history, Ripple recommends you run a separate `rippled` server with history sharding enabled.
 
@@ -25,7 +25,7 @@ Before you configure your `rippled` server to store history shards, you must dec
 - The history shard store and the ledger store _MUST_ be stored at different file paths. You can configure the ledger store and history store to be on different disks or partitions if desired.
 - It is possible but redundant to hold full ledger history in both the ledger store and the history shard store.
 - The time to acquire a shard, number of file handles needed by the `rippled` server, and memory cache usage is directly affected by the size of the shard.
-- You can specify additional paths to store older history shards by providing a `[historical_shard_paths]` stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the `[shard_db]` stanza. [New in: rippled 1.7.0][]
+- You can specify additional paths to store older history shards by providing a `[historical_shard_paths]` stanza. These paths may be on different, slower disks because they hold data that is used less often. The most recent two shards (the ones with the largest ledger indexes) are always stored in the path specified in the `[shard_db]` stanza. [New in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE")
 
 ## 2. Edit rippled.cfg
 
@@ -33,7 +33,7 @@ Before you configure your `rippled` server to store history shards, you must dec
 
 Edit your `rippled.cfg` file to add a `[shard_db]` stanza and optionally a `[historical_shard_paths]` stanza.
 
-{% include '_snippets/conf-file-location.md' %}<!--_ -->
+{% partial file="/_snippets/conf-file-location.md" /%}
 
 The following snippet shows an example of a `[shard_db]` stanza:
 
@@ -48,9 +48,9 @@ max_historical_shards=12
 /mnt/disk2
 ```
 
-The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.1][]
+The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`. [New in: rippled 1.3.1](https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE")
 
-**Caution:** If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](server-wont-start.html). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.
+**Caution:** If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](../../troubleshooting/server-wont-start.md). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.
 
 For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg).
 
@@ -66,26 +66,21 @@ After your server syncs to the network, it automatically starts downloading hist
 
 This folder should contain a numbered folder for each shard your server has. At any given time, up to one folder may contain a `control.txt` file, indicating it is incomplete.
 
-You can instruct your server to download and import a shard from an archive file using the [download_shard method][].
+You can instruct your server to download and import a shard from an archive file using the [download_shard method](../../../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md).
 
-To list the shards your server and its peers have available, you can use the [crawl_shards method][] or the [Peer Crawler](peer-crawler.html).
+To list the shards your server and its peers have available, you can use the [crawl_shards method](../../../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md) or the [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md).
 
 
 ## See Also
 
 - **Concepts:**
-    - [Ledger History](ledger-history.html)
-        - [Online Deletion](online-deletion.html)
+    - [Ledger History](../../../concepts/networks-and-servers/ledger-history.md)
+        - [Online Deletion](online-deletion.md)
 - **Tutorials:**
-    - [Configure Online Deletion](configure-online-deletion.html)
-    - [Configure the Peer Crawler](configure-the-peer-crawler.html)
-    - [Capacity Planning](capacity-planning.html)
+    - [Configure Online Deletion](configure-online-deletion.md)
+    - [Configure the Peer Crawler](../peering/configure-the-peer-crawler.md)
+    - [Capacity Planning](../../installation/capacity-planning.md)
 - **References:**
-    - [download_shard method][]
-    - [crawl_shards method][]
-    - [Ledger Data Formats](ledger-data-formats.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [download_shard method](../../../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md)
+    - [crawl_shards method](../../../references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md)
+    - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)

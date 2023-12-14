@@ -10,15 +10,14 @@ labels:
 
 The `log_level` command changes the `rippled` server's logging verbosity, or returns the current logging level for each category (called a _partition_) of log messages.
 
-_The `log_level` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `log_level` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "ll1",
@@ -27,15 +26,16 @@ An example of the request format:
     "partition": "PathRequest"
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: log_level [[partition] severity]
 rippled log_level PathRequest debug
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -48,10 +48,9 @@ The request includes the following parameters:
 
 Examples of successful responses:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline (set log level)*
-
+{% tab label="Commandline (set log level)" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -62,9 +61,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-*Commandline (check log levels)*
-
+{% tab label="Commandline (check log levels)" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -127,10 +126,11 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][]. The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields.
+The response follows the [standard format](../../api-conventions/response-formatting.md). The response format depends on whether the request specified a `severity`. If it did, the log level is changed and a successful result contains no additional fields.
 
 Otherwise, the response contains the following field:
 
@@ -142,8 +142,3 @@ Otherwise, the response contains the following field:
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

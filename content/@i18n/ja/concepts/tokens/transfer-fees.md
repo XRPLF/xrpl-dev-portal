@@ -8,13 +8,13 @@ labels:
 ---
 # 送金手数料
 
-[トークン](tokens.html)の発行者は、`TransferRate`の設定を使用して、ユーザに対し _送金手数料_ を請求できます。この送金の送金元からは送金手数料に基づく割合で引き落とされ、送金先へ入金されます。差額が送金手数料となります。
+[トークン](index.md)の発行者は、`TransferRate`の設定を使用して、ユーザに対し _送金手数料_ を請求できます。この送金の送金元からは送金手数料に基づく割合で引き落とされ、送金先へ入金されます。差額が送金手数料となります。
 
 標準的なトークンの場合、送金手数料として支払われたトークンはバーンされ、XRP Ledgerでは記録されなくなります。トークンがレジャー外の資産で裏付けされている場合、これは発行者がXRP Ledgerでの債務を果たすために準備金として保有しなければならないそれらの資産の量を減らします。送金手数料は通常、外部資産で裏付けられていないトークンには適切ではありません。
 
-非代替性トークンにも送金手数料がかかりますが、その仕組みは異なります。詳細は[非代替性トークン](non-fungible-tokens.html)をご覧ください。
+非代替性トークンにも送金手数料がかかりますが、その仕組みは異なります。詳細は[非代替性トークン](nfts/index.md)をご覧ください。
 
-送金手数料は、発行アカウントと直接送受信する場合には適用されませんが、[運用アドレス](account-types.html)から他のユーザへ送金する場合には適用されます。
+送金手数料は、発行アカウントと直接送受信する場合には適用されませんが、[運用アドレス](../accounts/account-types.md)から他のユーザへ送金する場合には適用されます。
 
 XRPは発行者が存在しないため、送金手数料がかかることはありません。
 
@@ -24,11 +24,11 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
 
 以下の図は、AliceからCharlieへの2EUR.ACMEのXRP Ledger支払いを、送金手数料1%で表しています。
 
-{{ include_svg("img/transfer-fees.ja.svg", "Aliceが2,02€を送金し、Charlieが2,00€を受け取り、ACMEはXRP Ledgerで0,02€を受け取ります。") }}
+[{% inline-svg file="/img/transfer-fees.ja.svg" /%}](/img/transfer-fees.ja.svg "Aliceが2,02€を送金し、Charlieが2,00€を受け取り、ACMEはXRP Ledgerで0,02€を受け取ります。")
 
 会計用語では、Alice、ACME、Charlieの貸借対照表はこのように変わっているでしょう。
 
-{{ include_svg("img/transfer-fees-balance-sheets.ja.svg", "Aliceの資産は2,02€減少、Charlieは2,00€増加、ACMEの負債は0,02€減少。") }}
+[{% inline-svg file="/img/transfer-fees-balance-sheets.ja.svg" /%}](/img/transfer-fees-balance-sheets.ja.svg "Aliceの資産は2,02€減少、Charlieは2,00€増加、ACMEの負債は0,02€減少。")
 
 
 
@@ -38,7 +38,7 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
 
 送金手数料は、各送金においてイシュアンスが発行アカウントを通じて当事者間を移動するたびに適用されます。さらに複雑なトランザクションでは、手数料が複数回適用されます。送金手数料は、送金の終わりの時点から逆方向に適用されるので、最終的には支払いの送金者がすべての手数料をカバーするのに十分な額を送金する必要があります。例:
 
-{{ include_svg("img/transfer-fees-in-paths.ja.svg", "手数料が適用された複数通貨間の支払いの図") }}
+[{% inline-svg file="/img/transfer-fees-in-paths.ja.svg" /%}](/img/transfer-fees-in-paths.ja.svg "手数料が適用された複数通貨間の支払いの図")
 
 このシナリオでは、ACMEが発行したEURをSalazar（送金元）が保有しており、WayGateが発行した100 USDをRosa（受取人）に送金したいと思っています。FXMakerはオーダーブックで最も良いレート（1 USD.WayGate = 0.9 EUR.ACME）のオファーを提供する通貨取引業者です。もし手数料がなければ、Salazarは90 EURを送金すればRosaに100 USDを送金することができます。しかしながら、ACMEで1%の送金手数料が発生し、WayGateで0.2%の送金手数料が発生します。つまり、次のようになります。
 
@@ -58,28 +58,22 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
 
 アカウントの`TransferRate`は[account_infoメソッド][]で誰でも確認できます。もし`TransferRate`が省略されていれば、手数料は無料です。
 
-**注記:** `rippled`v0.80.0で導入され2017-11-14に有効となった[fix1201 Amendment](amendments.html)により、最大送金手数料は実効限度である約329%（32ビット整数の最大サイズに基づく）から100%に引き下げられました。送金手数料の設定が100%（`TransferRate`が`2000000000`）を上回るアカウントがレジャーにまだ含まれている可能性があります。すでに設定されている手数料はすべて、規定のレートで引き続き運用されます。
+**注記:** `rippled`v0.80.0で導入され2017-11-14に有効となった[fix1201 Amendment](../networks-and-servers/amendments.md)により、最大送金手数料は実効限度である約329%（32ビット整数の最大サイズに基づく）から100%に引き下げられました。送金手数料の設定が100%（`TransferRate`が`2000000000`）を上回るアカウントがレジャーにまだ含まれている可能性があります。すでに設定されている手数料はすべて、規定のレートで引き続き運用されます。
 
 ## クライアントライブラリのサポート
 
-いくつかの[クライアントライブラリ](client-libraries.html)は`TransferRate`を取得・設定するための便利な関数を持っています。
+いくつかの[クライアントライブラリ](../../references/client-libraries.md)は`TransferRate`を取得・設定するための便利な関数を持っています。
 
 **JavaScript:** `xrpl.percentToTransferRate()`を使うと、文字列からパーセンテージの送金手数料を対応する`TransferRate`値に変換することができます。
 
 ## 関連項目
 
 - **コンセプト:**
-  - [手数料（曖昧さの回避）](fees.html)
-  - [トランザクションコスト](transaction-cost.html)
-  - [パス](paths.html)
+  - [手数料（曖昧さの回避）](../transactions/fees.md)
+  - [トランザクションコスト](../transactions/transaction-cost.md)
+  - [パス](fungible-tokens/paths.md)
 - **リファレンス:**
   - [account_linesメソッド][]
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]
   - [AccountRootのフラグ](accountroot.html#accountrootのフラグ)
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -14,19 +14,18 @@ label:
 
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id":2,
   "command":"ledger_current"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"ledger_current",
@@ -35,15 +34,16 @@ label:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: ledger_current
 rippled ledger_current
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#ledger_current)
 
@@ -53,10 +53,9 @@ rippled ledger_current
 ## 応答フォーマット
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id":2,
@@ -67,9 +66,9 @@ rippled ledger_current
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -80,10 +79,11 @@ rippled ledger_current
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
+応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
 | `Field`                | 型             | 説明                    |
 |:-----------------------|:-----------------|:-------------------------------|
@@ -93,8 +93,4 @@ rippled ledger_current
 
 ## 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。

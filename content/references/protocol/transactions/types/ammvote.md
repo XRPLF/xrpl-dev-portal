@@ -11,9 +11,9 @@ status: not_enabled
 
 _(Requires the [AMM amendment][] :not_enabled:)_
 
-Vote on the trading fee for an [Automated Market Maker](automated-market-makers.html) instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.
+Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -33,9 +33,9 @@ Vote on the trading fee for an [Automated Market Maker](automated-market-makers.
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
-| Field        | JSON Type | [Internal Type][] | Required? | Description |
+| Field        | JSON Type | [Internal Type](../../binary-format.md) | Required? | Description |
 |:-------------|:----------|:------------------|:----------|:------------|
 | `Asset`      | Object    | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
 | `Asset2`     | Object    | STIssue           | Yes       | The definition for the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
@@ -43,7 +43,7 @@ Vote on the trading fee for an [Automated Market Maker](automated-market-makers.
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code              | Description                                  |
 |:------------------------|:---------------------------------------------|
@@ -52,9 +52,3 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `tecAMM_FAILED_VOTE`    | There are already 8 votes from accounts that hold more LP Tokens than the sender of this transaction. |
 | `temBAD_FEE`            | The `TradingFee` from this transaction is not valid. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

@@ -8,19 +8,18 @@ labels:
 # nft_buy_offers
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/NFTOffers.cpp "ソース")
 
-`nft_buy_offers`メソッドは、与えられた[NFToken][]オブジェクトに対する購入オファーのリストを返します。
+`nft_buy_offers`メソッドは、与えられた[NFToken](../../../protocol/data-types/nftoken.md)オブジェクトに対する購入オファーのリストを返します。
 
-_([NonFungibleTokensV1_1 amendment][]により追加されました。)_
+_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました。)_
 
 ## リクエストのフォーマット
 リクエストフォーマットの例：
 
-{% include '_snippets/no-cli-syntax.ja.md' %}
+{% partial file="/_snippets/no-cli-syntax.ja.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "nft_buy_offers",
@@ -28,9 +27,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "nft_buy_offers",
@@ -40,8 +39,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [試してみる >](websocket-api-tool.html#nft_buy_offers)
 
@@ -49,20 +49,19 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 | `Field`        | 型               | 説明                                      |
 |:---------------|:-----------------|:-----------------------------------------|
-| `nft_id`       | 文字列            | [NFToken][] オブジェクトの一意の識別子。      |
-| `ledger_hash`  | 文字列            | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定][]をご覧ください）。 |
-| `ledger_index` | 文字列 または 数値  | _(省略可)_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。[レジャーの指定][]をご覧ください）。 |
+| `nft_id`       | 文字列            | [NFToken](../../../protocol/data-types/nftoken.md) オブジェクトの一意の識別子。      |
+| `ledger_hash`  | 文字列            | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
+| `ledger_index` | 文字列 または 数値  | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
 | `limit`        | 整数値            | _(省略可)_ 取得するNFTの購入オファーの数を制限します。この値は50未満または500を超えることはできません。この範囲外の正の値は、最も近い有効な値に置き換えられます。デフォルトは250です。 |
-| `marker`       | [マーカー][]       | _(省略可)_ 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。 |
+| `marker`       | [マーカー](../../api-conventions/markers-and-pagination.md)       | _(省略可)_ 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。 |
 
 
 ## レスポンスのフォーマット
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -80,9 +79,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -99,17 +98,18 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+このレスポンスは[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`  | 型         | 説明                                                  |
 |:---------|:-----------|:-----------------------------------------------------|
 | `nft_id` | 文字列      | リクエストで指定された NFToken   |
 | `offers` | 配列        | トークンの購入オファー一覧。各オファーは **購入オファー** (下記参照)の形式で表示されます。 |
 | `limit`  | 数値        | _(省略可)_ リクエストで指定された`limit`。 |
-| `marker` | [マーカー][] | _(省略可)_ レスポンスがページ分割されていることを示す、サーバ定義の値。これを次の呼び出しに渡すと、この呼び出しが中断したところから再開します。この後に情報のページがない場合は省略されます。 |
+| `marker` | [マーカー](../../api-conventions/markers-and-pagination.md) | _(省略可)_ レスポンスがページ分割されていることを示す、サーバ定義の値。これを次の呼び出しに渡すと、この呼び出しが中断したところから再開します。この後に情報のページがない場合は省略されます。 |
 
 ### 購入オファー
 
@@ -124,11 +124,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

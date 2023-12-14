@@ -23,7 +23,7 @@ _Validators_ are servers that actively contribute to the process of deciding eac
 - Behaving maliciously as a result of pressure from outside factors, such as threats from an oppressive government.
 - Accidentally sending confusing or malformed messages due to a bug or outdated software.
 
-In general, consensus can continue without problems as long as only a small percentage (less than about 20%) of trusted validators are misbehaving at a given time. (For the exact percentages and the math behind them, see the latest [Consensus Research](consensus-research.html).)
+In general, consensus can continue without problems as long as only a small percentage (less than about 20%) of trusted validators are misbehaving at a given time. (For the exact percentages and the math behind them, see the latest [Consensus Research](consensus-research.md).)
 
 If more than about 20% of validators are unreachable or not behaving properly, the network fails to reach a consensus. During this time, new transactions can be tentatively processed, but new ledger versions cannot be validated, so those transactions' final outcomes are not certain. In this situation, it would become immediately obvious that the XRP Ledger is unhealthy, prompting intervention from human participants who can decide whether to wait, or reconfigure their set of trusted validators.
 
@@ -63,11 +63,11 @@ By default, XRP Ledger servers are configured to use validator list sites run by
 
 Technically, if you run a server, you can configure your own list site or explicitly choose validators to trust on an individual basis, but this is not recommended. If your chosen set of validators does not have enough overlap with others, your server may diverge from the rest of the network, and you could lose money by taking action based on your server's divergent state.
 
-Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.html) page.
+Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.md) page.
 
 
 ## See Also
 
-- For a **detailed description** of the consensus protocol, see [Consensus](consensus.html).
-- For an explanation of the **design decisions and background** behind the consensus protocol, see [Consensus Principles and Rules](consensus-principles-and-rules.html).
-- For **academic research** exploring the properties and limitations of the protocol, see [Consensus Research](consensus-research.html).
+- For a **detailed description** of the consensus protocol, see [Consensus](index.md).
+- For an explanation of the **design decisions and background** behind the consensus protocol, see [Consensus Principles and Rules](consensus-principles-and-rules.md).
+- For **academic research** exploring the properties and limitations of the protocol, see [Consensus Research](consensus-research.md).

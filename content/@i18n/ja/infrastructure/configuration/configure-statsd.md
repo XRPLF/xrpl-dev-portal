@@ -15,37 +15,47 @@ labels:
 
 1. 別のマシンで`rippledmon`インスタンスをセットアップし、統計情報を受信して集計します。
 
-        $ git clone https://github.com/ripple/rippledmon.git
-        $ cd rippledmon
-        $ docker-compose up
+    ```
+    $ git clone https://github.com/ripple/rippledmon.git
+    $ cd rippledmon
+    $ docker-compose up
+    ```
 
     上記の手順を実行する際には、[Docker](https://docs.docker.com/)と[DockerCompose](https://docs.docker.com/compose/install/)がマシンにインストールされていることを確認してください。`rippledmon`の設定については、[`rippledmon`リポジトリ](https://github.com/ripple/rippledmon)をご覧ください。
 
 0. `[insight]`を`rippled`の設定ファイルに追加します。
 
-        [insight]
-        server=statsd
-        address=192.0.2.0:8125
-        prefix=my_rippled
+    ```
+    [insight]
+    server=statsd
+    address=192.0.2.0:8125
+    prefix=my_rippled
+    ```
 
     - `address`には`rippledmon`が接続しているIPアドレスとポートを指定します。デフォルトでは、このポートは8125です。
     - `prefix`には設定する`rippled`サーバを識別する名前を指定します。prefixには、空白、コロン":"、または縦棒"|"を含めてはいけません。このprefix(接頭辞)は、このサーバからエクスポートされるすべてのStatsDの統計情報に表示されます。
 
-    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.ja.md" /%}
 
 1. `rippled`サービスを再起動します。
 
-        $ sudo systemctl restart rippled
+    ```
+    $ sudo systemctl restart rippled
+    ```
 
 2. 統計情報がエクスポートされていることを確認します。
 
-        $ tcpdump -i en0 | grep UDP
+    ```
+    $ tcpdump -i en0 | grep UDP
+    ```
 
     `en0`をあなたのマシンの適切なネットワークインターフェースに置き換えてください。あなたのマシンのインターフェースの完全なリストを取得するには`$ tcpdump -D`を使ってください。
 
     出力の例:
 
-        00:41:53.066333 IP 192.0.2.2.63409 > 192.0.2.0.8125: UDP, length 196
+    ```
+    00:41:53.066333 IP 192.0.2.2.63409 > 192.0.2.0.8125: UDP, length 196
+    ```
 
     `rippledmon`インスタンスの設定されたアドレスとポートへの送信トラフィックを示すメッセージが定期的に表示されるはずです。
 
@@ -59,8 +69,8 @@ StatsDの各データの説明については、[`rippledmon`リポジトリ](ht
     - [XRP Ledgerの概要](xrp-ledger-overview.html)
     - [`rippled`サーバ](xrpl-servers.html)
 - **チュートリアル:**
-    - [`rippled`のインストール](install-rippled.html)
-    - [容量の計画](capacity-planning.html)
+    - [`rippled`のインストール](../installation/index.md)
+    - [容量の計画](../installation/capacity-planning.md)
 - **リアファレンス:**
-    - [server_infoメソッド](server_info.html)
-    - [printメソッド](print.html)
+    - [server_infoメソッド](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)
+    - [printメソッド](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md)

@@ -7,9 +7,9 @@ labels:
 ---
 # Forward Ports for Peering
 
-Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](peer-protocol.html). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port.
+Servers in the XRP Ledger peer-to-peer network communicate over the [peer protocol](../../../concepts/networks-and-servers/peer-protocol.md). For the best combination of security and connectivity to the rest of the network, you should use a firewall to protect your server from most ports, but open or forward the peer protocol port.
 
-While your `rippled` server is running, you can check to see how many peers you have by running the [server_info method][]. The `peers` field of the `info` object shows how many peers are currently connected to your server. If this number is exactly 10 or 11, that usually means your firewall is blocking incoming connections.
+While your `rippled` server is running, you can check to see how many peers you have by running the [server_info method](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md). The `peers` field of the `info` object shows how many peers are currently connected to your server. If this number is exactly 10 or 11, that usually means your firewall is blocking incoming connections.
 
 Example of a `server_info` result (trimmed) showing only 10 peers, likely because a firewall is blocking incoming peer connections:
 
@@ -67,18 +67,13 @@ If you are using a hosting service with a virtual firewall (for example, [AWS Se
 ## See Also
 
 - **Concepts:**
-    - [Peer Protocol](peer-protocol.html)
+    - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
     - [The `rippled` Server](xrpl-servers.html)
 - **Tutorials:**
-    - [Capacity Planning](capacity-planning.html)
-    - [Troubleshoot the `rippled` Server](troubleshoot-the-rippled-server.html)
+    - [Capacity Planning](../../installation/capacity-planning.md)
+    - [Troubleshoot the `rippled` Server](../../troubleshooting/index.md)
 - **References:**
-    - [connect method][]
-    - [peers method][]
-    - [print method][]
-    - [server_info method][]
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [connect method](../../../references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md)
+    - [peers method](../../../references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md)
+    - [print method](../../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md)
+    - [server_info method](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)

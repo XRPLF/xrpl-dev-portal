@@ -31,16 +31,16 @@ A transfer fee setting charges users a percentage fee when transferring tokens b
 
 When users send a token with a transfer fee, the amount of the transfer fee is debited from the sending side in addition to the destination amount, but only the destination amount is credited to the recipient. The amount of the fee "vanishes" from the XRP Ledger. As a stablecoin issuer, this means that you gain that much equity in your reserves outside of the XRP Ledger—or, in other words, the amount you need to keep as collateral decreases each time users pay a transfer fee.
 
-For more information, see [Transfer Fees](transfer-fees.html).
+For more information, see [Transfer Fees](../../transfer-fees.md).
 
 
 ## Set Your Tick Size
 
-The Tick Size setting controls how many decimal places are used when calculating exchange rates in the [Decentralized Exchange](decentralized-exchange.html). A higher Tick Size (more decimal places) means more precision and less rounding in the amounts of various trades. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by unreasonably small amounts.
+The Tick Size setting controls how many decimal places are used when calculating exchange rates in the [Decentralized Exchange](../../decentralized-exchange/index.md). A higher Tick Size (more decimal places) means more precision and less rounding in the amounts of various trades. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by unreasonably small amounts.
 
 The Tick Size is an account-level setting and applies to all tokens issued by the same address.
 
-See [Tick Size](ticksize.html).
+See [Tick Size](../../decentralized-exchange/ticksize.md).
 
 
 ## Set the Default Ripple Flag
@@ -49,14 +49,14 @@ The Default Ripple flag controls whether the balances on a trust line are allowe
 
 Before asking customers to create trust lines to your issuing address, enable the Default Ripple flag on that address. Otherwise, you must individually disable the No Ripple flag for each trust line that other addresses have created.
 
-See [Rippling](rippling.html).
+See [Rippling](../rippling.md).
 
 
 ## Enable Destination Tags
 
 If your stablecoin application handles transactions on behalf of several customers, it might not be immediately obvious to which account you should credit. Destination tags help to avoid this situation by requiring the sender to specify the beneficiary or destination for a payment. To enable the `RequireDest` flag, set the `asfRequireDest` value (1) in the `SetFlag` field of an `AccountSet` transaction.
 
-See [Source and Destination Tags](source-and-destination-tags.html).
+See [Source and Destination Tags](../../../transactions/source-and-destination-tags.md).
 
 ## Asset Control Features
 
@@ -67,7 +67,7 @@ You have several options for controlling the creation and distribution of your s
 
 When you need to follow compliance rules such as Know Your Customer (KYC) and Anti-Money Laundering (AML), you can use trust lines to create permissioned pools for the distribution of your stablecoin. This allows you to be certain to whom the funds are transferred.
 
-See [Authorized Trust Lines](authorized-trust-lines.html).
+See [Authorized Trust Lines](../authorized-trust-lines.md).
 
 
 ### Freeze Flags
@@ -76,16 +76,16 @@ You have the ability to freeze your stablecoins in your holder accounts. You mig
 
 Conversely, you can set the No Freeze feature, which permanently gives up the ability to freeze tokens. This makes your stablecoin more like fiat currency, in the sense that you cannot interfere with counterparties trading the tokens among themselves.
 
-See [Freezing Tokens](freezes.html).
+See [Freezing Tokens](../freezes.md).
 
 
 ### Clawback Flags
 
-_(Requires the [Clawback amendment](known-amendments.html#clawback) :not_enabled:)_
+_(Requires the [Clawback amendment](../../../../resources/known-amendments.md#clawback) :not_enabled:)_
 
 Clawback allows you to retrieve, or _clawback_, stablecoins from a trust line under specific circumstances. This gives you added ability to respond to challenges such as lost account access or malicious activity.
 
-See [Clawback](clawback.html).
+See [Clawback](../../../../references/protocol/transactions/types/clawback.md).
 
 
 ### Fixed Supply

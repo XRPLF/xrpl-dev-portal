@@ -16,13 +16,13 @@ However, the rules of the XRP Ledger include several types of fees, including ne
 
 ### Neutral Fees
 
-The _**transaction cost**_ (sometimes called the transaction fee) is a miniscule amount of XRP destroyed to send a transaction. This cost scales with the load of the network, which protects the peer-to-peer network from spam. See [Transaction Cost](transaction-cost.html) for more information.
+The _**transaction cost**_ (sometimes called the transaction fee) is a miniscule amount of XRP destroyed to send a transaction. This cost scales with the load of the network, which protects the peer-to-peer network from spam. See [Transaction Cost](transaction-cost.md) for more information.
 
-The _**reserve requirement**_ is a minimum amount of XRP that an account must hold. It increases with the number of objects the account owns in the ledger. This disincentivizes users from increasing the size of the ledger carelessly or maliciously. See [Reserves](reserves.html) for more information.
+The _**reserve requirement**_ is a minimum amount of XRP that an account must hold. It increases with the number of objects the account owns in the ledger. This disincentivizes users from increasing the size of the ledger carelessly or maliciously. See [Reserves](../accounts/reserves.md) for more information.
 
 ### Optional Fees
 
-_**Transfer fees**_ are optional percentage fees that issuers can charge to transfer the currencies they issue to other addresses within the XRP Ledger. See [Transfer Fees](transfer-fees.html) for more information.
+_**Transfer fees**_ are optional percentage fees that issuers can charge to transfer the currencies they issue to other addresses within the XRP Ledger. See [Transfer Fees](../tokens/transfer-fees.md) for more information.
 
 _**Trust line quality**_ is a setting that allows an account to value balances on a trust line at higher or lower than face value. This can lead to situations that are like charging a fee. Trust line quality does not apply to XRP, which is not tied to a trust line.
 

@@ -8,20 +8,19 @@ labels:
 # sign
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/SignHandler.cpp "ソース")
 
-`sign`メソッドは[JSONフォーマットのトランザクション](transaction-formats.html)と[シード値](cryptographic-keys.html)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](multi-signing.html)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
+`sign`メソッドは[JSONフォーマットのトランザクション](../../../protocol/transactions/index.md)と[シード値](../../../../concepts/accounts/cryptographic-keys.md)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
 
-{% include '_snippets/public-signing-note.md' %}
-<!--_ -->
+{% partial file="/_snippets/public-signing-note.md" /%}
 
-**注意:** 独自の`rippled`サーバーを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](client-libraries.html)を実行してください。詳細については[安全な署名の設定](secure-signing.html)を参照してください。
+
+**注意:** 独自の`rippled`サーバーを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](../../../client-libraries.md)を実行してください。詳細については[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)を参照してください。
 
 ## 要求フォーマット
 要求フォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -41,9 +40,9 @@ labels:
    "fee_mult_max": 1000
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "sign",
@@ -66,39 +65,40 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: sign secret tx_json [offline]
 rippled sign s████████████████████████████ '{"TransactionType": "Payment", "Account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "Destination": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX", "Amount": { "currency": "USD", "value": "1", "issuer" : "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn" }, "Sequence": 360, "Fee": "10000"}' offline
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 トランザクションに署名するには、[トランザクションを承認](transactions.html#トランザクションの承認)できるシークレットキーを提供する必要があります。通常、サーバーが秘密鍵を取得するシード値を提供します。これを行うには、以下の方法があります。
 
-* `secret`フィールドにシードを指定し、`key_type`フィールドを省略します。この値は、XRP Ledgerの[base58][]シード、RFC-1751、16進値のフォーマットで記述するか、文字列パスフレーズとして記述します（secp256k1キーのみ）。
+* `secret`フィールドにシードを指定し、`key_type`フィールドを省略します。この値は、XRP Ledgerの[base58](base58-encodings.html)シード、RFC-1751、16進値のフォーマットで記述するか、文字列パスフレーズとして記述します（secp256k1キーのみ）。
 * `key_type`値と、`seed`、`seed_hex`、または`passphrase`のいずれか1つを提供します。`secret`フィールドは省略します。（コマンドライン構文ではサポートされません）。
 
 要求には以下のパラメーターが含まれます。
 
 | `Field`        | 型      | 説明                                              |
 |:---------------|:--------|:--------------------------------------------------|
-| `tx_json` | オブジェクト | JSONフォーマットの[トランザクション定義](transaction-formats.html) |
+| `tx_json` | オブジェクト | JSONフォーマットの[トランザクション定義](../../../protocol/transactions/index.md) |
 | `secret` | 文字列 | _（省略可）_ トランザクションを提供するアカウントの秘密シード。トランザクションへの署名に使用されます。信頼できないサーバーに対して、またはセキュリティが確保されていないネットワーク接続を通じて機密情報を送信しないでください。`key_type`、`seed`、`seed_hex`、`passphrase`と同時に使用することはできません。 |
-| `seed` | 文字列 | _（省略可）_ トランザクションを提供するアカウントの秘密シード。トランザクションへの署名に使用されます。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`と同時に使用することはできません。 |
+| `seed` | 文字列 | _（省略可）_ トランザクションを提供するアカウントの秘密シード。トランザクションへの署名に使用されます。XRP Ledgerの[base58](base58-encodings.html)フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`と同時に使用することはできません。 |
 | `seed_hex` | 文字列 | _（省略可）_ トランザクションを提供するアカウントの秘密シード。トランザクションへの署名に使用されます。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`と同時に使用することはできません。 |
 | `passphrase` | 文字列 | _（省略可）_ トランザクションを提供するアカウントの秘密シード。文字列パスフレーズとして、トランザクションへの署名に使用されます。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`seed_hex`と同時に使用することはできません。 |
 | `key_type` | 文字列 | _（省略可）_ 指定された暗号化キーペアの[署名アルゴリズム](cryptographic-keys.html#署名アルゴリズム)。有効な種類は、`secp256k1`または`ed25519`です。デフォルトは`secp256k1`です。`secret`と同時に使用することはできません。 |
 | `offline` | ブール値 | _（省略可）_ `true`の場合は、トランザクションの生成時に、トランザクションの詳細を[自動入力](#自動入力可能なフィールド)しないでください。デフォルトは`false`です。 |
 | `build_path` | ブール値 | _（省略可）_ Payment型のトランザクションに対して指定した場合、署名前に`Paths`フィールドが自動で入力されます。**注意:** サーバーは、このフィールドの値ではなく、このフィールドが存在するかどうかを調べます。この動作は変更される可能性があります。 |
-| `fee_mult_max` | 整数 | _（省略可）_[自動的に提供される`Fee`フィールド](transaction-common-fields.html#自動入力可能なフィールド)の上限値を設定します。現在の[トランザクションコストの負荷の乗数](transaction-cost.html#ローカル負荷コスト)が（`fee_mult_max` ÷ `fee_div_max`）よりも大きい場合、署名は`rpcHIGH_FEE`エラーで失敗します。トランザクションの`Fee`フィールド（[トランザクションコスト](transaction-cost.html)）を指定した場合は無視されます。デフォルトは`10`です。 |
-| `fee_div_max` | 整数 | _（省略可）_ 現在の[トランザクションコストの負荷の乗数](transaction-cost.html#ローカル負荷コスト)が（`fee_mult_max` ÷ `fee_div_max`）よりも大きい場合、署名は`rpcHIGH_FEE`エラーで失敗します。トランザクションの`Fee`フィールド（[トランザクションコスト](transaction-cost.html)）を指定した場合は無視されます。デフォルトは`1`です。[新規: rippled 0.30.1][] |
+| `fee_mult_max` | 整数 | _（省略可）_[自動的に提供される`Fee`フィールド](transaction-common-fields.html#自動入力可能なフィールド)の上限値を設定します。現在の[トランザクションコストの負荷の乗数](transaction-cost.html#ローカル負荷コスト)が（`fee_mult_max` ÷ `fee_div_max`）よりも大きい場合、署名は`rpcHIGH_FEE`エラーで失敗します。トランザクションの`Fee`フィールド（[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)）を指定した場合は無視されます。デフォルトは`10`です。 |
+| `fee_div_max` | 整数 | _（省略可）_ 現在の[トランザクションコストの負荷の乗数](transaction-cost.html#ローカル負荷コスト)が（`fee_mult_max` ÷ `fee_div_max`）よりも大きい場合、署名は`rpcHIGH_FEE`エラーで失敗します。トランザクションの`Fee`フィールド（[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)）を指定した場合は無視されます。デフォルトは`1`です。[新規: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 
 ### 自動入力可能なフィールド
 
-`tx_json`（[トランザクションオブジェクト](transaction-formats.html)）の特定のフィールドを省略すると、サーバーは自動的に入力しようとします。要求の`offline`を`true`と指定しない限り、サーバーは署名前に以下のフィールドを提供します。
+`tx_json`（[トランザクションオブジェクト](../../../protocol/transactions/index.md)）の特定のフィールドを省略すると、サーバーは自動的に入力しようとします。要求の`offline`を`true`と指定しない限り、サーバーは署名前に以下のフィールドを提供します。
 
 * `Sequence` - サーバーは、送信者のアカウント情報にある次のシーケンス番号を自動的に使用します。
   * **注意:** アカウントの次のシーケンス番号は、このトランザクションが適用されるまで増分されません。トランザクションの送信および個々のトランザクションへの応答を待たずに複数のトランザクションに署名する場合は、最初のトランザクション以降の各トランザクションについて、正しいシーケンス番号を手動で提供する必要があります。
@@ -112,10 +112,9 @@ rippled sign s██████████████████████
 
 処理が成功した応答の例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -142,9 +141,9 @@ rippled sign s██████████████████████
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -171,9 +170,9 @@ rippled sign s██████████████████████
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -201,15 +200,16 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+この応答は[標準フォーマット](../../api-conventions/response-formatting.md)に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`   | 型     | 説明                                                    |
 |:----------|:-------|:--------------------------------------------------------|
 | `tx_blob` | 文字列 | 正しく作成された署名済みトランザクションの16進バイナリー表現 |
-| `tx_json` | オブジェクト | 自動的に入力されたフィールドを含む、署名済み[トランザクション全体](transaction-formats.html)のJSON仕様 |
+| `tx_json` | オブジェクト | 自動的に入力されたフィールドを含む、署名済み[トランザクション全体](../../../protocol/transactions/index.md)のJSON仕様 |
 
 **注意:** このコマンドの結果としてエラーメッセージが表示された場合は、要求で指定されたシークレット値がメッセージの中に含まれている可能性があります。これらのエラーが他者から見えない状態であることを確認してください。
 
@@ -219,12 +219,8 @@ Connecting to 127.0.0.1:5005
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ][]。
+* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `highFee` - トランザクションコストに適用される現在の負荷乗数が、自動的に提供されるトランザクションコストの上限を超えています。要求で指定する`fee_mult_max`を大きくするか（1000以上）、`tx_json`の`Fee`フィールドに値を手動で指定します。
 * `tooBusy` - トランザクションにパスが含まれていませんが、サーバーがビジーであるため、パス検出処理をすぐに実行できません。管理者として接続している場合は発生しません。
 * `noPath` - トランザクションにパスが含まれておらず、サーバーは、このペイメントの発生経路となるパスを検出できませんでした。
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

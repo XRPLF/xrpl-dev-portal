@@ -8,7 +8,7 @@ labels:
 ---
 # Multi-Signing
 
-Multi-signing in the XRP Ledger is a method of [authorizing transactions](transactions.html#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.html#master-key-pair), and a [regular key pair](cryptographic-keys.html#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
+Multi-signing in the XRP Ledger is a method of [authorizing transactions](../transactions/index.md#authorizing-transactions) for the XRP Ledger by using a combination of multiple secret keys. You can have any combination of authorization methods enabled for your address, including multi-signing, a [master key pair](cryptographic-keys.md#master-key-pair), and a [regular key pair](cryptographic-keys.md#regular-key-pair). (The only requirement is that _at least one_ method must be enabled.)
 
 Benefits of multi-signing include:
 
@@ -20,7 +20,7 @@ Benefits of multi-signing include:
 
 Before you can multi-sign, you must create a list of which addresses can sign for you.
 
-The [SignerListSet transaction][] defines a _signer list_, a set of addresses that can authorize transactions from your address. You can include 1 to 32 addresses in a signer list. The list cannot include your address and there can be no duplicate entries. You can control how many signatures are needed, in which combinations, by using the _Signer Weight_ and _Quorum_ settings in the list.
+The [SignerListSet transaction](../../references/protocol/transactions/types/signerlistset.md) defines a _signer list_, a set of addresses that can authorize transactions from your address. You can include 1 to 32 addresses in a signer list. The list cannot include your address and there can be no duplicate entries. You can control how many signatures are needed, in which combinations, by using the _Signer Weight_ and _Quorum_ settings in the list.
 
 _(Updated by the [ExpandedSignerList amendment][].)_
 
@@ -50,7 +50,7 @@ For a very important account, you might set the quorum to 3, with 3 participants
 
 Another account might also have a quorum of 3. You assign your CEO a weight of 3, 3 Vice Presidents a weight of 2 each, and 3 Directors a weight of 1 each. To approve a transaction for this account requires the approval of all 3 Directors (total weight of 3), 1 Vice President and 1 Director (total weight of 3), 2 Vice Presidents (total weight of 4), or the CEO (total weight of 3). <!-- STYLE_OVERRIDE: vice -->
 
-In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of [authorizing transactions](transactions.html#authorizing-transactions).
+In each of the previous three use cases, you would disable the master key without configuring a regular key, so that multi-signing is the only way of [authorizing transactions](../transactions/index.md#authorizing-transactions).
 
 There might be a scenario where you create a multi-signing list as a "backup plan." The account owner normally uses a regular key for their transactions (not a multi-signing key). For safety, the owner adds a signer list containing 3 friends, each with a weight of 1, and a quorum of 3. If the account owner were to lose the private key, they can ask their friends to multi-sign a transaction to replace the regular key.
 
@@ -59,28 +59,25 @@ There might be a scenario where you create a multi-signing list as a "backup pla
 
 To successfully submit a multi-signed transaction, you must do all of the following:
 
-* The address sending the transaction (specified in the `Account` field) must have a [`SignerList` object in the ledger](signerlist.html). For instructions on how to do this, see [Set Up Multi-Signing](set-up-multi-signing.html).
+* The address sending the transaction (specified in the `Account` field) must have a [`SignerList` object in the ledger](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md). For instructions on how to do this, see [Set Up Multi-Signing](../../tutorials/manage-account-settings/set-up-multi-signing.md).
 * The transaction must include the `SigningPubKey` field as an empty string.
-* The transaction must include a [`Signers` field](transaction-common-fields.html#signers-field) containing an array of signatures.
+* The transaction must include a [`Signers` field](../../references/protocol/transactions/common-fields.md#signers-field) containing an array of signatures.
 * The signatures present in the `Signers` array must match signers defined in the `SignerList`.
 * For the provided signatures, the total weight associated with those signers must be equal or greater than the quorum for the `SignerList`.
-* The [transaction cost](transaction-cost.html) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
-* All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](transaction-common-fields.html#auto-fillable-fields) any fields.
-* If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [submit_multisigned method][] handles this automatically.)
+* The [transaction cost](../transactions/transaction-cost.md) (specified in the `Fee` field) must be at least (N+1) times the normal transaction cost, where N is the number of signatures provided.
+* All fields of the transaction must be defined before collecting signatures. You cannot [auto-fill](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) any fields.
+* If presented in binary form, the `Signers` array must be sorted based on the numeric value of the signer addresses, with the lowest value first. (If submitted as JSON, the [submit_multisigned method](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md) handles this automatically.)
 
 ## See Also
 
 - **Tutorials:**
-    - [Set Up Multi-Signing](set-up-multi-signing.html)
-    - [Send a Multi-Signed Transaction](send-a-multi-signed-transaction.html)
+    - [Set Up Multi-Signing](../../tutorials/manage-account-settings/set-up-multi-signing.md)
+    - [Send a Multi-Signed Transaction](../../tutorials/manage-account-settings/send-a-multi-signed-transaction.md)
 - **Concepts:**
-    - [Cryptographic Keys](cryptographic-keys.html)
-    - [Special Transaction Cost for Multi-signed transactions](transaction-cost.html#special-transaction-costs)
+    - [Cryptographic Keys](cryptographic-keys.md)
+    - [Special Transaction Cost for Multi-signed transactions](../transactions/transaction-cost.md#special-transaction-costs)
 - **References:**
-    - [SignerListSet transaction][]
-    - [SignerList object](signerlist.html)
-    - [sign_for method][]
-    - [submit_multisigned method][]
-
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
+    - [SignerListSet transaction](../../references/protocol/transactions/types/signerlistset.md)
+    - [SignerList object](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
+    - [sign_for method](../../references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md)
+    - [submit_multisigned method](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md)

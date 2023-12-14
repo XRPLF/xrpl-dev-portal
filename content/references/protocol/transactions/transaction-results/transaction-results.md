@@ -13,16 +13,16 @@ The `rippled` server summarizes transaction results with result codes, which app
 
 | Category              | Prefix                    | Description              |
 |:----------------------|:--------------------------|:-------------------------|
-| Claimed cost only     | [`tec`](tec-codes.html)   | The transaction did not achieve its intended purpose, but the [transaction cost](transaction-cost.html) was destroyed. This result is only final in a validated ledger. |
-| Failure               | [`tef`](tef-codes.html)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
-| Local error           | [`tel`](tel-codes.html)   | The `rippled` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
-| Malformed transaction | [`tem`](tem-codes.html)   | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
-| Retry                 | [`ter`](ter-codes.html)   | The transaction could not be applied, but it could apply successfully in a future ledger. |
-| Success               | [`tes`](tes-success.html) | (Not an error) The transaction succeeded. This result only final in a validated ledger. |
+| Claimed cost only     | [`tec`](tec-codes.md)   | The transaction did not achieve its intended purpose, but the [transaction cost](../../../../concepts/transactions/transaction-cost.md) was destroyed. This result is only final in a validated ledger. |
+| Failure               | [`tef`](tef-codes.md)   | The transaction cannot be applied to the server's current (in-progress) ledger or any later one. It may have already been applied, or the condition of the ledger makes it impossible to apply in the future. |
+| Local error           | [`tel`](tel-codes.md)   | The `rippled` server had an error due to local conditions, such as high load. You may get a different response if you resubmit to a different server or at a different time. |
+| Malformed transaction | [`tem`](tem-codes.md)   | The transaction was not valid, due to improper syntax, conflicting options, a bad signature, or something else. |
+| Retry                 | [`ter`](ter-codes.md)   | The transaction could not be applied, but it could apply successfully in a future ledger. |
+| Success               | [`tes`](tes-success.md) | (Not an error) The transaction succeeded. This result only final in a validated ledger. |
 
-The `rippled` server automatically retries failed transactions. It is important not to assume that a transaction has completely failed based on a tentative failure result. A transaction may later succeed unless its success or failure is [final](finality-of-results.html).
+The `rippled` server automatically retries failed transactions. It is important not to assume that a transaction has completely failed based on a tentative failure result. A transaction may later succeed unless its success or failure is [final](../../../../concepts/transactions/finality-of-results/index.md).
 
-**Warning:** Transactions' provisional result codes may differ than their final result. Transactions that provisionally succeeded may eventually fail and transactions that provisionally failed may eventually succeed. Transactions that provisionally failed may also eventually fail with a different code. See [finality of results](finality-of-results.html) for how to know when a transaction's result is final.
+**Warning:** Transactions' provisional result codes may differ than their final result. Transactions that provisionally succeeded may eventually fail and transactions that provisionally failed may eventually succeed. Transactions that provisionally failed may also eventually fail with a different code. See [finality of results](../../../../concepts/transactions/finality-of-results/index.md) for how to know when a transaction's result is final.
 
 The distinction between a local error (`tel`) and a malformed transaction (`tem`) is a matter of protocol-level rules. For example, the protocol sets no limit on the maximum number of paths that can be included in a transaction. However, a server may define a finite limit of paths it can process. If two different servers are configured differently, then one of them may return a `tel` error for a transaction with many paths, while the other server could successfully process the transaction. If enough servers are able to process the transaction that it survives consensus, then it can still be included in a validated ledger.
 
@@ -31,7 +31,7 @@ By contrast, a `tem` error implies that no server anywhere can apply the transac
 
 ## Immediate Response
 
-The response from the [submit method][] contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction.
+The response from the [submit method](../../../http-websocket-apis/public-api-methods/transaction-methods/submit.md) contains a provisional result from the `rippled` server indicating what happened during local processing of the transaction.
 
 The response from `submit` contains the following fields:
 
@@ -49,9 +49,4 @@ If nothing went wrong when submitting and applying the transaction locally, the 
     "engine_result_message": "The transaction was applied. Only final in a validated ledger."
 ```
 
-**Note:** A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. Failed results at this stage are also provisional and may change. See [Finality of Results](finality-of-results.html) for details.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+**Note:** A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. Failed results at this stage are also provisional and may change. See [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) for details.

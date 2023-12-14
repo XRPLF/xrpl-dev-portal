@@ -12,7 +12,7 @@ The Authorized Trust Lines feature enables issuers to create tokens that can onl
 
 To use the Authorized Trust Lines feature, enable the **Require Auth** flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
 
-You can authorize a trust line by sending a [TrustSet transaction][] from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, [freeze](freezes.html) that trust line if you need to.)
+You can authorize a trust line by sending a [TrustSet transaction](../../../references/protocol/transactions/types/trustset.md) from your issuing address, configuring the trust line between your account and the account to authorize. After you have authorized a trust line, you can never revoke that authorization. (You can, however, [freeze](freezes.md) that trust line if you need to.)
 
 The transaction to authorize a trust line must be signed by the issuing address, which unfortunately means an increased risk exposure for that address.
 
@@ -24,14 +24,14 @@ With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process 
 
 1. The customer registers with the stablecoin issuer's systems and sends proof of their identity (also known as "Know Your Customer", or KYC, information).
 2. The customer and stablecoin issuer tell each other their XRP Ledger addresses.
-3. The customer sends a [TrustSet transaction][] to create a trust line to the issuer's address, with a positive limit.
+3. The customer sends a [TrustSet transaction](../../../references/protocol/transactions/types/trustset.md) to create a trust line to the issuer's address, with a positive limit.
 4. The issuer sends a TrustSet transaction to authorize the customer's trust line.
 
 **Tip:** The two TrustSet transactions (steps 3 and 4) can occur in either order. If the issuer authorizes the trust line first, this creates a trust line with the limit set to 0, and the customer's TrustSet transaction sets the limit on the pre-authorized trust line.
 
 ## As a Precaution
 
-Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](account-types.html), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
+Even if you don't intend to use Authorized Trust Lines, you can enable the Require Auth setting on [operational and standby accounts](../../accounts/account-types.md), and then never have those accounts approve any trust lines. This prevents those accounts from issuing tokens by accident (for example, if a user accidentally trusts the wrong address). This is only a precaution, and does not stop the operational and standby accounts from transferring the _issuer's_ tokens, as intended.
 
 
 ## Technical Details
@@ -39,7 +39,7 @@ Even if you don't intend to use Authorized Trust Lines, you can enable the Requi
 
 ### Enabling Require Auth
 
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an [AccountSet transaction][] that enables Require Auth using the `asfRequireAuth` flag. (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
+The following is an example of using a locally-hosted `rippled`'s [submit method](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md) to send an [AccountSet transaction](../../../references/protocol/transactions/types/accountset.md) that enables Require Auth using the `asfRequireAuth` flag. (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
 
 Request:
 
@@ -62,12 +62,12 @@ POST http://localhost:5005/
 }
 ```
 
-{% include '_snippets/secret-key-warning.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/secret-key-warning.md" /%}
+
 
 ## Checking Whether an Account Has Require Auth Enabled
 
-To see whether an account has the Require Auth setting enabled, use the [account_info method][] to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](accountroot.html).
+To see whether an account has the Require Auth setting enabled, use the [account_info method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) to look up the account. Compare the value of the `Flags` field (in the `result.account_data` object) with the [bitwise flags defined for an AccountRoot ledger object](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md).
 
 If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (`0x00040000`) is nonzero, then the account has Require Auth enabled. If the result is zero, then the account has Require Auth disabled.
 
@@ -75,9 +75,9 @@ If the result of the `Flags` value bitwise-AND the `lsfRequireAuth` flag value (
 
 If you are using the Authorized Trust Lines feature, others cannot hold balances you issue unless you first authorize their trust lines to you. If you issue more than one currency, you must separately authorize trust lines for each currency.
 
-To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [`tfSetfAuth`](trustset.html#trustset-flags) flag for the transaction.
+To authorize a trust line, submit a [TrustSet transaction](../../../references/protocol/transactions/types/trustset.md) from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [`tfSetfAuth`](../../../references/protocol/transactions/types/trustset.md#trustset-flags) flag for the transaction.
 
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a TrustSet transaction authorizing the customer address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to hold USD issued by the address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`:
+The following is an example of using a locally-hosted `rippled`'s [submit method](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md) to send a TrustSet transaction authorizing the customer address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to hold USD issued by the address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`:
 
 Request:
 
@@ -105,12 +105,12 @@ POST http://localhost:8088/
 }
 ```
 
-{% include '_snippets/secret-key-warning.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/secret-key-warning.md" /%}
+
 
 ## Checking Whether Trust Lines Are Authorized
 
-To see whether a trust line has been authorized, use the [account_lines method][] to look up the trust line. In the request, provide the customer's address in the `account` field and the issuer's address in the `peer` field.
+To see whether a trust line has been authorized, use the [account_lines method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md) to look up the trust line. In the request, provide the customer's address in the `account` field and the issuer's address in the `peer` field.
 
 In the response's `result.lines` array, find the object whose `currency` field indicates that it represents a trust line for the currency you want. If that object has a `peer_authorized` field with the value `true`, then the issuer (the address you used as the request's `peer` field) has authorized the trust line.
 
@@ -118,17 +118,12 @@ In the response's `result.lines` array, find the object whose `currency` field i
 ## See Also
 
 - **Concepts:**
-    - [Deposit Authorization](depositauth.html)
-    - [Freezing Issued Currencies](freezes.html)
+    - [Deposit Authorization](../../accounts/depositauth.md)
+    - [Freezing Issued Currencies](freezes.md)
 - **References:**
-    - [account_lines method][]
-    - [account_info method][]
-    - [AccountSet transaction][]
-    - [TrustSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
-    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    - [account_lines method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md)
+    - [account_info method](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md)
+    - [AccountSet transaction](../../../references/protocol/transactions/types/accountset.md)
+    - [TrustSet transaction](../../../references/protocol/transactions/types/trustset.md)
+    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)

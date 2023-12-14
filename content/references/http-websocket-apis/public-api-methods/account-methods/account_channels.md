@@ -8,17 +8,16 @@ labels:
 # account_channels
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
-_(Added by the [PayChan amendment][]. [New in: rippled 0.33.0][])_
+_(Added by the [PayChan amendment][]. [New in: rippled 0.33.0](https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"))_
 
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -28,9 +27,9 @@ An example of the request format:
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_channels",
@@ -41,17 +40,16 @@ An example of the request format:
     }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```bash
 #Syntax: account_channels <account> [<destination_account>] [<ledger>]
 rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTKHSANinZseWnPcX validated
 ```
+{% /tab %}
 
-[Try it! >](websocket-api-tool.html#account_channels)
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -62,16 +60,15 @@ The request includes the following parameters:
 | `ledger_hash`         | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`        | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`               | Number               | No        | Limit the number of transactions to retrieve. Cannot be less than 10 or more than 400. Positive values outside this range are replaced with the closest valid option. The default is 200. |
-| `marker`              | [Marker][]           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
+| `marker`              | [Marker](../../api-conventions/markers-and-pagination.md)           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
 ## Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -97,9 +94,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -125,9 +122,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 200 OK
 
@@ -153,20 +150,21 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | Field          | Type                     | Description                      |
 |:---------------|:-------------------------|:---------------------------------|
 | `account`      | String                   | The address of the source/owner of the payment channels. This corresponds to the `account` field of the request. |
-| `channels`     | Array of Channel Objects | Payment channels owned by this `account`. [Updated in: rippled 1.5.0][] |
-| `ledger_hash`  | String                   | _(May be omitted)_ The identifying [Hash][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
-| `ledger_index` | Number                   | The [Ledger Index][] of the ledger version used to generate this response. [New in: rippled 0.90.0][] |
-| `validated`    | Boolean                  | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. [New in: rippled 0.90.0][] |
+| `channels`     | Array of Channel Objects | Payment channels owned by this `account`. [Updated in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
+| `ledger_hash`  | String                   | _(May be omitted)_ The identifying [Hash][] of the ledger version used to generate this response. [New in: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
+| `ledger_index` | Number                   | The [Ledger Index][] of the ledger version used to generate this response. [New in: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
+| `validated`    | Boolean                  | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. [New in: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
 | `limit`        | Number                   | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |
-| `marker`       | [Marker][]               | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
+| `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)               | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
 
 Each Channel Object has the following fields:
 
@@ -175,15 +173,15 @@ Each Channel Object has the following fields:
 | `account`             | String           | The owner of the channel, as an [Address][]. |
 | `amount`              | String           | The total amount of [XRP, in drops][] allocated to this channel. |
 | `balance`             | String           | The total amount of [XRP, in drops][], paid out from this channel, as of the ledger version used. (You can calculate the amount of XRP left in the channel by subtracting `balance` from `amount`.) |
-| `channel_id`          | String           | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](paychannel.html#paychannel-id-format) in the ledger's state data. |
+| `channel_id`          | String           | A unique ID for this channel, as a 64-character hexadecimal string. This is also the [ID of the channel object](../../../protocol/ledger-data/ledger-entry-types/paychannel.md#paychannel-id-format) in the ledger's state data. |
 | `destination_account` | String           | The destination account of the channel, as an [Address][]. Only this account can receive the XRP in the channel while it is open. |
 | `settle_delay`        | Unsigned Integer | The number of seconds the payment channel must stay open after the owner of the channel requests to close it. |
-| `public_key`          | String           | _(May be omitted)_ The public key for the payment channel in the XRP Ledger's [base58][] format. Signed claims against this channel must be redeemed with the matching key pair. |
+| `public_key`          | String           | _(May be omitted)_ The public key for the payment channel in the XRP Ledger's [base58](base58-encodings.html) format. Signed claims against this channel must be redeemed with the matching key pair. |
 | `public_key_hex`      | String           | _(May be omitted)_ The public key for the payment channel in hexadecimal format, if one was specified at channel creation. Signed claims against this channel must be redeemed with the matching key pair. |
 | `expiration`          | Unsigned Integer | _(May be omitted)_ Time, in [seconds since the Ripple Epoch][], when this channel is set to expire. This expiration date is mutable. If this is before the close time of the most recent validated ledger, the channel is expired. |
 | `cancel_after`        | Unsigned Integer | _(May be omitted)_ Time, in [seconds since the Ripple Epoch][], of this channel's immutable expiration, if one was specified at channel creation. If this is before the close time of the most recent validated ledger, the channel is expired. |
-| `source_tag`          | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](source-and-destination-tags.html) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
-| `destination_tag`     | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](source-and-destination-tags.html) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
+| `source_tag`          | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [source tag](../../../../concepts/transactions/source-and-destination-tags.md) for payments through this payment channel, if one was specified at channel creation. This indicates the payment channel's originator or other purpose at the source account. Conventionally, if you bounce payments from this channel, you should specify this value in the `DestinationTag` of the return payment. |
+| `destination_tag`     | Unsigned Integer | _(May be omitted)_ A 32-bit unsigned integer to use as a [destination tag](../../../../concepts/transactions/source-and-destination-tags.md) for payments through this channel, if one was specified at channel creation. This indicates the payment channel's beneficiary or other purpose at the destination account. |
 
 ## Possible Errors
 
@@ -191,7 +189,3 @@ Each Channel Object has the following fields:
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}

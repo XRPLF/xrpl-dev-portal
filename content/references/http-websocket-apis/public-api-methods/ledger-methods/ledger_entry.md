@@ -13,15 +13,15 @@ The `ledger_entry` method returns a single ledger entry from the XRP Ledger in i
 
 ## Request Format
 
-This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard [request formatting](request-formatting.html). (For example, a WebSocket request always has the `command` field and optionally an `id` field, and a JSON-RPC request uses the `method` and `params` fields.)
+This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard [request formatting](../../api-conventions/request-formatting.md). (For example, a WebSocket request always has the `command` field and optionally an `id` field, and a JSON-RPC request uses the `method` and `params` fields.)
 
-{% include '_snippets/no-cli-syntax.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
 ### General Fields
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](serialization.html). Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0][] |
+| `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0](https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE") |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
@@ -53,10 +53,9 @@ Retrieve any type of ledger object by its unique ID.
 |:--------|:-------|:----------------------------------------------------------|
 | `index` | String | The [ledger entry ID](ledger-object-ids.html) of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "ledger_entry",
@@ -64,9 +63,9 @@ Retrieve any type of ledger object by its unique ID.
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_entry",
@@ -78,38 +77,40 @@ Retrieve any type of ledger object by its unique ID.
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4", "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-by-object-id)
 
-> **Tip:** You can use this type of request to get any singleton ledger entry, if it exists in the ledger data, because its ID is always the same. For example:
->
-> - [`Amendments`](amendments-object.html) - `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`
-> - [`FeeSettings`](feesettings.html) - `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`
-> - [Recent History `LedgerHashes`](ledgerhashes.html) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
-> - [`NegativeUNL`](negativeunl.html) - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
+{% admonition type="success" name="Tip" %}
+You can use this type of request to get any singleton ledger entry, if it exists in the ledger data, because its ID is always the same. For example:
+
+- [`Amendments`](../../../protocol/ledger-data/ledger-entry-types/amendments.md) - `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`
+- [`FeeSettings`](../../../protocol/ledger-data/ledger-entry-types/feesettings.md) - `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`
+- [Recent History `LedgerHashes`](../../../protocol/ledger-data/ledger-entry-types/ledgerhashes.md) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
+- [`NegativeUNL`](../../../protocol/ledger-data/ledger-entry-types/negativeunl.md) - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
+{% /admonition %}
 
 
 
 ### Get AccountRoot Object
 
-Retrieve an [AccountRoot entry](accountroot.html) by its address. This is roughly equivalent to the [account_info method][].
+Retrieve an [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) by its address. This is roughly equivalent to the [account_info method](../account-methods/account_info.md).
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `account_root`          | String - [Address][]       | The classic address of the [AccountRoot entry](accountroot.html) to retrieve. |
+| `account_root`          | String - [Address][]       | The classic address of the [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) to retrieve. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_accountroot",
@@ -118,9 +119,9 @@ Retrieve an [AccountRoot entry](accountroot.html) by its address. This is roughl
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_entry",
@@ -132,14 +133,15 @@ Retrieve an [AccountRoot entry](accountroot.html) by its address. This is roughl
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59", "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-accountroot)
 
@@ -149,18 +151,17 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 _(Requires the [AMM amendment][] :not_enabled:)_
 
-Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
+Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method](../path-and-order-book-methods/amm_info.md), but the `ledger_entry` version returns only the ledger entry as stored.
 
 | Field        | Type             | Description           |
 |:-------------|:-----------------|:----------------------|
-| `amm`        | Object or String | The [AMM](amm.html) to retrieve. If you specify a string, it must be the [object ID](ledger-object-ids.html) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
-| `amm.asset`  | Object           | One of the two assets in this AMM's pool, as a [currency object without an amount](currency-formats.html#specifying-without-amounts). |
-| `amm.asset2` | Object           | The other of the two assets in this AMM's pool, as a [currency object without an amount](currency-formats.html#specifying-without-amounts). |
+| `amm`        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [object ID](ledger-object-ids.html) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
+| `amm.asset`  | Object           | One of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
+| `amm.asset2` | Object           | The other of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 3,
@@ -177,9 +178,9 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_entry",
@@ -199,14 +200,15 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": { "currency" : "TST", "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd" } }, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
 
@@ -214,19 +216,18 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 ### Get DirectoryNode Object
 
-Retrieve a [DirectoryNode](directorynode.html), which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.
+Retrieve a [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md), which contains a list of other ledger objects. Can be provided as string (object ID of the Directory) or as an object.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `directory`             | Object or String           | The [DirectoryNode](directorynode.html) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
-| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](directorynode.html). |
+| `directory`             | Object or String           | The [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md). |
 | `directory.dir_root`    | String                     | _(Optional)_ Unique index identifying the directory to retrieve, as a hex string. |
 | `directory.owner`       | String                     | _(Optional)_ Unique address of the account associated with this directory. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 3,
@@ -238,9 +239,9 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_entry",
@@ -255,14 +256,15 @@ Retrieve a [DirectoryNode](directorynode.html), which contains a list of other l
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "sub_index": 0 }, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-directorynode)
 
@@ -270,7 +272,7 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 ### Get Offer Object
 
-Retrieve an [Offer entry](offer.html), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
+Retrieve an [Offer entry](../../../protocol/ledger-data/ledger-entry-types/offer.md), which defines an offer to exchange currency. Can be provided as string (unique index of the Offer) or as an object.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
@@ -278,10 +280,9 @@ Retrieve an [Offer entry](offer.html), which defines an offer to exchange curren
 | `offer.account`         | String - [Address][]       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
 | `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer entry. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_offer",
@@ -293,9 +294,9 @@ Retrieve an [Offer entry](offer.html), which defines an offer to exchange curren
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -310,14 +311,15 @@ Retrieve an [Offer entry](offer.html), which defines an offer to exchange curren
   ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "seq": 359}, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-offer)
 
@@ -325,7 +327,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 ### Get RippleState Object
 
-Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance between two accounts.
+Retrieve a [RippleState entry](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md), which tracks a (non-XRP) currency balance between two accounts.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
@@ -333,10 +335,9 @@ Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance betw
 | `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this RippleState entry. |
 | `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the RippleState entry to retrieve. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_ripplestate",
@@ -351,9 +352,9 @@ Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance betw
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -369,14 +370,15 @@ Retrieve a [RippleState entry][], which tracks a (non-XRP) currency balance betw
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW"], "currency": "USD"}, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-ripplestate)
 
@@ -384,16 +386,15 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 ### Get Check Object
 
-Retrieve a [Check entry](check.html), which is a potential payment that can be cashed by its recipient. [New in: rippled 1.0.0][]
+Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient. [New in: rippled 1.0.0](https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE")
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `check` | String | The [object ID](ledger-object-ids.html) of a [Check entry](check.html) to retrieve. |
+| `check` | String | The [object ID](ledger-object-ids.html) of a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md) to retrieve. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_check",
@@ -402,9 +403,9 @@ Retrieve a [Check entry](check.html), which is a potential payment that can be c
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -414,14 +415,15 @@ Retrieve a [Check entry](check.html), which is a potential payment that can be c
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D7944C28B95127C2659C47CBEB", "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-check)
 
@@ -429,7 +431,7 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 ### Get Escrow Object
 
-Retrieve an [Escrow entry](escrow-object.html), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. [New in: rippled 1.0.0][]
+Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. [New in: rippled 1.0.0](https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE")
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
@@ -437,10 +439,9 @@ Retrieve an [Escrow entry](escrow-object.html), which holds XRP until a specific
 | `escrow.owner`          | String - [Address][]       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
 | `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number][] of the transaction that created the Escrow object. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_escrow",
@@ -452,9 +453,9 @@ Retrieve an [Escrow entry](escrow-object.html), which holds XRP until a specific
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -467,14 +468,15 @@ Retrieve an [Escrow entry](escrow-object.html), which holds XRP until a specific
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9NTjKK", "seq": 126 }, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-escrow)
 
@@ -482,16 +484,15 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 ### Get PayChannel Object
 
-Retrieve a [PayChannel entry](paychannel.html), which holds XRP for asynchronous payments. [New in: rippled 1.0.0][]
+Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments. [New in: rippled 1.0.0](https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE")
 
 | Field             | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
 | `payment_channel` | String | The [object ID](ledger-object-ids.html) of the PayChannel to retrieve. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_paychannel",
@@ -500,9 +501,9 @@ Retrieve a [PayChannel entry](paychannel.html), which holds XRP for asynchronous
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -512,21 +513,22 @@ Retrieve a [PayChannel entry](paychannel.html), which holds XRP for asynchronous
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D05797AE7E92DF8E93FD6656E8C4BE3AE7", "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-paychannel)
 
 
 ### Get DepositPreauth Object
 
-Retrieve a [DepositPreauth entry](depositpreauth-object.html), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](depositauth.html). [New in: rippled 1.1.0][]
+Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](../../../../concepts/accounts/depositauth.md). [New in: rippled 1.1.0](https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE")
 
 | Field                        | Type                 | Description            |
 |:-----------------------------|:---------------------|:-----------------------|
@@ -534,10 +536,9 @@ Retrieve a [DepositPreauth entry](depositpreauth-object.html), which tracks prea
 | `deposit_preauth.owner`      | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
 | `deposit_preauth.authorized` | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_deposit_preauth",
@@ -549,9 +550,9 @@ Retrieve a [DepositPreauth entry](depositpreauth-object.html), which tracks prea
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -564,21 +565,22 @@ Retrieve a [DepositPreauth entry](depositpreauth-object.html), which tracks prea
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "authorized": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX" }, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-depositpreauth)
 
 
 ### Get Ticket Object
 
-Retrieve a [Ticket entry](ticket.html), which represents a [sequence number][] set aside for future use. _(Added by the [TicketBatch amendment][])_
+Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. _(Added by the [TicketBatch amendment][])_
 
 | Field               | Type                 | Description           |
 |:--------------------|:---------------------|:----------------------|
@@ -586,10 +588,9 @@ Retrieve a [Ticket entry](ticket.html), which represents a [sequence number][] s
 | `ticket.account`    | String - [Address][] | _(Required if `ticket` is specified as an object)_ The owner of the Ticket. |
 | `ticket.ticket_seq` | Number               | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket to retrieve. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_ticket",
@@ -601,9 +602,9 @@ Retrieve a [Ticket entry](ticket.html), which represents a [sequence number][] s
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -616,14 +617,15 @@ Retrieve a [Ticket entry](ticket.html), which represents a [sequence number][] s
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "ticket_seq: 389 }, "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-ticket)
 
@@ -634,12 +636,11 @@ Return an NFT Page in its raw ledger format.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `nft_page`              | String | The [ledger entry ID](ledger-object-ids.html) of an [NFT Page](nftokenpage.html) to retrieve. |
+| `nft_page`              | String | The [ledger entry ID](ledger-object-ids.html) of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "example_get_nft_page",
@@ -648,9 +649,9 @@ Return an NFT Page in its raw ledger format.
     "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "ledger_entry",
@@ -660,34 +661,34 @@ Return an NFT Page in its raw ledger format.
   }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F01DFFFFFFFFFFFFFFFFFFFFFFFF", "ledger_index": "validated" }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 [Try it! >](websocket-api-tool.html#ledger_entry-nft-page)
 
 ## Response Format
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
 | `index`        | String           | The unique ID of this [ledger entry](ledger-object-types.html). |
 | `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that was used when retrieving this data. |
 | `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format][]. |
-| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](serialization.html) of the ledger object, as hexadecimal. |
+| `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "example_get_accountroot",
@@ -718,9 +719,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -751,9 +752,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
   "result": {
@@ -782,8 +783,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## Possible Errors
@@ -798,10 +800,3 @@ An example of a successful response:
 * `malformedOwner` - The request improperly specified the `escrow.owner` sub-field.
 * `malformedRequest` - The request provided an invalid combination of fields, or provided the wrong type for one or more fields.
 * `unknownOption` - The fields provided in the request did not match any of the expected request formats.
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

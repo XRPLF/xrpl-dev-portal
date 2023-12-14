@@ -9,7 +9,7 @@ labels:
 
 Servers which are amendment blocked can't determine the validity of a ledger, submit or process transactions, or participate in the consensus process.
 
-One of the first signs that your `rippled` server is [amendment blocked](amendments.html#amendment-blocked-servers) is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
+One of the first signs that your `rippled` server is [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers) is an `amendmentBlocked` error that is returned when you submit a transaction. Here's an example `amendmentBlocked` error:
 
 ```json
 {
@@ -65,7 +65,7 @@ The easiest solution is to update to the latest version of `rippled`, but depend
 
 To determine if you can unblock your `rippled` server by upgrading to a version older than the newest version, find out which features are blocking your server and then look up the `rippled` version that supports the blocking features.
 
-To find out which features are blocking your `rippled` server, use the [`feature`](feature.html) admin command. Look for features that have:
+To find out which features are blocking your `rippled` server, use the [`feature`](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md) admin command. Look for features that have:
 
 ```
 "enabled" : true
@@ -129,4 +129,4 @@ In this example, conflicts with the following features are causing your `rippled
 
 * `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
-To look up which `rippled` version supports these features, see [Known Amendments](known-amendments.html).
+To look up which `rippled` version supports these features, see [Known Amendments](../../resources/known-amendments.md).

@@ -9,41 +9,41 @@ labels:
 # validator_info
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorInfo.cpp "ソース")
 
-`{{currentpage.name}}`メソッドは、サーバがバリデータとして設定されている場合に、現在のバリデータの設定を返します。
+`{% $frontmatter.seo.title %}`メソッドは、サーバがバリデータとして設定されている場合に、現在のバリデータの設定を返します。
 
-_`{{currentpage.name}}`メソッドは[管理メソッド](admin-api-methods.html)で、権限のないユーザは実行できません。_
+_`{% $frontmatter.seo.title %}`メソッドは[管理メソッド](../index.md)で、権限のないユーザは実行できません。_
 
 
 ### リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}"
+    "command": "{% $frontmatter.seo.title %}"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}"
+    "method": "{% $frontmatter.seo.title %}"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
-#Syntax: {{currentpage.name}}
-rippled {{currentpage.name}}
+#Syntax: {% $frontmatter.seo.title %}
+rippled {% $frontmatter.seo.title %}
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストはパラメータを使用しません。
 
@@ -52,10 +52,9 @@ rippled {{currentpage.name}}
 
 成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -69,9 +68,9 @@ rippled {{currentpage.name}}
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -86,9 +85,9 @@ rippled {{currentpage.name}}
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -104,16 +103,17 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-レスポンスは[標準フォーマット][]に従い、成功した結果には以下のフィールドが含まれます.
+レスポンスは[標準フォーマット](../../api-conventions/response-formatting.md)に従い、成功した結果には以下のフィールドが含まれます.
 
 | `Field`         | 型    | 説明                                               |
 |:----------------|:------|:----------------------------------------------------------|
 | `domain`        | 文字列 | _(省略される場合があります)_ このバリデータに関連付けられたドメイン名 (ドメイン名が設定されている場合)。 |
 | `ephemeral_key` | 文字列 | _(省略される場合があります)_ このサーバが検証メッセージに署名する際に使用する公開鍵。この鍵は、バリデータが設定したトークンを変更した際に変更されます。 |
-| `manifest`      | 文字列 | _(省略される場合があります)_ このバリデータが設定したトークンに対応するパブリックな「マニフェスト」を[バイナリにシリアライズ](serialization.html)して、base64でエンコードしたもの。このフィールドには個人情報は含まれません。 |
+| `manifest`      | 文字列 | _(省略される場合があります)_ このバリデータが設定したトークンに対応するパブリックな「マニフェスト」を[バイナリにシリアライズ](../../../protocol/binary-format.md)して、base64でエンコードしたもの。このフィールドには個人情報は含まれません。 |
 | `master_key`    | 文字列 | このバリデータのマスターキーペアの公開鍵。このキーはバリデータを一意に識別するもので、バリデータが公開鍵をローテーションする場合でも同じです。サーバが`[validator_token]`ではなく`[validation_seed]`を用いて設定されている場合、レスポンスのフィールドはこれだけとなります。 |
 | `seq`           | 数値   | _(省略される場合があります)_ このバリデータのバリデーション用トークンおよび設定のシーケンス番号。この番号は、バリデータのオペレータがトークンを更新して鍵をローテーションしたり設定を変更したりするたびに増加します。 |
 
@@ -122,10 +122,5 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ][]のすべて。
-- `invalidParams` - サーバが[バリデータとして設定されていない](run-rippled-as-a-validator.html)場合、サーバはこのエラーを`"error_message" : "not a validator"`と共に返します。
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+- `invalidParams` - サーバが[バリデータとして設定されていない](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)場合、サーバはこのエラーを`"error_message" : "not a validator"`と共に返します。

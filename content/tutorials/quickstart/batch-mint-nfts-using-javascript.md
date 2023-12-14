@@ -41,7 +41,7 @@ This example lets you mint multiple NFTs for a single unique item. The NFT might
 
 To batch mint a non-fungible token objects:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTs.
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
 2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
 3. Enter a **Token Count** of up to 200 NFTs to create in one batch.
 4. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
@@ -68,42 +68,42 @@ async function getAccountFromSeed() {
  Connect to the XRP Ledger.
 
 ```javascript
-	let net = getNet()
-	const client = new xrpl.Client(net)
-	results = 'Connecting to ' + getNet() + '....'
-	standbyResultField.value = results
-	await client.connect()
-	results += '\nConnected, finding wallets.\n'
-	standbyResultField.value = results
+    let net = getNet()
+    const client = new xrpl.Client(net)
+    results = 'Connecting to ' + getNet() + '....'
+    standbyResultField.value = results
+    await client.connect()
+    results += '\nConnected, finding wallets.\n'
+    standbyResultField.value = results
 ```
 
 Use the seed to derive the account.
 
 ```javascript
-	var theSeed = seeds.value
-	const standby_wallet = xrpl.Wallet.fromSeed(theSeed)
+    var theSeed = seeds.value
+    const standby_wallet = xrpl.Wallet.fromSeed(theSeed)
 ```
 
 Get the current XRP balance.
 
-```javascript	
+```javascript    
   const standby_balance = (await client.getXrpBalance(standby_wallet.address))  
-```	
+```    
 
 Populate the fields for Standby account.
 
 ```javascript
-	standbyAccountField.value = standby_wallet.address
-	standbyPubKeyField.value = standby_wallet.publicKey
-	standbyPrivKeyField.value = standby_wallet.privateKey
-	standbySeedField.value = standby_wallet.seed
-	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+    standbyAccountField.value = standby_wallet.address
+    standbyPubKeyField.value = standby_wallet.publicKey
+    standbyPrivKeyField.value = standby_wallet.privateKey
+    standbySeedField.value = standby_wallet.seed
+    standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 ```
 
 Disconnect from the XRP Ledger.
 
 ```javascript
- client.disconnect()	
+ client.disconnect()    
 } 
 ```
 
@@ -268,28 +268,28 @@ Use a `for` loop to create the NFTs one at a time, up to the number you specifie
 
 ```javascript
   for (let i=0; i < nftCount; i++) {
-		const transactionBlob = {
-			"TransactionType": "NFTokenMint",
-			"Account": standby_wallet.classicAddress,
-			"URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
-			"Flags": parseInt(standbyFlagsField.value),
-			"TransferFee": parseInt(standbyTransferFeeField.value),
-			"Sequence": 0,
+        const transactionBlob = {
+            "TransactionType": "NFTokenMint",
+            "Account": standby_wallet.classicAddress,
+            "URI": xrpl.convertStringToHex(standbyTokenUrlField.value),
+            "Flags": parseInt(standbyFlagsField.value),
+            "TransferFee": parseInt(standbyTransferFeeField.value),
+            "Sequence": 0,
 ```
 
 Use the loop variable to step through the array. Set the `LastLedgerSequence` to `null`.
 
 ```javascript
-			"TicketSequence": tickets[i],
-			"LastLedgerSequence": null,
-			"NFTokenTaxon": 0 
-		}
+            "TicketSequence": tickets[i],
+            "LastLedgerSequence": null,
+            "NFTokenTaxon": 0 
+        }
 ```
 
 Submit the signed transaction hash.
 
 ```javascript
-		const tx =  client.submit(transactionBlob, { wallet: standby_wallet} )
+        const tx =  client.submit(transactionBlob, { wallet: standby_wallet} )
   }
 ```
 
@@ -306,12 +306,12 @@ Use the same logic as `getBatchNFTs`, above, to get the list of current NFTs.
   results += JSON.stringify(nfts,null,2)
   while (nfts.result.marker)
   {
-		nfts = await client.request({
-			method: "account_nfts",
-			account: standby_wallet.classicAddress,
-			limit: 400,
-			marker: nfts.result.marker
-		})
+        nfts = await client.request({
+            method: "account_nfts",
+            account: standby_wallet.classicAddress,
+            limit: 400,
+            marker: nfts.result.marker
+        })
     results += '\n' + JSON.stringify(nfts,null,2)
   }
 ```
@@ -319,10 +319,10 @@ Use the same logic as `getBatchNFTs`, above, to get the list of current NFTs.
 Report the results.
 
 ```javascript
-	results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
-	results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
-	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-	standbyResultField.value = results
+    results += '\n\nTransaction result: '+ tx.result.meta.TransactionResult
+    results += '\n\nnfts: ' + JSON.stringify(nfts, null, 2)
+    standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+    standbyResultField.value = results
 ```
 
 Disconnect from the XRP Ledger.
@@ -384,109 +384,109 @@ For this form:
       <br/>
       <textarea id="seeds" cols="40" rows= "1" maxlength="524,288"></textarea>
       <br/><br/>
-			<table>
-				<tr valign="top">
-					<td>
-						<button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
-						<table>
-							<tr valign="top">
-								<td align="right">
-									Standby Account
-								</td>
-								<td>
-									<input type="text" id="standbyAccountField" size="40"></input>
-									<br>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									Public Key
-								</td>
-								<td>
-									<input type="text" id="standbyPubKeyField" size="40"></input>
-									<br>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									Private Key
-								</td>
-								<td>
-									<input type="text" id="standbyPrivKeyField" size="40"></input>
-									<br>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									Seed
-								</td>
-								<td>
-									<input type="text" id="standbySeedField" size="40"></input>
-									<br>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									XRP Balance
-								</td>
-								<td>
-									<input type="text" id="standbyBalanceField" size="40"></input>
-									<br>
-								</td>
-							</tr>
-							<tr valign="top">
-								<td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
-								<td>
-									<input type="checkbox" id="standbyDefault" checked="true"/>
-									<label for="standbyDefault">Allow Rippling</label>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									Currency
-								</td>
-								<td>
-									<input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">NFT URL</td>
-								<td><input type="text" id="standbyTokenUrlField"
-									value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
-								</td>
-							</tr>
-							<tr>
-								<td align="right">Flags</td>
-								<td><input type="text" id="standbyFlagsField" value="8" size="10"/></td>
-							</tr>
-							<tr>
-								<td align="right">NFT ID</td>
-								<td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
-							</tr>
-							<tr>
-								<td align="right">
-									NFT Count
-								    </td>
-								    <td>
-									    <input type="text" id="standbyNFTCountField" size="40"></input>
-									    <br>
-								    </td>
-							    </tr>
-							    <tr>
-								    <td align="right">Transfer Fee</td>
-								    <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-							    </tr>
-							  </td>
-							</tr>
-						</table>
-					</td>
-					<td align="left" valign="top">
-					  <button type="button" onClick="batchMint()">Batch Mint</button>
-						<br/>
-						<button type="button" onClick="getBatchNFTs()">Get Batch NFTs</button>
-						<br/>
-						<p align="left">
-									
+            <table>
+                <tr valign="top">
+                    <td>
+                        <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
+                        <table>
+                            <tr valign="top">
+                                <td align="right">
+                                    Standby Account
+                                </td>
+                                <td>
+                                    <input type="text" id="standbyAccountField" size="40"></input>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Public Key
+                                </td>
+                                <td>
+                                    <input type="text" id="standbyPubKeyField" size="40"></input>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Private Key
+                                </td>
+                                <td>
+                                    <input type="text" id="standbyPrivKeyField" size="40"></input>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Seed
+                                </td>
+                                <td>
+                                    <input type="text" id="standbySeedField" size="40"></input>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    XRP Balance
+                                </td>
+                                <td>
+                                    <input type="text" id="standbyBalanceField" size="40"></input>
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr valign="top">
+                                <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
+                                <td>
+                                    <input type="checkbox" id="standbyDefault" checked="true"/>
+                                    <label for="standbyDefault">Allow Rippling</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    Currency
+                                </td>
+                                <td>
+                                    <input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">NFT URL</td>
+                                <td><input type="text" id="standbyTokenUrlField"
+                                    value = "ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi" size="80"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="right">Flags</td>
+                                <td><input type="text" id="standbyFlagsField" value="8" size="10"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">NFT ID</td>
+                                <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">
+                                    NFT Count
+                                    </td>
+                                    <td>
+                                        <input type="text" id="standbyNFTCountField" size="40"></input>
+                                        <br>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="right">Transfer Fee</td>
+                                    <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+                                </tr>
+                              </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td align="left" valign="top">
+                      <button type="button" onClick="batchMint()">Batch Mint</button>
+                        <br/>
+                        <button type="button" onClick="getBatchNFTs()">Get Batch NFTs</button>
+                        <br/>
+                        <p align="left">
+                                    
 <!-- Note the increased maxlength to hold the most possible NFT info. -->
 
             <textarea id="standbyResultField" cols="80" rows="20" maxlength="524288"></textarea>

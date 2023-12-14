@@ -13,7 +13,7 @@ _Added by the [Escrow amendment][]._
 
 Deliver XRP from a held payment to the recipient.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -28,28 +28,23 @@ Deliver XRP from a held payment to the recipient.
 
 [Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowFinish%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22317081AF188CDD4DBE55C418F41A90EC3B959CDB3B76105E0CBE6B7A0F56C5F7%22%2C%22binary%22%3Afalse%7D)
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
-| Field           | JSON Type        | [Internal Type][] | Description         |
+| Field           | JSON Type        | [Internal Type](../../binary-format.md) | Description         |
 |:----------------|:-----------------|:------------------|:--------------------|
 | `Owner`         | String           | AccountID         | Address of the source account that funded the held payment. |
-| `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction][] that created the held payment to finish. |
+| `OfferSequence` | Unsigned Integer | UInt32            | Transaction sequence of [EscrowCreate transaction](escrowcreate.md) that created the held payment to finish. |
 | `Condition`     | String           | Blob              | _(Optional)_ Hex value matching the previously-supplied [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1) of the held payment. |
 | `Fulfillment`   | String           | Blob              | _(Optional)_ Hex value of the [PREIMAGE-SHA-256 crypto-condition fulfillment](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1.4) matching the held payment's `Condition`. |
 
 Any account may submit an EscrowFinish transaction.
 
-- If the held payment has a `FinishAfter` time, you cannot execute it before this time. Specifically, if the corresponding [EscrowCreate transaction][] specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+- If the held payment has a `FinishAfter` time, you cannot execute it before this time. Specifically, if the corresponding [EscrowCreate transaction](escrowcreate.md) specified a `FinishAfter` time that is after the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 - If the held payment has a `Condition`, you cannot execute it unless you provide a matching `Fulfillment` for the condition.
-- You cannot execute a held payment after it has expired. Specifically, if the corresponding [EscrowCreate transaction][] specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
+- You cannot execute a held payment after it has expired. Specifically, if the corresponding [EscrowCreate transaction](escrowcreate.md) specified a `CancelAfter` time that is before the close time of the most recently-closed ledger, the EscrowFinish transaction fails.
 
-**Note:** The minimum [transaction cost](transaction-cost.html) to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 [drops of XRP][] plus another 10 drops for every 16 bytes in size of the preimage.
+**Note:** The minimum [transaction cost](../../../../concepts/transactions/transaction-cost.md) to submit an EscrowFinish transaction increases if it contains a fulfillment. If the transaction has no fulfillment, the transaction cost is the standard 10 drops. If the transaction contains a fulfillment, the transaction cost is 330 [drops of XRP][] plus another 10 drops for every 16 bytes in size of the preimage.
 
-In [non-production networks](parallel-networks.html), it may be possible [to delete](deleting-accounts.html) the destination account of a pending escrow. In this case, an attempt to finish the escrow fails with the result `tecNO_TARGET`, but the escrow object remains unless it has expired normally. If another payment re-creates the destination account, the escrow can be finished successfully. The destination account of an escrow can only be deleted if the escrow was created before the [fix1523 amendment](known-amendments.html#fix1523) became enabled. No such escrows exist in the production XRP Ledger, so this edge case is not possible on the production XRP Ledger. This edge case is also not possible in test networks that enable both fix1523 and Escrow amendments at the same time, which is the default when you [start a new genesis ledger](start-a-new-genesis-ledger-in-stand-alone-mode.html).
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+In [non-production networks](../../../../concepts/networks-and-servers/parallel-networks.md), it may be possible [to delete](../../../../concepts/accounts/deleting-accounts.md) the destination account of a pending escrow. In this case, an attempt to finish the escrow fails with the result `tecNO_TARGET`, but the escrow object remains unless it has expired normally. If another payment re-creates the destination account, the escrow can be finished successfully. The destination account of an escrow can only be deleted if the escrow was created before the [fix1523 amendment](known-amendments.html#fix1523) became enabled. No such escrows exist in the production XRP Ledger, so this edge case is not possible on the production XRP Ledger. This edge case is also not possible in test networks that enable both fix1523 and Escrow amendments at the same time, which is the default when you [start a new genesis ledger](../../../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md).

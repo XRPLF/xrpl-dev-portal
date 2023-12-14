@@ -8,28 +8,24 @@ labels:
 # ledger
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/Ledger.cpp "Source")
 
-The `ledger` command retrieves information about the public [ledger](ledgers.html). [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
+The `ledger` command retrieves information about the public [ledger](../../../../concepts/ledgers/index.md). [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
 
 Note that the Clio server returns validated ledger data by default.
 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
+{% tab label="WebSocket" %}
+{% code-snippet file="/_api-examples/ledger-clio/wsrpc-request.json" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_api-examples/ledger-clio/wsrpc-request.json' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-request.json" language="json" /%}
+{% /tab %}
 
-*JSON-RPC*
-
-```json
-{% include '_api-examples/ledger-clio/jsonrpc-request.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- [Try it! >](websocket-api-tool.html#ledger) -->
 
@@ -47,44 +43,40 @@ The request can contain the following parameters:
 
 The `ledger` field is deprecated and may be removed without further notice.
 
-> **Note:** The `ledger` command in Clio does not support the following fields that are supported by [ledger command in rippled](ledger.html):
-> 
-> * `accounts`
-> * `full`
-> * `queue`
->
-> Clio will **always** forward the request to `rippled` when any of the above fields is set to `true`.
+{% admonition type="info" name="Note" %}
+The `ledger` command in Clio does not support the following fields that are supported by [ledger command in rippled](../ledger-methods/ledger.md):
+
+* `accounts`
+* `full`
+* `queue`
+
+Clio will **always** forward the request to `rippled` when any of the above fields is set to `true`.
+{% /admonition %}
 
 ## Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
+{% tab label="WebSocket" %}
+{% code-snippet file="/_api-examples/ledger-clio/wsrpc-response.json" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_api-examples/ledger-clio/wsrpc-response.json' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-response.json" language="json" prefix="200 OK\n\n" /%}
+{% /tab %}
 
-*JSON-RPC*
+{% /tabs %}
 
-```json
-200 OK
-
-{% include '_api-examples/ledger-clio/jsonrpc-response.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
-
-The response follows the [standard format][], with a successful result containing information about the ledger, including the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing information about the ledger, including the following fields:
 
 | `Field`                        | Type    | Description                       |
 |:-------------------------------|:--------|:----------------------------------|
 | `ledger`                       | Object  | The complete header data of this ledger. |
 | `ledger.account_hash`          | String  | Hash of all account state information in this ledger, as hex |
-| `ledger.accountState`          | Array   | (Omitted unless requested) All the [account-state information](ledger-data-formats.html) in this ledger. |
-| `ledger.close_flags`           | Integer | A bit-map of [flags relating to the closing of this ledger](ledger-header.html#close-flags). |
+| `ledger.accountState`          | Array   | (Omitted unless requested) All the [account-state information](../../../protocol/ledger-data/index.md) in this ledger. |
+| `ledger.close_flags`           | Integer | A bit-map of [flags relating to the closing of this ledger](../../../protocol/ledger-data/ledger-header.md#close-flags). |
 | `ledger.close_time`            | Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][]. |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format. Always uses the UTC time zone. |
 | `ledger.close_time_resolution` | Integer | Ledger close times are rounded to within this many seconds. |
@@ -101,11 +93,11 @@ The response follows the [standard format][], with a successful result containin
 | `validated`                    | Boolean | _(May be omitted)_ If `true`, this is a validated ledger version. If omitted or set to `false`, this ledger's data is not final. |
 | `diff`                         | Object  | _(Omitted unless requested with the `diff` parameter)_ Object containing an array of hashes that were added, modified, or deleted as part of applying transactions for the ledger. |
 
-If the request specified `"owner_funds": true` and expanded transactions, the response has a field `owner_funds` in the `metaData` object of each [OfferCreate transaction][]. The purpose of this field is to make it easier to track the [funding status of offers](offers.html#lifecycle-of-an-offer) with each new validated ledger. This field is defined slightly differently than the version of this field in [Order Book subscription streams](subscribe.html#order-book-streams):
+If the request specified `"owner_funds": true` and expanded transactions, the response has a field `owner_funds` in the `metaData` object of each [OfferCreate transaction](../../../protocol/transactions/types/offercreate.md). The purpose of this field is to make it easier to track the [funding status of offers](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) with each new validated ledger. This field is defined slightly differently than the version of this field in [Order Book subscription streams](../subscription-methods/subscribe.md#order-book-streams):
 
 | `Field`       | Value  | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](freezes.html). |
+| `owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after the execution of all transactions in this ledger. This does not check whether the currency amount is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 
 If the request specified `"diff": true`, the response has an object `diff`. The fields of this object are as follows:
 
@@ -117,17 +109,10 @@ If the request specified `"diff": true`, the response has an object `diff`. The 
 ### Response When `diff` is `true`
 
 
-````json
-{% include '_api-examples/ledger-clio/jsonrpc-diff-response.json' %}
-````
+`{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" /%}`
 
 ## Possible Errors
 
 * Any of the [universal error types][].
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}

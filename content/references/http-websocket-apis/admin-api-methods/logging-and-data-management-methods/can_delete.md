@@ -8,18 +8,17 @@ labels:
 # can_delete
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
-The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](online-deletion.html#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
+The `can_delete` method informs the `rippled` server of the latest ledger version which may be deleted when using [online deletion with advisory deletion enabled](../../../../infrastructure/configuration/data-retention/online-deletion.md#advisory-deletion). If advisory deletion is not enabled, this method does nothing.
 
-_The `can_delete` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `can_delete` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -27,9 +26,9 @@ An example of the request format:
   "can_delete": 11320417
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "can_delete",
@@ -40,15 +39,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
 rippled can_delete 11320417
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request accepts the following parameter:
 
@@ -58,7 +58,7 @@ The request accepts the following parameter:
 
 ### Response Format
 
-The response follows the [standard format][], with a successful result containing the following fields:
+The response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | `Field`      | Type    | Description                                         |
 |:-------------|:--------|:----------------------------------------------------|
@@ -77,10 +77,5 @@ Use this command with no parameter to query the existing `can_delete` setting.
 
 ## See Also
 
-- [Online Deletion](online-deletion.html)
-- [Configure Advisory Deletion](configure-advisory-deletion.html)
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+- [Online Deletion](../../../../infrastructure/configuration/data-retention/online-deletion.md)
+- [Configure Advisory Deletion](../../../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
