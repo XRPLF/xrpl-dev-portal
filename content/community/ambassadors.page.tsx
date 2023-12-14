@@ -12,7 +12,7 @@ export default function Ambassadors() {
     <div className="landing page-ambassadors">
       <div>
     <div className="position-relative d-none-sm">
-        <img alt="background purple waves" src={require("./img/backgrounds/ambassador-purple.svg")} className="position-absolute" style={{top: 0, right: 0}} />
+        <img alt="background purple waves" src={require("../img/backgrounds/ambassador-purple.svg")} className="position-absolute" style={{top: 0, right: 0}} />
     </div>
     <section className="container-new py-26 text-lg-center">
         <div className="p-0 col-lg-8 mx-lg-auto">
@@ -39,7 +39,7 @@ export default function Ambassadors() {
             </div>
             <div className="order-lg-1 col-lg-6 px-0 mr-lg-4">
                 <div className="row m-0">
-                    <img alt="Person speaking and person taking photo" src={require("./static/img/ambassadors/developer-hero@2x.png")} className="w-100" />
+                    <img alt="Person speaking and person taking photo" src={require("../static/img/ambassadors/developer-hero@2x.png")} className="w-100" />
                 </div>
             </div>
             <div className="d-lg-none order-3 mt-4 pt-3 p-lg-3">
@@ -221,8 +221,8 @@ export default function Ambassadors() {
                 <div className="carousel-item active">
                     <div className="p-0">
                         <div className="mb-4 p-lg-3">
-                            <img alt="I have learned so much through creating programs and connecting with the XRPL community. Im truly grateful for everyone's support along the way and for the opportunity to gain so much knowledge from this expierence" src={require("./static/img/ambassadors/quote1-small.svg")} className="h-100 d-lg-none mb-4" />
-                            <img alt="I have learned so much through creating programs and connecting with the XRPL community. Im truly grateful for everyone's support along the way and for the opportunity to gain so much knowledge from this expierence" src={require("./static/img/ambassadors/quote1.svg")} className="h-100 d-none d-lg-block" />
+                            <img alt="I have learned so much through creating programs and connecting with the XRPL community. Im truly grateful for everyone's support along the way and for the opportunity to gain so much knowledge from this expierence" src={require("../static/img/ambassadors/quote1-small.svg")} className="h-100 d-lg-none mb-4" />
+                            <img alt="I have learned so much through creating programs and connecting with the XRPL community. Im truly grateful for everyone's support along the way and for the opportunity to gain so much knowledge from this expierence" src={require("../static/img/ambassadors/quote1.svg")} className="h-100 d-none d-lg-block" />
                             <div className="p-0 col-lg-7 mx-lg-auto">
                                 <p className="p-lg-3 mb-2"><strong>Derrick N.</strong><br />
                                     Toronto Metropolitan University<br />
@@ -234,8 +234,8 @@ export default function Ambassadors() {
                 <div className="carousel-item mb-20">
                     <div className="p-0">
                         <div className="mb-4 p-lg-3">
-                            <img alt="The XRPL Campus Ambassador program really helped broaden my view of the blockchain industry with their learning resource and virtual community. Being an ambassador allowed me to meet industry professionals and likeminded peers which have given me invaluable experiences and insights." src={require("./static/img/ambassadors/quote2-small.svg")} className="h-150 d-lg-none  mb-4" />
-                            <img alt="The XRPL Campus Ambassador program really helped broaden my view of the blockchain industry with their learning resource and virtual community. Being an ambassador allowed me to meet industry professionals and likeminded peers which have given me invaluable experiences and insights." src={require("./static/img/ambassadors/quote2.svg")} className="h-100 d-none d-lg-block" />
+                            <img alt="The XRPL Campus Ambassador program really helped broaden my view of the blockchain industry with their learning resource and virtual community. Being an ambassador allowed me to meet industry professionals and likeminded peers which have given me invaluable experiences and insights." src={require("../static/img/ambassadors/quote2-small.svg")} className="h-150 d-lg-none  mb-4" />
+                            <img alt="The XRPL Campus Ambassador program really helped broaden my view of the blockchain industry with their learning resource and virtual community. Being an ambassador allowed me to meet industry professionals and likeminded peers which have given me invaluable experiences and insights." src={require("../static/img/ambassadors/quote2.svg")} className="h-100 d-none d-lg-block" />
                             <div className="p-0 col-lg-7 mx-lg-auto">
                                 <p className="p-lg-3 mb-2"><strong>Sally Z.</strong><br />
                                     Toronto Metropolitan University<br />
@@ -247,8 +247,8 @@ export default function Ambassadors() {
                 <div className="carousel-item mb-40">
                     <div className="p-0">
                         <div className="mb-4 p-lg-3">
-                            <img alt="Ive had the pleasure over the course of this program to speak with amazing individuals, I encourage you all to reach out to other people in this program and make as many connections as you can. You will quickly find out that by speaking with other people in this cohort you can learn just about anything if you ask the right people." src={require("./static/img/ambassadors/quote3-small.svg")} className="h-150 d-lg-none  mb-4" />
-                            <img alt="Ive had the pleasure over the course of this program to speak with amazing individuals, I encourage you all to reach out to other people in this program and make as many connections as you can. You will quickly find out that by speaking with other people in this cohort you can learn just about anything if you ask the right people." src={require("./static/img/ambassadors/quote3.svg")} className="h-100 d-none d-lg-block" />
+                            <img alt="Ive had the pleasure over the course of this program to speak with amazing individuals, I encourage you all to reach out to other people in this program and make as many connections as you can. You will quickly find out that by speaking with other people in this cohort you can learn just about anything if you ask the right people." src={require("../static/img/ambassadors/quote3-small.svg")} className="h-150 d-lg-none  mb-4" />
+                            <img alt="Ive had the pleasure over the course of this program to speak with amazing individuals, I encourage you all to reach out to other people in this program and make as many connections as you can. You will quickly find out that by speaking with other people in this cohort you can learn just about anything if you ask the right people." src={require("../static/img/ambassadors/quote3.svg")} className="h-100 d-none d-lg-block" />
                             <div className="p-0 col-lg-7 mx-lg-auto">
                                 <p className="p-lg-3 mb-2"><strong>Nick D.</strong><br />
                                     Miami University<br />
@@ -278,7 +278,7 @@ export default function Ambassadors() {
                 <div className="row m-0">
                     <div className="col-12 col-lg-6 p-0 pr-lg-4">
                         <div className="px-lg-3 pb-3">
-                            <img  src={require("./static/img/ambassadors/01.svg")} className="pl-lg-3" />
+                            <img  src={require("../static/img/ambassadors/01.svg")} className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Apply")}</h6>
                                 <p>{translate("Submit an application to be considered for the Campus Ambassador program.")}</p>
@@ -286,14 +286,14 @@ export default function Ambassadors() {
                         </div>
                         {/* Hide on large */}
                         <div className="px-lg-3 pb-3 d-lg-none ">
-                            <img  src={require("./static/img/ambassadors/02.svg")} className="pl-lg-3" />
+                            <img  src={require("../static/img/ambassadors/02.svg")} className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Interview")}</h6>
                                 <p>{translate("Tell the XRPL community-led panel more about yourself and your interest in the program during an interview.")}</p>
                             </div>
                         </div>
                         <div className="px-lg-3 pb-3">
-                            <img  src={require("./static/img/ambassadors/03.svg")} className="pl-lg-3" />
+                            <img  src={require("../static/img/ambassadors/03.svg")} className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Join")}</h6>
                                 <p>{translate("Congrats on your new role! Join the global cohort of Ambassadors and meet with community participants during onboarding.")}</p>
@@ -301,7 +301,7 @@ export default function Ambassadors() {
                         </div>
                         {/* Hide on large */}
                         <div className="p-lg-3 pb-3 d-lg-none">
-                            <img  src={require("./static/img/ambassadors/04.svg")} className="pl-lg-3" />
+                            <img  src={require("../static/img/ambassadors/04.svg")} className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Learn")}</h6>
                                 <p> {translate("Participate in personalized learning and training sessions for Ambassadors on the XRPL and blockchain technology.")}</p>
@@ -312,14 +312,14 @@ export default function Ambassadors() {
                     {/* Show on large */}
                     <div className="col-12 col-lg-6 p-0 pl-lg-4 d-none d-lg-block mt-5">
                         <div className="px-lg-3 pb-3 mt-5">
-                            <img  src={require("./static/img/ambassadors/02.svg")} className="pl-lg-3" />
+                            <img  src={require("../static/img/ambassadors/02.svg")} className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Interview")}</h6>
                                 <p>{translate("Tell the XRPL community-led panel more about yourself and your interest in the program during an interview.")}</p>
                             </div>
                         </div>
                         <div className="p-lg-3 pb-3 ">
-                            <img  src={require("./static/img/ambassadors/04.svg")} className="pl-lg-3" />
+                            <img  src={require("../static/img/ambassadors/04.svg")} className="pl-lg-3" />
                             <div className="p-lg-3 pt-3 pb-lg-0">
                                 <h6 className="mb-3">{translate("Learn")}</h6>
                                 <p className="pb-lg-0">{translate("Participate in personalized learning and training sessions for Ambassadors on the XRPL and blockchain technology.")}</p>
@@ -336,7 +336,7 @@ export default function Ambassadors() {
     </section>
     {/* Image Block */}
     <div>
-        <img alt="Ripple Conferences and two people Sitting" src={require("./static/img/ambassadors/students-large.png")} className="w-100" />
+        <img alt="Ripple Conferences and two people Sitting" src={require("../static/img/ambassadors/students-large.png")} className="w-100" />
     </div>
     {/* Global Community Carousel */}
     <section className="container-new pt-26">
@@ -349,14 +349,14 @@ export default function Ambassadors() {
     </section>
     <div id="container-scroll">
         <div className="photobanner">
-            <img src={require("./static/img/ambassadors/locations-row-1.png")} alt="Ambassador locations" height="48px" className="px-5" />
-            <img src={require("./static/img/ambassadors/locations-row-1.png")} alt="Ambassador locations" height="48px" className="px-5" />
-            <img src={require("./static/img/ambassadors/locations-row-1.png")} alt="Ambassador locations" height="48px" className="px-5" />
+            <img src={require("../static/img/ambassadors/locations-row-1.png")} alt="Ambassador locations" height="48px" className="px-5" />
+            <img src={require("../static/img/ambassadors/locations-row-1.png")} alt="Ambassador locations" height="48px" className="px-5" />
+            <img src={require("../static/img/ambassadors/locations-row-1.png")} alt="Ambassador locations" height="48px" className="px-5" />
         </div>
         <div className="photobanner photobanner-bottom">
-            <img src={require("./static/img/ambassadors/locations-row-2.png")} alt="Ambassador locations" height="48px" className="px-5" />
-            <img src={require("./static/img/ambassadors/locations-row-2.png")} alt="Ambassador locations" height="48px" className="px-5" />
-            <img src={require("./static/img/ambassadors/locations-row-2.png")} alt="Ambassador locations" height="48px" className="px-5" />
+            <img src={require("../static/img/ambassadors/locations-row-2.png")} alt="Ambassador locations" height="48px" className="px-5" />
+            <img src={require("../static/img/ambassadors/locations-row-2.png")} alt="Ambassador locations" height="48px" className="px-5" />
+            <img src={require("../static/img/ambassadors/locations-row-2.png")} alt="Ambassador locations" height="48px" className="px-5" />
         </div>
     </div>
     {/* Connect */}
@@ -377,14 +377,14 @@ export default function Ambassadors() {
                 <div className="row align-items-center m-0">
                     <div className="col-12 col-lg-6 p-0 pr-lg-4">
                         <div className="p-lg-3 mb-3 pb-3">
-                            <img alt="meetup" src={require("./static/img/ambassadors/icon_meetup.svg")} className="mb-3" />
+                            <img alt="meetup" src={require("../static/img/ambassadors/icon_meetup.svg")} className="mb-3" />
                             <div>
                                 <h6 className="mb-3"><a className="btn-arrow" href="https://www.meetup.com/pro/xrpl-community/">{translate("MeetUp")}</a></h6>
                                 <p>{translate("Attend an XRPL Meetup in your local area")}</p>
                             </div>
                         </div>
                         <div className="p-lg-3 mb-3 pb-3">
-                            <img alt="devto" src={require("./static/img/ambassadors/icon_devto.svg")} className="mb-3" />
+                            <img alt="devto" src={require("../static/img/ambassadors/icon_devto.svg")} className="mb-3" />
                             <div>
                                 <h6 className="mb-3"><a className="btn-arrow" href="https://dev.to/t/xrpl">{translate("Dev.to Blog")}</a></h6>
                                 <p>{translate("Read more about the activity of the XRPL Ambassadors")}</p>
@@ -393,7 +393,7 @@ export default function Ambassadors() {
                     </div>
                     <div className="col-12 col-lg-6 p-0 pl-lg-4">
                         <div className="p-lg-3 mb-3 pb-3 ">
-                            <img alt="discord" src={require("./static/img/ambassadors/icon_discord.svg")} className="mb-3" />
+                            <img alt="discord" src={require("../static/img/ambassadors/icon_discord.svg")} className="mb-3" />
                             <div>
                                 <h6 className="mb-3"><a className="btn-arrow" href="https://xrpldevs.org">{translate("Discord")}</a></h6>
                                 <p>{translate("Join the conversation on the XRPL Developer Discord")}</p>

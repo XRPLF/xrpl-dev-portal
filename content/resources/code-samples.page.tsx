@@ -2,13 +2,13 @@ import * as React from 'react';
 import { usePageSharedData, useTranslate } from '@portal/hooks';
 
 const langIcons = {
-  cli: require('./static/img/logos/cli.svg'),
-  go: require('./static/img/logos/golang.svg'),
-  java: require('./static/img/logos/java.svg'),
-  js: require('./static/img/logos/javascript.svg'),
-  php: require('./static/img/logos/php.svg'),
-  py: require('./static/img/logos/python.svg'),
-  http: require('./static/img/logos/globe.svg'),
+  cli: require('../static/img/logos/cli.svg'),
+  go: require('../static/img/logos/golang.svg'),
+  java: require('../static/img/logos/java.svg'),
+  js: require('../static/img/logos/javascript.svg'),
+  php: require('../static/img/logos/php.svg'),
+  py: require('../static/img/logos/python.svg'),
+  http: require('../static/img/logos/globe.svg'),
 };
 const target = {
   github_forkurl: 'https://github.com/XRPLF/xrpl-dev-portal',
@@ -34,7 +34,7 @@ export default function CodeSamples() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require('./img/backgrounds/xrpl-overview-orange.svg')}
+            src={require('../img/backgrounds/xrpl-overview-orange.svg')}
             id="xrpl-overview-orange"
           />
         </div>

@@ -10,29 +10,29 @@
     - group: XRP Ledger Overview
       items:
         - label: XRPL Overview
-          href: /about/xrp-ledger-overview/
+          href: /about
         - label: Use Cases
-          href: /about/use-cases/
+          href: /about/uses
         - label: History
-          href: /about/history/
+          href: /about/history
         - label: Ledger Explorer
           href: https://livenet.xrpl.org
           external: true
     - group: XRP
       items:
         - label: XRP Overview
-          href: /about/xrp-overview
+          href: /about/xrp
     - group: Sustainability
       items:
         - label: Impact
-          href: /about/impact/
+          href: /about/impact
     - group: About
       items:
         - label: XRPL Foundation
           href: https://foundation.xrpl.org/
           external: true
         - label: FAQ
-          href: /about/faq/
+          href: /about/faq
 
 - group: Docs
   items:
@@ -43,37 +43,57 @@
     - group: Introduction to the XRP Ledger
       items:
         - label: What is XRP?
-          href: /docs/concepts/introduction/what-is-xrp
+          href: /introduction/what-is-xrp
         - label: What is the XRP Ledger?
-          href: /docs/concepts/introduction/what-is-xrpl
+          href: /introduction/what-is-the-xrp-ledger
         - label: Transactions and Requests
-          href: /docs/concepts/introduction/txn-and-requests
-    - group: Tutorials
-      items:
-        - label: Quickstart
-          href: /docs/tutorials/quickstart
-        - label: Code Samples
-          href: /docs/code-samples
+          href: /introduction/transactions-and-requests/
     - group: API Reference
       items:
         - label: Client Libraries
-          href: /docs/references/client-libraries/
+          href: /references/client-libraries/
         - label: Public API Methods
-          href: /docs/references/http-websocket-apis/public-api-methods/
+          href: /references/http-websocket-apis/public-api-methods/
         - label: Admin API Methods
-          href: /docs/references/http-websocket-apis/admin-api-methods/
+          href: /references/http-websocket-apis/admin-api-methods/
     - group: Popular Pages
       items:
         - label: Send XRP
-          href: /tutorials/send-xrp/
+          href: /tutorials/get-started/send-xrp/
         - label: XRP Faucets
           href: /dev-tools/xrp-faucets
           page: /dev-tools/xrp-faucets.page.tsx
         - label: XRPL Servers
           href: /infrastructure/xrpl-servers/
     - label: Dev Tools
-      href: /docs/dev-tools/
+      href: /dev-tools/
 
+- group: Resources
+  items:
+    - group: Development
+      items:
+        - label: Code Samples
+          href: /resources/code-samples
+        - label: Dev Tools
+          href: /resources/dev-tools
+        - label: XRPL Learning Portal
+          href: https://learn.xrpl.org/
+          external: true
+        - label: XRPL Brand Kit
+          href: /static/XRPL_Brand_Kit.zip
+    - group: Current Status
+      items:
+        - label: Ledger Explorer
+          href: https://livenet.xrpl.org/
+          external: true
+        - label: Known Amendments
+          href: /resources/known-amendments
+    - group: Join In
+      items:
+        - label: Contribute Code
+          href: /resources/contribute-code
+        - label: Contribute Documentation
+          href: /resources/contribute-documentation
 
 - group: Community
   items:

@@ -555,7 +555,7 @@ export default function Events() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/events-orange.svg")}
+            src={require("../img/backgrounds/events-orange.svg")}
             id="events-orange"
           />
         </div>
@@ -574,7 +574,7 @@ export default function Events() {
             <div className="pr-2 col">
               <img
                 alt="default-alt-text"
-                src={require("./static/img/events/event-hero3@2x.png")}
+                src={require("../static/img/events/event-hero3@2x.png")}
                 className="w-100"
               />
             </div>
@@ -719,7 +719,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    background: `no-repeat url(./img/events/${event.image})`,
+                    background: `no-repeat url(../img/events/${event.image})`,
                   }}
                 >
                   <div className="event-card-title">{event.name}</div>
@@ -844,7 +844,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    background: `no-repeat url(./img/events/${event.image})`,
+                    background: `no-repeat url(../img/events/${event.image})`,
                   }}
                 >
                   <div className="event-card-title">{event.name}</div>
