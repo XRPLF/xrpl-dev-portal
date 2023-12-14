@@ -388,6 +388,8 @@
             expanded: false
             items:
               - group: JavaScript / TypeScript Client Library
+                href: https://js.xrpl.org/
+                external: true
                 expanded: false
                 items:
                   - page: references/xrpljs2-migration-guide.md
@@ -617,6 +619,7 @@
     expanded: false
     items:
       - label: Code Samples
+        page: code-samples.page.tsx
       - group: Dev Tools
         expanded: false
         items:
@@ -626,12 +629,16 @@
           - label: xrp-ledger.toml Checker
           - label: Domain Verification Checker
           - label: XRP Faucets
+            href: /dev-tools/xrp-faucets
+            page: dev-tools/xrp-faucets.page.tsx
           - label: Transaction Sender
+            href: /dev-tools/tx-sender
+            page: dev-tools/tx-sender.page.tsx
       - label: XRPL Learning Portal
         href: https://learn.xrpl.org/
         external: true
       - label: XRPL Brand Kit
-        href: https://xrpl.org/assets/XRPL_Brand_Kit.zip
+        href: /static/XRPL_Brand_Kit.zip
         external: true
       - label: Ledger Explorer
         href: https://livenet.xrpl.org/
