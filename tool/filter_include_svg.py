@@ -9,6 +9,7 @@
 ################################################################################
 
 from bs4 import BeautifulSoup
+import os.path
 
 def uniqify_urls(soup, attr, slug):
     """
@@ -22,6 +23,7 @@ def uniqify_urls(soup, attr, slug):
 
 def include_svg(filename, alt_text="(diagram)", classes=""):
     # TODO: try/except, retriable error
+    filename = os.path.join("./content/", filename) # TODO: tempfix for img being in content/img for Redocly. Undo if we move img/ back up a level.
     with open(filename, "r", encoding="utf-8") as f:
         svgtext = f.read()
     soup = BeautifulSoup(svgtext, "xml") #lxml required
