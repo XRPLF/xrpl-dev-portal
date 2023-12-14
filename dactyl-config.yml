@@ -34,6 +34,7 @@ default_filters:
     # - make_indexes
     # Tool for mass-replacing links. No-op by default (used by tool/migrate_links.sh)
     - update_links
+    - redocly_sidebar
 
 callout_class: "devportal-callout"
 callout_types:
