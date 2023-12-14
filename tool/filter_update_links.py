@@ -22,6 +22,10 @@ def find_page(html, pages):
     return None
 
 def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs):
+    # Nop unless you do dactyl_build --vars '{"do_link_replacement":true}'
+    if not currentpage.get("do_link_replacement", False):
+        return
+
     if not currentpage.get("md", ""):
         logger.debug("Skipping non-md page "+currentpage["html"])
         return
