@@ -72,7 +72,7 @@ export default function XrplOverview() {
         <div className="position-relative">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/xrpl-overview-purple.svg")}
+            src={require("../img/backgrounds/xrpl-overview-purple.svg")}
             className="landing-bg"
             id="xrpl-overview-purple"
           />
@@ -94,7 +94,7 @@ export default function XrplOverview() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("./img/backgrounds/xrpl-overview-orange.svg")}
+            src={require("../img/backgrounds/xrpl-overview-orange.svg")}
             id="xrpl-overview-orange"
           />
         </div>
@@ -148,7 +148,7 @@ export default function XrplOverview() {
                 <a onClick={() => setVideoOne(!videoOne)} id="playvideo">
                   <img
                     alt="XRPL logo with play button surrounded with image bubbles of various people"
-                    src={require("./static/img/overview/video_explainer_intro@2x.png")}
+                    src={require("../static/img/overview/video_explainer_intro@2x.png")}
                     id="xrpl-overview-video-intro"
                     className="w-100 video-image"
                   />
@@ -212,7 +212,7 @@ export default function XrplOverview() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("./img/backgrounds/cta-xrpl-overview-green.svg")}
+              src={require("../img/backgrounds/cta-xrpl-overview-green.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">
@@ -296,7 +296,7 @@ export default function XrplOverview() {
               >
                 <img
                   alt="Two Monitors with person image bubbles inside, facing each other with a play button in between"
-                  src={require("./static/img/overview/video_explainer_consensus@2x.png")}
+                  src={require("../static/img/overview/video_explainer_consensus@2x.png")}
                   id="xrpl-overview-video-consensus"
                   className="w-100 video-image"
                 />
@@ -318,7 +318,7 @@ export default function XrplOverview() {
               >
                 <img
                   alt="graphlike background with play button in center"
-                  src={require("./static/img/overview/video_explainer_nodes@2x.png")}
+                  src={require("../static/img/overview/video_explainer_nodes@2x.png")}
                   id="xrpl-overview-video-nodes"
                   className="w-100 video-image"
                 />
@@ -340,7 +340,7 @@ export default function XrplOverview() {
               >
                 <img
                   alt="A globe graph with a play button in center"
-                  src={require("./static/img/overview/video_explainer_sustainability@2x.png")}
+                  src={require("../static/img/overview/video_explainer_sustainability@2x.png")}
                   id="xrpl-overview-video-sustainability"
                   className="w-100 video-image"
                 />
@@ -366,7 +366,7 @@ export default function XrplOverview() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("./img/backgrounds/cta-xrpl-overview-orange.svg")}
+              src={require("../img/backgrounds/cta-xrpl-overview-orange.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">
