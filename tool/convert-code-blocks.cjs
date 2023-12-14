@@ -16964,10 +16964,10 @@ function convertIndentedToFenced(filePath) {
     };
   }).processSync(doc);
   if (hasCode) {
-    console.log(`Updating ${filePath} in-place`);
+    //console.log(`Updating ${filePath} in-place`);
     (0, import_fs2.writeFileSync)(filePath, outputDoc.join(""), "utf-8");
   } else {
-    console.log(`Skip ${filePath} as it doesn't contain code blocks`);
+    //console.log(`Skip ${filePath} as it doesn't contain code blocks`);
   }
 }
 var dir = process.argv[2];
