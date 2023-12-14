@@ -87,7 +87,7 @@ def compare_nav_and_fs_hierarchy(page, pages, logger):
         # Switch to the commented out print statement to get
         # tab-separated values you can paste into a spreadsheet:
         # print(expected_path, "\t", actual_path)
-        logger.warning("""File path doesn't match the recommendation based on navigation.
+        logger.info("""File path doesn't match the recommendation based on navigation.
     Expected: {expected_path}
       Actual: {actual_path}""".format(expected_path=expected_path, actual_path=actual_path))
 
@@ -120,7 +120,7 @@ def filter_soup(soup, currentpage={}, config={}, pages=[], logger=None, **kwargs
 
     # TODO: allow configuration of loose/strict matching
     if not normalized_match(page_filename, page_h1, loose=True):
-        logger.warning("Filename/Title Mismatch: '{page_filename}' vs '{page_h1}'".format(page_filename=page_filename, page_h1=page_h1))
+        logger.info("Filename/Title Mismatch: '{page_filename}' vs '{page_h1}'".format(page_filename=page_filename, page_h1=page_h1))
 
 def page_mapping(pages):
     mapping = {}

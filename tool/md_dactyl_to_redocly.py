@@ -18,6 +18,8 @@
 ## 5) include_svg() → inline-svg component
 ## 6) callouts → admonitions
 ## 7) code tabs → tabs component
+## 8) badge links → badge component
+## 9) :not_enabled: → not-enabled component
 ###############################################################################
 
 import os
@@ -54,22 +56,40 @@ def list_mds(content_dir):
                 all_mds.append(os.path.join(dirpath,filename))
     return all_mds
 
-COMMON_LINKS_INCLUDES = [
-    "<!--{# common link defs #}-->",
+RM_PATTERNS = [
     "<!--_ -->",
     "<!--{#_ #}-->",
+    "<!--#{ fix md highlighting_ #}-->",    
+]
+def rm_extra_syntax(ftext):
+    for s in RM_PATTERNS:
+        ftext = ftext.replace(s, "")
+    ftext = ftext.strip()+"\n"
+    return ftext
+
+COMMON_LINKS_INCLUDES = [
+    "<!--{# common link defs #}-->",
+    "<!-- {# common link defs #} -->",
+    "<!--{## common link defs #}-->",
     "{% include '_snippets/rippled-api-links.md' %}",
     "{% include '_snippets/tx-type-links.md' %}",
     "{% include '_snippets/rippled_versions.md' %}",
 ]
-def rm_common_links_includes(ftext):
+NEW_COMMON_LINKS = '\n{% raw-partial file="/_snippets/common-links.md" /%}\n'
+def update_common_links_includes(ftext):
     """
     Remove (with no replacement) the includes that define common links at the
     end of a file. Trim out extra whitespace (except last \n)
     """
+    had_common_links = False
     for s in COMMON_LINKS_INCLUDES:
+        if s in ftext:
+            had_common_links = True
         ftext = ftext.replace(s, "")
+    
     ftext = ftext.strip()+"\n"
+    if had_common_links:
+        ftext += NEW_COMMON_LINKS
     return ftext
 
 class RegexReplacer():
@@ -144,7 +164,11 @@ class SnippetReplacer(RegexReplacer):
     # Redocly requires partials to end in md due to Mardoc limitations.
     # Other includes need to be converted to code-snippet instances instead.
     regex = re.compile(r"\{% *include *'(?P<path>_[^']+\.md)' *%\}")
-    replace = staticmethod(lambda m: '{{% partial file="/{fpath}" /%}}'.format(fpath=m.group("path")))
+
+    @staticmethod
+    def replace(m: re.Match):
+        fpath = m.group("path").replace(".ja.md", ".md")
+        return '{{% partial file="/{fpath}" /%}}'.format(fpath=fpath)
 regex_todos.append(SnippetReplacer())
 
 class RepoLinkReplacer(RegexReplacer):
@@ -159,6 +183,13 @@ class RepoLinkReplacer(RegexReplacer):
     regex = re.compile(r"\[(?P<linktext>[^\]]+)\]\(\{\{ *target\.github_forkurl *\}\}/(tree|blob)/\{\{ *target\.github_branch *\}\}/(?P<path>[^\)]+)\)")
     replace = staticmethod(lambda m: '{% repo-link path="'+m.group("path")+'" %}'+m.group("linktext")+'{% /repo-link %}')
 regex_todos.append(RepoLinkReplacer())
+
+class CodePageNameReplacer(RegexReplacer):
+    regex = re.compile(r"`\{\{ *(target|currentpage)\.name *\}\}`")
+    @staticmethod
+    def replace(m: re.Match):
+        return '{% code-page-name /%}'
+regex_todos.append(CodePageNameReplacer())
 
 class VarReplacer(RegexReplacer):
     regex = re.compile(r"\{\{ *(target|currentpage)\.(?P<var>[a-z_]+) *}}")
@@ -248,24 +279,67 @@ class OnelineCalloutReplacer(RegexReplacer):
         return repl_string
 regex_todos.append(OnelineCalloutReplacer())
 
+class ImgPathReplacer(RegexReplacer):
+    regex = re.compile(r'\]\(img/([^)]+)\)')
+    @staticmethod
+    def replace(m: re.Match):
+        return "](/img/"+m.group(1)+")"
+regex_todos.append(ImgPathReplacer())
+
+class BadgeReplacer(RegexReplacer):
+    regex = re.compile(r'\[(?P<text>[^\]]+)\]\((?P<href>[^ ]*)\s+"BADGE_(?P<color>\w+)"\)')
+    @staticmethod
+    def replace(m: re.Match):
+        s = '{% badge '
+        #s += 'color="'+m.group("color")+'" '
+        if m.group("href"):
+            s += 'href="'+m.group("href")+'" '
+        s += '%}'+m.group("text")+'{% /badge %}'
+        return s
+regex_todos.append(BadgeReplacer())
+
+class NotEnabledReplacer(RegexReplacer):
+    regex = re.compile(r':not_enabled:')
+    replace = staticmethod(lambda s: '{% not-enabled /%}')
+regex_todos.append(NotEnabledReplacer())
 
 category_regex = re.compile(r'^#?template: *pagetype-category\.html\.jinja\n', re.MULTILINE)
 def convert_category_page(ftext):
     if not category_regex.search(ftext):
         return ftext
     ftext2 = re.sub(category_regex, "metadata:\n  indexPage: true\n", ftext)
-    ftext2 = ftext2 + "\n{% child-pages /%}\n"
+    ftext2 = ftext2 + "\n\n{% child-pages /%}\n"
     return ftext2
+
+reflink_regex = re.compile(r"\[(?P<label>[^\]]+)\]\[\]")
+badge_ref_regex = re.compile(r'(?P<href>[^ ]*)\s+"BADGE_(?P<color>\w+)"')
+with open("tool/autosubs_cheatsheet.yml") as f:
+    AUTOSUBS = yaml.load(f)
+def convert_reusable_badges(ftext):
+    if not reflink_regex.search(ftext):
+        return ftext
+    for m in reflink_regex.finditer(ftext):
+        if m.group("label") in AUTOSUBS.keys():
+            ref_target = AUTOSUBS[m.group("label")]
+            m2 = badge_ref_regex.match(ref_target)
+            if m2:
+                # Note: color intentionally omitted so it can be auto-set.
+                repl_string = '{% badge href="'+m2.group("href")+'" %}'+m.group("label")+'{% /badge %}'
+                ftext = ftext.replace(m.group(0), repl_string)
+    return ftext
 
 def main():
     all_mds = list_mds("content")
     for fname in all_mds:
         with open(fname) as f:
             ftext = f.read()
-        ftext2 = rm_common_links_includes(ftext)
+        ftext2 = rm_extra_syntax(ftext)
+        ftext2 = update_common_links_includes(ftext2)
 
         for replacer in regex_todos:
             ftext2 = replacer.replace_all(ftext2)
+
+        ftext2 = convert_reusable_badges(ftext2)
 
         ftext2 = convert_category_page(ftext2)
 

@@ -2,8 +2,8 @@
 out_path: out
 
 # These folders get copied into the output directory
-template_static_path: assets
-content_static_path: img
+template_static_path: content/static
+content_static_path: content/img
 
 template_path: template
 default_template: pagetype-doc.html.jinja
@@ -32,13 +32,9 @@ default_filters:
     - copy_code_to_clipboard
     - enforce_filenames
     # - make_indexes
-    ## To run a mass find-and-replace on links in the dev portal, uncomment the update_links filter,
-    ## also comment out or empty out the three snippets files with common links:
-    ##      _snippets/rippled-api-links.md
-    ##      _snippets/tx-type-links.md
-    ##      _snippets/rippled_versions.md
-    ## And then run dactyl_build.
-    # - update_links
+    # Tool for mass-replacing links. No-op by default (used by tool/migrate_links.sh)
+    - update_links
+    - redocly_sidebar
 
 callout_class: "devportal-callout"
 callout_types:
@@ -1038,7 +1034,7 @@ pages:
         targets:
             - en
 
-    -   md: "@i18n/ja/concepts/payment-types/robustly-monitoring-for-payments.md" 
+    -   md: "@i18n/ja/concepts/payment-types/robustly-monitoring-for-payments.md"
         targets:
             - ja
 
