@@ -226,7 +226,7 @@ The `auction_slot` field of the `amm` object describes the current auction slot 
 |------------------|---------------------|-------------|
 | `account`        | String              | The [Address][] of the account that owns the auction slot. |
 | `auth_accounts`  | Array               | A list of additional accounts that the auction slot holder has designated as being eligible of the discounted trading fee. Each member of this array is an object with one field, `account`, containing the address of the designated account. |
-| `discounted_fee` | Number              | The discounted trading fee that applies to the auction slot holder, and any eligible accounts, when trading against this AMM. This is always 0. |
+| `discounted_fee` | Number              | The discounted trading fee that applies to the auction slot holder, and any eligible accounts, when trading against this AMM. This is 1/10 of the AMM's normal trading fee. |
 | `expiration`     | String              | The ISO 8601 UTC timestamp after which this auction slot expires. After expired, the auction slot does not apply (but the data can remain in the ledger until another transaction replaces it or cleans it up). |
 | `price`          | [Currency Amount][] | The amount, in LP Tokens, that the auction slot holder paid to win the auction slot. This affects the price to outbid the current slot holder. |
 | `time_interval`  | Number              | The current 72-minute time interval this auction slot is in, from 0 to 19. The auction slot expires after 24 hours (20 intervals of 72 minutes) and affects the cost to outbid the current holder and how much the current holder is refunded if someone outbids them. |
