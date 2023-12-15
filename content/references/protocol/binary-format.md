@@ -189,6 +189,7 @@ Transaction instructions may contain fields of any of the following types:
 | [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
 | [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
 | [UInt32][]    | 2         | 32         | No                   | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
+| XCHAIN_BRIDGE | 25        | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on the locking chain and issuing chain. `XCHAIN_BRIDGE` is serialized in this order: locking chain door, locking chain issue, issuing chain door, issuing chain issue. |
 
 [Length-prefixed]: #length-prefixing
 
