@@ -1,6 +1,6 @@
 ---
 html: submit-cross-chain-transactions.html
-parent: tutorials.html
+parent: use-xrpl-sidechains.html
 blurb: Steps to submit a cross-chain transaction, using a bridge.
 labels:
   - Interoperability
@@ -114,11 +114,13 @@ main()
 
 ### 6. Submit an `XChainCommit` transaction with the claim ID, using your account on the locking chain.
 
+If you don't specify an "OtherChainDestination", the account that submitted the `XChainCreateClaimID` transaction needs to submit an `XChainClaim` transaction to claim the funds.
+
 ```javascript
   const xchaincommit = await client_lockingchain.submitAndWait({
     "TransactionType": "XChainCommit",
     "Account": wallet_lockingchain.address,
-    "OtherChainDestination": wallet_issuingchain.address, // If this isn't specified, the account that submitted the `XChainCreateClaimID` transaction on the destination chain needs to submit an `XChainClaim` transaction to claim the funds.
+    "OtherChainDestination": wallet_issuingchain.address,
     "Amount": "10000",
     "XChainBridge": xchainbridge,
     "XChainClaimID": claimID

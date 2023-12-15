@@ -1,6 +1,6 @@
 ---
 html: set-up-xrp-xrp-bridge.html
-parent: tutorials.html
+parent: use-xrpl-sidechains.html
 blurb: Steps to create an XRP-XRP bridge with a new sidechain.
 labels:
   - Interoperability

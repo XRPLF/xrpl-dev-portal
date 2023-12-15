@@ -1,6 +1,6 @@
 ---
 html: set-up-iou-iou-bridge.html
-parent: tutorials.html
+parent: use-xrpl-sidechains.html
 blurb: Steps to set up an IOU-IOU bridge.
 labels:
   - Interoperability
@@ -151,7 +151,7 @@ Don't include a `MinAccountCreateAmount` value.
   }, {autofill: true, wallet: wallet_issuingchain})
 ```
 
-7. Disable the master key on the issuing chain's door account with an `AccountSet` transaction.
+### 7. Disable the master key on the issuing chain's door account with an `AccountSet` transaction.
 
 ```javascript
 const disablekey_issuingchain = await client_issuingchain.submitAndWait({

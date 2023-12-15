@@ -2193,6 +2193,28 @@ pages:
             - en
             - ja
 
+# Use XRPL Sidechains ----------------------------------------------------------
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/index.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/use-cross-chain-bridges/set-up-xrp-xrp-bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/use-cross-chain-bridges/set-up-iou-iou-bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/use-cross-chain-bridges/submit-cross-chain-transaction.md
+        targets:
+            - en
+            - ja
+
 # References -------------------------------------------------------------------
 
     -   name: References
