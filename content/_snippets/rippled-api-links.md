@@ -207,6 +207,7 @@
   "DeletableAccounts",
   "DepositAuth",
   "DepositPreauth",
+  "DID",
   "DisallowIncoming",
   "EnforceInvariants",
   "Escrow",
