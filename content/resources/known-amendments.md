@@ -85,7 +85,7 @@ The following is a list of [amendments](../concepts/networks-and-servers/amendme
 | [XChainBridge][]             | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
 | [OwnerPaysFee][]                  | [In Development: TBD]( "BADGE_LIGHTGREY") | |
 
-**Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
+**Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/contribute-code.md).
 
 ## Obsolete Amendments
 
@@ -326,7 +326,7 @@ Examples of invariant checks:
 - The total amount of XRP destroyed by a transaction must match the [transaction cost](../concepts/transactions/transaction-cost.md) exactly.
 - XRP cannot be created.
 - [`AccountRoot` objects in the ledger](../references/protocol/ledger-data/ledger-entry-types/accountroot.md) cannot be deleted unless [DeletableAccounts](#deletableaccounts) is enabled. (See also: [Deleting Accounts](../concepts/accounts/deleting-accounts.md).)
-- [An entry in the ledger](ledger-object-types.html) cannot change its type. (The `LedgerEntryType` field is immutable.)
+- [An entry in the ledger](../references/protocol/ledger-data/ledger-entry-types/index.md) cannot change its type. (The `LedgerEntryType` field is immutable.)
 - There cannot be a trust line for XRP.
 
 
@@ -1049,7 +1049,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 
 Adds native support for [non-fungible tokens](../concepts/tokens/nfts/index.md). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
-**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).
+**Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment](known-amendments.md#nonfungibletokensv1_1).
 
 This amendment adds 5 new transaction types:
 

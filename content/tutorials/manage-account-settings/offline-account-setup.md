@@ -86,7 +86,7 @@ Take note of the following values:
 
 From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](../../concepts/accounts/accounts.md#creating-accounts).
 
-**Tip:** For testing purposes, you can use the [Testnet Faucet](xrp-testnet-faucet.html) to get a new account with Test XRP, then use that account to fund the address you generated offline.
+**Tip:** For testing purposes, you can use the [Testnet Faucet](/resources/dev-tools/xrp-faucets) to get a new account with Test XRP, then use that account to fund the address you generated offline.
 
 
 
@@ -96,7 +96,7 @@ When the transaction from the previous step is validated by consensus, your acco
 
 Take note of the sequence number of the account, in the `Sequence` field of the result's `account_data`. You need to know the sequence number to sign transactions from the account in future steps.
 
-The `Sequence` number of a newly-funded account matches the [ledger index][] when it was funded. Before the [DeletableAccounts amendment](../../resources/known-amendments.md#deletableaccounts), a newly funded account's `Sequence` number was always 1.
+The `Sequence` number of a newly-funded account matches the [ledger index](../../references/protocol/data-types/basic-data-types.md#ledger-index) when it was funded. Before the [DeletableAccounts amendment](../../resources/known-amendments.md#deletableaccounts), a newly funded account's `Sequence` number was always 1.
 
 {% tabs %}
 

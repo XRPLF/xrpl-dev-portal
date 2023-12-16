@@ -45,7 +45,7 @@ rippled ledger_current
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_current)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_current)
 
 The request contains no parameters.
 
@@ -98,10 +98,10 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type                                | Description   |
 |:-----------------------|:------------------------------------|:--------------|
-| `ledger_current_index` | Unsigned Integer - [Ledger Index][] | The ledger index of this ledger version. |
+| `ledger_current_index` | Unsigned Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of this ledger version. |
 
 A `ledger_hash` field is not provided, because the hash of the current ledger is constantly changing along with its contents.
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

@@ -83,7 +83,7 @@ XRP LedgerをスパムやDoS攻撃から守るため、各トランザクショ�
 |-------------|-----------------------|----------------------------|----------------------|---------------------------|
 | Referenceトランザクション（ほとんどのトランザクション） | 10 | 256 | 20 | 512 |
 | 4つの署名を持つ[マルチシグトランザクション](../accounts/multi-signing.md) | 50 | 256 | 100 | 512 |
-| [Key Resetトランザクション](transaction-cost.html#key-resetトランザクション) | 0 | （事実上無限） | なし | （事実上無限） |
+| [Key Resetトランザクション](transaction-cost.md#key-resetトランザクション) | 0 | （事実上無限） | なし | （事実上無限） |
 | 32バイトのプリイメージ付きの[EscrowFinishトランザクション](../../references/protocol/transactions/types/escrowfinish.md)。 | 350 | 256 | 700 | 512 |
 
 
@@ -102,7 +102,7 @@ XRP LedgerをスパムやDoS攻撃から守るため、各トランザクショ�
 
 ### server_state
 
-[server_stateメソッド][]は、`rippled`の内部負荷計算の内容をそのままの表示形式で返します。この場合、有効負荷率は`load_base`に対する`load_factor`の割合です。`validated_ledger.base_fee`パラメーターは、[XRPのdrop](basic-data-types.html#通貨額の指定)単位の最低トランザクションコストをレポートします。この設計により、`rippled`では整数のみでトランザクションコストの計算ができ、サーバー負荷の微調整も十分に行えます。実際のトランザクションコストの計算は以下のようになります。
+[server_stateメソッド][]は、`rippled`の内部負荷計算の内容をそのままの表示形式で返します。この場合、有効負荷率は`load_base`に対する`load_factor`の割合です。`validated_ledger.base_fee`パラメーターは、[XRPのdrop](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)単位の最低トランザクションコストをレポートします。この設計により、`rippled`では整数のみでトランザクションコストの計算ができ、サーバー負荷の微調整も十分に行えます。実際のトランザクションコストの計算は以下のようになります。
 
 **drop単位の現在のトランザクションコスト = (`base_fee` × `load_factor`) ÷ `load_base`**
 

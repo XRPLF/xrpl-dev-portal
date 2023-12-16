@@ -64,7 +64,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#book_offers)
+[Try it! >](/resources/dev-tools/websocket-api-tool#book_offers)
 
 The request includes the following parameters:
 
@@ -72,10 +72,10 @@ The request includes the following parameters:
 |:---------------|:-----------------|:----------|-------------|
 | `taker_gets`   | Object           | Yes       | The asset the account taking the Offer would receive, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 | `taker_pays`   | Object           | Yes       | The asset the account taking the Offer would pay, as a [currency without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | No        | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `limit`        | Number           | No        | The maximum number of Offers to return. The response may include fewer results. |
-| `taker`        | String           | No        | The [Address][] of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.) |
+| `taker`        | String           | No        | The [Address](../../../protocol/data-types/basic-data-types.md#addresses) of an account to use as a perspective. The response includes this account's Offers even if they are unfunded. (You can use this to see what Offers are above or below yours in the order book.) |
 
 
 ## Response Format
@@ -238,9 +238,9 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type             | Description             |
 |:-----------------------|:-----------------|:------------------------|
-| `ledger_current_index` | [Ledger Index][] | _(Omitted if `ledger_current_index` is provided)_ The [ledger index][] of the current in-progress ledger version, which was used to retrieve this information. |
-| `ledger_index`         | [Ledger Index][] | _(Omitted if `ledger_current_index` provided)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
-| `ledger_hash`          | [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data, as requested. |
+| `ledger_current_index` | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_current_index` is provided)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the current in-progress ledger version, which was used to retrieve this information. |
+| `ledger_index`         | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_current_index` provided)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
+| `ledger_hash`          | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data, as requested. |
 | `offers`               | Array            | Array of offer objects, each of which has the fields of an [Offer object](../../../protocol/ledger-data/ledger-entry-types/offer.md) |
 
 In addition to the standard Offer fields, the following fields may be included in members of the `offers` array:
@@ -248,13 +248,13 @@ In addition to the standard Offer fields, the following fields may be included i
 | `Field`             | Type                | Description         |
 |:--------------------|:--------------------|:--------------------|
 | `owner_funds`       | String              | Amount of the `TakerGets` currency the side placing the offer has available to be traded. (XRP is represented as drops; any other currency is represented as a decimal value.) If a trader has multiple offers in the same book, only the highest-ranked offer includes this field. |
-| `taker_gets_funded` | [Currency Amount][] | _(Only included in partially-funded offers)_ The maximum amount of currency that the taker can get, given the funding status of the offer. |
-| `taker_pays_funded` | [Currency Amount][] | _(Only included in partially-funded offers)_ The maximum amount of currency that the taker would pay, given the funding status of the offer. |
+| `taker_gets_funded` | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) | _(Only included in partially-funded offers)_ The maximum amount of currency that the taker can get, given the funding status of the offer. |
+| `taker_pays_funded` | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) | _(Only included in partially-funded offers)_ The maximum amount of currency that the taker would pay, given the funding status of the offer. |
 | `quality`           | String              | The exchange rate, as the ratio `taker_pays` divided by `taker_gets`. For fairness, offers that have the same quality are automatically taken first-in, first-out. (In other words, if multiple people offer to exchange currency at the same rate, the oldest offer is taken first.) |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `srcCurMalformed` - The `taker_pays` field in the request is not formatted properly.

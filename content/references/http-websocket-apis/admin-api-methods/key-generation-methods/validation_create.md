@@ -15,7 +15,7 @@ _The `validation_create` method is an [admin method](../index.md) that cannot be
 
 You can configure your server to use the generated key pair to sign validations (validation key pair) or regular peer-to-peer communications ([node key pair](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair)).
 
-**Tip:** For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).
+**Tip:** For configuring a robust validator, you should use the `validator-keys` tool (included in the `rippled` RPM) to generate validator tokens (which can be rotated) with an offline master key. For more information, see [Validator Setup](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).
 
 
 ### Request Format
@@ -59,7 +59,7 @@ The request includes the following parameters:
 
 | `Field`  | Type   | Description                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or the XRP Ledger's [base58](base58-encodings.html) format. If omitted, generate a random seed. |
+| `secret` | String | _(Optional)_ Use this value as a seed to generate the credentials. The same secret always generates the same credentials. You can provide the seed in [RFC-1751](https://tools.ietf.org/html/rfc1751) format or the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. If omitted, generate a random seed. |
 
 **Note:** The security of your validator depends on the entropy of your seed. Do not use a secret value for real business purposes unless it is generated with a strong source of randomness. Ripple recommends omitting the `secret` when generating new credentials for the first time.
 
@@ -105,10 +105,10 @@ The response follows the [standard format](../../api-conventions/response-format
 | `Field`                 | Type   | Description                               |
 |:------------------------|:-------|:------------------------------------------|
 | `validation_key`        | String | The secret key for these validation credentials, in [RFC-1751](https://tools.ietf.org/html/rfc1751) format. |
-| `validation_public_key` | String | The public key for these validation credentials, in the XRP Ledger's [base58](base58-encodings.html) encoded string format. |
-| `validation_seed`       | String | The secret key for these validation credentials, in the XRP Ledger's [base58](base58-encodings.html) encoded string format. |
+| `validation_public_key` | String | The public key for these validation credentials, in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) encoded string format. |
+| `validation_seed`       | String | The secret key for these validation credentials, in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) encoded string format. |
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.

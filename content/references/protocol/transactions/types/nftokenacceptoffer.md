@@ -13,7 +13,7 @@ The `NFTokenAcceptOffer` transaction is used to accept offers to `buy` or `sell`
 * Allow one offer to be accepted. This is called _direct_ mode.
 * Allow two distinct offers, one offering to buy a given `NFToken` and the other offering to sell the same `NFToken`, to be accepted in an atomic fashion. This is called _brokered_ mode.
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 ## Example NFTokenAcceptOffer JSON
 
@@ -35,7 +35,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungib
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenAcceptOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenAcceptOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909%22%2C%22binary%22%3Afalse%7D)
 
 ## Brokered vs. Direct Mode
 
@@ -77,7 +77,7 @@ The transaction fails with a [`tec`-class code](../transaction-results/tec-codes
 |:-------------------|:--------------------|:------------------|:--------------|
 | `NFTokenSellOffer` | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to sell the `NFToken`. |
 | `NFTokenBuyOffer`  | String              | Hash256           | _(Optional)_ Identifies the `NFTokenOffer` that offers to buy the `NFToken`. |
-| `NFTokenBrokerFee` | [Currency Amount][] | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
+| `NFTokenBrokerFee` | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | _(Optional)_ This field is only valid in brokered mode, and specifies the amount that the broker keeps as part of their fee for bringing the two offers together; the remaining amount is sent to the seller of the `NFToken` being bought. If specified, the fee must be such that, before applying the transfer fee, the amount that the seller would receive is at least as much as the amount indicated in the sell offer. |
 
 In direct mode, you must specify **either** the `NFTokenSellOffer` or the `NFTokenBuyOffer` field. In brokered mode, you must specify **both** fields.
 
@@ -93,7 +93,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code                         | Description                             |
 |:-----------------------------------|:----------------------------------------|
-| `temDISABLED`                      | The [NonFungibleTokensV1 amendment](known-amendments.html#nonfungibletokensv1) is not enabled. |
+| `temDISABLED`                      | The [NonFungibleTokensV1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1) is not enabled. |
 | `temMALFORMED`                     | The transaction was not validly formatted. For example, it specified neither `NFTokenSellOffer` nor `NFTokenBuyOffer`, or it specified a negative `NFTokenBrokerFee`. |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | The buyer and seller are the same account. |
 | `tecEXPIRED`                       | An offer specified in the transaction has already expired. |

@@ -157,7 +157,7 @@ To actually make a trade, send an [OfferCreate transaction](../../references/pro
 | Field | Type | Description |
 |---|---|---|
 | `TakerPays` | [Token Amount object][Currency Amount] | How much of what currency you want to buy, in total. For this tutorial, buy some amount of **TST** issued by `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd`. |
-| `TakerGets` | [XRP, in drops][] | How much of what currency you are offering to pay in total. For this tutorial, you should specify about 11.5 XRP per TST or slightly more. |
+| `TakerGets` | [XRP, in drops](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) | How much of what currency you are offering to pay in total. For this tutorial, you should specify about 11.5 XRP per TST or slightly more. |
 
 The following code shows how to prepare, sign, and submit the transaction:
 

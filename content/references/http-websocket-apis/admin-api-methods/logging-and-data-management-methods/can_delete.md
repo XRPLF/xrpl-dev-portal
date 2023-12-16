@@ -54,7 +54,7 @@ The request accepts the following parameter:
 
 | `Field`      | Type              | Description                               |
 |:-------------|:------------------|:------------------------------------------|
-| `can_delete` | String or Integer | _(Optional)_ The [Ledger Index][] of the maximum ledger version to allow to be deleted. The special case `never` disables online deletion. The special case `always` enables automatic online deletion as if advisory deletion was disabled. The special case `now` allows online deletion one time at the next validated ledger that meets or exceeds the configured `online_delete` value. If omitted, the server makes no changes (but still replies with the current `can_delete` value). |
+| `can_delete` | String or Integer | _(Optional)_ The [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the maximum ledger version to allow to be deleted. The special case `never` disables online deletion. The special case `always` enables automatic online deletion as if advisory deletion was disabled. The special case `now` allows online deletion one time at the next validated ledger that meets or exceeds the configured `online_delete` value. If omitted, the server makes no changes (but still replies with the current `can_delete` value). |
 
 ### Response Format
 
@@ -68,12 +68,12 @@ Use this command with no parameter to query the existing `can_delete` setting.
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - `lgrNotFound` - The ledger specified by the `can_delete` field of the request does not exist, or it does exist but the server does not have it.
 - `notEnabled` - If either online deletion or advisory deletion are not enabled in the server's configuration.
 - `notReady` - The server is not ready to run online deletion at the moment. This usually means the server has recently started up and has not yet acquired a validated ledger.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.
 
 ## See Also
 

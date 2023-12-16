@@ -53,8 +53,8 @@ The request contains the following parameters:
 | `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
 | `ledger_index_min` | Integer                | _(Optional)_ Use to specify the earliest ledger from which to include NFTs. A value of `-1` instructs the server to use the earliest validated ledger version available.  |
 | `ledger_index_max` | Integer                | _(Optional)_ Use to specify the most recent ledger to include NFTs from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
-| `ledger_hash`   | String                      | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_history` API is not available on `rippled`. (See [Specifying Ledgers][]) |
+| `ledger_hash`   | String                      | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_history` API is not available on `rippled`. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
 | `forward`          | Boolean                 | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results might not be internally ordered, but the pages are ordered overall.) |
 | `limit`        | UInt32 | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
@@ -308,8 +308,8 @@ The response follows the [standard format](../../api-conventions/response-format
 | `Field`            | Type                       | Description                |
 |:-------------------|:---------------------------|:---------------------------|
 | `nft_id`           | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index_min` | Integer - [Ledger Index][] | The ledger index of the earliest ledger actually searched for transactions. |
-| `ledger_index_max` | Integer - [Ledger Index][] | The ledger index of the most recent ledger actually searched for transactions. |
+| `ledger_index_min` | Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of the earliest ledger actually searched for transactions. |
+| `ledger_index_max` | Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of the most recent ledger actually searched for transactions. |
 | `limit`            | Integer                    | The `limit` value used in the request. (This may differ from the actual limit value enforced by the server.) |
 | `marker`           | [Marker](../../api-conventions/markers-and-pagination.md)                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 | `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
@@ -321,7 +321,7 @@ Each transaction object includes the following fields, depending on whether it w
 
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | Integer                          | The [ledger index][] of the ledger version that included this transaction. |
+| `ledger_index` | Integer                          | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger version that included this transaction. |
 | `meta`         | Object (JSON) or String (Binary) | If `binary` is True, then this is a hex string of the transaction metadata. Otherwise, the transaction metadata is included in JSON format. |
 | `tx`           | Object                           | (JSON mode only) JSON object defining the transaction |
 | `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |
@@ -331,8 +331,8 @@ For definitions of the fields returned in the `tx` object, see [Transaction Meta
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
+* `actMalformed` - The [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `account` field of the request is not formatted properly.
 * `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
 * `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).

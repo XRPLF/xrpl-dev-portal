@@ -122,7 +122,7 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
 ## See Also
 
 - **Tools:**
-    - [Transaction Sender](tx-sender.html)
+    - [Transaction Sender](/resources/dev-tools/tx-sender)
 - **Concepts:**
     - [Transactions](../transactions/index.md)
 - **Tutorials:**

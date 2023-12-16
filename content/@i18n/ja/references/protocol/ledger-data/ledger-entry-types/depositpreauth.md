@@ -39,12 +39,12 @@ labels:
 | `Flags`             | 数値           | UInt32            |  ブールフラグのビットマップ。DepositPreauthオブジェクトにはフラグが定義されていないため、この値は常に`0`です。 |
 | `OwnerNode`         | 文字列           | UInt64            | 送金元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。**注記:** このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
 | `PreviousTxnID`     | 文字列           | Hash256           | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値           | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `PreviousTxnLgrSeq` | 数値           | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](../../data-types/basic-data-types.md#レジャーインデックス)。 |
 
 
 ## DepositPreauth IDのフォーマット
 
-`DepositPreauth`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](basic-data-types.html#ハッシュ)です。
+`DepositPreauth`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](../../data-types/basic-data-types.md#ハッシュ)です。
 
 * DepositPreauthスペースキー（`0x0070`）
 * このオブジェクトの所有者（このオブジェクトを作成した[DepositPreauthトランザクション][]の送信者、つまり事前承認を付与したユーザー）のAccountID。

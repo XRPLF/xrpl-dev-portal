@@ -36,8 +36,8 @@ For more information, see [Troubleshooting `rippled`](../../troubleshooting/inde
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](xrp-ledger-overview.html)
-    - [The `rippled` Server](xrpl-servers.html)
+    - [XRP Ledger Overview](/about/)
+    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Cluster rippled Servers](../peering/cluster-rippled-servers.md)
     - [Install `rippled`](../../installation/index.md)

@@ -23,7 +23,7 @@ The following JSON object shows the metadata for [a complex cross-currency payme
 
 ## AffectedNodes
 
-The `AffectedNodes` array contains a complete list of the [ledger entries](ledger-object-types.html) that this transaction modified in some way. Each item in this array is an object with one top-level field indicating what happened:
+The `AffectedNodes` array contains a complete list of the [ledger entries](../ledger-data/ledger-entry-types/index.md) that this transaction modified in some way. Each item in this array is an object with one top-level field indicating what happened:
 
 - `CreatedNode` indicates that the transaction created a new ledger entry.
 - `DeletedNode` indicates that the transaction removed a ledger entry
@@ -37,8 +37,8 @@ A `CreatedNode` object contains the following fields:
 
 | Field             | Value             | Description                          |
 |:------------------|:------------------|:-------------------------------------|
-| `LedgerEntryType` | String            | The [type of ledger entry](ledger-object-types.html) that was created. |
-| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
+| `LedgerEntryType` | String            | The [type of ledger entry](../ledger-data/ledger-entry-types/index.md) that was created. |
+| `LedgerIndex`     | String - [Hash](../data-types/basic-data-types.md#hashes) | The [ID of this ledger entry](../ledger-data/common-fields.md) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
 | `NewFields`       | Object            | The content fields of the newly-created ledger entry. Which fields are present depends on what type of ledger entry was created. |
 
 ### DeletedNode Fields
@@ -47,8 +47,8 @@ A `DeletedNode` object contains the following fields:
 
 | Field             | Value             | Description                          |
 |:------------------|:------------------|:-------------------------------------|
-| `LedgerEntryType` | String            | The [type of ledger entry](ledger-object-types.html) that was deleted. |
-| `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
+| `LedgerEntryType` | String            | The [type of ledger entry](../ledger-data/ledger-entry-types/index.md) that was deleted. |
+| `LedgerIndex`     | String - [Hash](../data-types/basic-data-types.md#hashes) | The [ID of this ledger entry](../ledger-data/common-fields.md) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
 | `FinalFields`     | Object            | The content fields of the ledger entry immediately before it was deleted. Which fields are present depends on what type of ledger entry was created. |
 
 ### ModifiedNode Fields
@@ -57,12 +57,12 @@ A `ModifiedNode` object contains the following fields:
 
 | Field               | Value                     | Description                |
 |:--------------------|:--------------------------|:---------------------------|
-| `LedgerEntryType`   | String                    | The [type of ledger entry](ledger-object-types.html) that was modified. |
-| `LedgerIndex`       | String - [Hash][]         | The [ID of this ledger entry](ledger-object-ids.html) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
+| `LedgerEntryType`   | String                    | The [type of ledger entry](../ledger-data/ledger-entry-types/index.md) that was modified. |
+| `LedgerIndex`       | String - [Hash](../data-types/basic-data-types.md#hashes)         | The [ID of this ledger entry](../ledger-data/common-fields.md) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
 | `FinalFields`       | Object                    | The content fields of the ledger entry after applying any changes from this transaction. Which fields are present depends on what type of ledger entry was created. This omits the `PreviousTxnID` and `PreviousTxnLgrSeq` fields, even though most types of ledger entries have them. |
 | `PreviousFields`    | Object                    | The previous values for all fields of the object that were changed as a result of this transaction. If the transaction _only added_ fields to the object, this field is an empty object. |
-| `PreviousTxnID`     | String - [Hash][]         | _(May be omitted)_ The [identifying hash][] of the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnID` field. |
-| `PreviousTxnLgrSeq` | Number - [Ledger Index][] | _(May be omitted)_  The [Ledger Index][] of the ledger version containing the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnLgrSeq` field. |
+| `PreviousTxnID`     | String - [Hash](../data-types/basic-data-types.md#hashes)         | _(May be omitted)_ The [identifying hash](../../../concepts/transactions/index.md#identifying-transactions) of the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnID` field. |
+| `PreviousTxnLgrSeq` | Number - [Ledger Index](../data-types/basic-data-types.md#ledger-index) | _(May be omitted)_  The [Ledger Index](../data-types/basic-data-types.md#ledger-index) of the ledger version containing the previous transaction to modify this ledger entry. Omitted for ledger entry types that do not have a `PreviousTxnLgrSeq` field. |
 
 **Note:** If the modified ledger entry has `PreviousTxnID` and `PreviousTxnLgrSeq` fields, the transaction always updates them with the transaction's own identifying hash and the index of the ledger version that included the transaction, but these fields' new value is not listed in the `FinalFields` of the `ModifiedNode` object, and their previous values are listed at the top level of the `ModifiedNode` object rather than in the nested `PreviousFields` object.
 

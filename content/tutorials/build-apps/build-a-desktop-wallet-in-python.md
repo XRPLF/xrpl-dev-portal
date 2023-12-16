@@ -36,7 +36,7 @@ The exact look and feel of the user interface depend on your computer's operatin
     - If the address doesn't want to receive XRP (**Disallow XRP** flag enabled).
     - If the address has a [verified domain name](../../references/xrp-ledger-toml.md#account-verification) associated with it.
 
-The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or use other [payment types](../../concepts/payment-types/index.md) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
+The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../concepts/tokens/index.md) or use other [payment types](../../concepts/payment-types/index.md) like Escrow or Payment Channels. However, it provides a foundation that you can implement those and other features on top of.
 
 Other topics mentioned in this tutorial include graphical user interface (GUI) programming, threading, and asynchronous (async) code in Python.
 
@@ -249,7 +249,7 @@ Lastly, towards the end of the file, in the `if __name__ == "__main__":` block, 
 
 (If you change the code to connect to a Mainnet server URL, also change this value to `False`.)
 
-To test your wallet app with your own test account, first go to the [Testnet Faucet](xrp-testnet-faucet.html) and **Get Testnet credentials**. Save the address and secret key somewhere, and try your wallet app with either one. Then, to see balance changes, go to the [Transaction Sender](tx-sender.html) and paste your address into the **Destination Address** field. Click **Initialize** and try out some of the transaction types there, and see if the balance displayed by your wallet app updates as you expect.
+To test your wallet app with your own test account, first go to the [Testnet Faucet](/resources/dev-tools/xrp-faucets) and **Get Testnet credentials**. Save the address and secret key somewhere, and try your wallet app with either one. Then, to see balance changes, go to the [Transaction Sender](/resources/dev-tools/tx-sender) and paste your address into the **Destination Address** field. Click **Initialize** and try out some of the transaction types there, and see if the balance displayed by your wallet app updates as you expect.
 
 
 ### 4. Show Account's Transactions
@@ -316,14 +316,14 @@ Lastly, add a similar method to the `TWaXLFrame` to add a single transaction to 
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/py/4_tx_history.py" from="def add_tx_from_sub" before="if __name__" language="py" /%}
 
-As before, you can test your wallet app with your own test account if you use the [Testnet Faucet](xrp-testnet-faucet.html) and the [Transaction Sender](tx-sender.html). On the Faucet page, select **Get Testnet credentials** (or use the same credentials from before). Input either the address or secret when you open your wallet app. On the Transaction Sender page, paste your address into the **Destination Address** field, click **Initialize**, then click various transaction buttons to see how your wallet displays the results.
+As before, you can test your wallet app with your own test account if you use the [Testnet Faucet](/resources/dev-tools/xrp-faucets) and the [Transaction Sender](/resources/dev-tools/tx-sender). On the Faucet page, select **Get Testnet credentials** (or use the same credentials from before). Input either the address or secret when you open your wallet app. On the Transaction Sender page, paste your address into the **Destination Address** field, click **Initialize**, then click various transaction buttons to see how your wallet displays the results.
 
 
 ### 5. Send XRP
 
 **Full code for this step:** {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" %}`5_send_xrp.py`{% /repo-link %}
 
-Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md) because there are more complexities involved in sending [issued tokens](issued-currencies.html).
+Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md) because there are more complexities involved in sending [issued tokens](../../concepts/tokens/index.md).
 
 The main window gets a new "Send XRP" button:
 
@@ -427,7 +427,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
     Save the classic address and seed somewhere.
 
-3. Open your wallet app and provide a **Secret** (seed) value from an already-funded address, such as one you got from the [Testnet Faucet](xrp-testnet-faucet.html).
+3. Open your wallet app and provide a **Secret** (seed) value from an already-funded address, such as one you got from the [Testnet Faucet](/resources/dev-tools/xrp-faucets).
 
 4. Send at least the [base reserve](../../concepts/accounts/reserves.md) (currently 10 XRP) to the brand-new classic address you generated in the Python interpreter.
 
@@ -545,7 +545,7 @@ To test X-addresses, try the following addresses:
 
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
-- You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](issued-currencies.html) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
+- You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](../../concepts/tokens/index.md) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
     - Example code for displaying token balances and other objects: {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" %}`7_owned_objects.py`{% /repo-link %}
 - Allow the user to trade in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.

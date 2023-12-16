@@ -33,8 +33,8 @@ The request can contain the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | [Hash][]                   | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]). |
-| `ledger_index` | [Ledger Index][]           | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)                   | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)). |
+| `ledger_index` | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index)           | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `transactions` | Boolean                    | _(Optional)_ If `true`, return information on transactions in the specified ledger version. Defaults to `false`. Ignored if you did not specify a ledger version. |
 | `expand`       | Boolean                    | _(Optional)_ Provide full JSON-formatted information for transaction/account information instead of only hashes. Defaults to `false`. Ignored unless you request transactions. |
 | `owner_funds`  | Boolean                    | _(Optional)_ If `true`, include `owner_funds` field in the metadata of OfferCreate transactions in the response. Defaults to `false`. Ignored unless transactions are included and `expand` is true. |
@@ -77,19 +77,19 @@ The response follows the [standard format](../../api-conventions/response-format
 | `ledger.account_hash`          | String  | Hash of all account state information in this ledger, as hex |
 | `ledger.accountState`          | Array   | (Omitted unless requested) All the [account-state information](../../../protocol/ledger-data/index.md) in this ledger. |
 | `ledger.close_flags`           | Integer | A bit-map of [flags relating to the closing of this ledger](../../../protocol/ledger-data/ledger-header.md#close-flags). |
-| `ledger.close_time`            | Integer | The time this ledger was closed, in [seconds since the Ripple Epoch][]. |
+| `ledger.close_time`            | Integer | The time this ledger was closed, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time). |
 | `ledger.close_time_human`      | String  | The time this ledger was closed, in human-readable format. Always uses the UTC time zone. |
 | `ledger.close_time_resolution` | Integer | Ledger close times are rounded to within this many seconds. |
 | `ledger.closed`                | Boolean | Whether or not this ledger has been closed. |
 | `ledger.ledger_hash`           | String  | Unique identifying hash of the entire ledger. |
-| `ledger.ledger_index`          | String  | The [Ledger Index][] of this ledger, as a quoted integer. |
+| `ledger.ledger_index`          | String  | The [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) of this ledger, as a quoted integer. |
 | `ledger.parent_close_time`     | Integer | The time at which the previous ledger was closed. |
 | `ledger.parent_hash`           | String  | Unique identifying hash of the ledger that came immediately before this one. |
 | `ledger.total_coins`           | String  | Total number of XRP drops in the network, as a quoted integer. (This decreases as transaction costs destroy XRP.) |
 | `ledger.transaction_hash`      | String  | Hash of the transaction information included in this ledger, as hex. |
-| `ledger.transactions`          | Array   | (Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying [Hash][] strings. If the request specified `expand` as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified `binary` as true. |
+| `ledger.transactions`          | Array   | (Omitted unless requested) Transactions applied in this ledger version. By default, members are the transactions' identifying [Hash](../../../protocol/data-types/basic-data-types.md#hashes) strings. If the request specified `expand` as true, members are full representations of the transactions instead, in either JSON or binary depending on whether the request specified `binary` as true. |
 | `ledger_hash`                  | String  | Unique identifying hash of the entire ledger. |
-| `ledger_index`                 | Number  | The [Ledger Index][] of this ledger. |
+| `ledger_index`                 | Number  | The [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) of this ledger. |
 | `validated`                    | Boolean | _(May be omitted)_ If `true`, this is a validated ledger version. If omitted or set to `false`, this ledger's data is not final. |
 | `diff`                         | Object  | _(Omitted unless requested with the `diff` parameter)_ Object containing an array of hashes that were added, modified, or deleted as part of applying transactions for the ledger. |
 
@@ -113,6 +113,6 @@ If the request specified `"diff": true`, the response has an object `diff`. The 
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

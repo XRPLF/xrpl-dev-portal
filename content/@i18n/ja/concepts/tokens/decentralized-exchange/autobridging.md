@@ -18,6 +18,6 @@ XRP Ledgerの[分散型取引所](index.md)で、XRP以外の2種類の通貨を
 
 - [Dev Blog: Introducing Autobridging](https://xrpl.org/blog/2014/introducing-offer-autobridging.html)
 
-- [オファーの優先度](offers.html#オファーの優先度)
+- [オファーの優先度](offers.md#オファーの優先度)
 
 - [ペイメントパス](../fungible-tokens/paths.md)

@@ -68,7 +68,7 @@ Normally, a `rippled` server attempts to maintain a healthy number of peers, and
 In the following cases, a `rippled` server does not connect to untrusted peers:
 
 - If the server is configured as a [private peer](#private-peers), it connects _only_ to its fixed peers.
-- If the server is running in [stand-alone mode][] it does not connect to _any_ peers.
+- If the server is running in [stand-alone mode](rippled-server-modes.md#stand-alone-mode) it does not connect to _any_ peers.
 
 
 ## Private Peers

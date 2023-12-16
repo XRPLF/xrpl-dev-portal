@@ -42,9 +42,9 @@ labels:
 
     全履歴が記録されるサーバーでは、レジャーストアーにNuDBを使用します。これは、データベースがこれほど大きいと、RocksDBでは非常に大量のRAMが必要になるためです。詳細は、[容量の計画](../../installation/capacity-planning.md)を参照してください。パフォーマンス関連の構成オプション`open_files`、`filter_bits`、`cache_mb`、`file_size_mb`、および`file_size_mult`は、RocksDBのみに適用されるオプションであるため、デフォルトの`[node_db]`スタンザから削除できます。
 
-    **注意:** RocksDBで履歴をすでにダウンロードしている場合は、NuDBへ切り替えるときに構成ファイルでデータベースのパスを変更するか、またはそのデータを削除する必要があります。`[node_db]`スタンザの`path`設定**および**`[database_path]`（SQLiteデータベース）設定の両方を変更する必要があります。このようにしないと、サーバーの[起動が失敗する](server-wont-start.html#状態dbエラー)可能性があります。
+    **注意:** RocksDBで履歴をすでにダウンロードしている場合は、NuDBへ切り替えるときに構成ファイルでデータベースのパスを変更するか、またはそのデータを削除する必要があります。`[node_db]`スタンザの`path`設定**および**`[database_path]`（SQLiteデータベース）設定の両方を変更する必要があります。このようにしないと、サーバーの[起動が失敗する](../../troubleshooting/server-wont-start.md#状態dbエラー)可能性があります。
 
-    {% partial file="/_snippets/conf-file-location.ja.md" /%}
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 0. サーバーの構成ファイルで`[ledger_history]`スタンザを`full`に設定します。
 
@@ -85,7 +85,7 @@ labels:
 
 0. `rippled`サーバーを起動し、インポート可能なデータベースダンプがある場合にはインポートします。
 
-    `[Import_db]`で構成されている読み取り対象データベースダンプがある場合は、`--import` [コマンドラインオプション](commandline-usage.html#デーモンモードのオプション)を指定してサーバーを明示的に起動します。
+    `[Import_db]`で構成されている読み取り対象データベースダンプがある場合は、`--import` [コマンドラインオプション](../../commandline-usage.md#デーモンモードのオプション)を指定してサーバーを明示的に起動します。
 
     ```
     $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/rippled.cfg --import

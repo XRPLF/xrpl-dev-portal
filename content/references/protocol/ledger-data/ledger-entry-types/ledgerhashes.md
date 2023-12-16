@@ -47,7 +47,7 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 |:----------------------|:-----------------|:------------------|:----------|:------------|
 | `FirstLedgerSequence` | Number           | UInt32            | No        | **DEPRECATED** Do not use. (The "recent hashes" object on Mainnet has the value `2` in this field as a result of an old software bug. That value gets carried forward as the "recent hashes" object is updated. New "previous history" objects do not have this field, nor do "recent hashes" objects in [parallel networks](../../../../concepts/networks-and-servers/parallel-networks.md) started with more recent versions of `rippled`.) |
 | `Hashes`              | Array of Strings | Vector256         | Yes       | An array of up to 256 ledger hashes. The contents depend on which sub-type of `LedgerHashes` object this is. |
-| `LastLedgerSequence`  | Number           | UInt32            | No        | The [Ledger Index][] of the last entry in this object's `Hashes` array. |
+| `LastLedgerSequence`  | Number           | UInt32            | No        | The [Ledger Index](../../data-types/basic-data-types.md#ledger-index) of the last entry in this object's `Hashes` array. |
 | `LedgerEntryType`     | String           | UInt16            | Yes       | The value `0x0068`, mapped to the string `LedgerHashes`, indicates that this object is a list of ledger hashes. |
 
 
@@ -77,11 +77,11 @@ There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
 There are two formats for `LedgerHashes` object IDs, depending on whether the object is a "recent history" sub-type or a "previous history" sub-type.
 
-The **"recent history"** `LedgerHashes` object has an ID that is the [SHA-512Half][] of the `LedgerHashes` space key (`0x0073`). In other words, the "recent history" always has the ID `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`.
+The **"recent history"** `LedgerHashes` object has an ID that is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the `LedgerHashes` space key (`0x0073`). In other words, the "recent history" always has the ID `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`.
 
-The **"previous history"** `LedgerHashes` objects have an ID that is the [SHA-512Half][] of the following values, concatenated in order:
+The **"previous history"** `LedgerHashes` objects have an ID that is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 - The `LedgerHashes` space key (`0x0073`)
-- The 32-bit [Ledger Index][] of a flag ledger in the object's `Hashes` array, divided by 65536.
+- The 32-bit [Ledger Index](../../data-types/basic-data-types.md#ledger-index) of a flag ledger in the object's `Hashes` array, divided by 65536.
 
     **Tip:** Dividing by 65536 keeps the most significant 16 bits, which are the same for all the flag ledgers listed in a "previous history" object, and only those ledgers. You can use this fact to look up the `LedgerHashes` object that contains the hash of any flag ledger.

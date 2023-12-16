@@ -7,7 +7,7 @@ labels:
 ---
 # アドレス
 
-{% partial file="/_snippets/data_types/address.ja.md" /%}
+{% partial file="/_snippets/data_types/address.md" /%}
 
 有効なアドレスであれば、資金を入金することで[XRP Ledgerのアカウントになる](accounts.html#creating-accounts)ことができます。また、[レギュラーキー](cryptographic-keys.md)や[署名者リスト](multi-signing.md)のメンバーとして、資金提供されていないアドレスを使用することもできます。資金を供給されたアカウントだけがトランザクションの送信者になることができます。
 
@@ -20,11 +20,11 @@ XRP Ledgerでは、特別な意味や歴史的な役割を持つアドレスが�
 
 | アドレス                       | 名称 | 意味 | ブラック ホール? |
 |-------------------------------|-----|-----|----------------|
-| `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | 値0を[base58](base58-encodings.html)形式にエンコードしたXRP Ledgerのアドレス。ピアツーピア通信では、このアドレスは、XRPの発行者として`rippled`で使用されます。 | はい |
-| `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | 値1を[base58](base58-encodings.html)形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleStateエントリー](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
+| `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | 値0を[base58](../../references/protocol/data-types/base58-encodings.md)形式にエンコードしたXRP Ledgerのアドレス。ピアツーピア通信では、このアドレスは、XRPの発行者として`rippled`で使用されます。 | はい |
+| `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | 値1を[base58](../../references/protocol/data-types/base58-encodings.md)形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleStateエントリー](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
 | `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | ジェネシスアカウント | `rippled`で(スタンドアロンモードなど)新しいジェネシスレジャーが一から開始される場合、このアカウントはすべてのXRPを保持します。このアドレスは、シード値`masterpassphrase`から生成されており、この値は[ハードコーディング](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | Ripple Namesの登録用ブラックホール | 以前、Ripple社は、Ripple Namesを登録するために、このアカウントにXRPを送金するようユーザに求めていました。| はい |
-| `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/XRPLF/xrpl.js)では、XRP Ledgerの[base58](base58-encodings.html)文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
+| `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/XRPLF/xrpl.js)では、XRP Ledgerの[base58](../../references/protocol/data-types/base58-encodings.md)文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
 
 
 ## アドレスのエンコード
@@ -33,13 +33,13 @@ XRP Ledgerでは、特別な意味や歴史的な役割を持つアドレスが�
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "ソース")
 
-XRP Ledgerのアドレスは、[base58](base58-encodings.html)形式の _ディクショナリ_ `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイプ接頭辞」（「バージョン接頭辞」とも呼ばれます）を付けます。タイプ接頭辞によりアドレスは通常、base58形式の異なる文字で始まります。
+XRP Ledgerのアドレスは、[base58](../../references/protocol/data-types/base58-encodings.md)形式の _ディクショナリ_ `rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`を使用してエンコードされています。XRP Ledgerはbase58でいくつかのタイプのキーをエンコードするため、それらを区別するためにエンコードされたデータの前に1バイトの「タイプ接頭辞」（「バージョン接頭辞」とも呼ばれます）を付けます。タイプ接頭辞によりアドレスは通常、base58形式の異なる文字で始まります。
 
 次の図は、キーとアドレスの関係を示しています
 
 [{% inline-svg file="/img/address-encoding.ja.svg" /%}](/img/address-encoding.ja.svg "マスター公開鍵 + タイプ接頭辞 → アカウントID + チェックサム → アドレス")
 
-公開鍵からXRP Ledgerアドレスを計算する式は次の通りです。完全なサンプルコードついては、[`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js)をご覧ください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.html#鍵導出)をご覧ください。
+公開鍵からXRP Ledgerアドレスを計算する式は次の通りです。完全なサンプルコードついては、[`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js)をご覧ください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.md#鍵導出)をご覧ください。
 
 1. 次の必須アルゴリズムをインポートします。SHA-256、RIPEMD160、base58。base58のディクショナリを設定します。
 

@@ -10,7 +10,7 @@ top_nav_name: UNLに参加しよう
 ---
 # バリデータとしてのrippledの実行
 
-[バリデータモード](../../../concepts/networks-and-servers/rippled-server-modes.md)で実行されている[`rippled`サーバー](xrpl-servers.html)は、ストックサーバーが実行するあらゆる処理を実行します。
+[バリデータモード](../../../concepts/networks-and-servers/rippled-server-modes.md)で実行されている[`rippled`サーバー](../../../concepts/networks-and-servers/index.md)は、ストックサーバーが実行するあらゆる処理を実行します。
 
 - [ピアのネットワーク](../../../concepts/networks-and-servers/peer-protocol.md)への接続
 
@@ -18,7 +18,7 @@ top_nav_name: UNLに参加しよう
 
 - 完全な共有グローバル[レジャー](../../../concepts/ledgers/index.md)のローカルコピーの維持
 
-バリデータが _特異である_ のは、検証メッセージも発行するという点です。これらのメッセージは、[コンセンサスプロセス](consensus-principles-and-rules.html#コンセンサスの仕組み)の進行中、XRP Ledgerネットワークによる評価の対象となる候補のトランザクションです。
+バリデータが _特異である_ のは、検証メッセージも発行するという点です。これらのメッセージは、[コンセンサスプロセス](../../../concepts/consensus-protocol/consensus-principles-and-rules.md#コンセンサスの仕組み)の進行中、XRP Ledgerネットワークによる評価の対象となる候補のトランザクションです。
 
 ただし、単に検証メッセージを発行するだけで、バリデータにコンセンサスプロセスでの発言権が自動的に付与されるわけではありません。他のサーバーがバリデータ（モードのサーバー）を彼らのユニークノードリスト（UNL）に追加しない限り、彼らは（バリデータモードのサーバーからの）検証メッセージを無視します。バリデータがUNLに含まれている場合、 _信頼できる_ バリデータであり、その提案は、信頼する側のサーバーによってコンセンサスプロセスで検討されます。
 
@@ -154,12 +154,12 @@ top_nav_name: UNLに参加しよう
 
 - [公開ハブ](#公開ハブを使用した接続): 評価の高い特定の公開サーバーにのみ接続します。
 
-これらのアプローチの違いについては、[ピア接続設定のメリットとデメリット](peer-protocol.html#ピア接続設定のメリットとデメリット)を参照してください。
+これらのアプローチの違いについては、[ピア接続設定のメリットとデメリット](../../../concepts/networks-and-servers/peer-protocol.md#ピア接続設定のメリットとデメリット)を参照してください。
 
 
 ### 検出されたピアを使用した接続
 
-この構成では、[検出されたピア](peer-protocol.html#ピアの検出)を使用してバリデータをXRP Ledgerネットワークに接続します。これは`rippled`サーバーのデフォルトの動作です。
+この構成では、[検出されたピア](../../../concepts/networks-and-servers/peer-protocol.md#ピアの検出)を使用してバリデータをXRP Ledgerネットワークに接続します。これは`rippled`サーバーのデフォルトの動作です。
 
 _**検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、**_ バリデータの`rippled.cfg`ファイルで`[peer_private]`スタンザを省略するか、それを`0`に設定します。この構成の[サンプルのrippled.cfgファイル](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)が提供されています。
 
@@ -174,7 +174,7 @@ _**プロキシを使用してバリデータをXRP Ledgerネットワークに�
 
 2. バリデータとストック`rippled`サーバーを設定して、[クラスター](../peering/cluster-rippled-servers.md)内で実行します。
 
-3. バリデータの`rippled.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](peer-protocol.html#プライベートピア)を参照してください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバー以外のサーバーに、バリデータが接続しないようになります。
+3. バリデータの`rippled.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)を参照してください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバー以外のサーバーに、バリデータが接続しないようになります。
 
    **警告:** バリデータのIPアドレスを、その他の方法で公開していないことを確認してください。
 
@@ -201,7 +201,7 @@ _**プロキシを使用してバリデータをXRP Ledgerネットワークに�
 
 ### 公開ハブを使用した接続
 
-この構成では、2つの[公開ハブ](rippled-server-modes.html#公開ハブ)を使用してバリデータをネットワークに接続します。この構成は、[自社で運用しているプロキシを使用した接続](#プロキシを使用した接続)と似ていますが、公開ハブを通じて接続します。
+この構成では、2つの[公開ハブ](../../../concepts/networks-and-servers/rippled-server-modes.md#公開ハブ)を使用してバリデータをネットワークに接続します。この構成は、[自社で運用しているプロキシを使用した接続](#プロキシを使用した接続)と似ていますが、公開ハブを通じて接続します。
 
 _**公開ハブを使用してバリデータをネットワークに接続するには、次の手順を実行します。**_
 
@@ -254,7 +254,7 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 - [`server_info`](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)コマンドを使用して、バリデータに関するいくつかの基本情報を取得します。`server_state`は、`proposing`に設定されているはずです。`full`または`validating`に設定されている場合もありますが、`proposing`に移行するまでの数分間に限られます。
 
-  `server_state`が`proposing`に設定されている時間が大部分を占めていない場合、XRP Ledgerネットワークにバリデータが完全に参加できていないことを示している可能性があります。サーバーの状態および`server_info`エンドポイントを使用してバリデータの問題を診断する方法の詳細は、[`rippled`サーバーの状態](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md)および[`server_info`の取得](diagnosing-problems.html#server_infoの取得)を参照してください。
+  `server_state`が`proposing`に設定されている時間が大部分を占めていない場合、XRP Ledgerネットワークにバリデータが完全に参加できていないことを示している可能性があります。サーバーの状態および`server_info`エンドポイントを使用してバリデータの問題を診断する方法の詳細は、[`rippled`サーバーの状態](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md)および[`server_info`の取得](../../troubleshooting/diagnosing-problems.md#server_infoの取得)を参照してください。
 
 - [`validators`](../../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md)コマンドを使用して、バリデータによって使用される、公開済みかつ信頼できるバリデータの最新リストを取得します。`validator_list_expires`の値が、`never`（無期限）、期限が切れていない、または期限切れ間近のいずれかであることを確認してください。
 
@@ -326,8 +326,8 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 ## 関連項目
 
 - **コンセプト:**
-  - [XRP Ledgerの概要](xrp-ledger-overview.html)
-  - [`rippled`サーバー](xrpl-servers.html)
+  - [XRP Ledgerの概要](/about/)
+  - [`rippled`サーバー](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
   - [rippledサーバーのクラスター化](../peering/cluster-rippled-servers.md)
   - [`rippled`のインストール](../../installation/index.md)

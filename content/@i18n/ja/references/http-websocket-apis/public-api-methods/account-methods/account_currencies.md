@@ -44,7 +44,7 @@ labels:
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html#account_currencies)
+[試してみる>](/resources/dev-tools/websocket-api-tool#account_currencies)
 
 要求には以下のパラメーターが含まれます。
 
@@ -52,8 +52,8 @@ labels:
 |:---------------|:---------------------------|:-------------------------------|
 | `account`      | 文字列                     | このアカウントが送受信できる通貨を検索します。[更新: rippled 1.11.0](https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE") |
 | `strict`       | ブール値                    | _（省略可）_ trueの場合は、アカウントパラメーターにアドレスまたは公開鍵だけを受け入れます。デフォルトではfalseです。 |
-| `ledger_hash`  | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用する[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください） |
+| `ledger_hash`  | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用する[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください） |
 
 次のフィールドは廃止予定であるため、指定しないでください。`account_index`.
 
@@ -139,17 +139,17 @@ labels:
 
 | `Field`              | 型                       | 説明              |
 |:---------------------|:---------------------------|:-------------------------|
-| `ledger_hash`        | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ)          | （省略される場合があります）このデータの取得に使用するレジャーバージョンの識別用ハッシュ（16進数）。 |
-| `ledger_index`       | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | このデータの取得に使用するレジャーバージョンのシーケンス番号。 |
-| `receive_currencies` | 文字列の配列           | このアカウントが受領できる通貨の[通貨コード](currency-formats.html#通貨コード)の配列。 |
-| `send_currencies`    | 文字列の配列           | このアカウントが送金できる通貨の[通貨コード](currency-formats.html#通貨コード)の配列。 |
+| `ledger_hash`        | 文字列 - [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)          | （省略される場合があります）このデータの取得に使用するレジャーバージョンの識別用ハッシュ（16進数）。 |
+| `ledger_index`       | 整数 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | このデータの取得に使用するレジャーバージョンのシーケンス番号。 |
+| `receive_currencies` | 文字列の配列           | このアカウントが受領できる通貨の[通貨コード](../../../protocol/data-types/currency-formats.md#通貨コード)の配列。 |
+| `send_currencies`    | 文字列の配列           | このアカウントが送金できる通貨の[通貨コード](../../../protocol/data-types/currency-formats.md#通貨コード)の配列。 |
 | `validated`          | ブール値                    | `true`の場合、このデータは検証済みレジャーから取得されます。 |
 
 **注記:** アカウントが送金または受領できる通貨は、アカウントのトラストラインのチェックに基づいて定義されます。アカウントに通貨のトラストラインがあり、残高を増額できる余裕がある場合、その通貨を受領できます。トラストラインの残高を減らせる場合、アカウントはその通貨を送金できます。このメソッドでは、トラストラインが[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)または承認されているかどうかは確認 _されません_ 。
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - 要求の`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

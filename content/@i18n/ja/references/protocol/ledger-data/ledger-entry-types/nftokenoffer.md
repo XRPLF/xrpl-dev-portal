@@ -9,7 +9,7 @@ labels:
 
 `lsfTransferable`フラグが設定されているトークンは、オファーを使って参加者間で転送することができます。`NFTokenOffer`オブジェクトは`NFToken`オブジェクトの購入、売却、または譲渡のオファーを表します。`NFToken`の所有者は`NFTokenCreateOffer`を使用して売買を行うことができます。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました)_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -33,7 +33,7 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 
 | 名前                | JSONの型     | [内部の型](../../binary-format.md)        | 必須？ | 説明        |
 |:--------------------|:------------|:------------------|:------|:-----------|
-| `Amount`            | [通貨額](basic-data-types.html#通貨額の指定)   | AMOUNT            | はい   | NFTokenに対して見込まれる、または提示される金額です。トークンに`lsfOnlyXRP`フラグが設定されている場合、金額はXRPで指定する必要があります。XRP以外の資産を指定する売却オファーは、0以外の金額を指定する必要があります。XRPを指定する売却オファーは、`無料`にすることができます（つまり、このフィールドは`"0"`とすることができます）。 |
+| `Amount`            | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)   | AMOUNT            | はい   | NFTokenに対して見込まれる、または提示される金額です。トークンに`lsfOnlyXRP`フラグが設定されている場合、金額はXRPで指定する必要があります。XRP以外の資産を指定する売却オファーは、0以外の金額を指定する必要があります。XRPを指定する売却オファーは、`無料`にすることができます（つまり、このフィールドは`"0"`とすることができます）。 |
 | `Destination`       | 文字列       | AccountID         | いいえ | このオファーの対象となるAccountID。存在する場合、そのアカウントのみがオファーを受け入れることができます。 |
 | `Expiration`        | 数値         | UInt32            | いいえ | オファーが有効でなくなる時刻。値は、リップルエポックからの秒数です。 |
 | `Flags`             | 数値         | UInt32            | はい   | このオブジェクトに関連付けられたフラグのセットで、様々なオプションや設定を指定するために使用されます。フラグは、以下の表に示すとおりです。 |

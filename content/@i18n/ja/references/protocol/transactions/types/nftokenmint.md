@@ -10,7 +10,7 @@ labels:
 
 `NFTokenMint`トランザクションは非代替性トークンを作成し、`NFTokenMinter`に紐付く[NFTokenPageオブジェクト][]に[NFToken](../../data-types/nftoken.md)オブジェクトとして追加します。このトランザクションは`NFTokenMinter`にとって、不変と定義されているトークンフィールド(例えば`Flags`)を設定することができる唯一の方法です。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました)_
 
 
 ## {% $frontmatter.seo.title %} JSONの例
@@ -37,9 +37,9 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 }
 ```
 
-[トランザクションを取得してみる >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
+[トランザクションを取得してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型            | [内部の型](../../binary-format.md)        | 説明               |
 |:--------------|:--------------------|:------------------|:-------------------|
@@ -52,7 +52,7 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 
 ## NFTokenMintのフラグ
 
-NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)に追加の値を設定することが可能です。
+NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](../common-fields.md#flagsフィールド)に追加の値を設定することが可能です。
 
 | フラグ名       | 16進数値      | 整数値          | 説明                          |
 |:--------------|:-------------|:--------------|:------------------------------|
@@ -64,7 +64,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 
 ## 追加情報の埋め込み
 
-発行時に追加情報を指定する必要がある場合(たとえば、特定の[区画](https://en.wikipedia.org/wiki/Plat)を参照して不動産を特定できる詳細情報、[車両識別番号](https://ja.wikipedia.org/wiki/%E8%BB%8A%E4%B8%A1%E8%AD%98%E5%88%A5%E7%95%AA%E5%8F%B7)を指定して車両を特定できる詳細情報、その他オブジェクト固有の説明)、[取引メモ](transaction-common-fields.html#memosフィールド)を使用することができます。メモは署名された取引の一部であり、履歴アーカイブから入手できますが、レジャーの状態データには保存されません。
+発行時に追加情報を指定する必要がある場合(たとえば、特定の[区画](https://en.wikipedia.org/wiki/Plat)を参照して不動産を特定できる詳細情報、[車両識別番号](https://ja.wikipedia.org/wiki/%E8%BB%8A%E4%B8%A1%E8%AD%98%E5%88%A5%E7%95%AA%E5%8F%B7)を指定して車両を特定できる詳細情報、その他オブジェクト固有の説明)、[取引メモ](../common-fields.md#memosフィールド)を使用することができます。メモは署名された取引の一部であり、履歴アーカイブから入手できますが、レジャーの状態データには保存されません。
 
 ## 他のアカウントの代わりとして発行する
 
@@ -108,7 +108,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 |:------------------------------|:---------------------------------------------|
 | `temDISABLED`                 | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
 | `temBAD_NFTOKEN_TRANSFER_FEE` | `TransferFee`が許容範囲外です。 |
-| `temINVALID_FLAG`             | `Flags`値には、許可されていない、または有効なフラグでないビットが有効になっています。[fixRemoveNFTokenAutoTrustLine amendment][]が有効になっている場合、`tfTrustLine`フラグはこのエラーを発生させます。|
+| `temINVALID_FLAG`             | `Flags`値には、許可されていない、または有効なフラグでないビットが有効になっています。[fixRemoveNFTokenAutoTrustLine amendment](../../../../resources/known-amendments.md#fixremovenftokenautotrustline)が有効になっている場合、`tfTrustLine`フラグはこのエラーを発生させます。|
 | `temMALFORMED`                | トランザクションが正しく指定されていません。例えば、`URI`フィールドが256バイトより長い場合です。 |
 | `tecNO_ISSUER`                | `Issuer`は、レジャーに存在しないアカウントを指定しています。 |
 | `tecNO_PERMISSION`            | `Issuer`フィールドで参照されるアカウントは、このトランザクションの送信者（`NFTokenMinter`設定を使用）が自身の代わりに発行することを承認していません。 |

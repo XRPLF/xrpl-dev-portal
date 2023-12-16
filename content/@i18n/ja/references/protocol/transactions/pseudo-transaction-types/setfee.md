@@ -36,4 +36,4 @@ labels:
 | ReserveIncrement | 符号なし整数 | UInt32 | 増分準備金（drop数） |
 | LedgerSequence | 数値 | UInt32 | _（過去に発生した`SetFee`疑似トランザクションの場合は省略）_ この擬似トランザクションが表示されるレジャーバージョンのインデックス。これにより、この疑似トランザクションと別途発生する同様の変更が区別されます。 |
 
-{% partial file="/_snippets/setfee_uniqueness_note.ja.md" /%}
+{% partial file="/_snippets/setfee_uniqueness_note.md" /%}

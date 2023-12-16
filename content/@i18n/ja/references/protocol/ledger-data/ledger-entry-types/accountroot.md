@@ -39,8 +39,8 @@ labels:
 | フィールド                      | JSONの型 | [内部の型](../../binary-format.md)        | 必須？ | 説明  |
 |:------------------------------|:---------|:------------------|:------|:------|
 | `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](../../../../concepts/accounts/accounts.md)を識別するための（クラシック）アドレスです。 |
-| `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](../../transactions/common-fields.md#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](accountset.html#accountsetのフラグ)を送信してください。 |
-| `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment][] :not_enabled:が必要です。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
+| `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](../../transactions/common-fields.md#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](../../transactions/types/accountset.md#accountsetのフラグ)を送信してください。 |
+| `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |
 | `BurnedNFTokens`              | 数値      | UInt32            | いいえ | このアカウントで発行された [非代替性トークン](../../../../concepts/tokens/nfts/index.md) のうち、バーンしたトークンの総数を表します。この数値は常に `MintedNFTokens` と同じかそれ以下となります。 |
 | `Domain`                      | 文字列    | VariableLength    | いいえ | このアカウントに関連付けられたドメイン。JSONでは、ドメインのASCII表現を16進数で表現します。[256バイトを超える長さは使用できません](https://github.com/xrplf/rippled/blob/55dc7a252e08a0b02cd5aa39e9b4777af3eafe77/src/ripple/app/tx/impl/SetAccount.h#L34) |
@@ -52,10 +52,10 @@ labels:
 | `NFTokenMinter`               | 文字列    | AccountID         | いいえ | このアカウントに代わって[非代替性トークン](../../../../concepts/tokens/nfts/index.md)をミントできる別のアカウントを表します。 |
 | `OwnerCount`                  | 数値      | UInt32            | はい   | レジャーでこのアカウントが所有しており、アカウント所有者の準備金に資金を付与するオブジェクトの数。 |
 | `PreviousTxnID`               | 文字列    | Hash256           | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq`           | 数値      | UInt32            | はい   | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `PreviousTxnLgrSeq`           | 数値      | UInt32            | はい   | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス](../../data-types/basic-data-types.md#レジャーインデックス)。 |
 | `RegularKey`                  | 文字列    | AccountID         | いいえ |  このアカウントのトランザクションに署名するときにマスターキーの代わりに使用できる[キーペア](../../../../concepts/accounts/cryptographic-keys.md)のアドレス。この値を変更するには[SetRegularKeyトランザクション][]を使用してください。 |
-| `Sequence`                    | 数値      | UInt32            | はい   | このアカウントの有効な次のトランザクションの[シーケンス番号](basic-data-types.html#アカウントシーケンス) を表します。 |
-| `TicketCount`                 | 数値      | UInt32            | いいえ | このアカウントが台帳に保有する[チケット](../../../../concepts/accounts/tickets.md)の数です。これは、アカウントが一度に250 チケットという上限以内に留まることを保証するために自動的に更新されます。このフィールドは、チケットの数がゼロの場合は省略されます。 _([TicketBatch amendment][]により追加されました)_ |
+| `Sequence`                    | 数値      | UInt32            | はい   | このアカウントの有効な次のトランザクションの[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス) を表します。 |
+| `TicketCount`                 | 数値      | UInt32            | いいえ | このアカウントが台帳に保有する[チケット](../../../../concepts/accounts/tickets.md)の数です。これは、アカウントが一度に250 チケットという上限以内に留まることを保証するために自動的に更新されます。このフィールドは、チケットの数がゼロの場合は省略されます。 _([TicketBatch amendment](../../../../resources/known-amendments.md#ticketbatch)により追加されました)_ |
 | `TickSize`                    | 数値      | UInt8             | いいえ | このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]により追加されました。）_ |
 | `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザーが相互に送金する際に、これらのユーザーに請求する[送金手数料](../../../../concepts/tokens/transfer-fees.md)。 |
 | `WalletLocator`               | 文字列    | Hash256           | いいえ | ユーザーが設定できる任意の256bit値。 |
@@ -63,7 +63,7 @@ labels:
 
 ## AMMの特殊なAccountRootエントリ
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)は、AMMの詳細の一部を追跡するための[AMMレジャーエントリ](amm.md)に加えて、LPトークンを発行しAMMプール内の資産を保持するためにAccountRootレジャーエントリを使用します。AMMに関連するAccountRootのアドレスは、AMMが作成される前にユーザがそのアドレスを特定し資金を提供できないように、ランダム化されています。AMMのAccountRootは、通常のアカウントとは異なり、以下のような設定で作成されます。
 
@@ -86,11 +86,11 @@ AccountRootフラグの多くは、[AccountSetトランザクション][]で変�
 
 AccountRootオブジェクトは`Flags`フィールドに以下のフラグを指定できます。
 
-| フラグ名                           | 16進数値       | 10進数値 | 対応する[AccountSetのフラグ](accountset.html#accountsetのフラグ) | 説明 |
+| フラグ名                           | 16進数値       | 10進数値 | 対応する[AccountSetのフラグ](../../transactions/types/accountset.md#accountsetのフラグ) | 説明 |
 |-----------------------------------|--------------|----------|-------------------------------------|-------------------------------|
 | `lsfAllowTrustLineClawback`       | `0x80000000` | 2147483648 | `asfAllowTrustLineClawback`       | このアカウントの[Clawback](../../../../concepts/tokens/fungible-tokens/clawing-back-tokens.md)を有効にします。 _([Clawback Amendment][]が必要です。)_ |
 | `lsfDefaultRipple`                | `0x00800000` | 8388608    | `asfDefaultRipple`                | このアドレスのトラストラインでデフォルトで[rippling](../../../../concepts/tokens/fungible-tokens/rippling.md)を有効にします。発行アドレスに必要です。他のアドレスでの使用は推奨されません。 |
-| `lsfDepositAuth`                  | `0x01000000` | 16777216   | `asfDepositAuth`                  | このアカウントは、アカウントが送信するトランザクションと、[事前承認された](depositauth.html#事前承認)アカウントからの資金だけを受領します。（[DepositAuth](../../../../concepts/accounts/depositauth.md)が有効になっています。） |
+| `lsfDepositAuth`                  | `0x01000000` | 16777216   | `asfDepositAuth`                  | このアカウントは、アカウントが送信するトランザクションと、[事前承認された](../../../../concepts/accounts/depositauth.md#事前承認)アカウントからの資金だけを受領します。（[DepositAuth](../../../../concepts/accounts/depositauth.md)が有効になっています。） |
 | `lsfDisableMaster`                | `0x00100000` | 1048576    | `asfDisableMaster`                | このアカウントのトランザクションの署名にマスターキーを使用することを禁止します。 |
 | `lsfDisallowIncomingCheck`        | `0x08000000` | 134217728  | `asfDisallowIncomingCheck`        | このアカウントを宛先とするチェックの作成をブロックします。 _([DisallowIncoming Amendment][]により追加されました。)_ |
 | `lsfDisallowIncomingNFTokenOffer` | `0x04000000` | 67108864   | `asfDisallowIncomingNFTokenOffer` | このアカウントを宛先とするNFTokenオファーの作成をブロックします。 _([DisallowIncoming Amendment][]により追加されました。)_ |
@@ -111,7 +111,7 @@ AccountRootエントリの[準備金](../../../../concepts/accounts/reserves.md)
 
 ## AccountRoot IDのフォーマット
 
-AccountRootエントリのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](basic-data-types.html#ハッシュ)です。
+AccountRootエントリのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ](../../data-types/basic-data-types.md#ハッシュ)です。
 
 * Accountスペースキー（`0x0061`）
 * アカウントのAccountID

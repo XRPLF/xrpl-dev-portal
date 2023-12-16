@@ -54,7 +54,7 @@ The usage rate drops off exponentially over time, so a client that does not make
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
     - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
     - [Getting Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)

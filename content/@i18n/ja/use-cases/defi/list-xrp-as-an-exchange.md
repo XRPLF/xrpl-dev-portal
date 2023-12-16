@@ -55,7 +55,7 @@ XRPをサポートするために、Alpha Exchangeでは以下を行う必要が
 
 #### Partial Paymentsに関する警告
 
-[tfPartialPaymentフラグ](payment.html#paymentのフラグ)が有効にされると、`Amount`フィールド **_は受取り金額とは同じでなくなることがあります_** 。支払いのメタデータにある`delivered_amount`フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。支払いを受信するときに、Amountフィールドの代わりに、`delivered_amount`を使用してアカウントで受信した金額を判断します。
+[tfPartialPaymentフラグ](../../references/protocol/transactions/types/payment.md#paymentのフラグ)が有効にされると、`Amount`フィールド **_は受取り金額とは同じでなくなることがあります_** 。支払いのメタデータにある`delivered_amount`フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。支払いを受信するときに、Amountフィールドの代わりに、`delivered_amount`を使用してアカウントで受信した金額を判断します。
 
 **警告:** この機能が悪用されることがあります。詳細については、[Partial Payments](../../concepts/payment-types/partial-payments.md)を参照してください。
 
@@ -67,7 +67,7 @@ XRPは、XRP Ledgerの _アカウント_ （ _ウォレット_ や _アドレス
 
 Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、XRP Ledgerに最低2つのアカウントを作成する必要があります。シークレットキーが悪用された場合の危険を最小限にとどめるため、Rippleでは、[ _コールドアカウント_ 、 _ホットアカウント_ 、 _ウォームアカウント_ ](https://ripple.com/build/issuing-operational-addresses/)（それぞれコールドウォレット、ホットウォレット、ウォームウォレットとも呼ばれる）の作成をお勧めしています。コールド/ホット/ウォームのモデルは、セキュリティと利便性のバランスをとるためのものです。XRPを上場する取引所は、以下のアカウントを作成する必要があります。
 
-* 大部分のXRPと顧客の資金を維持する[ _コールドウォレット_ ](account-types.html#発行アドレス)。取引所にとって、これはユーザーが[預入れ](#取引所へのxrpの入金)をするアドレスです。   セキュリティを最適化するため、このアカウントのシークレットキーはオフラインにする必要があります。
+* 大部分のXRPと顧客の資金を維持する[ _コールドウォレット_ ](../../concepts/accounts/account-types.md#発行アドレス)。取引所にとって、これはユーザーが[預入れ](#取引所へのxrpの入金)をするアドレスです。   セキュリティを最適化するため、このアカウントのシークレットキーはオフラインにする必要があります。
 
     取引所のコールドウォレットが悪用されると、以下のような結果が生じるおそれがあります。
 
@@ -83,20 +83,20 @@ Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、
 
         * 不正使用者が、アカウントにasfRequireAuthフラグを設定した場合。この設定は解除できません。ただし、これは通貨の発行のみに関係し、ゲートウェイではない取引所には影響しません。不正使用者がマスターキーで設定または設定解除したその他の設定は、元に戻すことができます。
 
-* 顧客のXRP出金や入金を管理する、日常業務を遂行するための1つ以上の[ _ホットウォレット_ ](account-types.html#運用アドレス)。例えば、ホットウォレットがあれば、取引所はこの種のXRPの自動送金を安全にサポートできます。出金要求にただちに応じるため、ホットウォレットはオンラインである必要があります。
+* 顧客のXRP出金や入金を管理する、日常業務を遂行するための1つ以上の[ _ホットウォレット_ ](../../concepts/accounts/account-types.md#運用アドレス)。例えば、ホットウォレットがあれば、取引所はこの種のXRPの自動送金を安全にサポートできます。出金要求にただちに応じるため、ホットウォレットはオンラインである必要があります。
 
-    不正使用されたホットウォレットによって発生するおそれのある結果についての詳細は、[Operational Account Compromise](account-types.html#運用アドレスの漏えい)を参照してください。
+    不正使用されたホットウォレットによって発生するおそれのある結果についての詳細は、[Operational Account Compromise](../../concepts/accounts/account-types.md#運用アドレスの漏えい)を参照してください。
 
 * オプションとして、コールドウォレットとホットウォレットの間で追加のセキュリティ層を提供する、1つ以上のウォームウォレット。ホットウォレットとは異なり、ウォームウォレットのシークレットキーはオンラインである必要はありません。さらに、ウォームウォレットのシークレットキーを複数の人に分散し、[マルチシグ](../../concepts/accounts/multi-signing.md)を導入してセキュリティを強化することもできます。
 
-    不正使用されたウォームウォレットによって発生するおそれのある結果についての詳細は、[スタンバイアドレスの漏えい](account-types.html#スタンバイアドレスの漏えい)を参照してください。
+    不正使用されたウォームウォレットによって発生するおそれのある結果についての詳細は、[スタンバイアドレスの漏えい](../../concepts/accounts/account-types.md#スタンバイアドレスの漏えい)を参照してください。
 
 
 関連項目:
 
 * [発行アドレスと運用アドレス](../../concepts/accounts/account-types.md)
 
-* [アカウントの作成](accounts.html#アカウントの作成)
+* [アカウントの作成](../../concepts/accounts/accounts.md#アカウントの作成)
 
 * [準備金](../../concepts/accounts/reserves.md)
 
@@ -192,7 +192,7 @@ XRPの額は、XRP Ledgerで、符号なし整数の _drop_ として示され�
 
 1drop（.000001XRP）はこれ以上分割できません。XRPと他の資産の間でFXレートを計算して表示するときには、この点にご注意ください。
 
-詳細は、[通貨額の指定](basic-data-types.html#通貨額の指定)を参照してください。
+詳細は、[通貨額の指定](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)を参照してください。
 
 #### 台帳上と台帳外
 
@@ -311,7 +311,7 @@ CharlieというユーザーがAlpha Exchangeに50,000XRPを入金したいと�
 
 1. Charlieは50,000XRPの支払いを、Alpha Exchangeの[コールドウォレット](#アカウント)に送信します。
 
-    a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](../../concepts/transactions/source-and-destination-tags.md)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](accountset.html#accountsetのフラグ)を参照してください。）
+    a. Charlieは識別子（このケースでは`789`）を支払いに追加し、Alpha Exchangeにある自身のアカウントに関連付けます。これは、[ _宛先タグ_ ](../../concepts/transactions/source-and-destination-tags.md)と呼ばれます。（これを使用するには、Alpha Exchangeは、すべての入金でCharlieのような宛先タグを必要とするように、すべてのアカウントでasfRequireDestフラグをオンに設定している必要があります。詳細については、[AccountSet Flags](../../references/protocol/transactions/types/accountset.md#accountsetのフラグ)を参照してください。）
 
 2. Alpha Exchangeのソフトウェアは、受信される支払を検出し、`789`をチャーリーのアカウントの宛先タグとして認識します。
 
@@ -412,7 +412,7 @@ XRP残高</i></b></td>
 
 Alpha Exchangeユーザー（Charlieなど）は、Alpha Exchangeでクレジットベースの残高を取引できます。Alpha Exchangeは、これらの取引の作成時に、新しいバランスシートでユーザーの残高を追跡する必要があります。これらの取引は、 _台帳外_ であり、XRP Ledgerから独立しています。このため、この残高の変化はXRP Ledgerには記録されません。
 
-XRPを自身のXRP Ledgerアカウントに保有している顧客は、XRP Ledgerに組み込まれた分散型取引所 を使用して、ゲートウェイによって発行された通貨を取引することもできます。XRP Ledger _上_ での取引の詳細は、[オファーのライフサイクル](offers.html#オファーのライフサイクル)を参照してください。
+XRPを自身のXRP Ledgerアカウントに保有している顧客は、XRP Ledgerに組み込まれた分散型取引所 を使用して、ゲートウェイによって発行された通貨を取引することもできます。XRP Ledger _上_ での取引の詳細は、[オファーのライフサイクル](../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を参照してください。
 
 
 ### XRPの保有高のリバランス

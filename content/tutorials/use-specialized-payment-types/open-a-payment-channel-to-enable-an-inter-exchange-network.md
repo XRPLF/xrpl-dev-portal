@@ -53,7 +53,7 @@ To use a payment channel to send and receive XRP, both the payer and payee excha
 
 If not, a great way for an exchange to get access to a `rippled` server is to set up and run one.
 
-[Set up and run rippled servers >](manage-the-rippled-server.html)
+[Set up and run rippled servers >](../../infrastructure/installation/install-rippled-on-ubuntu.md)
 
 
 
@@ -70,7 +70,7 @@ Along these lines, there's a good chance that you are following industry best pr
 
     The payer exchange can always top-off the channel using the [PaymentChannelFund](../../references/protocol/transactions/types/paymentchannelfund.md) transaction if it runs out of XRP. However, topping-off requires an actual on-ledger transaction and confirmation, so it could take 4-5 seconds of processing time and ~10 drops of XRP to complete the top-off transaction. The more XRP the payer exchange pre-funds, the less often they need to top-off, so they can save some time and money by pre-funding more XRP.
 
-    However, if the payer exchange puts in more XRP than they need, they need to [close the payment channel](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed) to get the XRP back. This means waiting out the following events:
+    However, if the payer exchange puts in more XRP than they need, they need to [close the payment channel](use-payment-channels.md#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed) to get the XRP back. This means waiting out the following events:
 
     1. Completion of the payer's request to start closing the payment channel.
     2. Passage of the `SettleDelay` time set for the payment channel.
@@ -86,7 +86,7 @@ Along these lines, there's a good chance that you are following industry best pr
 [Fund XRP Ledger accounts with enough XRP >](../../concepts/accounts/accounts.md)
 
 
-## Payer: [Open a payment channel](use-payment-channels.html#1-the-payer-creates-a-payment-channel-to-a-particular-recipient)
+## Payer: [Open a payment channel](use-payment-channels.md#1-the-payer-creates-a-payment-channel-to-a-particular-recipient)
 
 The payer exchange opens a payment channel from their XRP Ledger account to the payee exchange's XRP Ledger account. Opening a payment channel includes setting certain specifics of the channel, such as its expiration date and the amount it can hold.
 
@@ -109,7 +109,7 @@ Since payment channels are unidirectional, you need a second channel in the oppo
 
 The payee exchange reviews the details of the payment channel.
 
-[Verify payment channel details >](use-payment-channels.html#2-the-payee-checks-specifics-of-the-payment-channel)
+[Verify payment channel details >](use-payment-channels.md#2-the-payee-checks-specifics-of-the-payment-channel)
 
 
 
@@ -117,7 +117,7 @@ The payee exchange reviews the details of the payment channel.
 
 The payer exchange creates one or more claims for amounts of XRP that it wants to guarantee to the payee exchange.
 
-[Create claims >](use-payment-channels.html#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel)
+[Create claims >](use-payment-channels.md#3-the-payer-creates-one-or-more-signed-claims-for-the-xrp-in-the-channel)
 
 
 ## Payer: Send claim details to the payer exchange
@@ -145,7 +145,7 @@ Consider a series of claims prompted by payer exchange customers withdrawing XRP
 | **Amount**          | Cumulative amount of the claims created by the payer exchange. The payee exchange needs this value to verify and redeem the claim. For information about how to calculate the actual amount the payee exchange needs to credit the customer, see [Verify claims](#payee-verify-claims). |
 | **Destination Tag** | Destination tag of the customer account on the payee exchange that needs to be credited based on the claim. The payer exchange can get this value from their customer's withdrawal request, which should provide a destination tag for the deposit to the payee exchange. When the payee exchange redeems claims, the XRP is deposited into the payee exchange's XRP Ledger account. The payee exchange can then credit the XRP from the claim to the appropriate customer account based on the destination tag provided. |
 
-[Send claim details to the payer exchange >](use-payment-channels.html#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
+[Send claim details to the payer exchange >](use-payment-channels.md#4-the-payer-sends-a-claim-to-the-payee-as-payment-for-goods-or-services)
 
 
 ## Payee: Verify claims
@@ -156,7 +156,7 @@ After verifying claims, the payee exchange should credit the claimed XRP to the 
 
 For example, to know how much to credit a customer for a claim amount of 3000, the payee exchange needs to know that the previous claim amount was 2000. The difference between the claim amount and the previous claim amount (3000 - 2000 = 1000) is the amount the payee exchange must credit to the customer account.
 
-[Verify claims >](use-payment-channels.html#5-the-payee-verifies-the-claims)
+[Verify claims >](use-payment-channels.md#5-the-payee-verifies-the-claims)
 
 
 
@@ -176,7 +176,7 @@ The payee exchange can redeem batches of claims after verifying them to receive 
 
 <!-- #{ TODO: Talk to some active PayChan users like Coil people to get some more specific recommendations. But I imagine that settling every few minutes or even hours could make sense depending on how much the payee exchange trusts the payer exchange, how many transactions they do how rapidly, etc. }# -->
 
-[Redeem them in batches >](use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
+[Redeem them in batches >](use-payment-channels.md#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount)
 
 
 
@@ -184,11 +184,11 @@ The payee exchange can redeem batches of claims after verifying them to receive 
 
 Payer and payee exchanges can continue to send, verify, and redeem batches of claims as needed within the parameters set by the payment channel.
 
-[Continue to use the payment channel >](use-payment-channels.html#7-repeat-steps-3-6-as-desired)
+[Continue to use the payment channel >](use-payment-channels.md#7-repeat-steps-3-6-as-desired)
 
 
 ## Payer: When it's time, make a request to close the payment channel
 
 When the payer exchange and payee exchange are done using the payment channel, the payer exchange can make a request to close the payment channel.
 
-[Close the payment channel >](use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)
+[Close the payment channel >](use-payment-channels.md#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed)

@@ -13,7 +13,7 @@ labels:
 
 以下に、トランザクションのメタデータに含まれる可能性があるフィールドをいくつか示します。
 
-{% partial file="/_snippets/tx-metadata-field-table.ja.md" /%} 
+{% partial file="/_snippets/tx-metadata-field-table.md" /%} 
 
 ## メタデータの例
 
@@ -23,7 +23,7 @@ labels:
 
 ## AffectedNodes
 
-`AffectedNodes`配列には、このトランザクションが何らかの変更を加えた[レジャーエントリ](ledger-object-types.html)の完全なリストが格納されます。この配列の各項目は、何が起こったかを示すトップレベルのフィールドを1つ持つオブジェクトです。
+`AffectedNodes`配列には、このトランザクションが何らかの変更を加えた[レジャーエントリ](../ledger-data/ledger-entry-types/index.md)の完全なリストが格納されます。この配列の各項目は、何が起こったかを示すトップレベルのフィールドを1つ持つオブジェクトです。
 
 - `CreatedNode`: トランザクションが新しいレジャーエントリを作成したことを示します。
 - `DeletedNode`: トランザクションが新しいレジャーエントリを削除したことを示します。
@@ -37,8 +37,8 @@ labels:
 
 | フィールド          | 値                  | 説明                                  |
 |:------------------|:--------------------|:-------------------------------------|
-| `LedgerEntryType` | 文字列               | 作成された[レジャーエントリの種類](ledger-object-types.html)。 |
-| `LedgerIndex`     | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](ledger-object-ids.html)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](basic-data-types.html#レジャーインデックス)とは**異なります**。 |
+| `LedgerEntryType` | 文字列               | 作成された[レジャーエントリの種類](../ledger-data/ledger-entry-types/index.md)。 |
+| `LedgerIndex`     | 文字列 - [ハッシュ](../data-types/basic-data-types.md#ハッシュ) | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](../ledger-data/common-fields.md)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)とは**異なります**。 |
 | `NewFields`       | オブジェクト          | 新しく作成されたレジャー エントリの内容を示すフィールド。どのフィールドが存在するかは、作成されたレジャーエントリの種類によって異なります。 |
 
 ### DeletedNodeのフィールド
@@ -47,8 +47,8 @@ labels:
 
 | フィールド          | 値                  | 説明                                  |
 |:------------------|:--------------------|:-------------------------------------|
-| `LedgerEntryType` | 文字列               | 削除された[レジャーエントリの種類](ledger-object-types.html)。 |
-| `LedgerIndex`     | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](ledger-object-ids.html)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](basic-data-types.html#レジャーインデックス)とは**異なります** |
+| `LedgerEntryType` | 文字列               | 削除された[レジャーエントリの種類](../ledger-data/ledger-entry-types/index.md)。 |
+| `LedgerIndex`     | 文字列 - [ハッシュ](../data-types/basic-data-types.md#ハッシュ) | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](../ledger-data/common-fields.md)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)とは**異なります** |
 | `FinalFields`     | オブジェクト          | 削除されたレジャーエントリの最後の内容を示すフィールド。どのフィールドが存在するかは、削除されたレジャーエントリの種類によって異なります。 |
 
 ### ModifiedNodeのフィールド
@@ -57,12 +57,12 @@ labels:
 
 | フィールド            | 値                         | 説明                        |
 |:--------------------|:---------------------------|:---------------------------|
-| `LedgerEntryType`   | 文字列                      | 更新された[レジャーエントリの種類](ledger-object-types.html)。 |
-| `LedgerIndex`       | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ)         | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](ledger-object-ids.html)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](basic-data-types.html#レジャーインデックス)とは**異なります**。 |
+| `LedgerEntryType`   | 文字列                      | 更新された[レジャーエントリの種類](../ledger-data/ledger-entry-types/index.md)。 |
+| `LedgerIndex`       | 文字列 - [ハッシュ](../data-types/basic-data-types.md#ハッシュ)         | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](../ledger-data/common-fields.md)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)とは**異なります**。 |
 | `FinalFields`       | オブジェクト                  | このトランザクションからの変更を適用した後のレジャーエントリの内容を示すフィールド。どのフィールドが存在するかは、作成されたレジャーエントリの種類によって異なります。ほとんどのタイプのレジャーエントリには`PreviousTxnID`フィールドと`PreviousTxnLgrSeq`フィールドがありますが、これは省略されます。 |
 | `PreviousFields`    | オブジェクト                  | このトランザクションの結果として変更されたオブジェクトのすべてのフィールドの以前の値。トランザクションがオブジェクトにフィールドを追加しただけの場合、このフィールドは空のオブジェクトです。 |
-| `PreviousTxnID`     | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ)         | _(省略可能)_ このレジャーエントリを変更する前のトランザクションの[識別用ハッシュ](transactions.html#トランザクションの識別)。`PreviousTxnID`フィールドを持たないレジャーエントリの種類では省略されます。 |
-| `PreviousTxnLgrSeq` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _(省略可能)_ このレジャーエントリを変更する前のトランザクションを含むレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。`PreviousTxnLgrSeq`フィールドを持たないレジャーエントリの種類では省略されます。 |
+| `PreviousTxnID`     | 文字列 - [ハッシュ](../data-types/basic-data-types.md#ハッシュ)         | _(省略可能)_ このレジャーエントリを変更する前のトランザクションの[識別用ハッシュ](../../../concepts/transactions/index.md#トランザクションの識別)。`PreviousTxnID`フィールドを持たないレジャーエントリの種類では省略されます。 |
+| `PreviousTxnLgrSeq` | 数値 - [レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス) | _(省略可能)_ このレジャーエントリを変更する前のトランザクションを含むレジャーバージョンの[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)。`PreviousTxnLgrSeq`フィールドを持たないレジャーエントリの種類では省略されます。 |
 
 **注記:** 変更されたレジャーエントリに`PreviousTxnID`フィールドと`PreviousTxnLgrSeq`フィールドがある場合、トランザクションは常にトランザクションの識別ハッシュとトランザクションを含むレジャーバージョンのインデックスでそれらを更新しますが、これらのフィールドの新しい値は`ModifiedNode`オブジェクトの`FinalFields`にはリストされず、以前の値はネストされた`PreviousFields`オブジェクトではなく `ModifiedNode` オブジェクトのトップレベルにリストされます。
 
@@ -87,6 +87,6 @@ NFTを含むトランザクション（`tx` と `account_tx`）はメタデー�
 
 両方の条件に該当する場合、`delivered_amount`には、実際の金額ではなく文字列値`unavailable`が記述されます。この場合、トランザクションのメタデータにあるAffectedNodesを読み取ることが、実際に送金された金額を割り出せる唯一の手段になります。
 
-**注記:** `delivered_amount`フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの[ハッシュ](basic-data-types.html#ハッシュ)を計算する際にも使用されません。一方、`DeliveredAmount`フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに _含まれます_ 。
+**注記:** `delivered_amount`フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの[ハッシュ](../data-types/basic-data-types.md#ハッシュ)を計算する際にも使用されません。一方、`DeliveredAmount`フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに _含まれます_ 。
 
 関連項目: [Partial Payments](../../../concepts/payment-types/partial-payments.md)

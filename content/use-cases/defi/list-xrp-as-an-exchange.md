@@ -192,7 +192,7 @@ Amounts of XRP are represented on the XRP Ledger as an unsigned integer count of
 
 One drop (.000001 XRP) cannot be further subdivided. Keep this in mind when calculating and displaying FX rates between XRP and other assets.
 
-For more information, see [Specifying Currency Amounts][].
+For more information, see [Specifying Currency Amounts](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
 
 #### On-Ledger and Off-Ledger
 

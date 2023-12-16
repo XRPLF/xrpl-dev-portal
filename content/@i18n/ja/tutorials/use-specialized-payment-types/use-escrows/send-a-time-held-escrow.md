@@ -12,7 +12,7 @@ labels:
 
 ## 1.リリース時刻の計算
 
-時刻を **[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)** として指定する必要があります。Rippleエポックは、UNIXエポックの946684800秒後です。たとえば、2017年11月13日の午前0時（UTC）に資金をリリースする場合、以下のようになります。
+時刻を **[Rippleエポック以降の経過秒数](../../../references/protocol/data-types/basic-data-types.md#時間の指定)** として指定する必要があります。Rippleエポックは、UNIXエポックの946684800秒後です。たとえば、2017年11月13日の午前0時（UTC）に資金をリリースする場合、以下のようになります。
 
 {% tabs %}
 
@@ -42,7 +42,7 @@ print(release_date_ripple)
 
 ## 2.EscrowCreateトランザクションの送信
 
-[EscrowCreateトランザクション][]に[署名して送信](transactions.html#トランザクションへの署名とトランザクションの送信)します。トランザクションの`FinishAfter`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Condition`フィールドを省略して、時刻を保留中の支払いをリリースする唯一の条件とします。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。`Amount`を、Escrowする[XRP、drop単位](basic-data-types.html#通貨額の指定)の合計額に設定します。
+[EscrowCreateトランザクション][]に[署名して送信](../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`FinishAfter`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Condition`フィールドを省略して、時刻を保留中の支払いをリリースする唯一の条件とします。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。`Amount`を、Escrowする[XRP、drop単位](../../../references/protocol/data-types/basic-data-types.md#通貨額の指定)の合計額に設定します。
 
 {% partial file="/_snippets/secret-key-warning.md" /%} <!--#{ fix md highlighting_ #}-->
 
@@ -71,7 +71,7 @@ print(release_date_ripple)
 
 ## 3.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.ja.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ## 4.Escrowが作成されたことの確認
 
@@ -126,7 +126,7 @@ print(release_date_ripple)
 
 ## 6.EscrowFinishトランザクションの送信
 
-`FinishAfter`の時刻が経過した後で資金のリリースを実行する[EscrowFinishトランザクション][]に[署名して送信](transactions.html#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Owner`フィールドにEscrowCreateトランザクションの`Account`アドレスを設定し、`OfferSequence` にEscrowCreateトランザクションの`Sequence`番号を設定します。時刻のみに基づいて保留されているEscrowの場合は、`Condition`フィールドと`Fulfillment`フィールドを省略します。
+`FinishAfter`の時刻が経過した後で資金のリリースを実行する[EscrowFinishトランザクション][]に[署名して送信](../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Owner`フィールドにEscrowCreateトランザクションの`Account`アドレスを設定し、`OfferSequence` にEscrowCreateトランザクションの`Sequence`番号を設定します。時刻のみに基づいて保留されているEscrowの場合は、`Condition`フィールドと`Fulfillment`フィールドを省略します。
 
 **ヒント:** XRP Ledgerの状態はトランザクションでしか変更できないため、EscrowFinishトランザクションが必要です。このトランザクションの送信者は、Escrowの受取人、Escrowの元としての送金人、またはその他のXRP Ledgerアドレスのいずれかです。
 
@@ -158,7 +158,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 ## 7.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.ja.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ## 8.最終結果の確認
 

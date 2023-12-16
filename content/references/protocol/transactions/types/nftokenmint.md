@@ -10,7 +10,7 @@ labels:
 
 The `NFTokenMint` transaction creates a non-fungible token and adds it to the relevant [NFTokenPage object](../../ledger-data/ledger-entry-types/nftokenpage.md) of the `NFTokenMinter` as an [NFToken](../../data-types/nftoken.md) object. This transaction is the only opportunity the `NFTokenMinter` has to specify any token fields that are defined as immutable (for example, the `TokenFlags`).
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 
 ## Example {% $frontmatter.seo.title %} JSON
@@ -37,7 +37,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungib
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 
@@ -58,7 +58,7 @@ Transactions of the NFTokenMint type support additional values in the [`Flags` f
 |:--------------|:-------------|:--------------|:------------------------------|
 | `tfBurnable` | `0x00000001` | 1 | Allow the issuer (or an entity authorized by the issuer) to destroy the minted `NFToken`. (The `NFToken`'s owner can _always_ do so.) |
 | `tfOnlyXRP` | `0x00000002` | 2 | The minted `NFToken` can only be bought or sold for XRP. This can be desirable if the token has a transfer fee and the issuer does not want to receive fees in non-XRP currencies. |
-| `tfTrustLine` | `0x00000004` | 4 | **DEPRECATED** Automatically create [trust lines](../../../../concepts/tokens/fungible-tokens/index.md) from the issuer to hold transfer fees received from transferring the minted `NFToken`. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to set this flag. |
+| `tfTrustLine` | `0x00000004` | 4 | **DEPRECATED** Automatically create [trust lines](../../../../concepts/tokens/fungible-tokens/index.md) from the issuer to hold transfer fees received from transferring the minted `NFToken`. The [fixRemoveNFTokenAutoTrustLine amendment](../../../../resources/known-amendments.md#fixremovenftokenautotrustline) makes it invalid to set this flag. |
 | `tfTransferable` | `0x00000008` | 8 | The minted `NFToken` can be transferred to others. If this flag is _not_ enabled, the token can still be transferred _from_ or _to_ the issuer, but a transfer to the issuer must be made based on a buy offer from the issuer and not a sell offer from the NFT holder. |
 
 
@@ -106,9 +106,9 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code                    | Description                                  |
 |:------------------------------|:---------------------------------------------|
-| `temDISABLED`                 | The [NonFungibleTokensV1 amendment](known-amendments.html#nonfungibletokensv1) is not enabled. |
+| `temDISABLED`                 | The [NonFungibleTokensV1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1) is not enabled. |
 | `temBAD_NFTOKEN_TRANSFER_FEE` | The `TransferFee` is not within the acceptable range. |
-| `temINVALID_FLAG`             | The `Flags` value has bits enabled that are not allowed or valid flags. If the [fixRemoveNFTokenAutoTrustLine amendment][] is enabled, the `tfTrustLine` flag causes this error. |
+| `temINVALID_FLAG`             | The `Flags` value has bits enabled that are not allowed or valid flags. If the [fixRemoveNFTokenAutoTrustLine amendment](../../../../resources/known-amendments.md#fixremovenftokenautotrustline) is enabled, the `tfTrustLine` flag causes this error. |
 | `temMALFORMED`                | The transaction was not validly specified. For example, the `URI` field is longer than 256 bytes. |
 | `tecNO_ISSUER`                | The `Issuer` refers to an account that does not exist in the ledger. |
 | `tecNO_PERMISSION`            | The account referenced by the `Issuer` field has not authorized this transaction's sender (using the `NFTokenMinter` setting) to mint on their behalf. |

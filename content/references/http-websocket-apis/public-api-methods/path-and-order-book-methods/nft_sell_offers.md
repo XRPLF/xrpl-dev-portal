@@ -10,7 +10,7 @@ labels:
 
 The `nft_sell_offers` method returns a list of sell offers for a given [NFToken](../../../protocol/data-types/nftoken.md) object.
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 ## Request Format
 An example of the request format:
@@ -44,15 +44,15 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#nft_sell_offers)
+[Try it! >](/resources/dev-tools/websocket-api-tool#nft_sell_offers)
 
 The request includes the following parameters:
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
 | `nft_id`       | String           | The unique identifier of a [NFToken](../../../protocol/data-types/nftoken.md) object. |
-| `ledger_hash`  | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Number | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String           | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | String or Number | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `limit`        | Integer          | _(Optional)_ Limit the number of NFT sell offers to retrieve. This value cannot be lower than 50 or more than 500. Positive values outside this range are replaced with the closest valid option. The default is 250. |
 | `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)       | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
@@ -120,12 +120,12 @@ Each member of the `offers` array represents one [NFTokenOffer object](../../../
 |:------------------|:-----------------|:--------------------------------------|
 | `amount`          | String or Object | The amount offered to sell the NFT for, as a String representing an amount in drops of XRP, or an object representing an amount of a fungible token. (See [Specifying Currency Amounts][Currency Amount]) |
 | `flags`           | Number           | A set of bit-flags for this offer. See [NFTokenOffer flags](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md#nftokenoffer-flags) for possible values. |
-| `nft_offer_index` | String           | The [ledger object ID](ledger-object-ids.html) of this offer. |
+| `nft_offer_index` | String           | The [ledger object ID](../../../protocol/ledger-data/common-fields.md) of this offer. |
 | `owner`           | String           | The account that placed this offer.   |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
+* `actNotFound` - The [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

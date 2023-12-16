@@ -8,7 +8,7 @@ labels:
 # peer_reservations_list
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
-`{% $frontmatter.seo.title %}`メソッドは、[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)を一覧表示します。[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
+`{% $frontmatter.seo.title %}`メソッドは、[ピアリザベーション](../../../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)を一覧表示します。[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
 _`{% $frontmatter.seo.title %}`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
@@ -122,15 +122,15 @@ Loading: "/etc/rippled.cfg"
 
 | `Field`        | 型    | 説明                                                |
 |:---------------|:------|:----------------------------------------------------|
-| `reservations` | 配列 | 既存の[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)のリスト。各メンバーはピアリザベーションオブジェクトです。詳細は以下のとおりです。 |
+| `reservations` | 配列 | 既存の[ピアリザベーション](../../../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)のリスト。各メンバーはピアリザベーションオブジェクトです。詳細は以下のとおりです。 |
 
 #### ピアリザベーションオブジェクト
 
-`reservations`配列の各メンバーは、1つの[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)を表すJSONオブジェクトです。このオブジェクトのフィールドを次に示します。
+`reservations`配列の各メンバーは、1つの[ピアリザベーション](../../../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)を表すJSONオブジェクトです。このオブジェクトのフィールドを次に示します。
 
-{% partial file="/_snippets/peer_reservation_object.ja.md" /%}
+{% partial file="/_snippets/peer_reservation_object.md" /%}
 
 
 ### 考えられるエラー
 
-- いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+- いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。

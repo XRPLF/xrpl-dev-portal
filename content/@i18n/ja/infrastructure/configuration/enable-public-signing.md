@@ -28,7 +28,7 @@ labels:
     vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.ja.md" /%}
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 2. 以下のスタンザを構成ファイルに追加し、変更を保存します。
 

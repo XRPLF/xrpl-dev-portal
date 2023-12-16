@@ -9,9 +9,9 @@ status: not_enabled
 # AMM
 [[ソース]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
-`AMM`レジャーエントリは、単一の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを表します。これは常に[特殊な AccountRootエントリ](accountroot.html#ammの特殊なaccountrootエントリ)と対になっています。
+`AMM`レジャーエントリは、単一の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを表します。これは常に[特殊な AccountRootエントリ](accountroot.md#ammの特殊なaccountrootエントリ)と対になっています。
 
 
 ## AMM JSONの例
@@ -75,9 +75,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 |:-----------------|:--------------------|:------------------|:----------|--------------|
 | `Asset`          | オブジェクト          | STIssue           | はい       | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
 | `Asset2`         | オブジェクト          | STIssue           | はい       | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
-| `Account`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.html#ammの特殊なaccountrootエントリ)のアドレス。 |
+| `Account`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.md#ammの特殊なaccountrootエントリ)のアドレス。 |
 | `AuctionSlot`    | オブジェクト          | STObject          | いいえ     | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
-| `LPTokenBalance` | [通貨額](basic-data-types.html#通貨額の指定)           | Amount            | はい       | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
+| `LPTokenBalance` | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)           | Amount            | はい       | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
 | `TradingFee`     | 数値                 | UInt16            | はい       | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
 | `VoteSlots`      | 配列                 | STArray           | いいえ     | プールの取引手数料に関する投票を表す、投票オブジェクトのリスト。|
 
@@ -90,8 +90,8 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 | `Account`       | 文字列 - アドレス     | AccountID         | はい       | このオークションスロットの現在の所有者。 |
 | `AuthAccounts`  | 配列                 | STArray           | いいえ     | AMMインスタンスに対して取引手数料を割引した価格で取引することを許可された、最大4つの追加アカウントのリスト。 |
 | `DiscountedFee` | 文字列               | UInt32            | はい       | オークションの所有者に請求される取引手数料で、`TradingFee`と同じフォーマットです。デフォルトでは0で、オークションスロットの所有者はAMMの標準的な手数料の代わりに、手数料なしで取引できることを意味します。 |
-| `Price`         | [通貨額](basic-data-types.html#通貨額の指定)           | Amount            | はい       | オークションスロットの所有者がこのスロットを落札するために支払った金額（LPトークン）。 |
-| `Expiration`    | 文字列               | UInt32            | はい       | このスロットの有効期限が切れる[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)で指定した時刻。 |
+| `Price`         | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)           | Amount            | はい       | オークションスロットの所有者がこのスロットを落札するために支払った金額（LPトークン）。 |
+| `Expiration`    | 文字列               | UInt32            | はい       | このスロットの有効期限が切れる[Rippleエポック以降の経過秒数](../../data-types/basic-data-types.md#時間の指定)で指定した時刻。 |
 
 ## {% $frontmatter.seo.title %}の準備金
 
@@ -103,7 +103,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 ## AMM ID フォーマット
 
-`AMM`エントリのIDは、以下の値を順に繋げた[SHA-512Half][]です。
+`AMM`エントリのIDは、以下の値を順に繋げた[SHA-512Half](../../data-types/basic-data-types.md#hashes)です。
 
 1. `AMM`のスペースキー(`0x0041`)
 2. 第1アセットの発行者のAccountID。

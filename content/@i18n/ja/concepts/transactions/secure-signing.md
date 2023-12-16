@@ -47,7 +47,7 @@ labels:
 
     [構成ファイルの例](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
-    **注意:** 署名に[コマンドラインAPI](request-formatting.html#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](../../tutorials/get-started/get-started-using-http-websocket-apis.md)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
+    **注意:** 署名に[コマンドラインAPI](../../references/http-websocket-apis/api-conventions/request-formatting.md#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](../../tutorials/get-started/get-started-using-http-websocket-apis.md)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
 
 3. サーバーの使用中は、稼働状態と最新状態を維持して、ネットワークと同期されるようにしておく必要があります。
 

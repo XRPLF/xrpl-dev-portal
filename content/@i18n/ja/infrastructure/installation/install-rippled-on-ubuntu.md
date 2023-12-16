@@ -104,14 +104,14 @@ labels:
 
 ## 次のステップ
 
-{% partial file="/_snippets/post-rippled-install.ja.md" /%}
+{% partial file="/_snippets/post-rippled-install.md" /%}
 
 
 
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [rippledの構成](../configuration/index.md)

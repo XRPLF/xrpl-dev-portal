@@ -25,7 +25,7 @@ top_nav_grouping: 人気ページ
 
 - XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTestnet XRPを入手できます。
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.ja.md" /%}
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
 ## Testnetでの送金
 {% set n = cycler(* range(1,99)) %}
@@ -55,7 +55,7 @@ top_nav_grouping: 人気ページ
 
 このチュートリアルでは、以下のボタンをクリックすることでブラウザーから直接接続できます。
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.ja.md" /%}
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### {{n.next()}}. トランザクションの準備
@@ -201,7 +201,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 {% /tabs %}
 
 {{ start_step("Wait") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.ja.md" /%}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 
@@ -278,7 +278,7 @@ System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLK
 
 **警告:** ローカルマシンで安全な方法で生成したアドレスとシークレットのみを使用してください。別のコンピューターでアドレスとシークレットを生成して、ネットワーク経由でそれらを自分に送信した場合は、ネットワーク上の他の人がその情報を見ることができる可能性があります。その情報見ることができる人は、あなたと同じようにあなたのXRPを操作できます。また、Test Netと本番で同じアドレスを使用しないことも推奨します。指定したパラメーターによっては、一方のネットワークに向けて作成したトランザクションが、もう一方のネットワークでも実行可能になるおそれがあるためです。
 
-アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って[アカウントに資金供給](accounts.html#アカウントの作成)する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、[XRP Overview](xrp-overview.html)を参照してください。
+アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って[アカウントに資金供給](../../concepts/accounts/accounts.md#アカウントの作成)する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、[XRP Overview](/about/xrp)を参照してください。
 
 ### 本番XRP Ledgerへの接続
 
@@ -320,4 +320,4 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 - [xrpl.jsリファレンス](https://js.xrpl.org/)を参照して、XRP Ledgerの全機能を確認する
 - [アカウント設定](../tasks/manage-account-settings/index.md)をカスタマイズする
 - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)にトランザクションの結果の詳細がどのように記述されているかを知る
-- escrowやPayment Channelなどの[複雑な支払いタイプ](complex-payment-types.html)について調べる
+- escrowやPayment Channelなどの[複雑な支払いタイプ](../../concepts/payment-types/index.md)について調べる

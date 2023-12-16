@@ -85,4 +85,4 @@ Content-Type: application/json
 - **リファレンス:**
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]
-  - [AccountRootのフラグ](accountroot.html#accountrootのフラグ)
+  - [AccountRootのフラグ](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)

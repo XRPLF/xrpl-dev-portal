@@ -61,14 +61,14 @@ labels:
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#subscribe)
+[試してみる >](/resources/dev-tools/websocket-api-tool#subscribe)
 
 要求には以下のパラメーターが含まれます。
 
 | `Field`             | 型     | 説明                                          |
 |:--------------------|:-------|:----------------------------------------------|
 | `streams` | 配列 | _（省略可）_ 以下に説明する、サブスクライブする汎用ストリームの文字列名の配列。 |
-| `accounts` | 配列 | _（省略可）_ 検証済みトランザクションを監視するアカウントの一意のアドレスを持つ配列。これらのアドレスはXRP Ledgerの[base58](base58-encodings.html)フォーマットで記述されている必要があります。サーバーは、1つ以上のアカウントに影響するすべてのトランザクションについて通知を送信します。 |
+| `accounts` | 配列 | _（省略可）_ 検証済みトランザクションを監視するアカウントの一意のアドレスを持つ配列。これらのアドレスはXRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマットで記述されている必要があります。サーバーは、1つ以上のアカウントに影響するすべてのトランザクションについて通知を送信します。 |
 | `accounts_proposed` | 配列 | _（省略可）_ `accounts`と同様ですが、まだファイナライズされていないトランザクションを含みます。 |
 | `books` | 配列 | _（省略可）_ 以下に説明するとおり、更新の監視のために[オーダーブック](http://www.investopedia.com/terms/o/order-book.asp)を定義するオブジェクトの配列。 |
 | `url` | 文字列 | （Websocketでは省略可、それ以外では必須）サーバーが各イベントのJSON-RPCコールバックを送信するURL。*管理者専用。* |
@@ -91,9 +91,9 @@ labels:
 
 | `Field`      | 型      | 説明                                                |
 |:-------------|:--------|:----------------------------------------------------|
-| `taker_gets` | オブジェクト | オファーを受諾するアカウントが受け取る通貨を[金額なしの通貨オブジェクト](currency-formats.html#金額なしでの通貨の指定)として指定します。 |
-| `taker_pays` | オブジェクト | オファーを受諾するアカウントが支払う通貨を[金額なしの通貨オブジェクト](currency-formats.html#金額なしでの通貨の指定)として指定します。 |
-| `taker` | 文字列 | オファーを表示するパースペクティブとして使用する一意のアカウントアドレス（XRP Ledgerの[base58](base58-encodings.html)フォーマット）。（これはオファーの資金提供ステータスと手数料に影響します。） |
+| `taker_gets` | オブジェクト | オファーを受諾するアカウントが受け取る通貨を[金額なしの通貨オブジェクト](../../../protocol/data-types/currency-formats.md#金額なしでの通貨の指定)として指定します。 |
+| `taker_pays` | オブジェクト | オファーを受諾するアカウントが支払う通貨を[金額なしの通貨オブジェクト](../../../protocol/data-types/currency-formats.md#金額なしでの通貨の指定)として指定します。 |
+| `taker` | 文字列 | オファーを表示するパースペクティブとして使用する一意のアカウントアドレス（XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマット）。（これはオファーの資金提供ステータスと手数料に影響します。） |
 | `snapshot` | ブール値 | （省略可、デフォルトではfalse）trueの場合は、更新の送信前にサブスクライブした時点でオーダーブックの現在の状態を一度返します。 |
 | `both` | ブール値 | （省略可、デフォルトではfalse）trueの場合は、オーダーブックの両サイドを返します。 |
 
@@ -126,7 +126,7 @@ labels:
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `noPermission` - 要求に`url`フィールドが指定されていますが、管理者として接続していません。
 * `unknownStream` - 要求の`streams`フィールドの1つ以上の要素が有効なストリーム名ではありません。
@@ -164,13 +164,13 @@ labels:
 | `Field`             | 型                        | 説明                       |
 |:--------------------|:--------------------------|:---------------------------|
 | `type` | 文字列 | `ledgerClosed`は、このメッセージがレジャーストリームからのものであることを示します。 |
-| `fee_base` | 数値 | このレジャーバージョン時点の[Referenceトランザクションコスト](transaction-cost.html#referenceトランザクションコスト)（[XRPのdrop数](basic-data-types.html#通貨額の指定)）。このレジャーバージョンに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が含まれている場合は、次のレジャーバージョンから新しいトランザクションコストが適用されます。 |
-| `fee_ref` | 数値 | 「手数料単位」の[Referenceトランザクションコスト](transaction-cost.html#referenceトランザクションコスト)。 |
-| `ledger_hash` | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | 決済されたレジャーバージョンの識別用ハッシュ。 |
-| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | 決済されたレジャーのレジャーインデックス。 |
-| `ledger_time` | 数値 | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)） |
-| `reserve_base` | 数値 | アカウントの最低必要[準備金](../../../../concepts/accounts/reserves.md)（[XRPのdrop数](basic-data-types.html#通貨額の指定)）。このレジャーバージョンに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が含まれる場合は、次のレジャーバージョンから新しい基本準備金が適用されます。 |
-| `reserve_inc` | 数値 | アカウントがレジャーに所有しているオブジェクトごとの[所有者準備金](reserves.html#所有者準備金)（[XRPのdrop数](basic-data-types.html#通貨額の指定)）。レジャーに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が記録されている場合、このレジャー以降は新しい所有者準備金が適用されます。 |
+| `fee_base` | 数値 | このレジャーバージョン時点の[Referenceトランザクションコスト](../../../../concepts/transactions/transaction-cost.md#referenceトランザクションコスト)（[XRPのdrop数](../../../protocol/data-types/basic-data-types.md#通貨額の指定)）。このレジャーバージョンに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が含まれている場合は、次のレジャーバージョンから新しいトランザクションコストが適用されます。 |
+| `fee_ref` | 数値 | 「手数料単位」の[Referenceトランザクションコスト](../../../../concepts/transactions/transaction-cost.md#referenceトランザクションコスト)。 |
+| `ledger_hash` | 文字列 - [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ) | 決済されたレジャーバージョンの識別用ハッシュ。 |
+| `ledger_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | 決済されたレジャーのレジャーインデックス。 |
+| `ledger_time` | 数値 | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)） |
+| `reserve_base` | 数値 | アカウントの最低必要[準備金](../../../../concepts/accounts/reserves.md)（[XRPのdrop数](../../../protocol/data-types/basic-data-types.md#通貨額の指定)）。このレジャーバージョンに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が含まれる場合は、次のレジャーバージョンから新しい基本準備金が適用されます。 |
+| `reserve_inc` | 数値 | アカウントがレジャーに所有しているオブジェクトごとの[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)（[XRPのdrop数](../../../protocol/data-types/basic-data-types.md#通貨額の指定)）。レジャーに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が記録されている場合、このレジャー以降は新しい所有者準備金が適用されます。 |
 | `txn_count` | 数値 | このレジャーバージョンに含まれる新規トランザクションの数。 |
 | `validated_ledgers` | 文字列 | _（省略される場合があります）_ サーバーで使用可能なレジャーの範囲。これは連続的ではない可能性があります。サーバーがネットワークに接続されていない場合や、サーバーが接続されていてもネットワークからレジャーをまだ取得していない場合は、このフィールドは返されません。 |
 
@@ -216,14 +216,14 @@ labels:
 | `flags` | 数値 | この検証メッセージに追加されるフラグのビットマスク。フラグ0x80000000は、検証の署名が完全に正規であることを示します。フラグ0x00000001は、完全な検証であることを示します。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `full` | ブール値 | `true`の場合は、完全な検証です。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `ledger_hash` | 文字列 | 提案されたレジャーの識別ハッシュを検証中です。 |
-| `ledger_index` | 文字列 - 整数 | 提案されたレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。[新規: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE") |
+| `ledger_index` | 文字列 - 整数 | 提案されたレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。[新規: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE") |
 | `load_fee` | 整数 | （省略される場合があります）このバリデータにより現在施行されているローカルの負荷スケーリングされたトランザクションコスト（手数料単位）。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
-| `master_key` | 文字列 | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58](base58-encodings.html)フォーマットのバリデータトークンを使用している場合）。（関連項目: [`rippled`サーバーで検証を有効化](run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化)。）[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE") |
+| `master_key` | 文字列 | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマットのバリデータトークンを使用している場合）。（関連項目: [`rippled`サーバーで検証を有効化](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-rippledサーバーで検証を有効化)。）[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE") |
 | `reserve_base` | 整数 | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する最低必要準備金（`account_reserve`値）。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `reserve_inc` | 整数 | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する必要準備金（`owner_reserve`値）の増分。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `signature` | 文字列 | バリデータがこのレジャーへの投票に署名するときに使用する署名。 |
-| `signing_time` | 数値 | この検証投票が署名された時刻（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
-| `validation_public_key` | 文字列 | バリデータがメッセージの署名に使用したキーペアの公開鍵（XRP Ledgerの[base58](base58-encodings.html)形式）。このフィールドは、メッセージを送信するバリデータを特定します。また`signature`の検証にも使用できます。バリデータがトークンを使用している場合は一時的な公開鍵です。 |
+| `signing_time` | 数値 | この検証投票が署名された時刻（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)）。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
+| `validation_public_key` | 文字列 | バリデータがメッセージの署名に使用したキーペアの公開鍵（XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)形式）。このフィールドは、メッセージを送信するバリデータを特定します。また`signature`の検証にも使用できます。バリデータがトークンを使用している場合は一時的な公開鍵です。 |
 
 
 ## トランザクションストリーム
@@ -356,9 +356,9 @@ labels:
 | `engine_result` | 文字列 | 文字列の[トランザクション結果コード](../../../protocol/transactions/transaction-results/transaction-results.md) |
 | `engine_result_code` | 数値 | 数値の[トランザクション応答コード](../../../protocol/transactions/transaction-results/transaction-results.md)（該当する場合） |
 | `engine_result_message` | 文字列 | 人間が読み取れる形式のトランザクション応答の説明 |
-| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（未検証のトランザクションのみ）_ このトランザクションが現在提案されている現在進行中の[レジャーバージョン](../../../../concepts/ledgers/index.md)のレジャーインデックス。 |
-| `ledger_hash` | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | _（検証済みのトランザクションのみ）_ このトランザクションを含む レジャーバージョンの識別用ハッシュ。 |
-| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（検証済みのトランザクションのみ）_ このトランザクションを含むレジャーバージョンのレジャーインデックス。 |
+| `ledger_current_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（未検証のトランザクションのみ）_ このトランザクションが現在提案されている現在進行中の[レジャーバージョン](../../../../concepts/ledgers/index.md)のレジャーインデックス。 |
+| `ledger_hash` | 文字列 - [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ) | _（検証済みのトランザクションのみ）_ このトランザクションを含む レジャーバージョンの識別用ハッシュ。 |
+| `ledger_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（検証済みのトランザクションのみ）_ このトランザクションを含むレジャーバージョンのレジャーインデックス。 |
 | `meta` | オブジェクト | _（検証済みのトランザクションのみ）_ [トランザクションのメタデータ](../../../protocol/transactions/metadata.md)。トランザクションの正確な結果を詳細に表示します。 |
 | `transaction` | オブジェクト | JSONフォーマットの[トランザクションの定義](../../../protocol/transactions/index.md)。 |
 | `validated` | ブール値 | `true`の場合、このトランザクションは検証済みのレジャーに含まれており、最終的な結果であることを意味します。`transaction`ストリームからの応答は常に検証される必要があります。 |
@@ -388,11 +388,11 @@ labels:
 |:-------------------|:-------|:-----------------------------------------------|
 | `type` | 文字列 | `peerStatusChange`は、ピアステータスストリームからのメッセージであることを示します。 |
 | `action` | 文字列 | このメッセージが送信される原因となったイベントのタイプ。有効な値については、[ピアステータスイベント](#ピアステータスイベント)を参照してください。 |
-| `date` | 数値 | このイベントが発生した時刻（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)） |
-| `ledger_hash` | 文字列 | （省略される場合があります）このメッセージに関連するレジャーバージョンの識別用[ハッシュ](basic-data-types.html#ハッシュ)。 |
-| `ledger_index` | 数値 | （省略される場合があります）このメッセージに関連するレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
-| `ledger_index_max` | 数値 | （省略される場合があります）ピアで現在使用可能な最大[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
-| `ledger_index_min` | 数値 | （省略される場合があります）ピアで現在使用可能な最小[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `date` | 数値 | このイベントが発生した時刻（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)） |
+| `ledger_hash` | 文字列 | （省略される場合があります）このメッセージに関連するレジャーバージョンの識別用[ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)。 |
+| `ledger_index` | 数値 | （省略される場合があります）このメッセージに関連するレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
+| `ledger_index_max` | 数値 | （省略される場合があります）ピアで現在使用可能な最大[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
+| `ledger_index_min` | 数値 | （省略される場合があります）ピアで現在使用可能な最小[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 
 ### ピアステータスイベント
 
@@ -400,7 +400,7 @@ labels:
 
 | `Value`　　　　　　| 意味                   　　　　                           |
 |:------------------|:---------------------------------------------------------|
-| `CLOSING_LEDGER` | ピアがこの[レジャーインデックス](basic-data-types.html#レジャーインデックス)のレジャーバージョンを閉鎖しました。 |
+| `CLOSING_LEDGER` | ピアがこの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)のレジャーバージョンを閉鎖しました。 |
 | `ACCEPTED_LEDGER` | ピアがコンセンサスラウンドの結果としてこのレジャーバージョンを作成しました。**注記:** このレジャーが不変的に検証済みになるかどうかはまだ確実ではありません。 |
 | `SWITCHED_LEDGER` | ピアは、ネットワークの他の部分に従っていないと結論付け、異なるレジャーバージョンに切り替えました。 |
 | `LOST_SYNC` | ピアは検証済みのレジャーバージョンとコンセンサス処理中のレジャーバージョンの追跡でネットワークの他の部分に遅れをとりました。 |

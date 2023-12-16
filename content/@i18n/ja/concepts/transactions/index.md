@@ -19,7 +19,7 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 
 だれでも最終的なステータスを確認として[ハッシュによってトランザクションを調べる](finality-of-results/look-up-transaction-results.md)ことができるため、トランザクションハッシュは「支払いの証明」として使用することができます。
 
-{% partial file="/_snippets/setfee_uniqueness_note.ja.md" /%}
+{% partial file="/_snippets/setfee_uniqueness_note.md" /%}
 
 
 
@@ -62,7 +62,7 @@ XRP Ledgerにトランザクションを送信するには、いくつかの手�
 3. `rippled`サーバーにトランザクションを送信します。トランザクションが適切に作成されている場合、サーバーはそのトランザクションを現行バージョンのレジャーに暫定的に適用し、そのトランザクションをピアツーピアネットワークの他のメンバーに中継します。
 4. [コンセンサスプロセス](../consensus-protocol/index.md)によって、次の検証済みレジャーに含まれる暫定的なトランザクションが決定されます。
 5. `rippled`サーバーはそれらのトランザクションを正規順序で前のレジャーに適用し、それらの結果を共有します。
-6. 十分に[信頼できるバリデータ](rippled-server-modes.html#バリデータ)がまったく同じレジャーを作成した場合、そのレジャーは _検証済み_ であると宣言され、そのレジャーの[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)は不変となります。
+6. 十分に[信頼できるバリデータ](../networks-and-servers/rippled-server-modes.md#バリデータ)がまったく同じレジャーを作成した場合、そのレジャーは _検証済み_ であると宣言され、そのレジャーの[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)は不変となります。
 
 XRP決済の送信に関する対話型チュートリアルについては、[Send XRP](../../tutorials/get-started/send-xrp.md)を参照してください。
 
@@ -207,7 +207,7 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
   - [XRPの送金](../../tutorials/get-started/send-xrp.md)
   - [トランザクションの結果の確認](finality-of-results/look-up-transaction-results.md)
   - [WebSocketを使用した着信ペイメントの監視](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
-  - [トランザクションの取り消しまたはスキップ](cancel-or-skip-a-transaction.html)
+  - [トランザクションの取り消しまたはスキップ](finality-of-results/canceling-a-transaction.md)
   - [信頼できるトランザクションの送信](reliable-transaction-submission.md)
 - **リファレンス:**
   - [トランザクションの共通フィールド](../../references/protocol/transactions/common-fields.md)

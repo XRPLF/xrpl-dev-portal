@@ -45,7 +45,7 @@ rippled ledger_current
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ledger_current)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_current)
 
 この要求にはパラメーターは含まれていません。
 
@@ -93,4 +93,4 @@ rippled ledger_current
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。

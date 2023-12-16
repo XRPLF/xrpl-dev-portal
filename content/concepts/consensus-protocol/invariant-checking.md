@@ -102,7 +102,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### Ledger Entry Types Match
 
 - **Invariant Condition(s):**
-    - Corresponding modified ledger entries should match in type and added entries should be a [valid type](ledger-object-types.html).
+    - Corresponding modified ledger entries should match in type and added entries should be a [valid type](../../references/protocol/ledger-data/ledger-entry-types/index.md).
 
 
 ### No XRP Trust Lines

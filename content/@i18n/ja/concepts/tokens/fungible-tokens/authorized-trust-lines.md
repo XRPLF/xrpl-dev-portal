@@ -27,7 +27,7 @@ XRP Ledger上のステーブルコインと認可トラストラインの使用�
 3. 顧客は[TrustSetトランザクション][]を送信し、発行者のアドレスにトラストラインを作成し、正のリミットを設定します。
 4. 発行者はTrustSetトランザクションを送信し、顧客のトラストラインを認可します。
 
-**ヒント:** 2つのTrustSetトランザクション（ステップ3および4）は、どちらの順序で発生しても構いません。発行者がトラストラインを先に認可した場合、これにより限度額が0に設定されたトラストラインが作成され、顧客のTrustSetトランザクションは、事前に認可されたトラストラインの限度額を設定することになります。([TrustSetAuth amendment][]により追加されました。)_
+**ヒント:** 2つのTrustSetトランザクション（ステップ3および4）は、どちらの順序で発生しても構いません。発行者がトラストラインを先に認可した場合、これにより限度額が0に設定されたトラストラインが作成され、顧客のTrustSetトランザクションは、事前に認可されたトラストラインの限度額を設定することになります。([TrustSetAuth amendment](../../../resources/known-amendments.md#trustsetauth)により追加されました。)_
 ## 注意事項
 
 認可トラストラインを使用するつもりがない場合でも、[運用アカウントと予備アカウント](../../accounts/account-types.md)のRequire Auth設定を有効にし、これらのアカウントにトラストラインを認可させないようにすることができます。これは、これらのアカウントが誤ってトークンを発行することを防止します（たとえば、ユーザーが誤って間違ったアドレスをトラストしてしまった場合など）。これはあくまで予防措置であり、運用アカウントと予備アカウントが意図したとおりに _発行者の_ トークンを転送することを止めるものではありません。
@@ -73,7 +73,7 @@ POST http://localhost:5005/
 
 認可トラストライン機能を使用している場合、他のアカウントからのトラストラインを認可しなければ、これらの他のアカウントはあなたが発行する残高を保有できません。複数のトークンを発行する場合には、各通貨のトラストラインを個別に認可する必要があります。
 
-トラストラインを認可するには、`LimitAmount`の`issuer`として信頼するユーザーを指定して、発行アドレスから[TrustSetトランザクション][]を送信します。`value`（信頼する額）を**0**のままにし、トランザクションの[tfSetfAuth](trustset.html#trustsetのフラグ)フラグを有効にします。
+トラストラインを認可するには、`LimitAmount`の`issuer`として信頼するユーザーを指定して、発行アドレスから[TrustSetトランザクション][]を送信します。`value`（信頼する額）を**0**のままにし、トランザクションの[tfSetfAuth](../../../references/protocol/transactions/types/trustset.md#trustsetのフラグ)フラグを有効にします。
 
 以下は、ローカルでホストされている`rippled`の[submitメソッド][]を使用して、顧客アドレス`rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`がアドレス`rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`で発行したUSDを持つことを認可するTrustSetトランザクションを送信する例です。
 
@@ -121,5 +121,5 @@ POST http://localhost:8088/
     - [account_infoメソッド][]
     - [AccountSetトランザクション][]
     - [TrustSetトランザクション][]
-    - [AccountRootフラグ](accountroot.html#accountrootのフラグ)
-    - [RippleState (トラストライン) フラグ](ripplestate.html#ripplestateのフラグ)
+    - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+    - [RippleState (トラストライン) フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)

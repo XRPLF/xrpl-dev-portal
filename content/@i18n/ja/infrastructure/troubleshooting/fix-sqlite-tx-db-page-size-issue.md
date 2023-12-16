@@ -70,7 +70,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 ## 解決策
 
-この問題を解決するには、このドキュメントで説明する手順に従い、サポートされているLinuxシステムで`rippled`を使用します。[推奨されるハードウェア構成](capacity-planning.html#推奨事項-1)とおおよそ一致するシステムスペックで全履歴を記録するサーバーの場合、このプロセスにかかる日数は2日を超える可能性があります。
+この問題を解決するには、このドキュメントで説明する手順に従い、サポートされているLinuxシステムで`rippled`を使用します。[推奨されるハードウェア構成](../installation/capacity-planning.md#推奨事項-1)とおおよそ一致するシステムスペックで全履歴を記録するサーバーの場合、このプロセスにかかる日数は2日を超える可能性があります。
 
 ### 前提条件
 
@@ -181,7 +181,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 11. `rippled`サービスが正常に起動したかどうかを確認します。
 
-    [コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
+    [コマンドラインインターフェイス](../../tutorials/get-started/get-started-using-http-websocket-apis.md#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
 
     ```
     /opt/ripple/bin/rippled server_info

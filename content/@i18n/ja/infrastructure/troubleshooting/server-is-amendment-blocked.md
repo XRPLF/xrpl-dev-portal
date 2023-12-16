@@ -9,7 +9,7 @@ labels:
 
 Amendmentブロックされたサーバは、レジャーの有効性を判断したり、トランザクションを送信または処理したり、コンセンサスプロセスに参加したりすることができません。
 
-あなたの`rippled`サーバが[Amendmentブロック](amendments.html#amendmentブロックされたサーバ)されたことを示す最初の兆候の一つは、トランザクションを送信したときに返される`amendmentBlocked`エラーです。以下は`amendmentBlocked`エラーの例です。
+あなたの`rippled`サーバが[Amendmentブロック](../../concepts/networks-and-servers/amendments.md#amendmentブロックされたサーバ)されたことを示す最初の兆候の一つは、トランザクションを送信したときに返される`amendmentBlocked`エラーです。以下は`amendmentBlocked`エラーの例です。
 
 ```json
 {

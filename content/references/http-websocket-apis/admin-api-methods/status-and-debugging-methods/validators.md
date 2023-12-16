@@ -499,5 +499,5 @@ Each member of the `publisher_lists` array is a **Publisher List** object with t
 
 ### Possible Errors
 
-- Any of the [universal error types][].
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

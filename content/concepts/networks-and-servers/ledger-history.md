@@ -9,7 +9,7 @@ labels:
 ---
 # Ledger History
 
-The [consensus process](../consensus-protocol/index.md) creates a chain of [validated ledger versions](../ledgers/index.md), each derived from the previous one by applying a set of [transactions](../transactions/index.md). Every [`rippled` server](xrpl-servers.html) stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.
+The [consensus process](../consensus-protocol/index.md) creates a chain of [validated ledger versions](../ledgers/index.md), each derived from the previous one by applying a set of [transactions](../transactions/index.md). Every [`rippled` server](index.md) stores ledger versions and transaction history locally. The amount of transaction history a server stores depends on how long that server has been online and how much history it is configured to fetch and keep.
 
 Servers in the peer-to-peer XRP Ledger network share transactions and other data with each other as part of the consensus process. Each server independently builds each new ledger version and compares results with its trusted validators to ensure consistency. (If a consensus of trusted validators disagrees with a server's results, that server fetches the necessary data from its peers to achieve consistency.) Servers can download older data from their peers to fill gaps in their available history. The structure of the ledger uses cryptographic [hashes](../../references/protocol/data-types/basic-data-types.md#hashes) of the data so that any server can verify the integrity and consistency of the data.
 

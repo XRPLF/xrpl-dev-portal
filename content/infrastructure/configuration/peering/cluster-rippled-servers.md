@@ -7,7 +7,7 @@ labels:
 ---
 # Cluster rippled Servers
 
-If you run multiple [`rippled` servers](xrpl-servers.html) in the same data center, you can configure them in a [cluster](../../../concepts/networks-and-servers/clustering.md) to maximize efficiency. To configure clustering:
+If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/index.md) in the same data center, you can configure them in a [cluster](../../../concepts/networks-and-servers/clustering.md) to maximize efficiency. To configure clustering:
 
 1. For each of your servers, note the IP address of the server.
 

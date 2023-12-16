@@ -113,7 +113,7 @@ The XRP Ledger uses lazy evaluation to calculate the owner reserve. This means t
 
 ## RippleState ID Format
 
-The ID of a RippleState entry is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of a RippleState entry is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The RippleState space key (`0x0072`)
 * The AccountID of the low account

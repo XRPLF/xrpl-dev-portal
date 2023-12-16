@@ -59,7 +59,7 @@ Sending a transaction to the XRP Ledger involves several steps:
 
 1. Create an [unsigned transaction in JSON format](#example-unsigned-transaction).
 2. Use one or more signatures to [authorize the transaction](#authorizing-transactions).
-3. Submit a transaction to an XRP Ledger server (usually a [`rippled` instance](xrpl-servers.html)). If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
+3. Submit a transaction to an XRP Ledger server (usually a [`rippled` instance](../networks-and-servers/index.md)). If the transaction is properly formed, the server provisionally applies the transaction to its current version of the ledger and relays the transaction to other members of the peer-to-peer network.
 4. The [consensus process](../consensus-protocol/index.md) determines which provisional transactions get included in the next validated ledger.
 5. The servers apply those transactions to the previous ledger in a canonical order and share their results.
 6. If enough [trusted validators](../networks-and-servers/rippled-server-modes.md#validators) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](../../references/protocol/transactions/transaction-results/transaction-results.md) in that ledger are immutable.
@@ -209,7 +209,7 @@ Example response from the `tx` command:
     - [Send XRP](../../tutorials/get-started/send-xrp.md)
     - [Look Up Transaction Results](finality-of-results/look-up-transaction-results.md)
     - [Monitor Incoming Payments with WebSocket](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
-    - [Cancel or Skip a Transaction](cancel-or-skip-a-transaction.html)
+    - [Cancel or Skip a Transaction](finality-of-results/canceling-a-transaction.md)
     - [Reliable Transaction Submission](reliable-transaction-submission.md)
 - **References:**
     - [Transaction Common Fields](../../references/protocol/transactions/common-fields.md)

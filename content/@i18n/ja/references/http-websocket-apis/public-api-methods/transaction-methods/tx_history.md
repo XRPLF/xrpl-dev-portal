@@ -47,7 +47,7 @@ rippled tx_history 0
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html#tx_history)
+[試してみる>](/resources/dev-tools/websocket-api-tool#tx_history)
 
 要求には以下のパラメーターが含まれます。
 
@@ -895,6 +895,6 @@ rippled tx_history 0
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `noPermission` - `start`フィールドに指定されている値が10000を超えていますが、サーバーに管理者として接続していません。

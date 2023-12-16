@@ -19,7 +19,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 
 ## Amendment Process
 
-The [Contributing Code to the XRP Ledger](contribute-code-flow.html) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
+The [Contributing Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
 
 After the code for an amendment is built into a software release, the process to enable it happens within the XRP Ledger network, which checks the status of amendments every _flag_ ledger (typically about 15 minutes apart).
 
@@ -80,6 +80,6 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 - **Tutorials:**
     - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
     - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
-    - [Contribute Code to the XRP Ledger](contribute-code-flow.html)
+    - [Contribute Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md)
 - **References:**
     - [Known Amendments](../../resources/known-amendments.md)

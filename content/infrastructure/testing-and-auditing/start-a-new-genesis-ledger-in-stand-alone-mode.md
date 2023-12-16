@@ -32,7 +32,7 @@ By default, a new genesis ledger has no [amendments](../../concepts/networks-and
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
         - [`rippled` Server Modes](../../concepts/networks-and-servers/rippled-server-modes.md)
     - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
     - [Amendments](../../concepts/networks-and-servers/amendments.md)
@@ -42,4 +42,4 @@ By default, a new genesis ledger has no [amendments](../../concepts/networks-and
     - [server_info method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)
     - [`rippled` Commandline Usage](../commandline-usage.md)
 - **Use Cases:**
-    - [Contribute Code to the XRP Ledger](contribute-code-to-rippled.html)
+    - [Contribute Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md)

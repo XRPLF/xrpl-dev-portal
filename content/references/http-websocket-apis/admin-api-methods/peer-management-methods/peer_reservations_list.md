@@ -8,7 +8,7 @@ labels:
 # peer_reservations_list
 [[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
-The `{% $frontmatter.seo.title %}` method lists [peer reservations][]. [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
+The `{% $frontmatter.seo.title %}` method lists [peer reservations](../../../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
 _The `{% $frontmatter.seo.title %}` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
@@ -122,16 +122,16 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`        | Type  | Description                                         |
 |:---------------|:------|:----------------------------------------------------|
-| `reservations` | Array | List of existing [peer reservations][]. Each member is a peer reservation object, as described below. |
+| `reservations` | Array | List of existing [peer reservations](../../../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). Each member is a peer reservation object, as described below. |
 
 #### Peer Reservation Object
 
-Each member of the `reservations` array is a JSON object describing one [peer reservation][]. This object has the following fields:
+Each member of the `reservations` array is a JSON object describing one [peer reservation](../../../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). This object has the following fields:
 
 {% partial file="/_snippets/peer_reservation_object.md" /%}
 
 
 ### Possible Errors
 
-- Any of the [universal error types][].
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

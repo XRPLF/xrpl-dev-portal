@@ -48,15 +48,15 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#account_offers)
+[試してみる >](/resources/dev-tools/websocket-api-tool#account_offers)
 
 要求には以下のパラメーターを指定できます。
 
 | `Field`        | 型                    | 必須? | 説明                          |
 |:---------------|:----------------------|:-----|:------------------------------|
-| `account`      | 文字列 - [Address][]   | はい  | このアカウントからのオファーを検索します。 |
-| `ledger_hash`  | [ハッシュ](basic-data-types.html#ハッシュ)           | いいえ | 使用するレジャーバージョンを識別する20バイトの16進文字列。 |
-| `ledger_index` | [レジャーインデックス](basic-data-types.html#レジャーインデックス) | いいえ | 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、レジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください |
+| `account`      | 文字列 - [Address](../../../protocol/data-types/basic-data-types.md#addresses)   | はい  | このアカウントからのオファーを検索します。 |
+| `ledger_hash`  | [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)           | いいえ | 使用するレジャーバージョンを識別する20バイトの16進文字列。 |
+| `ledger_index` | [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | いいえ | 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、レジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください |
 | `limit`        | 整数                  | いいえ | 取得するオファーの数を制限します。サーバはこの数より少ない結果を返すことがあります。10～400の範囲内でなければなりません。この範囲外の正の値は、最も近い有効なオプションに置き換えられます。デフォルトは200です。 |
 | `marker`       | [マーカー](../../api-conventions/markers-and-pagination.md)           | いいえ | 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。 |
 
@@ -190,11 +190,11 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 | `Field`                | 型                          | 説明                    |
 |:-----------------------|:----------------------------|:------------------------|
-| `account`              | 文字列                       | オファーを出したアカウントを識別する一意の[アドレス](basic-data-types.html#アドレス) |
+| `account`              | 文字列                       | オファーを出したアカウントを識別する一意の[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス) |
 | `offers`               | 配列                         | オブジェクトの配列。各オブジェクトは、このアカウントが出したオファーの中で、レジャーバージョンが要求された時点で未処理のオファーを表します。オファーの数が多い場合は、一度に`limit`の数までのオファーが返されます。 |
-| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_hash`または`ledger_index`が指定されている場合は省略可）_ このデータの取得時に使用した、現在処理中のレジャーバージョンのレジャーインデックス。 |
-| `ledger_index`         | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略可）_ 要求に従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
-| `ledger_hash`          | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ)         | _（省略される場合があります）_ このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
+| `ledger_current_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（`ledger_hash`または`ledger_index`が指定されている場合は省略可）_ このデータの取得時に使用した、現在処理中のレジャーバージョンのレジャーインデックス。 |
+| `ledger_index`         | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略可）_ 要求に従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
+| `ledger_hash`          | 文字列 - [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)         | _（省略される場合があります）_ このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
 | `marker`               | [マーカー](../../api-conventions/markers-and-pagination.md)                 | _（省略される場合があります）_ 応答がページネーションされていることを示す、サーバが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に情報ページがない場合は省略されます。 |
 
 
@@ -203,16 +203,16 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 | `Field`      | 型                   | 説明                                       |
 |:-------------|:---------------------|:-------------------------------------------|
 | `flags`      | 符号なし整数           | このオファーエントリに対してビットフラグとして設定されているオプション。 |
-| `seq`        | 符号なし整数           | このエントリを作成したトランザクションのシーケンス番号。（トランザクションの[シーケンス番号](basic-data-types.html#アカウントシーケンス)はアカウントに関連付けられています。） |
+| `seq`        | 符号なし整数           | このエントリを作成したトランザクションのシーケンス番号。（トランザクションの[シーケンス番号](../../../protocol/data-types/basic-data-types.md#アカウントシーケンス)はアカウントに関連付けられています。） |
 | `taker_gets` | 文字列またはオブジェクト | オファーを受け入れるアカウントが受領する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。([通貨額の指定][通貨額]をご覧ください。) |
 | `taker_pays` | 文字列またはオブジェクト | オファーを受け入れるアカウントが提供する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。([通貨額の指定][通貨額]をご覧ください。) |
 | `quality`    | 文字列                | オファーの為替レート。元の`taker_pays`を元の`taker_gets`で割った比率です。オファーの実行時には、最も好ましい（最も低い）クオリティのオファーが最初に消費されます。同じクオリティのオファーは古いものから新しいものの順で実行されます。[新規: rippled 0.29.0](https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE") |
-| `expiration` | 符号なし整数           | （省略される場合があります）この時刻の経過後は、資金化されなかったオファーとみなされます（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。関連項目: [オファーの有効期限](offers.html#オファーの有効期限)。[新規: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
+| `expiration` | 符号なし整数           | （省略される場合があります）この時刻の経過後は、資金化されなかったオファーとみなされます（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)）。関連項目: [オファーの有効期限](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーの有効期限)。[新規: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `actMalformed` - 指定されている`marker`フィールドが受け入れられない場合。

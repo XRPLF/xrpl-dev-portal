@@ -22,7 +22,7 @@ blurb: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も
 
 上記のトランザクション指示によって、以下のように実行されます。rf1Bi ...からra5nK... にPaymentを送信することで、ちょうど13 XRPが送金されます。トランザクションが正常に処理されると、その内容が正確に実行されます。新しいレジャーバージョンが[検証済み](../consensus-protocol/index.md)になるまでに、通常約4秒かかるため、現在処理中のレジャーの後にレジャーバージョンのキューに入れられても、正常なトランザクションを作成、送信、実行後、8秒以内に最終結果を出すことができます。
 
-**注意:** [Paymentトランザクションタイプ][Payment]は、[通貨間の支払い](cross-currency-payments.md)や[Partial Payment](partial-payments.md)を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが`Amount`に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、[Partial Paymentの悪用](partial-payments.html#partial-paymentの悪用)を参照してください。
+**注意:** [Paymentトランザクションタイプ][Payment]は、[通貨間の支払い](cross-currency-payments.md)や[Partial Payment](partial-payments.md)を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが`Amount`に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、[Partial Paymentの悪用](partial-payments.md#partial-paymentの悪用)を参照してください。
 
 XRP間の直接支払ではPartial Paymentは使用できませんが、Partial Paymentでは複数の送金元通貨から変換後にXRPを送金できます。
 
@@ -31,7 +31,7 @@ XRP間の直接支払ではPartial Paymentは使用できませんが、Partial 
 
 XRP Ledgerにそのアドレスの記録が事前に存在していなくても、支払いで[口座準備金](../accounts/reserves.md)の最少額を満たすのに十分なXRPが送金されれば、数学的に有効なアドレスで支払いを受け取ることができます。支払いで十分なXRPを送金できない場合は失敗します。
 
-詳細は、[アカウント](accounts.html#アカウントの作成)を参照してください。
+詳細は、[アカウント](../accounts/accounts.md#アカウントの作成)を参照してください。
 
 
 ## アドレスの再利用
@@ -47,7 +47,7 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
 1. [Paymentトランザクション][]のパラメータを検証します。トランザクションがXRPを送信、送金するように構成されている場合、トランザクション処理エンジンはそのトランザクションをXRP間の直接支払として認識します。検証チェックは次のように行います。
 
-   - すべてのフィールドが正しいフォーマットであることを確認します。たとえば、XRPによる直接支払の場合、`Amount`フィールドは[XRPのdrop数](basic-data-types.html#通貨額の指定)でなければなりません。
+   - すべてのフィールドが正しいフォーマットであることを確認します。たとえば、XRPによる直接支払の場合、`Amount`フィールドは[XRPのdrop数](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)でなければなりません。
    - 送信元アドレスがXRP Ledgerの資金供給された[アカウント](../accounts/accounts.md)であることを確認します。
    - 指定された署名がすべて、送信元アドレスに対して有効であることを確認します。
    - 宛先アドレスと送金元アドレスが異なることを確認します。（[宛先タグ](../transactions/source-and-destination-tags.md)が異なる同一アドレスに送金するだけでは不十分です。）
@@ -57,7 +57,7 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
 2. 受取アドレスが、資金供給されたアカウントかどうかを確認します。
 
-   - 受取アドレスに資金が供給されている場合は、[DepositAuth](../accounts/depositauth.md)や[RequireDest](source-and-destination-tags.html#タグの必須化)など、支払いの受け取りに関する制限が受取アドレスにあるかどうかを確認します。そのような制限を支払いが満たしていない場合、支払いは失敗します。
+   - 受取アドレスに資金が供給されている場合は、[DepositAuth](../accounts/depositauth.md)や[RequireDest](../transactions/source-and-destination-tags.md#タグの必須化)など、支払いの受け取りに関する制限が受取アドレスにあるかどうかを確認します。そのような制限を支払いが満たしていない場合、支払いは失敗します。
    - 受取アドレスに資金が供給されていない場合は、[必要準備金](../accounts/reserves.md)の最低額を満たすのに十分なXRPが支払いで送金されるかどうかを確認します。十分でない場合、支払いは失敗します。
 
 3. `Amount`フィールドで指定されたXRPの金額と、[トランザクションコスト](../transactions/transaction-cost.md)用に消却されるXRPの金額の合計を送金元アカウントから引き落とし、受取アカウントに同じ金額を送金します。

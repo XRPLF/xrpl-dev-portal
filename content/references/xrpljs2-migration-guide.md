@@ -317,7 +317,7 @@ In ripple-lib 1.x all methods and properties were on instances of the `RippleAPI
 | `dropsToXrp()` | [`xrpl.dropsToXrp()`](https://js.xrpl.org/modules.html#dropsToXrp) | Now a static method on the module. |
 | `iso8601ToRippleTime()` | [`xrpl.isoTimeToRippleTime()`](https://js.xrpl.org/modules.html#isoTimeToRippleTime) | Now a static method on the module. |
 | `rippleTimeToISO8601()` | [`xrpl.rippleTimeToISOTime()`](https://js.xrpl.org/modules.html#rippleTimeToISOTime) | Now a static method on the module. You can also use the new method [`rippleTimeToUnixTime()`](https://js.xrpl.org/modules.html#rippleTimeToUnixTime) to get a UNIX-style timestamp in milliseconds since the UNIX epoch of 1970-01-01 00:00:00 UTC. |
-| `txFlags.Universal.FullyCanonicalSig` | (Removed - see Notes column) | No longer needed following the [RequireFullyCanonicalSig amendment][]. |
+| `txFlags.Universal.FullyCanonicalSig` | (Removed - see Notes column) | No longer needed following the [RequireFullyCanonicalSig amendment](../resources/known-amendments.md#requirefullycanonicalsig). |
 | `txFlags.Payment.NoRippleDirect` | `xrpl.PaymentFlags.tfNoDirectRipple` | |
 | `txFlags.Payment.PartialPayment` | `xrpl.PaymentFlags.tfPartialPayment` | |
 | `txFlags.Payment.LimitQuality` | `xrpl.PaymentFlags.tfLimitQuality` | |

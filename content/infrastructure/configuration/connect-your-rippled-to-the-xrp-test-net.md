@@ -9,7 +9,7 @@ labels:
 ---
 # Connect Your rippled to a Parallel Network
 
-Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](xrpl-servers.html) to any of these test networks.
+Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](../../concepts/networks-and-servers/index.md) to any of these test networks.
 
 **Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](../../concepts/networks-and-servers/parallel-networks.md) for information on what code version each network needs.
 
@@ -185,15 +185,15 @@ The following example shows how to check your server's latest validated ledger f
 rippled server_info | grep seq
 ```
 
-You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_info) to look up the latest ledger index (`seq`) on the intended network.
+You can use [server_info in the WebSocket Tool](/resources/dev-tools/websocket-api-tool#server_info) to look up the latest ledger index (`seq`) on the intended network.
 
 
 
 ## See Also
 
 - **Tools:**
-    - [XRP Faucets](xrp-testnet-faucet.html)
-    - [WebSocket API Tool](websocket-api-tool.html) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
+    - [XRP Faucets](/resources/dev-tools/xrp-faucets)
+    - [WebSocket API Tool](/resources/dev-tools/websocket-api-tool) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
 - **Concepts:**
     - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)

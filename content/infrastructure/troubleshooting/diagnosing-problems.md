@@ -170,7 +170,7 @@ To use the script:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Amendments](../../concepts/networks-and-servers/amendments.md)
 - **Tutorials:**
     - [Capacity Planning](../installation/capacity-planning.md)

@@ -9,7 +9,7 @@ labels:
 # account_objects
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountObjects.cpp "Source")
 
-The `account_objects` command returns the raw [ledger format][] for all ledger entries owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method](account_lines.md) instead.
+The `account_objects` command returns the raw [ledger format](../../../protocol/ledger-data/ledger-entry-types/index.md) for all ledger entries owned by an account. For a higher-level view of an account's trust lines and balances, see the [account_lines method](account_lines.md) instead.
 
 The types of objects that may appear in the `account_objects` response include:
 
@@ -74,10 +74,10 @@ The request includes the following parameters:
 
 | `Field`                  | Type             | Required? | Description |
 |:-------------------------|:-----------------|:----------|-------------|
-| `account`                | String           | Yes       | A unique identifier for the account, most commonly the account's [Address][]. |
+| `account`                | String           | Yes       | A unique identifier for the account, most commonly the account's [Address](../../../protocol/data-types/basic-data-types.md#addresses). |
 | `deletion_blockers_only` | Boolean          | No        | If `true`, the response only includes objects that would block this account from [being deleted](../../../../concepts/accounts/deleting-accounts.md). The default is `false`. [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE") |
-| `ledger_hash`            | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`            | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index`           | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | No        | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker](../../api-conventions/markers-and-pagination.md)       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 | `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `check`, `deposit_preauth`, `escrow`, `nft_offer`, `nft_page`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
@@ -1207,18 +1207,18 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type                      | Description             |
 |:-----------------------|:--------------------------|:------------------------|
-| `account`              | String                    | Unique [Address][] of the account this request corresponds to |
-| `account_objects`      | Array                     | Array of objects owned by this account. Each object is in its raw [ledger format][]. |
+| `account`              | String                    | Unique [Address](../../../protocol/data-types/basic-data-types.md#addresses) of the account this request corresponds to |
+| `account_objects`      | Array                     | Array of objects owned by this account. Each object is in its raw [ledger format](../../../protocol/ledger-data/ledger-entry-types/index.md). |
 | `ledger_hash`          | String                    | (May be omitted) The identifying hash of the ledger that was used to generate this response. |
-| `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
-| `ledger_current_index` | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
+| `ledger_index`         | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
+| `ledger_current_index` | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
 | `limit`                | Number                    | _(May be omitted)_ The limit that was used in this request, if any. |
 | `marker`               | [Marker](../../api-conventions/markers-and-pagination.md)                | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 | `validated`            | Boolean                   | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
+* `actNotFound` - The [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

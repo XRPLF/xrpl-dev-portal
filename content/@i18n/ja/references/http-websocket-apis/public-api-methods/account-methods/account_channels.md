@@ -51,17 +51,17 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html#account_channels)
+[試してみる>](/resources/dev-tools/websocket-api-tool#account_channels)
 
 
 要求には以下のパラメーターが含まれます。
 
 | フィールド                 | 型                                       | 説明 |
 |:----------------------|:-------------------------------------------|:--------|
-| `account`             | 文字列                                     | アカウントの一意のID。通常はアカウントの[アドレス](basic-data-types.html#アドレス)です。要求は、このアカウントがChannelの所有者/送金元であるChannelを返します。 |
-| `destination_account` | 文字列                                     | _（省略可）_ アカウントの一意のID。通常はアカウントの[アドレス](basic-data-types.html#アドレス)です。指定されている場合、フィルタリングによりこのアカウントを送金先とするPayment Channelに絞り込まれます。 |
-| `ledger_hash`         | 文字列                                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
-| `ledger_index`        | 文字列または符号なし整数                 | _（省略可）_ 使用する[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `account`             | 文字列                                     | アカウントの一意のID。通常はアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)です。要求は、このアカウントがChannelの所有者/送金元であるChannelを返します。 |
+| `destination_account` | 文字列                                     | _（省略可）_ アカウントの一意のID。通常はアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)です。指定されている場合、フィルタリングによりこのアカウントを送金先とするPayment Channelに絞り込まれます。 |
+| `ledger_hash`         | 文字列                                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
+| `ledger_index`        | 文字列または符号なし整数                 | _（省略可）_ 使用する[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
 | `limit`               | 整数                                    | _（省略可）_ 取得するトランザクション数を制限します。サーバーはこの値に従う必要はありません。10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |
 | `marker`              | [マーカー](../../api-conventions/markers-and-pagination.md) | _（省略可）_ 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。 |
 
@@ -163,8 +163,8 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 |:-----------|:-------------------------------------------|:-------------------|
 | `account`  | 文字列                                     | Payment Channelの送金元/所有者のアドレス。これは要求の`account`フィールドに対応しています。 |
 | `channels` | channelオブジェクトの配列                   | この`account`が所有するPayment Channel。 |
-| `ledger_hash` | 文字列                                  | この応答の生成に使用されたレジャーバージョンの識別用[ハッシュ](basic-data-types.html#ハッシュ)。[新規: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
-| `ledger_index` | 数値                                 | この応答の生成に使用されたレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。[新規: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
+| `ledger_hash` | 文字列                                  | この応答の生成に使用されたレジャーバージョンの識別用[ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)。[新規: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
+| `ledger_index` | 数値                                 | この応答の生成に使用されたレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。[新規: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
 | `validated` | ブール値                                   | _（省略される場合があります）_`true`の場合、この応答の情報は検証済みレジャーバージョンから取り込まれます。trueでない場合、情報は変更されることがあります。[新規: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
 | `limit`    | 数値                                     | _（省略される場合があります）_ この要求から実際に返されるchannelオブジェクトの数の制限。 |
 | `marker`   | [マーカー](../../api-conventions/markers-and-pagination.md) | _（省略される場合があります）_ ページネーションのサーバー定義の値。この値を次のコールに渡して、このコールで終わった箇所から結果の取得を再開します。この後に追加のページがない場合は省略されます。 |
@@ -173,22 +173,22 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
-| `account` | 文字列 | Channelの所有者（[アドレス](basic-data-types.html#アドレス)として）。 |
-| `amount` | 文字列 | このChannelに割り当てられる[XRP、drop単位](basic-data-types.html#通貨額の指定)の合計額。 |
-| `balance` | 文字列 | 使用されているレジャーバージョンにおいて、このChannelから支払われた[XRP、drop単位](basic-data-types.html#通貨額の指定)の合計額。（Channelに残っているXRPの額を計算するには、`balance`を`amount`から差し引きます。） |
-| `channel_id` | 文字列 | このChannelの一意のID（64文字の16進数文字列）。レジャーの状態データの[channelオブジェクトのID](paychannel.html#paychannel-idのフォーマット)でもあります。 |
-| `destination_account` | 文字列 | Channelの送金先アカウント（[アドレス](basic-data-types.html#アドレス)として）。このアカウントだけが、Channelがオープンしている間にXRPを受領できます。 |
-| `public_key` | 文字列 | _（省略される場合があります）_ XRP Ledgerの[base58](base58-encodings.html)フォーマットのPayment Channelの公開鍵。このChannelに対する署名付きクレームは、一致するキーペアを使用して清算する必要があります。 |
+| `account` | 文字列 | Channelの所有者（[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)として）。 |
+| `amount` | 文字列 | このChannelに割り当てられる[XRP、drop単位](../../../protocol/data-types/basic-data-types.md#通貨額の指定)の合計額。 |
+| `balance` | 文字列 | 使用されているレジャーバージョンにおいて、このChannelから支払われた[XRP、drop単位](../../../protocol/data-types/basic-data-types.md#通貨額の指定)の合計額。（Channelに残っているXRPの額を計算するには、`balance`を`amount`から差し引きます。） |
+| `channel_id` | 文字列 | このChannelの一意のID（64文字の16進数文字列）。レジャーの状態データの[channelオブジェクトのID](../../../protocol/ledger-data/ledger-entry-types/paychannel.md#paychannel-idのフォーマット)でもあります。 |
+| `destination_account` | 文字列 | Channelの送金先アカウント（[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)として）。このアカウントだけが、Channelがオープンしている間にXRPを受領できます。 |
+| `public_key` | 文字列 | _（省略される場合があります）_ XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマットのPayment Channelの公開鍵。このChannelに対する署名付きクレームは、一致するキーペアを使用して清算する必要があります。 |
 | `public_key_hex` | 文字列 | _（省略される場合があります）_ Payment Channel作成時にChannelの公開鍵を指定している場合はその公開鍵（16進数フォーマット）。このChannelに対する署名付きクレームは、一致するキーペアを使用して清算する必要があります。 |
 | `settle_delay` | 符号なし整数 | Payment Channelの所有者がChannel閉鎖を依頼した後に、そのChannelが開いている必要がある秒数。 |
-| `expiration` | 符号なし整数 | _（省略される場合があります）_ このChannelに設定された有効期限（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。この有効期限の日付は変更可能です。これが最新の検証済みレジャーの閉鎖時刻よりも前の場合、Channelは有効期限切れです。 |
-| `cancel_after` | 符号なし整数 | _（省略される場合があります）_ このChannelの変更不可能な有効期限がChannel作成時に指定されている場合はその有効期限（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。これが最新の検証済みレジャーの閉鎖時刻よりも前の場合、Channelは有効期限切れです。 |
+| `expiration` | 符号なし整数 | _（省略される場合があります）_ このChannelに設定された有効期限（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)）。この有効期限の日付は変更可能です。これが最新の検証済みレジャーの閉鎖時刻よりも前の場合、Channelは有効期限切れです。 |
+| `cancel_after` | 符号なし整数 | _（省略される場合があります）_ このChannelの変更不可能な有効期限がChannel作成時に指定されている場合はその有効期限（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)）。これが最新の検証済みレジャーの閉鎖時刻よりも前の場合、Channelは有効期限切れです。 |
 | `source_tag` | 符号なし整数 | _（省略される場合があります）_ このPayment Channelを通じた支払いの[送金元タグ](../../../../concepts/transactions/source-and-destination-tags.md)として使用される32ビット符号なし整数（Channel作成時に指定されている場合）。送金元アカウントでのPayment Channelの送金人またはその他の目的を示します。通常、このChannelからの支払いを差し戻す場合、返金の`DestinationTag`にこの値を指定する必要があります。 |
 | `destination_tag` | 符号なし整数 | _（省略される場合があります）_ このChannelを通じた支払いの[送金先タグ](../../../../concepts/transactions/source-and-destination-tags.md)として使用される32ビット符号なし整数（Channel作成時に指定されている場合）。送金先アカウントでのPayment Channelの受取人またはその他の目的を示します。 |
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - 要求の`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

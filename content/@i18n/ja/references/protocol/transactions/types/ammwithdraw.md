@@ -9,7 +9,7 @@ status: not_enabled
 # AMMWithdraw
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
 AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 
@@ -38,16 +38,16 @@ AMMの流動性プロバイダトークン（LPトークン）を返却するこ
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド     | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明         |
 |:-------------|:-----------|:-----------|:------|:------------|
 | `Asset`      | オブジェクト | STIssue    | はい   | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Asset2`     | オブジェクト | STIssue    | はい   | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトです(XRPの場合は`issuer`を省略)。|
-| `Amount`     | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMから引き出す1つの資産の量。これは、AMMのプールにある資産の1つ（トークンまたはXRP）と一致する必要があります。 |
-| `Amount2`    | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMから引き出す他の資産の量。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じにすることはできません。 |
-| `EPrice`     | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | 引き出しに必要な、資産の1単位あたりに支払う最低有効価格（LPトークンの返却単位）。 |
-| `LPTokenIn`  | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMのLPトークンの引き替え数。 |
+| `Amount`     | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | AMMから引き出す1つの資産の量。これは、AMMのプールにある資産の1つ（トークンまたはXRP）と一致する必要があります。 |
+| `Amount2`    | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | AMMから引き出す他の資産の量。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じにすることはできません。 |
+| `EPrice`     | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | 引き出しに必要な、資産の1単位あたりに支払う最低有効価格（LPトークンの返却単位）。 |
+| `LPTokenIn`  | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | AMMのLPトークンの引き替え数。 |
 
 **注記:** ダブルアセット出金の場合、`Asset1`と`Amount1`または`Amount2`が対応していれば、`Asset2`はもう一方に対応することが可能です。しかし、両者を一致させることをお勧めします(つまり、`Amount2`は`Asset2`で定義されたアセットの金額です)。その方が混乱を招きにくくなります。
 
@@ -89,7 +89,7 @@ AMMの流動性プロバイダトークン（LPトークン）を返却するこ
 
 ### AMMWithdrawのフラグ
 
-AMMWithdrawトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)の値をサポートしています。
+AMMWithdrawトランザクションは、以下のように[`Flags`フィールド](../common-fields.md#flagsフィールド)の値をサポートしています。
 
 | フラグ名                 | 16進数値      | 10進数値       | 説明                   |
 |:------------------------|:-------------|:--------------|:----------------------|
@@ -101,7 +101,7 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 | `tfOneAssetLPToken`     | `0x00200000` | 2097152       | シングルアセット出金を行い、指定された額のLPトークンを受け取ります。 |
 | `tfLimitLPToken`        | `0x00400000` | 4194304       | 有効価格を指定して、シングルアセット出金を行います。 |
 
-これらのフラグのうちの **1つのみ** と、任意の[グローバルフラグ](transaction-common-fields.html#グローバルフラグ)を指定する必要があります。
+これらのフラグのうちの **1つのみ** と、任意の[グローバルフラグ](../common-fields.md#グローバルフラグ)を指定する必要があります。
 
 
 ## エラーケース

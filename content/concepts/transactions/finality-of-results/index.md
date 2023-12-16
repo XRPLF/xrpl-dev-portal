@@ -48,7 +48,7 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 
     - A [Payment transaction](../../../references/protocol/transactions/types/payment.md) that tentatively failed because the sender did not have enough funds may later succeed because another transaction delivering the necessary funds came first in the canonical order. The reverse is also possible: a transaction that tentatively succeeded may fail because a transaction delivering the necessary funds did not come first after being put into canonical order.
 
-    **Tip:** For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in [stand-alone mode][], you must [manually close the ledger](../../../infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md) in such cases.
+    **Tip:** For this reason, when running tests against the XRP Ledger, be sure to wait for a ledger close in between transactions if you have several accounts affecting the same data. If you are testing against a server in [stand-alone mode](../../networks-and-servers/rippled-server-modes.md#stand-alone-mode), you must [manually close the ledger](../../../infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md) in such cases.
 
 
 ## See Also

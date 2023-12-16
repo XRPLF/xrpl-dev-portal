@@ -11,9 +11,9 @@ showcase_icon: assets/img/logos/globe.svg
 ---
 # Get Started Using HTTP / WebSocket APIs
 
-If you don't have or don't want to use a [client library](../../references/client-libraries.md) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](xrpl-servers.html). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](../../infrastructure/installation/index.md) you can still use a [public server][public servers].
+If you don't have or don't want to use a [client library](../../references/client-libraries.md) in your preferred programming language, you can access the XRP Ledger directly through the APIs of its core server software, [`rippled`](../../concepts/networks-and-servers/index.md). The server provides APIs over JSON-RPC and WebSocket protocols. If you don't [run your own instance of `rippled`](../../infrastructure/installation/index.md) you can still use a [public server][public servers].
 
-**Tip:** You can dive right into the API with the [**WebSocket API Tool**](websocket-api-tool.html), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.
+**Tip:** You can dive right into the API with the [**WebSocket API Tool**](/resources/dev-tools/websocket-api-tool), or use the [XRP Ledger Explorer](https://livenet.xrpl.org/) to watch the progress of the ledger live.
 
 ## Differences Between JSON-RPC and WebSocket
 
@@ -34,7 +34,7 @@ The [example config file](https://github.com/XRPLF/rippled/blob/f00f263852c47293
 
 ## WebSocket API
 
-If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [WebSocket API Tool](websocket-api-tool.html). Later on, when you want to connect to your own `rippled` server, you can [build your own client](monitor-incoming-payments-with-websocket.md) or use a [client library](../../references/client-libraries.md) with WebSocket support.
+If you are looking to try out some methods on the XRP Ledger, you can skip writing your own WebSocket code and go straight to using the API at the [WebSocket API Tool](/resources/dev-tools/websocket-api-tool). Later on, when you want to connect to your own `rippled` server, you can [build your own client](monitor-incoming-payments-with-websocket.md) or use a [client library](../../references/client-libraries.md) with WebSocket support.
 
 Example WebSocket API request:
 
@@ -93,18 +93,18 @@ Read more: [Commandline Usage Reference >](../../infrastructure/commandline-usag
 For a full list of API methods, see:
 
 - [Public `rippled` Methods](../../references/http-websocket-apis/public-api-methods/index.md): Methods available on public servers, including looking up data from the ledger and submitting transactions.
-- [Admin `rippled` Methods](../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](manage-the-rippled-server.html) the `rippled` server.
+- [Admin `rippled` Methods](../../references/http-websocket-apis/admin-api-methods/index.md): Methods for [managing](../../infrastructure/installation/install-rippled-on-ubuntu.md) the `rippled` server.
 
 
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](xrp-ledger-overview.html)
+    - [XRP Ledger Overview](/about/)
     - [Client Libraries](../../references/client-libraries.md)
     - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
 - **Tutorials:**
     - [Get Started Using JavaScript](get-started-using-javascript.md)
     - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
-    - [Manage the rippled Server](manage-the-rippled-server.html)
+    - [Manage the rippled Server](../../infrastructure/installation/install-rippled-on-ubuntu.md)
 - **References:**
     - [rippled API Reference](../../references/http-websocket-apis/index.md)

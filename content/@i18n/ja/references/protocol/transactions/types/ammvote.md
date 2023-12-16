@@ -9,7 +9,7 @@ status: not_enabled
 # AMMVote
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMVote.cpp "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)インスタンスの取引手数料を投票します。最大8つのアカウントが、保有するAMMのLPトークンの量に比例して投票することができます。投票を行うごとには、投票の加重平均に基づいてAMMの取引手数料が再計算されます。
 
@@ -33,7 +33,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド     | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明 |
 |:-------------|:-----------|:-----------|:-----|:------------|

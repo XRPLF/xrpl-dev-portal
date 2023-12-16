@@ -99,7 +99,7 @@ Connecting to 127.0.0.1:5005
 
 応答の`tx_json`フィールドを保存します。このフィールドの`Signers`フィールドに新しい署名が入力されています。`tx_blob`フィールドの値は無視できます。
 
-スタンドアロンモードまたは本番環境以外のネットワークで問題が発生した場合は、[マルチシグが有効であること](start-a-new-genesis-ledger-in-stand-alone-mode.html#新しいジェネシスレジャーの設定)を確認してください。
+スタンドアロンモードまたは本番環境以外のネットワークで問題が発生した場合は、[マルチシグが有効であること](../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md#新しいジェネシスレジャーの設定)を確認してください。
 
 ## 3.追加の署名の取得
 

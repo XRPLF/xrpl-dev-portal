@@ -14,7 +14,7 @@ Every transaction has the same set of common fields, plus additional fields base
 | `Account`            | String           | AccountID         | _(Required)_ The unique address of the [account](../../../concepts/accounts/accounts.md) that initiated the transaction. |
 | `TransactionType`    | String           | UInt16            | _(Required)_ The type of transaction. Valid [transaction types](types/index.md) include: `Payment`, `OfferCreate`, `TrustSet`, and many others. |
 | `Fee`                | String           | Amount            | _(Required; [auto-fillable][])_ Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements. See [Transaction Cost](../../../concepts/transactions/transaction-cost.md) for details. |
-| `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead _(Added by the [TicketBatch amendment][].)_. |
+| `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead _(Added by the [TicketBatch amendment](../../../resources/known-amendments.md#ticketbatch).)_. |
 | [`AccountTxnID`](#accounttxnid) | String | Hash256          | _(Optional)_ Hash value identifying another transaction. If provided, this transaction is only valid if the sending account's previously-sent transaction matches the provided hash. |
 | [`Flags`](#flags-field) | Number        | UInt32            | _(Optional)_ Set of bit-flags for this transaction. |
 | `LastLedgerSequence` | Number           | UInt32            | _(Optional; strongly recommended)_ Highest ledger index this transaction can appear in. Specifying this field places a strict upper limit on how long the transaction can wait to be validated or rejected. See [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md) for more details. |
@@ -68,7 +68,7 @@ To check whether a transaction has a given flag enabled, use the bitwise-and ope
 
 Most flags only have meaning for a specific transaction type. The same bitwise value may be reused for flags on different transaction types, so it is important to pay attention to the `TransactionType` field when setting and reading flags.
 
-Bits that are not defined as flags MUST be 0. (The [fix1543 amendment](known-amendments.html#fix1543) enforces this rule on some transaction types. Most transaction types enforce this rule by default.)
+Bits that are not defined as flags MUST be 0. (The [fix1543 amendment](../../../resources/known-amendments.md#fix1543) enforces this rule on some transaction types. Most transaction types enforce this rule by default.)
 
 ### Global Flags
 
@@ -76,11 +76,11 @@ The only flag that applies globally to all transactions is as follows:
 
 | Flag Name             | Hex Value  | Decimal Value | Description               |
 |:----------------------|:-----------|:--------------|:--------------------------|
-| `tfFullyCanonicalSig` | `0x80000000` | 2147483648  | **DEPRECATED** No effect. (If the [RequireFullyCanonicalSig amendment][] is not enabled, this flag enforces a [fully-canonical signature](transaction-malleability.html#alternate-secp256k1-signatures).) |
+| `tfFullyCanonicalSig` | `0x80000000` | 2147483648  | **DEPRECATED** No effect. (If the [RequireFullyCanonicalSig amendment](../../../resources/known-amendments.md#requirefullycanonicalsig) is not enabled, this flag enforces a [fully-canonical signature](../../../concepts/transactions/finality-of-results/transaction-malleability.md#alternate-secp256k1-signatures).) |
 
 When using the [sign method](../../http-websocket-apis/admin-api-methods/signing-methods/sign.md) (or [submit method](../../http-websocket-apis/public-api-methods/transaction-methods/submit.md) in "sign-and-submit" mode), `rippled` adds a `Flags` field with `tfFullyCanonicalSig` enabled unless the `Flags` field is already present. The `tfFullyCanonicalSig` flag is not automatically enabled if `Flags` is explicitly specified. The flag is not automatically enabled when using the [sign_for method](../../http-websocket-apis/admin-api-methods/signing-methods/sign_for.md) to add a signature to a multi-signed transaction.
 
-**Note:** The `tfFullyCanonicalSig` flag was used from 2014 until 2020 to protect against [transaction malleability](../../../concepts/transactions/finality-of-results/transaction-malleability.md) while maintaining compatibility with legacy signing software. The [RequireFullyCanonicalSig amendment][] ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) that does not have RequireFullyCanonicalSig enabled, you should always enable the `tfFullyCanonicalSig` flag to protect against transaction malleability.
+**Note:** The `tfFullyCanonicalSig` flag was used from 2014 until 2020 to protect against [transaction malleability](../../../concepts/transactions/finality-of-results/transaction-malleability.md) while maintaining compatibility with legacy signing software. The [RequireFullyCanonicalSig amendment](../../../resources/known-amendments.md#requirefullycanonicalsig) ended compatibility with such legacy software and made the protections the default for all transactions. If you are using a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) that does not have RequireFullyCanonicalSig enabled, you should always enable the `tfFullyCanonicalSig` flag to protect against transaction malleability.
 
 ### Flag Ranges
 
@@ -92,7 +92,7 @@ A transaction's `Flags` field can contain flags that apply at different levels o
 | Type-based Flags | `0x00ff0000` | Flags with different meanings depending on the [transaction type](types/index.md) that uses them. |
 | Reserved Flags   | `0x0000ffff` | Flags that are not currently defined. A transaction is only valid if these flags are disabled. |
 
-**Note:** The [AccountSet transaction](types/accountset.md) type has [its own non-bitwise flags](types/accountset.md#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](ledger-object-types.html) also have a `Flags` field with different bitwise flag definitions.
+**Note:** The [AccountSet transaction](types/accountset.md) type has [its own non-bitwise flags](types/accountset.md#accountset-flags), which serve a similar purpose to type-based flags. [Ledger objects](../ledger-data/ledger-entry-types/index.md) also have a `Flags` field with different bitwise flag definitions.
 
 
 ## Memos Field

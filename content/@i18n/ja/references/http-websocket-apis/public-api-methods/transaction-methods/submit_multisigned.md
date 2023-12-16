@@ -8,7 +8,7 @@ labels:
 # submit_multisigned
 [[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-`submit_multisigned`コマンドは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.html#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
+`submit_multisigned`コマンドは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.md#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
 
 このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。[新規: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE")
 
@@ -252,7 +252,7 @@ rippled submit_multisigned '{
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `srcActMalformed` - `tx_json`の`Account`フィールドが無効または欠落していました。
 * `internal` - 内部エラーが発生しました。これには、指定されているトランザクションJSONに対して署名が無効な場合も含まれます。

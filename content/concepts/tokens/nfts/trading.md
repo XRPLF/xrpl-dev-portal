@@ -10,7 +10,7 @@ labels:
 
 You can transfer NFTs between accounts on the XRP Ledger. You can offer to buy or sell an NFT, or accept offers from other accounts to buy an NFT you own. You can even give away an NFT by offering to sell it at a price of 0.  All offers are created using [NFTokenCreateOffer transaction](../../../references/protocol/transactions/types/nftokencreateoffer.md).
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 ## Reserve Requirements
 

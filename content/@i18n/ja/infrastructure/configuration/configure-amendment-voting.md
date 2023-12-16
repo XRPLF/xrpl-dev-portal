@@ -8,7 +8,7 @@ labels:
 ---
 # Amendment投票機能の設定
 
-バリデーターとして設定されたサーバーは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](get-started-using-http-websocket-apis.html#管理者アクセス権限)が必要です).
+バリデーターとして設定されたサーバーは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/get-started/get-started-using-http-websocket-apis.md#管理者アクセス権限)が必要です).
 
 例えば、「SHAMapV2」Amendmentに反対票を投じるには、以下のコマンドを実行します。
 

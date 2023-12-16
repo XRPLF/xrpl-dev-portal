@@ -12,7 +12,7 @@ The [EscrowCreate transaction](../../../references/protocol/transactions/types/e
 
 ## 1. Calculate release time
 
-You must specify the time as whole **[seconds since the Ripple Epoch][]**, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:
+You must specify the time as whole **[seconds since the Ripple Epoch](../../../references/protocol/data-types/basic-data-types.md#specifying-time)**, which is 946684800 seconds after the UNIX epoch. For example, to release funds at midnight UTC on November 13, 2017:
 
 {% tabs %}
 
@@ -42,7 +42,7 @@ print(release_date_ripple)
 
 ## 2. Submit EscrowCreate transaction
 
-[Sign and submit](../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction](../../../references/protocol/transactions/types/escrowcreate.md). Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
+[Sign and submit](../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction](../../../references/protocol/transactions/types/escrowcreate.md). Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts), to escrow.
 
 {% partial file="/_snippets/secret-key-warning.md" /%} <!--#{ fix md highlighting_ #}-->
 

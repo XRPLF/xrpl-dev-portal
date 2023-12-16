@@ -24,7 +24,7 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl4j`.
-* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl4j`.
+* How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `xrpl4j`.
 * How to use the `xrpl4j` library to look up information about an account on the XRP Ledger.
 * How to put these steps together to create a Java app.
 

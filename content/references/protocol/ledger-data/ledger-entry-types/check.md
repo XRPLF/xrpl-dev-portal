@@ -8,7 +8,7 @@ labels:
 # Check
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L157-L170 "Source")
 
-_(Added by the [Checks amendment][].)_
+_(Added by the [Checks amendment](../../../../resources/known-amendments.md#checks).)_
 
 A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
 
@@ -43,7 +43,7 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 | `Destination`       | String           | Account           | Yes       | The intended recipient of the Check. Only this address can cash the Check, using a [CheckCash transaction](../../transactions/types/checkcash.md). |
 | `DestinationNode`   | String           | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. |
 | `DestinationTag`    | Number           | UInt32            | No        | An arbitrary tag to further specify the destination for this Check, such as a hosted recipient at the destination address. |
-| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time][] for details. |
+| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Check is considered expired. See [Specifying Time](../../data-types/basic-data-types.md#specifying-time) for details. |
 | `InvoiceID`         | String           | Hash256           | No        | Arbitrary 256-bit hash provided by the sender as a specific reason or identifier for this Check. |
 | `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x0043`, mapped to the string `Check`, indicates that this object is a Check object. |
 | `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this object, in case the directory consists of multiple pages. |
@@ -67,7 +67,7 @@ There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 ## Check ID Format
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp#L193-L200 "Source")
 
-The ID of a `Check` entry is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of a `Check` entry is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The Check space key (`0x0043`)
 * The AccountID of the sender of the [CheckCreate transaction](../../transactions/types/checkcreate.md) that created the `Check`

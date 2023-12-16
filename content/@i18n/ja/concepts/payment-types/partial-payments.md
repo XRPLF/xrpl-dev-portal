@@ -8,7 +8,7 @@ labels:
 ---
 # Partial Payment
 
-デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](../tokens/transfer-fees.md)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](payment.html#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](bouncing-payments.md)したい場合に便利です。
+デフォルトのケースでは、XRP Ledgerの[Paymentトランザクション][]の`Amount`フィールドに、為替レートと[送金手数料](../tokens/transfer-fees.md)を差し引いた実際の送金額が指定されます。「Partial Payment」フラグ（[**tfPartialPayment**](../../references/protocol/transactions/types/payment.md#paymentのフラグ)）を使うと、送金額を増額する代わりに受取金額を減額して、支払を正常に実行できます。Partial Paymentは、追加コストなしで[支払を返金](bouncing-payments.md)したい場合に便利です。
 
 [トランザクションコスト](../transactions/transaction-cost.md)に使用されるXRPの額は、トランザクションタイプに関わらず常に送金元のアカウントから差し引かれます。
 
@@ -54,7 +54,7 @@ Partial Paymentには次の制限事項があります。
 
 ### `delivered_amount`フィールド
 
-Partial Paymentでの実際の送金額を把握できるように、正常に完了したPaymentトランザクションのメタデータには`delivered_amount`フィールドが含まれています。このフィールドには送金額が`Amount`フィールドと[同じフォーマット](basic-data-types.html#通貨額の指定)で示されています。
+Partial Paymentでの実際の送金額を把握できるように、正常に完了したPaymentトランザクションのメタデータには`delivered_amount`フィールドが含まれています。このフィールドには送金額が`Amount`フィールドと[同じフォーマット](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)で示されています。
 
 Partial Payment以外の場合、トランザクションのメタデータの`delivered_amount`フィールドは、トランザクションの`Amount`フィールドと同じです。支払がトークンで行われた場合、丸め方により`delivered_amount`が`Amount`フィールドとやや異なることがあります。
 
@@ -73,7 +73,7 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 | [JSON-RPC / WebSocket][] | [txメソッド][] | `result.meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [transaction_entryメソッド][] | `result.metadata.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [ledgerメソッド][]（トランザクションが展開されている状態） | `result.ledger.transactions` 配列メンバーの`metaData.delivered_amount` [新規: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE") |
-| [WebSocket][] | [トランザクションサブスクリプション](subscribe.html#トランザクションストリーム) | サブスクリプションメッセージの`meta.delivered_amount` [新規: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE") |
+| [WebSocket][] | [トランザクションサブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#トランザクションストリーム) | サブスクリプションメッセージの`meta.delivered_amount` [新規: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE") |
 | ripple-lib v1.x | `getTransaction` メソッド | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` メソッド | 配列メンバーの `outcome.deliveredAmount` |
 

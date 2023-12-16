@@ -41,7 +41,7 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 
 | `Field`  | 型   | 説明                                              |
 |:---------|:-------|:---------------------------------------------------------|
-| `secret` | 文字列 | _（省略可）_ 指定されている場合は、この値はキーペアの検証のためのシークレット値として使用されます。有効なフォーマットには、XRP Ledgerの[base58](base58-encodings.html)フォーマット、[RFC-1751](https://tools.ietf.org/html/rfc1751)、またはパスフレーズがあります。省略されている場合は、ネットワークへの検証の提案が無効になります。 |
+| `secret` | 文字列 | _（省略可）_ 指定されている場合は、この値はキーペアの検証のためのシークレット値として使用されます。有効なフォーマットには、XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマット、[RFC-1751](https://tools.ietf.org/html/rfc1751)、またはパスフレーズがあります。省略されている場合は、ネットワークへの検証の提案が無効になります。 |
 
 ### 応答フォーマット
 
@@ -87,10 +87,10 @@ Connecting to 127.0.0.1:5005
 | `Field`                 | 型   | 説明                               |
 |:------------------------|:-------|:------------------------------------------|
 | `validation_key`        | 文字列 | （提案が無効な場合には省略可）これらの検証クレデンシャルのシークレットキー（[RFC-1751](https://tools.ietf.org/html/rfc1751)フォーマット）。 |
-| `validation_public_key` | 文字列 | （提案が無効な場合には省略可）これらの検証クレデンシャルの公開鍵（XRP Ledgerの[base58](base58-encodings.html)エンコード文字列フォーマット） |
-| `validation_seed`       | 文字列 | （提案が無効な場合には省略可）これらの検証クレデンシャルのシークレットキー（XRP Ledgerの[base58](base58-encodings.html)エンコード文字列フォーマット） |
+| `validation_public_key` | 文字列 | （提案が無効な場合には省略可）これらの検証クレデンシャルの公開鍵（XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)エンコード文字列フォーマット） |
+| `validation_seed`       | 文字列 | （提案が無効な場合には省略可）これらの検証クレデンシャルのシークレットキー（XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)エンコード文字列フォーマット） |
 
 ### 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `badSeed` - 要求に無効なシークレット値が指定されていました。この場合は通常、シークレット値が異なるフォーマットの有効文字列（アカウントアドレス、検証の公開鍵など）である可能性があります。

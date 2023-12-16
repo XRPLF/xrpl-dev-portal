@@ -9,7 +9,7 @@ status: not_enabled
 # AMMVote
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMVote.cpp "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.
 

@@ -7,7 +7,7 @@ labels:
 ---
 # Advance the Ledger in Stand-Alone Mode
 
-In [stand-alone mode][], `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Since there is no consensus process in this mode, you must manually advance the ledger index using the [ledger_accept method](../../references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md):
+In [stand-alone mode](../../concepts/networks-and-servers/rippled-server-modes.md#stand-alone-mode), `rippled` does not communicate to other members of the peer-to-peer network or participate in a consensus process. Since there is no consensus process in this mode, you must manually advance the ledger index using the [ledger_accept method](../../references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md):
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg

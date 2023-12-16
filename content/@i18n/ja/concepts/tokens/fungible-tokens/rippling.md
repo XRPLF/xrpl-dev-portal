@@ -26,7 +26,7 @@ BobがCharlieに$3を支払いたい場合、BobはAliceに対して「Alice、�
 
 ![Charlie --（$13）-- Alice --（$17）-- Bob](img/noripple-02.png)
 
-2つのアドレスが、アドレス間のトラストライン上の残高を調整することで相互に支払うこのプロセスを「Rippling」と呼びます。これはXRP Ledgerの有用で重要な機能です。Ripplingは、同一の[通貨コード](currency-formats.html#通貨コード)を使用するトラストラインによってアドレスがリンクされている場合に起こります。イシュアーが同一でなくてもかまいません。実際、大規模なチェーンでは常にイシュアーが変更されます。
+2つのアドレスが、アドレス間のトラストライン上の残高を調整することで相互に支払うこのプロセスを「Rippling」と呼びます。これはXRP Ledgerの有用で重要な機能です。Ripplingは、同一の[通貨コード](../../../references/protocol/data-types/currency-formats.md#通貨コード)を使用するトラストラインによってアドレスがリンクされている場合に起こります。イシュアーが同一でなくてもかまいません。実際、大規模なチェーンでは常にイシュアーが変更されます。
 
 ## NoRippleフラグ
 
@@ -92,5 +92,5 @@ DefaultRippleフラグは、デフォルトで着信トラストラインでのR
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]
   - [TrustSetトランザクション][]
-  - [AccountRootのフラグ](accountroot.html#accountrootのフラグ)
-  - [RippleState（トラストライン）のフラグ](ripplestate.html#ripplestateのフラグ)
+  - [AccountRootのフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+  - [RippleState（トラストライン）のフラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)

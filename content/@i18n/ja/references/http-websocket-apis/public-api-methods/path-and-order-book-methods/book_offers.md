@@ -64,17 +64,17 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#book_offers)
+[試してみる >](/resources/dev-tools/websocket-api-tool#book_offers)
 
 要求には以下のパラメーターが含まれます。
 
 | `Field`        | 型                                         | 説明                           |
 |:---------------|:-------------------------------------------|:-------------------------------|
-| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
 | `limit` | 符号なし整数 | _（省略可）_ 指定されている場合、サーバーはこの制限を超える数のオファーを結果に含めません。資金供給のないオファーはサーバーにより省略されるため、返される結果の総数はこの制限よりも少ないことがあります。 |
 | `marker` | [マーカー](../../api-conventions/markers-and-pagination.md) | _（省略可）_ 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。 |
-| `taker` | 文字列 | _（省略可）_ パースペクティブとして使用するアカウントの[アドレス](basic-data-types.html#アドレス)。このアカウントが発行した[資金供給のないオファー](offers.html#オファーのライフサイクル)は常に応答に含まれます。（これを使用して、キャンセルしたい各自のオーダーを検索できます。） |
+| `taker` | 文字列 | _（省略可）_ パースペクティブとして使用するアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)。このアカウントが発行した[資金供給のないオファー](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)は常に応答に含まれます。（これを使用して、キャンセルしたい各自のオーダーを検索できます。） |
 | `taker_gets` | オブジェクト | オファーを受諾するアカウントが受け取る通貨を、[通貨額][通貨額]と同様に、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
 | `taker_pays` | オブジェクト | オファーを受諾するアカウントが支払う通貨を、[通貨額][通貨額]と同様に、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
 
@@ -166,9 +166,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 | `Field`                | 型                        | 説明                    |
 |:-----------------------|:--------------------------|:------------------------|
-| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略）_ この情報の取得時に使用した、現在処理中のレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
-| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略可）_ 要求に従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
-| `ledger_hash` | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | _（省略される場合があります）_ 要求に従って、このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
+| `ledger_current_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略）_ この情報の取得時に使用した、現在処理中のレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
+| `ledger_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略可）_ 要求に従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
+| `ledger_hash` | 文字列 - [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ) | _（省略される場合があります）_ 要求に従って、このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
 | `marker` | [マーカー](../../api-conventions/markers-and-pagination.md) | _（省略される場合があります）_ 応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に情報ページがない場合は省略されます。 |
 | `offers` | 配列 | Offerオブジェクトの配列。各オブジェクトには[Offer オブジェクト](../../../protocol/ledger-data/ledger-entry-types/offer.md)のフィールドが含まれています。 |
 
@@ -183,7 +183,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `srcCurMalformed` - 要求の`taker_pays`フィールドのフォーマットが適切ではありません。

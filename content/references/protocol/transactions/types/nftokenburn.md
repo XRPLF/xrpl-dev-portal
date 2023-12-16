@@ -14,7 +14,7 @@ The sender of this transaction must be the owner of the `NFToken` to burn; or, i
 
 If this operation succeeds, the corresponding `NFToken` is removed. If this operation empties the `NFTokenPage` holding the `NFToken` or results in consolidation, thus removing a `NFTokenPage`, the owner’s reserve requirement is reduced by one.
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 
 ## Example {% $frontmatter.seo.title %} JSON
@@ -29,7 +29,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungib
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenBurn%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227B9EFDFDC801C58F2B61B89AA2751634F49CE2A93923671FF0F4F099C7EE17FF%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenBurn%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227B9EFDFDC801C58F2B61B89AA2751634F49CE2A93923671FF0F4F099C7EE17FF%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 
@@ -45,6 +45,6 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code         | Description                                             |
 |:-------------------|:--------------------------------------------------------|
-| `temDISABLED`      | The [NonFungibleTokensV1 amendment](known-amendments.html#nonfungibletokensv1) is not enabled. |
+| `temDISABLED`      | The [NonFungibleTokensV1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1) is not enabled. |
 | `tecNO_ENTRY`      | The specified `TokenID` was not found.                  |
 | `tecNO_PERMISSION` | The account does not have permission to burn the token. |

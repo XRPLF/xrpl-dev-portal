@@ -59,7 +59,7 @@ rippled -a --load --conf=/path/to/rippled.cfg
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
-スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](commandline-usage.html#スタンドアロンモードのオプション)を参照してください。
+スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](../commandline-usage.md#スタンドアロンモードのオプション)を参照してください。
 
 ## 6. レジャーを手動で進めます。
 
@@ -72,7 +72,7 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
       - [`rippled`サーバーのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
     - [Amendment](../../concepts/networks-and-servers/amendments.md)

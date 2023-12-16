@@ -63,7 +63,7 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](xrp-test-net-faucet.html). To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
+The above example opens a secure connection (`wss://`) to one of Ripple's public API servers on the [Test Net](/resources/dev-tools/xrp-faucets). To connect to a locally-running `rippled` server with the default configuration instead, open an _unsecured_ connection (`ws://`) on port **6006** locally, using the following first line:
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
@@ -289,7 +289,7 @@ const log_tx = function(tx) {
 WS_HANDLERS["transaction"] = log_tx
 ```
 
-For the following example, try opening the [Transaction Sender](tx-sender.html) in a different window or even on a different device and sending transactions to the address you subscribed to:
+For the following example, try opening the [Transaction Sender](/resources/dev-tools/tx-sender) in a different window or even on a different device and sending transactions to the address you subscribed to:
 
 {{ start_step("Subscribe") }}
 <label for="subscribe_address">Test Net Address:</label>

@@ -10,7 +10,7 @@ labels:
 ---
 # Automated Market Makers
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 
@@ -40,7 +40,7 @@ To prevent misuse, some restrictions apply to the assets used in an AMM. If you 
 
 - The asset must not be an LP Token from another AMM.
 - If the asset is a token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
-- If the [Clawback amendment][] :not_enabled: is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
+- If the [Clawback amendment](../../../resources/known-amendments.md#clawback) :not_enabled: is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
 
 
 ## LP Tokens
@@ -77,7 +77,7 @@ With any AMM, when the price of its assets shifts significantly in external mark
 
 ## Representation in the Ledger
 
-In the ledger's state data, an AMM consists of multiple [ledger entries](ledger-object-types.html):
+In the ledger's state data, an AMM consists of multiple [ledger entries](../../../references/protocol/ledger-data/ledger-entry-types/index.md):
 
 - An [AMM entry](../../../references/protocol/ledger-data/ledger-entry-types/amm.md) describing the automated market maker itself.
 

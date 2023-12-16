@@ -9,7 +9,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/76a6956138c4ecd156c5c408f136ed3d6ab7d0c1/src/ripple/protocol/impl/LedgerFormats.cpp#L155-L164)
 
-_(Added by the [TicketBatch amendment][].)_
+_(Added by the [TicketBatch amendment](../../../../resources/known-amendments.md#ticketbatch).)_
 
 A `Ticket` entry type represents a [Ticket](../../../../concepts/accounts/tickets.md), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction](../../transactions/types/ticketcreate.md).
 
@@ -38,7 +38,7 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](../../../../concepts/transactions/index.md) that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
-| `TicketSequence`    | Number    | UInt32        | Yes       | The [Sequence Number][] this Ticket sets aside. |
+| `TicketSequence`    | Number    | UInt32        | Yes       | The [Sequence Number](../../data-types/basic-data-types.md#account-sequence) this Ticket sets aside. |
 
 
 ## {% $frontmatter.seo.title %} Reserve

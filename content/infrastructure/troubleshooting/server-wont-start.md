@@ -7,7 +7,7 @@ labels:
 ---
 # rippled Server Won't Start
 
-This page explains possible reasons [the `rippled` server](xrpl-servers.html) does not start and how to fix them.
+This page explains possible reasons [the `rippled` server](../../concepts/networks-and-servers/index.md) does not start and how to fix them.
 
 These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
 
@@ -194,7 +194,7 @@ An error such as the following indicates that the `rippled.cfg` has an incomplet
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
 ```
 
-If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](configure-history-sharding.html#2-edit-rippledcfg).
+If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](../configuration/data-retention/configure-history-sharding.md#2-edit-rippledcfg).
 
 ## Unsupported shard store type: RocksDB
 
@@ -216,8 +216,8 @@ To fix this problem, do one of the following, then restart the server:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Technical FAQ](technical-faq.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [Technical FAQ](../../faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)

@@ -53,10 +53,10 @@ To update manually, complete the following steps:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [`rippled` v1.3.x Migration Instructions](rippled-1-3-migration-instructions.html) <!-- Note: remove when versions older than v1.3 are basically extinct -->
+    - [`rippled` v1.3.x Migration Instructions](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->
     - [Troubleshoot rippled](../troubleshooting/index.md)
 - **References:**
     - [rippled API Reference](../../references/http-websocket-apis/index.md)

@@ -50,7 +50,7 @@ labels:
 | `Amendment`       | 文字列    | Hash256           | 保留中のAmendmentのAmendment ID。 |
 | `CloseTime`       | 数値    | UInt32            | このAmendmentが最後に過半数の支持を得たレジャーバージョンの[`close_time`フィールド](../ledger-header.md)。 |
 
-[Amendmentプロセス](amendments.html#amendmentプロセス)では、80%以上のバリデータが新しいAmendmentを支持してバリデータのコンセンサスが得られると、`tfGotMajority`フラグを指定した[EnableAmendment](../../transactions/pseudo-transaction-types/enableamendment.md)疑似トランザクションを使用してこの新しいAmendmentが`Majorities`フィールドに追加されます。保留中のAmendmentの支持が80%を下回ると、`tfLostMajority`フラグが指定された[EnableAmendment](../../transactions/pseudo-transaction-types/enableamendment.md)疑似トランザクションによりそのAmendmentが`Majorities`配列から削除されます。Amendmentが`Majorities`フィールドに含まれている状態が2週間以上継続している場合、フラグが指定されていない[EnableAmendment](../../transactions/pseudo-transaction-types/enableamendment.md)疑似トランザクションによってそのAmendmentは`Majorities`から削除され、`Amendments`フィールドに恒久的に追加されます。
+[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)では、80%以上のバリデータが新しいAmendmentを支持してバリデータのコンセンサスが得られると、`tfGotMajority`フラグを指定した[EnableAmendment](../../transactions/pseudo-transaction-types/enableamendment.md)疑似トランザクションを使用してこの新しいAmendmentが`Majorities`フィールドに追加されます。保留中のAmendmentの支持が80%を下回ると、`tfLostMajority`フラグが指定された[EnableAmendment](../../transactions/pseudo-transaction-types/enableamendment.md)疑似トランザクションによりそのAmendmentが`Majorities`配列から削除されます。Amendmentが`Majorities`フィールドに含まれている状態が2週間以上継続している場合、フラグが指定されていない[EnableAmendment](../../transactions/pseudo-transaction-types/enableamendment.md)疑似トランザクションによってそのAmendmentは`Majorities`から削除され、`Amendments`フィールドに恒久的に追加されます。
 
 **注記:** 実際には、レジャー内のすべてのトランザクションは、その直前のレジャーバージョンで有効になっているAmendmentに基づいて処理されます。Amendmentが有効になったレジャーバージョンにトランザクションを適用する場合、このルールでは中間レジャーは変更されません。レジャーの閉鎖後、適用された新しいAmendmentにより定義される新しいルールが次のレジャーで使用されます。
 

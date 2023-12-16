@@ -64,7 +64,7 @@ For this tutorial, click the following button to connect:
 
 ### {{n.next()}}. Check Sequence Number
 
-Before you create any Tickets, you should check what [Sequence Number][] your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.
+Before you create any Tickets, you should check what [Sequence Number](../../references/protocol/data-types/basic-data-types.md#account-sequence) your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.
 
 {% tabs %}
 

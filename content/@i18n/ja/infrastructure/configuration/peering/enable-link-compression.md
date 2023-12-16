@@ -19,7 +19,7 @@ labels:
 $ vim /etc/opt/ripple/rippled.cfg
 ```
 
-{% partial file="/_snippets/conf-file-location.ja.md" /%}
+{% partial file="/_snippets/conf-file-location.md" /%}
 
 ### 2. 設定ファイルに`[compression]`を追加またはコメントアウトします。
 

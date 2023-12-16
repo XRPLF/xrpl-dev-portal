@@ -10,7 +10,7 @@ top_nav_name: Join UNL
 ---
 # Run rippled as a Validator
 
-A [`rippled` server](xrpl-servers.html) running in [validator mode](../../../concepts/networks-and-servers/rippled-server-modes.md) does everything a stock server does:
+A [`rippled` server](../../../concepts/networks-and-servers/index.md) running in [validator mode](../../../concepts/networks-and-servers/rippled-server-modes.md) does everything a stock server does:
 
 - Connects to a [network of peers](../../../concepts/networks-and-servers/peer-protocol.md)
 
@@ -290,8 +290,8 @@ For information about how to revoke a master key pair you generated for your val
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](xrp-ledger-overview.html)
-    - [The `rippled` Server](xrpl-servers.html)
+    - [XRP Ledger Overview](/about/)
+    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Cluster rippled Servers](../peering/cluster-rippled-servers.md)
     - [Install `rippled`](../../installation/index.md)

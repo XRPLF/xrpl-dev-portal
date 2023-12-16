@@ -8,7 +8,7 @@ labels:
 # PaymentChannelCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Added by the [PayChan amendment][]._
+_Added by the [PayChan amendment](../../../../resources/known-amendments.md#paychan)._
 
 Create a [payment channel](../../../../concepts/payment-types/payment-channels.md) and fund it with XRP. The address sending this transaction becomes the "source address" of the payment channel.
 
@@ -28,7 +28,7 @@ Create a [payment channel](../../../../concepts/payment-types/payment-channels.m
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22711C4F606C63076137FAE90ADC36379D7066CF551E96DA6FE2BDAB5ECBFACF2B%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
@@ -40,7 +40,7 @@ Create a [payment channel](../../../../concepts/payment-types/payment-channels.m
 | `Destination`    | String    | AccountID         | Address to receive XRP claims against this channel. This is also known as the "destination address" for the channel. Cannot be the same as the sender (`Account`). |
 | `SettleDelay`    | Number    | UInt32            | Amount of time the source address must wait before closing the channel if it has unclaimed XRP. |
 | `PublicKey`      | String    | Blob              | The 33-byte public key of the key pair the source will use to sign claims against this channel, in hexadecimal. This can be any secp256k1 or Ed25519 public key. For more information on key pairs, see [Key Derivation](../../../../concepts/accounts/cryptographic-keys.md#key-derivation) <!-- STYLE_OVERRIDE: will --> |
-| `CancelAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch][], when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
+| `CancelAfter`    | Number    | UInt32            | _(Optional)_ The time, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time), when this channel expires. Any transaction that would modify the channel after this time closes the channel without otherwise affecting it. This value is immutable; the channel can be closed earlier than this time but cannot remain open after this time. |
 | `DestinationTag` | Number    | UInt32            | _(Optional)_ Arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
 
-If the `Destination` account is blocking incoming payment channels, the transaction fails with result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
+If the `Destination` account is blocking incoming payment channels, the transaction fails with result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming) :not_enabled:)_

@@ -56,11 +56,11 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type             | Description                      |
 |:-----------------------|:-----------------|:---------------------------------|
-| `ledger_current_index` | Unsigned Integer - [Ledger Index][] | Ledger index of the newly created 'current' ledger |
+| `ledger_current_index` | Unsigned Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | Ledger index of the newly created 'current' ledger |
 
 **Note:** When you close a ledger, `rippled` determines the canonical order of transactions in that ledger and replays them. This can change the outcome of transactions that were provisionally applied to the current ledger.
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `notStandAlone` - If the `rippled` server is not currently running in stand-alone mode.

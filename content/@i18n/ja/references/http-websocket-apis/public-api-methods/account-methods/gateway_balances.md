@@ -54,11 +54,11 @@ labels:
 
 | `Field`        | 型                         | 説明                           |
 |:---------------|:---------------------------|:-------------------------------|
-| `account` | 文字列 | チェックする[アドレス](basic-data-types.html#アドレス)。[発行アドレス](../../../../concepts/accounts/account-types.md)である必要があります。 |
+| `account` | 文字列 | チェックする[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)。[発行アドレス](../../../../concepts/accounts/account-types.md)である必要があります。 |
 | `strict` | ブール値 | _（省略可）_ trueの場合は、アカウントパラメーターにアドレスまたは公開鍵だけを受け入れます。デフォルトではfalseです。 |
 | `hotwallet` | 文字列または配列 | _（省略可）_ 発行済み残高から除外する[運用アドレス](../../../../concepts/accounts/account-types.md)、またはそのようなアドレスの配列。 |
-| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
 
 ## 応答フォーマット
 
@@ -209,18 +209,18 @@ labels:
 
 | `Field`                | 型                        | 説明                    |
 |:-----------------------|:--------------------------|:------------------------|
-| `account` | 文字列 - [アドレス](basic-data-types.html#アドレス) | 残高を発行したアカウントのアドレス。 |
+| `account` | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス) | 残高を発行したアカウントのアドレス。 |
 | `obligations` | オブジェクト | （空の場合は省略）除外されていないアドレスに発行された額の合計。発行された価値の合計に対する通貨のマップとして示されます。 |
 | `balances` | オブジェク | _（空の場合は省略）_ 要求から`hotwallet`アドレスに発行された額。キーはアドレスであり、値はアドレスが保有する通貨額の配列です。 |
 | `assets` | オブジェクト | _（空の場合は省略）_ 他から発行された保有額の合計。推奨される構成では、[発行アドレス](../../../../concepts/accounts/account-types.md)の保有額はありません。 |
-| `ledger_hash` | 文字列 - [ハッシュ](basic-data-types.html#ハッシュ) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンの識別用ハッシュ。 |
-| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 | |
-| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略）_ この情報の取得時に使用した、現在処理中のレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `ledger_hash` | 文字列 - [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンの識別用ハッシュ。 |
+| `ledger_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 | |
+| `ledger_current_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（`ledger_current_index`が指定されている場合は省略）_ この情報の取得時に使用した、現在処理中のレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `invalidHotWallet` - `hotwallet`フィールドに指定されている1つ以上のアドレスが、要求に指定されているアカウントが発行した通貨を保有しているアカウントの[アドレス](basic-data-types.html#アドレス)ではありません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
+* `invalidHotWallet` - `hotwallet`フィールドに指定されている1つ以上のアドレスが、要求に指定されているアカウントが発行した通貨を保有しているアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)ではありません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

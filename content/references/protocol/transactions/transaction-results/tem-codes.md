@@ -13,7 +13,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 
 | Code                          | Explanation                                   |
 |:------------------------------|:----------------------------------------------|
-| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Requires the [AMM amendment][] :not_enabled:)_  |
+| `temBAD_AMM_TOKENS`           | The transaction incorrectly specified one or more assets. For example, the asset's issuer does not match the corresponding asset in the AMM's pool, or the transaction specified the same asset twice. _(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_  |
 | `temBAD_AMOUNT`               | An amount specified by the transaction (for example the destination `Amount` or `SendMax` values of a [Payment](../types/payment.md)) was invalid, possibly because it was a negative number. |
 | `temBAD_AUTH_MASTER`          | The key used to sign this transaction does not match the master key for the account sending it, and the account does not have a [Regular Key](../../../../concepts/accounts/cryptographic-keys.md) set. |
 | `temBAD_CURRENCY`             | The transaction improperly specified a currency field. See [Specifying Currency Amounts][Currency Amount] for the correct format. |
@@ -21,7 +21,7 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temBAD_FEE`                  | The transaction improperly specified its `Fee` value, for example by listing a non-XRP currency or some negative amount of XRP. |
 | `temBAD_ISSUER`               | The transaction improperly specified the `issuer` field of some currency included in the request. |
 | `temBAD_LIMIT`                | The [TrustSet transaction](../types/trustset.md) improperly specified the `LimitAmount` value of a trust line. |
-| `temBAD_NFTOKEN_TRANSFER_FEE` | The [NFTokenMint transaction](../types/nftokenmint.md) improperly specified the `TransferFee` field of the transaction. _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_ |
+| `temBAD_NFTOKEN_TRANSFER_FEE` | The [NFTokenMint transaction](../types/nftokenmint.md) improperly specified the `TransferFee` field of the transaction. _(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_ |
 | `temBAD_OFFER`                | The [OfferCreate transaction](../types/offercreate.md) specifies an invalid offer, such as offering to trade XRP for itself, or offering a negative amount. |
 | `temBAD_PATH`                 | The [Payment transaction](../types/payment.md) specifies one or more [Paths](../../../../concepts/tokens/fungible-tokens/paths.md) improperly, for example including an issuer for XRP, or specifying an account differently. |
 | `temBAD_PATH_LOOP`            | One of the [Paths](../../../../concepts/tokens/fungible-tokens/paths.md) in the [Payment transaction](../types/payment.md) was flagged as a loop, so it cannot be processed in a bounded amount of time. |

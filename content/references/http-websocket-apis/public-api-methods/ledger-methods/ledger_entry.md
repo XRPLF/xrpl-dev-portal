@@ -9,7 +9,7 @@ labels:
 # ledger_entry
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerEntry.cpp "Source")
 
-The `ledger_entry` method returns a single ledger entry from the XRP Ledger in its raw format. See [ledger format][] for information on the different types of entries you can retrieve.
+The `ledger_entry` method returns a single ledger entry from the XRP Ledger in its raw format. See [ledger format](../../../protocol/ledger-data/ledger-entry-types/index.md) for information on the different types of entries you can retrieve.
 
 ## Request Format
 
@@ -22,8 +22,8 @@ This method can retrieve several different types of data. You can select which t
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. [Updated in: rippled 1.2.0](https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE") |
-| `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
@@ -51,7 +51,7 @@ Retrieve any type of ledger object by its unique ID.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `index` | String | The [ledger entry ID](ledger-object-ids.html) of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
+| `index` | String | The [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of a single entry to retrieve from the ledger, as a 64-character (256-bit) hexadecimal string. |
 
 {% tabs %}
 
@@ -87,7 +87,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-by-object-id)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-by-object-id)
 
 {% admonition type="success" name="Tip" %}
 You can use this type of request to get any singleton ledger entry, if it exists in the ledger data, because its ID is always the same. For example:
@@ -106,7 +106,7 @@ Retrieve an [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `account_root`          | String - [Address][]       | The classic address of the [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) to retrieve. |
+| `account_root`          | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)       | The classic address of the [AccountRoot entry](../../../protocol/ledger-data/ledger-entry-types/accountroot.md) to retrieve. |
 
 {% tabs %}
 
@@ -143,19 +143,19 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-accountroot)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-accountroot)
 
 
 
 ### Get AMM Object
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method](../path-and-order-book-methods/amm_info.md), but the `ledger_entry` version returns only the ledger entry as stored.
 
 | Field        | Type             | Description           |
 |:-------------|:-----------------|:----------------------|
-| `amm`        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [object ID](ledger-object-ids.html) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
+| `amm`        | Object or String | The [AMM](../../../protocol/ledger-data/ledger-entry-types/amm.md) to retrieve. If you specify a string, it must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the AMM, as hexadecimal. If you specify an object, it must contain `asset` and `asset2` sub-fields. |
 | `amm.asset`  | Object           | One of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 | `amm.asset2` | Object           | The other of the two assets in this AMM's pool, as a [currency object without an amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 
@@ -210,7 +210,7 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
 
 
 
@@ -220,7 +220,7 @@ Retrieve a [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/dire
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `directory`             | Object or String           | The [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md) to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
+| `directory`             | Object or String           | The [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md) to retrieve. If a string, must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the directory, as hexadecimal. If an object, requires either `dir_root` or `owner` as a sub-field, plus optionally a `sub_index` sub-field. |
 | `directory.sub_index`   | Unsigned Integer           | _(Optional)_ If provided, jumps to a later "page" of the [DirectoryNode](../../../protocol/ledger-data/ledger-entry-types/directorynode.md). |
 | `directory.dir_root`    | String                     | _(Optional)_ Unique index identifying the directory to retrieve, as a hex string. |
 | `directory.owner`       | String                     | _(Optional)_ Unique address of the account associated with this directory. |
@@ -266,7 +266,7 @@ rippled json ledger_entry '{ "directory": { "owner": "rf1BiGeXwwQoi8Z2ueFYTEXSwu
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-directorynode)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-directorynode)
 
 
 
@@ -276,9 +276,9 @@ Retrieve an [Offer entry](../../../protocol/ledger-data/ledger-entry-types/offer
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `offer`                 | Object or String           | If a string, interpret as [ledger entry ID](ledger-object-ids.html) of the Offer to retrieve. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
-| `offer.account`         | String - [Address][]       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
-| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number][] of the transaction that created the Offer entry. |
+| `offer`                 | Object or String           | If a string, interpret as [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of the Offer to retrieve. If an object, requires the sub-fields `account` and `seq` to uniquely identify the offer. |
+| `offer.account`         | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)       | _(Required if `offer` is specified as an object)_ The account that placed the offer. |
+| `offer.seq`             | Unsigned Integer           | _(Required if `offer` is specified as an object)_ The [Sequence Number](../../../protocol/data-types/basic-data-types.md#account-sequence) of the transaction that created the Offer entry. |
 
 {% tabs %}
 
@@ -321,7 +321,7 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-offer)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
 
 
 
@@ -332,8 +332,8 @@ Retrieve a [RippleState entry](../../../protocol/ledger-data/ledger-entry-types/
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
 | `ripple_state`          | Object                     | Object specifying the RippleState (trust line) object to retrieve. The `accounts` and `currency` sub-fields are required to uniquely specify the RippleState entry to retrieve. |
-| `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address][]es, defining the two accounts linked by this RippleState entry. |
-| `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code][] of the RippleState entry to retrieve. |
+| `ripple_state.accounts` | Array                      | _(Required if `ripple_state` is specified)_ 2-length array of account [Address](../../../protocol/data-types/basic-data-types.md#addresses)es, defining the two accounts linked by this RippleState entry. |
+| `ripple_state.currency` | String                     | _(Required if `ripple_state` is specified)_ [Currency Code](../../../protocol/data-types/currency-formats.md#currency-codes) of the RippleState entry to retrieve. |
 
 {% tabs %}
 
@@ -380,7 +380,7 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-ripplestate)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-ripplestate)
 
 
 
@@ -390,7 +390,7 @@ Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `check` | String | The [object ID](ledger-object-ids.html) of a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md) to retrieve. |
+| `check` | String | The [object ID](../../../protocol/ledger-data/common-fields.md) of a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md) to retrieve. |
 
 {% tabs %}
 
@@ -425,7 +425,7 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-check)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-check)
 
 
 
@@ -435,9 +435,9 @@ Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escr
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `escrow`                | Object or String           | The Escrow to retrieve. If a string, must be the [object ID](ledger-object-ids.html) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
-| `escrow.owner`          | String - [Address][]       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
-| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number][] of the transaction that created the Escrow object. |
+| `escrow`                | Object or String           | The Escrow to retrieve. If a string, must be the [object ID](../../../protocol/ledger-data/common-fields.md) of the Escrow, as hexadecimal. If an object, requires `owner` and `seq` sub-fields. |
+| `escrow.owner`          | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)       | _(Required if `escrow` is specified as an object)_ The owner (sender) of the Escrow object. |
+| `escrow.seq`            | Unsigned Integer           | _(Required if `escrow` is specified as an object)_ The [Sequence Number](../../../protocol/data-types/basic-data-types.md#account-sequence) of the transaction that created the Escrow object. |
 
 {% tabs %}
 
@@ -478,7 +478,7 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-escrow)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-escrow)
 
 
 
@@ -488,7 +488,7 @@ Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/p
 
 | Field             | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
-| `payment_channel` | String | The [object ID](ledger-object-ids.html) of the PayChannel to retrieve. |
+| `payment_channel` | String | The [object ID](../../../protocol/ledger-data/common-fields.md) of the PayChannel to retrieve. |
 
 {% tabs %}
 
@@ -523,7 +523,7 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-paychannel)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-paychannel)
 
 
 ### Get DepositPreauth Object
@@ -532,9 +532,9 @@ Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-typ
 
 | Field                        | Type                 | Description            |
 |:-----------------------------|:---------------------|:-----------------------|
-| `deposit_preauth`            | Object or String     | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID](ledger-object-ids.html) of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` and `authorized` sub-fields. |
-| `deposit_preauth.owner`      | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
-| `deposit_preauth.authorized` | String - [Address][] | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
+| `deposit_preauth`            | Object or String     | Specify the DepositPreauth to retrieve. If a string, must be the [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of the DepositPreauth entry, as hexadecimal. If an object, requires `owner` and `authorized` sub-fields. |
+| `deposit_preauth.owner`      | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | _(Required if `deposit_preauth` is specified as an object)_ The account that provided the preauthorization. |
+| `deposit_preauth.authorized` | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | _(Required if `deposit_preauth` is specified as an object)_ The account that received the preauthorization. |
 
 {% tabs %}
 
@@ -575,17 +575,17 @@ rippled json ledger_entry '{ "deposit_preauth": { "owner": "rf1BiGeXwwQoi8Z2ueFY
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-depositpreauth)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-depositpreauth)
 
 
 ### Get Ticket Object
 
-Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. _(Added by the [TicketBatch amendment][])_
+Retrieve a [Ticket entry](../../../protocol/ledger-data/ledger-entry-types/ticket.md), which represents a [sequence number][] set aside for future use. _(Added by the [TicketBatch amendment](../../../../resources/known-amendments.md#ticketbatch))_
 
 | Field               | Type                 | Description           |
 |:--------------------|:---------------------|:----------------------|
-| `ticket`            | Object or String     | The Ticket to retrieve. If a string, must be the [ledger entry ID](ledger-object-ids.html) of the Ticket, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
-| `ticket.account`    | String - [Address][] | _(Required if `ticket` is specified as an object)_ The owner of the Ticket. |
+| `ticket`            | Object or String     | The Ticket to retrieve. If a string, must be the [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of the Ticket, as hexadecimal. If an object, the `account` and `ticket_seq` sub-fields are required to uniquely specify the Ticket entry. |
+| `ticket.account`    | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | _(Required if `ticket` is specified as an object)_ The owner of the Ticket. |
 | `ticket.ticket_seq` | Number               | _(Required if `ticket` is specified as an object)_ The Ticket Sequence number of the Ticket to retrieve. |
 
 {% tabs %}
@@ -627,7 +627,7 @@ rippled json ledger_entry '{ "ticket": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJ
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-ticket)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-ticket)
 
 
 ### Get NFT Page
@@ -636,7 +636,7 @@ Return an NFT Page in its raw ledger format.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
-| `nft_page`              | String | The [ledger entry ID](ledger-object-ids.html) of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
+| `nft_page`              | String | The [ledger entry ID](../../../protocol/ledger-data/common-fields.md) of an [NFT Page](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) to retrieve. |
 
 {% tabs %}
 
@@ -671,7 +671,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_entry-nft-page)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-nft-page)
 
 ## Response Format
 
@@ -679,9 +679,9 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | Field          | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `index`        | String           | The unique ID of this [ledger entry](ledger-object-types.html). |
-| `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that was used when retrieving this data. |
-| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format][]. |
+| `index`        | String           | The unique ID of this [ledger entry](../../../protocol/ledger-data/ledger-entry-types/index.md). |
+| `ledger_index` | Unsigned Integer | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger that was used when retrieving this data. |
+| `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format](../../../protocol/ledger-data/ledger-entry-types/index.md). |
 | `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
 
 An example of a successful response:
@@ -790,13 +790,13 @@ An example of a successful response:
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `deprecatedFeature` - The request specified a removed field, such as `generator`.
 * `entryNotFound` - The requested ledger entry does not exist in the ledger.
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
-* `malformedAddress` - The request improperly specified an [Address][] field.
-* `malformedCurrency` - The request improperly specified a [Currency Code][] field.
+* `malformedAddress` - The request improperly specified an [Address](../../../protocol/data-types/basic-data-types.md#addresses) field.
+* `malformedCurrency` - The request improperly specified a [Currency Code](../../../protocol/data-types/currency-formats.md#currency-codes) field.
 * `malformedOwner` - The request improperly specified the `escrow.owner` sub-field.
 * `malformedRequest` - The request provided an invalid combination of fields, or provided the wrong type for one or more fields.
 * `unknownOption` - The fields provided in the request did not match any of the expected request formats.

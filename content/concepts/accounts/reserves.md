@@ -39,7 +39,7 @@ Some special cases:
 
 - Non-Fungible Tokens (NFTs) are grouped into pages containing up to 32 NFTs each, and the owner reserve applies per page rather than per NFT. Due to the mechanism for splitting and combining pages, the number of NFTs actually stored per page varies. See also: [Reserve for NFTokenPage objects](../../references/protocol/ledger-data/ledger-entry-types/nftokenpage.md#nftokenpage-reserve).
 - Trust lines (`RippleState` entries) are shared between two accounts. The owner reserve can apply to one or both of them. Most often, the token holder owes a reserve and the issuer does not. See also: [RippleState: Contributing to the Owner Reserve](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#contributing-to-the-owner-reserve).
-- Signer lists created before the [MultiSignReserve amendment][] activated in April 2019 count as multiple objects. See also: [Signer Lists and Reserves](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).
+- Signer lists created before the [MultiSignReserve amendment](../../resources/known-amendments.md#multisignreserve) activated in April 2019 count as multiple objects. See also: [Signer Lists and Reserves](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).
 - An [Owner Directory](../../references/protocol/ledger-data/ledger-entry-types/directorynode.md) is a ledger entry that lists all objects related to an account, including all objects the account owns. However, the owner directory itself does not count towards the reserve.
 
 ### Looking Up Reserves
@@ -53,7 +53,7 @@ Applications can look up the current base and incremental reserve values using t
 
 To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) and take `account_data.OwnerCount`.
 
-To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](build-a-desktop-wallet-in-python.html#codeblock-17) of this calculation in Python.
+To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](../../tutorials/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17) of this calculation in Python.
 
 
 ## Going Below the Reserve Requirement
@@ -75,4 +75,4 @@ The XRP Ledger has a mechanism to adjust the reserve requirements. Such adjustme
 - [AccountRoot Object][]
 - [Fee Voting](../consensus-protocol/fee-voting.md)
 - [SetFee pseudo-transaction](../../references/protocol/transactions/pseudo-transaction-types/setfee.md)
-- [Tutorial: Calculate and display the reserve requirement (Python)](build-a-desktop-wallet-in-python.html#3-display-an-account)
+- [Tutorial: Calculate and display the reserve requirement (Python)](../../tutorials/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)

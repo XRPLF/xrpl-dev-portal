@@ -76,4 +76,4 @@ XRPは発行者が存在しないため、送金手数料がかかることは�
   - [account_linesメソッド][]
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]
-  - [AccountRootのフラグ](accountroot.html#accountrootのフラグ)
+  - [AccountRootのフラグ](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)

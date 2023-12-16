@@ -50,7 +50,7 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#path_find)
+[試してみる >](/resources/dev-tools/websocket-api-tool#path_find)
 
 要求には以下のパラメーターが含まれます。
 
@@ -59,8 +59,8 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 | `subcommand`          | 文字列           | `"create"`を使用してcreateサブコマンドを送信します。 |
 | `source_account`      | 文字列           | 探索するパスの送金元アカウントの一意のアドレス。（つまり、支払いを送金するアカウントです。） |
 | `destination_account` | 文字列           | 探索するパスの送金先アカウントの一意のアドレス。（つまり、支払いを受領するアカウントです。） |
-| `destination_amount`  | 文字列またはオブジェクト | 送金先アカウントがトランザクションで受領する[通貨額](basic-data-types.html#通貨額の指定)。**特殊なケース:**[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE")`value`フィールドには`"-1"`（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし`send_max`が指定されている場合は、指定額を上回る額が支払われることはありません。 |
-| `send_max`            | 文字列またはオブジェクト | _（省略可）_ トランザクションに使用する[通貨額](basic-data-types.html#通貨額の指定)。`source_currencies`と同時に指定することはできません。[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
+| `destination_amount`  | 文字列またはオブジェクト | 送金先アカウントがトランザクションで受領する[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。**特殊なケース:**[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE")`value`フィールドには`"-1"`（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし`send_max`が指定されている場合は、指定額を上回る額が支払われることはありません。 |
+| `send_max`            | 文字列またはオブジェクト | _（省略可）_ トランザクションに使用する[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。`source_currencies`と同時に指定することはできません。[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
 | `paths`               | 配列            | _（省略可）_ チェックする[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を表すオブジェクトの配列。すでに判明している特定パスの変更内容を常に把握する場合や、特定パスに沿った支払いにかかる総コストを確認する場合にこのフィールドを使用できます。 |
 
 サーバーは`source_currencies`および`bridges`フィールドも認識しますが、これらのフィールドを使用した場合の結果は保証されません。これらのフィールドは将来のために予約されているものと考えてください。
@@ -447,7 +447,7 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 |:----------------------|:-----------------|:----------------------------------|
 | `alternatives`        | 配列            | 以下に説明する、提案される[パス](../../../../concepts/tokens/fungible-tokens/paths.md)のオブジェクトの配列。空の場合、送金元アカウントと送金先アカウントを結ぶパスが見つかりませんでした。 |
 | `destination_account` | 文字列           | トランザクションを受信するアカウントの一意のアドレス。 |
-| `destination_amount`  | 文字列またはオブジェクト | 送金先がトランザクションで受領する[通貨額](basic-data-types.html#通貨額の指定)。 |
+| `destination_amount`  | 文字列またはオブジェクト | 送金先がトランザクションで受領する[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。 |
 | `id`                  | （各種）        | （WebSocketのみ）WebSocket要求に指定されているIDが再びこのレベルで含まれます。 |
 | `source_account`      | 文字列           | トランザクションを送信するアカウントの一意のアドレス。 |
 | `full_reply`          | ブール値          | `false`の場合、これは不完全な検索の結果です。これ以降の応答に、より適切なパスが含まれている可能性があります。`true`の場合、これは検出された最良のパスです。（理論上、これよりも優れたパスが存在している可能性がありますが`rippled`では検出されません。）Pathfinding要求をクローズするまで、`rippled`は引き続き、新しいレジャーが閉鎖されるたびに更新を送信します。[新規: rippled 0.29.0](https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE") |
@@ -457,11 +457,11 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 | `Field`          | 型             | 説明                            |
 |:-----------------|:-----------------|:---------------------------------------|
 | `paths_computed` | 配列            | [ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を定義するオブジェクトの配列。 |
-| `source_amount`  | 文字列またはオブジェクト | 送金先が必要な額を受領するために、送金元がこのパスで送金する必要がある[通貨額](basic-data-types.html#通貨額の指定)。 |
+| `source_amount`  | 文字列またはオブジェクト | 送金先が必要な額を受領するために、送金元がこのパスで送金する必要がある[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。 |
 
 ### 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]を参照してください。）
 
@@ -536,7 +536,7 @@ Pathfinding要求が正常にクローズされた場合、応答は[`path_find 
 
 ### 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - フィールドの指定が正しくないか、必須フィールドが指定されていません。
 * `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）でこのメソッドを使用しようとしました。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]を参照してください。）
 * `noPathRequest` - Pathfinding要求をクローズしようとしましたが、実行中の要求がありませんでした。
@@ -581,7 +581,7 @@ Pathfinding要求が実行中の場合、応答は[`path_find create`](#path_fin
 
 ### 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]を参照してください。）
 * `noPathRequest` - Pathfinding要求のステータスを確認しようとしましたが、処理中の要求がありませんでした。

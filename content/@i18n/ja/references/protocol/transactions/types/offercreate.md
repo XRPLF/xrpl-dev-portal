@@ -30,26 +30,26 @@ OfferCreateトランザクションは[分散型取引所](../../../../concepts/
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
 | フィールド         | JSONの型   | [内部の型](../../binary-format.md) | 説明       |
 |:-----------------|:----------|:------------|:-----------|
-| [Expiration](offers.html#オファーの有効期限)   | 数字       | UInt32      | _（省略可）_ オファーがアクティブでなくなるまでの時間（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。 |
+| [Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーの有効期限)   | 数字       | UInt32      | _（省略可）_ オファーがアクティブでなくなるまでの時間（[Rippleエポック以降の経過秒数](../../data-types/basic-data-types.md#時間の指定)）。 |
 | `OfferSequence`  | 数字       | UInt32      | _（省略可）_ 最初に削除されるオファー（[OfferCancel](offercancel.md)と同様に指定されます）。 |
-| `TakerGets`      | [通貨額](basic-data-types.html#通貨額の指定) | Amount      | オファーの作成者によって作成される金額および通貨の種類。 |
-| `TakerPays`      | [通貨額](basic-data-types.html#通貨額の指定) | Amount      | オファーの作成者によって要求される金額および通貨の種類。 |
+| `TakerGets`      | [通貨額](../../data-types/basic-data-types.md#通貨額の指定) | Amount      | オファーの作成者によって作成される金額および通貨の種類。 |
+| `TakerPays`      | [通貨額](../../data-types/basic-data-types.md#通貨額の指定) | Amount      | オファーの作成者によって要求される金額および通貨の種類。 |
 
 ## OfferCreateフラグ
 
-OfferCreate型のトランザクションについては、[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)で以下の値が追加でサポートされます。
+OfferCreate型のトランザクションについては、[`Flags`フィールド](../common-fields.md#flagsフィールド)で以下の値が追加でサポートされます。
 
 | フラグ名               | 16進数        | 10進数         | 説明               |
 |:----------------------|:-------------|:--------------|:-------------------|
 | `tfPassive`           | `0x00010000` | 65536         | 有効な場合、オファーはオファーが完全に約定するオファーを消費せず、代わりにレジャーのOfferオブジェクトになります。それはまだクロスしたオファーを消費します。 |
 | `tfImmediateOrCancel` | `0x00020000` | 131072        | オファーを[IOC注文](http://en.wikipedia.org/wiki/Immediate_or_cancel)として扱います。有効な場合、オファーはレジャーオブジェクトにはなりません。レジャー内の既存のオファーと約定させようとするだけです。即時にオファーがどのオファーとも約定しない場合、どの通貨とも取引せずに「正常に」実行します。この場合、トランザクションは`tesSUCCESS`の[結果コード](../transaction-results/transaction-results.md)を返しますが、レジャー内には、[Offerオブジェクト](../../ledger-data/ledger-entry-types/offer.md)を作成しません。 |
-| `tfFillOrKill`        | `0x00040000` | 262144        | オファーを[FOK注文](http://en.wikipedia.org/wiki/Fill_or_kill)として扱います。レジャー内の既存のオファーのみを約定しようとします。またこれは、全`TakerPays`の数量が取得できる場合に限られます。[fix1578 amendment](known-amendments.html#fix1578)が有効な場合でオファーを配置した時に実行できない場合、トランザクションは`tecKILLED`の[結果コード](../transaction-results/transaction-results.md)を返します。そうでない場合は、トランザクションは、どの通貨とも取り引きせずにキャンセルされた場合でも`tesSUCCESS`の結果コードを返します。 |
+| `tfFillOrKill`        | `0x00040000` | 262144        | オファーを[FOK注文](http://en.wikipedia.org/wiki/Fill_or_kill)として扱います。レジャー内の既存のオファーのみを約定しようとします。またこれは、全`TakerPays`の数量が取得できる場合に限られます。[fix1578 amendment](../../../../resources/known-amendments.md#fix1578)が有効な場合でオファーを配置した時に実行できない場合、トランザクションは`tecKILLED`の[結果コード](../transaction-results/transaction-results.md)を返します。そうでない場合は、トランザクションは、どの通貨とも取り引きせずにキャンセルされた場合でも`tesSUCCESS`の結果コードを返します。 |
 | `tfSell`              | `0x00080000` | 524288        | 取引所で`TakerPays`Amountよりも多く取得することになっても、`TakerGets` Amountを交換します。 |
 
 ## エラーケース
@@ -58,7 +58,7 @@ OfferCreate型のトランザクションについては、[`Flags`フィール�
 |:-------------------------|:--------------------------------------------------|
 | `temINVALID_FLAG`        | トランザクションが`tfImmediateOrCancel`と`tfFillOrKill`両方を指定した場合に発生します。|
 | `tecEXPIRED`             | トランザクションが指定した`Expiration`の時間が既に経過している場合に発生します。 |
-| `tecKILLED`              | トランザクションが`tfFillOrKill`を指定し、全額を約定できない場合に発生します。_[ImmediateOfferKilled amendment][]_ が有効な場合、この結果コードは、トランザクションが`tfImmediateOrCancel`を指定して資金が移動せずに実行された場合にも発生します（これまでは、これは`tesSUCCESS`を返していました）。 |
+| `tecKILLED`              | トランザクションが`tfFillOrKill`を指定し、全額を約定できない場合に発生します。_[ImmediateOfferKilled amendment](../../../../resources/known-amendments.md#immediateofferkilled)_ が有効な場合、この結果コードは、トランザクションが`tfImmediateOrCancel`を指定して資金が移動せずに実行された場合にも発生します（これまでは、これは`tesSUCCESS`を返していました）。 |
 | `temBAD_EXPIRATION`      | トランザクションの`Expiration`フィールドの値が無効なフォーマットの場合に発生します。 |
 | `temBAD_SEQUENCE`        | トランザクションの`OfferSequence`フィールドの値が無効なフォーマットであるか、トランザクション自身の`Sequence`番号より大きい場合に発生します。 |
 | `temBAD_OFFER`           | OfferがXRPとXRPを交換しようとした場合、またはトークンの無効な量やマイナスの量を交換しようとした場合に発生します。 |

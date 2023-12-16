@@ -8,7 +8,7 @@ labels:
 ---
 # Deposit Authorization
 
-_(Added by the [DepositAuth amendment][].)_
+_(Added by the [DepositAuth amendment](../../resources/known-amendments.md#depositauth).)_
 
 Deposit Authorization is an optional [account](accounts.md) setting in the XRP Ledger. If enabled, Deposit Authorization blocks all transfers from strangers, including transfers of XRP and [tokens](../tokens/index.md). An account with Deposit Authorization can only receive value in two ways:
 
@@ -48,7 +48,7 @@ An account with Deposit Authorization enabled:
 - Can receive XRP from [EscrowFinish transactions](../../references/protocol/transactions/types/escrowfinish.md) **only in the following cases**:
     - The sender of the EscrowFinish transaction is the destination of the escrow.
     - The destination of the EscrowFinish transaction has [preauthorized](#preauthorization) the sender of the EscrowFinish. _(Added by the [DepositPreauth amendment][])_
-- **Can** receive XRP or tokens by sending a [CheckCash](../../references/protocol/transactions/types/checkcash.md) transaction. _(Added by the [Checks amendment][].)_
+- **Can** receive XRP or tokens by sending a [CheckCash](../../references/protocol/transactions/types/checkcash.md) transaction. _(Added by the [Checks amendment](../../resources/known-amendments.md#checks).)_
 - **Can** receive XRP or tokens by sending [OfferCreate transactions](../../references/protocol/transactions/types/offercreate.md).
     - If the account sends an OfferCreate transaction that is not fully executed immediately, it **can** receive the rest of the ordered XRP or token later when the offer is consumed by other accounts' [Payment](../../references/protocol/transactions/types/payment.md) and [OfferCreate](../../references/protocol/transactions/types/offercreate.md) transactions.
 - If the account has created any trust lines without the [No Ripple flag](../tokens/fungible-tokens/rippling.md) enabled, or has enabled the Default Ripple flag and issued any currency, the account **can** receive the tokens of those trust lines in [Payment transactions](../../references/protocol/transactions/types/payment.md) as a result of rippling. It cannot be the destination of those transactions.

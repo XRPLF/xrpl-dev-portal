@@ -291,7 +291,7 @@ For other web servers, see [I want to add CORS support to my server](https://ena
 
 ## Domain Verification
 
-One use for the `xrp-ledger.toml` file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator).)
+One use for the `xrp-ledger.toml` file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#1-understand-the-traits-of-a-good-validator).)
 
 Domain verification requires establishing a two-way link between the domain operator and the validator:
 

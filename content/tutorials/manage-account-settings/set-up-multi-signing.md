@@ -16,9 +16,9 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 - You must have a funded XRP Ledger [address](../../concepts/accounts/accounts.md) with enough spare XRP to send transactions and meet the [reserve requirement](../../concepts/accounts/reserves.md) of a new signer list.
 
-    - With the [MultiSignReserve amendment][] enabled, multi-signing requires 2 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
+    - With the [MultiSignReserve amendment](../../resources/known-amendments.md#multisignreserve) enabled, multi-signing requires 2 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
 
-    - If you are on a test network that does not have the [MultiSignReserve amendment][] enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](../../concepts/accounts/reserves.md), increasing with the number of signers in the list.
+    - If you are on a test network that does not have the [MultiSignReserve amendment](../../resources/known-amendments.md#multisignreserve) enabled, multi-signing requires more than the usual amount of XRP for the [account reserve](../../concepts/accounts/reserves.md), increasing with the number of signers in the list.
 
 - You must have access to a tool that can generate key pairs in the XRP Ledger format. If you are using a `rippled` server for this, you must have admin access because the [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) is admin-only.
 
@@ -141,7 +141,7 @@ Connecting to 127.0.0.1:5005
 
 Make sure that the [Transaction Result](../../references/protocol/transactions/transaction-results/transaction-results.md) is [**`tesSUCCESS`**](../../references/protocol/transactions/transaction-results/tes-success.md). Otherwise, the transaction failed. If you have a problem in stand-alone mode or a non-production network, check that [multi-sign is enabled](../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md#settings-in-new-genesis-ledgers).
 
-**Note:** Without the [MultiSignReserve amendment][], the more members in the signer list, the more XRP your address must have for purposes of the [owner reserve](../../concepts/accounts/reserves.md#owner-reserves). If your address does not have enough XRP, the transaction fails with [`tecINSUFFICIENT_RESERVE`](../../references/protocol/transactions/transaction-results/tec-codes.md). With the [MultiSignReserve amendment][] enabled, the XRP your address must have for purposes of the [owner reserve](../../concepts/accounts/reserves.md#owner-reserves) is 5 XRP, regardless of the number of members in the signer list. See also: [Signer Lists and Reserves](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).
+**Note:** Without the [MultiSignReserve amendment](../../resources/known-amendments.md#multisignreserve), the more members in the signer list, the more XRP your address must have for purposes of the [owner reserve](../../concepts/accounts/reserves.md#owner-reserves). If your address does not have enough XRP, the transaction fails with [`tecINSUFFICIENT_RESERVE`](../../references/protocol/transactions/transaction-results/tec-codes.md). With the [MultiSignReserve amendment](../../resources/known-amendments.md#multisignreserve) enabled, the XRP your address must have for purposes of the [owner reserve](../../concepts/accounts/reserves.md#owner-reserves) is 5 XRP, regardless of the number of members in the signer list. See also: [Signer Lists and Reserves](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).
 
 
 ## 4. Wait for validation

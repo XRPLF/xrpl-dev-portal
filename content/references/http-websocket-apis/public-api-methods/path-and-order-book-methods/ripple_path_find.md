@@ -80,7 +80,7 @@ rippled ripple_path_find '{"source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ripple_path_find)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ripple_path_find)
 
 The request includes the following parameters:
 
@@ -88,11 +88,11 @@ The request includes the following parameters:
 |:----------------------|:---------------------------|:------------------------|
 | `source_account`      | String                     | Unique address of the account that would send funds in a transaction |
 | `destination_account` | String                     | Unique address of the account that would receive funds in a transaction |
-| `destination_amount`  | String or Object           | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object           | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
+| `destination_amount`  | String or Object           | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| `send_max`            | String or Object           | _(Optional)_ [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) that would be spent in the transaction. Cannot be used with `source_currencies`. [New in: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
 | `source_currencies`   | Array                      | _(Optional)_ Array of currencies that the source account might want to spend. Each entry in the array should be a JSON object with a mandatory `currency` field and optional `issuer` field, like how [currency amounts][Currency Amount] are specified. Cannot contain more than **18** source currencies. By default, uses all source currencies available up to a maximum of **88** different currency/issuer pairs. |
-| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 
 ## Response Format
 
@@ -436,13 +436,13 @@ Each element in the `alternatives` array is an object that represents a path fro
 | `Field`          | Type             | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
 | `paths_computed` | Array            | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
-| `source_amount`  | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount |
+| `source_amount`  | String or Object | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) that the source would have to send along this path for the destination to receive the desired amount |
 
 The following fields are deprecated, and may be omitted: `paths_canonical`, and `paths_expanded`. If they appear, you should disregard them.
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `tooBusy` - The server is under too much load to calculate paths. Not returned if you are connected as an admin.
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActMissing` - The `source_account` field is omitted from the request.

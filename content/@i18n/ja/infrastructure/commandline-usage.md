@@ -98,7 +98,7 @@ rippled [OPTIONS] -- {COMMAND} {COMMAND_PARAMETERS}
 
 クライアントモードでは、`rippled`実行可能ファイルが別の`rippled`サービスのクライアントとして動作します。（サービスは別のプロセスでローカルに実行されている同じ実行可能ファイルである場合や、別のサーバー上の`rippled`サーバーである場合があります。）
 
-クライアントモードで実行するには、いずれかの[`rippled` API](../references/http-websocket-apis/index.md)メソッドの[コマンドライン構文](request-formatting.html#コマンドライン形式)を指定します。
+クライアントモードで実行するには、いずれかの[`rippled` API](../references/http-websocket-apis/index.md)メソッドの[コマンドライン構文](../references/http-websocket-apis/api-conventions/request-formatting.md#コマンドライン形式)を指定します。
 
 クライアントモードは、個別のコマンド構文の他に、[汎用オプション](#汎用オプション)と以下のオプションに対応します。
 

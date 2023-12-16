@@ -9,7 +9,7 @@ status: not_enabled
 # AMMBid
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMBid.cpp "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)のオークションスロットに入札することができます。落札されると、競り落とされるか24時間が経過するまで、割引料金でAMMと取引することができます。24時間が経過する前に競り落とされた場合、残り時間に応じて落札価格の一部が払い戻されます。
 
@@ -52,14 +52,14 @@ AMMのLPトークンを使って落札すると、落札に利用したLPトー�
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド       | JSONの型    | [内部の型](../../binary-format.md) | 必須?  | 説明 |
 |:---------------|:-----------|:- ----------|:----- |:------------|
 | `Asset`        | オブジェクト | STIssue      | はい  | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Asset2`       | オブジェクト | STIssue      | はい  | AMMのプールにあるもう一つのアセットの定義です。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
-| `BidMin`       | [通貨額](basic-data-types.html#通貨額の指定)  | Amount       | いいえ | スロットに支払う最小の金額。この値を高く設定すると、他の人から競り落とされにくくなります。省略された場合は、落札に必要な最低額を支払います。 |
-| `BidMax`       | [通貨額](basic-data-types.html#通貨額の指定)  | Amount       | いいえ | スロットに支払う最大の金額。落札するためのコストがこの金額より高い場合、取引は失敗します。省略された場合は、落札に必要な金額を支払います。 |
+| `BidMin`       | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount       | いいえ | スロットに支払う最小の金額。この値を高く設定すると、他の人から競り落とされにくくなります。省略された場合は、落札に必要な最低額を支払います。 |
+| `BidMax`       | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount       | いいえ | スロットに支払う最大の金額。落札するためのコストがこの金額より高い場合、取引は失敗します。省略された場合は、落札に必要な金額を支払います。 |
 | `AuthAccounts` | 配列        | STArray     | いいえ  | 割引料金で取引を許可する最大4つの追加のアカウントのリスト。これには、トランザクション送信者のアドレスは含めることはできません。これらのオブジェクトはそれぞれ[Auth Accountオブジェクト](#auth-accountオブジェクト)である必要があります。. |
 
 `BidMin` と `BidMax` の両方を指定することはできません。

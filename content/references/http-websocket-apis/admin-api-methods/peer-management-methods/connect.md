@@ -98,7 +98,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 - Cannot connect in stand-alone mode - Network-related commands are disabled in stand-alone mode.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

@@ -7,7 +7,7 @@ labels:
 ---
 # Understanding Log Messages
 
-The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](xrpl-servers.html) debug log and how to interpret them.
+The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
 
 This is an important step in [Diagnosing Problems](diagnosing-problems.md) with `rippled`.
 
@@ -247,10 +247,10 @@ The log message contains values describing the current online deletion run. Each
 
 | Keyword          | Value            | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
-| `validatedSeq`   | [Ledger Index][] | The current validated ledger version.  |
-| `lastRotated`    | [Ledger Index][] | The end of the ledger range in the ["old" (read-only) database](../configuration/data-retention/online-deletion.md#how-it-works). Online deletion deletes this ledger version and earlier. |
+| `validatedSeq`   | [Ledger Index](../../references/protocol/data-types/basic-data-types.md#ledger-index) | The current validated ledger version.  |
+| `lastRotated`    | [Ledger Index](../../references/protocol/data-types/basic-data-types.md#ledger-index) | The end of the ledger range in the ["old" (read-only) database](../configuration/data-retention/online-deletion.md#how-it-works). Online deletion deletes this ledger version and earlier. |
 | `deleteInterval` | Number           | How many ledger versions to keep after online deletion. The [`online_delete` setting](../configuration/data-retention/online-deletion.md#configuration) controls this value. |
-| `canDelete_`     | [Ledger Index][] | The newest ledger version that the server is allowed to delete, if using [advisory deletion](../configuration/data-retention/online-deletion.md#advisory-deletion). If not using advisory deletion, this value is ignored. |
+| `canDelete_`     | [Ledger Index](../../references/protocol/data-types/basic-data-types.md#ledger-index) | The newest ledger version that the server is allowed to delete, if using [advisory deletion](../configuration/data-retention/online-deletion.md#advisory-deletion). If not using advisory deletion, this value is ignored. |
 
 When online deletion finishes, it writes the following log message:
 
@@ -258,7 +258,7 @@ When online deletion finishes, it writes the following log message:
 SHAMapStore:WRN finished rotation 54635511
 ```
 
-The number at the end of the message is the [ledger index][] of the validated ledger at the time online deletion started, matching the `validatedSeq` value of the "rotating" message. This becomes the `lastRotated` value the next time online deletion runs.
+The number at the end of the message is the [ledger index](../../references/protocol/data-types/basic-data-types.md#ledger-index) of the validated ledger at the time online deletion started, matching the `validatedSeq` value of the "rotating" message. This becomes the `lastRotated` value the next time online deletion runs.
 
 If the server falls out of sync while running online deletion, it interrupts online deletion and writes a ["Not deleting" log message](#not-deleting) instead of a "finished rotation" message.
 
@@ -331,8 +331,8 @@ NetworkOPs:WRN We are not running on the consensus ledger
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Technical FAQ](technical-faq.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [Technical FAQ](../../faq.md)
 - **Tutorials:**
     - [Diagnosing Problems](diagnosing-problems.md)
     - [Capacity Planning](../installation/capacity-planning.md)

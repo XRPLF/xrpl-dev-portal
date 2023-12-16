@@ -9,7 +9,7 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp "ソース")
 
-{% partial file="/_snippets/clawback-disclaimer.ja.md" /%}
+{% partial file="/_snippets/clawback-disclaimer.md" /%}
 
 あなたのアカウントが発行したトークンを回収します。
 
@@ -29,11 +29,11 @@ Clawback機能はデフォルトで無効になっています。使用するに
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド　         | JSONの型   | [内部の型](../../binary-format.md) | 説明       |
 |:-------------------|:----------|:------------|:----------|
-| `Amount`           | [通貨額](basic-data-types.html#通貨額の指定) | Amount      | 回収する金額と、その金額を回収する相手を表します。`value`サブフィールドの回収する数量はゼロであってはなりません。これが現在の残高より多い場合、トランザクションは全残高を回収します。サブフィールド`Amount`内の`issuer`はトークン所有者のアカウントを表します。|
+| `Amount`           | [通貨額](../../data-types/basic-data-types.md#通貨額の指定) | Amount      | 回収する金額と、その金額を回収する相手を表します。`value`サブフィールドの回収する数量はゼロであってはなりません。これが現在の残高より多い場合、トランザクションは全残高を回収します。サブフィールド`Amount`内の`issuer`はトークン所有者のアカウントを表します。|
 
 このトランザクションを実行するアカウントは、回収する資産の発行者でなければなりません。XRP Ledgerでは、トラストラインは双方向であり、設定によっては双方が資産の*発行者*とみなされることに注意してください。この仕様において、*発行者*という用語は、未払い残高がある(つまり、発行された資産に"債務がある")トラストラインの側が、その資産を回収することを意味します。
 

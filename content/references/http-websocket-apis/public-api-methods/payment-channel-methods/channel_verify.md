@@ -8,7 +8,7 @@ labels:
 # channel_verify
 [[Source]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L89 "Source")
 
-_(Added by the [PayChan amendment][] to be enabled. [New in: rippled 0.33.0](https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"))_
+_(Added by the [PayChan amendment](../../../../resources/known-amendments.md#paychan) to be enabled. [New in: rippled 0.33.0](https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"))_
 
 The `channel_verify` method checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.
 
@@ -57,9 +57,9 @@ The request includes the following parameters:
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `amount` | String | The amount of [XRP, in drops][], the provided `signature` authorizes. |
+| `amount` | String | The amount of [XRP, in drops](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts), the provided `signature` authorizes. |
 | `channel_id` | String | The Channel ID of the channel that provides the XRP. This is a 64-character hexadecimal string. |
-| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or the XRP Ledger's [base58](base58-encodings.html) format. [Updated in: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
+| `public_key` | String | The public key of the channel and the key pair that was used to create the signature, in hexadecimal or the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. [Updated in: rippled 0.90.0](https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE") |
 | `signature` | String | The signature to verify, in hexadecimal. |
 
 ## Response Format
@@ -117,8 +117,8 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58 or hexadecimal. The [base58 representation of account public keys starts with the letter `a`](base58-encodings.html). The hexadecimal representation is 66 characters long.
+* `publicMalformed` - The `public_key` field of the request is not a valid public key in the correct format. Public keys are 33 bytes and must be represented in base58 or hexadecimal. The [base58 representation of account public keys starts with the letter `a`](../../../protocol/data-types/base58-encodings.md). The hexadecimal representation is 66 characters long.
 * `channelMalformed` - The `channel_id` field of the request is not a valid Channel ID. The Channel ID must be a 256-bit (64-character) hexadecimal string.
 * `channelAmtMalformed` - The value specified in the `amount` field was not a valid [XRP amount][XRP, in drops].

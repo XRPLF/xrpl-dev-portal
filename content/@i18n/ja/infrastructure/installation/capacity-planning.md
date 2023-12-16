@@ -43,7 +43,7 @@ XRP Ledgerのサーバーの負荷は、複数の要因によって変化しま�
 | 32GB                        | `large`           | **非推奨** 実際には、この設定はほとんどの状況で `huge` よりもパフォーマンスが低下します。安定性を求めるのであれば、常に `huge` を使用してください。 |
 | 64GB                        | `huge`            | 実稼働サーバーに推奨。 |
 
-`node_size`パラメーターを無効な値に設定すると、[サーバーは起動しません](server-wont-start.html#node_sizeの値が正しくない)。
+`node_size`パラメーターを無効な値に設定すると、[サーバーは起動しません](../troubleshooting/server-wont-start.md#node_sizeの値が正しくない)。
 
 
 ### ノードDBタイプ
@@ -199,7 +199,7 @@ AWSインスタンスストア（`ephemeral`ストレージ）では適切なパ
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [`rippled`の構成](../configuration/index.md)

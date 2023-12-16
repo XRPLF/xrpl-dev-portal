@@ -24,7 +24,7 @@ Checksは[Escrow](escrow.md)と[Payment Channel](../../tutorials/use-specialized
 * EscrowではXRPを自分自身に送金できます。ChecksではXRPを自身に送金することはできません。
 
 
-**注記:** [Checks Amendment][] により、[OfferCreate](../../references/protocol/transactions/types/offercreate.md)トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](offers.html#オファーの有効期限)を参照してください。
+**注記:** [Checks Amendment][] により、[OfferCreate](../../references/protocol/transactions/types/offercreate.md)トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](../tokens/decentralized-exchange/offers.md#オファーの有効期限)を参照してください。
 
 
 ## Checksを利用する理由
@@ -83,7 +83,7 @@ Checksはすべて同じ方法で開始されるため、**ステップ1と2**�
 
 ## Checksの利用可能性
 
-[Checks amendment][]は2020年6月18日にメインネットで有効化されました。Amendmentがどのように有効化され、投票されるかについては、[Amendmentsプロセス](amendments.html#amendmentプロセス)を参照してください。
+[Checks amendment](../../resources/known-amendments.md#checks)は2020年6月18日にメインネットで有効化されました。Amendmentがどのように有効化され、投票されるかについては、[Amendmentsプロセス](../networks-and-servers/amendments.md#amendmentプロセス)を参照してください。
 
 Test NetまたはプライベートXRP LedgerネットワークでのAmendmentの状況を確認するには、[featureメソッド][]を使用してください。
 

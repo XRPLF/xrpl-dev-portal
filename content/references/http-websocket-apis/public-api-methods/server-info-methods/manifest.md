@@ -50,7 +50,7 @@ The request includes the following parameters:
 
 | `Field`      | Type   | Description                        |
 |:-------------|:-------|:-----------------------------------|
-| `public_key` | String | The [base58](base58-encodings.html)-encoded public key of the validator to look up. This can be the master public key or ephemeral public key. |
+| `public_key` | String | The [base58](../../../protocol/data-types/base58-encodings.md)-encoded public key of the validator to look up. This can be the master public key or ephemeral public key. |
 
 
 ### Response Format
@@ -138,13 +138,13 @@ If provided, the `details` object contains the following fields:
 | `Field`         | Type   | Description                                       |
 |:----------------|:-------|:--------------------------------------------------|
 | `domain`        | String | The domain name this validator claims to be associated with. If the manifest does not contain a domain, this is an empty string. |
-| `ephemeral_key` | String | The ephemeral public key for this validator, in [base58](base58-encodings.html). |
-| `master_key`    | String | The master public key for this validator, in [base58](base58-encodings.html). |
+| `ephemeral_key` | String | The ephemeral public key for this validator, in [base58](../../../protocol/data-types/base58-encodings.md). |
+| `master_key`    | String | The master public key for this validator, in [base58](../../../protocol/data-types/base58-encodings.md). |
 | `seq`           | Number | The sequence number of this manifest. This number increases whenever the validator operator updates the validator's token to rotate ephemeral keys or change settings. |
 
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `invalidParams` - The `public_key` field was missing or specified incorrectly.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

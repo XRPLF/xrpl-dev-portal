@@ -25,7 +25,7 @@ An OfferCancel transaction removes an Offer object from the XRP Ledger.
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_OfferCancel%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22E7697D162A606FCC138C5732BF0D2A4AED49386DC59235FC3E218650AAC19744%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_OfferCancel%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22E7697D162A606FCC138C5732BF0D2A4AED49386DC59235FC3E218650AAC19744%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 

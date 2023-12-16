@@ -18,7 +18,7 @@ This document describes, at a low level, how to know why a transaction reached t
 
 To understand the outcome of a transaction as described in these instructions, you must:
 
-- Know which transaction you want to understand. If you know the transaction's [identifying hash][], you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
+- Know which transaction you want to understand. If you know the transaction's [identifying hash](../index.md#identifying-transactions), you can look it up that way. You can also look at transactions that executed in a recent ledger or the transactions that most recently affected a given account.
 - Have access to a `rippled` server that provides reliable information and has the necessary history for when the transaction was submitted.
     - For looking up the outcomes of transactions you've recently submitted, the server you submitted through should be enough, as long as it maintains sync with the network during that time.
     - For outcomes of older transactions, you may want to use a [full-history server](../../networks-and-servers/ledger-history.md#full-history).
@@ -62,7 +62,7 @@ The following example shows a successful transaction, as returned by the [tx met
 }
 ```
 
-This example shows an [AccountSet transaction](../../../references/protocol/transactions/types/accountset.md) sent by the [account](../../accounts/accounts.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/transaction-results.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
+This example shows an [AccountSet transaction](../../../references/protocol/transactions/types/accountset.md) sent by the [account](../../accounts/accounts.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash](../index.md#identifying-transactions) is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/transaction-results.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
 
 
 ### Case: Not Included in a Validated Ledger
@@ -144,11 +144,11 @@ This example shows the full response from step 1 above. See if you can figure ou
 }
 ```
 
-The _only_ changes made by this [no-op transaction](cancel-or-skip-a-transaction.html) are to update the [AccountRoot object](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) representing the sender's account in the following ways:
+The _only_ changes made by this [no-op transaction](canceling-a-transaction.md) are to update the [AccountRoot object](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) representing the sender's account in the following ways:
 
 - The `Sequence` value increases from 376 to 377.
 
-- The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP][]. This decrease of exactly 12 drops represents the [transaction cost](../transaction-cost.md), as specified in the `Fee` field of the transaction.
+- The XRP `Balance` in this account changes from `396015176` to `396015164` [drops of XRP](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts). This decrease of exactly 12 drops represents the [transaction cost](../transaction-cost.md), as specified in the `Fee` field of the transaction.
 
 - The [`AccountTxnID`](../../../references/protocol/transactions/common-fields.md#accounttxnid) changes to show that this transaction is now the one most recently sent from this address.
 
@@ -447,6 +447,6 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 - **Tutorials:**
     - [Monitor Incoming Payments with WebSocket](../../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
 - **References:**
-    - [Ledger Entry Types Reference](ledger-object-types.html) - All possible fields of all types of ledger entries
+    - [Ledger Entry Types Reference](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - All possible fields of all types of ledger entries
     - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
     - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.

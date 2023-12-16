@@ -30,7 +30,7 @@ An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentr
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_OfferCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%220CD69FD1F0A890CC57CDA430213FD294F7D65FF4A0F379A0D09D07A222D324E6%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_OfferCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%220CD69FD1F0A890CC57CDA430213FD294F7D65FF4A0F379A0D09D07A222D324E6%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
@@ -38,10 +38,10 @@ An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentr
 
 | Field          | JSON Type           | [Internal Type](../../binary-format.md) | Description       |
 |:---------------|:--------------------|:------------------|:------------------|
-| [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration) | Number | UInt32 | _(Optional)_ Time after which the Offer is no longer active, in [seconds since the Ripple Epoch][]. |
+| [`Expiration`](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration) | Number | UInt32 | _(Optional)_ Time after which the Offer is no longer active, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). |
 | `OfferSequence`  | Number              | UInt32            | _(Optional)_ An Offer to delete first, specified in the same way as [OfferCancel](offercancel.md). |
-| `TakerGets`      | [Currency Amount][] | Amount            | The amount and type of currency being sold. |
-| `TakerPays`      | [Currency Amount][] | Amount            | The amount and type of currency being bought. |
+| `TakerGets`      | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | The amount and type of currency being sold. |
+| `TakerPays`      | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | The amount and type of currency being bought. |
 
 ## OfferCreate Flags
 
@@ -61,7 +61,7 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 |:-------------------------|:--------------------------------------------------|
 | `temINVALID_FLAG`        | Occurs if the transaction specifies both `tfImmediateOrCancel` and `tfFillOrKill`. |
 | `tecEXPIRED`             | Occurs if the transaction specifies an `Expiration` time that has already passed. |
-| `tecKILLED`              | Occurs if the transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment][]_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, this would return `tesSUCCESS`). |
+| `tecKILLED`              | Occurs if the transaction specifies `tfFillOrKill`, and the full amount cannot be filled. If the _[ImmediateOfferKilled amendment](../../../../resources/known-amendments.md#immediateofferkilled)_ is enabled, this result code also occurs when the transaction specifies `tfImmediateOrCancel` and executes without moving funds (previously, this would return `tesSUCCESS`). |
 | `temBAD_EXPIRATION`      | Occurs if the transaction contains an `Expiration` field that is not validly formatted. |
 | `temBAD_SEQUENCE`        | Occurs if the transaction contains an `OfferSequence` that is not validly formatted, or is higher than the transaction's own `Sequence` number. |
 | `temBAD_OFFER`           | Occurs if the Offer tries to trade XRP for XRP, or tries to trade an invalid or negative amount of a token. |

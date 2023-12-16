@@ -9,7 +9,7 @@ labels:
 
 `NFToken`オブジェクトは、1つの非代替性トークン(NFT)を表します。単体では保存されず、他の`NFToken`オブジェクトと共に[NFTokenPage オブジェクト][]に格納されます。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました。)_
+_([NonFungibleTokensV1_1 amendment](../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました。)_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -20,7 +20,7 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 }
 ```
 
-通常の[レジャーエントリ](ledger-object-types.html)とは異なり、`NFToken`にはオブジェクトのタイプや現在の所有者を特定するフィールドはありません。`NFToken`オブジェクトは、そのオブジェクトのタイプを暗黙的に定義し、所有者を特定するページにグループ化されます。
+通常の[レジャーエントリ](../ledger-data/ledger-entry-types/index.md)とは異なり、`NFToken`にはオブジェクトのタイプや現在の所有者を特定するフィールドはありません。`NFToken`オブジェクトは、そのオブジェクトのタイプを暗黙的に定義し、所有者を特定するページにグループ化されます。
 
 
 ## NFTokenID
@@ -53,7 +53,7 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 |:------------------|:-----------|:--------------------------------------------|
 | `lsfBurnable`     | `0x0001`   | 設定されている場合、発行者（または発行者が許可したエンティティ）が`NFToken`を破棄できることを示します。オブジェクトの所有者は常に破棄することができます。 |
 | `lsfOnlyXRP`      | `0x0002`   | 設定されている場合、`NFToken`はXRPに対してのみオファーまたは売却できることを示します。 |
-| `lsfTrustLine`    | `0x0004`   | **廃止** 設定されている場合、送金手数料を保持するための[トラストライン](../../../concepts/tokens/fungible-tokens/index.md)を自動的に作成します。設定されていない場合、発行者がそのトークンのトラストラインを持っていない場合、この`NFToken`をそのトークンで売買することは失敗します。[fixRemoveNFTokenAutoTrustLine amendment][]により、このフラグは利用できなくなります。|
+| `lsfTrustLine`    | `0x0004`   | **廃止** 設定されている場合、送金手数料を保持するための[トラストライン](../../../concepts/tokens/fungible-tokens/index.md)を自動的に作成します。設定されていない場合、発行者がそのトークンのトラストラインを持っていない場合、この`NFToken`をそのトークンで売買することは失敗します。[fixRemoveNFTokenAutoTrustLine amendment](../../../resources/known-amendments.md#fixremovenftokenautotrustline)により、このフラグは利用できなくなります。|
 | `lsfTransferable` | `0x0008`   | 設定されている場合、この`NFToken`は所有者から別の所有者に転送することができます。設定されていない場合、所有者は発行者との間でのみ譲渡が可能です。 |
 | `lsfReservedFlag` | `0x8000`   | 将来の使用に備えて確保されています。このフラグを設定しようとすると失敗します。 |
 

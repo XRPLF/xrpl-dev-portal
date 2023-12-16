@@ -45,14 +45,14 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 | `Account`           | String           | AccountID         | Yes       | The address of the account that owns this Offer. |
 | `BookDirectory`     | String           | Hash256           | Yes       | The ID of the [Offer Directory](directorynode.md) that links to this Offer. |
 | `BookNode`          | String           | UInt64            | Yes       | A hint indicating which page of the offer directory links to this entry, in case the directory consists of multiple pages. |
-| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Offer is considered unfunded. See [Specifying Time][] for details. |
+| `Expiration`        | Number           | UInt32            | No        | Indicates the time after which this Offer is considered unfunded. See [Specifying Time](../../data-types/basic-data-types.md#specifying-time) for details. |
 | `LedgerEntryType`   | String           | UInt16            | Yes       | The value `0x006F`, mapped to the string `Offer`, indicates that this is an Offer entry. |
 | `OwnerNode`         | String           | UInt64            | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String           | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number           | UInt32            | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `Sequence`          | Number           | UInt32            | Yes       | The `Sequence` value of the [OfferCreate](../../transactions/types/offercreate.md) transaction that created this offer. Used in combination with the `Account` to identify this offer. |
-| `TakerPays`         | [Currency Amount][] | Amount         | Yes       | The remaining amount and type of currency requested by the Offer creator. |
-| `TakerGets`         | [Currency Amount][] | Amount         | Yes       | The remaining amount and type of currency being provided by the Offer creator. |
+| `TakerPays`         | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount         | Yes       | The remaining amount and type of currency requested by the Offer creator. |
+| `TakerGets`         | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount         | Yes       | The remaining amount and type of currency being provided by the Offer creator. |
 
 ## Offer Flags
 
@@ -71,7 +71,7 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 
 ## Offer ID Format
 
-The ID of an `Offer` entry is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of an `Offer` entry is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The Offer space key (`0x006F`)
 * The AccountID of the account placing the Offer

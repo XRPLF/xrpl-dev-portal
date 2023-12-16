@@ -9,7 +9,7 @@ labels:
 ---
 # Public API Methods
 
-Communicate directly with an [XRP Ledger server](xrpl-servers.html) using the public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.
+Communicate directly with an [XRP Ledger server](../../../concepts/networks-and-servers/index.md) using the public API methods. Public methods are not necessarily meant for the general public, but they are used by any client attached to the server. Think of public methods as being for members or customers of the organization running the server.
 
 
 ## [Account Methods](account-methods/index.md)

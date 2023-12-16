@@ -8,7 +8,7 @@ labels:
 ---
 # Configure Advisory Deletion
 
-The default config file sets [`rippled`](xrpl-servers.html) to automatically delete outdated [history](../../../concepts/networks-and-servers/ledger-history.md) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](../../installation/capacity-planning.md).
+The default config file sets [`rippled`](../../../concepts/networks-and-servers/index.md) to automatically delete outdated [history](../../../concepts/networks-and-servers/ledger-history.md) of XRP Ledger state and transactions as new ledger versions become available. If your server uses most of its hardware resources during peak hours, you can configure the server to delete ledgers only when prompted by a command scheduled to run during off-peak hours, so that online deletion is less likely to impact [server performance](../../installation/capacity-planning.md).
 
 ## Prerequisites
 

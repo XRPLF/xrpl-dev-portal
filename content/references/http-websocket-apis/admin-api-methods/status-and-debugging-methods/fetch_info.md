@@ -146,7 +146,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `info`  | Object | Map of objects being fetched and the status of that object being fetched. A ledger being fetched may be identified by its [ledger index][]; ledgers and other objects being fetched may also be identified by their hashes. |
+| `info`  | Object | Map of objects being fetched and the status of that object being fetched. A ledger being fetched may be identified by its [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index); ledgers and other objects being fetched may also be identified by their hashes. |
 
 The fields describing a fetch in progress are subject to change without notice. The following fields may be included:
 
@@ -161,5 +161,5 @@ The fields describing a fetch in progress are subject to change without notice. 
 
 ### Possible Errors
 
-- Any of the [universal error types][].
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

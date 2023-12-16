@@ -13,7 +13,7 @@ labels:
 
 アカウントの`account_objects`応答に含まれる可能性のあるオブジェクトのタイプには以下のものがあります。
 
-- [Offerエントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md): 現在処理中であり、資金化されていない、または有効期限切れで削除されていない注文情報。（詳細は、[オファーのライフサイクル](offers.html#オファーのライフサイクル)をご覧ください。）
+- [Offerエントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md): 現在処理中であり、資金化されていない、または有効期限切れで削除されていない注文情報。（詳細は、[オファーのライフサイクル](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)をご覧ください。）
 - [RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md): このアカウント側がデフォルト状態にないトラストライン。
 - アカウントの[SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md): アカウントで[マルチシグ](../../../../concepts/accounts/multi-signing.md)が有効な場合。
 - [Escrowエントリ](../../../../concepts/payment-types/escrow.md): 実行されていないかまたはキャンセルされていない保留中の支払い。
@@ -76,8 +76,8 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 |:-------------------------|:----------------------|:-----|:---------------|
 | `account`                | 文字列                 | はい  | アカウントの一意のIDであり、最も一般的にはアカウントのアドレスが使用されます。 |
 | `deletion_blockers_only` | Boolean               | いいえ | `true`の場合、このアカウントが[削除](../../../../concepts/accounts/deleting-accounts.md)されるのをブロックするオブジェクトのみをレスポンスに含めます。デフォルトは`false`です。 [新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE") |
-| `ledger_hash`            | [ハッシュ](basic-data-types.html#ハッシュ)           | いいえ | 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください） |
-| `ledger_index`           | [レジャーインデックス](basic-data-types.html#レジャーインデックス) | いいえ | 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)ををご覧ください） |
+| `ledger_hash`            | [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)           | いいえ | 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください） |
+| `ledger_index`           | [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | いいえ | 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)ををご覧ください） |
 | `limit`                  | 符号なし整数            | いいえ | 結果に含めることができるオブジェクトの最大数。非管理者接続では10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |
 | `marker`                 | [マーカー](../../api-conventions/markers-and-pagination.md)           | いいえ | 以前にページネーションされた応答の値。その応答を停止した箇所からデータの取得を再開します。 |
 | `type`                   | 文字列                 | いいえ | 指定されている場合、結果をフィルタリングしてこのタイプのレジャーオブジェクトのみが含まれるようにします。有効なタイプは`check`、`deposit_preauth`、`escrow`、`offer`、`payment_channel`、`signer_list`、`state`（トラストライン）そして`ticket`です。 |
@@ -1207,18 +1207,18 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
 | `Field`                | 型                          | 説明                    |
 |:-----------------------|:----------------------------|:------------------------|
-| `account`              | 文字列                       | この要求に対応するアカウントの一意の[アドレス](basic-data-types.html#アドレス)。 |
+| `account`              | 文字列                       | この要求に対応するアカウントの一意の[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)。 |
 | `account_objects`      | 配列                         | このアカウントが所有するオブジェクトの配列。各オブジェクトは、生[レジャーフォーマット](../../../protocol/ledger-data/index.md)です。 |
 | `ledger_hash`          | 文字列                       | （省略される場合があります）この応答の生成に使用されたレジャーの識別用ハッシュ。 |
-| `ledger_index`         | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 |
-| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用された現在処理中のレジャーバージョンのレジャーインデックス。 |
+| `ledger_index`         | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 |
+| `ledger_current_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用された現在処理中のレジャーバージョンのレジャーインデックス。 |
 | `limit`                | 数値                         | _（省略される場合があります）_ この要求で使用されていた制限（制限の使用がある場合）。 |
 | `marker`               | [マーカー](../../api-conventions/markers-and-pagination.md)                  | 応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に追加のページがない場合は省略されます。 |
 | `validated`            | 真偽値                        | このフィールドが含まれていて`true`に設定されている場合、この応答内の情報は検証済みのレジャーバージョンから取得されています。そうでない場合、情報は変更されることがあります。 |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)が、レジャーのアカウントに対応していません。
+* `actNotFound` - 要求の`account`フィールドに指定されている[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

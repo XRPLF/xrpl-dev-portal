@@ -40,7 +40,7 @@ In addition to the [common fields](../common-fields.md), the `{% $frontmatter.se
 **Warning:** The JSON format for this ledger entry type is unusual. The `BaseFee`, `ReserveBase`, and `ReserveIncrement` indicate drops of XRP but ***not*** in the usual format for [specifying XRP][Currency Amount].
 
 
-If the _[XRPFees amendment][]_ is enabled, the `FeeSettings` object has these fields instead:
+If the _[XRPFees amendment](../../../../resources/known-amendments.md#xrpfees)_ is enabled, the `FeeSettings` object has these fields instead:
 
 | Name                    | JSON Type | [Internal Type](../../binary-format.md) | Required? | Description            |
 |:------------------------|:----------|:------------------|:----------|:-----------------------|

@@ -12,7 +12,7 @@ labels:
 * 1つのオファーを受け入れることを許可する。これは _ダイレクト_ モードと呼ばれます。
 * 2つの異なるオファー、1つは与えられた`NFToken`の購入を提案し、もう1つは同じ`NFToken`の売却を提案し、アトミックに受け入れられることを許可します。これは _ブローカー_ モードと呼ばれます。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました)_
 
 
 ## ブローカー vs. ダイレクト モード
@@ -64,13 +64,13 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 
 ## フィールド
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド           | JSONの型            | [内部の型](../../binary-format.md)        | 説明          |
 |:-------------------|:--------------------|:------------------|:--------------|
 | `NFTokenSellOffer` | 文字列              | Hash256           | _(省略可)_ `NFToken`の売却を提案する`NFTokenOffer`の識別情報です。 |
 | `NFTokenBuyOffer`  | 文字列              | Hash256           | _(省略可)_ `NFToken`の購入を提案する`NFTokenOffer`の識別情報です。 |
-| `NFTokenBrokerFee` | [通貨額](basic-data-types.html#通貨額の指定) | Amount            | _(省略可)_ このフィールドはブローカーモードでのみ有効であり、2つのオファーをまとめるための手数料としてブローカーが保持する金額を指定します。残りの金額は`NFToken`の販売者に送られます。指定する場合、発行者が課す送金手数料を考慮する前に、販売者が受け取る金額が少なくとも売却オファーで示された金額になるように手数料を設定しなければなりません。 |
+| `NFTokenBrokerFee` | [通貨額](../../data-types/basic-data-types.md#通貨額の指定) | Amount            | _(省略可)_ このフィールドはブローカーモードでのみ有効であり、2つのオファーをまとめるための手数料としてブローカーが保持する金額を指定します。残りの金額は`NFToken`の販売者に送られます。指定する場合、発行者が課す送金手数料を考慮する前に、販売者が受け取る金額が少なくとも売却オファーで示された金額になるように手数料を設定しなければなりません。 |
 
 ダイレクトモードでは、`NFTokenSellOffer`または`NFTokenBuyOffer`フィールドの**いずれか**を指定する必要があります。ブローカーモードでは、**両方**のフィールドを指定する必要があります。
 

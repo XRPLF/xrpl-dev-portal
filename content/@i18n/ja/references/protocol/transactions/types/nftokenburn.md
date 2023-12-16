@@ -13,7 +13,7 @@ NFTokenBurnトランザクションは、`NFToken`オブジェクトを保持し
 
 この操作に成功すると、対応する`NFToken`が削除されます。この操作によって`NFToken`を保持している`NFTokenPage`が空になるか、統合されて`NFTokenPage`が削除されると、所有者準備金が1つ減ります。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました)_
 
 
 ## {% $frontmatter.seo.title %} JSONの例
@@ -28,7 +28,7 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド          | JSONの型  | [内部の型](../../binary-format.md)        | 説明                      |
 |:------------------|:----------|:------------------|:-------------------------|

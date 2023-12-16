@@ -36,7 +36,7 @@ To set up automatic updates, complete the following steps:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.md)

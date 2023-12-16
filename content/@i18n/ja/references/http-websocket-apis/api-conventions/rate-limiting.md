@@ -9,7 +9,7 @@ labels:
 
 `rippled`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
 
-**ヒント:** レート制限は、クライアントが[管理者](get-started-using-http-websocket-apis.html#管理者アクセス権限)として接続されているときには適用されません
+**ヒント:** レート制限は、クライアントが[管理者](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#管理者アクセス権限)として接続されているときには適用されません
 
 クライアントがレート制限に近づいている場合、サーバーは[APIレスポンス](response-formatting.md)のトップレベルにフィールド`"warning"： "load"`というフィールドを[APIレスポンス](response-formatting.md)のトップレベルに追加します。この警告はすべてのレスポンスに追加されるわけではありませんが、サーバはクライアントを切断する前に何度かこのような警告を送ることがあります。
 
@@ -54,7 +54,7 @@ Server is overloaded
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](xrpl-servers.html)
+    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
     - [ソフトウェアエコシステム](../../../introduction/software-ecosystem.md)
 - **チュートリアル:**
     - [XRP Ledger APIの使用開始](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)

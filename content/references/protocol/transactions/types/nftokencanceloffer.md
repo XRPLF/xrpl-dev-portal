@@ -10,7 +10,7 @@ labels:
 
 The `NFTokenCancelOffer` transaction can be used to cancel existing token offers created using `NFTokenCreateOffer`.
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -24,7 +24,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungib
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCancelOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCancelOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229FF6366C19F762AE3479DC01390CDE17F1055EFF0C52A28B8ACF0CC11AEF0CC5%22%2C%22binary%22%3Afalse%7D)
 
 ## Permissions
 
@@ -40,7 +40,7 @@ This transaction removes the listed `NFTokenOffer` object from the ledger, if pr
 
 | Field             | JSON Type | [Internal Type](../../binary-format.md) | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](ledger-object-ids.html) of an [NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md) object; the transaction is invalid if the array contains duplicate entries. |
+| `NFTokenOffers`     | Array     | VECTOR256         | An array of IDs of the `NFTokenOffer` objects to cancel (not the IDs of `NFToken` objects, but the IDs of the `NFTokenOffer` objects). Each entry must be a different [object ID](../../ledger-data/common-fields.md) of an [NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md) object; the transaction is invalid if the array contains duplicate entries. |
 
 The transaction can succeed even if one or more of the IDs in the `NFTokenOffers` field do not refer to objects that currently exist in the ledger. (For example, those token offers might already have been deleted.) The transaction fails with an error if one of the IDs points to an object that does exist, but is not a [NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md) object.
 
@@ -54,6 +54,6 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code         | Description                                             |
 |:-------------------|:--------------------------------------------------------|
-| `temDISABLED`      | The [NonFungibleTokensV1 amendment](known-amendments.html#nonfungibletokensv1) is not enabled. |
+| `temDISABLED`      | The [NonFungibleTokensV1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1) is not enabled. |
 | `temMALFORMED`     | The transaction was not validly formatted. For example, the `NFTokenOffers` array was empty or contained more than the maximum number of offers that can be canceled at one time. |
 | `tecNO_PERMISSION` | At least one of the IDs in the `NFTokenOffers` field refers to an object that cannot be canceled. For example, the sender of this transaction is not the owner or `Destination` of the offer, or the object was not an `NFTokenOffer` type object. |

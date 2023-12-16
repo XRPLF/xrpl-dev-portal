@@ -213,7 +213,7 @@ const signed = wallet.sign(tx_json)
 
 レジャークローズイベントにサブスクリプションするには、`Client.(method)`を使用し、`"streams": ["ledger"]`で[subscribeメソッド][]をコールします。イベントハンドラを追加するには、`Client.on(event_type, callback)`を使用します。これらのコールは任意の順で実行可能です。
 
-1.xからのRippleAPI特有の`ledger`イベントタイプは削除され、代わりに、`ledgerClosed`イベントを使用します。これらのイベントメッセージは同じデータを含んでいますが、フォーマットはWebSocket APIの[レジャーストリーム](subscribe.html#レジャーストリーム)メッセージに対応しています。
+1.xからのRippleAPI特有の`ledger`イベントタイプは削除され、代わりに、`ledgerClosed`イベントを使用します。これらのイベントメッセージは同じデータを含んでいますが、フォーマットはWebSocket APIの[レジャーストリーム](http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#レジャーストリーム)メッセージに対応しています。
 
 例:
 
@@ -316,7 +316,7 @@ ripple-lib 1.xでは、全てのメソッドとプロパティは、`RippleAPI`�
 | `dropsToXrp()` | [`xrpl.dropsToXrp()`](https://js.xrpl.org/modules.html#dropsToXrp) | 現在は、モジュールの静的メソッドです。 |
 | `iso8601ToRippleTime()` | [`xrpl.isoTimeToRippleTime()`](https://js.xrpl.org/modules.html#isoTimeToRippleTime) | 現在は、モジュールの静的メソッドです。 |
 | `rippleTimeToISO8601()` | [`xrpl.rippleTimeToISOTime()`](https://js.xrpl.org/modules.html#rippleTimeToISOTime) | 現在は、モジュールの静的メソッドです。 また、新しいメソッド [`rippleTimeToUnixTime()`](https://js.xrpl.org/modules.html#rippleTimeToUnixTime) を使うと、UNIXエポック 1970-01-01 00:00:00 UTC からのミリ秒単位のUNIXスタイルのタイムスタンプを取得することができます。 |
-| `txFlags.Universal.FullyCanonicalSig` | (削除済み - 注記カラムを参照) | [RequireFullyCanonicalSig amendment][]に伴い、不要となりました。 |
+| `txFlags.Universal.FullyCanonicalSig` | (削除済み - 注記カラムを参照) | [RequireFullyCanonicalSig amendment](../resources/known-amendments.md#requirefullycanonicalsig)に伴い、不要となりました。 |
 | `txFlags.Payment.NoRippleDirect` | `xrpl.PaymentFlags.tfNoDirectRipple` | |
 | `txFlags.Payment.PartialPayment` | `xrpl.PaymentFlags.tfPartialPayment` | |
 | `txFlags.Payment.LimitQuality` | `xrpl.PaymentFlags.tfLimitQuality` | |

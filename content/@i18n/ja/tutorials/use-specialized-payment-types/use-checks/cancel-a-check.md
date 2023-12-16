@@ -11,7 +11,7 @@ _[Checks Amendment][]により追加されました。_
 
 このチュートリアルでは、[Check](../../../concepts/payment-types/checks.md)を取り消す手順を説明します。この手順を実行すると、送金を行わずに[レジャーのCheckオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/check.md)が削除されます。
 
-着信したCheckが不要な場合、取り消すことができます。送信時に内容を誤って入力した場合や状況が変化した場合に、送信したCheckを取り消すこともできます。有効期限切れのCheckはレジャーから削除する必要があります。これにより、送金元に[所有者準備金](reserves.html#所有者準備金)が戻ります。
+着信したCheckが不要な場合、取り消すことができます。送信時に内容を誤って入力した場合や状況が変化した場合に、送信したCheckを取り消すこともできます。有効期限切れのCheckはレジャーから削除する必要があります。これにより、送金元に[所有者準備金](../../../concepts/accounts/reserves.md#所有者準備金)が戻ります。
 
 {% set cancel_n = cycler(* range(1,99)) %}
 
@@ -28,7 +28,7 @@ _[Checks Amendment][]により追加されました。_
 
 ## {{cancel_n.next()}}.CheckCancelトランザクションの準備
 
-[CheckCancelトランザクション][]のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に[自動入力](transaction-common-fields.html#自動入力可能なフィールド)可能なフィールドです。
+[CheckCancelトランザクション][]のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
 | フィールド             | 値            | 説明                           |
 |:------------------|:-----------------|:--------------------------------------|
@@ -61,7 +61,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.CheckCancelトランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.ja.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
 
@@ -129,7 +129,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.ja.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ## {{cancel_n.next()}}.最終結果の確認
 

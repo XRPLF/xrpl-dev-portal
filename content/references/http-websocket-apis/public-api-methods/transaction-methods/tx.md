@@ -10,7 +10,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
-The `tx` method retrieves information on a single [transaction](../../../protocol/transactions/index.md), by its [identifying hash][] or its [CTID](../../api-conventions/ctid.md).
+The `tx` method retrieves information on a single [transaction](../../../protocol/transactions/index.md), by its [identifying hash](../../../../concepts/transactions/index.md#identifying-transactions) or its [CTID](../../api-conventions/ctid.md).
 
 ## Request Format
 
@@ -77,7 +77,7 @@ rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 fals
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#tx)
+[Try it! >](/resources/dev-tools/websocket-api-tool#tx)
 
 The request includes the following parameters:
 
@@ -244,10 +244,10 @@ The response follows the [standard format](../../api-conventions/response-format
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
 | `ctid`         | String                           | The transaction's [compact transaction identifier](../../api-conventions/ctid.md). [New in: rippled 1.12.0](https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE") _(Not supported in Clio v2.0 and earlier.)_ |
-| `date`         | Number                           | The [close time](../../../../concepts/ledgers/ledger-close-times.md) of the ledger in which the transaction was applied, in [seconds since the Ripple Epoch][]. |
-| `hash`         | String                           | The unique [identifying hash][] of the transaction |
+| `date`         | Number                           | The [close time](../../../../concepts/ledgers/ledger-close-times.md) of the ledger in which the transaction was applied, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time). |
+| `hash`         | String                           | The unique [identifying hash](../../../../concepts/transactions/index.md#identifying-transactions) of the transaction |
 | `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
-| `ledger_index` | Number                           | The [ledger index][] of the ledger that includes this transaction. |
+| `ledger_index` | Number                           | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger that includes this transaction. |
 | `meta`         | Object (JSON) or String (binary) | [Transaction metadata](../../../protocol/transactions/metadata.md), which describes the results of the transaction. |
 | `validated`    | Boolean                          | If `true`, this data comes from a validated ledger version; if omitted or set to `false`, this data is not final. |
 | (Various)      | (Various)                        | Other fields from the [Transaction object](../../../protocol/transactions/index.md) |
@@ -321,7 +321,7 @@ An example of a `txnNotFound` response that fully searched a requested range of 
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `txnNotFound` - Either the transaction does not exist, or it was part of an ledger version that `rippled` does not have available.
 * `excessiveLgrRange` - The `min_ledger` and `max_ledger` fields of the request are more than 1000 apart.

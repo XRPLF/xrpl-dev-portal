@@ -9,7 +9,7 @@ status: not_enabled
 # AMMDelete
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp "Source")
 
-_([AMM amendment][] :not_enabled: が必要です)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled: が必要です)_
 
 自動で削除しきれなかった空の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを削除します。
 
@@ -35,7 +35,7 @@ _([AMM amendment][] :not_enabled: が必要です)_
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明 |
 |:---------|:-----------|:-----------|:------|:----|

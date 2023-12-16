@@ -87,11 +87,11 @@ print(cancel_after)
 
 {% /tabs %}
 
-**Warning:** In the XRP Ledger, you must specify time as **[seconds since the Ripple Epoch][]**. If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting it, that sets the unlock time to an extra **30 years** in the future!
+**Warning:** In the XRP Ledger, you must specify time as **[seconds since the Ripple Epoch](../../../references/protocol/data-types/basic-data-types.md#specifying-time)**. If you use a UNIX time in the `CancelAfter` or `FinishAfter` field without converting it, that sets the unlock time to an extra **30 years** in the future!
 
 ## 3. Submit EscrowCreate transaction
 
-[Sign and submit](../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction](../../../references/protocol/transactions/types/escrowcreate.md). Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender. Include the `CancelAfter` or `FinishAfter` time you calculated in the previous step. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
+[Sign and submit](../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction](../../../references/protocol/transactions/types/escrowcreate.md). Set the `Condition` field of the transaction to the time when the held payment should be released. Set the `Destination` to the recipient, which can be the same address as the sender. Include the `CancelAfter` or `FinishAfter` time you calculated in the previous step. Set the `Amount` to the total amount of [XRP, in drops](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts), to escrow.
 
 {% partial file="/_snippets/secret-key-warning.md" /%} <!--#{ fix md highlighting_ #}-->
 

@@ -122,5 +122,5 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 - `invalidParams` - サーバが[バリデータとして設定されていない](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)場合、サーバはこのエラーを`"error_message" : "not a validator"`と共に返します。

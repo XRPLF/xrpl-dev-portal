@@ -29,7 +29,7 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 
 ### トランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.ja.md" /%}
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
 
 
 要求フィールドに以下の値を指定します。
@@ -361,4 +361,4 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
 {% /tabs %}
 
-場合によっては、`SetRegularKey`トランザクションを使用して、[トランザクションコスト](../../concepts/transactions/transaction-cost.md)を支払わずに[Key Resetトランザクション](transaction-cost.html#key-resetトランザクション)を送信できます。FeeEscalation Amendmentを有効にすると、Key Resetトランザクションの名目トランザクションコストがゼロであっても、`rippled`は他のトランザクションよりもKey Resetトランザクションを優先します。
+場合によっては、`SetRegularKey`トランザクションを使用して、[トランザクションコスト](../../concepts/transactions/transaction-cost.md)を支払わずに[Key Resetトランザクション](../../concepts/transactions/transaction-cost.md#key-resetトランザクション)を送信できます。FeeEscalation Amendmentを有効にすると、Key Resetトランザクションの名目トランザクションコストがゼロであっても、`rippled`は他のトランザクションよりもKey Resetトランザクションを優先します。

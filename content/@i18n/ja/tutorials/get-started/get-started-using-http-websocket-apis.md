@@ -11,9 +11,9 @@ showcase_icon: assets/img/logos/globe.svg
 ---
 # HTTP / WebSocket APIの使用開始
 
-自分の好みのプログラミング言語の[クライアント・ライブラリ](../../references/client-libraries.md)を持っていなかったり、使いたくなかったりする場合は、XRP Ledgerのコアサーバソフトウェアである[`rippled`](xrpl-servers.html)のAPIを通して直接XRP Ledgerにアクセスすることができます。このサーバはJSON-RPCとWebSocketプロトコルでAPIを提供します。もし`rippled`(install-rippled.html)のインスタンスを実行しない場合でも、[公開サーバ][public servers]を利用することができます。
+自分の好みのプログラミング言語の[クライアント・ライブラリ](../../references/client-libraries.md)を持っていなかったり、使いたくなかったりする場合は、XRP Ledgerのコアサーバソフトウェアである[`rippled`](../../concepts/networks-and-servers/index.md)のAPIを通して直接XRP Ledgerにアクセスすることができます。このサーバはJSON-RPCとWebSocketプロトコルでAPIを提供します。もし`rippled`(install-rippled.html)のインスタンスを実行しない場合でも、[公開サーバ][public servers]を利用することができます。
 
-**ヒント:** [**WebSocket API ツール**](websocket-api-tool.html)を使ってAPIを利用することもできますし、[XRP Ledger Explorer](https://livenet.xrpl.org/)を使ってレジャーの進捗をライブで見ることもできます。
+**ヒント:** [**WebSocket API ツール**](/resources/dev-tools/websocket-api-tool)を使ってAPIを利用することもできますし、[XRP Ledger Explorer](https://livenet.xrpl.org/)を使ってレジャーの進捗をライブで見ることもできます。
 
 ## JSON-RPCとWebSocketの違い
 
@@ -34,7 +34,7 @@ JSON-RPCとWebSocketはどちらもHTTPベースのプロトコルであり、�
 
 ## WebSocket API
 
-いくつかのメソッドをXRP Ledgerで試すことを予定している場合は、独自のWebSocketコードを記述することなく、[WebSocket APIツール](websocket-api-tool.html)でAPIをすぐに使用できます。後ほど、独自の`rippled`サーバへの接続が必要となった時点で、Web Socket接続をサポートした[独自のクライアントを構築](monitor-incoming-payments-with-websocket.md)したり[クライアントライブラリ](../../references/client-libraries.md)を利用することが可能です。
+いくつかのメソッドをXRP Ledgerで試すことを予定している場合は、独自のWebSocketコードを記述することなく、[WebSocket APIツール](/resources/dev-tools/websocket-api-tool)でAPIをすぐに使用できます。後ほど、独自の`rippled`サーバへの接続が必要となった時点で、Web Socket接続をサポートした[独自のクライアントを構築](monitor-incoming-payments-with-websocket.md)したり[クライアントライブラリ](../../references/client-libraries.md)を利用することが可能です。
 
 WebSocket APIによるリクエストの例:
 
@@ -72,7 +72,7 @@ Content-Type: application/json
 
 レスポンスには、サーバの現在のステータスが表示されます。
 
-さらに見る: [リクエストのフォーマット >](request-formatting.html#json-rpcフォーマット) [レスポンスのフォーマット >](../../references/http-websocket-apis/api-conventions/response-formatting.md) [server_infoメソッドについて >][server_info method]
+さらに見る: [リクエストのフォーマット >](../../references/http-websocket-apis/api-conventions/request-formatting.md#json-rpcフォーマット) [レスポンスのフォーマット >](../../references/http-websocket-apis/api-conventions/response-formatting.md) [server_infoメソッドについて >][server_info method]
 
 ## コマンドライン
 
@@ -93,18 +93,18 @@ rippled --conf=/etc/rippled.cfg server_info
 APIメソッドの完全なリストについては、こちらをご覧ください。
 
 - [パブリックな`rippled`メソッド](../../references/http-websocket-apis/public-api-methods/index.md): レジャーからのデータの検索やトランザクションの送信など、パブリックサーバで利用可能なメソッドです。
-- [管理用`rippled`メソッド](../../references/http-websocket-apis/admin-api-methods/index.md): [管理者向け](manage-the-rippled-server.html)の`rippled`サーバを管理するためのメソッドです。
+- [管理用`rippled`メソッド](../../references/http-websocket-apis/admin-api-methods/index.md): [管理者向け](../../infrastructure/installation/install-rippled-on-ubuntu.md)の`rippled`サーバを管理するためのメソッドです。
 
 
 ## 関連項目
 
 - **コンセプト:**
-  - [XRP Ledgerの概要](xrp-ledger-overview.html)
+  - [XRP Ledgerの概要](/about/)
   - [ソフトウェアエコシステム](../../introduction/software-ecosystem.md)
   - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
 - **チュートリアル:**
   - [JavaScriptの使用開始](get-started-using-javascript.md)
   - [信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)
-  - [rippledサーバの管理](manage-the-rippled-server.html)
+  - [rippledサーバの管理](../../infrastructure/installation/install-rippled-on-ubuntu.md)
 - **リファレンス:**
   - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)

@@ -52,8 +52,8 @@ A request can include the following fields:
 
 | `Field`        | Type             | Required? | Description    |
 |:---------------|:-----------------|:----------|----------------|
-| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string identifying the ledger version to use. |
-| `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | No        | A 20-byte hex string identifying the ledger version to use. |
+| `ledger_index` | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | No        | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
 | `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). Positive values outside this range are replaced with the closest valid option. The default is the maximum. |
 | `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
@@ -246,8 +246,8 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`        | Type                                | Description           |
 |:---------------|:------------------------------------|:----------------------|
-| `ledger_index` | Unsigned Integer - [Ledger Index][] | The ledger index of this ledger version. |
-| `ledger_hash`  | String - [Hash][]                   | Unique identifying hash of this ledger version. |
+| `ledger_index` | Unsigned Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of this ledger version. |
+| `ledger_hash`  | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)                   | Unique identifying hash of this ledger version. |
 | `state`        | Array                               | Array of JSON objects containing data from the ledger's state tree, as defined below. |
 | `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)                          | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. |
 
@@ -258,12 +258,12 @@ The format of each object in the `state` array depends on whether `binary` was s
 | `Field`             | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
 | `data`              | String    | _(Only included if `"binary":true`)_ Hex representation of the requested data |
-| `LedgerEntryType`   | String    | _(Only included if `"binary":false`)_ String indicating what type of ledger object this object represents. See [ledger object types](ledger-object-types.html) for the full list. |
-| (Additional fields) | (Various) | _(Only included if `"binary":false`)_ Additional fields describing this object, depending on which [ledger object type](ledger-object-types.html) it is. |
+| `LedgerEntryType`   | String    | _(Only included if `"binary":false`)_ String indicating what type of ledger object this object represents. See [ledger object types](../../../protocol/ledger-data/ledger-entry-types/index.md) for the full list. |
+| (Additional fields) | (Various) | _(Only included if `"binary":false`)_ Additional fields describing this object, depending on which [ledger object type](../../../protocol/ledger-data/ledger-entry-types/index.md) it is. |
 | `index`             | String    | Unique identifier for this ledger entry, as hex. |
 
 ## Possible Errors
 
-* Any of the [universal error types][]
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors)
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

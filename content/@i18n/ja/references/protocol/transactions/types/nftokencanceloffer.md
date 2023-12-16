@@ -21,7 +21,7 @@ labels:
 }
 ```
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました)_
 
 
 ## アクセス権
@@ -34,11 +34,11 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 
 このトランザクションは、リストアップされた`NFTokenOffer`オブジェクトがあればレジャーから削除し、それに応じて必要な準備金を調整します。`NFTokenOffer`が見つからなくてもエラーにはなりません。その場合、トランザクションは正常に完了するでしょう。
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド          | JSONの型  | [内部の型](../../binary-format.md)        | 説明                     |
 |:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenOffers`     |  配列     | VECTOR256         | キャンセルする`NFTokenOffer`オブジェクトのIDの配列(`NFToken`オブジェクトのIDではなく、`NFTokenOffer`オブジェクトのID)です。各エントリーは[NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md)オブジェクトの異なる[オブジェクトID](ledger-object-ids.html)である必要があり、配列に重複した項目がある場合、トランザクションはエラーとなります。 |
+| `NFTokenOffers`     |  配列     | VECTOR256         | キャンセルする`NFTokenOffer`オブジェクトのIDの配列(`NFToken`オブジェクトのIDではなく、`NFTokenOffer`オブジェクトのID)です。各エントリーは[NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md)オブジェクトの異なる[オブジェクトID](../../ledger-data/common-fields.md)である必要があり、配列に重複した項目がある場合、トランザクションはエラーとなります。 |
 
 `NFTokenOffers`フィールドのIDの1つ以上が、レジャーに現在存在するオブジェクトを参照していない場合でも、トランザクションは成功します（たとえば、それらのオファーはすでに削除されている可能性があります）。IDの1つが存在するオブジェクトを指していても、[NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md)オブジェクトでない場合は、エラーでトランザクションが失敗します。
 

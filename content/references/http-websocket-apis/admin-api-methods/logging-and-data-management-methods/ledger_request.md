@@ -39,8 +39,8 @@ The request includes the following parameters:
 
 | `Field`        | Type   | Description                                        |
 |:---------------|:-------|:---------------------------------------------------|
-| `ledger_index` | Number | _(Optional)_ Retrieve the specified ledger by its [Ledger Index][]. |
-| `ledger_hash`  | String | _(Optional)_ Retrieve the specified ledger by its identifying [Hash][]. |
+| `ledger_index` | Number | _(Optional)_ Retrieve the specified ledger by its [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index). |
+| `ledger_hash`  | String | _(Optional)_ Retrieve the specified ledger by its identifying [Hash](../../../protocol/data-types/basic-data-types.md#hashes). |
 
 You must provide either `ledger_index` or `ledger_hash` but not both.
 
@@ -172,7 +172,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 | `Field`                     | Type             | Description                 |
 |:----------------------------|:-----------------|:----------------------------|
-| `hash`                      | String           | (May be omitted) The [Hash][] of the requested ledger, if the server knows it. |
+| `hash`                      | String           | (May be omitted) The [Hash](../../../protocol/data-types/basic-data-types.md#hashes) of the requested ledger, if the server knows it. |
 | `have_header`               | Boolean          | Whether the server has the header section of the requested ledger. |
 | `have_state`                | Boolean          | (May be omitted) Whether the server has the full state data of the requested ledger. |
 | `have_transactions`         | Boolean          | (May be omitted) Whether the server has the full transaction set of the requested ledger. |
@@ -183,7 +183,7 @@ When the server is in the progress of fetching a ledger, but has not yet finishe
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing. This error can also occur if you specify a ledger index equal or higher than the current in-progress ledger.
 - `lgrNotFound` - If the ledger is not yet available. This indicates that the server has started fetching the ledger, although it may fail if none of its connected peers have the requested ledger. (Previously, this error used the code `ledgerNotFound` instead.) [Updated in: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE")
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

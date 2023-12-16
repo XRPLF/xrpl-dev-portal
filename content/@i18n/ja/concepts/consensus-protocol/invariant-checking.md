@@ -102,7 +102,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 ### レジャーエントリ形式の一致
 
 - **不変条件:**
-    - 変更されたレジャーの項目は形式が一致し、追加された項目は[有効なタイプ](ledger-object-types.html)である必要があります。
+    - 変更されたレジャーの項目は形式が一致し、追加された項目は[有効なタイプ](../../references/protocol/ledger-data/ledger-entry-types/index.md)である必要があります。
 
 
 ### XRPのトラストラインはありません
@@ -127,7 +127,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 - **不変条件:**
     - 新しい[アカウントルート](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)は、支払いの結果でなければなりません。
-    - 新しいアカウントルートは、正しい開始[シーケンス](basic-data-types.html#アカウントシーケンス)を持たなければなりません。
+    - 新しいアカウントルートは、正しい開始[シーケンス](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を持たなければなりません。
     - 1つのトランザクションで複数の新しい[アカウント](../accounts/accounts.md)を作成してはいけません。
 
 

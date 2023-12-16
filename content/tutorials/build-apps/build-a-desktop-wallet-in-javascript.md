@@ -46,7 +46,7 @@ The application we are going to build here will be capable of the following:
     - If the address doesn't want to receive XRP (**Disallow XRP** flag enabled).
     - If the address has a [verified domain name](../../references/xrp-ledger-toml.md#account-verification) associated with it.
 
-The application in this tutorial _doesn't_ have the ability to send or trade [tokens](issued-currencies.html) or
+The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../concepts/tokens/index.md) or
 use other [payment types](../../concepts/payment-types/index.md) like [Escrow](https://xrpl.org/escrow.html) or [Payment Channels](https://xrpl.org/payment-channels.html). However, it provides a foundation
 that you can implement those and other features on top of.
 
@@ -641,7 +641,7 @@ Now you need an XRPL account address to monitor. If you already have one or know
 npm run start
 ```
 
-If you need a Testnet address, [you can get one from the faucet](xrp-testnet-faucet.html). Then you can paste that address into the [Transaction Sender](tx-sender.html) to send XRP transactions that your app can see.
+If you need a Testnet address, [you can get one from the faucet](/resources/dev-tools/xrp-faucets). Then you can paste that address into the [Transaction Sender](/resources/dev-tools/tx-sender) to send XRP transactions that your app can see.
 
 On, startup, the application should display a simple dialog prompting the user for an XRPL account address. After entering the address the application should display some basic information about that account and about the ledger.
 

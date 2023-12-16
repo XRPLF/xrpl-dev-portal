@@ -13,12 +13,12 @@ To help members of the XRP Ledger community interact with XRP Ledger technology 
 
 | Network | Upgrade Cadence | Description                                      |
 |:--------|:----------------|:-------------------------------------------------|
-| Mainnet | Stable releases | _The_ [XRP Ledger](xrp-ledger-overview.html), a  decentralized cryptographic ledger powered by a network of peer-to-peer servers and the home of [XRP](../../introduction/what-is-xrp.md). |
+| Mainnet | Stable releases | _The_ [XRP Ledger](/about/), a  decentralized cryptographic ledger powered by a network of peer-to-peer servers and the home of [XRP](../../introduction/what-is-xrp.md). |
 | Testnet | Stable releases | An "alternate universe" network that acts as a testing ground for software built on the XRP Ledger, without impacting production XRP Ledger users and without risking real money. The [amendment status](../../resources/known-amendments.md) of the Testnet is intended to closely mirror the Mainnet, although slight variations in timing may occur due to the unpredictable nature of decentralized systems. |
 | Devnet  | Beta releases   | A preview of coming attractions, where unstable changes to the core XRP Ledger software may be tested out. Developers can use this altnet to interact with and learn about planned new XRP Ledger features and amendments that are not yet enabled on the Mainnet. |
 | [Hooks V3 Testnet](https://hooks-testnet-v3.xrpl-labs.com/) | [Hooks server](https://github.com/XRPL-Labs/xrpld-hooks) | A preview of on-chain smart contract functionality using [hooks](https://xrpl-hooks.readme.io/). |
 
-Each altnet has its own separate supply of test XRP, which is [given away for free](xrp-testnet-faucet.html) to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.
+Each altnet has its own separate supply of test XRP, which is [given away for free](/resources/dev-tools/xrp-faucets) to parties interested in experimenting with the XRP Ledger and developing applications and integrations. Test XRP does not have real-world value and is lost when the network is reset.
 
 **Caution:** Unlike the XRP Ledger Mainnet, test networks are usually _centralized_ and there are no guarantees about the stability and availability of these networks. They have been and continue to be used to test various properties of server configuration, network topology, and network performance.
 
@@ -33,7 +33,7 @@ Ripple runs the main servers in the Testnet and Devnet; you can also [connect yo
 ## See Also
 
 - **Tools:**
-    - [XRP Testnet Faucet](xrp-test-net-faucet.html)
+    - [XRP Testnet Faucet](/resources/dev-tools/xrp-faucets)
 - **Concepts:**
     - [Consensus](../consensus-protocol/index.md)
     - [Amendments](amendments.md)

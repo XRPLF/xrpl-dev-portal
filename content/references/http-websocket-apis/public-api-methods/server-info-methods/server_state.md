@@ -45,7 +45,7 @@ rippled server_state
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#server_state)
+[Try it! >](/resources/dev-tools/websocket-api-tool#server_state)
 
 The request does not takes any parameters.
 
@@ -283,7 +283,7 @@ The `state` object may have some arrangement of the following fields:
 | `load.threads`                   | Number          | _(Admin only)_ The number of threads in the server's main job pool. |
 | `load_base`                      | Number          | The baseline amount of server load used in [transaction cost](../../../../concepts/transactions/transaction-cost.md) calculations. If the `load_factor` is equal to the `load_base`, then only the base transaction cost is enforced. If the `load_factor` is higher than the `load_base`, then transaction costs are multiplied by the ratio between them. For example, if the `load_factor` is double the `load_base`, then transaction costs are doubled. |
 | `load_factor`                    | Number          | The load factor the server is currently enforcing. The ratio between this value and the `load_base` determines the multiplier for transaction costs. The load factor is determined by the highest of the individual server's load factor, the cluster's load factor, the open ledger cost, and the overall network's load factor. |
-| `load_factor_fee_escalation`     | Number          | _(May be omitted)_ The current multiplier to the transaction cost to get into the open ledger, in [fee levels][]. |
+| `load_factor_fee_escalation`     | Number          | _(May be omitted)_ The current multiplier to the transaction cost to get into the open ledger, in [fee levels](../../../../concepts/transactions/transaction-cost.md#fee-levels). |
 | `load_factor_fee_queue`          | Number          | _(May be omitted)_ The current multiplier to the transaction cost to get into the queue, if the queue is full, in fee levels. |
 | `load_factor_fee_reference`      | Number          | _(May be omitted)_ The transaction cost with no load scaling, in fee levels. |
 | `load_factor_server`             | Number          | _(May be omitted)_ The load factor the server is enforcing, based on load to the server, cluster, and network, but not factoring in the open ledger cost. |
@@ -304,13 +304,13 @@ The `state` object may have some arrangement of the following fields:
 | `uptime`                         | Number          | Number of consecutive seconds that the server has been operational. |
 | `validated_ledger`               | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.base_fee`      | Number          | Base fee, in drops of XRP, for propagating a transaction to the network. |
-| `validated_ledger.close_time`    | Number          | Time this ledger was closed, in [seconds since the Ripple Epoch][]. |
+| `validated_ledger.close_time`    | Number          | Time this ledger was closed, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time). |
 | `validated_ledger.hash`          | String          | Unique hash of this ledger version, as hexadecimal. |
 | `validated_ledger.reserve_base`  | Number          | The minimum [account reserve](../../../../concepts/accounts/reserves.md), as of the most recent validated ledger version. |
 | `validated_ledger.reserve_inc`   | Number          | The [owner reserve](../../../../concepts/accounts/reserves.md) for each item an account owns, as of the most recent validated ledger version. |
-| `validated_ledger.seq`           | Number          | The [ledger index][] of the most recently validated ledger version. |
+| `validated_ledger.seq`           | Number          | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the most recently validated ledger version. |
 | `validation_quorum`              | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
-| `validator_list_expires`         | Number          | _(Admin only)_ When the current validator list expires, in [seconds since the Ripple Epoch][], or 0 if the server has yet to load a published validator list. |
+| `validator_list_expires`         | Number          | _(Admin only)_ When the current validator list expires, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time), or 0 if the server has yet to load a published validator list. |
 
 [Reporting mode]: rippled-server-modes.html
 
@@ -320,4 +320,4 @@ The `state` object may have some arrangement of the following fields:
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

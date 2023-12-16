@@ -8,7 +8,7 @@ labels:
 ---
 # Tickets
 
-_(Added by the [TicketBatch amendment][].)_
+_(Added by the [TicketBatch amendment](../../resources/known-amendments.md#ticketbatch).)_
 
 A Ticket in the XRP Ledger is a way of setting aside a [sequence number][Sequence Number] for a transaction without sending it right away. Tickets allow transactions to be sent outside of the normal sequence order. One use case for this is to allow for [multi-signed transactions](multi-signing.md) where it may take a while to collect the necessary signatures: while collecting signatures for a transaction that uses a Ticket, you can still send other transactions.
 

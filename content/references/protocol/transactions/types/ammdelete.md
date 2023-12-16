@@ -9,7 +9,7 @@ status: not_enabled
 # AMMDelete
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 Delete an empty [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance that could not be fully deleted automatically.
 

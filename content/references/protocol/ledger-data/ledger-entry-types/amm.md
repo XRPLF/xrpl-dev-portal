@@ -9,7 +9,7 @@ status: not_enabled
 # AMM
 [[Source]](https://github.com/XRPLF/rippled/blob/89780c8e4fd4d140fcb912cf2d0c01c1b260539e/src/ripple/protocol/impl/LedgerFormats.cpp#L272-L284 "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 An `AMM` ledger entry describes a single [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance. This is always paired with a [special AccountRoot entry](accountroot.md#special-amm-accountroot-entries).
 
@@ -77,7 +77,7 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 | `Asset2`         | Object              | STIssue           | Yes       | The definition for the other asset this AMM holds. In JSON, this is an object with `currency` and `issuer` fields. |
 | `Account`     | String              | AccountID         | Yes       | The address of the [special account](accountroot.md#special-amm-accountroot-entries) that holds this AMM's assets. |
 | `AuctionSlot`    | Object              | STObject          | No        | Details of the current owner of the auction slot, as an [Auction Slot object](#auction-slot-object). |
-| `LPTokenBalance` | [Currency Amount][] | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected. |
+| `LPTokenBalance` | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | Yes       | The total outstanding balance of liquidity provider tokens from this AMM instance. The holders of these tokens can vote on the AMM's trading fee in proportion to their holdings, or redeem the tokens for a share of the AMM's assets which grows with the trading fees collected. |
 | `TradingFee`     | Number              | UInt16            | Yes       | The percentage fee to be charged for trades against this AMM instance, in units of 1/100,000. The maximum value is 1000, for a 1% fee. |
 | `VoteSlots`      | Array               | STArray           | No        | A list of vote objects, representing votes on the pool's trading fee. |
 
@@ -90,8 +90,8 @@ The `AuctionSlot` field contains an object with the following nested fields:
 | `Account`       | String - Address    | AccountID         | Yes       | The current owner of this auction slot. |
 | `AuthAccounts`  | Array               | STArray           | No        | A list of at most 4 additional accounts that are authorized to trade at the discounted fee for this AMM instance. |
 | `DiscountedFee` | String              | UInt32            | Yes       | The trading fee to be charged to the auction owner, in the same format as `TradingFee`. By default this is 0, meaning that the auction owner can trade at no fee instead of the standard fee for this AMM. |
-| `Price`         | [Currency Amount][] | Amount            | Yes       | The amount the auction owner paid to win this slot, in LP Tokens. |
-| `Expiration`    | String              | UInt32            | Yes       | The time when this slot expires, in [seconds since the Ripple Epoch][]. |
+| `Price`         | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | Yes       | The amount the auction owner paid to win this slot, in LP Tokens. |
+| `Expiration`    | String              | UInt32            | Yes       | The time when this slot expires, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). |
 
 ## VoteEntry Object
 
@@ -116,7 +116,7 @@ There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
 ## AMM ID Format
 
-The ID of an `AMM` entry is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of an `AMM` entry is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 1. The `AMM` space key (`0x0041`)
 0. The AccountID of the first asset's issuer.

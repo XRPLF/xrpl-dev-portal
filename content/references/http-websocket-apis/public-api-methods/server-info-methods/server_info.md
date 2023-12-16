@@ -8,7 +8,7 @@ labels:
 # server_info (rippled)
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](xrpl-servers.html) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
+The `server_info` command asks the server for a human-readable version of various information about [the `rippled` server](../../../../concepts/networks-and-servers/index.md) being queried. For [Clio servers](../../../../concepts/networks-and-servers/the-clio-server.md), see [`server_info` (Clio)](../clio-methods/server_info-clio.md) instead.
 
 ## Request Format
 An example of the request format:
@@ -44,7 +44,7 @@ rippled server_info
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#server_info)
+[Try it! >](/resources/dev-tools/websocket-api-tool#server_info)
 
 The request does not take any parameters.
 
@@ -115,7 +115,7 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.hash`             | String          | Unique hash for the ledger, as hexadecimal. |
 | `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve |
 | `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. |
-| `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
+| `validated_ledger.seq`              | Number          | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the latest validated ledger. |
 | `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list expires, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
 
@@ -127,4 +127,4 @@ The `info` object may have some arrangement of the following fields:
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

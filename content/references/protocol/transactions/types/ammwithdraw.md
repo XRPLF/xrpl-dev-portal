@@ -9,7 +9,7 @@ status: not_enabled
 # AMMWithdraw
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 
@@ -44,10 +44,10 @@ Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/dec
 |:-------------|:--------------------|:------------------|:----------|:------------|
 | `Asset`      | Object              | STIssue           | Yes       | The definition for one of the assets in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
 | `Asset2`     | Object              | STIssue           | Yes       | The definition for the other asset in the AMM's pool. In JSON, this is an object with `currency` and `issuer` fields (omit `issuer` for XRP). |
-| `Amount`     | [Currency Amount][] | Amount            | No        | The amount of one asset to withdraw from the AMM. This must match the type of one of the assets (tokens or XRP) in the AMM's pool. |
-| `Amount2`    | [Currency Amount][] | Amount            | No        | The amount of another asset to withdraw from the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same type as `Amount`. |
-| `EPrice`     | [Currency Amount][] | Amount            | No        | The minimum effective price, in LP Token returned, to pay per unit of the asset to withdraw. |
-| `LPTokenIn`  | [Currency Amount][] | Amount            | No        | How many of the AMM's LP Tokens to redeem. |
+| `Amount`     | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | No        | The amount of one asset to withdraw from the AMM. This must match the type of one of the assets (tokens or XRP) in the AMM's pool. |
+| `Amount2`    | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | No        | The amount of another asset to withdraw from the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same type as `Amount`. |
+| `EPrice`     | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | No        | The minimum effective price, in LP Token returned, to pay per unit of the asset to withdraw. |
+| `LPTokenIn`  | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | No        | How many of the AMM's LP Tokens to redeem. |
 
 **Note:** For a double-asset withdrawal, it is possible for `Asset` to correspond to _either_ `Amount` or `Amount2` as long as `Asset2` corresponds to the other one. It is recommended to match them (that is, `Amount2` is an amount of the asset defined in `Asset2`) because it is less confusing that way.
 

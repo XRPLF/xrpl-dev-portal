@@ -78,7 +78,7 @@ rippled sign s██████████████████████
 
 To sign a transaction, you must provide a secret key that can [authorize the transaction](../../../../concepts/transactions/index.md#authorizing-transactions). Typically you provide a seed value that the server derives the secret key from. You can do this in a few ways:
 
-* Provide the seed in the `secret` field and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58](base58-encodings.html) seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
+* Provide the seed in the `secret` field and omit the `key_type` field. This value can be formatted as an XRP Ledger [base58](../../../protocol/data-types/base58-encodings.md) seed, RFC-1751, hexadecimal, or as a string passphrase. (secp256k1 keys only)
 * Provide a `key_type` value and exactly one of `seed`, `seed_hex`, or `passphrase`. Omit the `secret` field. (Not supported by the commandline syntax.)
 
 The request includes the following parameters:
@@ -87,7 +87,7 @@ The request includes the following parameters:
 |:---------------|:--------|:--------------------------------------------------|
 | `tx_json`      | Object  | [Transaction definition](../../../protocol/transactions/index.md) in JSON format |
 | `secret`       | String  | _(Optional)_ The secret seed of the account supplying the transaction, used to sign it. Do not send your secret to untrusted servers or through unsecured network connections. Cannot be used with `key_type`, `seed`, `seed_hex`, or `passphrase`. |
-| `seed`         | String  | _(Optional)_ The secret seed of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58](base58-encodings.html) format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
+| `seed`         | String  | _(Optional)_ The secret seed of the account supplying the transaction, used to sign it. Must be in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed_hex`, or `passphrase`. |
 | `seed_hex`     | String  | _(Optional)_ The secret seed of the account supplying the transaction, used to sign it. Must be in hexadecimal format. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `passphrase`. |
 | `passphrase`   | String  | _(Optional)_ The secret seed of the account supplying the transaction, used to sign it, as a string passphrase. If provided, you must also specify the `key_type`. Cannot be used with `secret`, `seed`, or `seed_hex`. |
 | `key_type`     | String  | _(Optional)_ The [signing algorithm](../../../../concepts/accounts/cryptographic-keys.md#signing-algorithms) of the cryptographic key pair provided. Valid types are `secp256k1` or `ed25519`. Defaults to `secp256k1`. Cannot be used with `secret`. |
@@ -219,7 +219,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `highFee` - The current load-based multiplier to the transaction cost exceeds the limit for an automatically-provided transaction cost. Either specify a higher `fee_mult_max` (at least 1000) in the request or manually provide a value in the `Fee` field of the `tx_json`.
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.

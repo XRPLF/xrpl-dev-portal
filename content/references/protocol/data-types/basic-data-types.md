@@ -11,7 +11,7 @@ Different types of objects are uniquely identified in different ways:
 
 [Transactions](../transactions/index.md) are identified by a [Hash][] of the transaction's binary format. You can also identify a transaction by its sending account and [Sequence Number][].
 
-Each closed [Ledger](../ledger-data/index.md) has a [Ledger Index][] and a [Hash][] value. When [Specifying Ledgers][] you can use either one.
+Each closed [Ledger](../ledger-data/index.md) has a [Ledger Index][] and a [Hash][] value. When [Specifying Ledgers](basic-data-types.md#specifying-ledgers) you can use either one.
 
 ## Addresses
 [Address]: #addresses
@@ -51,7 +51,7 @@ Some types of hash appear in API requests and responses. Others are only calcula
 [ledger header]: ledger-header.html
 [SHAMapv2]: known-amendments.html#shamapv2
 
-[Ledger objects IDs](ledger-object-ids.html) are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.
+[Ledger objects IDs](../ledger-data/common-fields.md) are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.
 
 
 ## Account Sequence

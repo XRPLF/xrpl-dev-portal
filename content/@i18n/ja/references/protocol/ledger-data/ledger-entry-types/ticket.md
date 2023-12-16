@@ -9,9 +9,9 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/76a6956138c4ecd156c5c408f136ed3d6ab7d0c1/src/ripple/protocol/impl/LedgerFormats.cpp#L155-L164)
 
-_([TicketBatch amendment][]が必要です)_
+_([TicketBatch amendment](../../../../resources/known-amendments.md#ticketbatch)が必要です)_
 
-`Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](basic-data-types.html#アカウントシーケンス)を追跡する[Ticket](../../../../concepts/accounts/tickets.md)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。[New in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE").
+`Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を追跡する[Ticket](../../../../concepts/accounts/tickets.md)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。[New in: rippled 1.7.0](https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE").
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -39,7 +39,7 @@ _([TicketBatch amendment][]が必要です)_
 | `OwnerNode`         | 文字列     | UInt64        | 送金元の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。注記: このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
 | `PreviousTxnID`     | 文字列     | Hash256       | 最後にこのオブジェクトを変更した[トランザクション](../../../../concepts/transactions/index.md)の識別用ハッシュ。 |
 | `PreviousTxnLgrSeq` | 数値       | UInt32        | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][Ledger Index]。 |
-| `TicketSequence`    | 数値       | UInt32        | 本チケットが設定する[シーケンス番号](basic-data-types.html#アカウントシーケンス)。 |
+| `TicketSequence`    | 数値       | UInt32        | 本チケットが設定する[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)。 |
 
 ## {% $frontmatter.seo.title %} IDのフォーマット
 

@@ -59,7 +59,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#account_tx)
+[試してみる >](/resources/dev-tools/websocket-api-tool#account_tx)
 
 要求には以下のパラメーターが含まれます。
 
@@ -68,8 +68,8 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 | `account` | 文字列 | アカウントの一意のIDであり、最も一般的にはアカウントのアドレスが使用されます。 |
 | `ledger_index_min` | 整数 | _（省略可能）_ 含めるトランザクションのレジャーのうち最古のものを指定するのに使用します。`-1`の値は、使用可能な検証済みレジャーのうち最古のバージョンを使用するよう、サーバーに指示します。 |
 | `ledger_index_max` | 整数 | _（省略可能）_ 含めるトランザクションのレジャーのうち最新のものを指定するのに使用します。`-1`の値は、使用可能な検証済みレジャーのうち最新のバージョンを使用するよう、サーバーに指示します。 |
-| `ledger_hash` | 文字列 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `ledger_hash` | 文字列 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可能）_ 単一のレジャーからのみトランザクションを検索するのに使用します。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
 | `binary` | ブール値 | _（省略可能）_ デフォルトは`false`です。`true`に設定すると、JSONの代わりに16進文字列でトランザクションが返されます。 |
 | `forward` | ブール値 | _（省略可能）_ デフォルトは`false`です。`true`に設定すると、最も古いレジャーを先頭としてインデックスが付けられた値が返されます。そうしない場合、最新のレジャーを先頭として結果にインデックスが付けられます。（結果を示した各ページの中身は順序よく整理されていない場合がありますが、ページ全体としては順序付けされています。） |
 | `limit` | 整数 | _（省略可能）_ デフォルトは変化します。取得するトランザクションの数を制限します。サーバーはこの値を受け入れる必要はありません。 |
@@ -568,9 +568,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 | `Field`            | 型                         | 説明                       |
 |:-------------------|:---------------------------|:---------------------------|
-| `account` | 文字列 | 関連するアカウントを識別する一意の[アドレス](basic-data-types.html#アドレス)。 |
-| `ledger_index_min` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | トランザクションで実際に検索された最古のレジャーのレジャーインデックス。 |
-| `ledger_index_max` | 整数 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | トランザクションで実際に検索された最新のレジャーのレジャーインデックス。 |
+| `account` | 文字列 | 関連するアカウントを識別する一意の[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)。 |
+| `ledger_index_min` | 整数 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | トランザクションで実際に検索された最古のレジャーのレジャーインデックス。 |
+| `ledger_index_max` | 整数 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | トランザクションで実際に検索された最新のレジャーのレジャーインデックス。 |
 | `limit` | 整数 | 要求で使用される`limit`値。（サーバーによって強制される実際の制限値とは異なる場合があります。） |
 | `marker` | [マーカー](../../api-conventions/markers-and-pagination.md) | 応答がページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。 |
 | `transactions` | 配列 | 以降で説明する、要求の基準を満たすトランザクションの配列。 |
@@ -582,7 +582,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 | `Field`        | 型                               | 説明                     |
 |:---------------|:---------------------------------|:-------------------------|
-| `ledger_index` | 整数 | このトランザクションを含むレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `ledger_index` | 整数 | このトランザクションを含むレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 | `meta` | オブジェクト（JSON）または文字列（バイナリ） | `binary`がTrueの場合、これは16進文字列のトランザクションメタデータです。そうでない場合、トランザクションメタデータはJSONフォーマットになります。 |
 | `tx` | オブジェクト | （JSONモードのみ）トランザクションを定義するJSONオブジェクト。 |
 | `tx_blob` | 文字列 | （バイナリモードのみ）トランザクションを表す一意のハッシュ化された文字列。 |
@@ -590,8 +590,8 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actMalformed` - 要求の`account`フィールドに指定した[アドレス](basic-data-types.html#アドレス)が、正しいフォーマットではありません。
+* `actMalformed` - 要求の`account`フィールドに指定した[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)が、正しいフォーマットではありません。
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `lgrIdxsInvalid` - 要求で`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](../../../../infrastructure/troubleshooting/index.md)されていないためにサーバーに検証済みレジャーの範囲が存在しません。

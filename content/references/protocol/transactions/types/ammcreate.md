@@ -9,9 +9,9 @@ status: not_enabled
 # AMMCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMCreate.cpp "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
-Create a new [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance for trading a pair of assets ([fungible tokens](../../../../concepts/tokens/index.md) or [XRP](xrp.html)).
+Create a new [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance for trading a pair of assets ([fungible tokens](../../../../concepts/tokens/index.md) or [XRP](../../../../introduction/what-is-xrp.md)).
 
 Creates both an [AMM entry](../../ledger-data/ledger-entry-types/amm.md) and a [special AccountRoot entry](../../ledger-data/ledger-entry-types/accountroot.md#special-amm-accountroot-entries) to represent the AMM. Also transfers ownership of the starting balance of both assets from the sender to the created `AccountRoot` and issues an initial balance of liquidity provider tokens (LP Tokens) from the AMM account to the sender.
 
@@ -40,11 +40,11 @@ Creates both an [AMM entry](../../ledger-data/ledger-entry-types/amm.md) and a [
 
 | Field        | JSON Type           | [Internal Type](../../binary-format.md) | Required? | Description |
 |:-------------|:--------------------|:------------------|:----------|:------------|
-| `Amount`     | [Currency Amount][] | Amount            | Yes       | The first of the two assets to fund this AMM with. This must be a positive amount. |
-| `Amount2`    | [Currency Amount][] | Amount            | Yes       | The second of the two assets to fund this AMM with. This must be a positive amount. |
+| `Amount`     | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | Yes       | The first of the two assets to fund this AMM with. This must be a positive amount. |
+| `Amount2`    | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | Yes       | The second of the two assets to fund this AMM with. This must be a positive amount. |
 | `TradingFee` | Number              | UInt16            | Yes       | The fee to charge for trades against this AMM instance, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is `1000`, indicating a 1% fee. The minimum value is `0`. |
 
-One or both of `Amount` and `Amount2` can be [tokens](../../../../concepts/tokens/index.md); at most one of them can be [XRP](xrp.html). They cannot both have the same currency code and issuer. The tokens' issuers must have [Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag) enabled. If the [Clawback amendment][] :not_enabled: is enabled, those issuers must not have enabled the Allow Clawback flag. The assets _cannot_ be LP tokens for another AMM.
+One or both of `Amount` and `Amount2` can be [tokens](../../../../concepts/tokens/index.md); at most one of them can be [XRP](../../../../introduction/what-is-xrp.md). They cannot both have the same currency code and issuer. The tokens' issuers must have [Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#the-default-ripple-flag) enabled. If the [Clawback amendment](../../../../resources/known-amendments.md#clawback) :not_enabled: is enabled, those issuers must not have enabled the Allow Clawback flag. The assets _cannot_ be LP tokens for another AMM.
 
 ## Special Transaction Cost
 

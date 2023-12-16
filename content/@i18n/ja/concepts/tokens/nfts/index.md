@@ -27,7 +27,7 @@ XRP Ledgerは、_IOUs_ としても知られる[トークン](../index.md)のサ
 
 これらの切手は、他の24セント切手と交換することはできません。非代替(Non-fungible)になってしまったのです。
 
-[NonFungibleTokensV1の修正](known-amendments.html#nonfungibletokensv1) :現在有効ではありません: は、XRP Ledgerに非代替性トークン（NFT）のサポートをネイティブで追加するものです。 非代替性トークンは、芸術品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権をコード化する役割を果たします。
+[NonFungibleTokensV1の修正](../../../resources/known-amendments.md#nonfungibletokensv1) :現在有効ではありません: は、XRP Ledgerに非代替性トークン（NFT）のサポートをネイティブで追加するものです。 非代替性トークンは、芸術品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権をコード化する役割を果たします。
 
 
 ## XRP Ledger上のNFT

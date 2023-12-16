@@ -29,7 +29,7 @@ labels:
 * 凍結されたトラストラインの両当事者間の直接決済は、凍結後も可能です。
 * そのトラストラインの取引相手は、イシュアーへ直接支払う場合を除き、凍結されたトラストラインの残高を減らすことはできません。取引相手は、凍結されたイシュアンスを直接イシュアーに送信することだけが可能です。
 * 取引相手は、凍結されたトラストライン上で引き続きその他の当事者からの支払を受け取ることができます。
-* 取引相手が凍結されたトラストライン上のトークンの売りオファーを出した場合、[資金不足とみなされます](offers.html#オファーのライフサイクル)。
+* 取引相手が凍結されたトラストライン上のトークンの売りオファーを出した場合、[資金不足とみなされます](../decentralized-exchange/offers.md#オファーのライフサイクル)。
 
 再確認: トラストラインではXRPは保持されません。XRPは凍結できません。
 
@@ -48,7 +48,7 @@ Individual Freezeは1つの通貨にのみ適用されます。特定の取引�
 
 * 凍結された発行アドレスのすべての取引相手は、イシュアーに直接支払う場合を除き、凍結されたアドレスへのトラストラインの残高を減らすことができません。（これはすべての[運用アドレス](../../accounts/account-types.md)にも影響します。）
 * 凍結された発行アドレスの取引相手は、発行アドレスとの直接的な支払の送受信を引き続き行うことができます。
-* 凍結アドレスによるトークンの売りオファーはすべて、[資金不足とみなされます](offers.html#オファーのライフサイクル)。
+* 凍結アドレスによるトークンの売りオファーはすべて、[資金不足とみなされます](../decentralized-exchange/offers.md#オファーのライフサイクル)。
 
 再確認: アドレスはXRPを発行できません。Global FreezeはXRPには適用されません。
 
@@ -94,5 +94,5 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
     - [account_infoメソッド][]
     - [AccountSetトランザクション][]
     - [TrustSetトランザクション][]
-    - [AccountRootフラグ](accountroot.html#accountrootのフラグ)
-    - [RippleState(trust line)フラグ](ripplestate.html#ripplestateのフラグ)
+    - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+    - [RippleState(trust line)フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)

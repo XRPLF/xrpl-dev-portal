@@ -8,7 +8,7 @@ labels:
 # SignerList
 [[Source]](https://github.com/XRPLF/rippled/blob/6d2e3da30696bd10e3bb11a5ff6d45d2c4dae90f/src/ripple/protocol/impl/LedgerFormats.cpp#L127 "Source")
 
-_(Added by the [MultiSign amendment][].)_
+_(Added by the [MultiSign amendment](../../../../resources/known-amendments.md#multisign).)_
 
 A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a [SignerListSet transaction](../../transactions/types/signerlistset.md).
 
@@ -72,28 +72,28 @@ Each member of the `SignerEntries` field is an object that describes that signer
 |:----------------|:----------|:--------------|:-------------------------------|
 | `Account`       | String    | AccountID     | An XRP Ledger address whose signature contributes to the multi-signature. It does not need to be a funded address in the ledger. |
 | `SignerWeight`  | Number    | UInt16        | The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the signer list's `SignerQuorum` value. |
-| `WalletLocator` | String    | Hash256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment][].)_ |
+| `WalletLocator` | String    | Hash256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment](../../../../resources/known-amendments.md#expandedsignerlist).)_ |
 
 When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot ledger entry](accountroot.md), then only the [master private key](../../../../concepts/accounts/cryptographic-keys.md) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 
 ## {% $frontmatter.seo.title %} Flags
 
-_(Added by the [MultiSignReserve amendment][].)_
+_(Added by the [MultiSignReserve amendment](../../../../resources/known-amendments.md#multisignreserve).)_
 
 SignerList entries can have the following value in the `Flags` field:
 
 | Flag Name          | Hex Value    | Decimal Value | Description              |
 |:-------------------|:-------------|:--------------|:-------------------------|
-| `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
+| `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment](../../../../resources/known-amendments.md#multisignreserve) is enabled. |
 
 
 ## Signer Lists and Reserves
 
 A signer list contributes to its owner's [reserve requirement](../../../../concepts/accounts/reserves.md). Removing the signer list frees up the reserve.
 
-The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {% $env.PUBLIC_OWNER_RESERVE %}.
+The [MultiSignReserve amendment](../../../../resources/known-amendments.md#multisignreserve) (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {% $env.PUBLIC_OWNER_RESERVE %}.
 
-A signer list created before the [MultiSignReserve amendment][] itself counts as two items towards the owner reserve, and each member of the list counts as one. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction](../../transactions/types/signerlistset.md).
+A signer list created before the [MultiSignReserve amendment](../../../../resources/known-amendments.md#multisignreserve) itself counts as two items towards the owner reserve, and each member of the list counts as one. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction](../../transactions/types/signerlistset.md).
 
 
 ## SignerList ID Format

@@ -45,14 +45,14 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#unsubscribe)
+[Try it! >](/resources/dev-tools/websocket-api-tool#unsubscribe)
 
 The parameters in the request are specified almost exactly like the parameters to the [subscribe method](subscribe.md), except that they are used to define which subscriptions to end instead. The parameters are:
 
 | `Field`             | Type  | Required? | Description                                    |
 |:--------------------|:------|:----------|:-----------------------------------------------|
 | `streams`           | Array | No        | Array of string names of generic streams to unsubscribe from, including `ledger`, `server`, `transactions`, and `transactions_proposed`. |
-| `accounts`          | Array | No        | Array of unique account addresses to stop receiving updates for, in the XRP Ledger's [base58](base58-encodings.html) format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
+| `accounts`          | Array | No        | Array of unique account addresses to stop receiving updates for, in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. (This only stops those messages if you previously subscribed to those accounts specifically. You cannot use this to filter accounts out of the general transactions stream.) |
 | `accounts_proposed` | Array | No        | Like `accounts`, but for `accounts_proposed` subscriptions that included not-yet-validated transactions. |
 | `books`             | Array | No        | Array of objects defining order books to unsubscribe from, as explained below. |
 
@@ -89,7 +89,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
 * `malformedStream` - The `streams` field of the request is not formatted properly.

@@ -130,7 +130,7 @@ SetRegularKeyトランザクションでレギュラーキーペアを初めて�
 
 ### トランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.ja.md" /%}
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
 
 
 要求フィールドに以下の値を指定します。
@@ -409,7 +409,7 @@ rippled submit 1200052280000000240000000468400000000000000A73210384CA3C528F10C75
 
 ### トランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.ja.md" /%}
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
 
 
 要求フィールドに以下の値を指定します。

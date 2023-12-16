@@ -19,7 +19,7 @@ WebSocketは、クライアントとサーバーが1つの接続を確立し、�
 
 - このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。
 - 安定したインターネット接続と`rippled`サーバーへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバーのプールに接続します。[独自の`rippled`サーバーを運用](../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバーに接続することもできます。
-- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](currency-formats.html#xrpの精度)を参照してください。
+- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)を参照してください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/vendor/big.min.js"></script>
@@ -65,7 +65,7 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-上記の例では、[Test Net](xrp-test-net-faucet.html)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
+上記の例では、[Test Net](/resources/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
@@ -291,7 +291,7 @@ const log_tx = function(tx) {
 WS_HANDLERS["transaction"] = log_tx
 ```
 
-以下の例では、別のウィンドウまたは別のデバイスで[Transaction Sender](tx-sender.html)を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。
+以下の例では、別のウィンドウまたは別のデバイスで[Transaction Sender](/resources/dev-tools/tx-sender)を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。
 
 {{ start_step("Subscribe") }}
 <label for="subscribe_address">Test Net Address:</label>
@@ -344,9 +344,9 @@ WS_HANDLERS["transaction"] = log_tx
 
 - **`transaction.TransactionType`フィールド**はトランザクションのタイプです。アカウントに通貨を送金できる可能性があるトランザクションのタイプは以下のとおりです。
 
-  - **[Paymentトランザクション][]** はXRPまたは[トークン](../../concepts/tokens/index.md)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](basic-data-types.html#通貨額の指定)。
+  - **[Paymentトランザクション][]** はXRPまたは[トークン](../../concepts/tokens/index.md)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)。
 
-    **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](partial-payments.html#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
+    **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../concepts/payment-types/partial-payments.md#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
 
   - **[CheckCashトランザクション][]**では、アカウントは別のアカウントの[CheckCreateトランザクション][]によって承認された金額を受け取ることができます。**CheckCashトランザクション**のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。
 

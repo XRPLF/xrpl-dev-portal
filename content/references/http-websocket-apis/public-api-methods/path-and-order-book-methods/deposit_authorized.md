@@ -56,10 +56,10 @@ The request includes the following parameters:
 
 | `Field`               | Type                       | Description             |
 |:----------------------|:---------------------------|:------------------------|
-| `source_account`      | String - [Address][]       | The sender of a possible payment. |
-| `destination_account` | String - [Address][]       | The recipient of a possible payment. |
-| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `source_account`      | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)       | The sender of a possible payment. |
+| `destination_account` | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)       | The recipient of a possible payment. |
+| `ledger_hash`         | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index`        | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 
 
 ## Response Format
@@ -128,20 +128,20 @@ The response follows the [standard format](../../api-conventions/response-format
 | `Field`                | Type                      | Description             |
 |:-----------------------|:--------------------------|:------------------------|
 | `deposit_authorized`   | Boolean                   | Whether the specified source account is authorized to send payments directly to the destination account. If `true`, either the destination account does not require [Deposit Authorization](../../../../concepts/accounts/depositauth.md) or the source account is preauthorized. |
-| `destination_account`  | String - [Address][]      | The destination account specified in the request. |
+| `destination_account`  | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)      | The destination account specified in the request. |
 | `ledger_hash`          | String                    | _(May be omitted)_ The identifying hash of the ledger that was used to generate this response. |
-| `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
-| `ledger_current_index` | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
-| `source_account`       | String - [Address][]      | The source account specified in the request. |
+| `ledger_index`         | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
+| `ledger_current_index` | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
+| `source_account`       | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)      | The source account specified in the request. |
 | `validated`            | Boolean                   | _(May be omitted)_ If `true`, the information comes from a validated ledger version. |
 
 **Note:** A `deposit_authorized` status of `true` does not guarantee that a payment can be sent from the specified source to the specified destination. For example, the destination account may not have a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) for the specified currency, or there may not be enough liquidity to deliver a payment.
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actMalformed` - An [Address][] specified in the `source_account` or `destination_account` field of the request was not properly formatted. (It may contain a typo or be the wrong length, causing a failed checksum.)
+* `actMalformed` - An [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `source_account` or `destination_account` field of the request was not properly formatted. (It may contain a typo or be the wrong length, causing a failed checksum.)
 * `dstActNotFound` - The `destination_account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `srcActNotFound` - The `source_account` field of the request does not correspond to an account in the ledger.

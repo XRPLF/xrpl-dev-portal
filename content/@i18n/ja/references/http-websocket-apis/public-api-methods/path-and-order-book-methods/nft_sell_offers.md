@@ -10,12 +10,12 @@ labels:
 
 `nft_sell_offers`メソッドは、与えられた[NFToken](../../../protocol/data-types/nftoken.md)オブジェクトに対する売却オファーのリストを返します。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました。)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました。)_
 
 ## リクエストのフォーマット
 リクエストフォーマットの例：
 
-{% partial file="/_snippets/no-cli-syntax.ja.md" /%}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
@@ -44,15 +44,15 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#nft_sell_offers)
+[試してみる >](/resources/dev-tools/websocket-api-tool#nft_sell_offers)
 
 リクエストには以下のパラメーターが含まれます。
 
 | `Field`        | 型               | 説明                                      |
 |:---------------|:-----------------|:-----------------------------------------|
 | `nft_id`       | 文字列            | [NFToken](../../../protocol/data-types/nftoken.md) オブジェクトの一意の識別子。      |
-| `ledger_hash`  | 文字列            | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
-| `ledger_index` | 文字列 または 数値  | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
+| `ledger_hash`  | 文字列            | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください）。 |
+| `ledger_index` | 文字列 または 数値  | _(省略可)_ 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください）。 |
 | `limit`        | 整数値            | _(省略可)_ 取得するNFTの売却オファーの数を制限します。この値は50未満または500を超えることはできません。この範囲外の正の値は、最も近い有効な値に置き換えられます。デフォルトは250です。 |
 | `marker`       | [マーカー](../../api-conventions/markers-and-pagination.md)       | _(省略可)_ 以前のページ分割されたレスポンスの値。そのレスポンスが終了したところからデータの取得を再開します。 |
 
@@ -119,13 +119,13 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 | `Field`           | 型                     | 説明                                   |
 |:------------------|:-----------------------|:--------------------------------------|
 | `amount`          | 文字列 または オブジェクト | NFTを売却するために提示される金額で、XRPのドロップ数を表す文字列、または(代替可能)トークンの金額を表すオブジェクトです。([通貨金額の指定][通貨額]をご覧ください)。 |
-| `flags`           | 数値                    | このオファーのためのフラグ。指定できる値については、[NFTokenOfferのフラグ](nftokenoffer.html#nftokenofferのフラグ)をご覧ください。 |
-| `nft_offer_index` | 文字列                   | このオファーの[レジャーオブジェクトID](ledger-object-ids.html)。 |
+| `flags`           | 数値                    | このオファーのためのフラグ。指定できる値については、[NFTokenOfferのフラグ](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md#nftokenofferのフラグ)をご覧ください。 |
+| `nft_offer_index` | 文字列                   | このオファーの[レジャーオブジェクトID](../../../protocol/ledger-data/common-fields.md)。 |
 | `owner`           | 文字列                   | このオファーを作成アカウント。   |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

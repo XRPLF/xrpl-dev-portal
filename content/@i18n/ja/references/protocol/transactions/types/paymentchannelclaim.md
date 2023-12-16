@@ -42,7 +42,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 <!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -59,7 +59,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 ## PaymentChannelClaimフラグ
 
-PaymentChannelClaimタイプのトランザクションについては、[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)で以下の値が追加でサポートされます。
+PaymentChannelClaimタイプのトランザクションについては、[`Flags`フィールド](../common-fields.md#flagsフィールド)で以下の値が追加でサポートされます。
 
 | フラグ名   | 16進数値   | 10進数値       | 説明                                |
 |:----------|:-----------|:--------------|:------------------------------------|

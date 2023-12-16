@@ -44,7 +44,7 @@ rippled ledger_closed
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ledger_closed)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_closed)
 
 このメソッドはパラメーターを受け入れません。
 
@@ -87,9 +87,9 @@ rippled ledger_closed
 
 | `Field`        | 型               | 説明                                     |
 |:---------------|:-----------------|:-----------------------------------------|
-| `ledger_hash` | 文字列 | このレジャーバージョンの一意の[ハッシュ](basic-data-types.html#ハッシュ)（16進数）。 |
-| `ledger_index` | 符号なし整数 | このレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `ledger_hash` | 文字列 | このレジャーバージョンの一意の[ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)（16進数）。 |
+| `ledger_index` | 符号なし整数 | このレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。

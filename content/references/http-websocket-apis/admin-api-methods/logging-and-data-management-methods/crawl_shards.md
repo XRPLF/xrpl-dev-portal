@@ -126,13 +126,13 @@ Each member of the `peers` array of the response is an object that describes one
 |:----------|:-------|:--------------------------------------------------------|
 | `complete_shards` | String | The range of complete history shards this peer has available. This may be disjointed. For example, `1-2,5,7-9` indicates that shards 1, 2, 5, 7, 8, and 9 are available. |
 | `incomplete_shards` | String | _(May be omitted)_ A comma-separated list of history shards this peer has partially downloaded, and percent completion for each. For example, `1:50,2:25` indicates that shard 1 is 50% downloaded and shard 2 is 25% downloaded. [New in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE") |
-| `public_key` | String | _(Omitted unless the request specified `"public_key": true`)_ The public key this peer uses for peer-to-peer communications, in the XRP Ledger's [base58 format](base58-encodings.html). |
+| `public_key` | String | _(Omitted unless the request specified `"public_key": true`)_ The public key this peer uses for peer-to-peer communications, in the XRP Ledger's [base58 format](../../../protocol/data-types/base58-encodings.md). |
 
 The `ip` field is no longer provided. [Removed in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_RED")
 
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `invalidParams` - One or more required fields were omitted from the request, or a provided field was specified as the wrong data type.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

@@ -8,7 +8,7 @@ labels:
 # PayChannel
 [[Source]](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/src/ripple/protocol/impl/LedgerFormats.cpp#L180-L198 "Source")
 
-_(Added by the [PayChan amendment][].)_
+_(Added by the [PayChan amendment](../../../../resources/known-amendments.md#paychan).)_
 
 A `PayChannel` entry represents a [payment channel](../../../../concepts/payment-types/payment-channels.md).
 
@@ -44,13 +44,13 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 | Name                | JSON Type | [Internal Type](../../binary-format.md) | Required? | Description            |
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
 | `Account`           | String    | AccountID         | Yes       | The source address that owns this payment channel. This comes from the sending address of the transaction that created the channel. |
-| `Amount`            | String    | Amount            | Yes       | Total [XRP, in drops][], that has been allocated to this channel. This includes XRP that has been paid to the destination address. This is initially set by the transaction that created the channel and can be increased if the source address sends a PaymentChannelFund transaction. |
-| `Balance`           | String    | Amount            | Yes       | Total [XRP, in drops][], already paid out by the channel. The difference between this value and the `Amount` field is how much XRP can still be paid to the destination address with PaymentChannelClaim transactions. If the channel closes, the remaining difference is returned to the source address. |
-| `CancelAfter`       | Number    | UInt32            | No        | The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch][]. This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](../ledger-header.md). This is optionally set by the transaction that created the channel, and cannot be changed. |
+| `Amount`            | String    | Amount            | Yes       | Total [XRP, in drops](../../data-types/basic-data-types.md#specifying-currency-amounts), that has been allocated to this channel. This includes XRP that has been paid to the destination address. This is initially set by the transaction that created the channel and can be increased if the source address sends a PaymentChannelFund transaction. |
+| `Balance`           | String    | Amount            | Yes       | Total [XRP, in drops](../../data-types/basic-data-types.md#specifying-currency-amounts), already paid out by the channel. The difference between this value and the `Amount` field is how much XRP can still be paid to the destination address with PaymentChannelClaim transactions. If the channel closes, the remaining difference is returned to the source address. |
+| `CancelAfter`       | Number    | UInt32            | No        | The immutable expiration time for this payment channel, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). This channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](../ledger-header.md). This is optionally set by the transaction that created the channel, and cannot be changed. |
 | `Destination`       | String    | AccountID         | Yes       | The destination address for this payment channel. While the payment channel is open, this address is the only one that can receive XRP from the channel. This comes from the `Destination` field of the transaction that created the channel. |
 | `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this payment channel, such as a hosted recipient at the destination address. |
-| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this entry, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the [fixPayChanRecipientOwnerDir amendment][]. |
-| `Expiration`        | Number    | UInt32            | No        | The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch][]. The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](../ledger-header.md). See [Channel Expiration](#channel-expiration) for more details. |
+| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this entry, in case the directory consists of multiple pages. Omitted on payment channels created before enabling the [fixPayChanRecipientOwnerDir amendment](../../../../resources/known-amendments.md#fixpaychanrecipientownerdir). |
+| `Expiration`        | Number    | UInt32            | No        | The mutable expiration time for this payment channel, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). The channel is expired if this value is present and smaller than the previous ledger's [`close_time` field](../ledger-header.md). See [Channel Expiration](#channel-expiration) for more details. |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0078`, mapped to the string `PayChannel`, indicates that this is a payment channel entry. |
 | `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the source address's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
@@ -99,7 +99,7 @@ If any other address attempts to set an `Expiration` field, the transaction fail
 
 ## PayChannel ID Format
 
-The ID of a `PayChannel` entry is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of a `PayChannel` entry is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The PayChannel space key (`0x0078`)
 * The AccountID of the source account

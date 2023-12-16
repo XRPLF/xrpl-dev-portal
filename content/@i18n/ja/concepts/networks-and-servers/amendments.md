@@ -19,7 +19,7 @@ Amendmentシステムは、XRP Ledger上のトランザクション処理に影�
 
 ## Amendmentプロセス
 
-[XRP Ledgerのコードに貢献する](contribute-code-flow.html)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
+[XRP Ledgerのコードに貢献する](../../resources/contribute-code/contribute-code.md)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
 
 Amendmentのコードがソフトウェアリリースに組み込まれた後、それを有効にするプロセスはXRP Ledgerネットワーク内で行われ、レジャーは _フラグ_ レジャーごとに(通常約15分間隔で)Amendment状況をチェックします。
 
@@ -78,10 +78,10 @@ Amendmentを有効にすると、修正前の動作のソースコードは`ripp
 ## 関連項目
 
 - **コンセプト:**
-    - [コンセンサスについて](intro-to-consensus.html)
+    - [コンセンサスについて](../consensus-protocol/index.md)
 - **チュートリアル:**
     - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
     - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
-    - [XRP Ledgerのコードへの貢献](contribute-code-flow.html)
+    - [XRP Ledgerのコードへの貢献](../../resources/contribute-code/contribute-code.md)
 - **リファレンス:**
     - [既知のAmendment](../../resources/known-amendments.md)

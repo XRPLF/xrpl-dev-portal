@@ -12,7 +12,7 @@ Creates either a new _Sell_ offer for an `NFToken` owned by the account executin
 
 If successful, the transaction creates a [NFTokenOffer object](../../ledger-data/ledger-entry-types/nftokenoffer.md). Each offer counts as one object towards the [owner reserve](../../../../concepts/accounts/reserves.md) of the account that placed the offer.
 
-_(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1).)_
+_(Added by the [NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1).)_
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -26,7 +26,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungib
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCreateOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCreateOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 
@@ -34,8 +34,8 @@ _(Added by the [NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungib
 |:--------------|:--------------------|:------------------|:-------------------|
 | `Owner`       | String              | AccountID         | _(Optional)_ Who owns the corresponding `NFToken`. If the offer is to buy a token, this field must be present and it must be different than the `Account` field (since an offer to buy a token one already holds is meaningless). If the offer is to sell a token, this field must not be present, as the owner is, implicitly, the same as the `Account` (since an offer to sell a token one doesn't already hold is meaningless). |
 | `NFTokenID`   | String              | Hash256           | Identifies the `NFToken` object that the offer references. |
-| `Amount`      | [Currency Amount][] | Amount            | Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
-| `Expiration`  | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch][]. |
+| `Amount`      | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | Indicates the amount expected or offered for the corresponding `NFToken`. The amount must be non-zero, except where this is an offer to sell and the asset is XRP; then, it is legal to specify an amount of zero, which means that the current owner of the token is giving it away, gratis, either to anyone at all, or to the account identified by the `Destination` field. |
+| `Expiration`  | Number              | UInt32            | _(Optional)_ Time after which the offer is no longer active, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). |
 | `Destination` | String              | AccountID         | _(Optional)_ If present, indicates that this offer may only be accepted by the specified account. Attempts by other accounts to accept this offer MUST fail. |
 
 
@@ -54,7 +54,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 
 | Error Code                       | Description                               |
 |:---------------------------------|:------------------------------------------|
-| `temDISABLED`                    | The [NonFungibleTokensV1 amendment](known-amendments.html#nonfungibletokensv1) is not enabled. |
+| `temDISABLED`                    | The [NonFungibleTokensV1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1) is not enabled. |
 | `temBAD_AMOUNT`                  | The `Amount` field is not valid. For example, the amount was zero for a buy offer, or the amount is denominated in fungible tokens but the `NFToken` has the [`lsfOnlyXRP` flag](../../data-types/nftoken.md#nftoken-flags) enabled. |
 | `temBAD_EXPIRATION`              | The specified `Expiration` time is invalid (for example, `0`). |
 | `tecDIR_FULL`                    | The sender already owns too many objects in the ledger, or there are already too many offers to buy or sell this token. |
@@ -65,6 +65,6 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_ENTRY`                    | The `NFToken` is not owned by the expected account. |
 | `tecNO_ISSUER`                   | The issuer specified in the `Amount` field does not exist. |
 | `tecNO_LINE`                     | The `Amount` field is denominated in fungible tokens, but the `NFToken`'s issuer does not have a trust line for those tokens and the `NFToken` does not have the [`lsfTrustLine` flag](../../data-types/nftoken.md#nftoken-flags) enabled. |
-| `tecNO_PERMISSION`               | The `Destination` account blocks incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
+| `tecNO_PERMISSION`               | The `Destination` account blocks incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming) :not_enabled:)_
 | `tecUNFUNDED_OFFER`              | For a buy offer, the sender does have the funds specified in the `Amount` field available. If the `Amount` is XRP, this could be due to the reserve requirement; if the `Amount` is denominated in fungible tokens, this could be because they are [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The `NFToken` has the [`lsfTransferable` flag](../../data-types/nftoken.md#nftoken-flags) disabled and this transaction would not transfer the `NFToken` to or from the issuer. |

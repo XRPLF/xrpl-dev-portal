@@ -13,14 +13,14 @@ labels:
 
 `{% $frontmatter.seo.title %}`メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
 
 ### リクエストのフォーマット
 
 リクエストの例
 
-{% partial file="/_snippets/no-cli-syntax.ja.md" /%}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
@@ -58,14 +58,14 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
+[試してみる>](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
 
 リクエストには以下のパラメーターが含まれます。
 
 | `フィールド`    | 型                     | 必須? |  説明                                |
 |:--------------|:-----------------------|:------|:-----------------------------------|
-| `account`     | 文字列 - [アドレス](basic-data-types.html#アドレス)    | いいえ | この流動性プロバイダーが保有するLPトークンのみを表示します。 |
-| `amm_account` | 文字列 - [アドレス](basic-data-types.html#アドレス)    | いいえ | AMMの特別なAccountRootのアドレス。(これはAMMのLPトークンの`issuer`です)。 |
+| `account`     | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)    | いいえ | この流動性プロバイダーが保有するLPトークンのみを表示します。 |
+| `amm_account` | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)    | いいえ | AMMの特別なAccountRootのアドレス。(これはAMMのLPトークンの`issuer`です)。 |
 | `asset`       | オブジェクト または 文字列 | いいえ | [通貨額][Currency Amount]のように、`currency`と`issuer`フィールドを持つオブジェクトとして（XRPの場合は`issuer`を省略）、検索するAMMの資産の一つを指定します。XRPの場合は、オブジェクトではなく文字列`XRP`として指定することもできます。 |
 | `asset2`      | オブジェクト または 文字列 | いいえ | AMMの資産のもう一方を、`currency`と`issuer`フィールド（XRPの場合は`issuer`を省略）を持つオブジェクトとして、[通貨額][Currency Amount]のように指定することが可能です。 |
 
@@ -195,9 +195,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 | フィールド               | 型                   | 説明                                               |
 |:-----------------------|:---------------------|:----------------------------------------------------------|
 | `amm`                  | オブジェクト           | リクエストに含まれる資産ペアの[**AMM詳細オブジェクト**](#amm詳細オブジェクト)です。 |
-| `ledger_current_index` | [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _(`ledger_index`の指定がある場合は省略)_ この情報を取得する際に使用された、現在の進行中の台帳の[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
-| `ledger_hash`          | [ハッシュ](basic-data-types.html#ハッシュ)           | _(`ledger_current_index`の指定がある場合は省略)_ この情報を取得する際に使用された台帳のバージョンの識別ハッシュ。 |
-| `ledger_index`         | [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _(`ledger_current_index`の指定がある場合は省略)_ この情報を取得する際に使用した台帳のバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `ledger_current_index` | [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _(`ledger_index`の指定がある場合は省略)_ この情報を取得する際に使用された、現在の進行中の台帳の[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
+| `ledger_hash`          | [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)           | _(`ledger_current_index`の指定がある場合は省略)_ この情報を取得する際に使用された台帳のバージョンの識別ハッシュ。 |
+| `ledger_index`         | [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _(`ledger_current_index`の指定がある場合は省略)_ この情報を取得する際に使用した台帳のバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 | `validated`            | 真偽値                 | もし`true`なら、このリクエストに使用された台帳は検証済みで、これらの結果は最終的なものです。もし省略されるか`false`に設定されると、データは未確定で変更される可能性があります。 |
 
 
@@ -207,13 +207,13 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 | フィールド        | 型         | 説明 |
 |-----------------|------------|-------------|
-| `amm_account`   | 文字列      | AMMアカウントの[アドレス](basic-data-types.html#アドレス)です。 |
-| `amount`        | [通貨額](basic-data-types.html#通貨額の指定)  | AMMのプールにある1つの資産の合計額。(注記:リクエストに指定した`asset` _または_ `asset2`になります。) |
-| `amount2`       | [通貨額](basic-data-types.html#通貨額の指定)  | AMMのプール内の他の資産の合計額。(注意:リクエストに指定した`asset` _または_ `asset2`になります。) |
+| `amm_account`   | 文字列      | AMMアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)です。 |
+| `amount`        | [通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)  | AMMのプールにある1つの資産の合計額。(注記:リクエストに指定した`asset` _または_ `asset2`になります。) |
+| `amount2`       | [通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)  | AMMのプール内の他の資産の合計額。(注意:リクエストに指定した`asset` _または_ `asset2`になります。) |
 | `asset_frozen`  | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount`の通貨は現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
 | `asset2_frozen` | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount2`の通貨は現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
 | `auction_slot`  | オブジェクト | _(省略される場合があります)_ 存在する場合、現在のオークションスロットの所有者を記述した[オークションスロットオブジェクト](#オークションスロットオブジェクト)です。 |
-| `lp_token`      | [通貨額](basic-data-types.html#通貨額の指定)  | このAMMのLPトークンの発行残高の合計。リクエスト時に`account`フィールドで流動性プロバイダを指定した場合、その流動性プロバイダが保有するこのAMMのLPトークンの量です。 |
+| `lp_token`      | [通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)  | このAMMのLPトークンの発行残高の合計。リクエスト時に`account`フィールドで流動性プロバイダを指定した場合、その流動性プロバイダが保有するこのAMMのLPトークンの量です。 |
 | `trading_fee`   | 数値        | AMMの現在の取引手数料。単位は1/100,000で、1は0.001%の手数料に相当します。 |
 | `vote_slots`    | 配列        | _(省略される場合があります)_ AMMの取引手数料に対する現在の投票数。[投票スロットオブジェクト](#投票スロットオブジェクト)として表示されます。 |
 
@@ -224,11 +224,11 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 | フィールド         | 型        | 説明         |
 |------------------|-----------|-------------|
-| `account`        | 文字列     | オークションスロットを所有するアカウントの[アドレス](basic-data-types.html#アドレス)です。 |
+| `account`        | 文字列     | オークションスロットを所有するアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)です。 |
 | `auth_accounts`  | 配列       | オークションスロットの所有者が、取引手数料の割引の対象として指定した追加アカウントのリスト。この配列の各メンバーは、1つのフィールド`account`を持つオブジェクトで、指定したアカウントのアドレスが含まれています。 |
 | `discounted_fee` | 数値       | このAMMに対して取引を行う際に、オークションスロットの保有者、および対象となるアカウントに適用される割引後の取引手数料です。これは常に0です。 |
 | `expiration`     | 文字列     | このオークションスロットが期限切れとなるISO8601のUTCタイムスタンプ。期限切れになると、オークションスロットは適用されません (ただし、別のトランザクションで置き換えられるかクリーンアップされるまで、データは台帳に残ります)。 |
-| `price`          | [通貨額](basic-data-types.html#通貨額の指定) | オークションスロット所有者がオークションスロットを獲得するために支払った金額（LPトークン単位）です。これは、現在のスロット所有者を競り落とすための価格に影響します。 |
+| `price`          | [通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定) | オークションスロット所有者がオークションスロットを獲得するために支払った金額（LPトークン単位）です。これは、現在のスロット所有者を競り落とすための価格に影響します。 |
 | `time_interval`  | 数値       | このオークションスロットが現在入っている72分の時間間隔を0から19までで指定します。オークションスロットは24時間後（72分間隔で20回）に失効し、現在の保有者を競り落とすためのコストと、誰かが競り落とした場合に現在の保有者が払い戻される金額に影響します。 |
 
 
@@ -238,14 +238,14 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 | フィールド      | 型    | 説明 |
 |---------------|-------|-------------|
-| `account`     | 文字列 | この流動性供給者の[アドレス](basic-data-types.html#アドレス)。 |
+| `account`     | 文字列 | この流動性供給者の[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)。 |
 | `trading_fee` | 数値   | この流動性供給者が投票した取引手数料。単位は1/100,000です。 |
 | `vote_weight` | 数値   | この流動性供給者の投票が、最終的な取引手数料にどれだけカウントさ れるかを表します。これは、この流動性供給者がAMMのLPトークンをどれだけ保有しているかに比例します。値は、この流動性供給者が保有するこのLPトークンの数の100,000倍を、発行済LPトークンの総数で割ったものになります。例えば、値が1000の場合、流動性供給者はこのAMMのLPトークンの1%を保有していることを意味します。 |
 
 
 ### 考えられるエラー
 
-- [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+- [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 - `actNotFound` - この資産ペアのAMMが存在しないか、リクエストで指定された発行アカウントが存在しません。
 - `invalidParams` - 1つまたは複数のフィールドの指定に誤りがあるか、1つまたは複数の必須フィールドが欠落しています。
 

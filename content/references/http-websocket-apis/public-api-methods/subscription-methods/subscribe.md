@@ -61,14 +61,14 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#subscribe)
+[Try it! >](/resources/dev-tools/websocket-api-tool#subscribe)
 
 The request includes the following parameters:
 
 | `Field`             | Type   | Description                                   |
 |:--------------------|:-------|:----------------------------------------------|
 | `streams`           | Array  | _(Optional)_ Array of string names of generic streams to subscribe to, as explained below |
-| `accounts`          | Array  | _(Optional)_ Array with the unique addresses of accounts to monitor for validated transactions. The addresses must be in the XRP Ledger's [base58](base58-encodings.html) format. The server sends a notification for any transaction that affects at least one of these accounts. |
+| `accounts`          | Array  | _(Optional)_ Array with the unique addresses of accounts to monitor for validated transactions. The addresses must be in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. The server sends a notification for any transaction that affects at least one of these accounts. |
 | `accounts_proposed` | Array  | _(Optional)_ Like `accounts`, but include transactions that are not yet finalized. |
 | `books`             | Array  | _(Optional)_ Array of objects defining [order books](http://www.investopedia.com/terms/o/order-book.asp) to monitor for updates, as detailed below. |
 | `url`               | String | (Optional for Websocket; Required otherwise) URL where the server sends a JSON-RPC callbacks for each event. *Admin-only.* |
@@ -89,7 +89,7 @@ The `streams` parameter provides access to the following default streams of info
 - `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes.
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
-**Note:** The following streams are not available from Clio and `rippled` servers in [Reporting Mode][]: `server`, `peer_status`, `consensus`. Both will return the `reportingUnsupported` error if you request one of these streams. [Updated in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE") [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE")
+**Note:** The following streams are not available from Clio and `rippled` servers in [Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode): `server`, `peer_status`, `consensus`. Both will return the `reportingUnsupported` error if you request one of these streams. [Updated in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE") [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE")
 
 Each member of the `books` array, if provided, is an object with the following fields:
 
@@ -97,7 +97,7 @@ Each member of the `books` array, if provided, is an object with the following f
 |:-------------|:--------|:----------------------------------------------------|
 | `taker_gets` | Object  | Specification of which currency the account taking the Offer would receive, as a [currency object with no amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
 | `taker_pays` | Object  | Specification of which currency the account taking the Offer would pay, as a [currency object with no amount](../../../protocol/data-types/currency-formats.md#specifying-without-amounts). |
-| `taker`      | String  | Unique [account address](../../../../concepts/accounts/accounts.md) to use as a perspective for viewing offers, in the XRP Ledger's [base58](base58-encodings.html) format. (This affects the funding status and fees of [Offers](../../../../concepts/tokens/decentralized-exchange/offers.md).) |
+| `taker`      | String  | Unique [account address](../../../../concepts/accounts/accounts.md) to use as a perspective for viewing offers, in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. (This affects the funding status and fees of [Offers](../../../../concepts/tokens/decentralized-exchange/offers.md).) |
 | `snapshot`   | Boolean | _(Optional)_ If `true`, return the current state of the order book once when you subscribe before sending updates. The default is `false`. |
 | `both`       | Boolean | _(Optional)_ If `true`, return both sides of the order book. The default is `false`. |
 
@@ -130,7 +130,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The request included the `url` field, but you are not connected as an admin.
 * `unknownStream` - One or more the members of the `streams` field of the request is not a valid stream name.
@@ -168,13 +168,13 @@ The fields from a ledger stream message are as follows:
 | `Field`             | Type                      | Description                |
 |:--------------------|:--------------------------|:---------------------------|
 | `type`              | String                    | `ledgerClosed` indicates this is from the ledger stream |
-| `fee_base`          | Number                    | The [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) as of this ledger version, in [drops of XRP][]. If this ledger version includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new transaction cost applies starting with the following ledger version. |
-| `fee_ref`           | Number                    | _(May be omitted)_ The [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) in "fee units". If the _[XRPFees amendment][]_ is enabled, this field is permanently omitted as it will no longer be relevant. |
-| `ledger_hash`       | String - [Hash][]         | The identifying hash of the ledger version that was closed. |
-| `ledger_index`      | Number - [Ledger Index][] | The ledger index of the ledger that was closed. |
-| `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch][] |
-| `reserve_base`      | Number                    | The minimum [reserve](../../../../concepts/accounts/reserves.md), in [drops of XRP][], that is required for an account. If this ledger version includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new base reserve applies starting with the following ledger version. |
-| `reserve_inc`       | Number                    | The [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) for each object an account owns in the ledger, in [drops of XRP][]. If the ledger includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new owner reserve applies after this ledger. |
+| `fee_base`          | Number                    | The [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) as of this ledger version, in [drops of XRP](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts). If this ledger version includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new transaction cost applies starting with the following ledger version. |
+| `fee_ref`           | Number                    | _(May be omitted)_ The [reference transaction cost](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) in "fee units". If the _[XRPFees amendment](../../../../resources/known-amendments.md#xrpfees)_ is enabled, this field is permanently omitted as it will no longer be relevant. |
+| `ledger_hash`       | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | The identifying hash of the ledger version that was closed. |
+| `ledger_index`      | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of the ledger that was closed. |
+| `ledger_time`       | Number                    | The time this ledger was closed, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time) |
+| `reserve_base`      | Number                    | The minimum [reserve](../../../../concepts/accounts/reserves.md), in [drops of XRP](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts), that is required for an account. If this ledger version includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new base reserve applies starting with the following ledger version. |
+| `reserve_inc`       | Number                    | The [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) for each object an account owns in the ledger, in [drops of XRP](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts). If the ledger includes a [SetFee pseudo-transaction](../../../protocol/transactions/pseudo-transaction-types/setfee.md) the new owner reserve applies after this ledger. |
 | `txn_count`         | Number                    | Number of new transactions included in this ledger version. |
 | `validated_ledgers` | String                    | _(May be omitted)_ Range of ledgers that the server has available. This may be a disjoint sequence such as `24900901-24900984,24901116-24901158`. This field is not returned if the server is not connected to the network, or if it is connected but has not yet obtained a ledger from the network. |
 
@@ -221,16 +221,16 @@ The fields from a validations stream message are as follows:
 | `flags`                 | Number           | Bit-mask of flags added to this validation message. The flag `0x80000000` indicates that the validation signature is fully-canonical. The flag `0x00000001` indicates that this is a full validation; otherwise it's a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `full`                  | Boolean          | If `true`, this is a full validation. Otherwise, this is a partial validation. Partial validations are not meant to vote for any particular ledger. A partial validation indicates that the validator is still online but not keeping up with consensus. [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `ledger_hash`           | String           | The identifying hash of the proposed ledger is being validated. |
-| `ledger_index`          | String - Number  | The [Ledger Index][] of the proposed ledger. [New in: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE") |
+| `ledger_index`          | String - Number  | The [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the proposed ledger. [New in: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE") |
 | `load_fee`              | Integer          | _(May be omitted)_ The local load-scaled transaction cost this validator is currently enforcing, in fee units. [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
-| `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58](base58-encodings.html) format. (See also: [Enable Validation on your `rippled` Server](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server).) [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE") |
+| `master_key`            | String           | _(May be omitted)_ The validator's master public key, if the validator is using a validator token, in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. (See also: [Enable Validation on your `rippled` Server](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server).) [New in: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE") |
 | `reserve_base`          | Integer          | _(May be omitted)_ The minimum reserve requirement (`account_reserve` value) this validator wants to set by [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md). [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `reserve_inc`           | Integer          | _(May be omitted)_ The increment in the reserve requirement (`owner_reserve` value) this validator wants to set by [Fee Voting](../../../../concepts/consensus-protocol/fee-voting.md). [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `server_version`        | String - Number  | _(May be omitted)_ An 64-bit integer that encodes the version number of the validating server. For example, `"1745990410175512576"`. Only provided once every 256 ledgers. [New in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE") |
 | `signature`             | String           | The signature that the validator used to sign its vote for this ledger. |
-| `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch][]. [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
+| `signing_time`          | Number           | When this validation vote was signed, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time). [New in: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 | `validated_hash`        | String           | The unique hash of the proposed ledger this validation applies to. [New in: rippled 1.8.1](https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE") |
-| `validation_public_key` | String           | The public key from the key-pair that the validator used to sign the message, in the XRP Ledger's [base58](base58-encodings.html) format. This identifies the validator sending the message and can also be used to verify the `signature`. If the validator is using a token, this is an ephemeral public key. |
+| `validation_public_key` | String           | The public key from the key-pair that the validator used to sign the message, in the XRP Ledger's [base58](../../../protocol/data-types/base58-encodings.md) format. This identifies the validator sending the message and can also be used to verify the `signature`. If the validator is using a token, this is an ephemeral public key. |
 
 
 ## Transaction Streams
@@ -363,9 +363,9 @@ Transaction stream messages have the following fields:
 | `engine_result`         | String                    | String [Transaction result code](../../../protocol/transactions/transaction-results/transaction-results.md) |
 | `engine_result_code`    | Number                    | Numeric [transaction response code](../../../protocol/transactions/transaction-results/transaction-results.md), if applicable. |
 | `engine_result_message` | String                    | Human-readable explanation for the transaction response |
-| `ledger_current_index`  | Number - [Ledger Index][] | _(Unvalidated transactions only)_ The ledger index of the current in-progress [ledger version](../../../../concepts/ledgers/index.md) for which this transaction is currently proposed. |
-| `ledger_hash`           | String - [Hash][]         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |
-| `ledger_index`          | Number - [Ledger Index][] | _(Validated transactions only)_ The ledger index of the ledger version that includes this transaction. |
+| `ledger_current_index`  | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Unvalidated transactions only)_ The ledger index of the current in-progress [ledger version](../../../../concepts/ledgers/index.md) for which this transaction is currently proposed. |
+| `ledger_hash`           | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |
+| `ledger_index`          | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Validated transactions only)_ The ledger index of the ledger version that includes this transaction. |
 | `meta`                  | Object                    | _(Validated transactions only)_ The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact outcome of the transaction in detail. |
 | `transaction`           | Object                    | The [definition of the transaction](../../../protocol/transactions/index.md) in JSON format |
 | `validated`             | Boolean                   | If `true`, this transaction is included in a validated ledger and its outcome is final. Responses from the `transaction` stream should always be validated. |
@@ -395,11 +395,11 @@ Peer Status stream messages represent some event where the status of the peer `r
 |:-------------------|:-------|:-----------------------------------------------|
 | `type`             | String | `peerStatusChange` indicates this comes from the Peer Status stream. |
 | `action`           | String | The type of event that prompted this message. See [Peer Status Events](#peer-status-events) for possible values. |
-| `date`             | Number | The time this event occurred, in [seconds since the Ripple Epoch][]. |
-| `ledger_hash`      | String | (May be omitted) The identifying [Hash][] of a ledger version to which this message pertains. |
-| `ledger_index`     | Number | (May be omitted) The [Ledger Index][] of a ledger version to which this message pertains. |
-| `ledger_index_max` | Number | (May be omitted) The largest [Ledger Index][] the peer has currently available. |
-| `ledger_index_min` | Number | (May be omitted) The smallest [Ledger Index][] the peer has currently available. |
+| `date`             | Number | The time this event occurred, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time). |
+| `ledger_hash`      | String | (May be omitted) The identifying [Hash](../../../protocol/data-types/basic-data-types.md#hashes) of a ledger version to which this message pertains. |
+| `ledger_index`     | Number | (May be omitted) The [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) of a ledger version to which this message pertains. |
+| `ledger_index_max` | Number | (May be omitted) The largest [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) the peer has currently available. |
+| `ledger_index_min` | Number | (May be omitted) The smallest [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) the peer has currently available. |
 
 ### Peer Status Events
 
@@ -407,7 +407,7 @@ The `action` field of a Peer Status stream message can have the following values
 
 | `Value`           | Meaning                                                  |
 |:------------------|:---------------------------------------------------------|
-| `CLOSING_LEDGER`  | The peer closed a ledger version with this [Ledger Index][], which usually means it is about to start consensus. |
+| `CLOSING_LEDGER`  | The peer closed a ledger version with this [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index), which usually means it is about to start consensus. |
 | `ACCEPTED_LEDGER` | The peer built this ledger version as the result of a consensus round. **Note:** This ledger is still not certain to become immutably validated. |
 | `SWITCHED_LEDGER` | The peer concluded it was not following the rest of the network and switched to a different ledger version. |
 | `LOST_SYNC`       | The peer fell behind the rest of the network in tracking which ledger versions are validated and which are undergoing consensus. |

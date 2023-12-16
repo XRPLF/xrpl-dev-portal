@@ -64,11 +64,11 @@ The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `account`      | String                     | The [Address][] to check. This should be the [issuing address](../../../../concepts/accounts/account-types.md) |
+| `account`      | String                     | The [Address](../../../protocol/data-types/basic-data-types.md#addresses) to check. This should be the [issuing address](../../../../concepts/accounts/account-types.md) |
 | `strict`       | Boolean                    | _(Optional)_ If true, only accept an address or public key for the account parameter. Defaults to false. |
 | `hotwallet`    | String or Array            | _(Optional)_ An [operational address](../../../../concepts/accounts/account-types.md) to exclude from the balances issued, or an array of such addresses. |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger version to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 
 ## Response Format
 
@@ -285,18 +285,18 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type                      | Description             |
 |:-----------------------|:--------------------------|:------------------------|
-| `account`              | String - [Address][]      | The address of the account that issued the balances. |
+| `account`              | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses)      | The address of the account that issued the balances. |
 | `obligations`          | Object                    | (Omitted if empty) Total amounts issued to addresses not excluded, as a map of currencies to the total value issued. |
 | `balances`             | Object                    | _(Omitted if empty)_ Amounts issued to the `hotwallet` addresses from the request. The keys are addresses and the values are arrays of currency amounts they hold. |
 | `assets`               | Object                    | _(Omitted if empty)_ Total amounts held that are issued by others. In the recommended configuration, the [issuing address](../../../../concepts/accounts/account-types.md) should have none. |
-| `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used to generate this response. |
-| `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
-| `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` is provided)_ The [ledger index][] of the current in-progress ledger version, which was used to retrieve this information. |
+| `ledger_hash`          | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | _(May be omitted)_ The identifying hash of the ledger version that was used to generate this response. |
+| `ledger_index`         | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(May be omitted)_ The ledger index of the ledger version that was used to generate this response. |
+| `ledger_current_index` | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_current_index` is provided)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the current in-progress ledger version, which was used to retrieve this information. |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the [Address][] of an account holding currency issued by the account from the request.
-* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
+* `invalidHotWallet` - One or more of the addresses specified in the `hotwallet` field is not the [Address](../../../protocol/data-types/basic-data-types.md#addresses) of an account holding currency issued by the account from the request.
+* `actNotFound` - The [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

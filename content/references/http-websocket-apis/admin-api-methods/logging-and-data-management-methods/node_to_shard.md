@@ -111,7 +111,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `internal` - If you attempt an invalid operation like checking the status of a copy when one isn't running.
 - `notEnabled` - If the server is not configured to store [history shards](../../../../infrastructure/configuration/data-retention/history-sharding.md).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.

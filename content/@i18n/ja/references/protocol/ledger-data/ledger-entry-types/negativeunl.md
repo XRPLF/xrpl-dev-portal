@@ -7,7 +7,7 @@ labels:
 ---
 # NegativeUNL
 
-_([NegativeUNL amendment][]により追加されました。)_
+_([NegativeUNL amendment](../../../../resources/known-amendments.md#negativeunl)により追加されました。)_
 
 `NegativeUNL`オブジェクトタイプは、[ネガティブUNL](../../../../concepts/consensus-protocol/negative-unl.md)の現在の状態、つまり現在オフラインであると考えられる信頼できるバリデーションのリストを含んでいます。
 
@@ -48,7 +48,7 @@ _([NegativeUNL amendment][]により追加されました。)_
 
 | 名前                   | JSONの型 | [内部の型](../../binary-format.md)| 説明                  |
 |:----------------------|:---------|:----------|:----------------------|
-| `FirstLedgerSequence` | 数値      | UInt32    | バリデータがネガティブUNLに追加されたときの[レジャーインデックス](basic-data-types.html#レジャーインデックス)を表します。 |
+| `FirstLedgerSequence` | 数値      | UInt32    | バリデータがネガティブUNLに追加されたときの[レジャーインデックス](../../data-types/basic-data-types.md#レジャーインデックス)を表します。 |
 | `PublicKey`           | 文字列    | Blob       | バリデータのマスター公開鍵を16進数で表します。 |
 
 

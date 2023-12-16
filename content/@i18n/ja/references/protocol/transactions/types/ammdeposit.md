@@ -9,7 +9,7 @@ status: not_enabled
 # AMMDeposit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMDeposit.cpp "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:が必要です。)_
 
 [自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)（AMM）インスタンスに資金を預け、AMMの流動性プロバイダートークン（ _LPトークン_ ）を受け取ります。AMMのプールにある資産の一方または両方を預けることができます。
 
@@ -40,16 +40,16 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型   | [内部の型](../../binary-format.md) | 必須? | 説明 |
 |:--------------|:-----------|:-----------|:------|:------------|
 | `Asset`       | オブジェクト | STIssue    | はい   | AMMのプールにある資産の一つを定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
 | `Asset2`      | オブジェクト | STIssue    | はい   | AMMのプールにあるもう一つの資産を定義します。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります（XRPの場合は`issuer`を省略します）。 |
-| `Amount`      | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMに預ける1つの資産の量を指定します。存在する場合、これはAMMのプールにある資産の一つ（トークンまたはXRP）と一致する必要があります。 |
-| `Amount2`     | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMに追加する別の資産の量を指定します。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じ資産にすることはできません。 |
-| `EPrice`      | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | 受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。 |
-| `LPTokenOut`  | [通貨額](basic-data-types.html#通貨額の指定)  | Amount     | いいえ | AMMのLPトークンの購入数量。 |
+| `Amount`      | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | AMMに預ける1つの資産の量を指定します。存在する場合、これはAMMのプールにある資産の一つ（トークンまたはXRP）と一致する必要があります。 |
+| `Amount2`     | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | AMMに追加する別の資産の量を指定します。存在する場合、これはAMMのプール内の他の資産と一致する必要があり、`Amount`と同じ資産にすることはできません。 |
+| `EPrice`      | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | 受け取った各LPトークンに支払う、預け入れ資産の最大有効価格です。 |
+| `LPTokenOut`  | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)  | Amount     | いいえ | AMMのLPトークンの購入数量。 |
 
 
 ### AMMDepositモード
@@ -105,7 +105,7 @@ AMMが空の場合のみ、「空のAMM」への特別な入金を行うこと�
 
 ### AMMDepositのフラグ
 
-AMMDepositトランザクションは、以下のような[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)の値をサポートしています。
+AMMDepositトランザクションは、以下のような[`Flags`フィールド](../common-fields.md#flagsフィールド)の値をサポートしています。
 
 | フラグ名             | 16進数値      | 10進数値       | 説明                   |
 |:--------------------|:-------------|:--------------|:----------------------|
@@ -116,7 +116,7 @@ AMMDepositトランザクションは、以下のような[`Flags`フィール�
 | `tfLimitLPToken`    | `0x00400000` | 4194304       | 有効価格を指定して、シングルアセット入金を行います。 |
 | `tfTwoAssetIfEmpty` | `0x00800000` | 8388608       | 空のプールを持つAMMに特別なダブルアセット入金を行います。 |
 
-これらのフラグのうちの**1つのみ**と、任意の[グローバルフラグ](transaction-common-fields.html#グローバルフラグ)を指定する必要があります。
+これらのフラグのうちの**1つのみ**と、任意の[グローバルフラグ](../common-fields.md#グローバルフラグ)を指定する必要があります。
 
 
 ## エラーケース

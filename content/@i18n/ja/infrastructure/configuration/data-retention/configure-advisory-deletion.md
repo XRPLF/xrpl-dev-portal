@@ -52,11 +52,11 @@ labels:
     - 指示された場合にのみオンライン削除を実行するには、`advisory_delete`を`1`に設定します。（`0`に設定すると、新しいレジャーバージョンが使用可能になると自動的にオンライン削除が実行されます。）
     - `online_delete`を、オンライン削除の実行後に維持するレジャーバージョンの最小数に設定します。オンライン削除が実行されるまでに蓄積される履歴は、この値よりも多くなります。
 
-    {% partial file="/_snippets/conf-file-location.ja.md" /%}
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 2. サーバーに対してオンライン削除を指示する[can_deleteメソッド][]の実行をテストします。
 
-    このコマンドの実行には[`rippled`コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用できます。例:
+    このコマンドの実行には[`rippled`コマンドラインインターフェイス](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#コマンドライン)を使用できます。例:
 
     ```
     $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now
@@ -112,4 +112,4 @@ labels:
 - `cron`ジョブを設定したユーザーに、コマンドラインクライアントとして`rippled`サーバーを実行できる権限があることを確認します。
 - cronジョブの構文とこのジョブの実行予定時刻を確認します。
 - `rippled`実行可能ファイルが`cron`設定で指定したパスで使用可能であることを確認します。必要に応じて実行可能ファイルの絶対パス（`/opt/ripple/bin/rippled`など）を指定します。
-- `rippled`ログで、`SHAMapStore::WRN`で始まるメッセージを調べます。このメッセージが出力されている場合、サーバーがネットワークと同期していない状態になったために[オンライン削除が中断されている](online-deletion.html#オンライン削除の中断)可能性があります。
+- `rippled`ログで、`SHAMapStore::WRN`で始まるメッセージを調べます。このメッセージが出力されている場合、サーバーがネットワークと同期していない状態になったために[オンライン削除が中断されている](online-deletion.md#オンライン削除の中断)可能性があります。

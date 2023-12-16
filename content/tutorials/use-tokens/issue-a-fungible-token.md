@@ -10,7 +10,7 @@ labels:
 ---
 # Issue a Fungible Token
 
-Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](issued-currencies.html); for more on the business decisions involved in issuing a stablecoin, see [Stablecoin Issuer](../../use-cases/tokenization/stablecoin-issuer.md). <!-- STYLE_OVERRIDE: ious -->
+Anyone can issue various types of tokens in the XRP Ledger, ranging from informal "IOUs" to fiat-backed stablecoins, purely digital fungible and semi-fungible tokens, and more. This tutorial shows the technical steps of creating a token in the ledger. For more information on how XRP Ledger tokens work, see [Issued Currencies](../../concepts/tokens/index.md); for more on the business decisions involved in issuing a stablecoin, see [Stablecoin Issuer](../../use-cases/tokenization/stablecoin-issuer.md). <!-- STYLE_OVERRIDE: ious -->
 
 ## Prerequisites
 
@@ -502,7 +502,7 @@ Now that you've created the token, you can explore how it fits into features of 
 - Trade it in the decentralized exchange.
 - Monitor for incoming payments of your token.
 - Create an [xrp-ledger.toml file](../../references/xrp-ledger-toml.md) and set up domain verification for your token's issuer.
-- Learn about other [features of XRP Ledger tokens](issued-currencies.html).
+- Learn about other [features of XRP Ledger tokens](../../concepts/tokens/index.md).
 
 
 ## Footnotes

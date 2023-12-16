@@ -22,7 +22,7 @@ Outside of the XRP Ledger, Grand Payments sends an invoice to BoxSend SG with th
 To send a Check with this tutorial, you need the following:
 
 - The **address** and **secret key** of a funded account to send the Check from.
-    - You can use the [XRP Ledger Test Net Faucet](xrp-test-net-faucet.html) to get a funded address and secret with 10,000 Test Net XRP.
+    - You can use the [XRP Ledger Test Net Faucet](/resources/dev-tools/xrp-faucets) to get a funded address and secret with 10,000 Test Net XRP.
 - The **address** of a funded account to receive the Check.
 - A [secure way to sign transactions](../../../concepts/transactions/secure-signing.md).
 - A [client library](../../../references/client-libraries.md) or any HTTP or WebSocket library.
@@ -36,7 +36,7 @@ Decide how much money the Check is for and who can cash it. Figure out the value
 | `TransactionType` | String                    | Use the string `CheckCreate` here. |
 | `Account`         | String (Address)          | The address of the sender who is creating the Check. (In other words, your address.) |
 | `Destination`     | String (Address)          | The address of the intended recipient who can cash the Check. |
-| `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For tokens, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts][] for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](../../../concepts/tokens/transfer-fees.md), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
+| `SendMax`         | String or Object (Amount) | The maximum amount the sender can be debited when this Check gets cashed. For XRP, use a string representing drops of XRP. For tokens, use an object with `currency`, `issuer`, and `value` fields. See [Specifying Currency Amounts](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) for details. If you want the recipient to be able to cash the Check for an exact amount of a non-XRP currency with a [transfer fee](../../../concepts/tokens/transfer-fees.md), remember to include an extra percentage to pay for the transfer fee. (For example, for the recipient to cash a Check for 100 CAD from an issuer with a 2% transfer fee, you must set the `SendMax` to 102 CAD from that issuer.) |
 
 ### Example CheckCreate Preparation
 

@@ -13,7 +13,7 @@ labels:
 
 The `{% $frontmatter.seo.title %}` method gets information about an Automated Market Maker (AMM) instance.
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../../../resources/known-amendments.md#amm) :not_enabled:)_
 
 
 ### Request Format
@@ -58,14 +58,14 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
 
 The request includes the following parameters:
 
 | `Field`       | Type             | Required? | Description |
 |:--------------|:-----------------|:----------|-------------|
-| `account`     | String - [Address][] | No    | Show only LP Tokens held by this liquidity provider. |
-| `amm_account` | String - [Address][] | No    | The address of the AMM's special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
+| `account`     | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | No    | Show only LP Tokens held by this liquidity provider. |
+| `amm_account` | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | No    | The address of the AMM's special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
 | `asset`       | Object or String | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. For XRP, you can specify as the string `XRP` instead of as an object. |
 | `asset2`      | Object or String | No        | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
 
@@ -195,9 +195,9 @@ The response follows the [standard format](../../api-conventions/response-format
 | Field                  | Type             | Description                                               |
 |:-----------------------|:-----------------|:----------------------------------------------------------|
 | `amm`                  | Object           | An [**AMM Description Object**](#amm-description-object) for the requested asset pair. |
-| `ledger_current_index` | [Ledger Index][] | _(Omitted if `ledger_index` is provided instead)_ The [ledger index][] of the current in-progress ledger, which was used when retrieving this information. |
-| `ledger_hash`          | [Hash][]         | _(Omitted if `ledger_current_index` is provided instead)_ The identifying hash of the ledger version that was used when retrieving this data. |
-| `ledger_index`         | [Ledger Index][] | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index][] of the ledger version used when retrieving this information. |
+| `ledger_current_index` | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_index` is provided instead)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the current in-progress ledger, which was used when retrieving this information. |
+| `ledger_hash`          | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | _(Omitted if `ledger_current_index` is provided instead)_ The identifying hash of the ledger version that was used when retrieving this data. |
+| `ledger_index`         | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_current_index` is provided instead)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger version used when retrieving this information. |
 | `validated`            | Boolean          | If `true`, the ledger used for this request is validated and these results are final; if omitted or set to `false`, the data is pending and may change. |
 
 
@@ -207,13 +207,13 @@ The `amm` field is an object describing the current status of an Automated Marke
 
 | Field           | Type                | Description |
 |-----------------|---------------------|-------------|
-| `account`   | String              | The [Address][] of the AMM Account. |
-| `amount`        | [Currency Amount][] | The total amount of one asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
-| `amount2`       | [Currency Amount][] | The total amount of the other asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
+| `account`   | String              | The [Address](../../../protocol/data-types/basic-data-types.md#addresses) of the AMM Account. |
+| `amount`        | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) | The total amount of one asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
+| `amount2`       | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) | The total amount of the other asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
 | `asset_frozen`  | Boolean             | _(Omitted for XRP)_ If `true`, the `amount` currency is currently [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `asset2_frozen` | Boolean             | _(Omitted for XRP)_ If `true`, the `amount2` currency is currently [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `auction_slot`  | Object              | _(May be omitted)_ An [Auction Slot Object](#auction-slot-object) describing the current auction slot holder, if there is one. |
-| `lp_token`      | [Currency Amount][] | The total amount of this AMM's LP Tokens outstanding. If the request specified a liquidity provider in the `account` field, instead, this is the amount of this AMM's LP Tokens held by that liquidity provider. |
+| `lp_token`      | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) | The total amount of this AMM's LP Tokens outstanding. If the request specified a liquidity provider in the `account` field, instead, this is the amount of this AMM's LP Tokens held by that liquidity provider. |
 | `trading_fee`   | Number              | The AMM's current trading fee, in units of 1/100,000; a value of 1 is equivalent to a 0.001% fee. |
 | `vote_slots`    | Array               | _(May be omitted)_ The current votes for the AMM's trading fee, as [Vote Slot Objects](#vote-slot-objects). |
 
@@ -224,11 +224,11 @@ The `auction_slot` field of the `amm` object describes the current auction slot 
 
 | Field            | Type                | Description |
 |------------------|---------------------|-------------|
-| `account`        | String              | The [Address][] of the account that owns the auction slot. |
+| `account`        | String              | The [Address](../../../protocol/data-types/basic-data-types.md#addresses) of the account that owns the auction slot. |
 | `auth_accounts`  | Array               | A list of additional accounts that the auction slot holder has designated as being eligible of the discounted trading fee. Each member of this array is an object with one field, `account`, containing the address of the designated account. |
 | `discounted_fee` | Number              | The discounted trading fee that applies to the auction slot holder, and any eligible accounts, when trading against this AMM. This is always 0. |
 | `expiration`     | String              | The ISO 8601 UTC timestamp after which this auction slot expires. After expired, the auction slot does not apply (but the data can remain in the ledger until another transaction replaces it or cleans it up). |
-| `price`          | [Currency Amount][] | The amount, in LP Tokens, that the auction slot holder paid to win the auction slot. This affects the price to outbid the current slot holder. |
+| `price`          | [Currency Amount](../../../protocol/data-types/basic-data-types.md#specifying-currency-amounts) | The amount, in LP Tokens, that the auction slot holder paid to win the auction slot. This affects the price to outbid the current slot holder. |
 | `time_interval`  | Number              | The current 72-minute time interval this auction slot is in, from 0 to 19. The auction slot expires after 24 hours (20 intervals of 72 minutes) and affects the cost to outbid the current holder and how much the current holder is refunded if someone outbids them. |
 
 
@@ -238,14 +238,14 @@ Each entry in the `vote_slots` array represents one liquidity provider's vote to
 
 | Field         | Type   | Description |
 |---------------|--------|-------------|
-| `account`     | String | The [Address][] of this liquidity provider. |
+| `account`     | String | The [Address](../../../protocol/data-types/basic-data-types.md#addresses) of this liquidity provider. |
 | `trading_fee` | Number | The trading fee this liquidity provider voted for, in units of 1/100,000. |
 | `vote_weight` | Number | How much this liquidity provider's vote counts towards the final trading fee. This is proportional to how much of the AMM's LP Tokens this liquidity provider holds. The value is equal to 100,000 times the number of this LP Tokens this liquidity provider holds, divided by the total number of LP Tokens outstanding. For example, a value of 1000 means that the liquidity provider holds 1% of this AMM's LP Tokens. |
 
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `actNotFound` - The AMM for this asset pair does not exist, or an account specified in the request does not exist.
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 

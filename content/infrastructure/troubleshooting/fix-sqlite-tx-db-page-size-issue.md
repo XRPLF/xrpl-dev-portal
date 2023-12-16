@@ -71,7 +71,7 @@ Terminating thread doJob: AcquisitionDone: unhandled
 
 ## Fix
 
-You can fix this issue using `rippled` on supported Linux systems according to the steps described in this document. In the case of a full-history server with system specs approximately matching the [recommended hardware configuration](capacity-planning.html#recommendation-1), the process may take more than two full days.
+You can fix this issue using `rippled` on supported Linux systems according to the steps described in this document. In the case of a full-history server with system specs approximately matching the [recommended hardware configuration](../installation/capacity-planning.md#recommendation-1), the process may take more than two full days.
 
 ### Prerequisites
 
@@ -210,7 +210,7 @@ To migrate your transaction database to a larger page size, perform the followin
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Ledger History](../../concepts/networks-and-servers/ledger-history.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)

@@ -28,17 +28,17 @@ _[PayChan Amendment][]により追加されました。_
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
 | フィールド            | JSONの型 | [内部の型](../../binary-format.md) | 説明               |
 |:-----------------|:----------|:------------------|:--------------------------|
-| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてこのChannelに留保する[XRP、drop単位](basic-data-types.html#通貨額の指定)の額。このChannelのオープン時には、XRPを`Destination`アドレスにのみ移動できます。Channelが閉鎖すると、未請求のXRPは支払元アドレスの残高に戻されます。 |
+| `Amount`         | 文字列    | Amount            | 送金元の残高から差し引いてこのChannelに留保する[XRP、drop単位](../../data-types/basic-data-types.md#通貨額の指定)の額。このChannelのオープン時には、XRPを`Destination`アドレスにのみ移動できます。Channelが閉鎖すると、未請求のXRPは支払元アドレスの残高に戻されます。 |
 | `Destination`    | 文字列    | AccountID         | このChannelに対するXRPクレームを受け取るアドレス。Channelの「宛先アドレス」とも呼ばれます。送金元（`Account`）と同一にはできません。 |
 | `SettleDelay`    | 数値    | UInt32            | Channelに未請求のXRPがある場合に、支払元アドレスがそのChannelを閉鎖するまでに待機する時間。 |
-| `PublicKey`      | 文字列    | Blob              | 送信元がこのチャネルに対する請求に使用する鍵ペアの33バイトの公開鍵を16進数で指定します。これはsecp256k1またはEd25519の公開鍵であることができます。キーペアの詳細については、[鍵の導出](cryptographic-keys.html#鍵導出) を参照してください。 |
-| `CancelAfter`    | 数値    | UInt32            | _（省略可）_ このChannelの有効期限（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。この時刻の経過後にトランザクションがこのChannelを変更しようとすると、このChannelは閉鎖し、Channelは変更されません。この値は変更できません。Channelはこの時刻よりも早い時点で閉鎖できますが、この時刻の経過後にもオープンしたままにすることはできません。 |
+| `PublicKey`      | 文字列    | Blob              | 送信元がこのチャネルに対する請求に使用する鍵ペアの33バイトの公開鍵を16進数で指定します。これはsecp256k1またはEd25519の公開鍵であることができます。キーペアの詳細については、[鍵の導出](../../../../concepts/accounts/cryptographic-keys.md#鍵導出) を参照してください。 |
+| `CancelAfter`    | 数値    | UInt32            | _（省略可）_ このChannelの有効期限（[Rippleエポック以降の経過秒数](../../data-types/basic-data-types.md#時間の指定)）。この時刻の経過後にトランザクションがこのChannelを変更しようとすると、このChannelは閉鎖し、Channelは変更されません。この値は変更できません。Channelはこの時刻よりも早い時点で閉鎖できますが、この時刻の経過後にもオープンしたままにすることはできません。 |
 | `DestinationTag` | 数値    | UInt32            | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 
-`Destination` アカウントがペイメントチャネルの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION` 失敗します。_([DisallowIncoming amendment][] :not_enabled: が必要です)_。
+`Destination` アカウントがペイメントチャネルの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION` 失敗します。_([DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming) :not_enabled: が必要です)_。

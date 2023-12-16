@@ -152,5 +152,5 @@ For most other entries, the value indicates the number of objects of that type c
 
 ### Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.

@@ -110,4 +110,4 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。

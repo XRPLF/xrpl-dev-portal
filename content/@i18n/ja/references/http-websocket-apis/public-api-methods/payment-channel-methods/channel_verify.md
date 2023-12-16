@@ -57,9 +57,9 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
-| `amount` | 文字列 | 指定された`signature`で承認する[XRP、drop単位](basic-data-types.html#通貨額の指定)の額。 |
+| `amount` | 文字列 | 指定された`signature`で承認する[XRP、drop単位](../../../protocol/data-types/basic-data-types.md#通貨額の指定)の額。 |
 | `channel_id` | 文字列 | XRPを供給するChannelのChannel ID。これは64文字の16進文字列です。 |
-| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58](base58-encodings.html)形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
+| `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
 | `signature` | 文字列 | 検証する署名（16進数）。 |
 
 ## 応答フォーマット
@@ -117,8 +117,8 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `publicMalformed` - 要求の`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](base58-encodings.html)。16進表現は66文字です。
+* `publicMalformed` - 要求の`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](../../../protocol/data-types/base58-encodings.md)。16進表現は66文字です。
 * `channelMalformed` - 要求の`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
 * `channelAmtMalformed` - 要求の`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。

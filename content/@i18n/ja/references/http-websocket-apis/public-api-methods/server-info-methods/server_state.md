@@ -45,7 +45,7 @@ rippled server_state
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html#server_state)
+[試してみる>](/resources/dev-tools/websocket-api-tool#server_state)
 
 要求はパラメーターをとりません。
 
@@ -282,11 +282,11 @@ Headers
 | `load.job_types`                 | 配列        | _（管理者専用）_ サーバが実行している各種ジョブのレートや、各ジョブに要する時間についての情報。 |
 | `load.threads`                   | 数値        | _（管理者専用）_ サーバの主要なジョブプール内のスレッド数。 |
 | `load_base`                      | 整数        | [トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)の計算で使用されるサーバー負荷のベースライン量です。`load_factor`が`load_base`と同等の場合、基本トランザクションコストのみが適用されます。`load_factor`が`load_base`よりも大きい場合、トランザクションコストにそれらの値の比率が乗算されます。たとえば`load_factor`が`load_base`の2倍である場合、トランザクションコストは2倍になります。 |
-| `load_factor`                    | 数値           | サーバーが現在適用している負荷係数。トランザクションコストの乗数は、この値と`load_base`の比率によって決まります。負荷係数は、個別サーバーの最も高い負荷係数、クラスターの負荷係数、[オープンレジャーコスト](transaction-cost.html#オープンレジャーコスト)、およびネットワーク全体の負荷係数によって決定します。 |
+| `load_factor`                    | 数値           | サーバーが現在適用している負荷係数。トランザクションコストの乗数は、この値と`load_base`の比率によって決まります。負荷係数は、個別サーバーの最も高い負荷係数、クラスターの負荷係数、[オープンレジャーコスト](../../../../concepts/transactions/transaction-cost.md#オープンレジャーコスト)、およびネットワーク全体の負荷係数によって決定します。 |
 | `load_factor_fee_escalation`     | 整数        | （省略される場合があります）オープンレジャーに入るときに[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数（[手数料レベル][]）。 |
 | `load_factor_fee_queue`          | 整数        | （省略される場合があります）キューが一杯になっている場合に、キューへ入るときに[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数（[手数料レベル][]）。 |
 | `load_factor_fee_reference`      | 整数        | （省略される場合があります）負荷スケーリングのない[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（[手数料レベル][]）。 |
-| `load_factor_server`             | 数値        | （省略される場合があります）サーバーが適用している負荷係数。[オープンレジャーコスト](transaction-cost.html#オープンレジャーコスト)は含まれません。 |
+| `load_factor_server`             | 数値        | （省略される場合があります）サーバーが適用している負荷係数。[オープンレジャーコスト](../../../../concepts/transactions/transaction-cost.md#オープンレジャーコスト)は含まれません。 |
 | `peers`                          | 数値        | このサーバーが現在接続している他の`rippled`サーバーの数。 |
 | `ports`                          | 配列        | サーバがAPIコマンドを待ち受けているポートの一覧。配列の各エントリは[ポート記述子オブジェクト](#ポート記述子オブジェクト) となります。 [新規: rippled 1.12.0](https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE") |
 | `pubkey_node`                    | 文字列      | ピアツーピア通信のためにこのサーバーを検証する際に使用される公開鍵。サーバーを初めて起動すると、サーバーにより _ノードキーペア_ が自動的に生成されます。（キーペアが削除されている場合、サーバーは新しいキーペアを作成できます。）`[node_seed]`構成オプションを使用して構成ファイルの永続値を設定できます。これは[クラスター化](../../../../concepts/networks-and-servers/clustering.md)で便利です。 |
@@ -304,18 +304,18 @@ Headers
 | `uptime`                         | 数値        | サーバが連続稼働している秒数。 |
 | `validated_ledger`               | オブジェクト | （省略される場合があります）完全に検証された最新のレジャーについての情報。最新の検証済みレジャーが使用できない場合、このフィールドは応答で省略され、代わりに`closed_ledger`が含まれます。 |
 | `validated_ledger.base_fee`      | 符号なし整数 | ネットワークへのトランザクション伝達にかかる基本手数料（XRPのdrop数）。 |
-| `validated_ledger.close_time`    | 数値        | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)） |
+| `validated_ledger.close_time`    | 数値        | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)） |
 | `validated_ledger.hash`          | 文字列      | 当該レジャーバージョンの一意のハッシュ（16進数） |
 | `validated_ledger.reserve_base`  | 符号なし整数 | すべてのアカウントで準備金として保有する必要がある最小額（XRPのdrop数） |
 | `validated_ledger.reserve_inc`   | 符号なし整数 | アカウントがレジャー内に保有する各アイテムのアカウント準備金に追加する額（XRPのdrop数）。 |
 | `validated_ledger.seq`           | 符号なし整数 | このレジャーの一意のシーケンス番号 |
 | `validation_quorum`              | 数値        | 1つのレジャーバージョンの検証に最低限必要となる信頼できる検証の数。状況によっては、サーバーがさらに検証を要求する場合があります。 |
-| `validator_list_expires`         | 数値        | _（管理者専用）_ 現在のバリデータリストが期限切れになる時点（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。サーバーが発行済みのバリデータリストをロードしていない場合は0。 |
+| `validator_list_expires`         | 数値        | _（管理者専用）_ 現在のバリデータリストが期限切れになる時点（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)）。サーバーが発行済みのバリデータリストをロードしていない場合は0。 |
 
-{% partial file="/_snippets/etl-source-object.ja.md" /%}
+{% partial file="/_snippets/etl-source-object.md" /%}
 
-{% partial file="/_snippets/port-descriptor-object.ja.md" /%}
+{% partial file="/_snippets/port-descriptor-object.md" /%}
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。

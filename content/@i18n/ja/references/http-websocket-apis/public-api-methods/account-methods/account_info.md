@@ -53,15 +53,15 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html#account_info)
+[試してみる>](/resources/dev-tools/websocket-api-tool#account_info)
 
 要求には以下のパラメーターが含まれます。
 
 | `Field`        | 型                         | 必須?  | 説明                    |
 |:---------------|:---------------------------|:------|:-------------------------------|
-| `account`      | 文字列  - [アドレス](basic-data-types.html#アドレス)       | はい   | 検索するアカウント。[更新: rippled 1.11.0](https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE") |
-| `ledger_hash`  | 文字列                      | いいえ | 使用するレジャーバージョンの20バイトの16進文字列。([レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください。) |
-| `ledger_index` | 文字列または整数              | いいえ | 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。([レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください。) |
+| `account`      | 文字列  - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)       | はい   | 検索するアカウント。[更新: rippled 1.11.0](https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE") |
+| `ledger_hash`  | 文字列                      | いいえ | 使用するレジャーバージョンの20バイトの16進文字列。([レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください。) |
+| `ledger_index` | 文字列または整数              | いいえ | 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。([レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください。) |
 | `queue`        | 真偽値                      | いいえ        | `true`の場合、このアカウントに関連するキューに入れられたトランザクションについてのステータスも返されます。これを使用するのは、現在のオープンレジャーのデータを問い合わせる場合のみです。 |
 | `signer_lists` | 真偽値                      | いいえ        | `true`の場合、このアカウントに関連するすべての[SignerListオブジェクト](../../../protocol/ledger-data/ledger-entry-types/signerlist.md)も返されます。 |
 
@@ -207,7 +207,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 | `signer_lists`         | 配列        | (要求に`signer_lists`が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略)[マルチシグ](../../../../concepts/accounts/multi-signing.md)用にアカウントに関連付けられた[SignerListレジャーオブジェクト](../../../protocol/ledger-data/ledger-entry-types/signerlist.md)の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。 |
 | `ledger_current_index` | 整数        | (`ledger_index`が代わりに指定されている場合は省略) この情報を取得したときに使用されていた最新のレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。 |
 | `ledger_index`         | 整数        | (`ledger_current_index`が代わりに指定されている場合は省略) この情報を取得したときに使用されていたレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。 |
-| `queue_data`           | オブジェクト  | (`queue`が`true`と指定され、現在開いているレジャーを問い合わせている場合を除いて省略) このアカウントによって送信された[キューに入れられたトランザクション](transaction-cost.html#キューに入れられたトランザクション)についての情報。この情報にはローカル`rippled`サーバの状態が示されますが、コンセンサスネットワーク内の他のサーバとは異なる場合があります。示される値はキューメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。 |
+| `queue_data`           | オブジェクト  | (`queue`が`true`と指定され、現在開いているレジャーを問い合わせている場合を除いて省略) このアカウントによって送信された[キューに入れられたトランザクション](../../../../concepts/transactions/transaction-cost.md#キューに入れられたトランザクション)についての情報。この情報にはローカル`rippled`サーバの状態が示されますが、コンセンサスネットワーク内の他のサーバとは異なる場合があります。示される値はキューメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。 |
 | `validated`            | 真偽値       | このデータが検証済みのレジャーバージョンのものである場合はTrueです。省略されているかFalseが設定されている場合、このデータは最終のものではありません。[新規: rippled 0.26.0](https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE") |
 
 `account_flags`フィールドは以下のネストしたフィールドを含みます：
@@ -217,14 +217,14 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 | `defaultRipple`        | 真偽値 | `true`の場合、アカウントはデフォルトでトラストラインの[rippling](../../../../concepts/tokens/fungible-tokens/rippling.md)を許可します。 |
 | `depositAuth`          | 真偽値 | `true`の場合、このアカウントは[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を使用しており、未知の第三者からの入金を受け付けていません。 |
 | `disableMasterKey`     | 真偽値 | `true`の場合、アカウントの[マスターキーペア](../../../../concepts/accounts/cryptographic-keys.md)が無効になっています。 |
-| `disallowIncomingCheck` | 真偽値 | `true`の場合、このアカウントは第三者からの[Check](../../../../concepts/payment-types/checks.md)の送信を許可してません。 _([DisallowIncoming amendment][]が必要です)_ |
-| `disallowIncomingNFTokenOffer` | 真偽値 | `true`の場合、このアカウントは第三者からの[NFT売買オファー](../../../../concepts/tokens/nfts/trading.md)の作成を許可してません。 _([DisallowIncoming amendment][]が必要です)_ |
-| `disallowIncomingPayChan` | 真偽値 | `true`の場合、このアカウントは第三者からの[ペイメントチャンネル](../../../../concepts/payment-types/payment-channels.md)の作成を許可していません。 _([DisallowIncoming amendment][]が必要です)_ |
-| `disallowIncomingTrustline` | 真偽値 | `true`の場合、このアカウントは第三者が[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を作ることを許可していません。 _([DisallowIncoming amendment][]が必要です)_ |
+| `disallowIncomingCheck` | 真偽値 | `true`の場合、このアカウントは第三者からの[Check](../../../../concepts/payment-types/checks.md)の送信を許可してません。 _([DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming)が必要です)_ |
+| `disallowIncomingNFTokenOffer` | 真偽値 | `true`の場合、このアカウントは第三者からの[NFT売買オファー](../../../../concepts/tokens/nfts/trading.md)の作成を許可してません。 _([DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming)が必要です)_ |
+| `disallowIncomingPayChan` | 真偽値 | `true`の場合、このアカウントは第三者からの[ペイメントチャンネル](../../../../concepts/payment-types/payment-channels.md)の作成を許可していません。 _([DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming)が必要です)_ |
+| `disallowIncomingTrustline` | 真偽値 | `true`の場合、このアカウントは第三者が[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)を作ることを許可していません。 _([DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming)が必要です)_ |
 | `disallowIncomingXRP`  | 真偽値 | `true`の場合、このアカウントは他者からXRPを受け取りたくありません。(これは参考情報であり、プロトコルレベルでは強制されません) |
 | `globalFreeze`         | 真偽値 | `true`の場合、このアカウントによって発行されたすべてのトークンは現在凍結されています。 |
 | `noFreeze`             | 真偽値 | `true`の場合、このアカウントは個々のトラストラインを凍結したり、グローバル凍結を行う機能を永久に放棄しています。詳細は[No Freeze](../../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze)をご覧ください。 |
-| `passwordSpent`        | 真偽値 | `false`の場合、このアカウントはトランザクションコスト0の特別な[キーリセットトランザクション](transaction-cost.html#key-resetトランザクション)を送信できます。プロトコルはこのフラグを自動的にオン/オフします。 |
+| `passwordSpent`        | 真偽値 | `false`の場合、このアカウントはトランザクションコスト0の特別な[キーリセットトランザクション](../../../../concepts/transactions/transaction-cost.md#key-resetトランザクション)を送信できます。プロトコルはこのフラグを自動的にオン/オフします。 |
 | `requireAuthorization` | 真偽値 | `true`の場合、このアカウントは[認可トラストライン](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使って、発行するトークンを保持できる人を制限しています。 |
 | `requireDestinationTag` | 真偽値 | `true`の場合、このアカウントは受け取るすべての支払いに[宛先タグ](../../../../tutorials/manage-account-settings/require-destination-tags.md)を要求しています。 |
 
@@ -233,25 +233,25 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 | `Field`                 | 型      | 説明                              |
 |:------------------------|:--------|:-----------------------------------------|
 | `txn_count`             | 整数     | このアドレスからキューに入れられたトランザクションの数。 |
-| `auth_change_queued`    | 真偽値   | （省略される場合があります）キュー内のトランザクションがこのアドレスの[トランザクションの承認方法](transactions.html#トランザクションの承認)を変更するかどうかを示します。`true`の場合、トランザクションが実行されているかキューから除外されるまで、このアドレスはトランザクションをこれ以上キューに入れることができません。 |
-| `lowest_sequence`       | 整数     | （省略される場合があります）このアドレスによってキューに入れられたトランザクションのうち最も低い[シーケンス番号](basic-data-types.html#アカウントシーケンス)。 |
-| `highest_sequence`      | 整数     | （省略される場合があります）このアドレスによってキューに入れられたトランザクションのうち最も高い[シーケンス番号](basic-data-types.html#アカウントシーケンス)。 |
-| `max_spend_drops_total` | 文字列   | （省略される場合があります）キュー内のすべてのトランザクションが利用可能なXRPを最大限消費する場合に、このアドレスから差し引くことができる[XRPのdrop数](basic-data-types.html#通貨額の指定)を示す整数の金額。 |
+| `auth_change_queued`    | 真偽値   | （省略される場合があります）キュー内のトランザクションがこのアドレスの[トランザクションの承認方法](../../../../concepts/transactions/index.md#トランザクションの承認)を変更するかどうかを示します。`true`の場合、トランザクションが実行されているかキューから除外されるまで、このアドレスはトランザクションをこれ以上キューに入れることができません。 |
+| `lowest_sequence`       | 整数     | （省略される場合があります）このアドレスによってキューに入れられたトランザクションのうち最も低い[シーケンス番号](../../../protocol/data-types/basic-data-types.md#アカウントシーケンス)。 |
+| `highest_sequence`      | 整数     | （省略される場合があります）このアドレスによってキューに入れられたトランザクションのうち最も高い[シーケンス番号](../../../protocol/data-types/basic-data-types.md#アカウントシーケンス)。 |
+| `max_spend_drops_total` | 文字列   | （省略される場合があります）キュー内のすべてのトランザクションが利用可能なXRPを最大限消費する場合に、このアドレスから差し引くことができる[XRPのdrop数](../../../protocol/data-types/basic-data-types.md#通貨額の指定)を示す整数の金額。 |
 | `transactions`          | 配列     | （省略される場合があります）このアドレスからキューに入れられた各トランザクションについての情報。 |
 
 `queue_data`の`transactions`配列内の各オブジェクト（存在する場合）には、以下のフィールドのいずれかまたはすべてが含まれます。
 
 | `Field`           | 型      | 説明                                    |
 |:------------------|:--------|:-----------------------------------------------|
-| `auth_change`     | 真偽値   | このトランザクションがこのアドレスの[トランザクション承認の方法](transactions.html#トランザクションの承認)を変更するかどうかを示します。 |
-| `fee`             | 文字列   | このトランザクションの[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（[XRPのdrop数](basic-data-types.html#通貨額の指定)）。 |
+| `auth_change`     | 真偽値   | このトランザクションがこのアドレスの[トランザクション承認の方法](../../../../concepts/transactions/index.md#トランザクションの承認)を変更するかどうかを示します。 |
+| `fee`             | 文字列   | このトランザクションの[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（[XRPのdrop数](../../../protocol/data-types/basic-data-types.md#通貨額の指定)）。 |
 | `fee_level`       | 文字列   | このタイプのトランザクションの最少コストと比較した、このトランザクションのトランザクションコスト（[手数料レベル][]）。 |
-| `max_spend_drops` | 文字列   | このトランザクションで送信または消却できる[XRPのdrop数](basic-data-types.html#通貨額の指定)の最高額。 |
-| `seq`             | 整数     | このトランザクションの[シーケンス番号](basic-data-types.html#アカウントシーケンス)。   |
+| `max_spend_drops` | 文字列   | このトランザクションで送信または消却できる[XRPのdrop数](../../../protocol/data-types/basic-data-types.md#通貨額の指定)の最高額。 |
+| `seq`             | 整数     | このトランザクションの[シーケンス番号](../../../protocol/data-types/basic-data-types.md#アカウントシーケンス)。   |
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、要求で`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。
 * `actNotFound` - 要求の`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。

@@ -44,7 +44,7 @@ rippled server_info
 
 {% /tabs %}
 
-[試してみる>](websocket-api-tool.html#server_info)
+[試してみる>](/resources/dev-tools/websocket-api-tool#server_info)
 
 要求にパラメーターは何も含まれません。
 
@@ -87,13 +87,13 @@ rippled server_info
 | `load`                              | オブジェクト |  _（管理者のみ）_ サーバの現在の負荷状態についての詳細な情報。 |
 | `load.job_types`                    | 配列        |  _（管理者のみ）_ サーバが実行している各種ジョブのレートや、各ジョブにかかる時間についての情報。 |
 | `load.threads`                      | 数値        |  _（管理者のみ）_ サーバの主要なジョブプール内のスレッドの数。 |
-| `load_factor`                       | 数値        | サーバが現在実行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数`1000`でリファレンストランザクションコストが10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、[個々のサーバの負荷係数](transaction-cost.html#ローカル負荷コスト)の最高値、クラスターの負荷係数、[オープンレジャーコスト](transaction-cost.html#オープンレジャーコスト)、ネットワーク全体の負荷係数によって決まります。 |
+| `load_factor`                       | 数値        | サーバが現在実行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数`1000`でリファレンストランザクションコストが10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、[個々のサーバの負荷係数](../../../../concepts/transactions/transaction-cost.md#ローカル負荷コスト)の最高値、クラスターの負荷係数、[オープンレジャーコスト](../../../../concepts/transactions/transaction-cost.md#オープンレジャーコスト)、ネットワーク全体の負荷係数によって決まります。 |
 | `load_factor_local`                 | 数値        | （省略される場合があります）このサーバに対する負荷に基づく、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数。 |
 | `load_factor_net`                   | 数値        | （省略される場合があります）ネットワークのその他の部分で使用されている、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数（他のサーバから報告された負荷値から推定します）。 |
 | `load_factor_cluster`               | 数値        | （省略される場合があります）[このクラスター](../../../../concepts/networks-and-servers/clustering.md)内のサーバに対する負荷に基づく、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数。 |
 | `load_factor_fee_escalation`        | 数値        | （省略される場合があります）オープンレジャーに入るために取引が支払う必要がある[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数。 |
 | `load_factor_fee_queue`             | 数値        | （省略される場合があります）キューが一杯になっている場合に、キューに入るために取引が支払う必要がある[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に適用される現在の乗数。 |
-| `load_factor_server`                | 数値        | （省略される場合があります）サーバが実施中の負荷係数。[オープンレジャーコスト](transaction-cost.html#オープンレジャーコスト)は含まれません。 |
+| `load_factor_server`                | 数値        | （省略される場合があります）サーバが実施中の負荷係数。[オープンレジャーコスト](../../../../concepts/transactions/transaction-cost.md#オープンレジャーコスト)は含まれません。 |
 | `peers`                             | 数値        | このサーバが現在接続している、他の`rippled`サーバの数。 |
 | `ports`                             | 配列        | サーバがAPIコマンドを待ち受けているポートの一覧。配列の各エントリは[ポート記述子オブジェクト](#ポート記述子オブジェクト) となります。 [新規: rippled 1.12.0](https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE") |
 | `pubkey_node`                       | 文字列      | ピアツーピア通信の中でこのサーバを検証するために使用する公開鍵。この _ノードのキーペア_ は、サーバを初めて起動すると自動的に生成されます。（削除された場合、サーバは新たなキーペアを作成できます。）構成ファイルにて`[node_seed]`設定オプションを使用すると、永続値を設定できます。これは[クラスター化](../../../../concepts/networks-and-servers/clustering.md)に便利です。 |
@@ -121,10 +121,10 @@ rippled server_info
 
 **注記:** `closed_ledger`フィールドがあり、`seq`の値が小さい（8桁未満）場合、`rippled`には現在、ピアツーピアネットワークから取得した検証済みレジャーのコピーがないことを表しています。これは、サーバが現在も同期中である可能性を示しています。接続速度とハードウェア仕様にもよりますが、通常はネットワークとの同期に約5分かかります。
 
-{% partial file="/_snippets/etl-source-object.ja.md" /%}
+{% partial file="/_snippets/etl-source-object.md" /%}
 
-{% partial file="/_snippets/port-descriptor-object.ja.md" /%}
+{% partial file="/_snippets/port-descriptor-object.md" /%}
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。

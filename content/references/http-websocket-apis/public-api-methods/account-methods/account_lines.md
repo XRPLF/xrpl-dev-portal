@@ -48,16 +48,16 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#account_lines)
+[Try it! >](/resources/dev-tools/websocket-api-tool#account_lines)
 
 The request accepts the following parameters: /Users/peterchen/xrpl-dev-portal/content/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
 
 | `Field`        | Type                 | Description    |
 |:---------------|:---------------------|:---------------|
-| `account`      | String - [Address][] | Look up trust lines connected to this account. |
-| `ledger_hash`  | String               | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | Number or String     | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
-| `peer`         | String - [Address][] | _(Optional)_ A second account; if provided, filter results to trust lines connecting the two accounts. |
+| `account`      | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | Look up trust lines connected to this account. |
+| `ledger_hash`  | String               | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | Number or String     | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `peer`         | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | _(Optional)_ A second account; if provided, filter results to trust lines connecting the two accounts. |
 | `limit`        | Number               | _(Optional)_ Limit the number of trust lines to retrieve. The server may return less than the specified limit, even if there are more pages of results. Must be within the inclusive range 10 to 400.  Positive values outside this range are replaced with the closest valid option. The default is 200. |
 | `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)           | _(Optional)_ Value from a previous paginated response. Resume retrieving data where that response left off. |
 
@@ -412,20 +412,20 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type                       | Description            |
 |:-----------------------|:---------------------------|:-----------------------|
-| `account`              | String                     | Unique [Address][] of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
+| `account`              | String                     | Unique [Address](../../../protocol/data-types/basic-data-types.md#addresses) of the account this request corresponds to. This is the "perspective account" for purpose of the trust lines. |
 | `lines`                | Array                      | Array of trust line objects, as described below. If the number of trust lines is large, only returns up to the `limit` at a time. |
-| `ledger_current_index` | Integer - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. |
-| `ledger_index`         | Integer - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. |
-| `ledger_hash`          | String - [Hash][]          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. |
+| `ledger_current_index` | Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current open ledger, which was used when retrieving this information. |
+| `ledger_index`         | Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data. |
+| `ledger_hash`          | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)          | _(May be omitted)_ The identifying hash the ledger version that was used when retrieving this data. |
 | `marker`               | [Marker](../../api-conventions/markers-and-pagination.md)                 | Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 
 Each trust line object has some combination of the following fields:
 
 | `Field`          | Type             | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
-| `account`        | String           | The unique [Address][] of the counterparty to this trust line. |
+| `account`        | String           | The unique [Address](../../../protocol/data-types/basic-data-types.md#addresses) of the counterparty to this trust line. |
 | `balance`        | String           | Representation of the numeric balance currently held against this line. A positive balance means that the perspective account holds value; a negative balance means that the perspective account owes value. |
-| `currency`       | String           | A [Currency Code][] identifying what currency this trust line can hold. |
+| `currency`       | String           | A [Currency Code](../../../protocol/data-types/currency-formats.md#currency-codes) identifying what currency this trust line can hold. |
 | `limit`          | String           | The maximum amount of the given currency that this account is willing to owe the peer account |
 | `limit_peer`     | String           | The maximum amount of currency that the counterparty account is willing to owe the perspective account |
 | `quality_in`     | Unsigned Integer | Rate at which the account values incoming balances on this trust line, as a ratio of this value per 1 billion units. (For example, a value of 500 million represents a 0.5:1 ratio.) As a special case, 0 is treated as a 1:1 ratio. |
@@ -439,8 +439,8 @@ Each trust line object has some combination of the following fields:
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
+* `actNotFound` - The [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - If the `marker` field provided is not acceptable.

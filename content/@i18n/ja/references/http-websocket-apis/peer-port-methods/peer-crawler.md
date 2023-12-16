@@ -44,8 +44,8 @@ JSONオブジェクトは次のフィールドを含んでいます。
 |:-------------------|:-----------------------|:-----------------------------------|
 | `complete_ledgers` | 文字列                  | このピアで利用可能な[レジャーバージョン](../../../concepts/networks-and-servers/ledger-history.md)の範囲。 |
 | `complete_shards`  | 文字列                  | _(省略可)_ このピアが利用可能な[レジャー履歴シャード](../../../infrastructure/configuration/data-retention/history-sharding.md)の範囲。 |
-| `ip`               | 文字列 (IPv4アドレス)    | _(省略可)_この接続ピアの IPアドレス。ピアがバリデータまたは[プライベートピア](peer-protocol.html#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
-| `port`             | 文字列 (数値)            | _(省略可)_ RTXPを提供するピアサーバのポート番号。通常は`51235`。ピアがバリデータまたは[プライベートピア](peer-protocol.html#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
+| `ip`               | 文字列 (IPv4アドレス)    | _(省略可)_この接続ピアの IPアドレス。ピアがバリデータまたは[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
+| `port`             | 文字列 (数値)            | _(省略可)_ RTXPを提供するピアサーバのポート番号。通常は`51235`。ピアがバリデータまたは[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)として設定されている場合は省略されます。[更新: rippled 1.2.1](https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"). |
 | `public_key`       | 文字列 (Base64エンコード) | このピアがRTXPメッセージに署名するために使用するECDSA鍵ペアの公開鍵。(これはピアサーバの[server_infoメソッド][]で報告される`pubkey_node`と同じデータです)。 |
 | `type`             | 文字列                  | `in`または`out`の値で、ピアへのTCP接続が着信か発信かを示します。 |
 | `uptime`           | 数値                    | サーバがこのピアに接続している秒数。 |

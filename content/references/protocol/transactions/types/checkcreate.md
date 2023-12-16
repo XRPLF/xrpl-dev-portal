@@ -8,7 +8,7 @@ labels:
 # CheckCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/CreateCheck.cpp "Source")
 
-_(Added by the [Checks amendment][].)_
+_(Added by the [Checks amendment](../../../../resources/known-amendments.md#checks).)_
 
 Create a Check object in the ledger, which is a deferred payment that can be cashed by its intended destination. The sender of this transaction is the sender of the Check.
 
@@ -27,7 +27,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_CheckCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%224E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_CheckCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%224E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
@@ -35,14 +35,14 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 | Field            | JSON Type           | [Internal Type](../../binary-format.md) | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|
 | `Destination`    | String              | AccountID         | The unique address of the [account](../../../../concepts/accounts/accounts.md) that can cash the Check. |
-| `SendMax`        | [Currency Amount][] | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](../../../../concepts/tokens/transfer-fees.md) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
+| `SendMax`        | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](../../../../concepts/tokens/transfer-fees.md) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
 | `DestinationTag` | Number              | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the Check, or a hosted recipient to pay. |
-| `Expiration`     | Number              | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch][]. |
+| `Expiration`     | Number              | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). |
 | `InvoiceID`      | String              | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this Check. |
 
 ## Error Cases
 
-- If the `Destination` account is blocking incoming Checks, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] :not_enabled:)_
+- If the `Destination` account is blocking incoming Checks, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming) :not_enabled:)_
 - If the `Destination` is the sender of the transaction, the transaction fails with the result code `temREDUNDANT`.
 - If the `Destination` [account](../../../../concepts/accounts/accounts.md) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
 - If the `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.

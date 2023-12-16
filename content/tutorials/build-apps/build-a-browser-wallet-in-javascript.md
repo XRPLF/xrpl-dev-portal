@@ -75,7 +75,7 @@ EXPLORER_NETWORK="testnet"
 SEED="s████████████████████████████"
 ```
 
-6. Change the seed to your own seed. You can get credentials from [the Testnet faucet](xrp-test-net-faucet.html).
+6. Change the seed to your own seed. You can get credentials from [the Testnet faucet](/resources/dev-tools/xrp-faucets).
 
 7. Set up a Vite bundler. Create a file named `vite.config.js` in the root directory of the project and fill it with the following code:
 
@@ -201,7 +201,7 @@ You can use this code as a starting point for displaying your account's transact
 
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
-- You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](issued-currencies.html) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
+- You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](../../concepts/tokens/index.md) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
 - You could add support for displaying multiple tokens, beyond just XRP
 - You could support creating [offers](../../concepts/tokens/decentralized-exchange/offers.md) in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - You could add new ways to request payments, such as with QR codes or URIs that open in your wallet.

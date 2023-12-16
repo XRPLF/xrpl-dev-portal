@@ -42,7 +42,7 @@ A `SetFee` [pseudo-transaction](pseudo-transaction-types.md) marks a change in [
 | `LedgerSequence`    | Number           | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 
-If the _[XRPFees amendment][]_ is enabled, `SetFee` pseudo-transactions use these fields instead:
+If the _[XRPFees amendment](../../../../resources/known-amendments.md#xrpfees)_ is enabled, `SetFee` pseudo-transactions use these fields instead:
 
 | Field                   | JSON Type | [Internal Type](../../binary-format.md) | Description     |
 |:------------------------|:----------|:------------------|:----------------|

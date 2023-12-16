@@ -44,7 +44,7 @@ rippled ping
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ping)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ping)
 
 要求にはパラメーターが含まれていません。
 
@@ -83,4 +83,4 @@ rippled ping
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。

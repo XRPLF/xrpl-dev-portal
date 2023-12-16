@@ -10,7 +10,7 @@ labels:
 
 The `submit_multisigned` command applies a [multi-signed](../../../../concepts/accounts/multi-signing.md) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](submit.md#submit-only-mode).)
 
-This command requires the [MultiSign amendment][] to be enabled. [New in: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE")
+This command requires the [MultiSign amendment](../../../../resources/known-amendments.md#multisign) to be enabled. [New in: rippled 0.31.0](https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE")
 
 ## Request Format
 An example of the request format:
@@ -299,7 +299,7 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `srcActMalformed` - The `Account` field from the `tx_json` was invalid or missing.
 * `internal` - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.

@@ -48,15 +48,15 @@ rippled account_offers rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM current
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#account_offers)
+[Try it! >](/resources/dev-tools/websocket-api-tool#account_offers)
 
 A request can include the following parameters:
 
 | Field          | Type                 | Required? | Description |
 |:---------------|:---------------------|:----------|-------------|
-| `account`      | String - [Address][] | Yes       | Look up Offers placed by this account. |
-| `ledger_hash`  | [Hash][]             | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | [Ledger Index][]     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `account`      | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | Yes       | Look up Offers placed by this account. |
+| `ledger_hash`  | [Hash](../../../protocol/data-types/basic-data-types.md#hashes)             | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index)     | No        | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `limit`        | Number               | No        | Limit the number of Offers to retrieve. The server may return fewer than this number of results. Must be within the inclusive range 10 to 400. Positive values outside this range are replaced with the closest valid option.The default is 200. |
 | `marker`       | [Marker](../../api-conventions/markers-and-pagination.md)           | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
 
@@ -190,11 +190,11 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`                | Type                      | Description             |
 |:-----------------------|:--------------------------|:------------------------|
-| `account`              | String                    | Unique [Address][] identifying the account that made the offers |
+| `account`              | String                    | Unique [Address](../../../protocol/data-types/basic-data-types.md#addresses) identifying the account that made the offers |
 | `offers`               | Array                     | Array of objects, where each object represents an offer made by this account that is outstanding as of the requested ledger version. If the number of offers is large, only returns up to `limit` at a time. |
-| `ledger_current_index` | Number - [Ledger Index][] | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current in-progress ledger version, which was used when retrieving this data. |
-| `ledger_index`         | Number - [Ledger Index][] | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
-| `ledger_hash`          | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data. |
+| `ledger_current_index` | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_hash` or `ledger_index` provided)_ The ledger index of the current in-progress ledger version, which was used when retrieving this data. |
+| `ledger_index`         | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | _(Omitted if `ledger_current_index` provided instead)_ The ledger index of the ledger version that was used when retrieving this data, as requested. |
+| `ledger_hash`          | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | _(May be omitted)_ The identifying hash of the ledger version that was used when retrieving this data. |
 | `marker`               | [Marker](../../api-conventions/markers-and-pagination.md)                | _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no pages of information after this one. |
 
 
@@ -207,12 +207,12 @@ Each offer object contains the following fields:
 | `taker_gets` | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
 | `taker_pays` | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
 | `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. [New in: rippled 0.29.0](https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE") |
-| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as the number of [seconds since the Ripple Epoch][]. See also: [Offer Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration). [New in: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
+| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as the number of [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time). See also: [Offer Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration). [New in: rippled 0.30.1](https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE") |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-* `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
+* `actNotFound` - The [Address](../../../protocol/data-types/basic-data-types.md#addresses) specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - The `marker` field provided is incorrect.

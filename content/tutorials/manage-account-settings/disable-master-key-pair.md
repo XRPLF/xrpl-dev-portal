@@ -19,7 +19,7 @@ This page describes how to disable the [master key pair](../../concepts/accounts
 To disable the master key pair for an account, you must meet the following prerequisites:
 
 - You must have an XRP Ledger [account](../../concepts/accounts/accounts.md) and you must be able to sign and submit transactions from that account using the master key pair. See also: [Set Up Secure Signing](../../concepts/transactions/secure-signing.md). Two common ways this can work are:
-    - You know the account's master seed value. A seed value is commonly represented as a [base58](base58-encodings.html) value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
+    - You know the account's master seed value. A seed value is commonly represented as a [base58](../../references/protocol/data-types/base58-encodings.md) value starting with "s", such as `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`.
     - Or, you use a [dedicated signing device](../../concepts/transactions/secure-signing.md#use-a-dedicated-signing-device) that stores the seed value securely, so you don't need to know it.
 - Your account must have at least one method of authorizing transactions other than the master key pair. In other words, you must do one or both of the following:
     - [Assign a Regular Key Pair](assign-a-regular-key-pair.md).

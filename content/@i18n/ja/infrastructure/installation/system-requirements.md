@@ -43,7 +43,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [容量の計画](capacity-planning.md) - 本番環境向けの推奨仕様および計画についての詳細情報

@@ -21,7 +21,7 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl.js`.
-* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl.js`.
+* How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `xrpl.js`.
 * How to use the `xrpl.js` library to look up information about an account on the XRP Ledger.
 * How to put these steps together to create a JavaScript app or web-app.
 
@@ -126,7 +126,7 @@ If you only want to generate keys, you can create a new `Wallet` instance like t
 const test_wallet = xrpl.Wallet.generate()
 ```
 
-Or, if you already have a seed encoded in [base58](base58-encodings.html), you can make a `Wallet` instance from it like this:
+Or, if you already have a seed encoded in [base58](../../references/protocol/data-types/base58-encodings.md), you can make a `Wallet` instance from it like this:
 
 ```js
 const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Test secret; don't use for real
@@ -158,7 +158,7 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](xrp-ledger-overview.html)
+    - [XRP Ledger Overview](/about/)
     - [Client Libraries](../../references/client-libraries.md)
 - **Tutorials:**
     - [Send XRP](send-xrp.md)
@@ -166,5 +166,5 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
     - [`xrpl.js` Reference](https://js.xrpl.org/)
     - [Public API Methods](../../references/http-websocket-apis/public-api-methods/index.md)
     - [API Conventions](../../references/http-websocket-apis/api-conventions/index.md)
-        - [base58 Encodings](base58-encodings.html)
+        - [base58 Encodings](../../references/protocol/data-types/base58-encodings.md)
     - [Transaction Formats](../../references/protocol/transactions/index.md)

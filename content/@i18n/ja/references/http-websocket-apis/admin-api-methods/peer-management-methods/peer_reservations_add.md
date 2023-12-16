@@ -55,7 +55,7 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
 
 | `Field`       | 型     | 説明                                                |
 |:--------------|:-------|:----------------------------------------------------|
-| `public_key` | 文字列 | [base58](base58-encodings.html)での予約を追加するピアリザベーションの[ノード公開鍵](peer-protocol.html#ノードキーペア) 。 |
+| `public_key` | 文字列 | [base58](../../../protocol/data-types/base58-encodings.md)での予約を追加するピアリザベーションの[ノード公開鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア) 。 |
 | `description` | 文字列 | _(省略可)_ ピアリザベーションに関するカスタムの説明。64文字を超える部分は、再起動時にサーバーによって切り捨てられます。 |
 
 
@@ -119,20 +119,20 @@ Connecting to 127.0.0.1:5005
 
 | `Field`    | 型     | 説明                                                   |
 |:-----------|:-------|:-------------------------------------------------------|
-| `previous` | オブジェクト | _（省略される場合があります）_ 同じ[ノード公開鍵](peer-protocol.html#ノードキーペア)の以前のエントリ（同じノード公開鍵を使用した予約がすでに存在する場合）。以下で説明するように、このオブジェクトは、**ピアリザベーションオブジェクト**というフォーマットになります。 |
+| `previous` | オブジェクト | _（省略される場合があります）_ 同じ[ノード公開鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)の以前のエントリ（同じノード公開鍵を使用した予約がすでに存在する場合）。以下で説明するように、このオブジェクトは、**ピアリザベーションオブジェクト**というフォーマットになります。 |
 
-同じ[ノード公開鍵](peer-protocol.html#ノードキーペア)に以前のエントリがなかった場合、`result`オブジェクトは空です。
+同じ[ノード公開鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)に以前のエントリがなかった場合、`result`オブジェクトは空です。
 
 #### ピアリザベーションオブジェクト
 
 `previous`フィールドが指定されている場合は、このピアリザベーションの以前のステータスが次のフィールドとともに表示されます。
 
-{% partial file="/_snippets/peer_reservation_object.ja.md" /%}
+{% partial file="/_snippets/peer_reservation_object.md" /%}
 
 
 
 ### 考えられるエラー
 
-- いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+- いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 - `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58](base58-encodings.html)フォーマットの有効なノード公開鍵である必要があります。
+- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58](../../../protocol/data-types/base58-encodings.md)フォーマットの有効なノード公開鍵である必要があります。

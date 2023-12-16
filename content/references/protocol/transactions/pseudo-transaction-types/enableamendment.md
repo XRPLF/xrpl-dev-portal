@@ -45,7 +45,7 @@ A server only enables amendments when these conditions are met:
 | Field            | JSON Type | [Internal Type](../../binary-format.md) | Description               |
 |:-----------------|:----------|:------------------|:--------------------------|
 | `Amendment`      | String    | Hash256           | A unique identifier for the amendment. This is not intended to be a human-readable name. See [Amendments](../../../../concepts/networks-and-servers/amendments.md) for a list of known amendments. |
-| `LedgerSequence` | Number    | UInt32    | The [ledger index][] where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
+| `LedgerSequence` | Number    | UInt32    | The [ledger index](../../data-types/basic-data-types.md#ledger-index) where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 ## EnableAmendment Flags
 

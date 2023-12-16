@@ -54,7 +54,7 @@ For more information about Checks in the XRP Ledger, see:
     - [Cash a Check for an exact amount](../../tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
     - [Cash a Check for a flexible amount](../../tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
     - [Cancel a Check](../../tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md)
-- [Checks amendment][]
+- [Checks amendment](../../resources/known-amendments.md#checks)
 
 For more information about related features, see:
 

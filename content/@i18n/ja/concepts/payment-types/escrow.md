@@ -61,11 +61,11 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 
 ## EscrowFinishトランザクションのコスト
 
-Crypto-conditionを使用する場合、Crypto-conditionフルフィルメントの検証に高い処理負荷がかかるため、EscrowFinishトランザクションでは[高額なトランザクションコスト](transaction-cost.html#特別なトランザクションコスト)を支払う必要があります。
+Crypto-conditionを使用する場合、Crypto-conditionフルフィルメントの検証に高い処理負荷がかかるため、EscrowFinishトランザクションでは[高額なトランザクションコスト](../transactions/transaction-cost.md#特別なトランザクションコスト)を支払う必要があります。
 
 追加で必要となる取引コストはフルフィルメントのサイズに比例します。トランザクションが[マルチシグ](../accounts/multi-signing.md)の場合、マルチサインのコストはフルフィルメントのコストに追加されます。
 
-必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](basic-data-types.html#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。
+必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。
 
 **注記:** 上記の式は、トランザクションのリファレンスコストが10 dropであることを前提としています。
 

@@ -44,7 +44,7 @@ rippled ping
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ping)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ping)
 
 The request includes no parameters.
 
@@ -83,4 +83,4 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

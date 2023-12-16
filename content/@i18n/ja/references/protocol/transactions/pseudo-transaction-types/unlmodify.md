@@ -7,7 +7,7 @@ labels:
 ---
 # UNLModify
 
-_([NegativeUNL amendment][]により追加されました)_
+_([NegativeUNL amendment](../../../../resources/known-amendments.md#negativeunl)により追加されました)_
 
 `UNLModify`[疑似トランザクション](pseudo-transaction-types.md)は[Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
 
@@ -34,6 +34,6 @@ _([NegativeUNL amendment][]により追加されました)_
 | 名前                 | JSONの型 | [内部の型](../../binary-format.md) | 説明           |
 |:---------------------|:--------|:------------------|:----------------------|
 | `TransactionType`    | 文字列   | UInt16      | `0x0066`は文字列`UNLModify`にマッピングされ、このオブジェクトが`UNLModify`擬似トランザクションであることを表します。 |
-| `LedgerSequence`     | 数値     | UInt32      | この擬似トランザクションが出現する[レジャーインデックス](basic-data-types.html#レジャーインデックス)です。これは、この擬似トランザクションを、同じ変更の他の出現と区別するものです。 |
+| `LedgerSequence`     | 数値     | UInt32      | この擬似トランザクションが出現する[レジャーインデックス](../../data-types/basic-data-types.md#レジャーインデックス)です。これは、この擬似トランザクションを、同じ変更の他の出現と区別するものです。 |
 | `UNLModifyDisabling` | 数値     | UInt8       | `1`の場合、この変更はネガティブUNLにバリデーターを追加することを意味します。0` の場合、この変更はネガティブ UNL からバリデータを削除することを意味します。(これらの値以外は使用できません) |
 | `UNLModifyValidator` | 文字列   | Blob        | 追加または削除するバリデータであり、そのマスター公開鍵で識別されます。 |

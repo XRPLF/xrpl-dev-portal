@@ -8,7 +8,7 @@ labels:
 # Escrow
 [[Source]](https://github.com/XRPLF/rippled/blob/c6b6d82a754fe449cc533e18659df483c10a5c98/src/ripple/protocol/impl/LedgerFormats.cpp#L90-L101 "Source")
 
-_(Added by the [Escrow amendment][].)_
+_(Added by the [Escrow amendment](../../../../resources/known-amendments.md#escrow).)_
 
 An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met.
 
@@ -42,12 +42,12 @@ In addition to the [common fields](../common-fields.md), `{% $frontmatter.seo.ti
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
 | `Account`           | String    | AccountID         | Yes       | The address of the owner (sender) of this escrow. This is the account that provided the XRP, and gets it back if the escrow is canceled. |
 | `Amount`            | String    | Amount            | Yes       | The amount of XRP, in drops, currently held in the escrow. |
-| `CancelAfter`       | Number    | UInt32            | No        | The escrow can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch][] and it "has passed" if it's earlier than the close time of the previous validated ledger. |
+| `CancelAfter`       | Number    | UInt32            | No        | The escrow can be canceled if and only if this field is present _and_ the time it specifies has passed. Specifically, this is specified as [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time) and it "has passed" if it's earlier than the close time of the previous validated ledger. |
 | `Condition`         | String    | Blob              | No        | A [PREIMAGE-SHA-256 crypto-condition](https://tools.ietf.org/html/draft-thomas-crypto-conditions-02#section-8.1), as hexadecimal. If present, the [EscrowFinish transaction](../../transactions/types/escrowfinish.md) must contain a fulfillment that satisfies this condition. |
 | `Destination`       | String    | AccountID         | Yes       | The destination address where the XRP is paid if the escrow is successful. |
-| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment](known-amendments.html#fix1523). |
+| `DestinationNode`   | String    | UInt64            | No        | A hint indicating which page of the destination's owner directory links to this object, in case the directory consists of multiple pages. Omitted on escrows created before enabling the [fix1523 amendment](../../../../resources/known-amendments.md#fix1523). |
 | `DestinationTag`    | Number    | UInt32            | No        | An arbitrary tag to further specify the destination for this escrow, such as a hosted recipient at the destination address. |
-| `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch][], after which this escrow can be finished. Any [EscrowFinish transaction](../../transactions/types/escrowfinish.md) before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
+| `FinishAfter`       | Number    | UInt32            | No        | The time, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time), after which this escrow can be finished. Any [EscrowFinish transaction](../../transactions/types/escrowfinish.md) before this time fails. (Specifically, this is compared with the close time of the previous validated ledger.) |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0075`, mapped to the string `Escrow`, indicates that this is an `Escrow` entry. |
 | `OwnerNode`         | String    | UInt64            | Yes       | A hint indicating which page of the sender's owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | Hash256           | Yes       | The identifying hash of the transaction that most recently modified this entry. |
@@ -67,7 +67,7 @@ There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
 ## Escrow ID Format
 
-The ID of an `Escrow` entry is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of an `Escrow` entry is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction](../../transactions/types/escrowcreate.md) that created the `Escrow` entry

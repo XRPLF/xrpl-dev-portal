@@ -66,8 +66,8 @@ For descriptions of each StatsD metric, see the [`rippledmon` repository](https:
 ## See Also
 
 - **Concepts:**
-    - [XRP Ledger Overview](xrp-ledger-overview.html)
-    - [The `rippled` Server](xrpl-servers.html)
+    - [XRP Ledger Overview](/about/)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
 - **Tutorials:**
     - [Install `rippled`](../installation/index.md)
     - [Capacity Planning](../installation/capacity-planning.md)

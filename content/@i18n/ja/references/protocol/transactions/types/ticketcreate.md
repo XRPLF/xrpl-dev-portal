@@ -9,9 +9,9 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/CreateTicket.cpp "Source")
 
-_([TicketBatch amendment][]が必要です)_
+_([TicketBatch amendment](../../../../resources/known-amendments.md#ticketbatch)が必要です)_
 
-TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](basic-data-types.html#アカウントシーケンス)を[Tickets](../../ledger-data/ledger-entry-types/ticket.md)として確保します。
+TicketCreateトランザクションは、1つまたは複数の[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を[Tickets](../../ledger-data/ledger-entry-types/ticket.md)として確保します。
 
 ## {% $frontmatter.seo.title %}JSONの例
 
@@ -25,7 +25,7 @@ TicketCreateトランザクションは、1つまたは複数の[シーケンス
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド         | JSONの型          | [内部の型](../../binary-format.md)       | 説明                |

@@ -51,7 +51,7 @@ There are no flags defined for `{% $frontmatter.seo.title %}` entries.
 
 ## DepositPreauth ID Format
 
-The ID of a `DepositPreauth` object is the [SHA-512Half][] of the following values, concatenated in order:
+The ID of a `DepositPreauth` object is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The DepositPreauth space key (`0x0070`)
 * The AccountID of the owner of this object (the sender of the [DepositPreauth transaction](../../transactions/types/depositpreauth.md) that created this object; in other words, the one that granted the preauthorization)

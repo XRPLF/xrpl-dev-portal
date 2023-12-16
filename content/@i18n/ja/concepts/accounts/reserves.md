@@ -33,13 +33,13 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 レジャー内の多くのオブジェクト(レジャーエントリー)は、特定のアカウントが所有しています。通常、所有者はオブジェクトを作成したアカウントです。各オブジェクトは、所有者の合計必要準備金を所有者準備金によって増加させます。オブジェクトがレジャーから削除されると、所有者の必要準備金にカウントされなくなります。
 
-所有者の必要準備金にカウントされるオブジェクトには次のものが含まれます。[Check](../payment-types/checks.md), [入金の事前承認](depositauth.html#事前承認), [エスクロー](../payment-types/escrow.md), [NFTのオファー](../tokens/nfts/trading.md), [NFTのページ](../tokens/nfts/index.md), [オファー](../../references/protocol/ledger-data/ledger-entry-types/offer.md), [ペイメントチャネル](../payment-types/payment-channels.md), [マルチシグの署名者リスト](multi-signing.md), [Ticket](tickets.md), そして[トラストライン](../tokens/fungible-tokens/index.md).
+所有者の必要準備金にカウントされるオブジェクトには次のものが含まれます。[Check](../payment-types/checks.md), [入金の事前承認](depositauth.md#事前承認), [エスクロー](../payment-types/escrow.md), [NFTのオファー](../tokens/nfts/trading.md), [NFTのページ](../tokens/nfts/index.md), [オファー](../../references/protocol/ledger-data/ledger-entry-types/offer.md), [ペイメントチャネル](../payment-types/payment-channels.md), [マルチシグの署名者リスト](multi-signing.md), [Ticket](tickets.md), そして[トラストライン](../tokens/fungible-tokens/index.md).
 
 次のようないくつかの特殊なケースが存在します。
 
-- 非代替性トークン(NFT)は、それぞれ最大32個のNFTを含むページにグループ化され、所有者準備金はNFTごとではなくページごとに適用されます。ページの分割と結合の仕組みにより、実際に保存されるNFTの数はページごとに異なります。[NFTokenPageオブジェクトの準備金](nftokenpage.html#nftokenpage-オブジェクトの準備金)もご覧ください。
-- トラストライン(`RippleState`エントリ)は2つのアカウント間で共有されます。所有者準備金はどちらか一方、または両方に適用できます。多くの場合、トークン所有者は準備金を負担し、発行者は負担しません。[RippleState: 所有者準備金への資金提供](ripplestate.html#所有者の準備金への資金供給)もご覧ください。
-- 2019年4月に有効化された[MultiSignReserve amendment][]以前に作成された署名者リストは、複数のオブジェクトとしてカウントされます。[署名者リストと準備金](signerlist.html#signerlistと準備金)もご覧ください。
+- 非代替性トークン(NFT)は、それぞれ最大32個のNFTを含むページにグループ化され、所有者準備金はNFTごとではなくページごとに適用されます。ページの分割と結合の仕組みにより、実際に保存されるNFTの数はページごとに異なります。[NFTokenPageオブジェクトの準備金](../../references/protocol/ledger-data/ledger-entry-types/nftokenpage.md#nftokenpage-オブジェクトの準備金)もご覧ください。
+- トラストライン(`RippleState`エントリ)は2つのアカウント間で共有されます。所有者準備金はどちらか一方、または両方に適用できます。多くの場合、トークン所有者は準備金を負担し、発行者は負担しません。[RippleState: 所有者準備金への資金提供](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#所有者の準備金への資金供給)もご覧ください。
+- 2019年4月に有効化された[MultiSignReserve amendment](../../resources/known-amendments.md#multisignreserve)以前に作成された署名者リストは、複数のオブジェクトとしてカウントされます。[署名者リストと準備金](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signerlistと準備金)もご覧ください。
 - [所有者ディレクトリ](../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)は、アカウントが所有するすべてのオブジェクトを含む、アカウントに関連するすべてのオブジェクトをリストしたレジャーエントリーです。ただし、所有者ディレクトリ自体は準備金にカウントされません。
 
 ### 準備金の確認
@@ -53,7 +53,7 @@ XRP Ledgerでは、スパムや悪意のある使用によって、共有グロ�
 
 アカウントの所有者準備金を決定するには、増分準備金にアカウントが所有するオブジェクトの数を掛けます。アカウントが所有しているオブジェクトの数を調べるには、[account_infoメソッド][]を呼び出し、`account_data.OwnerCount`を取得します。
 
-アドレスの必要となる合計準備金を計算するには、`OwnerCount`に`reserve_inc_xrp`を掛け、次に`reserve_base_xrp`を加えます。[この計算をPythonで行うデモ](build-a-desktop-wallet-in-python.html#codeblock-17)があります。
+アドレスの必要となる合計準備金を計算するには、`OwnerCount`に`reserve_inc_xrp`を掛け、次に`reserve_base_xrp`を加えます。[この計算をPythonで行うデモ](../../../../tutorials/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17)があります。
 
 
 ## 必要準備金を下回る
@@ -75,4 +75,4 @@ XRP Ledgerには、準備金要件を調整する仕組みがあります。こ�
 - [AccountRootオブジェクト][]
 - [手数料の投票](../consensus-protocol/fee-voting.md)
 - [SetFee疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/setfee.md)疑似トランザクション
-- [チュートリアル: 必要準備金の計算と表示（Python）](build-a-desktop-wallet-in-python.html#3-display-an-account)
+- [チュートリアル: 必要準備金の計算と表示（Python）](../../../../tutorials/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)

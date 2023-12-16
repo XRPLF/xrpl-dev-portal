@@ -8,7 +8,7 @@ labels:
 # PaymentChannelFund
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/PayChan.cpp "Source")
 
-_Added by the [PayChan amendment][]._
+_Added by the [PayChan amendment](../../../../resources/known-amendments.md#paychan)._
 
 Add additional [XRP](../../../../introduction/what-is-xrp.md) to an open [payment channel](../../../../concepts/payment-types/payment-channels.md), and optionally update the expiration time of the channel. Only the source address of the channel can use this transaction.
 
@@ -24,7 +24,7 @@ Example PaymentChannelFund:
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelFund%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22877FA6E2FF8E08597D1F24E30BE8E52D0C9C06F0D620C5721E55622B6A632DFF%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelFund%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22877FA6E2FF8E08597D1F24E30BE8E52D0C9C06F0D620C5721E55622B6A632DFF%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
@@ -33,7 +33,7 @@ Example PaymentChannelFund:
 |:-------------|:----------|:------------------|:------------------------------|
 | `Channel`    | String    | Hash256           | The unique ID of the channel to fund, as a 64-character hexadecimal string. |
 | `Amount`     | String    | Amount            | Amount of [XRP, in drops][Currency Amount] to add to the channel. Must be a positive amount of XRP. |
-| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in [seconds since the Ripple Epoch][]. This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger object type](../../ledger-data/ledger-entry-types/paychannel.md). |
+| `Expiration` | Number    | UInt32            | _(Optional)_ New `Expiration` time to set for the channel, in [seconds since the Ripple Epoch](../../data-types/basic-data-types.md#specifying-time). This must be later than either the current time plus the `SettleDelay` of the channel, or the existing `Expiration` of the channel. After the `Expiration` time, any transaction that would access the channel closes the channel without taking its normal action. Any unspent XRP is returned to the source address when the channel closes. (`Expiration` is separate from the channel's immutable `CancelAfter` time.) For more information, see the [PayChannel ledger object type](../../ledger-data/ledger-entry-types/paychannel.md). |
 
 ## Error Cases
 

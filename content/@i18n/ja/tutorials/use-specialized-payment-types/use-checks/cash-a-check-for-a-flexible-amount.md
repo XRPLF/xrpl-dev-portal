@@ -20,18 +20,18 @@ Checkから可能な限りの額を受領したい場合には、変動金額で
 
 ## 前提条件
 
-{% partial file="/_snippets/checkcash-prereqs.ja.md" /%}<!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/checkcash-prereqs.md" /%}<!--#{ fix md highlighting_ #}-->
 
 ## {{cash_flex_n.next()}}.CheckCashトランザクションの準備
 
-[CheckCashトランザクション][]のフィールドの値を決定します。Checkを変動金額で換金する場合、以下のフィールドは必要最小限です。それ以外のフィールドはオプションまたは署名時に[自動入力](transaction-common-fields.html#自動入力可能なフィールド)可能なフィールドです。
+[CheckCashトランザクション][]のフィールドの値を決定します。Checkを変動金額で換金する場合、以下のフィールドは必要最小限です。それ以外のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
 | フィールド             | 値                     | 説明                  |
 |:------------------|:--------------------------|:-----------------------------|
 | `TransactionType` | 文字列                    | 値が`CheckCash`の場合、これはCheckCashトランザクションです。 |
 | `Account`         | 文字列（アドレス）          | Checkを換金する送信者のアドレス。（あなたのアドレスです。） |
 | `CheckID`         | 文字列                    | レジャーで換金するCheckオブジェクトのID。この情報を確認するには、[txメソッド][]を使用してCheckCreateトランザクションのメタデータを調べるか、または[account_objectsメソッド][]を使用してCheckを探します。 |
-| `DeliverMin`      | 文字列またはオブジェクト（額） | Checkから受領する最小額。この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。XRPの場合、XRPのdrop数を示す文字列でなければなりません。トークンの場合、これは`currency`、`issuer`、および`value` フィールドを持つオブジェクトです。`currency`フィールドと`issuer`フィールドは、Checkオブジェクトの対応するフィールドに一致しており、`value`はCheckオブジェクトの額以下でなければなりません。詳細は、[通貨額の指定](basic-data-types.html#通貨額の指定)を参照してください。 |
+| `DeliverMin`      | 文字列またはオブジェクト（額） | Checkから受領する最小額。この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。XRPの場合、XRPのdrop数を示す文字列でなければなりません。トークンの場合、これは`currency`、`issuer`、および`value` フィールドを持つオブジェクトです。`currency`フィールドと`issuer`フィールドは、Checkオブジェクトの対応するフィールドに一致しており、`value`はCheckオブジェクトの額以下でなければなりません。詳細は、[通貨額の指定](../../../references/protocol/data-types/basic-data-types.md#通貨額の指定)を参照してください。 |
 
 ### 変動金額で換金するCheckCashトランザクションの準備の例
 
@@ -58,7 +58,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## {{cash_flex_n.next()}}.CheckCashトランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.ja.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ### 要求の例
 
@@ -110,7 +110,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## {{cash_flex_n.next()}}.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.ja.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
 
 ## {{cash_flex_n.next()}}.最終結果の確認
 

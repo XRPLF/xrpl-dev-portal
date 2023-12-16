@@ -63,8 +63,8 @@ Transactions in the XRP Ledger must include the public keys so that the network 
 
 The **Account ID** is the core identifier for an [account](accounts.md) or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:
 
-- A "classic address" writes an Account ID in [base58](base58-encodings.html) with a checksum. In a [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) response, this is the `account_id` value.
-- An "X-Address" combines an Account ID _and_ a [Destination Tag](../transactions/source-and-destination-tags.md) and writes the combined value in [base58](base58-encodings.html) with a checksum.
+- A "classic address" writes an Account ID in [base58](../../references/protocol/data-types/base58-encodings.md) with a checksum. In a [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) response, this is the `account_id` value.
+- An "X-Address" combines an Account ID _and_ a [Destination Tag](../transactions/source-and-destination-tags.md) and writes the combined value in [base58](../../references/protocol/data-types/base58-encodings.md) with a checksum.
 
 The checksum in both formats is there so that small changes result in an invalid address, instead of changing it to refer to a different, but still potentially valid, account. This way, if you make a typo or a transmission error occurs, you don't send money to the wrong place.
 
@@ -144,7 +144,7 @@ In the future, it is likely that the XRP Ledger will need new cryptographic sign
 
 ## Key Derivation
 
-The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a _seed_ value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the [SHA-512 hash][Hash] and keeping the first 16 bytes (like [SHA-512Half][], but keeping only 128 bits instead of 256 bits of the output).
+The process of deriving a key pair depends on the signing algorithm. In all cases, keys are generated from a _seed_ value that is 16 bytes (128 bits) in length. The seed value can be completely random (recommended) or it can be derived from a specific passphrase by taking the [SHA-512 hash][Hash] and keeping the first 16 bytes (like [SHA-512Half](../../references/protocol/data-types/basic-data-types.md#hashes), but keeping only 128 bits instead of 256 bits of the output).
 
 ### Sample Code
 
@@ -162,7 +162,7 @@ The key derivation processes described here are implemented in multiple places a
 
 [{% inline-svg file="/img/key-derivation-ed25519.svg" /%}](/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
-1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
+1. Calculate the [SHA-512Half](../../references/protocol/data-types/basic-data-types.md#hashes) of the seed value. The result is the 32-byte secret key.
 
     **Tip:** All 32-byte numbers are valid Ed25519 secret keys. However, only numbers that are chosen randomly enough are secure enough to be used as secret keys.
 
@@ -174,7 +174,7 @@ The key derivation processes described here are implemented in multiple places a
 
     If you are implementing code to sign transactions, remove the `0xED` prefix and use the 32-byte key for the actual signing process.
 
-4. When serializing an account public key to [base58](base58-encodings.html), use the account public key prefix `0x23`.
+4. When serializing an account public key to [base58](../../references/protocol/data-types/base58-encodings.md), use the account public key prefix `0x23`.
 
     Validator ephemeral keys cannot be Ed25519.
 
@@ -196,7 +196,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
         - The seed value (16 bytes)
         - A "root sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the root sequence.
 
-    2. Calculate the [SHA-512Half][] of the concatenated (seed+root sequence) value.
+    2. Calculate the [SHA-512Half](../../references/protocol/data-types/basic-data-types.md#hashes) of the concatenated (seed+root sequence) value.
 
     3. If the result is not a valid secp256k1 secret key, increment the root sequence by 1 and start over. [[Source]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/crypto/impl/GenerateDeterministicKey.cpp#L103 "Source")
 
@@ -204,7 +204,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
     4. With a valid secp256k1 secret key, use the standard ECDSA public key derivation with the secp256k1 curve to derive the root public key. (As always with cryptographic algorithms, use a standard, well-known, publicly-audited implementation whenever possible. For example, [OpenSSL](https://www.openssl.org/) has implementations of core Ed25519 and secp256k1 functions.)
 
-    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58](base58-encodings.html) serialization for validator public keys uses the prefix `0x1c`.
+    **Tip:** Validators use this root key pair. If you are calculating a validator's key pair, you can stop here. To distinguish between these two different types of public keys, the [base58](../../references/protocol/data-types/base58-encodings.md) serialization for validator public keys uses the prefix `0x1c`.
 
 2. Convert the root public key to its 33-byte compressed form.
 
@@ -223,7 +223,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
         - `0x00000000000000000000000000000000` (4 bytes of zeroes). (This value was intended to be used to derive different members of the same family, but in practice only the value 0 is used.)
         - A "key sequence" value (4 bytes), as a big-endian unsigned integer. Use 0 as a starting value for the key sequence.
 
-    2. Calculate the [SHA-512Half][] of the concatenated value.
+    2. Calculate the [SHA-512Half](../../references/protocol/data-types/basic-data-types.md#hashes) of the concatenated value.
 
     3. If the result is not a valid secp256k1 secret key, increment the key sequence by 1 and restart deriving the account's intermediate key pair.
 
@@ -237,7 +237,7 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
 
 5. Convert the master public key to its 33-byte compressed form, as before.
 
-6. When serializing an account's public key to its [base58](base58-encodings.html) format, use the account public key prefix, `0x23`.
+6. When serializing an account's public key to its [base58](../../references/protocol/data-types/base58-encodings.md) format, use the account public key prefix, `0x23`.
 
     See [Address Encoding](addresses.md#address-encoding) for information and sample code to convert from an account's public key to its address.
 

@@ -7,7 +7,7 @@ labels:
 ---
 # rippledサーバーが起動しない
 
-このページでは、[`rippled`サーバー](xrpl-servers.html)が起動しない際に考えられる原因とその修正方法を説明します。
+このページでは、[`rippled`サーバー](../../concepts/networks-and-servers/index.md)が起動しない際に考えられる原因とその修正方法を説明します。
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
 
@@ -182,7 +182,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
 ```
 
-`node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](capacity-planning.html#ノードサイズ)を参照してください。
+`node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../installation/capacity-planning.md#ノードサイズ)を参照してください。
 
 
 ## シャードパスが欠落している
@@ -193,7 +193,7 @@ Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_c
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
 ```
 
-設定に`[shard_db]`スタンザが含まれている場合、このスタンザには`path`フィールドが指定されている必要があります。このフィールドは、`rippled`がシャードストアーのデータを書き込むことができるディレクトリを指しています。このエラーが発生する場合は、`path`フィールドが欠落しているか、誤った位置に指定されています。構成ファイルで余分な空白やスペルミスがないかどうかを確認し、[シャード設定の例](configure-history-sharding.html#2-rippledcfgの編集)と比較してください。
+設定に`[shard_db]`スタンザが含まれている場合、このスタンザには`path`フィールドが指定されている必要があります。このフィールドは、`rippled`がシャードストアーのデータを書き込むことができるディレクトリを指しています。このエラーが発生する場合は、`path`フィールドが欠落しているか、誤った位置に指定されています。構成ファイルで余分な空白やスペルミスがないかどうかを確認し、[シャード設定の例](../configuration/data-retention/configure-history-sharding.md#2-rippledcfgの編集)と比較してください。
 
 ## サポート対象外のシャードストアータイプ: RocksDB
 
@@ -215,8 +215,8 @@ ShardStore:ERR Unsupported shard store type: RocksDB
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
-    - [技術に関するよくある質問](technical-faq.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [技術に関するよくある質問](../../faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
     - [容量の計画](../installation/capacity-planning.md)

@@ -16,14 +16,14 @@ blurb: アドレス、レジャーインデックス、通貨コードなどの�
 ## アドレス
 [アドレス]: #アドレス
 
-{% partial file="/_snippets/data_types/address.ja.md" /%}
+{% partial file="/_snippets/data_types/address.md" /%}
 
 
 
 ## ハッシュ
 [ハッシュ]: #ハッシュ
 
-{% partial file="/_snippets/data_types/hash.ja.md" /%}
+{% partial file="/_snippets/data_types/hash.md" /%}
 
 
 ### ハッシュプレフィクス
@@ -51,20 +51,20 @@ blurb: アドレス、レジャーインデックス、通貨コードなどの�
 [レジャーヘッダー]: ledger-header.html
 [SHAMapv2]: known-amendments.html#shamapv2
 
-[レジャーオブジェクトID](ledger-object-ids.html)も似た方法で計算されますが、ここで説明したプレフィクスの代わりに「スペースキー」という2バイトのプレフィクスを使用します。
+[レジャーオブジェクトID](../ledger-data/common-fields.md)も似た方法で計算されますが、ここで説明したプレフィクスの代わりに「スペースキー」という2バイトのプレフィクスを使用します。
 
 
 ## アカウントシーケンス
 [シーケンス番号]: #アカウントシーケンス
 
-{% partial file="/_snippets/data_types/account_sequence.ja.md" /%}
+{% partial file="/_snippets/data_types/account_sequence.md" /%}
 
 
 
 ## レジャーインデックス
 [レジャーインデックス]: #レジャーインデックス
 
-{% partial file="/_snippets/data_types/ledger_index.ja.md" /%}
+{% partial file="/_snippets/data_types/ledger_index.md" /%}
 
 
 
@@ -86,7 +86,7 @@ APIメソッドの多くは、レジャーのインスタンスを指定する�
 
 3. `ledger_index`パラメータに以下のいずれかのショートカットを指定します。
 
-    * `validated`: [コンセンサスで検証](consensus-structure.html#検証)された最新のレジャー
+    * `validated`: [コンセンサスで検証](../../../concepts/consensus-protocol/consensus-structure.md#検証)された最新のレジャー
 
         ```
         "ledger_index": "validated"
@@ -98,7 +98,7 @@ APIメソッドの多くは、レジャーのインスタンスを指定する�
 
 上記3つのフォーマットすべてを受け入れる、廃止予定の`ledger`パラメーターもあります。このパラメーターは使用*しないでください*。今後予告なしに廃止される可能性があります。
 
-レジャーを指定しない場合、デフォルトで`current`（処理中）レジャーが選択されます。レジャーを指定しなかった場合、サーバはリクエストにどのレジャーを使うかを決めます。デフォルトでは、サーバは`current`(進行中)のレジャーを選択します。[レポートモード](rippled-server-modes.html#レポートモード)では、サーバは最新の検証済みレジャーを使います。レジャーを指定するフィールドは複数指定しないでください。
+レジャーを指定しない場合、デフォルトで`current`（処理中）レジャーが選択されます。レジャーを指定しなかった場合、サーバはリクエストにどのレジャーを使うかを決めます。デフォルトでは、サーバは`current`(進行中)のレジャーを選択します。[レポートモード](../../../concepts/networks-and-servers/rippled-server-modes.md#レポートモード)では、サーバは最新の検証済みレジャーを使います。レジャーを指定するフィールドは複数指定しないでください。
 
 **注記:** レジャーを指定する際に上記のデフォルトの動作に頼らないでください。変更される場合があります。可能であれば、常にリクエストでレジャーバージョンを指定してください。
 

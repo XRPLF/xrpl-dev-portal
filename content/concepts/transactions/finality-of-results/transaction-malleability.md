@@ -14,7 +14,7 @@ If vulnerable software submits malleable transactions and assumes they can only 
 
 On the XRP Ledger mainnet, only **multi-signed transactions** can be malleable, if they have more signatures than necessary, or if an authorized signer provides an additional signature beyond what is necessary. Good operational security can protect against these problems. See [Mitigations for Multi-Signature Malleability](#mitigations-for-multi-signature-malleability) for guidelines.
 
-Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the [RequireFullyCanonicalSig amendment][] became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](../../accounts/cryptographic-keys.md#signing-algorithms) were never vulnerable to this problem.)
+Before 2014, single-signed transactions could be malleable due to properties of the default signing algorithm, ECDSA with the secp256k1 curve. For compatibility with legacy signing tools, it was possible to create and submit malleable single-signed transactions until the [RequireFullyCanonicalSig amendment](../../../resources/known-amendments.md#requirefullycanonicalsig) became enabled on 2020-07-03. (Transactions [signed with Ed25519 keys](../../accounts/cryptographic-keys.md#signing-algorithms) were never vulnerable to this problem.)
 
 
 
@@ -44,9 +44,9 @@ An ECDSA signature consists of two integers, called R and S. The secp256k1 _grou
 
 Thus, to have _fully_ canonical signatures, one must choose which of the two possibilities is preferred and declare the other to be invalid. The creators of the XRP Ledger decided arbitrarily to prefer the _smaller_ of the two possible values, `S` or `N-S`. A transaction is considered _fully canonical_ if it uses the preferred (smaller) value of `S`, and follows all the normal rules for being canonical. To calculate a fully-canonical ECDSA signature, one must compare S and N-S to determine which is smaller, then use that value in the `Signature` field of the transaction.
 
-With the [RequireFullyCanonicalSig amendment][] (enabled in 2020), all transactions must use _fully canonical_ signatures only.
+With the [RequireFullyCanonicalSig amendment](../../../resources/known-amendments.md#requirefullycanonicalsig) (enabled in 2020), all transactions must use _fully canonical_ signatures only.
 
-Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](../../../references/protocol/transactions/common-fields.md#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the [RequireFullyCanonicalSig amendment][] is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
+Between 2014 and 2020, the XRP Ledger was compatible with legacy software that did not always generate fully canonical signatures, but used a flag on transactions called [**`tfFullyCanonicalSig`**](../../../references/protocol/transactions/common-fields.md#global-flags) to protect compatible software from transaction malleability. This flag, which compatible signing software enables by default, required that the transaction use a _fully-canonical_ signature to be valid. Now that the [RequireFullyCanonicalSig amendment](../../../resources/known-amendments.md#requirefullycanonicalsig) is enabled, the flag is no longer necessary, but there is no harm in enabling it anyway.
 
 
 ### Malleability with Multi-Signatures

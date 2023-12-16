@@ -9,7 +9,7 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
-`{% $frontmatter.seo.title %}`メソッドは、特定の[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)を削除します（存在する場合）。[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
+`{% $frontmatter.seo.title %}`メソッドは、特定の[ピアリザベーション](../../../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)を削除します（存在する場合）。[新規: rippled 1.4.0](https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE")
 
 _`{% $frontmatter.seo.title %}`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
@@ -55,7 +55,7 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
 
 | `Field`     | 型                        | 説明                               |
 |:------------|:--------------------------|:-----------------------------------|
-| `public_key` | 文字列 | 削除する[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)の[ノード公開鍵](peer-protocol.html#ノードキーペア)（[base58](base58-encodings.html)フォーマット） |
+| `public_key` | 文字列 | 削除する[ピアリザベーション](../../../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)の[ノード公開鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)（[base58](../../../protocol/data-types/base58-encodings.md)フォーマット） |
 
 
 ### 応答フォーマット
@@ -125,11 +125,11 @@ Connecting to 127.0.0.1:5005
 
 `previous`フィールドが指定されている場合は、このピアリザベーションの以前のステータスが次のフィールドとともに表示されます。
 
-{% partial file="/_snippets/peer_reservation_object.ja.md" /%}
+{% partial file="/_snippets/peer_reservation_object.md" /%}
 
 
 ### 考えられるエラー
 
-- いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+- いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 - `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58](base58-encodings.html)フォーマットの有効なノード公開鍵である必要があります。
+- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58](../../../protocol/data-types/base58-encodings.md)フォーマットの有効なノード公開鍵である必要があります。

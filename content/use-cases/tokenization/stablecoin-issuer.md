@@ -44,7 +44,7 @@ Alternatively, you can use an external node service provider like OpenNode. See 
 
 ![Sandbox](img/uc-stablecoin-sandbox.png)
 
-For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](xrp-testnet-faucet.html).
+For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](/resources/dev-tools/xrp-faucets).
 
 
 ## Stablecoin Settings
@@ -158,7 +158,7 @@ See [Enact Global Freeze](../../tutorials/use-tokens/enact-global-freeze.md).
 
 ### Clawback
 
-_(Requires the [Clawback amendment][] :not_enabled:)_
+_(Requires the [Clawback amendment](../../resources/known-amendments.md#clawback) :not_enabled:)_
 
 Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers _must_ have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 
@@ -195,7 +195,7 @@ To submit transactions reliably, follow these guidelines:
 
 * Persist details of the transaction before submitting it.
 * Use the `LastLedgerSequence` parameter. (Many [client libraries](../../references/client-libraries.md) do this by default.)
-* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is bigger than or equal to the transaction's `LastLedgerSequence` parameter.
+* Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index](../../references/protocol/data-types/basic-data-types.md#ledger-index) is bigger than or equal to the transaction's `LastLedgerSequence` parameter.
 
 For more information, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
@@ -205,7 +205,7 @@ Decentralized exchanges (DEXes) are integral to the decentralized finance ecosys
 
 
 ### List on an AMM
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../resources/known-amendments.md#amm) :not_enabled:)_
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 

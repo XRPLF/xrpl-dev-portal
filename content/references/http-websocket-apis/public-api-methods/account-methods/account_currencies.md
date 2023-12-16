@@ -49,15 +49,15 @@ rippled account_currencies rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#account_currencies)
+[Try it! >](/resources/dev-tools/websocket-api-tool#account_currencies)
 
 The request includes the following parameters:
 
 | `Field`        | Type                 | Required? | Description |
 |:---------------|:---------------------|:----------|-------------|
-| `account`      | String - [Address][] | Yes       | Look up currencies this account can send or receive. [Updated in: rippled 1.11.0](https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE") |
-| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | Number or String     | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `account`      | String - [Address](../../../protocol/data-types/basic-data-types.md#addresses) | Yes       | Look up currencies this account can send or receive. [Updated in: rippled 1.11.0](https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE") |
+| `ledger_hash`  | String               | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | Number or String     | No        | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 
 The following fields are deprecated and should not be provided: `account_index`, `strict`.
 
@@ -158,17 +158,17 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`              | Type                       | Description              |
 |:---------------------|:---------------------------|:-------------------------|
-| `ledger_hash`        | String - [Hash][]          | (May be omitted) The identifying hash of the ledger version used to retrieve this data, as hex. |
-| `ledger_index`       | Integer - [Ledger Index][] | The ledger index of the ledger version used to retrieve this data. |
-| `receive_currencies` | Array of Strings           | Array of [Currency Code][]s for currencies that this account can receive. |
-| `send_currencies`    | Array of Strings           | Array of [Currency Code][]s for currencies that this account can send. |
+| `ledger_hash`        | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)          | (May be omitted) The identifying hash of the ledger version used to retrieve this data, as hex. |
+| `ledger_index`       | Integer - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of the ledger version used to retrieve this data. |
+| `receive_currencies` | Array of Strings           | Array of [Currency Code](../../../protocol/data-types/currency-formats.md#currency-codes)s for currencies that this account can receive. |
+| `send_currencies`    | Array of Strings           | Array of [Currency Code](../../../protocol/data-types/currency-formats.md#currency-codes)s for currencies that this account can send. |
 | `validated`          | Boolean                    | If `true`, this data comes from a validated ledger. |
 
 **Note:** The currencies that an account can send or receive are defined based on a check of its trust lines. If an account has a trust line for a currency and enough room to increase its balance, it can receive that currency. If the trust line's balance can go down, the account can send that currency. This method _doesn't_ check whether the trust line is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) or authorized.
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

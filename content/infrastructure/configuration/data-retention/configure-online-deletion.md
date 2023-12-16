@@ -8,7 +8,7 @@ labels:
 ---
 # Configure Online Deletion
 
-In its default configuration, [the `rippled` server](xrpl-servers.html) [deletes history](online-deletion.md) older than the most recent 2000 [ledger versions](../../../concepts/ledgers/index.md), keeping approximately 15 minutes of [ledger history](../../../concepts/networks-and-servers/ledger-history.md) (based on the current rate between ledgers). This page describes how to configure the amount of history your `rippled` server stores before deleting.
+In its default configuration, [the `rippled` server](../../../concepts/networks-and-servers/index.md) [deletes history](online-deletion.md) older than the most recent 2000 [ledger versions](../../../concepts/ledgers/index.md), keeping approximately 15 minutes of [ledger history](../../../concepts/networks-and-servers/ledger-history.md) (based on the current rate between ledgers). This page describes how to configure the amount of history your `rippled` server stores before deleting.
 
 ## Prerequisites
 

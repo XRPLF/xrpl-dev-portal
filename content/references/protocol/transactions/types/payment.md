@@ -33,7 +33,7 @@ Payments are also the only way to [create accounts](#creating-accounts).
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
 
 {% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
@@ -41,13 +41,13 @@ Payments are also the only way to [create accounts](#creating-accounts).
 
 | Field            | JSON Type            | [Internal Type](../../binary-format.md) | Description    |
 |:-----------------|:---------------------|:------------------|:---------------|
-| `Amount`         | [Currency Amount][]  | Amount            | The amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [`tfPartialPayment` flag](#payment-flags) is set, deliver _up to_ this amount instead. |
+| `Amount`         | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts)  | Amount            | The amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the [`tfPartialPayment` flag](#payment-flags) is set, deliver _up to_ this amount instead. |
 | `Destination`    | String               | AccountID         | The unique address of the account receiving the payment. |
 | `DestinationTag` | Number               | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the payment to the destination, or a hosted recipient to pay. |
 | `InvoiceID`      | String               | Hash256           | _(Optional)_ Arbitrary 256-bit hash representing a specific reason or identifier for this payment. |
 | `Paths`          | Array of path arrays | PathSet           | (Optional, auto-fillable) Array of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to be used for this transaction. Must be omitted for XRP-to-XRP transactions. |
-| `SendMax`        | [Currency Amount][]  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
-| `DeliverMin`     | [Currency Amount][]  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
+| `SendMax`        | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts)  | Amount            | _(Optional)_ Highest amount of source currency this transaction is allowed to cost, including [transfer fees](../../../../concepts/tokens/transfer-fees.md), exchange rates, and [slippage](http://en.wikipedia.org/wiki/Slippage_%28finance%29). Does not include the [XRP destroyed as a cost for submitting the transaction](../../../../concepts/transactions/transaction-cost.md). For non-XRP amounts, the nested field names MUST be lower-case. Must be supplied for cross-currency/cross-issue payments. Must be omitted for XRP-to-XRP payments. |
+| `DeliverMin`     | [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts)  | Amount            | _(Optional)_ Minimum amount of destination currency this transaction should deliver. Only valid if this is a [partial payment](../../../../concepts/payment-types/partial-payments.md). For non-XRP amounts, the nested field names are lower-case. |
 
 ## Types of Payments
 
@@ -71,7 +71,7 @@ The `Payment` transaction type functions differently depending on how you fill i
 
 <!-- SPELLING_IGNORE: sendmax -->
 
-Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates the issuer of a token. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
+Most of the time, the `issuer` field of a non-XRP [Currency Amount](../../data-types/basic-data-types.md#specifying-currency-amounts) indicates the issuer of a token. However, when describing payments, there are special rules for the `issuer` field in the `Amount` and `SendMax` fields of a payment.
 
 * There is only ever one balance between two addresses for the same currency code. This means that, sometimes, the `issuer` field of an amount actually refers to a counterparty, instead of the address that issued the token.
 * When the `issuer` field of the destination `Amount` field matches the `Destination` address, it is treated as a special case meaning "any issuer that the destination accepts." This includes all addresses to which the destination has trust lines with a positive limit, as well as tokens with the same currency code issued by the destination.

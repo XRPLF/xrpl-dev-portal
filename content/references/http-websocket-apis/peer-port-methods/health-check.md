@@ -12,7 +12,7 @@ The Health Check is a special [peer port method](index.md) for reporting on the 
 
 This method checks several metrics to see if they are in ranges generally considered healthy. If all metrics are in normal ranges, this method reports that the server is healthy. If any metric is outside normal ranges, this method reports that the server is unhealthy and reports the metric(s) that are unhealthy. Since some metrics may rapidly fluctuate into and out of unhealthy ranges, you should not raise alerts unless the health check fails multiple times in a row.
 
-**Note:** Since the health check is a [peer port method](index.md), it is not available when testing the server in [stand-alone mode][].
+**Note:** Since the health check is a [peer port method](index.md), it is not available when testing the server in [stand-alone mode](../../../concepts/networks-and-servers/rippled-server-modes.md#stand-alone-mode).
 
 
 ## Request Format

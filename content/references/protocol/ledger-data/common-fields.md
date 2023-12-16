@@ -13,14 +13,14 @@ Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has t
 | `LedgerEntryType`        | String    | UInt16            | Yes       | The type of ledger entry. Valid [ledger entry types](ledger-entry-types/index.md) include `AccountRoot`, `Offer`, `RippleState`, and others. |
 | `Flags`                  | Number    | UInt32            | Yes       | Set of bit-flags for this ledger entry. |
 
-**Caution:** In JSON, the ledger entry ID is in the `index` or `LedgerIndex` field. This is not the same as a [ledger index][] in the `ledger_index` field.
+**Caution:** In JSON, the ledger entry ID is in the `index` or `LedgerIndex` field. This is not the same as a [ledger index](../data-types/basic-data-types.md#ledger-index) in the `ledger_index` field.
 
 
 ## Ledger Entry ID
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/Indexes.cpp)
 
-Each ledger entry has a unique ID. The ID is derived by hashing important contents of the entry, along with a [namespace identifier](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/LedgerFormats.h). The [ledger entry type](ledger-entry-types/index.md) determines the namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. The hash function is [SHA-512Half][].
+Each ledger entry has a unique ID. The ID is derived by hashing important contents of the entry, along with a [namespace identifier](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/LedgerFormats.h). The [ledger entry type](ledger-entry-types/index.md) determines the namespace identifier to use and which contents to include in the hash. This ensures every ID is unique. The hash function is [SHA-512Half](../data-types/basic-data-types.md#hashes).
 
 Generally, a ledger entry's ID is returned as the `index` field in JSON, at the same level as the object's contents. In [transaction metadata](../transactions/metadata.md), the ledger object's ID in JSON is `LedgerIndex`.
 

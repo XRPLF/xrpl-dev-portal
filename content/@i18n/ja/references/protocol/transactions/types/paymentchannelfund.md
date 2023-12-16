@@ -24,7 +24,7 @@ PaymentChannelFundの例:
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド    | JSONの型  | [内部の型](../../binary-format.md)       | 説明                          |

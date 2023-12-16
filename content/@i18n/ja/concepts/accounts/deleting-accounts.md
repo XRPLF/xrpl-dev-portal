@@ -18,8 +18,8 @@ labels:
 
 アカウントを削除するには、次の条件を満たす必要があります。
 
-- アカウントの`Sequence`番号に256を加えた値が、現在の[レジャーインデックス](basic-data-types.html#レジャーインデックス)未満であること。
-- アカウントが次の[レジャーエントリー](ledger-object-types.html)のいずれも(送金元または受取人として)保有していないこと。
+- アカウントの`Sequence`番号に256を加えた値が、現在の[レジャーインデックス](../../references/protocol/data-types/basic-data-types.md#レジャーインデックス)未満であること。
+- アカウントが次の[レジャーエントリー](../../references/protocol/ledger-data/ledger-entry-types/index.md)のいずれも(送金元または受取人として)保有していないこと。
     - `Escrow`
     - `PayChannel`
     - `RippleState`

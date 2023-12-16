@@ -8,7 +8,7 @@ labels:
 ---
 # Use Payment Channels
 
-[Payment Channels](../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../references/http-websocket-apis/index.md) of a local [`rippled` server](xrpl-servers.html).
+[Payment Channels](../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../references/http-websocket-apis/index.md) of a local [`rippled` server](../../concepts/networks-and-servers/index.md).
 
 Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](../../concepts/accounts/accounts.md). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
@@ -19,7 +19,7 @@ The example addresses used in this tutorial are:
 | | |
 |--|--|
 | **Payer's address** | `rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH` |
-| **Public key used for channel (in the XRP Ledger's [base58](base58-encodings.html) encoded string format)** | `aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3`
+| **Public key used for channel (in the XRP Ledger's [base58](../../references/protocol/data-types/base58-encodings.md) encoded string format)** | `aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3`
 | **Public key used for channel (in hex)** | `023693F15967AE357D0327974AD46FE3C127113B1110D6044FD41E723689F81CC6` |
 | **Payee's address** | `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` |
 
@@ -27,7 +27,7 @@ The example addresses used in this tutorial are:
 
 Additionally, you'll need a `rippled` server to send transactions to. The examples in this tutorial assume a `rippled` server is running on the test machine (`localhost`) with an unencrypted JSON-RPC API endpoint on port **5005**.
 
-To test without transferring real XRP, you can use [XRP Ledger Testnet](xrp-testnet-faucet.html) addresses with Testnet XRP. If you do use the Testnet, you can use the Testnet servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
+To test without transferring real XRP, you can use [XRP Ledger Testnet](/resources/dev-tools/xrp-faucets) addresses with Testnet XRP. If you do use the Testnet, you can use the Testnet servers' JSON-RPC API by connecting to `https://api.altnet.rippletest.net:51234` instead of `http://localhost:5005/`.
 
 You can use any amount of XRP for the payment channels. The example values in this tutorial set aside 100 XRP (`100000000` drops) in a payment channel for at least 1 day.
 
@@ -513,7 +513,7 @@ Example `account_channels` response:
 }
 ```
 
-In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch][] maps to `2017-05-02T20:46:22Z`, so any claims not redeemed by that time are no longer valid.
+In this example, the `expiration` value 547073182 in [seconds since the Ripple Epoch](../../references/protocol/data-types/basic-data-types.md#specifying-time) maps to `2017-05-02T20:46:22Z`, so any claims not redeemed by that time are no longer valid.
 
 ## 10. Anyone can close the expired channel.
 

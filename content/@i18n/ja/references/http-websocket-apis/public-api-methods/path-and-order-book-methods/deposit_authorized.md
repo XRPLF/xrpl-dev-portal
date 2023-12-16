@@ -56,10 +56,10 @@ rippled deposit_authorized rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de rsUiUMpnrgxQp24dJY
 
 | `Field`               | 型                         | 説明                    |
 |:----------------------|:---------------------------|:------------------------|
-| `source_account` | 文字列 - [アドレス](basic-data-types.html#アドレス) | 発生し得る支払の送金元。 |
-| `destination_account` | 文字列 - [アドレス](basic-data-types.html#アドレス) | 発生し得る支払の送金先。 |
-| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
-| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `source_account` | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス) | 発生し得る支払の送金元。 |
+| `destination_account` | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス) | 発生し得る支払の送金先。 |
+| `ledger_hash` | 文字列 | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
+| `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
 
 
 ## 応答フォーマット
@@ -128,20 +128,20 @@ Loading: "/etc/rippled.cfg"
 | `Field`                | 型                        | 説明                    |
 |:-----------------------|:--------------------------|:------------------------|
 | `deposit_authorized` | ブール値 | 指定の支払元アカウントから支払先アカウントへの直接送金が承認されているかどうか。`true`の場合、支払先アカウントで[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を必要としていないか、または支払元アカウントが事前承認されています。 |
-| `destination_account` | 文字列 - [アドレス](basic-data-types.html#アドレス) | 要求に指定されている宛先アカウント。 |
+| `destination_account` | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス) | 要求に指定されている宛先アカウント。 |
 | `ledger_hash` | 文字列 | _（省略される場合があります）_ この応答の生成に使用されたレジャーの識別用ハッシュ。 |
-| `ledger_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 |
-| `ledger_current_index` | 数値 - [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用された現在処理中のレジャーバージョンのレジャーインデックス。 |
-| `source_account` | 文字列 - [アドレス](basic-data-types.html#アドレス) | 要求に指定されている支払元アカウント。 |
+| `ledger_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用されたレジャーバージョンのレジャーインデックス。 |
+| `ledger_current_index` | 数値 - [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _（省略される場合があります）_ この応答の生成に使用された現在処理中のレジャーバージョンのレジャーインデックス。 |
+| `source_account` | 文字列 - [アドレス](../../../protocol/data-types/basic-data-types.md#アドレス) | 要求に指定されている支払元アカウント。 |
 | `validated` | ブール値 | _（省略される場合があります）_`true`の場合、検証済みレジャーバージョンからの情報が取り込まれます。 |
 
 **注記:** `deposit_authorized`ステータスが`true`でも、指定の支払元から指定の支払先への送金が可能であるとは保証されません。たとえば、支払先アカウントに指定通貨の[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md)がない場合や、送金に十分な流動性がない場合があります。
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `actMalformed` - 要求の`source_account`フィールドまたは`destination_account`フィールドに指定されている[アドレス](basic-data-types.html#アドレス)のフォーマットが適切ではありません。（入力ミスが含まれていたり、長さが正しくない場合は、チェックサムは失敗します。）
+* `actMalformed` - 要求の`source_account`フィールドまたは`destination_account`フィールドに指定されている[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)のフォーマットが適切ではありません。（入力ミスが含まれていたり、長さが正しくない場合は、チェックサムは失敗します。）
 * `dstActNotFound` - 要求の`destination_account`フィールドがレジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `srcActNotFound` - 要求の`source_account`フィールドがレジャーのアカウントに対応していません。

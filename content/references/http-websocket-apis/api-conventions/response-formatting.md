@@ -18,7 +18,7 @@ The fields of a successful response include:
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
 | `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.md) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
 | `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). [New in: rippled 1.5.0](https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE") |
-| `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
+| `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode](../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
 
 
 ## Example Successful Response
@@ -135,7 +135,7 @@ This warning includes a `details` field with the following fields:
 
 | Field               | Value  | Description                                   |
 |:--------------------|:-------|:----------------------------------------------|
-| `expected_date`     | Number | The time that the first unsupported amendment is expected to become enabled, in [seconds since the Ripple Epoch][]. |
+| `expected_date`     | Number | The time that the first unsupported amendment is expected to become enabled, in [seconds since the Ripple Epoch](../../protocol/data-types/basic-data-types.md#specifying-time). |
 | `expected_date_UTC` | String | The timestamp, in UTC, when the first unsupported amendment is expected to become enabled. |
 
 Due to the variation in ledger close times, these times are approximate. It is also possible that the amendment fails to maintain support from >80% of validators until the specified time, and does not become enabled at the expected time. The server will not become amendment blocked so long as the unsupported amendments do not become enabled.
@@ -172,7 +172,7 @@ Example warning:
 ]
 ```
 
-This warning indicates that the server answering the request is running [Reporting Mode][]. Certain API methods are not available or behave differently because Reporting Mode does not connect to the peer-to-peer network and does not track ledger data that has not yet been validated.
+This warning indicates that the server answering the request is running [Reporting Mode](../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode). Certain API methods are not available or behave differently because Reporting Mode does not connect to the peer-to-peer network and does not track ledger data that has not yet been validated.
 
 It is generally safe to ignore this warning.
 
@@ -184,7 +184,7 @@ It is generally safe to ignore this warning.
 - [Request Formatting](request-formatting.md)
 - [Error Formatting](error-formatting.md) for unsuccessful API responses.
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
     - [Consensus](../../../concepts/consensus-protocol/index.md)
     - [Amendments](../../../concepts/networks-and-servers/amendments.md)
         - [Known Amendments](../../../resources/known-amendments.md)

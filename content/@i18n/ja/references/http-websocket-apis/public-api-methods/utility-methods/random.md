@@ -88,5 +88,5 @@ rippled random
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `internal` - 乱数生成機能に関連している可能性がある内部エラーが発生しました。

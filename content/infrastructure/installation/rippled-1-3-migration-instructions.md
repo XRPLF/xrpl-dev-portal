@@ -13,7 +13,7 @@ This document provides migration steps for upgrading on supported platforms:
 - [CentOS or Red Hat Enterprise Linux (RHEL)](#migration-on-centos-or-red-hat-enterprise-linux-rhel)
 - [Ubuntu Linux](#migration-on-ubuntu-linux)
 
-For other platforms, see the updated instructions for compiling from source. ([Ubuntu](build-run-rippled-ubuntu.html), [macOS](build-run-rippled-macos.html), or [Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017))
+For other platforms, see the updated instructions for compiling from source. ([Ubuntu](build-on-linux-mac-windows.md), [macOS](build-on-linux-mac-windows.md), or [Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017))
 
 
 ## Migration on CentOS or Red Hat Enterprise Linux (RHEL)
@@ -114,7 +114,7 @@ The `rippled` v1.3 package includes an updated auto-update script that works on 
 
 - **[`rippled` v1.3.1 Release Notes](https://github.com/XRPLF/rippled/releases/1.3.1)**
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
     - [Update Automatically on Linux](update-rippled-automatically-on-linux.md)

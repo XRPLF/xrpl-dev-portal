@@ -7,7 +7,7 @@ labels:
 ---
 # rippledサーバーが同期しない
 
-このページでは、[`rippled`サーバー](xrpl-servers.html)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.md)を参照してください。）
+このページでは、[`rippled`サーバー](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.md)を参照してください。）
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
 
@@ -17,7 +17,7 @@ labels:
 ネットワークとの同期は、通常はおよそ5分から15分で完了します。その間に、サーバーは次のようなさまざまなことを行います。
 
 - 推奨バリデータリストを読み込み（例: `vl.ripple.com`）、信頼できるバリデータを判断します。
-- [ピアサーバーを検出](peer-protocol.html#ピアの検出)して接続します。
+- [ピアサーバーを検出](../../concepts/networks-and-servers/peer-protocol.md#ピアの検出)して接続します。
 - 信頼できるバリデータをリッスンして、最近検証されたレジャーハッシュを見つけます。
 - ピアから最新のレジャーを完全にダウンロードし、それを使ってレジャーデータの内部データベースを構築します。
 - 新たにブロードキャストされたトランザクションを収集し、それを進行中のレジャーに適用します。
@@ -58,7 +58,7 @@ labels:
 
 ## 十分な数のピアがない
 
-サーバーが十分な数の[ピアサーバー](../../concepts/networks-and-servers/peer-protocol.md)に接続していない場合、サーバーは十分なデータをダウンロードできず、ネットワークが新しいトランザクションを処理するときに同期がとれなくなる可能性があります。この問題は、ネットワーク接続の信頼性が低い場合や、十分な数の信頼できる固定ピアを追加せずにサーバーを[プライベートサーバー](peer-protocol.html#プライベートピア)として構成している場合に起こる可能性があります。
+サーバーが十分な数の[ピアサーバー](../../concepts/networks-and-servers/peer-protocol.md)に接続していない場合、サーバーは十分なデータをダウンロードできず、ネットワークが新しいトランザクションを処理するときに同期がとれなくなる可能性があります。この問題は、ネットワーク接続の信頼性が低い場合や、十分な数の信頼できる固定ピアを追加せずにサーバーを[プライベートサーバー](../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)として構成している場合に起こる可能性があります。
 
 [peersメソッド][]を使用して、サーバーの現在のピアについての情報を取得します。ピアの数が10または11の場合、ファイアウォールが着信ピア接続をブロックしていることを示しています。[ポートフォワーディングを設定](../configuration/peering/forward-ports-for-peering.md)して、より多くの着信接続を許可します。サーバーがプライベートサーバーとして構成されている場合は、構成ファイルの`[ips_fixed]`スタンザの内容と構文を再度確認し、可能であればプロキシと公開ハブをさらに追加します。
 
@@ -69,7 +69,7 @@ labels:
 
 テストとして、十分な空き容量があれば、サーバーのデータベースへのパスを一時的に変更することで、現行のレジャーをダウンロードし直して、別の設定を保存できます。
 
-**注記:** データベースのパスを変更した場合、サーバーはサーバーの現在の[ノードキーペア](peer-protocol.html#ノードキーペア)や[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)など、保存されている一部の設定を読み込めません。データベースのパスを変更することでサーバーの同期の問題が解決した場合は、これらの設定の一部を再作成することをお勧めします。
+**注記:** データベースのパスを変更した場合、サーバーはサーバーの現在の[ノードキーペア](../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)や[ピアリザベーション](../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)など、保存されている一部の設定を読み込めません。データベースのパスを変更することでサーバーの同期の問題が解決した場合は、これらの設定の一部を再作成することをお勧めします。
 
 1. `rippled`サーバーが稼働中の場合は停止します。
 
@@ -95,7 +95,7 @@ labels:
      /var/lib/rippled/db_new
     ```
 
-    {% partial file="/_snippets/conf-file-location.ja.md" /%}
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 4. `rippled`サーバーを再起動します。
 
@@ -109,9 +109,9 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
     - [ピアプロトコル](../../concepts/networks-and-servers/peer-protocol.md)
-    - [技術に関するよくある質問](technical-faq.html)
+    - [技術に関するよくある質問](../../faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
     - [容量の計画](../installation/capacity-planning.md)

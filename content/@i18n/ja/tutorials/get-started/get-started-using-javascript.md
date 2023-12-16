@@ -21,7 +21,7 @@ showcase_icon: assets/img/logos/javascript.svg
 
 * XRP Ledgerベースのアプリケーションの基本構成要素。
 * xrpl.jsを使ったXRP Ledgerへの接続方法。
-* xrpl.jsを使った[テストネット](xrp-testnet-faucet.html)でのウォレット生成方法。
+* xrpl.jsを使った[テストネット](/resources/dev-tools/xrp-faucets)でのウォレット生成方法。
 * `xrpl.js`ライブラリを使った、XRP Ledgerアカウント情報の検索方法。
 * How to put these steps together to create a simple JavaScript app or web-app.
 
@@ -126,7 +126,7 @@ const xrpl = require("xrpl")
 const test_wallet = xrpl.Wallet.generate()
 ```
 
-また、[base58](base58-encodings.html)でエンコードされたシードをすでに持っている場合は、次のようにしてそのシードからWalletをインスタンス化することができます。
+また、[base58](../../references/protocol/data-types/base58-encodings.md)でエンコードされたシードをすでに持っている場合は、次のようにしてそのシードからWalletをインスタンス化することができます。
 
 ```js
 const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // テスト用シークレット、本番環境では使用しないでください
@@ -159,7 +159,7 @@ XRP Ledgerの[コンセンサス プロセス](../../concepts/consensus-protocol
 ## 関連記事
 
 - **概念:**
-    - [XRP Ledger Overview](xrp-ledger-overview.html)
+    - [XRP Ledger Overview](/about/)
     - [クライアントライブラリ](../../references/client-libraries.md)
 - **Tutorials:**
     - [XRPの送信](send-xrp.md)
@@ -167,5 +167,5 @@ XRP Ledgerの[コンセンサス プロセス](../../concepts/consensus-protocol
     - [`xrpl.js` リファレンス](https://js.xrpl.org/)
     - [Public API Methods](../../references/http-websocket-apis/public-api-methods/index.md)
     - [API規約](../../references/http-websocket-apis/api-conventions/index.md)
-        - [base58 エンコード](base58-encodings.html)
+        - [base58 エンコード](../../references/protocol/data-types/base58-encodings.md)
     - [トランザクションフォーマット](../../references/protocol/transactions/index.md)

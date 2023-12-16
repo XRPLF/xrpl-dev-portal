@@ -23,9 +23,9 @@ labels:
 | `temBAD_OFFER`                | [OfferCreateトランザクション][]で無効なオファーが指定されています（XRPをXRP自身と取引するオファー、マイナスの額のオファーなど）。 |
 | `temBAD_PATH`                 | [Paymentトランザクション][]の1つ以上の[パス](../../../../concepts/tokens/fungible-tokens/paths.md)が誤って指定されています。例えば、XRPのイシュアーが含まれていたり、アカウントが異なる方法で指定されたりするなど。 |
 | `temBAD_PATH_LOOP`           | [Paymentトランザクション][]で[パス](../../../../concepts/tokens/fungible-tokens/paths.md)の1つがループとしてマークされているため、限られた時間内に処理できません。 |
-| `temBAD_SEND_XRP_LIMIT`     | [Paymentトランザクション][]で、XRP間の直接支払に[tfLimitQuality](payment.html#クオリティの制限)フラグが使用されましたが、XRP間の支払いでは通貨の取引は行われません。 |
+| `temBAD_SEND_XRP_LIMIT`     | [Paymentトランザクション][]で、XRP間の直接支払に[tfLimitQuality](../types/payment.md#クオリティの制限)フラグが使用されましたが、XRP間の支払いでは通貨の取引は行われません。 |
 | `temBAD_SEND_XRP_MAX`       | [Paymentトランザクション][]で、XRP間の直接支払に`SendMax`フィールドが指定されていますが、XRPの送金ではSendMaxは不要です。（SendMaxでXRPが有効となるのは、宛先への`Amount`がXRPではない場合のみです。） |
-| `temBAD_SEND_XRP_NO_DIRECT` | [Paymentトランザクション][]で、XRP間の直接支払に[tfNoDirectRipple](payment.html#paymentのフラグ)フラグが使用されていますが、XRP間の支払いは常に直接行われます。 |
+| `temBAD_SEND_XRP_NO_DIRECT` | [Paymentトランザクション][]で、XRP間の直接支払に[tfNoDirectRipple](../types/payment.md#paymentのフラグ)フラグが使用されていますが、XRP間の支払いは常に直接行われます。 |
 | `temBAD_SEND_XRP_PARTIAL`   | [Paymentトランザクション][]で、XRP間の直接支払に [tfPartialPayment](../../../../concepts/payment-types/partial-payments.md)フラグが使用されていますが、XRP間の直接支払では常に全額が送金されます。 |
 | `temBAD_SEND_XRP_PATHS`     | [Paymentトランザクション][]で、XRP送金時の`Paths`が指定されていますが、XRP間の支払いは常に直接行われます。 |
 | `temBAD_SEQUENCE`             | トランザクションは、トランザクション自体の`Sequence`番号よりも大きいシーケンス番号を参照します。例えば、取り消したいオファーは、そのオファーを取り消すトランザクションよりも後に置く必要があります。 |
@@ -36,7 +36,7 @@ labels:
 | `temDST_IS_SRC`              | トランザクションで宛先アドレスがトランザクションの送信元`Account`として誤って指定されていました。これにはトラストライン（支払先アドレスは`LimitAmount`の`issuer`フィールド）とPayment Channel（支払先アドレスは`Destination`フィールド）などがあります。 |
 | `temDST_NEEDED`               | トランザクションで宛先が誤って省略されていました。これは、[Paymentトランザクション][]の`Destination`フィールド、または`TrustSet`トランザクションの`LimitAmount`フィールドの`issuer`サブフィールドで起こり得ます。 |
 | `temINVALID`                   | その他の理由により、トランザクションは無効です。例えば、トランザクションIDのフォーマットや署名の形式が正しくないなど、トランザクションを解釈する過程で何らかの誤った処理が発生した可能性があります。 |
-| `temINVALID_FLAG`             | トランザクションに指定されている[フラグ](transaction-common-fields.html#flagsフィールド)が存在していないか、または矛盾するフラグの組み合わせが指定されています。 |
+| `temINVALID_FLAG`             | トランザクションに指定されている[フラグ](../common-fields.md#flagsフィールド)が存在していないか、または矛盾するフラグの組み合わせが指定されています。 |
 | `temMALFORMED`                 | トランザクションのフォーマットで不明な問題が発生しました。 |
 | `temREDUNDANT`                 | トランザクションは処理を行いません。例えば、送信側アカウントに支払いを直接送金する場合や、同一イシュアーの同一通貨を売買するオファーを作成する場合などです。 |
 | `temREDUNDANT_SEND_MAX`      | [削除: rippled 0.28.0](https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_RED") |

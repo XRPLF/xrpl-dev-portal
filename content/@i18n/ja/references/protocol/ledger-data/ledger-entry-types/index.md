@@ -8,6 +8,6 @@ labels:
 ---
 # レジャーエントリのタイプ
 
-{% partial file="/_snippets/ledger-objects-intro.ja.md" /%}
+{% partial file="/_snippets/ledger-objects-intro.md" /%}
 
 {% child-pages /%}

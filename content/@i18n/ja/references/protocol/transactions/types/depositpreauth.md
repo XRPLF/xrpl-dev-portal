@@ -27,7 +27,7 @@ DepositPreauthトランザクションは別のアカウントに対し、この
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -44,4 +44,4 @@ DepositPreauthトランザクションは別のアカウントに対し、この
 - すでに事前承認済みのアカウントを事前承認しようとすると、[`tecDUPLICATE`](../transaction-results/tec-codes.md)で失敗します。
 - 事前承認されていないアカウントを承認解除しようとすると、[`tecNO_ENTRY`](../transaction-results/tec-codes.md)で失敗します。
 - レジャーで資金が供給されていないアドレスを事前承認しようとすると、[`tecNO_TARGET`](../transaction-results/tec-codes.md)で失敗します。
-- 承認を追加すると[DepositPreauthオブジェクト](../../ledger-data/ledger-entry-types/depositpreauth.md)がレジャーに追加されて、[所有者の必要準備金](reserves.html#所有者準備金)に反映されます。トランザクションの送信者に、増額された準備金の支払いに十分なXRPがない場合、トランザクションは[`tecINSUFFICIENT_RESERVE`](../transaction-results/tec-codes.md)で失敗します。アカウントの送信者の所有オブジェクトが最大数に達している場合、トランザクションは[`tecDIR_FULL`](../transaction-results/tec-codes.md)で失敗します。
+- 承認を追加すると[DepositPreauthオブジェクト](../../ledger-data/ledger-entry-types/depositpreauth.md)がレジャーに追加されて、[所有者の必要準備金](../../../../concepts/accounts/reserves.md#所有者準備金)に反映されます。トランザクションの送信者に、増額された準備金の支払いに十分なXRPがない場合、トランザクションは[`tecINSUFFICIENT_RESERVE`](../transaction-results/tec-codes.md)で失敗します。アカウントの送信者の所有オブジェクトが最大数に達している場合、トランザクションは[`tecDIR_FULL`](../transaction-results/tec-codes.md)で失敗します。

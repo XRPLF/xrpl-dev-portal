@@ -10,7 +10,7 @@ labels:
 ---
 # Enable No Freeze
 
-If you [issue tokens](issued-currencies.html) in the XRP Ledger, can enable the [No Freeze setting](../../concepts/tokens/fungible-tokens/freezes.md#no-freeze) to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.) This tutorial shows how to enable the No Freeze setting on your issuing account.
+If you [issue tokens](../../concepts/tokens/index.md) in the XRP Ledger, can enable the [No Freeze setting](../../concepts/tokens/fungible-tokens/freezes.md#no-freeze) to permanently limit your own ability to use the token freezing features of the XRP Ledger. (As a reminder, this only applies to issued tokens, not XRP.) This tutorial shows how to enable the No Freeze setting on your issuing account.
 
 ## Prerequisites
 

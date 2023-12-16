@@ -9,7 +9,7 @@ labels:
 # wallet_propose
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-`wallet_propose`メソッドを使用して、キーペアとXRP Ledgerアドレスを生成します。このコマンドは単にキーとアドレス値を生成し、XRP Ledger自体には何ら影響しません。レジャー上で資金供給済みのアドレスになるには、そのアドレスで、[必要準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPの[Paymentトランザクションを受け取る](accounts.html#アカウントの作成)必要があります。
+`wallet_propose`メソッドを使用して、キーペアとXRP Ledgerアドレスを生成します。このコマンドは単にキーとアドレス値を生成し、XRP Ledger自体には何ら影響しません。レジャー上で資金供給済みのアドレスになるには、そのアドレスで、[必要準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPの[Paymentトランザクションを受け取る](../../../../concepts/accounts/accounts.md#アカウントの作成)必要があります。
 
 *`wallet_propose`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*(このコマンドは、アカウントの機密情報を求めてネットワーク上の伝送情報をスニッフィングする人々から守るためにadminコマンドとされています。adminコマンドは通常、外部ネットワーク上で伝送されることはありません。）
 
@@ -80,9 +80,9 @@ rippled wallet_propose masterpassphrase
 
 | `Field`      | 型     | 説明                                                 |
 |:-------------|:-------|:-----------------------------------------------------|
-| `key_type` | 文字列 | このキーペアの導出に使用する[署名アルゴリズム](cryptographic-keys.html#署名アルゴリズム)。有効な値は`ed25519`と`secp256k1`（すべて小文字）です。デフォルトは`secp256k1`です。 |
-| `passphrase` | 文字列 | _（省略可）_ このシード値からキーペアとアドレスを生成します。この値は、[16進数][]、XRP Ledgerの[base58](base58-encodings.html)フォーマット、[RFC-1751][]、または任意の文字列でフォーマットできます。`seed`または`seed_hex`とともに使用することはできません。 |
-| `seed` | 文字列 | _（省略可能）_ このシード値からXRP Ledgerの[base58](base58-encodings.html)エンコードフォーマットでキーペアとアドレスを生成します。`passphrase`または`seed_hex`とともに使用することはできません。 |
+| `key_type` | 文字列 | このキーペアの導出に使用する[署名アルゴリズム](../../../../concepts/accounts/cryptographic-keys.md#署名アルゴリズム)。有効な値は`ed25519`と`secp256k1`（すべて小文字）です。デフォルトは`secp256k1`です。 |
+| `passphrase` | 文字列 | _（省略可）_ このシード値からキーペアとアドレスを生成します。この値は、[16進数][]、XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマット、[RFC-1751][]、または任意の文字列でフォーマットできます。`seed`または`seed_hex`とともに使用することはできません。 |
+| `seed` | 文字列 | _（省略可能）_ このシード値からXRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)エンコードフォーマットでキーペアとアドレスを生成します。`passphrase`または`seed_hex`とともに使用することはできません。 |
 | `seed_hex` | 文字列 | _（省略可能）_ このシード値から[16進数][]形式でキーペアとアドレスを生成します。`passphrase`または`seed`とともに使用することはできません。 |
 
 以下のフィールドのうち**1つ**を指定する必要があります。`passphrase`、`seed`、または`seed_hex`。3つすべてを省略すると、`rippled`によってランダムシードが使用されます。
@@ -91,7 +91,7 @@ rippled wallet_propose masterpassphrase
 
 #### シードの指定
 
-ほとんどの場合、強力な乱数ソースから生成されたシード値を使用する必要があります。あるアドレスのシード値を知っている人は、[そのアドレスで署名されたトランザクションを送信する](transactions.html#トランザクションの承認)すべての権限を持っています。一般的に、ランダムシードの生成には、このコマンドにパラメーターを指定しないで実行する方法が適しています。
+ほとんどの場合、強力な乱数ソースから生成されたシード値を使用する必要があります。あるアドレスのシード値を知っている人は、[そのアドレスで署名されたトランザクションを送信する](../../../../concepts/transactions/index.md#トランザクションの承認)すべての権限を持っています。一般的に、ランダムシードの生成には、このコマンドにパラメーターを指定しないで実行する方法が適しています。
 
 以下の場合には、既知のシードを指定します。
 
@@ -100,7 +100,7 @@ rippled wallet_propose masterpassphrase
 
 シードは、以下のどのフォーマットでも指定できます。
 
-* XRP Ledgerの[base58](base58-encodings.html)フォーマットのシークレットキー文字列。例: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`。
+* XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマットのシークレットキー文字列。例: `snoPBrXtMeMyMHUVTgbuqAfg1SUTb`。
 * [RFC-1751][]フォーマット文字列（secp256k1キーペアのみ）。例: `I IRE BOND BOW TRIO LAID SEAT GOAL HEN IBIS IBIS DARE`。
 * 128ビットの[16進数][]文字列。例: `DEDCE9CE67B451D852FD4E846FCDE31C`。
 * シード値として使用する任意の文字列。例: `masterpassphrase`。
@@ -176,12 +176,12 @@ Connecting to 127.0.0.1:5005
 
 | `Field`           | 型     | 説明                                            |
 |:------------------|:-------|:------------------------------------------------|
-| `key_type` | 文字列 | このキーペアの導出に使用された[署名アルゴリズム](cryptographic-keys.html#署名アルゴリズム)。有効な値は`ed25519`と`secp256k1`（すべて小文字）です。 |
-| `master_seed` | 文字列 | これはキーペアの秘密鍵です。このアカウントに関するその他のあらゆる情報が、マスターシードからXRP Ledgerの[base58](base58-encodings.html)エンコード文字列フォーマットで引き出されます。通常、このフォーマットのキーを使用してトランザクションに署名します。 |
+| `key_type` | 文字列 | このキーペアの導出に使用された[署名アルゴリズム](../../../../concepts/accounts/cryptographic-keys.md#署名アルゴリズム)。有効な値は`ed25519`と`secp256k1`（すべて小文字）です。 |
+| `master_seed` | 文字列 | これはキーペアの秘密鍵です。このアカウントに関するその他のあらゆる情報が、マスターシードからXRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)エンコード文字列フォーマットで引き出されます。通常、このフォーマットのキーを使用してトランザクションに署名します。 |
 | `master_seed_hex` | 文字列 | 16進数形式のマスターシード。単純で広く支持されている秘密鍵表示法。トランザクションの署名に使用できます。 |
 | `master_key` | 文字列 | **廃止予定** [RFC-1751][]形式のマスターシード。覚えやすく書き留めやすい秘密鍵。トランザクションの署名に使用できます。**注記:** `rippled`の実装では、RFC-1751からデコードした後、RFC-1751にエンコードする前に、キーのバイト順序が逆になります。別のRFC-1751実装を使用して、XRP Ledgerで使用するキーの読み書きを行う場合は、同様にして、`rippled`のRFC-1751エンコーディングとの互換性を保つ必要があります。 |
-| `account_id` | 文字列 | XRP Ledgerの[base58](base58-encodings.html)フォーマットで作成されたアカウントの[アドレス](basic-data-types.html#アドレス)。これは公開鍵ではありませんが、公開鍵を2回ハッシュ化したものです。チェックサムも持っているため、タイプミスした場合はほぼ間違いなく無効なアドレスとみなされ、有効だが異なるアドレスとはみなされません。これはXRP LedgerのアカウントのプライマリIDです。支払いを受けるときにこれを人に伝えたり、トランザクションにおいて、自身や、支払先、委託先識別するのに使用します。[マルチシグリスト](../../../../concepts/accounts/multi-signing.md)でもこれを使用して、他の署名者を識別します。 |
-| `public_key` | 文字列 | XRP Ledgerの[base58](base58-encodings.html)エンコード文字列フォーマットで作成された、キーペアの公開鍵。`master_seed`から生成されます。 |
+| `account_id` | 文字列 | XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)フォーマットで作成されたアカウントの[アドレス](../../../protocol/data-types/basic-data-types.md#アドレス)。これは公開鍵ではありませんが、公開鍵を2回ハッシュ化したものです。チェックサムも持っているため、タイプミスした場合はほぼ間違いなく無効なアドレスとみなされ、有効だが異なるアドレスとはみなされません。これはXRP LedgerのアカウントのプライマリIDです。支払いを受けるときにこれを人に伝えたり、トランザクションにおいて、自身や、支払先、委託先識別するのに使用します。[マルチシグリスト](../../../../concepts/accounts/multi-signing.md)でもこれを使用して、他の署名者を識別します。 |
+| `public_key` | 文字列 | XRP Ledgerの[base58](../../../protocol/data-types/base58-encodings.md)エンコード文字列フォーマットで作成された、キーペアの公開鍵。`master_seed`から生成されます。 |
 | `public_key_hex` | 文字列 | これは16進数で作成されたキーペアの公開鍵です。`master_seed`から生成されます。トランザクションの署名を検証する場合、`rippled`にはこの公開鍵が必要です。そのため、署名されたトランザクションのフォーマットの`SigningPubKey`フィールドには公開鍵が入力されています。 |
 | `warning` | 文字列 | （削除される可能性あり）要求にシード値を指定した場合、このフィールドに安全でない可能性があるという警告が表示されます。[新規: rippled 0.32.0](https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE") |
 
@@ -196,6 +196,6 @@ Connecting to 127.0.0.1:5005
 
 ### 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 * `invalidParams` - 1つ以上のフィールドが不正に指定されています。
 * `badSeed` - 要求には、空の文字列やXRP Ledgerアドレスに似た文字列などの許可されないシード値が（`passphrase`、`seed`、または`seed_hex`フィールド内に）指定されています。

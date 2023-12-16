@@ -21,7 +21,7 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `xrpl-py`.
-* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `xrpl-py`.
+* How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `xrpl-py`.
 * How to use the `xrpl-py` library to look up information about an account on the XRP Ledger.
 * How to put these steps together to create a Python app.
 
@@ -84,7 +84,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../concepts/accounts/accounts.md#creating-accounts) to meet the [account reserve](../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger.
 
-For testing and development purposes, you can use the [XRP Faucets](xrp-testnet-faucet.html) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
+For testing and development purposes, you can use the [XRP Faucets](/resources/dev-tools/xrp-faucets) to generate keys and fund the account on the Testnet or Devnet. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md). Another difference in production is that XRP has real worth, so you can't get it for free from a faucet.
 
 To create and fund an account on the Testnet, `xrpl-py` provides the [`generate_faucet_wallet`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.wallet.html#xrpl.wallet.generate_faucet_wallet) method:
 
@@ -199,7 +199,7 @@ The response fields that you want to inspect in most cases are:
 
 * `account_data.Sequence` — This is the sequence number of the next valid transaction for the account. You need to specify the sequence number when you prepare transactions. With `xrpl-py`, you can use the [`get_next_valid_seq_number`](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.account.html#xrpl.account.get_next_valid_seq_number) to get this automatically from the XRP Ledger. See an example of this usage in the project [README](https://github.com/XRPLF/xrpl-py#serialize-and-sign-transactions).
 
-* `account_data.Balance` — This is the account's balance of [XRP, in drops][]. You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
+* `account_data.Balance` — This is the account's balance of [XRP, in drops](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts). You can use this to confirm that you have enough XRP to send (if you're making a payment) and to meet the [current transaction cost](../../concepts/transactions/transaction-cost.md#current-transaction-cost) for a given transaction.
 
 * `validated` — Indicates whether the returned data is from a [validated ledger](../../concepts/ledgers/open-closed-validated-ledgers.md). When inspecting transactions, it's important to confirm that [the results are final](../../concepts/transactions/finality-of-results/index.md) before further processing the transaction. If `validated` is `true` then you know for sure the results won't change. For more information about best practices for transaction processing, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 

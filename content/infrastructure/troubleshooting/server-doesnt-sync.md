@@ -7,7 +7,7 @@ labels:
 ---
 # rippled Server Doesn't Sync
 
-This page explains possible reasons [a `rippled` server](xrpl-servers.html) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
+This page explains possible reasons [a `rippled` server](../../concepts/networks-and-servers/index.md) may start successfully, but get stuck in a ["connected" state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md) without ever fully connecting to the network. (If the server crashes during or shortly after startup, see [Server Won't Start](server-wont-start.md) instead.)
 
 These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
 
@@ -69,7 +69,7 @@ In rare cases, corrupt data saved in your `rippled` server's internal databases 
 
 As a test, you can temporarily change the paths to your server's databases as long as you have enough free space to re-download the current ledger and store other settings.
 
-**Note:** When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair][] and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.
+**Note:** When you change the database paths, the server does not load some saved settings, such as the server's current [node key pair](../../concepts/networks-and-servers/peer-protocol.md#node-key-pair) and [peer reservations](../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations). If changing the database paths fixes your server' syncing problems, you may want to re-create some of these settings.
 
 1. Stop the `rippled` server if it is running.
 
@@ -109,9 +109,9 @@ As a test, you can temporarily change the paths to your server's databases as lo
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Peer Protocol](../../concepts/networks-and-servers/peer-protocol.md)
-    - [Technical FAQ](technical-faq.html)
+    - [Technical FAQ](../../faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)

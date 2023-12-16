@@ -50,7 +50,7 @@ rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsf
 
 | `Field`      | 型   　| 説明                               |
 |:-------------|:------|:-----------------------------------|
-| `public_key` | 文字列 | 検索するバリデータの[base58](base58-encodings.html)エンコードされた公開鍵。マスター公開鍵あるいはエフェメラル公開鍵を指定します。 |
+| `public_key` | 文字列 | 検索するバリデータの[base58](../../../protocol/data-types/base58-encodings.md)エンコードされた公開鍵。マスター公開鍵あるいはエフェメラル公開鍵を指定します。 |
 
 
 ### レスポンスのフォーマット
@@ -138,13 +138,13 @@ Connecting to 127.0.0.1:5005
 | `Field`         | 型    | 説明                                       |
 |:----------------|:------|:--------------------------------------------------|
 | `domain`        | 文字列 | このバリデータが関連していると示すドメイン名。マニフェストにドメインが含まれていない場合、これは空文字列になります。 |
-| `ephemeral_key` | 文字列 | このバリデータのエフェメラル公開鍵を、[base58](base58-encodings.html)で指定します。 |
-| `master_key`    | 文字列 | このバリデータのマスター公開鍵を、[base58](base58-encodings.html)で指定します。 |
+| `ephemeral_key` | 文字列 | このバリデータのエフェメラル公開鍵を、[base58](../../../protocol/data-types/base58-encodings.md)で指定します。 |
+| `master_key`    | 文字列 | このバリデータのマスター公開鍵を、[base58](../../../protocol/data-types/base58-encodings.md)で指定します。 |
 | `seq`           | 数値   | このマニフェストのシーケンス番号。この番号は、バリデータのオペレータがバリデータのトークンを更新してエフェメラルキーをローテーションしたり、設定を変更したりするたびに増加します。 |
 
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 - `invalidParams` - `public_key`フィールドが見つからないか、正しく指定されていません。
 - `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。

@@ -44,7 +44,7 @@ rippled ledger_closed
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_closed)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_closed)
 
 This method accepts no parameters.
 
@@ -99,9 +99,9 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`        | Type             | Description                              |
 |:---------------|:-----------------|:-----------------------------------------|
-| `ledger_hash`  | String           | The unique [Hash][] of this ledger version, in hexadecimal. |
-| `ledger_index` | Unsigned Integer | The [ledger index][] of this ledger version.           |
+| `ledger_hash`  | String           | The unique [Hash](../../../protocol/data-types/basic-data-types.md#hashes) of this ledger version, in hexadecimal. |
+| `ledger_index` | Unsigned Integer | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of this ledger version.           |
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

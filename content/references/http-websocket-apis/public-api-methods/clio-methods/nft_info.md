@@ -48,8 +48,8 @@ The request contains the following parameters:
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
 | `nft_id`       | String                     | A unique identifier for the non-fungible token (NFT). |
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically.  Do not specify the `ledger_index` as `closed` or `current`; doing so forwards the request to the P2P `rippled` server and the `nft_info` API is not available on `rippled`. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 
 If you do not specify a ledger version, Clio uses the latest validated ledger.
 
@@ -129,7 +129,7 @@ The response follows the [standard format](../../api-conventions/response-format
 | `Field`                           | Type            | Description          |
 |:----------------------------------|:----------------|:---------------------|
 | `nft_id`                          | String          | A unique identifier for the non-fungible token (NFT). |
-| `ledger_index`                    | Integer         | The [ledger index][] of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted (created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger. |
+| `ledger_index`                    | Integer         | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the most recent ledger version where the state of this NFT was modified, as in the NFT was minted (created), changed ownership (traded), or burned (destroyed). The information returned contains whatever happened most recently compared to the requested ledger. |
 | `owner`                           | String          | The account ID of this NFT's owner at this ledger index. |
 | `is_burned`                       | Boolean         | Returns `true` if the NFT is burned at this ledger, or `false` otherwise. |
 | `flags `                          | Integer         | The flag set of this NFT. |
@@ -142,4 +142,4 @@ The response follows the [standard format](../../api-conventions/response-format
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

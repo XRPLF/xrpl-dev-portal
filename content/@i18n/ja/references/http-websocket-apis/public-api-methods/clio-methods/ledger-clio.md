@@ -33,8 +33,8 @@ Clioサーバはデフォルトで検証済みのレジャーデータを返す�
 
 | `Field`        | 型                    | 説明                    |
 |:---------------|:----------------------|:-------------------------------|
-| `ledger_hash`  | [ハッシュ](basic-data-types.html#ハッシュ)           | _(省略可)_ 使用するレジャーバージョンの20バイトの16進文字列。([レジャーの指定](basic-data-types.html#レジャーの指定)ご覧ください。)  |
-| `ledger_index` | [レジャーインデックス](basic-data-types.html#レジャーインデックス) | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。([レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください) |
+| `ledger_hash`  | [ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)           | _(省略可)_ 使用するレジャーバージョンの20バイトの16進文字列。([レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)ご覧ください。)  |
+| `ledger_index` | [レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス) | _(省略可)_ 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)、またはレジャーを自動的に選択するためのショートカット文字列。([レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください) |
 | `transactions` | 真偽値                 | _(省略可)_ `true`の場合、指定されたレジャーバージョンのトランザクションに関する情報が返されます。デフォルトでは`false`です。レジャーバージョンを指定しない場合は無視されます。 |
 | `expand`       | 真偽値                 | _(省略可)_ ハッシュのみではなく、トランザクション/アカウントの完全な情報がJSONフォーマットで提供されます。デフォルトでは`false`です。トランザクション、アカウント、またはその両方をリクエストしない場合は無視されます。 |
 | `owner_funds`  | 真偽値                 | _(省略可)_ `true`の場合、応答のOfferCreateトランザクションのメタデータに`owner_funds`フィールドが含まれます。デフォルトでは`false`です。トランザクションが含まれておらず、`expand`がtrueではない場合には無視されます。 |
@@ -77,23 +77,23 @@ Clioの`ledger`コマンドは、[rippledのledgerコマンド](../ledger-method
 | `ledger.account_hash`          | 文字列      | このレジャーのすべてのアカウントの状態情報のハッシュ値。 |
 | `ledger.accountState`          | 配列        | (リクエストで指定がない場合省略) このレジャーのすべての[アカウント状態情報](../../../protocol/ledger-data/index.md)(16進数) |
 | `ledger.close_flags`           | 数値        | このレジャーの[クローズに関するフラグ](ledger-header.html#close-flags)のビットマップ。 |
-| `ledger.close_time`            | 数値        | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)）。 |
+| `ledger.close_time`            | 数値        | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数](../../../protocol/data-types/basic-data-types.md#時間の指定)）。 |
 | `ledger.close_time_human`      | 文字列      | 人間が読めるフォーマットでのこのレジャーが閉鎖された時刻。常にUTCタイムゾーンを使用します。 |
 | `ledger.close_time_resolution` | 数値        | レジャー閉鎖時刻が丸められる秒数の範囲。 |
 | `ledger.closed`                | 真偽値      | このレジャーが閉鎖されているかどうか。 |
 | `ledger.ledger_hash`           | 文字列      | レジャー全体の一意の識別用ハッシュ。 |
-| `ledger.ledger_index`          | 文字列      | このレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。整数を引用符で囲んだ形式で示されます。 |
+| `ledger.ledger_index`          | 文字列      | このレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。整数を引用符で囲んだ形式で示されます。 |
 | `ledger.parent_close_time`     | 数値        | 前のレジャーが閉鎖された時刻。 |
 | `ledger.parent_hash`           | 文字列      | このレジャーの直前のレジャーの一意の識別用ハッシュ。 |
 | `ledger.total_coins`           | 文字列      | ネットワークのXRPの合計（drop数）。整数を引用符で囲んだ形式で示されます。（トランザクションコストによりXRPが焼却されると、この値は減少します。） |
 | `ledger.transaction_hash`      | 文字列      | このレジャーに記録されているトランザクション情報のハッシュ（16進数） |
-| `ledger.transactions`          | 配列        | (リクエストで指定がない場合省略) このレジャーバージョンで適用されたトランザクション。デフォルトでは、メンバーはトランザクションの識別用[ハッシュ](basic-data-types.html#ハッシュ)文字列です。リクエストで`expand`がtrueとして指定されている場合は、メンバーはJSONフォーマットまたはバイナリフォーマットでのトランザクションの完全な表現です。フォーマットは、リクエストで`binary`がtrueとして指定されていたかどうかに応じて決まります。 |
+| `ledger.transactions`          | 配列        | (リクエストで指定がない場合省略) このレジャーバージョンで適用されたトランザクション。デフォルトでは、メンバーはトランザクションの識別用[ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)文字列です。リクエストで`expand`がtrueとして指定されている場合は、メンバーはJSONフォーマットまたはバイナリフォーマットでのトランザクションの完全な表現です。フォーマットは、リクエストで`binary`がtrueとして指定されていたかどうかに応じて決まります。 |
 | `ledger_hash`                  | 文字列      | レジャー全体の一意の識別用ハッシュ。 |
-| `ledger_index`                 | 数値        | このレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `ledger_index`                 | 数値        | このレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 | `validated`                    | 真偽値      | _(省略される場合があります)_ `true`の場合、このレジャーは最終バージョンです。省略または `false` の場合、このレジャーのデータは最終版ではありません。 |
 | `diff`                         | オブジェクト | _(リクエストで`diff`パラメータの指定がない場合省略)_ レジャーのトランザクションの一部として追加、変更、または削除されたハッシュの配列を含むオブジェクト。 |
 
-リクエストに`"owner_funds": true`が指定されておりトランザクションが展開されている場合、応答には、各[OfferCreateトランザクション][]の`metaData`オブジェクトの`owner_funds`フィールドが含まれています。このフィールドの目的は、新しい検証済みレジャーごとに[オファーの資金化ステータス](offers.html#オファーのライフサイクル)を容易に追跡できるようにすることです。このフィールドの定義は、[オーダーブックサブスクリプションストリーム](subscribe.html#オーダーブックストリーム)でのこのフィールドのバージョンとはわずかに異なります。
+リクエストに`"owner_funds": true`が指定されておりトランザクションが展開されている場合、応答には、各[OfferCreateトランザクション][]の`metaData`オブジェクトの`owner_funds`フィールドが含まれています。このフィールドの目的は、新しい検証済みレジャーごとに[オファーの資金化ステータス](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を容易に追跡できるようにすることです。このフィールドの定義は、[オーダーブックサブスクリプションストリーム](../subscription-methods/subscribe.md#オーダーブックストリーム)でのこのフィールドのバージョンとはわずかに異なります。
 
 | `Field`       | 値    | 説明                                         |
 |:--------------|:------|:----------------------------------------------------|
@@ -113,6 +113,6 @@ Clioの`ledger`コマンドは、[rippledのledgerコマンド](../ledger-method
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。

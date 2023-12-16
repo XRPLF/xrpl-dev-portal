@@ -6,6 +6,6 @@
 | フィールド   | 値          | 説明         |
 |------------|-------------|-------------|
 | `port`     | 文字列 - 数値 | サーバがリッスンしているポート番号。 |
-| `protocol` | 文字列の配列  | このポートに接続されているプロトコルの一覧。有効なプロトコルには、JSON-RPCの`http`または`https`、WebSocketの`ws`、`ws2`、`wss`、`wss2`、[gRPC](configure-grpc.html)の`grpc`、[XRP Ledgerピアプロトコル](peer-protocol.html)の`peer`があります。 |
+| `protocol` | 文字列の配列  | このポートに接続されているプロトコルの一覧。有効なプロトコルには、JSON-RPCの`http`または`https`、WebSocketの`ws`、`ws2`、`wss`、`wss2`、[gRPC](../infrastructure/configuration/configure-grpc.md)の`grpc`、[XRP Ledgerピアプロトコル](../concepts/networks-and-servers/peer-protocol.md)の`peer`があります。 |
 
 **注記:** ネットワークインフラによっては、ここで報告されるポートやプロトコルが、外部のネットワークからサーバに到達する方法と一致しないことがあります。例えば、TLSがロードバランサやプロキシで終了する場合、サーバはあるポートで`http`と報告するかもしれませんが、外部からはポート443の`https`でしか到達できないかもしれません。

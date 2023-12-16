@@ -7,7 +7,7 @@ labels:
 ---
 # Use a Peer Reservation
 
-A [peer reservation][] is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.
+A [peer reservation](../../../concepts/networks-and-servers/peer-protocol.md#fixed-peers-and-peer-reservations) is a setting that makes a `rippled` server always accept connections from a peer matching the reservation. This page describes how to use peer reservations to keep a consistent peer-to-peer connection between two servers, with the cooperation of the administrators of both servers.
 
 Peer reservations are most useful when the two servers are run by different parties, and the server that receives the incoming connection is a [hub server](../../../concepts/networks-and-servers/rippled-server-modes.md#public-hubs) with many peers. For clarity, these instructions use the following terms:
 

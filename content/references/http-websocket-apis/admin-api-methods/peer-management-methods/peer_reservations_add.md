@@ -55,7 +55,7 @@ The request includes the following parameters:
 
 | `Field`       | Type   | Description                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `public_key`  | String | The [node public key][] of the peer reservation to add a reservation for, in [base58](base58-encodings.html). |
+| `public_key`  | String | The [node public key](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair) of the peer reservation to add a reservation for, in [base58](../../../protocol/data-types/base58-encodings.md). |
 | `description` | String | _(Optional)_ A custom description for the peer reservation. The server truncates descriptions longer than 64 characters when it restarts. |
 
 
@@ -119,9 +119,9 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`    | Type   | Description                                            |
 |:-----------|:-------|:-------------------------------------------------------|
-| `previous` | Object | _(May be omitted)_ The previous entry for the same [node public key][], if there was already a reservation with the same node public key. This object is formatted as a **Peer Reservation Object**, as described below. |
+| `previous` | Object | _(May be omitted)_ The previous entry for the same [node public key](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair), if there was already a reservation with the same node public key. This object is formatted as a **Peer Reservation Object**, as described below. |
 
-If there was not a previous entry for the same [node public key][], the `result` object is empty.
+If there was not a previous entry for the same [node public key](../../../../concepts/networks-and-servers/peer-protocol.md#node-key-pair), the `result` object is empty.
 
 #### Peer Reservation Object
 
@@ -133,7 +133,7 @@ If the `previous` field is provided, it shows the previous status of this peer r
 
 ### Possible Errors
 
-- Any of the [universal error types][].
+- Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
-- `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58](base58-encodings.html) format.
-- `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
+- `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58](../../../protocol/data-types/base58-encodings.md) format.
+- `reportingUnsupported` - ([Reporting Mode](../../../../concepts/networks-and-servers/rippled-server-modes.md#reporting-mode) servers only) This method is not available in Reporting Mode.

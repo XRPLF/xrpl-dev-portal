@@ -7,7 +7,7 @@ labels:
 ---
 # NegativeUNL
 
-_(Added by the [NegativeUNL amendment][].)_
+_(Added by the [NegativeUNL amendment](../../../../resources/known-amendments.md#negativeunl).)_
 
 The `NegativeUNL` ledger entry type contains the current status of the [Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md), a list of trusted validators currently believed to be offline.
 
@@ -49,7 +49,7 @@ Each `DisabledValidator` object represents one disabled validator. In JSON, a `D
 
 | Name                  | JSON Type | [Internal Type](../../binary-format.md) | Description          |
 |:----------------------|:----------|:------------------|:---------------------|
-| `FirstLedgerSequence` | Number    | UInt32            | The [ledger index][] when the validator was added to the Negative UNL. |
+| `FirstLedgerSequence` | Number    | UInt32            | The [ledger index](../../data-types/basic-data-types.md#ledger-index) when the validator was added to the Negative UNL. |
 | `PublicKey`           | String    | Blob              | The master public key of the validator, in hexadecimal. |
 
 

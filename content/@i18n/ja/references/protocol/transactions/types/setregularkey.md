@@ -25,12 +25,12 @@ labels:
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド    | JSONの型  | [内部の型](../../binary-format.md)       | 説明                          |
 |:-------------|:----------|:------------------|:------------------------------|
-| `RegularKey` | 文字列 | AccountID | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス](basic-data-types.html#アドレス)。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
+| `RegularKey` | 文字列 | AccountID | _（省略可）_ アカウントに割り当てるレギュラーキーペアを示すbase-58エンコード[アドレス](../../data-types/basic-data-types.md#アドレス)。省略されている場合は、アカウントから既存のレギュラーキーペアが削除されます。アドレスのマスターキーペアと一致してはなりません。 |
 
 ## 関連項目
 

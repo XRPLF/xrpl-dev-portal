@@ -23,7 +23,7 @@ XRP Ledgerのメインネット上では、**マルチ署名**トランザクシ
 XRP Ledgerでは、以下の条件に該当しない場合にはトランザクションを実行できません。
 
 - 署名自体を除く[トランザクションのすべてのフィールド](../../../references/protocol/transactions/common-fields.md)に署名がなされている。
-- トランザクションの署名に使用されるキーペアが、[そのアカウントの代理としてトランザクションを送信することが承認されている](transactions.html#トランザクションの承認)。
+- トランザクションの署名に使用されるキーペアが、[そのアカウントの代理としてトランザクションを送信することが承認されている](../index.md#トランザクションの承認)。
 - 署名は _正規_ であり、トランザクションの指示に一致している。
 
 署名付きフィールドに変更を加えると、どれほど小さな変更であっても署名が無効となるため、署名自体を除き、トランザクションのいかなる部分にも展性が生じることはありません。ほとんどの場合、署名自体を変更すると常に署名が無効になりますが、以下で説明するような特定の例外があります。
@@ -140,7 +140,7 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
     - [トランザクションの結果の確認](look-up-transaction-results.md)
     - [信頼できるトランザクションの送信](../reliable-transaction-submission.md)
 - **リファレンス:**
-    - [基本的なデータ型 - ハッシュ](basic-data-types.html#ハッシュ)
-    - [トランザクションの共通フィールド](transaction-common-fields.html#グローバルフラグ)
+    - [基本的なデータ型 - ハッシュ](../../../references/protocol/data-types/basic-data-types.md#ハッシュ)
+    - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md#グローバルフラグ)
     - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)
     - [シリアル化フォーマット](../../../references/protocol/binary-format.md)

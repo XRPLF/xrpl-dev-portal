@@ -33,21 +33,21 @@ Paymentは、[アカウントを作成](#アカウントの作成)する唯一�
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_Payment%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227BF105CFE4EFE78ADB63FE4E03A851440551FE189FD4B51CAAD9279C9F534F0E%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
 | フィールド       | JSONの型       | [内部の型](../../binary-format.md) | 説明      |
 |:---------------|:--------------|:------------------|:-----------------|
-| Amount         | [通貨額](basic-data-types.html#通貨額の指定)     | Amount            | 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 |
+| Amount         | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)     | Amount            | 送金する通貨額。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。[**tfPartialPayment**フラグ](#paymentのフラグ)が設定されている場合は、この金額を _上限_ とする金額を送金します。 |
 | Destination    | 文字列         | AccountID         | 支払いを受取るアカウントの一意アドレス。 |
 | DestinationTag | 数値           | UInt32            |  _（省略可）_ 宛先（支払先となる、ホスティングされている受取人）への支払い理由を明確にするための任意のタグ。 |
 | InvoiceID      | 文字列         | Hash256           |  _（省略可）_ この支払いの具体的な理由または識別子を表現する任意の256ビットハッシュ。 |
 | Paths          | パス配列の配列  | PathSet           | （省略可。自動入力可能）このトランザクションに使用される[支払いパス](../../../../concepts/tokens/fungible-tokens/paths.md)の配列。XRP間のトランザクションでは省略する必要があります。 |
-| SendMax        | [通貨額](basic-data-types.html#通貨額の指定)     | Amount            |  _（省略可）_ [送金手数料](../../../../concepts/tokens/transfer-fees.md)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとして消却されるXRP](../../../../concepts/transactions/transaction-cost.md)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。複数通貨間の支払いまたは複数の発行を伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
-| DeliverMin     | [通貨額](basic-data-types.html#通貨額の指定)     | Amount            |  _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
+| SendMax        | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)     | Amount            |  _（省略可）_ [送金手数料](../../../../concepts/tokens/transfer-fees.md)、為替レート、[スリッページ](http://en.wikipedia.org/wiki/Slippage_%28finance%29)を含め、このトランザクションに関して支払い元通貨での負担を許容する上限額。[トランザクションの送信コストとして消却されるXRP](../../../../concepts/transactions/transaction-cost.md)は含めないでください。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。複数通貨間の支払いまたは複数の発行を伴う支払いについては、このフィールドを入力する必要があります。XRP間の支払いでは省略する必要があります。 |
+| DeliverMin     | [通貨額](../../data-types/basic-data-types.md#通貨額の指定)     | Amount            |  _（省略可）_ このトランザクションで送金する、宛先通貨での最少金額。[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の場合のみ有効になります。XRP以外の金額の場合、入れ子フィールドの名前では、アルファベットの小文字のみ使用してください。 |
 
 ## Paymentの種類
 
@@ -71,7 +71,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 
 
-ほとんどの場合、XRP以外の[通貨額](basic-data-types.html#通貨額の指定)の`issuer`フィールドは、金融機関の[発行アドレス](../../../../concepts/accounts/account-types.md)を示しています。ただし、支払いを記述するにあたって、支払いの`Amount`フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
+ほとんどの場合、XRP以外の[通貨額](../../data-types/basic-data-types.md#通貨額の指定)の`issuer`フィールドは、金融機関の[発行アドレス](../../../../concepts/accounts/account-types.md)を示しています。ただし、支払いを記述するにあたって、支払いの`Amount`フィールドと`SendMax`フィールドにある`issuer`フィールドについては、特殊なルールが存在します。
 
 * 2つのアドレス間で、同一の通貨に関して存在する残高は常に1つです。つまり、金額の`issuer`フィールドが実際に表しているのは、イシュアンスを作成したアドレスではなく、イシュアンスを換金する相手方であることがあります。
 * 宛先`Amount`フィールドの`issuer`フィールドが`Destination`アドレスと一致している場合、「宛先が受け入れるあらゆるイシュアー」を意味する特殊なケースとして取り扱われます。これには、他のトラストラインで保持されている宛先によって作成されたイシュアンスに加え、宛先が当該アドレスまでトラストラインを延長しているすべてのアドレスが含まれます。
@@ -81,7 +81,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 Payment型のトランザクションでは、資金供給のないアドレスに対して十分なXRPを送金することで、XRP Ledgerに新規のアカウントを作成できます。資金供給のないアドレスに対するその他のトランザクションは、常に失敗します。
 
-詳細は、[アカウント](accounts.html#アカウントの作成)を参照してください。
+詳細は、[アカウント](../../../../concepts/accounts/accounts.md#アカウントの作成)を参照してください。
 
 ## パス
 
@@ -100,7 +100,7 @@ Payment型のトランザクションでは、資金供給のないアドレス�
 
 ## Paymentのフラグ
 
-Payment型のトランザクションについては、[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)で以下の値が追加でサポートされます。
+Payment型のトランザクションについては、[`Flags`フィールド](../common-fields.md#flagsフィールド)で以下の値が追加でサポートされます。
 
 | フラグの名前         | 16進値        | 10進値        | 説明                  |
 |:-------------------|:-------------|:--------------|:-----------------------------|

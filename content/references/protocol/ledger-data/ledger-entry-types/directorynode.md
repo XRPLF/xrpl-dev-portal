@@ -9,7 +9,7 @@ labels:
 # DirectoryNode
 [[Source]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
-The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](ledger-object-ids.html). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
+The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](../common-fields.md). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 
 There are two kinds of Directories:
 
@@ -93,12 +93,12 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 * The first page of an Offer Directory
 * Later pages of either type
 
-**The first page of an Owner Directory** has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
+**The first page of an Owner Directory** has an ID that is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The Owner Directory space key (`0x004F`)
 * The AccountID from the `Owner` field.
 
-**The first page of an Offer Directory** has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the [SHA-512Half][] of the following values, concatenated in order:
+**The first page of an Offer Directory** has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The Book Directory space key (`0x0042`)
 * The 160-bit currency code from the `TakerPaysCurrency`
@@ -108,7 +108,7 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 
 The lower 64 bits of an Offer Directory's ID represent the `TakerPays` amount divided by `TakerGets` amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.
 
-**If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
+**If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the [SHA-512Half](../../data-types/basic-data-types.md#hashes) of the following values, concatenated in order:
 
 * The DirectoryNode space key (`0x0064`)
 * The ID of the root DirectoryNode

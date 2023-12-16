@@ -24,7 +24,7 @@ In this tutorial, you'll learn:
 
 * The basic building blocks of XRP Ledger-based applications.
 * How to connect to the XRP Ledger using `XRPL_PHP`.
-* How to get an account on the [Testnet](xrp-testnet-faucet.html) using `XRPL_PHP`.
+* How to get an account on the [Testnet](/resources/dev-tools/xrp-faucets) using `XRPL_PHP`.
 * How to use the `XRPL_PHP` library to look up information about an account on the XRP Ledger.
 * How to put these steps together to create a simple application.
 

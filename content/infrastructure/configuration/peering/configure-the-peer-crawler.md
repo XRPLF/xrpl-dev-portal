@@ -8,7 +8,7 @@ labels:
 ---
 # Configure the Peer Crawler
 
-By default, [`rippled` servers](xrpl-servers.html) provide statistics publicly to anyone who asks using the [peer crawler API](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md), to make it easier to track the health and topology of [the XRP Ledger's peer-to-peer network](../../../concepts/networks-and-servers/peer-protocol.md). You can configure your server to provide more or less information, or to reject peer crawler requests entirely.
+By default, [`rippled` servers](../../../concepts/networks-and-servers/index.md) provide statistics publicly to anyone who asks using the [peer crawler API](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md), to make it easier to track the health and topology of [the XRP Ledger's peer-to-peer network](../../../concepts/networks-and-servers/peer-protocol.md). You can configure your server to provide more or less information, or to reject peer crawler requests entirely.
 
 This document contains steps for two options:
 
@@ -79,7 +79,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
 - **Concepts:**
     - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 - **Tutorials:**
-    - [Manage the rippled Server](manage-the-rippled-server.html)
+    - [Manage the rippled Server](../../installation/install-rippled-on-ubuntu.md)
 - **References:**
     - [server_info method](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)
     - [peers method](../../../references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md)

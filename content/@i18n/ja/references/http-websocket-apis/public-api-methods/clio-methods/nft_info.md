@@ -48,8 +48,8 @@ labels:
 | `Field`        | 型                     | 説明                    |
 |:---------------|:-----------------------|:-----------------------|
 | `nft_id`       | 文字列                  | 非代替性トークン(NFT)の一意の識別子。 |
-| `ledger_hash`  | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
-| `ledger_index` | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)あるいは、レジャーを自動的に選択するためのショートカット文字列。`ledger_index`に`closed`や`current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_info`APIは`rippled`では利用できません。[レジャーの指定](basic-data-types.html#レジャーの指定)をご覧ください）。 |
+| `ledger_hash`  | 文字列                  | _(省略可)_ 使用するレジャーのバージョンを示す20バイトの16進文字列。[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください）。 |
+| `ledger_index` | 文字列 または 符号なし整数 | _(省略可)_ 使用するレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)あるいは、レジャーを自動的に選択するためのショートカット文字列。`ledger_index`に`closed`や`current`を指定しないでください。指定した場合、P2Pの`rippled`サーバにリクエストが転送されますが、`nft_info`APIは`rippled`では利用できません。[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)をご覧ください）。 |
 
 レジャーのバージョンを指定しない場合、Clioは検証済みの最新のレジャーを使用します。
 
@@ -129,11 +129,11 @@ labels:
 | `Field`                           | 型                  | 説明                 |
 |:----------------------------------|:-------------------|:---------------------|
 | `nft_id`                          | 文字列              | 非代替性トークン(NFT)の一意の識別子。 |
-| `ledger_index`                    | 整数                | NFT がミント(作成)された、所有者が変わった(取引された)、バーンされた(破棄された)など、このNFTの状態が変更された最新のレジャーバージョンの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。返される情報には、リクエストされたレジャーと比較して直近に起こったことが含まれます。 |
+| `ledger_index`                    | 整数                | NFT がミント(作成)された、所有者が変わった(取引された)、バーンされた(破棄された)など、このNFTの状態が変更された最新のレジャーバージョンの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。返される情報には、リクエストされたレジャーと比較して直近に起こったことが含まれます。 |
 | `owner`                           | 文字列              | このレジャーインデックスにおけるこのNFTの所有者のアカウントID。 |
 | `is_burned`                       | 真偽値              | NFTがこのレジャーでバーンされていれば`true`を、そうでなければ`false`を返します。 |
 | `flags `                          | 整数                | このNFTのフラグ |
-| `transfer_fee`                    | 整数                | このNFTの送金手数料。送金手数料の詳細については、[NFTokenMintのフィールド](nftokenmint.html#nftokenmint-フィールド)をご覧ください。 |
+| `transfer_fee`                    | 整数                | このNFTの送金手数料。送金手数料の詳細については、[NFTokenMintのフィールド](../../../protocol/transactions/types/nftokenmint.md#nftokenmint-フィールド)をご覧ください。 |
 | `issuer`                          | 文字列              | このNFTの発行者を示すアカウントID。|
 | `nft_taxon`                       | 整数                | このNFTのTaxon。 |
 | `nft_sequence`                    | 整数                | このNFTのシーケンス番号. |
@@ -142,4 +142,4 @@ labels:
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。

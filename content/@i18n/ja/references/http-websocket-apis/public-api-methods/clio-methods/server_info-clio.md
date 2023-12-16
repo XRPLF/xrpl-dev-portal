@@ -586,7 +586,7 @@ labels:
 | `time`                                 | 文字列         | サーバの時計によるUTCでの現在時刻。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
 | `uptime`                               | 数値           | サーバが連続して稼働している秒数。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
 | `amendment_blocked`                    | 真偽値         | _(省略される場合があります)_ Clioサーバが[Amendmentブロック](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-clio-servers)がされているかどうか。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
-| `load_factor`                          | 数値           | サーバが現在実行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数`1000`でリファレンストランザクションコストが10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、[個々のサーバの負荷係数](transaction-cost.html#ローカル負荷コスト)の最高値、クラスターの負荷係数、[オープンレジャーコスト](transaction-cost.html#オープンレジャーコスト)、ネットワーク全体の負荷係数によって決まります。 |
+| `load_factor`                          | 数値           | サーバが現在実行中の、負荷スケーリングされたオープンレジャートランザクションコストを、基本トランザクションコストに適用される乗数として示したもの。例えば、負荷係数`1000`でリファレンストランザクションコストが10 dropである場合、負荷スケーリングされたトランザクションコストは10,000 drop（0.01 XRP）です。負荷係数は、[個々のサーバの負荷係数](../../../../concepts/transactions/transaction-cost.md#ローカル負荷コスト)の最高値、クラスターの負荷係数、[オープンレジャーコスト](../../../../concepts/transactions/transaction-cost.md#オープンレジャーコスト)、ネットワーク全体の負荷係数によって決まります。 |
 | `clio_version`                         | 文字列         | 実行中のClioサーバのバージョン番号。 |
 | `libxrpl_version`                      | 文字列         | このClioサーバがビルドされた`libxrpl`ライブラリのバージョン番号。[新規: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
 | `validation_quorum`                    | 数値           | _(省略される場合があります)_ レジャーバージョンを検証するために必要な、信頼できる検証の最小数。状況によっては、サーバがより多くの検証を要求することもあります。この値は`rippled`から取得します。何らかの理由でClioサーバが`rippled`に接続できない場合、このフィールドはレスポンスから省略されることがあります。 |
@@ -605,7 +605,7 @@ labels:
 | `cache`                                | オブジェクト    | Clioの状態データのキャッシュに関する情報。 |
 | `cache.size`                           | 数値           | 現在キャッシュ内にある状態データオブジェクトの数。 |
 | `cache.is_full`                        | 真偽値         | キャッシュに特定のレジャーのすべての状態データが含まれている場合はtrue、そうでない場合はfalse。[book_offersメソッド][] などの一部の API 呼び出しは、キャッシュが完全な場合、より高速に処理されます。 |
-| `cache.latest_ledger_seq`              | 数値           | キャッシュに保存されている、検証済みの最新のレジャーの[レジャーインデックス](basic-data-types.html#レジャーインデックス)。 |
+| `cache.latest_ledger_seq`              | 数値           | キャッシュに保存されている、検証済みの最新のレジャーの[レジャーインデックス](../../../protocol/data-types/basic-data-types.md#レジャーインデックス)。 |
 | `etl`                                  | オブジェクト    | Clioサーバが接続している`rippled`ソース(ETLソース)。クライアントが`localhost`経由で Clioサーバに接続した場合のみ表示されます。 |
 | `etl.etl_sources`                      | オブジェクト配列 | Clioサーバが接続され、データを抽出する`rippled`ソース(ETLソース)を表示します。 |
 | `etl.etl_sources.validated_range`      | 文字列         | P2Pの`rippled`サーバから取得した有効なレジャーの範囲。 |
@@ -623,4 +623,4 @@ labels:
 
 ## 考えられるエラー
 
-* いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+* いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。

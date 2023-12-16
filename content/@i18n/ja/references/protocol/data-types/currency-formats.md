@@ -96,7 +96,7 @@ XRPを金額なしで記述するには、JSONオブジェクトとして`curren
 
 ## 文字列フォーマット
 
-{% partial file="/_snippets/string-number-formatting.ja.md" /%}
+{% partial file="/_snippets/string-number-formatting.md" /%}
 
 ## XRPの精度
 
@@ -113,7 +113,7 @@ XRP Ledgerのピアツーピアネットワークでトークンの金額を送�
 ## 通貨コード
 [通貨コード]: #通貨コード
 
-{% partial file="/_snippets/data_types/currency_code.ja.md" /%}
+{% partial file="/_snippets/data_types/currency_code.md" /%}
 
 
 
@@ -125,7 +125,7 @@ XRP Ledgerのピアツーピアネットワークでトークンの金額を送�
 - 通貨コードは大文字と小文字を区別します。
 - 通貨コード`XRP`（すべて大文字）は使用できません。ネイティブトークンとしてのXRPは通常、XRP Ledgerプロトコルでは通貨コードを使用しません。
 
-プロトコルレベルでは、このフォーマットは[シリアライズ](serialization.html#通貨コード)され、`0x00`で始まる160ビットのバイナリ値になります。
+プロトコルレベルでは、このフォーマットは[シリアライズ](../binary-format.md#通貨コード)され、`0x00`で始まる160ビットのバイナリ値になります。
 
 ### 非標準通貨コード
 

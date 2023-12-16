@@ -598,12 +598,12 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.hash`             | String          | Unique hash for the ledger, as hexadecimal. |
 | `validated_ledger.reserve_base_xrp` | Number          | Minimum amount of XRP (not drops) necessary for every account to keep in reserve. This may be represented in scientific notation such as `1e-05` for 0.00001. |
 | `validated_ledger.reserve_inc_xrp`  | Number          | Amount of XRP (not drops) added to the account reserve for each object an account owns in the ledger. This may be represented in scientific notation such as `1e-05` for 0.00001. |
-| `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
+| `validated_ledger.seq`              | Number          | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the latest validated ledger. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list expires, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
 | `cache`                             | Object          | Information on Clio's state data cache. |
 | `cache.size`                        | Number          | Number of state data objects currently in the cache. |
 | `cache.is_full`                     | Boolean         | True if cache contains all state data for a specific ledger, false otherwise. Some API calls, such as the [book_offers method](../path-and-order-book-methods/book_offers.md), process much faster when the cache is full. |
-| `cache.latest_ledger_seq`           | Number          | The [ledger index][] of the latest validated ledger stored in the cache. |
+| `cache.latest_ledger_seq`           | Number          | The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the latest validated ledger stored in the cache. |
 | `etl`                               | Object          | The `rippled` sources (ETL sources) that the Clio server is connected to. This is present only if the client connects to the Clio server over `localhost`. |
 | `etl.etl_sources`                   | Object Array    | List the `rippled` sources (ETL sources) that the Clio server is connected to and extracts data from. |
 | `etl.etl_sources.validated_range`   | String          | The validated ledger range retrieved by the P2P `rippled` server. |
@@ -621,4 +621,4 @@ The `info` object may have some arrangement of the following fields:
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).

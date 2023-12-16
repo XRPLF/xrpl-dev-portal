@@ -12,7 +12,7 @@ labels:
 
 成功した場合、トランザクションは[NFTokenOfferオブジェクト][]を作成します。各オファーは、オファーを提示したアカウントの[所有者準備金](../../../../concepts/accounts/reserves.md)に関連づけて1つのオブジェクトとしてカウントされます。
 
-_([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)により追加されました)_
+_([NonFungibleTokensV1_1 amendment](../../../../resources/known-amendments.md#nonfungibletokensv1_1)により追加されました)_
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -27,14 +27,14 @@ _([NonFungibleTokensV1_1 amendment](known-amendments.html#nonfungibletokensv1_1)
 ```
 
 
-{% partial file="/_snippets/tx-fields-intro.ja.md" /%}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型            | [内部の型](../../binary-format.md)        | 説明               |
 |:--------------|:--------------------|:------------------|:-------------------|
 | `Owner`       | 文字列              | AccountID         | _(省略可)_ 対応する`NFToken`の所有者を指定します。トークンの購入オファーである場合、このフィールドは必ず存在し、`Account`フィールドとは異なるものでなければなりません(すでに保有しているトークンの購入オファーは無意味)。トークンの売却オファーである場合、このフィールドは存在してはいけません。所有者は暗黙のうちに`Account`と同じになるからです(すでに保有していないトークンを売却するオファーは無意味)。 |
 | `NFTokenID`     | 文字列              | Hash256           | オファーが参照する`NFToken`オブジェクトを指定します。 |
-| `Amount`      | [通貨額](basic-data-types.html#通貨額の指定) | Amount            | 対応する`NFToken`に対する売却希望額または売却提示額を表します。0を指定することは、トークンの現在の所有者が、誰でも、または`Destination`フィールドで指定されたアカウントに、トークンを無償で譲渡することを意味します。 |
-| `Expiration`  | 数値              | UInt32            | _(省略可)_ オファーが無効となる時間を指定します。値は[Rippleエポック以降の経過秒数](basic-data-types.html#時間の指定)です。 |
+| `Amount`      | [通貨額](../../data-types/basic-data-types.md#通貨額の指定) | Amount            | 対応する`NFToken`に対する売却希望額または売却提示額を表します。0を指定することは、トークンの現在の所有者が、誰でも、または`Destination`フィールドで指定されたアカウントに、トークンを無償で譲渡することを意味します。 |
+| `Expiration`  | 数値              | UInt32            | _(省略可)_ オファーが無効となる時間を指定します。値は[Rippleエポック以降の経過秒数](../../data-types/basic-data-types.md#時間の指定)です。 |
 | `Destination` | 文字列              | AccountID         | _(省略可)_ 存在する場合、このオファーは指定されたアカウントによってのみ受け入れることが可能であることを示します。他のアカウントによってこのオファーを受け入れることはできません。 |
 
 
@@ -54,7 +54,7 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 | エラーコード                    | 説明                                          |
 |:---------------------------------|:------------------------------------------|
 | `temDISABLED`                    | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
-| `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが`NFToken`で[`lsfOnlyXRP`フラグ](nftoken.html#nftoken-フラグ)が有効になっている場合などです。 |
+| `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが`NFToken`で[`lsfOnlyXRP`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効になっている場合などです。 |
 | `temBAD_EXPIRATION`              | 指定された`Expiration`は無効です（例：`0`）。 |
 | `tecDIR_FULL`                    | 送信者がレジャーにすでにあまりにも多くのオブジェクトを所有しているか、またはこのトークンの売買のオファーがあまりにも多く存在しています。 |
 | `tecEXPIRED`                     | 指定された`Expiration`の時間は既に経過しています。 |
@@ -63,7 +63,7 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 | `tecNO_DST`                      | `Destination`に指定されたアカウントがレジャーに存在しません。 |
 | `tecNO_ENTRY`                    | `NFToken`フィールドで指定したアカウントは所有していません。 |
 | `tecNO_ISSUER`                   | `Amount`フィールドで指定した発行者が存在しません。 |
-| `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](nftoken.html#nftoken-フラグ)が有効ではありません。 |
-| `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment][] :not_enabled: が必要です。)_
+| `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効ではありません。 |
+| `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment](../../../../resources/known-amendments.md#disallowincoming) :not_enabled: が必要です。)_
 | `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されている可能性があります。 |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`lsfTransferable`フラグ](nftoken.html#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |

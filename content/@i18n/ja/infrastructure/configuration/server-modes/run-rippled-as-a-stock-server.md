@@ -36,8 +36,8 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [XRP Ledgerの概要](xrp-ledger-overview.html)
-    - [`rippled`サーバ](xrpl-servers.html)
+    - [XRP Ledgerの概要](/about/)
+    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
     - [rippledサーバのクラスター化](../peering/cluster-rippled-servers.md)
     - [`rippled`のインストール](../../installation/index.md)

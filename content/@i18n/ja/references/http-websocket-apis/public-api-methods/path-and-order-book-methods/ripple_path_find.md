@@ -80,7 +80,7 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 
 {% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ripple_path_find)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ripple_path_find)
 
 要求には以下のパラメーターが含まれます。
 
@@ -88,11 +88,11 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 |:----------------------|:---------------------------|:------------------------|
 | `source_account`      | 文字列                     | トランザクションで資金を送金するアカウントの一意のアドレス。 |
 | `destination_account` | 文字列                     | トランザクションで資金を受領するアカウントの一意のアドレス。 |
-| `destination_amount`  | 文字列またはオブジェクト           | 送金先アカウントがトランザクションで受領する[通貨額](basic-data-types.html#通貨額の指定)。**特殊なケース:** [新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE")`value`フィールドには`"-1"`（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし`send_max`が指定されている場合は、指定されている額を上回る額が支払われることはありません。 |
-| `send_max`            | 文字列またはオブジェクト           | _（省略可）_ トランザクションで使用する[通貨額](basic-data-types.html#通貨額の指定)。`source_currencies`と同時に使用することはできません。[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
-| `source_currencies`   | 配列                      | _（省略可）_ 送信元アカウントが使用する通貨の配列。この配列の各エントリーは、必須の`currency`フィールドとオプションの`issuer`フィールドを有するJSONオブジェクトです（[通貨額](basic-data-types.html#通貨額の指定)の指定方法と同様）。指定できる送金元通貨は**18**種類以下です。デフォルトでは、あらゆる送金元通貨を使用し、最大で**88**の異なる通貨/イシュアーペアに使用できます。 |
-| `ledger_hash`         | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
-| `ledger_index`        | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](basic-data-types.html#レジャーの指定)を参照してください） |
+| `destination_amount`  | 文字列またはオブジェクト           | 送金先アカウントがトランザクションで受領する[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。**特殊なケース:** [新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE")`value`フィールドには`"-1"`（XRPの場合）または-1（XRP以外の通貨の場合）を指定できます。これにより、最大限の額を送金できるパスが要求されます。ただし`send_max`が指定されている場合は、指定されている額を上回る額が支払われることはありません。 |
+| `send_max`            | 文字列またはオブジェクト           | _（省略可）_ トランザクションで使用する[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。`source_currencies`と同時に使用することはできません。[新規: rippled 0.30.0](https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE") |
+| `source_currencies`   | 配列                      | _（省略可）_ 送信元アカウントが使用する通貨の配列。この配列の各エントリーは、必須の`currency`フィールドとオプションの`issuer`フィールドを有するJSONオブジェクトです（[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)の指定方法と同様）。指定できる送金元通貨は**18**種類以下です。デフォルトでは、あらゆる送金元通貨を使用し、最大で**88**の異なる通貨/イシュアーペアに使用できます。 |
+| `ledger_hash`         | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
+| `ledger_index`        | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーのシーケンス番号、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定](../../../protocol/data-types/basic-data-types.md#レジャーの指定)を参照してください） |
 
 ## 応答フォーマット
 
@@ -333,13 +333,13 @@ rippled ripple_path_find '{"source_account":"r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 | `Field`          | 型             | 説明                            |
 |:-----------------|:-----------------|:---------------------------------------|
 | `paths_computed` | 配列            | （省略可）[ペイメントパス](../../../../concepts/tokens/fungible-tokens/paths.md)を定義するオブジェクトの配列。 |
-| `source_amount`  | 文字列またはオブジェクト | 送金先が希望額を受領できるよう、送金元がこのパスで送金する必要のある[通貨額](basic-data-types.html#通貨額の指定)。 |
+| `source_amount`  | 文字列またはオブジェクト | 送金先が希望額を受領できるよう、送金元がこのパスで送金する必要のある[通貨額](../../../protocol/data-types/basic-data-types.md#通貨額の指定)。 |
 
 次のフィールドは廃止予定のため、省略される可能性があります。`paths_canonical`および`paths_expanded`。出力される場合は無視してください。
 
 ## 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `tooBusy` - サーバーの負荷が高すぎるため、パスを計算できません。管理者として接続している場合は、このエラーが返されることはありません。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `srcActMissing` - `source_account`フィールドが要求で省略されています。

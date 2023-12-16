@@ -113,7 +113,7 @@ However, if your UNL does not have enough overlap with the UNLs used by others, 
 
 #### What purpose does XRP serve?
 
-XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](concepts/tokens/decentralized-exchange/autobridging.md) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](uses.html) for XRP as well was the XRP Ledger itself.
+XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](concepts/tokens/decentralized-exchange/autobridging.md) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](/about/uses) for XRP as well was the XRP Ledger itself.
 
 
 #### How does the XRP Ledger respond to transaction floods?
@@ -155,4 +155,4 @@ Several entities publish recommended validator lists (UNLs). As of July 2023, Ri
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?
 
-Yes. There are several [XRP Ledger client libraries](references/client-libraries.md) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](xrpl-servers.html) which powers the network and validates transactions.
+Yes. There are several [XRP Ledger client libraries](references/client-libraries.md) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](concepts/networks-and-servers/index.md) which powers the network and validates transactions.

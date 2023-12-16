@@ -156,7 +156,7 @@ IPFS/Arweaveは分散化を促進する素晴らしいソリューションで�
 
 CloudflareやInfuraをはじめとする多くのプロバイダが、こうした分散型ファイルの保存と、ユーザのための高速な検索に力を入れるようになっています。
 
-[NFTのキャッシュ](nftoken.html#nftokenデータとメタデータの取得)をご覧ください。
+[NFTのキャッシュ](../../references/protocol/data-types/nftoken.md#nftokenデータとメタデータの取得)をご覧ください。
 
 <!--
 You can also consider a solution such as Pinata. [https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing](https://drive.google.com/file/d/14wuulkvjVjtGlUJj0ppaJ4Sziyp5WFGA/view?usp=sharing)

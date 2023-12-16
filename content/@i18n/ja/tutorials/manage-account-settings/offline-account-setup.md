@@ -38,7 +38,7 @@ XRP Ledgerで署名するためのソフトウェアオプションは次のと�
 - [xrpl.js](https://github.com/XRPLF/xrpl.js/)とその依存関係をオフラインでインストールします。例えば、Yarn Package Managerでは、[オフラインでの使用に関して推奨される手順](https://yarnpkg.com/blog/2016/11/24/offline-mirror/)があります。
 - 関連項目: [安全な署名の設定](../../concepts/transactions/secure-signing.md)
 
-オフラインマシンでトランザクションの指示を生成するプロセスを容易にするために、カスタムソフトウェアを設定することもできます。例えば、ソフトウェアで次に使用する[シーケンス番号](basic-data-types.html#アカウントシーケンス)を追跡したり、送信するトランザクションのタイプに応じた設定済みテンプレートを含めるといったことが可能です。
+オフラインマシンでトランザクションの指示を生成するプロセスを容易にするために、カスタムソフトウェアを設定することもできます。例えば、ソフトウェアで次に使用する[シーケンス番号](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を追跡したり、送信するトランザクションのタイプに応じた設定済みテンプレートを含めるといったことが可能です。
 
 ### {{n.next()}}.暗号鍵の生成
 
@@ -81,9 +81,9 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 ### {{n.next()}}.新しいアドレスへの資金の供給
 
-オンラインマシンから、ステップ1でメモした**アカウントアドレス** に十分なXRPを送金します。詳細は、[アカウントの作成](accounts.html#アカウントの作成)を参照してください。
+オンラインマシンから、ステップ1でメモした**アカウントアドレス** に十分なXRPを送金します。詳細は、[アカウントの作成](../../concepts/accounts/accounts.md#アカウントの作成)を参照してください。
 
-**ヒント:** テストの目的で、[Testnet Faucet](xrp-testnet-faucet.html)を使用して、テスト用のXRPが入った新しいアカウントを取得できます。そのアカウントを使用して、オフラインで生成されたアドレスに資金を供給します。
+**ヒント:** テストの目的で、[Testnet Faucet](/resources/dev-tools/xrp-faucets)を使用して、テスト用のXRPが入った新しいアカウントを取得できます。そのアカウントを使用して、オフラインで生成されたアドレスに資金を供給します。
 
 
 
@@ -93,7 +93,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 結果の`account_data`の`Sequence`フィールドにある、アカウントのシーケンス番号をメモします。この後のステップでアカウントのトランザクションに署名するために、このシーケンス番号を把握しておく必要があります。
 
-[DeletableAccounts Amendment](../../resources/known-amendments.md#deletableaccounts)がenabledになっている場合、新しく資金を供給したアカウントの`Sequence`番号は、資金を供給したときの[レジャーインデックス](basic-data-types.html#レジャーインデックス)と一致します。enabledになっていない場合、新しく資金を供給したアカウントの`Sequence`番号は常に1です。
+[DeletableAccounts Amendment](../../resources/known-amendments.md#deletableaccounts)がenabledになっている場合、新しく資金を供給したアカウントの`Sequence`番号は、資金を供給したときの[レジャーインデックス](../../references/protocol/data-types/basic-data-types.md#レジャーインデックス)と一致します。enabledになっていない場合、新しく資金を供給したアカウントの`Sequence`番号は常に1です。
 
 {% tabs %}
 
@@ -144,12 +144,12 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 - ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグを要求する](require-destination-tags.md)。
 - アカウントセキュリティを強化するために、[マルチシグを設定する](set-up-multi-signing.md)。
 - 明示的に承認した送金、または事前に承認した相手からの送金のみを受け取れるようにするために、[DepositAuthを有効にする](../../concepts/accounts/depositauth.md)。
-- ユーザーがあなたの許可なくあなたへの[トラストライン](../../concepts/tokens/fungible-tokens/index.md)を開けないようにするために、[RequireAuthを有効にする](authorized-trust-lines.html#requireauthの有効化)。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
+- ユーザーがあなたの許可なくあなたへの[トラストライン](../../concepts/tokens/fungible-tokens/index.md)を開けないようにするために、[RequireAuthを有効にする](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#requireauthの有効化)。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
 - [トークン発行者](../../use-cases/tokenization/stablecoin-issuer.md)には次のような追加の設定がある場合があります。
   - トークンを送金するユーザーに対してTransferRateを設定する。
   - このアドレスをトークンのみに使用する予定の場合は、XRPペイメントを禁止する。
 
-この段階では、トランザクションに署名をするだけで、まだ送信しません。各トランザクションに対して、`Fee`（[トランザクションコスト](../../concepts/transactions/transaction-cost.md)）や`Sequence`（[シーケンス番号](basic-data-types.html#アカウントシーケンス)）など、通常は自動入力可能なフィールドを含めて、すべてのフィールドに入力する必要があります。一度に複数のトランザクションを準備する場合は、トランザクションの実行順にシーケンシャルに増やした`Sequence`番号を使用する必要があります。
+この段階では、トランザクションに署名をするだけで、まだ送信しません。各トランザクションに対して、`Fee`（[トランザクションコスト](../../concepts/transactions/transaction-cost.md)）や`Sequence`（[シーケンス番号](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)）など、通常は自動入力可能なフィールドを含めて、すべてのフィールドに入力する必要があります。一度に複数のトランザクションを準備する場合は、トランザクションの実行順にシーケンシャルに増やした`Sequence`番号を使用する必要があります。
 
 例（RequireAuthを有効にする）:
 
@@ -333,7 +333,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
   - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.md)
   - [マルチシグの設定](set-up-multi-signing.md)
 - **リファレンス:**
-  - [基本的なデータタイプ: ](basic-data-types.html#アカウントシーケンス)[ ](basic-data-types.html#アカウントシーケンス)[アカウントシーケンス](basic-data-types.html#アカウントシーケンス)
+  - [基本的なデータタイプ: ](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)[ ](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)[アカウントシーケンス](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)
   - [account_infoメソッド][]
   - [signメソッド][]
   - [submitメソッド][]

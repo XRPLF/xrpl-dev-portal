@@ -12,7 +12,7 @@ labels:
 ---
 # Create an Automated Market Maker
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment](../../resources/known-amendments.md#amm) :not_enabled:)_
 
 An [Automated Market Maker (AMM)](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 
@@ -21,7 +21,7 @@ An [Automated Market Maker (AMM)](../../concepts/tokens/decentralized-exchange/a
 
 ## Prerequisites
 
-- You must have an XRP Ledger address and some XRP. For development and testing purposes, you can get these from a [Faucet](xrp-testnet-faucet.html).
+- You must have an XRP Ledger address and some XRP. For development and testing purposes, you can get these from a [Faucet](/resources/dev-tools/xrp-faucets).
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
     - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/) **version 2.11.0 or later**. See [Get Started Using JavaScript](../get-started/get-started-using-javascript.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
@@ -62,7 +62,7 @@ To transact on the XRP Ledger, you need an address, a secret key, and some XRP. 
 
 {% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](set-up-secure-signing.html). The following code shows how to get a `Wallet` instance using either the faucet or a seed provided by environment variable:
+When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md). The following code shows how to get a `Wallet` instance using either the faucet or a seed provided by environment variable:
 
 {% tabs %}
 
@@ -155,8 +155,8 @@ Send an [AMMCreate transaction](../../references/protocol/transactions/types/amm
 
 | Field | Value | Description |
 |-------|--------|-------------|
-| `Asset` | [Currency Amount][] | Starting amount of one asset to deposit in the AMM. |
-| `Asset2` | [Currency Amount][] | Starting amount of the other asset to deposit in the AMM. |
+| `Asset` | [Currency Amount](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) | Starting amount of one asset to deposit in the AMM. |
+| `Asset2` | [Currency Amount](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) | Starting amount of the other asset to deposit in the AMM. |
 | `TradingFee` | Number | The fee to charge when trading against this AMM instance. The maximum value is `1000`, meaning a 1% fee; the minimum value is `0`. If you set this too high, it may be too expensive for users to trade against the AMM; but the lower you set it, the more you expose yourself to currency risk from the AMM's assets changing in value relative to one another. |
 | `Fee` | String - XRP Amount | The transaction cost you looked up in a previous step. Client libraries may require that you add a special exception or reconfigure a setting to specify a `Fee` value this high. |
 

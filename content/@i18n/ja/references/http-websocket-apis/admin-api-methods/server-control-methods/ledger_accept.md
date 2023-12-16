@@ -62,5 +62,5 @@ rippled ledger_accept
 
 ### 考えられるエラー
 
-* [汎用エラータイプ](error-formatting.html#汎用エラー)のすべて。
+* [汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)のすべて。
 * `notStandAlone` - `rippled`サーバーが現在スタンドアロンモードで実行されていない場合。

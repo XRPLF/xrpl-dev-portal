@@ -50,14 +50,14 @@ rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444
 
 {% /tabs %}
 
-[Try it! >](websocket-api-tool.html#transaction_entry)
+[Try it! >](/resources/dev-tools/websocket-api-tool#transaction_entry)
 
 The request includes the following parameters:
 
 | `Field`        | Type                       | Description                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
-| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
+| `ledger_index` | String or Unsigned Integer | _(Optional)_ The [ledger index](../../../protocol/data-types/basic-data-types.md#ledger-index) of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers](../../../protocol/data-types/basic-data-types.md#specifying-ledgers)) |
 | `tx_hash`      | String                     | Unique hash of the transaction you are looking up |
 
 **Note:** This method does not support retrieving information from the current in-progress ledger. You must specify a ledger version in either `ledger_index` or `ledger_hash`.
@@ -445,8 +445,8 @@ The response follows the [standard format](../../api-conventions/response-format
 
 | `Field`        | Type                      | Description                     |
 |:---------------|:--------------------------|:--------------------------------|
-| `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `ledger_hash`  | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `ledger_index` | Number - [Ledger Index](../../../protocol/data-types/basic-data-types.md#ledger-index) | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
+| `ledger_hash`  | String - [Hash](../../../protocol/data-types/basic-data-types.md#hashes)         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `metadata`     | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail. |
 | `tx_json`      | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md) |
 
@@ -458,7 +458,7 @@ There are a couple possible reasons the server may fail to find the transaction:
 
 ## Possible Errors
 
-* Any of the [universal error types][].
+* Any of the [universal error types](../../api-conventions/error-formatting.md#universal-errors).
 * `fieldNotFoundTransaction` - The `tx_hash` field was omitted from the request
 * `notYetImplemented` - A ledger version was not specified in the request.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.

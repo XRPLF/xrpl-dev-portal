@@ -50,7 +50,7 @@ $ sudo firewall-cmd --add-forward-port=port=51235:proto=tcp:toport=51235
 
 - **コンセプト:**
   - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
-  - [`rippled`サーバー](xrpl-servers.html)
+  - [`rippled`サーバー](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
   - [容量の計画](../../installation/capacity-planning.md)
   - [`rippled`サーバーのトラブルシューティング](../../troubleshooting/index.md)

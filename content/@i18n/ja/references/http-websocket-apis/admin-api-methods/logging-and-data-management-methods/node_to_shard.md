@@ -111,7 +111,7 @@ Connecting to 127.0.0.1:5005
 
 ### 起こり得るエラー
 
-- いずれかの[汎用エラータイプ](error-formatting.html#汎用エラー)。
+- いずれかの[汎用エラータイプ](../../api-conventions/error-formatting.md#汎用エラー)。
 - `internal` - コピーが実行されていない時にコピーの状態チェックをするといったような無効な操作の場合。
 - `notEnabled` - サーバが[履歴シャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)を保存するように環境設定されていない場合。
 - `invalidParams` - 1つ以上の項目が誤って定義されている、もしくは、1つ以上の必須項目が抜けている。

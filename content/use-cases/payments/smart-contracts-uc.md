@@ -36,7 +36,7 @@ The oracle gives the condition hex value to the escrow creator, enabling them to
 
 After the oracle's programming detects the conditions are met, it gives the fulfillment hex value to the escrow recipient. It does nothing else after this point, such as finishing the escrow. The recipient of the escrow would most likely finish the escrow.
 
-See: [Generate a condition and fulfillment](send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment).
+See: [Generate a condition and fulfillment](../../tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md#1-generate-condition-and-fulfillment).
 
 ## Examples
 

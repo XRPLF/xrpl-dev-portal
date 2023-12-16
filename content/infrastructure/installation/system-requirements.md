@@ -43,7 +43,7 @@ A `rippled` server relies on maintaining the correct time. It is recommended tha
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
     - [Capacity Planning](capacity-planning.md) - More information on the recommended specifications and planning for production needs

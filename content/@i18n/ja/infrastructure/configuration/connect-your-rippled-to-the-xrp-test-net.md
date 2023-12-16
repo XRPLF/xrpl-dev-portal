@@ -9,7 +9,7 @@ labels:
 ---
 # XRPL Altnetへのrippledの接続
 
-Rippleは[代替となるテスト用および開発用ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)を作成しており、開発者が最新のXRP Ledgerの非本番バージョン（Testnet）でアプリケーションをテストしたり、最新のベータバージョン（Devnet）で機能をテストして実験したりできるようにしています。 **これらのネットワークで使用する資金は実際の資金ではなく、テスト専用の資金です。** TestnetまたはDevnetの[`rippled`サーバー](xrpl-servers.html)に接続できます。
+Rippleは[代替となるテスト用および開発用ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)を作成しており、開発者が最新のXRP Ledgerの非本番バージョン（Testnet）でアプリケーションをテストしたり、最新のベータバージョン（Devnet）で機能をテストして実験したりできるようにしています。 **これらのネットワークで使用する資金は実際の資金ではなく、テスト専用の資金です。** TestnetまたはDevnetの[`rippled`サーバー](../../concepts/networks-and-servers/index.md)に接続できます。
 
 **注記:** XRP TestnetとDevnetのレジャーと残高は定期的にリセットされます。
 
@@ -17,14 +17,14 @@ Rippleは[代替となるテスト用および開発用ネットワーク](../..
 
 1. `rippled.cfg`ファイルで以下の手順に従います。
 
-   a. [Testnet](xrp-testnet-faucet.html)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
+   a. [Testnet](/resources/dev-tools/xrp-faucets)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
 
     ```
     [ips]
     s.altnet.rippletest.net 51235
     ```
 
-   b. [Devnet](xrp-testnet-faucet.html)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
+   b. [Devnet](/resources/dev-tools/xrp-faucets)に接続するには、以下のセクションのコメントを解除し、次のように追加します。
 
     ```
     [ips]
@@ -100,14 +100,14 @@ Rippleは[代替となるテスト用および開発用ネットワーク](../..
     $ ./rippled server_info | grep seq
     ```
 
-    [WebSocket Toolのserver_info](websocket-api-tool.html#server_info)でネットワークのレジャーインデックスをチェックします。
+    [WebSocket Toolのserver_info](/resources/dev-tools/websocket-api-tool#server_info)でネットワークのレジャーインデックスをチェックします。
 
 
 ## 関連項目
 
 - **ツール:**
-  - [XRP Faucet](xrp-testnet-faucet.html)
-  - [WebSocket APIツール](websocket-api-tool.html) - 接続オプションで「Testnet公開サーバー」を選択します。
+  - [XRP Faucet](/resources/dev-tools/xrp-faucets)
+  - [WebSocket APIツール](/resources/dev-tools/websocket-api-tool) - 接続オプションで「Testnet公開サーバー」を選択します。
 - **コンセプト:**
   - [並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)
   - [コンセンサスについて](../../concepts/consensus-protocol/index.md)

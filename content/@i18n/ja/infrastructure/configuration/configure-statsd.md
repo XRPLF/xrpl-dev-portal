@@ -35,7 +35,7 @@ labels:
     - `address`には`rippledmon`が接続しているIPアドレスとポートを指定します。デフォルトでは、このポートは8125です。
     - `prefix`には設定する`rippled`サーバを識別する名前を指定します。prefixには、空白、コロン":"、または縦棒"|"を含めてはいけません。このprefix(接頭辞)は、このサーバからエクスポートされるすべてのStatsDの統計情報に表示されます。
 
-    {% partial file="/_snippets/conf-file-location.ja.md" /%}
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 1. `rippled`サービスを再起動します。
 
@@ -66,8 +66,8 @@ StatsDの各データの説明については、[`rippledmon`リポジトリ](ht
 ## 関連項目
 
 - **コンセプト:**
-    - [XRP Ledgerの概要](xrp-ledger-overview.html)
-    - [`rippled`サーバ](xrpl-servers.html)
+    - [XRP Ledgerの概要](/about/)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
     - [`rippled`のインストール](../installation/index.md)
     - [容量の計画](../installation/capacity-planning.md)

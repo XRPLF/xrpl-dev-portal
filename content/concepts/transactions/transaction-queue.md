@@ -53,7 +53,7 @@ This feature helps you work around a particular situation. If you submitted one 
 
 * Wait for the queued transactions to be included in a validated ledger, _or_
 * Wait for the queued transactions to be permanently invalidated if the transactions have the [`LastLedgerSequence` field](reliable-transaction-submission.md#lastledgersequence) set, _or_
-* [Cancel the queued transactions](cancel-or-skip-a-transaction.html) by submitting a new transaction with the same sequence number and a higher transaction cost.
+* [Cancel the queued transactions](finality-of-results/canceling-a-transaction.md) by submitting a new transaction with the same sequence number and a higher transaction cost.
 
 If none of the above occur, transactions can stay in the queue for a theoretically unlimited amount of time, while other senders can "cut in line" by submitting transactions with higher transaction costs. Since signed transactions are immutable, you cannot increase the transaction cost of the queued transactions to increase their priority. If you do not want to invalidate the previously submitted transactions, fee averaging provides a workaround. If you increase the transaction cost of your new transaction to compensate, you can ensure the queued transactions are included in an open ledger right away.
 
