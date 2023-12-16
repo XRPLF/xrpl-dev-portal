@@ -144,7 +144,11 @@ class SnippetReplacer(RegexReplacer):
     # Redocly requires partials to end in md due to Mardoc limitations.
     # Other includes need to be converted to code-snippet instances instead.
     regex = re.compile(r"\{% *include *'(?P<path>_[^']+\.md)' *%\}")
-    replace = staticmethod(lambda m: '{{% partial file="/{fpath}" /%}}'.format(fpath=m.group("path")))
+
+    @staticmethod
+    def replace(m: re.Match):
+        fpath = m.group("path").replace(".ja.md", ".md")
+        return '{{% partial file="/{fpath}" /%}}'.format(fpath=fpath)
 regex_todos.append(SnippetReplacer())
 
 class RepoLinkReplacer(RegexReplacer):
