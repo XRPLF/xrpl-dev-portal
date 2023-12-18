@@ -5328,7 +5328,7 @@ pages:
     -   name: Wallets
         html: wallets.html
         template: pagetype-redirect.html.jinja
-        redirect_url: crypto-wallets.html.
+        redirect_url: crypto-wallets.html
         nav_omit: true
         targets:
             - en
