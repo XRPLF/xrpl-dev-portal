@@ -59,7 +59,7 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 
 **Caution:** Ripple provides the [Testnet and Devnet](parallel-networks.html) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network

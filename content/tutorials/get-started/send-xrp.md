@@ -61,7 +61,7 @@ The secret key shown here is for example only. For development purposes, you can
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### 2. Connect to a Testnet Server
@@ -392,7 +392,7 @@ print_r("Seed: " . $wallet->getSeed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoU
 
 **Warning:** You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.
 
-Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to [fund the account](accounts.html#creating-accounts). A common way to acquire XRP is to buy it from an [exchange](exchanges.html), then withdraw it to your own address.
+Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to [fund the account](accounts.html#creating-accounts). A common way to acquire XRP is to buy it from an exchange, then withdraw it to your own address.
 
 ### Connecting to the Production XRP Ledger
 
