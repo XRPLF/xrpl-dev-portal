@@ -4006,9 +4006,9 @@ msgstr "目次"
 
 #~ msgid ""
 #~ "XRP is traded on more than 140 "
-#~ "markets and <a href=\"exchanges.html\">exchanges</a>"
+#~ "markets and exchanges"
 #~ " worldwide."
-#~ msgstr "XRPは世界中の140以上の市場と<a href=\"exchanges.html\">取引所</a>で取引されています。"
+#~ msgstr "XRPは世界中の140以上の市場とで取引されています。"
 
 #~ msgid "Find Out More"
 #~ msgstr "詳細を見る"

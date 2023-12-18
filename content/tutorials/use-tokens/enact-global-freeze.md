@@ -45,7 +45,7 @@ For this tutorial, you can get credentials from the following interface:
 
 {% include '_snippets/interactive-tutorials/generate-step.md' %}
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
 
 
 ### {{n.next()}}. Connect to the Network
