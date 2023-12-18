@@ -34,9 +34,8 @@ function writeToConsole(console_selector, message) {
 }
 </script>
 
-{% set n = cycler(* range(1,99)) %}
 
-## {{n.next()}}. Connect to the XRP Ledger
+## 1. Connect to the XRP Ledger
 
 The first step of monitoring for incoming payments is to connect to the XRP Ledger, specifically a `rippled` server.
 
@@ -111,7 +110,7 @@ $("#connect-socket-button").click((event) => {
 </script>
 
 
-## {{n.next()}}. Dispatch Incoming Messages to Handlers
+## 2. Dispatch Incoming Messages to Handlers
 
 Since WebSocket connections can have several messages going each way and there is not a strict 1:1 correlation between requests and responses, you need to identify what to do with each incoming message. A good model for coding this is to set up a "dispatcher" function that reads incoming messages and relays each message to the correct code path for handling it. To help dispatch messages appropriately, the `rippled` server provides a `type` field on every WebSocket message:
 
@@ -257,7 +256,7 @@ $("#dispatch_ping").click((event) => {
 })
 </script>
 
-## {{n.next()}}. Subscribe to the Account
+## 3. Subscribe to the Account
 
 To get a live notification whenever a transaction affects your account, you can subscribe to the account with the [subscribe method][]. In fact, it doesn't have to be your own account: since all transactions are public, you can subscribe to any account or even a combination of accounts.
 
@@ -331,7 +330,7 @@ WS_HANDLERS["transaction"] = log_tx
 </script>
 
 
-## {{n.next()}}. Read Incoming Payments
+## 4. Read Incoming Payments
 
 When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [tokens](tokens.html). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
 
