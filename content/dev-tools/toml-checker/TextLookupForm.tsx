@@ -72,3 +72,4 @@ export interface TextLookupFormProps {
       </div>}
     </div>)
   }
+  
