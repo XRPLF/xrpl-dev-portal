@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from "@redocly/portal/dist/client/App/hooks";
+import { useTranslate } from '@portal/hooks';
 import axios, { AxiosError } from "axios";
 import { parse } from "smol-toml";
 import { getListEntries } from "./ListTomlFields";
