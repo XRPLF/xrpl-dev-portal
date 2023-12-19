@@ -32,15 +32,15 @@ export interface TextLookupFormProps {
      * Optionally include this as an example in the form to hint to users what they should type in. 
      */
     formPlaceholder?: string
-  }
+}
   
-  /**
-   * A form to look up a single text field and display logs to the user.
-   * 
-   * @param props Text fields for the form / button and a handler when the button is clicked.
-   * @returns A single-entry form which displays logs after submitting.
-   */
-  export function TextLookupForm(props: TextLookupFormProps) {
+/**
+ * A form to look up a single text field and display logs to the user.
+ * 
+ * @param props Text fields for the form / button and a handler when the button is clicked.
+ * @returns A single-entry form which displays logs after submitting.
+ */
+export function TextLookupForm(props: TextLookupFormProps) {
     const { translate } = useTranslate()
   
     const { title, description, buttonDescription, formPlaceholder, handleSubmit } = props
@@ -71,5 +71,4 @@ export interface TextLookupFormProps {
           </ul>
       </div>}
     </div>)
-  }
-  
+}
