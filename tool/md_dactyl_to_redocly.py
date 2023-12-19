@@ -56,11 +56,13 @@ def list_mds(content_dir):
 
 COMMON_LINKS_INCLUDES = [
     "<!--{# common link defs #}-->",
+    "<!-- {# common link defs #} -->",
     "<!--_ -->",
     "<!--{#_ #}-->",
     "{% include '_snippets/rippled-api-links.md' %}",
     "{% include '_snippets/tx-type-links.md' %}",
     "{% include '_snippets/rippled_versions.md' %}",
+    "<!--#{ fix md highlighting_ #}-->",
 ]
 def rm_common_links_includes(ftext):
     """
@@ -251,6 +253,13 @@ class OnelineCalloutReplacer(RegexReplacer):
             repl_string = '{% admonition type="'+admontype+'" name="'+m.group("label")+'" %}\n'+m.group("content")+'\n{% /admonition %}'
         return repl_string
 regex_todos.append(OnelineCalloutReplacer())
+
+class ImgPathReplacer(RegexReplacer):
+    regex = re.compile(r'\]\(img/([^)]+)\)')
+    @staticmethod
+    def replace(m: re.Match):
+        return "](/img/"+m.group(1)+")"
+regex_todos.append(ImgPathReplacer())
 
 
 category_regex = re.compile(r'^#?template: *pagetype-category\.html\.jinja\n', re.MULTILINE)

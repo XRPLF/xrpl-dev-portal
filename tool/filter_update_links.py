@@ -30,6 +30,7 @@ NON_MD_LINKS = {
 }
 
 UNMATCHED_REFLINK = re.compile(r"\[([^\]]+)?\]\[(\w| )*\]")
+REFLINK_DEF = re.compile(r'^\[([^\]]+)\]: (.*)$')
 
 REPLACE_IN_PLACE = True # False: only print changes, don't apply. True: open and rewrite files.
 DONE_SNIPPETS = False
@@ -103,6 +104,10 @@ def list_replacements(pg_srcpath, soup, pages, logger, alt_base=""):
                 link = "(%s%s%s)"%(link, query, anchor)
                 rel_path = "(%s%s%s)"%(rel_path, query, anchor)
                 find_replace_list.append( (link, rel_path) )
+                # also replace "[Link def]: path.html" in case this was a one-off ref link
+                reflink_def_link = ": %s%s\n" % (link, anchor)
+                reflink_def_repl = ": %s%s\n" % (rel_path, anchor)
+                find_replace_list.append( (reflink_def_link, reflink_def_repl) )
 
     # reference links too
     for s in soup.strings:
