@@ -1,5 +1,5 @@
 import { clsx } from 'clsx'
-import { type Client } from 'xrpl'
+import { Client } from 'xrpl'
 
 // Decode a hexadecimal string into a regular string, assuming 8-bit characters.
 // Not proper unicode decoding, but it'll work for domains which are supposed
@@ -42,8 +42,7 @@ async function validateAddressDomainOnNet(addressToVerify: string, domain: strin
       Please open an issue to add support for this network.`)
     return undefined
   }
-  // @ts-expect-error -- xrpl is imported as a script once the page loads
-  const api: Client = new xrpl.Client(wsNetworkUrl)
+  const api = new Client(wsNetworkUrl)
   await api.connect()
 
   let accountInfoResponse
