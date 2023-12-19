@@ -633,7 +633,7 @@
           - label: RPC Tool
             page: resources/dev-tools/rpc-tool.page.tsx
           - label: WebSocket API Tool
-          - label: ripple.txt Validator
+            page: resources/dev-tools/websocket-api-tool.page.tsx
           - label: xrp-ledger.toml Checker
             page: resources/dev-tools/xrp-ledger-toml-checker.page.tsx
           - label: Domain Verification Checker
