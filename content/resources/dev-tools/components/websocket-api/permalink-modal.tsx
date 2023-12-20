@@ -1,9 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useTranslate } from "@portal/hooks";
 import { Connection } from './types';
 
 interface PermaLinkProps {
   closePermalinkModal: any;
+  currentBody: any;
+  selectedConnection: Connection;
+}
+
+interface PermaLinkButtonProps {
   currentBody: any;
   selectedConnection: Connection;
 }
@@ -84,6 +89,36 @@ export const PermalinkModal: React.FC<PermaLinkProps> = ({
     </div>
   );
 };
+
+export const PermalinkButton = ({currentBody, selectedConnection}: PermaLinkButtonProps) => {
+  const [isPermalinkModalVisible, setIsPermalinkModalVisible] = useState(false);
+
+  const openPermalinkModal = () => {
+    setIsPermalinkModalVisible(true);
+  };
+  const closePermalinkModal = () => {
+    setIsPermalinkModalVisible(false);
+  };
+
+  return <>
+    <button
+      className="btn btn-outline-secondary permalink"
+      data-toggle="modal"
+      data-target="#wstool-1-permalink"
+      title="Permalink"
+      onClick={openPermalinkModal}
+    >
+      <i className="fa fa-link"></i>
+    </button>
+    {isPermalinkModalVisible && (
+      <PermalinkModal
+        closePermalinkModal={closePermalinkModal}
+        currentBody={currentBody}
+        selectedConnection={selectedConnection}
+      />
+    )}
+  </>
+}
 
 const getPermalink = (selectedConnection, currentBody) => {
   const startHref = window.location.origin + window.location.pathname;

@@ -10,8 +10,8 @@ import {
 } from "use-query-params"
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6';
 
-import { PermalinkModal } from "./components/websocket-api/permalink-modal";
-import { CurlModal } from "./components/websocket-api/curl-modal";
+import { PermalinkButton } from './components/websocket-api/permalink-modal';
+import { CurlButton } from './components/websocket-api/curl-modal';
 import { ConnectionModal } from "./components/websocket-api/connection-modal";
 
 import { RightSideBar } from "./components/websocket-api/right-sidebar";
@@ -38,17 +38,13 @@ export function WebsocketApiTool() {
   const [keepLast, setKeepLast] = useState(50);
   const [streamPaused, setStreamPaused] = useState(false);
   const streamPausedRef = useRef(streamPaused);
-  const [isPermalinkModalVisible, setIsPermalinkModalVisible] = useState(false);
-  const [isCurlModalVisible, setIsCurlModalVisible] = useState(false);
   const [wsLoading, setWsLoading] = useState(false);
   const [sendLoading, setSendLoading] = useState(false);
 
   const getInitialMethod = (): CommandMethod => {
     for (const group of (commandList as CommandGroup[])) {
       for (const method of group.methods) {
-        const methodSlug = slugify(method.name)
-        if ([slug.slice(1), params.req?.command].includes(slugify(method.name))) {
-          method.name = slugify(method.name);
+        if (slug.slice(1) === slugify(method.name) || params.req?.command == method.body.command) {
           return method;
         }
       }
@@ -93,21 +89,6 @@ export function WebsocketApiTool() {
 
   const closeConnectionModal = () => {
     setIsConnectionModalVisible(false);
-  };
-
-  const openPermalinkModal = () => {
-    setIsPermalinkModalVisible(true);
-  };
-  const closePermalinkModal = () => {
-    setIsPermalinkModalVisible(false);
-  };
-
-  const openCurlModal = () => {
-    setIsCurlModalVisible(true);
-  };
-
-  const closeCurlModal = () => {
-    setIsCurlModalVisible(false);
   };
 
   const [ws, setWs] = useState(null);
@@ -299,40 +280,13 @@ export function WebsocketApiTool() {
                       </span>
                     </div>
                   )}
-                  <button
-                    className="btn btn-outline-secondary permalink"
-                    data-toggle="modal"
-                    data-target="#wstool-1-permalink"
-                    title="Permalink"
-                    onClick={openPermalinkModal}
-                  >
-                    <i className="fa fa-link"></i>
-                  </button>
-                  {isPermalinkModalVisible && (
-                    <PermalinkModal
-                      closePermalinkModal={closePermalinkModal}
-                      currentBody={currentBody}
-                      selectedConnection={selectedConnection}
-                    />
-                  )}
-                  {!currentMethod.ws_only && (
-                    <button
-                      className="btn btn-outline-secondary curl"
-                      data-toggle="modal"
-                      data-target="#wstool-1-curl"
-                      title="cURL syntax"
-                      onClick={openCurlModal}
-                    >
-                      <i className="fa fa-terminal"></i>
-                    </button>
-                  )}
-                  {isCurlModalVisible && (
-                    <CurlModal
-                      closeCurlModal={closeCurlModal}
-                      currentBody={currentBody}
-                      selectedConnection={selectedConnection}
-                    />
-                  )}
+                  <PermalinkButton
+                    currentBody={currentBody}
+                    selectedConnection={selectedConnection}
+                  />
+                  {!currentMethod.ws_only &&
+                    (<CurlButton currentBody={currentBody} selectedConnection={selectedConnection}/>)
+                  }
                 </div>
               </div>
             </div>

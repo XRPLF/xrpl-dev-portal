@@ -1,11 +1,14 @@
 import { useTranslate } from "@portal/hooks";
 import { Connection } from './types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
-interface CurlProps {
-  closeCurlModal: any;
+interface CurlButtonProps {
   currentBody: any;
   selectedConnection: Connection;
+}
+
+interface CurlProps extends CurlButtonProps{
+  closeCurlModal: () => void;
 }
 
 const copyToClipboard = async (textareaRef, textareaValue) => {
@@ -112,3 +115,33 @@ export const CurlModal: React.FC<CurlProps> = ({
     </div>
   );
 };
+
+export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) => {
+  const [isCurlModalVisible, setIsCurlModalVisible] = useState(false);
+
+  const openCurlModal = () => {
+    setIsCurlModalVisible(true);
+  };
+  const closeCurlModal = () => {
+    setIsCurlModalVisible(false);
+  };
+
+  return <>
+      <button
+        className="btn btn-outline-secondary curl"
+        data-toggle="modal"
+        data-target="#wstool-1-curl"
+        title="cURL syntax"
+        onClick={openCurlModal}
+      >
+        <i className="fa fa-terminal"></i>
+      </button>
+      {isCurlModalVisible && (
+        <CurlModal
+          closeCurlModal={closeCurlModal}
+          currentBody={currentBody}
+          selectedConnection={selectedConnection}
+        />
+      )}
+  </>
+}
