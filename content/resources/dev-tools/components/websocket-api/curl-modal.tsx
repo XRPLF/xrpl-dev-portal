@@ -61,7 +61,6 @@ export const CurlModal: React.FC<CurlProps> = ({
             <button
               type="button"
               className="close"
-              data-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
@@ -90,7 +89,6 @@ export const CurlModal: React.FC<CurlProps> = ({
             <button
               title="Copy to clipboard"
               className="btn btn-outline-secondary clipboard-btn"
-              data-clipboard-target="#curl-box-1"
               id="curl-box-copy-button"
               onClick={() =>
                 copyToClipboard(
@@ -104,7 +102,6 @@ export const CurlModal: React.FC<CurlProps> = ({
             <button
               type="button"
               className="btn btn-outline-secondary"
-              data-dismiss="modal"
               onClick={closeCurlModal}
             >
               Close
@@ -129,8 +126,6 @@ export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) =
   return <>
       <button
         className="btn btn-outline-secondary curl"
-        data-toggle="modal"
-        data-target="#wstool-1-curl"
         title="cURL syntax"
         onClick={openCurlModal}
       >

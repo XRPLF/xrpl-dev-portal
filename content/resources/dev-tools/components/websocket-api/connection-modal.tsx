@@ -1,21 +1,32 @@
-
 import { useTranslate } from "@portal/hooks";
 import { Connection } from './types';
+import { ChangeEvent } from 'react';
 
-interface ConnectionProps {
+interface ConnectionButtonProps {
   selectedConnection: Connection;
-  handleConnectionChange: any;
-  closeConnectionModal: any;
+  setSelectedConnection: (value: Connection) => void;
   connections: Connection[];
+}
+
+interface ConnectionProps extends ConnectionButtonProps {
+  closeConnectionModal: any;
 }
 
 export const ConnectionModal: React.FC<ConnectionProps> = ({
                                                              selectedConnection,
-                                                             handleConnectionChange,
+                                                             setSelectedConnection,
                                                              closeConnectionModal,
                                                              connections,
                                                            }) => {
   const { translate } = useTranslate();
+  const handleConnectionChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const selectedValue = event.target.value;
+    const foundConnection = connections.find(
+      (conn) => conn.id === selectedValue
+    );
+
+    setSelectedConnection(foundConnection);
+  };
 
   return (
     <div
@@ -32,7 +43,6 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
             <button
               type="button"
               className="close"
-              data-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
@@ -47,8 +57,6 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
                   name="wstool-1-connection"
                   id={conn.id}
                   value={conn.id}
-                  data-jsonrpcurl={conn.jsonrpc_url}
-                  data-shortname={conn.shortname}
                   checked={selectedConnection.id === conn.id}
                   onChange={handleConnectionChange}
                 />
@@ -62,7 +70,6 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
             <button
               type="button"
               className="btn btn-outline-secondary"
-              data-dismiss="modal"
               onClick={closeConnectionModal}
             >
               Close
@@ -73,3 +80,4 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
     </div>
   );
 };
+

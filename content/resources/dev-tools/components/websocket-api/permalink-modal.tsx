@@ -2,22 +2,20 @@ import React, { useRef, useState } from 'react';
 import { useTranslate } from "@portal/hooks";
 import { Connection } from './types';
 
-interface PermaLinkProps {
-  closePermalinkModal: any;
-  currentBody: any;
-  selectedConnection: Connection;
-}
-
 interface PermaLinkButtonProps {
   currentBody: any;
   selectedConnection: Connection;
 }
 
-export const PermalinkModal: React.FC<PermaLinkProps> = ({
-                                                           closePermalinkModal,
-                                                           currentBody,
-                                                           selectedConnection,
-                                                         }) => {
+interface PermaLinkProps extends PermaLinkButtonProps {
+  closePermalinkModal: any;
+}
+
+const PermalinkModal: React.FC<PermaLinkProps> = ({
+                                                    closePermalinkModal,
+                                                    currentBody,
+                                                    selectedConnection
+}) => {
   const { translate } = useTranslate();
   const permalinkRef = useRef(null);
 
@@ -36,7 +34,6 @@ export const PermalinkModal: React.FC<PermaLinkProps> = ({
             <button
               type="button"
               className="close"
-              data-dismiss="modal"
               aria-label="Close"
             >
               <span aria-hidden="true">&times;</span>
@@ -64,7 +61,6 @@ export const PermalinkModal: React.FC<PermaLinkProps> = ({
             <button
               title="Copy to clipboard"
               className="btn btn-outline-secondary clipboard-btn"
-              data-clipboard-target="#permalink-box-1"
               id="permalink-box-1button"
               onClick={() =>
                 copyToClipboard(
@@ -78,7 +74,6 @@ export const PermalinkModal: React.FC<PermaLinkProps> = ({
             <button
               type="button"
               className="btn btn-outline-secondary"
-              data-dismiss="modal"
               onClick={closePermalinkModal}
             >
               Close
@@ -103,8 +98,6 @@ export const PermalinkButton = ({currentBody, selectedConnection}: PermaLinkButt
   return <>
     <button
       className="btn btn-outline-secondary permalink"
-      data-toggle="modal"
-      data-target="#wstool-1-permalink"
       title="Permalink"
       onClick={openPermalinkModal}
     >
@@ -128,18 +121,7 @@ const getPermalink = (selectedConnection, currentBody) => {
 };
 
 function get_compressed_body(currentBody) {
-  let compressed_body;
-  try {
-    compressed_body = currentBody
-  } catch (e) {
-    // Probably invalid JSON. We'll make a permalink anyway, but we can't
-    // compress all the whitespace because we don't know what's escaped. We can
-    // assume that newlines are irrelevant because the rippled APIs don't accept
-    // newlines in strings anywhere
-    compressed_body = currentBody.replace("\n", "").trim();
-  }
-
-  return compressed_body;
+  return currentBody.replace("\n", "").trim();
 }
 
 const copyToClipboard = async (textareaRef, textareaValue) => {

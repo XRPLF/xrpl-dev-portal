@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import { useTranslate } from "@portal/hooks";
 import {
@@ -24,6 +24,7 @@ import connections from "./components/websocket-api/data/connections.json";
 import { Loader } from './components/Loader';
 
 export function WebsocketApiTool() {
+
   const [params, setParams] = useQueryParams({
     server: withDefault(StringParam, null),
     req: withDefault(JsonParam, null)
@@ -65,17 +66,6 @@ export function WebsocketApiTool() {
 
   const handleCurrentBodyChange = (value: any) => {
     setCurrentBody(value);
-  };
-
-  const handleConnectionChange = (event) => {
-    const selectedValue = event.target.value;
-    setSelectedConnection(selectedValue);
-
-    const foundConnection = connections.find(
-      (conn) => conn.id === selectedValue
-    );
-
-    setSelectedConnection(foundConnection);
   };
 
   const handleKeepLastChange = (event) => {
@@ -257,8 +247,6 @@ export function WebsocketApiTool() {
                     className={`btn connection ${
                       connected ? "btn-success" : "btn-outline-secondary"
                     } ${connectionError ?? "btn-danger"}`}
-                    data-toggle="modal"
-                    data-target="#wstool-1-connection-settings"
                     onClick={openConnectionModal}
                   >
                     {`${selectedConnection.shortname}${
@@ -268,7 +256,7 @@ export function WebsocketApiTool() {
                   {isConnectionModalVisible && (
                     <ConnectionModal
                       selectedConnection={selectedConnection}
-                      handleConnectionChange={handleConnectionChange}
+                      setSelectedConnection={setSelectedConnection}
                       closeConnectionModal={closeConnectionModal}
                       connections={connections}
                     />
