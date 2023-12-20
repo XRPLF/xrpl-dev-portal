@@ -1,8 +1,8 @@
 import { useTranslate } from "@portal/hooks";
 import { Connection } from './types';
+import { useRef } from 'react';
 
 interface CurlProps {
-  curlRef: any;
   closeCurlModal: any;
   currentBody: any;
   selectedConnection: Connection;
@@ -37,11 +37,11 @@ const getCurl = function (currentBody, selectedConnection: Connection) {
 };
 
 export const CurlModal: React.FC<CurlProps> = ({
-                                                 curlRef,
                                                  closeCurlModal,
                                                  currentBody,
                                                  selectedConnection,
                                                }) => {
+  const curlRef = useRef(null);
   const { translate } = useTranslate();
   return (
     <div

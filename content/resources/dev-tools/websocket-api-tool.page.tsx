@@ -56,7 +56,7 @@ export function WebsocketApiTool() {
     return commandList[0].methods[0] as CommandMethod;
   };
 
-  const setMethod = (method) => {
+  const setMethod = (method: CommandMethod) => {
     setCurrentMethod(method)
     setCurrentBody(JSON.stringify(method.body, null, 2))
   }
@@ -67,7 +67,7 @@ export function WebsocketApiTool() {
   );
   streamPausedRef.current = streamPaused;
 
-  const handleCurrentBodyChange = (value) => {
+  const handleCurrentBodyChange = (value: any) => {
     setCurrentBody(value);
   };
 
@@ -193,9 +193,6 @@ export function WebsocketApiTool() {
     }
   };
 
-  const PermalinkRef = useRef(null);
-  const curlRef = useRef(null);
-
   return (
     <div className="container-fluid" role="document" id="main_content_wrapper">
       <div className="row">
@@ -313,7 +310,6 @@ export function WebsocketApiTool() {
                   </button>
                   {isPermalinkModalVisible && (
                     <PermalinkModal
-                      permalinkRef={PermalinkRef}
                       closePermalinkModal={closePermalinkModal}
                       currentBody={currentBody}
                       selectedConnection={selectedConnection}
@@ -332,7 +328,6 @@ export function WebsocketApiTool() {
                   )}
                   {isCurlModalVisible && (
                     <CurlModal
-                      curlRef={curlRef}
                       closeCurlModal={closeCurlModal}
                       currentBody={currentBody}
                       selectedConnection={selectedConnection}

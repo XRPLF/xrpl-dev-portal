@@ -1,21 +1,21 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useTranslate } from "@portal/hooks";
 import { Connection } from './types';
 
 interface PermaLinkProps {
-  permalinkRef: any;
   closePermalinkModal: any;
   currentBody: any;
   selectedConnection: Connection;
 }
 
 export const PermalinkModal: React.FC<PermaLinkProps> = ({
-                                                           permalinkRef,
                                                            closePermalinkModal,
                                                            currentBody,
                                                            selectedConnection,
                                                          }) => {
   const { translate } = useTranslate();
+  const permalinkRef = useRef(null);
+
   return (
     <div
       className="modal fade show"
