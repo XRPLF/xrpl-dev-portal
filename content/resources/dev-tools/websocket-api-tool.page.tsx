@@ -248,6 +248,8 @@ export function WebsocketApiTool() {
                       connected ? "btn-success" : "btn-outline-secondary"
                     } ${connectionError ?? "btn-danger"}`}
                     onClick={openConnectionModal}
+                    data-toggle="modal"
+                    data-target="#wstool-1-connection-settings"
                   >
                     {`${selectedConnection.shortname}${
                       connected ? " (Connected)" : " (Not Connected)"
