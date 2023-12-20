@@ -1,89 +1,66 @@
 // Styles for the legacy XRP Ledger RPC Tool. Minimally maintained.
+@import '../node_modules/react18-json-view/src/style';
+
+.json-view {
+  font-family: $font-family-monospace;
+  padding: 1em;
+  background: $gray-800;
+  overflow: hidden;
+  color: $gray-100 !important;
+  font-size: 14px;
+  letter-spacing: 0;
+
+  svg {
+    height: 11px !important;
+    color: $gray-100;
+  }
+}
+
+.jv-button {
+  color: $orange-500 !important;
+  font-size: 14px;
+}
+
+.jv-indent {
+  border-left: 1px solid $gray-600;
+  margin: 4px;
+}
+
+/* stylelint-disable selector-class-pattern -- react18-json-view uses these */
+.json-view--boolean {
+  color: $magenta-600 !important;
+}
+
+.json-view--pair {
+  margin: 4px;
+}
+
+.json-view--property {
+  color: $gray-100 !important;
+}
+
+.json-view--null,
+.json-view--undefined {
+  display: inline-block;
+  padding: 1px 2px;
+  border-radius: 3px;
+  background-color: $gray-600;
+  color: $gray-100 !important;
+  font-size: 11px;
+}
+
+.json-view--number {
+  color: $green-300 !important;
+}
+
+.json-view--string {
+  color: $orange-500 !important;
+}
+
+/* stylelint-enable selector-class-pattern */
 
 .rpc-tool {
-
-  #result {
-    display: none;
-  }
-
-  #log {
-    font-weight: 700;
-  }
-
-  .content .json li {
-    margin-top: 0;
-  }
-
-  .json .name {
-    color: $white;
-  }
-
-  .json ul {
-    margin: 0;
-    display: none;
-  }
-
-  .json li {
-    padding: 0;
-    list-style-type: none;
-  }
-
-  .json .type-string .val {
-    color: $green-700;
-  }
-
-  .json .type-number .val {
-    color: $blue-500;
-  }
-
-  .json a.toggle:hover {
-    text-decoration: none;
-  }
-
-  .json > a.toggle {
-    display: none;
-  }
-
-  .json a.toggle:after {
-    content: " +\0000a0";
-    cursor: pointer;
-  }
-
-  .json > ul,
-  .json .expanded > ul {
-    display: block;
-  }
-
-  .json .ellipsis {
-    color: $gray-500;
-  }
-
-  .json > .ellipsis,
-  .json .expanded > .ellipsis {
-    display: none;
-  }
-
-  .json .expanded > a.toggle:after {
-    content: " \2212\0000a0";
-  }
-
-  .json .indentafter {
-    display: none;
-  }
-
-  .json .expanded > .indentafter {
-    display: inline;
-  }
-
-  .tools {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    font-size: 0.8em;
-    margin: 0 0 10px;
-  }
-
-  .tools>li>a {
+  .nav-link {
     cursor: pointer;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
