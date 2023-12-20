@@ -1,5 +1,6 @@
 ignore:
   - content/_*/**
+  - content/_img-sources
 i18n:
   defaultLocale: en-US
   locales:
