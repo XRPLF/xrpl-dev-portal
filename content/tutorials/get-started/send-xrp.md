@@ -3,13 +3,11 @@ html: send-xrp.html
 parent: tasks.html
 blurb: Learn how to send test payments right from your browser.
 cta_text: Send XRP
-embed_xrpl_js: true
-filters:
-  - interactive_steps
 labels:
   - XRP
   - Payments
 top_nav_grouping: Popular Pages
+steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ---
 # Send XRP
 
@@ -20,8 +18,8 @@ This tutorial explains how to send a direct XRP Payment using `xrpl.js` for Java
 ## Prerequisites
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/send-xrp.js"></script>
-{% set use_network = "Testnet" %}
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/send-xrp.js"></script>
 
 To interact with the XRP Ledger, you need to set up a dev environment with the necessary tools. This tutorial provides examples using the following options:
 
@@ -145,14 +143,15 @@ Here's an example of preparing the above payment:
 
 {% /tabs %}
 
-{{ start_step("Prepare") }}
+{% interactive-block label="Prepare" steps=$frontmatter.steps %}
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">Send: </span>
   </div>
   <input type="number" class="form-control" value="22" id="xrp-amount"
   aria-label="Amount of XRP, as a decimal" aria-describedby="xrp-amount-label"
-  min=".000001" max="100000000000" step="any">
+  min=".000001" max="100000000000" step="any" />
   <div class="input-group-append">
     <span class="input-group-text" id="xrp-amount-label"> XRP</span>
   </div>
@@ -160,7 +159,8 @@ Here's an example of preparing the above payment:
 <button id="prepare-button" class="btn btn-primary previous-steps-required">Prepare
   example transaction</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ### 4. Sign the Transaction Instructions
@@ -199,11 +199,13 @@ The result of the signing operation is a transaction object containing a signatu
 - In xrpl4j, `SignatureService.sign` returns a `SignedTransaction`, which contains the transaction's hash, which you can use to look up the transaction later.
 - In `XRPL_PHP`, the signing API also returns the transaction's ID, or identifying hash, which you can use to look up the transaction later. This is a 64-character hexadecimal string that is unique to this transaction.
 
-{{ start_step("Sign") }}
+{% interactive-block label="Sign" steps=$frontmatter.steps %}
+
 <button id="sign-button" class="btn btn-primary previous-steps-required">Sign
   example transaction</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ### 5. Submit the Signed Blob
@@ -246,12 +248,16 @@ If you see any other result, you should check the following:
 
 See the full list of [transaction results](../../references/protocol/transactions/transaction-results/transaction-results.md) for more possibilities.
 
-{{ start_step("Submit") }}
+{% interactive-block label="Submit" steps=$frontmatter.steps %}
+
 <button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">Submit
 example transaction</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ### 6. Wait for Validation
@@ -286,9 +292,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% /tabs %}
 
-{{ start_step("Wait") }}
 {% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
 
 
 ### 7. Check Transaction Status
@@ -327,10 +331,12 @@ To know for sure what a transaction did, you must look up the outcome of the tra
 
 **Caution:** XRP Ledger APIs may return tentative results from ledger versions that have not yet been validated. For example, in [tx method][] response, be sure to look for `"validated": true` to confirm that the data comes from a validated ledger version. Transaction results that are not from a validated ledger version are subject to change. For more information, see [Finality of Results](../../concepts/transactions/finality-of-results/index.md).
 
-{{ start_step("Check") }}
+{% interactive-block label="Check" steps=$frontmatter.steps %}
+
 <button id="get-tx-button" class="btn btn-primary previous-steps-required">Check transaction status</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ## Differences for Production

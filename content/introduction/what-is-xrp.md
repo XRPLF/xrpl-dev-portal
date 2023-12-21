@@ -61,7 +61,7 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 
 | XRP "X" Logo                           | Ripple triskelion                   |
 |:---------------------------------------|:------------------------------------|
-| !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](/img/ripple-triskelion.png) |
+| !["X" logo](/img/xrp-x-logo.png) | ![Triskelion](/img/ripple-triskelion.png) |
 
 
 ### Trademark
