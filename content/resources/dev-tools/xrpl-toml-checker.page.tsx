@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
-import { TextLookupForm, type TextLookupFormProps } from './toml-checker/TextLookupForm';
+import { TextLookupForm, type TextLookupFormProps } from './components/TextLookupForm';
 import { fetchFile, fetchWallet } from './toml-checker/ValidateTomlSteps';
-import { LogEntryItem } from './toml-checker/LogEntry';
+import { LogEntryItem } from './components/LogEntry';
 /**
  * Example data to test the tool with
  *

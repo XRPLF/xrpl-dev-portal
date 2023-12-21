@@ -5,7 +5,7 @@ import { Client } from 'xrpl'
 // Not proper unicode decoding, but it'll work for domains which are supposed
 
 import React = require("react");
-import { CLASS_GOOD } from "./LogEntry";
+import { CLASS_GOOD } from "../components/LogEntry";
 import { AccountFields } from "./XrplToml";
 
 // to be a subset of ASCII anyway.

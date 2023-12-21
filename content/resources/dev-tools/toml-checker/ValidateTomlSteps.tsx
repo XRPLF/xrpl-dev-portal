@@ -3,7 +3,7 @@ import { useTranslate } from '@portal/hooks';
 import axios, { AxiosError } from "axios";
 import { parse } from "smol-toml";
 import { getListEntries } from "./ListTomlFields";
-import { addNewLogEntry, updateLogEntry, LogEntryItem, LogEntryStatus } from "./LogEntry";
+import { addNewLogEntry, updateLogEntry, LogEntryItem, LogEntryStatus } from "../components/LogEntry";
 import { MetadataField, XrplToml, AccountFields, TOML_PATH } from "./XrplToml";
 
 /**

@@ -51,7 +51,7 @@ export function TextLookupForm(props: TextLookupFormProps) {
 
     return (
     <div className="p-3 pb-5">
-      <form id="text-lookup-form" onSubmit={(event) => handleSubmit(setLogEntries, event, fieldValue)}>
+      <form onSubmit={(event) => handleSubmit(setLogEntries, event, fieldValue)}>
           <h4>{translate(title)}</h4>
           {description}
           <div className="input-group">
@@ -65,7 +65,7 @@ export function TextLookupForm(props: TextLookupFormProps) {
       </form>
       <br/>
       <br/>
-      {logEntries?.length > 0 && <div id="result">
+      {logEntries?.length > 0 && <div>
           <h5 className="result-title">{translate(`Result`)}</h5>
           <ul id="log">
               {logEntries.map((log) => {
