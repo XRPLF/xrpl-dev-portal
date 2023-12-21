@@ -2,6 +2,8 @@
 html: ledger-data-formats.html
 parent: protocol-reference.html
 blurb: XRP Ledgerの共有状態を構成する個別のデータオブジェクトについて説明します。
+metadata:
+  indexPage: true
 ---
 # レジャーのデータ型
 
@@ -16,5 +18,4 @@ XRP Ledgerに各レジャーバージョンは3つの要素で構成されてい
 
 {% partial file="/_snippets/ledger-objects-intro.md" /%}
 
-{% from '_snippets/macros/page-children.md' import page_children with context %}
-{{ page_children(pages|selectattr("html", "eq", "ledger-object-types.html")|first, 1, 1, True) }}
+{% child-pages /%}

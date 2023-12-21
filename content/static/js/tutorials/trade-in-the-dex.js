@@ -3,7 +3,7 @@
 
 // Get Credentials, Connect steps handled by the snippet
 
-$(document).ready(() => {
+window.onRouteChange(() => {
 
 // Look Up Offers --------------------------------------------------------------
 

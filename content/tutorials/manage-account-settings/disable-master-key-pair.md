@@ -27,9 +27,7 @@ To disable the master key pair for an account, you must meet the following prere
 
 ## Steps
 
-{% set n = cycler(* range(1,99)) %}
-
-### {{n.next()}}. Construct Transaction JSON
+### 1. Construct Transaction JSON
 
 Prepare an [AccountSet transaction](../../references/protocol/transactions/types/accountset.md) from your account with the field `"SetValue": 4`. This is the value for the AccountSet flag "Disable Master" (`asfDisableMaster`). The only other required fields for this transaction are the required [common fields](../../references/protocol/transactions/common-fields.md). For example, if you leave off the [auto-fillable fields](../../references/protocol/transactions/common-fields.md#auto-fillable-fields), the following transaction instructions are enough:
 
@@ -43,7 +41,7 @@ Prepare an [AccountSet transaction](../../references/protocol/transactions/types
 
 **Tip:** It is strongly recommended to also provide the `LastLedgerSequence` field so that you can [reliably get the outcome of the transaction in a predictable amount of time](../../concepts/transactions/reliable-transaction-submission.md).
 
-### {{n.next()}}. Sign Transaction
+### 2. Sign Transaction
 
 You must use the **master key pair** to sign the transaction.
 
@@ -181,7 +179,7 @@ Look for `"status": "success"` to indicate that the server successfully signed t
 
 Take note of the `tx_blob` value from the response. This is a signed transaction binary you can submit to the network.
 
-### {{n.next()}}. Submit Transaction
+### 3. Submit Transaction
 
 Submit the signed transaction blob from the previous step to the XRP Ledger.
 
@@ -307,11 +305,11 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account does not have another method of authorizing transactions currently enabled. You must [assign a regular key pair](assign-a-regular-key-pair.md) or [set up multi-signing](set-up-multi-signing.md), then try again to disable the master key pair.
 
 
-### {{n.next()}}. Wait for validation
+### 4. Wait for validation
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-### {{n.next()}}. Confirm Account Flags
+### 5. Confirm Account Flags
 
 Confirm that your account's master key is disabled using the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md). Be sure to specify the following parameters:
 

@@ -1,7 +1,7 @@
 // 1. Generate
 // 2. Connect
 // The code for these steps is handled by interactive-tutorial.js
-$(document).ready(() => {
+window.onRouteChange(() => {
   const LLS_OFFSET = 75 // Expire unconfirmed transactions after about ~5 min
 
 // 3. Check Sequence Number

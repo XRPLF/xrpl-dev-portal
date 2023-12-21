@@ -56,10 +56,6 @@ export const interactiveBlock: Schema & { tagName: string } = {
       type: 'String',
       required: true,
     },
-    stepIdx: {
-      type: 'Number',
-      required: true,
-    },
     steps: {
       type: 'Array',
       required: true,

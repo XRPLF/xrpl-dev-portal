@@ -7,6 +7,7 @@ filters:
   - interactive_steps
 labels:
   - Tokens
+steps: ['Generate', 'Connect', 'Send AccountSet', 'Wait', 'Confirm Settings']
 ---
 # Enable No Freeze
 
@@ -20,7 +21,8 @@ If you [issue tokens](../../concepts/tokens/index.md) in the XRP Ledger, can ena
 - You don't need to have [issued a token](issue-a-fungible-token.md) in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/enable-no-freeze.js"></script>
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/enable-no-freeze.js"></script>
 
 
 ## Example Code
@@ -30,9 +32,8 @@ Complete sample code for all of the steps of this tutorial is available under th
 - See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze/) in the source repository for this website.
 
 ## Steps
-{% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Get Credentials
+### 1. Get Credentials
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](../../concepts/accounts/account-types.md), you need the **master keys** to the _cold address_, which is the **issuer** of the token. Only the issuer's No Freeze setting has any effect on a token.
 
@@ -45,7 +46,7 @@ For this tutorial, you can get credentials from the following interface:
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 
-### {{n.next()}}. Connect to the Network
+### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md):
 
@@ -62,7 +63,7 @@ For this tutorial, click the following button to connect:
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
-### {{n.next()}}. Send AccountSet Transaction
+### 3. Send AccountSet Transaction
 
 To enable the No Freeze setting, send an [AccountSet transaction](../../references/protocol/transactions/types/accountset.md) with a `SetFlag` field containing the [`asfNoFreeze` value (`6`)](../../references/protocol/transactions/types/accountset.md#accountset-flags). To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
 
@@ -96,24 +97,26 @@ For example:
 {% /tabs %}
 
 
-{{ start_step("Send AccountSet") }}
+{% interactive-block label="Send AccountSet" steps=$frontmatter.steps %}
+
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending" /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 
-### {{n.next()}}. Wait for Validation
+### 4. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-{{ start_step("Wait") }}
 {% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
 
 
-### {{n.next()}}. Confirm Account Settings
+### 5. Confirm Account Settings
 
 After the transaction is validated, you can check your account's settings to confirm that the No Freeze flag is enabled. You can do this by calling the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) and checking the value of the account's `Flags` field to see if the [`lsfNoFreeze` bit (`0x00200000`)](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags) is enabled.
 
@@ -168,11 +171,15 @@ Response:
 
 {% /tabs %}
 
-{{ start_step("Confirm Settings") }}
+{% interactive-block label="Confirm Settings" steps=$frontmatter.steps %}
+
 <button id="confirm-settings" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Confirm Settings</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending" /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ## See Also

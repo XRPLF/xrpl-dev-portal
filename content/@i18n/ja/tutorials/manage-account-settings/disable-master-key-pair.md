@@ -28,9 +28,7 @@ labels:
 
 ## 手順
 
-{% set n = cycler(* range(1,99)) %}
-
-### {{n.next()}}. トランザクションJSONの作成
+### 1. トランザクションJSONの作成
 
 アカウントから、`"SetValue": 4`のフィールドを持つ[AccountSet トランザクション][]を準備します。これは AccountSet フラグ "Disable Master" (`asfDisableMaster`) に対応する値です。このトランザクションの他の必須フィールドは、必須の[共通フィールド](../../references/protocol/transactions/common-fields.md)のみです。例えば、[自動入力可能なフィールド](../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド) を省けば、以下のトランザクション指示で十分である。
 
@@ -44,7 +42,7 @@ labels:
 
 **ヒント:** [予測可能な時間内にトランザクションの結果を確実に得る](../../concepts/transactions/reliable-transaction-submission.md)ために、`LastLedgerSequence`フィールドも提供することが強く推奨されています。
 
-### {{n.next()}}. トランザクションへの署名
+### 2. トランザクションへの署名
 
 トランザクションの署名には、**マスターキーペア**を使用する必要があります。
 
@@ -182,7 +180,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 レスポンスに含まれる `tx_blob` の値をメモしておきます。これはネットワークに送信できる署名済みトランザクションバイナリである。
 
-### {{n.next()}}. トランザクションの送信
+### 3. トランザクションの送信
 
 前のステップで署名されたトランザクションblobをXRP Ledgerに提出します。
 
@@ -308,11 +306,11 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 トランザクションが `tecNO_ALTERNATIVE_KEY` という結果で失敗した場合、あなたのアカウントでは現在トランザクションを認証するための別の方法が有効になっていません。[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md)か [マルチシグを設定](set-up-multi-signing.md) した後、再度マスターキーペアの無効化を試してみてください。
 
 
-### {{n.next()}}. 検証の待機
+### 4. 検証の待機
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-### {{n.next()}}. アカウントフラグの確認
+### 5. アカウントフラグの確認
 
 [account_infoメソッド][]で、アカウントのマスターキーが無効になっていることを確認します。以下のパラメータを必ず指定してください。
 

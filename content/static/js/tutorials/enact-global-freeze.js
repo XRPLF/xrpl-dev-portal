@@ -1,7 +1,7 @@
 // 1. Generate
 // 2. Connect
 // The code for these steps is handled by interactive-tutorial.js
-$(document).ready(() => {
+window.onRouteChange(() => {
 
   // 3. Send AccountSet to Start the Freeze ------------------------------------
   // also 6. Send AccountSet to End the Freeze.

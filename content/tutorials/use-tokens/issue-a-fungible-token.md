@@ -7,6 +7,7 @@ filters:
   - interactive_steps
 labels:
   - Tokens
+steps: ['Generate', 'Connect', 'Configure Issuer', 'Wait (Issuer Setup)', 'Configure Hot Address', 'Wait (Hot Address Setup)', 'Make Trust Line', 'Wait (TrustSet)', 'Send Token', 'Wait (Payment)', 'Confirm Balances']
 ---
 # Issue a Fungible Token
 
@@ -24,7 +25,8 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/issue-a-token.js"></script>
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/issue-a-token.js"></script>
 
 ## Example Code
 
@@ -33,9 +35,8 @@ Complete sample code for all of the steps of these tutorials is available under 
 - See [Code Samples: Issue a Fungible Token](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/issue-a-token/) in the source repository for this website.
 
 ## Steps
-{% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Get Credentials
+### 1. Get Credentials
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. You also need one or more recipients who are willing to hold the tokens you issue: unlike in some other blockchains, in the XRP Ledger you cannot force someone to hold a token they do not want.
 
@@ -44,25 +45,23 @@ The best practice is to use ["cold" and "hot" addresses](../../concepts/accounts
 In this tutorial, the hot address receives the tokens you issue from the cold address. You can get the keys for two addresses using the following interface.
 
 <!-- Special version of generate-step.md for getting sender AND receiver credentials -->
-{% if use_network is undefined or use_network == "Testnet" %}
-  {% set use_network = "Testnet" %}
-  {% set faucet_url = "https://faucet.altnet.rippletest.net/accounts" %}
-{% elif use_network == "Devnet" %}
-  {% set faucet_url = "https://faucet.devnet.rippletest.net/accounts" %}
-{# No faucet for Mainnet! #}
-{% endif %}
-{{ start_step("Generate") }}
-<button id="generate-2x-creds-button" class="btn btn-primary" data-fauceturl="{{faucet_url}}">Get {{use_network}} credentials</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Generating Keys...</div>
+
+{% interactive-block label="Generate" steps=$frontmatter.steps %}
+
+<button id="generate-2x-creds-button" class="btn btn-primary" data-fauceturl="https://faucet.altnet.rippletest.net/accounts">Get Testnet credentials</button>
+
+{% loading-icon message="Generating Keys..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 **Caution:** Ripple provides the [Testnet and Devnet](../../concepts/networks-and-servers/parallel-networks.md) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 
-### {{n.next()}}. Connect to the Network
+### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server with a supported [client library](../../references/client-libraries.md):
 
@@ -90,7 +89,7 @@ For this tutorial, click the following button to connect:
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
-### {{n.next()}}. Configure Issuer Settings
+### 3. Configure Issuer Settings
 
 First, configure the settings for your cold address (which will become the issuer of your token). Most settings can be reconfigured later, with the following exceptions: <!-- STYLE_OVERRIDE: will -->
 
@@ -139,7 +138,8 @@ The following code sample shows how to send an [AccountSet transaction](../../re
 
 {% /tabs %}
 
-{{ start_step("Configure Issuer") }}
+{% interactive-block label="Configure Issuer" steps=$frontmatter.steps %}
+
 <form>
   <div class="form-inline">
     <div class="input-group form-check">
@@ -191,11 +191,14 @@ The following code sample shows how to send an [AccountSet transaction](../../re
   </div>
 </form>
 <button id="config-issuer-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Issuer Setup)">Configure issuer</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
-<div class="output-area"></div>
-{{ end_step() }}
 
-### {{n.next()}}. Wait for Validation
+{% loading-icon message="Sending transaction..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+### 4. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. You should wait for your earlier transactions to be fully validated before proceeding to the later steps, to avoid unexpected failures from things executing out of order. For more information, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
@@ -207,12 +210,10 @@ The code samples in this tutorial use helper functions to wait for validation wh
 
 **Tip:** Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.
 
-{{ start_step("Wait (Issuer Setup)") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Issuer Setup)"} /%}
 
 
-### {{n.next()}}. Configure Hot Address Settings
+### 5. Configure Hot Address Settings
 
 The hot address does not strictly require any settings changes from the default, but the following are recommended as best practices:
 
@@ -242,7 +243,8 @@ The following code sample shows how to send an [AccountSet transaction](../../re
 
 {% /tabs %}
 
-{{ start_step("Configure Hot Address") }}
+{% interactive-block label="Configure Hot Address" steps=$frontmatter.steps %}
+
 <form>
   <div class="form-inline">
     <div class="input-group form-check">
@@ -285,20 +287,21 @@ The following code sample shows how to send an [AccountSet transaction](../../re
   </div>
 </form>
 <button id="config-hot-address-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Hot Address Setup)">Configure hot address</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
-<div class="output-area"></div>
-{{ end_step() }}
 
-### {{n.next()}}. Wait for Validation
+{% loading-icon message="Sending transaction..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+### 6. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{{ start_step("Wait (Hot Address Setup)") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Hot Address Setup)"} /%}
 
 
-### {{n.next()}}. Create Trust Line from Hot to Cold Address
+### 7. Create Trust Line from Hot to Cold Address
 
 Before you can receive tokens, you need to create a [trust line](../../concepts/tokens/fungible-tokens/index.md) to the token issuer. This trust line is specific to the [currency code](../../references/protocol/data-types/currency-formats.md#currency-codes) of the token you want to issue, such as USD or FOO. You can choose any currency code you want; each issuer's tokens are treated as separate in the XRP Ledger protocol. However, users' balances of tokens with the same currency code can [ripple](../../concepts/tokens/fungible-tokens/rippling.md) between different issuers if the users enable rippling settings.
 
@@ -335,7 +338,8 @@ The following code sample shows how to send a [TrustSet transaction](../../refer
 
 {% /tabs %}
 
-{{ start_step("Make Trust Line") }}
+{% interactive-block label="Make Trust Line" steps=$frontmatter.steps %}
+
 <form>
   <p>Currency code:</p>
   <div class="container">
@@ -368,23 +372,24 @@ The following code sample shows how to send a [TrustSet transaction](../../refer
   </div>
 </form>
 <button id="create-trust-line-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (TrustSet)">Create Trust Line</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
+
+{% loading-icon message="Sending transaction..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 **Note:** If you use [Authorized Trust Lines][], there is an extra step after this one: the cold address must approve the trust line from the hot address. For details of how to do this, see [Authorizing Trust Lines](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#authorizing-trust-lines).
 
 
-### {{n.next()}}. Wait for Validation
+### 8. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{{ start_step("Wait (TrustSet)") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (TrustSet)"} /%}
 
 
-### {{n.next()}}. Send Token
+### 9. Send Token
 
 Now you can create tokens by sending a [Payment transaction](../../references/protocol/transactions/types/payment.md) from the cold address to the hot address. This transaction should have the following attributes (dot notation indicates nested fields):
 
@@ -421,7 +426,8 @@ The following code sample shows how to send a [Payment transaction](../../refere
 
 {% /tabs %}
 
-{{ start_step("Send Token") }}
+{% interactive-block label="Send Token" steps=$frontmatter.steps %}
+
 <form>
   <div class="form-inline mt-2">
     <div class="input-group">
@@ -445,21 +451,22 @@ The following code sample shows how to send a [Payment transaction](../../refere
   </div>
 </form>
 <button id="send-token-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (Payment)">Send Token</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending transaction...</div>
+
+{% loading-icon message="Sending transaction..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. Wait for Validation
+### 10. Wait for Validation
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{{ start_step("Wait (Payment)") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Payment)"} /%}
 
 
-### {{n.next()}}. Confirm Token Balances
+### 11. Confirm Token Balances
 
 You can check the balances of your token from the perspective of either the token issuer or the hot address. Tokens issued in the XRP Ledger always have balances that sum to 0: negative from the perspective of the issuer and positive from the perspective of the holder.
 
@@ -487,11 +494,15 @@ The following code sample shows how to use both methods:
 
 {% /tabs %}
 
-{{ start_step("Confirm Balances") }}
+{% interactive-block label="Confirm Balances" steps=$frontmatter.steps %}
+
 <button id="confirm-balances-button" class="btn btn-primary previous-steps-required">Confirm Balances</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
+
+{% loading-icon message="Checking..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ### Next Steps

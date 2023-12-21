@@ -26,9 +26,7 @@ To use offline signing, you must meet the following prerequisites:
 
 ## Steps
 
-{% set n = cycler(* range(1,99)) %}
-
-### {{n.next()}}. Set up offline machine
+### 1. Set up offline machine
 
 The offline machine needs secure persistent storage (for example, an encrypted disk drive) and a way to [sign transactions](../../concepts/transactions/secure-signing.md). For an offline machine, you typically use physical media to transfer any necessary software after downloading it from an online machine. You must be sure that the online machine, the physical media, and the software itself are not infected with malware.
 
@@ -41,7 +39,7 @@ Software options for signing on the XRP Ledger include:
 You may want to set up custom software to help construct transaction instructions on the offline machine. For example, your software may track what [sequence number][] to use next, or contain preset templates for certain types of transactions you expect to send.
 
 
-### {{n.next()}}. Generate cryptographic keys
+### 2. Generate cryptographic keys
 
 On the **offline machine**, generate a pair of [cryptographic keys](../../concepts/accounts/cryptographic-keys.md) to be used with your account. Be sure to generate the keys with a securely random procedure, not from a short passphrase or some other source that does not have enough entropy. For example, you can use the [wallet_propose method](../../references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md) of `rippled`:
 
@@ -82,7 +80,7 @@ Take note of the following values:
 
 
 
-### {{n.next()}}. Fund the new address
+### 3. Fund the new address
 
 From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](../../concepts/accounts/accounts.md#creating-accounts).
 
@@ -90,7 +88,7 @@ From an online machine, send enough XRP to the **account address** you noted in 
 
 
 
-### {{n.next()}}. Confirm account details
+### 4. Confirm account details
 
 When the transaction from the previous step is validated by consensus, your account has been created. From the online machine, you can confirm the status of the account with the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md). Make sure the response contains `"validated": true` to confirm that this result is final.
 
@@ -129,7 +127,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 {% /tabs %}
 
-### {{n.next()}}. Enter the sequence number on the offline machine.
+### 5. Enter the sequence number on the offline machine.
 
 Save the account's starting sequence number on the offline machine. Whenever you prepare a transaction using the offline machine, use the saved sequence number, then increase the sequence number by 1 and save the new value.
 
@@ -139,7 +137,7 @@ Optionally, save the current ledger index to the offline machine. You can use th
 
 
 
-### {{n.next()}}. Sign initial setup transactions, if any.
+### 6. Sign initial setup transactions, if any.
 
 On the offline machine, prepare and sign transactions for configuring your account. The details depend on how you intend to use your account. Some examples of things you might want to do include:
 
@@ -190,13 +188,13 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 To ensure _all_ transactions have a final outcome within a limited amount of time, provide a [`LastLedgerSequence`](../../concepts/transactions/reliable-transaction-submission.md#lastledgersequence) field. This value should be based on the current ledger index (which you must look up from an online machine) and the amount of time you want the transaction to remain valid. Be sure to set a large enough `LastLedgerSequence` value to allow for time spent switching from the online machine to the offline machine and back. For example, a value 256 higher than the current ledger index means that the transaction is valid for about 15 minutes. For more information, see [Finality of Results](../../concepts/transactions/finality-of-results/index.md) and [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
 
-### {{n.next()}}. Copy transactions to online machine.
+### 7. Copy transactions to online machine.
 
 After you have signed the transactions, the next step is to get the signed transaction data to your online machine. See [Prerequisites](#prerequisites) for some examples of how to do this.
 
 
 
-### {{n.next()}}. Submit setup transactions.
+### 8. Submit setup transactions.
 
 The next step is to submit the transactions. Most transactions should have a final outcome in the next validated ledger after submission (about 4 seconds later), or possibly the ledger after that if they get queued (less than 10 seconds). For detailed steps to track the final outcome of a transaction, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
@@ -241,7 +239,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 Retry submitting any transactions that failed with a [non-final outcome](../../concepts/transactions/finality-of-results/index.md). There is no chance of the same transaction being processed more than once.
 
-### {{n.next()}}. Confirm the final status of the transactions.
+### 9. Confirm the final status of the transactions.
 
 For each transaction you submitted, note the transaction's [final outcome](../../concepts/transactions/finality-of-results/index.md), for example using the [tx method](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md). For example:
 
@@ -314,7 +312,7 @@ For any transactions you decide to adjust or replace, note the details for when 
 
 
 
-### {{n.next()}}. Reconcile offline machine status.
+### 10. Reconcile offline machine status.
 
 Return to the offline machine and apply any necessary changes to your custom server's saved settings, such as:
 

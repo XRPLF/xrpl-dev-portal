@@ -9,6 +9,7 @@ labels:
   - Decentralized Exchange
   - Tokens
   - AMM
+steps: ['Connect', 'Generate', 'Acquire tokens', 'Check for AMM', 'Look up AMMCreate cost', 'Create AMM', 'Check AMM info', 'Check trust lines']
 ---
 # Create an Automated Market Maker
 
@@ -17,7 +18,8 @@ _(Requires the [AMM amendment](../../resources/known-amendments.md#amm) :not_ena
 An [Automated Market Maker (AMM)](../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be an efficient way to facilitate exchanges between two assets while earning its liquidity providers passive income. This tutorial shows how to create an AMM for a given asset pair.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/create-amm.js"></script>
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/create-amm.js"></script>
 
 ## Prerequisites
 
@@ -37,10 +39,8 @@ Complete sample code for all of the steps of these tutorials is available under 
 
 
 ## Steps
-{% set n = cycler(* range(1,99)) %}
-{% set use_network = "Devnet" %}
 
-### {{n.next()}}. Connect to the network
+### 1. Connect to the network
 
 You must be connected to the network to query it and submit transactions. The following code shows how to connect to a public {{use_network}} server using a supported [client library](../../references/client-libraries.md):
 
@@ -56,7 +56,7 @@ For this tutorial, click the following button to connect:
 
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
-### {{n.next()}}. Get credentials
+### 2. Get credentials
 
 To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development and testing purposes, you can get these on the [{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
@@ -73,7 +73,7 @@ When you're building production-ready software, you should use an existing accou
 {% /tabs %}
 
 
-### {{n.next()}}. Select and acquire assets
+### 3. Select and acquire assets
 
 As the creator of an AMM, you are also the first liquidity provider and you have to supply it with a starting pool of assets. Other users of the XRP Ledger can also become liquidity providers by supplying assets after the AMM exists. It's crucial to choose assets carefully because, as a liquidity provider for an AMM, you are supplying some amounts of both for users to swap between. If one of the AMM's assets becomes worthless, other users can use the AMM to trade for the other asset, leaving the AMM (and thus, its liquidity providers including you) holding only the worthless one. Technically, the AMM always holds some positive amount of both assets, but the amounts can be very small.
 
@@ -101,14 +101,18 @@ The helper function for issuing follows an abbreviated version of the steps in t
 
 {% /tabs %}
 
-{{ start_step("Acquire tokens") }}
+{% interactive-block label="Acquire tokens" steps=$frontmatter.steps %}
+
 <button id="buy-tst" class="btn btn-primary previous-steps-required">Buy TST</button>
 <button id="get-foo" class="btn btn-primary previous-steps-required">Get FOO</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Working...</div>
-<div class="output-area"></div>
-{{ end_step() }}
 
-### {{n.next()}}. Check if the AMM exists
+{% loading-icon message="Working..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+### 4. Check if the AMM exists
 
 Since there can only be one AMM for a specific pair of assets, it's best to check first before trying to create one. Use the [amm_info method](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md) to check whether the AMM already exists. For the request, you specify the two assets. The response should be an `actNotFound` error if the AMM does not exist.
 
@@ -122,13 +126,17 @@ Since there can only be one AMM for a specific pair of assets, it's best to chec
 
 If the AMM does already exist, you should double-check that you specified the right pair of assets. If someone else has already created this AMM, you can deposit to it instead. <!-- TODO: link to a tutorial about depositing to and withdrawing from an AMM when one exists -->
 
-{{ start_step("Check for AMM") }}
-<button id="check-for-amm" class="btn btn-primary previous-steps-required">Check AMM</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
-<div class="output-area"></div>
-{{ end_step() }}
+{% interactive-block label="Check for AMM" steps=$frontmatter.steps %}
 
-### {{n.next()}}. Look up the AMMCreate transaction cost
+<button id="check-for-amm" class="btn btn-primary previous-steps-required">Check AMM</button>
+
+{% loading-icon message="Sending..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+### 5. Look up the AMMCreate transaction cost
 
 Creating an AMM has a special [transaction cost](../../concepts/transactions/transaction-cost.md) to prevent spam: since it creates objects in the ledger that no one owns, you must burn at least one [owner reserve increment](../../concepts/accounts/reserves.md) of XRP to send the AMMCreate transaction. The exact value can change due to [fee voting](https://xrpl.org/fee-voting.html), so you should look up the current incremental reserve value using the [server_state method](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md).
 
@@ -142,14 +150,18 @@ It is also a good practice to display this value and give a human operator a cha
 
 {% /tabs %}
 
-{{ start_step("Look up AMMCreate cost") }}
+{% interactive-block label="Look up AMMCreate cost" steps=$frontmatter.steps %}
+
 <button id="look-up-ammcreate-cost" class="btn btn-primary previous-steps-required">Check cost</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. Send AMMCreate transaction
+### 6. Send AMMCreate transaction
 
 Send an [AMMCreate transaction](../../references/protocol/transactions/types/ammcreate.md) to create the AMM. Important aspects of this transaction include:
 
@@ -172,7 +184,8 @@ For the two starting assets, it does not matter which is `Asset` and which is `A
 
 {% /tabs %}
 
-{{ start_step("Create AMM") }}
+{% interactive-block label="Create AMM" steps=$frontmatter.steps %}
+
 <form>
   <div class="form-group row">
     <label for="trading-fee" class="col-form-label col-sm-3">Trading Fee</label>
@@ -203,11 +216,14 @@ For the two starting assets, it does not matter which is `Asset` and which is `A
   </div>
 </form>
 <button id="create-amm" class="btn btn-primary previous-steps-required">Create AMM</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
-<div class="output-area"></div>
-{{ end_step() }}
 
-### {{n.next()}}. Check AMM info
+{% loading-icon message="Sending..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+### 7. Check AMM info
 
 If the AMMCreate transaction succeeded, it creates the AMM and related objects in the ledger. You _could_ check the metadata of the AMMCreate transaction, but it is often easier to call the [amm_info method](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md) again to get the status of the newly-created AMM.
 
@@ -223,13 +239,17 @@ In the result, the `amm` object's `lp_token` field is particularly useful becaus
 
 Initially, the AMM's total outstanding LP Tokens, reported in the `lp_token` field of the `amm_info` response, match the tokens you hold as its first liquidity provider. However, after other accounts deposit liquidity to the same AMM, the amount shown in `amm_info` updates to reflect the total issued to all liquidity providers. Since others can deposit at any time, even potentially in the same ledger version where the AMM was created, you shouldn't assume that this amount represents your personal LP Tokens balance.
 
-{{ start_step("Check AMM info") }}
-<button id="check-amm-info" class="btn btn-primary previous-steps-required">Check AMM</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
-<div class="output-area"></div>
-{{ end_step() }}
+{% interactive-block label="Check AMM info" steps=$frontmatter.steps %}
 
-###  {{n.next()}}. Check trust lines
+<button id="check-amm-info" class="btn btn-primary previous-steps-required">Check AMM</button>
+
+{% loading-icon message="Sending..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+###  8. Check trust lines
 
 You can also use the [account_lines method](../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md) to get an updated view of your token balances. Your balances should be decreased by the amounts you deposited, but you now have a balance of LP Tokens that you received from the AMM.
 
@@ -245,11 +265,15 @@ The `account_lines` response shows only the tokens held by the account you looke
 
 **Tip:** If one of the assets in the AMM's pool is XRP, you need to call the [account_info method](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) on your account to see the difference in your balance (the `Balance` field of the account object).
 
-{{ start_step("Check trust lines") }}
+{% interactive-block label="Check trust lines" steps=$frontmatter.steps %}
+
 <button id="check-trust-lines" class="btn btn-primary previous-steps-required">Check trust lines</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ## Next Steps

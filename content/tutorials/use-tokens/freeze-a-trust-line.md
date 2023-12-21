@@ -8,6 +8,7 @@ filters:
 labels:
   - Tokens
   - Security
+steps: ['Generate', 'Connect', 'Choose Trust Line', 'Send TrustSet to Freeze', 'Wait', 'Check Freeze Status', 'Send TrustSet to End Freeze', 'Wait (again)']
 ---
 # Freeze a Trust Line
 
@@ -25,7 +26,8 @@ This tutorial shows the steps to [freeze an individual trust line](../../concept
 - You **cannot** have enabled the [No Freeze setting](../../concepts/tokens/fungible-tokens/freezes.md#no-freeze), which gives up your ability to freeze individual trust lines.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/freeze-individual-line.js"></script>
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/freeze-individual-line.js"></script>
 
 
 ## Example Code
@@ -35,15 +37,14 @@ Complete sample code for all of the steps of this tutorial is available under th
 - See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze/) in the source repository for this website.
 
 ## Steps
-{% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Get Credentials
+### 1. Get Credentials
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](../../concepts/accounts/account-types.md), you need the keys to the _cold address_, which is the **issuer** of the token.
 
 {% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
-### {{n.next()}}. Connect to the Network
+### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md):
 
@@ -66,7 +67,7 @@ For purposes of this tutorial, use the following interface to connect and perfor
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
-### {{n.next()}}. Choose Trust Line
+### 3. Choose Trust Line
 
 You can only freeze one trust line per transaction, so you need to know which trust line you want. Each of your trust lines is uniquely identified by these 3 things:
 
@@ -125,16 +126,18 @@ Example Request:
 
 For purposes of this tutorial, a second test address has created a trust line to the test address for the currency "FOO", which you can see in the following example:
 
-{{ start_step("Choose Trust Line")}}
-<div class="loader collapse" id="trust-line-setup-loader"><img class="throbber" src="assets/img/xrp-loader-96.png">Waiting for setup to complete...</div>
+{% interactive-block label="Choose Trust Line" steps=$frontmatter.steps %}
+
+<div class="loader collapse" id="trust-line-setup-loader"><img class="throbber" src="/img/xrp-loader-96.png">Waiting for setup to complete...</div>
 <input type="hidden" id="peer-seed" value="" />
 <button id="look-up-trust-lines" class="btn btn-primary" disabled="disabled" title="Wait for setup to complete...">Choose Trust Line</button>
-<div class="loader loader-looking collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Looking...</div>
+<div class="loader loader-looking collapse"><img class="throbber" src="/img/xrp-loader-96.png">Looking...</div>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. Send TrustSet Transaction to Freeze the Trust Line
+### 4. Send TrustSet Transaction to Freeze the Trust Line
 
 To enable or disable an Individual Freeze on a specific trust line, send a [TrustSet transaction](../../references/protocol/transactions/types/trustset.md) with the [`tfSetFreeze` flag enabled](../../references/protocol/transactions/types/trustset.md#trustset-flags). The fields of the transaction should be as follows:
 
@@ -181,24 +184,26 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 {% /tabs %}
 
-{{ start_step("Send TrustSet to Freeze") }}
+{% interactive-block label="Send TrustSet to Freeze" steps=$frontmatter.steps %}
+
 <button class="btn btn-primary previous-steps-required send-trustset" data-wait-step-name="Wait" data-action="start_freeze">Send TrustSet (Freeze)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 **Note:** If you want to freeze multiple trust lines in different currencies with the same counterparty, repeat this step for each trust line. It is possible to send several transactions in a single ledger if you use a different [sequence number](../../references/protocol/data-types/basic-data-types.md#account-sequence) for each transaction. <!--{# TODO: link rapid/batch submission guidelines when https://github.com/XRPLF/xrpl-dev-portal/issues/1025 is done #}-->
 
 
-### {{n.next()}}. Wait for Validation
+### 5. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-{{ start_step("Wait") }}
 {% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
 
-### {{n.next()}}. Check Trust Line Freeze Status
+### 6. Check Trust Line Freeze Status
 
 At this point, the trust line from the counterparty should be frozen. You can check the freeze status of any trust line using the [account_lines method](../../references/http-websocket-apis/public-api-methods/account-methods/account_lines.md) with the following fields:
 
@@ -256,14 +261,18 @@ Example Response:
 
 {% /tabs %}
 
-{{ start_step("Check Freeze Status") }}
+{% interactive-block label="Check Freeze Status" steps=$frontmatter.steps %}
+
 <button id="confirm-settings" class="btn btn-primary previous-steps-required">Check Trust Line</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Checking...</div>
+
+{% loading-icon message="Checking..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. (Optional) Send TrustSet Transaction to End the Freeze
+### 7. (Optional) Send TrustSet Transaction to End the Freeze
 
 If you decide that the trust line no longer needs to be frozen (for example, you investigated and decided that the suspicious activity was benign), you can end the individual freeze in almost the same way that you froze the trust line in the first place. To end an individual freeze, send a [TrustSet transaction](../../references/protocol/transactions/types/trustset.md) with the [`tfClearFreeze` flag enabled](../../references/protocol/transactions/types/trustset.md#trustset-flags). The other fields of the transaction should be the same as when you froze the trust line:
 
@@ -310,20 +319,22 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 {% /tabs %}
 
-{{ start_step("Send TrustSet to End Freeze") }}
+{% interactive-block label="Send TrustSet to End Freeze" steps=$frontmatter.steps %}
+
 <button class="btn btn-primary previous-steps-required send-trustset" data-wait-step-name="Wait (again)" data-action="end_freeze">Send TrustSet (End Freeze)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. Wait for Validation
+### 8. Wait for Validation
 
 As before, wait for the transaction to be validated by consensus.
 
-{{ start_step("Wait (again)") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
 
 
 
