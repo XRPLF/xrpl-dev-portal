@@ -21,8 +21,10 @@ WebSocket follows a model where the client and server open one connection, then 
 - You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` or Clio server](../../infrastructure/installation/index.md), you can also connect to that server locally.
 - To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](../../concepts/tokens/index.md), you need even more precision. For more information, see [Currency Precision](../../references/protocol/data-types/currency-formats.md#xrp-precision).
 
+
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <!-- Big number support -->
-<script type="application/javascript" src="assets/vendor/big.min.js"></script>
+<script type="application/javascript" src="/vendor/big.min.js"></script>
 <script type="application/javascript">
 // Helper stuff for this interactive tutorial specifically
 
@@ -72,13 +74,15 @@ const socket = new WebSocket('ws://localhost:6006')
 
 Example:
 
-{{ start_step("Connect") }}
+{% interactive-block label="Connect" steps=$frontmatter.steps %}
+
 <button id="connect-socket-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 let socket;
@@ -187,12 +191,14 @@ async function pingpong() {
 // Add pingpong() to the 'open' listener for socket
 ```
 
-{{ start_step("Dispatch Messages") }}
+{% interactive-block label="Dispatch Messages" steps=$frontmatter.steps %}
+
 <button id="enable_dispatcher" class="btn btn-primary" disabled="disabled">Enable Dispatcher</button>
 <button id="dispatch_ping" class="btn btn-primary" disabled="disabled">Ping!</button>
 <h5>Responses</h5>
 <div class="ws-console" id="monitor-console-ping"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 const AWAITING = {}
@@ -290,13 +296,15 @@ WS_HANDLERS["transaction"] = log_tx
 
 For the following example, try opening the [Transaction Sender](/resources/dev-tools/tx-sender) in a different window or even on a different device and sending transactions to the address you subscribed to:
 
-{{ start_step("Subscribe") }}
+{% interactive-block label="Subscribe" steps=$frontmatter.steps %}
+
 <label for="subscribe_address">Test Net Address:</label>
 <input type="text" class="form-control" id="subscribe_address" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM">
 <button id="tx_subscribe" class="btn btn-primary" disabled="disabled">Subscribe</button>
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-subscribe"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 async function do_subscribe() {
@@ -358,11 +366,13 @@ The following sample code looks at transaction metadata of all the above transac
 
 {% code-snippet file="/_code-samples/monitor-payments-websocket/js/read-amount-received.js" language="js" /%}
 
-{{ start_step("Read Payments") }}
+{% interactive-block label="Read Payments" steps=$frontmatter.steps %}
+
 <button id="tx_read" class="btn btn-primary" disabled="disabled">Start Reading</button>
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-read"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 function CountXRPDifference(affected_nodes, address) {

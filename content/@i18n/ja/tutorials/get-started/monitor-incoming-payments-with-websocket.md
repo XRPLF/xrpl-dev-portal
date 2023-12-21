@@ -22,8 +22,8 @@ WebSocketは、クライアントとサーバーが1つの接続を確立し、�
 - 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)を参照してください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
-<script type="application/javascript" src="assets/vendor/big.min.js"></script>
-<script type="application/javascript" src="assets/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/vendor/big.min.js"></script>
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript">
 // Helper stuff for this interactive tutorial specifically
 
@@ -36,9 +36,7 @@ function writeToConsole(console_selector, message) {
 
 </script>
 
-{% set n = cycler(* range(1,99)) %}
-
-## {{n.next()}}. XRP Ledgerへの接続
+## 1. XRP Ledgerへの接続
 
 着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり`rippled`サーバーに接続します。
 
@@ -75,13 +73,15 @@ const socket = new WebSocket('ws://localhost:6006')
 
 例:
 
-{{ start_step("Connect") }}
+{% interactive-block label="Connect" steps=$frontmatter.steps %}
+
 <button id="connect-socket-button" class="btn btn-primary">Connect</button>
 <strong>Connection status:</strong>
 <span id="connection-status">Not connected</span>
 <h5>Console:</h5>
 <div class="ws-console" id="monitor-console-connect"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 let socket;
@@ -113,7 +113,7 @@ $("#connect-socket-button").click((event) => {
 </script>
 
 
-## {{n.next()}}. ハンドラーへの着信メッセージのディスパッチ
+## 2. ハンドラーへの着信メッセージのディスパッチ
 
 WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバーでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
 
@@ -190,12 +190,14 @@ async function pingpong() {
 pingpong()
 ```
 
-{{ start_step("Dispatch Messages") }}
+{% interactive-block label="Dispatch Messages" steps=$frontmatter.steps %}
+
 <button id="enable_dispatcher" class="btn btn-primary" disabled="disabled">Enable Dispatcher</button>
 <button id="dispatch_ping" class="btn btn-primary" disabled="disabled">Ping!</button>
 <h5>Responses</h5>
 <div class="ws-console" id="monitor-console-ping"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 const AWAITING = {}
@@ -259,7 +261,7 @@ $("#dispatch_ping").click((event) => {
 })
 </script>
 
-## {{n.next()}}. アカウントのサブスクライブ
+## 3. アカウントのサブスクライブ
 
 トランザクションがアカウントに影響を及ぼすたびに即座に通知を取得するには、[subscribeメソッド][]を使用してアカウントをサブスクライブします。実際には、このアカウントはあなた自身のアカウントでなくてもかまいません。すべてのトランザクションは公開されているため、任意のアカウントで、または複数のアカウントでもサブスクライブできます。
 
@@ -293,13 +295,15 @@ WS_HANDLERS["transaction"] = log_tx
 
 以下の例では、別のウィンドウまたは別のデバイスで[Transaction Sender](/resources/dev-tools/tx-sender)を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。
 
-{{ start_step("Subscribe") }}
+{% interactive-block label="Subscribe" steps=$frontmatter.steps %}
+
 <label for="subscribe_address">Test Net Address:</label>
 <input type="text" class="form-control" id="subscribe_address" value="rUCzEr6jrEyMpjhs4wSdQdz4g8Y382NxfM">
 <button id="tx_subscribe" class="btn btn-primary" disabled="disabled">Subscribe</button>
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-subscribe"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 async function do_subscribe() {
@@ -332,7 +336,7 @@ const log_tx = function(tx) {
 WS_HANDLERS["transaction"] = log_tx
 </script>
 
-## {{n.next()}}. 着信ペイメントの読み取り
+## 4. 着信ペイメントの読み取り
 
 アカウントをサブスクライブすると、 _アカウントへのすべてのトランザクションとアカウントからのすべてのトランザクション_ 、および _アカウントに間接的に影響を及ぼすトランザクション_ に関するメッセージが表示されます。この例として、[トークン](../../concepts/tokens/index.md)の取引があります。アカウントが着信ペイメントを受け取った日時を認識することを目的とする場合、トランザクションストリームを絞り込んで、実際に支払われた額に基づいて支払いを処理する必要があります。以下の情報を探します。
 
@@ -364,11 +368,13 @@ WS_HANDLERS["transaction"] = log_tx
 
 {% code-snippet file="/_code-samples/monitor-payments-websocket/js/read-amount-received.js" language="js" /%}
 
-{{ start_step("Read Payments") }}
+{% interactive-block label="Read Payments" steps=$frontmatter.steps %}
+
 <button id="tx_read" class="btn btn-primary" disabled="disabled">Start Reading</button>
 <h5>Transactions</h5>
 <div class="ws-console" id="monitor-console-read"><span class="placeholder">(Log is empty)</span></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 <script type="application/javascript">
 function CountXRPDifference(affected_nodes, address) {

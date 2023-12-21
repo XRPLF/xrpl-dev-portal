@@ -10,6 +10,7 @@ labels:
   - 支払い
   - XRP
 top_nav_grouping: 人気ページ
+steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 ---
 # XRPの送金
 
@@ -18,8 +19,8 @@ top_nav_grouping: 人気ページ
 ## 前提条件
 
 <!-- このチュートリアルのインタラクティブ部分のソースコード： -->
-<script type="application/javascript" src="assets/js/tutorials/send-xrp.js"></script>
-{% set use_network = "Testnet" %}
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/send-xrp.js"></script>
 
 - このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](get-started-using-javascript.md)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 
@@ -28,9 +29,8 @@ top_nav_grouping: 人気ページ
 {% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
 ## Testnetでの送金
-{% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Testnetサーバーへの接続
+### 1. Testnetサーバーへの接続
 
 必須の自動入力可能フィールドに入力されるようにするために、ripple-libを、アカウントの現在のステータスと共有レジャー自体を取得できるサーバーに接続する必要があります。（セキュリティを高めるために、トランザクションの署名はオフライン中に行うことを推奨します。ただしその場合は、自動入力可能フィールドに手動で入力する必要があります。）トランザクションの送信先となるネットワークに接続する必要があります。
 
@@ -58,7 +58,7 @@ top_nav_grouping: 人気ページ
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
-### {{n.next()}}. トランザクションの準備
+### 2. トランザクションの準備
 
 通常は、XRP LedgerトランザクションをオブジェクトとしてJSON[トランザクションフォーマット](../../references/protocol/transactions/index.md)で作成します。以下の例に、必要最小限の送金仕様を示します。
 
@@ -96,7 +96,8 @@ XRP送金に対して指定する必要がある必要最小限の指示は次�
 
 {% /tabs %}
 
-{{ start_step("Prepare") }}
+{% interactive-block label="Prepare" steps=$frontmatter.steps %}
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text">送金する額：</span>
@@ -110,9 +111,10 @@ XRP送金に対して指定する必要がある必要最小限の指示は次�
 </div>
 <button id="prepare-button" class="btn btn-primary previous-steps-required">サンプルトランザクションを準備する</button>
 <div class="output-area"></div>
-{{ end_step() }}
 
-### {{n.next()}}. トランザクションの指示への署名
+{% /interactive-block %}
+
+### 3. トランザクションの指示への署名
 
 xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#sign)を使用して、トランザクションに署名します。最初の引数は、署名するJSONトランザクションの文字列バージョンです。
 
@@ -137,13 +139,15 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 署名APIは、トランザクションのID、つまり識別用ハッシュを返します。この識別用ハッシュは、後でトランザクションを検索する際に使用します。識別用ハッシュは、このトランザクションに固有の64文字の16進文字列です。
 
-{{ start_step("Sign") }}
+{% interactive-block label="Sign" steps=$frontmatter.steps %}
+
 <button id="sign-button" class="btn btn-primary previous-steps-required">サンプルトランザクションに署名する</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. 署名済みブロブの送信
+### 4. 署名済みブロブの送信
 
 トランザクションをネットワークに送信します。
 
@@ -174,13 +178,17 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 他の可能性については、[トランザクション結果](../../references/protocol/transactions/transaction-results/transaction-results.md)の完全なリストを参照してください。
 
-{{ start_step("Submit") }}
-<button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">サンプルトランザクションを送信する</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> 送信中...</div>
-<div class="output-area"></div>
-{{ end_step() }}
+{% interactive-block label="Submit" steps=$frontmatter.steps %}
 
-### {{n.next()}}. 検証の待機
+<button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">サンプルトランザクションを送信する</button>
+
+{% loading-icon message=" 送信中..." /%}
+
+<div class="output-area"></div>
+
+{% /interactive-block %}
+
+### 5. 検証の待機
 
 ほとんどのトランザクションは送信後の次のレジャーバージョンに承認されます。つまり、4～7秒でトランザクションの結果が最終的なものになる可能性があります。XRP Ledgerがビジーになっているか、ネットワーク接続の品質が悪いためにトランザクションをネットワーク内で中継する処理が遅延した場合は、トランザクション確定までにもう少し時間がかかることがあります。（トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を参照してください。）
 
@@ -200,12 +208,10 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 {% /tabs %}
 
-{{ start_step("Wait") }}
 {% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
 
 
-### {{n.next()}}. トランザクションステータスの確認
+### 6. トランザクションステータスの確認
 
 トランザクションが行った内容を正確に把握するために、トランザクションが検証済みレジャーバージョンに記録されたときにトランザクションの結果を調べる必要があります。例えば、[txメソッド][]を使用して、トランザクションのステータスを確認できます。
 
@@ -228,10 +234,12 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 **注意:** APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)を参照してください。
 
-{{ start_step("Check") }}
+{% interactive-block label="Check" steps=$frontmatter.steps %}
+
 <button id="get-tx-button" class="btn btn-primary previous-steps-required">トランザクションステータスを確認する</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ## 本番環境の場合の相違点

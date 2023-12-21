@@ -1,7 +1,7 @@
 // 1. Generate
 // 2. Connect
 // The code for these steps is handled by interactive-tutorial.js
-$(document).ready(() => {
+window.onRouteChange(() => {
 
     const EXPLORER = $("#connect-button").data("explorer")
 

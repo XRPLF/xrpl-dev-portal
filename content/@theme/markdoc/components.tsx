@@ -3,15 +3,10 @@ import * as React from 'react';
 import dynamicReact from '@markdoc/markdoc/dist/react';
 import { usePageSharedData } from '@portal/hooks';
 import { Link } from '@portal/Link';
+import { idify } from '../helpers';
 
 export {default as XRPLoader} from '../components/XRPLoader';
 
-function slugify(text: string) {
-    return text
-      .toLowerCase()
-      .replace(/ /g, '-')
-      .replace(/[^\w-]+/g, '');
-}
 
 export function IndexPageItems() {
     const data = usePageSharedData('index-page-items') as any[];
@@ -29,9 +24,8 @@ export function IndexPageItems() {
   );
 }
 
-export function StartStep(props: { children: React.ReactNode; stepIdx: number; steps: string[] }) {
-  const stepLabel = props.steps[props.stepIdx];
-  const stepId = slugify(stepLabel);
+export function InteractiveBlock(props: { children: React.ReactNode; label: string; steps: string[] }) {
+  const stepId = idify(props.label);
 
   return (
     <div className="interactive-block" id={'interactive-' + stepId}>
@@ -40,11 +34,11 @@ export function StartStep(props: { children: React.ReactNode; stepIdx: number; s
           <ul
             className="breadcrumb tutorial-step-crumbs"
             id={'bc-ul-' + stepId}
-            data-steplabel={stepLabel}
+            data-steplabel={props.label}
             data-stepid={stepId}
           >
             {props.steps?.map((step, idx) => {
-              const iterStepId = slugify(step).toLowerCase();
+              const iterStepId = idify(step).toLowerCase();
               let className = `breadcrumb-item bc-${iterStepId}`;
               if (idx > 0) className += ' disabled';
               if (iterStepId === stepId) className += ' current';
