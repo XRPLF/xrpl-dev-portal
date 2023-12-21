@@ -2,6 +2,8 @@
 html: ledger-data-formats.html
 parent: protocol-reference.html
 blurb: Learn about individual entries that comprise the XRP Ledger's shared state data.
+metadata:
+  indexPage: true
 ---
 # Ledger Data Formats
 
@@ -15,5 +17,5 @@ Each [ledger version](../../../concepts/ledgers/index.md) in the XRP Ledger is m
 
 {% partial file="/_snippets/ledger-objects-intro.md" /%}
 
-{% from '_snippets/macros/page-children.md' import page_children with context %}
-{{ page_children(pages|selectattr("html", "eq", "ledger-object-types.html")|first, 1, 1, True) }}
+{% child-pages /%}
+

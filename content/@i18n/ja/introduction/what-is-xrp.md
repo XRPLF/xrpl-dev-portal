@@ -60,7 +60,7 @@ XRP Ledgerは、2011年から2012年初頭にかけて、Jed McCaleb、Arthur Br
 
 | XRPの"X"ロゴ                          | Ripple社のトリスケリオン                      |
 |:-------------------------------------|:-------------------------------------------|
-| !["X"ロゴ](assets/img/xrp-x-logo.png) | ![トリスケリオン](/img/ripple-triskelion.png) |
+| !["X"ロゴ](/img/xrp-x-logo.png) | ![トリスケリオン](/img/ripple-triskelion.png) |
 
 
 ### 商標

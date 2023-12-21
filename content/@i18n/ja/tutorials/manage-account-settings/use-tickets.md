@@ -14,9 +14,9 @@ labels:
 
 ## 前提条件
 
-<!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
-{% set use_network = "Devnet" %}<!--TODO: change to Testnet eventually. NOTE, Testnet is a few days behind Mainnet in getting the amendment one enabled -->
+<!-- Source for this tutorial's interactive bits: -->
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/use-tickets.js"></script>
 
 このページでは、[xrpl.js](https://js.xrpl.org/)ライブラリを使用したJavaScriptのサンプルを提供しています。設定方法は、[JavaScriptを使ってみよう](../get-started/get-started-using-javascript.md)をご覧ください。
 
@@ -25,7 +25,6 @@ JavaScriptはWebブラウザ上で動作するため、セットアップなし�
 
 
 ## 手順
-{% set n = cycler(* range(1,99)) %}
 
 このチュートリアルはいくつかの段階に分かれています。
 
@@ -34,7 +33,7 @@ JavaScriptはWebブラウザ上で動作するため、セットアップなし�
 - (任意) **休憩:** チケットを作成した後、以下のステップの前、中、後にいつでも様々な他のトランザクションを送信することができます。
 - (Steps 7-10) **チケットの使用:** 設定されているチケットのうち1枚を使ってトランザクションを送信します。使用するチケットが1枚でも残っていれば、前の部分を飛ばしてこの手順を繰り返すことができます。
 
-### {{n.next()}}. クレデンシャルの入手
+### 1. クレデンシャルの入手
 
 XRP Ledgerでトランザクションを送信するには、アドレスと秘密鍵、そしてXRPが必要です。開発用には、[{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md)で以下のようなインターフェースを使ってこれらを入手することができます。
 
@@ -43,7 +42,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 [本番環境のソフトウェアを作成する場合](/tutorials)には、既存のアカウントを使用し、[安全な署名](../../concepts/transactions/secure-signing.md)を使用して鍵を管理する必要があります。
 
 
-### {{n.next()}}. ネットワークへの接続
+### 2. ネットワークへの接続
 
 トランザクションをネットワークに送信するには、ネットワークに接続している必要があります。チケットは今のところDevnetでしか利用できないので、Devnetサーバーに接続する必要があります。例えば、以下のようになります。
 
@@ -62,7 +61,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
-### {{n.next()}}. シーケンス番号の確認
+### 3. シーケンス番号の確認
 
 チケットを作成する前に、自分のアカウントの[シーケンス番号][]を確認しておきましょう。次のステップのために現在のシーケンス番号が必要であり、設定されるチケットのシーケンス番号はこの番号から始まります。
 
@@ -74,15 +73,19 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /tabs %}
 
-{{ start_step("Check Sequence") }}
+{% interactive-block label="Check Sequence" steps=$frontmatter.steps %}
+
 <button id="check-sequence" class="btn btn-primary previous-steps-required">Check Sequence Number</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Querying...</div>
+
+{% loading-icon message="Querying..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 
-### {{n.next()}}. TicketCreateの準備と署名
+### 4. TicketCreateの準備と署名
 
 前のステップで決定したシーケンス番号を使用して、[TicketCreate トランザクション][]を構築します。`TicketCount`フィールドを使って、作成するチケットの枚数を指定します。例えば、10枚のチケットを作成するトランザクションを準備するには、次のようにします。
 
@@ -97,14 +100,16 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 トランザクションのハッシュと`LastLedgerSequence`の値を記録しておけば、[後で検証されたかどうかを確認](../../concepts/transactions/reliable-transaction-submission.md)することができます。
 
 
-{{ start_step("Prepare & Sign") }}
+{% interactive-block label="Prepare & Sign" steps=$frontmatter.steps %}
+
 <button id="prepare-and-sign" class="btn btn-primary previous-steps-required">Prepare & Sign</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 
-### {{n.next()}}. TicketCreateの提出
+### 5. TicketCreateの提出
 
 前のステップで作成した署名付きトランザクションBlobを送信します。例えば、以下のようになります。
 
@@ -116,14 +121,18 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /tabs %}
 
-{{ start_step("Submit") }}
+{% interactive-block label="Submit" steps=$frontmatter.steps %}
+
 <button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. 検証の待機
+### 6. 検証の待機
 
 ほとんどのトランザクションは、送信された後に次の台帳のバージョンに受け入れられます。つまり、トランザクションの結果が確定するまでに4～7秒かかることがあります。XRP Ledgerが混雑している場合や、ネットワークの接続性が悪いためにトランザクションがネットワーク全体に中継されない場合は、トランザクションが確定するまでに時間がかかることがあります。(トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を参照してください)。
 
@@ -135,9 +144,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /tabs %}
 
-{{ start_step("Wait") }}
 {% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
 
 
 ### (任意) 休憩
@@ -146,16 +153,18 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 **ヒント:** 以下のステップの間または途中で、ここに戻ってきてシーケンス取引を送信することができますが、その際、チケット取引の成功を妨げることはありません。
 
-{{ start_step("Intermission") }}
+{% interactive-block label="Intermission" steps=$frontmatter.steps %}
+
 <button id="intermission-payment" class="btn btn-primary previous-steps-required">Payment</button>
 <button id="intermission-escrowcreate" class="btn btn-primary previous-steps-required">EscrowCreate</button>
 <button id="intermission-accountset" class="btn btn-primary previous-steps-required">AccountSet</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 
-### {{n.next()}}. 有効なチケットの確認
+### 7. 有効なチケットの確認
 
 チケット付きのトランザクションを送信したい場合、どのチケットシーケンス番号を使用するかを知る必要があります。アカウントを注意深く管理していれば、どのチケットを持っているかはすでにわかっていると思いますが、よくわからない場合は、[account_objects メソッド][]を使って、利用可能なチケットを調べることができます。例えば、以下のようになります。
 
@@ -168,14 +177,16 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 {% /tabs %}
 
 
-{{ start_step("Check Tickets") }}
+{% interactive-block label="Check Tickets" steps=$frontmatter.steps %}
+
 <button id="check-tickets" class="btn btn-primary previous-steps-required">Check Tickets</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 **ヒント:** チケットが残っている限り、ここから最後まで同じ手順を繰り返すことができます。
 
-### {{n.next()}}. チケット付きトランザクションの準備
+### 8. チケット付きトランザクションの準備
 
 チケットが利用できるようになったので、それを使用するトランザクションを準備します。
 
@@ -196,17 +207,19 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 - **`rippled`:** 用意された指示から`LastLedgerSequence`を省略します。サーバーはデフォルトでは値を提供しません。
 {% /admonition %}
 
-{{ start_step("Prepare Ticketed Tx") }}
+{% interactive-block label="Prepare Ticketed Tx" steps=$frontmatter.steps %}
+
 <div id="ticket-selector">
   <h4>Select a Ticket:</h4>
   <div class="form-area"></div>
 </div>
 <button id="prepare-ticketed-tx" class="btn btn-primary previous-steps-required">Prepare Ticketed Transaction</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. チケット付きトランザクションの送信
+### 9. チケット付きトランザクションの送信
 
 前のステップで作成した署名付きトランザクションBlobを送信します。例えば、以下のようになります。
 
@@ -218,19 +231,19 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 
 {% /tabs %}
 
-{{ start_step("Submit Ticketed Tx") }}
+{% interactive-block label="Submit Ticketed Tx" steps=$frontmatter.steps %}
+
 <button id="ticketedtx-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again">Submit</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. 検証の待機
+### 10. 検証の待機
 
 チケット付きトランザクションは、シーケンス付きトランザクションと同じようにコンセンサスプロセスを経ます。
 
-{{ start_step("Wait Again") }}
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait Again"} /%}
 
 ## マルチシグで使用する
 

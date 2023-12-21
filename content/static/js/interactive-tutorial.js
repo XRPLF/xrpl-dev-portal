@@ -38,8 +38,12 @@ LOCALES = {
  * @return {String} The translated string, if one is available, or the provided
  *                  key value if no translation is available.
  */
-const current_locale = $("html").prop("lang")
 function tl(key) {
+  let current_locale = $("html").prop("lang").substring(0,2)
+  if (!(current_locale in LOCALES)) {
+    console.warn("Interactive tutorials don't have translations for locale:", current_locale)
+    current_locale = "en"
+  }
   let mesg = LOCALES[current_locale][key]
   if (typeof mesg === "undefined") {
     mesg = key
@@ -50,20 +54,17 @@ function tl(key) {
 /**
  * Convert a string of text into a "slug" form that is appropriate for use in
  * URLs, HTML id and class attributes, and similar. This matches the equivalent
- * function in filter_interactive_steps.py so that each step's ID is derived
- * from the given step_name in a consistent way.
+ * function in @theme/helpers.js so that IDs can be found consistently.
+ * This version is more Unicode-friendly than the old version ('slugify')
  * @param {String} s The text (step_name or similar) to convert into a
  * @return {String} The "slug" version of the text, lowercase with no whitespace
  *                  and with most non-alphanumeric characters removed.
  */
-function slugify(s) {
-  const unacceptable_chars = /[^A-Za-z0-9._ ]+/g
-  const whitespace_regex = /\s+/g
-  s = s.replace(unacceptable_chars, "")
-  s = s.replace(whitespace_regex, "_")
-  s = s.toLowerCase()
+function idify(s) {
+  s = s.replace(/[^\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]/gu, '').trim().toLowerCase()
+  s = s.replace(/[\s-]+/gu, '-')
   if (!s) {
-    s = "_"
+    s = "_";
   }
   return s
 }
@@ -76,7 +77,7 @@ function slugify(s) {
  * @return {Boolean}         Whether or not this step has been marked complete.
  */
 function is_complete(step_name) {
-  return is_complete_by_id(slugify(step_name))
+  return is_complete_by_id(idify(step_name))
 }
 
 /**
@@ -97,7 +98,7 @@ function is_complete_by_id(step_id) {
  *                           start_step(step_name) function in the MD file.
  */
 function complete_step(step_name) {
-  complete_step_by_id(slugify(step_name))
+  complete_step_by_id(idify(step_name))
 }
 
 /**
@@ -423,7 +424,7 @@ function setup_wait_steps() {
         } else {
           status_box.html(
             `<th>${tl("Final Result:")}</th>
-            <td><img class="throbber" src="assets/img/xrp-loader-96.png">
+            <td><img class="throbber" src="/img/xrp-loader-96.png">
             ${tl("(Still pending...)")}</td>`)
         }
 
@@ -453,7 +454,7 @@ function setup_wait_steps() {
  *                           transaction blob via api.request({command: "submit", opts})
  */
 async function activate_wait_step(step_name, prelim) {
-  const step_id = slugify(step_name)
+  const step_id = idify(step_name)
   const wait_step = $(`#interactive-${step_id} .wait-step`)
   const status_box = wait_step.find(".tx-validation-status")
   const tx_id = prelim.result.tx_json.hash
@@ -628,7 +629,7 @@ async function show_log(block, msg) {
 }
 
 
-$(document).ready(() => {
+window.onRouteChange(() => {
   disable_followup_steps()
   setup_generate_step()
   setup_connect_step()

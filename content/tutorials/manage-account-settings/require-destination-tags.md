@@ -7,6 +7,7 @@ filters:
   - interactive_steps
 labels:
   - Accounts
+steps: ['Generate', 'Connect', 'Send AccountSet', 'Wait', 'Confirm Settings', 'Test Payments']
 ---
 # Require Destination Tags
 
@@ -26,7 +27,8 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/require-destination-tags.js"></script>
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/require-destination-tags.js"></script>
 
 ## Example Code
 
@@ -35,9 +37,8 @@ Complete sample code for all the steps of these tutorials is available under the
 - See [Code Samples: Require Destination Tags](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/require-destination-tags/) in the source repository for this website.
 
 ## Steps
-{% set n = cycler(* range(1,99)) %}
 
-### {{n.next()}}. Get Credentials
+### 1. Get Credentials
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these using the following interface:
 
@@ -45,7 +46,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
-### {{n.next()}}. Connect to the Network
+### 2. Connect to the Network
 
 You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md):
 
@@ -65,7 +66,7 @@ For this tutorial, click the following button to connect:
 
 {% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
-### {{n.next()}}. Send AccountSet Transaction
+### 3. Send AccountSet Transaction
 
 To enable the `RequireDest` flag, set the [`asfRequireDest` value (`1`)](../../references/protocol/transactions/types/accountset.md#accountset-flags) in the `SetFlag` field of an [AccountSet transaction][]. To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
 
@@ -83,23 +84,25 @@ For example:
 
 {% /tabs %}
 
-{{ start_step("Send AccountSet") }}
+{% interactive-block label="Send AccountSet" steps=$frontmatter.steps %}
+
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
-### {{n.next()}}. Wait for Validation
+### 4. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-{{ start_step("Wait") }}
 {% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
-{{ end_step() }}
 
 
-### {{n.next()}}. Confirm Account Settings
+### 5. Confirm Account Settings
 
 After the transaction is validated, you can check your account's settings to confirm that the Require Destination Tag flag is enabled.
 
@@ -117,20 +120,28 @@ After the transaction is validated, you can check your account's settings to con
 {% /tabs %}
 
 
-{{ start_step("Confirm Settings") }}
+{% interactive-block label="Confirm Settings" steps=$frontmatter.steps %}
+
 <button id="confirm-settings" class="btn btn-primary previous-steps-required">Confirm Settings</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 For further confirmation, you can send test transactions (from a different address) to confirm that the setting is working as you expect it to. If you a payment with a destination tag, it should succeed, and if you send one _without_ a destination tag, it should fail with the error code [`tecDST_TAG_NEEDED`](../../references/protocol/transactions/transaction-results/tec-codes.md).
 
-{{ start_step("Test Payments") }}
+{% interactive-block label="Test Payments" steps=$frontmatter.steps %}
+
 <button class="test-payment btn btn-primary" data-dt="10">Send XRP (with Destination Tag)</button>
 <button class="test-payment btn btn-primary" data-dt="">Send XRP (without Destination Tag)</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 
 
 ## See Also

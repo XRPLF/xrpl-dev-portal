@@ -86,7 +86,7 @@ function domain_to_hex(s) {
   return result.toUpperCase()
 }
 
-$(document).ready(() => {
+window.onRouteChange(() => {
   setup_2x_generate_step()
 
   $("#cold-domain-text").keyup( (event) => {

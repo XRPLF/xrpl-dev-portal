@@ -1,6 +1,6 @@
 # Interactive Tutorials
 
-The site has code to aid development of interactive tutorials that connect to the live XRP Ledger (Mainnet, Testnet, or Devnet). This document explains how to use that code to create an interactive tutorial.
+The site has code to aid development of interactive tutorials that connect to the live XRP Ledger (Mainnet, Testnet, or Devnet). This document explains how to use that code to create an interactive tutorial. **Note: This doc has been mostly updated to describe how the existing interactive tutorials work under Redocly, but the next phase of interactive tutorials will be different.**
 
 ## Limitations
 
@@ -51,21 +51,19 @@ For privacy reasons, the memo does not and MUST NOT include personally identifyi
 
 An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page like any other page. However, you need to add the following pieces to make the interactive stuff work:
 
-1. Set page properties, either in the config file or the page's frontmatter. The `interactive_steps` Dactyl filter gives you access to the functions you use to demarcate the interactive bits in your markdown file. Most of the time, you'll also want to include xrpl.js and its dependencies as well; you can have the templates handle that for you by setting the field `embed_xrpl_js: true`. For example:
+1. Set page properties, either in the config file or the page's frontmatter. You need to include an array of step names as the `steps` parameter in the frontmatter
 
-        html: use-tickets.html
-        parent: manage-account-settings.html
         blurb: Use Tickets to send a transaction outside of normal Sequence order.
-        embed_xrpl_js: true
-        filters:
-            - interactive_steps
+        steps: ['Generate', 'Connect', 'Configure Issuer', 'Wait (Issuer Setup)', 'Configure Hot Address', 'Wait (Hot Address Setup)', 'Make Trust Line', 'Wait (TrustSet)', 'Send Token', 'Wait (Payment)', 'Confirm Balances']
 
-    Including the `interactive_steps` filter automatically causes the templates to load the [interactive-tutorial.js](../assets/js/interactive-tutorial.js) file on that page. This JavaScript file implements much of the functionality for interactive tutorials, and provides helper functions for a lot of other common things you might want to do.
+    The `steps` list must exactly match the list of step labels in the tutorial. Start with some steps you know you'll have like 'Generate' and keep the frontmatter updated as you add more.
+
+    The `interactive_steps` filter is no longer needed under Redocly.
 
 2. For the tutorial, you're going to create (at least) two JavaScript files:
 
     - **Example Code:** The example code that you'll display on the page. You want to make sure it actually runs correctly as shown to the user, after all. You should start by making this one. You should save this file as `content/_code-samples/{YOUR TUTORIAL}/{YOUR TUTORIAL}.js`.
-    - **Interactive Code:** A modified version of the same code that will actually run, and also interact with the user interface in the browser itself. You should adapt this one from the other version after you get the other one working. While working on this version, remember to backport any changes that are also applicable to the example code version. You should save this file as `assets/js/tutorials/{YOUR_TUTORIAL}.js`.
+    - **Interactive Code:** A modified version of the same code that will actually run, and also interact with the user interface in the browser itself. You should adapt this one from the other version after you get the other one working. While working on this version, remember to backport any changes that are also applicable to the example code version. You should save this file as `static/js/tutorials/{YOUR_TUTORIAL}.js`.
 
 3. Start working on the Example Code file first.
 
@@ -75,15 +73,15 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
 
     Use excerpts of the example code to demonstrate each step. You can gloss over certain parts of the sample code if they're tangential to the goal of the tutorial, like the nitty-gritty of getting credentials from the Testnet faucet.
 
-    This is where `include_code` comes in really handy. You can pull in just an excerpt of a code sample based on starting and ending bits. For example:
+    This is where `{% code-snippet %}` comes in really handy. You can pull in just an excerpt of a code sample based on starting and following bits (it goes up to but does not include the section you specify with `before`). For example:
 
-        {{ include_code("_code-samples/send-xrp/send-xrp.js",
-           start_with="// Connect", end_before="// Get credentials",
-           language="js") }}
+    ```markdoc
+    {% tab label="JavaScript" %}
+    {% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Get credentials" before="// Define the proposed trade" language="js" /%}
+    {% /tab %}
+    ```
 
-    Both `start_with` and `end_before` are optional; if you omit them, it'll all the way from the start of the file to the end. Alternatively, you can include specific lines of the file as described in the [Dactyl Include Code page](https://dactyl.link/extending-include_code.html). If you combine `start_with` and `lines` the line numbers will be renumbered based on the specified starting point.
-
-    The samples have any extra whitespace trimmed off the very beginning and end of the excerpt, but not from any lines in the middle. The `language` tag is optional but recommended so that syntax highlighting works properly.
+    Both `from` and `before` are optional; if you omit them, it'll all the way from the start of the file to the end. Tabs are also optional, but recommended if you have code in multiple languages.
 
 5. Figure out what an interactive version of the tutorial looks like and where the user might interact with key steps.
 
@@ -96,17 +94,14 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
 
 ## How to Use the Interactive Bits
 
-To run your custom interactive code on your tutorial page, add a script tag to the Markdown content of the page you're writing. Conventionally, this can be under the "Prerequisites" heading of the tutorial, but it's mostly invisible to the user so it can go almost anywhere. For example:
+To run your custom interactive code on your tutorial page, add scripts tag to the Markdown content of the page you're writing. Conventionally, this can be under the "Prerequisites" heading of the tutorial, but it's mostly invisible to the user so it can go almost anywhere.
+
+The two files you should include are the shared interactive tutorials code, and the specific code for your tutorial. For example:
 
 ```html
-<!-- Source for this specific tutorial's interactive bits: -->
-<script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
-```
-
-When you want to test changes to this code, you need a Dactyl-built version of the page. You can build just a single page using the following syntax, which also copies your updated version of the `assets/` JS to the out folder:
-
-```sh
-dactyl_build --only your-page.html
+<!-- Source for this tutorial's interactive bits: -->
+<script type="application/javascript" src="/js/interactive-tutorial.js"></script>
+<script type="application/javascript" src="/js/tutorials/use-tickets.js"></script>
 ```
 
 ### Starting Snippets
@@ -115,29 +110,32 @@ There are also snippets that handle some of the most generic and repeated parts 
 
 For many tutorials, the first two steps are going to be "Connect to the Testnet" and "Get Credentials". The snippets for these are:
 
-```jinja2
-{% include '_snippets/interactive-tutorials/generate-step.md' %}
-{% include '_snippets/interactive-tutorials/connect-step.md' %}
+```markdoc
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 ```
 
-If you need to connect to Devnet or Mainnet, set the `use_network` Jinja variable _before_ including either of these snippets, for example in the "Prerequisites section". The code looks like this (case-sensitive!):
-
-```jinja2
-{% set use_network = "Devnet" %}
+```
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 ```
 
 
 ### Interactive Blocks
 
-In your Markdown file, you'll use Jinja syntax to mark the start and end of the interactive code sections. By convention, it looks like this, though all the HTML is optional:
+In your Markdown file, you'll use a Markdoc component to encapsulate the interactive code sections. By convention, it looks like this, though all the HTML is optional:
 
-```jinja2
-{{ start_step("Step Name") }}
+```markdoc
+{% interactive-block label="Step Name" steps=$frontmatter.steps %}
+
 <button id="your-button-id" class="btn btn-primary previous-steps-required">Click this button</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png"> Doing stuff...</div>
+
+{% loading-icon message=" Doing stuff..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 ```
+
+**Warning:** It won't work right if you don't leave empty lines between the HTML tags and the Markdoc tags (`{% %}`).
 
 Things you'll want to customize for each section:
 
@@ -154,23 +152,27 @@ Things you'll want to customize for each section:
 
 If you have a step in your tutorial where you wait for a transaction to get validated, the "Wait" snippet is there for you. The "Wait" snippet should be used like this:
 
-```jinja2
-{{ start_step("Wait") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
-{{ end_step() }}
+```markdoc
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 ```
 
-If you have multiple "Wait" steps, you need to give each one a unique name, as with all steps.
+If you have multiple "Wait" steps, you need to give each one a unique name. To do that:
+
+```markdoc
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} %}
+```
 
 ### Step Code
 
 The custom JavaScript code for your interactive tutorial should be wrapped in a function that runs it when the whole page is loaded, like this:
 
 ```js
-$(document).ready(() => {
+window.onRouteChange(() => {
   // Your code here
 })
 ```
+
+**Warning:** Don't use `$(document).ready(() => {...})`. That callback doesn't work properly under Redocly/React.
 
 Inside that block, the code for each individual block tends to follow a pattern: you make event handlers for the ways users should interact with the buttons and things in each step. Within the handlers, you can use the event to identify the block so that most of the code is very familiar. The following example is pulled from the "Use Tickets" interactive tutorial, with extra comments added to clarify the various pieces.
 
@@ -252,12 +254,16 @@ $("#check-tickets").click( async function(event) {
 
 One common pattern is that a step is sending a transaction from the account whose credentials you generated in the "Generate" step. There's a helper function for that. But first, you have to set up the interactive block in your Markdown file. Here's an example:
 
-```jinja2
-{{ start_step("Send AccountSet") }}
+```markdoc
+{% interactive-block label="Send AccountSet" steps=$frontmatter.steps %}
+
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
-<div class="loader collapse"><img class="throbber" src="assets/img/xrp-loader-96.png">Sending...</div>
+
+{% loading-icon message="Sending..." /%}
+
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 ```
 
 Most parts—the start and end, loader, and output area—are exactly the same. But notice that the button has a new attribute: `data-wait-step-name="Wait"`. This basically is storing some information for the JavaScript code to use, and it tells it where to output the results of the transaction, in the form of a step using the "Wait Step" snippet, as described above. The value of the attribute is the exact name of the step, which (remember) has to be unique for each one. So if your tutorial involves sending multiple transactions, the first one might have its outcome displayed in a "Wait" step, and the other one might be in the "Wait Again" step, and so on. Usually the relevant wait step is the one immediately after the current step.
@@ -300,11 +306,13 @@ The `generic_full_send(event, transaction)` function handles the rest, including
 
 For some tutorials, you might break up the steps of preparing and signing a transaction from the step where you submit it. In those cases, you can use a generic submit button handler provided by the interactive tutorials code. The block in the Markdown looks like this:
 
-```jinja2
-{{ start_step("Submit") }}
+```markdoc
+{% interactive-block label="Submit" steps=$frontmatter.steps %}
+
 <button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
 <div class="output-area"></div>
-{{ end_step() }}
+
+{% /interactive-block %}
 ```
 
 There are _two_ data attributes that are important here:
@@ -343,7 +351,7 @@ There's also some translation stuff, but it's not ready to be used outside of th
 
 ## Examples
 
-- **Send XRP** - The original interactive tutorial. (Much improved since its inception.) Uses the `include_code` to pull in the Example Code from an HTML file that also work as a stand-alone.
+- **Send XRP** - The original interactive tutorial. (Much improved since its inception.) Uses `{% code-snippet %}` to pull in the Example Code from an HTML file that also work as a stand-alone.
     - [Markdown](../content/tutorials/use-simple-xrp-payments/send-xrp.md)
     - [Example Code](../content/_code-samples/send-xrp/)
     - [Interactive Code](../assets/js/tutorials/send-xrp.js)
