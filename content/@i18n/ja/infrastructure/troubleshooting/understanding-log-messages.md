@@ -219,7 +219,7 @@ NetworkOPs:WRN We are not running on the consensus ledger
 
 - **コンセプト:**
     - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
-    - [技術に関するよくある質問](../../faq.md)
+    - [技術に関するよくある質問](../../about/faq.md)
 - **チュートリアル:**
     - [問題の診断](diagnosing-problems.md)
     - [容量の計画](../installation/capacity-planning.md)
