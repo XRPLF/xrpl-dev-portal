@@ -113,4 +113,4 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 
-[DepositPreauth Amendment]: known-amendments.html#depositpreauth
+[DepositPreauth Amendment]: ../../resources/known-amendments.md#depositpreauth

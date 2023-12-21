@@ -48,8 +48,8 @@ Some types of hash appear in API requests and responses. Others are only calcula
 | Validation vote                       | N/A                                  | `0x56414C00`      | `VAL\0` |
 | Validator manifest                    | N/A                                  | `0x4D414E00`      | `MAN\0` |
 
-[ledger header]: ledger-header.html
-[SHAMapv2]: known-amendments.html#shamapv2
+[ledger header]: ../ledger-data/ledger-header.md
+[SHAMapv2]: ../../../resources/known-amendments.md#shamapv2
 
 [Ledger objects IDs](../ledger-data/common-fields.md) are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.
 

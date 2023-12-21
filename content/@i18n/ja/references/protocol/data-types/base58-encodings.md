@@ -20,7 +20,7 @@ XRP Ledgerにより、さまざまなタイプの値をエンコードする前�
 
 ¹ コンテンツのサイズでは1バイトのタイププレフィクスは除外されます。
 
-[アカウント]: accounts.html
+[アカウント]: ../../../concepts/accounts/accounts.md
 
 ## 関連項目
 

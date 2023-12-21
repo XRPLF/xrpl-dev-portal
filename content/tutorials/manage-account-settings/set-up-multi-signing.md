@@ -146,7 +146,7 @@ Make sure that the [Transaction Result](../../references/protocol/transactions/t
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 
 ## 5. Confirm the new signer list

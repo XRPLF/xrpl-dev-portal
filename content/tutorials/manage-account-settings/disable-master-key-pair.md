@@ -309,7 +309,7 @@ If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account d
 
 ### {{n.next()}}. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ### {{n.next()}}. Confirm Account Flags
 

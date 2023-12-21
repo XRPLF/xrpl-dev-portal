@@ -36,7 +36,7 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 次の図は、Payment Channelのライフサイクルの概要を示します。
 
-[![Payment Channelフローチャート](img/paychan-flow.ja.png)](img/paychan-flow.ja.png)
+[![Payment Channelフローチャート](/img/paychan-flow.ja.png)](/img/paychan-flow.ja.png)
 
 この図のステップの番号は、このチュートリアルのステップの番号に対応しています。
 

@@ -40,7 +40,7 @@ D) 32ビットの発行者が指定する[`NFTokenTaxon`](https://www.merriam-we
 
 E) 32ビットの（自動生成される）単調増加するのシーケンス番号
 
-![トークンIDの内訳](img/nftoken1.png "トークンIDの内訳")
+![トークンIDの内訳](/img/nftoken1.png "トークンIDの内訳")
 
 16ビットのフラグ、送金手数料フィールド、32ビットの`NFTokenTaxon`、シーケンス番号フィールドはビッグエンディアン形式で格納されます。
 
@@ -63,7 +63,7 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 
 この例では、`lsfBurnable`(`0x0001`), `lsfOnlyXRP`(`0x0002`), `lsfTransferable`(`0x0008`)の3つのフラグを設定しています。1+2+8 = 11、つまりビッグエンディアン形式で`0x000B`です。
 
-![フラグ](img/nftokena.png "フラグ")
+![フラグ](/img/nftokena.png "フラグ")
 
 
 ### 送金手数料
@@ -74,20 +74,20 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 
 この値では、転送手数料は31.4bps（0.314％）に設定されます。
 
-![送金手数料](img/nftokenb.png "送金手数料")
+![送金手数料](/img/nftokenb.png "送金手数料")
 
 ### 発行者の識別
 
 `NFTokenID`の3番目のセクションは、発行者のアドレスをビッグエンディアンで表現したものです。
 
-![発行者アドレス](img/nftokenc.png "発行者アドレス")
+![発行者アドレス](/img/nftokenc.png "発行者アドレス")
 
 ### NFTokenTaxon(分類群)
 
 
 4番目のセクションは、発行者が指定する`NFTokenTaxon`です。
 
-![`NFTokenTaxon` の概要図](img/nftokend.png)
+![`NFTokenTaxon` の概要図](/img/nftokend.png)
 
 発行者は同じ`NFTokenTaxon`を持つ複数の`NFToken`を発行する可能性があります。`NFToken`が複数のページにまたがるようにするため、`NFTokenTaxon`は第5セクションの連番を乱数発生器のシード値として乱数化されています。乱数化された値は`NFToken`と共に保存されますが、乱数化されていない値が実際の`NFTokenTaxon`となります。
 
@@ -97,7 +97,7 @@ E) 32ビットの（自動生成される）単調増加するのシーケンス
 
 5番目のセクションは、発行者が`NFToken`を作成するたびに増加するシーケンス番号です。
 
-![シーケンス番号](img/nftokene.png "シーケンス番号")
+![シーケンス番号](/img/nftokene.png "シーケンス番号")
 
 [NFTokenMint トランザクション][]では`NFTokenID`のこのフィールドを`Issuer`アカウントの`MintedNFTokens`フィールドを基に自動的に設定します。発行者の[AccountRoot オブジェクト][]が`MintedNFTokens`フィールドを持っていない場合、そのフィールドは値 0 と見なされます。フィールドの値は1ずつ増加します。
 

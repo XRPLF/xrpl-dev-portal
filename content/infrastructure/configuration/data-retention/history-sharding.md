@@ -14,7 +14,7 @@ As XRP Ledger servers run, they naturally produce a database containing data abo
 
 Historical sharding distributes the transaction history of the XRP Ledger into segments, called shards, across servers in the XRP Ledger network. A shard is a range of ledgers. A server uses mostly the same format for ledgers in both the ledger store and the shard store, but the two stores are separate.
 
-[![XRP Ledger Network: Ledger Store and Shard Store Diagram](img/xrp-ledger-network-ledger-store-and-shard-store.png)](img/xrp-ledger-network-ledger-store-and-shard-store.png)
+[![XRP Ledger Network: Ledger Store and Shard Store Diagram](/img/xrp-ledger-network-ledger-store-and-shard-store.png)](/img/xrp-ledger-network-ledger-store-and-shard-store.png)
 
 <!-- Diagram source: https://docs.google.com/presentation/d/1mg2jZQwgfLCIhOU8Mr5aOiYpIgbIgk3ymBoDb2hh7_s/edit#slide=id.g417450e8da_0_316 -->
 

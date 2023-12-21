@@ -111,4 +111,4 @@ Warning or critical values for the following [metrics][] may indicate insufficie
 
 
 
-[metrics]: health-check.html#response-format
+[metrics]: ../../references/http-websocket-apis/peer-port-methods/health-check.md#response-format

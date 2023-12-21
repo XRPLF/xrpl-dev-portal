@@ -20,7 +20,7 @@ The mechanics of issuing a stablecoin are not complicated.
 
 While anyone can issue a token with any currency code in the XRP Ledger, stablecoin value comes from the promise that it can be redeemed for a corresponding asset. Issuing a stablecoin might involve regulatory obligations, which vary by jurisdiction. For these reasons, an established, reputable business is most likely to succeed in issuing a stablecoin.
 
-[![Stablecoin Workflow](img/uc-stablecoin-flow.png)](img/uc-stablecoin-flow.png)
+[![Stablecoin Workflow](/img/uc-stablecoin-flow.png)](/img/uc-stablecoin-flow.png)
 
 There are many decisions to make and artifacts to generate as you prepare to release a new stablecoin. You can use the XRPL Foundation's [Self-assessment Questionnaire](https://foundation.xrpl.org/wp-content/uploads/2022/03/self_assessment_questionnaire_140322.pdf) as a starting point to gather and produce the necessary information for a successful launch.
 
@@ -28,7 +28,7 @@ There are many decisions to make and artifacts to generate as you prepare to rel
 
 The first step is to decide the type of stablecoin you want to create. Your choice of stablecoin type might require additional steps, such as signing on financial or audit partners.
 
-![Stablecoin](img/uc-stablecoin-stable-coin.png)
+![Stablecoin](/img/uc-stablecoin-stable-coin.png)
 
 There are five common types of currency tokens you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See [Stablecoins](../../concepts/tokens/fungible-tokens/stablecoins/index.md).
 
@@ -42,7 +42,7 @@ Alternatively, you can use an external node service provider like OpenNode. See 
 
 ## Sandbox Access
 
-![Sandbox](img/uc-stablecoin-sandbox.png)
+![Sandbox](/img/uc-stablecoin-sandbox.png)
 
 For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](/resources/dev-tools/xrp-faucets).
 
@@ -151,7 +151,7 @@ See [Freezing Tokens](../../concepts/tokens/fungible-tokens/freezes.md).
 
 If you see signs of suspicious activity, you can enact a global freeze on your account to prevent users from sending your tokens to each other and trading your token in the decentralized exchange.
 
-![Global Freeze](img/uc-stablecoin-global-freeze.png)
+![Global Freeze](/img/uc-stablecoin-global-freeze.png)
 
 See [Enact Global Freeze](../../tutorials/use-tokens/enact-global-freeze.md).
 
@@ -164,7 +164,7 @@ Clawback is an optional setting that you can choose before you begin to distribu
 
 See [Clawback](../../references/protocol/transactions/types/clawback.md).
 
-![Clawback](img/uc-stablecoin-clawback.png)
+![Clawback](/img/uc-stablecoin-clawback.png)
 
 ### Partial Payments
 

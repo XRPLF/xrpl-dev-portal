@@ -48,7 +48,7 @@ To convert between display amounts and ledger amounts, you can use the following
 
 Rather than using the [standard currency code format](../../../references/protocol/data-types/currency-formats.md#currency-codes), tokens that have positive interest or negative interest (demurrage) use a 160-bit currency code in the following format:
 
-![Demurraging Currency Code Format](img/demurrage-currency-code-format.png)
+![Demurraging Currency Code Format](/img/demurrage-currency-code-format.png)
 
 1. The first 8 bits must be `0x01`.
 2. The next 24 bits represent 3 characters of ASCII.

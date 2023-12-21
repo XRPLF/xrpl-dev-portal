@@ -15,7 +15,7 @@ The specified recipient can also [cash the check for a flexible amount](cash-a-c
 
 ## Prerequisites
 
-{% partial file="/_snippets/checkcash-prereqs.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/checkcash-prereqs.md" /%} 
 
 ## {{cash_exact_n.next()}}. Prepare the CheckCash transaction
 
@@ -55,7 +55,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_exact_n.next()}}. Sign the CheckCash transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### Example Request
 
@@ -82,7 +82,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 ## {{cash_exact_n.next()}}. Submit the signed CheckCash transaction
 
 {% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
-{% partial file="/_snippets/tutorial-submit-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
 
@@ -107,7 +107,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## {{cash_exact_n.next()}}. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cash_exact_n.next()}}. Confirm final result
 

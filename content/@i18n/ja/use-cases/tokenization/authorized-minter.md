@@ -13,7 +13,7 @@ _私は認可Minterとして、トークン発行者のために合意された�
 
 チュートリアル[認可Minterの割り当て](../../../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md)で詳しく説明されています。
 
-[![認可Minterのフロー](img/nft-mkt-auth-minter.png "認可Minterのフロー")](img/nft-mkt-auth-minter.png)
+[![認可Minterのフロー](/img/nft-mkt-auth-minter.png "認可Minterのフロー")](/img/nft-mkt-auth-minter.png)
 
 ## rippledインスタンスのセットアップ
 

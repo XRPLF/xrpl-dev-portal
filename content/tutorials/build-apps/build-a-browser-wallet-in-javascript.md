@@ -27,7 +27,7 @@ You can find the complete source code for all of this tutorial's examples in the
 
 At the end of this tutorial, you should be able to build a simple XRP wallet displayed below.
 
-![Home Page Screenshot](img/js-wallet-home.png)
+![Home Page Screenshot](/img/js-wallet-home.png)
 
 This application can:
 
@@ -97,7 +97,7 @@ In your `package.json` file, add the following section if it's not there already
 
 In this step, we create a home page that displays account and ledger details.
 
-![Home Page Screenshot](img/js-wallet-home.png)
+![Home Page Screenshot](/img/js-wallet-home.png)
 
 1. If not already present, create new files in the root folder named `index.html`, `index.js` and `index.css`.
 
@@ -143,7 +143,7 @@ Your terminal should output a URL which you can use to open your app in a browse
 
 Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.
 
-![Send XRP Page Screenshot](img/js-wallet-send-xrp.png)
+![Send XRP Page Screenshot](/img/js-wallet-send-xrp.png)
 
 1. Create a folder named `send-xrp` in the `src` directory.
 
@@ -167,7 +167,7 @@ Amount: 9
 
 Destination Tag: (Not usually necessary unless you're paying an account tied to an exchange)
 
-![Send XRP Transaction Screenshot](img/js-wallet-send-xrp-transaction-details.png)
+![Send XRP Transaction Screenshot](/img/js-wallet-send-xrp-transaction-details.png)
 
 ### 4. Create the Transactions Page
 
@@ -182,7 +182,7 @@ Now that we have created the home page and the send XRP page, let's create the t
 
 **Caution:** When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.
 
-![Transactions Page Screenshot](img/js-wallet-transaction.png)
+![Transactions Page Screenshot](/img/js-wallet-transaction.png)
 
 1. Create a folder named `transaction-history` in the src directory.
 2. Create a file named `transaction-history.js` and copy the code written below.

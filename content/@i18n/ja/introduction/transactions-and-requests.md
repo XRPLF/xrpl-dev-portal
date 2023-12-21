@@ -35,7 +35,7 @@ XRP Ledgerとのすべてのやり取りは、レジャーに変更を加える�
 
 JavaScript、Python、コマンドライン、または互換性のあるサービスから、RESTfulコマンドとしてトランザクションをレジャーに送信します。rippledサーバは、トランザクションをレジャーに提案します。
 
-![トランザクションの提案](img/introduction17-gather-txns.png)
+![トランザクションの提案](/img/introduction17-gather-txns.png)
 
 バリデータの80%超が提案された現在のトランザクションを承認すると、その取引は永久的にレジャーの一部として記録されます。rippledサーバは、送信したトランザクションの結果を返します。
 
@@ -49,7 +49,7 @@ JavaScript、Python、コマンドライン、または互換性のあるサー�
 
 リクエストを送信すると、rippledサーバまたはClioサーバ(リクエストに対応する専用のサーバ)で処理されます。
 
-![Clioサーバ](img/introduction19-clio.png)
+![Clioサーバ](/img/introduction19-clio.png)
 
 ClioサーバはXRPL上の他のrippledサーバの負荷の一部を軽減し、処理速度と信頼性を向上させます。
 

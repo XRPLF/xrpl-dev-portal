@@ -59,7 +59,7 @@ The following examples show how to cancel a Check.
 
 ## {{cancel_n.next()}}. Sign the CheckCancel transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### Example Request
 
@@ -94,7 +94,7 @@ The following examples show how to cancel a Check.
 ## {{cancel_n.next()}}. Submit the signed CheckCancel transaction
 
 {% set step_1_link = "#1-prepare-the-checkcancel-transaction" %}
-{% partial file="/_snippets/tutorial-submit-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
 
@@ -127,7 +127,7 @@ The following examples show how to cancel a Check.
 
 ## {{cancel_n.next()}}. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cancel_n.next()}}. Confirm final result
 

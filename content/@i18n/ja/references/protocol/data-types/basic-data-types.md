@@ -48,8 +48,8 @@ blurb: アドレス、レジャーインデックス、通貨コードなどの�
 | 検証の投票                                    | なし                                    | `0x56414C00`              | `VAL\0` |
 | バリデータサブキー認証（「バリデータマニフェスト」） | なし                                    | `0x4D414E00`              | `MAN\0` |
 
-[レジャーヘッダー]: ledger-header.html
-[SHAMapv2]: known-amendments.html#shamapv2
+[レジャーヘッダー]: ../ledger-data/ledger-header.md
+[SHAMapv2]: ../../../resources/known-amendments.md#shamapv2
 
 [レジャーオブジェクトID](../ledger-data/common-fields.md)も似た方法で計算されますが、ここで説明したプレフィクスの代わりに「スペースキー」という2バイトのプレフィクスを使用します。
 

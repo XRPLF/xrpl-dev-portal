@@ -35,7 +35,7 @@ NFTビジネスを始めるにあたって、必要不可欠な4つの準備項�
 3. 必要なNFT情報のインデックス作成
 4. NFTをキャッシュするための永続的なストレージ戦略の決定
 
-[![NFTマーケットのフロー](img/nft-mkt-overview.png "NFTマーケットのフロー")](img/nft-mkt-overview.png)
+[![NFTマーケットのフロー](/img/nft-mkt-overview.png "NFTマーケットのフロー")](/img/nft-mkt-overview.png)
 
 ## XRPLへの接続
 

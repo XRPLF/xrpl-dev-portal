@@ -16,7 +16,7 @@ labels:
 
 履歴シャーディング機能を使用すると、個々の`rippled`サーバーが履歴データの保存する役割を担い、すべての履歴（数テラバイト）を保存する必要がなくなります。シャードストアーはレジャーストアーに代わるものではありませんが、XRP Ledgerネットワーク上の分散レジャー履歴への信頼性の高いパスを実現します。
 
-[![XRP Ledgerネットワーク: レジャーストアーとシャードストアーの図](img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)](img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)
+[![XRP Ledgerネットワーク: レジャーストアーとシャードストアーの図](/img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)](/img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)
 
 <!-- Diagram source: https://docs.google.com/presentation/d/1mg2jZQwgfLCIhOU8Mr5aOiYpIgbIgk3ymBoDb2hh7_s/edit#slide=id.g417450e8da_0_316 -->
 

@@ -113,4 +113,4 @@ You can use the [deposit_authorized method](../../references/http-websocket-apis
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 
-[DepositPreauth amendment]: known-amendments.html#depositpreauth
+[DepositPreauth amendment]: ../../resources/known-amendments.md#depositpreauth

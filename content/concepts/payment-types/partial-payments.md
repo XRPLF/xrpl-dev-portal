@@ -52,7 +52,7 @@ Partial Payments have the following limitations:
 - Direct XRP-to-XRP payments cannot be partial payments; this case returns the [result code][] `temBAD_SEND_XRP_PARTIAL`.
     - However, cross-currency payments that involve XRP as one of the currencies _can_ be partial payments.
 
-[result code]: transaction-results.html
+[result code]: ../../references/protocol/transactions/transaction-results/transaction-results.md
 
 ### The `delivered_amount` Field
 
@@ -79,8 +79,8 @@ You can find the `delivered_amount` field in the following places:
 | ripple-lib v1.x | `getTransaction` method | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` method | array members' `outcome.deliveredAmount` |
 
-[WebSocket]: http-websocket-apis.html
-[JSON-RPC / WebSocket]: http-websocket-apis.html
+[WebSocket]: ../../references/http-websocket-apis/index.md
+[JSON-RPC / WebSocket]: ../../references/http-websocket-apis/index.md
 
 ## Partial Payments Exploit
 

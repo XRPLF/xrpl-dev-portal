@@ -312,7 +312,7 @@ The `state` object may have some arrangement of the following fields:
 | `validation_quorum`              | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`         | Number          | _(Admin only)_ When the current validator list expires, in [seconds since the Ripple Epoch](../../../protocol/data-types/basic-data-types.md#specifying-time), or 0 if the server has yet to load a published validator list. |
 
-[Reporting mode]: rippled-server-modes.html
+[Reporting mode]: ../../../../concepts/networks-and-servers/rippled-server-modes.md
 
 {% partial file="/_snippets/etl-source-object.md" /%}
 

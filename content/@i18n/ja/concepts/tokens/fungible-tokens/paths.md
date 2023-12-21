@@ -27,7 +27,7 @@ XRPは任意のアドレスに直接送金できるため、[XRP間のトラン�
 
 いずれのタイプのステップでも、中間アドレスでは取得する価値と失う価値はほぼ同等です。トラストラインから同じ通貨の別のトラストラインへ残高がripplingするか、または以前に出されたオーダーに基づいて通貨が交換されます。場合によっては、[送金手数料](../transfer-fees.md)、トラストラインクオリティ、または数値の丸め方が原因で、取得する価値と失われる価値が厳密に同等ではないことがあります。
 
-[![3つのパスの例を示す図](img/paths-examples.ja.png)](img/paths-examples.ja.png)
+[![3つのパスの例を示す図](/img/paths-examples.ja.png)](/img/paths-examples.ja.png)
 
 
 
@@ -67,7 +67,7 @@ XRPは任意のアドレスに直接送金できるため、[XRP間のトラン�
 * 複数通貨間のトランザクションの場合、デフォルトパスは支払元通貨（`SendMax`フィールドで指定）と宛先通貨（`Amount`フィールドで指定）の間でオーダーブックを使用します。
 
 有効なすべてのデフォルトパスを次の図に示します。
-[![デフォルトパスの図](img/paths-default_paths.ja.png)](img/paths-default_paths.ja.png)
+[![デフォルトパスの図](/img/paths-default_paths.ja.png)](/img/paths-default_paths.ja.png)
 
 デフォルトパスを無効にするには[`tfNoDirectRipple`フラグ](../../../references/protocol/transactions/types/payment.md#paymentのフラグ)を使用します。このケースでは、トランザクションに明示的に指定されたパスを使用してトランザクションを実行することだけが可能です。トレーダーはこのオプションを使用して裁定取引を実行できます。
 

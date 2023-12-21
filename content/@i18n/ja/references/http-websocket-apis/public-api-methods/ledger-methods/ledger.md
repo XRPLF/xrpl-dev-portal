@@ -148,4 +148,4 @@ rippled ledger current
 
 
 <!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->
-[手数料レベル]: transaction-cost.html#手数料レベル
+[手数料レベル]: ../../../../concepts/transactions/transaction-cost.md#手数料レベル

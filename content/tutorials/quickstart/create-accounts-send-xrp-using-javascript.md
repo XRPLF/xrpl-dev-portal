@@ -18,7 +18,7 @@ This example shows how to:
 
 When you create an account, you receive a public/private key pair offline. Your account does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.
 
-[![Token Test Harness](img/quickstart2.png)](img/quickstart2.png)
+[![Token Test Harness](/img/quickstart2.png)](/img/quickstart2.png)
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ To get test accounts:
 4. Click **Get New Operational Account.**
 5. Copy and paste the **Seeds** field in a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
 
-[![Standby and Operational Accounts](img/quickstart3.png)](img/quickstart3.png)
+[![Standby and Operational Accounts](/img/quickstart3.png)](/img/quickstart3.png)
 
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
 
@@ -66,7 +66,7 @@ To transfer XRP from the Operational account to the Standby account:
 2. Copy and paste the **Standby Account** field to the Operational **Destination** field.
 3. Click **&lt;Send XRP** to transfer XRP from the Operational account to the Standby account.
 
-[![Transferred XRP](img/quickstart4.png)](img/quickstart4.png)
+[![Transferred XRP](/img/quickstart4.png)](/img/quickstart4.png)
 
 # Code Walkthrough
 

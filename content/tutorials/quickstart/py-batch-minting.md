@@ -15,7 +15,7 @@ You can create an application that mints multiple NFTs at one time, using a `for
 
 A best practice is to use `Tickets` to reserve the transaction sequence numbers. If you create an application that creates NFTs without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for any individual failures afterward.
 
-[![Batch Mint](img/quickstart-py36.png)](img/quickstart-py36.png)
+[![Batch Mint](/img/quickstart-py36.png)](/img/quickstart-py36.png)
 
 ## Usage
 

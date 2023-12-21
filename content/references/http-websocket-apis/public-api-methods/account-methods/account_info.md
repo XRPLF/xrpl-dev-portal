@@ -256,4 +256,4 @@ Each object in the `transactions` array of `queue_data`, if present, may contain
 * `actNotFound` - The address specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
-[fee levels]: transaction-cost.html#fee-levels
+[fee levels]: ../../../../concepts/transactions/transaction-cost.md#fee-levels

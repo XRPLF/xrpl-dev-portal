@@ -48,5 +48,3 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temBAD_AMOUNT` | Occurs if the holder's balance is 0. It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. Also occurs if the counterparty listed in `Amount` is the same as the `Account` issuing this transaction. |
 | `tecNO_LINE` | Occurs there is no trust line with the counterparty or that trust line's balance is 0. |
 | `tecNO_PERMISSION` | Occurs if you attempt to set `lsfAllowTrustlineClawback` while `lsfNoFreeze` is set. Also occurs, conversely, if you try to set `lsfNoFreeze` while `lsfAllowTrustLineClawback` is set. |
-
-<!-- {# common link defs #} -->

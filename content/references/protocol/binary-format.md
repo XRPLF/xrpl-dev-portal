@@ -105,8 +105,8 @@ When you combine a field's type code and field code, you get the field's unique 
 
 |                  | Type Code < 16                                                                | Type Code >= 16 |
 |:-----------------|:------------------------------------------------------------------------------|:--|
-| **Field Code < 16**  | ![1 byte: high 4 bits define type; low 4 bits define field.](img/field-id-common-type-common-field.png) | ![2 bytes: low 4 bits of the first byte define field; next byte defines type.](img/field-id-uncommon-type-common-field.png) |
-| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is `0x00`, second byte defines type; third byte defines field](img/field-id-uncommon-type-uncommon-field.png) |
+| **Field Code < 16**  | ![1 byte: high 4 bits define type; low 4 bits define field.](/img/field-id-common-type-common-field.png) | ![2 bytes: low 4 bits of the first byte define field; next byte defines type.](/img/field-id-uncommon-type-common-field.png) |
+| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](/img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is `0x00`, second byte defines type; third byte defines field](/img/field-id-uncommon-type-uncommon-field.png) |
 
 When decoding, you can tell how many bytes the field ID is by which bits **of the first byte** are zeroes. This corresponds to the cases in the above table:
 
@@ -343,7 +343,7 @@ The following table describes the possible fields and the bitwise flags to set i
 | `0x10`    | `currency`    | [Currency Code][] | 160 bits | 2nd   |
 | `0x20`    | `issuer`      | [AccountID][]     | 160 bits | 3rd   |
 
-[Currency Code]: currency-formats.html#standard-currency-codes
+[Currency Code]: data-types/currency-formats.md#standard-currency-codes
 
 Some combinations are invalid; see [Path Specifications](../../concepts/tokens/fungible-tokens/paths.md#path-specifications) for details.
 

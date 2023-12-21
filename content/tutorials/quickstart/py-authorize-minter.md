@@ -18,7 +18,7 @@ This example shows how to:
 1. Authorize an account to create NFTs for your account.
 2. Mint an NFT for another account, when authorized.
 
-[![Token Test Harness](img/quickstart-py30.png)](img/quickstart-py30.png)
+[![Token Test Harness](/img/quickstart-py30.png)](/img/quickstart-py30.png)
 
 # Usage
 
@@ -53,7 +53,7 @@ To authorize another account to create NFTs for your account (for example, allow
 2. Paste the **Operational Account** value in the standby **Authorized Minter** field.
 3. Click **Set Minter**.
 
-[![Authorized Minter](img/quickstart-py31.png)](img/quickstart-py31.png)
+[![Authorized Minter](/img/quickstart-py31.png)](/img/quickstart-py31.png)
 
 ## Mint an NFT for Another Account
 
@@ -69,7 +69,7 @@ To mint a non-fungible token for another account:
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
 
-[![Minted NFT for Another Account](img/quickstart-py32.png)](img/quickstart-py32.png)
+[![Minted NFT for Another Account](/img/quickstart-py32.png)](/img/quickstart-py32.png)
 
 Once the item is minted, the authorized minter can sell the NFT normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
 
@@ -85,7 +85,7 @@ To create a NFT sell offer:
 
 The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
 
-[![NFT Sell Offer](img/quickstart-py33.png)](img/quickstart-py33.png)
+[![NFT Sell Offer](/img/quickstart-py33.png)](/img/quickstart-py33.png)
 
 ## Accept Sell Offer
 
@@ -99,11 +99,11 @@ To accept an available sell offer:
 4. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the NFT offer results. This is different from the `nft_id`).
 5. Click **Accept Sell Offer**.
 
-[![Transaction Results](img/quickstart-py34.png)](img/quickstart-py34.png)
+[![Transaction Results](/img/quickstart-py34.png)](/img/quickstart-py34.png)
 
 The Buyer account was debited the 100 XRP price plus 10 drops as the transaction cost. The Seller (Authorized Minter) account is credited 90 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction. The original Standby account receives a transfer fee of 10 XRP.
 
-[![Transaction Results](img/quickstart-py35.png)](img/quickstart-py35.png)
+[![Transaction Results](/img/quickstart-py35.png)](/img/quickstart-py35.png)
 
 # Code Walkthrough
 

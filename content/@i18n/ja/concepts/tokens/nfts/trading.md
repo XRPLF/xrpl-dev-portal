@@ -66,13 +66,13 @@ _([NonFungibleTokensV1_1 amendment](../../../resources/known-amendments.md#nonfu
 最も単純なワークフローでは、クリエイターが新しい`NFToken`を発行します。クリエイターは売却オファーを作成する際、最低売却価格を入力し、売却先にブローカーを設定します。購入希望者はブローカーを経由して`NFToken`に入札を行います。ブローカーは落札者を選び、取引を完了させ、ブローカー手数料を受け取ります。ベストプラクティスとして、ブローカーは`NFToken`に対して残っている購入オファーをすべてキャンセルします。
 
 
-![Brokered Mode with Reserve](img/nft-brokered-mode-with-reserve.png)
+![Brokered Mode with Reserve](/img/nft-brokered-mode-with-reserve.png)
 
 
 もう1つのワークフローは、クリエイターが販売をよりコントロールできるようにするものです。このワークフローでは、クリエイターが新しい`NFToken`を発行します。入札者はオファーを作成し、ブローカーを宛先として設定します。ブローカーは落札者を選び、仲介手数料を差し引き、`NFTokenCreateOffer`を使用してクリエイターに署名の依頼をします。クリエーターは要求されたオファーに署名し、ブローカーを宛先として設定します。ブローカーは`NFTokenAcceptOffer`を使って売却を完了し、仲介手数料を保持します。ブローカーは`NFTokenCancelOffer`を使用して`NFToken`に対する残りの入札をキャンセルします。
 
 
-![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)
+![Brokered Mode without Reserve](/img/nft-brokered-mode-without-reserve.png)
 
 
 所有者が他のアカウントで作成した`NFToken`をリセールする場合にも、同じワークフローを使用することができます。

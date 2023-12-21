@@ -59,7 +59,7 @@ In this tutorial, the hot address receives the tokens you issue from the cold ad
 
 **Caution:** Ripple provides the [Testnet and Devnet](../../concepts/networks-and-servers/parallel-networks.md) for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, **do not** use the same addresses on Testnet/Devnet and Mainnet.
 
-When you're [building production-ready software](production-readiness.html), you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 
 ### {{n.next()}}. Connect to the Network
@@ -98,8 +98,8 @@ First, configure the settings for your cold address (which will become the issue
 - [Authorized Trust Lines][]: (Optional) This setting (also called "Require Auth") limits your tokens to being held _only_ by accounts you've explicitly approved. You cannot enable this setting if you already have any trust lines or offers for _any_ token.
     **Note:** To use authorized trust lines, you must perform additional steps that are not shown in this tutorial.
 
-[Default Ripple]: rippling.html
-[Authorized Trust Lines]: authorized-trust-lines.html
+[Default Ripple]: ../../concepts/tokens/fungible-tokens/rippling.md
+[Authorized Trust Lines]: ../../concepts/tokens/fungible-tokens/authorized-trust-lines.md
 
 Other settings you may want to, optionally, configure for your cold address (issuer):
 
@@ -111,10 +111,10 @@ Other settings you may want to, optionally, configure for your cold address (iss
 | [Tick Size][]                | 5                   | Limit the number of decimal places in exchange rates for your token in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md). A tick size of 5-6 reduces churn of almost-equivalent offers and speeds up price discovery compared to the default of 15. |
 | [Domain][]                   | (Your domain name)  | Set to a domain you own so can [verify ownership of the accounts](../../references/xrp-ledger-toml.md#account-verification). This can help reduce confusion or impersonation attempts. |
 
-[Require Destination Tags]: require-destination-tags.html
-[Transfer Fee]: transfer-fees.html
-[Tick Size]: ticksize.html
-[Domain]: accountset.html#domain
+[Require Destination Tags]: ../manage-account-settings/require-destination-tags.md
+[Transfer Fee]: ../../concepts/tokens/transfer-fees.md
+[Tick Size]: ../../concepts/tokens/decentralized-exchange/ticksize.md
+[Domain]: ../../references/protocol/transactions/types/accountset.md#domain
 
 You can change these settings later as well.
 
