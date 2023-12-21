@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslate } from "@portal/hooks";
-import { Link } from "@redocly/portal/dist/client/App/Link";
+import { Link } from "@portal/Link";
 import { slugify } from "./slugify";
 import { CommandGroup, CommandMethod } from './types';
 
