@@ -111,7 +111,7 @@ labels:
 - **コンセプト:**
     - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
     - [ピアプロトコル](../../concepts/networks-and-servers/peer-protocol.md)
-    - [技術に関するよくある質問](../../faq.md)
+    - [技術に関するよくある質問](../../about/faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
     - [容量の計画](../installation/capacity-planning.md)

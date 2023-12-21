@@ -216,7 +216,7 @@ ShardStore:ERR Unsupported shard store type: RocksDB
 
 - **コンセプト:**
     - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
-    - [技術に関するよくある質問](../../faq.md)
+    - [技術に関するよくある質問](../../about/faq.md)
 - **チュートリアル:**
     - [ログメッセージについて](understanding-log-messages.md)
     - [容量の計画](../installation/capacity-planning.md)

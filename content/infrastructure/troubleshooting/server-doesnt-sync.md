@@ -111,7 +111,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
 - **Concepts:**
     - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Peer Protocol](../../concepts/networks-and-servers/peer-protocol.md)
-    - [Technical FAQ](../../faq.md)
+    - [Technical FAQ](../../about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)
