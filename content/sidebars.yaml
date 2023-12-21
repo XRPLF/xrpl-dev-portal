@@ -636,7 +636,8 @@
             page: resources/dev-tools/websocket-api-tool.page.tsx
           - label: xrp-ledger.toml Checker
             page: resources/dev-tools/xrp-ledger-toml-checker.page.tsx
-          - label: Domain Verification Checker
+          - label: Domain Verifier
+            page: resources/dev-tools/domain-verifier.page.tsx
           - label: XRP Faucets
             page: resources/dev-tools/xrp-faucets.page.tsx
           - label: Transaction Sender
