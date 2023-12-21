@@ -14,7 +14,7 @@ export interface LogEntryStatus {
     followUpMessage?: JSX.Element
 }
 
-export interface LogEntryProps {
+export interface LogEntryItem {
     message: string
     id: string
     status?: LogEntryStatus
@@ -22,47 +22,35 @@ export interface LogEntryProps {
 
 /**
  * Add entry to the end of the value that setLogEntries modifies.
- * 
+ *
  * @param setLogEntries - A setter to modify a list of LogEntries
  * @param entry - Data for a new LogEntry
  */
 export function addNewLogEntry(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-    entry: LogEntryProps)
+    setLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
+    entry: LogEntryItem)
 {
     setLogEntries((prev) => {
-        const updated: JSX.Element[] = [].concat(prev)
-        const index = updated.length
-        updated.push(<LogEntry 
-            message={entry.message}
-            id={entry.id}
-            key={`log-${index}`} status={entry.status}/>)
-        return updated
+        return [...prev, entry]
     })
 }
 
 /**
  * Looks up an existing log entry from the previous value within setLogEntries which has
- * the same id as entry.id. Then it updates that value to equal entry. 
- * 
+ * the same id as entry.id. Then it updates that value to equal entry.
+ *
  * Primarily used to update the "status" after verifying a field.
- * 
+ *
  * @param setLogEntries - A setter to modify a list of LogEntries.
- * @param entry - Updated data for an existing LogEntry.
+ * @param entryToUpdate - Updated data for an existing LogEntry.
  */
 export function updateLogEntry(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-    entry: LogEntryProps) {
+    setLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
+    entryToUpdate: LogEntryItem) {
     setLogEntries((prev) => {
-        const updated = [].concat(prev ?? [])
-        const index = updated.findIndex((log) => {
-            return log?.props?.id && log.props.id === entry.id
-        })
-        updated[index] = (<LogEntry 
-            message={entry.message} 
-            id={entry.id}
-            key={`log-${index}`} status={entry.status}/>)
-        return updated
+        const index = prev.findIndex((entry)=> entryToUpdate.id === entry.id)
+        prev.splice(index, 1, entryToUpdate)
+        return [...prev]
     })
 }
 
@@ -70,13 +58,13 @@ export function LogEntry({
     message,
     id,
     status
-}: LogEntryProps) 
+}: LogEntryItem)
 {
     const {translate} = useTranslate()
     let icon = undefined
     if(!!(status?.icon)) {
         icon = <span className={
-            clsx(status.icon?.type === "SUCCESS" && CLASS_GOOD, 
+            clsx(status.icon?.type === "SUCCESS" && CLASS_GOOD,
             status.icon?.type === "ERROR" && CLASS_BAD)}>
                 {status.icon?.label}
                 {status.icon?.check && <i className="fa fa-check-circle"/>}

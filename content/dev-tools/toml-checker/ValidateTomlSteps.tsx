@@ -3,42 +3,42 @@ import { useTranslate } from '@portal/hooks';
 import axios, { AxiosError } from "axios";
 import { parse } from "smol-toml";
 import { getListEntries } from "./ListTomlFields";
-import { addNewLogEntry, updateLogEntry, LogEntryProps, LogEntryStatus } from "./LogEntry";
+import { addNewLogEntry, updateLogEntry, LogEntryItem, LogEntryStatus } from "./LogEntry";
 import { MetadataField, XrplToml, AccountFields, TOML_PATH } from "./XrplToml";
 
 /**
- * Helper to log a list of fields from a toml file or display a relevant error message. 
+ * Helper to log a list of fields from a toml file or display a relevant error message.
  * Will return true if successfully displays at least one field from fields without erroring.
- * 
+ *
  * @param setLogEntries A setter to update the logs with the new fields.
  * @param headerText The initial message to include as a header for the list.
- * @param fields A set of fields to parse and display. May be undefined, but if so, 
+ * @param fields A set of fields to parse and display. May be undefined, but if so,
  *               this function will simply return false. Simplifies typing.
- * @param additionalCheck A function to verify something about fields before displaying the list of fields. Must return true / false.
+ * @param domainToVerify The domain to check
  * @param filterDisplayedFieldsTo Limits the displayed fields to ones which match the predicate.
  * @returns True if displayed any fields (after applying any given filters)
  */
 async function validateAndDisplayFields(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
-    headerText: string, 
+    setLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
+    headerText: string,
     fields?: Object[],
     domainToVerify?: string,
     filterDisplayedFieldsTo?: Function): Promise<boolean> {
-  
+
     const { translate } = useTranslate()
-    
+
     // If there's no data, do nothing
     if(!fields) {
       return false
     }
-  
+
     // Otherwise display all relevant data in the toml file for these field
     if(Array.isArray(fields)) {
         let icon = undefined;
         const formattedEntries = await getListEntries(fields, filterDisplayedFieldsTo, domainToVerify)
         const relevantTomlFieldsExist = formattedEntries.length > 0
         if(relevantTomlFieldsExist) {
-            addNewLogEntry(setLogEntries, 
+            addNewLogEntry(setLogEntries,
             {
                 message: headerText,
                 id: headerText,
@@ -71,12 +71,12 @@ async function validateAndDisplayFields(
 
 /**
  * Check whether a metadata field on a toml file is valid, then display logs with the results.
- * 
+ *
  * @param setLogEntries - A setter to update the logs
  * @param metadata - Metadata from a toml file being verified
  */
 function validateAndDisplayMetadata(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>, 
+    setLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
     metadata?: MetadataField) {
 
     const { translate } = useTranslate()
@@ -88,7 +88,7 @@ function validateAndDisplayMetadata(
             id: metadataId
         }
         addNewLogEntry(setLogEntries, metadataLogEntry)
-        
+
         // Uniquely checks if array, instead of if not array
         if (Array.isArray(metadata)) {
             updateLogEntry(setLogEntries, {...metadataLogEntry, status: {
@@ -103,7 +103,7 @@ function validateAndDisplayMetadata(
                 label: translate("FOUND"),
                 type: "SUCCESS",
                 },
-            }})  
+            }})
 
             if (metadata.modified) {
                 const modifiedLogId = 'modified-date-log'
@@ -121,21 +121,21 @@ function validateAndDisplayMetadata(
                     }})
                 } catch(e) {
                     updateLogEntry(setLogEntries, { ...modifiedLogEntry, status: {
-                        icon: { 
+                        icon: {
                         label: translate("INVALID"),
                         type: "ERROR",
                         },
                     }})
                 }
             }
-        }   
+        }
     }
 }
-  
+
 /**
  * Read in a toml file and verify it has the proper fields, then display those fields in the logs.
  * This is the 3rd step for verifying a wallet, and the 2nd step for verifying a toml file itself.
- * 
+ *
  * @param setLogEntries A setter to update the logs.
  * @param tomlData Toml data to parse.
  * @param addressToVerify The address we're actively looking to verify matches with this toml file.
@@ -143,18 +143,18 @@ function validateAndDisplayMetadata(
  * @returns Nothing.
  */
 async function parseXRPLToml(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
+    setLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
     tomlData,
     addressToVerify?: string,
     domain?: string) {
     const { translate } = useTranslate()
-  
-    const parsingTomlLogEntry: LogEntryProps = {
+
+    const parsingTomlLogEntry: LogEntryItem = {
         message: translate("Parsing TOML data..."),
         id: 'parsing-toml-data-log',
     }
     addNewLogEntry(setLogEntries, parsingTomlLogEntry)
-    
+
     let parsed: XrplToml
     try {
         parsed = parse(tomlData)
@@ -173,19 +173,19 @@ async function parseXRPLToml(
         }})
         return
     }
-  
+
     validateAndDisplayMetadata(setLogEntries, parsed.METADATA)
-  
+
     const accountHeader = translate("Accounts:")
     if(addressToVerify) {
         const filterToSpecificAccount = (entry: AccountFields) => entry.address === addressToVerify
         const accountFound = await validateAndDisplayFields(
-            setLogEntries, 
-            accountHeader, 
-            parsed.ACCOUNTS, 
-            undefined, 
+            setLogEntries,
+            accountHeader,
+            parsed.ACCOUNTS,
+            undefined,
             filterToSpecificAccount)
-   
+
       const statusLogId = 'account-found-status-log'
       if(accountFound) {
         // Then share whether the domain / account pair as a whole has been validated
@@ -212,7 +212,7 @@ async function parseXRPLToml(
                 }
             }
         })
-  
+
         addNewLogEntry(setLogEntries, {
             message: translate("Account not found in TOML file. Domain can not be verified."),
             id: statusLogId,
@@ -224,7 +224,7 @@ async function parseXRPLToml(
             }
         })
       }
-    } else { 
+    } else {
         // The final validation message is displayed under the validated account since in this case we're
         // verifying a wallet address, not the toml file itself.
         await validateAndDisplayFields(setLogEntries, translate(accountHeader), parsed.ACCOUNTS, domain)
@@ -239,7 +239,7 @@ async function parseXRPLToml(
 
 /**
  * Convert HTML error odes to status messages to display.
- * 
+ *
  * @param status - HTML Error code
  * @returns A human readable explanation for the HTML based on error code categories.
  */
@@ -258,16 +258,16 @@ function getHttpErrorCode(status?: number) {
 }
 
 /**
- * Extract and parse a toml file from a url derived via domain. If accountToVerify is 
+ * Extract and parse a toml file from a url derived via domain. If accountToVerify is
  * passed in, this specifically verifies that address is in the toml file.
  * For verifying a wallet, this is the 2nd step. For verifying a toml file itself, this is the 1st step.
- * 
+ *
  * @param setLogEntries - A setter to update the log files.
  * @param domain = The main section of a url - ex. validator.xrpl-labs.com
  * @param accountToVerify - A wallet to optionally specifically check for.
  */
 export async function fetchFile(
-    setLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
+    setLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
     domain: string,
     accountToVerify?: string) {
 
@@ -290,12 +290,12 @@ export async function fetchFile(
             type: "SUCCESS",
         },
     }})
-        
+
     // Continue to the next step of verification
     parseXRPLToml(setLogEntries, data, accountToVerify, domain)
 
     } catch (e) {
-        const errorUpdate: LogEntryProps = {...logEntry, status: {
+        const errorUpdate: LogEntryItem = {...logEntry, status: {
             icon: {
                 label: translate(getHttpErrorCode((e as AxiosError)?.status)),
                 type: "ERROR",
@@ -309,21 +309,21 @@ export async function fetchFile(
         updateLogEntry(setLogEntries, errorUpdate)
     }
 }
-  
+
 /**
  * Helper to display the result of trying to decode the domain decoding.
- * 
+ *
  * @param setAccountLogEntries - A setter to update the displayed logs.
  */
 function displayDecodedWalletLog(
-    setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,) {
-    
+    setAccountLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,) {
+
     const { translate } = useTranslate()
-    
+
     const logId = 'decoding-domain-hex'
-    addNewLogEntry(setAccountLogEntries, { 
-        message: translate('Decoding domain hex'), 
-        id: logId, 
+    addNewLogEntry(setAccountLogEntries, {
+        message: translate('Decoding domain hex'),
+        id: logId,
         status: {
             icon: {
             label: translate('SUCCESS'),
@@ -335,7 +335,7 @@ function displayDecodedWalletLog(
 
 /**
  * Decode ascii hex into a string.
- * 
+ *
  * @param hex - a hex string encoded in ascii.
  * @returns The decoded string
  */
@@ -350,24 +350,24 @@ function decodeHexWallet(hex: string): string {
 /**
  * The first step to verify an XRPL Wallet is verified with a toml file.
  * Looks up the domain associated with the given accountToVerify and the status on success or failure.
- * 
- * @param accountToVerify 
- * @param setAccountLogEntries 
- * @param socket 
+ *
+ * @param accountToVerify
+ * @param setAccountLogEntries
+ * @param socket
  */
 export function fetchWallet(
-    setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
-    accountToVerify: string, 
-    socket?: WebSocket) 
+    setAccountLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
+    accountToVerify: string,
+    socket?: WebSocket)
 {
     const {translate} = useTranslate()
 
     // Reset the logs
     setAccountLogEntries([])
 
-    const walletLogEntry = { 
-        message: translate(`Checking domain of account`), 
-        id: 'check-domain-account', 
+    const walletLogEntry = {
+        message: translate(`Checking domain of account`),
+        id: 'check-domain-account',
     }
     addNewLogEntry(setAccountLogEntries, walletLogEntry)
 
@@ -385,7 +385,7 @@ export function fetchWallet(
         let data;
         // Defaults to error to simplify logic later on
         let response: LogEntryStatus = {
-            icon: { 
+            icon: {
                 label: translate(`ERROR`),
                 type: `ERROR`,
             },

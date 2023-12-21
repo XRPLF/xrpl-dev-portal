@@ -2,13 +2,14 @@ import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 import { TextLookupForm, type TextLookupFormProps } from './toml-checker/TextLookupForm';
 import { fetchFile, fetchWallet } from './toml-checker/ValidateTomlSteps';
+import { LogEntryItem } from './toml-checker/LogEntry';
 /**
  * Example data to test the tool with
- * 
+ *
  * Domains:
  * - Valid: validator.xrpl-labs.com
  * - Not valid: sologenic.com
- * 
+ *
  * Addresses:
  * - Valid: rSTAYKxF2K77ZLZ8GoAwTqPGaphAqMyXV
  * - No toml: rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz
@@ -16,22 +17,22 @@ import { fetchFile, fetchWallet } from './toml-checker/ValidateTomlSteps';
  */
 
 function handleSubmitWallet(
-  setAccountLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
-  event: React.FormEvent<HTMLFormElement>, 
+  setAccountLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
+  event: React.FormEvent<HTMLFormElement>,
   addressToVerify: string) {
 
   event.preventDefault()
-  setAccountLogEntries(undefined)  
+  setAccountLogEntries([])
   fetchWallet(setAccountLogEntries, addressToVerify)
 }
 
 function handleSubmitDomain(
-  setDomainLogEntries: React.Dispatch<React.SetStateAction<JSX.Element[]>>,
-  event: React.FormEvent<HTMLFormElement>, 
+  setDomainLogEntries: React.Dispatch<React.SetStateAction<LogEntryItem[]>>,
+  event: React.FormEvent<HTMLFormElement>,
   domainAddress: string) {
 
   event.preventDefault();
-  setDomainLogEntries(undefined)  
+  setDomainLogEntries([])
   fetchFile(setDomainLogEntries, domainAddress)
 }
 
@@ -59,7 +60,7 @@ export default function TomlChecker() {
     <div className="toml-checker row">
         {/* This aside is empty but it keeps the formatting similar to other pages */}
         <aside className="right-sidebar col-lg-3 order-lg-4" role="complementary"/>
-        
+
         <main className="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
             <section className="container-fluid">
                 <div className="p-3">
