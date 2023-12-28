@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                                  
+    /* Modules */
+    "module": "commonjs",     
+    "sourceMap": true,
+    "outDir": "./dist",                             
+    "esModuleInterop": true,                             
+    // "preserveSymlinks": true,                        
+    "forceConsistentCasingInFileNames": true,         
+    /* Type Checking */
+    "strict": true,                                      
+    "skipLibCheck": true                                 
+  },
+  "include": [
+    "src/**/*"
+  ],
+}
