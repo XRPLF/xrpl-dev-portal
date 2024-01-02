@@ -89,7 +89,7 @@ labels:
     - [gateway_balancesメソッド][] - 発行者の発行残高を確認
     - [RippleStateオブジェクト](ripplestate.html) - 台帳の状態データのうち、トラストラインのデータ形式
     - [TrustSetトランザクション][] - トラストラインを作成・変更するトランザクション
-    -
+
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
 {% include '_snippets/tx-type-links.md' %}
