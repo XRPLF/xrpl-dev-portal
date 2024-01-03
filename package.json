@@ -15,7 +15,7 @@
     "@codemirror/state": "6.3.3",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "0.69.4",
+    "@redocly/realm": "0.70.0",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "axios": "^1.6.2",
