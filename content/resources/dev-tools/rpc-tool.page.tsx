@@ -185,7 +185,7 @@ export default function RpcTool() {
     <div className="container-fluid rpc-tool" role="document" id="main_content_wrapper">
       <div className="row">
         <main
-          className="main col-md-7 col-lg-6 order-md-3  "
+          className="main order-md-3"
           role="main"
           id="main_content_body"
         >
