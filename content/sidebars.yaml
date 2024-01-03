@@ -607,7 +607,7 @@
           - label: WebSocket API Tool
           - label: ripple.txt Validator
           - label: xrp-ledger.toml Checker
-            page: dev-tools/xrp-ledger-toml-checker.page.tsx
+            page: resources/dev-tools/xrp-ledger-toml-checker.page.tsx
           - label: Domain Verification Checker
           - label: XRP Faucets
             href: /dev-tools/xrp-faucets
