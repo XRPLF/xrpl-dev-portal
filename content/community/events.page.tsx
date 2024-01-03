@@ -1,13 +1,12 @@
 import { useState, useMemo } from "react";
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
-const moment = require('moment');
-
+const moment = require("moment");
 
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];
-  const today = moment().startOf('day'); // set the time to midnight
+  const today = moment().startOf("day"); // set the time to midnight
 
   arr.forEach((obj) => {
     const endDate = moment(obj.end_date, "MMMM D, YYYY"); // parse the 'end_date' string into a moment object
@@ -32,10 +31,9 @@ const events = [
     link: "https://xrpl-hackathon-2021.devpost.com/project-gallery",
     location: "Virtual",
     date: "September 13-October 6, 2021",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "October 6, 2021",
   },
-
   {
     name: "XRPL Community Meetup: San Diego",
     description:
@@ -44,7 +42,7 @@ const events = [
     link: "https://www.meetup.com/xrpl-community/events/281806645/",
     location: "San Diego, CA",
     date: "Saturday, November 20, 2021",
-    image: "event-meetup-san-diego@2x.jpg",
+    image: require("../static/img/events/event-meetup-san-diego@2x.jpg"),
     end_date: "November 20, 2021",
   },
 
@@ -56,10 +54,9 @@ const events = [
     link: "https://www.meetup.com/xrpl-community/events/281980446/",
     location: "Atlanta, GA",
     date: "Saturday, November 27, 2021",
-    image: "event-meetup-alanta@2x.jpg",
+    image: require("../static/img/events/event-meetup-alanta@2x.jpg"),
     end_date: "November 27, 2021",
   },
-
   {
     name: "XRPL Community Meetup: San Francisco",
     description:
@@ -68,7 +65,7 @@ const events = [
     link: "https://www.meetup.com/xrpl-community/events/281806676/",
     location: "San Francisco, CA",
     date: "Monday, November 29, 2021",
-    image: "event-meetup-san-francisco@2x.jpg",
+    image: require("../static/img/events/event-meetup-san-francisco@2x.jpg"),
     end_date: "November 29, 2021",
   },
 
@@ -80,7 +77,7 @@ const events = [
     link: "https://www.meetup.com/xrpl-community/events/281829463/",
     location: "Miami, FL ",
     date: "Thursday, December 9, 2021",
-    image: "event-meetup-miami@2x.jpg",
+    image: require("../static/img/events/event-meetup-miami@2x.jpg"),
     end_date: "December 8, 2022",
   },
 
@@ -92,7 +89,7 @@ const events = [
     link: "https://www.meetup.com/xrp-ledger-nashville-community/events/282538189/",
     location: "Nashville, TN",
     date: "Saturday, December 18, 2021",
-    image: "event-meetup-nashville@2x.jpg",
+    image: require("../static/img/events/event-meetup-nashville@2x.jpg"),
     end_date: "December 18, 2022",
   },
 
@@ -105,7 +102,7 @@ const events = [
     link: "https://www.meetup.com/NYC-XRP/events/284485901/",
     location: "NYC, NY",
     date: "March 30, 2022",
-    image: "event-meetup-new-york@2x.jpg",
+    image: require("../static/img/events/event-meetup-new-york@2x.jpg"),
     end_date: "March 30, 2022",
   },
 
@@ -118,7 +115,7 @@ const events = [
     link: "https://www.meetup.com/xrp-ledger-london-community/events/283536458/",
     location: "IDEALondon",
     date: "March 31, 2022",
-    image: "event-meetup-london.png",
+    image: require("../static/img/events/event-meetup-london.png"),
     end_date: "March 31, 2022",
   },
 
@@ -131,7 +128,7 @@ const events = [
     link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
     location: "Toronto",
     date: "March 31, 2022",
-    image: "event-meetup-toronto@2x.jpg",
+    image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
     end_date: "March 31, 2022",
   },
 
@@ -144,7 +141,7 @@ const events = [
     link: "https://www.meetup.com/xrp-ledger-san-diego-community/events/284663355/",
     location: "San Diego, CA",
     date: "April 1st 2022",
-    image: "event-meetup-san-diego@2x.jpg",
+    image: require("../static/img/events/event-meetup-san-diego@2x.jpg"),
     end_date: "April 1, 2022",
   },
 
@@ -157,7 +154,7 @@ const events = [
     link: "https://www.meetup.com/xrp-ledger-la-community-meetup/events/284824635/",
     location: "UC Irvine, CA",
     date: "April 3rd 2022",
-    image: "event-meetup-irvine@2x.jpg",
+    image: require("../static/img/events/event-meetup-irvine@2x.jpg"),
     end_date: "April 2, 2022",
   },
 
@@ -170,12 +167,11 @@ const events = [
     link: "https://www.meetup.com/xrp-ledger-miami-community/events/284463736/",
     location: "The LAB Miami, FL",
     date: "April 6th 2022",
-    image: "event-meetup-miami@2x.jpg",
+    image: require("../static/img/events/event-meetup-miami@2x.jpg"),
     end_date: "April 6, 2022",
   },
-
   {
-    name: "Hackathon:New Year, New NFT",
+    name: "Hackathon: New Year, New NFT",
     id: "upcoming-xrpl-hackathon-new-year",
     description:
       "Build Functional NFTs that span across a full range of use cases.",
@@ -183,7 +179,7 @@ const events = [
     link: "https://xrplnft2022.devpost.com/",
     location: "Virtual",
     date: "January 31 - March 14, 2022",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "March 14, 2022",
   },
 
@@ -195,31 +191,31 @@ const events = [
     link: "https://xrplimpact.devpost.com/",
     location: "Virtual",
     date: "May 26 - Jul 11, 2022",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "July 11, 2022",
   },
 
   {
-    name: "Conference:Apex 2021",
+    name: "Conference: Apex 2021",
     description:
       "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
     type: "conference",
     link: "https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZgnreb8ODgxJW032M9Z2XZ",
     location: "Las Vegas, Tallinn",
     date: "September 29-30, 2021",
-    image: "Conference.png",
+    image: require("../static/img/events/Conference.png"),
     end_date: "September 30, 2022",
   },
 
   {
-    name: "Hackathon:NFT Launch Party",
+    name: "Hackathon: NFT Launch Party",
     description:
       "Build Functional NFTs that span across a full range of use cases.",
     type: "hackathon",
     link: "https://xrplnft.devpost.com/",
     location: "Virtual",
     date: "Oct 31 - Dec 12, 2022",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "December 12, 2022",
   },
   {
@@ -230,7 +226,7 @@ const events = [
     link: "https://xrplzone-consensus.splashthat.com/",
     location: "Austin, Texas",
     date: "April 27, 2023",
-    image: "XRPLZone.png",
+    image: require("../static/img/events/XRPLZone.png"),
     end_date: "April 27, 2023",
   },
   {
@@ -241,7 +237,7 @@ const events = [
     link: "https://discord.com/invite/xrpl",
     location: "XRPL Developers Discord",
     date: "April 14, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "April 14, 2023",
   },
   {
@@ -252,7 +248,7 @@ const events = [
     link: "https://dev.to/ripplexdev/xrpcafe-ama-on-xrpl-developers-discord-36gp",
     location: "XRPL Developers Discord",
     date: "January 1, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "January 1, 2023",
   },
   {
@@ -263,7 +259,7 @@ const events = [
     link: "https://youtu.be/KpSt0PFT2QM",
     location: "XRPL Developers Discord",
     date: "June 02, 2022",
-    image: "CommunityCalls.png",
+    image: require("../static/img/events/CommunityCalls.png"),
     end_date: "June 02, 2022",
   },
   {
@@ -273,7 +269,7 @@ const events = [
     link: "https://youtu.be/oNJ1Qqns2Gw",
     location: "XRPL Developers Discord",
     date: "August 8, 2022",
-    image: "CommunityCalls.png",
+    image: require("../static/img/events/CommunityCalls.png"),
     end_date: "August 8, 2022",
   },
   {
@@ -284,7 +280,7 @@ const events = [
     link: "https://dev.to/ripplexdev/xrpl-developer-ama-pos-and-crypto-payments-with-friipay-13hm",
     location: "XRPL Developers Discord",
     date: "February 15, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "February 15, 2023",
   },
   {
@@ -295,7 +291,7 @@ const events = [
     link: "https://dev.to/ripplexdev/xrpl-developer-ama-bithomp-4a8d",
     location: "XRPL Developers Discord",
     date: "March 15, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "March 15, 2023",
   },
   {
@@ -306,7 +302,7 @@ const events = [
     link: "https://www.meetup.com/xrp-ledger-espana-madrid-y-barcelona/events/292597878",
     location: "Madrid",
     date: "April 29, 2023",
-    image: "Madrid.png",
+    image: require("../static/img/events/Madrid.png"),
     end_date: "April 29, 2023",
   },
   {
@@ -317,7 +313,7 @@ const events = [
     link: "http://apexdevsummit.com",
     location: "Amsterdam",
     date: "September 6 - 8, 2023",
-    image: "Conference.png",
+    image: require("../static/img/events/Conference.png"),
     end_date: "September 8, 2023",
   },
   {
@@ -328,7 +324,7 @@ const events = [
     link: "https://discord.com/invite/xrpl",
     location: "XRPL Developers Discord",
     date: "March 30, 2023",
-    image: "CommunityCalls.png",
+    image: require("../static/img/events/CommunityCalls.png"),
     end_date: "March 30, 2023",
   },
   {
@@ -339,7 +335,7 @@ const events = [
     link: "https://twitter.com/RippleXDev",
     location: "Twitter Spaces",
     date: "June 24, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "June 24, 2023",
   },
   {
@@ -350,7 +346,7 @@ const events = [
     link: "https://lu.ma/xrpl_builders_bootcamp",
     location: "Tokyo",
     date: "June 25, 2023",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "June 25, 2023",
   },
   {
@@ -361,7 +357,7 @@ const events = [
     link: "https://lu.ma/mn90h3h9",
     location: "Tokyo",
     date: "July 26, 2023",
-    image: "Conference.png",
+    image: require("../static/img/events/Conference.png"),
     end_date: "July 26, 2023",
   },
   {
@@ -372,7 +368,7 @@ const events = [
     link: "https://dorahacks.io/hackathon/xrpl-hackathon",
     location: "Online",
     date: "June 5, 2023 - July 30, 2023",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "July 30, 2023",
   },
   {
@@ -383,7 +379,7 @@ const events = [
     link: "http://xrpldevs.org/",
     location: "XRPL Developers Discord",
     date: "July 18, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "July 18, 2023",
   },
   {
@@ -394,7 +390,7 @@ const events = [
     link: "https://www.meetup.com/ripple-xrp-community/events/292740612",
     location: "Online",
     date: "July 13, 2023",
-    image: "Virtual-Event.png",
+    image: require("../static/img/events/Virtual-Event.png"),
     end_date: "July 13, 2023",
   },
   {
@@ -405,7 +401,7 @@ const events = [
     link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
     location: "Downtown Toronto",
     date: "August 14, 2023",
-    image: "event-meetup-toronto@2x.jpg",
+    image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
     end_date: "August 14, 2023",
   },
   {
@@ -416,7 +412,7 @@ const events = [
     link: "https://lu.ma/xrplacceleratorhappyhour",
     location: "Central London",
     date: "September 04, 2023",
-    image: "event-meetup-london.png",
+    image: require("../static/img/events/event-meetup-london.png"),
     end_date: "September 04, 2023",
   },
   {
@@ -427,7 +423,7 @@ const events = [
     link: "https://lu.ma/xrplaccelerator",
     location: "Central London and Online",
     date: "September 05, 2023",
-    image: "Conference.png",
+    image: require("../static/img/events/Conference.png"),
     end_date: "September 05, 2023",
   },
   {
@@ -438,7 +434,7 @@ const events = [
     link: "https://lu.ma/4h3bqfw1",
     location: "Delft, Netherlands ",
     date: "August 30, 2023 - August 31, 2023",
-    image: "Hackathons.png",
+    image: require("../static/img/events/Hackathons.png"),
     end_date: "August 31, 2023",
   },
   {
@@ -449,7 +445,7 @@ const events = [
     link: "https://www.youtube.com/watch?v=TgLaAXTZY7Q",
     location: "Virtual - Zoom",
     date: "September 05, 2023",
-    image: "InfoSessions.png",
+    image: require("../static/img/events/InfoSessions.png"),
     end_date: "September 05, 2023",
   },
   {
@@ -460,7 +456,7 @@ const events = [
     link: "https://lu.ma/xrplxccess",
     location: "South Korea - JBK Tower",
     date: "September 06, 2023",
-    image: "SouthKoreaMeetup.png",
+    image: require("../static/img/events/SouthKoreaMeetup.png"),
     end_date: "September 06, 2023",
   },
   {
@@ -471,7 +467,7 @@ const events = [
     link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
     location: "Virtual - Zoom",
     date: "September 06, 2023",
-    image: "InfoSessions.png",
+    image: require("../static/img/events/InfoSessions.png"),
     end_date: "September 06, 2023",
   },
   {
@@ -482,7 +478,7 @@ const events = [
     link: "http://xrpldevs.org/",
     location: "XRPL Developers Discord",
     date: "October 13, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "October 13, 2023",
   },
 
@@ -494,8 +490,110 @@ const events = [
     link: "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
     location: "Virtual - Reddit",
     date: "October 17, 2023",
-    image: "AMAs.png",
+    image: require("../static/img/events/AMAs.png"),
     end_date: "October 17, 2023",
+  },
+  {
+    name: "XRPL Blockhack Hackathon",
+    description:
+      "Join us at George Brown College's Waterfront Campus for workshops and talks on promoting growth for blockchain projects and ventures. We are supporting a for the most innovative application built on XRPL.",
+    type: "hackathon",
+    link: "https://blockhack-2023.devpost.com/",
+    location: "George Brown College - Waterfront Campus",
+    date: "October 20, 2023 - October 22, 2023",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "October 22, 2023",
+  },
+  {
+    name: "XRPL Accelerator Demo Day",
+    description:
+      "Join us for XRPL Accelerator Demo Day in Singapore! Explore pitches from 11 promising startups building on the XRP Ledger, network with founders and investors, and kickstart the Singapore FinTech Festival. Webinar link coming soon!",
+    type: "meetup",
+    link: "https://www.eventbrite.co.uk/e/xrpl-demo-day-tickets-740650023157?aff=oddtdtcreator",
+    location: "Hybrid Singapore/Virtual Webinar",
+    date: "November 14, 2023",
+    image: require("../static/img/events/singapore.png"),
+    end_date: "November 14, 2023",
+  },
+  {
+    name: "New Horizon: Innovate Without Limits: New Horizons Await",
+    description:
+      "Join our EVM-compatible chain launch for a chance to win $50,000 in prizes! Unleash your creativity in DeFi and NFTs, with judging criteria focused on novelty, impact, and community engagement.",
+    type: "hackathon",
+    link: "https://newhorizon.devpost.com/",
+    location: "Virtual",
+    date: "October 19, 2023 - December 22, 2023",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "December 22, 2023",
+  },
+  {
+    name: "XRPL Community Report Launch Party",
+    description:
+      "Celebrate the XRPL Community Report launch at 7pm! Join blockchain enthusiasts, connect with experts, and discover opportunities in the XRP Ledger ecosystem. Limited space available, so register now for a night of celebration and networking!",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
+    location: "Paris, France",
+    date: "November 28, 7pm - 9pm",
+    image: require("../static/img/events/paris.png"),
+    end_date: "November 28, 2023",
+  },
+  {
+    name: "RippleX’s Research: Stanford Engineering Campus Research Initiatives",
+    description:
+      "Learn more about RippleX’s ongoing research projects on the XRP Ledger, addressing issues like frontrunning defense, the significance of threshold signatures, and challenges in cross-chain communication, including the construction of bridges on XRPL.",
+    type: "conference",
+    link: "https://stanford.zoom.us/meeting/register/tJ0vcOCorjMpGdPnS4_aBkWhphhnzld7sUKr",
+    location: "Virtual",
+    date: "December 12, 2023 4:15pm PST",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "December 12, 2023",
+  },
+
+  {
+    name: "Paris Blockchain Week",
+    description:
+      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+    type: "conference",
+    link: "https://www.parisblockchainweek.com/",
+    location: "Paris, France",
+    date: "April 9 - 12, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "April 12, 2024",
+  },
+
+  {
+    name: "Consensus",
+    description:
+      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+    type: "conference",
+    link: "https://consensus2024.coindesk.com/sponsors/",
+    location: "Austin, Texas",
+    date: "May 29 - June 1, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "June 1, 2024",
+  },
+  {
+    name: "Permissionless",
+    description:
+      "Come see XRP Ledger at Permissionless: the world's largest DeFi conference.",
+    type: "conference",
+    link: "https://blockworks.co/event/permissionless-iii/home",
+    location: "Salt Lake City, Utah",
+    date: "October 9 - 11, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "October 11, 2024",
+  },
+
+  {
+    name: "XRPL Toronto Meetup Community - Celebrate with Us!",
+    description:
+      "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
+    type: "meetup",
+    link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    location: "Downtown, Toronto",
+    date: "TBD",
+    image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
+    end_date: "January 31, 2024",
   },
 ];
 
@@ -537,15 +635,15 @@ export default function Events() {
     const { name, checked } = event.target;
     setUpcomingFilters((prevFilters) => ({
       ...prevFilters,
-      [name.replace('-upcoming','')]: checked,
+      [name.replace("-upcoming", "")]: checked,
     }));
   };
 
   const handlePastFilterChange = (event) => {
-      const { name, checked } = event.target;
+    const { name, checked } = event.target;
     setPastFilters((prevFilters) => ({
       ...prevFilters,
-      [name.replace('-past','')]: checked,
+      [name.replace("-past", "")]: checked,
     }));
   };
 
@@ -594,7 +692,7 @@ export default function Events() {
                 Location: Amsterdam
               </div>
               <div className="py-2 my-3 event-small-gray">
-                Date: September 6-8, 2023
+                Date: June 11-13, 2024
               </div>
               <div className="d-lg-block">
                 <a
@@ -709,8 +807,9 @@ export default function Events() {
           </div>
           {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info-session  */}
           <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
-            {filteredUpcoming.map((event) => (
+            {filteredUpcoming.map((event,i) => (
               <a
+                key={event.name + i}
                 className={`event-card ${event.type}`}
                 href={event.link}
                 style={{}}
@@ -719,7 +818,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    background: `no-repeat url(../img/events/${event.image})`,
+                    background: `url(${event.image}) no-repeat`,
                   }}
                 >
                   <div className="event-card-title">{event.name}</div>
@@ -835,8 +934,9 @@ export default function Events() {
             </div>
           </div>
           <div className="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
-            {filteredPast.map((event) => (
+            {filteredPast.map((event, i) => (
               <a
+                key={event.name + i}
                 className="event-card {event.type}"
                 href={event.link}
                 target="_blank"
@@ -844,7 +944,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    background: `no-repeat url(../img/events/${event.image})`,
+                    background: `url(${event.image}) no-repeat`,
                   }}
                 >
                   <div className="event-card-title">{event.name}</div>

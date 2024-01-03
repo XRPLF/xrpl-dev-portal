@@ -1,528 +1,647 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslate } from "@portal/hooks";
-import NetworkNodeLight from "../static/js/community/NetworkNodeLight.json";
-import GrantsDark from "../static/js/community/XRPLGrantsDark.json";
-import CareersDark from "../static/js/community/CareersDark.json";
-import { useLottie } from "lottie-react";
-import { useThemeFromClassList } from "./@theme/helpers";
+import moment from "moment";
+const findNearestUpcomingEvent = (events) => {
+  let nearestEvent = null;
+  let nearestDateDiff = Infinity;
 
-// This page still needs typeform integration and animations
-const platforms = [
-  { name: "Twitter", id: "twitter", link: "https://twitter.com/XRPLF/" },
-  { name: "Discord", id: "discord", link: "https://xrpldevs.org" },
+  events.forEach((event) => {
+    const eventStartDate = moment(event.start_date, "MMMM DD, YYYY");
+    const currentDate = moment();
+    const diff = eventStartDate.diff(currentDate, "days");
+
+    if (diff >= 0 && diff < nearestDateDiff) {
+      nearestEvent = event;
+      nearestDateDiff = diff;
+    }
+  });
+
+  return { nearestEvent, nearestDateDiff };
+};
+
+const events = [
   {
-    name: "YouTube",
-    id: "youtube",
-    link: "https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg",
+    name: "New Horizon: Innovate Without Limits: New Horizons Await",
+    description:
+      "Join our EVM-compatible chain launch for a chance to win $50,000 in prizes! Unleash your creativity in DeFi and NFTs, with judging criteria focused on novelty, impact, and community engagement.",
+    type: "hackathon",
+    link: "https://newhorizon.devpost.com/",
+    location: "Virtual",
+    date: "October 19, 2023 - December 22, 2023",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "December 22, 2023",
+    start_date: "October 19, 2023",
   },
   {
-    name: "GitHub",
-    id: "github",
-    link: "https://github.com/XRPLF/xrpl-dev-portal",
-    imgclasses: "invertible-img",
+    name: "XRPL Community Report Launch Party",
+    description:
+      "Celebrate the XRPL Community Report launch at 7pm! Join blockchain enthusiasts, connect with experts, and discover opportunities in the XRP Ledger ecosystem. Limited space available, so register now for a night of celebration and networking!",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
+    location: "Paris, France",
+    date: "November 28, 7pm - 9pm",
+    image: require("../static/img/events/paris.png"),
+    end_date: "November 28, 2023",
+    start_date: "November 28, 2023",
   },
   {
-    name: "Stack Overflow",
-    id: "stack-overflow",
-    link: "https://stackoverflow.com/questions/tagged/xrp",
+    name: "XRPL Toronto Meetup Community - Celebrate with Us!",
+    description:
+      "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
+    type: "meetup",
+    link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    location: "Downtown, Toronto",
+    date: "December 7th, 6pm - 9pm",
+    image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
+    end_date: "December 7, 2023",
+    start_date: "December 7, 2023",
+  },
+  {
+    name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
+    description:
+      "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
+    type: "info-session",
+    link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
+    location: "Virtual - Zoom",
+    date: "September 06, 2023",
+    image: require("../static/img/events/InfoSessions.png"),
+    end_date: "September 06, 2023",
+    start_date: "September 06, 2023",
+  },
+  {
+    name: "APEX 2024: The XRPL Developer Summit",
+    description:
+      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
+    type: "conference",
+    link: "http://apexdevsummit.com",
+    location: "Amsterdam",
+    date: "June 11 - 13, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "June 13, 2024",
+    start_date: "June 11, 2024",
+  },
+  {
+    name: "XRPL Developers Reddit AMA: Real World Assets",
+    description:
+      "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
+    type: "ama",
+    link: "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
+    location: "Virtual - Reddit",
+    date: "October 17, 2023",
+    image: require("../static/img/events/AMAs.png"),
+    end_date: "October 17, 2023",
+    start_date: "October 17, 2023",
+  },
+  {
+    name: "Paris Blockchain Week",
+    description:
+      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+    type: "conference",
+    link: "https://www.parisblockchainweek.com/",
+    location: "Paris, France",
+    date: "April 9 - 12, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "April 12, 2024",
+    start_date: "April 12, 2024",
+  },
+  {
+    name: "Consensus",
+    description:
+      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+    type: "conference",
+    link: "https://consensus2024.coindesk.com/sponsors/",
+    location: "Austin, Texas",
+    date: "May 29 - June 1, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "June 1, 2024",
+    start_date: "June 1, 2024",
   },
 ];
-
-const contributeLedger = [
-  {
-    href: "the-rippled-server",
-    title: "The Rippled Server",
-    desc: "Learn about the core servers that power the XRP Ledger",
-  },
-  {
-    href: "run-rippled-as-a-validator",
-    title: "Join UNL",
-    desc: "Have your server vote on the consensus ledger",
-  },
-  {
-    href: "install-rippled",
-    title: "Install & Configure",
-    desc: "Install and update the rippled server.",
-  },
-  {
-    href: "troubleshoot-the-rippled-server",
-    title: "Troubleshooting",
-    desc: "Troubleshoot all kinds of problems with the rippled server.",
-  },
-];
-
-export default function Contribute() {
+const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
+const XrplEventsAndCarouselSection = ({ events }) => {
   const { translate } = useTranslate();
-  //Network Node lg
-  const options = {
-    animationData: NetworkNodeLight,
-    loop: true,
-  };
-  const NetNodeLg = useLottie(options);
-  const NetNodeLgView = NetNodeLg.View;
-  //Network Node sm
-  const NetNodeSm = useLottie(options);
-  const NetNodeSmView = NetNodeSm.View;
+  const [currentIndex, setCurrentIndex] = useState(1);
 
-  // Grants lg
-  const grantsOptions = {
-    animationData: GrantsDark,
-    loop: true,
+  const updateCarousel = () => {
+    const prevEvent = events[currentIndex - 1] || null;
+    const currentEvent = events[currentIndex];
+    const nextEvent = events[currentIndex + 1] || null;
+
+    return {
+      prevEvent,
+      currentEvent,
+      nextEvent,
+    };
   };
-  const grantsAnimationLg = useLottie(grantsOptions);
-  const GrantsDarkAnimationLg = grantsAnimationLg.View;
-  // Grants Sm
-  const grantsAnimationSm = useLottie(grantsOptions);
-  const GrantsDarkAnimationSm = grantsAnimationSm.View;
-  //Careers lg
-  const careersOptions = {
-    animationData: CareersDark,
-    loop: true,
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
   };
-  const carDarkLg = useLottie(careersOptions);
-  const CareersDarkLg = carDarkLg.View;
-  //Careers sm
-  const carDarkSm = useLottie(careersOptions);
-  const CareersDarkSm = carDarkSm.View;
+
+  const handleNext = () => {
+    if (currentIndex < events.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const { prevEvent, currentEvent, nextEvent } = updateCarousel();
 
   return (
-    <div className="landing page-community">
-      <div>
-        <section className="text-center" id="community-heading">
-          <div className="d-lg-block d-none">
-            <img
-              alt="People sitting at a conference"
-              className="parallax one"
-              width="220px"
-              height="160px"
-              src={require("../static/img/community/community-one.png")}
-            />
-            <img
-              alt="Person speaking at a conference"
-              className="parallax two"
-              width="120px"
-              height="160px"
-              src={require("../static/img/community/community-two.png")}
-            />
-            <img
-              alt="Person sitting and speaking"
-              className="parallax three"
-              width="102px"
-              height="102px"
-              src={require("../static/img/community/community-three.png")}
-            />
-            <img
-              alt="People chatting"
-              className="parallax four"
-              width="120px"
-              height="160px"
-              src={require("../static/img/community/community-four@2x.png")}
-            />
-            <img
-              alt="Person speaking at Apex"
-              className="parallax five"
-              width="216px"
-              height="160px"
-              src={require("../static/img/community/community-five@2x.png")}
-            />
+    <>
+      <section className="xrpl-events-section">
+        <div className="header-div">
+          <div className="header">
+            <h6 className="events-text">{translate("XRPL Events")}</h6>
+            <h4 className="events-text">
+              {translate("Check out global events hosted")}{" "}
+              <br className="d-none-sm" />
+              {translate("by the XRPL community")}
+            </h4>
           </div>
-          <div className="col-lg-6 mx-auto text-left text-md-center">
-            <div className="d-flex flex-column-reverse">
-              <h1 className="mb-0">
-                {translate("Open for Business, ")}
-                <br className="until-sm" />
-                {translate("Driven to Innovate")}
-              </h1>
-              <h6 className="eyebrow mb-3">
-                {translate("The XRPL Community")}
-              </h6>
+          <p className="description">
+            {translate(
+              "Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions."
+            )}
+          </p>
+          <a
+            className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
+            target="_blank"
+            href="/community/events"
+          >
+            {translate("View All Events")}
+          </a>
+        </div>
+        <div className="upcoming-event" id="upcoming-events-section">
+          <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
+          <div id="days-count" className="days-count">
+            {nearestDateDiff}
+          </div>
+          <div className="days-word">{translate("days")}</div>
+          <div className="num-separator"></div>
+          <h5 id="upcoming-event-name" className="event-name">
+            {translate(nearestEvent.name)}
+          </h5>
+          <p className="mb-2 event-details d-flex icon">
+            <span className="icon-location"></span>
+            <span id="upcoming-event-date">{nearestEvent.date}</span>
+          </p>
+          <p className="event-location d-flex icon">
+            <span className="icon-date" id="upcoming-event-location"></span>
+            <span id="location-tag">{nearestEvent.location}</span>
+          </p>
+        </div>
+        <a
+          target="_blank"
+          className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn"
+          href="/community/events"
+        >
+          {translate("View All Events")}
+        </a>
+      </section>
+
+      <section className="carousel">
+        <div className="image-container">
+          <img
+            id="left-image"
+            alt="Left Event Image"
+            src={prevEvent ? prevEvent.image : ""}
+            style={{ visibility: prevEvent ? "visible" : "hidden" }}
+          />
+          <div className="center-image-wrapper">
+            <img
+              id="center-image"
+              alt="Featured Event Image"
+              src={currentEvent ? currentEvent.image : ""}
+              onClick={() =>
+                currentEvent && window.open(currentEvent.link, "_blank")
+              }
+            />
+            <div className="event-info">
+              <span className="name">
+                {currentEvent ? currentEvent.name : ""}
+              </span>
+              <div className="flex-align">
+                <span className="icon-location"></span>
+                <span>{currentEvent ? currentEvent.location : ""}</span>
+              </div>
+              <div className="flex-align">
+                <span className="icon-date"></span>
+                <span>{currentEvent ? currentEvent.date : ""}</span>
+              </div>
             </div>
           </div>
-        </section>
-        {/* Join conversation */}
-        <section className="container-new" id="find-us-on-platforms">
-          <div className="d-flex flex-column-reverse col-sm-8 p-0">
-            <h3 className="h4 h2-sm">
-              {translate("Find the community on the platforms below")}
-            </h3>
-            <h6 className="eyebrow mb-3">
-              {translate("Join the Conversation")}
-            </h6>
+          <img
+            id="right-image"
+            alt="Right Event Image"
+            src={nextEvent ? nextEvent.image : ""}
+            style={{ visibility: nextEvent ? "visible" : "hidden" }}
+          />
+        </div>
+
+        <div className="arrow-wrapper">
+          <button className="arrow-button left-arrow" onClick={handlePrev}>
+            <img alt="left arrow" />
+          </button>
+          <button className="arrow-button right-arrow" onClick={handleNext}>
+            <img alt="right arrow" />
+          </button>
+        </div>
+      </section>
+    </>
+  );
+};
+
+const CommunityPage: React.FC = () => {
+  const { translate } = useTranslate();
+  return (
+    <div className="no-sidebar landing page-community">
+      {/* Community Heading Section */}
+      <section
+        className="text-center"
+        id="community-heading"
+        style={{ position: "relative" }}
+      >
+        <div className="d-lg-block d-none">
+          <img
+            alt="People sitting at a conference"
+            className="parallax one"
+            width="152px"
+            height="102px"
+            src={require("../static/img/community/community-one.png")}
+          />
+          <img
+            alt="Person speaking at a conference"
+            className="parallax two"
+            src={require("../static/img/community/community-two.png")}
+          />
+          <img
+            alt="Person sitting and speaking"
+            className="parallax three"
+            src={require("../static/img/community/community-three.png")}
+          />
+          <img
+            alt="People chatting"
+            className="parallax four"
+            width="120px"
+            height="160px"
+            src={require("../static/img/community/community-four.png")}
+          />
+          <img
+            alt="Person speaking at Apex"
+            className="parallax five"
+            src={require("../static/img/community/community-five.png")}
+          />
+        </div>
+
+        <div className="mx-auto text-left col-lg-6 text-md-center hero-title">
+          <div className="d-flex flex-column-reverse align-items-center sm-align-items-start">
+            <img
+              src={require("../static/img/icons/arrow-down.svg")}
+              className="bounce-arrow"
+              alt="Down Arrow"
+            />
+            <h1 className="mb-0 main-title">
+              {translate("A Global Blockchain")}
+              <br className="until-sm" />
+              {translate("Community of")}
+              <span className="builders-wrap">Builders</span>
+              <br className="until-sm" />
+              {translate("and Innovators")}
+            </h1>
+            <h6 className="mb-3 eyebrow">{translate("XRPL Community")}</h6>
           </div>
-          <div className="row row-cols-2 row-cols-lg-4 card-deck">
-            {platforms.map((plat) => (
-              <a className="card mb-10" href={plat.link} target="_blank">
-                <div className="card-body">
-                  <div className="circled-logo">
-                    <img
-                      id={`platform-${plat.id}`}
-                      alt="(logo)"
-                      className={plat?.imgclasses || ""}
-                    />
-                  </div>
-                  <h4 className="card-title h5">{plat.name}</h4>
-                </div>
-                <div className="card-footer">&nbsp;</div>
+        </div>
+      </section>
+      {/* Community Table Section */}
+      <section id="community-table" className="hot-topics">
+        <h6 className="eyebrow-convo">{translate("Join the Conversation")}</h6>
+        <h4>{translate("Hot Topics Happening Now")}</h4>
+        <table><tbody>
+          <tr>
+            <td className="td-img">
+              <img className="discord-icon" alt="discord icon" />
+            </td>
+            <td>
+              {translate(
+                "AMA with Edge Wallet: Learn more about Edge Wallet and how they are building on the XRP Ledger."
+              )}
+            </td>
+            <td>
+              <a
+                href="https://discord.com/channels/886050993802985492/950893687313940582/1162480612209332345"
+                target="_blank"
+                className="text-external-link"
+              >
+                <span className="external-link-contribute"></span>
               </a>
-            ))}
-          </div>
-        </section>
-        {/* Contribute */}
-        <section className="container-new" id="run-a-network-node">
-          <div className="card-grid card-grid-2xN">
-            <div className="col d-none d-lg-block align-self-center">
-              {NetNodeLgView}
+            </td>
+          </tr>
+          <tr>
+            <td className="td-img">
+              <img className="twitter-icon" alt="twitter icon" />
+            </td>
+            <td>
+              {translate(
+                "Clawback: A newly proposed feature that adds to the XRP Ledger's token asset control capabilities."
+              )}
+            </td>
+            <td>
+              <a
+                href="https://x.com/RippleXDev/status/1708889238471950610?s=20"
+                target="_blank"
+                className="text-external-link"
+              >
+                <span className="external-link-contribute"></span>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td className="td-img">
+              <img className="youtube-icon" alt="youtube icon" />
+            </td>
+            <td>
+              {translate(
+                "APEX 2023: View keynote sessions from the annual developer summit where developers, contributors, and thought leaders come together to learn, build, and celebrate all things XRP Ledger."
+              )}
+            </td>
+            <td>
+              <a
+                href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZBdGc33An5Is6IFMxw3D7u"
+                target="_blank"
+                className="text-external-link"
+              >
+                <span className="external-link-contribute"></span>
+              </a>
+            </td>
+          </tr>
+          <tr className="final-tr">
+            <td className="td-img">
+              <img className="xrpl-icon" alt="xrpl icon" />
+            </td>
+            <td>
+              {translate(
+                "Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more."
+              )}
+            </td>
+            <td>
+              <a
+                href="https://learn.xrpl.org/course/deep-dive-into-xrpl-defi/"
+                target="_blank"
+                className="text-external-link"
+              >
+                <span className="external-link-contribute"></span>
+              </a>
+            </td>
+          </tr>
+        </tbody></table>
+      </section>
+      {/* XRPL Events Carousel Section */}
+      <XrplEventsAndCarouselSection events={events} />
+      {/* Community Funding Section */}
+      <section className="community-funding">
+        <a
+          target="_blank"
+          className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn"
+          href="developer-funding"
+        >
+          {translate("Get Funding")}
+        </a>
+        <div className="stats">
+          <div className="stacked-stats">
+            <div className="stat">
+              <span className="small-text">
+                {translate("funding been awarded")}
+              </span>
+              <div id="staticImage" className="number gradient-num">
+                <span className="surround-gradient">$</span>
+                13
+                <span className="surround-gradient">M+</span>
+              </div>
+              <div className="ml-8 stat-separator"></div>
             </div>
-            <div className="col pt-lg-5">
-              <div className="d-flex flex-column-reverse mb-8 pl-0">
-                <h2 className="h4 h2-sm">
-                  {translate("Run an XRP Ledger network node")}
-                </h2>
-                <h6 className="eyebrow mb-3">
-                  {translate("Contribute to Consensus")}
-                </h6>
+            <div className="stat">
+              <span className="small-text">
+                {translate("teams awarded globally")}
+              </span>
+              <div className="number gradient-num-two">
+                120<span className="surround-gradient-two">+</span>
               </div>
-              <div className="col d-lg-none d-block">{NetNodeSmView}</div>
-              <div className="pt-2 pt-lg-5 card-grid card-grid-2xN text-cards">
-                {contributeLedger.map((cc) => (
-                  <div key={cc.href} className="text-card">
-                    <a className="btn-arrow" href={cc.href}>
-                      {cc.title}
-                    </a>
-                    <p className="mt-3 mb-0">{cc.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Grants */}
-        <section className="container-new" id="xrpl-grants">
-          <div className="card-grid card-grid-2xN">
-            <div className="col pr-2">
-              <div className="d-flex flex-column-reverse">
-                <h2 className="h4 h2-sm">
-                  {translate("Apply for funding to build your XRPL project")}
-                </h2>
-                <h6 className="eyebrow mb-3">{translate("XRPL Grants")}</h6>
-              </div>
-              <p className="mb-lg-3 py-lg-4 pt-4 mb-0">
-                {translate(
-                  "The XRPL Grants program funds select open-source projects that solve problems and grow the XRP Ledger community."
-                )}
-              </p>
-              <div  className="d-lg-block d-none">
-                <div id="xrplGrantsDark">{GrantsDarkAnimationLg}</div>
-                <a
-                  className="btn btn-primary btn-arrow"
-                  target="_blank"
-                  href="https://xrplgrants.org/"
-                >
-                  {translate("Apply for a Grant")}
-                </a>
-              </div>
-            </div>
-            <div className="col">
-              <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
-                <h6 className="eyebrow mb-2">
-                  {translate("Awarded in a single grant")}
-                </h6>
-                <img
-                  alt="$10K - $200K"
-                  src={require("../static/img/community/community-grants-1.svg")}
-                />
-              </div>
-              <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
-                <h6 className="eyebrow mb-2">
-                  {translate("Distributed to grant recipients")}
-                </h6>
-                <img
-                  alt="$6.0M"
-                  src={require("../static/img/community/community-grants-2.svg")}
-                />
-              </div>
-              <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
-                <h6 className="eyebrow mb-2">
-                  {translate("Open-source projects funded ")}
-                </h6>
-                <img
-                  alt="50+"
-                  src={require("../static/img/community/community-grants-3.svg")}
-                />
-              </div>
-              <div id="xrplGrantsDark-small" className="d-lg-none d-block mt-4 pt-3">
-                {GrantsDarkAnimationSm}
-                <a
-                  className="btn btn-primary btn-arrow"
-                  target="_blank"
-                  href="https://xrplgrants.org/"
-                >
-                  {translate("Learn More")}
-                </a>
-              </div>
+              <div className="ml-14 stat-separator"></div>
             </div>
           </div>
-        </section>
-        {/* Blog */}
-        <section className="container-new" id="xrpl-blog">
-          <div className="card-grid card-grid-2xN align-items-lg-center">
-            <div className="col pr-2 d-lg-block d-none">
+          <div className="stat">
+            <span className="small-text">
+              {translate("countries represented")}
+            </span>
+            <div className="number gradient-num-three">
+              28<span className="surround-gradient-three">+</span>
+            </div>
+            <div className="ml-19 stat-separator"></div>
+          </div>
+        </div>
+        <div className="funding-section">
+          <span className="funding-text">
+            {translate("XRPL Developer Funding")}
+          </span>
+          <h2>
+            {translate("Funding Opportunities for Blockchain Businesses")}
+          </h2>
+          <p>
+            {translate(
+              "If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation."
+            )}
+          </p>
+          <a
+            className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
+            target="_blank"
+            href="developer-funding"
+          >
+            {translate("Get Funding")}
+          </a>
+        </div>
+      </section>
+      {/* Community Spotlight Wrapper */}
+      <section className="community-spotlight-wrapper">
+        <div className="community-spotlight">
+          <h6 className="funding-text">
+            {translate("XRPL Community Spotlight")}
+          </h6>
+          <h2 className="spotlight-subtitle">
+            {translate(
+              "Showcase your blockchain project, application, or product"
+            )}
+          </h2>
+          <p className="spotlight-description">
+            {translate(
+              "Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community."
+            )}
+          </p>
+          <a
+            target="_blank"
+            className="w-222 btn btn-primary btn-arrow view-all-events-btn"
+            data-tf-popup="ssHZA7Ly"
+            data-tf-iframe-props="title=Developer Reflections"
+            data-tf-medium="snippet"
+            href="#submit-your-project"
+          >
+            {translate("Submit Your Project")}
+          </a>
+        </div>
+
+        <div className="projects-wrapper">
+          <div className="project-card top-left">
+            <div className="card-image">
               <img
-                alt="Bubbles with people inside"
-                src={require("../static/img/community/community-blog@2x.png")}
-                className="w-100 blog-graphic"
+                className="middle-image"
+                src={require("../static/img/community/blockdaemon.png")}
+                alt="Blockdaemon"
               />
             </div>
-            <div className="col">
-              <div className="d-flex flex-column-reverse mb-lg-2 pl-0">
-                <h2 className="h4 h2-sm">
-                  {translate(
-                    "Showcase your XRPL project, application or product"
-                  )}
-                </h2>
-                <h6 className="eyebrow mb-3">
-                  {translate("XRPL Community Spotlight")}
-                </h6>
-              </div>
-              <p className="mb-3 py-4">
+            <div className="card-details">
+              <h6 className="project-title">Blockdaemon</h6>
+              <p className="project-description">
                 {translate(
-                  'Get featured on the Developer Reflections blog or <a href="uses.html">Blockchain Use Cases</a> page, and explore XRPL community highlights.'
-                )}
-              </p>
-              <div className="d-lg-none d-block">
-                <img
-                  alt="Bubbles with people inside"
-                  src={require("../static/img/community/community-blog@2x.png")}
-                  className="w-100 blog-graphic"
-                />
-              </div>
-              <div className="text-lg-left text-center">
-                <a
-                  className="btn btn-primary btn-arrow mb-4 mb-md-0"
-                  data-tf-popup="ssHZA7Ly"
-                  data-tf-iframe-props="title=Developer Reflections"
-                  data-tf-medium="snippet"
-                >
-                  {translate("Submit Your Projects")}
-                </a>
-                <a
-                  className="ml-lg-4 video-external-link"
-                  target="_blank"
-                  href="https://xrpl.org/blog/"
-                >
-                  {translate("Read the Blog")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* Events */}
-        <section className="container-new" id="xrpl-events">
-          <div className="card-grid card-grid-2xN ">
-            <div className="col pr-2 d-lg-block d-none">
-              {/* Large. 3 image in col */}
-              <div className="d-flex flex-row h-100">
-                <div className=" pr-1 mr-3 align-self-start">
-                  <img
-                    alt="People standing at Apex"
-                    src={require("../static/img/community/community-events-apex-small@2x.png")}
-                    className="w-100"
-                  />
-                  <p className="bold text-light mt-3">
-                    {translate("Welcome to Apex 2021")}
-                  </p>
-                </div>
-                <div className=" px-1 mx-3 align-self-center">
-                  <img
-                    alt="People standing in a circle"
-                    src={require("../static/img/community/community-events-meetup-small@2x.png")}
-                    className="w-100"
-                  />
-                  <p className="bold text-light mt-3">
-                    {translate("XRPL Community Meetup")}
-                  </p>
-                </div>
-                <div className=" pl-1 ml-3 align-self-end">
-                  <img
-                    alt="Blue and pink card"
-                    src={require("../static/img/community/community-events-hackathon-small@2x.png")}
-                    className="w-100"
-                  />
-                  <p className="bold text-light mt-3">
-                    {translate("XRPL Hackathon 2022")}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col pt-5">
-              <div className="d-flex flex-column-reverse mb-lg-2 pl-0">
-                <h2 className="h4 h2-sm">
-                  {translate(
-                    "Check out global events across the XRPL community"
-                  )}
-                </h2>
-                <h6 className="eyebrow mb-3">{translate("XRPL Events")}</h6>
-              </div>
-              <p className="mb-3 py-4">
-                {translate(
-                  "Meet the XRPL community at meetups, hackathons, conferences, and more across global regions."
-                )}
-              </p>
-              {/* Mobile. 3 inline images.  */}
-              <div className="col pr-2 d-lg-none d-block">
-                <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
-                  <img
-                    alt="People standing at Apex"
-                    src={require("../static/img/community/community-events-apex@2x.png")}
-                    className="w-100"
-                  />
-                  <h6 className="mt-3">{translate("Welcome to Apex 2021")}</h6>
-                </div>
-                <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
-                  <img
-                    alt="People standing in a circle"
-                    src={require("../static/img/community/community-events-meetup@2x.png")}
-                    className="w-100"
-                  />
-                  <h6 className="mt-3">{translate("XRPL Community Meetup")}</h6>
-                </div>
-                <div className="mb-4 pb-3 mb-lg-3 pb-lg-5">
-                  <img
-                    alt="Blue and pink card"
-                    src={require("../static/img/community/community-events-hackathon@2x.png")}
-                    className="w-100"
-                  />
-                  <h6 className="mt-3">{translate("XRPL Hackathon 2022")}</h6>
-                </div>
-              </div>
-              <div>
-                <a
-                  className="btn btn-primary btn-arrow"
-                  target="_blank"
-                  href="/events.html"
-                >
-                  {translate("View All Events")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Careers */}
-        <section className="container-new" id="xrpl-careers">
-          <div className="card-grid card-grid-2xN">
-            <div id="careersDark" className="col pr-2 d-lg-block d-none">{CareersDarkLg}</div>
-            <div className="col pt-5">
-              <div className="d-flex flex-column-reverse mb-lg-2 pl-0">
-                <h2 className="h4 h2-sm">
-                  {translate(
-                    "Discover your next career opportunity in the XRPL community"
-                  )}
-                </h2>
-                <h6 className="eyebrow mb-3">{translate("XRPL Careers")}</h6>
-              </div>
-              <p className="mb-3 py-4">
-                {translate(
-                  "Teams across the XRPL community are looking for talented individuals to help build their next innovation."
-                )}
-              </p>
-              <div id="careersDark-small" className="d-lg-none d-block">{CareersDarkSm}</div>
-              <div className="d-lg-block">
-                <a
-                  className="btn btn-primary btn-arrow"
-                  target="_blank"
-                  href="https://jobs.xrpl.org/jobs"
-                >
-                  {translate("View Open Roles")}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* XRPL Design Assets */}
-        <section className="container-new" id="xrpl-design-assets">
-          <div className="card-grid card-grid-2xN ">
-            <div className="col pt-5">
-              <div className="d-flex flex-column-reverse mb-lg-2 pl-0">
-                <h2 className="h4 h2-sm">
-                  {translate("Review guidelines for using XRPL design assets")}
-                </h2>
-                <h6 className="eyebrow mb-3">{translate("XRPL Assets")}</h6>
-              </div>
-              <p className="mb-3 py-4">
-                {translate(
-                  "Just like the technology itself, XRPL assets are open source and available for anyone to use. Check out this helpful framework for using XRPL visuals. "
-                )}
-              </p>
-              <div className="col pr-2 d-lg-none d-block mb-4 pb-3 mb-lg-3">
-                <div className=" pr-1 mr-3">
-                  <img
-                    alt="Preview of xrpl community design assets webpages"
-                    src={require("../static/img/community/community-design-assets.png")}
-                    className="w-100"
-                  />
-                </div>
-              </div>
-              <div>
-                <a
-                  className="btn btn-primary btn-arrow"
-                  target="_blank"
-                  href="https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip"
-                >
-                  {translate("Download the PDF and Assets")}
-                </a>
-              </div>
-            </div>
-            <div className="col pr-2 d-lg-block d-none">
-              <div className=" pr-1 mr-3">
-                <img
-                  alt="Preview of xrpl community design assets webpages"
-                  src={require("../static/img/community/community-design-assets.png")}
-                  className="w-100"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="container-new">
-          <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
-            <img
-              alt="default-alt-text"
-              src={require("../img/backgrounds/cta-community-purple.svg")}
-              className="d-none-sm cta cta-top-left"
-            />
-            <img
-              alt="default-alt-text"
-              src={require("../img/backgrounds/cta-community-green.svg")}
-              className="cta cta-bottom-right"
-            />
-            <div className="z-index-1 position-relative">
-              <div className="d-flex flex-column-reverse">
-                <h2 className="h4 mb-10-until-sm mb-8-sm">
-                  {translate(
-                    "A community-driven resource for all things XRPL.org"
-                  )}
-                </h2>
-                <h5 className="eyebrow mb-3">
-                  {translate("Contribute to XRPL.org")}
-                </h5>
-              </div>
-              <p className="mb-10">
-                {translate(
-                  "Thank you for your interest in contributing to XRPL.org. This website was created as an XRPL community resource and is meant to be a living, breathing source of truth for XRP Ledger resources. This portal is open-source and anyone can suggest changes."
+                  "Your go-to independent blockchain infrastructure provider, offering secure and scalable blockchain services, including wallets, nodes, staking, protocols, and integrations for developers and institutions alike."
                 )}
               </p>
               <a
-                className="btn btn-primary btn-arrow"
-                href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md"
+                href="https://xrpl.org/blog/2023/blockdaemon.html"
                 target="_blank"
+                className="view-project external-link"
+              >
+                {translate("View Project")}
+              </a>
+            </div>
+          </div>
+          <div className="project-card bottom-right">
+            <div className="card-image">
+              <img
+                className="middle-image-two"
+                src={require("../static/img/community/xrp-cafe.png")}
+                alt="XRPCafe"
+              />
+            </div>
+            <div className="card-details">
+              <h6 className="project-title">XRPCafe</h6>
+              <p className="project-description">
+                {translate(
+                  "A premier NFT marketplace dedicated to fostering mass adoption of the XRP Ledger."
+                )}
+              </p>
+              <a
+                href="https://xrpl.org/blog/2023/xrpcafe.html"
+                target="_blank"
+                className="view-project external-link"
+              >
+                {translate("View Project")}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Bottom Cards Section */}
+      <section className="bottom-cards-section">
+        <div className="com-card">
+          <img className="top-left-img" alt="Top Left Image" />
+          <div className="card-content">
+            <h6 className="card-title">
+              {translate("Contribute to Consensus")}
+            </h6>
+            <h6 className="card-subtitle">
+              {translate("Run an XRP Ledger network node")}
+            </h6>
+            <p className="card-description">
+              {translate(
+                "Thank you for your interest in contributing to XRPL.org."
+              )}
+            </p>
+            <div className="card-links">
+              <a
+                className="com-card-link"
+                target="_blank"
+                href="/concepts/networks-and-servers/"
+              >
+                  {translate("Networks and Servers")}
+              </a>
+              <a
+                className="com-card-link"
+                href="/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
+                target="_blank"
+              >
+                {translate("Join UNL")}
+              </a>
+              <a
+                className="com-card-link"
+                target="_blank"
+                href="/infrastructure/installation/"
+              >
+                {translate("Install & Configure")}
+              </a>
+              <a
+                className="com-card-link"
+                target="_blank"
+                href="/infrastructure/troubleshooting/"
+              >
+                {translate("Troubleshooting")}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="com-card">
+          <img className="bottom-right-img" alt="Bottom Right Image" />
+          <div className="card-content">
+            <h6 className="card-title">{translate("XRPL Careers")}</h6>
+            <h6 className="card-subtitle">
+              {translate(
+                "Discover your next career opportunity in the XRPL community"
+              )}
+            </h6>
+            <p className="card-description">
+              {translate(
+                "Teams across the XRPL community are looking for talented individuals to help build their next innovation."
+              )}
+            </p>
+            <div className="card-links">
+              <a
+                className="com-card-link"
+                target="_blank"
+                href="https://jobs.xrpl.org/jobs"
+              >
+                {translate("View Open Roles")}
+              </a>
+            </div>
+          </div>
+        </div>
+        <div className="com-card">
+          <img className="top-right-img" alt="Top Right Image" />
+          <div className="card-content">
+            <h6 className="card-title">
+              {translate("Contribute to XRPL.org")}
+            </h6>
+            <h6 className="card-subtitle">
+              {translate("A Community-Driven Resource for All Things XRPL.org")}
+            </h6>
+            <p className="card-description">
+              {translate(
+                "Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes."
+              )}
+            </p>
+            <div className="card-links">
+              <a
+                className="com-card-link"
+                target="_blank"
+                href="/resources/contribute-documentation/"
               >
                 {translate("Read Contributor Guidelines")}
               </a>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>{" "}
     </div>
   );
-}
+};
+
+export default CommunityPage;
