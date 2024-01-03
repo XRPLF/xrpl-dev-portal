@@ -5,14 +5,13 @@
     "module": "commonjs",     
     "sourceMap": true,
     "outDir": "./dist",                             
-    "esModuleInterop": true,                             
-    // "preserveSymlinks": true,                        
+    "esModuleInterop": true,                  
     "forceConsistentCasingInFileNames": true,         
     /* Type Checking */
     "strict": true,                                      
     "skipLibCheck": true                                 
   },
   "include": [
-    "src/**/*"
+    "./**/*"
   ],
 }

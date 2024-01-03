@@ -25,25 +25,27 @@ import {
 } from './util/consts';
 
 /**
+ * Script for demonstrating AMM functionality, both token/token and token/XRP
  * AMM機能を試すためのスクリプト
  */
 async function main() {
   const client = new xrpl.Client(WS_URL);
   await client.connect()
-
-  // Get credentials from the Faucet -------------------------------------------
+  
+  // Get credentials from the Faucet ------------------------------------------
   console.log("Requesting address from the faucet...")
-  // const wallet = (await client.fundWallet()).wallet
+  const wallet = (await client.fundWallet()).wallet
 
   // To use an existing account, use code such as the following:
-  const wallet = xrpl.Wallet.fromSeed(process.env.SECRET_FEED!)
+  // const wallet = xrpl.Wallet.fromSeed(process.env.SECRET_FEED!)
 
-  // Create New Token
+  // Token<->Token AMM (FOO/MSH) example ======================================
+  // Issue tokens
+  // トークンを発行
   const msh_amount = await get_new_token(client, wallet, "MSH", "10000")
-  // call get new token method (FOO トークンを発行)
   const foo_amount = await get_new_token(client, wallet, "FOO", "1000")
 
-  // Acquire tokens ------------------------------------------------------------
+  // Acquire tokens -----------------------------------------------------------
   await acquireTokens(client, wallet, msh_amount);
   await acquireTokens(client, wallet, foo_amount);
 
@@ -95,10 +97,8 @@ async function main() {
   const {
     account_lines_result: account_lines_result2,
   } = await confirmAmm(client, wallet, amm_info_request);
-  
-  //console.log("account_lines_result2:", account_lines_result2)
 
-  // ============= (another XRP pattern) ===============
+  // Token<->XRP AMM (FOO/XRP) example ========================================
 
   // create AMM Info (another XRP pattern)
   const amm_info_request2: AmmInfo = {
