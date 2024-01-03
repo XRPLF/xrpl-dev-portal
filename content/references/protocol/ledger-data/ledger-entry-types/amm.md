@@ -89,7 +89,7 @@ The `AuctionSlot` field contains an object with the following nested fields:
 |:----------------|:--------------------|:------------------|:----------|:--|
 | `Account`       | String - Address    | AccountID         | Yes       | The current owner of this auction slot. |
 | `AuthAccounts`  | Array               | STArray           | No        | A list of at most 4 additional accounts that are authorized to trade at the discounted fee for this AMM instance. |
-| `DiscountedFee` | String              | UInt32            | Yes       | The trading fee to be charged to the auction owner, in the same format as `TradingFee`. By default this is 0, meaning that the auction owner can trade at no fee instead of the standard fee for this AMM. |
+| `DiscountedFee` | String              | UInt32            | Yes       | The trading fee to be charged to the auction owner, in the same format as `TradingFee`. Normally, this is 1/10 of the normal fee for this AMM. |
 | `Price`         | [Currency Amount][] | Amount            | Yes       | The amount the auction owner paid to win this slot, in LP Tokens. |
 | `Expiration`    | String              | UInt32            | Yes       | The time when this slot expires, in [seconds since the Ripple Epoch][]. |
 
