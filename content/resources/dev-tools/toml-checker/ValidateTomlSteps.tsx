@@ -45,7 +45,7 @@ async function validateAndDisplayFields(
                 status: {
                 followUpMessage: (
                     <ol>
-                    {formattedEntries}
+                        {formattedEntries}
                     </ol>
                 ),
                 icon: icon
