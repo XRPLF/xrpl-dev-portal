@@ -9,17 +9,17 @@ import { useThemeFromClassList } from "../@theme/helpers";
 
 const logos = {
   infrastructure: [
-    "XRP-Ledger",
-    "Gatehub",
-    "towoLabs",
+    "xrp-ledger",
+    "gatehub",
+    "towolabs",
     "xrpscan",
     "xrp-toolkit",
     "bithomp",
     "onthedex",
   ],
-  developer_tooling: ["blockforce", "Evernode", "threezy", "tokenize"],
-  interoperability: ["Allbridge", "multichain"],
-  wallet: ["Bitfrost", "Crossmark", "Edge", "gem-wallet", "Xumm"],
+  developer_tooling: ["cryptum", "evernode", "threezy", "tokenize"],
+  interoperability: ["multichain"],
+  wallet: ["crossmark", "edge", "gem-wallet", "xumm"],
   nfts: [
     "aesthetes",
     "audiotarky",
@@ -29,13 +29,13 @@ const logos = {
     "xrp-cafe",
     "xrp-oval",
   ],
-  exchanges: ["sologenic_dex", "XPMarket"],
-  gaming: ["Forte", "Futureverse", "ledger-city", "onXRP", "styngr"],
-  security: ["Anchain"],
-  payments: ["ripple", "SuperMojo"],
+  exchanges: ["sologenic_dex", "xpmarket"],
+  gaming: ["forte", "ledger-city"],
+  security: ["anchain"],
+  payments: ["ripple", "supermojo"],
   cbdc: ["ripple"],
-  sustainability: ["carbonland-trust", "Rootmaker"],
-  custody: ["Gatehub", "Bitgo"],
+  sustainability: ["carbonland-trust"],
+  custody: ["gatehub", "bitgo"],
 };
 const cardsData = [
   {
@@ -73,6 +73,15 @@ const cardsData = [
     category_id: "custody",
     category_name: "Custody",
     link: "https://www.bitgo.com/",
+  },
+  {
+    id: "forte",
+    title: "Forte",
+    description:
+      "Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.",
+    category_id: "gaming",
+    category_name: "Gaming",
+    link: "https://forte.io",
   },
   {
     id: "gatehub",
@@ -129,15 +138,6 @@ const cardsData = [
     link: "https://evernode.org/",
   },
   {
-    id: "forte",
-    title: "Forte",
-    description:
-      "Forte offers an unprecedented set of easy-to-use tools and services for game developers to integrate blockchain technology into their games, to unlock new economic and creative opportunities for gamers across the world.",
-    category_id: "gaming",
-    category_name: "Gaming",
-    link: "https://www.forte.io/",
-  },
-  {
     id: "gatehub",
     title: "Gatehub",
     description:
@@ -172,16 +172,6 @@ const cardsData = [
     category_id: "interoperability",
     category_name: "Interoperability",
     link: "https://multichain.org/",
-  },
-  {
-    id: "allbridge",
-    title: "Allbridge",
-    description: 
-      "Allbridge is a generalized bridge between EVM and non-EVM compatible blockchains, supporting native and wrapped token transfers."
-    ,
-    category_id: "interoperability",
-    category_name: "Interoperability",
-    link: "https://allbridge.io/",
   },
   {
     id: "nft-master",
@@ -291,6 +281,15 @@ const cardsData = [
     link: "https://x-tokenize.com/",
   },
   {
+    id: "threezy",
+    title: "3ZY",
+    description:
+      "3ZY develops SaaS solutions that combine web2 and web3 technologies with marketing to enhance the user experience for newcomers in the market, making it easier for them to purchase, stay secure, and engage in trustless decentralized finance and transactions.",
+    category_id: "developer_tooling",
+    category_name: "Developer Tooling",
+    link: "https://3zyconnect.com/",
+  },
+  {
     id: "xp-market",
     title: "XP Market",
     description:
@@ -392,7 +391,7 @@ const uses = [
   {
     id: "interoperability",
     title: "Interoperability",
-    number: 2,
+    number: 1,
     description:
       "Developers and node operators can build and run custom sidechains while leveraging the XRPL’s lean and efficient feature set.",
   },
@@ -420,7 +419,7 @@ const uses = [
   {
     id: "gaming",
     title: "Gaming",
-    number: 5,
+    number: 2,
     description:
       "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.",
   },
@@ -451,7 +450,7 @@ const uses = [
   {
     id: "sustainability",
     title: "Sustainability",
-    number: 2,
+    number: 1,
     description:
       "Use the XRP Ledger to tokenize carbon offsets as non-fungible tokens (NFTs).",
   },
@@ -570,8 +569,7 @@ export default function Uses() {
     const logoArray = logos[id] || [];
     const createLogoElement = (logoClassName, title, id) => {
       return (
-        <div className={`logo-item ${logoClassName}`}>
-          {/* Whatever content here */}
+        <div key={logoClassName} className={`logo-item ${logoClassName}`}>
         </div>
       );
     };
@@ -709,7 +707,7 @@ export default function Uses() {
               </div>
             </div>
             <ul
-            style={{gridTemplateColumns: 'repeat(4,1fr)'}}
+              style={{ gridTemplateColumns: "repeat(4,1fr)" }}
               className="card-grid use-cases-grid ls-none mt-4 pt-lg-2"
               id="use-case-card-grid"
             >
@@ -777,7 +775,7 @@ export default function Uses() {
             <div className="col-12 col-lg-8 col-xl-6 p-3 mb-5">
               <div className="d-flex flex-column-reverse">
                 <h3 className="h4 h2-sm">
-                  {translate("Businesses and developers&nbsp;")}
+                  {translate("Businesses and developers")}
                   <br className="until-sm" />
                   {translate(" rely on the XRP Ledger")}
                 </h3>
@@ -879,6 +877,7 @@ export default function Uses() {
               >
                 {filteredCards.map((card) => (
                   <a
+                    key={card.id}
                     className={`card-uses category_${card.category_id}`}
                     href={card.link}
                     target="_blank"
