@@ -10,7 +10,7 @@
         "./node_modules/@redocly/theme/src/*"
       ],
       "@portal/*": [
-        "./node_modules/@redocly/portal/dist/client/App/*"
+        "./node_modules/@redocly/realm/dist/client/App/*"
       ]
     },
   }
