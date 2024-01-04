@@ -4,7 +4,6 @@ parent: xrp-ledger-overview.html
 blurb: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
 subtitle: Answers to Your XRPL Questions
 top_nav_grouping: About
-sidebar: disabled
 labels:
   - Blockchain
 #template: page-faq2.html.jinja
