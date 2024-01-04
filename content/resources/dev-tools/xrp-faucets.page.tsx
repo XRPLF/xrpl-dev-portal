@@ -3,7 +3,7 @@ import { useTranslate } from '@portal/hooks';
 import { useState } from 'react';
 import { Client, dropsToXrp, Wallet } from 'xrpl'; 
 import * as faucetData from './faucets.json'
-import XRPLoader from 'content/static/components/XRPLoader';
+import XRPLoader from '../../@theme/components/XRPLoader';
 
 interface FaucetInfo {
   id: string,

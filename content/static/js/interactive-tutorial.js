@@ -196,7 +196,7 @@ function setup_generate_step() {
           <span id="use-secret">${wallet.seed}</span></div>`)
       if (data.balance) {
         block.find(".output-area").append(`<div><strong>${tl("Balance:")}</strong>
-        ${Number(data.balance).toLocaleString(current_locale)} XRP</div>`)
+        ${data.balance} XRP</div>`)
       }
 
       // Automatically populate all examples in the page with the
@@ -339,11 +339,12 @@ function setup_connect_step() {
     console.error("Interactive Tutorial: WS URL not found. Did you set use_network?")
     return
   }
+  const block = $("#connect-button").closest(".interactive-block");
   api = new xrpl.Client(ws_url)
   api.on('connected', async function() {
     $("#connection-status").text(tl("Connected"))
     $("#connect-button").prop("disabled", true)
-    $("#loader-connect").hide()
+    block.find(".loader").hide()
     $(".connection-required").prop("disabled", false)
     $(".connection-required").prop("title", "")
 
@@ -362,7 +363,7 @@ function setup_connect_step() {
   })
   $("#connect-button").click(async (event) => {
     $("#connection-status").text( tl("Connecting...") )
-    $("#loader-connect").show()
+    block.find(".loader").show()
     await api.connect()
 
     for (const fn of after_connect) {
