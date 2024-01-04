@@ -22,12 +22,8 @@ const softwallets = [
   { href: "https://towolabs.com/", id: "wallet-towo", alt: "Towo" },
   { href: "https://xumm.app/", id: "wallet-xumm", alt: "Xumm" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
-  {
-    href: "https://gatehub.net/",
-    id: "wallet-gatehub",
-    alt: "Gatehub",
-    imgclasses: "invertible-img",
-  },
+  { href: "https://gatehub.net/", id: "wallet-gatehub", alt: "Gatehub" , imgclasses: "invertible-img",},
+  { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" , imgclasses: "invertible-img", }
 ];
 
 const hardwallets = [
@@ -372,7 +368,7 @@ export default function XrpOverview() {
                     "Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software."
                   )}
                 </h5>
-                <ul className="nav nav-grid-lg cols-of-5" id="wallets">
+                <ul className="nav nav-grid-lg cols-of-6" id="wallets">
                   <li className="nav-item nav-grid-head">
                     <h6 className="fs-4-5">{translate("Software Wallets")}</h6>
                   </li>
