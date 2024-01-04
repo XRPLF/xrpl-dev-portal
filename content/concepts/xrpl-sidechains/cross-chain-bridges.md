@@ -17,7 +17,7 @@ A locking chain is where the digital asset originates from. These assets are loc
 
 An issuing chain is an independent ledger with its own consensus algorithm and transaction types and rules. A wrapped version of the digital asset is minted and burned, depending on if an asset is received or sent from the locking chain.
 
-**Note:** Bridges utilize special _door accounts_ when moving assets cross-chain. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain used to issue wrapped assets. 
+**Note:** Bridges utilize special _door accounts_ when moving assets cross-chain. The door account on a locking chain is used to put assets into trust, and the door account on an issuing chain is used to issue wrapped assets. 
 
 Both the locking and issuing chains operate as parallel networks with independent nodes and validators. They rely on independent [witness servers](witness-servers.html) to watch transactions between the two chains and attest that assets have moved into specifically designated accounts.
 
