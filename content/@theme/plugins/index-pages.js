@@ -1,9 +1,9 @@
 // @ts-check
-import { readSharedData } from '@redocly/portal/dist/server/utils/shared-data.js'; // TODO: export function from root package
+import { readSharedData } from '@redocly/realm/dist/server/utils/shared-data.js'; // TODO: export function from root package
 const INDEX_PAGE_INFO_DATA_KEY = 'index-page-items';
 
 export function indexPages() {
-  /** @type {import("@redocly/portal/dist/server/plugins/types").PluginInstance } */
+  /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
   const instance = {
     // hook that gets executed after all routes were created
     async afterRoutesCreated(contentProvider, actions) {
