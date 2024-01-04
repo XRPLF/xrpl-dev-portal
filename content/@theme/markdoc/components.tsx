@@ -4,6 +4,8 @@ import dynamicReact from '@markdoc/markdoc/dist/react';
 import { usePageSharedData } from '@portal/hooks';
 import { Link } from '@portal/Link';
 
+export {default as XRPLoader} from '../components/XRPLoader';
+
 function slugify(text: string) {
     return text
       .toLowerCase()
@@ -41,7 +43,7 @@ export function StartStep(props: { children: React.ReactNode; stepIdx: number; s
             data-steplabel={stepLabel}
             data-stepid={stepId}
           >
-            {props.steps.map((step, idx) => {
+            {props.steps?.map((step, idx) => {
               const iterStepId = slugify(step).toLowerCase();
               let className = `breadcrumb-item bc-${iterStepId}`;
               if (idx > 0) className += ' disabled';

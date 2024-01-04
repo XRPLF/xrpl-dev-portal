@@ -34,7 +34,7 @@ function TestNetCredentials(url, altnet_name, ws_url) {
   const secret = $('#secret')
   const balance = $('#balance')
   const sequence = $('#sequence')
-  const loader = $('#loader')
+  const loader = $('.loader')
 
   //reset the fields initially and for re-generation
   credentials.hide()
