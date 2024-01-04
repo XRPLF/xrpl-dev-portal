@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>NFTのコンセプトの概要 - XRPL.org (日本語)</title>
+    <title>非代替性トークン(NFT) - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="NFTのコンセプトの概要 | XRPL.org (日本語)">
+    <meta property="og:title" content="非代替性トークン(NFT) | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/non-fungible-tokens.html" />
-    <meta property="og:description" content="XRPL NFTの紹介。" />
-    <meta name="description" content="XRPL NFTの紹介。" />
+    <meta property="og:description" content="XRPL NFTを紹介します。" />
+    <meta name="description" content="XRPL NFTを紹介します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['Non-fungible Tokens, NFTs']
+      "page_labels": ['非代替性トークン, NFT']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -263,8 +263,8 @@
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-non-fungible-tokens-nfts">Non-fungible Tokens, NFTs</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Non-fungible Tokens, NFTs" -->
+      <span class="label label-非代替性トークン-nft">非代替性トークン, NFT</span>
+      <!-- TEMPLATE WARNING: no label landing found for "非代替性トークン, NFT" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -272,10 +272,9 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#nftのコンセプトの概要">NFTのコンセプトの概要</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#非代替性トークンnft">非代替性トークン(NFT)</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#xrp-ledger上のnft">XRP Ledger上のNFT</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#nftokenのライフサイクル">NFTokenのライフサイクル</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
   </div>
       </aside>
@@ -293,68 +292,33 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/tokens.html">トークン</a></li>
-    <li class="active breadcrumb-item">NFTのコンセプトの概要</li>
+    <li class="active breadcrumb-item">非代替性トークン(NFT)</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="nftのコンセプトの概要">NFTのコンセプトの概要<a aria-hidden="true" class="hover_anchor" href="#nftのコンセプトの概要"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerは、<em>IOUs</em> としても知られる<a href="tokens.html">トークン</a>のサポートを提供しています。このような資産は、主に、代替可能(Fungible)です。</p>
-<blockquote>
-<p>代替可能性</p>
-<ol>
-<li>個々の単位が本質的に交換可能であり、各部分が別の部分と区別できない商品または商品の特性である</li>
-</ol>
-</blockquote>
-<p>代替可能トークンは、XRP Ledgerの分散型取引所において、ユーザー間でXRPや他のトークンと手軽に交換することができます。そのため、決済に適しています。</p>
-<p>例えば、切手などがそうです。1919年当時、あなたが航空便で手紙を送る必要がある場合、24セントの切手を購入し、封筒に張ったでしょう。もしその切手をなくしてしまったら、別の24セント切手を使うか、10セント切手2枚と2セント切手2枚を使うことができます。非常に使い勝手がいいのです。</p>
-<p><img alt="Jenny Stamps" src="img/nft-concepts1.png" title="Jenny Stamps"/></p>
-<p>しかし、1919年という時代のことですから、切手の飛行機が偶然にも逆さまに印刷されている24セントの航空郵便切手が出回るかもしれません。これが世界的に有名な「インバート・ジェニー」切手です。1枚の切手シートで100枚しか流通しなかったため、非常に希少で人気の高い切手です。現在、鑑定では一枚150万円以上の価値があるとされています。</p>
-<p><img alt="Jenny Stamps" src="img/nft-concepts2.png" title="Jenny Stamps"/></p>
-<p>これらの切手は、他の24セント切手と交換することはできません。非代替(Non-fungible)になってしまったのです。</p>
-<p><a href="known-amendments.html#nonfungibletokensv1">NonFungibleTokensV1の修正</a> :現在有効ではありません: は、XRP Ledgerに非代替性トークン（NFT）のサポートをネイティブで追加するものです。 非代替性トークンは、芸術品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権をコード化する役割を果たします。</p>
+        <h1 id="非代替性トークンnft">非代替性トークン(NFT)<a aria-hidden="true" class="hover_anchor" href="#非代替性トークンnft"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledgerは、非代替性トークン(NFT)をネイティブにサポートしています。 非代替性トークンは、芸術作品やゲーム内アイテムなど、ユニークな物理的、非物理的、あるいは純粋なデジタル商品の所有権を証明する役割を果たします。</p>
+<p><em>(<a href="known-amendments.html#nonfungibletokensv1_1">NonFungibleTokensV1_1 amendment</a>により追加されました。)</em></p>
+<p>このようなデジタル資産を表現するには、XRP LedgerのNon-Fungible Tokens機能（スタンダードドラフト番号で<a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/discussions/46" target="_blank">XLS-20 <i aria-hidden="true" class="fa fa-external-link"></i></a>と呼ばれることもあります）を使用します。</p>
 <h2 id="xrp-ledger上のnft">XRP Ledger上のNFT<a aria-hidden="true" class="hover_anchor" href="#xrp-ledger上のnft"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledger上では、non-fungible tokenは<a href="nftoken.html">NFToken</a>オブジェクトとして表されます。NFTokenはユニークで分割できない単位で、決済には使用できません。ユーザーはこのようなトークンを発行（作成）、保有、購入、売却、焼却（破棄）することができます。</p>
-<p>XRP Ledgerでは、容量を節約するために、一つのアカウントで最大32個の <code>NFToken</code> オブジェクトを一つの<a href="nftokenpage.html">NFTokenPageオブジェクト</a>に格納します。その結果、所有者の <code>NFToken</code> オブジェクトに対する [準備金] (reserves.html) は、追加のトークンを格納するためにレジャーが新しいページを作成する場合にのみ増加します。</p>
+<p>XRP Ledgerでは、容量を節約するために、一つのアカウントで最大32個の<code>NFToken</code>オブジェクトを一つの<a href="nftokenpage.html">NFTokenPageオブジェクト</a>に格納します。その結果、所有者の<code>NFToken</code>オブジェクトに対する<a href="reserves.html">準備金</a>は、追加のトークンを格納するためにレジャーが新しいページを作成する場合にのみ増加します。</p>
 <p>また、アカウントは、自分に代わってNFTokenオブジェクトを発行・販売するブローカー（代理発行者）を指定することができます。</p>
-<p><code>NFToken</code> オブジェクトは、トークンが発行された時点で確定し、後で変更することが出来ない設定項目を持ちます。これらは以下の通りです。</p>
+<p><code>NFToken</code>オブジェクトは、トークンが発行された時点で確定し、後で変更することが出来ない設定項目を持ちます。これらは以下の通りです。</p>
 <ul>
 <li>トークンを一意に定義する各種識別データ。</li>
 <li>発行者が、現在の保有者に関係なく、トークンを焼却できるかどうか。</li>
-<li>トークンの保持者がトークンを他者に転送できるかどうか。( <code>NFToken</code> は常に発行者に直接送信したり、発行者から送信することが可能です)。<ul>
+<li>トークンの保持者がトークンを他者に転送できるかどうか。(<code>NFToken</code>は常に発行者に直接送信したり、発行者から送信することが可能です)。<ul>
 <li>転送が許可されている場合、発行者は販売価格に対する一定の割合で手数料を徴収することができます。</li>
 </ul>
 </li>
 <li>NFTokenを<a href="tokens.html">トークン</a>で売却できるか、XRPのみでしか売却できないか。</li>
 </ul>
 <h2 id="nftokenのライフサイクル"><code>NFToken</code>のライフサイクル<a aria-hidden="true" class="hover_anchor" href="#nftokenのライフサイクル"><i class="fa fa-link"></i></a></h2>
-<p>誰もが <a href="nftokenmint.html">NFTokenMint トランザクション</a> を使って新しい <code>NFToken</code> を作成することができます。<code>NFToken</code> は発行者アカウントの <a href="nftokenpage.html">NFTokenPage オブジェクト</a> に格納されます。所有者または利害関係者は <a href="nftokencreateoffer.html">NFTokenCreateOffer トランザクション</a>を送信して <code>NFToken</code> の売買を提案できます。レジャーは提案された転送を <a href="nftokenoffer.html">NFTokenOffer オブジェクト</a>として追跡し、一方が承諾またはキャンセルすると <code>NFTokenOffer</code> を削除します。<code>NFToken</code> が転送可能であれば、アカウント間で複数回取引することができます。</p>
-<p><a href="nftokenburn.html">NFTokenBurn トランザクション</a> を使用して、自分が所有する <code>NFToken</code> を破棄することができます。発行者が <code>tfBurnable</code> フラグを有効にしてトークンを発行した場合、発行者は現在の所有者に関係なくトークンを破棄することが可能です。( 例えば、あるイベントのチケットを表すトークンである場合、そのチケットをある時点で消費するといった場合に便利です)。</p>
+<p>誰もが<a href="nftokenmint.html">NFTokenMint トランザクション</a>を使って新しい<code>NFToken</code>を作成することができます。<code>NFToken</code>は発行者アカウントの<a href="nftokenpage.html">NFTokenPage オブジェクト</a>に格納されます。所有者または利害関係者は<a href="nftokencreateoffer.html">NFTokenCreateOffer トランザクション</a>を送信して<code>NFToken</code>の売買を提案できます。レジャーは提案された転送を<a href="nftokenoffer.html">NFTokenOffer オブジェクト</a>として追跡し、一方が承諾またはキャンセルすると<code>NFTokenOffer</code>を削除します。<code>NFToken</code>が転送可能であれば、アカウント間で複数回取引することができます。</p>
+<p><a href="nftokenburn.html">NFTokenBurn トランザクション</a>を使用して、自分が所有する<code>NFToken</code>を破棄することができます。発行者が<code>tfBurnable</code>フラグを有効にしてトークンを発行した場合、発行者は現在の所有者に関係なくトークンを破棄することが可能です。(例えば、あるイベントのチケットを表すトークンである場合、そのチケットをある時点で消費するといった場合に便利です)。</p>
 <p><img alt="The NFT Lifecycle" src="img/nft-lifecycle.png" title="NFT Lifecycle Image"/></p>
-<p><code>NFToken</code> オブジェクトの転送に関する詳細は、<a href="non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a> を参照してください。</p>
-<h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
-<ul>
-<li><a href="nftoken.html">NFToken</a> データ型</li>
-<li>レジャーオブジェクト<ul>
-<li><a href="nftokenoffer.html">NFTokenOffer オブジェクト</a></li>
-<li><a href="nftokenpage.html">NFTokenPage オブジェクト</a></li>
-</ul>
-</li>
-<li>トランザクション<ul>
-<li><a href="nftokenmint.html">NFTokenMint トランザクション</a></li>
-<li><a href="nftokencreateoffer.html">NFTokenCreateOffer トランザクション</a></li>
-<li><a href="nftokencanceloffer.html">NFTokenCancelOffer トランザクション</a></li>
-<li><a href="nftokenacceptoffer.html">NFTokenAcceptOffer トランザクション</a></li>
-<li><a href="nftokenburn.html">NFTokenBurn トランザクション</a></li>
-</ul>
-</li>
-<li>API メソッド<ul>
-<li><a href="account_nfts.html">account_nfts メソッド</a></li>
-<li><a href="nft_sell_offers.html">nft_sell_offers メソッド</a></li>
-<li><a href="nft_buy_offers.html">nft_buy_offers メソッド</a></li>
-<li><a href="nft_info.html">nft_info メソッド</a> (Clioサーバのみ)</li>
-</ul>
-</li>
-</ul>
+<p><code>NFToken</code>オブジェクトの転送に関する詳細は、<a href="non-fungible-token-transfers.html">XRP Ledger上でNFTokenを売買する</a>をご覧ください。</p>
 <!-- -->
 <!-- -->
 <!-- API object types -->
@@ -893,7 +857,7 @@
 
       <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="true" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column show " id="tree_nav_group_4_6_2">
       
