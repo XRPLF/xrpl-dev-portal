@@ -595,7 +595,8 @@ Request('server_state', {
   link: "server_state.html",
   body: {
     "id": 1,
-    "command": "server_state"
+    "command": "server_state",
+    "ledger_index": "current"
   }
 })
 
