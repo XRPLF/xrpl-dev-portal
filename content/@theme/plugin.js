@@ -7,7 +7,7 @@ export default function customPlugin() {
 
 
 
-  /** @type {import("@redocly/portal/dist/server/plugins/types").PluginInstance } */
+  /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
   const pluginInstance = {
     processContent: async (content, actions) => {
       await indexPagesInst.processContent?.(content, actions);

@@ -1,12 +1,12 @@
 // @ts-check
 
-import { getInnerText } from '@redocly/portal/dist/shared/markdoc.js';
+import { getInnerText } from '@redocly/realm/dist/shared/markdoc.js';
 
 import { dirname, relative, join as joinPath } from 'path';
 import markdoc from '@markdoc/markdoc';
 
 export function codeSamples() {
-  /** @type {import("@redocly/portal/dist/server/plugins/types").PluginInstance } */
+  /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
   const instance = {
     processContent: async (contentProvider, actions) => {
       try {
