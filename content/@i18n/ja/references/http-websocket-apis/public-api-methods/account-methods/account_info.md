@@ -11,9 +11,9 @@ labels:
 
 `account_info`コマンドは、アカウントとそのアクティビティおよびXRP残高についての情報を取得します。取得されたすべての情報は、特定バージョンのレジャーに関連付けられています。
 
-## 要求フォーマット
+## リクエストのフォーマット
 
-account_info要求の例:
+account_infoリクエストの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -55,7 +55,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 [試してみる>](websocket-api-tool.html#account_info)
 
-要求には以下のパラメーターが含まれます。
+リクエストには以下のパラメーターが含まれます。
 
 | `Field`        | 型                         | 必須?  | 説明                    |
 |:---------------|:---------------------------|:------|:-------------------------------|
@@ -67,9 +67,9 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 次のフィールドは廃止予定のため、指定しないでください。`ident`、`ledger`,`strict`
 
-## 応答フォーマット
+## レスポンスのフォーマット
 
-処理が成功した応答の例:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -198,13 +198,13 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答は[標準フォーマット][]に従い、要求されたアカウントとそのデータ、アカウントの適用先レジャーが結果として表示されます。以下のフィールドが含まれます。
+レスポンスは[標準フォーマット][]に従い、リクエストされたアカウントとそのデータ、アカウントの適用先レジャーが結果として表示されます。以下のフィールドが含まれます。
 
 | `Field`                | 型         | 説明                               |
 |:-----------------------|:-----------|:------------------------------------------|
 | `account_data`         | オブジェクト | このアカウントの情報を含む[AccountRootレジャーオブジェクト](accountroot.html)がレジャーに保管されているとおりに表示されます。 |
 | `account_flags`        | オブジェクト | アカウントの`Flags`フィールドに基づく、アカウントのフラグ情報(下記参照)。 [新規: rippled 1.11.0][] |
-| `signer_lists`         | 配列        | (要求に`signer_lists`が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略)[マルチシグ](multi-signing.html)用にアカウントに関連付けられた[SignerListレジャーオブジェクト](signerlist.html)の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。 |
+| `signer_lists`         | 配列        | (リクエストに`signer_lists`が指定されていて、少なくとも1つのSignerListがアカウントに関連する場合を除いて省略)[マルチシグ](multi-signing.html)用にアカウントに関連付けられた[SignerListレジャーオブジェクト](signerlist.html)の配列。アカウントが所有できるSignerListは最大1つであるため、この配列のメンバーは存在するとすれば、1メンバーのみです。 |
 | `ledger_current_index` | 整数        | (`ledger_index`が代わりに指定されている場合は省略) この情報を取得したときに使用されていた最新のレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。 |
 | `ledger_index`         | 整数        | (`ledger_current_index`が代わりに指定されている場合は省略) この情報を取得したときに使用されていたレジャーのシーケンス番号。この情報には、これより新しいレジャーの変更は一切含まれません。 |
 | `queue_data`           | オブジェクト  | (`queue`が`true`と指定され、現在開いているレジャーを問い合わせている場合を除いて省略) このアカウントによって送信された[キューに入れられたトランザクション](transaction-cost.html#キューに入れられたトランザクション)についての情報。この情報にはローカル`rippled`サーバの状態が示されますが、コンセンサスネットワーク内の他のサーバとは異なる場合があります。示される値はキューメカニズムによって「大まかに」計算されるため、一部のフィールドは省略される場合があります。 |
@@ -226,7 +226,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 | `noFreeze`             | 真偽値 | `true`の場合、このアカウントは個々のトラストラインを凍結したり、グローバル凍結を行う機能を永久に放棄しています。詳細は[No Freeze](freezes.html#no-freeze)をご覧ください。 |
 | `passwordSpent`        | 真偽値 | `false`の場合、このアカウントはトランザクションコスト0の特別な[キーリセットトランザクション](transaction-cost.html#key-resetトランザクション)を送信できます。プロトコルはこのフラグを自動的にオン/オフします。 |
 | `requireAuthorization` | 真偽値 | `true`の場合、このアカウントは[認可トラストライン](authorized-trust-lines.html)を使って、発行するトークンを保持できる人を制限しています。 |
-| `requireDestinationTag` | 真偽値 | `true`の場合、このアカウントは受け取るすべての支払いに[宛先タグ](require-destination-tags.html)を要求しています。 |
+| `requireDestinationTag` | 真偽値 | `true`の場合、このアカウントは受け取るすべての支払いに[宛先タグ](require-destination-tags.html)をリクエストしています。 |
 
 `queue_data`パラメーターが存在する場合、以下のフィールドが含まれます。
 
@@ -252,8 +252,8 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 ## 考えられるエラー
 
 * いずれかの[汎用エラータイプ][]。
-* `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、要求で`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。
-* `actNotFound` - 要求の`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
+* `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、リクエストで`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。
+* `actNotFound` - リクエストの`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
 [手数料レベル]: transaction-cost.html#手数料レベル

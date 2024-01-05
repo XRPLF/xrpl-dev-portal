@@ -12,7 +12,7 @@ labels:
 
 XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の時刻が検証済みレジャーの`close_time`よりも前である場合です。（Escrowに`CancelAfter`時刻が指定されていない場合は、Escrowが有効期限切れになることはありません。）最新の検証済みレジャーの閉鎖時刻は、[ledgerメソッド][]を使用して検索できます。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -24,7 +24,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -39,7 +39,7 @@ _Websocket_
 
 [account_objectsメソッド][]を使用してEscrowを検索し、`CancelAfter`の時刻と比較できます。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -51,7 +51,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -69,7 +69,7 @@ XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送�
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -81,7 +81,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -103,7 +103,7 @@ _Websocket_
 
 EscrowCancelトランザクションの識別用ハッシュを指定した[txメソッド][]を使用してトランザクションの最終ステータスを確認します。トランザクションのメタデータで`LedgerEntryType`が`Escrow`である`DeletedNode`を探します。また、エスクローに預託された支払いの送金元の`ModifiedNode`（タイプが`AccountRoot`）も探します。オブジェクトの`FinalFields`に、`Balance`フィールドのXRP返金額の増分が表示されている必要があります。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -116,7 +116,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 

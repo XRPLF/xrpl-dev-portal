@@ -26,7 +26,7 @@ XRP Ledgerは分散型であり、Ripple社やXRP Ledger財団、そして他の
 
 ## しかし、Ripple社がJed McCaleb氏のXRPを凍結したと聞きましたが？
 
-これは、2015年から2016年にかけて実際に起こった事件の誤報です。2013年にRipple社の創業者で同社を退社したJed McCaleb氏は、100万USドル以上のXRPをカストディ取引所であるBitstampで売却しようと試みました。Ripple社の代理人は、この売却はJed氏とRipple社が2014年に締結した契約に違反すると主張しました。Ripple社の要求により、[BitstampはJedのBitstampアカウントを凍結](https://www.coindesk.com/markets/2015/04/02/1-million-legal-fight-ensnares-ripple-bitstamp-and-jed-mccaleb/)し、裁判に持ち込まれました。この裁判は[最終的に和解](https://www.coindesk.com/markets/2016/02/12/ripple-settles-1-million-lawsuit-with-former-executive-and-founder/)となり、双方がその結果に納得したと表明しています。
+これは、2015年から2016年にかけて実際に起こった事件の誤報です。2013年にRipple社の創業者で同社を退社したJed McCaleb氏は、100万USドル以上のXRPをカストディ取引所であるBitstampで売却しようと試みました。Ripple社の代理人は、この売却はJed氏とRipple社が2014年に締結した契約に違反すると主張しました。Ripple社のリクエストにより、[BitstampはJedのBitstampアカウントを凍結](https://www.coindesk.com/markets/2015/04/02/1-million-legal-fight-ensnares-ripple-bitstamp-and-jed-mccaleb/)し、裁判に持ち込まれました。この裁判は[最終的に和解](https://www.coindesk.com/markets/2016/02/12/ripple-settles-1-million-lawsuit-with-former-executive-and-founder/)となり、双方がその結果に納得したと表明しています。
 
 注目すべきは、この「凍結」はXRP Ledger上で起こったものではなく、XRP Ledgerの凍結機能を使ったものでもないことです。他のカストディアン取引所と同様に、Bitstampはユーザーのアカウントを凍結し、特にそれらの資金が法的紛争に巻き込まれている場合、取引や資金の引き出しを停止する権限を持っています。
 

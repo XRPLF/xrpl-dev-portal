@@ -65,7 +65,7 @@ Checkを取り消す例を以下に示します。
 
 {% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -84,7 +84,7 @@ Checkを取り消す例を以下に示します。
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -108,7 +108,7 @@ Checkを取り消す例を以下に示します。
 {% set step_1_link = "#1checkcancelトランザクションの準備" %}
 {% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -127,7 +127,7 @@ Checkを取り消す例を以下に示します。
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -155,7 +155,7 @@ Checkを取り消す例を以下に示します。
 
 トランザクションによって[Checkレジャーオブジェクト](check.html)が削除されたことを示す`"LedgerEntryType": "Check"`を含む`DeletedNode`オブジェクトを、トランザクションメタデータから検索します。このオブジェクトの`LedgerIndex`はCheckのIDに一致している必要があります。
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -174,7 +174,7 @@ Checkを取り消す例を以下に示します。
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 

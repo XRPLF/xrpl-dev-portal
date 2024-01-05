@@ -153,11 +153,11 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 11. `rippled`サービスが正常に起動したかどうかを確認します。
 
-    [コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPC要求を受け入れないように設定している場合を除く）。次に例を示します。
+    [コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPCリクエストを受け入れないように設定している場合を除く）。次に例を示します。
 
         /opt/ripple/bin/rippled server_info
 
-    このコマンドの予期される応答の説明については、[server_infoメソッド][]ドキュメントを参照してください。
+    このコマンドの予期されるレスポンスの説明については、[server_infoメソッド][]ドキュメントを参照してください。
 
 12. サーバーのデバッグログを参照し、`SQLite page size`が現在4096であることを確認します。
 

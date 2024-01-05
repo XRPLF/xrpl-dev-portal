@@ -13,7 +13,7 @@ Checkの送信は、指定受取人にあなたからの支払いを引き出す
 
 このチュートリアルでは、架空の会社BoxSend SG（XRP LedgerアドレスはrBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za）が架空の暗号資産コンサルタント会社Grand Payments（XRP LedgerアドレスはrGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）に、コンサルティング料を支払う例を取り上げます。Grand PaymentsはXRPでの支払いを望んでいますが、税務処理と規制対応を簡素化するため、明示的に承認した支払いのみを受け入れます。
 
-XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`）を送り、Grand PaymentsのXRP Ledgerアドレス（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに100 XRPのCheckを送信するよう要求します。
+XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`）を送り、Grand PaymentsのXRP Ledgerアドレス（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに100 XRPのCheckを送信するようリクエストします。
 
 {% set send_n = cycler(* range(1,99)) %}
 
@@ -69,7 +69,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 {% include '_snippets/tutorial-sign-step.ja.md' %}
 <!--{#_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -93,7 +93,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_END -->
 
-#### 応答の例
+#### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -123,7 +123,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 {% include '_snippets/tutorial-submit-step.md' %}
 <!--{#_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -147,7 +147,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_END -->
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -183,7 +183,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 トランザクションのメタデータで、`LedgerEntryType`が `"Check"`の`CreatedNode`オブジェクトを探します。これは、トランザクションにより[Checkレジャーオブジェクト](check.html)が作成されたことを示します。このオブジェクトの`LedgerIndex` がCheckのIDです。以下の例ではCheckのIDは`84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`です。
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -207,7 +207,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_END -->
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 

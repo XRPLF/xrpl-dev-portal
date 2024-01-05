@@ -69,7 +69,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 ![Brokered Mode with Reserve](img/nft-brokered-mode-with-reserve.png)
 
 
-もう1つのワークフローは、クリエイターが販売をよりコントロールできるようにするものです。このワークフローでは、クリエイターが新しい`NFToken`を発行します。入札者はオファーを作成し、ブローカーを宛先として設定します。ブローカーは落札者を選び、仲介手数料を差し引き、`NFTokenCreateOffer`を使用してクリエイターに署名の依頼をします。クリエーターは要求されたオファーに署名し、ブローカーを宛先として設定します。ブローカーは`NFTokenAcceptOffer`を使って売却を完了し、仲介手数料を保持します。ブローカーは`NFTokenCancelOffer`を使用して`NFToken`に対する残りの入札をキャンセルします。
+もう1つのワークフローは、クリエイターが販売をよりコントロールできるようにするものです。このワークフローでは、クリエイターが新しい`NFToken`を発行します。入札者はオファーを作成し、ブローカーを宛先として設定します。ブローカーは落札者を選び、仲介手数料を差し引き、`NFTokenCreateOffer`を使用してクリエイターに署名の依頼をします。クリエーターはリクエストされたオファーに署名し、ブローカーを宛先として設定します。ブローカーは`NFTokenAcceptOffer`を使って売却を完了し、仲介手数料を保持します。ブローカーは`NFTokenCancelOffer`を使用して`NFToken`に対する残りの入札をキャンセルします。
 
 
 ![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)

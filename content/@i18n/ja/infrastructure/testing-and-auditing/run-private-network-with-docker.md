@@ -415,7 +415,7 @@ Docker Composeを使用すると、簡単な`yaml`ファイルの設定でコン
            }
         }
         
-    すべてのバリデータノードは、`r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs`アカウントの同じ残高1000000000XRPで応答する必要があります。
+    すべてのバリデータノードは、`r9wRwVgL2vWVnKhTPdtxva5vdH7FNw1zPs`アカウントの同じ残高1000000000XRPでレスポンスする必要があります。
 
 ## ネットワークを停止する
 

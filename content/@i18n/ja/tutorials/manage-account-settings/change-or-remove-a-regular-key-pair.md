@@ -32,17 +32,17 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 {% include '_snippets/tutorial-sign-step.ja.md' %}
 <!--{#_ #}-->
 
-要求フィールドに以下の値を指定します。
+リクエストフィールドに以下の値を指定します。
 
-| 要求フィールド | 値                                                        |
+| リクエストフィールド | 値                                                        |
 |:--------------|:-------------------------------------------------------------|
 | `Account`     | アカウントのアドレス。                                 |
 | `secret`      | アカウントの`master_key`、`master_seed`、または`master_seed_hex`（マスター秘密鍵またはレギュラー秘密鍵） |
 
 
-#### 要求フォーマット
+#### リクエストのフォーマット
 
-要求フォーマットの例:
+リクエストのフォーマットの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -86,9 +86,9 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 <!-- MULTICODE_BLOCK_END -->
 
 
-#### 応答フォーマット
+#### レスポンスのフォーマット
 
-処理が成功した応答の例:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -158,18 +158,18 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 
 <!-- MULTICODE_BLOCK_END -->
 
-`sign`コマンドの応答には上記のような`tx_blob`値が含まれています。オフライン署名応答には`signedTransaction`値が含まれています。いずれもトランザクションの署名済みバイナリ表現（ブロブ）です。
+`sign`コマンドのレスポンスには上記のような`tx_blob`値が含まれています。オフライン署名レスポンスには`signedTransaction`値が含まれています。いずれもトランザクションの署名済みバイナリ表現（ブロブ）です。
 
 次に`submit`コマンドを使用して、トランザクションブロブ（`tx_blob`または`signedTransaction`）をネットワークに送信します。
 
 
 ### トランザクションの送信
 
-オフライン署名応答の`signedTransaction`値、または`sign`コマンド応答の`tx_blob`値をとり、[submitメソッド][]を使用して`tx_blob`として送信します。
+オフライン署名レスポンスの`signedTransaction`値、または`sign`コマンドレスポンスの`tx_blob`値をとり、[submitメソッド][]を使用して`tx_blob`として送信します。
 
-#### 要求フォーマット
+#### リクエストのフォーマット
 
-要求フォーマットの例:
+リクエストのフォーマットの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -205,9 +205,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 <!-- MULTICODE_BLOCK_END -->
 
 
-#### 応答フォーマット
+#### レスポンスのフォーマット
 
-処理が成功した応答の例:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -288,12 +288,12 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
 レギュラーキーペアの削除が成功したかどうかを確認するには、削除したレギュラー秘密鍵を使用してトランザクションを送信できないことを確認します。
 
-前述の`SetRegularKey`トランザクションにより削除されたレギュラー秘密鍵を使用して[AccountSetトランザクション][]に署名した際のエラー応答の例を以下に示します。
+前述の`SetRegularKey`トランザクションにより削除されたレギュラー秘密鍵を使用して[AccountSetトランザクション][]に署名した際のエラーレスポンスの例を以下に示します。
 
 
-### 応答フォーマット
+### レスポンスのフォーマット
 
-処理が成功した応答の例:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 

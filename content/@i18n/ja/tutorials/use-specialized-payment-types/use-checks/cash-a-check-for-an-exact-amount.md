@@ -61,7 +61,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 {% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -74,7 +74,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -92,7 +92,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 {% set step_1_link = "#1checkcashトランザクションの準備" %}
 {% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -105,7 +105,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -129,7 +129,7 @@ Checkが正確な`Amount`で換金された場合は、受取人に対し正確�
 
 Checkを換金できない場合、Checkはレジャーに残るため、後日換金を再試行できます。代わりに[Checkを変動金額で換金する](cash-a-check-for-a-flexible-amount.html)ことができます。
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -142,7 +142,7 @@ Checkを換金できない場合、Checkはレジャーに残るため、後日�
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
