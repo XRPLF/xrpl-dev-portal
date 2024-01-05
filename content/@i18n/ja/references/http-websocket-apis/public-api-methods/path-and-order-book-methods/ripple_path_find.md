@@ -3,7 +3,7 @@ html: ripple_path_find.html
 parent: path-and-order-book-methods.html
 blurb: すぐに利用できるペイメントパスを含む1つの応答を返します。
 labels:
-  - 複数通貨間
+  - クロスカレンシー
   - トークン
 ---
 # ripple_path_find
