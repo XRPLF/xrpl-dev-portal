@@ -72,19 +72,22 @@ export const CurlModal: React.FC<CurlProps> = ({
 };
 
 export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) => {
+  const [showCurlModal, setShowCurlModal] = useState(false);
+
   return <>
       <button
         className="btn btn-outline-secondary curl"
         data-toggle="modal"
         data-target="#wstool-1-curl"
         title="cURL syntax"
+        onClick={() => setShowCurlModal(true)}
       >
         <i className="fa fa-terminal"></i>
       </button>
-      <CurlModal
-        closeCurlModal={() => {}}
+      {showCurlModal && <CurlModal
+        closeCurlModal={() => setShowCurlModal(false)}
         currentBody={currentBody}
         selectedConnection={selectedConnection}
-      />
+      />}
   </>
 }
