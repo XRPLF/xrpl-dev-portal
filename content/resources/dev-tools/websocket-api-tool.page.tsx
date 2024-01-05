@@ -197,13 +197,12 @@ export function WebsocketApiTool() {
                 </a>
               </h3>
               {currentMethod.description && (
-                <p className="blurb">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: currentMethod.description,
-                    }}
-                  />
-                </p>
+                <p
+                  className="blurb"
+                  dangerouslySetInnerHTML={{
+                    __html: currentMethod.description,
+                  }}
+                />
               )}
               {currentMethod.link && (
                 <a

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useTranslate } from "@portal/hooks";
 import { Link } from "@portal/Link";
 import { slugify } from "./slugify";
@@ -22,8 +22,8 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
         <h4>{translate("API Methods")}</h4>
       </div>
       <ul className="command-list" id="command_list">
-        {commandList.map((list) => (
-          <>
+        {commandList.map((list, index) => (
+          <Fragment key={index}>
             <li className="separator">{list.group}</li>
             {list.methods.map((method) => (
               <li
@@ -46,7 +46,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
                 </Link>
               </li>
             ))}
-          </>
+          </Fragment>
         ))}
       </ul>
     </div>
