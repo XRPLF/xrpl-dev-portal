@@ -18,7 +18,7 @@ To represent digital assets similar to these, use the XRP Ledger's Non-Fungible 
 
 On the XRP Ledger, an NFT is represented as a [NFToken][] object. An NFT is a unique, indivisible unit that is not used for payments. Users can mint (create), hold, buy, sell, and burn (destroy) NFTs.
 
-The ledger stores up to 32 NFTa owned by the same account in a single [NFTokenPage object][] to save space. As a result, the owner's [reserve requirement](reserves.html) for NFTs only increases when the ledger needs to make a new page to store additional tokens.
+The ledger stores up to 32 NFTs owned by the same account in a single [NFTokenPage object][] to save space. As a result, the owner's [reserve requirement](reserves.html) for NFTs only increases when the ledger needs to make a new page to store additional tokens.
 
 Accounts can also name a _Broker_ or an _Authorized Minter_ who can sell or mint NFTs on their behalf.
 
