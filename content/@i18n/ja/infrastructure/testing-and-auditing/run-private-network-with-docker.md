@@ -1,6 +1,6 @@
 ---
 html: private-network-with-docker.html
-name: Run a Private Network with Docker
+name: プライベートネットワークをDockerで構築する
 parent: use-stand-alone-mode.html
 blurb: DockerとDocker Composeを使って独自のXRPプライベートレジャーネットワークを構築する方法を紹介します。
 labels:
