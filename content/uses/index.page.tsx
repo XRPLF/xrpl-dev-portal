@@ -878,6 +878,7 @@ export default function Uses() {
               >
                 {filteredCards.map((card) => (
                   <a
+                    key={card.id}
                     className={`card-uses category_${card.category_id}`}
                     href={card.link}
                     target="_blank"

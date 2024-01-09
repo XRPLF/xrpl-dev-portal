@@ -538,7 +538,7 @@ const events = [
     end_date: "November 28, 2023",
   },
   {
-    name: "RippleX’s Research: <br/> Stanford Engineering Campus Research Initiatives",
+    name: "RippleX’s Research: Stanford Engineering Campus Research Initiatives",
     description:
       "Learn more about RippleX’s ongoing research projects on the XRP Ledger, addressing issues like frontrunning defense, the significance of threshold signatures, and challenges in cross-chain communication, including the construction of bridges on XRPL.",
     type: "conference",
@@ -807,9 +807,9 @@ export default function Events() {
           </div>
           {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info-session  */}
           <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
-            {filteredUpcoming.map((event) => (
+            {filteredUpcoming.map((event,i) => (
               <a
-              key={event.name}
+                key={event.name + i}
                 className={`event-card ${event.type}`}
                 href={event.link}
                 style={{}}
