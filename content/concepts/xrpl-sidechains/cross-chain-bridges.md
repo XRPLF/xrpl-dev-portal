@@ -29,12 +29,12 @@ At a high-level, bridges enable cross-chain transactions through these steps:
 1. Create a cross-chain claim ID on the issuing chain. A cross-chain claim ID represents one transfer of value between blockchains.
 2. Submit a commit transaction on the locking chain, putting the assets in a trust. The transaction includes the cross-chain claim ID and reward for witness servers.
 
-  **Note:** Witness servers monitor transactions on both chains. They provide attestations, or signed messages, to verify a transaction occurred. There are attestations for `XChainCommit` and `XChainAccountCreateCommit` transactions.
+    **Note:** Witness servers monitor transactions on both chains. They provide attestations, or signed messages, to verify a transaction occurred. There are attestations for `XChainCommit` and `XChainAccountCreateCommit` transactions.
 
 3. Witness servers provide attestations to the issuing chain, saying the assets were locked on the locking chain.
 4. When there are enough signatures to reach quorum, the assets are released on the issuing chain to the destination account.
 
-  **Note:** In some cases, such as deposit authorization being enabled or, you'll need to submit a transaction claim for the transferred assets on the issuing chain.
+    **Note:** In some cases, such as deposit authorization being enabled, you'll need to submit a transaction claim for the transferred assets on the issuing chain.
 
 5. Rewards are distributed to the witness servers' accounts on the issuing chain.
 

@@ -8,10 +8,9 @@ labels:
   - Interoperability
 ---
 # Witness Servers
+[[Source]](https://github.com/seelabs/xbridge_witness "Source")
 
 _(Requires the [XChainBridge amendment][] :not_enabled:)_
-
-**TODO**: Add link to sourcefiles after it's moved to XRPL repo.
 
 A _witness server_ acts as a neutral witness for transactions between a locking chain and an issuing chain. It listens to the door accounts on both sides of a bridge and signs attestations that confirm a transaction occurred. They are essentially acting as an oracle to “prove” that value was locked or burned on a source account, which allows the recipient to then claim (via minting or unlocking) the equivalent funds on the destination account.
 
@@ -90,61 +89,61 @@ The witness server takes a JSON configuration file, specified using the `--conf`
 
 | Field Name       | JSON Type      | Required? | Description |
 |------------------|----------------|-----------|-------------|
-| `Admin`          | `object`       | No        | The `Username` and `Password` fields (as strings) for privileged requests to the witness server. **Note:** Both or none of the admin fields must be set. |
-| `IssuingChain`   | `object`       | Yes       | The parameters for interacting with the issuing chain. |
-| `LockingChain`   | `object`       | Yes       | The parameters for interacting with the locking chain. |
-| `RPCEndpoint`    | `object`       | Yes       | The endpoint for RPC requests to the witness server. |
-| `LogFile`        | `string`       | Yes       | The location of the log file. | 
-| `LogLevel`       | `string`       | Yes       | The level of logs to store in the log file. The options are ["All", "Trace", "Debug", "Info", "Warning", "Error", "Fatal", "Disabled","None"]. |
-| `DBDir`          | `string`       | Yes       | The location of the directory where the databases are stored. |
-| `SigningKeySeed` | `string`       | Yes       | The seed that the witness server should use to sign its attestations. |
-| `SigningKeyType` | `string`       | Yes       | The algorithm used to encode the `SigningKeySeed`. The options are `secp256k1` and `ed25519`. |
-| `XChainBridge`   | `XChainBridge` | Yes       | The bridge that the witness server is monitoring. |
+| `Admin`          | Object         | No        | The `Username` and `Password` fields (as strings) for privileged requests to the witness server. **Note:** Both or none of the admin fields must be set. |
+| [`IssuingChain`](#issuingchain-and-lockingchain-fields) | Object         | Yes       | The parameters for interacting with the issuing chain. |
+| [`LockingChain`](#issuingchain-and-lockingchain-fields) | Object         | Yes       | The parameters for interacting with the locking chain. |
+| `RPCEndpoint`    | Object         | Yes       | The endpoint for RPC requests to the witness server. |
+| `LogFile`        | String         | Yes       | The location of the log file. | 
+| `LogLevel`       | String         | Yes       | The level of logs to store in the log file. The options are `All`, `Trace`, `Debug`, `Info`, `Warning`, `Error`, `Fatal`, `Disabled`, and `None`. |
+| `DBDir`          | String         | Yes       | The location of the directory where the databases are stored. |
+| `SigningKeySeed` | String         | Yes       | The seed that the witness server should use to sign its attestations. |
+| `SigningKeyType` | String         | Yes       | The algorithm used to encode the `SigningKeySeed`. The options are `secp256k1` and `ed25519`. |
+| [`XChainBridge`](#xchainbridge-fields) | XChainBridge   | Yes       | The bridge that the witness server is monitoring. |
 
 
 #### IssuingChain and LockingChain Fields
 
 | Field Name      | JSON Type | Required? | Description |
 |-----------------|-----------|-----------|-------------|
-| `Endpoint`      | `object`  | Yes       | The websocket endpoint of a `rippled` node synced with the chain. **Note:** This must be a node you run. |
-| `TxnSubmit`     | `object`  | Yes       | The parameters for transaction submission on the chain. |
-| `RewardAccount` | `string`  | Yes       | The account that should receive the witness's share of the `SignatureReward` on the chain. |
+| `Endpoint`      | Object    | Yes       | The websocket endpoint of a `rippled` node synced with the chain. **Note:** The same person needs to control the `rippled` node and witness server. |
+| `TxnSubmit`     | Object    | Yes       | The parameters for transaction submission on the chain. |
+| `RewardAccount` | String    | Yes       | The account that should receive the witness's share of the `SignatureReward` on the chain. |
 
 
 #### Endpoint Fields
 
 | Field Name | JSON Type | Required? | Description |
 |------------|-----------|-----------|-------------|
-| `Host`     | `string`  | Yes       | The IP address of the `rippled` node. **Note:** This doesn't accept URLs |
-| `Port`     | `string`  | Yes       | The port used for the websocket endpoint. |
+| `Host`     | String    | Yes       | The IP address of the `rippled` node. **Note:** This accepts an IPv4 address or URL. |
+| `Port`     | String    | Yes       | The port used for the websocket endpoint. |
 
 
 #### RPCEndpoint Fields
 
 | Field Name | JSON Type | Required? | Description |
 |------------|-----------|-----------|-------------|
-| `Host`     | `string`  | Yes       | The IP address of the witness server for RPC requests. **Note:** This doesn't accept URLs |
-| `Port`     | `string`  | Yes       | The port used for the websocket endpoint. |
+| `Host`     | String    | Yes       | The IP address of the witness server for RPC requests. **Note:** This accepts an IPv4 address or URL. |
+| `Port`     | String    | Yes       | The port used for the websocket endpoint. |
 
 
 #### TxnSubmit Fields
 
 | Field Name          | JSON Type | Required? | Description |
 |---------------------|-----------|-----------|-------------|
-| `ShouldSubmit`      | `boolean` | Yes       | A boolean indicating whether or not the witness server should submit transactions on the locking chain. |
-| `SigningKeySeed`    | `string`  | No        | The seed that the witness server should use to sign its transactions on the locking chain. This is required if `ShouldSubmit` is `true`. |
-| `SigningKeyType`    | `string`  | No        | The algorithm used to encode the `SigningKeySeed`. The options are `secp256k1` and `ed25519`. This is required if `ShouldSubmit` is `true`. |
-| `SubmittingAccount` | `string`  | No        | The account from which the `XChainAddClaimAttestation` and `XChainAddAccountCreateAttestation` transactions should be sent. This is required if `ShouldSubmit` is `true`. |
+| `ShouldSubmit`      | Boolean   | Yes       | A boolean indicating whether or not the witness server should submit transactions on the locking chain. |
+| `SigningKeySeed`    | String    | No        | The seed that the witness server should use to sign its transactions on the locking chain. This is required if `ShouldSubmit` is `true`. |
+| `SigningKeyType`    | String    | No        | The algorithm used to encode the `SigningKeySeed`. The options are `secp256k1` and `ed25519`. This is required if `ShouldSubmit` is `true`. |
+| `SubmittingAccount` | String    | No        | The account from which the `XChainAddClaimAttestation` and `XChainAddAccountCreateAttestation` transactions should be sent. This is required if `ShouldSubmit` is `true`. |
 
 
 #### XChainBridge Fields
 
 | Field               | JSON Type | [Internal Type][] | Required? | Description     |
 |:--------------------|:----------|:------------------|:----------|:----------------|
-| `IssuingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
-| `IssuingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the locking chain. |
-| `LockingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is locked and unlocked on the locking chain. |
+| `IssuingChainDoor`  | String    | Account           | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
+| `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
+| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
