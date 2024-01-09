@@ -171,7 +171,7 @@ const events = [
     end_date: "April 6, 2022",
   },
   {
-    name: "Hackathon:<br />New Year, New NFT",
+    name: "Hackathon: New Year, New NFT",
     id: "upcoming-xrpl-hackathon-new-year",
     description:
       "Build Functional NFTs that span across a full range of use cases.",
