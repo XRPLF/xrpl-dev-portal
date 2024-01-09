@@ -630,7 +630,7 @@ WS_HANDLERS["transaction"] = log_tx
 <p><strong><code>meta.TransactionResult</code>フィールド</strong>は、<a href="transaction-results.html">トランザクションの結果</a>です。結果が<code>tesSUCCESS</code>でない場合は、トランザクションは失敗したため、値を送信できません。</p>
 </li>
 <li>
-<p><strong><code>transaction.Account</code></strong> フィールドはトランザクションの送信元です。他の人が送信したトランザクションのみを探している場合は、このフィールドがあなたのアドレスと一致するトランザクションを無視できます（自身に対する複数通貨間の支払いが <em>可能である</em> 点に注意してください）。</p>
+<p><strong><code>transaction.Account</code></strong> フィールドはトランザクションの送信元です。他の人が送信したトランザクションのみを探している場合は、このフィールドがあなたのアドレスと一致するトランザクションを無視できます（自身に対するクロスカレンシー支払いが <em>可能である</em> 点に注意してください）。</p>
 </li>
 <li>
 <p><strong><code>transaction.TransactionType</code>フィールド</strong>はトランザクションのタイプです。アカウントに通貨を送金できる可能性があるトランザクションのタイプは以下のとおりです。</p>
@@ -1361,12 +1361,12 @@ $("#tx_read").click((event) => {
     <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -1507,7 +1507,7 @@ $("#tx_read").click((event) => {
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
@@ -3551,7 +3551,7 @@ $("#tx_read").click((event) => {
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

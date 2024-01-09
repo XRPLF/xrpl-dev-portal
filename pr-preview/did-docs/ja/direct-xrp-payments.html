@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>XRPによる直接支払 - XRPL.org (日本語)</title>
+    <title>XRPによる直接支払い - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="XRPによる直接支払 | XRPL.org (日本語)">
+    <meta property="og:title" content="XRPによる直接支払い | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/direct-xrp-payments.html" />
     <meta property="og:description" content="XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。" />
     <meta name="description" content="XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。" />
@@ -264,11 +264,11 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#xrpによる直接支払">XRPによる直接支払</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#xrp間の直接支払について">XRP間の直接支払について</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#xrpによる直接支払い">XRPによる直接支払い</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrp間の直接支払いについて">XRP間の直接支払いについて</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#アカウントの資金提供">アカウントの資金提供</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#アドレスの再利用">アドレスの再利用</a></li>
-        <li class="nav-item level-2"><a class="nav-link" href="#xrpによる直接支払の処理方法">XRPによる直接支払の処理方法</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#xrpによる直接支払いの処理方法">XRPによる直接支払いの処理方法</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#他の支払いタイプとの比較">他の支払いタイプとの比較</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#関連項目">関連項目</a></li>
       </ul>
@@ -288,13 +288,13 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payment-types.html">支払いのタイプ</a></li>
-    <li class="active breadcrumb-item">XRPによる直接支払</li>
+    <li class="active breadcrumb-item">XRPによる直接支払い</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="xrpによる直接支払">XRPによる直接支払<a aria-hidden="true" class="hover_anchor" href="#xrpによる直接支払"><i class="fa fa-link"></i></a></h1>
-<p>金融システムの基本は、 <em>価値の移動</em> です。一言で言えば、決済です。XRP Ledgerでの最も簡単な支払いタイプは、XRP間の直接支払で、XRP Ledgerのあるアカウントから別のアカウントにXRPを直接移動します。</p>
-<h2 id="xrp間の直接支払について">XRP間の直接支払について<a aria-hidden="true" class="hover_anchor" href="#xrp間の直接支払について"><i class="fa fa-link"></i></a></h2>
+        <h1 id="xrpによる直接支払い">XRPによる直接支払い<a aria-hidden="true" class="hover_anchor" href="#xrpによる直接支払い"><i class="fa fa-link"></i></a></h1>
+<p>金融システムの基本は、 <em>価値の移動</em> です。一言で言えば、決済です。XRP Ledgerでの最も簡単な支払いタイプは、XRP間の直接支払いで、XRP Ledgerのあるアカウントから別のアカウントにXRPを直接移動します。</p>
+<h2 id="xrp間の直接支払いについて">XRP間の直接支払いについて<a aria-hidden="true" class="hover_anchor" href="#xrp間の直接支払いについて"><i class="fa fa-link"></i></a></h2>
 <p>一般的に、XRPは、XRP Ledgerのどのアドレスからでも、他のアドレスに直接送金できます。受信側のアドレスは <em>宛先アドレス</em> 、送信側のアドレスは <em>支払元アドレス</em> と呼ばれます。XRPを直接送金するには、送信者は<a href="payment.html">Paymentトランザクション</a>を使用します。これは、次のように簡潔に表すことができます。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
 <span class="w">  </span><span class="nt">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span>
@@ -305,20 +305,20 @@
 </code></pre></div>
 <p>上記のトランザクション指示によって、以下のように実行されます。rf1Bi ...からra5nK... にPaymentを送信することで、ちょうど13 XRPが送金されます。トランザクションが正常に処理されると、その内容が正確に実行されます。新しいレジャーバージョンが<a href="consensus.html">検証済み</a>になるまでに、通常約4秒かかるため、現在処理中のレジャーの後にレジャーバージョンのキューに入れられても、正常なトランザクションを作成、送信、実行後、8秒以内に最終結果を出すことができます。</p>
 <p class="devportal-callout 注意"><strong>注意:</strong> <a href="payment.html">Paymentトランザクションタイプ</a>は、<a href="cross-currency-payments.html">通貨間の支払い</a>や<a href="partial-payments.html">Partial Payment</a>を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが<code>Amount</code>に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、<a href="partial-payments.html#partial-paymentの悪用">Partial Paymentの悪用</a>を参照してください。</p>
-<p>XRP間の直接支払ではPartial Paymentは使用できませんが、Partial Paymentでは複数の送金元通貨から変換後にXRPを送金できます。</p>
+<p>XRP間の直接支払いではPartial Paymentは使用できませんが、Partial Paymentでは複数の送金元通貨から変換後にXRPを送金できます。</p>
 <h2 id="アカウントの資金提供">アカウントの資金提供<a aria-hidden="true" class="hover_anchor" href="#アカウントの資金提供"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerにそのアドレスの記録が事前に存在していなくても、支払いで<a href="reserves.html">口座準備金</a>の最少額を満たすのに十分なXRPが送金されれば、数学的に有効なアドレスで支払いを受け取ることができます。支払いで十分なXRPを送金できない場合は失敗します。</p>
 <p>詳細は、<a href="accounts.html#アカウントの作成">アカウント</a>を参照してください。</p>
 <h2 id="アドレスの再利用">アドレスの再利用<a aria-hidden="true" class="hover_anchor" href="#アドレスの再利用"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerでは、支払いを受け取ることができるアドレスは永続的ですが、XRPの重要な<a href="reserves.html">必要準備金</a>は消費できません。つまり、他の一部のブロックチェーンシステムとは異なり、トランザクションごとに異なる使い捨てアドレスを使用することはお勧めできません。XRP Ledgerでは、ベストプラクティスとして、複数のトランザクションに同じアドレスを再利用することをお勧めします。アドレスを定期的に使用する場合（特にインターネット接続サービスによって管理されている場合）は、<a href="cryptographic-keys.html">レギュラーキー</a>を設定し、キーの漏えいのリスクを低減するためにキーを定期的に事前変更する必要があります。</p>
 <p>送金元は、目的の受取人が最後に支払いを送信したときと同じアドレスを使用していると仮定しないことが重要です。必然的に、セキュリティの侵害が発生し、ユーザーまたは企業はアドレスを変更しなければならない場合があります。送金する前に、現在の受取アドレスを受取人に尋ねてください。これにより、漏えいした古いアドレスを制御している不正ユーザーに誤ってお金を送信することはありません。</p>
-<h2 id="xrpによる直接支払の処理方法">XRPによる直接支払の処理方法<a aria-hidden="true" class="hover_anchor" href="#xrpによる直接支払の処理方法"><i class="fa fa-link"></i></a></h2>
-<p>大まかに言えば、XRP Ledgerのトランザクション処理エンジンでは、XRPによる直接支払を次のように適用します。</p>
+<h2 id="xrpによる直接支払いの処理方法">XRPによる直接支払いの処理方法<a aria-hidden="true" class="hover_anchor" href="#xrpによる直接支払いの処理方法"><i class="fa fa-link"></i></a></h2>
+<p>大まかに言えば、XRP Ledgerのトランザクション処理エンジンでは、XRPによる直接支払いを次のように適用します。</p>
 <ol>
-<li><a href="payment.html">Paymentトランザクション</a>のパラメータを検証します。トランザクションがXRPを送信、送金するように構成されている場合、トランザクション処理エンジンはそのトランザクションをXRP間の直接支払として認識します。検証チェックは次のように行います。</li>
+<li><a href="payment.html">Paymentトランザクション</a>のパラメータを検証します。トランザクションがXRPを送信、送金するように構成されている場合、トランザクション処理エンジンはそのトランザクションをXRP間の直接支払いとして認識します。検証チェックは次のように行います。</li>
 </ol>
 <ul>
-<li>すべてのフィールドが正しいフォーマットであることを確認します。たとえば、XRPによる直接支払の場合、<code>Amount</code>フィールドは<a href="basic-data-types.html#通貨額の指定">XRPのdrop数</a>でなければなりません。</li>
+<li>すべてのフィールドが正しいフォーマットであることを確認します。たとえば、XRPによる直接支払いの場合、<code>Amount</code>フィールドは<a href="basic-data-types.html#通貨額の指定">XRPのdrop数</a>でなければなりません。</li>
 <li>送信元アドレスがXRP Ledgerの資金供給された<a href="accounts.html">アカウント</a>であることを確認します。</li>
 <li>指定された署名がすべて、送信元アドレスに対して有効であることを確認します。</li>
 <li>宛先アドレスと送金元アドレスが異なることを確認します。（<a href="source-and-destination-tags.html">宛先タグ</a>が異なる同一アドレスに送金するだけでは不十分です。）</li>
@@ -339,7 +339,7 @@
 <p>エンジンは、<a href="transaction-metadata.html">トランザクションのメタデータ</a>に<code>delivered_amount</code>フィールドを追加して、送金金額を示します。正しい金額のXRPを受け取ったことを確認できるように、必ず<code>delivered_amount</code>を使用する必要があります。<code>Amount</code>フィールドでは<strong>ありません</strong>。（通貨間の支払「Partial Payment」では、<code>Amount</code>フィールドに記載されているよりも少額のXRPが送金される場合があります。）詳細は、<a href="partial-payments.html">Partial Payments</a>を参照してください。</p>
 <h2 id="他の支払いタイプとの比較">他の支払いタイプとの比較<a aria-hidden="true" class="hover_anchor" href="#他の支払いタイプとの比較"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li><strong>XRPによる直接支払</strong>は、単一のトランザクションでXRPを送受信する唯一の方法です。この方法は、速度、シンプルさ、低コストの面でバランスが取れています。</li>
+<li><strong>XRPによる直接支払い</strong>は、単一のトランザクションでXRPを送受信する唯一の方法です。この方法は、速度、シンプルさ、低コストの面でバランスが取れています。</li>
 <li><a href="cross-currency-payments.html">通貨間の支払い</a>でも<a href="payment.html">Payment</a>トランザクションタイプを使用しますが、XRPとXRP以外の<a href="tokens.html">トークン</a>を組み合わせて送金できます。ただし、XRP間の支払いは除きます。また、<a href="partial-payments.html">Partial Payment</a>でも使用できます。通貨間の支払いは、XRPで指定されていない支払いや、<a href="decentralized-exchange.html">分散型取引所</a>で裁定取引の機会を得るのに適しています。</li>
 <li><a href="checks.html">Checks</a>すぐに送金せずに送金元に債務を設定してもらいます。受取人は有効期間内であればいつでも換金できますが、その金額は保証されません。Checksでは、XRPまたはトークンのいずれかを送金できます。Checksは、受取人に支払いを請求する自律性を与えるのに適しています。</li>
 <li><a href="escrow.html">Escrow</a>では、特定の条件が満たされたときに、意図した受取人が要求できるXRPを確保します。XRPの金額は完全に保証されており、Escrowの有効期限が切れない限り、送金元が使用することはできません。Escrowは、巨額のスマートコントラクトに適しています。</li>
@@ -751,12 +751,12 @@
     <nav class="nav flex-column show " id="tree_nav_group_4_5">
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -897,7 +897,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
@@ -2941,7 +2941,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

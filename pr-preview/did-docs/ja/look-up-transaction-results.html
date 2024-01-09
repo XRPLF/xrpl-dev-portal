@@ -523,7 +523,7 @@
 </code></pre></div>
 <p>トランザクションメタデータを処理する際に探すその他の項目は、トランザクションのタイプによって異なります。</p>
 <h3 id="支払い">支払い<a aria-hidden="true" class="hover_anchor" href="#支払い"><i class="fa fa-link"></i></a></h3>
-<p><a href="payment.html">Paymentトランザクション</a>はXRP間の直接トランザクション、<a href="cross-currency-payments.html">複数通貨間の支払い</a>、または<a href="tokens.html">（XRP以外の）トークン</a>での直接トランザクションを表します。トークンからXRPへのトランザクション、またはXRPからトークンへのトランザクションなど、XRP間の直接トランザクション以外はすべて<a href="partial-payments.html">partial payment</a>が可能です。</p>
+<p><a href="payment.html">Paymentトランザクション</a>はXRP間の直接トランザクション、<a href="cross-currency-payments.html">クロスカレンシー支払い</a>、または<a href="tokens.html">（XRP以外の）トークン</a>での直接トランザクションを表します。トークンからXRPへのトランザクション、またはXRPからトークンへのトランザクションなど、XRP間の直接トランザクション以外はすべて<a href="partial-payments.html">partial payment</a>が可能です。</p>
 <p>XRPの額は、<code>AccountRoot</code>オブジェクトの<code>Balance</code>フィールドで追跡されます。（XRPは<a href="escrow-object.html">Escrowオブジェクト</a>および<a href="paychannel.html">PayChannelオブジェクト</a>にも存在する可能性がありますが、Paymentトランザクションがそれらに影響を及ぼすことはありません。）</p>
 <p>支払いでいくら支払われたかを確認するには、必ず<a href="partial-payments.html#delivered_amountフィールド">delivered_amountフィールド</a>を使用する必要があります。</p>
 <p>支払いにLedgerEntryTypeが<code>AccountRoot</code>の<code>CreatedNode</code>が含まれている場合は、その支払いによってレジャーの<a href="accounts.html#アカウントの作成">新しいアカウントへの資金供給</a>が行われたことを意味します。</p>
@@ -532,10 +532,10 @@
 <p>トークン残高の変更は、<a href="trust-lines-and-issuing.html">トラストライン</a>を表す<a href="ripplestate.html">RippleStateオブジェクト</a>にすべて反映されます。一方の当事者のトラストラインで残高が増加すると、相手側当事者の残高は同じ額だけ減少すると考えられます。このことは、メタデータには、RippleStateオブジェクトの共有<code>Balance</code>に対する1回の変更としてのみ記録されます。この変更が「増加」または「減少」のどちらで記録されるかは、どちらのアカウントのアドレスが数値として大きいかによって決まります。</p>
 <p>1回の支払いは、複数のトラストラインとオーダーブックで構成される長い<a href="paths.html">パス</a>をたどる場合があります。間接的に当事者間を接続する複数のトラストラインの残高を変更するプロセスを<a href="rippling.html">Rippling</a>と呼びます。トランザクションの<code>Amount</code>フィールドに指定された<code>issuer</code>に応じて、支払先アカウントに結び付けられている複数のトラストライン（<code>RippleState</code>アカウント）で支払額を分割することもできます。</p>
 <p class="devportal-callout ヒント"><strong>ヒント:</strong> 変更されたオブジェクトがメタデータに表示される順序は、支払いを処理するときにこれらのオブジェクトにアクセスした順序とは必ずしも一致しません。<code>AffectedNodes</code>メンバーを並べ替えて資金がレジャーまでたどったパスを再構成すると、支払いの実行の詳細を把握しやすくなります。</p>
-<p>複数通貨間の支払いでは、<a href="offer.html">オファー</a>の一部または全額を消費して、通貨コードとイシュアーが異なる通貨間で変更が行われます。トランザクションで<code>Offer</code>タイプの<code>DeletedNode</code>オブジェクトが示される場合は、全額が消費されたオファーを示しているか、または処理の時点で<a href="offers.html#オファーのライフサイクル">期限切れになるか、または資金化されない</a>ことがわかったオファーを示している可能性があります。トランザクションで<code>Offer</code>タイプの<code>ModifiedNode</code>が示される場合は、オファーの一部が消費されたことを示します。</p>
+<p>クロスカレンシー支払いでは、<a href="offer.html">オファー</a>の一部または全額を消費して、通貨コードとイシュアーが異なる通貨間で変更が行われます。トランザクションで<code>Offer</code>タイプの<code>DeletedNode</code>オブジェクトが示される場合は、全額が消費されたオファーを示しているか、または処理の時点で<a href="offers.html#オファーのライフサイクル">期限切れになるか、または資金化されない</a>ことがわかったオファーを示している可能性があります。トランザクションで<code>Offer</code>タイプの<code>ModifiedNode</code>が示される場合は、オファーの一部が消費されたことを示します。</p>
 <p><a href="trustset.html">トラストラインの<code>QualityIn</code>および<code>QualityOut</code>設定</a>は、トラストラインの一方の側におけるトークンの金額に影響を与える可能性があるため、残高の数値の変化は、送金元におけるその通貨の額と異なります。<code>delivered_amount</code>は、受取人による評価額でいくら送金されたのかを示します。</p>
 <p>送金額と受取額が<a href="currency-formats.html#トークンの精度">トークンの精度</a>の範囲外である場合は、一方のトランザクションで0に丸められる金額が、他方から引き出される可能性があります。そのため、両当事者が、お互いの残高に10<sup>16</sup>倍の差があるときに取引をすると、丸めることによって少額のトークンが「作成」または「消却」される可能性があります。（XRPは丸められないので、XRPではこの状況は発生しません。）</p>
-<p><a href="paths.html">パス</a>の長さに応じて、複数通貨間の支払いのメタデータは <em>長く</em> なります。例えば、<a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">トランザクション8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B <i aria-hidden="true" class="fa fa-external-link"></i></a>では、rHaaans...が発行した2.788 GCBを送金しXRPを支払いますが、2人のイシュアーのUSDを経由し、2つのアカウントにXRPを支払います。r9ZoLsJからのEURをETHと交換する資金供給されていないオファーを削除し、変更された合計17の異なるレジャーオブジェクトのブックキーピングを行います。</p>
+<p><a href="paths.html">パス</a>の長さに応じて、クロスカレンシー支払いのメタデータは <em>長く</em> なります。例えば、<a class="external-link" href="https://xrpcharts.ripple.com/#/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B" target="_blank">トランザクション8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B <i aria-hidden="true" class="fa fa-external-link"></i></a>では、rHaaans...が発行した2.788 GCBを送金しXRPを支払いますが、2人のイシュアーのUSDを経由し、2つのアカウントにXRPを支払います。r9ZoLsJからのEURをETHと交換する資金供給されていないオファーを削除し、変更された合計17の異なるレジャーオブジェクトのブックキーピングを行います。</p>
 <h3 id="オファー">オファー<a aria-hidden="true" class="hover_anchor" href="#オファー"><i class="fa fa-link"></i></a></h3>
 <p><a href="offercreate.html">OfferCreateトランザクション</a>では、成立した額や、トランザクションが<code>tfImmediateOrCancel</code>などのフラグを使用したかどうかによって、レジャーにオブジェクトが作成される場合と作成されない場合があります。トランザクションがレジャーのオーダーブックに新しいオファーを追加したどうかを確認するには、LedgerEntryTypeが<code>Offer</code>の<code>CreatedNode</code>エントリーを探します。例:</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
@@ -1102,12 +1102,12 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -1248,7 +1248,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
@@ -3292,7 +3292,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

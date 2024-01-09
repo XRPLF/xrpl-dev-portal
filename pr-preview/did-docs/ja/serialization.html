@@ -596,7 +596,7 @@
 <td style="text-align: left;">18</td>
 <td style="text-align: left;">可変</td>
 <td style="text-align: left;">いいえ</td>
-<td><a href="cross-currency-payments.html">複数通貨間ペイメント</a>の有効な<a href="paths.html">ペイメントパス</a>のセット。</td>
+<td><a href="cross-currency-payments.html">クロスカレンシー支払い</a>の有効な<a href="paths.html">ペイメントパス</a>のセット。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#配列フィールド">STArray</a></td>
@@ -764,7 +764,7 @@
 <p>以下の例は、オブジェクトのシリアル化フォーマットを示します（<code>Memos</code>配列内の1つの<code>Memo</code>オブジェクト）。</p>
 <p><img alt="オブジェクトフィールドID、各オブジェクトメンバーのオブジェクトIDと内容（正規順序）、および「オブジェクトの終わり」を示すフィールドID" src="img/serialization-object.ja.png"/></p>
 <h3 id="pathsetフィールド">PathSetフィールド<a aria-hidden="true" class="hover_anchor" href="#pathsetフィールド"><i class="fa fa-link"></i></a></h3>
-<p>複数通貨間<a href="payment.html">Paymentトランザクション</a>の<code>Paths</code>フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、<a href="paths.html">パス</a>を参照してください。</p>
+<p>クロスカレンシーの<a href="payment.html">Paymentトランザクション</a>の<code>Paths</code>フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、<a href="paths.html">パス</a>を参照してください。</p>
 <p>PathSetは、<strong>1～6</strong>の個別パスとして順序どおりにシリアル化されます<a class="external-link" href="https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36" target="_blank" title="Source">[ソース] <i aria-hidden="true" class="fa fa-external-link"></i></a>。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。</p>
 <ul>
 <li><code>0xff</code>は別のパスが続くことを示します。</li>
@@ -1207,12 +1207,12 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -1353,7 +1353,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
@@ -3397,7 +3397,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

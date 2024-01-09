@@ -301,7 +301,7 @@
 <p>XRP以外のすべての資産は、XRP Ledgerでは <strong>トークン</strong> として扱うことができます。通常のトークンは、アカウント間の<a href="trust-lines-and-issuing.html">トラストライン</a> と呼ばれる関係で管理されます。すべてのアカウントは、トークンを保有することを許可する他のアカウントにあトークンを発行できますが、トークンを必要としないアカウントに一方的にトークンを配付することはできません。トークンは、台帳の外に存在する資産に裏付けられた「ステーブルコイン」、XRP Ledger上で独自に作成された純粋なデジタルトークン、コミュニティクレジットなど、様々な種類の価値を表すことが出来ます。</p>
 <p class="devportal-callout 注記"><strong>注記:</strong> XRP Ledger上のトークンは、過去に「IOUs」（<a class="external-link" href="https://en.wikipedia.org/wiki/IOU" target="_blank">I-owe-you <i aria-hidden="true" class="fa fa-external-link"></i></a>の略）および「発行済み通貨」とも呼ばれてきました。しかし、これらの呼称は、XRP Ledgerのトークンが表すことのできるデジタル資産の全範囲をカバーしていないため、望ましくないとされています。<!-- STYLE_OVERRIDE: ious --></p>
 <p>通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、<a href="non-fungible-tokens.html">非代替トークン(NFT)</a>を参照してください。</p>
-<p>トークンは<a href="cross-currency-payments.html">複数通貨間の支払い</a>に使用でき、<a href="decentralized-exchange.html">分散型取引所(DEX)</a>で取引することができます。</p>
+<p>トークンは<a href="cross-currency-payments.html">クロスカレンシー支払い</a>に使用でき、<a href="decentralized-exchange.html">分散型取引所(DEX)</a>で取引することができます。</p>
 <p>トラストラインの残高は、どちら側から見るかによって、プラスまたはマイナスで表されます。マイナスの残高を持つ側は「発行者」と呼ばれ、そのトークンに関するいくつかの機能を設定することができます。発行者ではない別のアカウントにトークンを送ると、それらのトークンは発行者、場合によっては同じ通貨コードを使用している他のアカウントに「ripple」します。これは便利な場合もありますが、想定外の挙動を引き起こす可能性もあります。トラストラインに<a href="rippling.html">No Ripple flag</a>を使用すると、トラストラインがripplingしないように設定することができます。</p>
 <h2 id="ステーブルコイン">ステーブルコイン<a aria-hidden="true" class="hover_anchor" href="#ステーブルコイン"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledger におけるトークンの代表的なモデルとして、発行者が XRP Ledgerの外部に価値ある資産を保有し、その価値を表すトークンをLedger上で発行するというものがあります。このタイプの発行者は、そのサービスを通じてXRP Ledgerに通貨を送受信できることから、 <em>ゲートウェイ</em> と呼ばれることもあります。トークンの裏付けとなる資産が、台帳上のトークンと同じ金額と額面を使用している場合、そのトークンは「ステーブルコイン」といえるでしょう。なぜなら、そのトークンと台帳外の資産との交換レートは理論上1：1で安定するはずだからです。</p>
@@ -319,14 +319,14 @@
 <h2 id="トークンの特性">トークンの特性<a aria-hidden="true" class="hover_anchor" href="#トークンの特性"><i class="fa fa-link"></i></a></h2>
 <p>XRP Ledgerにおけるトークンは、<a href="currency-formats.html">XRPと異なる性質</a>を持ちます。トークンは常に <em>トラストライン内</em> に存在し、トークンのすべての移動はトラストラインに沿って行われます。他のアカウントに、トラストラインに設定された上限を超えるトークンを保有させることはできません。(自分のトラストラインを制限以上に増やすことは <em>可能</em> です。例えば、<a href="decentralized-exchange.html">分散型取引所</a>でさらに購入したり、すでにプラスの残高がある状態で上限値を下げたりすることができます。)</p>
 <p>トークンは、精度が15桁の10進数（基数10）と指数を用いて、非常に大きな値（最大9999999999999999×10<sup>80</sup>）から、非常に小さな値（最小1.0×10<sup>-81</sup>まで）を表現することができます。</p>
-<p>必要なトラストラインが設定されていれば、誰でも<a href="payment.html">Paymentトランザクション</a>を送信することでトークンを発行することができます。トークンを発行者に送り返せば、トークンを「burn」することができます。また、発行者の設定により、<a href="cross-currency-payments.html">複数通貨間の支払い</a>やトレードでトークンをさらに生み出せるケースもあります。</p>
+<p>必要なトラストラインが設定されていれば、誰でも<a href="payment.html">Paymentトランザクション</a>を送信することでトークンを発行することができます。トークンを発行者に送り返せば、トークンを「burn」することができます。また、発行者の設定により、<a href="cross-currency-payments.html">クロスカレンシー支払い</a>やトレードでトークンをさらに生み出せるケースもあります。</p>
 <p>発行者は、ユーザがトークンを送金する際に自動で差し引かれる「送金手数料」(transfer-fees.html)を設定することができます。発行者は、自分のトークンを含む取引レートの<a href="ticksize.html">ティックサイズ</a>を定義することもできます。発行者と一般アカウントのどちらも、トラストラインを<a href="freezes.html">凍結</a>することができ、トラストライン内のトークンの使用方法を制限することができます。( XRPにはこのいずれも適用されません。)</p>
 <p>トークン発行の技術的な手順については、<a href="issue-a-fungible-token.html">代替可能トークンの発行</a> を参照してください。</p>
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
 <li><a href="what-is-xrp.html">XRP?</a></li>
-<li><a href="cross-currency-payments.html">複数通貨間の支払い</a></li>
+<li><a href="cross-currency-payments.html">クロスカレンシー支払い</a></li>
 <li><a href="decentralized-exchange.html">分散型取引所</a></li>
 <li><strong>チュートリアル:</strong></li>
 <li><a href="issue-a-fungible-token.html">代替可能トークンの発行</a></li>
@@ -733,12 +733,12 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -879,7 +879,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
@@ -2923,7 +2923,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

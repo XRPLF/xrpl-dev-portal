@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['支払い', '複数通貨間']
+      "page_labels": ['支払い', 'クロスカレンシー']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -267,8 +267,8 @@
       <!-- TEMPLATE WARNING: no label landing found for "支払い" -->
     </li>
     <li class="list-inline-item">
-      <span class="label label-複数通貨間">複数通貨間</span>
-      <!-- TEMPLATE WARNING: no label landing found for "複数通貨間" -->
+      <span class="label label-クロスカレンシー">クロスカレンシー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "クロスカレンシー" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -308,7 +308,7 @@
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
         <h1 id="パス">パス<a aria-hidden="true" class="hover_anchor" href="#パス"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerでは、<a href="tokens.html">トークン</a>の支払いが送金元から受取人に届くまでにたどる中間ステップの道筋をパスによって定義します。パスは、XRP Ledgerの<a href="decentralized-exchange.html">分散型取引所</a>のオーダーを介して送金元と受取人を結び付けることで、<a href="cross-currency-payments.html">複数通貨間の支払い</a>を可能にします。また、負債を相殺するような複雑な決済もパスにより可能になります。</p>
+<p>XRP Ledgerでは、<a href="tokens.html">トークン</a>の支払いが送金元から受取人に届くまでにたどる中間ステップの道筋をパスによって定義します。パスは、XRP Ledgerの<a href="decentralized-exchange.html">分散型取引所</a>のオーダーを介して送金元と受取人を結び付けることで、<a href="cross-currency-payments.html">クロスカレンシー支払い</a>を可能にします。また、負債を相殺するような複雑な決済もパスにより可能になります。</p>
 <p>XRP Ledgerでは1つのPaymentトランザクションは複数のパスを使用でき、複数のソースの流動性を組み合わせて必要な額を送金することができます。そのため、トランザクションには使用可能なパスをまとめた <em>パスセット</em> が含まれます。パスセットの中のパスでは開始時と終了時には同一通貨が使用される必要があります。</p>
 <p>XRPは任意のアドレスに直接送金できるため、<a href="direct-xrp-payments.html">XRP間のトランザクション</a>ではパスは使用されません。</p>
 <h2 id="パスのステップ">パスのステップ<a aria-hidden="true" class="hover_anchor" href="#パスのステップ"><i class="fa fa-link"></i></a></h2>
@@ -343,7 +343,7 @@
 <li>トランザクションで（イシュアーに関係なく）1種類の通貨のみが使用される場合、デフォルトパスでは支払いが、関連するアドレスを通じてRipplingされると想定されます。このパスは、これらのアドレスがトラストラインで接続されている場合にのみ機能します。</li>
 <li><code>SendMax</code>が省略されているか、または<code>SendMax</code>の<code>issuer</code>が送金元の場合、デフォルトパスが機能するためには送金元<code>Account</code>から宛先<code>Amount</code>の<code>issuer</code>へのトラストラインが必要です。</li>
 <li><code>SendMax</code>と<code>Amount</code>に異なる<code>issuer</code>値が指定されており、そのいずれも送金元または受取人ではない場合、これらの2つのイシュアー間のトラストラインでRipplingが必要となるため、デフォルトパスは有用ではない可能性があります。一般にイシュアーが互いに直接信頼し合うことはお勧めしません。</li>
-<li>複数通貨間のトランザクションの場合、デフォルトパスは支払元通貨（<code>SendMax</code>フィールドで指定）と宛先通貨（<code>Amount</code>フィールドで指定）の間でオーダーブックを使用します。</li>
+<li>クロスカレンシー支払いの場合、デフォルトパスは支払元通貨（<code>SendMax</code>フィールドで指定）と宛先通貨（<code>Amount</code>フィールドで指定）の間でオーダーブックを使用します。</li>
 </ul>
 <p>有効なすべてのデフォルトパスを次の図に示します。
 <a href="img/paths-default_paths.ja.png"><img alt="デフォルトパスの図" src="img/paths-default_paths.ja.png"/></a></p>
@@ -424,7 +424,7 @@
 <h2 id="関連項目">関連項目<a aria-hidden="true" class="hover_anchor" href="#関連項目"><i class="fa fa-link"></i></a></h2>
 <ul>
 <li><strong>コンセプト:</strong></li>
-<li><a href="cross-currency-payments.html">複数通貨間の支払い</a></li>
+<li><a href="cross-currency-payments.html">クロスカレンシー支払い</a></li>
 <li><a href="decentralized-exchange.html">分散型取引所</a></li>
 <li><a href="partial-payments.html">Partial Payments</a></li>
 <li><strong>リファレンス:</strong></li>
@@ -824,12 +824,12 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -970,7 +970,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_4_6_2">
       
@@ -3014,7 +3014,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

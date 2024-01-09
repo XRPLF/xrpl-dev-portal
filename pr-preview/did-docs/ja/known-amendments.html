@@ -277,6 +277,7 @@
         <li class="nav-item level-2"><a class="nav-link" href="#開発中のamendment">開発中のAmendment</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#撤回または廃止されたamendment">撤回または廃止されたAmendment</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#既知のamendmentsの詳細">既知のAmendmentsの詳細</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#did">DID</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#amm">AMM</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checks">Checks</a></li>
@@ -376,6 +377,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><a href="#did">DID</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="Open for Voting: 2024-01-09"><img alt="Open for Voting: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
 <tr>
 <td style="text-align: left;"><a href="#amm">AMM</a></td>
 <td style="text-align: left;">v1.12.0</td>
@@ -742,6 +748,41 @@
 </tbody>
 </table>
 <h2 id="既知のamendmentsの詳細">既知のAmendmentsの詳細<a aria-hidden="true" class="hover_anchor" href="#既知のamendmentsの詳細"><i class="fa fa-link"></i></a></h2>
+<h3 id="did">DID<a aria-hidden="true" class="hover_anchor" href="#did"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">DID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>Adds to the ledger Decentralized Identifier (DID) functionality that conforms to the <a class="external-link" href="https://www.w3.org/press-releases/2022/did-rec/" target="_blank">World Wide Web Consortium <i aria-hidden="true" class="fa fa-external-link"></i></a> standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.</p>
+<p>Adds new transactions:</p>
+<ul>
+<li>DIDDelete - Delete the DID associated with your XRPL account.</li>
+<li>DIDSet - Create a new DID or update an existing one.</li>
+</ul>
+<p>Adds a new <code>DID</code> ledger entry type.</p>
+<p>Adds several new transaction result codes.</p>
 <h3 id="amm">AMM<a aria-hidden="true" class="hover_anchor" href="#amm"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -3276,12 +3317,12 @@
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -3422,7 +3463,7 @@
 
       <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_6_2" aria-expanded="false" aria-controls="tree_nav_group_2_4_6_2"></a>
 
-        <a class="nav-link" href="/ja/non-fungible-tokens.html">NFTのコンセプトの概要</a>
+        <a class="nav-link" href="/ja/non-fungible-tokens.html">非代替性トークン(NFT)</a>
 
     <nav class="nav flex-column collapse" id="tree_nav_group_2_4_6_2">
       
@@ -5466,7 +5507,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>

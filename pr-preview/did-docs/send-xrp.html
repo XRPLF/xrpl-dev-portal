@@ -367,7 +367,7 @@
 </div><!--/.interactive-block-inner-->
 </div>
 <p class="devportal-callout caution"><strong>Caution:</strong> Ripple provides the <a href="parallel-networks.html">Testnet and Devnet</a> for testing purposes only, and sometimes resets the state of these test networks along with all balances. As a precaution, <strong>do not</strong> use the same addresses on Testnet/Devnet and Mainnet.</p>
-<p>When you're <a href="production-readiness.html">building production-ready software</a>, you should use an existing account, and manage your keys using a <a href="secure-signing.html">secure signing configuration</a>.</p>
+<p>When you're building production-ready software, you should use an existing account, and manage your keys using a <a href="secure-signing.html">secure signing configuration</a>.</p>
 <h3 id="2-connect-to-a-testnet-server">2. Connect to a Testnet Server<a aria-hidden="true" class="hover_anchor" href="#2-connect-to-a-testnet-server"><i class="fa fa-link"></i></a></h3>
 <p>First, you must connect to an XRP Ledger server so you can get the current status of your account and the shared ledger. You can use this information to <a href="transaction-common-fields.html#auto-fillable-fields">automatically fill in some required fields of a transaction</a>. You also must be connected to the network to submit transactions to it.</p>
 <p>The following code connects to a public Testnet servers:</p>
@@ -861,7 +861,7 @@ example transaction</button>
 </code></pre></div></div>
 </div>
 <p class="devportal-callout warning"><strong>Warning:</strong> You should only use an address and secret that you generated securely, on your local machine. If another computer generated the address and secret and sent it to you over a network, it's possible that someone else on the network may see that information. If they do, they'll have as much control over your XRP as you do. It's also recommended not to use the same address for the Testnet and Mainnet, because transactions that you created for use on one network could also be valid to execute on the other network, depending on the parameters you provided.</p>
-<p>Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to <a href="accounts.html#creating-accounts">fund the account</a>. A common way to acquire XRP is to buy it from an <a href="exchanges.html">exchange</a>, then withdraw it to your own address.</p>
+<p>Generating an address and secret doesn't get you XRP directly; you're only choosing a random number. You must also receive XRP at that address to <a href="accounts.html#creating-accounts">fund the account</a>. A common way to acquire XRP is to buy it from an exchange, then withdraw it to your own address.</p>
 <h3 id="connecting-to-the-production-xrp-ledger">Connecting to the Production XRP Ledger<a aria-hidden="true" class="hover_anchor" href="#connecting-to-the-production-xrp-ledger"><i class="fa fa-link"></i></a></h3>
 <p>When you instantiate your client's connect to the XRP Ledger, you must specify a server that's synced with the appropriate <a href="parallel-networks.html">network</a>. For many cases, you can use <a href="public-servers.html">public servers</a>, such as in the following example:</p>
 <div class="multicode" id="code-8"><ul class="codetabs"><li><a class="javascript" href="#code-8-0">JavaScript</a></li><li><a class="python" href="#code-8-1">Python</a></li><li><a class="java" href="#code-8-2">Java</a></li><li><a class="php" href="#code-8-3">PHP</a></li></ul>
