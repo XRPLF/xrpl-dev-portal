@@ -305,8 +305,8 @@
     </div><!--/.devportal-callout-->
     <div class="content">
         <h1 id="witness-servers">Witness Servers<a aria-hidden="true" class="hover_anchor" href="#witness-servers"><i class="fa fa-link"></i></a></h1>
+<p><a class="external-link" href="https://github.com/seelabs/xbridge_witness" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
 <p><em>(Requires the <a href="known-amendments.html#xchainbridge">XChainBridge amendment</a> <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span>)</em></p>
-<p><strong>TODO</strong>: Add link to sourcefiles after it's moved to XRPL repo.</p>
 <p>A <em>witness server</em> acts as a neutral witness for transactions between a locking chain and an issuing chain. It listens to the door accounts on both sides of a bridge and signs attestations that confirm a transaction occurred. They are essentially acting as an oracle to “prove” that value was locked or burned on a source account, which allows the recipient to then claim (via minting or unlocking) the equivalent funds on the destination account.</p>
 <p>The bridge between the locking chain and the issuing chain includes the following information in its configuration: </p>
 <ul>
@@ -382,61 +382,61 @@
 <tbody>
 <tr>
 <td><code>Admin</code></td>
-<td><code>object</code></td>
+<td>Object</td>
 <td>No</td>
 <td>The <code>Username</code> and <code>Password</code> fields (as strings) for privileged requests to the witness server. <strong>Note:</strong> Both or none of the admin fields must be set.</td>
 </tr>
 <tr>
-<td><code>IssuingChain</code></td>
-<td><code>object</code></td>
+<td><a href="#issuingchain-and-lockingchain-fields"><code>IssuingChain</code></a></td>
+<td>Object</td>
 <td>Yes</td>
 <td>The parameters for interacting with the issuing chain.</td>
 </tr>
 <tr>
-<td><code>LockingChain</code></td>
-<td><code>object</code></td>
+<td><a href="#issuingchain-and-lockingchain-fields"><code>LockingChain</code></a></td>
+<td>Object</td>
 <td>Yes</td>
 <td>The parameters for interacting with the locking chain.</td>
 </tr>
 <tr>
 <td><code>RPCEndpoint</code></td>
-<td><code>object</code></td>
+<td>Object</td>
 <td>Yes</td>
 <td>The endpoint for RPC requests to the witness server.</td>
 </tr>
 <tr>
 <td><code>LogFile</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The location of the log file.</td>
 </tr>
 <tr>
 <td><code>LogLevel</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
-<td>The level of logs to store in the log file. The options are ["All", "Trace", "Debug", "Info", "Warning", "Error", "Fatal", "Disabled","None"].</td>
+<td>The level of logs to store in the log file. The options are <code>All</code>, <code>Trace</code>, <code>Debug</code>, <code>Info</code>, <code>Warning</code>, <code>Error</code>, <code>Fatal</code>, <code>Disabled</code>, and <code>None</code>.</td>
 </tr>
 <tr>
 <td><code>DBDir</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The location of the directory where the databases are stored.</td>
 </tr>
 <tr>
 <td><code>SigningKeySeed</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The seed that the witness server should use to sign its attestations.</td>
 </tr>
 <tr>
 <td><code>SigningKeyType</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The algorithm used to encode the <code>SigningKeySeed</code>. The options are <code>secp256k1</code> and <code>ed25519</code>.</td>
 </tr>
 <tr>
-<td><code>XChainBridge</code></td>
-<td><code>XChainBridge</code></td>
+<td><a href="#xchainbridge-fields"><code>XChainBridge</code></a></td>
+<td>XChainBridge</td>
 <td>Yes</td>
 <td>The bridge that the witness server is monitoring.</td>
 </tr>
@@ -455,19 +455,19 @@
 <tbody>
 <tr>
 <td><code>Endpoint</code></td>
-<td><code>object</code></td>
+<td>Object</td>
 <td>Yes</td>
-<td>The websocket endpoint of a <code>rippled</code> node synced with the chain. <strong>Note:</strong> This must be a node you run.</td>
+<td>The websocket endpoint of a <code>rippled</code> node synced with the chain. <strong>Note:</strong> The same person needs to control the <code>rippled</code> node and witness server.</td>
 </tr>
 <tr>
 <td><code>TxnSubmit</code></td>
-<td><code>object</code></td>
+<td>Object</td>
 <td>Yes</td>
 <td>The parameters for transaction submission on the chain.</td>
 </tr>
 <tr>
 <td><code>RewardAccount</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The account that should receive the witness's share of the <code>SignatureReward</code> on the chain.</td>
 </tr>
@@ -486,13 +486,13 @@
 <tbody>
 <tr>
 <td><code>Host</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
-<td>The IP address of the <code>rippled</code> node. <strong>Note:</strong> This doesn't accept URLs</td>
+<td>The IP address of the <code>rippled</code> node. <strong>Note:</strong> This accepts an IPv4 address or URL.</td>
 </tr>
 <tr>
 <td><code>Port</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The port used for the websocket endpoint.</td>
 </tr>
@@ -511,13 +511,13 @@
 <tbody>
 <tr>
 <td><code>Host</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
-<td>The IP address of the witness server for RPC requests. <strong>Note:</strong> This doesn't accept URLs</td>
+<td>The IP address of the witness server for RPC requests. <strong>Note:</strong> This accepts an IPv4 address or URL.</td>
 </tr>
 <tr>
 <td><code>Port</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>Yes</td>
 <td>The port used for the websocket endpoint.</td>
 </tr>
@@ -536,25 +536,25 @@
 <tbody>
 <tr>
 <td><code>ShouldSubmit</code></td>
-<td><code>boolean</code></td>
+<td>Boolean</td>
 <td>Yes</td>
 <td>A boolean indicating whether or not the witness server should submit transactions on the locking chain.</td>
 </tr>
 <tr>
 <td><code>SigningKeySeed</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>No</td>
 <td>The seed that the witness server should use to sign its transactions on the locking chain. This is required if <code>ShouldSubmit</code> is <code>true</code>.</td>
 </tr>
 <tr>
 <td><code>SigningKeyType</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>No</td>
 <td>The algorithm used to encode the <code>SigningKeySeed</code>. The options are <code>secp256k1</code> and <code>ed25519</code>. This is required if <code>ShouldSubmit</code> is <code>true</code>.</td>
 </tr>
 <tr>
 <td><code>SubmittingAccount</code></td>
-<td><code>string</code></td>
+<td>String</td>
 <td>No</td>
 <td>The account from which the <code>XChainAddClaimAttestation</code> and <code>XChainAddAccountCreateAttestation</code> transactions should be sent. This is required if <code>ShouldSubmit</code> is <code>true</code>.</td>
 </tr>
@@ -574,29 +574,29 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>IssuingChainDoor</code></td>
-<td style="text-align: left;"><code>string</code></td>
-<td style="text-align: left;"><code>ACCOUNT</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Account</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>IssuingChainIssue</code></td>
-<td style="text-align: left;"><code>Issue</code></td>
-<td style="text-align: left;"><code>ISSUE</code></td>
+<td style="text-align: left;">Issue</td>
+<td style="text-align: left;">Issue</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LockingChainDoor</code></td>
-<td style="text-align: left;"><code>string</code></td>
-<td style="text-align: left;"><code>ACCOUNT</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Account</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The door account on the locking chain.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LockingChainIssue</code></td>
-<td style="text-align: left;"><code>Issue</code></td>
-<td style="text-align: left;"><code>ISSUE</code></td>
+<td style="text-align: left;">Issue</td>
+<td style="text-align: left;">Issue</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The asset that is locked and unlocked on the locking chain.</td>
 </tr>
