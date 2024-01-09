@@ -3004,6 +3004,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/binary-format.md"
+        outdated_translation: true
         targets:
             - ja
 
