@@ -633,7 +633,7 @@ const CommunityPage: React.FC = () => {
               <a
                 className="com-card-link"
                 target="_blank"
-                href="https://github.com/XRPLF/xrpl-dev-portal/blob/master/CONTRIBUTING.md"
+                href="/resources/contribute-documentation/"
               >
                 {translate("Read Contributor Guidelines")}
               </a>
