@@ -583,7 +583,7 @@ const CommunityPage: React.FC = () => {
               <a
                 className="com-card-link"
                 target="_blank"
-                href="/troubleshoot-the-rippled-server"
+                href="/infrastructure/troubleshooting/"
               >
                 {translate("Troubleshooting")}
               </a>
