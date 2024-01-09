@@ -576,7 +576,7 @@ const CommunityPage: React.FC = () => {
               <a
                 className="com-card-link"
                 target="_blank"
-                href="/install-rippled"
+                href="/infrastructure/installation/"
               >
                 {translate("Install & Configure")}
               </a>
