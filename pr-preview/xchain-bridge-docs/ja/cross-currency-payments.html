@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>複数通貨間の支払い - XRPL.org (日本語)</title>
+    <title>クロスカレンシー支払い - XRPL.org (日本語)</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="複数通貨間の支払い | XRPL.org (日本語)">
+    <meta property="og:title" content="クロスカレンシー支払い | XRPL.org (日本語)">
     <meta property="og:url" content="https://xrpl.org/cross-currency-payments.html" />
-    <meta property="og:description" content="複数通貨間の支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。" />
-    <meta name="description" content="複数通貨間の支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。" />
+    <meta property="og:description" content="クロスカレンシー支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。" />
+    <meta name="description" content="クロスカレンシー支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。" />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
@@ -43,7 +43,7 @@
       "page_type": "Document",
       "page_group": "Docs",
       "page_funnel": "Concepts",
-      "page_labels": ['複数通貨間', '支払い']
+      "page_labels": ['クロスカレンシー', '支払い']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -263,8 +263,8 @@
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-複数通貨間">複数通貨間</span>
-      <!-- TEMPLATE WARNING: no label landing found for "複数通貨間" -->
+      <span class="label label-クロスカレンシー">クロスカレンシー</span>
+      <!-- TEMPLATE WARNING: no label landing found for "クロスカレンシー" -->
     </li>
     <li class="list-inline-item">
       <span class="label label-支払い">支払い</span>
@@ -276,7 +276,7 @@
       <h4>目次</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#複数通貨間の支払い">複数通貨間の支払い</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#クロスカレンシー支払い">クロスカレンシー支払い</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#前提条件">前提条件</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#オートブリッジング">オートブリッジング</a></li>
       </ul>
@@ -296,24 +296,24 @@
     <li class="active breadcrumb-item"><a href="/ja/docs.html">ドキュメント</a></li>
     <li class="active breadcrumb-item"><a href="/ja/concepts.html">コンセプト</a></li>
     <li class="active breadcrumb-item"><a href="/ja/payment-types.html">支払いのタイプ</a></li>
-    <li class="active breadcrumb-item">複数通貨間の支払い</li>
+    <li class="active breadcrumb-item">クロスカレンシー支払い</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="複数通貨間の支払い">複数通貨間の支払い<a aria-hidden="true" class="hover_anchor" href="#複数通貨間の支払い"><i class="fa fa-link"></i></a></h1>
-<p>XRP Ledgerでは、1つ以上のトークン、XRP、またはその両方を交換して、複数通貨間で支払いを送金できます。<a href="use-simple-xrp-payments.html">XRPによる直接支払</a>と同様に、このような支払いでは<a href="payment.html">Paymentトランザクションタイプ</a>が使用されます。XRP Ledgerでの複数通貨間の支払いは完全に非可分です。つまり、支払いを全額実行するか、またはまったく実行しないかのいずれかになります。</p>
-<p>デフォルトでは、複数通貨間の支払いでは宛先に一定額が送金され、支払元が変動コストを負担します。複数通貨間の支払いが、<a href="partial-payments.html">Partial Payments</a>で行われ、一定の送金限度内の変動額が宛先に送金される場合もあります。</p>
+        <h1 id="クロスカレンシー支払い">クロスカレンシー支払い<a aria-hidden="true" class="hover_anchor" href="#クロスカレンシー支払い"><i class="fa fa-link"></i></a></h1>
+<p>XRP Ledgerでは、1つ以上のトークンとXRP、またはその両方を交換して、クロスカレンシー支払いができます。<a href="use-simple-xrp-payments.html">XRPによる直接支払い</a>と同様に、このような支払いでは<a href="payment.html">Paymentトランザクションタイプ</a>が使用されます。XRP Ledgerでのクロスカレンシー支払いは完全にアトミックです。つまり、支払いを全額実行するか、またはまったく実行しないかのいずれかになります。</p>
+<p>デフォルトでは、クロスカレンシー支払いでは宛先に一定額が送金され、支払元が変動コストを負担します。クロスカレンシー支払いが、<a href="partial-payments.html">Partial Payments</a>で行われ、一定の送金限度内の変動額が宛先に送金される場合もあります。</p>
 <h2 id="前提条件">前提条件<a aria-hidden="true" class="hover_anchor" href="#前提条件"><i class="fa fa-link"></i></a></h2>
 <ul>
-<li>定義上、複数通貨間支払いには2種類以上の通貨が関係します。つまり、関係する通貨のうち、少なくとも1種類以上がXRP以外のトークンである必要があります。<ul>
+<li>定義上、クロスカレンシー支払いには2種類以上の通貨が関係します。つまり、関係する通貨のうち、少なくとも1種類以上がXRP以外のトークンである必要があります。<ul>
 <li>通常は、<a href="stablecoin-issuer.html">XRP Ledgerゲートウェイ</a>が発行した通貨を1種類以上使用することになります。このような通貨はXRP Ledger外部の資金を担保とし、ゲートウェイを通じて引き出すことができます。</li>
 <li>取引を行う当事者が、XRP Ledger内でのみ発行され、外部の担保がないデジタルトークンを送受信し、何らかの価値を持つ資産として取り扱うことを望む限り、このデジタルトークンを使用することもできます。</li>
 </ul>
 </li>
-<li>送金元と受取人の間に1つ以上の<a href="paths.html">パス</a>が確立しており、すべてのパスの総流動性が、支払いを促進するのに十分である必要があります。複数通貨間の支払いの場合、これは一般に通貨取引<a href="offers.html">オファー</a>を消費することを意味します。</li>
+<li>送金元と受取人の間に1つ以上の<a href="paths.html">パス</a>が確立しており、すべてのパスの総流動性が、支払いを促進するのに十分である必要があります。クロスカレンシー支払いの場合、これは一般に通貨取引<a href="offers.html">オファー</a>を消費することを意味します。</li>
 </ul>
 <h2 id="オートブリッジング">オートブリッジング<a aria-hidden="true" class="hover_anchor" href="#オートブリッジング"><i class="fa fa-link"></i></a></h2>
-<p>2種類のトークンを自動的に交換する複数通貨間の支払いでは、XRPの使用により支払いコストを抑えられる場合には自動的にXRPが使用されます。この場合、オーダーブックを接続して流動性プールが拡大されます。たとえば、USDからMXNに送金する支払いの場合、USDからXRP、XRPからMXNへの交換にかかるコストが、USDからMXNへの直接交換にかかるコストよりも低い場合には、前者の交換が自動的に実行されます。</p>
+<p>2種類のトークンを自動的に交換するクロスカレンシー支払いでは、XRPの使用により支払いコストを抑えられる場合には自動的にXRPが使用されます。この場合、オーダーブックを接続して流動性プールが拡大されます。たとえば、USDからMXNに送金する支払いの場合、USDからXRP、XRPからMXNへの交換にかかるコストが、USDからMXNへの直接交換にかかるコストよりも低い場合には、前者の交換が自動的に実行されます。</p>
 <p>詳細は、<a href="autobridging.html">オートブリッジング</a>を参照してください。</p>
 <!-- -->
 <!-- -->
@@ -707,12 +707,12 @@
     <nav class="nav flex-column show " id="tree_nav_group_4_5">
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払</a>
+    <a class="nav-link nav-leaf" href="/ja/direct-xrp-payments.html">XRPによる直接支払い</a>
   </div>
 
       
   <div class="nav-item active">
-    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">複数通貨間の支払い</a>
+    <a class="nav-link nav-leaf" href="/ja/cross-currency-payments.html">クロスカレンシー支払い</a>
   </div>
 
       
@@ -2981,7 +2981,7 @@
 
       
   <div class="nav-item ">
-    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">Run a Private Network with Docker</a>
+    <a class="nav-link nav-leaf" href="/ja/private-network-with-docker.html">プライベートネットワークをDockerで構築する</a>
   </div>
 
     </nav>
