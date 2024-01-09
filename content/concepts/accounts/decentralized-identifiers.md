@@ -44,7 +44,7 @@ On the XRP Ledger, there are several ways to associate a DID to a DID document:
 
 1. Store a reference to the document in the `URI` field of the `DID` object, which points to a document stored on another decentralized storage network, such as IPFS or STORJ.
 2. Store a minimal DID document in the `DIDDocument` field of the `DID` object.
-3. Specify a minimal _implicit_ DID document generated from the DID and other available public information.
+3. Use a minimal _implicit_ DID document generated from the DID and other available public information.
     **Note:** Simpler use cases may only need signatures and simple authorization tokens. In cases where there isn't explicitly a DID document on the ledger, an implicit document is used instead. For example, the implicit DID Document of `did:xrpl:1:0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` enables only a single key `0330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD020` to authorize changes on the DID document or sign credentials in the name of the DID.
 
 
