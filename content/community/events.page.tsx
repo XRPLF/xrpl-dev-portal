@@ -208,7 +208,7 @@ const events = [
   },
 
   {
-    name: "Hackathon:<br />NFT Launch Party",
+    name: "Hackathon: NFT Launch Party",
     description:
       "Build Functional NFTs that span across a full range of use cases.",
     type: "hackathon",
