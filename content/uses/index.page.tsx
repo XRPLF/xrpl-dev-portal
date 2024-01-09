@@ -776,7 +776,7 @@ export default function Uses() {
             <div className="col-12 col-lg-8 col-xl-6 p-3 mb-5">
               <div className="d-flex flex-column-reverse">
                 <h3 className="h4 h2-sm">
-                  {translate("Businesses and developers&nbsp;")}
+                  {translate("Businesses and developers")}
                   <br className="until-sm" />
                   {translate(" rely on the XRP Ledger")}
                 </h3>
