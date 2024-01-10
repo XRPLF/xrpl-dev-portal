@@ -934,9 +934,9 @@ export default function Events() {
             </div>
           </div>
           <div className="mt-2 mb-0 row row-cols-1 row-cols-lg-3 card-deck ">
-            {filteredPast.map((event) => (
+            {filteredPast.map((event, i) => (
               <a
-                key={event.name}
+                key={event.name + i}
                 className="event-card {event.type}"
                 href={event.link}
                 target="_blank"

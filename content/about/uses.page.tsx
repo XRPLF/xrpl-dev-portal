@@ -569,8 +569,7 @@ export default function Uses() {
     const logoArray = logos[id] || [];
     const createLogoElement = (logoClassName, title, id) => {
       return (
-        <div className={`logo-item ${logoClassName}`}>
-          {/* Whatever content here */}
+        <div key={logoClassName} className={`logo-item ${logoClassName}`}>
         </div>
       );
     };
