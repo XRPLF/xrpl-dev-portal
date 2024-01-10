@@ -142,7 +142,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 オフラインマシンで、アカウントの設定用のトランザクションを準備して署名します。詳細は、アカウントを使用する目的によって異なります。例えば次のようなことができます。
 
 - 定期的なローテーションで使用できる[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.html)。
-- ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグをリクエストする](require-destination-tags.html)。
+- ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグを要求する](require-destination-tags.html)。
 - アカウントセキュリティを強化するために、[マルチシグを設定する](set-up-multi-signing.html)。
 - 明示的に承認した送金、または事前に承認した相手からの送金のみを受け取れるようにするために、[DepositAuthを有効にする](depositauth.html)。
 - ユーザーがあなたの許可なくあなたへの[トラストライン](trust-lines-and-issuing.html)を開けないようにするために、[RequireAuthを有効にする](authorized-trust-lines.html#requireauthの有効化)。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。

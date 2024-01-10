@@ -83,8 +83,8 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](accountro
 | `asfDisallowXRP`                  | 3     | `lsfDisallowXRP`                  | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
 | `asfGlobalFreeze`                 | 7     | `lsfGlobalFreeze`                 | このアカウントによって発行されたすべての資産を[凍結](freezes.html)します。 |
 | `asfNoFreeze`                     | 6     | `lsfNoFreeze`                     | [個々のトラストラインの凍結またはGlobal Freezeの無効化](freezes.html)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
-| `asfRequireAuth`                  | 2     | `lsfRequireAuth`                  | このアドレスによって発行された残高をユーザーが保持することについて、承認をリクエストします。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
-| `asfRequireDest`                  | 1     | `lsfRequireDestTag`               | トランザクションをこのアカウントに送信するための宛先タグをリクエストします。 |
+| `asfRequireAuth`                  | 2     | `lsfRequireAuth`                  | このアドレスによって発行された残高をユーザーが保持することについて、承認を要求します。アドレスにトラストラインが接続されていない場合のみ有効にできます。 |
+| `asfRequireDest`                  | 1     | `lsfRequireDestTag`               | トランザクションをこのアカウントに送信するための宛先タグを要求します。 |
 
 `asfDisableMaster`フラグまたは`asfNoFreeze`フラグを有効にするには、マスターキーペアで署名することによって[トランザクションを承認](transactions.html#トランザクションの承認)する必要があります。レギュラーキーペアやマルチ署名を使用することはできません。レギュラーキーペアまたはマルチ署名を使用すると、`asfDisableMaster`を無効にする（つまり、マスターキーペアを再び有効にする）ことができます。[新規: rippled 0.28.0][]
 

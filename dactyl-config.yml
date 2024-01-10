@@ -121,7 +121,7 @@ targets:
             "use-payment-channels.html#5-the-payee-verifies-the-claims": "use-payment-channels.html#5-受取人がクレームを検証します"
             "use-payment-channels.html#7-repeat-steps-3-6-as-desired": "use-payment-channels.html#7-必要に応じてステップ36を繰り返します"
             "use-payment-channels.html#8-when-ready-the-payee-redeems-a-claim-for-the-authorized-amount": "use-payment-channels.html#8-準備が完了すれば受取人は承認された額のクレームを清算します"
-            "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖をリクエストします"
+            "use-payment-channels.html#9-when-the-payer-and-payee-are-done-doing-business-the-payer-requests-for-the-channel-to-be-closed": "use-payment-channels.html#9-支払人と受取人の取引完了後支払人はchannelの閉鎖を要求します"
             "reserves.html#owner-reserves": "reserves.html#所有者準備金"
             # Fix links from untranslated validator-list.html
             "run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server": "run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化"

@@ -13,7 +13,7 @@ Checkの送信は、指定受取人にあなたからの支払いを引き出す
 
 このチュートリアルでは、架空の会社BoxSend SG（XRP LedgerアドレスはrBXsgNkPcDN2runsvWmwxk3Lh97zdgo9za）が架空の暗号資産コンサルタント会社Grand Payments（XRP LedgerアドレスはrGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）に、コンサルティング料を支払う例を取り上げます。Grand PaymentsはXRPでの支払いを望んでいますが、税務処理と規制対応を簡素化するため、明示的に承認した支払いのみを受け入れます。
 
-XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`）を送り、Grand PaymentsのXRP Ledgerアドレス（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに100 XRPのCheckを送信するようリクエストします。
+XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`）を送り、Grand PaymentsのXRP Ledgerアドレス（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに100 XRPのCheckを送信するよう要求します。
 
 {% set send_n = cycler(* range(1,99)) %}
 

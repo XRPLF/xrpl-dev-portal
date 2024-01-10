@@ -363,7 +363,7 @@ Payment Channelの作成時に、LedgerEntryTypeが`PayChannel`の`CreatedNode`�
 
 [fixPayChanRecipientOwnerDir Amendment](known-amendments.html#fixpaychanrecipientownerdir)が有効な場合は、メタデータは宛先のアカウントの[所有者ディレクトリー](directorynode.html)を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが[削除される](deleting-accounts.html)ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）
 
-Payment Channelの閉鎖をリクエストする方法は、Payment Channelの不変の`CancelAfter`時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが`PayChannel`の`ModifiedNode`エントリーがあり、`FinalFields`の`Expiration`フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するようリクエストした場合に`PayChannel`に対して行われる変更を示します。
+Payment Channelの閉鎖を要求する方法は、Payment Channelの不変の`CancelAfter`時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが`PayChannel`の`ModifiedNode`エントリーがあり、`FinalFields`の`Expiration`フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するよう要求した場合に`PayChannel`に対して行われる変更を示します。
 
 ```json
 {
