@@ -259,7 +259,7 @@ const events = [
     link: "https://youtu.be/KpSt0PFT2QM",
     location: "XRPL Developers Discord",
     date: "June 02, 2022",
-    image: "CommunityCalls.png",
+    image: require("../static/img/events/CommunityCalls.png"),
     end_date: "June 02, 2022",
   },
   {
