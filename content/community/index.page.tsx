@@ -396,7 +396,7 @@ const CommunityPage: React.FC = () => {
               </a>
             </td>
           </tr>
-        </table>
+        </tbody></table>
       </section>
       {/* XRPL Events Carousel Section */}
       <XrplEventsAndCarouselSection events={events} />
