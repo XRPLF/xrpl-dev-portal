@@ -568,7 +568,7 @@ const CommunityPage: React.FC = () => {
               </a>
               <a
                 className="com-card-link"
-                href="/run-rippled-as-a-validator"
+                href="/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
                 target="_blank"
               >
                 {translate("Join UNL")}
