@@ -196,7 +196,7 @@ const events = [
   },
 
   {
-    name: "Conference:<br />Apex 2021",
+    name: "Conference: Apex 2021",
     description:
       "View sessions from the Apex 2021 stages in Las Vegas and Tallinn.",
     type: "conference",
@@ -692,7 +692,7 @@ export default function Events() {
                 Location: Amsterdam
               </div>
               <div className="py-2 my-3 event-small-gray">
-                Date: September 6-8, 2023
+                Date: June 11-13, 2024
               </div>
               <div className="d-lg-block">
                 <a
