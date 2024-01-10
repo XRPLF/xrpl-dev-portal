@@ -16,6 +16,7 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
@@ -104,6 +105,28 @@ The following is a list of known [amendments](amendments.html) that have been re
 
 
 ## Details about Known Amendments
+
+### DID
+[DID]: #did
+
+| Amendment    | DID |
+|:-------------|:----|
+| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds to the ledger Decentralized Identifier (DID) functionality that conforms to the [World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/) standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.
+
+Adds new transactions:
+
+- DIDDelete - Delete the DID associated with your XRPL account.
+- DIDSet - Create a new DID or update an existing one.
+
+Adds a new `DID` ledger entry type.
+
+Adds several new transaction result codes.
+
 
 ### AMM
 [AMM]: #amm
