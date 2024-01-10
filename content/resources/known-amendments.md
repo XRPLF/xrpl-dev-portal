@@ -16,6 +16,8 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
@@ -82,7 +84,6 @@ The following is a list of [amendments](amendments.html) that are being develope
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | [In Development: TBD]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [XChainBridge][]             | [In Development: TBD]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [Documentation](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
 | [OwnerPaysFee][]                  | [In Development: TBD]( "BADGE_LIGHTGREY") | |
 
 **Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
@@ -104,6 +105,28 @@ The following is a list of known [amendments](amendments.html) that have been re
 
 
 ## Details about Known Amendments
+
+### DID
+[DID]: #did
+
+| Amendment    | DID |
+|:-------------|:----|
+| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds to the ledger Decentralized Identifier (DID) functionality that conforms to the [World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/) standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.
+
+Adds new transactions:
+
+- DIDDelete - Delete the DID associated with your XRPL account.
+- DIDSet - Create a new DID or update an existing one.
+
+Adds a new `DID` ledger entry type.
+
+Adds several new transaction result codes.
+
 
 ### AMM
 [AMM]: #amm
@@ -193,11 +216,30 @@ See [Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-cu
 | Amendment    | XChainBridge |
 |:-------------|:-----------------|
 | Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds "cross-chain bridges" for synchronizing assets between different networks, such as Mainnet and a sidechain. Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
+Adds cross-chain bridges, enabling the transfer of digital assets between networks, such as Mainnet and a sidechain.
+
+Adds new transactions:
+
+- XChainAccountCreateCommit - Create a new account for a witness server to submit transactions on an issuing chain..
+- XChainAddAccountCreateAttestation - Provide an attestation that an account was created for a witness server to use.
+- XChainAddClaimAttestation - Provide an attestation that assets were locked on a locking chain.
+- XChainClaim - Claim assets on the destination chain.
+- XChainCommit - Locks assets on the locking chain.
+- XChainCreateBridge - Create a bridge ledger object.
+- XChainCreateClaimID - Create a new cross-chain claim ID that is used for a cross-chain transfer.
+- XChainModifyBridge - Modify the parameters of a bridge.
+
+Adds new ledger entry types:
+
+- Bridge - A single cross-chain bridge that connects the XRP Ledger with another blockchain.
+- XChainOwnedClaimID - A cross-chain transfer of value that includes information of the account on the source chain that locks or burns the funds on the source chain.
+- XChainOwnedCreateAccountClaimID - Collects attestations for creating an account via a cross-chain transfer.
+
+Adds several new transaction result codes.
 
 
 ### CryptoConditions

@@ -23,10 +23,10 @@ labels:
 | `temBAD_OFFER`                | [OfferCreateトランザクション][]で無効なオファーが指定されています（XRPをXRP自身と取引するオファー、マイナスの額のオファーなど）。 |
 | `temBAD_PATH`                 | [Paymentトランザクション][]の1つ以上の[パス](paths.html)が誤って指定されています。例えば、XRPのイシュアーが含まれていたり、アカウントが異なる方法で指定されたりするなど。 |
 | `temBAD_PATH_LOOP`           | [Paymentトランザクション][]で[パス](paths.html)の1つがループとしてマークされているため、限られた時間内に処理できません。 |
-| `temBAD_SEND_XRP_LIMIT`     | [Paymentトランザクション][]で、XRP間の直接支払に[tfLimitQuality](payment.html#クオリティの制限)フラグが使用されましたが、XRP間の支払いでは通貨の取引は行われません。 |
-| `temBAD_SEND_XRP_MAX`       | [Paymentトランザクション][]で、XRP間の直接支払に`SendMax`フィールドが指定されていますが、XRPの送金ではSendMaxは不要です。（SendMaxでXRPが有効となるのは、宛先への`Amount`がXRPではない場合のみです。） |
-| `temBAD_SEND_XRP_NO_DIRECT` | [Paymentトランザクション][]で、XRP間の直接支払に[tfNoDirectRipple](payment.html#paymentのフラグ)フラグが使用されていますが、XRP間の支払いは常に直接行われます。 |
-| `temBAD_SEND_XRP_PARTIAL`   | [Paymentトランザクション][]で、XRP間の直接支払に [tfPartialPayment](partial-payments.html)フラグが使用されていますが、XRP間の直接支払では常に全額が送金されます。 |
+| `temBAD_SEND_XRP_LIMIT`     | [Paymentトランザクション][]で、XRP間の直接支払いに[tfLimitQuality](payment.html#クオリティの制限)フラグが使用されましたが、XRP間の支払いでは通貨の取引は行われません。 |
+| `temBAD_SEND_XRP_MAX`       | [Paymentトランザクション][]で、XRP間の直接支払いに`SendMax`フィールドが指定されていますが、XRPの送金ではSendMaxは不要です。（SendMaxでXRPが有効となるのは、宛先への`Amount`がXRPではない場合のみです。） |
+| `temBAD_SEND_XRP_NO_DIRECT` | [Paymentトランザクション][]で、XRP間の直接支払いに[tfNoDirectRipple](payment.html#paymentのフラグ)フラグが使用されていますが、XRP間の支払いは常に直接行われます。 |
+| `temBAD_SEND_XRP_PARTIAL`   | [Paymentトランザクション][]で、XRP間の直接支払いに [tfPartialPayment](partial-payments.html)フラグが使用されていますが、XRP間の直接支払いでは常に全額が送金されます。 |
 | `temBAD_SEND_XRP_PATHS`     | [Paymentトランザクション][]で、XRP送金時の`Paths`が指定されていますが、XRP間の支払いは常に直接行われます。 |
 | `temBAD_SEQUENCE`             | トランザクションは、トランザクション自体の`Sequence`番号よりも大きいシーケンス番号を参照します。例えば、取り消したいオファーは、そのオファーを取り消すトランザクションよりも後に置く必要があります。 |
 | `temBAD_SIGNATURE`            | このトランザクションを承認するための署名がないか、または署名の形式が適切ではありません。（適切な形式の署名がアカウントで承認されない場合は、[tecNO_PERMISSION](tec-codes.html)を参照してください。） |

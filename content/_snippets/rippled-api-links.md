@@ -207,6 +207,7 @@
   "DeletableAccounts",
   "DepositAuth",
   "DepositPreauth",
+  "DID",
   "DisallowIncoming",
   "EnforceInvariants",
   "Escrow",
@@ -252,6 +253,7 @@
   "Tickets",
   "TickSize",
   "TrustSetAuth",
+  "XChainBridge",
   "XRPFees"
 ] %}
 

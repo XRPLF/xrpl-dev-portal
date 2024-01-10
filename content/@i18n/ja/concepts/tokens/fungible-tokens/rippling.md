@@ -4,7 +4,7 @@ parent: trust-lines-and-issuing.html
 blurb: Ripplingは、複数当事者間でのトークン残高の自動ネット決済です。
 labels:
   - トークン
-  - 複数通貨間
+  - クロスカレンシー
 ---
 # Rippling
 

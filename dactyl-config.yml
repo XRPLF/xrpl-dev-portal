@@ -1366,6 +1366,11 @@ pages:
         targets:
             - ja
 
+    -   md: concepts/accounts/decentralized-identifiers.md
+        targets:
+            - en
+            - ja
+
 
    ## REDIRECTS FROM OLD CONCEPT PAGES/LANDINGS -------------------------------
     -   name: Intro to Consensus
@@ -1534,6 +1539,23 @@ pages:
             - en
             - ja
 
+
+    # XRPL Sidechains -----------------------------------------------------------
+        
+    -   md: concepts/xrpl-sidechains/index.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/xrpl-sidechains/cross-chain-bridges.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/xrpl-sidechains/witness-servers.md
+        targets:
+            - en
+            - ja
 
 
 # Tutorials --------------------------------------------------------------------
@@ -2273,6 +2295,29 @@ pages:
             - en
             - ja
 
+        # Use XRPL Sidechains ----------------------------------------------------------
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/index.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction.md
+        targets:
+            - en
+            - ja
+
+
 # References -------------------------------------------------------------------
 
     -   name: References
@@ -2413,6 +2458,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol/ledger-data/ledger-entry-types/bridge.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol/ledger-data/ledger-entry-types/check.md
         targets:
             - en
@@ -2427,6 +2477,11 @@ pages:
 
     -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/depositpreauth.md"
         targets:
+            - ja
+
+    -   md: references/protocol/ledger-data/ledger-entry-types/did.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol/ledger-data/ledger-entry-types/directorynode.md
@@ -2523,6 +2578,16 @@ pages:
 
     -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/ticket.md"
         targets:
+            - ja
+
+    -   md: references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol/transactions/index.md
@@ -2653,6 +2718,16 @@ pages:
 
     -   md: "@i18n/ja/references/protocol/transactions/types/depositpreauth.md"
         targets:
+            - ja
+
+    -   md: references/protocol/transactions/types/diddelete.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/didset.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol/transactions/types/escrowcancel.md
@@ -2799,6 +2874,46 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol/transactions/types/xchainaccountcreatecommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainaddclaimattestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainclaim.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchaincommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchaincreatebridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchaincreateclaimid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainmodifybridge.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md
         targets:
             - en
@@ -2909,6 +3024,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/binary-format.md"
+        outdated_translation: true
         targets:
             - ja
 
