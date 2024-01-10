@@ -43,22 +43,22 @@ The `XChainAccountCreateCommit` transaction creates a new account for a witness 
 
 ## XChainAccountCreateCommit Fields
 
-| Field             | JSON Type         | Internal Type | Required? | Description |
-|:------------------|:------------------|:------------------|:----------| :-----------|
-| `Amount`          | `Currency Amount` | `AMOUNT`          | Yes       | The amount, in XRP, to use for account creation. This must be greater than or equal to the `MinAccountCreateAmount` specified in the `Bridge` ledger object. |
-| `Destination`     | `string`          | `ACCOUNT`         | Yes       | The destination account on the destination chain. |
-| `SignatureReward` | `Currency Amount` | `AMOUNT`          | No        | The amount, in XRP, to be used to reward the witness servers for providing signatures. This must match the amount on the `Bridge` ledger object. |
-| `XChainBridge`    | `XChainBridge`    | `XCHAIN_BRIDGE`   | Yes       | The bridge to create accounts for. |
+| Field             | JSON Type           | [Internal Type][] | Required? | Description |
+|:------------------|:--------------------|:------------------|:----------| :-----------|
+| `Amount`          | [Currency Amount][] | Amount            | Yes       | The amount, in XRP, to use for account creation. This must be greater than or equal to the `MinAccountCreateAmount` specified in the `Bridge` ledger object. |
+| `Destination`     | String              | Account           | Yes       | The destination account on the destination chain. |
+| `SignatureReward` | [Currency Amount][] | Amount            | No        | The amount, in XRP, to be used to reward the witness servers for providing signatures. This must match the amount on the `Bridge` ledger object. |
+| `XChainBridge`    | XChainBridge        | XChain_Bridge     | Yes       | The bridge to create accounts for. |
 
 
 ### XChainBridge Fields
 
-| Field               | JSON Type | Internal Type     | Required? | Description     |
+| Field               | JSON Type | [Internal Type][] | Required? | Description     |
 |:--------------------|:----------|:------------------|:----------|:----------------|
-| `IssuingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
-| `IssuingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
-| `LockingChainDoor`  | `string`  | `ACCOUNT`         | Yes       | The door account on the locking chain. |
-| `LockingChainIssue` | `Issue`   | `ISSUE`           | Yes       | The asset that is locked and unlocked on the locking chain. |
+| `IssuingChainDoor`  | String    | Account           | Yes       | The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP). |
+| `IssuingChainIssue` | Issue     | Issue             | Yes       | The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues. |
+| `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
+| `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
