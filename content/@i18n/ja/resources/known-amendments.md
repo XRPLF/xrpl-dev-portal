@@ -12,7 +12,7 @@ labels:
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
-**ヒント:** このリストは手動で更新されています。最新のステータスは[XRPScan Amendment Dashboard](https://xrpscan.com/amendments)をご覧下さい。
+**ヒント:** このリストは手動で更新されています。最新のステータスは[XRPScan Amendmentダッシュボード](https://xrpscan.com/amendments)をご覧下さい。
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
@@ -216,30 +216,30 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 | Amendment    | XChainBridge |
 |:-------------|:-----------------|
 | Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| Status       | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
-Adds cross-chain bridges, enabling the transfer of digital assets between networks, such as Mainnet and a sidechain.
+クロスチェーンブリッジを追加し、メインネットとサイドチェーンなどのネットワーク間でのデジタル資産の移動を可能にします。
 
-Adds new transactions:
+次の新しいトランザクションを追加します
 
-- XChainAccountCreateCommit - Create a new account for a witness server to submit transactions on an issuing chain..
-- XChainAddAccountCreateAttestation - Provide an attestation that an account was created for a witness server to use.
-- XChainAddClaimAttestation - Provide an attestation that assets were locked on a locking chain.
-- XChainClaim - Claim assets on the destination chain.
-- XChainCommit - Locks assets on the locking chain.
-- XChainCreateBridge - Create a bridge ledger object.
-- XChainCreateClaimID - Create a new cross-chain claim ID that is used for a cross-chain transfer.
-- XChainModifyBridge - Modify the parameters of a bridge.
+- XChainAccountCreateCommit - 発行チェーン上でトランザクションを提出するために、Witnessサーバ用の新しいアカウントを作成します。
+- XChainAddAccountCreateAttestation - Witnessサーバが使用するアカウントが作成されたことを証明します。
+- XChainAddClaimAttestation - ロックチェーンで資産がロックされた証明書を提出します。
+- XChainClaim - 送信先チェーンで資産を請求します。
+- XChainCommit - ロックチェーン上の資産をロックします。
+- XChainCreateBridge - Bridgeレジャーオブジェクトを作成します。
+- XChainCreateClaimID - クロスチェーン送金に使用される新しいクロスチェーン請求IDを作成します。
+- XChainModifyBridge - ブリッジのパラメータを変更します。
 
-Adds new ledger entry types:
+次の新しいレジャーエントリタイプを追加します
 
-- Bridge - A single cross-chain bridge that connects the XRP Ledger with another blockchain.
-- XChainOwnedClaimID - A cross-chain transfer of value that includes information of the account on the source chain that locks or burns the funds on the source chain.
-- XChainOwnedCreateAccountClaimID - Collects attestations for creating an account via a cross-chain transfer.
+- Bridge - XRP Ledgerを別のブロックチェーンと接続する単一のクロスチェーンブリッジ。
+- XChainOwnedClaimID - 送信元チェーン上の資金をロックまたはバーンする送信元チェーン上のアカウントの情報を含むクロスチェーン送金の値(ID)。
+- XChainOwnedCreateAccountClaimID - クロスチェーン送金でアカウントを作成する際の証明書。
 
-Adds several new transaction result codes.
+いくつかの新しいトランザクション結果コードを追加します。
 
 
 ### CryptoConditions

@@ -1545,16 +1545,25 @@ pages:
     -   md: concepts/xrpl-sidechains/index.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/xrpl-sidechains/index.md"
+        targets:
             - ja
 
     -   md: concepts/xrpl-sidechains/cross-chain-bridges.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/xrpl-sidechains/cross-chain-bridges.md"
+        targets:
             - ja
 
     -   md: concepts/xrpl-sidechains/witness-servers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/xrpl-sidechains/witness-servers.md"
+        targets:
             - ja
 
 
@@ -2461,6 +2470,9 @@ pages:
     -   md: references/protocol/ledger-data/ledger-entry-types/bridge.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/bridge.md"
+        targets:
             - ja
 
     -   md: references/protocol/ledger-data/ledger-entry-types/check.md
@@ -2583,11 +2595,17 @@ pages:
     -   md: references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md"
+        targets:
             - ja
 
     -   md: references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/index.md
@@ -3024,7 +3042,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/binary-format.md"
-        outdated_translation: true
         targets:
             - ja
 
@@ -4273,7 +4290,6 @@ pages:
             - en
 
     -   md: "@i18n/ja/infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md"
-        outdated_translation: true
         targets:
             - ja
 

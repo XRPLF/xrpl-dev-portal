@@ -189,6 +189,7 @@ curated_anchors:
 | [UInt8][] | 16 | 8 | いいえ | 8ビットの符号なし整数。 |
 | [UInt16][] | 1 | 16 | いいえ | 16ビットの符号なし整数。`TransactionType`は、このタイプの特殊なフィールドで、特定の文字列から整数値へのマッピングを含みます。 |
 | [UInt32][] | 2 | 32 | いいえ | 32ビットの符号なし整数。このタイプの例として、すべてのトランザクションの`Flags`フィールドと`Sequence`フィールドがあります。 |
+| [XChainBridge][] | 25 | 可変 | いいえ | 2つのブロックチェーン間のブリッジで、両方のチェーン上のドアアカウントと発行された資産によって識別されます。 |
 
 
 [長さプレフィクスを付加する]: #長さプレフィクスを付加する
@@ -215,7 +216,6 @@ curated_anchors:
 
 ### Amountフィールド
 [Amount]: #amountフィールド
-<!-- TODO: update translation based on the English version, which moves in content from the Currency Formats page -->
 
 「Amount」タイプは、通貨（XRPまたはトークン）の額を表す特殊なフィールドタイプです。このタイプは2つのサブタイプで構成されます。
 
@@ -366,6 +366,25 @@ XRP Ledgerには符号なし整数タイプUInt8、UInt16、UInt32、UInt64が�
 JSONオブジェクトにこれらのフィールドが含まれている場合、ほとんどはデフォルトでJSONの数値として表されます。例外として、UInt64は文字列として表されます。これは、一部のJSONデコーダーがこれらの整数を64ビットの「倍精度」浮動小数点数として表現しようとするためです。64ビットの「倍精度」浮動小数点数では、すべてのUInt64値を完全な精度で表現することができません。
 
 もう1つの特殊なケースとして`TransactionType`フィールドがあります。JSONではこのフィールドは便宜上、トランザクションタイプの名前の文字列として表現されますが、バイナリではこのフィールドはUInt16です。[定義ファイル](#定義ファイル)内の`TRANSACTION_TYPES`オブジェクトにより、これらの文字列が特定の数値にマップされます。
+
+
+### XChainBridgeフィールド
+[XChainBridge]: #xchainbridgeフィールド
+
+{{ include_svg("img/serialization-xchainbridge.ja.svg", "XChainBridgeのフォーマットの図") }}
+
+`XChainBridge`フィールドは、[クロスチェーンブリッジ](cross-chain-bridges.html)に関連するトランザクションとレジャーエントリで使用され、XChainBridgeタイプの唯一のフィールドです。XChainBridgeフィールドは4つの要素から構成され、ブロックチェーン間のブリッジを定義します。
+
+- ロックチェーンのドアアカウント、長さ接頭辞付きの[AccountID][]。
+- ロックチェーンの資産タイプ、[STIssue][]。
+- 発行チェーンのドアアカウント、長さ接頭辞付きの[AccountID][]。
+- 発行チェーンの資産タイプ、[STIssue][]。
+
+ネストされた2つの[STIssue][]タイプは、それぞれ160ビットまたは320ビットです。STIssueフィールドに含まれる通貨コードがすべて0の場合、STIssueフィールドは160ビットで、ブリッジされた資産がそれぞれのチェーンのネイティブ資産、例えばXRP Ledger MainnetのXRPであることを意味します。通貨コードが0でない場合、STIssueフィールドにはトークンのネイティブチェーンにおける発行者の(長さ接頭辞のない)AccountIDも含まれます。
+
+**注記:** ドアアカウントのAccountIDの値は長さ接頭辞付きですが、発行者のAccountIDの値は長さ接頭辞付きではありません。
+
+全体として、XChainBridgeフィールドは常に656、816、または976ビット（82、102、または122バイト）のいずれかになります。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}
