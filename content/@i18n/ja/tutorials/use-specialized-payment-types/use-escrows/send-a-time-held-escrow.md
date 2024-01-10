@@ -49,7 +49,7 @@ print(release_date_ripple)
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -61,7 +61,7 @@ print(release_date_ripple)
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -84,7 +84,7 @@ print(release_date_ripple)
 
 トランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、トランザクションの最終ステータスを確認します。[Escrowレジャーオブジェクト](escrow.html)が作成されたことを示す`CreatedNode`をトランザクションメタデータで探します。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -96,7 +96,7 @@ print(release_date_ripple)
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -114,7 +114,7 @@ print(release_date_ripple)
 
 最新の検証済みレジャーの閉鎖時刻は、[ledgerメソッド][]を使用して検索できます。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -126,7 +126,7 @@ print(release_date_ripple)
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -149,7 +149,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -161,7 +161,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -183,7 +183,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 EscrowFinishトランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、トランザクションの最終ステータスを確認します。特にトランザクションメタデータ内で、エスクローに預託された支払いの送金先の`ModifiedNode`（タイプが`AccountRoot`）を確認します。オブジェクトの`FinalFields`に、`Balance`フィールドのXRP返金額の増分が表示されている必要があります。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -195,7 +195,7 @@ EscrowFinishトランザクションの識別用ハッシュを指定した[tx�
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 

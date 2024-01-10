@@ -12,8 +12,8 @@ _（[PayChan Amendment][]が有効になっている必要があります。[新
 
 `channel_verify`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
 
-## 要求フォーマット
-要求フォーマットの例:
+## リクエストのフォーマット
+リクエストのフォーマットの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -53,7 +53,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 
 <!-- MULTICODE_BLOCK_END -->
 
-要求には以下のパラメーターが含まれます。
+リクエストには以下のパラメーターが含まれます。
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
@@ -62,9 +62,9 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 | `public_key` | 文字列 | Channelの公開鍵と、署名の作成に使用されたキーペア（16進数またはXRP Ledgerの[base58][]形式）。[更新: rippled 0.90.0][新規: rippled 0.90.0] |
 | `signature` | 文字列 | 検証する署名（16進数）。 |
 
-## 応答フォーマット
+## レスポンスのフォーマット
 
-処理が成功した応答の例:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -107,7 +107,7 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 
 <!-- MULTICODE_BLOCK_END -->
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | フィールド | 型 | 説明 |
 |-------|------|-------------|
@@ -119,9 +119,9 @@ rippled channel_verify aB44YfzW24VDEJQ2UuLPV2PvqcPCSoLnL7y5M1EzhdW4LnK5xMS3 5DB0
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `publicMalformed` - 要求の`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](base58-encodings.html)。16進表現は66文字です。
-* `channelMalformed` - 要求の`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
-* `channelAmtMalformed` - 要求の`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。
+* `publicMalformed` - リクエストの`public_key`フィールドが、正しいフォーマットの有効な公開鍵ではありません。公開鍵は33バイトであり、base58または16進数で表記されている必要があります。[アカウントの公開鍵のbase58表現は文字`a`から始まります](base58-encodings.html)。16進表現は66文字です。
+* `channelMalformed` - リクエストの`channel_id`フィールドが有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列である必要があります。
+* `channelAmtMalformed` - リクエストの`amount`に指定された値が、有効な[XRPの額][XRP、drop単位]ではありませんでした。
 
 
 {% include '_snippets/rippled_versions.md' %}

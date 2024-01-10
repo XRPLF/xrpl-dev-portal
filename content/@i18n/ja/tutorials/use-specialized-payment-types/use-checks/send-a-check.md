@@ -69,7 +69,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 {% include '_snippets/tutorial-sign-step.ja.md' %}
 <!--{#_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -93,7 +93,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_END -->
 
-#### 応答の例
+#### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -123,7 +123,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 {% include '_snippets/tutorial-submit-step.md' %}
 <!--{#_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -147,7 +147,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_END -->
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -183,7 +183,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 トランザクションのメタデータで、`LedgerEntryType`が `"Check"`の`CreatedNode`オブジェクトを探します。これは、トランザクションにより[Checkレジャーオブジェクト](check.html)が作成されたことを示します。このオブジェクトの`LedgerIndex` がCheckのIDです。以下の例ではCheckのIDは`84C61BE9B39B2C4A2267F67504404F1EC76678806C1B901EA781D1E3B4CE0CD9`です。
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -207,7 +207,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 <!-- MULTICODE_BLOCK_END -->
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 

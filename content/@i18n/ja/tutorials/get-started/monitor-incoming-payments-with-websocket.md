@@ -11,7 +11,7 @@ labels:
 
 このチュートリアルでは、[WebSocket `rippled` API](http-websocket-apis.html)を使用して、着信[ペイメント](payment-types.html)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
 
-WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、要求ごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
+WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、リクエストごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
 **ヒント:** このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、[JavaScript向けxrpl.jsライブラリ](https://js.xrpl.org/)も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 _しない_ でトランザクションを監視する方法を説明します。
 
@@ -42,7 +42,7 @@ function writeToConsole(console_selector, message) {
 
 着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり`rippled`サーバーに接続します。
 
-以下のJavaScriptコードでは、Rippleの公開サーバーのクラスターの1つに接続します。その後、コンソールにメッセージを記録し、[pingメソッド][]を使用して要求を送信します。次に、サーバー側からのメッセージを受信するときに、ハンドラーを設定してコンソールに再度メッセージを記録します。
+以下のJavaScriptコードでは、Rippleの公開サーバーのクラスターの1つに接続します。その後、コンソールにメッセージを記録し、[pingメソッド][]を使用してリクエストを送信します。次に、サーバー側からのメッセージを受信するときに、ハンドラーを設定してコンソールに再度メッセージを記録します。
 
 ```js
 const socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
@@ -71,7 +71,7 @@ socket.addEventListener('close', (event) => {
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-api-methods.html)以外に、すべての[管理メソッド](admin-api-methods.html)と、[server_info][server_infoメソッド]などの一部の応答に含まれる管理者専用データを利用できます。
+**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-api-methods.html)以外に、すべての[管理メソッド](admin-api-methods.html)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。
 
 例:
 
@@ -115,21 +115,21 @@ $("#connect-socket-button").click((event) => {
 
 ## {{n.next()}}. ハンドラーへの着信メッセージのディスパッチ
 
-WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、要求と応答の間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバーでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
+WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバーでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
 
-- クライアント側からの要求への直接の応答となるメッセージの場合、`type`は文字列の`response`です。この場合、サーバーは以下も提供します。
+- クライアント側からのリクエストへの直接のレスポンスとなるメッセージの場合、`type`は文字列の`response`です。この場合、サーバーは以下も提供します。
 
-  - この応答に対する要求で指定された`id`に一致する`id`フィールド（応答が順序どおりに到着しない可能性があるため、これは重要です）。
+  - このレスポンスに対するリクエストで指定された`id`に一致する`id`フィールド（レスポンスが順序どおりに到着しない可能性があるため、これは重要です）。
 
-  - APIが要求の処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功した応答](response-formatting.html)を示します。文字列値`error`は、[エラー](error-formatting.html)を示します。
+  - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](response-formatting.html)を示します。文字列値`error`は、[エラー](error-formatting.html)を示します。
 
-    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバーによって要求が理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](look-up-transaction-results.html)を参照してください。
+    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバーによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](look-up-transaction-results.html)を参照してください。
 
-- [サブスクリプション](subscribe.html)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfinding要求](path_find.html)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
+- [サブスクリプション](subscribe.html)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfindingリクエスト](path_find.html)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
 
-**ヒント:** [JavaScript向けxrpl.js](https://js.xrpl.org/)は、デフォルトでこのステップに対応しています。すべての非同期API要求はPromiseを使用して応答を提供します。また[`.on(event, callback)`メソッド](https://js.xrpl.org/classes/Client.html#on)を使用して、ストリームをリッスンできます。
+**ヒント:** [JavaScript向けxrpl.js](https://js.xrpl.org/)は、デフォルトでこのステップに対応しています。すべての非同期APIリクエストはPromiseを使用してレスポンスを提供します。また[`.on(event, callback)`メソッド](https://js.xrpl.org/classes/Client.html#on)を使用して、ストリームをリッスンできます。
 
-以下のJavaScriptコードでは、API要求を便利な非同期[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)に変換するヘルパー関数を定義し、他のタイプのメッセージをグローバルハンドラーにマップするインターフェイスを設定します。
+以下のJavaScriptコードでは、APIリクエストを便利な非同期[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)に変換するヘルパー関数を定義し、他のタイプのメッセージをグローバルハンドラーにマップするインターフェイスを設定します。
 
 ```js
 const AWAITING = {}
@@ -471,7 +471,7 @@ $("#tx_read").click((event) => {
 
 - [トランザクションの結果の確認](look-up-transaction-results.html)で、トランザクションの実行内容を確認し、適切に対応するソフトウェアを構築します。
 - あなた自身のアドレスから[XRPの送金](send-xrp.html)を試します。
-- [Escrow](escrow.html)、[Checks](checks.html)または[Payment Channel](payment-channels.html)のような高度なタイプのトランザクションの監視と着信通知への応答を試します。
+- [Escrow](escrow.html)、[Checks](checks.html)または[Payment Channel](payment-channels.html)のような高度なタイプのトランザクションの監視と着信通知へのレスポンスを試します。
 <!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 
 ## その他のプログラミング言語
@@ -492,7 +492,7 @@ _Go_
 
 ## 脚注
 
-[1.](#from-footnote-1)<a id="footnote-1"></a>実際には、HTTPベースのAPIを何度も呼び出す場合、クライアントとサーバーは複数の要求と応答を処理する際に同じ接続を再利用できます。この方法は、[HTTP永続接続、またはキープアライブ](https://en.wikipedia.org/wiki/HTTP_persistent_connection)と呼ばれます。開発の観点から見ると、基本となる接続が新しい場合でも、再利用される場合でも、HTTPベースのAPIを使用するコードは同じです。
+[1.](#from-footnote-1)<a id="footnote-1"></a>実際には、HTTPベースのAPIを何度も呼び出す場合、クライアントとサーバーは複数のリクエストとレスポンスを処理する際に同じ接続を再利用できます。この方法は、[HTTP永続接続、またはキープアライブ](https://en.wikipedia.org/wiki/HTTP_persistent_connection)と呼ばれます。開発の観点から見ると、基本となる接続が新しい場合でも、再利用される場合でも、HTTPベースのAPIを使用するコードは同じです。
 
 ## 関連項目
 

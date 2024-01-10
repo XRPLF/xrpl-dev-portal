@@ -28,7 +28,7 @@ labels:
            }
         }
 
-    各応答の`validation_seed`パラメーターと`validation_public_key`パラメーターを安全な場所に保存します。
+    各レスポンスの`validation_seed`パラメーターと`validation_public_key`パラメーターを安全な場所に保存します。
 
 3. 各サーバーで[構成ファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)を編集し、以下のセクションを変更します。
 

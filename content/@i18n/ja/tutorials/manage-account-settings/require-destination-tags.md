@@ -11,7 +11,7 @@ labels:
 
 以下は、ローカルでホストされている`rippled`の[submitメソッド][]を使用して、`RequireDest`フラグを有効にする[AccountSetトランザクション][]を送信する例です。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -43,7 +43,7 @@ Content-Type: application/json
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 

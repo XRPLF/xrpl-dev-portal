@@ -78,7 +78,7 @@ print(cancel_after)
 
 {% include '_snippets/secret-key-warning.md' %} <!--#{ fix md highlighting_ #}-->
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -90,7 +90,7 @@ print(cancel_after)
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -110,7 +110,7 @@ print(cancel_after)
 
 トランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、トランザクションの最終ステータスを確認します。特に、[Escrowレジャーオブジェクト](escrow.html)が作成されたことを示す`CreatedNode`をトランザクションメタデータで探します。
 
-要求:
+リクエスト:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -122,7 +122,7 @@ print(cancel_after)
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -154,7 +154,7 @@ _Websocket_
 
 <!-- MULTICODE_BLOCK_END -->
 
-応答:
+レスポンス:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -176,13 +176,13 @@ _Websocket_
 
 EscrowFinishトランザクションの識別用ハッシュを指定した[txメソッド][]を使用して、トランザクションの最終ステータスを確認します。特にトランザクションメタデータ内で、エスクローに預託された支払いの送金先の`ModifiedNode`（タイプが`AccountRoot`）を確認します。オブジェクトの`FinalFields`に、`Balance`フィールドのXRP返金額の増分が表示されている必要があります。
 
-要求:
+リクエスト:
 
 ```json
 {% include '_code-samples/escrow/websocket/tx-request-escrowfinish-condition.json' %}
 ```
 
-応答:
+レスポンス:
 
 ```json
 {% include '_code-samples/escrow/websocket/tx-response-escrowfinish-condition.json' %}

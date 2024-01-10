@@ -13,9 +13,9 @@ labels:
 _`{{currentpage.name}}`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
 
 
-### 要求フォーマット
+### リクエストのフォーマット
 
-要求フォーマットの例:
+リクエストのフォーマットの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -51,7 +51,7 @@ rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG9
 
 <!-- MULTICODE_BLOCK_END -->
 
-要求には以下のパラメーターが含まれます。
+リクエストには以下のパラメーターが含まれます。
 
 | `Field`       | 型     | 説明                                                |
 |:--------------|:-------|:----------------------------------------------------|
@@ -60,9 +60,9 @@ rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG9
 
 
 
-### 応答フォーマット
+### レスポンスのフォーマット
 
-処理が成功した応答の例:
+処理が成功したレスポンスの例:
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -115,7 +115,7 @@ Connecting to 127.0.0.1:5005
 
 <!-- MULTICODE_BLOCK_END -->
 
-この応答は[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
+このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`    | 型     | 説明                                                   |
 |:-----------|:-------|:-------------------------------------------------------|
@@ -135,7 +135,7 @@ Connecting to 127.0.0.1:5005
 
 - いずれかの[汎用エラータイプ][]。
 - `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-- `publicMalformed` - 要求の`public_key`フィールドが無効です。[base58][]フォーマットの有効なノード公開鍵である必要があります。
+- `publicMalformed` - リクエストの`public_key`フィールドが無効です。[base58][]フォーマットの有効なノード公開鍵である必要があります。
 
 <!--{# common link defs #}-->
 {% include '_snippets/rippled-api-links.md' %}

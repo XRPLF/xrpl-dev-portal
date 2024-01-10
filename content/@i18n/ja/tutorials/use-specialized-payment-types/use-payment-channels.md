@@ -61,7 +61,7 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 **注記:** Payment Channelは1つのオブジェクトとして支払人の[所有者準備金](reserves.html#所有者準備金)に反映されます。所有者は少なくとも、Payment Channelに割り当てられたXRPを差引き後に、準備金を維持するのに十分なXRPを保有している必要があります。
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -83,7 +83,7 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
         }]
     }
 
-応答:
+レスポンス:
 
     200 OK
 
@@ -102,9 +102,9 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
     }
 
 
-`submit`要求に対する直接の応答には、トランザクションを識別する`hash`値を含む _暫定的な_ 結果が含まれています。支払人は、検証済みレジャーでトランザクションの _最終_ 結果を確認し、メタデータからChannel IDを取得する必要があります。この処理は`tx`コマンドを使用して実行できます。
+`submit`リクエストに対する直接のレスポンスには、トランザクションを識別する`hash`値を含む _暫定的な_ 結果が含まれています。支払人は、検証済みレジャーでトランザクションの _最終_ 結果を確認し、メタデータからChannel IDを取得する必要があります。この処理は`tx`コマンドを使用して実行できます。
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -116,7 +116,7 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
         }]
     }
 
-応答:
+レスポンス:
 
     200 OK
 
@@ -158,10 +158,10 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
         }
     }
 
-支払人はJSON-RPCからの応答で以下を確認する必要があります。
+支払人はJSON-RPCからのレスポンスで以下を確認する必要があります。
 
 - トランザクションの`meta`フィールドで、`TransactionResult`が`tesSUCCESS`であることを確認します。
-- データが検証済みレジャーのデータであることを示す`"validated":true`が応答に含まれていることを確認します。（結果`tesSUCCESS`は、検証済みレジャーバージョンに記録されている場合にのみ[最終的な](finality-of-results.html)結果です。）
+- データが検証済みレジャーのデータであることを示す`"validated":true`がレスポンスに含まれていることを確認します。（結果`tesSUCCESS`は、検証済みレジャーバージョンに記録されている場合にのみ[最終的な](finality-of-results.html)結果です。）
 - トランザクションの`meta`フィールドの`AffectedNodes`配列で、`LedgerEntryType`が`PayChannel`である`CreatedNode`オブジェクトを検索します。`CreatedNode`オブジェクトの`LedgerIndex`フィールドはChannel IDを示します。（上記の例では、これは「5DB0...」で始まる16進文字列です。）Channel IDは、後でクレームに署名する際に必要です。
     PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](paychannel.html)を参照してください。
 
@@ -170,7 +170,7 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）に示すようにChannelの支払人を指定した[account_channelsメソッド][]を使用します。
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -184,7 +184,7 @@ Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）�
         }]
     }
 
-応答:
+レスポンス:
 
     200 OK
 
@@ -225,7 +225,7 @@ Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）�
 
 [channel_authorizeメソッド][]を使用してクレームを作成できます。以下の例では、Channelから1 XRPが承認されます。
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -239,7 +239,7 @@ Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）�
         }]
     }
 
-応答:
+レスポンス:
 
     {
         "result": {
@@ -269,7 +269,7 @@ Payment Channelを見つけるには、以下の例（JSON-RPC APIを使用）�
 
 JSON-RPC APIで`channel_verify`を使用する例:
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -284,7 +284,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
         }]
     }
 
-応答:
+レスポンス:
 
     200 OK
 
@@ -295,9 +295,9 @@ JSON-RPC APIで`channel_verify`を使用する例:
         }
     }
 
-応答に`"signature_verified": true`が含まれている場合、クレームの署名は真正です。受取人は、クレームを換金できる十分なXRPがChannelにあること**も**確認する必要があります。このためには、受取人は[account_channelsメソッド][]を使用して、Payment Channelの最新の検証済み状態を確認します。
+レスポンスに`"signature_verified": true`が含まれている場合、クレームの署名は真正です。受取人は、クレームを換金できる十分なXRPがChannelにあること**も**確認する必要があります。このためには、受取人は[account_channelsメソッド][]を使用して、Payment Channelの最新の検証済み状態を確認します。
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -311,7 +311,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
         }]
     }
 
-応答:
+レスポンス:
 
     200 OK
 
@@ -341,7 +341,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
 - Channelの`balance`が、受取人がすでにChannelから受領していると予測している額と一致していることを確認します。これらの金額が一致しない場合、受取人はChannelのトランザクション履歴を再度確認する必要があります。不一致の原因として以下のものが考えられます。
     - 支払人が[PaymentChannelClaim][]トランザクションを使用してChannelから受取人にXRPを送金したところ、受取人がこれに気付かず、着信トランザクションを記録していなかった。
     - 受取人のレコードに、「処理中」のトランザクションや、最新の検証済みレジャーバージョンにはまだ記録されていないトランザクションが含まれていた。受取人は[txメソッド][]を使用して個々のトランザクションの状態を調べ、この点を確認できます。
-    - `account_channels`要求に正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
+    - `account_channels`リクエストに正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
     - 受取人は以前にXRPを清算したものの、記録し忘れていた。
     - 受取人がXRPの清算を試行し、暫定的な結果を記録したが、トランザクションの最終的な検証済みの結果がこれとは異なり、受取人はこの最終検証済み結果を記録し忘れていた。
     - 受取人が照会した`rippled`サーバーが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバーの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/XRPLF/rippled/issues/)。）
@@ -362,7 +362,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
 
 - Payment ChannelのXRPの額。（支払人は必要に応じて[PaymentChannelFundトランザクション][]を送信し、Channelで使用可能なXRPの合計額を増加できます。）
 
-- Payment Channelの変更可能な有効期限（設定されている場合）。（これは[account_channelsメソッド][]に対する応答の`cancel_after`フィールドに表示されます。）
+- Payment Channelの変更可能な有効期限（設定されている場合）。（これは[account_channelsメソッド][]に対するレスポンスの`cancel_after`フィールドに表示されます。）
 
 
 ## 8. 準備が完了すれば、受取人は承認された額のクレームを清算します。
@@ -375,7 +375,7 @@ JSON-RPC APIで`channel_verify`を使用する例:
 
 ChannelからXRPを清算する例:
 
-要求:
+リクエスト:
 
     POST http://localhost:5005/
     Content-Type: application/json
@@ -397,7 +397,7 @@ ChannelからXRPを清算する例:
             }]
     }
 
-応答:
+レスポンス:
 
     200 OK
 
@@ -456,7 +456,7 @@ Channelの閉鎖を要求する[トランザクションを送信する](submit.
 
 トランザクションが検証済みレジャーに記録されたら、いずれの当事者も[account_channelsメソッド][]を使用して現在スケジュールされているChannelの有効期限を確認できます。最新の検証済みレジャーバージョンからデータを取得するには、`"ledger_index": "validated"`を必ず指定してください。
 
-`account_channels`応答の例:
+`account_channels`レスポンスの例:
 
     {
         "result": {
@@ -489,7 +489,7 @@ Channelは期限切れ状態で永久にレジャーに残ることがありま�
 
 このため、支払人には`tfClose`フラグを指定した2番目の[PaymentChannelClaimトランザクション][]を送信することが推奨されます。ただしその他のアカウント（Payment Channelに関与するアカウントを含む）は有効期限切れのChannelを閉鎖できません。
 
-このトランザクションを送信するコマンドは、Channelの有効期限切れを要求する前述の例と同じです。（ただしコマンドの実行結果である[自動入力](transaction-common-fields.html#自動入力可能なフィールド) `Sequence`番号、署名、識別用ハッシュは一意です。）
+このトランザクションを送信するコマンドは、Channelの有効期限切れをリクエストする前述の例と同じです。（ただしコマンドの実行結果である[自動入力](transaction-common-fields.html#自動入力可能なフィールド) `Sequence`番号、署名、識別用ハッシュは一意です。）
 
 有効期限切れのChannelを閉鎖するトランザクションを[送信する](submit.html#署名と送信モード)例:
 
@@ -509,7 +509,7 @@ Channelは期限切れ状態で永久にレジャーに残ることがありま�
 
 トランザクションが検証済みレジャーに記録されたら、そのトランザクションのメタデータを調べて、Channelが削除され、XRPが送金元に返金されたことを確認できます。
 
-このステップのトランザクションを検索する[txメソッド][]を使用した場合の応答の例:
+このステップのトランザクションを検索する[txメソッド][]を使用した場合のレスポンスの例:
 
     {
         "result": {

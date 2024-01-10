@@ -62,7 +62,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 {% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -75,7 +75,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -93,7 +93,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 {% set step_1_link = "#1checkcashトランザクションの準備" %}
 {% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -106,7 +106,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -126,7 +126,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 トランザクションのステータスを確認するには、CheckCashトランザクションの識別用ハッシュを指定した[txメソッド][]を使用します。トランザクションが成功したことを示す`"TransactionResult": "tesSUCCESS"`フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す`"validated": true`フィールドを結果から検索します。
 
-### 要求の例
+### リクエストの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -139,7 +139,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 <!-- MULTICODE_BLOCK_END -->
 
 
-### 応答の例
+### レスポンスの例
 
 <!-- MULTICODE_BLOCK_START -->
 
@@ -153,7 +153,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ### エラー処理
 
-[](transaction-results.html)Checkの換金が`tec`クラスコードで失敗した場合は、[すべてのトランザクション応答のリスト](transaction-results.html)でコードを確認し、適切に対処してください。CheckCashトランザクションでよく返される結果コードの一部を次に示します。
+[](transaction-results.html)Checkの換金が`tec`クラスコードで失敗した場合は、[すべてのトランザクションレスポンスのリスト](transaction-results.html)でコードを確認し、適切に対処してください。CheckCashトランザクションでよく返される結果コードの一部を次に示します。
 
 | 結果コード | 意味 | 対処 |
 |-------------|---------|----------------|

@@ -11,7 +11,7 @@ labels:
 `nft_info`コマンドはクエリ対象の[NFT](non-fungible-tokens.html)に関する情報をClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
 
 ## リクエストのフォーマット
-リクエストフォーマットの例：
+リクエストのフォーマットの例：
 
 <!-- MULTICODE_BLOCK_START -->
 

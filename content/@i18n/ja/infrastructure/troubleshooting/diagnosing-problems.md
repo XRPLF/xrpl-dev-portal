@@ -21,7 +21,7 @@ labels:
 rippled server_info
 ```
 
-このコマンドに対する応答には大量の情報が含まれています。これについては、[server_infoメソッド][]で説明します。トラブルシューティングで最も重要なフィールドは以下のとおりです（最も一般的に使われるものから順に説明します）。
+このコマンドに対するレスポンスには大量の情報が含まれています。これについては、[server_infoメソッド][]で説明します。トラブルシューティングで最も重要なフィールドは以下のとおりです（最も一般的に使われるものから順に説明します）。
 
 - **`server_state`** - ほとんどの場合、このフィールドには`proposing`（[バリデータとして設定されている](run-rippled-as-a-validator.html)サーバーの場合）または`full`（バリデータではないサーバーの場合）が表示されます。値が`connected`の場合は、サーバーはピアツーピアネットワークの他の部分と通信できますが、共有レジャーの状態を追跡するのに十分なデータがありません。通常、レジャーの残りの部分の状態を同期するには起動後約5～15分かかります。
 
@@ -79,7 +79,7 @@ rippled server_info
           [ips_fixed]
           s2.ripple.com 51235
 
-- **`amendment_blocked`** - このフィールドは通常`server_info`応答では省略されます。このフィールドの値が`true`の場合は、ネットワークにより承認された[Amendment](amendments.html)がサーバーに導入されていません。ほとんどの場合は、最新バージョンに[rippledを更新する](install-rippled.html)ことで修正できます。また[featureメソッド][]を使用して、現在有効なAmendment ID、サーバーでサポートされているAmendment ID、サーバーでサポートされていないAmendment IDを確認することもできます。
+- **`amendment_blocked`** - このフィールドは通常`server_info`レスポンスでは省略されます。このフィールドの値が`true`の場合は、ネットワークにより承認された[Amendment](amendments.html)がサーバーに導入されていません。ほとんどの場合は、最新バージョンに[rippledを更新する](install-rippled.html)ことで修正できます。また[featureメソッド][]を使用して、現在有効なAmendment ID、サーバーでサポートされているAmendment ID、サーバーでサポートされていないAmendment IDを確認することもできます。
 
 - **`peers`** - このフィールドは、サーバーが接続しているXRP Ledgerピアツーピアネットワーク内のその他のサーバーの数を示します。特定のピアのみに接続するように明示的に構成されているサーバーを除き、正常なサーバーでは通常5～50ピアと表示されます。
 
@@ -87,7 +87,7 @@ rippled server_info
 
   - ピアの数が10の場合、`rippled`が[NAT](https://en.wikipedia.org/wiki/Network_address_translation)を使用したルーター経由での着信接続を受信できていない可能性があります。接続を改善するには、ルーターのファイアウォールがピアツーピア接続に使用するポート（[デフォルトでは](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1065)ポート51235）を転送するように設定します。
 
-### サーバーから応答がない場合
+### サーバーからレスポンスがない場合
 
 `rippled`実行可能ファイルがクライアントとして`rippled`サーバーに接続できなかった場合、以下のメッセージが返されます。
 

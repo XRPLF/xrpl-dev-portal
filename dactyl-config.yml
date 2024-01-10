@@ -151,7 +151,7 @@ targets:
             "basic-data-types.html#specifying-currency-amounts": "basic-data-types.html#通貨額の指定"
             "transaction-cost.html#current-transaction-cost": "transaction-cost.html#現在のトランザクションコスト"
             #"ledgers.html#open-closed-and-validated-ledgers": "ledgers.html#ツリーの形式"
-            "account_info.html#response-format": "account_info.html#応答フォーマット"
+            "account_info.html#response-format": "account_info.html#レスポンスのフォーマット"
             # Fix link from untranslated rate-limiting.html:
             "get-started-using-http-websocket-apis.html#admin-access": "get-started-using-http-websocket-apis.html#管理者アクセス権限"
             # Fix links from untranslated issue-a-fungible-token.html

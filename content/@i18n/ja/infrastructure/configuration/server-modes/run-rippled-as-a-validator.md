@@ -124,7 +124,7 @@ top_nav_name: UNLに参加しよう
 
         $ rippled server_info
 
-   - 応答に含まれている`pubkey_validator`の値は、バリデータで使用するために生成した`validator-keys.json`ファイルの`public_key`と一致している必要があります。
+   - レスポンスに含まれている`pubkey_validator`の値は、バリデータで使用するために生成した`validator-keys.json`ファイルの`public_key`と一致している必要があります。
 
    - `server_state`の値は、 _**proposing**_ にする必要があります。
 
@@ -174,7 +174,7 @@ _**プロキシを使用してバリデータをXRP Ledgerネットワークに�
 
         $ sudo systemctl restart rippled.service
 
-6. いずれかのストック`rippled`サーバーにある[ピアクローラー](peer-crawler.html)エンドポイントを使用します。応答には、バリデータが含まれていないはずです。これにより、バリデータの`[peer_private]`構成が機能していることが確認されます。バリデータの`[peer_private]`を有効にした場合の効果の1つは、バリデータのピアによって、ピアクローラーの結果にバリデータが含まれないことです。
+6. いずれかのストック`rippled`サーバーにある[ピアクローラー](peer-crawler.html)エンドポイントを使用します。レスポンスには、バリデータが含まれていないはずです。これにより、バリデータの`[peer_private]`構成が機能していることが確認されます。バリデータの`[peer_private]`を有効にした場合の効果の1つは、バリデータのピアによって、ピアクローラーの結果にバリデータが含まれないことです。
 
         $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
 
@@ -252,7 +252,7 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 2. バリデータの公開鍵を公開し、特に他の`rippled`オペレーターに知らせます。例えば、Webサイト、ソーシャルメディア、[XRPChatコミュニティーフォーラム](https://www.xrpchat.com/)、またはプレスリリースでバリデータの公開鍵を公表できます。
 
-3. この[Googleフォーム](https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform)を使用して、自身のバリデータをXRP Chartsの[バリデータレジストリー](https://xrpcharts.ripple.com/#/validators)に登録するための要求を送信します。バリデータをこのレジストリーに登録することは、そのバリデータとドメインを所有していることを示す、別の形での公的な証拠になります。フォームに漏れなく記入するには、以下の情報が必要です。
+3. この[Googleフォーム](https://docs.google.com/forms/d/e/1FAIpQLScszfq7rRLAfArSZtvitCyl-VFA9cNcdnXLFjURsdCQ3gHW7w/viewform)を使用して、自身のバリデータをXRP Chartsの[バリデータレジストリー](https://xrpcharts.ripple.com/#/validators)に登録するためのリクエストを送信します。バリデータをこのレジストリーに登録することは、そのバリデータとドメインを所有していることを示す、別の形での公的な証拠になります。フォームに漏れなく記入するには、以下の情報が必要です。
 
    1. バリデータのサーバーで以下のコマンドを実行して、バリデータの公開鍵を検出します。
 

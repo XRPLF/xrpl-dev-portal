@@ -149,7 +149,7 @@ labels:
 
 [account_objectsメソッド][]を使用して、SignerListに最新の検証済みレジャーのアドレスが関連付けられていることを確認します。
 
-通常、アカウントは異なるタイプのオブジェクト（トラストラインやオファーなど）を複数所有できます。このチュートリアルで新しいアドレスに資金を供給した場合、SignerListが応答の唯一のオブジェクトになります。
+通常、アカウントは異なるタイプのオブジェクト（トラストラインやオファーなど）を複数所有できます。このチュートリアルで新しいアドレスに資金を供給した場合、SignerListがレスポンスの唯一のオブジェクトになります。
 
     $ rippled account_objects rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC validated
     Loading: "/etc/opt/ripple/rippled.cfg"
