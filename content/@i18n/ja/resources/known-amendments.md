@@ -16,7 +16,7 @@ labels:
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
-| [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [XChainBridge][]                  | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
