@@ -61,10 +61,10 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | 通常は必須 | いいえ | 任意の通貨を特定の金額まで送ります。[`tfPartialPayment` フラグ](#paymentのフラグ)を使用します。トランザクションが成功するための最小値を指定する `DeliverMin` 値を含めることができます。トランザクションが `DeliverMin` を指定しない場合、_任意の正の値_ を指定して成功させることができる。 |
 | 通貨変換 | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | 必須         | はい | [分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)のオファーを消費して、ある通貨を別の通貨に交換し、[裁定取引](https://ja.wikipedia.org/wiki/%E8%A3%81%E5%AE%9A%E5%8F%96%E5%BC%95)の機会を得ることが出来ます。`Amount`と `SendMax` の両方を XRP にすることはできません。[Data API](../../../data-api.md) は、このタイプの取引を "payment" ではなく、"exchange" として追跡しています。 |
 
-[XRP同士の直接支払い]: direct-xrp-payments.html
-[発行通貨の作成・償還]: tokens.html
-[クロスカレンシー（通貨間）決済]: cross-currency-payments.html
-[Partial payment]: partial-payments.html
+[XRP同士の直接支払い]: ../../../../concepts/payment-types/direct-xrp-payments.md
+[発行通貨の作成・償還]: ../../../../concepts/tokens/index.md
+[クロスカレンシー（通貨間）決済]: ../../../../concepts/payment-types/cross-currency-payments.md
+[Partial payment]: ../../../../concepts/payment-types/partial-payments.md
 
 
 ## SendMaxおよびAmountで使用する特殊なissuerの値

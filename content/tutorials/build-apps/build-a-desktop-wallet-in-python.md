@@ -24,7 +24,7 @@ You can find the complete source code for all of this tutorial's examples in the
 
 At the end of this tutorial, you should have a Python application that looks something like this:
 
-![Desktop wallet screenshot](img/python-wallet-preview.png)
+![Desktop wallet screenshot](/img/python-wallet-preview.png)
 
 The exact look and feel of the user interface depend on your computer's operating system. This application is capable of the following:
 
@@ -88,7 +88,7 @@ The first step is to build an app that combines the "hello world" equivalents fo
 
 When you run this script, it displays a single window that (hopefully) shows the latest validated ledger index on the XRP Ledger Testnet. It looks like this:
 
-![Screenshot: Step 1, hello world equivalent](img/python-wallet-1.png)
+![Screenshot: Step 1, hello world equivalent](/img/python-wallet-1.png)
 
 Under the hood, the code makes a JSON-RPC client, connects to a public Testnet server, and uses the [ledger method](../../references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md) to get this information. Meanwhile, it creates a [`wx.Frame`](https://docs.wxpython.org/wx.Frame.html) subclass as the base of the user interface. This class makes a window the user can see, with a [`wx.StaticText`](https://docs.wxpython.org/wx.StaticText.html) widget to display text to the user, and a [`wx.Panel`](https://docs.wxpython.org/wx.Panel.html) to hold that widget.
 
@@ -98,7 +98,7 @@ Under the hood, the code makes a JSON-RPC client, connects to a public Testnet s
 
 You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:
 
-![Animation: Step 2, showing ledger updates](img/python-wallet-2.gif)
+![Animation: Step 2, showing ledger updates](/img/python-wallet-2.gif)
 
 If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
@@ -166,11 +166,11 @@ Now that you have a working, ongoing connection to the XRP Ledger, it's time to 
 
 The prompt is in a pop-up dialog like this:
 
-![Screenshot: step 3, account input prompt](img/python-wallet-3-enter.png)
+![Screenshot: step 3, account input prompt](/img/python-wallet-3-enter.png)
 
 After the user inputs the prompt, the updated GUI looks like this:
 
-![Screenshot, step 3, showing account details](img/python-wallet-3-main.png)
+![Screenshot, step 3, showing account details](/img/python-wallet-3-main.png)
 
 When you do math on XRP amounts, you should use the `Decimal` class so that you don't get rounding errors. Add this to the top of the file, with the other imports:
 
@@ -260,11 +260,11 @@ At this point, your wallet shows the account's balance getting updated, but does
 
 The new transaction history displays in a new tab, like this:
 
-![Screenshot: transaction history tab](img/python-wallet-4-main.png)
+![Screenshot: transaction history tab](/img/python-wallet-4-main.png)
 
 Additionally, the app can produce desktop notifications (sometimes called "toasts"), which might look like this depending on your operating system:
 
-![Screenshot: notification message](img/python-wallet-4-notif.png)
+![Screenshot: notification message](/img/python-wallet-4-notif.png)
 
 First, add the following imports to get GUI classes for the table view and notifications:
 
@@ -327,11 +327,11 @@ Until now, you've made the app able to view data from the ledger, and it's capab
 
 The main window gets a new "Send XRP" button:
 
-![Screenshot: main frame with "Send XRP" button enabled](img/python-wallet-5-main.png)
+![Screenshot: main frame with "Send XRP" button enabled](/img/python-wallet-5-main.png)
 
 Clicking this button opens a dialog where the user can enter the details of the payment:
 
-![Screenshot: "Send XRP" dialog](img/python-wallet-5-dialog.png)
+![Screenshot: "Send XRP" dialog](/img/python-wallet-5-dialog.png)
 
 First, add the [regular expressions](https://docs.python.org/3/howto/regex.html) library to the list of imports at the top of the file:
 
@@ -446,11 +446,11 @@ One of the biggest shortcomings of the wallet app from the previous step is that
 
 One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, you could show it like this:
 
-![Screenshot: domain verified destination](img/python-wallet-6.png)
+![Screenshot: domain verified destination](/img/python-wallet-6.png)
 
 When there are other errors, you can expose them to the user with an icon and a tooltip, which looks like this:
 
-![Screenshot: invalid address error icon with tooltip](img/python-wallet-6-err.png)
+![Screenshot: invalid address error icon with tooltip](/img/python-wallet-6-err.png)
 
 The following code implements account domain verification; **save it as a new file** named `verify_domain.py` in the same folder as your app's main file:
 

@@ -146,7 +146,7 @@ Connecting to 127.0.0.1:5005
 
 ## 4. 検証の待機
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 
 ## 5. 新しい署名者リストの確認

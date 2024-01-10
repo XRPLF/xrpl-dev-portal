@@ -310,7 +310,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 ### {{n.next()}}. 検証の待機
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ### {{n.next()}}. アカウントフラグの確認
 

@@ -19,7 +19,7 @@ NFTokenを作成すると、実際の物理的またはデジタル資産の実�
 
 より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](../../../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md)をご覧ください。
 
-[![デジタルアーティストのフロー](img/nft-mkt-digital-artist.png "デジタルアーティストのフロー")](img/nft-mkt-digital-artist.png)
+[![デジタルアーティストのフロー](/img/nft-mkt-digital-artist.png "デジタルアーティストのフロー")](/img/nft-mkt-digital-artist.png)
 
 ## 公開サーバを利用する
 

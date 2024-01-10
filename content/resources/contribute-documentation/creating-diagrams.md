@@ -7,7 +7,7 @@ blurb: Create diagrams that interact properly with light and dark mode settings.
 
 The site contains code to automatically recolor SVG diagrams for light and dark mode. This is more than just inverting images. The recoloring keeps gradients going the same direction (so that things don't look bottom-lit) and replaces colors with equivalents that fit with the theme rather than their inverse. For example, "Ripple blue" gets recolored to XRPL green, not its inverse orange. Example:
 
-![Comparison of invert and theme-aware recoloring](img/theme-aware-recolor.png)
+![Comparison of invert and theme-aware recoloring](/img/theme-aware-recolor.png)
 
 Theme-aware recoloring uses a single source file in SVG format for diagrams, and produces diagrams that are recolored to match the current theme (light/dark) using CSS. If the user changes their theme, the diagrams immediately change to match it.
 

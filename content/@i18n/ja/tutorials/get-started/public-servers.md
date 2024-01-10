@@ -19,7 +19,7 @@ labels:
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet 公開サーバー |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks有効](https://hooks.xrpl.org/) Xahau Testnet |
 
-[ネットワーク]: parallel-networks.html
+[ネットワーク]: ../../concepts/networks-and-servers/parallel-networks.md
 [¹]: #footnote-1
 [²]: #footnote-2
 

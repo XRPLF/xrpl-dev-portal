@@ -1,13 +1,11 @@
 import { clsx } from 'clsx'
 import { Client } from 'xrpl'
-
-// Decode a hexadecimal string into a regular string, assuming 8-bit characters.
-// Not proper unicode decoding, but it'll work for domains which are supposed
-
 import React = require("react");
 import { CLASS_GOOD } from "../components/LogEntry";
 import { AccountFields } from "./XrplToml";
 
+// Decode a hexadecimal string into a regular string, assuming 8-bit characters.
+// Not proper unicode decoding, but it'll work for domains which are supposed
 // to be a subset of ASCII anyway.
 function decodeHex(hex) {
   let str = '';
@@ -135,19 +133,26 @@ export async function getListEntries(fields: Object[], filter?: Function, domain
       })
 
       const key = `entry-${formattedEntries.length}`
+      const promises = []
       if(domainToVerify) {
         const accountEntry = entry as AccountFields
         if(accountEntry.address) {
           const net = accountEntry.network ?? "main"
-          const domainIsValid = await validateAddressDomainOnNet(accountEntry.address, domainToVerify, net) 
+          const domainIsValid = validateAddressDomainOnNet(accountEntry.address, domainToVerify, net) 
 
-          if(domainIsValid) {
-            displayedFields.push(
-              <li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>
-            )
-          }
+          domainIsValid.then((wasValidated) => {
+            if(wasValidated) {
+              displayedFields.push(
+                <li className={CLASS_GOOD} key={`${key}-result`}>DOMAIN VALIDATED <i className="fa fa-check-circle"/></li>
+              )
+            }
+          })
+
+          promises.push(domainIsValid)
         } 
       }
+
+      await Promise.all(promises)
       
       formattedEntries.push((<li key={key}>
           <ul className={clsx(domainToVerify && 'mb-3')} key={key + "-ul"}>{displayedFields}</ul>

@@ -33,7 +33,7 @@ We will use the well-established [Electron Framework](https://www.electronjs.org
 
 At the end of this tutorial, you will have built a JavaScript Wallet application that looks something like this:
 
-![Desktop wallet screenshot](img/javascript-wallet-preview.png)
+![Desktop wallet screenshot](/img/javascript-wallet-preview.png)
 
 The look and feel of the user interface should be roughly the same regardless of operating system, as the Electron Framework allows us to write cross-platform applications that are styled with HTML and CSS just like a web-based application.
 
@@ -178,7 +178,7 @@ In the next steps we will continually expand on this very basic setup. To better
 
 Our first step was to have a running "Hello World" application. Now we want to expand on that so that the application can interact on a very basic level with the XRP Ledger and display some information about the current ledger state on the screen. After completing this step, the - for the time being unstyled - application should look like this:
 
-![Screenshot: Step 1, hello world equivalent](img/javascript-wallet-1.png)
+![Screenshot: Step 1, hello world equivalent](/img/javascript-wallet-1.png)
 
 1. Update `index.js` by adding the following snippet in the import section at the top of the file below the `path` import:
 
@@ -347,7 +347,7 @@ npm run ledger-index
 
 Our application so far only shows the latest validated ledger sequence at the time when we opened it. Let's take things up a notch and add some dashboard like functionality where our wallet app will keep in sync with the ledger and display the latest specs and stats like a clock that is keeping track of time. The result will look something like this:
 
-![Screenshot: Step 2, show ledger updates](img/javascript-wallet-2.png)
+![Screenshot: Step 2, show ledger updates](/img/javascript-wallet-2.png)
 
 1. In `index.js` remove the `getValidatedLedgerIndex` function.
 
@@ -456,7 +456,7 @@ We now have a permanent connection to the XRPL and some code to bring the delive
 
 We will ask the user for address of the account to monitor by using a HTML dialog element. We will furthermore refactor the application by encapsulating some functionality in a library. After finishing this step the application should look like this:
 
-![Screenshot: Step 3, show account information](img/javascript-wallet-3.png)
+![Screenshot: Step 3, show account information](/img/javascript-wallet-3.png)
 
 1. In the project root, create a new directory named `library`. Inside this directory, create a file `3_helpers.js` with the following content:
 
@@ -663,7 +663,7 @@ npm run account
 
 At this point, our wallet shows the account's balance getting updated, but doesn't give us any clue about how this state came about, namely the actual transactions that caused the updates. So, our next step is to display the account's up to date transaction history using subscriptions once again:
 
-![Screenshot: Step 4, show transaction history](img/javascript-wallet-4.png)
+![Screenshot: Step 4, show transaction history](/img/javascript-wallet-4.png)
 
 1. In the `library` folder, add a new file `4_helpers.js`. Then add the following helper function to that file:
 
@@ -830,7 +830,7 @@ npm run tx-history
 
 After finishing this step the application should look like this:
 
-![Screenshot: Step 5, use salted password](img/javascript-wallet-5.png)
+![Screenshot: Step 5, use salted password](/img/javascript-wallet-5.png)
 
 By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds.
 
@@ -1083,7 +1083,7 @@ npm run password
 
 After finishing this step the application should look like this:
 
-![Screenshot: Step 6, style application with css](img/javascript-wallet-6.png)
+![Screenshot: Step 6, style application with css](/img/javascript-wallet-6.png)
 
 1. In the project root, create a new folder `bootstrap` and add the following files into that directory:
 {% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap.bundle.min.js`{% /repo-link %},
@@ -1244,7 +1244,7 @@ npm run styling
 
 Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in the ledger by enabling our application to send transactions. For now, we can stick to sending direct XRP payments because there are more complexities involved in sending issued tokens. After finishing this step the application should look like this:
 
-![Screenshot: Step 7, send xrp dialog](img/javascript-wallet-7.png)
+![Screenshot: Step 7, send xrp dialog](/img/javascript-wallet-7.png)
 
 1. Create the file `library/7_helpers.js` and add the following contents:
 
@@ -1395,7 +1395,7 @@ This step shows how to add some checks on destination addresses to warn the user
 
 One type of check we could make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, we can could show it like this:
 
-![Screenshot: Step 8, use domain verification](img/javascript-wallet-8.png)
+![Screenshot: Step 8, use domain verification](/img/javascript-wallet-8.png)
 
 1. In the `library` folder, add a new file `8_helpers.js`. Then add the following contents to that file:
 
@@ -1520,7 +1520,7 @@ npm run domain-verification
 
 Congratulations, you now have created your own wallet application! In completing this tutorial, you've not only learned how to interact with the XRP Ledger, but also which challenges this provokes when building a user facing application. So let's do a recap of what you have accomplished:
 
-![Desktop wallet screenshot](img/javascript-wallet-preview.png)
+![Desktop wallet screenshot](/img/javascript-wallet-preview.png)
 
 0. First you set up the project and created a basic electron application.
 1. In Step 1 you did your first ledger query and had the application display the latest closed ledger index, using Electron's inter-process-communication.

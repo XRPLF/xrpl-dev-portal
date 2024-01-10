@@ -20,7 +20,7 @@ _金融の専門家として、私はステーブルコインを発行し、ス�
 
 誰でもXRP Ledgerの任意の通貨コードでトークンを発行することができますが、ステーブルコインの価値は、対応する資産と交換できるという保証から生まれます。ステーブルコインの発行には、管轄区域によって異なる規制上の義務が伴う可能性があります。このような理由から、ステーブルコインの発行は、信頼できる事業者が成功する可能性が高いといえます。
 
-[![ステーブルコインのワークフロー](img/uc-stablecoin-flow.png)](img/uc-stablecoin-flow.png)
+[![ステーブルコインのワークフロー](/img/uc-stablecoin-flow.png)](/img/uc-stablecoin-flow.png)
 
 新しいステーブルコインのリリース準備には、多くの決定事項や作成すべき成果物があります。XRPL財団の[自己評価アンケート](https://foundation.xrpl.org/wp-content/uploads/2022/03/self_assessment_questionnaire_140322.pdf)を出発点として、ローンチを成功させるために必要な情報を集め、作成することができます。
 
@@ -28,7 +28,7 @@ _金融の専門家として、私はステーブルコインを発行し、ス�
 
 最初のステップは、作成したいステーブルコインの種類を決定することです。選択したステーブルコインの種類によっては、財務パートナーや監査パートナーとの署名など、追加のステップが必要になる場合があります。
 
-![ステーブルコイン](img/uc-stablecoin-stable-coin.png)
+![ステーブルコイン](/img/uc-stablecoin-stable-coin.png)
 
 XRPLで作成できる通貨トークンには、法定通貨担保、暗号資産担保、コモディティ担保、金融商品担保、非担保の5つの一般的なタイプがあります。[ステーブルコイン](../../concepts/tokens/fungible-tokens/stablecoins/index.md)をご覧ください。
 
@@ -42,7 +42,7 @@ XRPLで作成できる通貨トークンには、法定通貨担保、暗号資�
 
 ## サンドボックスへのアクセス
 
-![サンドボックス](img/uc-stablecoin-sandbox.png)
+![サンドボックス](/img/uc-stablecoin-sandbox.png)
 
 テスト目的の場合、XRPL TestnetまたはDevnetサーバ上でステーブルコインを実装、デプロイ、取引することができます。XRP Faucetsページにアクセスし、テストネットワークの認証情報を生成してください。そのページに記載されているサーバURIを使用して、選択したテストネットワークに接続し、相互作用します。[XRP Faucets](/resources/dev-tools/xrp-faucets)をご覧ください。
 
@@ -151,7 +151,7 @@ _No Freeze_ 設定を有効にしない場合、アカウントが疑わしい�
 
 不審な活動の兆候が見られた場合、アカウントをグローバルに凍結し、ユーザがトークンを相互に送信したり、分散型取引所でトークンを取引したりできないようにすることができます。
 
-![Global Freeze](img/uc-stablecoin-global-freeze.png)
+![Global Freeze](/img/uc-stablecoin-global-freeze.png)
 
 [Global Freezeの実行](../../../../tutorials/use-tokens/enact-global-freeze.md)をご覧ください。
 
@@ -164,7 +164,7 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 
 [Clawback](../../references/protocol/transactions/types/clawback.md)をご覧ください。
 
-![Clawback](img/uc-stablecoin-clawback.png)
+![Clawback](/img/uc-stablecoin-clawback.png)
 
 ### 部分支払い
 

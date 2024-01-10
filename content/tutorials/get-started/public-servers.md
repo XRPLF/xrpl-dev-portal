@@ -19,7 +19,7 @@ If you don't [run your own `rippled` server](../../infrastructure/installation/i
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet public server |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks-enabled](https://hooks.xrpl.org/) Xahau Testnet |
 
-[Network]: parallel-networks.html
+[Network]: ../../concepts/networks-and-servers/parallel-networks.md
 [¹]: #footnote-1
 [²]: #footnote-2
 

@@ -30,7 +30,7 @@ Payment Channelでは本来、そこで売買可能なものにいては、一�
 
 次の図は、Payment Channelのライフサイクルの概要を示します。
 
-[![Payment Channelフローチャート](img/paychan-flow.ja.png)](img/paychan-flow.ja.png)
+[![Payment Channelフローチャート](/img/paychan-flow.ja.png)](/img/paychan-flow.ja.png)
 
 
 ## 関連項目

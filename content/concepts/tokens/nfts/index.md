@@ -36,6 +36,6 @@ Anyone can create a new NFT using the [NFTokenMint transaction](../../../referen
 
 You can destroy an NFT you own using the [NFTokenBurn transaction](../../../references/protocol/transactions/types/nftokenburn.md). If the issuer minted the token with the `tfBurnable` flag enabled, the issuer can also burn the token, regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event that is used up at some point.)
 
-![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
+![The NFT Lifecycle](/img/nft-lifecycle.png "NFT Lifecycle Image")
 
 For more info about transferring NFTs, see [Trading NFTs on the XRP Ledger](trading.md).

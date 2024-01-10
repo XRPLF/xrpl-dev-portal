@@ -17,7 +17,7 @@ Checkがレジャーに含まれており有効期限切れではない場合は
 
 ## 前提条件
 
-{% partial file="/_snippets/checkcash-prereqs.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/checkcash-prereqs.md" /%} 
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの準備
 
@@ -57,7 +57,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### 要求の例
 
@@ -84,7 +84,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 ## {{cash_exact_n.next()}}.署名済みCheckCashトランザクションの送信
 
 {% set step_1_link = "#1checkcashトランザクションの準備" %}
-{% partial file="/_snippets/tutorial-submit-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### 要求の例
 
@@ -109,7 +109,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## {{cash_exact_n.next()}}.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cash_exact_n.next()}}.最終結果の確認
 

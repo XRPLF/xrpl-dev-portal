@@ -16,7 +16,7 @@ This example shows how to:
 2. Get a list of existing NFTs.
 3. Delete (Burn) an NFT.
 
-[![Quickstart 3 interface with mint NFT fields](img/quickstart-py10.png)](img/quickstart-py10.png)
+[![Quickstart 3 interface with mint NFT fields](/img/quickstart-py10.png)](/img/quickstart-py10.png)
 
 # Usage
 
@@ -37,7 +37,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
     3. Click **Get Standby Account Info**.
     4. Click **Get Op Account Info**.
 
-[![Get accounts](img/quickstart-py11.png)](img/quickstart-py11.png)
+[![Get accounts](/img/quickstart-py11.png)](/img/quickstart-py11.png)
 
 ## Mint an NFT
 
@@ -53,14 +53,14 @@ To mint a non-fungible token object:
 4. Optionally a **Taxon** value as an integer. If you choose not to use a taxon, enter _0_.
 4. Click **Mint NFT**.
 
-[![Mint NFT fields](img/quickstart-py12.png)](img/quickstart-py12.png)
+[![Mint NFT fields](/img/quickstart-py12.png)](/img/quickstart-py12.png)
 
 
 ## Get Tokens
 
 Click **Get NFTs** to get a list of NFTs owned by the account.
 
-[![Get NFTs](img/quickstart-py13.png)](img/quickstart-py13.png)
+[![Get NFTs](/img/quickstart-py13.png)](/img/quickstart-py13.png)
 
 ## Burn a Token
 
@@ -71,7 +71,7 @@ To permanently destroy an NFT:
 1. Enter the **Token ID**.
 2. Click **Burn NFT**.
 
-[![Burn NFTs](img/quickstart-py14.png)](img/quickstart-py14.png)
+[![Burn NFTs](/img/quickstart-py14.png)](/img/quickstart-py14.png)
 
 # Code Walkthrough
 

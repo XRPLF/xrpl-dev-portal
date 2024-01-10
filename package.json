@@ -7,7 +7,7 @@
   "scripts": {
     "build-css": "sass --load-path styles/scss styles/xrpl.scss ./content/static/css/devportal2024-v1.css --style compressed --no-source-map",
     "build-css-watch": "sass --watch --load-path styles/scss styles/xrpl.scss ./content/static/css/devportal2024-v1.css --style compressed --no-source-map",
-    "start": "portal develop -d content"
+    "start": "realm develop -d content"
   },
   "keywords": [],
   "license": "MIT",
@@ -15,7 +15,7 @@
     "@codemirror/state": "6.3.3",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/portal": "^0.68.1",
+    "@redocly/realm": "0.71.1",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
@@ -25,7 +25,9 @@
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-alert": "^7.0.3",
+    "react18-json-view": "^0.2.6",
     "smol-toml": "^1.1.3",
+    "use-query-params": "^2.2.1",
     "xrpl": "^3.0.0-beta.1"
   },
   "overrides": {

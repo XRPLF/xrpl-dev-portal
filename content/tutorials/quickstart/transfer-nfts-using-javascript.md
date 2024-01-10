@@ -18,7 +18,7 @@ This example shows how to:
 5. Get a list of offers for a particular NFT.
 6. Cancel an offer.
 
-[![Quickstart form with NFT transfer fields](img/quickstart13.png)](img/quickstart13.png)
+[![Quickstart form with NFT transfer fields](/img/quickstart13.png)](/img/quickstart13.png)
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} archive to try each of the samples in your own browser.
 
@@ -36,7 +36,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-[![Form with account information](img/quickstart14.png)](img/quickstart14.png)
+[![Form with account information](/img/quickstart14.png)](/img/quickstart14.png)
 
 ## Create a Sell Offer
 
@@ -54,7 +54,7 @@ To create a NFT sell offer:
 
 The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
-[![NFT Sell Offer](img/quickstart15.png)](img/quickstart15.png)
+[![NFT Sell Offer](/img/quickstart15.png)](/img/quickstart15.png)
 
 ## Accept Sell Offer
 
@@ -65,7 +65,7 @@ To accept an available sell offer:
 1. Enter the **NFT Offer Index** (labeled as `nft_offer_index` in the token offer results. This is different from the `NFTokenID`.)
 2. Click **Accept Sell Offer**.
 
-[![Accept Sell Offer](img/quickstart16.png)](img/quickstart16.png)
+[![Accept Sell Offer](/img/quickstart16.png)](/img/quickstart16.png)
 
 ## Create a Buy Offer
 
@@ -79,7 +79,7 @@ To create an offer to buy a NFT:
 4. Optionally enter the number of days until **Expiration**.
 5. Click **Create Buy Offer**.
 
-[![NFT Buy Offer](img/quickstart17.png)](img/quickstart17.png)
+[![NFT Buy Offer](/img/quickstart17.png)](/img/quickstart17.png)
 
 ## Accept a Buy Offer
 
@@ -88,7 +88,7 @@ To accept an offer to buy a NFT:
 1. Enter the **NFT Offer Index** (the `nft_offer_index` of the NFT buy offer).
 3. Click **Accept Buy Offer**.
 
-[![Accept Buy Offer](img/quickstart18.png)](img/quickstart18.png)
+[![Accept Buy Offer](/img/quickstart18.png)](/img/quickstart18.png)
 
 ## Get Offers
 
@@ -96,7 +96,7 @@ To list the buy and sell offers associated with a NFT:
 1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
-[![Get offers](img/quickstart19.png)](img/quickstart19.png)
+[![Get offers](/img/quickstart19.png)](/img/quickstart19.png)
 
 ## Cancel Offer
 
@@ -105,7 +105,7 @@ To cancel a buy or sell offer that you have created:
 1. Enter the **NFT Offer Index**.
 2. Click **Cancel Offer**.
 
-[![Cancel offer](img/quickstart20.png)](img/quickstart20.png)
+[![Cancel offer](/img/quickstart20.png)](/img/quickstart20.png)
 
 # Code Walkthrough
 

@@ -15,7 +15,7 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 
 ## NFTマーケットプレイスを作成する
 
-[![NFTマーケットプレイスのフロー](img/nft-mkt-marketplace.png "NFTマーケットプレイスのフロー")](img/nft-mkt-marketplace.png)
+[![NFTマーケットプレイスのフロー](/img/nft-mkt-marketplace.png "NFTマーケットプレイスのフロー")](/img/nft-mkt-marketplace.png)
 
 
 ## rippledインスタンスのセットアップ

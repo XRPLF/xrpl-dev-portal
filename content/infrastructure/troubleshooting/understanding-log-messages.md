@@ -332,7 +332,7 @@ NetworkOPs:WRN We are not running on the consensus ledger
 
 - **Concepts:**
     - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Technical FAQ](../../faq.md)
+    - [Technical FAQ](../../about/faq.md)
 - **Tutorials:**
     - [Diagnosing Problems](diagnosing-problems.md)
     - [Capacity Planning](../installation/capacity-planning.md)

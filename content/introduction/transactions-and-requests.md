@@ -35,7 +35,7 @@ Optional fields are available for all transactions, with additional fields avail
 
 You send the transaction to the ledger as a command from JavaScript, Python, the command line, or any compatible service. The rippled servers propose transactions to the XRPL. 
 
-![Proposed Transacations](img/introduction17-gather-txns.png)
+![Proposed Transacations](/img/introduction17-gather-txns.png)
 
 When 80% of the validators approve a current set of proposed transactions, they are recorded as part of the permanent ledger. The rippled server returns the results of the transaction you sent.
 
@@ -49,7 +49,7 @@ The fields you send vary with the type of information you request. They typicall
 
 When you submit your request, it might be processed by a rippled server or by a Clio server, a server that is dedicated to responding to requests.
 
-![Clio Server](img/introduction19-clio.png)
+![Clio Server](/img/introduction19-clio.png)
 
 Clio servers take some of the load off the other rippled servers on the XRPL to improve processing speed and reliability.
 

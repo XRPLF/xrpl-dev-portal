@@ -20,7 +20,7 @@ The following table lists all the encodings the XRP Ledger uses:
 
 ¹ Content size excludes the 1-byte type prefix.
 
-[Account]: accounts.html
+[Account]: ../../../concepts/accounts/accounts.md
 
 ## See Also
 

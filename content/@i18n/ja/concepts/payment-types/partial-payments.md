@@ -50,7 +50,7 @@ Partial Paymentには次の制限事項があります。
 - Partial Paymentでは、XRP間の直接決済はできません。この場合、[結果コード][]`temBAD_SEND_XRP_PARTIAL`が返されます。
     - ただし、イシュアンスからXRPへの支払またはXRPからイシュアンスへの支払は、Partial Paymentが可能です。
 
-[結果コード]: transaction-results.html
+[結果コード]: ../../references/protocol/transactions/transaction-results/transaction-results.md
 
 ### `delivered_amount`フィールド
 
@@ -77,8 +77,8 @@ Partial Payment以外の場合、トランザクションのメタデータの`d
 | ripple-lib v1.x | `getTransaction` メソッド | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` メソッド | 配列メンバーの `outcome.deliveredAmount` |
 
-[WebSocket]: http-websocket-apis.html
-[JSON-RPC / WebSocket]: http-websocket-apis.html
+[WebSocket]: ../../references/http-websocket-apis/index.md
+[JSON-RPC / WebSocket]: ../../references/http-websocket-apis/index.md
 
 ## Partial Paymentの悪用
 

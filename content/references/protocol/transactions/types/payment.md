@@ -61,10 +61,10 @@ The `Payment` transaction type functions differently depending on how you fill i
 | [Partial payment][] | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Usually required | No | Sends _up to_ a specific amount of any currency. Uses the [`tfPartialPayment` flag](#payment-flags). May include a `DeliverMin` amount specifying the minimum that the transaction must deliver to be successful; if the transaction does not specify `DeliverMin`, it can succeed by delivering _any positive amount_. |
 | Currency conversion | Object (non-XRP) / String (XRP) | Object (non-XRP) / String (XRP) | Required         | Yes | Consumes offers in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md) to convert one currency to another, possibly taking [arbitrage](https://en.wikipedia.org/wiki/Arbitrage) opportunities. The `Amount` and `SendMax` cannot both be XRP. Also called a _circular payment_ because it delivers money to the sender. This type of transaction may be classified as an "exchange" and not a "payment". |
 
-[Direct XRP Payment]: direct-xrp-payments.html
-[Creating or redeeming tokens]: tokens.html
-[Cross-currency Payment]: cross-currency-payments.html
-[Partial payment]: partial-payments.html
+[Direct XRP Payment]: ../../../../concepts/payment-types/direct-xrp-payments.md
+[Creating or redeeming tokens]: ../../../../concepts/tokens/index.md
+[Cross-currency Payment]: ../../../../concepts/payment-types/cross-currency-payments.md
+[Partial payment]: ../../../../concepts/payment-types/partial-payments.md
 
 
 ## Special issuer Values for SendMax and Amount

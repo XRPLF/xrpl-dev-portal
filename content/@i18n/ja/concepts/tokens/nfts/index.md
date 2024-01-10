@@ -19,11 +19,11 @@ XRP Ledgerは、_IOUs_ としても知られる[トークン](../index.md)のサ
 
 例えば、切手などがそうです。1919年当時、あなたが航空便で手紙を送る必要がある場合、24セントの切手を購入し、封筒に張ったでしょう。もしその切手をなくしてしまったら、別の24セント切手を使うか、10セント切手2枚と2セント切手2枚を使うことができます。非常に使い勝手がいいのです。
 
-![Jenny Stamps](img/nft-concepts1.png "Jenny Stamps")
+![Jenny Stamps](/img/nft-concepts1.png "Jenny Stamps")
 
 しかし、1919年という時代のことですから、切手の飛行機が偶然にも逆さまに印刷されている24セントの航空郵便切手が出回るかもしれません。これが世界的に有名な「インバート・ジェニー」切手です。1枚の切手シートで100枚しか流通しなかったため、非常に希少で人気の高い切手です。現在、鑑定では一枚150万円以上の価値があるとされています。
 
-![Jenny Stamps](img/nft-concepts2.png "Jenny Stamps")
+![Jenny Stamps](/img/nft-concepts2.png "Jenny Stamps")
 
 これらの切手は、他の24セント切手と交換することはできません。非代替(Non-fungible)になってしまったのです。
 
@@ -53,7 +53,7 @@ XRP Ledgerでは、容量を節約するために、一つのアカウントで�
 
 [NFTokenBurn トランザクション][] を使用して、自分が所有する `NFToken` を破棄することができます。発行者が `tfBurnable` フラグを有効にしてトークンを発行した場合、発行者は現在の所有者に関係なくトークンを破棄することが可能です。( 例えば、あるイベントのチケットを表すトークンである場合、そのチケットをある時点で消費するといった場合に便利です)。
 
-![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
+![The NFT Lifecycle](/img/nft-lifecycle.png "NFT Lifecycle Image")
 
 `NFToken` オブジェクトの転送に関する詳細は、[XRP Ledger上でNFTokenを売買する](trading.md) を参照してください。
 

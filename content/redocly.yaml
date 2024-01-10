@@ -1,5 +1,8 @@
 ignore:
-  - content/_*/**
+  - ./references/http-websocket-apis/admin-api-methods/_template-admin-method.md
+  - ./_img-sources/*
+  - ./_code-samples/*/README.md
+  - ./_code-samples/**/README.md
 i18n:
   defaultLocale: en-US
   locales:

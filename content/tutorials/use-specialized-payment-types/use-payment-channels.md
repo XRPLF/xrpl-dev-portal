@@ -36,7 +36,7 @@ You can use any amount of XRP for the payment channels. The example values in th
 
 The following diagram summarizes the lifecycle of a payment channel:
 
-[![Payment Channel Flow Diagram](img/paychan-flow.png)](img/paychan-flow.png)
+[![Payment Channel Flow Diagram](/img/paychan-flow.png)](/img/paychan-flow.png)
 
 You can match up the numbered steps in this diagram with the steps of this tutorial.
 

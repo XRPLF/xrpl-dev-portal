@@ -13,7 +13,7 @@ You can act as an authorized minter for token issuers. When you do this, you own
 
 You can learn more in the tutorial [Assign an Authorized Minter](../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md).
 
-[![Authorized Minter Flow](img/nft-mkt-auth-minter.png "Authorized Minter Flow")](img/nft-mkt-auth-minter.png)
+[![Authorized Minter Flow](/img/nft-mkt-auth-minter.png "Authorized Minter Flow")](/img/nft-mkt-auth-minter.png)
 
 ## Set up a rippled instance
 
@@ -25,13 +25,13 @@ Rather than designing NFTs yourself, you coordinate with an NFT creator to becom
 
 Once you finish creating NFTs, the creator can revoke your privileges and reassert control over the NFTs. You might also transfer the tokens to a marketplace that will handle sales of the NFTs. You can act as a broker to match sell offers to buy offers. See [Running an NFT auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
-![Auctioning NFTs](img/uc-nft-transferring-nfts.png)
+![Auctioning NFTs](/img/uc-nft-transferring-nfts.png)
 
 To mint your first NFTs on behalf of another account, see [Authorizing Another Account to Mint Your NFTs](../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md).
 
 If you, as the owner or issuer, want to be able to burn the token in the future, set the `Flags` field to _1._ To make the NFT transferable, set the `Flags` field to _8_. Set the `Flags` field to _9_ to make the NFT both burnable and transferable. See[ Burnable flag](../../references/protocol/data-types/nftoken.md#nftoken-flags) and [Transferable flag](../../references/protocol/data-types/nftoken.md#nftoken-flags).
 
-![Burning NFTs](img/uc-nft-burn.png)
+![Burning NFTs](/img/uc-nft-burn.png)
 
 You can arrange for the creator to receive royalties from future sales by setting a <code>transfer fee<em>. </em></code>This is a value from 0-50000 representing 0-50% of the sale price. See [Transfer Fee](../../references/protocol/data-types/nftoken.md#transferfee).
 
@@ -56,7 +56,7 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 
 There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
 
-![Reserves](img/uc-nft-reserves.png)
+![Reserves](/img/uc-nft-reserves.png)
 
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
 
@@ -72,7 +72,7 @@ See:
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
-![Checkout](img/uc-nft-checkout.png)
+![Checkout](/img/uc-nft-checkout.png)
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
@@ -80,7 +80,7 @@ For trade in other currencies, you can leverage the DEX to accept and convert is
 
 When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
 
-![Indexing NFTs](img/uc-nft-indexing.png)
+![Indexing NFTs](/img/uc-nft-indexing.png)
 
 See:
 

@@ -67,7 +67,7 @@ APIは、現在の進行中のレジャーにトランザクション候補を�
 
 次の図は、トランザクションの送信と結果の判断に推奨されるフローを示します。
 
-[![信頼できるトランザクションの送信フローチャート](img/reliable-tx-submission.svg)](img/reliable-tx-submission.svg)
+[![信頼できるトランザクションの送信フローチャート](/img/reliable-tx-submission.svg)](/img/reliable-tx-submission.svg)
 
 ### 信頼できるトランザクションの送信
 

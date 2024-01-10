@@ -75,7 +75,6 @@ To install with Maven, add the following to your project's `pom.xml` file and th
 Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) for a full Maven project containing the code from this tutorial.
 
 ## Start Building
-{% set n = cycler(* range(1,99)) %}
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../concepts/accounts/accounts.md), integrating with the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
@@ -86,7 +85,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 
-### {{n.next()}}. Connect to the XRP Ledger
+### 1. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl4j`,
 you can use an [`XrplClient`](https://javadoc.io/doc/org.xrpl/xrpl4j-client/3.0.1/org/xrpl/xrpl4j/client/XrplClient.html):
@@ -113,7 +112,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
     XrplClient xrplClient = new XrplClient(rippledUrl);
     ```
 
-### {{n.next()}}. Get account
+### 2. Get account
 
 To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../concepts/accounts/accounts.md#creating-accounts) to meet the [account reserve](../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md).
 
@@ -141,7 +140,7 @@ For testing and development purposes, you can use a `FaucetClient` connected to 
 
 {% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Fund the account using the testnet Faucet" before="// Look up your Account Info" language="java" /%}
 
-### {{n.next()}}. Query the XRP Ledger
+### 3. Query the XRP Ledger
 
 You can query the XRP Ledger to get information about [a specific account](../../references/http-websocket-apis/public-api-methods/account-methods/index.md), [a specific transaction](../../references/http-websocket-apis/public-api-methods/transaction-methods/tx.md), the state of a [current or a historical ledger](../../references/http-websocket-apis/public-api-methods/ledger-methods/index.md), and [the XRP Ledger's decentralized exchange](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](../../concepts/transactions/reliable-transaction-submission.md).
 
@@ -150,7 +149,7 @@ Here, we'll use the [`XrplClient` we constructed](#1-connect-to-the-xrp-ledger) 
 {% code-snippet file="/_code-samples/get-started/java/GetAccountInfo.java" from="// Look up your Account Info" before="// Print the result" language="java" /%}
 
 
-### {{n.next()}}. Putting it all together
+### 4. Putting it all together
 
 Using these building blocks, we can create a Java app that:
 

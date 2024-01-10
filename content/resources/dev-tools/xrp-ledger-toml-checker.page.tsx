@@ -61,7 +61,7 @@ export default function TomlChecker() {
         {/* This aside is empty but it keeps the formatting similar to other pages */}
         <aside className="right-sidebar col-lg-3 order-lg-4" role="complementary"/>
 
-        <main className="main col-md-7 col-lg-6 order-md-3  " role="main" id="main_content_body">
+        <main className="main col-lg-9" role="main" id="main_content_body">
             <section className="container-fluid">
                 <div className="p-3">
                     <h1>{translate(`xrp-ledger.toml Checker`)}</h1>

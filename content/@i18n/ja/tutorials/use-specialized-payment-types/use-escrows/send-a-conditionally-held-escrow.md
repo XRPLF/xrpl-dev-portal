@@ -73,7 +73,7 @@ print(cancel_after)
 
 [EscrowCreateトランザクション][]に[署名して送信](../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`Condition`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。前の手順で算出した`CancelAfter`または`FinishAfter`の時刻も指定します。`Amount`を、Escrowする[XRP、drop単位](../../../references/protocol/data-types/basic-data-types.md#通貨額の指定)の合計額に設定します。
 
-{% partial file="/_snippets/secret-key-warning.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/secret-key-warning.md" /%} 
 
 要求:
 
@@ -97,7 +97,7 @@ print(cancel_after)
 
 ## 4.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## 5.Escrowが作成されたことの確認
 
@@ -131,7 +131,7 @@ print(cancel_after)
 
 Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired-escrow.md)だけが可能です。
 
-{% partial file="/_snippets/secret-key-warning.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/secret-key-warning.md" /%} 
 
 {% tabs %}
 
@@ -155,7 +155,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 ## 7.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## 8.最終結果の確認
 

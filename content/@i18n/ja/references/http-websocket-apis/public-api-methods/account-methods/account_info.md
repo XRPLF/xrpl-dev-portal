@@ -256,4 +256,4 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 * `actNotFound` - 要求の`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
-[手数料レベル]: transaction-cost.html#手数料レベル
+[手数料レベル]: ../../../../concepts/transactions/transaction-cost.md#手数料レベル

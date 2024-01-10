@@ -61,7 +61,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.CheckCancelトランザクションの署名
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### 要求の例
 
@@ -96,7 +96,7 @@ Checkを取り消す例を以下に示します。
 ## {{cancel_n.next()}}.署名済みCheckCancelトランザクションの送信
 
 {% set step_1_link = "#1checkcancelトランザクションの準備" %}
-{% partial file="/_snippets/tutorial-submit-step.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### 要求の例
 
@@ -129,7 +129,7 @@ Checkを取り消す例を以下に示します。
 
 ## {{cancel_n.next()}}.検証の待機
 
-{% partial file="/_snippets/wait-for-validation.md" /%} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cancel_n.next()}}.最終結果の確認
 
