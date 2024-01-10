@@ -21,7 +21,7 @@ Delete the [DID ledger entry](did.html) associated with the specified `Account` 
 
 ```json
 {
-    "TransactionType": "DIDDelete", 
+    "TransactionType": "DIDDelete",
     "Account": "rp4pqYgrTAtdPHuZd1ZQWxrzx45jxYcZex",
     "Fee": "12",
     "Sequence": 391,

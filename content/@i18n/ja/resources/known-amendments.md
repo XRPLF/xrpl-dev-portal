@@ -112,20 +112,20 @@ labels:
 | Amendment    | DID |
 |:-------------|:----|
 | Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
 
-Adds to the ledger Decentralized Identifier (DID) functionality that conforms to the [World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/) standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.
+[World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/)標準に準拠した分散アイデンティティ(DID)機能を追加します。DIDは、中央集権的な機関に依存せず、DID主体によって管理されるデジタルIDを提供します。
 
-Adds new transactions:
+次の新しいトランザクションを追加します。
 
-- DIDDelete - Delete the DID associated with your XRPL account.
-- DIDSet - Create a new DID or update an existing one.
+- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
+- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
 
-Adds a new `DID` ledger entry type.
+新しい`DID`レジャーエントリタイプを追加します。
 
-Adds several new transaction result codes.
+いくつかの新しいトランザクション結果コードを追加します。
 
 
 ### AMM

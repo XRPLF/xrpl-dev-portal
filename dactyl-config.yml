@@ -1369,6 +1369,9 @@ pages:
     -   md: concepts/accounts/decentralized-identifiers.md
         targets:
             - en
+
+    -   md: "@i18n/ja/concepts/accounts/decentralized-identifiers.md"
+        targets:
             - ja
 
 
@@ -2482,6 +2485,9 @@ pages:
     -   md: references/protocol/ledger-data/ledger-entry-types/did.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/did.md"
+        targets:
             - ja
 
     -   md: references/protocol/ledger-data/ledger-entry-types/directorynode.md
@@ -2723,11 +2729,17 @@ pages:
     -   md: references/protocol/transactions/types/diddelete.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/diddelete.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/didset.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/didset.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/escrowcancel.md
