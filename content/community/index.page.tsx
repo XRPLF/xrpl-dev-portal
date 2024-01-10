@@ -319,7 +319,7 @@ const CommunityPage: React.FC = () => {
       <section id="community-table" className="hot-topics">
         <h6 className="eyebrow-convo">{translate("Join the Conversation")}</h6>
         <h4>{translate("Hot Topics Happening Now")}</h4>
-        <table>
+        <table><tbody>
           <tr>
             <td className="td-img">
               <img className="discord-icon" alt="discord icon" />
