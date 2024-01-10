@@ -189,6 +189,7 @@ Transaction instructions may contain fields of any of the following types:
 | [UInt8][]     | 16        | 8          | No                   | An 8-bit unsigned integer. |
 | [UInt16][]    | 1         | 16         | No                   | A 16-bit unsigned integer. The `TransactionType` is a special case of this type, with specific strings mapping to integer values. |
 | [UInt32][]    | 2         | 32         | No                   | A 32-bit unsigned integer. The `Flags` and `Sequence` fields on all transactions are examples of this type. |
+| [XChainBridge][] | 25     | Variable   | No                   | A bridge between two blockchains, identified by the door accounts and issued assets on both chains. |
 
 [Length-prefixed]: #length-prefixing
 
@@ -367,6 +368,25 @@ The XRP Ledger has several unsigned integer types: UInt8, UInt16, UInt32, and UI
 When representing these fields in JSON objects, most are represented as JSON numbers by default. One exception is UInt64, which is represented as a string because some JSON decoders may try to represent these integers as 64-bit "double precision" floating point numbers, which cannot represent all distinct UInt64 values with full precision.
 
 Another special case is the `TransactionType` field. In JSON, this field is conventionally represented as a string with the name of the transaction type, but in binary, this field is a UInt16. The `TRANSACTION_TYPES` object in the [definitions file](#definitions-file) maps these strings to specific numeric values.
+
+
+### XChainBridge Fields
+[XChainBridge]: #xchainbridge-fields
+
+{{ include_svg("img/serialization-xchainbridge.svg", "XChainBridge format diagram") }}
+
+The `XChainBridge` field, used in transactions and ledger entries related to [cross-chain bridges](cross-chain-bridges.html), is the only field of the XChainBridge type. It consists of 4 parts which together define a bridge between blockchains:
+
+- The locking chain door account, a length-prefixed [AccountID][].
+- The locking chain asset type, an [STIssue][].
+- The issuing chain door account, a length-prefixed [AccountID][].
+- The issuing chain asset type, an [STIssue][].
+
+The two nested [STIssue][] types are each either 160 or 320 bits. The STIssue field is 160 bits if the currency code it contains is all 0's, meaning that the bridged asset is the native asset of its respective chain, for example XRP on the XRP Ledger Mainnet. If the currency code is nonzero, then the STIssue field also contains the (non-length-prefixed) AccountID of the token's issuer on its native chain.
+
+**Note:** The door AccountID values are length-prefixed, but the issuer AccountID values are not.
+
+In total, an XChainBridge field is always either 656, 816, or 976 bits (82, 102, or 122 bytes) depending on whether zero, one, or both of the assets are the native asset on their respective chain.
 
 <!-- SPELLING_IGNORE: pathset, stobject, starray, ledgerentry, vector256, accountids, uint -->
 <!--{# common link defs #}-->

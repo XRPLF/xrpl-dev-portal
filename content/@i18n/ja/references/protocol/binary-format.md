@@ -182,7 +182,7 @@ curated_anchors:
 | [Hash128][] | 4 | 128 | いいえ | 128ビットの任意のバイナリ値。該当する唯一のフィールドは`EmailHash`です。これは、[Gravatar](https://www.gravatar.com/)を取得する目的でアカウント所有者のメールのMD-5ハッシュを保管するフィールドです。 |
 | [Hash160][] | 17 | 160 | いいえ | 160ビットの任意のバイナリ値。これにより通貨コードまたはイシュアーが定義されます。 |
 | [Hash256][] | 5 | 256 | いいえ | 256ビットの任意のバイナリ値。これは通常、トランザクション、レジャーバージョン、またはレジャーデータオブジェクトの「SHA-512ハーフ」ハッシュを表します。 |
-| [PathSet][] | 18 | 可変 | いいえ | [複数通貨間ペイメント](cross-currency-payments.html)の有効な[ペイメントパス](paths.html)のセット。 |
+| [PathSet][] | 18 | 可変 | いいえ | [クロスカレンシー支払い](cross-currency-payments.html)の有効な[ペイメントパス](paths.html)のセット。 |
 | [STArray][] | 15 | 可変 | いいえ | 可変数のメンバーからなる配列。フィールドによってタイプが異なる場合があります。この例として、[memos](transaction-common-fields.html#memosフィールド)や[マルチ署名](multi-signing.html)で使用される署名者のリストがあります。 |
 | [STIssue][]   | 24        | 160 or 320 | いいえ                   | 数量を含まない、資産(XRPまたはトークン)を指定します。 |
 | [STObject][] | 14 | 可変 | いいえ | 1つ以上のネストされたフィールドを含むオブジェクト。 |
@@ -325,7 +325,7 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 ### PathSetフィールド
 [PathSet]: #pathsetフィールド
 
-複数通貨間[Paymentトランザクション][]の`Paths`フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、[パス](paths.html)を参照してください。
+クロスカレンシーの[Paymentトランザクション][]の`Paths`フィールドは、JSONで配列からなる配列として表される「PathSet」です。使用されるパスについての詳細は、[パス](paths.html)を参照してください。
 
 PathSetは、**1～6**の個別パスとして順序どおりにシリアル化されます[[ソース]](https://github.com/XRPLF/rippled/blob/4cff94f7a4a05302bdf1a248515379da99c5bcd4/src/ripple/app/tx/impl/Payment.h#L35-L36 "Source")。それぞれの完全なパスの後には、パスの後に続く内容を示すバイトが配置されます。
 

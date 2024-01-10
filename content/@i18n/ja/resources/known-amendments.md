@@ -16,7 +16,8 @@ labels:
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
-| [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [DID][]                           | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [XChainBridge][]                  | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [投票中: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
@@ -83,7 +84,6 @@ labels:
 | 名前                               | ステータス                                 | 追加情報                         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
 | [Hooks][]                         | [開発中: 未定]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [XChainBridge][]             | [開発中: 未定]( "BADGE_LIGHTGREY") | [XLS-38d](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md) [ドキュメント](https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/) |
 | [OwnerPaysFee][]                  | [開発中: 未定]( "BADGE_LIGHTGREY") | |
 
 **注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
@@ -216,11 +216,30 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 | Amendment    | XChainBridge |
 |:-------------|:-----------------|
 | Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | 開発中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
 
-メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md)。
+Adds cross-chain bridges, enabling the transfer of digital assets between networks, such as Mainnet and a sidechain.
+
+Adds new transactions:
+
+- XChainAccountCreateCommit - Create a new account for a witness server to submit transactions on an issuing chain..
+- XChainAddAccountCreateAttestation - Provide an attestation that an account was created for a witness server to use.
+- XChainAddClaimAttestation - Provide an attestation that assets were locked on a locking chain.
+- XChainClaim - Claim assets on the destination chain.
+- XChainCommit - Locks assets on the locking chain.
+- XChainCreateBridge - Create a bridge ledger object.
+- XChainCreateClaimID - Create a new cross-chain claim ID that is used for a cross-chain transfer.
+- XChainModifyBridge - Modify the parameters of a bridge.
+
+Adds new ledger entry types:
+
+- Bridge - A single cross-chain bridge that connects the XRP Ledger with another blockchain.
+- XChainOwnedClaimID - A cross-chain transfer of value that includes information of the account on the source chain that locks or burns the funds on the source chain.
+- XChainOwnedCreateAccountClaimID - Collects attestations for creating an account via a cross-chain transfer.
+
+Adds several new transaction result codes.
 
 
 ### CryptoConditions

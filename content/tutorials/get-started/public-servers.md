@@ -17,6 +17,7 @@ If you don't [run your own `rippled` server](install-rippled.html), you can use 
 | Ripple[¹][]   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net:51233/` | Testnet public server |
 | XRPL Labs     | Testnet     | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | Testnet public server with CORS support |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet public server |
+| Ripple[¹][]   | Sidechain-Devnet | `https://sidechain-net2.devnet.rippletest.net:51234/` | `wss://sidechain-net2.devnet.rippletest.net:51233/` | Sidechain Devnet to test cross-chain bridge features. Devnet serves as the locking chain while this sidechain serves as the issuing chain. |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooks-enabled](https://hooks.xrpl.org/) Xahau Testnet |
 
 [Network]: parallel-networks.html

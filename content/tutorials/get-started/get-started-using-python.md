@@ -40,7 +40,6 @@ pip3 install xrpl-py
 ```
 
 ## Start Building
-{% set n = cycler(* range(1,99)) %}
 
 When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](accounts.html), integrating with the [decentralized exchange](decentralized-exchange.html), or [issuing tokens](tokens.html). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
@@ -51,7 +50,7 @@ Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 1. [Query the XRP Ledger.](#3-query-the-xrp-ledger)
 
 
-### {{n.next()}}. Connect to the XRP Ledger
+### 1. Connect to the XRP Ledger
 
 To make queries and submit transactions, you need to connect to the XRP Ledger. To do this with `xrpl-py`, use the [`xrp.clients` module](https://xrpl-py.readthedocs.io/en/latest/source/xrpl.clients.html):
 
@@ -76,7 +75,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
         client = JsonRpcClient(JSON_RPC_URL)
 
 
-### {{n.next()}}. Get account
+### 2. Get account
 
 To store value and execute transactions on the XRP Ledger, you need an account: a [set of keys](cryptographic-keys.html#key-components) and an [address](addresses.html) that's been [funded with enough XRP](accounts.html#creating-accounts) to meet the [account reserve](reserves.html). The address is the identifier of your account and you use the [private key](cryptographic-keys.html#private-key) to sign transactions that you submit to the XRP Ledger.
 
@@ -128,7 +127,7 @@ You can use `xrpl-py`'s [`xrpl.core.addresscodec`](https://xrpl-py.readthedocs.i
 The X-address format [packs the address and destination tag](https://github.com/XRPLF/XRPL-Standards/issues/6) into a more user-friendly value.
 
 
-### {{n.next()}}. Query the XRP Ledger
+### 3. Query the XRP Ledger
 
 You can query the XRP Ledger to get information about [a specific account](account-methods.html), [a specific transaction](tx.html), the state of a [current or a historical ledger](ledger-methods.html), and [the XRP Ledger's decentralized exchange](path-and-order-book-methods.html). You need to make these queries, among other reasons, to look up account info to follow best practices for [reliable transaction submission](reliable-transaction-submission.html).
 
@@ -139,7 +138,7 @@ Here, we use `xrpl-py`'s [`xrpl.account`](https://xrpl-py.readthedocs.io/en/late
 
 
 
-### {{n.next()}}. Putting it all together
+### 4. Putting it all together
 
 Using these building blocks, we can create a Python app that:
 

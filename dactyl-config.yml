@@ -1540,6 +1540,23 @@ pages:
             - ja
 
 
+    # XRPL Sidechains -----------------------------------------------------------
+        
+    -   md: concepts/xrpl-sidechains/index.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/xrpl-sidechains/cross-chain-bridges.md
+        targets:
+            - en
+            - ja
+
+    -   md: concepts/xrpl-sidechains/witness-servers.md
+        targets:
+            - en
+            - ja
+
 
 # Tutorials --------------------------------------------------------------------
 
@@ -2278,6 +2295,29 @@ pages:
             - en
             - ja
 
+        # Use XRPL Sidechains ----------------------------------------------------------
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/index.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction.md
+        targets:
+            - en
+            - ja
+
+
 # References -------------------------------------------------------------------
 
     -   name: References
@@ -2418,6 +2458,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol/ledger-data/ledger-entry-types/bridge.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol/ledger-data/ledger-entry-types/check.md
         targets:
             - en
@@ -2533,6 +2578,16 @@ pages:
 
     -   md: "@i18n/ja/references/protocol/ledger-data/ledger-entry-types/ticket.md"
         targets:
+            - ja
+
+    -   md: references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
+        targets:
+            - en
             - ja
 
     -   md: references/protocol/transactions/index.md
@@ -2819,6 +2874,46 @@ pages:
         targets:
             - ja
 
+    -   md: references/protocol/transactions/types/xchainaccountcreatecommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainaddclaimattestation.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainclaim.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchaincommit.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchaincreatebridge.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchaincreateclaimid.md
+        targets:
+            - en
+            - ja
+
+    -   md: references/protocol/transactions/types/xchainmodifybridge.md
+        targets:
+            - en
+            - ja
+
     -   md: references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md
         targets:
             - en
@@ -2929,6 +3024,7 @@ pages:
             - en
 
     -   md: "@i18n/ja/references/protocol/binary-format.md"
+        outdated_translation: true
         targets:
             - ja
 
@@ -5348,7 +5444,7 @@ pages:
     -   name: Wallets
         html: wallets.html
         template: pagetype-redirect.html.jinja
-        redirect_url: xrp-overview.html
+        redirect_url: crypto-wallets.html
         nav_omit: true
         targets:
             - en
@@ -5356,7 +5452,7 @@ pages:
     -   name: ウォレット
         html: wallets.html
         template: pagetype-redirect.html.jinja
-        redirect_url: xrp-overview.html
+        redirect_url: crypto-wallets.html
         nav_omit: true
         targets:
             - ja
