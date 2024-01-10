@@ -564,7 +564,7 @@ const CommunityPage: React.FC = () => {
                 target="_blank"
                 href="/concepts/networks-and-servers/"
               >
-                  {translate("The ")}<code>rippled</code>{translate(" Server")}
+                  {translate("Networks and Servers")}
               </a>
               <a
                 className="com-card-link"
