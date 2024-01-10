@@ -2895,41 +2895,65 @@ pages:
     -   md: references/protocol/transactions/types/xchainaccountcreatecommit.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchainaccountcreatecommit.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchainaddaccountcreateattestation.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchainaddaccountcreateattestation.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchainaddclaimattestation.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchainaddclaimattestation.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchainclaim.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchainclaim.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchaincommit.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchaincommit.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchaincreatebridge.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchaincreatebridge.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchaincreateclaimid.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchaincreateclaimid.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/types/xchainmodifybridge.md
         targets:
             - en
+
+    -   md: "@i18n/ja/references/protocol/transactions/types/xchainmodifybridge.md"
+        targets:
             - ja
 
     -   md: references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md
