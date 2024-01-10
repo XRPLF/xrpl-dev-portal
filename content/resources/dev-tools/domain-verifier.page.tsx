@@ -111,7 +111,7 @@ const DomainVerificationPage = () => {
     for(const key in manifest) {
       addNewLogEntry(setLogEntries,{
         message: `${key}: ${manifest[key]}`,
-        id: 'manifest-key'
+        id: `manifest-${key}`
       })
     }
   }
@@ -132,6 +132,7 @@ const DomainVerificationPage = () => {
           }
         }
       });
+      return
     }
 
     const publicKeyHex = decodedManifest.PublicKey as string;
@@ -154,6 +155,7 @@ const DomainVerificationPage = () => {
         "Master Public Key": publicKey,
         "Ephemeral Public Key": ephemeralPublicKey
       });
+      return
     }
 
     displayManifest(setLogEntries, {"Sequence":seq,
