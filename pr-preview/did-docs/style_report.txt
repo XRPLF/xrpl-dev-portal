@@ -1,15 +1,15 @@
 -------------
 Spell Checker
 -------------
-Found 348 possible spelling errors:
+Found 401 possible spelling errors:
 <Page 'Privacy Policy' (privacy-policy.html)> Unknown Words:
-  gifs: gift, gifu, gips
+  gifs: rifs, ifs, gibs
   kuressaare: 
   ringtee: 
   lõõtsa: 
 
 <Page 'What is the XRP Ledger?' (what-is-the-xrp-ledger.html)> Unknown Words:
-  livenet: livened, livener
+  livenet: livener, livened
 
 <Page 'What is XRP?' (what-is-xrp.html)> Unknown Words:
   opencoin: 
@@ -42,15 +42,15 @@ Found 348 possible spelling errors:
   tokentaxon: 
 
 <Page 'Algorithmic Trading' (algorithmic-trading.html)> Unknown Words:
-  investopedia: 
   arbitraging: arbitrating
+  investopedia: 
   unprecented: unprevented, unpresented
-  clob: lob, glob, clog
-  30d: 3d, 3rd, 3-d
+  clob: lob, colob, glob
+  30d: 3rd, 3-d, 3d
   frontrunning: 
 
 <Page 'Parallel Networks' (parallel-networks.html)> Unknown Words:
-  v3: vb, vd, v.
+  v3: ve, vg, vo
 
 <Page 'Amendments' (amendments.html)> Unknown Words:
   11d: 
@@ -60,14 +60,14 @@ Found 348 possible spelling errors:
   nftokencounttracking: 
 
 <Page 'Finality of Results' (finality-of-results.html)> Unknown Words:
-  ooffers: doffers, offers, goffers
+  ooffers: offers, doffers, coffers
 
 <Page 'Stablecoin Precautions' (stablecoin-precautions.html)> Unknown Words:
   xapps: apps, capps, lapps
 
 <Page 'Clawing Back Tokens' (clawing-back-tokens.html)> Unknown Words:
-  rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
   rsa2lpzuawewsbqxkiju3yqtmzw13paadw: 
+  rp6abvbtbjoce8zdjkt6snvxtzsymbcc9s: 
 
 <Page 'NFT Payload Storage' (nft-storage.html)> Unknown Words:
   arweave: 
@@ -88,46 +88,64 @@ Found 348 possible spelling errors:
   nftokentaxon: 
 
 <Page 'Guaranteeing a Fixed Supply of NFTs' (nft-fixed-supply.html)> Unknown Words:
-  blackhole: blockhole, black-hole
+  blackhole: black-hole, blockhole
 
 <Page 'NFT APIs' (nft-apis.html)> Unknown Words:
   nft_history: 
-  slas: slask, sls, slad
+  slas: sias, slash, ssas
 
 <Page 'Automated Market Makers' (automated-market-makers.html)> Unknown Words:
   stablefoo: 
-  unbalances: unbalance, unbalanced
+  unbalances: unbalanced, unbalance
   machowski: 
   ammdelete: 
 
 <Page 'Decentralized Identifiers' (decentralized-identifiers.html)> Unknown Words:
-  dids: dips, vids, didi
-  w3c: wcc, wdc, wbc
+  dids: duds, rids, dods
+  w3c: wdc, wcc, wpc
+
+<Page 'XRPL Sidechains' (xrpl-sidechains.html)> Unknown Words:
+  xchainbridge: 
+  xahau: mahau, kahau
+  faqs: fats, fais, faus
+  mtls: mels, mils, mtis
+  cryptoassets: 
+  mtl: ml, mtb, mtr
+
+<Page 'Cross-Chain Bridges' (cross-chain-bridges.html)> Unknown Words:
+  xchainbridge: 
+
+<Page 'Witness Servers' (witness-servers.html)> Unknown Words:
+  xchainbridge: 
+  issuingchain: 
+  lockingchain: 
+  rpcendpoint: 
+  txnsubmit: 
 
 <Page 'Public Servers' (public-servers.html)> Unknown Words:
   xahau: mahau, kahau
 
 <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)> Unknown Words:
-  mod1: mod, mody, mode
+  mod1: mody, mod, mods
   testnet_url: 
   rippletest: 
   get_account_info: 
   send_xrp: 
   lesson1: lessons, lesson
-  tkinter: twinter, tinter
+  tkinter: tinter, twinter
   getstandbyaccount: 
   get_standby_account_info: 
   standby_send_xrp: 
 
 <Page 'Create Trust Line and Send Currency Using Python' (py-create-trustline-send-currency.html)> Unknown Words:
-  mod2: mod, mody, mode
+  mod2: mody, mod, mods
   send_currency: 
   get_balance: 
   configure_account: 
   lesson2: lessons, lesson
 
 <Page 'Create Time-based Escrows Using Python' (py-create-time-based-escrows.html)> Unknown Words:
-  mod8: mod, mody, mode
+  mod8: mody, mod, mods
   add_seconds: 
   numofseconds: 
   create_time_escrow: 
@@ -140,169 +158,169 @@ Found 348 possible spelling errors:
   lesson8: lessons, lesson
 
 <Page 'Mint and Burn NFTs Using Python' (py-mint-and-burn-nfts.html)> Unknown Words:
-  mod3: mod, mody, mode
+  mod3: mody, mod, mods
   minttoken: 
   gettokens: 
   burn_token: 
 
 <Page 'Transfer NFTs Using Python' (py-transfer-nfts.html)> Unknown Words:
-  mod4: mod, mody, mode
+  mod4: mody, mod, mods
   offer___index: 
   alloffers: 
   lesson4: lessons, lesson
 
 <Page 'Broker an NFT Sale Using Python' (py-broker-sale.html)> Unknown Words:
-  sell___offer___index: 
   buy___offer___index: 
   broker___fee: 
+  sell___offer___index: 
   lesson5: lessons, lesson
-  get_broker_account_info: 
-  get_broker_account: 
-  btn_broker_sale: 
-  frm_broker: 
-  broker_broker_sale: 
-  nsew: unsew, nse, nsec
-  btn_broker_get_offers: 
-  btn_broker_get_account: 
-  broker_cancel_offer: 
-  btn_broker_cancel_offer: 
-  btn_broker_get_account_info: 
   broker_get_offers: 
+  frm_broker: 
+  btn_broker_get_account_info: 
+  get_broker_account: 
+  btn_broker_get_offers: 
+  btn_broker_cancel_offer: 
+  broker_cancel_offer: 
+  btn_broker_get_account: 
+  btn_broker_sale: 
+  broker_broker_sale: 
+  nsew: nse, nsem, nsel
+  get_broker_account_info: 
   frm_form: 
   borderwidth: 
-  ent_standby_account: 
+  lbl_standby_account: 
+  lbl_standby_taxon: 
+  lbl_standby_balance: 
+  ent_standby_uri: 
+  onvalue: nonvalue, unvalue
+  text_standby_results: 
   ent_standby_transfer_fee: 
+  ent_standby_destination: 
+  lbl_standby_currency: 
+  lbl_standby_transfer_fee: 
+  ent_standby_balance: 
+  lbl_standby_results: 
+  cb_standby_allow_rippling: 
+  ent_standby_amount: 
   ent_standby_seed: 
   lbl_standy_seed: 
-  lbl_standby_results: 
-  ent_standby_nft_id: 
-  ent_standby_amount: 
-  ent_standby_flags: 
-  lbl_standby_taxon: 
-  lbl_standby_transfer_fee: 
-  lbl_standy_amount: 
-  checkbutton: 
-  offvalue: 
-  lbl_standby_nft_offer_index: 
-  lbl_standby_currency: 
-  onvalue: unvalue, nonvalue
-  text_standby_results: 
-  lbl_standby_account: 
-  lbl_standby_flags: 
   ent_standby_expiration: 
-  lbl_standby_nft_id: 
+  lbl_standby_flags: 
+  checkbutton: 
   ent_standby_owner: 
-  ent_standby_taxon: 
-  standbyrippling: 
-  ent_standby_uri: 
-  ent_standby_balance: 
-  lbl_standby_expiration: 
-  ent_standby_nft_offer_index: 
-  lbl_standby_owner: 
-  cb_standby_allow_rippling: 
-  ent_standby_destination: 
+  ent_standby_account: 
+  ent_standby_flags: 
   lbl_standby_destination: 
-  lbl_standby_balance: 
+  standbyrippling: 
+  ent_standby_nft_offer_index: 
+  lbl_standby_nft_id: 
+  lbl_standby_owner: 
+  lbl_standby_expiration: 
+  ent_standby_nft_id: 
   lbl_standby_uri: 
+  lbl_standy_amount: 
+  offvalue: 
+  ent_standby_taxon: 
   ent_standby_currency: 
-  ent_operational_transfer_fee: 
-  lbl_operational_destination: 
-  lbl_operational_uri: 
-  lbl_operational_owner: 
-  lbl_operational_flags: 
+  lbl_standby_nft_offer_index: 
   ent_operational_taxon: 
-  ent_operational_balance: 
-  lbl_operational_transfer_fee: 
-  lbl_operational_results: 
-  lbl_operational_currency: 
-  ent_operational_currency: 
-  cb_operational_allow_rippling: 
-  lbl_operational_nft_offer_index: 
-  text_operational_results: 
-  ent_operational_amount: 
+  ent_operational_destination: 
   ent_operational_owner: 
+  lbl_operational_taxon: 
+  ent_operational_balance: 
+  ent_operational_expiration: 
+  lbl_operational_currency: 
+  lbl_operational_expiration: 
   lbl_operational_nft_id: 
   ent_operational_flags: 
-  ent_operational_destination: 
-  ent_operational_seed: 
-  ent_operational_account: 
-  lbl_operational_seed: 
-  lbl_operational_account: 
-  lbl_operational_taxon: 
-  ent_operational_nft_offer_index: 
-  lbl_operational_expiration: 
-  ent_operational_expiration: 
-  lbl_operational_amount: 
+  lbl_operational_owner: 
   lbl_operational_balance: 
-  ent_operational_nft_id: 
+  lbl_operational_uri: 
   ent_operational_uri: 
+  ent_operational_nft_id: 
+  ent_operational_currency: 
+  lbl_operational_amount: 
+  ent_operational_account: 
+  lbl_operational_nft_offer_index: 
+  lbl_operational_account: 
+  text_operational_results: 
+  ent_operational_seed: 
+  ent_operational_amount: 
+  ent_operational_transfer_fee: 
+  lbl_operational_seed: 
+  lbl_operational_flags: 
+  ent_operational_nft_offer_index: 
+  lbl_operational_results: 
   operationalrippling: 
-  btn_standby_get_tokens: 
-  get_standby_account: 
+  lbl_operational_destination: 
+  lbl_operational_transfer_fee: 
+  cb_operational_allow_rippling: 
   standby_accept_sell_offer: 
-  btn_standby_create_trust_line: 
-  standby_create_buy_offer: 
+  standby_send_currency: 
+  standby_mint_token: 
+  btn_standby_get_offers: 
+  btn_get_standby_account: 
+  btn_standby_burn_token: 
+  btn_standby_send_xrp: 
+  get_balances: 
   btn_standby_create_buy_offer: 
   btn_standby_send_currency: 
-  btn_standby_get_offers: 
-  btn_standby_accept_buy_offer: 
   btn_standby_configure_account: 
-  btn_standby_burn_token: 
-  standby_accept_buy_offer: 
-  standby_get_offers: 
-  btn_standby_send_xrp: 
-  btn_standby_cancel_offer: 
+  btn_standby_accept_buy_offer: 
   standby_cancel_offer: 
-  btn_get_standby_account: 
-  standby_send_xrp: 
-  get_standby_account_info: 
-  btn_standby_mint_token: 
-  standby_mint_token: 
-  standby_send_currency: 
-  standby_create_sell_offer: 
-  btn_standby_accept_sell_offer: 
-  standby_create_trust_line: 
   standby_burn_token: 
-  btn_standby_create_sell_offer: 
-  get_balances: 
-  standby_configure_account: 
-  standby_get_tokens: 
   btn_get_standby_account_info: 
-  btn_op_get_offers: 
+  standby_create_trust_line: 
+  standby_create_sell_offer: 
+  standby_send_xrp: 
+  standby_configure_account: 
+  standby_create_buy_offer: 
+  btn_standby_create_trust_line: 
+  standby_get_offers: 
+  btn_standby_mint_token: 
+  standby_get_tokens: 
+  btn_standby_accept_sell_offer: 
+  get_standby_account_info: 
+  standby_accept_buy_offer: 
+  btn_standby_get_tokens: 
+  get_standby_account: 
+  btn_standby_create_sell_offer: 
+  btn_standby_cancel_offer: 
   op_create_buy_offer: 
+  btn_op_get_balances: 
+  btn_get_op_account_info: 
+  operational_get_tokens: 
+  btn_op_burn_token: 
+  op_create_sell_offer: 
+  op_accept_sell_offer: 
+  operational_configure_account: 
+  operational_create_trust_line: 
   btn_op_accept_buy_offer: 
-  operational_send_xrp: 
   op_get_offers: 
-  btn_op_configure_account: 
+  operational_mint_token: 
   get_operational_account_info: 
+  btn_op_get_tokens: 
+  operational_burn_token: 
   op_cancel_offer: 
   btn_op_create_sell_offer: 
-  btn_op_send_currency: 
-  op_accept_sell_offer: 
-  operational_send_currency: 
-  btn_op_get_tokens: 
   btn_op_create_trust_line: 
-  operational_configure_account: 
-  btn_op_get_balances: 
-  btn_op_cancel_offer: 
+  btn_op_get_offers: 
   btn_get_operational_account: 
-  operational_create_trust_line: 
-  operational_get_tokens: 
-  get_operational_account: 
-  operational_burn_token: 
-  op_accept_buy_offer: 
-  btn_op_accept_sell_offer: 
-  btn_op_burn_token: 
-  btn_op_send_xrp: 
-  operational_mint_token: 
-  btn_get_op_account_info: 
-  btn_op_mint_token: 
-  op_create_sell_offer: 
   btn_op_create_buy_offer: 
+  operational_send_currency: 
+  btn_op_configure_account: 
+  btn_op_accept_sell_offer: 
+  get_operational_account: 
+  operational_send_xrp: 
+  btn_op_send_currency: 
+  btn_op_mint_token: 
+  op_accept_buy_offer: 
+  btn_op_send_xrp: 
+  btn_op_cancel_offer: 
   mainloop: 
 
 <Page 'Assign an Authorized Minter Using Python' (py-authorize-minter.html)> Unknown Words:
-  mod6: mod, mody, mode
+  mod6: mody, mod, mods
   mint_other: 
   lesson6: lessons, lesson
   lesson4: lessons, lesson
@@ -312,7 +330,7 @@ Found 348 possible spelling errors:
   lesson7: lessons, lesson
 
 <Page 'Create Time-based Escrows Using JavaScript' (create-time-based-escrows-using-javascript.html)> Unknown Words:
-  ripple8: ripplet, ripple, rippled
+  ripple8: ripple, ripplet, rippled
   numofseconds: 
   offersequence: 
 
@@ -321,20 +339,32 @@ Found 348 possible spelling errors:
   ripplex9: ripplex
 
 <Page 'Build a Desktop Wallet in JavaScript' (build-a-desktop-wallet-in-javascript.html)> Unknown Words:
-  preloader: reloader, preloaded
+  preloader: preloaded, reloader
   frontend: fronted
   websockets: websocket
   boostrap: bootstrap
 
 <Page 'Get Started Using PHP' (get-started-using-php.html)> Unknown Words:
-  php: pop, pap, phm
+  php: pap, ph, phm
   bcmath: mcmath
-  gmp: amp, gmc, gp
+  gmp: qmp, gump, ump
   websockets: websocket
 
 <Page 'Send XRP' (send-xrp.html)> Unknown Words:
-  php: pop, pap, phm
+  php: pap, ph, phm
   xrpl_php: 
+
+<Page 'Set Up an XRP-XRP Bridge' (set-up-xrp-xrp-bridge.html)> Unknown Words:
+  xchainbridge: 
+
+<Page 'Set Up an IOU-IOU Bridge' (set-up-iou-iou-bridge.html)> Unknown Words:
+  xchainbridge: 
+  hypotethical: 
+
+<Page 'Submit Cross-chain Transactions' (submit-cross-chain-transactions.html)> Unknown Words:
+  xchainbridge: 
+  devent: decent, event, devest
+  otherchaindestination: 
 
 <Page 'AccountRoot' (accountroot.html)> Unknown Words:
   fixnftokenremint: 
@@ -344,18 +374,32 @@ Found 348 possible spelling errors:
 <Page 'AMM' (amm.html)> Unknown Words:
   voteentry: 
 
+<Page 'Bridge' (bridge.html)> Unknown Words:
+  xchainbridge: 
+  xchain_bridge: 
+
 <Page 'DepositPreauth' (depositpreauth-object.html)> Unknown Words:
   unauthorizing: 
 
 <Page 'DID' (did.html)> Unknown Words:
-  w3c: wcc, wdc, wbc
+  w3c: wdc, wcc, wpc
 
 <Page 'FeeSettings' (feesettings.html)> Unknown Words:
   xrpfees: 
 
+<Page 'XChainOwnedClaimID' (xchainownedclaimid.html)> Unknown Words:
+  xchainownedclaimid: 
+  xchainbridge: 
+  xchainclaimattestations: 
+
+<Page 'XChainOwnedCreateAccountClaimID' (xchainownedcreateaccountclaimid.html)> Unknown Words:
+  xchainownedcreateaccountclaimid: 
+  xchainbridge: 
+  xchaincreateaccountattestations: 
+
 <Page 'Transaction Common Fields' (transaction-common-fields.html)> Unknown Words:
   networkid: networked
-  v3: vb, vd, v.
+  v3: ve, vg, vo
 
 <Page 'AccountSet' (accountset.html)> Unknown Words:
   disallowincoming: 
@@ -375,7 +419,7 @@ Found 348 possible spelling errors:
   diddelete: 
 
 <Page 'DIDSet' (didset.html)> Unknown Words:
-  didset: didst, didest
+  didset: didest, didst
 
 <Page 'NFTokenCreateOffer' (nftokencreateoffer.html)> Unknown Words:
   disallowincoming: 
@@ -390,19 +434,54 @@ Found 348 possible spelling errors:
 <Page 'TrustSet' (trustset.html)> Unknown Words:
   disallowincoming: 
 
+<Page 'XChainAccountCreateCommit' (xchainaccountcreatecommit.html)> Unknown Words:
+  xchainaccountcreatecommit: 
+  xchainbridge: 
+
+<Page 'XChainAddAccountCreateAttestation' (xchainaddaccountcreateattestation.html)> Unknown Words:
+  xchainaddaccountcreateattestation: 
+  xchainbridge: 
+
+<Page 'XChainAddClaimAttestation' (xchainaddclaimattestation.html)> Unknown Words:
+  xchainaddclaimattestation: 
+  xchainbridge: 
+
+<Page 'XChainClaim' (xchainclaim.html)> Unknown Words:
+  xchainclaim: 
+  xchainbridge: 
+
+<Page 'XChainCommit' (xchaincommit.html)> Unknown Words:
+  xchaincommit: 
+  xchainbridge: 
+
+<Page 'XChainCreateBridge' (xchaincreatebridge.html)> Unknown Words:
+  xchaincreatebridge: 
+  xchainbridge: 
+
+<Page 'XChainCreateClaimID' (xchaincreateclaimid.html)> Unknown Words:
+  xchaincreateclaimid: 
+  xchainbridge: 
+
+<Page 'XChainModifyBridge' (xchainmodifybridge.html)> Unknown Words:
+  xchainmodifybridge: 
+  xchainbridge: 
+
 <Page 'SetFee' (setfee.html)> Unknown Words:
   xrpfees: 
 
 <Page 'Transaction Metadata' (transaction-metadata.html)> Unknown Words:
   nftokenid: 
 
+<Page 'Binary Format' (serialization.html)> Unknown Words:
+  xchainbridge: 
+
 <Page 'Client Libraries' (client-libraries.html)> Unknown Words:
-  php: pop, pap, phm
   xrpl_php: 
+  php: pap, ph, phm
 
 <Page 'Compact Transaction Identifier' (ctid.html)> Unknown Words:
-  ctid: tid, ctd, cetid
-  37d: 3d, 3rd, 3-d
+  ctid: caid, clid, stid
+  37d: 3rd, 3-d, 3d
 
 <Page 'account_info' (account_info.html)> Unknown Words:
   disallowincoming: 
@@ -417,7 +496,7 @@ Found 348 possible spelling errors:
   localhost: 
 
 <Page 'tx' (tx.html)> Unknown Words:
-  ctid: tid, ctd, cetid
+  ctid: caid, clid, stid
 
 <Page 'subscribe' (subscribe.html)> Unknown Words:
   xrpfees: 
@@ -429,57 +508,67 @@ Found 348 possible spelling errors:
   scalability: salability
 
 <Page 'Configure Full History' (configure-full-history.html)> Unknown Words:
-  xfs: xfe, xis, ufs
+  zfs: ifs, jfs, dfs
+  xfs: xs, xis, jfs
   filesystems: filesystem
   ext4: ext, ext., exta
-  zfs: ufs, lfs, ffs
 
 <Page 'Known Amendments' (known-amendments.html)> Unknown Words:
-  fixuniversalnumber: 
-  xrpfees: 
-  fixnftokenremint: 
-  immediateofferkilled: 
-  fixnonfungibletokensv1_2: 
-  fixreducedoffersv1: 
-  depositpreauthamendment: 
   disallowincoming: 
-  38d: 3d, 3rd, 3-d
+  xrpfees: 
   xchainbridge: 
-  dids: dips, vids, didi
-  didset: didst, didest
+  fixuniversalnumber: 
+  depositpreauthamendment: 
+  fixreducedoffersv1: 
+  immediateofferkilled: 
+  fixnftokenremint: 
+  fixnonfungibletokensv1_2: 
+  dids: duds, rids, dods
   diddelete: 
+  didset: didest, didst
   ammdelete: 
+  xchaincreateclaimid: 
+  xchainaddaccountcreateattestation: 
+  xchaincommit: 
+  xchainaccountcreatecommit: 
+  xchaincreatebridge: 
+  xchainaddclaimattestation: 
+  xchainmodifybridge: 
+  xchainclaim: 
+  xchainownedclaimid: 
+  xchainownedcreateaccountclaimid: 
   nftokenoffers: nftokenoffer
-  asfdisallowincomingnftoffer: 
-  asfdisallowincomingpaychan: 
   asfdisallowincomingcheck: 
   asfdisallowincomingtrustline: 
+  asfdisallowincomingnftoffer: 
+  asfdisallowincomingpaychan: 
+  fomula: formula
   nftokenid: 
   nftokenids: 
-  fomula: formula
-  1e: ke, le, be
-  30d: 3d, 3rd, 3-d
+  1e: de, se, ge
+  30d: 3rd, 3-d, 3d
+  38d: 3rd, 3-d, 3d
 
 <Page 'Create Custom Transactors' (create-custom-transactors.html)> Unknown Words:
   transactors: transactor
 
 <Page 'Contribute Documentation' (contribute-documentation.html)> Unknown Words:
-  umlet: unlet, umset, mulet
+  umlet: mulet, umset, amlet
+  scss: siss, scsa, sass
   _img: 
-  img: ims, cmg, pmg
+  img: mig, imu, irg
   _code: code
   _snippets: snippets
-  scss: sccs, scsi, scs
   frontmatter: 
-  santilli: 
   subfolder: subfolders
-  h1: hg, hf, he
-  orderbook: order-book
+  h1: hh, t1, hl
+  santilli: 
   trustline: 
-  websockets: websocket
-  postgres: postures
   camelcase: 
+  orderbook: order-book
+  postgres: postures
   xrps: xrpl, rps, xrp
+  websockets: websocket
   fronmatter: 
   dropdown: 
   dropdowns: 
@@ -487,15 +576,15 @@ Found 348 possible spelling errors:
 <Page 'Translations' (documentation-translations.html)> Unknown Words:
   hyperlinks: 
   bcp47: 
-  zh: gh, zg, zn
+  zh: ph, zt, gh
   frontmatter: 
-  utf: uta, otf, atf
+  utf: utu, uta, utr
 
 <Page 'Creating Diagrams' (creating-diagrams.html)> Unknown Words:
   subfolder: subfolders
-  inlined: inline, unlined, inclined
-  umlet: unlet, umset, mulet
-  scss: sccs, scsi, scs
+  inlined: inclined, inline, unlined
+  umlet: mulet, umset, amlet
+  scss: siss, scsa, sass
 
 <Page 'Tutorial Structure' (tutorial-structure.html)> Unknown Words:
   screenshots: screenshot
@@ -503,7 +592,7 @@ Found 348 possible spelling errors:
 -----------------------------
 Discouraged Words and Phrases
 -----------------------------
-Found 229 discouraged words/phrases:
+Found 263 discouraged words/phrases:
 Page: <Page 'FAQ' (faq.html)>
    Discouraged phrase: market maker (1 instances); suggest 'liquidity provider' instead.
 Page: <Page 'Privacy Policy' (privacy-policy.html)>
@@ -606,6 +695,19 @@ Page: <Page 'Decentralized Identifiers' (decentralized-identifiers.html)>
    Discouraged word: evident (1 instances); suggest 'clear' instead.
    Discouraged word: establish (1 instances); suggest 'set up, create, prove' instead.
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XRPL Sidechains' (xrpl-sidechains.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+   Discouraged word: operate (6 instances); suggest 'run, use, work' instead.
+   Discouraged word: concerning (1 instances); suggest 'about, on' instead.
+   Discouraged word: deem (1 instances); suggest 'believe, consider, think' instead.
+   Discouraged word: regarding (1 instances); suggest 'about, of, on' instead.
+   Discouraged phrase: pertaining to (1 instances); suggest 'about, of, on' instead.
+   Discouraged word: consult (1 instances); suggest 'see' instead.
+   Discouraged word: just (1 instances); suggest '(omit)' instead.
+   Discouraged word: accurate (1 instances); suggest 'correct, exact, right' instead.
+Page: <Page 'Cross-Chain Bridges' (cross-chain-bridges.html)>
+   Discouraged word: utilize (1 instances); suggest 'use' instead.
+   Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
 Page: <Page 'Send Payments Using Python' (send-payments-using-python.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'Create Accounts and Send XRP Using Python' (py-create-accounts-send-xrp.html)>
@@ -664,9 +766,29 @@ Page: <Page 'Create an Automated Market Maker' (create-an-automated-market-maker
    Discouraged word: facilitate (1 instances); suggest 'ease, help' instead.
    Discouraged word: demonstrate (1 instances); suggest 'prove, show' instead.
    Discouraged word: reflect (1 instances); suggest 'say, show' instead.
+Page: <Page 'Submit Cross-chain Transactions' (submit-cross-chain-transactions.html)>
+   Discouraged word: wallet (3 instances); suggest 'address, client application, account' instead.
+Page: <Page 'Bridge' (bridge.html)>
+   Discouraged word: ious (1 instances); suggest 'tokens' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainOwnedClaimID' (xchainownedclaimid.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainOwnedCreateAccountClaimID' (xchainownedcreateaccountclaimid.html)>
+   Discouraged word: performed (1 instances); suggest 'done' instead.
 Page: <Page 'Transaction Common Fields' (transaction-common-fields.html)>
    Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'DIDSet' (didset.html)>
+   Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainAccountCreateCommit' (xchainaccountcreatecommit.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainClaim' (xchainclaim.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainCommit' (xchaincommit.html)>
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainCreateBridge' (xchaincreatebridge.html)>
+   Discouraged phrase: in addition (1 instances); suggest 'also, besides, too' instead.
+   Discouraged word: will (2 instances); suggest '(avoid future tense)' instead.
+Page: <Page 'XChainModifyBridge' (xchainmodifybridge.html)>
    Discouraged word: will (1 instances); suggest '(avoid future tense)' instead.
 Page: <Page 'tec Codes' (tec-codes.html)>
    Discouraged word: operate (1 instances); suggest 'run, use, work' instead.
@@ -723,12 +845,12 @@ Page: <Page 'Tutorial Structure' (tutorial-structure.html)>
 Readability Scores
 ------------------
 Average Page Readability Scores:
-  Flesch Reading Ease Score: 57.9 (Fairly Difficult)
+  Flesch Reading Ease Score: 58.3 (Fairly Difficult)
   Dale-Chall Readability Score: 8.3 (average 11th or 12-grade student)
-  SMOG Index: Grade level 10.3
+  SMOG Index: Grade level 10.2
   Gunning FOG Index: Grade level 9.1
   Automated Readability Index: Grade level 10.8
-  Coleman-Liau Index: Grade level 11.6
+  Coleman-Liau Index: Grade level 11.5
   Linsear Write Formula: Grade level 8.3
 
 
@@ -764,25 +886,25 @@ Most difficult pages by Flesch Reading Ease:
 Page Length Metrics
 -------------------
 Average Page Length Metrics:
-  Sentences: 49
-  Words: 647
-  Characters: 4,016
+  Sentences: 48
+  Words: 636
+  Characters: 3,951
 
 Longest pages by character count:
 <Page 'Known Amendments' (known-amendments.html)> Length Metrics:
-  Sentences: 632
-  Words: 8,595
-  Characters: 62,569
+  Sentences: 645
+  Words: 8,744
+  Characters: 63,619
 
 <Page 'Build a Desktop Wallet in Python' (build-a-desktop-wallet-in-python.html)> Length Metrics:
   Sentences: 297
   Words: 5,145
   Characters: 29,344
 
-<Page 'Look Up Transaction Results' (look-up-transaction-results.html)> Length Metrics:
-  Sentences: 187
-  Words: 3,335
-  Characters: 20,263
+<Page 'Binary Format' (serialization.html)> Length Metrics:
+  Sentences: 231
+  Words: 3,500
+  Characters: 20,872
 
 Shortest pages by character count:
 <Page 'Tasks' (tasks.html)> Length Metrics:

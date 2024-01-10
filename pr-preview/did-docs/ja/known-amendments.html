@@ -380,7 +380,12 @@
 <tr>
 <td style="text-align: left;"><a href="#did">DID</a></td>
 <td style="text-align: left;">v2.0.0</td>
-<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="Open for Voting: 2024-01-09"><img alt="Open for Voting: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="投票中: 2024-01-09"><img alt="投票中: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#xchainbridge">XChainBridge</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="投票中: 2024-01-09"><img alt="投票中: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/%E6%8A%95%E7%A5%A8%E4%B8%AD-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><a href="#amm">AMM</a></td>
@@ -682,11 +687,6 @@
 <td style="text-align: left;"><a class="external-link" href="https://hooks.xrpl.org/" target="_blank">XRPL Hooks <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
-<td style="text-align: left;"><a href="#xchainbridge">XChainBridge</a></td>
-<td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
-<td style="text-align: left;"><a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d <i aria-hidden="true" class="fa fa-external-link"></i></a> <a class="external-link" href="https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/" target="_blank">ドキュメント <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
-</tr>
-<tr>
 <td style="text-align: left;"><a href="#ownerpaysfee">OwnerPaysFee</a></td>
 <td style="text-align: left;"><a title="開発中: 未定"><img alt="開発中: 未定" class="dactyl_badge" src="https://img.shields.io/badge/%E9%96%8B%E7%99%BA%E4%B8%AD-%E6%9C%AA%E5%AE%9A-lightgrey.svg"/></a></td>
 <td style="text-align: left;"></td>
@@ -932,19 +932,37 @@
 </tr>
 <tr>
 <td style="text-align: left;">Status</td>
-<td style="text-align: left;">開発中</td>
+<td style="text-align: left;">Open for Voting</td>
 </tr>
 <tr>
-<td style="text-align: left;">デフォルトの投票(最新の安定版)</td>
-<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
 </tr>
 <tr>
-<td style="text-align: left;">Amendment前の機能は廃止?</td>
-<td style="text-align: left;">いいえ</td>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
 </tr>
 </tbody>
 </table>
-<p>メインネットとサイドチェーンなど異なるネットワーク間でアセットを同期させるための「クロスチェーンブリッジ」を追加します。標準規格: <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md" target="_blank">XLS-38d Cross-Chain Bridge <i aria-hidden="true" class="fa fa-external-link"></i></a>。</p>
+<p>Adds cross-chain bridges, enabling the transfer of digital assets between networks, such as Mainnet and a sidechain.</p>
+<p>Adds new transactions:</p>
+<ul>
+<li>XChainAccountCreateCommit - Create a new account for a witness server to submit transactions on an issuing chain..</li>
+<li>XChainAddAccountCreateAttestation - Provide an attestation that an account was created for a witness server to use.</li>
+<li>XChainAddClaimAttestation - Provide an attestation that assets were locked on a locking chain.</li>
+<li>XChainClaim - Claim assets on the destination chain.</li>
+<li>XChainCommit - Locks assets on the locking chain.</li>
+<li>XChainCreateBridge - Create a bridge ledger object.</li>
+<li>XChainCreateClaimID - Create a new cross-chain claim ID that is used for a cross-chain transfer.</li>
+<li>XChainModifyBridge - Modify the parameters of a bridge.</li>
+</ul>
+<p>Adds new ledger entry types:</p>
+<ul>
+<li>Bridge - A single cross-chain bridge that connects the XRP Ledger with another blockchain.</li>
+<li>XChainOwnedClaimID - A cross-chain transfer of value that includes information of the account on the source chain that locks or burns the funds on the source chain.</li>
+<li>XChainOwnedCreateAccountClaimID - Collects attestations for creating an account via a cross-chain transfer.</li>
+</ul>
+<p>Adds several new transaction result codes.</p>
 <h3 id="cryptoconditions">CryptoConditions<a aria-hidden="true" class="hover_anchor" href="#cryptoconditions"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -3613,6 +3631,28 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_4_8" aria-expanded="false" aria-controls="tree_nav_group_2_4_8"></a>
+
+        <a class="nav-link" href="/ja/xrpl-sidechains.html">XRPL Sidechains</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_4_8">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/cross-chain-bridges.html">Cross-Chain Bridges <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/witness-servers.html">Witness Servers <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -4102,6 +4142,33 @@
 
   </div>
 
+      
+  <div class="nav-item ">
+
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_2_5_6_5" aria-expanded="false" aria-controls="tree_nav_group_2_5_6_5"></a>
+
+        <a class="nav-link" href="/ja/use-xrpl-sidechains.html">Use XRPL Sidechains</a>
+
+    <nav class="nav flex-column collapse" id="tree_nav_group_2_5_6_5">
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-up-xrp-xrp-bridge.html">Set Up an XRP-XRP Bridge</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/set-up-iou-iou-bridge.html">Set Up an IOU-IOU Bridge</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/submit-cross-chain-transactions.html">Submit Cross-chain Transactions</a>
+  </div>
+
+    </nav>
+
+  </div>
+
     </nav>
 
   </div>
@@ -4191,6 +4258,11 @@
 
       
   <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/bridge.html">Bridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/check.html">Check</a>
   </div>
 
@@ -4262,6 +4334,16 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/ticket.html">Ticket</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainownedclaimid.html">XChainOwnedClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainownedcreateaccountclaimid.html">XChainOwnedCreateAccountClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>
@@ -4456,6 +4538,46 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/trustset.html">TrustSet</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainaccountcreatecommit.html">XChainAccountCreateCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainaddaccountcreateattestation.html">XChainAddAccountCreateAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainaddclaimattestation.html">XChainAddClaimAttestation <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainclaim.html">XChainClaim <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincommit.html">XChainCommit <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreatebridge.html">XChainCreateBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchaincreateclaimid.html">XChainCreateClaimID <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/xchainmodifybridge.html">XChainModifyBridge <span class="status not_enabled" title="This feature is not currently enabled on the production XRP Ledger."><i class="fa fa-flask"></i></span></a>
   </div>
 
     </nav>

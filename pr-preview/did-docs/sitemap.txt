@@ -133,6 +133,9 @@ https://xrpl.org/intro-to-evm-sidechain.html
 https://xrpl.org/the-rippled-server.html
 https://xrpl.org/nft-concepts.html
 https://xrpl.org/nft-conceptual-overview.html
+https://xrpl.org/xrpl-sidechains.html
+https://xrpl.org/cross-chain-bridges.html
+https://xrpl.org/witness-servers.html
 https://xrpl.org/tutorials.html
 https://xrpl.org/public-servers.html
 https://xrpl.org/python.html
@@ -221,6 +224,10 @@ https://xrpl.org/connect-metamask-to-xrpl-evm-sidechain.html
 https://xrpl.org/join-evm-sidechain-devnet.html
 https://xrpl.org/evm-sidechain-validator-security.html
 https://xrpl.org/evm-sidechain-run-a-validator-node.html
+https://xrpl.org/use-xrpl-sidechains.html
+https://xrpl.org/set-up-xrp-xrp-bridge.html
+https://xrpl.org/set-up-iou-iou-bridge.html
+https://xrpl.org/submit-cross-chain-transactions.html
 https://xrpl.org/references.html
 https://xrpl.org/protocol-reference.html
 https://xrpl.org/basic-data-types.html
@@ -236,6 +243,7 @@ https://xrpl.org/ledger-object-ids.html
 https://xrpl.org/accountroot.html
 https://xrpl.org/amendments-object.html
 https://xrpl.org/amm.html
+https://xrpl.org/bridge.html
 https://xrpl.org/check.html
 https://xrpl.org/depositpreauth-object.html
 https://xrpl.org/did.html
@@ -251,6 +259,8 @@ https://xrpl.org/paychannel.html
 https://xrpl.org/ripplestate.html
 https://xrpl.org/signerlist.html
 https://xrpl.org/ticket.html
+https://xrpl.org/xchainownedclaimid.html
+https://xrpl.org/xchainownedcreateaccountclaimid.html
 https://xrpl.org/transaction-formats.html
 https://xrpl.org/transaction-common-fields.html
 https://xrpl.org/transaction-types.html
@@ -287,6 +297,14 @@ https://xrpl.org/setregularkey.html
 https://xrpl.org/signerlistset.html
 https://xrpl.org/ticketcreate.html
 https://xrpl.org/trustset.html
+https://xrpl.org/xchainaccountcreatecommit.html
+https://xrpl.org/xchainaddaccountcreateattestation.html
+https://xrpl.org/xchainaddclaimattestation.html
+https://xrpl.org/xchainclaim.html
+https://xrpl.org/xchaincommit.html
+https://xrpl.org/xchaincreatebridge.html
+https://xrpl.org/xchaincreateclaimid.html
+https://xrpl.org/xchainmodifybridge.html
 https://xrpl.org/pseudo-transaction-types.html
 https://xrpl.org/enableamendment.html
 https://xrpl.org/setfee.html
