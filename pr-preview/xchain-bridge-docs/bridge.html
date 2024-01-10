@@ -331,6 +331,7 @@
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="bridge-fields">Bridge Fields<a aria-hidden="true" class="hover_anchor" href="#bridge-fields"><i class="fa fa-link"></i></a></h2>
+<p>In addition to the <a href="ledger-entry-common-fields.html">common fields</a>, <code>Bridge</code> entries have the following fields:</p>
 <table class="table-responsive">
 <thead>
 <tr>
@@ -344,57 +345,50 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>Account</code></td>
-<td style="text-align: left;"><code>string</code></td>
-<td style="text-align: left;"><code>ACCOUNT</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Account</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The account that owns this object.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>LedgerIndex</code></td>
-<td style="text-align: left;"><code>string</code></td>
-<td style="text-align: left;"><code>HASH256</code></td>
-<td style="text-align: left;">Yes</td>
-<td style="text-align: left;">The ledger index is a hash of a unique prefix for a bridge object, and the fields in <code>XChainBridge</code>.</td>
+<td style="text-align: left;">The account that submitted the <code>XChainCreateBridge</code> transaction on the blockchain.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>MinAccountCreateAmount</code></td>
-<td style="text-align: left;"><code>Currency Amount</code></td>
-<td style="text-align: left;"><code>AMOUNT</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;">Amount</td>
 <td style="text-align: left;">No</td>
 <td style="text-align: left;">The minimum amount, in XRP, required for an <code>XChainAccountCreateCommit</code> transaction. If this isn't present, the <code>XChainAccountCreateCommit</code> transaction will fail. This field can only be present on XRP-XRP bridges.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>SignatureReward</code></td>
-<td style="text-align: left;"><code>Currency Amount</code></td>
-<td style="text-align: left;"><code>AMOUNT</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;">Amount</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The total amount, in XRP, to be rewarded for providing a signature for cross-chain transfer or for signing for the cross-chain reward. This amount will be split among the signers.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>XChainAccountClaimCount</code></td>
-<td style="text-align: left;"><code>number</code></td>
-<td style="text-align: left;"><code>UINT64</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">A counter used to order the execution of account create transactions. It is incremented every time a <code>XChainAccountCreateCommit</code> transaction is "claimed" on the destination chain. When the "claim" transaction is run on the destination chain, the <code>XChainAccountClaimCount</code> must match the value that the <code>XChainAccountCreateCount</code> had at the time the <code>XChainAccountClaimCount</code> was run on the source chain. This orders the claims so that they run in the same order that the <code>XChainAccountCreateCommit</code> transactions ran on the source chain, to prevent transaction replay.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>XChainAccountCreateCount</code></td>
-<td style="text-align: left;"><code>number</code></td>
-<td style="text-align: left;"><code>UINT64</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">A counter used to order the execution of account create transactions. It is incremented every time a successful <code>XChainAccountCreateCommit</code> transaction is run for the source chain.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>XChainBridge</code></td>
-<td style="text-align: left;"><code>XChainBridge</code></td>
-<td style="text-align: left;"><code>XCHAIN_BRIDGE</code></td>
+<td style="text-align: left;">XChainBridge</td>
+<td style="text-align: left;">XChain_Bridge</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The door accounts and assets of the bridge this object correlates to.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>XChainClaimID</code></td>
-<td style="text-align: left;"><code>number</code></td>
-<td style="text-align: left;"><code>UINT64</code></td>
+<td style="text-align: left;">Number</td>
+<td style="text-align: left;">UInt64</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The value of the next <code>XChainClaimID</code> to be created.</td>
 </tr>
@@ -414,29 +408,29 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><code>IssuingChainDoor</code></td>
-<td style="text-align: left;"><code>string</code></td>
-<td style="text-align: left;"><code>ACCOUNT</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Account</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The door account on the issuing chain. For an XRP-XRP bridge, this must be the genesis account (the account that is created when the network is first started, which contains all of the XRP).</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>IssuingChainIssue</code></td>
-<td style="text-align: left;"><code>Issue</code></td>
-<td style="text-align: left;"><code>ISSUE</code></td>
+<td style="text-align: left;">Issue</td>
+<td style="text-align: left;">Issue</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The asset that is minted and burned on the issuing chain. For an IOU-IOU bridge, the issuer of the asset must be the door account on the issuing chain, to avoid supply issues.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LockingChainDoor</code></td>
-<td style="text-align: left;"><code>string</code></td>
-<td style="text-align: left;"><code>ACCOUNT</code></td>
+<td style="text-align: left;">String</td>
+<td style="text-align: left;">Account</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The door account on the locking chain.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>LockingChainIssue</code></td>
-<td style="text-align: left;"><code>Issue</code></td>
-<td style="text-align: left;"><code>ISSUE</code></td>
+<td style="text-align: left;">Issue</td>
+<td style="text-align: left;">Issue</td>
 <td style="text-align: left;">Yes</td>
 <td style="text-align: left;">The asset that is locked and unlocked on the locking chain.</td>
 </tr>
