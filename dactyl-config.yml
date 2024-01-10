@@ -1537,7 +1537,7 @@ pages:
 
     # XRPL Sidechains -----------------------------------------------------------
         
-    -   md: concepts/xrpl-sidechains/xrpl-sidechains.md
+    -   md: concepts/xrpl-sidechains/index.md
         targets:
             - en
             - ja
