@@ -97,7 +97,7 @@ NuDBには、`rippled.cfg`にパフォーマンス関連の構成オプション
 [node_db]
 type=NuDB
 path=/var/lib/rippled/db/nudb
-online_delete=2000
+online_delete=300000
 advisory_delete=0
 ```
 

@@ -37,7 +37,7 @@ labels:
 
         [node_db]
         # Other settings unchanged ...
-      	online_delete=2000
+      	online_delete=300000
       	advisory_delete=0
 
     `online_delete`を、オンライン削除の実行後に維持するレジャーバージョンの最小数に設定します。自動削除が設定されている場合（デフォルト）、サーバーは通常、この数の約2倍のレジャーバージョンが蓄積されると削除を実行します。

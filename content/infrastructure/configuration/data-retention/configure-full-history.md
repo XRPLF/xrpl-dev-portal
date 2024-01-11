@@ -35,7 +35,7 @@ To configure your server to acquire and store full history, complete the followi
         [node_db]
       	type=NuDB
       	path=/var/lib/rippled/db/nudb
-      	#online_delete=2000
+      	#online_delete=300000
       	#advisory_delete=0
 
     On a full-history server, you should use NuDB for the ledger store, because RocksDB requires too much RAM when the database is that large. For more information, see [Capacity Planning](capacity-planning.html). You can remove the following performance-related configuration options from the default `[node_db]` stanza, because they only apply to RocksDB: `open_files`, `filter_bits`, `cache_mb`, `file_size_mb`, and `file_size_mult.`
