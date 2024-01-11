@@ -13,6 +13,7 @@ curated_anchors:
       anchor: "#ドメイン検証"
     - name: アカウント検証
       anchor: "#アカウント検証"
+outdated_translation: true
 ---
 # xrp-ledger.tomlファイル
 
@@ -284,14 +285,6 @@ location /.well-known/xrp-ledger.toml {
    - その`xrp-ledger.toml`ファイルで、`[[VALIDATORS]]`エントリの`public_key`フィールドにバリデータのマスター公開鍵を入力します。
 
 2. バリデータは、ドメイン別に所有権を主張します。このステップの手順は、本仕様書の範囲外です。
-
-    <!-- TODO: Link documentation when it's available. -->
-    <!-- Aside: the old way of doing this was to set the `Domain` field of the
-         XRP Ledger account whose public key matched the validator's public key.
-         Since only the holder of the corresponding private key could send
-         transactions from this address, doing so effectively proved ownership
-         of the validator's private key.
-    -->
 
 ## アカウント検証
 
