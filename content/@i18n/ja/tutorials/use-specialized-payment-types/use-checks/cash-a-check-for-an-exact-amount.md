@@ -13,13 +13,11 @@ Checkがレジャーに含まれており有効期限切れではない場合は
 
 指定の受取人は、[Checkを変動金額で換金する](cash-a-check-for-a-flexible-amount.md)こともできます。
 
-{% set cash_exact_n = cycler(* range(1,99)) %}
-
 ## 前提条件
 
 {% partial file="/_snippets/checkcash-prereqs.md" /%} 
 
-## {{cash_exact_n.next()}}.CheckCashトランザクションの準備
+## 1. CheckCashトランザクションの準備
 
 [CheckCashトランザクション][]のフィールドの値を決定します。Checkを正確な金額で換金する場合、以下のフィールドが最低限必要です。それ以外のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
@@ -55,7 +53,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 {% /tabs %}
 
-## {{cash_exact_n.next()}}.CheckCashトランザクションの署名
+## 2. CheckCashトランザクションの署名
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
@@ -81,9 +79,8 @@ Checkを正確な金額で換金するためのトランザクションを準備
 {% /tabs %}
 
 
-## {{cash_exact_n.next()}}.署名済みCheckCashトランザクションの送信
+## 3. 署名済みCheckCashトランザクションの送信
 
-{% set step_1_link = "#1checkcashトランザクションの準備" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
@@ -107,11 +104,11 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 {% /tabs %}
 
-## {{cash_exact_n.next()}}.検証の待機
+## 4. 検証の待機
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-## {{cash_exact_n.next()}}.最終結果の確認
+## 5.最終結果の確認
 
 トランザクションのステータスを確認するには、CheckCashトランザクションの識別用ハッシュを指定した[txメソッド][]を使用します。トランザクションが成功したことを示す`"TransactionResult": "tesSUCCESS"`フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す`"validated": true`フィールドを結果から検索します。
 
@@ -139,7 +136,5 @@ Checkを換金できない場合、Checkはレジャーに残るため、後日�
 {% /tab %}
 
 {% /tabs %}
-
-<!--{# common links #}-->
 
 {% raw-partial file="/_snippets/common-links.md" /%}

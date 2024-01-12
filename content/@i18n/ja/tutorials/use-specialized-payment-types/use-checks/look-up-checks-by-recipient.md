@@ -69,6 +69,4 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 }
 ```
 
-<!--{# common links #}-->
-
 {% raw-partial file="/_snippets/common-links.md" /%}

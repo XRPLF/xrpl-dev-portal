@@ -15,8 +15,6 @@ This tutorial uses the example of a fictitious company, BoxSend SG (whose XRP Le
 
 Outside of the XRP Ledger, Grand Payments sends an invoice to BoxSend SG with the ID `46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`, and requests a Check for 100 XRP be sent to Grand Payments' XRP Ledger address of `rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis`. <!-- SPELLING_IGNORE: boxsend -->
 
-{% set send_n = cycler(* range(1,99)) %}
-
 ## Prerequisites
 
 To send a Check with this tutorial, you need the following:
@@ -27,7 +25,7 @@ To send a Check with this tutorial, you need the following:
 - A [secure way to sign transactions](../../../concepts/transactions/secure-signing.md).
 - A [client library](../../../references/client-libraries.md) or any HTTP or WebSocket library.
 
-## {{send_n.next()}}. Prepare the CheckCreate transaction
+## 1. Prepare the CheckCreate transaction
 
 Decide how much money the Check is for and who can cash it. Figure out the values of the [CheckCreate transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
@@ -62,7 +60,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 {% /tabs %}
 
-## {{send_n.next()}}. Sign the CheckCreate transaction
+## 2. Sign the CheckCreate transaction
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%}
 
@@ -103,11 +101,9 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 {% /tabs %}
 
-## {{send_n.next()}}. Submit the signed transaction
+## 3. Submit the signed transaction
 
-{% set step_1_link = "#1-prepare-the-checkcreate-transaction" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%}
-
 
 ### Example Request
 
@@ -146,12 +142,12 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 {% /tabs %}
 
 
-## {{send_n.next()}}. Wait for validation
+## 4. Wait for validation
 
 {% partial file="/_snippets/wait-for-validation.md" /%}
 
 
-## {{send_n.next()}}. Confirm final result
+## 5. Confirm final result
 
 Use the [tx method][] with the CheckCreate transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
