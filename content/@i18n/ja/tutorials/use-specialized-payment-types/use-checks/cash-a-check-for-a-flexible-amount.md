@@ -15,14 +15,12 @@ Checkから可能な限りの額を受領したい場合には、変動金額で
 
 指定受取人は、[Checkを正確な金額で換金する](cash-a-check-for-a-flexible-amount.md)こともできます。
 
-{% set cash_flex_n = cycler(* range(1,99)) %}
-
 
 ## 前提条件
 
 {% partial file="/_snippets/checkcash-prereqs.md" /%}
 
-## {{cash_flex_n.next()}}.CheckCashトランザクションの準備
+## 1. CheckCashトランザクションの準備
 
 [CheckCashトランザクション][]のフィールドの値を決定します。Checkを変動金額で換金する場合、以下のフィールドは必要最小限です。それ以外のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
@@ -56,7 +54,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 {% /tabs %}
 
-## {{cash_flex_n.next()}}.CheckCashトランザクションの署名
+## 2. CheckCashトランザクションの署名
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
@@ -82,9 +80,8 @@ Checkを変動金額で換金するためのトランザクションを準備す
 {% /tabs %}
 
 
-## {{cash_flex_n.next()}}.署名済みCheckCashトランザクションの送信
+## 3. 署名済みCheckCashトランザクションの送信
 
-{% set step_1_link = "#1checkcashトランザクションの準備" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
@@ -108,11 +105,11 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 {% /tabs %}
 
-## {{cash_flex_n.next()}}.検証の待機
+## 4. 検証の待機
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-## {{cash_flex_n.next()}}.最終結果の確認
+## 5. 最終結果の確認
 
 トランザクションのステータスを確認するには、CheckCashトランザクションの識別用ハッシュを指定した[txメソッド][]を使用します。トランザクションが成功したことを示す`"TransactionResult": "tesSUCCESS"`フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す`"validated": true`フィールドを結果から検索します。
 
@@ -151,7 +148,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 | `tecPATH_PARTIAL` | トラストラインの限度額、または送金元に送金通貨の残高（イシュアーの[送金手数料](../../../concepts/tokens/transfer-fees.md)がある場合はこの手数料を含む）が十分になかったことが原因で、Checkでは十分なトークンを送金できませんでした。 | 原因がトラストラインの限度額である場合は、（希望する場合には）限度額を引き上げる[TrustSetトランザクション][]を送信するか、または通貨の一部を消費して残高を減らしてから、Checkの換金を再試行します。原因が送金元の残高である場合は、送金元にCheckの通貨が積み増しされるまで待つか、または以前よりも低い額でCheckの換金を再試行します。 |
 | `tecUNFUNDED_PAYMENT` | Checkで十分なXRPを送金できませんでした。 | 送金元にXRPが積み増しされるまで待つか、または以前よりも低い額でCheckの換金を再試行します。 |
 
-## {{cash_flex_n.next()}}.送金された額の確認
+## 6. 送金された額の確認
 
 Checkが変動する`DeliverMin`の額で換金された場合は、Checkは少なくとも`DeliverMin`の額で換金されたと想定できます。送金された額を正確に得るには、トランザクションメタデータを調べます。<!--{# TODO: Update if RIPD-1623 adds a delivered_amount field. #}-->メタデータの`AffectedNodes`配列には、通貨のタイプに応じて、Checkの換金による残高の変更を反映した1～2つのオブジェクトが含まれています。
 
@@ -192,14 +189,8 @@ Checkが変動する`DeliverMin`の額で換金された場合は、Checkは少�
 
 - Checkの送金元または受取人がイシュアーであるトークンの場合、これらのアカウント間のトラストラインを表す`RippleState`オブジェクトでは、`Balance`がCheckの受取人に有利な方法で調整されています。
 
-    <!-- {# TODO: example of single-RippleState balance changes #}-->
-
 - イシュアーが第三者であるトークンの場合、2つの`RippleState`（送金元からイシュアーへのトラストラインとイシュアーから受取人へのトラストライン）に対する変更があります。Checkの送金元とイシュアーの関係を表す`RippleState`オブジェクトではその`Balance`がイシュアーに有利に変更され、イシュアーと受取人の間の関係を表す`RippleState`オブジェクトではその`Balance`が受取人に有利に変更されます。
 
-    <!--{# TODO: example of double-RippleState balance changes #}-->
-
     - トークンに[送金手数料](../../../concepts/tokens/transfer-fees.md)がある場合、受取人への入金額を上回る額がCheckの送金元から引き落とされます。（この差額が送金手数料であり、これがイシュアーに戻されることによりイシュアーの正味の債務は減少します。）
-
-<!--{# common links #}-->
 
 {% raw-partial file="/_snippets/common-links.md" /%}

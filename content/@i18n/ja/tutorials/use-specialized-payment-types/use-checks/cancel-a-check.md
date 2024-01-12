@@ -13,8 +13,6 @@ _[Checks Amendment][]により追加されました。_
 
 着信したCheckが不要な場合、取り消すことができます。送信時に内容を誤って入力した場合や状況が変化した場合に、送信したCheckを取り消すこともできます。有効期限切れのCheckはレジャーから削除する必要があります。これにより、送金元に[所有者準備金](../../../concepts/accounts/reserves.md#所有者準備金)が戻ります。
 
-{% set cancel_n = cycler(* range(1,99)) %}
-
 ## 前提条件
 
 このチュートリアルでCheckを取り消すには、以下が必要です。
@@ -26,7 +24,7 @@ _[Checks Amendment][]により追加されました。_
 - [クライアントライブラリ](../../../references/client-libraries.md)またはHTTPライブラリ、WebSocketライブラリなど。
 
 
-## {{cancel_n.next()}}.CheckCancelトランザクションの準備
+## 1. CheckCancelトランザクションの準備
 
 [CheckCancelトランザクション][]のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
@@ -59,7 +57,7 @@ Checkを取り消す例を以下に示します。
 
 {% /tabs %}
 
-## {{cancel_n.next()}}.CheckCancelトランザクションの署名
+## 2. CheckCancelトランザクションの署名
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
@@ -93,9 +91,8 @@ Checkを取り消す例を以下に示します。
 {% /tabs %}
 
 
-## {{cancel_n.next()}}.署名済みCheckCancelトランザクションの送信
+## 3. 署名済みCheckCancelトランザクションの送信
 
-{% set step_1_link = "#1checkcancelトランザクションの準備" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
@@ -127,11 +124,11 @@ Checkを取り消す例を以下に示します。
 
 {% /tabs %}
 
-## {{cancel_n.next()}}.検証の待機
+## 4. 検証の待機
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-## {{cancel_n.next()}}.最終結果の確認
+## 5. 最終結果の確認
 
 トランザクションのステータスを確認するには、CheckCancelトランザクションの識別用ハッシュを指定した[txメソッド][]を使用します。トランザクションが成功したことを示す`"TransactionResult": "tesSUCCESS"`フィールドをトランザクションメタデータから検索し、またこの結果が最終結果であることを示す`"validated": true`フィールドを結果から検索します。
 
