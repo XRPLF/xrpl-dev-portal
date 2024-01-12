@@ -101,7 +101,7 @@ An example of a successful response:
             "account": "rnW8FAPgpQgA6VoESnVrUVJHBdq9QAtRZs"
           }
         ],
-        "discounted_fee": 0,
+        "discounted_fee": 60,
         "expiration": "2023-Jan-26 00:28:40.000000000 UTC",
         "price": {
           "currency": "039C99CD9AB0B70B32ECDA51EAAE471625608EA2",
