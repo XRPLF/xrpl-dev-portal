@@ -11,12 +11,8 @@ This tutorial shows how to look up [Checks](../../../concepts/payment-types/chec
 
 ## 1. Look up all Checks for the address
 
-<!--{# TODO: Update if https://github.com/XRPLF/rippled/issues/2443 gets done #}-->
-
 To get a list of all incoming and outgoing Checks for an account, use the `account_objects` command with the sending account's address and set the `type` field of the request to `checks`.
 
-<!-- This note moved to account_objects method page. -->
-**Note:** The commandline interface to the `account_objects` command does not accept the `type` field. You can use the [json method][] to send the JSON-RPC format request on the commandline instead.
 
 ### Example Request
 
@@ -67,7 +63,5 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
   }
 }
 ```
-
-<!--{# common links #}-->
 
 {% raw-partial file="/_snippets/common-links.md" /%}

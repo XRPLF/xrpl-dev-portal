@@ -13,8 +13,6 @@ _[Checks Amendment][]により追加されました。_
 
 ## 1. 特定のアドレスのすべてのCheckの検索
 
-<!--{# TODO: Update if https://github.com/XRPLF/rippled/issues/2443 gets done #}-->
-
 特定のアドレスで受信および送信されるすべてのCheckのリストを取得するには、送金元アカウントのアドレスを指定した`account_objects`コマンドを実行し、リクエストの`type` フィールドを`checks`に設定します。
 
 **注記:**`account_objects`コマンドのコマンドラインインターフェイスでは`type`フィールドは受け入れられません。代わりに[jsonメソッド][]を使用してコマンドラインからJSON-RPCフォーマットのリクエストを送信できます。
@@ -68,7 +66,5 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
  }
 }
 ```
-
-<!--{# common links #}-->
 
 {% raw-partial file="/_snippets/common-links.md" /%}

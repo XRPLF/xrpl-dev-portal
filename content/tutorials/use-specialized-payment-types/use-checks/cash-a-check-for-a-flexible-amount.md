@@ -13,14 +13,12 @@ You might cash a Check for a flexible amount if you want to get as much as possi
 
 The specified recipient can also [cash the check for an exact amount](cash-a-check-for-a-flexible-amount.md).
 
-{% set cash_flex_n = cycler(* range(1,99)) %}
-
 
 ## Prerequisites
 
 {% partial file="/_snippets/checkcash-prereqs.md" /%}
 
-## {{cash_flex_n.next()}}. Prepare the CheckCash transaction
+## 1. Prepare the CheckCash transaction
 
 Figure out the values of the [CheckCash transaction][] fields. To cash a check for a flexible amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
@@ -54,7 +52,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 {% /tabs %}
 
-## {{cash_flex_n.next()}}. Sign the CheckCash transaction
+## 2. Sign the CheckCash transaction
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
@@ -80,9 +78,8 @@ The following examples show how to prepare a transaction to cash a Check for a f
 {% /tabs %}
 
 
-## {{cash_flex_n.next()}}. Submit the signed CheckCash transaction
+## 3. Submit the signed CheckCash transaction
 
-{% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
@@ -106,11 +103,11 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 {% /tabs %}
 
-## {{cash_flex_n.next()}}. Wait for validation
+## 4. Wait for validation
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-## {{cash_flex_n.next()}}. Confirm final result
+## 5. Confirm final result
 
 Use the [tx method][] with the CheckCash transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
@@ -149,7 +146,7 @@ If cashing the Check failed with a `tec`-class code, look up the code in the [Fu
 | `tecPATH_PARTIAL` | The Check could not deliver enough tokens, either due to trust line limits or because the sender does not have enough balance of the token to send (including the issuer's [transfer fee](../../../concepts/tokens/transfer-fees.md), if there is one). | If the problem is the trust line limit, send a [TrustSet transaction][] to increase your limit (if desired) or lower your balance by spending some of the currency, then try to cash the Check again. If the problem is the sender's balance, wait for the sender to have more of the Check's currency, or try again to cash the Check for a lesser amount. |
 | `tecUNFUNDED_PAYMENT` | The Check could not deliver enough XRP. | Wait for the sender to have more XRP, or try again to cash the Check for a lesser amount. |
 
-## {{cash_flex_n.next()}}. Confirm delivered amount
+## 6. Confirm delivered amount
 
 If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you can assume that the Check was cashed for at least the `DeliverMin` amount. To get the exact amount delivered, check the transaction metadata. The `delivered_amount` field in the metadata shows the exact amount delivered. (This field is only provided if the Check was cashed for a flexible amount. If the check was successfully cashed for a fixed amount, then the delivered amount is equal to the `Amount` of the CheckCash transaction.)
 
@@ -190,14 +187,8 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
 
 - For tokens where the sender or recipient of the check is the issuer, the `RippleState` object representing the trust line between those accounts has its `Balance` adjusted in the favor of the Check's recipient.
 
-    <!-- {# TODO: example of single-RippleState balance changes #}-->
-
 - For tokens with a third-party issuer, there are changes to two `RippleState` objects, representing the trust lines connecting the sender to the issuer, and the issuer to the recipient. The `RippleState` object representing the relationship between the Check's sender and the issuer has its `Balance` changed in favor of the issuer, and the `RippleState` object representing the relationship between the issuer and the recipient has its `Balance` changed in favor of the recipient.
 
-    <!--{# TODO: example of double-RippleState balance changes #}-->
-
     - If the token has a [transfer fee](../../../concepts/tokens/transfer-fees.md), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
-
-<!--{# common links #}-->
 
 {% raw-partial file="/_snippets/common-links.md" /%}

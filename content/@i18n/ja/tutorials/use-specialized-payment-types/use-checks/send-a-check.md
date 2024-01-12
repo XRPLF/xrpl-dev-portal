@@ -15,7 +15,6 @@ Checkの送信は、指定受取人にあなたからの支払いを引き出す
 
 XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291`）を送り、Grand PaymentsのXRP Ledgerアドレス（rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis）宛てに100 XRPのCheckを送信するよう要求します。
 
-{% set send_n = cycler(* range(1,99)) %}
 
 ## 前提条件
 
@@ -27,7 +26,7 @@ XRP Ledgerの外部でGrand PaymentsはBoxSend SGに請求書（IDは`46060241FA
 - トランザクションに[安全に署名できる手段](../../../concepts/transactions/secure-signing.md)。
 - [クライアントライブラリ](../../../references/client-libraries.md)またはHTTPライブラリ、WebSocketライブラリなど。
 
-## {{send_n.next()}}.CheckCreateトランザクションの準備
+## 1. CheckCreateトランザクションの準備
 
 Checkの額と、Checkを現金化できる当事者を決定します。[CheckCreateトランザクション][]のフィールドの値を決定します。以下のフィールドは必要最小限のフィールドです。その他のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)できるフィールドです。
 
@@ -62,7 +61,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 {% /tabs %}
 
-## {{send_n.next()}}.CheckCreateトランザクションへの署名
+## 2. CheckCreateトランザクションへの署名
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%}
 
@@ -103,9 +102,8 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 {% /tabs %}
 
-## {{send_n.next()}}.署名済みトランザクションの送信
+## 3.署名済みトランザクションの送信
 
-{% set step_1_link = "#1checkcreateトランザクションの準備" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%}
 
 
@@ -146,12 +144,12 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 {% /tabs %}
 
 
-## {{send_n.next()}}.検証の待機
+## 4.検証の待機
 
 {% partial file="/_snippets/wait-for-validation.md" /%}
 
 
-## {{send_n.next()}}.最終結果の確認
+## 5.最終結果の確認
 
 トランザクションのステータスを確認するには、CheckCreateトランザクションの識別用ハッシュを指定した[txメソッド][]を使用します。トランザクションメタデータで、トランザクションが成功したことを示す`"TransactionResult": "tesSUCCESS"`フィールドを探し、またこの結果が最終結果であることを示す`"validated": true`フィールドを結果で探します。
 

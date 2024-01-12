@@ -11,8 +11,6 @@ This tutorial shows how to cancel a [Check](../../../concepts/payment-types/chec
 
 You may want to cancel an incoming Check if you do not want it. You might cancel an outgoing Check if you made a mistake when sending it or if circumstances have changed. If a Check expires, it's also necessary to cancel it to remove it from the ledger so the sender gets their [owner reserve](../../../concepts/accounts/reserves.md#owner-reserves) back.
 
-{% set cancel_n = cycler(* range(1,99)) %}
-
 ## Prerequisites
 
 To cancel a Check with this tutorial, you need the following:
@@ -24,7 +22,7 @@ To cancel a Check with this tutorial, you need the following:
 - A [client library](../../../references/client-libraries.md) or any HTTP or WebSocket library.
 
 
-## {{cancel_n.next()}}. Prepare the CheckCancel transaction
+## 1. Prepare the CheckCancel transaction
 
 Figure out the values of the [CheckCancel transaction][] fields. The following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
@@ -57,7 +55,7 @@ The following examples show how to cancel a Check.
 
 {% /tabs %}
 
-## {{cancel_n.next()}}. Sign the CheckCancel transaction
+## 2. Sign the CheckCancel transaction
 
 {% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
@@ -91,9 +89,8 @@ The following examples show how to cancel a Check.
 {% /tabs %}
 
 
-## {{cancel_n.next()}}. Submit the signed CheckCancel transaction
+## 3. Submit the signed CheckCancel transaction
 
-{% set step_1_link = "#1-prepare-the-checkcancel-transaction" %}
 {% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
@@ -125,11 +122,11 @@ The following examples show how to cancel a Check.
 
 {% /tabs %}
 
-## {{cancel_n.next()}}. Wait for validation
+## 4. Wait for validation
 
 {% partial file="/_snippets/wait-for-validation.md" /%} 
 
-## {{cancel_n.next()}}. Confirm final result
+## 5. Confirm final result
 
 Use the [tx method][] with the CheckCancel transaction's identifying hash to check its status. Look for a `"TransactionResult": "tesSUCCESS"` field in the transaction's metadata, indicating that the transaction succeeded, and the field `"validated": true` in the result, indicating that this result is final.
 
