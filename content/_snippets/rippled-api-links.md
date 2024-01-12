@@ -226,6 +226,8 @@
   "fix1578",
   "fix1623",
   "fixCheckThreading",
+  "fixDisallowIncomingV1",
+  "fixFillOrKill",
   "fixMasterKeyAsRegularKey",
   "fixNFTokenDirV1",
   "fixNFTokenRemint",

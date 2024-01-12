@@ -3593,6 +3593,11 @@ pages:
         targets:
             - ja
 
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
+        targets:
+            - en
+            - ja
+
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
         targets:
             - en
