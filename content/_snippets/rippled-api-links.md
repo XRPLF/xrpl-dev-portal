@@ -2,6 +2,8 @@
 [Address]: basic-data-types.html#addresses
 [アドレス]: basic-data-types.html#アドレス
 [admin command]: admin-api-methods.html
+[API v1]: request-formatting.html#api-versioning
+[API v2]: request-formatting.html#api-versioning
 [base58]: base58-encodings.html
 [common fields]: transaction-common-fields.html
 [共通フィールド]: transaction-common-fields.html
