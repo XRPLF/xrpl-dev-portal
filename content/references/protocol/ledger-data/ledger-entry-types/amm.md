@@ -40,7 +40,7 @@ An `AMM` ledger entry describes a single [Automated Market Maker](automated-mark
             }
           }
       ],
-      "DiscountedFee" : 0,
+      "DiscountedFee" : 60,
       "Expiration" : 721870180,
       "Price" : {
           "currency" : "039C99CD9AB0B70B32ECDA51EAAE471625608EA2",
