@@ -42,7 +42,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
         [node_db]
         # Other settings unchanged ...
-      	online_delete=2000
+      	online_delete=300000
       	advisory_delete=1
 
     - Set `advisory_delete` to `1` to run online deletion only when prompted. (Set it to `0` to run online deletion automatically as new ledger versions become available.)

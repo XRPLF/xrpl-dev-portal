@@ -33,7 +33,7 @@ labels:
         [node_db]
       	type=NuDB
       	path=/var/lib/rippled/db/nudb
-      	#online_delete=2000
+      	#online_delete=300000
       	#advisory_delete=0
 
     全履歴が記録されるサーバーでは、レジャーストアーにNuDBを使用します。これは、データベースがこれほど大きいと、RocksDBでは非常に大量のRAMが必要になるためです。詳細は、[容量の計画](capacity-planning.html)を参照してください。パフォーマンス関連の構成オプション`open_files`、`filter_bits`、`cache_mb`、`file_size_mb`、および`file_size_mult`は、RocksDBのみに適用されるオプションであるため、デフォルトの`[node_db]`スタンザから削除できます。

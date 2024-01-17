@@ -37,7 +37,7 @@ To change the amount of history your server stores, perform the following steps:
 
         [node_db]
         # Other settings unchanged ...
-      	online_delete=2000
+      	online_delete=300000
       	advisory_delete=0
 
     Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. With automatic deletion (the default), the server typically runs deletion when it has accumulated about twice this many ledger versions.

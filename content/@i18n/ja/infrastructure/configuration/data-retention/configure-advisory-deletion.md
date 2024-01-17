@@ -42,7 +42,7 @@ labels:
 
         [node_db]
         # Other settings unchanged ...
-      	online_delete=2000
+      	online_delete=300000
       	advisory_delete=1
 
     - 指示された場合にのみオンライン削除を実行するには、`advisory_delete`を`1`に設定します。（`0`に設定すると、新しいレジャーバージョンが使用可能になると自動的にオンライン削除が実行されます。）
