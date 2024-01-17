@@ -16,9 +16,9 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [fixDisallowIncomingV1][]         | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [fixFillOrKill][]                 | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
@@ -109,7 +109,7 @@ The following is a list of known [amendments](amendments.html) that have been re
 ## Details about Known Amendments
 
 ### fixDisallowIncomingV1
-[fixDisallowIncomingV1]: #fixDisallowIncomingV1
+[fixDisallowIncomingV1]: #fixdisallowincomingv1
 
 | Amendment    | fixDisallowIncomingV1 |
 |:-------------|:--------------|
@@ -133,7 +133,7 @@ This amendment has no effect unless the [DisallowIncoming][] amendment is enable
 
 
 ### fixFillOrKill
-[fixFillOrKill]: #fixFillOrKill
+[fixFillOrKill]: #fixfillorkill
 
 | Amendment    | fixFillOrKill |
 |:-------------|:--------------|
