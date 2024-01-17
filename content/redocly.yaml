@@ -1,8 +1,9 @@
 ignore:
-  - ./references/http-websocket-apis/admin-api-methods/_template-admin-method.md
-  - ./_img-sources/*
-  - ./_code-samples/*/README.md
-  - ./_code-samples/**/README.md
+  - references/http-websocket-apis/admin-api-methods/_template-admin-method.md
+  - _img-sources/*
+  - _code-samples/*/README.md
+  - _code-samples/**/README.md
+  - _code-samples/create-amm/ts/tsconfig.json
 i18n:
   defaultLocale: en-US
   locales:
