@@ -216,6 +216,8 @@ targets:
             # Fix links from untranslated open-closed-validated-ledgers.html:
             "consensus-principles-and-rules.html#simplifying-the-problem": "consensus-principles-and-rules.html#問題の単純化"
             "consensus-structure.html#validation": "consensus-structure.html#検証"
+            # Fix link to Japanese definitions-file
+            "serialization.html#definitions-file": "serialization.html#定義ファイル"
 link_re_subs:
             # Fix link from untranslated account_nfts.html.
             # Because the replacement contains the original as a substring,
@@ -3591,6 +3593,11 @@ pages:
 
     -   md: "@i18n/ja/references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md"
         targets:
+            - ja
+
+    -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
+        targets:
+            - en
             - ja
 
     -   md: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md

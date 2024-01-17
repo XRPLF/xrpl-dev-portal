@@ -17,6 +17,8 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
 | [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [fixDisallowIncomingV1][]         | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [fixFillOrKill][]                 | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
@@ -105,6 +107,47 @@ The following is a list of known [amendments](amendments.html) that have been re
 
 
 ## Details about Known Amendments
+
+### fixDisallowIncomingV1
+[fixDisallowIncomingV1]: #fixdisallowincomingv1
+
+| Amendment    | fixDisallowIncomingV1 |
+|:-------------|:--------------|
+| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
+
+To recreate this issue:
+
+1. An issuer sets `asfRequireAuth` on their account.
+2. The user sets `asfDisallowIncomingTrustline` on their account.
+3. The user submits a `SetTrust` transaction to the issuer.
+4. The issuer is unable to authorize the trustline.
+
+With this amendment, the issuer can now authorize the trustline.
+
+This amendment has no effect unless the [DisallowIncoming][] amendment is enabled.
+
+
+### fixFillOrKill
+[fixFillOrKill]: #fixfillorkill
+
+| Amendment    | fixFillOrKill |
+|:-------------|:--------------|
+| Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue introduced in the `FlowCross` amendment. Offers with the `tfFillOrKill` flag set and `tfSell` not set will fail if the exchange rate on the offer is better than, but doesn't exactly match, the order book rate.
+
+This amendment enables the payment engine to properly handle this scenario and allow offers to cross.
+
+This amendment has no effect unless the [FlowCross][] amendment is enabled.
+
 
 ### DID
 [DID]: #did
