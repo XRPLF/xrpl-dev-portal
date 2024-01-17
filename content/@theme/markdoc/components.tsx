@@ -78,3 +78,64 @@ export function CodePageName(props: {
         <code>{props.name}</code>
     )
 }
+
+export function Badge(props: {
+    children: React.ReactNode;
+    color: string;
+    href: string;
+}) {
+    const DEFAULT_COLORS = {
+      "open for voting": "80d0e0",
+      "投票中": "80d0e0", // ja: open for voting
+      "expected": "blue",
+      "予定": "blue", // ja: expected
+      "enabled": "green",
+      "有効": "green", // ja: enabled
+      "obsolete": "red",
+      "廃止": "red", // ja: obsolete
+      "撤回": "red", // ja: withdrawn/removed/vetoed
+      "new in": "blue",
+      "新規": "blue", // ja: new in"
+      "in development": "lightgrey",
+      "開発中": "lightgrey", // ja: in development
+    }
+
+    let childstrings = ""
+    
+    React.Children.forEach(props.children, (child, index) => {
+      if (typeof child == "string") {
+        childstrings += child
+      }
+    });
+
+    const parts = childstrings.split(":")
+    const left : string = shieldsIoEscape(parts[0])
+    const right : string = shieldsIoEscape(parts.slice(1).join(":"))
+
+    let color = props.color
+    if (!color) {
+      if (DEFAULT_COLORS.hasOwnProperty(left.toLowerCase())) {
+        color = DEFAULT_COLORS[left.toLowerCase()]
+      } else {
+        color = "lightgrey"
+      }
+    }
+
+    let badge_url = `https://img.shields.io/badge/${left}-${right}-${color}.svg`
+
+    if (props.href) {
+      return (    
+        <Link to={props.href}>
+          <img src={badge_url} alt={childstrings} className="badge" />
+        </Link>
+      )
+    } else {
+      return (
+        <img src={badge_url} alt={childstrings} className="badge" />
+      )
+    }
+}
+
+function shieldsIoEscape(s: string) {
+  return s.trim().replaceAll('-', '--').replaceAll('_', '__')
+}
