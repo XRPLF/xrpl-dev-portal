@@ -110,3 +110,19 @@ export const xrpLoader: Schema & { tagName: string } = {
   render: 'XRPLoader',
   selfClosing: true,
 };
+
+export const badge: Schema & { tagName: string } = {
+  tagName: 'badge',
+  attributes: {
+    color: {
+      type: 'String',
+      required: false,
+      default: ""
+    },
+    href: {
+      type: 'String',
+      required: false
+    }
+  },
+  render: 'Badge'
+};
