@@ -582,7 +582,7 @@ Request('fee', {
 })
 
 Request('server_definitions', {
-  description: "Returns an SDK-compatible `definitions.json`, generated from the rippled server being queried.",
+  description: "Returns an SDK-compatible definitions.json, generated from the rippled server being queried.",
   link: "server_definitions.html",
   body: {
     "id": 1,
