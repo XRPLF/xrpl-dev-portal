@@ -126,3 +126,9 @@ export const badge: Schema & { tagName: string } = {
   },
   render: 'Badge'
 };
+
+export const notEnabled: Schema & { tagName: string } = {
+  tagName: 'not-enabled',
+  render: 'NotEnabled',
+  selfClosing: true,
+};
