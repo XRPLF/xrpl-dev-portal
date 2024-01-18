@@ -1,7 +1,7 @@
 import * as React from 'react';
 // @ts-ignore
 import dynamicReact from '@markdoc/markdoc/dist/react';
-import { usePageSharedData } from '@portal/hooks';
+import { usePageSharedData, useTranslate } from '@portal/hooks';
 import { Link } from '@portal/Link';
 import { idify } from '../helpers';
 
@@ -138,4 +138,11 @@ export function Badge(props: {
 
 function shieldsIoEscape(s: string) {
   return s.trim().replaceAll('-', '--').replaceAll('_', '__')
+}
+
+export function NotEnabled() {
+  const { translate } = useTranslate();
+  return (
+    <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>
+  )
 }
