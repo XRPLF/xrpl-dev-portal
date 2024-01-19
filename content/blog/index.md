@@ -1,7 +1,4 @@
 ---
-html: blog.html
-parent: index.html
-top_nav_grouping: Article Types
 metadata:
   indexPage: true
 blurb: Browse the XRP Ledger Community Blog.

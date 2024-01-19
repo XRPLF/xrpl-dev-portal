@@ -1,12 +1,11 @@
 ---
-html: bei-api.html
-parent: blog.html
+category: 2023
+date: 2023-03-01
 labels:
-  - Developer Reflections
+    - Developer Reflections
+targets: [devblog]
 ---
 # Developer Reflections: BEI API
-
-_Published Date: 2023-03-01_
 
 This week on Developer Reflections, we’re proud to highlight [BEI API](https://demo.anchainai.com/), an infrastructure app built using `rippled`.  Blockchain Ecosystem Intelligence (BEI) provides AI-powered, behavior-based intelligence that connects cryptocurrency wallets and transactions to real-world entities, enabling businesses to remain AML compliant.
 

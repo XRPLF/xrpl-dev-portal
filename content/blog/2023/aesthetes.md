@@ -1,12 +1,11 @@
 ---
-html: aesthetes.html
-parent: blog.html
+category: 2023
+date: 2023-01-18
 labels:
-  - Developer Reflections
+    - Developer Reflections
+targets: [devblog]
 ---
 # Developer Reflections: Aesthetes
-
-_Published Date: 2023-01-18_
 
 This week on Developer Reflections, we’re proud to highlight [Aesthetes](https://aesthetes.com/), which aims to merge fine art and blockchain by creating Phygital NFTs—NFTs based on both digital and physical artwork. Aesthetes serves as a marketplace where people can discover, collect and sell fine art phygital NFTs, with the goal of democratizing and breaking down barriers to the art industry.
 
