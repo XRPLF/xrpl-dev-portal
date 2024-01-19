@@ -322,7 +322,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">[node_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">NuDB</span>
 <span class="na">path</span><span class="o">=</span><span class="s">/var/lib/rippled/db/nudb</span>
-<span class="c1">#online_delete=2000</span>
+<span class="c1">#online_delete=300000</span>
 <span class="c1">#advisory_delete=0</span>
 </code></pre></div>
 <p>全履歴が記録されるサーバーでは、レジャーストアーにNuDBを使用します。これは、データベースがこれほど大きいと、RocksDBでは非常に大量のRAMが必要になるためです。詳細は、<a href="capacity-planning.html">容量の計画</a>を参照してください。パフォーマンス関連の構成オプション<code>open_files</code>、<code>filter_bits</code>、<code>cache_mb</code>、<code>file_size_mb</code>、および<code>file_size_mult</code>は、RocksDBのみに適用されるオプションであるため、デフォルトの<code>[node_db]</code>スタンザから削除できます。</p>
@@ -2456,6 +2456,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_definitions.html">server_definitions</a>
   </div>
 
       

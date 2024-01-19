@@ -392,7 +392,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">[node_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">NuDB</span>
 <span class="na">path</span><span class="o">=</span><span class="s">/var/lib/rippled/db/nudb</span>
-<span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span>
+<span class="na">online_delete</span><span class="o">=</span><span class="s">300000</span>
 <span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
 </code></pre></div>
 <p>（<code>path</code>を、ディスク上でレジャーを維持するディレクトリーに設定します。<code>online_delete</code>と<code>advisory_delete</code>をお使いの構成に合わせて調整します。）</p>
@@ -2624,6 +2624,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_definitions.html">server_definitions</a>
   </div>
 
       

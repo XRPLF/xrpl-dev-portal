@@ -416,8 +416,8 @@
 <p>The commandline always uses the latest <a href="#api-versioning">API version</a>.</p>
 <p class="devportal-callout caution"><strong>Caution:</strong> The commandline interface is intended for administrative purposes only and is <em>not a supported API</em>. New versions of <code>rippled</code> may introduce breaking changes to the commandline API without warning!</p>
 <h2 id="api-versioning">API Versioning<a aria-hidden="true" class="hover_anchor" href="#api-versioning"><i class="fa fa-link"></i></a></h2>
-<p>The <code>rippled</code> server uses a single integer to identify the API version to use. Currently, there are two API versions: <code>1</code> and <code>2</code> <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" target="_blank" title="New in: rippled 2.0.0"><img alt="New in: rippled 2.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%202.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>. Servers support a range of API versions, which it reports in the <code>version</code> API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when <code>version</code> method is documented. --></p>
-<p>Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a <code>server_info</code> request using API version 2 and then make another <code>server_info</code> request using API version 1 from the same connection.</p>
+<p>The <code>rippled</code> server uses a single integer to identify the API version to use. Currently, there are two API versions: <code>1</code> and <code>2</code> <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" target="_blank" title="New in: rippled 2.0.0"><img alt="New in: rippled 2.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%202.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a>. The server reports the range of supported API versions in the <code>version</code> API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when <code>version</code> method is documented. --></p>
+<p>Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make an <code>account_tx</code> request using API version 2 and then make another <code>account_tx</code> request using API version 1 from the same connection.</p>
 <p>Future versions of <code>rippled</code> that introduce breaking changes will introduce a new API version 3.</p>
 <h3 id="breaking-changes">Breaking Changes<a aria-hidden="true" class="hover_anchor" href="#breaking-changes"><i class="fa fa-link"></i></a></h3>
 <p>The following types of changes are <strong>breaking changes</strong>:</p>
@@ -2529,6 +2529,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_definitions.html">server_definitions</a>
   </div>
 
       

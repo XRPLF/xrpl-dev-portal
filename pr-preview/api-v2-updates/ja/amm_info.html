@@ -466,7 +466,7 @@
 <span class="w">            </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnW8FAPgpQgA6VoESnVrUVJHBdq9QAtRZs"</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">        </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"discounted_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"discounted_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-Jan-26 00:28:40.000000000 UTC"</span><span class="p">,</span>
 <span class="w">        </span><span class="nt">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"039C99CD9AB0B70B32ECDA51EAAE471625608EA2"</span><span class="p">,</span>
@@ -615,7 +615,7 @@
 <tr>
 <td><code>discounted_fee</code></td>
 <td>数値</td>
-<td>このAMMに対して取引を行う際に、オークションスロットの保有者、および対象となるアカウントに適用される割引後の取引手数料です。これは常に0です。</td>
+<td>このAMMに対して取引を行う際に、オークションスロットの保有者、および対象となるアカウントに適用される割引後の取引手数料です。これは通常の取引手数料の1/10です。</td>
 </tr>
 <tr>
 <td><code>expiration</code></td>
@@ -2752,6 +2752,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_definitions.html">server_definitions</a>
   </div>
 
       

@@ -331,7 +331,7 @@
 <p><code>rippled</code>の構成ファイルで<code>[node_db]</code> スタンザの<code>online_delete</code>フィールドを編集します。</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[node_db]</span>
 <span class="c1"># Other settings unchanged ...</span>
-<span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span>
+<span class="na">online_delete</span><span class="o">=</span><span class="s">300000</span>
 <span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
 </code></pre></div>
 <p><code>online_delete</code>を、オンライン削除の実行後に維持するレジャーバージョンの最小数に設定します。自動削除が設定されている場合（デフォルト）、サーバーは通常、この数の約2倍のレジャーバージョンが蓄積されると削除を実行します。</p>
@@ -2448,6 +2448,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_definitions.html">server_definitions</a>
   </div>
 
       

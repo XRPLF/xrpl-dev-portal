@@ -323,7 +323,7 @@
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="k">[node_db]</span>
 <span class="na">type</span><span class="o">=</span><span class="s">NuDB</span>
 <span class="na">path</span><span class="o">=</span><span class="s">/var/lib/rippled/db/nudb</span>
-<span class="c1">#online_delete=2000</span>
+<span class="c1">#online_delete=300000</span>
 <span class="c1">#advisory_delete=0</span>
 </code></pre></div>
 <p>On a full-history server, you should use NuDB for the ledger store, because RocksDB requires too much RAM when the database is that large. For more information, see <a href="capacity-planning.html">Capacity Planning</a>. You can remove the following performance-related configuration options from the default <code>[node_db]</code> stanza, because they only apply to RocksDB: <code>open_files</code>, <code>filter_bits</code>, <code>cache_mb</code>, <code>file_size_mb</code>, and <code>file_size_mult.</code></p>
@@ -2484,6 +2484,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_definitions.html">server_definitions</a>
   </div>
 
       

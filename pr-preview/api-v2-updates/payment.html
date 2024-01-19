@@ -355,7 +355,13 @@
 <td style="text-align: left;"><code>Amount</code></td>
 <td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
 <td style="text-align: left;">Amount</td>
-<td style="text-align: left;"><a href="request-formatting.html#api-versioning">API v1</a>: The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the <a href="#payment-flags"><code>tfPartialPayment</code> flag</a> is set, deliver <em>up to</em> this amount instead.<br/><a href="request-formatting.html#api-versioning">API v2</a>: Field renamed to <code>DeliverMax</code>.</td>
+<td style="text-align: left;"><a href="request-formatting.html#api-versioning">API v1</a>: Only available in API v1. The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the <a href="#payment-flags"><code>tfPartialPayment</code> flag</a> is set, deliver <em>up to</em> this amount instead.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>DeliverMax</code></td>
+<td style="text-align: left;"><a href="basic-data-types.html#specifying-currency-amounts">Currency Amount</a></td>
+<td style="text-align: left;">Amount</td>
+<td style="text-align: left;"><a href="request-formatting.html#api-versioning">API v2</a>: Only available in API v2. The maximum amount of currency to deliver. For non-XRP amounts, the nested field names MUST be lower-case. If the <a href="#payment-flags"><code>tfPartialPayment</code> flag</a> is set, deliver <em>up to</em> this amount instead. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/2.0.0" target="_blank" title="New in: rippled 2.0.0"><img alt="New in: rippled 2.0.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%202.0.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>DeliverMin</code></td>
@@ -2600,6 +2606,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_definitions.html">server_definitions</a>
   </div>
 
       

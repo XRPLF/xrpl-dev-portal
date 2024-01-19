@@ -332,7 +332,7 @@
 <span class="w">            </span><span class="p">}</span>
 <span class="w">          </span><span class="p">}</span>
 <span class="w">      </span><span class="p">],</span>
-<span class="w">      </span><span class="nt">"DiscountedFee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"DiscountedFee"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Expiration"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">721870180</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">"Price"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nt">"currency"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"039C99CD9AB0B70B32ECDA51EAAE471625608EA2"</span><span class="p">,</span>
@@ -454,7 +454,7 @@
 <td style="text-align: left;">文字列</td>
 <td style="text-align: left;">UInt32</td>
 <td style="text-align: left;">はい</td>
-<td style="text-align: left;">オークションの所有者に請求される取引手数料で、<code>TradingFee</code>と同じフォーマットです。デフォルトでは0で、オークションスロットの所有者はAMMの標準的な手数料の代わりに、手数料なしで取引できることを意味します。</td>
+<td style="text-align: left;">オークションスロットの所有者に請求される取引手数料で、<code>TradingFee</code>と同じフォーマットです。これは通常の取引手数料の1/10です。</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>Price</code></td>
@@ -2564,6 +2564,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="/ja/manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="/ja/server_definitions.html">server_definitions</a>
   </div>
 
       

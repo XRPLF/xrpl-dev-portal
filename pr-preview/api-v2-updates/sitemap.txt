@@ -374,6 +374,7 @@ https://xrpl.org/unsubscribe.html
 https://xrpl.org/server-info-methods.html
 https://xrpl.org/fee.html
 https://xrpl.org/manifest.html
+https://xrpl.org/server_definitions.html
 https://xrpl.org/server_info.html
 https://xrpl.org/server_state.html
 https://xrpl.org/clio-methods.html

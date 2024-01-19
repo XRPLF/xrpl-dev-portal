@@ -330,7 +330,7 @@
 <p>In your <code>rippled</code>'s config file, edit the <code>online_delete</code> field of the <code>[node_db]</code> stanza.</p>
 <div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="k">[node_db]</span>
 <span class="c1"># Other settings unchanged ...</span>
-<span class="na">online_delete</span><span class="o">=</span><span class="s">2000</span>
+<span class="na">online_delete</span><span class="o">=</span><span class="s">300000</span>
 <span class="na">advisory_delete</span><span class="o">=</span><span class="s">0</span>
 </code></pre></div>
 <p>Set <code>online_delete</code> to the minimum number of ledger versions to keep after running online deletion. With automatic deletion (the default), the server typically runs deletion when it has accumulated about twice this many ledger versions.</p>
@@ -2466,6 +2466,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_definitions.html">server_definitions</a>
   </div>
 
       

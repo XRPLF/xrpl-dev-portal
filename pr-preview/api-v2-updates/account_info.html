@@ -376,7 +376,7 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">Boolean</td>
 <td style="text-align: left;">No</td>
-<td><a href="request-formatting.html#api-versioning">API v1</a>: If <code>true</code>, return any <a href="signerlist.html">SignerList objects</a> associated with this account.<br/><a href="request-formatting.html#api-versioning">API v2</a>: Identical to v1, but also returns an <code>invalidParams</code> error if a non-boolean value is used.</td>
+<td><a href="request-formatting.html#api-versioning">API v1</a>: If <code>true</code>, return any <a href="signerlist.html">SignerList objects</a> associated with this account.<br/><a href="request-formatting.html#api-versioning">API v2</a>: Identical to v1, but also returns an <code>invalidParams</code> error if you provide a non-boolean value.</td>
 </tr>
 </tbody>
 </table>
@@ -522,7 +522,7 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
 <tr>
 <td style="text-align: left;"><code>signer_lists</code></td>
 <td style="text-align: left;">Array</td>
-<td style="text-align: left;"><a href="request-formatting.html#api-versioning">API v1</a>: <em>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.)</em> Array of <a href="signerlist.html">SignerList ledger objects</a> associated with this account for <a href="multi-signing.html">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. The field is nested under <code>account_data</code>.<br/><a href="request-formatting.html#api-versioning">API v2</a>: Identical to API v1, but the field is returned in the root reponse instead. <a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clio <i aria-hidden="true" class="fa fa-external-link"></i></a> implements the API v2 behavior.</td>
+<td style="text-align: left;"><a href="request-formatting.html#api-versioning">API v1</a>: <em>(Omitted unless the request specified <code>signer_lists</code> and at least one SignerList is associated with the account.)</em> Array of <a href="signerlist.html">SignerList ledger objects</a> associated with this account for <a href="multi-signing.html">Multi-Signing</a>. Since an account can own at most one SignerList, this array must have exactly one member if it is present. The field is nested under <code>account_data</code>.<br/><a href="request-formatting.html#api-versioning">API v2</a>: Identical to API v1, but the field is returned in the root response instead. <a class="external-link" href="https://github.com/XRPLF/clio" target="_blank">Clio <i aria-hidden="true" class="fa fa-external-link"></i></a> implements the API v2 behavior in all cases.</td>
 </tr>
 <tr>
 <td style="text-align: left;"><code>ledger_current_index</code></td>
@@ -2791,6 +2791,11 @@ rippled<span class="w"> </span>account_info<span class="w"> </span>rG1QQv2nh2gr7
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_definitions.html">server_definitions</a>
   </div>
 
       

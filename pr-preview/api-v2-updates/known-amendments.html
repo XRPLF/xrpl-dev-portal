@@ -276,6 +276,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amendments-in-development">Amendments in Development</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#obsolete-amendments">Obsolete Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#details-about-known-amendments">Details about Known Amendments</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixdisallowincomingv1">fixDisallowIncomingV1</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixfillorkill">fixFillOrKill</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#did">DID</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#amm">AMM</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#checkcashmakestrustline">CheckCashMakesTrustLine</a></li>
@@ -378,6 +380,16 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><a href="#did">DID</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="Open for Voting: 2024-01-09"><img alt="Open for Voting: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixdisallowincomingv1">fixDisallowIncomingV1</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="Open for Voting: 2024-01-09"><img alt="Open for Voting: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixfillorkill">fixFillOrKill</a></td>
 <td style="text-align: left;">v2.0.0</td>
 <td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.0.0.html" target="_blank" title="Open for Voting: 2024-01-09"><img alt="Open for Voting: 2024-01-09" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--01--09-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
 </tr>
@@ -747,6 +759,73 @@
 </tbody>
 </table>
 <h2 id="details-about-known-amendments">Details about Known Amendments<a aria-hidden="true" class="hover_anchor" href="#details-about-known-amendments"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixdisallowincomingv1">fixDisallowIncomingV1<a aria-hidden="true" class="hover_anchor" href="#fixdisallowincomingv1"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixDisallowIncomingV1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment fixes an issue with approving trustlines after a user enables the <code>lsfDisallowIncomingTrustline</code> flag on their account.</p>
+<p>To recreate this issue:</p>
+<ol>
+<li>An issuer sets <code>asfRequireAuth</code> on their account.</li>
+<li>The user sets <code>asfDisallowIncomingTrustline</code> on their account.</li>
+<li>The user submits a <code>SetTrust</code> transaction to the issuer.</li>
+<li>The issuer is unable to authorize the trustline.</li>
+</ol>
+<p>With this amendment, the issuer can now authorize the trustline.</p>
+<p>This amendment has no effect unless the <a href="#disallowincoming">DisallowIncoming</a> amendment is enabled.</p>
+<h3 id="fixfillorkill">fixFillOrKill<a aria-hidden="true" class="hover_anchor" href="#fixfillorkill"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixFillOrKill</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment fixes an issue introduced in the <code>FlowCross</code> amendment. Offers with the <code>tfFillOrKill</code> flag set and <code>tfSell</code> not set will fail if the exchange rate on the offer is better than, but doesn't exactly match, the order book rate.</p>
+<p>This amendment enables the payment engine to properly handle this scenario and allow offers to cross.</p>
+<p>This amendment has no effect unless the <a href="#flowcross">FlowCross</a> amendment is enabled.</p>
 <h3 id="did">DID<a aria-hidden="true" class="hover_anchor" href="#did"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -5026,6 +5105,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="manifest.html">manifest</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="server_definitions.html">server_definitions</a>
   </div>
 
       
