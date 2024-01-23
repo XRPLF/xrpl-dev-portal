@@ -848,10 +848,6 @@
 [validation_create method]: /references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
 [validation_create メソッド]: /references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
 [validation_createメソッド]: /references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
-[validation_seed command]: /references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
-[validation_seed method]: /references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
-[validation_seed メソッド]: /references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
-[validation_seedメソッド]: /references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
 [validator_info command]: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
 [validator_info method]: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
 [validator_info メソッド]: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
