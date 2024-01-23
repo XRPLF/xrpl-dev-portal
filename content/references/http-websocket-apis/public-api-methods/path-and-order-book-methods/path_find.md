@@ -59,8 +59,8 @@ The request includes the following parameters:
 | `subcommand`          | String           | Use `"create"` to send the create sub-command |
 | `source_account`      | String           | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | `destination_account` | String           | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
-| `destination_amount`  | String or Object | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" %}New in: rippled 0.30.0{% /badge %} You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Not compatible with `source_currencies`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" %}New in: rippled 0.30.0{% /badge %} |
+| `destination_amount`  | String or Object | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| `send_max`            | String or Object | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Not compatible with `source_currencies`. |
 | `paths`               | Array            | _(Optional)_ Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
@@ -449,7 +449,7 @@ The initial response follows the [standard format](../../api-conventions/respons
 | `destination_account` | String           | Unique address of the account that would receive a transaction. |
 | `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction. |
 | `source_account`      | String           | Unique address that would send a transaction. |
-| `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" %}New in: rippled 0.29.0{% /badge %} |
+| `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 

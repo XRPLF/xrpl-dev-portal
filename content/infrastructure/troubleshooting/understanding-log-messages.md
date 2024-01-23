@@ -26,7 +26,7 @@ Each line represents one log entry, with the following parts in order, separated
 
 1. The date the log entry was written, such as `2020-Jul-08`.
 2. The time the log entry was written, such as `20:12:12.075081020`.
-3. The time zone indicator `UTC`. (Log dates are always in UTC.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}New in: rippled 1.5.0{% /badge %}
+3. The time zone indicator `UTC`. (Log dates are always in UTC.)
 4. The log partition and severity, such as `LoadMonitor:WRN`.
 5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
 

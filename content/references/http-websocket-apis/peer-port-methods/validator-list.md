@@ -8,7 +8,7 @@ labels:
 ---
 # Validator List Method
 
-The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}New in: rippled 1.5.0{% /badge %}
+The validator list method is a special API endpoint that fetches a current, trusted validator list a `rippled` server is using. This often represents the exact list of validators a server trusts.
 
 Like the [Peer Crawler](peer-crawler.md), the validator list method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `rippled` servers' peer-to-peer communications.
 
@@ -41,7 +41,7 @@ The JSON object has the following fields:
 | `blob`           | String | Base64-encoded JSON data representing the validator list. |
 | `signature`      | String | The signature of the `blob` data, in hexadecimal. |
 | `version`        | Number | The version of the validator list protocol this object uses. The current version is **1**. A higher version number indicates backwards-incompatible changes with a previous version of the validator list protocol. |
-| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}New in: rippled 1.7.0{% /badge %} |
+| `public_key`     | String | The public key used to verify this validator list data, in hexadecimal. This is a 32-byte Ed25519 public key prefixed with the byte `0xED`.  |
 
 ### Manifest Data
 [[Source]](https://github.com/XRPLF/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "Source")

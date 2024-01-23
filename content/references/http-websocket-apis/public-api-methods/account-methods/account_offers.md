@@ -206,8 +206,8 @@ Each offer object contains the following fields:
 | `seq`        | Unsigned integer | Sequence number of the transaction that created this entry. (Transaction [sequence numbers](../../../protocol/data-types/basic-data-types.md#account-sequence) are relative to accounts.) |
 | `taker_gets` | String or Object | The amount the account accepting the offer receives, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
 | `taker_pays` | String or Object | The amount the account accepting the offer provides, as a String representing an amount in XRP, or a currency specification object. (See [Specifying Currency Amounts][Currency Amount]) |
-| `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" %}New in: rippled 0.29.0{% /badge %} |
-| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as the number of [seconds since the Ripple Epoch][]. See also: [Offer Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration). {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" %}New in: rippled 0.30.1{% /badge %} |
+| `quality`    | String           | The exchange rate of the offer, as the ratio of the original `taker_pays` divided by the original `taker_gets`. When executing offers, the offer with the most favorable (lowest) quality is consumed first; offers with the same quality are executed from oldest to newest. |
+| `expiration` | Unsigned integer | (May be omitted) A time after which this offer is considered unfunded, as the number of [seconds since the Ripple Epoch][]. See also: [Offer Expiration](../../../../concepts/tokens/decentralized-exchange/offers.md#offer-expiration). |
 
 ## Possible Errors
 

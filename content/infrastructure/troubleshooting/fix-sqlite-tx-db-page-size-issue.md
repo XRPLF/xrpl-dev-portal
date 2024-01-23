@@ -23,7 +23,7 @@ The capacity of the SQLite database is a result of the database's _page size_ pa
 
 If your server is vulnerable to this problem, you can detect it two ways:
 
-- You can detect the problem [proactively](#proactive-detection) (before it causes problems) if your `rippled` server is [version 1.1.0][New in: rippled 1.1.0] or later.
+- You can detect the problem [proactively](#proactive-detection) (before it causes problems) if your `rippled` server is version 1.1.0 or later.
 - You can identify the problem [reactively](#reactive-detection) (when your server is crashing) on any `rippled` version.
 
 In both cases, detection of the problem requires access to `rippled`'s server logs.
@@ -32,7 +32,7 @@ In both cases, detection of the problem requires access to `rippled`'s server lo
 
 ### Proactive Detection
 
-To detect the SQLite page size problem proactively, you must be running **[rippled 1.1.0][New in: rippled 1.1.0] or later**. The `rippled` server writes a message such as the following in its debug log periodically, at least once every 2 minutes. (The exact numeric values from the log entry and the path to your transaction database depend on your environment.)
+To detect the SQLite page size problem proactively, you must be running **`rippled` 1.1.0 or later**. The `rippled` server writes a message such as the following in its debug log periodically, at least once every 2 minutes. (The exact numeric values from the log entry and the path to your transaction database depend on your environment.)
 
 ```text
 Transaction DB pathname: /opt/rippled/transaction.db; SQLite page size: 1024
@@ -75,7 +75,7 @@ You can fix this issue using `rippled` on supported Linux systems according to t
 
 ### Prerequisites
 
-- You must be running **[rippled version 1.1.0][New in: rippled 1.1.0] or later**.
+- You must be running **`rippled` version 1.1.0 or later**.
 
     - [Upgrade rippled](../installation/index.md) to the latest stable version before starting this process.
 

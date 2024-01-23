@@ -8,7 +8,7 @@ labels:
 ---
 # Enable Public Signing
 
-By default, the signing methods for [`rippled`](../../concepts/networks-and-servers/index.md) are limited to [administrative connections](../../references/http-websocket-apis/admin-api-methods/index.md). If you want to allow signing methods to be used as public API methods (like with versions of `rippled` before v1.1.0), you can enable it with a configuration change. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}New in: rippled 1.1.0{% /badge %}
+By default, the signing methods for [`rippled`](../../concepts/networks-and-servers/index.md) are limited to [administrative connections](../../references/http-websocket-apis/admin-api-methods/index.md). If you want to allow signing methods to be used as public API methods (like with versions of `rippled` before v1.1.0), you can enable it with a configuration change.
 
 This enables the following methods to be used on "public" [JSON-RPC and WebSocket connections](../../tutorials/get-started/get-started-using-http-websocket-apis.md), if your server accepts them:
 

@@ -13,7 +13,7 @@ The `sign_for` command provides one signature for a [multi-signed transaction](.
 {% partial file="/_snippets/public-signing-note.md" /%}
 
 
-This command requires the [MultiSign amendment][] to be enabled. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}New in: rippled 0.31.0{% /badge %}
+This command requires the [MultiSign amendment][] to be enabled.
 
 ## Request Format
 An example of the request format:
