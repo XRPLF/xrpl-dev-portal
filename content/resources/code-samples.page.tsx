@@ -4,11 +4,12 @@ import { usePageSharedData, useTranslate } from '@portal/hooks';
 const langIcons = {
   cli: require('../static/img/logos/cli.svg'),
   go: require('../static/img/logos/golang.svg'),
+  http: require('../static/img/logos/globe.svg'),
   java: require('../static/img/logos/java.svg'),
   js: require('../static/img/logos/javascript.svg'),
   php: require('../static/img/logos/php.svg'),
   py: require('../static/img/logos/python.svg'),
-  http: require('../static/img/logos/globe.svg'),
+  ts: require('../static/img/logos/typescript.svg'),
 };
 const target = {
   github_forkurl: 'https://github.com/XRPLF/xrpl-dev-portal',
