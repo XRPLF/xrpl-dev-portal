@@ -11,6 +11,8 @@ labels:
 
 The `server_state` command asks the server for various machine-readable information about the `rippled` server's current state. The response is almost the same as the [server_info method][], but uses units that are easier to process instead of easier to read. (For example, XRP values are given in integer drops instead of scientific notation or decimal values, and time is given in milliseconds instead of seconds.)
 
+The [Clio server](the-clio-server.html) does not support `server_state` directly, but you can ask for the `server_state` of the `rippled` server that Clio is connected to. Specify `"ledger_index": "current"` (WebSocket) or `"params": [{"ledger_index": "current"}]` (JSON-RPC).
+
 ## Request Format
 An example of the request format:
 
@@ -21,7 +23,8 @@ An example of the request format:
 ```json
 {
   "id": 2,
-  "command": "server_state"
+  "command": "server_state",
+  "ledger_index": "current"
 }
 ```
 
@@ -31,7 +34,7 @@ An example of the request format:
 {
     "method": "server_state",
     "params": [
-        {}
+        {"ledger_index": "current"}
     ]
 }
 ```
