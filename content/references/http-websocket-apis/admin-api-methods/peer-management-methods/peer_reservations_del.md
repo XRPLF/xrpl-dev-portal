@@ -8,9 +8,9 @@ labels:
 # peer_reservations_del
 [[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
-The `{{currentpage.name}}` method removes a specific [peer reservation][], if one exists. [New in: rippled 1.4.0][]
+The {% code-page-name /%} method removes a specific [peer reservation][], if one exists. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}New in: rippled 1.4.0{% /badge %}
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The {% code-page-name /%} method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 **Note:** Removing a peer reservation does not automatically disconnect the corresponding peer, if that peer is connected.
 
@@ -18,37 +18,37 @@ _The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) 
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "peer_reservations_del_example_1",
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
       "public_key": "n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"
     }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
-#Syntax: {{currentpage.name}} <public_key>
-rippled {{currentpage.name}} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
+#Syntax: {% $frontmatter.seo.title %} <public_key>
+rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameter:
 
@@ -61,10 +61,9 @@ The request includes the following parameter:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "peer_reservations_del_example_1",
@@ -78,9 +77,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -92,9 +91,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -109,8 +108,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -124,8 +124,8 @@ The response follows the [standard format][], with a successful result containin
 
 If the `previous` field is provided, it shows the previous status of this peer reservation, with the following fields:
 
-{% include '_snippets/peer_reservation_object.md' %}
-<!--_ -->
+{% partial file="/_snippets/peer_reservation_object.md" /%}
+
 
 ### Possible Errors
 
@@ -134,7 +134,4 @@ If the `previous` field is provided, it shows the previous status of this peer r
 - `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58][] format.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

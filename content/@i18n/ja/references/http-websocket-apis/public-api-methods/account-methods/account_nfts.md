@@ -15,12 +15,11 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 ## リクエストのフォーマット
 リクエストのフォーマットの例
 
-{% include '_snippets/no-cli-syntax.ja.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "account_nfts",
@@ -28,9 +27,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "account_nfts",
@@ -40,10 +39,11 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#account_nfts)
+[試してみる >](/resources/dev-tools/websocket-api-tool#account_nfts)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -59,10 +59,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 ## レスポンスのフォーマット
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -93,9 +92,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -125,8 +124,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -145,10 +145,10 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 | `Field`        | 型                  | 説明                                  |
 |:---------------|:------------------- |:-------------------------------------|
-| `Flags`        | 数値                | このNFTokenで有効なブール値フラグのビットマップ。指定できる値については、[NFTokenフラグ](nftoken.html#nftoken-フラグ)を参照してください。 |
+| `Flags`        | 数値                | このNFTokenで有効なブール値フラグのビットマップ。指定できる値については、[NFTokenフラグ](../../../protocol/data-types/nftoken.md#nftoken-フラグ)を参照してください。 |
 | `Issuer`       | 文字列 - [アドレス][] | このNFTokenを発行したアカウント。 |
 | `NFTokenID`    | 文字列               | このNFTokenの一意の識別子（16進数）。 |
-| `NFTokenTaxon` | 数値                | このトークンの[taxon](nftoken.html#nftokentaxon分類群)の非乱数化した値。同じtaxonを持つ複数のトークンは、一つの限定されたシリーズのインスタンスを表すかもしれません。 |
+| `NFTokenTaxon` | 数値                | このトークンの[taxon](../../../protocol/data-types/nftoken.md#nftokentaxon分類群)の非乱数化した値。同じtaxonを持つ複数のトークンは、一つの限定されたシリーズのインスタンスを表すかもしれません。 |
 | `URI`          | String              | このNFTokenに関連付けられた16進数のURI データ。 |
 | `nft_serial`   | 文字列               | このNFTokenのトークンシーケンス番号。 |
 
@@ -159,6 +159,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 * `actNotFound` - リクエストの`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -13,7 +13,7 @@ _(Added by the [MultiSign amendment][].)_
 A `SignerList` entry represents a list of parties that, as a group, are authorized to sign a transaction in place of an individual account. You can create, replace, or remove a signer list using a [SignerListSet transaction][].
 
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -48,9 +48,9 @@ A `SignerList` entry represents a list of parties that, as a group, are authoriz
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
@@ -59,7 +59,7 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the transaction that most recently modified this object. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this object. |
 | `SignerEntries`     | Array     | Array         | Yes       | An array of Signer Entry objects representing the parties who are part of this signer list. |
-| `SignerListID`      | Number    | UInt32        | Yes       | An ID for this signer list. Currently always set to `0`. If a future [amendment](amendments.html) allows multiple signer lists for an account, this may change. |
+| `SignerListID`      | Number    | UInt32        | Yes       | An ID for this signer list. Currently always set to `0`. If a future [amendment](../../../../concepts/networks-and-servers/amendments.md) allows multiple signer lists for an account, this may change. |
 | `SignerQuorum`      | Number    | UInt32        | Yes       | A target number for signer weights. To produce a valid signature for the owner of this SignerList, the signers must provide valid signatures whose weights sum to this value or more. |
 
 The `SignerEntries` may be any combination of funded and unfunded addresses that use either secp256k1 or ed25519 keys.
@@ -74,9 +74,9 @@ Each member of the `SignerEntries` field is an object that describes that signer
 | `SignerWeight`  | Number    | UInt16        | The weight of a signature from this signer. A multi-signature is only valid if the sum weight of the signatures provided meets or exceeds the signer list's `SignerQuorum` value. |
 | `WalletLocator` | String    | Hash256       | _(Optional)_ Arbitrary hexadecimal data. This can be used to identify the signer or for other, related purposes. _(Added by the [ExpandedSignerList amendment][].)_ |
 
-When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot ledger entry](accountroot.html), then only the [master private key](cryptographic-keys.html) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
+When processing a multi-signed transaction, the server looks up the `Account` values with respect to the ledger at the time of transaction execution. If the address _does not_ correspond to a funded [AccountRoot ledger entry](accountroot.md), then only the [master private key](../../../../concepts/accounts/cryptographic-keys.md) associated with that address can be used to produce a valid signature. If the account _does_ exist in the ledger, then it depends on the state of that account. If the account has a Regular Key configured, the Regular Key can be used. The account's master key can only be used if it is not disabled. A multi-signature cannot be used as part of another multi-signature.
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
 _(Added by the [MultiSignReserve amendment][].)_
 
@@ -84,14 +84,14 @@ SignerList entries can have the following value in the `Flags` field:
 
 | Flag Name          | Hex Value    | Decimal Value | Description              |
 |:-------------------|:-------------|:--------------|:-------------------------|
-| `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](reserves.html#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
+| `lsfOneOwnerCount` | `0x00010000` | 65536         | If this flag is enabled, this SignerList counts as one item for purposes of the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). Otherwise, this list counts as N+2 items, where N is the number of signers it contains. This flag is automatically enabled if you add or update a signer list after the [MultiSignReserve amendment][] is enabled. |
 
 
 ## Signer Lists and Reserves
 
-A signer list contributes to its owner's [reserve requirement](reserves.html). Removing the signer list frees up the reserve.
+A signer list contributes to its owner's [reserve requirement](../../../../concepts/accounts/reserves.md). Removing the signer list frees up the reserve.
 
-The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {{target.owner_reserve}}.
+The [MultiSignReserve amendment][] (enabled 2019-04-17) made it so each signer list counts as one item, regardless of how many members it has. As a result, the owner reserve for any signer list added or updated after this time is {% $env.PUBLIC_OWNER_RESERVE %}.
 
 A signer list created before the [MultiSignReserve amendment][] itself counts as two items towards the owner reserve, and each member of the list counts as one. As a result, the total owner reserve associated with an old signer list is anywhere from 3 times to 10 times as much as a new signer list. To update a signer list to use the new, reduced reserve, update the signer list by sending a [SignerListSet transaction][].
 
@@ -104,7 +104,4 @@ The ID of a `SignerList` entry is the SHA-512Half of the following values, conca
 * The AccountID of the owner of the signer list
 * The `SignerListID` (currently always `0`)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

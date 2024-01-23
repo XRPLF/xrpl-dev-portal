@@ -20,7 +20,7 @@ This example shows how to:
 2. Get a list of offers for the brokered item.
 3. Broker a sale between two different accounts.
 
-[![Quickstart form with Broker Account](img/quickstart21.png)](img/quickstart21.png)
+[![Quickstart form with Broker Account](/img/quickstart21.png)](/img/quickstart21.png)
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} archive to try each of the samples in your own browser.
 
@@ -37,7 +37,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         2. Click **Get New Operational Account**.
         3. Click **Get New Broker Account**
 
-[![Quickstart form with Account Information](img/quickstart22.png)](img/quickstart22.png)
+[![Quickstart form with Account Information](/img/quickstart22.png)](/img/quickstart22.png)
 
 ## Prepare a Brokered Transaction
 
@@ -46,31 +46,31 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 </div>
 
 1. Use the Standby account to create an NFT Sell Offer with the Broker account as the destination.
-	1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
-	2. Set the **Flags** field to _1_.
-	3. Enter the **NFT ID** of the NFT you want to sell.
-	4. Optionally, enter a number of days until **Expiration**.
-	5. Enter the Broker account number as the **Destination**.
-	6. Click **Create Sell Offer**.
+    1. Enter the **Amount** of the sell offer in drops (millionths of an XRP).
+    2. Set the **Flags** field to _1_.
+    3. Enter the **NFT ID** of the NFT you want to sell.
+    4. Optionally, enter a number of days until **Expiration**.
+    5. Enter the Broker account number as the **Destination**.
+    6. Click **Create Sell Offer**.
 
 
-[![Sell Offer with Destination](img/quickstart23.png)](img/quickstart23.png)
+[![Sell Offer with Destination](/img/quickstart23.png)](/img/quickstart23.png)
 
 2. Use the Operational account to create an NFT Buy Offer.
-	1. Enter the **Amount** of your offer.
-	2. Enter the **NFT ID**.
-	3. Enter the owner’s account string in the **Owner** field.
-	4. Optionally enter the number of days until **Expiration**.
-	5. Click **Create Buy Offer**.
+    1. Enter the **Amount** of your offer.
+    2. Enter the **NFT ID**.
+    3. Enter the owner’s account string in the **Owner** field.
+    4. Optionally enter the number of days until **Expiration**.
+    5. Click **Create Buy Offer**.
 
-[![Buy Offer](img/quickstart24.png)](img/quickstart24.png)
+[![Buy Offer](/img/quickstart24.png)](/img/quickstart24.png)
 
 ## Get Offers
 
 1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
-[![Get Offers](img/quickstart25.png)](img/quickstart25.png)
+[![Get Offers](/img/quickstart25.png)](/img/quickstart25.png)
 
 ## Broker the Sale
 
@@ -79,7 +79,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
-[![Brokered Sale](img/quickstart26.png)](img/quickstart26.png)
+[![Brokered Sale](/img/quickstart26.png)](/img/quickstart26.png)
 
 
 ## Cancel Offer
@@ -89,7 +89,7 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFT Offer Index** field.
 2. Click **Cancel Offer**.
 
-[![Cancel Offer](img/quickstart27.png)](img/quickstart27.png)
+[![Cancel Offer](/img/quickstart27.png)](/img/quickstart27.png)
 
 # Code Walkthrough
 
@@ -119,7 +119,7 @@ Connect to the ledger.
   brokerResultField.value = results
   await client.connect()
   results += '\nConnected. Getting offers...'
-	brokerResultField.value = results
+    brokerResultField.value = results
 ```
 
 Request the list of sell offers for the token.
@@ -136,7 +136,7 @@ Request the list of sell offers for the token.
     nftSellOffers = 'No sell offers.'
   }
   results += JSON.stringify(nftSellOffers,null,2)
-	brokerResultField.value = results
+    brokerResultField.value = results
 ```
 
 Request the list of buy offers for the token.
@@ -153,7 +153,7 @@ Request the list of buy offers for the token.
     nftBuyOffers =  'No buy offers.'
   }
   results += JSON.stringify(nftBuyOffers,null,2)    
-	brokerResultField.value = results
+    brokerResultField.value = results
 ```
 
 Disconnect from the ledger.
@@ -172,16 +172,16 @@ async function brokerSale() {
 Connect to the ledger and get the accounts.
 
 ```javascript      
-	const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-	const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-	const broker_wallet = xrpl.Wallet.fromSeed (brokerSeedField.value)
-	let net = getNet()
-	const client = new xrpl.Client(net)
-	results = 'Connecting to ' + getNet() + '...'
-	brokerResultField.value = results
-	await client.connect()
-	results += '\nConnected. Brokering sale...'
-	brokerResultField.value = results
+    const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
+    const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+    const broker_wallet = xrpl.Wallet.fromSeed (brokerSeedField.value)
+    let net = getNet()
+    const client = new xrpl.Client(net)
+    results = 'Connecting to ' + getNet() + '...'
+    brokerResultField.value = results
+    await client.connect()
+    results += '\nConnected. Brokering sale...'
+    brokerResultField.value = results
 ```
 
 Prepare the transaction. The difference between a brokered sale and a direct sale is that you provide both a sell offer and a buy offer, with an agreed-upon broker's fee. 
@@ -205,14 +205,14 @@ Prepare the transaction. The difference between a brokered sale and a direct sal
 Report the results.
 
 ```javascript      
-	results += "\n\nTransaction result:\n" + 
-			JSON.stringify(tx.result.meta.TransactionResult, null, 2)
-	results += "\nBalance changes:\n" +
-			JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
-	operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
-	brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
-	brokerResultField.value = results
+    results += "\n\nTransaction result:\n" + 
+            JSON.stringify(tx.result.meta.TransactionResult, null, 2)
+    results += "\nBalance changes:\n" +
+            JSON.stringify(xrpl.getBalanceChanges(tx.result.meta), null, 2)
+    operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+    standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+    brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
+    brokerResultField.value = results
 ```
 
 Disconnect from the ledger.
@@ -237,9 +237,9 @@ Get the broker account and connect to the ledger.
 
 ```javascript      
   const wallet = xrpl.Wallet.fromSeed(brokerSeedField.value)
-	let net = getNet()
-	const client = new xrpl.Client(net)
-	results = 'Connecting to ' + getNet() + '...'
+    let net = getNet()
+    const client = new xrpl.Client(net)
+    results = 'Connecting to ' + getNet() + '...'
   brokerResultField.value = results
   await client.connect()
   results +=  "\nConnected. Cancelling offer..."
@@ -456,13 +456,13 @@ async function getAccountsFromSeeds() {
 Connect to the ledger.
 
 ```javascript      
-	let net = getNet()
-	const client = new xrpl.Client(net)
-	results = 'Connecting to ' + getNet() + '....'
-	standbyResultField.value = results
-	await client.connect()
-	results += '\nConnected, finding wallets.\n'
-	standbyResultField.value = results
+    let net = getNet()
+    const client = new xrpl.Client(net)
+    results = 'Connecting to ' + getNet() + '....'
+    standbyResultField.value = results
+    await client.connect()
+    results += '\nConnected, finding wallets.\n'
+    standbyResultField.value = results
 ```
 
 Use the `split` function to parse the values from the **Seeds** field.
@@ -490,23 +490,23 @@ Get the XRP balances for the accounts.
 Populate the form fields based on the account values. 
 
 ```javascript      
-	standbyAccountField.value = standby_wallet.address
-	standbyPubKeyField.value = standby_wallet.publicKey
-	standbyPrivKeyField.value = standby_wallet.privateKey
-	standbySeedField.value = standby_wallet.seed
-	standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
+    standbyAccountField.value = standby_wallet.address
+    standbyPubKeyField.value = standby_wallet.publicKey
+    standbyPrivKeyField.value = standby_wallet.privateKey
+    standbySeedField.value = standby_wallet.seed
+    standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 
-	operationalAccountField.value = operational_wallet.address
-	operationalPubKeyField.value = operational_wallet.publicKey
-	operationalPrivKeyField.value = operational_wallet.privateKey
-	operationalSeedField.value = operational_wallet.seed
-	operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
+    operationalAccountField.value = operational_wallet.address
+    operationalPubKeyField.value = operational_wallet.publicKey
+    operationalPrivKeyField.value = operational_wallet.privateKey
+    operationalSeedField.value = operational_wallet.seed
+    operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
 
-	brokerAccountField.value = broker_wallet.address
-	brokerPubKeyField.value = broker_wallet.publicKey
-	brokerPrivKeyField.value = broker_wallet.privateKey
-	brokerSeedField.value = broker_wallet.seed
-	brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
+    brokerAccountField.value = broker_wallet.address
+    brokerPubKeyField.value = broker_wallet.publicKey
+    brokerPrivKeyField.value = broker_wallet.privateKey
+    brokerSeedField.value = broker_wallet.seed
+    brokerBalanceField.value = (await client.getXrpBalance(broker_wallet.address))
 ```
 
 Disconnect from the ledger.
@@ -519,7 +519,7 @@ Use the `getBalances()` function to get the current balances of fiat currency.
 
 ```javascript      
   getBalances()
-	
+    
 } // End of getAccountsFromSeeds()
 ```
 
@@ -661,93 +661,93 @@ Revise the HTML form to add a new Broker section at the top.
       <br/>
       <textarea id="seeds" cols="40" rows= "3"></textarea>
       <br/><br/>
-		<table align="center">
-		  <tr valign="top">
-		    <td>
-		      <button type="button" onClick="getAccount('broker')">Get New Broker Account</button>
-		    </td>
-		  </tr>
-		  <tr valign="top">
-			<td align="right">
-			  Broker Account
-			</td>
-			<td>
-			  <input type="text" id="brokerAccountField" size="40"></input>
-			  <button type="button" id="another" onclick="brokerSale()">Broker Sale</button>
-			</td>
-			<td rowspan="7">
-		    <textarea id="brokerResultField" cols="40" rows="12"></textarea>
-		    </td>
-		  </tr>
-		  <tr>
-			<td align="right">
-			  Public Key
-			</td>
-			<td>
-			  <input type="text" id="brokerPubKeyField" size="40"></input>
+        <table align="center">
+          <tr valign="top">
+            <td>
+              <button type="button" onClick="getAccount('broker')">Get New Broker Account</button>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td align="right">
+              Broker Account
+            </td>
+            <td>
+              <input type="text" id="brokerAccountField" size="40"></input>
+              <button type="button" id="another" onclick="brokerSale()">Broker Sale</button>
+            </td>
+            <td rowspan="7">
+            <textarea id="brokerResultField" cols="40" rows="12"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">
+              Public Key
+            </td>
+            <td>
+              <input type="text" id="brokerPubKeyField" size="40"></input>
               <button type="button" onClick="brGetOffers()">Get Offers</button>
-			  <br>
-			</td>
-		  </tr>
-		  <tr>
-			<td align="right">
-			  Private Key
-			</td>
-			<td>
-			  <input type="text" id="brokerPrivKeyField" size="40"></input>
-			  <button type="button" onClick="brCancelOffer()">Cancel Offer</button>
-			  <br>
-			</td>
-		  </tr>
-		  <tr>
-			<td align="right">
-			  Seed
-			  <br>
-			</td>
-			<td>
-			  <input type="text" id="brokerSeedField" size="40"></input>
-			</td>
-		  </tr>
-		  <tr>
-			<td align="right">
-			  XRP Balance
-			</td>
-			<td>
-			  <input type="text" id="brokerBalanceField" size="40"></input>
-			  <br>
-			</td>
-		  </tr>
-		  <tr>
-			<td align="right">
-			  Amount
-			</td>
-			<td>
-			  <input type="text" id="brokerAmountField" size="40"></input>
-			  <br>
-			</td>
-		  </tr>
-		  <tr>
-			<td align="right">NFT ID</td>
-			<td><input type="text" id="brokerTokenIdField" value="" size="80"/></td>
-		  </tr>
-		  <tr>
-			<td align="right">Sell NFT Offer Index</td>
-			<td><input type="text" id="brokerTokenSellOfferIndexField" value="" size="80"/></td>
-		  </tr>
-		  <tr>
-			<td align="right">Buy NFT Offer Index</td>
-			<td><input type="text" id="brokerTokenBuyOfferIndexField" value="" size="80"/></td>
-		  </tr>
-		  <tr>
-			<td align="right">Owner</td>
-			<td><input type="text" id="brokerOwnerField" value="" size="80"/></td>
-		  </tr>
-		  <tr>
-			<td align="right">Broker Fee</td>
-			<td><input type="text" id="brokerBrokerFeeField" value="" size="80"/></td>
-		  </tr>
-		</table>
-		<br/><br/>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">
+              Private Key
+            </td>
+            <td>
+              <input type="text" id="brokerPrivKeyField" size="40"></input>
+              <button type="button" onClick="brCancelOffer()">Cancel Offer</button>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">
+              Seed
+              <br>
+            </td>
+            <td>
+              <input type="text" id="brokerSeedField" size="40"></input>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">
+              XRP Balance
+            </td>
+            <td>
+              <input type="text" id="brokerBalanceField" size="40"></input>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">
+              Amount
+            </td>
+            <td>
+              <input type="text" id="brokerAmountField" size="40"></input>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td align="right">NFT ID</td>
+            <td><input type="text" id="brokerTokenIdField" value="" size="80"/></td>
+          </tr>
+          <tr>
+            <td align="right">Sell NFT Offer Index</td>
+            <td><input type="text" id="brokerTokenSellOfferIndexField" value="" size="80"/></td>
+          </tr>
+          <tr>
+            <td align="right">Buy NFT Offer Index</td>
+            <td><input type="text" id="brokerTokenBuyOfferIndexField" value="" size="80"/></td>
+          </tr>
+          <tr>
+            <td align="right">Owner</td>
+            <td><input type="text" id="brokerOwnerField" value="" size="80"/></td>
+          </tr>
+          <tr>
+            <td align="right">Broker Fee</td>
+            <td><input type="text" id="brokerBrokerFeeField" value="" size="80"/></td>
+          </tr>
+        </table>
+        <br/><br/>
       <table>
         <tr valign="top">
           <td>
@@ -1033,14 +1033,14 @@ Revise the HTML form to add a new Broker section at the top.
                             <td align="right">Owner</td>
                             <td><input type="text" id="operationalOwnerField" value="" size="80"/></td>
                           </tr>
-						  <tr>
+                          <tr>
                             <td align="right">Destination</td>
-							<td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
-					      </tr>
-						  <tr>
-							<td align="right">Expiration</td>
-							<td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
-						  </tr>
+                            <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
+                          </tr>
+                          <tr>
+                            <td align="right">Expiration</td>
+                            <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
+                          </tr>
                           <tr>
                             <td align="right">Transfer Fee</td>
                             <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>

@@ -13,19 +13,18 @@ label:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 2,
    "command": "ledger_closed"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_closed",
@@ -34,27 +33,27 @@ label:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 #Syntax: ledger_closed
 rippled ledger_closed
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ledger_closed)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ledger_closed)
 
 このメソッドはパラメーターを受け入れません。
 
 ## レスポンスのフォーマット
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -66,9 +65,9 @@ rippled ledger_closed
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -80,8 +79,9 @@ rippled ledger_closed
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -94,6 +94,4 @@ rippled ledger_closed
 
 * いずれかの[汎用エラータイプ][]。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

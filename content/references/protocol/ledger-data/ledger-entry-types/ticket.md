@@ -11,9 +11,9 @@ labels:
 
 _(Added by the [TicketBatch amendment][].)_
 
-A `Ticket` entry type represents a [Ticket](tickets.html), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][].
+A `Ticket` entry type represents a [Ticket](../../../../concepts/accounts/tickets.md), which tracks an account [sequence number][Sequence Number] that has been set aside for future use. You can create new tickets with a [TicketCreate transaction][].
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -27,31 +27,31 @@ A `Ticket` entry type represents a [Ticket](tickets.html), which tracks an accou
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
-| `Account`           | String    | AccountID     | Yes       | The [account](accounts.html) that owns this Ticket. |
-| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this is a {{currentpage.name}} entry. |
+| `Account`           | String    | AccountID     | Yes       | The [account](../../../../concepts/accounts/accounts.md) that owns this Ticket. |
+| `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this is a {% $frontmatter.seo.title %} entry. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
-| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](transactions.html) that most recently modified this entry. |
+| `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](../../../../concepts/transactions/index.md) that most recently modified this entry. |
 | `PreviousTxnLgrSeq` | Number    | UInt32        | Yes       | The [index of the ledger][Ledger Index] that contains the transaction that most recently modified this entry. |
 | `TicketSequence`    | Number    | UInt32        | Yes       | The [Sequence Number][] this Ticket sets aside. |
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-`{{currentpage.name}}` entries count as one item towards the owner reserve of the account that placed the created it, as long as the entry is in the ledger. Using the ticket frees up the reserve.
-
-
-## {{currentpage.name}} Flags
-
-There are no flags defined for `{{currentpage.name}}` entries.
+{% code-page-name /%} entries count as one item towards the owner reserve of the account that placed the created it, as long as the entry is in the ledger. Using the ticket frees up the reserve.
 
 
-## {{currentpage.name}} ID Format
+## {% $frontmatter.seo.title %} Flags
+
+There are no flags defined for {% code-page-name /%} entries.
+
+
+## {% $frontmatter.seo.title %} ID Format
 
 The ID of a Ticket object is the SHA-512Half of the following values, concatenated in order:
 
@@ -59,7 +59,4 @@ The ID of a Ticket object is the SHA-512Half of the following values, concatenat
 * The AccountID of the owner of the Ticket
 * The `TicketSequence` number of the Ticket
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

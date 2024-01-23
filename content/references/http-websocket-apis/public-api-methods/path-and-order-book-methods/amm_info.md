@@ -11,24 +11,23 @@ labels:
 # amm_info
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp "Source")
 
-The `{{currentpage.name}}` method gets information about an Automated Market Maker (AMM) instance.
+The {% code-page-name /%} method gets information about an Automated Market Maker (AMM) instance.
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment][] {% not-enabled /%})_
 
 
 ### Request Format
 
 An example of the request format:
 
-{% include '_snippets/no-cli-syntax.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "asset": {
       "currency": "XRP"
     },
@@ -38,12 +37,12 @@ An example of the request format:
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
       "asset": {
         "currency": "XRP"
@@ -55,10 +54,11 @@ An example of the request format:
     }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
 
 The request includes the following parameters:
 
@@ -75,10 +75,9 @@ You must specify _either_ `amm_account` or both `asset` and `asset2`.
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -131,9 +130,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -187,8 +186,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -210,8 +210,8 @@ The `amm` field is an object describing the current status of an Automated Marke
 | `account`   | String              | The [Address][] of the AMM Account. |
 | `amount`        | [Currency Amount][] | The total amount of one asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
 | `amount2`       | [Currency Amount][] | The total amount of the other asset in the AMM's pool. (Note: This could be `asset` _or_ `asset2` from the request.) |
-| `asset_frozen`  | Boolean             | _(Omitted for XRP)_ If `true`, the `amount` currency is currently [frozen](freezes.html). |
-| `asset2_frozen` | Boolean             | _(Omitted for XRP)_ If `true`, the `amount2` currency is currently [frozen](freezes.html). |
+| `asset_frozen`  | Boolean             | _(Omitted for XRP)_ If `true`, the `amount` currency is currently [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
+| `asset2_frozen` | Boolean             | _(Omitted for XRP)_ If `true`, the `amount2` currency is currently [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `auction_slot`  | Object              | _(May be omitted)_ An [Auction Slot Object](#auction-slot-object) describing the current auction slot holder, if there is one. |
 | `lp_token`      | [Currency Amount][] | The total amount of this AMM's LP Tokens outstanding. If the request specified a liquidity provider in the `account` field, instead, this is the amount of this AMM's LP Tokens held by that liquidity provider. |
 | `trading_fee`   | Number              | The AMM's current trading fee, in units of 1/100,000; a value of 1 is equivalent to a 0.001% fee. |
@@ -252,11 +252,8 @@ Each entry in the `vote_slots` array represents one liquidity provider's vote to
 
 ## See Also
 
- - [AMM object](amm.html) - The canonical storage format of the AMM object
+ - [AMM object](../../../protocol/ledger-data/ledger-entry-types/amm.md) - The canonical storage format of the AMM object
  - [AMMBid][] - More info on the auction slot and bidding mechanism
  - [AMMVote][] - More info on the trading fee voting mechanism
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

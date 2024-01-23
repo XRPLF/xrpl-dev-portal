@@ -11,7 +11,7 @@ labels:
 
 _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -55,7 +55,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## `NFTokenOffer`トランザクション
 
-[代替可能トークンに対するOffer](offers.html)とは異なり、`NFTokenOffer`はオーダーブックに保存されず、自動的にマッチングされたり約定されたりすることはありません。買い手は売り手により提示されてた`NFTokenOffer`の受け入れを明示的に選択する必要があります。同様に、売り手は自分が所有する`NFToken`オブジェクトを買いたいと申し出た買い手の`NFTokenOffer`を受け入れることを明示的に選択しなければなりません。
+[代替可能トークンに対するOffer](../../../../concepts/tokens/decentralized-exchange/offers.md)とは異なり、`NFTokenOffer`はオーダーブックに保存されず、自動的にマッチングされたり約定されたりすることはありません。買い手は売り手により提示されてた`NFTokenOffer`の受け入れを明示的に選択する必要があります。同様に、売り手は自分が所有する`NFToken`オブジェクトを買いたいと申し出た買い手の`NFTokenOffer`を受け入れることを明示的に選択しなければなりません。
 
 `NFToken`の取引のためのトランザクションは3つあります。
 
@@ -66,7 +66,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ### `NFTokenOffer`オブジェクトの検索
 
-各`NFToken`は、2つの[ディレクトリ](directorynode.html)があります。1つはトークンを購入するためのオファー、もう1つはトークンを売却するためのオファーが含まれています。マーケットプレイスやその他のクライアントアプリケーションは、ユーザに対し`NFToken`オブジェクトの取引オファーを提示したり、自動的にマッチングすることができます。
+各`NFToken`は、2つの[ディレクトリ](directorynode.md)があります。1つはトークンを購入するためのオファー、もう1つはトークンを売却するためのオファーが含まれています。マーケットプレイスやその他のクライアントアプリケーションは、ユーザに対し`NFToken`オブジェクトの取引オファーを提示したり、自動的にマッチングすることができます。
 
 
 ### `NFTokenOffer`の準備金
@@ -82,8 +82,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 * オファーを出すアカウントの`AccountID`
 * `NFTokenCreateOffer`トランザクションが生成する`NFTokenCreateOffer`の`Sequence`(または`Ticket`)
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

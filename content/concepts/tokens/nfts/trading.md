@@ -16,7 +16,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 Every `NFTokenOffer` object requires that your account increase its owner reserve, currently 2 XRP per `NFTokenSellOffer` and 2 XRP per `NFTokenBuyOffer`. This is to prevent accounts from spamming the ledger with offers they don't intend to complete.
 
-See [NFT Reserve Requirements](nft-reserve-requirements.html).
+See [NFT Reserve Requirements](reserve-requirements.md).
 
 ## Sell Offers
 
@@ -62,15 +62,12 @@ Using a broker offers several advantages. For example:
 
 In the most straightforward workflow, a creator mints a new NFT. The creator initiates a sell offer, entering the minimum acceptable sale price and setting the broker as the destination. Potential buyers make bids for the NFT, setting the broker as the destination for the bid. The broker selects a winning bid and completes the transaction, taking a broker’s fee. As a best practice, the broker then cancels any remaining buy offers for the NFT.
 
-![Brokered Mode with Reserve](img/nft-brokered-mode-with-reserve.png)
+![Brokered Mode with Reserve](/img/nft-brokered-mode-with-reserve.png)
 
 Another potential workflow would give the creator more control over the sale. In this workflow, the creator mints a new NFT. Bidders create their offers, setting the broker as the destination. The broker selects the winning bid, subtracts their broker fee, and uses `NFTokenCreateOffer` to request that the creator sign off on the offer. The creator signs the requested offer, setting the broker as the destination. The broker completes the sale using `NFTokenAcceptOffer`, retaining the broker fee. The broker cancels any remaining bids for the NFT using `NFTokenCancelOffer`.
 
-![Brokered Mode without Reserve](img/nft-brokered-mode-without-reserve.png)
+![Brokered Mode without Reserve](/img/nft-brokered-mode-without-reserve.png)
 
 The same workflows can be used when an owner resells an NFT created by another account.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

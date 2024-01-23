@@ -13,7 +13,7 @@ Clioは、検証済みの過去の台帳とトランザクションデータを�
 
 Clioは`rippled`サーバーにアクセスする必要があり、このサーバーはClioと同じマシン上で実行することも、別々に実行することも可能です。
 
-Clioは完全な[HTTP / WebSocket API](http-websocket-apis.html)を提供していますが、デフォルトでは、検証済みのデータのみを返します。P2Pネットワークへのアクセスを必要とするリクエストに対しては、Clioは自動的にP2Pネットワーク上の`rippled`サーバにリクエストを転送し、レスポンスを返します。
+Clioは完全な[HTTP / WebSocket API](../../references/http-websocket-apis/index.md)を提供していますが、デフォルトでは、検証済みのデータのみを返します。P2Pネットワークへのアクセスを必要とするリクエストに対しては、Clioは自動的にP2Pネットワーク上の`rippled`サーバにリクエストを転送し、レスポンスを返します。
 
 ## Clioサーバーを運用する理由
 
@@ -30,7 +30,7 @@ Clioは完全な[HTTP / WebSocket API](http-websocket-apis.html)を提供して�
 
 ## Clioサーバーの仕組み
 
-{{ include_svg("img/clio-basic-architecture.svg", "図1: Clioサーバーの仕組み") }}
+[{% inline-svg file="/img/clio-basic-architecture.svg" /%}](/img/clio-basic-architecture.svg "図1: Clioサーバーの仕組み")
 
 Clioサーバーは、トランザクションメタデータ、アカウントステート、台帳ヘッダーなどの有効な台帳データを永続的なデータストアに保存します。
 
@@ -47,4 +47,4 @@ ClioサーバーはAPIリクエストを受信すると、これらのデータ�
 
 - [Clio ソースコード](https://github.com/XRPLF/clio)
 - **チュートリアル:**
-    - [UbuntuにClioサーバーをインストールする](install-clio-on-ubuntu.html)
+    - [UbuntuにClioサーバーをインストールする](../../infrastructure/installation/install-clio-on-ubuntu.md)

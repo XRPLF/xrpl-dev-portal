@@ -10,9 +10,9 @@ labels:
 
 _(Added by the [Escrow amendment][].)_
 
-An `Escrow` ledger entry represents an [escrow](escrow.html), which holds XRP until specific conditions are met.
+An `Escrow` ledger entry represents an [escrow](../../../../concepts/payment-types/escrow.md), which holds XRP until specific conditions are met.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -34,9 +34,9 @@ An `Escrow` ledger entry represents an [escrow](escrow.html), which holds XRP un
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Name                | JSON Type | [Internal Type][] | Required? | Description            |
 |:--------------------|:----------|:------------------|:----------|:-----------------------|
@@ -55,14 +55,14 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `SourceTag`         | Number    | UInt32            | No        | An arbitrary tag to further specify the source for this escrow, such as a hosted recipient at the owner's address. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for `{{currentpage.name}}` entries.
+There are no flags defined for {% code-page-name /%} entries.
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-`{{currentpage.name}}` entries count as one item towards the sender's owner reserve as long as the entry is in the ledger. Finishing or canceling the escrow frees up this reserve.
+{% code-page-name /%} entries count as one item towards the sender's owner reserve as long as the entry is in the ledger. Finishing or canceling the escrow frees up this reserve.
 
 
 ## Escrow ID Format
@@ -72,9 +72,6 @@ The ID of an `Escrow` entry is the [SHA-512Half][] of the following values, conc
 * The Escrow space key (`0x0075`)
 * The AccountID of the sender of the [EscrowCreate transaction][] that created the `Escrow` entry
 * The Sequence number of the [EscrowCreate transaction][] that created the `Escrow` entry
-    If the EscrowCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
+    If the EscrowCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

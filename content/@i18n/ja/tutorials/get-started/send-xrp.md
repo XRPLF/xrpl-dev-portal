@@ -21,11 +21,11 @@ top_nav_grouping: 人気ページ
 <script type="application/javascript" src="assets/js/tutorials/send-xrp.js"></script>
 {% set use_network = "Testnet" %}
 
-- このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](get-started-using-javascript.html)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
+- このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](get-started-using-javascript.md)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 
 - XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTestnet XRPを入手できます。
 
-{% include '_snippets/interactive-tutorials/generate-step.ja.md' %}
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
 ## Testnetでの送金
 {% set n = cycler(* range(1,99)) %}
@@ -36,31 +36,31 @@ top_nav_grouping: 人気ページ
 
 以下のサンプルコードでは公開XRP Testnetサーバーに接続します。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Connect" before="# Get credentials" language="py" /%}
+{% /tab %}
 
-_Python_
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Connect" before="// Prepare transaction" language="java" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Connect", end_before="# Get credentials", language="py") }}
-
-_Java_
-
-{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Connect", end_before="// Prepare transaction", language="java") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 このチュートリアルでは、以下のボタンをクリックすることでブラウザーから直接接続できます。
 
-{% include '_snippets/interactive-tutorials/connect-step.ja.md' %}
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### {{n.next()}}. トランザクションの準備
 
-通常は、XRP LedgerトランザクションをオブジェクトとしてJSON[トランザクションフォーマット](transaction-formats.html)で作成します。以下の例に、必要最小限の送金仕様を示します。
+通常は、XRP LedgerトランザクションをオブジェクトとしてJSON[トランザクションフォーマット](../../references/protocol/transactions/index.md)で作成します。以下の例に、必要最小限の送金仕様を示します。
 
 ```json
 {
@@ -80,21 +80,21 @@ XRP送金に対して指定する必要がある必要最小限の指示は次�
 
 技術上、一部の追加のフィールドは実行可能なトランザクションに含める必要があり、また、省略可能なフィールドでも、`LastLedgerSequence`などは含めることを強く推奨します。[`autofill()`メソッド](https://js.xrpl.org/classes/Client.html#autofill)は、トランザクションの残りのフィールドに適切なデフォルトを自動的に入力します。上記の送金を準備する際の例を示します。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Prepare" before="// Sign" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Prepare", end_before="// Sign", language="js" ) }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Prepare" before="# Sign" language="py" /%}
+{% /tab %}
 
-_Python_
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Prepare" before="// Sign" language="java" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Prepare", end_before="# Sign", language="py" ) }}
-
-_Java_
-
-{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Prepare", end_before="// Sign", language="java") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Prepare") }}
 <div class="input-group mb-3">
@@ -116,27 +116,24 @@ _Java_
 
 xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#sign)を使用して、トランザクションに署名します。最初の引数は、署名するJSONトランザクションの文字列バージョンです。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Sign" before="// Submit" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/js/send-xrp.js",
-    start_with="// Sign", end_before="// Submit", language="js" ) }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Sign" before="# Submit" language="py" /%}
+{% /tab %}
 
-_Python_
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Sign" before="// Submit" language="java" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/py/send-xrp.py",
-    start_with="# Sign", end_before="# Submit", language="py" ) }}
-
-_Java_
-
-{{ include_code("_code-samples/send-xrp/java/SendXrp.java",
-    start_with="// Sign", end_before="// Submit", language="java" ) }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
-署名処理の結果は、署名を含むトランザクションオブジェクトになります。通常、XRP Ledger APIは、署名済みトランザクションがトランザクションの正規の[バイナリーフォーマット](serialization.html)（「ブロブ」と呼ばれる）の16進数表現になることを想定しています。
+署名処理の結果は、署名を含むトランザクションオブジェクトになります。通常、XRP Ledger APIは、署名済みトランザクションがトランザクションの正規の[バイナリーフォーマット](../../references/protocol/binary-format.md)（「ブロブ」と呼ばれる）の16進数表現になることを想定しています。
 
 署名APIは、トランザクションのID、つまり識別用ハッシュを返します。この識別用ハッシュは、後でトランザクションを検索する際に使用します。識別用ハッシュは、このトランザクションに固有の64文字の16進文字列です。
 
@@ -150,20 +147,21 @@ _Java_
 
 トランザクションをネットワークに送信します。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Submit" before="// Wait" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Submit", end_before="// Wait", language="js" ) }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Submit" before="# Wait" language="py" /%}
+{% /tab %}
 
-_Python_
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Submit" before="// Wait" language="java" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Submit", end_before="# Wait", language="py") }}
-
-_Java_
-{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Submit", end_before="// Wait", language="java" ) }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このメソッドは、ローカルでトランザクションを適用しようと試みたときの**一時的な**結果を返します。この結果は、トランザクションが検証済みレジャーに含まれた時点で変わる_可能性があります_。当初は成功していたトランザクションが最終的に失敗となったり、当初失敗していたトランザクションが最終的に成功する場合があります。しかしながら、一時的な結果はほとんどの場合は最終結果と一致するため、ここで`tesSUCCESS`が表示されたらひとまず安心しても問題ありません。😁
 
@@ -171,10 +169,10 @@ _Java_
 
 - 送信元および送信先の正しいアドレスを使用しているか。
 - トランザクションの他のフィールドへの入力漏れ、ステップのスキップ、その他の入力ミスがないか。
-- トランザクションの送信に必要なTest Net XRPが十分にあるか。送金できるXRPの額は、[必要準備金](reserves.html)によって制限されています。現時点では、20XRPに加えて、レジャー内に保有している各「オブジェクト」につき5XRPずつ追加となります。（Test Net Faucetを使用して新しいアドレスを生成した場合は、保有するオブジェクトはありません。）
+- トランザクションの送信に必要なTest Net XRPが十分にあるか。送金できるXRPの額は、[必要準備金](../../concepts/accounts/reserves.md)によって制限されています。現時点では、20XRPに加えて、レジャー内に保有している各「オブジェクト」につき5XRPずつ追加となります。（Test Net Faucetを使用して新しいアドレスを生成した場合は、保有するオブジェクトはありません。）
 - テストネットワークのサーバーに接続しているか。
 
-他の可能性については、[トランザクション結果](transaction-results.html)の完全なリストを参照してください。
+他の可能性については、[トランザクション結果](../../references/protocol/transactions/transaction-results/transaction-results.md)の完全なリストを参照してください。
 
 {{ start_step("Submit") }}
 <button id="submit-button" class="btn btn-primary previous-steps-required" data-tx-blob-from="#signed-tx-blob" data-wait-step-name="Wait">サンプルトランザクションを送信する</button>
@@ -184,26 +182,26 @@ _Java_
 
 ### {{n.next()}}. 検証の待機
 
-ほとんどのトランザクションは送信後の次のレジャーバージョンに承認されます。つまり、4～7秒でトランザクションの結果が最終的なものになる可能性があります。XRP Ledgerがビジーになっているか、ネットワーク接続の品質が悪いためにトランザクションをネットワーク内で中継する処理が遅延した場合は、トランザクション確定までにもう少し時間がかかることがあります。（トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](reliable-transaction-submission.html)を参照してください。）
+ほとんどのトランザクションは送信後の次のレジャーバージョンに承認されます。つまり、4～7秒でトランザクションの結果が最終的なものになる可能性があります。XRP Ledgerがビジーになっているか、ネットワーク接続の品質が悪いためにトランザクションをネットワーク内で中継する処理が遅延した場合は、トランザクション確定までにもう少し時間がかかることがあります。（トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を参照してください。）
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Wait" before="// Check" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Wait", end_before="// Check", language="js" ) }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Wait" before="# Check" language="py" /%}
+{% /tab %}
 
-_Python_
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Wait" before="// Check" language="java" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Wait", end_before="# Check", language="py") }}
-
-_Java_
-
-{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Wait", end_before="// Check", language="java" ) }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Wait") }}
-{% include '_snippets/interactive-tutorials/wait-step.ja.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 
@@ -211,24 +209,24 @@ _Java_
 
 トランザクションが行った内容を正確に把握するために、トランザクションが検証済みレジャーバージョンに記録されたときにトランザクションの結果を調べる必要があります。例えば、[txメソッド][]を使用して、トランザクションのステータスを確認できます。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/send-xrp/js/send-xrp.js" from="// Check" before="// End of" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/js/send-xrp.js", start_with="// Check", end_before="// End of", language="js" ) }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/send-xrp/py/send-xrp.py" from="# Check" language="py" /%}
+{% /tab %}
 
-_Python_
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/send-xrp/java/SendXrp.java" from="// Check" language="java" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/send-xrp/py/send-xrp.py", start_with="# Check", language="py") }}
-
-_Java_
-
-{{ include_code("_code-samples/send-xrp/java/SendXrp.java", start_with="// Check", language="java" ) }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
-**注意:** APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](finality-of-results.html)を参照してください。
+**注意:** APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)を参照してください。
 
 {{ start_step("Check") }}
 <button id="get-tx-button" class="btn btn-primary previous-steps-required">トランザクションステータスを確認する</button>
@@ -247,27 +245,26 @@ _Java_
 
 このチュートリアルでは、Test Net XRPがすでに資金供給されているアドレスをボタンで取得しましたが、それが可能だったのはTest Net XRPに何の価値もないからです。実際のXRPでは、XRPを所有している他者からXRPを入手する必要があります。（たとえば、取引所で購入する方法など。）[xrpl.jsのWallet()クラス](https://js.xrpl.org/classes/Wallet.html)を使用して、本番またはTestnetで機能するアドレスとシークレットを生成できます。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
-
+{% tab label="JavaScript" %}
 ```js
 const wallet = new xrpl.Wallet()
 console.log(wallet.address) // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 console.log(wallet.seed) // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+{% /tab %}
 
-_Python_
-
+{% tab label="Python" %}
 ```py
 from xrpl.wallet import Wallet
 my_wallet = Wallet.create()
 print(my_wallet.address) # Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 print(my_wallet.seed)            # Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+{% /tab %}
 
-_Java_
-
+{% tab label="Java" %}
 ```java
 WalletFactory walletFactory = DefaultWalletFactory.getInstance();
 SeedWalletGenerationResult generationResult = walletFactory.randomWallet(false);
@@ -275,42 +272,43 @@ Wallet wallet = generationResult.wallet();
 System.out.println(wallet.classicAddress()); // Example: rGCkuB7PBr5tNy68tPEABEtcdno4hE6Y7f
 System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLKWauoUs
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **警告:** ローカルマシンで安全な方法で生成したアドレスとシークレットのみを使用してください。別のコンピューターでアドレスとシークレットを生成して、ネットワーク経由でそれらを自分に送信した場合は、ネットワーク上の他の人がその情報を見ることができる可能性があります。その情報見ることができる人は、あなたと同じようにあなたのXRPを操作できます。また、Test Netと本番で同じアドレスを使用しないことも推奨します。指定したパラメーターによっては、一方のネットワークに向けて作成したトランザクションが、もう一方のネットワークでも実行可能になるおそれがあるためです。
 
-アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って[アカウントに資金供給](accounts.html#アカウントの作成)する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、[XRP Overview](xrp-overview.html)を参照してください。
+アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って[アカウントに資金供給](../../concepts/accounts/accounts.md#アカウントの作成)する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、[XRP Overview](/about/xrp)を参照してください。
 
 ### 本番XRP Ledgerへの接続
 
 XRP Ledgerと同期しているサーバーを指定する必要があります。多くの場合は公開サーバーを、以下のスニペットなどで使用できます。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
-
+{% tab label="JavaScript" %}
 ```js
 const xrpl = require('xrpl')
 const api = new xrpl.Client('wss://xrplcluster.com')
 api.connect()
 ```
+{% /tab %}
 
-_Python_
-
+{% tab label="Python" %}
 ```py
 from xrpl.clients import JsonRpcClient
 client = JsonRpcClient("https://xrplcluster.com")
 ```
+{% /tab %}
 
-_Java_
-
+{% tab label="Java" %}
 ```java
 final HttpUrl rippledUrl = HttpUrl.get("https://xrplcluster.com");
 XrplClient xrplClient = new XrplClient(rippledUrl);
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **ヒント:** ローカル接続では、WebSocketプロトコルのTLSで暗号化されたバージョン（`wss`）ではなく、暗号化されていないバージョン（`ws`）を使用します。この方式は、通信が同じマシンの中だけで行われてマシンの外に出て行かないという点で安全で、TLS証明書が不要であるため設定が簡単です。外部ネットワークとの接続では、必ず`wss`を使用してください。
 
@@ -318,13 +316,10 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 このチュートリアルを完了後は、以下を試してみてください。
 
-- 本番システム向けに[信頼できるトランザクションの送信](reliable-transaction-submission.html)を構築する
+- 本番システム向けに[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を構築する
 - [xrpl.jsリファレンス](https://js.xrpl.org/)を参照して、XRP Ledgerの全機能を確認する
-- [アカウント設定](manage-account-settings.html)をカスタマイズする
-- [トランザクションのメタデータ](transaction-metadata.html)にトランザクションの結果の詳細がどのように記述されているかを知る
-- escrowやPayment Channelなどの[複雑な支払いタイプ](complex-payment-types.html)について調べる
+- [アカウント設定](../tasks/manage-account-settings/index.md)をカスタマイズする
+- [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)にトランザクションの結果の詳細がどのように記述されているかを知る
+- escrowやPayment Channelなどの[複雑な支払いタイプ](../../concepts/payment-types/index.md)について調べる
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

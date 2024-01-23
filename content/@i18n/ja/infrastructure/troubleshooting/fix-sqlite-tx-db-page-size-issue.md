@@ -15,7 +15,7 @@ blurb: rippledバージョン0.40.0以前で起動された完全履歴サーバ
 
 SQLiteデータベースの容量は、データベースの_ページサイズ_パラメーターによって決まります。この容量は、データベース作成後は容易に変更できません。（SQLiteの内部についての詳細は、[SQLite公式ドキュメント](https://www.sqlite.org/fileformat.html)を参照してください。）データベースが保管されているディスクとファイルシステムに空き容量がある場合でも、データベースが容量いっぱいになることがあります。以下の「[解決策](#解決策)」で説明するように、この問題を回避するためにページサイズを再構成するには、時間のかかる移行プロセスが必要です。
 
-**ヒント:** ほとんどの場合、`rippled`サーバーの稼働に全履歴が必要となることはありません。サーバーにトランザクションの全履歴が記録されていれば、長期分析やアーカイブ、または災害に対する事前対策に役立ちます。リソースを大量に消費せずにトランザクション履歴を保管する方法については、[履歴シャーディング](history-sharding.html)を参照してください。
+**ヒント:** ほとんどの場合、`rippled`サーバーの稼働に全履歴が必要となることはありません。サーバーにトランザクションの全履歴が記録されていれば、長期分析やアーカイブ、または災害に対する事前対策に役立ちます。リソースを大量に消費せずにトランザクション履歴を保管する方法については、[履歴シャーディング](../configuration/data-retention/history-sharding.md)を参照してください。
 
 
 ## 検出
@@ -70,23 +70,27 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 ## 解決策
 
-この問題を解決するには、このドキュメントで説明する手順に従い、サポートされているLinuxシステムで`rippled`を使用します。[推奨されるハードウェア構成](capacity-planning.html#推奨事項-1)とおおよそ一致するシステムスペックで全履歴を記録するサーバーの場合、このプロセスにかかる日数は2日を超える可能性があります。
+この問題を解決するには、このドキュメントで説明する手順に従い、サポートされているLinuxシステムで`rippled`を使用します。[推奨されるハードウェア構成](../installation/capacity-planning.md#推奨事項-1)とおおよそ一致するシステムスペックで全履歴を記録するサーバーの場合、このプロセスにかかる日数は2日を超える可能性があります。
 
 ### 前提条件
 
 - **[rippledバージョン1.1.0][新規: rippled 1.1.0]以上**を実行している必要があります。
 
-    - このプロセスを開始する前に、安定した最新バージョンに[rippledをアップグレード](install-rippled.html)します。
+    - このプロセスを開始する前に、安定した最新バージョンに[rippledをアップグレード](../installation/index.md)します。
 
     - 以下のコマンドを実行して、ローカルにインストールした`rippled`のバージョンを確認できます。
 
-            rippled --version
+        ```
+        rippled --version
+        ```
 
 - `rippled`ユーザーが書き込めるディレクトリーに、トランザクションデータベースの2つめのコピーを一時的に保管するのに十分な空き容量が必要です。この空き容量は、既存のトランザクションデータベースと同じファイルシステムに設ける必要はありません。
 
     トランザクションデータベースは、構成の`[database_path]`設定で指定されるフォルダーの`transaction.db`ファイルに保管されます。このファイルのサイズを調べ、必要な空き容量を確認できます。次に例を示します。
 
-        ls -l /var/lib/rippled/db/transaction.db
+    ```
+    ls -l /var/lib/rippled/db/transaction.db
+    ```
 
 ### 移行プロセス
 
@@ -96,83 +100,109 @@ Terminating thread doJob:AcquisitionDone: unhandled
 
 2. 移行プロセスの実行中に一時ファイルを保管するフォルダーを作成します。
 
-        mkdir /tmp/rippled_txdb_migration
+    ```
+    mkdir /tmp/rippled_txdb_migration
+    ```
 
 3. `rippled`ユーザーに、一時フォルダーの所有権を付与します。これにより、ユーザーは一時フォルダー内のファイルに書き込みできるようになります。（`rippled`ユーザーがすでにアクセス権限を持つ場所に一時フォルダーがある場合は、この操作は不要です。）
 
-        chown rippled /tmp/rippled_txdb_migration
+    ```
+    chown rippled /tmp/rippled_txdb_migration
+    ```
 
 4. 一時フォルダーに、トランザクションデータベースのコピーを保管するのに十分な空き容量があることを確認します。
 
     たとえば、`df`コマンドの`Avail`出力と、[`transaction.db`ファイルのサイズ](#前提条件)を比較します。
 
-        df -h /tmp/rippled_txdb_migration
+    ```
+    df -h /tmp/rippled_txdb_migration
 
-        Filesystem      Size  Used Avail Use% Mounted on
-        /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
+    Filesystem      Size  Used Avail Use% Mounted on
+    /dev/sda2       5.4T  2.6T  2.6T  50% /tmp
+    ```
 
 5. `rippled`がまだ稼働している場合は停止します。
 
-        sudo systemctl stop rippled
+    ```
+    sudo systemctl stop rippled
+    ```
 
 6. `screen`セッション（または類似のツール）を開き、ログアウトしてもプロセスが停止しないようにします。
 
-        screen
+    ```
+    screen
+    ```
 
 7. `rippled`ユーザーになります。
 
-        sudo su - rippled
+    ```
+    sudo su - rippled
+    ```
 
 8. 一時ディレクトリへのパスを指定した`--vacuum`コマンドで、`rippled`実行可能ファイルを直接実行できます。
 
-        /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    ```
+    /opt/ripple/bin/rippled -q --vacuum /tmp/rippled_txdb_migration
+    ```
 
     `rippled`実行可能ファイルにより次のメッセージが即時に表示されます。
 
-        VACUUM beginning. page_size:1024
+    ```
+    VACUUM beginning. page_size:1024
+    ```
 
 9. プロセスが完了するまで待ちます。これには丸2日以上かかることがあります。
 
     プロセスが完了したら、`rippled`実行可能ファイルは以下のメッセージを表示して終了します。
 
-        VACUUM finished. page_size:4096
+    ```
+    VACUUM finished. page_size:4096
+    ```
 
     待機している間に`screen`セッションを切り離すには、**CTRL-A**を押してから**D**を押します。その後、以下のようなコマンドでスクリーンセッションを再接続します。
 
-        screen -x -r
+    ```
+    screen -x -r
+    ```
 
     プロセスが完了したら、スクリーンセッションを終了します。
 
-        exit
+    ```
+    exit
+    ```
 
     `screen`コマンドについての詳細は、[公式Screenユーザーマニュアル](https://www.gnu.org/software/screen/manual/screen.html)またはオンラインで使用可能なその他の多数のリソースを参照してください。
 
 10. `rippled`サービスを再起動します。
 
-        sudo systemctl start rippled
+    ```
+    sudo systemctl start rippled
+    ```
 
 11. `rippled`サービスが正常に起動したかどうかを確認します。
 
-    [コマンドラインインターフェイス](get-started-using-http-websocket-apis.html#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPCリクエストを受け入れないように設定している場合を除く）。次に例を示します。
+    [コマンドラインインターフェイス](../../tutorials/get-started/get-started-using-http-websocket-apis.md#コマンドライン)を使用してサーバーの状況を確認できます（サーバーがJSON-RPCリクエストを受け入れないように設定している場合を除く）。次に例を示します。
 
-        /opt/ripple/bin/rippled server_info
+    ```
+    /opt/ripple/bin/rippled server_info
+    ```
 
     このコマンドの予期されるレスポンスの説明については、[server_infoメソッド][]ドキュメントを参照してください。
 
 12. サーバーのデバッグログを参照し、`SQLite page size`が現在4096であることを確認します。
 
-        tail -F /var/log/rippled/debug.log
+    ```
+    tail -F /var/log/rippled/debug.log
+    ```
 
     また[定期的なログメッセージ](#事前の検出)には、移行前に比べて非常に多くのフリーページとフリースペースが示されているはずです。
 
 13. 必要に応じて、移行プロセスのために作成した一時フォルダーをこの時点で削除できます。
 
-        rm -r /tmp/rippled_txdb_migration
+    ```
+    rm -r /tmp/rippled_txdb_migration
+    ```
 
     トランザクションデータベースの一時コピーを保持するために追加のストレージをマウントした場合は、この時点でそのストレージをアンマウントして取り外すことができます。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -9,9 +9,9 @@ status: not_enabled
 # DID
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L330-L341 "Source")
 
-_(Requires the [DID amendment][] :not_enabled:)_
+_(Requires the [DID amendment][] {% not-enabled /%})_
 
-A `DID` ledger entry holds references to, or data associated with, a single [DID](decentralized-identifiers.html).
+A `DID` ledger entry holds references to, or data associated with, a single [DID](../../../../concepts/accounts/decentralized-identifiers.md).
 
 
 ## Example DID JSON
@@ -33,7 +33,7 @@ A `DID` ledger entry holds references to, or data associated with, a single [DID
 
 ## DID Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Field               | JSON Type | [Internal Type][] | Required? | Description  |
 |:--------------------|:----------|:------------------|:----------|--------------|
@@ -47,14 +47,14 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `URI`               | String    | Blob              | No        | The Universal Resource Identifier that points to the corresponding DID document or the data associated with the DID. This field can be an HTTP(S) URL or IPFS URI. This field isn't checked for validity and is limited to a maximum length of 256 bytes. |
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-The account that creates the `{{currentpage.name}}` object incurs one owner reserve.
+The account that creates the {% code-page-name /%} object incurs one owner reserve.
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for `{{currentpage.name}}` entries.
+There are no flags defined for {% code-page-name /%} entries.
 
 
 ## DID ID Format
@@ -64,8 +64,4 @@ The ID of a `DID` entry is the [SHA-512Half][] of the following values, concaten
 1. The `DID` space key (`0x0049`).
 2. The AccountID that controls the DID.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

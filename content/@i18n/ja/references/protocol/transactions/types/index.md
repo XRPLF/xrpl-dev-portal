@@ -2,7 +2,8 @@
 html: transaction-types.html
 parent: transaction-formats.html
 blurb: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 labels:
   - ブロックチェーン
 ---
@@ -12,6 +13,9 @@ labels:
 
 すべてのトランザクションに、特定の共通フィールドが含まれています。
 
-* [共通フィールド](transaction-common-fields.html)
+* [共通フィールド](../common-fields.md)
 
 トランザクションのタイプごとに、実行される操作のタイプに関連した追加のフィールドが含まれています。
+
+
+{% child-pages /%}

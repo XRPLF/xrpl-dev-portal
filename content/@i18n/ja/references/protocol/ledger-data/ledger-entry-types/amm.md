@@ -9,9 +9,9 @@ status: not_enabled
 # AMM
 [[ソース]](https://github.com/xrplf/rippled/blob/c1e4bfb08bcc9f187d794a71d653003a6148dc68/src/ripple/protocol/impl/LedgerFormats.cpp#L265-L275 "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment][] {% not-enabled /%}が必要です。)_
 
-`AMM`レジャーエントリは、単一の[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスを表します。これは常に[特殊な AccountRootエントリ](accountroot.html#ammの特殊なaccountrootエントリ)と対になっています。
+`AMM`レジャーエントリは、単一の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを表します。これは常に[特殊な AccountRootエントリ](accountroot.md#ammの特殊なaccountrootエントリ)と対になっています。
 
 
 ## AMM JSONの例
@@ -75,7 +75,7 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 |:-----------------|:--------------------|:------------------|:----------|--------------|
 | `Asset`          | オブジェクト          | STIssue           | はい       | このAMMが保有する2つのアセットのうちの1つの定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
 | `Asset2`         | オブジェクト          | STIssue           | はい       | このAMMが保有するもう一つの資産の定義。JSONでは、`currency`と`issuer`フィールドを持つオブジェクトになります。 |
-| `Account`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.html#ammの特殊なaccountrootエントリ)のアドレス。 |
+| `Account`     | 文字列               | AccountID         | はい       | このAMMの資産を保有する[特殊なアカウント](accountroot.md#ammの特殊なaccountrootエントリ)のアドレス。 |
 | `AuctionSlot`    | オブジェクト          | STObject          | いいえ     | オークションスロットの現在の所有者の詳細。[オークションスロットオブジェクト](#オークションスロットオブジェクト)形式です。|
 | `LPTokenBalance` | [通貨額][]           | Amount            | はい       | AMMインスタンスの流動性供給者トークンの発行残高の合計。このトークンの保有者は、保有量に比例してAMMの取引手数料に投票したり、取引手数料の徴収とともに増えていくAMMの資産の一部とトークンを交換したりすることができます。 |
 | `TradingFee`     | 数値                 | UInt16            | はい       | AMMインスタンスに対する取引に課される手数料のパーセンテージを1/100,000の単位で指定します。最大値は1000で、これは1%の手数料となります。 |
@@ -93,9 +93,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 | `Price`         | [通貨額][]           | Amount            | はい       | オークションスロットの所有者がこのスロットを落札するために支払った金額（LPトークン）。 |
 | `Expiration`    | 文字列               | UInt32            | はい       | このスロットの有効期限が切れる[Rippleエポック以降の経過秒数][]で指定した時刻。 |
 
-## {{currentpage.name}}の準備金
+## {% $frontmatter.seo.title %}の準備金
 
-`{{currentpage.name}}`エントリは準備金が不要です。
+{% code-page-name /%}エントリは準備金が不要です。
 
 ## AMM フラグ
 
@@ -113,7 +113,4 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 XRPの場合、トークン・発行者ともに全て0を使用します。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

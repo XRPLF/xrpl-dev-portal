@@ -19,7 +19,7 @@ Accounts with deposit authorization enabled can only receive funds through:
 
 ## Set Up Deposit Authorization
 
-To enable deposit authorization, use the `AccountSet` transaction to set the `asfDepositAuth` flag. See: [Deposit Authorization](depositauth.html).
+To enable deposit authorization, use the `AccountSet` transaction to set the `asfDepositAuth` flag. See: [Deposit Authorization](../../concepts/accounts/depositauth.md).
 
 ## Preauthorized Accounts
 
@@ -27,7 +27,7 @@ When you enable deposit authorization, your account blocks all incoming transact
 
 Preauthorized accounts are currency-agnostic, meaning you can't specify which currencies to authorize. It's all or nothing.
 
-See: [DepositPreauth](depositpreauth.html).
+See: [DepositPreauth](../../references/protocol/transactions/types/depositpreauth.md).
 
 
 ## Accepting Deposits from Unauthorized Accounts
@@ -41,14 +41,14 @@ Checks are a straightforward, familiar, and flexible way to transfer funds when 
 
 While this method is the simplest, it doesn't guarantee the funds. Checks are deferred payments, meaning funds aren't moved until the moment you try to cash the check. It's possible for the sending account to not have the necessary funds at the time the check is cashed, which can cause delays or other headaches, depending on your business.
 
-See: [Use Checks](use-checks.html).
+See: [Use Checks](../../tutorials/use-specialized-payment-types/use-checks/use-checks.md).
 
 
 ### Escrow
 
 If you require a guarantee of funds at the time of deposit, another option is to have deposits made with an escrow. Like regular escrows, a sender sets aside funds on the ledger, effectively locking them up until certain conditions are met. This guarantees the funds will be available when you close the escrow to release the funds.
 
-See: [Use Escrows](use-escrows.html).
+See: [Use Escrows](../../tutorials/tasks/use-specialized-payment-types/use-escrows/index.md).
 
 
 <!-- Need a better understanding of Payment Channels use cases.

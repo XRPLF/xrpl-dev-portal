@@ -9,7 +9,7 @@ status: not_enabled
 # XChainModifyBridge
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/TxFormats.cpp#L390-L397 "Source")
 
-_(Requires the [XChainBridge amendment][] :not_enabled:)_
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 The `XChainModifyBridge` transaction allows bridge managers to modify the parameters of the bridge. They can only change the `SignatureReward` and the `MinAccountCreateAmount`.
 
@@ -68,8 +68,4 @@ In addition to the universal transaction flags that are applicable to all transa
 |------------------------------|--------------|-------------|
 | `tfClearAccountCreateAmount` | `0x00010000` | Clears the `MinAccountCreateAmount` of the bridge. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

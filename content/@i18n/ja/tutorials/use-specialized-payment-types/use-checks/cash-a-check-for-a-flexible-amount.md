@@ -13,18 +13,18 @@ Checkがレジャーに記録されており有効期限切れではない場合
 
 Checkから可能な限りの額を受領したい場合には、変動金額でCheckを換金できます。
 
-指定受取人は、[Checkを正確な金額で換金する](cash-a-check-for-a-flexible-amount.html)こともできます。
+指定受取人は、[Checkを正確な金額で換金する](cash-a-check-for-a-flexible-amount.md)こともできます。
 
 {% set cash_flex_n = cycler(* range(1,99)) %}
 
 
 ## 前提条件
 
-{% include '_snippets/checkcash-prereqs.ja.md' %}<!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/checkcash-prereqs.md" /%}
 
 ## {{cash_flex_n.next()}}.CheckCashトランザクションの準備
 
-[CheckCashトランザクション][]のフィールドの値を決定します。Checkを変動金額で換金する場合、以下のフィールドは必要最小限です。それ以外のフィールドはオプションまたは署名時に[自動入力](transaction-common-fields.html#自動入力可能なフィールド)可能なフィールドです。
+[CheckCashトランザクション][]のフィールドの値を決定します。Checkを変動金額で換金する場合、以下のフィールドは必要最小限です。それ以外のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
 | フィールド             | 値                     | 説明                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -37,10 +37,9 @@ Checkから可能な限りの額を受領したい場合には、変動金額で
 
 Checkを変動金額で換金するためのトランザクションを準備する手順を以下の例に示します。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC、WebSocket、またはコマンドライン*
-
+{% tab label="JSON-RPC、WebSocket、またはコマンドライン" %}
 ```json
 {
  "Account": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
@@ -49,78 +48,69 @@ Checkを変動金額で換金するためのトランザクションを準備す
  "CheckID": "2E0AD0740B79BE0AAE5EDD1D5FC79E3C5C221D23C6A7F771D85569B5B91195C2"
 }
 ```
+{% /tab %}
 
-*ripple-lib 1.x*
+{% tab label="ripple-lib 1.x" %}
+{% code-snippet file="/_code-samples/checks/js/prepareCashFlex.js" language="js" /%}
+{% /tab %}
 
-```js
-{% include '_code-samples/checks/js/prepareCashFlex.js' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## {{cash_flex_n.next()}}.CheckCashトランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/sign-cash-flex-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/sign-cash-flex-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/sign-cash-flex-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/sign-cash-flex-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## {{cash_flex_n.next()}}.署名済みCheckCashトランザクションの送信
 
 {% set step_1_link = "#1checkcashトランザクションの準備" %}
-{% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/submit-cash-flex-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/submit-cash-flex-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/submit-cash-flex-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/submit-cash-flex-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## {{cash_flex_n.next()}}.検証の待機
 
-{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cash_flex_n.next()}}.最終結果の確認
 
@@ -128,32 +118,28 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/tx-cash-flex-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/tx-cash-flex-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/tx-cash-flex-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/tx-cash-flex-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ### エラー処理
 
-[](transaction-results.html)Checkの換金が`tec`クラスコードで失敗した場合は、[すべてのトランザクションレスポンスのリスト](transaction-results.html)でコードを確認し、適切に対処してください。CheckCashトランザクションでよく返される結果コードの一部を次に示します。
+[](../../../references/protocol/transactions/transaction-results/transaction-results.md)Checkの換金が`tec`クラスコードで失敗した場合は、[すべてのトランザクションレスポンスのリスト](../../../references/protocol/transactions/transaction-results/transaction-results.md)でコードを確認し、適切に対処してください。CheckCashトランザクションでよく返される結果コードの一部を次に示します。
 
 | 結果コード | 意味 | 対処 |
 |-------------|---------|----------------|
@@ -161,44 +147,48 @@ Checkを変動金額で換金するためのトランザクションを準備す
 | `tecNO_ENTRY` | Check IDが存在していません。 | CheckCashトランザクションの`CheckID`が正しいことを確認してください。Checkがまだ取り消されていないこと、または正常に換金されていないことを確認してください。 |
 | `tecNO_LINE` | 受取人がCheckの通貨のトラストラインを所有していません。 | このイシュアーからのこの通貨を保有するには、指定された通貨とイシュアーのトラストラインを作成し、[TrustSetトランザクション][]を使用してこのトラストラインに適切な限度額を設定してから、Checkの換金を再試行します。 |
 | `tecNO_PERMISSION` | CheckCashトランザクションの送信者はCheckの`Destination`ではありません。 | Checkの`Destination`を再度確認します。 |
-| `tecNO_AUTH` | このCheckの通貨のイシュアーは[Authorized Trust Line](authorized-trust-lines.html)を使用していますが、受取人からイシュアーへのトラストラインが承認されていません。 | このトラストラインを承認するようイシュアーに依頼し、承認されたらCheckの換金を再試行します。 |
-| `tecPATH_PARTIAL` | トラストラインの限度額、または送金元に送金通貨の残高（イシュアーの[送金手数料](transfer-fees.html)がある場合はこの手数料を含む）が十分になかったことが原因で、Checkでは十分なトークンを送金できませんでした。 | 原因がトラストラインの限度額である場合は、（希望する場合には）限度額を引き上げる[TrustSetトランザクション][]を送信するか、または通貨の一部を消費して残高を減らしてから、Checkの換金を再試行します。原因が送金元の残高である場合は、送金元にCheckの通貨が積み増しされるまで待つか、または以前よりも低い額でCheckの換金を再試行します。 |
+| `tecNO_AUTH` | このCheckの通貨のイシュアーは[Authorized Trust Line](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使用していますが、受取人からイシュアーへのトラストラインが承認されていません。 | このトラストラインを承認するようイシュアーに依頼し、承認されたらCheckの換金を再試行します。 |
+| `tecPATH_PARTIAL` | トラストラインの限度額、または送金元に送金通貨の残高（イシュアーの[送金手数料](../../../concepts/tokens/transfer-fees.md)がある場合はこの手数料を含む）が十分になかったことが原因で、Checkでは十分なトークンを送金できませんでした。 | 原因がトラストラインの限度額である場合は、（希望する場合には）限度額を引き上げる[TrustSetトランザクション][]を送信するか、または通貨の一部を消費して残高を減らしてから、Checkの換金を再試行します。原因が送金元の残高である場合は、送金元にCheckの通貨が積み増しされるまで待つか、または以前よりも低い額でCheckの換金を再試行します。 |
 | `tecUNFUNDED_PAYMENT` | Checkで十分なXRPを送金できませんでした。 | 送金元にXRPが積み増しされるまで待つか、または以前よりも低い額でCheckの換金を再試行します。 |
 
 ## {{cash_flex_n.next()}}.送金された額の確認
 
 Checkが変動する`DeliverMin`の額で換金された場合は、Checkは少なくとも`DeliverMin`の額で換金されたと想定できます。送金された額を正確に得るには、トランザクションメタデータを調べます。<!--{# TODO: Update if RIPD-1623 adds a delivered_amount field. #}-->メタデータの`AffectedNodes`配列には、通貨のタイプに応じて、Checkの換金による残高の変更を反映した1～2つのオブジェクトが含まれています。
 
-- XRPの場合、Checkの送金元の`AccountRoot`オブジェクトのXRP `Balance` フィールドから引き落しが行われます。Checkの受取人（CheckCashトランザクションを送信したユーザー）の`AccountRoot`オブジェクトでは、最低でもCheckCashトランザクションの`DeliverMin`から、トランザクションの送信にかかる[トランザクションコスト](transaction-cost.html)を差し引いた額が、XRP `Balance`に入金されます。
+- XRPの場合、Checkの送金元の`AccountRoot`オブジェクトのXRP `Balance` フィールドから引き落しが行われます。Checkの受取人（CheckCashトランザクションを送信したユーザー）の`AccountRoot`オブジェクトでは、最低でもCheckCashトランザクションの`DeliverMin`から、トランザクションの送信にかかる[トランザクションコスト](../../../concepts/transactions/transaction-cost.md)を差し引いた額が、XRP `Balance`に入金されます。
 
     たとえば以下の`ModifiedNode`は、アカウントrGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis（Checkの受取人でありこのCheckCashトランザクションの送信者）のXRP残高が`9999999970` dropから`10099999960` dropに変更されています。つまり、このトランザクションを処理した結果として、受取人に対し _正味_ 99.99999 XRPが入金されています。
 
-          {
-            "ModifiedNode": {
-              "FinalFields": {
-                 "Account": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
-                 "Balance": "10099999960",
-                 "Flags": 0,
-                 "OwnerCount": 2,
-                 "Sequence": 5
-              },
-              "LedgerEntryType": "AccountRoot",
-              "LedgerIndex": "7939126A732EBBDEC715FD3CCB056EB31E65228CA17E3B2901E7D30B90FD03D3",
-              "PreviousFields": {
-                 "Balance": "9999999970",
-                 "Sequence": 4
-              },
-              "PreviousTxnID": "0283465F0D21BE6B1E91ABDE17266C24C1B4915BAAA9A88CC098A98D5ECD3E9E",
-              "PreviousTxnLgrSeq": 8005334
-            }
-          }
+    ```
+    {
+      "ModifiedNode": {
+        "FinalFields": {
+           "Account": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+           "Balance": "10099999960",
+           "Flags": 0,
+           "OwnerCount": 2,
+           "Sequence": 5
+        },
+        "LedgerEntryType": "AccountRoot",
+        "LedgerIndex": "7939126A732EBBDEC715FD3CCB056EB31E65228CA17E3B2901E7D30B90FD03D3",
+        "PreviousFields": {
+           "Balance": "9999999970",
+           "Sequence": 4
+        },
+        "PreviousTxnID": "0283465F0D21BE6B1E91ABDE17266C24C1B4915BAAA9A88CC098A98D5ECD3E9E",
+        "PreviousTxnLgrSeq": 8005334
+      }
+    }
+    ```
 
     正味金額99.99999 XRPは、このCheckCashトランザクションを送信するにあたり、トランザクションコストを支払うために消却された額を差し引いた後の金額です。以下のトランザクション指示（抜粋）は、トランザクションコスト（`Fee`フィールド）がXRPの10 dropであることを示しています。これを正味残高の変更に追加することで、このCheckの換金のために受取人rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAisに _総額_ 100 XRPが入金されます。
 
-        "Account" : "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
-        "TransactionType" : "CheckCash",
-        "DeliverMin" : "95000000",
-        "Fee" : "10",
+    ```
+    "Account" : "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+    "TransactionType" : "CheckCash",
+    "DeliverMin" : "95000000",
+    "Fee" : "10",
+    ```
 
 - Checkの送金元または受取人がイシュアーであるトークンの場合、これらのアカウント間のトラストラインを表す`RippleState`オブジェクトでは、`Balance`がCheckの受取人に有利な方法で調整されています。
 
@@ -208,8 +198,8 @@ Checkが変動する`DeliverMin`の額で換金された場合は、Checkは少�
 
     <!--{# TODO: example of double-RippleState balance changes #}-->
 
-    - トークンに[送金手数料](transfer-fees.html)がある場合、受取人への入金額を上回る額がCheckの送金元から引き落とされます。（この差額が送金手数料であり、これがイシュアーに戻されることによりイシュアーの正味の債務は減少します。）
+    - トークンに[送金手数料](../../../concepts/tokens/transfer-fees.md)がある場合、受取人への入金額を上回る額がCheckの送金元から引き落とされます。（この差額が送金手数料であり、これがイシュアーに戻されることによりイシュアーの正味の債務は減少します。）
 
 <!--{# common links #}-->
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -21,7 +21,7 @@ For a validator in AWS, consider `z1d.2xlarge` with an extra 1 TB disk for loggi
 
 ## Minimum Specifications
 
-**Caution:** These specifications are not enough to reliably [stay synced with Mainnet](server-doesnt-sync.html). For production use, follow the recommended specifications above.
+**Caution:** These specifications are not enough to reliably [stay synced with Mainnet](../troubleshooting/server-doesnt-sync.md). For production use, follow the recommended specifications above.
 
 For testing purposes, you can run an XRP Ledger server on commodity hardware with the following minimum requirements:
 
@@ -43,19 +43,15 @@ A `rippled` server relies on maintaining the correct time. It is recommended tha
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Consensus](consensus.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Capacity Planning](capacity-planning.html) - More information on the recommended specifications and planning for production needs
-    - [Install `rippled`](install-rippled.html)
-    - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
+    - [Capacity Planning](capacity-planning.md) - More information on the recommended specifications and planning for production needs
+    - [Install `rippled`](index.md)
+    - [Troubleshoot rippled](../troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [`rippled` Commandline Usage](commandline-usage.html)
+    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+        - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

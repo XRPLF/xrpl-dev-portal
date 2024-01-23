@@ -13,7 +13,7 @@ Clio stores validated historical ledger and transaction data in a space efficien
 
 Clio requires access to a `rippled` server, which can run on the same machine as Clio or separately.
 
-While Clio offers the complete [HTTP / WebSocket APIs](http-websocket-apis.html), by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the `rippled` server on the P2P network and passes the response back.  
+While Clio offers the complete [HTTP / WebSocket APIs](../../references/http-websocket-apis/index.md), by default, it only returns validated data. For any requests that require access to the P2P network, Clio automatically forwards the request to the `rippled` server on the P2P network and passes the response back.  
 
 ## Why Should I Run a Clio Server?
 
@@ -30,7 +30,7 @@ There are lots of reasons you might want to run your own Clio server, but most o
 
 ## How does a Clio Server Work?
 
-{{ include_svg("img/clio-basic-architecture.svg", "Figure 1: How does a Clio server work?") }}
+[{% inline-svg file="/img/clio-basic-architecture.svg" /%}](/img/clio-basic-architecture.svg "Figure 1: How does a Clio server work?")
 
 A Clio server stores validated ledger data such as transaction metadata, account states, and ledger headers in a persistent datastore.
 
@@ -47,4 +47,4 @@ Clio will **always** forward to `rippled` if any of the following is true:
 
 - [Clio source code](https://github.com/XRPLF/clio)
 - **Tutorials:**
-    - [Install Clio server on Ubuntu](install-clio-on-ubuntu.html)
+    - [Install Clio server on Ubuntu](../../infrastructure/installation/install-clio-on-ubuntu.md)

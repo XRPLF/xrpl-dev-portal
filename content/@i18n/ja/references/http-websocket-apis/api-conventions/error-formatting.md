@@ -12,10 +12,9 @@ blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの�
 
 エラーの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
   "id": 3,
@@ -31,9 +30,9 @@ blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの�
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 HTTP Status: 200 OK
 {
@@ -49,9 +48,9 @@ HTTP Status: 200 OK
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 {
     "result": {
@@ -66,8 +65,9 @@ HTTP Status: 200 OK
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## WebSocketフォーマット
@@ -104,7 +104,7 @@ HTTPステータスコード200 OKが返されるその他のエラーの場合�
 
 すべてのメソッドは、以下のいずれかの値の`error`コードを返す可能性があります。
 
-* `unknownCmd` - リクエストに、`rippled`サーバーが認識する[コマンド](http-websocket-apis.html)が含まれていません。
+* `unknownCmd` - リクエストに、`rippled`サーバーが認識する[コマンド](../index.md)が含まれていません。
 * `jsonInvalid` -（WebSocketのみ）リクエストは適切なJSONオブジェクトではありません。
   * この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
 * `missingCommand` -（WebSocketのみ）リクエストに`command`フィールドが指定されていませんでした。
@@ -114,4 +114,4 @@ HTTPステータスコード200 OKが返されるその他のエラーの場合�
 * `noCurrent` - 高い負荷、ネットワークの問題、バリデータ障害、誤った構成、またはその他の問題が原因で、サーバーが現行のレジャーを認識できません。
 * `noClosed` - サーバーに決済済みレジャーがありません。通常、このエラーは起動が完了していないことが原因で発生します。
 * `wsTextRequired` -（WebSocketのみ）リクエストの[opcode](https://tools.ietf.org/html/rfc6455#section-5.2)がテキストではありません。
-* `amendmentBlocked` - サーバーの状態が[Amendment blocked](amendments.html#amendment-blocked)であるため、XRP Ledgerネットワークとの同期を維持するために最新バージョンに更新する必要があります。
+* `amendmentBlocked` - サーバーの状態が[Amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked)であるため、XRP Ledgerネットワークとの同期を維持するために最新バージョンに更新する必要があります。

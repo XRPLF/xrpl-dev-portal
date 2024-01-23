@@ -15,12 +15,11 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ## Request Format
 An example of the request format:
 
-{% include '_snippets/no-cli-syntax.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "nft_sell_offers",
@@ -28,9 +27,9 @@ An example of the request format:
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "nft_sell_offers",
@@ -41,10 +40,11 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#nft_sell_offers)
+[Try it! >](/resources/dev-tools/websocket-api-tool#nft_sell_offers)
 
 The request includes the following parameters:
 
@@ -59,10 +59,9 @@ The request includes the following parameters:
 ## Response Format
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -80,9 +79,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -99,8 +98,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 The response follows the [standard format][], with a successful result containing the following fields:
@@ -119,8 +119,8 @@ Each member of the `offers` array represents one [NFTokenOffer object][] to buy 
 | `Field`           | Type             | Description                           |
 |:------------------|:-----------------|:--------------------------------------|
 | `amount`          | String or Object | The amount offered to sell the NFT for, as a String representing an amount in drops of XRP, or an object representing an amount of a fungible token. (See [Specifying Currency Amounts][Currency Amount]) |
-| `flags`           | Number           | A set of bit-flags for this offer. See [NFTokenOffer flags](nftokenoffer.html#nftokenoffer-flags) for possible values. |
-| `nft_offer_index` | String           | The [ledger object ID](ledger-object-ids.html) of this offer. |
+| `flags`           | Number           | A set of bit-flags for this offer. See [NFTokenOffer flags](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md#nftokenoffer-flags) for possible values. |
+| `nft_offer_index` | String           | The [ledger object ID](../../../protocol/ledger-data/common-fields.md) of this offer. |
 | `owner`           | String           | The account that placed this offer.   |
 
 ## Possible Errors
@@ -130,6 +130,4 @@ Each member of the `offers` array represents one [NFTokenOffer object][] to buy 
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

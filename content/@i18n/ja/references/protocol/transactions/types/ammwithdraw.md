@@ -9,11 +9,11 @@ status: not_enabled
 # AMMWithdraw
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment][] {% not-enabled /%}が必要です。)_
 
-AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスから資産を引き出します。
+AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -38,7 +38,7 @@ AMMの流動性プロバイダトークン（LPトークン）を返却するこ
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド     | JSONの型   | [内部の型][] | 必須? | 説明         |
 |:-------------|:-----------|:-----------|:------|:------------|
@@ -89,7 +89,7 @@ AMMの流動性プロバイダトークン（LPトークン）を返却するこ
 
 ### AMMWithdrawのフラグ
 
-AMMWithdrawトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)の値をサポートしています。
+AMMWithdrawトランザクションは、以下のように[`Flags`フィールド](../common-fields.md#flagsフィールド)の値をサポートしています。
 
 | フラグ名                 | 16進数値      | 10進数値       | 説明                   |
 |:------------------------|:-------------|:--------------|:----------------------|
@@ -101,12 +101,12 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 | `tfOneAssetLPToken`     | `0x00200000` | 2097152       | シングルアセット出金を行い、指定された額のLPトークンを受け取ります。 |
 | `tfLimitLPToken`        | `0x00400000` | 4194304       | 有効価格を指定して、シングルアセット出金を行います。 |
 
-これらのフラグのうちの **1つのみ** と、任意の[グローバルフラグ](transaction-common-fields.html#グローバルフラグ)を指定する必要があります。
+これらのフラグのうちの **1つのみ** と、任意の[グローバルフラグ](../common-fields.md#グローバルフラグ)を指定する必要があります。
 
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード               | 説明                                          |
 |:-------------------------|:---------------------------------------------|
@@ -114,15 +114,11 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 | `tecAMM_BALANCE`         | トランザクションによって、プールから1つの資産をすべて引き出そうとしている、もしくは`tfWithdrawAll`の場合に端数処理によって0以外の金額が残ってしまっています。 |
 | `tecAMM_FAILED` | 例えば、`EPrice`フィールドに指定された有効価格が低過ぎる場合など、出金に関する条件が成立しませんでした。 |
 | `tecAMM_INVALID_TOKENS`  | トークンペアのAMMが存在しないか、計算の結果、引き出し額がゼロに丸められました。 |
-| `tecFROZEN`              | トランザクションは[凍結](freezes.html)されたトークンを引き出そうとしました。 |
-| `tecINSUF_RESERVE_LINE`  | トランザクションの送信者は、このトランザクションを処理するための[準備金要件](reserves.html)の増加に対応できません。おそらく、引き出される資産の1つを保持するために少なくとも1つの新しいトラストラインが必要ですが、新しいトラストラインのための追加の所有者準備金分のXRPを持っていないためでしょう。 |
+| `tecFROZEN`              | トランザクションは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されたトークンを引き出そうとしました。 |
+| `tecINSUF_RESERVE_LINE`  | トランザクションの送信者は、このトランザクションを処理するための[準備金要件](../../../../concepts/accounts/reserves.md)の増加に対応できません。おそらく、引き出される資産の1つを保持するために少なくとも1つの新しいトラストラインが必要ですが、新しいトラストラインのための追加の所有者準備金分のXRPを持っていないためでしょう。 |
 | `tecNO_AUTH`             | 送信者は、引き出し資産のいずれかを保有する権限を有していません。 |
 | `temMALFORMED`     | トランザクションで無効なフィールドの組み合わせが指定されました。[AMMWithdrawモード](#ammwithdrawモード)を参照してください。 |
 | `temBAD_AMM_TOKENS`      | 例えば、`issuer`がAMMの関連するAccountRootアドレスでない、`currency`がこのAMMのLPトークンの通貨コードでない、またはトランザクションがこのAMMのLPトークンをAssetフィールドの1つに指定した、などです。 |
 | `terNO_AMM`              | トランザクションで指定した資産ペアの自動マーケットメーカーインスタンスが存在しません。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -8,7 +8,7 @@ labels:
 ---
 # Decentralized Identifiers
 
-_(Requires the [DID amendment][] :not_enabled:)_
+_(Requires the [DID amendment][] {% not-enabled /%})_
 
 A Decentralized Identifier (DID) is a new type of identifier defined by the World Wide Web Consortium (W3C) that enables verifiable, digital identities. DIDs are fully under the control of the DID owner, independent from any centralized registry, identity provider, or certificate authority.
 
@@ -75,8 +75,4 @@ To learn more about the core properties of a DID document, see: [Decentralized I
 - You can include any content in a DID document, but should limit it to verification methods and service points. Since DIDs on XRPL can be resolved by anyone, you shouldn't include any personal information.
 - IPFS allows anyone to store content on the nodes in a distributed network. A common misconception is that anyone can edit that content; however, the content-addressability of IPFS means any edited content will have a different address from the original. While any entity can copy a DID document anchored with an XRPL account's `DIDDocument` or `URI` fields, they can't change the document itself unless they control the private key that created the corresponding `DID` object.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

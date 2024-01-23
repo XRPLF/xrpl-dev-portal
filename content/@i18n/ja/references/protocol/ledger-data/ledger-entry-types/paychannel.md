@@ -16,9 +16,9 @@ _（[PayChan Amendment][]により追加されました。）_
 
 有効期限切れになったPayment Channelは、まずレジャーに残ります。これは、レジャーの内容を変更できるのは新しいトランザクションだけであるためです。有効期限の経過後にトランザクションがPayment Channelにアクセスすると、トランザクション処理によりそのPayment Channelは自動的に閉鎖されます。有効期限切れのChannelを閉鎖して未使用のXRPを所有者に返金するには、一部のアドレスがそのChannelにアクセスする新しいPaymentChannelClaimトランザクションまたはPaymentChannelFundトランザクションを送信する必要があります。
 
-Payment Channelの使用例については、[Payment Channelのチュートリアル](use-payment-channels.html)を参照してください。
+Payment Channelの使用例については、[Payment Channelのチュートリアル](../../../../tutorials/use-specialized-payment-types/use-payment-channels.md)を参照してください。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -41,7 +41,7 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `PayChannel`オブジェクトのフィールドは次のとおりです。
 
@@ -58,8 +58,8 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 | `PreviousTxnID`     | 文字列    | Hash256           | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
 | `PreviousTxnLgrSeq` | 数値    | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
 | `Flags`             | 数値    | UInt32            | このPayment Channelに対して有効になっているブールフラグのビットマップ。現在、プロトコルでは`PayChannel` オブジェクトのフラグは定義されていません。 |
-| `Expiration`        | 数値    | UInt32            | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
-| `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](ledger-header.html)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
+| `Expiration`        | 数値    | UInt32            | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
+| `CancelAfter`       | 数値    | UInt32            | _（省略可）_ このPayment Channelの不変の有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。これは、Channelを作成するトランザクションによりオプションで設定され、変更できません。 |
 | `SourceTag`         | 数値    | UInt32            | _（省略可）_ このPayment Channelの支払元（所有者のアドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationTag`    | 数値    | UInt32            | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationNode`   | 文字列    | UInt64    | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。 |
@@ -67,7 +67,7 @@ Payment Channelの使用例については、[Payment Channelのチュートリ�
 
 ## Channel有効期限の設定
 
-Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールドが表す不変の有効期限とは対照的な変更可能な有効期限です。Channelの有効期限は常に、前のレジャーの[`close_time`フィールド](ledger-header.html)を基準にしているものとみなされます。`PayChannel`オブジェクトの作成時には、`Expiration`フィールドが省略されます。`PayChannel`オブジェクトの`Expiration`フィールドはさまざまな方法で更新できます。要約すると、Channelが最初の閉鎖試行操作の後、`SettleDelay`秒以上常に開いたままであれば、Channelの支払元アドレスはChannelの`Expiration`を自由に設定できます。
+Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールドが表す不変の有効期限とは対照的な変更可能な有効期限です。Channelの有効期限は常に、前のレジャーの[`close_time`フィールド](../ledger-header.md)を基準にしているものとみなされます。`PayChannel`オブジェクトの作成時には、`Expiration`フィールドが省略されます。`PayChannel`オブジェクトの`Expiration`フィールドはさまざまな方法で更新できます。要約すると、Channelが最初の閉鎖試行操作の後、`SettleDelay`秒以上常に開いたままであれば、Channelの支払元アドレスはChannelの`Expiration`を自由に設定できます。
 
 ### 支払元アドレス
 
@@ -103,7 +103,4 @@ Payment Channelの`Expiration`フィールドは、`CancelAfter`フィールド�
 * 宛先アカウントのAccountID
 * Channelを作成したトランザクションのシーケンス番号
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -10,9 +10,9 @@ labels:
 
 _(Added by the [Checks amendment][].)_
 
-A `Check` entry describes a [check](checks.html), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
+A `Check` entry describes a [check](../../../../concepts/payment-types/checks.md), similar to a paper personal check, which can be cashed by its destination to get money from its sender.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -33,9 +33,9 @@ A `Check` entry describes a [check](checks.html), similar to a paper personal ch
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Field               | JSON Type        | [Internal Type][] | Required? | Description     |
 |:--------------------|:-----------------|:------------------|:----------|:----------------|
@@ -54,14 +54,14 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `SourceTag`         | Number           | UInt32            | No        | An arbitrary tag to further specify the source for this Check, such as a hosted recipient at the sender's address. |
 
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for `{{currentpage.name}}` entries.
+There are no flags defined for {% code-page-name /%} entries.
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-`{{currentpage.name}}` entries count as one item towards the owner reserve of the sender of the Check as long as the entry is in the ledger. This reserve is freed up when the check is cashed or canceled.
+{% code-page-name /%} entries count as one item towards the owner reserve of the sender of the Check as long as the entry is in the ledger. This reserve is freed up when the check is cashed or canceled.
 
 
 ## Check ID Format
@@ -72,11 +72,8 @@ The ID of a `Check` entry is the [SHA-512Half][] of the following values, concat
 * The Check space key (`0x0043`)
 * The AccountID of the sender of the [CheckCreate transaction][] that created the `Check`
 * The `Sequence` number of the [CheckCreate transaction][] that created the `Check`.
-    If the CheckCreate transaction used a [Ticket](tickets.html), use the `TicketSequence` value instead.
+    If the CheckCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
-See the tutorial showing how to [Send a Check](send-a-check.html).
+See the tutorial showing how to [Send a Check](../../../../tutorials/use-specialized-payment-types/use-checks/send-a-check.md).
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

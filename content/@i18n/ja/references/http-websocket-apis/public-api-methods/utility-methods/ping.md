@@ -13,19 +13,18 @@ labels:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":1,
    "command":"ping"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"ping",
@@ -34,17 +33,18 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: ping
 rippled ping
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ping)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ping)
 
 リクエストにはパラメーターが含まれていません。
 
@@ -52,10 +52,9 @@ rippled ping
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":1,
@@ -64,9 +63,9 @@ rippled ping
    "type":"response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -76,8 +75,9 @@ rippled ping
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果にフィールドが含まれません。クライアントはリクエストからレスポンスまでのラウンドトリップ時間を遅延として測定できます。
 
@@ -85,7 +85,4 @@ rippled ping
 
 * [汎用エラータイプ][]のすべて。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

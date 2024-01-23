@@ -7,7 +7,7 @@ labels:
 ---
 # Clawing Back Tokens
 
-{% include '_snippets/clawback-disclaimer.md' %}
+{% partial file="/_snippets/clawback-disclaimer.md" /%}
 
 For regulatory purposes, some issuers need the ability to recover tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or *claw back*, the funds.
 
@@ -36,7 +36,4 @@ Conversely, if you try to set `lsfNoFreeze` while `lsfAllowTrustLineClawback` is
 
 If successful, this transaction would claw back at most 314.159 FOO issued by rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9S and held by rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

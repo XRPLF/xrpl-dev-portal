@@ -7,9 +7,9 @@ labels:
 ---
 # rippledサーバーが同期しない
 
-このページでは、[`rippled`サーバー](xrpl-servers.html)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](rippled-server-states.html)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.html)を参照してください。）
+このページでは、[`rippled`サーバー](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバーが起動中または起動直後にクラッシュした場合は、[サーバーが起動しない](server-wont-start.md)を参照してください。）
 
-以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](install-rippled.html)されていることを前提としています。
+以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
 
 
 ## 通常の同期動作
@@ -17,7 +17,7 @@ labels:
 ネットワークとの同期は、通常はおよそ5分から15分で完了します。その間に、サーバーは次のようなさまざまなことを行います。
 
 - 推奨バリデータリストを読み込み（例: `vl.ripple.com`）、信頼できるバリデータを判断します。
-- [ピアサーバーを検出](peer-protocol.html#ピアの検出)して接続します。
+- [ピアサーバーを検出](../../concepts/networks-and-servers/peer-protocol.md#ピアの検出)して接続します。
 - 信頼できるバリデータをリッスンして、最近検証されたレジャーハッシュを見つけます。
 - ピアから最新のレジャーを完全にダウンロードし、それを使ってレジャーデータの内部データベースを構築します。
 - 新たにブロードキャストされたトランザクションを収集し、それを進行中のレジャーに適用します。
@@ -29,14 +29,14 @@ labels:
 
 多くの同期の問題は、サーバーを再起動することで解決できます。最初に同期が失敗した原因がどのようなものであっても、2回目では成功する場合があります。
 
-[server_infoメソッド][]で[`server_state`](rippled-server-states.html)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
+[server_infoメソッド][]で[`server_state`](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)が`proposing`または`full`以外の状態であると示され、`server_state_duration_us`が`900000000`（15分のマイクロ秒表記）より大きい場合は、`rippled`サービスをシャットダウンしてから数秒間待ち、再起動してください。場合によっては、マシン全体を再起動します。
 
 問題が解決しない場合は、このページに記載されている他の原因を確認してください。いずれも当てはまらないと思われる場合は、[`rippled`リポジトリに問題を登録](https://github.com/XRPLF/rippled/issues)し、「Syncing issue」ラベルを追加します。
 
 
 ## 同期の問題のよくある原因
 
-同期の問題の原因として最もよくあるのは、[システム要件](system-requirements.html)を満たしていないことです。要件を満たせない主な原因は次の3つです。
+同期の問題の原因として最もよくあるのは、[システム要件](../installation/system-requirements.md)を満たしていないことです。要件を満たせない主な原因は次の3つです。
 
 -  **低速なディスク。** 安定して高速な性能を発揮するソリッドステートディスク（SSD）が必要です。AWSなどのクラウドプロバイダーはディスク性能を保証しておらず、ハードウェアを共有する他のユーザーの影響を受ける可能性があります。
 -  **不十分なRAM。** メモリー要件はさまざまな要因に大きく左右されます。例えば、ネットワークの負荷やXRP Ledgerがどのように使われるかなど、予測しづらい要因もあるため、念のため最小システム要件よりも大きいメモリーを用意することをお勧めします。
@@ -47,7 +47,7 @@ labels:
 
 ## バリデータリストを読み込めない
 
-デフォルトの構成では、`vl.ripple.com`から受信した推奨バリデータリストを使用します。このリストは、Rippleの暗号鍵ペアで署名されており、有効期限が組み込まれています。サーバーが何らかの理由でリストを`vl.ripple.com`からダウンロードできない場合、サーバーは信頼できるバリデータのセットを選択せず、有効として宣言できるレジャーを決定できません。（[Testnetや別の並列ネットワーク](parallel-networks.html)に接続している場合、サーバーは代わりにそのネットワークの信頼できるバリデータのリストを使用します。）
+デフォルトの構成では、`vl.ripple.com`から受信した推奨バリデータリストを使用します。このリストは、Rippleの暗号鍵ペアで署名されており、有効期限が組み込まれています。サーバーが何らかの理由でリストを`vl.ripple.com`からダウンロードできない場合、サーバーは信頼できるバリデータのセットを選択せず、有効として宣言できるレジャーを決定できません。（[Testnetや別の並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)に接続している場合、サーバーは代わりにそのネットワークの信頼できるバリデータのリストを使用します。）
 
 [server_infoメソッド][]レスポンスの`validator_list`ブロックは、バリデータリストの有効期限などのステータスを示します。リストがあるが期限切れである場合、サーバーは以前はそのバリデータリストのサイトに接続できていたものの、その後接続できなくなった可能性があります。その場合、現在のリストはサーバーがそれより新しいリストをダウンロードできなかったために期限切れとなった可能性があります。
 
@@ -58,9 +58,9 @@ labels:
 
 ## 十分な数のピアがない
 
-サーバーが十分な数の[ピアサーバー](peer-protocol.html)に接続していない場合、サーバーは十分なデータをダウンロードできず、ネットワークが新しいトランザクションを処理するときに同期がとれなくなる可能性があります。この問題は、ネットワーク接続の信頼性が低い場合や、十分な数の信頼できる固定ピアを追加せずにサーバーを[プライベートサーバー](peer-protocol.html#プライベートピア)として構成している場合に起こる可能性があります。
+サーバーが十分な数の[ピアサーバー](../../concepts/networks-and-servers/peer-protocol.md)に接続していない場合、サーバーは十分なデータをダウンロードできず、ネットワークが新しいトランザクションを処理するときに同期がとれなくなる可能性があります。この問題は、ネットワーク接続の信頼性が低い場合や、十分な数の信頼できる固定ピアを追加せずにサーバーを[プライベートサーバー](../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)として構成している場合に起こる可能性があります。
 
-[peersメソッド][]を使用して、サーバーの現在のピアについての情報を取得します。ピアの数が10または11の場合、ファイアウォールが着信ピア接続をブロックしていることを示しています。[ポートフォワーディングを設定](forward-ports-for-peering.html)して、より多くの着信接続を許可します。サーバーがプライベートサーバーとして構成されている場合は、構成ファイルの`[ips_fixed]`スタンザの内容と構文を再度確認し、可能であればプロキシと公開ハブをさらに追加します。
+[peersメソッド][]を使用して、サーバーの現在のピアについての情報を取得します。ピアの数が10または11の場合、ファイアウォールが着信ピア接続をブロックしていることを示しています。[ポートフォワーディングを設定](../configuration/peering/forward-ports-for-peering.md)して、より多くの着信接続を許可します。サーバーがプライベートサーバーとして構成されている場合は、構成ファイルの`[ips_fixed]`スタンザの内容と構文を再度確認し、可能であればプロキシと公開ハブをさらに追加します。
 
 
 ## データベースの破損
@@ -69,31 +69,39 @@ labels:
 
 テストとして、十分な空き容量があれば、サーバーのデータベースへのパスを一時的に変更することで、現行のレジャーをダウンロードし直して、別の設定を保存できます。
 
-**注記:** データベースのパスを変更した場合、サーバーはサーバーの現在の[ノードキーペア][]や[ピアリザベーション](peer-protocol.html#固定ピアとピアリザベーション)など、保存されている一部の設定を読み込めません。データベースのパスを変更することでサーバーの同期の問題が解決した場合は、これらの設定の一部を再作成することをお勧めします。
+**注記:** データベースのパスを変更した場合、サーバーはサーバーの現在の[ノードキーペア][]や[ピアリザベーション](../../concepts/networks-and-servers/peer-protocol.md#固定ピアとピアリザベーション)など、保存されている一部の設定を読み込めません。データベースのパスを変更することでサーバーの同期の問題が解決した場合は、これらの設定の一部を再作成することをお勧めします。
 
 1. `rippled`サーバーが稼働中の場合は停止します。
 
-        $ sudo systemctl stop rippled
+    ```
+    $ sudo systemctl stop rippled
+    ```
 
 2. 新しいデータベースを格納するための新しい空のフォルダーを作成します。
 
-        $ mkdir /var/lib/rippled/db_new/
-        $ mkdir /var/lib/rippled/db_new/nudb
+    ```
+    $ mkdir /var/lib/rippled/db_new/
+    $ mkdir /var/lib/rippled/db_new/nudb
+    ```
 
 3. 新しいパスを使用するように構成ファイルを編集します。`[node_db]`スタンザの`path`フィールド**と**`[database_path]`スタンザの値を変更します。
 
-        [node_db]
-        type=NuDB
-        path=/var/lib/rippled/db_new/nudb
+    ```
+    [node_db]
+    type=NuDB
+    path=/var/lib/rippled/db_new/nudb
 
-        [database_path]
-         /var/lib/rippled/db_new
+    [database_path]
+     /var/lib/rippled/db_new
+    ```
 
-    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 4. `rippled`サーバーを再起動します。
 
-        $ sudo systemctl start rippled
+    ```
+    $ sudo systemctl start rippled
+    ```
 
    新しいデータベースを使用してサーバーが同期に成功したら、以前のデータベースを格納していたフォルダーを削除できます。また、ハードウェア障害、特にディスクとRAMの障害を確認することもお勧めします。
 
@@ -101,19 +109,16 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
-    - [ピアプロトコル](peer-protocol.html)
-    - [技術に関するよくある質問](technical-faq.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [ピアプロトコル](../../concepts/networks-and-servers/peer-protocol.md)
+    - [技術に関するよくある質問](../../faq.md)
 - **チュートリアル:**
-    - [ログメッセージについて](understanding-log-messages.html)
-    - [容量の計画](capacity-planning.html)
+    - [ログメッセージについて](understanding-log-messages.md)
+    - [容量の計画](../installation/capacity-planning.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](http-websocket-apis.html)
+    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
       - [peersメソッド][]
       - [server_infoメソッド][]
       - [validator_list_sitesメソッド][]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

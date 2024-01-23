@@ -8,20 +8,19 @@ labels:
 # sign_for
 [[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SignFor.cpp "Source")
 
-`sign_for`コマンドは、[マルチシグトランザクション](multi-signing.html)の署名を1つ提供します。
+`sign_for`コマンドは、[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)の署名を1つ提供します。
 
-{% include '_snippets/public-signing-note.md' %}
-<!--_ -->
+{% partial file="/_snippets/public-signing-note.md" /%}
 
-このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。[新規: rippled 0.31.0][]
+
+このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":"sign_for_example",
@@ -44,9 +43,9 @@ labels:
    }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"sign_for",
@@ -70,9 +69,9 @@ labels:
    }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: rippled sign_for <signer_address> <signer_secret> [offline]
 rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s████████████████████████████ '{
@@ -89,15 +88,16 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
    "Fee":"30000"
 }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
 | `Field`      | 型                   | 説明                                   |
 |:-------------|:---------------------|:---------------------------------------|
 | `account`    | 文字列 - [アドレス][] | 署名を提供するアドレス。 |
-| `tx_json`    | オブジェクト               | 署名する[トランザクション](transaction-formats.html)。[signメソッド][]を使用する場合とは異なり、トランザクションのすべてのフィールド（`Fee`と`Sequence`を含む）を指定する必要があります。トランザクションに、空の文字列を値として指定した`SigningPubKey`フィールドを含める必要があります。このオブジェクトには、以前に収集した署名を持つ`Signers`配列を必要に応じて含めることができます。 |
+| `tx_json`    | オブジェクト               | 署名する[トランザクション](../../../protocol/transactions/index.md)。[signメソッド][]を使用する場合とは異なり、トランザクションのすべてのフィールド（`Fee`と`Sequence`を含む）を指定する必要があります。トランザクションに、空の文字列を値として指定した`SigningPubKey`フィールドを含める必要があります。このオブジェクトには、以前に収集した署名を持つ`Signers`配列を必要に応じて含めることができます。 |
 | `secret`       | 文字列  | _（省略可）_ トランザクションを提供するアカウントのシークレットキー。トランザクションへの署名に使用されます。信頼できないサーバーに対して、またはセキュリティが確保されていないネットワーク接続を通じて機密情報を送信しないでください。`key_type`、`seed`、`seed_hex`、`passphrase`と同時に使用することはできません。 |
 | `seed`         | 文字列  | _（省略可）_ トランザクションを提供するアカウントのシークレットキー。トランザクションへの署名に使用されます。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`と同時に使用することはできません。 |
 | `seed_hex`     | 文字列  | _（省略可）_ トランザクションを提供するアカウントのシークレットキー。トランザクションへの署名に使用されます。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`と同時に使用することはできません。 |
@@ -113,10 +113,9 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id":"sign_for_example",
@@ -150,9 +149,9 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 200 OK
 {
@@ -185,9 +184,9 @@ rippled sign_for rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW s█████████
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading:"/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -222,15 +221,16 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`   | 型     | 説明                                                    |
 |:----------|:-------|:--------------------------------------------------------|
-| `tx_blob` | 文字列 | 新規に追加した署名を含む署名済みトランザクションの16進数表記。トランザクションに十分な数の署名がある場合には、[`submit`メソッドを使用してこの文字列を送信](submit.html#送信専用モード)できます。 |
-| `tx_json` | オブジェクト | 新規に追加された署名を含む`Signers`配列を持つ[トランザクションの指定](transaction-formats.html)（JSONフォーマット） 。トランザクションに十分な数の署名がある場合には、[submit_multisignedメソッド][]を使用してこのオブジェクトを送信できます。 |
+| `tx_blob` | 文字列 | 新規に追加した署名を含む署名済みトランザクションの16進数表記。トランザクションに十分な数の署名がある場合には、[`submit`メソッドを使用してこの文字列を送信](../../public-api-methods/transaction-methods/submit.md#送信専用モード)できます。 |
+| `tx_json` | オブジェクト | 新規に追加された署名を含む`Signers`配列を持つ[トランザクションの指定](../../../protocol/transactions/index.md)（JSONフォーマット） 。トランザクションに十分な数の署名がある場合には、[submit_multisignedメソッド][]を使用してこのオブジェクトを送信できます。 |
 
 ## 考えられるエラー
 
@@ -241,6 +241,4 @@ Connecting to 127.0.0.1:5005
 * `badSeed` - 指定されたシード値のフォーマットが正しくありません。
 * `badSecret` - 指定されたシークレット値のフォーマットが正しくありません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

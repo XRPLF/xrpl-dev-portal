@@ -8,17 +8,16 @@ labels:
 # channel_authorize
 [[ソース]](https://github.com/XRPLF/rippled/blob/d4a56f223a3b80f64ff70b4e90ab6792806929ca/src/ripple/rpc/handlers/PayChanClaim.cpp#L41 "Source")
 
-_（[PayChan Amendment][]が有効になっている必要があります。[新規: rippled 0.33.0][]）_
+_（[PayChan Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}新規: rippled 0.33.0{% /badge %}）_
 
 `channel_authorize`メソッドは、特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "channel_authorize_example_id1",
@@ -29,9 +28,9 @@ _（[PayChan Amendment][]が有効になっている必要があります。[新
     "amount": "1000000",
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 POST http://localhost:5005/
 Content-Type: application/json
@@ -46,40 +45,40 @@ Content-Type: application/json
     }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: channel_authorize <private_key> [<key_type>] <channel_id> <drops>
 rippled channel_authorize s████████████████████████████ secp256k1 5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3 1000000
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
 | フィールド | 型 | 説明        |
 |-------|------|-------------|
 | `channel_id` | 文字列 | Payment Channelが使用する一意のID。
-| `secret` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。`seed`、`seed_hex`、`passphrase`と同時に使用することはできません。[更新: rippled 1.4.0][] |
-| `seed ` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`と同時に使用することはできません。[新規: rippled 1.4.0][] |
-| `seed_hex` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`と同時に使用することはできません。[新規: rippled 1.4.0][] |
-| `passphrase` | 文字列 | _（省略可）_ クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。[このパスフレーズから導出した鍵](cryptographic-keys.html#鍵導出)は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`seed_hex`と同時に使用することはできません。[新規: rippled 1.4.0][] |
-| `key_type` | 文字列 | _（省略可）_ 指定された暗号化キーペアの[署名アルゴリズム](cryptographic-keys.html#署名アルゴリズム)。有効な種類は、`secp256k1`または`ed25519`です。デフォルトは`secp256k1`です。[新規: rippled 1.4.0][] |
+| `secret` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密鍵。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。`seed`、`seed_hex`、`passphrase`と同時に使用することはできません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}更新: rippled 1.4.0{% /badge %} |
+| `seed ` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。XRP Ledgerの[base58][]フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed_hex`、`passphrase`と同時に使用することはできません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
+| `seed_hex` | 文字列 | _（省略可）_ クレームへの署名に使用する秘密シード。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。16進フォーマットにする必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`passphrase`と同時に使用することはできません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
+| `passphrase` | 文字列 | _（省略可）_ クレームへの署名に使用する文字列パスフレーズ。これは、Channelに指定されている公開鍵と同じキーペアである必要があります。[このパスフレーズから導出した鍵](../../../../concepts/accounts/cryptographic-keys.md#鍵導出)は、チャネルで指定された公開鍵と一致する必要があります。指定する場合は、`key_type`も指定する必要があります。`secret`、`seed`、`seed_hex`と同時に使用することはできません。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
+| `key_type` | 文字列 | _（省略可）_ 指定された暗号化キーペアの[署名アルゴリズム](../../../../concepts/accounts/cryptographic-keys.md#署名アルゴリズム)。有効な種類は、`secp256k1`または`ed25519`です。デフォルトは`secp256k1`です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
 | `amount` | 文字列 | 承認するXRPの累積額（drop数）送金先がこのChannelからすでに受領しているXRPの額がこのフィールドの額よりも少ない場合、このメソッドで作成される署名を使用して差額を清算できます。 |
 
 リクエストでは、`secret`、`seed`、`seed_hex`、`passphrase`のうち1つだけを指定する**必要があります**。
 
-**警告:** 信頼できないサーバーに対して、またはセキュリティが確保されていないネットワーク接続を通じて秘密鍵を送信しないでください。（これには、このリクエストの`secret`、`seed`、`seed_hex`、または`passphrase`フィールドも含まれます）このメソッドは、自身が実行するサーバー、または資金を預けている十分に信頼できるサーバーへの、安全で暗号化されたネットワーク接続でのみ使用してください。そうでない場合、盗聴者があなたの秘密鍵を使用してクレームに署名し、同じキーペアを使用してこのPayment Channelなどから資金をすべて持ち出す可能性があります。手順については、[安全な署名の設定](secure-signing.html)を参照してください。
+**警告:** 信頼できないサーバーに対して、またはセキュリティが確保されていないネットワーク接続を通じて秘密鍵を送信しないでください。（これには、このリクエストの`secret`、`seed`、`seed_hex`、または`passphrase`フィールドも含まれます）このメソッドは、自身が実行するサーバー、または資金を預けている十分に信頼できるサーバーへの、安全で暗号化されたネットワーク接続でのみ使用してください。そうでない場合、盗聴者があなたの秘密鍵を使用してクレームに署名し、同じキーペアを使用してこのPayment Channelなどから資金をすべて持ち出す可能性があります。手順については、[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)を参照してください。
 
 ## レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "channel_authorize_example_id1",
@@ -89,9 +88,9 @@ rippled channel_authorize s█████████████████�
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -102,9 +101,9 @@ rippled channel_authorize s█████████████████�
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 {
     "result": {
@@ -113,8 +112,9 @@ rippled channel_authorize s█████████████████�
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -125,12 +125,9 @@ rippled channel_authorize s█████████████████�
 ## 考えられるエラー
 
 * いずれかの[汎用エラータイプ][]。
-* `badKeyType` - リクエストの`key_type`パラメーターは、有効なキータイプではありません。(有効なタイプは、`secp256k1`または`ed25519`です。)[新規: rippled 1.4.0][]
+* `badKeyType` - リクエストの`key_type`パラメーターは、有効なキータイプではありません。(有効なタイプは、`secp256k1`または`ed25519`です。){% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 * `badSeed` - リクエストの`secret`が有効なシークレットキーではありません。
 * `channelAmtMalformed` - リクエストの`amount`が有効な[XRPの額][XRP、drop単位]ではありません。
 * `channelMalformed` - リクエストの`channel_id`が有効なChannel IDではありません。Channel IDは256ビット（64文字）の16進文字列です。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

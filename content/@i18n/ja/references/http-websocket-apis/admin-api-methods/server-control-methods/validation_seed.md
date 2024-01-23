@@ -9,17 +9,16 @@ labels:
 # validation_seed
 [[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
 
-`validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバーを再起動すると、この値は構成ファイルに基づいてリセットされます。[rippled 0.29.1 以降では無効](https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1 "BADGE_RED")
+`validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバーを再起動すると、この値は構成ファイルに基づいてリセットされます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1" %}rippled 0.29.1 以降では無効{% /badge %}
 
-*`validation_seed`リクエストは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`validation_seed`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": "set_seed_1",
@@ -27,15 +26,16 @@ labels:
    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: validation_seed [secret]
 rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -47,10 +47,9 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -63,9 +62,9 @@ rippled validation_seed 'BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE'
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -79,8 +78,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
@@ -95,7 +95,4 @@ Connecting to 127.0.0.1:5005
 * [汎用エラータイプ][]のすべて。
 * `badSeed` - リクエストに無効なシークレット値が指定されていました。この場合は通常、シークレット値が異なるフォーマットの有効文字列（アカウントアドレス、検証の公開鍵など）である可能性があります。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

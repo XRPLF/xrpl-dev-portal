@@ -7,9 +7,9 @@ labels:
 ---
 # Understanding Log Messages
 
-The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](xrpl-servers.html) debug log and how to interpret them.
+The following sections describe some of the most common types of log messages that can appear in a [`rippled` server's](../../concepts/networks-and-servers/index.md) debug log and how to interpret them.
 
-This is an important step in [Diagnosing Problems](diagnosing-problems.html) with `rippled`.
+This is an important step in [Diagnosing Problems](diagnosing-problems.md) with `rippled`.
 
 ## Log Message Structure
 
@@ -26,7 +26,7 @@ Each line represents one log entry, with the following parts in order, separated
 
 1. The date the log entry was written, such as `2020-Jul-08`.
 2. The time the log entry was written, such as `20:12:12.075081020`.
-3. The time zone indicator `UTC`. (Log dates are always in UTC.) [New in: rippled 1.5.0][]
+3. The time zone indicator `UTC`. (Log dates are always in UTC.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}New in: rippled 1.5.0{% /badge %}
 4. The log partition and severity, such as `LoadMonitor:WRN`.
 5. The log message, such as `Job: sweep run: 1172ms wait: 0ms`.
 
@@ -45,13 +45,13 @@ Throw<std::runtime_error>
 Terminating thread rippled: main: unhandled St13runtime_error
 ```
 
-If your server always crashes on startup, see [Server Won't Start](server-wont-start.html) for possible cases.
+If your server always crashes on startup, see [Server Won't Start](server-wont-start.md) for possible cases.
 
-If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](install-rippled.html) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
+If your server crashes randomly during operation or as a result of particular commands, make sure you are [updated](../installation/index.md) to the latest `rippled` version. If you are on the latest version and your server is still crashing, check the following:
 
 - Is your server running out of memory? On some systems, `rippled` may be terminated by the Out Of Memory (OOM) Killer or another monitor process.
 - If your server is running in a shared environment, are other users or administrators causing the machine or service to be restarted? For example, some hosted providers automatically kill any service that uses a large amount of a shared machine's resources for an extended period of time.
-- Does your server meet the [minimum requirements](system-requirements.html) to run `rippled`? What about the [recommendations for production servers](system-requirements.html#recommended-specifications)?
+- Does your server meet the [minimum requirements](../installation/system-requirements.md) to run `rippled`? What about the [recommendations for production servers](../installation/system-requirements.md#recommended-specifications)?
 
 If none of the above apply, please report the issue to Ripple as a security-sensitive bug. If Ripple can reproduce the crash, you may be eligible for a bounty. See <https://ripple.com/bug-bounty/> for details.
 
@@ -73,7 +73,7 @@ Occasional messages of this type do not usually indicate a problem. If this type
 
 ## async_send failed
 
-The following log message indicates that [StatsD export](configure-statsd.html) failed:
+The following log message indicates that [StatsD export](../configuration/configure-statsd.md) failed:
 
 ```text
 Collector:ERR async_send failed: Connection refused
@@ -97,7 +97,7 @@ The following message indicates that the server has detected that it is running 
 LedgerMaster:ERR Check for upgrade: A majority of trusted validators are running a newer version.
 ```
 
-This is not strictly a problem, but an old server version is likely to become [amendment blocked](amendments.html#amendment-blocked-servers). You should [update `rippled`](install-rippled.html) to the latest stable version. (If you are connected to [devnet](parallel-networks.html), update to the latest nightly version instead.)
+This is not strictly a problem, but an old server version is likely to become [amendment blocked](../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers). You should [update `rippled`](../installation/index.md) to the latest stable version. (If you are connected to [devnet](../../concepts/networks-and-servers/parallel-networks.md), update to the latest nightly version instead.)
 
 
 ## Connection reset by peer
@@ -118,7 +118,7 @@ A large number of these messages around the same time may indicate a problem, su
 
 ## Consumer entry dropped with balance at or above drop threshold
 
-The following log message indicates that a client to the server's public API has been dropped as a result of [rate limiting](rate-limiting.html):
+The following log message indicates that a client to the server's public API has been dropped as a result of [rate limiting](../../references/http-websocket-apis/api-conventions/rate-limiting.md):
 
 ```text
 Resource:WRN Consumer entry 169.55.164.21 dropped with balance 15970 at or above drop threshold 15000
@@ -128,7 +128,7 @@ The entry contains the IP address of the client that exceeded its rate limit, an
 
 If you see frequent messages from the same IP address, you may want to block those IP addresses from your network to reduce the load on your server's public API. (For example, you may be able to configure your firewall to block those IP addresses.)
 
-To avoid being dropped by rate limiting on your own server, [connect as an admin](get-started-using-http-websocket-apis.html#admin-access).
+To avoid being dropped by rate limiting on your own server, [connect as an admin](../../tutorials/get-started/get-started-using-http-websocket-apis.md#admin-access).
 
 ## InboundLedger 11 timeouts for ledger
 
@@ -136,7 +136,7 @@ To avoid being dropped by rate limiting on your own server, [connect as an admin
 InboundLedger:WRN 11 timeouts for ledger 8265938
 ```
 
-This indicates that your server is having trouble requesting specific ledger data from its peers. If the [ledger index](basic-data-types.html#ledger-index) is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](history-sharding.html).
+This indicates that your server is having trouble requesting specific ledger data from its peers. If the [ledger index](../../references/protocol/data-types/basic-data-types.md#ledger-index) is much lower than the most recent validated ledger's index as reported by the [server_info method][], this probably indicates that your server is downloading a [history shard](../configuration/data-retention/history-sharding.md).
 
 This is not strictly a problem, but if you want to acquire ledger history faster, you can configure `rippled` to connect to peers with full history by adding or editing the `[ips_fixed]` config stanza and restarting the server. For example, to always try to connect to one of Ripple's full-history servers:
 
@@ -154,7 +154,7 @@ Log messages such as the following indicate that the server is requesting ledger
 InboundLedger:WRN Want: 5AE53B5E39E6388DBACD0959E5F5A0FCAF0E0DCBA45D9AB15120E8CDD21E019B
 ```
 
-This is normal if your server is syncing, backfilling, or downloading [history shards](history-sharding.html).
+This is normal if your server is syncing, backfilling, or downloading [history shards](../configuration/data-retention/history-sharding.md).
 
 
 ## LoadMonitor Job
@@ -194,7 +194,7 @@ type=RocksDB
 
 ## No hash for fetch pack
 
-Messages such as the following are caused by a bug in `rippled` v1.1.0 and earlier when downloading historical ledgers for [history sharding](history-sharding.html):
+Messages such as the following are caused by a bug in `rippled` v1.1.0 and earlier when downloading historical ledgers for [history sharding](../configuration/data-retention/history-sharding.md):
 
 ```text
 2018-Aug-28 22:56:21.397076850 LedgerMaster:ERR No hash for fetch pack. Missing Index 7159808
@@ -205,20 +205,20 @@ These can be safely ignored.
 
 ## Not deleting
 
-Messages such as the following occur when [online deletion is interrupted](online-deletion.html#interrupting-online-deletion):
+Messages such as the following occur when [online deletion is interrupted](../configuration/data-retention/online-deletion.md#interrupting-online-deletion):
 
 ```text
 SHAMapStore:WRN Not deleting. state: syncing. age 25s
 ```
 
-The `state` indicates the [server state](rippled-server-states.html). The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
+The `state` indicates the [server state](../../references/http-websocket-apis/api-conventions/rippled-server-states.md). The `age` indicates how many seconds since the last validated ledger was closed. (A healthy age for the last validated ledger is 7 seconds or less.)
 
-During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](system-requirements.html), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
+During startup, these messages are normal and can be safely ignored. At other times, messages like this usually indicate that the server does not meet the [system requirements](../installation/system-requirements.md), especially disk I/O, to run online deletion at the same time as everything else the server is doing.
 
 
 ## Potential Censorship
 
-Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](transaction-censorship-detection.html).
+Log messages such as the following are issued when the XRP Ledger detects potential transaction censorship. For more information about these log messages and the transaction censorship detector, see [Transaction Censorship Detection](../../concepts/networks-and-servers/transaction-censorship-detection.md).
 
 **Warning Message**
 
@@ -235,7 +235,7 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 
 ## rotating validatedSeq
 
-This message indicates that [online deletion](online-deletion.html) has started running:
+This message indicates that [online deletion](../configuration/data-retention/online-deletion.md) has started running:
 
 ```text
 SHAMapStore:WRN rotating  validatedSeq 54635511 lastRotated 54635255 deleteInterval 256 canDelete_ 4294967295
@@ -248,9 +248,9 @@ The log message contains values describing the current online deletion run. Each
 | Keyword          | Value            | Description                            |
 |:-----------------|:-----------------|:---------------------------------------|
 | `validatedSeq`   | [Ledger Index][] | The current validated ledger version.  |
-| `lastRotated`    | [Ledger Index][] | The end of the ledger range in the ["old" (read-only) database](online-deletion.html#how-it-works). Online deletion deletes this ledger version and earlier. |
-| `deleteInterval` | Number           | How many ledger versions to keep after online deletion. The [`online_delete` setting](online-deletion.html#configuration) controls this value. |
-| `canDelete_`     | [Ledger Index][] | The newest ledger version that the server is allowed to delete, if using [advisory deletion](online-deletion.html#advisory-deletion). If not using advisory deletion, this value is ignored. |
+| `lastRotated`    | [Ledger Index][] | The end of the ledger range in the ["old" (read-only) database](../configuration/data-retention/online-deletion.md#how-it-works). Online deletion deletes this ledger version and earlier. |
+| `deleteInterval` | Number           | How many ledger versions to keep after online deletion. The [`online_delete` setting](../configuration/data-retention/online-deletion.md#configuration) controls this value. |
+| `canDelete_`     | [Ledger Index][] | The newest ledger version that the server is allowed to delete, if using [advisory deletion](../configuration/data-retention/online-deletion.md#advisory-deletion). If not using advisory deletion, this value is ignored. |
 
 When online deletion finishes, it writes the following log message:
 
@@ -265,7 +265,7 @@ If the server falls out of sync while running online deletion, it interrupts onl
 
 ## Shard: No such file or directory
 
-Log messages such as the following can occur when you have [history sharding](history-sharding.html) enabled:
+Log messages such as the following can occur when you have [history sharding](../configuration/data-retention/history-sharding.md) enabled:
 
 ```text
 ShardStore:ERR shard 1804: No such file or directory
@@ -288,8 +288,8 @@ Log messages such as the following occur when the server sees a validation messa
 Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
 ```
 
-{% include '_snippets/unsynced_warning_logs.md' %}
-<!--_ -->
+{% partial file="/_snippets/unsynced_warning_logs.md" /%}
+
 
 
 ## [veto_amendments] section in config file ignored
@@ -301,7 +301,7 @@ Log messages such as the following occur when  your `rippled.cfg` file contains 
 Amendments:WRN [veto_amendments] section in config file ignored in favor of data in db/wallet.db.
 ```
 
-To resolve this error, remove the `[amendments]` and `[veto_amendments]` stanzas from your config file. For more information, see [Amendment Voting](amendments.html#amendment-voting).
+To resolve this error, remove the `[amendments]` and `[veto_amendments]` stanzas from your config file. For more information, see [Amendment Voting](../../concepts/networks-and-servers/amendments.md#amendment-voting).
 
 
 ## View of consensus changed during open
@@ -314,8 +314,8 @@ LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC7
 LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
 ```
 
-{% include '_snippets/unsynced_warning_logs.md' %}
-<!--_ -->
+{% partial file="/_snippets/unsynced_warning_logs.md" /%}
+
 
 
 ## We are not running on the consensus ledger
@@ -324,26 +324,23 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 NetworkOPs:WRN We are not running on the consensus ledger
 ```
 
-{% include '_snippets/unsynced_warning_logs.md' %}
-<!--_ -->
+{% partial file="/_snippets/unsynced_warning_logs.md" /%}
+
 
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Technical FAQ](technical-faq.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [Technical FAQ](../../faq.md)
 - **Tutorials:**
-    - [Diagnosing Problems](diagnosing-problems.html)
-    - [Capacity Planning](capacity-planning.html)
+    - [Diagnosing Problems](diagnosing-problems.md)
+    - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [`rippled` Commandline Usage](commandline-usage.html)
+    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+        - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 <!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

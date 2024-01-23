@@ -14,10 +14,9 @@ The `transaction_entry` method retrieves information on a single transaction fro
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 4,
@@ -26,9 +25,9 @@ An example of the request format:
   "ledger_index": 56865245
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "transaction_entry",
@@ -40,17 +39,18 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 56865245
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#transaction_entry)
+[Try it! >](/resources/dev-tools/websocket-api-tool#transaction_entry)
 
 The request includes the following parameters:
 
@@ -66,10 +66,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 4,
@@ -192,9 +191,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -315,9 +314,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -438,8 +437,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -447,8 +447,8 @@ The response follows the [standard format][], with a successful result containin
 |:---------------|:--------------------------|:--------------------------------|
 | `ledger_index` | Number - [Ledger Index][] | The ledger index of the ledger version the transaction was found in; this is the same as the one from the request. |
 | `ledger_hash`  | String - [Hash][]         | _(May be omitted)_ The identifying hash of the ledger version the transaction was found in; this is the same as the one from the request. |
-| `metadata`     | Object                    | The [transaction metadata](transaction-metadata.html), which shows the exact results of the transaction in detail. |
-| `tx_json`      | Object                    | JSON representation of the [Transaction object](transaction-formats.html) |
+| `metadata`     | Object                    | The [transaction metadata](../../../protocol/transactions/metadata.md), which shows the exact results of the transaction in detail. |
+| `tx_json`      | Object                    | JSON representation of the [Transaction object](../../../protocol/transactions/index.md) |
 
 There are a couple possible reasons the server may fail to find the transaction:
 
@@ -464,7 +464,4 @@ There are a couple possible reasons the server may fail to find the transaction:
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `transactionNotFound` - The transaction specified in the request could not be found in the specified ledger. (It might be in a different ledger version, or it might not be available at all.)
 
-
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

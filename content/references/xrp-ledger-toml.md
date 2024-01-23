@@ -48,7 +48,7 @@ The plain HTTP protocol is vulnerable to man-in-the-middle attacks; for example,
 
 ### Domain
 
-The domain where you serve the `xrp-ledger.toml` file is a statement of ownership. The file's contents are not as useful or trustworthy when they stand on their own. For practical reasons, it may be undesirable to serve the file from your main domain, so you MAY use any number of subdomains. When setting the [`Domain` field of XRP Ledger accounts](accountset.html#domain), you MUST provide the full domain, including all subdomains you used. See [Account Verification](#account-verification) for details.
+The domain where you serve the `xrp-ledger.toml` file is a statement of ownership. The file's contents are not as useful or trustworthy when they stand on their own. For practical reasons, it may be undesirable to serve the file from your main domain, so you MAY use any number of subdomains. When setting the [`Domain` field of XRP Ledger accounts](protocol/transactions/types/accountset.md#domain), you MUST provide the full domain, including all subdomains you used. See [Account Verification](#account-verification) for details.
 
 You MAY serve the same file from multiple subdomains, if desired. For example, if the subdomain `www.example.com` goes to the same website as `example.com`, you can serve the file from both locations. If your website _requires_ the `www` prefix, be sure to include it when you specify the domain (for example, when setting the `Domain` field of an XRP Ledger account).
 
@@ -185,7 +185,7 @@ For _each_ `[[VALIDATORS]]` entry, you MAY provide any of the following fields:
 | Field        | Type   | Description                                          |
 |:-------------|:-------|:-----------------------------------------------------|
 | `public_key` | String | The master public key of your primary validator, encoded in the XRP Ledger's base58 format (typically, this starts with `n`). |
-| `attestation`| String | A signed message, in hexadecimal, indicating that the same entity runs this validator and the domain serving this TOML file. For more information, see [Domain Verification](xrp-ledger-toml.html#domain-verification).
+| `attestation`| String | A signed message, in hexadecimal, indicating that the same entity runs this validator and the domain serving this TOML file. For more information, see [Domain Verification](xrp-ledger-toml.md#domain-verification).
 | `network`  | String | Which network chain this validator follows. If omitted, clients SHOULD assume that the validator follows the production XRP Ledger. Use `main` to explicitly specify the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `owner_country` | String | The two-letter ISO-3166-2 country code describing the main legal jurisdiction that you (the validator's owner) are subject to. |
 | `server_country` | String | The two-letter ISO-3166-2 country code describing the physical location where this validating server is. |
@@ -202,7 +202,7 @@ The accounts list provides information about XRP Ledger accounts you own. If pre
 | `network` | String | The network chain where this account is primarily used. If omitted, clients SHOULD assume that the account is claimed on the production XRP Ledger _and_ possibly other network chains. Use `main` for the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `desc`    | String | A human-readable description of this account's purpose or how you use it. |
 
-**Caution:** Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](accountset.html#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.
+**Caution:** Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](protocol/transactions/types/accountset.md#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.
 
 
 ### Principals
@@ -237,7 +237,7 @@ If you issue any assets, tokens, or currencies in the XRP Ledger, you can provid
 
 | Field   | Type   | Description                                           |
 |:--------|:-------|:------------------------------------------------------|
-| `code` | String | The (case-sensitive) ticker symbol of this token in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](currency-formats.html#currency-codes) for information on the XRP Ledger's currency code formats. |
+| `code` | String | The (case-sensitive) ticker symbol of this token in the XRP Ledger. This can be a three-digit code, a 40-character hex code, or a custom format (for clients that know how to represent the non-standard code in the XRP Ledger). See the [Currency Code reference](protocol/data-types/currency-formats.md#currency-codes) for information on the XRP Ledger's currency code formats. |
 | `display_decimals` | Number | The number of decimals that a client application should use to display amounts of this currency. |
 | `issuer` | String | The address of the XRP Ledger account where you issue this currency, encoded in the XRP Ledger's base58 format (typically, this starts with an `r`). You SHOULD also list this address in the `[[ACCOUNTS]]` list. (Reminder: the presence of an address here is not authoritative on its own. See [Account Verification](#account-verification) for details.) |
 | `network` | String | The network chain where you issue this token. Use `main` to explicitly specify the production XRP Ledger. If omitted, clients SHOULD assume that the currency is issued on the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
@@ -291,7 +291,7 @@ For other web servers, see [I want to add CORS support to my server](https://ena
 
 ## Domain Verification
 
-One use for the `xrp-ledger.toml` file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](run-rippled-as-a-validator.html#1-understand-the-traits-of-a-good-validator).)
+One use for the `xrp-ledger.toml` file is verifying that the same entity that runs a particular domain also runs a particular validator, as identified by the validator's public key. Verifying that a domain and a validator are owned by the same entity provides greater assurances of the identity of the validator operator and is a recommended step for becoming a trusted validator. (For other recommendations, see [Properties of a Good Validator](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#1-understand-the-traits-of-a-good-validator).)
 
 Domain verification requires establishing a two-way link between the domain operator and the validator:
 
@@ -303,7 +303,7 @@ Domain verification requires establishing a two-way link between the domain oper
 
 2. The validator claims ownership of the domain:
 
-    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](run-rippled-as-a-validator.html#revoke-validator-keys) and generate new keys.
+    - Ensure that you have access to the validator-keys.json file that you created when first setting up your validator. If you have lost your keys or the keys have been compromised, please [revoke your keys](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#revoke-validator-keys) and generate new keys.
 
         Note: Recall that your validator-keys.json file should be stored **in a location not on your validator**.
 
@@ -312,7 +312,9 @@ Domain verification requires establishing a two-way link between the domain oper
     - Run the following command to generate a new validator token that incorporates your domain and update your `xrp-ledger.toml` and `rippled.cfg` files:
 
 
-            $./validator-keys set_domain example.com
+        ```
+        $./validator-keys set_domain example.com
+        ```
 
 **Warning:** This command updates your validator-keys.json file. Please be sure to store the `validator-keys.json` file in a secure location.
 
@@ -368,7 +370,7 @@ Account verification requires establishing a two-way link between the domain ope
 
 2. The address claims ownership by a domain.
 
-    [Set the account's `Domain` field](accountset.html#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). <!-- SPELLING_IGNORE: punycode, rfc3492 -->
+    [Set the account's `Domain` field](protocol/transactions/types/accountset.md#domain) to match the domain that this `xrp-ledger.toml` file was served from. The domain value (when decoded from ASCII) MUST match _exactly_, including all subdomains such as `www.`. For internationalized domain names, set the `Domain` value to the Punycode of the domain, as described in [RFC3492](https://tools.ietf.org/html/rfc3492). <!-- SPELLING_IGNORE: punycode, rfc3492 -->
 
     Since setting the `Domain` requires sending a transaction, whoever set the `Domain` value must have possessed the account's secret key when the transaction was sent.
 

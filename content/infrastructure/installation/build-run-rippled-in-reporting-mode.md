@@ -9,13 +9,13 @@ top_nav_grouping: Popular Pages
 ---
 # Build and Run `rippled` in Reporting Mode
 
-[Reporting mode](rippled-server-modes.html) is a mode of the XRP Ledger core server specialized for serving [HTTP and WebSocket APIs](http-websocket-apis.html).
+[Reporting mode](../../concepts/networks-and-servers/rippled-server-modes.md) is a mode of the XRP Ledger core server specialized for serving [HTTP and WebSocket APIs](../../references/http-websocket-apis/index.md).
 
 In reporting mode, the server does not connect to the peer-to-peer network. Instead, it uses gRPC to get validated data from one or more trusted servers that are connected to the P2P network. 
 
 It can then efficiently handle API calls, reducing the load on `rippled` servers running in P2P mode.
 
-{{ include_svg("img/reporting-mode-basic-architecture.svg", "Figure 1: Working of `rippled` in reporting mode") }}
+[{% inline-svg file="/img/reporting-mode-basic-architecture.svg" /%}](/img/reporting-mode-basic-architecture.svg "Figure 1: Working of `rippled` in reporting mode")
 
 The reporting mode of `rippled` uses two datastores:
 
@@ -31,7 +31,7 @@ Multiple reporting mode servers can share access to the same network accessible 
 
 ### Prerequisites
 
-1. Ensure that your system meets the [system requirements](system-requirements.html).
+1. Ensure that your system meets the [system requirements](system-requirements.md).
 
     **Note:** If you choose to use Cassandra as the database, the disk requirements for `rippled` will be lower as the data will not be stored on your local disk.  
 
@@ -47,7 +47,9 @@ Multiple reporting mode servers can share access to the same network accessible 
 
     3. On macOS, you need to manually install the Cassandra cpp driver. On all other platforms, the Cassandra driver is built as part of the `rippled` build. 
         
-            brew install cassandra-cpp-driver
+        ```
+        brew install cassandra-cpp-driver
+        ```
 
 #### Install PostgreSQL
     
@@ -57,29 +59,35 @@ Multiple reporting mode servers can share access to the same network accessible 
         
 2. Connect to the PostgreSQL Database Server using `psql`, and create a user `newuser` and a database `reporting`.
 
-        psql postgres
-	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newuser CREATEDB;
-        \q
-        psql postgres -U newuser
-        postgres=# create database reporting;
+    ```
+    psql postgres
+        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+        ALTER ROLE newuser CREATEDB;
+    \q
+    psql postgres -U newuser
+    postgres=# create database reporting;
+    ```
 
 
 **Install PostgreSQL on macOS**
 
 1. Download and install PostgreSQL on macOS.  
 
-        brew install postgres
-        brew services start postgres
+    ```
+    brew install postgres
+    brew services start postgres
+    ```
 
 2. Connect to the PostgreSQL Database Server using `psql` and create a user `newuser` and a database `reporting`.
 
-        psql postgres
-	        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
-            ALTER ROLE newuser CREATEDB;
-        \q
-        psql postgres -U newuser
-        postgres=# create database reporting;
+    ```
+    psql postgres
+        CREATE ROLE newuser WITH LOGIN PASSWORD ‘password’;
+        ALTER ROLE newuser CREATEDB;
+    \q
+    psql postgres -U newuser
+    postgres=# create database reporting;
+    ```
 
 #### Install and Configure the Primary Persistent Datastore 
 
@@ -89,9 +97,11 @@ Install Cassandra and then create a keyspace for `rippled`, with replication. <!
 
 While a replication factor of 3 is recommended, when running locally, replication is not needed and you can set `replication_factor` to 1.    
         
-    $ cqlsh [host] [port]
-    > CREATE KEYSPACE `rippled` WITH REPLICATION =
-    {'class' : 'SimpleStrategy', 'replication_factor' : 1    };
+```
+$ cqlsh [host] [port]
+> CREATE KEYSPACE `rippled` WITH REPLICATION =
+{'class' : 'SimpleStrategy', 'replication_factor' : 1    };
+```
 
 **NuDB** 
 
@@ -104,29 +114,30 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
 1. Build `rippled` for reporting mode on [Ubuntu or macOS](https://github.com/XRPLF/rippled/blob/release/BUILD.md).
 
-    <!-- MULTICODE_BLOCK_START -->
+    {% tabs %}
 
-    *Linux*
+    ```{% label="Linux" %}
+    wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
+    sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir 
+    cmake -B build -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug 
+    cmake --build build --parallel $(nproc)
+    ```
 
-        wget https://github.com/Kitware/CMake/releases/download/v3.16.3/cmake-3.16.3-Linux-x86_64.sh
-        sudo sh cmake-3.16.3-Linux-x86_64.sh --prefix=/usr/local --exclude-subdir 
-        cmake -B build -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug 
-        cmake --build build --parallel $(nproc)
+    ```{% label="macOS" %}
+    cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
+    cmake --build build --parallel $(nproc)
+    ```
 
-
-    *macOS*
-
-	    cmake -B build -G "Unix Makefiles" -Dreporting=ON -DCMAKE_BUILD_TYPE=Debug
-        cmake --build build --parallel $(nproc)
-
-    <!-- MULTICODE_BLOCK_END -->
+    {% /tabs %}
 
 2. Create a configuration file to run `rippled` in reporting mode. 
 
     Make a copy of the example config file, `rippled-example.cfg`, and save it as `rippled-reporting-mode.cfg` in a location that enables you to run `rippled` as a non-root user. For example:
     
-        mkdir -p $HOME/.config/ripple
-        cp <RIPPLED_SOURCE>/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
+    ```
+    mkdir -p $HOME/.config/ripple
+    cp <RIPPLED_SOURCE>/cfg/rippled-example.cfg $HOME/.config/ripple/rippled-reporting-mode.cfg
+    ```
 
 3. Edit rippled-reporting-mode.cfg to set necessary file paths. The user you plan to run `rippled` as must have write permissions to all of the paths you specify here.
 
@@ -142,75 +153,89 @@ NuDB is installed as part of your `rippled` build setup and does not require any
 
     1. Uncomment the `[reporting]` stanza or add a new one:
 
-            [reporting]
-            etl_source
-            read_only=0
+        ```
+        [reporting]
+        etl_source
+        read_only=0
+        ```
 
     2. List the `rippled` sources (ETL sources) to extract data from. These `rippled` servers must have gRPC enabled.
     
         NOTE: Only include servers that you trust as reporting mode does not connect to the P2P network and hence cannot verify that the data actually matches the network consensus ledger.
         
-            [etl_source]
-            source_grpc_port=50051
-            source_ws_port=6006
-            source_ip=127.0.0.1
+        ```
+        [etl_source]
+        source_grpc_port=50051
+        source_ws_port=6006
+        source_ip=127.0.0.1
+        ```
 
 5. Configure the databases
 
     1. Specify the Postgres DB for `[ledger_tx_tables]`:
 
-            [ledger_tx_tables]
-            conninfo = postgres://newuser:password@127.0.0.1/reporting
-            use_tx_tables=1
+        ```
+        [ledger_tx_tables]
+        conninfo = postgres://newuser:password@127.0.0.1/reporting
+        use_tx_tables=1
+        ```
 
     2. Specify the database for `[node_db]`.
 
-        <!-- MULTICODE_BLOCK_START -->
+        {% tabs %}
 
-        *NuDB*
+        ```{% label="NuDB" %}
+        [node_db]
+        type=NuDB
+        path=/home/ubuntu/ripple/
 
-            [node_db]
-            type=NuDB
-            path=/home/ubuntu/ripple/
+        [ledger_history]
+        1000000
+        ```
 
-            [ledger_history]
-            1000000
+        ```{% label="Cassandra" %}
+        [node_db]
+        type=Cassandra
 
-        *Cassandra*
+        [ledger_history]
+        1000000
+        ```
 
-            [node_db]
-            type=Cassandra
-
-            [ledger_history]
-            1000000
-
-        <!-- MULTICODE_BLOCK_END -->
+        {% /tabs %}
 
 6. Modify the configuration for `rippled` to open up ports.
 
     1. Open the public websocket port:
 
-            [port_ws_admin_local]
-            port = 6006
-            ip = 127.0.0.1
-            admin = 127.0.0.1
-            protocol = ws
+        ```
+        [port_ws_admin_local]
+        port = 6006
+        ip = 127.0.0.1
+        admin = 127.0.0.1
+        protocol = ws
+        ```
 
 
     2. Open the gRPC port:
 
-            [port_grpc]
-            port = 60051
-            ip = 0.0.0.0
+        ```
+        [port_grpc]
+        port = 60051
+        ip = 0.0.0.0
+        ```
 
 
     3. Add a secured gateway to the IP of your reporting system:
 
-            secure_gateway = 127.0.0.1
+        ```
+        secure_gateway = 127.0.0.1
+        ```
 
 7. Run `rippled` in reporting mode:
 
-        ./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
+    ```
+    ./rippled --conf /home/ubuntu/.config/ripple/rippled-reporting-example.cfg
+    ```
 
 
 ### What to Expect
@@ -280,22 +305,22 @@ Loading: "/home/ubuntu/.config/ripple/rippled-reporting-example.cfg"
 2021-Dec-09 21:31:53.291048 UTC NetworkOPs:NFO STATE->full
 2021-Dec-09 21:31:53.291192 UTC Application:FTL Startup RPC: 
 {
-	"command" : "log_level",
-	"severity" : "debug"
+    "command" : "log_level",
+    "severity" : "debug"
 }
 
 
 2021-Dec-09 21:31:53.291347 UTC RPCHandler:DBG RPC call log_level completed in 2.2e-08seconds
 2021-Dec-09 21:31:53.291440 UTC Application:FTL Result: 
 {
-	"warnings" : 
-	[
-		
-		{
-			"id" : 1004,
-			"message" : "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
-		}
-	]
+    "warnings" : 
+    [
+        
+        {
+            "id" : 1004,
+            "message" : "This is a reporting server.  The default behavior of a reporting server is to only return validated data. If you are looking for not yet validated data, include \"ledger_index : current\" in your request, which will cause this server to forward the request to a p2p node. If the forward is successful the response will include \"forwarded\" : \"true\""
+        }
+    ]
 }
 
 
@@ -332,7 +357,7 @@ The answer depends on the location of your primary data store. If you use Cassan
 
 Lastly, the P2P mode server only needs to keep very recent history, while the reporting mode server keeps long term history.
 
-For more information on system requirements to run `rippled`, see the [`rippled` system requirements](system-requirements.html). 
+For more information on system requirements to run `rippled`, see the [`rippled` system requirements](system-requirements.md). 
 
 **How can I confirm the validity of the data that comes from the PostgreSQL or Cassandra database?**
 
@@ -342,7 +367,4 @@ When `rippled` runs in reporting mode, it only serves validated data from the ET
 
 Technically, you *can* directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the data in them. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.
 
-<!--{# common link defs #}--> 
-{% include '_snippets/rippled-api-links.md' %} 
-{% include '_snippets/tx-type-links.md' %} 
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

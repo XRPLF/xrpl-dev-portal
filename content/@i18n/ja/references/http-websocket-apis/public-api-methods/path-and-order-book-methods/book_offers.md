@@ -14,10 +14,9 @@ labels:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 4,
@@ -33,9 +32,9 @@ labels:
   "limit": 10
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "book_offers",
@@ -54,17 +53,18 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: book_offers taker_pays taker_gets [taker [ledger [limit] ] ]
 rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#book_offers)
+[試してみる >](/resources/dev-tools/websocket-api-tool#book_offers)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -74,7 +74,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 | `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください） |
 | `limit` | 符号なし整数 | _（省略可）_ 指定されている場合、サーバーはこの制限を超える数のオファーを結果に含めません。資金供給のないオファーはサーバーにより省略されるため、返される結果の総数はこの制限よりも少ないことがあります。 |
 | `marker` | [マーカー][] | _（省略可）_ 以前にページネーションされたレスポンスの値。そのレスポンスを停止した箇所からデータの取得を再開します。 |
-| `taker` | 文字列 | _（省略可）_ パースペクティブとして使用するアカウントの[アドレス][]。このアカウントが発行した[資金供給のないオファー](offers.html#オファーのライフサイクル)は常にレスポンスに含まれます。（これを使用して、キャンセルしたい各自のオーダーを検索できます。） |
+| `taker` | 文字列 | _（省略可）_ パースペクティブとして使用するアカウントの[アドレス][]。このアカウントが発行した[資金供給のないオファー](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)は常にレスポンスに含まれます。（これを使用して、キャンセルしたい各自のオーダーを検索できます。） |
 | `taker_gets` | オブジェクト | オファーを受諾するアカウントが受け取る通貨を、[通貨額][通貨額]と同様に、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
 | `taker_pays` | オブジェクト | オファーを受諾するアカウントが支払う通貨を、[通貨額][通貨額]と同様に、`currency`フィールドと`issuer`フィールドを持つオブジェクトとして指定します（XRPの場合はissuerを省略）。 |
 
@@ -82,10 +82,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 11,
@@ -144,9 +143,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -159,8 +158,9 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -170,7 +170,7 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 | `ledger_index` | 数値 - [レジャーインデックス][] | _（`ledger_current_index`が指定されている場合は省略可）_ リクエストに従って、このデータの取得時に使用されたレジャーバージョンのレジャーインデックス。 |
 | `ledger_hash` | 文字列 - [ハッシュ][] | _（省略される場合があります）_ リクエストに従って、このデータの取得時に使用されたレジャーバージョンの識別用ハッシュ。 |
 | `marker` | [マーカー][] | _（省略される場合があります）_ レスポンスがページネーションされていることを示す、サーバーが定義した値。この値を次のコールに渡して、このコールで終わった箇所から再開します。この後に情報ページがない場合は省略されます。 |
-| `offers` | 配列 | Offerオブジェクトの配列。各オブジェクトには[Offer オブジェクト](offer.html)のフィールドが含まれています。 |
+| `offers` | 配列 | Offerオブジェクトの配列。各オブジェクトには[Offer オブジェクト](../../../protocol/ledger-data/ledger-entry-types/offer.md)のフィールドが含まれています。 |
 
 `offers`配列の要素には、Offerの標準フィールドの他に以下のフィールドが含まれます。
 
@@ -192,8 +192,4 @@ rippled book_offers 'USD/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B' 'EUR/rvYAfWj5gh67oV6
 * `dstIsrMalformed` - リクエストの`taker_gets`フィールドの`issuer`フィールドが無効です。
 * `badMarket` - 必要なオーダーブックが存在していません（ある通貨をその通貨自体と交換するオファーなど）。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

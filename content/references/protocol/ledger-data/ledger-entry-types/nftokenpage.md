@@ -7,12 +7,12 @@ labels:
 ---
 # NFTokenPage
 
-The `NFTokenPage` object represents a collection of [NFTs](non-fungible-tokens.html) owned by the same account. An account can have multiple `NFTokenPage` entries, which form a doubly linked list.
+The `NFTokenPage` object represents a collection of [NFTs](../../../../concepts/tokens/nfts/index.md) owned by the same account. An account can have multiple `NFTokenPage` entries, which form a doubly linked list.
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -39,9 +39,9 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ```
 
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Field Name          | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:------------------|:----------|:------------|
@@ -81,9 +81,9 @@ To add an `NFToken`, find the `NFTokenPage` it should be in (using the same tech
 Removing `NFToken` objects works like adding them. If the number of `NFToken` objects in the page goes below a certain threshold, the ledger combines the page with a previous or next page if possible.
 
 
-## {{currentpage.name}} Reserve
+## {% $frontmatter.seo.title %} Reserve
 
-Each `NFTokenPage` counts as one item towards its owner's [owner reserve](reserves.html#owner-reserves). Burning or trading away enough NFTs to remove the page frees up the reserve.
+Each `NFTokenPage` counts as one item towards its owner's [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). Burning or trading away enough NFTs to remove the page frees up the reserve.
 
 Since each page can hold up to 32 entries, the _effective_ reserve cost per NFT can be as low as _R_/32 where _R_ is the incremental owner reserve for one item.
 
@@ -102,7 +102,4 @@ Currently, the reserve per item is 2 XRP. The table below shows how much the **t
 
 These numbers are estimates; the actual numbers may vary.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

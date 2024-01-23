@@ -35,7 +35,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenAcceptOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenAcceptOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909%22%2C%22binary%22%3Afalse%7D)
 
 ## Brokered vs. Direct Mode
 
@@ -60,7 +60,7 @@ If the transaction succeeds:
 - The `NFToken` changes ownership, meaning that the token is removed from the `NFTokenPage` of the existing owner and added to the `NFTokenPage` of the new owner.
 - Funds are transferred from the buyer to the seller, as specified in the `NFTokenOffer`. If the `NFToken` has a transfer fee, then its issuer receives the specified percentage, and the rest goes to the seller.
 
-The transaction fails with a [`tec`-class code](tec-codes.html) if:
+The transaction fails with a [`tec`-class code](../transaction-results/tec-codes.md) if:
 
 - The buyer already owns the `NFToken`.
 - The seller is not the current owner of the `NFToken`.
@@ -71,7 +71,7 @@ The transaction fails with a [`tec`-class code](tec-codes.html) if:
 
 ## Fields
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type           | [Internal Type][] | Description   |
 |:-------------------|:--------------------|:------------------|:--------------|
@@ -89,7 +89,7 @@ In brokered mode, the offers referenced by `NFTokenBuyOffer` and `NFTokenSellOff
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code                         | Description                             |
 |:-----------------------------------|:----------------------------------------|
@@ -97,15 +97,11 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `temMALFORMED`                     | The transaction was not validly formatted. For example, it specified neither `NFTokenSellOffer` nor `NFTokenBuyOffer`, or it specified a negative `NFTokenBrokerFee`. |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | The buyer and seller are the same account. |
 | `tecEXPIRED`                       | An offer specified in the transaction has already expired. |
-| `tecINSUFFICIENT_FUNDS`            | The buyer does not have the full amount they are offering. If the buy amount is specified in XRP, this could be because of the [reserve requirement](reserves.html). If the buy amount is a token, it could be because the token is [frozen](freezes.html). |
+| `tecINSUFFICIENT_FUNDS`            | The buyer does not have the full amount they are offering. If the buy amount is specified in XRP, this could be because of the [reserve requirement](../../../../concepts/accounts/reserves.md). If the buy amount is a token, it could be because the token is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `tecINSUFFICIENT_PAYMENT`          | In brokered mode, the buy amount offered is not high enough to pay the `BrokerFee` _and_ the sell cost of the `NFToken`. |
 | `tecOBJECT_NOT_FOUND`              | One of the offers specified in the transaction does not exist in the ledger. |
 | `tecNFTOKEN_BUY_SELL_MISMATCH`     | In brokered mode, the two offers are not a valid match. For example, the seller is asking more than the buyer is offering, the buy and sell offer are denominated in different assets, or the seller specified a destination that is not the buyer or the broker. |
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | The object identified by the `NFTokenBuyOffer` is not actually a buy offer, or the object identified by the `NFTokenSellOffer` is not actually a sell offer. |
 | `tecNO_PERMISSION`                 | The seller does not own the `NFToken` being sold; or the matching offer specifies a different `Destination` account than the account accepting the offer. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

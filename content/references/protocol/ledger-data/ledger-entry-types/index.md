@@ -1,8 +1,12 @@
 ---
 html: ledger-entry-types.html
 parent: ledger-data-formats.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # Ledger Entry Types
 
-{% include '_snippets/ledger-objects-intro.md' %}
+{% partial file="/_snippets/ledger-objects-intro.md" /%}
+
+
+{% child-pages /%}

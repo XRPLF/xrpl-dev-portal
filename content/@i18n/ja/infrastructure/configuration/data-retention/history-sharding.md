@@ -8,7 +8,7 @@ labels:
 ---
 # 履歴シャーディング
 
-[導入: rippled 0.90.0][]
+{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}導入: rippled 0.90.0{% /badge %}
 
 稼働中のサーバーは、ネットワーク実行時に検知または取得したレジャーに関するデータを格納したデータベースを作成します。各`rippled`サーバーは、そのレジャーのデータをレジャーストアーに保存しますが、保存されたレジャー数が設定された容量制限を超えると、オンライン削除ロジックによりこれらのデータベースがローテーションされます。
 
@@ -16,7 +16,7 @@ labels:
 
 履歴シャーディング機能を使用すると、個々の`rippled`サーバーが履歴データの保存する役割を担い、すべての履歴（数テラバイト）を保存する必要がなくなります。シャードストアーはレジャーストアーに代わるものではありませんが、XRP Ledgerネットワーク上の分散レジャー履歴への信頼性の高いパスを実現します。
 
-[![XRP Ledgerネットワーク: レジャーストアーとシャードストアーの図](img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)](img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)
+[![XRP Ledgerネットワーク: レジャーストアーとシャードストアーの図](/img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)](/img/xrp-ledger-network-ledger-store-and-shard-store.ja.png)
 
 <!-- Diagram source: https://docs.google.com/presentation/d/1mg2jZQwgfLCIhOU8Mr5aOiYpIgbIgk3ymBoDb2hh7_s/edit#slide=id.g417450e8da_0_316 -->
 
@@ -34,11 +34,8 @@ labels:
 
 ## 関連項目
 
-- [履歴シャーディングの設定](configure-history-sharding.html)
+- [履歴シャーディングの設定](configure-history-sharding.md)
 - [download_shardメソッド][]
 - [crawl_shardsメソッド][]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

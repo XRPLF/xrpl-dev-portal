@@ -9,17 +9,16 @@ labels:
 
 [[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTHistory.cpp "Source")
 
-The `nft_history` command asks the Clio server for past transaction metadata for the [NFT](non-fungible-tokens.html) being queried. [New in: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
+The `nft_history` command asks the Clio server for past transaction metadata for the [NFT](../../../../concepts/tokens/nfts/index.md) being queried. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}New in: Clio v1.1.0{% /badge %}
 
 **Note** `nft_history` returns only _successful_ transactions associated with the NFT.
 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -27,9 +26,9 @@ An example of the request format:
   "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "nft_history",
@@ -40,8 +39,9 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
 [Try it! >](websocket-api-tool.html#nft_history)-->
@@ -66,10 +66,9 @@ The request contains the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -152,9 +151,9 @@ An example of a successful response:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -235,15 +234,15 @@ An example of a successful response:
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 With the `binary` parameter set to _true_, you receive a compact response that uses hex strings. It's not human readable, but much more concise.
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -271,9 +270,9 @@ With the `binary` parameter set to _true_, you receive a compact response that u
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -300,7 +299,9 @@ With the `binary` parameter set to _true_, you receive a compact response that u
 }
 
 ```
-<!-- MULTICODE_BLOCK_END -->
+{% /tab %}
+
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -326,7 +327,7 @@ Each transaction object includes the following fields, depending on whether it w
 | `tx_blob`      | String                           | (Binary mode only) Unique hashed String representing the transaction. |
 | `validated`    | Boolean                          | Whether or not the transaction is included in a validated ledger. Any transaction not yet in a validated ledger is subject to change. |
 
-For definitions of the fields returned in the `tx` object, see [Transaction Metadata](transaction-metadata.html).
+For definitions of the fields returned in the `tx` object, see [Transaction Metadata](../../../protocol/transactions/metadata.md).
 
 ## Possible Errors
 
@@ -334,8 +335,6 @@ For definitions of the fields returned in the `tx` object, see [Transaction Meta
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actMalformed` - The [Address][] specified in the `account` field of the request is not formatted properly.
 * `lgrIdxMalformed` - The ledger specified by the `ledger_index_min` or `ledger_index_max` does not exist, or if it does exist but the server does not have it.
-* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](server-doesnt-sync.html).
+* `lgrIdxsInvalid` - Either the request specifies a `ledger_index_max` that is before the `ledger_index_min`, or the server does not have a validated ledger range because it is [not synced with the network](../../../../infrastructure/troubleshooting/server-doesnt-sync.md).
 
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
-
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -122,4 +122,3 @@ KYCは、金融機関や関連企業にとって、リスク、特に法的リ�
 - FATFの金融事業者向けガイダンス:
 
     - [金融活動作業部会、2009年7月](http://www.fatf-gafi.org/media/fatf/documents/reports/Guidance-RBA-money-value-transfer-services.pdf)
-

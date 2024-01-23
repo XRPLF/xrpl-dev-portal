@@ -8,13 +8,13 @@ labels:
 # Offer
 [[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L57 "Source")
 
-台帳の`Offer`項目は、XRP Ledgerの[分散型取引所](decentralized-exchange.html)で通貨を交換する[オファー](offers.html)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は台帳にある他のOfferを全額約定できない場合、台帳に`Offer`項目を作成します。
+台帳の`Offer`項目は、XRP Ledgerの[分散型取引所](../../../../concepts/tokens/decentralized-exchange/index.md)で通貨を交換する[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)を表しています。（金融ではより伝統的に _オーダー_ として知られています）。[OfferCreateトランザクション][]は台帳にある他のOfferを全額約定できない場合、台帳に`Offer`項目を作成します。
 
 オファーがネットワーク上の他の活動によって資金不足になることはありますが、元帳には残ります。トランザクションを処理する際、ネットワークはトランザクションが見つけた資金不足のオファーを自動的に削除します。( _トランザクションのみ_ が台帳の状態を変更できるため、削除が行われないと資金不足のオファーが残ってしまいます。)
 
-詳細は、[オファー](offers.html)を参照してください。
+詳細は、[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)を参照してください。
 
-## {{currentpage.name}}のJSONの例
+## {% $frontmatter.seo.title %}のJSONの例
 
 ```json
 {
@@ -37,14 +37,14 @@ labels:
 }
 ```
 
-## {{currentpage.name}}のフィールド
+## {% $frontmatter.seo.title %}のフィールド
 
 `Offer`オブジェクトのフィールドを次に示します。
 
 | 名前              | JSONの型 | [内部の型][] | 必須? | 説明 |
 |-------------------|-----------|-----------|------|-------|
 | `Account`           | 文字列    | AccountID | はい  | このオファーを所有するアカウントのアドレス。 |
-| `BookDirectory`     | 文字列    | Hash256   | はい  | このオファーにリンクしている[オファーディレクトリー](directorynode.html)のID。 |
+| `BookDirectory`     | 文字列    | Hash256   | はい  | このオファーにリンクしている[オファーディレクトリー](directorynode.md)のID。 |
 | `BookNode`          | 文字列    | UInt64    | はい  | Offerディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒント。 |
 | `Expiration`        | 数値    | UInt32    | いいえ | （省略可）このオファーが資金不足とみなされる時刻。詳細は、[時間の指定][]を参照してください。 |
 | `Flags`             | 数値    | UInt32    | はい  | このオファーに対して有効になっているブール値フラグのビットマップ。 |
@@ -62,7 +62,7 @@ labels:
 
 `Offer`オブジェクトには以下のフラグ値を指定できます。
 
-| フラグ名 | 16進数値 | 10進数値 | 対応する[OfferCreateフラグ](offercreate.html#offercreateフラグ) | 説明 |
+| フラグ名 | 16進数値 | 10進数値 | 対応する[OfferCreateフラグ](../../transactions/types/offercreate.md#offercreateフラグ) | 説明 |
 |-----------|-----------|---------------|-------------|------------------------|
 | lsfPassive | `0x00010000` | 65536 | tfPassive | オブジェクトはパッシブオファーとして発注されています。レジャー内のオブジェクトには影響しません。 |
 | lsfSell   | `0x00020000` | 131072 | tfSell | オブジェクトは売却オファーとして発注されています。これは台帳にあるオブジェクトには何の影響もありません (`tfSell`は指定したレートよりも良いレートが存在する場合にのみ意味を持ち、台帳にこのフラグを持ったオブジェクトが入ることはありません。)。 |
@@ -75,9 +75,6 @@ labels:
 * オファーを行うアカウントのAccountID
 * オファーを作成した[OfferCreateトランザクション][]のシーケンス番号
 
-    OfferCreateトランザクションが[Ticket](tickets.html)を使用した場合、代わりに`TicketSequence`値を使用します。
+    OfferCreateトランザクションが[Ticket](../../../../concepts/accounts/tickets.md)を使用した場合、代わりに`TicketSequence`値を使用します。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

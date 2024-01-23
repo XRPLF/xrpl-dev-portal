@@ -17,7 +17,7 @@ The XRP Ledger (XRPL) is a robust, secure, customizable service. You can create 
 
 This quickstart describes a test harness interface you can build to try out the XRP Ledger. The test harness displays multiple accounts, so that you can transfer tokens from one account to the other and see the results in real time. The image below shows the Token Test Harness at the completion of step 4.
 
-[![Quickstart Tutorial Window](img/quickstart-py15.png)](img/quickstart-py15.png)
+[![Quickstart Tutorial Window](/img/quickstart-py15.png)](/img/quickstart-py15.png)
 
 That is a lot of fields and buttons, all working together to perform some significant practical tasks. But getting _started_ with the XRP Ledger is not that complicated. When you eat the elephant a bite at a time, none of the tasks are difficult to consume.
 
@@ -49,7 +49,7 @@ There are also expanded lessons demonstrating how to [Broker an NFT Sale](py-bro
 To get started, create a new folder on your local disk and install the Python library (xrpl-py) using `pip`.
 
 ```
-    pip3 install xrpl-py
+pip3 install xrpl-py
 ```
 
 Download the python [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download}.

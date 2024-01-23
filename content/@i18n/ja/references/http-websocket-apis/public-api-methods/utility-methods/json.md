@@ -12,25 +12,24 @@ labels:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 # Syntax: json method json_stanza
 rippled -q json ledger_closed '{}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result" :{
@@ -40,11 +39,10 @@ rippled -q json ledger_closed '{}'
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、実行されたコマンドのタイプに対して適切なフィールドが含まれています。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

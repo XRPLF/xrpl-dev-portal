@@ -9,7 +9,7 @@ status: not_enabled
 # XChainCommit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L408-L416 "ソース")
 
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 `XChainCommit`はクロスチェーン送金の2番目のステップです。`XChainCommit`は発行チェーンでラップできるようにロックチェーンで資産を保管したり、ロックチェーンで返却できるように発行チェーンでラップされた資産をバーンしたりします。
 
@@ -55,8 +55,4 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 | `LockingChainDoor`  | 文字列    | Account    | はい  | ロックチェーンのドアアカウント。 |
 | `LockingChainIssue` | Issue    | Issue      | はい  | ロックチェーンでロック、アンロックされる資産。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

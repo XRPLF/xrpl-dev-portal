@@ -37,7 +37,7 @@ The XRP Ledger supports three types of escrow:
 
 The following diagram shows the states an Escrow can progress through:
 
-[![State diagram showing escrows going from Held → Ready/Conditionally Ready → Expired](img/escrow-states.png)](img/escrow-states.png)
+[![State diagram showing escrows going from Held → Ready/Conditionally Ready → Expired](/img/escrow-states.png)](/img/escrow-states.png)
 
 The diagram shows three different cases for three possible combinations of the escrow's "finish-after" time (`FinishAfter` field), crypto-condition (`Condition` field), and expiration time (`CancelAfter` field):
 
@@ -52,24 +52,24 @@ The diagram shows three different cases for three possible combinations of the e
 
 - Escrow only works with XRP, not tokens.
 - The costs can make it infeasible for small amounts.
-    - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](transaction-cost.html) than usual.
-    - While the escrow is incomplete, the sender is responsible for the [reserve requirement](reserves.html) of the `Escrow` object.
+    - Escrow requires two transactions: one to create the escrow, and one to finish or cancel it. Crypto-Conditions incur a higher [transaction cost](../transactions/transaction-cost.md) than usual.
+    - While the escrow is incomplete, the sender is responsible for the [reserve requirement](../accounts/reserves.md) of the `Escrow` object.
 - You can't create an escrow with past time values.
-- Timed releases and expirations resolve according to [ledger close times](ledger-close-times.html). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
+- Timed releases and expirations resolve according to [ledger close times](../ledgers/ledger-close-times.md). In practice, actual release and expiration times can vary by about five seconds as ledgers close.
 - The only supported crypto-condition type is PREIMAGE-SHA-256.
 
 
 ## EscrowFinish Transaction Cost
 
-When using crypto-conditions, the EscrowFinish transaction must pay a [higher transaction cost](transaction-cost.html#special-transaction-costs) because of the higher processing load involved in verifying the crypto-condition fulfillment.
+When using crypto-conditions, the EscrowFinish transaction must pay a [higher transaction cost](../transactions/transaction-cost.md#special-transaction-costs) because of the higher processing load involved in verifying the crypto-condition fulfillment.
 
-The additional transaction cost required is proportional to the size of the fulfillment. If the transaction is [multi-signed](multi-signing.html), the cost of multi-signing is added to the cost of the fulfillment.
+The additional transaction cost required is proportional to the size of the fulfillment. If the transaction is [multi-signed](../accounts/multi-signing.md), the cost of multi-signing is added to the cost of the fulfillment.
 
-Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](basic-data-types.html#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**.
+Currently, an EscrowFinish with a fulfillment requires a minimum transaction cost of **330 [drops of XRP](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts) plus 10 drops per 16 bytes in the size of the fulfillment**.
 
 **Note:** The above formula is based on the assumption that the reference cost of a transaction is 10 drops of XRP.
 
-If [Fee Voting](fee-voting.html) changes the `reference_fee` value, the formula scales based on the new reference cost. The generalized formula for an EscrowFinish transaction with a fulfillment is as follows:
+If [Fee Voting](../consensus-protocol/fee-voting.md) changes the `reference_fee` value, the formula scales based on the new reference cost. The generalized formula for an EscrowFinish transaction with a fulfillment is as follows:
 
 ```
 reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
@@ -81,18 +81,15 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 
 For more information about Escrow in the XRP Ledger, see the following:
 
-- [Escrow Tutorials](use-escrows.html)
-- [Transaction Reference](transaction-formats.html)
+- [Escrow Tutorials](../../tutorials/tasks/use-specialized-payment-types/use-escrows/index.md)
+- [Transaction Reference](../../references/protocol/transactions/index.md)
     - [EscrowCreate transaction][]
     - [EscrowFinish transaction][]
     - [EscrowCancel transaction][]
-- [Ledger Reference](ledger-data-formats.html)
-    - [Escrow object](escrow-object.html)
+- [Ledger Reference](../../references/protocol/ledger-data/index.md)
+    - [Escrow object](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 
 For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

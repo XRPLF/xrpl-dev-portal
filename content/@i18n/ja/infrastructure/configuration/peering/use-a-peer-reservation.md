@@ -9,7 +9,7 @@ lables:
 
 [ピアリザベーション][]を使用すると、`rippled`サーバーが予約とマッチしたピアからの通信を常に受け入れるように設定できます。このページでは、ピアリザベーションを使用して2台のサーバー間のピアツーピア通信を、各サーバーの管理者の協力のもと一貫して維持する方法について説明します。
 
-ピアリザベーションは、2台のサーバーが異なる組織によって運用されていて、着信接続を受信するサーバーが、多くのピアを持つ[ハブサーバー](rippled-server-modes.html#公開ハブ)である場合に特に便利です。分かりやすいように、これらの手順では次の用語を使用します。
+ピアリザベーションは、2台のサーバーが異なる組織によって運用されていて、着信接続を受信するサーバーが、多くのピアを持つ[ハブサーバー](../../../concepts/networks-and-servers/rippled-server-modes.md#公開ハブ)である場合に特に便利です。分かりやすいように、これらの手順では次の用語を使用します。
 
 - **ストックサーバー**は発信接続を行うサーバーです。このサーバーは、ハブサーバー上のピアリザベーションを _使用_ します。
 - **ハブサーバー**は着信接続を受信するサーバーです。管理者は、このサーバーにピアリザベーションを _追加_ します。
@@ -20,10 +20,10 @@ lables:
 
 これらの手順を実行するには、次の前提条件を満たしている必要があります。
 
-- 両方のサーバーの管理者が`rippled`を[インストール](install-rippled.html)して実行している。
+- 両方のサーバーの管理者が`rippled`を[インストール](../../installation/index.md)して実行している。
 - 両方のサーバーの管理者が協力することに合意し、連絡が取り合える。秘密情報を共有する必要はないため、パブリックな通信チャネルを使用してもかまいません。
-- ハブサーバーが着信ピア接続を受信できる。ファイアウォールをそのように設定する手順については、[ピアリングのポート転送](forward-ports-for-peering.html)を参照してください。
-- 両方のサーバーが、同じ[XRP Ledgerネットワーク](parallel-networks.html)（本番XRP Ledger、Testnet、Devnetなど）と同期するように設定されている。
+- ハブサーバーが着信ピア接続を受信できる。ファイアウォールをそのように設定する手順については、[ピアリングのポート転送](forward-ports-for-peering.md)を参照してください。
+- 両方のサーバーが、同じ[XRP Ledgerネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)（本番XRP Ledger、Testnet、Devnetなど）と同期するように設定されている。
 
 ## 手順
 
@@ -33,7 +33,7 @@ lables:
 
 ストックサーバーの管理者が、以下の手順を実行します。
 
-永続ノードキーペア値をすでにサーバーに設定している場合は、[ステップ2: ノード公開鍵をピアの管理者に連絡する](#2ストックサーバーのノード公開鍵を連絡する)に進んでください。（例えば、各サーバーの永続ノードキーペアは[サーバークラスターの設定](cluster-rippled-servers.html)の一環として設定します。）
+永続ノードキーペア値をすでにサーバーに設定している場合は、[ステップ2: ノード公開鍵をピアの管理者に連絡する](#2ストックサーバーのノード公開鍵を連絡する)に進んでください。（例えば、各サーバーの永続ノードキーペアは[サーバークラスターの設定](cluster-rippled-servers.md)の一環として設定します。）
 
 **ヒント:** 永続ノードキーペアの設定は省略可能ですが、この設定をしておけば、サーバーのデータベースの消去や新規マシンへの移行が必要となった場合にピア接続の設定を容易に維持することができます。永続ノードキーペアを設定しない場合は、[server_infoメソッド][]のレスポンスの`pubkey_node`フィールドに表示される、サーバーが自動生成したノード公開鍵を使用できます。
 
@@ -41,39 +41,47 @@ lables:
 
    例:
 
-        rippled validation_create
+    ```
+    rippled validation_create
 
-        Loading: "/etc/rippled.cfg"
-        Connecting to 127.0.0.1:5005
-        {
-           "result" : {
-              "status" : "success",
-              "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
-              "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
-              "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
-           }
-        }
+    Loading: "/etc/rippled.cfg"
+    Connecting to 127.0.0.1:5005
+    {
+       "result" : {
+          "status" : "success",
+          "validation_key" : "FAWN JAVA JADE HEAL VARY HER REEL SHAW GAIL ARCH BEN IRMA",
+          "validation_public_key" : "n9Mxf6qD4J55XeLSCEpqaePW4GjoCR5U1ZeGZGJUCNe3bQa4yQbG",
+          "validation_seed" : "ssZkdwURFMBXenJPbrpE14b6noJSu"
+       }
+    }
+    ```
 
    `validation_seed`（ノードシード値）と`validation_public_key`値（ノード公開鍵）を保存します。
 
 2. `rippled`の構成ファイルを編集します。
 
-        vim /etc/opt/ripple/rippled.cfg
+    ```
+    vim /etc/opt/ripple/rippled.cfg
+    ```
 
-   {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+   {% partial file="/_snippets/conf-file-location.md" /%}
 
 3. 前のステップで生成した`validation_seed`値を使用して、`[node_seed]`スタンザを追加します。
 
    例:
 
-        [node_seed]
-        ssZkdwURFMBXenJPbrpE14b6noJSu
+    ```
+    [node_seed]
+    ssZkdwURFMBXenJPbrpE14b6noJSu
+    ```
 
    **警告:** すべてのサーバーの`[node_seed]`値が一意である必要があります。構成ファイルを別のサーバーにコピーする場合は、`[node_seed]`値を削除するか、変更してください。`[node_seed]`は公開しないようにします。不正使用者がこの値にアクセスできた場合、それを使用してサーバーを偽装し、XRP Ledgerのピアツーピア通信を行う可能性があります。
 
 4. `rippled`サーバーを再起動します。
 
-        systemctl restart rippled
+    ```
+    systemctl restart rippled
+    ```
 
 ### 2.ストックサーバーのノード公開鍵を連絡する
 
@@ -110,10 +118,9 @@ Connecting to 127.0.0.1:5005
 
 [connectメソッド][]を使用して、サーバーをハブサーバーに接続します。例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
     "command": "connect",
@@ -121,9 +128,9 @@ Connecting to 127.0.0.1:5005
     "port": 51235
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {
     "method": "connect",
@@ -136,14 +143,15 @@ Connecting to 127.0.0.1:5005
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled connect 169.54.2.151 51235
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ハブサーバーの管理者が上記の手順に従ってピアリザベーションを設定した場合、自動的に接続され、可能な限り接続が維持されます。
 
@@ -163,12 +171,12 @@ rippled connect 169.54.2.151 51235
 ## 関連項目
 
 - **コンセプト:**
-  - [ピアプロトコル](peer-protocol.html)
-  - [コンセンサス](consensus.html)
-  - [並列ネットワーク](parallel-networks.html)
+  - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
+  - [コンセンサス](../../../concepts/consensus-protocol/index.md)
+  - [並列ネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)
 - **チュートリアル:**
-  - [容量の計画](capacity-planning.html)
-  - [`rippled`のトラブルシューティング](troubleshoot-the-rippled-server.html)
+  - [容量の計画](../../installation/capacity-planning.md)
+  - [`rippled`のトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [peersメソッド][]
   - [peer_reservations_addメソッド][]
@@ -176,10 +184,6 @@ rippled connect 169.54.2.151 51235
   - [peer_reservations_listメソッド][]
   - [connectメソッド][]
   - [fetch_infoメソッド][]
-  - [ピアクローラー](peer-crawler.html)
+  - [ピアクローラー](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

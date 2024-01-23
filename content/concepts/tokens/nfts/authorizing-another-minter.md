@@ -56,4 +56,3 @@ const transactionBlob = {
 ```
 
 When you or a broker sells the NFT, the TransferFee (percentage of sale) is credited to your issuing account.
-

@@ -9,7 +9,7 @@ status: not_enabled
 # XChainAccountCreateCommit
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L466-L474 "ソース")
 
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 このトランザクションはXRP-XRPブリッジにのみ使用できます。
 
@@ -60,7 +60,4 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 | `LockingChainDoor`  | 文字列    | Account    | はい  | ロックチェーンのドアアカウント。 |
 | `LockingChainIssue` | Issue    | Issue      | はい  | ロックチェーンでロック、アンロックされる資産。 |
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

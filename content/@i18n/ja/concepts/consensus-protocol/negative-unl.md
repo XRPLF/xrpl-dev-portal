@@ -7,9 +7,9 @@ labels:
 ---
 # ネガティブUNL
 
-_([NegativeUNL Amendment](known-amendments.html#negativeunl)によって追加されました。)_
+_([NegativeUNL Amendment](../../resources/known-amendments.md#negativeunl)によって追加されました。)_
 
-ネガティブUNLは、XRP Ledgerの[コンセンサスプロトコル](consensus.html)の機能で、バリデータの部分的な停止中にネットワークの前進を可能にする _liveness_ を向上させるものです。ネガティブUNLを使用すると、サーバーは現在オンラインかつ稼働中のバリデータに基づいて有効なUNLを調整するため、信頼できるバリデータが複数オフラインの場合でも、新しい[レジャーバージョン](ledgers.html) を _validated_ と宣言することができるようになるのです。
+ネガティブUNLは、XRP Ledgerの[コンセンサスプロトコル](index.md)の機能で、バリデータの部分的な停止中にネットワークの前進を可能にする _liveness_ を向上させるものです。ネガティブUNLを使用すると、サーバーは現在オンラインかつ稼働中のバリデータに基づいて有効なUNLを調整するため、信頼できるバリデータが複数オフラインの場合でも、新しい[レジャーバージョン](../ledgers/index.md) を _validated_ と宣言することができるようになるのです。
 
 ネガティブUNLは、部分的な停止中に結果を確定するネットワークの能力を向上させる以外、ネットワークのトランザクション処理方法やトランザクションの結果に影響を与えることはありません。
 
@@ -33,11 +33,11 @@ XRP Ledgerプロトコルの各サーバーは、UNL（Unique Node List）と呼
 
 20%以上のバリデータが突然一度にオフラインになった場合、残りのサーバーは新しいレジャーを検証するのに必要な定足数を達成できないため、新しいレジャーを検証することができない。しかし、そのようなサーバーでも、コンセンサスラウンドを重ねることで暫定的な前進は可能である。時間が経つにつれて、残りのバリデータは暫定的なレジャーにネガティブUNLの変更を適用し、有効なUNLを調整し続ける。最終的に、この状況が続けば、ネットワークは暫定的なレジャーのバージョンから調整後のネガティブUNLを使用して、レジャーの検証を完全に再開することが可能である。
 
-スタンドアロンモードでは、サーバーはコンセンサスを使用しないので、ネガティブUNLは[スタンドアロンモード](rippled-server-modes.html)に影響を及ぼさない。
+スタンドアロンモードでは、サーバーはコンセンサスを使用しないので、ネガティブUNLは[スタンドアロンモード](../networks-and-servers/rippled-server-modes.md)に影響を及ぼさない。
 
 ## 仕組み
 
-ネガティブUNLは[コンセンサスプロセス](consensus.html)と密接に関連し、不利な状況下でもネットワークの継続性と信頼性を維持できるように安全策をとって設計されたものである。すべての信頼できるバリデータが正常に動作している場合、ネガティブUNLは使用されず、何の効果もない。一部のバリデータがオフラインまたは同期していないように見えるとき、ネガティブUNLルールは有効になる。
+ネガティブUNLは[コンセンサスプロセス](index.md)と密接に関連し、不利な状況下でもネットワークの継続性と信頼性を維持できるように安全策をとって設計されたものである。すべての信頼できるバリデータが正常に動作している場合、ネガティブUNLは使用されず、何の効果もない。一部のバリデータがオフラインまたは同期していないように見えるとき、ネガティブUNLルールは有効になる。
 
 ネガティブUNLは意図的にゆっくりとした速度で変化するように設計されており、あるバージョンのレジャーの合意形成プロセスにおいて、どのネガティブUNLを適用すべきかという時間ベースの不一致を回避するためである。
 
@@ -54,7 +54,7 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
 
 - バリデータ間のネットワーク接続が悪いため、バリデータの検証票がサーバーに届かない。
 - バリデータが動作を停止したり、過負荷になっている。
-- 様々な理由により、バリデータはサーバと同じプロトコルルールに従わない。可能性としては、設定ミス、ソフトウェアのバグ、意図的に[異なるネットワーク](parallel-networks.html)に従っている、または悪意ある行動などが考えられます。
+- 様々な理由により、バリデータはサーバと同じプロトコルルールに従わない。可能性としては、設定ミス、ソフトウェアのバグ、意図的に[異なるネットワーク](../networks-and-servers/parallel-networks.md)に従っている、または悪意ある行動などが考えられます。
 
 バリデータの信頼性が**50%**である場合、そのバリデータはネガティブUNLに追加される候補である。ネガティブUNLから削除するには、バリデータの信頼性が**80%超**でなければならない。
 
@@ -72,7 +72,7 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
 
 1. 前のフラグレジャーで予定されていたネガティブUNLの変更は、次のレジャーバージョンから有効となる。このフラグレジャーの検証のための合意プロセスそのものは、予定されていた変更を利用しない。
 
-    **注記:** これは、[トランザクション](transactions.html)や[疑似トランザクション](pseudo-transaction-types.html)を行わずにレジャーの状態データを変更する唯一の機会です。
+    **注記:** これは、[トランザクション](../transactions/index.md)や[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)を行わずにレジャーの状態データを変更する唯一の機会です。
 
 2. ネガティブUNLが満杯でない場合、各サーバーは信頼度50%未満のバリデータの中から、**最大1つ**のバリデータをネガティブUNLに追加することを提案する。
 3. ネガティブUNLが空でない場合、各サーバーはネガティブUNLから**最大1つ**のバリデータを削除することを提案する。サーバーがバリデータをネガティブUNLから削除することを提案できる理由は2つある。
@@ -80,9 +80,9 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
     - 自身のUNLにそのバリデーターを持たない。(バリデータが永久に停止した場合、このルールは、サーバーの設定済みUNLからバリデータが削除された後に、オンレジャーのネガティブUNLからバリデータが削除されることを確実にする)。
 4. ネガティブUNLの変更案がコンセンサスに達した場合、その変更は次のフラグレジャーから適用される予定である。この方法で最大1つの追加と1つの削除をスケジュールすることができる。
 
-ネガティブUNLにバリデータを追加したり削除したりする提案は[UNLModify pseudo-transactions][]の形式を取る。それぞれの擬似トランザクションは他の[擬似トランザクション](pseudo-transaction-types.html)と同じように合意形成プロセスによって合意を得るか捨てられるかが決定される。言い換えると、あるバリデータがネガティブUNLに追加されたり削除されたりするためには、サーバーの総意として同じ変更を提案する必要がある。
+ネガティブUNLにバリデータを追加したり削除したりする提案は[UNLModify pseudo-transactions][]の形式を取る。それぞれの擬似トランザクションは他の[擬似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)と同じように合意形成プロセスによって合意を得るか捨てられるかが決定される。言い換えると、あるバリデータがネガティブUNLに追加されたり削除されたりするためには、サーバーの総意として同じ変更を提案する必要がある。
 
-ネガティブUNLの予定された有効な変更は、レジャーの状態データの中の[ネガティブUNLオブジェクト](negativeunl.html)に追跡される。
+ネガティブUNLの予定された有効な変更は、レジャーの状態データの中の[ネガティブUNLオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)に追跡される。
 
 
 ### ネガティブUNLの制限
@@ -110,7 +110,7 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
 
 ### 検証のフィルタリング
 
-[コンセンサスプロセスの検証ステップ](consensus-structure.html#検証)では、親レジャーのネガティブUNLのバリデータを無効化します。各サーバーは無効化されたバリデータを取り除いた設定済みUNLからなる"有効UNL"を計算し、定足数を再計算します。(定足数は常に有効UNLの80%以上、かつ設定UNLの60%以上です)。無効化されたバリデータが検証票を送信した場合、サーバーは無効化されたバリデータの信頼性を計算するためにその票を追跡するが、あるバージョンのレジャーが合意に達したかどうかを判断するためにその票を使うことはありません。
+[コンセンサスプロセスの検証ステップ](consensus-structure.md#検証)では、親レジャーのネガティブUNLのバリデータを無効化します。各サーバーは無効化されたバリデータを取り除いた設定済みUNLからなる"有効UNL"を計算し、定足数を再計算します。(定足数は常に有効UNLの80%以上、かつ設定UNLの60%以上です)。無効化されたバリデータが検証票を送信した場合、サーバーは無効化されたバリデータの信頼性を計算するためにその票を追跡するが、あるバージョンのレジャーが合意に達したかどうかを判断するためにその票を使うことはありません。
 
 **注記:** ネガティブUNLは、定足数を直接計算するのではなく、定足数の計算元となる信頼できるバリデータの合計を調整するものです。定足数はパーセンテージですが、投票数は整数であるため、信頼できるバリデータの合計を減らしても、定足数に達するために必要な投票数が変わるとは限りません。たとえば、総バリデータが15人である場合、80%はちょうど12人のバリデータである。これを14人に減らすと、80%は11.2人となり、定足数に達するには依然として12人の有効投票者が必要である。
 
@@ -122,58 +122,55 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
 
 1. サーバーのUNLが38人の信頼できるバリデータで構成されているとすると、80%の定足数は38人のうち少なくとも31人の信頼できるバリデータである。
 
-{{ include_svg("img/negative-unl-01.svg", "Diagram: 通常の場合。ネガティブUNLは未使用、定足数は設定されたバリデータの80%である。") }}
+[{% inline-svg file="/img/negative-unl-01.svg" /%}](/img/negative-unl-01.svg "Diagram: 通常の場合。ネガティブUNLは未使用、定足数は設定されたバリデータの80%である。")
 
 2. MissingAとUnsteadyBという2人のバリデータがオフラインになったとする。(両者とも信頼度スコアは50%未満である。)レジャー _N_ の合意プロセスにおいて、残りのバリデータの多くがUnsteadyBをネガティブUNLに追加することを提案する。この動議は残りのバリデーターのうち少なくとも31人の定足数で可決され、レジャー _N_ はUnsteadyBを無効化する予定で有効になった。
 
-{{ include_svg("img/negative-unl-02.svg", "Diagram: UnsteadyBは無効になる予定。") }}
+[{% inline-svg file="/img/negative-unl-02.svg" /%}](/img/negative-unl-02.svg "Diagram: UnsteadyBは無効になる予定。")
 
 
 3. レジャー _N+1_ から _N+256_ については、コンセンサスプロセスをそのまま継続する。
 
 4. 次のフラグレジャー _N+256_ では、UnsteadyBはレジャーの「予定」から「無効」リストへ自動的に移動する。また、MissingAがまだオフラインであるため、検証者の総意として、次のフラグレジャーでMissingAを無効化する予定とする。
 
-{{ include_svg("img/negative-unl-04.svg", "UnsteadyBが無効化され、MissingAも無効化される予定。") }}
+[{% inline-svg file="/img/negative-unl-04.svg" /%}](/img/negative-unl-04.svg "UnsteadyBが無効化され、MissingAも無効化される予定。")
 
 5. レジャー _N+257_ から _N+512_ について、定足数は37名中30名となった。
 
 6. UnsteadyBがレジャー _N+270_ でオンラインに復帰。レジャー _N+270_ から _N+511_ に対してネットワークの他の部分と一致する検証票を送信し、信頼性スコアが80%以上となる。
 
-{{ include_svg("img/negative-unl-06.svg", "Diagram: UnsteadyBがオンラインに戻るが、まだ無効化されている。") }}
+[{% inline-svg file="/img/negative-unl-06.svg" /%}](/img/negative-unl-06.svg "Diagram: UnsteadyBがオンラインに戻るが、まだ無効化されている。")
 
 7. 次のフラグレジャー _N+256_ では、予定通りMissingAが自動的に無効リストに移される。一方、UnsteadyBは信頼性スコアが向上したため、検証者の総意としてネガティブUNLから削除される予定である。
 
-{{ include_svg("img/negative-unl-07.svg", "Diagram: MissingAを無効化し、UnsteadyBを再有効化する予定。") }}
+[{% inline-svg file="/img/negative-unl-07.svg" /%}](/img/negative-unl-07.svg "Diagram: MissingAを無効化し、UnsteadyBを再有効化する予定。")
 
 8. レジャー _N+513_ から _N+768_ の場合、定足数は36人中29人である。MissingAがオフラインの間、UnsteadyBは安定的に検証結果を送り続ける。
 
 9. フラグレジャー _N+768_ では、予定通りUnsteadyBが無効リストから自動的に削除されています。
 
-{{ include_svg("img/negative-unl-09.svg", "Diagram: UnsteadyBを無効リストから削除。") }}
+[{% inline-svg file="/img/negative-unl-09.svg" /%}](/img/negative-unl-09.svg "Diagram: UnsteadyBを無効リストから削除。")
 
 10. 最終的に、あなたはMissingAがおそらく戻ってこないと判断し、あなたのサーバーの設定されたUNLからそれを削除します。あなたのサーバーはそれ以降、各フラグレジャーからMissingAをネガティブUNLから削除することを提案し始める。
 
-{{ include_svg("img/negative-unl-10.svg", "Diagram: MissingAを設定済みUNLから削除した後、ネガティブUNLからも削除することを提案する。　") }}
+[{% inline-svg file="/img/negative-unl-10.svg" /%}](/img/negative-unl-10.svg "Diagram: MissingAを設定済みUNLから削除した後、ネガティブUNLからも削除することを提案する。　")
 
 11. バリデータ操作者が自分の設定したUNLからMissingAを削除すると、そのバリデータ操作者はネガティブUNLからMissingAを削除するように投票する。十分な数のバリデータが投票した時点で、MissingAを削除する提案は合意に達し、MissingAはスケジュールされ、最終的にネガティブUNLから削除される。
 
-{{ include_svg("img/negative-unl-11.svg", "Diagram: MissingAをネガティブUNLから削除。") }}
+[{% inline-svg file="/img/negative-unl-11.svg" /%}](/img/negative-unl-11.svg "Diagram: MissingAをネガティブUNLから削除。")
 
 
 ### 関連項目
 
 - **コンセンサス:**
-    - [コンセンサスプロトコル](consensus.html)
+    - [コンセンサスプロトコル](index.md)
 - **チュートリアル:**
-    - [Testnetや別の並列ネットワークへ接続する](connect-your-rippled-to-the-xrp-test-net.html)
-    - [バリデータとしての`rippled`の実行](run-rippled-as-a-validator.html)
+    - [Testnetや別の並列ネットワークへ接続する](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md)
+    - [バリデータとしての`rippled`の実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **リファレンス:**
-    - [negativeUNL オブジェクト](negativeunl.html)
+    - [negativeUNL オブジェクト](../../references/protocol/ledger-data/ledger-entry-types/negativeunl.md)
     - [UNLModify pseudo-transaction][]
     - [ledger_entry メソッド][]
     - [consensus_info メソッド][]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

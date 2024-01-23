@@ -15,12 +15,11 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 ## リクエストのフォーマット
 リクエストのフォーマットの例：
 
-{% include '_snippets/no-cli-syntax.ja.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "nft_buy_offers",
@@ -28,9 +27,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "nft_buy_offers",
@@ -40,10 +39,11 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#nft_buy_offers)
+[試してみる >](/resources/dev-tools/websocket-api-tool#nft_buy_offers)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -59,10 +59,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 ## レスポンスのフォーマット
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -80,9 +79,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -99,8 +98,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -118,8 +118,8 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 | `Field`           | 型                     | 説明                                   |
 |:------------------|:-----------------------|:--------------------------------------|
 | `amount`          | 文字列 または オブジェクト | NFTを購入するために提示される金額で、XRPのドロップ数を表す文字列、または(代替可能)トークンの金額を表すオブジェクトです。([通貨金額の指定][通貨額]をご覧ください)。 |
-| `flags`           | 数値                    | このオファーのためのフラグ。指定できる値については、[NFTokenOfferのフラグ](nftokenoffer.html#nftokenofferのフラグ)をご覧ください。 |
-| `nft_offer_index` | 文字列                   | このオファーの[レジャーオブジェクトID](ledger-object-ids.html)。 |
+| `flags`           | 数値                    | このオファーのためのフラグ。指定できる値については、[NFTokenOfferのフラグ](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md#nftokenofferのフラグ)をご覧ください。 |
+| `nft_offer_index` | 文字列                   | このオファーの[レジャーオブジェクトID](../../../protocol/ledger-data/common-fields.md)。 |
 | `owner`           | 文字列                   | このオファーを作成アカウント。   |
 
 ## 考えられるエラー
@@ -129,6 +129,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -10,7 +10,7 @@ labels:
 ---
 # Use Tickets
 
-[Tickets](tickets.html) provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a Ticket, then using it to send another transaction.
+[Tickets](../../concepts/accounts/tickets.md) provide a way to send transactions out of the normal order. This tutorial walks through the steps of creating a Ticket, then using it to send another transaction.
 
 ## Prerequisites
 
@@ -18,7 +18,7 @@ labels:
 <script type="application/javascript" src="assets/js/tutorials/use-tickets.js"></script>
 {% set use_network = "Testnet" %}
 
-This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](get-started-using-javascript.html) for setup instructions.
+This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](../get-started/get-started-using-javascript.md) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 
@@ -36,43 +36,43 @@ This tutorial is divided into a few phases:
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
+To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
-{% include '_snippets/interactive-tutorials/generate-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 
 ### {{n.next()}}. Connect to Network
 
 You must be connected to the network to submit transactions to it. Since Tickets are only available on Devnet so far, you should connect to a Devnet server. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Connect to" before="// Get credentials" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Connect to", end_before="// Get credentials") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **Note:** The code samples in this tutorial use JavaScript's [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
 For this tutorial, click the following button to connect:
 
-{% include '_snippets/interactive-tutorials/connect-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### {{n.next()}}. Check Sequence Number
 
 Before you create any Tickets, you should check what [Sequence Number][] your account is at. You want the current Sequence number for the next step, and the Ticket Sequence numbers it sets aside start from this number.
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Check Sequence" before="// Prepare and Sign TicketCreate" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Check Sequence", end_before="// Prepare and Sign TicketCreate") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Check Sequence") }}
 <button id="check-sequence" class="btn btn-primary previous-steps-required">Check Sequence Number</button>
@@ -86,15 +86,15 @@ _JavaScript_
 
 Construct a [TicketCreate transaction][] using the sequence number you determined in the previous step. Use the `TicketCount` field to specify how many Tickets to create. For example, to prepare a transaction that would make 10 Tickets:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Prepare and Sign TicketCreate" before="// Submit TicketCreate" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Prepare and Sign TicketCreate", end_before="// Submit TicketCreate") }}
+{% /tabs %}
 
-<!-- MULTICODE_BLOCK_END -->
-
-Record the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](reliable-transaction-submission.html) later.
+Record the transaction's hash and `LastLedgerSequence` value so you can [be sure whether or not it got validated](../../concepts/transactions/reliable-transaction-submission.md) later.
 
 
 {{ start_step("Prepare & Sign") }}
@@ -108,13 +108,13 @@ Record the transaction's hash and `LastLedgerSequence` value so you can [be sure
 
 Submit the signed transaction blob that you created in the previous step. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Submit TicketCreate" before="// Wait for Validation" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Submit TicketCreate", end_before="// Wait for Validation") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Submit") }}
 <button id="ticketcreate-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob" data-wait-step-name="Wait">Submit</button>
@@ -125,18 +125,18 @@ _JavaScript_
 
 ### {{n.next()}}. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Wait for Validation" before="// Check Available" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Wait for Validation", end_before="// Check Available") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Wait") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 
@@ -159,13 +159,13 @@ The power of Tickets is that you can carry on with your account's business as us
 
 When you want to send a Ticketed transaction, you need to know what Ticket Sequence number to use for it. If you've been keeping careful track of your account, you already know which Tickets you have, but if you're not sure, you can use the [account_objects method][] to look up your available tickets. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Check Available Tickets" before="// Prepare and Sign Ticketed" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Check Available Tickets", end_before="// Prepare and Sign Ticketed") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 {{ start_step("Check Tickets") }}
@@ -179,20 +179,22 @@ _JavaScript_
 
 Now that you have a Ticket available, you can prepare a transaction that uses it.
 
-This can be any [type of transaction](transaction-types.html) you like. The following example uses a no-op [AccountSet transaction][] since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
+This can be any [type of transaction](../../references/protocol/transactions/types/index.md) you like. The following example uses a no-op [AccountSet transaction][] since that doesn't require any other setup in the ledger. Set the `Sequence` field to `0` and include a `TicketSequence` field with the Ticket Sequence number of one of your available Tickets.
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Prepare and Sign Ticketed" before="// Submit Ticketed Transaction" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Prepare and Sign Ticketed", end_before="// Submit Ticketed Transaction") }}
+{% /tabs %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% admonition type="success" name="Tip" %}
+If you don't plan to submit the TicketCreate transaction right away, you should be sure not to set the `LastLedgerSequence` so that the transaction does not expire. The way you do this varies by library:
 
-> **Tip:** If you don't plan to submit the TicketCreate transaction right away, you should be sure not to set the `LastLedgerSequence` so that the transaction does not expire. The way you do this varies by library:
->
-> - **xrpl.js:** Specify `"LastLedgerSequence": null` when auto-filling the transaction.
-> - **`rippled`:** Omit `LastLedgerSequence` from the prepared instructions. The server does not provide a value by default.
+- **xrpl.js:** Specify `"LastLedgerSequence": null` when auto-filling the transaction.
+- **`rippled`:** Omit `LastLedgerSequence` from the prepared instructions. The server does not provide a value by default.
+{% /admonition %}
 
 {{ start_step("Prepare Ticketed Tx") }}
 <div id="ticket-selector">
@@ -208,13 +210,13 @@ _JavaScript_
 
 Submit the signed transaction blob that you created in the previous step. For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/use-tickets/js/use-tickets.js" from="// Submit Ticketed Transaction" before="// Wait for Validation (again)" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/use-tickets/js/use-tickets.js", language="js", start_with="// Submit Ticketed Transaction", end_before="// Wait for Validation (again)") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Submit Ticketed Tx") }}
 <button id="ticketedtx-submit" class="btn btn-primary previous-steps-required" data-tx-blob-from="#tx_blob_t" data-wait-step-name="Wait Again">Submit</button>
@@ -227,14 +229,14 @@ _JavaScript_
 Ticketed transactions go through the consensus process the same way that Sequenced transactions do.
 
 {{ start_step("Wait Again") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 ## With Multi-Signing
 
-One of the main use cases for Tickets is to be able to collect signatures for several [multi-signed transactions](multi-signing.html) in parallel. By using a Ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first. <!-- STYLE_OVERRIDE: will -->
+One of the main use cases for Tickets is to be able to collect signatures for several [multi-signed transactions](../../concepts/accounts/multi-signing.md) in parallel. By using a Ticket, you can send a multi-signed transaction as soon as it is fully signed and ready to go, without worrying about which one will be ready first. <!-- STYLE_OVERRIDE: will -->
 
-In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for [sending any multi-signed transaction](send-a-multi-signed-transaction.html): first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
+In this scenario, [step 8, "Prepare Ticketed Transaction"](#8-prepare-ticketed-transaction) is slightly different. Instead of preparing and signing all at once, you would follow the steps for [sending any multi-signed transaction](send-a-multi-signed-transaction.md): first prepare the transaction, then circulate it among trusted signers to collect their signatures, and finally combine the signatures into the final multi-signed transaction.
 
 You could do this in parallel for several different potential transactions as long as each one uses a different Ticket.
 
@@ -242,19 +244,16 @@ You could do this in parallel for several different potential transactions as lo
 ## See Also
 
 - **Concepts:**
-    - [Tickets](tickets.html)
-    - [Multi-Signing](multi-signing.html)
+    - [Tickets](../../concepts/accounts/tickets.md)
+    - [Multi-Signing](../../concepts/accounts/multi-signing.md)
 - **Tutorials:**
-    - [Set Up Multi-Signing](set-up-multi-signing.html)
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
+    - [Set Up Multi-Signing](set-up-multi-signing.md)
+    - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
 - **References:**
     - [account_objects method][]
     - [sign_for method][]
     - [submit_multisigned method][]
     - [TicketCreate transaction][]
-    - [Transaction Common Fields](transaction-common-fields.html)
+    - [Transaction Common Fields](../../references/protocol/transactions/common-fields.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

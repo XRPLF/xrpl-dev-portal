@@ -15,20 +15,20 @@ The `server_definitions` command returns an SDK-compatible `definitions.json`, g
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
   "command": "server_definitions"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#server_definitions)
+[Try it! >](/resources/dev-tools/websocket-api-tool#server_definitions)
 
 The request does not take any parameters.
 
@@ -37,10 +37,9 @@ The request does not take any parameters.
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -91,18 +90,15 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-To see a full `definitions.json` file and descriptions of the top-level fields, see: [Definitions File](serialization.html#definitions-file).
+To see a full `definitions.json` file and descriptions of the top-level fields, see: [Definitions File](../../../protocol/binary-format.md#definitions-file).
 
 
 ## Possible Errors
 
 Any of the [universal error types][].
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -11,7 +11,7 @@ Issuers can freeze the tokens they issue in the XRP Ledger. **This does not appl
 
 In certain cases, to meet regulatory requirements, or while investigating suspicious activity, an exchange or gateway may want to freeze token balances.
 
-**Tip:** No one can freeze XRP in the XRP Ledger. However, custodial exchanges can always freeze the funds they custody at their own discretion. For more details, see [Common Misunderstandings about Freezes](common-misconceptions-about-freezes.html).
+**Tip:** No one can freeze XRP in the XRP Ledger. However, custodial exchanges can always freeze the funds they custody at their own discretion. For more details, see [Common Misunderstandings about Freezes](common-misconceptions-about-freezes.md).
 
 There are three settings related to freezes:
 
@@ -24,18 +24,18 @@ All freeze settings can be enacted regardless of whether the balance(s) to be fr
 
 ## Individual Freeze
 
-The **Individual Freeze** feature is a setting on a [trust line](trust-lines-and-issuing.html). When an issuer enables the Individual Freeze setting, the following rules apply to the tokens in that trust line:
+The **Individual Freeze** feature is a setting on a [trust line](index.md). When an issuer enables the Individual Freeze setting, the following rules apply to the tokens in that trust line:
 
 * Payments can still occur directly between the two parties of the frozen trust line.
 * The counterparty of that trust line can no longer decrease its balance on the frozen trust line, except in direct payments to the issuer. The counterparty can only send the frozen currencies directly to the issuer.
 * The counterparty can still receive payments from others on the frozen trust line.
-* The counterparty's offers to sell the tokens in the frozen trust line are [considered unfunded](offers.html#lifecycle-of-an-offer).
+* The counterparty's offers to sell the tokens in the frozen trust line are [considered unfunded](../decentralized-exchange/offers.md#lifecycle-of-an-offer).
 
 Reminder: Trust lines do not hold XRP. XRP cannot be frozen.
 
 A financial institution can freeze the trust line linking it to a counterparty if that counterparty shows suspicious activity or violates the financial institution's terms of use. The financial institution should also freeze the counterparty in any other systems the financial institution uses that are connected to the XRP Ledger. (Otherwise, an address might still be able to engage in undesired activity by sending payments through the financial institution.)
 
-An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](account-types.html), from sending that financial institution's tokens to the individual address. This type of individual freeze has no effect on offers.
+An individual address can freeze its trust line to a financial institution. This has no effect on transactions between the institution and other users. It does, however, prevent other addresses, including [operational addresses](../../accounts/account-types.md), from sending that financial institution's tokens to the individual address. This type of individual freeze has no effect on offers.
 
 The Individual Freeze applies to a single trust line. To freeze multiple tokens with a particular counterparty, the address must enable Individual Freeze on the trust lines for each separate currency code.
 
@@ -46,15 +46,15 @@ An address cannot enable the Individual Freeze setting if it has enabled the [No
 
 The **Global Freeze** feature is a setting on an account. An account can enable a global freeze only on itself. When an issuer enables the Global Freeze feature, the following rules apply to all tokens they issue:
 
-* All counterparties of the frozen issuer can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects the issuer's own [operational addresses](account-types.html).)
+* All counterparties of the frozen issuer can no longer decrease the balances in their trust lines to the frozen account, except in direct payments to the issuer. (This also affects the issuer's own [operational addresses](../../accounts/account-types.md).)
 * Counterparties of the frozen issuer can still send and receive payments directly to and from the issuing address.
-* All offers to sell tokens issued by the frozen address are [considered unfunded](offers.html#lifecycle-of-an-offer).
+* All offers to sell tokens issued by the frozen address are [considered unfunded](../decentralized-exchange/offers.md#lifecycle-of-an-offer).
 
 Reminder: addresses cannot issue XRP. Global freezes do not apply to XRP.
 
-It can be useful to enable Global Freeze on a financial institution's [issuing account](account-types.html) if the issuer's [secret key](cryptographic-keys.html) is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, the issuer should also suspend activities in its outside systems.
+It can be useful to enable Global Freeze on a financial institution's [issuing account](../../accounts/account-types.md) if the issuer's [secret key](../../accounts/cryptographic-keys.md) is compromised, even after regaining control of a such an address. This stops the flow of funds, preventing attackers from getting away with any more money or at least making it easier to track what happened. Besides enacting a Global Freeze in the XRP Ledger, the issuer should also suspend activities in its outside systems.
 
-It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new [issuing address](account-types.html), or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
+It can also be useful to enable Global Freeze if a financial institution intends to migrate to a new [issuing address](../../accounts/account-types.md), or if the financial institution intends to cease doing business. This locks the funds at a specific point in time, so users cannot trade them away for other currencies.
 
 Global Freeze applies to _all_ tokens issued and held by the address. You cannot enable Global Freeze for only one currency code. If you want to have the ability to freeze some tokens and not others, you should use different addresses for each token.
 
@@ -76,7 +76,7 @@ The XRP Ledger cannot force an issuer to honor the obligations that its issued f
 
 The No Freeze setting applies to all tokens issued to and from an address. If you want to be able to freeze some tokens but not others, you should use different addresses for each.
 
-You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](setregularkey.html) or a [multi-signed transaction](multi-signing.html) to enable No Freeze.
+You can only enable the No Freeze setting with a transaction signed by your address's master key secret. You cannot use a [Regular Key](../../../references/protocol/transactions/types/setregularkey.md) or a [multi-signed transaction](../../accounts/multi-signing.md) to enable No Freeze.
 
 
 
@@ -84,20 +84,17 @@ You can only enable the No Freeze setting with a transaction signed by your addr
 
 - [Freeze Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
 - **Concepts:**
-    - [Trust Lines and Issuing](trust-lines-and-issuing.html)
+    - [Trust Lines and Issuing](index.md)
 - **Tutorials:**
-    - [Enable No Freeze](enable-no-freeze.html)
-    - [Enact Global Freeze](enact-global-freeze.html)
-    - [Freeze a Trust Line](freeze-a-trust-line.html)
+    - [Enable No Freeze](../../../tutorials/use-tokens/enable-no-freeze.md)
+    - [Enact Global Freeze](../../../tutorials/use-tokens/enact-global-freeze.md)
+    - [Freeze a Trust Line](../../../tutorials/use-tokens/freeze-a-trust-line.md)
 - **References:**
     - [account_lines method][]
     - [account_info method][]
     - [AccountSet transaction][]
     - [TrustSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
-    - [RippleState (trust line) Flags](ripplestate.html#ripplestate-flags)
+    - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
+    - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

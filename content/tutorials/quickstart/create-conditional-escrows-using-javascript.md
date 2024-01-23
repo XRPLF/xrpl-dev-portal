@@ -18,7 +18,7 @@ This example shows how to:
 
 3. Cancel a conditional escrow transaction.
 
-[![Conditional Escrow Tester Form](img/conditional-escrow1.png)](img/conditional-escrow1.png)
+[![Conditional Escrow Tester Form](/img/conditional-escrow1.png)](/img/conditional-escrow1.png)
 
 
 ## Prerequisites
@@ -42,7 +42,7 @@ To create a condition/fulfillment pair:
 2. Enter the command `node getConditionAndFulfillment.js`.
 3. Copy and save the generated Condition and Fulfillment pair.
 
-[![Condition and Fulfillment](img/conditional-escrow2.png)](img/conditional-escrow2.png)
+[![Condition and Fulfillment](/img/conditional-escrow2.png)](/img/conditional-escrow2.png)
 
 To get test accounts:
  
@@ -56,7 +56,7 @@ To get test accounts:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-[![Escrow Tester with Account Information](img/conditional-escrow3.png)](img/conditional-escrow3.png)
+[![Escrow Tester with Account Information](/img/conditional-escrow3.png)](/img/conditional-escrow3.png)
 
 ### Create Conditional Escrow:
 
@@ -80,7 +80,7 @@ The escrow is created on the XRP Ledger instance, reserving your requested XRP a
 
 When you create an escrow, capture and save the _Sequence Number_ so that you can use it to finish the escrow transaction.
 
-[![Created Escrow Transaction](img/conditional-escrow4.png)](img/conditional-escrow4.png)
+[![Created Escrow Transaction](/img/conditional-escrow4.png)](/img/conditional-escrow4.png)
 
 ## Finish Conditional Escrow
 
@@ -94,7 +94,7 @@ To finish a time-based escrow:
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
-[![Finished Escrow Transaction](img/conditional-escrow5.png)](img/conditional-escrow5.png)
+[![Finished Escrow Transaction](/img/conditional-escrow5.png)](/img/conditional-escrow5.png)
 
 ## Get Escrows
 
@@ -111,12 +111,12 @@ If you forget to save the sequence number, you can find it in the escrow transac
 1. Create a new escrow as described in [Create Escrow](#create-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnID_ value from the results.
-   ![Transaction ID in Get Escrows results](img/quickstart-escrow7.png)
+   ![Transaction ID in Get Escrows results](/img/quickstart-escrow7.png)
 4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
-   ![Transaction to Look Up field](img/quickstart-escrow8.png)
+   ![Transaction to Look Up field](/img/quickstart-escrow8.png)
 5. Click **Get Transaction**.
 6. Locate the _Sequence_ value in the results.
-   ![Sequence number in results](img/quickstart-escrow9.png)
+   ![Sequence number in results](/img/quickstart-escrow9.png)
 
 # Code Walkthrough
 
@@ -662,4 +662,3 @@ Disconnect from the XRPL.
   </body>
 </html>
 ```
-

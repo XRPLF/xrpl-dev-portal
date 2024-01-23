@@ -7,9 +7,9 @@ labels:
 ---
 # Load a Saved Ledger in Stand-Alone Mode
 
-You can start a `rippled` server in [Stand-Alone Mode](rippled-server-modes.html) using a [historical ledger version](ledgers.html) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](parallel-networks.html), you can load any ledger version your server had available.
+You can start a `rippled` server in [Stand-Alone Mode](../../concepts/networks-and-servers/rippled-server-modes.md) using a [historical ledger version](../../concepts/ledgers/index.md) that was previously saved to disk. For example, if your `rippled` server was previously synced with any XRP Ledger peer-to-peer network including [the production Mainnet, the Testnet, or the Devnet](../../concepts/networks-and-servers/parallel-networks.md), you can load any ledger version your server had available.
 
-Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](amendments.html) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](consensus-protections.html) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
+Loading a historical ledger version is useful for "replaying" a ledger to verify that transactions were processed according to the rules of the network, or to compare the results of processing transaction sets with different [amendments](../../concepts/networks-and-servers/amendments.md) enabled. In the unlikely event that [an attack against the XRP Ledger's consensus mechanism](../../concepts/consensus-protocol/consensus-protections.md) caused unwanted effects to the shared ledger state, a consensus of validators could "roll back" to a known-good network state starting with this process.
 
 **Caution:** As `rippled` is updated to newer versions, amendments are retired and become core functions of the ledger, which can affect how transactions are processed. To produce historically accurate results, you need to replay ledgers using the version of `rippled` the transaction was processed in.
 
@@ -29,7 +29,7 @@ Use the [server_info method][] to check the state of your server relative to the
 * `proposing`
 * `validating`
 
-For more information, see [Possible Server States](rippled-server-states.html).
+For more information, see [Possible Server States](../../references/http-websocket-apis/api-conventions/rippled-server-states.md).
 
 ## 3. (Optional) Retrieve specific ledger versions.
 
@@ -63,7 +63,7 @@ rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 
 This makes the saved ledger version the "current" (open) ledger for the server when it starts.
 
-For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](commandline-usage.html#stand-alone-mode-options).
+For more information on the options you can use when starting `rippled` in stand-alone mode, see [Commandline Usage: Stand-Alone Mode Options](../commandline-usage.md#stand-alone-mode-options).
 
 ## 6. Manually advance the ledger.
 
@@ -81,11 +81,8 @@ This puts the transactions in canonical order and processes them to make a close
 - **References:**
     - [ledger_accept method][]
     - [server_info method][]
-    - [`rippled` Commandline Usage](commandline-usage.html)
+    - [`rippled` Commandline Usage](../commandline-usage.md)
 - **Use Cases:**
-    - [Contribute Code to the XRP Ledger](contribute-code.html)
+    - [Contribute Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

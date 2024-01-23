@@ -8,25 +8,24 @@ labels:
 # ledger_current
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/LedgerCurrent.cpp "Source")
 
-The `ledger_current` method returns the unique identifiers of the current in-progress [ledger](ledgers.html). This command is mostly useful for testing, because the ledger returned is still in flux.
+The `ledger_current` method returns the unique identifiers of the current in-progress [ledger](../../../../concepts/ledgers/index.md). This command is mostly useful for testing, because the ledger returned is still in flux.
 
 ## Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 2,
    "command": "ledger_current"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "ledger_current",
@@ -35,17 +34,18 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: ledger_current
 rippled ledger_current
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#ledger_current)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_current)
 
 The request contains no parameters.
 
@@ -53,10 +53,9 @@ The request contains no parameters.
 ## Response Format
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -67,9 +66,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -80,9 +79,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -91,8 +90,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following field:
 
@@ -106,6 +106,4 @@ A `ledger_hash` field is not provided, because the hash of the current ledger is
 
 * Any of the [universal error types][].
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

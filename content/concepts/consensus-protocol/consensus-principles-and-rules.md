@@ -113,22 +113,18 @@ The XRP Ledger's consensus algorithm provides a robust alternative to proof of w
 ## See Also
 
 - **Concepts:**
-    - [Consensus](consensus.html)
-    - [Consensus Research](consensus-research.html)
+    - [Consensus](index.md)
+    - [Consensus Research](consensus-research.md)
     - [XRPL Consensus Mechanism Video](https://www.youtube.com/watch?v=k6VqEkqRTmk&list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi&index=2)
 - **Tutorials:**
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
-    - [Run `rippled` as a Validator](run-rippled-as-a-validator.html)
+    - [Reliable Transaction Submission](../transactions/reliable-transaction-submission.md)
+    - [Run `rippled` as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **References:**
-    - [Ledger Format Reference](ledger-data-formats.html)
-    - [Transaction Format Reference](transaction-formats.html)
+    - [Ledger Format Reference](../../references/protocol/ledger-data/index.md)
+    - [Transaction Format Reference](../../references/protocol/transactions/index.md)
     - [consensus_info method][]
     - [validator_list_sites method][]
     - [validators method][]
     - [consensus_info method][]
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

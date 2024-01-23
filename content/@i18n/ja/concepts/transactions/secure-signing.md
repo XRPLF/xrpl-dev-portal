@@ -8,7 +8,7 @@ labels:
 ---
 # 安全な署名
 
-[トランザクション](transactions.html)をXRP Ledgerに送信するには、[秘密鍵](cryptographic-keys.html)のセキュリティを損なわない方法でトランザクションにデジタル署名する必要があります。（他の人があなたの秘密鍵にアクセスできる場合、その人はあなたと同じようにあなたのアカウントを操作できるため、すべての資金が盗まれたり消却されたりする可能性があります。）このページでは、トランザクションに安全に署名できる環境の設定方法について説明します。
+[トランザクション](index.md)をXRP Ledgerに送信するには、[秘密鍵](../accounts/cryptographic-keys.md)のセキュリティを損なわない方法でトランザクションにデジタル署名する必要があります。（他の人があなたの秘密鍵にアクセスできる場合、その人はあなたと同じようにあなたのアカウントを操作できるため、すべての資金が盗まれたり消却されたりする可能性があります。）このページでは、トランザクションに安全に署名できる環境の設定方法について説明します。
 
 **ヒント:** ネットワークにトランザクションを送信していない場合は、Rippleが運用しているサーバーなど、信頼できる公開サーバーを安全に使用して、着信トランザクションの監視やその他のネットワークアクティビティの読み取りを行うことができます。XRP Ledgerのすべてのトランザクション、残高、データは公開されています。
 
@@ -24,7 +24,7 @@ labels:
 ## 安全でない構成
 
 <!-- TODO: translate diagrams -->
-{{ include_svg("img/insecure-signing-options.svg", "安全でない構成の図") }}
+[{% inline-svg file="/img/insecure-signing-options.svg" /%}](/img/insecure-signing-options.svg "安全でない構成の図")
 
 外部のソースからあなたの秘密鍵にアクセスできる構成は危険で、不正使用者によってあなたのすべてのXRP（およびあなたのXRP Ledgerのアドレスにあるすべてのもの）が盗まれる可能性があります。そのような構成の例としては、インターネット経由で他の人の`rippled`サーバーの[signメソッド][]を使用する構成や、秘密鍵をインターネットを経由してプレーンテキストで自己所有サーバーに送信する構成などがあります。
 
@@ -35,19 +35,19 @@ labels:
 
 ## ローカルでrippledを実行する
 
-{{ include_svg("img/secure-signing-local-rippled.svg", "署名にローカルrippledサーバーを使用する構成の図") }}
+[{% inline-svg file="/img/secure-signing-local-rippled.svg" /%}](/img/secure-signing-local-rippled.svg "署名にローカルrippledサーバーを使用する構成の図")
 
 この構成では、トランザクションを生成するマシンで`rippled`を実行します。  秘密鍵はマシンから出ていかないため、マシンへのアクセス権がない人は秘密鍵にアクセスできません。もちろん、マシンのセキュリティ保護に関する業界標準のプラクティスに従ってください。この構成を使用するには、次の手順を実行します。
 
-1. [`rippled`をインストール](install-rippled.html)します。
+1. [`rippled`をインストール](../../infrastructure/installation/index.md)します。
 
-    ローカルマシンが[`rippled`の最小システム要件](system-requirements.html)を満たしていることを確認します。
+    ローカルマシンが[`rippled`の最小システム要件](../../infrastructure/installation/system-requirements.md)を満たしていることを確認します。
 
 2. トランザクションに署名する必要がある場合は、`localhost`または`127.0.0.1`のサーバーに接続します。シングル署名の場合は[signメソッド][]、マルチシグの場合は[sign_forメソッド][]を使用します。
 
     [構成ファイルの例](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
-    **注意:** 署名に[コマンドラインAPI](request-formatting.html#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](get-started-using-http-websocket-apis.html)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
+    **注意:** 署名に[コマンドラインAPI](../../references/http-websocket-apis/api-conventions/request-formatting.md#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](../../tutorials/get-started/get-started-using-http-websocket-apis.md)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
 
 3. サーバーの使用中は、稼働状態と最新状態を維持して、ネットワークと同期されるようにしておく必要があります。
 
@@ -56,7 +56,7 @@ labels:
 
 ## 同じLAN内でrippledを実行する
 
-{{ include_svg("img/secure-signing-lan-rippled.svg", "署名にLAN経由でrippledサーバーを使用する構成の図") }}
+[{% inline-svg file="/img/secure-signing-lan-rippled.svg" /%}](/img/secure-signing-lan-rippled.svg "署名にLAN経由でrippledサーバーを使用する構成の図")
 
 この構成では、署名するトランザクションを生成するマシンと同じプライベートローカルエリアネットワーク（LAN）内の専用マシンで`rippled`サーバーを実行します。この構成では、`rippled`を実行する専用の1台のマシンを使用しながら、中程度のシステムスペックの1台以上のマシンでトランザクションの指示を組み立てることができます。自己所有のデータセンターやサーバールームがある場合に魅力的な選択肢です。
 
@@ -69,9 +69,9 @@ labels:
 
 ## ローカル署名機能のあるクライアントライブラリを使用する
 
-{{ include_svg("img/secure-signing-client-library.svg", "ローカル署名機能のあるクライアントライブラリを使用する構成の図") }}
+[{% inline-svg file="/img/secure-signing-client-library.svg" /%}](/img/secure-signing-client-library.svg "ローカル署名機能のあるクライアントライブラリを使用する構成の図")
 
-この構成では、使用するプログラミング言語で、署名を組み込んだクライアントライブラリを使用します。ローカル署名を実行できるライブラリの一覧は、[クライアントライブラリ](client-libraries.html)を参照してください。
+この構成では、使用するプログラミング言語で、署名を組み込んだクライアントライブラリを使用します。ローカル署名を実行できるライブラリの一覧は、[クライアントライブラリ](../../references/client-libraries.md)を参照してください。
 
 ### 署名ライブラリのセキュリティベストプラクティス
 
@@ -96,31 +96,26 @@ labels:
 
 * **Java** - [`xrpl4j`](https://github.com/XRPLF/xrpl4j)
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JavaScript*
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/secure-signing/js/signPayment.js" language="js" /%}
+{% /tab %}
 
-```js
-{% include '_code-samples/secure-signing/js/signPayment.js' %}
-```
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/secure-signing/py/sign-payment.py" language="py" /%}
+{% /tab %}
 
-*Python*
+{% tab label="Java" %}
+{% code-snippet file="/_code-samples/secure-signing/java/SignPayment.java" language="java" /%}
+{% /tab %}
 
-```py
-{% include '_code-samples/secure-signing/py/sign-payment.py' %}
-```
-
-*Java*
-
-```java
-{% include '_code-samples/secure-signing/java/SignPayment.java' %}
-```
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## 専用の署名デバイスを使用する
 
-{{ include_svg("img/secure-signing-dedicated-hardware.svg", "専用の署名ハードウェアの使用の図") }}
+[{% inline-svg file="/img/secure-signing-dedicated-hardware.svg" /%}](/img/secure-signing-dedicated-hardware.svg "専用の署名ハードウェアの使用の図")
 
 専用の署名デバイスが各社から販売されており、例えば[Ledger Nano S](https://www.ledger.com/products/ledger-nano-s)は、秘密鍵をデバイスから出さずに使ってXRP Ledgerトランザクションに署名できます。すべてのタイプのトランザクションに対応していないデバイスもあります。
 
@@ -129,7 +124,7 @@ labels:
 
 ## リモートrippledサーバーに対して安全なVPNを使用する
 
-{{ include_svg("img/secure-signing-over-vpn.svg", "VPNを経由してリモート`rippled`に安全に接続する構成の図") }}
+[{% inline-svg file="/img/secure-signing-over-vpn.svg" /%}](/img/secure-signing-over-vpn.svg "VPNを経由してリモート`rippled`に安全に接続する構成の図")
 
 この構成では、コロケーション施設や遠隔地のデータセンターなどにあるリモートでホストされている`rippled`サーバーを使用し、暗号化されたVPNを使用してそのサーバーに接続します。
 
@@ -139,13 +134,13 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [暗号鍵](cryptographic-keys.html)
-    - [マルチシグ](multi-signing.html)
+    - [暗号鍵](../accounts/cryptographic-keys.md)
+    - [マルチシグ](../accounts/multi-signing.md)
 - **チュートリアル:**
-    - [rippledのインストール](install-rippled.html)
-    - [レギュラーキーペアの割り当て](assign-a-regular-key-pair.html)
-    - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
-    - [パブリック署名の有効化](enable-public-signing.html)
+    - [rippledのインストール](../../infrastructure/installation/index.md)
+    - [レギュラーキーペアの割り当て](../../tutorials/manage-account-settings/assign-a-regular-key-pair.md)
+    - [信頼できるトランザクションの送信](reliable-transaction-submission.md)
+    - [パブリック署名の有効化](../../infrastructure/configuration/enable-public-signing.md)
 - **リファレンス:**
     - [signメソッド][]
     - [submitメソッド][]
@@ -153,10 +148,4 @@ labels:
     - [`xrpl-py`リファレンス](https://xrpl-py.readthedocs.io/)
     - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
 
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

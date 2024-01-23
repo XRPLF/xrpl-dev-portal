@@ -7,26 +7,25 @@ labels:
 ---
 # 特定のピアへの手動接続
 
-サーバーをXRP Ledgerネットワーク内の特定の[ピア](peer-protocol.html)に手動で接続するには、次の手順を実行します。
+サーバーをXRP Ledgerネットワーク内の特定の[ピア](../../../concepts/networks-and-servers/peer-protocol.md)に手動で接続するには、次の手順を実行します。
 
-**ヒント:** サーバーが起動時にこのサーバーに自動的に接続して、以降も接続を維持するようにするには、そのピアに対して[ピアリザベーション](use-a-peer-reservation.html)を設定することができます。
+**ヒント:** サーバーが起動時にこのサーバーに自動的に接続して、以降も接続を維持するようにするには、そのピアに対して[ピアリザベーション](use-a-peer-reservation.md)を設定することができます。
 
 
 ## 前提条件
 
 - 接続先のピアのIPアドレスを把握しておく必要があります。
-- 接続先のピアがXRP Ledger[ピアプロトコル](peer-protocol.html)に使用するポートを把握しておく必要があります。デフォルトでは、ポート51235です。
-- サーバーからピアへのネットワーク接続を用意する必要があります。例えば、ピアサーバーは[ファイアウォールを通じて適切なポートを転送する](forward-ports-for-peering.html)必要があります。
-- ピアサーバーに使用可能なピアスロットがある必要があります。ピアがすでにピアの最大数に達している場合、ピアサーバーのオペレーターに依頼して、サーバーの[ピアリザベーション](use-a-peer-reservation.html)を追加してもらいます。
+- 接続先のピアがXRP Ledger[ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)に使用するポートを把握しておく必要があります。デフォルトでは、ポート51235です。
+- サーバーからピアへのネットワーク接続を用意する必要があります。例えば、ピアサーバーは[ファイアウォールを通じて適切なポートを転送する](forward-ports-for-peering.md)必要があります。
+- ピアサーバーに使用可能なピアスロットがある必要があります。ピアがすでにピアの最大数に達している場合、ピアサーバーのオペレーターに依頼して、サーバーの[ピアリザベーション](use-a-peer-reservation.md)を追加してもらいます。
 
 ## 手順
 
 接続するには、[connectメソッド][]を使用します。例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
     "command": "connect",
@@ -34,9 +33,9 @@ labels:
     "port": 51235
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {
     "method": "connect",
@@ -48,32 +47,29 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled connect 169.54.2.151 51235
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## 関連項目
 
 - **コンセプト:**
-  - [ピアプロトコル](peer-protocol.html)
-  - [`rippled`サーバー](xrpl-servers.html)
+  - [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
+  - [`rippled`サーバー](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
-  - [容量の計画](capacity-planning.html)
-  - [`rippled`サーバーのトラブルシューティング](troubleshoot-the-rippled-server.html)
+  - [容量の計画](../../installation/capacity-planning.md)
+  - [`rippled`サーバーのトラブルシューティング](../../troubleshooting/index.md)
 - **リファレンス:**
   - [connectメソッド][]
   - [peersメソッド][]
   - [printメソッド][]
   - [server_infoメソッド][]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

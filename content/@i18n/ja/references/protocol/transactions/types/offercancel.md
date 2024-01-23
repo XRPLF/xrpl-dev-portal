@@ -11,7 +11,7 @@ labels:
 
 OfferCancelトランザクションは、XRP LedgerからOfferオブジェクトを削除します。
 
-## {{currentpage.name}}のJSONの例
+## {% $frontmatter.seo.title %}のJSONの例
 
 ```json
 {
@@ -25,7 +25,7 @@ OfferCancelトランザクションは、XRP LedgerからOfferオブジェクト
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -35,9 +35,6 @@ OfferCancelトランザクションは、XRP LedgerからOfferオブジェクト
 
 *ヒント:* 古いオファーを削除して新しいオファーに置き換えるには、OfferCancelとOfferCreateを使用する代わりに、`OfferSequence`パラメーターを指定した[OfferCreateトランザクション][]を使用できます。
 
-OfferCancelメソッドは、一致するシーケンス番号が見つからない場合でも[tesSUCCESS](tes-success.html)を返します。
+OfferCancelメソッドは、一致するシーケンス番号が見つからない場合でも[tesSUCCESS](../transaction-results/tes-success.md)を返します。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

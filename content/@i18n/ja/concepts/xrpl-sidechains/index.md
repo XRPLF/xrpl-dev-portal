@@ -8,7 +8,7 @@ labels:
 ---
 # XRPLサイドチェーン
 
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 サイドチェーンは、独自のコンセンサスアルゴリズム、トランザクションタイプ、ルール、ノードを持つ独立した台帳です。サイドチェーンは、メインチェーン(XRP Ledger)と並行して動作する独自のブロックチェーンとして機能し、メインチェーンのスピード、効率性、スループットを損なうことなく、両者の間で価値の移動を可能にします。
 
@@ -17,7 +17,7 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 * スマートコントラクト層の追加: [Xahau](https://xahau.network/)をご覧ください。
 * イーサリアム仮想マシン(EVM)互換性の追加: [EVMサイドチェーン](https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/)をご覧ください。
 * 独自のアルゴリズムによるステーブルコインの構築。
-* メインネットの[分散型取引所](decentralized-exchange.html)で資産を取引できる、パーミッションあり、またはほぼパーミッションレス、中央集権型、または大部分が分散されている台帳の構築。
+* メインネットの[分散型取引所](../tokens/decentralized-exchange/index.md)で資産を取引できる、パーミッションあり、またはほぼパーミッションレス、中央集権型、または大部分が分散されている台帳の構築。
 
 
 **ノート:**
@@ -67,8 +67,4 @@ _民事責任_ : 米国やその他の管轄区域では原告による訴訟が
 
 これらのFAQは、一般的なガイダンスを提供することを目的としており、技術的、財務的、または法的なアドバイスを提供するものではありません。これらのFAQは、各自の具体的な状況に合わせた専門的なアドバイスの代わりとして使用すべきではありません。ブロックチェーンとデジタル資産の状況は複雑で常に変化しているため、常に最新の情報を入手し、専門家の助言を求める必要があります。サイドチェーンに関わる者は、政府や規制機関のWebサイトなどの公式リソースを定期的にチェックすることをお勧めします。とはいえ、ブロックチェーンや暗号通貨を専門とする法律専門家に相談することが、正確で個別のアドバイスを得るための最も信頼できる方法です。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

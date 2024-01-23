@@ -13,7 +13,7 @@ labels:
 _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 
 ```json
@@ -37,9 +37,9 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 }
 ```
 
-[トランザクションを取得してみる >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
+[トランザクションを取得してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型            | [内部の型][]        | 説明               |
 |:--------------|:--------------------|:------------------|:-------------------|
@@ -52,19 +52,19 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## NFTokenMintのフラグ
 
-NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](transaction-common-fields.html#flagsフィールド)に追加の値を設定することが可能です。
+NFTokenMint型のトランザクションでは、以下のように[`Flags`フィールド](../common-fields.md#flagsフィールド)に追加の値を設定することが可能です。
 
 | フラグ名       | 16進数値      | 整数値          | 説明                          |
 |:--------------|:-------------|:--------------|:------------------------------|
 | `tfBurnable` | `0x00000001` | 1 | 発行者(または発行者が許可した者)が`NFToken`を破棄できるようにします。(`NFToken`の所有者は常に破棄することができます)。 |
 | `tfOnlyXRP` | `0x00000002` | 2 | 発行された`NFToken`はXRPでのみ売買が可能です。これは、トークンに送金手数料がかかり、発行者がXRP以外のトークンで手数料を受け取りたくない場合に望ましいでしょう。 |
-| `tfTrustLine` | `0x00000004` | 4 | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](trust-lines-and-issuing.html) を作成します。[fixRemoveNFTokenAutoTrustLine Amendment][]により、このフラグの設定は無効となります。 |
+| `tfTrustLine` | `0x00000004` | 4 | **非推奨** 発行者が、発行した`NFToken`を転送する際に受け取る手数料を保有するために、自動的に[トラストライン](../../../../concepts/tokens/fungible-tokens/index.md) を作成します。[fixRemoveNFTokenAutoTrustLine Amendment][]により、このフラグの設定は無効となります。 |
 | `tfTransferable` | `0x00000008` | 8 | 発行された`NFToken`は他の人に譲渡することができます。このフラグが _有効でない_ 場合、トークンは _発行者から_ 、または _発行者へ_ のみ転送することができます。 |
 
 
 ## 追加情報の埋め込み
 
-発行時に追加情報を指定する必要がある場合(たとえば、特定の[区画](https://en.wikipedia.org/wiki/Plat)を参照して不動産を特定できる詳細情報、[車両識別番号](https://ja.wikipedia.org/wiki/%E8%BB%8A%E4%B8%A1%E8%AD%98%E5%88%A5%E7%95%AA%E5%8F%B7)を指定して車両を特定できる詳細情報、その他オブジェクト固有の説明)、[取引メモ](transaction-common-fields.html#memosフィールド)を使用することができます。メモは署名された取引の一部であり、履歴アーカイブから入手できますが、レジャーの状態データには保存されません。
+発行時に追加情報を指定する必要がある場合(たとえば、特定の[区画](https://en.wikipedia.org/wiki/Plat)を参照して不動産を特定できる詳細情報、[車両識別番号](https://ja.wikipedia.org/wiki/%E8%BB%8A%E4%B8%A1%E8%AD%98%E5%88%A5%E7%95%AA%E5%8F%B7)を指定して車両を特定できる詳細情報、その他オブジェクト固有の説明)、[取引メモ](../common-fields.md#memosフィールド)を使用することができます。メモは署名された取引の一部であり、履歴アーカイブから入手できますが、レジャーの状態データには保存されません。
 
 ## 他のアカウントの代わりとして発行する
 
@@ -102,7 +102,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード                    | 説明                                          |
 |:------------------------------|:---------------------------------------------|
@@ -112,11 +112,7 @@ NFTokenMint型のトランザクションでは、以下のように[`Flags`フ�
 | `temMALFORMED`                | トランザクションが正しく指定されていません。例えば、`URI`フィールドが256バイトより長い場合です。 |
 | `tecNO_ISSUER`                | `Issuer`は、レジャーに存在しないアカウントを指定しています。 |
 | `tecNO_PERMISSION`            | `Issuer`フィールドで参照されるアカウントは、このトランザクションの送信者（`NFTokenMinter`設定を使用）が自身の代わりに発行することを承認していません。 |
-| `tecINSUFFICIENT_RESERVE`     | トークンを発行した後、オーナーは更新された[準備金要件](reserves.html)を満たせなくなります。新しい`NFToken`は、新しい[NFTokenPageオブジェクト][]を必要とする場合にのみ、オーナーの準備金を増加させることに注意する必要があり、それぞれ最大32NFTを格納することができます。|
+| `tecINSUFFICIENT_RESERVE`     | トークンを発行した後、オーナーは更新された[準備金要件](../../../../concepts/accounts/reserves.md)を満たせなくなります。新しい`NFToken`は、新しい[NFTokenPageオブジェクト][]を必要とする場合にのみ、オーナーの準備金を増加させることに注意する必要があり、それぞれ最大32NFTを格納することができます。|
 | `tecMAX_SEQUENCE_REACHED`     | `Issuer`の`MintedNFTokens`フィールドはすでに最大値になっています。これは、発行者またはその代理人が合計で2<sup>32</sup>-1つの`NFToken`を発行した場合にのみ発生します。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

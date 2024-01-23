@@ -7,11 +7,11 @@ labels:
 ---
 # Offers
 
-In the XRP Ledger's [decentralized exchange](decentralized-exchange.html), trade orders are called "Offers". Offers can trade XRP with [tokens](tokens.html), or tokens for other tokens, including tokens with the same currency code but different issuers. (Tokens with the same code but different issuers can also sometimes be exchanged through [rippling](rippling.html).)
+In the XRP Ledger's [decentralized exchange](index.md), trade orders are called "Offers". Offers can trade XRP with [tokens](../index.md), or tokens for other tokens, including tokens with the same currency code but different issuers. (Tokens with the same code but different issuers can also sometimes be exchanged through [rippling](../fungible-tokens/rippling.md).)
 
 - To create an Offer, send an [OfferCreate transaction][].
-- Offers that aren't fully filled immediately become [Offer objects](offer.html) in the ledger data. Later Offers and Payments can consume the Offer object from the ledger.
-- [Cross-currency payments](cross-currency-payments.html) consume Offers to provide liquidity. However, they never create Offer objects in the ledger.
+- Offers that aren't fully filled immediately become [Offer objects](../../../references/protocol/ledger-data/ledger-entry-types/offer.md) in the ledger data. Later Offers and Payments can consume the Offer object from the ledger.
+- [Cross-currency payments](../../payment-types/cross-currency-payments.md) consume Offers to provide liquidity. However, they never create Offer objects in the ledger.
 
 ## Lifecycle of an Offer
 
@@ -19,7 +19,7 @@ An [OfferCreate transaction][] is an instruction to conduct a trade, either betw
 
 The Offer object waits in the ledger until other Offers or cross-currency payments fully consume it. The account that placed the Offer is called the Offer's _owner_. You can cancel your own Offers at any time, using the dedicated [OfferCancel transaction][], or as an option of the [OfferCreate transaction][].
 
-While you have an Offer in the ledger, it sets aside some of your XRP toward the [owner reserve](reserves.html). When the Offer gets removed, for any reason, that XRP is freed up again.
+While you have an Offer in the ledger, it sets aside some of your XRP toward the [owner reserve](../../accounts/reserves.md). When the Offer gets removed, for any reason, that XRP is freed up again.
 
 ### Variations
 
@@ -40,7 +40,7 @@ When you try to place an Offer, the transaction is rejected as "unfunded" if you
 
 However, you don't need to hold the full amount specified in the Offer. Placing an Offer does not lock up your funds, so you can place multiple Offers to sell the same tokens (or XRP), or place an Offer and hope to get enough tokens or XRP to fully fund it later.
 
-**To sell XRP,** you must hold enough XRP to meet all the [reserve requirements](reserves.html), including the reserve for the Offer object to be placed in the ledger and for the trust line to hold the token you are buying. As long as you have any XRP left over after setting aside the reserve amount, you can place the Offer.
+**To sell XRP,** you must hold enough XRP to meet all the [reserve requirements](../../accounts/reserves.md), including the reserve for the Offer object to be placed in the ledger and for the trust line to hold the token you are buying. As long as you have any XRP left over after setting aside the reserve amount, you can place the Offer.
 
 When another Offer matches yours, both Offers execute to the extent that their owners' funds allow at the the time. If there are matching Offers and you run out of funds before yours is fully filled, the rest of your Offer is canceled. An Offer can't make your balance of a token negative, unless you are the issuer of that token. (If you are the issuer, you can use Offers to issue new tokens up to the total amount specified in your Offers; tokens you issue are represented as negative balances from your perspective.)
 
@@ -50,15 +50,15 @@ It is possible for an Offer to become temporarily or permanently _unfunded_ in t
 
 - If the owner no longer has any of the sell asset.
     - The Offer becomes funded again when the owner obtains more of that asset.
-- If the sell asset is a token in a [frozen trust line](freezes.html).
+- If the sell asset is a token in a [frozen trust line](../fungible-tokens/freezes.md).
     - The Offer becomes funded again when the trust line is no longer frozen.
-- If the Offer needs to create a new trust line, but the owner does not have enough XRP for the increased [reserve](reserves.html). (See [Offers and Trust](#offers-and-trust).)
+- If the Offer needs to create a new trust line, but the owner does not have enough XRP for the increased [reserve](../../accounts/reserves.md). (See [Offers and Trust](#offers-and-trust).)
     - The offer becomes funded again when the owner obtains more XRP, or the reserve requirements decrease.
 - If the Offer is expired. (See [Offer Expiration](#offer-expiration).)
 
 An unfunded Offer stays on the ledger until a transaction removes it. Ways that an Offer can be removed from the ledger include:
 
-- A matching Offer or [Cross-currency payment](cross-currency-payments.html) fully consumes the Offer.
+- A matching Offer or [Cross-currency payment](../../payment-types/cross-currency-payments.md) fully consumes the Offer.
 - The owner explicitly cancels the Offer.
 - The owner implicitly cancels the Offer by sending a new Offer that crosses it.
 - The Offer is found to be unfunded or expired during transaction processing. Typically this means that another Offer tried to consume it and could not.
@@ -68,14 +68,14 @@ An unfunded Offer stays on the ledger until a transaction removes it. Ways that 
 
 Tracking the funding status of all Offers can be computationally taxing. In particular, addresses that are actively trading may have a large number of Offers open. A single balance can affect the funding status of many Offers. Because of this, the XRP Ledger does not _proactively_ find and remove unfunded or expired Offers.
 
-A client application can locally track the funding status of Offers. To do this, first retrieve an order book using the [book_offers method][] and check the `taker_gets_funded` field of Offers. Then, [subscribe](subscribe.html) to the `transactions` stream and watch the transaction metadata to see which Offers are modified.
+A client application can locally track the funding status of Offers. To do this, first retrieve an order book using the [book_offers method][] and check the `taker_gets_funded` field of Offers. Then, [subscribe](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md) to the `transactions` stream and watch the transaction metadata to see which Offers are modified.
 
 
 ## Offers and Trust
 
-The limit values of [trust lines](trust-lines-and-issuing.html) do not affect Offers. In other words, you can use an Offer to acquire more than the maximum amount you trust an issuer for.
+The limit values of [trust lines](../fungible-tokens/index.md) do not affect Offers. In other words, you can use an Offer to acquire more than the maximum amount you trust an issuer for.
 
-However, holding tokens still requires a trust line to the issuer. When an Offer is consumed, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](reserves.html), any Offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
+However, holding tokens still requires a trust line to the issuer. When an Offer is consumed, it automatically creates any necessary trust lines, setting their limits to 0. Because [trust lines increase the reserve an account must hold](../../accounts/reserves.md), any Offers that would require a new trust line also require the address to have enough XRP to meet the reserve for that trust line.
 
 Trust line limits protect you from receiving more of a token as payment than you want. Offers can go beyond those limits because they are an explicit statement of how much of the token you want.
 
@@ -93,7 +93,7 @@ When you place an Offer, you can optionally add an expiration time to it. By def
 
 Expiration times are specified down to the second, but the exact, real-world time when an Offer expires is less precise. An Offer is expired if it has an expiration time that is _earlier than or equal to_ the close time of the previous ledger. Otherwise, the Offer can still execute, even if the real-world time is later than the Offer's expiration. In other words, an Offer is still "active" if its expiration time is later than the close time of the latest validated ledger, regardless of what your clock says.
 
-This is a consequence of how the network reaches agreement. For the entire peer-to-peer network to reach a consensus, all servers must agree which Offers are expired when executing transactions. Individual servers may have slight differences in their internal clock settings, so they might not reach the same conclusions about which Offers were expired if they each used the "current" time. The close time of a ledger is not known until after the transactions in that ledger have been executed, so servers use the official close time of the _previous_ ledger instead. The [close times of ledgers are rounded](ledger-close-times.html), which further increases the potential difference between real-world time and the time used to determine if an Offer is expired.
+This is a consequence of how the network reaches agreement. For the entire peer-to-peer network to reach a consensus, all servers must agree which Offers are expired when executing transactions. Individual servers may have slight differences in their internal clock settings, so they might not reach the same conclusions about which Offers were expired if they each used the "current" time. The close time of a ledger is not known until after the transactions in that ledger have been executed, so servers use the official close time of the _previous_ ledger instead. The [close times of ledgers are rounded](../../ledgers/ledger-close-times.md), which further increases the potential difference between real-world time and the time used to determine if an Offer is expired.
 
 **Note:** Expired Offers remain in the ledger data until a transaction removes them. Until then, they can continue to appear in data retrieved from the API (for example, using the [ledger_entry method][]). Transactions automatically delete any expired and unfunded Offers they find, usually while executing Offers or cross-currency payments that would have matched or canceled them. The owner reserve associated with an Offer is only made available again when the Offer is actually deleted.
 
@@ -101,16 +101,13 @@ This is a consequence of how the network reaches agreement. For the entire peer-
 ## See Also
 
 - **Concepts:**
-    - [Tokens](tokens.html)
-    - [Paths](paths.html)
+    - [Tokens](../index.md)
+    - [Paths](../fungible-tokens/paths.md)
 - **References:**
     - [account_offers method][]
     - [book_offers method][]
     - [OfferCreate transaction][]
     - [OfferCancel transaction][]
-    - [Offer object](offer.html)
+    - [Offer object](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

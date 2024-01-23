@@ -15,10 +15,9 @@ labels:
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": 1,
@@ -27,8 +26,9 @@ labels:
  "binary": false
 }
 ```
-*JSON-RPC*
+{% /tab %}
 
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "tx",
@@ -40,16 +40,18 @@ labels:
    ]
 }
 ```
-*コマンドライン*
+{% /tab %}
 
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: tx transaction [binary]
 rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 false
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる>](websocket-api-tool.html#tx)
+[試してみる>](/resources/dev-tools/websocket-api-tool#tx)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -62,10 +64,9 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 1,
@@ -191,10 +192,11 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
    "type": "response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に[Transactionオブジェクト](transaction-formats.html)フィールドと以下の追加のフィールドが含まれています。
+このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に[Transactionオブジェクト](../../../protocol/transactions/index.md)フィールドと以下の追加のフィールドが含まれています。
 
 | `Field`        | 型             | 説明                              |
 |:---------------|:-----------------|:-----------------------------------------|
@@ -203,7 +205,7 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 | `ledger_index` | 符号なし整数 | このトランザクションが記録されているレジャーのシーケンス番号。 |
 | `meta`         | オブジェクト           | トランザクションに関する各種メタデータ。  |
 | `validated`    | ブール値          | このデータが検証済みレジャーバージョンのデータである場合はtrue。省略されている場合またはfalseに設定されている場合は、このデータは最終データではありません。 |
-| （各種）      | （各種）        | [Transactionオブジェクト](transaction-formats.html)のその他のフィールド |
+| （各種）      | （各種）        | [Transactionオブジェクト](../../../protocol/transactions/index.md)のその他のフィールド |
 
 ## 考えられるエラー
 
@@ -211,6 +213,4 @@ rippled tx E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 fals
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `txnNotFound` - トランザクションが存在しないか、または`rippled`で使用できない古いレジャーバージョンのトランザクションです。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

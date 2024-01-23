@@ -7,9 +7,9 @@ labels:
 ---
 # rippled Server Won't Start
 
-This page explains possible reasons [the `rippled` server](xrpl-servers.html) does not start and how to fix them.
+This page explains possible reasons [the `rippled` server](../../concepts/networks-and-servers/index.md) does not start and how to fix them.
 
-These instructions assume you have [installed `rippled`](install-rippled.html) on a supported platform.
+These instructions assume you have [installed `rippled`](../installation/index.md) on a supported platform.
 
 
 ## File Descriptors Limit
@@ -25,22 +25,30 @@ This occurs because the system has a security limit on the number of files a sin
 
 1. Add the following lines to the end of your `/etc/security/limits.conf` file:
 
-        *                soft    nofile          65536
-        *                hard    nofile          65536
+    ```
+    *                soft    nofile          65536
+    *                hard    nofile          65536
+    ```
 
 2. Check that the [hard limit on number of files that can be opened](https://ss64.com/bash/ulimit.html) is now `65536`:
 
-        ulimit -Hn
+    ```
+    ulimit -Hn
+    ```
 
     The command should output `65536`.
 
 3. Try starting `rippled` again.
 
-        systemctl start rippled
+    ```
+    systemctl start rippled
+    ```
 
 4. If `rippled` still does not start, open `/etc/sysctl.conf` and append the following kernel-level setting:
 
-        fs.file-max = 65536
+    ```
+    fs.file-max = 65536
+    ```
 
 
 ## Failed to open /etc/opt/ripple/rippled.cfg
@@ -62,7 +70,7 @@ Possible solutions:
 
     **Tip:** The `rippled` repository contains [an example `rippled.cfg` file](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg) which is provided as the default config when you do an RPM installation. If you do not have the file, you can copy it from there.
 
-- Specify the path to your preferred config file using the `--conf` [commandline option](commandline-usage.html).
+- Specify the path to your preferred config file using the `--conf` [commandline option](../commandline-usage.md).
 
 ## Failed to open validators file
 
@@ -84,11 +92,13 @@ Possible solutions:
 
 - Edit your `rippled.cfg` file and remove the `[validators_file]` setting. Add validator settings directly to your `rippled.cfg` file. For example:
 
-        [validator_list_sites]
-        https://vl.ripple.com
+    ```
+    [validator_list_sites]
+    https://vl.ripple.com
 
-        [validator_list_keys]
-        ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+    [validator_list_keys]
+    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+    ```
 
 
 ## Cannot create database path
@@ -173,22 +183,22 @@ An error such as the following indicates that the `rippled.cfg` file has an impr
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
 ```
 
-Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge`. For more information see [Node Size](capacity-planning.html#node-size).
+Valid parameters for the `node_size` field are `tiny`, `small`, `medium`, `large`, or `huge`. For more information see [Node Size](../installation/capacity-planning.md#node-size).
 
 
 ## Shard path missing
 
-An error such as the following indicates that the `rippled.cfg` has an incomplete [history sharding](history-sharding.html) configuration:
+An error such as the following indicates that the `rippled.cfg` has an incomplete [history sharding](../configuration/data-retention/history-sharding.md) configuration:
 
 ```text
 Terminating thread rippled: main: unhandled St13runtime_error 'shard path missing'
 ```
 
-If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](configure-history-sharding.html#2-edit-rippledcfg).
+If your config includes a `[shard_db]` stanza, it must contain a `path` field, which points to a directory where `rippled` can write the data for the shard store. This error means the `path` field is missing or located in the wrong place. Check for extra whitespace or typos in your config file, and compare against the [Shard Configuration Example](../configuration/data-retention/configure-history-sharding.md#2-edit-rippledcfg).
 
 ## Unsupported shard store type: RocksDB
 
-RocksDB is no longer supported as a backend for [history sharding](history-sharding.html). If you have an existing configuration that defines a RocksDB shard store, the server fails to start. [New in: rippled 1.3.1][]
+RocksDB is no longer supported as a backend for [history sharding](../configuration/data-retention/history-sharding.md). If you have an existing configuration that defines a RocksDB shard store, the server fails to start. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.3.1" %}New in: rippled 1.3.1{% /badge %}
 
 In this case, the process dies shortly after the log startup command, with a message such as the following appearing earlier in the output log:
 
@@ -206,18 +216,16 @@ To fix this problem, do one of the following, then restart the server:
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Technical FAQ](technical-faq.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [Technical FAQ](../../faq.md)
 - **Tutorials:**
-    - [Understanding Log Messages](understanding-log-messages.html)
-    - [Capacity Planning](capacity-planning.html)
+    - [Understanding Log Messages](understanding-log-messages.md)
+    - [Capacity Planning](../installation/capacity-planning.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [`rippled` Commandline Usage](commandline-usage.html)
+    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+        - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
 <!-- SPELLING_IGNORE: cfg, node_size -->
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+
+{% raw-partial file="/_snippets/common-links.md" /%}

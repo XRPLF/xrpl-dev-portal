@@ -9,11 +9,11 @@ status: not_enabled
 # AMMVote
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMVote.cpp "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment][] {% not-enabled /%})_
 
-Vote on the trading fee for an [Automated Market Maker](automated-market-makers.html) instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.
+Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) instance. Up to 8 accounts can vote in proportion to the amount of the AMM's LP Tokens they hold. Each new vote re-calculates the AMM's trading fee based on a weighted average of the votes.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -33,7 +33,7 @@ Vote on the trading fee for an [Automated Market Maker](automated-market-makers.
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field        | JSON Type | [Internal Type][] | Required? | Description |
 |:-------------|:----------|:------------------|:----------|:------------|
@@ -43,7 +43,7 @@ Vote on the trading fee for an [Automated Market Maker](automated-market-makers.
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code              | Description                                  |
 |:------------------------|:---------------------------------------------|
@@ -53,8 +53,4 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `temBAD_FEE`            | The `TradingFee` from this transaction is not valid. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

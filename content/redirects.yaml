@@ -1,4 +1,1560 @@
-'/docs.html':
-  to: '/docs/'
-  type: 301 # optional
-# more here
+xrp-ledger-rpc-tool.html:
+    to: /resources/dev-tools/rpc-tool
+    type: 301
+xrp-ledger-toml-checker.html:
+    to: /resources/dev-tools/xrp-ledger-toml-checker
+    type: 301
+domain-verification-checker.html:
+    to: /resources/dev-tools/domain-verification-checker
+    type: 301
+websocket-api-tool.html:
+    to: /resources/dev-tools/websocket-api-tool
+    type: 301
+xrp-testnet-faucet.html:
+    to: /resources/dev-tools/xrp-faucets
+    type: 301
+xrp-test-net-faucet.html:
+    to: /resources/dev-tools/xrp-faucets
+    type: 301
+tx-sender.html:
+    to: /resources/dev-tools/tx-sender
+    type: 301
+uses.html:
+    to: /about/uses
+    type: 301
+docs.html:
+    to: /docs/
+    type: 301
+xrp-ledger-overview.html:
+    to: /about/
+    type: 301
+xrp-overview.html:
+    to: /about/xrp
+    type: 301
+overview.html:
+    to: /about/
+    type: 301
+history.html:
+    to: /about/history
+    type: 301
+impact.html:
+    to: /about/impact
+    type: 301
+carbon-calculator.html:
+    to: /about/impact
+    type: 301
+contribute.html:
+    to: /community
+    type: 301
+events.html:
+    to: /community/events
+    type: 301
+ambassadors.html:
+    to: /community/ambassadors
+    type: 301
+developer-funding.html:
+    to: /community/developer-funding
+    type: 301
+code-samples.html:
+    to: /resources/code-samples
+    type: 301
+dev-tools.html:
+    to: /resources/dev-tools/
+    type: 301
+dev-tools-dev-tools.html:
+    to: /resources/dev-tools/
+    type: 301
+validator-domain-verifier.html:
+    to: /resources/dev-tools/domain-verifier/
+    type: 301
+docs-index.html:
+    to: /docs/
+    type: 301
+explore.html:
+    to: /about/
+    type: 301
+wallet.html:
+    to: /about/xrp
+    type: 301
+exchanges.html:
+    to: /about/xrp
+    type: 301
+businesses.html:
+    to: /about/uses
+    type: 301
+ripple-txt-validator.html:
+    to: /resources/dev-tools/xrp-ledger-toml-checker
+    type: 301
+production-readiness.html:
+    to: /tutorials
+    type: 301
+get-started.html:
+    to: /tutorials
+    type: 301
+run-rippled-as-a-wallet-server.html:
+    to: /infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
+    type: 301
+faq.html:
+    to: /faq
+    type: 301
+privacy-policy.html:
+    to: /privacy-policy
+    type: 301
+technical-faq.html:
+    to: /faq
+    type: 301
+introduction.html:
+    to: /introduction/index
+    type: 301
+what-is-the-xrp-ledger.html:
+    to: /introduction/what-is-the-xrp-ledger
+    type: 301
+what-is-xrp.html:
+    to: /introduction/what-is-xrp
+    type: 301
+xrp.html:
+    to: /introduction/what-is-xrp
+    type: 301
+crypto-wallets.html:
+    to: /introduction/crypto-wallets
+    type: 301
+txn-and-requests.html:
+    to: /introduction/transactions-and-requests
+    type: 301
+software-ecosystem.html:
+    to: /introduction/software-ecosystem
+    type: 301
+use-cases.html:
+    to: /use-cases/index
+    type: 301
+payments-uc.html:
+    to: /use-cases/payments/index
+    type: 301
+peer-to-peer-payments-uc.html:
+    to: /use-cases/payments/peer-to-peer-payments-uc
+    type: 301
+restricting-deposits-uc.html:
+    to: /use-cases/payments/restricting-deposits-uc
+    type: 301
+escrow-uc.html:
+    to: /use-cases/payments/smart-contracts-uc
+    type: 301
+tokenization.html:
+    to: /use-cases/tokenization/index
+    type: 301
+stablecoin-issuer.html:
+    to: /use-cases/tokenization/stablecoin-issuer
+    type: 301
+nft-mkt-overview.html:
+    to: /use-cases/tokenization/nft-mkt-overview
+    type: 301
+nftoken-marketplace.html:
+    to: /use-cases/tokenization/nftoken-marketplace
+    type: 301
+authorized-minter.html:
+    to: /use-cases/tokenization/authorized-minter
+    type: 301
+digital-artist.html:
+    to: /use-cases/tokenization/digital-artist
+    type: 301
+defi-uc.html:
+    to: /use-cases/defi/index
+    type: 301
+algorithmic-trading.html:
+    to: /use-cases/defi/algorithmic-trading
+    type: 301
+list-xrp-as-an-exchange.html:
+    to: /use-cases/defi/list-xrp-as-an-exchange
+    type: 301
+concepts.html:
+    to: /concepts/index
+    type: 301
+networks-and-servers.html:
+    to: /concepts/networks-and-servers/index
+    type: 301
+xrpl-servers.html:
+    to: /concepts/networks-and-servers/index
+    type: 301
+rippled-server-modes.html:
+    to: /concepts/networks-and-servers/rippled-server-modes
+    type: 301
+clustering.html:
+    to: /concepts/networks-and-servers/clustering
+    type: 301
+ledger-history.html:
+    to: /concepts/networks-and-servers/ledger-history
+    type: 301
+peer-protocol.html:
+    to: /concepts/networks-and-servers/peer-protocol
+    type: 301
+transaction-censorship-detection.html:
+    to: /concepts/networks-and-servers/transaction-censorship-detection
+    type: 301
+parallel-networks.html:
+    to: /concepts/networks-and-servers/parallel-networks
+    type: 301
+amendments.html:
+    to: /concepts/networks-and-servers/amendments
+    type: 301
+the-clio-server.html:
+    to: /concepts/networks-and-servers/the-clio-server
+    type: 301
+consensus.html:
+    to: /concepts/consensus-protocol/index
+    type: 301
+consensus-structure.html:
+    to: /concepts/consensus-protocol/consensus-structure
+    type: 301
+consensus-principles-and-rules.html:
+    to: /concepts/consensus-protocol/consensus-principles-and-rules
+    type: 301
+consensus-protections.html:
+    to: /concepts/consensus-protocol/consensus-protections
+    type: 301
+invariant-checking.html:
+    to: /concepts/consensus-protocol/invariant-checking
+    type: 301
+fee-voting.html:
+    to: /concepts/consensus-protocol/fee-voting
+    type: 301
+negative-unl.html:
+    to: /concepts/consensus-protocol/negative-unl
+    type: 301
+consensus-research.html:
+    to: /concepts/consensus-protocol/consensus-research
+    type: 301
+ledgers.html:
+    to: /concepts/ledgers/index
+    type: 301
+ledger-structure.html:
+    to: /concepts/ledgers/ledger-structure
+    type: 301
+open-closed-validated-ledgers.html:
+    to: /concepts/ledgers/open-closed-validated-ledgers
+    type: 301
+ledger-close-times.html:
+    to: /concepts/ledgers/ledger-close-times
+    type: 301
+transactions.html:
+    to: /concepts/transactions/index
+    type: 301
+fees.html:
+    to: /concepts/transactions/fees
+    type: 301
+reliable-transaction-submission.html:
+    to: /concepts/transactions/reliable-transaction-submission
+    type: 301
+secure-signing.html:
+    to: /concepts/transactions/secure-signing
+    type: 301
+source-and-destination-tags.html:
+    to: /concepts/transactions/source-and-destination-tags
+    type: 301
+transaction-cost.html:
+    to: /concepts/transactions/transaction-cost
+    type: 301
+transaction-queue.html:
+    to: /concepts/transactions/transaction-queue
+    type: 301
+finality-of-results.html:
+    to: /concepts/transactions/finality-of-results/index
+    type: 301
+look-up-transaction-results.html:
+    to: /concepts/transactions/finality-of-results/look-up-transaction-results
+    type: 301
+transaction-malleability.html:
+    to: /concepts/transactions/finality-of-results/transaction-malleability
+    type: 301
+canceling-a-transaction.html:
+    to: /concepts/transactions/finality-of-results/canceling-a-transaction
+    type: 301
+payment-types.html:
+    to: /concepts/payment-types/index
+    type: 301
+direct-xrp-payments.html:
+    to: /concepts/payment-types/direct-xrp-payments
+    type: 301
+cross-currency-payments.html:
+    to: /concepts/payment-types/cross-currency-payments
+    type: 301
+checks.html:
+    to: /concepts/payment-types/checks
+    type: 301
+escrow.html:
+    to: /concepts/payment-types/escrow
+    type: 301
+partial-payments.html:
+    to: /concepts/payment-types/partial-payments
+    type: 301
+payment-channels.html:
+    to: /concepts/payment-types/payment-channels
+    type: 301
+robustly-monitoring-for-payments.html:
+    to: /concepts/payment-types/robustly-monitoring-for-payments
+    type: 301
+sending-payments-to-customers.html:
+    to: /concepts/payment-types/sending-payments-to-customers
+    type: 301
+bouncing-payments.html:
+    to: /concepts/payment-types/bouncing-payments
+    type: 301
+tokens.html:
+    to: /concepts/tokens/index
+    type: 301
+trust-lines-and-issuing.html:
+    to: /concepts/tokens/fungible-tokens/index
+    type: 301
+authorized-trust-lines.html:
+    to: /concepts/tokens/fungible-tokens/authorized-trust-lines
+    type: 301
+stablecoins.html:
+    to: /concepts/tokens/fungible-tokens/stablecoins/index
+    type: 301
+stablecoin-settings.html:
+    to: /concepts/tokens/fungible-tokens/stablecoins/settings
+    type: 301
+stablecoin-configuration.html:
+    to: /concepts/tokens/fungible-tokens/stablecoins/configuration
+    type: 301
+stablecoin-precautions.html:
+    to: /concepts/tokens/fungible-tokens/stablecoins/precautions
+    type: 301
+stablecoin-compliance-guidelines.html:
+    to: /concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines
+    type: 301
+clawing-back-tokens.html:
+    to: /concepts/tokens/fungible-tokens/clawing-back-tokens
+    type: 301
+freezes.html:
+    to: /concepts/tokens/fungible-tokens/freezes
+    type: 301
+common-misconceptions-about-freezes.html:
+    to: /concepts/tokens/fungible-tokens/common-misconceptions-about-freezes
+    type: 301
+paths.html:
+    to: /concepts/tokens/fungible-tokens/paths
+    type: 301
+rippling.html:
+    to: /concepts/tokens/fungible-tokens/rippling
+    type: 301
+non-fungible-tokens.html:
+    to: /concepts/tokens/nfts/index
+    type: 301
+nft-storage.html:
+    to: /concepts/tokens/nfts/payload-storage
+    type: 301
+non-fungible-token-transfers.html:
+    to: /concepts/tokens/nfts/trading
+    type: 301
+nft-reserve-requirements.html:
+    to: /concepts/tokens/nfts/reserve-requirements
+    type: 301
+nftoken-batch-minting.html:
+    to: /concepts/tokens/nfts/batch-minting
+    type: 301
+nftoken-authorized-minting.html:
+    to: /concepts/tokens/nfts/authorizing-another-minter
+    type: 301
+nftoken-auctions.html:
+    to: /concepts/tokens/nfts/running-an-nft-auction
+    type: 301
+nft-collections.html:
+    to: /concepts/tokens/nfts/collections
+    type: 301
+nft-fixed-supply.html:
+    to: /concepts/tokens/nfts/guaranteeing-a-fixed-supply
+    type: 301
+nft-apis.html:
+    to: /concepts/tokens/nfts/nft-apis
+    type: 301
+transfer-fees.html:
+    to: /concepts/tokens/transfer-fees
+    type: 301
+demurrage.html:
+    to: /concepts/tokens/fungible-tokens/demurrage
+    type: 301
+decentralized-exchange.html:
+    to: /concepts/tokens/decentralized-exchange/index
+    type: 301
+offers.html:
+    to: /concepts/tokens/decentralized-exchange/offers
+    type: 301
+autobridging.html:
+    to: /concepts/tokens/decentralized-exchange/autobridging
+    type: 301
+ticksize.html:
+    to: /concepts/tokens/decentralized-exchange/ticksize
+    type: 301
+automated-market-makers.html:
+    to: /concepts/tokens/decentralized-exchange/automated-market-makers
+    type: 301
+accounts.html:
+    to: /concepts/accounts/accounts
+    type: 301
+account-types.html:
+    to: /concepts/accounts/account-types
+    type: 301
+deleting-accounts.html:
+    to: /concepts/accounts/deleting-accounts
+    type: 301
+reserves.html:
+    to: /concepts/accounts/reserves
+    type: 301
+addresses.html:
+    to: /concepts/accounts/addresses
+    type: 301
+cryptographic-keys.html:
+    to: /concepts/accounts/cryptographic-keys
+    type: 301
+multi-signing.html:
+    to: /concepts/accounts/multi-signing
+    type: 301
+depositauth.html:
+    to: /concepts/accounts/depositauth
+    type: 301
+tickets.html:
+    to: /concepts/accounts/tickets
+    type: 301
+decentralized-identifiers.html:
+    to: /concepts/accounts/decentralized-identifiers
+    type: 301
+intro-to-consensus.html:
+    to: /concepts/consensus-protocol/index
+    type: 301
+set-up-secure-signing.html:
+    to: /concepts/transactions/secure-signing
+    type: 301
+transaction-basics.html:
+    to: /concepts/transactions/index
+    type: 301
+become-an-xrp-ledger-gateway.html:
+    to: /use-cases/tokenization/stablecoin-issuer
+    type: 301
+consensus-network.html:
+    to: /concepts/consensus-protocol/index
+    type: 301
+complex-payment-types.html:
+    to: /concepts/payment-types/index
+    type: 301
+about-canceling-a-transaction.html:
+    to: /concepts/transactions/finality-of-results/canceling-a-transaction
+    type: 301
+issuing-and-operational-addresses.html:
+    to: /concepts/accounts/account-types
+    type: 301
+issued-currencies.html:
+    to: /concepts/tokens/index
+    type: 301
+issued-currencies-overview.html:
+    to: /concepts/tokens/index
+    type: 301
+federated-sidechains.html:
+    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    type: 301
+xrpl-interoperability.html:
+    to: https://opensource.ripple.com/docs/xls-38d-cross-chain-bridge/cross-chain-bridges/
+    type: 301
+intro-to-evm-sidechain.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+    type: 301
+the-rippled-server.html:
+    to: /concepts/networks-and-servers/index
+    type: 301
+nft-concepts.html:
+    to: /concepts/tokens/nfts/index
+    type: 301
+nft-conceptual-overview.html:
+    to: /concepts/tokens/nfts/index
+    type: 301
+xrpl-sidechains.html:
+    to: /concepts/xrpl-sidechains/index
+    type: 301
+cross-chain-bridges.html:
+    to: /concepts/xrpl-sidechains/cross-chain-bridges
+    type: 301
+witness-servers.html:
+    to: /concepts/xrpl-sidechains/witness-servers
+    type: 301
+public-servers.html:
+    to: /tutorials/get-started/public-servers
+    type: 301
+python.html:
+    to: /tutorials/python/index
+    type: 301
+get-started-using-python.html:
+    to: /tutorials/get-started/get-started-using-python
+    type: 301
+modular-tutorials-in-python.html:
+    to: /tutorials/python/modular-tutorials-in-python/index
+    type: 301
+send-payments-using-python.html:
+    to: /tutorials/quickstart/send-payments-using-python
+    type: 301
+py-create-accounts-send-xrp.html:
+    to: /tutorials/quickstart/py-create-accounts-send-xrp
+    type: 301
+py-create-trustline-send-currency.html:
+    to: /tutorials/quickstart/py-create-trustline-send-currency
+    type: 301
+py-create-time-based-escrows.html:
+    to: /tutorials/quickstart/py-create-time-based-escrows
+    type: 301
+py-mint-and-burn-nfts.html:
+    to: /tutorials/quickstart/py-mint-and-burn-nfts
+    type: 301
+py-transfer-nfts.html:
+    to: /tutorials/quickstart/py-transfer-nfts
+    type: 301
+py-broker-sale.html:
+    to: /tutorials/quickstart/py-broker-sale
+    type: 301
+py-authorize-minter.html:
+    to: /tutorials/quickstart/py-authorize-minter
+    type: 301
+py-batch-minting.html:
+    to: /tutorials/quickstart/py-batch-minting
+    type: 301
+build-a-desktop-wallet-in-python.html:
+    to: /tutorials/build-apps/build-a-desktop-wallet-in-python
+    type: 301
+javascript.html:
+    to: /tutorials/javascript/index
+    type: 301
+get-started-using-javascript.html:
+    to: /tutorials/get-started/get-started-using-javascript
+    type: 301
+get-started-using-node-js.html:
+    to: /tutorials/get-started/get-started-using-javascript
+    type: 301
+get-started-with-rippleapi-for-javascript.html:
+    to: /tutorials/get-started/get-started-using-javascript
+    type: 301
+modular-tutorials-in-javascript.html:
+    to: /tutorials/javascript/modular-tutorials-in-javascript/index
+    type: 301
+send-payments-using-javascript.html:
+    to: /tutorials/quickstart/send-payments-using-javascript
+    type: 301
+create-accounts-send-xrp-using-javascript.html:
+    to: /tutorials/quickstart/create-accounts-send-xrp-using-javascript
+    type: 301
+create-trustline-send-currency-using-javascript.html:
+    to: /tutorials/quickstart/create-trustline-send-currency-using-javascript
+    type: 301
+create-time-based-escrows-using-javascript.html:
+    to: /tutorials/quickstart/create-time-based-escrows-using-javascript
+    type: 301
+create-conditional-escrows-using-javascript.html:
+    to: /tutorials/quickstart/create-conditional-escrows-using-javascript
+    type: 301
+nfts-using-javascript.html:
+    to: /tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index
+    type: 301
+mint-and-burn-nfts-using-javascript.html:
+    to: /tutorials/quickstart/mint-and-burn-nfts-using-javascript
+    type: 301
+transfer-nfts-using-javascript.html:
+    to: /tutorials/quickstart/transfer-nfts-using-javascript
+    type: 301
+broker-an-nft-sale-using-javascript.html:
+    to: /tutorials/quickstart/broker-an-nft-sale-using-javascript
+    type: 301
+assign-an-authorized-minter-using-javascript.html:
+    to: /tutorials/quickstart/assign-an-authorized-minter-using-javascript
+    type: 301
+batch-mint-nfts-using-javascript.html:
+    to: /tutorials/quickstart/batch-mint-nfts-using-javascript
+    type: 301
+build-a-browser-wallet-in-javascript.html:
+    to: /tutorials/build-apps/build-a-browser-wallet-in-javascript
+    type: 301
+build-a-browser-wallet-using-javascript.html:
+    to: /tutorials/build-apps/build-a-browser-wallet-in-javascript
+    type: 301
+build-a-desktop-wallet-in-javascript.html:
+    to: /tutorials/build-apps/build-a-desktop-wallet-in-javascript
+    type: 301
+java.html:
+    to: /tutorials/java/index
+    type: 301
+get-started-using-java.html:
+    to: /tutorials/get-started/get-started-using-java
+    type: 301
+get-started-using-php.html:
+    to: /tutorials/get-started/get-started-using-php
+    type: 301
+http-websocket-apis-tutorials.html:
+    to: /tutorials/http-websocket-apis/index
+    type: 301
+get-started-with-the-rippled-api.html:
+    to: /tutorials/get-started/get-started-using-http-websocket-apis
+    type: 301
+get-started-using-http-websocket-apis.html:
+    to: /tutorials/get-started/get-started-using-http-websocket-apis
+    type: 301
+monitor-incoming-payments-with-websocket.html:
+    to: /tutorials/get-started/monitor-incoming-payments-with-websocket
+    type: 301
+tasks.html:
+    to: /tutorials/tasks/index
+    type: 301
+manage-account-settings.html:
+    to: /tutorials/tasks/manage-account-settings/index
+    type: 301
+assign-a-regular-key-pair.html:
+    to: /tutorials/manage-account-settings/assign-a-regular-key-pair
+    type: 301
+change-or-remove-a-regular-key-pair.html:
+    to: /tutorials/manage-account-settings/change-or-remove-a-regular-key-pair
+    type: 301
+disable-master-key-pair.html:
+    to: /tutorials/manage-account-settings/disable-master-key-pair
+    type: 301
+set-up-multi-signing.html:
+    to: /tutorials/manage-account-settings/set-up-multi-signing
+    type: 301
+send-a-multi-signed-transaction.html:
+    to: /tutorials/manage-account-settings/send-a-multi-signed-transaction
+    type: 301
+require-destination-tags.html:
+    to: /tutorials/manage-account-settings/require-destination-tags
+    type: 301
+offline-account-setup.html:
+    to: /tutorials/manage-account-settings/offline-account-setup
+    type: 301
+use-tickets.html:
+    to: /tutorials/manage-account-settings/use-tickets
+    type: 301
+send-xrp.html:
+    to: /tutorials/get-started/send-xrp
+    type: 301
+use-specialized-payment-types.html:
+    to: /tutorials/tasks/use-specialized-payment-types/index
+    type: 301
+use-complex-payment-types.html:
+    to: /tutorials/tasks/use-specialized-payment-types/index
+    type: 301
+use-escrows.html:
+    to: /tutorials/tasks/use-specialized-payment-types/use-escrows/index
+    type: 301
+send-a-time-held-escrow.html:
+    to: /tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
+    type: 301
+send-a-conditionally-held-escrow.html:
+    to: /tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
+    type: 301
+cancel-an-expired-escrow.html:
+    to: /tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
+    type: 301
+look-up-escrows.html:
+    to: /tutorials/use-specialized-payment-types/use-escrows/look-up-escrows
+    type: 301
+use-an-escrow-as-a-smart-contract.html:
+    to: /tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
+    type: 301
+use-payment-channels.html:
+    to: /tutorials/use-specialized-payment-types/use-payment-channels
+    type: 301
+open-a-payment-channel-to-enable-an-inter-exchange-network.html:
+    to: /tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
+    type: 301
+use-checks.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/use-checks
+    type: 301
+send-a-check.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/send-a-check
+    type: 301
+cash-a-check-for-an-exact-amount.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount
+    type: 301
+cash-a-check-for-a-flexible-amount.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount
+    type: 301
+cancel-a-check.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/cancel-a-check
+    type: 301
+look-up-checks-by-sender.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender
+    type: 301
+look-up-checks-by-recipient.html:
+    to: /tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient
+    type: 301
+use-tokens.html:
+    to: /tutorials/tasks/use-tokens/index
+    type: 301
+issue-a-fungible-token.html:
+    to: /tutorials/use-tokens/issue-a-fungible-token
+    type: 301
+trade-in-the-decentralized-exchange.html:
+    to: /tutorials/use-tokens/trade-in-the-decentralized-exchange
+    type: 301
+enable-no-freeze.html:
+    to: /tutorials/use-tokens/enable-no-freeze
+    type: 301
+enact-global-freeze.html:
+    to: /tutorials/use-tokens/enact-global-freeze
+    type: 301
+freeze-a-trust-line.html:
+    to: /tutorials/use-tokens/freeze-a-trust-line
+    type: 301
+create-an-automated-market-maker.html:
+    to: /tutorials/use-tokens/create-an-automated-market-maker
+    type: 301
+use-simple-xrp-payments.html:
+    to: /tutorials/get-started/send-xrp
+    type: 301
+cancel-or-skip-a-transaction.html:
+    to: /concepts/transactions/finality-of-results/canceling-a-transaction
+    type: 301
+evm-sidechains.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/
+    type: 301
+get-started-evm-sidechain.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/get-started-evm-sidechain/
+    type: 301
+connect-metamask-to-xrpl-evm-sidechain.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/connect-metamask-to-xrpl-evm-sidechain/
+    type: 301
+join-evm-sidechain-devnet.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/join-evm-sidechain-devnet/
+    type: 301
+evm-sidechain-validator-security.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-validator-security/
+    type: 301
+evm-sidechain-run-a-validator-node.html:
+    to: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
+    type: 301
+use-xrpl-sidechains.html:
+    to: /tutorials/tasks/use-xrpl-sidechains/index
+    type: 301
+set-up-xrp-xrp-bridge.html:
+    to: /tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge
+    type: 301
+set-up-iou-iou-bridge.html:
+    to: /tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge
+    type: 301
+submit-cross-chain-transactions.html:
+    to: /tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction
+    type: 301
+protocol-reference.html:
+    to: /references/protocol/index
+    type: 301
+basic-data-types.html:
+    to: /references/protocol/data-types/basic-data-types
+    type: 301
+base58-encodings.html:
+    to: /references/protocol/data-types/base58-encodings
+    type: 301
+currency-formats.html:
+    to: /references/protocol/data-types/currency-formats
+    type: 301
+nftoken.html:
+    to: /references/protocol/data-types/nftoken
+    type: 301
+ledger-data-formats.html:
+    to: /references/protocol/ledger-data/index
+    type: 301
+ledger-header.html:
+    to: /references/protocol/ledger-data/ledger-header
+    type: 301
+ledger-entry-common-fields.html:
+    to: /references/protocol/ledger-data/common-fields
+    type: 301
+ledger-entry-types.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/index
+    type: 301
+ledger-object-types.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/index
+    type: 301
+ledger-object-ids.html:
+    to: /references/protocol/ledger-data/common-fields
+    type: 301
+accountroot.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/accountroot
+    type: 301
+amendments-object.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/amendments
+    type: 301
+amm.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/amm
+    type: 301
+bridge.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/bridge
+    type: 301
+check.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/check
+    type: 301
+depositpreauth-object.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/depositpreauth
+    type: 301
+did.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/did
+    type: 301
+directorynode.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/directorynode
+    type: 301
+escrow-object.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/escrow
+    type: 301
+feesettings.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/feesettings
+    type: 301
+ledgerhashes.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/ledgerhashes
+    type: 301
+negativeunl.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/negativeunl
+    type: 301
+nftokenoffer.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/nftokenoffer
+    type: 301
+nftokenpage.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/nftokenpage
+    type: 301
+offer.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/offer
+    type: 301
+paychannel.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/paychannel
+    type: 301
+ripplestate.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/ripplestate
+    type: 301
+signerlist.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/signerlist
+    type: 301
+ticket.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/ticket
+    type: 301
+xchainownedclaimid.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid
+    type: 301
+xchainownedcreateaccountclaimid.html:
+    to: /references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid
+    type: 301
+transaction-formats.html:
+    to: /references/protocol/transactions/index
+    type: 301
+transaction-common-fields.html:
+    to: /references/protocol/transactions/common-fields
+    type: 301
+transaction-types.html:
+    to: /references/protocol/transactions/types/index
+    type: 301
+accountset.html:
+    to: /references/protocol/transactions/types/accountset
+    type: 301
+accountdelete.html:
+    to: /references/protocol/transactions/types/accountdelete
+    type: 301
+ammbid.html:
+    to: /references/protocol/transactions/types/ammbid
+    type: 301
+ammcreate.html:
+    to: /references/protocol/transactions/types/ammcreate
+    type: 301
+ammdelete.html:
+    to: /references/protocol/transactions/types/ammdelete
+    type: 301
+ammdeposit.html:
+    to: /references/protocol/transactions/types/ammdeposit
+    type: 301
+ammvote.html:
+    to: /references/protocol/transactions/types/ammvote
+    type: 301
+ammwithdraw.html:
+    to: /references/protocol/transactions/types/ammwithdraw
+    type: 301
+checkcancel.html:
+    to: /references/protocol/transactions/types/checkcancel
+    type: 301
+checkcash.html:
+    to: /references/protocol/transactions/types/checkcash
+    type: 301
+checkcreate.html:
+    to: /references/protocol/transactions/types/checkcreate
+    type: 301
+clawback.html:
+    to: /references/protocol/transactions/types/clawback
+    type: 301
+depositpreauth.html:
+    to: /references/protocol/transactions/types/depositpreauth
+    type: 301
+diddelete.html:
+    to: /references/protocol/transactions/types/diddelete
+    type: 301
+didset.html:
+    to: /references/protocol/transactions/types/didset
+    type: 301
+escrowcancel.html:
+    to: /references/protocol/transactions/types/escrowcancel
+    type: 301
+escrowcreate.html:
+    to: /references/protocol/transactions/types/escrowcreate
+    type: 301
+escrowfinish.html:
+    to: /references/protocol/transactions/types/escrowfinish
+    type: 301
+nftokenacceptoffer.html:
+    to: /references/protocol/transactions/types/nftokenacceptoffer
+    type: 301
+nftokenburn.html:
+    to: /references/protocol/transactions/types/nftokenburn
+    type: 301
+nftokencanceloffer.html:
+    to: /references/protocol/transactions/types/nftokencanceloffer
+    type: 301
+nftokencreateoffer.html:
+    to: /references/protocol/transactions/types/nftokencreateoffer
+    type: 301
+nftokenmint.html:
+    to: /references/protocol/transactions/types/nftokenmint
+    type: 301
+offercancel.html:
+    to: /references/protocol/transactions/types/offercancel
+    type: 301
+offercreate.html:
+    to: /references/protocol/transactions/types/offercreate
+    type: 301
+payment.html:
+    to: /references/protocol/transactions/types/payment
+    type: 301
+paymentchannelclaim.html:
+    to: /references/protocol/transactions/types/paymentchannelclaim
+    type: 301
+paymentchannelcreate.html:
+    to: /references/protocol/transactions/types/paymentchannelcreate
+    type: 301
+paymentchannelfund.html:
+    to: /references/protocol/transactions/types/paymentchannelfund
+    type: 301
+setregularkey.html:
+    to: /references/protocol/transactions/types/setregularkey
+    type: 301
+signerlistset.html:
+    to: /references/protocol/transactions/types/signerlistset
+    type: 301
+ticketcreate.html:
+    to: /references/protocol/transactions/types/ticketcreate
+    type: 301
+trustset.html:
+    to: /references/protocol/transactions/types/trustset
+    type: 301
+xchainaccountcreatecommit.html:
+    to: /references/protocol/transactions/types/xchainaccountcreatecommit
+    type: 301
+xchainaddaccountcreateattestation.html:
+    to: /references/protocol/transactions/types/xchainaddaccountcreateattestation
+    type: 301
+xchainaddclaimattestation.html:
+    to: /references/protocol/transactions/types/xchainaddclaimattestation
+    type: 301
+xchainclaim.html:
+    to: /references/protocol/transactions/types/xchainclaim
+    type: 301
+xchaincommit.html:
+    to: /references/protocol/transactions/types/xchaincommit
+    type: 301
+xchaincreatebridge.html:
+    to: /references/protocol/transactions/types/xchaincreatebridge
+    type: 301
+xchaincreateclaimid.html:
+    to: /references/protocol/transactions/types/xchaincreateclaimid
+    type: 301
+xchainmodifybridge.html:
+    to: /references/protocol/transactions/types/xchainmodifybridge
+    type: 301
+pseudo-transaction-types.html:
+    to: /references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types
+    type: 301
+enableamendment.html:
+    to: /references/protocol/transactions/pseudo-transaction-types/enableamendment
+    type: 301
+setfee.html:
+    to: /references/protocol/transactions/pseudo-transaction-types/setfee
+    type: 301
+unlmodify.html:
+    to: /references/protocol/transactions/pseudo-transaction-types/unlmodify
+    type: 301
+transaction-results.html:
+    to: /references/protocol/transactions/transaction-results/transaction-results
+    type: 301
+tec-codes.html:
+    to: /references/protocol/transactions/transaction-results/tec-codes
+    type: 301
+tef-codes.html:
+    to: /references/protocol/transactions/transaction-results/tef-codes
+    type: 301
+tel-codes.html:
+    to: /references/protocol/transactions/transaction-results/tel-codes
+    type: 301
+tem-codes.html:
+    to: /references/protocol/transactions/transaction-results/tem-codes
+    type: 301
+ter-codes.html:
+    to: /references/protocol/transactions/transaction-results/ter-codes
+    type: 301
+tes-success.html:
+    to: /references/protocol/transactions/transaction-results/tes-success
+    type: 301
+transaction-metadata.html:
+    to: /references/protocol/transactions/metadata
+    type: 301
+modifying-the-ledger.html:
+    to: /references/protocol/transactions/index
+    type: 301
+serialization.html:
+    to: /references/protocol/binary-format
+    type: 301
+client-libraries.html:
+    to: /references/client-libraries
+    type: 301
+rippleapi-reference.html:
+    to: https://js.xrpl.org/
+    type: 301
+xrpljs2-migration-guide.html:
+    to: /references/xrpljs2-migration-guide
+    type: 301
+http-websocket-apis.html:
+    to: /references/http-websocket-apis/index
+    type: 301
+rippled-api.html:
+    to: /references/http-websocket-apis/index
+    type: 301
+api-conventions.html:
+    to: /references/http-websocket-apis/api-conventions/index
+    type: 301
+request-formatting.html:
+    to: /references/http-websocket-apis/api-conventions/request-formatting
+    type: 301
+response-formatting.html:
+    to: /references/http-websocket-apis/api-conventions/response-formatting
+    type: 301
+error-formatting.html:
+    to: /references/http-websocket-apis/api-conventions/error-formatting
+    type: 301
+markers-and-pagination.html:
+    to: /references/http-websocket-apis/api-conventions/markers-and-pagination
+    type: 301
+rate-limiting.html:
+    to: /references/http-websocket-apis/api-conventions/rate-limiting
+    type: 301
+rippled-server-states.html:
+    to: /references/http-websocket-apis/api-conventions/rippled-server-states
+    type: 301
+ctid.html:
+    to: /references/http-websocket-apis/api-conventions/ctid
+    type: 301
+public-api-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/index
+    type: 301
+public-rippled-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/index
+    type: 301
+account-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/index
+    type: 301
+account_channels.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_channels
+    type: 301
+account_currencies.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_currencies
+    type: 301
+account_info.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_info
+    type: 301
+account_lines.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_lines
+    type: 301
+account_nfts.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_nfts
+    type: 301
+account_objects.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_objects
+    type: 301
+account_offers.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_offers
+    type: 301
+account_tx.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/account_tx
+    type: 301
+gateway_balances.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/gateway_balances
+    type: 301
+noripple_check.html:
+    to: /references/http-websocket-apis/public-api-methods/account-methods/noripple_check
+    type: 301
+ledger-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/ledger-methods/index
+    type: 301
+ledger.html:
+    to: /references/http-websocket-apis/public-api-methods/ledger-methods/ledger
+    type: 301
+ledger_closed.html:
+    to: /references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed
+    type: 301
+ledger_current.html:
+    to: /references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current
+    type: 301
+ledger_data.html:
+    to: /references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data
+    type: 301
+ledger_entry.html:
+    to: /references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry
+    type: 301
+transaction-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/transaction-methods/index
+    type: 301
+submit.html:
+    to: /references/http-websocket-apis/public-api-methods/transaction-methods/submit
+    type: 301
+submit_multisigned.html:
+    to: /references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned
+    type: 301
+transaction_entry.html:
+    to: /references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry
+    type: 301
+tx.html:
+    to: /references/http-websocket-apis/public-api-methods/transaction-methods/tx
+    type: 301
+tx_history.html:
+    to: /references/http-websocket-apis/public-api-methods/transaction-methods/tx_history
+    type: 301
+path-and-order-book-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index
+    type: 301
+amm_info.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info
+    type: 301
+book_offers.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers
+    type: 301
+deposit_authorized.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized
+    type: 301
+nft_buy_offers.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers
+    type: 301
+nft_sell_offers.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers
+    type: 301
+path_find.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find
+    type: 301
+ripple_path_find.html:
+    to: /references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find
+    type: 301
+payment-channel-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/payment-channel-methods/index
+    type: 301
+channel_authorize.html:
+    to: /references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize
+    type: 301
+channel_verify.html:
+    to: /references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify
+    type: 301
+subscription-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/subscription-methods/index
+    type: 301
+subscribe.html:
+    to: /references/http-websocket-apis/public-api-methods/subscription-methods/subscribe
+    type: 301
+unsubscribe.html:
+    to: /references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe
+    type: 301
+server-info-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/server-info-methods/index
+    type: 301
+fee.html:
+    to: /references/http-websocket-apis/public-api-methods/server-info-methods/fee
+    type: 301
+manifest.html:
+    to: /references/http-websocket-apis/public-api-methods/server-info-methods/manifest
+    type: 301
+server_definitions.html:
+    to: /references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions
+    type: 301
+server_info.html:
+    to: /references/http-websocket-apis/public-api-methods/server-info-methods/server_info
+    type: 301
+server_state.html:
+    to: /references/http-websocket-apis/public-api-methods/server-info-methods/server_state
+    type: 301
+clio-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/clio-server/index
+    type: 301
+server_info-clio.html:
+    to: /references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio
+    type: 301
+ledger-clio.html:
+    to: /references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio
+    type: 301
+nft_history.html:
+    to: /references/http-websocket-apis/public-api-methods/clio-methods/nft_history
+    type: 301
+nft_info.html:
+    to: /references/http-websocket-apis/public-api-methods/clio-methods/nft_info
+    type: 301
+utility-methods.html:
+    to: /references/http-websocket-apis/public-api-methods/utility-methods/index
+    type: 301
+json.html:
+    to: /references/http-websocket-apis/public-api-methods/utility-methods/json
+    type: 301
+ping.html:
+    to: /references/http-websocket-apis/public-api-methods/utility-methods/ping
+    type: 301
+random.html:
+    to: /references/http-websocket-apis/public-api-methods/utility-methods/random
+    type: 301
+admin-api-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/index
+    type: 301
+admin-rippled-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/index
+    type: 301
+key-generation-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/key-generation-methods/index
+    type: 301
+validation_create.html:
+    to: /references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create
+    type: 301
+wallet_propose.html:
+    to: /references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose
+    type: 301
+logging-and-data-management-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/index
+    type: 301
+can_delete.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete
+    type: 301
+crawl_shards.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards
+    type: 301
+download_shard.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard
+    type: 301
+ledger_cleaner.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner
+    type: 301
+ledger_request.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request
+    type: 301
+log_level.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level
+    type: 301
+logrotate.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate
+    type: 301
+node_to_shard.html:
+    to: /references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard
+    type: 301
+server-control-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/server-control-methods/index
+    type: 301
+ledger_accept.html:
+    to: /references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept
+    type: 301
+stop.html:
+    to: /references/http-websocket-apis/admin-api-methods/server-control-methods/stop
+    type: 301
+validation_seed.html:
+    to: /references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed
+    type: 301
+signing-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/signing-methods/index
+    type: 301
+sign.html:
+    to: /references/http-websocket-apis/admin-api-methods/signing-methods/sign
+    type: 301
+sign_for.html:
+    to: /references/http-websocket-apis/admin-api-methods/signing-methods/sign_for
+    type: 301
+peer-management-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/peer-management-methods/index
+    type: 301
+connect.html:
+    to: /references/http-websocket-apis/admin-api-methods/peer-management-methods/connect
+    type: 301
+peer_reservations_add.html:
+    to: /references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add
+    type: 301
+peer_reservations_del.html:
+    to: /references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del
+    type: 301
+peer_reservations_list.html:
+    to: /references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list
+    type: 301
+peers.html:
+    to: /references/http-websocket-apis/admin-api-methods/peer-management-methods/peers
+    type: 301
+status-and-debugging-methods.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/index
+    type: 301
+consensus_info.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info
+    type: 301
+feature.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature
+    type: 301
+fetch_info.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info
+    type: 301
+get_counts.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts
+    type: 301
+print.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print
+    type: 301
+validator_info.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info
+    type: 301
+validator_list_sites.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites
+    type: 301
+validators.html:
+    to: /references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators
+    type: 301
+peer-port-methods.html:
+    to: /references/http-websocket-apis/peer-port-methods/index
+    type: 301
+health-check.html:
+    to: /references/http-websocket-apis/peer-port-methods/health-check
+    type: 301
+peer-crawler.html:
+    to: /references/http-websocket-apis/peer-port-methods/peer-crawler
+    type: 301
+validator-list.html:
+    to: /references/http-websocket-apis/peer-port-methods/validator-list
+    type: 301
+xrp-api.html:
+    to: https://xpring-eng.github.io/xrp-api/
+    type: 301
+data-api.html:
+    to: /references/data-api
+    type: 301
+xrp-ledger-toml.html:
+    to: /references/xrp-ledger-toml
+    type: 301
+infrastructure.html:
+    to: /infrastructure/index
+    type: 301
+commandline-usage.html:
+    to: /infrastructure/commandline-usage
+    type: 301
+install-rippled.html:
+    to: /infrastructure/installation/index
+    type: 301
+system-requirements.html:
+    to: /infrastructure/installation/system-requirements
+    type: 301
+install-rippled-on-centos-rhel-with-yum.html:
+    to: /infrastructure/installation/install-rippled-on-centos-rhel-with-yum
+    type: 301
+install-rippled-on-ubuntu.html:
+    to: /infrastructure/installation/install-rippled-on-ubuntu
+    type: 301
+install-clio-on-ubuntu.html:
+    to: /infrastructure/installation/install-clio-on-ubuntu
+    type: 301
+update-rippled-automatically-on-linux.html:
+    to: /infrastructure/installation/update-rippled-automatically-on-linux
+    type: 301
+update-rippled-manually-on-centos-rhel.html:
+    to: /infrastructure/installation/update-rippled-manually-on-centos-rhel
+    type: 301
+update-rippled-manually-on-ubuntu.html:
+    to: /infrastructure/installation/update-rippled-manually-on-ubuntu
+    type: 301
+build-on-linux-mac-windows.html:
+    to: /infrastructure/installation/build-on-linux-mac-windows
+    type: 301
+build-run-rippled-in-reporting-mode.html:
+    to: /infrastructure/installation/build-run-rippled-in-reporting-mode
+    type: 301
+capacity-planning.html:
+    to: /infrastructure/installation/capacity-planning
+    type: 301
+rippled-1-3-migration-instructions.html:
+    to: /infrastructure/installation/rippled-1-3-migration-instructions
+    type: 301
+configure-rippled.html:
+    to: /infrastructure/configuration/index
+    type: 301
+server-modes.html:
+    to: /infrastructure/configuration/server-modes/index
+    type: 301
+run-rippled-as-a-validator.html:
+    to: /infrastructure/configuration/server-modes/run-rippled-as-a-validator
+    type: 301
+run-rippled-as-a-stock-server.html:
+    to: /infrastructure/configuration/server-modes/run-rippled-as-a-stock-server
+    type: 301
+data-retention.html:
+    to: /infrastructure/configuration/data-retention/index
+    type: 301
+configure-full-history.html:
+    to: /infrastructure/configuration/data-retention/configure-full-history
+    type: 301
+online-deletion.html:
+    to: /infrastructure/configuration/data-retention/online-deletion
+    type: 301
+configure-online-deletion.html:
+    to: /infrastructure/configuration/data-retention/configure-online-deletion
+    type: 301
+configure-advisory-deletion.html:
+    to: /infrastructure/configuration/data-retention/configure-advisory-deletion
+    type: 301
+history-sharding.html:
+    to: /infrastructure/configuration/data-retention/history-sharding
+    type: 301
+configure-history-sharding.html:
+    to: /infrastructure/configuration/data-retention/configure-history-sharding
+    type: 301
+configure-peering.html:
+    to: /infrastructure/configuration/peering/index
+    type: 301
+cluster-rippled-servers.html:
+    to: /infrastructure/configuration/peering/cluster-rippled-servers
+    type: 301
+configure-a-private-server.html:
+    to: /infrastructure/configuration/peering/configure-a-private-server
+    type: 301
+configure-the-peer-crawler.html:
+    to: /infrastructure/configuration/peering/configure-the-peer-crawler
+    type: 301
+enable-link-compression.html:
+    to: /infrastructure/configuration/peering/enable-link-compression
+    type: 301
+forward-ports-for-peering.html:
+    to: /infrastructure/configuration/peering/forward-ports-for-peering
+    type: 301
+manually-connect-to-a-specific-peer.html:
+    to: /infrastructure/configuration/peering/manually-connect-to-a-specific-peer
+    type: 301
+set-max-number-of-peers.html:
+    to: /infrastructure/configuration/peering/set-max-number-of-peers
+    type: 301
+use-a-peer-reservation.html:
+    to: /infrastructure/configuration/peering/use-a-peer-reservation
+    type: 301
+configure-amendment-voting.html:
+    to: /infrastructure/configuration/configure-amendment-voting
+    type: 301
+configure-statsd.html:
+    to: /infrastructure/configuration/configure-statsd
+    type: 301
+connect-your-rippled-to-the-xrp-test-net.html:
+    to: /infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net
+    type: 301
+configure-grpc.html:
+    to: /infrastructure/configuration/configure-grpc
+    type: 301
+enable-public-signing.html:
+    to: /infrastructure/configuration/enable-public-signing
+    type: 301
+use-stand-alone-mode.html:
+    to: /infrastructure/testing-and-auditing/index
+    type: 301
+start-a-new-genesis-ledger-in-stand-alone-mode.html:
+    to: /infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode
+    type: 301
+load-a-saved-ledger-in-stand-alone-mode.html:
+    to: /infrastructure/testing-and-auditing/load-a-saved-ledger-in-stand-alone-mode
+    type: 301
+advance-the-ledger-in-stand-alone-mode.html:
+    to: /infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode
+    type: 301
+test-amendments.html:
+    to: /infrastructure/testing-and-auditing/test-amendments
+    type: 301
+private-network-with-docker.html:
+    to: /infrastructure/testing-and-auditing/run-private-network-with-docker
+    type: 301
+troubleshoot-the-rippled-server.html:
+    to: /infrastructure/troubleshooting/index
+    type: 301
+diagnosing-problems.html:
+    to: /infrastructure/troubleshooting/diagnosing-problems
+    type: 301
+health-check-interventions.html:
+    to: /infrastructure/troubleshooting/health-check-interventions
+    type: 301
+understanding-log-messages.html:
+    to: /infrastructure/troubleshooting/understanding-log-messages
+    type: 301
+server-doesnt-sync.html:
+    to: /infrastructure/troubleshooting/server-doesnt-sync
+    type: 301
+server-is-amendment-blocked.html:
+    to: /infrastructure/troubleshooting/server-is-amendment-blocked
+    type: 301
+server-wont-start.html:
+    to: /infrastructure/troubleshooting/server-wont-start
+    type: 301
+fix-sqlite-tx-db-page-size-issue.html:
+    to: /infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue
+    type: 301
+manage-the-rippled-server.html:
+    to: /infrastructure/installation/install-rippled-on-ubuntu
+    type: 301
+build-run-rippled-ubuntu.html:
+    to: /infrastructure/installation/build-on-linux-mac-windows
+    type: 301
+build-run-rippled-macos.html:
+    to: /infrastructure/installation/build-on-linux-mac-windows
+    type: 301
+update-rippled-automatically-on-centos-rhel.html:
+    to: /infrastructure/installation/update-rippled-automatically-on-linux
+    type: 301
+install-rippled-on-ubuntu-with-alien.html:
+    to: /infrastructure/installation/install-rippled-on-ubuntu
+    type: 301
+run-a-rippled-validator.html:
+    to: /infrastructure/configuration/server-modes/run-rippled-as-a-validator
+    type: 301
+list-xrp-in-your-exchange.html:
+    to: /use-cases/defi/list-xrp-as-an-exchange
+    type: 301
+contribute-code-to-rippled.html:
+    to: /resources/contribute-code/contribute-code
+    type: 301
+contribute-code-to-ripple-lib.html:
+    to: /resources/contribute-code/contribute-code
+    type: 301
+contribute-code-flow.html:
+    to: /resources/contribute-code/contribute-code
+    type: 301
+resources.html:
+    to: /resources/index
+    type: 301
+known-amendments.html:
+    to: /resources/known-amendments
+    type: 301
+contribute-code.html:
+    to: /resources/contribute-code/contribute-code
+    type: 301
+create-custom-transactors.html:
+    to: /resources/contribute-code/create-custom-transactors
+    type: 301
+contribute-documentation.html:
+    to: /resources/contribute-documentation/index
+    type: 301
+documentation-translations.html:
+    to: /resources/contribute-documentation/documentation-translations
+    type: 301
+creating-diagrams.html:
+    to: /resources/contribute-documentation/creating-diagrams
+    type: 301
+tutorial-guidelines.html:
+    to: /resources/contribute-documentation/tutorial-guidelines
+    type: 301
+tutorial-structure.html:
+    to: /resources/contribute-documentation/tutorial-structure
+    type: 301
+report-a-scam.html:
+    to: /contributing/report-a-scam
+    type: 301
+wallets.html:
+    to: /introduction/crypto-wallets
+    type: 301

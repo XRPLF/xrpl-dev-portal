@@ -10,31 +10,31 @@ labels:
 
 `ledger_accept`メソッドは、サーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。このメソッドはテスト専用であり、`rippled`サーバーがスタンドアロンモードで実行されている場合にのみ使用できます。
 
-*`ledger_accept`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`ledger_accept`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "Accept my ledger!",
   "command": "ledger_accept"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: ledger_accept
 rippled ledger_accept
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このリクエストはパラメーターを受け入れません。
 
@@ -65,7 +65,4 @@ rippled ledger_accept
 * [汎用エラータイプ][]のすべて。
 * `notStandAlone` - `rippled`サーバーが現在スタンドアロンモードで実行されていない場合。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

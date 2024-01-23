@@ -14,7 +14,7 @@ _（[Checks Amendment][]が必要です）_
 
 Checkに相当する資金があるとは保証されないため、送金元に十分な残高がないか、または資金を送金できるだけの十分な流動性がないことが原因で、Checkの清算が失敗することがあります。このような状況が発生した場合、Checkはレジャーに残り、送金先は後でこのCheckの換金を再試行するか、または異なる額で換金を試みることができます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -26,12 +26,12 @@ Checkに相当する資金があるとは保証されないため、送金元に
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド        | JSONの型           | [内部の型][] | 説明         |
 |:-------------|:--------------------|:------------------|:--------------------|
-| `CheckID`    | 文字列              | Hash256           | 換金する[Checkレジャーオブジェクト](check.html)のID（64文字の16進文字列）。 |
+| `CheckID`    | 文字列              | Hash256           | 換金する[Checkレジャーオブジェクト](../../ledger-data/ledger-entry-types/check.md)のID（64文字の16進文字列）。 |
 | `Amount`     | [通貨額][] | Amount            | _（省略可）_ 可能であればCheckを厳密にこの額で清算します。通貨は対応するCheckCreateトランザクションの`SendMax`の通貨と一致している必要があります。このフィールドまたは`DeliverMin`のいずれかを指定する必要があります。 |
 | `DeliverMin` | [通貨額][] | Amount            | _（省略可）_ Checkをこの額以上の可能な限りの額で清算します。通貨は対応するCheckCreateトランザクションの`SendMax`の通貨と一致している必要があります。このフィールドまたは`Amount`のいずれかを指定する必要があります。 |
 
@@ -46,7 +46,4 @@ Checkに相当する資金があるとは保証されないため、送金元に
 - トランザクションで`Amount`と`DeliverMin`の両方が指定または省略される場合、トランザクションは結果コード`temMALFORMED`で失敗します。
 - `Amount`または`DeliverMin` がCheckの通貨（およびXRP以外の通貨の場合はイシュアー）に一致しない場合、トランザクションは結果コード`temBAD_CURRENCY`で失敗します。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

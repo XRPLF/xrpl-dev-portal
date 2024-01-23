@@ -9,17 +9,16 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTHistory.cpp "ソース")
 
-`nft_history`コマンドはクエリ対象の[NFT](non-fungible-tokens.html)の過去のトランザクションメタデータをClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
+`nft_history`コマンドはクエリ対象の[NFT](../../../../concepts/tokens/nfts/index.md)の過去のトランザクションメタデータをClioサーバに問い合わせます。{% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}新規: Clio v1.1.0{% /badge %}
 
 **注記** `nft_history`はNFTに関連する成功したトランザクションのみを返します。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例：
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -27,9 +26,9 @@ labels:
   "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "nft_history",
@@ -40,8 +39,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
 [試してみる >](websocket-api-tool.html#nft_history)-->
@@ -66,10 +66,9 @@ labels:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -152,9 +151,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -235,15 +234,15 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 `binary`パラメータを_true_に設定すると、16進数文字列を使用したコンパクトなレスポンスを受け取ります。人間が読めるものではありませんが、より簡潔です。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 0,
@@ -271,9 +270,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -300,7 +299,9 @@ labels:
 }
 
 ```
-<!-- MULTICODE_BLOCK_END -->
+{% /tab %}
+
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -326,7 +327,7 @@ labels:
 | `tx_blob`      | 文字列                                | (Binaryのみ) トランザクションを表す一意のハッシュ化された文字列。 |
 | `validated`    | 真偽値                                | トランザクションが検証済みレジャーに含まれているかどうか。まだ有効なレジャーに含まれていないトランザクションは、変更される可能性があります。 |
 
-`tx`オブジェクトで返されるフィールドの定義については、[トランザクションメタデータ](transaction-metadata.html)をご覧ください。
+`tx`オブジェクトで返されるフィールドの定義については、[トランザクションメタデータ](../../../protocol/transactions/metadata.md)をご覧ください。
 
 ## 考えられるエラー
 
@@ -334,8 +335,6 @@ labels:
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actMalformed` - リクエストの`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定されたレジャーが存在しないか、存在してもサーバに保存されていません。
-* `lgrIdxsInvalid` - リクエストが`ledger_index_min`よりも前の`ledger_index_max`を指定しているか、サーバが[ネットワークと同期していない](server-doesnt-sync.html)ために有効なレジャー範囲を持っていません。
+* `lgrIdxsInvalid` - リクエストが`ledger_index_min`よりも前の`ledger_index_max`を指定しているか、サーバが[ネットワークと同期していない](../../../../infrastructure/troubleshooting/server-doesnt-sync.md)ために有効なレジャー範囲を持っていません。
 
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
-
+{% raw-partial file="/_snippets/common-links.md" /%}

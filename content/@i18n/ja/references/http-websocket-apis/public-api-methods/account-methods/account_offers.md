@@ -8,16 +8,15 @@ labels:
 # account_offers
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
-`account_offers`メソッドは、特定の[アカウント](accounts.html)から出された[オファー](offers.html)のうち、特定の[レジャーバージョン](ledgers.html)で未処理であったオファーのリストを取得します。
+`account_offers`メソッドは、特定の[アカウント](../../../../concepts/accounts/accounts.md)から出された[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)のうち、特定の[レジャーバージョン](../../../../concepts/ledgers/index.md)で未処理であったオファーのリストを取得します。
 
 ## リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -25,9 +24,9 @@ labels:
   "account": "rpP2JgiMyTF5jR5hLG3xHCPi1knBb1v9cM"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_offers",
@@ -38,17 +37,18 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: account_offers account [ledger_index]
 rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#account_offers)
+[試してみる >](/resources/dev-tools/websocket-api-tool#account_offers)
 
 リクエストには以下のパラメーターを指定できます。
 
@@ -66,10 +66,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 9,
@@ -107,9 +106,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -157,9 +156,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 {
    "result" : {
@@ -183,8 +182,9 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -203,11 +203,11 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 | `Field`      | 型                   | 説明                                       |
 |:-------------|:---------------------|:-------------------------------------------|
 | `flags`      | 符号なし整数           | このオファーエントリに対してビットフラグとして設定されているオプション。 |
-| `seq`        | 符号なし整数           | このエントリを作成したトランザクションのシーケンス番号。（トランザクションの[シーケンス番号](basic-data-types.html#アカウントシーケンス)はアカウントに関連付けられています。） |
+| `seq`        | 符号なし整数           | このエントリを作成したトランザクションのシーケンス番号。（トランザクションの[シーケンス番号](../../../protocol/data-types/basic-data-types.md#アカウントシーケンス)はアカウントに関連付けられています。） |
 | `taker_gets` | 文字列またはオブジェクト | オファーを受け入れるアカウントが受領する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。([通貨額の指定][通貨額]をご覧ください。) |
 | `taker_pays` | 文字列またはオブジェクト | オファーを受け入れるアカウントが提供する額。XRPまたは通貨指定オブジェクトの額を表す文字列として示されます。([通貨額の指定][通貨額]をご覧ください。) |
-| `quality`    | 文字列                | オファーの為替レート。元の`taker_pays`を元の`taker_gets`で割った比率です。オファーの実行時には、最も好ましい（最も低い）クオリティのオファーが最初に消費されます。同じクオリティのオファーは古いものから新しいものの順で実行されます。[新規: rippled 0.29.0][] |
-| `expiration` | 符号なし整数           | （省略される場合があります）この時刻の経過後は、資金化されなかったオファーとみなされます（[Rippleエポック以降の経過秒数][]）。関連項目: [オファーの有効期限](offers.html#オファーの有効期限)。[新規: rippled 0.30.1][] |
+| `quality`    | 文字列                | オファーの為替レート。元の`taker_pays`を元の`taker_gets`で割った比率です。オファーの実行時には、最も好ましい（最も低い）クオリティのオファーが最初に消費されます。同じクオリティのオファーは古いものから新しいものの順で実行されます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" %}新規: rippled 0.29.0{% /badge %} |
+| `expiration` | 符号なし整数           | （省略される場合があります）この時刻の経過後は、資金化されなかったオファーとみなされます（[Rippleエポック以降の経過秒数][]）。関連項目: [オファーの有効期限](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーの有効期限)。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" %}新規: rippled 0.30.1{% /badge %} |
 
 ## 考えられるエラー
 
@@ -217,6 +217,4 @@ rippled account_offers r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 current
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `actMalformed` - 指定されている`marker`フィールドが受け入れられない場合。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

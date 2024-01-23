@@ -13,7 +13,4 @@ Windows、Linux、macOSなど様々なプラットフォームで`rippled`をビ
 
 続きを読むには、[GitHubの最新の`rippled`ビルド手順](https://github.com/XRPLF/rippled/blob/develop/BUILD.md)をご覧ください。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

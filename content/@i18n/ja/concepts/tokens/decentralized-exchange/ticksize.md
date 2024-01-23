@@ -24,8 +24,4 @@ _（[TickSize Amendment][]により追加されました。）_
 
 - [AccountSetトランザクション][]
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

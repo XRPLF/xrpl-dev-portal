@@ -13,7 +13,7 @@ _Added by the [Escrow amendment][]._
 
 Sequester XRP until the escrow process either finishes or is canceled.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -29,9 +29,9 @@ Sequester XRP until the escrow process either finishes or is canceled.
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22C44F2EB84196B9AD820313DBEBA6316A15C9A2D35787579ED172B87A30131DA7%22%2C%22binary%22%3Afalse%7D)
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -58,8 +58,4 @@ It is not possible to create a conditional escrow with no expiration, but you ca
 
 **Note:** Before the [fix1571 amendment][] became enabled on 2018-06-19, it was possible to create an escrow with `CancelAfter` only. These escrows could be finished by anyone at any time before the specified expiration.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

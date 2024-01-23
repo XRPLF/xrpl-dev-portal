@@ -17,7 +17,7 @@ _（[Escrow Amendment][]により追加されました。）_
 - `Escrow`オブジェクトの作成時にXRPを供給する所有者。保留中の支払が取り消されると、XRPは所有者に返金されます。
 - 保留中の支払が成功するとXRPが支払われる宛先。宛先は所有者と同じにできます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -39,7 +39,7 @@ _（[Escrow Amendment][]により追加されました。）_
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `Escrow`オブジェクトのフィールドは次のとおりです。
 
@@ -69,7 +69,4 @@ _（[Escrow Amendment][]により追加されました。）_
 * `Escrow`オブジェクトを作成した[EscrowCreateトランザクション][]の送信者のAccountID。
 * `Escrow`オブジェクトを作成した[EscrowCreateトランザクション][]のシーケンス番号。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

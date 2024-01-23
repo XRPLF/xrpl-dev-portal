@@ -10,16 +10,15 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Tx.cpp "Source")
 
-The `tx` method retrieves information on a single [transaction](transaction-formats.html), by its [identifying hash][] or its [CTID](ctid.html).
+The `tx` method retrieves information on a single [transaction](../../../protocol/transactions/index.md), by its [identifying hash][] or its [CTID](../../api-conventions/ctid.md).
 
 ## Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket (Hash)*
-
+{% tab label="WebSocket (Hash)" %}
 ```json
 {
   "id": 1,
@@ -28,10 +27,9 @@ An example of the request format:
   "binary": false
 }
 ```
+{% /tab %}
 
-
-*WebSocket (CTID)*
-
+{% tab label="WebSocket (CTID)" %}
 ```json
 {
   "id": "CTID example",
@@ -40,10 +38,9 @@ An example of the request format:
   "binary": false
 }
 ```
+{% /tab %}
 
-
-*JSON-RPC (Hash)*
-
+{% tab label="JSON-RPC (Hash)" %}
 ```json
 {
     "method": "tx",
@@ -55,9 +52,9 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC (CTID)*
-
+{% tab label="JSON-RPC (CTID)" %}
 ```json
 {
     "method": "tx",
@@ -69,25 +66,26 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: tx transaction [binary]
 rippled tx C53ECF838647FA5A4C780377025FEC7999AB4182590510CA461444B207AB74A9 false
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#tx)
+[Try it! >](/resources/dev-tools/websocket-api-tool#tx)
 
 The request includes the following parameters:
 
 | Field         | Type    | Required? | Description                            |
 |:--------------|:--------|:----------|----------------------------------------|
-| `ctid`        | String  | No        | The [compact transaction identifier](ctid.html) of the transaction to look up. Must use uppercase hexadecimal only. [New in: rippled 1.12.0][] _(Not supported in Clio v2.0 and earlier)_ |
+| `ctid`        | String  | No        | The [compact transaction identifier](../../api-conventions/ctid.md) of the transaction to look up. Must use uppercase hexadecimal only. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}New in: rippled 1.12.0{% /badge %} _(Not supported in Clio v2.0 and earlier)_ |
 | `transaction` | String  | No        | The 256-bit hash of the transaction to look up, as hexadecimal. |
-| `binary`      | Boolean | No        | If `true`, return transaction data and metadata as binary [serialized](serialization.html) to hexadecimal strings. If `false`, return transaction data and metadata as JSON. The default is `false`. |
+| `binary`      | Boolean | No        | If `true`, return transaction data and metadata as binary [serialized](../../../protocol/binary-format.md) to hexadecimal strings. If `false`, return transaction data and metadata as JSON. The default is `false`. |
 | `min_ledger`  | Number  | No        | Use this with `max_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], starting with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in this range. |
 | `max_ledger`  | Number  | No        | Use this with `min_ledger` to specify a range of up to 1000 [ledger indexes][ledger index], ending with this ledger (inclusive). If the server [cannot find the transaction](#not-found-response), it confirms whether it was able to search all the ledgers in the requested range. |
 
@@ -99,34 +97,25 @@ You must provide _either_ `ctid` or `transaction`, but not both.
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket (Hash)*
+{% tab label="WebSocket (Hash)" %}
+{% code-snippet file="/_api-examples/tx/ws-response-hash.json" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_api-examples/tx/ws-response-hash.json' %}
-```
+{% tab label="WebSocket (CTID)" %}
+{% code-snippet file="/_api-examples/tx/ws-response-ctid.json" language="json" /%}
+{% /tab %}
 
-*WebSocket (CTID)*
+{% tab label="JSON-RPC (Hash)" %}
+{% code-snippet file="/_api-examples/tx/jsonrpc-response-hash.json" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_api-examples/tx/ws-response-ctid.json' %}
-```
+{% tab label="JSON-RPC (CTID)" %}
+{% code-snippet file="/_api-examples/tx/jsonrpc-response-ctid.json" language="json" /%}
+{% /tab %}
 
-*JSON-RPC (Hash)*
-
-```json
-{% include '_api-examples/tx/jsonrpc-response-hash.json' %}
-```
-
-*JSON-RPC (CTID)*
-
-```json
-{% include '_api-examples/tx/jsonrpc-response-ctid.json' %}
-```
-
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -246,21 +235,22 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](transaction-formats.html) as well as the following additional fields:
+The response follows the [standard format][], with a successful result containing the fields of the [Transaction object](../../../protocol/transactions/index.md) as well as the following additional fields:
 
 | `Field`        | Type                             | Description              |
 |:---------------|:---------------------------------|:-------------------------|
-| `ctid`         | String                           | The transaction's [compact transaction identifier](ctid.html). [New in: rippled 1.12.0][] _(Not supported in Clio v2.0 and earlier.)_ |
-| `date`         | Number                           | The [close time](ledger-close-times.html) of the ledger in which the transaction was applied, in [seconds since the Ripple Epoch][]. |
+| `ctid`         | String                           | The transaction's [compact transaction identifier](../../api-conventions/ctid.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}New in: rippled 1.12.0{% /badge %} _(Not supported in Clio v2.0 and earlier.)_ |
+| `date`         | Number                           | The [close time](../../../../concepts/ledgers/ledger-close-times.md) of the ledger in which the transaction was applied, in [seconds since the Ripple Epoch][]. |
 | `hash`         | String                           | The unique [identifying hash][] of the transaction |
 | `inLedger`     | Number                           | _(Deprecated)_ Alias for `ledger_index`. |
 | `ledger_index` | Number                           | The [ledger index][] of the ledger that includes this transaction. |
-| `meta`         | Object (JSON) or String (binary) | [Transaction metadata](transaction-metadata.html), which describes the results of the transaction. |
+| `meta`         | Object (JSON) or String (binary) | [Transaction metadata](../../../protocol/transactions/metadata.md), which describes the results of the transaction. |
 | `validated`    | Boolean                          | If `true`, this data comes from a validated ledger version; if omitted or set to `false`, this data is not final. |
-| (Various)      | (Various)                        | Other fields from the [Transaction object](transaction-formats.html) |
+| (Various)      | (Various)                        | Other fields from the [Transaction object](../../../protocol/transactions/index.md) |
 
 
 ### Not Found Response
@@ -270,7 +260,7 @@ If the server does not find the transaction, it returns a `txnNotFound` error, w
 - The transaction has not been included in any ledger version, and has not been executed.
 - The transaction was included in a ledger version that the server does not have available.
 
-This means that a `txnNotFound` on its own is not enough to know the [final outcome of a transaction](finality-of-results.html).
+This means that a `txnNotFound` on its own is not enough to know the [final outcome of a transaction](../../../../concepts/transactions/finality-of-results/index.md).
 
 To further narrow down the possibilities, you can provide a range of ledgers to search using the `min_ledger` and `max_ledger` fields in the request. If you provide **both** of those fields, the `txnNotFound` response includes the following field:
 
@@ -280,10 +270,9 @@ To further narrow down the possibilities, you can provide a range of ledgers to 
 
 An example of a `txnNotFound` response that fully searched a requested range of ledgers:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_WebSocket_
-
+{% tab label="WebSocket" %}
 ```json
 {
   "error": "txnNotFound",
@@ -303,9 +292,9 @@ _WebSocket_
   "type": "response"
 }
 ```
+{% /tab %}
 
-_JSON-RPC_
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -326,8 +315,9 @@ _JSON-RPC_
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## Possible Errors
 
@@ -337,6 +327,4 @@ _JSON-RPC_
 * `excessiveLgrRange` - The `min_ledger` and `max_ledger` fields of the request are more than 1000 apart.
 * `invalidLgrRange` - The specified `min_ledger` is larger than the `max_ledger`, or one of those parameters is not a valid ledger index.
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

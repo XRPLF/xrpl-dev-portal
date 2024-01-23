@@ -77,19 +77,19 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 ### トランザクション手数料チェック
 
 - **不変条件:**
-    - [トランザクションコスト](transaction-cost.html)の金額は決してマイナスになってはならず、またトランザクションで指定されたコストより大きくなってはいけません。
+    - [トランザクションコスト](../transactions/transaction-cost.md)の金額は決してマイナスになってはならず、またトランザクションで指定されたコストより大きくなってはいけません。
 
 
 ### XRPは作成されません
 
 - **不変条件:**
-    - トランザクションはXRPを生成してはならず、XRPを破棄するのみです[トランザクションコスト](transaction-cost.html)。
+    - トランザクションはXRPを生成してはならず、XRPを破棄するのみです[トランザクションコスト](../transactions/transaction-cost.md)。
 
 
 ### アカウントルートが削除されていない
 
 - **不変条件:**
-    - [アカウント](accounts.html)は、[AccountDeleteトランザクション][]によってのみレジャーから削除することができます。
+    - [アカウント](../accounts/accounts.md)は、[AccountDeleteトランザクション][]によってのみレジャーから削除することができます。
     - AccountDelete が成功すると、常にちょうど1つのアカウントが削除されます。
 
 
@@ -102,33 +102,33 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 ### レジャーエントリ形式の一致
 
 - **不変条件:**
-    - 変更されたレジャーの項目は形式が一致し、追加された項目は[有効なタイプ](ledger-object-types.html)である必要があります。
+    - 変更されたレジャーの項目は形式が一致し、追加された項目は[有効なタイプ](../../references/protocol/ledger-data/ledger-entry-types/index.md)である必要があります。
 
 
 ### XRPのトラストラインはありません
 
 - **不変条件:**
-    - XRPを使用した[トラストライン](trust-lines-and-issuing.html)は作成できません。
+    - XRPを使用した[トラストライン](../tokens/fungible-tokens/index.md)は作成できません。
 
 
 ### 不正なオファーでない
 
 - **不変条件:**
-    - [オファー](offer.html)は負でない金額でなければならず、XRP同士であってはいけません。
+    - [オファー](../../references/protocol/ledger-data/ledger-entry-types/offer.md)は負でない金額でなければならず、XRP同士であってはいけません。
 
 
 ### 0のエスクローでない
 
 - **不変条件:**
-    - [エスクロー](escrow-object.html)エントリーは、0XRP以上1000億XRP未満を保有している必要があります。
+    - [エスクロー](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)エントリーは、0XRP以上1000億XRP未満を保有している必要があります。
 
 
 ### 有効な新規アカウントルート
 
 - **不変条件:**
-    - 新しい[アカウントルート](accountroot.html)は、支払いの結果でなければなりません。
-    - 新しいアカウントルートは、正しい開始[シーケンス](basic-data-types.html#アカウントシーケンス)を持たなければなりません。
-    - 1つのトランザクションで複数の新しい[アカウント](accounts.html)を作成してはいけません。
+    - 新しい[アカウントルート](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)は、支払いの結果でなければなりません。
+    - 新しいアカウントルートは、正しい開始[シーケンス](../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を持たなければなりません。
+    - 1つのトランザクションで複数の新しい[アカウント](../accounts/accounts.md)を作成してはいけません。
 
 
 ## 関連項目
@@ -145,12 +145,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 
 
 - **その他:**
-    - [Authorized Trust Lines](authorized-trust-lines.html)
+    - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)
     - [トランザクションの残高変化の計算](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

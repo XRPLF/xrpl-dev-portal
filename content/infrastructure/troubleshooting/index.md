@@ -1,9 +1,13 @@
 ---
 html: troubleshoot-the-rippled-server.html
 parent: infrastructure.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 blurb: Troubleshoot all kinds of problems with the rippled server.
 ---
 # Troubleshooting
 
 Troubleshoot all kinds of problems with the rippled server.
+
+
+{% child-pages /%}

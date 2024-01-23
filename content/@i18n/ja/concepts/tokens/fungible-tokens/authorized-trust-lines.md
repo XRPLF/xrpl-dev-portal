@@ -12,7 +12,7 @@ XRP Ledgerの認可トラストライン機能により、発行者は、発行�
 
 認可トラストライン機能を使用するには、発行アドレスで**RequireAuth**フラグを有効にします。その後、他のアカウントは、あなたがそのアカウントのトラストラインをあなたの発行アカウントに承認した場合にのみ、あなたが発行したトークンを保持することができます。
 
-発行アドレスから[TrustSetトランザクション][]を送信し、自分のアカウントと認可するアカウントとの間のトラストラインを設定することで、トラストラインを認可することができます。トラストラインを認可した後、その認可を取り消すことはできません。(ただし、必要に応じてトラストラインを[凍結](freezes.html)することは可能です)。
+発行アドレスから[TrustSetトランザクション][]を送信し、自分のアカウントと認可するアカウントとの間のトラストラインを設定することで、トラストラインを認可することができます。トラストラインを認可した後、その認可を取り消すことはできません。(ただし、必要に応じてトラストラインを[凍結](freezes.md)することは可能です)。
 
 トラストラインを認可するためのトランザクションは、発行アドレスの署名が必要であり、残念ながらそのアドレスのリスクエクスポージャーが増加することを意味します。
 
@@ -30,7 +30,7 @@ XRP Ledger上のステーブルコインと認可トラストラインの使用�
 **ヒント:** 2つのTrustSetトランザクション（ステップ3および4）は、どちらの順序で発生しても構いません。発行者がトラストラインを先に認可した場合、これにより限度額が0に設定されたトラストラインが作成され、顧客のTrustSetトランザクションは、事前に認可されたトラストラインの限度額を設定することになります。([TrustSetAuth amendment][]により追加されました。)_
 ## 注意事項
 
-認可トラストラインを使用するつもりがない場合でも、[運用アカウントと予備アカウント](account-types.html)のRequire Auth設定を有効にし、これらのアカウントにトラストラインを認可させないようにすることができます。これは、これらのアカウントが誤ってトークンを発行することを防止します（たとえば、ユーザーが誤って間違ったアドレスをトラストしてしまった場合など）。これはあくまで予防措置であり、運用アカウントと予備アカウントが意図したとおりに _発行者の_ トークンを転送することを止めるものではありません。
+認可トラストラインを使用するつもりがない場合でも、[運用アカウントと予備アカウント](../../accounts/account-types.md)のRequire Auth設定を有効にし、これらのアカウントにトラストラインを認可させないようにすることができます。これは、これらのアカウントが誤ってトークンを発行することを防止します（たとえば、ユーザーが誤って間違ったアドレスをトラストしてしまった場合など）。これはあくまで予防措置であり、運用アカウントと予備アカウントが意図したとおりに _発行者の_ トークンを転送することを止めるものではありません。
 
 ## 技術情報
 <!--{# TODO: split these off into one or more tutorials on using authorized trust lines, preferably with both JavaScript and Python code samples. #}-->
@@ -60,12 +60,12 @@ POST http://localhost:5005/
 }
 ```
 
-{% include '_snippets/secret-key-warning.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/secret-key-warning.md" /%}
+
 
 ## アカウントのRequireAuthの有効化の確認
 
-アカウントのRequireAuth設定の有効化の状態を確認するには、[account_infoメソッド][]を使用してアカウントを調べます。`Flags`フィールド（`result.account_data`オブジェクト）の値を、[AccountRootレジャーオブジェクトのビット単位フラグ](accountroot.html)と比較します。
+アカウントのRequireAuth設定の有効化の状態を確認するには、[account_infoメソッド][]を使用してアカウントを調べます。`Flags`フィールド（`result.account_data`オブジェクト）の値を、[AccountRootレジャーオブジェクトのビット単位フラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)と比較します。
 
 `Flags`値と`lsfRequireAuth`フラグ値（`0x00040000`）のビット単位のANDの結果がゼロ以外の場合、アカウントではRequireAuthが有効になっています。結果がゼロの場合、アカウントではRequireAuthが無効になっています。
 
@@ -73,7 +73,7 @@ POST http://localhost:5005/
 
 認可トラストライン機能を使用している場合、他のアカウントからのトラストラインを認可しなければ、これらの他のアカウントはあなたが発行する残高を保有できません。複数のトークンを発行する場合には、各通貨のトラストラインを個別に認可する必要があります。
 
-トラストラインを認可するには、`LimitAmount`の`issuer`として信頼するユーザーを指定して、発行アドレスから[TrustSetトランザクション][]を送信します。`value`（信頼する額）を**0**のままにし、トランザクションの[tfSetfAuth](trustset.html#trustsetのフラグ)フラグを有効にします。
+トラストラインを認可するには、`LimitAmount`の`issuer`として信頼するユーザーを指定して、発行アドレスから[TrustSetトランザクション][]を送信します。`value`（信頼する額）を**0**のままにし、トランザクションの[tfSetfAuth](../../../references/protocol/transactions/types/trustset.md#trustsetのフラグ)フラグを有効にします。
 
 以下は、ローカルでホストされている`rippled`の[submitメソッド][]を使用して、顧客アドレス`rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`がアドレス`rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`で発行したUSDを持つことを認可するTrustSetトランザクションを送信する例です。
 
@@ -102,8 +102,8 @@ POST http://localhost:8088/
 }
 ```
 
-{% include '_snippets/secret-key-warning.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/secret-key-warning.md" /%}
+
 
 ## トラストラインの認可状況の確認
 
@@ -114,17 +114,14 @@ POST http://localhost:8088/
 ## 関連項目
 
 - **コンセプト:**
-    - [Deposit Authorization](depositauth.html)
-    - [トークンの凍結](freezes.html)
+    - [Deposit Authorization](../../accounts/depositauth.md)
+    - [トークンの凍結](freezes.md)
 - **リファレンス:**
     - [account_linesメソッド][]
     - [account_infoメソッド][]
     - [AccountSetトランザクション][]
     - [TrustSetトランザクション][]
-    - [AccountRootフラグ](accountroot.html#accountrootのフラグ)
-    - [RippleState (トラストライン) フラグ](ripplestate.html#ripplestateのフラグ)
+    - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
+    - [RippleState (トラストライン) フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

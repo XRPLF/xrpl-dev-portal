@@ -42,16 +42,13 @@ Clioサーバは、キャッシュに基づいて情報のリクエストを処�
 
 ### Clio特有のNFTのリクエスト
 
-- [nft_info](nft_info.html) - 指定されたNFTに関する現在のステータスを取得します。
-- [nft_history](nft_history.html) - 指定されたNFTの過去のトランザクションメタデータを取得します。
+- [nft_info](../../../references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md) - 指定されたNFTに関する現在のステータスを取得します。
+- [nft_history](../../../references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md) - 指定されたNFTの過去のトランザクションメタデータを取得します。
 
 <!-- 
 [nfts_by_issuer](nfts_by_issuer.html) - 指定した発行者が作成したNFTの一覧を取得します。
 -->
 
-パブリックClioサーバにアクセスするには、そのURLとClioポート（通常51233）にリクエストを送信します。パブリックClio APIサーバには、SLAも優先的に処理する責任もありません。ビジネスユースケースで継続的な監視や情報リクエストが必要な場合は、独自のClioサーバインスタンスをセットアップすることを検討してください。[UbuntuにClioをインストール](install-clio-on-ubuntu.html)をご覧ください。
+パブリックClioサーバにアクセスするには、そのURLとClioポート（通常51233）にリクエストを送信します。パブリックClio APIサーバには、SLAも優先的に処理する責任もありません。ビジネスユースケースで継続的な監視や情報リクエストが必要な場合は、独自のClioサーバインスタンスをセットアップすることを検討してください。[UbuntuにClioをインストール](../../../infrastructure/installation/install-clio-on-ubuntu.md)をご覧ください。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

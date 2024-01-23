@@ -13,10 +13,9 @@ label:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":14,
@@ -27,9 +26,9 @@ label:
    "owner_funds": false
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"ledger",
@@ -43,19 +42,20 @@ label:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: ledger ledger_index|ledger_hash [full|tx]
 # "full" is equivalent to "full": true
 # "tx" is equivalent to "transactions": true
 rippled ledger current
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#ledger)
+[試してみる >](/resources/dev-tools/websocket-api-tool#ledger)
 
 リクエストには以下のパラメーターを含めることができます。
 
@@ -67,7 +67,7 @@ rippled ledger current
 | `expand`       | 真偽値                 | いいえ | ハッシュのみではなく、トランザクション/アカウントの完全な情報がJSONフォーマットで提供されます。デフォルトでは`false`です。トランザクション、アカウント、またはその両方をリクエストしない場合は無視されます。 |
 | `owner_funds`  | 真偽値                 | いいえ | `true`の場合、レスポンスのOfferCreateトランザクションのメタデータに`owner_funds`フィールドが含まれます。デフォルトでは`false`です。トランザクションが含まれておらず、`expand`がtrueではない場合には無視されます。 |
 | `binary`       | 真偽値                 | いいえ | `true`で、かつ`transactions`と`expand`が両方とも`true`の場合、JSONフォーマットではなくバイナリフォーマット（16進文字列）でトランザクション情報が返されます。 |
-| `queue`        | 真偽値                 | いいえ | `true`で、かつコマンドが`current`レジャーをリクエストしている場合、[キューに入れらているトランザクション](transaction-cost.html#キューに入れられたトランザクション)の配列が結果に含まれます。
+| `queue`        | 真偽値                 | いいえ | `true`で、かつコマンドが`current`レジャーをリクエストしている場合、[キューに入れらているトランザクション](../../../../concepts/transactions/transaction-cost.md#キューに入れられたトランザクション)の配列が結果に含まれます。
 
 
 `ledger`フィールドは廃止予定であり、今後予告なしに削除される可能性があります。`full`、`accounts`、`type`フィールド(管理者専用)も非推奨です。
@@ -76,41 +76,30 @@ rippled ledger current
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
+{% tab label="WebSocket" %}
+{% code-snippet file="/_api-examples/ledger/ws-response.json" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_api-examples/ledger/ws-response.json' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="200 OK\n\n" /%}
+{% /tab %}
 
-*JSON-RPC*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_api-examples/ledger/jsonrpc-response.json" language="json" prefix="Loading: \"/etc/opt/ripple/rippled.cfg\"\n2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005\n\n" /%}
+{% /tab %}
 
-```json
-200 OK
-
-{% include '_api-examples/ledger/jsonrpc-response.json' %}
-```
-
-*コマンドライン*
-
-```json
-Loading: "/etc/opt/ripple/rippled.cfg"
-2023-Nov-01 21:38:14.638871262 UTC HTTPClient:NFO Connecting to 127.0.0.1:5005
-
-{% include '_api-examples/ledger/jsonrpc-response.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果にレジャーに関する情報を表す次のフィールドが含まれています。
 
 | `Field`                        | 型          | 説明                       |
 |:-------------------------------|:------------|:--------------------------|
-| `ledger`                       | オブジェクト  | このレジャーの完全な[レジャーヘッダのデータ](ledger-header.html)で、便宜上いくつかのフィールドが追加されています。 |
+| `ledger`                       | オブジェクト  | このレジャーの完全な[レジャーヘッダのデータ](../../../protocol/ledger-data/ledger-header.md)で、便宜上いくつかのフィールドが追加されています。 |
 | `ledger.account_hash`          | 文字列       | このレジャーのすべてのアカウント状態情報の[ハッシュ][](16進数) |
-| `ledger.accountState`          | 配列         | このレジャーのすべての[アカウント状態情報](ledger-data-formats.html)(16進数)。 |
-| `ledger.close_flags`           | 整数         | このレジャーの[クローズに関するフラグ](ledger-header.html#close-flags)のビットマップ。 |
+| `ledger.accountState`          | 配列         | このレジャーのすべての[アカウント状態情報](../../../protocol/ledger-data/index.md)(16進数)。 |
+| `ledger.close_flags`           | 整数         | このレジャーの[クローズに関するフラグ](../../../protocol/ledger-data/ledger-header.md#close-flags)のビットマップ。 |
 | `ledger.close_time`            | 整数         | レジャーが閉鎖された時刻（[Rippleエポック以降の経過秒数][]）。 |
 | `ledger.close_time_human`      | 文字列       | 人間が読めるフォーマットでのこのレジャーが閉鎖された時刻。常にUTCタイムゾーンを使用します。 |
 | `ledger.close_time_resolution` | 整数         | レジャー閉鎖時刻が丸められる秒数の範囲。 |
@@ -128,27 +117,27 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 `ledger.accountState`フィールド（`"full": true`または`"accounts": true`でリクエストされない限り省略）は廃止予定です。
 
-次のフィールドは廃止予定であり、今後予告なしに削除される可能性があります。`accepted`、`hash`（代わりに`ledger_hash`を使用）、`seqNum`（代わりに`ledger_index`を使用）、`totalCoins`（代わりに`total_coins`を使用）。[更新: rippled 1.12.0][]
+次のフィールドは廃止予定であり、今後予告なしに削除される可能性があります。`accepted`、`hash`（代わりに`ledger_hash`を使用）、`seqNum`（代わりに`ledger_index`を使用）、`totalCoins`（代わりに`total_coins`を使用）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.12.0" %}更新: rippled 1.12.0{% /badge %}
 
 `queue_data`配列の各メンバーは、キュー内の1つのトランザクションを表します。このオブジェクトの一部フィールドは、まだ計算されていないために省略されることがあります。このオブジェクトのフィールドを次に示します。
 
 | フィールド            | 値                   | 説明                         |
 |:--------------------|:---------------------|:------------------------------------|
 | `account`           | 文字列                | このキューに入れられたトランザクションの送信者の[アドレス][]。 |
-| `tx`                | 文字列またはオブジェクト | デフォルトでは、これはトランザクションの[識別用ハッシュ](basic-data-types.html#ハッシュ)を含む文字列です。トランザクションがバイナリフォーマットで展開されている場合、これは`tx_blob`が唯一のフィールドであるオブジェクトであり、バイナリー形式のトランザクションが10進文字列として含まれています。トランザクションがJSONフォーマットで展開されている場合、これは`hash`フィールドにトランザクションの識別用ハッシュが指定されている[トランザクションオブジェクト](transaction-formats.html)を含むオブジェクトです。 |
+| `tx`                | 文字列またはオブジェクト | デフォルトでは、これはトランザクションの[識別用ハッシュ](../../../protocol/data-types/basic-data-types.md#ハッシュ)を含む文字列です。トランザクションがバイナリフォーマットで展開されている場合、これは`tx_blob`が唯一のフィールドであるオブジェクトであり、バイナリー形式のトランザクションが10進文字列として含まれています。トランザクションがJSONフォーマットで展開されている場合、これは`hash`フィールドにトランザクションの識別用ハッシュが指定されている[トランザクションオブジェクト](../../../protocol/transactions/index.md)を含むオブジェクトです。 |
 | `retries_remaining` | 数値                  | このトランザクションの再試行可能回数。この回数を超えるとトランザクションが除外されます。 |
 | `preflight_result`  | 文字列                | 初期トランザクションチェックの一時的な結果。これは常に`tesSUCCESS`です。 |
-| `last_result`       | 文字列                | _（省略される場合があります）_[再試行可能な(`ter`)の結果](ter-codes.html)を取得した後でこのトランザクションがキューに残っている場合、これは取得した正確な`ter`結果コードです。 |
-| `auth_change`       | 真偽値                | _（省略される場合があります）_ このトランザクションがこのアドレスの[トランザクション承認方法](transactions.html#トランザクションの承認)を変更するかどうかを示します。 |
-| `fee`               | 文字列                | _（省略される場合があります）_ このトランザクションの[トランザクションコスト](transaction-cost.html)（[XRPのdrop数][]）。 |
+| `last_result`       | 文字列                | _（省略される場合があります）_[再試行可能な(`ter`)の結果](../../../protocol/transactions/transaction-results/ter-codes.md)を取得した後でこのトランザクションがキューに残っている場合、これは取得した正確な`ter`結果コードです。 |
+| `auth_change`       | 真偽値                | _（省略される場合があります）_ このトランザクションがこのアドレスの[トランザクション承認方法](../../../../concepts/transactions/index.md#トランザクションの承認)を変更するかどうかを示します。 |
+| `fee`               | 文字列                | _（省略される場合があります）_ このトランザクションの[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)（[XRPのdrop数][]）。 |
 | `fee_level`         | 文字列                | _（省略される場合があります）_ このタイプのトランザクションの最少コストと比較した、このトランザクションのトランザクションコスト（[手数料レベル][]）。 |
 | `max_spend_drops`   | 文字列                | _（省略される場合があります）_ このトランザクションで送信または消却できる[XRP、drop単位][]の最高額。 |
 
-リクエストに`"owner_funds": true`が指定されておりトランザクションが展開されている場合、レスポンスには、各[OfferCreateトランザクション][]の`metaData`オブジェクトの`owner_funds`フィールドが含まれています。このフィールドの目的は、新しい検証済みレジャーごとに[オファーの資金化ステータス](offers.html#オファーのライフサイクル)を容易に追跡できるようにすることです。このフィールドの定義は、[オーダーブックサブスクリプションストリーム](subscribe.html#オーダーブックストリーム)でのこのフィールドのバージョンとはわずかに異なります。
+リクエストに`"owner_funds": true`が指定されておりトランザクションが展開されている場合、レスポンスには、各[OfferCreateトランザクション][]の`metaData`オブジェクトの`owner_funds`フィールドが含まれています。このフィールドの目的は、新しい検証済みレジャーごとに[オファーの資金化ステータス](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を容易に追跡できるようにすることです。このフィールドの定義は、[オーダーブックサブスクリプションストリーム](../subscription-methods/subscribe.md#オーダーブックストリーム)でのこのフィールドのバージョンとはわずかに異なります。
 
 | `Field`       | 値  | 説明                                         |
 |:--------------|:-------|:----------------------------------------------------|
-| `owner_funds` | 文字列 | このレジャーのすべてのトランザクションの実行後に、このOfferCreateトランザクションを送信する`Account`が保有する`TakerGets`通貨の額。この通貨額が[凍結](freezes.html)されているかどうかはチェックされません。 |
+| `owner_funds` | 文字列 | このレジャーのすべてのトランザクションの実行後に、このOfferCreateトランザクションを送信する`Account`が保有する`TakerGets`通貨の額。この通貨額が[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されているかどうかはチェックされません。 |
 
 ## 考えられるエラー
 
@@ -159,8 +148,6 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 
 <!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->
-[手数料レベル]: transaction-cost.html#手数料レベル
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+[手数料レベル]: ../../../../concepts/transactions/transaction-cost.md#手数料レベル
+
+{% raw-partial file="/_snippets/common-links.md" /%}

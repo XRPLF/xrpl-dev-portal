@@ -18,7 +18,7 @@ To represent digital assets similar to these, use the XRP Ledger's Non-Fungible 
 
 On the XRP Ledger, an NFT is represented as a [NFToken][] object. An NFT is a unique, indivisible unit that is not used for payments. Users can mint (create), hold, buy, sell, and burn (destroy) NFTs.
 
-The ledger stores up to 32 NFTs owned by the same account in a single [NFTokenPage object][] to save space. As a result, the owner's [reserve requirement](reserves.html) for NFTs only increases when the ledger needs to make a new page to store additional tokens.
+The ledger stores up to 32 NFTs owned by the same account in a single [NFTokenPage object][] to save space. As a result, the owner's [reserve requirement](../../accounts/reserves.md) for NFTs only increases when the ledger needs to make a new page to store additional tokens.
 
 Accounts can also name a _Broker_ or an _Authorized Minter_ who can sell or mint NFTs on their behalf.
 
@@ -28,7 +28,7 @@ NFTs have several immutable settings that are defined when the token is minted. 
 - Whether the issuer can burn the token, regardless of who currently holds it.
 - Whether the holder of the token can transfer it to others. (An NFT can always be sent to or from the issuer directly.)
 - If transfers are allowed, the issuer can charge a transfer fee as a percentage of the sale price.
-- Whether the holder can sell the NFT for [fungible token](trust-lines-and-issuing.html) amounts, or only for XRP.
+- Whether the holder can sell the NFT for [fungible token](../fungible-tokens/index.md) amounts, or only for XRP.
 
 ## NFT Lifecycle
 
@@ -36,11 +36,8 @@ Anyone can create a new NFT using the [NFTokenMint transaction][]. The NFT lives
 
 You can destroy an NFT you own using the [NFTokenBurn transaction][]. If the issuer minted the token with the `tfBurnable` flag enabled, the issuer can also burn the token, regardless of the current owner. (This could be useful, for example, for a token that represents a ticket to an event that is used up at some point.)
 
-![The NFT Lifecycle](img/nft-lifecycle.png "NFT Lifecycle Image")
+![The NFT Lifecycle](/img/nft-lifecycle.png "NFT Lifecycle Image")
 
-For more info about transferring NFTs, see [Trading NFTs on the XRP Ledger](non-fungible-token-transfers.html).
+For more info about transferring NFTs, see [Trading NFTs on the XRP Ledger](trading.md).
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

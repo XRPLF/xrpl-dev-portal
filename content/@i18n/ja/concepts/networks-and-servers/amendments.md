@@ -19,7 +19,7 @@ Amendmentシステムは、XRP Ledger上のトランザクション処理に影�
 
 ## Amendmentプロセス
 
-[XRP Ledgerのコードに貢献する](contribute-code-flow.html)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
+[XRP Ledgerのコードに貢献する](../../resources/contribute-code/contribute-code.md)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
 
 Amendmentのコードがソフトウェアリリースに組み込まれた後、それを有効にするプロセスはXRP Ledgerネットワーク内で行われ、レジャーは _フラグ_ レジャーごとに(通常約15分間隔で)Amendment状況をチェックします。
 
@@ -39,9 +39,9 @@ Amendmentのコードがソフトウェアリリースに組み込まれた後�
 
 ## Amendment投票
 
-`rippled`の各バージョンは、[既知のAmendment](known-amendments.html)のリストとそれらのAmendmentを実装するためのコードでコンパイルされています。`rippled`バリデータのオペレータは、各Amendmentに投票するようにサーバを設定し、いつでも変更することができます。オペレータが投票を選択しない場合、サーバはソースコードで定義されたデフォルトの投票を使用します。
+`rippled`の各バージョンは、[既知のAmendment](../../resources/known-amendments.md)のリストとそれらのAmendmentを実装するためのコードでコンパイルされています。`rippled`バリデータのオペレータは、各Amendmentに投票するようにサーバを設定し、いつでも変更することができます。オペレータが投票を選択しない場合、サーバはソースコードで定義されたデフォルトの投票を使用します。
 
-**注記:** デフォルトの投票はソフトウェアのリリースごとに変更される可能性があります。[更新: rippled 1.8.1][]
+**注記:** デフォルトの投票はソフトウェアのリリースごとに変更される可能性があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}更新: rippled 1.8.1{% /badge %}
 
 Amendmentが有効になるには、信頼できるバリデータの80%超から2週間の支持を得なければなりません。支持率が80%以下となると、そのAmendmentは一時的に却下され、再び2週間の支持が必要となります。Amendmentは、恒久的に有効になるまで、何度でも過半数を獲得したり失ったりすることができます。
 
@@ -78,16 +78,12 @@ Amendmentを有効にすると、修正前の動作のソースコードは`ripp
 ## 関連項目
 
 - **コンセプト:**
-    - [コンセンサスについて](intro-to-consensus.html)
+    - [コンセンサスについて](../consensus-protocol/index.md)
 - **チュートリアル:**
-    - [バリデータとしてrippledを実行](run-rippled-as-a-validator.html)
-    - [Amendment投票機能の設定](configure-amendment-voting.html)
-    - [XRP Ledgerのコードへの貢献](contribute-code-flow.html)
+    - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
+    - [XRP Ledgerのコードへの貢献](../../resources/contribute-code/contribute-code.md)
 - **リファレンス:**
-    - [既知のAmendment](known-amendments.html)
+    - [既知のAmendment](../../resources/known-amendments.md)
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

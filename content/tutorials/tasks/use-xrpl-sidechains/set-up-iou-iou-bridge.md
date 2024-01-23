@@ -7,17 +7,17 @@ labels:
 ---
 # Set Up an IOU-IOU Bridge
 
-_(Requires the [XChainBridge amendment][] :not_enabled:)_
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 Setting up an IOU-IOU bridge enables you to move tokens between chains.
 
-**Note**: The code samples on this page illustrate how to bridge a hypotethical "TST" token from *Devnet* to *Sidechain-Devnet*, using a supported [client library](client-libraries.html) to query and submit transactions.
+**Note**: The code samples on this page illustrate how to bridge a hypotethical "TST" token from *Devnet* to *Sidechain-Devnet*, using a supported [client library](../../../references/client-libraries.md) to query and submit transactions.
 
 ## Prerequisites
 
 - An XRP-XRP bridge must be set up between the locking and issuing chain.
 - Ensure the witnesses' transaction submission accounts are funded on the locking and issuing chains.
-- Set up an issuer on the issuing chain to mint and burn a wrapped version of the token you want to bridge. See: [Issue a Fungible Token](issue-a-fungible-token.html)
+- Set up an issuer on the issuing chain to mint and burn a wrapped version of the token you want to bridge. See: [Issue a Fungible Token](../../use-tokens/issue-a-fungible-token.md)
 
 ## Steps
 
@@ -161,8 +161,4 @@ const disablekey_issuingchain = await client_issuingchain.submitAndWait({
   }, {autofill: true, wallet: wallet_issuingchain})
 ```
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}
