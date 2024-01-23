@@ -8,7 +8,7 @@ blurb: Retrieve info about all recent transactions.
 
 The `tx_history` method retrieves some of the most recent transactions made.
 
-**Caution:** This method is deprecated, and may be removed without further notice.
+**Caution:** This method is removed in [API v2][].
 
 ## Request Format
 An example of the request format:

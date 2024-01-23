@@ -68,18 +68,17 @@ The request includes the following parameters:
 |:-------------------|:-------------------------------------------|:-----------|
 | `account`          | String                                     | A unique identifier for the account, most commonly the account's address. |
 | `tx_type`          | String                                     | _(Optional)_ **Clio Only** Return only transactions of a specific type, such as "Clawback", "AccountSet", "AccountDelete", et al. Case-insensitive. Supports any transaction type except `AMM*` (See [Transaction Types](transaction-types.html).) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
-| `ledger_index_min` | Integer                                    | _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available. |
-| `ledger_index_max` | Integer                                    | _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available. |
+| `ledger_index_min` | Integer                                    | [API v1][]: _(Optional)_ Use to specify the earliest ledger to include transactions from. A value of `-1` instructs the server to use the earliest validated ledger version available.<br>[API v2][]: Identical to v1, but also returns a `lgrIdxMalformed` error if a value is specified beyond the range of ledgers the server has. |
+| `ledger_index_max` | Integer                                    | [API v1][]: _(Optional)_ Use to specify the most recent ledger to include transactions from. A value of `-1` instructs the server to use the most recent validated ledger version available.<br>[API v2][]: Identical to v1, but also returns a `lgrIdxMalformed` error if a value is specified beyond the range of ledgers the server has. |
 | `ledger_hash`      | String                                     | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
 | `ledger_index`     | String or Unsigned Integer                 | _(Optional)_ Use to look for transactions from a single ledger only. (See [Specifying Ledgers][].) |
-| `binary`           | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON. |
-| `forward`          | Boolean                                    | _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.) |
+| `binary`           | Boolean                                    | [API v1][]: _(Optional)_ Defaults to `false`. If set to `true`, returns transactions as hex strings instead of JSON.<br>[API v2][]: Identical to v1, but also returns an `invalidParams` error if you provide a non-boolean value. |
+| `forward`          | Boolean                                    | [API v1][]: _(Optional)_ Defaults to `false`. If set to `true`, returns values indexed with the oldest ledger first. Otherwise, the results are indexed with the newest ledger first. (Each page of results may not be internally ordered, but the pages are overall ordered.)<br>[API v2][]: Identical to v1, but also returns an `invalidParams` error if you provide a non-boolean value. |
 | `limit`            | Integer                                    | _(Optional)_ Default varies. Limit the number of transactions to retrieve. The server is not required to honor this value. |
 | `marker`           | [Marker][] | Value from a previous paginated response. Resume retrieving data where that response left off. This value is stable even if there is a change in the server's range of available ledgers. |
 
-**You must use at least one of the following fields** in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
-
-The following legacy fields are no longer supported: `offset`, `count`, `ledger_min`, `ledger_max`. [Removed in: rippled 1.7.0][]
+- You must use at least one of the following fields in your request: `ledger_index`, `ledger_hash`, `ledger_index_min`, or `ledger_index_max`.
+- [API v2]: If you specify either `ledger_index` or `ledger_hash`, including `ledger_index_min` and `ledger_index_max` returns an `invalidParams` error.
 
 
 ### Iterating over queried data

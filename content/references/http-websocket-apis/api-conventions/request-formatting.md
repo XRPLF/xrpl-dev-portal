@@ -83,7 +83,7 @@ The object inside the `params` array can contain the following fields:
 
 | Field               | Type      | Description                                |
 |:--------------------|:----------|:-------------------------------------------|
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). [New in: rippled 1.5.0][] |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, uses version `1`. For details, see [API Versioning](#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method here. |
 
 See [Response Formatting](response-formatting.html) for the response from the server.
@@ -98,11 +98,15 @@ The commandline always uses the latest [API version](#api-versioning).
 
 **Caution:** The commandline interface is intended for administrative purposes only and is _not a supported API_. New versions of `rippled` may introduce breaking changes to the commandline API without warning!
 
+
 ## API Versioning
 
-The `rippled` server uses a single integer to identify the API version to use. The first API version is `1`; currently, this is the only version of the `rippled` API. (There is no API version 0.) [New in: rippled 1.5.0][]
+The `rippled` server uses a single integer to identify the API version to use. Currently, there are two API versions: `1` and `2` [New in: rippled 2.0.0][]. The server reports the range of supported API versions in the `version` API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when `version` method is documented. -->
 
-Future versions of `rippled` that introduce breaking changes will introduce a new API version number, such as `2`. The server will support a range of API versions, which it reports in the `version` API method. <!-- STYLE_OVERRIDE: will --> <!-- TODO: add a link when `version` method is documented. --> <!-- Uncomment when multiple API versions exist: Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make a server_info request using API version 2 and then make another server_info request using API version 1 from the same connection. -->
+Separate API requests can use different API versions even on the same persistent connection. For example, if you connect WebSocket to a server that supports API versions 1 and 2, you can make an `account_tx` request using API version 2 and then make another `account_tx` request using API version 1 from the same connection.
+
+Future versions of `rippled` that introduce breaking changes will introduce a new API version 3.
+
 
 ### Breaking Changes
 
