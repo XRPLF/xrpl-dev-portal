@@ -9,7 +9,7 @@ labels:
 # validator_list_sites
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
 
-The `validator_list_sites` command returns status information of sites serving validator lists. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" %}New in: rippled 0.80.1{% /badge %}
+The `validator_list_sites` command returns status information of sites serving validator lists.
 
 *The `validator_list_sites` method is an [admin method](../index.md) that cannot be run by unprivileged users!*
 

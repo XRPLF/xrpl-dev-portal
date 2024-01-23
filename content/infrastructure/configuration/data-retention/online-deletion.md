@@ -9,7 +9,7 @@ labels:
 # Online Deletion
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/misc/SHAMapStoreImp.cpp "Source")
 
-The online deletion feature lets the `rippled` server delete the server's local copy of old ledger versions to keep disk usage from rapidly growing over time. The default config file sets online deletion to run automatically, but online deletion can also be configured to run only when prompted. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.27.0" %}New in: rippled 0.27.0{% /badge %}
+The online deletion feature lets the `rippled` server delete the server's local copy of old ledger versions to keep disk usage from rapidly growing over time. The default config file sets online deletion to run automatically, but online deletion can also be configured to run only when prompted.
 
 The server always keeps the complete _current_ state of the ledger, with all the balances and settings it contains. The deleted data includes older transactions and versions of the ledger state that are older than the stored history.
 

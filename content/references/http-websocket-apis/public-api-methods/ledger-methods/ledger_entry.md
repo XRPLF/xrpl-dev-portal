@@ -386,7 +386,7 @@ rippled json ledger_entry '{ "ripple_state": { "accounts": ["rf1BiGeXwwQoi8Z2ueF
 
 ### Get Check Object
 
-Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}New in: rippled 1.0.0{% /badge %}
+Retrieve a [Check entry](../../../protocol/ledger-data/ledger-entry-types/check.md), which is a potential payment that can be cashed by its recipient.
 
 | Field   | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
@@ -431,7 +431,7 @@ rippled json ledger_entry '{ "check": "C4A46CCD8F096E994C4B0DEAB6CE98E722FC17D79
 
 ### Get Escrow Object
 
-Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}New in: rippled 1.0.0{% /badge %}
+Retrieve an [Escrow entry](../../../protocol/ledger-data/ledger-entry-types/escrow.md), which holds XRP until a specific time or condition is met. Can be provided as string (object ID of the Escrow) or as an object.
 
 | Field                   | Type                       | Description           |
 |:------------------------|:---------------------------|:----------------------|
@@ -484,7 +484,7 @@ rippled json ledger_entry '{ "escrow": { "owner": "rL4fPHi2FWGwRGRQSH7gBcxkuo2b9
 
 ### Get PayChannel Object
 
-Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}New in: rippled 1.0.0{% /badge %}
+Retrieve a [PayChannel entry](../../../protocol/ledger-data/ledger-entry-types/paychannel.md), which holds XRP for asynchronous payments.
 
 | Field             | Type   | Description                                     |
 |:------------------|:-------|:------------------------------------------------|
@@ -528,7 +528,7 @@ rippled json ledger_entry '{ "payment_channel": "C7F634794B79DB40E87179A9D1BF05D
 
 ### Get DepositPreauth Object
 
-Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](../../../../concepts/accounts/depositauth.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}New in: rippled 1.1.0{% /badge %}
+Retrieve a [DepositPreauth entry](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md), which tracks preauthorization for payments to accounts requiring [Deposit Authorization](../../../../concepts/accounts/depositauth.md).
 
 | Field                        | Type                 | Description            |
 |:-----------------------------|:---------------------|:-----------------------|

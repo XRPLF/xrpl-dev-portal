@@ -130,7 +130,7 @@ For a more thorough explanation of various types of log messages, see [Understan
 
 If you have problems diagnosing the problem, or you are unable to resolve the problem with any of the common fixes, you may want to ask for help in a support forum or the [GitHub issues](https://github.com/XRPLF/rippled/issues). When asking for help, you can use an info collection script to gather information about your system to help others diagnose the issue.
 
-The official package installation (for [Ubuntu/Debian](../installation/install-rippled-on-ubuntu.md) or [CentOS/RedHat](../installation/install-rippled-on-centos-rhel-with-yum.md)) installs such a script by default, to `/opt/ripple/bin/getRippledInfo`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}New in: rippled 1.5.0{% /badge %} If you compiled `rippled` yourself, you can find the same script [in the `rippled` source code repository](https://github.com/XRPLF/rippled/blob/develop/bin/getRippledInfo).
+The official package installation (for [Ubuntu/Debian](../installation/install-rippled-on-ubuntu.md) or [CentOS/RedHat](../installation/install-rippled-on-centos-rhel-with-yum.md)) installs such a script by default, to `/opt/ripple/bin/getRippledInfo`. If you compiled `rippled` yourself, you can find the same script [in the `rippled` source code repository](https://github.com/XRPLF/rippled/blob/develop/bin/getRippledInfo).
 
 To use the script:
 

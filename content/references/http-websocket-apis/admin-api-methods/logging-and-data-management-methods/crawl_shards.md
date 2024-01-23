@@ -8,7 +8,7 @@ labels:
 # crawl_shards
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
 
-Requests information from peer servers about which [shards of historical ledger data](../../../../infrastructure/configuration/data-retention/history-sharding.md) they have available. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}New in: rippled 1.2.0{% /badge %}
+Requests information from peer servers about which [shards of historical ledger data](../../../../infrastructure/configuration/data-retention/history-sharding.md) they have available.
 
 _The `crawl_shards` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 

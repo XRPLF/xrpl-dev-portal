@@ -8,7 +8,7 @@ labels:
 # peer_reservations_del
 [[Source]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L89 "Source")
 
-The {% code-page-name /%} method removes a specific [peer reservation][], if one exists. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}New in: rippled 1.4.0{% /badge %}
+The {% code-page-name /%} method removes a specific [peer reservation][], if one exists.
 
 _The {% code-page-name /%} method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
