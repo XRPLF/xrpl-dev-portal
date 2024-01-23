@@ -76,12 +76,11 @@ Use these methods to check the status of the network and server.
 
 ## Deprecated Methods
 
-The following admin commands are deprecated and may be removed without further notice:
+The following admin commands are deprecated and either have been removed, or may be removed without further notice:
 
 * `ledger_header` - Use the [ledger method][] instead.
 * `unl_add`, `unl_delete`, `unl_list`, `unl_load`, `unl_network`, `unl_reset`, `unl_score` - Use the `validators.txt` config file for UNL management instead.
 * `wallet_seed` - Use the [wallet_propose method][] instead.
-
-The [validation_seed method][] has been removed since `rippled` v0.29.1.
+* `validation_seed` - Use the config file and `validator-keys-tool` for managing your seed instead.
 
 {% raw-partial file="/_snippets/common-links.md" /%}

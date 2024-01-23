@@ -848,10 +848,6 @@
 [validation_create method]: validation_create.html
 [validation_create メソッド]: validation_create.html
 [validation_createメソッド]: validation_create.html
-[validation_seed command]: validation_seed.html
-[validation_seed method]: validation_seed.html
-[validation_seed メソッド]: validation_seed.html
-[validation_seedメソッド]: validation_seed.html
 [validator_info command]: validator_info.html
 [validator_info method]: validator_info.html
 [validator_info メソッド]: validator_info.html
