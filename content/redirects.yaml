@@ -1259,7 +1259,7 @@ stop.html:
     to: /references/http-websocket-apis/admin-api-methods/server-control-methods/stop
     type: 301
 validation_seed.html:
-    to: /references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed
+    to: /references/http-websocket-apis/public-api-methods/
     type: 301
 signing-methods.html:
     to: /references/http-websocket-apis/admin-api-methods/signing-methods/
