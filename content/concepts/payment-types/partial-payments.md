@@ -74,8 +74,8 @@ You can find the `delivered_amount` field in the following places:
 | [JSON-RPC / WebSocket][] | [account_tx method][] | `result.transactions` array members' `meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [tx method][] | `result.meta.delivered_amount` |
 | [JSON-RPC / WebSocket][] | [transaction_entry method][] | `result.metadata.delivered_amount` |
-| [JSON-RPC / WebSocket][] | [ledger method][] (with transactions expanded) | `result.ledger.transactions` array members' `metaData.delivered_amount` {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}New in: rippled 1.2.1{% /badge %} |
-| [WebSocket][] | [Transaction subscriptions](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Subscription messages' `meta.delivered_amount` {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}New in: rippled 1.2.1{% /badge %} |
+| [JSON-RPC / WebSocket][] | [ledger method][] (with transactions expanded) | `result.ledger.transactions` array members' `metaData.delivered_amount` |
+| [WebSocket][] | [Transaction subscriptions](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#transaction-streams) | Subscription messages' `meta.delivered_amount` |
 | ripple-lib v1.x | `getTransaction` method | `outcome.deliveredAmount` |
 | ripple-lib v1.x | `getTransactions` method | array members' `outcome.deliveredAmount` |
 

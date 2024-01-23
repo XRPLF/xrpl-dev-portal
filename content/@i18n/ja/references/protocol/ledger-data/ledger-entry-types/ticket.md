@@ -11,7 +11,7 @@ labels:
 
 _([TicketBatch amendment][]が必要です)_
 
-`Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を追跡する[Ticket](../../../../concepts/accounts/tickets.md)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}New in: rippled 1.7.0{% /badge %}.
+`Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を追跡する[Ticket](../../../../concepts/accounts/tickets.md)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。
 
 ## {% $frontmatter.seo.title %} JSONの例
 

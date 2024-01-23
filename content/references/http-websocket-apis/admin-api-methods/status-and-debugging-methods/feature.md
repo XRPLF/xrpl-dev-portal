@@ -9,7 +9,7 @@ labels:
 # feature
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
-The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process). {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}New in: rippled 0.31.0{% /badge %}
+The `feature` command returns information about [amendments](../../../../concepts/networks-and-servers/amendments.md) this server knows about, including whether they are enabled and whether the server is voting in favor of those amendments in the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process).
 
 You can use the `feature` command to configure the server to vote against or in favor of an amendment. This change persists even if you restart the server. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %}
 

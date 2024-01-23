@@ -371,7 +371,7 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`   | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
-| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](../../../../concepts/networks-and-servers/clustering.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" %}New in: rippled 0.30.1{% /badge %} |
+| `cluster` | Object | Summary of other `rippled` servers in the same cluster, if [configured as a cluster](../../../../concepts/networks-and-servers/clustering.md). |
 | `peers`   | Array  | Array of peer objects.                                  |
 
 Each field of the `cluster` object is the public key of that `rippled` server's identifying key pair. (This is the same value that that server returns as `pubkey_node` in the [server_info method][].) The contents of that field are an object with the following fields:
@@ -395,11 +395,11 @@ Each member of the `peers` array is a peer object with the following fields:
 | `ledger`           | String  | The identifying [hash][Hash] of the peer's most recently closed ledger |
 | `load`             | Number  | A measure of the amount of load the peer server is putting on the local server. Larger numbers indicate more load. (The units by which load is measured are not formally defined.) |
 | `protocol`         | String  | _(May be omitted)_ The protocol version that the peer is using, if not the same as the local server. |
-| `metrics`          | Object  | Details on the amount of data sent to and received from this peer. See the description of the `metrics` object below for details. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}New in: rippled 1.4.0{% /badge %} |
+| `metrics`          | Object  | Details on the amount of data sent to and received from this peer. See the description of the `metrics` object below for details. |
 | `public_key`       | String  | _(May be omitted)_ A public key that can be used to verify the integrity of the peer's messages. This is not the same key that is used for validations, but it follows the same format. |
 | `sanity`           | String  | _(May be omitted)_ Whether this peer is following the same rules and ledger history as the current server. A value of `insane` probably indicates that the peer is part of a [parallel network](../../../../concepts/networks-and-servers/parallel-networks.md). The value `unknown` indicates that the current server is unsure whether the peer is compatible. <!-- STYLE_OVERRIDE: insane --> |
 | `status`           | String  | _(May be omitted)_ The most recent status message from the peer. Could be `connecting`, `connected`, `monitoring`, `validating`, or `shutting`. |
-| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.1" %}New in: rippled 0.30.1{% /badge %} |
+| `uptime`           | Number  | The number of seconds that your `rippled` server has been continuously connected to this peer. |
 | `version`          | string  | _(May be omitted)_ The `rippled` version number of the peer server |
 
 The `metrics` object contains the following fields:
