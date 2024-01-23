@@ -5,6 +5,7 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/web3auth.md
         - page: 2024/rippled-2.0.0.md
     - group: '2023'
       expanded: false
