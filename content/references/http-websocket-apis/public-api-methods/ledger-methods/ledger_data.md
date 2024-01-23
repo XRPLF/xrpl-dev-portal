@@ -57,7 +57,7 @@ A request can include the following fields:
 | `binary`       | Boolean          | No        | If `true`, return ledger entries as hexadecimal strings instead of JSON. The default is `false`. |
 | `limit`        | Number           | No        | Limit the number of ledger entries to retrieve. The server may return fewer than this number of entries. Cannot be more than 2048 (when requesting binary) or 256 (when requesting JSON). Positive values outside this range are replaced with the closest valid option. The default is the maximum. |
 | `marker`       | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `type`         | String           | No        | Filter results to a specific type of ledger entry. {% partial file="/_snippets/lowercase-types.md" /%} |
+| `type`         | String           | No        | Filter results to a specific type of ledger entry. The valid types are: `account`, `amendments`, `amm` {% not_enabled /%}, `check`, `deposit_preauth`, `directory`, `escrow`, `fee`, `hashes`, `nft_offer`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. |
 
 The `ledger` field is deprecated and may be removed without further notice.
 
