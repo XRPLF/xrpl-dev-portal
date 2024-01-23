@@ -91,21 +91,17 @@
   {# objects where the naive URL is already taken #}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}-object.html
 [{{ledger_entry}} entry]: {{ledger_entry|lower}}-object.html
-  {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}-object.html
 [{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}-object.html
 [{{ledger_entry}}エントリ]: {{ledger_entry|lower}}-object.html
 [{{ledger_entry}} エントリ]: {{ledger_entry|lower}}-object.html
-  {% endif %}
 {% else %}
 [{{ledger_entry}} object]: {{ledger_entry|lower}}.html
 [{{ledger_entry}} entry]: {{ledger_entry|lower}}.html
-  {% if target.lang == "ja" %}
 [{{ledger_entry}}オブジェクト]: {{ledger_entry|lower}}.html
 [{{ledger_entry}} オブジェクト]: {{ledger_entry|lower}}.html
 [{{ledger_entry}}エントリ]: {{ledger_entry|lower}}.html
 [{{ledger_entry}} エントリ]: {{ledger_entry|lower}}.html
-  {% endif %}
 {% endif %}
 {% endfor %}
 
@@ -192,10 +188,8 @@
 {% for method in api_methods %}
 [{{method}} method]: {{method|lower}}.html
 [{{method}} command]: {{method|lower}}.html
-{% if target.lang == "ja" %}
 [{{method}}メソッド]: {{method|lower}}.html
 [{{method}} メソッド]: {{method|lower}}.html
-{% endif %}
 {% endfor %}
 
 <!--{# Amendment links #}-->

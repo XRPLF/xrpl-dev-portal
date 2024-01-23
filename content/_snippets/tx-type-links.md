@@ -41,10 +41,8 @@
 [{{tx}}]: {{tx|lower}}.html
 [{{tx}} transaction]: {{tx|lower}}.html
 [{{tx}} transactions]: {{tx|lower}}.html
-{% if target.lang == "ja" %}
 [{{tx}}トランザクション]: {{tx|lower}}.html
 [{{tx}} トランザクション]: {{tx|lower}}.html
-{% endif %}
 {% endfor %}
 
 {% for tx in pstxtypes %}
