@@ -183,7 +183,7 @@ The response follows the [standard format][], with a successful result containin
 | `account_id`      | String | The [Address][] of the account in the XRP Ledger's [base58][] format. This is not the public key, but a hash-of-a-hash of it. It also has a checksum so a typo almost certainly results in an invalid address rather than a valid, but different address. This is the primary identifier of an account in the XRP Ledger. You tell people this to get paid, and use it in transactions to indicate who you are and who you're paying, trusting, and so forth. [Multi-signing lists](../../../../concepts/accounts/multi-signing.md) also use these to identify other signers. |
 | `public_key`      | String | The public key of the key pair, in the XRP Ledger's [base58][] encoded string format. Derived from the `master_seed`. |
 | `public_key_hex`  | String | This is the public key of the key pair, in hexadecimal. Derived from the `master_seed`. To validate the signature on a transaction, `rippled` needs this public key. That's why the format for a signed transaction includes the public key in the `SigningPubKey` field. |
-| `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}New in: rippled 0.32.0{% /badge %} |
+| `warning`         | String | (May be omitted) If the request specified a seed value, this field provides a warning that it may be insecure. |
 
 You can also use this method to generate a key pair to use as a regular key pair for an account. You assign a regular key pair to an account to be able to sign most transactions with it, while keeping your master key pair offline whenever possible.
 

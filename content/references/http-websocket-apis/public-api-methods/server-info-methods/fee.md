@@ -8,7 +8,7 @@ labels:
 # fee
 [[Source]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/Fee1.cpp "Source")
 
-The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](../../../../concepts/transactions/transaction-cost.md). This requires the [FeeEscalation amendment][] to be enabled. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}New in: rippled 0.31.0{% /badge %}
+The `fee` command reports the current state of the open-ledger requirements for the [transaction cost](../../../../concepts/transactions/transaction-cost.md). This requires the [FeeEscalation amendment][] to be enabled.
 
 This is a public command available to unprivileged users. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}Updated in: rippled 0.32.0{% /badge %}
 
@@ -154,7 +154,7 @@ The response follows the [standard format][], with a successful result containin
 | `drops.minimum_fee`        | String (Integer) | The minimum transaction cost for a [reference transaction](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) to be queued for a later ledger, represented in drops of XRP. If greater than `base_fee`, the transaction queue is full. |
 | `drops.open_ledger_fee`    | String (Integer) | The minimum transaction cost that a [reference transaction](../../../../concepts/transactions/transaction-cost.md#reference-transaction-cost) must pay to be included in the current open ledger, represented in drops of XRP. |
 | `expected_ledger_size`     | String (Integer) | The approximate number of transactions expected to be included in the current ledger. This is based on the number of transactions in the previous ledger. |
-| `ledger_current_index`     | Number           | The [Ledger Index][] of the current open ledger these stats describe. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.50.0" %}New in: rippled 0.50.0{% /badge %} |
+| `ledger_current_index`     | Number           | The [Ledger Index][] of the current open ledger these stats describe. |
 | `levels`                   | Object           | Various information about the transaction cost, in [fee levels][]. The ratio in fee levels applies to any transaction relative to the minimum cost of that particular transaction. |
 | `levels.median_level`      | String (Integer) | The median transaction cost among transactions in the previous validated ledger, represented in [fee levels][]. |
 | `levels.minimum_level`     | String (Integer) | The minimum transaction cost required to be queued for a future ledger, represented in [fee levels][]. |

@@ -17,7 +17,7 @@ The fields of a successful response include:
 | `type`          | String   | (WebSocket only) The value `response` indicates a direct response to an API request. [Asynchronous notifications](../public-api-methods/subscription-methods/subscribe.md) use a different value such as `ledgerClosed` or `transaction`. |
 | `result`        | Object   | The result of the query; contents vary depending on the command. |
 | `warning`       | String   | _(May be omitted)_ If this field is provided, the value is the string `load`. This means the client is approaching the [rate limiting](rate-limiting.md) threshold where the server will disconnect this client. <!-- STYLE_OVERRIDE: will --> |
-| `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}New in: rippled 1.5.0{% /badge %} |
+| `warnings`      | Array    | _(May be omitted)_ If this field is provided, it contains one or more **Warnings Objects** with important warnings. For details, see [API Warnings](#api-warnings). |
 | `forwarded`     | Boolean  | _(May be omitted)_ If `true`, this request and response have been forwarded from a [Reporting Mode][] server to a P2P Mode server (and back) because the request requires data that is not available in Reporting Mode. The default is `false`. |
 
 
@@ -159,7 +159,7 @@ This warning indicates that the server is [amendment blocked](../../../concepts/
 The server administrator must [upgrade `rippled`](../../../infrastructure/installation/index.md) to a version that supports the activated amendments.
 
 ### 1003. This is a reporting server
-{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}New in: rippled 1.7.0{% /badge %}
+
 
 Example warning:
 

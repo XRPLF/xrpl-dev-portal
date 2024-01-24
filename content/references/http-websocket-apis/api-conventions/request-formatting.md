@@ -58,7 +58,7 @@ After you open a WebSocket to the `rippled` server, you can send commands as a [
 |:--------------------|:----------|:-------------------------------------------|
 | `command`           | String    | The name of the [API method](../public-api-methods/index.md). |
 | `id`                | (Various) | _(Optional)_ A unique value to identify this request. The response to this request uses the same `id` field. This way, even if responses arrive out of order, you know which request prompted which response. |
-| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}New in: rippled 1.5.0{% /badge %} |
+| `api_version`       | Number    | _(Optional)_ The API version to use. If omitted, use version 1. For details, see [API Versioning](#api-versioning). |
 | (Method Parameters) | (Various) | Provide any parameters to the method at the top level. |
 
 See [Response Formatting](response-formatting.md) for the response from the server.

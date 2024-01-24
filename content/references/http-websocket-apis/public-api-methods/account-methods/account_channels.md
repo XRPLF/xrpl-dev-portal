@@ -8,7 +8,7 @@ labels:
 # account_channels
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountChannels.cpp "Source")
 
-_(Added by the [PayChan amendment][]. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.33.0" %}New in: rippled 0.33.0{% /badge %})_
+_(Added by the [PayChan amendment][].)_
 
 The `account_channels` method returns information about an account's Payment Channels. This includes only channels where the specified account is the channel's source, not the destination. (A channel's "source" and "owner" are the same.) All information retrieved is relative to a particular version of the ledger.
 
@@ -160,9 +160,9 @@ The response follows the [standard format][], with a successful result containin
 |:---------------|:-------------------------|:---------------------------------|
 | `account`      | String                   | The address of the source/owner of the payment channels. This corresponds to the `account` field of the request. |
 | `channels`     | Array of Channel Objects | Payment channels owned by this `account`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}Updated in: rippled 1.5.0{% /badge %} |
-| `ledger_hash`  | String                   | _(May be omitted)_ The identifying [Hash][] of the ledger version used to generate this response. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}New in: rippled 0.90.0{% /badge %} |
-| `ledger_index` | Number                   | The [Ledger Index][] of the ledger version used to generate this response. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}New in: rippled 0.90.0{% /badge %} |
-| `validated`    | Boolean                  | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}New in: rippled 0.90.0{% /badge %} |
+| `ledger_hash`  | String                   | _(May be omitted)_ The identifying [Hash][] of the ledger version used to generate this response. |
+| `ledger_index` | Number                   | The [Ledger Index][] of the ledger version used to generate this response. |
+| `validated`    | Boolean                  | _(May be omitted)_ If `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 | `limit`        | Number                   | _(May be omitted)_ The limit to how many channel objects were actually returned by this request. |
 | `marker`       | [Marker][]               | _(May be omitted)_ Server-defined value for pagination. Pass this to the next call to resume getting results where this call left off. Omitted when there are no additional pages after this one. |
 

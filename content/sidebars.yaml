@@ -501,7 +501,6 @@
                     items:
                       - page: references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
                       - page: references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
-                      - page: references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
                   - page: references/http-websocket-apis/admin-api-methods/signing-methods/index.md
                     expanded: false
                     items:

@@ -9,7 +9,7 @@ labels:
 # gateway_balances
 [[Source]](https://github.com/XRPLF/rippled/blob/9111ad1a9dc37d49d085aa317712625e635197c0/src/ripple/rpc/handlers/GatewayBalances.cpp "Source")
 
-The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.28.2" %}New in: rippled 0.28.2{% /badge %}
+The `gateway_balances` command calculates the total balances issued by a given account, optionally excluding amounts held by [operational addresses](../../../../concepts/accounts/account-types.md).
 
 **Caution:** Some public servers disable this API method because it can require a large amount of processing.
 

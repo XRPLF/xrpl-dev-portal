@@ -198,7 +198,7 @@ If your config includes a `[shard_db]` stanza, it must contain a `path` field, w
 
 ## Unsupported shard store type: RocksDB
 
-RocksDB is no longer supported as a backend for [history sharding](../configuration/data-retention/history-sharding.md). If you have an existing configuration that defines a RocksDB shard store, the server fails to start. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.3.1" %}New in: rippled 1.3.1{% /badge %}
+RocksDB is no longer supported as a backend for [history sharding](../configuration/data-retention/history-sharding.md). If you have an existing configuration that defines a RocksDB shard store, the server fails to start.
 
 In this case, the process dies shortly after the log startup command, with a message such as the following appearing earlier in the output log:
 

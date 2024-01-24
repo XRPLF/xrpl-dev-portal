@@ -138,7 +138,7 @@ While running unit tests, you can specify the [Generic Options](#generic-options
 
 | Option                             | Short Version | Description             |
 |:-----------------------------------|:--------------|:------------------------|
-| `--unittest-ipv6`                  |               | Use [IPv6](https://en.wikipedia.org/wiki/IPv6) to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}New in: rippled 1.1.0{% /badge %} |
+| `--unittest-ipv6`                  |               | Use [IPv6](https://en.wikipedia.org/wiki/IPv6) to connect to the local server when running unit tests. If not provided, unit tests use IPv4 instead. |
 | `--unittest-jobs {NUMBER_OF_JOBS}` |               | Use the specified number of processes to run unit tests. This can finish running tests faster on multi-core systems. The `{NUMBER_OF_JOBS}` should be a positive integer indicating the number of processes to use. |
 | `--unittest-log`                   |               | Allow unit tests to write to logs even if `--quiet` is specified. (No effect otherwise.) |
 | `--quiet`                          | `-q`          | Print fewer diagnostic messages when running unit tests. |

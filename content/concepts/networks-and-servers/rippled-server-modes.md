@@ -13,7 +13,7 @@ The `rippled` server software can run in several modes depending on its configur
     - [**Validator**](#validators) - Helps secure the network by participating in consensus.
     - [**API Server**](#api-servers) - Provides [API access](../../tutorials/get-started/get-started-using-http-websocket-apis.md) to read data from the shared ledger, submit transactions, and watch activity in the ledger. Optionally, this can be a [**Full History Server**](#full-history-servers), which keeps a complete record of transaction and ledger history.
     - [**Hub Server**](#public-hubs) - Relays messages between many other members of the peer-to-peer network.
-- [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. It does not participate in the peer-to-peer network, so you need to run a P2P Mode server and connect the reporting mode server using a trusted gRPC connection. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}New in: rippled 1.7.0{% /badge %}
+- [**Reporting mode**](#reporting-mode) - A specialized mode for serving API requests from a relational database. It does not participate in the peer-to-peer network, so you need to run a P2P Mode server and connect the reporting mode server using a trusted gRPC connection. 
 - [**Stand-alone mode**](#stand-alone-mode) - An offline mode for testing. Does not connect to the peer-to-peer network or use consensus.
 
 You can also run the `rippled` executable as a client application for accessing [`rippled` APIs](../../references/http-websocket-apis/index.md) locally. (Two instances of the same binary can run side-by-side in this case; one as a server, and the other running briefly as a client and then terminating.)
@@ -68,7 +68,7 @@ For more information about running a validator, see [Run `rippled` as a Validato
 
 
 ## Reporting Mode
-{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}New in: rippled 1.7.0{% /badge %}
+
 
 Reporting mode is specialized mode for serving API requests more efficiently. In this mode, the server gets the latest validated ledger data over [gRPC](../../infrastructure/configuration/configure-grpc.md) from a separate `rippled` server running in P2P Mode, then loads that data into a relational database ([PostgreSQL](https://www.postgresql.org/)). The reporting mode server does not directly participate in the peer-to-peer network, though it can forward requests such as transaction submission to the P2P Mode server it uses.
 
