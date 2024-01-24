@@ -1,7 +1,8 @@
 ---
 html: contribute-documentation.html
 parent: resources.html
-blurb: Contribution guides for XRP Ledger documentation.
+seo:
+    description: Contribution guides for XRP Ledger documentation.
 ---
 # Contribute Documentation
 
@@ -22,100 +23,74 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 
 ## Repository Layout
 
-- [assets/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - Static files used by the site's templates.
+***Note: The repository layout is currently in flux as we transition to Redocly. This section is not fully updated.***
+
+- [static/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - Static files used by the site's templates and theme.
 - [content/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content) - Source files used to build the documentation. Mostly in Markdown.
     - [content/\_code-samples/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
     - [content/\_img-sources/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_img-sources) - Source files for images used in the documentation. Any `.uxf` files are diagrams made with [Umlet](https://www.umlet.com/).
     - [content/\_snippets/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_snippets) - Reusable chunks of Markdown text that are included in other content files, using the Dactyl preprocessor.
 - [img/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/img) - Images used by the documentation contents.
-- [template/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/template) - Template files for building the HTML outputs.
+- [template/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/template) - Template files for building the HTML outputs. (Deprecated)
 - [tool/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/tool) - Filters, style-checker rules, and other scripts.
 - [styles/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/styles) - Source files (SCSS) to generate the CSS files in the assets folder.
-- [`dactyl-config.yml`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/dactyl-config.yml) - Main config file, which contains the metadata for the site. For information on our conventions, see [Config Formatting](#config-formatting).
+- [`dactyl-config.yml`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/dactyl-config.yml) - Old config file, which contains the metadata for the site.
 
 ## Requirements for a Successful Pull Request
 
 Before being considered for review or merging, each pull request must:
+
 - Pass continuous integration tests.
 - Be [marked as drafts](https://github.blog/2019-02-14-introducing-draft-pull-requests/) until they are ready for review.
 - Adhere to the [code of conduct](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md) for this repository.
 
-## Dactyl Setup
+## Redocly Setup
 
-The portal is built using [Dactyl](https://github.com/ripple/dactyl).
+The portal is built using Redocly Realm, which is currently in closed beta. Installing it for local development requires Node.js (version 20 recommended) and NPM.
 
-Dactyl requires [Python 3](https://python.org/). Install it with [pip](https://pip.pypa.io/en/stable/):
+You can install Realm and other necessary dependencies using NPM from the repository top:
 
-```
-pip3 install dactyl
+```sh
+npm i
 ```
 
 ## Building the Site
 
-This repo uses [**Dactyl**](https://github.com/ripple/dactyl) to build HTML display versions of all the documentation. After you've done the [Dactyl Setup](#dactyl-setup), you can build the site from the project root directory:
+After you've installed dependencies, you can start a local dev server with:
 
-```
-dactyl_build
-```
-
-This outputs the generated contents to the `out/` directory. These contents can be opened in a web browser as files or served as static content by a web server.
-
-You can also run link checking or style checking from the root directory.
-
-Link checking should be run after emptying the output folder and then building:
-
-```
-dactyl_link_checker
+```sh
+npm run start
 ```
 
-Style checking is experimental:
+You can view the preview in a web browser, probably at http://localhost:4000/
 
-```
-dactyl_style_checker
-```
 
 ## Config Formatting
 
-The templates in this repository use metadata from the `dactyl-config.yml` file as well as the pages' [frontmatter](https://dactyl.link/frontmatter.html) to generate navigation elements in the site, including header, footer, sidebars, and breadcrumbs.
+Realm uses YAML config files to generate navigation elements in the site, including header, footer, sidebars, and breadcrumbs.
 
-If you add a new page, you must add it to the appropriate page in the pages array of the `dactyl-config.yml` file. An example entry looks like this:
-
-```yaml
-    -   md: concepts/the-rippled-server/the-rippled-server.md
-        targets:
-            - en
-            - ja # Include in all targets unless you have a translation
-```
-
-The Markdown file itself should start with a frontmatter stanza such as the following:
+If you add a new page, you should add it to the appropriate `sidebars.yaml` file. There is one sidebars file for the documentation and one for the blog. Here's an example of an entry for a page with no nested children:
 
 ```yaml
----
-html: the-rippled-server.html
-parent: concepts.html
-metadata:
-  indexPage: true
-blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
----
+- page: concepts/consensus-protocol/index.md
 ```
 
-Most pages should have `html`, `parent` and `blurb` fields in the frontmatter, and the `md` and `targets` fields in the config file. For a fill list
+The Markdown file for a page should start with a [frontmatter stanza](#frontmatter-fields).
 
-### Conventions
+## Conventions
 
 Use the following conventions when creating a page:
 
-- The HTML filename and MD filename should match exactly except for the file extension.
-- The filenames should closely match the title of the page, including words like "and" and "the", but should be in all lowercase with hyphens instead of spaces and punctuation. For example, `cash-a-check-for-an-exact-amount.md`. If you change the title of a page, change the filename too. (If it has already been published at another URL, leave a redirect from the old URL.)
+- Filenames (aside from `index.md`) should generally match the title of the page, including words like "and" and "the", but should be in all lowercase with hyphens instead of spaces and punctuation. For example, `cash-a-check-for-an-exact-amount.md`. If you change the title of a page, change the filename too. (If it has already been published at another URL, leave a redirect from the old URL.)
+    - The page within a category should be in a subfolder named for that category but can be less verbose (especially if the page title includes words also in the parent directories), should have the filename `index.md`, and a title that is similar to the folder name. For example, the "Protocol Reference" index page is at `references/protocol/index.md`.
 - Always start a page with a h1 header.
 - Don't link to the top h1 anchor of a page, link to the page itself without an anchor. This helps prevent broken links in translation. It's OK to link to later headers.
 - Don't use any formatting (like _italics_ or `code font`) in the title of the page.
 - Don't hard-wrap text in Markdown files.
 - For code samples, try to keep lines no longer than 80 columns wide.
 - When in doubt, follow [Ciro Santilli's Markdown Style Guide (Writability Profile)](https://cirosantilli.com/markdown-style-guide/).
-- The page within a category should be in a subfolder named for that category but can be less verbose (especially if the page title includes words also in the parent directories), should have the filename `index.md`, and a title that is similar to the folder name. For example, the "Protocol Reference" index page is at `references/protocol/index.md`.
-
 - Don't use tab characters for indentation in Markdown or code samples. Use 4 spaces per indent, except in **JavaScript** code samples, which should use 2 spaces per indent.
+- Make sure text files end in a newline character. (Some text editors handle this automatically.) Encode files in UTF-8 with no byte-order mark.
 
 ### Terminology
 
@@ -145,29 +120,27 @@ Use the following words and phrases as described:
 
 ## Frontmatter Fields
 
-The fronmatter for a Markdown file in this repo can contain arbitrary key-value pairs; the config file entry for the page can add to those or override them. The following fields have specific uses or meaning:
+***Note: The details of Realm's frontmatter specification are not fully documented. Update this with a link when Realm exits closed beta.***
 
-| Field                | Type             | Contents                           |
-|:---------------------|:-----------------|:-----------------------------------|
-| `html`               | String           | Output filename for the page. Should end in `.html` and MUST be unique within the target. For translated pages, leave the filename the same as the English version page. |
-| `parent`             | String           | The exact, unique `html` value of this page's "parent" page. Indicates where this page should appear in the navigation. |
-| `blurb`              | String           | Human-readable summary of the page. (Plain text only.) Should be about 1 sentence long. This appears in various places, including landing pages and metadata used in unfurling links on social media. |
-| `name`               | String           | Human-readable page name. (Plain text only.) For files with Markdown content, you should omit this so that Dactyl can automatically detect it from a header on the first line of the contents instead. This is usually only provided on landing pages or other special pages with no Markdown source file. |
-| `template`           | String           | The filename of a template file to use (in the `template/` directory) for this page. Most pages should use the default template. The `pagetype-category.html.jinja` template shows a list of child pages at the end. Pages with special or particularly unique layouts may need individual templates (conventionally, starting with `page-`). |
-| `status`             | String           | Use the value `not_enabled` on pages relating to an amendment that is not yet enabled on the XRP Ledger mainnet. This displays a "flask" badge with a tooltip next to the page in the navigation. |
-| `nav_omit`           | Boolean          | Use `true` to cause this page not to appear in any navigation elements. |
-| `top_nav_omit`       | Boolean          | Use `true` to cause this page not to appear in the page top dropdown navigation. |
-| `top_nav_level`      | Number           | Adjust the indentation level for the page in the top nav dropdowns. Level `2` is indented to appear like a child of the page above it in the dropdown. |
-| `sidebar`            | String           | Use `disabled` to hide the left and right sidebars (if the page uses a template derived from the base template) |
-| `fb_card`            | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Facebook. |
-| `twitter_card`       | String           | Filename of an image (in `assets/img/`) to use when unfurling links to this page on Twitter. |
-| `redirect_url`       | String           | Use with `template: pagetype-redirect.html.jinja` only. Automatically redirect the user to the provided URL when they navigate to this page. |
-| `cta_text`           | String           | Text to appear in "call to action" buttons that link to this page (on special landings). |
-| `curated_anchors`    | Array of Objects | A set of anchors in this page to show, similar to child pages, in landings. Each object in the array should have a human-readable `name` field (such as `"Available Modes"`) and an `anchor` field with the HTML ID to link to (such as `"#available-modes"`). |
-| `skip_spell_checker` | Boolean          | Use `true` to make the Dactyl's style checker skip spell-checking this page. |
-| `filters`            | Array of Strings | A list of additional filters to use on this page. [Filters](https://github.com/ripple/dactyl/blob/master/README.md#filters) are Python scripts that provide additional pre- or post-processing of page contents. |
-| `canonical_url`      | String           | Provides the canonical URL for a page that takes query parameters. Search engines and other tools may use this when linking to the page. |
-| `embed_xrpl_js`      | Boolean          | Use `true` to have the latest version of [xrpl.js](https://js.xrpl.org) loaded on the page. |
+Frontmatter for Markdown files can include details such as the following:
 
+```yaml
+---
+metadata:
+  indexPage: true # Add this if you want the page to contain an auto-generated list of its child pages.
+seo:
+  description: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+---
+```
+
+Some pages in the site have leftover metadata from the previous (Dactyl) toolchain, such as `html`, `parent`, or `targets` fields. These fields have no effect and can be omitted from new pages.
+
+## Markdoc Components
+
+The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags defined in `content/@theme/markdoc/`.
+
+## Common Links
+
+To make it easier to link to pages that are commonly cited, you can add a `{% raw-partial file="/_snippets/common-links.md /%}` tag to a Markdown file, and then use centrally-defined reference-style links such as `[account_info method][]` or `[Payment transaction][]`. The contents of the common-links file are in alphabetical order. (They have been generated by script before, but are currently manually maintained.)
 
 {% child-pages /%}
