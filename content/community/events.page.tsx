@@ -3,6 +3,13 @@ import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 const moment = require("moment");
 
+export const frontmatter = {
+  seo: {
+    title: 'Events',
+    description: "Find the XRPL Community around the world and join these events to see what's happening.",
+  }
+};
+
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];

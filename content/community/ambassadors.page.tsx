@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 
+export const frontmatter = {
+  seo: {
+    title: 'Ambassadors',
+    description: "The XRPL Campus Ambassador program connects and empowers student champions of the XRPL.",
+  }
+};
+
 false
 
 const target= {prefix: ''}; // TODO: fixme

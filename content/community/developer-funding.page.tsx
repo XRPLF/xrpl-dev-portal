@@ -1,6 +1,13 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 
+export const frontmatter = {
+  seo: {
+    title: 'Developer Funding',
+    description: "If you’re a software developer or team looking to build your next project or venture on the XRP Ledger (XRPL), there are a number of opportunities to fund your next innovation.",
+  }
+};
+
 false;
 
 const target = { prefix: "" }; // TODO: fixme
