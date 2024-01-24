@@ -8,6 +8,13 @@ import { TextLookupForm } from "./components/TextLookupForm";
 import { addNewLogEntry, LogEntryItem, updateLogEntry } from './components/LogEntry'
 import { hexToBytes, hexToString, stringToHex } from "@xrplf/isomorphic/utils"
 
+export const frontmatter = {
+  seo: {
+    title: 'Domain Verifier',
+    description: "Use this tool to confirm that your rippled validator has domain verification set up correctly",
+  }
+};
+
 const TIPS =
   <p>Check if the xrp-ledger.toml file is actually hosted in the /.well-known/ location at the domain in your manifest. Check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>;
 
