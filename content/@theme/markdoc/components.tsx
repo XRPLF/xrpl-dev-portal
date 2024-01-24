@@ -6,6 +6,7 @@ import { Link } from '@portal/Link';
 import { idify } from '../helpers';
 
 export {default as XRPLoader} from '../components/XRPLoader';
+export { XRPLCard, CardGrid } from '../components/XRPLCard';
 
 
 export function IndexPageItems() {
