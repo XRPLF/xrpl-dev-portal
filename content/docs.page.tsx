@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 
+export const frontmatter = {
+  seo: {
+    title: 'Documentation',
+    description: "Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.",
+  }
+};
+
 const recommendedPages = [
   {
     description: 'rippled API Reference',

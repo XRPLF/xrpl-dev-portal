@@ -40,26 +40,63 @@ theme:
       $ref: top-nav.yaml
   markdown:
     partialsFolders: ["_snippets", "_code-samples", "_api-examples"]
-  # footer:
-  #   # hide:
-  #   copyrightText: © 2022-2023, Redocly Inc. All right reserved.
-  #   items:
-  #     - group: Legal
-  #       items:
-  #         - label: Terms of Use
-  #           href: 'https://redocly.com/subscription-agreement/'
-  #         - label: Privacy Notice
-  #           href: 'https://redocly.com/privacy-policy/'
-  #         - label: Cookie Notice
-  #           href: 'https://redocly.com/privacy-policy/'
-  #     - group: Social
-  #       items:
-  #         - label: Facebook
-  #           href: 'https://www.facebook.com/redocly/'
-  #         - label: Youtube
-  #           href: 'https://www.youtube.com/channel/UCxYbPjnpqmHCmwg9iWf7wtQ'
-  #         - label: Twitter
-  #           href: 'https://twitter.com/Redocly'
+  footer:
+    copyrightText: © 2024 XRP Ledger. Open Source.
+    items:
+      - group: About
+        items:
+          - page: about/index.page.tsx
+          - page: about/uses.page.tsx
+          - page: about/history.page.tsx
+          - page: about/impact.page.tsx
+          - label: XRPL Foundation
+            href: https://foundation.xrpl.org/
+            external: true
+          - page: about/faq.md
+          - page: about/privacy-policy.md
+      - group: Docs
+        items:
+          - page: docs.page.tsx
+          - page: introduction/index.md
+          - page: use-cases/index.md
+          - page: concepts/index.md
+          ## TODO: uncomment the following when the pages have been added
+          # - page: tutorials/index.md
+          # - page: references/index.md
+          - page: infrastructure/index.md
+      - group: Resources
+        items:
+          - page: resources/code-samples.page.tsx
+          - page: resources/dev-tools/index.page.tsx
+          - label: XRPL Learning Portal
+            href: https://learn.xrpl.org/
+            external: true
+          - label: XRPL Brand Kit
+            href: https://xrpl.org/XRPL_Brand_Kit.zip
+            external: true
+          - label: Ledger Explorer
+            href: https://livenet.xrpl.org/
+            external: true
+          - page: resources/known-amendments.md
+          - page: resources/contribute-code/contribute-code.md
+          - page: resources/contribute-documentation/index.md
+      - group: Community
+        items:
+          - page: community/index.page.tsx
+          - page: community/events.page.tsx
+          - page: community/ambassadors.page.tsx
+          - page: community/developer-funding.page.tsx
+          - label: XRPL Jobs
+            href: https://jobs.xrpl.org/
+            external: true
+          - page: blog/index.md
+          - label: XRPL Grants
+            href: https://xrplgrants.org/
+            external: true
+          - label: GitHub
+            href: https://github.com/XRPLF/
+            external: true
+          - page: community/report-a-scam.md
   # sidebar:
   #   hide:
   # search:

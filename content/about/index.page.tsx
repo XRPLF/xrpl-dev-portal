@@ -1,6 +1,13 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 
+export const frontmatter = {
+  seo: {
+    title: 'XRP Ledger Overview',
+    description: "An introduction to the key benefits and features of the XRP Ledger, a public blockchain driven by the XRPL developer community.",
+  }
+};
+
 const faqs = [
   {
     question: "Is XRPL a private blockchain, owned by Ripple?",
