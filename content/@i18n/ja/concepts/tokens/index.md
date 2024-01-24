@@ -2,7 +2,6 @@
 parent: concepts.html
 html: tokens.html
 seo:
-    description: 
     description: XRP Ledger上でデジタルな価値を表すトークンを作成することができます。
 labels:
   - トークン
