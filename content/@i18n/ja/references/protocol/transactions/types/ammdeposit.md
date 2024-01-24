@@ -1,7 +1,8 @@
 ---
 html: ammdeposit.html
 parent: transaction-types.html
-blurb: 自動マーケットメーカーに資金を預け、LPTokenを受け取ります。
+seo:
+    description: 自動マーケットメーカーに資金を預け、LPTokenを受け取ります。
 labels:
   - AMM
 status: not_enabled

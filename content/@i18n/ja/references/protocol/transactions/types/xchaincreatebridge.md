@@ -1,7 +1,8 @@
 ---
 html: xchaincreatebridge.html 
 parent: transaction-types.html
-blurb: 2つのチェーン間にブリッジを作成します。
+seo:
+    description: 2つのチェーン間にブリッジを作成します。
 labels:
   - 相互運用性
 status: not_enabled

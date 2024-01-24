@@ -1,7 +1,8 @@
 ---
 html: payment.html
 parent: transaction-types.html
-blurb: アカウント間での価値の移動します。
+seo:
+    description: アカウント間での価値の移動します。
 labels:
   - 支払い
   - XRP

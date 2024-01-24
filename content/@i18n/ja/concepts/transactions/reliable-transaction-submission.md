@@ -1,7 +1,8 @@
 ---
 html: reliable-transaction-submission.html
 parent: transactions.html
-blurb: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
+seo:
+    description: XRP Ledgerにトランザクションを送信することができるシステムを構築し、最終結果を素早く安全に受け取ります。
 labels:
   - トランザクション送信
   - 開発

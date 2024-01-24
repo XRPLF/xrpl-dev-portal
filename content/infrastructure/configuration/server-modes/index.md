@@ -3,7 +3,8 @@ html: server-modes.html
 parent: configure-rippled.html
 metadata:
   indexPage: true
-blurb: Information on how to run a core server in different modes specialized for different purposes.
+seo:
+    description: Information on how to run a core server in different modes specialized for different purposes.
 ---
 # Server Modes
 

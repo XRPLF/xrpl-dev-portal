@@ -1,7 +1,8 @@
 ---
 html: ledger_data.html
 parent: ledger-methods.html
-blurb: 指定されたレジャーの内容を取得します。
+seo:
+    description: 指定されたレジャーの内容を取得します。
 label:
   - ブロックチェーン
   - データ保持

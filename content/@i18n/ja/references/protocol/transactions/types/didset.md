@@ -1,7 +1,8 @@
 ---
 html: didset.html
 parent: transaction-types.html
-blurb: DIDを作成または更新します。
+seo:
+    description: DIDを作成または更新します。
 labels:
   - DID
 status: not_enabled

@@ -3,7 +3,8 @@ html: data-retention.html
 parent: configure-rippled.html
 metadata:
   indexPage: true
-blurb: Control how much data your server should keep and when it should remove old data.
+seo:
+    description: Control how much data your server should keep and when it should remove old data.
 ---
 # Data Retention
 

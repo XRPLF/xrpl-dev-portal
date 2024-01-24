@@ -1,7 +1,8 @@
 ---
 html: send-a-multi-signed-transaction.html
 parent: manage-account-settings.html
-blurb: Send a transaction authorized with multiple signatures.
+seo:
+    description: Send a transaction authorized with multiple signatures.
 labels:
   - Security
 ---

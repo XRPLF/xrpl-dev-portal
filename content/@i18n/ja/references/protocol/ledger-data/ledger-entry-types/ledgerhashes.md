@@ -1,7 +1,8 @@
 ---
 html: ledgerhashes.html
 parent: ledger-entry-types.html
-blurb: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
+seo:
+    description: 履歴検索用に以前のレジャーバージョンのハッシュをリスト表示します。
 labels:
   - ブロックチェーン
 ---

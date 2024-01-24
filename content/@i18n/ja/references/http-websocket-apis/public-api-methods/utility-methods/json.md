@@ -1,7 +1,8 @@
 ---
 html: json.html
 parent: utility-methods.html
-blurb: コマンドのパラメーターをJSON値として受け入れ、他のコマンドを実行します。
+seo:
+    description: コマンドのパラメーターをJSON値として受け入れ、他のコマンドを実行します。
 labels:
   - コアサーバー
 ---

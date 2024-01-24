@@ -1,7 +1,8 @@
 ---
 html: account_lines.html
 parent: account-methods.html
-blurb: Get info about an account's trust lines.
+seo:
+    description: Get info about an account's trust lines.
 labels:
   - Tokens
 ---

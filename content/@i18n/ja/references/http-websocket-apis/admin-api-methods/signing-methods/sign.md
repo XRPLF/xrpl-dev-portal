@@ -1,7 +1,8 @@
 ---
 html: sign.html # watch for clashes w/ this filename
 parent: signing-methods.html
-blurb: トランザクションの署名済みバイナリー表現を返します。
+seo:
+    description: トランザクションの署名済みバイナリー表現を返します。
 labels:
   - トランザクション送信
 ---

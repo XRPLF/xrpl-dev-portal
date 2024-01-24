@@ -1,7 +1,8 @@
 ---
 html: transaction-types.html
 parent: transaction-formats.html
-blurb: All the different types of transactions that the XRP Ledger can process.
+seo:
+    description: All the different types of transactions that the XRP Ledger can process.
 metadata:
   indexPage: true
 labels:

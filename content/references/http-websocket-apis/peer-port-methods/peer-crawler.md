@@ -1,7 +1,8 @@
 ---
 html: peer-crawler.html
 parent: peer-port-methods.html
-blurb: Special API method for sharing network topology and status metrics.
+seo:
+    description: Special API method for sharing network topology and status metrics.
 labels:
   - Core Server
   - Blockchain

@@ -1,7 +1,8 @@
 ---
 html: nftokenmint.html
 parent: transaction-types.html
-blurb: TokenMintを使用して新規NFTを発行する。
+seo:
+    description: TokenMintを使用して新規NFTを発行する。
 labels:
   - 非代替性トークン, NFT
 ---

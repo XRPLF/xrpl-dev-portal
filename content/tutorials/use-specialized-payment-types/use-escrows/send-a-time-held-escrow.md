@@ -1,7 +1,8 @@
 ---
 html: send-a-time-held-escrow.html
 parent: use-escrows.html
-blurb: Create an escrow whose only condition for release is that a specific time has passed.
+seo:
+    description: Create an escrow whose only condition for release is that a specific time has passed.
 labels:
   - Escrow
   - Smart Contracts

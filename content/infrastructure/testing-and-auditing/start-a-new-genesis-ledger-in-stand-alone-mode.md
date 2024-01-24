@@ -1,7 +1,8 @@
 ---
 html: start-a-new-genesis-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
-blurb: Start from a fresh genesis ledger in stand-alone mode.
+seo:
+    description: Start from a fresh genesis ledger in stand-alone mode.
 labels:
   - Core Server
 ---

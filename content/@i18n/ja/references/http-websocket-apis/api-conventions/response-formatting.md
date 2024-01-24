@@ -1,7 +1,8 @@
 ---
 html: response-formatting.html
 parent: api-conventions.html
-blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスのレスポンスのフォーマットとそのレスポンスに含まれるフィールド。
+seo:
+    description: WebSocket、JSON-RPC、コマンドラインインターフェイスのレスポンスのフォーマットとそのレスポンスに含まれるフィールド。
 ---
 # レスポンスのフォーマット
 

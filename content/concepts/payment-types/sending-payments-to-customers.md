@@ -1,7 +1,8 @@
 ---
 html: sending-payments-to-customers.html
 parent: payment-types.html
-blurb: Construct payments carefully to thwart malicious actors.
+seo:
+    description: Construct payments carefully to thwart malicious actors.
 labels:
   - Tokens
 ---

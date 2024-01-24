@@ -1,7 +1,8 @@
 ---
 html: ctid.html
 parent: api-conventions.html
-blurb: CTID（Compact Transaction Identifier）は、検証済みトランザクションをチェーン全体で一意に識別する短い文字列です。
+seo:
+    description: CTID（Compact Transaction Identifier）は、検証済みトランザクションをチェーン全体で一意に識別する短い文字列です。
 labels:
   - 開発
 ---

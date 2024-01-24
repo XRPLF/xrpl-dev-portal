@@ -1,7 +1,8 @@
 ---
 html: deposit_authorized.html
 parent: path-and-order-book-methods.html
-blurb: Check whether an account is authorized to send money directly to another.
+seo:
+    description: Check whether an account is authorized to send money directly to another.
 labels:
   - Accounts
   - Security

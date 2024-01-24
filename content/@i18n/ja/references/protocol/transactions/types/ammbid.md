@@ -1,7 +1,8 @@
 ---
 html: ammbid.html
 parent: transaction-types.html
-blurb: 自動マーケットメーカーのオークションスロットに入札することで、手数料の割引を受けることができます。
+seo:
+    description: 自動マーケットメーカーのオークションスロットに入札することで、手数料の割引を受けることができます。
 labels:
   - AMM
 status: not_enabled

@@ -1,7 +1,8 @@
 ---
 html: ledger-structure.html
 parent: ledgers.html
-blurb: 個別のレジャーブロックの要素を詳しく見てみましょう。
+seo:
+    description: 個別のレジャーブロックの要素を詳しく見てみましょう。
 ---
 # レジャーの構成要素
 

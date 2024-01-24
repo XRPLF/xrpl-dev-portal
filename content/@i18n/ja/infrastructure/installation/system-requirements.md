@@ -1,7 +1,8 @@
 ---
 html: system-requirements.html
 parent: install-rippled.html
-blurb: rippledのハードウェアやソフトウェアのシステム要件
+seo:
+    description: rippledのハードウェアやソフトウェアのシステム要件
 labels:
   - コアサーバー
 ---

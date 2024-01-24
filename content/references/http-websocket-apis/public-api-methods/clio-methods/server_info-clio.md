@@ -1,7 +1,8 @@
 ---
 html: server_info-clio.html
 parent: clio-methods.html
-blurb: Retrieve status of the Clio server in human-readable format.
+seo:
+    description: Retrieve status of the Clio server in human-readable format.
 labels:
   - Core Server
 ---

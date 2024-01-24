@@ -1,7 +1,8 @@
 ---
 html: send-xrp.html
 parent: tasks.html
-blurb: Learn how to send test payments right from your browser.
+seo:
+    description: Learn how to send test payments right from your browser.
 cta_text: Send XRP
 labels:
   - XRP

@@ -1,7 +1,8 @@
 ---
 html: account_offers.html
 parent: account-methods.html
-blurb: 特定のアカウントから出されたオファーのリストを取得します。
+seo:
+    description: 特定のアカウントから出されたオファーのリストを取得します。
 labels:
   - 分散型取引所
 ---

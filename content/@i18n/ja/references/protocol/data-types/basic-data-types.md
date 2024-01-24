@@ -1,7 +1,8 @@
 ---
 html: basic-data-types.html
 parent: protocol-reference.html
-blurb: アドレス、レジャーインデックス、通貨コードなどの基本的なデータタイプのフォーマットと意味について説明します。
+seo:
+    description: アドレス、レジャーインデックス、通貨コードなどの基本的なデータタイプのフォーマットと意味について説明します。
 ---
 # 基本的なデータ型
 

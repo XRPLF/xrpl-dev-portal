@@ -1,7 +1,8 @@
 ---
 html: rippled-server-states.html
 parent: api-conventions.html
-blurb: 一部のAPIメソッドで報告される状態情報の定義です。
+seo:
+    description: 一部のAPIメソッドで報告される状態情報の定義です。
 labels:
   - コアサーバー
 ---

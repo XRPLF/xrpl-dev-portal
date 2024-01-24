@@ -1,7 +1,8 @@
 ---
 html: py-batch-minting.html
 parent: nfts-using-python.html
-blurb: Mint multiple NFTs with the press of a button.
+seo:
+    description: Mint multiple NFTs with the press of a button.
 labels:
   - Accounts
   - Quickstart

@@ -1,7 +1,8 @@
 ---
 html: health-check.html
 parent: peer-port-methods.html
-blurb: サーバの状態を報告するための特別なAPIメソッドです。
+seo:
+    description: サーバの状態を報告するための特別なAPIメソッドです。
 labels:
   - コアサーバー
 ---

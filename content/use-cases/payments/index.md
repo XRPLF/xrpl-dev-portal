@@ -4,7 +4,8 @@ parent: use-cases.html
 top_nav_grouping: Article Types
 metadata:
   indexPage: true
-blurb: Practical examples for using different types of payment on the XRP Ledger.
+seo:
+    description: Practical examples for using different types of payment on the XRP Ledger.
 ---
 # Payments
 

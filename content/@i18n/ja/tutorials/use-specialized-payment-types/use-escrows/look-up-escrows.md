@@ -1,7 +1,8 @@
 ---
 html: look-up-escrows.html
 parent: use-escrows.html
-blurb: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
+seo:
+    description: 送金元または送金先のアドレスを使って保留中のEscrowを検索します。
 labels:
   - Escrow
   - スマートコントラクト

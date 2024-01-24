@@ -1,7 +1,8 @@
 ---
 html: wallet_propose.html
 parent: key-generation-methods.html
-blurb: キーペアとXRP Ledgerアドレスを生成します。
+seo:
+    description: キーペアとXRP Ledgerアドレスを生成します。
 labels:
   - セキュリティ
   - アカウント

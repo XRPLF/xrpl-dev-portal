@@ -1,7 +1,8 @@
 ---
 html: fees.html
 parent: transactions.html
-blurb: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
+seo:
+    description: Learn about the types of fees allowed by the XRP Ledger, including neutral fees (payable to no one) that protect the ledger against abuse, as well as fees that users can collect from each other.
 labels:
   - Fees
 ---

@@ -1,7 +1,8 @@
 ---
 html: error-formatting.html
 parent: api-conventions.html
-blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスのエラーフォーマットと汎用エラーコードです。
+seo:
+    description: WebSocket、JSON-RPC、コマンドラインインターフェイスのエラーフォーマットと汎用エラーコードです。
 ---
 # エラーのフォーマット
 

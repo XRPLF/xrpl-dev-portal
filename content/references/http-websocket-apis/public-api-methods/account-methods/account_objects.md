@@ -1,7 +1,8 @@
 ---
 html: account_objects.html
 parent: account-methods.html
-blurb: Get all ledger objects owned by an account.
+seo:
+    description: Get all ledger objects owned by an account.
 labels:
   - Accounts
   - Data Retention

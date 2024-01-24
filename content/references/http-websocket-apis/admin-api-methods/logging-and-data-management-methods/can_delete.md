@@ -1,7 +1,8 @@
 ---
 html: can_delete.html
 parent: logging-and-data-management-methods.html
-blurb: Allow online deletion of ledgers up to a specific ledger.
+seo:
+    description: Allow online deletion of ledgers up to a specific ledger.
 labels:
   - Data Retention
 ---

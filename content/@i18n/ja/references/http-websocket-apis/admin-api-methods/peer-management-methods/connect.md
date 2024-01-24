@@ -1,7 +1,8 @@
 ---
 html: connect.html
 parent: peer-management-methods.html
-blurb: 特定のピアrippledサーバーに強制的に接続します。
+seo:
+    description: 特定のピアrippledサーバーに強制的に接続します。
 labels:
   - コアサーバー
 ---

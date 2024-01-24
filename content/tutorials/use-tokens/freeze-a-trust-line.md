@@ -1,7 +1,8 @@
 ---
 html: freeze-a-trust-line.html
 parent: use-tokens.html
-blurb: Freeze an individual holder of a token.
+seo:
+    description: Freeze an individual holder of a token.
 embed_xrpl_js: true
 filters:
   - interactive_steps

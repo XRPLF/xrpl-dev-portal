@@ -1,7 +1,8 @@
 ---
 html: use-a-peer-reservation.html
 parent: configure-peering.html
-blurb: Set up a more reliable connection to a specific peer using a peer reservation.
+seo:
+    description: Set up a more reliable connection to a specific peer using a peer reservation.
 labels:
   - Core Server
 ---

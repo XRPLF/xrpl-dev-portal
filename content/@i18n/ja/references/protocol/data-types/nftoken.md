@@ -1,7 +1,8 @@
 ---
 html: nftoken.html
 parent: basic-data-types.html
-blurb: XRPL NFTの紹介
+seo:
+    description: XRPL NFTの紹介
 labels:
   - 非代替性トークン, NFT
 ---

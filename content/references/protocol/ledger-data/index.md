@@ -1,7 +1,8 @@
 ---
 html: ledger-data-formats.html
 parent: protocol-reference.html
-blurb: Learn about individual entries that comprise the XRP Ledger's shared state data.
+seo:
+    description: Learn about individual entries that comprise the XRP Ledger's shared state data.
 metadata:
   indexPage: true
 ---

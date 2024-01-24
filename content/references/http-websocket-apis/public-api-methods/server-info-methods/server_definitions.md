@@ -1,7 +1,8 @@
 ---
 html: server_definitions.html
 parent: server-info-methods.html
-blurb: Retrieve an SDK-compatible `definitions.json`, generated from the `rippled` instance currently running.
+seo:
+    description: Retrieve an SDK-compatible `definitions.json`, generated from the `rippled` instance currently running.
 labels:
   - Core Server
 ---

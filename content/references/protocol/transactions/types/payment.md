@@ -1,7 +1,8 @@
 ---
 html: payment.html
 parent: transaction-types.html
-blurb: Send funds from one account to another.
+seo:
+    description: Send funds from one account to another.
 labels:
   - Payments
   - XRP

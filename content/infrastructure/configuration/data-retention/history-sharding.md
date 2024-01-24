@@ -1,7 +1,8 @@
 ---
 html: history-sharding.html
 parent: data-retention.html
-blurb: History sharding divides the work of keeping historical ledger data among rippled servers.
+seo:
+    description: History sharding divides the work of keeping historical ledger data among rippled servers.
 labels:
   - Data Retention
   - Core Server

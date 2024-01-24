@@ -1,6 +1,7 @@
 ---
 parent: use-tokens.html
-blurb: Set up an Automated Market Maker (AMM)
+seo:
+    description: Set up an Automated Market Maker (AMM)
 embed_xrpl_js: true
 status: not_enabled
 filters:

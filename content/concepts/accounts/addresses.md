@@ -1,7 +1,8 @@
 ---
 html: addresses.html
 parent: accounts.html
-blurb: Addresses uniquely identify XRP Ledger accounts, using base58 format.
+seo:
+    description: Addresses uniquely identify XRP Ledger accounts, using base58 format.
 labels:
   - Accounts
 ---

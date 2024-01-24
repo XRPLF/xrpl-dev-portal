@@ -1,7 +1,8 @@
 ---
 html: partial-payments.html
 parent: payment-types.html
-blurb: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
+seo:
+    description: Partial Paymentsは送金額から手数料を差し引き、変動額を送金します。Partial Paymentsは、追加コストなしで不審な支払いを返金したい場合に便利です。
 labels:
   - 支払い
   - セキュリティ

@@ -1,7 +1,8 @@
 ---
 html: paymentchannelclaim.html
 parent: transaction-types.html
-blurb: Claim money from a payment channel.
+seo:
+    description: Claim money from a payment channel.
 labels:
   - Payment Channels
 ---

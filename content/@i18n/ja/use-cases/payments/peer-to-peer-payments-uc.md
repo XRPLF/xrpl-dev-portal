@@ -1,7 +1,8 @@
 ---
 html: peer-to-peer-payments-uc.html
 parent: payments-uc.html
-blurb: XRP Ledgerを使用して、第三者の介入を受けずに日々の支払いを処理することができます。
+seo:
+    description: XRP Ledgerを使用して、第三者の介入を受けずに日々の支払いを処理することができます。
 labels:
   - トランザクション
 ---

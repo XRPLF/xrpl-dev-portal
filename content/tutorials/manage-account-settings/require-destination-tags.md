@@ -1,7 +1,8 @@
 ---
 html: require-destination-tags.html
 parent: manage-account-settings.html
-blurb: Require users to specify a destination tag when sending to your address.
+seo:
+    description: Require users to specify a destination tag when sending to your address.
 embed_xrpl_js: true
 filters:
   - interactive_steps

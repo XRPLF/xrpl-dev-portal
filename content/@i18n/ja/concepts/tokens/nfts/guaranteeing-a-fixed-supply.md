@@ -1,7 +1,8 @@
 ---
 html: nft-fixed-supply.html
 parent: non-fungible-tokens.html
-blurb: 新しいアカウントを使って一定数のNFTをミントし、そのアカウントをブラックホール化します。
+seo:
+    description: 新しいアカウントを使って一定数のNFTをミントし、そのアカウントをブラックホール化します。
 labels:
   - 非代替性トークン, NFT
 ---

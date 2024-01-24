@@ -1,7 +1,8 @@
 ---
 html: build-run-rippled-in-reporting-mode.html
 parent: install-rippled.html
-blurb: Build and run a special operating mode of rippled that handles remote procedure calls (RPC) for validated data.
+seo:
+    description: Build and run a special operating mode of rippled that handles remote procedure calls (RPC) for validated data.
 labels:
   - Core Server
   - Blockchain

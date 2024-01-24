@@ -1,7 +1,8 @@
 ---
 html: xchainclaim.html 
 parent: transaction-types.html
-blurb: Complete a cross-chain transfer of value by claiming the value on the destination chain.
+seo:
+    description: Complete a cross-chain transfer of value by claiming the value on the destination chain.
 labels:
   - Interoperability
 status: not_enabled

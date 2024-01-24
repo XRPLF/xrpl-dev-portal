@@ -1,7 +1,8 @@
 ---
 parent: freezes.html
 html: common-misconceptions-about-freezes.html
-blurb: XRP Ledgerのフリーズ機能について、よくある誤解を解いていきます。
+seo:
+    description: XRP Ledgerのフリーズ機能について、よくある誤解を解いていきます。
 labels:
   - トークン
 ---

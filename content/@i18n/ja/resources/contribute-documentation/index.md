@@ -1,7 +1,8 @@
 ---
 html: contribute-documentation.html
 parent: resources.html
-blurb: XRP Ledgerドキュメントのコントリビューションガイドです。
+seo:
+    description: XRP Ledgerドキュメントのコントリビューションガイドです。
 ---
 # ドキュメントへの貢献
 
@@ -95,7 +96,8 @@ html: the-rippled-server.html
 parent: concepts.html
 metadata:
   indexPage: true
-blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
+seo:
+    description: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
 ---
 ```
 

@@ -1,7 +1,8 @@
 ---
 html: ledger_current.html
 parent: ledger-methods.html
-blurb: Get the current working ledger version.
+seo:
+    description: Get the current working ledger version.
 labels:
   - Blockchain
 ---

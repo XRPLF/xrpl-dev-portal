@@ -1,7 +1,8 @@
 ---
 html: configure-online-deletion.html
 parent: data-retention.html
-blurb: Configure how far back your server should store transaction history.
+seo:
+    description: Configure how far back your server should store transaction history.
 labels:
   - Core Server
   - Data Retention

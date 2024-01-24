@@ -1,7 +1,8 @@
 ---
 html: health-check-interventions.html
 parent: troubleshoot-the-rippled-server.html
-blurb: 自動化されたインフラ監視の一環として、rippledサーバのヘルスチェックを使用します。
+seo:
+    description: 自動化されたインフラ監視の一環として、rippledサーバのヘルスチェックを使用します。
 labels:
   - コアサーバー
 ---

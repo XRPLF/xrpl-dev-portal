@@ -1,7 +1,8 @@
 ---
 html: rippled-server-modes.html
 parent: networks-and-servers.html
-blurb: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
+seo:
+    description: ストックサーバー、バリデータサーバー、スタンドアロンモードで運用されるrippledサーバーなど、rippledサーバーのモードについて説明します。
 labels:
   - コアサーバー
 ---

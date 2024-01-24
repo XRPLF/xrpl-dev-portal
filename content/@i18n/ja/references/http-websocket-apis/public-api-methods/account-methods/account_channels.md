@@ -1,7 +1,8 @@
 ---
 html: account_channels.html
 parent: account-methods.html
-blurb: アカウントのPayment Channelに関する情報を返します。
+seo:
+    description: アカウントのPayment Channelに関する情報を返します。
 labels:
   - Payment Channel
 ---

@@ -1,7 +1,8 @@
 ---
 html: nft_buy_offers.html
 parent: path-and-order-book-methods.html
-blurb: Get a list of all buy offers for a NFToken.
+seo:
+    description: Get a list of all buy offers for a NFToken.
 labels:
   - Non-fungible Tokens, NFTs, NFTokens
 ---

@@ -1,7 +1,8 @@
 ---
 html: build-on-linux-mac-windows.html
 parent: install-rippled.html
-blurb: Linux、Mac（macOS）、Windows上でrippledをビルドします。
+seo:
+    description: Linux、Mac（macOS）、Windows上でrippledをビルドします。
 labels:
   - コアサーバ
   - ブロックチェーン

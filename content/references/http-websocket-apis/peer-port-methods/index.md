@@ -3,7 +3,8 @@ html: peer-port-methods.html
 parent: http-websocket-apis.html
 metadata:
   indexPage: true
-blurb: Special API methods for sharing network topology and status metrics, served on the XRPL Peer Protocol port.
+seo:
+    description: Special API methods for sharing network topology and status metrics, served on the XRPL Peer Protocol port.
 ---
 # Peer Port Methods
 

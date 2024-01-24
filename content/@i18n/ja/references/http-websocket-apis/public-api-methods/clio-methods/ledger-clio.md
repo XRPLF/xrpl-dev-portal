@@ -1,7 +1,8 @@
 ---
 html: ledger-clio.html # Watch carefully for clashes w/ this filename
 parent: clio-methods.html
-blurb: レジャーのバージョン情報を取得します。
+seo:
+    description: レジャーのバージョン情報を取得します。
 labels:
   - ブロックチェーン
 ---

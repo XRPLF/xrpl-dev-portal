@@ -1,7 +1,8 @@
 ---
 html: accountset.html
 parent: transaction-types.html
-blurb: Set options on an account.
+seo:
+    description: Set options on an account.
 labels:
   - Accounts
 ---

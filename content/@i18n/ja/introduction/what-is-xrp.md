@@ -1,7 +1,8 @@
 ---
 html: what-is-xrp.html
 parent: introduction.html
-blurb: XRP Ledgerで取引される暗号通貨、XRPについてご紹介します。
+seo:
+    description: XRP Ledgerで取引される暗号通貨、XRPについてご紹介します。
 labels:
   - ブロックチェーン
 ---

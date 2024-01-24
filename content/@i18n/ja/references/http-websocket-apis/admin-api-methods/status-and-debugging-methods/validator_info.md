@@ -1,7 +1,8 @@
 ---
 html: validator_info.html
 parent: status-and-debugging-methods.html
-blurb: バリデータとして設定されている場合、サーバのバリデーション設定を取得します。
+seo:
+    description: バリデータとして設定されている場合、サーバのバリデーション設定を取得します。
 labels:
   - コアサーバー
   - ブロックチェーン

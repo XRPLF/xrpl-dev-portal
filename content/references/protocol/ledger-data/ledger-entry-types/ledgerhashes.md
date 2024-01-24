@@ -1,7 +1,8 @@
 ---
 html: ledgerhashes.html
 parent: ledger-entry-types.html
-blurb: Lists of prior ledger versions' hashes for history lookup.
+seo:
+    description: Lists of prior ledger versions' hashes for history lookup.
 labels:
   - Blockchain
 ---

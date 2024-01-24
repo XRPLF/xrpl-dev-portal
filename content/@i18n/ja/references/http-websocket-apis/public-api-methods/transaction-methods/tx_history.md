@@ -1,7 +1,8 @@
 ---
 html: tx_history.html
 parent: transaction-methods.html
-blurb: 直近に作成されたトランザクションの一部を取得します。
+seo:
+    description: 直近に作成されたトランザクションの一部を取得します。
 ---
 # tx_history
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/TxHistory.cpp "Source")

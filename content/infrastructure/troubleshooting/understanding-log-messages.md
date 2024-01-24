@@ -1,7 +1,8 @@
 ---
 html: understanding-log-messages.html
 parent: troubleshoot-the-rippled-server.html
-blurb: Interpret and respond to warning and error messages in the debug log.
+seo:
+    description: Interpret and respond to warning and error messages in the debug log.
 labels:
   - Core Server
 ---

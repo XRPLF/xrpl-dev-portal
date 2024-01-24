@@ -1,7 +1,8 @@
 ---
 html: ammcreate.html
 parent: transaction-types.html
-blurb: Create a new Automated Market Maker for trading a given pair of assets.
+seo:
+    description: Create a new Automated Market Maker for trading a given pair of assets.
 labels:
   - AMM
 status: not_enabled

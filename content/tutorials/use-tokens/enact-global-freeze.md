@@ -1,7 +1,8 @@
 ---
 html: enact-global-freeze.html
 parent: use-tokens.html
-blurb: Freeze all tokens issued by your address.
+seo:
+    description: Freeze all tokens issued by your address.
 embed_xrpl_js: true
 filters:
   - interactive_steps

@@ -1,7 +1,8 @@
 ---
 html: rippled-server-states.html
 parent: api-conventions.html
-blurb: Definitions of state information reported in some API methods.
+seo:
+    description: Definitions of state information reported in some API methods.
 labels:
   - Core Server
 ---

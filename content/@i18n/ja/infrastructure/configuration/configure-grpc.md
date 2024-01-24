@@ -1,7 +1,8 @@
 ---
 html: configure-grpc.html
 parent: configure-rippled.html
-blurb: gRPC APIを有効にして設定します。
+seo:
+    description: gRPC APIを有効にして設定します。
 labels:
   - コアサーバ
 ---

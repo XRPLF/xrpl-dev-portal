@@ -1,7 +1,8 @@
 ---
 html: py-transfer-nfts.html
 parent: nfts-using-python.html
-blurb: Use a Python test harness to create and accept NFT buy and sell offers.
+seo:
+    description: Use a Python test harness to create and accept NFT buy and sell offers.
 labels:
   - Quickstart
   - Tokens

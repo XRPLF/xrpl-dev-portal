@@ -1,7 +1,8 @@
 ---
 html: demurrage.html
 parent: trust-lines-and-issuing.html
-blurb: (廃止) 一部の古いXRP Ledgerツールは、組み込み金利やマイナス金利を持つ通貨コードをサポートしていました。.
+seo:
+    description: (廃止) 一部の古いXRP Ledgerツールは、組み込み金利やマイナス金利を持つ通貨コードをサポートしていました。.
 status: removed
 ---
 # デマレージ

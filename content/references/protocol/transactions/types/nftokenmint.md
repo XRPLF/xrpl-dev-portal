@@ -1,7 +1,8 @@
 ---
 html: nftokenmint.html
 parent: transaction-types.html
-blurb: Use TokenMint to issue new NFTs.
+seo:
+    description: Use TokenMint to issue new NFTs.
 labels:
   - Non-fungible Tokens, NFTs
 ---

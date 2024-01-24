@@ -1,7 +1,8 @@
 ---
 html: nftokenacceptoffer.html
 parent: transaction-types.html
-blurb: Accept an offer to buy or sell an NFToken.
+seo:
+    description: Accept an offer to buy or sell an NFToken.
 labels:
   - NFTs, Non-fungible Tokens
 ---

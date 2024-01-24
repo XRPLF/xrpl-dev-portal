@@ -1,7 +1,8 @@
 ---
 html: transaction-metadata.html
 parent: transaction-formats.html
-blurb: トランザクションのメタデータは、トランザクションが成功したかどうかに関係なく、トランザクションの結果を詳細に記述します。
+seo:
+    description: トランザクションのメタデータは、トランザクションが成功したかどうかに関係なく、トランザクションの結果を詳細に記述します。
 labels:
   - ブロックチェーン
 ---

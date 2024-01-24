@@ -1,7 +1,8 @@
 ---
 html: ammvote.html
 parent: transaction-types.html
-blurb: 自動マーケットメーカーインスタンスの取引手数料へ投票する。
+seo:
+    description: 自動マーケットメーカーインスタンスの取引手数料へ投票する。
 labels:
   - AMM
 status: not_enabled

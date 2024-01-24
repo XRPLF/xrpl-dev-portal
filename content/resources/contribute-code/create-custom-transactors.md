@@ -1,7 +1,8 @@
 ---
 html: create-custom-transactors.html
 parent: contribute-code.html
-blurb: Create custom transactors to interact with the XRP Ledger.
+seo:
+    description: Create custom transactors to interact with the XRP Ledger.
 labels:
   - Development
   - Blockchain

@@ -1,7 +1,8 @@
 ---
 html: negativeunl.html
 parent: ledger-entry-types.html
-blurb: List of validators currently believed to be offline.
+seo:
+    description: List of validators currently believed to be offline.
 labels:
   - Blockchain
 ---

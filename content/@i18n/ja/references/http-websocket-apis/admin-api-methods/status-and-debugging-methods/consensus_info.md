@@ -1,7 +1,8 @@
 ---
 html: consensus_info.html
 parent: status-and-debugging-methods.html
-blurb: デバッグのためのコンセンサスプロセスに関する情報を返します。
+seo:
+    description: デバッグのためのコンセンサスプロセスに関する情報を返します。
 labels:
   - ブロックチェーン
   - コアサーバー

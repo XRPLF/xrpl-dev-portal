@@ -1,7 +1,8 @@
 ---
 html: creating-diagrams.html
 parent: contribute-documentation.html
-blurb: Create diagrams that interact properly with light and dark mode settings.
+seo:
+    description: Create diagrams that interact properly with light and dark mode settings.
 ---
 # Creating Diagrams
 

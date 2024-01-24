@@ -1,7 +1,8 @@
 ---
 html: py-mint-and-burn-nfts.html
 parent: nfts-using-python.html
-blurb: Mint and burn NFTs.
+seo:
+    description: Mint and burn NFTs.
 labels:
   - Quickstart
   - Tokens

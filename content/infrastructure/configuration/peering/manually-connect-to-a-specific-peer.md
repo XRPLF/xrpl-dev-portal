@@ -1,7 +1,8 @@
 ---
 html: manually-connect-to-a-specific-peer.html
 parent: configure-peering.html
-blurb: Connect your rippled server to a specific peer.
+seo:
+    description: Connect your rippled server to a specific peer.
 labels:
   - Core Server
 ---

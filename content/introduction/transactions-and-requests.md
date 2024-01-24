@@ -1,7 +1,8 @@
 ---
 html: txn-and-requests.html
 parent: intro-to-xrpl.html
-blurb: All interactions with the ledger are either transactions or requests.
+seo:
+    description: All interactions with the ledger are either transactions or requests.
 labels:
   - Blockchain
 ---

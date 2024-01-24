@@ -1,7 +1,8 @@
 ---
 html: send-xrp.html
 parent: tasks.html
-blurb: Test Netを使用してXRPの送金をテストします。
+seo:
+    description: Test Netを使用してXRPの送金をテストします。
 cta_text: XRPを送金しよう
 embed_xrpl_js: true
 filters:

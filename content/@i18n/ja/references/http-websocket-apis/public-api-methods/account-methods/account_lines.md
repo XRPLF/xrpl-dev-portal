@@ -1,7 +1,8 @@
 ---
 html: account_lines.html
 parent: account-methods.html
-blurb: アカウントのトラストラインに関する情報を返します。
+seo:
+    description: アカウントのトラストラインに関する情報を返します。
 labels:
   - トークン
 ---

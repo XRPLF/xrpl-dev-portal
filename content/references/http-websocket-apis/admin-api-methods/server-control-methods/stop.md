@@ -1,7 +1,8 @@
 ---
 html: stop.html
 parent: server-control-methods.html
-blurb: Shut down the rippled server.
+seo:
+    description: Shut down the rippled server.
 labels:
   - Core Server
 ---

@@ -1,7 +1,8 @@
 ---
 html: run-rippled-as-a-validator.html
 parent: server-modes.html
-blurb: Have your server vote on the consensus ledger.
+seo:
+    description: Have your server vote on the consensus ledger.
 labels:
   - Core Server
   - Blockchain

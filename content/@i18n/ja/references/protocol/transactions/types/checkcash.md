@@ -1,7 +1,8 @@
 ---
 html: checkcash.html
 parent: transaction-types.html
-blurb: レジャーでCheckオブジェクトの清算を試みます。
+seo:
+    description: レジャーでCheckオブジェクトの清算を試みます。
 labels:
   - Checks
 ---

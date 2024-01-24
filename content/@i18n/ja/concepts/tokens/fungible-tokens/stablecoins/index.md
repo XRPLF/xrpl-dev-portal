@@ -1,7 +1,8 @@
 ---
 html: stablecoins.html
 parent: trust-lines-and-issuing.html
-blurb: XRP Ledger上で取引される一般的なステーブルコインには5種類あります。
+seo:
+    description: XRP Ledger上で取引される一般的なステーブルコインには5種類あります。
 labels:
   - XRP
   - ステーブルコイン

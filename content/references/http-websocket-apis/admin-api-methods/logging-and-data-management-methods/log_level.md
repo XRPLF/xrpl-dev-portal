@@ -1,7 +1,8 @@
 ---
 html: log_level.html
 parent: logging-and-data-management-methods.html
-blurb: Get or modify log verbosity.
+seo:
+    description: Get or modify log verbosity.
 labels:
   - Data Retention
 ---

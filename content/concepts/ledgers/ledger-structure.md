@@ -1,7 +1,8 @@
 ---
 html: ledger-structure.html
 parent: ledgers.html
-blurb: A closer look at the elements of an individual ledger block.
+seo:
+    description: A closer look at the elements of an individual ledger block.
 ---
 # Ledger Structure
 

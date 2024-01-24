@@ -1,7 +1,8 @@
 ---
 html: negativeunl.html
 parent: ledger-entry-types.html
-blurb: 現在オフラインと思われるバリデーターの一覧を表します。
+seo:
+    description: 現在オフラインと思われるバリデーターの一覧を表します。
 labels:
   - ブロックチェーン
 ---

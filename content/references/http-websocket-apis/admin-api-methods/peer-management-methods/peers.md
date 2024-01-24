@@ -1,7 +1,8 @@
 ---
 html: peers.html
 parent: peer-management-methods.html
-blurb: Get information about the peer servers connected.
+seo:
+    description: Get information about the peer servers connected.
 labels:
   - Core Server
 ---

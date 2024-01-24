@@ -1,7 +1,8 @@
 ---
 html: paymentchannelfund.html
 parent: transaction-types.html
-blurb: Payment ChannelにXRPを追加します。
+seo:
+    description: Payment ChannelにXRPを追加します。
 labels:
   - Payment Channel
 ---

@@ -1,7 +1,8 @@
 ---
 html: build-on-linux-mac-windows.html
 parent: install-rippled.html
-blurb: Build rippled on Linux, Mac (macOS), or Windows
+seo:
+    description: Build rippled on Linux, Mac (macOS), or Windows
 labels:
   - Core Server
   - Blockchain

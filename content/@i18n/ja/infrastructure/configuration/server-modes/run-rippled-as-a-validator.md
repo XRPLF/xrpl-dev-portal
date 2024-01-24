@@ -1,7 +1,8 @@
 ---
 html: run-rippled-as-a-validator.html
 parent: server-modes.html
-blurb: サーバーがコンセンサスレジャーで投票できるようにします。
+seo:
+    description: サーバーがコンセンサスレジャーで投票できるようにします。
 labels:
   - コアサーバー
   - ブロックチェーン

@@ -1,7 +1,8 @@
 ---
 html: offercreate.html
 parent: transaction-types.html
-blurb: Submit an order to exchange currency.
+seo:
+    description: Submit an order to exchange currency.
 labels:
   - Decentralized Exchange
 ---

@@ -1,7 +1,8 @@
 ---
 html: cash-a-check-for-a-flexible-amount.html
 parent: use-checks.html
-blurb: Checkから可能な限りの額を受領します。
+seo:
+    description: Checkから可能な限りの額を受領します。
 labels:
   - Checks
 ---

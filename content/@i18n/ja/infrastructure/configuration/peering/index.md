@@ -4,7 +4,8 @@ name: ピアリング
 parent: infrastructure.html
 metadata:
   indexPage: true
-blurb: サーバをピアツーピアネットワークに接続する方法を設定します。
+seo:
+    description: サーバをピアツーピアネットワークに接続する方法を設定します。
 labels:
   - コアサーバー
 ---

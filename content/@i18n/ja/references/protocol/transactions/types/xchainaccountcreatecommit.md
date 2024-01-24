@@ -1,7 +1,8 @@
 ---
 html: xchainaccountcreatecommit.html 
 parent: transaction-types.html
-blurb: ブリッジが接続するチェーンの一つでアカウントを作成します。このアカウントがそのチェーンのブリッジの入り口となります。
+seo:
+    description: ブリッジが接続するチェーンの一つでアカウントを作成します。このアカウントがそのチェーンのブリッジの入り口となります。
 labels:
   - 相互運用性
 status: not_enabled

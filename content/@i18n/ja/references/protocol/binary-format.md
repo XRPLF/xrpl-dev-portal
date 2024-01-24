@@ -1,7 +1,8 @@
 ---
 html: serialization.html
 parent: protocol-reference.html
-blurb: XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。
+seo:
+    description: XRP Ledgerトランザクションやその他のオブジェクトの場合のJSONフォーマットと正規バイナリーフォーマットとの変換です。
 labels:
   - アカウント
   - トランザクション送信

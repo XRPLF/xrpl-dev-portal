@@ -1,7 +1,8 @@
 ---
 html: enable-link-compression.html
 parent: configure-peering.html
-blurb: ピアツーピア通信を圧縮して帯域幅を節約します。
+seo:
+    description: ピアツーピア通信を圧縮して帯域幅を節約します。
 labels:
   - コアサーバ
 ---

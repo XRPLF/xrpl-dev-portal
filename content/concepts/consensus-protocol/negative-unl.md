@@ -1,7 +1,8 @@
 ---
 html: negative-unl.html
 parent: consensus.html
-blurb: Understand how Negative UNL improves the ledger's resilience during partial outages.
+seo:
+    description: Understand how Negative UNL improves the ledger's resilience during partial outages.
 labels:
   - Blockchain
 ---

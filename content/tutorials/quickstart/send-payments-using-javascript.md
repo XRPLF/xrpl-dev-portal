@@ -1,7 +1,8 @@
 ---
 html: send-payments-using-javascript.html
 parent: modular-tutorials-in-javascript.html
-blurb: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
+seo:
+    description: Use a JavaScript test harness to send XRP, trade currencies, and mint and trade NFTs.
 labels:
   - Accounts
   - Cross-Currency

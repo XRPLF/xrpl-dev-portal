@@ -1,7 +1,8 @@
 ---
 html: direct-xrp-payments.html
 parent: payment-types.html
-blurb: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
+seo:
+    description: XRPによる直接支払いは、XRP Ledgerで資産を送金する最も簡単な方法です。
 ---
 # XRPによる直接支払い
 

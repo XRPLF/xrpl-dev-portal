@@ -1,7 +1,8 @@
 ---
 html: nft-apis.html
 parent: non-fungible-tokens.html
-blurb: 専用のAPIを使用すると、有用なNFTメタデータにアクセスできます。
+seo:
+    description: 専用のAPIを使用すると、有用なNFTメタデータにアクセスできます。
 labels:
   - 非代替性トークン, NFT
 ---

@@ -1,6 +1,7 @@
 ---
 html: xrpljs2-migration-guide.html
-blurb: JavaScriptコードをより新しいクライアントライブラリに移行する方法を学びましょう。
+seo:
+    description: JavaScriptコードをより新しいクライアントライブラリに移行する方法を学びましょう。
 parent: https://js.xrpl.org/
 ---
 # ripple-lib 1.xからxrpl.js 2.xへの移行ガイド

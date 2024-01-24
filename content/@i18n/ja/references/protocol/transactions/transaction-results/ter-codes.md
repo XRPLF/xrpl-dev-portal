@@ -1,7 +1,8 @@
 ---
 html: ter-codes.html
 parent: transaction-results.html
-blurb: terコードは、トランザクションは失敗したけれども、将来そのトランザクションを正常に適用できる可能性があることを示します。
+seo:
+    description: terコードは、トランザクションは失敗したけれども、将来そのトランザクションを正常に適用できる可能性があることを示します。
 labels:
   - トランザクション送信
 ---

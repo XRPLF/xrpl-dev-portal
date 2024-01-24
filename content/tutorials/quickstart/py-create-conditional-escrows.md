@@ -1,7 +1,8 @@
 ---
 html: py-create-conditional-escrows.html
 parent: send-payments-using-python.html
-blurb: Create, finish, or cancel condition-based escrow transactions.
+seo:
+    description: Create, finish, or cancel condition-based escrow transactions.
 labels:
   - Accounts
   - Quickstart

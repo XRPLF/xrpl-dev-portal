@@ -1,7 +1,8 @@
 ---
 html: configure-statsd.html
 parent: configure-rippled.html
-blurb: StatsDの統計データでrippledサーバを監視します。
+seo:
+    description: StatsDの統計データでrippledサーバを監視します。
 labels:
   - コアサーバ
 ---

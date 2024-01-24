@@ -1,7 +1,8 @@
 ---
 html: nftoken.html
 parent: basic-data-types.html
-blurb: Introduction to XRPL NFTs.
+seo:
+    description: Introduction to XRPL NFTs.
 labels:
   - Non-fungible Tokens, NFTs
 ---

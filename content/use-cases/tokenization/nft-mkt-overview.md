@@ -1,7 +1,8 @@
 ---
 html: nft-mkt-overview.html
 parent: tokenization.html
-blurb: Overview of NFT Marketplace use cases.
+seo:
+    description: Overview of NFT Marketplace use cases.
 labels:
   - Tokenization
 ---

@@ -1,7 +1,8 @@
 ---
 html: peer_reservations_del.html
 parent: peer-management-methods.html
-blurb: Remove a reserved slot for a specific peer server.
+seo:
+    description: Remove a reserved slot for a specific peer server.
 labels:
   - Core Server
 ---

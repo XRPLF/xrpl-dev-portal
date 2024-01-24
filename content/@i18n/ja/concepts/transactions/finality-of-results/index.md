@@ -1,7 +1,8 @@
 ---
 html: finality-of-results.html
 parent: transactions.html
-blurb: トランザクション結果が最終的かつ不変になるタイミングについて説明します。
+seo:
+    description: トランザクション結果が最終的かつ不変になるタイミングについて説明します。
 labels:
   - トランザクション送信
   - ブロックチェーン

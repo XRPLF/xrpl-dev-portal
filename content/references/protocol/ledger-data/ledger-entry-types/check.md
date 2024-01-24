@@ -1,7 +1,8 @@
 ---
 html: check.html
 parent: ledger-entry-types.html
-blurb: A check that can be redeemed for money by its destination.
+seo:
+    description: A check that can be redeemed for money by its destination.
 labels:
   - Checks
 ---

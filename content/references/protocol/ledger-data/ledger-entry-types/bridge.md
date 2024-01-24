@@ -1,7 +1,8 @@
 ---
 html: bridge.html
 parent: ledger-entry-types.html
-blurb: A `bridge` object represents a single cross-chain bridge that connects and enables value to move efficiently between two blockchains. 
+seo:
+    description: A `bridge` object represents a single cross-chain bridge that connects and enables value to move efficiently between two blockchains. 
 labels:
   - Interoperability
 status: not_enabled

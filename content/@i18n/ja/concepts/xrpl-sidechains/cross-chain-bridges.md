@@ -1,7 +1,8 @@
 ---
 html: cross-chain-bridges.html
 parent: xrpl-sidechains.html
-blurb: XRP Ledgerのクロスチェーンブリッジは、XRPや他のトークン(IOU)の価値をブロックチェーン間で効率的に移動させることを可能にします。
+seo:
+    description: XRP Ledgerのクロスチェーンブリッジは、XRPや他のトークン(IOU)の価値をブロックチェーン間で効率的に移動させることを可能にします。
 status: not_enabled
 labels:
   - ブロックチェーン

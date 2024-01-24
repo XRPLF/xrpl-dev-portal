@@ -1,7 +1,8 @@
 ---
 html: secure-signing.html
 parent: transactions.html
-blurb: Set up an environment where you can submit transactions securely.
+seo:
+    description: Set up an environment where you can submit transactions securely.
 labels:
   - Security
   - Development

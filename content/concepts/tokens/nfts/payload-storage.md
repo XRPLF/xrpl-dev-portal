@@ -1,7 +1,8 @@
 ---
 html: nft-storage.html
 parent: non-fungible-tokens.html
-blurb: Storage options for the payload of your NFT.
+seo:
+    description: Storage options for the payload of your NFT.
 labels:
   - Non-fungible Tokens, NFTs
 ---

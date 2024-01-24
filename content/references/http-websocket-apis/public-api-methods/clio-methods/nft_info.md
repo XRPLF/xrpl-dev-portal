@@ -1,7 +1,8 @@
 ---
 html: nft_info.html
 parent: clio-methods.html
-blurb: Retrieve information about the specified NFT using Clio server's `nft_info` API.
+seo:
+    description: Retrieve information about the specified NFT using Clio server's `nft_info` API.
 labels:
   - Non-fungible Tokens, NFTs
 ---

@@ -1,7 +1,8 @@
 ---
 html: invariant-checking.html
 parent: consensus.html
-blurb: Understand what invariant checking is, why it exists, how it works, and what invariant checks are active.
+seo:
+    description: Understand what invariant checking is, why it exists, how it works, and what invariant checks are active.
 labels:
   - Blockchain
   - Security

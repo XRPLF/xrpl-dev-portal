@@ -1,7 +1,8 @@
 ---
 html: the-clio-server.html
 parent: networks-and-servers.html
-blurb: Clio is an XRP Ledger server optimized for API calls.
+seo:
+    description: Clio is an XRP Ledger server optimized for API calls.
 ---
 # The Clio Server
 

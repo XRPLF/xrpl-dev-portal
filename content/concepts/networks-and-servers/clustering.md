@@ -1,7 +1,8 @@
 ---
 html: clustering.html
 parent: networks-and-servers.html
-blurb: Run rippled servers in a cluster to share the load of cryptography between them.
+seo:
+    description: Run rippled servers in a cluster to share the load of cryptography between them.
 labels:
   - Core Server
 ---

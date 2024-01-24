@@ -1,7 +1,8 @@
 ---
 html: software-ecosystem.html
 parent: introduction.html
-blurb: どのようなXRP Ledgerソフトウェアがあり、どのように組み合わされているのか、その概要を知ることができます。
+seo:
+    description: どのようなXRP Ledgerソフトウェアがあり、どのように組み合わされているのか、その概要を知ることができます。
 labels:
   - コアサーバ
 ---

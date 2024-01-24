@@ -1,7 +1,8 @@
 ---
 html: escrow.html
 parent: payment-types.html
-blurb: Escrow holds funds until specified conditions are met.
+seo:
+    description: Escrow holds funds until specified conditions are met.
 labels:
   - Escrow
 ---

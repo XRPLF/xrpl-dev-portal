@@ -1,7 +1,8 @@
 ---
 html: demurrage.html
 parent: trust-lines-and-issuing.html
-blurb: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
+seo:
+    description: (Obsolete) Some older XRP Ledger tools used to support currency codes with built-in interest and negative interest rates.
 status: removed
 ---
 # Demurrage

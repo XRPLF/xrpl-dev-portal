@@ -1,7 +1,8 @@
 ---
 html: clustering.html
 parent: networks-and-servers.html
-blurb: 暗号処理の負荷を分散させるためにクラスターでrippledサーバーを運用できます。
+seo:
+    description: 暗号処理の負荷を分散させるためにクラスターでrippledサーバーを運用できます。
 labels:
   - コアサーバー
 ---

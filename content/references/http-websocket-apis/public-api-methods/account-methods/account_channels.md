@@ -1,7 +1,8 @@
 ---
 html: account_channels.html
 parent: account-methods.html
-blurb: Get a list of payment channels where the account is the source of the channel.
+seo:
+    description: Get a list of payment channels where the account is the source of the channel.
 labels:
   - Payment Channels
 ---

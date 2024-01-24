@@ -1,7 +1,8 @@
 ---
 html: trust-lines-and-issuing.html
 parent: tokens.html
-blurb: Learn about the properties and rationale of trust lines.
+seo:
+    description: Learn about the properties and rationale of trust lines.
 labels:
   - Tokens
 ---

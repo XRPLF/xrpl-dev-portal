@@ -1,7 +1,8 @@
 ---
 html: unsubscribe.html
 parent: subscription-methods.html
-blurb: Stop listening for updates about a particular subject.
+seo:
+    description: Stop listening for updates about a particular subject.
 labels:
   - Payments
   - Blockchain

@@ -1,7 +1,8 @@
 ---
 html: subscribe.html
 parent: subscription-methods.html
-blurb: Listen for updates about a particular subject.
+seo:
+    description: Listen for updates about a particular subject.
 labels:
   - Payments
   - Blockchain

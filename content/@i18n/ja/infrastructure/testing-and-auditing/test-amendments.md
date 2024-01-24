@@ -1,7 +1,8 @@
 ---
 html: test-amendments.html
 parent: configure-rippled.html
-blurb: ネットワーク上で有効になる前に、Amendmentをテストすることができます。
+seo:
+    description: ネットワーク上で有効になる前に、Amendmentをテストすることができます。
 labels:
   - ブロックチェーン
 ---

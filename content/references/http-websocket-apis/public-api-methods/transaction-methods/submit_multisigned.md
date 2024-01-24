@@ -1,7 +1,8 @@
 ---
 html: submit_multisigned.html
 parent: transaction-methods.html
-blurb: Send a multi-signed transaction to the network.
+seo:
+    description: Send a multi-signed transaction to the network.
 labels:
   - Transaction Sending
 ---

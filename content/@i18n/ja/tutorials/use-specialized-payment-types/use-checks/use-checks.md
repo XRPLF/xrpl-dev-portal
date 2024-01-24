@@ -1,7 +1,8 @@
 ---
 html: use-checks.html
 parent: use-specialized-payment-types.html
-blurb: XRP LedgerのCheckは、紙の小切手と同じように、別のアカウントに資金を振り込ませることができます。
+seo:
+    description: XRP LedgerのCheckは、紙の小切手と同じように、別のアカウントに資金を振り込ませることができます。
 metadata:
   indexPage: true
 labels:

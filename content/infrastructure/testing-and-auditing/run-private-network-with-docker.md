@@ -2,7 +2,8 @@
 html: private-network-with-docker.html
 name: Run a Private Network with Docker
 parent: use-stand-alone-mode.html
-blurb: Learn how to set up your own XRP private ledger network with Docker and Docker Compose.
+seo:
+    description: Learn how to set up your own XRP private ledger network with Docker and Docker Compose.
 labels:
   - Core Server
 ---

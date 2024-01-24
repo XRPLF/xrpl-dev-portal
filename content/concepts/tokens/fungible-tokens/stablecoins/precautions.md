@@ -1,7 +1,8 @@
 ---
 html: stablecoin-precautions.html
 parent: stablecoins.html
-blurb: Precautions to consider when transferring stablecoin funds in and out of the XRPL.
+seo:
+    description: Precautions to consider when transferring stablecoin funds in and out of the XRPL.
 labels:
   - Tokens
 ---

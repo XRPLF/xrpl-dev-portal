@@ -1,7 +1,8 @@
 ---
 html: print.html
 parent: status-and-debugging-methods.html
-blurb: Get information about internal subsystems.
+seo:
+    description: Get information about internal subsystems.
 labels:
   - Core Server
 ---

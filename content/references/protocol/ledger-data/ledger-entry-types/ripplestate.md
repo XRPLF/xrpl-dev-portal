@@ -1,7 +1,8 @@
 ---
 html: ripplestate.html
 parent: ledger-entry-types.html
-blurb: This entry represents a trust line, tracking the net balance of tokens between them.
+seo:
+    description: This entry represents a trust line, tracking the net balance of tokens between them.
 labels:
   - Tokens
 ---

@@ -1,7 +1,8 @@
 ---
 html: amendments-object.html #amendments.html is taken by the concept page
 parent: ledger-entry-types.html
-blurb: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
+seo:
+    description: 有効化されているAmendmentと保留中のAmendmentのステータスを持つシングルトンオブジェクトです。
 labels:
   - ブロックチェーン
 ---

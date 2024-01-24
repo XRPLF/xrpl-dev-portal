@@ -1,7 +1,8 @@
 ---
 html: validation_create.html
 parent: key-generation-methods.html
-blurb: rippledサーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
+seo:
+    description: rippledサーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
 labels:
   - セキュリティ
   - コアサーバー

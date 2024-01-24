@@ -1,7 +1,8 @@
 ---
 html: paymentchannelcreate.html
 parent: transaction-types.html
-blurb: 新しいペイメントチャネルを作成します。
+seo:
+    description: 新しいペイメントチャネルを作成します。
 labels:
   - Payment Channel
 ---

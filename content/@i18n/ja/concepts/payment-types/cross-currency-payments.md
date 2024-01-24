@@ -1,7 +1,8 @@
 ---
 html: cross-currency-payments.html
 parent: payment-types.html
-blurb: クロスカレンシー支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。
+seo:
+    description: クロスカレンシー支払いでは、パスとオーダーブックを通じて変換するのとは異なる通貨を自動的にに送金します。
 labels:
   - クロスカレンシー
   - 支払い

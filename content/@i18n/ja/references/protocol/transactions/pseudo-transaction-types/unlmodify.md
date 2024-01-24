@@ -1,7 +1,8 @@
 ---
 html: unlmodify.html
 parent: pseudo-transaction-types.html
-blurb: 現在オフラインとみなされている信頼できるバリデーターのリストを変更します。
+seo:
+    description: 現在オフラインとみなされている信頼できるバリデーターのリストを変更します。
 labels:
   - ブロックチェーン
 ---

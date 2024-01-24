@@ -1,7 +1,8 @@
 ---
 html: nftokencreateoffer.html
 parent: transaction-types.html
-blurb: NFTの売買のオファーを作成する。
+seo:
+    description: NFTの売買のオファーを作成する。
 labels:
   - 非代替性トークン, NFT
 ---

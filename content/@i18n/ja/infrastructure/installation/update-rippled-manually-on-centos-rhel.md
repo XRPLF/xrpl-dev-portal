@@ -1,7 +1,8 @@
 ---
 html: update-rippled-manually-on-centos-rhel.html
 parent: install-rippled.html
-blurb: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
+seo:
+    description: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
 labels:
   - コアサーバー
   - セキュリティ

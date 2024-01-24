@@ -1,7 +1,8 @@
 ---
 html: checkcancel.html
 parent: transaction-types.html
-blurb: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
+seo:
+    description: 未清算のCheckを取り消し、送金を行わずにレジャーから削除します。
 labels:
   - Checks
 ---

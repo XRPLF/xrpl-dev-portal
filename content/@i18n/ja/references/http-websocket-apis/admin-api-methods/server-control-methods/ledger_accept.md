@@ -1,7 +1,8 @@
 ---
 html: ledger_accept.html
 parent: server-control-methods.html
-blurb: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
+seo:
+    description: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
 labels:
   - コアサーバー
 ---

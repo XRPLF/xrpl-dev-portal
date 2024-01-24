@@ -1,7 +1,8 @@
 ---
 html: stablecoins.html
 parent: trust-lines-and-issuing.html
-blurb: There are five common types of stablecoin traded on the XRP Ledger.
+seo:
+    description: There are five common types of stablecoin traded on the XRP Ledger.
 labels:
   - XRP
   - Stablecoin

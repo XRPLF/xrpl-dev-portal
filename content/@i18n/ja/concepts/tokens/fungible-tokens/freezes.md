@@ -1,7 +1,8 @@
 ---
 html: freezes.html
 parent: trust-lines-and-issuing.html
-blurb: 発行者はコンプライアンス目的でトークンの取引を停止できます。
+seo:
+    description: 発行者はコンプライアンス目的でトークンの取引を停止できます。
 labels:
   - トークン
 ---

@@ -1,7 +1,8 @@
 ---
 html: error-formatting.html
 parent: api-conventions.html
-blurb: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
+seo:
+    description: Error formats and common error codes for WebSocket, JSON-RPC, and Commandline interfaces.
 labels:
   - Development
 ---

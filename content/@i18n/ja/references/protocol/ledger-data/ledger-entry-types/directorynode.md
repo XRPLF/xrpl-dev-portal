@@ -1,7 +1,8 @@
 ---
 html: directorynode.html
 parent: ledger-entry-types.html
-blurb: 他のオブジェクトへのリンクを含みます。
+seo:
+    description: 他のオブジェクトへのリンクを含みます。
 labels:
   - 分散型取引所
   - データ保持

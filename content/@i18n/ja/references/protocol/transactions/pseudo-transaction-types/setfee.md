@@ -1,7 +1,8 @@
 ---
 html: setfee.html
 parent: pseudo-transaction-types.html
-blurb: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
+seo:
+    description: 手数料投票の結果としてトランザクションコストまたはアカウント準備金の要件が変更されます。
 labels:
   - 手数料
 ---

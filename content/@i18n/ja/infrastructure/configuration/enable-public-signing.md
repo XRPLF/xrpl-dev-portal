@@ -1,7 +1,8 @@
 ---
 html: enable-public-signing.html
 parent: configure-rippled.html
-blurb: 他の人があなたのサーバーを使ってトランザクションに署名できるようにします。（非推奨）
+seo:
+    description: 他の人があなたのサーバーを使ってトランザクションに署名できるようにします。（非推奨）
 labels:
   - コアサーバー
   - セキュリティ

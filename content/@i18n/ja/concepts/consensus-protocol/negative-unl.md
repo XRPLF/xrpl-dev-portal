@@ -1,7 +1,8 @@
 ---
 html: negative-unl.html
 parent: consensus.html
-blurb: ネガティブUNLが部分的な停止時に台帳の耐障害性を向上させることを理解する。
+seo:
+    description: ネガティブUNLが部分的な停止時に台帳の耐障害性を向上させることを理解する。
 labels:
   - ブロックチェーン
 ---

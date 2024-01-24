@@ -1,7 +1,8 @@
 ---
 html: checkcancel.html
 parent: transaction-types.html
-blurb: Cancel a check.
+seo:
+    description: Cancel a check.
 labels:
   - Checks
 ---

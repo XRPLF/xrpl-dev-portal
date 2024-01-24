@@ -1,7 +1,8 @@
 ---
 html: tec-codes.html
 parent: transaction-results.html
-blurb: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
+seo:
+    description: tec codes indicate that the transaction failed, but it was applied to a ledger to deduct the transaction cost.
 labels:
   - Transaction Sending
 ---

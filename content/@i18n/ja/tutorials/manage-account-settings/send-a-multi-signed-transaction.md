@@ -1,7 +1,8 @@
 ---
 html: send-a-multi-signed-transaction.html
 parent: manage-account-settings.html
-blurb: マルチシグトランザクションを作成、署名、送信する。
+seo:
+    description: マルチシグトランザクションを作成、署名、送信する。
 labels:
   - セキュリティ
 ---

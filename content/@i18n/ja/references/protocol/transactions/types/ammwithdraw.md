@@ -1,7 +1,8 @@
 ---
 html: ammwithdraw.html
 parent: transaction-types.html
-blurb: LPトークを自動マーケットメーカーに返却し、プールが保有する資産の一部と引き換えマス。
+seo:
+    description: LPトークを自動マーケットメーカーに返却し、プールが保有する資産の一部と引き換えマス。
 labels:
   - AMM
 status: not_enabled

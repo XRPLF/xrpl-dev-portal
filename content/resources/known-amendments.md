@@ -1,7 +1,8 @@
 ---
 html: known-amendments.html
 parent: resources.html
-blurb: List of all known amendments to the XRP Ledger protocol and their status.
+seo:
+    description: List of all known amendments to the XRP Ledger protocol and their status.
 labels:
   - Blockchain
 ---

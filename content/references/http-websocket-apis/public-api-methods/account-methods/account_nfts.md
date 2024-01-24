@@ -1,7 +1,8 @@
 ---
 html: account_nfts.html
 parent: account-methods.html
-blurb: Get a list of all NFTs for an account.
+seo:
+    description: Get a list of all NFTs for an account.
 labels:
   - Non-fungible Tokens, NFTs
 ---

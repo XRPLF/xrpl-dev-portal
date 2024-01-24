@@ -1,7 +1,8 @@
 ---
 html: look-up-escrows.html
 parent: use-escrows.html
-blurb: Look up pending escrows by sender or destination address.
+seo:
+    description: Look up pending escrows by sender or destination address.
 labels:
   - Escrow
   - Smart Contracts

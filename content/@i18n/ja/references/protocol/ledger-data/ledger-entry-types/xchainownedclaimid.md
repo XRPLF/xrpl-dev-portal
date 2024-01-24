@@ -1,7 +1,8 @@
 ---
 html: xchainownedclaimid.html
 parent: ledger-entry-types.html
-blurb: XChainOwnedClaimIDオブジェクトは、クロスチェーンでの価値の移動の*1つ*を表します。
+seo:
+    description: XChainOwnedClaimIDオブジェクトは、クロスチェーンでの価値の移動の*1つ*を表します。
 labels:
   - 相互運用性
 status: not_enabled

@@ -1,7 +1,8 @@
 ---
 html: nft-storage.html
 parent: non-fungible-tokens.html
-blurb: NFTのペイロードのストレージオプション。
+seo:
+    description: NFTのペイロードのストレージオプション。
 labels:
   - 非代替性トークン, NFT
 ---

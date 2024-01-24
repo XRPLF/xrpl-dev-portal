@@ -1,7 +1,8 @@
 ---
 html: look-up-checks-by-sender.html
 parent: use-checks.html
-blurb: 特定のアドレスで送信されるすべてのCheckのリストを取得する。
+seo:
+    description: 特定のアドレスで送信されるすべてのCheckのリストを取得する。
 labels:
   - Checks
 ---

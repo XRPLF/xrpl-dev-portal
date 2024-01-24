@@ -1,7 +1,8 @@
 ---
 html: noripple_check.html
 parent: account-methods.html
-blurb: Get recommended changes to an account's Default Ripple and No Ripple settings.
+seo:
+    description: Get recommended changes to an account's Default Ripple and No Ripple settings.
 labels:
   - Tokens
 ---

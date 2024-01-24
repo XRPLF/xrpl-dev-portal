@@ -1,7 +1,8 @@
 ---
 html: xchainmodifybridge.html 
 parent: transaction-types.html
-blurb: Modify the parameters of a bridge.
+seo:
+    description: Modify the parameters of a bridge.
 labels:
   - Interoperability
 status: not_enabled

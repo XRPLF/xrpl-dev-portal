@@ -1,7 +1,8 @@
 ---
 html: accountset.html
 parent: transaction-types.html
-blurb: XRP Ledgerのアカウントのプロパティーを修正します。
+seo:
+    description: XRP Ledgerのアカウントのプロパティーを修正します。
 labels:
   - アカウント
 ---

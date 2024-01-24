@@ -1,7 +1,8 @@
 ---
 html: transaction-queue.html
 parent: transactions.html
-blurb: コンセンサスに至る前にトランザクションをどのようにキューに入れることができるか説明します。
+seo:
+    description: コンセンサスに至る前にトランザクションをどのようにキューに入れることができるか説明します。
 labels:
   - トランザクション送信
 ---

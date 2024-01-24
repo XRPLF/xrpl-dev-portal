@@ -4,7 +4,8 @@ parent: php.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
-blurb: Build a PHP app that interacts with the XRP Ledger.
+seo:
+    description: Build a PHP app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: PHP
 top_nav_grouping: Get Started

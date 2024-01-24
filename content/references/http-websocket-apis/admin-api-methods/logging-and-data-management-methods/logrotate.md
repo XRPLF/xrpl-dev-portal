@@ -1,7 +1,8 @@
 ---
 html: logrotate.html
 parent: logging-and-data-management-methods.html
-blurb: Reopen the log file.
+seo:
+    description: Reopen the log file.
 labels:
   - Data Retention
 ---

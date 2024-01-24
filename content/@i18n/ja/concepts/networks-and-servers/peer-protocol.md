@@ -1,7 +1,8 @@
 ---
 html: peer-protocol.html
 parent: networks-and-servers.html
-blurb: ピアプロトコルは、rippledサーバーが互いに通信する言語を指定します。
+seo:
+    description: ピアプロトコルは、rippledサーバーが互いに通信する言語を指定します。
 labels:
   - コアサーバー
   - ブロックチェーン

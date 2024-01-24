@@ -1,7 +1,8 @@
 ---
 html: tickets.html
 parent: accounts.html
-blurb: トランザクションを非連続的な順序で送信する
+seo:
+    description: トランザクションを非連続的な順序で送信する
 labels:
   - アカウント
   - トランザクション送信

@@ -1,7 +1,8 @@
 ---
 html: amm.html
 parent: ledger-entry-types.html
-blurb: The definition and details of an Automated Market Maker (AMM) instance.
+seo:
+    description: The definition and details of an Automated Market Maker (AMM) instance.
 labels:
   - AMM
 status: not_enabled

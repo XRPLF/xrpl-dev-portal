@@ -1,7 +1,8 @@
 ---
 html: bouncing-payments.html
 parent: payment-types.html
-blurb: 支払いの目的が不明確な場合は、送り主に返却してください。
+seo:
+    description: 支払いの目的が不明確な場合は、送り主に返却してください。
 labels:
   - トークン
 ---

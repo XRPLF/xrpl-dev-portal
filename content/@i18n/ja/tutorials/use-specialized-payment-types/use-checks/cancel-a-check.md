@@ -1,7 +1,8 @@
 ---
 html: cancel-a-check.html
 parent: use-checks.html
-blurb: 送金を行わずにCheckを取り消す。
+seo:
+    description: 送金を行わずにCheckを取り消す。
 labels:
   - Checks
 ---

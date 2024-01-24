@@ -1,7 +1,8 @@
 ---
 html: networks-and-servers.html
 parent: concepts.html
-blurb: rippled is the core peer-to-peer server that manages the XRP Ledger.
+seo:
+    description: rippled is the core peer-to-peer server that manages the XRP Ledger.
 metadata:
   indexPage: true
 ---

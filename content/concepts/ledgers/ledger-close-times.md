@@ -1,7 +1,8 @@
 ---
 html: ledger-close-times.html
 parent: ledgers.html
-blurb: How the XRP Ledger calculates a unique close time value for each ledger version.
+seo:
+    description: How the XRP Ledger calculates a unique close time value for each ledger version.
 labels:
   - Blockchain
 ---

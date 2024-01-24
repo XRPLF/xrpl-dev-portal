@@ -1,7 +1,8 @@
 ---
 html: feature.html
 parent: status-and-debugging-methods.html
-blurb: Get information about protocol amendments.
+seo:
+    description: Get information about protocol amendments.
 labels:
   - Blockchain
   - Core Server

@@ -1,7 +1,8 @@
 ---
 html: ter-codes.html
 parent: transaction-results.html
-blurb: ter codes indicate that the transaction has not been applied yet, but it could apply successfully in the future - for example, if some other transaction applies first.
+seo:
+    description: ter codes indicate that the transaction has not been applied yet, but it could apply successfully in the future - for example, if some other transaction applies first.
 labels:
   - Transaction Sending
 ---
