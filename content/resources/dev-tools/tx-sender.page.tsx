@@ -15,6 +15,13 @@ import { DestinationAddressInput } from './components/DestinationAddressInput';
 import { StatusSidebar } from './components/StatusSidebar';
 import { TransactionButton } from './components/TransactionButton';
 
+export const frontmatter = {
+  seo: {
+    title: 'Transaction Sender',
+    description: "Send test transactions to the account of your choice to test how your software handles them.",
+  }
+};
+
 async function onClickCreateEscrow(
     submitConstData: SubmitConstData,
     sendingWallet: Wallet | undefined, 

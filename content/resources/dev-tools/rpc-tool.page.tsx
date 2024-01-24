@@ -8,6 +8,13 @@ import { Client, isValidAddress } from 'xrpl'
 import { RPCResponseGroup } from './components/rpc-tool/rpc-response-group';
 import { clsx } from 'clsx';
 
+export const frontmatter = {
+  seo: {
+    title: 'RPC Tool',
+    description: "Quickly query several key details about an XRP Ledger account or transaction",
+  }
+};
+
 export default function RpcTool() {
   const { hash: slug } = useLocation();
   const [accountInfoResponse, setAccountInfoResponse] = useState(null);

@@ -5,6 +5,13 @@ import { Client, dropsToXrp, Wallet } from 'xrpl';
 import * as faucetData from './faucets.json'
 import XRPLoader from '../../@theme/components/XRPLoader';
 
+export const frontmatter = {
+  seo: {
+    title: 'XRP Faucets',
+    description: "Get test XRP for use on various non-production networks.",
+  }
+};
+
 interface FaucetInfo {
   id: string,
   wsUrl: string,

@@ -23,6 +23,13 @@ import commandList from "./components/websocket-api/data/command-list.json";
 import connections from "./components/websocket-api/data/connections.json";
 import { Loader } from './components/Loader';
 
+export const frontmatter = {
+  seo: {
+    title: 'WebSocket API Tool',
+    description: "Interact directly with XRP Ledger servers using the WebSocket API with this handy tool.",
+  }
+};
+
 export function WebsocketApiTool() {
 
   const [params, setParams] = useQueryParams({
