@@ -233,8 +233,8 @@ export default function Docs() {
         <section className="text-center title-space">
           <div className="col-lg-9 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
-              <h1>{translate('XRP Ledger Developer Resources')}</h1>
-              <h6 className="eyebrow mb-3">{translate('Documentation')}</h6>
+              <h1>{translate('Documentation')}</h1>
+              <h6 className="eyebrow mb-3">{translate('XRP Ledger Developer Resources')}</h6>
             </div>
           </div>
         </section>
