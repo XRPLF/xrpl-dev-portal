@@ -3,6 +3,14 @@ import { useTranslate } from '@portal/hooks';
 import { TextLookupForm, type TextLookupFormProps } from './components/TextLookupForm';
 import { fetchFile, fetchWallet } from './toml-checker/ValidateTomlSteps';
 import { LogEntryItem } from './components/LogEntry';
+
+export const frontmatter = {
+  seo: {
+    title: 'xrp-ledger.toml Checker',
+    description: "Confirm that your site's xrp-ledger.toml file is set up correctly.",
+  }
+};
+
 /**
  * Example data to test the tool with
  *
