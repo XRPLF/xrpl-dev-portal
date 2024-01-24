@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { usePageSharedData, useTranslate } from '@portal/hooks';
 
+export const frontmatter = {
+  seo: {
+    title: 'Code Samples',
+    description: "Browse sample code for building common use cases on the XRP Ledger.",
+  }
+};
+
 const langIcons = {
   cli: require('../static/img/logos/cli.svg'),
   go: require('../static/img/logos/golang.svg'),

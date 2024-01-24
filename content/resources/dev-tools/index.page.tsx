@@ -1,5 +1,13 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+
+export const frontmatter = {
+  seo: {
+    title: 'Dev Tools',
+    description: "Use these tools to explore, build, and test XRP Ledger technology.",
+  }
+};
+
 const explorers_tools = [
   {
     id: "xrp-explorer",

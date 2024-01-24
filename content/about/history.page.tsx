@@ -1,6 +1,13 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 
+export const frontmatter = {
+  seo: {
+    title: 'History',
+    description: "The history of the XRP Ledger (XRPL), launched in 2012 as a faster, scalable, more sustainable blockchain.",
+  }
+};
+
 export default function History() {
   const { translate } = useTranslate();
   const [openSections, setOpenSections] = React.useState({});
