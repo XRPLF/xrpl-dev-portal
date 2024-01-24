@@ -187,9 +187,9 @@ Starting with version **1.4.0**, compiling the codebase from source on any platf
 
 * Simplify code using if constexpr ([c2d2ba9f4](https://github.com/ripple/rippled/commit/c2d2ba9f45380afd03ed1359b917e2041794787b))
 
-* Replace from_string_checked pair return type with optional<Endpoint> ([1eb3753f2](https://github.com/ripple/rippled/commit/1eb3753f262924879ce79774051f3fbf9582fc5a))
+* Replace `from_string_checked` pair return type with `optional<Endpoint>` ([1eb3753f2](https://github.com/ripple/rippled/commit/1eb3753f262924879ce79774051f3fbf9582fc5a))
 
-* Replace strUnHex pair return type with optional<Blob> ([0a256247a](https://github.com/ripple/rippled/commit/0a256247a039c5ca3a2927f1809d362e4b0225e3))
+* Replace `strUnHex` pair return type with `optional<Blob>` ([0a256247a](https://github.com/ripple/rippled/commit/0a256247a039c5ca3a2927f1809d362e4b0225e3))
 
 * Use structured bindings in some places ([7912ee6f7](https://github.com/ripple/rippled/commit/7912ee6f7b51527e0ff981acc6aebd081e4c7b08))
 

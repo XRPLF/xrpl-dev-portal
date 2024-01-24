@@ -14,20 +14,20 @@ Version 1.9.4 of `rippled`, the reference server implementation of the XRP Ledge
 
 ## Action Required
 
-The new amendment is open for voting according to the XRP Ledger's [amendment process](https://xrpl.org/amendments.html), which enables protocol changes following two weeks of >80% support from trusted validators.
+The new amendment is open for voting according to the XRP Ledger's [amendment process](/concepts/networks-and-servers/amendments/), which enables protocol changes following two weeks of >80% support from trusted validators.
 
 If you operate an XRP Ledger server, then you should upgrade to version 1.9.4 within two weeks, to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
 ## NFT Status
 
-Previously, the **NonFungibleTokensV1_1** amendment [was on track to become enabled 2022-09-13](get-ready-for-nfts.html), but a new [bug report](https://github.com/XRPLF/rippled/issues/4300) on 2022-09-11 described an exploit where malicious users could perform a denial of service attack on a token issuer by abusing the `tfTrustLine` feature of the XLS-20 standard. Following this report, several validators changed their votes on the NonFungibleTokensV1_1 amendment, causing its support to decrease below 80% and not become enabled.
+Previously, the **NonFungibleTokensV1_1** amendment [was on track to become enabled 2022-09-13](/blog/2022/get-ready-for-nfts), but a new [bug report](https://github.com/XRPLF/rippled/issues/4300) on 2022-09-11 described an exploit where malicious users could perform a denial of service attack on a token issuer by abusing the `tfTrustLine` feature of the XLS-20 standard. Following this report, several validators changed their votes on the NonFungibleTokensV1_1 amendment, causing its support to decrease below 80% and not become enabled.
 
 The **fixRemoveNFTokenAutoTrustLine** amendment disables the problematic feature. For non-fungible tokens to become enabled on the XRP Ledger Mainnet, both the new amendment and the **NonFungibleTokensV1_1** amendment require a new period of two weeks' uninterrupted support from over 80% of trusted validators. The voting period for these amendments can be concurrent, but the **fixRemoveNFTokenAutoTrustLine** amendment should be enabled first or at the same time as the NonFungibleTokensV1_1 amendment.
 
 
 ## Install / Upgrade
 
-On supported platforms, see the [instructions on installing or updating `rippled`](https://xrpl.org/install-rippled.html).
+On supported platforms, see the [instructions on installing or updating `rippled`](/infrastructure/installation/).
 
 
 | Package | SHA-256 |

@@ -7,7 +7,7 @@ targets: [devblog]
 ---
 # Developer Reflections: GemWallet (2023 Update)
 
-In this edition of Developer Reflections, we’re diving into the world of [GemWallet](https://gemwallet.app/), a non-custodial crypto wallet that opens the gateway to the XRP Ledger (XRPL) while embracing the realm of decentralized finance and NFTs. It’s been a year since [the last time we caught up with the GemWallet team](/blog/2022/gemwallet.html), and we're outlining some of the important progress that’s been made since then. 
+In this edition of Developer Reflections, we’re diving into the world of [GemWallet](https://gemwallet.app/), a non-custodial crypto wallet that opens the gateway to the XRP Ledger (XRPL) while embracing the realm of decentralized finance and NFTs. It’s been a year since [the last time we caught up with the GemWallet team](/blog/2022/gemwallet), and we're outlining some of the important progress that’s been made since then. 
 
 GemWallet bridges technology, security, and user experience to enable more seamless engagement with crypto assets and DeFi protocols.
 

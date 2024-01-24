@@ -2,9 +2,9 @@
 
 _By Rome Reginelli, Documentation Engineer at [Ripple](https://ripple.com/)_
 
-Blockchain technology raises new questions about the roles of privacy and anonymity in the function of money. While all transactions are a matter of public record, the parties involved in the transactions are represented by pseudonyms, and information about who those parties are may be hard to come by. Even more obscure is information about those whose computing power and maintenance efforts underpin the blockchain. While there are lots of good reasons to maintain privacy around some entities and events, there are also situations that call for publicly establishing one's identity and reputation. The [`xrp-ledger.toml` specification](/xrp-ledger-toml.html) provides a flexible standard for voluntarily publishing information about who you are and what you're doing with the XRP Ledger.
+Blockchain technology raises new questions about the roles of privacy and anonymity in the function of money. While all transactions are a matter of public record, the parties involved in the transactions are represented by pseudonyms, and information about who those parties are may be hard to come by. Even more obscure is information about those whose computing power and maintenance efforts underpin the blockchain. While there are lots of good reasons to maintain privacy around some entities and events, there are also situations that call for publicly establishing one's identity and reputation. The [`xrp-ledger.toml` specification](/references/xrp-ledger-toml/) provides a flexible standard for voluntarily publishing information about who you are and what you're doing with the XRP Ledger.
 
-In this post, I explore the process of creating an `xrp-ledger.toml` file, explain why to use it, and introduce [a new dev tool for checking `xrp-ledger.toml` files](/xrp-ledger-toml-checker.html).
+In this post, I explore the process of creating an `xrp-ledger.toml` file, explain why to use it, and introduce [a new dev tool for checking `xrp-ledger.toml` files](/resources/dev-tools/xrp-ledger-toml-checker/).
 
 <!-- BREAK -->
 
@@ -17,7 +17,7 @@ This kind of thing forms the basis of _trusted_ interactions, because _trustless
 
 In my case, I'm a Ripple employee who interacts with the XRP community on a regular basis. Among other responsibilities, that means that what I say and do might have an outsized effect on how others view XRP. I want to claim responsibility for my own XRP holdings so that people can see for themselves that I follow my own advice: I own a relatively small amount of XRP directly, and I largely hold it for the long term or use it for testing and experiments. I also have some other motivations for listing my accounts: for a while, an example transaction in the dev portal showed setting the `Domain` field of an account to my personal domain, [mduo13.com](https://mduo13.com/), and people who copied the example did not always change the domain, so there are strange accounts out there with my domain on them. By explicitly claiming the accounts that _are_ mine, I can disclaim ownership of the ones that aren't.
 
-If you run a validator, that's a great reason to publish an `xrp-ledger.toml` file, too. Right now, [domain verification](/run-rippled-as-a-validator.html#6-provide-domain-verification) isn't a fully open, self-service process (an entity like Ripple has to collect and verify the signatures). Following the release of `rippled` 1.3.0, it should become possible for third parties to independently verify that a validator is associated with a particular domain name. Part of that process comes from using the [new domain field of a validator manifest](https://github.com/ripple/rippled/pull/2879/commits/88cb0e5928510d684a894ddf8a4ccc379c09d8fe) and the other part comes from the [`[[VALIDATORS]]` list in the `xrp-ledger.toml` file](/xrp-ledger-toml.html#validators).
+If you run a validator, that's a great reason to publish an `xrp-ledger.toml` file, too. Right now, [domain verification](/infrastructure/configuration/server-modes/run-rippled-as-a-validator/#6-provide-domain-verification) isn't a fully open, self-service process (an entity like Ripple has to collect and verify the signatures). Following the release of `rippled` 1.3.0, it should become possible for third parties to independently verify that a validator is associated with a particular domain name. Part of that process comes from using the [new domain field of a validator manifest](https://github.com/ripple/rippled/pull/2879/commits/88cb0e5928510d684a894ddf8a4ccc379c09d8fe) and the other part comes from the [`[[VALIDATORS]]` list in the `xrp-ledger.toml` file](/references/xrp-ledger-toml#validators).
 
 
 ## Creating the File
@@ -128,7 +128,7 @@ address = "rEuLyBCvcw4CFmzv8RepSiAoNgF8tTGJQC"
 
 With the contents decided, I had to serve the file from my domain. I already have a working HTTPS configuration using [Let's Encrypt](https://letsencrypt.org/), and my top level site is a (rather old) PHP blog, so I could just create a `.well-known/` folder on the web server and transfer the file over.
 
-That left [CORS Setup](/xrp-ledger-toml.html#cors-setup) as the only remaining step. Since I'm using a shared webhost, I don't have access to the server-level config file, but I do have permission to add `.htaccess` files. I don't want my entire site (or even the entire `.well-known` folder) to be available for cross-origin requests, so I was able to add a specific rule for just the `xrp-ledger.toml` file using an `.htaccess` file with a `<Files>` stanza:
+That left [CORS Setup](/references/xrp-ledger-toml#cors-setup) as the only remaining step. Since I'm using a shared webhost, I don't have access to the server-level config file, but I do have permission to add `.htaccess` files. I don't want my entire site (or even the entire `.well-known` folder) to be available for cross-origin requests, so I was able to add a specific rule for just the `xrp-ledger.toml` file using an `.htaccess` file with a `<Files>` stanza:
 
 ```apache
 AddType application/toml .toml
@@ -144,16 +144,16 @@ I copied that same file to the `.well-known/` folder on my webserver. A quick te
 
 ## New Checker
 
-The [`xrp-ledger.toml` Checker](/xrp-ledger-toml-checker.html) is a new web tool that fetches a domain's `xrp-ledger.toml` file, parses it, and displays the contents of the standard fields found within. You can test it on your own domain when you set up your `xrp-ledger.toml` file. To see it in action, you can also enter my domain, `mduo13.com`, in the text box.
+The [`xrp-ledger.toml` Checker](/resources/dev-tools/xrp-ledger-toml-checker/) is a new web tool that fetches a domain's `xrp-ledger.toml` file, parses it, and displays the contents of the standard fields found within. You can test it on your own domain when you set up your `xrp-ledger.toml` file. To see it in action, you can also enter my domain, `mduo13.com`, in the text box.
 
 The tool is not all-seeing when things go wrong; the browser, by design, does not make it easy for a script to know the difference between a cross-origin request that was blocked and a request that simply failed because it couldn't connect to the domain. Your browser's developer tools (accessible by pressing F12 in Chrome or Firefox on desktop) may provide more information about any failures.
 
 
 ## Afterword
 
-A few things the  [`xrp-ledger.toml` Checker](/xrp-ledger-toml-checker.html) didn't pick up are no surprise:
+A few things the  [`xrp-ledger.toml` Checker](/resources/dev-tools/xrp-ledger-toml-checker/) didn't pick up are no surprise:
 
-- Not all of my own addresses have the `Domain` field set. I could send [AccountSet transactions](/accountset.html) for each of them to configure it, but I rarely use most of those addresses anyway, so I didn't bother.
+- Not all of my own addresses have the `Domain` field set. I could send [AccountSet transactions](/references/protocol/transactions/types/accountset/) for each of them to configure it, but I rarely use most of those addresses anyway, so I didn't bother.
 - Since the checker only displays well-defined standard fields, my Mastodon contact information doesn't show up in the output. That's fine. Maybe if a client application catches on it can add support for displaying various modes of contact.
 
 In all, the process of setting up an `xrp-ledger.toml` file was more straightforward than I had expected. The syntax is a little more verbose than its predecessor, `ripple.txt`, but it's also great to have an explicit standard, so tools like the checker can pull in a ready-made library and provide an unambiguous reading of the file. It probably would have been more complex if I also had to set up HTTPS for the first time, but fortunately that was a problem I already had solved because it's a good thing to provide regardless.

@@ -7,7 +7,7 @@ targets: [devblog]
 ---
 # Developer Reflections: Get Your Project Featured on XRPL.org
 
-Exciting news for the XRP Ledger community: **[Developer Reflections](/blog/label/developer-reflections.html)** returns to the XRPL.org blog today. The developer content series spotlights the work being done by the growing developer community using the XRP Ledger (XRPL) or related open-source technologies for their products and apps. 
+Exciting news for the XRP Ledger community: **Developer Reflections** returns to the XRPL.org blog today. The developer content series spotlights the work being done by the growing developer community using the XRP Ledger (XRPL) or related open-source technologies for their products and apps. 
 
 <!-- BREAK -->
 
@@ -21,12 +21,12 @@ In doing so, you join the growing list of XRPL developers currently featured and
 
 ### How can I get featured?
 
-Interested projects, companies and developers must submit their projects through the form featured on the [XRPL Community](https://xrpl.org/contribute.html) page (see “XRPL Community Spotlight”). Submissions will be reviewed for completeness and must meet the minimum word requirements to be featured on the blog. To help you get started, check out previous [Developer Reflections](https://xrpl.org/blog/label/developer-reflections.html):
+Interested projects, companies and developers must submit their projects through the form featured on the [XRPL Community](/community) page (see “XRPL Community Spotlight”). Submissions will be reviewed for completeness and must meet the minimum word requirements to be featured on the blog. To help you get started, check out previous [Developer Reflections](https://xrpl.org/blog/label/developer-reflections.html):
 
 - [XRPScan](https://xrpl.org/blog/2020/developer-reflections-xrpscan.html)
 - [XRP Toolkit](https://xrpl.org/blog/2020/developer-reflections-xrp-toolkit.html)
 
-Projects seeking to be featured on the **[Use Cases page](https://xrpl.org/uses.html)** can also submit via the form. 
+Projects seeking to be featured on the **[Use Cases page](/about/uses)** can also submit via the form. 
 
 ### How will submissions be selected?
 
@@ -46,10 +46,10 @@ Projects, products and apps that operate on XRPL Mainnet will receive priority. 
 
 Selected submissions will be notified ASAP. Once published on XRPL.org, we encourage you to share your project with the XRPL community and engage with other developers via social media, the [XRPL Developers Discord](https://t.co/I3s42AsIKS) and other channels. (You can include your social media as part of the form, so XRPL developers know how to get in touch with you). 
 
-Because projects will be selected randomly and on a rolling basis, the review team cannot provide an update on the status of your submission—explore previous [Developer Reflections](https://xrpl.org/blog/label/developer-reflections.html).
+Because projects will be selected randomly and on a rolling basis, the review team cannot provide an update on the status of your submission—explore previous Developer Reflections.
 
 ## Conclusion
 
 XRPL.org is focused on producing technical documentation, sample code, tutorials, video demos and blog posts that make it easier for developers to access XRP Ledger technologies. 
 
-_Want to showcase your project, product or app on the [XRPL.org blog](https://xrpl.org/blog) or [Use Cases](https://xrpl.org/uses.html) page? [Submit your project](https://xrpl.org/contribute.html) to share with the XRPL developer community._
+_Want to showcase your project, product or app on the [XRPL.org blog](https://xrpl.org/blog) or [Use Cases](/about/uses) page? [Submit your project](/community) to share with the XRPL developer community._

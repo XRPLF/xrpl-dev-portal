@@ -164,7 +164,7 @@ Date:   Mon Jan 8 13:13:37 2024 -0800
 
 - Clarified what makes concensus healthy in `FeeEscalation.md`. [#4729](https://github.com/XRPLF/rippled/pull/4729)
 
-- Removed a dependency on the <ranges> header for unit tests. [#4788](https://github.com/XRPLF/rippled/pull/4788)
+- Removed a dependency on the `<ranges>` header for unit tests. [#4788](https://github.com/XRPLF/rippled/pull/4788)
 
 - Fixed a clang `unused-but-set-variable` warning. [#4677](https://github.com/XRPLF/rippled/pull/4677)
 

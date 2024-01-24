@@ -1,6 +1,6 @@
 # DeletableAccounts is Now Enabled
 
-As previously announced, the DeletableAccounts amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE) on **2020-05-08**.
+As previously announced, the DeletableAccounts amendment [became enabled on the XRP Ledger](https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE) on **2020-05-08**.
 
 <!-- BREAK -->
 
@@ -8,7 +8,7 @@ As previously announced, the DeletableAccounts amendment [became enabled on the 
 
 Prior to this amendment, every [account in the XRP Ledger](https://xrpl.org/accounts.html) was permanent. With this amendment, accounts can now be deleted at a cost of 5 XRP by sending a new AccountDelete transaction type. This amendment also changes the starting `Sequence` number for new accounts so that it matches the ledger index when they were created instead of starting at 1.
 
-For more details on what to look out for or how to use deletable accounts, see [the previous primer](https://xrpl.org/blog/2020/get-ready-for-deletable-accounts.html).
+For more details on what to look out for or how to use deletable accounts, see [the previous primer](/blog/2020/get-ready-for-deletable-accounts).
 
 ## Adieu, Deleted Accounts
 
