@@ -2,7 +2,8 @@
 html: commandline-usage.html
 name: コマンドラインの使い方
 parent: infrastructure.html
-blurb: rippledサーバーのコマンドライン使用オプションです。
+seo:
+    description: rippledサーバーのコマンドライン使用オプションです。
 curated_anchors:
   - name: 使用できるモード
     anchor: "#使用できるモード"

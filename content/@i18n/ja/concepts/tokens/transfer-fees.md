@@ -1,7 +1,8 @@
 ---
 html: transfer-fees.html
 parent: tokens.html
-blurb: トークンの発行者は、自己のトークンの送金に手数料を課すことができます。
+seo:
+    description: トークンの発行者は、自己のトークンの送金に手数料を課すことができます。
 labels:
   - 手数料
   - トークン

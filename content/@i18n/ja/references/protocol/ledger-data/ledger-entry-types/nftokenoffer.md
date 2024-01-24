@@ -1,7 +1,8 @@
 ---
 html: nftokenoffer.html
 parent: ledger-entry-types.html
-blurb: NFTを売買するオファーを作成する。
+seo:
+    description: NFTを売買するオファーを作成する。
 labels:
  - Non-fungible Tokens, NFTs
 ---

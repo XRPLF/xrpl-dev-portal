@@ -1,7 +1,8 @@
 ---
 html: py-create-time-based-escrows.html
 parent: send-payments-using-python.html
-blurb: Create, finish, or cancel time-based escrow transactions.
+seo:
+    description: Create, finish, or cancel time-based escrow transactions.
 labels:
   - Accounts
   - Quickstart

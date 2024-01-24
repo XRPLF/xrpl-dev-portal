@@ -1,7 +1,8 @@
 ---
 html: diddelete.html
 parent: transaction-types.html
-blurb: DIDを削除する。
+seo:
+    description: DIDを削除する。
 labels:
   - DID
 status: not_enabled

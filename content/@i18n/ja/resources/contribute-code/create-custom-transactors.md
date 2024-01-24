@@ -1,7 +1,8 @@
 ---
 html: create-custom-transactors.html
 parent: contribute-code.html
-blurb: XRP Ledgerとやり取りするためのカスタムトランザクタを作成します。
+seo:
+    description: XRP Ledgerとやり取りするためのカスタムトランザクタを作成します。
 labels:
   - 開発
   - ブロックチェーン

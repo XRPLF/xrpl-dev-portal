@@ -1,7 +1,8 @@
 ---
 html: validator-list.html
 parent: peer-port-methods.html
-blurb: Special API method for sharing recommended validator lists.
+seo:
+    description: Special API method for sharing recommended validator lists.
 labels:
   - Core Server
   - Blockchain

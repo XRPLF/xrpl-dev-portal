@@ -1,7 +1,8 @@
 ---
 html: api-conventions.html
 parent: http-websocket-apis.html
-blurb: rippled APIのデータ型とフォーマットについて説明します。
+seo:
+    description: rippled APIのデータ型とフォーマットについて説明します。
 metadata:
   indexPage: true
 ---

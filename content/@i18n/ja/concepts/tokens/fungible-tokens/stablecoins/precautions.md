@@ -1,7 +1,8 @@
 ---
 html: stablecoin-precautions.html
 parent: stablecoins.html
-blurb: XRPLでステーブルコイン資金の入出金時の注意点を説明します。
+seo:
+    description: XRPLでステーブルコイン資金の入出金時の注意点を説明します。
 labels:
   - トークン
 ---

@@ -1,7 +1,8 @@
 ---
 html: py-authorize-minter.html
 parent: nfts-using-python.html
-blurb: Authorize another account to mint NFTs for you.
+seo:
+    description: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
   - Quickstart

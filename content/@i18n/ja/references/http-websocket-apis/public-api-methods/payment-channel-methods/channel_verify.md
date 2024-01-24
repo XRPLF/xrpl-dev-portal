@@ -1,7 +1,8 @@
 ---
 html: channel_verify.html
 parent: payment-channel-methods.html
-blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
+seo:
+    description: 特定額のXRPをPayment Channelから清算するときに使用できる署名の有効性を検証します。
 labels:
   - Payment Channel
 ---

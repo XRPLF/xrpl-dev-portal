@@ -1,7 +1,8 @@
 ---
 html: accountroot.html
 parent: ledger-entry-types.html
-blurb: The settings, XRP balance, and other metadata for one account.
+seo:
+    description: The settings, XRP balance, and other metadata for one account.
 labels:
   - Accounts
   - XRP

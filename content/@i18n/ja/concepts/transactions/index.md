@@ -1,7 +1,8 @@
 ---
 html: transactions.html
 parent: concepts.html
-blurb: トランザクションは、XRP Ledgerの変更を可能にする唯一の手段です。トランザクションの形態とその使用方法について説明します。
+seo:
+    description: トランザクションは、XRP Ledgerの変更を可能にする唯一の手段です。トランザクションの形態とその使用方法について説明します。
 labels:
   - トランザクション送信
   - 支払い

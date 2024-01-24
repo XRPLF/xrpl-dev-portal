@@ -1,7 +1,8 @@
 ---
 html: peer-crawler.html
 parent: peer-port-methods.html
-blurb: ネットワークの情報とステータスの統計を共有するための特別なAPIメソッドです。
+seo:
+    description: ネットワークの情報とステータスの統計を共有するための特別なAPIメソッドです。
 labels:
   - コアサーバ
   - ブロックチェーン

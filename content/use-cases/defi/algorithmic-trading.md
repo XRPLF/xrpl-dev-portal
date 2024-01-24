@@ -1,7 +1,8 @@
 ---
 html: algorithmic-trading.html
 parent: defi-uc.html
-blurb: The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. 
+seo:
+    description: The XRP Ledger's decentralized exchange consists of an unlimited number of currency pairs, tracked on-demand when users make trades. 
 labels:
   - Transactions
 ---

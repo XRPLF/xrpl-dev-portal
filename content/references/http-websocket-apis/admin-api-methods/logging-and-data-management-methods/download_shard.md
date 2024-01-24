@@ -1,7 +1,8 @@
 ---
 html: download_shard.html
 parent: logging-and-data-management-methods.html
-blurb: Download a specific shard of ledger history.
+seo:
+    description: Download a specific shard of ledger history.
 labels:
   - Data Retention
 ---

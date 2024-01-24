@@ -1,7 +1,8 @@
 ---
 html: transaction-queue.html
 parent: transactions.html
-blurb: Transactions can be queued before being processed.
+seo:
+    description: Transactions can be queued before being processed.
 labels:
   - Transaction Sending
 ---

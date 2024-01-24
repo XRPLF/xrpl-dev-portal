@@ -1,7 +1,8 @@
 ---
 html: markers-and-pagination.html
 parent: api-conventions.html
-blurb: 大きなクエリを複数のレスポンスにページネーションする際の慣例です。
+seo:
+    description: 大きなクエリを複数のレスポンスにページネーションする際の慣例です。
 ---
 # マーカーとページネーション
 

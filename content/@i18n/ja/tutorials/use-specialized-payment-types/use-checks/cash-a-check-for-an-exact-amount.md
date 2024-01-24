@@ -1,7 +1,8 @@
 ---
 html: cash-a-check-for-an-exact-amount.html
 parent: use-checks.html
-blurb: Checkに指定されている額までの正確な額を受領します。
+seo:
+    description: Checkに指定されている額までの正確な額を受領します。
 labels:
   - Checks
 ---

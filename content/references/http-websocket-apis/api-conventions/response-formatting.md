@@ -1,7 +1,8 @@
 ---
 html: response-formatting.html
 parent: api-conventions.html
-blurb: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+seo:
+    description: Standard response format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
 ---
 # Response Formatting
 

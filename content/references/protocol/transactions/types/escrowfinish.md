@@ -1,7 +1,8 @@
 ---
 html: escrowfinish.html
 parent: transaction-types.html
-blurb: Deliver escrowed XRP to recipient.
+seo:
+    description: Deliver escrowed XRP to recipient.
 labels:
   - Escrow
 ---

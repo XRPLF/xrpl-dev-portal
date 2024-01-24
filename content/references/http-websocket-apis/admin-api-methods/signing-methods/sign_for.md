@@ -1,7 +1,8 @@
 ---
 html: sign_for.html
 parent: signing-methods.html
-blurb: Contribute to a multi-signature.
+seo:
+    description: Contribute to a multi-signature.
 labels:
   - Transaction Sending
 ---

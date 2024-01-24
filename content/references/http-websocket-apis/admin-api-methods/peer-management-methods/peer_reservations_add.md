@@ -1,7 +1,8 @@
 ---
 html: peer_reservations_add.html
 parent: peer-management-methods.html
-blurb: Add a reserved slot for a specific peer server.
+seo:
+    description: Add a reserved slot for a specific peer server.
 labels:
   - Core Server
 ---

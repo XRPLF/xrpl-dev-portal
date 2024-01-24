@@ -1,7 +1,8 @@
 ---
 html: fee-voting.html
 parent: consensus.html
-blurb: トランザクションコストと必要準備金の変更投票について。
+seo:
+    description: トランザクションコストと必要準備金の変更投票について。
 labels:
   - 手数料
   - XRP

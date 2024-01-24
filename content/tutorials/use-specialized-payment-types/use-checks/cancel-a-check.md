@@ -1,7 +1,8 @@
 ---
 html: cancel-a-check.html
 parent: use-checks.html
-blurb: Cancel a Check object without sending money.
+seo:
+    description: Cancel a Check object without sending money.
 labels:
   - Checks
 ---

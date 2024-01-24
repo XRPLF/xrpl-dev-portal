@@ -1,7 +1,8 @@
 ---
 html: contribute-code.html
 parent: resources.html
-blurb: XRP Ledgerプロトコルにどのように機能を実装するかを学びます。
+seo:
+    description: XRP Ledgerプロトコルにどのように機能を実装するかを学びます。
 labels:
   - ブロックチェーン
 ---

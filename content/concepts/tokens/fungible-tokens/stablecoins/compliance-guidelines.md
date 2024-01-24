@@ -1,7 +1,8 @@
 ---
 html: stablecoin-compliance-guidelines.html
 parent: stablecoins.html
-blurb: Stablecoin issuers are responsible for complying with local regulations and reporting to appropriate agencies.
+seo:
+    description: Stablecoin issuers are responsible for complying with local regulations and reporting to appropriate agencies.
 labels:
   - Tokens
 ---

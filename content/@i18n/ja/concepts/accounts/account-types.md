@@ -1,7 +1,8 @@
 ---
 html: account-types.html
 parent: accounts.html
-blurb: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
+seo:
+    description: XRP Ledgerで自動的にトランザクションを送信するビジネスは、リスクを最小限に抑えるために目的ごとに別のアドレスを設定することをおすすめします。
 labels:
   - トークン
   - セキュリティ

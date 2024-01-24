@@ -1,7 +1,8 @@
 ---
 html: bridge.html
 parent: ledger-entry-types.html
-blurb: Bridgeオブジェクトは、2つのブロックチェーンを接続し、価値の移動を効率的に行うための1つのクロスチェーンブリッジを表します。
+seo:
+    description: Bridgeオブジェクトは、2つのブロックチェーンを接続し、価値の移動を効率的に行うための1つのクロスチェーンブリッジを表します。
 labels:
   - 相互運用性
 status: not_enabled

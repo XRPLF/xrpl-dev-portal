@@ -1,7 +1,8 @@
 ---
 html: canceling-a-transaction.html
 parent: finality-of-results.html
-blurb: 送信済みのトランザクションのキャンセルがいつどのように可能か説明します。
+seo:
+    description: 送信済みのトランザクションのキャンセルがいつどのように可能か説明します。
 labels:
   - トランザクション送信
 ---

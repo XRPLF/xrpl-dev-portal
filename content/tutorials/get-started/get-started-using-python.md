@@ -1,7 +1,8 @@
 ---
 html: get-started-using-python.html
 parent: python.html
-blurb: Build a Python app that interacts with the XRP Ledger.
+seo:
+    description: Build a Python app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: Python
 top_nav_grouping: Get Started

@@ -1,7 +1,8 @@
 ---
 html: validator_list_sites.html
 parent: status-and-debugging-methods.html
-blurb: バリデータリストを処理するサイトのステータス情報を返します。
+seo:
+    description: バリデータリストを処理するサイトのステータス情報を返します。
 labels:
   - ブロックチェーン
   - コアサーバー

@@ -1,7 +1,8 @@
 ---
 html: xchainownedclaimid.html
 parent: ledger-entry-types.html
-blurb: An `XChainOwnedClaimID` object represents *one* cross-chain transfer of value. 
+seo:
+    description: An `XChainOwnedClaimID` object represents *one* cross-chain transfer of value. 
 labels:
   - Interoperability
 status: not_enabled

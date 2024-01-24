@@ -4,7 +4,8 @@ parent: use-cases.html
 top_nav_grouping: Article Types
 metadata:
   indexPage: true
-blurb: Work with a variety of tokens supported by the XRP Ledger.
+seo:
+    description: Work with a variety of tokens supported by the XRP Ledger.
 ---
 # Tokenization
 

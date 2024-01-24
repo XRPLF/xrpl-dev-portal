@@ -1,7 +1,8 @@
 ---
 html: ammbid.html
 parent: transaction-types.html
-blurb: Bid on an Automated Market Maker's auction slot, which grants a discounted fee.
+seo:
+    description: Bid on an Automated Market Maker's auction slot, which grants a discounted fee.
 labels:
   - AMM
 status: not_enabled

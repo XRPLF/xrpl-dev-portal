@@ -1,7 +1,8 @@
 ---
 html: consensus_info.html
 parent: status-and-debugging-methods.html
-blurb: Get information about the state of consensus as it happens.
+seo:
+    description: Get information about the state of consensus as it happens.
 labels:
   - Blockchain
   - Core Server

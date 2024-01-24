@@ -1,7 +1,8 @@
 ---
 html: configure-online-deletion.html
 parent: data-retention.html
-blurb: サーバーでどこまで古いトランザクション履歴を保持するかを設定します。
+seo:
+    description: サーバーでどこまで古いトランザクション履歴を保持するかを設定します。
 labels:
   - データ保持
   - コアサーバー

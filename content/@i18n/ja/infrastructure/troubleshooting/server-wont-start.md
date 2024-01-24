@@ -1,7 +1,8 @@
 ---
 html: server-wont-start.html
 parent: troubleshoot-the-rippled-server.html
-blurb: rippledサーバーが起動しない原因となると思われる問題とその解決方法です。
+seo:
+    description: rippledサーバーが起動しない原因となると思われる問題とその解決方法です。
 labels:
   - コアサーバー
 ---

@@ -1,7 +1,8 @@
 ---
 html: assign-an-authorized-minter-using-javascript.html
 parent: nfts-using-javascript.html
-blurb: Authorize another account to mint NFTs for you.
+seo:
+    description: Authorize another account to mint NFTs for you.
 labels:
   - Accounts
   - Quickstart

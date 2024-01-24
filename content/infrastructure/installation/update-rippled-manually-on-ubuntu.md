@@ -1,7 +1,8 @@
 ---
 html: update-rippled-manually-on-ubuntu.html
 parent: install-rippled.html
-blurb: Manually update rippled on Ubuntu Linux.
+seo:
+    description: Manually update rippled on Ubuntu Linux.
 labels:
   - Core Server
   - Security

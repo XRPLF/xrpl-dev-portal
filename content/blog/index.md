@@ -1,7 +1,8 @@
 ---
 metadata:
   indexPage: true
-blurb: Browse the XRP Ledger Community Blog.
+seo:
+    description: Browse the XRP Ledger Community Blog.
 ---
 # XRP Ledger Community Blog
 

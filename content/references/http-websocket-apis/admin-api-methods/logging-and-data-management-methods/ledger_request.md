@@ -1,7 +1,8 @@
 ---
 html: ledger_request.html
 parent: logging-and-data-management-methods.html
-blurb: Query peer servers for a specific ledger version.
+seo:
+    description: Query peer servers for a specific ledger version.
 labels:
   - Data Retention
 ---

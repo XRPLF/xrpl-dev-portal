@@ -1,7 +1,8 @@
 ---
 html: open-closed-validated-ledgers.html
 parent: ledgers.html
-blurb: Ledger objects have one of three states — open, closed, or validated.
+seo:
+    description: Ledger objects have one of three states — open, closed, or validated.
 labels:
   - Blockchain
 ---

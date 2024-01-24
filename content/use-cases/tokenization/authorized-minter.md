@@ -1,7 +1,8 @@
 ---
 html: authorized-minter.html
 parent: nft-mkt-overview.html
-blurb: Minting and selling NFTs for another account.
+seo:
+    description: Minting and selling NFTs for another account.
 labels:
   - Tokenization
 ---

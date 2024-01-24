@@ -1,7 +1,8 @@
 ---
 html: documentation-translations.html
 parent: contribute-documentation.html
-blurb: このウェブサイトにある文書の翻訳に貢献し、維持する方法を学びましょう。
+seo:
+    description: このウェブサイトにある文書の翻訳に貢献し、維持する方法を学びましょう。
 ---
 # 翻訳
 

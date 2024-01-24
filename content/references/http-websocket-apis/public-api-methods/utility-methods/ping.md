@@ -1,7 +1,8 @@
 ---
 html: ping.html
 parent: utility-methods.html
-blurb: Confirm connectivity with the server.
+seo:
+    description: Confirm connectivity with the server.
 labels:
   - Core Server
 ---

@@ -1,7 +1,8 @@
 ---
 html: peer_reservations_add.html
 parent: peer-management-methods.html
-blurb: 特定のピアサーバー用の予約済みスロットを追加します。
+seo:
+    description: 特定のピアサーバー用の予約済みスロットを追加します。
 labels:
   - コアサーバー
 ---

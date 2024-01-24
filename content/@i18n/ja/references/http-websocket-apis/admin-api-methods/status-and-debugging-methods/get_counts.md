@@ -1,7 +1,8 @@
 ---
 html: get_counts.html
 parent: status-and-debugging-methods.html
-blurb: サーバーの健全性に関するさまざまな統計情報を提供します。
+seo:
+    description: サーバーの健全性に関するさまざまな統計情報を提供します。
 labels:
   - コアサーバー
 ---

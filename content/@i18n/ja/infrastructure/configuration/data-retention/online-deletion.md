@@ -1,7 +1,8 @@
 ---
 html: online-deletion.html
 parent: data-retention.html
-blurb: オンライン削除は古いトランザクションと状態の履歴を消去します。
+seo:
+    description: オンライン削除は古いトランザクションと状態の履歴を消去します。
 labels:
   - データ保持
   - コアサーバー

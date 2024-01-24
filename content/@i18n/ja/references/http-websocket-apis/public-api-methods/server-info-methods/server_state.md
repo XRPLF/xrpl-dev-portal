@@ -1,7 +1,8 @@
 ---
 html: server_state.html
 parent: server-info-methods.html
-blurb: サーバの現在の状態に関するさまざまなマシンが読み取り可能な情報を問い合わせます。
+seo:
+    description: サーバの現在の状態に関するさまざまなマシンが読み取り可能な情報を問い合わせます。
 labels:
   - コアサーバー
 ---

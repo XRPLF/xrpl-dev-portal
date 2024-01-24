@@ -1,7 +1,8 @@
 ---
 html: logrotate.html
 parent: logging-and-data-management-methods.html
-blurb: ログファイルを閉じて再度開きます。
+seo:
+    description: ログファイルを閉じて再度開きます。
 labels:
   - データ保持
 ---

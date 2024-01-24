@@ -4,7 +4,8 @@ parent: use-cases.html
 top_nav_grouping: カテゴリ
 metadata:
   indexPage: true
-blurb: XRP Ledgerで様々なタイプの支払いを利用するための実例を紹介します。
+seo:
+    description: XRP Ledgerで様々なタイプの支払いを利用するための実例を紹介します。
 ---
 # Payment
 

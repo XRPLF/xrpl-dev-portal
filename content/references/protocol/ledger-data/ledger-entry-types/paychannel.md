@@ -1,7 +1,8 @@
 ---
 html: paychannel.html
 parent: ledger-entry-types.html
-blurb: A channel for asynchronous XRP payments.
+seo:
+    description: A channel for asynchronous XRP payments.
 labels:
   - Payment Channels
 ---

@@ -1,7 +1,8 @@
 ---
 html: restricting-deposits-uc.html
 parent: payments-uc.html
-blurb: Checkは、紙の小切手と同じように後払い決済を行うことができます。
+seo:
+    description: Checkは、紙の小切手と同じように後払い決済を行うことができます。
 labels:
   - トランザクション
 ---

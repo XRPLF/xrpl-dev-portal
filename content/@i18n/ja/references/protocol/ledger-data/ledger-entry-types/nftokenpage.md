@@ -1,7 +1,8 @@
 ---
 html: nftokenpage.html
 parent: ledger-entry-types.html
-blurb: NFTokenを記録するためのレジャー構造。
+seo:
+    description: NFTokenを記録するためのレジャー構造。
 labels:
  - Non-fungible Tokens, NFTs
 ---

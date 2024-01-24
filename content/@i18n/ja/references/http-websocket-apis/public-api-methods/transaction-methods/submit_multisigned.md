@@ -1,7 +1,8 @@
 ---
 html: submit_multisigned.html
 parent: transaction-methods.html
-blurb: マルチシグトランザクションを適用し、このトランザクションをネットワークに送信します。
+seo:
+    description: マルチシグトランザクションを適用し、このトランザクションをネットワークに送信します。
 labels:
   - トランザクション送信
 ---

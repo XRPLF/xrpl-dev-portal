@@ -1,7 +1,8 @@
 ---
 html: fee.html
 parent: server-info-methods.html
-blurb: トランザクションコストに関するオープンレジャーの要件の現在の状態を報告します。
+seo:
+    description: トランザクションコストに関するオープンレジャーの要件の現在の状態を報告します。
 labels:
   - 手数料
 ---

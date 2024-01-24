@@ -1,7 +1,8 @@
 ---
 html: server-is-amendment-blocked.html
 parent: troubleshoot-the-rippled-server.html
-blurb: Troubleshoot a server that can't implement amendment changes.
+seo:
+    description: Troubleshoot a server that can't implement amendment changes.
 labels:
   - Core Server
 ---

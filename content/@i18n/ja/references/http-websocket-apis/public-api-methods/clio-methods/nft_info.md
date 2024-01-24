@@ -1,7 +1,8 @@
 ---
 html: nft_info.html
 parent: clio-methods.html
-blurb: Clioサーバの`nft_info`APIを使用して、指定したNFTに関する情報を取得します。
+seo:
+    description: Clioサーバの`nft_info`APIを使用して、指定したNFTに関する情報を取得します。
 labels:
   - 非代替性トークン, NFT
 ---

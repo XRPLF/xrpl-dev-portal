@@ -1,7 +1,8 @@
 ---
 html: path_find.html
 parent: path-and-order-book-methods.html
-blurb: Find a path for a payment between two accounts and receive updates.
+seo:
+    description: Find a path for a payment between two accounts and receive updates.
 labels:
   - Cross-Currency
   - Tokens

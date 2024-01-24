@@ -1,7 +1,8 @@
 ---
 html: amm.html
 parent: ledger-entry-types.html
-blurb: 自動マーケットメーカー（AMM）インスタンスの定義と詳細。
+seo:
+    description: 自動マーケットメーカー（AMM）インスタンスの定義と詳細。
 labels:
   - AMM
 status: not_enabled

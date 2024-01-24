@@ -1,7 +1,8 @@
 ---
 html: non-fungible-tokens.html
 parent: tokens.html
-blurb: XRPL NFTを紹介します。
+seo:
+    description: XRPL NFTを紹介します。
 labels:
  - 非代替性トークン, NFT
 ---

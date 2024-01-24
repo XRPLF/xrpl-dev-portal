@@ -1,7 +1,8 @@
 ---
 html: algorithmic-trading.html
 parent: defi-uc.html
-blurb: XRP Ledgerの分散型取引所は、ユーザがトレードを行う際にオンデマンドで追跡される無制限の通貨ペアで構成されています。
+seo:
+    description: XRP Ledgerの分散型取引所は、ユーザがトレードを行う際にオンデマンドで追跡される無制限の通貨ペアで構成されています。
 labels:
   - トランザクション
 ---

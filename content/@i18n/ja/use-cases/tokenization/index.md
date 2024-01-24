@@ -4,7 +4,8 @@ parent: use-cases.html
 top_nav_grouping: カテゴリ
 metadata:
   indexPage: true
-blurb: XRP Ledgerが対応する様々なトークンを使用できます。
+seo:
+    description: XRP Ledgerが対応する様々なトークンを使用できます。
 ---
 # Tokenization
 

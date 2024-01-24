@@ -1,7 +1,8 @@
 ---
 html: enableamendment.html
 parent: pseudo-transaction-types.html
-blurb: Enable a change in transaction processing.
+seo:
+    description: Enable a change in transaction processing.
 labels:
   - Blockchain
 ---

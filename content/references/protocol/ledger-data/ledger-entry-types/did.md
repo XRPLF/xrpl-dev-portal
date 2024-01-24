@@ -1,7 +1,8 @@
 ---
 html: did.html
 parent: ledger-entry-types.html
-blurb: The definition and details of a Decentralized Identifier (DID).
+seo:
+    description: The definition and details of a Decentralized Identifier (DID).
 labels:
   - DID
 status: not_enabled

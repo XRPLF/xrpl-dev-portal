@@ -1,7 +1,8 @@
 ---
 html: escrow-object.html #escrow.html is taken by the concept page
 parent: ledger-entry-types.html
-blurb: Contains XRP held for a conditional payment.
+seo:
+    description: Contains XRP held for a conditional payment.
 labels:
   - Escrow
 ---

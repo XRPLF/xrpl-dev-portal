@@ -1,7 +1,8 @@
 ---
 html: set-max-number-of-peers.html
 parent: configure-peering.html
-blurb: Set the maximum number of peers your rippled server connects to.
+seo:
+    description: Set the maximum number of peers your rippled server connects to.
 labels:
   - Core Server
 ---

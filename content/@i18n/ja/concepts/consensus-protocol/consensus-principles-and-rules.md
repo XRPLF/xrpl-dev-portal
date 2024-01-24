@@ -1,7 +1,8 @@
 ---
 html: consensus-principles-and-rules.html
 parent: consensus.html
-blurb: XRP Ledgerは世界規模の決済システムで、ユーザーはメールを送るときのようにスムーズに国境を越えて送金することができます。
+seo:
+    description: XRP Ledgerは世界規模の決済システムで、ユーザーはメールを送るときのようにスムーズに国境を越えて送金することができます。
 labels:
   - ブロックチェーン
 ---

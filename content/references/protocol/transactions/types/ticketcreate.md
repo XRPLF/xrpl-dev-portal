@@ -1,7 +1,8 @@
 ---
 html: ticketcreate.html
 parent: transaction-types.html
-blurb: Set aside one or more sequence numbers as Tickets.
+seo:
+    description: Set aside one or more sequence numbers as Tickets.
 labels:
   - Transaction Sending
 ---

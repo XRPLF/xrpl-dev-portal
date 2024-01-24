@@ -1,7 +1,8 @@
 ---
 html: amendments-object.html #amendments.html is taken by the concept page
 parent: ledger-entry-types.html
-blurb: Singleton ledger entry with status of enabled and pending amendments.
+seo:
+    description: Singleton ledger entry with status of enabled and pending amendments.
 labels:
   - Blockchain
 ---

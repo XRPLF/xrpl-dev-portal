@@ -1,7 +1,8 @@
 ---
 html: bouncing-payments.html
 parent: payment-types.html
-blurb: When the purpose of a payment is unclear, return it to the sender.
+seo:
+    description: When the purpose of a payment is unclear, return it to the sender.
 labels:
   - Tokens
 ---

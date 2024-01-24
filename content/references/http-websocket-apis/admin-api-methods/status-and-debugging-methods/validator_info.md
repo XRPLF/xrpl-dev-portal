@@ -1,7 +1,8 @@
 ---
 html: validator_info.html
 parent: status-and-debugging-methods.html
-blurb: Get the server's validation settings, if configured as a validator.
+seo:
+    description: Get the server's validation settings, if configured as a validator.
 labels:
   - コアサーバー
   - ブロックチェーン

@@ -1,7 +1,8 @@
 ---
 html: fix-sqlite-tx-db-page-size-issue.html
 parent: troubleshoot-the-rippled-server.html
-blurb: rippledバージョン0.40.0以前で起動された完全履歴サーバーでのSQLiteのページサイズに関する問題を解決します。
+seo:
+    description: rippledバージョン0.40.0以前で起動された完全履歴サーバーでのSQLiteのページサイズに関する問題を解決します。
 ---
 # SQLiteトランザクションデータベースのページサイズの問題の解決
 

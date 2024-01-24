@@ -1,7 +1,8 @@
 ---
 html: ledger_closed.html
 parent: ledger-methods.html
-blurb: 最新の閉鎖済みレジャーの一意のIDを返します。
+seo:
+    description: 最新の閉鎖済みレジャーの一意のIDを返します。
 label:
   - ブロックチェーン
 ---

@@ -1,7 +1,8 @@
 ---
 html: decentralized-identifiers.html
 parent: accounts.html
-blurb: Decentralized identifiers enable verifiable, decentralized digital identities.
+seo:
+    description: Decentralized identifiers enable verifiable, decentralized digital identities.
 status: not_enabled
 labels:
   - DID

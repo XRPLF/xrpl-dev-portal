@@ -1,7 +1,8 @@
 ---
 html: tutorial-guidelines.html
 parent: contribute-documentation.html
-blurb: このサイトのチュートリアルの構成と、質の高いチュートリアルを投稿するためのガイドラインを学びましょう。
+seo:
+    description: このサイトのチュートリアルの構成と、質の高いチュートリアルを投稿するためのガイドラインを学びましょう。
 ---
 # チュートリアルガイドライン
 

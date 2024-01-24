@@ -1,7 +1,8 @@
 ---
 html: stablecoin-issuer.html
 parent: tokenization.html
-blurb: Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger.
+seo:
+    description: Issue your own stablecoin, based on assets of equal value outside of the XRP Ledger.
 labels:
   - Tokens
   - Stablecoin

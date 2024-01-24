@@ -1,7 +1,8 @@
 ---
 html: noripple_check.html
 parent: account-methods.html
-blurb: アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグの状態を、推奨される設定と比較して迅速にチェックします。
+seo:
+    description: アカウントのDefaultRippleフィールドとそのトラストラインのNoRippleフラグの状態を、推奨される設定と比較して迅速にチェックします。
 labels:
   - トークン
 ---

@@ -1,7 +1,8 @@
 ---
 html: nft_buy_offers.html
 parent: path-and-order-book-methods.html
-blurb: NFTokenに対するすべての購入オファーのリストを取得します。
+seo:
+    description: NFTokenに対するすべての購入オファーのリストを取得します。
 labels:
   - 非代替性トークン, NFT, NFToken
 ---

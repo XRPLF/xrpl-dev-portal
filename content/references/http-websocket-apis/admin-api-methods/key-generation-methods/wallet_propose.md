@@ -1,7 +1,8 @@
 ---
 html: wallet_propose.html
 parent: key-generation-methods.html
-blurb: Generate keys for a new account.
+seo:
+    description: Generate keys for a new account.
 labels:
   - Security
   - Accounts

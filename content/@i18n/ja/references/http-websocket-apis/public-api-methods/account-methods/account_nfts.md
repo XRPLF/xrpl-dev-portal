@@ -1,7 +1,8 @@
 ---
 html: account_nfts.html
 parent: account-methods.html
-blurb: アカウントのすべてのNFTのリストを取得します。
+seo:
+    description: アカウントのすべてのNFTのリストを取得します。
 labels:
   - 非代替性トークン, NFT
 ---

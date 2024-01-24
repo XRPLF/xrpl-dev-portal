@@ -4,7 +4,8 @@ parent: java.html
 funnel: Build
 doc_type: Tutorials
 category: Get Started
-blurb: Build a Java app that interacts with the XRP Ledger.
+seo:
+    description: Build a Java app that interacts with the XRP Ledger.
 cta_text: Build an XRP Ledger-connected app
 top_nav_name: Java
 top_nav_grouping: Get Started

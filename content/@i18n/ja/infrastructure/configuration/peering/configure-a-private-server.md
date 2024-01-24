@@ -1,7 +1,8 @@
 ---
 html: configure-a-private-server.html
 parent: configure-peering.html
-blurb: サーバーが特定の信頼できるピアのみに接続するように設定します。
+seo:
+    description: サーバーが特定の信頼できるピアのみに接続するように設定します。
 labels:
   - コアサーバー
   - セキュリティ

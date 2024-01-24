@@ -1,7 +1,8 @@
 ---
 html: manifest.html
 parent: server-info-methods.html
-blurb: 既知のバリデータに関する公開情報を調べます。
+seo:
+    description: 既知のバリデータに関する公開情報を調べます。
 labels:
   - ブロックチェーン
 ---

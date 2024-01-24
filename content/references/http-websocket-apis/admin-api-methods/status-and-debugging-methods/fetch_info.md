@@ -1,7 +1,8 @@
 ---
 html: fetch_info.html
 parent: status-and-debugging-methods.html
-blurb: Get information about the server's sync with the network.
+seo:
+    description: Get information about the server's sync with the network.
 labels:
   - Core Server
 ---

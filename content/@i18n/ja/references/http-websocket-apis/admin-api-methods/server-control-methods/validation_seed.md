@@ -1,7 +1,8 @@
 ---
 html: validation_seed.html
 parent: server-control-methods.html
-blurb: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
+seo:
+    description: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
 status: removed
 labels:
   - コアサーバー

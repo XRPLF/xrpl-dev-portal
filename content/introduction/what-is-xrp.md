@@ -1,7 +1,8 @@
 ---
 html: what-is-xrp.html
 parent: introduction.html
-blurb: Learn about XRP, the cryptocurrency traded on the XRP Ledger.
+seo:
+    description: Learn about XRP, the cryptocurrency traded on the XRP Ledger.
 labels:
   - Blockchain
 ---

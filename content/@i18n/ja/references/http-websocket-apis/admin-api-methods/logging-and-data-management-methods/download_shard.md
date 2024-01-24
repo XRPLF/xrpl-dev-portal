@@ -1,7 +1,8 @@
 ---
 html: download_shard.html
 parent: logging-and-data-management-methods.html
-blurb: レジャー履歴の特定のシャードをダウンロードします。
+seo:
+    description: レジャー履歴の特定のシャードをダウンロードします。
 labels:
   - データ保持
 ---

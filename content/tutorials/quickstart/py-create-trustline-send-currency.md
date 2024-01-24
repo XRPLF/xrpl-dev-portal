@@ -1,7 +1,8 @@
 ---
 html: py-create-trustline-send-currency.html
 parent: send-payments-using-python.html
-blurb: Create trust lines and send currency.
+seo:
+    description: Create trust lines and send currency.
 labels:
   - Cross-Currency
   - Payments

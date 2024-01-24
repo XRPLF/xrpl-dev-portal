@@ -1,7 +1,8 @@
 ---
 html: cryptographic-keys.html
 parent: accounts.html
-blurb: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
+seo:
+    description: Use cryptographic keys to approve transactions so the XRP Ledger can execute them.
 labels:
   - Smart Contracts
   - Security

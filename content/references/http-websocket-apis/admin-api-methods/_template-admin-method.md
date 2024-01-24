@@ -1,7 +1,8 @@
 ---
 html: TODO_PAGE_NAME.html
 parent: TODO_CATEGORY_FILENAME.html
-blurb: TODO BLURB
+seo:
+    description: TODO BLURB
 labels:
   # TODO At least one label
 ---

@@ -1,7 +1,8 @@
 ---
 html: can_delete.html
 parent: logging-and-data-management-methods.html
-blurb: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
+seo:
+    description: 指定したレジャーバージョン以前のレジャー履歴を削除可能にします。
 labels:
   - データ保持
 ---

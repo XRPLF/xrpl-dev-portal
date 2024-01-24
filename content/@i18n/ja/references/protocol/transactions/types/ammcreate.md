@@ -1,7 +1,8 @@
 ---
 html: ammcreate.html
 parent: transaction-types.html
-blurb: 指定された資産ペアを取引するための新しい自動マーケットメーカーを作成します。
+seo:
+    description: 指定された資産ペアを取引するための新しい自動マーケットメーカーを作成します。
 labels:
   - AMM
 status: not_enabled

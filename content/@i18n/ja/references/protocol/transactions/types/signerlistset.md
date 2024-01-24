@@ -1,7 +1,8 @@
 ---
 html: signerlistset.html
 parent: transaction-types.html
-blurb: トランザクションのマルチシグに使用できる署名者のリストを作成、置換、削除します。
+seo:
+    description: トランザクションのマルチシグに使用できる署名者のリストを作成、置換、削除します。
 labels:
   - セキュリティ
 ---

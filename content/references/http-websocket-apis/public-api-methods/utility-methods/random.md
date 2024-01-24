@@ -1,7 +1,8 @@
 ---
 html: random.html
 parent: utility-methods.html
-blurb: Generate a random number.
+seo:
+    description: Generate a random number.
 labels:
   - Core Server
 ---

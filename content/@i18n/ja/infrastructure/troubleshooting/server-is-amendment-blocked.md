@@ -1,7 +1,8 @@
 ---
 html: server-is-amendment-blocked.html
 parent: troubleshoot-the-rippled-server.html
-blurb: Amendmentによる変更を実行できないサーバーのトラブルシューティング
+seo:
+    description: Amendmentによる変更を実行できないサーバーのトラブルシューティング
 labels:
   - コアサーバー
 ---

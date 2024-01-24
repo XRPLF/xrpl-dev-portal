@@ -1,7 +1,8 @@
 ---
 html: get-started-using-javascript.html
 parent: javascript.html
-blurb: Build an entry-level JavaScript application for querying the XRP Ledger.
+seo:
+    description: Build an entry-level JavaScript application for querying the XRP Ledger.
 top_nav_name: JavaScript
 top_nav_grouping: Get Started
 labels:

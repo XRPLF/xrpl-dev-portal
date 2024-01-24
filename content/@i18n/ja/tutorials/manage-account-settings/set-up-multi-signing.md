@@ -1,7 +1,8 @@
 ---
 html: set-up-multi-signing.html
 parent: manage-account-settings.html
-blurb: アカウントに署名者リストを追加して、マルチシグを有効にします。
+seo:
+    description: アカウントに署名者リストを追加して、マルチシグを有効にします。
 labels:
   - セキュリティ
 ---

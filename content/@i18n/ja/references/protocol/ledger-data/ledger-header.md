@@ -1,7 +1,8 @@
 ---
 html: ledger-header.html
 parent: ledger-data-formats.html
-blurb: レジャーバージョンの内容を記述する一意のヘッダーです。
+seo:
+    description: レジャーバージョンの内容を記述する一意のヘッダーです。
 labels:
   - データ保持
   - ブロックチェーン

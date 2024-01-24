@@ -2,7 +2,8 @@
 html: commandline-usage.html
 name: Commandline Usage
 parent: infrastructure.html
-blurb: Commandline usage options for the rippled server.
+seo:
+    description: Commandline usage options for the rippled server.
 curated_anchors:
   - name: Available Modes
     anchor: "#available-modes"

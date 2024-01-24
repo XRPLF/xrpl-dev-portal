@@ -1,7 +1,8 @@
 ---
 html: subscribe.html
 parent: subscription-methods.html
-blurb: 特定のイベントが発生した場合に、定期的に通知するようサーバーにリクエストします。
+seo:
+    description: 特定のイベントが発生した場合に、定期的に通知するようサーバーにリクエストします。
 labels:
   - 支払い
   - アカウント

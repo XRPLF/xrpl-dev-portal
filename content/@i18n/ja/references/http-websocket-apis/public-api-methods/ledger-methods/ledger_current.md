@@ -1,7 +1,8 @@
 ---
 html: ledger_current.html
 parent: ledger-methods.html
-blurb: 現在進行中のレジャーの一意のIDを返します。
+seo:
+    description: 現在進行中のレジャーの一意のIDを返します。
 label:
   - ブロックチェーン
 ---

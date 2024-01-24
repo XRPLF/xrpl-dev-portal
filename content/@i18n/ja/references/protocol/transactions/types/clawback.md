@@ -1,7 +1,8 @@
 ---
 html: clawback.html
 parent: transaction-types.html
-blurb: 発行したトークンを取り戻します。
+seo:
+    description: 発行したトークンを取り戻します。
 labels:
   - トークン
 ---

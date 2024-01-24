@@ -1,7 +1,8 @@
 ---
 html: cluster-rippled-servers.html
 parent: configure-peering.html
-blurb: サーバーのグループで処理を分担するように設定して効率化します。
+seo:
+    description: サーバーのグループで処理を分担するように設定して効率化します。
 labels:
   - コアサーバー
 ---

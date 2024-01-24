@@ -1,7 +1,8 @@
 ---
 html: channel_authorize.html
 parent: payment-channel-methods.html
-blurb: 特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
+seo:
+    description: 特定額のXRPをPayment Channelから清算するときに使用できる署名を作成します。
 labels:
   - Payment Channel
 ---

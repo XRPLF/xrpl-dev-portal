@@ -1,7 +1,8 @@
 ---
 html: xchainaddaccountcreateattestation.html
 parent: transaction-types.html
-blurb: XChainAddAccountCreateAttestationトランザクションは他のチェーンでXChainAccountCreateCommitトランザクションが発生した証明をWitnessサーバから提示します。
+seo:
+    description: XChainAddAccountCreateAttestationトランザクションは他のチェーンでXChainAccountCreateCommitトランザクションが発生した証明をWitnessサーバから提示します。
 labels:
   - 相互運用性
 status: not_enabled

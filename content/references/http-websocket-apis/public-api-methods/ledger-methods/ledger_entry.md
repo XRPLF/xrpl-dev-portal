@@ -1,7 +1,8 @@
 ---
 html: ledger_entry.html
 parent: ledger-methods.html
-blurb: Get one element from a ledger version.
+seo:
+    description: Get one element from a ledger version.
 labels:
   - Blockchain
   - Data Retention

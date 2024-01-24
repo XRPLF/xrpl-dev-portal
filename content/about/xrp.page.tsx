@@ -3,6 +3,13 @@ import { useTranslate } from "@portal/hooks";
 import briefcaseIcon from "../static/img/icons/briefcase.svg";
 import userIcon from "../static/img/icons/user.svg";
 
+export const frontmatter = {
+  seo: {
+    title: 'XRP',
+    description: "Learn more about XRP Ledger’s native digital asset, XRP.",
+  }
+};
+
 const links = [
   { hash: "#about-xrp", text: "About XRP" },
   { hash: "#xrp-trading", text: "XRP in Trading" },

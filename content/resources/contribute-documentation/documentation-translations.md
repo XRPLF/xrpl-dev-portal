@@ -1,7 +1,8 @@
 ---
 html: documentation-translations.html
 parent: contribute-documentation.html
-blurb: Learn how to contribute and maintain translations of the documentation on this website.
+seo:
+    description: Learn how to contribute and maintain translations of the documentation on this website.
 ---
 # Translations
 

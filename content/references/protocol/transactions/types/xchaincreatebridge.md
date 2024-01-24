@@ -1,7 +1,8 @@
 ---
 html: xchaincreatebridge.html 
 parent: transaction-types.html
-blurb: Create a bridge between two chains.
+seo:
+    description: Create a bridge between two chains.
 labels:
   - Interoperability
 status: not_enabled

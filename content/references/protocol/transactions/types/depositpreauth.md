@@ -1,7 +1,8 @@
 ---
 html: depositpreauth.html
 parent: transaction-types.html
-blurb: Preauthorizes an account to send payments to this one.
+seo:
+    description: Preauthorizes an account to send payments to this one.
 labels:
   - Security
 ---

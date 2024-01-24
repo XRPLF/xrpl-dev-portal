@@ -1,7 +1,8 @@
 ---
 html: fetch_info.html
 parent: status-and-debugging-methods.html
-blurb: このサーバーが現在ネットワークからフェッチしているオブジェクトに関する情報を返します。
+seo:
+    description: このサーバーが現在ネットワークからフェッチしているオブジェクトに関する情報を返します。
 labels:
   - コアサーバー
 ---

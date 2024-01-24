@@ -1,7 +1,8 @@
 ---
 html: send-a-conditionally-held-escrow.html
 parent: use-escrows.html
-blurb: Create an escrow whose release is based on a condition being fulfilled.
+seo:
+    description: Create an escrow whose release is based on a condition being fulfilled.
 labels:
   - Escrow
   - Smart Contracts

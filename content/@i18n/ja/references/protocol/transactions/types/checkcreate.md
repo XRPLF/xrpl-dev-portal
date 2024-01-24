@@ -1,7 +1,8 @@
 ---
 html: checkcreate.html
 parent: transaction-types.html
-blurb: レジャーにCheckオブジェクトを作成します
+seo:
+    description: レジャーにCheckオブジェクトを作成します
 labels:
   - Checks
 ---

@@ -1,7 +1,8 @@
 ---
 html: crypto-wallets.html
 parent: intro-to-xrpl.html
-blurb: Wallets provide a convenient way of managing your XRP on the XRP Ledger.
+seo:
+    description: Wallets provide a convenient way of managing your XRP on the XRP Ledger.
 labels:
   - Blockchain
 ---

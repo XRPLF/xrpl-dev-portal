@@ -1,7 +1,8 @@
 ---
 html: tes-success.html
 parent: transaction-results.html
-blurb: tesSUCCESSコードは、トランザクションが成功したことを示す唯一のコードです。
+seo:
+    description: tesSUCCESSコードは、トランザクションが成功したことを示す唯一のコードです。
 labels:
   - トランザクション送信
 ---

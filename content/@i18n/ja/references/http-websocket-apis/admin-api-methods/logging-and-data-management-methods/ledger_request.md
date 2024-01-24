@@ -1,7 +1,8 @@
 ---
 html: ledger_request.html
 parent: logging-and-data-management-methods.html
-blurb: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
+seo:
+    description: サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。
 labels:
   - データ保持
 ---

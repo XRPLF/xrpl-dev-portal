@@ -4,7 +4,8 @@ parent: references.html
 metadata:
   indexPage: true
 eyebrow_text: 特徴とルール
-blurb: XRP Ledgerプロトコルの、利用方法に依存しない特徴やルールについて。
+seo:
+    description: XRP Ledgerプロトコルの、利用方法に依存しない特徴やルールについて。
 ---
 # XRP Ledgerプロトコルリファレンス
 

@@ -1,7 +1,8 @@
 ---
 html: book_offers.html
 parent: path-and-order-book-methods.html
-blurb: Get info about offers to exchange two currencies.
+seo:
+    description: Get info about offers to exchange two currencies.
 labels:
   - Decentralized Exchange
   - Cross-Currency

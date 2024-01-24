@@ -1,7 +1,8 @@
 ---
 html: gateway_balances.html
 parent: account-methods.html
-blurb: 特定のアカウントから発行された残高の合計を計算します。
+seo:
+    description: 特定のアカウントから発行された残高の合計を計算します。
 labels:
   - トークン
   - アカウント

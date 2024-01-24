@@ -1,6 +1,7 @@
 ---
 parent: use-tokens.html
-blurb: Buy or sell fungible tokens for each other or for XRP in the decentralized exchange.
+seo:
+    description: Buy or sell fungible tokens for each other or for XRP in the decentralized exchange.
 embed_xrpl_js: true
 filters:
   - interactive_steps

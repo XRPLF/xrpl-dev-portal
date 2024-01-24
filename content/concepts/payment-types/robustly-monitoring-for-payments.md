@@ -1,7 +1,8 @@
 ---
 html: robustly-monitoring-for-payments.html
 parent: payment-types.html
-blurb: Recommendations for monitoring incoming payments for a variety of possible irregularities.
+seo:
+    description: Recommendations for monitoring incoming payments for a variety of possible irregularities.
 labels:
   - Tokens
 ---

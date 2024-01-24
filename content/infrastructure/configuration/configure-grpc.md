@@ -1,7 +1,8 @@
 ---
 html: configure-grpc.html
 parent: configure-rippled.html
-blurb: Enable and configure the gRPC API.
+seo:
+    description: Enable and configure the gRPC API.
 labels:
   - Core Server
 ---

@@ -1,7 +1,8 @@
 ---
 html: stablecoin-issuer.html
 parent: tokenization.html
-blurb: XRP Ledgerの外にある同価値の資産に基づいて、ステーブルコインを発行することができます。
+seo:
+    description: XRP Ledgerの外にある同価値の資産に基づいて、ステーブルコインを発行することができます。
 labels:
   - トークン
   - ステーブルコイン

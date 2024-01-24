@@ -1,7 +1,8 @@
 ---
 html: node_to_shard.html
 parent: logging-and-data-management-methods.html
-blurb: レジャーストアからシャードストアにデータをコピーします。
+seo:
+    description: レジャーストアからシャードストアにデータをコピーします。
 labels:
   - データ保持
 ---

@@ -1,7 +1,8 @@
 ---
 html: authorized-trust-lines.html
 parent: trust-lines-and-issuing.html
-blurb: 認可トラストラインとは、トークンを保有できる人を制限するための設定です。
+seo:
+    description: 認可トラストラインとは、トークンを保有できる人を制限するための設定です。
 labels:
   - トークン
   - セキュリティ

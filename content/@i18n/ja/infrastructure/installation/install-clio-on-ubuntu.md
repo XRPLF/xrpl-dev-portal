@@ -1,7 +1,8 @@
 ---
 html: install-clio-on-ubuntu.html
 parent: install-rippled.html
-blurb: Ubuntu Linuxにコンパイル済みのClioバイナリをインストールします。
+seo:
+    description: Ubuntu Linuxにコンパイル済みのClioバイナリをインストールします。
 labels:
   - Clioサーバ
 ---

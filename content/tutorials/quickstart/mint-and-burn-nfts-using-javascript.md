@@ -1,7 +1,8 @@
 ---
 html: mint-and-burn-nfts-using-javascript.html
 parent: nfts-using-javascript.html
-blurb: Mint and burn NFTs.
+seo:
+    description: Mint and burn NFTs.
 labels:
   - Quickstart
   - Tokens

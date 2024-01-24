@@ -1,7 +1,8 @@
 ---
 html: xchaincreateclaimid.html 
 parent: transaction-types.html
-blurb: Create a cross-chain claim ID that is used for a cross-chain transfer.
+seo:
+    description: Create a cross-chain claim ID that is used for a cross-chain transfer.
 labels:
   - Interoperability
 status: not_enabled

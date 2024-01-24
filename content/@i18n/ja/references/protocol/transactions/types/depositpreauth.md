@@ -1,7 +1,8 @@
 ---
 html: depositpreauth.html
 parent: transaction-types.html
-blurb: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
+seo:
+    description: DepositPreauthトランザクションは別のアカウントに対し、このトランザクションの送信者に支払いを送金することを事前承認します。
 labels:
   - セキュリティ
 ---

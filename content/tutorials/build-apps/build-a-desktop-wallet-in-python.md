@@ -1,7 +1,8 @@
 ---
 html: build-a-desktop-wallet-in-python.html
 parent: python.html
-blurb: Build a graphical desktop wallet for the XRPL in Python.
+seo:
+    description: Build a graphical desktop wallet for the XRPL in Python.
 ---
 # Build a Desktop Wallet in Python
 <!-- STYLE_OVERRIDE: wallet -->

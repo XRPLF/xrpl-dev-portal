@@ -1,7 +1,8 @@
 ---
 html: issue-a-fungible-token.html
 parent: use-tokens.html
-blurb: Create your own token and issue it on the XRP Ledger Testnet.
+seo:
+    description: Create your own token and issue it on the XRP Ledger Testnet.
 embed_xrpl_js: true
 filters:
   - interactive_steps

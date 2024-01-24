@@ -1,7 +1,8 @@
 ---
 html: validators.html
 parent: status-and-debugging-methods.html
-blurb: Get information about the current validators.
+seo:
+    description: Get information about the current validators.
 labels:
   - Core Server
   - Blockchain

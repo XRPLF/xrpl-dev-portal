@@ -1,7 +1,8 @@
 ---
 html: account_info.html
 parent: account-methods.html
-blurb: アカウントとそのアクティビティおよびXRP残高についての情報を取得します。
+seo:
+    description: アカウントとそのアクティビティおよびXRP残高についての情報を取得します。
 labels:
   - アカウント
   - XRP

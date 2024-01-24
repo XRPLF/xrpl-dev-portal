@@ -1,7 +1,8 @@
 ---
 html: py-broker-sale.html
 parent: nfts-using-python.html
-blurb: Broker a sale between a sell offer and a buy offer.
+seo:
+    description: Broker a sale between a sell offer and a buy offer.
 labels:
   - Accounts
   - Quickstart

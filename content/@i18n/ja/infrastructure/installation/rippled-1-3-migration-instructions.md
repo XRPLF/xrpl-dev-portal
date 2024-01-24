@@ -1,7 +1,8 @@
 ---
 html: rippled-1-3-migration-instructions.html
 parent: install-rippled.html
-blurb: rippled 1.2.4以前のバージョンからrippled v1.3以降に移行するプロセスについて説明します。
+seo:
+    description: rippled 1.2.4以前のバージョンからrippled v1.3以降に移行するプロセスについて説明します。
 ---
 # rippled v1.3.xへの移行手順
 

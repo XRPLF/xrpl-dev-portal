@@ -1,6 +1,7 @@
 ---
 html: ledger-entry-common-fields.html
-blurb: これらの共通フィールドは、すべてのレジャーエントリの一部です。
+seo:
+    description: これらの共通フィールドは、すべてのレジャーエントリの一部です。
 ---
 # Ledger Entryの共通フィールド
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)

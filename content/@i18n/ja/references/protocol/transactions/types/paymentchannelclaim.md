@@ -1,7 +1,8 @@
 ---
 html: paymentchannelclaim.html
 parent: transaction-types.html
-blurb: Payment Channelに対しXRPを請求します。
+seo:
+    description: Payment Channelに対しXRPを請求します。
 labels:
   - Payment Channel
 ---

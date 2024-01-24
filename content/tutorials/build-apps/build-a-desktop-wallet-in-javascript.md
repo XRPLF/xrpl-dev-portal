@@ -1,7 +1,8 @@
 ---
 parent: javascript.html
 html: build-a-desktop-wallet-in-javascript.html
-blurb: Build a graphical desktop wallet for the XRPL using JavaScript.
+seo:
+    description: Build a graphical desktop wallet for the XRPL using JavaScript.
 ---
 # Build a Desktop Wallet in JavaScript
 <!-- STYLE_OVERRIDE: wallet -->

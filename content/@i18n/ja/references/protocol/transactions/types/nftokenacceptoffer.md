@@ -1,7 +1,8 @@
 ---
 html: nftokenacceptoffer.html
 parent: transaction-types.html
-blurb: NFTokenの購入または売却のオファーを受け入れる。
+seo:
+    description: NFTokenの購入または売却のオファーを受け入れる。
 labels:
   - NFT, 非代替性トークン
 ---

@@ -1,7 +1,8 @@
 ---
 html: txn-and-requests.html
 parent: intro-to-xrpl.html
-blurb: レジャーとのやりとりは、すべてトランザクションかリクエストで行われます。
+seo:
+    description: レジャーとのやりとりは、すべてトランザクションかリクエストで行われます。
 labels:
   - ブロックチェーン
 ---

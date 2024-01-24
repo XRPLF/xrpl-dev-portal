@@ -1,7 +1,8 @@
 ---
 html: xchainmodifybridge.html 
 parent: transaction-types.html
-blurb: ブリッジの設定を変更します。
+seo:
+    description: ブリッジの設定を変更します。
 labels:
   - 相互運用性
 status: not_enabled

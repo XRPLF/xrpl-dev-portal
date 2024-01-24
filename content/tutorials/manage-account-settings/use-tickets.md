@@ -1,7 +1,8 @@
 ---
 html: use-tickets.html
 parent: manage-account-settings.html
-blurb: Use Tickets to send a transaction outside of normal Sequence order.
+seo:
+    description: Use Tickets to send a transaction outside of normal Sequence order.
 embed_xrpl_js: true
 filters:
   - interactive_steps

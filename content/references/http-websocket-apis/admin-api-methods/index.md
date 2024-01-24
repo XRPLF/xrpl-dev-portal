@@ -1,7 +1,8 @@
 ---
 html: admin-api-methods.html
 parent: http-websocket-apis.html
-blurb: Administer an XRP Ledger server with these API methods.
+seo:
+    description: Administer an XRP Ledger server with these API methods.
 labels:
   - Core Server
 ---

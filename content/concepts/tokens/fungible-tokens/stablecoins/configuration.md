@@ -1,7 +1,8 @@
 ---
 html: stablecoin-configuration.html
 parent: stablecoins.html
-blurb: Configure your stablecoin to fine tune its capabilities.
+seo:
+    description: Configure your stablecoin to fine tune its capabilities.
 labels:
   - Tokens
 ---

@@ -1,7 +1,8 @@
 ---
 html: use-payment-channels.html
 parent: use-specialized-payment-types.html
-blurb: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバーのJSON-RPC APIを使用する例を使って説明します。
+seo:
+    description: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバーのJSON-RPC APIを使用する例を使って説明します。
 labels:
   - Payment Channel
   - スマートコントラクト

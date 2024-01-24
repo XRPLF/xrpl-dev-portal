@@ -1,7 +1,8 @@
 ---
 html: what-is-the-xrp-ledger.html
 parent: introduction.html
-blurb: Learn about the XRP Ledger (XRPL) blockchain.
+seo:
+    description: Learn about the XRP Ledger (XRPL) blockchain.
 labels:
   - Blockchain
 ---

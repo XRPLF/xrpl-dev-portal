@@ -1,7 +1,8 @@
 ---
 html: didset.html
 parent: transaction-types.html
-blurb: Create or update a DID.
+seo:
+    description: Create or update a DID.
 labels:
   - DID
 status: not_enabled

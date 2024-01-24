@@ -1,7 +1,8 @@
 ---
 html: nftokencanceloffer.html
 parent: transaction-types.html
-blurb: NFTokenの売買のための既存のトークンへのオファーをキャンセルする。
+seo:
+    description: NFTokenの売買のための既存のトークンへのオファーをキャンセルする。
 labels:
   - NFT, 非代替性トークン
 ---

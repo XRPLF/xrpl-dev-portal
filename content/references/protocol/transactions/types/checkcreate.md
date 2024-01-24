@@ -1,7 +1,8 @@
 ---
 html: checkcreate.html
 parent: transaction-types.html
-blurb: Create a check.
+seo:
+    description: Create a check.
 labels:
   - Checks
 ---

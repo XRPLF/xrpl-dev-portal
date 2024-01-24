@@ -1,6 +1,7 @@
 ---
 html: xrpljs2-migration-guide.html
-blurb: Learn how to migrate JavaScript code to the newer client library format.
+seo:
+    description: Learn how to migrate JavaScript code to the newer client library format.
 parent: https://js.xrpl.org/
 ---
 # Migration Guide for ripple-lib 1.x to xrpl.js 2.x

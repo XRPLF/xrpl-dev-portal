@@ -1,7 +1,8 @@
 ---
 html: stablecoin-configuration.html
 parent: stablecoins.html
-blurb: ステーブルコインの設定を行い、ステーブルコインの機能を詳細に調整します。
+seo:
+    description: ステーブルコインの設定を行い、ステーブルコインの機能を詳細に調整します。
 labels:
   - トークン
 ---

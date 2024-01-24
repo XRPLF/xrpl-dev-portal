@@ -1,7 +1,8 @@
 ---
 html: nftoken-marketplace.html
 parent: nft-mkt-overview.html
-blurb: NFTを取引するための「NFTマーケットプレイス」を構築する。
+seo:
+    description: NFTを取引するための「NFTマーケットプレイス」を構築する。
 labels:
   - Tokenization
 ---

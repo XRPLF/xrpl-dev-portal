@@ -1,7 +1,8 @@
 ---
 html: authorized-minter.html
 parent: nft-mkt-overview.html
-blurb: 他のアカウントのためにNFTをミントし、販売する。
+seo:
+    description: 他のアカウントのためにNFTをミントし、販売する。
 labels:
   - Tokenization
 ---

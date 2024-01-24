@@ -1,7 +1,8 @@
 ---
 html: accountroot.html
 parent: ledger-entry-types.html
-blurb: あるアカウントの設定、XRP残高、その他のメタデータを表します。
+seo:
+    description: あるアカウントの設定、XRP残高、その他のメタデータを表します。
 labels:
   - アカウント
   - XRP

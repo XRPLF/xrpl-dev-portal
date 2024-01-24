@@ -1,7 +1,8 @@
 ---
 html: secure-signing.html
 parent: transactions.html
-blurb: 安全にトランザクションを送信できる環境を設定します。
+seo:
+    description: 安全にトランザクションを送信できる環境を設定します。
 labels:
   - セキュリティ
   - 開発

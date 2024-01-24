@@ -1,7 +1,8 @@
 ---
 html: ping.html
 parent: utility-methods.html
-blurb: 確認レスポンスを返します。これにより、接続のステータスと遅延をテストできます。
+seo:
+    description: 確認レスポンスを返します。これにより、接続のステータスと遅延をテストできます。
 labels:
   - コアサーバー
 ---

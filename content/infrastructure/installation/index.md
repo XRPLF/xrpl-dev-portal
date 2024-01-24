@@ -4,7 +4,8 @@ parent: infrastructure.html
 top_nav_name: Install & Configure
 metadata:
   indexPage: true
-blurb: Install and update XRP Ledger servers including the core server, rippled, and API server, Clio.
+seo:
+    description: Install and update XRP Ledger servers including the core server, rippled, and API server, Clio.
 ---
 # Installation
 

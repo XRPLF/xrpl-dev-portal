@@ -1,7 +1,8 @@
 ---
 html: assign-a-regular-key-pair.html
 parent: manage-account-settings.html
-blurb: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
+seo:
+    description: Authorize a second key pair to sign transactions from your account. This key pair can be changed or removed later.
 labels:
   - Security
   - Accounts

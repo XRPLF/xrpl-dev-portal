@@ -1,7 +1,8 @@
 ---
 html: nftokenpage.html
 parent: ledger-entry-types.html
-blurb: Ledger structure for recording NFTokens.
+seo:
+    description: Ledger structure for recording NFTokens.
 labels:
  - Non-fungible Tokens, NFTs
 ---

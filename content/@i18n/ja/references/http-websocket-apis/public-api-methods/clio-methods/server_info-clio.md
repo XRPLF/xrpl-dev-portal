@@ -1,7 +1,8 @@
 ---
 html: server_info-clio.html
 parent: clio-methods.html
-blurb: Clioサーバの状態を人間が読める形式で取得します。
+seo:
+    description: Clioサーバの状態を人間が読める形式で取得します。
 labels:
   - コアサーバ
 ---

@@ -1,7 +1,8 @@
 ---
 html: markers-and-pagination.html
 parent: api-conventions.html
-blurb: Convention for paginating large queries into multiple responses.
+seo:
+    description: Convention for paginating large queries into multiple responses.
 ---
 # Markers and Pagination
 

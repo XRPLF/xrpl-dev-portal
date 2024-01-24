@@ -1,7 +1,8 @@
 ---
 html: what-is-the-xrp-ledger.html
 parent: introduction.html
-blurb: ブロックチェーン「XRP Ledger」についてご紹介します。
+seo:
+    description: ブロックチェーン「XRP Ledger」についてご紹介します。
 labels:
   - ブロックチェーン
 ---

@@ -4,7 +4,8 @@ parent: references.html
 metadata:
   indexPage: true
 eyebrow_text: Features and Rules
-blurb: Features and rules of the XRP Ledger protocol, regardless of how you access it.
+seo:
+    description: Features and rules of the XRP Ledger protocol, regardless of how you access it.
 ---
 # XRP Ledger Protocol Reference
 

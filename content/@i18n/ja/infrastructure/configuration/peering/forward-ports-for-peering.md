@@ -1,7 +1,8 @@
 ---
 html: forward-ports-for-peering.html
 parent: configure-peering.html
-blurb: 受信ピアがrippledサーバーに接続できるようにファイアウォールを設定します。
+seo:
+    description: 受信ピアがrippledサーバーに接続できるようにファイアウォールを設定します。
 labels:
   - コアサーバー
 ---

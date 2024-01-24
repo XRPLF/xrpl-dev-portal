@@ -1,7 +1,8 @@
 ---
 html: escrow-uc.html
 parent: payments-uc.html
-blurb: トランザクションにより、アカウントはXRP Ledgerを変更することができます。
+seo:
+    description: トランザクションにより、アカウントはXRP Ledgerを変更することができます。
 labels:
   - レジャー
 ---

@@ -1,7 +1,8 @@
 ---
 html: currency-formats.html
 parent: basic-data-types.html
-blurb: XRP Ledgerで利用可能な通貨の精度と範囲、カスタム通貨コードのフォーマットについて説明します。
+seo:
+    description: XRP Ledgerで利用可能な通貨の精度と範囲、カスタム通貨コードのフォーマットについて説明します。
 labels:
   - XRP
   - トークン

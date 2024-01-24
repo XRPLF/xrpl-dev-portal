@@ -1,7 +1,8 @@
 ---
 html: health-check.html
 parent: peer-port-methods.html
-blurb: Special API method for reporting server health.
+seo:
+    description: Special API method for reporting server health.
 labels:
   - Core Server
 ---

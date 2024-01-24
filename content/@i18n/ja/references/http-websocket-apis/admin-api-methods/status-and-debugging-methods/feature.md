@@ -1,7 +1,8 @@
 ---
 html: feature.html
 parent: status-and-debugging-methods.html
-blurb: Amendmentに関してこのサーバが認識している情報を返します。
+seo:
+    description: Amendmentに関してこのサーバが認識している情報を返します。
 labels:
   - ブロックチェーン
   - コアサーバー

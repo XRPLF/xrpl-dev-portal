@@ -1,7 +1,8 @@
 ---
 html: enable-public-signing.html
 parent: configure-rippled.html
-blurb: Allow others to use your server to sign transactions. (Not recommended)
+seo:
+    description: Allow others to use your server to sign transactions. (Not recommended)
 labels:
   - Core Server
   - Security

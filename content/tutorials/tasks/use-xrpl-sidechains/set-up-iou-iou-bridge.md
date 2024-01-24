@@ -1,7 +1,8 @@
 ---
 html: set-up-iou-iou-bridge.html
 parent: use-xrpl-sidechains.html
-blurb: Steps to set up an IOU-IOU bridge.
+seo:
+    description: Steps to set up an IOU-IOU bridge.
 labels:
   - Interoperability
 ---

@@ -1,7 +1,8 @@
 ---
 html: ledger_entry.html
 parent: ledger-methods.html
-blurb: XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。
+seo:
+    description: XRP Ledgerの1つのレジャーオブジェクトを生フォーマットで返します。
 label:
   - ブロックチェーン
   - データ保持

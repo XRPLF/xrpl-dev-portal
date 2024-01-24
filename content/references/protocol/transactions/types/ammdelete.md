@@ -1,7 +1,8 @@
 ---
 html: ammdelete.html
 parent: transaction-types.html
-blurb: Delete an Automated Market Maker instance with an empty asset pool.
+seo:
+    description: Delete an Automated Market Maker instance with an empty asset pool.
 labels:
   - AMM
 status: not_enabled

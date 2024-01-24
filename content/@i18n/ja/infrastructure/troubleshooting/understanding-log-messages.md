@@ -1,7 +1,8 @@
 ---
 html: understanding-log-messages.html
 parent: troubleshoot-the-rippled-server.html
-blurb: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
+seo:
+    description: デバッグログの警告メッセージとエラーメッセージを解釈して対応します。
 labels:
   - コアサーバー
 ---

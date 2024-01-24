@@ -1,7 +1,8 @@
 ---
 html: validator-list.html
 parent: peer-port-methods.html
-blurb: 推奨バリデータリストを共有するための特別なAPIメソッド。
+seo:
+    description: 推奨バリデータリストを共有するための特別なAPIメソッド。
 labels:
   - コアサーバー
   - ブロックチェーン

@@ -1,7 +1,8 @@
 ---
 html: xrpl-sidechains.html
 parent: concepts.html
-blurb: An XRPL sidechain is an independent ledger with its own consensus algorithm, transaction types, and rules.
+seo:
+    description: An XRPL sidechain is an independent ledger with its own consensus algorithm, transaction types, and rules.
 labels:
   - Blockchain
   - Interoperability

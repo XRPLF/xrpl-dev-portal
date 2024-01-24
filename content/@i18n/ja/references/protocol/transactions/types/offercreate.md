@@ -1,7 +1,8 @@
 ---
 html: offercreate.html
 parent: transaction-types.html
-blurb: 通貨交換の注文を作成します。
+seo:
+    description: 通貨交換の注文を作成します。
 labels:
   - 分散型取引所
 ---

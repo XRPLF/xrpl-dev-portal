@@ -1,7 +1,8 @@
 ---
 html: base58-encodings.html
 parent: basic-data-types.html
-blurb: 暗号鍵と関連データをbase58形式で表すフォーマットです。
+seo:
+    description: 暗号鍵と関連データをbase58形式で表すフォーマットです。
 ---
 # base58エンコード
 

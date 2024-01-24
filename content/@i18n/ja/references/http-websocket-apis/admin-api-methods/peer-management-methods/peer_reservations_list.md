@@ -1,7 +1,8 @@
 ---
 html: peer_reservations_list.html
 parent: peer-management-methods.html
-blurb: 特定のピアサーバー用の予約済みスロットをリスト表示します。
+seo:
+    description: 特定のピアサーバー用の予約済みスロットをリスト表示します。
 labels:
   - コアサーバー
 ---

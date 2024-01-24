@@ -1,7 +1,8 @@
 ---
 html: ledger_cleaner.html
 parent: logging-and-data-management-methods.html
-blurb: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。
+seo:
+    description: レジャークリーナーを制御し、レジャーデータベースの破損を検出して修復できる非同期メンテナンスをする。
 labels:
   - データ保持
 ---

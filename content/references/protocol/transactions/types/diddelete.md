@@ -1,7 +1,8 @@
 ---
 html: diddelete.html
 parent: transaction-types.html
-blurb: Delete a DID.
+seo:
+    description: Delete a DID.
 labels:
   - DID
 status: not_enabled

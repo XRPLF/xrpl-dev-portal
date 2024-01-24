@@ -1,7 +1,8 @@
 ---
 html: nft-mkt-overview.html
 parent: tokenization.html
-blurb: NFTマーケットプレイスのユースケースの概要。
+seo:
+    description: NFTマーケットプレイスのユースケースの概要。
 labels:
   - Tokenization
 ---

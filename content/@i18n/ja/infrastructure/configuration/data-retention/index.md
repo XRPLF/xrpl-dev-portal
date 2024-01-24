@@ -3,7 +3,8 @@ html: data-retention.html
 parent: configure-rippled.html
 metadata:
   indexPage: true
-blurb: サーバが保存するデータの量と、古いデータを削除するタイミングを制御します。
+seo:
+    description: サーバが保存するデータの量と、古いデータを削除するタイミングを制御します。
 ---
 # データの保存
 

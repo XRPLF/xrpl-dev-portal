@@ -1,7 +1,8 @@
 ---
 html: transaction-types.html
 parent: transaction-formats.html
-blurb: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
+seo:
+    description: トランザクションのタイプは、どういったタイプの操作を実行することが想定されているのかを示します。
 metadata:
   indexPage: true
 labels:

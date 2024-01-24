@@ -1,7 +1,8 @@
 ---
 html: submit.html
 parent: transaction-methods.html
-blurb: Send a transaction to the network.
+seo:
+    description: Send a transaction to the network.
 labels:
   - Transaction Sending
   - Payments

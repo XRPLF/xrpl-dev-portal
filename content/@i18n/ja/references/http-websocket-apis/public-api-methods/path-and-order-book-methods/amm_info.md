@@ -1,7 +1,8 @@
 ---
 html: amm_info.html
 parent: path-and-order-book-methods.html
-blurb: 自動マーケットメーカ(AMM)の情報を取得する。
+seo:
+    description: 自動マーケットメーカ(AMM)の情報を取得する。
 status: not_enabled
 labels:
   - 分散型取引所

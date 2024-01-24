@@ -1,7 +1,8 @@
 ---
 html: peer-to-peer-payments-uc.html
 parent: payments-uc.html
-blurb: Use the XRP Ledger to handle your day-to-day payments without a third party.
+seo:
+    description: Use the XRP Ledger to handle your day-to-day payments without a third party.
 labels:
   - Transactions
 ---

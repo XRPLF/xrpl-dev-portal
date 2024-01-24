@@ -1,7 +1,8 @@
 ---
 html: enableamendment.html
 parent: pseudo-transaction-types.html
-blurb: トランザクション処理を変更するAmendmentプロセスの進行状況を追跡します。
+seo:
+    description: トランザクション処理を変更するAmendmentプロセスの進行状況を追跡します。
 labels:
   - ブロックチェーン
 ---

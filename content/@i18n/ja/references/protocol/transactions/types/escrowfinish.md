@@ -1,7 +1,8 @@
 ---
 html: escrowfinish.html
 parent: transaction-types.html
-blurb: 保留中の支払いから受取人へXRPを送金します。
+seo:
+    description: 保留中の支払いから受取人へXRPを送金します。
 labels:
   - Escrow
 ---

@@ -1,7 +1,8 @@
 ---
 html: log_level.html
 parent: logging-and-data-management-methods.html
-blurb: ログ詳細レベルを変更するか、現在のログレベルを返します。
+seo:
+    description: ログ詳細レベルを変更するか、現在のログレベルを返します。
 labels:
   - データ保持
 ---

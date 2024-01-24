@@ -1,7 +1,8 @@
 ---
 html: tx.html
 parent: transaction-methods.html
-blurb: 1つのトランザクションに関する情報を取得します。
+seo:
+    description: 1つのトランザクションに関する情報を取得します。
 labels:
   - トランザクション送信
   - 支払い

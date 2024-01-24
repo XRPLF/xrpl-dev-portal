@@ -1,7 +1,8 @@
 ---
 html: validation_create.html
 parent: key-generation-methods.html
-blurb: Generate keys for a rippled server to identify itself to the network.
+seo:
+    description: Generate keys for a rippled server to identify itself to the network.
 labels:
   - Security
   - Core Server

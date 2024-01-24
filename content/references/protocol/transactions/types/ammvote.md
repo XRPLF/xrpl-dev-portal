@@ -1,7 +1,8 @@
 ---
 html: ammvote.html
 parent: transaction-types.html
-blurb: Vote on the trading fee for an Automated Market Maker instance.
+seo:
+    description: Vote on the trading fee for an Automated Market Maker instance.
 labels:
   - AMM
 status: not_enabled

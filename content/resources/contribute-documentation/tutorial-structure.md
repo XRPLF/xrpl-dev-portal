@@ -1,7 +1,8 @@
 ---
 html: tutorial-structure.html
 parent: contribute-documentation.html
-blurb: A summary of the parts of a standard tutorial.
+seo:
+    description: A summary of the parts of a standard tutorial.
 ---
 # Tutorial Structure
 

@@ -3,7 +3,8 @@ html: install-rippled.html
 parent: infrastructure.html
 metadata:
   indexPage: true
-blurb: rippledサーバーをインストールして更新します。
+seo:
+    description: rippledサーバーをインストールして更新します。
 ---
 # rippledのインストール
 

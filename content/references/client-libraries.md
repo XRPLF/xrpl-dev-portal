@@ -1,7 +1,8 @@
 ---
 html: client-libraries.html
 parent: references.html
-blurb: Use these libraries to access the XRP Ledger from your programming language of choice.
+seo:
+    description: Use these libraries to access the XRP Ledger from your programming language of choice.
 ---
 # Client Libraries
 

@@ -1,7 +1,8 @@
 ---
 html: server_info.html
 parent: server-info-methods.html
-blurb: サーバについての各種情報を、人間が読めるフォーマットでサーバにリクエストします。
+seo:
+    description: サーバについての各種情報を、人間が読めるフォーマットでサーバにリクエストします。
 labels:
   - コアサーバー
 ---

@@ -1,7 +1,8 @@
 ---
 html: ledger_accept.html
 parent: server-control-methods.html
-blurb: Close and advance the ledger in stand-alone mode.
+seo:
+    description: Close and advance the ledger in stand-alone mode.
 labels:
   - Core Server
 ---

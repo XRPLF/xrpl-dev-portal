@@ -3,7 +3,8 @@ html: decentralized-exchange.html
 parent: tokens.html
 metadata:
   indexPage: true
-blurb: The XRP Ledger contains a fully functional exchange where users can trade tokens for XRP or each other.
+seo:
+    description: The XRP Ledger contains a fully functional exchange where users can trade tokens for XRP or each other.
 targets:
   - en
 ---
