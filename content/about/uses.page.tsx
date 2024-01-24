@@ -4,6 +4,13 @@ import numLight from "../static/js/ecosystem/numbers-animation-light.json";
 import numDark from "../static/js/ecosystem/numbers-animation.json";
 import arrow from "../static/js/ecosystem/arrow-animation.json";
 
+export const frontmatter = {
+  seo: {
+    title: 'Use Cases & Featured Projects',
+    description: "Here’s how the XRP Ledger is used to power innovative technology across the payments and public blockchain landscape.",
+  }
+};
+
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
 

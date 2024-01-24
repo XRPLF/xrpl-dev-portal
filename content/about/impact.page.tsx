@@ -5,6 +5,13 @@ import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
 
+export const frontmatter = {
+  seo: {
+    title: 'Impact',
+    description: "Learn how the XRP Ledger helps move money around the world faster, cheaper and more sustainably than any other currency available today.",
+  }
+};
+
 export default function Impact() {
   const theme = useThemeFromClassList(['dark', 'light'])
   const { translate } = useTranslate();

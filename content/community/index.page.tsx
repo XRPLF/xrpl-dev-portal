@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useTranslate } from "@portal/hooks";
 import moment from "moment";
+
+export const frontmatter = {
+  seo: {
+    title: 'Community',
+    description: "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
+  }
+};
+
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
