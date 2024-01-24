@@ -1,7 +1,8 @@
 ---
 html: witness-servers.html
 parent: xrpl-sidechains.html
-blurb: Witnessサーバとは、XRP Ledgerと他のチェーン間のトランザクションの監視と署名を行うための軽量サーバです。
+seo:
+    description: Witnessサーバとは、XRP Ledgerと他のチェーン間のトランザクションの監視と署名を行うための軽量サーバです。
 status: not_enabled
 labels:
   - ブロックチェーン

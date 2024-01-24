@@ -1,7 +1,8 @@
 ---
 html: rippled-1-3-migration-instructions.html
 parent: install-rippled.html
-blurb: Use these instructions to upgrade rippled packages from 1.2.x or below to 1.3.x or higher.
+seo:
+    description: Use these instructions to upgrade rippled packages from 1.2.x or below to 1.3.x or higher.
 status: removed
 ---
 # rippled v1.3.x Migration Instructions

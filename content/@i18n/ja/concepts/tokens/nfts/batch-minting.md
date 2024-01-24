@@ -1,7 +1,8 @@
 ---
 html: nftoken-batch-minting.html
 parent: non-fungible-tokens.html
-blurb: NFTokenオブジェクトを一括でMintする。
+seo:
+    description: NFTokenオブジェクトを一括でMintする。
 labels:
  - 非代替性トークン, NFT
 ---

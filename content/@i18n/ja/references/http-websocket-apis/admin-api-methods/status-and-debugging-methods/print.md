@@ -1,7 +1,8 @@
 ---
 html: print.html
 parent: status-and-debugging-methods.html
-blurb: さまざまな内部サブシステムの現在の状況を返します。
+seo:
+    description: さまざまな内部サブシステムの現在の状況を返します。
 labels:
   - コアサーバー
 ---

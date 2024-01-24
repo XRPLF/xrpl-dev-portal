@@ -1,7 +1,8 @@
 ---
 html: xrp-ledger-toml.html
 parent: references.html
-blurb: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
+seo:
+    description: Provide machine-readable information about yourself to other XRP Ledger users. #TODO:translate
 curated_anchors:
     - name: Serving the File
       anchor: "#serving-the-file"

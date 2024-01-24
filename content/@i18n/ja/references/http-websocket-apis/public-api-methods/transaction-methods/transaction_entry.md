@@ -1,7 +1,8 @@
 ---
 html: transaction_entry.html
 parent: transaction-methods.html
-blurb: 特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。
+seo:
+    description: 特定のレジャーバージョンから1つのトランザクションに関する情報を取得します。
 labels:
   - トランザクション送信
 ---

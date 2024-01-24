@@ -1,7 +1,8 @@
 ---
 html: book_offers.html
 parent: path-and-order-book-methods.html
-blurb: オーダーブックと呼ばれる、2つの通貨間のオファーのリストを取得します。
+seo:
+    description: オーダーブックと呼ばれる、2つの通貨間のオファーのリストを取得します。
 labels:
   - 分散型取引所
   - クロスカレンシー

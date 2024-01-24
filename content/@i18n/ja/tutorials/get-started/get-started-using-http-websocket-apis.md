@@ -1,7 +1,8 @@
 ---
 html: get-started-using-http-websocket-apis.html
 parent: http-websocket-apis-tutorials.html
-blurb: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
+seo:
+    description: XRP Ledgerの操作に使用できるAPIとライブラリを使い始めましょう。
 cta_text: 開始しよう
 top_nav_name: HTTP / WebSocket
 top_nav_grouping: 始めましょう

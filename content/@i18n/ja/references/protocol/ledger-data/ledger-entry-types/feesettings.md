@@ -1,7 +1,8 @@
 ---
 html: feesettings.html
 parent: ledger-entry-types.html
-blurb: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
+seo:
+    description: コンセンサスで承認された基本トランザクションコストと必要準備金があるシングルトンオブジェクトです。
 labels:
   - 手数料
 ---

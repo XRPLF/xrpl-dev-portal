@@ -1,7 +1,8 @@
 ---
 html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
 parent: ledger-entry-types.html
-blurb: A record of preauthorization for sending payments to an account that requires authorization.
+seo:
+    description: A record of preauthorization for sending payments to an account that requires authorization.
 labels:
   - Security
 ---

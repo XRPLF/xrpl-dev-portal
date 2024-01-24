@@ -1,7 +1,8 @@
 ---
 html: ammdeposit.html
 parent: transaction-types.html
-blurb: Deposit funds into an Automated Market Maker in exchange for LPTokens.
+seo:
+    description: Deposit funds into an Automated Market Maker in exchange for LPTokens.
 labels:
   - AMM
 status: not_enabled

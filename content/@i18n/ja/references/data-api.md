@@ -1,7 +1,8 @@
 ---
 html: data-api.html
 parent: references.html
-blurb: (非推奨)XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
+seo:
+    description: (非推奨)XRP Ledger分析と履歴データに対するRESTfulインターフェイスです。
 status: removed
 nav_omit: true
 ---

@@ -1,7 +1,8 @@
 ---
 html: checks.html
 parent: payment-types.html
-blurb: Checksを使用すると、指定の受取人による取消または換金が可能な後払いの支払いを生成することができます。
+seo:
+    description: Checksを使用すると、指定の受取人による取消または換金が可能な後払いの支払いを生成することができます。
 labels:
   - Checks
   - 支払い

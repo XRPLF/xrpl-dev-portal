@@ -1,7 +1,8 @@
 ---
 html: build-run-rippled-in-reporting-mode.html
 parent: install-rippled.html
-blurb: 検証済みデータのリモートプロシージャコール(RPC)を処理するrippledの特別なモードをビルドし、実行します。
+seo:
+    description: 検証済みデータのリモートプロシージャコール(RPC)を処理するrippledの特別なモードをビルドし、実行します。
 labels:
   - コアサーバ
   - ブロックチェーン

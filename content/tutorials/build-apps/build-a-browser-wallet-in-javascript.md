@@ -4,7 +4,8 @@ parent: javascript.html
 targets:
   - en
   - ja # TODO: translate this page
-blurb: Build a graphical browser wallet for the XRPL using Javascript.
+seo:
+    description: Build a graphical browser wallet for the XRPL using Javascript.
 ---
 # Build a Browser Wallet in JavaScript
 <!-- STYLE_OVERRIDE: wallet -->

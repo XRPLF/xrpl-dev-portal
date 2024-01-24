@@ -1,7 +1,8 @@
 ---
 html: sign_for.html
 parent: signing-methods.html
-blurb: マルチシグトランザクションの署名を1つ提供します。
+seo:
+    description: マルチシグトランザクションの署名を1つ提供します。
 labels:
   - トランザクション送信
 ---

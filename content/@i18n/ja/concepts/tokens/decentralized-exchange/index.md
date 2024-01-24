@@ -3,7 +3,8 @@ html: decentralized-exchange.html
 parent: tokens.html
 metadata:
   indexPage: true
-blurb: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーはトークンをXRPに、あるいはXRPをトークンにに交換できます。
+seo:
+    description: XRP Ledgerには多機能な取引所が含まれており、この取引所を利用してユーザーはトークンをXRPに、あるいはXRPをトークンにに交換できます。
 ---
 # 分散型取引所
 

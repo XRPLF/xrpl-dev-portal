@@ -1,7 +1,8 @@
 ---
 html: disable-master-key-pair.html
 parent: manage-account-settings.html
-blurb: Disable the master key that is mathematically associated with an address.
+seo:
+    description: Disable the master key that is mathematically associated with an address.
 labels:
   - Security
   - Accounts

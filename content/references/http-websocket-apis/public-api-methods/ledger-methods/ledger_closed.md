@@ -1,7 +1,8 @@
 ---
 html: ledger_closed.html
 parent: ledger-methods.html
-blurb: Get the latest closed ledger version.
+seo:
+    description: Get the latest closed ledger version.
 labels:
   - Blockchain
 ---

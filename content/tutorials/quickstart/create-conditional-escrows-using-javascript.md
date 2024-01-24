@@ -1,7 +1,8 @@
 ---
 html: create-conditional-escrows-using-javascript.html
 parent: send-payments-using-javascript.html
-blurb: Create, finish, or cancel condition-based escrow transactions.
+seo:
+    description: Create, finish, or cancel condition-based escrow transactions.
 labels:
   - Accounts
   - Quickstart

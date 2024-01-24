@@ -1,7 +1,8 @@
 ---
 html: public-servers.html
 parent: get-started.html
-blurb: これらの公開サーバーを利用して、自社のインフラを必要とせずにXRP Ledgerにアクセスします。
+seo:
+    description: これらの公開サーバーを利用して、自社のインフラを必要とせずにXRP Ledgerにアクセスします。
 labels:
   - コアサーバー
 ---

@@ -1,7 +1,8 @@
 ---
 html: disable-master-key-pair.html
 parent: manage-account-settings.html
-blurb: アドレスに数学的に関連付けられたマスターキーを無効にする。
+seo:
+    description: アドレスに数学的に関連付けられたマスターキーを無効にする。
 labels:
   - セキュリティ
   - アカウント

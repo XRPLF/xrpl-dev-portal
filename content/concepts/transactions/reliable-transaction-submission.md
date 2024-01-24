@@ -1,7 +1,8 @@
 ---
 html: reliable-transaction-submission.html
 parent: transactions.html
-blurb: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
+seo:
+    description: Build a system that can submit transactions to the XRP Ledger and get their final results safely and quickly.
 labels:
   - Transaction Sending
   - Development

@@ -1,7 +1,8 @@
 ---
 html: xchainaddclaimattestation.html 
 parent: transaction-types.html
-blurb: 送信元チェーンで発生したイベントを、送信先チェーンに証明(アテスト)します。
+seo:
+    description: 送信元チェーンで発生したイベントを、送信先チェーンに証明(アテスト)します。
 labels:
   - 相互運用性
 status: not_enabled

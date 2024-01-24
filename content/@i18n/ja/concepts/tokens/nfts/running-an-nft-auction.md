@@ -1,7 +1,8 @@
 ---
 html: nftoken-auctions.html
 parent: non-fungible-tokens.html
-blurb: NFTのMintを他のアカウントに代行してもらうことができます。
+seo:
+    description: NFTのMintを他のアカウントに代行してもらうことができます。
 labels:
  - 非代替性トークン, NFT
 ---

@@ -1,7 +1,8 @@
 ---
 html: checkcash.html
 parent: transaction-types.html
-blurb: Redeem a check.
+seo:
+    description: Redeem a check.
 labels:
   - Checks
 ---

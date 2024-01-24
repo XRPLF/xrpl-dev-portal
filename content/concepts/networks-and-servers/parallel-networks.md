@@ -1,7 +1,8 @@
 ---
 html: parallel-networks.html
 parent: networks-and-servers.html
-blurb: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
+seo:
+    description: Understand how test networks and alternate ledger chains relate to the production XRP Ledger.
 labels:
   - Blockchain
 ---

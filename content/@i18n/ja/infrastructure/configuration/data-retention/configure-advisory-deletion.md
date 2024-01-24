@@ -1,7 +1,8 @@
 ---
 html: configure-advisory-deletion.html
 parent: data-retention.html
-blurb: 指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。
+seo:
+    description: 指示による削除を使用して、新しい履歴ができたときではなく、スケジュールで古いレジャー履歴を削除します。
 labels:
   - コアサーバー
   - データ保持

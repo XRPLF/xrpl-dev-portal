@@ -1,7 +1,8 @@
 ---
 html: server_state.html
 parent: server-info-methods.html
-blurb: Retrieve status of the server in machine-readable format.
+seo:
+    description: Retrieve status of the server in machine-readable format.
 labels:
   - Core Server
 ---

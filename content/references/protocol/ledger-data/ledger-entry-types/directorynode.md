@@ -1,7 +1,8 @@
 ---
 html: directorynode.html
 parent: ledger-entry-types.html
-blurb: Contains links to other objects.
+seo:
+    description: Contains links to other objects.
 labels:
   - Data Retention
   - Decentralized Exchange

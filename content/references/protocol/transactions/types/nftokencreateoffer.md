@@ -1,7 +1,8 @@
 ---
 html: nftokencreateoffer.html
 parent: transaction-types.html
-blurb: Create an offer to buy or sell NFTs.
+seo:
+    description: Create an offer to buy or sell NFTs.
 labels:
  - Non-fungible Tokens, NFTs
 ---

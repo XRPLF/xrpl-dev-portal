@@ -1,7 +1,8 @@
 ---
 html: path_find.html
 parent: path-and-order-book-methods.html
-blurb: トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。
+seo:
+    description: トランザクションが実行される可能性のあるパスを探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。
 labels:
   - クロスカレンシー
   - トークン

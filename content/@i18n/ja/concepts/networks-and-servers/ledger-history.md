@@ -1,7 +1,8 @@
 ---
 html: ledger-history.html
 parent: networks-and-servers.html
-blurb: rippledサーバーはトランザクションの変動金額と状態の履歴をローカルに保管します。
+seo:
+    description: rippledサーバーはトランザクションの変動金額と状態の履歴をローカルに保管します。
 labels:
   - データ保持
   - ブロックチェーン

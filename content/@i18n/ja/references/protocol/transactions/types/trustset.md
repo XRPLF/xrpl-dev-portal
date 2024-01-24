@@ -1,7 +1,8 @@
 ---
 html: trustset.html
 parent: transaction-types.html
-blurb: トラストラインを作成または変更します。
+seo:
+    description: トラストラインを作成または変更します。
 labels:
   - トークン
 ---

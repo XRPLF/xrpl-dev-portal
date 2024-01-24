@@ -1,7 +1,8 @@
 ---
 html: signerlist.html
 parent: ledger-entry-types.html
-blurb: A list of addresses for multi-signing transactions.
+seo:
+    description: A list of addresses for multi-signing transactions.
 labels:
   - Security
 ---

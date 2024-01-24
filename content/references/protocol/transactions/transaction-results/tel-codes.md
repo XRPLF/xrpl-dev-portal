@@ -1,7 +1,8 @@
 ---
 html: tel-codes.html
 parent: transaction-results.html
-blurb: tel codes indicate an error in the local server processing the transaction.
+seo:
+    description: tel codes indicate an error in the local server processing the transaction.
 labels:
   - Transaction Sending
 ---

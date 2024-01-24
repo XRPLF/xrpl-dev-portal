@@ -1,7 +1,8 @@
 ---
 html: cancel-an-expired-escrow.html
 parent: use-escrows.html
-blurb: Cancel an expired escrow.
+seo:
+    description: Cancel an expired escrow.
 labels:
   - Escrow
   - Smart Contracts

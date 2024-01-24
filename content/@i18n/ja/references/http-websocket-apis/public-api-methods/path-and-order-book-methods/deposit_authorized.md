@@ -1,7 +1,8 @@
 ---
 html: deposit_authorized.html
 parent: path-and-order-book-methods.html
-blurb: あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。
+seo:
+    description: あるアカウントに別のアカウントへ支払を直接送金する権限があるかどうかを示します。
 labels:
   - アカウント
   - セキュリティ

@@ -1,7 +1,8 @@
 ---
 html: enable-no-freeze.html
 parent: use-tokens.html
-blurb: Permanently give up your account's ability to freeze tokens it issues.
+seo:
+    description: Permanently give up your account's ability to freeze tokens it issues.
 embed_xrpl_js: true
 filters:
   - interactive_steps

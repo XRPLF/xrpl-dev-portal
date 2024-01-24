@@ -1,7 +1,8 @@
 ---
 html: ammdelete.html
 parent: transaction-types.html
-blurb: 空のプールを持つ自動マーケットメーカーのインスタンスを削除します。
+seo:
+    description: 空のプールを持つ自動マーケットメーカーのインスタンスを削除します。
 labels:
   - AMM
 status: not_enabled

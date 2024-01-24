@@ -1,7 +1,8 @@
 ---
 html: install-clio-on-ubuntu.html
 parent: install-rippled.html
-blurb: Install a precompiled Clio binary on Ubuntu Linux.
+seo:
+    description: Install a precompiled Clio binary on Ubuntu Linux.
 labels:
   - Clio Server
 ---

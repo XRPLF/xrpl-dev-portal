@@ -4,7 +4,8 @@ parent: python.html
 top_nav_grouping: Article Types
 metadata:
   indexPage: true
-blurb: Modular XRPL tutorials in Python.
+seo:
+    description: Modular XRPL tutorials in Python.
 ---
 # Modular Tutorials in Python
 

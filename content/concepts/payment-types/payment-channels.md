@@ -1,7 +1,8 @@
 ---
 html: payment-channels.html
 parent: payment-types.html
-blurb: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
+seo:
+    description: Payment Channels enable fast, asynchronous XRP payments that can be divided into very small increments and settled later.
 labels:
   - Payment Channels
   - Smart Contracts

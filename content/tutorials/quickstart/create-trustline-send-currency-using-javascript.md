@@ -1,7 +1,8 @@
 ---
 html: create-trustline-send-currency-using-javascript.html
 parent: send-payments-using-javascript.html
-blurb: Create Trust Lines and send currency.
+seo:
+    description: Create Trust Lines and send currency.
 labels:
   - Cross-Currency
   - Payments

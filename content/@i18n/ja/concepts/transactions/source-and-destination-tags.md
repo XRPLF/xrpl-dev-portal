@@ -1,7 +1,8 @@
 ---
 html: source-and-destination-tags.html
 parent: transactions.html
-blurb: 送信元タグと宛先タグを使用して、多目的アドレスからの、または多目的アドレスへの支払いを行います。
+seo:
+    description: 送信元タグと宛先タグを使用して、多目的アドレスからの、または多目的アドレスへの支払いを行います。
 labels:
   - 支払い
   - アカウント

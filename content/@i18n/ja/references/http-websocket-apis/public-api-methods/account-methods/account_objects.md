@@ -1,7 +1,8 @@
 ---
 html: account_objects.html
 parent: account-methods.html
-blurb: アカウントが所有するすべてのオブジェクトを返します。
+seo:
+    description: アカウントが所有するすべてのオブジェクトを返します。
 labels:
   - アカウント
   - データ保持

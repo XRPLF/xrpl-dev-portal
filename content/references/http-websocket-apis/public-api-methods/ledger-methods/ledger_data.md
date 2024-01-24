@@ -1,7 +1,8 @@
 ---
 html: ledger_data.html
 parent: ledger-methods.html
-blurb: Get the raw contents of a ledger version.
+seo:
+    description: Get the raw contents of a ledger version.
 labels:
   - Blockchain
   - Data Retention

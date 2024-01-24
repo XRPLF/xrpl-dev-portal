@@ -1,7 +1,8 @@
 ---
 html: cluster-rippled-servers.html
 parent: configure-peering.html
-blurb: Set up a group of servers that share work for higher efficiency.
+seo:
+    description: Set up a group of servers that share work for higher efficiency.
 labels:
   - Core Server
 ---

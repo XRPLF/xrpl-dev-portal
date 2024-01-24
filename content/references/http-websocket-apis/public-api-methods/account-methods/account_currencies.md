@@ -1,7 +1,8 @@
 ---
 html: account_currencies.html
 parent: account-methods.html
-blurb: Get a list of currencies an account can send or receive.
+seo:
+    description: Get a list of currencies an account can send or receive.
 labels:
   - Tokens
 ---

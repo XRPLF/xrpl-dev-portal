@@ -1,6 +1,7 @@
 ---
 html: ledger-entry-common-fields.html
-blurb: These common fields are part of every ledger entry.
+seo:
+    description: These common fields are part of every ledger entry.
 ---
 # Ledger Entry Common Fields
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)

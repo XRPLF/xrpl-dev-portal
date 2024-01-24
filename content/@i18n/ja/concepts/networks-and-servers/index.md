@@ -1,7 +1,8 @@
 ---
 html: networks-and-servers.html
 parent: concepts.html
-blurb: rippledは、XRP Ledgerを管理するコアとなるピアツーピアサーバーです。
+seo:
+    description: rippledは、XRP Ledgerを管理するコアとなるピアツーピアサーバーです。
 metadata:
   indexPage: true
 ---

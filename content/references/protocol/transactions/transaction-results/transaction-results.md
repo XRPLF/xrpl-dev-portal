@@ -1,7 +1,8 @@
 ---
 html: transaction-results.html
 parent: transaction-formats.html
-blurb: Learn how to interpret rippled server transaction results.
+seo:
+    description: Learn how to interpret rippled server transaction results.
 labels:
   - Transaction Sending
 ---

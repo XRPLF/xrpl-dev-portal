@@ -1,7 +1,8 @@
 ---
 html: api-conventions.html
 parent: http-websocket-apis.html
-blurb: Common conventions used across the XRP Ledger's HTTP APIs.
+seo:
+    description: Common conventions used across the XRP Ledger's HTTP APIs.
 metadata:
   indexPage: true
 ---

@@ -1,7 +1,8 @@
 ---
 html: server-doesnt-sync.html
 parent: troubleshoot-the-rippled-server.html
-blurb: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
+seo:
+    description: rippledサーバがXRP Ledgerの他の部分と同期できない問題のトラブルシューティング。
 labels:
   - コアサーバー
 ---

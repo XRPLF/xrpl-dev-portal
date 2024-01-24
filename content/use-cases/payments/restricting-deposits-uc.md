@@ -1,7 +1,8 @@
 ---
 html: restricting-deposits-uc.html
 parent: payments-uc.html
-blurb: Checks enable users to create deferred payments similar to personal paper checks.
+seo:
+    description: Checks enable users to create deferred payments similar to personal paper checks.
 labels:
   - Transactions
 ---

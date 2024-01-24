@@ -1,7 +1,8 @@
 ---
 html: tickets.html
 parent: accounts.html
-blurb: Send transactions in non-sequential order.
+seo:
+    description: Send transactions in non-sequential order.
 labels:
   - Accounts
   - Transaction Sending

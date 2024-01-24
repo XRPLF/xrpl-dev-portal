@@ -1,7 +1,8 @@
 ---
 html: partial-payments.html
 parent: payment-types.html
-blurb: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
+seo:
+    description: Partial payments subtract fees from the amount sent, delivering a flexible amount. Partial payments are useful for returning unwanted payments without incurring additional costs.
 labels:
   - Payments
   - Security

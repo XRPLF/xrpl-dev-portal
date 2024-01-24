@@ -1,7 +1,8 @@
 ---
 html: rate-limiting.html
 parent: api-conventions.html
-blurb: パブリックAPIがどのようにクライアントのリクエスト数を制限しているかについての説明です。
+seo:
+    description: パブリックAPIがどのようにクライアントのリクエスト数を制限しているかについての説明です。
 labels:
   - コアサーバー
 ---

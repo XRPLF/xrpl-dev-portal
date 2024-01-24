@@ -1,7 +1,8 @@
 ---
 html: random.html
 parent: utility-methods.html
-blurb: クライアントが乱数生成のエントロピー生成源として使用する乱数を提供します。
+seo:
+    description: クライアントが乱数生成のエントロピー生成源として使用する乱数を提供します。
 labels:
   - コアサーバー
 ---

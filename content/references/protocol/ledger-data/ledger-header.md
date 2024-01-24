@@ -1,7 +1,8 @@
 ---
 html: ledger-header.html
 parent: ledger-data-formats.html
-blurb: A unique header that describes the contents of a ledger version.
+seo:
+    description: A unique header that describes the contents of a ledger version.
 labels:
   - Data Retention
   - Blockchain

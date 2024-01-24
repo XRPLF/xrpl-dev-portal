@@ -1,7 +1,8 @@
 ---
 html: crawl_shards.html
 parent: logging-and-data-management-methods.html
-blurb: Request information about which history shards peers have.
+seo:
+    description: Request information about which history shards peers have.
 labels:
   - Data Retention
 ---

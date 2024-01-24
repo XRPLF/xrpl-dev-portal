@@ -1,7 +1,8 @@
 ---
 html: escrow-uc.html
 parent: payments-uc.html
-blurb: Transactions allow accounts to modify the XRP Ledger.
+seo:
+    description: Transactions allow accounts to modify the XRP Ledger.
 labels:
   - Ledgers
 ---

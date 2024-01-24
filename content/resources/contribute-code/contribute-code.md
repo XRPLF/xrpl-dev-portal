@@ -1,7 +1,8 @@
 ---
 html: contribute-code.html
 parent: resources.html
-blurb: Learn how features can be coded into the XRP Ledger protocol.
+seo:
+    description: Learn how features can be coded into the XRP Ledger protocol.
 labels:
   - Blockchain
 ---

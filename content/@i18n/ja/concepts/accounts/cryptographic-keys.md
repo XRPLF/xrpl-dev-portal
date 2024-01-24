@@ -1,7 +1,8 @@
 ---
 html: cryptographic-keys.html
 parent: accounts.html
-blurb: 暗号鍵を使用してトランザクションを承認し、XRP Ledgerがトランザクションを実行できるようにします。
+seo:
+    description: 暗号鍵を使用してトランザクションを承認し、XRP Ledgerがトランザクションを実行できるようにします。
 labels:
   - セキュリティ
   - スマートコントラクト

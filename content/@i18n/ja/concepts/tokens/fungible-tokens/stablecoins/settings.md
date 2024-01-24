@@ -1,7 +1,8 @@
 ---
 html: stablecoin-settings.html
 parent: stablecoins.html
-blurb: Settings to configure before issuing your stablecoin.
+seo:
+    description: Settings to configure before issuing your stablecoin.
 labels:
   - XRP
   - ステーブルコイン

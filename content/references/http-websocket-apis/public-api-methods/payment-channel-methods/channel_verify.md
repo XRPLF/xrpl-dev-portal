@@ -1,7 +1,8 @@
 ---
 html: channel_verify.html
 parent: payment-channel-methods.html
-blurb: Check a payment channel claim's signature.
+seo:
+    description: Check a payment channel claim's signature.
 labels:
   - Payment Channels
 ---

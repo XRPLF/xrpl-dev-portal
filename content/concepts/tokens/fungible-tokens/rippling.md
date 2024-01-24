@@ -1,7 +1,8 @@
 ---
 html: rippling.html
 parent: trust-lines-and-issuing.html
-blurb: Rippling is automatic multi-party net settlement of token balances.
+seo:
+    description: Rippling is automatic multi-party net settlement of token balances.
 labels:
   - Tokens
   - Cross-Currency

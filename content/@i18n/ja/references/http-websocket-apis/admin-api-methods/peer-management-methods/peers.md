@@ -1,7 +1,8 @@
 ---
 html: peers.html
 parent: peer-management-methods.html
-blurb: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
+seo:
+    description: ピアプロトコルでこのサーバーに現在接続されているその他のすべてのrippledサーバーのリストを返します。
 labels:
   - コアサーバー
 ---

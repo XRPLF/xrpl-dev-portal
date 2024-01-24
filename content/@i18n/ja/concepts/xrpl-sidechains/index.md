@@ -1,7 +1,8 @@
 ---
 html: xrpl-sidechains.html
 parent: concepts.html
-blurb: XRPLサイドチェーンは、独自のコンセンサスアルゴリズム、トランザクションタイプ、ルールを持つ独立した台帳です。
+seo:
+    description: XRPLサイドチェーンは、独自のコンセンサスアルゴリズム、トランザクションタイプ、ルールを持つ独立した台帳です。
 labels:
   - ブロックチェーン
   - 相互運用性

@@ -1,7 +1,8 @@
 ---
 html: setfee.html
 parent: pseudo-transaction-types.html
-blurb: Change global reserve and transaction cost settings.
+seo:
+    description: Change global reserve and transaction cost settings.
 labels:
   - Fees
 ---

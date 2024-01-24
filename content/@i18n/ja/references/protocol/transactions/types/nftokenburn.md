@@ -1,7 +1,8 @@
 ---
 html: nftokenburn.html
 parent: transaction-types.html
-blurb: TokenBurnを使用して、NFTを永久に破棄します。
+seo:
+    description: TokenBurnを使用して、NFTを永久に破棄します。
 labels:
   - 非代替性トークン, NFT
 ---

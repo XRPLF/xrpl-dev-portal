@@ -1,7 +1,8 @@
 ---
 html: transfer-fees.html
 parent: tokens.html
-blurb: Token issuers can charge a fee for transferring their tokens.
+seo:
+    description: Token issuers can charge a fee for transferring their tokens.
 labels:
   - Fees
   - Tokens

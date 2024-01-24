@@ -1,7 +1,8 @@
 ---
 html: ripple_path_find.html
 parent: path-and-order-book-methods.html
-blurb: Find a path for payment between two accounts, once.
+seo:
+    description: Find a path for payment between two accounts, once.
 labels:
   - Cross-Currency
   - Tokens

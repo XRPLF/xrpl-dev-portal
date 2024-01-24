@@ -1,7 +1,8 @@
 ---
 html: ripple_path_find.html
 parent: path-and-order-book-methods.html
-blurb: すぐに利用できるペイメントパスを含む1つのレスポンスを返します。
+seo:
+    description: すぐに利用できるペイメントパスを含む1つのレスポンスを返します。
 labels:
   - クロスカレンシー
   - トークン

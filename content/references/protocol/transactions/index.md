@@ -1,7 +1,8 @@
 ---
 html: transaction-formats.html
 parent: protocol-reference.html
-blurb: Definitions for all the protocol's transaction types and their results.
+seo:
+    description: Definitions for all the protocol's transaction types and their results.
 metadata:
   indexPage: true
 ---

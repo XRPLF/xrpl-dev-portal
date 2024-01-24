@@ -1,7 +1,8 @@
 ---
 html: xchainaddclaimattestation.html 
 parent: transaction-types.html
-blurb: Submit proof (attestation) to the destination chain that an event that happened on the source chain.
+seo:
+    description: Submit proof (attestation) to the destination chain that an event that happened on the source chain.
 labels:
   - Interoperability
 status: not_enabled

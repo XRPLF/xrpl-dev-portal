@@ -1,7 +1,8 @@
 ---
 html: tef-codes.html
 parent: transaction-results.html
-blurb: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
+seo:
+    description: tef codes indicate that the transaction failed and was not included in a ledger, but the transaction could have succeeded in some theoretical ledger.
 labels:
   - Transaction Sending
 ---

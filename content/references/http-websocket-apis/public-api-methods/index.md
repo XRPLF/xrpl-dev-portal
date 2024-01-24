@@ -1,7 +1,8 @@
 ---
 html: public-api-methods.html
 parent: http-websocket-apis.html
-blurb: Get data from the XRP Ledger and submit transactions using these public API methods.
+seo:
+    description: Get data from the XRP Ledger and submit transactions using these public API methods.
 top_nav_name: API Methods
 top_nav_grouping: Popular Pages
 labels:

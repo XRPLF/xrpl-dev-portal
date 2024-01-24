@@ -1,7 +1,8 @@
 ---
 html: list-xrp-as-an-exchange.html
 parent: defi-uc.html
-blurb: Run a digital asset exchange? Follow these steps to add XRP.
+seo:
+    description: Run a digital asset exchange? Follow these steps to add XRP.
 labels:
   - XRP
 ---

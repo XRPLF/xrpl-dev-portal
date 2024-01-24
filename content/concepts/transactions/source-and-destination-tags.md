@@ -1,7 +1,8 @@
 ---
 html: source-and-destination-tags.html
 parent: transactions.html
-blurb: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
+seo:
+    description: Use source and destination tags to indicate specific purposes for payments from and to multi-purpose addresses.
 labels:
   - Payments
   - Accounts

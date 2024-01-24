@@ -1,7 +1,8 @@
 ---
 html: canceling-a-transaction.html
 parent: finality-of-results.html
-blurb: Understand when and how it's possible to cancel a transaction that has already been sent.
+seo:
+    description: Understand when and how it's possible to cancel a transaction that has already been sent.
 labels:
   - Transaction Sending
 ---

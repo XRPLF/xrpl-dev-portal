@@ -1,7 +1,8 @@
 ---
 html: serialization.html
 parent: protocol-reference.html
-blurb: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
+seo:
+    description: Conversion between JSON and canonical binary format for XRP Ledger transactions and other objects.
 labels:
   - Blockchain
   - Transaction Sending

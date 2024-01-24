@@ -1,7 +1,8 @@
 ---
 html: basic-data-types.html
 parent: protocol-reference.html
-blurb: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
+seo:
+    description: Format and meaning of fundamental data types like addresses, ledger index, and currency codes.
 ---
 # Basic Data Types
 

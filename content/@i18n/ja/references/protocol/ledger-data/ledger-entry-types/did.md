@@ -1,7 +1,8 @@
 ---
 html: did.html
 parent: ledger-entry-types.html
-blurb: 分散型ID(DID)の定義と詳細
+seo:
+    description: 分散型ID(DID)の定義と詳細
 labels:
   - DID
 status: not_enabled

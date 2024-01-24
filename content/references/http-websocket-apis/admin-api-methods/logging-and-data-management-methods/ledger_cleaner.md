@@ -1,7 +1,8 @@
 ---
 html: ledger_cleaner.html
 parent: logging-and-data-management-methods.html
-blurb: Configure the ledger cleaner service to check for corrupted data.
+seo:
+    description: Configure the ledger cleaner service to check for corrupted data.
 labels:
   - Data Retention
 ---

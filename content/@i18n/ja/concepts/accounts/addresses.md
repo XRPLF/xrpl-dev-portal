@@ -1,7 +1,8 @@
 ---
 html: addresses.html
 parent: accounts.html
-blurb: アドレスは、base58フォーマットを使用して、XRP Ledgerのアカウントを一意に識別します。
+seo:
+    description: アドレスは、base58フォーマットを使用して、XRP Ledgerのアカウントを一意に識別します。
 labels:
   - アカウント
 ---

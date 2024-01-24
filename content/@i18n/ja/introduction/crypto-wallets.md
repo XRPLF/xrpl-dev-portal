@@ -1,7 +1,8 @@
 ---
 html: crypto-wallets.html
 parent: intro-to-xrpl.html
-blurb: ウォレットは、XRP Ledger上でユーザのXRPを管理するための便利な方法です。
+seo:
+    description: ウォレットは、XRP Ledger上でユーザのXRPを管理するための便利な方法です。
 labels:
   - ブロックチェーン
 ---

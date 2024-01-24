@@ -1,7 +1,8 @@
 ---
 html: offercancel.html
 parent: transaction-types.html
-blurb: XRP LedgerからOfferオブジェクトを削除します。
+seo:
+    description: XRP LedgerからOfferオブジェクトを削除します。
 labels:
   - 分散型取引所
 ---

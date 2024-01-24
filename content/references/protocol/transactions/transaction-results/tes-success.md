@@ -1,7 +1,8 @@
 ---
 html: tes-success.html
 parent: transaction-results.html
-blurb: tesSUCCESS is the only code that indicates a transaction succeeded.
+seo:
+    description: tesSUCCESS is the only code that indicates a transaction succeeded.
 labels:
   - Transaction Sending
 ---

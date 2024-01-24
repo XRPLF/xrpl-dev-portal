@@ -1,7 +1,8 @@
 ---
 html: get_counts.html
 parent: status-and-debugging-methods.html
-blurb: Get statistics about the server's internals and memory usage.
+seo:
+    description: Get statistics about the server's internals and memory usage.
 labels:
   - Core Server
 ---

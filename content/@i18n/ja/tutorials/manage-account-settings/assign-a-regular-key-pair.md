@@ -1,7 +1,8 @@
 ---
 html: assign-a-regular-key-pair.html
 parent: manage-account-settings.html
-blurb: アカウントからトランザクションに署名できるように第2キーペアを承認します。このキーペアは後から変更や削除が可能です。
+seo:
+    description: アカウントからトランザクションに署名できるように第2キーペアを承認します。このキーペアは後から変更や削除が可能です。
 labels:
   - セキュリティ
   - アカウント

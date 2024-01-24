@@ -1,7 +1,8 @@
 ---
 html: open-closed-validated-ledgers.html
 parent: ledgers.html
-blurb: レジャーオブジェクトには、オープン、閉鎖済み、検証済みの3つの状態があります。
+seo:
+    description: レジャーオブジェクトには、オープン、閉鎖済み、検証済みの3つの状態があります。
 labels:
   - ブロックチェーン
 ---

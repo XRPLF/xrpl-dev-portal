@@ -1,7 +1,8 @@
 ---
 html: ticketcreate.html
 parent: transaction-types.html
-blurb: チケットとして1つ以上のシーケンス番号を確保する。
+seo:
+    description: チケットとして1つ以上のシーケンス番号を確保する。
 labels:
   - Transaction Sending
 ---

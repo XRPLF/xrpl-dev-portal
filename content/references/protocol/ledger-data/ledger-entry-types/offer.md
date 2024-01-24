@@ -1,7 +1,8 @@
 ---
 html: offer.html
 parent: ledger-entry-types.html
-blurb: An order to make a currency trade.
+seo:
+    description: An order to make a currency trade.
 labels:
   - Decentralized Exchange
 ---

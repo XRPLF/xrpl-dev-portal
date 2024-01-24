@@ -1,7 +1,8 @@
 ---
 html: channel_authorize.html
 parent: payment-channel-methods.html
-blurb: Sign a claim for money from a payment channel.
+seo:
+    description: Sign a claim for money from a payment channel.
 labels:
   - Payment Channels
 ---

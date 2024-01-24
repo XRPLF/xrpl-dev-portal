@@ -1,7 +1,8 @@
 ---
 html: feesettings.html
 parent: ledger-entry-types.html
-blurb: Singleton object with consensus-approved base transaction cost and reserve requirements.
+seo:
+    description: Singleton object with consensus-approved base transaction cost and reserve requirements.
 labels:
   - Fees
 ---

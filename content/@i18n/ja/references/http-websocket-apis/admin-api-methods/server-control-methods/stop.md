@@ -1,7 +1,8 @@
 ---
 html: stop.html
 parent: server-control-methods.html
-blurb: サーバーのグレースフルシャットダウンを行います。
+seo:
+    description: サーバーのグレースフルシャットダウンを行います。
 labels:
   - コアサーバー
 ---

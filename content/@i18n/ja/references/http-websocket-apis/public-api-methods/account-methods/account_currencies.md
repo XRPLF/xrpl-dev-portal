@@ -1,7 +1,8 @@
 ---
 html: account_currencies.html
 parent: account-methods.html
-blurb: アカウントが送金または受領できる通貨のリストを返します。
+seo:
+    description: アカウントが送金または受領できる通貨のリストを返します。
 labels:
   - トークン
 ---

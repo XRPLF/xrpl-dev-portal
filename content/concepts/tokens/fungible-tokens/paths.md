@@ -1,7 +1,8 @@
 ---
 html: paths.html
 parent: trust-lines-and-issuing.html
-blurb: Payments of tokens must traverse paths of connected users and order books.
+seo:
+    description: Payments of tokens must traverse paths of connected users and order books.
 labels:
   - Payments
   - Cross-Currency

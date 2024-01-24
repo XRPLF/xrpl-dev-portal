@@ -1,7 +1,8 @@
 ---
 html: load-a-saved-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
-blurb: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
+seo:
+    description: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
 labels:
   - コアサーバー
 ---

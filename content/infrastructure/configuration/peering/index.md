@@ -4,7 +4,8 @@ name: Peering
 parent: configure-rippled.html
 metadata:
   indexPage: true
-blurb: Configure how your server connects to the peer-to-peer network.
+seo:
+    description: Configure how your server connects to the peer-to-peer network.
 labels:
   - Core Server
 ---

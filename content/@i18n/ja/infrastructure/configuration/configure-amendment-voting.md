@@ -1,7 +1,8 @@
 ---
 html: configure-amendment-voting.html
 parent: configure-rippled.html
-blurb: プロトコル修正に伴うサーバーの投票を設定する。
+seo:
+    description: プロトコル修正に伴うサーバーの投票を設定する。
 labels:
   - コアサーバー
   - ブロックチェーン

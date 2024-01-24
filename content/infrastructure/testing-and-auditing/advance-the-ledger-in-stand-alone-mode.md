@@ -1,7 +1,8 @@
 ---
 html: advance-the-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
-blurb: Make progress in stand-alone mode by manually closing the ledger.
+seo:
+    description: Make progress in stand-alone mode by manually closing the ledger.
 labels:
   - Core Server
 ---

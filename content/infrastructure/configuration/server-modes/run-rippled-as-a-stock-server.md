@@ -1,7 +1,8 @@
 ---
 html: run-rippled-as-a-stock-server.html
 parent: server-modes.html
-blurb: A multipurpose configuration for anyone integrating XRP.
+seo:
+    description: A multipurpose configuration for anyone integrating XRP.
 labels:
   - Core Server
 ---

@@ -1,7 +1,8 @@
 ---
 html: online-deletion.html
 parent: data-retention.html
-blurb: Online deletion purges outdated transaction and state history.
+seo:
+    description: Online deletion purges outdated transaction and state history.
 labels:
   - Data Retention
   - Core Server

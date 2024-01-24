@@ -1,7 +1,8 @@
 ---
 html: fee.html
 parent: server-info-methods.html
-blurb: Get information about transaction cost.
+seo:
+    description: Get information about transaction cost.
 labels:
   - Fees
 ---

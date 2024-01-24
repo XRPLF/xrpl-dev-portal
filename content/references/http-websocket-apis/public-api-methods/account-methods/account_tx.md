@@ -1,7 +1,8 @@
 ---
 html: account_tx.html
 parent: account-methods.html
-blurb: Get a list of transactions affecting an account.
+seo:
+    description: Get a list of transactions affecting an account.
 labels:
   - Payments
   - Accounts

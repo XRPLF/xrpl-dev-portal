@@ -1,7 +1,8 @@
 ---
 html: node_to_shard.html
 parent: logging-and-data-management-methods.html
-blurb: Copy data from the ledger store into the shard store.
+seo:
+    description: Copy data from the ledger store into the shard store.
 labels:
   - Data Retention
 ---

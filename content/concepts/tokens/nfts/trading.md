@@ -1,7 +1,8 @@
 ---
 html: non-fungible-token-transfers.html
 parent: non-fungible-tokens.html
-blurb: Trading NFTs in direct or brokered mode.
+seo:
+    description: Trading NFTs in direct or brokered mode.
 labels:
  - Non-fungible Tokens, NFTs
 ---

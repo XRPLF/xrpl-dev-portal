@@ -1,7 +1,8 @@
 ---
 html: xchaincommit.html 
 parent: transaction-types.html
-blurb: クロスチェーンでの価値移転を開始します。
+seo:
+    description: クロスチェーンでの価値移転を開始します。
 labels:
   - 相互運用性
 status: not_enabled

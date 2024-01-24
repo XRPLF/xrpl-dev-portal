@@ -1,7 +1,8 @@
 ---
 html: load-a-saved-ledger-in-stand-alone-mode.html
 parent: use-stand-alone-mode.html
-blurb: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
+seo:
+    description: Start in stand-alone mode from a specific saved ledger to test or replay transactions.
 labels:
   - Core Server
 ---

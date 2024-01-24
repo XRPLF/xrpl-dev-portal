@@ -1,7 +1,8 @@
 ---
 html: robustly-monitoring-for-payments.html
 parent: payment-types.html
-blurb: 不正な入金がないかを監視するための推奨事項を説明します。
+seo:
+    description: 不正な入金がないかを監視するための推奨事項を説明します。
 labels:
   - トークン
 ---

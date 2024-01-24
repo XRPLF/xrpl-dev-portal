@@ -1,7 +1,8 @@
 ---
 html: nft-reserve-requirements.html
 parent: non-fungible-tokens.html
-blurb: Understand reserve requirements for minting and holding NFTs.
+seo:
+    description: Understand reserve requirements for minting and holding NFTs.
 labels:
  - Non-fungible Tokens, NFTs
 ---

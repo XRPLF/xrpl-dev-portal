@@ -1,7 +1,8 @@
 ---
 html: faq.html
 parent: xrp-ledger-overview.html
-blurb: XRP Ledger、XRPLエコシステム、コミュニティに関するよくある質問にお答えします。
+seo:
+    description: XRP Ledger、XRPLエコシステム、コミュニティに関するよくある質問にお答えします。
 subtitle: XRPLについての質問にお答えします
 top_nav_grouping: 概要
 labels:

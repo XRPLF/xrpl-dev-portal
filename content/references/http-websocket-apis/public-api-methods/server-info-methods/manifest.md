@@ -1,7 +1,8 @@
 ---
 html: manifest.html
 parent: server-info-methods.html
-blurb: Look up the public information about a known validator.
+seo:
+    description: Look up the public information about a known validator.
 labels:
   - Blockchain
 ---

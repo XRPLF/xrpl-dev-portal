@@ -1,7 +1,8 @@
 ---
 html: diagnosing-problems.html
 parent: troubleshoot-the-rippled-server.html
-blurb: 情報を収集して問題の原因を特定します。
+seo:
+    description: 情報を収集して問題の原因を特定します。
 labels:
   - コアサーバー
 ---

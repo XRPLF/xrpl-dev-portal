@@ -1,7 +1,8 @@
 ---
 html: account_offers.html
 parent: account-methods.html
-blurb: Get info about an account's currency exchange offers.
+seo:
+    description: Get info about an account's currency exchange offers.
 labels:
   - Decentralized Exchange
 ---

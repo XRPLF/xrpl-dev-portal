@@ -1,7 +1,8 @@
 ---
 html: paymentchannelcreate.html
 parent: transaction-types.html
-blurb: Open a new payment channel.
+seo:
+    description: Open a new payment channel.
 labels:
   - Payment Channels
 ---

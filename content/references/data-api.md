@@ -1,7 +1,8 @@
 ---
 html: data-api.html
 parent: references.html
-blurb: (DEPRECATED) RESTful interface to XRP Ledger analytics and historical data.
+seo:
+    description: (DEPRECATED) RESTful interface to XRP Ledger analytics and historical data.
 status: removed
 nav_omit: true
 ---

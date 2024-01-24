@@ -1,7 +1,8 @@
 ---
 html: xrp-ledger-toml.html
 parent: references.html
-blurb: 機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。
+seo:
+    description: 機械が読み取れる、あなたに関する情報を他のXRP Ledgerユーザーに提供します。
 curated_anchors:
     - name: ファイルの提供方法
       anchor: "#ファイルの提供方法"

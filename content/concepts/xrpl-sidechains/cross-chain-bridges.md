@@ -1,7 +1,8 @@
 ---
 html: cross-chain-bridges.html
 parent: xrpl-sidechains.html
-blurb: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
+seo:
+    description: Cross-chain bridges for the XRP Ledger enable value in the form of XRP and other tokens (IOUs) to move efficiently between blockchains.
 status: not_enabled
 labels:
   - Blockchain

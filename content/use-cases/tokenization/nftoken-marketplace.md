@@ -1,7 +1,8 @@
 ---
 html: nftoken-marketplace.html
 parent: nft-mkt-overview.html
-blurb: Creating an NFT Marketplace for buying and selling NFTs.
+seo:
+    description: Creating an NFT Marketplace for buying and selling NFTs.
 labels:
   - Tokenization
 ---

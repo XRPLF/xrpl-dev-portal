@@ -1,7 +1,8 @@
 ---
 html: validator_list_sites.html
 parent: status-and-debugging-methods.html
-blurb: Get information about sites that publish validator lists.
+seo:
+    description: Get information about sites that publish validator lists.
 labels:
   - Core Server
   - Blockchain

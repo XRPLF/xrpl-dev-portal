@@ -1,7 +1,8 @@
 ---
 html: nft_history.html
 parent: clio-methods.html
-blurb: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
+seo:
+    description: Retrieve the history of ownership and transfers for the specified NFT using Clio server's `nft_history` API.
 labels:
   - Non-fungible Tokens, NFTs
 ---

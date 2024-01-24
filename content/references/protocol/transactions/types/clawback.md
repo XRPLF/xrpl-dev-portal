@@ -1,7 +1,8 @@
 ---
 html: clawback.html
 parent: transaction-types.html
-blurb: Claw back tokens you've issued.
+seo:
+    description: Claw back tokens you've issued.
 labels:
   - Tokens
 ---

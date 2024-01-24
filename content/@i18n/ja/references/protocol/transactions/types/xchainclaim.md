@@ -1,7 +1,8 @@
 ---
 html: xchainclaim.html 
 parent: transaction-types.html
-blurb: 送信先チェーンで金額を請求することで、クロスチェーンでの価値移転を完了させます。
+seo:
+    description: 送信先チェーンで金額を請求することで、クロスチェーンでの価値移転を完了させます。
 labels:
   - 相互運用性
 status: not_enabled

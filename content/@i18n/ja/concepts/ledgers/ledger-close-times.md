@@ -1,7 +1,8 @@
 ---
 html: ledger-close-times.html
 parent: ledgers.html
-blurb: XRP Ledgerが、レジャーバージョンごとに一意の閉鎖時刻を計算する方法。
+seo:
+    description: XRP Ledgerが、レジャーバージョンごとに一意の閉鎖時刻を計算する方法。
 labels:
   - ブロックチェーン
 ---

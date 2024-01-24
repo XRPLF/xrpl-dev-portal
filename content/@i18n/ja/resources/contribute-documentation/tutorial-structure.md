@@ -1,7 +1,8 @@
 ---
 html: tutorial-structure.html
 parent: contribute-documentation.html
-blurb: 一般的なチュートリアルの構成要素の要約です。
+seo:
+    description: 一般的なチュートリアルの構成要素の要約です。
 ---
 # チュートリアルの構成
 

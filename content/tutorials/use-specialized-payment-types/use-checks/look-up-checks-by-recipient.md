@@ -1,7 +1,8 @@
 ---
 html: look-up-checks-by-recipient.html
 parent: use-checks.html
-blurb: Get a list of pending checks sent to an account.
+seo:
+    description: Get a list of pending checks sent to an account.
 labels:
   - Checks
 ---

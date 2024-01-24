@@ -1,7 +1,8 @@
 ---
 html: nft_history.html
 parent: clio-methods.html
-blurb: Clioサーバの`nft_history`API を使用して、指定した NFT の所有権と移動の履歴を取得します。
+seo:
+    description: Clioサーバの`nft_history`API を使用して、指定した NFT の所有権と移動の履歴を取得します。
 labels:
   - 非代替性トークン, NFT
 ---

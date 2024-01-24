@@ -1,7 +1,8 @@
 ---
 html: crawl_shards.html
 parent: logging-and-data-management-methods.html
-blurb: ピアが持つ履歴シャードについての情報をリクエストします。
+seo:
+    description: ピアが持つ履歴シャードについての情報をリクエストします。
 labels:
   - データ保持
 ---

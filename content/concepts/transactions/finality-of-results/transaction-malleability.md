@@ -1,7 +1,8 @@
 ---
 html: transaction-malleability.html
 parent: finality-of-results.html
-blurb: Be aware of ways transactions could be changed to have a different hash than expected.
+seo:
+    description: Be aware of ways transactions could be changed to have a different hash than expected.
 labels:
   - Security
   - Transaction Sending

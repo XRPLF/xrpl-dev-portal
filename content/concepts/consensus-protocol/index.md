@@ -1,7 +1,8 @@
 ---
 html: consensus.html
 parent: concepts.html
-blurb: Consensus is how new blocks of transactions get confirmed by the XRP Ledger blockchain.
+seo:
+    description: Consensus is how new blocks of transactions get confirmed by the XRP Ledger blockchain.
 labels:
   - Blockchain
 top_nav_grouping: Popular Pages

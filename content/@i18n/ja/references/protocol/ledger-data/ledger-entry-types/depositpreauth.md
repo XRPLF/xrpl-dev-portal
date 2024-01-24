@@ -1,7 +1,8 @@
 ---
 html: depositpreauth-object.html #depositpreauth.html is taken by the tx type
 parent: ledger-entry-types.html
-blurb: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
+seo:
+    description: 承認を必要とするアカウントへの送金ペイメントの事前承認の記録です。
 labels:
   - セキュリティ
 ---

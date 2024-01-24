@@ -1,7 +1,8 @@
 ---
 html: pseudo-transaction-types.html
 parent: transaction-formats.html
-blurb: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
+seo:
+    description: Formats of pseudo-transactions that validators sometimes apply to the XRP Ledger.
 metadata:
   indexPage: true
 labels:

@@ -1,7 +1,8 @@
 ---
 html: tutorial-guidelines.html
 parent: contribute-documentation.html
-blurb: Learn how this site's tutorials are structured and guidelines for contributing quality tutorials.
+seo:
+    description: Learn how this site's tutorials are structured and guidelines for contributing quality tutorials.
 ---
 # Tutorial Guidelines
 

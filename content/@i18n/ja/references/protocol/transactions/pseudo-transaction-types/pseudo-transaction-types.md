@@ -1,7 +1,8 @@
 ---
 html: pseudo-transaction-types.html
 parent: transaction-formats.html
-blurb: バリデータがXRP Ledgerに適用する場合がある疑似トランザクションのフォーマットです。
+seo:
+    description: バリデータがXRP Ledgerに適用する場合がある疑似トランザクションのフォーマットです。
 metadata:
   indexPage: true
 labels:

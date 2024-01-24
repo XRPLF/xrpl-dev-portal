@@ -1,7 +1,8 @@
 ---
 html: stablecoin-compliance-guidelines.html
 parent: stablecoins.html
-blurb: ステーブルコインの発行者は、現地の規制を遵守し、適切な機関に報告する責任があります。
+seo:
+    description: ステーブルコインの発行者は、現地の規制を遵守し、適切な機関に報告する責任があります。
 labels:
   - トークン
 ---

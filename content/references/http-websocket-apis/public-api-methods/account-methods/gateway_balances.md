@@ -1,7 +1,8 @@
 ---
 html: gateway_balances.html
 parent: account-methods.html
-blurb: Calculate total amounts issued by an account.
+seo:
+    description: Calculate total amounts issued by an account.
 labels:
   - Tokens
   - Accounts

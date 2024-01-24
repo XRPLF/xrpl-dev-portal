@@ -1,7 +1,8 @@
 ---
 html: cash-a-check-for-an-exact-amount.html
 parent: use-checks.html
-blurb: Cash a Check in the ledger for any exact amount up to the amount it specifies.
+seo:
+    description: Cash a Check in the ledger for any exact amount up to the amount it specifies.
 labels:
   - Checks
 ---

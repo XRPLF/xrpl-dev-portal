@@ -1,7 +1,8 @@
 ---
 html: run-rippled-as-a-stock-server.html
 parent: server-modes.html
-blurb: XRPを統合する人のための汎用的な構成。
+seo:
+    description: XRPを統合する人のための汎用的な構成。
 labels:
   - コアサーバー
 ---

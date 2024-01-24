@@ -1,7 +1,8 @@
 ---
 html: tel-codes.html
 parent: transaction-results.html
-blurb: telコードは、トランザクションを処理するローカルサーバーでのエラーを示します。
+seo:
+    description: telコードは、トランザクションを処理するローカルサーバーでのエラーを示します。
 labels:
   - トランザクション送信
 ---

@@ -1,7 +1,8 @@
 ---
 html: test-amendments.html
 parent: use-stand-alone-mode.html # "Testing and Auditing"
-blurb: You can test proposed amendments before they're enabled on the network.
+seo:
+    description: You can test proposed amendments before they're enabled on the network.
 labels:
   - Blockchain
 ---

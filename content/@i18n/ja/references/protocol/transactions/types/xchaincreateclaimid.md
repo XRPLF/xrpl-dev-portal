@@ -1,7 +1,8 @@
 ---
 html: xchaincreateclaimid.html 
 parent: transaction-types.html
-blurb: クロスチェーン送金に使用するクロスチェーン請求IDを作成します。
+seo:
+    description: クロスチェーン送金に使用するクロスチェーン請求IDを作成します。
 labels:
   - 相互運用性
 status: not_enabled

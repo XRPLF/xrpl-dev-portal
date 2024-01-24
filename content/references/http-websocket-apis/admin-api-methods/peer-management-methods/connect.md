@@ -1,7 +1,8 @@
 ---
 html: connect.html
 parent: peer-management-methods.html
-blurb: Force the rippled server to connect to a specific peer.
+seo:
+    description: Force the rippled server to connect to a specific peer.
 labels:
   - Core Server
 ---

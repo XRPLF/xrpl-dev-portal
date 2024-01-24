@@ -1,7 +1,8 @@
 ---
 html: xchainownedcreateaccountclaimid.html
 parent: ledger-entry-types.html
-blurb: XChainOwnedCreateAccountClaimIDレジャーオブジェクトは、クロスチェーン送金でアカウントを作成するための証明を収集するために使用されます。
+seo:
+    description: XChainOwnedCreateAccountClaimIDレジャーオブジェクトは、クロスチェーン送金でアカウントを作成するための証明を収集するために使用されます。
 labels:
   - 相互運用性
 status: not_enabled

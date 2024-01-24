@@ -1,7 +1,8 @@
 ---
 html: request-formatting.html
 parent: api-conventions.html
-blurb: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
+seo:
+    description: Standard request format, with examples, for the WebSocket, JSON-RPC, and Commandline interfaces.
 ---
 # Request Formatting
 

@@ -1,7 +1,8 @@
 ---
 html: use-tickets.html
 parent: manage-account-settings.html
-blurb: チケットは、通常のシーケンス順序以外でトランザクションを送信するために使用します。
+seo:
+    description: チケットは、通常のシーケンス順序以外でトランザクションを送信するために使用します。
 embed_xrpl_js: true
 filters:
   - interactive_steps

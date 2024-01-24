@@ -1,7 +1,8 @@
 ---
 html: configure-history-sharding.html
 parent: data-retention.html
-blurb: Set up a server to contribute to preserving shards of historical XRP Ledger data.
+seo:
+    description: Set up a server to contribute to preserving shards of historical XRP Ledger data.
 labels:
   - Data Retention
   - Core Server

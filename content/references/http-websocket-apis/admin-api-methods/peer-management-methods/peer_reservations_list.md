@@ -1,7 +1,8 @@
 ---
 html: peer_reservations_list.html
 parent: peer-management-methods.html
-blurb: List reserved slots for specific peer servers.
+seo:
+    description: List reserved slots for specific peer servers.
 labels:
   - Core Server
 ---

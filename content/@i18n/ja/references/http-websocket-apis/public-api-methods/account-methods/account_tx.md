@@ -1,7 +1,8 @@
 ---
 html: account_tx.html
 parent: account-methods.html
-blurb: 指定したアカウントに関連するトランザクションのリストを取得します。
+seo:
+    description: 指定したアカウントに関連するトランザクションのリストを取得します。
 labels:
   - Accounts
   - Payments

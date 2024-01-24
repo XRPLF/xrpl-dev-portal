@@ -1,7 +1,8 @@
 ---
 html: submit-cross-chain-transactions.html
 parent: use-xrpl-sidechains.html
-blurb: Steps to submit a cross-chain transaction, using a bridge.
+seo:
+    description: Steps to submit a cross-chain transaction, using a bridge.
 labels:
   - Interoperability
 ---
