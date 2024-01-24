@@ -151,7 +151,7 @@
             items:
               - page: concepts/xrpl-sidechains/cross-chain-bridges.md
               - page: concepts/xrpl-sidechains/witness-servers.md
-      - group: Tutorials
+      - page: tutorials/index.md
         expanded: false
         items:
           - page: tutorials/get-started/public-servers.md
