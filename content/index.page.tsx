@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { useTranslate } from '@portal/hooks';
 
+export const frontmatter = {
+  seo: {
+    title: 'Home | XRPL.org',
+    description: "XRPL.org is a community-driven site for the XRP Ledger (XRPL), an open-source, public blockchain. Get technical documentation, reference materials, and tools.",
+  }
+};
+
 const cards = [
   {
     id: 'public',
