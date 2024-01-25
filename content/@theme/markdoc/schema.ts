@@ -132,3 +132,48 @@ export const notEnabled: Schema & { tagName: string } = {
   render: 'NotEnabled',
   selfClosing: true,
 };
+
+export const xrplCard: Schema & { tagName: string } = {
+  tagName: 'xrpl-card',
+  attributes: {
+    title: {
+      type: 'String',
+      required: true
+    },
+    href: {
+      type: 'String',
+      required: true
+    },
+    body: {
+      type: 'String',
+      required: false
+    },
+    image: {
+      type: 'String',
+      required: false
+    },
+    imageAlt: {
+      type: 'String',
+      required: false
+    },
+    external: { // Not actually implemented (yet)
+      type: 'Boolean',
+      required: false,
+      default: false
+    }
+  },
+  render: 'XRPLCard',
+  selfClosing: true
+}
+
+export const cardGrid: Schema & { tagName: string } = {
+  tagName: 'card-grid',
+  attributes: {
+    layout: {
+      type: 'String',
+      required: false,
+      default: '3xN'
+    }
+  },
+  render: 'CardGrid'
+}
