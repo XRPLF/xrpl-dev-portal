@@ -205,7 +205,7 @@
             expanded: false
             items:
               - page: tutorials/get-started/get-started-using-java.md
-          - group: PHP
+          - page: tutorials/php/index.md
             expanded: false
             items:
               - page: tutorials/get-started/get-started-using-php.md
