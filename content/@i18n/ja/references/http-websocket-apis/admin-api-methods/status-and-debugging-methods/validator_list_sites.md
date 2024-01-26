@@ -9,26 +9,25 @@ labels:
 # validator_list_sites
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")
 
-`validator_list_sites`コマンドは、バリデータリストを処理するサイトのステータス情報を返します。[新規: rippled 0.80.1][]
+`validator_list_sites`コマンドは、バリデータリストを処理するサイトのステータス情報を返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" %}新規: rippled 0.80.1{% /badge %}
 
-*`validator_list_sites`リクエストは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`validator_list_sites`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 1,
    "command": "validator_list_sites"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "validator_list_sites",
@@ -37,15 +36,16 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: validator_list_sites
 rippled validator_list_sites
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストにはパラメーターが含まれていません。
 
@@ -53,10 +53,9 @@ rippled validator_list_sites
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":5,
@@ -75,9 +74,9 @@ rippled validator_list_sites
 }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -95,9 +94,9 @@ rippled validator_list_sites
    }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -116,8 +115,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
@@ -138,7 +138,4 @@ Connecting to 127.0.0.1:5005
 
 * [汎用エラータイプ][]のすべて。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

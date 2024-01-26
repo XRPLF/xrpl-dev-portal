@@ -8,7 +8,7 @@ labels:
 ---
 # XRPL Sidechains
 
-_(Requires the [XChainBridge amendment][] :not_enabled:)_
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 A sidechain is an independent ledger with its own consensus algorithm, transaction types, rules, and nodes. It acts as its own blockchain, running parallel to the mainchain (XRP Ledger), enabling value to move between the two without compromising the speed, efficiency, and throughput of the mainchain.
 
@@ -17,7 +17,7 @@ Sidechains can customize the XRP Ledger protocol to the needs of a specific use 
 * Adding a smart contract layer. See: [Xahau](https://xahau.network/)
 * Adding Ethereum Virtual Machine (EVM) compatibility. See: [EVM Sidechain](https://opensource.ripple.com/docs/evm-sidechain/intro-to-evm-sidechain/).
 * Building your own algorithmic stable coin with customised ledger types and transaction rules.
-* Building permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet [decentralized exchange](decentralized-exchange.html).
+* Building permissioned or nearly permissionless, centralized or largely decentralized ledgers whose assets can be traded on the Mainnet [decentralized exchange](../tokens/decentralized-exchange/index.md).
 
 
 **Notes:**
@@ -67,8 +67,4 @@ You should not run a Witness Server if you are not experienced (or do not have a
 
 No. These FAQs are intended to provide general guidance and do not constitute technical, financial, or legal advice.  These FAQs should not be used as a substitute for professional advice tailored to one’s specific circumstances.  The blockchain and digital asset landscape is complex and constantly changing, which necessitates staying updated and seeking expert advice.  It is recommended that those engaging with a Sidechain regularly check official resources such as governmental and regulatory body websites.  Nonetheless, consulting with legal professionals who specialize in blockchain, and cryptocurrency is the most reliable way to get accurate and personalized advice.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

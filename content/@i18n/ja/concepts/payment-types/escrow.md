@@ -37,7 +37,7 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 
 次の図は、Escrow実施時の各状態を示します。
 
-[![Escrowの状態がHeld → Ready/Conditionally Ready → Expiredと遷移する様子を示す状態遷移図](img/escrow-states.ja.png)](img/escrow-states.ja.png)
+[![Escrowの状態がHeld → Ready/Conditionally Ready → Expiredと遷移する様子を示す状態遷移図](/img/escrow-states.ja.png)](/img/escrow-states.ja.png)
 
 この図は、Escrowの「Finish-after」時刻（`FinishAfter`フィールド）、Crypto-condition（`Condition`フィールド）、および有効期限（`CancelAfter`フィールド）の3通りの組み合わせの3つの例を示します。
 
@@ -53,7 +53,7 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 - EscrowはXRPでのみ実行でき、発行済み通貨では実行できません。
 - 少額での利用はコスト面で難しいかもしれません。
     - Crypto-conditionを使用する場合、[EscrowFinishトランザクションのコスト](#escrowfinishトランザクションのコスト)が通常よりも高くなります。
-    - エスクローが未成立な間は、`Escrow`オブジェクトの[準備金](reserves.html)は送信者の責任となります。
+    - エスクローが未成立な間は、`Escrow`オブジェクトの[準備金](../accounts/reserves.md)は送信者の責任となります。
 - Escrowを作成するトランザクションの実行時には、時刻の値が過去の時間であってはなりません。
 - 時限リリースおよび有効期限は、レジャークローズに制約されます。つまり実際には、レジャーの正確なクローズ時刻に基づいて、これらの時刻が約5秒単位で丸められる場合があります。
 - サポートされている唯一の[Crypto-condition][]タイプはPREIMAGE-SHA-256です。
@@ -61,15 +61,15 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 
 ## EscrowFinishトランザクションのコスト
 
-Crypto-conditionを使用する場合、Crypto-conditionフルフィルメントの検証に高い処理負荷がかかるため、EscrowFinishトランザクションでは[高額なトランザクションコスト](transaction-cost.html#特別なトランザクションコスト)を支払う必要があります。
+Crypto-conditionを使用する場合、Crypto-conditionフルフィルメントの検証に高い処理負荷がかかるため、EscrowFinishトランザクションでは[高額なトランザクションコスト](../transactions/transaction-cost.md#特別なトランザクションコスト)を支払う必要があります。
 
-追加で必要となる取引コストはフルフィルメントのサイズに比例します。トランザクションが[マルチシグ](multi-signing.html)の場合、マルチサインのコストはフルフィルメントのコストに追加されます。
+追加で必要となる取引コストはフルフィルメントのサイズに比例します。トランザクションが[マルチシグ](../accounts/multi-signing.md)の場合、マルチサインのコストはフルフィルメントのコストに追加されます。
 
-必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](basic-data-types.html#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。
+必要となる追加のトランザクションコストは、フルフィルメントのサイズに比例します。現時点では、フルフィルメントのあるEscrowFinishでは最小トランザクションコストとして、**330 drop（[XRPのdrop数](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)）と、フルフィルメントのサイズで16バイトあたり10 drop**が必要です。
 
 **注記:** 上記の式は、トランザクションのリファレンスコストが10 dropであることを前提としています。
 
-[手数料投票](fee-voting.html)により`reference_fee`の値が変更される場合、この式は新しいリファレンスコストに基づいてスケーリングされます。フルフィルメントのあるEscrowFinishトランザクションの公式は次のとおりです。
+[手数料投票](../consensus-protocol/fee-voting.md)により`reference_fee`の値が変更される場合、この式は新しいリファレンスコストに基づいてスケーリングされます。フルフィルメントのあるEscrowFinishトランザクションの公式は次のとおりです。
 
 ```
 reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
@@ -81,18 +81,15 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 
 XRP LedgerのEscrowの詳細は、以下を参照してください:
 
-- [Escrowチュートリアル](use-escrows.html)
-- [トランザクションのリファレンス](transaction-formats.html)
+- [Escrowチュートリアル](../../tutorials/tasks/use-specialized-payment-types/use-escrows/index.md)
+- [トランザクションのリファレンス](../../references/protocol/transactions/index.md)
     - [EscrowCreateトランザクション][]
     - [EscrowFinishトランザクション][]
     - [EscrowCancelトランザクション][]
-- [レジャーリファレンス](ledger-data-formats.html)
-    - [Escrowオブジェクト](escrow-object.html)
+- [レジャーリファレンス](../../references/protocol/ledger-data/index.md)
+    - [Escrowオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 
 Rippleによる550億XRPのロックアップについては、[Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)を参照してください。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

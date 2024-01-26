@@ -10,24 +10,24 @@ labels:
 
 トランザクションを送信するアカウントが所有する`NFToken`に対する新しい _売却_ オファー、または別のアカウントが所有する`NFToken`に対する新しい _購入_ オファーを作成します。
 
-成功した場合、トランザクションは[NFTokenOfferオブジェクト][]を作成します。各オファーは、オファーを提示したアカウントの[所有者準備金](reserves.html)に関連づけて1つのオブジェクトとしてカウントされます。
+成功した場合、トランザクションは[NFTokenOfferオブジェクト][]を作成します。各オファーは、オファーを提示したアカウントの[所有者準備金](../../../../concepts/accounts/reserves.md)に関連づけて1つのオブジェクトとしてカウントされます。
 
 _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
-  	"TransactionType": "NFTokenCreateOffer",
-  	"Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
-  	"NFTokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
-  	"Amount": "1000000",
-  	"Flags": 1
+      "TransactionType": "NFTokenCreateOffer",
+      "Account": "rs8jBmmfpwgmrSPgwMsh7CvKRmRt1JTVSX",
+      "NFTokenID": "000100001E962F495F07A990F4ED55ACCFEEF365DBAA76B6A048C0A200000007",
+      "Amount": "1000000",
+      "Flags": 1
 }
 ```
 
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型            | [内部の型][]        | 説明               |
 |:--------------|:--------------------|:------------------|:-------------------|
@@ -40,7 +40,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## NFTokenCreateOfferフラグ
 
-NFTokenCreateOfferタイプのトランザクションは、以下のように[`Flags`フィールド](transaction-common-fields.html#flags-field)に追加の値を設定することが可能です。
+NFTokenCreateOfferタイプのトランザクションは、以下のように[`Flags`フィールド](../common-fields.md#flags-field)に追加の値を設定することが可能です。
 
 | フラグ名         | 16進数値      | 整数値          | 説明                          |
 |:----------------|:-------------|:--------------|:------------------------------|
@@ -49,28 +49,23 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード                    | 説明                                          |
 |:---------------------------------|:------------------------------------------|
 | `temDISABLED`                    | [NonFungibleTokensV1 Amendment][]は有効ではありません。 |
-| `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが`NFToken`で[`lsfOnlyXRP`フラグ](nftoken.html#nftoken-フラグ)が有効になっている場合などです。 |
+| `temBAD_AMOUNT`                  | `Amount`フィールドが有効ではありません。例えば、購入オファーで金額がゼロであったり、金額はトークンであるが`NFToken`で[`lsfOnlyXRP`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効になっている場合などです。 |
 | `temBAD_EXPIRATION`              | 指定された`Expiration`は無効です（例：`0`）。 |
 | `tecDIR_FULL`                    | 送信者がレジャーにすでにあまりにも多くのオブジェクトを所有しているか、またはこのトークンの売買のオファーがあまりにも多く存在しています。 |
 | `tecEXPIRED`                     | 指定された`Expiration`の時間は既に経過しています。 |
-| `tecFROZEN`                      | `Amount`はトークンで、このオファーからトークンを受け取るトラストラインは[凍結](freezes.html)されています。これは売却者のトラストラインか、`NFToken`の発行者のトラストライン（`NFToken`に送金手数料がある場合）である可能性があります。 |
-| `tecINSUFFICIENT_RESERVE`        | 送信者はこのオファーを提示した後、[所有者準備金](reserves.html)を満たすのに十分なXRPを持っていません。 |
+| `tecFROZEN`                      | `Amount`はトークンで、このオファーからトークンを受け取るトラストラインは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。これは売却者のトラストラインか、`NFToken`の発行者のトラストライン（`NFToken`に送金手数料がある場合）である可能性があります。 |
+| `tecINSUFFICIENT_RESERVE`        | 送信者はこのオファーを提示した後、[所有者準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPを持っていません。 |
 | `tecNO_DST`                      | `Destination`に指定されたアカウントがレジャーに存在しません。 |
 | `tecNO_ENTRY`                    | `NFToken`フィールドで指定したアカウントは所有していません。 |
 | `tecNO_ISSUER`                   | `Amount`フィールドで指定した発行者が存在しません。 |
-| `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](nftoken.html#nftoken-フラグ)が有効ではありません。 |
-| `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment][] :not_enabled: が必要です。)_
-| `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[凍結](freezes.html)されている可能性があります。 |
-| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`lsfTransferable`フラグ](nftoken.html#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |
+| `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効ではありません。 |
+| `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment][] {% not-enabled /%} が必要です。)_
+| `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されている可能性があります。 |
+| `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`lsfTransferable`フラグ](../../data-types/nftoken.md#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |
 
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

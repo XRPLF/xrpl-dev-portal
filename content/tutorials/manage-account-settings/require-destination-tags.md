@@ -10,7 +10,7 @@ labels:
 ---
 # Require Destination Tags
 
-The Require Destination Tag setting is designed for addresses that host balances for multiple people or purposes, to prevent people from sending money and forgetting to use a [destination tag](source-and-destination-tags.html) to identify whom to credit. When this setting is enabled on your address, the XRP Ledger rejects [any payment](payment-types.html) to your address if it does not specify a destination tag.
+The Require Destination Tag setting is designed for addresses that host balances for multiple people or purposes, to prevent people from sending money and forgetting to use a [destination tag](../../concepts/transactions/source-and-destination-tags.md) to identify whom to credit. When this setting is enabled on your address, the XRP Ledger rejects [any payment](../../concepts/payment-types/index.md) to your address if it does not specify a destination tag.
 
 This tutorial demonstrates how to enable the Require Destination Tag flag on your account.
 
@@ -21,8 +21,8 @@ This tutorial demonstrates how to enable the Require Destination Tag flag on you
 - You need a funded XRP Ledger account, with an address, secret key, and some XRP. For production, you can use the same address and secret consistently. For this tutorial, you can generate new test credentials as needed.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../get-started/get-started-using-javascript.md) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../get-started/get-started-using-python.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -41,47 +41,47 @@ Complete sample code for all the steps of these tutorials is available under the
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these using the following interface:
 
-{% include '_snippets/interactive-tutorials/generate-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html).
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
 ### {{n.next()}}. Connect to the Network
 
-You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html):
+You must be connected to the network to submit transactions to it. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md):
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/get-started/js/base.js" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/get-started/js/base.js", language="js") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/get-started/py/base-async.py" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/get-started/py/base-async.py", language="py") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 For this tutorial, click the following button to connect:
 
-{% include '_snippets/interactive-tutorials/connect-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 ### {{n.next()}}. Send AccountSet Transaction
 
-To enable the `RequireDest` flag, set the [`asfRequireDest` value (`1`)](accountset.html#accountset-flags) in the `SetFlag` field of an [AccountSet transaction][]. To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
+To enable the `RequireDest` flag, set the [`asfRequireDest` value (`1`)](../../references/protocol/transactions/types/accountset.md#accountset-flags) in the `SetFlag` field of an [AccountSet transaction][]. To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
 
 For example:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/require-destination-tags/js/require-destination-tags.js" from="// Send AccountSet" before="// Confirm Account" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Send AccountSet", end_before="// Confirm Account") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/require-destination-tags/py/require-destination-tags.py" from="# Send AccountSet" before="# Confirm Account" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/require-destination-tags/py/require-destination-tags.py", language="py", start_with="# Send AccountSet", end_before="# Confirm Account") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 {{ start_step("Send AccountSet") }}
 <button id="send-accountset" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait">Send AccountSet</button>
@@ -92,10 +92,10 @@ _Python_
 
 ### {{n.next()}}. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
 {{ start_step("Wait") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 
@@ -104,17 +104,17 @@ Most transactions are accepted into the next ledger version after they're submit
 After the transaction is validated, you can check your account's settings to confirm that the Require Destination Tag flag is enabled.
 
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/require-destination-tags/js/require-destination-tags.js" from="// Confirm Account" before="// End main()" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/require-destination-tags/js/require-destination-tags.js", language="js", start_with="// Confirm Account", end_before="// End main()") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/require-destination-tags/py/require-destination-tags.py" from="# Confirm Account" before="# End main()" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/require-destination-tags/py/require-destination-tags.py", language="py", start_with="# Confirm Account", end_before="# End main()") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 {{ start_step("Confirm Settings") }}
@@ -123,7 +123,7 @@ _Python_
 <div class="output-area"></div>
 {{ end_step() }}
 
-For further confirmation, you can send test transactions (from a different address) to confirm that the setting is working as you expect it to. If you a payment with a destination tag, it should succeed, and if you send one _without_ a destination tag, it should fail with the error code [`tecDST_TAG_NEEDED`](tec-codes.html).
+For further confirmation, you can send test transactions (from a different address) to confirm that the setting is working as you expect it to. If you a payment with a destination tag, it should succeed, and if you send one _without_ a destination tag, it should fail with the error code [`tecDST_TAG_NEEDED`](../../references/protocol/transactions/transaction-results/tec-codes.md).
 
 {{ start_step("Test Payments") }}
 <button class="test-payment btn btn-primary" data-dt="10">Send XRP (with Destination Tag)</button>
@@ -136,19 +136,13 @@ For further confirmation, you can send test transactions (from a different addre
 ## See Also
 
 - **Concepts:**
-    - [Accounts](accounts.html)
-    - [Source and Destination Tags](source-and-destination-tags.html)
-    - [Transaction Cost](transaction-cost.html)
-    - [Payment Types](payment-types.html)
+    - [Accounts](../../concepts/accounts/accounts.md)
+    - [Source and Destination Tags](../../concepts/transactions/source-and-destination-tags.md)
+    - [Transaction Cost](../../concepts/transactions/transaction-cost.md)
+    - [Payment Types](../../concepts/payment-types/index.md)
 - **References:**
     - [account_info method][]
     - [AccountSet transaction][]
-    - [AccountRoot Flags](accountroot.html#accountroot-flags)
+    - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
 
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

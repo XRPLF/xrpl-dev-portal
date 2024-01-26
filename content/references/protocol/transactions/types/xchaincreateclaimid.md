@@ -9,7 +9,7 @@ status: not_enabled
 # XChainCreateClaimID
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp#L399-L406 "Source")
 
-_(Requires the [XChainBridge amendment][] :not_enabled:)_
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 The `XChainCreateClaimID` transaction creates a new cross-chain claim ID that is used for a cross-chain transfer. A cross-chain claim ID represents *one* cross-chain transfer of value. 
 
@@ -58,8 +58,4 @@ It also includes the account on the source chain that locks or burns the funds o
 | `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

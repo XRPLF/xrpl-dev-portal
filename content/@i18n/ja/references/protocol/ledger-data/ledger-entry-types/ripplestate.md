@@ -12,7 +12,7 @@ labels:
 
 XRP Ledgerではどのアカウントにも権限がないため、`RippleState`オブジェクトはアカウントアドレスを数値順にソートし、正規の形式になるようにします。数値順の低いアドレスは「低位アカウント」と見なされ、数値順の高いアドレスは「高位アカウント」と見なされます。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -41,7 +41,7 @@ XRP Ledgerではどのアカウントにも権限がないため、`RippleState`
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `RippleState`オブジェクトのフィールドは次のとおりです。
 
@@ -49,7 +49,7 @@ XRP Ledgerではどのアカウントにも権限がないため、`RippleState`
 |-----------------|-----------|---------------|-------------|
 | `LedgerEntryType` | 文字列    | UInt16 | 値`0x0072`が文字列`RippleState`にマッピングされている場合は、このオブジェクトがRippleStateオブジェクトであることを示します。 |
 | `Flags`           | 数値    | UInt32 | このオブジェクトに対して有効になっているブールオプションのビットマップ。 |
-| `Balance`         | オブジェクト    | Amount | 低位アカウントからみたトラストラインの残高。残高がマイナスの場合、低位アカウントから高位アカウントに対して通貨が発行されています。この場合のイシュアーは常に中立値[ACCOUNT_ONE](addresses.html#特別なアドレス)に設定されます。 |
+| `Balance`         | オブジェクト    | Amount | 低位アカウントからみたトラストラインの残高。残高がマイナスの場合、低位アカウントから高位アカウントに対して通貨が発行されています。この場合のイシュアーは常に中立値[ACCOUNT_ONE](../../../../concepts/accounts/addresses.md#特別なアドレス)に設定されます。 |
 | `LowLimit`        | オブジェクト    | Amount | 低位アカウントがトラストラインに設定した限度額。`issuer`は、この限度額を設定した低位アカウントのアドレスです。 |
 | `HighLimit`       | オブジェクト    | Amount | 高位アカウントがトラストラインに設定した限度額。`issuer`は、この限度額を設定した高位アカウントのアドレスです。 |
 | `PreviousTxnID`   | 文字列    | Hash256 | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
@@ -67,20 +67,20 @@ XRP Ledgerではどのアカウントにも権限がないため、`RippleState`
 
 RippleStateオブジェクトには以下のフラグ値を指定できます。
 
-| フラグ名 | 16進数値 | 10進数値 | 説明 | 対応する[TrustSetフラグ](trustset.html#trustsetのフラグ) |
+| フラグ名 | 16進数値 | 10進数値 | 説明 | 対応する[TrustSetフラグ](../../transactions/types/trustset.md#trustsetのフラグ) |
 |-----------|-----------|---------------|-------------|------------------------|
 | lsfLowReserve | 0x00010000 | 65536 | このRippleStateオブジェクトは[低位アカウント所有者の準備金に資金を供給します](#所有者の準備金への資金供給)。 | （なし） |
 | lsfHighReserve | 0x00020000 |131072 | このRippleStateオブジェクトは[高位アカウント所有者の準備金に資金を供給します](#所有者の準備金への資金供給)。 | （なし） |
 | lsfLowAuth | 0x00040000 | 262144 | 低位アカウントにより、高位アカウントが低位アカウントのイシュアンスを保有することが承認されています。 | tfSetAuth |
 | lsfHighAuth | 0x00080000 | 524288 |  高位アカウントにより、低位アカウントが高位アカウントのイシュアンスを保有することが承認されています。 | tfSetAuth |
-| lsfLowNoRipple | 0x00100000 | 1048576 | 低位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](rippling.html)。 | tfSetNoRipple |
-| lsfHighNoRipple | 0x00200000 | 2097152 | 高位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](rippling.html)。 | tfSetNoRipple |
+| lsfLowNoRipple | 0x00100000 | 1048576 | 低位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 | tfSetNoRipple |
+| lsfHighNoRipple | 0x00200000 | 2097152 | 高位アカウントで、このトラストラインから、同じアカウントのNoRippleフラグが設定されている他のトラストラインへの[Ripplingが無効化されています](../../../../concepts/tokens/fungible-tokens/rippling.md)。 | tfSetNoRipple |
 | lsfLowFreeze | 0x00400000 | 4194304 | 低位アカウントがトラストラインを凍結しており、高位アカウントから資産を移動できません。 | tfSetFreeze |
 | lsfHighFreeze | 0x00800000 | 8388608 | 高位アカウントがトラストラインを凍結しており、低位アカウントから資産を移動できません。 | tfSetFreeze |
 
 ## 所有者の準備金への資金供給
 
-アカウントがトラストラインをデフォルト以外の状態に変更した場合、そのトラストラインはアカウントの[所有者準備金](reserves.html#所有者準備金)に反映されます。RippleStateオブジェクトの`lsfLowReserve`フラグと`lsfHighReserve`フラグは、いずれのアカウントが所有者準備金に責任があるかを示します。`rippled`サーバーは、トラストラインの変更時にこれらのフラグを自動的に設定します。
+アカウントがトラストラインをデフォルト以外の状態に変更した場合、そのトラストラインはアカウントの[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)に反映されます。RippleStateオブジェクトの`lsfLowReserve`フラグと`lsfHighReserve`フラグは、いずれのアカウントが所有者準備金に責任があるかを示します。`rippled`サーバーは、トラストラインの変更時にこれらのフラグを自動的に設定します。
 
 トラストラインのデフォルト以外の状態に反映される値は以下の通りです。
 
@@ -95,7 +95,7 @@ RippleStateオブジェクトには以下のフラグ値を指定できます。
 
 **lsfLowAuth**フラグと**lsfHighAuth**フラグは無効にできないため、デフォルト状態に不利に作用することはありません。
 
-2つのNoRippleフラグのデフォルト状態は、対応するAccountRootオブジェクトの[lsfDefaultRippleフラグ](accountroot.html#accountrootのフラグ)の状態によって異なります。DefaultRippleが無効の場合（デフォルト）、アカウントのすべてのトラストラインのlsfNoRippleフラグはデフォルトで _有効_ となります。アカウントがDefaultRippleを有効にすると、アカウントのトラストラインのlsfNoRippleフラグはデフォルトで _無効_ となります（Ripplingが有効になります）。
+2つのNoRippleフラグのデフォルト状態は、対応するAccountRootオブジェクトの[lsfDefaultRippleフラグ](accountroot.md#accountrootのフラグ)の状態によって異なります。DefaultRippleが無効の場合（デフォルト）、アカウントのすべてのトラストラインのlsfNoRippleフラグはデフォルトで _有効_ となります。アカウントがDefaultRippleを有効にすると、アカウントのトラストラインのlsfNoRippleフラグはデフォルトで _無効_ となります（Ripplingが有効になります）。
 
 **注記:** `rippled`バージョン0.27.3（2015年3月10日）にてDefaultRippleフラグが導入される前は、すべてのトラストラインはデフォルトで両方のNoRippleフラグが無効になっていました（Ripplingは有効）。
 
@@ -110,7 +110,4 @@ RippleStateオブジェクトのIDは、以下の値がこの順序で連結さ�
 * 高位アカウントのAccountID
 * トラストラインの160ビットの通貨コード
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

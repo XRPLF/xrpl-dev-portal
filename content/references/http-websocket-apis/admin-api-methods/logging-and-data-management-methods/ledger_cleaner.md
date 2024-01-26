@@ -10,15 +10,14 @@ labels:
 
 The `ledger_cleaner` command controls the [Ledger Cleaner](https://github.com/XRPLF/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner), an asynchronous maintenance process that can find and repair corruption in `rippled`'s database of ledgers.
 
-_The `ledger_cleaner` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `ledger_cleaner` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "ledger_cleaner",
@@ -27,8 +26,9 @@ An example of the request format:
     "stop": false
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -46,10 +46,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -61,8 +60,9 @@ An example of a successful response:
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -75,7 +75,4 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

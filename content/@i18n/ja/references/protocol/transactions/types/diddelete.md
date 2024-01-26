@@ -10,14 +10,14 @@ status: not_enabled
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "ソース")
 
-_([DID Amendment][] :not_enabled: が必要です。)_
+_([DID Amendment][] {% not-enabled /%} が必要です。)_
 
-指定した`Account`フィールドに関連付けられている[DIDレジャーエントリ](did.html)を削除します。
+指定した`Account`フィールドに関連付けられている[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を削除します。
 
 **注記:** このトランザクションは[共通フィールド][]のみ利用します。
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -33,14 +33,10 @@ _([DID Amendment][] :not_enabled: が必要です。)_
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーの他に、{{currentpage.name}}トランザクションでは以下の[トランザクション結果コード](transaction-results.html)が発生する可能性があります：
+すべてのトランザクションで発生する可能性のあるエラーの他に、{% $frontmatter.seo.title %}トランザクションでは以下の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります：
 
 | エラーコード          | 説明                                          |
 |:--------------------|:---------------------------------------------|
 | `tecNO_ENTRY`       | アカウントはDIDを保有していません。                |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

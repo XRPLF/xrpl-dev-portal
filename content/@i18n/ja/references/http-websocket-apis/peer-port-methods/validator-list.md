@@ -8,9 +8,9 @@ labels:
 ---
 # バリデータリストメソッド
 
-バリデータリストメソッドは特別なAPIエンドポイントで、`rippled`サーバが現在使用している信頼できるバリデータリストを取得します。これは多くの場合、サーバが信頼するバリデータの正確なリストを表します。[新規: rippled 1.5.0][].
+バリデータリストメソッドは特別なAPIエンドポイントで、`rippled`サーバが現在使用している信頼できるバリデータリストを取得します。これは多くの場合、サーバが信頼するバリデータの正確なリストを表します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.5.0" %}新規: rippled 1.5.0{% /badge %}.
 
-[ピアクローラ](peer-crawler.html)と同様に、バリデータリストメソッドはデフォルトで非root権限で[ピアプロトコル](peer-protocol.html)ポートから利用できます。
+[ピアクローラ](peer-crawler.md)と同様に、バリデータリストメソッドはデフォルトで非root権限で[ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)ポートから利用できます。
 
 ## リクエストのフォーマット
 
@@ -41,14 +41,14 @@ JSONオブジェクトには以下のフィールドがあります。
 | `blob`           | 文字列 | バリデータリストを表すBase64エンコードされたJSONデータ。 |
 | `signature`      | 文字列 | 16進数で表した`blob`データの署名。 |
 | `version`        | 数値   | このオブジェクトが使用するバリデータリストプロトコルのバージョン。現在のバージョンは **1** です。それ以上のバージョン番号は、バリデータリストプロトコルの以前のバージョンとの下位互換性を表します。 |
-| `public_key`     | 文字列 | このバリデータリストのデータを検証するために使用する公開鍵。これは32バイトのEd25519公開鍵で、先頭に`0xED`というバイトが付きます。[新規: rippled 1.7.0][]. |
+| `public_key`     | 文字列 | このバリデータリストのデータを検証するために使用する公開鍵。これは32バイトのEd25519公開鍵で、先頭に`0xED`というバイトが付きます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}新規: rippled 1.7.0{% /badge %}. |
 
 ### マニフェストデータ
 [[ソース]](https://github.com/XRPLF/rippled/blob/97712107b71a8e2089d2e3fcef9ebf5362951110/src/ripple/app/misc/impl/Manifest.cpp#L43-L66 "ソース")
 
-"マニフェスト"には、コンセンサスプロセスに関与する個人または組織（***バリデータ**または**リスト発行者**）を一意に識別する情報が含まれます。バリデータのマニフェストには、その[バリデータのトークン](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server)の _公開_ 情報が含まれます。リスト発行者のマニフェストはリスト発行者に関する情報を提供します。どちらも通常、XRP Ledgerの標準的な[バイナリフォーマット](serialization.html)でバイナリにエンコードされます。(マニフェストの標準的なJSON形式はありません)。
+"マニフェスト"には、コンセンサスプロセスに関与する個人または組織（***バリデータ**または**リスト発行者**）を一意に識別する情報が含まれます。バリデータのマニフェストには、その[バリデータのトークン](../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server)の _公開_ 情報が含まれます。リスト発行者のマニフェストはリスト発行者に関する情報を提供します。どちらも通常、XRP Ledgerの標準的な[バイナリフォーマット](../../protocol/binary-format.md)でバイナリにエンコードされます。(マニフェストの標準的なJSON形式はありません)。
 
-マニフェストの主な目的の1つは、バリデータ鍵のローテーションです。バリデータはそのエフェメラル鍵ペアを変更すると、新しいエフェメラル公開鍵を共有するために新しいマニフェストを発行します。バリデータは[コンセンサスプロセス](consensus.html)の一部としてバリデーションに署名するためにエフェメラル鍵ペアを使用し、新しいマニフェストに署名するためにのみマスター鍵ペアを使用します。(マニフェストは、[バリデータ管理者が`rippled.cfg`設定ファイルに追加する](run-rippled-as-a-validator.html#3-enable-validation-on-your-rippled-server)プライベートデータと一緒にバリデータトークンに組み込まれます)。
+マニフェストの主な目的の1つは、バリデータ鍵のローテーションです。バリデータはそのエフェメラル鍵ペアを変更すると、新しいエフェメラル公開鍵を共有するために新しいマニフェストを発行します。バリデータは[コンセンサスプロセス](../../../concepts/consensus-protocol/index.md)の一部としてバリデーションに署名するためにエフェメラル鍵ペアを使用し、新しいマニフェストに署名するためにのみマスター鍵ペアを使用します。(マニフェストは、[バリデータ管理者が`rippled.cfg`設定ファイルに追加する](../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-enable-validation-on-your-rippled-server)プライベートデータと一緒にバリデータトークンに組み込まれます)。
 
 マニフェストでエンコードされるデータは次のとおりです。
 
@@ -62,7 +62,7 @@ JSONオブジェクトには以下のフィールドがあります。
 | `sfSigningPubKey`   | Blob          | _(省略可)_ この個人または組織が現在使用している鍵ペアのエフェメラル公開鍵。これは33バイトのsecp256k1公開鍵でなければなりません。 |
 | `sfSignature`       | Blob          | _(省略可)_ エフェメラルキーペアからのこのマニフェストデータの署名。 |
 
-`sfMasterSignature`と`sfSignature`の署名は、署名フィールド(`sfMasterSignature`と`sfSignature`)自体を除いて、マニフェストの[シリアライズされた](serialization.html)バイナリデータに署名することで作成されます。
+`sfMasterSignature`と`sfSignature`の署名は、署名フィールド(`sfMasterSignature`と`sfSignature`)自体を除いて、マニフェストの[シリアライズされた](../../protocol/binary-format.md)バイナリデータに署名することで作成されます。
 
 
 ### Blobデータ
@@ -85,45 +85,36 @@ base64から`blob`をデコードすると、以下のフィールドを持つJS
 
 #### デコードされたBlobの例
 
-```json
-{% include '_api-examples/vl/vl-blob.json' %}
-```
+{% code-snippet file="/_api-examples/vl/vl-blob.json" language="json" /%}
 
 ## 例
 
 リクエスト:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*HTTP*
-
+{% tab label="HTTP" %}
 ```
 GET https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 ```
+{% /tab %}
 
-*cURL*
-
+{% tab label="cURL" %}
 ```
 curl --insecure https://localhost:51235/vl/ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンス:
 
-```json
-200 OK
-
-{% include '_api-examples/vl/vl.json' %}
-```
+{% code-snippet file="/_api-examples/vl/vl.json" language="json" prefix="200 OK\n\n" /%}
 
 
 ## 関連項目
 
-- [ピアプロトコル](peer-protocol.html)
-- [コンセンサス](consensus.html)
+- [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
+- [コンセンサス](../../../concepts/consensus-protocol/index.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -36,6 +36,8 @@
 "AMMの修正": known-amendments.html#amm
 "AMMエントリ": amm.html
 "AMMオブジェクト": amm.html
+"API v1": request-formatting.html#api-versioning
+"API v2": request-formatting.html#api-versioning
 "AccountDelete transaction": accountdelete.html
 "AccountDelete transactions": accountdelete.html
 "AccountDelete トランザクション": accountdelete.html
@@ -170,49 +172,50 @@
 "ImmediateOfferKilledの修正": known-amendments.html#immediateofferkilled
 "Interledger Protocol": https://interledger.org/
 "Internal Type": serialization.html
-"Introduced in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"Introduced in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"Introduced in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"Introduced in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"Introduced in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"Introduced in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"Introduced in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"Introduced in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"Introduced in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"Introduced in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"Introduced in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"Introduced in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"Introduced in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"Introduced in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"Introduced in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"Introduced in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"Introduced in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"Introduced in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"Introduced in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"Introduced in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"Introduced in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"Introduced in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"Introduced in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"Introduced in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"Introduced in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"Introduced in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"Introduced in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"Introduced in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"Introduced in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"Introduced in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"Introduced in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"Introduced in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"Introduced in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"Introduced in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"Introduced in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"Introduced in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"Introduced in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"Introduced in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"Introduced in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"Introduced in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"Introduced in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"Introduced in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"Introduced in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"Introduced in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE"
+"Introduced in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_BLUE"
+"Introduced in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_BLUE"
+"Introduced in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_BLUE"
+"Introduced in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_BLUE"
+"Introduced in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_BLUE"
+"Introduced in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_BLUE"
+"Introduced in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_BLUE"
+"Introduced in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_BLUE"
+"Introduced in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_BLUE"
+"Introduced in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_BLUE"
+"Introduced in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_BLUE"
+"Introduced in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_BLUE"
+"Introduced in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_BLUE"
+"Introduced in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE"
+"Introduced in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE"
+"Introduced in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_BLUE"
+"Introduced in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE"
+"Introduced in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE"
+"Introduced in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE"
+"Introduced in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE"
+"Introduced in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_BLUE"
+"Introduced in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"
+"Introduced in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_BLUE"
+"Introduced in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_BLUE"
+"Introduced in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_BLUE"
+"Introduced in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_BLUE"
+"Introduced in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_BLUE"
+"Introduced in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE"
+"Introduced in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE"
+"Introduced in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE"
+"Introduced in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_BLUE"
+"Introduced in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE"
+"Introduced in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE"
+"Introduced in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE"
+"Introduced in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"
+"Introduced in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE"
+"Introduced in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE"
+"Introduced in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE"
+"Introduced in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE"
+"Introduced in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE"
+"Introduced in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_BLUE"
+"Introduced in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE"
+"Introduced in: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_BLUE"
 "Ledger Index": basic-data-types.html#ledger-index
 "LedgerHashes entry": ledgerhashes.html
 "LedgerHashes object": ledgerhashes.html
@@ -271,49 +274,50 @@
 "NegativeUNLの修正": known-amendments.html#negativeunl
 "NegativeUNLエントリ": negativeunl.html
 "NegativeUNLオブジェクト": negativeunl.html
-"New in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"New in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"New in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"New in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"New in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"New in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"New in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"New in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"New in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"New in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"New in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"New in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"New in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"New in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"New in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"New in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"New in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"New in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"New in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"New in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"New in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"New in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"New in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"New in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"New in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"New in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"New in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"New in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"New in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"New in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"New in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"New in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"New in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"New in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"New in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"New in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"New in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"New in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"New in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"New in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"New in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"New in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"New in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"New in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE"
+"New in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_BLUE"
+"New in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_BLUE"
+"New in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_BLUE"
+"New in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_BLUE"
+"New in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_BLUE"
+"New in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_BLUE"
+"New in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_BLUE"
+"New in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_BLUE"
+"New in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_BLUE"
+"New in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_BLUE"
+"New in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_BLUE"
+"New in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_BLUE"
+"New in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_BLUE"
+"New in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE"
+"New in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE"
+"New in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_BLUE"
+"New in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE"
+"New in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE"
+"New in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE"
+"New in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE"
+"New in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_BLUE"
+"New in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"
+"New in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_BLUE"
+"New in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_BLUE"
+"New in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_BLUE"
+"New in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_BLUE"
+"New in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_BLUE"
+"New in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE"
+"New in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE"
+"New in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE"
+"New in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_BLUE"
+"New in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE"
+"New in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE"
+"New in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE"
+"New in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"
+"New in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE"
+"New in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE"
+"New in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE"
+"New in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE"
+"New in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE"
+"New in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_BLUE"
+"New in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE"
+"New in: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_BLUE"
 "NonFungibleTokensV1 amendment": known-amendments.html#nonfungibletokensv1
 "NonFungibleTokensV1_1 amendment": known-amendments.html#nonfungibletokensv1_1
 "NonFungibleTokensV1_1の修正": known-amendments.html#nonfungibletokensv1_1
@@ -365,49 +369,50 @@
 "PaymentChannelFundトランザクション": paymentchannelfund.html
 "Paymentトランザクション": payment.html
 "RFC-1751": https://tools.ietf.org/html/rfc1751
-"Removed in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"Removed in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"Removed in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"Removed in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"Removed in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"Removed in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"Removed in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"Removed in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"Removed in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"Removed in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"Removed in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"Removed in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"Removed in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"Removed in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"Removed in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"Removed in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"Removed in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"Removed in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"Removed in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"Removed in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"Removed in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"Removed in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"Removed in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"Removed in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"Removed in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"Removed in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"Removed in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"Removed in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"Removed in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"Removed in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"Removed in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"Removed in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"Removed in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"Removed in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"Removed in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"Removed in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"Removed in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"Removed in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"Removed in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"Removed in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"Removed in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"Removed in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"Removed in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"Removed in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_RED"
+"Removed in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_RED"
+"Removed in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_RED"
+"Removed in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_RED"
+"Removed in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_RED"
+"Removed in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_RED"
+"Removed in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_RED"
+"Removed in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_RED"
+"Removed in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_RED"
+"Removed in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_RED"
+"Removed in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_RED"
+"Removed in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_RED"
+"Removed in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_RED"
+"Removed in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_RED"
+"Removed in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_RED"
+"Removed in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_RED"
+"Removed in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_RED"
+"Removed in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_RED"
+"Removed in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_RED"
+"Removed in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_RED"
+"Removed in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_RED"
+"Removed in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_RED"
+"Removed in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_RED"
+"Removed in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_RED"
+"Removed in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_RED"
+"Removed in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_RED"
+"Removed in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_RED"
+"Removed in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_RED"
+"Removed in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_RED"
+"Removed in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_RED"
+"Removed in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_RED"
+"Removed in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_RED"
+"Removed in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_RED"
+"Removed in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_RED"
+"Removed in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_RED"
+"Removed in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_RED"
+"Removed in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_RED"
+"Removed in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_RED"
+"Removed in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_RED"
+"Removed in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_RED"
+"Removed in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_RED"
+"Removed in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_RED"
+"Removed in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_RED"
+"Removed in: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_RED"
 "Reporting Mode": rippled-server-modes.html#reporting-mode
 "RequireFullyCanonicalSig amendment": known-amendments.html#requirefullycanonicalsig
 "RequireFullyCanonicalSigの修正": known-amendments.html#requirefullycanonicalsig
@@ -479,49 +484,50 @@
 "UNLModify pseudo-transactions": unlmodify.html
 "UNLModify": unlmodify.html
 "UNLModify疑似トランザクション": unlmodify.html
-"Updated in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"Updated in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"Updated in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"Updated in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"Updated in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"Updated in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"Updated in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"Updated in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"Updated in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"Updated in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"Updated in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"Updated in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"Updated in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"Updated in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"Updated in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"Updated in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"Updated in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"Updated in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"Updated in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"Updated in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"Updated in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"Updated in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"Updated in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"Updated in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"Updated in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"Updated in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"Updated in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"Updated in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"Updated in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"Updated in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"Updated in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"Updated in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"Updated in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"Updated in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"Updated in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"Updated in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"Updated in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"Updated in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"Updated in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"Updated in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"Updated in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"Updated in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"Updated in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"Updated in: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE"
+"Updated in: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_BLUE"
+"Updated in: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_BLUE"
+"Updated in: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_BLUE"
+"Updated in: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_BLUE"
+"Updated in: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_BLUE"
+"Updated in: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_BLUE"
+"Updated in: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_BLUE"
+"Updated in: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_BLUE"
+"Updated in: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_BLUE"
+"Updated in: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_BLUE"
+"Updated in: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_BLUE"
+"Updated in: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_BLUE"
+"Updated in: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_BLUE"
+"Updated in: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE"
+"Updated in: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE"
+"Updated in: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_BLUE"
+"Updated in: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE"
+"Updated in: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE"
+"Updated in: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE"
+"Updated in: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE"
+"Updated in: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_BLUE"
+"Updated in: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"
+"Updated in: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_BLUE"
+"Updated in: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_BLUE"
+"Updated in: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_BLUE"
+"Updated in: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_BLUE"
+"Updated in: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_BLUE"
+"Updated in: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE"
+"Updated in: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE"
+"Updated in: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE"
+"Updated in: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_BLUE"
+"Updated in: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE"
+"Updated in: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE"
+"Updated in: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE"
+"Updated in: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"
+"Updated in: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE"
+"Updated in: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE"
+"Updated in: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE"
+"Updated in: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE"
+"Updated in: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE"
+"Updated in: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_BLUE"
+"Updated in: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE"
+"Updated in: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_BLUE"
 "XChainBridge amendment": known-amendments.html#xchainbridge
 "XChainBridgeの修正": known-amendments.html#xchainbridge
 "XRP, in drops": basic-data-types.html#specifying-currency-amounts
@@ -646,6 +652,10 @@
 "fix1623の修正": known-amendments.html#fix1623
 "fixCheckThreading amendment": known-amendments.html#fixcheckthreading
 "fixCheckThreadingの修正": known-amendments.html#fixcheckthreading
+"fixDisallowIncomingV1 amendment": known-amendments.html#fixdisallowincomingv1
+"fixDisallowIncomingV1の修正": known-amendments.html#fixdisallowincomingv1
+"fixFillOrKill amendment": known-amendments.html#fixfillorkill
+"fixFillOrKillの修正": known-amendments.html#fixfillorkill
 "fixMasterKeyAsRegularKey amendment": known-amendments.html#fixmasterkeyasregularkey
 "fixMasterKeyAsRegularKeyの修正": known-amendments.html#fixmasterkeyasregularkey
 "fixNFTokenDirV1 amendment": known-amendments.html#fixnftokendirv1
@@ -874,180 +884,184 @@
 "公開サーバー": public-servers.html
 "共通フィールド": transaction-common-fields.html
 "内部の型": serialization.html
-"削除: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"削除: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"削除: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"削除: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"削除: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"削除: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"削除: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"削除: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"削除: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"削除: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"削除: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"削除: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"削除: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"削除: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"削除: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"削除: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"削除: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"削除: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"削除: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"削除: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"削除: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"削除: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"削除: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"削除: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"削除: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"削除: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"削除: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"削除: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"削除: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"削除: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"削除: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"削除: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"削除: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"削除: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"削除: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"削除: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"削除: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"削除: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"削除: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"削除: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"削除: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"削除: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"削除: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
-"導入: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"導入: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"導入: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"導入: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"導入: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"導入: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"導入: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"導入: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"導入: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"導入: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"導入: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"導入: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"導入: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"導入: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"導入: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"導入: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"導入: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"導入: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"導入: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"導入: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"導入: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"導入: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"導入: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"導入: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"導入: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"導入: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"導入: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"導入: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"導入: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"導入: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"導入: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"導入: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"導入: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"導入: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"導入: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"導入: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"導入: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"導入: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"導入: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"導入: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"導入: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"導入: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"導入: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"削除: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_RED"
+"削除: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_RED"
+"削除: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_RED"
+"削除: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_RED"
+"削除: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_RED"
+"削除: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_RED"
+"削除: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_RED"
+"削除: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_RED"
+"削除: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_RED"
+"削除: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_RED"
+"削除: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_RED"
+"削除: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_RED"
+"削除: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_RED"
+"削除: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_RED"
+"削除: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_RED"
+"削除: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_RED"
+"削除: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_RED"
+"削除: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_RED"
+"削除: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_RED"
+"削除: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_RED"
+"削除: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_RED"
+"削除: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_RED"
+"削除: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_RED"
+"削除: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_RED"
+"削除: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_RED"
+"削除: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_RED"
+"削除: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_RED"
+"削除: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_RED"
+"削除: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_RED"
+"削除: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_RED"
+"削除: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_RED"
+"削除: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_RED"
+"削除: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_RED"
+"削除: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_RED"
+"削除: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_RED"
+"削除: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_RED"
+"削除: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_RED"
+"削除: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_RED"
+"削除: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_RED"
+"削除: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_RED"
+"削除: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_RED"
+"削除: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_RED"
+"削除: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_RED"
+"削除: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_RED"
+"導入: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE"
+"導入: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_BLUE"
+"導入: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_BLUE"
+"導入: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_BLUE"
+"導入: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_BLUE"
+"導入: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_BLUE"
+"導入: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_BLUE"
+"導入: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_BLUE"
+"導入: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_BLUE"
+"導入: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_BLUE"
+"導入: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_BLUE"
+"導入: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_BLUE"
+"導入: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_BLUE"
+"導入: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_BLUE"
+"導入: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE"
+"導入: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE"
+"導入: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_BLUE"
+"導入: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE"
+"導入: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE"
+"導入: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE"
+"導入: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE"
+"導入: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_BLUE"
+"導入: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"
+"導入: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_BLUE"
+"導入: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_BLUE"
+"導入: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_BLUE"
+"導入: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_BLUE"
+"導入: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_BLUE"
+"導入: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE"
+"導入: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE"
+"導入: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE"
+"導入: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_BLUE"
+"導入: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE"
+"導入: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE"
+"導入: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE"
+"導入: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"
+"導入: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE"
+"導入: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE"
+"導入: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE"
+"導入: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE"
+"導入: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE"
+"導入: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_BLUE"
+"導入: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE"
+"導入: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_BLUE"
 "手数料レベル": transaction-cost.html#手数料レベル
-"新規: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"新規: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"新規: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"新規: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"新規: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"新規: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"新規: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"新規: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"新規: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"新規: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"新規: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"新規: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"新規: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"新規: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"新規: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"新規: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"新規: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"新規: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"新規: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"新規: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"新規: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"新規: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"新規: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"新規: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"新規: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"新規: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"新規: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"新規: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"新規: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"新規: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"新規: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"新規: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"新規: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"新規: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"新規: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"新規: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"新規: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"新規: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"新規: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"新規: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"新規: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"新規: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"新規: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"新規: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE"
+"新規: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_BLUE"
+"新規: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_BLUE"
+"新規: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_BLUE"
+"新規: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_BLUE"
+"新規: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_BLUE"
+"新規: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_BLUE"
+"新規: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_BLUE"
+"新規: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_BLUE"
+"新規: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_BLUE"
+"新規: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_BLUE"
+"新規: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_BLUE"
+"新規: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_BLUE"
+"新規: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_BLUE"
+"新規: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE"
+"新規: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE"
+"新規: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_BLUE"
+"新規: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE"
+"新規: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE"
+"新規: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE"
+"新規: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE"
+"新規: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_BLUE"
+"新規: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"
+"新規: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_BLUE"
+"新規: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_BLUE"
+"新規: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_BLUE"
+"新規: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_BLUE"
+"新規: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_BLUE"
+"新規: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE"
+"新規: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE"
+"新規: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE"
+"新規: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_BLUE"
+"新規: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE"
+"新規: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE"
+"新規: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE"
+"新規: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"
+"新規: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE"
+"新規: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE"
+"新規: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE"
+"新規: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE"
+"新規: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE"
+"新規: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_BLUE"
+"新規: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE"
+"新規: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_BLUE"
 "時間の指定": basic-data-types.html#時間の指定
-"更新: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0
-"更新: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1
-"更新: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2
-"更新: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1
-"更新: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4
-"更新: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1
-"更新: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0
-"更新: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1
-"更新: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2
-"更新: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3
-"更新: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1
-"更新: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2
-"更新: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4
-"更新: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0
-"更新: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2
-"更新: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0
-"更新: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1
-"更新: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0
-"更新: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1
-"更新: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0
-"更新: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0
-"更新: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1
-"更新: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0
-"更新: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0
-"更新: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0
-"更新: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2
-"更新: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0
-"更新: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1
-"更新: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0
-"更新: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0
-"更新: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0
-"更新: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0
-"更新: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0
-"更新: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0
-"更新: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0
-"更新: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1
-"更新: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1
-"更新: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0
-"更新: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0
-"更新: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0
-"更新: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0
-"更新: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2
-"更新: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1
+"更新: rippled 0.26.0": https://github.com/XRPLF/rippled/releases/tag/0.26.0 "BADGE_BLUE"
+"更新: rippled 0.26.1": https://github.com/XRPLF/rippled/releases/tag/0.26.1 "BADGE_BLUE"
+"更新: rippled 0.26.2": https://github.com/XRPLF/rippled/releases/tag/0.26.2 "BADGE_BLUE"
+"更新: rippled 0.26.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.3-sp1 "BADGE_BLUE"
+"更新: rippled 0.26.4": https://github.com/XRPLF/rippled/releases/tag/0.26.4 "BADGE_BLUE"
+"更新: rippled 0.26.4-sp1": https://github.com/XRPLF/rippled/releases/tag/0.26.4-sp1 "BADGE_BLUE"
+"更新: rippled 0.27.0": https://github.com/XRPLF/rippled/releases/tag/0.27.0 "BADGE_BLUE"
+"更新: rippled 0.27.1": https://github.com/XRPLF/rippled/releases/tag/0.27.1 "BADGE_BLUE"
+"更新: rippled 0.27.2": https://github.com/XRPLF/rippled/releases/tag/0.27.2 "BADGE_BLUE"
+"更新: rippled 0.27.3": https://github.com/XRPLF/rippled/releases/tag/0.27.3 "BADGE_BLUE"
+"更新: rippled 0.27.3-sp1": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp1 "BADGE_BLUE"
+"更新: rippled 0.27.3-sp2": https://github.com/XRPLF/rippled/releases/tag/0.27.3-sp2 "BADGE_BLUE"
+"更新: rippled 0.27.4": https://github.com/XRPLF/rippled/releases/tag/0.27.4 "BADGE_BLUE"
+"更新: rippled 0.28.0": https://github.com/XRPLF/rippled/releases/tag/0.28.0 "BADGE_BLUE"
+"更新: rippled 0.28.2": https://github.com/XRPLF/rippled/releases/tag/0.28.2 "BADGE_BLUE"
+"更新: rippled 0.29.0": https://github.com/XRPLF/rippled/releases/tag/0.29.0 "BADGE_BLUE"
+"更新: rippled 0.29.0-hf1": https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1 "BADGE_BLUE"
+"更新: rippled 0.30.0": https://github.com/XRPLF/rippled/releases/tag/0.30.0 "BADGE_BLUE"
+"更新: rippled 0.30.1": https://github.com/XRPLF/rippled/releases/tag/0.30.1 "BADGE_BLUE"
+"更新: rippled 0.31.0": https://github.com/XRPLF/rippled/releases/tag/0.31.0 "BADGE_BLUE"
+"更新: rippled 0.32.0": https://github.com/XRPLF/rippled/releases/tag/0.32.0 "BADGE_BLUE"
+"更新: rippled 0.32.1": https://github.com/XRPLF/rippled/releases/tag/0.32.1 "BADGE_BLUE"
+"更新: rippled 0.33.0": https://github.com/XRPLF/rippled/releases/tag/0.33.0 "BADGE_BLUE"
+"更新: rippled 0.50.0": https://github.com/XRPLF/rippled/releases/tag/0.50.0 "BADGE_BLUE"
+"更新: rippled 0.70.0": https://github.com/XRPLF/rippled/releases/tag/0.70.0 "BADGE_BLUE"
+"更新: rippled 0.70.2": https://github.com/XRPLF/rippled/releases/tag/0.70.2 "BADGE_BLUE"
+"更新: rippled 0.80.0": https://github.com/XRPLF/rippled/releases/tag/0.80.0 "BADGE_BLUE"
+"更新: rippled 0.80.1": https://github.com/XRPLF/rippled/releases/tag/0.80.1 "BADGE_BLUE"
+"更新: rippled 0.90.0": https://github.com/XRPLF/rippled/releases/tag/0.90.0 "BADGE_BLUE"
+"更新: rippled 1.0.0": https://github.com/XRPLF/rippled/releases/tag/1.0.0 "BADGE_BLUE"
+"更新: rippled 1.1.0": https://github.com/XRPLF/rippled/releases/tag/1.1.0 "BADGE_BLUE"
+"更新: rippled 1.10.0": https://github.com/XRPLF/rippled/releases/tag/1.10.0 "BADGE_BLUE"
+"更新: rippled 1.11.0": https://github.com/XRPLF/rippled/releases/tag/1.11.0 "BADGE_BLUE"
+"更新: rippled 1.12.0": https://github.com/XRPLF/rippled/releases/tag/1.12.0 "BADGE_BLUE"
+"更新: rippled 1.2.0": https://github.com/XRPLF/rippled/releases/tag/1.2.0 "BADGE_BLUE"
+"更新: rippled 1.2.1": https://github.com/XRPLF/rippled/releases/tag/1.2.1 "BADGE_BLUE"
+"更新: rippled 1.3.1": https://github.com/XRPLF/rippled/releases/tag/1.3.1 "BADGE_BLUE"
+"更新: rippled 1.4.0": https://github.com/XRPLF/rippled/releases/tag/1.4.0 "BADGE_BLUE"
+"更新: rippled 1.5.0": https://github.com/XRPLF/rippled/releases/tag/1.5.0 "BADGE_BLUE"
+"更新: rippled 1.6.0": https://github.com/XRPLF/rippled/releases/tag/1.6.0 "BADGE_BLUE"
+"更新: rippled 1.7.0": https://github.com/XRPLF/rippled/releases/tag/1.7.0 "BADGE_BLUE"
+"更新: rippled 1.7.2": https://github.com/XRPLF/rippled/releases/tag/1.7.2 "BADGE_BLUE"
+"更新: rippled 1.8.1": https://github.com/XRPLF/rippled/releases/tag/1.8.1 "BADGE_BLUE"
+"更新: rippled 2.0.0": https://github.com/XRPLF/rippled/releases/tag/2.0.0 "BADGE_BLUE"
 "標準フォーマット": response-formatting.html
 "汎用エラータイプ": error-formatting.html#汎用エラー
 "識別用ハッシュ": transactions.html#トランザクションの識別

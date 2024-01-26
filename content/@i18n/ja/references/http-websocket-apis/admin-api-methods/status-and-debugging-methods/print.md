@@ -10,29 +10,29 @@ labels:
 
 `print`コマンドは、さまざまな内部サブシステム（ピア、レジャークリーナー、リソースマネージャーなど）の現在の状況を返します。
 
-*`print`リクエストは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`print`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": "print_req_1",
    "command": "print"
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled print
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストにはパラメーターが含まれていません。
 
@@ -40,10 +40,9 @@ rippled print
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -229,8 +228,9 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っています。結果に含まれる追加フィールドは、`rippled`サーバーの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
 
@@ -238,7 +238,4 @@ Connecting to 127.0.0.1:5005
 
 * [汎用エラータイプ][]のすべて。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

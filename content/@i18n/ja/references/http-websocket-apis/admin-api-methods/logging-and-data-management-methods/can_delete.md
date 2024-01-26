@@ -8,18 +8,17 @@ labels:
 # can_delete
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CanDelete.cpp "Source")
 
-`can_delete`メソッドは[指示による削除が有効なオンライン削除](online-deletion.html#指示による削除)を使用する`rippled`サーバーに削除が可能のレジャーバージョンを通知します。指定したレジャーバージョン以前が削除可能になります。指示による削除が有効ではない場合、このメソッドは何も行いません。
+`can_delete`メソッドは[指示による削除が有効なオンライン削除](../../../../infrastructure/configuration/data-retention/online-deletion.md#指示による削除)を使用する`rippled`サーバーに削除が可能のレジャーバージョンを通知します。指定したレジャーバージョン以前が削除可能になります。指示による削除が有効ではない場合、このメソッドは何も行いません。
 
-_`can_delete`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`can_delete`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": 2,
@@ -27,9 +26,9 @@ _`can_delete`メソッドは、権限のないユーザーは実行できない[
  "can_delete": 11320417
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "can_delete",
@@ -40,15 +39,16 @@ _`can_delete`メソッドは、権限のないユーザーは実行できない[
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: can_delete [<ledger_index>|<ledger_hash>|now|always|never]
 rippled can_delete 11320417
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターを指定できます。
 
@@ -76,10 +76,7 @@ rippled can_delete 11320417
 
 ## 参照項目
 
-- [オンライン削除](online-deletion.html)
-- [指示による削除の設定](configure-advisory-deletion.html)
+- [オンライン削除](../../../../infrastructure/configuration/data-retention/online-deletion.md)
+- [指示による削除の設定](../../../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

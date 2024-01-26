@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # XChainOwnedCreateAccountClaimID
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 [[ソース]](https://github.com/seelabs/rippled/blob/xbridge/src/ripple/protocol/impl/LedgerFormats.cpp#L296-L306 "ソース")
 
@@ -86,8 +86,4 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 | `LockingChainDoor`  | 文字列    | Account    | はい  | ロックチェーンのドアアカウント。 |
 | `LockingChainIssue` | Issue    | Issue      | はい  | ロックチェーンでロック、アンロックされる資産。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

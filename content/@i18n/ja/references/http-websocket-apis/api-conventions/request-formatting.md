@@ -36,10 +36,9 @@ JSON-RPCリクエストを実行するには、`rippled`サーバーがJSON-RPC�
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
  "id": 2,
@@ -49,9 +48,9 @@ JSON-RPCリクエストを実行するには、`rippled`サーバーがJSON-RPC�
  "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 POST http://s1.ripple.com:51234/
 {
@@ -65,11 +64,12 @@ POST http://s1.ripple.com:51234/
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled account_info r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated true
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}

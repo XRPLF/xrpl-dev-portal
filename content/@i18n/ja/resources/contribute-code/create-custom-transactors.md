@@ -8,7 +8,7 @@ labels:
 ---
 # カスタムトランザクタの作成
 
-_トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`rippled`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](contribute-code-flow.html)をご覧ください。
+_トランザクタ_ はトランザクションを処理し、XRP Ledgerを変更するコードです。カスタムトランザクタを作成することで、`rippled`に新しい機能を追加することができます。このチュートリアルではトランザクタのコーディングについて説明しますが、それをXRPLに追加するにはAmendmentプロセスを経る必要があります。 [XRP Ledgerのコードへの貢献](contribute-code.md)をご覧ください。
 
 トランザクタは 基本的な処理順序に則って処理されます。
 
@@ -69,8 +69,10 @@ public:
 - `PreflightContext`はレジャーのビューを持っていません。
 - レジャーやトランザクションからフィールドを取得するには、次のようにブラケット記法を使用します。
 
-        auto const curExpiration = (*sle*)[~sfExpiration];
-        (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
+    ```
+    auto const curExpiration = (*sle*)[~sfExpiration];
+    (*sle)[sfBalance] = (*sle)[sfBalance] + reqDelta;
+    ```
 
     **注記:** `~`記号は optional型を返します。
 
@@ -78,7 +80,7 @@ public:
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
     - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
--` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](transaction-results.html)をご覧ください。
+-` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)をご覧ください。
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)
@@ -319,7 +321,7 @@ CreateCheck::doApply()
 
 ### `calculateBaseFee`
 
-ほとんどのトランザクションはデフォルトの[Referenceトランザクションコスト](transaction-cost.html)をそのまま引き継ぎます。しかし、トランザクションで通常以外のトランザクションコストを定義する必要がある場合、トランザクションの`calculateBaseFee`メソッドをカスタムメソッドに置き換えることができます。
+ほとんどのトランザクションはデフォルトの[Referenceトランザクションコスト](../../concepts/transactions/transaction-cost.md)をそのまま引き継ぎます。しかし、トランザクションで通常以外のトランザクションコストを定義する必要がある場合、トランザクションの`calculateBaseFee`メソッドをカスタムメソッドに置き換えることができます。
 
 次の例では、`EscrowFinish`ランザクションが条件付きエスクローに対して、フルフィルメントの大きさに応じて追加コストを請求する方法を示しています。
 
@@ -353,7 +355,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 - 複数のシーケンス番号を消費するチケット。
 - 設定されたフラグやフィールドによって、正常またはブロッカーとなるトランザクション。
 
-**注記:** `TxConsequences`は[トランザクションキュー](transaction-queue.html)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。
+**注記:** `TxConsequences`は[トランザクションキュー](../../concepts/transactions/transaction-queue.md)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。
 
 
 ```c++
@@ -386,4 +388,4 @@ SetAccount::makeTxConsequences(PreflightContext const& ctx)
 
 ## 次のステップ
 
-新しいトランザクタでサーバを再コンパイルし、[スタンドアロンモード](use-stand-alone-mode.html)でテストしてください。もしAmendmentの後ろにトランザクタをコーディングした場合、設定ファイルを使ってその機能を[強制的に有効にする](test-amendments.html)ことができます。
+新しいトランザクタでサーバを再コンパイルし、[スタンドアロンモード](../../infrastructure/testing-and-auditing/index.md)でテストしてください。もしAmendmentの後ろにトランザクタをコーディングした場合、設定ファイルを使ってその機能を[強制的に有効にする](../../infrastructure/testing-and-auditing/test-amendments.md)ことができます。

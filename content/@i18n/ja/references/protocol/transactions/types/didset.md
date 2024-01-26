@@ -10,12 +10,12 @@ status: not_enabled
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "ソース")
 
-_([DID Amendment][] :not_enabled: が必要です。)_
+_([DID Amendment][] {% not-enabled /%} が必要です。)_
 
-新しい[DIDレジャーエントリ](did.html)を作成したり、既存の項目を更新したりします。
+新しい[DIDレジャーエントリ](../../ledger-data/ledger-entry-types/did.md)を作成したり、既存の項目を更新したりします。
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -29,7 +29,7 @@ _([DID Amendment][] :not_enabled: が必要です。)_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド      | JSONの型 | [内部の型][] | 必須? | 説明 |
 |:--------------|:---------|:-----------|:------|:----|
@@ -44,15 +44,11 @@ _([DID Amendment][] :not_enabled: が必要です。)_
 
 ## エラーケース
 
-すべてのトランザクションで発生する可能性のあるエラーに加えて、{{currentpage.name}}トランザクションでは、次の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+すべてのトランザクションで発生する可能性のあるエラーに加えて、{% $frontmatter.seo.title %}トランザクションでは、次の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード          | 説明                                         |
 |:--------------------|:---------------------------------------------|
 | `tecEMPTY_DID`      | トランザクションによって空のDIDレジャーエントリを作成しています。更新によって`Data`、`DIDDocument`、`URI`フィールドが削除されていないか確認してください。 |
 | `temEMPTY_DID`      | トランザクションが不正で、DID情報がありません。`Data`、`DIDDocument`、`URI`フィールドのいずれかを含めてください。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

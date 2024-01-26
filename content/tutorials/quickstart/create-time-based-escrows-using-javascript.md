@@ -19,7 +19,7 @@ This example shows how to:
 3. Cancel an escrow payment and return the XRP to the sending account.
 
 
-[![Escrow Tester Form](img/quickstart-escrow1.png)](img/quickstart-escrow1.png)
+[![Escrow Tester Form](/img/quickstart-escrow1.png)](/img/quickstart-escrow1.png)
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ To get test accounts:
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-[![Escrow Tester with Account Information](img/quickstart-escrow2.png)](img/quickstart-escrow2.png)
+[![Escrow Tester with Account Information](/img/quickstart-escrow2.png)](/img/quickstart-escrow2.png)
 
 ## Create Escrow
 
@@ -61,7 +61,7 @@ To create a time-based escrow:
 
 The escrow is created on the XRP Ledger instance, reserving 100 XRP plus the transaction cost. When you create an escrow, capture and save the **Sequence Number** so that you can use it to finish the escrow transaction.
 
-[![Completed Escrow Transaction](img/quickstart-escrow3.png)](img/quickstart-escrow3.png)
+[![Completed Escrow Transaction](/img/quickstart-escrow3.png)](/img/quickstart-escrow3.png)
 
 ## Finish Escrow
 
@@ -74,7 +74,7 @@ To finish a time-based escrow:
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
-[![Completed Escrow Transaction](img/quickstart-escrow4.png)](img/quickstart-escrow4.png)
+[![Completed Escrow Transaction](/img/quickstart-escrow4.png)](/img/quickstart-escrow4.png)
 
 ## Get Escrows
 
@@ -84,7 +84,7 @@ For the purposes of this tutorial, follow the steps in [Create Escrow](#create-e
 
 Click **Get Escrows** for both the Standby and the Operational account. The `account_info` request returns the same `account_object` for both accounts, demonstrating the link between the accounts created by the escrow transaction.
 
-[![Get Escrows results](img/quickstart-escrow5.png)](img/quickstart-escrow5.png)
+[![Get Escrows results](/img/quickstart-escrow5.png)](/img/quickstart-escrow5.png)
 
 
 ## Cancel Escrow
@@ -100,7 +100,7 @@ To cancel an expired escrow:
 
 The funds are returned to the Standby account, less the initial transaction fee.
 
-[![Cancel Escrow results](img/quickstart-escrow6.png)](img/quickstart-escrow6.png)
+[![Cancel Escrow results](/img/quickstart-escrow6.png)](/img/quickstart-escrow6.png)
 
 ## Oh No! I Forgot to Save the Sequence Number!
 
@@ -109,12 +109,12 @@ If you forget to save the sequence number, you can find it in the escrow transac
 1. Create a new escrow as described in [Create Escrow](#create-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnID_ value from the results.
-   ![Transaction ID in Get Escrows results](img/quickstart-escrow7.png)
+   ![Transaction ID in Get Escrows results](/img/quickstart-escrow7.png)
 4. Paste the _PreviousTxnID_ in the **Transaction to Look Up** field.
-   ![Transaction to Look Up field](img/quickstart-escrow8.png)
+   ![Transaction to Look Up field](/img/quickstart-escrow8.png)
 5. Click **Get Transaction**.
 6. Locate the _Sequence_ value in the results.
-   ![Sequence number in results](img/quickstart-escrow9.png)
+   ![Sequence number in results](/img/quickstart-escrow9.png)
 
 # Code Walkthrough
 
@@ -826,4 +826,3 @@ Disconnect from the XRP Ledger instance.
   </body>
 </html>
 ```
-

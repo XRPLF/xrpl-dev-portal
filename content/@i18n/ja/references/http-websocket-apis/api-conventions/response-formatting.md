@@ -14,16 +14,15 @@ blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの�
 | `id`            | （場合により異なる） | （WebSocketのみ）このレスポンスのリクエスト元となったリクエストで指定されているID。 |
 | `status`        | 文字列   | （WebSocketのみ）値が`success`である場合、リクエストがサーバーによって正常に受信され、理解されたことを示します。 |
 | `result.status` | 文字列   | （JSON-RPCおよびコマンドライン）値が`success`である場合、リクエストがサーバーによって正常に受信され、理解されたことを示します。 |
-| `type`          | 文字列   | （WebSocketのみ）値が`response`の場合、コマンドに対する正常なレスポンスであることを示します。[非同期の通知](subscribe.html)では、`ledgerClosed`や`transaction`など異なる値が使用されます。 |
+| `type`          | 文字列   | （WebSocketのみ）値が`response`の場合、コマンドに対する正常なレスポンスであることを示します。[非同期の通知](../public-api-methods/subscription-methods/subscribe.md)では、`ledgerClosed`や`transaction`など異なる値が使用されます。 |
 | `result`        | オブジェクト   | クエリーの結果。内容はコマンドによって異なります。 |
 
 
 ## 成功した場合のレスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
  "id": 2,
@@ -45,9 +44,9 @@ blurb: WebSocket、JSON-RPC、コマンドラインインターフェイスの�
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 HTTP Status: 200 OK
 {
@@ -68,8 +67,9 @@ HTTP Status: 200 OK
    }
 }
 ```
-*コマンドライン*
+{% /tab %}
 
+{% tab label="コマンドライン" %}
 ```
 {
    "result": {
@@ -89,5 +89,6 @@ HTTP Status: 200 OK
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}

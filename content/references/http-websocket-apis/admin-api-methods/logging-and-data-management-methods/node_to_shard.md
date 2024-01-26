@@ -8,45 +8,45 @@ labels:
 # node_to_shard
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
 
-The `{{currentpage.name}}` method manages copying data from the ledger store to the [shard store](history-sharding.html). It can start, stop, or check the status of copying the data.
+The {% code-page-name /%} method manages copying data from the ledger store to the [shard store](../../../../infrastructure/configuration/data-retention/history-sharding.md). It can start, stop, or check the status of copying the data.
 
-_The `{{currentpage.name}}` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The {% code-page-name /%} method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 
 ### Request Format
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "action": "start"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
         "action": "start"
     }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
-#Syntax: {{currentpage.name}} start|stop|status
-rippled {{currentpage.name}} start
+#Syntax: {% $frontmatter.seo.title %} start|stop|status
+rippled {% $frontmatter.seo.title %} start
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -59,10 +59,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -72,9 +71,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -84,9 +83,9 @@ An example of a successful response:
 }
 
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -99,8 +98,9 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -113,10 +113,7 @@ The response follows the [standard format][], with a successful result containin
 
 - Any of the [universal error types][].
 - `internal` - If you attempt an invalid operation like checking the status of a copy when one isn't running.
-- `notEnabled` - If the server is not configured to store [history shards](history-sharding.html).
+- `notEnabled` - If the server is not configured to store [history shards](../../../../infrastructure/configuration/data-retention/history-sharding.md).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

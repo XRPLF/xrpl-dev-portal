@@ -14,10 +14,9 @@ labels:
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -25,9 +24,9 @@ labels:
   "account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_lines",
@@ -38,17 +37,18 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: account_lines <account> [<peer>] [<ledger_index>|<ledger_hash>]
 rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#account_lines)
+[試してみる >](/resources/dev-tools/websocket-api-tool#account_lines)
 
 リクエストには以下のパラメーターを指定できます。
 
@@ -67,10 +67,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -113,9 +112,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -158,8 +157,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
 ```json
 {
    "result" : {
@@ -404,8 +404,9 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合には、アカウントのアドレスとトラストラインオブジェクトの配列が含まれています。具体的には、結果オブジェクトには以下のフィールドが含まれます。
 
@@ -429,12 +430,12 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 | `limit_peer`      | 文字列      | 相手側アカウントがパースペクティブアカウントからの借用を希望する特定の通貨の上限額。 |
 | `quality_in`      | 符号なし整数 | このアカウントが、このトラストラインの入金時残高を評価する際のレート（この数値対10億単位の比率）。（たとえば5億の場合は0.5:1の比率を表します。）特殊なケースとして、0は1:1の比率として扱われます。 |
 | `quality_out`     | 符号なし整数 | このアカウントが、このトラストラインの出金時残高を評価する際のレート（この数値対10億単位の比率）。（たとえば5億の場合は0.5:1の比率を表します。）特殊なケースとして、0は1:1の比率として扱われます。 |
-| `no_ripple`       | 真偽値      | （省略される場合があります）`true`の場合、このアカウントはこのトラストラインの[No Rippleフラグ](rippling.html)を有効にしています。もし`false`であれば、このアカウントは[No Rippleフラグ](ripplestate.html#所有者の準備金への資金供給)を無効にしていますが、これは[デフォルト値](ripplestate.html#所有者の準備金への資金供給)ではありません。。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグは無効で、Default Rippleが有効となります。[更新: rippled 1.7.0][] |
-| `no_ripple_peer`  | 真偽値      | （省略される場合があります）`true`の場合、ピアアカウントはこのトラストラインで[No Rippleフラグ](rippling.html)を有効にしています。もし`false`なら、このアカウントはNo Rippleフラグを無効にしていますが、このアカウントはDefault Rippleフラグも無効にしているため、[デフォルト値](ripplestate.html#所有者の準備金への資金供給)とはみなされません。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグが無効で、Default Rippleが有効です。[更新: rippled 1.7.0][]  |
-| `authorized`      | 真偽値      | （省略される場合があります）このアカウントが[このトラストラインを承認した](authorized-trust-lines.html)場合は、`true`。省略されている場合は、`false`と同じです。 |
-| `peer_authorized` | 真偽値      | （省略される場合があります）ピアアカウントが[このトラストラインを承認した](authorized-trust-lines.html)場合は`true`。省略されている場合は、`false`と同じです。 |
-| `freeze`          | 真偽値      | （省略される場合があります）このアカウントがこのトラストラインを[凍結](freezes.html)した場合は`true`。省略されている場合は、`false`と同じです。 |
-| `freeze_peer`     | 真偽値      | （省略される場合があります）ピアアカウントがこのトラストラインを[凍結](freezes.html)した場合は、`true`。省略されている場合は、`false`と同じです。 |
+| `no_ripple`       | 真偽値      | （省略される場合があります）`true`の場合、このアカウントはこのトラストラインの[No Rippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)を有効にしています。もし`false`であれば、このアカウントは[No Rippleフラグ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md#所有者の準備金への資金供給)を無効にしていますが、これは[デフォルト値](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md#所有者の準備金への資金供給)ではありません。。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグは無効で、Default Rippleが有効となります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %} |
+| `no_ripple_peer`  | 真偽値      | （省略される場合があります）`true`の場合、ピアアカウントはこのトラストラインで[No Rippleフラグ](../../../../concepts/tokens/fungible-tokens/rippling.md)を有効にしています。もし`false`なら、このアカウントはNo Rippleフラグを無効にしていますが、このアカウントはDefault Rippleフラグも無効にしているため、[デフォルト値](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md#所有者の準備金への資金供給)とはみなされません。省略された場合、そのアカウントはこのトラストラインのNo Rippleフラグが無効で、Default Rippleが有効です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}  |
+| `authorized`      | 真偽値      | （省略される場合があります）このアカウントが[このトラストラインを承認した](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)場合は、`true`。省略されている場合は、`false`と同じです。 |
+| `peer_authorized` | 真偽値      | （省略される場合があります）ピアアカウントが[このトラストラインを承認した](../../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md)場合は`true`。省略されている場合は、`false`と同じです。 |
+| `freeze`          | 真偽値      | （省略される場合があります）このアカウントがこのトラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は`true`。省略されている場合は、`false`と同じです。 |
+| `freeze_peer`     | 真偽値      | （省略される場合があります）ピアアカウントがこのトラストラインを[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)した場合は、`true`。省略されている場合は、`false`と同じです。 |
 
 ## 考えられるエラー
 
@@ -444,6 +445,4 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `actMalformed` - 指定されている`marker`フィールドが受け入れられない場合。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

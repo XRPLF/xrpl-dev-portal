@@ -9,14 +9,14 @@ status: not_enabled
 # AMMDelete
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp "Source")
 
-_([AMM amendment][] :not_enabled: が必要です)_
+_([AMM amendment][] {% not-enabled /%} が必要です)_
 
-自動で削除しきれなかった空の[自動マーケットメーカー](automated-market-makers.html)(AMM)インスタンスを削除します。
+自動で削除しきれなかった空の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを削除します。
 
 通常、[AMMWithdraw トランザクション][]は、AMMのプールからすべての資産を引き出すと、AMMと関連するすべてのレジャーエントリを自動的に削除します。ただし、AMMアカウントへのトラストラインが多すぎて1回のトランザクションで削除できない場合は、AMMの削除を行わない場合があります。しかしこの場合でも、AMMDeleteトランザクションは最大512のトラストラインを削除します。すべてのトラストラインとそのAMMを削除するには、数回のAMMDeleteトランザクションが必要な場合があります。いずれの場合も、AMMとAccountRootのレジャーエントリが削除されるのは、最後のトランザクションのみです。
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -35,7 +35,7 @@ _([AMM amendment][] :not_enabled: が必要です)_
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド | JSONの型   | [内部の型][] | 必須? | 説明 |
 |:---------|:-----------|:-----------|:------|:----|
@@ -45,7 +45,7 @@ _([AMM amendment][] :not_enabled: が必要です)_
 
 ## エラーケース
 
-AMMCreateトランザクションでは、すべてのトランザクションで発生する可能性のあるエラーの他に、以下の[トランザクション結果コード](transaction-results.html)が発生する可能性があります。
+AMMCreateトランザクションでは、すべてのトランザクションで発生する可能性のあるエラーの他に、以下の[トランザクション結果コード](../transaction-results/transaction-results.md)が発生する可能性があります。
 
 | エラーコード               | 説明                                          |
 |:--------------------|:---------------------------------------------|
@@ -53,7 +53,4 @@ AMMCreateトランザクションでは、すべてのトランザクション�
 | `tecINCOMPLETE`     | 関連するレジャーエントリを可能な限り削除しましたが、AMM は完全には削除されませんでした。別の AMMDelete トランザクションを送信して、作業を続行し、完了させることができます。 |
 | `terNO_AMM`         | 指定したAMMが存在しません。(すでに削除されているか、指定したAMMの資産が間違っている可能性があります)。|
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

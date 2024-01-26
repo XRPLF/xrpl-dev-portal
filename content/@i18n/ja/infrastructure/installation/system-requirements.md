@@ -21,7 +21,7 @@ labels:
 
 ## 最小仕様
 
-**注意:** この仕様では、確実に[メインネットとの同期を保つ](server-doesnt-sync.html)には不十分です。本番環境で使用する場合は、上記の推奨仕様に従ってください。
+**注意:** この仕様では、確実に[メインネットとの同期を保つ](../troubleshooting/server-doesnt-sync.md)には不十分です。本番環境で使用する場合は、上記の推奨仕様に従ってください。
 
 テスト目的やたまにしか使わない場合は、一般的なハードウェア上でXRP Ledgerサーバーを稼働させることができます。
 
@@ -43,19 +43,15 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
-    - [コンセンサスについて](consensus.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
-    - [容量の計画](capacity-planning.html) - 本番環境向けの推奨仕様および計画についての詳細情報
-    - [`rippled`のインストール](install-rippled.html)
-    - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
+    - [容量の計画](capacity-planning.md) - 本番環境向けの推奨仕様および計画についての詳細情報
+    - [`rippled`のインストール](index.md)
+    - [rippledのトラブルシューティング](../troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](http-websocket-apis.html)
-      - [`rippled`コマンドラインの使用](commandline-usage.html)
+    - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
+      - [`rippled`コマンドラインの使用](../commandline-usage.md)
       - [server_infoメソッド][]
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

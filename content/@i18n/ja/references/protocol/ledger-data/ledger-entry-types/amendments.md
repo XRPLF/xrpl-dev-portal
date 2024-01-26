@@ -8,9 +8,9 @@ labels:
 # Amendments
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L110-L113 "Source")
 
-`Amendments`オブジェクトタイプには、現在アクティブな[Amendment](amendments.html)のリストが含まれています。各レジャーバージョンには**最大で1つの** `Amendments`オブジェクトが含まれています。
+`Amendments`オブジェクトタイプには、現在アクティブな[Amendment](../../../../concepts/networks-and-servers/amendments.md)のリストが含まれています。各レジャーバージョンには**最大で1つの** `Amendments`オブジェクトが含まれています。
 
-## {{currentpage.name}}のJSONの例
+## {% $frontmatter.seo.title %}のJSONの例
 
 ```json
 {
@@ -34,11 +34,11 @@ labels:
 }
 ```
 
-## {{currentpage.name}}のフィールド
+## {% $frontmatter.seo.title %}のフィールド
 
 | 名前              | JSONの型 | [内部の型][] | 説明 |
 |-------------------|-----------|-------------------|-------------|
-| `Amendments`      | 配列     | STI_VECTOR256     | _（省略可）_ 現在有効なすべてのAmendmentの256ビット[Amendment ID](amendments.html)からなる配列。省略されている場合は、有効なAmendmentがありません。 |
+| `Amendments`      | 配列     | STI_VECTOR256     | _（省略可）_ 現在有効なすべてのAmendmentの256ビット[Amendment ID](../../../../concepts/networks-and-servers/amendments.md)からなる配列。省略されている場合は、有効なAmendmentがありません。 |
 | `Majorities`      | 配列     | STI_ARRAY | _（省略可）_ 過半数の支持を得ているがまだ有効になっていないAmendmentのステータスを記述するオブジェクトの配列。省略されている場合は、過半数の支持を得ている保留中のAmendmentがありません。 |
 | `Flags`           | 数値    | UInt32    | ブール値フラグのビットマップ。Amendmentオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`です。 |
 | `LedgerEntryType` | 文字列    | UInt16    |  値が `0x0066`（文字列`Amendments`にマッピング）の場合は、このオブジェクトがXRP Ledgerに対するAmendmentのステータスを記述していることを示します。 |
@@ -48,9 +48,9 @@ labels:
 | 名前              | JSONの型 | [内部の型][] | 説明 |
 |-------------------|-----------|-------------------|-------------|
 | `Amendment`       | 文字列    | Hash256           | 保留中のAmendmentのAmendment ID。 |
-| `CloseTime`       | 数値    | UInt32            | このAmendmentが最後に過半数の支持を得たレジャーバージョンの[`close_time`フィールド](ledger-header.html)。 |
+| `CloseTime`       | 数値    | UInt32            | このAmendmentが最後に過半数の支持を得たレジャーバージョンの[`close_time`フィールド](../ledger-header.md)。 |
 
-[Amendmentプロセス](amendments.html#amendmentプロセス)では、80%以上のバリデータが新しいAmendmentを支持してバリデータのコンセンサスが得られると、`tfGotMajority`フラグを指定した[EnableAmendment][]疑似トランザクションを使用してこの新しいAmendmentが`Majorities`フィールドに追加されます。保留中のAmendmentの支持が80%を下回ると、`tfLostMajority`フラグが指定された[EnableAmendment][]疑似トランザクションによりそのAmendmentが`Majorities`配列から削除されます。Amendmentが`Majorities`フィールドに含まれている状態が2週間以上継続している場合、フラグが指定されていない[EnableAmendment][]疑似トランザクションによってそのAmendmentは`Majorities`から削除され、`Amendments`フィールドに恒久的に追加されます。
+[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)では、80%以上のバリデータが新しいAmendmentを支持してバリデータのコンセンサスが得られると、`tfGotMajority`フラグを指定した[EnableAmendment][]疑似トランザクションを使用してこの新しいAmendmentが`Majorities`フィールドに追加されます。保留中のAmendmentの支持が80%を下回ると、`tfLostMajority`フラグが指定された[EnableAmendment][]疑似トランザクションによりそのAmendmentが`Majorities`配列から削除されます。Amendmentが`Majorities`フィールドに含まれている状態が2週間以上継続している場合、フラグが指定されていない[EnableAmendment][]疑似トランザクションによってそのAmendmentは`Majorities`から削除され、`Amendments`フィールドに恒久的に追加されます。
 
 **注記:** 実際には、レジャー内のすべてのトランザクションは、その直前のレジャーバージョンで有効になっているAmendmentに基づいて処理されます。Amendmentが有効になったレジャーバージョンにトランザクションを適用する場合、このルールでは中間レジャーは変更されません。レジャーの閉鎖後、適用された新しいAmendmentにより定義される新しいルールが次のレジャーで使用されます。
 
@@ -64,7 +64,4 @@ labels:
 
 （`Amendments`レジャーオブジェクトタイプのIDと、個々のAmendmentのAmendment IDを混同しないでください。）
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

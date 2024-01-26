@@ -8,14 +8,13 @@ labels:
 ---
 # Amendment投票機能の設定
 
-バリデーターとして設定されたサーバーは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](amendments.html)に投票することができます。(この方法には[管理者アクセス](get-started-using-http-websocket-apis.html#管理者アクセス権限)が必要です).
+バリデーターとして設定されたサーバーは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/get-started/get-started-using-http-websocket-apis.md#管理者アクセス権限)が必要です).
 
 例えば、「SHAMapV2」Amendmentに反対票を投じるには、以下のコマンドを実行します。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "any_id_here",
@@ -24,9 +23,9 @@ labels:
   "vetoed": true
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "feature",
@@ -38,14 +37,15 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 rippled feature SHAMapV2 reject
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **注記:** Amendmentの省略名は大文字と小文字が区別されます。また、AmendmentのIDを16進数で指定することもできますが、この場合は大文字と小文字が区別されません。
 
@@ -64,11 +64,8 @@ rippled feature SHAMapV2 reject
 
 ## 関連項目
 
-- [Amendment](amendments.html)
-    - [既知のAmendment](known-amendments.html)
+- [Amendment](../../concepts/networks-and-servers/amendments.md)
+    - [既知のAmendment](../../resources/known-amendments.md)
 - [feature メソッド][]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

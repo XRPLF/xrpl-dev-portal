@@ -17,10 +17,9 @@ The `unsubscribe` command tells the server to stop sending messages for a partic
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "Unsubscribe a lot of stuff",
@@ -42,10 +41,11 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#unsubscribe)
+[Try it! >](/resources/dev-tools/websocket-api-tool#unsubscribe)
 
 The parameters in the request are specified almost exactly like the parameters to the [subscribe method][], except that they are used to define which subscriptions to end instead. The parameters are:
 
@@ -70,10 +70,9 @@ The objects in the `books` array are defined almost like the ones from subscribe
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "Unsubscribe a lot of stuff",
@@ -82,8 +81,9 @@ An example of a successful response:
     "type": "response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing no fields.
 
@@ -101,6 +101,4 @@ The response follows the [standard format][], with a successful result containin
 * `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
 * `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

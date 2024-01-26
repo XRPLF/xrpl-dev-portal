@@ -10,14 +10,14 @@ labels:
 ---
 # Trade in the Decentralized Exchange
 
-This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](decentralized-exchange.html) (DEX).
+This tutorial demonstrates how you can buy and sell tokens in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md) (DEX).
 
 ## Prerequisites
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](get-started-using-javascript.html) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](get-started-using-python.html) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../get-started/get-started-using-javascript.md) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../get-started/get-started-using-python.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
 
 <!-- Source for this specific tutorial's interactive bits: -->
@@ -43,45 +43,45 @@ This tutorial demonstrates how to buy a fungible token in the decentralized exch
 
 ### {{n.next()}}. Connect to Network
 
-You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](client-libraries.html) with the appropriate dependencies.
+You must be connected to the network to submit transactions to it. Additionally, some languages (including JavaScript) require a high-precision number library for performing calculations on currency amounts you may find in the ledger. The following code shows how to connect to a public XRP Ledger Testnet server a supported [client library](../../references/client-libraries.md) with the appropriate dependencies.
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/base-with-bignumber.js" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/base-with-bignumber.js", language="js") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/get-started/py/base-async.py" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/get-started/py/base-async.py", language="py") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **Note:** The JavaScript code samples in this tutorial use the [`async`/`await` pattern](https://javascript.info/async-await). Since `await` needs to be used from within an `async` function, the remaining code samples are written to continue inside the `main()` function started here. You can also use Promise methods `.then()` and `.catch()` instead of `async`/`await` if you prefer.
 
 For this tutorial, click the following button to connect:
 
-{% include '_snippets/interactive-tutorials/connect-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
 
 ### {{n.next()}}. Get Credentials
 
-To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](parallel-networks.html) using the following interface:
+To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
-{% include '_snippets/interactive-tutorials/generate-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
 
-When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](secure-signing.html). The following code shows how to create a `Wallet` instance to use your keys:
+When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md). The following code shows how to create a `Wallet` instance to use your keys:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Get credentials" before="// Define the proposed trade" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Get credentials", end_before="// Define the proposed trade") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Get credentials" before="# Define the proposed trade" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Get credentials", end_before="# Define the proposed trade") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ### {{n.next()}}. Look Up Offers
 
@@ -91,19 +91,19 @@ Before you buy or sell a token, you usually want to look up what others are buyi
 
 The following code shows how to look up existing Offers and compare them to a proposed Offer to estimate how it would execute:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Define the proposed trade" before="// Send OfferCreate" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Define the proposed trade", end_before="// Send OfferCreate") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Define the proposed trade" before="# Send OfferCreate" language="py" /%}
+{% /tab %}
 
-_Python_
+{% /tabs %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Define the proposed trade", end_before="# Send OfferCreate") }}
-
-<!-- MULTICODE_BLOCK_END -->
-
-**Note:** Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](finality-of-results.html).
+**Note:** Other users of the XRP Ledger can also make trades at any time, so this is only an estimate of what would happen if nothing else changes. The outcome of a transaction is not guaranteed until it is [final](../../concepts/transactions/finality-of-results/index.md).
 
 The following block demonstrates these calculations in action:
 
@@ -161,17 +161,17 @@ To actually make a trade, send an [OfferCreate transaction][]. In this case, you
 
 The following code shows how to prepare, sign, and submit the transaction:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Send OfferCreate" before="// Check metadata" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Send OfferCreate", end_before="// Check metadata") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Send OfferCreate" before="# Check metadata" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Send OfferCreate", end_before="# Check metadata") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 You can use this interface to send the transaction specified by the amounts in the previous step:
 
@@ -183,15 +183,15 @@ You can use this interface to send the transaction specified by the amounts in t
 
 ### {{n.next()}}. Wait for Validation
 
-Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](reliable-transaction-submission.html).)
+Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
 {{ start_step("Wait") }}
-{% include '_snippets/interactive-tutorials/wait-step.md' %}
+{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
 {{ end_step() }}
 
 ### {{n.next()}}. Check Metadata
 
-You can use the validated transaction's [metadata](transaction-metadata.html) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](finality-of-results.html), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
+You can use the validated transaction's [metadata](../../references/protocol/transactions/metadata.md) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](../../concepts/transactions/finality-of-results/index.md), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
 
 - Some or all of the Offer may have been filled by matching with existing Offers in the ledger.
 - The unmatched remainder, if any, has been placed into the ledger to await new matching Offers. <!-- STYLE_OVERRIDE: remainder -->
@@ -199,17 +199,17 @@ You can use the validated transaction's [metadata](transaction-metadata.html) to
 
 The following code demonstrates how to check the metadata of the transaction:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Check metadata" before="// Check balances" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check metadata", end_before="// Check balances") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Check metadata" before="# Check balances" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check metadata", end_before="# Check balances") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 You can use this interface to test it out:
 
@@ -226,17 +226,17 @@ This is also a good time to look up the balances and outstanding Offers owned by
 
 The following code demonstrates how to look up balances using the [account_lines method][] and look up Offers using the [account_offers method][].
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_JavaScript_
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js" from="// Check balances" before="client.disconnect()" language="js" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/js/trade-in-the-dex.js", language="js", start_with="// Check balances", end_before="client.disconnect()") }}
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py" from="# Check balances" before="# End main()" language="py" /%}
+{% /tab %}
 
-_Python_
-
-{{ include_code("_code-samples/trade-in-the-decentralized-exchange/py/trade-in-the-dex.py", language="py", start_with="# Check balances", end_before="# End main()") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 You can use this interface to test it out:
 
@@ -246,7 +246,4 @@ You can use this interface to test it out:
 <div class="output-area"></div>
 {{ end_step() }}
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

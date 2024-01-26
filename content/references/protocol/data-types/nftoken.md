@@ -11,7 +11,7 @@ The `NFToken` object represents a single non-fungible token (NFT). It is not sto
 
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -20,7 +20,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-Unlike full-fledged [ledger entries](ledger-object-types.html), `NFToken` has no field to identify the object type or current owner of the object. `NFToken` objects are grouped into pages that implicitly define the object type and identify the owner.
+Unlike full-fledged [ledger entries](../ledger-data/ledger-entry-types/index.md), `NFToken` has no field to identify the object type or current owner of the object. `NFToken` objects are grouped into pages that implicitly define the object type and identify the owner.
 
 
 ## NFTokenID
@@ -40,7 +40,7 @@ D) A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/di
 
 E) An (automatically generated) monotonically increasing 32-bit sequence number.
 
-![Token ID Breakdown](img/nftoken1.png "Token ID Breakdown")
+![Token ID Breakdown](/img/nftoken1.png "Token ID Breakdown")
 
 The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequence number fields are stored in big-endian format.
 
@@ -53,7 +53,7 @@ Flags are properties or other options associated with the `NFToken` object.
 |:------------------|:-----------|:--------------------------------------------|
 | `lsfBurnable`     | `0x0001`   | If enabled, the issuer (or an entity authorized by the issuer) can destroy this `NFToken`. The object's owner can always do so. |
 | `lsfOnlyXRP`      | `0x0002`   | If enabled, this `NFToken` can only be offered or sold for XRP. |
-| `lsfTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](trust-lines-and-issuing.html) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
+| `lsfTrustLine`    | `0x0004`   | **DEPRECATED** If enabled, automatically create [trust lines](../../../concepts/tokens/fungible-tokens/index.md) to hold transfer fees. Otherwise, buying or selling this `NFToken` for a fungible token amount fails if the issuer does not have a trust line for that token. The [fixRemoveNFTokenAutoTrustLine amendment][] makes it invalid to enable this flag. |
 | `lsfTransferable` | `0x0008`   | If enabled, this `NFToken` can be transferred from one holder to another. Otherwise, it can only be transferred to or from the issuer. |
 | `lsfReservedFlag` | `0x8000`   | This flag is reserved for future use. Attempts to set this flag fail. |
 
@@ -63,7 +63,7 @@ Flags are properties or other options associated with the `NFToken` object.
 
 The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
 
-![Flags](img/nftokena.png "Flags")
+![Flags](/img/nftokena.png "Flags")
 
 ### TransferFee
 <!-- SPELLING_IGNORE: transferfee -->
@@ -74,20 +74,20 @@ The `TransferFee` value specifies the percentage fee, in units of 1/100,000, cha
 
 This value sets the transfer fee to 314, or 0.314%.
 
-![Transfer Fee](img/nftokenb.png "Transfer Fee")
+![Transfer Fee](/img/nftokenb.png "Transfer Fee")
 
 ### Issuer Identification
 
 The third section of the `NFTokenID` is a big endian representation of the issuer’s public address.
 
-![Issuer Address](img/nftokenc.png "Issuer Address")
+![Issuer Address](/img/nftokenc.png "Issuer Address")
 
 ### NFTokenTaxon
 <!-- SPELLING_IGNORE: nftokentaxon -->
 
 The fourth section is a `NFTokenTaxon` created by the issuer.
 
-![Diagram of `NFTokenTaxon` bits](img/nftokend.png)
+![Diagram of `NFTokenTaxon` bits](/img/nftokend.png)
 
 An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
 
@@ -97,7 +97,7 @@ Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`, the scr
 
 The fifth section is a sequence number that increases with each `NFToken` the issuer creates.
 
-![Sequence Number](img/nftokene.png "Sequence Number")
+![Sequence Number](/img/nftokene.png "Sequence Number")
 
 The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedNFTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedNFTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
@@ -131,7 +131,4 @@ https://example.com/.well-known/xrpl-nft/{nftokenid}
 
 You create `NFToken` objects using the `NFTokenMint` transaction. You can optionally destroy `NFToken` objects using the `NFTokenBurn` transaction.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

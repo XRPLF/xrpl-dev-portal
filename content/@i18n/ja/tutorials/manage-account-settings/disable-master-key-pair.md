@@ -8,9 +8,9 @@ labels:
 ---
 # マスターキーペアの無効化
 
-このページでは、[アカウント](accounts.html)のアドレスに数学的に関連付けられた[マスターキーペア](cryptographic-keys.html)を無効化する方法について説明します。あなたのアカウントのマスターキーペアが漏洩した可能性がある場合、または[マルチシグ](multi-signing.html)をあなたのアカウントからトランザクションを送信する _唯一_ の方法としたい場合、これを行う必要があります。
+このページでは、[アカウント](../../concepts/accounts/accounts.md)のアドレスに数学的に関連付けられた[マスターキーペア](../../concepts/accounts/cryptographic-keys.md)を無効化する方法について説明します。あなたのアカウントのマスターキーペアが漏洩した可能性がある場合、または[マルチシグ](../../concepts/accounts/multi-signing.md)をあなたのアカウントからトランザクションを送信する _唯一_ の方法としたい場合、これを行う必要があります。
 
-**注意:** マスターキーペアを無効にすると、[トランザクションの承認](transactions.html#トランザクションの承認)の方法の1つが削除されます。マスターキーペアを無効にする前に、レギュラーキーやマルチ・サインなど、他のトランザクションの承認方法のいずれかを使用できることを確認する必要があります。(例えば、[レギュラーキーペアを割り当てた場合](assign-a-regular-key-pair.html)は、そのレギュラーキーで正常にトランザクションを送信できることを確認してください)。XRP Ledgerは分散型であるため、残りの取引承認方法を使用できない場合、誰もあなたのアカウントへのアクセスを回復することができません。
+**注意:** マスターキーペアを無効にすると、[トランザクションの承認](../../concepts/transactions/index.md#トランザクションの承認)の方法の1つが削除されます。マスターキーペアを無効にする前に、レギュラーキーやマルチ・サインなど、他のトランザクションの承認方法のいずれかを使用できることを確認する必要があります。(例えば、[レギュラーキーペアを割り当てた場合](assign-a-regular-key-pair.md)は、そのレギュラーキーで正常にトランザクションを送信できることを確認してください)。XRP Ledgerは分散型であるため、残りの取引承認方法を使用できない場合、誰もあなたのアカウントへのアクセスを回復することができません。
 
 **マスターキーペアを無効にするには、マスターキーペアを使用する必要があります。**
 ただし、他のトランザクションの認証方法を使用してマスターキーペアを _再有効化_ することは可能です。
@@ -19,12 +19,12 @@ labels:
 
 アカウントのマスターキーペアを無効にするには、次の前提条件を満たしている必要があります。
 
-- XRP Ledger[アカウント](accounts.html)を持ち、そのアカウントからマスターキーペアを用いてトランザクションの署名と提出ができることが必要です。[安全な署名の設定](secure-signing.html) を参照してください。これには2つの一般的な方法があります。
+- XRP Ledger[アカウント](../../concepts/accounts/accounts.md)を持ち、そのアカウントからマスターキーペアを用いてトランザクションの署名と提出ができることが必要です。[安全な署名の設定](../../concepts/transactions/secure-signing.md) を参照してください。これには2つの一般的な方法があります。
     - アカウントのマスターシード値を知っている。シード値は一般的に `sn3nxiW7v8KXzPzAqzyHXbSSKNuN9`のような "s" で始まる [base58][] 値で表されます。
-    - あるいは、シード値を知る必要がなく、安全に保存する[専用の署名デバイス](secure-signing.html#専用の署名デバイスを使用する) を使用します
+    - あるいは、シード値を知る必要がなく、安全に保存する[専用の署名デバイス](../../concepts/transactions/secure-signing.md#専用の署名デバイスを使用する) を使用します
 - あなたのアカウントには、マスターキーペア以外のトランザクションを認証する方法が少なくとも1つ必要です。つまり、以下のいずれか、または両方を行う必要があります。
-    - [レギュラーキーペアを割り当てる](assign-a-regular-key-pair.html).
-    - [マルチシグの設定](set-up-multi-signing.html).
+    - [レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md).
+    - [マルチシグの設定](set-up-multi-signing.md).
 
 ## 手順
 
@@ -32,7 +32,7 @@ labels:
 
 ### {{n.next()}}. トランザクションJSONの作成
 
-アカウントから、`"SetValue": 4`のフィールドを持つ[AccountSet トランザクション][]を準備します。これは AccountSet フラグ "Disable Master" (`asfDisableMaster`) に対応する値です。このトランザクションの他の必須フィールドは、必須の[共通フィールド](transaction-common-fields.html)のみです。例えば、[自動入力可能なフィールド](transaction-common-fields.html#自動入力可能なフィールド) を省けば、以下のトランザクション指示で十分である。
+アカウントから、`"SetValue": 4`のフィールドを持つ[AccountSet トランザクション][]を準備します。これは AccountSet フラグ "Disable Master" (`asfDisableMaster`) に対応する値です。このトランザクションの他の必須フィールドは、必須の[共通フィールド](../../references/protocol/transactions/common-fields.md)のみです。例えば、[自動入力可能なフィールド](../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド) を省けば、以下のトランザクション指示で十分である。
 
 ```json
 {
@@ -42,20 +42,19 @@ labels:
 }
 ```
 
-**ヒント:** [予測可能な時間内にトランザクションの結果を確実に得る](reliable-transaction-submission.html)ために、`LastLedgerSequence`フィールドも提供することが強く推奨されています。
+**ヒント:** [予測可能な時間内にトランザクションの結果を確実に得る](../../concepts/transactions/reliable-transaction-submission.md)ために、`LastLedgerSequence`フィールドも提供することが強く推奨されています。
 
 ### {{n.next()}}. トランザクションへの署名
 
 トランザクションの署名には、**マスターキーペア**を使用する必要があります。
 
-**注意:** 自分が管理していないサーバーに秘密鍵を提出したり、暗号化されていない状態でネットワーク上に送信したりしないでください。これらの例は、[ローカルの `rippled` サーバー](secure-signing.html#ローカルでrippledを実行する) を使っていることを前提にしています。他の[安全な署名方法](secure-signing.html)を使っている場合は、これらの手順を変更する必要があります。
+**注意:** 自分が管理していないサーバーに秘密鍵を提出したり、暗号化されていない状態でネットワーク上に送信したりしないでください。これらの例は、[ローカルの `rippled` サーバー](../../concepts/transactions/secure-signing.md#ローカルでrippledを実行する) を使っていることを前提にしています。他の[安全な署名方法](../../concepts/transactions/secure-signing.md)を使っている場合は、これらの手順を変更する必要があります。
 
 #### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "sign",
@@ -67,9 +66,9 @@ labels:
   "secret": "s████████████████████████████"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "sign",
@@ -85,22 +84,22 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 $ rippled sign s████████████████████████████ '{"TransactionType":"AccountSet",
     "Account":"rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn", "SetFlag":4}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 #### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -122,9 +121,9 @@ $ rippled sign s█████████████████████�
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -146,9 +145,9 @@ $ rippled sign s█████████████████████�
 }
 
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:13:24.783570867 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -172,8 +171,9 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 サーバーがトランザクションに正常に署名したことを示す `"status": "success"` を探してください。代わりに `"status": "error"` が表示された場合は、 `error` と `error_message` フィールドをチェックして、より詳しい情報を確認してください。よくある可能性としては、以下のようなものがあります。
 
@@ -188,19 +188,18 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 #### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "submit",
     "tx_blob": "1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"submit",
@@ -211,21 +210,21 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103AB40A0490F9B7ED8DF29D246BF2D6269820A0EE7742ACDD457BEA7C7D0931EDB7446304402204457A890BC06F48061F8D61042975702B57EBEF3EA2C7C484DFE38CFD42EA11102202505A7C62FF41E68FDE10271BADD75BD66D54B2F96A326BE487A2728A352442D81144B4E9C06F24296074F7BC48F92A97916C6DC5EA9
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 #### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -249,9 +248,9 @@ $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103A
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -274,9 +273,9 @@ $ rippled submit 1200032280000000240000017C20210000000468400000000000000A732103A
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:25:49.361743460 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -302,15 +301,16 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-トランザクションが `tecNO_ALTERNATIVE_KEY` という結果で失敗した場合、あなたのアカウントでは現在トランザクションを認証するための別の方法が有効になっていません。[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.html)か [マルチシグを設定](set-up-multi-signing.html) した後、再度マスターキーペアの無効化を試してみてください。
+トランザクションが `tecNO_ALTERNATIVE_KEY` という結果で失敗した場合、あなたのアカウントでは現在トランザクションを認証するための別の方法が有効になっていません。[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md)か [マルチシグを設定](set-up-multi-signing.md) した後、再度マスターキーペアの無効化を試してみてください。
 
 
 ### {{n.next()}}. 検証の待機
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ### {{n.next()}}. アカウントフラグの確認
 
@@ -323,10 +323,9 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 #### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "account_info",
@@ -334,9 +333,9 @@ Loading: "/etc/opt/ripple/rippled.cfg"
   "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_info",
@@ -346,22 +345,22 @@ Loading: "/etc/opt/ripple/rippled.cfg"
     }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -391,9 +390,9 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -422,9 +421,9 @@ rippled account_info rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn validated
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 Loading: "/etc/opt/ripple/rippled.cfg"
 2020-Feb-13 00:41:38.642710734 HTTPClient:NFO Connecting to 127.0.0.1:5005
@@ -456,18 +455,18 @@ Loading: "/etc/opt/ripple/rippled.cfg"
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 レスポンスの `account_data` オブジェクトで、 `Flags` フィールドと `lsfDisableMaster` フラグの値 (16 進数では `0x00100000`、10 進数では `1048576`) を ビット論理積 (ほとんどのプログラミング言語では `&` オペレーター) で比較します。
 
 コード例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JavaScript*
-
+{% tab label="JavaScript" %}
 ```js
 // 上記のJSON-RPCレスポンスがaccount_info_responseとして保存されていると仮定します。
 const lsfDisableMaster = 0x00100000;
@@ -478,9 +477,9 @@ if ((lsfDisableMaster & acct_flags) === lsfDisableMaster) {
   console.log("マスターキーペアが使用可能です");
 }
 ```
+{% /tab %}
 
-*Python*
-
+{% tab label="Python" %}
 ```python
 # 上記のJSON-RPCレスポンスがJSONから解析され、
 # 変数account_info_responseとして保存されたと仮定すると、以下のようになります。
@@ -491,19 +490,15 @@ if lsfDisableMaster & acct_flags == lsfDisableMaster:
 else:
   console.log("マスターキーペアが使用可能です");
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 この操作の結果は次の2つしかありません。
 
 - 結果が0でない場合は `lsfDisableMaster` の値と等しく、 **マスターキーが正常に無効化されたこと** を示します。
 - 結果が0の場合は、そのアカウントのマスターキーが無効になっていないことを示します。
 
-結果が予想と異なる場合は、前の手順で送信したトランザクションが正常に実行されたかどうかを確認してください。それは、その口座のトランザクション履歴（[account_tx メソッド][]）の中で最も新しいもので、結果コード `tesSUCCESS` がついているはずです。それ以外の[結果コード](transaction-results.html)が表示された場合、そのトランザクションは正常に実行されませんでした。エラーの原因によっては、これらの手順を最初からやり直した方がよいかもしれません。
+結果が予想と異なる場合は、前の手順で送信したトランザクションが正常に実行されたかどうかを確認してください。それは、その口座のトランザクション履歴（[account_tx メソッド][]）の中で最も新しいもので、結果コード `tesSUCCESS` がついているはずです。それ以外の[結果コード](../../references/protocol/transactions/transaction-results/transaction-results.md)が表示された場合、そのトランザクションは正常に実行されませんでした。エラーの原因によっては、これらの手順を最初からやり直した方がよいかもしれません。
 
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

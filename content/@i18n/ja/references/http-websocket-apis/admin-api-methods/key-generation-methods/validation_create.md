@@ -9,22 +9,21 @@ labels:
 # validation_create
 [[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
-`validation_create`コマンドキーを使用して、[`rippled`サーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](peer-protocol.html#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバー構成は変更されません。
+`validation_create`コマンドキーを使用して、[`rippled`サーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバー構成は変更されません。
 
-_`validation_create`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`validation_create`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
-サーバーを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（[ノードキーペア](peer-protocol.html#ノードキーペア)）に使用するかを指定できます。
+サーバーを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（[ノードキーペア](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)）に使用するかを指定できます。
 
-**ヒント:**　堅牢なバリデータを設定するには、`validator-keys`ツール（`rippled` RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、[rippledサーバーで検証を有効化](run-rippled-as-a-validator.html#3-rippledサーバーで検証を有効化)を参照してください。
+**ヒント:**　堅牢なバリデータを設定するには、`validator-keys`ツール（`rippled` RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、[rippledサーバーで検証を有効化](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-rippledサーバーで検証を有効化)を参照してください。
 
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 0,
@@ -32,9 +31,9 @@ _`validation_create`メソッドは、権限のないユーザーは実行でき
    "secret": "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "validation_create",
@@ -45,15 +44,16 @@ _`validation_create`メソッドは、権限のないユーザーは実行でき
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: validation_create [secret]
 rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIRE"
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -67,10 +67,9 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result" : {
@@ -81,9 +80,9 @@ rippled validation_create "BAWL MAN JADE MOON DOVE GEM SON NOW HAD ADEN GLOW TIR
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -97,8 +96,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
@@ -113,7 +113,4 @@ Connecting to 127.0.0.1:5005
 * [汎用エラータイプ][]のすべて。
 * `badSeed` - リクエストに無効なシード値が指定されていました。この場合は通常、シード値が異なるフォーマットの有効文字列（アカウントアドレス、検証の公開鍵など）である可能性があります。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

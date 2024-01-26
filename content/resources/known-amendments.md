@@ -10,100 +10,100 @@ labels:
 
 ## Known Amendments on Mainnet
 
-The following is a comprehensive list of all known [amendments](amendments.html) and their status on the production XRP Ledger:
+The following is a comprehensive list of all known [amendments](../concepts/networks-and-servers/amendments.md) and their status on the production XRP Ledger:
 
 **Tip:** This list is updated manually. For a live view of amendment voting, see the [XRPScan Amendments Dashboard](https://xrpscan.com/amendments).
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixDisallowIncomingV1][]         | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixFillOrKill][]                 | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [AMM][]                           | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
-| [Clawback][]                      | v1.12.0    | [Open for Voting: 2023-09-06](https://xrpl.org/blog/2023/rippled-1.12.0.html "BADGE_80d0e0") |
-| [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
-| [fixReducedOffersV1][]            | v1.12.0    | [Enabled: 2023-11-24](https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1 "BADGE_GREEN") |
-| [fixNFTokenRemint][]              | v1.11.0    | [Enabled: 2023-11-27](https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF "BADGE_GREEN") |
-| [DisallowIncoming][]              | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E "BADGE_GREEN") |
-| [fixNonFungibleTokensV1_2][]      | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E "BADGE_GREEN") |
-| [fixTrustLinesToSelf][]           | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43 "BADGE_GREEN") |
-| [fixUniversalNumber][]            | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3 "BADGE_GREEN") |
-| [ImmediateOfferKilled][]          | v1.10.0    | [Enabled: 2023-08-21](https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B "BADGE_GREEN") |
-| [CheckCashMakesTrustLine][]       | v1.8.0     | [Enabled: 2023-01-23](https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557 "BADGE_GREEN") |
-| [NonFungibleTokensV1_1][]         | v1.9.2     | [Enabled: 2022-10-31](https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE "BADGE_GREEN") |
-| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | [Enabled: 2022-10-27](https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C "BADGE_GREEN") |
-| [ExpandedSignerList][]            | v1.9.1     | [Enabled: 2022-10-13](https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87 "BADGE_GREEN") |
-| [NegativeUNL][]                   | v1.7.3     | [Enabled: 2021-11-21](https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA "BADGE_GREEN") |
-| [fixRmSmallIncreasedQOffers][]    | v1.7.2     | [Enabled: 2021-11-18](https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7 "BADGE_GREEN") |
-| [TicketBatch][]                   | v1.7.0     | [Enabled: 2021-11-18](https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36 "BADGE_GREEN") |
-| [fixSTAmountCanonicalize][]       | v1.7.0     | [Enabled: 2021-11-11](https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532 "BADGE_GREEN") |
-| [FlowSortStrands][]               | v1.7.0     | [Enabled: 2021-11-11](https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1 "BADGE_GREEN") |
-| [fix1781][]                       | v1.6.0     | [Enabled: 2021-04-08](https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB "BADGE_GREEN") |
-| [fixAmendmentMajorityCalc][]      | v1.6.0     | [Enabled: 2021-04-08](https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF "BADGE_GREEN") |
-| [HardenedValidations][]           | v1.6.0     | [Enabled: 2021-04-08](https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF "BADGE_GREEN") |
-| [FlowCross][]                     | v0.70.0    | [Enabled: 2020-08-04](https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F "BADGE_GREEN") |
-| [fixQualityUpperBound][]          | v1.5.0     | [Enabled: 2020-07-09](https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E "BADGE_GREEN") |
-| [RequireFullyCanonicalSig][]      | v1.5.0     | [Enabled: 2020-07-03](https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3 "BADGE_GREEN") |
-| [Checks][]                        | v0.90.0    | [Enabled: 2020-06-18](https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6 "BADGE_GREEN") |
-| [DeletableAccounts][]             | v1.4.0     | [Enabled: 2020-05-08](https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE "BADGE_GREEN") |
-| [fixCheckThreading][]             | v1.4.0     | [Enabled: 2020-05-01](https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A "BADGE_GREEN") |
-| [fixPayChanRecipientOwnerDir][]   | v1.4.0     | [Enabled: 2020-05-01](https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09 "BADGE_GREEN") |
-| [fixMasterKeyAsRegularKey][]      | v1.3.1     | [Enabled: 2019-10-02](https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20 "BADGE_GREEN") |
-| [MultiSignReserve][]              | v1.2.0     | [Enabled: 2019-04-17](https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
-| [fixTakerDryOfferRemoval][]       | v1.2.0     | [Enabled: 2019-04-02](https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
-| [fix1578][]                       | v1.2.0     | [Enabled: 2019-03-23](https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
-| [DepositPreauth][DepositPreauthAmendment] | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
-| [fix1515][]                       | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
-| [fix1543][]                       | v1.0.0     | [Enabled: 2018-06-21](https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
-| [fix1623][]                       | v1.0.0     | [Enabled: 2018-06-20](https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
-| [fix1571][]                       | v1.0.0     | [Enabled: 2018-06-19](https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC "BADGE_GREEN") |
-| [DepositAuth][]                   | v0.90.0    | [Enabled: 2018-04-06](https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25 "BADGE_GREEN") |
-| [fix1513][]                       | v0.90.0    | [Enabled: 2018-04-06](https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B "BADGE_GREEN") |
-| [fix1201][]                       | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E "BADGE_GREEN") |
-| [fix1512][]                       | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647 "BADGE_GREEN") |
-| [fix1523][]                       | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469 "BADGE_GREEN") |
-| [fix1528][]                       | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E "BADGE_GREEN") |
-| [SortedDirectories][]             | v0.80.0    | [Enabled: 2017-11-14](https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29 "BADGE_GREEN") |
-| [EnforceInvariants][]             | v0.70.0    | [Enabled: 2017-07-07](https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6 "BADGE_GREEN") |
-| [fix1373][]                       | v0.70.0    | [Enabled: 2017-07-07](https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399 "BADGE_GREEN") |
-| [Escrow][]                        | v0.60.0    | [Enabled: 2017-03-31](https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515 "BADGE_GREEN") |
-| [fix1368][]                       | v0.60.0    | [Enabled: 2017-03-31](https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F "BADGE_GREEN") |
-| [PayChan][]                       | v0.33.0    | [Enabled: 2017-03-31](https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E "BADGE_GREEN") |
-| [TickSize][]                      | v0.50.0    | [Enabled: 2017-02-21](https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E "BADGE_GREEN") |
-| [CryptoConditions][]              | v0.50.0    | [Enabled: 2017-01-03](https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15 "BADGE_GREEN") |
-| [Flow][]                          | v0.33.0    | [Enabled: 2016-10-21](https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC "BADGE_GREEN") |
-| [TrustSetAuth][]                  | v0.30.0    | [Enabled: 2016-07-19](https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF "BADGE_GREEN") |
-| [MultiSign][]                     | v0.31.0    | [Enabled: 2016-06-27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
-| [FeeEscalation][]                 | v0.31.0    | [Enabled: 2016-05-19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
+| [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [fixDisallowIncomingV1][]         | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [fixFillOrKill][]                 | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
+| [AMM][]                           | v1.12.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.12.0.html" %}Open for Voting: 2023-09-06{% /badge %} |
+| [Clawback][]                      | v1.12.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.12.0.html" %}Open for Voting: 2023-09-06{% /badge %} |
+| [XRPFees][]                       | v1.10.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.10.0.html" %}Open for Voting: 2023-03-14{% /badge %} |
+| [fixReducedOffersV1][]            | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1" %}Enabled: 2023-11-24{% /badge %} |
+| [fixNFTokenRemint][]              | v1.11.0    | {% badge href="https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF" %}Enabled: 2023-11-27{% /badge %} |
+| [DisallowIncoming][]              | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E" %}Enabled: 2023-08-21{% /badge %} |
+| [fixNonFungibleTokensV1_2][]      | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/3AB0892CAB29F049B9D9E5D522701FD01469D0B97080626F8DD4B489D0B8784E" %}Enabled: 2023-08-21{% /badge %} |
+| [fixTrustLinesToSelf][]           | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/4F4C05142CA1DE257CD86513086F0C99FAF06D80932377C6B6C02B3D09623A43" %}Enabled: 2023-08-21{% /badge %} |
+| [fixUniversalNumber][]            | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/EFE82B7155CE5B766AF343D98DAE6662C2713C99E760D610370D02338881B2F3" %}Enabled: 2023-08-21{% /badge %} |
+| [ImmediateOfferKilled][]          | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/65B8A4068B20696A866A07E5668B2AEB0451564E13B79421356FB962EC9A536B" %}Enabled: 2023-08-21{% /badge %} |
+| [CheckCashMakesTrustLine][]       | v1.8.0     | {% badge href="https://livenet.xrpl.org/transactions/4C8546305583F72E056120B136EB251E7F45E8DFAAE65FDA33B22181A9CA4557" %}Enabled: 2023-01-23{% /badge %} |
+| [NonFungibleTokensV1_1][]         | v1.9.2     | {% badge href="https://livenet.xrpl.org/transactions/251242639A640CD9287A14A476E7F7C20BA009FDE410570926BAAF29AA05CEDE" %}Enabled: 2022-10-31{% /badge %} |
+| [fixRemoveNFTokenAutoTrustLine][] | v1.9.4     | {% badge href="https://livenet.xrpl.org/transactions/2A67DB4AC65D688281B76334C4B52038FD56931694A6DD873B5CCD9B970AD57C" %}Enabled: 2022-10-27{% /badge %} |
+| [ExpandedSignerList][]            | v1.9.1     | {% badge href="https://livenet.xrpl.org/transactions/802E2446547BB86397217E32A78CB9857F21B048B91C81BCC6EF837BE9C72C87" %}Enabled: 2022-10-13{% /badge %} |
+| [NegativeUNL][]                   | v1.7.3     | {% badge href="https://livenet.xrpl.org/transactions/1500FADB73E7148191216C53040990E829C7110788B26E7F3246CB3660769EBA" %}Enabled: 2021-11-21{% /badge %} |
+| [fixRmSmallIncreasedQOffers][]    | v1.7.2     | {% badge href="https://livenet.xrpl.org/transactions/1F37BA0502576DD7B5464F47641FA95DEB55735EC2663269DFD47810505478E7" %}Enabled: 2021-11-18{% /badge %} |
+| [TicketBatch][]                   | v1.7.0     | {% badge href="https://livenet.xrpl.org/transactions/111B32EDADDE916206E7315FBEE2DA1521B229F207F65DD314829F13C8D9CA36" %}Enabled: 2021-11-18{% /badge %} |
+| [fixSTAmountCanonicalize][]       | v1.7.0     | {% badge href="https://livenet.xrpl.org/transactions/AFF17321A012C756B64FCC3BA0FDF79109F28E244D838A28D5AE8A0384C7C532" %}Enabled: 2021-11-11{% /badge %} |
+| [FlowSortStrands][]               | v1.7.0     | {% badge href="https://livenet.xrpl.org/transactions/1C3D3BD2AFDAF326EBFEA54579A89B024856609DB4310F7140086AAB262D09A1" %}Enabled: 2021-11-11{% /badge %} |
+| [fix1781][]                       | v1.6.0     | {% badge href="https://livenet.xrpl.org/transactions/DA59F10201D651B544F65896330AFACA8CA4198904265AD279D56781F655FAFB" %}Enabled: 2021-04-08{% /badge %} |
+| [fixAmendmentMajorityCalc][]      | v1.6.0     | {% badge href="https://livenet.xrpl.org/transactions/5B3ACE6CAC9C56D2008410F1B0881A0A4A8866FB99D2C2B2261C86C760DC95EF" %}Enabled: 2021-04-08{% /badge %} |
+| [HardenedValidations][]           | v1.6.0     | {% badge href="https://livenet.xrpl.org/transactions/3A45DCF055B68DCBBFE034240F9359FB22E8A64B1BF7113304535BF5BB8144BF" %}Enabled: 2021-04-08{% /badge %} |
+| [FlowCross][]                     | v0.70.0    | {% badge href="https://livenet.xrpl.org/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F" %}Enabled: 2020-08-04{% /badge %} |
+| [fixQualityUpperBound][]          | v1.5.0     | {% badge href="https://livenet.xrpl.org/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E" %}Enabled: 2020-07-09{% /badge %} |
+| [RequireFullyCanonicalSig][]      | v1.5.0     | {% badge href="https://livenet.xrpl.org/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3" %}Enabled: 2020-07-03{% /badge %} |
+| [Checks][]                        | v0.90.0    | {% badge href="https://livenet.xrpl.org/transactions/D88F2DCDFB10023F9F6CBA8DF34C18E321D655CAC8FDB962387A5DB1540242A6" %}Enabled: 2020-06-18{% /badge %} |
+| [DeletableAccounts][]             | v1.4.0     | {% badge href="https://livenet.xrpl.org/transactions/47B90519D31E0CB376B5FEE5D9359FA65EEEB2289F1952F2A3EB71D623B945DE" %}Enabled: 2020-05-08{% /badge %} |
+| [fixCheckThreading][]             | v1.4.0     | {% badge href="https://livenet.xrpl.org/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A" %}Enabled: 2020-05-01{% /badge %} |
+| [fixPayChanRecipientOwnerDir][]   | v1.4.0     | {% badge href="https://livenet.xrpl.org/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09" %}Enabled: 2020-05-01{% /badge %} |
+| [fixMasterKeyAsRegularKey][]      | v1.3.1     | {% badge href="https://livenet.xrpl.org/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20" %}Enabled: 2019-10-02{% /badge %} |
+| [MultiSignReserve][]              | v1.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB" %}Enabled: 2019-04-17{% /badge %} |
+| [fixTakerDryOfferRemoval][]       | v1.2.0     | {% badge href="https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF" %}Enabled: 2019-04-02{% /badge %} |
+| [fix1578][]                       | v1.2.0     | {% badge href="https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D" %}Enabled: 2019-03-23{% /badge %} |
+| [DepositPreauth][DepositPreauthAmendment] | v1.1.0     | {% badge href="https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927" %}Enabled: 2018-10-09{% /badge %} |
+| [fix1515][]                       | v1.1.0     | {% badge href="https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF" %}Enabled: 2018-10-09{% /badge %} |
+| [fix1543][]                       | v1.0.0     | {% badge href="https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6" %}Enabled: 2018-06-21{% /badge %} |
+| [fix1623][]                       | v1.0.0     | {% badge href="https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB" %}Enabled: 2018-06-20{% /badge %} |
+| [fix1571][]                       | v1.0.0     | {% badge href="https://livenet.xrpl.org/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC" %}Enabled: 2018-06-19{% /badge %} |
+| [DepositAuth][]                   | v0.90.0    | {% badge href="https://livenet.xrpl.org/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25" %}Enabled: 2018-04-06{% /badge %} |
+| [fix1513][]                       | v0.90.0    | {% badge href="https://livenet.xrpl.org/transactions/57FE540B8B8E2F26CE8B53D1282FEC55E605257E29F5B9EB49E15EA3989FCF6B" %}Enabled: 2018-04-06{% /badge %} |
+| [fix1201][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/B1157116DDDDA9D9B1C4A95C029AC335E05DB052CECCC5CA90118A4D46C77C5E" %}Enabled: 2017-11-14{% /badge %} |
+| [fix1512][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/63F69F59BEFDC1D79DBF1E4060601E05960683AA784926FB74BC55074C4F6647" %}Enabled: 2017-11-14{% /badge %} |
+| [fix1523][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/97FD0E35654F4B6714010D3CBBAC4038F60D64AD0292693C28A1DF4B796D8469" %}Enabled: 2017-11-14{% /badge %} |
+| [fix1528][]                       | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/27AEE02DA4FE22B6BB479F850FBBC873FDC7A09A8594753A91B53098D726397E" %}Enabled: 2017-11-14{% /badge %} |
+| [SortedDirectories][]             | v0.80.0    | {% badge href="https://livenet.xrpl.org/transactions/6E2309C156EBF94D03B83D282A3914671BF9168FB26463CFECD068C63FFFAB29" %}Enabled: 2017-11-14{% /badge %} |
+| [EnforceInvariants][]             | v0.70.0    | {% badge href="https://livenet.xrpl.org/transactions/17593B03F7D3283966F3C0ACAF4984F26E9D884C9A202097DAED0523908E76C6" %}Enabled: 2017-07-07{% /badge %} |
+| [fix1373][]                       | v0.70.0    | {% badge href="https://livenet.xrpl.org/transactions/7EBA3852D111EA19D03469F6870FAAEBF84C64F1B9BAC13B041DDD26E28CA399" %}Enabled: 2017-07-07{% /badge %} |
+| [Escrow][]                        | v0.60.0    | {% badge href="https://livenet.xrpl.org/transactions/C581E0A3F3832FFFEEB13C497658F475566BD7695B0BBA531A774E6739801515" %}Enabled: 2017-03-31{% /badge %} |
+| [fix1368][]                       | v0.60.0    | {% badge href="https://livenet.xrpl.org/transactions/3D20DE5CD19D5966865A7D0405FAC7902A6F623659667D6CB872DF7A94B6EF3F" %}Enabled: 2017-03-31{% /badge %} |
+| [PayChan][]                       | v0.33.0    | {% badge href="https://livenet.xrpl.org/transactions/16135C0B4AB2419B89D4FB4569B8C37FF76B9EF9CE0DD99CCACB5734445AFD7E" %}Enabled: 2017-03-31{% /badge %} |
+| [TickSize][]                      | v0.50.0    | {% badge href="https://livenet.xrpl.org/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E" %}Enabled: 2017-02-21{% /badge %} |
+| [CryptoConditions][]              | v0.50.0    | {% badge href="https://livenet.xrpl.org/transactions/8EB00131E1C3DB35EDFF45C155D941E18C3E86BC1934FF987D2DA204F4065F15" %}Enabled: 2017-01-03{% /badge %} |
+| [Flow][]                          | v0.33.0    | {% badge href="https://livenet.xrpl.org/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC" %}Enabled: 2016-10-21{% /badge %} |
+| [TrustSetAuth][]                  | v0.30.0    | {% badge href="https://livenet.xrpl.org/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF" %}Enabled: 2016-07-19{% /badge %} |
+| [MultiSign][]                     | v0.31.0    | {% badge href="https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7" %}Enabled: 2016-06-27{% /badge %} |
+| [FeeEscalation][]                 | v0.31.0    | {% badge href="https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3" %}Enabled: 2016-05-19{% /badge %} |
 
 **Note:** In many cases, an incomplete version of the code for an amendment is present in previous versions of the software. The "Introduced" version in the table above is the first stable version. The value "TBD" indicates that the amendment is not yet considered stable.
 
 ## Amendments in Development
 
-The following is a list of [amendments](amendments.html) that are being developed and a private network is available to test the changes.
+The following is a list of [amendments](../concepts/networks-and-servers/amendments.md) that are being developed and a private network is available to test the changes.
 
 | Name                              | Status                                    | Additional Information         |
 |:----------------------------------|:------------------------------------------|:-------------------------------|
-| [Hooks][]                         | [In Development: TBD]( "BADGE_LIGHTGREY") | [XRPL Hooks](https://hooks.xrpl.org/) |
-| [OwnerPaysFee][]                  | [In Development: TBD]( "BADGE_LIGHTGREY") | |
+| [Hooks][]                         | {% badge %}In Development: TBD{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
+| [OwnerPaysFee][]                  | {% badge %}In Development: TBD{% /badge %} | |
 
-**Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code-flow.html).
+**Tip:** This list is updated manually. If you're working on an amendment and have a private network to test the changes, you can edit this page to add your in-development amendment to this list. For more information on contributing to the XRP Ledger, see [Contribute Code to the XRP Ledger](contribute-code/contribute-code.md).
 
 ## Obsolete Amendments
 
-The following is a list of known [amendments](amendments.html) that have been removed in a previous version, or are obsolete and have been marked for removal.
+The following is a list of known [amendments](../concepts/networks-and-servers/amendments.md) that have been removed in a previous version, or are obsolete and have been marked for removal.
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixNFTokenNegOffer][]            | v1.9.2     | [Obsolete: To Be Removed]( "BADGE_RED") |
-| [fixNFTokenDirV1][]               | v1.9.1     | [Obsolete: To Be Removed]( "BADGE_RED") |
-| [NonFungibleTokensV1][]           | v1.9.0     | [Obsolete: To Be Removed]( "BADGE_RED") |
-| [CryptoConditionsSuite][]         | v0.60.0    | [Obsolete: To Be Removed]( "BADGE_RED") |
-| [SHAMapV2][]                      | v0.32.1    | [Obsolete: Removed in v1.4.0](https://xrpl.org/blog/2019/rippled-1.4.0.html "BADGE_RED") |
-| [FlowV2][]                        | v0.32.1    | [Obsolete: Removed in v0.33.0](https://xrpl.org/blog/2016/flowv2-vetoed.html "BADGE_RED") |
-| [SusPay][]                        | v0.31.0    | [Obsolete: Removed in v0.60.0](https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features "BADGE_RED") |
-| [Tickets][]                       | v0.30.1    | [Obsolete: Removed in v0.90.0](https://xrpl.org/blog/2018/rippled-0.90.0.html "BADGE_RED") |
+| [fixNFTokenNegOffer][]            | v1.9.2     | {% badge %}Obsolete: To Be Removed{% /badge %} |
+| [fixNFTokenDirV1][]               | v1.9.1     | {% badge %}Obsolete: To Be Removed{% /badge %} |
+| [NonFungibleTokensV1][]           | v1.9.0     | {% badge %}Obsolete: To Be Removed{% /badge %} |
+| [CryptoConditionsSuite][]         | v0.60.0    | {% badge %}Obsolete: To Be Removed{% /badge %} |
+| [SHAMapV2][]                      | v0.32.1    | {% badge href="https://xrpl.org/blog/2019/rippled-1.4.0.html" %}Obsolete: Removed in v1.4.0{% /badge %} |
+| [FlowV2][]                        | v0.32.1    | {% badge href="https://xrpl.org/blog/2016/flowv2-vetoed.html" %}Obsolete: Removed in v0.33.0{% /badge %} |
+| [SusPay][]                        | v0.31.0    | {% badge href="https://xrpl.org/blog/2017/ticksize-voting.html#upcoming-features" %}Obsolete: Removed in v0.60.0{% /badge %} |
+| [Tickets][]                       | v0.30.1    | {% badge href="https://xrpl.org/blog/2018/rippled-0.90.0.html" %}Obsolete: Removed in v0.90.0{% /badge %} |
 
 
 ## Details about Known Amendments
@@ -212,7 +212,7 @@ Adds several new transaction result codes.
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adjusts the [CheckCash transaction][] so that cashing a [Check](checks.html) for an issued token automatically creates a [trust line](trust-lines-and-issuing.html) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
+Adjusts the [CheckCash transaction][] so that cashing a [Check](../concepts/payment-types/checks.md) for an issued token automatically creates a [trust line](../concepts/tokens/fungible-tokens/index.md) to hold the token. The new behavior is similar to how the [OfferCreate transaction][] behaves when users buy tokens in the decentralized exchange: the automatic trust line has a limit value of 0. This removes the setup step of setting up a trust line before receiving a token via a Check. (Checks that send XRP are unaffected.)
 
 Without this amendment, users have to separately send a [TrustSet transaction][] before they can cash a Check for an issued token.
 
@@ -323,7 +323,7 @@ However, the amendment was added to `rippled` v0.60.0 before implementation was 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Makes it possible to delete [accounts](accounts.html).
+Makes it possible to delete [accounts](../concepts/accounts/accounts.md).
 
 Without this amendment, new accounts always start with their `Sequence` numbers at 1, and there is no way to remove accounts from the state data of the ledger.
 
@@ -344,9 +344,9 @@ Adds a new account flag, `DepositAuth`, which lets an account strictly reject an
 
 When an account enables this flag, Payment transactions fail if the account is the destination, regardless of whether the Payment would have delivered XRP or a token. EscrowFinish and PaymentChannelClaim transactions fail if the account is the destination unless the destination account itself sends those transactions. If the [Checks][] amendment is enabled, the account can receive XRP or tokens by sending CheckCash transactions.
 
-As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](reserves.html)) if their current XRP balance is below the account reserve.
+As an exception, accounts with `DepositAuth` enabled can receive Payment transactions for small amounts of XRP (equal or less than the minimum [account reserve](../concepts/accounts/reserves.md)) if their current XRP balance is below the account reserve.
 
-Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](reserves.html) and pay [transaction costs](transaction-cost.html).)
+Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where they mistakenly enforced the Disallow XRP flag, which is meant to be a non-binding advisory flag. (By not enforcing Disallow XRP in the ledger itself an account can still receive the necessary XRP to meet its [account reserve](../concepts/accounts/reserves.md) and pay [transaction costs](../concepts/transactions/transaction-cost.md).)
 
 
 ### DepositPreauth
@@ -359,7 +359,7 @@ Also fixes a bug in the EscrowCreate and PaymentChannelCreate transactions where
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Provides users of [deposit authorization](depositauth.html) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
+Provides users of [deposit authorization](../concepts/accounts/depositauth.md) with a way to preauthorize specific senders so those senders are allowed to send payments directly.
 
 Adds a new transaction type, DepositPreauth for adding or removing preauthorization, and a DepositPreauth ledger object type for tracking preauthorizations from one account to another. Adds a JSON-RPC command, `deposit_authorized`, to query whether an account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to -->
 
@@ -408,10 +408,10 @@ Introduces two new transaction error codes, `tecINVARIANT_FAILED` and `tefINVARI
 
 Examples of invariant checks:
 
-- The total amount of XRP destroyed by a transaction must match the [transaction cost](transaction-cost.html) exactly.
+- The total amount of XRP destroyed by a transaction must match the [transaction cost](../concepts/transactions/transaction-cost.md) exactly.
 - XRP cannot be created.
-- [`AccountRoot` objects in the ledger](accountroot.html) cannot be deleted unless [DeletableAccounts](#deletableaccounts) is enabled. (See also: [Deleting Accounts](deleting-accounts.html).)
-- [An entry in the ledger](ledger-object-types.html) cannot change its type. (The `LedgerEntryType` field is immutable.)
+- [`AccountRoot` objects in the ledger](../references/protocol/ledger-data/ledger-entry-types/accountroot.md) cannot be deleted unless [DeletableAccounts](#deletableaccounts) is enabled. (See also: [Deleting Accounts](../concepts/accounts/deleting-accounts.md).)
+- [An entry in the ledger](../references/protocol/ledger-data/ledger-entry-types/index.md) cannot change its type. (The `LedgerEntryType` field is immutable.)
 - There cannot be a trust line for XRP.
 
 
@@ -457,7 +457,7 @@ With this amendment, the maximum [SignerList object][] size is 32 entries. Addit
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Changes the way the [transaction cost](transaction-cost.html) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
+Changes the way the [transaction cost](../concepts/transactions/transaction-cost.md) applies to proposed transactions. Modifies the consensus process to prioritize transactions that pay a higher transaction cost. <!-- STYLE_OVERRIDE: prioritize -->
 
 This amendment introduces a fixed-size transaction queue for transactions that were not able to be included in the previous consensus round. If the `rippled` servers in the consensus network are under heavy load, they queue the transactions with the lowest transaction cost for later ledgers. Each consensus round prioritizes transactions from the queue with the largest transaction cost (`Fee` value), and includes as many transactions as the consensus network can process. If the transaction queue is full, transactions drop from the queue entirely, starting with the ones that have the lowest transaction cost.
 
@@ -466,7 +466,7 @@ While the consensus network is under heavy load, legitimate users can pay a high
 A transaction remains in the queue until one of the following happens:
 
 * It gets applied to a validated ledger (regardless of success or failure)
-* It becomes invalid (for example, the [`LastLedgerSequence`](transaction-common-fields.html) causes it to expire)
+* It becomes invalid (for example, the [`LastLedgerSequence`](../references/protocol/transactions/common-fields.md) causes it to expire)
 * It gets dropped because there are too many transactions in the queue with a higher transaction cost.
 
 
@@ -480,7 +480,7 @@ A transaction remains in the queue until one of the following happens:
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Correctly implements a limit on [transfer fees](transfer-fees.html) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
+Correctly implements a limit on [transfer fees](../concepts/tokens/transfer-fees.md) to a 100% fee, represented by a maximum `TransferRate` value of `2000000000`. (A 100% fee in this case means you must send 2 units of the token for every 1 unit you want to deliver.) Without the amendment, the effective limit is a `TransferRate` value of 2<sup>32</sup>-1, for approximately a 329% fee.
 
 With this amendment enabled, an [AccountSet][] transaction that attempts to set `TransferRate` higher than `2000000000` fails with the result code `temBAD_TRANSFER_RATE`. Any existing `TransferRate` which was set to a higher value under the previous rules continues to apply at the higher rate.
 
@@ -508,9 +508,9 @@ Fixes a minor bug in transaction processing that causes some payments to fail wh
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](paths.html) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
+Fixes a minor bug in transaction processing that causes failures when trying to prepare certain [payment paths](../concepts/tokens/fungible-tokens/paths.md) for processing. As a result, payments could not use certain paths that should have been valid but were invalidly prepared. Without this amendment, those payments are forced to use less-preferable paths or may even fail.
 
-The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](paths.html#path-specifications) include conflicting fields and paths that loop through the same object more than once.
+The fix1373 amendment corrects the issue so that the paths are properly prepared and payments can use them. It also disables some inappropriate paths that are currently allowed, including paths whose [steps](../concepts/tokens/fungible-tokens/paths.md#path-specifications) include conflicting fields and paths that loop through the same object more than once.
 
 
 ### fix1512
@@ -572,9 +572,9 @@ In both cases, transaction processing can still complete by using liquidity from
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Adds tracking by destination account to [escrows](escrow.html). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [account_objects method][], excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [account_tx method][].
+Adds tracking by destination account to [escrows](../concepts/payment-types/escrow.md). Without this amendment, pending escrows are only tracked by sender. This amendment makes it possible to look up pending escrows by the destination address using the [account_objects method][], excluding any pending escrows that were created before this amendment became enabled. This amendment also makes [EscrowCreate transactions][] appear in the destination's transaction history, as viewed with the [account_tx method][].
 
-With this amendment, new escrows are added to the [owner directories](directorynode.html) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](escrow-object.html), indicating which page of the destination's owner directory contains the escrow.
+With this amendment, new escrows are added to the [owner directories](../references/protocol/ledger-data/ledger-entry-types/directorynode.md) of both the sender and receiver. This amendment also adds a new `DestinationNode` field to [Escrow ledger objects](../references/protocol/ledger-data/ledger-entry-types/escrow.md), indicating which page of the destination's owner directory contains the escrow.
 
 
 ### fix1528
@@ -641,7 +641,7 @@ Changes Escrow to fix the following issues:
 Changes the result codes returned by two transaction types:
 
 - Changes the [OfferCreate transaction][] to return a new result code, `tecKILLED`, if the offer used the `tfFillOrKill` flag and was killed. Without this amendment, the offer is killed but the transaction result is `tesSUCCESS`.
-- Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [No Ripple flag](rippling.html#the-no-ripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the No Ripple flag, but the transaction result is `tesSUCCESS` nonetheless.
+- Changes the [TrustSet transaction][] to fail with `tecNO_PERMISSION` if it tries to enable the [No Ripple flag](../concepts/tokens/fungible-tokens/rippling.md#the-no-ripple-flag) but cannot because the trust line has a negative balance. Without this amendment, the transaction does not enable the No Ripple flag, but the transaction result is `tesSUCCESS` nonetheless.
 
 
 ### fix1623
@@ -656,7 +656,7 @@ Changes the result codes returned by two transaction types:
 
 Adds delivered amount to metadata for CheckCash transactions cashed for a flexible amount. (Has no effect unless the [Checks](#checks) amendment is enabled.)
 
-With this amendment enabled, transaction processing adds a `DeliveredAmount` field to the metadata of [CheckCash transactions][] for a variable amount (using the `DeliverMin` field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the [tx method][] and [account_tx method][] return a [`delivered_amount` field](transaction-metadata.html#delivered_amount) for CheckCash transactions. (The `delivered_amount` field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)
+With this amendment enabled, transaction processing adds a `DeliveredAmount` field to the metadata of [CheckCash transactions][] for a variable amount (using the `DeliverMin` field). This change is written to the ledger data, resulting in a different ledger hash than would result from processing the transaction without this amendment. It does not affect the actual amounts delivered. Additionally, with this amendment enabled, the [tx method][] and [account_tx method][] return a [`delivered_amount` field](../references/protocol/transactions/metadata.md#delivered_amount) for CheckCash transactions. (The `delivered_amount` field is calculated when you look up a transaction, and is not part of the data that is written to the ledger.)
 
 The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed amount (using the `Amount` field) or any other transaction types.
 
@@ -673,9 +673,9 @@ The fix1623 amendment has no effect on [CheckCash transactions][] for a fixed am
 
 Fixes a bug where certain XRP endpoints were not checked when detecting circular paths.
 
-Without this amendment, it is possible to have a [payment path](paths.html) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.
+Without this amendment, it is possible to have a [payment path](../concepts/tokens/fungible-tokens/paths.md) where the input to the path is XRP, and an intermediate path step also outputs XRP. This is a "loop" payment, and the payment engine disallows such paths because they can have different results when executed forward compared to backwards.
 
-With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](tem-codes.html) instead.
+With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](../references/protocol/transactions/transaction-results/tem-codes.md) instead.
 
 
 ### fixAmendmentMajorityCalc
@@ -703,7 +703,7 @@ Without this amendment, the minimum threshold for amendment activation is any va
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](accounts.html) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](accountroot.html), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
+Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](../concepts/accounts/accounts.md) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](../references/protocol/ledger-data/ledger-entry-types/accountroot.md), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 
@@ -827,7 +827,7 @@ See [Issue 4373](https://github.com/XRPLF/rippled/issues/4373).
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](payment-channels.html) to the recipient's [owner directory](directorynode.html). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
+Changes the [PaymentChannelCreate transaction][] type so that it adds new [payment channels](../concepts/payment-types/payment-channels.md) to the recipient's [owner directory](../references/protocol/ledger-data/ledger-entry-types/directorynode.md). Without this amendment, new payment channels are added only to the sender's owner directory; with this amendment enabled, newly-created payment channels are added to both owner directories. Existing payment channels are unchanged.
 
 This change prevents accounts from being deleted if they are the recipient for open payment channels, except for channels created before this amendment.
 
@@ -879,7 +879,7 @@ Without this amendment, an offer with very small amounts remaining can have a a 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Removes the `tfTrustLine` setting on [non-fungible tokens](non-fungible-tokens.html), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](nftokenmint.html) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; new `NFToken` objects cannot be minted with the flag.
+Removes the `tfTrustLine` setting on [non-fungible tokens](../concepts/tokens/nfts/index.md), to protect against a denial of service attack on issuers using this flag. With this amendment enabled, a [NFTokenMint transaction](../references/protocol/transactions/types/nftokenmint.md) with the `tfTrustLine` flag enabled is considered invalid and cannot be confirmed by consensus; new `NFToken` objects cannot be minted with the flag.
 
 Without this amendment, an attacker could create new, meaningless fungible tokens and sell a `NFToken` back and forth for those tokens, creating many useless trust lines tied to the issuer and increasing the issuer's reserve requirement.
 
@@ -915,7 +915,7 @@ With this amendment, payments and trades can remove these types of Offers the sa
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
+Fixes an edge case in [deserializing](../references/protocol/binary-format.md) Amount-type fields. Without this amendment, in some rare cases the operation could result in otherwise valid serialized amounts overflowing during deserialization. With this amendment, the XRP Ledger detects error conditions more quickly and eliminates the problematic corner cases.
 
 
 ### fixTakerDryOfferRemoval
@@ -928,9 +928,9 @@ Fixes an edge case in [deserializing](serialization.html) Amount-type fields. Wi
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Fixes a bug in [auto-bridging](autobridging.html) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
+Fixes a bug in [auto-bridging](../concepts/tokens/decentralized-exchange/autobridging.md) that can leave a dry offer in the XRP Ledger. A dry offer is an offer that, if crossed, cannot yield any funds.
 
-Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](reserves.html#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
+Without this fix, the dry offer remains on the ledger and counts toward its owner's [reserve requirement](../concepts/accounts/reserves.md#owner-reserves) without providing any benefit to the owner. Another offer crossing of the right type and quality can remove the dry offer. However, if the required offer crossing type and quality are rare, it may take a while for the dry offer to be removed.
 
 With this amendment enabled, the XRP Ledger removes these dry offers when they're matched in auto-bridging.
 
@@ -1075,13 +1075,13 @@ Without this amendment, "Immediate or Cancel" Offers that failed to move any fun
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Introduces [multi-signing](multi-signing.html) as a way to authorize transactions. Creates the [`SignerList` ledger object type](signerlist.html) and the [`SignerListSet` transaction type](signerlistset.html). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
+Introduces [multi-signing](../concepts/accounts/multi-signing.md) as a way to authorize transactions. Creates the [`SignerList` ledger object type](../references/protocol/ledger-data/ledger-entry-types/signerlist.md) and the [`SignerListSet` transaction type](../references/protocol/transactions/types/signerlistset.md). Adds the optional `Signers` field to all transaction types. Modifies some transaction result codes.
 
 This amendment allows addresses to have a list of signers who can authorize transactions from that address in a multi-signature. The list has a quorum and 1 to 8 weighted signers. This allows various configurations, such as "any 3-of-5" or "signature from A plus any other two signatures."
 
 Signers can be funded or unfunded addresses. Funded addresses in a signer list can sign using a regular key (if defined) or master key (unless disabled). Unfunded addresses can sign with a master key. Multi-signed transactions have the same permissions as transactions signed with a regular key.
 
-An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](transaction-results.html):
+An address with a SignerList can disable the master key even if a regular key is not defined. An address with a SignerList can also remove a regular key even if the master key is disabled. The `tecMASTER_DISABLED` transaction result code is renamed `tecNO_ALTERNATIVE_KEY`. The `tecNO_REGULAR_KEY` transaction result is retired and replaced with `tecNO_ALTERNATIVE_KEY`. Additionally, this amendment adds the following new [transaction result codes](../references/protocol/transactions/transaction-results/transaction-results.md):
 
 * `temBAD_SIGNER`
 * `temBAD_QUORUM`
@@ -1102,11 +1102,11 @@ An address with a SignerList can disable the master key even if a regular key is
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Reduces the [owner reserve](reserves.html#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](multi-signing.html) SignerList.
+Reduces the [owner reserve](../concepts/accounts/reserves.md#owner-reserves) counted against your XRP Ledger account when it owns a [multi-signing](../concepts/accounts/multi-signing.md) SignerList.
 
 Without this amendment, the owner reserve for a SignerList ranges from 15 to 50 XRP, depending on the number of signers in the list.
 
-With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](signerlistset.html) to replace the SignerList after this amendment has been enabled. (The replacement can be the same as the previous version.)
+With this amendment enabled, the owner reserve for a new SignerList is 5 XRP, regardless of the number of signers. The reserve requirement for previously-created SignerList objects remains unchanged. To reduce the reserve requirement of SignerList objects created before this amendment was enabled, use a [SignerListSet transaction](../references/protocol/transactions/types/signerlistset.md) to replace the SignerList after this amendment has been enabled. (The replacement can be the same as the previous version.)
 
 
 ### NegativeUNL
@@ -1132,7 +1132,7 @@ Implements a "Negative UNL" system, where the network can track which validators
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds native support for [non-fungible tokens](non-fungible-tokens.html). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
+Adds native support for [non-fungible tokens](../concepts/tokens/nfts/index.md). Standards Draft: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46). <!-- SPELLING_IGNORE: xls, 20d -->
 
 **Warning:** There are several known issues with this amendment including one that can cause `tecINVARIANT_FAILED` errors to appear in the ledger. It has been replaced by the [NonFungibleTokensV1_1 amendment][].
 
@@ -1164,7 +1164,7 @@ It also modifies the [AccountSet transaction][] type to allow you to set the `NF
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds native support for [non-fungible tokens](non-fungible-tokens.html), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
+Adds native support for [non-fungible tokens](../concepts/tokens/nfts/index.md), including fixes to several issues that were discovered after [NonFungibleTokensV1][].
 
 This amendment combines the effects of the following amendments, rendering the individual amendments obsolete:
 
@@ -1187,7 +1187,7 @@ It has no other effects.
 | Default Vote (Latest stable release) | N/A |
 | Pre-amendment functionality retired? | No |
 
-Fixes an inconsistency in the way [transfer fees](transfer-fees.html) are calculated between [OfferCreate](offercreate.html) and [Payment](payment.html) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
+Fixes an inconsistency in the way [transfer fees](../concepts/tokens/transfer-fees.md) are calculated between [OfferCreate](../references/protocol/transactions/types/offercreate.md) and [Payment](../references/protocol/transactions/types/payment.md) transaction types. Without this amendment, the holder of the token pays the transfer fee if an offer is executed in offer placement, but the initial sender of a transaction pays the transfer fees for offers that are executed as part of payment processing. With this amendment, the holder of the token always pays the transfer fee, regardless of whether the offer is executed as part of a Payment or an OfferCreate transaction. Offer processing outside of payments is unaffected.
 
 This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
@@ -1206,9 +1206,9 @@ This Amendment requires the [Flow Amendment](#flow) to be enabled.
 
 Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating repeated, unidirectional payments or temporary credit between two parties. This feature is expected to be useful for the [Interledger Protocol](https://interledger.org/). One party creates a Payment Channel and sets aside some XRP in that channel for a predetermined expiration. Then, through off-ledger secure communications, the sender can send "Claim" messages to the receiver. The receiver can redeem the Claim messages before the expiration, or choose not to in case the payment is not needed. The receiver can verify Claims individually without actually distributing them to the network and waiting for the consensus process to redeem them, then redeem the combined content of many small Claims later, as long as it is within the expiration.
 
-Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](paychannel.html). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](channel_authorize.html) (creates a signed Claim), [`channel_verify`](channel_verify.html) (verifies a signed Claim), and [`account_channels`](account_channels.html) (lists Channels associated with an account).
+Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](../references/protocol/ledger-data/ledger-entry-types/paychannel.md). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md) (creates a signed Claim), [`channel_verify`](../references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md) (verifies a signed Claim), and [`account_channels`](../references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) (lists Channels associated with an account).
 
-For more information, see the [Payment Channels Tutorial](use-payment-channels.html).
+For more information, see the [Payment Channels Tutorial](../tutorials/use-specialized-payment-types/use-payment-channels.md).
 
 
 ### RequireFullyCanonicalSig
@@ -1221,11 +1221,11 @@ For more information, see the [Payment Channels Tutorial](use-payment-channels.h
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](transaction-malleability.html) on _all_ transactions, instead of only transactions with the [`tfFullyCanonicalSig` flag](transaction-common-fields.html#global-flags) enabled.
+Changes the signature requirements for the XRP Ledger protocol so that non-fully-canonical signatures are no longer valid in any case. This protects against [transaction malleability](../concepts/transactions/finality-of-results/transaction-malleability.md) on _all_ transactions, instead of only transactions with the [`tfFullyCanonicalSig` flag](../references/protocol/transactions/common-fields.md#global-flags) enabled.
 
 Without this amendment, a transaction is malleable if it uses a secp256k1 signature and does not have `tfFullyCanonicalSig` enabled. Most signing utilities enable `tfFullyCanonicalSig` by default, but there are exceptions.
 
-With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](transaction-malleability.html#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the `tfFullyCanonicalSig` flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
+With this amendment, no single-signed transactions are malleable. ([Multi-signed transactions may still be malleable](../concepts/transactions/finality-of-results/transaction-malleability.md#malleability-with-multi-signatures) if signers provide more signatures than are necessary.) All transactions must use the fully canonical form of the signature, regardless of the `tfFullyCanonicalSig` flag. Signing utilities that do not create fully canonical signatures are not supported. All of Ripple's signing utilities have been providing fully-canonical signatures exclusively since at least 2014.
 
 For more information, see [`rippled` issue #3042](https://github.com/XRPLF/rippled/issues/3042).
 
@@ -1254,9 +1254,9 @@ When this amendment is activated, the XRP Ledger will undergo a brief scheduled 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
+Sorts the entries in [DirectoryNode ledger objects](../references/protocol/ledger-data/ledger-entry-types/directorynode.md) and fixes a bug that occasionally caused pages of owner directories not to be deleted when they should have been.
 
-**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](install-rippled.html) to `rippled` version 0.80.0 or later.
+**Warning:** Older versions of `rippled` that do not know about this amendment may crash when they find a DirectoryNode sorted by the new rules. To avoid this problem, [upgrade](../infrastructure/installation/index.md) to `rippled` version 0.80.0 or later.
 
 
 ### SusPay
@@ -1268,7 +1268,7 @@ Sorts the entries in [DirectoryNode ledger objects](directorynode.html) and fixe
 | Status       | Vetoed |
 | Pre-amendment functionality retired? | No |
 
-This amendment was replaced by the [Escrow](escrow-object.html) amendment.
+This amendment was replaced by the [Escrow](../references/protocol/ledger-data/ledger-entry-types/escrow.md) amendment.
 
 
 ### TicketBatch
@@ -1281,7 +1281,7 @@ This amendment was replaced by the [Escrow](escrow-object.html) amendment.
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-This amendment adds [Tickets](tickets.html) as a way of sending transactions out of the typical sequence number order.
+This amendment adds [Tickets](../concepts/accounts/tickets.md) as a way of sending transactions out of the typical sequence number order.
 
 Standards Draft: [XLS-13d](https://github.com/XRPLF/XRPL-Standards/issues/16). <!-- SPELLING_IGNORE: xls, 13d -->
 
@@ -1308,9 +1308,9 @@ This amendment was replaced by the [TicketBatch][] amendment.
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Changes the way [Offers](offers.html#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
+Changes the way [Offers](../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) are ranked in order books, so that currency issuers can configure how many significant digits are taken into account when ranking Offers by exchange rate. With this amendment, the exchange rates of Offers are rounded to the configured number of significant digits, so that more Offers have the same exact exchange rate. The intent of this change is to require a meaningful improvement in price to outrank a previous Offer. If used by major issuers, this should reduce the incentive to spam the ledger with Offers that are only a tiny fraction of a percentage point better than existing offers. It may also increase the efficiency of order book storage in the ledger, because Offers can be grouped into fewer exchange rates.
 
-Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](accountset.html). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
+Introduces a `TickSize` field to accounts, which can be set with the [AccountSet transaction type](../references/protocol/transactions/types/accountset.md). If a currency issuer sets the `TickSize` field, the XRP Ledger truncates the exchange rate (ratio of funds in to funds out) of Offers to trade the issuer's currency, and adjusts the amounts of the Offer to match the truncated exchange rate. If only one currency in the trade has a `TickSize` set, that number of significant digits applies. When trading two currencies that have different `TickSize` values, whichever `TickSize` indicates the fewest significant digits applies. XRP does not have a `TickSize`.
 
 
 ### TrustSetAuth
@@ -1323,9 +1323,9 @@ Introduces a `TickSize` field to accounts, which can be set with the [AccountSet
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | Yes |
 
-Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](authorized-trust-lines.html).
+Allows pre-authorization of accounting relationships (zero-balance trust lines) when using [Authorized Trust Lines](../concepts/tokens/fungible-tokens/authorized-trust-lines.md).
 
-With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](trustset.html#trustset-flags) can create a new [`RippleState` ledger object](ripplestate.html) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](ripplestate.html#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](accountroot.html#accountroot-flags) by sending an [AccountSet transaction](accountset.html) with the [`asfRequireAuth` flag enabled](accountset.html#accountset-flags).
+With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled](../references/protocol/transactions/types/trustset.md#trustset-flags) can create a new [`RippleState` ledger object](../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) even if it keeps all the other values of the `RippleState` node in their default state. The new `RippleState` node has the [`lsfLowAuth` or `lsfHighAuth` flag](../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags) enabled, depending on whether the sender of the transaction is considered the low node or the high node. The sender of the transaction must have already enabled [`lsfRequireAuth`](../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags) by sending an [AccountSet transaction](../references/protocol/transactions/types/accountset.md) with the [`asfRequireAuth` flag enabled](../references/protocol/transactions/types/accountset.md#accountset-flags).
 
 
 ### XChainBridge
@@ -1359,8 +1359,4 @@ Simplifies transaction cost calculations to use XRP directly rather than calcula
 
 Without this amendment, the format of the transaction and ledger entry are the same.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

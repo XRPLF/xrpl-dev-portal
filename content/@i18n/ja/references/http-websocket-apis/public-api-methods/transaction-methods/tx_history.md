@@ -13,10 +13,9 @@ blurb: 直近に作成されたトランザクションの一部を取得しま�
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": 5,
@@ -24,9 +23,9 @@ blurb: 直近に作成されたトランザクションの一部を取得しま�
  "start": 0
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "tx_history",
@@ -37,17 +36,18 @@ blurb: 直近に作成されたトランザクションの一部を取得しま�
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: tx_history [start]
 rippled tx_history 0
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる>](websocket-api-tool.html#tx_history)
+[試してみる>](/resources/dev-tools/websocket-api-tool#tx_history)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -59,10 +59,9 @@ rippled tx_history 0
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": 2,
@@ -513,9 +512,9 @@ rippled tx_history 0
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -881,8 +880,9 @@ rippled tx_history 0
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
@@ -891,7 +891,7 @@ rippled tx_history 0
 | `index` | 符号なし整数 | リクエストに使用されている`start`の値。 |
 | `txs`   | 配列            | トランザクションオブジェクトの配列。             |
 
-各トランザクションオブジェクトに含まれているフィールドは、トランザクションのタイプに応じて多少異なります。詳細は、[トランザクションのフォーマット](transaction-formats.html)を参照してください。
+各トランザクションオブジェクトに含まれているフィールドは、トランザクションのタイプに応じて多少異なります。詳細は、[トランザクションのフォーマット](../../../protocol/transactions/index.md)を参照してください。
 
 ## 考えられるエラー
 
@@ -899,6 +899,4 @@ rippled tx_history 0
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `noPermission` - `start`フィールドに指定されている値が10000を超えていますが、サーバーに管理者として接続していません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

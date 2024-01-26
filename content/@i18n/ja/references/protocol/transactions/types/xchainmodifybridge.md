@@ -9,7 +9,7 @@ status: not_enabled
 # XChainModifyBridge
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/TxFormats.cpp#L390-L397 "ソース")
 
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 `XChainModifyBridge`トランザクションでは、ブリッジ管理者がブリッジの設定を変更することができます。変更できるのは`SignatureReward`と`MinAccountCreateAmount`だけです。
 
@@ -68,8 +68,4 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 |------------------------------|--------------|------|
 | `tfClearAccountCreateAmount` | `0x00010000` | ブリッジの`MinAccountCreateAmount` 削除します。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

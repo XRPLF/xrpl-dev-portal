@@ -9,7 +9,7 @@ labels:
 # path_find
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
-*WebSocket API only!* The `path_find` method searches for a [path](paths.html) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the [ripple_path_find method][]. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
+*WebSocket API only!* The `path_find` method searches for a [path](../../../../concepts/tokens/fungible-tokens/paths.md) along which a transaction can possibly be made, and periodically sends updates when the path changes over time. For a simpler version that is supported by JSON-RPC, see the [ripple_path_find method][]. For payments occurring strictly in XRP, it is not necessary to find a path, because XRP can be sent directly to any account.
 
 There are three different modes, or sub-commands, of the path_find command. Specify which one you want with the `subcommand` parameter:
 
@@ -29,10 +29,9 @@ A client can only have one pathfinding request open at a time. If another pathfi
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 8,
@@ -47,10 +46,11 @@ An example of the request format:
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[Try it! >](websocket-api-tool.html#path_find)
+[Try it! >](/resources/dev-tools/websocket-api-tool#path_find)
 
 The request includes the following parameters:
 
@@ -59,9 +59,9 @@ The request includes the following parameters:
 | `subcommand`          | String           | Use `"create"` to send the create sub-command |
 | `source_account`      | String           | Unique address of the account to find a path from. (In other words, the account that would be sending a payment.) |
 | `destination_account` | String           | Unique address of the account to find a path to. (In other words, the account that would receive a payment.) |
-| `destination_amount`  | String or Object | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** [New in: rippled 0.30.0][] You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
-| `send_max`            | String or Object | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Not compatible with `source_currencies`. [New in: rippled 0.30.0][] |
-| `paths`               | Array            | _(Optional)_ Array of arrays of objects, representing [payment paths](paths.html) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
+| `destination_amount`  | String or Object | [Currency Amount][] that the destination account would receive in a transaction. **Special case:** {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" %}New in: rippled 0.30.0{% /badge %} You can specify `"-1"` (for XRP) or provide -1 as the contents of the `value` field (for non-XRP currencies). This requests a path to deliver as much as possible, while spending no more than the amount specified in `send_max` (if provided). |
+| `send_max`            | String or Object | _(Optional)_ [Currency Amount][] that would be spent in the transaction. Not compatible with `source_currencies`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.30.0" %}New in: rippled 0.30.0{% /badge %} |
+| `paths`               | Array            | _(Optional)_ Array of arrays of objects, representing [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) to check. You can use this to keep updated on changes to particular paths you already know about, or to check the overall cost to make a payment along a certain path. |
 
 The server also recognizes the following fields, but the results of using them are not guaranteed: `source_currencies`, `bridges`. These fields should be considered reserved for future use.
 
@@ -69,10 +69,9 @@ The server also recognizes the following fields, but the results of using them a
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -438,24 +437,25 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-The initial response follows the [standard format](response-formatting.html), with a successful result containing the following fields:
+The initial response follows the [standard format](../../api-conventions/response-formatting.md), with a successful result containing the following fields:
 
 | Field                 | Type             | Description                       |
 |:----------------------|:-----------------|:----------------------------------|
-| `alternatives`        | Array            | Array of objects with suggested [paths](paths.html) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
+| `alternatives`        | Array            | Array of objects with suggested [paths](../../../../concepts/tokens/fungible-tokens/paths.md) to take, as described below. If empty, then no paths were found connecting the source and destination accounts. |
 | `destination_account` | String           | Unique address of the account that would receive a transaction. |
 | `destination_amount`  | String or Object | [Currency Amount][] that the destination would receive in a transaction. |
 | `source_account`      | String           | Unique address that would send a transaction. |
-| `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. [New in: rippled 0.29.0][] |
+| `full_reply`          | Boolean          | If `false`, this is the result of an incomplete search. A later reply may have a better path. If `true`, then this is the best path found. (It is still theoretically possible that a better path could exist, but `rippled` won't find it.) Until you close the pathfinding request, `rippled` continues to send updates each time a new ledger closes. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0" %}New in: rippled 0.29.0{% /badge %} |
 
 Each element in the `alternatives` array is an object that represents a path from one possible source currency (held by the initiating account) to the destination account and currency. This object has the following fields:
 
 | Field                | Type             | Description                            |
 |:---------------------|:-----------------|:---------------------------------------|
-| `paths_computed`     | Array            | Array of arrays of objects defining [payment paths](paths.html) |
+| `paths_computed`     | Array            | Array of arrays of objects defining [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) |
 | `source_amount`      | String or Object | [Currency Amount][] that the source would have to send along this path for the destination to receive the desired amount. |
 | `destination_amount` | String or Object | _(May be omitted)_ [Currency Amount][] that the destination would receive along this path. Only included if the `destination_amount` from the request was the "-1" special case. |
 
@@ -467,16 +467,15 @@ Each element in the `alternatives` array is an object that represents a path fro
 
 ### Asynchronous Follow-ups
 
-In addition to the initial response, the server sends more messages in a similar format to update on the status of [payment paths](paths.html) over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
+In addition to the initial response, the server sends more messages in a similar format to update on the status of [payment paths](../../../../concepts/tokens/fungible-tokens/paths.md) over time. These messages include the `id` of the original WebSocket request so you can tell which request prompted them, and the field `"type": "path_find"` at the top level to indicate that they are additional responses. The other fields are defined in the same way as the initial response.
 
 If the follow-up includes `"full_reply": true`, then this is the best path that rippled can find as of the current ledger.
 
 Here is an example of an asynchronous follow-up from a path_find create request:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -493,8 +492,9 @@ Here is an example of an asynchronous follow-up from a path_find create request:
     "source_account": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## path_find close
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp#L58-L67 "Source")
@@ -504,10 +504,9 @@ The `close` sub-command of `path_find` instructs the server to stop sending info
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 57,
@@ -515,8 +514,9 @@ An example of the request format:
   "subcommand": "close"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -549,10 +549,9 @@ The `status` sub-command of `path_find` requests an immediate update about the c
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 58,
@@ -560,8 +559,9 @@ An example of the request format:
   "subcommand": "status"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -586,6 +586,4 @@ If there was no outstanding pathfinding request, an error is returned instead.
 * `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the [ripple_path_find method][] for a pathfinding method that _is_ compatible with JSON-RPC.)
 * `noPathRequest` - You tried to check the status of a pathfinding request when there is not an open one.
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

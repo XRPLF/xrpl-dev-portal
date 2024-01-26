@@ -9,26 +9,25 @@ labels:
 # consensus_info
 [[Source]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ConsensusInfo.cpp "Source")
 
-The `consensus_info` command provides information about the [consensus process](consensus.html) for debugging purposes.
+The `consensus_info` command provides information about the [consensus process](../../../../concepts/consensus-protocol/index.md) for debugging purposes.
 
-_The `consensus_info` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `consensus_info` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 ### Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 99,
     "command": "consensus_info"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "consensus_info",
@@ -37,15 +36,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: consensus_info
 rippled consensus_info
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request has no parameters.
 
@@ -53,10 +53,9 @@ The request has no parameters.
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -129,9 +128,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -207,8 +206,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -220,7 +220,7 @@ The following is an incomplete summary of fields that may be contained in the `i
 
 | `Field`          | Type    | Description                                     |
 |:-----------------|:--------|:------------------------------------------------|
-| `ledger_seq`     | Number  | The [ledger index][Ledger Index] of the [ledger](ledgers.html) currently in the consensus process |
+| `ledger_seq`     | Number  | The [ledger index][Ledger Index] of the [ledger](../../../../concepts/ledgers/index.md) currently in the consensus process |
 | `our_position`   | Object  | This server's expectation for the ledger in the consensus process. |
 | `peer_positions` | Object  | Map of peers and their proposed versions of the ledger in the consensus process. |
 | `proposers`      | Number  | The number of trusted validators participating in this consensus process. Which validators are trusted depends on this server's configuration. |
@@ -237,7 +237,4 @@ The results of the `consensus_info` command can vary dramatically if you run it 
 - Any of the [universal error types][].
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

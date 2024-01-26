@@ -7,9 +7,9 @@ labels:
 ---
 # スタンドアロンモードでの保存済みレジャーの読み込み
 
-以前にディスクに保存していた[履歴レジャーバージョン](ledgers.html)を使用して、`rippled`サーバーを[スタンドアロンモード](rippled-server-modes.html)で起動できます。例えば、以前に`rippled`サーバーをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](parallel-networks.html)）と同期していた場合は、過去にサーバーで使用できていた任意のレジャーバージョンを読み込むことができます。
+以前にディスクに保存していた[履歴レジャーバージョン](../../concepts/ledgers/index.md)を使用して、`rippled`サーバーを[スタンドアロンモード](../../concepts/networks-and-servers/rippled-server-modes.md)で起動できます。例えば、以前に`rippled`サーバーをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](../../concepts/networks-and-servers/parallel-networks.md)）と同期していた場合は、過去にサーバーで使用できていた任意のレジャーバージョンを読み込むことができます。
 
-履歴レジャーバージョンを読み込むことにより、レジャーを「リプレイ」して、トランザクションがネットワークのルールに従って処理されていたか検証したり、異なる[Amendment](amendments.html)を有効にした場合のトランザクションセットの処理の結果を比較したりすることができます。万が一、[XRP Ledgerのコンセンサスメカニズムに対する攻撃](consensus-protections.html)が発生して共有レジャーの状態に悪影響が及んでも、このプロセスを始めることで、バリデータのコンセンサスを以前の良好だったネットワークの状態に「ロールバック」できる可能性があります。
+履歴レジャーバージョンを読み込むことにより、レジャーを「リプレイ」して、トランザクションがネットワークのルールに従って処理されていたか検証したり、異なる[Amendment](../../concepts/networks-and-servers/amendments.md)を有効にした場合のトランザクションセットの処理の結果を比較したりすることができます。万が一、[XRP Ledgerのコンセンサスメカニズムに対する攻撃](../../concepts/consensus-protocol/consensus-protections.md)が発生して共有レジャーの状態に悪影響が及んでも、このプロセスを始めることで、バリデータのコンセンサスを以前の良好だったネットワークの状態に「ロールバック」できる可能性があります。
 
 ## 1. `rippled`を通常の方法で起動します。
 
@@ -27,7 +27,7 @@ rippled --conf=/path/to/rippled.cfg
 * `proposing`
 * `validating`
 
-詳細は、[考えられるサーバーの状態](rippled-server-states.html)を参照してください。
+詳細は、[考えられるサーバーの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)を参照してください。
 
 ## 3. （省略可）特定のレジャーバージョンを取得します。
 
@@ -59,11 +59,11 @@ rippled -a --load --conf=/path/to/rippled.cfg
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
-スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](commandline-usage.html#スタンドアロンモードのオプション)を参照してください。
+スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](../commandline-usage.md#スタンドアロンモードのオプション)を参照してください。
 
 ## 6. レジャーを手動で進めます。
 
-スタンドアロンモードで`--ledger`を使用してレジャーを読み込むと、読み込まれたレジャーが現行のオープンレジャーになるので、[レジャーを手動で進める](advance-the-ledger-in-stand-alone-mode.html)必要があります。
+スタンドアロンモードで`--ledger`を使用してレジャーを読み込むと、読み込まれたレジャーが現行のオープンレジャーになるので、[レジャーを手動で進める](advance-the-ledger-in-stand-alone-mode.md)必要があります。
 
 ```
 rippled ledger_accept --conf=/path/to/rippled.cfg
@@ -72,18 +72,15 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](xrpl-servers.html)
-      - [`rippled`サーバーのモード](rippled-server-modes.html)
-    - [コンセンサスについて](consensus.html)
-    - [Amendment](amendments.html)
+    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+      - [`rippled`サーバーのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
+    - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
+    - [Amendment](../../concepts/networks-and-servers/amendments.md)
 - **リファレンス:**
     - [ledger_acceptメソッド][]
     - [server_infoメソッド][]
-    - [`rippled`コマンドラインの使用](commandline-usage.html)
+    - [`rippled`コマンドラインの使用](../commandline-usage.md)
 - **ユースケース:**
-    - [XRP Ledgerへのコードの提供](contribute-code.html)
+    - [XRP Ledgerへのコードの提供](../../resources/contribute-code/contribute-code.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

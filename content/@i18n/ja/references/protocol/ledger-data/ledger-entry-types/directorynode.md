@@ -9,19 +9,18 @@ labels:
 # DirectoryNode
 [[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
-`DirectoryNode`オブジェクトタイプは、レジャーの状態ツリー内の他オブジェクトへのリンクのリストを提供します。概念上の1つの _ディレクトリー_ は、1つ以上の各DirectoryNodeオブジェクトが含まれる二重リンクリストの形式になっています。各DirectoryNodeオブジェクトには、他オブジェクトの[ID](ledger-object-ids.html)が最大32個まで含まれています。1番目のオブジェクトはディレクトリーのルートと呼ばれ、ルートオブジェクト以外のオブジェクトはすべて必要に応じて自由に追加または削除できます。
+`DirectoryNode`オブジェクトタイプは、レジャーの状態ツリー内の他オブジェクトへのリンクのリストを提供します。概念上の1つの _ディレクトリー_ は、1つ以上の各DirectoryNodeオブジェクトが含まれる二重リンクリストの形式になっています。各DirectoryNodeオブジェクトには、他オブジェクトの[ID](../common-fields.md)が最大32個まで含まれています。1番目のオブジェクトはディレクトリーのルートと呼ばれ、ルートオブジェクト以外のオブジェクトはすべて必要に応じて自由に追加または削除できます。
 
 2種類のディレクトリーがあります。
 
 * **所有者ディレクトリー**は、アカウントが所有するその他のオブジェクト（`RippleState`オブジェクトや`Offer`オブジェクトなど）をリストします。
 * **オファーディレクトリー**は、分散型取引所で利用可能なオファーをリストします。1つのオファーディレクトリーには、同一イシュアンスに同一為替レートが設定されているすべてのオファーが含まれます。
 
-## {{currentpage.name}}のJSONの例
+## {% $frontmatter.seo.title %}のJSONの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*オファーディレクトリー*
-
+{% tab label="オファーディレクトリー" %}
 ```json
 {
    "ExchangeRate": "4F069BA8FF484000",
@@ -38,9 +37,9 @@ labels:
    "index": "1BBEF97EDE88D40CEE2ADE6FEF121166AFE80D99EBADB01A4F069BA8FF484000"
 }
 ```
+{% /tab %}
 
-*所有者ディレクトリー*
-
+{% tab label="所有者ディレクトリー" %}
 ```json
 {
    "Flags": 0,
@@ -54,10 +53,11 @@ labels:
    "index": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-## {{currentpage.name}}のフィールド
+## {% $frontmatter.seo.title %}のフィールド
 
 | 名前              | JSONの型 | [内部の型][] | 説明 |
 |-------------------|-----------|---------------|-------------|
@@ -103,7 +103,4 @@ DirectoryNodeのIDを作成するときには、DirectoryNodeが以下のどの�
 * ルートDirectoryNodeのID
 * このオブジェクトのページ番号（ルートDirectoryNodeは0であるため、この値は1以上の整数値です。）
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

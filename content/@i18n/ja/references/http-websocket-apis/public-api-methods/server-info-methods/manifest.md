@@ -8,43 +8,43 @@ labels:
 # manifest
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Manifest.cpp "ソース")
 
-`{{currentpage.name}}`メソッドは、指定したバリデータ公開鍵の現在の"マニフェスト"情報を報告します。"マニフェスト"は、バリデータのマスターキーペアから署名付きの公開鍵(ephemeral signing key)を認証するためのデータブロックです。[更新: rippled 1.7.0][].
+{% code-page-name /%}メソッドは、指定したバリデータ公開鍵の現在の"マニフェスト"情報を報告します。"マニフェスト"は、バリデータのマスターキーペアから署名付きの公開鍵(ephemeral signing key)を認証するためのデータブロックです。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}.
 
 
 ### リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "public_key": "nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
         "public_key":"nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p"
     }]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
-#Syntax: {{currentpage.name}} public_key
-rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
+#Syntax: {% $frontmatter.seo.title %} public_key
+rippled {% $frontmatter.seo.title %} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3p
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメータが含まれます。
 
@@ -57,10 +57,9 @@ rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3
 
 成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -77,9 +76,9 @@ rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -97,9 +96,9 @@ rippled {{currentpage.name}} nHUFE9prPXPrHcG3SkwP1UzAQbSphqyQkQK9ATXLZsfkezhhda3
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -118,8 +117,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- Note, the CLI response above is mocked up to compensate for https://github.com/XRPLF/rippled/issues/3317 -->
 
@@ -128,7 +128,7 @@ Connecting to 127.0.0.1:5005
 | `Field`     | 型         | 説明                                                   |
 |:------------|:-----------|:------------------------------------------------------|
 | `details`   | オブジェクト | _(省略される場合があります)_ このマニフェストに含まれるデータ。サーバがリクエストからの`public_key`に対するマニフェストを持っていない場合は省略されます。その内容の完全な説明については、以下の **オブジェクトの詳細** をご覧ください。 |
-| `manifest`  | 文字列      | _(省略される場合があります)_ base64形式の完全なマニフェストデータ。このデータは[シリアライズ](serialization.html)され、base64エンコードされる前にバイナリになります。サーバがリクエストからの`public_key`に対するマニフェストを持っていない場合は省略されます。 |
+| `manifest`  | 文字列      | _(省略される場合があります)_ base64形式の完全なマニフェストデータ。このデータは[シリアライズ](../../../protocol/binary-format.md)され、base64エンコードされる前にバイナリになります。サーバがリクエストからの`public_key`に対するマニフェストを持っていない場合は省略されます。 |
 | `requested` | 文字列      | リクエストの`public_key`。                               |
 
 #### オブジェクトの詳細
@@ -149,7 +149,4 @@ Connecting to 127.0.0.1:5005
 - `invalidParams` - `public_key`フィールドが見つからないか、正しく指定されていません。
 - `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

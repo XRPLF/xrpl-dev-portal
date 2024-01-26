@@ -11,7 +11,7 @@ The software that powers the XRP Ledger is open source. Anyone can download, mod
 
 ## Core Server Source
 
-The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the [documentation](docs.html) to jump directly into the related source code, or browse the source code on GitHub:
+The software that powers the XRP Ledger is open-source, so anyone can download, modify, extend, or explore it. Community involvement makes it better. Look for "[Source]" links in the [documentation](/docs/) to jump directly into the related source code, or browse the source code on GitHub:
 
 | XRP Ledger Source Code |                                                     |
 |:-----------------------|:----------------------------------------------------|
@@ -85,10 +85,10 @@ The general development path breaks down as follows:
 
 ## Code Flowchart
 
-![Code Flowchart](img/Contribute Code Flowchart.png)
+![Code Flowchart](/img/Contribute Code Flowchart.png)
 
 
 ## See Also
 
 - **Concepts:**
-    - [Amendments](amendments.html)
+    - [Amendments](../../concepts/networks-and-servers/amendments.md)

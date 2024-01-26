@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # Bridge
-_(Requires the [XChainBridge amendment][] :not_enabled:)_
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L286-L300 "Source")
 
@@ -46,7 +46,7 @@ The `Bridge` ledger entry represents a single cross-chain bridge that connects t
 
 ## Bridge Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), `{{currentpage.name}}` entries have the following fields:
+In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
 | Field                      | JSON Type           | Internal Type     | Required? | Description |
 |:---------------------------|:--------------------|:------------------|:----------|:------------|
@@ -68,8 +68,4 @@ In addition to the [common fields](ledger-entry-common-fields.html), `{{currentp
 | `LockingChainDoor`  | String    | Account           | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue             | Yes       | The asset that is locked and unlocked on the locking chain. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

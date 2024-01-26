@@ -8,14 +8,14 @@ labels:
 ---
 # Account Types
 
-{% include '_snippets/issuing-and-operational-addresses-intro.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/issuing-and-operational-addresses-intro.md" /%}
+
 
 ## Funds Lifecycle
 
 When a token issuer follows this separation of roles, funds tend to flow in specific directions, as in the following diagram:
 
-{{ include_svg("img/issued-currency-funds-flow.svg", "Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.")}}
+[{% inline-svg file="/img/issued-currency-funds-flow.svg" /%}](/img/issued-currency-funds-flow.svg "Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.")
 
 The issuing address creates tokens by sending payments to standby addresses. These tokens have negative value from the perspective of the issuing address, since they (often) represent obligations. The same tokens have positive value from other perspectives, including from the perspective of a standby address.
 
@@ -40,7 +40,7 @@ If a malicious actor learns the secret key behind a institution's issuing addres
 
 ### Multiple Issuing Addresses
 
-A financial institution can issue more than one type of token in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all (fungible) tokens issued from an address, including the percentage for [transfer fees](transfer-fees.html) and the [global freeze](freezes.html) status. If the financial institution wants the flexibility to manage settings differently for each type of token, the institution must multiple issuing addresses.
+A financial institution can issue more than one type of token in the XRP Ledger from a single issuing address. However, there are some settings that apply equally to all (fungible) tokens issued from an address, including the percentage for [transfer fees](../tokens/transfer-fees.md) and the [global freeze](../tokens/fungible-tokens/freezes.md) status. If the financial institution wants the flexibility to manage settings differently for each type of token, the institution must multiple issuing addresses.
 
 
 ## Operational Addresses
@@ -70,18 +70,14 @@ If a standby address is compromised, the consequences are like an operational ad
 ## See Also
 
 - **Concepts:**
-    - [Accounts](accounts.html)
-    - [Cryptographic Keys](cryptographic-keys.html)
+    - [Accounts](accounts.md)
+    - [Cryptographic Keys](cryptographic-keys.md)
 - **Tutorials:**
-    - [Assign a Regular Key Pair](assign-a-regular-key-pair.html)
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
+    - [Assign a Regular Key Pair](../../tutorials/manage-account-settings/assign-a-regular-key-pair.md)
+    - [Change or Remove a Regular Key Pair](../../tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
     - [account_info method][]
     - [SetRegularKey transaction][]
-    - [AccountRoot object](accountroot.html)
+    - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

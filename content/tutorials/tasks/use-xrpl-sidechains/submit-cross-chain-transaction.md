@@ -7,9 +7,9 @@ labels:
 ---
 # Submit Cross-chain Transactions
 
-_(Requires the [XChainBridge amendment][] :not_enabled:)_
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 
-This tutorial explains how to create a test account on a locking chain (_Devent_), and transfer XRP to an issuing chain (_Sidechain-Devnet_), using a supported [client library](client-libraries.html) to query and submit transactions. Witness servers are already set up to monitor the XRP-XRP bridge and submit attestations.
+This tutorial explains how to create a test account on a locking chain (_Devent_), and transfer XRP to an issuing chain (_Sidechain-Devnet_), using a supported [client library](../../../references/client-libraries.md) to query and submit transactions. Witness servers are already set up to monitor the XRP-XRP bridge and submit attestations.
 
 ## Prerequisites
 
@@ -129,8 +129,4 @@ If you don't specify an "OtherChainDestination", the account that submitted the 
 
 **Note:** When enough `XChainAddClaimAttestation` signatures are submitted by the witness servers to reach quorum, the funds are released on the issuing chain to the `OtherChainDestination`.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

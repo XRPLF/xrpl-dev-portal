@@ -1,8 +1,12 @@
 ---
 html: key-generation-methods.html
 parent: admin-api-methods.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # Key Generation Methods
 
 Use these methods to generate and manage keys.
+
+
+{% child-pages /%}

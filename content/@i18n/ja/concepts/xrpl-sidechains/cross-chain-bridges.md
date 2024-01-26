@@ -9,7 +9,7 @@ labels:
 ---
 # クロスチェーンブリッジ
 
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 クロスチェーンブリッジは、XRP Ledgerと他のブロックチェーン間でXRPやトークンの移動を可能にします。ブリッジによって接続されたブロックチェーンを呼ぶ場合、一方はロックチェーンであり、もう一方は発行チェーンです。
 
@@ -19,7 +19,7 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 
 **注記:** 資産をクロスチェーンで移動させる場合、ブリッジは特別な _ドアアカウント_ を利用します。ロックチェーンのドアアカウントは資産を保管するために使用され、発行チェーンのドアアカウントはラップされた資産を発行するために使用されます。
 
-ロックチェーンと発行チェーンはともに、独立したノードとバリデータを持つ並列ネットワークとして動作します。2つのチェーン間の取引を監視し、資産が特別に指定されたアカウントに移動したことを証明するために、独立した[Witnessサーバ](witness-servers.html)を利用します。
+ロックチェーンと発行チェーンはともに、独立したノードとバリデータを持つ並列ネットワークとして動作します。2つのチェーン間の取引を監視し、資産が特別に指定されたアカウントに移動したことを証明するために、独立した[Witnessサーバ](witness-servers.md)を利用します。
 
 
 ## ブリッジの仕組み
@@ -38,8 +38,4 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 
 5. 発行チェーン上のWitnessサーバのアカウントに報酬が分配されます。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -13,7 +13,7 @@ XRP is the cryptocurrency supported by the XRP Ledger.
 
 A cryptocurrency is a digital or virtual currency that is secured by cryptography and tracked using a blockchain. The security and integrity of cryptocurrency makes it nearly impossible to counterfeit or double-spend.
 
-![XRP on the blockchain](img/introduction10-xrp-on-chain.png)
+![XRP on the blockchain](/img/introduction10-xrp-on-chain.png)
 
 Cryptocurrencies, digital currencies, and digital assets all fall into the same general category. Cryptocurrencies are:
 
@@ -25,7 +25,7 @@ Cryptocurrencies, digital currencies, and digital assets all fall into the same 
 - not subject to counterfeit
 - do not require a bank account or infrastructure to settle payments.
 
-![Advantages of cryptocurrencies](img/introduction11-all-the-things.png)
+![Advantages of cryptocurrencies](/img/introduction11-all-the-things.png)
 
 Cryptocurrencies are _fungible tokens_. _Fungible_ means that you can replace one token with other tokens of equal value. Postage is an example of a fungible token: if it costs 50 cents to mail a letter, you can use 2 25-cent stamps or 5 10-cent stamps for the postage, because postage stamps are fungible (consistent in relative value and interchangeable).
 
@@ -35,7 +35,7 @@ Cryptocurrencies are compelling for investors and developers because no single e
 
 ## But Why Is It Valuable?
 
-![Advantages of cryptocurrencies](img/introduction12-diamond.png)
+![Advantages of cryptocurrencies](/img/introduction12-diamond.png)
 
 It might seem strange that cryptocurrency is based solely on computer data, and not on any sort of tangible commodity such as precious metal. Traditionally, currencies have been based on cattle, sea shells, rare metals, stones, or other physical objects. But these items have value only because there was agreement between people in a culture.
 
@@ -48,20 +48,20 @@ The value of cryptocurrency comes from the faith that holders place in the curre
 
 The XRP Ledger was built over 2011 – early 2012 by Jed McCaleb, Arthur Britto and David Schwartz. At the time of its creation, there were 100 billion XRP. In September 2012, Jed and Arthur, along with Chris Larsen formed Ripple (the company, called OpenCoin Inc. at the time) and decided to gift 80 billion XRP to Ripple in exchange for Ripple developing on the XRP Ledger.
 
-![One Hundred Billion with a "B"](img/introduction14-hundred-billion.png)
+![One Hundred Billion with a "B"](/img/introduction14-hundred-billion.png)
 
 Since then, the company has regularly sold XRP, used it to strengthen XRP markets and improve network liquidity, and incentivized development of the greater ecosystem. In 2017, the company placed [55 billion XRP in escrow](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  to ensure that the amount entering the general supply [grows predictably](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993)  for the foreseeable future. Ripple's [XRP Market Performance site](https://ripple.com/xrp/?__hstc=78174987.8aa695b6d0420a940041f1842edfd8a6.1692378128025.1692644550213.1692652561840.8&__hssc=78174987.3.1692652561840&__hsfp=3379522993) reports how much XRP the company has available and locked in escrow at present.
 
-![Man with one XRP](img/introduction13-x-prefix.png)
+![Man with one XRP](/img/introduction13-x-prefix.png)
 
 
 ### Naming
 
-Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments [to ripple through multiple hops and currencies](rippling.html). For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) standard. The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
+Originally, the XRP Ledger was called "Ripple" for the way the technology allowed payments [to ripple through multiple hops and currencies](../concepts/tokens/fungible-tokens/rippling.md). For the native asset built into the ledger, the creators chose the ticker symbol "XRP" from the term "ripple credits" or "ripples" and the X prefix for non-national currencies in the [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html) standard. The company registered itself as "Ripple Labs". The name "XRP" came to be used to refer to the asset in all contexts, to avoid confusion with the similar names for the technology and company, and eventually the company shortened its own name to "Ripple". In May 2018, [the community selected a new "X" symbol](https://twitter.com/xrpsymbol/status/1006925937571713025) to represent XRP to differentiate it from the triskelion logo that had previously been used for both the company and the digital asset.
 
 | XRP "X" Logo                           | Ripple triskelion                   |
 |:---------------------------------------|:------------------------------------|
-| !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](img/ripple-triskelion.png) |
+| !["X" logo](assets/img/xrp-x-logo.png) | ![Triskelion](/img/ripple-triskelion.png) |
 
 
 ### Trademark
@@ -70,4 +70,4 @@ Originally, the XRP Ledger was called "Ripple" for the way the technology allowe
 
 The trademark application was registered with the United States Patent and Trademark Office (USPTO) in 2013 with OpenCoin Inc and Ripple Labs Inc as assignees. In 2022, the trademark assignment was updated and is now assigned to the MITTETULUNDUSÜHING XRP LEDGER TRUST (“XRPLF”).
  
-Next: [Crypto Wallets](crypto-wallets.html)
+Next: [Crypto Wallets](crypto-wallets.md)

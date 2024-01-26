@@ -9,7 +9,7 @@ labels:
 ---
 # WebSocketを使用した着信ペイメントの監視
 
-このチュートリアルでは、[WebSocket `rippled` API](http-websocket-apis.html)を使用して、着信[ペイメント](payment-types.html)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
+このチュートリアルでは、[WebSocket `rippled` API](../../references/http-websocket-apis/index.md)を使用して、着信[ペイメント](../../concepts/payment-types/index.md)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
 
 WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、リクエストごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
@@ -18,8 +18,8 @@ WebSocketは、クライアントとサーバーが1つの接続を確立し、�
 ## 前提条件
 
 - このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。
-- 安定したインターネット接続と`rippled`サーバーへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバーのプールに接続します。[独自の`rippled`サーバーを運用](install-rippled.html)する場合は、ローカルでそのサーバーに接続することもできます。
-- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](tokens.html)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](currency-formats.html#xrpの精度)を参照してください。
+- 安定したインターネット接続と`rippled`サーバーへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバーのプールに接続します。[独自の`rippled`サーバーを運用](../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバーに接続することもできます。
+- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)を参照してください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="assets/vendor/big.min.js"></script>
@@ -65,13 +65,13 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-上記の例では、[Test Net](xrp-test-net-faucet.html)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
+上記の例では、[Test Net](/resources/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](public-api-methods.html)以外に、すべての[管理メソッド](admin-api-methods.html)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。
+**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。
 
 例:
 
@@ -121,11 +121,11 @@ WebSocket接続では、複数のメッセージをどちらの方向にも送�
 
   - このレスポンスに対するリクエストで指定された`id`に一致する`id`フィールド（レスポンスが順序どおりに到着しない可能性があるため、これは重要です）。
 
-  - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](response-formatting.html)を示します。文字列値`error`は、[エラー](error-formatting.html)を示します。
+  - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](../../references/http-websocket-apis/api-conventions/response-formatting.md)を示します。文字列値`error`は、[エラー](../../references/http-websocket-apis/api-conventions/error-formatting.md)を示します。
 
-    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバーによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](look-up-transaction-results.html)を参照してください。
+    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバーによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)を参照してください。
 
-- [サブスクリプション](subscribe.html)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfindingリクエスト](path_find.html)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
+- [サブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfindingリクエスト](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
 
 **ヒント:** [JavaScript向けxrpl.js](https://js.xrpl.org/)は、デフォルトでこのステップに対応しています。すべての非同期APIリクエストはPromiseを使用してレスポンスを提供します。また[`.on(event, callback)`メソッド](https://js.xrpl.org/classes/Client.html#on)を使用して、ストリームをリッスンできます。
 
@@ -291,7 +291,7 @@ const log_tx = function(tx) {
 WS_HANDLERS["transaction"] = log_tx
 ```
 
-以下の例では、別のウィンドウまたは別のデバイスで[Transaction Sender](tx-sender.html)を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。
+以下の例では、別のウィンドウまたは別のデバイスで[Transaction Sender](/resources/dev-tools/tx-sender)を開くことと、サブスクライブしているアドレスへのトランザクションの送信を試みます。
 
 {{ start_step("Subscribe") }}
 <label for="subscribe_address">Test Net Address:</label>
@@ -334,37 +334,35 @@ WS_HANDLERS["transaction"] = log_tx
 
 ## {{n.next()}}. 着信ペイメントの読み取り
 
-アカウントをサブスクライブすると、 _アカウントへのすべてのトランザクションとアカウントからのすべてのトランザクション_ 、および _アカウントに間接的に影響を及ぼすトランザクション_ に関するメッセージが表示されます。この例として、[トークン](tokens.html)の取引があります。アカウントが着信ペイメントを受け取った日時を認識することを目的とする場合、トランザクションストリームを絞り込んで、実際に支払われた額に基づいて支払いを処理する必要があります。以下の情報を探します。
+アカウントをサブスクライブすると、 _アカウントへのすべてのトランザクションとアカウントからのすべてのトランザクション_ 、および _アカウントに間接的に影響を及ぼすトランザクション_ に関するメッセージが表示されます。この例として、[トークン](../../concepts/tokens/index.md)の取引があります。アカウントが着信ペイメントを受け取った日時を認識することを目的とする場合、トランザクションストリームを絞り込んで、実際に支払われた額に基づいて支払いを処理する必要があります。以下の情報を探します。
 
-- **`validated`フィールド**は、トランザクションの結果が[最終的である](finality-of-results.html)ことを示します。これは、`accounts`をサブスクライブする場合に常に当てはまりますが、`accounts_proposed`または`transactions_proposed`ストリーム _も_ サブスクライブしている場合は、サーバーは未確認のトランザクションに関して同様のメッセージを同じ接続で送信します。予防策として、`validated`フィールドを常に確認することをお勧めします。
+- **`validated`フィールド**は、トランザクションの結果が[最終的である](../../concepts/transactions/finality-of-results/index.md)ことを示します。これは、`accounts`をサブスクライブする場合に常に当てはまりますが、`accounts_proposed`または`transactions_proposed`ストリーム _も_ サブスクライブしている場合は、サーバーは未確認のトランザクションに関して同様のメッセージを同じ接続で送信します。予防策として、`validated`フィールドを常に確認することをお勧めします。
 
-- **`meta.TransactionResult`フィールド**は、[トランザクションの結果](transaction-results.html)です。結果が`tesSUCCESS`でない場合は、トランザクションは失敗したため、値を送信できません。
+- **`meta.TransactionResult`フィールド**は、[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)です。結果が`tesSUCCESS`でない場合は、トランザクションは失敗したため、値を送信できません。
 
 - **`transaction.Account`** フィールドはトランザクションの送信元です。他の人が送信したトランザクションのみを探している場合は、このフィールドがあなたのアドレスと一致するトランザクションを無視できます（自身に対するクロスカレンシー支払いが _可能である_ 点に注意してください）。
 
 - **`transaction.TransactionType`フィールド**はトランザクションのタイプです。アカウントに通貨を送金できる可能性があるトランザクションのタイプは以下のとおりです。
 
-  - **[Paymentトランザクション][]** はXRPまたは[トークン](tokens.html)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](basic-data-types.html#通貨額の指定)。
+  - **[Paymentトランザクション][]** はXRPまたは[トークン](../../concepts/tokens/index.md)を送金できます。受取人のアドレスを含んでいる`transaction.Destination`フィールドによってこれらを絞り込み、必ず`meta.delivered_amount`を使用して実際に支払われた額を確認します。XRPの額は、[文字列のフォーマットで記述されます](../../references/protocol/data-types/basic-data-types.md#通貨額の指定)。
 
-    **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](partial-payments.html#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
+    **警告:** 代わりに`transaction.Amount`フィールドを使用すると、[Partial Paymentの悪用](../../concepts/payment-types/partial-payments.md#partial-paymentの悪用)に対して脆弱になる可能性があります。不正使用者はこの悪用を行ってあなたをだまし、あなたが支払ったよりも多くの金額を交換または引き出すことができます。
 
   - **[CheckCashトランザクション][]**では、アカウントは別のアカウントの[CheckCreateトランザクション][]によって承認された金額を受け取ることができます。**CheckCashトランザクション**のメタデータを確認すると、アカウントが受け取った通貨の額を確認できます。
 
-  - **[EscrowFinishトランザクション][]** は、以前の[EscrowCreateトランザクション][]によって作成された[Escrow](escrow.html)を終了することでXRPを送金できます。**EscrowFinishトランザクション**のメタデータを確認すると、escrowからXRPを受け取ったアカウントと、その額を確認できます。
+  - **[EscrowFinishトランザクション][]** は、以前の[EscrowCreateトランザクション][]によって作成された[Escrow](../../concepts/payment-types/escrow.md)を終了することでXRPを送金できます。**EscrowFinishトランザクション**のメタデータを確認すると、escrowからXRPを受け取ったアカウントと、その額を確認できます。
 
-  - **[OfferCreateトランザクション][]** はアカウントがXRP Ledgerの[分散型取引所](decentralized-exchange.html)で以前発行したオファーを消費することで、XRPまたはトークンを送金できます。オファーを発行しないと、この方法で金額を受け取ることはできません。メタデータを確認して、アカウントが受け取った通貨（この情報がある場合）と、金額を確認します。
+  - **[OfferCreateトランザクション][]** はアカウントがXRP Ledgerの[分散型取引所](../../concepts/tokens/decentralized-exchange/index.md)で以前発行したオファーを消費することで、XRPまたはトークンを送金できます。オファーを発行しないと、この方法で金額を受け取ることはできません。メタデータを確認して、アカウントが受け取った通貨（この情報がある場合）と、金額を確認します。
 
-  - **[PaymentChannelClaimトランザクション][]** では、[Payment Channel](payment-channels.html)からXRPを送金できます。メタデータを確認して、トランザクションからXRPを受け取ったアカウント（この情報がある場合）を確認します。
+  - **[PaymentChannelClaimトランザクション][]** では、[Payment Channel](../../concepts/payment-types/payment-channels.md)からXRPを送金できます。メタデータを確認して、トランザクションからXRPを受け取ったアカウント（この情報がある場合）を確認します。
 
   - **[PaymentChannelFundトランザクション][]** は、閉鎖された（期限切れの）Payment Channelから送金元にXRPを返金することができます。
 
-- **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](transaction-metadata.html)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](look-up-transaction-results.html)を参照してください。
+- **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](../../references/protocol/transactions/metadata.md)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)を参照してください。
 
 以下のサンプルコードは、上に示したすべてのトランザクションのタイプのトランザクションメタデータを確認し、アカウントが受け取ったXRPの金額をレポートします。
 
-```js
-{% include '_code-samples/monitor-payments-websocket/js/read-amount-received.js' %}
-```
+{% code-snippet file="/_code-samples/monitor-payments-websocket/js/read-amount-received.js" language="js" /%}
 
 {{ start_step("Read Payments") }}
 <button id="tx_read" class="btn btn-primary" disabled="disabled">Start Reading</button>
@@ -469,24 +467,22 @@ $("#tx_read").click((event) => {
 
 ## 次のステップ
 
-- [トランザクションの結果の確認](look-up-transaction-results.html)で、トランザクションの実行内容を確認し、適切に対応するソフトウェアを構築します。
-- あなた自身のアドレスから[XRPの送金](send-xrp.html)を試します。
-- [Escrow](escrow.html)、[Checks](checks.html)または[Payment Channel](payment-channels.html)のような高度なタイプのトランザクションの監視と着信通知へのレスポンスを試します。
+- [トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)で、トランザクションの実行内容を確認し、適切に対応するソフトウェアを構築します。
+- あなた自身のアドレスから[XRPの送金](send-xrp.md)を試します。
+- [Escrow](../../concepts/payment-types/escrow.md)、[Checks](../../concepts/payment-types/checks.md)または[Payment Channel](../../concepts/payment-types/payment-channels.md)のような高度なタイプのトランザクションの監視と着信通知へのレスポンスを試します。
 <!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 
 ## その他のプログラミング言語
 
 多くのプログラミング言語には、WebSocket接続を使用して、データの送受信を行うためのライブラリが用意されています。JavaScript以外の言語で`rippled`のWebSocket APIとの通信を効率良く始めるには、同様な機能を利用している以下の例を参考にしてください。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_Go_
+{% tab label="Go" %}
+{% code-snippet file="/_code-samples/monitor-payments-websocket/go/monitor-incoming-payments.go" language="go" /%}
+{% /tab %}
 
-```go
-{% include '_code-samples/monitor-payments-websocket/go/monitor-incoming-payments.go' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **ヒント:** 目的のプログラミング言語の例がない場合があります。このページの最上部にある「GitHubで編集する」リンクをクリックして、作成したサンプルコードを提供してください。
 
@@ -497,17 +493,14 @@ _Go_
 ## 関連項目
 
 - **コンセプト:**
-  - [トランザクション](transactions.html)
-  - [結果のファイナリティー](finality-of-results.html) - トランザクションの成功また失敗が最終的なものとなるタイミングを判断する方法（簡単な説明: トランザクションが検証済みレジャーにある場合は、その結果とメタデータは最終的なものです）。
+  - [トランザクション](../../concepts/transactions/index.md)
+  - [結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md) - トランザクションの成功また失敗が最終的なものとなるタイミングを判断する方法（簡単な説明: トランザクションが検証済みレジャーにある場合は、その結果とメタデータは最終的なものです）。
 - **チュートリアル:**
-  - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
-  - [トランザクションの結果の確認](look-up-transaction-results.html)
+  - [信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)
+  - [トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
 - **リファレンス:**
-  - [トランザクションのタイプ](transaction-types.html)
-  - [トランザクションのメタデータ](transaction-metadata.html) - メタデータフォーマットとメタデータに表示されるフィールドの概要
-  - [トランザクションの結果](transaction-results.html) - トランザクションのすべての結果コードを掲載した表一覧
+  - [トランザクションのタイプ](../../references/protocol/transactions/types/index.md)
+  - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要
+  - [トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md) - トランザクションのすべての結果コードを掲載した表一覧
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

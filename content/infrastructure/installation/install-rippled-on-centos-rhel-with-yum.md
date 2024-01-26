@@ -14,7 +14,7 @@ These instructions install a binary that has been compiled by Ripple.
 
 ## Prerequisites
 
-Before you install `rippled`, you must meet the [System Requirements](system-requirements.html).
+Before you install `rippled`, you must meet the [System Requirements](system-requirements.md).
 
 
 ## Installation Steps
@@ -27,88 +27,94 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
     - `unstable` for pre-release builds (`release` branch)
     - `nightly` for experimental/development builds (`develop` branch)
 
-    <!-- MULTICODE_BLOCK_START -->
+    {% tabs %}
 
-    *Stable*
+    ```{% label="Stable" %}
+    cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+    [ripple-stable]
+    name=XRP Ledger Packages
+    enabled=1
+    gpgcheck=0
+    repo_gpgcheck=1
+    baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
+    gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
+    REPOFILE
+    ```
 
-        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
-        [ripple-stable]
-        name=XRP Ledger Packages
-        enabled=1
-        gpgcheck=0
-        repo_gpgcheck=1
-        baseurl=https://repos.ripple.com/repos/rippled-rpm/stable/
-        gpgkey=https://repos.ripple.com/repos/rippled-rpm/stable/repodata/repomd.xml.key
-        REPOFILE
+    ```{% label="Pre-release" %}
+    cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+    [ripple-unstable]
+    name=XRP Ledger Packages
+    enabled=1
+    gpgcheck=0
+    repo_gpgcheck=1
+    baseurl=https://repos.ripple.com/repos/rippled-rpm/unstable/
+    gpgkey=https://repos.ripple.com/repos/rippled-rpm/unstable/repodata/repomd.xml.key
+    REPOFILE
+    ```
 
-    *Pre-release*
+    ```{% label="Development" %}
+    cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
+    [ripple-nightly]
+    name=XRP Ledger Packages
+    enabled=1
+    gpgcheck=0
+    repo_gpgcheck=1
+    baseurl=https://repos.ripple.com/repos/rippled-rpm/nightly/
+    gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
+    REPOFILE
+    ```
 
-        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
-        [ripple-unstable]
-        name=XRP Ledger Packages
-        enabled=1
-        gpgcheck=0
-        repo_gpgcheck=1
-        baseurl=https://repos.ripple.com/repos/rippled-rpm/unstable/
-        gpgkey=https://repos.ripple.com/repos/rippled-rpm/unstable/repodata/repomd.xml.key
-        REPOFILE
-
-    *Development*
-
-        cat << REPOFILE | sudo tee /etc/yum.repos.d/ripple.repo
-        [ripple-nightly]
-        name=XRP Ledger Packages
-        enabled=1
-        gpgcheck=0
-        repo_gpgcheck=1
-        baseurl=https://repos.ripple.com/repos/rippled-rpm/nightly/
-        gpgkey=https://repos.ripple.com/repos/rippled-rpm/nightly/repodata/repomd.xml.key
-        REPOFILE
-
-    <!-- MULTICODE_BLOCK_END -->
+    {% /tabs %}
 
 2. Fetch the latest repo updates:
 
-        sudo yum -y update
+    ```
+    sudo yum -y update
+    ```
 
 3. Install the new `rippled` package:
 
-        sudo yum install rippled
+    ```
+    sudo yum install rippled
+    ```
 
 4. Reload systemd unit files:
 
-        sudo systemctl daemon-reload
+    ```
+    sudo systemctl daemon-reload
+    ```
 
 5. Configure the `rippled` service to start on boot:
 
-        sudo systemctl enable rippled.service
+    ```
+    sudo systemctl enable rippled.service
+    ```
 
 6. Start the `rippled` service:
 
-        sudo systemctl start rippled.service
+    ```
+    sudo systemctl start rippled.service
+    ```
 
 
 ## Next Steps
 
-{% include '_snippets/post-rippled-install.md' %}<!--_ -->
+{% partial file="/_snippets/post-rippled-install.md" /%}
 
 
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Consensus](consensus.html)
+    - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
+    - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Configure rippled](configure-rippled.html)
-    - [Troubleshoot rippled](troubleshoot-the-rippled-server.html)
-    - [Get Started with the rippled API](get-started-using-http-websocket-apis.html)
+    - [Configure rippled](../configuration/index.md)
+    - [Troubleshoot rippled](../troubleshooting/index.md)
+    - [Get Started with the rippled API](../../tutorials/get-started/get-started-using-http-websocket-apis.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [`rippled` Commandline Usage](commandline-usage.html)
+    - [rippled API Reference](../../references/http-websocket-apis/index.md)
+        - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

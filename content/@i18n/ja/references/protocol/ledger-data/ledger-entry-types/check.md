@@ -10,9 +10,9 @@ labels:
 
 _（[Checks Amendment][]が必要です）_
 
-`Check`オブジェクトはCheckを表します。Checkは紙の個人小切手に似ており、送金先はCheckを換金して送金元からの資金を獲得できます。（予定されている支払いは送金元によりすでに承認されていますが、換金されるまでは資金の移動は発生しません。[Escrow](escrow.html)とは異なり、Checkの資金は預託されず、資金不足が原因でCheckの換金が失敗することがあります。）
+`Check`オブジェクトはCheckを表します。Checkは紙の個人小切手に似ており、送金先はCheckを換金して送金元からの資金を獲得できます。（予定されている支払いは送金元によりすでに承認されていますが、換金されるまでは資金の移動は発生しません。[Escrow](../../../../concepts/payment-types/escrow.md)とは異なり、Checkの資金は預託されず、資金不足が原因でCheckの換金が失敗することがあります。）
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -33,7 +33,7 @@ _（[Checks Amendment][]が必要です）_
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `Check`オブジェクトのフィールドは次のとおりです。
 
@@ -63,8 +63,6 @@ _（[Checks Amendment][]が必要です）_
 * Checkスペースキー（`0x0043`）
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]の送信者のAccountID。
 * `Check`オブジェクトを作成した[CheckCreateトランザクション][]のシーケンス番号。
-    CheckCreateトランザクションが[Ticket](tickets.html)を使用する場合は、代わりに`TicketSequence`値を使用します。
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+    CheckCreateトランザクションが[Ticket](../../../../concepts/accounts/tickets.md)を使用する場合は、代わりに`TicketSequence`値を使用します。
+
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -9,9 +9,9 @@ status: not_enabled
 # DID
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L330-L341 "ソース)
 
-_([DID Amendment][] :not_enabled: が必要です。)_
+_([DID Amendment][] {% not-enabled /%} が必要です。)_
 
-`DID`のレジャーエントリは、単一の[DID](decentralized-identifiers.html)への参照、またはそれに関連するデータを保持します。
+`DID`のレジャーエントリは、単一の[DID](../../../../concepts/accounts/decentralized-identifiers.md)への参照、またはそれに関連するデータを保持します。
 
 
 ## DID JSONの例
@@ -33,7 +33,7 @@ _([DID Amendment][] :not_enabled: が必要です。)_
 
 ## DIDのフィールド
 
-[共通フィールド][]に加えて、{{currentpage.name}}エントリは以下のフィールドを使用します。
+[共通フィールド][]に加えて、{% $frontmatter.seo.title %}エントリは以下のフィールドを使用します。
 
 | フィールド            | JSONの型  | [内部の型][] | 必須? | 説明  |
 |:--------------------|:----------|:-----------|:------|--------------|
@@ -47,14 +47,14 @@ _([DID Amendment][] :not_enabled: が必要です。)_
 | `URI`               | 文字列     | Blob       | いいえ  | 対応するDIDドキュメントまたはDIDに関連付けられたデータを指すユニバーサルリソース識別子。このフィールドにはHTTP(S)URLまたはIPFS URIを指定できます。このフィールドの有効性はチェックされず、最大長は256バイトに制限されます。 |
 
 
-## {{currentpage.name}}の準備金
+## {% $frontmatter.seo.title %}の準備金
 
-`{{currentpage.name}}`オブジェクトを作成したアカウントには、1つの所有者準備金が発生します。
+{% code-page-name /%}オブジェクトを作成したアカウントには、1つの所有者準備金が発生します。
 
 
-## {{currentpage.name}}のフラグ
+## {% $frontmatter.seo.title %}のフラグ
 
-`{{currentpage.name}}`エントリにはフラグが定義されていません。
+{% code-page-name /%}エントリにはフラグが定義されていません。
 
 
 ## DID IDのフォーマット
@@ -64,8 +64,4 @@ _([DID Amendment][] :not_enabled: が必要です。)_
 1. `DID`のスペースキー(`0x0049`).
 2. DIDを管理するAccountID。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

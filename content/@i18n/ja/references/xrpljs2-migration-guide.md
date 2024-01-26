@@ -11,7 +11,7 @@ parent: https://js.xrpl.org/
 
 ## 差異の概略
 
-xrpl.js v2.0では、多くのフィールドと機能に"新しい"名前があります。より正確には、xrpl.jsは現在、[HTTP / WebSocket APIs](http-websocket-apis.html)と同じ名前を使用しています。XRP Ledgerで実行可能な"OfferCancel"のような[トランザクションタイプ](transaction-types.html)をライブラリが使用する場所では、"orderCancellation"オブジェクトのようなripple-libに特有の構造はなくなりました。ripple-lib 1.xでこれらの構造をリターンする多くのAPIメソッドはなくなりました。2.0では、WebSocket APIと同じフォーマットでリクエスト、レスポンスを行います。
+xrpl.js v2.0では、多くのフィールドと機能に"新しい"名前があります。より正確には、xrpl.jsは現在、[HTTP / WebSocket APIs](http-websocket-apis/index.md)と同じ名前を使用しています。XRP Ledgerで実行可能な"OfferCancel"のような[トランザクションタイプ](protocol/transactions/types/index.md)をライブラリが使用する場所では、"orderCancellation"オブジェクトのようなripple-libに特有の構造はなくなりました。ripple-lib 1.xでこれらの構造をリターンする多くのAPIメソッドはなくなりました。2.0では、WebSocket APIと同じフォーマットでリクエスト、レスポンスを行います。
 
 ripple-lib 1.xからの包括的な`RippleAPI`クラスもなくなりました。xrpl.js 2.xでは、ネットワーク運用のための`Client`クラスがあり、その他全ての運用は厳格にオフラインです。アドレスとキーのための新しい`Wallet`クラス、また、トップレベルの`xrpl`オブジェクトの下にその他のクラスとプロパティがあります。
 ## 定型文での比較
@@ -53,11 +53,11 @@ const xrpl = require("xrpl");
 
 ## バリデーション結果
 
-デフォルトでは、ripple-lib 1.xにおけるほとんどのメソッドは、[コンセンサスプロセス](consensus.html)によって検証された最終結果をリターンするのみでした。xrpl.jsと同等の多くのメソッドは、WebSocket APIをコールするために[`Client.request()`メソッド](https://js.xrpl.org/classes/Client.html#request)を使用します。WebSocket APIにおいて、XRP Ledgerサーバーのデフォルト設定では、検証済みデータだけはなく未検証のデータを含むことがあります。
+デフォルトでは、ripple-lib 1.xにおけるほとんどのメソッドは、[コンセンサスプロセス](../concepts/consensus-protocol/index.md)によって検証された最終結果をリターンするのみでした。xrpl.jsと同等の多くのメソッドは、WebSocket APIをコールするために[`Client.request()`メソッド](https://js.xrpl.org/classes/Client.html#request)を使用します。WebSocket APIにおいて、XRP Ledgerサーバーのデフォルト設定では、検証済みデータだけはなく未検証のデータを含むことがあります。
 
-[分散型取引所](decentralized-exchange.html)の状態を調べる時のように、完了見込みの多数のトランザクション結果が保留中であるため、現時点のオープンレジャーを使用したい場合があります。また、完了したトランザクション結果を取り込んだ検証済みのレジャーを使用したい場合もあります。
+[分散型取引所](../concepts/tokens/decentralized-exchange/index.md)の状態を調べる時のように、完了見込みの多数のトランザクション結果が保留中であるため、現時点のオープンレジャーを使用したい場合があります。また、完了したトランザクション結果を取り込んだ検証済みのレジャーを使用したい場合もあります。
 
-xrpl.js 2.0が`Client.request()`を使用してAPIリクエストをする際、明確に[使用するレジャー番号を指定する](basic-data-types.html#specifying-ledgers)必要があります。例えば、最新の_検証済みレジャー_を使用してトラストラインを調べるためには:
+xrpl.js 2.0が`Client.request()`を使用してAPIリクエストをする際、明確に[使用するレジャー番号を指定する](protocol/data-types/basic-data-types.md#specifying-ledgers)必要があります。例えば、最新の_検証済みレジャー_を使用してトラストラインを調べるためには:
 
 **ripple-lib 1.x:**
 
@@ -82,7 +82,7 @@ console.log(trustlines.result)
 
 xrpl.jsには、トランザクションの署名および送信のための、また、XRP Ledgerブロックチェーンのトランザクション最終結果の確認を待機するための特有の補助機能があります:
 
-- トランザクション送信および[最終結果](finality-of-results.html)の待機のために`submitAndWait()`を使用します。トランザクションが検証された場合、これは[txメソッド][]レスポンスにリゾルブし、そうでない場合、例外処理(exception)となります。例外処理(exception)は、トランザクションが検証されなかったことを保証しません。例えば、サーバーに[より大きなギャップ](reliable-transaction-submission.html#ledger-gaps)がある場合、トランザクションは、そのギャップの中で検証される可能性があります。
+- トランザクション送信および[最終結果](../concepts/transactions/finality-of-results/index.md)の待機のために`submitAndWait()`を使用します。トランザクションが検証された場合、これは[txメソッド][]レスポンスにリゾルブし、そうでない場合、例外処理(exception)となります。例外処理(exception)は、トランザクションが検証されなかったことを保証しません。例えば、サーバーに[より大きなギャップ](../concepts/transactions/reliable-transaction-submission.md#ledger-gaps)がある場合、トランザクションは、そのギャップの中で検証される可能性があります。
 - 即時の送信およびリターンのために`submit()`を使用します。これは[submitメソッド][]レスポンスにリゾルブし、仮の(最終ではない)結果を表示します。もしXRP Ledgerサーバーへのトランザクション送信に問題があった場合、このメソッドは例外処理(exception)のみとなります。
 
 どちらのメソッドに関しても、準備済みトランザクション説明と[`Wallet`インスタンス](#キーおよびウォレット)をパスすることによって、署名済みトランザクションをメソッドに直接パス、もしくは、送信直前にトランザクションに署名することができます。
@@ -105,7 +105,7 @@ try {
 ```
 
 もしくは、トランザクション署名のためにwalletの`sign`メソッドを、送信のために`submitAndWait(tx_blob)`を使用することができます。
-停電やその他災害から復旧させる[信頼できるトランザクションの送信](reliable-transaction-submission.html)のビルドに便利です。(ライブラリは単独でディザスタリカバリに対処しません。)
+停電やその他災害から復旧させる[信頼できるトランザクションの送信](../concepts/transactions/reliable-transaction-submission.md)のビルドに便利です。(ライブラリは単独でディザスタリカバリに対処しません。)
 
 ### LastLedgerSequenceのコントロール
 
@@ -140,7 +140,7 @@ const prepared = await client.autofill({
 
 ## キーおよびウォレット
 
-xrpl.js 2.0は、[暗号鍵](cryptographic-keys.html)の管理およびトランザクションの署名のために、新しい[`Wallet`クラス](https://js.xrpl.org/classes/Wallet.html)を採用します。
+xrpl.js 2.0は、[暗号鍵](../concepts/accounts/cryptographic-keys.md)の管理およびトランザクションの署名のために、新しい[`Wallet`クラス](https://js.xrpl.org/classes/Wallet.html)を採用します。
 これは、ripple-lib 1.xにおいてシードや秘密鍵を取得していた機能に代わるもので、多様なアドレス符号化やタスク生成も処理します。
 
 ### キーの生成
@@ -213,7 +213,7 @@ const signed = wallet.sign(tx_json)
 
 レジャークローズイベントにサブスクリプションするには、`Client.(method)`を使用し、`"streams": ["ledger"]`で[subscribeメソッド][]をコールします。イベントハンドラを追加するには、`Client.on(event_type, callback)`を使用します。これらのコールは任意の順で実行可能です。
 
-1.xからのRippleAPI特有の`ledger`イベントタイプは削除され、代わりに、`ledgerClosed`イベントを使用します。これらのイベントメッセージは同じデータを含んでいますが、フォーマットはWebSocket APIの[レジャーストリーム](subscribe.html#レジャーストリーム)メッセージに対応しています。
+1.xからのRippleAPI特有の`ledger`イベントタイプは削除され、代わりに、`ledgerClosed`イベントを使用します。これらのイベントメッセージは同じデータを含んでいますが、フォーマットはWebSocket APIの[レジャーストリーム](http-websocket-apis/public-api-methods/subscription-methods/subscribe.md#レジャーストリーム)メッセージに対応しています。
 
 例:
 
@@ -255,7 +255,7 @@ ripple-lib 1.xでは、全てのメソッドとプロパティは、`RippleAPI`�
 | RippleAPIインスタンスメソッド/プロパティ | xrpl.jsメソッド/プロパティ | 注記 |
 |-------------------|----------------|---|
 | `new ripple.RippleAPI({server: url})` | [`new xrpl.Client(url)`](https://js.xrpl.org/classes/Client.html#constructor) | 複数のサーバに接続するには`xrpl.BroadcastClient([url1, url2, ..])` を使用してください。 |
-| `request(command, options)` | [`Client.request(options)`](https://js.xrpl.org/classes/Client.html#request) | <ul><li>WebSocket API との一貫性を保つために `command` フィールドを `options` オブジェクトに移動しました。</li><li>1.x では、このメソッドの戻り値 (Promise がリゾルブしたとき) は `result` オブジェクトのみでした。現在は、[WebSocket レスポンスのフォーマット](response-formatting.html) 全体が返されます。同様の値を得るには、戻り値の `result` フィールドを読み取ってください。 |
+| `request(command, options)` | [`Client.request(options)`](https://js.xrpl.org/classes/Client.html#request) | <ul><li>WebSocket API との一貫性を保つために `command` フィールドを `options` オブジェクトに移動しました。</li><li>1.x では、このメソッドの戻り値 (Promise がリゾルブしたとき) は `result` オブジェクトのみでした。現在は、[WebSocket レスポンスのフォーマット](http-websocket-apis/api-conventions/response-formatting.md) 全体が返されます。同様の値を得るには、戻り値の `result` フィールドを読み取ってください。 |
 | `hasNextPage()` | [`xrpl.hasNextPage(response)`](https://js.xrpl.org/modules.html#hasNextPage) | こちらもご覧ください。 [`Client.requestNextPage()`](https://js.xrpl.org/classes/Client.html#requestNextPage) および [`Client.requestAll()`](https://js.xrpl.org/classes/Client.html#requestAll) |
 | `requestNextPage()` | [`Client.requestNextPage()`](https://js.xrpl.org/classes/Client.html#requestNextPage) | |
 | `computeBinaryTransactionHash()` | [`xrpl.hashes.hashTx()`](https://js.xrpl.org/modules.html#hashes) | |
@@ -280,7 +280,7 @@ ripple-lib 1.xでは、全てのメソッドとプロパティは、`RippleAPI`�
 | `getSettings()` | (削除済み - 注記カラムを参照) | 代わりに [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) を使って [account_info メソッド][] を呼び出してください。個々のフラグ設定のブール値を取得するには、 `Flags` フィールドで `xrpl.parseAccountRootFlags()` を使用します。**警告:** `getSettings()`とは異なり、`account_info` は [検証されていない最終結果](#バリデーション結果)を返すことがあります。 |
 | `getAccountInfo(address, options)` | (削除済み - 注記カラムを参照) | 代わりに [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) を使って [account_info メソッド][] を呼び出してください。**警告:** `getAccountInfo()` とは異なり、`account_info` は [検証されていない最終結果](#バリデーション結果) を返すことがあります。 |
 | `getAccountObjects(address, options)` | (削除済み - 注記カラムを参照) | 代わりに [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) を使って [account_objects メソッド][] を呼び出してください。**警告:** `getAccountObjects()` とは異なり、`account_objects` は [検証されていない最終結果](#バリデーション結果) を返すことがあります。 |
-| `getPaymentChannel()` | (削除済み - 注記カラムを参照) | 代わりに [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) を使って [ledger_entry method](ledger_entry.html#get-paychannel-object) を呼び出してください。**警告:** `getPaymentChannel()`とは異なり、`ledger_entry` は [検証されていない最終結果](#バリデーション結果)を返す可能性があります。|
+| `getPaymentChannel()` | (削除済み - 注記カラムを参照) | 代わりに [`Client.request()`](https://js.xrpl.org/classes/Client.html#request) を使って [ledger_entry method](http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md#get-paychannel-object) を呼び出してください。**警告:** `getPaymentChannel()`とは異なり、`ledger_entry` は [検証されていない最終結果](#バリデーション結果)を返す可能性があります。|
 | `getLedger()` | (削除済み - 注記カラムを参照) | `Client.request()`](https://js.xrpl.org/classes/Client.html#request) を使って、正確に [ledger メソッド][] を呼び出してください。**渓谷:** `getLedger()`とは異なり、`ledger` は [検証されていない最終的なレジャー](#バリデーション結果)を返すことがあります。 |
 | `parseAccountFlags()` | [`xrpl.parseAccountRootFlags()`](https://js.xrpl.org/modules.html#parseAccountRootFlags) | 現在は、モジュールの静的メソッドです。 |
 | `prepareTransaction()` | [`Client.autofill()`](https://js.xrpl.org/classes/Client.html#autofill) | 詳しくは、[トランザクション送信](#トランザクションの送信)を参照してください。 |
@@ -332,8 +332,4 @@ ripple-lib 1.xでは、全てのメソッドとプロパティは、`RippleAPI`�
 | `.on("connected", callback)` | [`Client.on("connected", callback)`](https://js.xrpl.org/classes/Client.html#on) | |
 | `.on("disconnected", callback)` | [`Client.on("connected", callback)`](https://js.xrpl.org/classes/Client.html#on) | |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

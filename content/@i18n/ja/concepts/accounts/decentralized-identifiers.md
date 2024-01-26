@@ -8,7 +8,7 @@ labels:
 ---
 # 分散型ID
 
-_([DID Amendment][] :not_enabled: が必要です。)_
+_([DID Amendment][] {% not-enabled /%} が必要です。)_
 
 分散型ID(DID)は、検証可能なデジタルIDを可能にするWorld Wide Web Consortium(W3C)によって定義された新しいタイプの識別子です。DIDはDID所有者の完全な管理下にあり、中央管理レジストリ、IDプロバイダ、認証局から独立しています。
 
@@ -75,8 +75,4 @@ DIDドキュメントの主要なプロパティの詳細については[Decentr
 - DIDドキュメントにはどのような内容でも含めることができますが、検証方法とサービスポイントに限定すべきです。XRPL上のDIDは誰でも解決できるので、個人情報を含めるべきではありません。
 - IPFSは誰でも分散ネットワークのノードにコンテンツを保存できます。よくある誤解は、誰でもそのコンテンツを編集できるということです。しかし、IPFSのコンテンツアドレス指定可能性は、編集されたコンテンツがオリジナルとは異なるアドレスを持つことを意味します。どんなエンティティでもXRPLアカウントの`DIDDocument`または`URI`フィールドでアンカーされたDIDドキュメントをコピーすることはできますが、対応する`DID`オブジェクトを作成した秘密鍵をコントロールしない限り、ドキュメント自体を変更することはできません。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

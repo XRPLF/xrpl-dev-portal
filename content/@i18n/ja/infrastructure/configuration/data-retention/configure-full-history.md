@@ -18,7 +18,7 @@ labels:
 
 ネットワークへの参加、トランザクションの検証、またはネットワークの現在の状態の確認には、全履歴を記録するサーバーは必要ありません。全履歴が有用となるのは、過去に発生したトランザクションの結果や、過去の特定の時点におけるレジャーの状態を確認する場合だけです。このような情報を取得するには、必要とする履歴を保持している他のサーバーを利用する必要があります。
 
-全履歴は保管せずにXRP Ledgerネットワークの履歴の保管に参加したい場合には、[履歴シャーディングを構成](configure-history-sharding.html)すれば、レジャー履歴のグループをランダムに選択して保管できます。
+全履歴は保管せずにXRP Ledgerネットワークの履歴の保管に参加したい場合には、[履歴シャーディングを構成](configure-history-sharding.md)すれば、レジャー履歴のグループをランダムに選択して保管できます。
 
 ## 構成手順
 
@@ -26,32 +26,40 @@ labels:
 
 1. `rippled`サーバーが稼働中の場合は停止します。
 
-        $ sudo systemctl stop rippled
+    ```
+    $ sudo systemctl stop rippled
+    ```
 
 0. サーバーの構成ファイルで`[node_db]`スタンザの`online_delete`設定と`advisory_delete`設定を削除（またはコメントアウト）し、タイプをまだ`NuDB`に変更していない場合は変更します。
 
-        [node_db]
-      	type=NuDB
-      	path=/var/lib/rippled/db/nudb
-      	#online_delete=300000
-      	#advisory_delete=0
+    ```
+    [node_db]
+      type=NuDB
+      path=/var/lib/rippled/db/nudb
+      #online_delete=300000
+      #advisory_delete=0
+    ```
 
-    全履歴が記録されるサーバーでは、レジャーストアーにNuDBを使用します。これは、データベースがこれほど大きいと、RocksDBでは非常に大量のRAMが必要になるためです。詳細は、[容量の計画](capacity-planning.html)を参照してください。パフォーマンス関連の構成オプション`open_files`、`filter_bits`、`cache_mb`、`file_size_mb`、および`file_size_mult`は、RocksDBのみに適用されるオプションであるため、デフォルトの`[node_db]`スタンザから削除できます。
+    全履歴が記録されるサーバーでは、レジャーストアーにNuDBを使用します。これは、データベースがこれほど大きいと、RocksDBでは非常に大量のRAMが必要になるためです。詳細は、[容量の計画](../../installation/capacity-planning.md)を参照してください。パフォーマンス関連の構成オプション`open_files`、`filter_bits`、`cache_mb`、`file_size_mb`、および`file_size_mult`は、RocksDBのみに適用されるオプションであるため、デフォルトの`[node_db]`スタンザから削除できます。
 
-    **注意:** RocksDBで履歴をすでにダウンロードしている場合は、NuDBへ切り替えるときに構成ファイルでデータベースのパスを変更するか、またはそのデータを削除する必要があります。`[node_db]`スタンザの`path`設定**および**`[database_path]`（SQLiteデータベース）設定の両方を変更する必要があります。このようにしないと、サーバーの[起動が失敗する](server-wont-start.html#状態dbエラー)可能性があります。
+    **注意:** RocksDBで履歴をすでにダウンロードしている場合は、NuDBへ切り替えるときに構成ファイルでデータベースのパスを変更するか、またはそのデータを削除する必要があります。`[node_db]`スタンザの`path`設定**および**`[database_path]`（SQLiteデータベース）設定の両方を変更する必要があります。このようにしないと、サーバーの[起動が失敗する](../../troubleshooting/server-wont-start.md#状態dbエラー)可能性があります。
 
-    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 0. サーバーの構成ファイルで`[ledger_history]`スタンザを`full`に設定します。
 
-        [ledger_history]
-        full
+    ```
+    [ledger_history]
+    full
+    ```
 
 0. 全履歴が保管されている1台以上のサーバーと明示的にピア接続するように、サーバーの構成ファイルで`[ips_fixed]`スタンザを設定します。
 
-        [ips_fixed]
-        169.55.164.20
-        50.22.123.215
+    ```
+    [ips_fixed]
+    169.55.164.20
+    50.22.123.215
+    ```
 
     サーバーのダイレクトピアの1つが使用可能な履歴データを保持している場合に限り、サーバーはピアツーピアネットワークから履歴データをダウンロードできます。全履歴をダウンロードする最も容易な方法は、すでに全履歴を保管しているサーバーとピア接続することです。
 
@@ -59,29 +67,37 @@ labels:
 
 0. 全履歴が記録されている別のサーバーからのデータベースダンプがあり、このダンプをベースとして利用できる場合は、サーバーの構成ファイルで`[import_db]`スタンザがインポート対象データを指し示すように設定します。（それ以外の場合はこのステップをスキップします。）
 
-        [import_db]
-      	type=NuDB
-      	path=/tmp/full_history_dump/
+    ```
+    [import_db]
+      type=NuDB
+      path=/tmp/full_history_dump/
+    ```
 
 0. 以前に稼働していた`rippled`からの既存のデータベースファイルがサーバーにある場合は、そのデータベースファイルを削除します。
 
     オンライン削除を無効にすると、サーバーはオンライン削除が有効であった間にダウンロードしたデータをすべて無視するため、ディスク容量を空けることができます。次に例を示します。
 
-        rm -r /var/lib/rippled/db/*
+    ```
+    rm -r /var/lib/rippled/db/*
+    ```
 
     **警告:** フォルダーを削除する前に、保持したいファイルがそのフォルダーに含まれていないことを確認してください。通常は安全に`rippled`サーバーのデータベースファイルをすべて削除できますが、この操作は、設定されているデータベースフォルダーが`rippled`のデータベース以外には使用されていない場合にのみ行ってください。
 
 0. `rippled`サーバーを起動し、インポート可能なデータベースダンプがある場合にはインポートします。
 
-    `[Import_db]`で構成されている読み取り対象データベースダンプがある場合は、`--import` [コマンドラインオプション](commandline-usage.html#デーモンモードのオプション)を指定してサーバーを明示的に起動します。
+    `[Import_db]`で構成されている読み取り対象データベースダンプがある場合は、`--import` [コマンドラインオプション](../../commandline-usage.md#デーモンモードのオプション)を指定してサーバーを明示的に起動します。
 
-        $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/rippled.cfg --import
+    ```
+    $ /opt/ripple/bin/rippled --conf /etc/opt/ripple/rippled.cfg --import
+    ```
 
     大量のデータベースダンプのインポートには数分から数時間かかることがあります。インポート中はサーバーは完全には起動せず、ネットワークと同期しません。インポートの状況を確認するには、サーバーログを参照してください。
 
     データベースダンプをインポートしない場合は、サーバーを通常の方法で起動します。
 
-        $ sudo systemctl start rippled
+    ```
+    $ sudo systemctl start rippled
+    ```
 
 0. `[import_db]`スタンザをサーバーの構成ファイルに追加した場合は、インポートの完了後にそのスタンザを削除してください。
 
@@ -93,8 +109,4 @@ labels:
 
     本番環境のXRP Ledgerの履歴で最も古い利用可能なレジャーバージョンは、レジャーインデックス**32570**です。レジャー履歴の最初の約2週間分は、当時のサーバーのバグが原因で失われています。Test Netやその他のチェーンでは通常、履歴の最初のバージョンはレジャーインデックス**1**です。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -8,9 +8,9 @@ labels:
 # download_shard
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
 
-サーバーに対し、外部ソースから特定の[履歴レジャーデータのシャード](history-sharding.html)をダウンロードするように指示します。`rippled`サーバーで[履歴シャードが保管されるように設定する](configure-history-sharding.html)必要があります。[新規: rippled 1.1.0][]
+サーバーに対し、外部ソースから特定の[履歴レジャーデータのシャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)をダウンロードするように指示します。`rippled`サーバーで[履歴シャードが保管されるように設定する](../../../../infrastructure/configuration/data-retention/configure-history-sharding.md)必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}新規: rippled 1.1.0{% /badge %}
 
-_`download_shard`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`download_shard`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 外部ソースからHTTPSを使用してシャードが[lz4圧縮](https://lz4.github.io/lz4/) [tarアーカイブ](https://en.wikipedia.org/wiki/Tar_(computing))として提供される必要があります。アーカイブには、NuDB形式のシャードディレクトリとデータファイルが含まれている必要があります。
 
@@ -20,10 +20,9 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "download_shard",
@@ -34,9 +33,9 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "download_shard",
@@ -51,8 +50,9 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 リクエストには以下のフィールドが含まれます。
@@ -61,23 +61,22 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
 |:-----------|:--------|:------------------------------------------------------|
 | `shards` | 配列 | ダウンロードするシャードとダウンロード元を記述したShard Descriptorオブジェクト（以下の説明を参照）のリスト。 |
 
-`validate`のフィールドは廃止予定であり、今後予告なしに削除される可能性があります。`rippled`は全てのシャードの検証を実行します。[更新: rippled 1.6.0][]
+`validate`のフィールドは廃止予定であり、今後予告なしに削除される可能性があります。`rippled`は全てのシャードの検証を実行します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}更新: rippled 1.6.0{% /badge %}
 
 `shards`配列の各**Shard Descriptorオブジェクト**には以下のフィールドが含まれています。
 
 | `Field` | 型     | 説明                                                      |
 |:--------|:-------|:----------------------------------------------------------|
 | `index` | 数値 | 取得するシャードのインデックス。本番環境のXRP Ledgerでは、最も古いシャードのインデックスは1であり、このシャードにはレジャー32750～32768が含まれています。次のシャードのインデックスは2であり、このシャードにはレジャー32769～49152が含まれています。 |
-| `url` | 文字列 | このシャードをダウンロードできるURL。このURLは`https://`か`http://`かで始まり`.tar.lz4`（大文字小文字の区別なし）で終わる必要があります。このダウンロードを提供するWebサーバーは、信頼できる認証局（CA）によって署名された有効なTLS証明書を使用する必要があります。（`rippled`はオペレーティングシステムのCAストアーを使用します。） [更新: rippled 1.7.0][] |
+| `url` | 文字列 | このシャードをダウンロードできるURL。このURLは`https://`か`http://`かで始まり`.tar.lz4`（大文字小文字の区別なし）で終わる必要があります。このダウンロードを提供するWebサーバーは、信頼できる認証局（CA）によって署名された有効なTLS証明書を使用する必要があります。（`rippled`はオペレーティングシステムのCAストアーを使用します。） {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %} |
 
 ### レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -87,10 +86,9 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
   "type": "response"
 }
 ```
+{% /tab %}
 
-
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -101,9 +99,9 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
   }
 }
 ```
+{% /tab %}
 
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -120,7 +118,4 @@ _`download_shard`メソッドは、権限のないユーザーは実行できな
 - `tooBusy` - サーバーはすでに、ピアツーピアネットワークから、または以前の`download_shard`リクエストの結果として、シャードをダウンロード中です。
 - `invalidParams` - リクエストで1つ以上の必須フィールドが省略されていたか、または指定されたフィールドのデータタイプが誤っています。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

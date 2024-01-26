@@ -19,7 +19,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 
 ## Amendment Process
 
-The [Contributing Code to the XRP Ledger](contribute-code-flow.html) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
+The [Contributing Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
 
 After the code for an amendment is built into a software release, the process to enable it happens within the XRP Ledger network, which checks the status of amendments every _flag_ ledger (typically about 15 minutes apart).
 
@@ -39,9 +39,9 @@ Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have spe
 
 ## Amendment Voting
 
-Each version of `rippled` is compiled with a list of [known amendments](known-amendments.html) and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
+Each version of `rippled` is compiled with a list of [known amendments](../../resources/known-amendments.md) and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
 
-**Note:** The default vote can change between software releases. [Updated in: rippled 1.8.1][]
+**Note:** The default vote can change between software releases. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}
 
 Amendments must maintain two weeks of support from more than 80% of trusted validators to be enabled. If support drops below 80%, the amendment is temporarily rejected, and the two week period restarts. Amendments can gain and lose a majority any number of times before they become permanently enabled.
 
@@ -76,16 +76,12 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 ## See Also
 
 - **Concepts:**
-    - [Consensus](consensus.html)
+    - [Consensus](../consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run rippled as a Validator](run-rippled-as-a-validator.html)
-    - [Configure Amendment Voting](configure-amendment-voting.html)
-    - [Contribute Code to the XRP Ledger](contribute-code-flow.html)
+    - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
+    - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
+    - [Contribute Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md)
 - **References:**
-    - [Known Amendments](known-amendments.html)
+    - [Known Amendments](../../resources/known-amendments.md)
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

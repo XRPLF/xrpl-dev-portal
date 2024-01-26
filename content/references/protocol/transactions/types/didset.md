@@ -10,12 +10,12 @@ status: not_enabled
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/DID.cpp "Source")
 
-_(Requires the [DID amendment][] :not_enabled:)_
+_(Requires the [DID amendment][] {% not-enabled /%})_
 
-Creates a new [DID ledger entry](did.html) or updates the fields of an existing one.
+Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or updates the fields of an existing one.
 
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -29,7 +29,7 @@ Creates a new [DID ledger entry](did.html) or updates the fields of an existing 
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------|:----------|:------------------|:----------|:------------|
@@ -44,15 +44,11 @@ You must include either `Data`, `DIDDocument`, or `URI` when you submit the `DID
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|
 | `tecEMPTY_DID`      | The transaction will create an empty DID ledger entry. Check that your updates don't remove the `Data`, `DIDDocument`, and `URI` fields. |
 | `temEMPTY_DID`      | The transaction is malformed and missing any DID information. Include either the `Data`, `DIDDocument`, or `URI` fields. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

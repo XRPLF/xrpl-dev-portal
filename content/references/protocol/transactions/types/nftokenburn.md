@@ -17,7 +17,7 @@ If this operation succeeds, the corresponding `NFToken` is removed. If this oper
 _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -29,9 +29,9 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenBurn%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227B9EFDFDC801C58F2B61B89AA2751634F49CE2A93923671FF0F4F099C7EE17FF%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenBurn%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%227B9EFDFDC801C58F2B61B89AA2751634F49CE2A93923671FF0F4F099C7EE17FF%22%2C%22binary%22%3Afalse%7D)
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|
@@ -41,7 +41,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code         | Description                                             |
 |:-------------------|:--------------------------------------------------------|
@@ -49,7 +49,4 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `tecNO_ENTRY`      | The specified `TokenID` was not found.                  |
 | `tecNO_PERMISSION` | The account does not have permission to burn the token. |
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

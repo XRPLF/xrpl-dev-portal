@@ -25,9 +25,9 @@ These types of errors can potentially lead to serious problems.  For example, an
 
 ## Background
 
-The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](consensus.html), the network agrees on the order in which transactions are applied to (or omitted from) the ledger.
+The XRP Ledger protocol provides a ledger shared across all servers in the network.  Through a [process of consensus and validation](../consensus-protocol/index.md), the network agrees on the order in which transactions are applied to (or omitted from) the ledger.
 
-Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](transaction-cost.html) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
+Well-formed transactions submitted to trusted XRP Ledger servers are usually validated or rejected in a matter of seconds.  There are cases, however, in which a well-formed transaction is neither validated nor rejected this quickly. One specific case can occur if the global [transaction cost](transaction-cost.md) increases after an application sends a transaction.  If the transaction cost increases above what has been specified in the transaction, the transaction is not included in the next validated ledger. If at some later date the global transaction cost decreases, the transaction could be included in a later ledger. If the transaction does not specify an expiration, there is no limit to how much later this can occur.
 
 If a power or network outage occurs, applications face more challenges finding the status of submitted transactions. Applications must take care both to properly submit a transaction and later to properly get authoritative results.
 
@@ -36,14 +36,14 @@ If a power or network outage occurs, applications face more challenges finding t
 
 ### Transaction Timeline
 
-When you submit a transaction to the XRP Ledger, regardless of whether you used [HTTP API](http-websocket-apis.html), a [client library](client-libraries.html), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
+When you submit a transaction to the XRP Ledger, regardless of whether you used [HTTP API](../../references/http-websocket-apis/index.md), a [client library](../../references/client-libraries.md), or some other app, process of applying the transaction to the ledger is the same. That process goes like this:
 
 1. An account owner creates and signs a transaction.
 2. The owner submits the transaction to the network as a candidate transaction.
     - Malformed or nonsensical transactions are rejected immediately.
     - Well-formed transactions may provisionally succeed, then later fail.
     - Well-formed transactions may provisionally fail, then later succeed.
-    - Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, the exchange rate when [trading currencies](decentralized-exchange.html) may vary.)
+    - Well-formed transactions may provisionally succeed, and then later succeed in a slightly different way. (For example, the exchange rate when [trading currencies](../tokens/decentralized-exchange/index.md) may vary.)
 3. Through consensus and validation, the transaction is applied to the ledger. Even some failed transactions are applied, to enforce a cost for being propagated through the network.
 4. The validated ledger includes the transaction, and its effects are reflected in the ledger state.
     - Transaction results are no longer provisional, success or failure is now final and immutable.
@@ -64,11 +64,11 @@ Each validated ledger has a canonical order in which transactions apply. This or
 
 <!-- SPELLING_IGNORE: lastledgersequence -->
 
-`LastLedgerSequence` is an optional [parameter of all transactions](transaction-common-fields.html).  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger version.  The XRP Ledger never includes a transaction in a ledger version whose ledger index is higher than the transaction's `LastLedgerSequence` parameter.
+`LastLedgerSequence` is an optional [parameter of all transactions](../../references/protocol/transactions/common-fields.md).  This instructs the XRP Ledger that a transaction must be validated on or before a specific ledger version.  The XRP Ledger never includes a transaction in a ledger version whose ledger index is higher than the transaction's `LastLedgerSequence` parameter.
 
 Use the `LastLedgerSequence` parameter to prevent undesirable cases where a transaction is not confirmed promptly but could be included in a future ledger.  You should specify the `LastLedgerSequence` parameter on every transaction.  Automated processes should use a value of 4 greater than the last validated ledger index to make sure that a transaction is validated or rejected in a predictable and prompt way.
 
-Applications using the [HTTP / WebSocket APIs](http-websocket-apis.html) should explicitly specify a `LastLedgerSequence` when submitting transactions. Some [client libraries](client-libraries.html) can also [auto-fill](transaction-common-fields.html#auto-fillable-fields) a reasonable value for `LastLedgerSequence`; the details vary by library.
+Applications using the [HTTP / WebSocket APIs](../../references/http-websocket-apis/index.md) should explicitly specify a `LastLedgerSequence` when submitting transactions. Some [client libraries](../../references/client-libraries.md) can also [auto-fill](../../references/protocol/transactions/common-fields.md#auto-fillable-fields) a reasonable value for `LastLedgerSequence`; the details vary by library.
 
 
 
@@ -76,7 +76,7 @@ Applications using the [HTTP / WebSocket APIs](http-websocket-apis.html) should 
 
 The following diagram summarizes the recommended flow for submitting a transaction and determining its outcome:
 
-{{ include_svg("img/reliable-tx-submission.svg", "Reliable transaction submission flowchart") }}
+[{% inline-svg file="/img/reliable-tx-submission.svg" /%}](/img/reliable-tx-submission.svg "Reliable transaction submission flowchart")
 
 
 ### Reliable Transactions Submission
@@ -151,32 +151,32 @@ For each persisted transaction without validated result:
 
 The difference between the two transaction failure cases (labeled (1) and (2) in the pseudo-code) is whether the transaction was included in a validated ledger. In both cases, you should decide carefully how to process the failure.
 
-- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](transaction-cost.html), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](paths.html), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
+- In failure case (1), the transaction was included in a ledger and destroyed the [XRP transaction cost](transaction-cost.md), but did nothing else. This could be caused by a lack of liquidity, improperly specified [paths](../tokens/fungible-tokens/paths.md), or other circumstances. For many such failures, immediately retrying with a similar transaction is likely to have the same result. You may get different results if you wait for circumstances to change.
 
 - In failure case (2), the transaction was not included in a validated ledger, so it did nothing at all, not even destroy the transaction cost. This could be the result of the transaction cost being too low for the current load on the XRP Ledger, the `LastLedgerSequence` being too soon, or it could be due to other conditions such as an unstable network connection.
 
     - In contrast to failure case (1), it is more likely that a new transaction is likely to succeed if you change only the `LastLedgerSequence` and possibly the `Fee` and submit again. Use the same `Sequence` number as the original transaction.
 
-    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](tef-codes.html), the transaction is less likely to succeed without further modification.
+    - It is also possible that the transaction could not succeed due to the state of the ledger, for example because the sending address disabled the key pair used to sign the transaction. If the transaction's provisional result was a [`tef`-class code](../../references/protocol/transactions/transaction-results/tef-codes.md), the transaction is less likely to succeed without further modification.
 
 - Failure case (3) represents an unexpected state. When a transaction is not processed, you should check the  `Sequence` number of the sending account in the most recent validated ledger. (You can use the [account_info method][] to do so.) If the account's `Sequence` value in the latest validated ledger is higher than the transaction's `Sequence` value, then a different transaction with the same `Sequence` value has been included in a validated ledger. If your system is not aware of the other transaction, you are in an unexpected state and should stop processing until you have determined why that has happened; otherwise, your system might send multiple transactions trying to do the same thing. The steps you should take depend on specifically what caused it. Some possibilities include:
 
-    - The previously-sent transaction was [malleable](transaction-malleability.html) and it actually was included in a validated ledger, but with a different hash than you expected. This can happen if you specify a set of flags that do not include the `tfFullyCanonicalSig` flag or if the transaction is multi-signed by more signers than necessary. If this is the case, save the different hash and the final outcome of the transaction, then resume normal activities.
+    - The previously-sent transaction was [malleable](finality-of-results/transaction-malleability.md) and it actually was included in a validated ledger, but with a different hash than you expected. This can happen if you specify a set of flags that do not include the `tfFullyCanonicalSig` flag or if the transaction is multi-signed by more signers than necessary. If this is the case, save the different hash and the final outcome of the transaction, then resume normal activities.
 
-    - You [canceled](cancel-or-skip-a-transaction.html) and replaced the transaction, and the replacement transaction was processed instead. If you are recovering from an outage, it's possible you may have lost record of the replacement transaction. If this is the case, the transaction you were originally looking up has failed permanently, and the final outcome of the replacement transaction is recorded in a validated ledger version. Save both final outcomes, check for any other missing or replaced transactions, then resume normal activities.
+    - You [canceled](finality-of-results/canceling-a-transaction.md) and replaced the transaction, and the replacement transaction was processed instead. If you are recovering from an outage, it's possible you may have lost record of the replacement transaction. If this is the case, the transaction you were originally looking up has failed permanently, and the final outcome of the replacement transaction is recorded in a validated ledger version. Save both final outcomes, check for any other missing or replaced transactions, then resume normal activities.
 
     - If you have two or more transaction-sending systems in an active/passive failover configuration, it's possible that the passive system mistakenly believes the active system has failed, and has become active while the original active system is still also sending transactions. Check the connectivity between the systems and ensure that at most one of them is active. Check your account's transaction history (for example, with the [account_tx method][]) and record the final outcome of all transactions that were included in validated ledgers. Any different transactions with the same `Sequence` numbers have failed permanently; save those final outcomes as well. When you have finished reconciling the differences from all the systems and have resolved the issues that made the systems activate simultaneously, resume normal activities.
 
-        **Tip:** The [`AccountTxnID` field](transaction-common-fields.html#accounttxnid) can help prevent redundant transactions from succeeding in this situation.
+        **Tip:** The [`AccountTxnID` field](../../references/protocol/transactions/common-fields.md#accounttxnid) can help prevent redundant transactions from succeeding in this situation.
 
-    - A malicious actor may have used your secret key to send a transaction. If this is the case, [rotate your key pair](change-or-remove-a-regular-key-pair.html) if you can, and check for other transactions sent. You should also audit your network to determine if the secret key was part of a larger intrusion or security leak. When you successfully rotate your key pair and are certain that the malicious actor no longer has access to your accounts and systems, you can resume normal activities.
+    - A malicious actor may have used your secret key to send a transaction. If this is the case, [rotate your key pair](../../tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md) if you can, and check for other transactions sent. You should also audit your network to determine if the secret key was part of a larger intrusion or security leak. When you successfully rotate your key pair and are certain that the malicious actor no longer has access to your accounts and systems, you can resume normal activities.
 
 
 #### Ledger Gaps
 
 If your server does not have continuous ledger history from when the transaction was originally submitted up to and including the ledger identified by `LastLedgerSequence`, you may not know the final outcome of the transaction. (If it was included in one of the ledger versions your server is missing, you do not know whether it succeeded or failed.)
 
-Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](ledger-history.html). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can request your server to acquire historical ledger versions using the [ledger_request method][], but even so you may not be able to look up transaction outcomes from ledger versions that are outside of your server's configured history range.
+Your `rippled` server should automatically acquire the missing ledger versions when it has spare resources (CPU/RAM/disk IO) to do so, unless the ledgers are older than its [configured amount of history to store](../networks-and-servers/ledger-history.md). Depending on the size of the gap and the resource usage of your server, acquiring missing ledgers should take a few minutes. You can request your server to acquire historical ledger versions using the [ledger_request method][], but even so you may not be able to look up transaction outcomes from ledger versions that are outside of your server's configured history range.
 
 Alternatively, you can look up the status of the transaction using a different `rippled` server that already has the needed ledger history, such as Ripple's full-history servers at `s2.ripple.com`. Only use a server you trust for this purpose. A malicious server could be programmed to provide false information about the status and outcome of a transaction.
 
@@ -186,7 +186,7 @@ Alternatively, you can look up the status of the transaction using a different `
 To implement the transaction submission and verification best practices, applications need to do the following:
 
 1. Determine the signing account's next sequence number
-    * Each transaction has an account-specific [sequence number](basic-data-types.html#account-sequence).  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
+    * Each transaction has an account-specific [sequence number](../../references/protocol/data-types/basic-data-types.md#account-sequence).  This guarantees the order in which transactions signed by an account are executed and makes it safe to resubmit a transaction without danger of the transaction being applied to the ledger more than once.
 3. Decide on a `LastLedgerSequence`
      * A transaction's `LastLedgerSequence` is calculated from the last validated ledger index.
 3. Construct and sign the transaction
@@ -198,8 +198,8 @@ To implement the transaction submission and verification best practices, applica
 
 How the application does these actions depends on the API the application uses.  An application may use any of the following interfaces:
 
-- The [HTTP / WebSocket APIs](http-websocket-apis.html) provided directly by XRP Ledger servers
-- A [client library](client-libraries.html)
+- The [HTTP / WebSocket APIs](../../references/http-websocket-apis/index.md) provided directly by XRP Ledger servers
+- A [client library](../../references/client-libraries.md)
 - Other middleware or APIs layered on top of the above APIs
 
 
@@ -541,13 +541,10 @@ Finally the server may show one or more gaps in the transaction history. The `co
 
 ## See Also
 
-- [Transaction Formats](transaction-formats.html)
-- [Transaction Cost](transaction-cost.html)
-- [Transaction Malleability](transaction-malleability.html)
-- [Overview of XRP Ledger Consensus Process](consensus.html)
-- [Consensus Principles and Rules](consensus-principles-and-rules.html)
+- [Transaction Formats](../../references/protocol/transactions/index.md)
+- [Transaction Cost](transaction-cost.md)
+- [Transaction Malleability](finality-of-results/transaction-malleability.md)
+- [Overview of XRP Ledger Consensus Process](../consensus-protocol/index.md)
+- [Consensus Principles and Rules](../consensus-protocol/consensus-principles-and-rules.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

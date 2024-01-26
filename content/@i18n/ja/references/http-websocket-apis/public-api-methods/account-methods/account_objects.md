@@ -13,25 +13,24 @@ labels:
 
 アカウントの`account_objects`レスポンスに含まれる可能性のあるオブジェクトのタイプには以下のものがあります。
 
-- [Offerエントリ](offer.html): 現在処理中であり、資金化されていない、または有効期限切れで削除されていない注文情報。（詳細は、[オファーのライフサイクル](offers.html#オファーのライフサイクル)をご覧ください。）
-- [RippleStateエントリ](ripplestate.html): このアカウント側がデフォルト状態にないトラストライン。
-- アカウントの[SignerList](signerlist.html): アカウントで[マルチシグ](multi-signing.html)が有効な場合。
-- [Escrowエントリ](escrow.html): 実行されていないかまたはキャンセルされていない保留中の支払い。
-- [PayChannelエントリ](paychannel.html): 現在開いているペイメントチャネル。
-- [Checkエントリ](check.html): 保留中のCheck。
-- [DepositPreauthエントリ](depositpreauth-object.html): 入金の事前承認。
-- [Ticketエントリ](tickets.html): Ticket情報。
-- [NFTokenOfferエントリ](nftokenoffer.html): NFTを購入・売却するためのオファー。
-- [NFTokenPageエントリ](nftokenpage.html): NFTの集合。 [新規: rippled 1.11.0][]
+- [Offerエントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md): 現在処理中であり、資金化されていない、または有効期限切れで削除されていない注文情報。（詳細は、[オファーのライフサイクル](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)をご覧ください。）
+- [RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md): このアカウント側がデフォルト状態にないトラストライン。
+- アカウントの[SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md): アカウントで[マルチシグ](../../../../concepts/accounts/multi-signing.md)が有効な場合。
+- [Escrowエントリ](../../../../concepts/payment-types/escrow.md): 実行されていないかまたはキャンセルされていない保留中の支払い。
+- [PayChannelエントリ](../../../protocol/ledger-data/ledger-entry-types/paychannel.md): 現在開いているペイメントチャネル。
+- [Checkエントリ](../../../protocol/ledger-data/ledger-entry-types/check.md): 保留中のCheck。
+- [DepositPreauthエントリ](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md): 入金の事前承認。
+- [Ticketエントリ](../../../../concepts/accounts/tickets.md): Ticket情報。
+- [NFTokenOfferエントリ](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md): NFTを購入・売却するためのオファー。
+- [NFTokenPageエントリ](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md): NFTの集合。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %}
 
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -43,9 +42,9 @@ labels:
   "limit": 10
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_objects",
@@ -60,23 +59,23 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: account_objects <account> [<ledger>]
 rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
 | `Field`                  | 型                    | 必須? | 説明           |
 |:-------------------------|:----------------------|:-----|:---------------|
 | `account`                | 文字列                 | はい  | アカウントの一意のIDであり、最も一般的にはアカウントのアドレスが使用されます。 |
-| `deletion_blockers_only` | Boolean               | いいえ | `true`の場合、このアカウントが[削除](deleting-accounts.html)されるのをブロックするオブジェクトのみをレスポンスに含めます。デフォルトは`false`です。 [新規: rippled 1.4.0][] |
+| `deletion_blockers_only` | Boolean               | いいえ | `true`の場合、このアカウントが[削除](../../../../concepts/accounts/deleting-accounts.md)されるのをブロックするオブジェクトのみをレスポンスに含めます。デフォルトは`false`です。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
 | `ledger_hash`            | [ハッシュ][]           | いいえ | 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]をご覧ください） |
 | `ledger_index`           | [レジャーインデックス][] | いいえ | 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]ををご覧ください） |
 | `limit`                  | 符号なし整数            | いいえ | 結果に含めることができるオブジェクトの最大数。非管理者接続では10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |
@@ -89,10 +88,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 8,
@@ -350,9 +348,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 {
@@ -609,9 +607,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
     }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 {
    "result" : {
@@ -1201,8 +1199,9 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -1224,8 +1223,4 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 * `actNotFound` - リクエストの`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

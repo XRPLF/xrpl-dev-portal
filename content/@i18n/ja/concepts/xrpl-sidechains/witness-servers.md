@@ -10,7 +10,7 @@ labels:
 # Witnessサーバ
 [[ソース]](https://github.com/seelabs/xbridge_witness "ソース")
 
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 Witnessサーバは、ロックチェーンと発行チェーン間のトランザクションの中立的な監視人として機能します。このサーバはブリッジの両側のドアアカウントをリッスンし、トランザクションが発生したことを確認する証明書に署名します。サーバは基本的に、送金元アカウントで価値がロックまたはバーンされたことを"証明"するオラクルとして機能し、これにより受取人は送金先アカウントで同等の資金を(作成またはロック解除によって)請求することができます。
 
@@ -145,7 +145,4 @@ Witnessサーバはコマンドライン引数`--conf`で指定されたJSON設�
 | `LockingChainDoor`  | 文字列    | Account    | はい   | ロックチェーンのドアアカウント。 |
 | `LockingChainIssue` | Issue    | Issue      | はい   | ロックチェーンでロック、アンロックされる資産。 |
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

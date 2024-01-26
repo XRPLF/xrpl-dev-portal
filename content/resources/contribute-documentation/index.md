@@ -93,7 +93,8 @@ The Markdown file itself should start with a frontmatter stanza such as the foll
 ---
 html: the-rippled-server.html
 parent: concepts.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
 ---
 ```
@@ -167,3 +168,6 @@ The fronmatter for a Markdown file in this repo can contain arbitrary key-value 
 | `filters`            | Array of Strings | A list of additional filters to use on this page. [Filters](https://github.com/ripple/dactyl/blob/master/README.md#filters) are Python scripts that provide additional pre- or post-processing of page contents. |
 | `canonical_url`      | String           | Provides the canonical URL for a page that takes query parameters. Search engines and other tools may use this when linking to the page. |
 | `embed_xrpl_js`      | Boolean          | Use `true` to have the latest version of [xrpl.js](https://js.xrpl.org) loaded on the page. |
+
+
+{% child-pages /%}

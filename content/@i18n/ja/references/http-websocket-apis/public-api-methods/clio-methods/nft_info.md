@@ -8,15 +8,14 @@ labels:
 # nft_info
 [[ソース]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "ソース")
 
-`nft_info`コマンドはクエリ対象の[NFT](non-fungible-tokens.html)に関する情報をClioサーバに問い合わせます。[新規: Clio v1.1.0](https://github.com/XRPLF/clio/releases/tag/1.1.0 "BADGE_BLUE")
+`nft_info`コマンドはクエリ対象の[NFT](../../../../concepts/tokens/nfts/index.md)に関する情報をClioサーバに問い合わせます。{% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}新規: Clio v1.1.0{% /badge %}
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例：
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -24,9 +23,9 @@ labels:
   "nft_id": "00080000B4F4AFC5FBCBD76873F18006173D2193467D3EE70000099B00000000"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "nft_info",
@@ -37,8 +36,9 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
 [試してみる >](websocket-api-tool.html#nft_info)-->
@@ -57,10 +57,9 @@ labels:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
@@ -90,9 +89,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "result": {
@@ -121,8 +120,9 @@ labels:
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][] に従い、成功すると以下のフィールドをいくつか並べた`nft_info`レスポンスオブジェクトが返されます。
 
@@ -133,7 +133,7 @@ labels:
 | `owner`                           | 文字列              | このレジャーインデックスにおけるこのNFTの所有者のアカウントID。 |
 | `is_burned`                       | 真偽値              | NFTがこのレジャーでバーンされていれば`true`を、そうでなければ`false`を返します。 |
 | `flags `                          | 整数                | このNFTのフラグ |
-| `transfer_fee`                    | 整数                | このNFTの送金手数料。送金手数料の詳細については、[NFTokenMintのフィールド](nftokenmint.html#nftokenmint-フィールド)をご覧ください。 |
+| `transfer_fee`                    | 整数                | このNFTの送金手数料。送金手数料の詳細については、[NFTokenMintのフィールド](../../../protocol/transactions/types/nftokenmint.md#nftokenmint-フィールド)をご覧ください。 |
 | `issuer`                          | 文字列              | このNFTの発行者を示すアカウントID。|
 | `nft_taxon`                       | 整数                | このNFTのTaxon。 |
 | `nft_sequence`                    | 整数                | このNFTのシーケンス番号. |
@@ -144,7 +144,4 @@ labels:
 
 * いずれかの[汎用エラータイプ][]。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -10,15 +10,14 @@ labels:
 
 `ledger_cleaner`コマンドは[レジャークリーナー](https://github.com/XRPLF/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner)を制御します。レジャークリーナーは、`rippled`のレジャーデータベースの破損を検出して修復できる非同期メンテナンスプロセスです。
 
-_`ledger_cleaner`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`ledger_cleaner`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "ledger_cleaner",
@@ -27,8 +26,9 @@ _`ledger_cleaner`メソッドは、権限のないユーザーは実行できな
     "stop": false
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -46,10 +46,9 @@ _`ledger_cleaner`メソッドは、権限のないユーザーは実行できな
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -61,8 +60,9 @@ _`ledger_cleaner`メソッドは、権限のないユーザーは実行できな
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -75,7 +75,4 @@ _`ledger_cleaner`メソッドは、権限のないユーザーは実行できな
 * いずれかの[汎用エラータイプ][]。
 * `internal`: いずれかのパラメーターが正しく指定されていない場合。（これはバグです。本来のエラーコードは`invalidParams`です。）
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

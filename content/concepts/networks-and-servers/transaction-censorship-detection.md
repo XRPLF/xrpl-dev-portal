@@ -7,11 +7,11 @@ labels:
 ---
 # Transaction Censorship Detection
 
-[New in: rippled 1.2.0][]
+{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}New in: rippled 1.2.0{% /badge %}
 
 The XRP Ledger is designed to be censorship resistant. In support of this design, the XRP Ledger provides an automated transaction censorship detector that is available on all `rippled` servers, enabling all participants to see if censorship is affecting the network.
 
-While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of [consensus](consensus.html) and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
+While a `rippled` server is in sync with the network, the detector tracks all transactions that should have been accepted in the last round of [consensus](../consensus-protocol/index.md) and included in the last validated ledger. The detector issues log messages of increasing severity when it sees transactions that have not been included in a validated ledger after several rounds of consensus.
 
 
 
@@ -67,13 +67,12 @@ Here are some scenarios that could cause the detector to issue false positive me
 ## See Also
 
 - **Concepts:**
-    - [Consensus Principles and Rules](consensus-principles-and-rules.html)
-    - [Transaction Queue](transaction-queue.html)
+    - [Consensus Principles and Rules](../consensus-protocol/consensus-principles-and-rules.md)
+    - [Transaction Queue](../transactions/transaction-queue.md)
 - **Tutorials:**
-    - [Reliable Transaction Submission](reliable-transaction-submission.html)
-    - [Understanding Log Messages](understanding-log-messages.html)
+    - [Reliable Transaction Submission](../transactions/reliable-transaction-submission.md)
+    - [Understanding Log Messages](../../infrastructure/troubleshooting/understanding-log-messages.md)
 - **References:**
-    - [Transaction Results](transaction-results.html)
+    - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md)
 
-
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

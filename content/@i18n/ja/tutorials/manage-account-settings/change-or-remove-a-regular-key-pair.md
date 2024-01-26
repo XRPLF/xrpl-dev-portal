@@ -10,27 +10,27 @@ labels:
 
 XRP Ledgerでは、アカウントはその後のトランザクションには _レギュラーキーペア_ と呼ばれるセカンダリキーペアで署名することができます。アカウントのレギュラーキーペアが漏えいした場合、またはセキュリティ対策としてレギュラーキーペアを定期的に変更する必要がある場合は、[SetRegularKeyトランザクション][]を使用してアカウントレギュラーキーペアを削除または変更します。
 
-マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](cryptographic-keys.html)を参照してください。
+マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](../../concepts/accounts/cryptographic-keys.md)を参照してください。
 
 
 ## レギュラーキーペアの変更
 
-既存のレギュラーキーペアを変更する手順は、初めて[レギュラーキーを割り当てる](assign-a-regular-key-pair.html)手順とほぼ同じです。キーペアを生成し、レギュラーキーペアとしてアカウントに割り当てます。これにより既存のレギュラーキーペアが上書きされます。ただし大きく異なる点は、既存のレギュラーキーペアを変更するときには既存のレギュラー秘密鍵を使用して秘密鍵自体を置き換えることができますが、レギュラーキーペアをアカウントに初めて割り当てるときにはアカウントのマスター秘密鍵を使用する必要があることです。
+既存のレギュラーキーペアを変更する手順は、初めて[レギュラーキーを割り当てる](assign-a-regular-key-pair.md)手順とほぼ同じです。キーペアを生成し、レギュラーキーペアとしてアカウントに割り当てます。これにより既存のレギュラーキーペアが上書きされます。ただし大きく異なる点は、既存のレギュラーキーペアを変更するときには既存のレギュラー秘密鍵を使用して秘密鍵自体を置き換えることができますが、レギュラーキーペアをアカウントに初めて割り当てるときにはアカウントのマスター秘密鍵を使用する必要があることです。
 
-マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](cryptographic-keys.html)を参照してください。
+マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](../../concepts/accounts/cryptographic-keys.md)を参照してください。
 
 
 ## レギュラーキーペアの削除
 
-漏えいしたレギュラーキーペアを単にアカウントから削除する場合は、キーペアを最初に生成する必要はありません。`RegularKey`フィールドを省略した[SetRegularKeyトランザクション][]を使用します。アカウントの別の署名手段（マスターキーペアまたは[署名者リスト](multi-signing.html)）が現在有効になっていない場合は、トランザクションが失敗することに注意してください。
+漏えいしたレギュラーキーペアを単にアカウントから削除する場合は、キーペアを最初に生成する必要はありません。`RegularKey`フィールドを省略した[SetRegularKeyトランザクション][]を使用します。アカウントの別の署名手段（マスターキーペアまたは[署名者リスト](../../concepts/accounts/multi-signing.md)）が現在有効になっていない場合は、トランザクションが失敗することに注意してください。
 
 
 アカウントのレギュラーキーペアを削除する場合、`SetRegularKey`トランザクションでは、アカウントのマスター秘密鍵（シークレット）または既存のレギュラーキーペアによる署名が必要です。マスター秘密鍵またはレギュラー秘密鍵の送信は危険であるため、トランザクションの署名とネットワークへのトランザクションの送信を切り離した2段階方式でこのトランザクションを実行します。
 
 ### トランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
+
 
 リクエストフィールドに以下の値を指定します。
 
@@ -44,10 +44,9 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
  "command":"sign",
@@ -58,42 +57,42 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
   "secret":"snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {
    "method":"sign",
    "params":[
-    	{
-    	"secret" :"snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-		"tx_json" :{
-    		"TransactionType" :"SetRegularKey",
-    		"Account" :"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
-			}
-		}
-	]
+        {
+        "secret" :"snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+        "tx_json" :{
+            "TransactionType" :"SetRegularKey",
+            "Account" :"r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
+            }
+        }
+    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 #Syntax: sign secret tx_json
 rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", "Account":"rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
  "result":{
@@ -113,9 +112,9 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
  "type":"response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {NEWWWWWWWWWWWW
    "result":{
@@ -134,9 +133,9 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
    }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 {
   "result" :{
@@ -155,8 +154,9 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 `sign`コマンドのレスポンスには上記のような`tx_blob`値が含まれています。オフライン署名レスポンスには`signedTransaction`値が含まれています。いずれもトランザクションの署名済みバイナリ表現（ブロブ）です。
 
@@ -171,19 +171,18 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
    "command":"submit",
    "tx_blob":"1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {
   "method":"submit",
@@ -194,25 +193,25 @@ rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType":"SetRegularKey", 
   ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 #Syntax: submit tx_blob
 rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
  "result":{
@@ -235,9 +234,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
  "type":"response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {
    "result":{
@@ -259,9 +258,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
    }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 {
   "result" :{
@@ -283,8 +282,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レギュラーキーペアの削除が成功したかどうかを確認するには、削除したレギュラー秘密鍵を使用してトランザクションを送信できないことを確認します。
 
@@ -295,10 +295,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
  "error":"badSecret",
@@ -316,9 +315,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
  "type":"response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 {NEWWWWWWWWWWWW
    "result":{
@@ -337,9 +336,9 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
    }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 {
   "result" :{
@@ -358,12 +357,10 @@ rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-場合によっては、`SetRegularKey`トランザクションを使用して、[トランザクションコスト](transaction-cost.html)を支払わずに[Key Resetトランザクション](transaction-cost.html#key-resetトランザクション)を送信できます。FeeEscalation Amendmentを有効にすると、Key Resetトランザクションの名目トランザクションコストがゼロであっても、`rippled`は他のトランザクションよりもKey Resetトランザクションを優先します。
+場合によっては、`SetRegularKey`トランザクションを使用して、[トランザクションコスト](../../concepts/transactions/transaction-cost.md)を支払わずに[Key Resetトランザクション](../../concepts/transactions/transaction-cost.md#key-resetトランザクション)を送信できます。FeeEscalation Amendmentを有効にすると、Key Resetトランザクションの名目トランザクションコストがゼロであっても、`rippled`は他のトランザクションよりもKey Resetトランザクションを優先します。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

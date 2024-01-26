@@ -12,7 +12,7 @@ labels:
 _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -41,7 +41,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 ページのサイズを最小にし、ストレージを最適化するために、`Owner`フィールドは存在しません。なぜなら、それはオブジェクトのレジャー識別子の一部としてエンコードされているからです。
 
 
-## {{currentpage.name}} フィールド
+## {% $frontmatter.seo.title %} フィールド
 
 `NFTokenPage` オブジェクトは、以下の必須フィールドと任意フィールドを持つことができます。
 
@@ -100,7 +100,4 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 | 2 XRP               | 2 XRP     | 0.25 XRP   | 0.125 XRP   | 0.0625 XRP  | 0.03125 XRP |
 | 1 XRP               | 1 XRP     | 0.125 XRP  | 0.0625 XRP  | 0.03125 XRP | 0.01562 XRP |
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}
