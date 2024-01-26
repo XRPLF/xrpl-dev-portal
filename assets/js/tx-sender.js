@@ -74,7 +74,7 @@ const set_up_tx_sender = async function() {
     try {
       const fund_response = await api.fundWallet()
       sending_wallet = fund_response.wallet
-      xrp_balance = xrpl.dropsToXrp(fund_response.balance)
+      xrp_balance = "" + xrpl.dropsToXrp(fund_response.balance)
     } catch(error) {
       console.error(error)
       errorNotif("There was an error with the XRP Ledger Testnet Faucet. Reload this page to try again.")
