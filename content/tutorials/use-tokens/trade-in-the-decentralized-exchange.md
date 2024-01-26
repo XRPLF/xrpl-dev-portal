@@ -260,6 +260,7 @@ You can use this interface to test it out:
 {% loading-icon message="Checking..." /%}
 
 <div class="output-area"></div>
+
 {% /interactive-block %}
 
 {% raw-partial file="/_snippets/common-links.md" /%}

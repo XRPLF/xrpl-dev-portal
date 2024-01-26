@@ -26,7 +26,7 @@ function setup_2x_generate_step() {
           <div><strong>${tl("Cold Secret:")}</strong>
           <span id="cold-use-secret">${data.account.secret}</span></div>
           <strong>${tl("XRP Balance:")}</strong>
-          ${Number(data.balance).toLocaleString(current_locale)} XRP
+          ${data.balance} XRP
         </div>
         <div class="col-xl-6 p-3">
           <div><strong>${tl("Hot Address:")}</strong>
@@ -34,7 +34,7 @@ function setup_2x_generate_step() {
           <div><strong>${tl("Hot Secret:")}</strong>
           <span id="hot-use-secret">${data2.account.secret}</span></div>
           <strong>${tl("XRP Balance:")}</strong>
-          ${Number(data2.balance).toLocaleString(current_locale)} XRP
+          ${data2.balance} XRP
         </div>
       </div>`)
 
@@ -54,6 +54,7 @@ function setup_2x_generate_step() {
       complete_step("Generate")
 
     } catch(err) {
+      console.error(err)
       block.find(".loader").hide()
       block.find(".output-area").html(
         `<p class="devportal-callout warning"><strong>${tl("Error:")}</strong>

@@ -179,7 +179,7 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
     <label for="cold-domain-text" class="col-form-label col-sm-3">Domain</label>
     <div class="input-group col">
       <div>
-        <input type="text" class="form-control" value="example.com" pattern="([a-z0-9][a-z0-9-]{0,62}[.])+[a-z]{2,6}" id="cold-domain-text" title="lower-case domain name of the account owner" />
+        <input type="text" class="form-control" value="example.com" pattern="([a-z0-9][a-z0-9\-]{0,62}[.])+[a-z]{2,6}" id="cold-domain-text" title="lower-case domain name of the account owner" />
         <small class="form-text">(text)</small>
       </div>
     </div>
@@ -275,7 +275,7 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
     <label for="hot-domain-text" class="col-form-label col-sm-3">Domain</label>
     <div class="input-group col">
       <div>
-        <input type="text" class="form-control" value="example.com" pattern="([a-z0-9][a-z0-9-]{0,62}[.])+[a-z]{2,6}" id="hot-domain-text" title="lower-case domain name of the account owner" />
+        <input type="text" class="form-control" value="example.com" pattern="([a-z0-9][a-z0-9\-]{0,62}[.])+[a-z]{2,6}" id="hot-domain-text" title="lower-case domain name of the account owner" />
         <small class="form-text">(text)</small>
       </div>
     </div>
@@ -351,25 +351,21 @@ The following code sample shows how to send a [TrustSet transaction][] from the 
         </div>
       </div>
       <label for="use-std-code" class="input-group-text col-lg-3">Standard:</label>
-      <input type="text" id="currency-code-std" pattern="[A-Za-z0-9?!@#$%*(){}|\x26\x3c\x3e]{3}" value="FOO" class="form-control col-lg-8" title="3 character code (letters, numbers, and some symbols)" />
+      <input type="text" id="currency-code-std" pattern="[A-Za-z0-9?!@#$%*\(\)\{\}\|\x26\x3c\x3e]{3}" value="FOO" class="form-control col-lg-8" title="3 character code (letters, numbers, and some symbols)" />
     </div>
-
-```
-<div class="input-group row mt-2">
-  <div class="input-group-prepend">
-    <div class="input-group-text form-check bg-transparent">
-      <input type="radio" id="use-hex-code" name="currency-code-type" />
+    <div class="input-group row mt-2">
+      <div class="input-group-prepend">
+        <div class="input-group-text form-check bg-transparent">
+          <input type="radio" id="use-hex-code" name="currency-code-type" />
+        </div>
+      </div>
+      <label for="use-hex-code" class="input-group-text col-lg-3">Non-standard:</label>
+      <input type="text" id="currency-code-hex" pattern="[0-9A-F]{40}" value="015841551A748AD2C1F76FF6ECB0CCCD00000000" title="40 hexadecimal characters" class="form-control col-lg-8" />
     </div>
-  </div>
-  <label for="use-hex-code" class="input-group-text col-lg-3">Non-standard:</label>
-  <input type="text" id="currency-code-hex" pattern="[0-9A-F]{40}" value="015841551A748AD2C1F76FF6ECB0CCCD00000000" title="40 hexadecimal characters" class="form-control col-lg-8" />
-</div>
-
-<div class="input-group row mt-4">
-  <label for="trust-limit" class="input-group-text col-lg-3">Limit:</label>
-  <input type="number" id="trust-limit" min="0" value="1000000000" title="Maximum amount the hot address can hold" class="form-control col-lg-9" />
-</div>
-```
+    <div class="input-group row mt-4">
+      <label for="trust-limit" class="input-group-text col-lg-3">Limit:</label>
+      <input type="number" id="trust-limit" min="0" value="1000000000" title="Maximum amount the hot address can hold" class="form-control col-lg-9" />
+    </div>
   </div>
 </form>
 <button id="create-trust-line-button" class="btn btn-primary previous-steps-required" data-wait-step-name="Wait (TrustSet)">Create Trust Line</button>
