@@ -372,6 +372,22 @@ $nav-height: 80px;
       }
     }
 
+    .navbar-nav {
+      align-items: unset !important; // Undo "browser-entry.css" rule
+
+      #topnav-theme {
+        background-color: $gray-900;
+        padding: 1rem;
+      }
+      #topnav-search {
+        background-color: $gray-900;
+
+        [data-component-name="Search/MobileSearchTrigger"] {
+          padding: 2rem;
+          cursor: pointer;
+        }
+      }
+    }
     .navbar-nav .nav-link,
     .navbar-collapse > .nav-item {
       line-height: 150%;

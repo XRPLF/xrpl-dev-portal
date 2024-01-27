@@ -74,9 +74,15 @@ export function Navbar(props) {
         <TopNavCollapsible>
           <NavItems>
             {navItems}
-            <Search className="topnav-search" />
-            <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
-            <StyledColorModeSwitcher />
+            <div id="topnav-search" className="nav-item search">
+              <Search className="topnav-search" />
+            </div>
+            <div id="topnav-language" className="nav-item">
+              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
+            </div>
+            <div id="topnav-theme" className="nav-item">
+              <StyledColorModeSwitcher />
+            </div>
           </NavItems>
         </TopNavCollapsible>
       </NavWrapper>
