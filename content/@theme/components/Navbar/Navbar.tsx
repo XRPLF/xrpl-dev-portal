@@ -141,7 +141,7 @@ export function NavDropdown(props) {
           {groupLinks}
         </div>
       );
-    } else if (item.hero) {
+    } else if (item.icon) {
       const hero_id = 'dropdown-hero-for-' + slugify(label);
       const img_alt = item.label + ' icon';
 
@@ -149,13 +149,16 @@ export function NavDropdown(props) {
       if (hero_href && !hero_href.match(/^https?:/)) {
         hero_href = pathPrefix + hero_href;
       }
+      const splitlabel = item.label.split(" || ")
+      const newlabel = splitlabel[0]
+      const description = splitlabel[1] // might be undefined, that's ok
 
       return (
         <a key={index} className="dropdown-item dropdown-hero" id={hero_id} href={hero_href}>
-          <img id={item.hero} alt={img_alt} src="data:," />
+          <img id={item.hero} alt={img_alt} src={item.icon} />
           <div className="dropdown-hero-text">
-            <h4>{item.label}</h4>
-            <p>{item.description}</p>
+            <h4>{newlabel}</h4>
+            <p>{description}</p>
           </div>
         </a>
       );
@@ -174,7 +177,7 @@ export function NavDropdown(props) {
   });
 
   const toggler_id = 'topnav_' + slugify(label);
-  const dd_id = 'topnav_dd_' + slugify(label) + 'html';
+  const dd_id = 'topnav_dd_' + slugify(label);
 
   return (
     <li className="nav-item dropdown">

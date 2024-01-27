@@ -3,7 +3,7 @@ import { useTranslate } from "@portal/hooks";
 
 export const frontmatter = {
   seo: {
-    title: 'XRP Ledger Overview',
+    title: 'XRPL Overview',
     description: "An introduction to the key benefits and features of the XRP Ledger, a public blockchain driven by the XRPL developer community.",
   }
 };
