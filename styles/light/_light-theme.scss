@@ -397,10 +397,7 @@ a.card:hover,
       color: $gray-600;
     }
 
-    .col-for-popular-pages,
-    .col-for-人気ページ,
-    .col-for-questions,
-    .col-for-質問 {
+    .col-for-get_started{
       background-color: $gray-200;
     }
   }
@@ -419,7 +416,9 @@ a.card:hover,
     }
 
     .navbar-nav .nav-link,
-    .navbar-collapse>.nav-item {
+    .navbar-collapse>.nav-item,
+    .navbar-nav #topnav-theme,
+    .navbar-nav #topnav-search {
       background: $gray-200;
     }
   }
