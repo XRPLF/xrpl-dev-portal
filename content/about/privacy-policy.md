@@ -1,11 +1,7 @@
 ---
-html: privacy-policy.html
-parent: xrp-ledger-overview.html
-blurb:
-subtitle: Privacy Policy
-top_nav_grouping: About
-#template: page-privacy-policy.html.jinja
-name: Privacy Policy
+seo:
+    title: Privacy Policy
+    description: This policy describes how MTU XRP Ledger trust respects your privacy and details the collection, use, and disclosure of data involved in using this service.
 ---
 # XRPL.org Privacy Policy
 

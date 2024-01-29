@@ -7,66 +7,54 @@
 # nav:
 - group: About
   items:
-    - group: XRP Ledger Overview
+    - group: XRP Ledger
       items:
-        - label: XRPL Overview
-          href: /about
-        - label: Use Cases
-          href: /about/uses
-        - label: History
-          href: /about/history
-        - label: Ledger Explorer
-          href: https://livenet.xrpl.org
-          external: true
+        - page: ./about/index.page.tsx
+        - page: ./about/uses.page.tsx
+        - page: ./about/history.page.tsx
     - group: XRP
       items:
-        - label: XRP Overview
-          href: /about/xrp
+        - page: ./about/xrp.page.tsx
     - group: Sustainability
       items:
-        - label: Impact
-          href: /about/impact
+        - page: ./about/impact.page.tsx
     - group: About
       items:
         - label: XRPL Foundation
           href: https://foundation.xrpl.org/
           external: true
-        - label: FAQ
-          href: /about/faq
+        - page: ./about/faq.md
+        - page: ./about/privacy-policy.md
 
 - group: Docs
   items:
-    - hero: top-nav-hero-docs
-      label: Documentation
-      description: Dive into XRP Ledger technology and start integrating.
+    - icon: ./static/img/icons/docs.svg
+    # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
+      label: Documentation || Dive into XRP Ledger technology and start integrating.
       page: ./docs.page.tsx
-    - group: Introduction to the XRP Ledger
+    - group: Article Types
       items:
-        - label: What is XRP?
-          href: /introduction/what-is-xrp
-        - label: What is the XRP Ledger?
-          href: /introduction/what-is-the-xrp-ledger
-        - label: Transactions and Requests
-          href: /introduction/transactions-and-requests/
-    - group: API Reference
+        - page: ./concepts/index.md
+        - page: ./tutorials/index.md
+        - page: ./references/index.md # TODO: waiting on file to be added
+        - page: ./infrastructure/index.md
+    - group: Use Cases
       items:
-        - label: Client Libraries
-          href: /references/client-libraries/
-        - label: Public API Methods
-          href: /references/http-websocket-apis/public-api-methods/
-        - label: Admin API Methods
-          href: /references/http-websocket-apis/admin-api-methods/
-    - group: Popular Pages
+        - page: ./use-cases/payments/index.md
+        - page: ./use-cases/tokenization/index.md
+        - page: ./use-cases/defi/index.md
+    - group: Get Started
       items:
-        - label: Send XRP
-          href: /tutorials/get-started/send-xrp/
-        - label: XRP Faucets
-          href: /dev-tools/xrp-faucets
-          page: /dev-tools/xrp-faucets.page.tsx
-        - label: XRPL Servers
-          href: /infrastructure/xrpl-servers/
-    - label: Dev Tools
-      href: /dev-tools/
+        - page: ./tutorials/get-started/get-started-using-javascript.md
+          label: JavaScript
+        - page: ./tutorials/get-started/get-started-using-python.md
+          label: Python
+        - page: ./tutorials/get-started/get-started-using-java.md
+          label: Java
+        - page: ./tutorials/get-started/get-started-using-php.md
+          label: PHP
+        - page: ./tutorials/get-started/get-started-using-http-websocket-apis.md
+          label: HTTP / WebSocket
 
 - group: Resources
   items:
@@ -74,8 +62,7 @@
       items:
         - label: Code Samples
           href: /resources/code-samples
-        - label: Dev Tools
-          href: /resources/dev-tools
+        - page: ./resources/dev-tools/index.page.tsx
         - label: XRPL Learning Portal
           href: https://learn.xrpl.org/
           external: true
@@ -97,21 +84,23 @@
 
 - group: Community
   items:
-    - hero: top-nav-hero-contribute
-      label: Contribute to the XRPL Community
-      description: Join the conversation
+    - icon: ./static/img/icons/contribute.svg
+      label: Contribute to the XRPL Community || Join the conversation
       href: /community/
-    - label: Events
-      href: /community/events/
-    - label: Ambassadors
-      href: /community/ambassadors/
-    - label: XRPL Jobs
-      href: https://jobs.xrpl.org/
-      external: true
-    - label: Blog
-      href: /blog/
-    - label: XRPL Grants
-      href: https://xrplgrants.org/
-      external: true
-    - label: Report a Scam
-      href: /community/report-a-scam/
+    - group: Get Involved
+      items:
+      - page: ./community/events.page.tsx
+      - page: ./community/ambassadors.page.tsx
+      - page: ./community/developer-funding.page.tsx
+      - label: XRPL Jobs
+        href: https://jobs.xrpl.org/
+        external: true
+      - label: Dev Blog
+        href: /blog/
+      - label: XRPL Grants
+        href: https://xrplgrants.org/
+        external: true
+      - label: GitHub
+        href: https://github.com/XRPLF/
+        external: true
+      - page: ./community/report-a-scam.md

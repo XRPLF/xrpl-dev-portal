@@ -124,8 +124,11 @@ $nav-height: 80px;
       }
     }
 
-    .col-for-popular-pages,
-    .col-for-人気ページ {
+    // > .dropdown-item { // Ungrouped, i.e. Community dropdown
+    //   grid-column: 1/4;
+    // }
+
+    .col-for-get_started {
       background-color: $gray-800;
     }
 
@@ -204,20 +207,20 @@ $nav-height: 80px;
         display: grid;
         gap: 40px;
 
-        &#topnav_dd_xrp-ledger-overviewhtml {
+        &#topnav_dd_about {
           grid-template-columns: 180px 180px 180px;
         }
 
-        &#topnav_dd_docshtml {
+        &#topnav_dd_docs {
           grid-template-columns: 180px 180px 260px;
           left: -200px;
         }
 
-        &#topnav_dd_contributehtml {
+        &#topnav_dd_community {
           grid-template-columns: 200px;
         }
 
-        &#topnav_dd_resourceshtml {
+        &#topnav_dd_resources {
           grid-template-columns: 195px 180px 180px;
           left: -200px;
         }
@@ -226,13 +229,12 @@ $nav-height: 80px;
           grid-row: 1;
           grid-column: 1 / 4;
         }
-        #dropdown-hero-for-documentation,
-        #dropdown-hero-for-ドキュメント {
+        #dropdown-hero-for-docs {
           grid-column: 1 / 3;
         }
 
         // "About" dropdown placement
-        .col-for-xrp-ledger {
+        .col-for-xrp_ledger {
           grid-row: 1 / 3;
           grid-column: 1;
         }
@@ -249,37 +251,24 @@ $nav-height: 80px;
           grid-column: 3;
         }
 
-        // "Docs" dropdown placement
-        .col-for-article-types,
-        .col-for-カテゴリ {
+        // "Docs" dropdown placement (desktop)
+        .col-for-article_types {
           grid-column: 1;
           grid-row: 2;
         }
-        // Not used
-        // .col-for-online-tools {
-        //   grid-column: 1;
-        //   grid-row: 3;
-
-        //   .external-link {
-        //     white-space: nowrap;
-        //   }
-        // }
-        .col-for-get-started,
-        .col-for-始めましょう {
+        .col-for-use_cases {
           grid-column: 2;
-          grid-row: 2 / 4;
+          grid-row: 2;
         }
-        .col-for-popular-pages,
-        .col-for-人気ページ {
+        .col-for-get_started {
           grid-column: 3;
-          grid-row: 1 / 4;
+          grid-row: 1 / 3;
           margin: -40px -40px -40px 0;
           padding: 40px;
         }
 
         // "Resources" dropdown placement
-        .col-for-development,
-        .col-for-開発 {
+        .col-for-development {
           grid-column: 1;
         }
         .col-for-current-status,
@@ -383,6 +372,22 @@ $nav-height: 80px;
       }
     }
 
+    .navbar-nav {
+      align-items: unset !important; // Undo "browser-entry.css" rule
+
+      #topnav-theme {
+        background-color: $gray-900;
+        padding: 1rem;
+      }
+      #topnav-search {
+        background-color: $gray-900;
+
+        [data-component-name="Search/MobileSearchTrigger"] {
+          padding: 2rem;
+          cursor: pointer;
+        }
+      }
+    }
     .navbar-nav .nav-link,
     .navbar-collapse > .nav-item {
       line-height: 150%;
@@ -417,7 +422,7 @@ $nav-height: 80px;
           padding-bottom: 4rem;
         }
 
-        &#topnav_dd_docshtml {
+        &#topnav_dd_docs {
           display: grid;
           //grid-template-columns: 187px 187px;
           grid-template-columns: minmax(187px, 1fr) minmax(187px, 1fr);
@@ -429,39 +434,23 @@ $nav-height: 80px;
             grid-row: 1;
           }
 
-          // "Docs" dropdown placement
-          .col-for-article-types,
-          .col-for-カテゴリ
-           {
+          // "Docs" dropdown placement (mobile)
+          .col-for-document_types
+          {
             grid-column: 1;
             grid-row: 2;
           }
-          // Not used
-          // .col-for-online-tools {
-          //   grid-column: 1;
-          //   grid-row: 3;
-          //   padding-bottom: 32px;
-          // }
-          .col-for-get-started,
-          .col-for-始めましょう
+          .col-for-use_cases
           {
             grid-column: 2;
-            grid-row: 2 / 4;
-            padding-bottom: 32px;
+            grid-row: 2;
           }
-          .col-for-popular-pages,
-          .col-for-人気ページ {
+          .col-for-get_started
+          {
             grid-column: 1 / 3;
             grid-row: 4;
             margin: -1px;
             padding-top: 33px;
-          }
-          .col-for-questions,
-          .col-for-質問 {
-            grid-column: 1 / 3;
-            grid-row: 5;
-            margin: -1px;
-            padding-bottom: 32px;
           }
         }
       }
@@ -566,13 +555,6 @@ $nav-height: 80px;
     }
   } // end mobile specific styles ----------------------------------------------
 
-  // nav "hero" images
-  #top-nav-hero-docs {
-    content: url("../img/icons/docs.svg");
-  }
-  #top-nav-hero-contribute {
-    content: url("../img/icons/contribute.svg");
-  }
 }
 
 // Fix so anchors don't jump under the fixed header ----------------------------

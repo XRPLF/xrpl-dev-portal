@@ -5,7 +5,7 @@ import userIcon from "../static/img/icons/user.svg";
 
 export const frontmatter = {
   seo: {
-    title: 'XRP',
+    title: 'XRP Overview',
     description: "Learn more about XRP Ledger’s native digital asset, XRP.",
   }
 };
