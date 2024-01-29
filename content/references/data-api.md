@@ -5,6 +5,7 @@ seo:
     description: (DEPRECATED) RESTful interface to XRP Ledger analytics and historical data.
 status: removed
 nav_omit: true
+sidebar: ../sidebars.yaml
 ---
 # Ripple Data API v2
 
