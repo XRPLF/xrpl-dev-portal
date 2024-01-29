@@ -531,8 +531,6 @@
                   - page: references/http-websocket-apis/peer-port-methods/health-check.md
                   - page: references/http-websocket-apis/peer-port-methods/peer-crawler.md
                   - page: references/http-websocket-apis/peer-port-methods/validator-list.md
-          - page: references/xrp-api.md
-          - page: references/data-api.md
           - page: references/xrp-ledger-toml.md
       - page: infrastructure/index.md
         expanded: false
