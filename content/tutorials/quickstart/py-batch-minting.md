@@ -20,7 +20,7 @@ A best practice is to use `Tickets` to reserve the transaction sequence numbers.
 
 ## Usage
 
-You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} to try the sample in your own browser.
+You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> to try the sample in your own browser.
 
 ## Get an Account
 
@@ -58,7 +58,7 @@ The difference between this function and the `getTokens()` function used earlier
 
 # Code Walkthrough
 
-You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} to try each of the samples locally.
+You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> to try each of the samples locally.
 
 Import dependencies and define the testnet_url variable. 
 
