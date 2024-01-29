@@ -268,7 +268,7 @@
                   - page: tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
                   - page: tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge.md
                   - page: tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction.md
-      - group: References
+      - page: references/index.md
         expanded: false
         items:
           - page: references/protocol/index.md
