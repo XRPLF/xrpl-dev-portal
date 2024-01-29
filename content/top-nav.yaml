@@ -29,8 +29,8 @@
 - group: Docs
   items:
     - icon: ./static/img/icons/docs.svg
+    # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
       label: Documentation || Dive into XRP Ledger technology and start integrating.
-      description: Dive into XRP Ledger technology and start integrating.
       page: ./docs.page.tsx
     - group: Article Types
       items:
