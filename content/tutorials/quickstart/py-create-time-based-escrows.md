@@ -24,7 +24,7 @@ This example shows how to:
 
 ## Prerequisites
 
-Download the [Python Modular Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download}.
+Download the [Python Modular Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} -->.
 
 ## Usage
 
@@ -123,7 +123,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 # Code Walkthrough
 
-You can download the [Python Modular Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} in the source repository for this website.
+You can download the [Python Modular Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
 
 ## mod8.py
 

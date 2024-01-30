@@ -53,6 +53,6 @@ To get started, create a new folder on your local disk and install the Python li
 pip3 install xrpl-py
 ```
 
-Download the python [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download}.
+Download the python [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} -->.
 
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow.

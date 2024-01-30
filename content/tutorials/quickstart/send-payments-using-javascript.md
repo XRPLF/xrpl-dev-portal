@@ -43,4 +43,4 @@ To get started, create a new folder on your local disk and install the JavaScrip
 npm install xrpl
 ```
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download}.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} -->.

@@ -24,7 +24,7 @@ This example shows how to:
 
 ## Prerequisites
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
 
 You need the `cryptoconditions` module to generate your condition/fulfillment pair. You can install the module using [pip](https://pip.pypa.io/en/stable/).
 
@@ -128,7 +128,7 @@ If you forget to save the sequence number, you can find it in the escrow transac
 
 # Code Walkthrough
 
-You can download the [Modular Tutorials](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} in the source repository for this website.
+You can download the [Modular Tutorials](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
 
 ## mod9.py
 
