@@ -42,7 +42,7 @@ export function codeSamples() {
         const sortedSamples = samples.sort((a, b) => normalizeTitleForSort(a).localeCompare(normalizeTitleForSort(b)));
 
         actions.createSharedData('code-samples', { codeSamples: sortedSamples, langs: Array.from(allLands) });
-        actions.addRouteSharedData('/code-samples/', 'code-samples', 'code-samples');
+        actions.addRouteSharedData('/resources/code-samples/', 'code-samples', 'code-samples');
       } catch (e) {
         console.log(e);
       }
