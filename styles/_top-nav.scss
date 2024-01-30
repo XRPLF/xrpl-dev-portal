@@ -567,9 +567,10 @@ article h6:before,
 .interactive-block:before {
   display: block;
   content: " ";
-  margin-top: -80px;
-  height: 80px;
+  margin-top: -40px;
+  height: 40px;
   visibility: hidden;
+  pointer-events: none;
 }
 
 // Fix so links aren't unclickable underneath the header anchor-fix

@@ -117,12 +117,13 @@
 }
 
 /* Full-link cards */
-a.card {
+main a.card {
   border: 0;
-  color: $white !important;
+  color: $white;
 }
 a.card:hover,
-a:hover .card-new {
+a:hover .card-new,
+[data-component-name="Markdown/MarkdownWrapper"] a.card {
   text-decoration: none !important;
 }
 a.card:hover h3 {
