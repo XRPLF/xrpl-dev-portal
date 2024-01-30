@@ -17,7 +17,7 @@ The `gateway_balances` command calculates the total balances issued by a given a
 ## Request Format
 An example of the request format:
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
