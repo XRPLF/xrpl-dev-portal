@@ -45,7 +45,7 @@ The **destination address** of a channel can:
 
 <!--{# TODO: replace the above example with one where the channel, public key, signature, and balance match #}-->
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 

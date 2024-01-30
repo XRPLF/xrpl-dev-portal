@@ -72,7 +72,7 @@ The transaction fails with a [`tec`-class code](../transaction-results/tec-codes
 
 ## Fields
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type           | [Internal Type][] | Description   |
 |:-------------------|:--------------------|:------------------|:--------------|

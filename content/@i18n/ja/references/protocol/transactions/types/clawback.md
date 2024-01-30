@@ -30,7 +30,7 @@ Clawback機能はデフォルトで無効になっています。使用するに
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド　         | JSONの型   | [内部の型][] | 説明       |
 |:-------------------|:----------|:------------|:----------|

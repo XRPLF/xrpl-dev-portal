@@ -34,7 +34,7 @@ _([AMM amendment][] {% not-enabled /%}が必要です。)_
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | フィールド     | JSONの型   | [内部の型][] | 必須? | 説明 |
 |:-------------|:-----------|:-----------|:-----|:------------|

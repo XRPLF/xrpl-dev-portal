@@ -28,9 +28,7 @@ An AccountSet transaction modifies the properties of an [account in the XRP Ledg
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_AccountSet%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22327FD263132A4D08170E1B01FE1BB2E21D0126CE58165C97A9173CA9551BCD70%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
-<!--{# fix md highlighting_ #}-->
-
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field            | JSON Type        | [Internal Type][] | Description        |
 |:-----------------|:-----------------|:------------------|:-------------------|

@@ -30,7 +30,7 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
