@@ -37,7 +37,7 @@ An existing offer, represented by an `NFTokenOffer` object, can be cancelled by:
 
 This transaction removes the listed `NFTokenOffer` object from the ledger, if present, and adjusts the reserve requirements accordingly. It is not an error if the `NFTokenOffer` cannot be found: if that is the case, the transaction should complete successfully.
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field             | JSON Type | [Internal Type][] | Description              |
 |:------------------|:----------|:------------------|:-------------------------|

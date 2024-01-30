@@ -34,7 +34,7 @@ Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tok
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field        | JSON Type | [Internal Type][] | Required? | Description |
 |:-------------|:----------|:------------------|:----------|:------------|

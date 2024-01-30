@@ -37,7 +37,7 @@ Creates both an [AMM entry][] and a [special AccountRoot entry](../../ledger-dat
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field        | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------|:--------------------|:------------------|:----------|:------------|

@@ -53,7 +53,7 @@ You bid using the AMM's LP Tokens; the amount of a winning bid is returned to th
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field          | JSON Type           | [Internal Type][] | Required? | Description |
 |:---------------|:--------------------|:------------------|:----------|:------------|

@@ -20,7 +20,7 @@ Every signed transaction has a unique `"hash"` that identifies it. The server pr
 
 The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](finality-of-results/look-up-transaction-results.md) to verify its final status.
 
-{% partial file="/_snippets/setfee_uniqueness_note.md" /%}
+{% raw-partial file="/_snippets/setfee_uniqueness_note.md" /%}
 
 
 

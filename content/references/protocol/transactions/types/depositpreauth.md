@@ -30,7 +30,7 @@ A DepositPreauth transaction gives another account pre-approval to deliver payme
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_DepositPreauth%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 

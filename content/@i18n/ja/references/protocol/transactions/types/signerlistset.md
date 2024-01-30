@@ -43,7 +43,7 @@ SignerListSetトランザクションは、トランザクションの[マルチ
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド         | JSONの型 | [内部の型][] | 説明                  |
