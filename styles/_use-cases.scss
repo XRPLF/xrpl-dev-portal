@@ -89,30 +89,6 @@ html.light{
   color: $black;
 }
 
-.use-case-external-link {
-  border: 1px solid $gray-300;
-}
-
-.content .use-case-external-link a {
-  text-decoration: none;
-  color: $black;
-}
-
-.use-case-step-num {
-  margin-top: 64px;
-  margin-bottom: 24px;
-  color: #eae7e6;
-  font-size: 5.16em;
-  font-weight: 400;
-  font-family: "Space Mono", sans-serif;
-}
-
-.use-case-step-length {
-  float: right;
-  color: #888;
-  font-size: 1rem;
-}
-
 .arrows-container {
   position: absolute;
   top: 50%;

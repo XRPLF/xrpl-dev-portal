@@ -119,11 +119,11 @@
 /* Full-link cards */
 a.card {
   border: 0;
-  color: $white;
+  color: $white !important;
 }
 a.card:hover,
 a:hover .card-new {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 a.card:hover h3 {
   text-decoration: underline;
@@ -233,6 +233,72 @@ a.card:hover h3 {
     &.row-cols-2 .card {
       margin: .75rem;
       max-width: calc(50% - 1.5rem);
+    }
+  }
+}
+
+// Generic selection of card footers for Markdoc {% card-grid %}{% xrpl-card %} elements
+$footers-3col: "3-col-light-blue", "3-col-green-purple", "3col-purple-blue-green", "3col-magenta-3", "3col-green-blue", "3col-light-blue-2", "3col-orange-yellow-2", "3col-pink-purple", "3col-green-purple", "3col-magenta", "3-col-purple2", "3col-neutral-blue", "3col-purple-blue", "3-col-pink2", "3col-orange", "3col-light-green", "3col-blue-light-blue", "3col-green", "3-col-dark-blue", "3-col-purple", "3col-magenta-2", "3-col-light-blue-2", "3col-light-blue", "3col-magenta-orange", "3-col-purple-blue", "3col-orange-3", "3col-blue-green", "3-col-green", "3-col-orange", "3col-purple-blue-2", "3col-purple", "3-col-light-blue2", "3col-orange-yellow", "3-col-pink", "3col-green-2", "3col-orange-2", "3-col-pink-purple";
+
+@mixin card-footer-color($offset){
+  $index: 0;
+  @for $i from 1 through 9 {
+    .card:nth-child(#{$i}) .card-footer {
+      background-image: url("../img/cards/#{nth($footers-3col, $i+$offset)}.svg");
+    }
+  }
+}
+
+main article .card-grid {
+  &.card-grid-3xN {
+    grid-gap: 1rem;
+
+    .card {
+      padding: 0;
+      margin: 0.5rem;
+
+      .card-body {
+        padding: 1rem;
+      }
+
+    .card-icon-container {
+      width: 50px;
+      height: 50px;
+      background: $gray-600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      margin-bottom: 12px;
+
+      img {
+        width: 70%;
+        height: 70%;
+      }
+    }
+
+      .card-footer {
+        font-size: 0;
+        line-height: 0;
+        padding: 1rem;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-top: 0;
+      }
+    }
+
+    &:nth-of-type(0) {
+      @include card-footer-color(0);
+    }
+    &:nth-of-type(1) {
+      @include card-footer-color(9);
+    }
+    &:nth-of-type(2) {
+      @include card-footer-color(18);
+    }
+    &:nth-of-type(3) {
+      @include card-footer-color(27);
     }
   }
 }

@@ -1,29 +1,30 @@
 /* TABLE STYLING */
 
-.content table {
+article table {
   clear: right;
   margin-bottom: 48px;
-}
 
-.content table code {
-  word-break: normal;
-  white-space: nowrap;
-}
+  code {
+    word-break: normal;
+    white-space: nowrap;
+    overflow-wrap: normal;
+  }
 
-th {
-  border-bottom: 2px solid $gray-200;
-}
-tr {
-  border-bottom: 1px solid $gray-200;
-}
+  th {
+    border-bottom: 2px solid $gray-200;
+  }
+  tr {
+    border-bottom: 1px solid $gray-200;
+  }
 
-th, td {
-  padding: 0.2em;
-  vertical-align: text-top;
-}
+  th, td {
+    padding: 0.2em;
+    vertical-align: text-top;
+  }
 
-td:nth-child(1) {
-  font-weight: bold;
+  td:nth-child(1) {
+    font-weight: bold;
+  }
 }
 
 .landing-table {

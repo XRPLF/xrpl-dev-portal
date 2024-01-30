@@ -558,12 +558,12 @@ $nav-height: 80px;
 }
 
 // Fix so anchors don't jump under the fixed header ----------------------------
-.main h1:before,
-.main h2:before,
-.main h3:before,
-.main h4:before,
-.main h5:before,
-.main h6:before,
+article h1:before,
+article h2:before,
+article h3:before,
+article h4:before,
+article h5:before,
+article h6:before,
 .interactive-block:before {
   display: block;
   content: " ";

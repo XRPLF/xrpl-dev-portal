@@ -127,12 +127,12 @@ export function Badge(props: {
     if (props.href) {
       return (    
         <Link to={props.href}>
-          <img src={badge_url} alt={childstrings} className="badge" />
+          <img src={badge_url} alt={childstrings} className="shield" />
         </Link>
       )
     } else {
       return (
-        <img src={badge_url} alt={childstrings} className="badge" />
+        <img src={badge_url} alt={childstrings} className="shield" />
       )
     }
 }
