@@ -1,6 +1,6 @@
 /* Content text styling (applies mostly to Markdown-generated content)------- */
 
-.content {
+article {
   padding-bottom: 50px;
 
   p code,
@@ -97,6 +97,12 @@
     .hover_anchor {
       display: none;
     }
+  }
+
+  .shield {
+    // {% badge ... %} (shields.io) components in md
+    display: inline-block !important;
+    vertical-align: middle;
   }
 }
 

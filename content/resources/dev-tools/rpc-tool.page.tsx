@@ -252,7 +252,7 @@ export default function RpcTool() {
                   )}
                   {errorText === "" && (
                     <ul id="links" className="nav nav-pills">
-                      <li>
+                      <li className="nav-link">
                         <Link
                           id="permalink"
                           to={`/resources/dev-tools/rpc-tool#${inputText}`}
@@ -261,7 +261,7 @@ export default function RpcTool() {
                           {translate("Permalink")}
                         </Link>
                       </li>
-                      <li>
+                      <li className="nav-link">
                         <Link
                           id="explorerlink"
                           to={`https://livenet.xrpl.org/${inputType}/${inputText}`}

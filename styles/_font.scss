@@ -169,17 +169,10 @@ p {
   h1, h2, h3, h4, h5,
   .github-edit-wrap .github-edit,
   .navbar .navbar-nav .nav-link,
-  .content .children-display li a,
+  article .children-display li a,
   .right-sidebar .level-1 a,
-  .right-sidebar .separator,
-  .use-case-step-num {
+  .right-sidebar .separator {
     font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
   }
-
-  // .section-marker {
-  //   transform: unset;
-  //   writing-mode: vertical-rl;
-  //   font-family: 'Work Sans', 'Noto Sans JP', sans-serif;
-  // }
 
 }

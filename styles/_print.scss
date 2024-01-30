@@ -39,7 +39,7 @@
 }
 
 
-  .content a[title="Source"] {
+  article a[title="Source"] {
     float: none;
   }
   /* Drop header, footer, sidebars */
@@ -52,7 +52,7 @@
     display: none !important;
   }
   /* Full-width content body */
-  .content, #main_content_body {
+  article, #main_content_body {
     position: static;
     display: block;
     width: auto;
@@ -76,25 +76,5 @@
 
   .container {
     margin-top: 1rem !important;
-  }
-
-  #main_content_wrapper {
-    margin-top: 0;
-  }
-  #main_content_body::before {
-    display: none;
-  }
-  .xrp-ledger-dev-portal.sidebar-primary .main {
-    border: 0;
-  }
-  .sidebar-primary .row {
-    display: block;
-  }
-
-  #feedback-content{
-    display:none !important;
-  }
-  .jump-to-top {
-    display: none !important;
   }
 }

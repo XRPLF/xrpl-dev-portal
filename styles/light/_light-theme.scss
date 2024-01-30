@@ -1,5 +1,5 @@
 // General color elements ------------------------------------------------------
-.content {
+article {
 
   p code,
   table code,
@@ -318,7 +318,7 @@ a.card:hover,
 
 // Buttons
 .btn-outline-secondary,
-.content a.button,
+article a.button,
 .navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
   color: $dark;
   border-color: $dark;

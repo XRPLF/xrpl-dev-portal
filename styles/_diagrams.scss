@@ -2,16 +2,11 @@
 //==============================================================================
 // These styles control the display of diagrams in page contents.
 
-.content {
+article {
   // Shrink images that would overflow the main column.
   img {
     max-width: 100%;
     height: auto;
-
-    .dactyl_badge {
-      // Exception: badges should be their original (small) size.
-      width: initial;
-    }
   }
 
   // Shrink or grow inlined SVG to fit the main column width.
@@ -30,7 +25,7 @@
 }
 
 
-html:not(.light) .content {
+html:not(.light) article {
 
   // Recolor UMLet diagrams for dark theme -------------------------------------
   svg[fill="black"] {
