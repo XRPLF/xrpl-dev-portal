@@ -21,7 +21,7 @@ _([AMM amendment][] {% not-enabled /%}が必要です。)_
 
 リクエストの例
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 

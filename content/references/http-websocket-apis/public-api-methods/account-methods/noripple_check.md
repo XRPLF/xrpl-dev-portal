@@ -15,7 +15,7 @@ The `noripple_check` command provides a quick way to check the status of [the De
 ## Request Format
 An example of the request format:
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
