@@ -433,16 +433,8 @@ events = [
     "image": "paris.png",
     "end_date": "November 28, 2023"
     },
-    # { "name": "XRP Ledger Zone ETHDenver",      
-    # "description": "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
-    # "type": "zone",
-    # "link": "https://xrplzone-consensus.splashthat.com/",  need to update
-    # "location": "Denver, Colorado",
-    # "date": "April 27, 2023",  need to update
-    # "image": "XRPLZone.png",
-    # "end_date": "April 27, 2023" need to update
-    # },
-         { "name": "RippleX’s Research: <br/> Stanford Engineering Campus Research Initiatives",      
+    {
+       "name": "RippleX’s Research: <br/> Stanford Engineering Campus Research Initiatives",      
       "description": "Learn more about RippleX’s ongoing research projects on the XRP Ledger, addressing issues like frontrunning defense, the significance of threshold signatures, and challenges in cross-chain communication, including the construction of bridges on XRPL.",
       "type": "conference",
       "link": "https://stanford.zoom.us/meeting/register/tJ0vcOCorjMpGdPnS4_aBkWhphhnzld7sUKr",
@@ -480,7 +472,6 @@ events = [
       "image": "Conference.png",
       "end_date": "October 11, 2024",
     },
- 
     {
     "name": "XRPL Toronto Meetup Community - Celebrate with Us!",      
     "description": "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
@@ -491,6 +482,44 @@ events = [
     "image": "event-meetup-toronto@2x.jpg",
     "end_date": "January 31, 2024"
     },
+    { "name": "Cyprus Tech Odyssey: XRPL Hackathon 2024",      
+    "description": "Cyprus Tech Odyssey: XRPL Hackathon 2024 is a collaborative initiative between Ripple and the University of Nicosia (UNIC). This unique event promises a blend of insightful discussions and hands-on experiences, all centered around the transformative potential of the XRP Ledger (XRPL).",
+    "type": "hackathon",
+    "link": "https://www.unic.ac.cy/iff/cytechodyssey24/#TechOdyssey2024",  
+    "location": "University of Nicosia,Cyprus",
+    "date": "January 18 - 20, 2024", 
+    "image": "Hackathons.png",
+    "end_date": "January 20, 2024"
+    },
+     {
+    "name": "Building on the XRP Ledger - 2-day Workshop",      
+    "description": "Participants will have the opportunity to gain hands-on experience and valuable knowledge in building real-world assets on the XRPL blockchain. This two-day, free training program is designed for developers who have a keen interest in learning about XRPL.",
+    "type": "meetup",
+    "link": "https://www.xrpl-commons.org/training-jan-2024#learn",
+    "location": "XRPL Commons HQ, Paris, France",
+    "date": "January 25 - 26, 2024",
+    "image": "paris.png",
+    "end_date": "January 26, 2024"
+    },
+    { "name": "XRP Ledger Zone ETHDenver",      
+    "description": "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+    "type": "zone",
+    "link": "http://xrplzone-ethdenver.splashthat.com",  
+    "location": "Denver, Colorado",
+    "date": "February 27, 2024", 
+    "image": "XRPLZone.png",
+    "end_date": "February 27, 2024"
+    },
+    # { "name": "EasyA Hackathon",      
+    # "description": "Smart Contracts, Smarter XRP Ledger! Join us and be among the the first to build the next big thing and learn more about the upcoming EVM integration with XRP Ledger. ",
+    # "type": "hackathon",
+    # "link": "http://xrplzone-ethdenver.splashthat.com",  needs link
+    # "location": "London",
+    # "date": "April 13 - 14, 2024", 
+    # "image": "Hackathons.png",
+    # "end_date": "April 14, 2024"
+    # },
+    
 ]
 def categorize_dates():
     past = []
