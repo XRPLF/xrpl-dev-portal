@@ -1,6 +1,6 @@
 /* Content text styling (applies mostly to Markdown-generated content)------- */
 
-.content {
+[data-component-name="Markdown/MarkdownWrapper"] article {
   padding-bottom: 50px;
 
   p code,
@@ -23,14 +23,10 @@
     &:first-child {
       margin-top: 0;
       line-height: 1.2;
-
-      &::before {
-        margin-top: -80px;
-      }
     }
   }
 
-  h2 {
+  h2, h2.md {
     margin-top: 2.5rem;
     margin-bottom: 1.5rem;
     font-size: 2.5rem;
@@ -38,7 +34,7 @@
     line-height: 1.2;
   }
 
-  h3 {
+  h3, h3.md {
     font-size: 2.125rem;
     margin-top: 2rem;
     margin-bottom: 1rem;
@@ -97,6 +93,12 @@
     .hover_anchor {
       display: none;
     }
+  }
+
+  .shield {
+    // {% badge ... %} (shields.io) components in md
+    display: inline-block !important;
+    vertical-align: middle;
   }
 }
 

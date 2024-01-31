@@ -41,6 +41,8 @@ theme:
   markdown:
     partialsFolders: ["_snippets", "_code-samples", "_api-examples"]
   footer:
+    logo:
+      hide: true
     copyrightText: © 2024 XRP Ledger. Open Source.
     items:
       - group: About

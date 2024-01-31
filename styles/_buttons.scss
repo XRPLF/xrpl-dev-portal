@@ -1,6 +1,6 @@
 // Button styling --------------------------------------------------------------
 
-.btn, .content a.button, .content .btn {
+.btn, article a.button, article .btn {
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
@@ -9,7 +9,7 @@
   line-height: 16px;
 }
 
-.content a.button {
+article a.button {
   padding: .5rem 1rem;
   margin: 0 0.5rem;
   display: inline-block;

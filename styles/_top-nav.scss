@@ -558,18 +558,19 @@ $nav-height: 80px;
 }
 
 // Fix so anchors don't jump under the fixed header ----------------------------
-.main h1:before,
-.main h2:before,
-.main h3:before,
-.main h4:before,
-.main h5:before,
-.main h6:before,
+article h1:before,
+article h2:before,
+article h3:before,
+article h4:before,
+article h5:before,
+article h6:before,
 .interactive-block:before {
   display: block;
   content: " ";
-  margin-top: -80px;
-  height: 80px;
+  margin-top: -40px;
+  height: 40px;
   visibility: hidden;
+  pointer-events: none;
 }
 
 // Fix so links aren't unclickable underneath the header anchor-fix

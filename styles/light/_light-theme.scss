@@ -1,5 +1,5 @@
 // General color elements ------------------------------------------------------
-.content {
+article {
 
   p code,
   table code,
@@ -282,7 +282,8 @@ h6,
 // Navigation ------------------------------------------------------------------
 
 a,
-nav a {
+nav a,
+a:not([role="button"]) {
   color: $light-fg;
 
   &.btn-primary {
@@ -296,7 +297,8 @@ nav a {
 
   &:hover,
   &:active,
-  &.active {
+  &.active
+  {
     color: $light-link-hover-color;
   }
 
@@ -318,7 +320,7 @@ a.card:hover,
 
 // Buttons
 .btn-outline-secondary,
-.content a.button,
+article a.button,
 .navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
   color: $dark;
   border-color: $dark;
@@ -361,11 +363,11 @@ a.card:hover,
   }
 
   // nav "hero" images
-  #top-nav-hero-docs {
+  #dropdown-hero-for-docs > img {
     content: url(../img/icons/lightmode/docs.svg);
   }
 
-  #top-nav-hero-contribute {
+  #dropdown-hero-for-community > img {
     content: url(../img/icons/lightmode/contribute.svg);
   }
 
@@ -494,7 +496,8 @@ a.osano-cm-link {
 }
 
 // Layout elements -------------------------------------------------------------
-.card,
+main .card,
+.landing .card,
 .cta-card {
   color: $light-fg;
   background-color: $light-standout-bg;
@@ -1206,20 +1209,23 @@ $placeholder-color: $gray-600;
 
 }
 
-.tutorial-card-grid {
+main article .card-grid {
+  color: $black;
+
   code {
     background-color: $green-100;
   }
 
-  .card-icon-container {
+  .card-icon-container,
+  &.card-grid-3xN .card-icon-container {
     background: $gray-300;
   }
 }
 
-.footer-nav {
-  .nav-item {
-    text-shadow: #F5F5F7 0px 0px 2px, #F5F5F7 1px 1px 2px, #F5F5F7 2px 2px 3px,
-      #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
-      #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
+[data-component-name="Footer/Footer"] {
+  [data-component-name="Footer/FooterColumn"] {
+    text-shadow: $gray-100 0px 0px 2px, $gray-100 1px 1px 2px, $gray-100 2px 2px 3px,
+      $gray-100 2px 2px 4px, $gray-100 2px 2px 5px, $gray-100 2px 2px 6px, $gray-100 -1px -1px 2px,
+      $gray-100 -2px -2px 3px, $gray-100 -2px -2px 4px;
   }
 }
