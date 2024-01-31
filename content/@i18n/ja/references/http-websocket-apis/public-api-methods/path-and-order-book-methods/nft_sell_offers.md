@@ -16,7 +16,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 ## リクエストのフォーマット
 リクエストのフォーマットの例：
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 

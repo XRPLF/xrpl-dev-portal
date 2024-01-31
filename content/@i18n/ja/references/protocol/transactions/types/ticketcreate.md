@@ -26,7 +26,7 @@ TicketCreateトランザクションは、1つまたは複数の[シーケンス
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | フィールド         | JSONの型          | [内部の型][]       | 説明                |

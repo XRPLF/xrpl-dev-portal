@@ -43,7 +43,7 @@ Channelの**宛先アドレス**は以下の操作を実行できます。
 
 <!--{# TODO: replace the above example with one where the channel, pubkey, signature, and balance match #}-->
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 

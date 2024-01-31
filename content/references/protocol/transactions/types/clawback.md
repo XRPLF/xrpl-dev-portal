@@ -30,7 +30,7 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type | [Internal Type][] | Description       |
 |:-------------------|:----------|:------------------|:------------------|

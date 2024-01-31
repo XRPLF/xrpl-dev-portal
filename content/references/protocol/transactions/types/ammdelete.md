@@ -36,7 +36,7 @@ Normally, an [AMMWithdraw transaction][] automatically deletes an AMM and all as
 }
 ```
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field          | JSON Type           | [Internal Type][] | Required? | Description |
 |:---------------|:--------------------|:------------------|:----------|:------------|

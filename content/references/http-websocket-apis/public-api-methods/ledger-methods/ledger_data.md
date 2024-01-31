@@ -15,7 +15,7 @@ The `ledger_data` method retrieves contents of the specified ledger. You can ite
 ## Request Format
 An example of the request format:
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 

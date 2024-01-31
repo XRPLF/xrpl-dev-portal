@@ -27,16 +27,16 @@ These tutorials walk you through the basics of building a very simple XRP Ledger
 ## XRP Ledger Use Cases
 
 {% card-grid %}
-{% xrpl-card title="Payments" body="Send and receive payments on the XRP Ledger." href="/use-cases/payments/index.md" /%}
-{% xrpl-card title="DeFi" body="Decentralized Finance (DeFi) is about enabling fast, secure financial transactions without a central authority." href="/use-cases/defi/index.md" /%}
-{% xrpl-card title="Tokens" body="Create and trade fungible and non-fungible tokens on the XRP Ledger." href="/use-cases/tokenization/index.md" /%}
+{% xrpl-card title="Payments" body="Send and receive payments on the XRP Ledger." href="/use-cases/payments/" /%}
+{% xrpl-card title="DeFi" body="Decentralized Finance (DeFi) is about enabling fast, secure financial transactions without a central authority." href="/use-cases/defi/" /%}
+{% xrpl-card title="Tokens" body="Create and trade fungible and non-fungible tokens on the XRP Ledger." href="/use-cases/tokenization/" /%}
 {% /card-grid %}
 
 ## Manage XRP Ledger Servers
 
 {% card-grid %}
-{% xrpl-card title="Install rippled server" body="Set up the core XRP Ledger server." href="/infrastructure/installation/index.md" /%}
-{% xrpl-card title="Configure rippled server" body="Customize your core XRP Ledger server's settings." href="/infrastructure/configuration/index.md" /%}
-{% xrpl-card title="Troubleshooting" body="Diagnose and solve issues with XRP Ledger servers and infrastructure." href="/infrastructure/troubleshooting/index.md" /%}
-{% xrpl-card title="Install Clio server" body="Set up the Clio server for efficiently querying XRP Ledger data." href="/infrastructure/installation/install-clio-on-ubuntu.md" /%}
+{% xrpl-card title="Install rippled server" body="Set up the core XRP Ledger server." href="/infrastructure/installation/" /%}
+{% xrpl-card title="Configure rippled server" body="Customize your core XRP Ledger server's settings." href="/infrastructure/configuration/" /%}
+{% xrpl-card title="Troubleshooting" body="Diagnose and solve issues with XRP Ledger servers and infrastructure." href="/infrastructure/troubleshooting/" /%}
+{% xrpl-card title="Install Clio server" body="Set up the Clio server for efficiently querying XRP Ledger data." href="/infrastructure/installation/install-clio-on-ubuntu" /%}
 {% /card-grid %}

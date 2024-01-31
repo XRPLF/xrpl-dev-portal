@@ -29,7 +29,7 @@ Deliver XRP from a held payment to the recipient.
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_EscrowFinish%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22317081AF188CDD4DBE55C418F41A90EC3B959CDB3B76105E0CBE6B7A0F56C5F7%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 

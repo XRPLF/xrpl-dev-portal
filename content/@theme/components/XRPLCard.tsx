@@ -1,6 +1,6 @@
 import * as React from 'react';
 import dynamicReact from '@markdoc/markdoc/dist/react';
-
+import { Link } from '@portal/Link';
 
 export interface XRPLCardProps {
     title: string,
@@ -13,7 +13,7 @@ export interface XRPLCardProps {
 
 export function XRPLCard(props: XRPLCardProps) {
     return (
-        <a className="card float-up-on-hover" href={props.href} >
+        <Link className="card float-up-on-hover" to={props.href} >
             <div className="card-body">
               { props.image && (
                 <div className="card-icon-container">
@@ -26,7 +26,7 @@ export function XRPLCard(props: XRPLCardProps) {
               )}
             </div>
             <div className="card-footer">&nbsp;</div>
-        </a>
+        </Link>
     )
 }
 

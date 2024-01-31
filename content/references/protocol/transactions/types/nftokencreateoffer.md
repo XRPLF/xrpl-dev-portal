@@ -29,7 +29,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenCreateOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22780C44B2EDFF8FC4152B3F7E98D4C435C13DF9BB5498E4BB2D019FCC7EF45BC6%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|

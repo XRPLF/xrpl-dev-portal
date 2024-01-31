@@ -30,7 +30,7 @@ An AccountDelete transaction deletes an [account](../../ledger-data/ledger-entry
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_AccountDelete%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%221AF19BF9717DA0B05A3BFC5007873E7743BA54C0311CCCCC60776AAEAC5C4635%22%2C%22binary%22%3Afalse%7D)
 
-{% partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field            | JSON Type        | [Internal Type][] | Description        |

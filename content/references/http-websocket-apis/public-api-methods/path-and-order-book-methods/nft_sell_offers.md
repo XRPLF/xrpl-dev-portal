@@ -16,7 +16,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ## Request Format
 An example of the request format:
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 

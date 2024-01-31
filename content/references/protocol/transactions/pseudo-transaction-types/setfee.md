@@ -53,6 +53,6 @@ If the _[XRPFees amendment][]_ is enabled, `SetFee` pseudo-transactions use thes
 | `LedgerSequence`        | Number    | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 
-{% partial file="/_snippets/setfee_uniqueness_note.md" /%}
+{% raw-partial file="/_snippets/setfee_uniqueness_note.md" /%}
 
 {% raw-partial file="/_snippets/common-links.md" /%}

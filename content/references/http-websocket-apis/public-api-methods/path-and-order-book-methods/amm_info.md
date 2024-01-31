@@ -21,7 +21,7 @@ _(Requires the [AMM amendment][] {% not-enabled /%})_
 
 An example of the request format:
 
-{% partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
