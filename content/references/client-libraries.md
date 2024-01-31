@@ -19,3 +19,4 @@ For other programming languages, you can access the XRP Ledger through the [HTTP
 | **C++**                         | `rippled` Signing Library | [Get Started](https://github.com/XRPLF/rippled/tree/develop/Builds/linux#signing-library) |  | (Part of [`rippled`](https://github.com/XRPLF/rippled/)) |
 | **Java**                        | `xrpl4j`                  | [Get Started Using Java](../tutorials/get-started/get-started-using-java.md) | [API Reference](https://javadoc.io/doc/org.xrpl/) | [Repo](https://github.com/XRPLF/xrpl4j) |
 | **PHP**                         | `XRPL_PHP`                | [Get Started Using PHP](../tutorials/get-started/get-started-using-php.md) | [XRPL_PHP Docs](https://alexanderbuzz.github.io/xrpl-php-docs/) | [Repo](https://github.com/AlexanderBuzz/xrpl-php) |
+| **Ruby**                         | `XRPB`                |  | [XRPB Docs](https://www.rubydoc.info/gems/xrbp) | [Repo](https://github.com/DevNullProd/XRBP) |

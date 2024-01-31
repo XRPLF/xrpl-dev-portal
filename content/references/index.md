@@ -18,9 +18,9 @@ Use these libraries to access the XRP Ledger from your programming language of c
 
 {% xrpl-card title="Java" body="xrpl4j - a pure Java library" href="https://javadoc.io/doc/org.xrpl/" image="/img/logos/java.svg" imageAlt="Java logo" /%}
 
-{% xrpl-card title="Ruby" body="xrpl - a Ruby library" href="https://www.rubydoc.info/gems/xrbp" image="/img/logos/ruby.svg" imageAlt="Ruby logo" /%}
-
 {% /card-grid %}
+
+[See more...](/references/client-libraries/)
 
 ## XRP Ledger Protocol Reference
 
