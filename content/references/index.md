@@ -54,16 +54,8 @@ Use these libraries to access the XRP Ledger from your programming language of c
 
 The xrp-ledger.toml file provides machine-readable information about your usage of the XRP Ledger to other XRP Ledger users.
 
-{% card-grid %}
-
-{% xrpl-card title="Serving the File" body="" href="/references/xrp-ledger-toml/#serving-the-file" /%}
-
-{% xrpl-card title="Contents" body="" href="/references/xrp-ledger-toml/#contents" /%}
-
-{% xrpl-card title="CORS Setup" body="" href="/references/xrp-ledger-toml/#cors-setup" /%}
-
-{% xrpl-card title="Domain Verification" body="" href="/references/xrp-ledger-toml/#domain-verification" /%}
-
-{% xrpl-card title="Account Verification" body="" href="/references/xrp-ledger-toml/#account-verification" /%}
-
-{% /card-grid %}
+- [**Serving the File**](/references/xrp-ledger-toml/#serving-the-file)
+- [**Contents**](/references/xrp-ledger-toml/#contents)
+- [**CORS Setup**](/references/xrp-ledger-toml/#cors-setup)
+- [**Domain Verification**](/references/xrp-ledger-toml/#domain-verification)
+- [**Account Verification**](/references/xrp-ledger-toml/#account-verification)
