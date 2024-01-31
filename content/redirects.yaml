@@ -736,6 +736,9 @@ set-up-iou-iou-bridge.html:
 submit-cross-chain-transactions.html:
     to: /tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction
     type: 301
+references.html:
+    to: /references/
+    type: 301
 protocol-reference.html:
     to: /references/protocol/
     type: 301
