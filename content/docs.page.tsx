@@ -10,22 +10,25 @@ export const frontmatter = {
 
 const recommendedPages = [
   {
-    description: 'rippled API Reference',
-    link: './manage-the-rippled-server.html',
-  },
-  {
-    description: 'XRP Faucet',
-    link: './xrp-testnet-faucet.html',
+    description: 'Public API Methods',
+    link: '/references/http-websocket-apis/public-api-methods/',
   },
   {
     description: 'Getting Started with Python',
-    link: './get-started-using-python.html#get-started-using-python',
+    link: '/tutorials/get-started/get-started-using-python/',
   },
   {
-    description: 'Websocket API Tool',
-    link: './websocket-api-tool.html',
+    description: 'Run a Validator',
+    link: '/infrastructure/configuration/server-modes/run-rippled-as-a-validator/',
   },
-  { description: 'XRP Ledger Explorer', link: 'https://livenet.xrpl.org' },
+  {
+    description: 'Reserves',
+    link: '/concepts/accounts/reserves/',
+  },
+  {
+    description: 'Transaction Types',
+    link: '/references/protocol/transactions/types/',
+  }
 ];
 
 const useCases = [
@@ -35,16 +38,16 @@ const useCases = [
     imgClass: 'wallet-illustration',
     subItems: [
       {
-        description: 'Trade on the decentralized exchange',
-        link: './trade-in-the-decentralized-exchange.html',
+        description: 'Algorithmic Trading',
+        link: '/use-cases/defi/algorithmic-trading/',
       },
       {
-        description: 'Make payments',
-        link: './send-xrp.html',
+        description: 'List XRP as an Exchange',
+        link: '/use-cases/defi/list-xrp-as-an-exchange/',
       },
       {
-        description: 'Use specialized payment types',
-        link: './use-specialized-payment-types.html',
+        description: 'Payment Types',
+        link: '/concepts/payment-types/',
       },
     ],
   },
@@ -54,16 +57,16 @@ const useCases = [
     imgClass: 'token-illustration',
     subItems: [
       {
-        description: 'Non-fungible Tokens',
-        link: './non-fungible-tokens.html',
+        description: 'Stablecoin Issuer',
+        link: '/use-cases/tokenization/stablecoin-issuer/',
       },
       {
-        description: 'Issue a stablecoin',
-        link: './issue-a-fungible-token.html',
+        description: 'NFT Marketplace',
+        link: '/use-cases/tokenization/nft-mkt-overview/',
       },
       {
-        description: 'Assign an authorized minter',
-        link: './assign-an-authorized-minter-using-javascript.html',
+        description: 'Digital Artist',
+        link: '/use-cases/tokenization/digital-artist/',
       },
     ],
   },
@@ -73,16 +76,16 @@ const useCases = [
     imgClass: 'connections-illustration',
     subItems: [
       {
-        description: 'Peer to peer payments',
-        link: './direct-xrp-payments.html',
+        description: 'Peer-to-Peer Payments',
+        link: '/use-cases/payments/peer-to-peer-payments-uc/',
       },
       {
-        description: 'Cross-currency payments',
-        link: './cross-currency-payments.html',
+        description: 'Cross-Currency Payments',
+        link: '/concepts/payment-types/cross-currency-payments/',
       },
       {
-        description: 'Escrows',
-        link: './escrow.html',
+        description: 'Smart Contracts',
+        link: '/use-cases/payments/smart-contracts-uc/',
       },
     ],
   },
@@ -129,13 +132,13 @@ const getStartedVideos = [
 
 const devTools = [
   {
-    title: 'Faucets',
-    link: './xrp-testnet-faucet.html',
+    title: 'XRP Faucets',
+    link: '/resources/dev-tools/xrp-faucets',
     description: 'Get credentials and test-XRP for XRP Ledger Testnet or Devnet.',
   },
   {
     title: 'WebSocket Tool',
-    link: './websocket-api-tool.html',
+    link: '/resources/dev-tools/websocket-api-tool',
     description: 'Send sample requests and get responses from the rippled API.',
   },
   {
@@ -146,14 +149,14 @@ const devTools = [
   },
   {
     title: 'Transaction Sender',
-    link: './tx-sender.html',
+    link: '/resources/dev-tools/tx-sender',
     description:
       'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
   },
 ];
 const test = './assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png';
 
-const target = { prefix: '' }; // TODO: fixme
+//const target = { prefix: '' }; // TODO: fixme
 
 function UseCasesCard(props: {
   useCase: {
@@ -225,7 +228,7 @@ function DevToolCard(props: { link: string; title: string; description: string }
 function PrimaryButton(props: { href: string; text: string; isArrowUp: boolean }) {
   const { href, text, isArrowUp } = props;
   return (
-    <a className={`btn btn-primary ${isArrowUp ? 'btn-arrow-out' : 'btn-arrow'}`} id={href + '-button'} href="{href}">
+    <a className={`btn btn-primary ${isArrowUp ? 'btn-arrow-out' : 'btn-arrow'}`} id={href + '-button'} href={href}>
       {text}
     </a>
   );
@@ -250,7 +253,7 @@ export default function Docs() {
           <div className="nav card-grid flat-card-grid card-grid-3xN">
             <div className="col">
               <FlatCard
-                href="./concepts.html"
+                href="/concepts"
                 title={translate('Concepts')}
                 description={translate('Learn the "what" and the "why" behind fundamental aspects of the XRP Ledger.')}
                 linkText={translate('Read the Docs')}
@@ -259,7 +262,7 @@ export default function Docs() {
             </div>
             <div className="col">
               <FlatCard
-                href="./tutorials.html"
+                href="/tutorials"
                 title={translate('Tutorials')}
                 description={translate('Get step-by-step guidance to perform common tasks with the XRP Ledger.')}
                 linkText={translate('View Tutorials')}
@@ -268,7 +271,7 @@ export default function Docs() {
             </div>
             <div className="col">
               <FlatCard
-                href="./references.html"
+                href="/references"
                 title={translate('References')}
                 description={translate(
                   'Look up reference documentation for the XRP Ledger protocol, API methods, and more.'
@@ -291,7 +294,7 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Getting Started')}</h4>
           <div className="card-grid card-grid-2xN quickstart-card">
             <div className="col">
-              <a href="./send-payments-using-javascript.html" className="card float-up-on-hover">
+              <a href="/tutorials/quickstart/send-payments-using-javascript/" className="card float-up-on-hover">
                 <h5 className="mt-7">{translate('Quickstart to XRP Ledger')}</h5>
                 <p className="mb-8 mt-4">{translate('An introduction to fundamental aspects of the XRP Ledger.')}</p>
                 <div className="dg-lg-block mb-3">
@@ -325,7 +328,7 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
                 <div className="col langs">
-                  <a href="./get-started-using-javascript.html">
+                  <a href="/tutorials/get-started/get-started-using-javascript/">
                     <img
                       alt="Javascript Logo"
                       src={require('./static/img/logos/javascript.svg')}
@@ -335,13 +338,13 @@ export default function Docs() {
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="./get-started-using-python.html">
+                  <a href="/tutorials/get-started/get-started-using-python/">
                     <img alt="Python Logo" src={require('./static/img/logos/python.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Python')}</h5>
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="./get-started-using-java.html">
+                  <a href="/tutorials/get-started/get-started-using-java/">
                     <img alt="Java Logo" src={require('./static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
                   </a>
@@ -385,7 +388,7 @@ export default function Docs() {
                   />
                 ))}
               </div>
-              <PrimaryButton href="./dev-tools.html" text={translate('View All tools')} isArrowUp={false} />
+              <PrimaryButton href="/resources/dev-tools" text={translate('View All tools')} isArrowUp={false} />
             </div>
           </div>
         </section>
@@ -414,7 +417,7 @@ export default function Docs() {
                       'Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.'
                     )}
                   </p>
-                  <a className="btn btn-primary btn-arrow" href="xrp-testnet-faucet.html">
+                  <a className="btn btn-primary btn-arrow" href="/resources/dev-tools/xrp-faucets/">
                     {translate('Generate Testnet Credentials')}
                   </a>
                 </div>
@@ -422,11 +425,13 @@ export default function Docs() {
             </div>
           </div>
         </section>
+        {/* full docs index isn't ported to Redocly
         <section className="container-new">
           <a href="./docs-index.html" className="btn-arrow arrow-purple documentation-index mr-auto">
             {translate('See full documentation index')}
           </a>
         </section>
+        */}
       </div>
     </div>
   );
