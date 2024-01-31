@@ -17,12 +17,7 @@ Create a new account that you designate as the _issuer_, sometimes called the "c
 
 Many implementations use a _standby_ account as a "warm" wallet. Trusted human operators use the standby account to distribute stablecoins to _operational_ accounts.
 
-<!-->
-<div align="center">
-<img src="img/uc-stablecoin-distribution-flow.png" height="50%" width="50%"></image>
-</div> -->
-
-![Stablecoin Distribution Flow](/img/uc-stablecoin-distribution-flow.png "Stablecoin Distribution Flow")
+![Stablecoin distribution flow](/img/uc-stablecoin-distribution-flow.png "Stablecoin Distribution Flow")
 
 Operational accounts, or "hot" wallets, trade with other accounts on the XRPL. Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners.
 
