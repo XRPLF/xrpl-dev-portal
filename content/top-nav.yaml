@@ -36,7 +36,7 @@
       items:
         - page: ./concepts/index.md
         - page: ./tutorials/index.md
-        - page: ./references/index.md # TODO: waiting on file to be added
+        - page: ./references/index.md
         - page: ./infrastructure/index.md
     - group: Use Cases
       items:

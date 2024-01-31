@@ -122,7 +122,7 @@ export default function DevTools() {
   const { translate } = useTranslate();
 
   return (
-    <div className="page-dev-tools">
+    <article className="page-dev-tools pt-3 p-md-3">
       <div>
         <section className="py-20">
           <div className="mx-auto text-lg-left">
@@ -225,6 +225,7 @@ export default function DevTools() {
                       href={card.href}
                       target="_blank"
                       id={card.id}
+                      key={card.id}
                     >
                       {
                         card.img && (
@@ -254,6 +255,7 @@ export default function DevTools() {
                       href={card.href}
                       target="_blank"
                       id={card.id}
+                      key={card.id}
                     >
                       {
                         card.img && (
@@ -303,6 +305,6 @@ export default function DevTools() {
           </div>
         </section>
       </div>
-    </div>
+    </article>
   );
 }

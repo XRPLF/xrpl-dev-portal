@@ -286,7 +286,7 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Use Cases')}</h4>
           <div className="card-grid card-grid-3xN use-cases">
             {useCases.map(useCase => (
-              <UseCasesCard useCase={useCase} />
+              <UseCasesCard useCase={useCase} key={useCase.id} />
             ))}
           </div>
         </section>
@@ -306,7 +306,7 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid card-grid-2xN video-grid">
                 {getStartedVideos.map(video => (
-                  <VideoCard url={video.url} title={translate(video.title)} src={video.src} />
+                  <VideoCard url={video.url} title={translate(video.title)} src={video.src} key={video.url} />
                 ))}
               </div>
               <div className="align-button-on-bottom">
@@ -360,7 +360,7 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Intermediate Learning Sources')}</h4>
           <div className="card-grid card-grid-3xN">
             {intermediateVideos.map(video => (
-              <VideoCard url={video.url} title={translate(video.title)} src={video.src} />
+              <VideoCard url={video.url} title={translate(video.title)} src={video.src} key={video.url} />
             ))}
           </div>
         </section>
@@ -385,6 +385,7 @@ export default function Docs() {
                     link={card.link}
                     title={translate(card.title)}
                     description={translate(card.description)}
+                    key={card.link}
                   />
                 ))}
               </div>

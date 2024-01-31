@@ -231,6 +231,7 @@ ul.nav.navbar-nav {
   --code-block-controls-background-color: #E0E0E1;
   --code-block-controls-border: none;
   --code-block-border-color: #E0E0E1;
+  --md-tabs-active-tab-background-color: #C1C1C2;
   
   --code-block-tokens-function-color: #B23C00;
   --code-block-tokens-operator-color: #000;

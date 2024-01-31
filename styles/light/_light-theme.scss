@@ -496,9 +496,10 @@ a.osano-cm-link {
 }
 
 // Layout elements -------------------------------------------------------------
-main .card,
+article .card,
 .landing .card,
-.cta-card {
+.cta-card,
+aside .card {
   color: $light-fg;
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
@@ -613,8 +614,8 @@ code {
 }
 
 // Code blocks
-pre code {
-  color: $gray-050;
+pre code, pre {
+  background-color: $gray-200;
 }
 
 // Code tabs
