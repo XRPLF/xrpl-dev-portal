@@ -28,7 +28,7 @@ Any market activity before the initial sale of the NFT is not recorded on the XR
 
 Use a program or script to mint many tokens at once. You might find that [Tickets](../../accounts/tickets.md) help you submit transactions in parallel, up to a current limit of 200 transactions in one group.
 
-For a practical example, see the [Batch Mint NFTs Using JavaScript](../../../tutorials/quickstart/batch-mint-nfts-using-javascript.md) tutorial.
+For a practical example, see the [Batch Mint NFTs Using JavaScript](../../../tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts.md) tutorial.
 
 ### Benefits
 

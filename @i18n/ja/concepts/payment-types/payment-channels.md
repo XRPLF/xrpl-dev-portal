@@ -36,7 +36,7 @@ Payment Channelでは本来、そこで売買可能なものにいては、一�
 
 ## 関連項目
 
-- [Payment Channelの使用](../../tutorials/use-specialized-payment-types/use-payment-channels.md): Payment Channelを使用するプロセスを段階的に説明するチュートリアル。
+- [Payment Channelの使用](../../tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md): Payment Channelを使用するプロセスを段階的に説明するチュートリアル。
 
 - [Escrow](escrow.md): 速度が遅い、条件付きの大量XRP決済のための類似機能。
 

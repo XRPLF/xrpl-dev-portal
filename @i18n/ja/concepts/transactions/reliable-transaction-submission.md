@@ -157,7 +157,7 @@ For each persisted transaction without validated result:
 
     **ヒント:** [`AccountTxnID`フィールド](../../references/protocol/transactions/common-fields.md#accounttxnid)を使用すると、このような状況で冗長的なトランザクションが成功しないように防ぐことができます。
 
-  - 不正使用者に秘密鍵を使われてトランザクションを送信された場合。その場合は、可能であれば[キーペアをローテーション](../../tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md)して、送信された他のトランザクションを確認します。また、ネットワークを監査して、その秘密鍵が大規模な侵入やセキュリティ侵害に関係していたかどうかを判断する必要があります。キーペアのローテーションに成功して、不正使用者がアカウントやシステムにアクセスできなくなったら、通常のアクティビティーを再開します。
+  - 不正使用者に秘密鍵を使われてトランザクションを送信された場合。その場合は、可能であれば[キーペアをローテーション](../../tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair.md)して、送信された他のトランザクションを確認します。また、ネットワークを監査して、その秘密鍵が大規模な侵入やセキュリティ侵害に関係していたかどうかを判断する必要があります。キーペアのローテーションに成功して、不正使用者がアカウントやシステムにアクセスできなくなったら、通常のアクティビティーを再開します。
 
 #### レジャーのギャップ
 

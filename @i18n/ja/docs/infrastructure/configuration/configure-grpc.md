@@ -49,7 +49,7 @@ gRPCを有効にするには、次の前提条件を満たす必要がありま�
     - [XRP Ledgerの概要](/about/)
     - [`rippled`サーバのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
 - **チュートリアル:**
-    - [HTTP / WebSocketAPIを使ってみる](../../tutorials/get-started/get-started-using-http-websocket-apis.md)
+    - [HTTP / WebSocketAPIを使ってみる](../../tutorials/http-websocket-apis/get-started.md)
     - [信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)
     - [rippledサーバの管理](../installation/install-rippled-on-ubuntu.md)
 - **リファレンス:**

@@ -1209,7 +1209,7 @@ Creates "Payment Channels" for XRP. Payment channels are a tool for facilitating
 
 Creates three new transaction types: [PaymentChannelCreate][], [PaymentChannelClaim][], and [PaymentChannelFund][]. Creates a new ledger object type, [PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md). Defines an off-ledger data structure called a `Claim`; the PaymentChannelClaim uses a signature for this data structure. Creates new `rippled` API methods: [`channel_authorize`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md) (creates a signed Claim), [`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md) (verifies a signed Claim), and [`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md) (lists Channels associated with an account).
 
-For more information, see the [Payment Channels Tutorial](../docs/tutorials/use-specialized-payment-types/use-payment-channels.md).
+For more information, see the [Payment Channels Tutorial](../docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md).
 
 
 ### RequireFullyCanonicalSig

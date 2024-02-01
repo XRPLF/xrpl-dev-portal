@@ -8,7 +8,7 @@ labels:
 ---
 # Stablecoin Configuration
 
-There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see [Issue a Fungible Token](../../../../tutorials/use-tokens/issue-a-fungible-token.md).
+There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see [Issue a Fungible Token](../../../../tutorials/tasks/use-tokens/issue-a-fungible-token.md).
 
 Settings you might want to configure include:
 

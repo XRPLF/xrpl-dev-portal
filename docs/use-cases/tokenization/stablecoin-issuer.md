@@ -114,7 +114,7 @@ For additional considerations, see:
 
 - [Stablecoin Issuer - Precautions](../../concepts/tokens/fungible-tokens/stablecoins/precautions.md)
 - [Stablecoin Issuer - Compliance Guidelines](../../concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md)
-- [Issue a Fungible Token](../../tutorials/use-tokens/issue-a-fungible-token.md)
+- [Issue a Fungible Token](../../tutorials/tasks/use-tokens/issue-a-fungible-token.md)
 
 ### Create a Trust Line
 
@@ -154,7 +154,7 @@ If you see signs of suspicious activity, you can enact a global freeze on your a
 
 ![Global Freeze](/docs/img/uc-stablecoin-global-freeze.png)
 
-See [Enact Global Freeze](../../tutorials/use-tokens/enact-global-freeze.md).
+See [Enact Global Freeze](../../tutorials/tasks/use-tokens/enact-global-freeze.md).
 
 
 ### Clawback
@@ -183,7 +183,7 @@ To ensure a limited supply, you can "black hole" the issuer after issuing tokens
 
 **Warning:** A black hole account has no way to send transactions of any kind, so you cannot update any settings or do any maintenance on the account afterwards!
 
-See [Disable Master Key Pair](../../tutorials/manage-account-settings/disable-master-key-pair.md).
+See [Disable Master Key Pair](../../tutorials/tasks/manage-account-settings/disable-master-key-pair.md).
 
 ### Reliable Transaction Submission
 

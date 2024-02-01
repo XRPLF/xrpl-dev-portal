@@ -80,8 +80,8 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 ## 関連項目
 
 - **チュートリアル:**
-    - [XRPの送金（対話型チュートリアル）](../../tutorials/get-started/send-xrp.md)
-    - [WebSocketを使用した着信ペイメントの監視](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+    - [XRPの送金（対話型チュートリアル）](../../tutorials/tasks/send-xrp.md)
+    - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 - **リファレンス:**
     - [Paymentトランザクション][]
     - [トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)

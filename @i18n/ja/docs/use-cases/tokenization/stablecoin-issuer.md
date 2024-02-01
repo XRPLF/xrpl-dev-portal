@@ -114,7 +114,7 @@ How to transparently report the current number of stablecoins held in reserve.
 
 - [ステーブルコイン発行者 - 注意事項](../../concepts/tokens/fungible-tokens/stablecoins/precautions.md)
 - [ステーブルコイン発行者 - コンプライアンス指針](../../concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md)
-- [代替可能トークンの発行](../../tutorials/use-tokens/issue-a-fungible-token.md)
+- [代替可能トークンの発行](../../tutorials/tasks/use-tokens/issue-a-fungible-token.md)
 
 ### トラストラインの作成
 
@@ -154,7 +154,7 @@ _No Freeze_ 設定を有効にしない場合、アカウントが疑わしい�
 
 ![Global Freeze](/docs/img/uc-stablecoin-global-freeze.png)
 
-[Global Freezeの実行](../../tutorials/use-tokens/enact-global-freeze.md)をご覧ください。
+[Global Freezeの実行](../../tutorials/tasks/use-tokens/enact-global-freeze.md)をご覧ください。
 
 
 ### Clawback
@@ -183,7 +183,7 @@ Clawbackは、ステーブルコインの配布を開始する前に選択でき
 
 **注意:** ブラックホール済アカウントはトランザクションを送信する手段を持たないため、その後アカウントに関する設定を更新したり、メンテナンスを行ったりすることはできません！
 
-[マスターキーペアの無効化](../../tutorials/manage-account-settings/disable-master-key-pair.md)をご覧ください。
+[マスターキーペアの無効化](../../tutorials/tasks/manage-account-settings/disable-master-key-pair.md)をご覧ください。
 
 ### 信頼できるトランザクションの送信
 

@@ -614,9 +614,9 @@ Off-Ledger Balances</td>
     - [Source and Destination Tags](../../concepts/transactions/source-and-destination-tags.md)
 - **Tutorials:**
     - [Install `rippled`](../../infrastructure/installation/index.md)
-    - [Send XRP](../../tutorials/get-started/send-xrp.md)
+    - [Send XRP](../../tutorials/tasks/send-xrp.md)
     - [Set Up Secure Signing](../../concepts/transactions/secure-signing.md)
-    - [Monitor Incoming Payments with WebSocket](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+    - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 - **References:**
     - [Payment transaction][]
     - [account_info method][]

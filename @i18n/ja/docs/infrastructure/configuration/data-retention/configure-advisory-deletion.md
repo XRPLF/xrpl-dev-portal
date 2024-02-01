@@ -57,7 +57,7 @@ labels:
 
 2. サーバーに対してオンライン削除を指示する[can_deleteメソッド][]の実行をテストします。
 
-    このコマンドの実行には[`rippled`コマンドラインインターフェイス](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#コマンドライン)を使用できます。例:
+    このコマンドの実行には[`rippled`コマンドラインインターフェイス](../../../tutorials/http-websocket-apis/get-started.md#コマンドライン)を使用できます。例:
 
     ```
     $ rippled --conf=/etc/opt/ripple/rippled.cfg can_delete now

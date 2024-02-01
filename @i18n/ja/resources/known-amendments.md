@@ -1164,7 +1164,7 @@ XRPの「Payment Channel」を作成します。Payment Channelは、2名の当�
 
 新たに作成するトランザクションタイプは次の3つです。[PaymentChannelCreate][]、[PaymentChannelClaim][]、[PaymentChannelFund][]。新たに作成するレジャーオブジェクトタイプは[PayChannel](../docs/references/protocol/ledger-data/ledger-entry-types/paychannel.md)です。レジャー外のデータ構造`Claim`を定義し、ChannelClaimトランザクションに使用します。新たに作成する`rippled`APIメソッドは次のとおりです。[`channel_authorize`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md)（署名されたクレームを作成します）、[`channel_verify`](../docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md)（署名されたクレームを検証します）、[`account_channels`](../docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels.md)（アカウントに関連するチャンネルをリストを作成します）。
 
-詳細は、[Payment Channelsのチュートリアル](../docs/tutorials/use-specialized-payment-types/use-payment-channels.md)を参照してください。
+詳細は、[Payment Channelsのチュートリアル](../docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md)を参照してください。
 
 
 ### RequireFullyCanonicalSig

@@ -18,13 +18,13 @@ As a digital artist, you’re focused on creating NFTs, presumably to sell on th
 
 You can create NFTokens using an app such as the [Xumm app](https://xumm.app).
 
-For a more hands-on experience, you can follow the steps in the [Quickstart Tutorial 3 - Mint and Burn NFTokens](../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md).
+For a more hands-on experience, you can follow the steps in the [Quickstart Tutorial 3 - Mint and Burn NFTokens](../../tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md).
 
 [![Digital Artist Flow](/docs/img/nft-mkt-digital-artist.png "Digital Artist Flow")](/docs/img/nft-mkt-digital-artist.png)
 
 ## Use a public server
 
-As you get started, you will likely have comparatively few transactions. You can work with one of the free XRP Ledger public servers. As your business grows, you might consider your own NFT Ledger instance to handle increased sales traffic. See [Public servers](../../tutorials/get-started/public-servers.md).
+As you get started, you will likely have comparatively few transactions. You can work with one of the free XRP Ledger public servers. As your business grows, you might consider your own NFT Ledger instance to handle increased sales traffic. See [Public servers](../../tutorials/public-servers.md).
 
 ## Create NFTs
 
@@ -37,11 +37,11 @@ To create your first NFTs, follow the instructions in the tutorial _Mint and Bur
 * You can mint NFTs in logical collections using the <code>TokenTaxon</code> field. See [Minting NFTs into Collections](../../concepts/tokens/nfts/collections.md).
 * If you, as the issuer, want to be able to burn the token in the future, set the <code>Flags</code> field to <em>1.</em> To make the NFT transferable, set the <code>Flags</code> field to <em>8</em>. Set the <code>Flags</code> field to <em>9</em> to make the NFT both burnable and transferable. See[ Burnable flag](../../references/protocol/data-types/nftoken.md#nftoken-flags) and [Transferable flag](../../references/protocol/data-types/nftoken.md#nftoken-flags).
 
-See [Mint and Burn NFTokens](../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md).
+See [Mint and Burn NFTokens](../../tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md).
 
 ## Sell NFTs
 
-You transfer NFTs by creating a sell offer. See [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
+You transfer NFTs by creating a sell offer. See [Transfer NFTokens](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md).
 
 ![Transferring NFTs](/docs/img/uc-nft-transferring-nfts.png)
 
@@ -65,11 +65,11 @@ See:
 
 ### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md).
 
 ![Checkout](/docs/img/uc-nft-checkout.png)
 
-For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
+For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
 
 ## Indexing NFTs

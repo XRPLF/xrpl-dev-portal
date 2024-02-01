@@ -42,12 +42,12 @@ _送信元タグ_と_宛先タグ_は、XRP Ledgerの[支払い](../payment-type
 
 ## タグの必須化
 
-複数の顧客口座への支払いを受け取る可能性があるXRP Ledgerアドレスにとって、宛先タグなしで支払いを受け取ることは問題です。どの顧客に入金すべきかがすぐに分からないため、手作業が必要になったり、誰が受取人であったかを特定するために送金者とやり取りをしなければならなくなったりします。このようなケースを減らすために、[`RequireDest`設定を有効にする](../../tutorials/manage-account-settings/require-destination-tags.md)ことができます。そうすることで、もしユーザが支払先にタグを設定し忘れた場合、XRP Ledgerはその支払いを拒否します。その後、ユーザはそのタグを使って再度支払いを行うことができます。
+複数の顧客口座への支払いを受け取る可能性があるXRP Ledgerアドレスにとって、宛先タグなしで支払いを受け取ることは問題です。どの顧客に入金すべきかがすぐに分からないため、手作業が必要になったり、誰が受取人であったかを特定するために送金者とやり取りをしなければならなくなったりします。このようなケースを減らすために、[`RequireDest`設定を有効にする](../../tutorials/tasks/manage-account-settings/require-destination-tags.md)ことができます。そうすることで、もしユーザが支払先にタグを設定し忘れた場合、XRP Ledgerはその支払いを拒否します。その後、ユーザはそのタグを使って再度支払いを行うことができます。
 
 
 ## 関連項目
 
-- [宛先タグの必須化](../../tutorials/manage-account-settings/require-destination-tags.md)
+- [宛先タグの必須化](../../tutorials/tasks/manage-account-settings/require-destination-tags.md)
 - [支払いのタイプ](../payment-types/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

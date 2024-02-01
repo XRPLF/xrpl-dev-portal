@@ -73,8 +73,8 @@ labels:
     - [アカウント](accounts.md)
     - [暗号鍵](cryptographic-keys.md)
 - **チュートリアル:**
-    - [レギュラーキーペアの割り当て](../../tutorials/manage-account-settings/assign-a-regular-key-pair.md)
-    - [レギュラーキーペアの変更または削除](../../tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+    - [レギュラーキーペアの割り当て](../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md)
+    - [レギュラーキーペアの変更または削除](../../tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **リファレンス:**
     - [account_infoメソッド][]
     - [SetRegularKeyトランザクション][]

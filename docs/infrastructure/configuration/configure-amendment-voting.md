@@ -9,7 +9,7 @@ labels:
 ---
 # Configure Amendment Voting
 
-Servers configured as validators can vote on [amendments](../../concepts/networks-and-servers/amendments.md) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](../../tutorials/get-started/get-started-using-http-websocket-apis.md#admin-access).)
+Servers configured as validators can vote on [amendments](../../concepts/networks-and-servers/amendments.md) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](../../tutorials/http-websocket-apis/get-started.md#admin-access).)
 
 For example, to vote against the "SHAMapV2" amendment, run the following command:
 

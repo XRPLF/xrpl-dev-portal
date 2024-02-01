@@ -24,7 +24,7 @@ If you think you've been scammed, make sure to collect as much information as yo
     - [Uphold](https://support.uphold.com/hc/en-us/requests/new)
     - [Bitrue](https://www.bitrue.com/exchange-web/footer/contactus.html)
 
-4. If the scammer exchanged XRP for another token on the XRP Ledger, contact the token's issuer. The issuer may be able to [freeze the scammer's trust line](../docs/tutorials/use-tokens/freeze-a-trust-line.md) to prevent the scammer from sending those tokens to others.
+4. If the scammer exchanged XRP for another token on the XRP Ledger, contact the token's issuer. The issuer may be able to [freeze the scammer's trust line](../docs/tutorials/tasks/use-tokens/freeze-a-trust-line.md) to prevent the scammer from sending those tokens to others.
 
 For more details on reporting scammers, see [Xrplorer Forensics Help](https://xrplorer.com/forensics/help).
 

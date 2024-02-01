@@ -446,7 +446,7 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
   - [結果のファイナリティー](index.md) - トランザクションの成功また失敗が最終的なものとなるタイミングを判断する方法。（簡単な説明: トランザクションが検証済みレジャーにある場合は、その結果とメタデータは最終的なものです。）
 - **チュートリアル:**
   - [信頼できるトランザクションの送信](../reliable-transaction-submission.md)
-  - [WebSocketを使用した着信ペイメントの監視](../../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+  - [WebSocketを使用した着信ペイメントの監視](../../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 - **リファレンス:**
   - [レジャーオブジェクトタイプのリファレンス](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - レジャーオブジェクトの使用可能なすべてのタイプのフィールド
   - [トランザクションのメタデータ](../../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要

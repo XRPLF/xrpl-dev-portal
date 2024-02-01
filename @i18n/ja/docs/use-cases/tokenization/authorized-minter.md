@@ -12,7 +12,7 @@ _私は認可Minterとして、トークン発行者のために合意された�
 
 トークン発行者の認可Minterとして動作することができます。この場合、あなたはNFTokenを所有しますが、ロイヤリティはNFTokenの発行者が受け取ります。そのNFTokenを売却する場合、最初の売却益はあなたに入ります。発行者と合意の上、初回売却額の一部または全部を発行者に支払うことができます。
 
-チュートリアル[認可Minterの割り当て](../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md)で詳しく説明されています。
+チュートリアル[認可Minterの割り当て](../../tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter.md)で詳しく説明されています。
 
 [![認可Minterのフロー](/docs/img/nft-mkt-auth-minter.png "認可Minterのフロー")](/docs/img/nft-mkt-auth-minter.png)
 
@@ -26,7 +26,7 @@ NFTを自分で設計するのではなく、NFTクリエイターと連携し�
 
 NFTの作成を終了すると、作成者は認可Minterの権限を取り消し、NFTに対する権限を取り戻すことができます。また、NFTの販売を行うマーケットプレイスにトークンを譲渡することもできます。あなたは、売りオファーと買いオファーのマッチングを行うブローカーとして機能することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)を参照してください。
 
-他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](../../tutorials/quickstart/assign-an-authorized-minter-using-javascript.md)をご覧ください。
+他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](../../tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter.md)をご覧ください。
 
 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)および[Transferableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)を参照してください。
 
@@ -43,11 +43,11 @@ TokenTaxonフィールドを使用して、特定のテーマや目的をもっ�
 
 ## NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
 
 NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md)をご覧ください。
 
 ### 準備金要件
 
@@ -65,9 +65,9 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 ### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
 
-他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
+他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 
 ## NFTのインデックス
 

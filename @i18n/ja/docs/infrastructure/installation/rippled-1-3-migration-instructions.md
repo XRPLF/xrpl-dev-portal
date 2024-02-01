@@ -119,7 +119,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 - **チュートリアル:**
   - [Linuxでの自動更新](update-rippled-automatically-on-linux.md)
   - [rippledのトラブルシューティング](../troubleshooting/index.md)
-  - [rippled APIの使用開始](../../tutorials/get-started/get-started-using-http-websocket-apis.md)
+  - [rippled APIの使用開始](../../tutorials/http-websocket-apis/get-started.md)
 - **リファレンス:**
     - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
       - [`rippled`コマンドラインの使用](../commandline-usage.md)

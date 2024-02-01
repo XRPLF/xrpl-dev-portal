@@ -87,9 +87,9 @@ You can only enable the No Freeze setting with a transaction signed by your addr
 - **Concepts:**
     - [Trust Lines and Issuing](index.md)
 - **Tutorials:**
-    - [Enable No Freeze](../../../tutorials/use-tokens/enable-no-freeze.md)
-    - [Enact Global Freeze](../../../tutorials/use-tokens/enact-global-freeze.md)
-    - [Freeze a Trust Line](../../../tutorials/use-tokens/freeze-a-trust-line.md)
+    - [Enable No Freeze](../../../tutorials/tasks/use-tokens/enable-no-freeze.md)
+    - [Enact Global Freeze](../../../tutorials/tasks/use-tokens/enact-global-freeze.md)
+    - [Freeze a Trust Line](../../../tutorials/tasks/use-tokens/freeze-a-trust-line.md)
 - **References:**
     - [account_lines method][]
     - [account_info method][]

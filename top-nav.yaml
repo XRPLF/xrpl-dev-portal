@@ -45,15 +45,15 @@
         - page: ./docs/use-cases/defi/index.md
     - group: Get Started
       items:
-        - page: ./docs/tutorials/get-started/get-started-using-javascript.md
+        - page: ./docs/tutorials/javascript/get-started.md
           label: JavaScript
-        - page: ./docs/tutorials/get-started/get-started-using-python.md
+        - page: ./docs/tutorials/python/get-started.md
           label: Python
-        - page: ./docs/tutorials/get-started/get-started-using-java.md
+        - page: ./docs/tutorials/java/get-started.md
           label: Java
-        - page: ./docs/tutorials/get-started/get-started-using-php.md
+        - page: ./docs/tutorials/php/get-started.md
           label: PHP
-        - page: ./docs/tutorials/get-started/get-started-using-http-websocket-apis.md
+        - page: ./docs/tutorials/http-websocket-apis/get-started.md
           label: HTTP / WebSocket
 
 - group: Resources

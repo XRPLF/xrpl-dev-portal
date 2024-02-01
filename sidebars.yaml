@@ -153,114 +153,114 @@
     - page: docs/tutorials/index.md
       expanded: false
       items:
-        - page: docs/tutorials/get-started/public-servers.md
+        - page: docs/tutorials/public-servers.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
-            - page: docs/tutorials/get-started/get-started-using-python.md
-            - page: docs/tutorials/python/modular-tutorials-in-python/index.md
+            - page: docs/tutorials/python/get-started.md
+            - page: docs/tutorials/python/modular-tutorials/index.md
               expanded: false
               items:
-                - page: docs/tutorials/quickstart/send-payments-using-python.md
+                - page: docs/tutorials/python/modular-tutorials/send-payments/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/quickstart/py-create-accounts-send-xrp.md
-                    - page: docs/tutorials/quickstart/py-create-trustline-send-currency.md
-                    - page: docs/tutorials/quickstart/py-create-time-based-escrows.md
-                - group: NFTs Using Python
+                    - page: docs/tutorials/python/modular-tutorials/send-payments/create-accounts-send-xrp.md
+                    - page: docs/tutorials/python/modular-tutorials/send-payments/create-trust-line-send-currency.md
+                    - page: docs/tutorials/python/modular-tutorials/send-payments/create-time-based-escrows.md
+                - page: docs/tutorials/python/modular-tutorials/nfts/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/quickstart/py-mint-and-burn-nfts.md
-                    - page: docs/tutorials/quickstart/py-transfer-nfts.md
-                    - page: docs/tutorials/quickstart/py-broker-sale.md
-                    - page: docs/tutorials/quickstart/py-authorize-minter.md
-                    - page: docs/tutorials/quickstart/py-batch-minting.md
-            - page: docs/tutorials/build-apps/build-a-desktop-wallet-in-python.md
+                    - page: docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts.md
+                    - page: docs/tutorials/python/modular-tutorials/nfts/transfer-nfts.md
+                    - page: docs/tutorials/python/modular-tutorials/nfts/broker-an-nft-sale.md
+                    - page: docs/tutorials/python/modular-tutorials/nfts/assign-an-authorized-minter.md
+                    - page: docs/tutorials/python/modular-tutorials/nfts/batch-mint-nfts.md
+            - page: docs/tutorials/python/build-a-desktop-wallet-in-python.md
         - page: docs/tutorials/javascript/index.md
           expanded: false
           items:
-            - page: docs/tutorials/get-started/get-started-using-javascript.md
-            - page: docs/tutorials/javascript/modular-tutorials-in-javascript/index.md
+            - page: docs/tutorials/javascript/get-started.md
+            - page: docs/tutorials/javascript/modular-tutorials/index.md
               expanded: false
               items:
-                - page: docs/tutorials/quickstart/send-payments-using-javascript.md
+                - page: docs/tutorials/javascript/modular-tutorials/send-payments/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/quickstart/create-accounts-send-xrp-using-javascript.md
-                    - page: docs/tutorials/quickstart/create-trustline-send-currency-using-javascript.md
-                    - page: docs/tutorials/quickstart/create-time-based-escrows-using-javascript.md
-                    - page: docs/tutorials/quickstart/create-conditional-escrows-using-javascript.md
-                - page: docs/tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index.md
+                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-accounts-send-xrp.md
+                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-trust-line-send-currency.md
+                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-time-based-escrows.md
+                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-conditional-escrows.md
+                - page: docs/tutorials/javascript/modular-tutorials/nfts/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/quickstart/mint-and-burn-nfts-using-javascript.md
-                    - page: docs/tutorials/quickstart/transfer-nfts-using-javascript.md
-                    - page: docs/tutorials/quickstart/broker-an-nft-sale-using-javascript.md
-                    - page: docs/tutorials/quickstart/assign-an-authorized-minter-using-javascript.md
-                    - page: docs/tutorials/quickstart/batch-mint-nfts-using-javascript.md
-            - page: docs/tutorials/build-apps/build-a-browser-wallet-in-javascript.md
-            - page: docs/tutorials/build-apps/build-a-desktop-wallet-in-javascript.md
+                    - page: docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md
+                    - page: docs/tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md
+                    - page: docs/tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md
+                    - page: docs/tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter.md
+                    - page: docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts.md
+            - page: docs/tutorials/javascript/build-a-browser-wallet-in-javascript.md
+            - page: docs/tutorials/javascript/build-a-desktop-wallet-in-javascript.md
         - page: docs/tutorials/java/index.md
           expanded: false
           items:
-            - page: docs/tutorials/get-started/get-started-using-java.md
+            - page: docs/tutorials/java/get-started.md
         - page: docs/tutorials/php/index.md
           expanded: false
           items:
-            - page: docs/tutorials/get-started/get-started-using-php.md
+            - page: docs/tutorials/php/get-started.md
         - page: docs/tutorials/http-websocket-apis/index.md
           expanded: false
           items:
-            - page: docs/tutorials/get-started/get-started-using-http-websocket-apis.md
-            - page: docs/tutorials/get-started/monitor-incoming-payments-with-websocket.md
+            - page: docs/tutorials/http-websocket-apis/get-started.md
+            - page: docs/tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md
         - page: docs/tutorials/tasks/index.md
           expanded: false
           items:
+            - page: docs/tutorials/tasks/send-xrp.md
             - page: docs/tutorials/tasks/manage-account-settings/index.md
               expanded: false
               items:
-                - page: docs/tutorials/manage-account-settings/assign-a-regular-key-pair.md
-                - page: docs/tutorials/manage-account-settings/change-or-remove-a-regular-key-pair.md
-                - page: docs/tutorials/manage-account-settings/disable-master-key-pair.md
-                - page: docs/tutorials/manage-account-settings/set-up-multi-signing.md
-                - page: docs/tutorials/manage-account-settings/send-a-multi-signed-transaction.md
-                - page: docs/tutorials/manage-account-settings/require-destination-tags.md
-                - page: docs/tutorials/manage-account-settings/offline-account-setup.md
-                - page: docs/tutorials/manage-account-settings/use-tickets.md
-            - page: docs/tutorials/get-started/send-xrp.md
+                - page: docs/tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md
+                - page: docs/tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair.md
+                - page: docs/tutorials/tasks/manage-account-settings/disable-master-key-pair.md
+                - page: docs/tutorials/tasks/manage-account-settings/set-up-multi-signing.md
+                - page: docs/tutorials/tasks/manage-account-settings/send-a-multi-signed-transaction.md
+                - page: docs/tutorials/tasks/manage-account-settings/require-destination-tags.md
+                - page: docs/tutorials/tasks/manage-account-settings/offline-account-setup.md
+                - page: docs/tutorials/tasks/manage-account-settings/use-tickets.md
             - page: docs/tutorials/tasks/use-specialized-payment-types/index.md
               expanded: false
               items:
                 - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
-                - page: docs/tutorials/use-specialized-payment-types/use-payment-channels.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/look-up-escrows.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
+                - page: docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
-                - page: docs/tutorials/use-specialized-payment-types/use-checks/use-checks.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md
+                - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/use-checks.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/use-specialized-payment-types/use-checks/send-a-check.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
-                    - page: docs/tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/cancel-a-check.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
+                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
             - page: docs/tutorials/tasks/use-tokens/index.md
               expanded: false
               items:
-                - page: docs/tutorials/use-tokens/issue-a-fungible-token.md
-                - page: docs/tutorials/use-tokens/trade-in-the-decentralized-exchange.md
-                - page: docs/tutorials/use-tokens/enable-no-freeze.md
-                - page: docs/tutorials/use-tokens/enact-global-freeze.md
-                - page: docs/tutorials/use-tokens/freeze-a-trust-line.md
-                - page: docs/tutorials/use-tokens/create-an-automated-market-maker.md
+                - page: docs/tutorials/tasks/use-tokens/issue-a-fungible-token.md
+                - page: docs/tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md
+                - page: docs/tutorials/tasks/use-tokens/enable-no-freeze.md
+                - page: docs/tutorials/tasks/use-tokens/enact-global-freeze.md
+                - page: docs/tutorials/tasks/use-tokens/freeze-a-trust-line.md
+                - page: docs/tutorials/tasks/use-tokens/create-an-automated-market-maker.md
             - page: docs/tutorials/tasks/use-xrpl-sidechains/index.md
               expanded: false
               items:

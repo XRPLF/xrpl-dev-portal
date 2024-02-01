@@ -6,4 +6,4 @@ Checkを換金するための前提条件は、正確な金額を換金する場
 - 発行済み通貨用のCheckの場合は、ご自身（受取人）にイシュアーに対するトラストラインがある必要があります。このトラストライン上のご自身の限度額は、受け取る金額を追加するための残高より十分高くなければなりません。
   - トラストラインと限度額について詳しくは、[トークン](../concepts/tokens/index.md)および[トラストラインと発行](../concepts/tokens/fungible-tokens/index.md)を参照してください。
 - [トランザクションに安全に署名できる手段](../concepts/transactions/secure-signing.md)。
-- XRP Ledgerに接続できる[クライアントライブラリ](../references/client-libraries.md)か、それとも[HTTPライブラリ、WebSocketライブラリなど](../tutorials/get-started/get-started-using-http-websocket-apis.md)。
+- XRP Ledgerに接続できる[クライアントライブラリ](../references/client-libraries.md)か、それとも[HTTPライブラリ、WebSocketライブラリなど](../tutorials/http-websocket-apis/get-started.md)。

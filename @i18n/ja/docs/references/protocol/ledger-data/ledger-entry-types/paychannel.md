@@ -17,7 +17,7 @@ _（[PayChan Amendment][]により追加されました。）_
 
 有効期限切れになったPayment Channelは、まずレジャーに残ります。これは、レジャーの内容を変更できるのは新しいトランザクションだけであるためです。有効期限の経過後にトランザクションがPayment Channelにアクセスすると、トランザクション処理によりそのPayment Channelは自動的に閉鎖されます。有効期限切れのChannelを閉鎖して未使用のXRPを所有者に返金するには、一部のアドレスがそのChannelにアクセスする新しいPaymentChannelClaimトランザクションまたはPaymentChannelFundトランザクションを送信する必要があります。
 
-Payment Channelの使用例については、[Payment Channelのチュートリアル](../../../../tutorials/use-specialized-payment-types/use-payment-channels.md)を参照してください。
+Payment Channelの使用例については、[Payment Channelのチュートリアル](../../../../tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md)を参照してください。
 
 ## {% $frontmatter.seo.title %} JSONの例
 

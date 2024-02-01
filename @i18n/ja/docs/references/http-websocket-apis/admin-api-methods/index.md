@@ -10,7 +10,7 @@ labels:
 
 `rippled`サーバーと直接通信する際には管理APIメソッドを使用します。管理メソッドは、信頼できるサーバー運用担当者のみを対象としています。管理メソッドには、サーバーの管理、監視、デバッグのためのコマンドが含まれています。
 
-管理コマンドを使用できるのは、管理者として、`rippled.cfg`ファイルに指定されているホストとポートで`rippled`サーバーに接続している場合に限られます。デフォルトでは、コマンドラインクライアントが管理接続を使用します。`rippled`への接続についての詳細は、[rippled API入門](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)を参照してください。
+管理コマンドを使用できるのは、管理者として、`rippled.cfg`ファイルに指定されているホストとポートで`rippled`サーバーに接続している場合に限られます。デフォルトでは、コマンドラインクライアントが管理接続を使用します。`rippled`への接続についての詳細は、[rippled API入門](../../../tutorials/http-websocket-apis/get-started.md)を参照してください。
 
 
 ## [キー生成メソッド](key-generation-methods/index.md)

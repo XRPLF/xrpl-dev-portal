@@ -65,7 +65,7 @@ Sending a transaction to the XRP Ledger involves several steps:
 5. The servers apply those transactions to the previous ledger in a canonical order and share their results.
 6. If enough [trusted validators](../networks-and-servers/rippled-server-modes.md#validators) created the exact same ledger, that ledger is declared _validated_ and the [results of the transactions](../../references/protocol/transactions/transaction-results/transaction-results.md) in that ledger are immutable.
 
-See [Send XRP](../../tutorials/get-started/send-xrp.md) for an interactive tutorial in sending XRP payments.
+See [Send XRP](../../tutorials/tasks/send-xrp.md) for an interactive tutorial in sending XRP payments.
 
 
 ### Example Unsigned Transaction
@@ -207,9 +207,9 @@ Example response from the `tx` command:
     - [Payment Types](../payment-types/index.md)
 - **Tutorials:**
     - [Set Up Secure Signing](secure-signing.md)
-    - [Send XRP](../../tutorials/get-started/send-xrp.md)
+    - [Send XRP](../../tutorials/tasks/send-xrp.md)
     - [Look Up Transaction Results](finality-of-results/look-up-transaction-results.md)
-    - [Monitor Incoming Payments with WebSocket](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+    - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
     - [Cancel or Skip a Transaction](finality-of-results/canceling-a-transaction.md)
     - [Reliable Transaction Submission](reliable-transaction-submission.md)
 - **References:**

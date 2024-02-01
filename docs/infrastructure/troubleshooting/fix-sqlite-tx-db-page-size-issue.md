@@ -183,7 +183,7 @@ To migrate your transaction database to a larger page size, perform the followin
 
 11. Confirm that the `rippled` service started successfully.
 
-    You can use the [commandline interface](../../tutorials/get-started/get-started-using-http-websocket-apis.md#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
+    You can use the [commandline interface](../../tutorials/http-websocket-apis/get-started.md#commandline) to check the server status (unless you have configured your server not to accept JSON-RPC requests). For example:
 
     ```
     /opt/ripple/bin/rippled server_info

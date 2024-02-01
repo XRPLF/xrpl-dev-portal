@@ -10,7 +10,7 @@ labels:
 
 The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
-**Tip:** Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#admin-access).
+**Tip:** Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/http-websocket-apis/get-started.md#admin-access).
 
 When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.md). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 
@@ -58,7 +58,7 @@ The usage rate drops off exponentially over time, so a client that does not make
     - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
     - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
-    - [Getting Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)
+    - [Getting Started with XRP Ledger APIs](../../../tutorials/http-websocket-apis/get-started.md)
     - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
 - **References:**
     - [rippled API Reference](../index.md)

@@ -63,7 +63,7 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 - **Concepts:**
     - [マルチシグ](multi-signing.md)
 - **Tutorials:**
-    - [チケットを使用する](../../tutorials/manage-account-settings/use-tickets.md)
+    - [チケットを使用する](../../tutorials/tasks/manage-account-settings/use-tickets.md)
 - **References:**
     - [TicketCreate トランザクション][]
     - [トランザクションの共通フィールド](../../references/protocol/transactions/common-fields.md)

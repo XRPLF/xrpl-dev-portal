@@ -28,7 +28,7 @@ NFTokenオブジェクトの初回販売以前の市場活動は、XRP Ledgerに
 
 プログラムまたはスクリプトを使用して、一度に多数のトークンをMintします。[チケット](../../accounts/tickets.md)を使えば、1度に200件までのトランザクションを並行して処理することができます。
 
-実用例としては、チュートリアルの[JavaScriptでNFTをバッチMint](../../../tutorials/quickstart/batch-mint-nfts-using-javascript.md)をご覧ください
+実用例としては、チュートリアルの[JavaScriptでNFTをバッチMint](../../../tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts.md)をご覧ください
 
 ### メリット
 

@@ -291,7 +291,7 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Getting Started')}</h4>
           <div className="card-grid card-grid-2xN quickstart-card">
             <div className="col">
-              <a href="/tutorials/quickstart/send-payments-using-javascript/" className="card float-up-on-hover">
+              <a href="/tutorials/javascript/modular-tutorials/send-payments" className="card float-up-on-hover">
                 <h5 className="mt-7">{translate('Quickstart to XRP Ledger')}</h5>
                 <p className="mb-8 mt-4">{translate('An introduction to fundamental aspects of the XRP Ledger.')}</p>
                 <div className="dg-lg-block mb-3">

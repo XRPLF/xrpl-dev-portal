@@ -72,13 +72,13 @@ XRP Ledgerの分散型取引所(DEX)には、「アルゴリズムトレード�
 
 ### トレードの発注
 
-XRP Ledgerの分散型取引所で_代替可能_トークンとXRPを売買するには、通常[OfferCreateトランザクション](../../references/protocol/transactions/types/offercreate.md)を送信します。この方法でトレードを行うためのコードと技術的ステップの詳細なウォークスルーについては、[分散型取引所でのトレード](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md)をご覧ください。[Paymentトランザクション](../../references/protocol/transactions/types/payment.md)を使用して通貨を両替することも可能です。[クロスカレンしー支払い](../../concepts/payment-types/cross-currency-payments.md)を他のユーザに送ったり、長い[パス](../../concepts/tokens/fungible-tokens/paths.md)を使って裁定取引の機会を1つの操作にまとめることで、自分自身に送り返すこともできます。
+XRP Ledgerの分散型取引所で_代替可能_トークンとXRPを売買するには、通常[OfferCreateトランザクション](../../references/protocol/transactions/types/offercreate.md)を送信します。この方法でトレードを行うためのコードと技術的ステップの詳細なウォークスルーについては、[分散型取引所でのトレード](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md)をご覧ください。[Paymentトランザクション](../../references/protocol/transactions/types/payment.md)を使用して通貨を両替することも可能です。[クロスカレンしー支払い](../../concepts/payment-types/cross-currency-payments.md)を他のユーザに送ったり、長い[パス](../../concepts/tokens/fungible-tokens/paths.md)を使って裁定取引の機会を1つの操作にまとめることで、自分自身に送り返すこともできます。
 
-NFTをトレードするためのコードと技術的な手順については、[JavaScriptを使用したNFTokenの送信](../../tutorials/quickstart/transfer-nfts-using-javascript.md)を参照してください。
+NFTをトレードするためのコードと技術的な手順については、[JavaScriptを使用したNFTokenの送信](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)を参照してください。
 
 ### トレードデータの確認
 
-XRP Ledgerのトレード活動に関する情報源は数多くあります。トレード戦略やユースケースによっては、[公開サーバ](../../tutorials/get-started/public-servers.md)を通してXRP Ledgerに接続することができるかもしれませんが、多くの場合、自分自身のサーバを稼働させることで利益を得ることができます。P2Pモードでコアサーバをセットアップする方法については、[`rippled`のインストール](../../infrastructure/installation/index.md)をご覧ください。
+XRP Ledgerのトレード活動に関する情報源は数多くあります。トレード戦略やユースケースによっては、[公開サーバ](../../tutorials/public-servers.md)を通してXRP Ledgerに接続することができるかもしれませんが、多くの場合、自分自身のサーバを稼働させることで利益を得ることができます。P2Pモードでコアサーバをセットアップする方法については、[`rippled`のインストール](../../infrastructure/installation/index.md)をご覧ください。
 
 他のトレード活動を追跡するアプローチの場合、トレード額を正確に知るためにトランザクションの詳細なメタデータを確認する必要があるかもしれません。オファーは部分的に約定することがあり、複数の一致するオファーを約定することがあります。トランザクションメタデータの解釈方法の詳細については、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。
 

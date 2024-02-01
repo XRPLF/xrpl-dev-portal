@@ -476,124 +476,124 @@ witness-servers.html:
     to: /docs/concepts/xrpl-sidechains/witness-servers
     type: 301
 public-servers.html:
-    to: /docs/tutorials/get-started/public-servers
+    to: /docs/tutorials/public-servers
     type: 301
 python.html:
     to: /docs/tutorials/python/
     type: 301
 get-started-using-python.html:
-    to: /docs/tutorials/get-started/get-started-using-python
+    to: /docs/tutorials/python/get-started
     type: 301
 modular-tutorials-in-python.html:
     to: /docs/tutorials/python/modular-tutorials-in-python/
     type: 301
 send-payments-using-python.html:
-    to: /docs/tutorials/quickstart/send-payments-using-python
+    to: /docs/tutorials/python/modular-tutorials/send-payments
     type: 301
 py-create-accounts-send-xrp.html:
-    to: /docs/tutorials/quickstart/py-create-accounts-send-xrp
+    to: /docs/tutorials/python/modular-tutorials/send-payments/create-accounts-send-xrp
     type: 301
 py-create-trustline-send-currency.html:
-    to: /docs/tutorials/quickstart/py-create-trustline-send-currency
+    to: /docs/tutorials/python/modular-tutorials/send-payments/create-trustline-send-currency
     type: 301
 py-create-time-based-escrows.html:
-    to: /docs/tutorials/quickstart/py-create-time-based-escrows
+    to: /docs/tutorials/python/modular-tutorials/send-payments/create-time-based-escrows
     type: 301
 py-mint-and-burn-nfts.html:
-    to: /docs/tutorials/quickstart/py-mint-and-burn-nfts
+    to: /docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts
     type: 301
 py-transfer-nfts.html:
-    to: /docs/tutorials/quickstart/py-transfer-nfts
+    to: /docs/tutorials/python/modular-tutorials/nfts/transfer-nfts
     type: 301
 py-broker-sale.html:
-    to: /docs/tutorials/quickstart/py-broker-sale
+    to: /docs/tutorials/python/modular-tutorials/nfts/broker-sale
     type: 301
 py-authorize-minter.html:
-    to: /docs/tutorials/quickstart/py-authorize-minter
+    to: /docs/tutorials/python/modular-tutorials/nfts/authorize-minter
     type: 301
 py-batch-minting.html:
-    to: /docs/tutorials/quickstart/py-batch-minting
+    to: /docs/tutorials/python/modular-tutorials/nfts/batch-minting
     type: 301
 build-a-desktop-wallet-in-python.html:
-    to: /docs/tutorials/build-apps/build-a-desktop-wallet-in-python
+    to: /docs/tutorials/python/build-a-desktop-wallet-in-python
     type: 301
 javascript.html:
     to: /docs/tutorials/javascript/
     type: 301
 get-started-using-javascript.html:
-    to: /docs/tutorials/get-started/get-started-using-javascript
+    to: /docs/tutorials/javascript/get-started
     type: 301
 get-started-using-node-js.html:
-    to: /docs/tutorials/get-started/get-started-using-javascript
+    to: /docs/tutorials/javascript/get-started
     type: 301
 get-started-with-rippleapi-for-javascript.html:
-    to: /docs/tutorials/get-started/get-started-using-javascript
+    to: /docs/tutorials/javascript/get-started
     type: 301
 modular-tutorials-in-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials-in-javascript/
+    to: /docs/tutorials/javascript/modular-tutorials/
     type: 301
 send-payments-using-javascript.html:
-    to: /docs/tutorials/quickstart/send-payments-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/send-payments
     type: 301
 create-accounts-send-xrp-using-javascript.html:
-    to: /docs/tutorials/quickstart/create-accounts-send-xrp-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-accounts-send-xrp
     type: 301
 create-trustline-send-currency-using-javascript.html:
-    to: /docs/tutorials/quickstart/create-trustline-send-currency-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-trustline-send-currency
     type: 301
 create-time-based-escrows-using-javascript.html:
-    to: /docs/tutorials/quickstart/create-time-based-escrows-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-time-based-escrows
     type: 301
 create-conditional-escrows-using-javascript.html:
-    to: /docs/tutorials/quickstart/create-conditional-escrows-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-conditional-escrows
     type: 301
 nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/
+    to: /docs/tutorials/javascript/modular-tutorials/nfts-using-javascript/
     type: 301
 mint-and-burn-nfts-using-javascript.html:
-    to: /docs/tutorials/quickstart/mint-and-burn-nfts-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts
     type: 301
 transfer-nfts-using-javascript.html:
-    to: /docs/tutorials/quickstart/transfer-nfts-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/nfts/transfer-nfts
     type: 301
 broker-an-nft-sale-using-javascript.html:
-    to: /docs/tutorials/quickstart/broker-an-nft-sale-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale
     type: 301
 assign-an-authorized-minter-using-javascript.html:
-    to: /docs/tutorials/quickstart/assign-an-authorized-minter-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter
     type: 301
 batch-mint-nfts-using-javascript.html:
-    to: /docs/tutorials/quickstart/batch-mint-nfts-using-javascript
+    to: /docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts
     type: 301
 build-a-browser-wallet-in-javascript.html:
-    to: /docs/tutorials/build-apps/build-a-browser-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-a-browser-wallet-in-javascript
     type: 301
 build-a-browser-wallet-using-javascript.html:
-    to: /docs/tutorials/build-apps/build-a-browser-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-a-browser-wallet-in-javascript
     type: 301
 build-a-desktop-wallet-in-javascript.html:
-    to: /docs/tutorials/build-apps/build-a-desktop-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-a-desktop-wallet-in-javascript
     type: 301
 java.html:
     to: /docs/tutorials/java/
     type: 301
 get-started-using-java.html:
-    to: /docs/tutorials/get-started/get-started-using-java
+    to: /docs/tutorials/java/get-started
     type: 301
 get-started-using-php.html:
-    to: /docs/tutorials/get-started/get-started-using-php
+    to: /docs/tutorials/php/get-started
     type: 301
 http-websocket-apis-tutorials.html:
     to: /docs/tutorials/http-websocket-apis/
     type: 301
 get-started-with-the-rippled-api.html:
-    to: /docs/tutorials/get-started/get-started-using-http-websocket-apis
+    to: /docs/tutorials/http-websocket-apis/get-started
     type: 301
 get-started-using-http-websocket-apis.html:
-    to: /docs/tutorials/get-started/get-started-using-http-websocket-apis
+    to: /docs/tutorials/http-websocket-apis/get-started
     type: 301
 monitor-incoming-payments-with-websocket.html:
-    to: /docs/tutorials/get-started/monitor-incoming-payments-with-websocket
+    to: /docs/tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket
     type: 301
 tasks.html:
     to: /docs/tutorials/tasks/
@@ -602,31 +602,31 @@ manage-account-settings.html:
     to: /docs/tutorials/tasks/manage-account-settings/
     type: 301
 assign-a-regular-key-pair.html:
-    to: /docs/tutorials/manage-account-settings/assign-a-regular-key-pair
+    to: /docs/tutorials/tasks/manage-account-settings/assign-a-regular-key-pair
     type: 301
 change-or-remove-a-regular-key-pair.html:
-    to: /docs/tutorials/manage-account-settings/change-or-remove-a-regular-key-pair
+    to: /docs/tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair
     type: 301
 disable-master-key-pair.html:
-    to: /docs/tutorials/manage-account-settings/disable-master-key-pair
+    to: /docs/tutorials/tasks/manage-account-settings/disable-master-key-pair
     type: 301
 set-up-multi-signing.html:
-    to: /docs/tutorials/manage-account-settings/set-up-multi-signing
+    to: /docs/tutorials/tasks/manage-account-settings/set-up-multi-signing
     type: 301
 send-a-multi-signed-transaction.html:
-    to: /docs/tutorials/manage-account-settings/send-a-multi-signed-transaction
+    to: /docs/tutorials/tasks/manage-account-settings/send-a-multi-signed-transaction
     type: 301
 require-destination-tags.html:
-    to: /docs/tutorials/manage-account-settings/require-destination-tags
+    to: /docs/tutorials/tasks/manage-account-settings/require-destination-tags
     type: 301
 offline-account-setup.html:
-    to: /docs/tutorials/manage-account-settings/offline-account-setup
+    to: /docs/tutorials/tasks/manage-account-settings/offline-account-setup
     type: 301
 use-tickets.html:
-    to: /docs/tutorials/manage-account-settings/use-tickets
+    to: /docs/tutorials/tasks/manage-account-settings/use-tickets
     type: 301
 send-xrp.html:
-    to: /docs/tutorials/get-started/send-xrp
+    to: /docs/tutorials/tasks/send-xrp
     type: 301
 use-specialized-payment-types.html:
     to: /docs/tutorials/tasks/use-specialized-payment-types/
@@ -638,70 +638,70 @@ use-escrows.html:
     to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/
     type: 301
 send-a-time-held-escrow.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
     type: 301
 send-a-conditionally-held-escrow.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
     type: 301
 cancel-an-expired-escrow.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
     type: 301
 look-up-escrows.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-escrows/look-up-escrows
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/look-up-escrows
     type: 301
 use-an-escrow-as-a-smart-contract.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
     type: 301
 use-payment-channels.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-payment-channels
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels
     type: 301
 open-a-payment-channel-to-enable-an-inter-exchange-network.html:
-    to: /docs/tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
+    to: /docs/tutorials/tasks/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
     type: 301
 use-checks.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/use-checks
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/use-checks
     type: 301
 send-a-check.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/send-a-check
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check
     type: 301
 cash-a-check-for-an-exact-amount.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount
     type: 301
 cash-a-check-for-a-flexible-amount.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount
     type: 301
 cancel-a-check.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/cancel-a-check
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/cancel-a-check
     type: 301
 look-up-checks-by-sender.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-sender
     type: 301
 look-up-checks-by-recipient.html:
-    to: /docs/tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient
+    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-recipient
     type: 301
 use-tokens.html:
     to: /docs/tutorials/tasks/use-tokens/
     type: 301
 issue-a-fungible-token.html:
-    to: /docs/tutorials/use-tokens/issue-a-fungible-token
+    to: /docs/tutorials/tasks/use-tokens/issue-a-fungible-token
     type: 301
 trade-in-the-decentralized-exchange.html:
-    to: /docs/tutorials/use-tokens/trade-in-the-decentralized-exchange
+    to: /docs/tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange
     type: 301
 enable-no-freeze.html:
-    to: /docs/tutorials/use-tokens/enable-no-freeze
+    to: /docs/tutorials/tasks/use-tokens/enable-no-freeze
     type: 301
 enact-global-freeze.html:
-    to: /docs/tutorials/use-tokens/enact-global-freeze
+    to: /docs/tutorials/tasks/use-tokens/enact-global-freeze
     type: 301
 freeze-a-trust-line.html:
-    to: /docs/tutorials/use-tokens/freeze-a-trust-line
+    to: /docs/tutorials/tasks/use-tokens/freeze-a-trust-line
     type: 301
 create-an-automated-market-maker.html:
-    to: /docs/tutorials/use-tokens/create-an-automated-market-maker
+    to: /docs/tutorials/tasks/use-tokens/create-an-automated-market-maker
     type: 301
 use-simple-xrp-payments.html:
-    to: /docs/tutorials/get-started/send-xrp
+    to: /docs/tutorials/tasks/send-xrp
     type: 301
 cancel-or-skip-a-transaction.html:
     to: /docs/concepts/transactions/finality-of-results/canceling-a-transaction

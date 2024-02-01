@@ -64,6 +64,6 @@ XRP Ledgerでアカウントを取得する一般的な方法は次のとおり�
   - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 - **チュートリアル:**
     - [アカウント設定の管理（カテゴリー）](../../tutorials/tasks/manage-account-settings/index.md)
-    - [WebSocketを使用した着信ペイメントの監視](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+    - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

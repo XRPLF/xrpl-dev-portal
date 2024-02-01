@@ -40,7 +40,7 @@ NFTビジネスを始めるにあたって、必要不可欠な4つの準備項�
 
 ## XRPLへの接続
 
-トランザクションの少ない小規模なサイトを立ち上げたい場合は、XRP Ledgerの無料の公開サーバのいずれかと連携することができます。[パブリックサーバ](../../tutorials/get-started/public-servers.md)をご覧ください。
+トランザクションの少ない小規模なサイトを立ち上げたい場合は、XRP Ledgerの無料の公開サーバのいずれかと連携することができます。[パブリックサーバ](../../tutorials/public-servers.md)をご覧ください。
 
 大規模なサイトを大量に立ち上げたい場合は、独自のXRP Ledgerのサーバインスタンスを導入する価値があるかもしれません。[rippledのインストール](../../infrastructure/installation/index.md)をご覧ください。
 
@@ -52,7 +52,7 @@ NFTビジネスを始めるにあたって、必要不可欠な4つの準備項�
 
 NFTをいくつかミントして販売することで、マーケットプレイスを構築し始めることができます。
 
-最初のNFTを作成するには、チュートリアル _NFTonenのミントとバーン_ の指示に従います。[NFTのミントとバーン](../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md)をご覧ください。
+最初のNFTを作成するには、チュートリアル _NFTonenのミントとバーン_ の指示に従います。[NFTのミントとバーン](../../tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md)をご覧ください。
 
 NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 
@@ -81,11 +81,11 @@ NFTokenのURLは、NFTのコンテンツが保存されている場所へのリ�
 
 ### NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
 
 NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/quickstart/broker-an-nft-sale-using-javascript.md)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md)をご覧ください。
 
 #### 準備金要件
 
@@ -103,9 +103,9 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 #### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/quickstart/transfer-nfts-using-javascript.md)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
 
-他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
+他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 
 <!--
 

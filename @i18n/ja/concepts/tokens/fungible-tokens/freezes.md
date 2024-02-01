@@ -87,9 +87,9 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 - **コンセプト:**
     - [トラストラインとトークンの発行](index.md)
 - **Tutorials:**
-    - [No Freezeを有効化](../../../tutorials/use-tokens/enable-no-freeze.md)
-    - [Global Freezeの実行](../../../tutorials/use-tokens/enact-global-freeze.md)
-    - [トラストラインの凍結](../../../tutorials/use-tokens/freeze-a-trust-line.md)
+    - [No Freezeを有効化](../../../tutorials/tasks/use-tokens/enable-no-freeze.md)
+    - [Global Freezeの実行](../../../tutorials/tasks/use-tokens/enact-global-freeze.md)
+    - [トラストラインの凍結](../../../tutorials/tasks/use-tokens/freeze-a-trust-line.md)
 - **References:**
     - [account_linesメソッド][]
     - [account_infoメソッド][]

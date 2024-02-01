@@ -8,7 +8,7 @@ labels:
 ---
 # ステーブルコイン発行者の設定
 
-トークンの発行を始める前に、XRP Ledgerアカウントで設定する必要がある項目がいくつかあります。これらの設定の例については、[代替可能トークンの発行](../../../../tutorials/use-tokens/issue-a-fungible-token.md)をご覧ください。
+トークンの発行を始める前に、XRP Ledgerアカウントで設定する必要がある項目がいくつかあります。これらの設定の例については、[代替可能トークンの発行](../../../../tutorials/tasks/use-tokens/issue-a-fungible-token.md)をご覧ください。
 
 設定すべき項目は以下の通りです。
 

@@ -5,4 +5,4 @@ The prerequisites for cashing a check are the same whether you are cashing it fo
 - The **address** and **secret key** of the Check's stated recipient. The address must match the `Destination` address in the Check object.
 - If the Check is for a [token](../concepts/tokens/index.md), you (the recipient) must have a [trust line](../concepts/tokens/fungible-tokens/index.md) to the issuer. Your limit on that trust line must be high enough to hold your previous balance plus the amount you would receive.
 - A [secure way to sign transactions](../concepts/transactions/secure-signing.md).
-- A [client library](../references/client-libraries.md) that can connect to the XRP Ledger, or [any HTTP or WebSocket client](../tutorials/get-started/get-started-using-http-websocket-apis.md).
+- A [client library](../references/client-libraries.md) that can connect to the XRP Ledger, or [any HTTP or WebSocket client](../tutorials/http-websocket-apis/get-started.md).
