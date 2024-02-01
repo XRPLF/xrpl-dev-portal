@@ -9,7 +9,7 @@ labels:
 
 _[Checks Amendment][]により追加されました。_
 
-このチュートリアルでは、[Check](checks.html)をその受取人で検索する方法を説明します。[Checkを送金元で検索する](look-up-checks-by-sender.html)こともできます。
+このチュートリアルでは、[Check](../../../concepts/payment-types/checks.md)をその受取人で検索する方法を説明します。[Checkを送金元で検索する](look-up-checks-by-sender.md)こともできます。
 
 ## 1. 特定のアドレスのすべてのCheckの検索
 
@@ -20,41 +20,31 @@ _[Checks Amendment][]により追加されました。_
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*RippleAPI*
+{% tab label="RippleAPI" %}
+{% code-snippet file="/_code-samples/checks/js/getChecks.js" language="js" /%}
+{% /tab %}
 
-```js
-{% include '_code-samples/checks/js/getChecks.js' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_code-samples/checks/json-rpc/account_objects-req.json" language="json" /%}
+{% /tab %}
 
-*JSON-RPC*
-
-```json
-{% include '_code-samples/checks/json-rpc/account_objects-req.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*RippleAPI*
+{% tab label="RippleAPI" %}
+{% code-snippet file="/_code-samples/checks/js/get-checks-resp.txt" language="" /%}
+{% /tab %}
 
-```
-{% include '_code-samples/checks/js/get-checks-resp.txt' %}
-```
+{% tab label="JSON-RPC" %}
+{% code-snippet file="/_code-samples/checks/json-rpc/account_objects-resp.json" language="json" prefix="200 OK\n\n" /%}
+{% /tab %}
 
-*JSON-RPC*
-
-```json
-200 OK
-
-{% include '_code-samples/checks/json-rpc/account_objects-resp.json' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## 2. 受取人に基づくレスポンスの絞り込み
@@ -80,5 +70,5 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 ```
 
 <!--{# common links #}-->
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+
+{% raw-partial file="/_snippets/common-links.md" /%}

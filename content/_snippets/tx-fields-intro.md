@@ -1,3 +1,3 @@
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields][], {{currentpage.name}} transactions use the following fields:
+In addition to the [common fields][], {% $frontmatter.seo.title %} transactions use the following fields:

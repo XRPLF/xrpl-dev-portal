@@ -8,9 +8,9 @@ labels:
 # download_shard
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/DownloadShard.cpp "Source")
 
-Instructs the server to download a specific [shard of historical ledger data](history-sharding.html) from an external source. Your `rippled` server must be [configured to store history shards](configure-history-sharding.html). [Updated in: rippled 1.6.0][]
+Instructs the server to download a specific [shard of historical ledger data](../../../../infrastructure/configuration/data-retention/history-sharding.md) from an external source. Your `rippled` server must be [configured to store history shards](../../../../infrastructure/configuration/data-retention/configure-history-sharding.md). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}Updated in: rippled 1.6.0{% /badge %}
 
-_The `download_shard` method is an [admin method](admin-api-methods.html) that cannot be run by unprivileged users._
+_The `download_shard` method is an [admin method](../index.md) that cannot be run by unprivileged users._
 
 The external source must provide the shard as an [lz4-compressed](https://lz4.github.io/lz4/) [tar archive](https://en.wikipedia.org/wiki/Tar_(computing)) served via HTTPS. The archive must contain the shard directory and data files in NuDB format.
 
@@ -20,10 +20,9 @@ Downloading and importing shards using this method is usually faster than acquir
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "download_shard",
@@ -34,9 +33,9 @@ An example of the request format:
   ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "download_shard",
@@ -51,15 +50,16 @@ An example of the request format:
   ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 # Syntax: download_shard [[<index> <url>]]
 rippled download_shard 1 https://example.com/1.tar.lz4 2 https://example.com/2.tar.lz4 5 https://example.com/5.tar.lz4
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 The request includes the following field:
@@ -68,23 +68,22 @@ The request includes the following field:
 |:-----------|:--------|:------------------------------------------------------|
 | `shards`   | Array   | List of Shard Descriptor objects (see below) describing shards to download and where to download them from. |
 
-The `validate` field is deprecated and may be removed in a future version. (The server always checks the integrity of shards when it imports them.) [Updated in: rippled 1.6.0][]
+The `validate` field is deprecated and may be removed in a future version. (The server always checks the integrity of shards when it imports them.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}Updated in: rippled 1.6.0{% /badge %}
 
 Each **Shard Descriptor object** in the `shards` array has the following fields:
 
 | `Field` | Type   | Description                                               |
 |:--------|:-------|:----------------------------------------------------------|
 | `index` | Number | The index of the shard to retrieve. In the production XRP Ledger, the oldest shard has index 1 and contains ledgers 32750-32768. The next shard has index 2 and contains ledgers 32769-49152, and so on. |
-| `url`   | String | The URL where this shard can be downloaded. The URL must start with `http://` or `https://` and must end with `.tar.lz4` (not case-sensitive). The web server providing this download must use a valid TLS certificate signed by a trusted Certificate Authority (CA). (`rippled` uses the operating system's CA store.) [Updated in: rippled 1.7.0][] |
+| `url`   | String | The URL where this shard can be downloaded. The URL must start with `http://` or `https://` and must end with `.tar.lz4` (not case-sensitive). The web server providing this download must use a valid TLS certificate signed by a trusted Certificate Authority (CA). (`rippled` uses the operating system's CA store.) {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}Updated in: rippled 1.7.0{% /badge %} |
 
 ### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -94,10 +93,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -108,9 +106,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -122,8 +120,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -141,9 +140,4 @@ The response follows the [standard format][], with a successful result containin
 - `invalidParams` - One or more required fields were omitted from the request, or a provided field was specified as the wrong data type.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

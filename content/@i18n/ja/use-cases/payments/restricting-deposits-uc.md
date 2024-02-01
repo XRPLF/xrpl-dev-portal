@@ -19,7 +19,7 @@ labels:
 
 ## デポジット認可のセットアップ
 
-デポジット認可を有効にするには、`AccountSet`トランザクションを使用して`asfDepositAuth`フラグを設定します。[デポジット認可](depositauth.html)をご覧ください。
+デポジット認可を有効にするには、`AccountSet`トランザクションを使用して`asfDepositAuth`フラグを設定します。[デポジット認可](../../concepts/accounts/depositauth.md)をご覧ください。
 
 ## アカウントの事前認可
 
@@ -27,7 +27,7 @@ labels:
 
 事前認可されたアカウントによる支払いは通貨を問わないので、認可する通貨を指定することはできません。すべてを認可するか認可しないかです。
 
-[デポジットの事前認可](depositpreauth.html)をご覧ください。
+[デポジットの事前認可](../../references/protocol/transactions/types/depositpreauth.md)をご覧ください。
 
 
 ## 未認可のアカウントからの入金を許可する
@@ -41,14 +41,14 @@ Checkは、デポジット認可が有効な場合、シンプルで親しみや
 
 この方法は最もシンプルですが、資金が保証されるわけではありません。Checkは後払いであり、Checkを現金化しようとする瞬間まで資金は動きません。Checkを現金化するときに、送金側のアカウントに必要な資金がない可能性があり、ビジネスによっては遅延やその他の問題を引き起こす可能性があります。
 
-[Checkの利用](use-checks.html)をご覧ください。
+[Checkの利用](../../tutorials/use-specialized-payment-types/use-checks/use-checks.md)をご覧ください。
 
 
 ### Escrow
 
 入金時の資金保証が必要な場合は、エスクローで入金してもらう方法もあります。通常のエスクローと同様に、送金者はレジャーに資金を確保し、一定の条件が満たされるまで資金を効果的にロックします。これにより、エスクローを閉じて資金を放出するときに、資金が利用できることが保証されます。
 
-[エスクローの利用](use-escrows.html)をご覧ください。
+[エスクローの利用](../../tutorials/tasks/use-specialized-payment-types/use-escrows/index.md)をご覧ください。
 
 
 <!-- Need a better understanding of Payment Channels use cases.

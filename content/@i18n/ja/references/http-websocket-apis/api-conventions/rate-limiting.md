@@ -9,9 +9,9 @@ labels:
 
 `rippled`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
 
-**ヒント:** レート制限は、クライアントが[管理者](get-started-using-http-websocket-apis.html#管理者アクセス権限)として接続されているときには適用されません
+**ヒント:** レート制限は、クライアントが[管理者](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#管理者アクセス権限)として接続されているときには適用されません
 
-クライアントがレート制限に近づいている場合、サーバーは[APIレスポンス](response-formatting.html)のトップレベルにフィールド`"warning"： "load"`というフィールドを[APIレスポンス](response-formatting.html)のトップレベルに追加します。この警告はすべてのレスポンスに追加されるわけではありませんが、サーバはクライアントを切断する前に何度かこのような警告を送ることがあります。
+クライアントがレート制限に近づいている場合、サーバーは[APIレスポンス](response-formatting.md)のトップレベルにフィールド`"warning"： "load"`というフィールドを[APIレスポンス](response-formatting.md)のトップレベルに追加します。この警告はすべてのレスポンスに追加されるわけではありませんが、サーバはクライアントを切断する前に何度かこのような警告を送ることがあります。
 
 クライアントがレート制限を超えると、サーバーはそのクライアントを切断し、しばらくの間、クライアントのAPIアドレスからのリクエストを受け付けません。WebSocket APIとJSON-RPC APIでは、異なる切断メッセージを使用します。
 
@@ -54,16 +54,13 @@ Server is overloaded
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバ](xrpl-servers.html)
-    - [ソフトウェアエコシステム](software-ecosystem.html)
+    - [`rippled`サーバ](../../../concepts/networks-and-servers/index.md)
+    - [ソフトウェアエコシステム](../../../introduction/software-ecosystem.md)
 - **チュートリアル:**
-    - [XRP Ledger APIの使用開始](get-started-using-http-websocket-apis.html)
-    - [rippledのトラブルシューティング](troubleshoot-the-rippled-server.html)
+    - [XRP Ledger APIの使用開始](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)
+    - [rippledのトラブルシューティング](../../../infrastructure/troubleshooting/index.md)
 - **リファレンス:**
-    - [rippled APIリファレンス](http-websocket-apis.html)
-        - [エラーのフォーマット](error-formatting.html)
+    - [rippled APIリファレンス](../index.md)
+        - [エラーのフォーマット](error-formatting.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

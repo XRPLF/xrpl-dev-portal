@@ -23,7 +23,7 @@ XRP Ledger上のスマートコントラクトは、条件付きで保有する�
 
 条件付きエスクローは、通常のエスクローと似ています。エスクローで資金を確保し、受取人が資金を利用できることを保証します。違いは、レジャー上の条件付きエスクローには`Condition`が付加されており、これが資金をロックする役割を担っていることです。レジャーは、対応する`Fulfillment`フィールドを持つ`EscrowFinish`トランザクションが送信されるまで、これらの資金を解放しません。`Condition`と`Fulfillment`フィールドは、エスクローの錠と鍵のようなものであると考えることができます。
 
-[`EscrowCreate`](escrowcreate.html)をご覧ください。
+[`EscrowCreate`](../../references/protocol/transactions/types/escrowcreate.md)をご覧ください。
 
 
 ### オラクルの確立
@@ -36,7 +36,7 @@ XRP Ledger上のスマートコントラクトは、条件付きで保有する�
 
 オラクルのプログラムが条件を満たしたことを検知した後、エスクローの受取人にfulfillmentの16進数値を渡します。この時点以降、オラクルはエスクローを終了させるなど、何も行いません。エスクローの受取人は、ほとんどの場合、エスクローを終了することになります。
 
-[conditionとfulfillmentの生成](send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment)をご覧ください。
+[conditionとfulfillmentの生成](../../tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md#1-generate-condition-and-fulfillment)をご覧ください。
 
 ## 例
 

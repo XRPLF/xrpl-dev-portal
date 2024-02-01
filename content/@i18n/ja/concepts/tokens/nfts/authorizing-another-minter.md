@@ -55,4 +55,3 @@ const transactionBlob = {
 ```
 
 NFTの所有者がNFTを売却した場合、取引手数料（売却額に対する割合）が`Issuer`に指定したアカウントに送金されまれます。
-

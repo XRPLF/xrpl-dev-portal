@@ -26,8 +26,8 @@ labels:
 
 
 ## レジャーインデックス
-{% include '_snippets/data_types/ledger_index.ja.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/data_types/ledger_index.md" /%}
+
 
 
 ## closeフラグ
@@ -39,10 +39,6 @@ labels:
 
 ## 関連項目
 
-レジャーの基本的な説明については、[レジャー](ledgers.html)を参照してください。
+レジャーの基本的な説明については、[レジャー](../../../concepts/ledgers/index.md)を参照してください。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

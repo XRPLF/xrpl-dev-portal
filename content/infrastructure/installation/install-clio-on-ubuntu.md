@@ -16,7 +16,7 @@ These instructions install a binary that has been compiled by Ripple. For instru
 
 Before you install Clio, you must meet the following requirements.
 
-- Ensure that your system meets the [system requirements](system-requirements.html).
+- Ensure that your system meets the [system requirements](system-requirements.md).
 
     **Note:** Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
 
@@ -26,69 +26,91 @@ Before you install Clio, you must meet the following requirements.
 
     -  If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data:
 
-            docker run --rm -it --network=host --name cassandra  -v $PWD/cassandra_data:/var/lib/
-            cassandra cassandra:4.0.4
+        ```
+        docker run --rm -it --network=host --name cassandra  -v $PWD/cassandra_data:/var/lib/
+        cassandra cassandra:4.0.4
+        ```
 
     - If you do not wish to persist Clio data, run the following command:
 
-            docker run --rm -it --network=host --name cassandra cassandra:4.0.4
+        ```
+        docker run --rm -it --network=host --name cassandra cassandra:4.0.4
+        ```
 
-- You need gRPC access to one or more `rippled` servers in P2P mode. The `rippled` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `rippled` yourself](install-rippled.html).
+- You need gRPC access to one or more `rippled` servers in P2P mode. The `rippled` servers can either be local or remote, but you must trust them. The most reliable way to do this is to [install `rippled` yourself](index.md).
 
 
 ## Installation Steps
 
 1. Update repositories:
 
-        sudo apt -y update
+    ```
+    sudo apt -y update
+    ```
 
     **Tip:** If you have already installed an up-to-date version of `rippled` on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the `rippled` install process. Resume from step 5, "Fetch the Ripple repository."
 
 2. Install utilities:
 
-        sudo apt -y install apt-transport-https ca-certificates wget gnupg
+    ```
+    sudo apt -y install apt-transport-https ca-certificates wget gnupg
+    ```
 
 3. Add Ripple's package-signing GPG key to your list of trusted keys:
 
-        sudo mkdir /usr/local/share/keyrings/
-        wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
-        sudo mv ripple-key.gpg /usr/local/share/keyrings
+    ```
+    sudo mkdir /usr/local/share/keyrings/
+    wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
+    sudo mv ripple-key.gpg /usr/local/share/keyrings
+    ```
 
 4. Check the fingerprint of the newly-added key:
 
-        gpg /usr/local/share/keyrings/ripple-key.gpg
+    ```
+    gpg /usr/local/share/keyrings/ripple-key.gpg
+    ```
 
     The output should include an entry for Ripple such as the following:
 
-        gpg: WARNING: no command supplied.  Trying to guess what you mean ...
-        pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
-            C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
-        uid           TechOps Team at Ripple <techops+rippled@ripple.com>
-        sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
+    ```
+    gpg: WARNING: no command supplied.  Trying to guess what you mean ...
+    pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
+        C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
+    uid           TechOps Team at Ripple <techops+rippled@ripple.com>
+    sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
+    ```
 
 
     In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the third line, starting with `C001`.)
 
 4. Add the appropriate Ripple repository for your operating system version:
 
-        echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
-            sudo tee -a /etc/apt/sources.list.d/ripple.list
+    ```
+    echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
+        sudo tee -a /etc/apt/sources.list.d/ripple.list
+    ```
 
     The above example is appropriate for **Ubuntu 20.04 Focal Fossa**.
 
 5. Fetch the Ripple repository.
 
-        sudo apt -y update
+    ```
+    sudo apt -y update
+    ```
 
 6. Install the Clio software package. There are two options:
 
     - To run `rippled` on the same machine, install the `clio` package, which sets up both servers:
 
-            sudo apt -y install clio
+        ```
+        sudo apt -y install clio
+        ```
 
     - To run Clio on a separate machine from `rippled`, install the `clio-server` package, which sets up Clio only:
 
-            sudo apt -y install clio-server
+        ```
+        sudo apt -y install clio-server
+        ```
 
 7. If you are running `rippled` on a separate machine, modify your Clio config file to point to it. You can skip this step if you used the `clio` package to install both on the same machine.
 
@@ -96,14 +118,16 @@ Before you install Clio, you must meet the following requirements.
 
     1. Edit the Clio server's config file to modify the connection information for the `rippled` server. The package installs this file at `/opt/clio/etc/config.json`.
 
-            "etl_sources":
-            [
-                {
-                    "ip":"127.0.0.1",
-                    "ws_port":"6006",
-                    "grpc_port":"50051"
-                }
-            ]
+        ```
+        "etl_sources":
+        [
+            {
+                "ip":"127.0.0.1",
+                "ws_port":"6006",
+                "grpc_port":"50051"
+            }
+        ]
+        ```
 
         This includes:
 
@@ -119,28 +143,36 @@ Before you install Clio, you must meet the following requirements.
 
         * Open a port to accept unencrypted WebSocket connections.
 
-                [port_ws_public]
-                port = 6005
-                ip = 0.0.0.0
-                protocol = ws
+            ```
+            [port_ws_public]
+            port = 6005
+            ip = 0.0.0.0
+            protocol = ws
+            ```
 
         * Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the `secure_gateway` entry.
 
-                [port_grpc]
-                port = 50051
-                ip = 0.0.0.0
-                secure_gateway = 127.0.0.1
+            ```
+            [port_grpc]
+            port = 50051
+            ip = 0.0.0.0
+            secure_gateway = 127.0.0.1
+            ```
 
             **Tip:** If you are not running Clio on the same machine as `rippled`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
 
 8. Enable and start the Clio systemd service.
 
-        sudo systemctl enable clio
+    ```
+    sudo systemctl enable clio
+    ```
 
 9. Start the `rippled` and Clio servers.
 
-        sudo systemctl start rippled
-        sudo systemctl start clio
+    ```
+    sudo systemctl start rippled
+    sudo systemctl start clio
+    ```
 
     If you are starting with a fresh database, Clio needs to download the full ledger. This can take some time. If you are starting both servers for the first time, it can take even longer because Clio waits for `rippled` to sync before extracting ledgers.
 
@@ -151,4 +183,4 @@ Before you install Clio, you must meet the following requirements.
 ## See Also
 
 - **Concepts:**
-    - [The Clio Server](the-clio-server.html)
+    - [The Clio Server](../../concepts/networks-and-servers/the-clio-server.md)

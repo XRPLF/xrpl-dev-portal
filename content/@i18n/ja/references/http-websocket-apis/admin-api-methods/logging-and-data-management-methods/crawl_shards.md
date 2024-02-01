@@ -9,18 +9,17 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/CrawlShards.cpp "Source")
 
-使用可能な[履歴レジャーデータのシャード](history-sharding.html)に関するピアサーバーからの情報をリクエストします。[新規: rippled 1.2.0][]
+使用可能な[履歴レジャーデータのシャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)に関するピアサーバーからの情報をリクエストします。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}新規: rippled 1.2.0{% /badge %}
 
-_`crawl_shards`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`crawl_shards`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "crawl_shards",
@@ -28,9 +27,9 @@ _`crawl_shards`メソッドは、権限のないユーザーは実行できな�
   "limit": 0
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
   "method": "crawl_shards",
@@ -42,8 +41,9 @@ _`crawl_shards`メソッドは、権限のないユーザーは実行できな�
   ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **注記:** このメソッドのコマンドライン構文はありません。コマンドラインからアクセスするには[jsonメソッド][]を使用してください。
 
@@ -61,10 +61,9 @@ _`crawl_shards`メソッドは、権限のないユーザーは実行できな�
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -85,10 +84,9 @@ _`crawl_shards`メソッドは、権限のないユーザーは実行できな�
   "type": "response"
 }
 ```
+{% /tab %}
 
-
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -110,27 +108,27 @@ _`crawl_shards`メソッドは、権限のないユーザーは実行できな�
   }
 }
 ```
+{% /tab %}
 
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
 | `Field`           | 型     | 説明                                            |
 |:------------------|:-------|:------------------------------------------------|
-| `complete_shards` | 文字列 | _（省略可）_ ローカルサーバーで利用可能な[履歴シャード](history-sharding.html)の範囲。これは、空の文字列か、または連続していない範囲である場合があります。たとえば、`1-2,5,7-9`は、シャード1、2、5、7、8、9が利用可能であることを示します。このサーバーで履歴シャーディングが有効になっていない場合は省略されます。 |
+| `complete_shards` | 文字列 | _（省略可）_ ローカルサーバーで利用可能な[履歴シャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)の範囲。これは、空の文字列か、または連続していない範囲である場合があります。たとえば、`1-2,5,7-9`は、シャード1、2、5、7、8、9が利用可能であることを示します。このサーバーで履歴シャーディングが有効になっていない場合は省略されます。 |
 | `peers` | 配列 | 各ピアが使用可能な履歴シャードを表す**ピアシャードオブジェクト**のリスト（以下を参照）。 |
 
 #### ピアシャードオブジェクト
 
-レスポンスの`peers`配列のメンバーはそれぞれ、ピアツーピアネットワーク内の1つのサーバーを表すオブジェクトです。リストには、少なくとも1つの完全な[履歴シャード](history-sharding.html)が使用可能なピアのみが含まれます。配列の各オブジェクトには以下のフィールドが含まれます。
+レスポンスの`peers`配列のメンバーはそれぞれ、ピアツーピアネットワーク内の1つのサーバーを表すオブジェクトです。リストには、少なくとも1つの完全な[履歴シャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)が使用可能なピアのみが含まれます。配列の各オブジェクトには以下のフィールドが含まれます。
 
 
 | `Field`   | 型     | 説明                                                     |
 |:----------|:-------|:--------------------------------------------------------|
 | `complete_shards` | 文字列 | このピアが使用可能な履歴シャードの範囲。連続していない場合があります。たとえば、`1-2,5,7-9`は、シャード1、2、5、7、8、9が利用可能であることを示します。 |
-| `ip` | 文字列 | _（省略される場合があります）_ このオブジェクトが表すピアのIPアドレス。IPv4アドレスまたはIPv6アドレスを指定できます。[プライベートピア](peer-protocol.html#プライベートピア)の場合は省略されます。 |
-| `public_key` | 文字列 | _(リクエストで`"pubkey": true`が指定されている場合を除き省略)_ XRP Ledgerの[base58フォーマット](base58-encodings.html)で、このピアでピアツーピア通信に使用される公開鍵。 |
+| `ip` | 文字列 | _（省略される場合があります）_ このオブジェクトが表すピアのIPアドレス。IPv4アドレスまたはIPv6アドレスを指定できます。[プライベートピア](../../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)の場合は省略されます。 |
+| `public_key` | 文字列 | _(リクエストで`"pubkey": true`が指定されている場合を除き省略)_ XRP Ledgerの[base58フォーマット](../../../protocol/data-types/base58-encodings.md)で、このピアでピアツーピア通信に使用される公開鍵。 |
 
 
 ### 考えられるエラー
@@ -138,8 +136,4 @@ _`crawl_shards`メソッドは、権限のないユーザーは実行できな�
 - いずれかの[汎用エラータイプ][]。
 - `invalidParams` - リクエストで1つ以上の必須フィールドが省略されていたか、または指定されたフィールドのデータタイプが誤っています。
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -8,25 +8,24 @@ labels:
 # server_info
 [[Source]](https://github.com/XRPLF/clio/blob/master/src/rpc/handlers/ServerInfo.cpp "Source")
 
-The `server_info` command asks the [Clio server](the-clio-server.html) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](server_info.html) instead. [New in: Clio v1.0.0](https://github.com/XRPLF/clio/releases/tag/1.0.0 "BADGE_BLUE")
+The `server_info` command asks the [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md) for a human-readable version of various information about the Clio server being queried. For `rippled` servers, see [`server_info` (`rippled`)](../server-info-methods/server_info.md) instead. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.0.0" %}New in: Clio v1.0.0{% /badge %}
 
 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 1,
   "command": "server_info"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "server_info",
@@ -35,8 +34,9 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!-- [Try it! >](websocket-api-tool.html#server_info) -->
 
@@ -48,10 +48,9 @@ When a client connects to the Clio server over `localhost`, the response include
 
 An example of a successful response when client connects over `localhost`:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -261,9 +260,9 @@ An example of a successful response when client connects over `localhost`:
     ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -474,15 +473,15 @@ An example of a successful response when client connects over `localhost`:
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 An example of a successful response when client does not connect over `localhost`:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 1,
@@ -518,9 +517,9 @@ An example of a successful response when client does not connect over `localhost
     ]
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -557,8 +556,9 @@ An example of a successful response when client does not connect over `localhost
     ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing an `info` object as its only field.
 
@@ -583,15 +583,15 @@ The `info` object may have some arrangement of the following fields:
 | `subscriptions.account`             |                 |   |
 | `subscriptions.accounts_proposed`   |                 |   |
 | `subscriptions.books`               |                 |   |
-| `time`                              | String          | The current time in UTC, according to the server's clock. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
-| `uptime`                            | Number          | Number of consecutive seconds that the server has been operational. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
-| `amendment_blocked`                 | Boolean         | _(May be omitted)_ Whether the Clio server is [Amendment Blocked](amendments.html#amendment-blocked-clio-servers) [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
-| `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](transaction-cost.html#local-load-cost), the cluster's load factor, the [open ledger cost](transaction-cost.html#open-ledger-cost) and the overall network's load factor. |
+| `time`                              | String          | The current time in UTC, according to the server's clock. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %} |
+| `uptime`                            | Number          | Number of consecutive seconds that the server has been operational. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %} |
+| `amendment_blocked`                 | Boolean         | _(May be omitted)_ Whether the Clio server is [Amendment Blocked](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked-clio-servers) {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %} |
+| `load_factor`                       | Number          | The load-scaled open ledger transaction cost the server is currently enforcing, as a multiplier on the base transaction cost. For example, at `1000` load factor and a reference transaction cost of 10 drops of XRP, the load-scaled transaction cost is 10,000 drops (0.01 XRP). The load factor is determined by the highest of the [individual server's load factor](../../../../concepts/transactions/transaction-cost.md#local-load-cost), the cluster's load factor, the [open ledger cost](../../../../concepts/transactions/transaction-cost.md#open-ledger-cost) and the overall network's load factor. |
 | `clio_version`                      | String          | The version number of the running Clio server.  |
-| `libxrpl_version`                   | String          | The version number of the `libxrpl` library this Clio server was built against. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
+| `libxrpl_version`                   | String          | The version number of the `libxrpl` library this Clio server was built against. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %} |
 | `validation_quorum`                 | Number          | _(May be omitted)_ Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. This value is obtained from `rippled`. This field may be omitted from the response if the Clio server is unable to connect to `rippled` for some reason. |
 | `rippled_version`                   | String          | _(May be omitted)_ The version number of the running `rippled` server that the Clio server is connected to. This field may be omitted from the response if the Clio server is unable to connect to `rippled` for some reason. |
-| `network_id`                        | String          | _(May be omitted)_ The network ID of the network that the `rippled` this Clio server is connected to is operating on. This field may be omitted from the response if the Clio server is unable to connect to `rippled` for some reason. [New in: Clio v2.0](https://github.com/XRPLF/clio/releases/tag/2.0.0 "BADGE_BLUE") |
+| `network_id`                        | String          | _(May be omitted)_ The network ID of the network that the `rippled` this Clio server is connected to is operating on. This field may be omitted from the response if the Clio server is unable to connect to `rippled` for some reason. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}New in: Clio v2.0{% /badge %} |
 | `validated_ledger`                  | Object          | _(May be omitted)_ Information about the most recent fully-validated ledger. If the most recent validated ledger is not available, the response omits this field and includes `closed_ledger` instead. |
 | `validated_ledger.age`              | Number          | The time since the ledger was closed, in seconds. |
 | `validated_ledger.base_fee_xrp`     | Number          | Base fee, in XRP. This may be represented in scientific notation such as `1e-05` for 0.00001. |
@@ -623,8 +623,4 @@ The `info` object may have some arrangement of the following fields:
 
 * Any of the [universal error types][].
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

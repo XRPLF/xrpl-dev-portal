@@ -9,11 +9,11 @@ labels:
 
 _([NegativeUNL amendment][]により追加されました。)_
 
-`NegativeUNL`オブジェクトタイプは、[ネガティブUNL](negative-unl.html)の現在の状態、つまり現在オフラインであると考えられる信頼できるバリデーションのリストを含んでいます。
+`NegativeUNL`オブジェクトタイプは、[ネガティブUNL](../../../../concepts/consensus-protocol/negative-unl.md)の現在の状態、つまり現在オフラインであると考えられる信頼できるバリデーションのリストを含んでいます。
 
 各台帳のバージョンには、**最大1つの**`NegativeUNL`オブジェクトが含まれます。無効になっているか、無効になる予定のバリデータがない場合、台帳には`NegativeUNL`オブジェクトは存在しません。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -61,7 +61,4 @@ _([NegativeUNL amendment][]により追加されました。)_
 2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244
 ```
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

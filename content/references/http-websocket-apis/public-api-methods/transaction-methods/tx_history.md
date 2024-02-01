@@ -13,10 +13,9 @@ The `tx_history` method retrieves some of the most recent transactions made.
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 5,
@@ -24,9 +23,9 @@ An example of the request format:
   "start": 0
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "tx_history",
@@ -37,15 +36,16 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: tx_history [start]
 rippled tx_history 0
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
@@ -57,10 +57,9 @@ The request includes the following parameters:
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -511,9 +510,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -879,9 +878,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -1431,8 +1430,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -1441,7 +1441,7 @@ The response follows the [standard format][], with a successful result containin
 | `index` | Unsigned Integer | The value of `start` used in the request. |
 | `txs`   | Array            | Array of transaction objects.             |
 
-The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](transaction-formats.html) for details.
+The fields included in each transaction object vary slightly depending on the type of transaction. See [Transaction Format](../../../protocol/transactions/index.md) for details.
 
 ## Possible Errors
 
@@ -1449,6 +1449,4 @@ The fields included in each transaction object vary slightly depending on the ty
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `noPermission` - The `start` field specified was greater than 10000, but you are not connected to the server as an admin.
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

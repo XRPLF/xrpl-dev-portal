@@ -13,7 +13,7 @@ _[Escrow Amendment][]により追加されました。_
 
 Escrowプロセスが終了または取り消されるまでXRPを隔離します。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -29,7 +29,7 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 }
 ```
 
-{% include '_snippets/tx-fields-intro.ja.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -44,9 +44,6 @@ Escrowプロセスが終了または取り消されるまでXRPを隔離しま�
 
 `CancelAfter`と`FinishAfter`のいずれかを指定する必要があります。両方を指定する場合は、`FinishAfter`の時刻が`CancelAfter`の時刻よりも前でなければなりません。
 
-[fix1571 Amendment][]が有効な場合は、`FinishAfter`、`Condition`のいずれかまたは両方を指定する必要があります。[新規: rippled 1.0.0][]
+[fix1571 Amendment][]が有効な場合は、`FinishAfter`、`Condition`のいずれかまたは両方を指定する必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.0.0" %}新規: rippled 1.0.0{% /badge %}
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -8,9 +8,9 @@ labels:
 ---
 # パブリック署名の有効化
 
-[新規: rippled 1.1.0][]デフォルトでは、`rippled`の署名メソッドは管理者接続に限定されています。v1.1.0以前のバージョンの`rippled`のように、署名メソッドをパブリックAPIメソッドとして使用できるようにするには、構成を変更することで、これを使用できるようにします。
+{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}新規: rippled 1.1.0{% /badge %}デフォルトでは、`rippled`の署名メソッドは管理者接続に限定されています。v1.1.0以前のバージョンの`rippled`のように、署名メソッドをパブリックAPIメソッドとして使用できるようにするには、構成を変更することで、これを使用できるようにします。
 
-これにより、サーバーが「パブリック」[JSON-RPC接続およびWebSocket接続](get-started-using-http-websocket-apis.html)を受け入れる場合は、これらのパブリック接続で以下のメソッドが使用できるようになります。
+これにより、サーバーが「パブリック」[JSON-RPC接続およびWebSocket接続](../../tutorials/get-started/get-started-using-http-websocket-apis.md)を受け入れる場合は、これらのパブリック接続で以下のメソッドが使用できるようになります。
 
 - [sign][signメソッド]
 - [sign_for][sign_forメソッド]
@@ -24,21 +24,23 @@ labels:
 
 1. `rippled`の構成ファイルを編集します。
 
-        vim /etc/opt/ripple/rippled.cfg
+    ```
+    vim /etc/opt/ripple/rippled.cfg
+    ```
 
-    {% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+    {% partial file="/_snippets/conf-file-location.md" /%}
 
 2. 以下のスタンザを構成ファイルに追加し、変更を保存します。
 
-        [signing_support]
-        true
+    ```
+    [signing_support]
+    true
+    ```
 
 3. `rippled`サーバーを再起動します。
 
-        systemctl restart rippled
+    ```
+    systemctl restart rippled
+    ```
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

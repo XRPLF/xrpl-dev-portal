@@ -13,11 +13,8 @@ labels:
 - クラスター化サーバーは、ネットワークで不適切な活動をしているかまたはネットワークを不正使用しているピアとAPIクライアントに関する情報を共有します。このため、クラスター内のすべてのサーバーを同時に攻撃することが難しくなります。
 - クラスター化サーバーは、一部のサーバーでの現行の負荷ベースのトランザクション手数料にトランザクションが対応していない場合を含め、常にクラスター全体にトランザクションを伝搬します。
 
-バリデータを[プライベートピア](peer-protocol.html#プライベートピア)として実行している場合は、`rippled`サーバーのクラスターをプロキシサーバーとして使用することが推奨されます。
+バリデータを[プライベートピア](peer-protocol.md#プライベートピア)として実行している場合は、`rippled`サーバーのクラスターをプロキシサーバーとして使用することが推奨されます。
 
-クラスターでのサーバーの設定方法に関するチュートリアルについては、[`rippled`サーバーのクラスター化](cluster-rippled-servers.html)を参照してください。
+クラスターでのサーバーの設定方法に関するチュートリアルについては、[`rippled`サーバーのクラスター化](../../infrastructure/configuration/peering/cluster-rippled-servers.md)を参照してください。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

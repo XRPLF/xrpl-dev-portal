@@ -11,8 +11,8 @@ labels:
 
 * 直近に処理したトランザクションとレジャーを記録しておく。そうすれば、一時的に接続ができなくなったとしても、どこまで遡ればいいのか分かります。
 * 受信したすべての支払いの結果コードを確認する。一部の支払いは、失敗したにもかかわらず、スパム対策料金を請求するためにレジャーに登録されます。結果コード`tesSUCCESS`を持つトランザクションだけが、XRP以外の残高を変更できます。また、検証されたレジャーからのトランザクションのみが確定的なものとなります。
-* [部分支払い](partial-payments.html)に注意してください。partial paymentフラグを有効にした場合、0以上の金額であれば、少額でも「成功」と判断されることがあります。
-    * トランザクションに[`delivered_amount`フィールド](partial-payments.html#the-delivered_amount-field)があるかどうか確認してください。もし存在すれば、そのフィールドは`Destination`アドレスに実際にどれだけの金額が支払われたかを示しています。
+* [部分支払い](partial-payments.md)に注意してください。partial paymentフラグを有効にした場合、0以上の金額であれば、少額でも「成功」と判断されることがあります。
+    * トランザクションに[`delivered_amount`フィールド](partial-payments.md#the-delivered_amount-field)があるかどうか確認してください。もし存在すれば、そのフィールドは`Destination`アドレスに実際にどれだけの金額が支払われたかを示しています。
     * xrpl.jsでは、[`xrpl.getBalanceChanges()`メソッド](https://js.xrpl.org/modules.html#getBalanceChanges)を使って、各アドレスがいくら受け取ったかを見ることができます。場合によっては、これを異なるトラストラインで複数回に分けて表示することも可能です
 * トランザクションの中には、アドレスの1つへの直接の支払いやアドレスからの支払いでなくても、残高を変更するものがあります。
 
@@ -23,4 +23,4 @@ labels:
 * 残高を確認するには、`gateway_balances`メソッドを使用します。
 * Transfer Feeが設定されている場合、他のXRP Ledgerアドレスがあなたのトークンを転送するたびに、XRP Ledger内でのあなたの負債はわずかに減少します。
 
-受信したトランザクションの詳細を確認する方法については、[トランザクションの結果の確認](look-up-transaction-results.html)をご覧ください。
+受信したトランザクションの詳細を確認する方法については、[トランザクションの結果の確認](../transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。

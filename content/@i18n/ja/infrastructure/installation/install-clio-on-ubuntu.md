@@ -16,7 +16,7 @@ labels:
 
 Clioをインストールする前に、以下の条件を満たしている必要があります。
 
-- お使いのシステムが[システム要件](system-requirements.html)を満たしていることを確認してください。
+- お使いのシステムが[システム要件](system-requirements.md)を満たしていることを確認してください。
 
     **Note:** Clioのシステム要件は`rippled`サーバと同じですが、同じ量のレジャー履歴を保存するのに必要なディスク容量はClioの方が少なくなります。
 
@@ -26,69 +26,91 @@ Clioをインストールする前に、以下の条件を満たしている必�
 
     -  Clioデータを永続化する場合は、DockerコンテナでCassandraを実行し、Clioデータを格納する空のディレクトリを指定します：
 
-            docker run --rm -it --network=host --name cassandra  -v $PWD/cassandra_data:/var/lib/
-            cassandra cassandra:4.0.4
+        ```
+        docker run --rm -it --network=host --name cassandra  -v $PWD/cassandra_data:/var/lib/
+        cassandra cassandra:4.0.4
+        ```
 
     - Clioのデータを永続化したくない場合は、以下のコマンドを実行してください。
 
-            docker run --rm -it --network=host --name cassandra cassandra:4.0.4
+        ```
+        docker run --rm -it --network=host --name cassandra cassandra:4.0.4
+        ```
 
-- P2Pモードでは1つ以上の`rippled`サーバにgRPCでアクセスする必要があります。この`rippled`サーバはローカルでもリモートでも構いませんが、信頼する必要があります。最も確実な方法は、[`rippled`を自分でインストール](install-rippled.html)することです。
+- P2Pモードでは1つ以上の`rippled`サーバにgRPCでアクセスする必要があります。この`rippled`サーバはローカルでもリモートでも構いませんが、信頼する必要があります。最も確実な方法は、[`rippled`を自分でインストール](index.md)することです。
 
 
 ## インストールの手順
 
 1. リポジトリを更新します。
 
-        sudo apt -y update
+    ```
+    sudo apt -y update
+    ```
 
     **ヒント:** すでに同じマシンに`rippled`の最新版をインストールしている場合、Rippleのパッケージリポジトリと署名キーを追加する以下のステップは省略できます。ステップ5の"Rippleリポジトリを取得します。"から再開します。
 
 2. ユーティリティをインストールします。
 
-        sudo apt -y install apt-transport-https ca-certificates wget gnupg
+    ```
+    sudo apt -y install apt-transport-https ca-certificates wget gnupg
+    ```
 
 3.  Rippleのパッケージ署名用のGPGキーを、信頼できるキーのリストに追加します。
 
-        sudo mkdir /usr/local/share/keyrings/
-        wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
-        sudo mv ripple-key.gpg /usr/local/share/keyrings
+    ```
+    sudo mkdir /usr/local/share/keyrings/
+    wget -q -O - "https://repos.ripple.com/repos/api/gpg/key/public" | gpg --dearmor > ripple-key.gpg
+    sudo mv ripple-key.gpg /usr/local/share/keyrings
+    ```
 
 4. 追加したキーのフィンガープリントを確認します。
 
-        gpg /usr/local/share/keyrings/ripple-key.gpg
+    ```
+    gpg /usr/local/share/keyrings/ripple-key.gpg
+    ```
 
     出力に、次のようなRipple用のエントリーが含まれていることを確認してください。
 
-        gpg: WARNING: no command supplied.  Trying to guess what you mean ...
-        pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
-            C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
-        uid           TechOps Team at Ripple <techops+rippled@ripple.com>
-        sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
+    ```
+    gpg: WARNING: no command supplied.  Trying to guess what you mean ...
+    pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
+        C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
+    uid           TechOps Team at Ripple <techops+rippled@ripple.com>
+    sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
+    ```
 
 
     特に、フィンガープリントが一致することを確認してください。（上記の例では、フィンガープリントは三行目の`C001`で始まる部分です。）
 
 4. 使用しているオペレーティングシステムのバージョンに対応する適切なRippleリポジトリを追加します。
 
-        echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
-            sudo tee -a /etc/apt/sources.list.d/ripple.list
+    ```
+    echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
+        sudo tee -a /etc/apt/sources.list.d/ripple.list
+    ```
 
     上記の例は、**Ubuntu 20.04 Focal Fossa**向けのものです。
 
 5. Rippleリポジトリを取得します。
 
-        sudo apt -y update
+    ```
+    sudo apt -y update
+    ```
 
 6. Clioソフトウェアパッケージをインストールします。オプションは2つあります。
 
     - 同じマシン上で`rippled`を実行するには、両方のサーバーをセットアップする`clio`パッケージをインストールしてください：
 
-            sudo apt -y install clio
+        ```
+        sudo apt -y install clio
+        ```
 
     - Clio を`rippled`とは別のマシンで実行するには、Clioのみをセットアップする`clio-server`パッケージをインストールしてください：
 
-            sudo apt -y install clio-server
+        ```
+        sudo apt -y install clio-server
+        ```
 
 7. 別のマシンで`rippled`を実行している場合は、Clioの設定ファイルを修正して、そちらを指すようにします。`clio`パッケージを使って同じマシンに両方をインストールした場合は、この手順を省略できます。
 
@@ -96,14 +118,16 @@ Clioをインストールする前に、以下の条件を満たしている必�
 
     1. Clioサーバの設定ファイルを編集して`rippled`サーバの接続情報を変更します。パッケージはこのファイルを`/opt/clio/etc/config.json`にインストールします。
 
-            "etl_sources":
-            [
-                {
-                    "ip":"127.0.0.1",
-                    "ws_port":"6006",
-                    "grpc_port":"50051"
-                }
-            ]
+        ```
+        "etl_sources":
+        [
+            {
+                "ip":"127.0.0.1",
+                "ws_port":"6006",
+                "grpc_port":"50051"
+            }
+        ]
+        ```
 
         以下の情報が含まれます。
 
@@ -119,28 +143,36 @@ Clioをインストールする前に、以下の条件を満たしている必�
 
         * 暗号化されていないWebSocket接続を受け付けるポートを開きます。
 
-                [port_ws_public]
-                port = 6005
-                ip = 0.0.0.0
-                protocol = ws
+            ```
+            [port_ws_public]
+            port = 6005
+            ip = 0.0.0.0
+            protocol = ws
+            ```
 
         * gRPCリクエストを処理するポートを開き、`secure_gateway`項目にClioサーバのIPを指定します。
 
-                [port_grpc]
-                port = 50051
-                ip = 0.0.0.0
-                secure_gateway = 127.0.0.1
+            ```
+            [port_grpc]
+            port = 50051
+            ip = 0.0.0.0
+            secure_gateway = 127.0.0.1
+            ```
 
             **ヒント:** もし`rippled`と同じマシンでClioを実行していない場合は、サンプルの`secure_gateway`を変更して、ClioサーバのIPアドレスを使用してください。
 
 8. Clioのsystemdサービスを有効にして起動します。
 
-        sudo systemctl enable clio
+    ```
+    sudo systemctl enable clio
+    ```
 
 9. `rippled`サーバとClioサーバを起動します。
 
-        sudo systemctl start rippled
-        sudo systemctl start clio
+    ```
+    sudo systemctl start rippled
+    sudo systemctl start clio
+    ```
 
     新しいデータベースで始める場合、Clioは完全なレジャーをダウンロードする必要があります。これには時間がかかります。両方のサーバを初めて起動する場合、Clioはレジャーを抽出する前に`rippled`の同期を待つため、さらに時間がかかることがあります。
 
@@ -151,4 +183,4 @@ Clioをインストールする前に、以下の条件を満たしている必�
 ## 関連項目
 
 - **コンセプト:**
-    - [Clioサーバ](the-clio-server.html)
+    - [Clioサーバ](../../concepts/networks-and-servers/the-clio-server.md)

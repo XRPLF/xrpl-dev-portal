@@ -7,16 +7,15 @@ labels:
 ---
 # 宛先タグの必須化
 
-`RequireDest`設定は、送金先を識別する[宛先タグ](source-and-destination-tags.html)を顧客が付け忘れている場合にあなたのアドレスに[送金](payment-types.html)できないようにするためのものです。有効にすると、XRP Ledgerは宛先タグが付いていないあなたのアドレスへの送金を拒否します。
+`RequireDest`設定は、送金先を識別する[宛先タグ](../../concepts/transactions/source-and-destination-tags.md)を顧客が付け忘れている場合にあなたのアドレスに[送金](../../concepts/payment-types/index.md)できないようにするためのものです。有効にすると、XRP Ledgerは宛先タグが付いていないあなたのアドレスへの送金を拒否します。
 
 以下は、ローカルでホストされている`rippled`の[submitメソッド][]を使用して、`RequireDest`フラグを有効にする[AccountSetトランザクション][]を送信する例です。
 
 リクエスト:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 POST http://localhost:5005/
 Content-Type: application/json
@@ -37,18 +36,15 @@ Content-Type: application/json
     ]
 }
 ```
+{% /tab %}
 
-{% include '_snippets/secret-key-warning.md' %}
-<!--{#_ #}-->
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンス:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -74,26 +70,21 @@ Content-Type: application/json
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## 関連項目
 
 - **コンセプト:**
-  - [アカウント](accounts.html)
-  - [送信元と宛先タグ](source-and-destination-tags.html)
-  - [トランザクションコスト](transaction-cost.html)
-  - [支払いタイプ](payment-types.html)
+  - [アカウント](../../concepts/accounts/accounts.md)
+  - [送信元と宛先タグ](../../concepts/transactions/source-and-destination-tags.md)
+  - [トランザクションコスト](../../concepts/transactions/transaction-cost.md)
+  - [支払いタイプ](../../concepts/payment-types/index.md)
 - **リファレンス:**
   - [account_infoメソッド][]
   - [AccountSetトランザクション][]
-  - [AccountRootのフラグ](accountroot.html#accountrootのフラグ)
+  - [AccountRootのフラグ](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
 
-
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

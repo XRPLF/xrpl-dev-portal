@@ -9,28 +9,27 @@ labels:
 # feature
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
 
-`feature`コマンドは、[Amendment](amendments.html)に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが[Amendmentプロセス](amendments.html#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。[新規: rippled 0.31.0][]
+`feature`コマンドは、[Amendment](../../../../concepts/networks-and-servers/amendments.md)に関してこのサーバが認識している情報（Amendmentが有効であるかどうか、サーバが[Amendmentプロセス](../../../../concepts/networks-and-servers/amendments.md#amendmentプロセス)でこれらのAmendmentに賛成票を投じたかどうかなど）を返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 
-`feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを一時的に設定できます。この変更は、サーバの再起動後も保持されます。[更新: rippled 1.7.0][]
+`feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを一時的に設定できます。この変更は、サーバの再起動後も保持されます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}
 
-_`feature`メソッドは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。_
+_`feature`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket - すべてリスト*
-
+{% tab label="WebSocket - すべてリスト" %}
 ```json
 {
  "id": "list_all_features",
  "command": "feature"
 }
 ```
+{% /tab %}
 
-*WebSocket - 拒否*
-
+{% tab label="WebSocket - 拒否" %}
 ```json
 {
  "id": "reject_multi_sign",
@@ -39,9 +38,9 @@ _`feature`メソッドは、権限のないユーザーは実行できない[管
  "vetoed": true
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "feature",
@@ -53,15 +52,16 @@ _`feature`メソッドは、権限のないユーザーは実行できない[管
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: feature [<feature_id> [accept|reject]]
 rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373 accept
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -76,10 +76,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket - すべてリスト*
-
+{% tab label="WebSocket - すべてリスト" %}
 ```json
 {
  "id": "list_all_features",
@@ -121,9 +120,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
  }
 }
 ```
+{% /tab %}
 
-*WebSocket - 拒否*
-
+{% tab label="WebSocket - 拒否" %}
 ```json
 {
    "id": "reject_multi_sign",
@@ -141,9 +140,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
    }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -159,9 +158,9 @@ rippled feature 4C97EBA926031A7CF7D7B36FDE3ED66DDA5421192D63DE53FFB46E43B9DC8373
    }
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -178,8 +177,9 @@ Connecting to 127.0.0.1:5005
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に**Amendmentのマップ**がJSONプロジェクトとして含まれています。オブジェクトのキーはAmendment IDです。各キーの値は、そのIDのAmendmentのステータスを記述した _Amendmentオブジェクト_ です。リクエストに`feature`が指定されいる場合、リクエストによる変更の適用後には、リクエストされたAmendmentオブジェクトだけがマップに含まれます。各Amendmentオブジェクトのフィールドを次に示します。
 
@@ -187,8 +187,8 @@ Connecting to 127.0.0.1:5005
 |:------------|:--------|:-----------------------------------------------------|
 | `enabled`   | ブール値 | 最新レジャーでこのAmendmentが現在有効であるかどうか。 |
 | `name`      | 文字列  | （省略される場合があります）このAmendmentの人間が読める形式の名前（判明している場合）。 |
-| `supported` | ブール値 | サーバがこのAmendmentの適用方法を認識しているかどうか。このフィールドが`false`（サーバがこのAmendmentの適用方法を認識していない）に設定されており、`enabled`が`true`（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバが[Amendmentブロック](amendments.html#amendment-blocked)される可能性があります。 |
-| `vetoed`    | ブール値 または 文字列 | ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに`Obsolete`という文字列を指定します。[更新: rippled 1.11.0][]. |
+| `supported` | ブール値 | サーバがこのAmendmentの適用方法を認識しているかどうか。このフィールドが`false`（サーバがこのAmendmentの適用方法を認識していない）に設定されており、`enabled`が`true`（このAmendmentが最新レジャーで有効である）に設定されている場合、このAmendmentによりサーバが[Amendmentブロック](../../../../concepts/networks-and-servers/amendments.md#amendment-blocked)される可能性があります。 |
+| `vetoed`    | ブール値 または 文字列 | ほとんどのAmendmentにおいて、これはサーバがこのAmendmentに反対票を投じるように指示されているかどうかを示すブール値です。コードの中で廃止とマークされているAmendmentについては、代わりに`Obsolete`という文字列を指定します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}更新: rippled 1.11.0{% /badge %}. |
 
 **注意:** Amendmentの`name`は、Amendmentの内容を厳密に示すものではありません。サーバ間でこの名前が一意であることや整合性があることは保証されません。
 
@@ -198,7 +198,4 @@ Connecting to 127.0.0.1:5005
 * `badFeature` - 指定されている`feature`のフォーマットが正しくないか、サーバがその名前のAmendmentを認識していません。
 - `reportingUnsupported` - ([レポートモード][]サーバのみ) このメソッドはレポートモードでは使用できません。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

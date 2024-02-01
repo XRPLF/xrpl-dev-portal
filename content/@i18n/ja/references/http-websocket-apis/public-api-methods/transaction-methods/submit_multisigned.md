@@ -8,17 +8,16 @@ labels:
 # submit_multisigned
 [[ソース]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-`submit_multisigned`コマンドは[マルチシグ](multi-signing.html)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.html#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
+`submit_multisigned`コマンドは[マルチシグ](../../../../concepts/accounts/multi-signing.md)トランザクションを適用し、このトランザクションをネットワークに送信して、今後のレジャーに追加します。（[`submit`コマンドを送信専用モードで](submit.md#送信専用モード)使用して、マルチシグトランザクションをバイナリー形式で送信することもできます。)
 
-このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。[新規: rippled 0.31.0][]
+このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": "submit_multisigned_example",
@@ -52,9 +51,9 @@ labels:
    }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "submit_multisigned",
@@ -94,9 +93,9 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: submit_multisigned <tx_json>
 rippled submit_multisigned '{
@@ -130,24 +129,24 @@ rippled submit_multisigned '{
    "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
 }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
 | `Field`     | 型    | 説明                                          |
 |:------------|:--------|:-----------------------------------------------------|
-| `tx_json`   | オブジェクト  | `Signers`からなる配列が指定された[JSONフォーマットのトランザクション](transaction-formats.html)。成功させるには、署名の重みが[SignerList](signerlist.html)の定数以上でなければなりません。 |
+| `tx_json`   | オブジェクト  | `Signers`からなる配列が指定された[JSONフォーマットのトランザクション](../../../protocol/transactions/index.md)。成功させるには、署名の重みが[SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md)の定数以上でなければなりません。 |
 | `fail_hard` | ブール値 | （省略可、デフォルトではfalseです）trueで、かつトランザクションがローカルで失敗する場合は、このトランザクションの再試行や、他のサーバーへのリレーは行わないでください。 |
 
 ## レスポンスのフォーマット
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
  "id": "submit_multisigned_example",
@@ -191,9 +190,9 @@ rippled submit_multisigned '{
  }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -237,8 +236,9 @@ rippled submit_multisigned '{
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
@@ -247,8 +247,8 @@ rippled submit_multisigned '{
 | `engine_result`         | 文字列  | 以下は、トランザクションの暫定的な結果を示すコードの例です。 `tesSUCCESS` |
 | `engine_result_code`    | 整数 | トランザクションの暫定的な結果を示し、`engine_result`と直接の相関関係にある数値コード |
 | `engine_result_message` | 文字列  | 人間が読み取れる形式の暫定的なトランザクション結果の説明 |
-| `tx_blob`               | 文字列  | [トランザクション](transaction-formats.html)全体の16進文字列表現 |
-| `tx_json`               | オブジェクト  | [トランザクション](transaction-formats.html)全体のJSON表現 |
+| `tx_blob`               | 文字列  | [トランザクション](../../../protocol/transactions/index.md)全体の16進文字列表現 |
+| `tx_json`               | オブジェクト  | [トランザクション](../../../protocol/transactions/index.md)全体のJSON表現 |
 
 ## 考えられるエラー
 
@@ -257,6 +257,4 @@ rippled submit_multisigned '{
 * `srcActMalformed` - `tx_json`の`Account`フィールドが無効または欠落していました。
 * `internal` - 内部エラーが発生しました。これには、指定されているトランザクションJSONに対して署名が無効な場合も含まれます。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

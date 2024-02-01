@@ -13,10 +13,9 @@ labels:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "command": "account_currencies",
@@ -25,9 +24,9 @@ labels:
    "ledger_index": "validated"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method": "account_currencies",
@@ -41,16 +40,17 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる>](websocket-api-tool.html#account_currencies)
+[試してみる>](/resources/dev-tools/websocket-api-tool#account_currencies)
 
 リクエストには以下のパラメーターが含まれます。
 
 | `Field`        | 型                       | 説明                    |
 |:---------------|:---------------------------|:-------------------------------|
-| `account`      | 文字列                     | このアカウントが送受信できる通貨を検索します。[更新: rippled 1.11.0][] |
+| `account`      | 文字列                     | このアカウントが送受信できる通貨を検索します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}更新: rippled 1.11.0{% /badge %} |
 | `strict`       | ブール値                    | _（省略可）_ trueの場合は、アカウントパラメーターにアドレスまたは公開鍵だけを受け入れます。デフォルトではfalseです。 |
 | `ledger_hash`  | 文字列                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]をご覧ください） |
 | `ledger_index` | 文字列または符号なし整数 | _（省略可）_ 使用する[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]をご覧ください） |
@@ -61,10 +61,9 @@ labels:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```
 {
    "result": {
@@ -97,9 +96,9 @@ labels:
    "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```
 200 OK
 {
@@ -132,8 +131,9 @@ labels:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれています。
 
@@ -145,7 +145,7 @@ labels:
 | `send_currencies`    | 文字列の配列           | このアカウントが送金できる通貨の[通貨コード][]の配列。 |
 | `validated`          | ブール値                    | `true`の場合、このデータは検証済みレジャーから取得されます。 |
 
-**注記:** アカウントが送金または受領できる通貨は、アカウントのトラストラインのチェックに基づいて定義されます。アカウントに通貨のトラストラインがあり、残高を増額できる余裕がある場合、その通貨を受領できます。トラストラインの残高を減らせる場合、アカウントはその通貨を送金できます。このメソッドでは、トラストラインが[凍結](freezes.html)または承認されているかどうかは確認 _されません_ 。
+**注記:** アカウントが送金または受領できる通貨は、アカウントのトラストラインのチェックに基づいて定義されます。アカウントに通貨のトラストラインがあり、残高を増額できる余裕がある場合、その通貨を受領できます。トラストラインの残高を減らせる場合、アカウントはその通貨を送金できます。このメソッドでは、トラストラインが[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)または承認されているかどうかは確認 _されません_ 。
 
 ## 考えられるエラー
 
@@ -154,6 +154,4 @@ labels:
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

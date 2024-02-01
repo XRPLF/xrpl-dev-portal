@@ -8,45 +8,45 @@ labels:
 # node_to_shard
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/rpc/handlers/NodeToShard.cpp "Source")
 
-`{{currentpage.name}}`メソッドは、レジャーストアから[シャードストア](history-sharding.html)へのデータコピーを管理します。データコピーの開始、停止、状態チェックが可能です。
+{% code-page-name /%}メソッドは、レジャーストアから[シャードストア](../../../../infrastructure/configuration/data-retention/history-sharding.md)へのデータコピーを管理します。データコピーの開始、停止、状態チェックが可能です。
 
-_`{{currentpage.name}}`メソッドは、権限のないユーザーには実行できない[管理メソッド](admin-api-methods.html)です。_
+_{% code-page-name /%}メソッドは、権限のないユーザーには実行できない[管理メソッド](../index.md)です。_
 
 
 ### リクエストのフォーマット
 
 リクエストのフォーマット例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "action": "start"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
         "action": "start"
     }]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
-#Syntax: {{currentpage.name}} start|stop|status
-rippled {{currentpage.name}} start
+#Syntax: {% $frontmatter.seo.title %} start|stop|status
+rippled {% $frontmatter.seo.title %} start
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストは、以下のパラメータを含みます:
 
@@ -59,10 +59,9 @@ rippled {{currentpage.name}} start
 
 正常レスポンス例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -72,9 +71,9 @@ rippled {{currentpage.name}} start
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "result" : {
@@ -84,9 +83,9 @@ rippled {{currentpage.name}} start
 }
 
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -99,8 +98,9 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは、[標準フォーマット][]に従っており、成功した場合は、以下の項目を含みます:
 
@@ -113,10 +113,7 @@ Connecting to 127.0.0.1:5005
 
 - いずれかの[汎用エラータイプ][]。
 - `internal` - コピーが実行されていない時にコピーの状態チェックをするといったような無効な操作の場合。
-- `notEnabled` - サーバが[履歴シャード](history-sharding.html)を保存するように環境設定されていない場合。
+- `notEnabled` - サーバが[履歴シャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)を保存するように環境設定されていない場合。
 - `invalidParams` - 1つ以上の項目が誤って定義されている、もしくは、1つ以上の必須項目が抜けている。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -17,7 +17,7 @@ This example shows how to:
 1. Authorize an account to create NFTs for your account.
 2. Mint an NFT for another account, when authorized.
 
-[![Token Test Harness](img/quickstart28.png)](img/quickstart28.png)
+[![Token Test Harness](/img/quickstart28.png)](/img/quickstart28.png)
 
 # Usage
 
@@ -42,7 +42,7 @@ To authorize another account to create NFTs for your account:
 2. Paste the **Operational Account** value in the **Authorized Minter** field.
 3. Click **Set Minter**.
 
-[![Authorized Minter](img/quickstart29.png)](img/quickstart29.png)
+[![Authorized Minter](/img/quickstart29.png)](/img/quickstart29.png)
 
 ## Mint an NFT for Another Account
 
@@ -61,7 +61,7 @@ To mint a non-fungible token for another account:
 5. Paste the **Standby Account** value in the Operational account **Issuer** field.
 6. Click the Operational account **Mint Other** button.
 
-[![Minted NFT for Another Account](img/quickstart30.png)](img/quickstart30.png)
+[![Minted NFT for Another Account](/img/quickstart30.png)](/img/quickstart30.png)
 
 Once the item is minted, the authorized minter can sell the NFT normally. The proceeds go to the authorized minter, less the transfer fee. The minter and the issuer can settle up on a division of the price separately.
 
@@ -77,7 +77,7 @@ To create an NFT sell offer:
 
 The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which is used to accept the sell offer.
 
-[![NFT Sell Offer](img/quickstart31.png)](img/quickstart31.png)
+[![NFT Sell Offer](/img/quickstart31.png)](/img/quickstart31.png)
 
 ## Accept Sell Offer
 
@@ -90,7 +90,7 @@ To accept an available sell offer:
 2. Click **Accept Sell Offer**.
 
 The results show that the Issuer account has been credited 25 XRP. The Buyer account was debited the 100 XRP price plus 12 drops as the transaction cost. The Seller (Authorized Minter) account is credited 75 XRP. the Issuer and the Seller can divide the proceeds per their agreement in a separate transaction.
-[![Transaction Results](img/quickstart32.png)](img/quickstart32.png)
+[![Transaction Results](/img/quickstart32.png)](/img/quickstart32.png)
 
 # Code Walkthrough
 
@@ -208,7 +208,7 @@ Report success
   standbyResultField.value = results    
 ```
       
-This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nfts-using-javascript.html#mint-token), with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nfts-using-javascript.md#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const tx_json = {
@@ -514,25 +514,25 @@ Update the form with fields and buttons to support the new functions.
                       <td><input type="text" id="standbyOwnerField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Authorized Minter</td>
-                    	<td><input type="text" id="standbyMinterField" value="" size="80"/></td>
+                        <td align="right">Authorized Minter</td>
+                        <td><input type="text" id="standbyMinterField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Issuer</td>
-                    	<td><input type="text" id="standbyIssuerField" value="" size="80"/></td>
+                        <td align="right">Issuer</td>
+                        <td><input type="text" id="standbyIssuerField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Destination</td>
-                    	<td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
+                        <td align="right">Destination</td>
+                        <td><input type="text" id="standbyDestinationField" value="" size="80"/></td>
                     </tr>
-				            <tr>
-					            <td align="right">Expiration</td>
-					            <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
-				            </tr>
-				            <tr>
-				  	          <td align="right">Transfer Fee</td>
-					            <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-				            </tr>
+                            <tr>
+                                <td align="right">Expiration</td>
+                                <td><input type="text" id="standbyExpirationField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                                <td align="right">Transfer Fee</td>
+                                <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+                            </tr>
                   </table>
                   <p align="left">
                   <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
@@ -715,25 +715,25 @@ Update the form with fields and buttons to support the new functions.
                             <td><input type="text" id="operationalOwnerField" value="" size="80"/></td>
                           </tr>
                           <tr>
-                    	<td align="right">Authorized Minter</td>
-                    	<td><input type="text" id="operationalMinterField" value="" size="80"/></td>
+                        <td align="right">Authorized Minter</td>
+                        <td><input type="text" id="operationalMinterField" value="" size="80"/></td>
                     </tr>
                     <tr>
-                    	<td align="right">Issuer</td>
-                    	<td><input type="text" id="operationalIssuerField" value="" size="80"/></td>
+                        <td align="right">Issuer</td>
+                        <td><input type="text" id="operationalIssuerField" value="" size="80"/></td>
                     </tr>
-							<tr>
-							  <td align="right">Destination</td>
-							  <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
-							</tr>
-							<tr>
-							  <td align="right">Expiration</td>
-							  <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
-							</tr>
-							<tr>
-							  <td align="right">Transfer Fee</td>
-							  <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
-							            </tr>
+                            <tr>
+                              <td align="right">Destination</td>
+                              <td><input type="text" id="operationalDestinationField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                              <td align="right">Expiration</td>
+                              <td><input type="text" id="operationalExpirationField" value="" size="80"/></td>
+                            </tr>
+                            <tr>
+                              <td align="right">Transfer Fee</td>
+                              <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
+                                        </tr>
                         </table>
                         <p align="right">
                           <textarea id="operationalResultField" cols="80" rows="20" ></textarea>

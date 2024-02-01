@@ -23,7 +23,7 @@ Smart contracts on the XRP Ledger work through conditionally held escrows.
 
 A conditionally held escrow is similar to a normal escrow: you set aside funds with an escrow to guarantee funds are available to a recipient. The difference is that a conditionally held escrow on the ledger has a `Condition` attached to it, which serves as a lock on the funds. The ledger won't release those funds until an `EscrowFinish` transaction is submitted with the corresponding `Fulfillment` field. The `Condition` and `Fulfillment` fields can be viewed as a lock and key on an escrow.
 
-See: [`EscrowCreate`](escrowcreate.html).
+See: [`EscrowCreate`](../../references/protocol/transactions/types/escrowcreate.md).
 
 
 ### Establish the Oracle
@@ -36,7 +36,7 @@ The oracle gives the condition hex value to the escrow creator, enabling them to
 
 After the oracle's programming detects the conditions are met, it gives the fulfillment hex value to the escrow recipient. It does nothing else after this point, such as finishing the escrow. The recipient of the escrow would most likely finish the escrow.
 
-See: [Generate a condition and fulfillment](send-a-conditionally-held-escrow.html#1-generate-condition-and-fulfillment).
+See: [Generate a condition and fulfillment](../../tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md#1-generate-condition-and-fulfillment).
 
 ## Examples
 

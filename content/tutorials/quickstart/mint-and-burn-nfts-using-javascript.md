@@ -15,7 +15,7 @@ This example shows how to:
 2. Get a list of existing NFTs.
 3. Delete (Burn) an NFT.
 
-[![Test harness with mint NFT fields](img/quickstart8.png)](img/quickstart8.png)
+[![Test harness with mint NFT fields](/img/quickstart8.png)](/img/quickstart8.png)
 
 # Usage
 
@@ -32,7 +32,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-[![Get accounts](img/quickstart9.png)](img/quickstart9.png)
+[![Get accounts](/img/quickstart9.png)](/img/quickstart9.png)
 
 ## Mint an NFT
 
@@ -42,19 +42,19 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 
 To mint a non-fungible token object:
 
-1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for information about all of the available flags for minting NFTs.
+1. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../references/protocol/transactions/types/nftokenmint.md) for information about all of the available flags for minting NFTs.
 2. Enter the **Token URL**. This is a URI that points to the data or metadata associated with the NFT object. You can use the sample URI provided if you do not have one of your own.
 3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Click **Mint NFT**.
 
-[![Mint NFT fields](img/quickstart10.png)](img/quickstart10.png)
+[![Mint NFT fields](/img/quickstart10.png)](/img/quickstart10.png)
 
 
 ## Get Tokens
 
 Click **Get NFTs** to get a list of NFTs owned by the account.
 
-[![Get NFTs](img/quickstart11.png)](img/quickstart11.png)
+[![Get NFTs](/img/quickstart11.png)](/img/quickstart11.png)
 
 ## Burn a Token
 
@@ -65,7 +65,7 @@ To permanently destroy an NFT:
 1. Enter the **Token ID**.
 2. Click **Burn NFT**.
 
-[![Burn NFTs](img/quickstart12.png)](img/quickstart12.png)
+[![Burn NFTs](/img/quickstart12.png)](/img/quickstart12.png)
 
 # Code Walkthrough
 
@@ -531,10 +531,10 @@ async function oPburnToken() {
                       <td align="right">NFT ID</td>
                       <td><input type="text" id="standbyTokenIdField" value="" size="80"/></td>
                     </tr>
-				            <tr>
-				  	          <td align="right">Transfer Fee</td>
-					            <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
-				            </tr>
+                            <tr>
+                                <td align="right">Transfer Fee</td>
+                                <td><input type="text" id="standbyTransferFeeField" value="" size="80"/></td>
+                            </tr>
                   </table>
                   <p align="left">
                     <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
@@ -688,7 +688,7 @@ async function oPburnToken() {
                             <td align="right">Transfer Fee</td>
                             <td><input type="text" id="operationalTransferFeeField" value="" size="80"/></td>
                           </tr>
-							          </table>
+                                      </table>
                         <p align="right">
                           <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
                         </p>

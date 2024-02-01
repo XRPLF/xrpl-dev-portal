@@ -15,7 +15,7 @@ You can create an application that mints multiple NFTs at one time, using a `for
 
 A best practice is to use `Tickets` to reserve the transaction sequence numbers. If you create an application that creates NFTs without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for any individual failures afterward.
 
-[![Batch Mint](img/quickstart-py36.png)](img/quickstart-py36.png)
+[![Batch Mint](/img/quickstart-py36.png)](/img/quickstart-py36.png)
 
 ## Usage
 
@@ -43,7 +43,7 @@ This example lets you mint multiple NFTs for a single unique item. The NFT might
 To batch mint non-fungible token objects:
 
 1. Enter the **NFT URI**. This is a URI that points to the data or metadata associated with the NFT object. You can use this sample URI if you do not have one of your own: ipfs://bafybeigdyrzt5sfp7udm7hu76uh7y26nf4dfuylqabf3oclgtqy55fbzdi.
-2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](nftokenmint.html) for available NFT minting flags.
+2. Set the **Flags** field. For testing purposes, we recommend setting the value to _8_. This sets the _tsTransferable_ flag, meaning that the NFT object can be transferred to another account. Otherwise, the NFT object can only be transferred back to the issuing account. See [NFTokenMint](../../references/protocol/transactions/types/nftokenmint.md) for available NFT minting flags.
 3. Enter the **Transfer Fee**, a percentage of the proceeds that the original creator receives from future sales of the NFT. This is a value of 0-50000 inclusive, allowing transfer fees between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Enter the **Taxon** for the NFT. If you do not have a need for the Taxon field, set this value to 0.
 5. Enter an **NFT Count** of up to 200 NFTs to create in one batch.
@@ -88,14 +88,14 @@ Get the account wallet and a client instance.
 
 Request the full account info.
 
-```python	
+```python    
     acct_info = xrpl.models.requests.account_info.AccountInfo(
         account=wallet.classic_address,
         ledger_index='validated'
     )
     get_seq_request = client.request(acct_info)
 
-```	
+```    
 
 Parse the current sequence value.
 

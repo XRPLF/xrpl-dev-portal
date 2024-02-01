@@ -9,9 +9,9 @@ labels:
 
 The `rippled` server limits the rate at which API clients can make requests on public APIs. Rate limiting is based on the IP address of the client, so clients behind [network address translation](https://en.wikipedia.org/wiki/Network_address_translation) share a limit based on their public IP address.
 
-**Tip:** Rate limiting does not apply when the client is connected [as an admin](get-started-using-http-websocket-apis.html#admin-access).
+**Tip:** Rate limiting does not apply when the client is connected [as an admin](../../../tutorials/get-started/get-started-using-http-websocket-apis.md#admin-access).
 
-When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.html). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
+When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.md). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 
 If a client goes past the rate limit, the server disconnects that client and does not serve further requests from the client's API address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.
 
@@ -54,16 +54,13 @@ The usage rate drops off exponentially over time, so a client that does not make
 ## See Also
 
 - **Concepts:**
-    - [The `rippled` Server](xrpl-servers.html)
-    - [Software Ecosystem](software-ecosystem.html)
+    - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
+    - [Software Ecosystem](../../../introduction/software-ecosystem.md)
 - **Tutorials:**
-    - [Getting Started with XRP Ledger APIs](get-started-using-http-websocket-apis.html)
-    - [Troubleshooting rippled](troubleshoot-the-rippled-server.html)
+    - [Getting Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)
+    - [Troubleshooting rippled](../../../infrastructure/troubleshooting/index.md)
 - **References:**
-    - [rippled API Reference](http-websocket-apis.html)
-        - [Error Formatting](error-formatting.html)
+    - [rippled API Reference](../index.md)
+        - [Error Formatting](error-formatting.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

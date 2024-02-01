@@ -9,14 +9,14 @@ Some methods return more data than can efficiently fit into one response. When t
 
 The format of the `marker` field is intentionally undefined. Each server can define a `marker` field as desired, so it may take the form of a string, a nested object, or another type. Different servers, and different methods provided by the same server, can have different `marker` definitions. Each `marker` is ephemeral, and may not work as expected after 10 minutes.
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_Python_
+{% tab label="Python" %}
+{% code-snippet file="/_code-samples/markers-and-pagination/py/pagination-with-markers.py" language="py" /%}
+{% /tab %}
 
-{{ include_code("_code-samples/markers-and-pagination/py/pagination-with-markers.py", language="py") }}
+{% tab label="JavaScript" %}
+{% code-snippet file="/_code-samples/markers-and-pagination/js/pagination-with-markers.js" language="js" /%}
+{% /tab %}
 
-_JavaScript_
-
-{{ include_code("_code-samples/markers-and-pagination/js/pagination-with-markers.js", language="js") }}
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}

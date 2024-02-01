@@ -9,9 +9,9 @@ labels:
 ---
 # Connect Your rippled to a Parallel Network
 
-Various [alternative test and development networks](parallel-networks.html) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](xrpl-servers.html) to any of these test networks.
+Various [alternative test and development networks](../../concepts/networks-and-servers/parallel-networks.md) exist for developers to test their apps or experiment with features without risking real money. **The funds used on these networks are not real funds and are intended for testing only.** You can connect your [`rippled` server](../../concepts/networks-and-servers/index.md) to any of these test networks.
 
-**Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](parallel-networks.html) for information on what code version each network needs.
+**Caution:** On test networks with new and experimental features, you may need to run a pre-production release of the server to sync with the network. See the [Parallel Networks Page](../../concepts/networks-and-servers/parallel-networks.md) for information on what code version each network needs.
 
 ## Steps
 
@@ -21,66 +21,68 @@ To connect your `rippled` server to the XRP Testnet or Devnet, complete these st
 
 Edit your `rippled.cfg` file.
 
-{% include '_snippets/conf-file-location.md' %}
+{% partial file="/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
 
 1. Set an `[ips]` stanza with the hub for the network you want to connect to:
 
-    <!-- MULTICODE_BLOCK_START -->
+    {% tabs %}
 
-    *Testnet*
+    ```{% label="Testnet" %}
+    [ips]
+    s.altnet.rippletest.net 51235
+    ```
 
-        [ips]
-        s.altnet.rippletest.net 51235
+    ```{% label="Devnet" %}
+    [ips]
+    s.devnet.rippletest.net 51235
+    ```
 
-    *Devnet*
+    ```{% label="Mainnet" %}
+    # No [ips] stanza. Use the default hubs to connect to Mainnet.
+    ```
 
-        [ips]
-        s.devnet.rippletest.net 51235
+    ```{% label="Sidechain-Devnet" %}
+    [ips]
+    sidechain-net2.devnet.rippletest.net 51235
+    ```
 
-    *Mainnet*
-
-        # No [ips] stanza. Use the default hubs to connect to Mainnet.
-
-    *Sidechain-Devnet*
-
-        [ips]
-        sidechain-net2.devnet.rippletest.net 51235
-
-    <!-- MULTICODE_BLOCK_END -->
+    {% /tabs %}
 
 2. Comment out the previous `[ips]` stanza, if there is one:
 
-        # [ips]
-        # r.ripple.com 51235
-        # zaphod.alloy.ee 51235
-        # sahyadri.isrdc.in 51235
+    ```
+    # [ips]
+    # r.ripple.com 51235
+    # zaphod.alloy.ee 51235
+    # sahyadri.isrdc.in 51235
+    ```
 
 3. Add a `[network_id]` stanza with the appropriate value:
 
-    <!-- MULTICODE_BLOCK_START -->
+    {% tabs %}
 
-    *Testnet*
+    ```{% label="Testnet" %}
+    [network_id]
+    testnet
+    ```
 
-        [network_id]
-        testnet
+    ```{% label="Devnet" %}
+    [network_id]
+    devnet
+    ```
 
-    *Devnet*
+    ```{% label="Mainnet" %}
+    [network_id]
+    main
+    ```
 
-        [network_id]
-        devnet
+    ```{% label="Sidechain-Devnet" %}
+    [network_id]
+    262
+    ```
 
-    *Mainnet*
-
-        [network_id]
-        main
-
-    *Sidechain-Devnet*
-
-        [network_id]
-        262   
-
-    <!-- MULTICODE_BLOCK_END -->
+    {% /tabs %}
 
     For custom networks, everyone who connects to the network should use a value unique to that network. When creating a new network, choose a network ID at random from the integers 11 to 4,294,967,295.
 
@@ -92,42 +94,41 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
 1. Uncomment or add the `[validator_list_sites]` and `[validator_list_keys]` stanzas for the network you want to connect to:
 
-    <!-- MULTICODE_BLOCK_START -->
+    {% tabs %}
 
-    *Testnet*
+    ```{% label="Testnet" %}
+    [validator_list_sites]
+    https://vl.altnet.rippletest.net
 
-        [validator_list_sites]
-        https://vl.altnet.rippletest.net
+    [validator_list_keys]
+    ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
+    ```
 
-        [validator_list_keys]
-        ED264807102805220DA0F312E71FC2C69E1552C9C5790F6C25E3729DEB573D5860
+    ```{% label="Devnet" %}
+    [validator_list_sites]
+    https://vl.devnet.rippletest.net
 
-    *Devnet*
+    [validator_list_keys]
+    EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
+    ```
 
-        [validator_list_sites]
-        https://vl.devnet.rippletest.net
+    ```{% label="Mainnet" %}
+    [validator_list_sites]
+    https://vl.ripple.com
 
-        [validator_list_keys]
-        EDDF2F53DFEC79358F7BE76BC884AC31048CFF6E2A00C628EAE06DB7750A247B12
+    [validator_list_keys]
+    ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+    ```
 
+    ```{% label="Sidechain-Devnet" %}
+    [validator_list_sites]
+    https://vlsidechain-net2.devnet.rippletest.net
 
-    *Mainnet*
+    [validator_list_keys]
+    EDA5504C7133743FADA46342229B4E9CBBE1CF9BCA19D16633574F7CBB72F79569
+    ```
 
-        [validator_list_sites]
-        https://vl.ripple.com
-
-        [validator_list_keys]
-        ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
-
-    *Sidechain-Devnet*
-
-        [validator_list_sites]
-        https://vlsidechain-net2.devnet.rippletest.net
-
-        [validator_list_keys]
-        EDA5504C7133743FADA46342229B4E9CBBE1CF9BCA19D16633574F7CBB72F79569
-
-    <!-- MULTICODE_BLOCK_END -->
+    {% /tabs %}
 
     **Tip:** Preview packages might come with the necessary stanzas pre-configured, but check them just in case.
 
@@ -135,57 +136,59 @@ Edit your `validators.txt` file. This file is located in the same folder as your
 
     For example:
 
-            # [validator_list_sites]
-            # https://vl.ripple.com
-            #
-            # [validator_list_keys]
-            # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
+    ```
+    # [validator_list_sites]
+    # https://vl.ripple.com
+    #
+    # [validator_list_keys]
+    # ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734
 
-            # Old hard-coded List of Devnet Validators
-            # [validators]
-            # n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
-            # n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
-            # n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
-            # n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
-            # n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
-            # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
-            # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
+    # Old hard-coded List of Devnet Validators
+    # [validators]
+    # n9Mo4QVGnMrRN9jhAxdUFxwvyM4aeE1RvCuEGvMYt31hPspb1E2c
+    # n9MEwP4LSSikUnhZJNQVQxoMCgoRrGm6GGbG46AumH2KrRrdmr6B
+    # n9M1pogKUmueZ2r3E3JnZyM3g6AxkxWPr8Vr3zWtuRLqB7bHETFD
+    # n9MX7LbfHvPkFYgGrJmCyLh8Reu38wsnnxA4TKhxGTZBuxRz3w1U
+    # n94aw2fof4xxd8g3swN2qJCmooHdGv1ajY8Ae42T77nAQhZeYGdd
+    # n9LiE1gpUGws1kFGKCM9rVFNYPVS4QziwkQn281EFXX7TViCp2RC
+    # n9Jq9w1R8UrvV1u2SQqGhSXLroeWNmPNc3AVszRXhpUr1fmbLyhS
+    ```
 
 ## 3. Enable (or Disable) Features
 
 For some test networks using experimental features, you must also forcefully enable the appropriate feature in the config file. For other networks, you should not use the `[features]` stanza. Add or modify the `[features]` stanza of your config file as follows:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-_Testnet_
-
+{% tab label="Testnet" %}
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Testnet.
 ```
+{% /tab %}
 
-_Devnet_
-
+{% tab label="Devnet" %}
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Devnet.
 ```
+{% /tab %}
 
-_Mainnet_
-
+{% tab label="Mainnet" %}
 ```
 # [features]
 # Delete or comment out. Don't force-enable features on Mainnet.
 ```
+{% /tab %}
 
-_Sidechain-Devnet_
-
+{% tab label="Sidechain-Devnet" %}
 ```
 [features]
 XChainBridge
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **Warning:** Do not use the `[features]` stanza when connecting to Mainnet or Testnet. Forcefully enabling different features than the rest of the network could cause your server to diverge from the network.
 
@@ -207,28 +210,23 @@ The following example shows how to check your server's latest validated ledger f
 rippled server_info | grep seq
 ```
 
-You can use [server_info in the WebSocket Tool](websocket-api-tool.html#server_info) to look up the latest ledger index (`seq`) on the intended network.
+You can use [server_info in the WebSocket Tool](/resources/dev-tools/websocket-api-tool#server_info) to look up the latest ledger index (`seq`) on the intended network.
 
 
 
 ## See Also
 
 - **Tools:**
-    - [XRP Faucets](xrp-testnet-faucet.html)
-    - [WebSocket API Tool](websocket-api-tool.html) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
+    - [XRP Faucets](/resources/dev-tools/xrp-faucets)
+    - [WebSocket API Tool](/resources/dev-tools/websocket-api-tool) - Select 'Testnet Public Server' or 'Devnet Public Server' in the connection options.
 - **Concepts:**
-    - [Parallel Networks](parallel-networks.html)
-    - [Consensus](consensus.html)
+    - [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
+    - [Consensus](../../concepts/consensus-protocol/index.md)
 - **Tutorials:**
-    - [Run rippled as a Validator](run-rippled-as-a-validator.html)
-    - [Test `rippled` Offline in Stand-Alone Mode](use-stand-alone-mode.html)
-    - [Troubleshooting `rippled`](troubleshoot-the-rippled-server.html)
+    - [Run rippled as a Validator](server-modes/run-rippled-as-a-validator.md)
+    - [Test `rippled` Offline in Stand-Alone Mode](../testing-and-auditing/index.md)
+    - [Troubleshooting `rippled`](../troubleshooting/index.md)
 - **References:**
     - [server_info method][]
 
-
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

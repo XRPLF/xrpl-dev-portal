@@ -7,7 +7,7 @@ labels:
 ---
 # 回線圧縮の有効化
 
-`rippled`サーバは[ピアツーピア通信](peer-protocol.html)を圧縮することで帯域幅を節約できますが、その代償としてCPU使用率が高くなります。回線圧縮を有効にすると、サーバーは回線圧縮を有効にしているピアサーバとの通信を自動的に圧縮します。
+`rippled`サーバは[ピアツーピア通信](../../../concepts/networks-and-servers/peer-protocol.md)を圧縮することで帯域幅を節約できますが、その代償としてCPU使用率が高くなります。回線圧縮を有効にすると、サーバーは回線圧縮を有効にしているピアサーバとの通信を自動的に圧縮します。
 
 ## 手順
 
@@ -19,7 +19,7 @@ labels:
 $ vim /etc/opt/ripple/rippled.cfg
 ```
 
-{% include '_snippets/conf-file-location.ja.md' %}<!--_ -->
+{% partial file="/_snippets/conf-file-location.md" /%}
 
 ### 2. 設定ファイルに`[compression]`を追加またはコメントアウトします。
 
@@ -42,10 +42,7 @@ $ sudo systemctl restart rippled.service
 
 ## 関連項目
 
-- [容量の計画](capacity-planning.html)
-- [ピアプロトコル](peer-protocol.html)
+- [容量の計画](../../installation/capacity-planning.md)
+- [ピアプロトコル](../../../concepts/networks-and-servers/peer-protocol.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

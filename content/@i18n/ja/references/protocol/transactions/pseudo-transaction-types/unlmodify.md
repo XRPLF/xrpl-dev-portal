@@ -9,11 +9,11 @@ labels:
 
 _([NegativeUNL amendment][]により追加されました)_
 
-`UNLModify`[疑似トランザクション](pseudo-transaction-types.html)は[Negative UNL](negative-unl.html)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
+`UNLModify`[疑似トランザクション](pseudo-transaction-types.md)は[Negative UNL](../../../../concepts/consensus-protocol/negative-unl.md)の変更を示し、信頼できるバリデータがオフラインになったかオンラインに戻ってきたことを示します。
 
 **注記:** 擬似トランザクションを送信することはできませんが、台帳を処理する際に擬似トランザクションを発見することがあります。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -28,7 +28,7 @@ _([NegativeUNL amendment][]により追加されました)_
 }
 ```
 
-{% include '_snippets/pseudo-tx-fields-intro.md' %}
+{% partial file="/_snippets/pseudo-tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | 名前                 | JSONの型 | [内部の型][] | 説明           |
@@ -38,8 +38,4 @@ _([NegativeUNL amendment][]により追加されました)_
 | `UNLModifyDisabling` | 数値     | UInt8       | `1`の場合、この変更はネガティブUNLにバリデーターを追加することを意味します。0` の場合、この変更はネガティブ UNL からバリデータを削除することを意味します。(これらの値以外は使用できません) |
 | `UNLModifyValidator` | 文字列   | Blob        | 追加または削除するバリデータであり、そのマスター公開鍵で識別されます。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

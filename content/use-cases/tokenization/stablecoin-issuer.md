@@ -14,13 +14,13 @@ Stablecoins are tokens that are backed by assets outside of the XRPL. Stablecoin
 
 The mechanics of issuing a stablecoin are not complicated.
 
-1. Decide on the name for your stablecoin (either following the 3-character ISO standard or using a 160-bit hex string. See [Currency Codes](currency-formats.html#currency-codes)).
+1. Decide on the name for your stablecoin (either following the 3-character ISO standard or using a 160-bit hex string. See [Currency Codes](../../references/protocol/data-types/currency-formats.md#currency-codes)).
 2. Create a trust line between the issuing account and a consuming account establishing a maximum number of stablecoins to transfer.
 3. Send a payment of stablecoins to the consumer up to the maximum amount in the trust line.
 
 While anyone can issue a token with any currency code in the XRP Ledger, stablecoin value comes from the promise that it can be redeemed for a corresponding asset. Issuing a stablecoin might involve regulatory obligations, which vary by jurisdiction. For these reasons, an established, reputable business is most likely to succeed in issuing a stablecoin.
 
-[![Stablecoin Workflow](img/uc-stablecoin-flow.png)](img/uc-stablecoin-flow.png)
+[![Stablecoin Workflow](/img/uc-stablecoin-flow.png)](/img/uc-stablecoin-flow.png)
 
 There are many decisions to make and artifacts to generate as you prepare to release a new stablecoin. You can use the XRPL Foundation's [Self-assessment Questionnaire](https://foundation.xrpl.org/wp-content/uploads/2022/03/self_assessment_questionnaire_140322.pdf) as a starting point to gather and produce the necessary information for a successful launch.
 
@@ -28,32 +28,32 @@ There are many decisions to make and artifacts to generate as you prepare to rel
 
 The first step is to decide the type of stablecoin you want to create. Your choice of stablecoin type might require additional steps, such as signing on financial or audit partners.
 
-![Stablecoin](img/uc-stablecoin-stable-coin.png)
+![Stablecoin](/img/uc-stablecoin-stable-coin.png)
 
-There are five common types of currency tokens you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See [Stablecoins](stablecoins.html).
+There are five common types of currency tokens you can create on the XRPL: fiat-backed, crypto-backed, commodity-backed, financial instrument-backed, and non-collateralized. See [Stablecoins](../../concepts/tokens/fungible-tokens/stablecoins/index.md).
 
 ## Set Up Your Node Services
 
 For lighter use cases and individual servers, you can often rely on free public servers. However, the more serious your use of the XRP Ledger becomes, the more important it becomes to have your own infrastructure.
 
-There are many reasons you might want to run your own servers, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. See [Reasons to Run Your Own Server](networks-and-servers.html#reasons-to-run-your-own-server).
+There are many reasons you might want to run your own servers, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. See [Reasons to Run Your Own Server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server).
 
 Alternatively, you can use an external node service provider like OpenNode. See [OpenNode](https://www.opennodecloud.com/).
 
 ## Sandbox Access
 
-![Sandbox](img/uc-stablecoin-sandbox.png)
+![Sandbox](/img/uc-stablecoin-sandbox.png)
 
-For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](xrp-testnet-faucet.html).
+For testing purposes, you can implement, deploy, and trade your stablecoin on the XRPL Testnet or Devnet servers. Visit the XRP Faucets page to generate your test network credentials. Use the listed server URIs on that page to connect to and interact with your chosen test network. See [XRP Faucets](/resources/dev-tools/xrp-faucets).
 
 
 ## Stablecoin Settings
 
 Before you mint your new stablecoin, you need to configure settings, some of which are immutable once you issue the first coin.
 
-See [Stablecoin Settings](stablecoin-settings.html).
+See [Stablecoin Settings](../../concepts/tokens/fungible-tokens/stablecoins/settings.md).
 
-For more detail on configuration capbilities, see [Stablecoin Issuer Configuration](stablecoin-configuration.html).
+For more detail on configuration capbilities, see [Stablecoin Issuer Configuration](../../concepts/tokens/fungible-tokens/stablecoins/configuration.md).
 
 ## Asset Information
 
@@ -70,7 +70,7 @@ Currency codes do not have to be unique. For instance, if you're issuing a stabl
 
 You can publish information about what currencies you issue, and which XRP Ledger addresses you control, to protect against impostors or confusion, using an `xrp-ledger.toml` file on your website. This machine-readable format is convenient for client applications to process. If you run an XRP Ledger validator, you can also publish the key in the same file.
 
-You can use the _Currencies_ table to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](xrp-ledger-toml.html#currencies).
+You can use the _Currencies_ table to provide additional information about your stablecoin. This makes the information about your cryptocurrency accessible in an expected place and format, and enhances transparency. See [xrp-ledger.toml File](../../references/xrp-ledger-toml.md#currencies).
 
 
 ## Account and Key Management
@@ -79,7 +79,7 @@ You can use the _Currencies_ table to provide additional information about your 
 
 By using multiple keys and signing weights, issuers and asset holders can distribute trust and responsibility for approving transactions for an account between different users and systems. This gives you the flexibility to gate those signatures using internal processes and controls.
 
-See [Multi-signing](multi-signing.html).
+See [Multi-signing](../../concepts/accounts/multi-signing.md).
 
 <!--
 ### Omnibus Wallets
@@ -111,9 +111,9 @@ Before you issue your stablecoin, download and read the questions in the [Self-a
 
 For additional considerations, see:
 
-- [Stablecoin Issuer - Precautions](stablecoin-precautions.html)
-- [Stablecoin Issuer - Compliance Guidelines](stablecoin-compliance-guidelines.html)
-- [Issue a Fungible Token](issue-a-fungible-token.html)
+- [Stablecoin Issuer - Precautions](../../concepts/tokens/fungible-tokens/stablecoins/precautions.md)
+- [Stablecoin Issuer - Compliance Guidelines](../../concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md)
+- [Issue a Fungible Token](../../tutorials/use-tokens/issue-a-fungible-token.md)
 
 ### Create a Trust Line
 
@@ -127,7 +127,7 @@ Each "trust line" is a bidirectional relationship consisting of:
 
 Each trust line is specific to a given currency code. Two accounts can have any number of trust lines between them for different currency codes, but only one shared trust line for any particular currency code.
 
-See [Trust Lines](trust-lines-and-issuing.html#trust-lines).
+See [Trust Lines](../../concepts/tokens/fungible-tokens/index.md#trust-lines).
 
 ### Authorized Trust Lines
 
@@ -135,7 +135,7 @@ The Authorized Trust Lines feature enables issuers to create tokens that can onl
 
 To use the Authorized Trust Lines feature, enable the `Require Auth` flag on your issuing account. While the setting is enabled, other accounts can only hold tokens you issue if you have authorized those accounts' trust lines to your issuing account.
 
-See [Authorized Trust Lines](authorized-trust-lines.html).
+See [Authorized Trust Lines](../../concepts/tokens/fungible-tokens/authorized-trust-lines.md).
 
 
 ### Freeze a Trust Line
@@ -144,27 +144,27 @@ If you issue tokens in the XRP Ledger, you can enable the _No Freeze_ setting to
 
 If you do not enable the _No Freeze_ setting, when an account shows suspicious activity or violates your institution's terms of use, you have the option of freezing the trust line while you resolve the issue.
 
-See [Freezing Tokens](freezes.html).
+See [Freezing Tokens](../../concepts/tokens/fungible-tokens/freezes.md).
 
 
 ### Global Freeze
 
 If you see signs of suspicious activity, you can enact a global freeze on your account to prevent users from sending your tokens to each other and trading your token in the decentralized exchange.
 
-![Global Freeze](img/uc-stablecoin-global-freeze.png)
+![Global Freeze](/img/uc-stablecoin-global-freeze.png)
 
-See [Enact Global Freeze](enact-global-freeze.html).
+See [Enact Global Freeze](../../tutorials/use-tokens/enact-global-freeze.md).
 
 
 ### Clawback
 
-_(Requires the [Clawback amendment][] :not_enabled:)_
+_(Requires the [Clawback amendment][] {% not-enabled /%})_
 
 Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers _must_ have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 
-See [Clawback](clawback.html).
+See [Clawback](../../references/protocol/transactions/types/clawback.md).
 
-![Clawback](img/uc-stablecoin-clawback.png)
+![Clawback](/img/uc-stablecoin-clawback.png)
 
 ### Partial Payments
 
@@ -172,7 +172,7 @@ Look out for partial payments. Payments with the partial payment flag enabled ca
 * Check the transaction for a `delivered_amount` field. If present, that field indicates how much money _actually_ got delivered to the `Destination` address.
 * In xrpl.js, you can use the [`xrpl.getBalanceChanges()` method](https://js.xrpl.org/modules.html#getBalanceChanges) to see how much each address received. In some cases, this can be divided into multiple parts on different trust lines.
 
-See [Partial Payments](partial-payments.html).
+See [Partial Payments](../../concepts/payment-types/partial-payments.md).
 
 ### Burn
 
@@ -182,7 +182,7 @@ To ensure a limited supply, you can "black hole" the issuer after issuing tokens
 
 **Warning:** A black hole account has no way to send transactions of any kind, so you cannot update any settings or do any maintenance on the account afterwards!
 
-See [Disable Master Key Pair](disable-master-key-pair.html).
+See [Disable Master Key Pair](../../tutorials/manage-account-settings/disable-master-key-pair.md).
 
 ### Reliable Transaction Submission
 
@@ -194,10 +194,10 @@ The goal of reliably submitting transactions is to achieve the following two pro
 To submit transactions reliably, follow these guidelines:
 
 * Persist details of the transaction before submitting it.
-* Use the `LastLedgerSequence` parameter. (Many [client libraries](client-libraries.html) do this by default.)
+* Use the `LastLedgerSequence` parameter. (Many [client libraries](../../references/client-libraries.md) do this by default.)
 * Resubmit a transaction if it has not appeared in a validated ledger whose [ledger index][] is bigger than or equal to the transaction's `LastLedgerSequence` parameter.
 
-For more information, see [Reliable Transaction Submission](reliable-transaction-submission.html).
+For more information, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).
 
 ### List on the XRPL Native DEX
 
@@ -205,15 +205,12 @@ Decentralized exchanges (DEXes) are integral to the decentralized finance ecosys
 
 
 ### List on an AMM
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment][] {% not-enabled /%})_
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 
 For any given pair of assets, there can be up to one AMM in the ledger. You can create the AMM for an asset pair with your new token if it doesn't exist yet, or deposit to an existing AMM. Those who deposit assets into an AMM are called _liquidity providers_ (LPs) and receive _LP Tokens_ from the AMM.
 
-See [Automated Market Makers](automated-market-makers.html).
+See [Automated Market Makers](../../concepts/tokens/decentralized-exchange/automated-market-makers.md).
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

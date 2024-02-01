@@ -7,7 +7,7 @@ labels:
 ---
 # Stablecoin Configuration
 
-There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see [Issue a Fungible Token](issue-a-fungible-token.html).
+There are some settings you must configure on your XRP Ledger account before you start issuing tokens. For examples of how to configure these settings, see [Issue a Fungible Token](../../../../tutorials/use-tokens/issue-a-fungible-token.md).
 
 Settings you might want to configure include:
 
@@ -22,7 +22,7 @@ Settings you might want to configure include:
 
 ## Default Ripple
 
-The Default Ripple flag controls whether the balances on a trust line are allowed to _ripple_ by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address. See [Rippling](rippling.html).
+The Default Ripple flag controls whether the balances on a trust line are allowed to _ripple_ by default. Rippling is what allows customers to send and trade tokens among themselves, so an issuer MUST allow rippling on all the trust lines to its issuing address. See [Rippling](../rippling.md).
 
 Before asking customers to create trust lines to its issuing address, an issuer should enable the Default Ripple flag on that address. Otherwise, the issuer must individually disable the No Ripple flag for each trust line that other addresses have created.
 
@@ -40,14 +40,14 @@ Deposit Authorization is most useful for blocking unwanted XRP payments, because
 
 Therefore, Deposit Authorization is not recommended for stablecoin issuers unless you need it to meet regulatory requirements about receiving money from unknown or sanctioned entities.
 
-For more information, see [Deposit Authorization](depositauth.html).
+For more information, see [Deposit Authorization](../../../accounts/depositauth.md).
 
 
 ## Disallow Incoming Trust Line
 
 The Disallow Incoming Trust Line setting prevents other users from opening trust lines to an address. As a precaution, you should enable this setting on your operational and standby addresses so that those addresses cannot issue tokens even inadvertently. Do not enable this setting on your issuing address.
 
-To enable this setting, send an [AccountSet transaction](accountset.html) with `"SetFlag": 15` (`asfDisallowIncomingTrustline`).
+To enable this setting, send an [AccountSet transaction](../../../../references/protocol/transactions/types/accountset.md) with `"SetFlag": 15` (`asfDisallowIncomingTrustline`).
 
 
 ## Disallow XRP
@@ -63,18 +63,18 @@ The Require Auth setting blocks users from holding the tokens you issue unless y
 
 Also, you must use your issuing address each time you authorize a trust line; if you must authorize a lot of trust lines, this can undermine the security of your issuing address because you have to use it so often. (If you only need to use the issuing address sparingly, you can put greater protections on its secret keys. The more often you use it, the more of a burden those protections become.)
 
-For more information, see [Authorized Trust Lines](authorized-trust-lines.html).
+For more information, see [Authorized Trust Lines](../authorized-trust-lines.md).
 
 
 ## Tick Size
 
-The Tick Size setting controls how many decimal places are used when calculating exchange rates in the [Decentralized Exchange](decentralized-exchange.html). A higher Tick Size means more precision and less rounding in the amounts of various trades. Too much precision can be inconvenient because trades are ranked primarily based on exchange rate, so a trader can offer a minuscule amount more to the top of the list. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by irrelevantly small amounts. However, a smaller Tick Size results in more rounding, which can increase the costs of trading, and sometimes has surprising results because two Offers that seemed like an exact match before rounding no longer match after rounding.
+The Tick Size setting controls how many decimal places are used when calculating exchange rates in the [Decentralized Exchange](../../decentralized-exchange/index.md). A higher Tick Size means more precision and less rounding in the amounts of various trades. Too much precision can be inconvenient because trades are ranked primarily based on exchange rate, so a trader can offer a minuscule amount more to the top of the list. A smaller Tick Size works similar to the minimum bid increment at an auction, saving everyone the time and effort of gradually bidding up a price by irrelevantly small amounts. However, a smaller Tick Size results in more rounding, which can increase the costs of trading, and sometimes has surprising results because two Offers that seemed like an exact match before rounding no longer match after rounding.
 
 The Tick Size is an account-level setting and applies to all tokens issued by the same address.
 
 Tick Size only controls the precision of _exchange rates_, not the precision of the token itself. Users can send and hold very large or very small amounts regardless of the Tick Size set by the token's issuer.
 
-For more information, see [Tick Size](ticksize.html).
+For more information, see [Tick Size](../../decentralized-exchange/ticksize.md).
 
 
 ## Transfer Fees
@@ -85,7 +85,7 @@ When users send a token with a transfer fee, the amount of the transfer fee is d
 
 At a protocol level, the transfer fee is defined by the `TransferRate` account setting, which is an integer from 1 billion to 2 billion.
 
-For more information, see [Transfer Fees](transfer-fees.html).
+For more information, see [Transfer Fees](../../transfer-fees.md).
 
 
 ### Transfer Fees with Operational and Standby Addresses
@@ -97,4 +97,3 @@ Set the `SendMax` transaction parameter higher than the destination `Amount` par
 **Note:** Transfer fees do not apply when sending tokens directly from or to the issuing address. The issuing address must always accept its tokens at face value in the XRP Ledger. This means that customers don't have to pay the transfer fee if they send payments to the issuing address directly, but they do when sending to an operational address. If you accept payments at both addresses, you may want to adjust the amount you credit customers in your system of record when customers send payments to the operational address, to compensate for the transfer fee the customer pays.
 
 For example: If ACME sets a transfer fee of 1%, an XRP Ledger payment to deliver 5 EUR.ACME from a customer address to ACME's issuing address would cost exactly 5 EUR.ACME. However, the customer would need to send 5.05 EUR.ACME to deliver 5 EUR.ACME to ACME's operational address. When ACME credits customers for payments to ACME's operational address, ACME credits the customer for the amount delivered to the operational address _and_ the transfer fee, giving the customer €5,05 in ACME's systems.
-

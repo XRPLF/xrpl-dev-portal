@@ -8,9 +8,9 @@ labels:
 # Amendments
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L138-L144 "Source")
 
-The `Amendments` ledger entry type contains a list of [Amendments](amendments.html) that are currently active. Each ledger version contains **at most one** `Amendments` entry.
+The `Amendments` ledger entry type contains a list of [Amendments](../../../../concepts/networks-and-servers/amendments.md) that are currently active. Each ledger version contains **at most one** `Amendments` entry.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -34,13 +34,13 @@ The `Amendments` ledger entry type contains a list of [Amendments](amendments.ht
 }
 ```
 
-## {{currentpage.name}} Fields
+## {% $frontmatter.seo.title %} Fields
 
-In addition to the [common fields](ledger-entry-common-fields.html), the `{{currentpage.name}}` ledger entry has the following fields:
+In addition to the [common fields](../common-fields.md), the {% code-page-name /%} ledger entry has the following fields:
 
 | Name              | JSON Type | [Internal Type][] | Required? | Description |
 |-------------------|-----------|-------------------|-----------|-------------|
-| `Amendments`      | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](amendments.html) for all currently enabled amendments. If omitted, there are no enabled amendments. |
+| `Amendments`      | Array     | Vector256         | No        | Array of 256-bit [amendment IDs](../../../../concepts/networks-and-servers/amendments.md) for all currently enabled amendments. If omitted, there are no enabled amendments. |
 | `Flags`           | Number    | UInt32            | Yes       | A bit-map of boolean flags enabled for this object. Currently, the protocol defines no flags for `Amendments` objects. The value is always `0`. |
 | `LedgerEntryType` | String    | UInt16            | Yes       | The value `0x0066`, mapped to the string `Amendments`, indicates that this object describes the status of amendments to the XRP Ledger. |
 | `Majorities`      | Array     | STArray           | No        | Array of objects describing the status of amendments that have majority support but are not yet enabled. If omitted, there are no pending amendments with majority support. |
@@ -50,23 +50,23 @@ Each member of the `Majorities` field, if it is present, is an object with one f
 | Name              | JSON Type | [Internal Type][] | Description |
 |-------------------|-----------|-------------------|-------------|
 | `Amendment`       | String    | Hash256           | The Amendment ID of the pending amendment. |
-| `CloseTime`       | Number    | UInt32            | The [`close_time` field](ledger-header.html) of the ledger version where this amendment most recently gained a majority. |
+| `CloseTime`       | Number    | UInt32            | The [`close_time` field](../ledger-header.md) of the ledger version where this amendment most recently gained a majority. |
 
-In the [amendment process](amendments.html#amendment-process), a consensus of validators adds a new amendment to the `Majorities` field using an [EnableAmendment][] pseudo-transaction with the `tfGotMajority` flag when 80% or more of validators support it. If support for a pending amendment goes below 80%, an [EnableAmendment][] pseudo-transaction with the `tfLostMajority` flag removes the amendment from the `Majorities` array. If an amendment remains in the `Majorities` field for at least 2 weeks, an [EnableAmendment][] pseudo-transaction with no flags removes it from `Majorities` and permanently adds it to the `Amendments` field.
+In the [amendment process](../../../../concepts/networks-and-servers/amendments.md#amendment-process), a consensus of validators adds a new amendment to the `Majorities` field using an [EnableAmendment][] pseudo-transaction with the `tfGotMajority` flag when 80% or more of validators support it. If support for a pending amendment goes below 80%, an [EnableAmendment][] pseudo-transaction with the `tfLostMajority` flag removes the amendment from the `Majorities` array. If an amendment remains in the `Majorities` field for at least 2 weeks, an [EnableAmendment][] pseudo-transaction with no flags removes it from `Majorities` and permanently adds it to the `Amendments` field.
 
 **Note:** Technically, all transactions in a ledger are processed based on which amendments are enabled in the ledger version immediately before it. While applying transactions to a ledger version where an amendment becomes enabled, the rules don't change mid-ledger. After the ledger is closed, the next ledger uses the new rules as defined by any new amendments that applied.
 
-## {{currentpage.name}} Flags
+## {% $frontmatter.seo.title %} Flags
 
-There are no flags defined for the `{{currentpage.name}}` entry.
-
-
-## {{currentpage.name}} Reserve
-
-The `{{currentpage.name}}` entry does not require a reserve.
+There are no flags defined for the {% code-page-name /%} entry.
 
 
-## {{currentpage.name}} ID Format
+## {% $frontmatter.seo.title %} Reserve
+
+The {% code-page-name /%} entry does not require a reserve.
+
+
+## {% $frontmatter.seo.title %} ID Format
 
 The ID of the `Amendments` entry is the hash of the `Amendments` space key (`0x0066`) only. This means that the ID is always:
 
@@ -76,7 +76,4 @@ The ID of the `Amendments` entry is the hash of the `Amendments` space key (`0x0
 
 (Don't mix up the ID of the `Amendments` ledger entry type with the Amendment ID of an individual amendment.)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

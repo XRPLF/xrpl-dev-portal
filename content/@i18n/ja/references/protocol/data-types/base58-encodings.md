@@ -5,7 +5,7 @@ blurb: 暗号鍵と関連データをbase58形式で表すフォーマットで�
 ---
 # base58エンコード
 
-`rippled` APIでは、チェックサムを含む**base58**エンコード（「Base58Check」とも呼ばれます）を使用して[アカウントアドレス](addresses.html)や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、[Bitcoinのアドレスに使用されているエンコード](https://en.bitcoin.it/wiki/Base58Check_encoding)と同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`。
+`rippled` APIでは、チェックサムを含む**base58**エンコード（「Base58Check」とも呼ばれます）を使用して[アカウントアドレス](../../../concepts/accounts/addresses.md)や暗号鍵に関連するその他のタイプの値が表現されることがよくあります。このエンコードは、[Bitcoinのアドレスに使用されているエンコード](https://en.bitcoin.it/wiki/Base58Check_encoding)と同じですが、XRP Ledgerでは以下のディクショナリが使用される点が異なります。`rpshnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCg65jkm8oFqi1tuvAxyz`。
 
 XRP Ledgerにより、さまざまなタイプの値をエンコードする前に、データタイプを区別する固有の8ビット数値が値の前に付加されます。XRP Ledgerのbase58ディクショナリの文字配列と組み合わされた、さまざまなタイプのエンコード値のbase58表現は、タイプごとに固有の文字で始まります。
 
@@ -20,17 +20,13 @@ XRP Ledgerにより、さまざまなタイプの値をエンコードする前�
 
 ¹ コンテンツのサイズでは1バイトのタイププレフィクスは除外されます。
 
-[アカウント]: accounts.html
+[アカウント]: ../../../concepts/accounts/accounts.md
 
 ## 関連項目
 
-- [アドレスのエンコード](addresses.html#アドレスのエンコード) - アドレスのエンコードについての詳細な情報
-- [暗号鍵](cryptographic-keys.html) - XRP Ledgerの暗号鍵のタイプとその使用法
+- [アドレスのエンコード](../../../concepts/accounts/addresses.md#アドレスのエンコード) - アドレスのエンコードについての詳細な情報
+- [暗号鍵](../../../concepts/accounts/cryptographic-keys.md) - XRP Ledgerの暗号鍵のタイプとその使用法
 - [wallet_proposeリファレンス][wallet_proposeメソッド] - アカウントキーを生成するためのAPIメソッド
 - [validation_createリファレンス][validation_createメソッド] - バリデータキーを生成するためのAPIメソッド
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

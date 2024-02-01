@@ -8,14 +8,13 @@ labels:
 ---
 # Configure Amendment Voting
 
-Servers configured as validators can vote on [amendments](amendments.html) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](get-started-using-http-websocket-apis.html#admin-access).)
+Servers configured as validators can vote on [amendments](../../concepts/networks-and-servers/amendments.md) to the XRP Ledger protocol using the [feature method][]. (This method requires [admin access](../../tutorials/get-started/get-started-using-http-websocket-apis.md#admin-access).)
 
 For example, to vote against the "SHAMapV2" amendment, run the following command:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "any_id_here",
@@ -24,9 +23,9 @@ For example, to vote against the "SHAMapV2" amendment, run the following command
   "vetoed": true
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "feature",
@@ -38,14 +37,15 @@ For example, to vote against the "SHAMapV2" amendment, run the following command
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 rippled feature SHAMapV2 reject
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **Note:** The short name of the amendment is case-sensitive. You can also use an amendment's ID as hexadecimal, which is not case sensitive.
 
@@ -64,11 +64,8 @@ Be sure to restart your server for changes to take effect.
 
 ## See Also
 
-- [Amendments](amendments.html)
-    - [Known Amendments](known-amendments.html)
+- [Amendments](../../concepts/networks-and-servers/amendments.md)
+    - [Known Amendments](../../resources/known-amendments.md)
 - [feature method][]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

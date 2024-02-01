@@ -14,13 +14,14 @@ You can test how `rippled` behaves before proposed amendments are fully enabled 
 
 To forcibly enable a feature, add a `[features]` stanza with amendment short names to your `rippled.cfg` file. Each amendment needs its own line.
 
-<!-- MULTICODE_BLOCK_START -->
-_Example_
+{% tabs %}
 
+{% tab label="Example" %}
 ```
 [features]
 MultiSign
 TrustSetAuth
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}

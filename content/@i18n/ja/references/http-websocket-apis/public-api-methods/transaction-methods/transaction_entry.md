@@ -14,10 +14,9 @@ labels:
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 4,
@@ -26,9 +25,9 @@ labels:
   "ledger_index": 348734
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "transaction_entry",
@@ -40,17 +39,18 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax: transaction_entry transaction_hash ledger_index|ledger_hash
 rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7 348734
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#transaction_entry)
+[試してみる >](/resources/dev-tools/websocket-api-tool#transaction_entry)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -66,10 +66,9 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 4,
@@ -197,8 +196,9 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
     "type": "response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -206,8 +206,8 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 |:---------------|:--------------------------|:--------------------------------|
 | `ledger_index` | 数値 - [レジャーインデックス][] | トランザクションが検出されたレジャーバージョンのレジャーインデックス。これはリクエストのレジャーインデックスと同じです。 |
 | `ledger_hash` | 文字列 - [ハッシュ][] | _（省略される場合があります）_ トランザクションが検出されたレジャーバージョンの識別用ハッシュ。これはリクエストのハッシュと同じです。 |
-| `metadata` | オブジェクト | [トランザクションのメタデータ](transaction-metadata.html)。トランザクションの正確な結果を詳細に表示します。 |
-| `tx_json` | オブジェクト | [Transactionオブジェクト](transaction-formats.html)のJSON表現。 |
+| `metadata` | オブジェクト | [トランザクションのメタデータ](../../../protocol/transactions/metadata.md)。トランザクションの正確な結果を詳細に表示します。 |
+| `tx_json` | オブジェクト | [Transactionオブジェクト](../../../protocol/transactions/index.md)のJSON表現。 |
 
 サーバーがトランザクションの検出に失敗する原因として、次のようなものが考えられます。
 
@@ -223,6 +223,4 @@ rippled transaction_entry E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDA
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 * `transactionNotFound` - リクエストに指定されているトランザクションが指定のレジャーで見つかりませんでした。（トランザクションが異なるレジャーバージョンにあるか、またはトランザクションがまったく使用できない可能性があります。）
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

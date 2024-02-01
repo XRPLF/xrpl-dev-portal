@@ -2,8 +2,12 @@
 html: tasks.html
 parent: tutorials.html
 top_nav_grouping: カテゴリ
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 ---
 # タスク
 
 XRP Ledgerの代表的なタスクです。
+
+
+{% child-pages /%}

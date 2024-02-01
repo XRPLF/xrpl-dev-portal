@@ -15,10 +15,9 @@ labels:
 
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": 2,
@@ -31,9 +30,9 @@ labels:
   "forward": false
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "account_tx",
@@ -49,17 +48,18 @@ labels:
     ]
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```sh
 #Syntax account_tx account ledger_index_min ledger_index_max [offset] [limit] [binary] [count] [forward]
 rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#account_tx)
+[試してみる >](/resources/dev-tools/websocket-api-tool#account_tx)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -77,7 +77,7 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 次の各フィールドは省略可能とされていますが、リクエスト内で**1つ以上は使用する必要があります**: `ledger_index`、`ledger_hash`、`ledger_index_min`、または`ledger_index_max`。
 
-次のフィールドは廃止されました： `offset`、`count`、`descending`、`ledger_max`、`ledger_min`。 [削除: rippled 1.7.0][]
+次のフィールドは廃止されました： `offset`、`count`、`descending`、`ledger_max`、`ledger_min`。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}削除: rippled 1.7.0{% /badge %}
 
 ### 照会されたデータの繰り返し
 
@@ -89,10 +89,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": 2,
@@ -326,9 +325,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 {
@@ -561,8 +560,9 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -594,8 +594,6 @@ rippled -- account_tx r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 -1 -1 2 5 1 0 1
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actMalformed` - リクエストの`account`フィールドに指定した[アドレス][]が、正しいフォーマットではありません。
 * `lgrIdxMalformed` - `ledger_index_min`または`ledger_index_max`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-* `lgrIdxsInvalid` - リクエストで`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](troubleshoot-the-rippled-server.html)されていないためにサーバーに検証済みレジャーの範囲が存在しません。
+* `lgrIdxsInvalid` - リクエストで`ledger_index_min`の前にある`ledger_index_max`を指定したか、[ネットワークと同期](../../../../infrastructure/troubleshooting/index.md)されていないためにサーバーに検証済みレジャーの範囲が存在しません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

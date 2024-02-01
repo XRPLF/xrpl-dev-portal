@@ -7,11 +7,11 @@ labels:
 ---
 # 取引検閲の検知
 
-[新規: rippled 1.2.0][]
+{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}新規: rippled 1.2.0{% /badge %}
 
 XRP Ledgerは、高い検閲耐性を実現できるように設計されています。この設計をサポートするために、XRP Ledgerでは、取引検閲の自動検知機能がすべての`rippled`サーバーで有効になっており、検閲によるネットワークへの影響の有無を、すべての参加者が確認できます。
 
-`rippled`サーバーがネットワークと同期している間、検知機能は、`rippled`サーバーの観点から、[コンセンサス](consensus.html)の最終ラウンドで受け入れられ、最後に検証されたレジャーに取り込まれるトランザクションをすべて追跡します。検知機能では、数回のコンセンサスラウンド後、検証済みのレジャーに取り込まれていないトランザクションの重大度が高くなるというログメッセージを発行します。
+`rippled`サーバーがネットワークと同期している間、検知機能は、`rippled`サーバーの観点から、[コンセンサス](../consensus-protocol/index.md)の最終ラウンドで受け入れられ、最後に検証されたレジャーに取り込まれるトランザクションをすべて追跡します。検知機能では、数回のコンセンサスラウンド後、検証済みのレジャーに取り込まれていないトランザクションの重大度が高くなるというログメッセージを発行します。
 
 
 
@@ -67,13 +67,12 @@ LedgerConsensus:ERR Potential Censorship: Eligible tx E08D6E9754025BA2534A787076
 ## 関連項目
 
 - **コンセプト:**
-  - [コンセンサスの原理とルール](consensus-principles-and-rules.html)
-  - [トランザクションキュー](transaction-queue.html)
+  - [コンセンサスの原理とルール](../consensus-protocol/consensus-principles-and-rules.md)
+  - [トランザクションキュー](../transactions/transaction-queue.md)
 - **チュートリアル:**
-  - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
-  - [ログメッセージについて](understanding-log-messages.html)
+  - [信頼できるトランザクションの送信](../transactions/reliable-transaction-submission.md)
+  - [ログメッセージについて](../../infrastructure/troubleshooting/understanding-log-messages.md)
 - **リファレンス:**
-  - [トランザクションの結果](transaction-results.html)
+  - [トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)
 
-
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

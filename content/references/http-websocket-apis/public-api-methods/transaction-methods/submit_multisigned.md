@@ -8,17 +8,16 @@ labels:
 # submit_multisigned
 [[Source]](https://github.com/XRPLF/rippled/blob/release/src/ripple/rpc/handlers/SubmitMultiSigned.cpp "Source")
 
-The `submit_multisigned` command applies a [multi-signed](multi-signing.html) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](submit.html#submit-only-mode).)
+The `submit_multisigned` command applies a [multi-signed](../../../../concepts/accounts/multi-signing.md) transaction and sends it to the network to be included in future ledgers. (You can also submit multi-signed transactions in binary form using the [`submit` command in submit-only mode](submit.md#submit-only-mode).)
 
-This command requires the [MultiSign amendment][] to be enabled. [New in: rippled 0.31.0][]
+This command requires the [MultiSign amendment][] to be enabled. {% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}New in: rippled 0.31.0{% /badge %}
 
 ## Request Format
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "id": "submit_multisigned_example",
@@ -52,9 +51,9 @@ An example of the request format:
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "submit_multisigned",
@@ -94,9 +93,9 @@ An example of the request format:
     ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: submit_multisigned <tx_json>
 rippled submit_multisigned '{
@@ -130,24 +129,24 @@ rippled submit_multisigned '{
     "hash": "81A477E2A362D171BB16BE17B4120D9F809A327FA00242ABCA867283BEA2F4F8"
 }'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The request includes the following parameters:
 
 | `Field`     | Type    | Required? | Description                                          |
 |:------------|:--------|:----------|:-----------------------------------------------------|
-| `tx_json`   | Object  | Yes       | [Transaction in JSON format](transaction-formats.html) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](signerlist.html). |
+| `tx_json`   | Object  | Yes       | [Transaction in JSON format](../../../protocol/transactions/index.md) with an array of `Signers`. To be successful, the weights of the signatures must be equal or higher than the quorum of the [SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md). |
 | `fail_hard` | Boolean | No        | If `true`, and the transaction fails locally, do not retry or relay the transaction to other servers. The default is `false`. |
 
 ## Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id": "submit_multisigned_example",
@@ -191,9 +190,9 @@ An example of a successful response:
   }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -237,9 +236,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -284,8 +283,9 @@ Connecting to 127.0.0.1:5005
     }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The response follows the [standard format][], with a successful result containing the following fields:
 
@@ -294,8 +294,8 @@ The response follows the [standard format][], with a successful result containin
 | `engine_result`         | String  | Code indicating the preliminary result of the transaction, for example `tesSUCCESS` |
 | `engine_result_code`    | Integer | Numeric code indicating the preliminary result of the transaction, directly correlated to `engine_result` |
 | `engine_result_message` | String  | Human-readable explanation of the preliminary transaction result |
-| `tx_blob`               | String  | The complete [transaction](transaction-formats.html) in hex string format |
-| `tx_json`               | Object  | The complete [transaction](transaction-formats.html) in JSON format |
+| `tx_blob`               | String  | The complete [transaction](../../../protocol/transactions/index.md) in hex string format |
+| `tx_json`               | Object  | The complete [transaction](../../../protocol/transactions/index.md) in JSON format |
 
 ## Possible Errors
 
@@ -304,6 +304,4 @@ The response follows the [standard format][], with a successful result containin
 * `srcActMalformed` - The `Account` field from the `tx_json` was invalid or missing.
 * `internal` - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

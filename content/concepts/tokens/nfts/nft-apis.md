@@ -38,14 +38,11 @@ This page lists the transactions and requests associated with NFTs as a handy re
 
 ## Clio
 
-[Clio servers](the-clio-server.html) also provide the following APIs related to NFTs:
+[Clio servers](../../networks-and-servers/the-clio-server.md) also provide the following APIs related to NFTs:
 
-- [nft_info](nft_info.html) - Get current status information about the specified NFT.
-- [nft_history](nft_history.html) - Get past transaction metadata for the specified NFT.
+- [nft_info](../../../references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md) - Get current status information about the specified NFT.
+- [nft_history](../../../references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md) - Get past transaction metadata for the specified NFT.
 
-You can access a public Clio server by sending a request to its URL and Clio port (typically 51233). Public Clio API servers come with no SLAs nor any responsibility to be fixed on priority. If your business use case requires continual monitoring and information requests, consider setting up your own Clio server instance. See [install-clio-on-ubuntu](install-clio-on-ubuntu.html).
+You can access a public Clio server by sending a request to its URL and Clio port (typically 51233). Public Clio API servers come with no SLAs nor any responsibility to be fixed on priority. If your business use case requires continual monitoring and information requests, consider setting up your own Clio server instance. See [install-clio-on-ubuntu](../../../infrastructure/installation/install-clio-on-ubuntu.md).
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

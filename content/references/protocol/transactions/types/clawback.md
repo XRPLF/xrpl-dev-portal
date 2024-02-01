@@ -9,13 +9,13 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp "Source")
 
-{% include '_snippets/clawback-disclaimer.md' %}
+{% partial file="/_snippets/clawback-disclaimer.md" /%}
 
 Claw back tokens issued by your account.
 
 Clawback is disabled by default. To use clawback, you must send an [AccountSet transaction][] to enable the **Allow Trust Line Clawback** setting. An issuer with any existing tokens cannot enable Clawback. You can only enable **Allow Trust Line Clawback** if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.  After you enable Clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -29,7 +29,7 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type | [Internal Type][] | Description       |
 |:-------------------|:----------|:------------------|:------------------|
@@ -40,16 +40,13 @@ Clawback is disabled by default. To use clawback, you must send an [AccountSet t
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code | Description |
 |:-----------|:------------|
-| `temDISABLED` | Occurs if the [Clawback amendment](known-amendments.html#clawback) is not enabled. |
+| `temDISABLED` | Occurs if the [Clawback amendment](../../../../resources/known-amendments.md#clawback) is not enabled. |
 | `temBAD_AMOUNT` | Occurs if the holder's balance is 0. It is not an error if the amount exceeds the holder's balance; in that case, the maximum available balance is clawed back. Also occurs if the counterparty listed in `Amount` is the same as the `Account` issuing this transaction. |
 | `tecNO_LINE` | Occurs there is no trust line with the counterparty or that trust line's balance is 0. |
 | `tecNO_PERMISSION` | Occurs if you attempt to set `lsfAllowTrustlineClawback` while `lsfNoFreeze` is set. Also occurs, conversely, if you try to set `lsfNoFreeze` while `lsfAllowTrustLineClawback` is set. |
 
-<!-- {# common link defs #} -->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

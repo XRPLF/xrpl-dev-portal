@@ -93,7 +93,8 @@ Markdownファイル自体は、以下のようなfrontmatterで始まる必要�
 ---
 html: the-rippled-server.html
 parent: concepts.html
-template: pagetype-category.html.jinja
+metadata:
+  indexPage: true
 blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
 ---
 ```
@@ -164,3 +165,6 @@ blurb: rippled is the core peer-to-peer server that manages the XRP Ledger. This
 | `filters`            | Array of Strings | このページで使用する追加フィルタのリストです。[フィルタ](https://github.com/ripple/dactyl/blob/master/README.md#filters)はPythonスクリプトで、ページ内容の事前または事後の追加処理を行います。 |
 | `canonical_url`      | String           | クエリパラメータを受け取るページの正規URLを提供します。検索エンジンやその他のツールは、ページにリンクする際にこれを使用する可能性があります。 |
 | `embed_xrpl_js`      | Boolean          | 最新版の[xrpl.js](https://js.xrpl.org)をこのページで読み込むには`true`を使用してください。 |
+
+
+{% child-pages /%}

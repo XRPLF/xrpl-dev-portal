@@ -22,8 +22,8 @@ XRP Ledgerのメインネット上では、**マルチ署名**トランザクシ
 
 XRP Ledgerでは、以下の条件に該当しない場合にはトランザクションを実行できません。
 
-- 署名自体を除く[トランザクションのすべてのフィールド](transaction-common-fields.html)に署名がなされている。
-- トランザクションの署名に使用されるキーペアが、[そのアカウントの代理としてトランザクションを送信することが承認されている](transactions.html#トランザクションの承認)。
+- 署名自体を除く[トランザクションのすべてのフィールド](../../../references/protocol/transactions/common-fields.md)に署名がなされている。
+- トランザクションの署名に使用されるキーペアが、[そのアカウントの代理としてトランザクションを送信することが承認されている](../index.md#トランザクションの承認)。
 - 署名は _正規_ であり、トランザクションの指示に一致している。
 
 署名付きフィールドに変更を加えると、どれほど小さな変更であっても署名が無効となるため、署名自体を除き、トランザクションのいかなる部分にも展性が生じることはありません。ほとんどの場合、署名自体を変更すると常に署名が無効になりますが、以下で説明するような特定の例外があります。
@@ -46,7 +46,7 @@ ECDSA署名はRおよびSと呼ばれる2つの整数で構成されています
 
 [RequireFullyCanonicalSig Amendment][]（2020年に有効）では、すべてのトランザクションは_完全正規(fully canonical)な_署名のみを使用しなければなりません。
 
-2014年から2020年の間、XRP Ledgerは常に完全な正規署名を生成するわけではないレガシーソフトウェアと互換性がありましたが、トランザクションの脆弱性から互換性のあるソフトウェアを保護するために、トランザクションに[**tfullyCanonicalSig`**](transaction-common-fields.html#global-flags)と呼ばれるフラグを使用していました。このフラグは互換署名ソフトウェアがデフォルトで有効にしており、トランザクションが有効であるために _完全正規な_ 署名を使用することを要求していました。[RequireFullyCanonicalSig Amendment][]が有効になったので、このフラグは必要なくなりましたが、いずれにせよ有効にしても害はありません。
+2014年から2020年の間、XRP Ledgerは常に完全な正規署名を生成するわけではないレガシーソフトウェアと互換性がありましたが、トランザクションの脆弱性から互換性のあるソフトウェアを保護するために、トランザクションに[**tfullyCanonicalSig`**](../../../references/protocol/transactions/common-fields.md#global-flags)と呼ばれるフラグを使用していました。このフラグは互換署名ソフトウェアがデフォルトで有効にしており、トランザクションが有効であるために _完全正規な_ 署名を使用することを要求していました。[RequireFullyCanonicalSig Amendment][]が有効になったので、このフラグは必要なくなりましたが、いずれにせよ有効にしても害はありません。
 
 
 ### マルチシグの展性
@@ -122,7 +122,7 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
 
     トランザクションに`LastLedgerSequence`フィールドが含まれている場合は、指定されたレジャーインデックスを経過した後でこの状況が発生します。
 
-    トランザクションで`LastLedgerSequence`フィールドが省略されている場合は、別の意味で誤っている可能性があります。つまり、同じ送信者からの他のトランザクションでは同じ`Sequence`番号が使用されていない場合、トランザクションはその後、時間の経過に関係なく、理論上成功します。（詳細は、[確実なトランザクションの送信](reliable-transaction-submission.html)を参照してください。）
+    トランザクションで`LastLedgerSequence`フィールドが省略されている場合は、別の意味で誤っている可能性があります。つまり、同じ送信者からの他のトランザクションでは同じ`Sequence`番号が使用されていない場合、トランザクションはその後、時間の経過に関係なく、理論上成功します。（詳細は、[確実なトランザクションの送信](../reliable-transaction-submission.md)を参照してください。）
 
 8. 脆弱なシステムは、トランザクションが失敗したと想定してアクションを実行します。
 
@@ -134,18 +134,15 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
 ## 関連項目
 
 - **コンセプト:**
-    - [トランザクション](transactions.html)
-    - [結果のファイナリティー](finality-of-results.html)
+    - [トランザクション](../index.md)
+    - [結果のファイナリティー](index.md)
 - **チュートリアル:**
-    - [トランザクションの結果の確認](look-up-transaction-results.html)
-    - [信頼できるトランザクションの送信](reliable-transaction-submission.html)
+    - [トランザクションの結果の確認](look-up-transaction-results.md)
+    - [信頼できるトランザクションの送信](../reliable-transaction-submission.md)
 - **リファレンス:**
-    - [基本的なデータ型 - ハッシュ](basic-data-types.html#ハッシュ)
-    - [トランザクションの共通フィールド](transaction-common-fields.html#グローバルフラグ)
-    - [トランザクションの結果](transaction-results.html)
-    - [シリアル化フォーマット](serialization.html)
+    - [基本的なデータ型 - ハッシュ](../../../references/protocol/data-types/basic-data-types.md#ハッシュ)
+    - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md#グローバルフラグ)
+    - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [シリアル化フォーマット](../../../references/protocol/binary-format.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

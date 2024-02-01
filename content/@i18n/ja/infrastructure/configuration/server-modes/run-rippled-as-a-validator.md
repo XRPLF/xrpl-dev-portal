@@ -10,15 +10,15 @@ top_nav_name: UNLに参加しよう
 ---
 # バリデータとしてのrippledの実行
 
-[バリデータモード](rippled-server-modes.html)で実行されている[`rippled`サーバー](xrpl-servers.html)は、ストックサーバーが実行するあらゆる処理を実行します。
+[バリデータモード](../../../concepts/networks-and-servers/rippled-server-modes.md)で実行されている[`rippled`サーバー](../../../concepts/networks-and-servers/index.md)は、ストックサーバーが実行するあらゆる処理を実行します。
 
-- [ピアのネットワーク](peer-protocol.html)への接続
+- [ピアのネットワーク](../../../concepts/networks-and-servers/peer-protocol.md)への接続
 
-- 暗号署名された[トランザクション](transactions.html)の中継
+- 暗号署名された[トランザクション](../../../concepts/transactions/index.md)の中継
 
-- 完全な共有グローバル[レジャー](ledgers.html)のローカルコピーの維持
+- 完全な共有グローバル[レジャー](../../../concepts/ledgers/index.md)のローカルコピーの維持
 
-バリデータが _特異である_ のは、検証メッセージも発行するという点です。これらのメッセージは、[コンセンサスプロセス](consensus-principles-and-rules.html#コンセンサスの仕組み)の進行中、XRP Ledgerネットワークによる評価の対象となる候補のトランザクションです。
+バリデータが _特異である_ のは、検証メッセージも発行するという点です。これらのメッセージは、[コンセンサスプロセス](../../../concepts/consensus-protocol/consensus-principles-and-rules.md#コンセンサスの仕組み)の進行中、XRP Ledgerネットワークによる評価の対象となる候補のトランザクションです。
 
 ただし、単に検証メッセージを発行するだけで、バリデータにコンセンサスプロセスでの発言権が自動的に付与されるわけではありません。他のサーバーがバリデータ（モードのサーバー）を彼らのユニークノードリスト（UNL）に追加しない限り、彼らは（バリデータモードのサーバーからの）検証メッセージを無視します。バリデータがUNLに含まれている場合、 _信頼できる_ バリデータであり、その提案は、信頼する側のサーバーによってコンセンサスプロセスで検討されます。
 
@@ -42,7 +42,7 @@ top_nav_name: UNLに参加しよう
 
 - **適時の投票**
 
-    優れたバリデータの投票は、コンセンサスラウンドが終了する前に、素早く届きます。適時の投票を維持するには、バリデータが推奨される[システム要件](system-requirements.html)を満たしていることを確認してください。これには、高速のインターネット接続が含まれます。
+    優れたバリデータの投票は、コンセンサスラウンドが終了する前に、素早く届きます。適時の投票を維持するには、バリデータが推奨される[システム要件](../../installation/system-requirements.md)を満たしていることを確認してください。これには、高速のインターネット接続が含まれます。
 
     バリデータを使って新しいトランザクションを送信したりデータを検索したりすることは可能ですが、APIクエリの負荷が高くなるとバリデータがコンセンサスに追いつけなくなる可能性があります。APIの負荷が十分軽ければ、サーバを両方の目的に使うことができます。理想的には、バリデータはコンセンサスに参加するために特化したものであるべきです。
 
@@ -56,7 +56,7 @@ top_nav_name: UNLに参加しよう
 
 ## 2. `rippled`サーバーのインストール
 
-詳細は、[`rippled`のインストール](install-rippled.html)を参照してください。
+詳細は、[`rippled`のインストール](../../installation/index.md)を参照してください。
 
 
 
@@ -72,19 +72,25 @@ top_nav_name: UNLに参加しよう
 
 2. `create_keys`コマンドを使用して、バリデータキーペアを生成します。
 
-        $ validator-keys create_keys
+    ```
+    $ validator-keys create_keys
+    ```
 
    Ubuntuでの出力の例:
 
-        Validator keys stored in /home/my-user/.ripple/validator-keys.json
+    ```
+    Validator keys stored in /home/my-user/.ripple/validator-keys.json
 
-        This file should be stored securely and not shared.
+    This file should be stored securely and not shared.
+    ```
 
    macOSでの出力の例:
 
-        Validator keys stored in /Users/my-user/.ripple/validator-keys.json
+    ```
+    Validator keys stored in /Users/my-user/.ripple/validator-keys.json
 
-        This file should be stored securely and not shared.
+    This file should be stored securely and not shared.
+    ```
 
    **警告:** 生成した`validator-keys.json`キーファイルは、暗号化されたUSBフラッシュドライブなど、安全かつ回復可能なオフラインの場所に保管してください。内容には修正を加えないでください。特に、キーの使用場所となるバリデータにキーファイルを保存しないようにします。バリデータの`secret_key`が悪用された場合は、ただちに[キーを破棄](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation)します。
 
@@ -92,23 +98,27 @@ top_nav_name: UNLに参加しよう
 
 3. `create_token`コマンドを使用して、バリデータトークンを生成します。
 
-        $ validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
+    ```
+    $ validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
+    ```
 
    出力の例:
 
-        Update rippled.cfg file with these values:
+    ```
+     Update rippled.cfg file with these values:
 
-       # validator public key: nHUtNnLVx7odrz5dnfb2xpIgbEeJPbzJWfdicSkGyVw1eE5GpjQr
+    # validator public key: nHUtNnLVx7odrz5dnfb2xpIgbEeJPbzJWfdicSkGyVw1eE5GpjQr
 
-        [validator_token]
-        eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT
-        QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl
-        c3QiOiJKQUFBQUFGeEllMUZ0d21pbXZHdEgyaUNjTUpxQzlnVkZLaWxHZncxL3ZDeE
-        hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
-        bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
-        hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
-        NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
-        VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==
+     [validator_token]
+     eyJ2YWxpZGF0aW9uX3NlY3J|dF9rZXkiOiI5ZWQ0NWY4NjYyNDFjYzE4YTI3NDdiNT
+     QzODdjMDYyNTkwNzk3MmY0ZTcxOTAyMzFmYWE5Mzc0NTdmYT|kYWY2IiwibWFuaWZl
+     c3QiOiJKQUFBQUFGeEllMUZ0d21pbXZHdEgyaUNjTUpxQzlnVkZLaWxHZncxL3ZDeE
+     hYWExwbGMyR25NaEFrRTFhZ3FYeEJ3RHdEYklENk9NU1l1TTBGREFscEFnTms4U0tG
+     bjdNTzJmZGtjd1JRSWhBT25ndTlzQUtxWFlvdUorbDJWMFcrc0FPa1ZCK1pSUzZQU2
+     hsSkFmVXNYZkFpQnNWSkdlc2FhZE9KYy9hQVpva1MxdnltR21WcmxIUEtXWDNZeXd1
+     NmluOEhBU1FLUHVnQkQ2N2tNYVJGR3ZtcEFUSGxHS0pkdkRGbFdQWXk1QXFEZWRGdj
+     VUSmEydzBpMjFlcTNNWXl3TFZKWm5GT3I3QzBrdzJBaVR6U0NqSXpkaXRROD0ifQ==
+    ```
 
 バリデータ（サーバー）で、以下の手順に従います。
 
@@ -118,11 +128,15 @@ top_nav_name: UNLに参加しよう
 
 2. `rippled`を再起動します。
 
-        $ sudo systemctl restart rippled.service
+    ```
+    $ sudo systemctl restart rippled.service
+    ```
 
 3. `server_info`コマンドを使用してバリデータの情報を取得し、バリデータとして実行されていることを確認します。
 
-        $ rippled server_info
+    ```
+    $ rippled server_info
+    ```
 
    - レスポンスに含まれている`pubkey_validator`の値は、バリデータで使用するために生成した`validator-keys.json`ファイルの`public_key`と一致している必要があります。
 
@@ -140,12 +154,12 @@ top_nav_name: UNLに参加しよう
 
 - [公開ハブ](#公開ハブを使用した接続): 評価の高い特定の公開サーバーにのみ接続します。
 
-これらのアプローチの違いについては、[ピア接続設定のメリットとデメリット](peer-protocol.html#ピア接続設定のメリットとデメリット)を参照してください。
+これらのアプローチの違いについては、[ピア接続設定のメリットとデメリット](../../../concepts/networks-and-servers/peer-protocol.md#ピア接続設定のメリットとデメリット)を参照してください。
 
 
 ### 検出されたピアを使用した接続
 
-この構成では、[検出されたピア](peer-protocol.html#ピアの検出)を使用してバリデータをXRP Ledgerネットワークに接続します。これは`rippled`サーバーのデフォルトの動作です。
+この構成では、[検出されたピア](../../../concepts/networks-and-servers/peer-protocol.md#ピアの検出)を使用してバリデータをXRP Ledgerネットワークに接続します。これは`rippled`サーバーのデフォルトの動作です。
 
 _**検出されたピアを使用してバリデータをXRP Ledgerネットワークに接続するには、**_ バリデータの`rippled.cfg`ファイルで`[peer_private]`スタンザを省略するか、それを`0`に設定します。この構成の[サンプルのrippled.cfgファイル](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg)が提供されています。
 
@@ -156,11 +170,11 @@ _**検出されたピアを使用してバリデータをXRP Ledgerネットワ�
 
 _**プロキシを使用してバリデータをXRP Ledgerネットワークに接続するには、次の手順を実行します。**_
 
-1. ストック`rippled`サーバーを設置します。詳細は、[rippledのインストール](install-rippled.html)を参照してください。
+1. ストック`rippled`サーバーを設置します。詳細は、[rippledのインストール](../../installation/index.md)を参照してください。
 
-2. バリデータとストック`rippled`サーバーを設定して、[クラスター](cluster-rippled-servers.html)内で実行します。
+2. バリデータとストック`rippled`サーバーを設定して、[クラスター](../peering/cluster-rippled-servers.md)内で実行します。
 
-3. バリデータの`rippled.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](peer-protocol.html#プライベートピア)を参照してください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバー以外のサーバーに、バリデータが接続しないようになります。
+3. バリデータの`rippled.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)を参照してください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバー以外のサーバーに、バリデータが接続しないようになります。
 
    **警告:** バリデータのIPアドレスを、その他の方法で公開していないことを確認してください。
 
@@ -172,26 +186,32 @@ _**プロキシを使用してバリデータをXRP Ledgerネットワークに�
 
 5. `rippled`を再起動します。
 
-        $ sudo systemctl restart rippled.service
+    ```
+    $ sudo systemctl restart rippled.service
+    ```
 
-6. いずれかのストック`rippled`サーバーにある[ピアクローラー](peer-crawler.html)エンドポイントを使用します。レスポンスには、バリデータが含まれていないはずです。これにより、バリデータの`[peer_private]`構成が機能していることが確認されます。バリデータの`[peer_private]`を有効にした場合の効果の1つは、バリデータのピアによって、ピアクローラーの結果にバリデータが含まれないことです。
+6. いずれかのストック`rippled`サーバーにある[ピアクローラー](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)エンドポイントを使用します。レスポンスには、バリデータが含まれていないはずです。これにより、バリデータの`[peer_private]`構成が機能していることが確認されます。バリデータの`[peer_private]`を有効にした場合の効果の1つは、バリデータのピアによって、ピアクローラーの結果にバリデータが含まれないことです。
 
-        $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
+    ```
+    $ curl --insecure https://STOCK_SERVER_IP_ADDRESS_HERE:51235/crawl | python3 -m json.tool
+    ```
 
 <!-- { TODO: Future: add a recommended network architecture diagram to represent the proxy, clustering, and firewall setup: https://ripplelabs.atlassian.net/browse/DOC-2046 }-->
 
 
 ### 公開ハブを使用した接続
 
-この構成では、2つの[公開ハブ](rippled-server-modes.html#公開ハブ)を使用してバリデータをネットワークに接続します。この構成は、[自社で運用しているプロキシを使用した接続](#プロキシを使用した接続)と似ていますが、公開ハブを通じて接続します。
+この構成では、2つの[公開ハブ](../../../concepts/networks-and-servers/rippled-server-modes.md#公開ハブ)を使用してバリデータをネットワークに接続します。この構成は、[自社で運用しているプロキシを使用した接続](#プロキシを使用した接続)と似ていますが、公開ハブを通じて接続します。
 
 _**公開ハブを使用してバリデータをネットワークに接続するには、次の手順を実行します。**_
 
 1. バリデータの`rippled.cfg`ファイルに、次の`[ips_fixed]`スタンザを含めます。2つの値`r.ripple.com 51235`と`zaphod.alloy.ee 51235`がデフォルトの公開ハブです。このスタンザは、これらの公開ハブとのピア接続を常に維持するよう`rippled`に指示します。
 
-        [ips_fixed]
-        r.ripple.com 51235
-        zaphod.alloy.ee 51235
+    ```
+    [ips_fixed]
+    r.ripple.com 51235
+    zaphod.alloy.ee 51235
+    ```
 
    **注意:** この構成では、デフォルトの公開ハブを使用してバリデータをネットワークに接続します。これらは _デフォルト_ の公開ハブであるため、ビジー状態になってバリデータにネットワークへの接続を提供できない場合があります。この問題を避けるために、接続する公開ハブの数を増やすか、デフォルトでない公開ハブに接続するようにします。
 
@@ -205,8 +225,10 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 2. また、バリデータの`rippled.cfg`ファイルに、次の`[peer_private]`スタンザを含めて、それを`1`に設定します。それにより、バリデータのピアに対して、バリデータのIPアドレスをブロードキャストしないよう指示することになります。また、バリデータに対して、`[ips_fixed]`スタンザで設定されているピアにのみ接続するよう指示することになります。これにより、既知の信頼できるピア`rippled`サーバーに対してのみ、バリデータが接続を確立し、IPアドレスを共有することが保証されます。
 
-        [peer_private]
-        1
+    ```
+    [peer_private]
+    1
+    ```
 
    **警告:** バリデータのIPアドレスを、その他の方法で公開していないことを確認してください。
 
@@ -214,7 +236,9 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 3. `rippled`を再起動します。
 
-        $ sudo systemctl restart rippled.service
+    ```
+    $ sudo systemctl restart rippled.service
+    ```
 
 
 
@@ -222,17 +246,17 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 ここでは、バリデータがXRP Ledgerネットワークへの健全な接続を保持していることを検証する方法をいくつか紹介します。
 
-- [`peers`](peers.html)コマンドを使用して、バリデータに接続しているすべての`rippled`サーバーのリストを取得します。`peers`の配列が`null`である場合、ネットワークへの健全な接続が存在していません。このドキュメントの手順に従ってバリデータを設置した場合、`peers`の配列には、`[ips_fixed]`スタンザで定義されているピアの数と同数のオブジェクトが含まれています。
+- [`peers`](../../../references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md)コマンドを使用して、バリデータに接続しているすべての`rippled`サーバーのリストを取得します。`peers`の配列が`null`である場合、ネットワークへの健全な接続が存在していません。このドキュメントの手順に従ってバリデータを設置した場合、`peers`の配列には、`[ips_fixed]`スタンザで定義されているピアの数と同数のオブジェクトが含まれています。
 
   公開ハブを`[ips_fixed]`スタンザに記述した場合、そのハブがビジーになっているときは、バリデータの接続が拒否されることがあります。この場合、接続の数は、`[ips_fixed]`スタンザで設定した数よりも最終的に少なくなることがあります。初めて拒否された場合、バリデータは接続を再試行します。
 
   ネットワークへの安全かつ信頼できる接続を維持することが困難であり、公開ハブまたはプロキシを使用して接続を設定していない場合、[4. ネットワークへの接続](#4-ネットワークへの接続)を参照してください。このセクションで説明されているいずれかの方法は、バリデータがネットワークへの健全な接続を維持する上で有用となる可能性があります。
 
-- [`server_info`](server_info.html)コマンドを使用して、バリデータに関するいくつかの基本情報を取得します。`server_state`は、`proposing`に設定されているはずです。`full`または`validating`に設定されている場合もありますが、`proposing`に移行するまでの数分間に限られます。
+- [`server_info`](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)コマンドを使用して、バリデータに関するいくつかの基本情報を取得します。`server_state`は、`proposing`に設定されているはずです。`full`または`validating`に設定されている場合もありますが、`proposing`に移行するまでの数分間に限られます。
 
-  `server_state`が`proposing`に設定されている時間が大部分を占めていない場合、XRP Ledgerネットワークにバリデータが完全に参加できていないことを示している可能性があります。サーバーの状態および`server_info`エンドポイントを使用してバリデータの問題を診断する方法の詳細は、[`rippled`サーバーの状態](rippled-server-states.html)および[`server_info`の取得](diagnosing-problems.html#server_infoの取得)を参照してください。
+  `server_state`が`proposing`に設定されている時間が大部分を占めていない場合、XRP Ledgerネットワークにバリデータが完全に参加できていないことを示している可能性があります。サーバーの状態および`server_info`エンドポイントを使用してバリデータの問題を診断する方法の詳細は、[`rippled`サーバーの状態](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md)および[`server_info`の取得](../../troubleshooting/diagnosing-problems.md#server_infoの取得)を参照してください。
 
-- [`validators`](validators.html)コマンドを使用して、バリデータによって使用される、公開済みかつ信頼できるバリデータの最新リストを取得します。`validator_list_expires`の値が、`never`（無期限）、期限が切れていない、または期限切れ間近のいずれかであることを確認してください。
+- [`validators`](../../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md)コマンドを使用して、バリデータによって使用される、公開済みかつ信頼できるバリデータの最新リストを取得します。`validator_list_expires`の値が、`never`（無期限）、期限が切れていない、または期限切れ間近のいずれかであることを確認してください。
 
 
 
@@ -258,27 +282,33 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
       $ /opt/ripple/bin/rippled server_info | grep pubkey_validator
 
-          返された値を、Googleフォームの**Validator Public Key**フィールドに入力します。
+        ```
+        返された値を、Googleフォームの**Validator Public Key**フィールドに入力します。
+        ```
 
    2. WebドメインのTLS秘密鍵を使用して、バリデータの公開鍵に署名します。TLS秘密鍵ファイルをバリデータのサーバーに保存する必要はありません。
 
       $ openssl dgst -sha256 -hex -sign /PATH/TO/YOUR/TLS.key <(echo YOUR_VALIDATOR_PUBLIC_KEY_HERE)
 
-          出力の例:
+        ```
+        出力の例:
 
-            4a8b84ac264d18d116856efd2761a76f3f4544a1fbd82b9835bcd0aa67db91c53342a1ab197ab1ec4ae763d8476dd92fb9c24e6d9de37e3594c0af05d0f14fd2a00a7a5369723c019f122956bf3fc6c6b176ed0469c70c864aa07b4bf73042b1c7cf0b2c656aaf20ece5745f54ab0f78fab50ebd599e62401f4b57a4cccdf8b76d26f4490a1c51367e4a36faf860d48dd2f98a6134ebec1a6d92fadf9f89aae67e854f33e1acdcde12cfaf5f5dbf1b6a33833e768edbb9ff374cf4ae2be21dbc73186a5b54cc518f63d6081919e6125f7daf9a1d8e96e3fdbf3b94b089438221f8cfd78fd4fc85c646b288eb6d22771a3ee47fb597d28091e7aff38a1e636b4f
+          4a8b84ac264d18d116856efd2761a76f3f4544a1fbd82b9835bcd0aa67db91c53342a1ab197ab1ec4ae763d8476dd92fb9c24e6d9de37e3594c0af05d0f14fd2a00a7a5369723c019f122956bf3fc6c6b176ed0469c70c864aa07b4bf73042b1c7cf0b2c656aaf20ece5745f54ab0f78fab50ebd599e62401f4b57a4cccdf8b76d26f4490a1c51367e4a36faf860d48dd2f98a6134ebec1a6d92fadf9f89aae67e854f33e1acdcde12cfaf5f5dbf1b6a33833e768edbb9ff374cf4ae2be21dbc73186a5b54cc518f63d6081919e6125f7daf9a1d8e96e3fdbf3b94b089438221f8cfd78fd4fc85c646b288eb6d22771a3ee47fb597d28091e7aff38a1e636b4f
 
-          返された値を、Googleフォームの**SSL Signature**フィールドに入力します。
+        返された値を、Googleフォームの**SSL Signature**フィールドに入力します。
+        ```
 
    3. [`validator-keys`ツール](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)（`rippled`のRPMに収録）を使用して、ドメイン名に署名します。
 
       $ validator-keys --keyfile /PATH/TO/YOUR/validator-keys.json sign YOUR_DOMAIN_NAME
 
-          出力の例:
+        ```
+        出力の例:
 
-            E852C2FE725B64F353E19DB463C40B1ABB85959A63B8D09F72C6B6C27F80B6C72ED9D5ED6DC4B8690D1F195E28FF1B00FB7119C3F9831459F3C3DE263B73AC04
+          E852C2FE725B64F353E19DB463C40B1ABB85959A63B8D09F72C6B6C27F80B6C72ED9D5ED6DC4B8690D1F195E28FF1B00FB7119C3F9831459F3C3DE263B73AC04
 
-          返された値を、Googleフォームの**Domain Signature**フィールドに入力します。
+        返された値を、Googleフォームの**Domain Signature**フィールドに入力します。
+        ```
 
 4. 記入したGoogleフォームを送信すると、ドメイン検証の成否を通知するメールがXRP Chartsから送信されます。ドメイン検証が成功した場合は、XRP Chartsの[バリデータレジストリー](https://xrpcharts.ripple.com/#/validators)にバリデータとドメインが表示されます。
 
@@ -296,20 +326,16 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 ## 関連項目
 
 - **コンセプト:**
-  - [XRP Ledgerの概要](xrp-ledger-overview.html)
-  - [`rippled`サーバー](xrpl-servers.html)
+  - [XRP Ledgerの概要](/about/)
+  - [`rippled`サーバー](../../../concepts/networks-and-servers/index.md)
 - **チュートリアル:**
-  - [rippledサーバーのクラスター化](cluster-rippled-servers.html)
-  - [`rippled`のインストール](install-rippled.html)
-  - [容量の計画](capacity-planning.html)
+  - [rippledサーバーのクラスター化](../peering/cluster-rippled-servers.md)
+  - [`rippled`のインストール](../../installation/index.md)
+  - [容量の計画](../../installation/capacity-planning.md)
 - **リファレンス:**
   - [Validator Keysツールガイド](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)
   - [consensus_infoメソッド][]
   - [validator_list_sitesメソッド][]
   - [validatorsメソッド][]
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

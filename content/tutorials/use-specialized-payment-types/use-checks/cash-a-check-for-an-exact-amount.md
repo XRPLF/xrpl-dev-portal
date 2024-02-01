@@ -9,17 +9,17 @@ labels:
 
 As long as the Check is in the ledger and not expired, the specified recipient can cash it to receive any exact amount up to the amount specified in the Check by sending a [CheckCash transaction][] with an `Amount` field. You would cash a Check this way if you want to receive a specific amount, for example to pay off an invoice or bill exactly.
 
-The specified recipient can also [cash the check for a flexible amount](cash-a-check-for-a-flexible-amount.html).
+The specified recipient can also [cash the check for a flexible amount](cash-a-check-for-a-flexible-amount.md).
 
 {% set cash_exact_n = cycler(* range(1,99)) %}
 
 ## Prerequisites
 
-{% include '_snippets/checkcash-prereqs.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/checkcash-prereqs.md" /%} 
 
 ## {{cash_exact_n.next()}}. Prepare the CheckCash transaction
 
-Figure out the values of the [CheckCash transaction][] fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](transaction-common-fields.html#auto-fillable-fields) when signing:
+Figure out the values of the [CheckCash transaction][] fields. To cash a check for an exact amount, the following fields are the bare minimum; everything else is either optional or can be [auto-filled](../../../references/protocol/transactions/common-fields.md#auto-fillable-fields) when signing:
 
 | Field             | Value                     | Description                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -33,10 +33,9 @@ Figure out the values of the [CheckCash transaction][] fields. To cash a check f
 
 The following examples show how to prepare a transaction to cash a Check for a fixed amount.
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC, WebSocket, or Commandline*
-
+{% tab label="JSON-RPC, WebSocket, or Commandline" %}
 ```json
 {
   "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
@@ -46,78 +45,69 @@ The following examples show how to prepare a transaction to cash a Check for a f
   "Fee": "12"
 }
 ```
+{% /tab %}
 
-*ripple-lib 1.x*
+{% tab label="ripple-lib 1.x" %}
+{% code-snippet file="/_code-samples/checks/js/prepareCashExact.js" language="js" /%}
+{% /tab %}
 
-```js
-{% include '_code-samples/checks/js/prepareCashExact.js' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## {{cash_exact_n.next()}}. Sign the CheckCash transaction
 
-{% include '_snippets/tutorial-sign-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
+{% tab label="Commandline" %}
+{% code-snippet file="/_code-samples/checks/cli/sign-cash-exact-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/sign-cash-exact-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
+{% tab label="Commandline" %}
+{% code-snippet file="/_code-samples/checks/cli/sign-cash-exact-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/sign-cash-exact-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## {{cash_exact_n.next()}}. Submit the signed CheckCash transaction
 
 {% set step_1_link = "#1-prepare-the-checkcash-transaction" %}
-{% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
+{% tab label="Commandline" %}
+{% code-snippet file="/_code-samples/checks/cli/submit-cash-exact-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/submit-cash-exact-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
+{% tab label="Commandline" %}
+{% code-snippet file="/_code-samples/checks/cli/submit-cash-exact-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/submit-cash-exact-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## {{cash_exact_n.next()}}. Wait for validation
 
-{% include '_snippets/wait-for-validation.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cash_exact_n.next()}}. Confirm final result
 
@@ -125,33 +115,29 @@ Use the [tx method][] with the CheckCash transaction's identifying hash to check
 
 If the check was cashed for an exact `Amount` and succeeded, you can assume that the recipient was credited for exactly that amount (with possible rounding for very large or very small amounts of tokens).
 
-If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to [cash the Check for a flexible amount](cash-a-check-for-a-flexible-amount.html) instead.
+If cashing the Check failed, the Check remains in the ledger so you can try cashing again later. You may want to [cash the Check for a flexible amount](cash-a-check-for-a-flexible-amount.md) instead.
 
 ### Example Request
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
+{% tab label="Commandline" %}
+{% code-snippet file="/_code-samples/checks/cli/tx-cash-exact-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/tx-cash-exact-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### Example Response
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*Commandline*
+{% tab label="Commandline" %}
+{% code-snippet file="/_code-samples/checks/cli/tx-cash-exact-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/tx-cash-exact-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!--{# common links #}-->
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -13,7 +13,7 @@ A `SetRegularKey` transaction assigns, changes, or removes the regular key pair 
 
 You can protect your account by assigning a regular key pair to it and using it instead of the master key pair to sign transactions whenever possible. If your regular key pair is compromised, but your master key pair is not, you can use a `SetRegularKey` transaction to regain control of your account.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -25,9 +25,9 @@ You can protect your account by assigning a regular key pair to it and using it 
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SetRegularKey%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%226AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SetRegularKey%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%226AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4%22%2C%22binary%22%3Afalse%7D)
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
@@ -36,13 +36,10 @@ You can protect your account by assigning a regular key pair to it and using it 
 
 ## See Also
 
-For more information about regular and master key pairs, see [Cryptographic Keys](cryptographic-keys.html).
+For more information about regular and master key pairs, see [Cryptographic Keys](../../../../concepts/accounts/cryptographic-keys.md).
 
-For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](assign-a-regular-key-pair.html).
+For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](../../../../tutorials/manage-account-settings/assign-a-regular-key-pair.md).
 
-For even greater security, you can use [multi-signing](multi-signing.html), but multi-signing requires additional XRP for the [transaction cost][] and [reserve](reserves.html).
+For even greater security, you can use [multi-signing](../../../../concepts/accounts/multi-signing.md), but multi-signing requires additional XRP for the [transaction cost][] and [reserve](../../../../concepts/accounts/reserves.md).
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -7,7 +7,7 @@ labels:
 status: not_enabled
 ---
 # Bridge
-_（[XChainBridge Amendment][] :not_enabled: が必要です）_
+_（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp#L286-L300 "ソース")
 
@@ -46,7 +46,7 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 
 ## Bridgeのフィールド
 
-[共通フィールド](ledger-entry-common-fields.html)に加えて、`{{currentpage.name}}`エントリは次のフィールドを持ちます。
+[共通フィールド](../common-fields.md)に加えて、{% code-page-name /%}エントリは次のフィールドを持ちます。
 
 | フィールド                   | JSONの型     | 内部の型       | 必須?  | 説明 |
 |:---------------------------|:-------------|:--------------|:------|:----|
@@ -68,8 +68,4 @@ _（[XChainBridge Amendment][] :not_enabled: が必要です）_
 | `LockingChainDoor`  | 文字列    | Account | はい  | ロックチェーンのドアアカウント。 |
 | `LockingChainIssue` | Issue    | Issue   | はい  | ロックチェーンでロック、アンロックされる資産。 |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

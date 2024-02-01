@@ -8,29 +8,29 @@ labels:
 ---
 # Change or Remove a Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](cryptographic-keys.html)_, to sign future transactions.  If your [account](accounts.html)'s regular key pair is compromised, or if you want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
+The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions.  If your [account](../../concepts/accounts/accounts.md)'s regular key pair is compromised, or if you want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](../../concepts/accounts/cryptographic-keys.md).
 
 
 ## Changing a Regular Key Pair
 
-The steps to change your existing regular key pair are almost the same as the steps to [assign a regular key](assign-a-regular-key-pair.html) for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself; but when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.
+The steps to change your existing regular key pair are almost the same as the steps to [assign a regular key](assign-a-regular-key-pair.md) for the first time. You generate the key pair and assign it to your account as a regular key pair, overwriting the existing regular key pair. However, the main difference is that when changing the existing regular key pair, you can use the existing regular private key to replace itself; but when assigning a regular key pair to an account for the first time, you have to use the account's master private key to do it.
 
-For more information about master and regular key pairs, see [Cryptographic Keys](cryptographic-keys.html).
+For more information about master and regular key pairs, see [Cryptographic Keys](../../concepts/accounts/cryptographic-keys.md).
 
 
 ## Removing a Regular Key Pair
 
-If you want to remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](multi-signing.html)).
+If you want to remove a compromised regular key pair from your account, you don't need to generate a key pair first. Use a [SetRegularKey transaction][], omitting the `RegularKey` field. Note that the transaction fails if you don't have another way of signing for your account currently enabled (either the master key pair or a [signer list](../../concepts/accounts/multi-signing.md)).
 
 
 When removing a regular key pair to your account, the `SetRegularKey` transaction requires signing by your account's master private key (secret) or existing regular key pair. Sending your master or regular private key anywhere is dangerous, so we keep transaction signing separate from transaction submission to the network.
 
 ### Sign Your Transaction
 
-{% include '_snippets/tutorial-sign-step.md' %}
-<!--{#_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%}
+
 
 Populate the request fields with the following values:
 
@@ -44,10 +44,9 @@ Populate the request fields with the following values:
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "command": "sign",
@@ -58,42 +57,42 @@ An example of the request format:
    "secret": "snoPBrXtMeMyMHUVTgbuqAfg1SUTb"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "method": "sign",
     "params": [
-    	{
-    	"secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
-		"tx_json" : {
-    		"TransactionType" : "SetRegularKey",
-    		"Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
-			}
-		}
-	]
+        {
+        "secret" : "snoPBrXtMeMyMHUVTgbuqAfg1SUTb",
+        "tx_json" : {
+            "TransactionType" : "SetRegularKey",
+            "Account" : "r9xQZdFGwbwTB3g9ncKByWZ3du6Skm7gQ8"
+            }
+        }
+    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: sign secret tx_json
 rippled sign snoPBrXtMeMyMHUVTgbuqAfg1SUTb '{"TransactionType": "SetRegularKey", "Account": "rUAi7pipxGpYfPNg3LtPcf2ApiS8aw9A93"}'
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -113,9 +112,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -134,9 +133,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -155,8 +154,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The `sign` command response contains a `tx_blob` value, as shown above. The offline signing response contains a `signedTransaction` value. Both are signed binary representations (blobs) of the transaction.
 
@@ -171,19 +171,18 @@ Take the `signedTransaction` value from the offline signing response or the `tx_
 
 An example of the request format:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
     "command": "submit",
     "tx_blob": "1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"submit",
@@ -194,25 +193,25 @@ An example of the request format:
    ]
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```sh
 #Syntax: submit tx_blob
 rippled submit 1200052280000000240000000268400000000000000A73210330E7FC9D56BB25D6893BA3F317AE5BCF33B3291BD63DB32654A313222F7FD02074473045022100CAB9A6F84026D57B05760D5E2395FB7BE86BF39F10DC6E2E69DC91238EE0970B022058EC36A8EF9EE65F5D0D8CAC4E88C8C19FEF39E40F53D4CCECBB59701D6D1E838114623B8DA4A0BFB3B61AB423391A182DC693DC159E
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 #### Response Format
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -235,9 +234,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -259,9 +258,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -283,8 +282,9 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 The way to verify that regular key pair removal succeeded is to confirm that you can't send a transaction using the removed regular private key.
 
@@ -295,10 +295,9 @@ Here's an example error response for an [AccountSet transaction][] signed using 
 
 An example of a successful response:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "error": "badSecret",
@@ -316,9 +315,9 @@ An example of a successful response:
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
     "result": {
@@ -337,9 +336,9 @@ An example of a successful response:
     }
 }
 ```
+{% /tab %}
 
-*Commandline*
-
+{% tab label="Commandline" %}
 ```json
 {
    "result" : {
@@ -358,28 +357,25 @@ An example of a successful response:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](transaction-cost.html#key-reset-transaction) without paying the [transaction cost](transaction-cost.html). The XRP Ledger's [transaction queue](transaction-queue.html) prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
+In some cases, you can even use the `SetRegularKey` transaction to send a [key reset transaction](../../concepts/transactions/transaction-cost.md#key-reset-transaction) without paying the [transaction cost](../../concepts/transactions/transaction-cost.md). The XRP Ledger's [transaction queue](../../concepts/transactions/transaction-queue.md) prioritizes key reset transactions above other transactions even though the nominal transaction cost of a key reset transaction is zero.
 
 
 - **Concepts:**
-    - [Cryptographic Keys](cryptographic-keys.html)
-    - [Multi-Signing](multi-signing.html)
-    - [Transaction Cost](transaction-cost.html)
+    - [Cryptographic Keys](../../concepts/accounts/cryptographic-keys.md)
+    - [Multi-Signing](../../concepts/accounts/multi-signing.md)
+    - [Transaction Cost](../../concepts/transactions/transaction-cost.md)
 - **Tutorials:**
-    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.html)
-    - [Set Up Multi-Signing](set-up-multi-signing.html)
-    - [List XRP as an Exchange](list-xrp-as-an-exchange.html)
+    - [Change or Remove a Regular Key Pair](change-or-remove-a-regular-key-pair.md)
+    - [Set Up Multi-Signing](set-up-multi-signing.md)
+    - [List XRP as an Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **References:**
     - [wallet_propose method][]
     - [sign method][]
     - [SetRegularKey transaction][]
-    - [AccountRoot object](accountroot.html) where the regular key is stored in the field `RegularKey`
+    - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) where the regular key is stored in the field `RegularKey`
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

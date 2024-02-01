@@ -28,7 +28,7 @@ The **destination address** of a channel can:
 
 - Cause a channel to be closed if its `Expiration` or `CancelAfter` time is older than the previous ledger's close time. Any validly-formed PaymentChannelClaim transaction has this effect regardless of the contents of the transaction.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -40,11 +40,11 @@ The **destination address** of a channel can:
 }
 ```
 
-[Query example transaction. >](websocket-api-tool.html?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelClaim%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33%22%2C%22binary%22%3Afalse%7D)
+[Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelClaim%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%229C0CAAC3DD1A74461132DA4451F9E53BDF4C93DFDBEFCE1B10021EC569013B33%22%2C%22binary%22%3Afalse%7D)
 
 <!--{# TODO: replace the above example with one where the channel, public key, signature, and balance match #}-->
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -56,19 +56,16 @@ The **destination address** of a channel can:
 | `Signature` | String    | Blob              | _(Optional)_ The signature of this claim, as hexadecimal. The signed message contains the channel ID and the amount of the claim. Required unless the sender of the transaction is the source address of the channel. |
 | `PublicKey` | String    | Blob              | _(Optional)_ The public key used for the signature, as hexadecimal. This must match the `PublicKey` stored in the ledger for the channel. Required unless the sender of the transaction is the source address of the channel and the `Signature` field is omitted. (The transaction includes the public key so that `rippled` can check the validity of the signature before trying to apply the transaction to the ledger.) |
 
-If the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](known-amendments.html#fixpaychanrecipientownerdir) became enabled (on 2020-05-01), it is possible that the destination of the payment channel has been [deleted](deleting-accounts.html) and does not currently exist in the ledger. If the destination has been deleted, the source account cannot send XRP from the channel to the destination; instead, the transaction fails with `tecNO_DST`. (And, of course, the deleted account cannot send any transactions at all.) Other uses of this transaction type are unaffected when the destination account has been deleted, including adjusting the channel expiration, closing a channel with no XRP, or removing a channel that has passed its expiration time.
+If the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](../../../../resources/known-amendments.md#fixpaychanrecipientownerdir) became enabled (on 2020-05-01), it is possible that the destination of the payment channel has been [deleted](../../../../concepts/accounts/deleting-accounts.md) and does not currently exist in the ledger. If the destination has been deleted, the source account cannot send XRP from the channel to the destination; instead, the transaction fails with `tecNO_DST`. (And, of course, the deleted account cannot send any transactions at all.) Other uses of this transaction type are unaffected when the destination account has been deleted, including adjusting the channel expiration, closing a channel with no XRP, or removing a channel that has passed its expiration time.
 
 
 ## PaymentChannelClaim Flags
 
-Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
+Transactions of the PaymentChannelClaim type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
 
 | Flag Name | Hex Value    | Decimal Value | Description                       |
 |:----------|:-------------|:--------------|:----------------------------------|
 | `tfRenew` | `0x00010000` | 65536         | Clear the channel's `Expiration` time. (`Expiration` is different from the channel's immutable `CancelAfter` time.) Only the source address of the payment channel can use this flag. |
 | `tfClose` | `0x00020000` | 131072        | Request to close the channel. Only the channel source and destination addresses can use this flag. This flag closes the channel immediately if it has no more XRP allocated to it after processing the current claim, or if the destination address uses it. If the source address uses this flag when the channel still holds XRP, this schedules the channel to close after `SettleDelay` seconds have passed. (Specifically, this sets the `Expiration` of the channel to the close time of the previous ledger plus the channel's `SettleDelay` time, unless the channel already has an earlier `Expiration` time.) If the destination address uses this flag when the channel still holds XRP, any XRP that remains after processing the claim is returned to the source address. |
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

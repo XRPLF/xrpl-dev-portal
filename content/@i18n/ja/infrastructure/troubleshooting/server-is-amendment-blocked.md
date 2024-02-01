@@ -9,7 +9,7 @@ labels:
 
 Amendmentブロックされたサーバは、レジャーの有効性を判断したり、トランザクションを送信または処理したり、コンセンサスプロセスに参加したりすることができません。
 
-あなたの`rippled`サーバが[Amendmentブロック](amendments.html#amendmentブロックされたサーバ)されたことを示す最初の兆候の一つは、トランザクションを送信したときに返される`amendmentBlocked`エラーです。以下は`amendmentBlocked`エラーの例です。
+あなたの`rippled`サーバが[Amendmentブロック](../../concepts/networks-and-servers/amendments.md#amendmentブロックされたサーバ)されたことを示す最初の兆候の一つは、トランザクションを送信したときに返される`amendmentBlocked`エラーです。以下は`amendmentBlocked`エラーの例です。
 
 ```json
 {
@@ -65,7 +65,7 @@ Amendmentブロックされたサーバは、レジャーの有効性を判断�
 
 最新バージョンより古いバージョンにアップグレードすることで`rippled`サーバのブロックを解除できるかどうかを調べるには、どの機能がサーバをブロックしているかを調べ、ブロックされた機能をサポートしている`rippled`バージョンを調べます。
 
-どの機能が`rippled`サーバをブロックしているかを調べるには、[`feature`](feature.html)管理者コマンドを使います。以下のような機能を探してください。
+どの機能が`rippled`サーバをブロックしているかを調べるには、[`feature`](../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md)管理者コマンドを使います。以下のような機能を探してください。
 
 ```
 "enabled" : true
@@ -128,4 +128,4 @@ Amendmentブロックされたサーバは、レジャーの有効性を判断�
 
 * `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
-どの`rippled`バージョンがこれらの機能をサポートしているか調べるには、[既知のAmendment](known-amendments.html)をご覧ください。
+どの`rippled`バージョンがこれらの機能をサポートしているか調べるには、[既知のAmendment](../../resources/known-amendments.md)をご覧ください。

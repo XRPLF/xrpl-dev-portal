@@ -18,14 +18,14 @@ This example shows how to:
 
 When you create an account, you receive a public/private key pair offline. Your account does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.
 
-[![Token Test Harness](img/quickstart-py2.png)](img/quickstart-py2.png)
+[![Token Test Harness](/img/quickstart-py2.png)](/img/quickstart-py2.png)
 
 ## Prerequisites
 
 To get started, create a new folder on your local disk and install the Python library using `pip`.
 
 ```
-    pip3 install xrpl-py
+pip3 install xrpl-py
 ```
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/){.github-code-download} archive.
@@ -47,7 +47,7 @@ To get test accounts:
 5. Click **Get Operational Account Info**.
 5. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
 
-[![Standby and Operational Accounts](img/quickstart-py3.png)](img/quickstart-py3.png)
+[![Standby and Operational Accounts](/img/quickstart-py3.png)](/img/quickstart-py3.png)
 
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
 
@@ -61,7 +61,7 @@ To transfer XRP from the Standby account to the Operational account:
 2. Copy and paste the **Operational Account** field to the Standby **Destination** field.
 3. Click **Send XRP>** to transfer XRP from the standby account to the operational account
 
-[![Transferred XRP](img/quickstart-py4.png)](img/quickstart-py4.png)
+[![Transferred XRP](/img/quickstart-py4.png)](/img/quickstart-py4.png)
 
 To transfer XRP from the Operational account to the Standby account:
 
@@ -182,9 +182,9 @@ Create a transaction request, passing the sending account, amount, and destinati
 Submit the transaction and return the response. If the transaction fails, return the error message.
 
 ```python
-    try:	
-        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
-    except xrpl.transaction.XRPLReliableSubmissionException as e:	
+    try:    
+        response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)    
+    except xrpl.transaction.XRPLReliableSubmissionException as e:    
         response = f"Submit failed: {e}"
     return response
 ```
@@ -203,7 +203,7 @@ import json
 
 Import the methods from mod1.py.
 
-```python	
+```python    
 from .mod1 import get_account, get_account_info, send_xrp
 ```
 

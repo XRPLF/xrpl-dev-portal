@@ -11,24 +11,23 @@ labels:
 # amm_info
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp "Source")
 
-`{{currentpage.name}}`メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。
+{% code-page-name /%}メソッドは、自動マーケットメーカー（AMM）インスタンスに関する情報を取得します。
 
-_([AMM amendment][] :not_enabled:が必要です。)_
+_([AMM amendment][] {% not-enabled /%}が必要です。)_
 
 
 ### リクエストのフォーマット
 
 リクエストの例
 
-{% include '_snippets/no-cli-syntax.ja.md' %}
+{% partial file="/_snippets/no-cli-syntax.md" /%}
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
-    "command": "{{currentpage.name}}",
+    "command": "{% $frontmatter.seo.title %}",
     "asset": {
       "currency": "XRP"
     },
@@ -38,12 +37,12 @@ _([AMM amendment][] :not_enabled:が必要です。)_
     }
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "{{currentpage.name}}",
+    "method": "{% $frontmatter.seo.title %}",
     "params": [{
       "asset": {
         "currency": "XRP"
@@ -55,10 +54,11 @@ _([AMM amendment][] :not_enabled:が必要です。)_
     }]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる>](websocket-api-tool.html?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
+[試してみる>](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -75,10 +75,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "result": {
@@ -131,9 +130,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
   "type": "response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 200 OK
 
@@ -187,8 +186,9 @@ _([AMM amendment][] :not_enabled:が必要です。)_
   }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 レスポンスは[標準フォーマット][]に従っており、成功した場合は以下のフィールドを含みます。
 
@@ -210,8 +210,8 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 | `amm_account`   | 文字列      | AMMアカウントの[アドレス][]です。 |
 | `amount`        | [通貨額][]  | AMMのプールにある1つの資産の合計額。(注記:リクエストに指定した`asset` _または_ `asset2`になります。) |
 | `amount2`       | [通貨額][]  | AMMのプール内の他の資産の合計額。(注意:リクエストに指定した`asset` _または_ `asset2`になります。) |
-| `asset_frozen`  | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount`の通貨は現在[凍結](freezes.html)されています。 |
-| `asset2_frozen` | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount2`の通貨は現在[凍結](freezes.html)されています。 |
+| `asset_frozen`  | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount`の通貨は現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
+| `asset2_frozen` | 真偽値      | _(XRPの場合、省略)_ `true`の場合、`amount2`の通貨は現在[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されています。 |
 | `auction_slot`  | オブジェクト | _(省略される場合があります)_ 存在する場合、現在のオークションスロットの所有者を記述した[オークションスロットオブジェクト](#オークションスロットオブジェクト)です。 |
 | `lp_token`      | [通貨額][]  | このAMMのLPトークンの発行残高の合計。リクエスト時に`account`フィールドで流動性プロバイダを指定した場合、その流動性プロバイダが保有するこのAMMのLPトークンの量です。 |
 | `trading_fee`   | 数値        | AMMの現在の取引手数料。単位は1/100,000で、1は0.001%の手数料に相当します。 |
@@ -252,11 +252,8 @@ _([AMM amendment][] :not_enabled:が必要です。)_
 
 ## 関連項目
 
- - [AMMオブジェクト](amm.html) - AMMオブジェクトの正規の保存形式
+ - [AMMオブジェクト](../../../protocol/ledger-data/ledger-entry-types/amm.md) - AMMオブジェクトの正規の保存形式
  - [AMMBid][] - オークションスロットと入札の仕組みについての詳細はこちら
  - [AMMVote][] - 取引手数料の投票メカニズムの詳細はこちら
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

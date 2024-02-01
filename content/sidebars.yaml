@@ -49,18 +49,18 @@
       - page: concepts/index.md
         expanded: false
         items:
-          - page: concepts/networks-and-servers/networks-and-servers.md
+          - page: concepts/networks-and-servers/index.md
             expanded: false
             items:
               - page: concepts/networks-and-servers/rippled-server-modes.md
               - page: concepts/networks-and-servers/clustering.md
-              - page: concepts/networks-and-servers/ledger-history/ledger-history.md
+              - page: concepts/networks-and-servers/ledger-history.md
               - page: concepts/networks-and-servers/peer-protocol.md
               - page: concepts/networks-and-servers/transaction-censorship-detection.md
               - page: concepts/networks-and-servers/parallel-networks.md
               - page: concepts/networks-and-servers/amendments.md
               - page: concepts/networks-and-servers/the-clio-server.md
-          - page: concepts/consensus-protocol/consensus.md
+          - page: concepts/consensus-protocol/index.md
             expanded: false
             items:
               - page: concepts/consensus-protocol/consensus-structure.md
@@ -70,27 +70,27 @@
               - page: concepts/consensus-protocol/fee-voting.md
               - page: concepts/consensus-protocol/negative-unl.md
               - page: concepts/consensus-protocol/consensus-research.md
-          - page: concepts/ledgers/ledgers.md
+          - page: concepts/ledgers/index.md
             expanded: false
             items:
               - page: concepts/ledgers/ledger-structure.md
               - page: concepts/ledgers/open-closed-validated-ledgers.md
               - page: concepts/ledgers/ledger-close-times.md
-          - page: concepts/transactions/transactions.md
+          - page: concepts/transactions/index.md
             expanded: false
             items:
               - page: concepts/transactions/fees.md
               - page: concepts/transactions/reliable-transaction-submission.md
-              - page: concepts/transactions/set-up-secure-signing.md
+              - page: concepts/transactions/secure-signing.md
               - page: concepts/transactions/source-and-destination-tags.md
               - page: concepts/transactions/transaction-cost.md
               - page: concepts/transactions/transaction-queue.md
-              - page: concepts/transactions/finality-of-results.md
+              - page: concepts/transactions/finality-of-results/index.md
                 expanded: false
                 items:
-                  - page: concepts/transactions/look-up-transaction-results.md
-                  - page: concepts/transactions/transaction-malleability.md
-                  - page: concepts/transactions/about-canceling-a-transaction.md
+                  - page: concepts/transactions/finality-of-results/look-up-transaction-results.md
+                  - page: concepts/transactions/finality-of-results/transaction-malleability.md
+                  - page: concepts/transactions/finality-of-results/canceling-a-transaction.md
           - page: concepts/payment-types/index.md
             expanded: false
             items:
@@ -100,50 +100,68 @@
               - page: concepts/payment-types/escrow.md
               - page: concepts/payment-types/partial-payments.md
               - page: concepts/payment-types/payment-channels.md
-          - page: concepts/tokens/tokens.md
+              - page: concepts/payment-types/robustly-monitoring-for-payments.md
+              - page: concepts/payment-types/sending-payments-to-customers.md
+              - page: concepts/payment-types/bouncing-payments.md
+          - page: concepts/tokens/index.md
             expanded: false
             items:
-              - page: concepts/tokens/non-fungible-tokens.md
+              - page: concepts/tokens/fungible-tokens/index.md
                 expanded: false
                 items:
-                  - page: concepts/tokens/nft-storage.md
-                  - page: concepts/tokens/non-fungible-token-transfers.md
-                  - page: concepts/tokens/nft-reserve-requirements.md
-                  - page: concepts/tokens/nftoken-batch-minting.md
-                  - page: concepts/tokens/nftoken-authorized-minting.md
-                  - page: concepts/tokens/nftoken-auctions.md
-                  - page: concepts/tokens/nft-collections.md
-                  - page: concepts/tokens/nft-fixed-supply.md
-                  - page: concepts/tokens/nft-apis.md
-              - page: concepts/tokens/trust-lines-and-issuing.md
-              - page: concepts/tokens/authorized-trust-lines.md
-              - page: concepts/tokens/clawing-back-tokens.md
-              - page: concepts/tokens/freezes.md
+                  - page: concepts/tokens/fungible-tokens/authorized-trust-lines.md
+                  - page: concepts/tokens/fungible-tokens/stablecoins/index.md
+                    expanded: false
+                    items:
+                      - page: concepts/tokens/fungible-tokens/stablecoins/settings.md
+                      - page: concepts/tokens/fungible-tokens/stablecoins/configuration.md
+                      - page: concepts/tokens/fungible-tokens/stablecoins/precautions.md
+                      - page: concepts/tokens/fungible-tokens/stablecoins/compliance-guidelines.md
+                  - page: concepts/tokens/fungible-tokens/clawing-back-tokens.md
+                  - page: concepts/tokens/fungible-tokens/freezes.md
+                    expanded: false
+                    items:
+                      - page: concepts/tokens/fungible-tokens/common-misconceptions-about-freezes.md
+                  - page: concepts/tokens/fungible-tokens/paths.md
+                  - page: concepts/tokens/fungible-tokens/rippling.md
+                  - page: concepts/tokens/fungible-tokens/demurrage.md
+              - page: concepts/tokens/nfts/index.md
                 expanded: false
                 items:
-                  - page: concepts/tokens/common-misconceptions-about-freezes.md
-              - page: concepts/tokens/rippling.md
+                  - page: concepts/tokens/nfts/payload-storage.md
+                  - page: concepts/tokens/nfts/trading.md
+                  - page: concepts/tokens/nfts/reserve-requirements.md
+                  - page: concepts/tokens/nfts/batch-minting.md
+                  - page: concepts/tokens/nfts/authorizing-another-minter.md
+                  - page: concepts/tokens/nfts/running-an-nft-auction.md
+                  - page: concepts/tokens/nfts/collections.md
+                  - page: concepts/tokens/nfts/guaranteeing-a-fixed-supply.md
+                  - page: concepts/tokens/nfts/nft-apis.md
               - page: concepts/tokens/transfer-fees.md
-              - page: concepts/tokens/paths.md
-              - page: concepts/tokens/demurrage.md
-              - page: concepts/tokens/decentralized-exchange.md
+              - page: concepts/tokens/decentralized-exchange/index.md
                 expanded: false
                 items:
-                  - page: concepts/tokens/offers.md
-                  - page: concepts/tokens/autobridging.md
-                  - page: concepts/tokens/ticksize.md
-                  - page: concepts/tokens/automated-market-makers.md
+                  - page: concepts/tokens/decentralized-exchange/offers.md
+                  - page: concepts/tokens/decentralized-exchange/autobridging.md
+                  - page: concepts/tokens/decentralized-exchange/ticksize.md
+                  - page: concepts/tokens/decentralized-exchange/automated-market-makers.md
           - page: concepts/accounts/accounts.md
             expanded: false
             items:
-              - page: concepts/transactions/multi-signing.md
-              - page: concepts/transactions/tickets.md
               - page: concepts/accounts/account-types.md
               - page: concepts/accounts/deleting-accounts.md
               - page: concepts/accounts/reserves.md
               - page: concepts/accounts/addresses.md
               - page: concepts/accounts/cryptographic-keys.md
+              - page: concepts/accounts/multi-signing.md
               - page: concepts/accounts/depositauth.md
+              - page: concepts/accounts/tickets.md
+              - page: concepts/accounts/decentralized-identifiers.md
+          - page: concepts/xrpl-sidechains/index.md
+            expanded: false
+            items:
+              - page: concepts/xrpl-sidechains/cross-chain-bridges.md
+              - page: concepts/xrpl-sidechains/witness-servers.md
       - group: Tutorials
         expanded: false
         items:
@@ -184,8 +202,7 @@
                       - page: tutorials/quickstart/create-trustline-send-currency-using-javascript.md
                       - page: tutorials/quickstart/create-time-based-escrows-using-javascript.md
                       - page: tutorials/quickstart/create-conditional-escrows-using-javascript.md
-                  - page:
-                        tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index.md
+                  - page: tutorials/javascript/modular-tutorials-in-javascript/nfts-using-javascript/index.md
                     expanded: false
                     items:
                       - page: tutorials/quickstart/mint-and-burn-nfts-using-javascript.md
@@ -199,6 +216,10 @@
             expanded: false
             items:
               - page: tutorials/get-started/get-started-using-java.md
+          - group: PHP
+            expanded: false
+            items:
+              - page: tutorials/get-started/get-started-using-php.md
           - page: tutorials/http-websocket-apis/index.md
             expanded: false
             items:
@@ -226,29 +247,23 @@
                     expanded: false
                     items:
                       - page: tutorials/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
-                      - page:
-                            tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
+                      - page: tutorials/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
                       - page: tutorials/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
                       - page: tutorials/use-specialized-payment-types/use-escrows/look-up-escrows.md
-                      - page:
-                            tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
+                      - page: tutorials/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
                   - page: tutorials/use-specialized-payment-types/use-payment-channels.md
                     expanded: false
                     items:
-                      - page:
-                            tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
+                      - page: tutorials/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network.md
                   - page: tutorials/use-specialized-payment-types/use-checks/use-checks.md
                     expanded: false
                     items:
                       - page: tutorials/use-specialized-payment-types/use-checks/send-a-check.md
-                      - page:
-                            tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
-                      - page:
-                            tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
+                      - page: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
+                      - page: tutorials/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
                       - page: tutorials/use-specialized-payment-types/use-checks/cancel-a-check.md
                       - page: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
-                      - page:
-                            tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
+                      - page: tutorials/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
               - page: tutorials/tasks/use-tokens/index.md
                 expanded: false
                 items:
@@ -258,114 +273,121 @@
                   - page: tutorials/use-tokens/enact-global-freeze.md
                   - page: tutorials/use-tokens/freeze-a-trust-line.md
                   - page: tutorials/use-tokens/create-an-automated-market-maker.md
+              - page: tutorials/tasks/use-xrpl-sidechains/index.md
+                expanded: false
+                items:
+                  - page: tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
+                  - page: tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge.md
+                  - page: tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction.md
       - group: References
         expanded: false
         items:
-          - page: references/protocol-reference/index.md
+          - page: references/protocol/index.md
             expanded: false
             items:
-              - page: references/protocol-reference/data-types/basic-data-types.md
+              - page: references/protocol/data-types/basic-data-types.md
                 expanded: false
                 items:
-                  - page: references/protocol-reference/data-types/base58-encodings.md
-                  - page: references/protocol-reference/data-types/currency-formats.md
-                  - page: references/protocol-reference/data-types/nftoken.md
-              - page: references/protocol-reference/ledger-data/ledger-data-formats.md
+                  - page: references/protocol/data-types/base58-encodings.md
+                  - page: references/protocol/data-types/currency-formats.md
+                  - page: references/protocol/data-types/nftoken.md
+              - page: references/protocol/ledger-data/index.md
                 expanded: false
                 items:
-                  - page: references/protocol-reference/ledger-data/ledger-header.md
-                  - page:
-                        references/protocol-reference/ledger-data/ledger-entry-types/ledger-entry-types.md
+                  - page: references/protocol/ledger-data/ledger-header.md
+                  - page: references/protocol/ledger-data/ledger-entry-types/index.md
                     expanded: false
                     items:
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/accountroot.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/amendments.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/amm.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/check.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/depositpreauth.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/directorynode.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/escrow.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/feesettings.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/ledgerhashes.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/negativeunl.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/nftokenoffer.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/nftokenpage.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/offer.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/paychannel.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/ripplestate.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/signerlist.md
-                      - page: references/protocol-reference/ledger-data/ledger-entry-types/ticket.md
-              - page: references/protocol-reference/transactions/transaction-formats.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/accountroot.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/amendments.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/amm.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/bridge.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/check.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/depositpreauth.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/did.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/directorynode.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/escrow.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/feesettings.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/ledgerhashes.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/negativeunl.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/nftokenoffer.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/nftokenpage.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/offer.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/paychannel.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/ripplestate.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/signerlist.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/ticket.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/xchainownedclaimid.md
+                      - page: references/protocol/ledger-data/ledger-entry-types/xchainownedcreateaccountclaimid.md
+              - page: references/protocol/transactions/index.md
                 expanded: false
                 items:
-                  - page: references/protocol-reference/transactions/transaction-common-fields.md
-                  - page:
-                        references/protocol-reference/transactions/transaction-types/transaction-types.md
+                  - page: references/protocol/transactions/common-fields.md
+                  - page: references/protocol/transactions/types/index.md
                     expanded: false
                     items:
-                      - page: references/protocol-reference/transactions/transaction-types/accountset.md
-                      - page: references/protocol-reference/transactions/transaction-types/accountdelete.md
-                      - page: references/protocol-reference/transactions/transaction-types/ammbid.md
-                      - page: references/protocol-reference/transactions/transaction-types/ammcreate.md
-                      - page: references/protocol-reference/transactions/transaction-types/ammdelete.md
-                      - page: references/protocol-reference/transactions/transaction-types/ammdeposit.md
-                      - page: references/protocol-reference/transactions/transaction-types/ammvote.md
-                      - page: references/protocol-reference/transactions/transaction-types/ammwithdraw.md
-                      - page: references/protocol-reference/transactions/transaction-types/checkcancel.md
-                      - page: references/protocol-reference/transactions/transaction-types/checkcash.md
-                      - page: references/protocol-reference/transactions/transaction-types/checkcreate.md
-                      - page: references/protocol-reference/transactions/transaction-types/clawback.md
-                      - page: references/protocol-reference/transactions/transaction-types/depositpreauth.md
-                      - page: references/protocol-reference/transactions/transaction-types/escrowcancel.md
-                      - page: references/protocol-reference/transactions/transaction-types/escrowcreate.md
-                      - page: references/protocol-reference/transactions/transaction-types/escrowfinish.md
-                      - page:
-                            references/protocol-reference/transactions/transaction-types/nftokenacceptoffer.md
-                      - page: references/protocol-reference/transactions/transaction-types/nftokenburn.md
-                      - page:
-                            references/protocol-reference/transactions/transaction-types/nftokencanceloffer.md
-                      - page:
-                            references/protocol-reference/transactions/transaction-types/nftokencreateoffer.md
-                      - page: references/protocol-reference/transactions/transaction-types/nftokenmint.md
-                      - page: references/protocol-reference/transactions/transaction-types/offercancel.md
-                      - page: references/protocol-reference/transactions/transaction-types/offercreate.md
-                      - page: references/protocol-reference/transactions/transaction-types/payment.md
-                      - page:
-                            references/protocol-reference/transactions/transaction-types/paymentchannelclaim.md
-                      - page:
-                            references/protocol-reference/transactions/transaction-types/paymentchannelcreate.md
-                      - page:
-                            references/protocol-reference/transactions/transaction-types/paymentchannelfund.md
-                      - page: references/protocol-reference/transactions/transaction-types/setregularkey.md
-                      - page: references/protocol-reference/transactions/transaction-types/signerlistset.md
-                      - page: references/protocol-reference/transactions/transaction-types/ticketcreate.md
-                      - page: references/protocol-reference/transactions/transaction-types/trustset.md
-                  - page:
-                        references/protocol-reference/transactions/pseudo-transaction-types/pseudo-transaction-types.md
+                      - page: references/protocol/transactions/types/accountset.md
+                      - page: references/protocol/transactions/types/accountdelete.md
+                      - page: references/protocol/transactions/types/ammbid.md
+                      - page: references/protocol/transactions/types/ammcreate.md
+                      - page: references/protocol/transactions/types/ammdelete.md
+                      - page: references/protocol/transactions/types/ammdeposit.md
+                      - page: references/protocol/transactions/types/ammvote.md
+                      - page: references/protocol/transactions/types/ammwithdraw.md
+                      - page: references/protocol/transactions/types/checkcancel.md
+                      - page: references/protocol/transactions/types/checkcash.md
+                      - page: references/protocol/transactions/types/checkcreate.md
+                      - page: references/protocol/transactions/types/clawback.md
+                      - page: references/protocol/transactions/types/depositpreauth.md
+                      - page: references/protocol/transactions/types/diddelete.md
+                      - page: references/protocol/transactions/types/didset.md
+                      - page: references/protocol/transactions/types/escrowcancel.md
+                      - page: references/protocol/transactions/types/escrowcreate.md
+                      - page: references/protocol/transactions/types/escrowfinish.md
+                      - page: references/protocol/transactions/types/nftokenacceptoffer.md
+                      - page: references/protocol/transactions/types/nftokenburn.md
+                      - page: references/protocol/transactions/types/nftokencanceloffer.md
+                      - page: references/protocol/transactions/types/nftokencreateoffer.md
+                      - page: references/protocol/transactions/types/nftokenmint.md
+                      - page: references/protocol/transactions/types/offercancel.md
+                      - page: references/protocol/transactions/types/offercreate.md
+                      - page: references/protocol/transactions/types/payment.md
+                      - page: references/protocol/transactions/types/paymentchannelclaim.md
+                      - page: references/protocol/transactions/types/paymentchannelcreate.md
+                      - page: references/protocol/transactions/types/paymentchannelfund.md
+                      - page: references/protocol/transactions/types/setregularkey.md
+                      - page: references/protocol/transactions/types/signerlistset.md
+                      - page: references/protocol/transactions/types/ticketcreate.md
+                      - page: references/protocol/transactions/types/trustset.md
+                      - page: references/protocol/transactions/types/xchainaccountcreatecommit.md
+                      - page: references/protocol/transactions/types/xchainaddaccountcreateattestation.md
+                      - page: references/protocol/transactions/types/xchainaddclaimattestation.md
+                      - page: references/protocol/transactions/types/xchainclaim.md
+                      - page: references/protocol/transactions/types/xchaincommit.md
+                      - page: references/protocol/transactions/types/xchaincreatebridge.md
+                      - page: references/protocol/transactions/types/xchaincreateclaimid.md
+                      - page: references/protocol/transactions/types/xchainmodifybridge.md
+                  - page: references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md
                     expanded: false
                     items:
-                      - page:
-                            references/protocol-reference/transactions/pseudo-transaction-types/enableamendment.md
-                      - page: references/protocol-reference/transactions/pseudo-transaction-types/setfee.md
-                      - page: references/protocol-reference/transactions/pseudo-transaction-types/unlmodify.md
-                  - page:
-                        references/protocol-reference/transactions/transaction-results/transaction-results.md
+                      - page: references/protocol/transactions/pseudo-transaction-types/enableamendment.md
+                      - page: references/protocol/transactions/pseudo-transaction-types/setfee.md
+                      - page: references/protocol/transactions/pseudo-transaction-types/unlmodify.md
+                  - page: references/protocol/transactions/transaction-results/transaction-results.md
                     expanded: false
                     items:
-                      - page: references/protocol-reference/transactions/transaction-results/tec-codes.md
-                      - page: references/protocol-reference/transactions/transaction-results/tef-codes.md
-                      - page: references/protocol-reference/transactions/transaction-results/tel-codes.md
-                      - page: references/protocol-reference/transactions/transaction-results/tem-codes.md
-                      - page: references/protocol-reference/transactions/transaction-results/ter-codes.md
-                      - page: references/protocol-reference/transactions/transaction-results/tes-success.md
-                  - page: references/protocol-reference/transactions/transaction-metadata.md
-              - page: references/protocol-reference/serialization.md
+                      - page: references/protocol/transactions/transaction-results/tec-codes.md
+                      - page: references/protocol/transactions/transaction-results/tef-codes.md
+                      - page: references/protocol/transactions/transaction-results/tel-codes.md
+                      - page: references/protocol/transactions/transaction-results/tem-codes.md
+                      - page: references/protocol/transactions/transaction-results/ter-codes.md
+                      - page: references/protocol/transactions/transaction-results/tes-success.md
+                  - page: references/protocol/transactions/metadata.md
+              - page: references/protocol/binary-format.md
           - page: references/client-libraries.md
             expanded: false
             items:
               - group: JavaScript / TypeScript Client Library
-                href: https://js.xrpl.org/
-                external: true
                 expanded: false
                 items:
                   - page: references/xrpljs2-migration-guide.md
@@ -381,7 +403,7 @@
           - page: references/http-websocket-apis/index.md
             expanded: false
             items:
-              - page: references/http-websocket-apis/api-conventions/api-conventions.md
+              - page: references/http-websocket-apis/api-conventions/index.md
                 expanded: false
                 items:
                   - page: references/http-websocket-apis/api-conventions/request-formatting.md
@@ -391,100 +413,70 @@
                   - page: references/http-websocket-apis/api-conventions/rate-limiting.md
                   - page: references/http-websocket-apis/api-conventions/rippled-server-states.md
                   - page: references/http-websocket-apis/api-conventions/ctid.md
-              - page: references/http-websocket-apis/public-api-methods/public-api-methods.md
+              - page: references/http-websocket-apis/public-api-methods/index.md
                 expanded: false
                 items:
                   - page: references/http-websocket-apis/public-api-methods/account-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_info.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_channels.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_currencies.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_info.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_nfts.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_objects.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/account_offers.md
                       - page: references/http-websocket-apis/public-api-methods/account-methods/account_tx.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
+                      - page: references/http-websocket-apis/public-api-methods/account-methods/noripple_check.md
                   - page: references/http-websocket-apis/public-api-methods/ledger-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
+                      - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed.md
+                      - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current.md
                       - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data.md
                       - page: references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry.md
                   - page: references/http-websocket-apis/public-api-methods/transaction-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/public-api-methods/transaction-methods/submit.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
+                      - page: references/http-websocket-apis/public-api-methods/transaction-methods/submit_multisigned.md
+                      - page: references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry.md
                       - page: references/http-websocket-apis/public-api-methods/transaction-methods/tx.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
-                  - page:
-                        references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md
+                      - page: references/http-websocket-apis/public-api-methods/transaction-methods/tx_history.md
+                  - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
-                  - page:
-                        references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_sell_offers.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md
+                      - page: references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
+                  - page: references/http-websocket-apis/public-api-methods/payment-channel-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
+                      - page: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_authorize.md
+                      - page: references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify.md
                   - page: references/http-websocket-apis/public-api-methods/subscription-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
+                      - page: references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md
+                      - page: references/http-websocket-apis/public-api-methods/subscription-methods/unsubscribe.md
                   - page: references/http-websocket-apis/public-api-methods/server-info-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/public-api-methods/server-info-methods/fee.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
-                      - page:
-                            references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
+                      - page: references/http-websocket-apis/public-api-methods/server-info-methods/manifest.md
+                      - page: references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
+                      - page: references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
+                      - page: references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
                   - page: references/http-websocket-apis/public-api-methods/clio-server/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
+                      - page: references/http-websocket-apis/public-api-methods/clio-methods/server_info-clio.md
                       - page: references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
                       - page: references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                       - page: references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
@@ -494,83 +486,55 @@
                       - page: references/http-websocket-apis/public-api-methods/utility-methods/json.md
                       - page: references/http-websocket-apis/public-api-methods/utility-methods/ping.md
                       - page: references/http-websocket-apis/public-api-methods/utility-methods/random.md
-              - page: references/http-websocket-apis/admin-api-methods/admin-api-methods.md
+              - page: references/http-websocket-apis/admin-api-methods/index.md
                 expanded: false
                 items:
                   - page: references/http-websocket-apis/admin-api-methods/key-generation-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
-                  - page:
-                        references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/index.md
+                      - page: references/http-websocket-apis/admin-api-methods/key-generation-methods/validation_create.md
+                      - page: references/http-websocket-apis/admin-api-methods/key-generation-methods/wallet_propose.md
+                  - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/can_delete.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/crawl_shards.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/download_shard.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_cleaner.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/ledger_request.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/log_level.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/logrotate.md
+                      - page: references/http-websocket-apis/admin-api-methods/logging-and-data-management-methods/node_to_shard.md
                   - page: references/http-websocket-apis/admin-api-methods/server-control-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
+                      - page: references/http-websocket-apis/admin-api-methods/server-control-methods/ledger_accept.md
                       - page: references/http-websocket-apis/admin-api-methods/server-control-methods/stop.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
+                      - page: references/http-websocket-apis/admin-api-methods/server-control-methods/validation_seed.md
                   - page: references/http-websocket-apis/admin-api-methods/signing-methods/index.md
                     expanded: false
                     items:
                       - page: references/http-websocket-apis/admin-api-methods/signing-methods/sign.md
                       - page: references/http-websocket-apis/admin-api-methods/signing-methods/sign_for.md
-                  - page:
-                        references/http-websocket-apis/admin-api-methods/peer-management-methods/index.md
+                  - page: references/http-websocket-apis/admin-api-methods/peer-management-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
-                  - page:
-                        references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/index.md
+                      - page: references/http-websocket-apis/admin-api-methods/peer-management-methods/connect.md
+                      - page: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_add.md
+                      - page: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_del.md
+                      - page: references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md
+                      - page: references/http-websocket-apis/admin-api-methods/peer-management-methods/peers.md
+                  - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/index.md
                     expanded: false
                     items:
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
-                      - page:
-                            references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/consensus_info.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/feature.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/fetch_info.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/get_counts.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/print.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_info.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validator_list_sites.md
+                      - page: references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md
               - page: references/http-websocket-apis/peer-port-methods/index.md
                 expanded: false
                 items:
@@ -583,81 +547,76 @@
       - page: infrastructure/index.md
         expanded: false
         items:
-          - page: infrastructure/rippled/commandline-usage.md
-          - page: infrastructure/install-rippled/index.md
+          - page: infrastructure/commandline-usage.md
+          - page: infrastructure/installation/index.md
             expanded: false
             items:
-              - page: infrastructure/rippled/installation/system-requirements.md
-              - page: infrastructure/rippled/installation/install-rippled-on-centos-rhel-with-yum.md
-              - label: Install rippled on Ubuntu with Alien
-              - page: infrastructure/rippled/installation/install-rippled-on-ubuntu.md
-              - page: infrastructure/rippled/installation/update-rippled-automatically-on-linux.md
-              - page: infrastructure/rippled/installation/update-rippled-manually-on-centos-rhel.md
-              - page: infrastructure/rippled/installation/update-rippled-manually-on-ubuntu.md
-              - page: infrastructure/rippled/installation/build-on-linux-mac-windows.md
-              - page: infrastructure/rippled/installation/build-run-rippled-in-reporting-mode.md
-              - page: infrastructure/rippled/installation/capacity-planning.md
-              - page: infrastructure/rippled/installation/rippled-1-3-migration-instructions.md
-          - page: infrastructure/configure-rippled/index.md
+              - page: infrastructure/installation/system-requirements.md
+              - page: infrastructure/installation/install-rippled-on-centos-rhel-with-yum.md
+              - page: infrastructure/installation/install-rippled-on-ubuntu.md
+              - page: infrastructure/installation/install-clio-on-ubuntu.md
+              - page: infrastructure/installation/update-rippled-automatically-on-linux.md
+              - page: infrastructure/installation/update-rippled-manually-on-centos-rhel.md
+              - page: infrastructure/installation/update-rippled-manually-on-ubuntu.md
+              - page: infrastructure/installation/build-on-linux-mac-windows.md
+              - page: infrastructure/installation/build-run-rippled-in-reporting-mode.md
+              - page: infrastructure/installation/capacity-planning.md
+              - page: infrastructure/installation/rippled-1-3-migration-instructions.md
+          - page: infrastructure/configuration/index.md
             expanded: false
             items:
-              - page: infrastructure/configure-rippled/server-modes/index.md
+              - page: infrastructure/configuration/server-modes/index.md
                 expanded: false
                 items:
-                  - page: infrastructure/rippled/configuration/run-rippled-as-a-validator.md
-                  - page: infrastructure/rippled/configuration/run-rippled-as-a-stock-server.md
-              - page: infrastructure/configure-rippled/data-retention/index.md
+                  - page: infrastructure/configuration/server-modes/run-rippled-as-a-validator.md
+                  - page: infrastructure/configuration/server-modes/run-rippled-as-a-stock-server.md
+              - page: infrastructure/configuration/data-retention/index.md
                 expanded: false
                 items:
-                  - page: infrastructure/rippled/configuration/configure-full-history.md
-                  - page: concepts/networks-and-servers/ledger-history/online-deletion.md
-                  - page: infrastructure/rippled/configuration/configure-online-deletion.md
-                  - page: infrastructure/rippled/configuration/configure-advisory-deletion.md
-                  - page: concepts/networks-and-servers/ledger-history/history-sharding.md
-                  - page: infrastructure/rippled/configuration/configure-history-sharding.md
-              - page: infrastructure/rippled/configuration/configure-amendment-voting.md
-              - page: infrastructure/rippled/configuration/test-amendments.md
-              - page: infrastructure/rippled/configuration/configure-statsd.md
-              - page: infrastructure/rippled/configuration/connect-your-rippled-to-the-xrp-test-net.md
-              - page: infrastructure/rippled/configuration/configure-grpc.md
-              - page: infrastructure/rippled/configuration/enable-public-signing.md
-          - page: infrastructure/rippled/configure-peering/configure-peering.md
-            expanded: false
-            items:
-              - page: infrastructure/rippled/configure-peering/cluster-rippled-servers.md
-              - page: infrastructure/rippled/configure-peering/configure-a-private-server.md
-              - page: infrastructure/rippled/configure-peering/configure-the-peer-crawler.md
-              - page: infrastructure/rippled/configure-peering/enable-link-compression.md
-              - page: infrastructure/rippled/configure-peering/forward-ports-for-peering.md
-              - page: infrastructure/rippled/configure-peering/manually-connect-to-a-specific-peer.md
-              - page: infrastructure/rippled/configure-peering/set-max-number-of-peers.md
-              - page: infrastructure/rippled/configure-peering/use-a-peer-reservation.md
+                  - page: infrastructure/configuration/data-retention/configure-full-history.md
+                  - page: infrastructure/configuration/data-retention/online-deletion.md
+                  - page: infrastructure/configuration/data-retention/configure-online-deletion.md
+                  - page: infrastructure/configuration/data-retention/configure-advisory-deletion.md
+                  - page: infrastructure/configuration/data-retention/history-sharding.md
+                  - page: infrastructure/configuration/data-retention/configure-history-sharding.md
+              - page: infrastructure/configuration/peering/index.md
+                expanded: false
+                items:
+                  - page: infrastructure/configuration/peering/cluster-rippled-servers.md
+                  - page: infrastructure/configuration/peering/configure-a-private-server.md
+                  - page: infrastructure/configuration/peering/configure-the-peer-crawler.md
+                  - page: infrastructure/configuration/peering/enable-link-compression.md
+                  - page: infrastructure/configuration/peering/forward-ports-for-peering.md
+                  - page: infrastructure/configuration/peering/manually-connect-to-a-specific-peer.md
+                  - page: infrastructure/configuration/peering/set-max-number-of-peers.md
+                  - page: infrastructure/configuration/peering/use-a-peer-reservation.md
+              - page: infrastructure/configuration/configure-amendment-voting.md
+              - page: infrastructure/configuration/configure-statsd.md
+              - page: infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md
+              - page: infrastructure/configuration/configure-grpc.md
+              - page: infrastructure/configuration/enable-public-signing.md
           - page: infrastructure/testing-and-auditing/index.md
             expanded: false
             items:
-              - page:
-                    infrastructure/rippled/stand-alone-mode/start-a-new-genesis-ledger-in-stand-alone-mode.md
-              - page:
-                    infrastructure/rippled/stand-alone-mode/load-a-saved-ledger-in-stand-alone-mode.md
-              - page:
-                    infrastructure/rippled/stand-alone-mode/advance-the-ledger-in-stand-alone-mode.md
+              - page: infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md
+              - page: infrastructure/testing-and-auditing/load-a-saved-ledger-in-stand-alone-mode.md
+              - page: infrastructure/testing-and-auditing/advance-the-ledger-in-stand-alone-mode.md
+              - page: infrastructure/testing-and-auditing/test-amendments.md
+              - page: infrastructure/testing-and-auditing/run-private-network-with-docker.md
           - page: infrastructure/troubleshooting/index.md
             expanded: false
             items:
-              - page: infrastructure/rippled/troubleshooting/diagnosing-problems.md
-              - page: infrastructure/rippled/troubleshooting/health-check-interventions.md
-              - page: infrastructure/rippled/troubleshooting/understanding-log-messages.md
-              - page: infrastructure/rippled/troubleshooting/server-doesnt-sync.md
-              - page: infrastructure/rippled/troubleshooting/server-is-amendment-blocked.md
-              - page: infrastructure/rippled/troubleshooting/server-wont-start.md
-              - page: infrastructure/rippled/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
-          - page: infrastructure/clio/install-clio-on-ubuntu.md
-          - page: infrastructure/rippled/run-private-network-with-docker.md
+              - page: infrastructure/troubleshooting/diagnosing-problems.md
+              - page: infrastructure/troubleshooting/health-check-interventions.md
+              - page: infrastructure/troubleshooting/understanding-log-messages.md
+              - page: infrastructure/troubleshooting/server-doesnt-sync.md
+              - page: infrastructure/troubleshooting/server-is-amendment-blocked.md
+              - page: infrastructure/troubleshooting/server-wont-start.md
+              - page: infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
   - page: resources/index.md
     expanded: false
     items:
       - label: Code Samples
-        page: code-samples.page.tsx
       - group: Dev Tools
         expanded: false
         items:
@@ -667,13 +626,12 @@
           - label: xrp-ledger.toml Checker
           - label: Domain Verification Checker
           - label: XRP Faucets
-            href: /dev-tools/xrp-faucets
-            page: /dev-tools/xrp-faucets.page.tsx
           - label: Transaction Sender
-            href: /dev-tools/tx-sender
-            page: /dev-tools/tx-sender.page.tsx
       - label: XRPL Learning Portal
         href: https://learn.xrpl.org/
+        external: true
+      - label: XRPL Brand Kit
+        href: https://xrpl.org/assets/XRPL_Brand_Kit.zip
         external: true
       - label: Ledger Explorer
         href: https://livenet.xrpl.org/
@@ -683,7 +641,7 @@
         expanded: false
         items:
           - page: resources/contribute-code/create-custom-transactors.md
-      - page: resources/contribute-documentation/contribute-documentation.md
+      - page: resources/contribute-documentation/index.md
         expanded: false
         items:
           - label: Contributor Code of Conduct
@@ -710,8 +668,5 @@
         external: true
       - label: GitHub
         href: https://github.com/XRPLF
-        external: true
-      - label: XRPL Brand Kit
-        href: https://github.com/XRPLF/xrpl-dev-portal/raw/master/content/XRPL_Logo_Kit.zip
         external: true
       - page: contributing/report-a-scam.md

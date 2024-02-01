@@ -6,26 +6,38 @@ For a detailed explanation, see [Serialization](https://xrpl.org/serialization.h
 
 On first run, you have to install the necessary node.js dependencies:
 
-    npm install
+```
+npm install
+```
 
 ## Command-line usage:
 
 ### Simple example, use tx1.json default:
 
-    node index.js
+```
+node index.js
+```
 
 ### Verbose output, use --verbose or -v:
 
-    node index.js -v
+```
+node index.js -v
+```
 
 ### Raw output without formatting, use --raw or -r:
 
-    node index.js -r
+```
+node index.js -r
+```
 
 ### Pick JSON fixture file:
 
-    node index.js -f test-cases/tx3.json
+```
+node index.js -f test-cases/tx3.json
+```
 
 ### Feed JSON as CLI argument:
 
-    node index.js -j "{\"TransactionType\":\"Payment\"}"
+```
+node index.js -j "{\"TransactionType\":\"Payment\"}"
+```

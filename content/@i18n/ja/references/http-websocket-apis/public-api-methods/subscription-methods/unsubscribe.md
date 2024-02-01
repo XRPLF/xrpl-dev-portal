@@ -16,10 +16,9 @@ labels:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":"Unsubscribe a lot of stuff",
@@ -41,10 +40,11 @@ labels:
    ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
-[試してみる >](websocket-api-tool.html#unsubscribe)
+[試してみる >](/resources/dev-tools/websocket-api-tool#unsubscribe)
 
 このリクエストのパラメーターは、[subscribeメソッド][]のパラメーターとほぼ同様の方法で指定されますが、終了するサブスクリプションを定義するために使用される点が異なります。これらのパラメーターを以下に示します。
 
@@ -69,10 +69,9 @@ labels:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id":"Unsubscribe a lot of stuff",
@@ -81,8 +80,9 @@ labels:
    "type":"response"
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果にフィールドが含まれません。
 
@@ -100,6 +100,4 @@ labels:
 * `dstIsrMalformed` - リクエストの`books`フィールドの1つ以上の`taker_gets`サブフィールドの`issuer`フィールドが無効です。
 * `badMarket` - `books` フィールドに指定されている1つ以上のオーダーブックが存在していません（ある通貨をその通貨自体と交換するオファーなど）。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

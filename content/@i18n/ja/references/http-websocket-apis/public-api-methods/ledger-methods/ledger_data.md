@@ -14,10 +14,9 @@ label:
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
   "id":2,
@@ -27,9 +26,9 @@ label:
   "binary": true
 }
 ```
+{% /tab %}
 
-*JSON-RPC*
-
+{% tab label="JSON-RPC" %}
 ```json
 {
    "method":"ledger_data",
@@ -42,8 +41,9 @@ label:
    ]
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 **注記:**`ledger_data`のコマンドライン構文はありません。代わりに[jsonメソッド][]を使用してコマンドラインからこのメソッドにアクセスできます。
 
@@ -64,10 +64,9 @@ label:
 
 処理が成功したレスポンスの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket (binary:true)*
-
+{% tab label="WebSocket (binary:true)" %}
 ```json
 {
    "id":2,
@@ -102,9 +101,9 @@ label:
    "type":"response"
 }
 ```
+{% /tab %}
 
-*WebSocket (binary:false)*
-
+{% tab label="WebSocket (binary:false)" %}
 ```json
 {
    "id":2,
@@ -201,9 +200,9 @@ label:
    "type":"response"
 }
 ```
+{% /tab %}
 
-*JSON-RPC (binary:true)*
-
+{% tab label="JSON-RPC (binary:true)" %}
 ```json
 200 OK
 
@@ -238,8 +237,9 @@ label:
    }
 }
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 このレスポンスは[標準フォーマット][]に従っており、正常に完了した場合は結果に次のフィールドが含まれます。
 
@@ -255,7 +255,7 @@ label:
 | `Field`             | 型      | 説明                                |
 |:--------------------|:----------|:-------------------------------------------|
 | `data`              | 文字列    | （`"binary":true`の場合にのみ含まれる）リクエストされたデータの16進表現。 |
-| `LedgerEntryType`   | 文字列    | （`"binary":false`の場合にのみ含まれる）このオブジェクトが表すレジャーオブジェクトの型を示す文字列。詳細なリストについては[レジャーデータフォーマット](ledger-data-formats.html)を参照してください。 |
+| `LedgerEntryType`   | 文字列    | （`"binary":false`の場合にのみ含まれる）このオブジェクトが表すレジャーオブジェクトの型を示す文字列。詳細なリストについては[レジャーデータフォーマット](../../../protocol/ledger-data/index.md)を参照してください。 |
 | （追加のフィールド） | （各種） | （`"binary":false`の場合にのみ含まれる）このオブジェクトを記述する追加フィールド。オブジェクトのLedgerEntryTypeに応じて異なります。 |
 | `index`             | 文字列    | このレジャーエントリの一意のID（16進数） |
 
@@ -265,6 +265,4 @@ label:
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
 
-
-{% include '_snippets/rippled_versions.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

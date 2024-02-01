@@ -17,19 +17,19 @@ Separate setup (prerequisites) from usage from code development. These are each 
 
 ## Description
 
-![Description](img/tut-struct1.png)
+![Description](/img/tut-struct1.png)
 
 List what the sample demonstrates. If possible, each example should describe the steps to accomplish specific related tasks. (For example, create a NFT Sell Offer, Accept a Sell Offer, Delete a Sell Offer.)  There should be enough conceptual information to understand what the tutorial illustrates, with links to additional conceptual information, if needed.
 
 ## Prerequisites
 
-![Prerequisites](img/tut-struct2.png)
+![Prerequisites](/img/tut-struct2.png)
 
 Provide links to any required software and to all of the example code needed to run the tutorial. If necessary, give simple instructions for using third-party tools, but provide a link to the source website for the customer to do a deeper dive at their leisure.
 
 ## Usage Example
 
-![Usage](img/tut-struct3.png)
+![Usage](/img/tut-struct3.png)
 
 Start by providing a finished, working example of the tutorial application. This is an opportunity for immediate success working with the software to solve a problem.
 
@@ -39,16 +39,16 @@ Describe the sunny day scenario. The application should run without problems if 
 
 ## Code Walkthrough
 
-![Code Walkthrough](img/tut-struct4.png)
+![Code Walkthrough](/img/tut-struct4.png)
 
 Walk through the code, one chunk at a time. Don’t belabor topics that have been discussed in earlier examples. Provide sample code, but don’t provide exhaustive explanations for how to program underlying platforms like HTML syntax unless there is something unique to the implementation.
 
 An important thing to emphasize is that every interaction with the XRPL is either a transaction or a request, and that all transactions and requests are essentially the same. The sample code we provide shows how to prepare the transaction or request, and how to process the returned results. Knowing how to submit and respond to one transaction or request gives a pretty good idea for how to submit and respond to any transaction or request.
 
-(Technically there is third category, similar to a request: a notification from a subscription stream. See [Subscription Methods](subscription-methods.html).)
+(Technically there is third category, similar to a request: a notification from a subscription stream. See [Subscription Methods](../../references/http-websocket-apis/public-api-methods/subscription-methods/index.md).)
 
 ## See Also
 
-![See Also](img/tut-struct5.png)
+![See Also](/img/tut-struct5.png)
 
 At the end of the tutorial, provide links to additional resources, conceptual information, and any tutorials that would be a sensible next step in the learning journey.

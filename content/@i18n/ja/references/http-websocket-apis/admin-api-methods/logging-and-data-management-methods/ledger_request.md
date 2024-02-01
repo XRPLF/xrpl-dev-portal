@@ -10,15 +10,14 @@ labels:
 
 `ledger_request`コマンドは、サーバーに対し接続しているピアから特定のレジャーバージョンを取得するように指示します。これは、サーバーが直接接続しているピアの1つにそのレジャーが存在している場合にのみ機能します。場合によっては、レジャーを完全に取得するにはこのコマンドを繰り返し実行する必要があります。
 
-*`ledger_request`リクエストは、権限のないユーザーは実行できない[管理メソッド](admin-api-methods.html)です。*
+*`ledger_request`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*WebSocket*
-
+{% tab label="WebSocket" %}
 ```json
 {
    "id": 102,
@@ -26,14 +25,15 @@ labels:
    "ledger_index": 13800000
 }
 ```
+{% /tab %}
 
-*コマンドライン*
-
+{% tab label="コマンドライン" %}
 ```
 rippled ledger_request 13800000
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 リクエストには以下のパラメーターが含まれます。
 
@@ -52,10 +52,9 @@ rippled ledger_request 13800000
 
 失敗した場合のレスポンスには、レジャーの取得状況が示されます。成功した場合のレスポンスには、[ledgerメソッド][]に類似したフォーマットでレジャーの情報が含まれます。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン（失敗）*
-
+{% tab label="コマンドライン（失敗）" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -79,9 +78,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン（進行中）*
-
+{% tab label="コマンドライン（進行中）" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -126,9 +125,9 @@ Connecting to 127.0.0.1:5005
   }
 }
 ```
+{% /tab %}
 
-*コマンドライン（成功）*
-
+{% tab label="コマンドライン（成功）" %}
 ```json
 Loading: "/etc/rippled.cfg"
 Connecting to 127.0.0.1:5005
@@ -157,14 +156,15 @@ Connecting to 127.0.0.1:5005
 }
 
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 3つのレスポンスのフォーマットは次のとおりです。
 
 1. `lgrNotFound`エラーが返された場合、レスポンスの`acquiring`フィールドには、ピアツーピアネットワークからのレジャー取得状況を示す[レジャーリクエストオブジェクト](#レジャーリクエストオブジェクト)が指定されています。
 2. サーバーが現在データを取得中であるとレスポンスに示される場合、その結果の本文として、ピアツーピアネットワークからのレジャー取得状況を示す[レジャーリクエストオブジェクト](#レジャーリクエストオブジェクト)が表示されます。
-3. レジャーが完全に利用可能な場合、レスポンスには[レジャーヘッダー](ledger-header.html)が表示されます。
+3. レジャーが完全に利用可能な場合、レスポンスには[レジャーヘッダー](../../../protocol/ledger-data/ledger-header.md)が表示されます。
 
 ### レジャーリクエストオブジェクト
 
@@ -187,7 +187,4 @@ Connecting to 127.0.0.1:5005
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。このエラーは、指定したレジャーインデックスが現在進行中のレジャーのインデックス以上である場合にも発生します。
 * `lgrNotFound` - レジャーがまだ利用可能ではない場合。これは、サーバーがレジャーの取得を開始していますが、リクエストされたレジャーが接続されたどのピアにもない場合には失敗する可能性があることを意味します。（以前はこのエラーにはコード`ledgerNotFound`が使用されていました。）[更新: rippled 0.30.1][新規: rippled 0.30.1]
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -9,13 +9,13 @@ status: not_enabled
 # AMMDeposit
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMDeposit.cpp "Source")
 
-_(Requires the [AMM amendment][] :not_enabled:)_
+_(Requires the [AMM amendment][] {% not-enabled /%})_
 
-Deposit funds into an [Automated Market Maker](automated-market-makers.html) (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
+Deposit funds into an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance and receive the AMM's liquidity provider tokens (_LP Tokens_) in exchange. You can deposit one or both of the assets in the AMM's pool.
 
-If successful, this transaction creates a [trust line](trust-lines-and-issuing.html) to the AMM Account (limit 0) to hold the LP Tokens.
+If successful, this transaction creates a [trust line](../../../../concepts/tokens/fungible-tokens/index.md) to the AMM Account (limit 0) to hold the LP Tokens.
 
-## Example {{currentpage.name}} JSON
+## Example {% $frontmatter.seo.title %} JSON
 
 ```json
 {
@@ -40,7 +40,7 @@ If successful, this transaction creates a [trust line](trust-lines-and-issuing.h
 }
 ```
 
-{% include '_snippets/tx-fields-intro.md' %}
+{% partial file="/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type           | [Internal Type][] | Required? | Description |
 |:--------------|:--------------------|:------------------|:----------|:------------|
@@ -84,7 +84,7 @@ Any other combination of these fields and flags is invalid.
 
  The formula for how many LP Tokens you receive for a double-asset deposit is:
 
-{{ include_svg("img/amm-single-asset-deposit-formula.svg", "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)") }}
+[{% inline-svg file="/img/amm-single-asset-deposit-formula.svg" /%}](/img/amm-single-asset-deposit-formula.svg "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)")
 <!-- TODO: improve graphic -->
 
 Where:
@@ -105,7 +105,7 @@ You can only do a special "Empty AMM" deposit if the AMM is empty.
 
 ### AMMDeposit Flags
 
-Transactions of the AMMDeposit type support additional values in the [`Flags` field](transaction-common-fields.html#flags-field), as follows:
+Transactions of the AMMDeposit type support additional values in the [`Flags` field](../common-fields.md#flags-field), as follows:
 
 | Flag Name           | Hex Value    | Decimal Value | Description           |
 |:--------------------|:-------------|:--------------|:----------------------|
@@ -116,20 +116,20 @@ Transactions of the AMMDeposit type support additional values in the [`Flags` fi
 | `tfLimitLPToken`    | `0x00400000` | 4194304       | Perform a single-asset deposit with a specified effective price. |
 | `tfTwoAssetIfEmpty` | `0x00800000` | 8388608       | Perform a special double-asset deposit to an AMM with an empty pool. |
 
-You must specify **exactly one** of these flags, plus any [global flags](transaction-common-fields.html#global-flags).
+You must specify **exactly one** of these flags, plus any [global flags](../common-fields.md#global-flags).
 
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {{currentpage.name}} transactions can result in the following [transaction result codes](transaction-results.html):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
 
 | Error Code              | Description                                  |
 |:------------------------|:---------------------------------------------|
 | `tecAMM_EMPTY`          | The AMM currently holds no assets, so you cannot do a normal deposit. You must use the Empty AMM Special Case deposit instead. |
 | `tecAMM_NOT_EMPTY`      | The transaction specified `tfTwoAssetIfEmpty`, but the AMM was not empty. |
 | `tecAMM_FAILED`         | The conditions on the deposit could not be satisfied. For example, the requested effective price in the `EPrice` field is too low. |
-| `tecFROZEN`             | The transaction tried to deposit a [frozen](freezes.html) token. |
-| `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](reserves.html) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
+| `tecFROZEN`             | The transaction tried to deposit a [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md) token. |
+| `tecINSUF_RESERVE_LINE` | The sender of this transaction does meet the increased [reserve requirement](../../../../concepts/accounts/reserves.md) of processing this transaction, probably because they need a new trust line to hold the LP Tokens, and they don't have enough XRP to meet the additional owner reserve for a new trust line. |
 | `tecUNFUNDED_AMM`       | The sender does not have a high enough balance to make the specified deposit. |
 | `temBAD_AMM_TOKENS`     | The transaction specified the LP Tokens incorrectly. For example, the `issuer` is not the AMM's associated AccountRoot address or the `currency` is not the currency code for this AMM's LP Tokens, or the transaction specified this AMM's LP Tokens in one of the asset fields. |
 | `temBAD_AMOUNT`         | An amount specified in the transaction is invalid. For example, a deposit amount is negative. |
@@ -138,8 +138,4 @@ Besides errors that can occur for all transactions, {{currentpage.name}} transac
 | `terNO_ACCOUNT`         | An account specified in the request does not exist. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

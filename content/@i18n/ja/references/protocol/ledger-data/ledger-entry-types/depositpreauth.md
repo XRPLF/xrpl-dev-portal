@@ -10,9 +10,9 @@ labels:
 
 `DepositPreauth`オブジェクトはアカウント間の事前承認を追跡します。[DepositPreauthトランザクション][]によりこれらのオブジェクトが作成されます。
 
-これは、事前承認を付与したアカウントに[Deposit Authorization](depositauth.html)が不要な場合は、トランザクションの処理に影響しません。その場合、事前承認されたアカウントから、事前承認を付与したアカウントに対して、支払やその他のトランザクションを直接送信できます。事前認証は一方向であり、反対方向の支払には影響しません。
+これは、事前承認を付与したアカウントに[Deposit Authorization](../../../../concepts/accounts/depositauth.md)が不要な場合は、トランザクションの処理に影響しません。その場合、事前承認されたアカウントから、事前承認を付与したアカウントに対して、支払やその他のトランザクションを直接送信できます。事前認証は一方向であり、反対方向の支払には影響しません。
 
-## {{currentpage.name}} JSONの例
+## {% $frontmatter.seo.title %} JSONの例
 
 ```json
 {
@@ -27,7 +27,7 @@ labels:
 }
 ```
 
-## {{currentpage.name}}フィールド
+## {% $frontmatter.seo.title %}フィールド
 
 `DepositPreauth`オブジェクトのフィールドは次のとおりです。
 
@@ -50,7 +50,4 @@ labels:
 * このオブジェクトの所有者（このオブジェクトを作成した[DepositPreauthトランザクション][]の送信者、つまり事前承認を付与したユーザー）のAccountID。
 * 事前承認されたアカウント（このオブジェクトを作成した[DepositPreauthトランザクション][]の`Authorized`フィールド、つまり事前承認を受けたユーザー）のAccountID。
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

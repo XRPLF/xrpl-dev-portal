@@ -13,20 +13,16 @@ If you are running multiple `rippled` servers in a single datacenter, you can co
 - Clustered servers share information about peers and API clients that are misbehaving or abusing the network. This makes it harder to attack all servers of the cluster at once.
 - Clustered servers always propagate transactions throughout the cluster, even if the transaction does not meet the current load-based transaction fee on some of them.
 
-If you are running a validator as a [private peer](peer-protocol.html#private-peers), Ripple recommends using a cluster of `rippled` servers as proxy servers.
+If you are running a validator as a [private peer](peer-protocol.md#private-peers), Ripple recommends using a cluster of `rippled` servers as proxy servers.
 
 ## See Also
 
 - **Tutorials:**
-    - [Cluster `rippled` Servers](cluster-rippled-servers.html)
-    - [Run rippled as a Validator](run-rippled-as-a-validator.html)
+    - [Cluster `rippled` Servers](../../infrastructure/configuration/peering/cluster-rippled-servers.md)
+    - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
 - **References:**
     - [peers method][]
     - [connect method][]
-    - [Peer Crawler](peer-crawler.html)
+    - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

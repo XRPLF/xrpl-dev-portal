@@ -19,7 +19,7 @@ This example shows how to:
 4. Send issued currency between accounts.
 5. Display account balances for all currencies.
 
-[![Test harness with currency transfer](img/quickstart5.png)](img/quickstart5.png)
+[![Test harness with currency transfer](/img/quickstart5.png)](/img/quickstart5.png)
 
 You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download} archive to try each of the samples in your own browser.
 
@@ -51,7 +51,7 @@ To create a trust line between accounts:
 3. Enter the destination account value in the **Destination** field.
 4. Click **Create Trustline**. <!-- SPELLING_IGNORE: trustline --><!--{# TODO: update the test harness to spell trust line as two words #}-->
 
-[![Trust line results](img/quickstart6.png)](img/quickstart6.png)
+[![Trust line results](/img/quickstart6.png)](/img/quickstart6.png)
 
 ## Send an Issued Currency Token
 
@@ -62,7 +62,7 @@ To transfer an issued currency token, once you have created a trust line:
 3. Enter the **Currency** type.
 4. Click **Send Currency**.
 
-[![Currency transfer](img/quickstart7.png)](img/quickstart7.png)
+[![Currency transfer](/img/quickstart7.png)](/img/quickstart7.png)
 
 # Code Walkthrough
 
@@ -97,14 +97,14 @@ Connect to the ledger
 Get the account wallets.
 
 ```
-  if (type=='standby') {
-    my_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  } else {
-    my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-    resultField = 'operationalResultField'
-  }
-  results += '\nRipple Default Setting: ' + defaultRippleSetting
-  resultField.value = results
+if (type=='standby') {
+  my_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
+} else {
+  my_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
+  resultField = 'operationalResultField'
+}
+results += '\nRipple Default Setting: ' + defaultRippleSetting
+resultField.value = results
 ```
 
 Prepare the transaction. If the `rippleDefault` argument is true, set the `asfDefaultRipple` flag. If it is false, clear the `asfDefaultRipple` flag.

@@ -13,19 +13,17 @@ labels:
 
 以下に、トランザクションのメタデータに含まれる可能性があるフィールドをいくつか示します。
 
-{% include '_snippets/tx-metadata-field-table.ja.md' %} <!--_ -->
+{% partial file="/_snippets/tx-metadata-field-table.md" /%} 
 
 ## メタデータの例
 
 次のJSONオブジェクトは、[複雑なクロスカレンシー支払い](https://livenet.xrpl.org/transactions/8C55AFC2A2AA42B5CE624AEECDB3ACFDD1E5379D4E5BF74A8460C5E97EF8706B)のメタデータを示しています。
 
-```json
-{% include '_api-examples/metadata/cross-currency-payment.json' %}
-```
+{% code-snippet file="/_api-examples/metadata/cross-currency-payment.json" language="json" /%}
 
 ## AffectedNodes
 
-`AffectedNodes`配列には、このトランザクションが何らかの変更を加えた[レジャーエントリ](ledger-object-types.html)の完全なリストが格納されます。この配列の各項目は、何が起こったかを示すトップレベルのフィールドを1つ持つオブジェクトです。
+`AffectedNodes`配列には、このトランザクションが何らかの変更を加えた[レジャーエントリ](../ledger-data/ledger-entry-types/index.md)の完全なリストが格納されます。この配列の各項目は、何が起こったかを示すトップレベルのフィールドを1つ持つオブジェクトです。
 
 - `CreatedNode`: トランザクションが新しいレジャーエントリを作成したことを示します。
 - `DeletedNode`: トランザクションが新しいレジャーエントリを削除したことを示します。
@@ -39,8 +37,8 @@ labels:
 
 | フィールド          | 値                  | 説明                                  |
 |:------------------|:--------------------|:-------------------------------------|
-| `LedgerEntryType` | 文字列               | 作成された[レジャーエントリの種類](ledger-object-types.html)。 |
-| `LedgerIndex`     | 文字列 - [ハッシュ][] | レジャーの[状態ツリー](ledgers.html)内のこの[レジャーエントリのID](ledger-object-ids.html)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](basic-data-types.html#レジャーインデックス)とは**異なります**。 |
+| `LedgerEntryType` | 文字列               | 作成された[レジャーエントリの種類](../ledger-data/ledger-entry-types/index.md)。 |
+| `LedgerIndex`     | 文字列 - [ハッシュ][] | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](../ledger-data/common-fields.md)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)とは**異なります**。 |
 | `NewFields`       | オブジェクト          | 新しく作成されたレジャー エントリの内容を示すフィールド。どのフィールドが存在するかは、作成されたレジャーエントリの種類によって異なります。 |
 
 ### DeletedNodeのフィールド
@@ -49,8 +47,8 @@ labels:
 
 | フィールド          | 値                  | 説明                                  |
 |:------------------|:--------------------|:-------------------------------------|
-| `LedgerEntryType` | 文字列               | 削除された[レジャーエントリの種類](ledger-object-types.html)。 |
-| `LedgerIndex`     | 文字列 - [ハッシュ][] | レジャーの[状態ツリー](ledgers.html)内のこの[レジャーエントリのID](ledger-object-ids.html)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](basic-data-types.html#レジャーインデックス)とは**異なります** |
+| `LedgerEntryType` | 文字列               | 削除された[レジャーエントリの種類](../ledger-data/ledger-entry-types/index.md)。 |
+| `LedgerIndex`     | 文字列 - [ハッシュ][] | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](../ledger-data/common-fields.md)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)とは**異なります** |
 | `FinalFields`     | オブジェクト          | 削除されたレジャーエントリの最後の内容を示すフィールド。どのフィールドが存在するかは、削除されたレジャーエントリの種類によって異なります。 |
 
 ### ModifiedNodeのフィールド
@@ -59,8 +57,8 @@ labels:
 
 | フィールド            | 値                         | 説明                        |
 |:--------------------|:---------------------------|:---------------------------|
-| `LedgerEntryType`   | 文字列                      | 更新された[レジャーエントリの種類](ledger-object-types.html)。 |
-| `LedgerIndex`       | 文字列 - [ハッシュ][]         | レジャーの[状態ツリー](ledgers.html)内のこの[レジャーエントリのID](ledger-object-ids.html)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](basic-data-types.html#レジャーインデックス)とは**異なります**。 |
+| `LedgerEntryType`   | 文字列                      | 更新された[レジャーエントリの種類](../ledger-data/ledger-entry-types/index.md)。 |
+| `LedgerIndex`       | 文字列 - [ハッシュ][]         | レジャーの[状態ツリー](../../../concepts/ledgers/index.md)内のこの[レジャーエントリのID](../ledger-data/common-fields.md)。**注意:** 名前が非常に似ていますがこれは[レジャーインデックス](../data-types/basic-data-types.md#レジャーインデックス)とは**異なります**。 |
 | `FinalFields`       | オブジェクト                  | このトランザクションからの変更を適用した後のレジャーエントリの内容を示すフィールド。どのフィールドが存在するかは、作成されたレジャーエントリの種類によって異なります。ほとんどのタイプのレジャーエントリには`PreviousTxnID`フィールドと`PreviousTxnLgrSeq`フィールドがありますが、これは省略されます。 |
 | `PreviousFields`    | オブジェクト                  | このトランザクションの結果として変更されたオブジェクトのすべてのフィールドの以前の値。トランザクションがオブジェクトにフィールドを追加しただけの場合、このフィールドは空のオブジェクトです。 |
 | `PreviousTxnID`     | 文字列 - [ハッシュ][]         | _(省略可能)_ このレジャーエントリを変更する前のトランザクションの[識別用ハッシュ][]。`PreviousTxnID`フィールドを持たないレジャーエントリの種類では省略されます。 |
@@ -74,13 +72,13 @@ NFTを含むトランザクション（`tx` と `account_tx`）はメタデー�
 
 | フィールド            | 値                        | 説明                        |
 |:--------------------|:--------------------------|:---------------------------|
-| `nftoken_id`        | 文字列                     | トランザクションの結果、レジャー上で変更された`NFToken`の`NFTokenID`を示します。トランザクションが`NFTokenMint`または`NFTokenAcceptOffer`の場合のみ表示されます。[NFTokenID](nftoken.html#nftokenid)をご覧ください。 |
+| `nftoken_id`        | 文字列                     | トランザクションの結果、レジャー上で変更された`NFToken`の`NFTokenID`を示します。トランザクションが`NFTokenMint`または`NFTokenAcceptOffer`の場合のみ表示されます。[NFTokenID](../data-types/nftoken.md#nftokenid)をご覧ください。 |
 | `nftoken_ids`       | 配列                       | トランザクションの結果、レジャー上で変更された`NFToken`のすべての`NFTokenID`を表示します。トランザクションが `NFTokenCancelOffer`の場合のみ表示されます。 |
 | `offer_id`          | 文字列                      | `NFTokenCreateOffer`トランザクションからのレスポンスに、新しい`NFTokenOffer`の`OfferID`を表示します。 |
 
 ## delivered_amount
 
-[Paymentトランザクション][]によって`Destination`に実際送金された金額を表します。トランザクションが成功すると、**[Partial Payments](partial-payments.html)であった場合を除いて、** 宛先は当該の金額を受取ります（Partial Paymentsの場合、`Amount`を上限とする正の金額が受取られます）。`Amount`フィールドを信頼するかどうかを選択するのではなく、メタデータの`delivered_amount`フィールドを使用して、宛先に実際に到達する金額を確認してください。
+[Paymentトランザクション][]によって`Destination`に実際送金された金額を表します。トランザクションが成功すると、**[Partial Payments](../../../concepts/payment-types/partial-payments.md)であった場合を除いて、** 宛先は当該の金額を受取ります（Partial Paymentsの場合、`Amount`を上限とする正の金額が受取られます）。`Amount`フィールドを信頼するかどうかを選択するのではなく、メタデータの`delivered_amount`フィールドを使用して、宛先に実際に到達する金額を確認してください。
 
 トランザクションのメタデータの`delivered_amount`フィールドは、成功したすべてのPaymentトランザクションが保持しており、フォーマットは通常の通貨額と同様です。ただし、送金額は、以下の両方の条件に該当するトランザクションについては使用できません。
 
@@ -89,11 +87,8 @@ NFTを含むトランザクション（`tx` と `account_tx`）はメタデー�
 
 両方の条件に該当する場合、`delivered_amount`には、実際の金額ではなく文字列値`unavailable`が記述されます。この場合、トランザクションのメタデータにあるAffectedNodesを読み取ることが、実際に送金された金額を割り出せる唯一の手段になります。
 
-**注記:** `delivered_amount`フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの[ハッシュ](basic-data-types.html#ハッシュ)を計算する際にも使用されません。一方、`DeliveredAmount`フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに _含まれます_ 。
+**注記:** `delivered_amount`フィールドはリクエストに対してオンデマンドで生成され、トランザクションメタデータのバイナリフォーマットには含まれず、トランザクションメタデータの[ハッシュ](../data-types/basic-data-types.md#ハッシュ)を計算する際にも使用されません。一方、`DeliveredAmount`フィールドは2014-01-20以降のpartial paymentトランザクションのバイナリフォーマットに _含まれます_ 。
 
-関連項目: [Partial Payments](partial-payments.html)
+関連項目: [Partial Payments](../../../concepts/payment-types/partial-payments.md)
 
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

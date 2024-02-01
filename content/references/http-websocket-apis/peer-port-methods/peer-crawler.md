@@ -8,7 +8,7 @@ labels:
 ---
 # Peer Crawler
 
-The Peer Crawler is a special [peer port method](peer-port-methods.html) for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](peer-protocol.html) port, which is also used for `rippled` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.
+The Peer Crawler is a special [peer port method](index.md) for reporting on the health and topology of the peer-to-peer network. This API method is available by default on a non-privileged basis through the [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md) port, which is also used for `rippled` servers' peer-to-peer communications about consensus, ledger history, and other necessary information.
 
 The information reported by the peer crawler is effectively public, and can be used to report on the overall XRP Ledger network, its health, and topology.
 
@@ -34,18 +34,18 @@ The JSON object has the following fields:
 |:-----------------|:-------|:-------------------------------------------------|
 | `counts`         | Object | _(May be omitted)_ Stats about this server's health, similar to the response from the [get_counts method][]. The default configuration does not report this field. Information reported includes: how large the ledger and transaction databases are, the cache hit rate for the in-application caches, and how many objects of various types are cached in memory. Types of objects that may be stored in memory include ledgers (`Ledger`), transactions (`STTx`), validation messages (`STValidation`), and more. |
 | `overlay` | Object  | _(May be omitted)_ Information about the peer servers currently connected to this one, similar to the response from the [peers method][]. Contains one field, `active`, which is an array of objects (see below). |
-| `server`         | Object | _(May be omitted)_ Information about this server. Contains public fields from the [server_state method][], including what `rippled` version you are running (`build_version`), which [ledger versions](ledger-history.html) your server has available (`complete_ledgers`), and the amount of load your server is experiencing. [Updated in: rippled 1.2.1][] |
-| `unl`            | Object | _(May be omitted)_ Information about the validators and validator list sites this server is configured to trust, similar to the response from the [validators method][] and [validator_list_sites method][]. [Updated in: rippled 1.2.1][] |
-| `version`        | Number | Indicates the version of this peer crawler response format. The current peer crawler version number is `2`. [Updated in: rippled 1.2.1][] |
+| `server`         | Object | _(May be omitted)_ Information about this server. Contains public fields from the [server_state method][], including what `rippled` version you are running (`build_version`), which [ledger versions](../../../concepts/networks-and-servers/ledger-history.md) your server has available (`complete_ledgers`), and the amount of load your server is experiencing. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
+| `unl`            | Object | _(May be omitted)_ Information about the validators and validator list sites this server is configured to trust, similar to the response from the [validators method][] and [validator_list_sites method][]. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
+| `version`        | Number | Indicates the version of this peer crawler response format. The current peer crawler version number is `2`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
 
 Each member of the `overlay.active` array is an object with the following fields:
 
 | `Field`      | Value                    | Description                        |
 |:-------------|:-------------------------|:-----------------------------------|
-| `complete_ledgers` | String | The range of [ledger versions](ledger-history.html) this peer has available. |
-| `complete_shards` | String | _(May be omitted)_ The range of [ledger history shards](history-sharding.html) this peer has available. |
-| `ip`         | String (IPv4 Address)    | _(May be omitted)_ The IP address of this connected peer. Omitted if the peer is configured as a validator or a [private peer](peer-protocol.html#private-peers). [Updated in: rippled 1.2.1][] |
-| `port`       | String (Number)          | _(May be omitted)_ The port number on the peer server that serves RTXP. Typically `51235`. Omitted if the peer is configured as a validator or a [private peer](peer-protocol.html#private-peers). [Updated in: rippled 1.2.1][] |
+| `complete_ledgers` | String | The range of [ledger versions](../../../concepts/networks-and-servers/ledger-history.md) this peer has available. |
+| `complete_shards` | String | _(May be omitted)_ The range of [ledger history shards](../../../infrastructure/configuration/data-retention/history-sharding.md) this peer has available. |
+| `ip`         | String (IPv4 Address)    | _(May be omitted)_ The IP address of this connected peer. Omitted if the peer is configured as a validator or a [private peer](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
+| `port`       | String (Number)          | _(May be omitted)_ The port number on the peer server that serves RTXP. Typically `51235`. Omitted if the peer is configured as a validator or a [private peer](../../../concepts/networks-and-servers/peer-protocol.md#private-peers). {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}Updated in: rippled 1.2.1{% /badge %} |
 | `public_key` | String (Base-64 Encoded) | The public key of the ECDSA key pair used by this peer to sign RTXP messages. (This is the same data as the `pubkey_node` reported by the peer server's [server_info method][].) |
 | `type`       | String                   | The value `in` or `out`, indicating whether the TCP connection to the peer is incoming or outgoing. |
 | `uptime`     | Number                   | The number of seconds the server has been connected to this peer. |
@@ -55,39 +55,31 @@ Each member of the `overlay.active` array is an object with the following fields
 
 Request:
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*HTTP*
-
+{% tab label="HTTP" %}
 ```
 GET https://localhost:51235/crawl
 ```
+{% /tab %}
 
-*cURL*
-
+{% tab label="cURL" %}
 ```
 curl --insecure https://localhost:51235/crawl
 ```
+{% /tab %}
 
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 Response:
 
-```json
-200 OK
-
-{% include '_api-examples/peer-crawler/crawl.json' %}
-```
+{% code-snippet file="/_api-examples/peer-crawler/crawl.json" language="json" prefix="200 OK\n\n" /%}
 
 
 ## See Also
 
-- [Peer Protocol](peer-protocol.html)
-- [Configure the Peer Crawler](configure-the-peer-crawler.html)
+- [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
+- [Configure the Peer Crawler](../../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
 - [Validator History Service](https://github.com/ripple/validator-history-service) is an example of a service that uses the peer crawler for ingesting, aggregating, storing, and disbursing validation related data.
 
-
-<!--{# common link defs #}-->
-{% include '_snippets/rippled-api-links.md' %}			
-{% include '_snippets/tx-type-links.md' %}			
-{% include '_snippets/rippled_versions.md' %}
+{% raw-partial file="/_snippets/common-links.md" /%}

@@ -11,17 +11,17 @@ _[Checks Amendment][]により追加されました。_
 
 Checkがレジャーに含まれており有効期限切れではない場合は、指定の受取人は`Amount`フィールドを指定した[CheckCashトランザクション][]を送信することで、Checkを換金し、Checkに指定されている額までの正確な額を受領できます。請求書の額面通りの金額を回収したい場合など、特定の金額の受領を希望する際には、この方法でCheckを換金できます。
 
-指定の受取人は、[Checkを変動金額で換金する](cash-a-check-for-a-flexible-amount.html)こともできます。
+指定の受取人は、[Checkを変動金額で換金する](cash-a-check-for-a-flexible-amount.md)こともできます。
 
 {% set cash_exact_n = cycler(* range(1,99)) %}
 
 ## 前提条件
 
-{% include '_snippets/checkcash-prereqs.ja.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/checkcash-prereqs.md" /%} 
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの準備
 
-[CheckCashトランザクション][]のフィールドの値を決定します。Checkを正確な金額で換金する場合、以下のフィールドが最低限必要です。それ以外のフィールドはオプションまたは署名時に[自動入力](transaction-common-fields.html#自動入力可能なフィールド)可能なフィールドです。
+[CheckCashトランザクション][]のフィールドの値を決定します。Checkを正確な金額で換金する場合、以下のフィールドが最低限必要です。それ以外のフィールドはオプションまたは署名時に[自動入力](../../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)可能なフィールドです。
 
 | フィールド             | 値                     | 説明                  |
 |:------------------|:--------------------------|:-----------------------------|
@@ -35,10 +35,9 @@ Checkがレジャーに含まれており有効期限切れではない場合は
 
 Checkを正確な金額で換金するためのトランザクションを準備する手順を以下の例に示します。
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*JSON-RPC、WebSocket、またはコマンドライン*
-
+{% tab label="JSON-RPC、WebSocket、またはコマンドライン" %}
 ```json
 {
  "Account": "rfkE1aSy9G8Upk4JssnwBxhEv5p4mn2KTy",
@@ -48,78 +47,69 @@ Checkを正確な金額で換金するためのトランザクションを準備
  "Fee": "12"
 }
 ```
+{% /tab %}
 
-*ripple-lib 1.x*
+{% tab label="ripple-lib 1.x" %}
+{% code-snippet file="/_code-samples/checks/js/prepareCashExact.js" language="js" /%}
+{% /tab %}
 
-```js
-{% include '_code-samples/checks/js/prepareCashExact.js' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## {{cash_exact_n.next()}}.CheckCashトランザクションの署名
 
-{% include '_snippets/tutorial-sign-step.ja.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-sign-step.md" /%} 
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/sign-cash-exact-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/sign-cash-exact-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/sign-cash-exact-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/sign-cash-exact-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ## {{cash_exact_n.next()}}.署名済みCheckCashトランザクションの送信
 
 {% set step_1_link = "#1checkcashトランザクションの準備" %}
-{% include '_snippets/tutorial-submit-step.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/submit-cash-exact-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/submit-cash-exact-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/submit-cash-exact-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/submit-cash-exact-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 ## {{cash_exact_n.next()}}.検証の待機
 
-{% include '_snippets/wait-for-validation.ja.md' %} <!--#{ fix md highlighting_ #}-->
+{% partial file="/_snippets/wait-for-validation.md" /%} 
 
 ## {{cash_exact_n.next()}}.最終結果の確認
 
@@ -127,33 +117,29 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 Checkが正確な`Amount`で換金された場合は、受取人に対し正確な額が入金されたと想定できます（トークンの金額が極めて大きい場合や小さい場合は、金額が丸められることがあります）。
 
-Checkを換金できない場合、Checkはレジャーに残るため、後日換金を再試行できます。代わりに[Checkを変動金額で換金する](cash-a-check-for-a-flexible-amount.html)ことができます。
+Checkを換金できない場合、Checkはレジャーに残るため、後日換金を再試行できます。代わりに[Checkを変動金額で換金する](cash-a-check-for-a-flexible-amount.md)ことができます。
 
 ### リクエストの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/tx-cash-exact-req.sh" language="bash" /%}
+{% /tab %}
 
-```bash
-{% include '_code-samples/checks/cli/tx-cash-exact-req.sh' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 
 ### レスポンスの例
 
-<!-- MULTICODE_BLOCK_START -->
+{% tabs %}
 
-*コマンドライン*
+{% tab label="コマンドライン" %}
+{% code-snippet file="/_code-samples/checks/cli/tx-cash-exact-resp.txt" language="json" /%}
+{% /tab %}
 
-```json
-{% include '_code-samples/checks/cli/tx-cash-exact-resp.txt' %}
-```
-
-<!-- MULTICODE_BLOCK_END -->
+{% /tabs %}
 
 <!--{# common links #}-->
-{% include '_snippets/tx-type-links.md' %}
-{% include '_snippets/rippled-api-links.md' %}
+
+{% raw-partial file="/_snippets/common-links.md" /%}
