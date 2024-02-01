@@ -550,6 +550,9 @@ create-conditional-escrows-using-javascript.html:
 nfts-using-javascript.html:
     to: /docs/tutorials/javascript/modular-tutorials/nfts-using-javascript/
     type: 301
+nfts-using-python.html:
+    to: /docs/tutorials/python/modular-tutorials/nfts
+    type: 301
 mint-and-burn-nfts-using-javascript.html:
     to: /docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts
     type: 301
@@ -579,6 +582,9 @@ java.html:
     type: 301
 get-started-using-java.html:
     to: /docs/tutorials/java/get-started
+    type: 301
+php.html:
+    to: /docs/tutorials/php
     type: 301
 get-started-using-php.html:
     to: /docs/tutorials/php/get-started
