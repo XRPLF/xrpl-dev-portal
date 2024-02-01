@@ -36,7 +36,7 @@ To enable StatsD on your `rippled` server, perform the following steps:
     - For the `address`, use the IP address and port where `rippledmon` is listening. By default, this port is 8125.
     - For the `prefix`, choose a name that identifies the `rippled` server you are configuring. The prefix must not include whitespace, colons ":", or the vertical bar "|". The prefix appears on all of the StatsD metrics exported from this server.
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 0. Restart the `rippled` service.
 

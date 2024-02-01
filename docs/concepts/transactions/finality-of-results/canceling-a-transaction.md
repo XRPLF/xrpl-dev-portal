@@ -22,4 +22,4 @@ This approach is preferable to renumbering and resubmitting transactions 12 and 
 
 In this way, an AccountSet transaction with no options is the canonical "[no-op](http://en.wikipedia.org/wiki/NOP)" transaction.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

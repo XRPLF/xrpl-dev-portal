@@ -48,7 +48,7 @@ Here's an example transaction ready to be multi-signed:
 
 Use the [sign_for method][] with the secret key and address of one of the members of your SignerList to get a signature for that member.
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ```
@@ -109,7 +109,7 @@ You can collect additional signatures in parallel or in serial:
 * In parallel: Use the `sign_for` command with the original JSON for the transaction. Each response has a single signature in the `Signers` array.
 * In serial: Use the `sign_for` command with the `tx_json` value from the previous `sign_for` response. Each response adds a new signature to the existing `Signers` array.
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ```
@@ -400,4 +400,4 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

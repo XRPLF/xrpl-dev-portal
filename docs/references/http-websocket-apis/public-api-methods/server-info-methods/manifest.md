@@ -150,4 +150,4 @@ If provided, the `details` object contains the following fields:
 - `invalidParams` - The `public_key` field was missing or specified incorrectly.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

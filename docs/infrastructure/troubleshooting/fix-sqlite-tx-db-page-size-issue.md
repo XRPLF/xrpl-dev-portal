@@ -221,4 +221,4 @@ To migrate your transaction database to a larger page size, perform the followin
         - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

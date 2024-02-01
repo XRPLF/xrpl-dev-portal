@@ -37,7 +37,7 @@ Creates both an [AMM entry][] and a [special AccountRoot entry](../../ledger-dat
 }
 ```
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field        | JSON Type           | [Internal Type][] | Required? | Description |
 |:-------------|:--------------------|:------------------|:----------|:------------|
@@ -70,4 +70,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temBAD_FEE`        | The `TradingFee` value is invalid. It must be zero or a positive integer and cannot be over 1000. |
 | `temDISABLED`       | The AMM feature is not enabled on this network. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

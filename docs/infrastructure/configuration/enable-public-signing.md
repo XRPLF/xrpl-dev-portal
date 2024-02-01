@@ -29,7 +29,7 @@ To enable public signing, perform the following steps:
     vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Add the following stanza to your config file, and save the changes:
 
@@ -58,4 +58,4 @@ To enable public signing, perform the following steps:
     - [sign_for method][]
     - [submit method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

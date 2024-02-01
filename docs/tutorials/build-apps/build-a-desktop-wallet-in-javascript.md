@@ -19,7 +19,7 @@ To complete this tutorial, you should meet the following requirements:
 
 ### Source Code
 
-You can find the complete source code for all of this tutorial's examples in the {% repo-link path="content/_code-samples/build-a-desktop-wallet/js/" %}code samples section of this website's repository{% /repo-link %}. After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of  `package.json`, e.g, `npm run ledger-index`.
+You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-desktop-wallet/js/" %}code samples section of this website's repository{% /repo-link %}. After a `npm install` in this directory you can run the application for each step as described in the `scripts` section of  `package.json`, e.g, `npm run ledger-index`.
 
 **Caution:** Be careful if you copy-and-paste the source code from these directly from these files. The sample code is split up into different files per step, so some shared imports and files are in different directories in the examples. This especially applies to the `library`, `bootstrap`, and `WALLET_DIR` contents.
 
@@ -34,7 +34,7 @@ We will use the well-established [Electron Framework](https://www.electronjs.org
 
 At the end of this tutorial, you will have built a JavaScript Wallet application that looks something like this:
 
-![Desktop wallet screenshot](/img/javascript-wallet-preview.png)
+![Desktop wallet screenshot](/docs/img/javascript-wallet-preview.png)
 
 The look and feel of the user interface should be roughly the same regardless of operating system, as the Electron Framework allows us to write cross-platform applications that are styled with HTML and CSS just like a web-based application.
 
@@ -157,29 +157,29 @@ npm run start
 **Tip:** When you need to debug the application, you can open Developer Tools like in Chrome or Firefox by selecting "View / Toggle Developer Tools" from The application Menu or using a Shortcut ("Ctrl+Shift+I" on Windows or Linux, "Option+Command+I on Mac).
 
 You should see a window appear that displays the text "Build a XRPL Wallet" and "Hello world!"
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run hello
 ```
 
-In the next steps we will continually expand on this very basic setup. To better keep track of all the changes that will be made, the files in the {% repo-link path="content/_code-samples/build-a-desktop-wallet/js/" %}reference section{% /repo-link %} are numbered/prefixed with the respective step number:
+In the next steps we will continually expand on this very basic setup. To better keep track of all the changes that will be made, the files in the {% repo-link path="_code-samples/build-a-desktop-wallet/js/" %}reference section{% /repo-link %} are numbered/prefixed with the respective step number:
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/0_hello.js" %}`0-hello/0_hello.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/0_hello.html" %}`0-hello/view/0_hello.html`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/0_hello.js" %}`0-hello/0_hello.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/0_hello.html" %}`0-hello/view/0_hello.html`{% /repo-link %},
 
 ### 1. Ledger Index
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/1_preload.js" %}`1-ledger-index/view/preload.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/1_ledger-index.html" %}`1-ledger-index/view/template.html`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/1_renderer.js" %}`1-ledger-index/view/renderer.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/1_ledger-index.js" %}`1-ledger-index/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/1_preload.js" %}`1-ledger-index/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/1_ledger-index.html" %}`1-ledger-index/view/template.html`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/1_renderer.js" %}`1-ledger-index/view/renderer.js`{% /repo-link %}.
 
 Our first step was to have a running "Hello World" application. Now we want to expand on that so that the application can interact on a very basic level with the XRP Ledger and display some information about the current ledger state on the screen. After completing this step, the - for the time being unstyled - application should look like this:
 
-![Screenshot: Step 1, hello world equivalent](/img/javascript-wallet-1.png)
+![Screenshot: Step 1, hello world equivalent](/docs/img/javascript-wallet-1.png)
 
 1. Update `index.js` by adding the following snippet in the import section at the top of the file below the `path` import:
 
@@ -331,7 +331,7 @@ npm run start
 
 You should see something like 'Latest validated ledger index: 39296259'. The number will be different since it is the latest ledger index as of when the app started. We'll make it continuously update later on.
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run ledger-index
@@ -341,14 +341,14 @@ npm run ledger-index
 ### 2. Show Ledger Updates by using WebSocket subscriptions
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/2_async-subscribe.js" %}`2-async/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/2_preload.js" %}`2-async/view/preload.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/2_renderer.js" %}`2-async/view/renderer.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/2_async.html" %}`2-async/view/template.html`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/2_async-subscribe.js" %}`2-async/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/2_preload.js" %}`2-async/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/2_renderer.js" %}`2-async/view/renderer.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/2_async.html" %}`2-async/view/template.html`{% /repo-link %}.
 
 Our application so far only shows the latest validated ledger sequence at the time when we opened it. Let's take things up a notch and add some dashboard like functionality where our wallet app will keep in sync with the ledger and display the latest specs and stats like a clock that is keeping track of time. The result will look something like this:
 
-![Screenshot: Step 2, show ledger updates](/img/javascript-wallet-2.png)
+![Screenshot: Step 2, show ledger updates](/docs/img/javascript-wallet-2.png)
 
 1. In `index.js` remove the `getValidatedLedgerIndex` function.
 
@@ -438,7 +438,7 @@ npm run start
 
 This time the application should be the same as in the last step, with the difference that the latest ledger index value gets updated roughly very 3-5 seconds.
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run async
@@ -447,17 +447,17 @@ npm run async
 ### 3. Display an Account
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/3_account.js" %}`3-account/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/3_preload.js" %}`3-account/view/preload.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/3_renderer.js" %}`3-account/view/renderer.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/3_account.html" %}`3-account/view/template.html`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/3_account.js" %}`3-account/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/3_preload.js" %}`3-account/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/3_renderer.js" %}`3-account/view/renderer.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/3_account.html" %}`3-account/view/template.html`{% /repo-link %}.
 
 We now have a permanent connection to the XRPL and some code to bring the delivered data to life on our screen, it's time to add some "wallet" functionality by managing an individual account.
 
 We will ask the user for address of the account to monitor by using a HTML dialog element. We will furthermore refactor the application by encapsulating some functionality in a library. After finishing this step the application should look like this:
 
-![Screenshot: Step 3, show account information](/img/javascript-wallet-3.png)
+![Screenshot: Step 3, show account information](/docs/img/javascript-wallet-3.png)
 
 1. In the project root, create a new directory named `library`. Inside this directory, create a file `3_helpers.js` with the following content:
 
@@ -646,7 +646,7 @@ If you need a Testnet address, [you can get one from the faucet](/resources/dev-
 
 On, startup, the application should display a simple dialog prompting the user for an XRPL account address. After entering the address the application should display some basic information about that account and about the ledger.
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run account
@@ -655,16 +655,16 @@ npm run account
 ### 4. Show Account's Transactions
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/4_tx-history.js" %}`4-tx-history/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/4_tx-preload.js" %}`4-tx-history/view/preload.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/4_tx-renderer.js" %}`4-tx-history/view/renderer.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/4_tx-history.html" %}`4-tx-history/view/index.html`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/4_tx-history.js" %}`4-tx-history/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/4_tx-preload.js" %}`4-tx-history/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/4_tx-renderer.js" %}`4-tx-history/view/renderer.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/4_tx-history.html" %}`4-tx-history/view/index.html`{% /repo-link %}.
 
 At this point, our wallet shows the account's balance getting updated, but doesn't give us any clue about how this state came about, namely the actual transactions that caused the updates. So, our next step is to display the account's up to date transaction history using subscriptions once again:
 
-![Screenshot: Step 4, show transaction history](/img/javascript-wallet-4.png)
+![Screenshot: Step 4, show transaction history](/docs/img/javascript-wallet-4.png)
 
 1. In the `library` folder, add a new file `4_helpers.js`. Then add the following helper function to that file:
 
@@ -812,7 +812,7 @@ npm run start
 
 Our application should by now display all the stuff from the last step plus an additional list of transactions associated with the given account.
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run tx-history
@@ -821,17 +821,17 @@ npm run tx-history
 ### 5. Saving the Private Keys with a Password
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/5_password.js" %}`5-password/index.js`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/5_tx-preload.js" %}`5-password/view/preload.js`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/5_password.html" %}`5-password/view/template.html`{% /repo-link %}.
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/5_tx-renderer.js" %}`5-password/view/renderer.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/5_password.js" %}`5-password/index.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/5_tx-preload.js" %}`5-password/view/preload.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/5_password.html" %}`5-password/view/template.html`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/5_tx-renderer.js" %}`5-password/view/renderer.js`{% /repo-link %}.
 
 After finishing this step the application should look like this:
 
-![Screenshot: Step 5, use salted password](/img/javascript-wallet-5.png)
+![Screenshot: Step 5, use salted password](/docs/img/javascript-wallet-5.png)
 
 By now we always query the user for an account address at application startup. We more or less have a monitoring tool for accounts that queries publicly available data. Because we want to have real wallet functionality including sending XRP, we will have to deal with private keys and seeds.
 
@@ -1061,7 +1061,7 @@ You can generate a test account's seed via the [testnet faucet here](https://xrp
 
 After you have created a wallet this way, you should close the application and start it up a second time: On second run it should prompt you for the password, and you should see the same result as in the last step.
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run password
@@ -1070,27 +1070,27 @@ npm run password
 ### 6. Styling
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/6_styling.js" %}`6-styling/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/6_tx-preload.js" %}`6-styling/view/preload.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/6_styling.html" %}`6-styling/view/template.html`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/6_tx-renderer.js" %}`6-styling/view/renderer.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap/bootstrap.bundle.min.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap/bootstrap.min.css`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`bootstrap/custom.css`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`bootstrap/XRPLedger_DevPortal-white.svg`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/6_styling.js" %}`6-styling/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/6_tx-preload.js" %}`6-styling/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/6_styling.html" %}`6-styling/view/template.html`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/6_tx-renderer.js" %}`6-styling/view/renderer.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap/bootstrap.bundle.min.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap/bootstrap.min.css`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`bootstrap/custom.css`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`bootstrap/XRPLedger_DevPortal-white.svg`{% /repo-link %}.
 
 After finishing this step the application should look like this:
 
-![Screenshot: Step 6, style application with css](/img/javascript-wallet-6.png)
+![Screenshot: Step 6, style application with css](/docs/img/javascript-wallet-6.png)
 
 1. In the project root, create a new folder `bootstrap` and add the following files into that directory:
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap.bundle.min.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap.min.css`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`custom.css`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`XRPLedger_DevPortal-white.svg`{% /repo-link %}
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.js" %}`bootstrap.bundle.min.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/bootstrap.bundle.min.css" %}`bootstrap.min.css`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/custom.css" %}`custom.css`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/bootstrap/XRPLedger_DevPortal-white.svg" %}`XRPLedger_DevPortal-white.svg`{% /repo-link %}
 
 2. Change the content of `view/template.html` to be the following code:
 
@@ -1224,7 +1224,7 @@ npm run start
 
 This time the application should display a dashboard like layout with the XRP logo and a navigation ono the left side, and a content area comprising most of the screen. You should be able to switch from the dashboard to the transactions list and back.
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run styling
@@ -1233,19 +1233,19 @@ npm run styling
 ### 7. Send XRP
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/6_helpers.js" %}`library/6_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/7_helpers.js" %}`library/7_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/7_send-xrp.js" %}`7-send-xrp/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/7_preload.js" %}`7-send-xrp/view/preload.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/7_renderer.js" %}`7-send-xrp/view/renderer.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/7_send-xrp.html" %}`7-send-xrp/view/template.html`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/6_helpers.js" %}`library/6_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/7_helpers.js" %}`library/7_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/7_send-xrp.js" %}`7-send-xrp/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/7_preload.js" %}`7-send-xrp/view/preload.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/7_renderer.js" %}`7-send-xrp/view/renderer.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/7_send-xrp.html" %}`7-send-xrp/view/template.html`{% /repo-link %}.
 
 Up until now we have enabled our app to query and display data from the XRPL. Now it's time to actively participate in the ledger by enabling our application to send transactions. For now, we can stick to sending direct XRP payments because there are more complexities involved in sending issued tokens. After finishing this step the application should look like this:
 
-![Screenshot: Step 7, send xrp dialog](/img/javascript-wallet-7.png)
+![Screenshot: Step 7, send xrp dialog](/docs/img/javascript-wallet-7.png)
 
 1. Create the file `library/7_helpers.js` and add the following contents:
 
@@ -1370,7 +1370,7 @@ The application should now display a "Send XRP" button in the top right corner, 
 
 If you need an account address to send the XRP to, [you can create an account on the testnet](https://learn.xrpl.org/course/code-with-the-xrpl/lesson/create-accounts-and-send-xrp/).
 
-To run the reference application found in `content/_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
+To run the reference application found in `_code-samples/build-a-desktop-wallet/desktop-js` for this step, run:
 
 ```console
 npm run send-xrp
@@ -1379,16 +1379,16 @@ npm run send-xrp
 ### 8. Domain Verification and Polish
 
 **Full code for this step:**
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/6_helpers.js" %}`library/6_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/7_helpers.js" %}`library/7_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/library/8_helpers.js" %}`library/8_helpers.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/8_domain-verification.js" %}`8-domain-verification/index.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/8_preload.js" %}`8-domain-verification/view/8_prelaod.js`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/8_domain-verification.html" %}`8-domain-verification/view/8_domain-verification.html`{% /repo-link %},
-{% repo-link path="content/_code-samples/build-a-desktop-wallet/js/view/8_renderer.js" %}`8-domain-verification/view/8_renderer.js`{% /repo-link %}.
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/3_helpers.js" %}`library/3_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/4_helpers.js" %}`library/4_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/5_helpers.js" %}`library/5_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/6_helpers.js" %}`library/6_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/7_helpers.js" %}`library/7_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/library/8_helpers.js" %}`library/8_helpers.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/8_domain-verification.js" %}`8-domain-verification/index.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/8_preload.js" %}`8-domain-verification/view/8_prelaod.js`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/8_domain-verification.html" %}`8-domain-verification/view/8_domain-verification.html`{% /repo-link %},
+{% repo-link path="_code-samples/build-a-desktop-wallet/js/view/8_renderer.js" %}`8-domain-verification/view/8_renderer.js`{% /repo-link %}.
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space because decentralized systems like the XRP Ledger don't have an admin or support team one can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address.
 
@@ -1396,7 +1396,7 @@ This step shows how to add some checks on destination addresses to warn the user
 
 One type of check we could make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, we can could show it like this:
 
-![Screenshot: Step 8, use domain verification](/img/javascript-wallet-8.png)
+![Screenshot: Step 8, use domain verification](/docs/img/javascript-wallet-8.png)
 
 1. In the `library` folder, add a new file `8_helpers.js`. Then add the following contents to that file:
 
@@ -1521,7 +1521,7 @@ npm run domain-verification
 
 Congratulations, you now have created your own wallet application! In completing this tutorial, you've not only learned how to interact with the XRP Ledger, but also which challenges this provokes when building a user facing application. So let's do a recap of what you have accomplished:
 
-![Desktop wallet screenshot](/img/javascript-wallet-preview.png)
+![Desktop wallet screenshot](/docs/img/javascript-wallet-preview.png)
 
 0. First you set up the project and created a basic electron application.
 1. In Step 1 you did your first ledger query and had the application display the latest closed ledger index, using Electron's inter-process-communication.

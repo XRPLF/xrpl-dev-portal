@@ -28,4 +28,4 @@ Whenever `rippled` closes a ledger, it reorders the transactions according to a 
     - [server_info method][]
     - [`rippled` Commandline Usage](../commandline-usage.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

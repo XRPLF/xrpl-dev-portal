@@ -92,39 +92,39 @@ const useCases = [
 ];
 const intermediateVideos = [
   {
-    src: require('./static/img/backgrounds/docs-advanced-payment-features@2x.png'),
+    src: require('../static/img/backgrounds/docs-advanced-payment-features@2x.png'),
     title: 'Advanced Payment Features',
     url: 'https://www.youtube.com/embed/e2Iwsk37LMk?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
   {
-    src: require('./static/img/backgrounds/docs-governance@2x.png'),
+    src: require('../static/img/backgrounds/docs-governance@2x.png'),
     title: 'Governance and the Amendment Process',
     url: 'https://www.youtube.com/embed/4GbRdanHoR4?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
   {
-    src: require('./static/img/backgrounds/docs-sidechains@2x.png'),
+    src: require('../static/img/backgrounds/docs-sidechains@2x.png'),
     title: 'Federated Sidechains',
     url: 'https://www.youtube.com/embed/NhH4LM8NxgY?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
 ];
 const getStartedVideos = [
   {
-    src: require('./static/img/backgrounds/docs-intro-to-XRP-ledger@2x.png'),
+    src: require('../static/img/backgrounds/docs-intro-to-XRP-ledger@2x.png'),
     title: 'Intro to XRP Ledger',
     url: 'https://www.youtube.com/embed/sVTybJ3cNyo?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
   {
-    src: require('./static/img/backgrounds/docs-accounts@2x.png'),
+    src: require('../static/img/backgrounds/docs-accounts@2x.png'),
     title: 'Accounts',
     url: 'https://www.youtube.com/embed/eO8jE6PftX8?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
   {
-    src: require('./static/img/backgrounds/docs-decentralized-exchange@2x.png'),
+    src: require('../static/img/backgrounds/docs-decentralized-exchange@2x.png'),
     title: 'Decentralized Exchange',
     url: 'https://www.youtube.com/embed/VWNrHBDfXvA?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
   {
-    src: require('./static/img/backgrounds/docs-tokenization@2x.png'),
+    src: require('../static/img/backgrounds/docs-tokenization@2x.png'),
     title: 'Tokenization',
     url: 'https://www.youtube.com/embed/Oj4cWOiWf4A?rel=0&amp;showinfo=0&amp;autoplay=1',
   },
@@ -154,9 +154,6 @@ const devTools = [
       'Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.',
   },
 ];
-const test = './assets/img/backgrounds/docs-intro-to-XRP-ledger@2x.png';
-
-//const target = { prefix: '' }; // TODO: fixme
 
 function UseCasesCard(props: {
   useCase: {
@@ -331,7 +328,7 @@ export default function Docs() {
                   <a href="/tutorials/get-started/get-started-using-javascript/">
                     <img
                       alt="Javascript Logo"
-                      src={require('./static/img/logos/javascript.svg')}
+                      src={require('../static/img/logos/javascript.svg')}
                       className="circled-logo"
                     />
                     <h5 className="btn-arrow">{translate('Javascript')}</h5>
@@ -339,13 +336,13 @@ export default function Docs() {
                 </div>
                 <div className="col langs">
                   <a href="/tutorials/get-started/get-started-using-python/">
-                    <img alt="Python Logo" src={require('./static/img/logos/python.svg')} className="circled-logo" />
+                    <img alt="Python Logo" src={require('../static/img/logos/python.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Python')}</h5>
                   </a>
                 </div>
                 <div className="col langs">
                   <a href="/tutorials/get-started/get-started-using-java/">
-                    <img alt="Java Logo" src={require('./static/img/logos/java.svg')} className="circled-logo" />
+                    <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
                   </a>
                 </div>
@@ -409,8 +406,8 @@ export default function Docs() {
             </div>
             <div className="col">
               <div className="card cta-card p-8-sm p-10-until-sm br-8">
-                <img src={require('./img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" />
-                <img src={require('./img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" />
+                <img src={require('../static/img/backgrounds/cta-home-purple.svg')} className="d-none-sm cta cta-top-left" />
+                <img src={require('../static/img/backgrounds/cta-home-green.svg')} className="cta cta-bottom-right" />
                 <div className="z-index-1 position-relative">
                   <h2 className="h4 mb-8-sm mb-10-until-sm">{translate('Get Free Test XRP')}</h2>
                   <p className="mb-10">
@@ -428,7 +425,7 @@ export default function Docs() {
         </section>
         {/* full docs index isn't ported to Redocly
         <section className="container-new">
-          <a href="./docs-index.html" className="btn-arrow arrow-purple documentation-index mr-auto">
+          <a href="/docs/full-index" className="btn-arrow arrow-purple documentation-index mr-auto">
             {translate('See full documentation index')}
           </a>
         </section>

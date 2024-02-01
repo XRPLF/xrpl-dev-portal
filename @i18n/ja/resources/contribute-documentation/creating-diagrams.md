@@ -8,14 +8,14 @@ seo:
 
 このサイトには、SVGの図をライト・ダークモード用に自動的に再カラーリングするコードが含まれています。これは単に画像を反転させるだけではありません。再カラーリングは（ボトムライトに見えないように）グラデーションを同じ方向に保ち、色をその逆ではなくテーマに合った同等なものに置き換えます。例えば、"Ripple blue"は、その逆のオレンジではなく、XRPLグリーンに再カラーリングされます。
 
-![色の反転とテーマ対応再カラーリングの比較](/img/theme-aware-recolor.png)
+![色の反転とテーマ対応再カラーリングの比較](/docs/img/theme-aware-recolor.png)
 
 テーマを意識した再カラーリングでは、図のSVG形式の単一のソースファイルを使用し、CSSを使用して現在のテーマ（明暗）に合わせて再カラーリングされた図を生成します。ユーザがテーマを変更すると、図は即座にそれに合わせて変更されます。
 
 テーマに対応した図をドキュメントに含めるには、以下のような構文で`include_svg`フィルタを使用します。
 
 ```jinja
-[{% inline-svg file="/img/anatomy-of-a-ledger-complete.svg" /%}](/img/anatomy-of-a-ledger-complete.svg "図1：XRP Ledgerの要素")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-complete.svg" /%}](/docs/img/anatomy-of-a-ledger-complete.svg "図1：XRP Ledgerの要素")
 ```
 
 この構文の前後は空行にしてください。該当のSVGファイルは、リポジトリのトップレベルにある[`img/`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/img)フォルダか、そのサブフォルダにあるはずです。2番目の引数は _表題_ で、ユーザが図の上にマウスを置いたときに表示されます。

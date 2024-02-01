@@ -68,7 +68,7 @@ APIは、現在の進行中のレジャーにトランザクション候補を�
 
 次の図は、トランザクションの送信と結果の判断に推奨されるフローを示します。
 
-[![信頼できるトランザクションの送信フローチャート](/img/reliable-tx-submission.svg)](/img/reliable-tx-submission.svg)
+[![信頼できるトランザクションの送信フローチャート](/docs/img/reliable-tx-submission.svg)](/docs/img/reliable-tx-submission.svg)
 
 ### 信頼できるトランザクションの送信
 
@@ -525,4 +525,4 @@ JSON-RPCリクエスト:
 - [XRP Ledgerコンセンサスプロセスの概要](../consensus-protocol/index.md)
 - [コンセンサスの原理とルール](../consensus-protocol/consensus-principles-and-rules.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

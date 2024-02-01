@@ -71,7 +71,7 @@ Example entry for a page that isn't translated:
 
 ## Where to Start
 
-If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the {% repo-link path="content/concepts/introduction/what-is-the-xrp-ledger.md" %}"What is the XRP Ledger?" page{% /repo-link %}, which introduces the core concepts behind the XRP Ledger.
+If you want to translate the XRP Ledger Dev Portal into your native language of choice, start with the {% repo-link path="docs/concepts/introduction/what-is-the-xrp-ledger.md" %}"What is the XRP Ledger?" page{% /repo-link %}, which introduces the core concepts behind the XRP Ledger.
 
 Save the file as `what-is-the-xrp-ledger.{language code}.md`, where `{language code}` is the [IETF BCP47](https://tools.ietf.org/html/bcp47) language code. (For example, "es" for Spanish, "ja" for Japanese, "zh-CN" for Simplified Chinese, "zh-TW" for Traditional Chinese as used in Taiwan, and so on.) Then open a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) adding your file to this repository. One of the repository's maintainers can help with the other necessary setup to add the language to the site.
 

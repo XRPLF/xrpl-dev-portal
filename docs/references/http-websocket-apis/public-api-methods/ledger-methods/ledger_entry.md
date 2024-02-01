@@ -16,7 +16,7 @@ The `ledger_entry` method returns a single ledger entry from the XRP Ledger in i
 
 This method can retrieve several different types of data. You can select which type of item to retrieve by passing the appropriate parameters, comprised of the general and type-specific fields listed below, and following the standard [request formatting](../../api-conventions/request-formatting.md). (For example, a WebSocket request always has the `command` field and optionally an `id` field, and a JSON-RPC request uses the `method` and `params` fields.)
 
-{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
 
 ### General Fields
 
@@ -802,4 +802,4 @@ An example of a successful response:
 * `malformedRequest` - The request provided an invalid combination of fields, or provided the wrong type for one or more fields.
 * `unknownOption` - The fields provided in the request did not match any of the expected request formats.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

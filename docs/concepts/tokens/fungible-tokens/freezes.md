@@ -83,7 +83,7 @@ You can only enable the No Freeze setting with a transaction signed by your addr
 
 # See Also
 
-- [Freeze Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
+- [Freeze Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/freeze)
 - **Concepts:**
     - [Trust Lines and Issuing](index.md)
 - **Tutorials:**
@@ -98,4 +98,4 @@ You can only enable the No Freeze setting with a transaction signed by your addr
     - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
     - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

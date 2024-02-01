@@ -61,7 +61,7 @@ POST http://localhost:5005/
 }
 ```
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ## アカウントのRequireAuthの有効化の確認
@@ -103,7 +103,7 @@ POST http://localhost:8088/
 }
 ```
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ## トラストラインの認可状況の確認
@@ -125,4 +125,4 @@ POST http://localhost:8088/
     - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
     - [RippleState (トラストライン) フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

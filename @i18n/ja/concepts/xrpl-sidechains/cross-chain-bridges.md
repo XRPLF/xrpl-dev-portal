@@ -39,4 +39,4 @@ _（[XChainBridge Amendment][] {% not-enabled /%} が必要です）_
 
 5. 発行チェーン上のWitnessサーバのアカウントに報酬が分配されます。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -48,7 +48,7 @@ Checksの一般的なライフサイクルを以下で説明します。
 
 <!--{# Diagram source: https://docs.google.com/drawings/d/1Ez8OZVB2TLH-b_kSFOAgfYqXlEQt4KaUBW6F3TJAv_Q/edit #}-->
 
-[![Checkのフローチャート（換金に成功した場合）](/img/checks-happy-path.ja.png)](/img/checks-happy-path.ja.png)
+[![Checkのフローチャート（換金に成功した場合）](/docs/img/checks-happy-path.ja.png)](/docs/img/checks-happy-path.ja.png)
 
 **ステップ1:** Checkを作成するため、送金元が[CheckCreate][]トランザクションを送信し、受取人（`Destination`）、有効期限（`Expiration`）、および送金元アカウントからの引き落とし限度額（`SendMax`）を指定します。
 
@@ -71,7 +71,7 @@ Checksが有効期限切れになった場合のライフサイクルを以下�
 
 <!--{# Diagram source: https://docs.google.com/drawings/d/11auqa0kVUPonqlc_RaQUfHcSkUI47xneSKpwlLxzSK0/edit #}-->
 
-[![Checkのフローチャート（有効期限切れ）](/img/checks-expiration.ja.png)](/img/checks-expiration.ja.png)
+[![Checkのフローチャート（有効期限切れ）](/docs/img/checks-expiration.ja.png)](/docs/img/checks-expiration.ja.png)
 
 
 Checksはすべて同じ方法で開始されるため、**ステップ1と2**は換金の例と同じです。
@@ -112,4 +112,4 @@ XRP LedgerのChecksの詳細は、以下を参照してください。
 * [Escrow](escrow.md)
 * [Payment Channelチュートリアル](../../tutorials/use-specialized-payment-types/use-payment-channels.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

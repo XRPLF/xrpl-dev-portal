@@ -25,11 +25,11 @@ In this example, ACME Bank issues a EUR stablecoin on the XRP Ledger. ACME Bank 
 
 The following diagram shows an XRP Ledger payment of 2 EUR.ACME from Alice to Charlie with a transfer fee of 1%:
 
-[{% inline-svg file="/img/transfer-fees.svg" /%}](/img/transfer-fees.svg "Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger")
+[{% inline-svg file="/docs/img/transfer-fees.svg" /%}](/docs/img/transfer-fees.svg "Alice sends 2,02€, Charlie receives 2,00€, and ACME owes 0,02€ less in the XRP Ledger")
 
 In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have changed like this:
 
-[{% inline-svg file="/img/transfer-fees-balance-sheets.svg" /%}](/img/transfer-fees-balance-sheets.svg "Alice's assets are down 2,02€, Charlie's are up 2,00€, and ACME's liabilities are down 0,02€")
+[{% inline-svg file="/docs/img/transfer-fees-balance-sheets.svg" /%}](/docs/img/transfer-fees-balance-sheets.svg "Alice's assets are down 2,02€, Charlie's are up 2,00€, and ACME's liabilities are down 0,02€")
 
 
 
@@ -39,7 +39,7 @@ In accounting terms, Alice's, ACME's, and Charlie's balance sheets may have chan
 
 A transfer fee applies whenever an individual transfer would move tokens from one party to another (except when going to/from the issuing account directly). In more complex transactions, this can occur multiple times. Transfer fees apply starting from the end and working backwards, so that ultimately the sender of a payment must send enough to account for all fees. For example:
 
-[{% inline-svg file="/img/transfer-fees-in-paths.svg" /%}](/img/transfer-fees-in-paths.svg "Diagram of cross-currency payment with transfer fees")
+[{% inline-svg file="/docs/img/transfer-fees-in-paths.svg" /%}](/docs/img/transfer-fees-in-paths.svg "Diagram of cross-currency payment with transfer fees")
 
 In this scenario, Salazar (the sender) holds EUR issued by ACME, and wants to deliver 100 USD issued by WayGate to Rosa (the recipient). FXMaker is a trader with the best offer in the order book, at a rate of 1 USD.WayGate for every 0.9 EUR.ACME. If there were no transfer fees, Salazar could deliver 100 USD to Rosa by sending 90 EUR. However, ACME has a transfer fee of 1% and WayGate has a transfer fee of 0.2%. This means:
 
@@ -59,7 +59,7 @@ A token issuer can submit an [AccountSet transaction][] to change the `TransferR
 
 Anyone can check an account's `TransferRate` with the [account_info method][]. If the `TransferRate` is omitted, then that indicates no fee.
 
-**Note:** The ledger may contain accounts with a transfer fee larger than the current maximum. The [fix1201 amendment](../../resources/known-amendments.md#fix1201), enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). Transfer fees that were already set continue to apply at their stated rate.
+**Note:** The ledger may contain accounts with a transfer fee larger than the current maximum. The [fix1201 amendment](/resources/known-amendments.md#fix1201), enabled on 2017-11-14, lowered the maximum transfer fee to 100% (a `TransferRate` of `2000000000`) from an effective limit of approximately 329% (based on the maximum size of a 32-bit integer). Transfer fees that were already set continue to apply at their stated rate.
 
 ## Client Library Support
 
@@ -79,4 +79,4 @@ Some [client libraries](../../references/client-libraries.md) have convenience f
     - [AccountSet transaction][]
     - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -33,7 +33,7 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
 
 Complete sample code for all of the steps of these tutorials is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
 
-- See [Code Samples: Issue a Fungible Token](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/issue-a-token/) in the source repository for this website.
+- See [Code Samples: Issue a Fungible Token](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/issue-a-token/) in the source repository for this website.
 
 ## Steps
 
@@ -87,7 +87,7 @@ You must be connected to the network to submit transactions to it. The following
 
 For this tutorial, click the following button to connect:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. Configure Issuer Settings
@@ -205,13 +205,13 @@ Most transactions are accepted into the next ledger version after they're submit
 
 The code samples in this tutorial use helper functions to wait for validation when submitting a transaction:
 
-- **JavaScript:** The `submit_and_verify()` function, as defined in the [submit-and-verify code sample](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/submit-and-verify).
+- **JavaScript:** The `submit_and_verify()` function, as defined in the [submit-and-verify code sample](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/submit-and-verify).
 - **Python:** The `submit_and_wait()` [method of the xrpl-py library](https://xrpl-py.readthedocs.io/en/stable/source/xrpl.transaction.html#xrpl.transaction.submit_and_wait).
-- **Java:** The `submitAndWaitForValidation()` method in the [sample Java class](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/issue-a-token/java/IssueToken.java).
+- **Java:** The `submitAndWaitForValidation()` method in the [sample Java class](https://github.com/XRPLF/xrpl-dev-portal/blob/master/_code-samples/issue-a-token/java/IssueToken.java).
 
 **Tip:** Technically, you can configure the hot address in parallel with configuring the issuer address. For simplicity, this tutorial waits for each transaction one at a time.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Issuer Setup)"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Issuer Setup)"} /%}
 
 
 ### 5. Configure Hot Address Settings
@@ -299,7 +299,7 @@ The following code sample shows how to send an [AccountSet transaction][] to ena
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Hot Address Setup)"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Hot Address Setup)"} /%}
 
 
 ### 7. Create Trust Line from Hot to Cold Address
@@ -383,7 +383,7 @@ The following code sample shows how to send a [TrustSet transaction][] from the 
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (TrustSet)"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (TrustSet)"} /%}
 
 
 ### 9. Send Token
@@ -460,7 +460,7 @@ The following code sample shows how to send a [Payment transaction][] to issue 8
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Payment)"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (Payment)"} /%}
 
 
 ### 11. Confirm Token Balances
@@ -517,4 +517,4 @@ Now that you've created the token, you can explore how it fits into features of 
 
 ¹ Users can hold your token without explicitly creating a trust line if they buy your token in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md). Buying a token in the exchange [automatically creates the necessary trust lines](../../concepts/tokens/decentralized-exchange/offers.md#offers-and-trust). This is only possible if someone is selling your token in the decentralized exchange.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

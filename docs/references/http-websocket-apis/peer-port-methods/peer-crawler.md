@@ -83,4 +83,4 @@ Response:
 - [Configure the Peer Crawler](../../../infrastructure/configuration/peering/configure-the-peer-crawler.md)
 - [Validator History Service](https://github.com/ripple/validator-history-service) is an example of a service that uses the peer crawler for ingesting, aggregating, storing, and disbursing validation related data.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

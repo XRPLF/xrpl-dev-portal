@@ -21,7 +21,7 @@ export default function Funding() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/funding-purple.svg")}
+            src={require("../static/img/backgrounds/funding-purple.svg")}
             className="position-absolute"
             style={{ top: 0, right: 0 }}
           />
@@ -411,7 +411,7 @@ export default function Funding() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/funding-orange.svg")}
+            src={require("../static/img/backgrounds/funding-orange.svg")}
             id="funding-orange"
           />
         </div>

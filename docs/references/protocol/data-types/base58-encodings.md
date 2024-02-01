@@ -30,4 +30,4 @@ The following table lists all the encodings the XRP Ledger uses:
 - [wallet_propose Reference][wallet_propose method] - API method for generating account keys
 - [validation_create Reference][validation_create method] - API method for generating validator keys
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

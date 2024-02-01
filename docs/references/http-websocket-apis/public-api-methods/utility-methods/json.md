@@ -46,4 +46,4 @@ An example of a successful response:
 
 The response follows the [standard format][], with whichever fields are appropriate to the type of command made.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

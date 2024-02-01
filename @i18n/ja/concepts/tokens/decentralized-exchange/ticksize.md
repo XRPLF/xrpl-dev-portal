@@ -25,4 +25,4 @@ _（[TickSize Amendment][]により追加されました。）_
 
 - [AccountSetトランザクション][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

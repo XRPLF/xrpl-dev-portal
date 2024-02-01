@@ -41,7 +41,7 @@ D) A 32-bit issuer-specified [`NFTokenTaxon`](https://www.merriam-webster.com/di
 
 E) An (automatically generated) monotonically increasing 32-bit sequence number.
 
-![Token ID Breakdown](/img/nftoken1.png "Token ID Breakdown")
+![Token ID Breakdown](/docs/img/nftoken1.png "Token ID Breakdown")
 
 The 16-bit flags, transfer fee fields, the 32-bit `NFTokenTaxon`, and the sequence number fields are stored in big-endian format.
 
@@ -64,7 +64,7 @@ Flags are properties or other options associated with the `NFToken` object.
 
 The example sets three flags: `lsfBurnable` (`0x0001`), `lsfOnlyXRP` (`0x0002`), `lsfTransferable` (`0x0008`). 1+2+8 = 11, or `0x000B` in big endian format.
 
-![Flags](/img/nftokena.png "Flags")
+![Flags](/docs/img/nftokena.png "Flags")
 
 ### TransferFee
 <!-- SPELLING_IGNORE: transferfee -->
@@ -75,20 +75,20 @@ The `TransferFee` value specifies the percentage fee, in units of 1/100,000, cha
 
 This value sets the transfer fee to 314, or 0.314%.
 
-![Transfer Fee](/img/nftokenb.png "Transfer Fee")
+![Transfer Fee](/docs/img/nftokenb.png "Transfer Fee")
 
 ### Issuer Identification
 
 The third section of the `NFTokenID` is a big endian representation of the issuer’s public address.
 
-![Issuer Address](/img/nftokenc.png "Issuer Address")
+![Issuer Address](/docs/img/nftokenc.png "Issuer Address")
 
 ### NFTokenTaxon
 <!-- SPELLING_IGNORE: nftokentaxon -->
 
 The fourth section is a `NFTokenTaxon` created by the issuer.
 
-![Diagram of `NFTokenTaxon` bits](/img/nftokend.png)
+![Diagram of `NFTokenTaxon` bits](/docs/img/nftokend.png)
 
 An issuer might issue several `NFToken` objects with the same `NFTokenTaxon`; to ensure that `NFToken` objects are spread across multiple pages, the `NFTokenTaxon` is scrambled using the fifth section, a sequential number, as the seed for a random number generator. The scrambled value is stored with the `NFToken`, but the unscrambled value is the actual `NFTokenTaxon`.
 
@@ -98,7 +98,7 @@ Notice that the scrambled version of the `NFTokenTaxon` is `0xBC8B858E`, the scr
 
 The fifth section is a sequence number that increases with each `NFToken` the issuer creates.
 
-![Sequence Number](/img/nftokene.png "Sequence Number")
+![Sequence Number](/docs/img/nftokene.png "Sequence Number")
 
 The [NFTokenMint transaction][] sets this part of the `NFTokenID` automatically based on the `MintedNFTokens` field of the `Issuer` account. If the issuer's [AccountRoot object][] does not have a `MintedNFTokens` field, the field is assumed to have the value 0; the value of the field is then incremented by exactly 1.
 
@@ -132,4 +132,4 @@ https://example.com/.well-known/xrpl-nft/{nftokenid}
 
 You create `NFToken` objects using the `NFTokenMint` transaction. You can optionally destroy `NFToken` objects using the `NFTokenBurn` transaction.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

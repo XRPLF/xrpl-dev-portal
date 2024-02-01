@@ -19,9 +19,9 @@ This example shows how to:
 4. Send issued currency between accounts.
 5. Display account balances for all currencies.
 
-[![Test harness with currency transfer](/img/quickstart-py5.png)](/img/quickstart-py5.png)
+[![Test harness with currency transfer](/docs/img/quickstart-py5.png)](/docs/img/quickstart-py5.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
 
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 
@@ -52,7 +52,7 @@ To create a trust line between accounts:
 3. Enter the destination account value in the **Destination** field.
 4. Click **Create Trust Line**.
 
-[![Trust line results](/img/quickstart-py6.png)](/img/quickstart-py6.png)
+[![Trust line results](/docs/img/quickstart-py6.png)](/docs/img/quickstart-py6.png)
 
 ## Send an Issued Currency Token
 
@@ -63,7 +63,7 @@ To transfer an issued currency token, once you have created a trust line:
 3. Enter the **Currency** type.
 4. Click **Send Currency**.
 
-[![Currency transfer](/img/quickstart-py7.png)](/img/quickstart-py7.png)
+[![Currency transfer](/docs/img/quickstart-py7.png)](/docs/img/quickstart-py7.png)
 
 ### Configure Account
 
@@ -76,7 +76,7 @@ To enable rippling:
 
 Verify the setting by looking for the _Set Flag_ value in the response, which should show a flag setting of _8_.
 
-[![Configure Account - Enable Rippling](/img/quickstart-py8.png)](/img/quickstart-py8.png)
+[![Configure Account - Enable Rippling](/docs/img/quickstart-py8.png)](/docs/img/quickstart-py8.png)
 
 To disable rippling:
 
@@ -85,11 +85,11 @@ To disable rippling:
 
 Verify the setting by looking for the _Clear Flag_ value in the response, which shold show a flag setting of _8_.
 
-[![Configure Account - Disable Rippling](/img/quickstart-py9.png)](/img/quickstart-py9.png)
+[![Configure Account - Disable Rippling](/docs/img/quickstart-py9.png)](/docs/img/quickstart-py9.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples.
 
 ## mod2.py
 

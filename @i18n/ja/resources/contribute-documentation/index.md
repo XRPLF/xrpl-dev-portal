@@ -23,16 +23,30 @@ XRPL Dev Portalでは、開発者が開発を開始するためのサンプル�
 
 ## リポジトリの構成
 
-- [assets/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/assets) - サイトのテンプレートで使用される静的ファイル。
-- [content/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content) - ドキュメントを構築するために使用されるソースファイル。ほとんどがMarkdownです。
-    - [content/\_code-samples/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) - ドキュメントで使用または参照されているコードサンプル。可能な限り、これらは完全に機能する/実行可能なスクリプトです。
-    - [content/\_img-sources/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_img-sources) - ドキュメントで使用されている画像の元ファイル。`.uxf`ファイルは[Umlet](https://www.umlet.com/)で作成されたダイアグラムです。
-    - [content/\_snippets/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_snippets) - Dactylプリプロセッサを使用して、他のコンテンツファイルに挿入される再利用可能なMarkdownテキストの断片。
-- [img/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/img) - ドキュメントコンテンツで使用される画像。
-- [template/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/template) - HTMLを構築するためのテンプレートファイル。
-- [tool/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/tool) - フィルター、スタイルチェッカー・ルール等のスクリプト。
-- [styles/](https://github.com/XRPLF/xrpl-dev-portal/tree/master/styles) - assetsフォルダにCSSファイルを生成するための元ファイル(SCSS)。
-- [`dactyl-config.yml`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/dactyl-config.yml) - サイトのメタデータを含むメイン設定ファイル。設定ファイルのフォーマットについては、[設定フォーマット](#設定ファイルのフォーマット)を参照してください。
+***TODO: Update this translation***
+
+- `_api-examples/` - Sample API requests and responses, especially ones used in the documentation.
+- `_code-samples/` - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
+- `@i18n` - Translations into languages other than English. Currently, only Japanese.
+- `@theme` - Overrides and custom components used in Markdoc contents as well as custom React pages.
+- `about/` - Source files for the About section's pages.
+- `blog/` - Source files for the XRPL Dev Blog.
+- `community/` - Source files for the Community section's pages.
+- `docs/` - Source files used to build the documentation. Mostly in Markdown.
+    - `docs/_snippets/` - Reusable pieces of text used in the documentation.
+    - `docs/img/` - Diagrams and other images used in the documentation.
+    - `docs/img/_sources/` - Source files for images used in the documentation, where available.
+- `locale/` - **DEPRECATED** Old localization files.
+- `resources/` - Source files for the Resources section's pages.
+- `shared/` - Configuration files for some dependencies like CodeMirror.
+- `static/` - Static files used by the site's templates and theme.
+- `styles/` - SCSS source files for custom CSS.
+- `template/` - **DEPRECATED** Old template files.
+- `tool/` - **DEPRECATED** Old scripts and tools.
+- `redirects.yaml` - Definitions of redirects from old site URLs to current paths.
+- `redocly.yaml` - Main config file for the site.
+- `sidebars.yaml` - Defines sidebars for the Documentation and Resources sections.
+- `top-nav.yaml` - Defines the main top nav elements.
 
 ## プルリクエストが承認されるための条件
 

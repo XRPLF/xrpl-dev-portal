@@ -137,4 +137,4 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
     - [account_tx method][]
     - [tx method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

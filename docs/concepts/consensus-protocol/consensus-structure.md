@@ -27,13 +27,13 @@ The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which g
 
 For a full, technical description of which data is included in a ledger version, see the [Ledger Format Reference](../../references/protocol/ledger-data/index.md).
 
-[{% inline-svg file="/img/anatomy-of-a-ledger-complete.svg" /%}](/img/anatomy-of-a-ledger-complete.svg "Figure 1: XRP Ledger Elements")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-complete.svg" /%}](/docs/img/anatomy-of-a-ledger-complete.svg "Figure 1: XRP Ledger Elements")
 
 _Figure 1: XRP Ledger Elements_
 
 The XRP Ledger has a new ledger version every several seconds. When the network agrees on the contents of a ledger version, that ledger version is _validated_, and its contents can never change. The validated ledger versions that preceded it form the ledger history. Even the most recent validated ledger is part of history, as it represents the state of the network as of a short time ago. In the present, the network is evaluating transactions which may be applied and finalized in the next ledger version. While this evaluation is happening, the network has candidate ledger versions that are not yet validated.
 
-[{% inline-svg file="/img/ledger-history.svg" /%}](/img/ledger-history.svg "Figure 2: XRP Ledger History")
+[{% inline-svg file="/docs/img/ledger-history.svg" /%}](/docs/img/ledger-history.svg "Figure 2: XRP Ledger History")
 
 _Figure 2: XRP Ledger History_
 
@@ -45,7 +45,7 @@ User level changes to the ledger are the results of transactions. Examples of [t
 
 Each ledger version also contains a set of transactions and metadata about those transactions. The transactions it includes are only the ones that have been applied to the previous ledger version to create the new ledger version. The metadata records the exact effects of the transaction on the ledger's state data.
 
-[{% inline-svg file="/img/ledger-changes.svg" /%}](/img/ledger-changes.svg "Figure 3: Transactions Applied to Ledger Version")
+[{% inline-svg file="/docs/img/ledger-changes.svg" /%}](/docs/img/ledger-changes.svg "Figure 3: Transactions Applied to Ledger Version")
 
 _Figure 3: Transactions Applied to Ledger Version_
 
@@ -65,7 +65,7 @@ Important: Some [`rippled` APIs](../../references/http-websocket-apis/index.md) 
 
 The peer-to-peer XRP Ledger network consists of many independent XRP Ledger servers (typically running [`rippled`](../networks-and-servers/index.md)) that accept and process transactions. Client applications sign and send transactions to XRP Ledger servers, which relay these candidate transactions throughout the network for processing. Examples of client applications include mobile and web wallets, gateways to financial institutions, and electronic trading platforms.
 
-[{% inline-svg file="/img/xrp-ledger-network.svg" /%}](/img/xrp-ledger-network.svg "Figure 4: Participants in the XRP Ledger Protocol")
+[{% inline-svg file="/docs/img/xrp-ledger-network.svg" /%}](/docs/img/xrp-ledger-network.svg "Figure 4: Participants in the XRP Ledger Protocol")
 
 _Figure 4: Participants in the XRP Ledger Protocol_
 
@@ -79,7 +79,7 @@ The servers on the network share information about candidate transactions. Throu
 
 During consensus, each server evaluates proposals from a specific set of servers, known as that server's trusted validators, or _Unique Node List (UNL)_.<a href="#footnote_5" id="from_footnote_5"><sup>5</sup></a> Trusted validators represent a subset of the network which, when taken collectively, is "trusted" not to collude in an attempt to defraud the server evaluating the proposals. This definition of "trust" does not require that each individual chosen validator is trusted. Rather, validators are chosen based on the expectation they will not collude in a coordinated effort to falsify data relayed to the network <a href="#footnote_6" id="from_footnote_6"><sup>6</sup></a>. <!-- STYLE_OVERRIDE: will -->
 
-[{% inline-svg file="/img/consensus-rounds.svg" /%}](/img/consensus-rounds.svg "Figure 5: Validators Propose and Revise Transaction Sets")
+[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg "Figure 5: Validators Propose and Revise Transaction Sets")
 
 _Figure 5: Validators Propose and Revise Transaction Sets — At the start of consensus, validators may have different sets of transactions. In later rounds, servers modify their proposals to match what their trusted validators proposed. This process determines which transactions they should apply to the ledger version currently being discussed, and which they should postpone for later ledger versions._
 
@@ -121,7 +121,7 @@ When the consensus process completes, each server independently computes a new l
 
 5. Calculate the identifying hash of the new ledger version.
 
-[{% inline-svg file="/img/consensus-calculate-validation.svg" /%}](/img/consensus-calculate-validation.svg "Figure 7: An XRP Ledger Server Calculates a Ledger Validation")
+[{% inline-svg file="/docs/img/consensus-calculate-validation.svg" /%}](/docs/img/consensus-calculate-validation.svg "Figure 7: An XRP Ledger Server Calculates a Ledger Validation")
 
 _Figure 7: An XRP Ledger Server Calculates a Ledger Validation — Each server applies agreed-upon transactions to the previous validated ledger. Validators send their results to the entire network._
 
@@ -129,7 +129,7 @@ _Figure 7: An XRP Ledger Server Calculates a Ledger Validation — Each server a
 
 Validators each relay their results in the form of a signed message containing the hash of the ledger version they calculated. These messages, called _validations_, allow each server to compare the ledger it computed with those of its peers.
 
-[{% inline-svg file="/img/consensus-declare-validation.svg" /%}](/img/consensus-declare-validation.svg "Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result Result")
+[{% inline-svg file="/docs/img/consensus-declare-validation.svg" /%}](/docs/img/consensus-declare-validation.svg "Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result Result")
 
 _Figure 8: Ledger is Validated When Supermajority of Peers Calculate the Same Result — Each server compares its calculated ledger with the hashes received from its chosen validators. If not in agreement, the server must recalculate or retrieve the correct ledger._
 
@@ -212,4 +212,4 @@ Best practices for applications submitting transactions include:
 
 <a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – A `rippled` server can respond to API requests even without a complete ledger history. Interruptions in service or network connectivity can lead to missing ledgers, or gaps, in the server’s ledger history. Over time, if configured to, `rippled` fills in gaps in its history. When testing for missing transactions, it is important to verify against a server with continuous complete ledgers from the time the transaction was submitted until its `LastLedgerSequence`. Use the [server_info method][] to determine which ledgers are available to a particular server.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

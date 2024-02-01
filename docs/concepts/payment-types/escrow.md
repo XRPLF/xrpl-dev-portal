@@ -38,7 +38,7 @@ The XRP Ledger supports three types of escrow:
 
 The following diagram shows the states an Escrow can progress through:
 
-[![State diagram showing escrows going from Held → Ready/Conditionally Ready → Expired](/img/escrow-states.png)](/img/escrow-states.png)
+[![State diagram showing escrows going from Held → Ready/Conditionally Ready → Expired](/docs/img/escrow-states.png)](/docs/img/escrow-states.png)
 
 The diagram shows three different cases for three possible combinations of the escrow's "finish-after" time (`FinishAfter` field), crypto-condition (`Condition` field), and expiration time (`CancelAfter` field):
 
@@ -93,4 +93,4 @@ For more information about Escrow in the XRP Ledger, see the following:
 
 For more information on Ripple's 55-billion XRP lock-up, see [Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

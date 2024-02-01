@@ -14,7 +14,7 @@ The specified recipient can also [cash the check for a flexible amount](cash-a-c
 
 ## Prerequisites
 
-{% partial file="/_snippets/checkcash-prereqs.md" /%} 
+{% partial file="/docs/_snippets/checkcash-prereqs.md" /%} 
 
 ## 1. Prepare the CheckCash transaction
 
@@ -54,7 +54,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## 2. Sign the CheckCash transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} 
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%} 
 
 ### Example Request
 
@@ -80,7 +80,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## 3. Submit the signed CheckCash transaction
 
-{% partial file="/_snippets/tutorial-submit-step.md" /%} 
+{% partial file="/docs/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
 
@@ -105,7 +105,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. Confirm final result
 
@@ -136,4 +136,4 @@ If cashing the Check failed, the Check remains in the ledger so you can try cash
 
 {% /tabs %}
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

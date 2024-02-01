@@ -1,16 +1,9 @@
 ---
-html: faq.html
-parent: xrp-ledger-overview.html
 seo:
     description: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
 subtitle: Answers to Your XRPL Questions
-top_nav_grouping: About
 labels:
   - Blockchain
-#template: page-faq2.html.jinja
-filters:
-  - faq
-name: FAQ
 ---
 ###### FAQ
 # Answers to Your XRPL Questions
@@ -23,11 +16,11 @@ No, the XRP Ledger is a decentralized, public blockchain. Any changes that would
 
 #### Isn’t Proof of Work the best validation mechanism?
 
-Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](../concepts/consensus-protocol/index.md) solves the same problem in a far faster, cheaper and more energy efficient way.
+Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. [The XRP Ledger’s consensus mechanism](../docs/concepts/consensus-protocol/index.md) solves the same problem in a far faster, cheaper and more energy efficient way.
 
 #### How can a blockchain be sustainable?
 
-It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](../concepts/consensus-protocol/index.md)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
+It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a “[consensus](../docs/concepts/consensus-protocol/index.md)” mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be [one of the first truly carbon neutral blockchains](https://ripple.com/ripple-press/ripple-leads-sustainability-agenda-to-achieve-carbon-neutrality-by-2030/).
 
 #### Can currencies other than XRP be traded through XRPL?
 
@@ -43,7 +36,7 @@ Although XRPL was initially developed for payment use cases, both the ledger and
 
 All nodes ensure that transactions meet protocol requirements, and are therefore “valid.” The service that validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending. <!-- STYLE_OVERRIDE: therefore -->
 
-See [Consensus](../concepts/consensus-protocol/index.md) for more information about the consensus process.
+See [Consensus](../docs/concepts/consensus-protocol/index.md) for more information about the consensus process.
 
 
 #### How much does it cost to run a validator?
@@ -88,7 +81,7 @@ In the process of determining the authoritative version of a ledger, there may b
 
 However, there can be only one latest _validated_ ledger version at any given time; other versions are irrelevant and harmless.
 
-For more information about how the XRP Ledger's consensus mechanism behaves in adverse situations, see [Consensus Protections Against Attacks and Failure Modes](../concepts/consensus-protocol/consensus-protections.md).
+For more information about how the XRP Ledger's consensus mechanism behaves in adverse situations, see [Consensus Protections Against Attacks and Failure Modes](../docs/concepts/consensus-protocol/consensus-protections.md).
 
 
 #### Does the XRP Ledger have a formal process for adding validators?
@@ -97,7 +90,7 @@ No, a formal process for adding validators is not compatible with the XRP Ledger
 
 Publishers of individual default UNLs set their own policies for when to add or remove validators from their lists of recommendations.
 
-For recommendations and best practices, see [Run `rippled` as a Validator](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
+For recommendations and best practices, see [Run `rippled` as a Validator](../docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
 
 
 #### If the dUNL has the most influence on the network, then is the XRPL centralized?
@@ -113,12 +106,12 @@ However, if your UNL does not have enough overlap with the UNLs used by others, 
 
 #### What purpose does XRP serve?
 
-XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](../concepts/tokens/decentralized-exchange/autobridging.md) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](/about/uses) for XRP as well was the XRP Ledger itself.
+XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](../docs/concepts/tokens/decentralized-exchange/autobridging.md) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](/about/uses) for XRP as well was the XRP Ledger itself.
 
 
 #### How does the XRP Ledger respond to transaction floods?
 
-The XRP Ledger is designed to set the [transaction cost](../concepts/transactions/transaction-cost.md) dynamically based on demand as an anti-spam measure. The impact of any potential XRP manipulation is minimized by increases in network size as the market cap and transaction volume increase.
+The XRP Ledger is designed to set the [transaction cost](../docs/concepts/transactions/transaction-cost.md) dynamically based on demand as an anti-spam measure. The impact of any potential XRP manipulation is minimized by increases in network size as the market cap and transaction volume increase.
 
 
 #### What about money laundering and suspicious economic activity?
@@ -148,11 +141,11 @@ Once the pull request passes automated tests and receives approvals from reviewe
 
 No, Ripple does not own or control the XRP Ledger or XRP Ledger network.
 
-Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/xrplf/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](../infrastructure/installation/index.md).
+Ripple contributes to a reference implementation of the core XRP Ledger server ([`rippled`](https://github.com/xrplf/rippled)) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can [download and compile the software from source](../docs/infrastructure/installation/index.md).
 
 Several entities publish recommended validator lists (UNLs). As of July 2023, Ripple runs only 1 of the 35 validators in the default UNL.
 
 
 #### Does the XRP Ledger distinguish between the codebase for validation and the one for user software?
 
-Yes. There are several [XRP Ledger client libraries](../references/client-libraries.md) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](../concepts/networks-and-servers/index.md) which powers the network and validates transactions.
+Yes. There are several [XRP Ledger client libraries](../docs/references/client-libraries.md) which are intended for user software developers. These libraries have different codebases and repositories from the [core XRP Ledger server](../docs/concepts/networks-and-servers/index.md) which powers the network and validates transactions.

@@ -14,7 +14,7 @@ labels:
 
 トランザクションキューは、コンセンサスプロセスで特定のレジャーバージョンに記録されるトランザクションと除外されるトランザクションを選択する際に、重要な役割を果たします。以下のステップでは、トランザクションキューと[コンセンサスプロセス](../consensus-protocol/index.md)の関係を説明します。
 
-[![トランザクションキューとコンセンサスの図](/img/consensus-with-queue.ja.png)](/img/consensus-with-queue.ja.png)
+[![トランザクションキューとコンセンサスの図](/docs/img/consensus-with-queue.ja.png)](/docs/img/consensus-with-queue.ja.png)
 
 1. **コンセンサスラウンド1** - 各バリデータが、次のレジャーバージョンに記録するトランザクションセットを提案します。各バリデータは、現在提案されていないトランザクション候補のキューも保持します。
 
@@ -74,4 +74,4 @@ labels:
 - トランザクションコストが設けられている理由と、XRP Ledgerでのトランザクションコストの適用方法については、[トランザクションコスト](transaction-cost.md)を参照してください。
 - コンセンサスプロセスによるトランザクション承認方法についての詳しい説明は、[コンセンサス](../consensus-protocol/index.md)を参照してください。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

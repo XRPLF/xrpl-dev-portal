@@ -9,7 +9,7 @@ labels:
 # Software Ecosystem
 
 The XRP Ledger is home to a deep, layered ecosystem of software projects powering and enabling an Internet of Value. It's impossible to list every project, tool, and business that interacts with the XRP Ledger, so this page only lists a few categories and highlights some central projects that are documented on this website.
-![The XRPL Ecosystem](/img/ecosystem-apps-and-services.svg)
+![The XRPL Ecosystem](/docs/img/ecosystem-apps-and-services.svg)
 
 ## Stack Levels
 
@@ -26,7 +26,7 @@ The XRP Ledger is home to a deep, layered ecosystem of software projects powerin
 
 The peer-to-peer network at the heart of the XRP Ledger requires a highly-reliable, efficient server to enforce the rules of consensus and transaction processing. The XRP Ledger Foundation publishes a reference implementation of this server software, called [**`rippled`**](../concepts/networks-and-servers/index.md) (pronounced "ripple-dee"). The server is available under [a permissive open-source license](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md), so anyone can inspect and modify their own instance of the server, and re-publish with few restrictions.
 
-![Core Servers](/img/ecosystem-peer-to-peer.svg)
+![Core Servers](/docs/img/ecosystem-peer-to-peer.svg)
 
 Every core server syncs to the same network (unless it's configured to follow a [test network](../concepts/networks-and-servers/parallel-networks.md)) and has access to all communications across the network. Every server on the network keeps a complete copy of the latest state data for the entire XRP Ledger, along with recent transactions and a record of the changes those transactions made, and every server processes every transaction independently while verifying that its outcome matches the rest of the network. Servers can be configured to keep more [ledger history](../concepts/networks-and-servers/ledger-history.md) and to participate in the consensus process as a [validator](../concepts/networks-and-servers/rippled-server-modes.md#validators).
 
@@ -37,7 +37,7 @@ Core servers expose [HTTP / WebSocket APIs](../references/http-websocket-apis/in
 
 Libraries simplify some of the common work of accessing the XRP Ledger, usually through the HTTP / WebSocket APIs. They convert the data into forms that are more familiar and convenient for various programming languages, and include implementations of common operations. 
 
-![Client Libraries](/img/ecosystem-client-libraries.svg)
+![Client Libraries](/docs/img/ecosystem-client-libraries.svg)
 
 One core feature of most client libraries is signing transactions locally, so users never have to send their private key across any network.
 
@@ -50,7 +50,7 @@ See [Client Libraries](../references/client-libraries.md) for some information a
 
 Middleware services are programs that consume the XRP Ledger APIs on one side and provide their own APIs on the other side. They provide a layer of abstraction to make it easier to build higher-level applications by providing some common functionality as a service.
 
-![Middleware](/img/ecosystem-middleware.svg)
+![Middleware](/docs/img/ecosystem-middleware.svg)
 
 Unlike client libraries, which are instantiated fresh and shut down with the program that imports them, middleware services typically stay running indefinitely, and may have their own databases (relational SQL databases or otherwise) and configuration files. Some are available as cloud services with various pricing or usage limitations.
 
@@ -59,8 +59,8 @@ Unlike client libraries, which are instantiated fresh and shut down with the pro
 
 Atop the stack is where the truly exciting things happen. Apps and services provide a way for users and devices to connect to the XRP Ledger. Services like private exchanges, token issuers, marketplaces, interfaces to the decentralized exchange, and wallets provide user interfaces for buying, selling, and trading various assets including XRP and tokens of all kinds. Many other possibilities exist, including additional services layered even higher.
 
-![Apps and Services](/img/ecosystem-apps-and-services.svg)
+![Apps and Services](/docs/img/ecosystem-apps-and-services.svg)
 
 See [Use Cases](../use-cases/index.md) for some examples that can be built at or above this layer.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

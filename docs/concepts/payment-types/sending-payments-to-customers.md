@@ -21,4 +21,4 @@ Generally, when sending stablecoins, you use a [Payment transaction][]. Some of 
 
 For a detailed tutorial on issuing a token on the XRP Ledger, whether a stablecoin or otherwise, see [Issue a Fungible Token](../../tutorials/use-tokens/issue-a-fungible-token.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -28,7 +28,7 @@ A TicketCreate transaction sets aside one or more [sequence numbers][Sequence Nu
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_TicketCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22738AEF36B48CA4A2D85C2B74910DC34DDBBCA4C83643F2DB84A58785ED5AD3E3%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field            | JSON Type        | [Internal Type][] | Description        |
@@ -49,4 +49,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecDIR_FULL`             | This transaction would cause the account to own more than the limit of 250 Tickets at a time, or more than the maximum number of ledger objects in general. |
 | `tecINSUFFICIENT_RESERVE` | The sending account does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md) of all the requested Tickets. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

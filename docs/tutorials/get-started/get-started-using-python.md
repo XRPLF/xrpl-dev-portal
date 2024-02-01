@@ -154,12 +154,12 @@ Using these building blocks, we can create a Python app that:
 
 {% code-snippet file="/_code-samples/get-started/py/get-acct-info.py" language="python" /%}
 
-To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/get-started/py) and run it locally:
+To run the app, you can copy and paste the code into an editor or IDE and run it from there. Or you could download the file from the [XRP Ledger Dev Portal repo](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/get-started/py) and run it locally:
 
 
 ```sh
 git clone git@github.com:XRPLF/xrpl-dev-portal.git
-cd xrpl-dev-portal/content/_code-samples/get-started/py/get-acct-info.py
+cd xrpl-dev-portal/_code-samples/get-started/py/get-acct-info.py
 python3 get-acct-info.py
 ```
 
@@ -213,4 +213,4 @@ Now that you know how to use `xrpl-py` to connect to the XRP Ledger, get an acco
 * [Send XRP](send-xrp.md).
 * [Set up secure signing](../../concepts/transactions/secure-signing.md) for your account.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

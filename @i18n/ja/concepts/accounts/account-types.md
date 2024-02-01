@@ -9,14 +9,14 @@ labels:
 ---
 # アカウントの種類
 
-{% partial file="/_snippets/issuing-and-operational-addresses-intro.md" /%}
+{% partial file="/docs/_snippets/issuing-and-operational-addresses-intro.md" /%}
 
 
 ## 資金のライフサイクル
 
 トークン発行者がこのような役割を分担すると、以下の図のように資金が一方向に流れるようになります。
 
-[{% inline-svg file="/img/issued-currency-funds-flow.ja.svg" /%}](/img/issued-currency-funds-flow.ja.svg "図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー")
+[{% inline-svg file="/docs/img/issued-currency-funds-flow.ja.svg" /%}](/docs/img/issued-currency-funds-flow.ja.svg "図: 発行アドレスから待機アドレス、運用アドレス、顧客アドレスおよびパートナーアドレスに移動し、最後に発行アドレスに戻る資金フロー")
 
 発行アドレスは、待機アドレスに支払いを送信することでトークンを作成します。これらのトークンは(多くの場合)債務を表すため、発行アドレスの観点からはマイナスの価値を持ちます。同じトークンは、待機アドレスの観点も含めると、他の観点からはプラスの価値を持ちます。
 
@@ -80,4 +80,4 @@ labels:
     - [SetRegularKeyトランザクション][]
     - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

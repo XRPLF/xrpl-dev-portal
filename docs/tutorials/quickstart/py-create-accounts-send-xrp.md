@@ -19,7 +19,7 @@ This example shows how to:
 
 When you create an account, you receive a public/private key pair offline. Your account does not appear on the ledger until it is funded with XRP. This example shows how to create accounts for Testnet, but not how to create an account that you can use on Mainnet.
 
-[![Token Test Harness](/img/quickstart-py2.png)](/img/quickstart-py2.png)
+[![Token Test Harness](/docs/img/quickstart-py2.png)](/docs/img/quickstart-py2.png)
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ To get started, create a new folder on your local disk and install the Python li
 pip3 install xrpl-py
 ```
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
 
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 
@@ -48,7 +48,7 @@ To get test accounts:
 5. Click **Get Operational Account Info**.
 5. Copy and paste the **Standby Seed** and **Operational Seed** fields to a persistent location, such as a Notepad, so that you can reuse the accounts after reloading the form.
 
-[![Standby and Operational Accounts](/img/quickstart-py3.png)](/img/quickstart-py3.png)
+[![Standby and Operational Accounts](/docs/img/quickstart-py3.png)](/docs/img/quickstart-py3.png)
 
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
 
@@ -62,7 +62,7 @@ To transfer XRP from the Standby account to the Operational account:
 2. Copy and paste the **Operational Account** field to the Standby **Destination** field.
 3. Click **Send XRP>** to transfer XRP from the standby account to the operational account
 
-[![Transferred XRP](/img/quickstart-py4.png)](/img/quickstart-py4.png)
+[![Transferred XRP](/docs/img/quickstart-py4.png)](/docs/img/quickstart-py4.png)
 
 To transfer XRP from the Operational account to the Standby account:
 
@@ -72,7 +72,7 @@ To transfer XRP from the Operational account to the Standby account:
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
 
 ## mod1.py
 

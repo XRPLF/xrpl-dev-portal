@@ -188,7 +188,7 @@ It is generally safe to ignore this warning.
     - [The `rippled` Server](../../../concepts/networks-and-servers/index.md)
     - [Consensus](../../../concepts/consensus-protocol/index.md)
     - [Amendments](../../../concepts/networks-and-servers/amendments.md)
-        - [Known Amendments](../../../resources/known-amendments.md)
+        - [Known Amendments](/resources/known-amendments.md)
 - **Tutorials:**
     - [Get Started with XRP Ledger APIs](../../../tutorials/get-started/get-started-using-http-websocket-apis.md)
     - [Install and Update `rippled`](../../../infrastructure/installation/index.md)
@@ -196,4 +196,4 @@ It is generally safe to ignore this warning.
     - [feature method][]
     - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

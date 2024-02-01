@@ -102,4 +102,4 @@ To see a full `definitions.json` file and descriptions of the top-level fields, 
 
 Any of the [universal error types][].
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

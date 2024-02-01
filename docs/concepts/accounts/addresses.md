@@ -8,7 +8,7 @@ labels:
 ---
 # Addresses
 
-{% partial file="/_snippets/data_types/address.md" /%}
+{% partial file="/docs/_snippets/data_types/address.md" /%}
 
 Any valid address can [become an account in the XRP Ledger](accounts.md#creating-accounts) by being funded. You can also use an address that has not been funded to represent a [regular key](cryptographic-keys.md) or a member of a [signer list](multi-signing.md). Only a funded account can be the sender of a transaction.
 
@@ -39,9 +39,9 @@ XRP Ledger addresses are encoded using [base58][] with the _dictionary_ `rpshnaf
 
 The following diagram shows the relationship between keys and addresses:
 
-[{% inline-svg file="/img/address-encoding.svg" /%}](/img/address-encoding.svg "Master Public Key + Type Prefix → Account ID + Checksum → Address")
+[{% inline-svg file="/docs/img/address-encoding.svg" /%}](/docs/img/address-encoding.svg "Master Public Key + Type Prefix → Account ID + Checksum → Address")
 
-The formula for calculating an XRP Ledger address from a public key is as follows. For the complete example code, see [`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js). For the process of deriving a public key from a passphrase or seed value, see [Key Derivation](cryptographic-keys.md#key-derivation).
+The formula for calculating an XRP Ledger address from a public key is as follows. For the complete example code, see [`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/_code-samples/address_encoding/js/encode_address.js). For the process of deriving a public key from a passphrase or seed value, see [Key Derivation](cryptographic-keys.md#key-derivation).
 
 1. Import required algorithms: SHA-256, RIPEMD160, and base58. Set the dictionary for base58.
 
@@ -93,4 +93,4 @@ The formula for calculating an XRP Ledger address from a public key is as follow
     // rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN
     ```
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

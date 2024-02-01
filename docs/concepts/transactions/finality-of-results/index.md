@@ -57,4 +57,4 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 - [Look up Transaction Results](look-up-transaction-results.md)
 - [Transaction Results Reference](../../../references/protocol/transactions/transaction-results/transaction-results.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

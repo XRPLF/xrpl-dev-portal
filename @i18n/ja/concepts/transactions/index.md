@@ -20,7 +20,7 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 
 だれでも最終的なステータスを確認として[ハッシュによってトランザクションを調べる](finality-of-results/look-up-transaction-results.md)ことができるため、トランザクションハッシュは「支払いの証明」として使用することができます。
 
-{% raw-partial file="/_snippets/setfee_uniqueness_note.md" /%}
+{% raw-partial file="/docs/_snippets/setfee_uniqueness_note.md" /%}
 
 
 
@@ -219,4 +219,4 @@ XRP Ledgerは、トランザクションオブジェクトが送信元アドレ�
   - [submitメソッド][]
   - [submit_multisignedメソッド][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -63,7 +63,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 ## 2. Sign the CheckCreate transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%}
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
 
 
 ### Example Request
@@ -104,7 +104,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 ## 3. Submit the signed transaction
 
-{% partial file="/_snippets/tutorial-submit-step.md" /%}
+{% partial file="/docs/_snippets/tutorial-submit-step.md" /%}
 
 ### Example Request
 
@@ -145,7 +145,7 @@ The following example shows a prepared Check from BoxSend SG (`rBXsgNkPcDN2runsv
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%}
+{% partial file="/docs/_snippets/wait-for-validation.md" /%}
 
 
 ## 5. Confirm final result
@@ -190,4 +190,4 @@ Look for a `CreatedNode` object in the transaction metadata with a `LedgerEntryT
 
 {% /tabs %}
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -17,14 +17,14 @@ Each closed [Ledger](../ledger-data/index.md) has a [Ledger Index][] and a [Hash
 ## Addresses
 [Address]: #addresses
 
-{% partial file="/_snippets/data_types/address.md" /%}
+{% partial file="/docs/_snippets/data_types/address.md" /%}
 
 
 
 ## Hashes
 [Hash]: #hashes
 
-{% partial file="/_snippets/data_types/hash.md" /%}
+{% partial file="/docs/_snippets/data_types/hash.md" /%}
 
 
 ### Hash Prefixes
@@ -50,7 +50,7 @@ Some types of hash appear in API requests and responses. Others are only calcula
 | Validator manifest                    | N/A                                  | `0x4D414E00`      | `MAN\0` |
 
 [ledger header]: ../ledger-data/ledger-header.md
-[SHAMapv2]: ../../../resources/known-amendments.md#shamapv2
+[SHAMapv2]: /resources/known-amendments.md#shamapv2
 
 [Ledger objects IDs](../ledger-data/common-fields.md) are calculated in a similar way, but they use a 2-byte prefix called a "space key" instead of a prefix in the form described here.
 
@@ -58,14 +58,14 @@ Some types of hash appear in API requests and responses. Others are only calcula
 ## Account Sequence
 [Sequence Number]: #account-sequence
 
-{% partial file="/_snippets/data_types/account_sequence.md" /%}
+{% partial file="/docs/_snippets/data_types/account_sequence.md" /%}
 
 
 
 ## Ledger Index
 [Ledger Index]: #ledger-index
 
-{% partial file="/_snippets/data_types/ledger_index.md" /%}
+{% partial file="/docs/_snippets/data_types/ledger_index.md" /%}
 
 
 
@@ -139,4 +139,4 @@ The `rippled` server and its APIs represent time as an unsigned integer. This nu
 
 Don't convert Ripple Epoch times to UNIX Epoch times in 32-bit variables: this could lead to integer overflows.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -78,4 +78,4 @@ The XRP Ledger has a mechanism to adjust the reserve requirements. Such adjustme
 - [SetFee pseudo-transaction][]
 - [Tutorial: Calculate and display the reserve requirement (Python)](../../tutorials/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

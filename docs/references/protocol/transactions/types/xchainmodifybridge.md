@@ -69,4 +69,4 @@ In addition to the universal transaction flags that are applicable to all transa
 |------------------------------|--------------|-------------|
 | `tfClearAccountCreateAmount` | `0x00010000` | Clears the `MinAccountCreateAmount` of the bridge. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

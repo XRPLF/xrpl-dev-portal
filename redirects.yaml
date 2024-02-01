@@ -1517,13 +1517,13 @@ list-xrp-in-your-exchange.html:
     to: /use-cases/defi/list-xrp-as-an-exchange
     type: 301
 contribute-code-to-rippled.html:
-    to: /resources/contribute-code/contribute-code
+    to: /resources/contribute-code
     type: 301
 contribute-code-to-ripple-lib.html:
-    to: /resources/contribute-code/contribute-code
+    to: /resources/contribute-code
     type: 301
 contribute-code-flow.html:
-    to: /resources/contribute-code/contribute-code
+    to: /resources/contribute-code
     type: 301
 resources.html:
     to: /resources/
@@ -1532,7 +1532,7 @@ known-amendments.html:
     to: /resources/known-amendments
     type: 301
 contribute-code.html:
-    to: /resources/contribute-code/contribute-code
+    to: /resources/contribute-code
     type: 301
 create-custom-transactors.html:
     to: /resources/contribute-code/create-custom-transactors

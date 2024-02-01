@@ -88,7 +88,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 トランザクションメタデータは、以下に示すフィールドをはじめとして、トランザクションがレジャーに適用された方法を _正確に_ 示します。
 
-{% partial file="/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
 
 ほとんどのメタデータは、[`AffectedNodes`配列](../../../references/protocol/transactions/metadata.md#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](../transaction-cost.md)を消却し、[アカウントのシーケンス番号](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を増やします。
 
@@ -362,7 +362,7 @@ Escrowトランザクションでは、関係する送金元の所有者準備�
 
 Payment Channelの作成時に、LedgerEntryTypeが`PayChannel`の`CreatedNode`を探します。また、送金元の残高の減少を示す、LedgerEntryTypeが`AccountRoot`の`ModifiedNode`も探す必要があります。アドレスが送金元に一致することを確認するために`FinalFields`の`Account`フィールドを探し、XRP残高の変化を確認するために`Balance`フィールドの差異を確認します。
 
-[fixPayChanRecipientOwnerDir Amendment](../../../resources/known-amendments.md#fixpaychanrecipientownerdir)が有効な場合は、メタデータは宛先のアカウントの[所有者ディレクトリー](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが[削除される](../../accounts/deleting-accounts.md)ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）
+[fixPayChanRecipientOwnerDir Amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir)が有効な場合は、メタデータは宛先のアカウントの[所有者ディレクトリー](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが[削除される](../../accounts/deleting-accounts.md)ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）
 
 Payment Channelの閉鎖を要求する方法は、Payment Channelの不変の`CancelAfter`時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが`PayChannel`の`ModifiedNode`エントリーがあり、`FinalFields`の`Expiration`フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するよう要求した場合に`PayChannel`に対して行われる変更を示します。
 
@@ -452,4 +452,4 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
   - [トランザクションのメタデータ](../../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要
   - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md) - トランザクションのすべての結果コードを掲載した表一覧
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

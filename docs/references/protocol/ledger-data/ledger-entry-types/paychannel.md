@@ -108,4 +108,4 @@ The ID of a `PayChannel` entry is the [SHA-512Half][] of the following values, c
 * The Sequence number of the [PaymentChannelCreate transaction][] that created the channel
     If the PaymentChannelCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

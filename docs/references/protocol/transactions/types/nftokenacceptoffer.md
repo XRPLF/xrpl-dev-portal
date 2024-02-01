@@ -72,7 +72,7 @@ The transaction fails with a [`tec`-class code](../transaction-results/tec-codes
 
 ## Fields
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field              | JSON Type           | [Internal Type][] | Description   |
 |:-------------------|:--------------------|:------------------|:--------------|
@@ -105,4 +105,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNFTOKEN_OFFER_TYPE_MISMATCH`   | The object identified by the `NFTokenBuyOffer` is not actually a buy offer, or the object identified by the `NFTokenSellOffer` is not actually a sell offer. |
 | `tecNO_PERMISSION`                 | The seller does not own the `NFToken` being sold; or the matching offer specifies a different `Destination` account than the account accepting the offer. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -25,7 +25,7 @@ export default function History() {
         <div className="position-relative">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/history-orange.svg")}
+            src={require("../static/img/backgrounds/history-orange.svg")}
             className="landing-bg"
             id="history-orange"
           />
@@ -62,7 +62,7 @@ export default function History() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/history-purple.svg")}
+            src={require("../static/img/backgrounds/history-purple.svg")}
             id="history-purple"
           />
         </div>
@@ -235,7 +235,7 @@ export default function History() {
                       " September 24, 2020, the XRPL Foundation is an independent and nonprofit entity with a mission to accelerate the development and adoption of the decentralized XRP Ledger. The Foundation received an initial donation of over $6.5M from Coil, Ripple, and Gatehub to fund the Foundation’s work in service of the growing number of developers and other "
                     )}
                     <a
-                      href="contribute.html"
+                      href="/community"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

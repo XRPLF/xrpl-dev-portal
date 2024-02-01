@@ -130,4 +130,4 @@ If you don't specify an "OtherChainDestination", the account that submitted the 
 
 **Note:** When enough `XChainAddClaimAttestation` signatures are submitted by the witness servers to reach quorum, the funds are released on the issuing chain to the `OtherChainDestination`.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

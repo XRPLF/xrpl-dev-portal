@@ -88,7 +88,7 @@ The result code is only a summary of the transaction's outcome. To understand in
 
 Transaction metadata describes _exactly_ how the transaction was applied to the ledger, including the following fields:
 
-{% partial file="/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
 
 Most of the metadata is contained in [the `AffectedNodes` array](../../../references/protocol/transactions/metadata.md#affectednodes). What to look for in this array depends on the type of transaction. Almost every transaction modifies the sender's [AccountRoot object][] to destroy the XRP [transaction cost](../transaction-cost.md) and increase the [account's Sequence number](../../../references/protocol/data-types/basic-data-types.md#account-sequence).
 
@@ -362,7 +362,7 @@ In the following excerpt, we see that `r9UUEX...`'s balance increases by 1 billi
 
 Look for a `CreatedNode` of type `PayChannel` when creating a payment channel. You should also find a `ModifiedNode` of type `AccountRoot` showing the decrease in the sender's balance. Look for an `Account` field in the `FinalFields` to confirm that the address matches the sender, and look at the difference in the `Balance` fields to see the change in XRP balance.
 
-The metadata also lists the newly-created payment channel in the destination's [owner directory](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md). This prevents an account from [being deleted](../../accounts/deleting-accounts.md) if it is the destination of an open payment channel. (This behavior was added by the [fixPayChanRecipientOwnerDir amendment](../../../resources/known-amendments.md#fixpaychanrecipientownerdir).)
+The metadata also lists the newly-created payment channel in the destination's [owner directory](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md). This prevents an account from [being deleted](../../accounts/deleting-accounts.md) if it is the destination of an open payment channel. (This behavior was added by the [fixPayChanRecipientOwnerDir amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir).)
 
 There are several ways to request to close a payment channel, aside from the immutable `CancelAfter` time of the channel (which is only set on creation). If a transaction schedules a channel to close, there is  a `ModifiedNode` entry of type `PayChannel` for the channel, with the newly-added close time in the `Expiration` field of the `FinalFields`. The following example shows the changes to a `PayChannel` in a case where the sender requested to close the channel without redeeming a claim:
 
@@ -452,4 +452,4 @@ Most other transactions create a specific type of ledger entry and [adjust the s
     - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
     - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

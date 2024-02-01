@@ -12,12 +12,12 @@ The consensus protocol takes a previous ledger version as a starting point, form
 
 Each ledger version contains _state data_, a _transaction set_, and a _header_ containing metadata.
 
-[{% inline-svg file="/img/ledger.svg" /%}](/img/ledger.svg "Diagram: A ledger consists of a header, transaction set, and state data.")
+[{% inline-svg file="/docs/img/ledger.svg" /%}](/docs/img/ledger.svg "Diagram: A ledger consists of a header, transaction set, and state data.")
 
 
 ## State Data
 
-[{% inline-svg file="/img/ledger-state-data.svg" /%}](/img/ledger-state-data.svg "Diagram: A ledger's state data, in the form of various objects which are sometimes linked like a graph.")
+[{% inline-svg file="/docs/img/ledger-state-data.svg" /%}](/docs/img/ledger-state-data.svg "Diagram: A ledger's state data, in the form of various objects which are sometimes linked like a graph.")
 
 The _state data_ represents a snapshot of all accounts, balances, settings, and other information as of this ledger version. When a server connects to the network, one of the first things it does is download a full set of the current state data so that it can process new transactions and answer queries about the current state. Since every server in the network has a full copy of the state data, all data is public and every copy is equally valid.
 
@@ -25,7 +25,7 @@ The state data consists of individual objects called _ledger entries_, stored in
 
 ## Transaction Set
 
-[{% inline-svg file="/img/ledger-transaction-set.svg" /%}](/img/ledger-transaction-set.svg "Diagram: A ledger's transaction set, a group of transactions placed in canonical order.")
+[{% inline-svg file="/docs/img/ledger-transaction-set.svg" /%}](/docs/img/ledger-transaction-set.svg "Diagram: A ledger's transaction set, a group of transactions placed in canonical order.")
 
 Every change made to the ledger is the result of a transaction. Each ledger version contains a _transaction set_ which is a group of transactions that have been newly applied in a specific order. If you take the previous ledger version's state data, and apply this ledger's transaction set on top of it, you get this ledger's state data as a result.
 
@@ -41,20 +41,20 @@ The _ledger header_ is a block of data that summarizes a ledger version. Like th
 
 <!-- Note: the alt text for the diagrams is intentionally empty because any caption would be redundant with the text. -->
 
-- [{% inline-svg file="/img/ledger-index-icon.svg" /%}](/img/ledger-index-icon.svg "") The _ledger index_, which identifies the ledger version's position in the chain. It builds on the ledger with an index that is one lower, back to the starting point known as the _genesis ledger_. This forms a public history of all transactions and results.
-- [{% inline-svg file="/img/ledger-hash-icon.svg" /%}](/img/ledger-hash-icon.svg "") The _ledger hash_, which uniquely identifies the ledger's contents. The hash is calculated so that if any detail of the ledger version changes, the hash is completely different, which makes it also like a checksum that shows that none of the data in the ledger has been lost, modified, or corrupted.
-- [{% inline-svg file="/img/ledger-parent-icon.svg" /%}](/img/ledger-parent-icon.svg "") The _parent ledger hash_. A ledger version is largely defined by the difference from the _parent ledger_ that came before it, so the header also contains the unique hash of its parent ledger.
-- [{% inline-svg file="/img/ledger-timestamp-icon.svg" /%}](/img/ledger-timestamp-icon.svg "") The _close time_, the official timestamp when this ledger's contents were finalized. This number is rounded off by a number of seconds, usually 10.
-- [{% inline-svg file="/img/ledger-state-data-hash-icon.svg" /%}](/img/ledger-state-data-hash-icon.svg "") A _state data hash_ which acts as a checksum on this ledger's state data.
-- [{% inline-svg file="/img/ledger-tx-set-hash-icon.svg" /%}](/img/ledger-tx-set-hash-icon.svg "") A _transaction set hash_ which acts as a checksum on this ledger's transaction set data.
-- [{% inline-svg file="/img/ledger-notes-icon.svg" /%}](/img/ledger-notes-icon.svg "") A few other notes like the total amount of XRP in existence and the amount the close time was rounded by.
+- [{% inline-svg file="/docs/img/ledger-index-icon.svg" /%}](/docs/img/ledger-index-icon.svg "") The _ledger index_, which identifies the ledger version's position in the chain. It builds on the ledger with an index that is one lower, back to the starting point known as the _genesis ledger_. This forms a public history of all transactions and results.
+- [{% inline-svg file="/docs/img/ledger-hash-icon.svg" /%}](/docs/img/ledger-hash-icon.svg "") The _ledger hash_, which uniquely identifies the ledger's contents. The hash is calculated so that if any detail of the ledger version changes, the hash is completely different, which makes it also like a checksum that shows that none of the data in the ledger has been lost, modified, or corrupted.
+- [{% inline-svg file="/docs/img/ledger-parent-icon.svg" /%}](/docs/img/ledger-parent-icon.svg "") The _parent ledger hash_. A ledger version is largely defined by the difference from the _parent ledger_ that came before it, so the header also contains the unique hash of its parent ledger.
+- [{% inline-svg file="/docs/img/ledger-timestamp-icon.svg" /%}](/docs/img/ledger-timestamp-icon.svg "") The _close time_, the official timestamp when this ledger's contents were finalized. This number is rounded off by a number of seconds, usually 10.
+- [{% inline-svg file="/docs/img/ledger-state-data-hash-icon.svg" /%}](/docs/img/ledger-state-data-hash-icon.svg "") A _state data hash_ which acts as a checksum on this ledger's state data.
+- [{% inline-svg file="/docs/img/ledger-tx-set-hash-icon.svg" /%}](/docs/img/ledger-tx-set-hash-icon.svg "") A _transaction set hash_ which acts as a checksum on this ledger's transaction set data.
+- [{% inline-svg file="/docs/img/ledger-notes-icon.svg" /%}](/docs/img/ledger-notes-icon.svg "") A few other notes like the total amount of XRP in existence and the amount the close time was rounded by.
 
 A ledger's transaction set and state data are unlimited in size, but the ledger header is always a fixed size. For the exact data and binary format of a ledger header, see [Ledger Header](../../references/protocol/ledger-data/ledger-header.md).
 
 
 ## Validation Status
 
-[{% inline-svg file="/img/ledger-validated-mark.svg" /%}](/img/ledger-validated-mark.svg "Diagram: A ledger's validation status, which is added on top of the ledger and not part of the ledger itself.")
+[{% inline-svg file="/docs/img/ledger-validated-mark.svg" /%}](/docs/img/ledger-validated-mark.svg "Diagram: A ledger's validation status, which is added on top of the ledger and not part of the ledger itself.")
 
 When a consensus of validators in a server's Unique Node List agree on the contents of a ledger version, that ledger version is marked as validated and immutable. The ledger's contents can only change by subsequent transactions making a new ledger version, continuing the chain.
 

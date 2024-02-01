@@ -17,7 +17,7 @@ The specified recipient can also [cash the check for an exact amount](cash-a-che
 
 ## Prerequisites
 
-{% partial file="/_snippets/checkcash-prereqs.md" /%}
+{% partial file="/docs/_snippets/checkcash-prereqs.md" /%}
 
 ## 1. Prepare the CheckCash transaction
 
@@ -55,7 +55,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## 2. Sign the CheckCash transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} 
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%} 
 
 ### Example Request
 
@@ -81,7 +81,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## 3. Submit the signed CheckCash transaction
 
-{% partial file="/_snippets/tutorial-submit-step.md" /%} 
+{% partial file="/docs/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
 
@@ -106,7 +106,7 @@ The following examples show how to prepare a transaction to cash a Check for a f
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. Confirm final result
 
@@ -192,4 +192,4 @@ If the Check was cashed for a flexible `DeliverMin` amount and succeeded, you ca
 
     - If the token has a [transfer fee](../../../concepts/tokens/transfer-fees.md), the Check's sender may be debited more than the recipient is credited. (The difference is the transfer fee, which is returned to the issuer as a decreased net obligation.)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

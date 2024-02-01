@@ -32,7 +32,7 @@ If you [issue tokens](../../concepts/tokens/index.md) in the XRP Ledger, can ena
 
 Complete sample code for all of the steps of this tutorial is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
 
-- See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze/) in the source repository for this website.
+- See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/freeze/) in the source repository for this website.
 
 ## Steps
 
@@ -44,7 +44,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 For this tutorial, you can get credentials from the following interface:
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
@@ -63,7 +63,7 @@ You must be connected to the network to submit transactions to it. The following
 
 For this tutorial, click the following button to connect:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. Send AccountSet Transaction to Start the Freeze
@@ -118,7 +118,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% interactive-block label="Wait" steps=$frontmatter.steps %}
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 {% /interactive-block %}
 
@@ -250,7 +250,7 @@ For example:
 
 As before, wait for the previous transaction to be validated by consensus before continuing.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
 
 
 ### 8. Confirm Account Settings
@@ -285,4 +285,4 @@ After the transaction is validated, you can confirm the status of the Global Fre
     - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
     - [RippleState (trust line) Flags](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

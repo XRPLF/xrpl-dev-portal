@@ -28,7 +28,7 @@ A path is made of steps that connect the sender to the receiver of the payment. 
 
 In both types of steps, each intermediate address gains and loses approximately equal value: either a balance ripples from a trust line to another trust line in the same currency, or they exchange currencies according to a previously-placed order. In some cases, the amounts gained and lost may not be exactly equivalent, due to [transfer fees](../transfer-fees.md), trust line quality settings, or rounding.
 
-[{% inline-svg file="/img/paths-examples.svg" /%}](/img/paths-examples.svg "Diagram of three example paths")
+[{% inline-svg file="/docs/img/paths-examples.svg" /%}](/docs/img/paths-examples.svg "Diagram of three example paths")
 
 
 
@@ -69,7 +69,7 @@ The default path could be any of the following:
 
 The following diagram enumerates all possible default paths:
 
-[{% inline-svg file="/img/default-paths.svg" /%}](/img/default-paths.svg "Diagram of default paths")
+[{% inline-svg file="/docs/img/default-paths.svg" /%}](/docs/img/default-paths.svg "Diagram of default paths")
 
 You can use the [`tfNoDirectRipple` flag](../../../references/protocol/transactions/types/payment.md#payment-flags) to disable the default path. In this case, the transaction can only execute using the paths explicitly included in the transaction. Traders can use this option to take arbitrage opportunities.
 
@@ -115,4 +115,4 @@ The `type` field, used for the binary serialization of a path set, is actually c
     - [path_find method][] (WebSocket only)
     - [ripple_path_find method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

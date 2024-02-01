@@ -123,4 +123,4 @@ All methods can potentially return any of the following values for the `error` c
 - `unknownCmd` - The request does not contain a [command](../index.md) that the `rippled` server recognizes.
 - `wsTextRequired` - (WebSocket only) The request's [opcode](https://tools.ietf.org/html/rfc6455#section-5.2) is not text. <!-- SPELLING_IGNORE: opcode -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

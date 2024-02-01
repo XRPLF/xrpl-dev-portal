@@ -40,7 +40,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenMint%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22B42C7A0C9C3061463C619999942D0F25E4AE5FB051EA0D7A4EE1A924DB6DFEE8%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type           | [Internal Type][] | Description        |
 |:--------------|:--------------------|:------------------|:-------------------|
@@ -116,4 +116,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecINSUFFICIENT_RESERVE`     | The owner would not meet the updated [reserve requirement](../../../../concepts/accounts/reserves.md) after minting the token. Note that new `NFToken`s only increase the owner's reserve if it requires a new [NFTokenPage object][], which can each hold up to 32 NFTs. |
 | `tecMAX_SEQUENCE_REACHED`     | The `Issuer`'s `MintedNFTokens` field is already at its maximum. This is only possible if 2<sup>32</sup>-1 `NFToken`s have been minted in total by the issuer or on their behalf. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

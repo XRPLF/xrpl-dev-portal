@@ -25,7 +25,7 @@ labels:
 ## 安全でない構成
 
 <!-- TODO: translate diagrams -->
-[{% inline-svg file="/img/insecure-signing-options.svg" /%}](/img/insecure-signing-options.svg "安全でない構成の図")
+[{% inline-svg file="/docs/img/insecure-signing-options.svg" /%}](/docs/img/insecure-signing-options.svg "安全でない構成の図")
 
 外部のソースからあなたの秘密鍵にアクセスできる構成は危険で、不正使用者によってあなたのすべてのXRP（およびあなたのXRP Ledgerのアドレスにあるすべてのもの）が盗まれる可能性があります。そのような構成の例としては、インターネット経由で他の人の`rippled`サーバーの[signメソッド][]を使用する構成や、秘密鍵をインターネットを経由してプレーンテキストで自己所有サーバーに送信する構成などがあります。
 
@@ -36,7 +36,7 @@ labels:
 
 ## ローカルでrippledを実行する
 
-[{% inline-svg file="/img/secure-signing-local-rippled.svg" /%}](/img/secure-signing-local-rippled.svg "署名にローカルrippledサーバーを使用する構成の図")
+[{% inline-svg file="/docs/img/secure-signing-local-rippled.svg" /%}](/docs/img/secure-signing-local-rippled.svg "署名にローカルrippledサーバーを使用する構成の図")
 
 この構成では、トランザクションを生成するマシンで`rippled`を実行します。  秘密鍵はマシンから出ていかないため、マシンへのアクセス権がない人は秘密鍵にアクセスできません。もちろん、マシンのセキュリティ保護に関する業界標準のプラクティスに従ってください。この構成を使用するには、次の手順を実行します。
 
@@ -57,7 +57,7 @@ labels:
 
 ## 同じLAN内でrippledを実行する
 
-[{% inline-svg file="/img/secure-signing-lan-rippled.svg" /%}](/img/secure-signing-lan-rippled.svg "署名にLAN経由でrippledサーバーを使用する構成の図")
+[{% inline-svg file="/docs/img/secure-signing-lan-rippled.svg" /%}](/docs/img/secure-signing-lan-rippled.svg "署名にLAN経由でrippledサーバーを使用する構成の図")
 
 この構成では、署名するトランザクションを生成するマシンと同じプライベートローカルエリアネットワーク（LAN）内の専用マシンで`rippled`サーバーを実行します。この構成では、`rippled`を実行する専用の1台のマシンを使用しながら、中程度のシステムスペックの1台以上のマシンでトランザクションの指示を組み立てることができます。自己所有のデータセンターやサーバールームがある場合に魅力的な選択肢です。
 
@@ -70,7 +70,7 @@ labels:
 
 ## ローカル署名機能のあるクライアントライブラリを使用する
 
-[{% inline-svg file="/img/secure-signing-client-library.svg" /%}](/img/secure-signing-client-library.svg "ローカル署名機能のあるクライアントライブラリを使用する構成の図")
+[{% inline-svg file="/docs/img/secure-signing-client-library.svg" /%}](/docs/img/secure-signing-client-library.svg "ローカル署名機能のあるクライアントライブラリを使用する構成の図")
 
 この構成では、使用するプログラミング言語で、署名を組み込んだクライアントライブラリを使用します。ローカル署名を実行できるライブラリの一覧は、[クライアントライブラリ](../../references/client-libraries.md)を参照してください。
 
@@ -116,7 +116,7 @@ labels:
 
 ## 専用の署名デバイスを使用する
 
-[{% inline-svg file="/img/secure-signing-dedicated-hardware.svg" /%}](/img/secure-signing-dedicated-hardware.svg "専用の署名ハードウェアの使用の図")
+[{% inline-svg file="/docs/img/secure-signing-dedicated-hardware.svg" /%}](/docs/img/secure-signing-dedicated-hardware.svg "専用の署名ハードウェアの使用の図")
 
 専用の署名デバイスが各社から販売されており、例えば[Ledger Nano S](https://www.ledger.com/products/ledger-nano-s)は、秘密鍵をデバイスから出さずに使ってXRP Ledgerトランザクションに署名できます。すべてのタイプのトランザクションに対応していないデバイスもあります。
 
@@ -125,7 +125,7 @@ labels:
 
 ## リモートrippledサーバーに対して安全なVPNを使用する
 
-[{% inline-svg file="/img/secure-signing-over-vpn.svg" /%}](/img/secure-signing-over-vpn.svg "VPNを経由してリモート`rippled`に安全に接続する構成の図")
+[{% inline-svg file="/docs/img/secure-signing-over-vpn.svg" /%}](/docs/img/secure-signing-over-vpn.svg "VPNを経由してリモート`rippled`に安全に接続する構成の図")
 
 この構成では、コロケーション施設や遠隔地のデータセンターなどにあるリモートでホストされている`rippled`サーバーを使用し、暗号化されたVPNを使用してそのサーバーに接続します。
 
@@ -149,4 +149,4 @@ labels:
     - [`xrpl-py`リファレンス](https://xrpl-py.readthedocs.io/)
     - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

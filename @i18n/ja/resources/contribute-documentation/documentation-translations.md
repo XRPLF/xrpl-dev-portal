@@ -70,7 +70,7 @@ languages:
 
 ## 始めるにあたって
 
-XRP Ledger Dev Portalをあなたの母国語に翻訳したい場合は、まず{% repo-link path="content/concepts/introduction/what-is-the-xrp-ledger.md" %}"What is the XRP Ledger?" file{% /repo-link %}から始めてください。
+XRP Ledger Dev Portalをあなたの母国語に翻訳したい場合は、まず{% repo-link path="docs/concepts/introduction/what-is-the-xrp-ledger.md" %}"What is the XRP Ledger?" file{% /repo-link %}から始めてください。
 
 このファイルを`xrp-ledger-overview.{言語コード}.md`として保存します。ここで`{言語コード}`は[IETF BCP47](https://tools.ietf.org/html/bcp47)の言語コードです。(例えば、スペイン語は"es"、日本語は"ja"、簡体字中国語は"zh-CN"、台湾で使われている繁体字中国語は"zh-TW"などです)。そして、あなたのファイルをこのリポジトリに追加する[プルリクエスト](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)を作成してください。リポジトリメンテナの誰かが、サイトに言語を追加するために必要なその他の設定を手伝ってくれるでしょう。
 

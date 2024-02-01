@@ -174,4 +174,4 @@ The XRP Ledger has a mechanism for changing the minimum transaction cost to acco
     - [FeeSettings object](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
     - [SetFee pseudo-transaction][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

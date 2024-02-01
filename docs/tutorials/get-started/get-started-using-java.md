@@ -225,4 +225,4 @@ Now that you know how to use `xrpl4j` to connect to the XRP Ledger, get an accou
 * [Send XRP](send-xrp.md).
 * [Set up secure signing](../../concepts/transactions/secure-signing.md) for your account.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

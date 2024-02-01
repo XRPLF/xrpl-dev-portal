@@ -79,7 +79,7 @@ export default function XrplOverview() {
         <div className="position-relative">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/xrpl-overview-purple.svg")}
+            src={require("../static/img/backgrounds/xrpl-overview-purple.svg")}
             className="landing-bg"
             id="xrpl-overview-purple"
           />
@@ -101,7 +101,7 @@ export default function XrplOverview() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/xrpl-overview-orange.svg")}
+            src={require("../static/img/backgrounds/xrpl-overview-orange.svg")}
             id="xrpl-overview-orange"
           />
         </div>
@@ -219,7 +219,7 @@ export default function XrplOverview() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("../img/backgrounds/cta-xrpl-overview-green.svg")}
+              src={require("../static/img/backgrounds/cta-xrpl-overview-green.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">
@@ -373,7 +373,7 @@ export default function XrplOverview() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("../img/backgrounds/cta-xrpl-overview-orange.svg")}
+              src={require("../static/img/backgrounds/cta-xrpl-overview-orange.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">

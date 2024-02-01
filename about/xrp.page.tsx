@@ -116,7 +116,7 @@ export default function XrpOverview() {
         <div className="position-relative">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/xrp-overview-blue.svg")}
+            src={require("../static/img/backgrounds/xrp-overview-blue.svg")}
             className="landing-bg"
             id="xrp-overview-blue"
           />
@@ -260,7 +260,7 @@ export default function XrpOverview() {
                 <div className="mt-10 p-10 br-8 cta-card position-relative">
                   <img
                     alt="default-alt-text"
-                    src={require("../img/backgrounds/cta-xrp-overview-magenta.svg")}
+                    src={require("../static/img/backgrounds/cta-xrp-overview-magenta.svg")}
                     className="cta cta-bottom-right"
                   />
                   <div className="z-index-1 position-relative">
@@ -333,7 +333,7 @@ export default function XrpOverview() {
                 <div className="mt-10 p-10 br-8 cta-card position-relative">
                   <img
                     alt="default-alt-text"
-                    src={require("../img/backgrounds/cta-xrp-overview-green-2.svg")}
+                    src={require("../static/img/backgrounds/cta-xrp-overview-green-2.svg")}
                     className="landing-bg cta cta-bottom-right"
                   />
                   <div className="z-index-1 position-relative">
@@ -347,7 +347,7 @@ export default function XrpOverview() {
                         <img
                           id="xrp-mark-overview"
                           className="mw-100 invertible-img mr-2"
-                          src={require("../img/logos/xrp-mark.svg")}
+                          src={require("../static/img/logos/xrp-mark.svg")}
                           alt="XRP Logo Mark"
                         />
                         <span

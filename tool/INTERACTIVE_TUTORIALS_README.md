@@ -62,12 +62,12 @@ An interactive tutorial is a page, so you add it to the `dactyl-config.yml` page
 
 2. For the tutorial, you're going to create (at least) two JavaScript files:
 
-    - **Example Code:** The example code that you'll display on the page. You want to make sure it actually runs correctly as shown to the user, after all. You should start by making this one. You should save this file as `content/_code-samples/{YOUR TUTORIAL}/{YOUR TUTORIAL}.js`.
+    - **Example Code:** The example code that you'll display on the page. You want to make sure it actually runs correctly as shown to the user, after all. You should start by making this one. You should save this file as `_code-samples/{YOUR TUTORIAL}/{YOUR TUTORIAL}.js`.
     - **Interactive Code:** A modified version of the same code that will actually run, and also interact with the user interface in the browser itself. You should adapt this one from the other version after you get the other one working. While working on this version, remember to backport any changes that are also applicable to the example code version. You should save this file as `static/js/tutorials/{YOUR_TUTORIAL}.js`.
 
 3. Start working on the Example Code file first.
 
-    Rather than starting with empty example code, you copy and adapt one of the existing code samples, such as [Send XRP](../content/_code-samples/send-xrp/). For this, you can just open the `demo.html` directly in your browser and use the developer console; you can see your changes immediately after refreshing the page.
+    Rather than starting with empty example code, you copy and adapt one of the existing code samples, such as [Send XRP](../_code-samples/send-xrp/). For this, you can just open the `demo.html` directly in your browser and use the developer console; you can see your changes immediately after refreshing the page.
 
 4. When you have working sample code, break it down into logical steps. Then, write the actual prose of the tutorial, with descriptions of each step.
 
@@ -111,11 +111,11 @@ There are also snippets that handle some of the most generic and repeated parts 
 For many tutorials, the first two steps are going to be "Connect to the Testnet" and "Get Credentials". The snippets for these are:
 
 ```markdoc
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 ```
 
 ```
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 ```
 
 
@@ -153,13 +153,13 @@ Things you'll want to customize for each section:
 If you have a step in your tutorial where you wait for a transaction to get validated, the "Wait" snippet is there for you. The "Wait" snippet should be used like this:
 
 ```markdoc
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 ```
 
 If you have multiple "Wait" steps, you need to give each one a unique name. To do that:
 
 ```markdoc
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} %}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
 ```
 
 ### Step Code
@@ -336,7 +336,7 @@ The generic submit handler does all the following:
 
 ### Other Bits
 
-There are several other functions provided by the [interactive-tutorial.js](../assets/js/interactive-tutorial.js) file that may be useful for certain things; for the full details on all of them, read the source. A brief summary of what you can use:
+There are several other functions provided by the [interactive-tutorial.js](../static/js/interactive-tutorial.js) file that may be useful for certain things; for the full details on all of them, read the source. A brief summary of what you can use:
 
 - Check if a step is complete (by name or by ID)
 - Get the ID of a step that contains a given HTML element (like the one that triggered an event). You can use this to write an event handler that can process multiple different buttons similarly.
@@ -352,18 +352,18 @@ There's also some translation stuff, but it's not ready to be used outside of th
 ## Examples
 
 - **Send XRP** - The original interactive tutorial. (Much improved since its inception.) Uses `{% code-snippet %}` to pull in the Example Code from an HTML file that also work as a stand-alone.
-    - [Markdown](../content/tutorials/use-simple-xrp-payments/send-xrp.md)
-    - [Example Code](../content/_code-samples/send-xrp/)
-    - [Interactive Code](../assets/js/tutorials/send-xrp.js)
+    - [Markdown](../docs/tutorials/get-started/send-xrp.md)
+    - [Example Code](../_code-samples/send-xrp/)
+    - [Interactive Code](../static//js/tutorials/send-xrp.js)
 - **Use Tickets** - A fairly detailed case with some advanced interactions.
-    - [Markdown](../content/tutorials/manage-account-settings/use-tickets.md)
+    - [Markdown](../docs/tutorials/manage-account-settings/use-tickets.md)
     - Example code is inlined in the Markdown file.
-    - [Interactive Code](../assets/js/tutorials/use-tickets.js)
+    - [Interactive Code](../static/js/tutorials/use-tickets.js)
 - **Require Destination Tags** - A relatively small and simple tutorial.
-    - [Markdown](../content/tutorials/manage-account-settings/require-destination-tags.md)
-    - [Example Code](../content/_code-samples/require-destination-tags/)
-    - [Interactive Code](../assets/js/tutorials/require-destination-tags.js)
+    - [Markdown](../docs/tutorials/manage-account-settings/require-destination-tags.md)
+    - [Example Code](../_code-samples/require-destination-tags/)
+    - [Interactive Code](../static/js/tutorials/require-destination-tags.js)
 - **Monitor Incoming Payments with WebSocket** - An interactive tutorial that doesn't use xrpl.js.
-    - [Markdown](../content/tutorials/get-started/monitor-incoming-payments-with-websocket.md)
-    - [Example Code (incomplete)](../content/_code-samples/require-destination-tags/). The rest is inlined in the Markdown file.
+    - [Markdown](../docs/tutorials/get-started/monitor-incoming-payments-with-websocket.md)
+    - [Example Code (incomplete)](../_code-samples/require-destination-tags/). The rest is inlined in the Markdown file.
     - The interactive code is inlined in the Markdown file.

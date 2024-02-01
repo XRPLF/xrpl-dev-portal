@@ -81,7 +81,7 @@ public:
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
     - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
--` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)をご覧ください。
+-` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/transaction-results.md)をご覧ください。
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)
@@ -322,7 +322,7 @@ CreateCheck::doApply()
 
 ### `calculateBaseFee`
 
-ほとんどのトランザクションはデフォルトの[Referenceトランザクションコスト](../../concepts/transactions/transaction-cost.md)をそのまま引き継ぎます。しかし、トランザクションで通常以外のトランザクションコストを定義する必要がある場合、トランザクションの`calculateBaseFee`メソッドをカスタムメソッドに置き換えることができます。
+ほとんどのトランザクションはデフォルトの[Referenceトランザクションコスト](../../docs/concepts/transactions/transaction-cost.md)をそのまま引き継ぎます。しかし、トランザクションで通常以外のトランザクションコストを定義する必要がある場合、トランザクションの`calculateBaseFee`メソッドをカスタムメソッドに置き換えることができます。
 
 次の例では、`EscrowFinish`ランザクションが条件付きエスクローに対して、フルフィルメントの大きさに応じて追加コストを請求する方法を示しています。
 
@@ -356,7 +356,7 @@ EscrowFinish::calculateBaseFee(ReadView const& view, STTx const& tx)
 - 複数のシーケンス番号を消費するチケット。
 - 設定されたフラグやフィールドによって、正常またはブロッカーとなるトランザクション。
 
-**注記:** `TxConsequences`は[トランザクションキュー](../../concepts/transactions/transaction-queue.md)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。
+**注記:** `TxConsequences`は[トランザクションキュー](../../docs/concepts/transactions/transaction-queue.md)にのみ影響します。トランザクションがレジャーに適用されたときに手数料を請求する可能性が高い場合、それはピアに送信されます。手数料を請求する可能性がない場合、またはそれが判断できない場合は、送信されません。
 
 
 ```c++
@@ -389,4 +389,4 @@ SetAccount::makeTxConsequences(PreflightContext const& ctx)
 
 ## 次のステップ
 
-新しいトランザクタでサーバを再コンパイルし、[スタンドアロンモード](../../infrastructure/testing-and-auditing/index.md)でテストしてください。もしAmendmentの後ろにトランザクタをコーディングした場合、設定ファイルを使ってその機能を[強制的に有効にする](../../infrastructure/testing-and-auditing/test-amendments.md)ことができます。
+新しいトランザクタでサーバを再コンパイルし、[スタンドアロンモード](../../docs/infrastructure/testing-and-auditing/index.md)でテストしてください。もしAmendmentの後ろにトランザクタをコーディングした場合、設定ファイルを使ってその機能を[強制的に有効にする](../../docs/infrastructure/testing-and-auditing/test-amendments.md)ことができます。

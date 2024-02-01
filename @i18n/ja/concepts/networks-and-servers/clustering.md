@@ -18,4 +18,4 @@ labels:
 
 クラスターでのサーバーの設定方法に関するチュートリアルについては、[`rippled`サーバーのクラスター化](../../infrastructure/configuration/peering/cluster-rippled-servers.md)を参照してください。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

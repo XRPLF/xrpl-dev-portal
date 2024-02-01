@@ -126,4 +126,4 @@ The `rippled` v1.3 package includes an updated auto-update script that works on 
         - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

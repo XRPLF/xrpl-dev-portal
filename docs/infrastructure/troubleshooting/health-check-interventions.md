@@ -114,4 +114,4 @@ Warning or critical values for the following [metrics][] may indicate insufficie
 
 [metrics]: ../../references/http-websocket-apis/peer-port-methods/health-check.md#response-format
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

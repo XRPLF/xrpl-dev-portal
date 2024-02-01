@@ -4,7 +4,7 @@ Every [account in the XRP Ledger](../../concepts/accounts/accounts.md) has a seq
 
 [Tickets](../../concepts/accounts/tickets.md) make some exceptions from these rules so that it is possible to send transactions out of the normal order. Tickets represent sequence numbers reserved for later use; a transaction can use a Ticket instead of a normal sequence number.
 
-With the [DeletableAccounts amendment](../../resources/known-amendments.md#deletableaccounts), the starting `Sequence` number for an account matches the [Ledger Index][] of the ledger version where the account was created. Before DeletableAccounts, every account started with `Sequence` number 1.
+With the [DeletableAccounts amendment](/resources/known-amendments.md#deletableaccounts), the starting `Sequence` number for an account matches the [Ledger Index][] of the ledger version where the account was created. Before DeletableAccounts, every account started with `Sequence` number 1.
 
 Whenever a transaction is included in a ledger, it uses up a sequence number (or Ticket) regardless of whether the transaction executed successfully or failed with a [`tec`-class error code](../../references/protocol/transactions/transaction-results/tec-codes.md). Other transaction failures don't get included in ledgers, so they don't change the sender's sequence number (or have any other effects).
 

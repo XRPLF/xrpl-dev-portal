@@ -289,7 +289,7 @@ Log messages such as the following occur when the server sees a validation messa
 Validations:WRN Unable to determine hash of ancestor seq=3 from ledger hash=00B1E512EF558F2FD9A0A6C263B3D922297F26A55AEB56A009341A22895B516E seq=12133675
 ```
 
-{% partial file="/_snippets/unsynced_warning_logs.md" /%}
+{% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
 
 
@@ -315,7 +315,7 @@ LedgerConsensus:WRN 96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC7
 LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C6A9F2788CC715590E8FA5710F2D10BF5E3C03","close_flags":0,"close_time":588812130,"close_time_human":"2018-Aug-28 22:55:30.000000000","close_time_resolution":30,"closed":true,"hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_hash":"96A8DF9ECF5E9D087BAE9DDDE38C197D3C1C6FB842C7BB770F8929E56CC71661","ledger_index":"3","parent_close_time":588812070,"parent_hash":"5F5CB224644F080BC8E1CC10E126D62E9D7F9BE1C64AD0565881E99E3F64688A","seqNum":"3","totalCoins":"100000000000000000","total_coins":"100000000000000000","transaction_hash":"0000000000000000000000000000000000000000000000000000000000000000"}
 ```
 
-{% partial file="/_snippets/unsynced_warning_logs.md" /%}
+{% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
 
 
@@ -325,7 +325,7 @@ LedgerConsensus:WRN {"accepted":true,"account_hash":"89A821400087101F1BF2D2B912C
 NetworkOPs:WRN We are not running on the consensus ledger
 ```
 
-{% partial file="/_snippets/unsynced_warning_logs.md" /%}
+{% partial file="/docs/_snippets/unsynced_warning_logs.md" /%}
 
 
 
@@ -333,7 +333,7 @@ NetworkOPs:WRN We are not running on the consensus ledger
 
 - **Concepts:**
     - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Technical FAQ](../../about/faq.md)
+    - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Diagnosing Problems](diagnosing-problems.md)
     - [Capacity Planning](../installation/capacity-planning.md)
@@ -344,4 +344,4 @@ NetworkOPs:WRN We are not running on the consensus ledger
 
 <!-- SPELLING_IGNORE: oom, async_send, statsd, inboundledger, loadmonitor, validatedseq -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

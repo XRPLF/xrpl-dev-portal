@@ -19,13 +19,13 @@ To complete this tutorial, you should meet the following guidelines:
 
 ## Source Code
 
-You can find the complete source code for all of this tutorial's examples in the {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/" %}code samples section of this website's repository{% /repo-link %}.
+You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-desktop-wallet/py/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Goals
 
 At the end of this tutorial, you should have a Python application that looks something like this:
 
-![Desktop wallet screenshot](/img/python-wallet-preview.png)
+![Desktop wallet screenshot](/docs/img/python-wallet-preview.png)
 
 The exact look and feel of the user interface depend on your computer's operating system. This application is capable of the following:
 
@@ -89,17 +89,17 @@ The first step is to build an app that combines the "hello world" equivalents fo
 
 When you run this script, it displays a single window that (hopefully) shows the latest validated ledger index on the XRP Ledger Testnet. It looks like this:
 
-![Screenshot: Step 1, hello world equivalent](/img/python-wallet-1.png)
+![Screenshot: Step 1, hello world equivalent](/docs/img/python-wallet-1.png)
 
 Under the hood, the code makes a JSON-RPC client, connects to a public Testnet server, and uses the [ledger method][] to get this information. Meanwhile, it creates a [`wx.Frame`](https://docs.wxpython.org/wx.Frame.html) subclass as the base of the user interface. This class makes a window the user can see, with a [`wx.StaticText`](https://docs.wxpython.org/wx.StaticText.html) widget to display text to the user, and a [`wx.Panel`](https://docs.wxpython.org/wx.Panel.html) to hold that widget.
 
 ### 2. Show Ledger Updates
 
-**Full code for this step:** {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/2_threaded.py" %}`2_threaded.py`{% /repo-link %}.
+**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/2_threaded.py" %}`2_threaded.py`{% /repo-link %}.
 
 You may have noticed that the app in step 1 only shows the latest validated ledger at the time you opened it: the text displayed never changes unless you close the app and reopen it. The actual XRP Ledger is constantly making forward progress, so a more useful app would show it, something like this:
 
-![Animation: Step 2, showing ledger updates](/img/python-wallet-2.gif)
+![Animation: Step 2, showing ledger updates](/docs/img/python-wallet-2.gif)
 
 If you want to continually watch the ledger for updates (for example, waiting to see when new transactions have been confirmed), then you need to change the architecture of your app slightly. For reasons specific to Python, it's best to use two _threads_: a "GUI" thread to handle user input and display, and a "worker" thread for XRP Ledger network connectivity. The operating system can switch quickly between the two threads at any time, so the user interface can remain responsive while the background thread waits on information from the network that may take a while to arrive.
 
@@ -161,17 +161,17 @@ On Windows, open Edge or Chrome and browse to <https://s1.ripple.com>, then clos
 
 ### 3. Display an Account
 
-**Full code for this step:** {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/3_account.py" %}`3_account.py`{% /repo-link %}
+**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/3_account.py" %}`3_account.py`{% /repo-link %}
 
 Now that you have a working, ongoing connection to the XRP Ledger, it's time to start adding some "wallet" functionality that lets you manage an individual account. For this step, you should prompt the user to input their address or master seed, then use that to display information about their account including how much XRP is set aside for the [reserve requirement](../../concepts/accounts/reserves.md).
 
 The prompt is in a pop-up dialog like this:
 
-![Screenshot: step 3, account input prompt](/img/python-wallet-3-enter.png)
+![Screenshot: step 3, account input prompt](/docs/img/python-wallet-3-enter.png)
 
 After the user inputs the prompt, the updated GUI looks like this:
 
-![Screenshot, step 3, showing account details](/img/python-wallet-3-main.png)
+![Screenshot, step 3, showing account details](/docs/img/python-wallet-3-main.png)
 
 When you do math on XRP amounts, you should use the `Decimal` class so that you don't get rounding errors. Add this to the top of the file, with the other imports:
 
@@ -255,17 +255,17 @@ To test your wallet app with your own test account, first go to the [Testnet Fau
 
 ### 4. Show Account's Transactions
 
-**Full code for this step:** {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/4_tx_history.py" %}`4_tx_history.py`{% /repo-link %}
+**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/4_tx_history.py" %}`4_tx_history.py`{% /repo-link %}
 
 At this point, your wallet shows the account's balance getting updated, but doesn't show you anything about the actual transactions that caused the updates. So, the next step is to display the account's transaction history (and keep it updated).
 
 The new transaction history displays in a new tab, like this:
 
-![Screenshot: transaction history tab](/img/python-wallet-4-main.png)
+![Screenshot: transaction history tab](/docs/img/python-wallet-4-main.png)
 
 Additionally, the app can produce desktop notifications (sometimes called "toasts"), which might look like this depending on your operating system:
 
-![Screenshot: notification message](/img/python-wallet-4-notif.png)
+![Screenshot: notification message](/docs/img/python-wallet-4-notif.png)
 
 First, add the following imports to get GUI classes for the table view and notifications:
 
@@ -322,17 +322,17 @@ As before, you can test your wallet app with your own test account if you use th
 
 ### 5. Send XRP
 
-**Full code for this step:** {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" %}`5_send_xrp.py`{% /repo-link %}
+**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/5_send_xrp.py" %}`5_send_xrp.py`{% /repo-link %}
 
 Until now, you've made the app able to view data from the ledger, and it's capable of showing the transactions an account has received. Now it's finally time to make the app capable of _sending_ transactions. For now, you can stick to sending [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md) because there are more complexities involved in sending [issued tokens](../../concepts/tokens/index.md).
 
 The main window gets a new "Send XRP" button:
 
-![Screenshot: main frame with "Send XRP" button enabled](/img/python-wallet-5-main.png)
+![Screenshot: main frame with "Send XRP" button enabled](/docs/img/python-wallet-5-main.png)
 
 Clicking this button opens a dialog where the user can enter the details of the payment:
 
-![Screenshot: "Send XRP" dialog](/img/python-wallet-5-dialog.png)
+![Screenshot: "Send XRP" dialog](/docs/img/python-wallet-5-dialog.png)
 
 First, add the [regular expressions](https://docs.python.org/3/howto/regex.html) library to the list of imports at the top of the file:
 
@@ -441,17 +441,17 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 ### 6. Domain Verification and Polish
 
-**Full code for this step:** {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" %}`6_verification_and_polish.py`{% /repo-link %}
+**Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" %}`6_verification_and_polish.py`{% /repo-link %}
 
 One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
 One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, you could show it like this:
 
-![Screenshot: domain verified destination](/img/python-wallet-6.png)
+![Screenshot: domain verified destination](/docs/img/python-wallet-6.png)
 
 When there are other errors, you can expose them to the user with an icon and a tooltip, which looks like this:
 
-![Screenshot: invalid address error icon with tooltip](/img/python-wallet-6-err.png)
+![Screenshot: invalid address error icon with tooltip](/docs/img/python-wallet-6-err.png)
 
 The following code implements account domain verification; **save it as a new file** named `verify_domain.py` in the same folder as your app's main file:
 
@@ -547,9 +547,9 @@ To test X-addresses, try the following addresses:
 Now that you have a functional wallet, you can take it in several new directions. The following are a few ideas:
 
 - You could support more of the XRP Ledger's [transaction types](../../references/protocol/transactions/types/index.md) including [tokens](../../concepts/tokens/index.md) and [cross-currency payments](../../concepts/payment-types/cross-currency-payments.md)
-    - Example code for displaying token balances and other objects: {% repo-link path="content/_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" %}`7_owned_objects.py`{% /repo-link %}
+    - Example code for displaying token balances and other objects: {% repo-link path="_code-samples/build-a-desktop-wallet/py/7_owned_objects.py" %}`7_owned_objects.py`{% /repo-link %}
 - Allow the user to trade in the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md)
 - Add a way to request payments, such as with QR codes or URIs that open in your wallet.
 - Support better account security including [regular key pairs](../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or [multi-signing](../../concepts/accounts/multi-signing.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

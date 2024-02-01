@@ -9,7 +9,7 @@ labels:
 ---
 # Create Custom Transactors
 
-A _transactor_ is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to `rippled`. This tutorial walks through coding transactors, but you'll have to go through the amendment process to add it to XRPL. See: [Contribute Code to the XRP Ledger](contribute-code.md).
+A _transactor_ is code that processes a transaction and modifies the XRP Ledger. Creating custom transactors enables you to add new functionality to `rippled`. This tutorial walks through coding transactors, but you'll have to go through the amendment process to add it to XRPL. See: [Contribute Code to the XRP Ledger](./index.md).
 
 Transactors follow a basic order of operations:
 
@@ -81,7 +81,7 @@ The `preflight` function checks for errors in the transaction itself before acce
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
     - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
-- `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md)
+- `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../docs/references/protocol/transactions/transaction-results/transaction-results.md)
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)
@@ -322,7 +322,7 @@ You can add more helper functions to your custom transactor as necessary. There 
 
 ### `calculateBaseFee`
 
-Most transactions inherit the default [reference transaction cost](../../concepts/transactions/transaction-cost.md). However, if your transactor needs to define a non-standard transaction cost, you can replace the transactor's `calculateBaseFee` method with a custom one.
+Most transactions inherit the default [reference transaction cost](../../docs/concepts/transactions/transaction-cost.md). However, if your transactor needs to define a non-standard transaction cost, you can replace the transactor's `calculateBaseFee` method with a custom one.
 
 The following example shows how `EscrowFinish` transactions charge an additional cost on conditional escrows based on the size of the fulfillment:
 
@@ -356,7 +356,7 @@ The `makeTxConsequences` function enables you to create custom consequences for 
 - Tickets consuming more than one sequence number.
 - Transactions that are normal or blockers, depending on flags or fields set.
 
-**Note:** `TxConsequences` only affects the [transaction queue](../../concepts/transactions/transaction-queue.md). If a transaction is likely to claim a fee when applied to the ledger, it will be broadcast to peers. If it's not likely to claim a fee, or that can't be determined, it won't be broadcast.
+**Note:** `TxConsequences` only affects the [transaction queue](../../docs/concepts/transactions/transaction-queue.md). If a transaction is likely to claim a fee when applied to the ledger, it will be broadcast to peers. If it's not likely to claim a fee, or that can't be determined, it won't be broadcast.
 
 
 ```c++
@@ -389,4 +389,4 @@ SetAccount::makeTxConsequences(PreflightContext const& ctx)
 
 ## Next Steps
 
-Re-compile the server with your new transactor and test it in [stand-alone mode](../../infrastructure/testing-and-auditing/index.md). If you coded the transactor behind an amendment, you can [force-enable](../../infrastructure/testing-and-auditing/test-amendments.md) the feature using the config file.
+Re-compile the server with your new transactor and test it in [stand-alone mode](../../docs/infrastructure/testing-and-auditing/index.md). If you coded the transactor behind an amendment, you can [force-enable](../../docs/infrastructure/testing-and-auditing/test-amendments.md) the feature using the config file.

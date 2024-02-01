@@ -6,7 +6,7 @@ metadata:
 ---
 # Ledger Entry Types
 
-{% partial file="/_snippets/ledger-objects-intro.md" /%}
+{% partial file="/docs/_snippets/ledger-objects-intro.md" /%}
 
 
 {% child-pages /%}

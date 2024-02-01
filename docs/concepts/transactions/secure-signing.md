@@ -24,7 +24,7 @@ There are several configurations with varying levels of security that may be acc
 
 ## Insecure Configurations
 
-[{% inline-svg file="/img/insecure-signing-options.svg" /%}](/img/insecure-signing-options.svg "Diagram of insecure configurations")
+[{% inline-svg file="/docs/img/insecure-signing-options.svg" /%}](/docs/img/insecure-signing-options.svg "Diagram of insecure configurations")
 
 Any configuration in which outside sources may gain access to your secret key is dangerous, and is likely to result in a malicious user stealing all your XRP (and anything else your XRP Ledger address has). Examples of such configurations include ones where you use the [sign method][] of someone else's `rippled` server over the internet, or you send your secret key in plain text over the internet to your own server.
 
@@ -35,7 +35,7 @@ You should maintain the secrecy of your secret keys at all times, which includes
 
 ## Run rippled Locally
 
-[{% inline-svg file="/img/secure-signing-local-rippled.svg" /%}](/img/secure-signing-local-rippled.svg "Diagram of using a local rippled server for signing")
+[{% inline-svg file="/docs/img/secure-signing-local-rippled.svg" /%}](/docs/img/secure-signing-local-rippled.svg "Diagram of using a local rippled server for signing")
 
 In this configuration, you run `rippled` on the machine that generates the transactions.  Since the secret key never leaves your machine, no one without access to your machine can get access to the secret key. You should, of course, follow industry-standard practices for securing your machine. To use this configuration:
 
@@ -56,7 +56,7 @@ In this configuration, you run `rippled` on the machine that generates the trans
 
 ## Run rippled on the same LAN
 
-[{% inline-svg file="/img/secure-signing-lan-rippled.svg" /%}](/img/secure-signing-lan-rippled.svg "Diagram of using a rippled server over LAN for signing")
+[{% inline-svg file="/docs/img/secure-signing-lan-rippled.svg" /%}](/docs/img/secure-signing-lan-rippled.svg "Diagram of using a rippled server over LAN for signing")
 
 In this configuration, you run a `rippled` server on a dedicated machine in the same private local area network (LAN) as the machine that generates the transactions to be signed. This configuration lets you assemble transaction instructions on one or more machines with very modest system specs, while using a single dedicated machine for running `rippled`. This may appeal to you if you run your own datacenter or server room.
 
@@ -69,7 +69,7 @@ As always, follow industry-standard practices for securing your machines, such a
 
 ## Use a Client Library with Local Signing
 
-[{% inline-svg file="/img/secure-signing-client-library.svg" /%}](/img/secure-signing-client-library.svg "Diagram of using a client library with local signing")
+[{% inline-svg file="/docs/img/secure-signing-client-library.svg" /%}](/docs/img/secure-signing-client-library.svg "Diagram of using a client library with local signing")
 
 This configuration uses a client library with built-in signing, in the programming language you use. For a list of libraries that can perform local signing, see [Client Libraries](../../references/client-libraries.md).
 
@@ -117,7 +117,7 @@ Here are examples of how to sign transaction instructions locally using the foll
 
 ## Use a Dedicated Signing Device
 
-[{% inline-svg file="/img/secure-signing-dedicated-hardware.svg" /%}](/img/secure-signing-dedicated-hardware.svg "Diagram of using dedicated signing hardware")
+[{% inline-svg file="/docs/img/secure-signing-dedicated-hardware.svg" /%}](/docs/img/secure-signing-dedicated-hardware.svg "Diagram of using dedicated signing hardware")
 
 Some companies sell dedicated signing devices, such as the [Ledger Nano S](https://www.ledger.com/products/ledger-nano-s), which are capable of signing XRP Ledger transactions using a secret key that never leaves the device. Some devices may not support all types of transactions.
 
@@ -126,7 +126,7 @@ Setting up this configuration depends on the specific device. You may need to ru
 
 ## Use a Secure VPN with a Remote rippled Server
 
-[{% inline-svg file="/img/secure-signing-over-vpn.svg" /%}](/img/secure-signing-over-vpn.svg "Diagram of connecting securely to a remote rippled over VPN")
+[{% inline-svg file="/docs/img/secure-signing-over-vpn.svg" /%}](/docs/img/secure-signing-over-vpn.svg "Diagram of connecting securely to a remote rippled over VPN")
 
 This configuration uses a `rippled` server hosted remotely, such as in a colocation facility or a distant datacenter, but connects to it securely using an encrypted VPN.
 
@@ -150,4 +150,4 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [`xrpl-py` Reference](https://xrpl-py.readthedocs.io/en/latest/index.html)
     - [`xrpl4j` Reference](https://javadoc.io/doc/org.xrpl/)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

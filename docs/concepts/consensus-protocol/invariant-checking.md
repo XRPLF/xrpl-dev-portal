@@ -169,4 +169,4 @@ The XRP Ledger checks all the following invariants on each transaction:
     - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)
     - [Calculating Balance Changes for a Transaction](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -56,8 +56,8 @@ Both signed and unsigned transactions can be represented in both JSON and binary
 The serialization processes described here are implemented in multiple places and programming languages:
 
 - In C++ [in the `rippled` code base](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/STObject.cpp).
-- In JavaScript in {% repo-link path="content/_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
-- In Python 3 in {% repo-link path="content/_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
+- In JavaScript in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
+- In Python 3 in {% repo-link path="_code-samples/tx-serialization/" %}this repository's code samples section{% /repo-link %}.
 
 Additionally, many [client libraries](../client-libraries.md) provide serialization support under permissive open-source licenses, so you can import, use, or adapt the code for your needs.
 
@@ -106,8 +106,8 @@ When you combine a field's type code and field code, you get the field's unique 
 
 |                  | Type Code < 16                                                                | Type Code >= 16 |
 |:-----------------|:------------------------------------------------------------------------------|:--|
-| **Field Code < 16**  | ![1 byte: high 4 bits define type; low 4 bits define field.](/img/field-id-common-type-common-field.png) | ![2 bytes: low 4 bits of the first byte define field; next byte defines type.](/img/field-id-uncommon-type-common-field.png) |
-| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](/img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is `0x00`, second byte defines type; third byte defines field](/img/field-id-uncommon-type-uncommon-field.png) |
+| **Field Code < 16**  | ![1 byte: high 4 bits define type; low 4 bits define field.](/docs/img/field-id-common-type-common-field.png) | ![2 bytes: low 4 bits of the first byte define field; next byte defines type.](/docs/img/field-id-uncommon-type-common-field.png) |
+| **Field Code >= 16** | ![2 bytes: high 4 bits of the first byte define type; low 4 bits of first byte are 0; next byte defines field](/docs/img/field-id-common-type-uncommon-field.png) | ![3 bytes: first byte is `0x00`, second byte defines type; third byte defines field](/docs/img/field-id-uncommon-type-uncommon-field.png) |
 
 When decoding, you can tell how many bytes the field ID is by which bits **of the first byte** are zeroes. This corresponds to the cases in the above table:
 
@@ -241,7 +241,7 @@ The following diagram shows the serialization formats for both XRP amounts and t
 #### Token Amount Format
 [[Source]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
 
-[{% inline-svg file="/img/currency-number-format.svg" /%}](/img/currency-number-format.svg "Token Amount Format diagram")
+[{% inline-svg file="/docs/img/currency-number-format.svg" /%}](/docs/img/currency-number-format.svg "Token Amount Format diagram")
 
 The XRP Ledger uses 64 bits to serialize the numeric amount of a (fungible) token. (In JSON format, the numeric amount is the `value` field of a currency amount object.) In binary format, the numeric amount consists of a "not XRP" bit, a sign bit, significant digits, and an exponent, in order:
 
@@ -261,7 +261,7 @@ At a protocol level, currency codes in the XRP Ledger are arbitrary 160-bit valu
 
 The [`rippled` APIs](../http-websocket-apis/index.md) support a **standard format** for translating three-character ASCII codes to 160-bit hex values as follows:
 
-[{% inline-svg file="/img/currency-code-format.svg" /%}](/img/currency-code-format.svg "Standard Currency Code Format")
+[{% inline-svg file="/docs/img/currency-code-format.svg" /%}](/docs/img/currency-code-format.svg "Standard Currency Code Format")
 
 1. The first 8 bits must be `0x00`.
 2. The next 88 bits are reserved, and should be all `0`'s.
@@ -355,7 +355,7 @@ Each step is followed directly by the next step of the path. As described above,
 
 The following example shows the serialization format for a PathSet:
 
-[{% inline-svg file="/img/serialization-pathset.svg" /%}](/img/serialization-pathset.svg "PathSet is several paths each followed by a continue or end byte; each path is several path steps consisting of a type byte and one or more 160-bit fields based on the type byte")
+[{% inline-svg file="/docs/img/serialization-pathset.svg" /%}](/docs/img/serialization-pathset.svg "PathSet is several paths each followed by a continue or end byte; each path is several path steps consisting of a type byte and one or more 160-bit fields based on the type byte")
 
 
 ### UInt Fields
@@ -374,7 +374,7 @@ Another special case is the `TransactionType` field. In JSON, this field is conv
 ### XChainBridge Fields
 [XChainBridge]: #xchainbridge-fields
 
-[{% inline-svg file="/img/serialization-xchainbridge.svg" /%}](/img/serialization-xchainbridge.svg "XChainBridge format diagram")
+[{% inline-svg file="/docs/img/serialization-xchainbridge.svg" /%}](/docs/img/serialization-xchainbridge.svg "XChainBridge format diagram")
 
 The `XChainBridge` field, used in transactions and ledger entries related to [cross-chain bridges](../../concepts/xrpl-sidechains/cross-chain-bridges.md), is the only field of the XChainBridge type. It consists of 4 parts which together define a bridge between blockchains:
 
@@ -391,4 +391,4 @@ In total, an XChainBridge field is always either 656, 816, or 976 bits (82, 102,
 
 <!-- SPELLING_IGNORE: pathset, stobject, starray, ledgerentry, vector256, accountids, uint -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

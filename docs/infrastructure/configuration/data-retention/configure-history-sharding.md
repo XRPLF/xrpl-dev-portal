@@ -34,7 +34,7 @@ Before you configure your `rippled` server to store history shards, you must dec
 
 Edit your `rippled.cfg` file to add a `[shard_db]` stanza and optionally a `[historical_shard_paths]` stanza.
 
-{% partial file="/_snippets/conf-file-location.md" /%}
+{% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 The following snippet shows an example of a `[shard_db]` stanza:
 
@@ -86,4 +86,4 @@ To list the shards your server and its peers have available, you can use the [cr
     - [crawl_shards method][]
     - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

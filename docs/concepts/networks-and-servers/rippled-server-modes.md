@@ -95,4 +95,4 @@ In stand-alone mode, the server operates without connecting to the network and p
     - [Configure `rippled`](../../infrastructure/configuration/index.md)
     - [Use rippled in Stand-Alone Mode](../../infrastructure/testing-and-auditing/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

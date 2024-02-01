@@ -103,4 +103,4 @@ Currently, the reserve per item is 2 XRP. The table below shows how much the **t
 
 These numbers are estimates; the actual numbers may vary.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

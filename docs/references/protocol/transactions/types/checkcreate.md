@@ -30,7 +30,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_CheckCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%224E0AA11CBDD1760DE95B68DF2ABBE75C9698CEB548BEA9789053FCB3EBD444FB%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
@@ -52,4 +52,4 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 - If the sender does not have enough XRP to meet the [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves) after adding the Check, the transaction fails with the result `tecINSUFFICIENT_RESERVE`.
 - If either the sender or the destination of the Check cannot own more objects in the ledger, the transaction fails with the result `tecDIR_FULL`.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

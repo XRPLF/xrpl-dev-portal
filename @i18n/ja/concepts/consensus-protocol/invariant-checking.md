@@ -149,4 +149,4 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
     - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)
     - [トランザクションの残高変化の計算](https://xrpl.org/blog/2015/calculating-balance-changes-for-a-transaction.html#calculating-balance-changes-for-a-transaction)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

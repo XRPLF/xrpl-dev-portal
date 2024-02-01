@@ -27,13 +27,13 @@ XRP Ledger上でアプリケーションを構築する場合は、XRP Ledger AP
 
 レジャーバージョンに含まれるデータの詳細な技術説明については、[レジャーフォーマットのリファレンス](../../references/protocol/ledger-data/index.md)を参照してください。
 
-[![図1: XRP Ledgerの要素](/img/anatomy-of-a-ledger-complete.ja.png)](/img/anatomy-of-a-ledger-complete.ja.png)
+[![図1: XRP Ledgerの要素](/docs/img/anatomy-of-a-ledger-complete.ja.png)](/docs/img/anatomy-of-a-ledger-complete.ja.png)
 
 _図1: XRP Ledgerの要素_
 
 XRP Ledgerでは、数秒ごとに新しいレジャーバージョンが作成されます。あるレジャーバージョンの内容にネットワークが同意すると、そのレジャーバージョンは _検証済み_ となり、その内容が変更されることはありません。それ以前の検証済みのレジャーバージョンによって、レジャー履歴が形成されます。検証済みの最新のレジャーも、少し前の時点のネットワークの状態を表しており、履歴の一部となります。現時点で、ネットワークは次のレジャーバージョンに適用されてファイナライズされる可能性のあるトランザクションを評価しています。この評価が行われている間、ネットワークには、検証前のレジャーバージョン候補が存在します。
 
-[![図2: XRP Ledgerの履歴](/img/ledger-history.ja.png)](/img/ledger-history.ja.png)
+[![図2: XRP Ledgerの履歴](/docs/img/ledger-history.ja.png)](/docs/img/ledger-history.ja.png)
 
 _図2: XRP Ledgerの履歴_
 
@@ -45,7 +45,7 @@ _図2: XRP Ledgerの履歴_
 
 各レジャーバージョンには、一連のトランザクションと、そのようなトランザクションに関するメタデータも含まれています。それらのトランザクションは、新しいレジャーバージョンを作成するために前のバージョンのレジャーに適用されたものです。メタデータには、レジャーの状態データに対する、トランザクションの影響が正確に記録されています。
 
-[![図3: レジャーバージョンに適用されるトランザクション](/img/ledger-changes.ja.png)](/img/ledger-changes.ja.png)
+[![図3: レジャーバージョンに適用されるトランザクション](/docs/img/ledger-changes.ja.png)](/docs/img/ledger-changes.ja.png)
 
 _図3: レジャーバージョンに適用されるトランザクション_
 
@@ -65,7 +65,7 @@ _図3: レジャーバージョンに適用されるトランザクション_
 
 ピアツーピアのXRP Ledgerネットワークは、トランザクションを承認して処理する多数の独立したXRP Ledgerサーバー（通常、[`rippled`](../networks-and-servers/index.md)を実行）で構成されています。クライアントアプリケーションは、トランザクションに署名してXRP Ledgerサーバーに送信します。サーバーは、これらの候補トランザクションを処理するためにネットワーク内を中継します。クライアントアプリケーションには、モバイルおよびウェブウォレット、金融機関へのゲートウェイ、電子取引プラットフォームなどがあります。
 
-[![図4: XRP Ledgerプロトコルの参加者](/img/xrp-ledger-network.ja.png)](/img/xrp-ledger-network.ja.png)
+[![図4: XRP Ledgerプロトコルの参加者](/docs/img/xrp-ledger-network.ja.png)](/docs/img/xrp-ledger-network.ja.png)
 
 _図4: XRP Ledgerプロトコルの参加者_
 
@@ -79,7 +79,7 @@ _図4: XRP Ledgerプロトコルの参加者_
 
 コンセンサスの間、各サーバーは、そのサーバーの信頼できるバリデータ（ _ユニークノードリスト（UNL）_ ）と呼ばれる特定のサーバー群からの提案を評価します。<a href="#footnote_5" id="from_footnote_5"><sup>5</sup></a>信頼できるバリデータとは、提案を評価するサーバーを欺こうと共謀しない、全体として「信頼できる」ネットワークのサブセットを表します。この「信頼」の定義では、選択された個々のバリデータが信頼されている必要はありません。バリデータの選択は、ネットワークに中継されたデータを改ざんする組織的な試みで共謀しないという想定に基づいて行われます<a href="#footnote_6" id="from_footnote_6"><sup>6</sup></a>。 <!-- STYLE_OVERRIDE: will -->
 
-[![図5: バリデータによるトランザクションセットの提案と修正](/img/consensus-rounds.ja.png)](/img/consensus-rounds.ja.png)
+[![図5: バリデータによるトランザクションセットの提案と修正](/docs/img/consensus-rounds.ja.png)](/docs/img/consensus-rounds.ja.png)
 
 _図5: バリデータによるトランザクションセットの提案と修正 - コンセンサスの開始時点で、バリデータ毎に異なるトランザクションセットを持っている可能性があります。後のラウンドで、サーバーは現在の提案を信頼できるバリデータの提案と一致するように変更します。このプロセスでは、現在議論しているレジャーバージョンに適用するトランザクションと、それ以降のレジャーバージョンに適用するトランザクションを決定します。_
 
@@ -121,7 +121,7 @@ _図5: バリデータによるトランザクションセットの提案と修�
 
 5. 新しいレジャーバージョンの識別用ハッシュを計算します。
 
-[![図7: XRP Ledgerサーバーでレジャー検証を計算する](/img/consensus-calculate-validation.ja.png)](/img/consensus-calculate-validation.ja.png)
+[![図7: XRP Ledgerサーバーでレジャー検証を計算する](/docs/img/consensus-calculate-validation.ja.png)](/docs/img/consensus-calculate-validation.ja.png)
 
 _図7: XRP Ledgerサーバーでレジャー検証を計算する - 各サーバーは、同意済みのトランザクションを前の検証済みレジャーに適用します。バリデータは結果をネットワーク全体に送信します。_
 
@@ -129,7 +129,7 @@ _図7: XRP Ledgerサーバーでレジャー検証を計算する - 各サーバ
 
 バリデータはそれぞれ、計算したレジャーバージョンのハッシュを含む署名付きメッセージの形式で結果を中継します。 _検証_ と呼ばれるこれらのメッセージによって、各サーバーで計算したレジャーとそのピアのレジャーを比較することができます。
 
-[![図8: 圧倒的多数のピアが同じ結果を計算するとレジャーが検証される](/img/consensus-declare-validation.ja.png)](/img/consensus-declare-validation.ja.png)
+[![図8: 圧倒的多数のピアが同じ結果を計算するとレジャーが検証される](/docs/img/consensus-declare-validation.ja.png)](/docs/img/consensus-declare-validation.ja.png)
 
 _図8: 圧倒的多数のピアが同じ結果を計算するとレジャーが検証される - 各サーバーは、計算されたレジャーを、選択されたバリデータから受け取ったハッシュと比較します。一致しない場合、サーバーは正しいレジャーを再計算または取得する必要があります。_
 
@@ -213,4 +213,4 @@ XRP Ledgerに送信されたトランザクションはすぐには処理され�
 
 <a href="#from_footnote_10" id="footnote_10"><sup>10</sup></a> – `rippled`サーバーはレジャーの履歴全体がなくてもAPIリクエストにレスポンスすることができます。サービスやネットワーク接続が中断すると、そのサーバーのレジャー履歴にレジャーの不足や誤差が生じることがあります。時間の経過とともに、`rippled`によってその誤差は埋まります（そのように設定されている場合）。欠落しているトランザクションを検証する場合は、トランザクションが送信されてからLastLedgerSequenceまでの連続した完全なレジャーを持つサーバーに照らして検証することが重要です。特定のサーバーで利用できるcomplete_ledgersを判断するには、RPCサーバーの状態を使用します。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

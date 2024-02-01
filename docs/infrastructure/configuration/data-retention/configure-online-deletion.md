@@ -45,7 +45,7 @@ To change the amount of history your server stores, perform the following steps:
 
     Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. With automatic deletion (the default), the server typically runs deletion when it has accumulated about twice this many ledger versions.
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 0. Start (or restart) the `rippled` service.
 
@@ -87,4 +87,4 @@ To change the amount of history your server stores, perform the following steps:
     - [server_info method][]
     - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

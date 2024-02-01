@@ -22,7 +22,7 @@ This flow is the most straightforward. Note that the `NFTokenOffer` objects can 
 
 Run the auction in brokered mode, as an auction with a reserve.
 
-![Auction in Brokered Mode with a Reserve](/img/nft-auction1.png "Auction in Brokered Mode with a Reserve")
+![Auction in Brokered Mode with a Reserve](/docs/img/nft-auction1.png "Auction in Brokered Mode with a Reserve")
 
 1. The seller creates the NFT, then sets the auction reserve price using `NFTokenCreateOffer`, specifying the broker account as the destination.
 1. The bidders make offers using `NFTokenCreateOffer`, setting the broker account as the destination.
@@ -44,7 +44,7 @@ A major mitigating factor of this downside is that if this behavior were to happ
 
 This is the most complex workflow of the three.
 
-![Auction in Brokered Mode without a Reserve](/img/nft-auction2.png "Auction in Brokered Mode without a Reserve")
+![Auction in Brokered Mode without a Reserve](/docs/img/nft-auction2.png "Auction in Brokered Mode without a Reserve")
 
 1. The seller creates an NFT using `NFTokenMint`.
 1. The bidders make offers using `NFTokenCreateOffer`, setting the broker as the destination.

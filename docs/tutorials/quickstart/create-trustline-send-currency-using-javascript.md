@@ -20,9 +20,9 @@ This example shows how to:
 4. Send issued currency between accounts.
 5. Display account balances for all currencies.
 
-[![Test harness with currency transfer](/img/quickstart5.png)](/img/quickstart5.png)
+[![Test harness with currency transfer](/docs/img/quickstart5.png)](/docs/img/quickstart5.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
 
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 
@@ -52,7 +52,7 @@ To create a trust line between accounts:
 3. Enter the destination account value in the **Destination** field.
 4. Click **Create Trustline**. <!-- SPELLING_IGNORE: trustline --><!--{# TODO: update the test harness to spell trust line as two words #}-->
 
-[![Trust line results](/img/quickstart6.png)](/img/quickstart6.png)
+[![Trust line results](/docs/img/quickstart6.png)](/docs/img/quickstart6.png)
 
 ## Send an Issued Currency Token
 
@@ -63,11 +63,11 @@ To transfer an issued currency token, once you have created a trust line:
 3. Enter the **Currency** type.
 4. Click **Send Currency**.
 
-[![Currency transfer](/img/quickstart7.png)](/img/quickstart7.png)
+[![Currency transfer](/docs/img/quickstart7.png)](/docs/img/quickstart7.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
 
 ## ripplex2-send-currency.js
 <!-- SPELLING_IGNORE: ripplex2 -->

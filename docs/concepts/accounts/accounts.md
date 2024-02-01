@@ -66,4 +66,4 @@ The typical way to get an account in the XRP Ledger is as follows:
     - [Manage Account Settings (Category)](../../tutorials/tasks/manage-account-settings/index.md)
     - [Monitor Incoming Payments with WebSocket](../../tutorials/get-started/monitor-incoming-payments-with-websocket.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

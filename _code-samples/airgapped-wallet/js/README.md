@@ -57,7 +57,7 @@ The diagram below shows you the process of submitting a transaction to the XRPL:
 ## Machine 1 Setup
 Since this machine will be airgapped, it is best to use Linux as the Operating System.
 
-1. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/airgapped-wallet/js) directory
+1. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/airgapped-wallet/js) directory
 
 2. Import all the modules required by running: `npm install`
 
@@ -85,7 +85,7 @@ You can send a message to yourself using Discord, WhatsApp or even e-mail, then 
 ## Machine 2 Setup
 This machine will be used to transmit a signed transaction blob from Machine 1, it would require internet access.
 
-1. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/airgapped-wallet/js) directory
+1. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/airgapped-wallet/js) directory
 
 2. Import all the modules required by running `npm install`
 

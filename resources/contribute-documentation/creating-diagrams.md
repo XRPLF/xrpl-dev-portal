@@ -8,14 +8,14 @@ seo:
 
 The site contains code to automatically recolor SVG diagrams for light and dark mode. This is more than just inverting images. The recoloring keeps gradients going the same direction (so that things don't look bottom-lit) and replaces colors with equivalents that fit with the theme rather than their inverse. For example, "Ripple blue" gets recolored to XRPL green, not its inverse orange. Example:
 
-![Comparison of invert and theme-aware recoloring](/img/theme-aware-recolor.png)
+![Comparison of invert and theme-aware recoloring](/docs/img/theme-aware-recolor.png)
 
 Theme-aware recoloring uses a single source file in SVG format for diagrams, and produces diagrams that are recolored to match the current theme (light/dark) using CSS. If the user changes their theme, the diagrams immediately change to match it.
 
 To include a theme-aware diagram in a document, use the `include_svg` filter with syntax such as the following:
 
 ```jinja
-[{% inline-svg file="/img/anatomy-of-a-ledger-complete.svg" /%}](/img/anatomy-of-a-ledger-complete.svg "Figure 1: XRP Ledger Elements")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-complete.svg" /%}](/docs/img/anatomy-of-a-ledger-complete.svg "Figure 1: XRP Ledger Elements")
 ```
 
 Leave empty lines before and after this syntax. The SVG file in question should be in the [`img/`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/img) folder at the top level of the repo, or a subfolder of it. The second argument is _title text_, which appears when the user hovers their mouse over the diagram, and can also be used by other software (such as screen readers) to caption the diagram.

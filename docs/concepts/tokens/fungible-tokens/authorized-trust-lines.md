@@ -63,7 +63,7 @@ POST http://localhost:5005/
 }
 ```
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ## Checking Whether an Account Has Require Auth Enabled
@@ -106,7 +106,7 @@ POST http://localhost:8088/
 }
 ```
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ## Checking Whether Trust Lines Are Authorized
@@ -129,4 +129,4 @@ In the response's `result.lines` array, find the object whose `currency` field i
     - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
     - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

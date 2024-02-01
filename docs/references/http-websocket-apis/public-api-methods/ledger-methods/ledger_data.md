@@ -15,7 +15,7 @@ The `ledger_data` method retrieves contents of the specified ledger. You can ite
 ## Request Format
 An example of the request format:
 
-{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
@@ -269,4 +269,4 @@ The format of each object in the `state` array depends on whether `binary` was s
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

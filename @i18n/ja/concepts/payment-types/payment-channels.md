@@ -31,7 +31,7 @@ Payment Channelでは本来、そこで売買可能なものにいては、一�
 
 次の図は、Payment Channelのライフサイクルの概要を示します。
 
-[![Payment Channelフローチャート](/img/paychan-flow.ja.png)](/img/paychan-flow.ja.png)
+[![Payment Channelフローチャート](/docs/img/paychan-flow.ja.png)](/docs/img/paychan-flow.ja.png)
 
 
 ## 関連項目
@@ -40,4 +40,4 @@ Payment Channelでは本来、そこで売買可能なものにいては、一�
 
 - [Escrow](escrow.md): 速度が遅い、条件付きの大量XRP決済のための類似機能。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

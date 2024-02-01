@@ -31,7 +31,7 @@ A `SetFee` [pseudo-transaction](pseudo-transaction-types.md) marks a change in [
 }
 ```
 
-{% partial file="/_snippets/pseudo-tx-fields-intro.md" /%}
+{% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field               | JSON Type        | [Internal Type][] | Description     |
@@ -53,6 +53,6 @@ If the _[XRPFees amendment][]_ is enabled, `SetFee` pseudo-transactions use thes
 | `LedgerSequence`        | Number    | UInt32            | _(Omitted for some historical `SetFee` pseudo-transactions)_ The index of the ledger version where this pseudo-transaction appears. This distinguishes the pseudo-transaction from other occurrences of the same change. |
 
 
-{% raw-partial file="/_snippets/setfee_uniqueness_note.md" /%}
+{% raw-partial file="/docs/_snippets/setfee_uniqueness_note.md" /%}
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

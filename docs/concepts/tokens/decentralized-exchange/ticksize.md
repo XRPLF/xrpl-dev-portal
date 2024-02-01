@@ -25,4 +25,4 @@ When an issuer enables, disables, or changes the `TickSize`, Offers that were pl
     - [book_offers method][]
     - [OfferCreate transaction][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

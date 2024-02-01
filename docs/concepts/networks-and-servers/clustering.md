@@ -26,4 +26,4 @@ If you are running a validator as a [private peer](peer-protocol.md#private-peer
     - [connect method][]
     - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

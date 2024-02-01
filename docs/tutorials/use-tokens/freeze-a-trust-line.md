@@ -35,7 +35,7 @@ This tutorial shows the steps to [freeze an individual trust line](../../concept
 
 Complete sample code for all of the steps of this tutorial is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
 
-- See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze/) in the source repository for this website.
+- See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/freeze/) in the source repository for this website.
 
 ## Steps
 
@@ -43,7 +43,7 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](../../concepts/accounts/account-types.md), you need the keys to the _cold address_, which is the **issuer** of the token.
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 ### 2. Connect to the Network
 
@@ -65,7 +65,7 @@ You must be connected to the network to submit transactions to it. The following
 
 For purposes of this tutorial, use the following interface to connect and perform setup:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. Choose Trust Line
@@ -202,7 +202,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 ### 6. Check Trust Line Freeze Status
 
@@ -335,7 +335,7 @@ As always, to send a transaction, you _prepare_ it by filling in all the necessa
 
 As before, wait for the transaction to be validated by consensus.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait (again)"} /%}
 
 
 
@@ -356,4 +356,4 @@ As before, wait for the transaction to be validated by consensus.
     - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
     - [RippleState (trust line) Flags](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

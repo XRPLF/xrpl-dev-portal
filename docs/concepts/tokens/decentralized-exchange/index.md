@@ -28,7 +28,7 @@ When trading two tokens, [auto-bridging](autobridging.md) improves exchange rate
 
 ### Example Trade
 
-[{% inline-svg file="/img/decentralized-exchange-example-trade.svg" /%}](/img/decentralized-exchange-example-trade.svg "Diagram: Partially filled offer to buy a token for XRP.")
+[{% inline-svg file="/docs/img/decentralized-exchange-example-trade.svg" /%}](/docs/img/decentralized-exchange-example-trade.svg "Diagram: Partially filled offer to buy a token for XRP.")
 
 The above diagram shows an example trade in the decentralized exchange. In this example, a trader named Tran places an Offer to buy 100 tokens with the currency code FOO issued by a fictional business called WayGate. (For brevity, "FOO.WayGate" refers to these tokens.) Tran specifies that he is willing to spend up to 1000 XRP for the full total. When Tran's transaction is processed, the following things happen:
 
@@ -68,7 +68,7 @@ As a decentralized system, the XRP Ledger does not have any information on the a
     - [Offer object][] for the data structure of passive Offers in the ledger
     - [DirectoryNode object][] for the data structure that tracks all the Offers for a given currency pair and exchange rate.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
 
 
 {% child-pages /%}

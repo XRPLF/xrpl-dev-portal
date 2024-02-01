@@ -122,12 +122,12 @@ The `info` object may have some arrangement of the following fields:
 
 **Note:** If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.
 
-{% partial file="/_snippets/etl-source-object.md" /%}
+{% partial file="/docs/_snippets/etl-source-object.md" /%}
 
-{% partial file="/_snippets/port-descriptor-object.md" /%}
+{% partial file="/docs/_snippets/port-descriptor-object.md" /%}
 
 ## Possible Errors
 
 * Any of the [universal error types][].
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

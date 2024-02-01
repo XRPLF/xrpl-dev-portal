@@ -57,4 +57,4 @@ labels:
 - [トランザクションの結果の確認](look-up-transaction-results.md)
 - [トランザクション結果のリファレンス](../../../references/protocol/transactions/transaction-results/transaction-results.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

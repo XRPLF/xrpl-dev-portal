@@ -125,7 +125,7 @@ The response follows the [standard format][], with a successful result containin
 
 If the `previous` field is provided, it shows the previous status of this peer reservation, with the following fields:
 
-{% partial file="/_snippets/peer_reservation_object.md" /%}
+{% partial file="/docs/_snippets/peer_reservation_object.md" /%}
 
 
 ### Possible Errors
@@ -135,4 +135,4 @@ If the `previous` field is provided, it shows the previous status of this peer r
 - `publicMalformed` - The `public_key` field of the request is not valid. It must be a valid node public key in [base58][] format.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

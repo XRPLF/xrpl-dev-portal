@@ -104,4 +104,4 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `internal` - Some internal error occurred, possibly relating to the random number generator.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

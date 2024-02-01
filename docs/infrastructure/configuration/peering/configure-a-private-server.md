@@ -30,7 +30,7 @@ To set up a specific server as a private peer, complete the following steps:
     vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Enable private peering.
 
@@ -106,4 +106,4 @@ Be sure the firewall **does not block** outgoing HTTP connections on port 80. Th
     - [fetch_info method][]
     - [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -63,4 +63,4 @@ For more information about related features, see:
 * [Escrow](escrow.md)
 * [Payment Channels Tutorial](../../tutorials/use-specialized-payment-types/use-payment-channels.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

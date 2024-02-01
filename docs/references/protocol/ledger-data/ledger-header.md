@@ -27,7 +27,7 @@ Every [ledger version](../../../concepts/ledgers/index.md) has a unique header t
 
 
 ## Ledger Index
-{% partial file="/_snippets/data_types/ledger_index.md" /%}
+{% partial file="/docs/_snippets/data_types/ledger_index.md" /%}
 
 
 
@@ -40,4 +40,4 @@ The ledger has only one flag defined for `closeFlags`: **`sLCF_NoConsensusTime`*
 
 For ledger basics, see [Ledgers](../../../concepts/ledgers/index.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

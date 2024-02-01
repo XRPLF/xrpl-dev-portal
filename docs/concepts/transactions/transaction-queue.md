@@ -14,7 +14,7 @@ The `rippled` server uses a transaction queue to help enforce the [open ledger c
 
 The transaction queue plays an important role in selecting the transactions that are included or excluded from a given ledger version in the consensus process. The following steps describe how the transaction queue relates to the [consensus process](../consensus-protocol/index.md).
 
-[{% inline-svg file="/img/consensus-with-queue.svg" /%}](/img/consensus-with-queue.svg "Transaction queue and consensus diagram")
+[{% inline-svg file="/docs/img/consensus-with-queue.svg" /%}](/docs/img/consensus-with-queue.svg "Transaction queue and consensus diagram")
 
 1. **Consensus Round 1** - Each validator proposes a set of transactions to be included in the next ledger version. Each also keeps a queue of candidate transactions not currently proposed.
 
@@ -72,4 +72,4 @@ The precise order of transactions in the queue decides which transactions get ad
 - [Transaction Cost](transaction-cost.md) for information on why the transaction cost exists and how the XRP Ledger enforces it.
 - [Consensus](../consensus-protocol/index.md) for a detailed description of how the consensus process approves transactions.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

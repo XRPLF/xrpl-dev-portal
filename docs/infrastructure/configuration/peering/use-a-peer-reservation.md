@@ -65,7 +65,7 @@ If you have already configured your server with a permanent node key pair value,
     vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 3. Add a `[node_seed]` stanza using the `validation_seed` value you generated earlier.
 
@@ -186,4 +186,4 @@ As a server administrator, you can manage the reservations your server has for o
     - [fetch_info method][]
     - [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

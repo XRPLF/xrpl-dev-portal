@@ -141,7 +141,7 @@ When you send later SetRegularKey transactions, you can sign using the existing 
 
 ### Sign Your Transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%}
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
 
 
 Populate the request fields with the following values:
@@ -420,7 +420,7 @@ To verify that your account has the regular key pair set correctly, submit an [A
 
 ### Sign Your Transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%}
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
 
 
 Populate the request fields with the following values:
@@ -704,4 +704,4 @@ Now that you're familiar with the benefits of assigning a regular key pair to an
     - [SetRegularKey transaction][]
     - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) where the regular key is stored in the field `RegularKey`
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

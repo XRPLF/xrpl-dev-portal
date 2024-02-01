@@ -83,7 +83,7 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
 
 # 関連項目
 
-- [凍結コードの例](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze)
+- [凍結コードの例](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/freeze)
 - **コンセプト:**
     - [トラストラインとトークンの発行](index.md)
 - **Tutorials:**
@@ -98,4 +98,4 @@ No Freeze設定は、アドレスのマスターキーのシークレットキ�
     - [AccountRootフラグ](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)
     - [RippleState(trust line)フラグ](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

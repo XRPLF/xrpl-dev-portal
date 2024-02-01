@@ -51,7 +51,7 @@ rippled account_lines r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 [Try it! >](/resources/dev-tools/websocket-api-tool#account_lines)
 
-The request accepts the following parameters: /Users/peterchen/xrpl-dev-portal/content/references/http-websocket-apis/public-api-methods/account-methods/account_lines.md
+The request accepts the following parameters:
 
 | `Field`        | Type                 | Description    |
 |:---------------|:---------------------|:---------------|
@@ -446,4 +446,4 @@ Each trust line object has some combination of the following fields:
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 * `actMalformed` - If the `marker` field provided is not acceptable.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

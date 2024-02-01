@@ -96,7 +96,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
      /var/lib/rippled/db_new
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 4. Start the `rippled` server again.
 
@@ -112,7 +112,7 @@ As a test, you can temporarily change the paths to your server's databases as lo
 - **Concepts:**
     - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
     - [Peer Protocol](../../concepts/networks-and-servers/peer-protocol.md)
-    - [Technical FAQ](../../about/faq.md)
+    - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)
@@ -124,4 +124,4 @@ As a test, you can temporarily change the paths to your server's databases as lo
 
 <!-- SPELLING_IGNORE: aws -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

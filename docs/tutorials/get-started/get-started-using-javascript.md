@@ -13,7 +13,7 @@ showcase_icon: assets/img/logos/javascript.svg
 
 This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the [`xrpl.js`](https://github.com/XRPLF/xrpl.js/) client library in either Node.js or web browsers.
 
-The scripts and config files used in this guide are {% repo-link path="content/_code-samples/get-started/js/" %}available in this website's GitHub Repository{% /repo-link %}.
+The scripts and config files used in this guide are {% repo-link path="_code-samples/get-started/js/" %}available in this website's GitHub Repository{% /repo-link %}.
 
 
 ## Learning Goals
@@ -170,4 +170,4 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
         - [base58 Encodings](../../references/protocol/data-types/base58-encodings.md)
     - [Transaction Formats](../../references/protocol/transactions/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

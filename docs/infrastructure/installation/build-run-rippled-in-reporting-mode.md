@@ -16,7 +16,7 @@ In reporting mode, the server does not connect to the peer-to-peer network. Inst
 
 It can then efficiently handle API calls, reducing the load on `rippled` servers running in P2P mode.
 
-[{% inline-svg file="/img/reporting-mode-basic-architecture.svg" /%}](/img/reporting-mode-basic-architecture.svg "Figure 1: Working of `rippled` in reporting mode")
+[{% inline-svg file="/docs/img/reporting-mode-basic-architecture.svg" /%}](/docs/img/reporting-mode-basic-architecture.svg "Figure 1: Working of `rippled` in reporting mode")
 
 The reporting mode of `rippled` uses two datastores:
 
@@ -368,4 +368,4 @@ When `rippled` runs in reporting mode, it only serves validated data from the ET
 
 Technically, you *can* directly access the database if you want. However, the data is stored as binary blobs and you have to decode the blobs to access the data in them. This makes traditional SQL queries much less useful since they cannot find and filter the individual fields of the data.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

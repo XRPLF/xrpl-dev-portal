@@ -328,4 +328,4 @@ An example of a `txnNotFound` response that fully searched a requested range of 
 * `excessiveLgrRange` - The `min_ledger` and `max_ledger` fields of the request are more than 1000 apart.
 * `invalidLgrRange` - The specified `min_ledger` is larger than the `max_ledger`, or one of those parameters is not a valid ledger index.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

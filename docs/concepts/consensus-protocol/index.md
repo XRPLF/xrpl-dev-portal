@@ -41,7 +41,7 @@ The XRP Ledger processes transactions in blocks called "ledger versions", or "le
 - The set of transactions that have been applied to the previous ledger to result in this one.
 - Metadata about the current ledger version, such as its ledger index, a [cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) that uniquely identifies its contents, and information about the parent ledger that was used as a basis for building this one.
 
-[{% inline-svg file="/img/anatomy-of-a-ledger-simplified.svg" /%}](/img/anatomy-of-a-ledger-simplified.svg "Figure 1: Anatomy of a ledger version, which includes transactions, state, and metadata")
+[{% inline-svg file="/docs/img/anatomy-of-a-ledger-simplified.svg" /%}](/docs/img/anatomy-of-a-ledger-simplified.svg "Figure 1: Anatomy of a ledger version, which includes transactions, state, and metadata")
 
 Each ledger version is numbered with a _ledger index_ and builds on a previous ledger version whose index is one less, going all the way back to a starting point called the _genesis ledger_ with ledger index 1.[¹](#footnote-1) Like Bitcoin and other blockchain technologies, this forms a public history of all transactions and their results. Unlike many blockchain technologies, each new "block" in the XRP Ledger contains the entirety of the current state, so you don't need to collect the entire history to know what's happening now.[²](#footnote-2)
 
@@ -54,7 +54,7 @@ The core principle behind the XRP Ledger's consensus mechanism is that a little 
 
 As the network progresses, each server listens to its trusted validators[³](#footnote-3); as long as a large enough percentage of them agree that a set of transactions should occur and that a given ledger is the result, the server declares a consensus. If they don't agree, validators modify their proposals to more closely match the other validators they trust, repeating the process in several rounds until they reach a consensus.
 
-[{% inline-svg file="/img/consensus-rounds.svg" /%}](/img/consensus-rounds.svg "Figure 2: Consensus rounds. Validators revise their proposals to match other validators they trust")
+[{% inline-svg file="/docs/img/consensus-rounds.svg" /%}](/docs/img/consensus-rounds.svg "Figure 2: Consensus rounds. Validators revise their proposals to match other validators they trust")
 
 It's OK if a small proportion of validators don't work properly all the time. As long as fewer than 20% of trusted validators are faulty, consensus can continue unimpeded; and confirming an invalid transaction would require over 80% of trusted validators to collude. If more than 20% but less than 80% of trusted validators are faulty, the network stops making progress.
 

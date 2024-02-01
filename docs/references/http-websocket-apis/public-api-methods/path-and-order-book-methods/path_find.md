@@ -587,4 +587,4 @@ If there was no outstanding pathfinding request, an error is returned instead.
 * `noEvents` - You are using a protocol that does not support asynchronous callbacks, for example JSON-RPC. (See the [ripple_path_find method][] for a pathfinding method that _is_ compatible with JSON-RPC.)
 * `noPathRequest` - You tried to check the status of a pathfinding request when there is not an open one.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

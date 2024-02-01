@@ -53,7 +53,7 @@ You bid using the AMM's LP Tokens; the amount of a winning bid is returned to th
 }
 ```
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field          | JSON Type           | [Internal Type][] | Required? | Description |
 |:---------------|:--------------------|:------------------|:----------|:------------|
@@ -139,4 +139,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `terNO_ACCOUNT`         | One of the accounts specified in this request do not exist. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

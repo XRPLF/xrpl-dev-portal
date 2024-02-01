@@ -331,4 +331,4 @@ The response follows the [standard format][], with a successful result containin
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin. (Sign-and-Submit mode only)
 * `notSupported` - Signing is not supported by this server (Sign-and-Submit mode only.) If you are the server admin, you can still access signing when connected [as an admin](../../admin-api-methods/index.md), or you could [enable public signing](../../../../infrastructure/configuration/enable-public-signing.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

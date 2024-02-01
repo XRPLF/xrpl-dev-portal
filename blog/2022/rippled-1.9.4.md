@@ -14,7 +14,7 @@ Version 1.9.4 of `rippled`, the reference server implementation of the XRP Ledge
 
 ## Action Required
 
-The new amendment is open for voting according to the XRP Ledger's [amendment process](/concepts/networks-and-servers/amendments/), which enables protocol changes following two weeks of >80% support from trusted validators.
+The new amendment is open for voting according to the XRP Ledger's [amendment process](/docs/concepts/networks-and-servers/amendments/), which enables protocol changes following two weeks of >80% support from trusted validators.
 
 If you operate an XRP Ledger server, then you should upgrade to version 1.9.4 within two weeks, to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
@@ -27,7 +27,7 @@ The **fixRemoveNFTokenAutoTrustLine** amendment disables the problematic feature
 
 ## Install / Upgrade
 
-On supported platforms, see the [instructions on installing or updating `rippled`](/infrastructure/installation/).
+On supported platforms, see the [instructions on installing or updating `rippled`](/docs/infrastructure/installation/).
 
 
 | Package | SHA-256 |

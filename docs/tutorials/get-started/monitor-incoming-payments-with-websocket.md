@@ -513,4 +513,4 @@ Many programming languages have libraries for sending and receiving data over a 
     - [Transaction Metadata](../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
     - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

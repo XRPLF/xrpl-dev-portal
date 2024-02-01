@@ -19,7 +19,7 @@ export default function Ambassadors() {
     <div className="landing page-ambassadors">
       <div>
     <div className="position-relative d-none-sm">
-        <img alt="background purple waves" src={require("../img/backgrounds/ambassador-purple.svg")} className="position-absolute" style={{top: 0, right: 0}} />
+        <img alt="background purple waves" src={require("../static/img/backgrounds/ambassador-purple.svg")} className="position-absolute" style={{top: 0, right: 0}} />
     </div>
     <section className="container-new py-26 text-lg-center">
         <div className="p-0 col-lg-8 mx-lg-auto">

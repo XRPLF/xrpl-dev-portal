@@ -85,4 +85,4 @@ For more information, see [Configure History Sharding](../../infrastructure/conf
     - [can_delete method][]
     - [ledger_cleaner method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

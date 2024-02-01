@@ -19,12 +19,12 @@ This example shows how to:
 
 3. Cancel a conditional escrow transaction.
 
-[![Conditional Escrow Tester Form](/img/quickstart-py-conditional-escrow-1.png)](/img/quickstart-py-conditional-escrow-1.png)
+[![Conditional Escrow Tester Form](/docs/img/quickstart-py-conditional-escrow-1.png)](/docs/img/quickstart-py-conditional-escrow-1.png)
 
 
 ## Prerequisites
 
-Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
+Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
 
 You need the `cryptoconditions` module to generate your condition/fulfillment pair. You can install the module using [pip](https://pip.pypa.io/en/stable/).
 
@@ -55,13 +55,13 @@ To get test accounts:
         3. Click **Get Operational Account**.
         4. Click **Get Op Account Info**.
 
-[![Escrow Example with Account Information](/img/quickstart-py-conditional-escrow-2.png)](/img/quickstart-py-conditional-escrow-2.png)
+[![Escrow Example with Account Information](/docs/img/quickstart-py-conditional-escrow-2.png)](/docs/img/quickstart-py-conditional-escrow-2.png)
 
 #### Get a Condition and Fulfillment
 
 Click **Get Condition** to generate a condition/fulfillment pair and populate the fields on the form. You can copy the values and store them in a text file for safe keeping. 
 
-[![Escrow Example with Condition and Fulfillment](/img/quickstart-py-conditional-escrow-3.png)](/img/quickstart-py-conditional-escrow-3.png)
+[![Escrow Example with Condition and Fulfillment](/docs/img/quickstart-py-conditional-escrow-3.png)](/docs/img/quickstart-py-conditional-escrow-3.png)
 
 ### Create Conditional Escrow
 
@@ -84,7 +84,7 @@ The escrow is created on the XRP Ledger instance, reserving your requested XRP a
 
 When you create an escrow, capture and save the _Sequence Number_ so that you can use it to finish the escrow transaction.
 
-[![Created Escrow Transaction](/img/quickstart-py-conditional-escrow-4.png)](/img/quickstart-py-conditional-escrow-4.png)
+[![Created Escrow Transaction](/docs/img/quickstart-py-conditional-escrow-4.png)](/docs/img/quickstart-py-conditional-escrow-4.png)
 
 ## Finish Conditional Escrow
 
@@ -101,7 +101,7 @@ To finish a conditional escrow:
 
 The transaction completes and balances are updated for both the Standby and Operational accounts.
 
-[![Finished Escrow Transaction](/img/quickstart-py-conditional-escrow-5.png)](/img/quickstart-py-conditional-escrow-5.png)
+[![Finished Escrow Transaction](/docs/img/quickstart-py-conditional-escrow-5.png)](/docs/img/quickstart-py-conditional-escrow-5.png)
 
 ## Get Escrows
 
@@ -118,17 +118,17 @@ If you forget to save the sequence number, you can find it in the escrow transac
 1. Create a new escrow as described in [Create Conditional Escrow](#create-conditional-escrow), above.
 2. Click **Get Escrows** to get the escrow information.
 3. Copy the _PreviousTxnLgrSeq_ value from the results.
-   ![Transaction ID in Get Escrows results](/img/quickstart-py-conditional-escrow-6.png)
+   ![Transaction ID in Get Escrows results](/docs/img/quickstart-py-conditional-escrow-6.png)
 4. Paste the _PreviousTxnLgrSeq_ in the **Transaction to Look Up** field.
-   ![Transaction to Look Up field](/img/quickstart-py-conditional-escrow-7.png)
+   ![Transaction to Look Up field](/docs/img/quickstart-py-conditional-escrow-7.png)
 5. Click **Get Transaction**.
 6. Locate the _Sequence_ value in the results.
 
-![Sequence number in results](/img/quickstart-py-conditional-escrow-8.png)
+![Sequence number in results](/docs/img/quickstart-py-conditional-escrow-8.png)
 
 # Code Walkthrough
 
-You can download the [Modular Tutorials](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
+You can download the [Modular Tutorials](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> in the source repository for this website.
 
 ## mod9.py
 

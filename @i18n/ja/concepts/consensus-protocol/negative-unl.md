@@ -8,7 +8,7 @@ labels:
 ---
 # ネガティブUNL
 
-_([NegativeUNL Amendment](../../resources/known-amendments.md#negativeunl)によって追加されました。)_
+_([NegativeUNL Amendment](/resources/known-amendments.md#negativeunl)によって追加されました。)_
 
 ネガティブUNLは、XRP Ledgerの[コンセンサスプロトコル](index.md)の機能で、バリデータの部分的な停止中にネットワークの前進を可能にする _liveness_ を向上させるものです。ネガティブUNLを使用すると、サーバーは現在オンラインかつ稼働中のバリデータに基づいて有効なUNLを調整するため、信頼できるバリデータが複数オフラインの場合でも、新しい[レジャーバージョン](../ledgers/index.md) を _validated_ と宣言することができるようになるのです。
 
@@ -123,42 +123,42 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
 
 1. サーバーのUNLが38人の信頼できるバリデータで構成されているとすると、80%の定足数は38人のうち少なくとも31人の信頼できるバリデータである。
 
-[{% inline-svg file="/img/negative-unl-01.svg" /%}](/img/negative-unl-01.svg "Diagram: 通常の場合。ネガティブUNLは未使用、定足数は設定されたバリデータの80%である。")
+[{% inline-svg file="/docs/img/negative-unl-01.svg" /%}](/docs/img/negative-unl-01.svg "Diagram: 通常の場合。ネガティブUNLは未使用、定足数は設定されたバリデータの80%である。")
 
 2. MissingAとUnsteadyBという2人のバリデータがオフラインになったとする。(両者とも信頼度スコアは50%未満である。)レジャー _N_ の合意プロセスにおいて、残りのバリデータの多くがUnsteadyBをネガティブUNLに追加することを提案する。この動議は残りのバリデーターのうち少なくとも31人の定足数で可決され、レジャー _N_ はUnsteadyBを無効化する予定で有効になった。
 
-[{% inline-svg file="/img/negative-unl-02.svg" /%}](/img/negative-unl-02.svg "Diagram: UnsteadyBは無効になる予定。")
+[{% inline-svg file="/docs/img/negative-unl-02.svg" /%}](/docs/img/negative-unl-02.svg "Diagram: UnsteadyBは無効になる予定。")
 
 
 3. レジャー _N+1_ から _N+256_ については、コンセンサスプロセスをそのまま継続する。
 
 4. 次のフラグレジャー _N+256_ では、UnsteadyBはレジャーの「予定」から「無効」リストへ自動的に移動する。また、MissingAがまだオフラインであるため、検証者の総意として、次のフラグレジャーでMissingAを無効化する予定とする。
 
-[{% inline-svg file="/img/negative-unl-04.svg" /%}](/img/negative-unl-04.svg "UnsteadyBが無効化され、MissingAも無効化される予定。")
+[{% inline-svg file="/docs/img/negative-unl-04.svg" /%}](/docs/img/negative-unl-04.svg "UnsteadyBが無効化され、MissingAも無効化される予定。")
 
 5. レジャー _N+257_ から _N+512_ について、定足数は37名中30名となった。
 
 6. UnsteadyBがレジャー _N+270_ でオンラインに復帰。レジャー _N+270_ から _N+511_ に対してネットワークの他の部分と一致する検証票を送信し、信頼性スコアが80%以上となる。
 
-[{% inline-svg file="/img/negative-unl-06.svg" /%}](/img/negative-unl-06.svg "Diagram: UnsteadyBがオンラインに戻るが、まだ無効化されている。")
+[{% inline-svg file="/docs/img/negative-unl-06.svg" /%}](/docs/img/negative-unl-06.svg "Diagram: UnsteadyBがオンラインに戻るが、まだ無効化されている。")
 
 7. 次のフラグレジャー _N+256_ では、予定通りMissingAが自動的に無効リストに移される。一方、UnsteadyBは信頼性スコアが向上したため、検証者の総意としてネガティブUNLから削除される予定である。
 
-[{% inline-svg file="/img/negative-unl-07.svg" /%}](/img/negative-unl-07.svg "Diagram: MissingAを無効化し、UnsteadyBを再有効化する予定。")
+[{% inline-svg file="/docs/img/negative-unl-07.svg" /%}](/docs/img/negative-unl-07.svg "Diagram: MissingAを無効化し、UnsteadyBを再有効化する予定。")
 
 8. レジャー _N+513_ から _N+768_ の場合、定足数は36人中29人である。MissingAがオフラインの間、UnsteadyBは安定的に検証結果を送り続ける。
 
 9. フラグレジャー _N+768_ では、予定通りUnsteadyBが無効リストから自動的に削除されています。
 
-[{% inline-svg file="/img/negative-unl-09.svg" /%}](/img/negative-unl-09.svg "Diagram: UnsteadyBを無効リストから削除。")
+[{% inline-svg file="/docs/img/negative-unl-09.svg" /%}](/docs/img/negative-unl-09.svg "Diagram: UnsteadyBを無効リストから削除。")
 
 10. 最終的に、あなたはMissingAがおそらく戻ってこないと判断し、あなたのサーバーの設定されたUNLからそれを削除します。あなたのサーバーはそれ以降、各フラグレジャーからMissingAをネガティブUNLから削除することを提案し始める。
 
-[{% inline-svg file="/img/negative-unl-10.svg" /%}](/img/negative-unl-10.svg "Diagram: MissingAを設定済みUNLから削除した後、ネガティブUNLからも削除することを提案する。　")
+[{% inline-svg file="/docs/img/negative-unl-10.svg" /%}](/docs/img/negative-unl-10.svg "Diagram: MissingAを設定済みUNLから削除した後、ネガティブUNLからも削除することを提案する。　")
 
 11. バリデータ操作者が自分の設定したUNLからMissingAを削除すると、そのバリデータ操作者はネガティブUNLからMissingAを削除するように投票する。十分な数のバリデータが投票した時点で、MissingAを削除する提案は合意に達し、MissingAはスケジュールされ、最終的にネガティブUNLから削除される。
 
-[{% inline-svg file="/img/negative-unl-11.svg" /%}](/img/negative-unl-11.svg "Diagram: MissingAをネガティブUNLから削除。")
+[{% inline-svg file="/docs/img/negative-unl-11.svg" /%}](/docs/img/negative-unl-11.svg "Diagram: MissingAをネガティブUNLから削除。")
 
 
 ### 関連項目
@@ -174,4 +174,4 @@ V<sub>a</sub>は、サーバー側のコンセンサス見解と一致した過�
     - [ledger_entry メソッド][]
     - [consensus_info メソッド][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

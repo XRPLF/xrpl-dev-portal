@@ -127,4 +127,4 @@ The ID of an `AMM` entry is the [SHA-512Half][] of the following values, concate
 
 For XRP, use all 0's for both the token and the issuer.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

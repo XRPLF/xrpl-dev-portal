@@ -15,7 +15,7 @@ const explorers_tools = [
     description:
       "View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.",
     href: "https://livenet.xrpl.org",
-    img: require("../../img/dev-tools/explorer.png"),
+    img: require("../../static/img/dev-tools/explorer.png"),
   },
   {
     id: "bithomp-explorer",
@@ -23,7 +23,7 @@ const explorers_tools = [
     description:
       "Explore public ledger data including accounts' transaction history and known names.",
     href: "https://bithomp.com/",
-    img: require("../../img/dev-tools/bithomp.png"),
+    img: require("../../static/img/dev-tools/bithomp.png"),
   },
   {
     id: "xrpscan",
@@ -31,7 +31,7 @@ const explorers_tools = [
     description:
       "Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.",
     href: "https://xrpscan.com/",
-    img: require("../../img/dev-tools/xrpscan.png"),
+    img: require("../../static/img/dev-tools/xrpscan.png"),
   },
   {
     id: "token-list",
@@ -39,7 +39,7 @@ const explorers_tools = [
     description:
       "See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.",
     href: "https://xumm.community/tokens",
-    img: require("../../img/dev-tools/tokenlist.png"),
+    img: require("../../static/img/dev-tools/tokenlist.png"),
   },
 ];
 
@@ -50,7 +50,7 @@ const api_access_tools = [
     description:
       "Send sample requests and get responses from the rippled API. ",
     href: "websocket-api-tool",
-    img: require("../../img/dev-tools/websocket-tool.png"),
+    img: require("../../static/img/dev-tools/websocket-tool.png"),
   },
   {
     id: "rpc",
@@ -58,14 +58,14 @@ const api_access_tools = [
     description:
       "Print raw information about an XRP Ledger account, transaction, or ledger.",
     href: "xrp-ledger-rpc-tool",
-    img: require("../../img/dev-tools/rpc-tool.png"),
+    img: require("../../static/img/dev-tools/rpc-tool.png"),
   },
   {
     id: "technical-explorer",
     title: "Technical Explorer",
     description: "Browse API objects from the ledger with real-time updates. ",
     href: "https://explorer.xrplf.org/",
-    img: require("../../img/dev-tools/technical-explorer.png"),
+    img: require("../../static/img/dev-tools/technical-explorer.png"),
   },
   {
     id: "faucets",
@@ -73,7 +73,7 @@ const api_access_tools = [
     description:
       "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
     href: "xrp-testnet-faucet",
-    img: require("../../img/dev-tools/faucets.png"),
+    img: require("../../static/img/dev-tools/faucets.png"),
   },
   {
     id: "trasaction-sender",
@@ -81,7 +81,7 @@ const api_access_tools = [
     description:
       "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
     href: "tx-sender",
-    img: require("../../img/dev-tools/transaction-sender.png"),
+    img: require("../../static/img/dev-tools/transaction-sender.png"),
   },
 ];
 
@@ -91,14 +91,14 @@ const other = [
     title: "Domain Verification Checker",
     description: "Verify your validator's domain.",
     href: "validator-domain-verifier",
-    img: require("../../img/dev-tools/domain-checker.png"),
+    img: require("../../static/img/dev-tools/domain-checker.png"),
   },
   {
     id: "xrp-ledger",
     title: "xrp-ledger.toml Checker",
     description: "Verify that your xrp-ledger.toml file is set up properly.",
     href: "xrp-ledger-toml-checker",
-    img: require("../../img/dev-tools/toml-checker.png"),
+    img: require("../../static/img/dev-tools/toml-checker.png"),
   },
   {
     id: "binary-visualizer",
@@ -106,7 +106,7 @@ const other = [
     description:
       "Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.",
     href: "https://richardah.github.io/xrpl-binary-visualizer/",
-    img: require("../../img/dev-tools/binary-visualizer.png"),
+    img: require("../../static/img/dev-tools/binary-visualizer.png"),
   },
   {
     id: "token-metadata-lookup",
@@ -114,7 +114,7 @@ const other = [
     description:
       "Query known information about any token issued on the XRP Ledger.",
     href: "https://xrplmeta.org/",
-    img: require("../../img/dev-tools/token-metadata.png"),
+    img: require("../../static/img/dev-tools/token-metadata.png"),
   },
 ];
 
@@ -278,12 +278,12 @@ export default function DevTools() {
           <div className="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("../../img/backgrounds/cta-home-purple.svg")}
+              src={require("../../static/img/backgrounds/cta-home-purple.svg")}
               className="d-none-sm cta cta-top-left"
             />
             <img
               alt="default-alt-text"
-              src={require("../../img/backgrounds/cta-home-green.svg")}
+              src={require("../../static/img/backgrounds/cta-home-green.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">

@@ -8,7 +8,7 @@ labels:
 ---
 # アドレス
 
-{% partial file="/_snippets/data_types/address.md" /%}
+{% partial file="/docs/_snippets/data_types/address.md" /%}
 
 有効なアドレスであれば、資金を入金することで[XRP Ledgerのアカウントになる](accounts.md#creating-accounts)ことができます。また、[レギュラーキー](cryptographic-keys.md)や[署名者リスト](multi-signing.md)のメンバーとして、資金提供されていないアドレスを使用することもできます。資金を供給されたアカウントだけがトランザクションの送信者になることができます。
 
@@ -38,9 +38,9 @@ XRP Ledgerのアドレスは、[base58][]形式の _ディクショナリ_ `rpsh
 
 次の図は、キーとアドレスの関係を示しています
 
-[{% inline-svg file="/img/address-encoding.ja.svg" /%}](/img/address-encoding.ja.svg "マスター公開鍵 + タイプ接頭辞 → アカウントID + チェックサム → アドレス")
+[{% inline-svg file="/docs/img/address-encoding.ja.svg" /%}](/docs/img/address-encoding.ja.svg "マスター公開鍵 + タイプ接頭辞 → アカウントID + チェックサム → アドレス")
 
-公開鍵からXRP Ledgerアドレスを計算する式は次の通りです。完全なサンプルコードついては、[`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js)をご覧ください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.md#鍵導出)をご覧ください。
+公開鍵からXRP Ledgerアドレスを計算する式は次の通りです。完全なサンプルコードついては、[`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/_code-samples/address_encoding/js/encode_address.js)をご覧ください。パスフレーズまたはシード値から公開鍵を導出するプロセスについては、[鍵の導出](cryptographic-keys.md#鍵導出)をご覧ください。
 
 1. 次の必須アルゴリズムをインポートします。SHA-256、RIPEMD160、base58。base58のディクショナリを設定します。
 
@@ -92,4 +92,4 @@ XRP Ledgerのアドレスは、[base58][]形式の _ディクショナリ_ `rpsh
     // rDTXLQ7ZKZVKz33zJbHjgVShjsBnqMBhmN
     ```
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

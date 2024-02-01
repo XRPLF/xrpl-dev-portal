@@ -64,4 +64,4 @@ The maximum possible values for the fees are limited by the internal data types 
     - [FeeSettings object](../../references/protocol/ledger-data/ledger-entry-types/feesettings.md)
     - [SetFee pseudo-transaction][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

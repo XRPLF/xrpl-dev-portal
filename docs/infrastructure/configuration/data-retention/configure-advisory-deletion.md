@@ -53,7 +53,7 @@ To configure advisory deletion with a daily schedule, perform the following step
     - Set `advisory_delete` to `1` to run online deletion only when prompted. (Set it to `0` to run online deletion automatically as new ledger versions become available.)
     - Set `online_delete` to the minimum number of ledger versions to keep after running online deletion. The server accumulates more history than this until online deletion runs.
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Test running the [can_delete method][] to prompt the server to run online deletion.
 
@@ -130,4 +130,4 @@ If online deletion does not seem to be running after configuring it, try the fol
     - [logrotate method][]
     - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

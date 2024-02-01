@@ -308,7 +308,7 @@ If the transaction fails with the result `tecNO_ALTERNATIVE_KEY`, your account d
 
 ### 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ### 5. Confirm Account Flags
 
@@ -499,4 +499,4 @@ This operation has only two possible outcomes:
 
 If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method][]) and it should have the result code `tesSUCCESS`. If you see any other [result code](../../references/protocol/transactions/transaction-results/transaction-results.md), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

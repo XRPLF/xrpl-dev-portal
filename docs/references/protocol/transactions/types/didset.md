@@ -30,7 +30,7 @@ Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or
 }
 ```
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------|:----------|:------------------|:----------|:------------|
@@ -52,4 +52,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecEMPTY_DID`      | The transaction will create an empty DID ledger entry. Check that your updates don't remove the `Data`, `DIDDocument`, and `URI` fields. |
 | `temEMPTY_DID`      | The transaction is malformed and missing any DID information. Include either the `Data`, `DIDDocument`, or `URI` fields. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

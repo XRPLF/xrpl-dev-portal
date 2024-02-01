@@ -49,4 +49,4 @@ For more information, see [Troubleshooting `rippled`](../../troubleshooting/inde
     - [validator_list_sites method][]
     - [validators method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

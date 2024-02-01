@@ -46,7 +46,7 @@ The SignerListSet transaction creates, replaces, or removes a list of signers th
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SignerListSet%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%2209A9C86BF20695735AB03620EB1C32606635AC3DA0B70282F37C674FC889EFE7%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field         | JSON Type | [Internal Type][] | Description                  |
@@ -64,4 +64,4 @@ You cannot remove the last method of signing transactions from an account. If an
 
 Creating or replacing a signer list enables the `lsfOneOwnerCount` flag on the [SignerList object](../../ledger-data/ledger-entry-types/signerlist.md). Lists that were created before the [MultiSignReserve amendment][] became enabled do not have this flag and have a higher [owner reserve](../../../../concepts/accounts/reserves.md#owner-reserves). You can decrease the owner reserve for these lists by replacing the list with the same list. For more information, see [SignerList Flags](../../ledger-data/ledger-entry-types/signerlist.md#signerlist-flags).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -23,4 +23,4 @@ Auto-bridging happens automatically on any [OfferCreate transaction][]. [Payment
 
 - [Payment Paths](../fungible-tokens/paths.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

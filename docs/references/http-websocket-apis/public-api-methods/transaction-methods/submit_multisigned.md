@@ -305,4 +305,4 @@ The response follows the [standard format][], with a successful result containin
 * `srcActMalformed` - The `Account` field from the `tx_json` was invalid or missing.
 * `internal` - An internal error occurred. This includes the case where a signature is not valid for the transaction JSON provided.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

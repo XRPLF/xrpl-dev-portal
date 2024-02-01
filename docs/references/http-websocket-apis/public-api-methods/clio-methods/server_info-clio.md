@@ -624,4 +624,4 @@ The `info` object may have some arrangement of the following fields:
 
 * Any of the [universal error types][].
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -102,4 +102,4 @@ The response follows the [standard format][], with a successful result containin
 * `dstIsrMalformed` - The `issuer` field of one or more `taker_gets` sub-fields of the `books` field in the request is not valid.
 * `badMarket` - One or more desired order books in the `books` field does not exist; for example, offers to exchange a currency for itself.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

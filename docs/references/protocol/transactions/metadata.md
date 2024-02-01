@@ -14,7 +14,7 @@ Transaction metadata is a section of data that gets added to a transaction after
 
 Some fields that may appear in transaction metadata include:
 
-{% partial file="/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
 
 ## Example Metadata
 
@@ -95,4 +95,4 @@ See also: [Partial Payments](../../../concepts/payment-types/partial-payments.md
 <!--{# Spell-check can ignore these field names used in headings #}-->
 <!-- SPELLING_IGNORE: affectednodes, creatednode, deletednode, modifiednode, delivered_amount -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

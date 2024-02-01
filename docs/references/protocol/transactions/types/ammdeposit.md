@@ -41,7 +41,7 @@ If successful, this transaction creates a [trust line](../../../../concepts/toke
 }
 ```
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field         | JSON Type           | [Internal Type][] | Required? | Description |
 |:--------------|:--------------------|:------------------|:----------|:------------|
@@ -85,7 +85,7 @@ Any other combination of these fields and flags is invalid.
 
  The formula for how many LP Tokens you receive for a double-asset deposit is:
 
-[{% inline-svg file="/img/amm-single-asset-deposit-formula.svg" /%}](/img/amm-single-asset-deposit-formula.svg "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)")
+[{% inline-svg file="/docs/img/amm-single-asset-deposit-formula.svg" /%}](/docs/img/amm-single-asset-deposit-formula.svg "L = T × ( (( 1 + (B - (F × (1 - W) × B)) ÷ P)^W) - 1)")
 <!-- TODO: improve graphic -->
 
 Where:
@@ -139,4 +139,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `terNO_ACCOUNT`         | An account specified in the request does not exist. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

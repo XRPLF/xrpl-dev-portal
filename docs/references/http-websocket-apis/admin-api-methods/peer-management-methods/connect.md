@@ -104,4 +104,4 @@ The response follows the [standard format][], with a successful result containin
 - Cannot connect in stand-alone mode - Network-related commands are disabled in stand-alone mode.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

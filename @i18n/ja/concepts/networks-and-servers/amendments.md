@@ -20,7 +20,7 @@ Amendmentシステムは、XRP Ledger上のトランザクション処理に影�
 
 ## Amendmentプロセス
 
-[XRP Ledgerのコードに貢献する](../../resources/contribute-code/contribute-code.md)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
+[XRP Ledgerのコードに貢献する](/resources/contribute-code/index.md)のトピックでは、XRP Ledgerのアイデアから有効化までのワークフローを説明しています。
 
 Amendmentのコードがソフトウェアリリースに組み込まれた後、それを有効にするプロセスはXRP Ledgerネットワーク内で行われ、レジャーは _フラグ_ レジャーごとに(通常約15分間隔で)Amendment状況をチェックします。
 
@@ -40,7 +40,7 @@ Amendmentのコードがソフトウェアリリースに組み込まれた後�
 
 ## Amendment投票
 
-`rippled`の各バージョンは、[既知のAmendment](../../resources/known-amendments.md)のリストとそれらのAmendmentを実装するためのコードでコンパイルされています。`rippled`バリデータのオペレータは、各Amendmentに投票するようにサーバを設定し、いつでも変更することができます。オペレータが投票を選択しない場合、サーバはソースコードで定義されたデフォルトの投票を使用します。
+`rippled`の各バージョンは、[既知のAmendment](/resources/known-amendments.md)のリストとそれらのAmendmentを実装するためのコードでコンパイルされています。`rippled`バリデータのオペレータは、各Amendmentに投票するようにサーバを設定し、いつでも変更することができます。オペレータが投票を選択しない場合、サーバはソースコードで定義されたデフォルトの投票を使用します。
 
 **注記:** デフォルトの投票はソフトウェアのリリースごとに変更される可能性があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}更新: rippled 1.8.1{% /badge %}
 
@@ -83,8 +83,8 @@ Amendmentを有効にすると、修正前の動作のソースコードは`ripp
 - **チュートリアル:**
     - [バリデータとしてrippledを実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
     - [Amendment投票機能の設定](../../infrastructure/configuration/configure-amendment-voting.md)
-    - [XRP Ledgerのコードへの貢献](../../resources/contribute-code/contribute-code.md)
+    - [XRP Ledgerのコードへの貢献](/resources/contribute-code/index.md)
 - **リファレンス:**
-    - [既知のAmendment](../../resources/known-amendments.md)
+    - [既知のAmendment](/resources/known-amendments.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

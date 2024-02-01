@@ -26,7 +26,7 @@ A cryptographic key pair is a **private key** and a **public key** that are conn
 
 When dealing with the XRP Ledger, you may also use some related values such as a passphrase, seed, account ID, or address.
 
-[{% inline-svg file="/img/cryptographic-keys.svg" /%}](/img/cryptographic-keys.svg "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address")
+[{% inline-svg file="/docs/img/cryptographic-keys.svg" /%}](/docs/img/cryptographic-keys.svg "Diagram: Passphrase → Seed → Private Key → Public Key → Account ID ←→ Address")
 _Figure: A simplified view of the relationship between cryptographic key values._
 
 The passphrase, seed, and private key are **secrets**: if you know any of these values for an account, you can make valid signatures and you have full control over that account. If you own an account, be **very careful** with your account's secret information. If you don't have it, you can't use your account. If someone else can access it, they can take control of your account.
@@ -155,13 +155,13 @@ The key derivation processes described here are implemented in multiple places a
     - [Seed definition](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [General & Ed25519 key derivation](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
     - [secp256k1 key derivation](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-- In Python 3 in {% repo-link path="content/_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
+- In Python 3 in {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}this repository's code samples section{% /repo-link %}.
 - In JavaScript in the [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs) package.
 
 ### Ed25519 Key Derivation
 [[Source]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
-[{% inline-svg file="/img/key-derivation-ed25519.svg" /%}](/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
+[{% inline-svg file="/docs/img/key-derivation-ed25519.svg" /%}](/docs/img/key-derivation-ed25519.svg "Passphrase → Seed → Secret Key → Prefix + Public Key")
 
 1. Calculate the [SHA-512Half][] of the seed value. The result is the 32-byte secret key.
 
@@ -182,7 +182,7 @@ The key derivation processes described here are implemented in multiple places a
 ### secp256k1 Key Derivation
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
-[{% inline-svg file="/img/key-derivation-secp256k1.svg" /%}](/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
+[{% inline-svg file="/docs/img/key-derivation-secp256k1.svg" /%}](/docs/img/key-derivation-secp256k1.svg "Passphrase → Seed → Root Key Pair → Intermediate Key Pair → Master Key Pair")
 
 Key derivation for secp256k1 XRP Ledger account keys involves more steps than Ed25519 key derivation for a couple reasons:
 
@@ -256,4 +256,4 @@ The steps to derive the XRP Ledger's secp256k1 account key pair from a seed valu
     - [wallet_propose method][]
     - [account_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

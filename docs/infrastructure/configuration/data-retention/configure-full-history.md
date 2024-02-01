@@ -47,7 +47,7 @@ To configure your server to acquire and store full history, complete the followi
 
     **Caution:** If you have any history already downloaded with RocksDB, you must either delete that data or change the paths to the databases in the config file when you switch to NuDB. You must change both the `path` field of the `[node_db]` stanza **and** the `[database_path]` (SQLite database) setting. Otherwise, the server may [fail to start](../../troubleshooting/server-wont-start.md#state-db-error).
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 0. Set the `[ledger_history]` stanza of your server's config file to `full`:
 
@@ -128,4 +128,4 @@ To configure your server to acquire and store full history, complete the followi
     - [Ledger Data Formats](../../../references/protocol/ledger-data/index.md)
     - [rippled Commandline Usage Reference](../../commandline-usage.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -8,7 +8,7 @@ labels:
 ---
 # Negative UNL
 
-_Added by the [NegativeUNL Amendment](../../resources/known-amendments.md#negativeunl)._
+_Added by the [NegativeUNL Amendment](/resources/known-amendments.md#negativeunl)._
 
 The _Negative UNL_ is a feature of the XRP Ledger [consensus protocol](index.md) that improves _liveness_, the network's ability to make forward progress during a partial outage. Using the Negative UNL, servers adjust their effective UNLs based on which validators are currently online and operational, so that a new [ledger version](../ledgers/index.md) can be declared _validated_ even if several trusted validators are offline.
 
@@ -124,42 +124,42 @@ The following example demonstrates how the Negative UNL affects the consensus pr
 
 1. Suppose your server's UNL consists of 38 trusted validators, so an 80% quorum is at least 31 of 38 trusted validators.
 
-[{% inline-svg file="/img/negative-unl-01.svg" /%}](/img/negative-unl-01.svg "Diagram: Normal case: Negative UNL unused, quorum is 80% of configured validators.")
+[{% inline-svg file="/docs/img/negative-unl-01.svg" /%}](/docs/img/negative-unl-01.svg "Diagram: Normal case: Negative UNL unused, quorum is 80% of configured validators.")
 
 2. Imagine 2 of those validators, named MissingA and UnsteadyB, appear to have gone offline. (Both of them have reliability scores < 50%.) During the consensus process for ledger _N_, many of the remaining validators propose adding UnsteadyB to the negative UNL. The motion passes via a quorum of at least 31 of the remaining validators, and ledger _N_ becomes validated with UnsteadyB scheduled to be disabled.
 
-[{% inline-svg file="/img/negative-unl-02.svg" /%}](/img/negative-unl-02.svg "Diagram: UnsteadyB is scheduled to be disabled.")
+[{% inline-svg file="/docs/img/negative-unl-02.svg" /%}](/docs/img/negative-unl-02.svg "Diagram: UnsteadyB is scheduled to be disabled.")
 
 
 3. For ledgers _N+1_ through _N+256_, the consensus process continues without changes.
 
 4. In the next flag ledger, ledger _N+256_, UnsteadyB gets automatically moved from "scheduled" to the "disabled" list in the ledger. Also, since MissingA is still offline, a consensus of validators schedules MissingA to be disabled in the next flag ledger.
 
-[{% inline-svg file="/img/negative-unl-04.svg" /%}](/img/negative-unl-04.svg "Diagram: UnsteadyB gets disabled and MissingA is scheduled to be disabled, too.")
+[{% inline-svg file="/docs/img/negative-unl-04.svg" /%}](/docs/img/negative-unl-04.svg "Diagram: UnsteadyB gets disabled and MissingA is scheduled to be disabled, too.")
 
 5. For ledgers _N+257_ through _N+512_, the quorum is now 30 of 37 validators.
 
 6. UnsteadyB comes back online in ledger _N+270_. It sends validation votes that agree with the rest of the network for ledgers _N+270_ through _N+511_, giving it a reliability score of > 80%.
 
-[{% inline-svg file="/img/negative-unl-06.svg" /%}](/img/negative-unl-06.svg "Diagram: UnsteadyB comes back online, but it's still disabled.")
+[{% inline-svg file="/docs/img/negative-unl-06.svg" /%}](/docs/img/negative-unl-06.svg "Diagram: UnsteadyB comes back online, but it's still disabled.")
 
 7. In the next flag ledger, _N+256_, MissingA gets automatically moved to the disabled list, as scheduled. Meanwhile, a consensus of validators schedule UnsteadyB to be removed from the Negative UNL, due to its improved reliability score.
 
-[{% inline-svg file="/img/negative-unl-07.svg" /%}](/img/negative-unl-07.svg "Diagram: MissingA is disabled and UnsteadyB is scheduled to be re-enabled.")
+[{% inline-svg file="/docs/img/negative-unl-07.svg" /%}](/docs/img/negative-unl-07.svg "Diagram: MissingA is disabled and UnsteadyB is scheduled to be re-enabled.")
 
 8. For ledgers _N+513_ through _N+768_, the quorum is 29 of 36 validators. UnsteadyB continues to send validations stably while MissingA remains offline.
 
 9. In flag ledger _N+768_, UnsteadyB gets automatically removed from the disabled list, as scheduled.
 
-[{% inline-svg file="/img/negative-unl-09.svg" /%}](/img/negative-unl-09.svg "Diagram: UnsteadyB is removed from the disabled list.")
+[{% inline-svg file="/docs/img/negative-unl-09.svg" /%}](/docs/img/negative-unl-09.svg "Diagram: UnsteadyB is removed from the disabled list.")
 
 10. Eventually, you decide that MissingA is probably not coming back, so you remove it from your server's configured UNL. Your server starts proposing removing MissingA from the Negative UNL each flag ledger thereafter.
 
-[{% inline-svg file="/img/negative-unl-10.svg" /%}](/img/negative-unl-10.svg "Diagram: After removing MissingA from the configured UNL, it's proposed for removal from the Negative UNL, too.")
+[{% inline-svg file="/docs/img/negative-unl-10.svg" /%}](/docs/img/negative-unl-10.svg "Diagram: After removing MissingA from the configured UNL, it's proposed for removal from the Negative UNL, too.")
 
 11. As validator operators remove MissingA from their configured UNLs, their validators vote to also remove MissingA from the Negative UNL. When enough validators have done so, the proposal to remove MissingA achieves a consensus, and MissingA is scheduled, then finally removed from the Negative UNL.
 
-[{% inline-svg file="/img/negative-unl-11.svg" /%}](/img/negative-unl-11.svg "Diagram: MissingA is removed from the Negative UNL.")
+[{% inline-svg file="/docs/img/negative-unl-11.svg" /%}](/docs/img/negative-unl-11.svg "Diagram: MissingA is removed from the Negative UNL.")
 
 
 ## See Also
@@ -175,4 +175,4 @@ The following example demonstrates how the Negative UNL affects the consensus pr
     - [ledger_entry method][]
     - [consensus_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

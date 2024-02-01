@@ -131,4 +131,4 @@ The response follows the [standard format][], with a successful result containin
 * `channelAmtMalformed` - The `amount` in the request is not a valid [XRP amount][XRP, in drops].
 * `channelMalformed` - The `channel_id` in the request is not a valid Channel ID. The Channel ID should be a 256-bit (64-character) hexadecimal string.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

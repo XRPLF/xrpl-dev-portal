@@ -16,7 +16,7 @@ _(Added by the [NonFungibleTokensV1_1 amendment][].)_
 ## Request Format
 An example of the request format:
 
-{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
@@ -160,4 +160,4 @@ Each object in the `account_nfts` array represents one [NFToken][] and has the f
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

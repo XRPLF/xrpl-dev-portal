@@ -87,4 +87,4 @@ The ledger object is destroyed when all the attestations have been received and 
 | `LockingChainDoor`  | String    | Account            | Yes       | The door account on the locking chain. |
 | `LockingChainIssue` | Issue     | Issue              | Yes       | The asset that is locked and unlocked on the locking chain. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -21,7 +21,7 @@ _(Requires the [AMM amendment][] {% not-enabled /%})_
 
 An example of the request format:
 
-{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
@@ -257,4 +257,4 @@ Each entry in the `vote_slots` array represents one liquidity provider's vote to
  - [AMMBid][] - More info on the auction slot and bidding mechanism
  - [AMMVote][] - More info on the trading fee voting mechanism
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

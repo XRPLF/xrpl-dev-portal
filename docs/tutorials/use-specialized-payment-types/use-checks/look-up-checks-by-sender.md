@@ -65,4 +65,4 @@ for (i=0; i < account_objects_response.account_objects.length; i++) {
 }
 ```
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

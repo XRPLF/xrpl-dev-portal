@@ -36,7 +36,7 @@ An [Automated Market Maker (AMM)](../../concepts/tokens/decentralized-exchange/a
 
 Complete sample code for all of the steps of these tutorials is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
 
-- See [Code Samples: Create an AMM](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/create-amm/) in the source repository for this website.
+- See [Code Samples: Create an AMM](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/create-amm/) in the source repository for this website.
 
 
 ## Steps
@@ -55,13 +55,13 @@ You must be connected to the network to query it and submit transactions. The fo
 
 For this tutorial, click the following button to connect:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 ### 2. Get credentials
 
 To transact on the XRP Ledger, you need an address, a secret key, and some XRP. For development and testing purposes, you can get these on the [{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md). The following code shows how to get a `Wallet` instance using either the faucet or a seed provided by environment variable:
 
@@ -285,4 +285,4 @@ When you want to withdraw liquidity from the AMM, you can use [AMMDeposit][] to 
 
 However, you should keep an eye on market conditions, and use tools like [AMMBid][] and [AMMVote][] to insulate yourself from losses due to changes in the relative value of the two assets in the pool.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

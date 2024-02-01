@@ -17,7 +17,7 @@ Create a new account that you designate as the _issuer_, sometimes called the "c
 
 Many implementations use a _standby_ account as a "warm" wallet. Trusted human operators use the standby account to distribute stablecoins to _operational_ accounts.
 
-![Stablecoin distribution flow](/img/uc-stablecoin-distribution-flow.png "Stablecoin Distribution Flow")
+![Stablecoin distribution flow](/docs/img/uc-stablecoin-distribution-flow.png "Stablecoin Distribution Flow")
 
 Operational accounts, or "hot" wallets, trade with other accounts on the XRPL. Automated, internet-connected systems use the secret keys to these addresses to conduct day-to-day business like transfers to customers and partners.
 
@@ -80,7 +80,7 @@ See [Freezing Tokens](../freezes.md).
 
 ### Clawback Flags
 
-_(Requires the [Clawback amendment](../../../../resources/known-amendments.md#clawback) {% not-enabled /%})_
+_(Requires the [Clawback amendment](/resources/known-amendments.md#clawback) {% not-enabled /%})_
 
 Clawback allows you to retrieve, or _clawback_, stablecoins from a trust line under specific circumstances. This gives you added ability to respond to challenges such as lost account access or malicious activity.
 

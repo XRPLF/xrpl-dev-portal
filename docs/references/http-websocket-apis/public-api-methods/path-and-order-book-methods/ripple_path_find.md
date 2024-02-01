@@ -453,4 +453,4 @@ The following fields are deprecated, and may be omitted: `paths_canonical`, and 
 * `srcCurMalformed` - The `source_currencies` field is not formatted properly.
 * `srcIsrMalformed` - The `issuer` field of one or more of the currency objects in the request is not valid.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

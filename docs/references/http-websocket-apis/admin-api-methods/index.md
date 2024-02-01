@@ -84,4 +84,4 @@ The following admin commands are deprecated and either have been removed, or may
 * `wallet_seed` - Use the [wallet_propose method][] instead.
 * `validation_seed` - Use the config file and `validator-keys-tool` for managing your seed instead.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

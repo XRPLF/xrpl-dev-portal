@@ -264,4 +264,4 @@ In addition to the standard Offer fields, the following fields may be included i
 * `dstIsrMalformed` - The `issuer` field of the `taker_gets` field in the request is not valid.
 * `badMarket` - The desired order book does not exist; for example, offers to exchange a currency for itself.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

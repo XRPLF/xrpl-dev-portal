@@ -20,7 +20,7 @@ Every amendment has a unique identifying hex value and a short name. The short n
 
 ## Amendment Process
 
-The [Contributing Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
+The [Contributing Code to the XRP Ledger](/resources/contribute-code/index.md) topic walks through the workflow to develop an amendment from an idea to activation on the XRP Ledger.
 
 After the code for an amendment is built into a software release, the process to enable it happens within the XRP Ledger network, which checks the status of amendments every _flag_ ledger (typically about 15 minutes apart).
 
@@ -40,7 +40,7 @@ Every 256th ledger is called a **flag** ledger. The flag ledger doesn't have spe
 
 ## Amendment Voting
 
-Each version of `rippled` is compiled with a list of [known amendments](../../resources/known-amendments.md) and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
+Each version of `rippled` is compiled with a list of [known amendments](/resources/known-amendments.md) and the code to implement those amendments. Operators of `rippled` validators configure their servers to vote on each amendment and can change it at any time. If the operator doesn't choose a vote, the server uses a default vote defined by the source code.
 
 **Note:** The default vote can change between software releases. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}Updated in: rippled 1.8.1{% /badge %}
 
@@ -81,8 +81,8 @@ The [XRP Ledger Standard 11d](https://github.com/XRPLF/XRPL-Standards/discussion
 - **Tutorials:**
     - [Run rippled as a Validator](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)
     - [Configure Amendment Voting](../../infrastructure/configuration/configure-amendment-voting.md)
-    - [Contribute Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md)
+    - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 - **References:**
-    - [Known Amendments](../../resources/known-amendments.md)
+    - [Known Amendments](/resources/known-amendments.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

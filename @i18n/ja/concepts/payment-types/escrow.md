@@ -38,7 +38,7 @@ XRP Ledgerは3つの種類のEscrowをサポートします。
 
 次の図は、Escrow実施時の各状態を示します。
 
-[![Escrowの状態がHeld → Ready/Conditionally Ready → Expiredと遷移する様子を示す状態遷移図](/img/escrow-states.ja.png)](/img/escrow-states.ja.png)
+[![Escrowの状態がHeld → Ready/Conditionally Ready → Expiredと遷移する様子を示す状態遷移図](/docs/img/escrow-states.ja.png)](/docs/img/escrow-states.ja.png)
 
 この図は、Escrowの「Finish-after」時刻（`FinishAfter`フィールド）、Crypto-condition（`Condition`フィールド）、および有効期限（`CancelAfter`フィールド）の3通りの組み合わせの3つの例を示します。
 
@@ -93,4 +93,4 @@ XRP LedgerのEscrowの詳細は、以下を参照してください:
 
 Rippleによる550億XRPのロックアップについては、[Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)を参照してください。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

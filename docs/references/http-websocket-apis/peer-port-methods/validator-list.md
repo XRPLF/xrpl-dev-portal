@@ -118,4 +118,4 @@ Response:
 - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 - [Consensus](../../../concepts/consensus-protocol/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

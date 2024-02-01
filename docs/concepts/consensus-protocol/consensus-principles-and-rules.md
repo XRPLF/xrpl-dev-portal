@@ -128,4 +128,4 @@ The XRP Ledger's consensus algorithm provides a robust alternative to proof of w
     - [validators method][]
     - [consensus_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

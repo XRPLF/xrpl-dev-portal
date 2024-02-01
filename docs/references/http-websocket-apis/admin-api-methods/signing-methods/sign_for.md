@@ -11,7 +11,7 @@ labels:
 
 The `sign_for` command provides one signature for a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md).
 
-{% partial file="/_snippets/public-signing-note.md" /%}
+{% partial file="/docs/_snippets/public-signing-note.md" /%}
 
 
 This command requires the [MultiSign amendment][] to be enabled.
@@ -243,4 +243,4 @@ The response follows the [standard format][], with a successful result containin
 * `badSeed` - The seed value supplied was invalidly-formatted.
 * `badSecret` - The secret value supplied was invalidly-formatted.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

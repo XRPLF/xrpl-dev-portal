@@ -22,13 +22,13 @@ To complete this tutorial, you should meet the following guidelines:
 
 ## Source Code
 
-You can find the complete source code for all of this tutorial's examples in the {% repo-link path="content/_code-samples/build-a-browser-wallet/js/" %}code samples section of this website's repository{% /repo-link %}.
+You can find the complete source code for all of this tutorial's examples in the {% repo-link path="_code-samples/build-a-browser-wallet/js/" %}code samples section of this website's repository{% /repo-link %}.
 
 ## Goals
 
 At the end of this tutorial, you should be able to build a simple XRP wallet displayed below.
 
-![Home Page Screenshot](/img/js-wallet-home.png)
+![Home Page Screenshot](/docs/img/js-wallet-home.png)
 
 This application can:
 
@@ -98,15 +98,15 @@ In your `package.json` file, add the following section if it's not there already
 
 In this step, we create a home page that displays account and ledger details.
 
-![Home Page Screenshot](/img/js-wallet-home.png)
+![Home Page Screenshot](/docs/img/js-wallet-home.png)
 
 1. If not already present, create new files in the root folder named `index.html`, `index.js` and `index.css`.
 
 2. Make a new folder named `src` in the root directory of the project.
 
-3. Copy the contents of {% repo-link path="content/_code-samples/build-a-browser-wallet/js/index.html" %}index.html{% /repo-link %} in your code.
+3. Copy the contents of {% repo-link path="_code-samples/build-a-browser-wallet/js/index.html" %}index.html{% /repo-link %} in your code.
 
-4. Add styling to your {% repo-link path="content/_code-samples/build-a-browser-wallet/js/index.css" %}index.css{% /repo-link %} file by following the link.
+4. Add styling to your {% repo-link path="_code-samples/build-a-browser-wallet/js/index.css" %}index.css{% /repo-link %} file by following the link.
 
 This basic setup creates a homepage and applies some visual styles. The goal is for the homepage to:
 
@@ -124,9 +124,9 @@ To make that happen, we need to connect to the XRP Ledger and look up the accoun
 
 {% code-snippet file="/_code-samples/build-a-browser-wallet/js/index.js" language="js" /%}
 
-7. In the `helpers` folder, add {% repo-link path="content/_code-samples/build-a-browser-wallet/js/src/helpers/render-xrpl-logo.js" %}render-xrpl-logo.js{% /repo-link %} to handle displaying a logo.
+7. In the `helpers` folder, add {% repo-link path="_code-samples/build-a-browser-wallet/js/src/helpers/render-xrpl-logo.js" %}render-xrpl-logo.js{% /repo-link %} to handle displaying a logo.
 
-8. Finally create a new folder named `assets` in the `src/` directory and add the file {% repo-link path="content/_code-samples/build-a-browser-wallet/js/src/assets/xrpl.svg" %}`xrpl.svg`{% /repo-link %} there.
+8. Finally create a new folder named `assets` in the `src/` directory and add the file {% repo-link path="_code-samples/build-a-browser-wallet/js/src/assets/xrpl.svg" %}`xrpl.svg`{% /repo-link %} there.
 
 These files are used to render the XRPL logo for aesthetic purposes.
 
@@ -144,13 +144,13 @@ Your terminal should output a URL which you can use to open your app in a browse
 
 Now that we've created the home page, we can move on to the "Send XRP" page. This is what allows this wallet to manage your account's funds.
 
-![Send XRP Page Screenshot](/img/js-wallet-send-xrp.png)
+![Send XRP Page Screenshot](/docs/img/js-wallet-send-xrp.png)
 
 1. Create a folder named `send-xrp` in the `src` directory.
 
 2. Inside the `send-xrp` folder, create two files named `send-xrp.js` and `send-xrp.html`.
 
-3. Copy the contents of the {% repo-link path="content/_code-samples/build-a-browser-wallet/js/src/send-xrp/send-xrp.html" %}send-xrp.html{% /repo-link %} file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
+3. Copy the contents of the {% repo-link path="_code-samples/build-a-browser-wallet/js/src/send-xrp/send-xrp.html" %}send-xrp.html{% /repo-link %} file to your `send-xrp.html` file. The provided HTML code includes three input fields for the destination address, amount, and destination tag, each with their corresponding labels.
 
 4. Now that we have the HTML code, let's add the JavaScript code. In the `helpers` folder, create a new file named `submit-transaction.js` and copy the code written below to the file. In this file, we are using the [submit](../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md) method to submit the transaction to the XRPL. Before submitting every transaction needs to be signed by a wallet, learn more about [signing](../../references/http-websocket-apis/admin-api-methods/signing-methods/sign.md) a transaction.
 
@@ -168,7 +168,7 @@ Amount: 9
 
 Destination Tag: (Not usually necessary unless you're paying an account tied to an exchange)
 
-![Send XRP Transaction Screenshot](/img/js-wallet-send-xrp-transaction-details.png)
+![Send XRP Transaction Screenshot](/docs/img/js-wallet-send-xrp-transaction-details.png)
 
 ### 4. Create the Transactions Page
 
@@ -183,7 +183,7 @@ Now that we have created the home page and the send XRP page, let's create the t
 
 **Caution:** When displaying how much money a transaction delivered, always use the `delivered_amount` field from the metadata, not the `Amount` field from the transaction instructions. [Partial Payments](../../concepts/payment-types/partial-payments.md) can deliver much less than the stated `Amount` and still be successful.
 
-![Transactions Page Screenshot](/img/js-wallet-transaction.png)
+![Transactions Page Screenshot](/docs/img/js-wallet-transaction.png)
 
 1. Create a folder named `transaction-history` in the src directory.
 2. Create a file named `transaction-history.js` and copy the code written below.
@@ -192,7 +192,7 @@ Now that we have created the home page and the send XRP page, let's create the t
 
 This code uses [account_tx](../../references/http-websocket-apis/public-api-methods/account-methods/account_tx.md) to fetch transactions we've sent to and from this account. In order to get all the results, we're using the `marker` parameter to paginate through the incomplete list of transactions until we reach the end.
 
-3. Create a file named `transaction-history.html` and copy the code from {% repo-link path="content/_code-samples/build-a-browser-wallet/js/src/transaction-history/transaction-history.html" %}transaction-history.html{% /repo-link %} into it.
+3. Create a file named `transaction-history.html` and copy the code from {% repo-link path="_code-samples/build-a-browser-wallet/js/src/transaction-history/transaction-history.html" %}transaction-history.html{% /repo-link %} into it.
 
 `transaction-history.html` defines a table which displays the fields mentioned above.
 
@@ -209,4 +209,4 @@ Now that you have a functional wallet, you can take it in several new directions
 - You could support better account security including allowing users to set [regular key pairs](../../concepts/accounts/cryptographic-keys.md#regular-key-pair) or handle [multi-signing](../../concepts/accounts/multi-signing.md).
 - Or you could take your code to production by following the [Building for Production with Vite](https://vitejs.dev/guide/build.html#public-base-path) guide.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

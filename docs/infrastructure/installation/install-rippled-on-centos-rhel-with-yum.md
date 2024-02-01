@@ -101,7 +101,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 
 ## Next Steps
 
-{% partial file="/_snippets/post-rippled-install.md" /%}
+{% partial file="/docs/_snippets/post-rippled-install.md" /%}
 
 
 ## See Also
@@ -118,4 +118,4 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
         - [`rippled` Commandline Usage](../commandline-usage.md)
         - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

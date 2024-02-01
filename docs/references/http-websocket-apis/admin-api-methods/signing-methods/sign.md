@@ -11,7 +11,7 @@ labels:
 
 The `sign` method takes a [transaction in JSON format](../../../protocol/transactions/index.md) and a [seed value](../../../../concepts/accounts/cryptographic-keys.md), and returns a signed binary representation of the transaction. To contribute one signature to a [multi-signed transaction](../../../../concepts/accounts/multi-signing.md), use the [sign_for method][] instead.
 
-{% partial file="/_snippets/public-signing-note.md" /%}
+{% partial file="/docs/_snippets/public-signing-note.md" /%}
 
 
 **Caution:** Unless you run the `rippled` server yourself, you should do local signing using a [client library](../../../client-libraries.md) instead of using this command. For more information, see [Set Up Secure Signing](../../../../concepts/transactions/secure-signing.md).
@@ -226,4 +226,4 @@ The response follows the [standard format][], with a successful result containin
 * `tooBusy` - The transaction did not include paths, but the server is too busy to do pathfinding right now. Does not occur if you are connected as an admin.
 * `noPath` - The transaction did not include paths, and the server was unable to find a path by which this payment can occur.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

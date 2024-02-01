@@ -26,7 +26,7 @@ To configure how much information your server provides in response to peer crawl
     vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Add or update the `[crawl]` stanza in your config file, and save the changes:
 
@@ -57,7 +57,7 @@ To disable the peer crawler API on your server, so it does not respond to peer c
     vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Add or update the `[crawl]` stanza in your config file, and save the changes:
 
@@ -86,4 +86,4 @@ To disable the peer crawler API on your server, so it does not respond to peer c
     - [peers method][]
     - [Peer Crawler](../../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -76,4 +76,4 @@ Here are some scenarios that could cause the detector to issue false positive me
 - **References:**
     - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

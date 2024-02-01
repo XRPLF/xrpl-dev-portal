@@ -138,4 +138,4 @@ The `ip` field is no longer provided. {% badge href="https://github.com/XRPLF/ri
 - `invalidParams` - One or more required fields were omitted from the request, or a provided field was specified as the wrong data type.
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

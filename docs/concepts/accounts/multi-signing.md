@@ -83,4 +83,4 @@ To successfully submit a multi-signed transaction, you must do all of the follow
     - [sign_for method][]
     - [submit_multisigned method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

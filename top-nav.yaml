@@ -31,29 +31,29 @@
     - icon: ./static/img/icons/docs.svg
     # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
       label: Documentation || Dive into XRP Ledger technology and start integrating.
-      page: ./docs.page.tsx
+      page: ./docs/index.page.tsx
     - group: Article Types
       items:
-        - page: ./concepts/index.md
-        - page: ./tutorials/index.md
-        - page: ./references/index.md
-        - page: ./infrastructure/index.md
+        - page: ./docs/concepts/index.md
+        - page: ./docs/tutorials/index.md
+        - page: ./docs/references/index.md
+        - page: ./docs/infrastructure/index.md
     - group: Use Cases
       items:
-        - page: ./use-cases/payments/index.md
-        - page: ./use-cases/tokenization/index.md
-        - page: ./use-cases/defi/index.md
+        - page: ./docs/use-cases/payments/index.md
+        - page: ./docs/use-cases/tokenization/index.md
+        - page: ./docs/use-cases/defi/index.md
     - group: Get Started
       items:
-        - page: ./tutorials/get-started/get-started-using-javascript.md
+        - page: ./docs/tutorials/get-started/get-started-using-javascript.md
           label: JavaScript
-        - page: ./tutorials/get-started/get-started-using-python.md
+        - page: ./docs/tutorials/get-started/get-started-using-python.md
           label: Python
-        - page: ./tutorials/get-started/get-started-using-java.md
+        - page: ./docs/tutorials/get-started/get-started-using-java.md
           label: Java
-        - page: ./tutorials/get-started/get-started-using-php.md
+        - page: ./docs/tutorials/get-started/get-started-using-php.md
           label: PHP
-        - page: ./tutorials/get-started/get-started-using-http-websocket-apis.md
+        - page: ./docs/tutorials/get-started/get-started-using-http-websocket-apis.md
           label: HTTP / WebSocket
 
 - group: Resources

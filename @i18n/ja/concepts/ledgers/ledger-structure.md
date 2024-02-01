@@ -12,12 +12,12 @@ XRP Ledgerはブロックチェーンであり、データブロックの履歴�
 
 各レジャーバージョンには、 _状態データ_ 、 _トランザクションセット_ 、メタデータを含む _ヘッダー_ が含まれます。
 
-[{% inline-svg file="/img/ledger.svg" /%}](/img/ledger.svg "図: レジャーはヘッダー、トランザクションセット、状態データから構成されます。")
+[{% inline-svg file="/docs/img/ledger.svg" /%}](/docs/img/ledger.svg "図: レジャーはヘッダー、トランザクションセット、状態データから構成されます。")
 
 
 ## 状態データ
 
-[{% inline-svg file="/img/ledger-state-data.svg" /%}](/img/ledger-state-data.svg "図: レジャーの状態データは、さまざまなオブジェクトで構成され、グラフのようにリンクされていることもあります。")
+[{% inline-svg file="/docs/img/ledger-state-data.svg" /%}](/docs/img/ledger-state-data.svg "図: レジャーの状態データは、さまざまなオブジェクトで構成され、グラフのようにリンクされていることもあります。")
 
 _状態データ_ とは、そのレジャーバージョンにおけるすべてのアカウント、残高、設定、その他の情報のスナップショットを表します。サーバがネットワークに接続すると、最初に行うことの1つは、新しいトランザクションを処理し、現在の状態に関するクエリに答えることができるように、現在の状態データの完全なセットをダウンロードすることです。ネットワーク内のすべてのサーバが状態データの完全なコピーを持っているため、すべてのデータは公開され、どのコピーも同じように有効です。
 
@@ -25,7 +25,7 @@ _状態データ_ とは、そのレジャーバージョンにおけるすべ�
 
 ## トランザクションセット
 
-[{% inline-svg file="/img/ledger-transaction-set.svg" /%}](/img/ledger-transaction-set.svg "図: レジャーのトランザクションセット、正規の順序で並べられたトランザクションのグループ")
+[{% inline-svg file="/docs/img/ledger-transaction-set.svg" /%}](/docs/img/ledger-transaction-set.svg "図: レジャーのトランザクションセット、正規の順序で並べられたトランザクションのグループ")
 
 レジャーに加えられたすべての変更は、トランザクションの結果です。各レジャーバージョンには、特定の順序で新たに適用されたトランザクションのグループである _トランザクションセット_ が含まれています。あるレジャーのトランザクションセットを前のレジャーバージョンの状態データに適用すると、結果としてそのレジャーの状態データが得られます。
 
@@ -41,20 +41,20 @@ _レジャーヘッダー_ は、レジャーバージョンの概略を示す�
 
 <!-- Note: the alt text for the diagrams is intentionally empty because any caption would be redundant with the text. -->
 
-- [{% inline-svg file="/img/ledger-index-icon.svg" /%}](/img/ledger-index-icon.svg "") チェーン内でのレジャーの位置を示す _レジャーインデックス_ 。レジャーは、1つ小さいインデックスを持つレジャーの上に構築され、 _ジェネシスレジャー_ として知られるスタート地点に戻ります。これは、すべてのトランザクションと結果の公開履歴を形成します。
-- [{% inline-svg file="/img/ledger-hash-icon.svg" /%}](/img/ledger-hash-icon.svg "") レジャーの内容を一意に識別する _レジャーハッシュ_ 。ハッシュは、レジャーバージョンの内容が変更された場合、ハッシュが完全に異なるものになるように計算されます。これは、レジャーのデータが消失、変更、破損していないことを示すチェックサムのようなものでもあります。
-- [{% inline-svg file="/img/ledger-parent-icon.svg" /%}](/img/ledger-parent-icon.svg "") 親レジャーのハッシュ。レジャーバージョンは、その前の _親レジャー_ との違いによって定義されることが多く、ヘッダーには親レジャーの一意なハッシュも含まれます。
-- [{% inline-svg file="/img/ledger-timestamp-icon.svg" /%}](/img/ledger-timestamp-icon.svg "") このレジャーの内容が確定した正式なタイムスタンプとなる _閉鎖時刻_ 。この数値は秒数(一の位)が四捨五入され、通常は10です。
-- [{% inline-svg file="/img/ledger-state-data-hash-icon.svg" /%}](/img/ledger-state-data-hash-icon.svg "") このレジャーの状態データのチェックサムとして機能する _状態データのハッシュ_ 。
-- [{% inline-svg file="/img/ledger-tx-set-hash-icon.svg" /%}](/img/ledger-tx-set-hash-icon.svg "") このレジャーのトランザクションセットのデータのチェックサムとして機能する _トランザクションセットのハッシュ_。
-- [{% inline-svg file="/img/ledger-notes-icon.svg" /%}](/img/ledger-notes-icon.svg "") その他、存在するXRPの総量や、閉鎖時刻が四捨五入された値など、いくつかのメモがあります。
+- [{% inline-svg file="/docs/img/ledger-index-icon.svg" /%}](/docs/img/ledger-index-icon.svg "") チェーン内でのレジャーの位置を示す _レジャーインデックス_ 。レジャーは、1つ小さいインデックスを持つレジャーの上に構築され、 _ジェネシスレジャー_ として知られるスタート地点に戻ります。これは、すべてのトランザクションと結果の公開履歴を形成します。
+- [{% inline-svg file="/docs/img/ledger-hash-icon.svg" /%}](/docs/img/ledger-hash-icon.svg "") レジャーの内容を一意に識別する _レジャーハッシュ_ 。ハッシュは、レジャーバージョンの内容が変更された場合、ハッシュが完全に異なるものになるように計算されます。これは、レジャーのデータが消失、変更、破損していないことを示すチェックサムのようなものでもあります。
+- [{% inline-svg file="/docs/img/ledger-parent-icon.svg" /%}](/docs/img/ledger-parent-icon.svg "") 親レジャーのハッシュ。レジャーバージョンは、その前の _親レジャー_ との違いによって定義されることが多く、ヘッダーには親レジャーの一意なハッシュも含まれます。
+- [{% inline-svg file="/docs/img/ledger-timestamp-icon.svg" /%}](/docs/img/ledger-timestamp-icon.svg "") このレジャーの内容が確定した正式なタイムスタンプとなる _閉鎖時刻_ 。この数値は秒数(一の位)が四捨五入され、通常は10です。
+- [{% inline-svg file="/docs/img/ledger-state-data-hash-icon.svg" /%}](/docs/img/ledger-state-data-hash-icon.svg "") このレジャーの状態データのチェックサムとして機能する _状態データのハッシュ_ 。
+- [{% inline-svg file="/docs/img/ledger-tx-set-hash-icon.svg" /%}](/docs/img/ledger-tx-set-hash-icon.svg "") このレジャーのトランザクションセットのデータのチェックサムとして機能する _トランザクションセットのハッシュ_。
+- [{% inline-svg file="/docs/img/ledger-notes-icon.svg" /%}](/docs/img/ledger-notes-icon.svg "") その他、存在するXRPの総量や、閉鎖時刻が四捨五入された値など、いくつかのメモがあります。
 
 レジャーのトランザクションセットと状態データのサイズは無制限ですが、レジャーヘッダーは常に固定サイズです。レジャーヘッダーの正確なデータとバイナリ形式については、[レジャーヘッダー](../../references/protocol/ledger-data/ledger-header.md)を参照してください。
 
 
 ## バリデーションの状況
 
-[{% inline-svg file="/img/ledger-validated-mark.svg" /%}](/img/ledger-validated-mark.svg "Diagram: レジャーのバリデーション(検証)状況。レジャーの上に追加され、レジャー自体の一部ではありません。")
+[{% inline-svg file="/docs/img/ledger-validated-mark.svg" /%}](/docs/img/ledger-validated-mark.svg "Diagram: レジャーのバリデーション(検証)状況。レジャーの上に追加され、レジャー自体の一部ではありません。")
 
 サーバの Unique Node List のバリデータのコンセンサスがレジャーバージョンの内容に合意すると、そのレジャーバージョンは検証済みであり、変更不可であるとみなされます。レジャーの内容は、後続のトランザクションが新しいレジャーバージョンを作成し、チェーンを更新することによってのみ変更できます。
 

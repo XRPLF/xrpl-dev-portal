@@ -81,4 +81,4 @@ Use this command with no parameter to query the existing `can_delete` setting.
 - [Online Deletion](../../../../infrastructure/configuration/data-retention/online-deletion.md)
 - [Configure Advisory Deletion](../../../../infrastructure/configuration/data-retention/configure-advisory-deletion.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

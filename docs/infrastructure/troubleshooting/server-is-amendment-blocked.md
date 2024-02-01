@@ -130,4 +130,4 @@ In this example, conflicts with the following features are causing your `rippled
 
 * `F64E1EABBE79D55B3BB82020516CEC2C582A98A6BFE20FBE9BB6A0D233418064`
 
-To look up which `rippled` version supports these features, see [Known Amendments](../../resources/known-amendments.md).
+To look up which `rippled` version supports these features, see [Known Amendments](/resources/known-amendments.md).

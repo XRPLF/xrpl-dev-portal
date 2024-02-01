@@ -39,4 +39,4 @@ For more information, see [Auto-Bridging](../tokens/decentralized-exchange/autob
     - [ripple_path_find method][]
     - [Interpreting Metadata of Cross-Currency Payments](../transactions/finality-of-results/look-up-transaction-results.md#token-payments)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

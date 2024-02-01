@@ -171,4 +171,4 @@ To configure your server as a private server, set the `[peer_private]` setting t
     - [fetch_info method][]
     - [Peer Crawler](../../references/http-websocket-apis/peer-port-methods/peer-crawler.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

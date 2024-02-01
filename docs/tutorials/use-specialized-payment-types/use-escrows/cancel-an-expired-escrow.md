@@ -65,7 +65,7 @@ Response:
 
 **Tip:** If you don't know what `OfferSequence` to use, you can look up the transaction that created the Escrow: call the [tx method][] with the value of the Escrow's `PreviousTxnID` field. In `tx` response, use the `Sequence` value of that transaction as the `OfferSequence` value of the EscrowCancel transaction.
 
-{% partial file="/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
 Request:
 
@@ -91,7 +91,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. Confirm final result
 
@@ -138,4 +138,4 @@ In the above example, `r3wN3v2vTUkr5qd6daqDc2xE4LSysdVjkT` is the sender of the 
     - [tx method][]
     - [Escrow ledger object](../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

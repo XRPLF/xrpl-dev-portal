@@ -28,7 +28,7 @@ In this tutorial, you will learn:
 
 The following diagram shows a high-level overview of the containerized private network that you will set up.
 
-[{% inline-svg file="/img/xrp-ledger-private-network-docker.svg" /%}](/img/xrp-ledger-private-network-docker.svg "Figure 1: Diagram of a three node containerized private ledger network")
+[{% inline-svg file="/docs/img/xrp-ledger-private-network-docker.svg" /%}](/docs/img/xrp-ledger-private-network-docker.svg "Figure 1: Diagram of a three node containerized private ledger network")
 
 ## Prerequisites
 

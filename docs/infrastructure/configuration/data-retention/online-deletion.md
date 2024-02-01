@@ -79,7 +79,7 @@ The following settings relate to online deletion:
 
     The following diagram shows the relationship between `online_delete` and `ledger_history` settings:
 
-    [{% inline-svg file="/img/online_delete-vs-ledger_history.svg" /%}](/img/online_delete-vs-ledger_history.svg "Ledgers older than `online_delete` are automatically deleted. Ledgers newer than `ledger_history` are backfilled. Ledgers in between are kept if available but not backfilled")
+    [{% inline-svg file="/docs/img/online_delete-vs-ledger_history.svg" /%}](/docs/img/online_delete-vs-ledger_history.svg "Ledgers older than `online_delete` are automatically deleted. Ledgers newer than `ledger_history` are backfilled. Ledgers in between are kept if available but not backfilled")
 
 - **`advisory_delete`** - If enabled, online deletion is not scheduled automatically. Instead, an administrator must manually trigger online deletion. Use the value `0` for disabled or `1` for enabled.
 
@@ -93,7 +93,7 @@ The following settings relate to online deletion:
 
     The following diagram shows how `fetch_depth` works:
 
-    [{% inline-svg file="/img/fetch_depth.svg" /%}](/img/fetch_depth.svg "Ledger versions older than fetch_depth are not served to peers")
+    [{% inline-svg file="/docs/img/fetch_depth.svg" /%}](/docs/img/fetch_depth.svg "Ledger versions older than fetch_depth are not served to peers")
 
 For estimates of how much disk space is required to store different amounts of history, see [Capacity Planning](../../installation/capacity-planning.md#disk-space).
 
@@ -135,4 +135,4 @@ When it comes time for online deletion, the server first walks through the oldes
     - [can_delete method][]
     - [ledger_cleaner method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

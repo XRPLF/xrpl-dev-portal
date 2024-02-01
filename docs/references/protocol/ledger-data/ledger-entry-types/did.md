@@ -65,4 +65,4 @@ The ID of a `DID` entry is the [SHA-512Half][] of the following values, concaten
 1. The `DID` space key (`0x0049`).
 2. The AccountID that controls the DID.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

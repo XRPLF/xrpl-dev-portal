@@ -114,4 +114,4 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `badSeed` - The request provided an invalid seed value. This usually means that the seed value appears to be a valid string of a different format, such as an account address or validation public key.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

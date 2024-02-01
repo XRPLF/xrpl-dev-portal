@@ -76,4 +76,4 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `internal` if one the parameters is specified incorrectly. (This is a bug; the intended error code is `invalidParams`.)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

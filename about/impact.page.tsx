@@ -28,7 +28,7 @@ export default function Impact() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/community-purple.svg")}
+            src={require("../static/img/backgrounds/community-purple.svg")}
             className="landing-bg"
             id="impact-purple"
           />
@@ -48,7 +48,7 @@ export default function Impact() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/home-green.svg")}
+            src={require("../static/img/backgrounds/home-green.svg")}
             id="impact-green"
           />
         </div>
@@ -132,12 +132,12 @@ export default function Impact() {
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
               alt="default-alt-text"
-              src={require("../img/backgrounds/cta-community-purple.svg")}
+              src={require("../static/img/backgrounds/cta-community-purple.svg")}
               className="cta cta-top-left"
             />
             <img
               alt="default-alt-text"
-              src={require("../img/backgrounds/cta-calculator-green.svg")}
+              src={require("../static/img/backgrounds/cta-calculator-green.svg")}
               className="cta cta-bottom-right"
             />
             <div className="z-index-1 position-relative">
@@ -193,7 +193,6 @@ export default function Impact() {
                     <img
                       alt="default-alt-text"
                       id="connect-01"
-                        // src={require("data:,")}
                     />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Blog")}</h6>
@@ -213,7 +212,6 @@ export default function Impact() {
                     <img
                       alt="default-alt-text"
                       id="connect-02"
-                      //   src={require("data:,")}
                     />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Events")}</h6>
@@ -232,7 +230,6 @@ export default function Impact() {
                     <img
                       alt="default-alt-text"
                       id="connect-03"
-                      //   src={require("data:,")}
                     />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Code")}</h6>
@@ -255,7 +252,6 @@ export default function Impact() {
                     <img
                       alt="default-alt-text"
                       id="connect-04"
-                      //   src={require("data:,")}
                     />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Connect")}</h6>
@@ -275,7 +271,6 @@ export default function Impact() {
                       <img
                         alt="default-alt-text"
                         id="connect-02"
-                        // src={require("data:,")}
                       />
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Events")}</h6>
@@ -295,7 +290,6 @@ export default function Impact() {
                     <img
                       alt="default-alt-text"
                       id="connect-04"
-                      //   src={require("data:,")}
                     />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Connect")}</h6>

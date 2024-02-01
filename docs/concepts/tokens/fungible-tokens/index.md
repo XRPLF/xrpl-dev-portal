@@ -91,4 +91,4 @@ When an account owns 3 or more objects in the ledger, the full owner reserve app
     - [RippleState object](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) - The data format for trust lines in the ledger's state data.
     - [TrustSet transaction][] - The transaction to create or modify trust lines.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

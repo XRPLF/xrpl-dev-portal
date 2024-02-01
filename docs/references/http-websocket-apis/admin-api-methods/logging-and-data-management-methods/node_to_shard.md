@@ -117,4 +117,4 @@ The response follows the [standard format][], with a successful result containin
 - `notEnabled` - If the server is not configured to store [history shards](../../../../infrastructure/configuration/data-retention/history-sharding.md).
 - `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -27,7 +27,7 @@ Example PaymentChannelFund:
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_PaymentChannelFund%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22877FA6E2FF8E08597D1F24E30BE8E52D0C9C06F0D620C5721E55622B6A632DFF%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
@@ -43,11 +43,11 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | Error Code                | Description                                      |
 |:--------------------------|:-------------------------------------------------|
 | `tecINSUFFICIENT_RESERVE` | The sending account has less XRP than the [reserve requirement](../../../../concepts/accounts/reserves.md). |
-| `tecNO_DST`               | The destination account of the channel has been deleted. This is only possible if the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](../../../../resources/known-amendments.md#fixpaychanrecipientownerdir) became enabled (on 2020-05-01). |
+| `tecNO_DST`               | The destination account of the channel has been deleted. This is only possible if the payment channel was created before the [fixPayChanRecipientOwnerDir amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir) became enabled (on 2020-05-01). |
 | `tecNO_ENTRY`             | The Payment Channel identified by the `Channel` field does not exist. |
 | `tecNO_PERMISSION`        | The sender of the transaction is not the source address for the channel. |
 | `tecUNFUNDED`             | The sending account does not have enough XRP to fund the channel with the requested amount and still meet the [reserve requirement](../../../../concepts/accounts/reserves.md). |
 | `temBAD_AMOUNT`           | The `Amount` field of the transaction is invalid. The amount must be XRP and it cannot be zero or negative. |
 | `temBAD_EXPIRATION`       | The `Expiration` field is invalid.              |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -218,7 +218,7 @@ To fix this problem, do one of the following, then restart the server:
 
 - **Concepts:**
     - [The `rippled` Server](../../concepts/networks-and-servers/index.md)
-    - [Technical FAQ](../../about/faq.md)
+    - [Technical FAQ](/about/faq.md)
 - **Tutorials:**
     - [Understanding Log Messages](understanding-log-messages.md)
     - [Capacity Planning](../installation/capacity-planning.md)
@@ -229,4 +229,4 @@ To fix this problem, do one of the following, then restart the server:
 
 <!-- SPELLING_IGNORE: cfg, node_size -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

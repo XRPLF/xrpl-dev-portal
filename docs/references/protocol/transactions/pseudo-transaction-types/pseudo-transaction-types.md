@@ -34,7 +34,7 @@ Pseudo-transactions use the following common fields as normal:
 | `TransactionType` | String    | UInt16            | _(Required)_ The type of transaction. |
 | `Flags`           | Number    | UInt32            | _(Optional)_ A set of bit-flags for this transaction. The meaning of specific flags varies based on the transaction type. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
 
 
 {% child-pages /%}

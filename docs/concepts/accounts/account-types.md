@@ -9,14 +9,14 @@ labels:
 ---
 # Account Types
 
-{% partial file="/_snippets/issuing-and-operational-addresses-intro.md" /%}
+{% partial file="/docs/_snippets/issuing-and-operational-addresses-intro.md" /%}
 
 
 ## Funds Lifecycle
 
 When a token issuer follows this separation of roles, funds tend to flow in specific directions, as in the following diagram:
 
-[{% inline-svg file="/img/issued-currency-funds-flow.svg" /%}](/img/issued-currency-funds-flow.svg "Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.")
+[{% inline-svg file="/docs/img/issued-currency-funds-flow.svg" /%}](/docs/img/issued-currency-funds-flow.svg "Diagram: Funds flow from the issuing address to standby addresses, to operational addresses, to customer and partner addresses, and finally back to the issuing address.")
 
 The issuing address creates tokens by sending payments to standby addresses. These tokens have negative value from the perspective of the issuing address, since they (often) represent obligations. The same tokens have positive value from other perspectives, including from the perspective of a standby address.
 
@@ -81,4 +81,4 @@ If a standby address is compromised, the consequences are like an operational ad
     - [SetRegularKey transaction][]
     - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

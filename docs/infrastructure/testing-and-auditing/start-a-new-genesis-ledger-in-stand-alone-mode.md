@@ -43,6 +43,6 @@ By default, a new genesis ledger has no [amendments](../../concepts/networks-and
     - [server_info method][]
     - [`rippled` Commandline Usage](../commandline-usage.md)
 - **Use Cases:**
-    - [Contribute Code to the XRP Ledger](../../resources/contribute-code/contribute-code.md)
+    - [Contribute Code to the XRP Ledger](/resources/contribute-code/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

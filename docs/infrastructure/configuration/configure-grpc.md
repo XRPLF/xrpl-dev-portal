@@ -35,7 +35,7 @@ To enable gRPC on your server, complete the following steps:
     - `port` defines the port the server listens on for gRPC connections from client applications. The recommended port is `50051`.
     - `ip` defines which interfaces the server listens on. `127.0.0.1` limits connections to the local loopback network (same machine) and is enabled by default. Changing the value to `0.0.0.0` listens on all available network interfaces.
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. Start (or restart) the `rippled` service.
 
@@ -55,4 +55,4 @@ To enable gRPC on your server, complete the following steps:
 - **References:**
     - [HTTP / WebSocket API Reference](../../references/http-websocket-apis/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

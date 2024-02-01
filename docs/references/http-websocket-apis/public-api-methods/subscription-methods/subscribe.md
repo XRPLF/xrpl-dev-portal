@@ -572,4 +572,4 @@ The fields from a consensus stream message are as follows:
 | `type`              | String                    | `consensusPhase` indicates this is from the consensus stream |
 | `consensus`         | String                    | The new consensus phase the server is in. Possible values are `open`, `establish`, and `accepted`. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

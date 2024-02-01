@@ -110,4 +110,4 @@ For a full list of API methods, see:
 - **References:**
     - [rippled API Reference](../../references/http-websocket-apis/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -97,7 +97,7 @@ To describe XRP without an amount, specify it as a JSON object with _only_ a `cu
 
 ## String Numbers
 
-{% partial file="/_snippets/string-number-formatting.md" /%}
+{% partial file="/docs/_snippets/string-number-formatting.md" /%}
 
 ## XRP Precision
 
@@ -114,7 +114,7 @@ When sending token amounts in the XRP Ledger's peer-to-peer network, servers [se
 ## Currency Codes
 [Currency Code]: #currency-codes
 
-{% partial file="/_snippets/data_types/currency_code.md" /%}
+{% partial file="/docs/_snippets/data_types/currency_code.md" /%}
 
 
 

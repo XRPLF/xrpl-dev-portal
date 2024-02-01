@@ -21,9 +21,9 @@ This example shows how to:
 2. Get a list of offers for the brokered item.
 3. Broker a sale between two different accounts.
 
-[![Quickstart form with Broker Account](/img/quickstart21.png)](/img/quickstart21.png)
+[![Quickstart form with Broker Account](/docs/img/quickstart21.png)](/docs/img/quickstart21.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
 
 ## Get Accounts
 
@@ -38,7 +38,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         2. Click **Get New Operational Account**.
         3. Click **Get New Broker Account**
 
-[![Quickstart form with Account Information](/img/quickstart22.png)](/img/quickstart22.png)
+[![Quickstart form with Account Information](/docs/img/quickstart22.png)](/docs/img/quickstart22.png)
 
 ## Prepare a Brokered Transaction
 
@@ -55,7 +55,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
     6. Click **Create Sell Offer**.
 
 
-[![Sell Offer with Destination](/img/quickstart23.png)](/img/quickstart23.png)
+[![Sell Offer with Destination](/docs/img/quickstart23.png)](/docs/img/quickstart23.png)
 
 2. Use the Operational account to create an NFT Buy Offer.
     1. Enter the **Amount** of your offer.
@@ -64,14 +64,14 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
     4. Optionally enter the number of days until **Expiration**.
     5. Click **Create Buy Offer**.
 
-[![Buy Offer](/img/quickstart24.png)](/img/quickstart24.png)
+[![Buy Offer](/docs/img/quickstart24.png)](/docs/img/quickstart24.png)
 
 ## Get Offers
 
 1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
-[![Get Offers](/img/quickstart25.png)](/img/quickstart25.png)
+[![Get Offers](/docs/img/quickstart25.png)](/docs/img/quickstart25.png)
 
 ## Broker the Sale
 
@@ -80,7 +80,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 3. Enter a **Broker Fee**, in drops.
 4. Click **Broker Sale**.
 
-[![Brokered Sale](/img/quickstart26.png)](/img/quickstart26.png)
+[![Brokered Sale](/docs/img/quickstart26.png)](/docs/img/quickstart26.png)
 
 
 ## Cancel Offer
@@ -90,11 +90,11 @@ After accepting a buy offer, a best practice for the broker is to cancel all oth
 1. Enter the _nft_offer_index_ of the buy offer you want to cancel in the **Buy NFT Offer Index** field.
 2. Click **Cancel Offer**.
 
-[![Cancel Offer](/img/quickstart27.png)](/img/quickstart27.png)
+[![Cancel Offer](/docs/img/quickstart27.png)](/docs/img/quickstart27.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to examine the code samples.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to examine the code samples.
 
 ## ripplex5-broker-nfts.js
 <!-- SPELLING_IGNORE: ripplex5 -->

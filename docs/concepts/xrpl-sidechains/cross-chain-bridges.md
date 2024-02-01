@@ -39,4 +39,4 @@ At a high-level, bridges enable cross-chain transactions through these steps:
 
 5. Rewards are distributed to the witness servers' accounts on the issuing chain.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

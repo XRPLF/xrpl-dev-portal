@@ -106,4 +106,4 @@ While an AMM has no assets in its pool, anyone can delete it by sending an [AMMD
 
 There is no refund or incentive for deleting an empty AMM.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

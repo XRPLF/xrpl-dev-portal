@@ -21,4 +21,4 @@ labels:
 
 XRP Ledger上でステーブルコインやその他のトークンを発行するための詳しいチュートリアルは、[代替可能トークンの発行](../../tutorials/use-tokens/issue-a-fungible-token.md)をご覧ください。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

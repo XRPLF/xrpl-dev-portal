@@ -111,4 +111,4 @@ This is a consequence of how the network reaches agreement. For the entire peer-
     - [OfferCancel transaction][]
     - [Offer object](../../../references/protocol/ledger-data/ledger-entry-types/offer.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -318,12 +318,12 @@ The `state` object may have some arrangement of the following fields:
 
 [Reporting mode]: ../../../../concepts/networks-and-servers/rippled-server-modes.md
 
-{% partial file="/_snippets/etl-source-object.md" /%}
+{% partial file="/docs/_snippets/etl-source-object.md" /%}
 
-{% partial file="/_snippets/port-descriptor-object.md" /%}
+{% partial file="/docs/_snippets/port-descriptor-object.md" /%}
 
 ## Possible Errors
 
 * Any of the [universal error types][].
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

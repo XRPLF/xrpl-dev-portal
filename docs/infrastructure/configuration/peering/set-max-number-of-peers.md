@@ -20,7 +20,7 @@ To change the maximum number of peers your server allows, complete the following
     $ vim /etc/opt/ripple/rippled.cfg
     ```
 
-    {% partial file="/_snippets/conf-file-location.md" /%}
+    {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 2. In the config file, uncomment and edit the `[peers_max]` stanza, or add one if you don't have one already:
 
@@ -56,4 +56,4 @@ To change the maximum number of peers your server allows, complete the following
     - [print method][]
     - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -31,4 +31,4 @@ These codes indicate an error in the local server processing the transaction; it
 | `telREQUIRES_NETWORK_ID` | The transaction does not specify a [`NetworkID` field](../common-fields.md#networkid-field), but the current network requires one. If the transaction was intended for a network that requires `NetworkID`, add the field and try again. If the transaction was intended for a different network, submit it to a server that is connected to the correct network. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}New in: rippled 1.11.0{% /badge %} |
 | `telWRONG_NETWORK` | The transaction specifies the wrong [`NetworkID` value](../common-fields.md#networkid-field) for the current network. Either specify the correct the `NetworkID` value for the intended network, or submit the transaction to a server that is connected to the correct network. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}New in: rippled 1.11.0{% /badge %} |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -31,7 +31,7 @@ Clioは完全な[HTTP / WebSocket API](../../references/http-websocket-apis/inde
 
 ## Clioサーバーの仕組み
 
-[{% inline-svg file="/img/clio-basic-architecture.svg" /%}](/img/clio-basic-architecture.svg "図1: Clioサーバーの仕組み")
+[{% inline-svg file="/docs/img/clio-basic-architecture.svg" /%}](/docs/img/clio-basic-architecture.svg "図1: Clioサーバーの仕組み")
 
 Clioサーバーは、トランザクションメタデータ、アカウントステート、台帳ヘッダーなどの有効な台帳データを永続的なデータストアに保存します。
 

@@ -660,7 +660,7 @@ export default function Events() {
         <div className="position-relative d-none-sm">
           <img
             alt="default-alt-text"
-            src={require("../img/backgrounds/events-orange.svg")}
+            src={require("../static/img/backgrounds/events-orange.svg")}
             id="events-orange"
           />
         </div>

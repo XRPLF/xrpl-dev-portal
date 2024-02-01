@@ -39,7 +39,7 @@ This tutorial is divided into a few phases:
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. For development purposes, you can get these on the [{{use_network}}](../../concepts/networks-and-servers/parallel-networks.md) using the following interface:
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
@@ -60,7 +60,7 @@ You must be connected to the network to submit transactions to it. Since Tickets
 
 For this tutorial, click the following button to connect:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. Check Sequence Number
@@ -146,7 +146,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% /tabs %}
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
 ### (Optional) Intermission
@@ -245,7 +245,7 @@ Submit the signed transaction blob that you created in the previous step. For ex
 
 Ticketed transactions go through the consensus process the same way that Sequenced transactions do.
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait Again"} /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait Again"} /%}
 
 ## With Multi-Signing
 
@@ -271,4 +271,4 @@ You could do this in parallel for several different potential transactions as lo
     - [TicketCreate transaction][]
     - [Transaction Common Fields](../../references/protocol/transactions/common-fields.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

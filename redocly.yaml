@@ -1,6 +1,6 @@
 ignore:
-  - references/http-websocket-apis/admin-api-methods/_template-admin-method.md
-  - _img-sources/*
+  - docs/references/http-websocket-apis/admin-api-methods/_template-admin-method.md
+  - docs/img/_sources/*
   - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
@@ -33,13 +33,11 @@ theme:
     srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark'
     altText: XRP Ledger Developer Portal
     link: /
-    # favicon:
   navbar:
-    # hide:
     items:
       $ref: top-nav.yaml
   markdown:
-    partialsFolders: ["_snippets", "_code-samples", "_api-examples"]
+    partialsFolders: ["docs/_snippets", "_code-samples", "_api-examples"]
   footer:
     logo:
       hide: true
@@ -58,14 +56,13 @@ theme:
           - page: about/privacy-policy.md
       - group: Docs
         items:
-          - page: docs.page.tsx
-          - page: introduction/index.md
-          - page: use-cases/index.md
-          - page: concepts/index.md
-          ## TODO: uncomment the following when the pages have been added
-          # - page: tutorials/index.md
-          # - page: references/index.md
-          - page: infrastructure/index.md
+          - page: docs/index.page.tsx
+          - page: docs/introduction/index.md
+          - page: docs/use-cases/index.md
+          - page: docs/concepts/index.md
+          - page: docs/tutorials/index.md
+          - page: docs/references/index.md
+          - page: docs/infrastructure/index.md
       - group: Resources
         items:
           - page: resources/code-samples.page.tsx
@@ -80,7 +77,7 @@ theme:
             href: https://livenet.xrpl.org/
             external: true
           - page: resources/known-amendments.md
-          - page: resources/contribute-code/contribute-code.md
+          - page: resources/contribute-code/index.md
           - page: resources/contribute-documentation/index.md
       - group: Community
         items:
@@ -99,45 +96,3 @@ theme:
             href: https://github.com/XRPLF/
             external: true
           - page: community/report-a-scam.md
-  # sidebar:
-  #   hide:
-  # search:
-  #   placement:
-  #   hide:
-  # colorMode: #...
-  # navigation:
-  #   nextButton:
-  #     hide:
-  #     label:
-  #   previousButton:
-  #     hide:
-  #     label:
-  # markdown:
-  #   frontMatterKeysToResolve:
-  #   lastUpdatedBlock:
-  #     format:
-  #     locale:
-  #     hide:
-  #   toc:
-  #     header:
-  #     depth:
-  #     hide:
-  #   editPage:
-  #     baseUrl:
-  #     text:
-  #     hide:
-  # codeSnippet:
-  #   copy:
-  #     buttonText:
-  #     tooltipText:
-  #     toasterText:
-  #     toasterDuration:
-  #     hide:
-  #   report:
-  #     label:
-  #     tooltipText:
-  #     hide:
-  # openapi:
-  # all openapi docs options
-  # graphql:
-  # all graphql docs options

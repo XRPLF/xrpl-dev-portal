@@ -22,7 +22,7 @@ To connect your `rippled` server to the XRP Testnet or Devnet, complete these st
 
 Edit your `rippled.cfg` file.
 
-{% partial file="/_snippets/conf-file-location.md" /%}
+{% partial file="/docs/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
 
 1. Set an `[ips]` stanza with the hub for the network you want to connect to:
@@ -230,4 +230,4 @@ You can use [server_info in the WebSocket Tool](/resources/dev-tools/websocket-a
 - **References:**
     - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

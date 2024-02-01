@@ -16,11 +16,11 @@ You can create an application that mints multiple NFTs at one time, using a `for
 
 A best practice is to use `Tickets` to reserve the transaction sequence numbers. If you create an application that creates NFTs without using tickets, if any transaction fails for any reason, the application stops with an error. If you use tickets, the application continues to send transactions, and you can look into the reason for any individual failures afterward.
 
-[![Batch Mint](/img/quickstart-py36.png)](/img/quickstart-py36.png)
+[![Batch Mint](/docs/img/quickstart-py36.png)](/docs/img/quickstart-py36.png)
 
 ## Usage
 
-You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> to try the sample in your own browser.
+You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> to try the sample in your own browser.
 
 ## Get an Account
 
@@ -58,7 +58,7 @@ The difference between this function and the `getTokens()` function used earlier
 
 # Code Walkthrough
 
-You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> to try each of the samples locally.
+You can download or clone the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> to try each of the samples locally.
 
 Import dependencies and define the testnet_url variable. 
 

@@ -40,4 +40,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 |:--------------------|:---------------------------------------------|
 | `tecNO_ENTRY`       | The account doesn't have a DID.              |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

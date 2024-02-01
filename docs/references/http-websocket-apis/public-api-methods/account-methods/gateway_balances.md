@@ -17,7 +17,7 @@ The `gateway_balances` command calculates the total balances issued by a given a
 ## Request Format
 An example of the request format:
 
-{% raw-partial file="/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
 
 {% tabs %}
 
@@ -302,4 +302,4 @@ The response follows the [standard format][], with a successful result containin
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

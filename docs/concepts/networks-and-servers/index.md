@@ -35,7 +35,7 @@ Finally, if you run a validating server, you can use a stock server as a proxy t
 
 <!-- provided by the auto-generated table of children -->
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
 
 
 {% child-pages /%}

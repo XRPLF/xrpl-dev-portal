@@ -20,7 +20,7 @@ You can create NFTokens using an app such as the [Xumm app](https://xumm.app).
 
 For a more hands-on experience, you can follow the steps in the [Quickstart Tutorial 3 - Mint and Burn NFTokens](../../tutorials/quickstart/mint-and-burn-nfts-using-javascript.md).
 
-[![Digital Artist Flow](/img/nft-mkt-digital-artist.png "Digital Artist Flow")](/img/nft-mkt-digital-artist.png)
+[![Digital Artist Flow](/docs/img/nft-mkt-digital-artist.png "Digital Artist Flow")](/docs/img/nft-mkt-digital-artist.png)
 
 ## Use a public server
 
@@ -43,7 +43,7 @@ See [Mint and Burn NFTokens](../../tutorials/quickstart/mint-and-burn-nfts-using
 
 You transfer NFTs by creating a sell offer. See [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
-![Transferring NFTs](/img/uc-nft-transferring-nfts.png)
+![Transferring NFTs](/docs/img/uc-nft-transferring-nfts.png)
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
@@ -53,7 +53,7 @@ There are several XRP reserve requirements when you mint NFTs for sale. Each NFT
 
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
 
-![Reserves](/img/uc-nft-reserves.png)
+![Reserves](/docs/img/uc-nft-reserves.png)
 
 When you post the `NFTokenOffer` or sell the NFT, there are trivial transfer fees (roughly 6000 drops, or .006 XRP). When you are selling at a high volume, the trivial amounts can add up quickly, and need to be considered as part of your cost of doing business.
 
@@ -67,7 +67,7 @@ See:
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
-![Checkout](/img/uc-nft-checkout.png)
+![Checkout](/docs/img/uc-nft-checkout.png)
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
@@ -76,7 +76,7 @@ For trade in other currencies, you can leverage the DEX to accept and convert is
 
 When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
 
-![Indexing NFTs](/img/uc-nft-indexing.png)
+![Indexing NFTs](/docs/img/uc-nft-indexing.png)
 
 See:
 
@@ -89,6 +89,6 @@ See:
 
 There are some workflows where it makes sense for the issuer to retain the right to burn the token at some point in the future, regardless of the current owner. For example, NFTs used for carbon credits can be minted and traded, but once the carbon is captured, the NFT can be burned so that it is no longer transferable. For these scenarios, set the `lsfBurnable` flag when you mint the NFT.
 
-![Burning NFTs](/img/uc-nft-burn.png)
+![Burning NFTs](/docs/img/uc-nft-burn.png)
 
 Another example might be burning an in-game asset that is lost by a player after losing a life in the game. You might also burn an NFT ticket after successful redemption to prevent it from being used again.

@@ -37,4 +37,4 @@ These codes indicate that the transaction failed and was not included in a ledge
 | `tefTOO_BIG`            | The transaction would affect too many objects in the ledger. For example, this was an [AccountDelete transaction][] but the account to be deleted owns over 1000 objects in the ledger. |
 | `tefWRONG_PRIOR`        | The transaction contained an `AccountTxnID` field (or the deprecated `PreviousTxnID` field), but the transaction specified there does not match the account's previous transaction. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

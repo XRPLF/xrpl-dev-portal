@@ -66,4 +66,4 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 * `notStandAlone` - If the `rippled` server is not currently running in stand-alone mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

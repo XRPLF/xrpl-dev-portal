@@ -45,4 +45,4 @@ The basis of any financial system is transferring value. The quickest and simple
     - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md)
     - [account_info method][] - for checking XRP balances
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

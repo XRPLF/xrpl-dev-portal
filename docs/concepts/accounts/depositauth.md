@@ -24,7 +24,7 @@ Financial services regulations and licenses may require that a business or entit
 
 The Deposit Authorization flag introduces an option for those using the XRP Ledger to comply with such regulations without changing the fundamental nature of the decentralized ledger. With Deposit Authorization enabled, an account can only receive funds it explicitly approves by sending a transaction. The owner of an account using Deposit Authorization can perform the due diligence necessary to identify the sender of any funds _before_ sending the transaction that causes the account to receive the money.
 
-When you have Deposit Authorization enabled, you can receive money from [Checks](../../resources/known-amendments.md#checks), [Escrow](../payment-types/escrow.md), and [Payment Channels](../../resources/known-amendments.md#paychan). In these transactions' "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds.
+When you have Deposit Authorization enabled, you can receive money from [Checks](/resources/known-amendments.md#checks), [Escrow](../payment-types/escrow.md), and [Payment Channels](/resources/known-amendments.md#paychan). In these transactions' "two-step" model, first the source sends a transaction to authorize sending funds, then the destination sends a transaction to authorize receiving those funds.
 
 To receive money from [Payment transactions][] when you have Deposit Authorization enabled, you must [preauthorize](#preauthorization) the senders of those Payments. _(Added by the [DepositPreauth amendment][].)_
 
@@ -60,7 +60,7 @@ An account with Deposit Authorization enabled:
 
 The following table summarizes whether a transaction type can deposit money with DepositAuth enabled or disabled:
 
-{% partial file="/_snippets/depositauth-semantics-table.md" /%}
+{% partial file="/docs/_snippets/depositauth-semantics-table.md" /%}
 
 
 
@@ -114,6 +114,6 @@ You can use the [deposit_authorized method][] to see if an account is authorized
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 
-[DepositPreauth amendment]: ../../resources/known-amendments.md#depositpreauth
+[DepositPreauth amendment]: /resources/known-amendments.md#depositpreauth
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

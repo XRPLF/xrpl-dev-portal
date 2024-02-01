@@ -30,7 +30,7 @@ If you [issue tokens](../../concepts/tokens/index.md) in the XRP Ledger, can ena
 
 Complete sample code for all of the steps of this tutorial is available under the [MIT license](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE).
 
-- See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/freeze/) in the source repository for this website.
+- See [Code Samples: Freeze](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/freeze/) in the source repository for this website.
 
 ## Steps
 
@@ -42,7 +42,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 For this tutorial, you can get credentials from the following interface:
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
@@ -61,7 +61,7 @@ You must be connected to the network to submit transactions to it. The following
 
 For this tutorial, click the following button to connect:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. Send AccountSet Transaction
@@ -114,7 +114,7 @@ For example:
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md).)
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
 ### 5. Confirm Account Settings
@@ -199,4 +199,4 @@ Response:
     - [AccountRoot Flags](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
     - [RippleState (trust line) Flags](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

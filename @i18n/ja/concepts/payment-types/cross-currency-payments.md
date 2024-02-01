@@ -28,4 +28,4 @@ XRP Ledgerでは、1つ以上のトークンとXRP、またはその両方を交
 
 詳細は、[オートブリッジング](../tokens/decentralized-exchange/autobridging.md)を参照してください。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

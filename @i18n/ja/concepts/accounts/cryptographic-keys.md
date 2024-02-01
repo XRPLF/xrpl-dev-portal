@@ -26,7 +26,7 @@ XRP Ledgerでは、[トランザクション](../transactions/index.md)による
 
 XRP Ledgerを扱う場合、パスフレーズ、シード、アカウントID、アドレスなど、いくつかの関連する値を使用することもあります。
 
-[{% inline-svg file="/img/cryptographic-keys.ja.svg" /%}](/img/cryptographic-keys.ja.svg "Diagram: パスフレーズ → シード → 秘密鍵 → 公開鍵 → アカウントID ←→ アドレス")
+[{% inline-svg file="/docs/img/cryptographic-keys.ja.svg" /%}](/docs/img/cryptographic-keys.ja.svg "Diagram: パスフレーズ → シード → 秘密鍵 → 公開鍵 → アカウントID ←→ アドレス")
 _図: 暗号鍵の値の関係を簡略化した図_
 
 パスフレーズ、シード、秘密鍵は**秘密**であり、あるアカウントのこれらの値のいずれかを知っていれば、有効な署名を行うことができ、そのアカウントを完全に制御することができます。もしあなたがアカウントを所有しているのであれば、アカウントの秘密情報には**細心の注意を払ってください**。もしあなたがそれらを持っていないなら、あなたは自分のアカウントを利用することはできません。もし他の誰かがそれらにアクセスすることができれば、彼らはあなたのアカウントをコントロールすることができます。
@@ -155,13 +155,13 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
     - [シード定義](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/Seed.h)
     - [汎用キー & Ed25519鍵導出](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
     - [secp256k1鍵導出](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp)
-- Python 3: {% repo-link path="content/_code-samples/key-derivation/py/key_derivation.py" %}このリポジトリのコードサンプルセクション{% /repo-link %}
+- Python 3: {% repo-link path="_code-samples/key-derivation/py/key_derivation.py" %}このリポジトリのコードサンプルセクション{% /repo-link %}
 - JavaScript: [`ripple-keypairs`](https://github.com/XRPLF/xrpl.js/tree/main/packages/ripple-keypairs)パッケージ
 
 ### Ed25519鍵導出
 [[ソース]](https://github.com/XRPLF/rippled/blob/fc7ecd672a3b9748bfea52ce65996e324553c05f/src/ripple/protocol/impl/SecretKey.cpp#L203 "Source")
 
-[{% inline-svg file="/img/key-derivation-ed25519.ja.svg" /%}](/img/key-derivation-ed25519.ja.svg "パスフレーズ → シード → 秘密鍵 → プレフィクス + 公開鍵")
+[{% inline-svg file="/docs/img/key-derivation-ed25519.ja.svg" /%}](/docs/img/key-derivation-ed25519.ja.svg "パスフレーズ → シード → 秘密鍵 → プレフィクス + 公開鍵")
 
 1. シード値の[SHA-512ハーフ][]を計算します。32バイトの秘密鍵が導出されます。
 
@@ -182,7 +182,7 @@ XRP Ledgerでは、サポートされているさまざまなタイプのキー�
 ### secp256k1鍵導出
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/protocol/impl/SecretKey.cpp "Source")
 
-[{% inline-svg file="/img/key-derivation-secp256k1.ja.svg" /%}](/img/key-derivation-secp256k1.ja.svg "パスフレーズ → シード → ルートキーペア → 仲介銀行（機関）キーペア → マスターキーペア")
+[{% inline-svg file="/docs/img/key-derivation-secp256k1.ja.svg" /%}](/docs/img/key-derivation-secp256k1.ja.svg "パスフレーズ → シード → ルートキーペア → 仲介銀行（機関）キーペア → マスターキーペア")
 
 XRP Ledgerアカウントキーでのsecp256k1鍵導出に、Ed25519鍵導出よりも多くの手順が含まれる理由は次のとおりです。
 
@@ -256,4 +256,4 @@ XRP Ledgerアカウントキーでのsecp256k1鍵導出に、Ed25519鍵導出よ
     - [wallet_proposeメソッド][]
     - [account_infoメソッド][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -77,4 +77,4 @@ The ID of the `Amendments` entry is the hash of the `Amendments` space key (`0x0
 
 (Don't mix up the ID of the `Amendments` ledger entry type with the Amendment ID of an individual amendment.)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

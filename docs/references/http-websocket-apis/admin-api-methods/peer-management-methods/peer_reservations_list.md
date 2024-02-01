@@ -129,7 +129,7 @@ The response follows the [standard format][], with a successful result containin
 
 Each member of the `reservations` array is a JSON object describing one [peer reservation][]. This object has the following fields:
 
-{% partial file="/_snippets/peer_reservation_object.md" /%}
+{% partial file="/docs/_snippets/peer_reservation_object.md" /%}
 
 
 ### Possible Errors
@@ -137,4 +137,4 @@ Each member of the `reservations` array is a JSON object describing one [peer re
 - Any of the [universal error types][].
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

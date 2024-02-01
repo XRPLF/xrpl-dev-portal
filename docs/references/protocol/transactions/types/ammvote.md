@@ -34,7 +34,7 @@ Vote on the trading fee for an [Automated Market Maker](../../../../concepts/tok
 }
 ```
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 
 | Field        | JSON Type | [Internal Type][] | Required? | Description |
 |:-------------|:----------|:------------------|:----------|:------------|
@@ -54,4 +54,4 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `temBAD_FEE`            | The `TradingFee` from this transaction is not valid. |
 | `terNO_AMM`             | The Automated Market Maker instance for the asset pair in this transaction does not exist. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

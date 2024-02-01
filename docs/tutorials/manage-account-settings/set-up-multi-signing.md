@@ -65,7 +65,7 @@ Take note of the `account_id` (XRP Ledger Address) and `master_seed` (secret key
 
 In this example, the signer list has 3 members, with the weights and quorum set up such that multi-signed transactions need a signature from `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW` plus at least one signature from the other two members of the list.
 
-{% partial file="/_snippets/secret-key-warning.md" /%}
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
 
 
 ```
@@ -147,7 +147,7 @@ Make sure that the [Transaction Result](../../references/protocol/transactions/t
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 
 ## 5. Confirm the new signer list
@@ -230,4 +230,4 @@ At this point, your address is ready to [send a multi-signed transaction](send-a
     - [SignerListSet transaction][]
     - [SignerList object](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

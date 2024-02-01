@@ -49,7 +49,7 @@ D = A × ( e ^ (t ÷ τ) )
 
 [標準通貨コード形式](../../../references/protocol/data-types/currency-formats.md#標準通貨コード)ではなく、正の金利や負の金利（Demurrage）を持つ通貨は、以下の形式の160ビット通貨コードを使用します。
 
-![通貨コード形式を削除する](/img/demurrage-currency-code-format.png)
+![通貨コード形式を削除する](/docs/img/demurrage-currency-code-format.png)
 
 1. 最初の8ビットは `0x01` でなければなりません。
 2. 次の24ビットはASCIIの3文字を表します。

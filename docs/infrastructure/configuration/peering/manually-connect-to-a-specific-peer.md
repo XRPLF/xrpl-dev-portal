@@ -73,4 +73,4 @@ rippled connect 169.54.2.151 51235
     - [print method][]
     - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

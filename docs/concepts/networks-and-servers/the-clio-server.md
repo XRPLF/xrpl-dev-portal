@@ -31,7 +31,7 @@ There are lots of reasons you might want to run your own Clio server, but most o
 
 ## How does a Clio Server Work?
 
-[{% inline-svg file="/img/clio-basic-architecture.svg" /%}](/img/clio-basic-architecture.svg "Figure 1: How does a Clio server work?")
+[{% inline-svg file="/docs/img/clio-basic-architecture.svg" /%}](/docs/img/clio-basic-architecture.svg "Figure 1: How does a Clio server work?")
 
 A Clio server stores validated ledger data such as transaction metadata, account states, and ledger headers in a persistent datastore.
 

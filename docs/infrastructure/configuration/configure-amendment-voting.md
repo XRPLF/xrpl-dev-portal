@@ -66,7 +66,7 @@ Be sure to restart your server for changes to take effect.
 ## See Also
 
 - [Amendments](../../concepts/networks-and-servers/amendments.md)
-    - [Known Amendments](../../resources/known-amendments.md)
+    - [Known Amendments](/resources/known-amendments.md)
 - [feature method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

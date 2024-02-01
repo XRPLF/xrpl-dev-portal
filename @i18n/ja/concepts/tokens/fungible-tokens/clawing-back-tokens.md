@@ -8,7 +8,7 @@ labels:
 ---
 # トークンの回収
 
-{% partial file="/_snippets/clawback-disclaimer.md" /%}
+{% partial file="/docs/_snippets/clawback-disclaimer.md" /%}
 
 規制上の目的から、トークンがアカウントに送信された後にトークンを回収する機能を必要とする発行者が存在します。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を「回収」することができます。
 
@@ -37,4 +37,4 @@ Clawback機能はデフォルトで無効になっています。使用するに
 
 このトランザクションが成功した場合、rp6abvbTbjoce8ZDJkT6snvxTZSYMBCC9Sが発行し、rsA2LpzuawewSBQXkiju3YQTMzW13pAAdWが保有する最大314.159FOOを回収することになります。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

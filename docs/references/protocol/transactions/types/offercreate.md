@@ -33,7 +33,7 @@ An OfferCreate transaction places an [Offer](../../../../concepts/tokens/decentr
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_OfferCreate%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%220CD69FD1F0A890CC57CDA430213FD294F7D65FF4A0F379A0D09D07A222D324E6%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -77,4 +77,4 @@ Transactions of the OfferCreate type support additional values in the [`Flags` f
 | `tecINSUF_RESERVE_OFFER` | Occurs if the owner does not have enough XRP to meet the reserve requirement of adding a new Offer object to the ledger, and the transaction did not convert any currency. (If the transaction successfully traded any amount, the transaction succeeds with the result code `tesSUCCESS`, but does not create an Offer object in the ledger for the rest.) |
 | `tecDIR_FULL`            | Occurs if the owner owns too many items in the ledger, or the order book contains too many Offers at the same exchange rate already. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

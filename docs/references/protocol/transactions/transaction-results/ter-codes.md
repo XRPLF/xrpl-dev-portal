@@ -29,4 +29,4 @@ These codes indicate that the transaction has not been [applied](../../../../con
 | `terRETRY`       | Unspecified retriable error.                              |
 | `terSUBMITTED`   | Transaction has been submitted, but not yet applied.      |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

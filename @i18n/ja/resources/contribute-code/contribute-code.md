@@ -86,7 +86,7 @@ XLSドラフトを作成した後、その変更にAmendmentが必要かどう�
 
 ## コードのフローチャート
 
-![コードのフローチャート](/img/Contribute Code Flowchart.png)
+![コードのフローチャート](/docs/img/Contribute Code Flowchart.png)
 
 
 ## 関連項目

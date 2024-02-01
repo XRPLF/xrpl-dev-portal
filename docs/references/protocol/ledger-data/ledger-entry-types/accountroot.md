@@ -117,4 +117,4 @@ The ID of an AccountRoot entry is the [SHA-512Half][] of the following values, c
 * The Account space key (`0x0061`)
 * The AccountID of the account
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

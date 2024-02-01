@@ -77,7 +77,7 @@ Applications using the [HTTP / WebSocket APIs](../../references/http-websocket-a
 
 The following diagram summarizes the recommended flow for submitting a transaction and determining its outcome:
 
-[{% inline-svg file="/img/reliable-tx-submission.svg" /%}](/img/reliable-tx-submission.svg "Reliable transaction submission flowchart")
+[{% inline-svg file="/docs/img/reliable-tx-submission.svg" /%}](/docs/img/reliable-tx-submission.svg "Reliable transaction submission flowchart")
 
 
 ### Reliable Transactions Submission
@@ -548,4 +548,4 @@ Finally the server may show one or more gaps in the transaction history. The `co
 - [Overview of XRP Ledger Consensus Process](../consensus-protocol/index.md)
 - [Consensus Principles and Rules](../consensus-protocol/consensus-principles-and-rules.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

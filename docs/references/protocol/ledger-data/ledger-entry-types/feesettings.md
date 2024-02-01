@@ -65,4 +65,4 @@ The ID of the `FeeSettings` entry is the hash of the `FeeSettings` space key (`0
 4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651
 ```
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

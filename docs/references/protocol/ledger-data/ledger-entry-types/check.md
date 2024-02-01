@@ -77,4 +77,4 @@ The ID of a `Check` entry is the [SHA-512Half][] of the following values, concat
 
 See the tutorial showing how to [Send a Check](../../../../tutorials/use-specialized-payment-types/use-checks/send-a-check.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

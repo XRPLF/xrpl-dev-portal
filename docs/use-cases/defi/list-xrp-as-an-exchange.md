@@ -622,4 +622,4 @@ Off-Ledger Balances</td>
     - [account_info method][]
     - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

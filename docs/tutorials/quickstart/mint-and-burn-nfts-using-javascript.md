@@ -16,11 +16,11 @@ This example shows how to:
 2. Get a list of existing NFTs.
 3. Delete (Burn) an NFT.
 
-[![Test harness with mint NFT fields](/img/quickstart8.png)](/img/quickstart8.png)
+[![Test harness with mint NFT fields](/docs/img/quickstart8.png)](/docs/img/quickstart8.png)
 
 # Usage
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try the sample in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to try the sample in your own browser.
 
 ## Get Accounts
 
@@ -33,7 +33,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         1. Click **Get New Standby Account**.
         2. Click **Get New Operational Account**.
 
-[![Get accounts](/img/quickstart9.png)](/img/quickstart9.png)
+[![Get accounts](/docs/img/quickstart9.png)](/docs/img/quickstart9.png)
 
 ## Mint an NFT
 
@@ -48,14 +48,14 @@ To mint a non-fungible token object:
 3. Enter the **Transfer Fee**, a percentage of the proceeds from future sales of the NFT that will be returned to the original creator. This is a value of 0-50000 inclusive, allowing transfer rates between 0.000% and 50.000% in increments of 0.001%. If you do not set the **Flags** field to allow the NFT to be transferrable, set this field to 0.
 4. Click **Mint NFT**.
 
-[![Mint NFT fields](/img/quickstart10.png)](/img/quickstart10.png)
+[![Mint NFT fields](/docs/img/quickstart10.png)](/docs/img/quickstart10.png)
 
 
 ## Get Tokens
 
 Click **Get NFTs** to get a list of NFTs owned by the account.
 
-[![Get NFTs](/img/quickstart11.png)](/img/quickstart11.png)
+[![Get NFTs](/docs/img/quickstart11.png)](/docs/img/quickstart11.png)
 
 ## Burn a Token
 
@@ -66,11 +66,11 @@ To permanently destroy an NFT:
 1. Enter the **Token ID**.
 2. Click **Burn NFT**.
 
-[![Burn NFTs](/img/quickstart12.png)](/img/quickstart12.png)
+[![Burn NFTs](/docs/img/quickstart12.png)](/docs/img/quickstart12.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to examine the code samples.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/)<!-- {.github-code-download} --> archive to examine the code samples.
 
 ## ripplex3-mint-nfts.js
 <!-- SPELLING_IGNORE: ripplex3 -->

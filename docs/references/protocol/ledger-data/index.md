@@ -16,7 +16,7 @@ Each [ledger version](../../../concepts/ledgers/index.md) in the XRP Ledger is m
 
 ## State Data
 
-{% partial file="/_snippets/ledger-objects-intro.md" /%}
+{% partial file="/docs/_snippets/ledger-objects-intro.md" /%}
 
 {% child-pages /%}
 

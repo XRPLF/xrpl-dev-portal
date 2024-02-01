@@ -27,7 +27,7 @@ Generally, a ledger entry's ID is returned as the `index` field in JSON, at the 
 
 Offer directories have special IDs, where part of the hash is replaced with the exchange rate of Offers in that directory.
 
-[{% inline-svg file="/img/ledger-object-ids.svg" /%}](/img/ledger-object-ids.svg "Diagram: ID calculations for different types of ledger entries. The space key prevents IDs for different types from colliding.")
+[{% inline-svg file="/docs/img/ledger-object-ids.svg" /%}](/docs/img/ledger-object-ids.svg "Diagram: ID calculations for different types of ledger entries. The space key prevents IDs for different types from colliding.")
 
 
 ## Flags
@@ -36,4 +36,4 @@ Flags are on/off settings, which are represented as binary values that are combi
 
 The possible values for the flags field vary based on the ledger entry type. Some ledger entry types have no flags defined. In these cases, the `Flags` field always has the value `0`.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

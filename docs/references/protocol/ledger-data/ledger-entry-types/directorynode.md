@@ -115,4 +115,4 @@ The lower 64 bits of an Offer Directory's ID represent the `TakerPays` amount di
 * The ID of the root DirectoryNode
 * The page number of this object. (Since 0 is the root DirectoryNode, this value is an integer 1 or higher.)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

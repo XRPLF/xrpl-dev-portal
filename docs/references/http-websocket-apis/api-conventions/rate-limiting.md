@@ -64,4 +64,4 @@ The usage rate drops off exponentially over time, so a client that does not make
     - [rippled API Reference](../index.md)
         - [Error Formatting](error-formatting.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

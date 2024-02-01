@@ -158,7 +158,7 @@ Now, we have a simple application that:
 2. Connects to the XRP Ledger.
 3. Looks up and prints information about the account you created.
 
-To run the app, you can copy the code from {% repo-link path="content/_code-samples/get-started/php/" %}this website's GitHub Repository{% /repo-link %} and run it from the command line:
+To run the app, you can copy the code from {% repo-link path="_code-samples/get-started/php/" %}this website's GitHub Repository{% /repo-link %} and run it from the command line:
 
 ```console
 composer require hardcastle/xrpl_php
@@ -235,4 +235,4 @@ Now that you know how to use `XRPL_PHP` to connect to the XRP Ledger, get an acc
 * [Send XRP](send-xrp.md).
 * [Set up secure signing](../../concepts/transactions/secure-signing.md) for your account.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -30,7 +30,7 @@ When removing a regular key pair to your account, the `SetRegularKey` transactio
 
 ### Sign Your Transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%}
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
 
 
 Populate the request fields with the following values:
@@ -379,4 +379,4 @@ In some cases, you can even use the `SetRegularKey` transaction to send a [key r
     - [SetRegularKey transaction][]
     - [AccountRoot object](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) where the regular key is stored in the field `RegularKey`
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

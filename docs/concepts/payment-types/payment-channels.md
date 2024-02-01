@@ -31,7 +31,7 @@ Payment Channels do not intrinsically specify anything about what you can buy an
 
 The following diagram summarizes the lifecycle of a payment channel:
 
-[{% inline-svg file="/img/paychan-flow.svg" /%}](/img/paychan-flow.svg "Payment Channel Flow Diagram")
+[{% inline-svg file="/docs/img/paychan-flow.svg" /%}](/docs/img/paychan-flow.svg "Payment Channel Flow Diagram")
 
 
 ## See Also
@@ -49,4 +49,4 @@ The following diagram summarizes the lifecycle of a payment channel:
     - [PaymentChannelCreate transaction][]
     - [PaymentChannelFund transaction][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

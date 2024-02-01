@@ -37,7 +37,7 @@ You can use any amount of XRP for the payment channels. The example values in th
 
 The following diagram summarizes the lifecycle of a payment channel:
 
-[![Payment Channel Flow Diagram](/img/paychan-flow.png)](/img/paychan-flow.png)
+[![Payment Channel Flow Diagram](/docs/img/paychan-flow.png)](/docs/img/paychan-flow.png)
 
 You can match up the numbered steps in this diagram with the steps of this tutorial.
 
@@ -664,4 +664,4 @@ This concludes the tutorial of Payment Channel usage. Ripple encourages users to
     - [channel_verify method][]
     - [PayChannel ledger object](../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -29,7 +29,7 @@ A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change t
 }
 ```
 
-{% partial file="/_snippets/pseudo-tx-fields-intro.md" /%}
+{% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Name                 | JSON Type | [Internal Type][] | Description           |
@@ -39,4 +39,4 @@ A `UNLModify` [pseudo-transaction](pseudo-transaction-types.md) marks a change t
 | `UNLModifyDisabling` | Number    | UInt8             | If `1`, this change represents adding a validator to the Negative UNL. If `0`, this change represents removing a validator from the Negative UNL. (No other values are allowed.) |
 | `UNLModifyValidator` | String    | Blob              | The validator to add or remove, as identified by its master public key. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

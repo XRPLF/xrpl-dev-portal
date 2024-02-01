@@ -15,7 +15,7 @@ To help members of the XRP Ledger community interact with XRP Ledger technology 
 | Network | Upgrade Cadence | Description                                      |
 |:--------|:----------------|:-------------------------------------------------|
 | Mainnet | Stable releases | _The_ [XRP Ledger](/about/), a  decentralized cryptographic ledger powered by a network of peer-to-peer servers and the home of [XRP](../../introduction/what-is-xrp.md). |
-| Testnet | Stable releases | An "alternate universe" network that acts as a testing ground for software built on the XRP Ledger, without impacting production XRP Ledger users and without risking real money. The [amendment status](../../resources/known-amendments.md) of the Testnet is intended to closely mirror the Mainnet, although slight variations in timing may occur due to the unpredictable nature of decentralized systems. |
+| Testnet | Stable releases | An "alternate universe" network that acts as a testing ground for software built on the XRP Ledger, without impacting production XRP Ledger users and without risking real money. The [amendment status](/resources/known-amendments.md) of the Testnet is intended to closely mirror the Mainnet, although slight variations in timing may occur due to the unpredictable nature of decentralized systems. |
 | Devnet  | Beta releases   | A preview of coming attractions, where unstable changes to the core XRP Ledger software may be tested out. Developers can use this altnet to interact with and learn about planned new XRP Ledger features and amendments that are not yet enabled on the Mainnet. |
 | [Hooks V3 Testnet](https://hooks-testnet-v3.xrpl-labs.com/) | [Hooks server](https://github.com/XRPL-Labs/xrpld-hooks) | A preview of on-chain smart contract functionality using [hooks](https://xrpl-hooks.readme.io/). |
 | Sidechain-Devnet | Beta releases | A sidechain to test cross-chain bridge features. Devnet is treated as the locking chain and this sidechain is the issuing chain.<br>Library support:<br>- [xrpl.js 2.12.0](https://www.npmjs.com/package/xrpl/v/2.12.0)<br>- [xrpl-py 2.4.0](https://pypi.org/project/xrpl-py/2.4.0/)<br>**Note**: You can also use the [`xbridge-cli`](https://github.com/XRPLF/xbridge-cli) commandline tool to set up a cross-chain bridge on your local machine. |
@@ -49,4 +49,4 @@ Ripple runs the main servers in the Testnet and Devnet; you can also [connect yo
     - [validators method][]
     - [Daemon Mode Options](../../infrastructure/commandline-usage.md#daemon-mode-options)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

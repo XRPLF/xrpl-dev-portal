@@ -95,7 +95,7 @@ When the transaction from the previous step is validated by consensus, your acco
 
 Take note of the sequence number of the account, in the `Sequence` field of the result's `account_data`. You need to know the sequence number to sign transactions from the account in future steps.
 
-The `Sequence` number of a newly-funded account matches the [ledger index][] when it was funded. Before the [DeletableAccounts amendment](../../resources/known-amendments.md#deletableaccounts), a newly funded account's `Sequence` number was always 1.
+The `Sequence` number of a newly-funded account matches the [ledger index][] when it was funded. Before the [DeletableAccounts amendment](/resources/known-amendments.md#deletableaccounts), a newly funded account's `Sequence` number was always 1.
 
 {% tabs %}
 
@@ -342,4 +342,4 @@ Then adjust and sign any replacement transactions for transactions that failed i
     - [tx method][]
     - [AccountSet transaction][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

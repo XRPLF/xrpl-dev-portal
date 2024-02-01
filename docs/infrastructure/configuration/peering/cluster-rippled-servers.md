@@ -111,4 +111,4 @@ If you run multiple [`rippled` servers](../../../concepts/networks-and-servers/i
     - [validation_create method][]
     - [peers method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

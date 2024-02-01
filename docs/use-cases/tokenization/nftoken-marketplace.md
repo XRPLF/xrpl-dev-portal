@@ -16,7 +16,7 @@ NFToken Marketplaces act as intermediaries between NFToken creators and collecto
 
 ## Creating an NFT Marketplace
 
-[![NFT Marketplace Flow](/img/nft-mkt-marketplace.png "NFT Marketplace Flow")](/img/nft-mkt-marketplace.png)
+[![NFT Marketplace Flow](/docs/img/nft-mkt-marketplace.png "NFT Marketplace Flow")](/docs/img/nft-mkt-marketplace.png)
 
 
 ## Set up a rippled instance
@@ -34,7 +34,7 @@ Base reserve requirements See [Reserves](../../concepts/accounts/reserves.md#bas
 
 You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
-![Transferring NFTs](/img/uc-nft-transferring-nfts.png)
+![Transferring NFTs](/docs/img/uc-nft-transferring-nfts.png)
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
@@ -45,7 +45,7 @@ You can act as a broker, connecting sellers with bidders, completing the transfe
 
 There are several XRP reserve requirements when you mint NFTs for sale. Each NFToken page requires a reserve of 2 XRP. A NFToken page can store 16-32 NFTs.
 
-![Reserves](/img/uc-nft-reserves.png)
+![Reserves](/docs/img/uc-nft-reserves.png)
 
 Each `NFTokenOffer` object requires a reserve of 2 XRP.
 
@@ -67,7 +67,7 @@ You can get started building a brokered sales marketplace by following the steps
 
 The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/quickstart/transfer-nfts-using-javascript.md).
 
-![Checkout](/img/uc-nft-checkout.png)
+![Checkout](/docs/img/uc-nft-checkout.png)
 
 For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
@@ -75,7 +75,7 @@ For trade in other currencies, you can leverage the DEX to accept and convert is
 
 When listing NFTs for sale, it can be useful to use object metadata to organize them. You can use queries in the XRPL libraries, the Clio server, and extensions in the XRPL API and Bithomp libraries to sort and filter NFTs by creator, price, collection, rarity, and more.
 
-![Indexing NFTs](/img/uc-nft-indexing.png)
+![Indexing NFTs](/docs/img/uc-nft-indexing.png)
 
 See:
 

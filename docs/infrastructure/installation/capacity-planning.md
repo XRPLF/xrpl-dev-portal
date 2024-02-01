@@ -208,4 +208,4 @@ You can save bandwidth by [enabling compression on peer-to-peer communications](
         - [server_info method][] - General information about the server including sync status and how many historical ledger versions it has available on disk.
         - [get_counts method][] - Additional health information, especially how many objects of various types it holds in RAM.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -303,4 +303,4 @@ For information about how to revoke a master key pair you generated for your val
     - [validator_list_sites method][]
     - [validators method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

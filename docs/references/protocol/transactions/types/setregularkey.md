@@ -28,7 +28,7 @@ You can protect your account by assigning a regular key pair to it and using it 
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_SetRegularKey%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%226AA6F6EAAAB56E65F7F738A9A2A8A7525439D65BA990E9BA08F6F4B1C2D349B4%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field        | JSON Type | [Internal Type][] | Description                   |
@@ -43,4 +43,4 @@ For a tutorial on assigning a regular key pair to an account, see [Working with 
 
 For even greater security, you can use [multi-signing](../../../../concepts/accounts/multi-signing.md), but multi-signing requires additional XRP for the [transaction cost][] and [reserve](../../../../concepts/accounts/reserves.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -146,4 +146,4 @@ The process to exploit a vulnerable system follows a series of steps like the fo
     - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md)
     - [Serialization Format](../../../references/protocol/binary-format.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

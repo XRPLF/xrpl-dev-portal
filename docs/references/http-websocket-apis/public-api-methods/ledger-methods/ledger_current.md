@@ -107,4 +107,4 @@ A `ledger_hash` field is not provided, because the hash of the current ledger is
 
 * Any of the [universal error types][].
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

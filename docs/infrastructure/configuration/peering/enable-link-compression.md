@@ -20,7 +20,7 @@ To enable link compression on your server, complete the following steps:
 $ vim /etc/opt/ripple/rippled.cfg
 ```
 
-{% partial file="/_snippets/conf-file-location.md" /%}
+{% partial file="/docs/_snippets/conf-file-location.md" /%}
 
 ### 2. In the config file, add or uncomment the `[compression]` stanza.
 
@@ -46,4 +46,4 @@ After the restart, your server automatically uses link compression with other pe
 - [Capacity Planning](../../installation/capacity-planning.md)
 - [Peer Protocol](../../../concepts/networks-and-servers/peer-protocol.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

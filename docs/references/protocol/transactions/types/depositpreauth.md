@@ -30,7 +30,7 @@ A DepositPreauth transaction gives another account pre-approval to deliver payme
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fxrplcluster.com%2F&req=%7B%22id%22%3A%22example_DepositPreauth%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22CB1BF910C93D050254C049E9003DA1A265C107E0C8DE4A7CFF55FADFD39D5656%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 
@@ -49,4 +49,4 @@ This transaction has the following limitations:
 - Attempting to preauthorize an address that is not funded in the ledger fails with the result [`tecNO_TARGET`](../transaction-results/tec-codes.md).
 - Adding authorization adds a [DepositPreauth object](../../ledger-data/ledger-entry-types/depositpreauth.md) to the ledger, which counts toward the [owner reserve requirement](../../../../concepts/accounts/reserves.md#owner-reserves). If the sender of the transaction does not have enough XRP to pay for the increased reserve, the transaction fails with the result [`tecINSUFFICIENT_RESERVE`](../transaction-results/tec-codes.md). If the sender of the account is already at the maximum number of owned objects, the transaction fails with the result [`tecDIR_FULL`](../transaction-results/tec-codes.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

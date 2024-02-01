@@ -35,4 +35,4 @@ Unlike Bitcoin and many other cryptocurrencies, each new version of the XRP Ledg
 
 Institutions who send and receive value on behalf of many users can use [**Source Tags** and **Destination Tags**](../transactions/source-and-destination-tags.md) to distinguish payments from and to their customers while only using one (or a handful) of accounts in the XRP Ledger.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

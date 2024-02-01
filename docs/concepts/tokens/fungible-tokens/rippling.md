@@ -21,11 +21,11 @@ For non-issuing accounts, rippling can be undesirable because it lets other user
 
 "Rippling" occurs when more than one trust line is adjusted to make a payment. For example, if Alice owes Charlie money, and Alice also owes Bob money, then you could represent that in the XRP Ledger with trust lines like so:
 
-[{% inline-svg file="/img/noripple-01.svg" /%}](/img/noripple-01.svg "Charlie --($10)-- Alice -- ($20) -- Bob")
+[{% inline-svg file="/docs/img/noripple-01.svg" /%}](/docs/img/noripple-01.svg "Charlie --($10)-- Alice -- ($20) -- Bob")
 
 If Bob wants to pay $3 to Charlie, then he could say, "Alice, take $3 of the money you owe me, and pay it to Charlie." Alice transfers some of the debt from Bob to Charlie. In the end, the trust lines work out like so:
 
-[{% inline-svg file="/img/noripple-02.svg" /%}](/img/noripple-02.svg "Charlie --($13)-- Alice --($17)-- Bob")
+[{% inline-svg file="/docs/img/noripple-02.svg" /%}](/docs/img/noripple-02.svg "Charlie --($13)-- Alice --($17)-- Bob")
 
 We call this process, where two addresses pay each other by adjusting the balances of trust lines in between them, "rippling". This is a useful and important feature of the XRP Ledger. Rippling occurs when addresses are linked by trust lines that use the same currency code. The issuer does not need to be the same: in fact, larger chains always involve changing issuers.
 
@@ -39,17 +39,17 @@ An account can disable No Ripple on a single trust line, which can allow ripplin
 
 For example, imagine Emily has money issued by two different financial institutions, like so
 
-[{% inline-svg file="/img/noripple-03.svg" /%}](/img/noripple-03.svg "Charlie --($10)-- Institution A --($1)-- Emily --($100)-- Institution B --($2)-- Daniel")
+[{% inline-svg file="/docs/img/noripple-03.svg" /%}](/docs/img/noripple-03.svg "Charlie --($10)-- Institution A --($1)-- Emily --($100)-- Institution B --($2)-- Daniel")
 
 Now Charlie can pay Daniel by rippling through Emily's address. For example, if Charlie pays Daniel $10:
 
-[{% inline-svg file="/img/noripple-04.svg" /%}](/img/noripple-04.svg "Charlie --($0)-- Institution A --($11)-- Emily --($90)-- Institution B --($12)-- Daniel")
+[{% inline-svg file="/docs/img/noripple-04.svg" /%}](/docs/img/noripple-04.svg "Charlie --($0)-- Institution A --($11)-- Emily --($90)-- Institution B --($12)-- Daniel")
 
 This may surprise Emily, who does not know Charlie or Daniel. Even worse, if Institution A charges her higher fees to withdraw her money than Institution B, this could cost Emily money. The No Ripple flag exists to avoid this scenario. If Emily sets it on both trust lines, then payments cannot ripple through her address using those two trust lines.
 
 For example:
 
-[{% inline-svg file="/img/noripple-05.svg" /%}](/img/noripple-05.svg "Charlie --($10)-- Institution A --($1, No Ripple)-- Emily --($100, No Ripple)-- Institution B --($2)-- Daniel")
+[{% inline-svg file="/docs/img/noripple-05.svg" /%}](/docs/img/noripple-05.svg "Charlie --($10)-- Institution A --($1, No Ripple)-- Emily --($100, No Ripple)-- Institution B --($2)-- Daniel")
 
 Now the above scenario, where Charlie pays Daniel while rippling through Emily's address, is no longer possible.
 
@@ -57,7 +57,7 @@ Now the above scenario, where Charlie pays Daniel while rippling through Emily's
 
 The No Ripple flag makes certain paths invalid, so that they cannot be used to make payments. A path is considered invalid if and only if it enters **and** exits an address node through trust lines where No Ripple has been enabled for that address.
 
-[{% inline-svg file="/img/noripple-06.svg" /%}](/img/noripple-06.svg "Diagram demonstrating that No Ripple has to be set on both trust lines by the same address to do anything")
+[{% inline-svg file="/docs/img/noripple-06.svg" /%}](/docs/img/noripple-06.svg "Diagram demonstrating that No Ripple has to be set on both trust lines by the same address to do anything")
 
 
 ## The Default Ripple Flag
@@ -97,4 +97,4 @@ Using the [HTTP / WebSocket APIs](../../../references/http-websocket-apis/index.
     - [AccountRoot Flags](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags)
     - [RippleState (trust line) Flags](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestate-flags)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

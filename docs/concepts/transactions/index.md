@@ -20,7 +20,7 @@ Every signed transaction has a unique `"hash"` that identifies it. The server pr
 
 The transaction hash can be used as a "proof of payment" since anyone can [look up the transaction by its hash](finality-of-results/look-up-transaction-results.md) to verify its final status.
 
-{% raw-partial file="/_snippets/setfee_uniqueness_note.md" /%}
+{% raw-partial file="/docs/_snippets/setfee_uniqueness_note.md" /%}
 
 
 
@@ -221,4 +221,4 @@ Example response from the `tx` command:
     - [submit method][]
     - [submit_multisigned method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

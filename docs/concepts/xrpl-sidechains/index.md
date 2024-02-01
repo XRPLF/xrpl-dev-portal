@@ -68,4 +68,4 @@ You should not run a Witness Server if you are not experienced (or do not have a
 
 No. These FAQs are intended to provide general guidance and do not constitute technical, financial, or legal advice.  These FAQs should not be used as a substitute for professional advice tailored to one’s specific circumstances.  The blockchain and digital asset landscape is complex and constantly changing, which necessitates staying updated and seeking expert advice.  It is recommended that those engaging with a Sidechain regularly check official resources such as governmental and regulatory body websites.  Nonetheless, consulting with legal professionals who specialize in blockchain, and cryptocurrency is the most reliable way to get accurate and personalized advice.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

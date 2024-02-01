@@ -37,4 +37,4 @@ labels:
 
 取引所など、多くのユーザのために価値の送受信を行う組織は、[**送信元タグ**と**宛先タグ**](../transactions/source-and-destination-tags.md)を使用することで、XRP Ledgerのアカウントを1つだけ(または少数)使用するだけで、ユーザの支払いを区別することができます。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -52,4 +52,4 @@ If nothing went wrong when submitting and applying the transaction locally, the 
 
 **Note:** A successful result at this stage does not indicate that the transaction has completely succeeded; only that it was successfully applied to the provisional version of the ledger kept by the local server. Failed results at this stage are also provisional and may change. See [Finality of Results](../../../../concepts/transactions/finality-of-results/index.md) for details.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

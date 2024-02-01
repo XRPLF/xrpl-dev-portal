@@ -37,8 +37,8 @@ XRP Ledgerでは、容量を節約するために、一つのアカウントで�
 
 [NFTokenBurn トランザクション][]を使用して、自分が所有する`NFToken`を破棄することができます。発行者が`tfBurnable`フラグを有効にしてトークンを発行した場合、発行者は現在の所有者に関係なくトークンを破棄することが可能です。(例えば、あるイベントのチケットを表すトークンである場合、そのチケットをある時点で消費するといった場合に便利です)。
 
-![The NFT Lifecycle](/img/nft-lifecycle.png "NFT Lifecycle Image")
+![The NFT Lifecycle](/docs/img/nft-lifecycle.png "NFT Lifecycle Image")
 
 `NFToken`オブジェクトの転送に関する詳細は、[XRP Ledger上でNFTokenを売買する](trading.md)をご覧ください。
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

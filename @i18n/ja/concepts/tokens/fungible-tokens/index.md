@@ -91,4 +91,4 @@ labels:
     - [RippleStateオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) - 台帳の状態データのうち、トラストラインのデータ形式
     - [TrustSetトランザクション][] - トラストラインを作成・変更するトランザクション
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

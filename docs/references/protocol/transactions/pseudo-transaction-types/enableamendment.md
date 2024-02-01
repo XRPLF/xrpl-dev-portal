@@ -40,7 +40,7 @@ A server only enables amendments when these conditions are met:
 ```
 
 
-{% partial file="/_snippets/pseudo-tx-fields-intro.md" /%}
+{% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field            | JSON Type | [Internal Type][] | Description               |
@@ -59,4 +59,4 @@ A `Flags` value of `0` (no flags) or an omitted `Flags` field indicates that the
 | `tfGotMajority`  | `0x00010000` | 65536         | Support for this amendment increased to at least 80% of trusted validators starting with this ledger version. |
 | `tfLostMajority` | `0x00020000` | 131072        | Support for this amendment decreased to less than 80% of trusted validators starting with this ledger version. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

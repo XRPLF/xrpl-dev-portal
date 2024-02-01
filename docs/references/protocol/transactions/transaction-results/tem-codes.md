@@ -52,4 +52,4 @@ These codes indicate that the transaction was malformed, and cannot succeed acco
 | `temUNKNOWN`                  | Used internally only. This code should never be returned. |
 | `temDISABLED`                 | The transaction requires logic that is disabled. Typically this means you are trying to use an [amendment](../../../../concepts/networks-and-servers/amendments.md) that is not enabled for the current ledger. |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

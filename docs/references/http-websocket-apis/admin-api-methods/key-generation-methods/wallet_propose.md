@@ -201,4 +201,4 @@ For more information about multi-signing and signer lists, see [Multi-Signing](.
 * `invalidParams` - One or more fields are specified incorrectly.
 * `badSeed` - The request specified a disallowed seed value (in the `passphrase`, `seed`, or `seed_hex` fields), such as an empty string, or a string resembling a XRP Ledger address.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

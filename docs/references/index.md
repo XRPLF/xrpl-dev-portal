@@ -20,7 +20,7 @@ Use these libraries to access the XRP Ledger from your programming language of c
 
 {% /card-grid %}
 
-[See more...](/references/client-libraries/)
+[See more...](/docs/references/client-libraries/)
 
 ## XRP Ledger Protocol Reference
 
@@ -54,8 +54,8 @@ Use these libraries to access the XRP Ledger from your programming language of c
 
 The xrp-ledger.toml file provides machine-readable information about your usage of the XRP Ledger to other XRP Ledger users.
 
-- [**Serving the File**](/references/xrp-ledger-toml/#serving-the-file)
-- [**Contents**](/references/xrp-ledger-toml/#contents)
-- [**CORS Setup**](/references/xrp-ledger-toml/#cors-setup)
-- [**Domain Verification**](/references/xrp-ledger-toml/#domain-verification)
-- [**Account Verification**](/references/xrp-ledger-toml/#account-verification)
+- [**Serving the File**](/docs/references/xrp-ledger-toml/#serving-the-file)
+- [**Contents**](/docs/references/xrp-ledger-toml/#contents)
+- [**CORS Setup**](/docs/references/xrp-ledger-toml/#cors-setup)
+- [**Domain Verification**](/docs/references/xrp-ledger-toml/#domain-verification)
+- [**Account Verification**](/docs/references/xrp-ledger-toml/#account-verification)

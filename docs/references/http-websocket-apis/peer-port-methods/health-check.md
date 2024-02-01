@@ -110,4 +110,4 @@ The `info` object may contain the following fields:
 
 For guidance interpreting the results of the health check, see [Health Check Interventions](../../../infrastructure/troubleshooting/health-check-interventions.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

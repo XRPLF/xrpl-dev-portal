@@ -26,7 +26,7 @@ Cancels an unredeemed Check, removing it from the ledger without sending any mon
 
 [Query example transaction. >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_CheckCancel%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22D3328000315C6DCEC1426E4E549288E3672752385D86A40D56856DBD10382953%22%2C%22binary%22%3Afalse%7D)
 
-{% raw-partial file="/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | Field       | JSON Type | [Internal Type][] | Description                    |
@@ -38,4 +38,4 @@ Cancels an unredeemed Check, removing it from the ledger without sending any mon
 - If the object identified by the `CheckID` does not exist or is not a Check, the transaction fails with the result `tecNO_ENTRY`.
 - If the Check is not expired and the sender of the CheckCancel transaction is not the source or destination of the Check, the transaction fails with the result `tecNO_PERMISSION`.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

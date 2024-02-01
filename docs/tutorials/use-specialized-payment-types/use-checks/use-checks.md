@@ -12,7 +12,7 @@ labels:
 
 Checks in the XRP Ledger authorize another account to claim funds later, similar to how personal paper checks work.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
 
 
 {% child-pages /%}

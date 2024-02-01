@@ -182,4 +182,4 @@ To use the script:
         - [log_level method][]
         - [server_info method][]
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

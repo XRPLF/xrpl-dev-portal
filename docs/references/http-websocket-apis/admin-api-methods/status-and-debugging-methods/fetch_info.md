@@ -165,4 +165,4 @@ The fields describing a fetch in progress are subject to change without notice. 
 - Any of the [universal error types][].
 - `reportingUnsupported` - ([Reporting Mode][] servers only) This method is not available in Reporting Mode.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

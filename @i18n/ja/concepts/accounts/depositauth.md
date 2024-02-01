@@ -24,7 +24,7 @@ Deposit Authorizationは、XRP Ledgerの[アカウント](accounts.md)のオプ�
 
 Deposit Authorizationフラグにより、XRP Ledgerを使用するユーザーが分散型レジャーの基本的な特性を変えずにこのような規制に準拠するためのオプションを採用しました。Deposit Authorizationが有効な場合、アカウントはトランザクションを送信することで明示的に承認した資金のみを受領できます。Deposit Authorizationを使用するアカウントの所有者は、アカウントに資金を入金するトランザクションを送信する _前に_ 、資金の送金元の確認に必要なデューディリジェンス（確認調査）を実施できます。
 
-Deposit Authorizationを有効にすると、[Checks](../../resources/known-amendments.md#checks)、[Escrow](../payment-types/escrow.md)、および[Payment Channel](../../resources/known-amendments.md#paychan)から資金を受領できます。このような「二段階」トランザクションモデルでは、最初に送金元は資金の送金を承認するトランザクションを送信し、次に送金先は資金受領を承認するトランザクションを送信します。
+Deposit Authorizationを有効にすると、[Checks](/resources/known-amendments.md#checks)、[Escrow](../payment-types/escrow.md)、および[Payment Channel](/resources/known-amendments.md#paychan)から資金を受領できます。このような「二段階」トランザクションモデルでは、最初に送金元は資金の送金を承認するトランザクションを送信し、次に送金先は資金受領を承認するトランザクションを送信します。
 
 Deposit Authorizationが有効になっている場合に[Paymentトランザクション][]から資金を受領するには、このような支払の送金元を[事前承認](#事前承認)する必要があります。_（[DepositPreauth Amendment][]により追加されました。）_
 
@@ -60,7 +60,7 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 以下の表に、トランザクションタイプ別にDepositAuthが有効または無効な状態での入金の可否をまとめました。
 
-{% partial file="/_snippets/depositauth-semantics-table.md" /%}
+{% partial file="/docs/_snippets/depositauth-semantics-table.md" /%}
 
 
 
@@ -114,6 +114,6 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 
 
-[DepositPreauth Amendment]: ../../resources/known-amendments.md#depositpreauth
+[DepositPreauth Amendment]: /resources/known-amendments.md#depositpreauth
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

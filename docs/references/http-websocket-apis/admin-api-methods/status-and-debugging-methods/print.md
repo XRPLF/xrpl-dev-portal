@@ -239,4 +239,4 @@ The response follows the [standard format][]. Additional fields in the result de
 
 * Any of the [universal error types][].
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

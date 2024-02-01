@@ -137,4 +137,4 @@ The following types of changes are **non-breaking changes** and may occur withou
 - Adding a new field to a request or response, not including positional parameters.
 - Adding a new API method.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

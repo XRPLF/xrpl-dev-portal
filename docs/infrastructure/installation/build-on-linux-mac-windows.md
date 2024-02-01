@@ -14,4 +14,4 @@ Building `rippled` across various platforms such as Windows, Linux, or macOS req
 
 To continue, proceed to [the latest `rippled` build instructions on GitHub](https://github.com/XRPLF/rippled/blob/develop/BUILD.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

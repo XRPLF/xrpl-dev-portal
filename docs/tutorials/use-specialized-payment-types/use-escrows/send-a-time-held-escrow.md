@@ -45,7 +45,7 @@ print(release_date_ripple)
 
 [Sign and submit](../../../concepts/transactions/index.md#signing-and-submitting-transactions) an [EscrowCreate transaction][]. Set the `FinishAfter` field of the transaction to the time when the held payment should be released. Omit the `Condition` field to make time the only condition for releasing the held payment. Set the `Destination` to the recipient, which may be the same address as the sender. Set the `Amount` to the total amount of [XRP, in drops][], to escrow.
 
-{% partial file="/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
 Request:
 
@@ -72,7 +72,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 3. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 4. Confirm that the escrow was created
 
@@ -134,7 +134,7 @@ Response:
 
 If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-escrow.md) instead.
 
-{% partial file="/_snippets/secret-key-warning.md" /%} 
+{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
 
 Request:
 
@@ -160,7 +160,7 @@ Take note of the transaction's identifying `hash` value so you can check its fin
 
 ## 7. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 8. Confirm final result
 
@@ -205,4 +205,4 @@ Response:
     - [tx method][]
     - [Escrow ledger object](../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

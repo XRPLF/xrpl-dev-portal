@@ -14,7 +14,7 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 
 This tutorial explains how to send a direct XRP Payment using `xrpl.js` for JavaScript, `xrpl-py` for Python, `xrpl4j` for Java or `XRPL_PHP` for PHP. First, we step through the process with the [XRP Ledger Testnet](../../concepts/networks-and-servers/parallel-networks.md). Then, we compare that to the additional requirements for doing the equivalent in production.
 
-**Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples) for a complete version of the code used in this tutorial.
+**Tip:** Check out the [Code Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples) for a complete version of the code used in this tutorial.
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ To transact on the XRP Ledger, you need an address and secret key, and some XRP.
 
 The secret key shown here is for example only. For development purposes, you can get your own credentials, pre-funded with XRP, on the Testnet using the following interface:
 
-{% partial file="/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 When you're building production-ready software, you should use an existing account, and manage your keys using a [secure signing configuration](../../concepts/transactions/secure-signing.md).
 
@@ -91,7 +91,7 @@ The following code connects to a public Testnet servers:
 
 For this tutorial, click the following button to connect:
 
-{% partial file="/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. Prepare Transaction
@@ -293,7 +293,7 @@ Most transactions are accepted into the next ledger version after they're submit
 
 {% /tabs %}
 
-{% partial file="/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
 ### 7. Check Transaction Status
@@ -485,4 +485,4 @@ After completing this tutorial, you may want to try the following:
 - Learn how [Transaction Metadata](../../references/protocol/transactions/metadata.md) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](../../concepts/payment-types/index.md) such as Escrows and Payment Channels.
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

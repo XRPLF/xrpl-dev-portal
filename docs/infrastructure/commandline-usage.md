@@ -86,7 +86,7 @@ The following options determine which ledger to load first when starting up. The
 | Option                | Description                                          |
 |:----------------------|:-----------------------------------------------------|
 | `--ledger {LEDGER}`   | Load the ledger version identified by `{LEDGER}` (either a ledger hash or a ledger index) as the initial ledger. The specified ledger version must be in the server's ledger store. |
-| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided {% repo-link path="content/_api-examples/rippled-cli/ledger-file.json" %}`ledger-file.json`{% /repo-link %}. |
+| `--ledgerfile {FILE}` | Load the ledger version from the specified `{FILE}`, which must contain a complete ledger in JSON format. For an example of such a file, see the provided {% repo-link path="_api-examples/rippled-cli/ledger-file.json" %}`ledger-file.json`{% /repo-link %}. |
 | `--load`              | Use only the ledger store on disk when loading the initial ledger. |
 | `--net`               | Use only data from the network when loading the initial ledger. |
 | `--replay`            | Use with `--ledger` to replay a specific ledger. Your server must have the ledger in question and its direct ancestor already in the ledger store. Using the previous ledger as a base, the server processes all the transactions in the specified ledger, resulting in a re-creation of the specified ledger. With a debugger, you can add breakpoints to analyze specific transaction processing logic. |
@@ -183,4 +183,4 @@ Certain manual unit tests accept an argument. You can provide the argument with 
 |:------------------------|:---------------------------------------------------|
 | `--unittest-arg {ARG}`  | Provide the argument `{ARG}` to the unit test(s) currently being run. Each unit test that accepts arguments defines its own argument format.  |
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

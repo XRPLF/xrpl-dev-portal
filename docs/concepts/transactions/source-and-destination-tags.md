@@ -50,4 +50,4 @@ For an XRP Ledger address that may receive payments intended for several custome
 - [Require Destination Tags](../../tutorials/manage-account-settings/require-destination-tags.md)
 - [Payment Types](../payment-types/index.md)
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

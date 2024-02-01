@@ -58,7 +58,7 @@ The following examples show how to cancel a Check.
 
 ## 2. Sign the CheckCancel transaction
 
-{% partial file="/_snippets/tutorial-sign-step.md" /%} 
+{% partial file="/docs/_snippets/tutorial-sign-step.md" /%} 
 
 ### Example Request
 
@@ -92,7 +92,7 @@ The following examples show how to cancel a Check.
 
 ## 3. Submit the signed CheckCancel transaction
 
-{% partial file="/_snippets/tutorial-submit-step.md" /%} 
+{% partial file="/docs/_snippets/tutorial-submit-step.md" /%} 
 
 ### Example Request
 
@@ -125,7 +125,7 @@ The following examples show how to cancel a Check.
 
 ## 4. Wait for validation
 
-{% partial file="/_snippets/wait-for-validation.md" /%} 
+{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. Confirm final result
 
@@ -162,4 +162,4 @@ Look for a `DeletedNode` object in the transaction metadata with `"LedgerEntryTy
 
 {% /tabs %}
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

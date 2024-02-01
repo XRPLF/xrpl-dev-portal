@@ -259,4 +259,4 @@ Each object in the `transactions` array of `queue_data`, if present, may contain
 
 [fee levels]: ../../../../concepts/transactions/transaction-cost.md#fee-levels
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

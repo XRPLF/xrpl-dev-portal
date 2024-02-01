@@ -20,9 +20,9 @@ This example shows how to:
 5. Get a list of offers for a particular NFT.
 6. Cancel an offer.
 
-[![Quickstart form with NFT transfer fields](/img/quickstart-py15.png)](/img/quickstart-py15.png)
+[![Quickstart form with NFT transfer fields](/docs/img/quickstart-py15.png)](/docs/img/quickstart-py15.png)
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
 
 # Usage
 
@@ -44,7 +44,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
         3. Click **Get Operational Account**.
         4. Click **Get Get Op Account Info**.
 
-[![Form with account information](/img/quickstart-py16.png)](/img/quickstart-py16.png)
+[![Form with account information](/docs/img/quickstart-py16.png)](/docs/img/quickstart-py16.png)
 
 ## Create a Sell Offer
 
@@ -63,7 +63,7 @@ To create a NFT sell offer:
 
 The important piece of information in the response is the NFT Offer Index, labeled as `nft_offer_index`, which you use to accept the sell offer.
 
-[![NFT Sell Offer](/img/quickstart-py17.png)](/img/quickstart-py17.png)
+[![NFT Sell Offer](/docs/img/quickstart-py17.png)](/docs/img/quickstart-py17.png)
 
 ## Accept Sell Offer
 
@@ -76,7 +76,7 @@ To accept an available sell offer:
 3. Click **Get Standby Account Info** and **Get Op Account Info** to update the XRP balances.
 4. Click **Get NFTs** for each account to see that the NFT has moved from the Standby account to the Operational account.
 
-[![Accept Sell Offer](/img/quickstart-py18.png)](/img/quickstart-py18.png)
+[![Accept Sell Offer](/docs/img/quickstart-py18.png)](/docs/img/quickstart-py18.png)
 
 ## Create a Buy Offer
 
@@ -92,7 +92,7 @@ To create an offer to buy an NFT:
 6. On the Operational side, enter the **NFT ID**.
 7. Click **Get Offers** to view the offer and copy the `nft_offer_index`.
 
-[![NFT Buy Offer](/img/quickstart-py19.png)](/img/quickstart-py19.png)
+[![NFT Buy Offer](/docs/img/quickstart-py19.png)](/docs/img/quickstart-py19.png)
 
 ## Accept a Buy Offer
 
@@ -103,7 +103,7 @@ To accept an offer to buy an NFT:
 3. Click **Get Standby Account Info** and **Get Op Account Info** to update the XRP balances.
 4. Click **Get NFTs** for both accounts to see that the NFT has moved from the Operational account to the Standby account.
 
-[![Accept Buy Offer](/img/quickstart-py20.png)](/img/quickstart-py20.png)
+[![Accept Buy Offer](/docs/img/quickstart-py20.png)](/docs/img/quickstart-py20.png)
 
 ## Get Offers
 
@@ -112,7 +112,7 @@ To list the buy and sell offers associated with an NFT:
 1. Enter the **NFT ID**.
 2. Click **Get Offers**.
 
-[![Get offers](/img/quickstart-py21.png)](/img/quickstart-py21.png)
+[![Get offers](/docs/img/quickstart-py21.png)](/docs/img/quickstart-py21.png)
 
 ## Cancel Offer
 
@@ -121,11 +121,11 @@ To cancel a buy or sell offer that you have created:
 1. Enter the **NFT Offer Index**.
 2. Click **Cancel Offer**.
 
-[![Cancel offer](/img/quickstart-py22.png)](/img/quickstart-py22.png)
+[![Cancel offer](/docs/img/quickstart-py22.png)](/docs/img/quickstart-py22.png)
 
 # Code Walkthrough
 
-You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
+You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive to try each of the samples in your own browser.
 
 ## mod4.py
 This module contains the new methods `create_sell_offer`, `create_buy_offer`, `accept_sell_offer`, `accept_buy_offer`, `get_offers`, and `cancel_offer`.

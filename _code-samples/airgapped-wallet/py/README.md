@@ -65,7 +65,7 @@ sudo apt-get install python3.8 python3-pip
 ```
 **Website**: https://www.python.org/downloads/source/
 
-2. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/airgapped-wallet/py) directory
+2. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/airgapped-wallet/py) directory
 
 3. Import all the modules required by running:
 ```
@@ -94,7 +94,7 @@ sudo apt-get install python3.8 python3-pip
 ```
 **Website**: https://www.python.org/downloads/source/
 
-2. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/airgapped-wallet/py) directory
+2. Clone all the files under the [`airgapped-wallet`](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/airgapped-wallet/py) directory
 
 3. Import all the modules required by running:
 ```

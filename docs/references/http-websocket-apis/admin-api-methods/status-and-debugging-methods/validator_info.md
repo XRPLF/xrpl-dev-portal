@@ -126,4 +126,4 @@ For more information on validator tokens and key rotation, see the [validator-ke
 - Any of the [universal error types][].
 - `invalidParams` - The server returns this error with `"error_message" : "not a validator"` if the server is not [configured as a validator](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md).
 
-{% raw-partial file="/_snippets/common-links.md" /%}
+{% raw-partial file="/docs/_snippets/common-links.md" /%}
