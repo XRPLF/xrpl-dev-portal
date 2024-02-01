@@ -56,12 +56,13 @@ export default function CodeSamples() {
             <div className="row col-md-12 px-0" id="code_samples_list">
               {codeSamples.map(card => (
                 <a
+                  key={card.href}
                   className={`card cardtest col-12 col-lg-5 ${card.langs.join(' ')}`}
                   href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`}
                 >
                   <div className="card-header">
                     {card.langs.map(lang => (
-                      <span className="circled-logo">
+                      <span className="circled-logo" key={lang}>
                         <img alt={lang} src={langIcons[lang]} />
                       </span>
                     ))}

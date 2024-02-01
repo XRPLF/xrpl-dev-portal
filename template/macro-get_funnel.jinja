@@ -1,9 +1,0 @@
-{% macro get_funnel(pages, page) -%}
-{%- set concepts = pages|selectattr('html', 'defined_and_equalto', 'concepts.html')|first -%}
-{%- set tutorials = pages|selectattr('html', 'defined_and_equalto', 'tutorials.html')|first -%}
-{%- set references = pages|selectattr('html', 'defined_and_equalto', 'references.html')|first -%}
-{%- if concepts.is_ancestor_of(page.html) -%}Concepts
-{%- elif tutorials.is_ancestor_of(page.html) -%}Tutorials
-{%- elif references.is_ancestor_of(page.html) -%}References
-{%- else -%}Other{%- endif -%}
-{%- endmacro %}

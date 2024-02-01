@@ -77,8 +77,6 @@ export default function Impact() {
           <div>
             {/* Large */}
             <div className="col d-none d-lg-block align-self-center">
-              {/* <div className="mt-10" id="map-dark" />
-              <div className="mt-10" id="map-light" /> */}
               {View}
             </div>
           </div>
@@ -144,7 +142,7 @@ export default function Impact() {
               <div className="d-flex flex-column-reverse">
                 <h2 className="h4 h2-sm mb-10-until-sm mb-8-sm">
                   {translate(
-                    "Featured companies &amp; projects running on the XRP Ledger."
+                    "Featured companies & projects running on the XRP Ledger."
                   )}
                 </h2>
                 <h6 className="eyebrow mb-3">

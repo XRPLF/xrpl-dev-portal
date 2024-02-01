@@ -67,7 +67,7 @@
           href: https://learn.xrpl.org/
           external: true
         - label: XRPL Brand Kit
-          href: /static/XRPL_Brand_Kit.zip
+          href: /XRPL_Brand_Kit.zip
     - group: Current Status
       items:
         - label: Ledger Explorer

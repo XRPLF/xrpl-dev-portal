@@ -41,8 +41,6 @@ XRPL Dev Portalでは、開発者が開発を開始するためのサンプル�
 - `shared/` - Configuration files for some dependencies like CodeMirror.
 - `static/` - Static files used by the site's templates and theme.
 - `styles/` - SCSS source files for custom CSS.
-- `template/` - **DEPRECATED** Old template files.
-- `tool/` - **DEPRECATED** Old scripts and tools.
 - `redirects.yaml` - Definitions of redirects from old site URLs to current paths.
 - `redocly.yaml` - Main config file for the site.
 - `sidebars.yaml` - Defines sidebars for the Documentation and Resources sections.

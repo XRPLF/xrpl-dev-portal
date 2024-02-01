@@ -395,7 +395,7 @@ export default function XrpOverview() {
                     <h6 className="fs-4-5">{translate("Hardware Wallets")}</h6>
                   </li>
                   {hardwallets.map((wallet) => (
-                    <li className="nav-item">
+                    <li className="nav-item" key={wallet.id}>
                       <a
                         className="nav-link external-link"
                         href={wallet.href}

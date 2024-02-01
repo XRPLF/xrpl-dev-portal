@@ -71,7 +71,7 @@ theme:
             href: https://learn.xrpl.org/
             external: true
           - label: XRPL Brand Kit
-            href: https://xrpl.org/XRPL_Brand_Kit.zip
+            href: /XRPL_Brand_Kit.zip
             external: true
           - label: Ledger Explorer
             href: https://livenet.xrpl.org/
