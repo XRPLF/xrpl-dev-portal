@@ -1,5 +1,4 @@
 - group: Blog
-  page: index.md
   expanded: true
   items:
     - group: '2024'
