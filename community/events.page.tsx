@@ -5,9 +5,10 @@ const moment = require("moment");
 
 export const frontmatter = {
   seo: {
-    title: 'Events',
-    description: "Find the XRPL Community around the world and join these events to see what's happening.",
-  }
+    title: "Events",
+    description:
+      "Find the XRPL Community around the world and join these events to see what's happening.",
+  },
 };
 
 function categorizeDates(arr) {
@@ -603,6 +604,17 @@ const events = [
     end_date: "January 31, 2024",
   },
   {
+    name: "Cyprus Tech Odyssey: XRPL Hackathon 2024",
+    description:
+      "Cyprus Tech Odyssey: XRPL Hackathon 2024 is a collaborative initiative between Ripple and the University of Nicosia (UNIC). This unique event promises a blend of insightful discussions and hands-on experiences, all centered around the transformative potential of the XRP Ledger (XRPL).",
+    type: "hackathon",
+    link: "https://www.unic.ac.cy/iff/cytechodyssey24/#TechOdyssey2024",
+    location: "University of Nicosia,Cyprus",
+    date: "January 18 - 20, 2024",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "January 20, 2024",
+  },
+  {
     name: "XRP Ledger Zone ETHDenver",
     description:
       "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
@@ -610,10 +622,9 @@ const events = [
     link: "http://xrplzone-ethdenver.splashthat.com",
     location: "Denver, Colorado",
     date: "February 27, 2024",
-    image: require("../static/img/events/XRPLZone.png.png"),
+    image: require("../static/img/events/XRPLZone.png"),
     end_date: "February 27, 2024",
   },
-  
 ];
 
 export default function Events() {
@@ -826,7 +837,7 @@ export default function Events() {
           </div>
           {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info-session  */}
           <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
-            {filteredUpcoming.map((event,i) => (
+            {filteredUpcoming.map((event, i) => (
               <a
                 key={event.name + i}
                 className={`event-card ${event.type}`}

@@ -114,6 +114,18 @@ const events = [
     start_date: "April 12, 2024",
   },
   {
+    name: "Cyprus Tech Odyssey: XRPL Hackathon 2024",
+    description:
+      "Cyprus Tech Odyssey: XRPL Hackathon 2024 is a collaborative initiative between Ripple and the University of Nicosia (UNIC). This unique event promises a blend of insightful discussions and hands-on experiences, all centered around the transformative potential of the XRP Ledger (XRPL).",
+    type: "hackathon",
+    link: "https://www.unic.ac.cy/iff/cytechodyssey24/#TechOdyssey2024",
+    location: "University of Nicosia,Cyprus",
+    date: "January 18 - 20, 2024",
+    image: require("../static/img/events/Hackathons.png"),
+    start_date: "January 20, 2024",
+    end_date: "January 20, 2024",
+  },
+  {
     name: "Consensus",
     description:
       "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
