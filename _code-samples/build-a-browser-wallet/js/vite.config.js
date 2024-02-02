@@ -1,6 +1,5 @@
 import { defineConfig, loadEnv } from 'vite';
 
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill';
 import polyfillNode from 'rollup-plugin-polyfill-node';
 
 const viteConfig = ({ mode }) => {
@@ -14,12 +13,6 @@ const viteConfig = ({ mode }) => {
                 define: {
                     global: 'globalThis',
                 },
-                plugins: [
-                    NodeGlobalsPolyfillPlugin({
-                        process: true,
-                        buffer: true,
-                    }),
-                ],
             },
         },
         build: {
@@ -29,11 +22,6 @@ const viteConfig = ({ mode }) => {
         },
         resolve: {
             alias: {
-                events: 'events',
-                crypto: 'crypto-browserify',
-                stream: 'stream-browserify',
-                http: 'stream-http',
-                https: 'https-browserify',
                 ws: 'xrpl/dist/npm/client/WSWrapper',
             },
         },
