@@ -5,9 +5,10 @@ const moment = require("moment");
 
 export const frontmatter = {
   seo: {
-    title: 'Events',
-    description: "Find the XRPL Community around the world and join these events to see what's happening.",
-  }
+    title: "Events",
+    description:
+      "Find the XRPL Community around the world and join these events to see what's happening.",
+  },
 };
 
 function categorizeDates(arr) {
@@ -602,6 +603,50 @@ const events = [
     image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
     end_date: "January 31, 2024",
   },
+  {
+    name: "Cyprus Tech Odyssey: XRPL Hackathon 2024",
+    description:
+      "Cyprus Tech Odyssey: XRPL Hackathon 2024 is a collaborative initiative between Ripple and the University of Nicosia (UNIC). This unique event promises a blend of insightful discussions and hands-on experiences, all centered around the transformative potential of the XRP Ledger (XRPL).",
+    type: "hackathon",
+    link: "https://www.unic.ac.cy/iff/cytechodyssey24/#TechOdyssey2024",
+    location: "University of Nicosia,Cyprus",
+    date: "January 18 - 20, 2024",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "January 20, 2024",
+  },
+  {
+    name: "Building on the XRP Ledger - 2-day Workshop",
+    description:
+      "Participants will have the opportunity to gain hands-on experience and valuable knowledge in building real-world assets on the XRPL blockchain. This two-day, free training program is designed for developers who have a keen interest in learning about XRPL.",
+    type: "meetup",
+    link: "https://www.xrpl-commons.org/training-jan-2024#learn",
+    location: "XRPL Commons HQ, Paris, France",
+    date: "January 25 - 26, 2024",
+    image: require("../static/img/events/paris.png"),
+    end_date: "January 26, 2024",
+  },
+  {
+    name: "XRP Ledger Zone ETHDenver",
+    description:
+      "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+    type: "zone",
+    link: "http://xrplzone-ethdenver.splashthat.com",
+    location: "Denver, Colorado",
+    date: "February 27, 2024",
+    image: require("../static/img/events/XRPLZone.png"),
+    end_date: "February 27, 2024",
+  },
+  {
+    name: "EasyA Hackathon",
+    description:
+      "Smart Contracts, Smarter XRP Ledger! Join us and be among the the first to build the next big thing and learn more about the upcoming EVM integration with XRP Ledger. ",
+    type: "hackathon",
+    link: "https://easyaxripple.eventbrite.co.uk/?aff=xrplevents",
+    location: "London",
+    date: "April 13 - 14, 2024",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "April 14, 2024",
+  },
 ];
 
 export default function Events() {
@@ -814,7 +859,7 @@ export default function Events() {
           </div>
           {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info-session  */}
           <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
-            {filteredUpcoming.map((event,i) => (
+            {filteredUpcoming.map((event, i) => (
               <a
                 key={event.name + i}
                 className={`event-card ${event.type}`}
