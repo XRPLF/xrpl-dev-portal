@@ -615,6 +615,17 @@ const events = [
     end_date: "January 20, 2024",
   },
   {
+    name: "Building on the XRP Ledger - 2-day Workshop",
+    description:
+      "Participants will have the opportunity to gain hands-on experience and valuable knowledge in building real-world assets on the XRPL blockchain. This two-day, free training program is designed for developers who have a keen interest in learning about XRPL.",
+    type: "meetup",
+    link: "https://www.xrpl-commons.org/training-jan-2024#learn",
+    location: "XRPL Commons HQ, Paris, France",
+    date: "January 25 - 26, 2024",
+    image: require("../static/img/events/paris.png"),
+    end_date: "January 26, 2024",
+  },
+  {
     name: "XRP Ledger Zone ETHDenver",
     description:
       "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
@@ -624,6 +635,17 @@ const events = [
     date: "February 27, 2024",
     image: require("../static/img/events/XRPLZone.png"),
     end_date: "February 27, 2024",
+  },
+  {
+    name: "EasyA Hackathon",
+    description:
+      "Smart Contracts, Smarter XRP Ledger! Join us and be among the the first to build the next big thing and learn more about the upcoming EVM integration with XRP Ledger. ",
+    type: "hackathon",
+    link: "https://easyaxripple.eventbrite.co.uk/?aff=xrplevents",
+    location: "London",
+    date: "April 13 - 14, 2024",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "April 14, 2024",
   },
 ];
 
