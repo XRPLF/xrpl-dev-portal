@@ -23,7 +23,7 @@ What makes a validator _different_ is that it also issues validation messages, w
 
 Issuing validation messages does not automatically give your validator a say in the consensus process, so the system is not vulnerable to a [Sybil attack](https://en.wikipedia.org/wiki/Sybil_attack). Other servers ignore your validation messages unless they add your validator to their Unique Node List (UNL). If your validator is included in a UNL, it is a _trusted_ validator and its proposals are considered in the consensus process by the servers that trust it.
 
-Even if your validator isn't a _trusted_ validator, it stills plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
+Even if your validator isn't a _trusted_ validator, it still plays an important role in the overall health of the network. These validators help set the standard that trusted validators are measured against. For example, if a trusted validator is disagreeing with a lot of these validators that aren't listed in UNLs, that might indicate a problem.
 
 **Warning:** Validators should not be accessible to the public. Do not allow public WebSocket access to your validator server or any other form of public access.
 

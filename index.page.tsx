@@ -52,7 +52,7 @@ const cards2 = [
   },
   {
     href: '/docs/concepts/payment-types/payment-channels/',
-    title: "Payment <br class='until-sm'/>Channels",
+    title: "Payment Channels",
     description: 'Batched micropayments with unlimited speed, secured with XRP',
   },
   {
