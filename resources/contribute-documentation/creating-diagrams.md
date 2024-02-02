@@ -14,7 +14,7 @@ Theme-aware recoloring uses a single source file in SVG format for diagrams, and
 
 To include a theme-aware diagram in a document, use the `include_svg` filter with syntax such as the following:
 
-```jinja
+```{% process=false %}
 [{% inline-svg file="/docs/img/anatomy-of-a-ledger-complete.svg" /%}](/docs/img/anatomy-of-a-ledger-complete.svg "Figure 1: XRP Ledger Elements")
 ```
 
