@@ -133,7 +133,7 @@ const events = [
     link: "http://xrplzone-ethdenver.splashthat.com",
     location: "Denver, Colorado",
     date: "February 27, 2024",
-    image: require("../static/img/events/XRPLZone.png.png"),
+    image: require("../static/img/events/XRPLZone.png"),
     end_date: "February 27, 2024",
     start_date: "February 27, 2024",
   },
