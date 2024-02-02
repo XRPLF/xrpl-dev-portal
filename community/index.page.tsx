@@ -4,9 +4,10 @@ import moment from "moment";
 
 export const frontmatter = {
   seo: {
-    title: 'Community',
-    description: "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
-  }
+    title: "Community",
+    description:
+      "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
+  },
 };
 
 const findNearestUpcomingEvent = (events) => {
@@ -123,6 +124,18 @@ const events = [
     image: require("../static/img/events/Conference.png"),
     end_date: "June 1, 2024",
     start_date: "June 1, 2024",
+  },
+  {
+    name: "XRP Ledger Zone ETHDenver",
+    description:
+      "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+    type: "zone",
+    link: "http://xrplzone-ethdenver.splashthat.com",
+    location: "Denver, Colorado",
+    date: "February 27, 2024",
+    image: require("../static/img/events/XRPLZone.png.png"),
+    end_date: "February 27, 2024",
+    start_date: "February 27, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
@@ -326,84 +339,86 @@ const CommunityPage: React.FC = () => {
       <section id="community-table" className="hot-topics">
         <h6 className="eyebrow-convo">{translate("Join the Conversation")}</h6>
         <h4>{translate("Hot Topics Happening Now")}</h4>
-        <table><tbody>
-          <tr>
-            <td className="td-img">
-              <img className="discord-icon" alt="discord icon" />
-            </td>
-            <td>
-              {translate(
-                "AMA with Edge Wallet: Learn more about Edge Wallet and how they are building on the XRP Ledger."
-              )}
-            </td>
-            <td>
-              <a
-                href="https://discord.com/channels/886050993802985492/950893687313940582/1162480612209332345"
-                target="_blank"
-                className="text-external-link"
-              >
-                <span className="external-link-contribute"></span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="td-img">
-              <img className="twitter-icon" alt="twitter icon" />
-            </td>
-            <td>
-              {translate(
-                "Clawback: A newly proposed feature that adds to the XRP Ledger's token asset control capabilities."
-              )}
-            </td>
-            <td>
-              <a
-                href="https://x.com/RippleXDev/status/1708889238471950610?s=20"
-                target="_blank"
-                className="text-external-link"
-              >
-                <span className="external-link-contribute"></span>
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="td-img">
-              <img className="youtube-icon" alt="youtube icon" />
-            </td>
-            <td>
-              {translate(
-                "APEX 2023: View keynote sessions from the annual developer summit where developers, contributors, and thought leaders come together to learn, build, and celebrate all things XRP Ledger."
-              )}
-            </td>
-            <td>
-              <a
-                href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZBdGc33An5Is6IFMxw3D7u"
-                target="_blank"
-                className="text-external-link"
-              >
-                <span className="external-link-contribute"></span>
-              </a>
-            </td>
-          </tr>
-          <tr className="final-tr">
-            <td className="td-img">
-              <img className="xrpl-icon" alt="xrpl icon" />
-            </td>
-            <td>
-              {translate(
-                "Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more."
-              )}
-            </td>
-            <td>
-              <a
-                href="https://learn.xrpl.org/course/deep-dive-into-xrpl-defi/"
-                target="_blank"
-                className="text-external-link"
-              >
-                <span className="external-link-contribute"></span>
-              </a>
-            </td>
-          </tr>
-        </tbody></table>
+        <table>
+          <tbody>
+            <tr>
+              <td className="td-img">
+                <img className="discord-icon" alt="discord icon" />
+              </td>
+              <td>
+                {translate(
+                  "AMA with Edge Wallet: Learn more about Edge Wallet and how they are building on the XRP Ledger."
+                )}
+              </td>
+              <td>
+                <a
+                  href="https://discord.com/channels/886050993802985492/950893687313940582/1162480612209332345"
+                  target="_blank"
+                  className="text-external-link"
+                >
+                  <span className="external-link-contribute"></span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td className="td-img">
+                <img className="twitter-icon" alt="twitter icon" />
+              </td>
+              <td>
+                {translate(
+                  "Clawback: A newly proposed feature that adds to the XRP Ledger's token asset control capabilities."
+                )}
+              </td>
+              <td>
+                <a
+                  href="https://x.com/RippleXDev/status/1708889238471950610?s=20"
+                  target="_blank"
+                  className="text-external-link"
+                >
+                  <span className="external-link-contribute"></span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td className="td-img">
+                <img className="youtube-icon" alt="youtube icon" />
+              </td>
+              <td>
+                {translate(
+                  "APEX 2023: View keynote sessions from the annual developer summit where developers, contributors, and thought leaders come together to learn, build, and celebrate all things XRP Ledger."
+                )}
+              </td>
+              <td>
+                <a
+                  href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZBdGc33An5Is6IFMxw3D7u"
+                  target="_blank"
+                  className="text-external-link"
+                >
+                  <span className="external-link-contribute"></span>
+                </a>
+              </td>
+            </tr>
+            <tr className="final-tr">
+              <td className="td-img">
+                <img className="xrpl-icon" alt="xrpl icon" />
+              </td>
+              <td>
+                {translate(
+                  "Deep Dive into XRPL DeFi Course: Learn about the inner workings of decentralized finance including safety and security, auto-bridging, pathfinding, liquidity pools, and more."
+                )}
+              </td>
+              <td>
+                <a
+                  href="https://learn.xrpl.org/course/deep-dive-into-xrpl-defi/"
+                  target="_blank"
+                  className="text-external-link"
+                >
+                  <span className="external-link-contribute"></span>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </section>
       {/* XRPL Events Carousel Section */}
       <XrplEventsAndCarouselSection events={events} />
@@ -571,7 +586,7 @@ const CommunityPage: React.FC = () => {
                 target="_blank"
                 href="/concepts/networks-and-servers/"
               >
-                  {translate("Networks and Servers")}
+                {translate("Networks and Servers")}
               </a>
               <a
                 className="com-card-link"

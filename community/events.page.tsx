@@ -602,6 +602,18 @@ const events = [
     image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
     end_date: "January 31, 2024",
   },
+  {
+    name: "XRP Ledger Zone ETHDenver",
+    description:
+      "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+    type: "zone",
+    link: "http://xrplzone-ethdenver.splashthat.com",
+    location: "Denver, Colorado",
+    date: "February 27, 2024",
+    image: require("../static/img/events/XRPLZone.png.png"),
+    end_date: "February 27, 2024",
+  },
+  
 ];
 
 export default function Events() {
