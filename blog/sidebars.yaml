@@ -1,4 +1,5 @@
 - group: Blog
+  page: blog/index.page.tsx
   expanded: true
   items:
     - group: '2024'
