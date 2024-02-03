@@ -12,7 +12,7 @@ const main = async ()=> {
 
     // Check if the check ID is provided --------------------------------------
     if (checkId.length === 0) {
-      console.log("Please edit this snippet to provide a check ID. You can get a check ID by running create_check.js.");
+      console.log("Please edit this snippet to provide a check ID. You can get a check ID by running create-check.js.");
       return;
     }
     
