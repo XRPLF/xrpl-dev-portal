@@ -11,4 +11,222 @@
       text-decoration: none;
     }
   }
+
+  #blog-purple {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .category_sidebar {
+    position: sticky;
+    top: 10px;
+  }
+  
+  .category-checkbox {
+    display: flex;
+    align-items: center;
+  }
+
+  .category-checkbox label {
+    font-weight: normal;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 26px;
+  }
+
+  .category-header {
+    font-weight: bold;
+    color: $gray-300;
+  }
+
+  .event-hero {
+    color: $gray-100;
+
+    p {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  .event-save-date {
+    color: $white;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .event-small-gray {
+    color: $gray-200;
+  }
+
+  .event-card {
+    max-width: 311px;
+    margin: 32px auto;
+    transition: all 0.35s ease-out;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+
+    background-color: $card-bg;
+    box-shadow: 0px 5px 40px $black;
+
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 8px;
+
+    font-size: 16px;
+    line-height: 24px;
+    color: $gray-200;
+
+    .event-card-header {
+      position: relative;
+      height: 176px;
+      background-size: contain !important;
+      width: 100%;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .event-card-title {
+      position: absolute;
+      bottom: 32px;
+      padding: 0 32px;
+      color: $gray-100;
+
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .event-card-body {
+      padding: 32px;
+    }
+
+    .event-card-footer {
+      padding: 0 32px 32px;
+    }
+
+    .event-card-footer .icon::before {
+      height: 24px;
+      width: 24px;
+      content: "";
+      margin-right: 8px;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+
+    .icon-date::before {
+      background: url(../img/events/event-date.svg);
+    }
+
+    .icon-location::before {
+      background: url(../img/events/event-location.svg);
+    }
+  }
+
+  //end event card
+
+  @media (min-width: 992px) {
+    .event-card {
+      max-width: 347px;
+      margin: 32px;
+    }
+
+    .event-card-header {
+      height: 197px !important;
+    }
+  }
+
+  a.event-card:hover {
+    transform: translateY(-16px);
+    text-decoration: none;
+  }
+
+  label {
+    margin: 0;
+    padding-left: 8px;
+    color: $white;
+  }
+
+  .blog-filter h6 {
+    font-size: 16px;
+  }
+
+  .blog-filter[type="checkbox"]::before {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+
+    content: "";
+    background: $gray-900;
+
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $gray-400;
+  }
+
+  .blog-filter[type="checkbox"]::after {
+    position: relative;
+    display: block;
+
+    top: -20px;
+    width: 20px;
+    height: 20px;
+
+    content: "";
+
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 4px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $gray-400;
+  }
+
+  .blog-filter[type="checkbox"]:checked::before {
+    background: $gray-900;
+    border: none;
+    border-radius: 0;
+  }
+
+  .blog-filter[type="checkbox"]:checked::after {
+    background-image: url(../img/events/event-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $blue-purple-500;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-500;
+    border-radius: 4px;
+  }
+
+  .blog-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+    background-image: url(../img/events/event-check.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
+
+  .blog-filter[type="checkbox"]:not(:disabled):hover::before {
+    background: $gray-900;
+    border: none;
+    border-radius: 0;
+  }
+
+  .blog-filter[type="checkbox"]:not(:disabled):hover::after {
+    background: $gray-900;
+    border: none;
+    border-width: 2px;
+    border-style: solid;
+    border-color: $blue-purple-600;
+    border-radius: 4px;
+  }
 }

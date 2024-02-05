@@ -1,8 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
-import { useTranslate } from "@portal/hooks";
-import { usePageSharedData } from "@portal/hooks";
-const moment = require("moment");
+import { useTranslate, usePageSharedData } from "@portal/hooks";
+import moment from "moment";
 
 export const frontmatter = {
   seo: {
@@ -23,49 +22,22 @@ const categories = {
   gateway_bulletins: "Gateway Bulletins",
   features: "Features",
   security: "Security",
+  none: "Other",
 };
-
-const blogs = [
-  {
-    title: "Introducing XRP Ledger version 2.0.1",
-    label: "Release Notes",
-    label_id: "release_notes",
-    date: "2024-01-09",
-    image: require("../static/img/events/Hackathons.png"),
-    link: "/blog/2024/rippled-2.0.1/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra magna ac placerat vestibulum lectus mauris.",
-  },
-  {
-    title: "Introducing XRP Ledger version 2.0.0",
-    label: "Release Notes",
-    label_id: "release_notes",
-    date: "2024-01-09",
-    image: require("../static/img/events/Hackathons.png"),
-    link: "/blog/2024/rippled-2.0.0/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra magna ac placerat vestibulum lectus mauris.",
-  },
-  {
-    title: "Developer Reflections: Web3Auth",
-    label: "Developer Reflections",
-    label_id: "developer_reflections",
-    date: "2024-01-23",
-    image: require("../static/img/events/Hackathons.png"),
-    link: "/blog/2024/web3auth/",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Pharetra magna ac placerat vestibulum lectus mauris.",
-  },
-];
 
 export default function Index() {
   const { translate } = useTranslate();
+  const { blogPosts } = usePageSharedData<any>('blog-posts');
+  for (const blog of blogPosts) {
+    console.log(blog)
+  }
+
   const defaultSelectedCategories = new Set(Object.keys(categories));
 
   const [selectedCategories, setSelectedCategories] = useState(
     defaultSelectedCategories
   );
-  const [cards, setCards] = useState(blogs);
+  const [cards, setCards] = useState(blogPosts);
 
   const toggleCategory = (category) => {
     const newSelectedCategories = new Set(selectedCategories);
@@ -78,11 +50,11 @@ export default function Index() {
   };
 
   const filteredCards = cards.filter((card) =>
-    selectedCategories.has(card.label_id)
+    selectedCategories.has(card.category_id)
   );
 
   return (
-    <div className="landing page-blog">
+    <div className="landing dev-blog">
       <div className="mt-20">
         <div className="position-relative d-none-sm">
           <img
@@ -120,9 +92,9 @@ export default function Index() {
                       paddingBottom: "4px",
                     }}
                   >
-                    {translate(`${moment(blogs[0].date).format("MMM")}`)}
+                    {translate(`${moment(blogPosts[0].date).format("MMM")}`)}
                   </span>
-                  {translate(` ${moment(blogs[0].date).format("DD YYYY")}`)}
+                  {translate(` ${moment(blogPosts[0].date).format("DD YYYY")}`)}
                 </h4>
                 <div className="pb-8">
                   <p
@@ -133,18 +105,18 @@ export default function Index() {
                       borderColor: "#32E685 !important",
                     }}
                   >
-                    {translate(`${blogs[0].label}`)}
+                    {translate(`${blogPosts[0].category}`)}
                   </p>
                 </div>
                 <h2 className="mb-8 h4 h2-sm font-weight-bold">
-                  {translate(`${blogs[0].title}`)}
+                  {translate(`${blogPosts[0].title}`)}
                 </h2>
               </div>
-              <p className="mb-4">{translate(`${blogs[0].description}`)}</p>
+              <p className="mb-4">{translate(`${blogPosts[0].description}`)}</p>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow"
-                  href={`${blogs[0].link}`}
+                  href={`${blogPosts[0].link}`}
                 >
                   {translate("Read More")}
                 </a>
@@ -190,23 +162,23 @@ export default function Index() {
               {filteredCards.map((card, i) => (
                 <a
                   key={card.title + i}
-                  className={`event-card ${card.label_id}`}
+                  className={`event-card ${card.category_id}`}
                   href={card.link}
                   id={card.title + i}
                 >
                   <div
                     className="event-card-header"
                     style={{
-                      background: `url(${card.image}) no-repeat`,
+                      background: require("../static/img/events/Hackathons.png"),
                     }}
                   >
-                    <div className="event-card-title">{card.title}</div>
+                    <div className="event-card-title">{translate(card.title)}</div>
                   </div>
                   <div className="event-card-body">
-                    <p>{card.description}</p>
+                    <p>{translate(card.description)}</p>
                   </div>
                   <div className="mt-lg-auto event-card-footer d-flex flex-column">
-                    <span className="d-flex icon icon-date">{card.date}</span>
+                    <span className="d-flex icon icon-date">{translate(card.date.toString())}</span>
                   </div>
                 </a>
               ))}
