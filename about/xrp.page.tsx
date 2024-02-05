@@ -2,12 +2,11 @@ import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 import briefcaseIcon from "../static/img/icons/briefcase.svg";
 import userIcon from "../static/img/icons/user.svg";
-
 export const frontmatter = {
   seo: {
-    title: 'XRP Overview',
+    title: "XRP Overview",
     description: "Learn more about XRP Ledger’s native digital asset, XRP.",
-  }
+  },
 };
 
 const links = [
@@ -28,6 +27,7 @@ const softwallets = [
     alt: "Gatehub",
     imgclasses: "invertible-img",
   },
+  { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
 ];
 
 const hardwallets = [
@@ -372,7 +372,7 @@ export default function XrpOverview() {
                     "Digital wallets are pieces of software that allow people to send, receive, and store cryptocurrencies, including XRP. There are two types of digital wallets: hardware and software."
                   )}
                 </h5>
-                <ul className="nav nav-grid-lg cols-of-5" id="wallets">
+                <ul className="nav nav-grid-lg cols-of-6" id="wallets">
                   <li className="nav-item nav-grid-head">
                     <h6 className="fs-4-5">{translate("Software Wallets")}</h6>
                   </li>
@@ -384,7 +384,9 @@ export default function XrpOverview() {
                         target="_blank"
                       >
                         <img
-                          className="mw-100 $$ if wallet.imgclasses $${wallet.imgclasses}$$ endif $$"
+                          className={`mw-100 ${
+                            !!wallet?.imgclasses && wallet.imgclasses
+                          }`}
                           id={wallet.id}
                           alt={wallet.alt}
                         />

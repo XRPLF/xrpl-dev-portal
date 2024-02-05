@@ -36,7 +36,7 @@ export default function CodeSamples() {
               <h1 className="mb-0">{translate('Start Building with Example Code')}</h1>
               <h6 className="eyebrow mb-3">{translate('Code Samples')}</h6>
             </div>
-            <a className="mt-12 btn btn-primary btn-arrow">Submit Code Samples</a>
+            {/* <a className="mt-12 btn btn-primary btn-arrow">Submit Code Samples</a> */}
           </div>
         </section>
         <div className="position-relative d-none-sm">
