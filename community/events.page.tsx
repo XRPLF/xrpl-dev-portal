@@ -558,38 +558,27 @@ const events = [
   },
 
   {
-    name: "Paris Blockchain Week",
+    name: "Cyprus Tech Odyssey: XRPL Hackathon 2024",
     description:
-      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
-    type: "conference",
-    link: "https://www.parisblockchainweek.com/",
-    location: "Paris, France",
-    date: "April 9 - 12, 2024",
-    image: require("../static/img/events/Conference.png"),
-    end_date: "April 12, 2024",
+      "Cyprus Tech Odyssey: XRPL Hackathon 2024 is a collaborative initiative between Ripple and the University of Nicosia (UNIC). This unique event promises a blend of insightful discussions and hands-on experiences, all centered around the transformative potential of the XRP Ledger (XRPL).",
+    type: "hackathon",
+    link: "https://www.unic.ac.cy/iff/cytechodyssey24/#TechOdyssey2024",
+    location: "University of Nicosia,Cyprus",
+    date: "January 18 - 20, 2024",
+    image: require("../static/img/events/Hackathons.png"),
+    end_date: "January 20, 2024",
   },
 
   {
-    name: "Consensus",
+    name: "Building on the XRP Ledger - 2-day Workshop",
     description:
-      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
-    type: "conference",
-    link: "https://consensus2024.coindesk.com/sponsors/",
-    location: "Austin, Texas",
-    date: "May 29 - June 1, 2024",
-    image: require("../static/img/events/Conference.png"),
-    end_date: "June 1, 2024",
-  },
-  {
-    name: "Permissionless",
-    description:
-      "Come see XRP Ledger at Permissionless: the world's largest DeFi conference.",
-    type: "conference",
-    link: "https://blockworks.co/event/permissionless-iii/home",
-    location: "Salt Lake City, Utah",
-    date: "October 9 - 11, 2024",
-    image: require("../static/img/events/Conference.png"),
-    end_date: "October 11, 2024",
+      "Participants will have the opportunity to gain hands-on experience and valuable knowledge in building real-world assets on the XRPL blockchain. This two-day, free training program is designed for developers who have a keen interest in learning about XRPL.",
+    type: "meetup",
+    link: "https://www.xrpl-commons.org/training-jan-2024#learn",
+    location: "XRPL Commons HQ, Paris, France",
+    date: "January 25 - 26, 2024",
+    image: require("../static/img/events/paris.png"),
+    end_date: "January 26, 2024",
   },
 
   {
@@ -603,28 +592,7 @@ const events = [
     image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
     end_date: "January 31, 2024",
   },
-  {
-    name: "Cyprus Tech Odyssey: XRPL Hackathon 2024",
-    description:
-      "Cyprus Tech Odyssey: XRPL Hackathon 2024 is a collaborative initiative between Ripple and the University of Nicosia (UNIC). This unique event promises a blend of insightful discussions and hands-on experiences, all centered around the transformative potential of the XRP Ledger (XRPL).",
-    type: "hackathon",
-    link: "https://www.unic.ac.cy/iff/cytechodyssey24/#TechOdyssey2024",
-    location: "University of Nicosia,Cyprus",
-    date: "January 18 - 20, 2024",
-    image: require("../static/img/events/Hackathons.png"),
-    end_date: "January 20, 2024",
-  },
-  {
-    name: "Building on the XRP Ledger - 2-day Workshop",
-    description:
-      "Participants will have the opportunity to gain hands-on experience and valuable knowledge in building real-world assets on the XRPL blockchain. This two-day, free training program is designed for developers who have a keen interest in learning about XRPL.",
-    type: "meetup",
-    link: "https://www.xrpl-commons.org/training-jan-2024#learn",
-    location: "XRPL Commons HQ, Paris, France",
-    date: "January 25 - 26, 2024",
-    image: require("../static/img/events/paris.png"),
-    end_date: "January 26, 2024",
-  },
+
   {
     name: "XRP Ledger Zone ETHDenver",
     description:
@@ -636,6 +604,19 @@ const events = [
     image: require("../static/img/events/XRPLZone.png"),
     end_date: "February 27, 2024",
   },
+
+  {
+    name: "Paris Blockchain Week",
+    description:
+      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+    type: "conference",
+    link: "https://www.parisblockchainweek.com/",
+    location: "Paris, France",
+    date: "April 9 - 12, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "April 12, 2024",
+  },
+  
   {
     name: "EasyA Hackathon",
     description:
@@ -646,6 +627,30 @@ const events = [
     date: "April 13 - 14, 2024",
     image: require("../static/img/events/Hackathons.png"),
     end_date: "April 14, 2024",
+  },
+
+  {
+    name: "Consensus",
+    description:
+      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+    type: "conference",
+    link: "https://consensus2024.coindesk.com/sponsors/",
+    location: "Austin, Texas",
+    date: "May 29 - June 1, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "June 1, 2024",
+  },
+
+  {
+    name: "Permissionless",
+    description:
+      "Come see XRP Ledger at Permissionless: the world's largest DeFi conference.",
+    type: "conference",
+    link: "https://blockworks.co/event/permissionless-iii/home",
+    location: "Salt Lake City, Utah",
+    date: "October 9 - 11, 2024",
+    image: require("../static/img/events/Conference.png"),
+    end_date: "October 11, 2024",
   },
 ];
 
