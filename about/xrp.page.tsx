@@ -5,9 +5,9 @@ import userIcon from "../static/img/icons/user.svg";
 
 export const frontmatter = {
   seo: {
-    title: 'XRP Overview',
+    title: "XRP Overview",
     description: "Learn more about XRP Ledger’s native digital asset, XRP.",
-  }
+  },
 };
 
 const links = [
@@ -22,8 +22,8 @@ const softwallets = [
   { href: "https://towolabs.com/", id: "wallet-towo", alt: "Towo" },
   { href: "https://xumm.app/", id: "wallet-xumm", alt: "Xumm" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
-  { href: "https://gatehub.net/", id: "wallet-gatehub", alt: "Gatehub" },
-  { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" }
+  { href: "https://gatehub.net/", id: "wallet-gatehub", alt: "Gatehub", imgclasses: "invertible-img",},
+  { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
 ];
 
 const hardwallets = [
@@ -380,7 +380,9 @@ export default function XrpOverview() {
                         target="_blank"
                       >
                         <img
-                          className="mw-100 $$ if wallet.imgclasses $${wallet.imgclasses}$$ endif $$"
+                          className={`mw-100 ${
+                            !!wallet?.imgclasses && wallet.imgclasses
+                          }`}
                           id={wallet.id}
                           alt={wallet.alt}
                         />
