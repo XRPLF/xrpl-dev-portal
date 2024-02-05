@@ -56,7 +56,27 @@ export function Navbar(props) {
     dds.on('hidden.bs.dropdown', evt => {
       top_main_nav.classList.remove('submenu-expanded');
     });
+    // Close navbar on .dropdown-item click
+  const toggleNavbar = () => {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const isNavbarCollapsed = navbarToggler.getAttribute('aria-expanded') === 'true';
+    if (isNavbarCollapsed) {
+      navbarToggler.click(); // Simulate click to toggle navbar
+    }
+  };
+
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', toggleNavbar);
   });
+
+  // Cleanup function to remove event listeners
+  return () => {
+    dropdownItems.forEach(item => {
+      item.removeEventListener('click', toggleNavbar);
+    });
+  };
+  },[]);
 
   return (
     <>
