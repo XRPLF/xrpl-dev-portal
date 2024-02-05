@@ -74,7 +74,7 @@ In addition to the above features, you'll also learn a bit about Events, IPC (in
     "pbkdf2-hmac": "^1.1.0",
     "open": "^8.4.0",
     "toml": "^3.0.0",
-    "xrpl": "^2.6.0"
+    "xrpl": "^3.0.0"
   },
   "devDependencies": {
     "electron": "22.3.24"
