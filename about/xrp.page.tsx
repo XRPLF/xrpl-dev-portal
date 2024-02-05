@@ -2,7 +2,6 @@ import * as React from "react";
 import { useTranslate } from "@portal/hooks";
 import briefcaseIcon from "../static/img/icons/briefcase.svg";
 import userIcon from "../static/img/icons/user.svg";
-
 export const frontmatter = {
   seo: {
     title: "XRP Overview",
@@ -22,7 +21,12 @@ const softwallets = [
   { href: "https://towolabs.com/", id: "wallet-towo", alt: "Towo" },
   { href: "https://xumm.app/", id: "wallet-xumm", alt: "Xumm" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
-  { href: "https://gatehub.net/", id: "wallet-gatehub", alt: "Gatehub", imgclasses: "invertible-img",},
+  {
+    href: "https://gatehub.net/",
+    id: "wallet-gatehub",
+    alt: "Gatehub",
+    imgclasses: "invertible-img",
+  },
   { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
 ];
 
