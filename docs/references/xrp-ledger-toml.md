@@ -151,6 +151,7 @@ desc = "Test Net public server cluster"
 [[PRINCIPALS]]
 name = "Rome Reginelli" # Primary spec author
 email = "rome@example.com" # Not my real email address
+social_1 = "https://website.tld/username" # Social media username/handle as an alternative way to connect
 
 [[CURRENCIES]]
 code = "LOL"
@@ -214,6 +215,7 @@ The principals list provides information about the people (or business entities)
 |:--------|:-------|:---------------------------------------------------------|
 | `name`  | String | The name of this principal.                              |
 | `email` | String | The email address where this principal can be contacted. |
+| `social_1` | String | The social media username/handle where this principal can be contacted. For consistency, use site names, not domains, when specifying social media platforms. For example, `x = "@username"` or `linkedin = "username"` |
 
 You may provide other contact information as desired. (See [Custom Fields](#custom-fields) for information about custom fields.)
 
