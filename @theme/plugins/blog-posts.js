@@ -12,9 +12,9 @@ export function blogPosts() {
     processContent: async (contentProvider, actions) => {
       try {
         const posts = [];
-        const allBlogPosts = Array.from(contentProvider.fsFilesList.values());
+        const allBlogFiles = Array.from(contentProvider.fsFilesList.values());
 
-        const markdownFiles = allBlogPosts.filter(file => file.match(/blog[\/\\]([^\\\/]*)[\/\\].*\.md$/));
+        const markdownFiles = allBlogFiles.filter(file => file.match(/blog[\/\\]([^\\\/]*)[\/\\].*\.md$/));
 
         for (const relativePath of markdownFiles) {
           const record = contentProvider.loadContent(relativePath, 'frontmatter');
@@ -34,8 +34,8 @@ export function blogPosts() {
             date: record.parsed.data.date
                     ? moment(record.parsed.data.date).format("YYYY-MM-DD")
                     : moment(year).format("YYYY-MM-DD"),
-            category: category || "none",
-            category_id: category ? category.toLowerCase().replace(/ /g, "_") : "none",
+            category: category || "General",
+            category_id: category ? category.toLowerCase().replace(/ /g, "_") : "general",
             link: `${relativePath.replace('blog/', '').replace(".md", "")}`,
           });
         }

@@ -1,15 +1,33 @@
 // These styles are used by the dev-blog pages, which are in another repo.
 
 .dev-blog {
-  .labels-wrap {
-    display: inline-block;
+  .image-container {
+    transform: translateY(15%);
+    z-index: 1;
   }
 
-  a.badge-primary {
-    text-decoration: none;
-    &:hover {
-      text-decoration: none;
+  .text-bg {
+    background-color: #232325;
+    padding: 60px 40px;
+    width: 100%;
+    border-radius: 30px;
+  }
+
+  @media (min-width: 992px) {
+    .image-container {
+      transform: translateX(15%);
     }
+
+    .text-bg {
+      padding: 50px 60px;
+    }
+  }
+
+  .line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   #blog-purple {
@@ -18,11 +36,82 @@
     left: 0px;
   }
 
+  #card-date {
+    color: $gray-400;
+  }
+
+  .category-badge {
+    max-width: 180px;
+    border-radius: 30px;
+    border: solid 1px;
+    padding: 1px;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  #general-badge {
+    background-color: #343437;
+    color: #FFFFFF;
+  }
+
+  #release_notes-badge {
+    background-color: #145C35;
+    color: #32E685;
+  }
+
+  #advisories-badge {
+    background-color: #4C1A00;
+    color: #FF6719;
+  }
+
+  #amendments-badge {
+    background-color: #4B4C00;
+    color: #FAFF19;
+  }
+
+  #development-badge {
+    background-color: #20004C;
+    color: #7919FF;
+  }
+
+  #developer_reflections-badge {
+    background-color: #002E4C;
+    color: #19A3FF;
+  }
+
+  #gateway_bulletins-badge {
+    background-color: #40004C;
+    color: #D919FF;
+  }
+
+  #features-badge {
+    background-color: #145C35;
+    color: #32E685;
+  }
+
+  #security-badge {
+    background-color: #4C0026;
+    color: #FF198B;
+  }
+
+  #category-list {
+    @each $category in "general", "developer_reflections", "amendments",
+    "advisories", "release_notes", "development", "gateway_bulletins", "features", "security"
+
+      {
+      ##{$category} {
+        content: url("../img/blog/#{$category}.png");
+      }
+    }
+  }
+
   .category_sidebar {
     position: sticky;
     top: 10px;
   }
-  
+
   .category-checkbox {
     display: flex;
     align-items: center;
@@ -37,112 +126,7 @@
 
   .category-header {
     font-weight: bold;
-    color: $gray-300;
-  }
-
-  .event-hero {
     color: $gray-100;
-
-    p {
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 32px;
-    }
-  }
-
-  .event-save-date {
-    color: $white;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 26px;
-  }
-
-  .event-small-gray {
-    color: $gray-200;
-  }
-
-  .event-card {
-    max-width: 311px;
-    margin: 32px auto;
-    transition: all 0.35s ease-out;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
-
-    background-color: $card-bg;
-    box-shadow: 0px 5px 40px $black;
-
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 8px;
-
-    font-size: 16px;
-    line-height: 24px;
-    color: $gray-200;
-
-    .event-card-header {
-      position: relative;
-      height: 176px;
-      background-size: contain !important;
-      width: 100%;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .event-card-title {
-      position: absolute;
-      bottom: 32px;
-      padding: 0 32px;
-      color: $gray-100;
-
-      font-weight: bold;
-      font-size: 20px;
-      line-height: 28px;
-    }
-
-    .event-card-body {
-      padding: 32px;
-    }
-
-    .event-card-footer {
-      padding: 0 32px 32px;
-    }
-
-    .event-card-footer .icon::before {
-      height: 24px;
-      width: 24px;
-      content: "";
-      margin-right: 8px;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    .icon-date::before {
-      background: url(../img/events/event-date.svg);
-    }
-
-    .icon-location::before {
-      background: url(../img/events/event-location.svg);
-    }
-  }
-
-  //end event card
-
-  @media (min-width: 992px) {
-    .event-card {
-      max-width: 347px;
-      margin: 32px;
-    }
-
-    .event-card-header {
-      height: 197px !important;
-    }
-  }
-
-  a.event-card:hover {
-    transform: translateY(-16px);
-    text-decoration: none;
   }
 
   label {
@@ -195,7 +179,7 @@
   }
 
   .blog-filter[type="checkbox"]:checked::after {
-    background-image: url(../img/events/event-check.svg);
+    background-image: url(../img/blog/blog-check.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: $blue-purple-500;
@@ -206,7 +190,7 @@
   }
 
   .blog-filter[type="checkbox"]:not(:disabled):checked:hover::after {
-    background-image: url(../img/events/event-check.svg);
+    background-image: url(../img/blog/blog-check.svg);
     background-repeat: no-repeat;
     background-position: center;
     border-width: 2px;

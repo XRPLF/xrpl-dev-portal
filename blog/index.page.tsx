@@ -22,22 +22,21 @@ const categories = {
   gateway_bulletins: "Gateway Bulletins",
   features: "Features",
   security: "Security",
-  none: "Other",
 };
 
 export default function Index() {
   const { translate } = useTranslate();
-  const { blogPosts } = usePageSharedData<any>('blog-posts');
-  for (const blog of blogPosts) {
-    console.log(blog)
-  }
+  const { blogPosts } = usePageSharedData<any>("blog-posts");
+
+  const heroPost = blogPosts[0];
+  const otherPosts = blogPosts.slice(1);
 
   const defaultSelectedCategories = new Set(Object.keys(categories));
 
   const [selectedCategories, setSelectedCategories] = useState(
     defaultSelectedCategories
   );
-  const [cards, setCards] = useState(blogPosts);
+  const [cards, setCards] = useState(otherPosts);
 
   const toggleCategory = (category) => {
     const newSelectedCategories = new Set(selectedCategories);
@@ -55,7 +54,7 @@ export default function Index() {
 
   return (
     <div className="landing dev-blog">
-      <div className="mt-20">
+      <div className="justify-content-center align-items-lg-center">
         <div className="position-relative d-none-sm">
           <img
             alt="background purple waves"
@@ -67,24 +66,25 @@ export default function Index() {
           <div className="mx-auto text-center col-lg-5">
             <div className="d-flex flex-column">
               <h6 className="eyebrow mb-3">{translate("XRPL Community")}</h6>
-              <h1 className="mb-0">{translate("XRPL Blog")}</h1>
+              <h1 className="mb-3">{translate("XRPL Blog")}</h1>
             </div>
           </div>
         </section>
-        {/* Latest Blog Post */}
-        <section className="container-new py-16">
-          <div className="d-flex flex-column flex-lg-row align-items-lg-center mt-20">
+
+        {/* Banner */}
+        <section className="container-new">
+          <div className="row justify-content-center align-items-lg-center">
             {/* Banner Image */}
-            <div className="mb-2-sm">
+            <div className="image-container">
               <img
                 alt="default-alt-text"
                 src={require("../static/img/blog/blog-hero.svg")}
-                className="w-100 d-none-sm"
+                className="w-100"
               />
             </div>
             {/* Text */}
-            <div className="col justify-content-center px-lg-5 w-100">
-              <div className="d-flex flex-column">
+            <div className="col">
+              <div className="text-bg">
                 <h4 className="mb-3 eyebrow text-uppercase font-weight-light">
                   <span
                     style={{
@@ -92,34 +92,30 @@ export default function Index() {
                       paddingBottom: "4px",
                     }}
                   >
-                    {translate(`${moment(blogPosts[0].date).format("MMM")}`)}
+                    {translate(`${moment(heroPost.date).format("MMM")}`)}
                   </span>
-                  {translate(` ${moment(blogPosts[0].date).format("DD YYYY")}`)}
+                  {translate(` ${moment(heroPost.date).format("DD YYYY")}`)}
                 </h4>
                 <div className="pb-8">
                   <p
-                    className="badge badge-success w-full rounded-pill py-1 px-4 border"
-                    style={{
-                      background: "#145C35",
-                      color: "#32E685",
-                      borderColor: "#32E685 !important",
-                    }}
+                    id={`${heroPost.category_id}-badge`}
+                    className="category-badge"
                   >
-                    {translate(`${blogPosts[0].category}`)}
+                    {translate(`${heroPost.category}`)}
                   </p>
                 </div>
-                <h2 className="mb-8 h4 h2-sm font-weight-bold">
-                  {translate(`${blogPosts[0].title}`)}
-                </h2>
-              </div>
-              <p className="mb-4">{translate(`${blogPosts[0].description}`)}</p>
-              <div className="d-lg-block">
-                <a
-                  className="btn btn-primary btn-arrow"
-                  href={`${blogPosts[0].link}`}
-                >
-                  {translate("Read More")}
-                </a>
+                <h4 className="mb-8 h2-sm font-weight-bold">
+                  {translate(`${heroPost.title}`)}
+                </h4>
+                <p className="mb-4">{translate(`${heroPost.description}`)}</p>
+                <div className="d-lg-block">
+                  <a
+                    className="btn btn-primary btn-arrow"
+                    href={`${heroPost.link}`}
+                  >
+                    {translate("Read More")}
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -128,59 +124,75 @@ export default function Index() {
         {/* Other Blog Posts*/}
         <section className="container-new py-26">
           <div className="row col-12 m-0 p-0 mt-4 pt-2">
-            {/* Filters  */}
-            <div className="p-3 category_sidebar">
-              <p className="mb-3 category-header">Filter by Category:</p>
-              <div className="d-flex flex-column p-3">
-                {Object.keys(categories).map((item) => (
-                  <div
-                    key={item}
-                    className="cat_checkbox category-checkbox pb-2"
-                  >
-                    <input
-                      className={`blog-filter input_${item}`}
-                      type="checkbox"
-                      name="categories"
-                      id={`input_${item}`}
-                      defaultValue={`${item}`}
-                      onChange={() => toggleCategory(item)}
-                      defaultChecked
-                    />
-                    <label
-                      className="font-weight-bold"
-                      htmlFor={`input_${item}`}
+            <div className="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
+              {/* Filters Desktop*/}
+              <div className="p-3 category_sidebar">
+                <p className="mb-3 category-header">Filter by Category:</p>
+                <div className="d-flex flex-column p-3">
+                  {Object.keys(categories).map((item) => (
+                    <div
+                      key={item}
+                      className="cat_checkbox category-checkbox pb-2"
                     >
-                      {categories[item]}
-                    </label>
-                  </div>
-                ))}
+                      <input
+                        className={`blog-filter input_${item}`}
+                        type="checkbox"
+                        name="categories"
+                        id={`input_${item}`}
+                        defaultValue={`${item}`}
+                        onChange={() => toggleCategory(item)}
+                        defaultChecked
+                      />
+                      <label
+                        className="font-weight-bold"
+                        htmlFor={`input_${item}`}
+                      >
+                        {translate(categories[item])}
+                      </label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             {/* Cards */}
-            <div className="row col row-cols-lg-2 m-0 p-0">
-              <div></div>
+            <div className="right row col row-cols-lg-2 m-0 p-0">
               {filteredCards.map((card, i) => (
-                <a
+                <div
                   key={card.title + i}
-                  className={`event-card ${card.category_id}`}
-                  href={card.link}
+                  className={`${card.category_id} col-sm pb-5 px-lg-4`}
                   id={card.title + i}
                 >
-                  <div
-                    className="event-card-header"
-                    style={{
-                      background: require("../static/img/events/Hackathons.png"),
-                    }}
-                  >
-                    <div className="event-card-title">{translate(card.title)}</div>
+                  <div className="mb-4" id="category-list">
+                    <img
+                      alt="default-alt-text"
+                      id={`${card.category_id}`}
+                      className="w-100 mb-4"
+                    />
+                    <p
+                      id={`${card.category_id}-badge`}
+                      className="category-badge mb-5"
+                    >
+                      {translate(card.category)}
+                    </p>
                   </div>
-                  <div className="event-card-body">
-                    <p>{translate(card.description)}</p>
+                  <div className="mb-4">
+                    <p id="card-date" className="mb-0">
+                      {moment(translate(card.date)).format("MMM DD, YYYY")}
+                    </p>
+                    <h5 className="mb-2-sm h3-sm">{translate(card.title)}</h5>
                   </div>
-                  <div className="mt-lg-auto event-card-footer d-flex flex-column">
-                    <span className="d-flex icon icon-date">{translate(card.date.toString())}</span>
+                  <div className="d-lg-block">
+                    <p className="line-clamp">{translate(card.description)}</p>
                   </div>
-                </a>
+                  <div className="d-lg-block">
+                    <a
+                      className="btn btn-primary btn-arrow"
+                      href={`${card.link}`}
+                    >
+                      {translate("Read More")}
+                    </a>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
