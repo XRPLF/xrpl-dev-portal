@@ -133,7 +133,7 @@
                 - page: docs/concepts/tokens/decentralized-exchange/autobridging.md
                 - page: docs/concepts/tokens/decentralized-exchange/ticksize.md
                 - page: docs/concepts/tokens/decentralized-exchange/automated-market-makers.md
-        - page: docs/concepts/accounts/accounts.md
+        - page: docs/concepts/accounts/index.md
           expanded: false
           items:
             - page: docs/concepts/accounts/account-types.md
