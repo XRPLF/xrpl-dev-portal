@@ -24,6 +24,7 @@ async function main() {
   // Get credentials from the Faucet -------------------------------------------
   console.log("Requesting address from the faucet...")
   const wallet = (await client.fundWallet()).wallet
+  const issuer = (await client.fundWallet()).wallet
 
   // To use an existing account, use code such as the following:
   // const wallet = xrpl.Wallet.fromSeed(process.env['USE_SEED'])
@@ -34,7 +35,7 @@ async function main() {
     "Account": wallet.address,
     "TakerPays": {
       currency: "TST",
-      issuer: "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
+      issuer: issuer.address,
       value: "25"
     },
     "TakerGets": xrpl.xrpToDrops(25*10*1.16)
@@ -68,7 +69,7 @@ async function main() {
     "command": "amm_info",
     "asset": {
       "currency": "TST",
-      "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
+      "issuer": issuer.address,
     },
     "asset2": {
       "currency": foo_amount.currency,
@@ -106,7 +107,7 @@ async function main() {
     "Account": wallet.address,
     "Amount": {
       currency: "TST",
-      issuer: "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd",
+      issuer: issuer.address,
       value: "15"
     },
     "Amount2": {

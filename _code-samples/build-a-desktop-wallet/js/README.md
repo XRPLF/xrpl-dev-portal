@@ -19,11 +19,7 @@ npm run hello
 ```
 
 ```sh
-npm run async-poll
-```
-
-```sh
-npm run async-subscribe
+npm run async
 ```
 
 ```sh
