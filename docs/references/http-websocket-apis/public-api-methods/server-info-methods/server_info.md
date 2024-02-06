@@ -20,7 +20,8 @@ An example of the request format:
 ```json
 {
   "id": 1,
-  "command": "server_info"
+  "command": "server_info",
+  "counters": false
 }
 ```
 {% /tab %}
@@ -30,7 +31,7 @@ An example of the request format:
 {
     "method": "server_info",
     "params": [
-        {}
+        {"counters" : false}
     ]
 }
 ```
@@ -38,7 +39,8 @@ An example of the request format:
 
 {% tab label="Commandline" %}
 ```sh
-#Syntax: server_info
+#Syntax: server_info [counters]
+# counters is an optional boolean value, it is used to display performance metrics
 rippled server_info
 ```
 {% /tab %}
@@ -47,7 +49,11 @@ rippled server_info
 
 [Try it! >](/resources/dev-tools/websocket-api-tool#server_info)
 
-The request does not take any parameters.
+The request includes the following parameters:
+
+| Field                 | Type    | Required? | Description |
+|:----------------------|:--------|:----------|-------------|
+| `counters`            | Boolean | No        | If `true`, return metrics about the job queue, ledger store, and API method activity. The default is `false`. |
 
 ## Response Format
 
@@ -119,6 +125,8 @@ The `info` object may have some arrangement of the following fields:
 | `validated_ledger.seq`              | Number          | The [ledger index][] of the latest validated ledger. |
 | `validation_quorum`                 | Number          | Minimum number of trusted validations required to validate a ledger version. Some circumstances may cause the server to require more validations. |
 | `validator_list_expires`            | String          | _(Admin only)_ Either the human readable time, in UTC, when the current validator list expires, the string `unknown` if the server has yet to load a published validator list or the string `never` if the server uses a static validator list. |
+| `counters`            | Object          | This object contains performance metrics pertaining to the RPC calls (currently executing calls and completed calls) and the JobQueue. It also contains details of the nodestore like `node_writes`, `node_reads_total`, `node_reads_hit`, etc|
+| `current_activity`            | Object          | This field lists the items currently being run in the job queue and contains two arrays for `jobs` and `methods`. |
 
 **Note:** If the `closed_ledger` field is present and has a small `seq` value (less than 8 digits), that indicates `rippled` does not currently have a copy of the validated ledger from the peer-to-peer network. This could mean your server is still syncing. Typically, it takes about 5 minutes to sync with the network, depending on your connection speed and hardware specs.
 
