@@ -10,7 +10,7 @@ labels:
   - Decentralized Exchange
   - AMM
 ---
-# What Is Automated Market Maker (AMM) Crypto?
+# What Is an Automated Market Maker (AMM)?
 
 _(Requires the [AMM amendment][] {% not-enabled /%})_
 
