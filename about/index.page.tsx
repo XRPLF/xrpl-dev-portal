@@ -187,7 +187,7 @@ export default function XrplOverview() {
               </div>
               <h5 className="longform mb-10">
                 {`${translate(
-                  "To uphold performance, XRPL uses a consensus protocol. Designated servers called"
+                  "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
                 <a href="run-a-rippled-validator">{translate("validators")}</a>
                 {`${translate(
