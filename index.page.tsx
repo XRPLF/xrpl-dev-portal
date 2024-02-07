@@ -112,7 +112,7 @@ export default function Index() {
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
               <h1 className="mb-10">
-                {translate('Blockchain Ledger')}
+                {translate('The Blockchain')}
                 <br className="until-sm" />
                 {translate('Built for Business')}
               </h1>
