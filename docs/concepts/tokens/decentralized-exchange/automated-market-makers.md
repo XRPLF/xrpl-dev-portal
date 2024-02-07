@@ -2,14 +2,15 @@
 html: automated-market-makers.html
 parent: decentralized-exchange.html
 seo:
-    description: Automated Market Makers (AMMs) provide liquidity between asset pairs, complemeting the order books in the decentralized exchange while providing passive income for their liquidity providers.
+    title: What Is an Automated Market Maker (AMM) | XRPL.org
+    description: Discover how Automated Market Makers (AMMs) provide liquidity between asset pairs in the decentralized exchange while providing passive income.
 status: not_enabled
 labels:
   - XRP
   - Decentralized Exchange
   - AMM
 ---
-# Automated Market Makers
+# What Is an Automated Market Maker (AMM)?
 
 _(Requires the [AMM amendment][] {% not-enabled /%})_
 
