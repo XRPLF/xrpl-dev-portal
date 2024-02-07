@@ -10,7 +10,7 @@ labels:
 
 {% partial file="/docs/_snippets/data_types/address.md" /%}
 
-Any valid address can [become an account in the XRP Ledger](accounts.md#creating-accounts) by being funded. You can also use an address that has not been funded to represent a [regular key](cryptographic-keys.md) or a member of a [signer list](multi-signing.md). Only a funded account can be the sender of a transaction.
+Any valid address can [become an account in the XRP Ledger](index.md#creating-accounts) by being funded. You can also use an address that has not been funded to represent a [regular key](cryptographic-keys.md) or a member of a [signer list](multi-signing.md). Only a funded account can be the sender of a transaction.
 
 Creating a valid address is a strictly mathematical task starting with a key pair. You can generate a key pair and calculate its address entirely offline without communicating to the XRP Ledger or any other party. The conversion from a public key to an address involves a one-way hash function, so it is possible to confirm that a public key matches an address but it is impossible to derive the public key from the address alone. (This is part of the reason why signed transactions include the public key _and_ the address of the sender.)
 

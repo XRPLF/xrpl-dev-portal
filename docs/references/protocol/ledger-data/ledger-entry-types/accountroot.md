@@ -10,7 +10,7 @@ labels:
 # AccountRoot
 [[Source]](https://github.com/XRPLF/rippled/blob/264280edd79b7f764536e02459f33f66a59c0531/src/ripple/protocol/impl/LedgerFormats.cpp#L36-L60 "Source")
 
-An `AccountRoot` ledger entry type describes a single [account](../../../../concepts/accounts/accounts.md), its settings, and XRP balance.
+An `AccountRoot` ledger entry type describes a single [account](../../../../concepts/accounts/index.md), its settings, and XRP balance.
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -39,7 +39,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Field                         | JSON Type | [Internal Type][] | Required? | Description  |
 |:------------------------------|:----------|:------------------|:----------|:-------------|
-| `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](../../../../concepts/accounts/accounts.md). |
+| `Account`                     | String    | AccountID         | Yes       | The identifying (classic) address of this [account](../../../../concepts/accounts/index.md). |
 | `AccountTxnID`                | String    | Hash256           | No        | The identifying hash of the transaction most recently sent by this account. This field must be enabled to use the [`AccountTxnID` transaction field](../../transactions/common-fields.md#accounttxnid). To enable it, send an [AccountSet transaction with the `asfAccountTxnID` flag enabled](../../transactions/types/accountset.md#accountset-flags). |
 | `AMMID`                       | String    | Hash256           | No        | _(Requires the [AMM amendment][] {% not-enabled /%})_ The ledger entry ID of the corresponding AMM ledger entry. Set during account creation; cannot be modified. If present, indicates that this is a special AMM AccountRoot; always omitted on non-AMM accounts. |
 | `Balance`                     | String    | Amount            | No        | The account's current [XRP balance in drops][XRP, in drops], represented as a string. |

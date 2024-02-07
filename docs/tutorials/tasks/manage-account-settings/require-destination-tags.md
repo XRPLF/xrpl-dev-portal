@@ -148,7 +148,7 @@ For further confirmation, you can send test transactions (from a different addre
 ## See Also
 
 - **Concepts:**
-    - [Accounts](../../../concepts/accounts/accounts.md)
+    - [Accounts](../../../concepts/accounts/index.md)
     - [Source and Destination Tags](../../../concepts/transactions/source-and-destination-tags.md)
     - [Transaction Cost](../../../concepts/transactions/transaction-cost.md)
     - [Payment Types](../../../concepts/payment-types/index.md)

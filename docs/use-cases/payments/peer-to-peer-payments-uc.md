@@ -20,7 +20,7 @@ Before jumping into using the XRP Ledger to handle direct payments, you should s
 
 Before creating an account, you must decide which XRP Ledger network to use. There are multiple networks for different use cases, but native XRP transactions only happen on `Mainnet`. See: [Parallel Networks](../../concepts/networks-and-servers/parallel-networks.md)
 
-Most publicly available wallets offer the ability to create an account for you and can generate a public and private key. If they don't, you can create an account yourself, so long as it's mathematically valid. See: [Creating Accounts](../../concepts/accounts/accounts.md#creating-accounts).
+Most publicly available wallets offer the ability to create an account for you and can generate a public and private key. If they don't, you can create an account yourself, so long as it's mathematically valid. See: [Creating Accounts](../../concepts/accounts/index.md#creating-accounts).
 
 
 ## Fund Your Account

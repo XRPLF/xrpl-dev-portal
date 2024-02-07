@@ -12,7 +12,7 @@ The owner of an account can send an [AccountDelete transaction][] to deletes the
 
 Some types of associated ledger entries block an account from being deleted. For example, the issuer of a fungible token can't be deleted while anyone holds a nonzero balance of that token.
 
-After an account has been deleted, it can be re-created in the ledger through the normal method of [creating accounts](accounts.md#creating-accounts). An account that has been deleted and re-created is no different than an account that has been created for the first time.
+After an account has been deleted, it can be re-created in the ledger through the normal method of [creating accounts](index.md#creating-accounts). An account that has been deleted and re-created is no different than an account that has been created for the first time.
 
 ## Requirements
 

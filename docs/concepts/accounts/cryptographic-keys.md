@@ -62,14 +62,14 @@ Transactions in the XRP Ledger must include the public keys so that the network 
 
 ### Account ID and Address
 
-The **Account ID** is the core identifier for an [account](accounts.md) or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:
+The **Account ID** is the core identifier for an [account](index.md) or a key pair. It is derived from the public key. In the XRP Ledger protocol, the Account ID is 20 bytes of binary data. Most XRP Ledger APIs represent the Account ID as an address, in one of two formats:
 
 - A "classic address" writes an Account ID in [base58][] with a checksum. In a [wallet_propose method][] response, this is the `account_id` value.
 - An "X-Address" combines an Account ID _and_ a [Destination Tag](../transactions/source-and-destination-tags.md) and writes the combined value in [base58][] with a checksum.
 
 The checksum in both formats is there so that small changes result in an invalid address, instead of changing it to refer to a different, but still potentially valid, account. This way, if you make a typo or a transmission error occurs, you don't send money to the wrong place.
 
-It is important to know that not all Account IDs (or addresses) refer to accounts in the ledger. Deriving keys and addresses is purely a mathematical operation. For an account to have a record in the XRP Ledger, it must [receive a payment of XRP](accounts.md#creating-accounts) that funds its [reserve requirement](reserves.md). An account cannot send any transactions until after it has been funded.
+It is important to know that not all Account IDs (or addresses) refer to accounts in the ledger. Deriving keys and addresses is purely a mathematical operation. For an account to have a record in the XRP Ledger, it must [receive a payment of XRP](index.md#creating-accounts) that funds its [reserve requirement](reserves.md). An account cannot send any transactions until after it has been funded.
 
 Even if an Account ID or address does not refer to a funded account, you _can_ use that Account ID or address to represent a [regular key pair](#regular-key-pair) or a [member of a signer list](multi-signing.md).
 

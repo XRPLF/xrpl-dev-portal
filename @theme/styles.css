@@ -249,3 +249,7 @@ ul.nav.navbar-nav {
   --bg-raised: var(--color-gray-2);
   --button-background-color: var(--color-gray-2);
 }
+
+:root .form-control-plaintext {
+  color: var(--text-color);
+}

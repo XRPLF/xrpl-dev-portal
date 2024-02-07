@@ -19,7 +19,7 @@ XRP Ledger上でアプリケーションを構築する場合は、XRP Ledger AP
 
 ピアツーピアサーバーのXRP Ledgerネットワークは世界で共有されている台帳であり、ここから、アプリケーションはこの台帳の内容の状態に関して信頼できる情報を得ることができます。この状態に関する情報には以下の内容が含まれます。
 
-- 各[アカウント](../accounts/accounts.md)の設定
+- 各[アカウント](../accounts/index.md)の設定
 - XRPおよび[トークン](../tokens/index.md)の残高
 - 分散型取引所でのオファー（注文）
 - ネットワーク設定（例: [トランザクションコスト](../transactions/transaction-cost.md)と[準備金](../accounts/reserves.md)の金額）

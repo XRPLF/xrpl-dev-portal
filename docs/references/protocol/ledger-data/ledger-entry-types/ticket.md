@@ -34,7 +34,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Name                | JSON Type | Internal Type | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
-| `Account`           | String    | AccountID     | Yes       | The [account](../../../../concepts/accounts/accounts.md) that owns this Ticket. |
+| `Account`           | String    | AccountID     | Yes       | The [account](../../../../concepts/accounts/index.md) that owns this Ticket. |
 | `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this is a {% $frontmatter.seo.title %} entry. |
 | `OwnerNode`         | String    | UInt64        | Yes       | A hint indicating which page of the owner directory links to this entry, in case the directory consists of multiple pages. |
 | `PreviousTxnID`     | String    | Hash256       | Yes       | The identifying hash of the [transaction](../../../../concepts/transactions/index.md) that most recently modified this entry. |

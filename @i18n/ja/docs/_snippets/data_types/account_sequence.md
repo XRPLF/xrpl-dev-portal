@@ -1,6 +1,6 @@
 シーケンス番号とは、32ビットの符号なし整数であり、指定された送金元からのトランザクションが正しい順序で1回だけ実行されるようにするために使用されます。
 
-すべての[XRP Ledgerアカウント](../../concepts/accounts/accounts.md)には、`Sequence`フィールドに1つのシーケンス番号があり、アカウントがトランザクションを送信し、そのトランザクションが[検証済みレジャー](../../concepts/ledgers/index.md)に記録されるたびに、1ずつ増加します。シーケンス番号は各[トランザクション](../../concepts/transactions/index.md)の`Sequence`フィールドにもあり、そのトランザクションが実行される際にアカウントの現在のシーケンス番号と一致している必要があります。各アカウントで、各シーケンス番号は番号順に一度だけ使用できます。
+すべての[XRP Ledgerアカウント](../../concepts/accounts/index.md)には、`Sequence`フィールドに1つのシーケンス番号があり、アカウントがトランザクションを送信し、そのトランザクションが[検証済みレジャー](../../concepts/ledgers/index.md)に記録されるたびに、1ずつ増加します。シーケンス番号は各[トランザクション](../../concepts/transactions/index.md)の`Sequence`フィールドにもあり、そのトランザクションが実行される際にアカウントの現在のシーケンス番号と一致している必要があります。各アカウントで、各シーケンス番号は番号順に一度だけ使用できます。
 
 [DeletableAccounts Amendment](/resources/known-amendments.md#deletableaccounts) を適用する場合、アカウントの`Sequence`番号の始まりが、アカウントが作成されたレジャーバージョンの[レジャーインデックス][]と一致します。DeletableAccountsを適用しない場合、どのアカウントの`Sequence`番号も1で始まります。
 

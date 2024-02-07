@@ -97,7 +97,7 @@ See also:
 
 * [Issuing and Operational Addresses](../../concepts/accounts/account-types.md)
 
-* [Creating Accounts](../../concepts/accounts/accounts.md#creating-accounts)
+* [Creating Accounts](../../concepts/accounts/index.md#creating-accounts)
 
 * [Reserves](../../concepts/accounts/reserves.md)
 
@@ -608,7 +608,7 @@ Off-Ledger Balances</td>
 ## See Also
 
 - **Concepts:**
-    - [Accounts](../../concepts/accounts/accounts.md)
+    - [Accounts](../../concepts/accounts/index.md)
     - [Direct XRP Payments](../../concepts/payment-types/direct-xrp-payments.md)
     - [Partial Payments](../../concepts/payment-types/partial-payments.md)
     - [Source and Destination Tags](../../concepts/transactions/source-and-destination-tags.md)

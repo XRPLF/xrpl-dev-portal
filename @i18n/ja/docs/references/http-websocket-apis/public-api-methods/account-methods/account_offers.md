@@ -9,7 +9,7 @@ labels:
 # account_offers
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
-`account_offers`メソッドは、特定の[アカウント](../../../../concepts/accounts/accounts.md)から出された[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)のうち、特定の[レジャーバージョン](../../../../concepts/ledgers/index.md)で未処理であったオファーのリストを取得します。
+`account_offers`メソッドは、特定の[アカウント](../../../../concepts/accounts/index.md)から出された[オファー](../../../../concepts/tokens/decentralized-exchange/offers.md)のうち、特定の[レジャーバージョン](../../../../concepts/ledgers/index.md)で未処理であったオファーのリストを取得します。
 
 ## リクエストのフォーマット
 

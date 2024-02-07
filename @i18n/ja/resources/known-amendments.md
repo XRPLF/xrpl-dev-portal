@@ -281,7 +281,7 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-[アカウント](../docs/concepts/accounts/accounts.md)を削除できるようになります。
+[アカウント](../docs/concepts/accounts/index.md)を削除できるようになります。
 
 この修正を適用しない場合、新しいアカウントは`Sequence`番号が必ず1で始まります。また、レジャーの状態データからアカウントを削除できません。
 
@@ -661,7 +661,7 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
-Checksトランザクションがアカウントのメタデータに影響を及ぼす方法を変更し、Checksが受信アカウントの[アカウント](../docs/concepts/accounts/accounts.md)履歴に適切に追加されるようにします。（具体的には、受信アカウントの[AccountRootオブジェクト](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md)の`PreviousTxnID`フィールドと`PreviousTxnLedgerSeq`フィールドを更新します。これは、アカウントと、アカウントが所有するオブジェクトに影響を及ぼしたトランザクションの「スレッド」を追跡するために使用できます。）
+Checksトランザクションがアカウントのメタデータに影響を及ぼす方法を変更し、Checksが受信アカウントの[アカウント](../docs/concepts/accounts/index.md)履歴に適切に追加されるようにします。（具体的には、受信アカウントの[AccountRootオブジェクト](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md)の`PreviousTxnID`フィールドと`PreviousTxnLedgerSeq`フィールドを更新します。これは、アカウントと、アカウントが所有するオブジェクトに影響を及ぼしたトランザクションの「スレッド」を追跡するために使用できます。）
 
 この修正を適用しない場合、Checksトランザクション（[CheckCreate][]、[CheckCash][]、および[CheckCancel][]）は送信者のアカウント履歴のみを更新します。この修正を適用した場合、これらのトランザクションは、送信アカウントにも受信アカウントにも影響します。この修正は、[Checks Amendment](#checks)も有効でないかぎり効果がありません。
 

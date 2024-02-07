@@ -8,14 +8,14 @@ labels:
 ---
 # Set Up Multi-Signing
 
-[Multi-signing](../../../concepts/accounts/multi-signing.md) is one of three ways to authorize [transactions](../../../concepts/transactions/index.md) for the XRP Ledger, alongside signing with [regular keys and master keys](../../../concepts/accounts/cryptographic-keys.md). You can configure your [address](../../../concepts/accounts/accounts.md) to allow any combination of the three methods to authorize transactions.
+[Multi-signing](../../../concepts/accounts/multi-signing.md) is one of three ways to authorize [transactions](../../../concepts/transactions/index.md) for the XRP Ledger, alongside signing with [regular keys and master keys](../../../concepts/accounts/cryptographic-keys.md). You can configure your [address](../../../concepts/accounts/index.md) to allow any combination of the three methods to authorize transactions.
 
 This tutorial demonstrates how to enable multi-signing for an address.
 
 
 ## Prerequisites
 
-- You must have a funded XRP Ledger [address](../../../concepts/accounts/accounts.md) with enough spare XRP to send transactions and meet the [reserve requirement](../../../concepts/accounts/reserves.md) of a new signer list.
+- You must have a funded XRP Ledger [address](../../../concepts/accounts/index.md) with enough spare XRP to send transactions and meet the [reserve requirement](../../../concepts/accounts/reserves.md) of a new signer list.
 
     - With the [MultiSignReserve amendment][] enabled, multi-signing requires 2 XRP for the account reserve, regardless of the number of signers and signatures you use. (The MultiSignReserve amendment has been enabled in the production XRP Ledger since **2019-04-07**.)
 

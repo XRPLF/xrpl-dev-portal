@@ -63,7 +63,7 @@ The following example shows a successful transaction, as returned by the [tx met
 }
 ```
 
-This example shows an [AccountSet transaction][] sent by the [account](../../accounts/accounts.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/transaction-results.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
+This example shows an [AccountSet transaction][] sent by the [account](../../accounts/index.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/transaction-results.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
 
 
 ### Case: Not Included in a Validated Ledger
@@ -223,7 +223,7 @@ XRP amounts are tracked in the `Balance` field of `AccountRoot` objects. (XRP ca
 
 You should always use [the `delivered_amount` field](../../payment-types/partial-payments.md#the-delivered_amount-field) to see how much a payment delivered.
 
-If the payment contains a `CreatedNode` with `"LedgerEntryType": "AccountRoot"`, that means the payment [funded a new account](../../accounts/accounts.md#creating-accounts) in the ledger.
+If the payment contains a `CreatedNode` with `"LedgerEntryType": "AccountRoot"`, that means the payment [funded a new account](../../accounts/index.md#creating-accounts) in the ledger.
 
 #### Token Payments
 

@@ -19,7 +19,7 @@ When building applications on the XRP Ledger, it is important to understand this
 
 The peer-to-peer XRP Ledger network provides a worldwide, shared ledger, which gives applications authoritative information about the state of its contents. This state information includes:
 
-- settings for each [account](../accounts/accounts.md)
+- settings for each [account](../accounts/index.md)
 - balances of XRP and [tokens](../tokens/index.md)
 - offers in the distributed exchange
 - network settings, such as [transaction costs](../transactions/transaction-cost.md) and [reserve](../accounts/reserves.md) amounts

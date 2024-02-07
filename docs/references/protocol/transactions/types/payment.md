@@ -84,7 +84,7 @@ Most of the time, the `issuer` field of a non-XRP [Currency Amount][] indicates 
 
 The Payment transaction type can create new accounts in the XRP Ledger by sending enough XRP to an unfunded address. Other transactions to unfunded addresses always fail.
 
-For more information, see [Accounts](../../../../concepts/accounts/accounts.md#creating-accounts).
+For more information, see [Accounts](../../../../concepts/accounts/index.md#creating-accounts).
 
 ## Paths
 

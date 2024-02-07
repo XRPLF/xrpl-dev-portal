@@ -324,7 +324,7 @@ However, the amendment was added to `rippled` v0.60.0 before implementation was 
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Makes it possible to delete [accounts](../docs/concepts/accounts/accounts.md).
+Makes it possible to delete [accounts](../docs/concepts/accounts/index.md).
 
 Without this amendment, new accounts always start with their `Sequence` numbers at 1, and there is no way to remove accounts from the state data of the ledger.
 
@@ -704,7 +704,7 @@ Without this amendment, the minimum threshold for amendment activation is any va
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
-Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](../docs/concepts/accounts/accounts.md) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
+Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](../docs/concepts/accounts/index.md) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
 

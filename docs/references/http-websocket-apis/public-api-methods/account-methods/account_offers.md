@@ -9,7 +9,7 @@ labels:
 # account_offers
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AccountOffers.cpp "Source")
 
-The `account_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) made by a given [account](../../../../concepts/accounts/accounts.md) that are outstanding as of a particular [ledger version](../../../../concepts/ledgers/index.md).
+The `account_offers` method retrieves a list of [offers](../../../../concepts/tokens/decentralized-exchange/offers.md) made by a given [account](../../../../concepts/accounts/index.md) that are outstanding as of a particular [ledger version](../../../../concepts/ledgers/index.md).
 
 ## Request Format
 

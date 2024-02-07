@@ -63,7 +63,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 }
 ```
 
-この例では、rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnというアドレスを持つ[アカウント](../../accounts/accounts.md)が、[シーケンス番号][] 376を使用して、[AccountSetトランザクション][]を送信したことを示しています。トランザクションの[識別用ハッシュ][]は`017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567`で、その[結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)は`tesSUCCESS`です。トランザクションは、検証済みのレジャーバージョン46447423に記録されたため、結果は最終的なものです。
+この例では、rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnというアドレスを持つ[アカウント](../../accounts/index.md)が、[シーケンス番号][] 376を使用して、[AccountSetトランザクション][]を送信したことを示しています。トランザクションの[識別用ハッシュ][]は`017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567`で、その[結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)は`tesSUCCESS`です。トランザクションは、検証済みのレジャーバージョン46447423に記録されたため、結果は最終的なものです。
 
 
 ### ケース: 検証済みレジャーに記録されていない
@@ -223,7 +223,7 @@ XRPの額は、`AccountRoot`オブジェクトの`Balance`フィールドで追�
 
 支払いでいくら支払われたかを確認するには、必ず[delivered_amountフィールド](../../payment-types/partial-payments.md#delivered_amountフィールド)を使用する必要があります。
 
-支払いにLedgerEntryTypeが`AccountRoot`の`CreatedNode`が含まれている場合は、その支払いによってレジャーの[新しいアカウントへの資金供給](../../accounts/accounts.md#アカウントの作成)が行われたことを意味します。
+支払いにLedgerEntryTypeが`AccountRoot`の`CreatedNode`が含まれている場合は、その支払いによってレジャーの[新しいアカウントへの資金供給](../../accounts/index.md#アカウントの作成)が行われたことを意味します。
 
 #### トークンでの支払い
 

@@ -11,7 +11,7 @@ labels:
 
 _（[DepositAuth Amendment][]により追加されました。）_
 
-Deposit Authorizationは、XRP Ledgerの[アカウント](accounts.md)のオプション機能です。Deposit Authorizationが有効な場合、トランザクションはそのトランザクションの送信者がアカウント自体でない限り、アカウントへはどのような資産も送信できません。Deposit Authorizationのアカウントは、次の2つの方法でのみ入金することができます。
+Deposit Authorizationは、XRP Ledgerの[アカウント](index.md)のオプション機能です。Deposit Authorizationが有効な場合、トランザクションはそのトランザクションの送信者がアカウント自体でない限り、アカウントへはどのような資産も送信できません。Deposit Authorizationのアカウントは、次の2つの方法でのみ入金することができます。
 
 - [事前承認](#事前承認)されたアカウントから。
 - トランザクションを送信して資金を受け取ることにより。例えば、Deposit Authorizationが設定されたアカウントは、他のアカウントによって開始された[エスクロー](../payment-types/escrow.md)を完了することができます。

@@ -8,14 +8,14 @@ labels:
 ---
 # マルチシグの設定
 
-[マルチシグ](../../../concepts/accounts/multi-signing.md)は、XRP Ledgerの[トランザクション](../../../concepts/transactions/index.md)を承認する3種類の方法の1つです。マルチシグの他に[レギュラーキーとマスターキー](../../../concepts/accounts/cryptographic-keys.md)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](../../../concepts/accounts/accounts.md)を設定できます。
+[マルチシグ](../../../concepts/accounts/multi-signing.md)は、XRP Ledgerの[トランザクション](../../../concepts/transactions/index.md)を承認する3種類の方法の1つです。マルチシグの他に[レギュラーキーとマスターキー](../../../concepts/accounts/cryptographic-keys.md)で署名する方法があります。3種類のトランザクション承認方法を自由に組み合わせて使用できるように[アドレス](../../../concepts/accounts/index.md)を設定できます。
 
 このチュートリアルでは、アドレスのマルチシグを有効にする方法を説明します。
 
 
 ## 前提条件
 
-- トランザクションを送信するための十分なXRPが供給されていて、新しい署名者リストの[必要準備金](../../../concepts/accounts/reserves.md)を満たしている資金供給のあるXRP Ledger[アドレス](../../../concepts/accounts/accounts.md)が必要です。
+- トランザクションを送信するための十分なXRPが供給されていて、新しい署名者リストの[必要準備金](../../../concepts/accounts/reserves.md)を満たしている資金供給のあるXRP Ledger[アドレス](../../../concepts/accounts/index.md)が必要です。
 
   - [MultiSignReserve Amendment][]が有効な場合、マルチシグを使用するには、使用する署名と署名者の数に関わらず、アカウントの準備金として2 XRPが必要です。（MultiSignReserve Amendmentは**2019年4月7日**以降、本番環境のXRP Ledgerで有効になっています。)
 

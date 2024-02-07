@@ -46,7 +46,8 @@ theme:
       - group: About
         items:
           - page: about/index.page.tsx
-          - page: about/uses.page.tsx
+          - label: Use Cases & Projects
+            page: about/uses.page.tsx
           - page: about/history.page.tsx
           - page: about/impact.page.tsx
           - label: XRPL Foundation
@@ -56,7 +57,8 @@ theme:
           - page: about/privacy-policy.md
       - group: Docs
         items:
-          - page: docs/index.page.tsx
+          - label: XRPL Documentation
+            page: docs/index.page.tsx
           - page: docs/introduction/index.md
           - page: docs/use-cases/index.md
           - page: docs/concepts/index.md
@@ -88,7 +90,8 @@ theme:
           - label: XRPL Jobs
             href: https://jobs.xrpl.org/
             external: true
-          - page: blog/index.md
+          - label: XRPL Community Blog
+            page: blog/index.md
           - label: XRPL Grants
             href: https://xrplgrants.org/
             external: true

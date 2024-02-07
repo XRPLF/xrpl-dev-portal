@@ -53,7 +53,7 @@ Because trades are only executed each time a new ledger closes (approximately ev
 
 The XRP Ledger does not natively represent concepts such as market orders, stop orders, or trading on leverage. Some of these may be possible with creative use of custom tokens and Offer properties.
 
-As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](../../accounts/accounts.md) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](../fungible-tokens/freezes.md) and [authorized trust lines](../fungible-tokens/authorized-trust-lines.md) are intended to help issuers comply with relevant laws and regulations.
+As a decentralized system, the XRP Ledger does not have any information on the actual people and organizations behind the [accounts](../../accounts/index.md) involved in trading. The ledger itself cannot implement restrictions around who can or cannot participate in trading, and users and issuers must take care to follow any relevant laws to regulate trading tokens that represent various types of underlying assets. Features such as [freezes](../fungible-tokens/freezes.md) and [authorized trust lines](../fungible-tokens/authorized-trust-lines.md) are intended to help issuers comply with relevant laws and regulations.
 
 ## See Also
 

@@ -43,7 +43,7 @@ npm install xrpl
 
 ## Start Building
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../concepts/accounts/accounts.md), integrating with the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../concepts/accounts/index.md), integrating with the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are some steps you use in many XRP Ledger projects:
 

@@ -35,7 +35,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 
 | Field            | JSON Type           | [Internal Type][] | Description     |
 |:-----------------|:--------------------|:------------------|:----------------|
-| `Destination`    | String              | AccountID         | The unique address of the [account](../../../../concepts/accounts/accounts.md) that can cash the Check. |
+| `Destination`    | String              | AccountID         | The unique address of the [account](../../../../concepts/accounts/index.md) that can cash the Check. |
 | `SendMax`        | [Currency Amount][] | Amount            | Maximum amount of source currency the Check is allowed to debit the sender, including [transfer fees](../../../../concepts/tokens/transfer-fees.md) on non-XRP currencies. The Check can only credit the destination with the same currency (from the same issuer, for non-XRP currencies). For non-XRP amounts, the nested field names MUST be lower-case. |
 | `DestinationTag` | Number              | UInt32            | _(Optional)_ Arbitrary tag that identifies the reason for the Check, or a hosted recipient to pay. |
 | `Expiration`     | Number              | UInt32            | _(Optional)_ Time after which the Check is no longer valid, in [seconds since the Ripple Epoch][]. |
@@ -45,7 +45,7 @@ Create a Check object in the ledger, which is a deferred payment that can be cas
 
 - If the `Destination` account is blocking incoming Checks, the transaction fails with the result code `tecNO_PERMISSION`. _(Requires the [DisallowIncoming amendment][] {% not-enabled /%})_
 - If the `Destination` is the sender of the transaction, the transaction fails with the result code `temREDUNDANT`.
-- If the `Destination` [account](../../../../concepts/accounts/accounts.md) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
+- If the `Destination` [account](../../../../concepts/accounts/index.md) does not exist in the ledger, the transaction fails with the result code `tecNO_DST`.
 - If the `Destination` account has the `RequireDest` flag enabled but the transaction does not include a `DestinationTag` field, the transaction fails with the result code `tecDST_TAG_NEEDED`.
 - If `SendMax` specifies a token which is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md), the transaction fails with the result `tecFROZEN`.
 - If the `Expiration` of the transaction is in the past, the transaction fails with the result `tecEXPIRED`.

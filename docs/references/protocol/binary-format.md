@@ -177,7 +177,7 @@ Transaction instructions may contain fields of any of the following types:
 
 | Type Name     | Type Code | Bit Length | [Length-prefixed][]? | Description    |
 |:--------------|:----------|:-----------|:---------------------|----------------|
-| [AccountID][] | 8         | 160        | Yes                  | The unique identifier for an [account](../../concepts/accounts/accounts.md). |
+| [AccountID][] | 8         | 160        | Yes                  | The unique identifier for an [account](../../concepts/accounts/index.md). |
 | [Amount][]    | 6         | 64 or 384  | No                   | An amount of XRP or tokens. The length of the field is 64 bits for XRP or 384 bits (64+160+160) for tokens. |
 | [Blob][]      | 7         | Variable   | Yes                  | Arbitrary binary data. One important such field is `TxnSignature`, the signature that authorizes a transaction. |
 | [Hash128][]   | 4         | 128        | No                   | A 128-bit arbitrary binary value. The only such field is `EmailHash`, which is intended to store the MD-5 hash of an account owner's email for purposes of fetching a [Gravatar](https://www.gravatar.com/). |
@@ -210,7 +210,7 @@ In addition to all of the above field types, the following types may appear in o
 ### AccountID Fields
 [AccountID]: #accountid-fields
 
-Fields of this type contain the 160-bit identifier for an XRP Ledger [account](../../concepts/accounts/accounts.md). In JSON, these fields are represented as [base58][] XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data nor does it include the `0x00` "type prefix" used in [address base58 encoding](../../concepts/accounts/addresses.md#address-encoding). (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
+Fields of this type contain the 160-bit identifier for an XRP Ledger [account](../../concepts/accounts/index.md). In JSON, these fields are represented as [base58][] XRP Ledger "addresses", with additional checksum data so that typos are unlikely to result in valid addresses. (This encoding, sometimes called "Base58Check", prevents accidentally sending money to the wrong address.) The binary format for these fields does not contain any checksum data nor does it include the `0x00` "type prefix" used in [address base58 encoding](../../concepts/accounts/addresses.md#address-encoding). (However, since the binary format is used mostly for signed transactions, a typo or other error in transcribing a signed transaction would invalidate the signature, preventing it from sending money.)
 
 AccountIDs that appear as stand-alone fields (such as `Account` and `Destination`) are [length-prefixed](#length-prefixing) despite being a fixed 160 bits in length. As a result, the length indicator for these fields is always the byte `0x14`. AccountIDs that appear as children of special fields ([Amount `issuer`][Amount] and [PathSet `account`][PathSet]) are _not_ length-prefixed.
 

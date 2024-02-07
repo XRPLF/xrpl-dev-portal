@@ -77,7 +77,7 @@ Check out the [xrpl4j sample project](https://github.com/XRPLF/xrpl4j-sample) fo
 
 ## Start Building
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../concepts/accounts/accounts.md), integrating with the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../concepts/accounts/index.md), integrating with the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are the basic steps you'll need to cover for almost any XRP Ledger project:
 
@@ -115,7 +115,7 @@ The sample code in the previous section shows you how to connect to the Testnet,
 
 ### 2. Get account
 
-To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../concepts/accounts/accounts.md#creating-accounts) to meet the [account reserve](../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md).
+To store value and execute transactions on the XRP Ledger, you need to get an account: a [set of keys](../../concepts/accounts/cryptographic-keys.md#key-components) and an [address](../../concepts/accounts/addresses.md) that's been [funded with enough XRP](../../concepts/accounts/index.md#creating-accounts) to meet the [account reserve](../../concepts/accounts/reserves.md). The address is the identifier of your account and you use the [private key](../../concepts/accounts/cryptographic-keys.md#private-key) to sign transactions that you submit to the XRP Ledger. For production purposes, you should take care to store your keys and set up a [secure signing method](../../concepts/transactions/secure-signing.md).
 
 To generate a new account, `xrpl4j` provides the [`DefaultWalletFactory`](https://javadoc.io/doc/org.xrpl/xrpl4j-keypairs/latest/org/xrpl/xrpl4j/wallet/DefaultWalletFactory.html).
 

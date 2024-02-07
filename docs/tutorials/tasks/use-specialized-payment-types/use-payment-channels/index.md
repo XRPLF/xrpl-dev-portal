@@ -11,7 +11,7 @@ labels:
 
 [Payment Channels](../../../../concepts/payment-types/payment-channels.md) are an advanced feature for sending "asynchronous" XRP payments that can be divided into very small increments and settled later. This tutorial walks through the entire process of using a payment channel, with examples using the [JSON-RPC API](../../../../references/http-websocket-apis/index.md) of a local [`rippled` server](../../../../concepts/networks-and-servers/index.md).
 
-Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](../../../../concepts/accounts/accounts.md). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
+Ideally, to step through this tutorial, you would have two people, each with the keys to a [funded XRP Ledger account](../../../../concepts/accounts/index.md). However, you can also step through the tutorial as one person managing two XRP Ledger addresses.
 
 ## Example Values
 

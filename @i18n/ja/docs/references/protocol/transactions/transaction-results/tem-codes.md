@@ -31,7 +31,7 @@ labels:
 | `temBAD_SEND_XRP_PATHS`     | [Paymentトランザクション][]で、XRP送金時の`Paths`が指定されていますが、XRP間の支払いは常に直接行われます。 |
 | `temBAD_SEQUENCE`             | トランザクションは、トランザクション自体の`Sequence`番号よりも大きいシーケンス番号を参照します。例えば、取り消したいオファーは、そのオファーを取り消すトランザクションよりも後に置く必要があります。 |
 | `temBAD_SIGNATURE`            | このトランザクションを承認するための署名がないか、または署名の形式が適切ではありません。（適切な形式の署名がアカウントで承認されない場合は、[tecNO_PERMISSION](tec-codes.md)を参照してください。） |
-| `temBAD_SRC_ACCOUNT`         | このトランザクションの送信元の`Account`（「支払元アカウント」）の[アカウント](../../../../concepts/accounts/accounts.md)アドレスは適切な形式ではありません。 |
+| `temBAD_SRC_ACCOUNT`         | このトランザクションの送信元の`Account`（「支払元アカウント」）の[アカウント](../../../../concepts/accounts/index.md)アドレスは適切な形式ではありません。 |
 | `temBAD_TRANSFER_RATE`       | [AccountSetトランザクションの`TransferRate`フィールド](../types/accountset.md#transferrate)のフォーマットが適切ではないか、または許容範囲外です。 |
 | `temCANNOT_PREAUTH_SELF`     | [DepositPreauthトランザクション][]の送信者は、事前承認対象のアカウントとしても指定されていました。自分自身を事前承認することはできません。 |
 | `temDST_IS_SRC`              | トランザクションで宛先アドレスがトランザクションの送信元`Account`として誤って指定されていました。これにはトラストライン（支払先アドレスは`LimitAmount`の`issuer`フィールド）とPayment Channel（支払先アドレスは`Destination`フィールド）などがあります。 |

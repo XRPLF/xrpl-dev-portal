@@ -12,7 +12,7 @@ Every transaction has the same set of common fields, plus additional fields base
 
 | Field                | JSON Type        | [Internal Type][] | Description      |
 |:---------------------|:-----------------|:------------------|:-----------------|
-| `Account`            | String           | AccountID         | _(Required)_ The unique address of the [account](../../../concepts/accounts/accounts.md) that initiated the transaction. |
+| `Account`            | String           | AccountID         | _(Required)_ The unique address of the [account](../../../concepts/accounts/index.md) that initiated the transaction. |
 | `TransactionType`    | String           | UInt16            | _(Required)_ The type of transaction. Valid [transaction types](types/index.md) include: `Payment`, `OfferCreate`, `TrustSet`, and many others. |
 | `Fee`                | String           | Amount            | _(Required; [auto-fillable][])_ Integer amount of XRP, in drops, to be destroyed as a cost for distributing this transaction to the network. Some transaction types have different minimum requirements. See [Transaction Cost][] for details. |
 | `Sequence`           | Number           | UInt32            | _(Required; [auto-fillable][])_ The [sequence number](../data-types/basic-data-types.md#account-sequence) of the account sending the transaction. A transaction is only valid if the `Sequence` number is exactly 1 greater than the previous transaction from the same account. The special case `0` means the transaction is using a [Ticket](../../../concepts/accounts/tickets.md) instead _(Added by the [TicketBatch amendment][].)_. |

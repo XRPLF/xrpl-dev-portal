@@ -84,7 +84,7 @@ Along these lines, there's a good chance that you are following industry best pr
     The account needs at least 11 XRP, which provides the 10 XRP [base reserve](../../../../concepts/accounts/reserves.md), plus enough to pay the transaction costs of redeeming claims, which are trivial. For example, you could redeem thousands of claims for less than 1 XRP in total.
     ```
 
-[Fund XRP Ledger accounts with enough XRP >](../../../../concepts/accounts/accounts.md)
+[Fund XRP Ledger accounts with enough XRP >](../../../../concepts/accounts/index.md)
 
 
 ## Payer: [Open a payment channel](index.md#1-the-payer-creates-a-payment-channel-to-a-particular-recipient)

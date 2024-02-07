@@ -9,7 +9,7 @@ labels:
 ---
 # Offline Account Setup Tutorial
 
-A highly secure [signing configuration](../../../concepts/transactions/secure-signing.md) involves keeping an XRP Ledger [account](../../../concepts/accounts/accounts.md)'s [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
+A highly secure [signing configuration](../../../concepts/transactions/secure-signing.md) involves keeping an XRP Ledger [account](../../../concepts/accounts/index.md)'s [cryptographic keys](../../../concepts/accounts/cryptographic-keys.md) securely on an offline, air-gapped machine. After setting up this configuration, you can sign a variety of transactions, transfer only the signed transactions to an online computer, and submit them to the XRP Ledger network without ever exposing your secret key to malicious actors online.
 
 **Caution:** Proper operational security is necessary to protect your offline machine. For example, the offline machine must be physically located where untrusted people cannot get access to it, and trusted operators must be careful not to transfer compromised software onto the machine. (For example, do not use a USB drive that was previously attached to a network-connected computer.)
 
@@ -71,7 +71,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 Take note of the following values:
 
-- **`account_id`**. This is the address associated with the key pair, which becomes your **[account](../../../concepts/accounts/accounts.md) address** in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your `account_id` publicly.
+- **`account_id`**. This is the address associated with the key pair, which becomes your **[account](../../../concepts/accounts/index.md) address** in the XRP Ledger after you fund it with XRP (later in this process). It is safe to share your `account_id` publicly.
 - **`master_seed`**. This is the secret seed value for the key pair, which you'll use to sign transactions from the account. For best security, encrypt this value before writing it to disk on the offline machine. As an encryption key, use a secure passphrase that human operators can memorize or write down somewhere physically secure, such as a [diceware passphrase](https://theworld.com/~reinhold/diceware.html) created with properly weighted dice. You may also want to use a physical security key as a second factor. The extent of the precautions to take at this stage is up to you.
 - **`key_type`**. This is the cryptographic algorithm used for this key pair. You need to know what type of key pair you have. The default in `rippled` is `secp256k1`, but some client libraries use `Ed25519` by default.
 
@@ -83,7 +83,7 @@ Take note of the following values:
 
 ### 3. Fund the new address
 
-From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](../../../concepts/accounts/accounts.md#creating-accounts).
+From an online machine, send enough XRP to the **account address** you noted in step 1. For more information, see [Creating Accounts](../../../concepts/accounts/index.md#creating-accounts).
 
 **Tip:** For testing purposes, you can use the [Testnet Faucet](/resources/dev-tools/xrp-faucets) to get a new account with Test XRP, then use that account to fund the address you generated offline.
 
@@ -328,7 +328,7 @@ Then adjust and sign any replacement transactions for transactions that failed i
 ## See Also
 
 - **Concepts:**
-    - [Accounts](../../../concepts/accounts/accounts.md)
+    - [Accounts](../../../concepts/accounts/index.md)
     - [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md)
 - **Tutorials:**
     - [Set Up Secure Signing](../../../concepts/transactions/secure-signing.md)

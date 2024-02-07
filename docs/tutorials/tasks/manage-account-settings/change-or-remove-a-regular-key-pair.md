@@ -9,7 +9,7 @@ labels:
 ---
 # Change or Remove a Regular Key Pair
 
-The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](../../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions.  If your [account](../../../concepts/accounts/accounts.md)'s regular key pair is compromised, or if you want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
+The XRP Ledger allows an account to authorize a secondary key pair, called a _[regular key pair](../../../concepts/accounts/cryptographic-keys.md)_, to sign future transactions.  If your [account](../../../concepts/accounts/index.md)'s regular key pair is compromised, or if you want to periodically change the regular key pair as a security measure, use a [SetRegularKey transaction][] to remove or change the regular key pair for your account.
 
 For more information about master and regular key pairs, see [Cryptographic Keys](../../../concepts/accounts/cryptographic-keys.md).
 
