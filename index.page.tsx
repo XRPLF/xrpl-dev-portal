@@ -2,7 +2,7 @@ import { useTranslate } from '@portal/hooks';
 
 export const frontmatter = {
   seo: {
-    title: 'Crypto Currency Ledger Blockchain Company | XRPL.org',
+    title: 'XRP Ledger Home | XRPL.org',
     description: "XRP Ledger (XRPL) is an open-source, public blockchain. Gain access to technical documentation, reference materials, and blockchain ledger tools.",
   }
 };
