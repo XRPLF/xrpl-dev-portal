@@ -488,7 +488,7 @@ export default function XrpOverview() {
                         href={exch.href}
                         target="_blank"
                       >
-                        <span className="longform mr-3">{i}</span>
+                        <span className="longform mr-3">{i+1}</span>
                         <img className="mw-100" id={exch.id} alt={exch.alt} />
                       </a>
                     </li>
