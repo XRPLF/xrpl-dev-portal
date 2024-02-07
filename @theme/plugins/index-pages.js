@@ -28,10 +28,12 @@ export function indexPages() {
         const childRoutesData = await Promise.all(
           childRoutes.map(async route => {
             const { parsed } = contentProvider.loadContent(route.fsPath, 'frontmatter');
+            const slug = route.slug;
+            const title = await route.getNavText();
             return {
               ...parsed?.data,
-              slug: route.slug,
-              title: await route.getNavText(),
+              slug,
+              title,
             };
           })
         );

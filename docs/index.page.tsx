@@ -3,8 +3,8 @@ import { useTranslate } from '@portal/hooks';
 
 export const frontmatter = {
   seo: {
-    title: 'Documentation',
-    description: "Explore XRP Ledger documentation and everything you need to know to start building and integrating with the ledger.",
+    title: 'Ledger Documentation & Developer Resources | XRPL.org',
+    description: "Explore XRP Ledger documentation and other blockchain developer resources needed to start building and integrating with the ledger.",
   }
 };
 

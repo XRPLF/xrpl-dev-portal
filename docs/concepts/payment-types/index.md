@@ -4,9 +4,10 @@ parent: concepts.html
 metadata:
   indexPage: true
 seo:
-    description: The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
+    title: Point-to-Point & Specialized Ledger Payment Types | XRPL.org
+    description: While XRP Ledger supports point-to-point XRP payments, it's also compatible with more specialized payment types. Discover which ledger payment methods here.
 ---
-# Payment Types
+# Ledger Payment Methods
 
 The XRP Ledger supports point-to-point XRP payments alongside other, more specialized payment types.
 
