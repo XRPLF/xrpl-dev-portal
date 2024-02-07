@@ -82,7 +82,7 @@ export default function CodeSamples() {
             <div className="d-flex flex-column">
               <h3 className="h4 h2-sm pb-4">{translate('Contribute Code Samples')}</h3>
               <h6 className="eyebrow mb-20">
-                {translate('Help the XRPL community by submitting your<br /> own code samples')}
+                {translate('Help the XRPL community by submitting your own code samples')}
               </h6>
             </div>
             <div className="row pl-4">
