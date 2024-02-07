@@ -11,23 +11,23 @@ export const frontmatter = {
 const recommendedPages = [
   {
     description: 'Public API Methods',
-    link: '/references/http-websocket-apis/public-api-methods/',
+    link: '/docs/references/http-websocket-apis/public-api-methods/',
   },
   {
     description: 'Getting Started with Python',
-    link: '/tutorials/get-started/get-started-using-python/',
+    link: '/docs/tutorials/get-started/get-started-using-python/',
   },
   {
     description: 'Run a Validator',
-    link: '/infrastructure/configuration/server-modes/run-rippled-as-a-validator/',
+    link: '/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/',
   },
   {
     description: 'Reserves',
-    link: '/concepts/accounts/reserves/',
+    link: '/docs/concepts/accounts/reserves/',
   },
   {
     description: 'Transaction Types',
-    link: '/references/protocol/transactions/types/',
+    link: '/docs/references/protocol/transactions/types/',
   }
 ];
 
@@ -39,15 +39,15 @@ const useCases = [
     subItems: [
       {
         description: 'Algorithmic Trading',
-        link: '/use-cases/defi/algorithmic-trading/',
+        link: '/docs/use-cases/defi/algorithmic-trading/',
       },
       {
         description: 'List XRP as an Exchange',
-        link: '/use-cases/defi/list-xrp-as-an-exchange/',
+        link: '/docs/use-cases/defi/list-xrp-as-an-exchange/',
       },
       {
         description: 'Payment Types',
-        link: '/concepts/payment-types/',
+        link: '/docs/concepts/payment-types/',
       },
     ],
   },
@@ -58,15 +58,15 @@ const useCases = [
     subItems: [
       {
         description: 'Stablecoin Issuer',
-        link: '/use-cases/tokenization/stablecoin-issuer/',
+        link: '/docs/use-cases/tokenization/stablecoin-issuer/',
       },
       {
         description: 'NFT Marketplace',
-        link: '/use-cases/tokenization/nft-mkt-overview/',
+        link: '/docs/use-cases/tokenization/nft-mkt-overview/',
       },
       {
         description: 'Digital Artist',
-        link: '/use-cases/tokenization/digital-artist/',
+        link: '/docs/use-cases/tokenization/digital-artist/',
       },
     ],
   },
@@ -77,15 +77,15 @@ const useCases = [
     subItems: [
       {
         description: 'Peer-to-Peer Payments',
-        link: '/use-cases/payments/peer-to-peer-payments-uc/',
+        link: '/docs/use-cases/payments/peer-to-peer-payments-uc/',
       },
       {
         description: 'Cross-Currency Payments',
-        link: '/concepts/payment-types/cross-currency-payments/',
+        link: '/docs/concepts/payment-types/cross-currency-payments/',
       },
       {
         description: 'Smart Contracts',
-        link: '/use-cases/payments/smart-contracts-uc/',
+        link: '/docs/use-cases/payments/smart-contracts-uc/',
       },
     ],
   },
@@ -250,7 +250,7 @@ export default function Docs() {
           <div className="nav card-grid flat-card-grid card-grid-3xN">
             <div className="col">
               <FlatCard
-                href="/concepts"
+                href="/docs/concepts/"
                 title={translate('Concepts')}
                 description={translate('Learn the "what" and the "why" behind fundamental aspects of the XRP Ledger.')}
                 linkText={translate('Read the Docs')}
@@ -259,7 +259,7 @@ export default function Docs() {
             </div>
             <div className="col">
               <FlatCard
-                href="/tutorials"
+                href="/docs/tutorials/"
                 title={translate('Tutorials')}
                 description={translate('Get step-by-step guidance to perform common tasks with the XRP Ledger.')}
                 linkText={translate('View Tutorials')}
@@ -268,7 +268,7 @@ export default function Docs() {
             </div>
             <div className="col">
               <FlatCard
-                href="/references"
+                href="/docs/references/"
                 title={translate('References')}
                 description={translate(
                   'Look up reference documentation for the XRP Ledger protocol, API methods, and more.'
@@ -291,7 +291,7 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Getting Started')}</h4>
           <div className="card-grid card-grid-2xN quickstart-card">
             <div className="col">
-              <a href="/tutorials/javascript/modular-tutorials/send-payments" className="card float-up-on-hover">
+              <a href="/docs/tutorials/javascript/modular-tutorials/send-payments" className="card float-up-on-hover">
                 <h5 className="mt-7">{translate('Quickstart to XRP Ledger')}</h5>
                 <p className="mb-8 mt-4">{translate('An introduction to fundamental aspects of the XRP Ledger.')}</p>
                 <div className="dg-lg-block mb-3">
@@ -325,7 +325,7 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
                 <div className="col langs">
-                  <a href="/tutorials/get-started/get-started-using-javascript/">
+                  <a href="/docs/tutorials/get-started/get-started-using-javascript/">
                     <img
                       alt="Javascript Logo"
                       src={require('../static/img/logos/javascript.svg')}
@@ -335,13 +335,13 @@ export default function Docs() {
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/tutorials/get-started/get-started-using-python/">
+                  <a href="/docs/tutorials/get-started/get-started-using-python/">
                     <img alt="Python Logo" src={require('../static/img/logos/python.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Python')}</h5>
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/tutorials/get-started/get-started-using-java/">
+                  <a href="/docs/tutorials/get-started/get-started-using-java/">
                     <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
                   </a>
