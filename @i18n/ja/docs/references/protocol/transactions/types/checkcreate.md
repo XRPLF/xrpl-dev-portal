@@ -33,7 +33,7 @@ _（[Checks Amendment][]が必要です）_
 
 | フィールド            | JSONの型           | [内部の型][] | 説明     |
 |:-----------------|:--------------------|:------------------|:----------------|
-| `Destination`    | 文字列              | AccountID          | Checkを換金できる[アカウント](../../../../concepts/accounts/accounts.md)の一意アドレス。 |
+| `Destination`    | 文字列              | AccountID          | Checkを換金できる[アカウント](../../../../concepts/accounts/index.md)の一意アドレス。 |
 | `SendMax`        | [通貨額][] | Amount            | Checkで送金元から引き落とすことができる送金元通貨の最大額（XRP以外の通貨の[送金手数料](../../../../concepts/tokens/transfer-fees.md)を含む）。Checkは同一通貨の送金先にのみ入金可能です（XRP以外の通貨の場合は同一イシュアーから）。XRP以外の金額の場合、入れ子フィールドの名前にはアルファベットの小文字のみ使用してください。 |
 | `DestinationTag` | 数値              | UInt32            | _（省略可）_ Checkの理由を明確にする任意のタグ、または支払先となる、ホスティングされている受取人。 |
 | `Expiration`     | 数値              | UInt32            | _（省略可）_ Checkが無効になる時刻（[Rippleエポック以降の経過秒数][]）。 |
@@ -43,7 +43,7 @@ _（[Checks Amendment][]が必要です）_
 
 - `Destination`アカウントがCheckの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION`で失敗します。 _([DisallowIncoming amendment][] {% not-enabled /%} が必要です。)_
 - `Destination`がトランザクションの送信者である場合、トランザクションは結果コード`temREDUNDANT`で失敗します。
-- `Destination`[アカウント](../../../../concepts/accounts/accounts.md)がレジャーに存在していない場合、トランザクションは結果コード`tecNO_DST`で失敗します。
+- `Destination`[アカウント](../../../../concepts/accounts/index.md)がレジャーに存在していない場合、トランザクションは結果コード`tecNO_DST`で失敗します。
 - `Destination`アカウントでRequireDestフラグが有効であるが、トランザクションに`DestinationTag`フィールドが含まれていない場合、トランザクションは結果コード`tecDST_TAG_NEEDED`で失敗します。
 - `SendMax`に[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されているトークンが指定されている場合、トランザクションは結果コード`tecFROZEN`で失敗します。
 - トランザクションの`Expiration`が過去の日時である場合、トランザクションは結果コード`tecEXPIRED`で失敗します。

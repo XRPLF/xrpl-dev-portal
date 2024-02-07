@@ -70,7 +70,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [アカウント](accounts.md)
+    - [アカウント](index.md)
     - [暗号鍵](cryptographic-keys.md)
 - **チュートリアル:**
     - [レギュラーキーペアの割り当て](../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md)

@@ -28,13 +28,13 @@ Here’s a roadmap to the high-level tasks that these participants need to compl
 
 The party host (sender) must have:
 
-- An XRP Ledger [account](../../../../concepts/accounts/accounts.md#creating-accounts) that holds enough XRP to pay for escrow and any fees incurred.
+- An XRP Ledger [account](../../../../concepts/accounts/index.md#creating-accounts) that holds enough XRP to pay for escrow and any fees incurred.
 
 - Access to a secure signing environment, which includes having a network connection to a [`rippled` server](../../../../infrastructure/installation/index.md) (any server) that they can submit signed transactions to. <!--#{ once set up secure signing tutorial is available, link to it from here }# -->
 
 The party band (receiver) must have:
 
-- An XRP Ledger [account](../../../../concepts/accounts/accounts.md#creating-accounts) that can receive the XRP paid by the escrow.
+- An XRP Ledger [account](../../../../concepts/accounts/index.md#creating-accounts) that can receive the XRP paid by the escrow.
 
 - Access to a [`rippled` server](../../../../infrastructure/installation/index.md) that they can use to look up the details of an XRP Ledger transaction hash and submit the fulfillment value to finish the escrow.
 

@@ -110,6 +110,6 @@ ClioサーバはXRPL上の他のrippledサーバの負荷の一部を軽減し�
     }
 }
 ```
-Accountのフィールドについては、[アカウント](../concepts/accounts/accounts.md)をご覧ください。
+Accountのフィールドについては、[アカウント](../concepts/accounts/index.md)をご覧ください。
 
 次のページ: [ソフトウェアエコシステム](software-ecosystem.md)

@@ -57,7 +57,7 @@ To specify an amount of a [(fungible) token](../../../concepts/tokens/index.md),
 |:-----------|:---------------------------|:-----------------------------------|
 | `currency` | String - [Currency Code][] | Arbitrary currency code for the token. Cannot be `XRP`. |
 | `value`    | [String Number][]          | Quoted decimal representation of the amount of the token. This can include scientific notation, such as `1.23e11` meaning 123,000,000,000. Both `e` and `E` may be used. This can be negative when displaying balances, but negative values are disallowed in other contexts such as specifying how much to send. |
-| `issuer`   | String                     | Generally, the [account](../../../concepts/accounts/accounts.md) that issues this token. In special cases, this can refer to the account that holds the token instead (for example, in a [Clawback](../transactions/types/clawback.md) transaction). |
+| `issuer`   | String                     | Generally, the [account](../../../concepts/accounts/index.md) that issues this token. In special cases, this can refer to the account that holds the token instead (for example, in a [Clawback](../transactions/types/clawback.md) transaction). |
 
 [String Number]: #string-numbers
 

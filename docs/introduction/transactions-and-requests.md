@@ -110,6 +110,6 @@ The request returns a wealth of information. Here is an example response for an 
     }
 }
 ```
-For information on the fields in an Account record, see [Accounts](../concepts/accounts/accounts.md).
+For information on the fields in an Account record, see [Accounts](../concepts/accounts/index.md).
 
 Next: [Software Ecosystem](software-ecosystem.md)

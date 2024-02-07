@@ -10,7 +10,7 @@ labels:
 # AccountRoot
 [[ソース]](https://github.com/xrplf/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L27 "Source")
 
-`AccountRoot`オブジェクトタイプは、1つの[アカウント](../../../../concepts/accounts/accounts.md)、そのアカウントの設定、XRP残高を記述します。
+`AccountRoot`オブジェクトタイプは、1つの[アカウント](../../../../concepts/accounts/index.md)、そのアカウントの設定、XRP残高を記述します。
 
 ## {% $frontmatter.seo.title %} JSONの例
 
@@ -39,7 +39,7 @@ labels:
 
 | フィールド                      | JSONの型 | [内部の型][]        | 必須？ | 説明  |
 |:------------------------------|:---------|:------------------|:------|:------|
-| `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](../../../../concepts/accounts/accounts.md)を識別するための（クラシック）アドレスです。 |
+| `Account`                     | 文字列    | AccountID         | はい   | この[アカウント](../../../../concepts/accounts/index.md)を識別するための（クラシック）アドレスです。 |
 | `AccountTxnID`                | 文字列    | Hash256           | いいえ | このアカウントから直近に送信されたトランザクションの識別ハッシュ。このフィールドは、[`AccountTxnID`トランザクションフィールド](../../transactions/common-fields.md#accounttxnid)を使うために有効になっていなければなりません。これを有効にするには、[`asfAccountTxnID`フラグを有効にしたAccountSetトランザクション](../../transactions/types/accountset.md#accountsetのフラグ)を送信してください。 |
 | `AMMID`                       | 文字列    | Hash256           | いいえ | _([AMM amendment][] {% not-enabled /%}が必要です。)_ 対応するAMMレジャーエントリのレジャーエントリID。アカウント作成時に設定します。AMM以外のアカウントでは常に省略されます。 |
 | `Balance`                     | 文字列    | Amount            | いいえ | アカウントの現在の[drop単位のXRP残高][XRP、drop単位]で、文字列で表現されます。 |

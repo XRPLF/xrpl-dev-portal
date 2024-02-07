@@ -21,7 +21,7 @@ XRP Ledgerにより、さまざまなタイプの値をエンコードする前�
 
 ¹ コンテンツのサイズでは1バイトのタイププレフィクスは除外されます。
 
-[アカウント]: ../../../concepts/accounts/accounts.md
+[アカウント]: ../../../concepts/accounts/index.md
 
 ## 関連項目
 

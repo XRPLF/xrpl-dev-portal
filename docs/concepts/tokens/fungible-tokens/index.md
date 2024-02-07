@@ -18,7 +18,7 @@ Trust lines are structures in the XRP Ledger for holding fungible [tokens](../in
 
 Each "trust line" is a _bidirectional_ relationship consisting of:
 
-- The identifiers for the two [accounts](../../accounts/accounts.md) that the trust line connects.
+- The identifiers for the two [accounts](../../accounts/index.md) that the trust line connects.
 - A single, shared balance, which is positive from the perspective of one account and negative from the other perspective.
     - The account with a negative balance is generally considered the "issuer" of the tokens. However, in the [APIs](../../../references/http-websocket-apis/index.md), the name `issuer` can refer to either side.
 - Various settings and metadata. _Each_ of the two accounts can control its own settings on the trust line.

@@ -79,7 +79,7 @@ Content-Type: application/json
 ## 関連項目
 
 - **コンセプト:**
-  - [アカウント](../../../concepts/accounts/accounts.md)
+  - [アカウント](../../../concepts/accounts/index.md)
   - [送信元と宛先タグ](../../../concepts/transactions/source-and-destination-tags.md)
   - [トランザクションコスト](../../../concepts/transactions/transaction-cost.md)
   - [支払いタイプ](../../../concepts/payment-types/index.md)

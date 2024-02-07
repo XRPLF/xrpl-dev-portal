@@ -22,7 +22,7 @@ The practice of giving customers the ability to send and receive transactions fr
 
 ## Rationale
 
-In other distributed ledgers, it is common to use different deposit addresses for each customer. In the XRP Ledger, an address must be a funded, permanent [account](../accounts/accounts.md) to receive payments. Using this approach in the XRP Ledger wastefully consumes resources of all servers in the network, and is costly because the [reserve](../accounts/reserves.md) amount must be set aside indefinitely for each address.
+In other distributed ledgers, it is common to use different deposit addresses for each customer. In the XRP Ledger, an address must be a funded, permanent [account](../accounts/index.md) to receive payments. Using this approach in the XRP Ledger wastefully consumes resources of all servers in the network, and is costly because the [reserve](../accounts/reserves.md) amount must be set aside indefinitely for each address.
 
 Source and destination tags provide a more lightweight way to map deposits and payments to individual customers.
 

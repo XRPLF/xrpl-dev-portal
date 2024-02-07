@@ -10,7 +10,7 @@ labels:
 # wallet_propose
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/WalletPropose.cpp "Source")
 
-`wallet_propose`メソッドを使用して、キーペアとXRP Ledgerアドレスを生成します。このコマンドは単にキーとアドレス値を生成し、XRP Ledger自体には何ら影響しません。レジャー上で資金供給済みのアドレスになるには、そのアドレスで、[必要準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPの[Paymentトランザクションを受け取る](../../../../concepts/accounts/accounts.md#アカウントの作成)必要があります。
+`wallet_propose`メソッドを使用して、キーペアとXRP Ledgerアドレスを生成します。このコマンドは単にキーとアドレス値を生成し、XRP Ledger自体には何ら影響しません。レジャー上で資金供給済みのアドレスになるには、そのアドレスで、[必要準備金](../../../../concepts/accounts/reserves.md)を満たすのに十分なXRPの[Paymentトランザクションを受け取る](../../../../concepts/accounts/index.md#アカウントの作成)必要があります。
 
 *`wallet_propose`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*(このコマンドは、アカウントの機密情報を求めてネットワーク上の伝送情報をスニッフィングする人々から守るためにadminコマンドとされています。adminコマンドは通常、外部ネットワーク上で伝送されることはありません。）
 

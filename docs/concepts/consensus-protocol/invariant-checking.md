@@ -90,7 +90,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 ### Account Roots Not Deleted
 
 - **Invariant Condition(s):**
-    - An [account](../accounts/accounts.md) cannot be deleted from the ledger except by an [AccountDelete transaction][].
+    - An [account](../accounts/index.md) cannot be deleted from the ledger except by an [AccountDelete transaction][].
     - A successful AccountDelete transaction always deletes exactly 1 account.
 
 
@@ -129,7 +129,7 @@ The XRP Ledger checks all the following invariants on each transaction:
 - **Invariant Condition(s):**
     - A new [account root](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) must be the consequence of a payment.
     - A new account root must have the right starting [sequence](../../references/protocol/data-types/basic-data-types.md#account-sequence).
-    - A transaction must not create more than one new [account](../accounts/accounts.md).
+    - A transaction must not create more than one new [account](../accounts/index.md).
 
 ### ValidNFTokenPage
 

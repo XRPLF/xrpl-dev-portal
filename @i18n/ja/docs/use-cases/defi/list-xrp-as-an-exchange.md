@@ -97,7 +97,7 @@ Rippleが推奨するベストプラクティスに従い、Alpha Exchangeは、
 
 * [発行アドレスと運用アドレス](../../concepts/accounts/account-types.md)
 
-* [アカウントの作成](../../concepts/accounts/accounts.md#アカウントの作成)
+* [アカウントの作成](../../concepts/accounts/index.md#アカウントの作成)
 
 * [準備金](../../concepts/accounts/reserves.md)
 
