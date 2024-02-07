@@ -116,7 +116,7 @@ export default function CodeSamples() {
                 </p>
               </div>
             </div>
-            <a className="mt-12 btn btn-primary btn-arrow">Submit Code Samples</a>
+            {/* <a className="mt-12 btn btn-primary btn-arrow">Submit Code Samples</a> */}
           </div>
         </section>
       </div>
