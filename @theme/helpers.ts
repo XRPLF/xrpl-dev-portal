@@ -57,7 +57,8 @@ export function idify(s: string) {
   // for some reason the better version using \p gives an "s12 is undefined" TypeError sometimes,
   // so it's disabled for now. With that fixed, we could use localized step names in interactive tutorials.
   //s = s.replace(/[^\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]/gu, '').trim().toLowerCase()
-  s = s.replace(/[^\w\s-]/gu, '').trim().toLowerCase()
+  //s = s.replace(/[^\w\s-]/gu, '').trim().toLowerCase()
+  s = s.replace(/([^\w]|[\s-])/gu, '').trim().toLowerCase() 
   s = s.replace(/[\s-]+/gu, '-')
   if (!s) {
     s = "_";
