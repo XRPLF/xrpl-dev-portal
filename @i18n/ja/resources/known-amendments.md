@@ -20,8 +20,8 @@ labels:
 | [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}投票中: 2024-01-09{% /badge %} |
 | [AMM][]                           | v1.12.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.12.0.html" %}投票中: 2023-09-06{% /badge %} |
-| [Clawback][]                      | v1.12.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.12.0.html" %}投票中: 2023-09-06{% /badge %} |
 | [XRPFees][]                       | v1.10.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.10.0.html" %}投票中: 2023-03-14{% /badge %} |
+| [Clawback][]                      | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11" %}有効: 2024-02-08{% /badge %} |
 | [fixReducedOffersV1][]            | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1" %}有効: 2023-11-24{% /badge %} |
 | [fixNFTokenRemint][]              | v1.11.0    | {% badge href="https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF" %}有効: 2023-11-27{% /badge %} |
 | [DisallowIncoming][]              | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E" %}有効: 2023-08-21{% /badge %} |
@@ -200,15 +200,15 @@ labels:
 | Amendment    | Clawback |
 |:-------------|:---------|
 | Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
-| Status       | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
+| Status       | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
 規制上の目的から、発行者の中には、発行されたトークンがアカウントに配布された後に回収する能力を持たなければならない場合があります。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を _回収(claw back)_ することができます。
 
 Clawbackはデフォルトでは無効になっています。Clawbackを使用するには、`AccountSet`トランザクションを使用して`lsfAllowTrustLineClawback`フラグを設定する必要があります。
 
-この修正の詳細については、[Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/)をご覧ください。
+この修正の詳細については、[Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md)をご覧ください。
 
 
 ### XChainBridge

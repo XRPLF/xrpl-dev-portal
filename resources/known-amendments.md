@@ -22,8 +22,8 @@ The following is a comprehensive list of all known [amendments](../docs/concepts
 | [fixFillOrKill][]                 | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [AMM][]                           | v1.12.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.12.0.html" %}Open for Voting: 2023-09-06{% /badge %} |
-| [Clawback][]                      | v1.12.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.12.0.html" %}Open for Voting: 2023-09-06{% /badge %} |
 | [XRPFees][]                       | v1.10.0    | {% badge href="https://xrpl.org/blog/2023/rippled-1.10.0.html" %}Open for Voting: 2023-03-14{% /badge %} |
+| [Clawback][]                      | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11" %}Enabled: 2024-02-08{% /badge %} |
 | [fixReducedOffersV1][]            | v1.12.0    | {% badge href="https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1" %}Enabled: 2023-11-24{% /badge %} |
 | [fixNFTokenRemint][]              | v1.11.0    | {% badge href="https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF" %}Enabled: 2023-11-27{% /badge %} |
 | [DisallowIncoming][]              | v1.10.0    | {% badge href="https://livenet.xrpl.org/transactions/8747EF67D8CC1CA72A88817FBDF454507C3D9E8F0702D8E2B614958AE27A1D4E" %}Enabled: 2023-08-21{% /badge %} |
@@ -243,15 +243,15 @@ Introduces three new transaction types: CheckCreate, CheckCancel, and CheckCash,
 | Amendment    | Clawback |
 |:-------------|:---------|
 | Amendment ID | 56B241D7A43D40354D02A9DC4C8DF5C7A1F930D92A9035C4E12291B3CA3E1C2B |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
 For regulatory purposes, some issuers must have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_ the funds.
 
 Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrustLineClawback` flag using an `AccountSet` transaction.
 
-See [Clawback](https://opensource.ripple.com/docs/clawback/clawback-of-issued-currency/) for details on this amendment.
+See [Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md) for details on this amendment.
 
 
 ### XChainBridge
