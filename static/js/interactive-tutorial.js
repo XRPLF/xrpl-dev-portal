@@ -62,7 +62,7 @@ function tl(key) {
  */
 function idify(s) {
  // s = s.replace(/[^\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]/gu, '').trim().toLowerCase()
- s = s.replace(/([^\w]|[\s-]/gu, '').trim().toLowerCase() 
+ s = s.replace(/([^\w]|[\s-])/gu, '').trim().toLowerCase() 
  s = s.replace(/[\s-]+/gu, '-')
   if (!s) {
     s = "_";
