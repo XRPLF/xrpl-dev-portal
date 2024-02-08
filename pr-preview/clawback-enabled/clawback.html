@@ -302,7 +302,7 @@
     <div class="content">
         <h1 id="clawback">Clawback<a aria-hidden="true" class="hover_anchor" href="#clawback"><i class="fa fa-link"></i></a></h1>
 <p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>Requires the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-39d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</em></p>
+<p><em>Requires the <a class="external-link" href="https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0039d-clawback" target="_blank">Clawback amendment <i aria-hidden="true" class="fa fa-external-link"></i></a>.</em></p>
 <p>Claw back tokens issued by your account.</p>
 <p>Clawback is disabled by default. To use clawback, you must send an <a href="accountset.html">AccountSet transaction</a> to enable the <strong>Allow Trust Line Clawback</strong> setting. An issuer with any existing tokens cannot enable Clawback. You can only enable <strong>Allow Trust Line Clawback</strong> if you have a completely empty owner directory, meaning you must do so before you set up any trust lines, offers, escrows, payment channels, checks, or signer lists.  After you enable Clawback, it cannot reverted: the account permanently gains the ability to claw back issued assets on trust lines.</p>
 <h2 id="example-clawback-json">Example Clawback JSON<a aria-hidden="true" class="hover_anchor" href="#example-clawback-json"><i class="fa fa-link"></i></a></h2>
