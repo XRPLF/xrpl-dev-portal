@@ -325,7 +325,7 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
                 <div className="col langs">
-                  <a href="/docs/tutorials/get-started/get-started-using-javascript/">
+                  <a href="/docs/tutorials/javascript/get-started/>
                     <img
                       alt="Javascript Logo"
                       src={require('../static/img/logos/javascript.svg')}
@@ -335,13 +335,13 @@ export default function Docs() {
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/get-started/get-started-using-python/">
+                  <a href="/docs/tutorials/python/get-started/">
                     <img alt="Python Logo" src={require('../static/img/logos/python.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Python')}</h5>
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/get-started/get-started-using-java/">
+                  <a href="/docs/tutorials/java/get-started/">
                     <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
                   </a>
