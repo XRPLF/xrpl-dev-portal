@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { useTranslate, usePageSharedData } from "@portal/hooks";
 import moment from "moment";
+import { BlogFooter } from "@theme/components/Footer/BlogFooter";
 
 export const frontmatter = {
   seo: {
@@ -123,8 +124,8 @@ export default function Index() {
 
         {/* Other Blog Posts*/}
         <section className="container-new py-26">
-          <div className="row col-12 m-0 p-0 mt-4 pt-2">
-            <div className="left col-3 m-0 p-0 mt-2 d-none d-lg-block">
+          <div className="row w-100 mx-auto px-2">
+            <div className="row-cols-lg-2 m-0 p-0 mt-2 d-none d-lg-block">
               {/* Filters Desktop*/}
               <div className="p-3 category_sidebar">
                 <p className="mb-3 category-header">Filter by Category:</p>
@@ -155,27 +156,27 @@ export default function Index() {
               </div>
             </div>
             {/* Cards */}
-            <div className="right row col row-cols-lg-2 m-0 p-0">
+            <div className="row col row-cols-lg-2 m-0 p-0">
               {filteredCards.map((card, i) => (
                 <div
                   key={card.title + i}
-                  className={`${card.category_id} col-sm pb-5 px-lg-4`}
+                  className={`${card.category_id} pb-5 px-lg-4`}
                   id={card.title + i}
                 >
                   <div className="mb-4" id="category-list">
                     <img
                       alt="default-alt-text"
                       id={`${card.category_id}`}
-                      className="w-100 mb-4"
+                      className="mb-4"
                     />
                     <p
                       id={`${card.category_id}-badge`}
-                      className="category-badge mb-5"
+                      className="category-badge"
                     >
                       {translate(card.category)}
                     </p>
                   </div>
-                  <div className="mb-4">
+                  <div>
                     <p id="card-date" className="mb-0">
                       {moment(translate(card.date)).format("MMM DD, YYYY")}
                     </p>
@@ -198,6 +199,7 @@ export default function Index() {
           </div>
         </section>
       </div>
+      <BlogFooter />
     </div>
   );
 }

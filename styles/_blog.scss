@@ -103,6 +103,8 @@
       {
       ##{$category} {
         content: url("../img/blog/#{$category}.png");
+        max-width:100%;
+        width:100%;
       }
     }
   }
