@@ -1117,12 +1117,10 @@ pages:
             - ja
 
     -   md: concepts/tokens/fungible-tokens/clawing-back-tokens.md
-        status: not_enabled
         targets:
             - en
 
     -   md: "@i18n/ja/concepts/tokens/fungible-tokens/clawing-back-tokens.md"
-        status: not_enabled
         targets:
             - ja
 
@@ -2729,12 +2727,10 @@ pages:
             - ja
 
     -   md: references/protocol/transactions/types/clawback.md
-        status: not_enabled
         targets:
             - en
 
     -   md: "@i18n/ja/references/protocol/transactions/types/clawback.md"
-        status: not_enabled
         targets:
             - ja
 
