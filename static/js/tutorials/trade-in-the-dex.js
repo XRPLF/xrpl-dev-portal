@@ -3,7 +3,7 @@
 
 // Get Credentials, Connect steps handled by the snippet
 
-window.onRouteChange(() => {
+onCurrentRouteLoaded(() => {
 
 // Look Up Offers --------------------------------------------------------------
 

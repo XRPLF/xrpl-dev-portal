@@ -1,7 +1,7 @@
 // 1. Generate
 // 2. Connect
 // The code for these steps is handled by interactive-tutorial.js
-window.onRouteChange(() => {
+onCurrentRouteLoaded(() => {
 
   // 3. Send AccountSet --------------------------------------------------------
   $("#send-accountset").click( async (event) => {

@@ -62,7 +62,7 @@ function tl(key) {
  */
 function idify(s) {
  // s = s.replace(/[^\p{Alphabetic}\p{Mark}\p{Decimal_Number}\p{Connector_Punctuation}\p{Join_Control}]/gu, '').trim().toLowerCase()
- s = s.replace(/([^\w]|[\s-])/gu, '').trim().toLowerCase() 
+ s = s.replace(/([^\w]|[\s-])/gu, '').trim().toLowerCase()
  s = s.replace(/[\s-]+/gu, '-')
   if (!s) {
     s = "_";
@@ -176,8 +176,8 @@ function show_error(block, message) {
  * use the generated credentials instead of the placeholder EXAMPLE_ADDR and
  * EXAMPLE_SECRET.
  */
-const EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
-const EXAMPLE_SECRET = "s████████████████████████████"
+var EXAMPLE_ADDR = "rPT1Sjq2YGrBMTttX4GZHjKu9dyfzbpAYe"
+var EXAMPLE_SECRET = "s████████████████████████████"
 function setup_generate_step() {
 
   $("#generate-creds-button").click( async (event) => {
@@ -629,6 +629,17 @@ async function show_log(block, msg) {
   block.find(".output-area").append(msg)
 }
 
+/**
+ * Run callback only when the current route is loaded.
+ */
+function onCurrentRouteLoaded(callback) {
+  const currentPath = window.location.pathname;
+  window.onRouteChange(() => {
+    if (window.location.pathname === currentPath) {
+      callback()
+    }
+  });
+}
 
 window.onRouteChange(() => {
   disable_followup_steps()

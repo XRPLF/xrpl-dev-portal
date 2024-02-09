@@ -55,7 +55,7 @@ window.after_connect.push(async () => {
   trust_line_setup_done = true
 })
 
-window.onRouteChange(() => {
+onCurrentRouteLoaded(() => {
 
 
 
