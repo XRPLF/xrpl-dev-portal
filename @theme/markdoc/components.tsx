@@ -31,7 +31,8 @@ export function InteractiveBlock(props: { children: React.ReactNode; label: stri
   const { pathname } = useLocation();
 
   return (
-    <div className="interactive-block" id={'interactive-' + stepId}>
+    // add key={pathname} to ensure old step state gets rerendered on page navigation
+    <div className="interactive-block" id={'interactive-' + stepId}  key={pathname}>
       <div className="interactive-block-inner">
         <div className="breadcrumbs-wrap">
           <ul
@@ -53,7 +54,8 @@ export function InteractiveBlock(props: { children: React.ReactNode; label: stri
             })}
           </ul>
         </div>
-        <div className="interactive-block-ui" key={pathname}>{dynamicReact(props.children, React, {})}</div>
+
+        <div className="interactive-block-ui">{dynamicReact(props.children, React, {})}</div>
       </div>
     </div>
     );

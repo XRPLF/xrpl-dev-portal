@@ -629,6 +629,9 @@ async function show_log(block, msg) {
   block.find(".output-area").append(msg)
 }
 
+/**
+ * Run callback only when the current route is loaded.
+ */
 function onCurrentRouteLoaded(callback) {
   const currentPath = window.location.pathname;
   window.onRouteChange(() => {
