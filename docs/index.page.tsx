@@ -325,12 +325,8 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
                 <div className="col langs">
-                  <a href="/docs/tutorials/javascript/get-started/>
-                    <img
-                      alt="Javascript Logo"
-                      src={require('../static/img/logos/javascript.svg')}
-                      className="circled-logo"
-                    />
+                  <a href="/docs/tutorials/javascript/get-started/">
+                    <img alt="Javascript Logo" src={require('../static/img/logos/javascript.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Javascript')}</h5>
                   </a>
                 </div>
