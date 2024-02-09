@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useLocation } from 'react-router-dom';
 // @ts-ignore
 import dynamicReact from '@markdoc/markdoc/dist/react';
 import { usePageSharedData, useTranslate } from '@portal/hooks';
@@ -27,6 +28,7 @@ export function IndexPageItems() {
 
 export function InteractiveBlock(props: { children: React.ReactNode; label: string; steps: string[] }) {
   const stepId = idify(props.label);
+  const { pathname } = useLocation();
 
   return (
     <div className="interactive-block" id={'interactive-' + stepId}>
@@ -51,7 +53,7 @@ export function InteractiveBlock(props: { children: React.ReactNode; label: stri
             })}
           </ul>
         </div>
-        <div className="interactive-block-ui">{dynamicReact(props.children, React, {})}</div>
+        <div className="interactive-block-ui" key={pathname}>{dynamicReact(props.children, React, {})}</div>
       </div>
     </div>
     );
@@ -102,7 +104,7 @@ export function Badge(props: {
     }
 
     let childstrings = ""
-    
+
     React.Children.forEach(props.children, (child, index) => {
       if (typeof child == "string") {
         childstrings += child
@@ -125,7 +127,7 @@ export function Badge(props: {
     let badge_url = `https://img.shields.io/badge/${left}-${right}-${color}.svg`
 
     if (props.href) {
-      return (    
+      return (
         <Link to={props.href}>
           <img src={badge_url} alt={childstrings} className="shield" />
         </Link>

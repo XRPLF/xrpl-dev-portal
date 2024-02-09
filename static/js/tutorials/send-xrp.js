@@ -2,7 +2,7 @@
 // 1. Connect
 // The code for these steps is handled by interactive-tutorial.js
 
-window.onRouteChange(() => {
+onCurrentRouteLoaded(() => {
 
 // 2. Prepare Transaction ------------------------------------------------------
 $("#prepare-button").click( async function(event) {
