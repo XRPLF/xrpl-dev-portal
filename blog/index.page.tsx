@@ -87,12 +87,7 @@ export default function Index() {
             <div className="col">
               <div className="text-bg">
                 <h4 className="mb-3 eyebrow text-uppercase font-weight-light">
-                  <span
-                    style={{
-                      textDecoration: "overline solid #32E685 10%",
-                      paddingBottom: "4px",
-                    }}
-                  >
+                  <span className="post-date pb-2">
                     {translate(`${moment(heroPost.date).format("MMM")}`)}
                   </span>
                   {translate(` ${moment(heroPost.date).format("DD YYYY")}`)}
@@ -128,13 +123,10 @@ export default function Index() {
             <div className="row-cols-lg-2 m-0 p-0 mt-2 d-none d-lg-block">
               {/* Filters Desktop*/}
               <div className="p-3 category_sidebar">
-                <p className="mb-3 category-header">Filter by Category:</p>
+                <p className="mb-2 category-header">Filter by Category:</p>
                 <div className="d-flex flex-column p-3">
                   {Object.keys(categories).map((item) => (
-                    <div
-                      key={item}
-                      className="cat_checkbox category-checkbox pb-2"
-                    >
+                    <div key={item} className="category-checkbox pb-2">
                       <input
                         className={`blog-filter input_${item}`}
                         type="checkbox"

@@ -43,12 +43,16 @@
   .category-badge {
     max-width: 180px;
     border-radius: 30px;
-    border: solid 1px;
+    border: solid 2px;
     padding: 1px;
     text-align: center;
     word-wrap: break-word;
     font-size: 13px;
     font-weight: bold;
+  }
+
+  .post-date {
+    text-decoration: overline solid #32E685 10%;
   }
 
   #general-badge {
@@ -127,7 +131,8 @@
   }
 
   .category-header {
-    font-weight: bold;
+    font-weight: normal;
+    width: 200px;
     color: $gray-100;
   }
 
