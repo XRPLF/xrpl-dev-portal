@@ -22,8 +22,9 @@ const cards = [
   {
     id: 'low-cost',
     title: 'Low Cost',
-    description:
-      "At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <a href='/about/uses'>blockchain use cases</a>",
+    description: <>
+      At fractions of a penny per transaction, costs are inexpensive enough to enable a wide variety of <a href='/about/uses'>blockchain use cases</a>
+    </>
   },
   {
     id: 'community',
@@ -88,7 +89,9 @@ const features = [
     chip: 'In Development',
     title: 'Smart Contracts',
     description:
-      "Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.",
+    <>
+      Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.,
+    </>,
     href: 'https://hooks-testnet.xrpl-labs.com/',
   },
   {
