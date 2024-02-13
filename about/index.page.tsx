@@ -201,9 +201,9 @@ export default function XrplOverview() {
                 )}
               </p>
               <p className="mb-0">
-                {translate(
-                  'Currently, over 120 <a href="https://livenet.xrpl.org/network/validators" target="_blank">validators</a> are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.'
-                )}
+                {translate('Currently, over 120')}
+                   <a href="https://livenet.xrpl.org/network/validators" target="_blank"> validators</a>
+                   {translate(' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
               </p>
             </div>
             <div className="col mb-16-sm">
