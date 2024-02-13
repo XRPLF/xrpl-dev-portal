@@ -1324,4 +1324,18 @@ main article .card-grid {
     background-color: #FF198B;
     color: #4C0026;
   }
+
+  .dropdown-btn {
+    color: $gray-900;
+    background-color: $gray-200;
+    border-color: $gray-200;
+
+    img {
+      content: url("../img/icons/lightmode/chevron-arrow-down.svg");
+    }
+  }
+
+  .dropdown-content {
+    background-color: $gray-200;
+  }
 }

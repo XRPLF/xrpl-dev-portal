@@ -7,7 +7,7 @@
   }
 
   .text-bg {
-    background-color: #232325;
+    background-color: $gray-800;
     padding: 60px 40px;
     width: 100%;
     border-radius: 30px;
@@ -107,8 +107,8 @@
       {
       ##{$category} {
         content: url("../img/blog/#{$category}.png");
-        max-width:100%;
-        width:100%;
+        max-width: 100%;
+        width: 100%;
       }
     }
   }
@@ -121,6 +121,41 @@
   .category-checkbox {
     display: flex;
     align-items: center;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-btn {
+    color: $white;
+    background-color: $gray-800;
+    border-color: $gray-800;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: start;
+    padding-right: 10px;
+
+    img {
+      content: url("../img/icons/chevron-arrow-down.svg");
+      width: 10px;
+      height: 13px;
+      padding: 8px;
+    }
+  }
+
+  .dropdown-content {
+    display: flex;
+    align-items: start;
+    background-color: $gray-800;
+    padding: 16px 8px;
+    width: 254px;
+    height: auto;
+    border-radius: 4px;
   }
 
   .category-checkbox label {

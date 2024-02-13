@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useTranslate, usePageSharedData } from "@portal/hooks";
 import moment from "moment";
 import { BlogFooter } from "@theme/components/Footer/BlogFooter";
@@ -37,6 +37,7 @@ export default function Index() {
   const [selectedCategories, setSelectedCategories] = useState(
     defaultSelectedCategories
   );
+
   const [cards, setCards] = useState(otherPosts);
 
   const toggleCategory = (category) => {
@@ -52,6 +53,8 @@ export default function Index() {
   const filteredCards = cards.filter((card) =>
     selectedCategories.has(card.category_id)
   );
+
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="landing dev-blog">
@@ -120,9 +123,9 @@ export default function Index() {
         {/* Other Blog Posts*/}
         <section className="container-new py-26">
           <div className="row w-100 mx-auto px-2">
-            <div className="row-cols-lg-2 m-0 p-0 mt-2 d-none d-lg-block">
+            <div className="row-cols-lg-2 m-0 p-0 mt-2">
               {/* Filters Desktop*/}
-              <div className="p-3 category_sidebar">
+              <div className="p-3 category_sidebar d-none d-lg-block">
                 <p className="mb-2 category-header">Filter by Category:</p>
                 <div className="d-flex flex-column p-3">
                   {Object.keys(categories).map((item) => (
@@ -146,6 +149,47 @@ export default function Index() {
                   ))}
                 </div>
               </div>
+              {/* End Desktop Filters */}
+              {/* Filters Mobile */}
+              <div className="col d-flex flex-column p-0 d-lg-none mb-4">
+                <p className="mb-2 category-header">Filter by:</p>
+                <div className="dropdown">
+                  <button
+                    className="dropdown-btn"
+                    onClick={() => setOpen((open) => !open)}
+                  >
+                    Category
+                    <img alt="dropdown arrow" />
+                  </button>
+                  {open && (
+                    <div
+                      className="dropdown-content d-flex flex-column mt-2"
+                      aria-labelledby="blog-dropdown-button"
+                    >
+                      {Object.keys(categories).map((item, i) => (
+                        <div key={item + i} className="category-checkbox pl-2 pb-2">
+                          <input
+                            className={`blog-filter input_${item}`}
+                            type="checkbox"
+                            name="categories"
+                            id={`input_${item}`}
+                            defaultValue={`${item}`}
+                            onChange={() => toggleCategory(item)}
+                            defaultChecked
+                          />
+                          <label
+                            className="font-weight-bold"
+                            htmlFor={`input_${item}`}
+                          >
+                            {translate(categories[item])}
+                          </label>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+              {/* End Filters Mobile */}
             </div>
             {/* Cards */}
             <div className="row col row-cols-lg-2 m-0 p-0">
