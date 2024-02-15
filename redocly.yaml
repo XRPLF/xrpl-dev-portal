@@ -15,6 +15,9 @@ redirects:
   $ref: redirects.yaml
 seo:
   siteUrl: https://xrpl-dev-portal.redocly.app/
+rbac:
+  cms:
+    xrpl-org-editors: maintain
 theme:
   scripts:
     head:
@@ -32,7 +35,7 @@ theme:
       rel: stylesheet
 
   logo:
-    srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark'
+    srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark
     altText: XRP Ledger Developer Portal
     link: /
   navbar:
