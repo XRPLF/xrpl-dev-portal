@@ -326,7 +326,7 @@ const CommunityPage: React.FC = () => {
             <h1 className="mb-0 main-title">
               {translate("A Global Blockchain")}
               <br className="until-sm" />
-              {translate("Community of")}
+              {translate("Community of ")}
               <span className="builders-wrap">Builders</span>
               <br className="until-sm" />
               {translate("and Innovators")}
