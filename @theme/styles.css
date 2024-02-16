@@ -159,7 +159,7 @@ ul.nav.navbar-nav {
   --color-geekblue-10: #030852; */
 
   /* Dark mode colors by default */
-  --color-primary-bg: var(--color-gray-9);
+  --color-primary-bg: var(--color-gray-10);
 /*  --color-primary-bg-hover: #d6dfff;
   --color-primary-border: #adbcff;
   --color-primary-border-hover: #8a99ff;
@@ -183,7 +183,7 @@ ul.nav.navbar-nav {
   --link-visited-text-color: #fff;
   --link-visited-decoration: underline;
 
-  --bg-base: var(--color-gray-9);
+  --bg-base: var(--color-gray-10);
   --bg-raised: var(--color-gray-8);
   --background-color: var(--bg-base);
 
