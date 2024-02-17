@@ -7,7 +7,7 @@ if (typeof module !== "undefined") {
 
 // Example credentials
 const wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9")
-console.log(wallet.address) // rMCcNuTcajgw7YTgBy1sys3b89QqjUrMpH
+console.log(wallet.address) // rLJmghXLb3Wvrc4oVqzXcNNPZ7WPjpvyJY
 
 // Connect -------------------------------------------------------------------
 async function main() {
