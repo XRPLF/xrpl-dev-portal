@@ -7,7 +7,7 @@ labels:
 ---
 # Integrate with the XRPL Decentralized Exchange
 
-Integrating with the XRP Ledger gives you access to one of the worl's oldest decentralized exchanges (DEX), operating continuously since 2012. Users can trade [tokens](tokens.html) and XRP with minimal [fees](fees.html) to the network itself.
+Integrating with the XRP Ledger gives you access to one of the world's oldest decentralized exchanges (DEX), operating continuously since 2012. Users can trade [tokens](tokens.html) and XRP with minimal [fees](fees.html) to the network itself.
 
 To learn more about the XRPL DEX structure and limitations, see: [Decentralized Exchange](decentralized-exchange.html).
 
@@ -54,6 +54,8 @@ To learn more about XRP and token specifics, see: [Currency Formats](currency-fo
 
 A trade in the XRP Ledger DEX is called an [Offer](offers.html). An Offer is effectively a [_limit order_](https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order) to buy or sell a specific amount of one currency (XRP or a token) for a specific amount of another.
 
+To see how an example trade is made on the DEX, using the **JavaScript** or **Python** libraries, see: [Trade in the Decentralized Exchange](trade-in-the-decentralized-exchange.html).
+
 
 ### Create Order Books
 
@@ -79,7 +81,7 @@ While you have an Offer in the ledger, it sets aside some of your XRP toward the
 See:
 
 - [`OfferCreate` Transaction](offercreate.html)
-- ['OfferCancel' Transaction](offercancel.html)
+- [`OfferCancel` Transaction](offercancel.html)
 - [`Offer` Object](offer.html)
 
 
