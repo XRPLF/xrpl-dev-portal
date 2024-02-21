@@ -16,6 +16,8 @@ The following is a comprehensive list of all known [amendments](amendments.html)
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [fixInnerObjTemplate][]           | v2.0.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
+| [fixNFTokenReserve][]             | v2.0.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [fixDisallowIncomingV1][]         | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [fixFillOrKill][]                 | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
@@ -107,6 +109,36 @@ The following is a list of known [amendments](amendments.html) that have been re
 
 
 ## Details about Known Amendments
+
+### fixInnerObjTemplate
+
+[fixInnerObjTemplate]: #fixinnerobjtemplate
+
+| Amendment    | fixInnerObjTemplate |
+|:-------------|:--------------|
+| Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue with accessing the AMM `sfTradingFee` and `sfDiscountedFee` fields in the inner objects of `sfVoteEntry` and `sfAuctionSlot`.
+
+Currently, the inner object template isn't set upon object creation. If the object contains an `soeDEFAULT` field and is initially set to the default value, accessing the field results in a `tefEXCEPTION` error in some circumstances. This amendment adds an `STObject` constructor overload that includes an additional boolean argument to set the inner object template.
+
+
+### fixNFTokenReserve
+
+[fixNFTokenReserve]: #fixnftokenreserve
+
+| Amendment    | fixNFTokenReserve |
+|:-------------|:--------------|
+| Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds a check to the `NFTokenAcceptOffer` transactor to see if the `OwnerCount` changes. If it does, it makes an additional check that the reserve requirement is met for the updated owner count.
+
 
 ### fixDisallowIncomingV1
 [fixDisallowIncomingV1]: #fixdisallowincomingv1
