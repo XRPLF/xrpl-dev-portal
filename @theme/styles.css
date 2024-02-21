@@ -35,8 +35,9 @@ ul.nav.navbar-nav {
   --color-gray-6: #454549;
   --color-gray-7: #343437;
   --color-gray-8: #232325;
-  --color-gray-9: #111112;
-  --color-gray-10: var(--color-gray9);
+  /* --color-gray-9: #111112; Updating color gray to fix search result in light mode*/
+  --color-gray-9: #FFFFFF;
+  --color-gray-10: #111112;
 
   /* color-red = XRPL $magenta */
   --color-red-1: #FFE5F2;
@@ -198,6 +199,8 @@ ul.nav.navbar-nav {
   --heading-anchor-color: #9a52ff;
   --sidebar-border-color: transparent;
   --sidebar-background-color: transparent;
+
+  --search-item-active-text-color: #E8E9E7;
 
   --border-radius-md: 4px;
 
