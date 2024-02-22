@@ -35,8 +35,7 @@ ul.nav.navbar-nav {
   --color-gray-6: #454549;
   --color-gray-7: #343437;
   --color-gray-8: #232325;
-  /* --color-gray-9: #111112; Updating color gray to fix search result in light mode*/
-  --color-gray-9: #FFFFFF;
+  --color-gray-9: #111112;
   --color-gray-10: var(--color-gray-9);
 
   /* color-red = XRPL $magenta */
@@ -249,6 +248,7 @@ ul.nav.navbar-nav {
   --select-list-background-color: #E0E0E1;
 
   --footer-title-text-color: #000;
+  --bg-base: var(--color-gray-1);
   --bg-raised: var(--color-gray-2);
   --button-background-color: var(--color-gray-2);
 }
