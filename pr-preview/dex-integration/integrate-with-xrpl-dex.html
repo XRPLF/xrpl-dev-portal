@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>peer_reservations_list - XRPL.org</title>
+    <title>Integrate with the XRPL Decentralized Exchange - XRPL.org</title>
     <meta name="viewport" content="width=device-width">
-    <meta property="og:title" content="peer_reservations_list | XRPL.org">
-    <meta property="og:url" content="https://xrpl.org/peer_reservations_list.html" />
-    <meta property="og:description" content="List reserved slots for specific peer servers." />
-    <meta name="description" content="List reserved slots for specific peer servers." />
+    <meta property="og:title" content="Integrate with the XRPL Decentralized Exchange | XRPL.org">
+    <meta property="og:url" content="https://xrpl.org/integrate-with-xrpl-dex.html" />
+    <meta property="og:description" content="Integrate with the XRPL DEX." />
+    <meta name="description" content="Integrate with the XRPL DEX." />
     <meta property="og:image" content="https://xrpl.org/assets/img/xrpl-fb-li-card.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image" content="https://xrpl.org/assets/img/xrpl-twitter-card.png" />
     <meta name="robots" content="index, follow" />
     <meta name="docsearch:language" content="en" />
-    <link rel="alternate" href="https://xrpl.org/peer_reservations_list.html" hreflang="en" />
-    <link rel="alternate" href="https://xrpl.org/ja/peer_reservations_list.html" hreflang="ja" />
-    <link rel="alternate" href="https://xrpl.org/peer_reservations_list.html" hreflang="x-default" /><!-- Default: US english -->
+    <link rel="alternate" href="https://xrpl.org/integrate-with-xrpl-dex.html" hreflang="en" />
+    <link rel="alternate" href="https://xrpl.org/ja/integrate-with-xrpl-dex.html" hreflang="ja" />
+    <link rel="alternate" href="https://xrpl.org/integrate-with-xrpl-dex.html" hreflang="x-default" /><!-- Default: US english -->
 
 
     <!-- favicon -->
@@ -42,8 +42,8 @@
       "event": "page_info",
       "page_type": "Document",
       "page_group": "Docs",
-      "page_funnel": "References",
-      "page_labels": ['Core Server']
+      "page_funnel": "Other",
+      "page_labels": ['Decentralized Exchange']
     })
     </script>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -230,7 +230,7 @@
         </a>
         <div class="dropdown-menu smaller-dropdown" aria-labelledby="language_selector_header_btn">
           <hr />
-          <a class="dropdown-item" href="/ja/peer_reservations_list.html">
+          <a class="dropdown-item" href="/ja/integrate-with-xrpl-dex.html">
             日本語
           </a>
           <hr />
@@ -258,12 +258,12 @@
   </a>
   <div id="page-toc-wrapper" class="collapse d-lg-block">
 <div class="github-edit-wrap">
-    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/dex-integration/content/references/http-websocket-apis/admin-api-methods/peer-management-methods/peer_reservations_list.md?pr=/XRPLF/xrpl-dev-portal/pull/2401" target="_blank" class="btn btn-primary github-edit">Edit page</a>
+    <a href="https://github.com/XRPLF/xrpl-dev-portal/edit/dex-integration/content/use-cases/defi/integrate-with-xrpl-dex.md?pr=/XRPLF/xrpl-dev-portal/pull/2401" target="_blank" class="btn btn-primary github-edit">Edit page</a>
 </div><!-- /.github-edit --><div class="labels-wrap">
   <ul class="list-inline">
     <li class="list-inline-item">
-      <span class="label label-core-server">Core Server</span>
-      <!-- TEMPLATE WARNING: no label landing found for "Core Server" -->
+      <span class="label label-decentralized-exchange">Decentralized Exchange</span>
+      <!-- TEMPLATE WARNING: no label landing found for "Decentralized Exchange" -->
     </li>
   </ul>
 </div><!--/.labels-wrap-->
@@ -271,10 +271,16 @@
       <h4>In this document</h4>
     </div>
     <ul class="page-toc nav flex-column" role="directory">
-        <li class="nav-item level-1"><a class="nav-link" href="#peer_reservations_list">peer_reservations_list</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#request-format">Request Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#response-format">Response Format</a></li>
-        <li class="nav-item level-3"><a class="nav-link" href="#possible-errors">Possible Errors</a></li>
+        <li class="nav-item level-1"><a class="nav-link" href="#integrate-with-the-xrpl-decentralized-exchange">Integrate with the XRPL Decentralized Exchange</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#set-up-node-services">Set Up Node Services</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#set-up-an-account">Set Up an Account</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#managing-off-ledger-assets-optional">Managing Off-Ledger Assets (Optional)</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#trading-in-the-dex">Trading in the DEX</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#create-order-books">Create Order Books</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#submitting-offers">Submitting Offers</a></li>
+        <li class="nav-item level-2"><a class="nav-link" href="#technical-considerations">Technical Considerations</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#tick-size">Tick Size</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#transfer-fees">Transfer Fees</a></li>
       </ul>
   </div>
       </aside>
@@ -288,152 +294,73 @@
 
 
 
-
-
     <li class="active breadcrumb-item"><a href="index.html">Home</a></li>
     <li class="active breadcrumb-item"><a href="docs.html">Documentation</a></li>
-    <li class="active breadcrumb-item"><a href="references.html">References</a></li>
-    <li class="active breadcrumb-item"><a href="http-websocket-apis.html">HTTP / WebSocket APIs</a></li>
-    <li class="active breadcrumb-item"><a href="admin-api-methods.html">Admin API Methods</a></li>
-    <li class="active breadcrumb-item"><a href="peer-management-methods.html">Peer Management Methods</a></li>
-    <li class="active breadcrumb-item">peer_reservations_list</li>
+    <li class="active breadcrumb-item"><a href="use-cases.html">Use Cases</a></li>
+    <li class="active breadcrumb-item"><a href="defi-uc.html">Decentralized Finance</a></li>
+    <li class="active breadcrumb-item">Integrate with the XRPL Decentralized Exchange</li>
   </ul>
 </nav><!--/.breadcrumbs-wrap-->  <article>
     <div class="content">
-        <h1 id="peer_reservations_list">peer_reservations_list<a aria-hidden="true" class="hover_anchor" href="#peer_reservations_list"><i class="fa fa-link"></i></a></h1>
-<p><a class="external-link" href="https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116" target="_blank" title="Source">[Source] <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p>The <code>peer_reservations_list</code> method lists <a href="peer-protocol.html#fixed-peers-and-peer-reservations">peer reservations</a>. <a class="external-link" href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" target="_blank" title="New in: rippled 1.4.0"><img alt="New in: rippled 1.4.0" class="dactyl_badge" src="https://img.shields.io/badge/New%20in-rippled%201.4.0-blue.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></p>
-<p><em>The <code>peer_reservations_list</code> method is an <a href="admin-api-methods.html">admin method</a> that cannot be run by unprivileged users.</em></p>
-<h3 id="request-format">Request Format<a aria-hidden="true" class="hover_anchor" href="#request-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of the request format:</p>
-<div class="multicode" id="code-0"><ul class="codetabs"><li><a class="websocket" href="#code-0-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-0-1">JSON-RPC</a></li><li><a class="commandline" href="#code-0-2">Commandline</a></li></ul>
-
-<div class="code_sample websocket" id="code-0-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-0" id="codeblock-0button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-0"><span class="p">{</span>
-<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peer_reservations_list_example_1"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"command"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peer_reservations_list"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample jsonrpc" id="code-0-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-1" id="codeblock-1button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-1"><span class="p">{</span>
-<span class="w">    </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peer_reservations_list"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample commandline" id="code-0-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-2" id="codeblock-2button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-2"><span class="c1">#Syntax: peer_reservations_list</span>
-rippled<span class="w"> </span>peer_reservations_list
-</code></pre></div></div>
-</div>
-<p>This request does not take any parameters.</p>
-<h3 id="response-format">Response Format<a aria-hidden="true" class="hover_anchor" href="#response-format"><i class="fa fa-link"></i></a></h3>
-<p>An example of a successful response:</p>
-<div class="multicode" id="code-1"><ul class="codetabs"><li><a class="websocket" href="#code-1-0">WebSocket</a></li><li><a class="jsonrpc" href="#code-1-1">JSON-RPC</a></li><li><a class="commandline" href="#code-1-2">Commandline</a></li></ul>
-
-<div class="code_sample websocket" id="code-1-0" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-3" id="codeblock-3button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-3"><span class="p">{</span>
-<span class="w">  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"peer_reservations_list_example_1"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple s1 server 'WOOL'"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"node"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9MZRo92mzYjjsa5XcqnPC7GFYAnENo9VfJzKmpcS9EFZvw5fgwz"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">]</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"response"</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample jsonrpc" id="code-1-1" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-4" id="codeblock-4button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-4"><span class="p">{</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"reservations"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">       </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple s1 server 'WOOL'"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"node"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"</span>
-<span class="w">       </span><span class="p">},</span>
-<span class="w">       </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"node"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"n9MZRo92mzYjjsa5XcqnPC7GFYAnENo9VfJzKmpcS9EFZvw5fgwz"</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<div class="code_sample commandline" id="code-1-2" style="position: static;"><div class="codehilite"><div aria-label="Code Buttons" class="btn-group" role="group"><button alt="Copy to clipboard" class="btn btn-outline-secondary clipboard-btn" data-clipboard-target="#codeblock-5" id="codeblock-5button"><i class="fa fa-clipboard"></i></button></div><pre><span></span><code id="codeblock-5"><span class="err">Loadi</span><span class="kc">n</span><span class="err">g</span><span class="p">:</span><span class="w"> </span><span class="s2">"/etc/rippled.cfg"</span>
-<span class="mi">2019-</span><span class="err">Dec</span><span class="mi">-27</span><span class="w"> </span><span class="mi">21</span><span class="p">:</span><span class="mi">56</span><span class="p">:</span><span class="mf">07.253260422</span><span class="w"> </span><span class="err">HTTPClie</span><span class="kc">nt</span><span class="p">:</span><span class="err">NFO</span><span class="w"> </span><span class="err">Co</span><span class="kc">nne</span><span class="err">c</span><span class="kc">t</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="mf">127.0.0.1</span><span class="p">:</span><span class="mi">5005</span>
-
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">"result"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">"reservations"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">       </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"description"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple s1 server 'WOOL'"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"node"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1UzbLT1FoG99"</span>
-<span class="w">       </span><span class="p">},</span>
-<span class="w">       </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"node"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"n9MZRo92mzYjjsa5XcqnPC7GFYAnENo9VfJzKmpcS9EFZvw5fgwz"</span>
-<span class="w">       </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-</div>
-<p>The response follows the <a href="response-formatting.html">standard format</a>, with a successful result containing the following fields:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>reservations</code></td>
-<td style="text-align: left;">Array</td>
-<td style="text-align: left;">List of existing <a href="peer-protocol.html#fixed-peers-and-peer-reservations">peer reservations</a>. Each member is a peer reservation object, as described below.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="peer-reservation-object">Peer Reservation Object<a aria-hidden="true" class="hover_anchor" href="#peer-reservation-object"><i class="fa fa-link"></i></a></h4>
-<p>Each member of the <code>reservations</code> array is a JSON object describing one <a href="peer-protocol.html#fixed-peers-and-peer-reservations">peer reservation</a>. This object has the following fields:</p>
-<table class="table-responsive">
-<thead>
-<tr>
-<th style="text-align: left;"><code>Field</code></th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><code>node</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;">The <a href="peer-protocol.html#node-key-pair">node public key</a> of the peer server this reservation is for, as <a href="base58-encodings.html">base58</a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><code>description</code></td>
-<td style="text-align: left;">String</td>
-<td style="text-align: left;"><em>(May be omitted)</em> The description provided with this peer reservation, if any.</td>
-</tr>
-</tbody>
-</table>
-<!--_ -->
-<h3 id="possible-errors">Possible Errors<a aria-hidden="true" class="hover_anchor" href="#possible-errors"><i class="fa fa-link"></i></a></h3>
+        <h1 id="integrate-with-the-xrpl-decentralized-exchange">Integrate with the XRPL Decentralized Exchange<a aria-hidden="true" class="hover_anchor" href="#integrate-with-the-xrpl-decentralized-exchange"><i class="fa fa-link"></i></a></h1>
+<p>Integrating with the XRP Ledger gives you access to one of the world's oldest decentralized exchanges (DEX), operating continuously since 2012. Users can trade <a href="tokens.html">tokens</a> and XRP with minimal <a href="fees.html">fees</a> to the network itself.</p>
+<p>To learn more about the XRPL DEX structure and limitations, see: <a href="decentralized-exchange.html">Decentralized Exchange</a>.</p>
+<h2 id="set-up-node-services">Set Up Node Services<a aria-hidden="true" class="hover_anchor" href="#set-up-node-services"><i class="fa fa-link"></i></a></h2>
+<p>For lighter use cases, you can often rely on free public servers. However, more serious use of the XRP Ledger requires your own infrastructure.</p>
+<p>There are many reasons you might want to run your own servers, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. See <a href="networks-and-servers.html#reasons-to-run-your-own-server">Reasons to Run Your Own Server</a>.</p>
+<p>There are two types of server software for the XRP Ledger:</p>
 <ul>
-<li>Any of the <a href="error-formatting.html#universal-errors">universal error types</a>.</li>
-<li><code>reportingUnsupported</code> - (<a href="rippled-server-modes.html#reporting-mode">Reporting Mode</a> servers only) This method is not available in Reporting Mode.</li>
+<li><a class="external-link" href="https://github.com/XRPLF/rippled" target="_blank"><code>rippled</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>: The core server that runs the peer-to-peer network, processing transactions and reaching consensus on their outcomes.</li>
+<li><a class="external-link" href="https://github.com/XRPLF/clio" target="_blank"><code>Clio</code> <i aria-hidden="true" class="fa fa-external-link"></i></a>: An API server optimized for RPC calls on the validated historical ledger.</li>
 </ul>
-<!-- -->
-<!-- -->
-<!-- API object types -->
-<!-- -->
-<!-- -->
-<!-- -->
-<!-- rippled release notes links -->
+<h2 id="set-up-an-account">Set Up an Account<a aria-hidden="true" class="hover_anchor" href="#set-up-an-account"><i class="fa fa-link"></i></a></h2>
+<p>XRP is held in <em>accounts</em> (also referred to as <em>wallets</em> or <em>addresses</em>  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are <a href="deleting-accounts.html">not easy to delete</a>. To offset the costs associated with storing accounts, each account must hold a separate <a href="reserves.html">reserve of XRP</a> that can't be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy --></p>
+<p>To follow Ripple's recommended best practices, you should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating <a href="account-types.html"><em>cold</em>, <em>hot</em>, and <em>warm</em> accounts</a> (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:</p>
+<ul>
+<li>
+<p>A <a href="account-types.html#issuing-address"><em>cold wallet</em></a> to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send <a href="#deposit-xrp-into-exchange">deposits</a>.   To provide optimal security, this account's secret key should be offline.</p>
+</li>
+<li>
+<p>One or more <a href="account-types.html#operational-addresses"><em>hot wallets</em></a> to conduct the day-to-day business of managing customers' XRP withdrawals and deposits. For example, with a hot wallet, exchanges can securely support these types of automated XRP transfers. Hot wallets need to be online to service instant withdrawal requests.</p>
+</li>
+<li>
+<p>Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet doesn't need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement <a href="multi-signing.html">multi-signing</a> to increase security.</p>
+</li>
+</ul>
+<p>There isn't a dedicated "create account" transaction. The <a href="payment.html">Payment</a> transaction automatically creates a new account if the payment sends enough XRP to a mathematically-valid address that doesn't already have an account. This is called funding an account, and creates an <code>AccountRoot</code> entry in the ledger. No other transaction can create an account. To learn how to set up accounts, see: <a href="accounts.html#creating-accounts">Creating Accounts</a>.</p>
+<h2 id="managing-off-ledger-assets-optional">Managing Off-Ledger Assets (Optional)<a aria-hidden="true" class="hover_anchor" href="#managing-off-ledger-assets-optional"><i class="fa fa-link"></i></a></h2>
+<p>If you are setting up an exchange to hold custody of user funds, you must manage your own balance sheet to track customers' holdings. In this situation, the exchange's accounts are represented <em>on-chain</em> and can be queried. All users of that exchange are handled <em>off-chain</em> by the exchange's accounting system.</p>
+<p>XRP are represented on the XRP Ledger as an unsigned integer count of <em>drops</em>, where one XRP is 1,000,000 drops. Ripple recommends that your accounting software handles XRP balances in <em>drops</em>, but displays to users their balance in units of XRP.</p>
+<p>One drop (.000001 XRP) can't be further subdivided. Keep this in mind when calculating and displaying rates between XRP and other assets.</p>
+<p>To learn more about XRP and token specifics, see: <a href="currency-formats.html">Currency Formats</a>.</p>
+<h2 id="trading-in-the-dex">Trading in the DEX<a aria-hidden="true" class="hover_anchor" href="#trading-in-the-dex"><i class="fa fa-link"></i></a></h2>
+<p>A trade in the XRP Ledger DEX is called an <a href="offers.html">Offer</a>. An Offer is effectively a <a class="external-link" href="https://en.wikipedia.org/wiki/Order_(exchange)#Limit_order" target="_blank"><em>limit order</em> <i aria-hidden="true" class="fa fa-external-link"></i></a> to buy or sell a specific amount of one currency (XRP or a token) for a specific amount of another.</p>
+<p>To see how an example trade is made on the DEX, using the <strong>JavaScript</strong> or <strong>Python</strong> libraries, see: <a href="trade-in-the-decentralized-exchange.html">Trade in the Decentralized Exchange</a>.</p>
+<h3 id="create-order-books">Create Order Books<a aria-hidden="true" class="hover_anchor" href="#create-order-books"><i class="fa fa-link"></i></a></h3>
+<p>Use the <code>book_offers</code> method to retrieve a list of offers (an order book) between two currencies on the XRP Ledger. The response omits unfunded <code>Offers</code> and reports how much of each remaining Offer's total is currently funded. This step isn't technically a requirement, but it's good practice to confirm the exchange rates of currencies, using the <code>quality</code> field.</p>
+<p>When searching for tokens, ensure you have the right <code>issuer</code> selected.</p>
+<p>See: <a href="book_offers.html"><code>book_offers</code></a>.</p>
+<h3 id="submitting-offers">Submitting Offers<a aria-hidden="true" class="hover_anchor" href="#submitting-offers"><i class="fa fa-link"></i></a></h3>
+<p>To creat ean offer, send an <code>OfferCreate</code> transaction.</p>
+<p>An <code>OfferCreate</code> transaction is an instruction to conduct a trade, either between two tokens, or a token and XRP. Each transaction contains a buy amount (<code>TakerPays</code>) and a sell amount (<code>TakerGets</code>). When the transaction is processed, it automatically consumes matching or crossing Offers to the extent possible. If that doesn't completely fill the new Offer, then the rest becomes an Offer object in the ledger.</p>
+<p>The Offer object waits in the ledger until other Offers or cross-currency payments fully consume it. The account that placed the Offer is called the Offer's <em>owner</em>. You can cancel your own Offers at any time, using the dedicated <code>OfferCancel</code> transaction, or as an option of the <code>OfferCreate</code> transaction.</p>
+<p class="devportal-callout note"><strong>Note:</strong> Any Offer in the DEX that would exchange two tokens can use XRP as an intermediary currency in a synthetic order book. The XRPL DEX automatically uses this bridging technique to improve exchange rates and liquidity when doing so is cheaper than trading token-to-token. To learn more, see: <a href="autobridging.html">auto-bridging</a>.</p>
+<p>While you have an Offer in the ledger, it sets aside some of your XRP toward the owner <a href="reserves.html">reserve</a>. When the Offer gets removed, for any reason, that XRP is freed up again.</p>
+<p>See:</p>
+<ul>
+<li><a href="offercreate.html"><code>OfferCreate</code> Transaction</a></li>
+<li><a href="offercancel.html"><code>OfferCancel</code> Transaction</a></li>
+<li><a href="offer.html"><code>Offer</code> Object</a></li>
+</ul>
+<h2 id="technical-considerations">Technical Considerations<a aria-hidden="true" class="hover_anchor" href="#technical-considerations"><i class="fa fa-link"></i></a></h2>
+<h3 id="tick-size">Tick Size<a aria-hidden="true" class="hover_anchor" href="#tick-size"><i class="fa fa-link"></i></a></h3>
+<p>When an Offer is placed into an order book, its exchange rate is truncated based on the <code>TickSize</code> values set by the issuers of the currencies involved in the Offer. When trading XRP and a token, the <code>TickSize</code> from the token's issuer applies. When trading two tokens, the Offer uses the smaller <code>TickSize</code> value (that is, the one with fewer significant digits). If neither token has a <code>TickSize</code> set, the default behavior applies.</p>
+<p>See: <a href="ticksize.html">Tick Size</a></p>
+<h3 id="transfer-fees">Transfer Fees<a aria-hidden="true" class="hover_anchor" href="#transfer-fees"><i class="fa fa-link"></i></a></h3>
+<p>While the native XRP token doesn't charge a transfer fee, issued tokens can.</p>
+<p>Token issuers can charge a transfer fee that applies when users transfer those tokens among themselves. The sender of the transfer is debited an extra percentage based on the transfer fee, while the recipient of the transfer is credited the intended amount. The difference is the transfer fee.</p>
+<p>The transfer fee doesn't apply when sending or receiving directly to and from the issuing account, but it does apply when transferring from an operational address to another user.</p>
+<p>To learn more about how these fees affect payment paths, see: <a href="transfer-fees.html#transfer-fees-in-payment-paths">Transfer Fees in Payment Paths</a>.</p>
     </div>
   </article>
 <!-- Feedback Widget -->
@@ -502,13 +429,13 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
     
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="false" aria-controls="tree_nav_group_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3" aria-expanded="true" aria-controls="tree_nav_group_3"></a>
 
         <a class="nav-link" href="use-cases.html">Use Cases</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3">
+    <nav class="nav flex-column show " id="tree_nav_group_3">
       
   <div class="nav-item ">
 
@@ -581,13 +508,13 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active-parent">
 
-      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="false" aria-controls="tree_nav_group_3_3"></a>
+      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_3_3" aria-expanded="true" aria-controls="tree_nav_group_3_3"></a>
 
         <a class="nav-link" href="defi-uc.html">Decentralized Finance</a>
 
-    <nav class="nav flex-column collapse" id="tree_nav_group_3_3">
+    <nav class="nav flex-column show " id="tree_nav_group_3_3">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="algorithmic-trading.html">Algorithmic Trading</a>
@@ -599,7 +526,7 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
       
-  <div class="nav-item ">
+  <div class="nav-item active">
     <a class="nav-link nav-leaf" href="integrate-with-xrpl-dex.html">Integrate with the XRPL Decentralized Exchange</a>
   </div>
 
@@ -1672,13 +1599,13 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
     
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="true" aria-controls="tree_nav_group_6"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6" aria-expanded="false" aria-controls="tree_nav_group_6"></a>
 
         <a class="nav-link" href="references.html">References</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6">
       
   <div class="nav-item ">
 
@@ -2210,13 +2137,13 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="true" aria-controls="tree_nav_group_6_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3" aria-expanded="false" aria-controls="tree_nav_group_6_3"></a>
 
         <a class="nav-link" href="http-websocket-apis.html">HTTP / WebSocket APIs</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3">
       
   <div class="nav-item ">
 
@@ -2600,13 +2527,13 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="true" aria-controls="tree_nav_group_6_3_3"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3" aria-expanded="false" aria-controls="tree_nav_group_6_3_3"></a>
 
         <a class="nav-link" href="admin-api-methods.html">Admin API Methods</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_3_3">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3">
       
   <div class="nav-item ">
 
@@ -2731,13 +2658,13 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
       
-  <div class="nav-item active-parent">
+  <div class="nav-item ">
 
-      <a class="nav-toggler " role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="true" aria-controls="tree_nav_group_6_3_3_5"></a>
+      <a class="nav-toggler collapsed" role="button" data-toggle="collapse" href="#tree_nav_group_6_3_3_5" aria-expanded="false" aria-controls="tree_nav_group_6_3_3_5"></a>
 
         <a class="nav-link" href="peer-management-methods.html">Peer Management Methods</a>
 
-    <nav class="nav flex-column show " id="tree_nav_group_6_3_3_5">
+    <nav class="nav flex-column collapse" id="tree_nav_group_6_3_3_5">
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="connect.html">connect</a>
@@ -2754,7 +2681,7 @@ rippled<span class="w"> </span>peer_reservations_list
   </div>
 
       
-  <div class="nav-item active">
+  <div class="nav-item ">
     <a class="nav-link nav-leaf" href="peer_reservations_list.html">peer_reservations_list</a>
   </div>
 

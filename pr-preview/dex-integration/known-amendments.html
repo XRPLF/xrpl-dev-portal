@@ -276,6 +276,8 @@
         <li class="nav-item level-2"><a class="nav-link" href="#amendments-in-development">Amendments in Development</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#obsolete-amendments">Obsolete Amendments</a></li>
         <li class="nav-item level-2"><a class="nav-link" href="#details-about-known-amendments">Details about Known Amendments</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixinnerobjtemplate">fixInnerObjTemplate</a></li>
+        <li class="nav-item level-3"><a class="nav-link" href="#fixnftokenreserve">fixNFTokenReserve</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixdisallowincomingv1">fixDisallowIncomingV1</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#fixfillorkill">fixFillOrKill</a></li>
         <li class="nav-item level-3"><a class="nav-link" href="#did">DID</a></li>
@@ -378,6 +380,16 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><a href="#fixinnerobjtemplate">fixInnerObjTemplate</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.1.0.html" target="_blank" title="Open for Voting: 2024-02-20"><img alt="Open for Voting: 2024-02-20" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--02--20-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
+<tr>
+<td style="text-align: left;"><a href="#fixnftokenreserve">fixNFTokenReserve</a></td>
+<td style="text-align: left;">v2.0.0</td>
+<td style="text-align: left;"><a class="external-link" href="https://xrpl.org/blog/2024/rippled-2.1.0.html" target="_blank" title="Open for Voting: 2024-02-20"><img alt="Open for Voting: 2024-02-20" class="dactyl_badge" src="https://img.shields.io/badge/Open%20for%20Voting-2024--02--20-80d0e0.svg"/> <i aria-hidden="true" class="fa fa-external-link"></i></a></td>
+</tr>
 <tr>
 <td style="text-align: left;"><a href="#did">DID</a></td>
 <td style="text-align: left;">v2.0.0</td>
@@ -759,6 +771,63 @@
 </tbody>
 </table>
 <h2 id="details-about-known-amendments">Details about Known Amendments<a aria-hidden="true" class="hover_anchor" href="#details-about-known-amendments"><i class="fa fa-link"></i></a></h2>
+<h3 id="fixinnerobjtemplate">fixInnerObjTemplate<a aria-hidden="true" class="hover_anchor" href="#fixinnerobjtemplate"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixInnerObjTemplate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment fixes an issue with accessing the AMM <code>sfTradingFee</code> and <code>sfDiscountedFee</code> fields in the inner objects of <code>sfVoteEntry</code> and <code>sfAuctionSlot</code>.</p>
+<p>Currently, the inner object template isn't set upon object creation. If the object contains an <code>soeDEFAULT</code> field and is initially set to the default value, accessing the field results in a <code>tefEXCEPTION</code> error in some circumstances. This amendment adds an <code>STObject</code> constructor overload that includes an additional boolean argument to set the inner object template.</p>
+<h3 id="fixnftokenreserve">fixNFTokenReserve<a aria-hidden="true" class="hover_anchor" href="#fixnftokenreserve"><i class="fa fa-link"></i></a></h3>
+<table class="table-responsive">
+<thead>
+<tr>
+<th style="text-align: left;">Amendment</th>
+<th style="text-align: left;">fixNFTokenReserve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Amendment ID</td>
+<td style="text-align: left;">03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C</td>
+</tr>
+<tr>
+<td style="text-align: left;">Status</td>
+<td style="text-align: left;">Open for Voting</td>
+</tr>
+<tr>
+<td style="text-align: left;">Default Vote (Latest stable release)</td>
+<td style="text-align: left;">No</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pre-amendment functionality retired?</td>
+<td style="text-align: left;">No</td>
+</tr>
+</tbody>
+</table>
+<p>This amendment adds a check to the <code>NFTokenAcceptOffer</code> transactor to see if the <code>OwnerCount</code> changes. If it does, it makes an additional check that the reserve requirement is met for the updated owner count.</p>
 <h3 id="fixdisallowincomingv1">fixDisallowIncomingV1<a aria-hidden="true" class="hover_anchor" href="#fixdisallowincomingv1"><i class="fa fa-link"></i></a></h3>
 <table class="table-responsive">
 <thead>
@@ -3191,6 +3260,11 @@
       
   <div class="nav-item ">
     <a class="nav-link nav-leaf" href="list-xrp-as-an-exchange.html">List XRP as an Exchange</a>
+  </div>
+
+      
+  <div class="nav-item ">
+    <a class="nav-link nav-leaf" href="integrate-with-xrpl-dex.html">Integrate with the XRPL Decentralized Exchange</a>
   </div>
 
     </nav>

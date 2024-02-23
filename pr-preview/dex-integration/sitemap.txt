@@ -33,6 +33,7 @@ https://xrpl.org/digital-artist.html
 https://xrpl.org/defi-uc.html
 https://xrpl.org/algorithmic-trading.html
 https://xrpl.org/list-xrp-as-an-exchange.html
+https://xrpl.org/integrate-with-xrpl-dex.html
 https://xrpl.org/concepts.html
 https://xrpl.org/networks-and-servers.html
 https://xrpl.org/xrpl-servers.html
