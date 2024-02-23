@@ -680,6 +680,10 @@ pages:
         targets:
             - ja
 
+    -   md: use-cases/defi/integrate-with-xrpl-dex.md
+        targets:
+            - en
+
 
 # Concepts ---------------------------------------------------------------------
 
