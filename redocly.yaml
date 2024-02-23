@@ -21,9 +21,16 @@ rbac:
 theme:
   scripts:
     head:
+      - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
       - src: ./static/js/xrpl-2.11.0.min.js
       - src: ./static/vendor/jquery-3.7.1.min.js
       - src: ./static/vendor/bootstrap.min.js
+    body:
+      - src: ./static/js/xrplai-config.js
+        id: xrplai-options
+      - src: https://www.unpkg.com/@xrpl/ai-web/dist/init.js
+        type: module
+        id: initjs
   links:
     - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
       rel: stylesheet
@@ -32,6 +39,8 @@ theme:
     - href: ./static/css/devportal2024-v1.css
       rel: stylesheet
     - href: ./static/css/font-awesome.min.css
+      rel: stylesheet
+    - href: https://www.unpkg.com/@xrpl/ai-css/xrplai.css
       rel: stylesheet
 
   logo:
