@@ -36,7 +36,7 @@ ul.nav.navbar-nav {
   --color-gray-7: #343437;
   --color-gray-8: #232325;
   --color-gray-9: #111112;
-  --color-gray-10: var(--color-gray9);
+  --color-gray-10: var(--color-gray-9);
 
   /* color-red = XRPL $magenta */
   --color-red-1: #FFE5F2;
@@ -159,7 +159,7 @@ ul.nav.navbar-nav {
   --color-geekblue-10: #030852; */
 
   /* Dark mode colors by default */
-  --color-primary-bg: var(--color-gray-9);
+  --color-primary-bg: var(--color-gray-10);
 /*  --color-primary-bg-hover: #d6dfff;
   --color-primary-border: #adbcff;
   --color-primary-border-hover: #8a99ff;
@@ -183,7 +183,7 @@ ul.nav.navbar-nav {
   --link-visited-text-color: #fff;
   --link-visited-decoration: underline;
 
-  --bg-base: var(--color-gray-9);
+  --bg-base: var(--color-gray-10);
   --bg-raised: var(--color-gray-8);
   --background-color: var(--bg-base);
 
@@ -198,6 +198,8 @@ ul.nav.navbar-nav {
   --heading-anchor-color: #9a52ff;
   --sidebar-border-color: transparent;
   --sidebar-background-color: transparent;
+
+  --search-item-active-text-color: #E8E9E7;
 
   --border-radius-md: 4px;
 
@@ -246,6 +248,7 @@ ul.nav.navbar-nav {
   --select-list-background-color: #E0E0E1;
 
   --footer-title-text-color: #000;
+  --bg-base: var(--color-gray-1);
   --bg-raised: var(--color-gray-2);
   --button-background-color: var(--color-gray-2);
 }
