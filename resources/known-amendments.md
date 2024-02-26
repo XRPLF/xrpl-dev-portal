@@ -56,7 +56,7 @@ The following is a comprehensive list of all known [amendments](../docs/concepts
 | [MultiSignReserve][]              | v1.2.0     | [Enabled: 2019-04-17](https://livenet.xrpl.org/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB "BADGE_GREEN") |
 | [fixTakerDryOfferRemoval][]       | v1.2.0     | [Enabled: 2019-04-02](https://livenet.xrpl.org/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF "BADGE_GREEN") |
 | [fix1578][]                       | v1.2.0     | [Enabled: 2019-03-23](https://livenet.xrpl.org/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D "BADGE_GREEN") |
-| [DepositPreauth][DepositPreauthAmendment] | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
+| [DepositPreauth][]                | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927 "BADGE_GREEN") |
 | [fix1515][]                       | v1.1.0     | [Enabled: 2018-10-09](https://livenet.xrpl.org/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF "BADGE_GREEN") |
 | [fix1543][]                       | v1.0.0     | [Enabled: 2018-06-21](https://livenet.xrpl.org/transactions/EA6054C9D256657014052F1447216CEA75FFDB1C9342D45EB0F9E372C0F879E6 "BADGE_GREEN") |
 | [fix1623][]                       | v1.0.0     | [Enabled: 2018-06-20](https://livenet.xrpl.org/transactions/4D218D86A2B33E29F17AA9C25D8DFFEE5D2559F75F7C0B1D016D3F2C2220D3EB "BADGE_GREEN") |
