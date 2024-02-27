@@ -1,3 +1,9 @@
+theme.navbar.about: 概要
+theme.navbar.docs: ドキュメント
+theme.navbar.resources: リソース
+theme.navbar.community: コミュニティ
+sidebar.docs: ドキュメント
+sidebar.resources.codesamples: コードサンプル
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集

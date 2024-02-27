@@ -1,4 +1,5 @@
 - group: Documentation
+  groupTranslationKey: sidebar.docs
   page: docs/index.page.tsx
   expanded: false
   items:
@@ -604,6 +605,7 @@
   expanded: false
   items:
     - label: Code Samples
+      labelTranslationKey: sidebar.resources.codesamples
       page: resources/code-samples.page.tsx
     - group: Dev Tools
       page: resources/dev-tools/index.page.tsx
