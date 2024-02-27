@@ -7,8 +7,6 @@
 
 .response-metadata .timestamp {
   color: $gray-600;
-  position: relative;
-  top: 16px;
 }
 
 .throbber {
@@ -38,7 +36,7 @@
   border: 1px solid $gray-200;
 }
 
-#pp_progress small {
+.progress small {
   margin-top: .5rem; // Fix "Getting ready to send..." position
 }
 

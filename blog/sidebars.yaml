@@ -1,0 +1,241 @@
+- group: Blog
+  page: blog/index.page.tsx
+  expanded: true
+  items:
+    - group: '2024'
+      expanded: false
+      items:
+        - page: 2024/clio-2.1.0.md
+        - page: 2024/rippled-2.0.1.md
+        - page: 2024/web3auth.md
+        - page: 2024/rippled-2.0.0.md
+    - group: '2023'
+      expanded: false
+      items:
+        - page: 2023/decommissioning-amm-devnet.md
+        - page: 2023/gemwallet-update.md
+        - page: 2023/clio-2.0.0.md
+        - page: 2023/santiment.md
+        - page: 2023/data-api-v2-deprecated.md
+        - page: 2023/devnet-reset-scheduled-sep-19-2023.md
+        - page: 2023/rippled-1.12.0.md
+        - page: 2023/upcoming-devnet-reset.md
+        - page: 2023/blockdaemon.md
+        - page: 2023/disallowincoming-and-others-expected.md
+        - page: 2023/xrp-toolkit.md
+        - page: 2023/summarizing-xrpl-docs-iav3.md
+        - page: 2023/xrpl-py-2.0-release.md
+        - page: 2023/fieldboss.md
+        - page: 2023/rippled-1.11.0.md
+        - page: 2023/ciso.md
+        - page: 2023/edge.md
+        - page: 2023/xrpcafe.md
+        - page: 2023/chispend.md
+        - page: 2023/rippled-1.10.0.md
+        - page: 2023/bei-api.md
+        - page: 2023/zoetic.md
+        - page: 2023/mandla-money.md
+        - page: 2023/nft-devnet-decommission.md
+        - page: 2023/aesthetes.md
+        - page: 2023/stably.md
+    - group: '2022'
+      expanded: false
+      items:
+        - page: 2022/introducing-xrpl-py-2.0.0beta.md
+        - page: 2022/nftmaster.md
+        - page: 2022/xpmarket.md
+        - page: 2022/ziggurat.md
+        - page: 2022/gemwallet.md
+        - page: 2022/cryptoiso20022interop.md
+        - page: 2022/non-fungible-tokens-are-now-available.md
+        - page: 2022/dev-reflections-relaunch.md
+        - page: 2022/expandedsignerlist-enabled-and-nfts-approaching.md
+        - page: 2022/introducing-learning-portal.md
+        - page: 2022/rippled-1.9.4.md
+        - page: 2022/get-ready-for-nfts.md
+        - page: 2022/rippled-1.9.3.md
+        - page: 2022/rippled-1.9.2.md
+        - page: 2022/clio-1.0.0.md
+        - page: 2022/rippled-1.9.1.md
+        - page: 2022/rippled-1.9.0.md
+        - page: 2022/introducing-clio.md
+        - page: 2022/nft-devnet-reset.md
+        - page: 2022/rippled-1.8.5.md
+        - page: 2022/rippled-1.8.4.md
+    - group: '2021'
+      expanded: false
+      items:
+        - page: 2021/rippled-1.8.2.md
+        - page: 2021/rippled-1.8.1.md
+        - page: 2021/five-upcoming-amendments.md
+        - page: 2021/introducing-xrpl-js.md
+        - page: 2021/sidechain-engineering-preview.md
+        - page: 2021/reserves-lowered.md
+        - page: 2021/rippled-1.7.3.md
+        - page: 2021/ripple-lib-drops-lodash-browsers.md
+        - page: 2021/xrpl-grants-funding-the-next-phase-of-open-decentralized-innovation.md
+        - page: 2021/rippled-1.7.2.md
+        - page: 2021/introducing-xrpl4j.md
+        - page: 2021/xrpl-node-configurator.md
+        - page: 2021/introducing-xrpl-py-for-pythonistas.md
+        - page: 2021/three-amendments-expected.md
+        - page: 2021/message-routing-optimizations-pt-1-proposal-validation-relaying.md
+        - page: 2021/community-spotlight-developing-wallet-protect.md
+        - page: 2021/road-to-xrp-ledger-1-7-improving-efficiency-and-security.md
+        - page: 2021/rippled-1.7.0.md
+    - group: '2020'
+      expanded: false
+      items:
+        - page: 2020/rippled-1.6.0.md
+        - page: 2020/moving-devnet-to-vl.md
+        - page: 2020/requirefullycanonicalsig-fixqualityupperbound-flowcross-enabled.md
+        - page: 2020/developer-reflections-xrp-toolkit.md
+        - page: 2020/requirefullycanonicalsig-expected.md
+        - page: 2020/checks-enabled.md
+        - page: 2020/checks-expected.md
+        - page: 2020/developer-reflections-xrplorer.md
+        - page: 2020/deletableaccounts-enabled.md
+        - page: 2020/get-ready-for-deletable-accounts.md
+        - page: 2020/developer-reflections-xrpscan.md
+        - page: 2020/two-fixes-enabled.md
+        - page: 2020/deletableaccounts-expected.md
+        - page: 2020/testnet-amendments-rippled-1.5.0.md
+        - page: 2020/rippled-1.5.0.md
+        - page: 2020/running-an-xrp-ledger-validator.md
+        - page: 2020/fixcheckthreading-fixpaychanrecipientownerdir-lost-majority.md
+        - page: 2020/rippled-1.4.0-upgrade-advisory.md
+        - page: 2020/fixcheckthreading-fixpaychanrecipientownerdir-expected.md
+    - group: '2019'
+      expanded: false
+      items:
+        - page: 2019/rippled-1.4.0.md
+        - page: 2019/xrpl-devnet-launch.md
+        - page: 2019/fixmasterkeyasregularkey-enabled.md
+        - page: 2019/fixmasterkeyasregularkey-1day.md
+        - page: 2019/fixmasterkeyasregularkey-expected.md
+        - page: 2019/testnet-reset.md
+        - page: 2019/rippled-1.3.1.md
+        - page: 2019/labeling-the-internet-of-value.md
+        - page: 2019/discover-xrp-ledger-explorer.md
+        - page: 2019/websocket-tool-update.md
+        - page: 2019/welcome-to-xrpl-org.md
+        - page: 2019/multisignreserve-enabled.md
+        - page: 2019/rippled-1.2.4.md
+        - page: 2019/secure-development-practices.md
+        - page: 2019/multisignreserve-expected.md
+        - page: 2019/corrections-to-data-api-xrp-charts-metrics.md
+        - page: 2019/interledger-checkin.md
+        - page: 2019/fixtakerdryofferremoval-enabled.md
+        - page: 2019/rippled-1.2.3.md
+        - page: 2019/fix1578-enabled.md
+        - page: 2019/fix1578-expected.md
+        - page: 2019/rippled-1.2.2.md
+        - page: 2019/rippled-1.2.1.md
+        - page: 2019/rippled-1.2.0.md
+        - page: 2019/statement-on-the-biased-nonce-sense-paper.md
+    - group: '2018'
+      expanded: false
+      items:
+        - page: 2018/rippled-1.1.2.md
+        - page: 2018/introducing-history-sharding.md
+        - page: 2018/data-api-validations-changes.md
+        - page: 2018/rippled-1.1.1.md
+        - page: 2018/depositpreauth-fix1515-enabled.md
+        - page: 2018/rippled-1.1.0.md
+        - page: 2018/ripple-lib-1.0.0.md
+        - page: 2018/fix1571-enabled.md
+        - page: 2018/rippled-1.0.1.md
+        - page: 2018/fix1543-fix1571-fix1623-voting.md
+        - page: 2018/rippled-1.0.0.md
+        - page: 2018/depositauth-fix1513-available.md
+        - page: 2018/rippled-0.90.1.md
+        - page: 2018/rippled-0.90.0.md
+        - page: 2018/rippled-validator-key-replacement.md
+        - page: 2018/rippled-boost166-warning.md
+        - page: 2018/rippled-0.81.0.md
+    - group: '2017'
+      expanded: false
+      items:
+        - page: 2017/explanation-of-ripples-xrp-escrow.md
+        - page: 2017/rippled-0.80.2.md
+        - page: 2017/rippled-0.80.0.md
+        - page: 2017/decent-strategy-update.md
+        - page: 2017/high-scalability-xrp-ledger.md
+        - page: 2017/rippled-0.70.2.md
+        - page: 2017/invariant-checking.md
+        - page: 2017/rippled-0.70.1.md
+        - page: 2017/rippled-0.70.0.md
+        - page: 2017/rippled-0.60.3.md
+        - page: 2017/rippled-0.60.2-2-rpm.md
+        - page: 2017/rippled-0.60.2.md
+        - page: 2017/rippled-0.60.1.md
+        - page: 2017/escrow-paychan-fix1368-reminder.md
+        - page: 2017/rippled-0.60.0.md
+        - page: 2017/trust-line-quality-sendmax.md
+        - page: 2017/rippled-0.50.3.md
+        - page: 2017/ripple-consensus-ledger-can-sustain-1000-transactions-per-second.md
+        - page: 2017/ticksize-available.md
+        - page: 2017/ticksize-3days.md
+        - page: 2017/ticksize-7days.md
+        - page: 2017/ticksize-voting.md
+        - page: 2017/rippled-0.50.2.md
+        - page: 2017/rippled-0.50.0.md
+        - page: 2017/data-api-load-balancing-test.md
+        - page: 2017/response-to-china-cert-report.md
+        - page: 2017/rippled-0.40.1.md
+    - group: '2016'
+      expanded: false
+      items:
+        - page: 2016/rippled-0.40.0.md
+        - page: 2016/flow-available.md
+        - page: 2016/flow-reminder.md
+        - page: 2016/flow-voting.md
+        - page: 2016/rippled-0.33.0-hf1.md
+        - page: 2016/rippled-0.33.0.md
+        - page: 2016/testnet-ledger-reset.md
+        - page: 2016/flowv2-vetoed.md
+        - page: 2016/flowv2-voting.md
+        - page: 2016/rippled-0.32.1.md
+        - page: 2016/trustsetauth-available.md
+        - page: 2016/trustsetauth-reminder.md
+        - page: 2016/trustsetauth-voting.md
+        - page: 2016/multisign-available.md
+        - page: 2016/rippled-0.32.0.md
+        - page: 2016/multisign-reminder.md
+        - page: 2016/data-api-v2.2.md
+        - page: 2016/introducing-rippleapi.md
+        - page: 2016/rippled-0.31.2-updates.md
+        - page: 2016/rippled-0.30.1.md
+    - group: '2015'
+      expanded: false
+      items:
+        - page: 2015/correction-to-ripple-white-paper.md
+        - page: 2015/validator-registry.md
+        - page: 2015/introducing-the-data-api.md
+        - page: 2015/gatewayd-no-longer-available.md
+        - page: 2015/ripple-charts-update-payment-volume-and-issued-value.md
+        - page: 2015/do-you-have-what-it-takes-to-be-a-gateway.md
+        - page: 2015/calculating-balance-changes-for-a-transaction.md
+    - group: '2014'
+      expanded: false
+      items:
+        - page: 2014/turn-your-exchange-into-a-ripple-gateway.md
+        - page: 2014/why-the-stellar-forking-issue-does-not-affect-ripple.md
+        - page: 2014/release-notes-3-december-2014.md
+        - page: 2014/release-notes-19-november-2014.md
+        - page: 2014/ripplerest-1.3-release.md
+        - page: 2014/release-notes-29-october-2014.md
+        - page: 2014/gateway-advisory-on-partial-payment-flag.md
+        - page: 2014/release-notes-14-october-2014.md
+        - page: 2014/how-ripple-labs-supports-gateways.md
+        - page: 2014/biweekly-release-notes-17-september-2014.md
+        - page: 2014/biweekly-release-notes-3-september-2014.md
+        - page: 2014/use-of-cpp14-in-rippled.md
+        - page: 2014/biweekly-release-notes-14-august-2014.md
+        - page: 2014/dev-portal-adds-rippled-apis.md
+        - page: 2014/biweekly-release-notes-31-july-2014.md
+        - page: 2014/xrp-giveaway-for-developers.md
+        - page: 2014/ripple-labs-bounty-program-moves-to-bountysource.md
+        - page: 2014/introducing-offer-autobridging.md
+        - page: 2014/curves-with-a-twist.md
+        - page: 2014/introducing-ripple-names.md

@@ -1,1 +1,0 @@
-The valid types are: `account`, `amendments`, `amm` :not_enabled:,  `check`, `deposit_preauth`, `directory`, `escrow`, `fee`, `hashes`, `nft_offer`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`.

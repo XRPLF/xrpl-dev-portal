@@ -1,0 +1,8 @@
+{
+  "name": "freeze-examples",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "xrpl": "^3.0.0"
+  }
+}

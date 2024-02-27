@@ -1,0 +1,45 @@
+[
+  {
+    "id": "connection-s1",
+    "ws_url": "wss://s1.ripple.com/",
+    "jsonrpc_url": "https://s1.ripple.com:51234/",
+    "shortname": "Mainnet s1",
+    "longname": "s1.ripple.com (Mainnet Public Cluster)"
+  },
+  {
+    "id": "connection-xrplcluster",
+    "ws_url": "wss://xrplcluster.com/",
+    "jsonrpc_url": "https://xrplcluster.com/",
+    "shortname": "Mainnet xrplcluster",
+    "longname": "xrplcluster.com (Mainnet Full History Cluster)"
+  },
+  {
+    "id": "connection-s2",
+    "ws_url": "wss://s2.ripple.com/",
+    "jsonrpc_url": "https://s2.ripple.com:51234/",
+    "shortname": "Mainnet s2",
+    "longname": "s2.ripple.com (Mainnet Full History Cluster)"
+  },
+  {
+    "id": "connection-testnet",
+    "ws_url": "wss://s.altnet.rippletest.net:51233/",
+    "jsonrpc_url": "https://s.altnet.rippletest.net:51234/",
+    "shortname": "Testnet",
+    "longname": "s.altnet.rippletest.net (Testnet Public Cluster)"
+  },
+  {
+    "id": "connection-devnet",
+    "ws_url": "wss://s.devnet.rippletest.net:51233/",
+    "jsonrpc_url": "https://s.devnet.rippletest.net:51234/",
+    "shortname": "Devnet",
+    "longname": "s.devnet.rippletest.net (Devnet Public Cluster)"
+  },
+  {
+    "id": "connection-localhost",
+    "ws_url": "ws://localhost:6006/",
+    "jsonrpc_url": "http://localhost:5005/",
+    "shortname": "Local server",
+    "longname":
+    "localhost:6006 (Local <code>rippled</code> Server on port 6006) <br/>\n              <small>(Requires that you <a href=\"install-rippled.html\">run <code>rippled</code></a> on this machine with default WebSocket settings)</small>"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "name": "airgapped-wallet",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "fernet": "^0.4.0",
+    "open": "^8.4.0",
+    "pbkdf2-hmac": "^1.1.0",
+    "prompt": "^1.3.0",
+    "qrcode": "^1.5.1",
+    "xrpl": "^3.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

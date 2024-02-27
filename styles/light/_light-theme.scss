@@ -1,5 +1,5 @@
 // General color elements ------------------------------------------------------
-.content {
+article {
 
   p code,
   table code,
@@ -282,7 +282,8 @@ h6,
 // Navigation ------------------------------------------------------------------
 
 a,
-nav a {
+nav a,
+a:not([role="button"]) {
   color: $light-fg;
 
   &.btn-primary {
@@ -296,7 +297,8 @@ nav a {
 
   &:hover,
   &:active,
-  &.active {
+  &.active
+  {
     color: $light-link-hover-color;
   }
 
@@ -318,7 +320,7 @@ a.card:hover,
 
 // Buttons
 .btn-outline-secondary,
-.content a.button,
+article a.button,
 .navbar-dark .navbar-nav .nav-link.btn-outline-secondary {
   color: $dark;
   border-color: $dark;
@@ -361,11 +363,11 @@ a.card:hover,
   }
 
   // nav "hero" images
-  #top-nav-hero-docs {
+  #dropdown-hero-for-docs > img {
     content: url(../img/icons/lightmode/docs.svg);
   }
 
-  #top-nav-hero-contribute {
+  #dropdown-hero-for-community > img {
     content: url(../img/icons/lightmode/contribute.svg);
   }
 
@@ -397,12 +399,13 @@ a.card:hover,
       color: $gray-600;
     }
 
-    .col-for-popular-pages,
-    .col-for-人気ページ,
-    .col-for-questions,
-    .col-for-質問 {
+    .col-for-get_started{
       background-color: $gray-200;
     }
+  }
+
+  #topnav-button {
+    background-color: $gray-200;
   }
 
   // Top nav mobile
@@ -419,7 +422,9 @@ a.card:hover,
     }
 
     .navbar-nav .nav-link,
-    .navbar-collapse>.nav-item {
+    .navbar-collapse>.nav-item,
+    .navbar-nav #topnav-theme,
+    .navbar-nav #topnav-search {
       background: $gray-200;
     }
   }
@@ -495,8 +500,10 @@ a.osano-cm-link {
 }
 
 // Layout elements -------------------------------------------------------------
-.card,
-.cta-card {
+article .card,
+.landing .card,
+.cta-card,
+aside .card {
   color: $light-fg;
   background-color: $light-standout-bg;
   box-shadow: $light-box-shadow;
@@ -611,8 +618,8 @@ code {
 }
 
 // Code blocks
-pre code {
-  color: $gray-050;
+pre code, pre {
+  background-color: $gray-200;
 }
 
 // Code tabs
@@ -1031,10 +1038,10 @@ pre code {
     color: $black !important;
   }
 
-  #xrplGrantsDark,
-  #xrplGrantsDark-small,
-  #careersDark,
-  #careersDark-small {
+  #xrplGrantsDark g,
+  #xrplGrantsDark-small g,
+  #careersDark g,
+  #careersDark-small g{
     filter: invert(100%) brightness(0.8);
   }
 }
@@ -1211,20 +1218,124 @@ $placeholder-color: $gray-600;
 
 }
 
-.tutorial-card-grid {
+main article .card-grid {
+  color: $black;
+
   code {
     background-color: $green-100;
   }
 
-  .card-icon-container {
+  .card-icon-container,
+  &.card-grid-3xN .card-icon-container {
     background: $gray-300;
   }
 }
 
-.footer-nav {
-  .nav-item {
-    text-shadow: #F5F5F7 0px 0px 2px, #F5F5F7 1px 1px 2px, #F5F5F7 2px 2px 3px,
-      #F5F5F7 2px 2px 4px, #F5F5F7 2px 2px 5px, #F5F5F7 2px 2px 6px, #F5F5F7 -1px -1px 2px,
-      #F5F5F7 -2px -2px 3px, #F5F5F7 -2px -2px 4px;
+[data-component-name="Footer/Footer"] {
+  [data-component-name="Footer/FooterColumn"] {
+    text-shadow: $gray-100 0px 0px 2px, $gray-100 1px 1px 2px, $gray-100 2px 2px 3px,
+      $gray-100 2px 2px 4px, $gray-100 2px 2px 5px, $gray-100 2px 2px 6px, $gray-100 -1px -1px 2px,
+      $gray-100 -2px -2px 3px, $gray-100 -2px -2px 4px;
+  }
+}
+
+.dev-blog {
+  .text-bg {
+    background-color: $white;
+  }
+
+  #card-date {
+    color: $gray-600;
+  }
+
+  .category-header {
+    color: $gray-900;
+  }
+
+  label {
+    color: $gray-700;
+  }
+
+  .blog-filter[type="checkbox"]::before {
+    background: $gray-100;
+  }
+
+  .blog-filter[type="checkbox"]:checked::before {
+    background: $gray-100;
+  }
+
+  .blog-filter[type="checkbox"]:not(:disabled):checked:hover::after {
+    background-image: url(../img/blog/blog-check-light-mode.svg);
+  }
+
+  .blog-filter[type="checkbox"]:not(:disabled):hover::before {
+    background: $gray-100;
+  }
+
+  .blog-filter[type="checkbox"]:not(:disabled):hover::after {
+    background: $gray-100;
+  }
+
+  .post-date {
+    text-decoration: overline solid #145C35 10%;
+  }
+
+  #general-badge {
+    background-color: #FFFFFF;
+    color: #343437; 
+  }
+
+  #release_notes-badge {
+    background-color: #32E685;
+    color: #145C35; 
+  }
+
+  #advisories-badge {
+    background-color: #FF6719;
+    color: #4C1A00;
+  }
+
+  #amendments-badge {
+    background-color: #FAFF19;
+    color: #4B4C00; 
+  }
+
+  #development-badge {
+    background-color: #7919FF;
+    color: #20004C;
+  }
+
+  #developer_reflections-badge {
+    background-color: #19A3FF;
+    color: #002E4C;
+  }
+
+  #gateway_bulletins-badge {
+    background-color: #D919FF;
+    color: #40004C;
+  }
+
+  #features-badge {
+    background-color: #32E685;
+    color: #145C35;
+  }
+
+  #security-badge {
+    background-color: #FF198B;
+    color: #4C0026;
+  }
+
+  .dropdown-btn {
+    color: $gray-900;
+    background-color: $gray-200;
+    border-color: $gray-200;
+
+    img {
+      content: url("../img/icons/lightmode/chevron-arrow-down.svg");
+    }
+  }
+
+  .dropdown-content {
+    background-color: $gray-200;
   }
 }

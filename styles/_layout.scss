@@ -180,6 +180,16 @@ section {
     .card-body {
       padding: 8px;
       padding-bottom: 24px;
+
+      .card-icon-container {
+        width: 50px;
+        height: 50px;
+
+        img {
+          width: 70%;
+          height: 70%;
+        }
+      }
     }
   }
 
@@ -209,75 +219,11 @@ section {
   }
 }
 
-// 3-column layout for docs pages ----------------------------------------------
-
-.xrp-ledger-dev-portal.sidebar-primary .main {
-  z-index: 5;
-  padding: 2rem;
-  min-height: 700px;
-
-  @include media-breakpoint-up(lg) {
-    top: 80px;
-  }
-}
-
-.left-sidebar {
-  padding: 2rem;
-
-  .external-link::after {
-    background-position: left 6px bottom 1px;
-    width: 2rem;
-
-  }
-
-  &:hover::after {
-    transform: translate(3px, -3px); // Translate the arrow up and to the right
-  }
-
-
-  @include media-breakpoint-up(lg) {
-    position: sticky;
-    max-height: calc(100vh - 80px);
-    top: 80px;
-    left: 0;
-    overflow: auto;
-    border: 0;
-  }
-}
-
-.right-sidebar {
-  padding: 2rem;
-  border: 1px solid $gray-600;
-
-  @include media-breakpoint-up(lg) {
-    position: sticky;
-    max-height: calc(100vh - 80px);
-    top: 80px;
-    right: 0;
-    overflow: auto;
-    border: 0;
-  }
-}
-
 
 /* Responsive design for different viewscreens ------------------------------ */
 
 @include media-breakpoint-down(md) {
-
-  .right-sidebar .card {
-    padding-left: 0;
-  }
-
-  #page-toc-wrapper {
-    position: static;
-    // display: block;
-    clear: both;
-    overflow-y: inherit;
-    max-width: 100%;
-    max-height: inherit;
-    word-break: break-all;
-  }
-  .main {
+  article {
     overflow-wrap: break-word;
     word-wrap: break-word;
     overflow: hidden;

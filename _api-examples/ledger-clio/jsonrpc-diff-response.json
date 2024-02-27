@@ -1,0 +1,91 @@
+{
+  "result": {
+    "ledger_hash": "0C445F6F348AA5FF25A631C904F7277980F7FD2A6BACBB3A74FCF95F671D4884",
+    "ledger_index": 82681558,
+    "validated": true,
+    "ledger": {
+      "account_hash": "60BF81E9BCA5CEDB629B8D19DE0791F13318B4C6B6886E35A211824F9EB04DE5",
+      "close_flags": 0,
+      "close_time": 748569330,
+      "close_time_human": "2023-Sep-20 23:55:30.000000000 UTC",
+      "close_time_resolution": 10,
+      "closed": true,
+      "ledger_hash": "0C445F6F348AA5FF25A631C904F7277980F7FD2A6BACBB3A74FCF95F671D4884",
+      "ledger_index": "82681558",
+      "parent_close_time": 748569321,
+      "parent_hash": "817E4F1791BE34C1214E78E02CAB794C54615F69E765D140D0BD820EA81BF0E9",
+      "total_coins": "99988406204421588",
+      "transaction_hash": "2D7808600F9CF57E263EC1EC4AA7357586AE949908EA7DBF023D241812CDC9B5",
+      "diff": [
+        {
+          "object_id": "02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F0E155AF07E5400",
+          "object": {
+            "ExchangeRate": "4f0e155af07e5400",
+            "Flags": 0,
+            "Indexes": [
+              "4CF31E76F470F4CBE7E7EDD1973CDFA564A59672D14C577C51517A1E3469E53A"
+            ],
+            "LedgerEntryType": "DirectoryNode",
+            "RootIndex": "02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F0E155AF07E5400",
+            "TakerGetsCurrency": "0000000000000000000000000000000000000000",
+            "TakerGetsIssuer": "0000000000000000000000000000000000000000",
+            "TakerPaysCurrency": "000000000000000000000000434E590000000000",
+            "TakerPaysIssuer": "CED6E99370D5C00EF4EBF72567DA99F5661BFB3A",
+            "index": "02BAAC1E67C1CE0E96F0FA2E8061020536CEDD043FEB0FF54F0E155AF07E5400"
+          }
+        },
+        # ... (trimmed for length) ...
+        {
+          "object_id": "F0B9A528CE25FE77C51C38040A7FEC016C2C841E74C1418D5B0A3845AE4FF3FC",
+          "object": {
+            "ExchangeRate": "5b0a3845ae4ff3fc",
+            "Flags": 0,
+            "Indexes": [
+              "7C085618D0A2BC3A8919A032699A2219C08D112CC4020E615CE37C4ABE31A13C"
+            ],
+            "LedgerEntryType": "DirectoryNode",
+            "RootIndex": "F0B9A528CE25FE77C51C38040A7FEC016C2C841E74C1418D5B0A3845AE4FF3FC",
+            "TakerGetsCurrency": "0000000000000000000000005553440000000000",
+            "TakerGetsIssuer": "2ADB0B3959D60A6E6991F729E1918B7163925230",
+            "TakerPaysCurrency": "0000000000000000000000000000000000000000",
+            "TakerPaysIssuer": "0000000000000000000000000000000000000000",
+            "index": "F0B9A528CE25FE77C51C38040A7FEC016C2C841E74C1418D5B0A3845AE4FF3FC"
+          }
+        },
+        {
+          "object_id": "F0B9A528CE25FE77C51C38040A7FEC016C2C841E74C1418D5B0A395385B74F22",
+          "object": ""
+        },
+        {
+          "object_id": "F97B88D103742E8C7CBDB982FF8843DC9E128E968668837B9468B1DB47EABBDC",
+          "object": {
+            "Account": "r4AZpDKVoBxVcYUJCWMcqZzyWsHTteC4ZE",
+            "BookDirectory": "623C4C4AD65873DA787AC85A0A1385FE6233B6DE100799474F12ED4BF0EFEAD9",
+            "BookNode": "0",
+            "Flags": 0,
+            "LedgerEntryType": "Offer",
+            "OwnerNode": "0",
+            "PreviousTxnID": "15D26953F0CE5216DC8BC7123E3DB8C8EC210D6127A7F34E182318206E0F2DFE",
+            "PreviousTxnLgrSeq": 82681558,
+            "Sequence": 132450778,
+            "TakerGets": "3677818937",
+            "TakerPays": {
+              "currency": "CNY",
+              "issuer": "rJ1adrpGS3xsnQMb9Cw54tWJVFPuSdZHK",
+              "value": "19593.43327917432"
+            },
+            "index": "F97B88D103742E8C7CBDB982FF8843DC9E128E968668837B9468B1DB47EABBDC"
+          }
+        }
+      ]
+    },
+    "status": "success"
+  },
+  "warnings": [
+    {
+      "id": 2001,
+      "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+    }
+  ]
+}
+

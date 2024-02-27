@@ -1,0 +1,1 @@
+_By default, this method is [admin-only](../references/http-websocket-apis/admin-api-methods/index.md). It can be used as a public method if the server admin has [enabled public signing](../infrastructure/configuration/enable-public-signing.md)._

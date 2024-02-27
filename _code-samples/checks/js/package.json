@@ -1,0 +1,10 @@
+{
+  "name": "checks-examples",
+  "description": "Example code for signing and submitting Checks with RippleAPI",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "ripple-lib": "^1.0.0-beta.1",
+    "xrpl": "^3.0.0"
+  }
+}

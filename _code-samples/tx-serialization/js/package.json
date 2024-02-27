@@ -1,0 +1,19 @@
+{
+  "name": "transaction-serialisation-examples",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^2.1.0",
+    "big-integer": "^1.6.52",
+    "buffer": "^6.0.3",
+    "decimal.js": "^10.4.3",
+    "fs": "^0.0.1-security",
+    "minimist": "^1.2.7",
+    "ripple-address-codec": "^5.0.0",
+    "xrpl": "^3.0.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  }
+}

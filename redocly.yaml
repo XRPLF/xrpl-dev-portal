@@ -1,0 +1,114 @@
+ignore:
+  - docs/references/http-websocket-apis/admin-api-methods/_template-admin-method.md
+  - docs/img/_sources/*
+  - _code-samples/*/README.md
+  - _code-samples/**/README.md
+  - _code-samples/create-amm/ts/tsconfig.json
+i18n:
+  defaultLocale: en-US
+  locales:
+    - code: en-US
+      name: English
+    - code: ja
+      name: 日本語
+redirects:
+  $ref: redirects.yaml
+seo:
+  siteUrl: https://xrpl-dev-portal.redocly.app/
+rbac:
+  cms:
+    xrpl-org-editors: maintain
+theme:
+  scripts:
+    head:
+      - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
+      - src: ./static/js/xrpl-2.11.0.min.js
+      - src: ./static/vendor/jquery-3.7.1.min.js
+      - src: ./static/vendor/bootstrap.min.js
+    body:
+      - src: ./static/js/xrplai-config.js
+        id: xrplai-options
+      - src: https://www.unpkg.com/@xrpl/ai-web/dist/init.js
+        type: module
+        id: initjs
+  links:
+    - href: https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap
+      rel: stylesheet
+    - href: https://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,600,700&display=swap
+      rel: stylesheet
+    - href: ./static/css/devportal2024-v1.css
+      rel: stylesheet
+    - href: ./static/css/font-awesome.min.css
+      rel: stylesheet
+    - href: https://www.unpkg.com/@xrpl/ai-css/xrplai.css
+      rel: stylesheet
+
+  logo:
+    srcSet: ./static/img/XRPLedger_DevPortal-black.svg light ./static/img/XRPLedger_DevPortal-white.svg dark
+    altText: XRP Ledger Developer Portal
+    link: /
+  navbar:
+    items:
+      $ref: top-nav.yaml
+  markdown:
+    partialsFolders: ["docs/_snippets", "_code-samples", "_api-examples"]
+  footer:
+    logo:
+      hide: true
+    copyrightText: © 2024 XRP Ledger. Open Source.
+    items:
+      - group: About
+        items:
+          - page: about/index.page.tsx
+          - label: Use Cases & Projects
+            page: about/uses.page.tsx
+          - page: about/history.page.tsx
+          - page: about/impact.page.tsx
+          - label: XRPL Foundation
+            href: https://foundation.xrpl.org/
+            external: true
+          - page: about/faq.md
+          - page: about/privacy-policy.md
+      - group: Docs
+        items:
+          - label: XRPL Documentation
+            page: docs/index.page.tsx
+          - page: docs/introduction/index.md
+          - page: docs/use-cases/index.md
+          - page: docs/concepts/index.md
+          - page: docs/tutorials/index.md
+          - page: docs/references/index.md
+          - page: docs/infrastructure/index.md
+      - group: Resources
+        items:
+          - page: resources/code-samples.page.tsx
+          - page: resources/dev-tools/index.page.tsx
+          - label: XRPL Learning Portal
+            href: https://learn.xrpl.org/
+            external: true
+          - label: XRPL Brand Kit
+            href: /XRPL_Brand_Kit.zip
+            external: true
+          - label: Ledger Explorer
+            href: https://livenet.xrpl.org/
+            external: true
+          - page: resources/known-amendments.md
+          - page: resources/contribute-code/index.md
+          - page: resources/contribute-documentation/index.md
+      - group: Community
+        items:
+          - page: community/index.page.tsx
+          - page: community/events.page.tsx
+          - page: community/ambassadors.page.tsx
+          - page: community/developer-funding.page.tsx
+          - label: XRPL Jobs
+            href: https://jobs.xrpl.org/
+            external: true
+          - page: blog/index.page.tsx
+          - label: XRPL Grants
+            href: https://xrplgrants.org/
+            external: true
+          - label: GitHub
+            href: https://github.com/XRPLF/
+            external: true
+          - page: community/report-a-scam.md
