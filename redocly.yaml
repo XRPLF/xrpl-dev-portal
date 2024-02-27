@@ -19,6 +19,10 @@ rbac:
   cms:
     xrpl-org-editors: maintain
 theme:
+  analytics:
+    ga:
+      head: true
+      trackingId: G-S5X05HNXVX   
   scripts:
     head:
       - src: https://cmp.osano.com/AzyjT6TIZMlgyLyy8/f11f7772-8ed5-4b73-bd17-c0814edcc440/osano.js
