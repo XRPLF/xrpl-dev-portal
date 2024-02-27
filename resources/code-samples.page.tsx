@@ -58,7 +58,7 @@ export default function CodeSamples() {
                 <a
                   key={card.href}
                   className={`card cardtest col-12 col-lg-5 ${card.langs.join(' ')}`}
-                  href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`}
+                  href={target.github_forkurl + `/tree/${target.github_branch}/${card.href}`.replace('/content','')}
                 >
                   <div className="card-header">
                     {card.langs.map(lang => (
