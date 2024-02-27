@@ -14,14 +14,14 @@ labels:
 |:----------|:------------|:-------------|:--------------|:---------------------|
 | XRP Ledger 財団 | **Mainnet** | `https://xrplcluster.com/` <br> `https://xrpl.ws/` [²][] | `wss://xrplcluster.com/` <br>  `wss://xrpl.ws/` [²][] | CORSをサポートする全履歴サーバークラスター |
 | Ripple[¹][]   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | 汎用サーバークラスター |
-| Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [全履歴サーバ](../../concepts/networks-and-servers/ledger-history.md#すべての履歴) クラスター |
+| Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [全履歴サーバ](../concepts/networks-and-servers/ledger-history.md#すべての履歴) クラスター |
 | Ripple[¹][]   | Testnet     | `https://s.altnet.rippletest.net:51234/` | `wss://s.altnet.rippletest.net:51233/` | Testnet 公開サーバー |
 | XRPL Labs     | Testnet     | `https://testnet.xrpl-labs.com/` | `wss://testnet.xrpl-labs.com/` | CORSをサポートする Testnet 公開サーバー |
 | Ripple[¹][]   | Devnet      | `https://s.devnet.rippletest.net:51234/` | `wss://s.devnet.rippletest.net:51233/` | Devnet 公開サーバー |
 | Ripple[¹][]   | Sidechain-Devnet | `https://sidechain-net2.devnet.rippletest.net:51234/` | `wss://sidechain-net2.devnet.rippletest.net:51233/` | クロスチェーンブリッジ機能をテストするためのサイドチェーンDevnet。Devnetはロックチェーンとして機能し、このサイドチェーンは発行チェーンとして機能します。 |
 | XRPL Labs     | Xahau Testnet | `https://xahau-test.net/` | `wss://xahau-test.net/` | [Hooksが有効な](https://hooks.xrpl.org/) Xahau Testnet |
 
-[ネットワーク]: ../../concepts/networks-and-servers/parallel-networks.md
+[ネットワーク]: ../concepts/networks-and-servers/parallel-networks.md
 [¹]: #footnote-1
 [²]: #footnote-2
 
