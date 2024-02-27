@@ -20,7 +20,8 @@ rbac:
     xrpl-org-editors: maintain
 theme:
   analytics:
-    gtm:
+    ga:
+      head: true
       trackingId: G-S5X05HNXVX   
   scripts:
     head:
