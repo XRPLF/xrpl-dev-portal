@@ -2,7 +2,7 @@
 
 The [XRP Ledger Dev Portal](https://xrpl.org) is the authoritative source for XRP Ledger documentation, including the `rippled` server, client libraries, and other open-source XRP Ledger software.
 
-The site is build and published using Redocly. 
+The site is built and published using Redocly. 
 
 NOTE: The toolchain used to build and publish the site has recently been migrated from Dactyl to Redocly. 
 
@@ -49,7 +49,7 @@ If you make changes to the [Domain Verification Checker](https://xrpl.org/valida
 
 ### Internationalization 
 
-This repo has English (en) and Japanese (ja) locales set up already. 
+This repo includes English (en) and Japanese (ja) locales. 
 
 This is done by setting up the internationalization (@i18n) folders, adding the `i18n` configuration to your `redocly.yaml` file, and adding the translated content in the respective language directory under the @i18n directory.
 
@@ -71,7 +71,7 @@ To add support for a new language:
 
 3. Add the translated content in the respective language directory under the @i18n directory. 
 
-    The relative path from the language directory to the translated file should be the same as the relative path from the root of the portal to the file in the default language. For example, if you originally had a file with path `path/to/my/markdown.md`, the file translated to Spanish must be /`@i18n/es-ES/path/to/my/markdown.md`.
+    The relative path from the language directory to the translated file must be the same as the relative path from the root of the portal to the file in the default language. For example, if you originally had a file with path `path/to/my/markdown.md`, the file translated to Spanish must be /`@i18n/es-ES/path/to/my/markdown.md`.
 
 ## Issues, Projects, and Project Boards
 
