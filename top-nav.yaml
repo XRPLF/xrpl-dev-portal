@@ -6,6 +6,7 @@
 
 # nav:
 - group: About
+  groupTranslationKey: theme.navbar.about
   items:
     - group: XRP Ledger
       items:
@@ -27,6 +28,7 @@
         - page: ./about/privacy-policy.md
 
 - group: Docs
+  groupTranslationKey: theme.navbar.docs
   items:
     - icon: ./static/img/icons/docs.svg
     # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
@@ -57,6 +59,7 @@
           label: HTTP / WebSocket
 
 - group: Resources
+  groupTranslationKey: theme.navbar.resources
   items:
     - group: Development
       items:
@@ -83,6 +86,7 @@
           href: /resources/contribute-documentation
 
 - group: Community
+  groupTranslationKey: theme.navbar.community
   items:
     - icon: ./static/img/icons/contribute.svg
       label: Contribute to the XRPL Community || Join the conversation
