@@ -584,13 +584,13 @@ const CommunityPage: React.FC = () => {
               <a
                 className="com-card-link"
                 target="_blank"
-                href="/concepts/networks-and-servers/"
+                href="/docs/concepts/networks-and-servers/"
               >
                 {translate("Networks and Servers")}
               </a>
               <a
                 className="com-card-link"
-                href="/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
+                href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
                 target="_blank"
               >
                 {translate("Join UNL")}
@@ -598,14 +598,14 @@ const CommunityPage: React.FC = () => {
               <a
                 className="com-card-link"
                 target="_blank"
-                href="/infrastructure/installation/"
+                href="/docs/infrastructure/installation/"
               >
                 {translate("Install & Configure")}
               </a>
               <a
                 className="com-card-link"
                 target="_blank"
-                href="/infrastructure/troubleshooting/"
+                href="/docs/infrastructure/troubleshooting/"
               >
                 {translate("Troubleshooting")}
               </a>
