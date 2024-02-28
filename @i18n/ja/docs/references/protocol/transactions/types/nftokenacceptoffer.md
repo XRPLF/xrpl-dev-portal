@@ -7,14 +7,36 @@ labels:
   - NFT, 非代替性トークン
 ---
 # NFTokenAcceptOffer
+[[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/NFTokenAcceptOffer.cpp "ソース")
 
 `NFTokenAcceptOffer`トランザクションは`NFToken`の購入または売却のオファーを受け入れるために使用されます。トランザクションは次のいずれかになります。
 
-* 1つのオファーを受け入れることを許可する。これは _ダイレクト_ モードと呼ばれます。
-* 2つの異なるオファー、1つは与えられた`NFToken`の購入を提案し、もう1つは同じ`NFToken`の売却を提案し、アトミックに受け入れられることを許可します。これは _ブローカー_ モードと呼ばれます。
+* 1つのオファーを受け入れます。これは _ダイレクト_ モードと呼ばれます。
+* 2つの異なるオファー(`NFToken`の購入オファーと同じ`NFToken`に対するの売却オファー)をアトミックに受け入れます。これは _ブローカー_ モードと呼ばれます。
 
 _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
+## NFTokenAcceptOffer JSONの例
+
+```json
+{
+  "Account": "r9spUPhPBfB6kQeF6vPhwmtFwRhBh2JUCG",
+  "Fee": "12",
+  "LastLedgerSequence": 75447550,
+  "Memos": [
+    {
+      "Memo": {
+        "MemoData": "61356534373538372D633134322D346663382D616466362D393666383562356435386437"
+      }
+    }
+  ],
+  "NFTokenSellOffer": "68CD1F6F906494EA08C9CB5CAFA64DFA90D4E834B7151899B73231DE5A0C3B77",
+  "Sequence": 68549302,
+  "TransactionType": "NFTokenAcceptOffer"
+}
+```
+
+[トランザクションの例を確認 >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs1.ripple.com%2F&req=%7B%22id%22%3A%22example_NFTokenAcceptOffer%22%2C%22command%22%3A%22tx%22%2C%22transaction%22%3A%22BEB64444C36D1072820BAED317BE2E6470AFDAD9D8FB2D16A15A4D46E5A71909%22%2C%22binary%22%3Afalse%7D)
 
 ## ブローカー vs. ダイレクト モード
 
@@ -34,33 +56,18 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 ## 実行内容
 
-
-### ダイレクトモード
-
-ダイレクトモードでは、以下の場合、`NFTokenAcceptOffer`トランザクションは失敗します。
-
-* `NFTokenAcceptOffer`トランザクションの対象となる`NFTokenOffer`が`NFToken`の`購入`オファーであり、`NFTokenAcceptOffer`を送信したアカウントが、実行時に対応する`NFToken`を所有していない場合。
-* `NFTokenAcceptOffer`トランザクションの対象となる`NFTokenOffer`は`NFToken`の`売却`オファーであり、実行時に`NFToken`の所有者ではないアカウントが送信している場合。
-* `NFTokenAcceptOffer`トランザクションの対象となる`NFTokenOffer`は`NFToken`の`売却`オファーであり、実行時に`NFTokenOffer`内の受信者である`Account`以外のアカウントによって送信された場合（存在する場合）。
-* `NFTokenAcceptOffer`トランザクションの対象となる`NFTokenOffer`に`expiration`が設定されており、そのトランザクションが含まれる親レジャーのフィールドの終了時刻が既に経過している場合。
-* `NFTokenAcceptOffer`トランザクションの対象となる`NFTokenOffer`が、`NFTokenAcceptOffer`を実行するアカウントが所有し、`NFToken`の売買が行われる場合。
-
-このような失敗の副作用として、`NFTokenOffer`オブジェクトが削除され、オファーがキャンセルされたかのように準備金が払い戻されることがあります。このため、適切な`tec`クラスのエラーを使用する必要があります。
-
-トランザクションが正常に実行された場合
+トランザクションが成功した場合
 
 * 既存の`owner`の`NFTokenPage`からトークンが削除され、新しい`owner`の`NFTokenPage`に追加されます。
 * `NFTokenOffer`で指定された通り、購入者から販売者に資金が移動します。対応する`NFToken`のオファーに`TransferFee`が指定されている場合、`issuer`は指定されたパーセンテージを受け取り、残りは`NFToken`の販売者に送られます。
 
+以下の場合、トランザクションは[`tec`コード](../transaction-results/tec-codes.md)で失敗します。
 
-### ブローカーモード
-
-ブローカーモードでは、以下の場合、`NFTokenAcceptOffer`トランザクションは失敗します。
-
-* `NFTokenAcceptOffer`トランザクションに対する`NFTokenOffer`の`購入`オファーがトランザクションを送信するアカウントによって所有されている場合。
-* `NFTokenAcceptOffer`トランザクションに対する`NFTokenOffer`の`売却`オファーが、トランザクションを送信するアカウントによって所有されている場合。
-* `NFToken`の売却オファーを出したアカウントが、その実行時に対応する`NFToken`の現在の所有者ではない場合。
-* いずれかのオファー（`購入`または`売却`）が`expiration`を指定しており、そのトランザクションが含まれる親レジャーのクローズ時間がすでに経過している場合。
+- 購入者が既に`NFToken`を所有している。
+- 販売者が現在`NFToken`の所有者でない。
+- 取引のオファーの一方または両方の期限が失効している。
+- 売却オファーが特定の宛先アカウントを指定しており、トランザクションの送信者がそのアカウントでない。
+- トランザクションの送信者が購入または売却のオファーを所有している。
 
 
 ## フィールド
