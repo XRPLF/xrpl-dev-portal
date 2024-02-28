@@ -38,7 +38,7 @@ JavaScriptはWebブラウザ上で動作するため、セットアップなし�
 
 XRP Ledgerでトランザクションを送信するには、アドレスと秘密鍵、そしてXRPが必要です。開発用には、[Testnet](../../../concepts/networks-and-servers/parallel-networks.md)で以下のようなインターフェースを使ってこれらを入手することができます。
 
-{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 [本番環境のソフトウェアを作成する場合](/docs/tutorials)には、既存のアカウントを使用し、[安全な署名](../../../concepts/transactions/secure-signing.md)を使用して鍵を管理する必要があります。
 
@@ -59,7 +59,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 このチュートリアルでは、以下のボタンをクリックして接続します。
 
-{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 3. シーケンス番号の確認
@@ -145,7 +145,7 @@ XRP Ledgerでトランザクションを送信するには、アドレスと秘�
 
 {% /tabs %}
 
-{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
 ### (任意) 休憩
@@ -244,7 +244,7 @@ TicketCreateトランザクションをすぐに送信する予定がない場�
 
 チケット付きトランザクションは、シーケンス付きトランザクションと同じようにコンセンサスプロセスを経ます。
 
-{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait Again"} /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/wait-step.md" variables={label: "Wait Again"} /%}
 
 ## マルチシグで使用する
 

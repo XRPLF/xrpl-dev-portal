@@ -11,7 +11,7 @@ labels:
 
 `sign`メソッドは[JSONフォーマットのトランザクション](../../../protocol/transactions/index.md)と[シード値](../../../../concepts/accounts/cryptographic-keys.md)を受け取り、トランザクションの署名済みバイナリー表現を返します。[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)に署名を付与する場合は、代わりに[sign_forメソッド][]を使用します。
 
-{% partial file="/docs/_snippets/public-signing-note.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/public-signing-note.md" /%}
 
 
 **注意:** 独自の`rippled`サーバーを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](../../../client-libraries.md)を実行してください。詳細については[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)を参照してください。

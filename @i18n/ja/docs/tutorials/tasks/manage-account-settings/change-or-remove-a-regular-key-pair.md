@@ -30,7 +30,7 @@ XRP Ledgerでは、アカウントはその後のトランザクションには 
 
 ### トランザクションの署名
 
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-sign-step.md" /%}
 
 
 リクエストフィールドに以下の値を指定します。

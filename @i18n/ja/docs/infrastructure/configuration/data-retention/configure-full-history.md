@@ -45,7 +45,7 @@ labels:
 
     **注意:** RocksDBで履歴をすでにダウンロードしている場合は、NuDBへ切り替えるときに構成ファイルでデータベースのパスを変更するか、またはそのデータを削除する必要があります。`[node_db]`スタンザの`path`設定**および**`[database_path]`（SQLiteデータベース）設定の両方を変更する必要があります。このようにしないと、サーバーの[起動が失敗する](../../troubleshooting/server-wont-start.md#状態dbエラー)可能性があります。
 
-    {% partial file="/docs/_snippets/conf-file-location.md" /%}
+    {% partial file="/@i18n/ja/docs/_snippets/conf-file-location.md" /%}
 
 0. サーバーの構成ファイルで`[ledger_history]`スタンザを`full`に設定します。
 

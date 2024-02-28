@@ -6,6 +6,7 @@ seo:
 labels:
   - セキュリティ
   - 支払い
+outdated_translation: true　
 ---
 # Deposit Authorization
 
@@ -60,7 +61,8 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 以下の表に、トランザクションタイプ別にDepositAuthが有効または無効な状態での入金の可否をまとめました。
 
-{% partial file="/docs/_snippets/depositauth-semantics-table.md" /%}
+<!-- TODO: translate -->
+{% partial file="/@i18n/ja/docs/_snippets/depositauth-semantics-table.md" /%}
 
 
 

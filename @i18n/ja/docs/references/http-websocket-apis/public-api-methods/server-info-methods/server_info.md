@@ -122,9 +122,9 @@ rippled server_info
 
 **注記:** `closed_ledger`フィールドがあり、`seq`の値が小さい（8桁未満）場合、`rippled`には現在、ピアツーピアネットワークから取得した検証済みレジャーのコピーがないことを表しています。これは、サーバが現在も同期中である可能性を示しています。接続速度とハードウェア仕様にもよりますが、通常はネットワークとの同期に約5分かかります。
 
-{% partial file="/docs/_snippets/etl-source-object.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/etl-source-object.md" /%}
 
-{% partial file="/docs/_snippets/port-descriptor-object.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/port-descriptor-object.md" /%}
 
 ## 考えられるエラー
 

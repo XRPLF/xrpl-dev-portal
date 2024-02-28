@@ -16,7 +16,7 @@ Checkがレジャーに含まれており有効期限切れではない場合は
 
 ## 前提条件
 
-{% partial file="/docs/_snippets/checkcash-prereqs.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/checkcash-prereqs.md" /%} 
 
 ## 1. CheckCashトランザクションの準備
 
@@ -56,7 +56,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## 2. CheckCashトランザクションの署名
 
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-sign-step.md" /%} 
 
 ### リクエストの例
 
@@ -82,7 +82,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## 3. 署名済みCheckCashトランザクションの送信
 
-{% partial file="/docs/_snippets/tutorial-submit-step.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
 
@@ -107,7 +107,7 @@ Checkを正確な金額で換金するためのトランザクションを準備
 
 ## 4. 検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5.最終結果の確認
 

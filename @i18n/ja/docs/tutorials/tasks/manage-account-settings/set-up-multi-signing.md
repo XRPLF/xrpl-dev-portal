@@ -65,7 +65,7 @@ Connecting to 127.0.0.1:5005
 
 この例ではSignerListに3人のメンバーが含まれています。また、マルチシグトランザクションにはrsA2LpzuawewSBQXkiju3YQTMzW13pAAdWの署名と、リストの他の2人のメンバーからの少なくとも1つの署名を必要とするように、重みと定数が設定されています。
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 
 ```
@@ -147,7 +147,7 @@ Connecting to 127.0.0.1:5005
 
 ## 4. 検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 
 ## 5. 新しい署名者リストの確認

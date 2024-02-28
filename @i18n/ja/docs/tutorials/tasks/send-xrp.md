@@ -27,7 +27,7 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 
 - XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTestnet XRPを入手できます。
 
-{% partial file="/docs/_snippets/interactive-tutorials/generate-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/generate-step.md" /%}
 
 ## Testnetでの送金
 
@@ -56,7 +56,7 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 
 このチュートリアルでは、以下のボタンをクリックすることでブラウザーから直接接続できます。
 
-{% partial file="/docs/_snippets/interactive-tutorials/connect-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/connect-step.md" /%}
 
 
 ### 2. トランザクションの準備
@@ -209,7 +209,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 {% /tabs %}
 
-{% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
 ### 6. トランザクションステータスの確認

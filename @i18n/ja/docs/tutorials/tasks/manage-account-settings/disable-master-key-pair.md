@@ -309,7 +309,7 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 
 ### 4. 検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ### 5. アカウントフラグの確認
 

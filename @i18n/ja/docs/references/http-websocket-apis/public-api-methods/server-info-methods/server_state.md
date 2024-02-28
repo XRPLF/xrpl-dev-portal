@@ -313,9 +313,9 @@ Headers
 | `validation_quorum`              | 数値        | 1つのレジャーバージョンの検証に最低限必要となる信頼できる検証の数。状況によっては、サーバーがさらに検証をリクエストする場合があります。 |
 | `validator_list_expires`         | 数値        | _（管理者専用）_ 現在のバリデータリストが期限切れになる時点（[Rippleエポック以降の経過秒数][]）。サーバーが発行済みのバリデータリストをロードしていない場合は0。 |
 
-{% partial file="/docs/_snippets/etl-source-object.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/etl-source-object.md" /%}
 
-{% partial file="/docs/_snippets/port-descriptor-object.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/port-descriptor-object.md" /%}
 
 ## 考えられるエラー
 

@@ -10,7 +10,7 @@ labels:
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/Clawback.cpp "ソース")
 
-{% partial file="/docs/_snippets/clawback-disclaimer.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/clawback-disclaimer.md" /%}
 
 あなたのアカウントが発行したトークンを回収します。
 
@@ -30,7 +30,7 @@ Clawback機能はデフォルトで無効になっています。使用するに
 }
 ```
 
-{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/@i18n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド　         | JSONの型   | [内部の型][] | 説明       |
 |:-------------------|:----------|:------------|:----------|

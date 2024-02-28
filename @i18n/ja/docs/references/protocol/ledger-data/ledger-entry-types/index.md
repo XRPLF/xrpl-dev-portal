@@ -8,7 +8,7 @@ labels:
 ---
 # レジャーエントリのタイプ
 
-{% partial file="/docs/_snippets/ledger-objects-intro.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/ledger-objects-intro.md" /%}
 
 
 {% child-pages /%}
