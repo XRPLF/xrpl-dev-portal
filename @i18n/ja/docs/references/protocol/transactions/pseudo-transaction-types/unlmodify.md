@@ -29,7 +29,7 @@ _([NegativeUNL amendment][]により追加されました)_
 }
 ```
 
-{% partial file="/docs/_snippets/pseudo-tx-fields-intro.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/pseudo-tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 | 名前                 | JSONの型 | [内部の型][] | 説明           |

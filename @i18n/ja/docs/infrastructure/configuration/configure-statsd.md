@@ -36,7 +36,7 @@ labels:
     - `address`には`rippledmon`が接続しているIPアドレスとポートを指定します。デフォルトでは、このポートは8125です。
     - `prefix`には設定する`rippled`サーバを識別する名前を指定します。prefixには、空白、コロン":"、または縦棒"|"を含めてはいけません。このprefix(接頭辞)は、このサーバからエクスポートされるすべてのStatsDの統計情報に表示されます。
 
-    {% partial file="/docs/_snippets/conf-file-location.md" /%}
+    {% partial file="/@i18n/ja/docs/_snippets/conf-file-location.md" /%}
 
 1. `rippled`サービスを再起動します。
 

@@ -88,7 +88,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 トランザクションメタデータは、以下に示すフィールドをはじめとして、トランザクションがレジャーに適用された方法を _正確に_ 示します。
 
-{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tx-metadata-field-table.md" /%} 
 
 ほとんどのメタデータは、[`AffectedNodes`配列](../../../references/protocol/transactions/metadata.md#affectednodes)に含まれています。この配列で探す対象は、トランザクションのタイプによって異なります。ほぼすべてのトランザクションが、送金元の[AccountRootオブジェクト][]を変更してXRP[トランザクションコスト](../transaction-cost.md)を消却し、[アカウントのシーケンス番号](../../../references/protocol/data-types/basic-data-types.md#アカウントシーケンス)を増やします。
 

@@ -45,7 +45,7 @@ print(release_date_ripple)
 
 [EscrowCreateトランザクション][]に[署名して送信](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)します。トランザクションの`FinishAfter`フィールドを、保留中の支払いがリリースされる時刻に設定します。`Condition`フィールドを省略して、時刻を保留中の支払いをリリースする唯一の条件とします。`Destination`を受取人に設定します。受取人と送金元のアドレスは同じでもかまいません。`Amount`を、Escrowする[XRP、drop単位][]の合計額に設定します。
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%} 
 
 リクエスト:
 
@@ -72,7 +72,7 @@ print(release_date_ripple)
 
 ## 3.検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 4.Escrowが作成されたことの確認
 
@@ -133,7 +133,7 @@ print(release_date_ripple)
 
 Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired-escrow.md)だけが可能です。
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%} 
 
 リクエスト:
 
@@ -159,7 +159,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 
 ## 7.検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 8.最終結果の確認
 

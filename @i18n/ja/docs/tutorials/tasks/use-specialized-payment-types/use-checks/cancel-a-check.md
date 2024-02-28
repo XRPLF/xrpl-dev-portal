@@ -60,7 +60,7 @@ Checkを取り消す例を以下に示します。
 
 ## 2. CheckCancelトランザクションの署名
 
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-sign-step.md" /%} 
 
 ### リクエストの例
 
@@ -94,7 +94,7 @@ Checkを取り消す例を以下に示します。
 
 ## 3. 署名済みCheckCancelトランザクションの送信
 
-{% partial file="/docs/_snippets/tutorial-submit-step.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
 
@@ -127,7 +127,7 @@ Checkを取り消す例を以下に示します。
 
 ## 4. 検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. 最終結果の確認
 

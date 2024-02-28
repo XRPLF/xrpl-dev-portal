@@ -60,7 +60,7 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 
 XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送信する](../../../../concepts/transactions/index.md#トランザクションへの署名とトランザクションの送信)ことで、***誰でも***有効期限切れのEscrowを取り消すことができます。トランザクションの`Owner`フィールドを、そのEscrowを作成した`EscrowCreate`トランザクションの`Account`に設定します。`OfferSequence`フィールドを、`EscrowCreate`トランザクションの`Sequence`に設定します。
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%} 
 
 リクエスト:
 
@@ -86,7 +86,7 @@ XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送�
 
 ## 3.検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 4.最終結果の確認
 

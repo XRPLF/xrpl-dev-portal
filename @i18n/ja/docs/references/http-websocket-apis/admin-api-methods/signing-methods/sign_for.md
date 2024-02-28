@@ -11,7 +11,7 @@ labels:
 
 `sign_for`コマンドは、[マルチシグトランザクション](../../../../concepts/accounts/multi-signing.md)の署名を1つ提供します。
 
-{% partial file="/docs/_snippets/public-signing-note.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/public-signing-note.md" /%}
 
 
 このコマンドを使用するには、[MultiSign Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}

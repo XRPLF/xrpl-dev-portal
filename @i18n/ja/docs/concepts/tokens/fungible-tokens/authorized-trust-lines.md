@@ -61,7 +61,7 @@ POST http://localhost:5005/
 }
 ```
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 
 ## アカウントのRequireAuthの有効化の確認
@@ -103,7 +103,7 @@ POST http://localhost:8088/
 }
 ```
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 
 ## トラストラインの認可状況の確認

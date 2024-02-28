@@ -9,7 +9,7 @@ labels:
 ---
 # アカウントの種類
 
-{% partial file="/docs/_snippets/issuing-and-operational-addresses-intro.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/issuing-and-operational-addresses-intro.md" /%}
 
 
 ## 資金のライフサイクル

@@ -97,7 +97,7 @@ XRPを金額なしで記述するには、JSONオブジェクトとして`curren
 
 ## 文字列フォーマット
 
-{% partial file="/docs/_snippets/string-number-formatting.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/string-number-formatting.md" /%}
 
 ## XRPの精度
 
@@ -114,7 +114,7 @@ XRP Ledgerのピアツーピアネットワークでトークンの金額を送�
 ## 通貨コード
 [通貨コード]: #通貨コード
 
-{% partial file="/docs/_snippets/data_types/currency_code.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/currency_code.md" /%}
 
 
 

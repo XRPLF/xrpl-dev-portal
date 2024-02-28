@@ -29,7 +29,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 }
 ```
 
-{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/@i18n/ja/docs/_snippets/tx-fields-intro.md" /%}
 
 | フィールド          | JSONの型  | [内部の型][]        | 説明                      |
 |:------------------|:----------|:------------------|:-------------------------|
