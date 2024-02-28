@@ -62,6 +62,7 @@ theme:
     copyrightText: © 2024 XRP Ledger. Open Source.
     items:
       - group: About
+        groupTranslationKey: theme.footer.about
         items:
           - page: about/index.page.tsx
           - label: Use Cases & Projects
@@ -74,6 +75,7 @@ theme:
           - page: about/faq.md
           - page: about/privacy-policy.md
       - group: Docs
+        groupTranslationKey: theme.footer.docs
         items:
           - label: XRPL Documentation
             page: docs/index.page.tsx
@@ -84,6 +86,7 @@ theme:
           - page: docs/references/index.md
           - page: docs/infrastructure/index.md
       - group: Resources
+        groupTranslationKey: theme.footer.resources
         items:
           - page: resources/code-samples.page.tsx
           - page: resources/dev-tools/index.page.tsx
@@ -100,6 +103,7 @@ theme:
           - page: resources/contribute-code/index.md
           - page: resources/contribute-documentation/index.md
       - group: Community
+        groupTranslationKey: theme.footer.community
         items:
           - page: community/index.page.tsx
           - page: community/events.page.tsx
