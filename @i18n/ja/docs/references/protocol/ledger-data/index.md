@@ -17,6 +17,6 @@ XRP Ledgerに各レジャーバージョンは3つの要素で構成されてい
 
 ## 状態データ
 
-{% partial file="/docs/_snippets/ledger-objects-intro.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/ledger-objects-intro.md" /%}
 
 {% child-pages /%}

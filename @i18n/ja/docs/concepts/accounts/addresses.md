@@ -8,7 +8,7 @@ labels:
 ---
 # アドレス
 
-{% partial file="/docs/_snippets/data_types/address.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/address.md" /%}
 
 有効なアドレスであれば、資金を入金することで[XRP Ledgerのアカウントになる](index.md#creating-accounts)ことができます。また、[レギュラーキー](cryptographic-keys.md)や[署名者リスト](multi-signing.md)のメンバーとして、資金提供されていないアドレスを使用することもできます。資金を供給されたアカウントだけがトランザクションの送信者になることができます。
 

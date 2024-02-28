@@ -22,7 +22,7 @@ labels:
 
 `rippled.cfg`ファイルを編集します。
 
-{% partial file="/docs/_snippets/conf-file-location.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/conf-file-location.md" /%}
 <!--{_ }-->
 
 1. `[ips]`に接続したいネットワークのハブを設定します。

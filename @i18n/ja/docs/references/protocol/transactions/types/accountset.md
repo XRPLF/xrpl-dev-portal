@@ -26,7 +26,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 }
 ```
 
-{% raw-partial file="/docs/_snippets/tx-fields-intro.md" /%}
+{% raw-partial file="/@i18n/ja/docs/_snippets/tx-fields-intro.md" /%}
 <!--{# fix md highlighting_ #}-->
 
 

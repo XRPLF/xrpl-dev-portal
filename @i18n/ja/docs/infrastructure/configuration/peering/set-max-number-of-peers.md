@@ -20,7 +20,7 @@ labels:
     $ vim /etc/opt/ripple/rippled.cfg
     ```
 
-   {% partial file="/docs/_snippets/conf-file-location.md" /%}
+   {% partial file="/@i18n/ja/docs/_snippets/conf-file-location.md" /%}
 
 2. 構成ファイルで、`[peers_max]`スタンザのコメントを解除して編集するか、まだない場合は追加します。
 

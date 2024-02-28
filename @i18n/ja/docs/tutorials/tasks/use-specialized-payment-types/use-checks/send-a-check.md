@@ -64,7 +64,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ## 2. CheckCreateトランザクションへの署名
 
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-sign-step.md" /%}
 
 
 ### リクエストの例
@@ -105,7 +105,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ## 3.署名済みトランザクションの送信
 
-{% partial file="/docs/_snippets/tutorial-submit-step.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-submit-step.md" /%}
 
 
 ### リクエストの例
@@ -147,7 +147,7 @@ Checkの額と、Checkを現金化できる当事者を決定します。[CheckC
 
 ## 4.検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%}
 
 
 ## 5.最終結果の確認

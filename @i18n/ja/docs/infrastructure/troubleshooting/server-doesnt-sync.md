@@ -96,7 +96,7 @@ labels:
      /var/lib/rippled/db_new
     ```
 
-    {% partial file="/docs/_snippets/conf-file-location.md" /%}
+    {% partial file="/@i18n/ja/docs/_snippets/conf-file-location.md" /%}
 
 4. `rippled`サーバーを再起動します。
 

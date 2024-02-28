@@ -17,14 +17,14 @@ seo:
 ## アドレス
 [アドレス]: #アドレス
 
-{% partial file="/docs/_snippets/data_types/address.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/address.md" /%}
 
 
 
 ## ハッシュ
 [ハッシュ]: #ハッシュ
 
-{% partial file="/docs/_snippets/data_types/hash.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/hash.md" /%}
 
 
 ### ハッシュプレフィクス
@@ -58,14 +58,14 @@ seo:
 ## アカウントシーケンス
 [シーケンス番号]: #アカウントシーケンス
 
-{% partial file="/docs/_snippets/data_types/account_sequence.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/account_sequence.md" /%}
 
 
 
 ## レジャーインデックス
 [レジャーインデックス]: #レジャーインデックス
 
-{% partial file="/docs/_snippets/data_types/ledger_index.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/ledger_index.md" /%}
 
 
 

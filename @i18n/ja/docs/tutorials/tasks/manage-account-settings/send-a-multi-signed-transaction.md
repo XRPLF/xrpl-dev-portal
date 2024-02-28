@@ -48,7 +48,7 @@ labels:
 
 SlignerListのメンバーの1人のシークレットキーとアドレスを指定した[sign_forメソッド][]を使用して、そのメンバーの署名を取得します。
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 
 ```
@@ -109,7 +109,7 @@ Connecting to 127.0.0.1:5005
 * 並行して取得する場合: トランザクションの元のJSONを指定した`sign_for`コマンドを使用します。各レスポンスの`Signers`配列に1つの署名が含まれています。
 * 順次取得する場合: 前の`sign_for`レスポンスの`tx_json`値を指定した`sign_for`コマンドを使用します。各レスポンスの既存の`Signers`配列に新しい署名が追加されます。
 
-{% partial file="/docs/_snippets/secret-key-warning.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/secret-key-warning.md" /%}
 
 
 ```
