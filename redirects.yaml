@@ -25,6 +25,9 @@ uses.html:
 docs.html:
     to: /docs/
     type: 301
+tutorials.html:
+    to: /docs/tutorials/
+    type: 301
 xrp-ledger-overview.html:
     to: /about/
     type: 301
