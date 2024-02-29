@@ -2,7 +2,14 @@ theme.navbar.about: 概要
 theme.navbar.docs: ドキュメント
 theme.navbar.resources: リソース
 theme.navbar.community: コミュニティ
+theme.footer.about: 概要
+theme.footer.docs: ドキュメント
+theme.footer.resources: リソース
+theme.footer.community: コミュニティ
 sidebar.docs: ドキュメント
+sidebar.docs.tutorials: チュートリアル
+sidebar.docs.references: リファレンス
+sidebars.resources: リソース
 sidebar.resources.codesamples: コードサンプル
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ

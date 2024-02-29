@@ -602,6 +602,7 @@
             - page: docs/infrastructure/troubleshooting/server-wont-start.md
             - page: docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue.md
 - page: resources/index.md
+  labelTranslationKey: sidebars.resources
   expanded: false
   items:
     - label: Code Samples

@@ -34,7 +34,7 @@ export function Navbar(props) {
 
   const navItems = menu.map((item, index) => {
     if (item.type === 'group') {
-      return <NavDropdown key={index} label={item.label} items={item.items} pathPrefix={pathPrefix} />;
+      return <NavDropdown key={index} label={item.label} labelTranslationKey={item.labelTranslationKey} items={item.items} pathPrefix={pathPrefix} />;
     } else {
       return (
         <NavItem key={index}>
@@ -206,7 +206,8 @@ export function TopNavCollapsible(props) {
 }
 
 export function NavDropdown(props) {
-  const { label, items, pathPrefix } = props;
+  const { label, items, pathPrefix, labelTranslationKey } = props;
+  const { translate } = useTranslate();
 
   const dropdownGroups = items.map((item, index) => {
     if (item.items) {
@@ -280,7 +281,7 @@ export function NavDropdown(props) {
         aria-haspopup="true"
         aria-expanded="false"
       >
-        <span>{label}</span>
+        <span>{translate(labelTranslationKey, label)}</span>
       </a>
       <div className="dropdown-menu" aria-labelledby={toggler_id} id={dd_id}>
         {dropdownGroups}
