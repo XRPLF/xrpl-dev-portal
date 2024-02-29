@@ -68,10 +68,10 @@ def operational_configure_account():
 
 
 def get_balances():
-    results = get_balance(ent_operational_account.get(), ent_standby_account.get())
+    results = get_balance(ent_operational_seed.get(), ent_standby_seed.get())
     text_standby_results.delete("1.0", tk.END)
     text_standby_results.insert("1.0", json.dumps(results, indent=4))
-    results = get_balance(ent_standby_account.get(), ent_operational_account.get())
+    results = get_balance(ent_standby_seed.get(), ent_operational_seed.get())
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
 

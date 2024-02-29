@@ -48,9 +48,9 @@ def get_standby_account_info():
     text_standby_results.insert("1.0",json.dumps(accountInfo, indent=4))
 
 
-# Create a new window with the title "Quickstart - Batch Minting"
+# Create a new window with the title "Python Module - Batch Minting"
 window = tk.Tk()
-window.title("Quickstart - Batch Minting")
+window.title("Python Module - Batch Minting")
 
 # Form frame
 frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)
@@ -115,7 +115,7 @@ btn_get_standby_account_info = tk.Button(master=frm_form,
                                          command = get_standby_account_info)
 btn_get_standby_account_info.grid(row=1, column=2, sticky = "nsew")
 btn_standby_batch_mint = tk.Button(master=frm_form,
-                                         text="Batch Mint",
+                                         text="Batch Mint NFTs",
                                          command = standby_batch_mint)
 btn_standby_batch_mint.grid(row=5, column=2, sticky = "nsew")
 btn_standby_get_batch_nfts = tk.Button(master=frm_form,

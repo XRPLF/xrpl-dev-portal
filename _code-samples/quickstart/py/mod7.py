@@ -17,7 +17,6 @@ def batch_mint(seed, uri, flags, transfer_fee, taxon, count):
     )
     get_seq_request = client.request(acct_info)
     current_sequence=get_seq_request.result['account_data']['Sequence']
-
     ticket_tx=xrpl.models.transactions.TicketCreate(
         account=wallet.address,
         ticket_count=int(count),

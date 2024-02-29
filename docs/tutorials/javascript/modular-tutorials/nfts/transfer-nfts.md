@@ -42,7 +42,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ## Create a Sell Offer
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/He5PpO7TQbQ?si=mejmPLh-Z7ocbJVV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mZlznG9ZJNY?si=TFTtl_MPb7WPtHHV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 To create a NFT sell offer:

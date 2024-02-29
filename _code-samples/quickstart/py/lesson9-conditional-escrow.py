@@ -4,7 +4,7 @@ import json
 
 from mod1 import get_account, get_account_info, send_xrp
 from mod8 import get_escrows, cancel_time_escrow, get_transaction
-from mod9 import create_conditional_escrow, finish_conditional_escrow
+from mod9 import create_conditional_escrow, finish_conditional_escrow, generate_condition
 
 
 #############################################
@@ -13,6 +13,12 @@ from mod9 import create_conditional_escrow, finish_conditional_escrow
 
 ## Mod 9 Handlers
 
+def get_condition():
+    results = generate_condition()
+    ent_standby_escrow_condition.delete(0, tk.END)
+    ent_standby_escrow_condition.insert(0, results[0])
+    ent_operational_escrow_fulfillment.delete(0, tk.END)
+    ent_operational_escrow_fulfillment.insert(0, results[1])
 
 def standby_create_conditional_escrow():
     results = create_conditional_escrow(
@@ -35,7 +41,6 @@ def operational_finish_conditional_escrow():
     )
     text_operational_results.delete("1.0", tk.END)
     text_operational_results.insert("1.0", json.dumps(results, indent=4))
-
 
 
 ## Mod 8 Handlers
@@ -131,7 +136,6 @@ lbl_standby_destination = tk.Label(master=frm_form, text="Destination")
 ent_standby_destination = tk.Entry(master=frm_form, width=50)
 lbl_standby_balance = tk.Label(master=frm_form, text="XRP Balance")
 ent_standby_balance = tk.Entry(master=frm_form, width=50)
-
 lbl_standby_escrow_condition = tk.Label(master=frm_form, text="Escrow Condition")
 ent_standby_escrow_condition = tk.Entry(master=frm_form, width=50)
 lbl_standby_escrow_cancel = tk.Label(master=frm_form, text="Escrow Cancel (seconds)")
@@ -180,14 +184,14 @@ lbl_operational_destination = tk.Label(master=frm_form, text="Destination")
 ent_operational_destination = tk.Entry(master=frm_form, width=50)
 lbl_operational_balance = tk.Label(master=frm_form, text="XRP Balance")
 ent_operational_balance = tk.Entry(master=frm_form, width=50)
+lbl_operational_escrow_fulfillment = tk.Label(master=frm_form, text="Escrow Fulfillment")
+ent_operational_escrow_fulfillment = tk.Entry(master=frm_form, width=50)
 lbl_operational_sequence_number = tk.Label(master=frm_form, text="Sequence Number")
 ent_operational_sequence_number = tk.Entry(master=frm_form, width=50)
 lbl_operational_escrow_owner=tk.Label(master=frm_form, text="Escrow Owner")
 ent_operational_escrow_owner=tk.Entry(master=frm_form, width=50)
 lbl_operational_look_up = tk.Label(master=frm_form, text="Transaction to Look Up")
 ent_operational_look_up = tk.Entry(master=frm_form, width=50)
-lbl_operational_escrow_fulfillment = tk.Label(master=frm_form, text="Escrow Fulfillment")
-ent_operational_escrow_fulfillment = tk.Entry(master=frm_form, width=50)
 lbl_operational_results = tk.Label(master=frm_form,text='Results')
 text_operational_results = tk.Text(master=frm_form, height = 20, width = 65)
 
@@ -229,13 +233,15 @@ btn_get_standby_account_info.grid(row = 1, column = 2, sticky = "nsew")
 btn_standby_send_xrp = tk.Button(master=frm_form, text="Send XRP >",
                                  command = standby_send_xrp)
 btn_standby_send_xrp.grid(row = 2, column = 2, sticky = "nsew")
-
+btn_standby_get_condition = tk.Button(master=frm_form, text="Get Condition",
+                                      command = get_condition)
+btn_standby_get_condition.grid(row=4, column=2, sticky="nsew")
 btn_standby_create_escrow = tk.Button(master=frm_form, text="Create Conditional Escrow",
                                  command = standby_create_conditional_escrow)
-btn_standby_create_escrow.grid(row = 4, column = 2, sticky="nsew")
+btn_standby_create_escrow.grid(row=5, column = 2, sticky="nsew")
 btn_standby_cancel_escrow = tk.Button(master=frm_form, text="Cancel Escrow",
                                  command = standby_cancel_time_escrow)
-btn_standby_cancel_escrow.grid(row=5,column = 2, sticky="nsew")
+btn_standby_cancel_escrow.grid(row=6,column = 2, sticky="nsew")
 
 # Create the Operational Account Buttons
 btn_get_operational_account = tk.Button(master=frm_form,

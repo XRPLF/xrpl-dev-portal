@@ -155,52 +155,55 @@
       expanded: false
       items:
         - page: docs/tutorials/public-servers.md
-        - page: docs/tutorials/python/index.md
-          expanded: false
-          items:
-            - page: docs/tutorials/python/get-started.md
-            - page: docs/tutorials/python/modular-tutorials/index.md
-              expanded: false
-              items:
-                - page: docs/tutorials/python/modular-tutorials/send-payments/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/python/modular-tutorials/send-payments/create-accounts-send-xrp.md
-                    - page: docs/tutorials/python/modular-tutorials/send-payments/create-trust-line-send-currency.md
-                    - page: docs/tutorials/python/modular-tutorials/send-payments/create-time-based-escrows.md
-                - page: docs/tutorials/python/modular-tutorials/nfts/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts.md
-                    - page: docs/tutorials/python/modular-tutorials/nfts/transfer-nfts.md
-                    - page: docs/tutorials/python/modular-tutorials/nfts/broker-an-nft-sale.md
-                    - page: docs/tutorials/python/modular-tutorials/nfts/assign-an-authorized-minter.md
-                    - page: docs/tutorials/python/modular-tutorials/nfts/batch-mint-nfts.md
-            - page: docs/tutorials/python/build-a-desktop-wallet-in-python.md
         - page: docs/tutorials/javascript/index.md
           expanded: false
           items:
-            - page: docs/tutorials/javascript/get-started.md
-            - page: docs/tutorials/javascript/modular-tutorials/index.md
+            - page: docs/tutorials/javascript/modular-tutorials/send-payments/index.md
               expanded: false
               items:
-                - page: docs/tutorials/javascript/modular-tutorials/send-payments/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-accounts-send-xrp.md
-                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-trust-line-send-currency.md
-                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-time-based-escrows.md
-                    - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-conditional-escrows.md
-                - page: docs/tutorials/javascript/modular-tutorials/nfts/index.md
-                  expanded: false
-                  items:
-                    - page: docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md
-                    - page: docs/tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md
-                    - page: docs/tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md
-                    - page: docs/tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter.md
-                    - page: docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts.md
-            - page: docs/tutorials/javascript/build-a-browser-wallet-in-javascript.md
-            - page: docs/tutorials/javascript/build-a-desktop-wallet-in-javascript.md
+                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-accounts-send-xrp.md
+                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-trust-line-send-currency.md
+                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-time-based-escrows.md
+                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-conditional-escrows.md
+                - page: docs/tutorials/javascript/modular-tutorials/send-payments/send-and-cash-checks.md
+            - page: docs/tutorials/javascript/modular-tutorials/nfts/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md
+                - page: docs/tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md
+                - page: docs/tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md
+                - page: docs/tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter.md
+                - page: docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts.md
+            - page: docs/tutorials/javascript/build-apps/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/build-apps/get-started.md
+                - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
+                - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
+        - page: docs/tutorials/python/index.md
+          expanded: false
+          items:
+            - page: docs/tutorials/python/modular-tutorials/send-payments/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/python/modular-tutorials/send-payments/create-accounts-send-xrp.md
+                - page: docs/tutorials/python/modular-tutorials/send-payments/create-trust-line-send-currency.md
+                - page: docs/tutorials/python/modular-tutorials/send-payments/create-time-based-escrows.md
+                - page: docs/tutorials/python/modular-tutorials/send-payments/create-conditional-escrows.md
+                - page: docs/tutorials/python/modular-tutorials/send-payments/send-and-cash-checks.md
+            - page: docs/tutorials/python/modular-tutorials/nfts/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts.md
+                - page: docs/tutorials/python/modular-tutorials/nfts/transfer-nfts.md
+                - page: docs/tutorials/python/modular-tutorials/nfts/broker-an-nft-sale.md
+                - page: docs/tutorials/python/modular-tutorials/nfts/assign-an-authorized-minter.md
+                - page: docs/tutorials/python/modular-tutorials/nfts/batch-mint-nfts.md
+            - page: docs/tutorials/python/build-apps/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/python/build-apps/get-started.md
+                - page: docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python.md
         - page: docs/tutorials/java/index.md
           expanded: false
           items:

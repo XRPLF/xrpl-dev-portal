@@ -24,6 +24,7 @@ from mod4 import (
 )
 from mod5 import broker_sale
 from mod6 import set_minter, mint_other
+from mod7 import batch_mint, get_batch
 
 #############################################
 ## Handlers #################################

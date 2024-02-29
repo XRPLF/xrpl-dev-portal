@@ -35,7 +35,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ## Batch Mint NFTs
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tJeDnEMZ7RU?si=mHwKbSRMxQ1cO4Fh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LsMMXm7jm1k?si=Lu0-0PIJ2-Uj7dSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 This example lets you mint multiple NFTs for a single unique item. The NFT might represent "prints" of an original artwork, tickets to an event, or another limited set of unique items. 
