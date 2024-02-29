@@ -42,7 +42,7 @@ Open the Token Test Harness and get accounts:
 ## Create Trust Line
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HpcyZt1jG3E?si=evreLRsmgF5rrQrW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EP_LOy8kK1U?si=Ulx8vUtil_yRcesd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 To create a trust line between accounts:

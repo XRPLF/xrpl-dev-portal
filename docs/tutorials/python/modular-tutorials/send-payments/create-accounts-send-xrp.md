@@ -34,9 +34,8 @@ Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-p
 **Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
 
 ## Usage
-
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Uu36ga0iMv0?si=jUoxQDcmqXpg1c_5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YnPccLPa0hc?si=t-CqrLYmCCHSaZhB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 To get test accounts:
@@ -53,7 +52,7 @@ To get test accounts:
 You can transfer XRP between your new accounts. Each account has its own fields and buttons.
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qUd-CTFdiks?si=chUPgcHZssL54x6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l2X7Vso5wWc?si=9l1SOlhjIBdPEuv0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 To transfer XRP from the Standby account to the Operational account:

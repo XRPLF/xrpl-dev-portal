@@ -199,8 +199,6 @@ async function getAccount(type) {
         
   if (type == 'standby') {
     standbyAccountField.value = my_wallet.address
-    standbyPubKeyField.value = my_wallet.publicKey
-    standbyPrivKeyField.value = my_wallet.privateKey
     standbyBalanceField.value = (await client.getXrpBalance(my_wallet.address))
     standbySeedField.value = my_wallet.seed
     results += '\nStandby account created.'
@@ -208,8 +206,6 @@ async function getAccount(type) {
   }
   if (type == 'operational') {
     operationalAccountField.value = my_wallet.address
-    operationalPubKeyField.value = my_wallet.publicKey
-    operationalPrivKeyField.value = my_wallet.privateKey
     operationalSeedField.value = my_wallet.seed
     operationalBalanceField.value = (await client.getXrpBalance(my_wallet.address))
     results += '\nOperational account created.'
@@ -217,8 +213,6 @@ async function getAccount(type) {
   }
   if (type == 'broker') {
     brokerAccountField.value = my_wallet.address
-    brokerPubKeyField.value = my_wallet.publicKey
-    brokerPrivKeyField.value = my_wallet.privateKey
     brokerSeedField.value = my_wallet.seed
     brokerBalanceField.value = (await client.getXrpBalance(my_wallet.address))
     results += '\nBroker account created.'

@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <title>Token Test Harness</title>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <style>
+       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
+       h1{font-weight: bold;}
+       input, button {padding: 6px;margin-bottom: 8px;}
+       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
+       td{vertical-align: middle;}
+    </style>    
+    <script src='https://unpkg.com/xrpl@2.7.0/build/xrpl-latest-min.js'></script>
+    <script src='ripplex1-send-xrp.js'></script>
+    <script src='ripplex2-send-currency.js'></script>
+    <script src='ripplex10-check.js'></script>
+
+  </head>
+  
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
+  <body>
+    <h1>Token Test Harness</h1>
+    <form id="theForm">
+      Choose your ledger instance:  
+      &nbsp;&nbsp;
+      <input type="radio" id="tn" name="server"
+        value="wss://s.altnet.rippletest.net:51233" checked>
+      <label for="testnet">Testnet</label>
+      &nbsp;&nbsp;
+      <input type="radio" id="dn" name="server"
+        value="wss://s.devnet.rippletest.net:51233">
+      <label for="devnet">Devnet</label>
+      <br/><br/>
+      <button type="button" onClick="getAccountsFromSeeds()">Get Accounts From Seeds</button>
+      <br/>
+      <textarea id="seeds" cols="40" rows= "2"></textarea>
+      <br/><br/>
+      <table>
+        <tr valign="top">
+          <td>
+            <table>
+              <tr valign="top">
+                <td>
+                <td>
+                  <button type="button" onClick="getAccount('standby')">Get New Standby Account</button>
+                  <table>
+                    <tr valign="top">
+                      <td align="right">
+                        Standby Account
+                      </td>
+                      <td>
+                        <input type="text" id="standbyAccountField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Seed
+                      </td>
+                      <td>
+                        <input type="text" id="standbySeedField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        XRP Balance
+                      </td>
+                      <td>
+                        <input type="text" id="standbyBalanceField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Amount
+                      </td>
+                      <td>
+                        <input type="text" id="standbyAmountField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Destination
+                      </td>
+                      <td>
+                        <input type="text" id="standbyDestinationField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Issuer
+                      </td>
+                      <td>
+                        <input type="text" id="standbyIssuerField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Check ID
+                      </td>
+                      <td>
+                        <input type="text" id="standbyCheckID" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr valign="top">
+                      <td><button type="button" onClick="configureAccount('standby',document.querySelector('#standbyDefault').checked)">Configure Account</button></td>
+                      <td>
+                        <input type="checkbox" id="standbyDefault" checked="true"/>
+                        <label for="standbyDefault">Allow Rippling</label>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Currency
+                      </td>
+                      <td>
+                        <input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
+                      </td>
+                    </tr>
+                  </table>
+                  <p align="left">
+                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
+                  </p>
+                </td>
+                </td>
+                <td>
+                  <table>
+                    <tr valign="top">
+                      <td align="center" valign="top">
+                        <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
+                        <br/><br/>
+                        <button type="button" onClick="sendCheck()">Send Check</button>
+                        <br/>
+                        <button type="button" onClick="getChecks()">Get Checks</button>
+                        <br/>
+                        <button type="button" onClick="cashCheck()">Cash Check</button>
+                        <br/>
+                        <button type="button" onClick="cancelCheck()">Cancel Check</button>
+                        <br/>
+                        <button type="button" onClick="getBalances()">Get Balances</button>
+                      </td>
+                    </tr>
+                    </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                <td>
+                  <table>
+                    <tr>
+                      <td align="center" valign="top">
+                        <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
+                        <br/><br/>
+                        <button type="button" onClick="opSendCheck()">Send Check</button>
+                        <br/>
+                        <button type="button" onClick="opGetChecks()">Get Checks</button>
+                        <br/>
+                        <button type="button" onClick="opCashCheck()">Cash Check</button>
+                        <br/>
+                        <button type="button" onClick="opCancelCheck()">Cancel Check</button>
+                        <br/>
+                        <button type="button" onClick="getBalances()">Get Balances</button>
+                      </td>
+                      <td valign="top" align="right">
+                        <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
+                        <table>
+                          <tr valign="top">
+                            <td align="right">
+                              Operational Account
+                            </td>
+                            <td>
+                              <input type="text" id="operationalAccountField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Seed
+                            </td>
+                            <td>
+                              <input type="text" id="operationalSeedField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              XRP Balance
+                            </td>
+                            <td>
+                              <input type="text" id="operationalBalanceField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Amount
+                            </td>
+                            <td>
+                              <input type="text" id="operationalAmountField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Destination
+                            </td>
+                            <td>
+                              <input type="text" id="operationalDestinationField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Issuer
+                            </td>
+                            <td>
+                              <input type="text" id="operationalIssuerField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Check ID
+                            </td>
+                            <td>
+                              <input type="text" id="operationalCheckIDField" size="40"></input>
+                              <br>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                            </td>
+                            <td align="right">
+                            <input type="checkbox" id="operationalDefault" checked="true"/>
+                              <label for="operationalDefault">Allow Rippling</label>
+                              <button type="button" onClick="configureAccount('operational',document.querySelector('#operationalDefault').checked)">Configure Account</button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td align="right">
+                              Currency
+                            </td>
+                            <td>
+                              <input type="text" id="operationalCurrencyField" size="40" value="USD"></input>
+                            </td>
+                          </tr>
+                        </table>
+                        <p align="right">
+                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
+                        </p>
+                      </td>
+                      </td>
+                    </tr>
+                    </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

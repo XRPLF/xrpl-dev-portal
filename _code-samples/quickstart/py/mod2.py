@@ -3,7 +3,7 @@ from xrpl.clients import JsonRpcClient
 from xrpl.wallet import Wallet
 
 
-testnet_url = "https://s.altnet.rippletest.net:51234"
+testnet_url = "https://s.devnet.rippletest.net:51234"
 
 #####################
 # create_trust_line #
@@ -54,13 +54,14 @@ def send_currency(seed, destination, currency, amount):
 # get_balance #
 ###############
 
-def get_balance(sb_account_id, op_account_id):
+def get_balance(sb_account_seed, op_account_seed):
     """get_balance"""
+    wallet = Wallet.from_seed(sb_account_seed)
+    opWallet = Wallet.from_seed(op_account_seed)
     client=JsonRpcClient(testnet_url)
     balance=xrpl.models.requests.GatewayBalances(
-        account=sb_account_id,
-        ledger_index="validated",
-        hotwallet=[op_account_id]
+        account=wallet.address,
+        ledger_index="validated"
     )
     response = client.request(balance)
     return response.result

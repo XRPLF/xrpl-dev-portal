@@ -38,7 +38,7 @@ You can download the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-port
 ## Mint an NFT
 
 <div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Qyb_x_GlUDg?si=fow07WIV6DjuHZ3K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oGzKbQJCTJ0?si=kCBG_jJkFAS7_mYU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 
 To mint a non-fungible token object:
