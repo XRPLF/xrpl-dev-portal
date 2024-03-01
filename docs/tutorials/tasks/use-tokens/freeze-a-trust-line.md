@@ -22,7 +22,7 @@ This tutorial shows the steps to [freeze an individual trust line](../../../conc
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
 - This tutorial assumes **you have already [issued a token](issue-a-fungible-token.md)** in the XRP Ledger.
 - You **cannot** have enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze), which gives up your ability to freeze individual trust lines.
 

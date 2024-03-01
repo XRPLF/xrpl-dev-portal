@@ -14,7 +14,7 @@ This tutorial demonstrates how to build a desktop wallet for the XRP Ledger usin
 To complete this tutorial, you should meet the following requirements:
 
 - You have [Node.js](https://nodejs.org/) 14+ installed.
-- You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](../javascript/get-started.md).
+- You are somewhat familiar with modern JavaScript programming and have completed the [Get Started Using JavaScript tutorial](./get-started.md).
 - You have some understanding of the XRP Ledger, its capabilities, and of cryptocurrency in general. Ideally you have completed the [Basic XRPL guide](https://learn.xrpl.org/).
 
 ### Source Code
@@ -42,13 +42,13 @@ The application we are going to build here will be capable of the following:
 
 - Showing updates to the XRP Ledger in real-time.
 - Viewing any XRP Ledger account's activity "read-only" including showing how much XRP was delivered by each transaction.
-- Sending [direct XRP payments](../../concepts/payment-types/direct-xrp-payments.md), and providing feedback about the intended destination address, including:
+- Sending [direct XRP payments](../../../concepts/payment-types/direct-xrp-payments.md), and providing feedback about the intended destination address, including:
     - Whether the intended destination already exists in the XRP Ledger, or the payment would have to fund its creation.
     - If the address doesn't want to receive XRP (**Disallow XRP** flag enabled).
-    - If the address has a [verified domain name](../../references/xrp-ledger-toml.md#account-verification) associated with it.
+    - If the address has a [verified domain name](../../../references/xrp-ledger-toml.md#account-verification) associated with it.
 
-The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../concepts/tokens/index.md) or
-use other [payment types](../../concepts/payment-types/index.md) like [Escrow](https://xrpl.org/escrow.html) or [Payment Channels](https://xrpl.org/payment-channels.html). However, it provides a foundation
+The application in this tutorial _doesn't_ have the ability to send or trade [tokens](../../../concepts/tokens/index.md) or
+use other [payment types](../../../concepts/payment-types/index.md) like [Escrow](https://xrpl.org/escrow.html) or [Payment Channels](https://xrpl.org/payment-channels.html). However, it provides a foundation
 that you can implement those and other features on top of.
 
 In addition to the above features, you'll also learn a bit about Events, IPC (inter-process-communication) and asynchronous (async) code in JavaScript.
@@ -225,7 +225,7 @@ const getValidatedLedgerIndex = async () => {
 const createWindow = () => {
 ```
 
-This helper function does the following: It establishes a WebSocket connection to the XRP Ledger, calls the XRP Ledger API's [ledger method](../../references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md) and returns the ledger index from the response. We will wire up this function at the end of this step.
+This helper function does the following: It establishes a WebSocket connection to the XRP Ledger, calls the XRP Ledger API's [ledger method](../../../references/http-websocket-apis/public-api-methods/ledger-methods/ledger.md) and returns the ledger index from the response. We will wire up this function at the end of this step.
 
 2. In order to attach a preloader script, modify the `createWindow` method in `index.js` by adding the following code:
 
@@ -1394,7 +1394,7 @@ One of the biggest shortcomings of the wallet app from the previous step is that
 
 This step shows how to add some checks on destination addresses to warn the user before sending XRP.
 
-One type of check we could make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, we can could show it like this:
+One type of check we could make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, we can could show it like this:
 
 ![Screenshot: Step 8, use domain verification](/docs/img/javascript-wallet-8.png)
 
@@ -1402,9 +1402,9 @@ One type of check we could make is to verify the domain name associated with an 
 
 {% code-snippet file="/_code-samples/build-a-desktop-wallet/js/library/8_helpers.js" language="js" /%}
 
-The code in `8_helpers.js` looks up the account on the ledger by sending an [`account_info`](../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) request.
+The code in `8_helpers.js` looks up the account on the ledger by sending an [`account_info`](../../../references/http-websocket-apis/public-api-methods/account-methods/account_info.md) request.
 
-If the account does exist, the code checks for the [`lsfDisallowXRP` flag](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags).
+If the account does exist, the code checks for the [`lsfDisallowXRP` flag](../../../references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountroot-flags).
 
 2. Import the new helper function in `index.js`:
 

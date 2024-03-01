@@ -20,7 +20,7 @@ steps: ['Generate', 'Connect', 'Check Sequence', 'Prepare & Sign', 'Submit', 'Wa
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript" src="/js/tutorials/use-tickets.js"></script>
 
-This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](../../javascript/get-started.md) for setup instructions.
+This page provides JavaScript examples that use the [xrpl.js](https://js.xrpl.org/) library. See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup instructions.
 
 Since JavaScript works in the web browser, you can read along and use the interactive steps without any setup.
 

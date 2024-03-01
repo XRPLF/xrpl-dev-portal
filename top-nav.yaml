@@ -47,9 +47,9 @@
         - page: ./docs/use-cases/defi/index.md
     - group: Get Started
       items:
-        - page: ./docs/tutorials/javascript/get-started.md
+        - page: ./docs/tutorials/javascript/build-apps/get-started.md
           label: JavaScript
-        - page: ./docs/tutorials/python/get-started.md
+        - page: ./docs/tutorials/python/build-apps/get-started.md
           label: Python
         - page: ./docs/tutorials/java/get-started.md
           label: Java
