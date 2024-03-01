@@ -35,6 +35,7 @@
           items:
             - page: docs/use-cases/defi/algorithmic-trading.md
             - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
+            - page: docs/use-cases/defi/integrate-with-xrpl-dex.md
     - page: docs/concepts/index.md
       expanded: false
       items:
