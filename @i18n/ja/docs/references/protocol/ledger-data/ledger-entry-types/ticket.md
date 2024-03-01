@@ -14,7 +14,7 @@ _([TicketBatch amendment][]が必要です)_
 
 `Ticket`オブジェクトタイプは、将来の使用のために確保されたアカウント[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス)を追跡する[Ticket](../../../../concepts/accounts/tickets.md)を表します。[TicketCreate トランザクション][]で新しいチケットを作成することができます。
 
-## {% $frontmatter.seo.title %} JSONの例
+## {% $frontmatter.seo.title %}のJSONの例
 
 ```json
 {
@@ -28,19 +28,29 @@ _([TicketBatch amendment][]が必要です)_
 }
 ```
 
-## {% $frontmatter.seo.title %}フィールド
+## {% $frontmatter.seo.title %}のフィールド
 
-`Ticket`オブジェクトのフィールドは次のとおりです。
+[共通フィールド][]に加えて、{% $frontmatter.seo.title %}エントリは以下のフィールドを使用します。
 
-| フィールド            | JSONの型   | 内部の型       | 説明        　　　　         |
-|:--------------------|:----------|:--------------|:---------------------------|
-| `LedgerEntryType`   | 文字列     | UInt16        | 文字列 `Ticket` にマッピングされた値 `0x0054` は、このオブジェクトが {% $frontmatter.seo.title %} オブジェクトであることを示しています。 |
-| `Account`           | 文字列     | AccountID     | このチケットを所有する[アカウント](../../../../concepts/accounts/index.md)です。 |
-| `Flags`             | Number    | UInt32        | ブール値フラグのビットマップ。Ticketにはフラグが定義されていないため、この値は常に0です。 |
-| `OwnerNode`         | 文字列     | UInt64        | 送金元の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。注記: このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
-| `PreviousTxnID`     | 文字列     | Hash256       | 最後にこのオブジェクトを変更した[トランザクション](../../../../concepts/transactions/index.md)の識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値       | UInt32        | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][Ledger Index]。 |
-| `TicketSequence`    | 数値       | UInt32        | 本チケットが設定する[シーケンス番号][]。 |
+| フィールド            | JSONの型   | [内部の型][]   | 必須? | 説明 |
+|:--------------------|:----------|:--------------|:------|:----|
+| `Account`           | 文字列     | AccountID     | はい   | このチケットを所有する[アカウント](../../../../concepts/accounts/index.md)です。 |
+| `LedgerEntryType`   | 文字列     | UInt16        | はい   | 文字列`Ticket`にマッピングされた値`0x0054`は、このオブジェクトが {% $frontmatter.seo.title %}エントリであることを示しています。 |
+| `OwnerNode`         | 文字列     | UInt64        | はい   | 送金元の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。注記: このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
+| `PreviousTxnID`     | 文字列     | Hash256       | はい   | 最後にこのオブジェクトを変更した[トランザクション](../../../../concepts/transactions/index.md)の識別用ハッシュ。 |
+| `PreviousTxnLgrSeq` | 数値       | UInt32        | はい   | 最後にこのオブジェクトを変更したトランザクションを含む[レジャーインデックス][Ledger Index]。 |
+| `TicketSequence`    | 数値       | UInt32        | はい   | 本チケットが設定する[シーケンス番号][]。 |
+
+
+## {% $frontmatter.seo.title %}の準備金
+
+{% code-page-name /%}エントリは、台帳上にエントリがある限り、それを作成したアカウントの所有者準備金の対象の1つとしてカウントされます。チケットを使用すると、準備金が解放されます。
+
+
+## {% $frontmatter.seo.title %}のフラグ
+
+{% code-page-name /%}エントリに定義されているフラグはありません。
+
 
 ## {% $frontmatter.seo.title %} IDのフォーマット
 

@@ -51,7 +51,7 @@ The ["issuer"](../../../../concepts/tokens/fungible-tokens/index.md) for the bal
 
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
-| Name                | JSON Type | Internal Type | Required? | Description |
+| Name                | JSON Type | [Internal Type][] | Required? | Description |
 |:--------------------|:----------|:--------------|:----------|:------------|
 | `Balance`           | Object    | Amount        | Yes       | The balance of the trust line, from the perspective of the low account. A negative balance indicates that the high account holds tokens issued by the low account. The issuer in this is always set to the neutral value [ACCOUNT_ONE](../../../../concepts/accounts/addresses.md#special-addresses). |
 | `Flags`             | Number    | UInt32        | Yes       | A bit-map of boolean options enabled for this entry. |
