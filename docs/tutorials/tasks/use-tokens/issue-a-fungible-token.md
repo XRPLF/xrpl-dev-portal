@@ -20,8 +20,8 @@ Anyone can issue various types of tokens in the XRP Ledger, ranging from informa
     - Each address needs enough XRP to satisfy the [reserve requirement](../../../concepts/accounts/reserves.md) including the additional reserve for a trust line.
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/get-started.md) for setup steps.
-    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
+    - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../../python/build-apps/get-started.md) for setup steps.
     - **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../../java/get-started.md) for setup steps.
     - You can also read along and use the interactive steps in your browser without any setup.
 

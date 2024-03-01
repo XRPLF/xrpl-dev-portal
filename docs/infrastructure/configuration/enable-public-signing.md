@@ -52,7 +52,7 @@ To enable public signing, perform the following steps:
 - **Tutorials:**
     - [Set Up Secure Signing](../../concepts/transactions/secure-signing.md)
     - [Get Started Using HTTP / WebSocket APIs](../../tutorials/http-websocket-apis/get-started.md)
-    - [Get Started Using JavaScript](../../tutorials/javascript/get-started.md)
+    - [Get Started Using JavaScript](../../tutorials/javascript/build-apps/get-started.md)
 - **References:**
     - [sign method][]
     - [sign_for method][]

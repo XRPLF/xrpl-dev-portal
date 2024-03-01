@@ -18,7 +18,7 @@ If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can 
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with the Getting Started instructions for your preferred client library. This page provides examples for the following:
-    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/get-started.md) for setup steps.
+    - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../../javascript/build-apps/get-started.md) for setup steps.
 - You don't need to have [issued a token](issue-a-fungible-token.md) in the XRP Ledger to enable No Freeze, but the main reason you would do so is if you intend to or have already issued such a token.
 
 <!-- Source for this specific tutorial's interactive bits: -->

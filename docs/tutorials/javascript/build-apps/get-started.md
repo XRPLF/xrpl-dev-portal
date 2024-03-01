@@ -43,7 +43,7 @@ npm install xrpl
 
 ## Start Building
 
-When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../concepts/accounts/index.md), integrating with the [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
+When you're working with the XRP Ledger, there are a few things you'll need to manage, whether you're adding XRP to your [account](../../../concepts/accounts/index.md), integrating with the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md), or [issuing tokens](../../../concepts/tokens/index.md). This tutorial walks you through basic patterns common to getting started with all of these use cases and provides sample code for implementing them.
 
 Here are some steps you use in many XRP Ledger projects:
 
@@ -94,9 +94,9 @@ To make queries and submit transactions, you need to connect to the XRP Ledger. 
 
 #### Connect to the XRP Ledger Mainnet
 
-The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](../../concepts/networks-and-servers/parallel-networks.md). When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
+The sample code in the previous section shows you how to connect to the Testnet, which is one of the available [parallel networks](../../../concepts/networks-and-servers/parallel-networks.md). When you're ready to move to production, you'll need to connect to the XRP Ledger Mainnet. You can do that in two ways:
 
-* By [installing the core server](../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
+* By [installing the core server](../../../infrastructure/installation/index.md) (`rippled`) and running a node yourself. The core server connects to the Mainnet by default, but you can [change the configuration to use Testnet or Devnet](../../../infrastructure/configuration/connect-your-rippled-to-the-xrp-test-net.md). [There are good reasons to run your own core server](../../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server). If you run your own server, you can connect to it like so:
 
     ```
     const MY_SERVER = "ws://localhost:6006/"
@@ -135,14 +135,14 @@ const test_wallet = xrpl.Wallet.fromSeed("sn3nxiW7v8KXzPzAqzyHXbSSKNuN9") // Tes
 
 ### 4. Query the XRP Ledger
 
-Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../references/http-websocket-apis/api-conventions/request-formatting.md). For example:
+Use the Client's `request()` method to access the XRP Ledger's [WebSocket API](../../../references/http-websocket-apis/api-conventions/request-formatting.md). For example:
 
 {% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Get info" before="// Listen to ledger close events" language="js" /%}
 
 
 ### 5. Listen for Events
 
-You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
+You can set up handlers for various types of events in `xrpl.js`, such as whenever the XRP Ledger's [consensus process](../../../concepts/consensus-protocol/index.md) produces a new [ledger version](../../../concepts/ledgers/index.md). To do that, first call the [subscribe method][] to get the type of events you want, then attach an event handler using the `on(eventType, callback)` method of the client.
 
 {% code-snippet file="/_code-samples/get-started/js/get-acct-info.js" from="// Listen to ledger close events" before="// Disconnect when done" language="js" /%}
 
@@ -151,23 +151,23 @@ You can set up handlers for various types of events in `xrpl.js`, such as whenev
 
 Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an account, and look up information about it, you can also:
 
-* [Send XRP](../tasks/send-xrp.md).
-* [Issue a Fungible Token](../tasks/use-tokens/issue-a-fungible-token.md)
-* [Set up secure signing](../../concepts/transactions/secure-signing.md) for your account.
+* [Send XRP](../../tasks/send-xrp.md).
+* [Issue a Fungible Token](../../tasks/use-tokens/issue-a-fungible-token.md)
+* [Set up secure signing](../../../concepts/transactions/secure-signing.md) for your account.
 
 
 ## See Also
 
 - **Concepts:**
     - [XRP Ledger Overview](/about/)
-    - [Client Libraries](../../references/client-libraries.md)
+    - [Client Libraries](../../../references/client-libraries.md)
 - **Tutorials:**
-    - [Send XRP](../tasks/send-xrp.md)
+    - [Send XRP](../../tasks/send-xrp.md)
 - **References:**
     - [`xrpl.js` Reference](https://js.xrpl.org/)
-    - [Public API Methods](../../references/http-websocket-apis/public-api-methods/index.md)
-    - [API Conventions](../../references/http-websocket-apis/api-conventions/index.md)
-        - [base58 Encodings](../../references/protocol/data-types/base58-encodings.md)
-    - [Transaction Formats](../../references/protocol/transactions/index.md)
+    - [Public API Methods](../../../references/http-websocket-apis/public-api-methods/index.md)
+    - [API Conventions](../../../references/http-websocket-apis/api-conventions/index.md)
+        - [base58 Encodings](../../../references/protocol/data-types/base58-encodings.md)
+    - [Transaction Formats](../../../references/protocol/transactions/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

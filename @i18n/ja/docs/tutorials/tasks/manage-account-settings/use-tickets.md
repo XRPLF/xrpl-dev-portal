@@ -19,7 +19,7 @@ labels:
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript" src="/js/tutorials/tasks/use-tickets.js"></script>
 
-このページでは、[xrpl.js](https://js.xrpl.org/)ライブラリを使用したJavaScriptのサンプルを提供しています。設定方法は、[JavaScriptを使ってみよう](../../javascript/get-started.md)をご覧ください。
+このページでは、[xrpl.js](https://js.xrpl.org/)ライブラリを使用したJavaScriptのサンプルを提供しています。設定方法は、[JavaScriptを使ってみよう](../../javascript/build-apps/get-started.md)をご覧ください。
 
 JavaScriptはWebブラウザ上で動作するため、セットアップなしで読み進められ、インタラクティブな手順を利用することができます。
 

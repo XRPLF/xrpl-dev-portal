@@ -515,7 +515,7 @@ py-batch-minting.html:
     to: /docs/tutorials/python/modular-tutorials/nfts/batch-minting
     type: 301
 build-a-desktop-wallet-in-python.html:
-    to: /docs/tutorials/python/build-a-desktop-wallet-in-python
+    to: /docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python
     type: 301
 javascript.html:
     to: /docs/tutorials/javascript/
@@ -569,13 +569,13 @@ batch-mint-nfts-using-javascript.html:
     to: /docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts
     type: 301
 build-a-browser-wallet-in-javascript.html:
-    to: /docs/tutorials/javascript/build-a-browser-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript
     type: 301
 build-a-browser-wallet-using-javascript.html:
-    to: /docs/tutorials/javascript/build-a-browser-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript
     type: 301
 build-a-desktop-wallet-in-javascript.html:
-    to: /docs/tutorials/javascript/build-a-desktop-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
     type: 301
 java.html:
     to: /docs/tutorials/java/

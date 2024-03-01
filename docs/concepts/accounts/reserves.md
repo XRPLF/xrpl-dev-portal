@@ -54,7 +54,7 @@ Applications can look up the current base and incremental reserve values using t
 
 To determine the owner reserve of an account, multiply the incremental reserve by the number of objects the account owns. To look up the number of objects an account owns, call the [account_info method][] and take `account_data.OwnerCount`.
 
-To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](../../tutorials/python/build-a-desktop-wallet-in-python.md#codeblock-17) of this calculation in Python.
+To calculate an address's total reserve requirement, multiply `OwnerCount` by `reserve_inc_xrp`, then add `reserve_base_xrp`. [Here is a demonstration](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#codeblock-17) of this calculation in Python.
 
 
 ## Going Below the Reserve Requirement
@@ -76,6 +76,6 @@ The XRP Ledger has a mechanism to adjust the reserve requirements. Such adjustme
 - [AccountRoot Object][]
 - [Fee Voting](../consensus-protocol/fee-voting.md)
 - [SetFee pseudo-transaction][]
-- [Tutorial: Calculate and display the reserve requirement (Python)](../../tutorials/python/build-a-desktop-wallet-in-python.md#3-display-an-account)
+- [Tutorial: Calculate and display the reserve requirement (Python)](../../tutorials/python/build-apps/build-a-desktop-wallet-in-python.md#3-display-an-account)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

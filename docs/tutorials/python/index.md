@@ -36,7 +36,7 @@ To get started:
    - [Create TrustLine and Send Currency](./modular-tutorials/send-payments/create-trust-line-send-currency/)
    - [Create Time-based Escrows](./modular-tutorials/send-payments/create-time-based-escrows/)
    - [Create Conditional Escrows](./modular-tutorials/send-payments/create-conditional-escrows/)
-   - [Send Checks](./modular-tutorials/send-payments/send-checks/)
+   - [Send and Cash Checks](./modular-tutorials/send-payments/send-and-cash-checks/)
 
 - **Mint and Trade NFTs on the XRPL**
    - [Mint and Burn NFTs](./modular-tutorials/nfts/mint-and-burn-nfts/)
@@ -46,7 +46,7 @@ To get started:
    - [Batch Mint NFTs](./modular-tutorials/nfts/batch-mint-nfts)
 
 - **Build Applications with Python**
-   - [Get Started Using Python](./get-started/)
-   - [Build a Desktop Wallet in Python](./build-a-desktop-wallet-in-python/)
+   - [Get Started Using Python](./build-apps/get-started/)
+   - [Build a Desktop Wallet in Python](./build-apps/build-a-desktop-wallet-in-python/)
  
  
