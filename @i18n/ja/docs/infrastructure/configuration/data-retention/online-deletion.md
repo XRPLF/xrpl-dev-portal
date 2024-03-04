@@ -79,7 +79,7 @@ labels:
 
     次の図は、`online_delete`設定と`ledger_history`設定の関係を示します。
 
-    ![`online_delete`より古いレジャーは自動的に削除されます。`ledger_history`よりも新しいレジャーは埋め戻されます。その間に位置するレジャーは、使用可能な場合は保持されますが、埋め戻しは行われません](/docs/img/online_delete-vs-ledger_history.ja.png)
+    [{% inline-svg file="/docs/img/online_delete-vs-ledger_history.ja.svg" /%}](/docs/img/online_delete-vs-ledger_history.svg "`online_delete`より古いレジャーは自動的に削除されます。`ledger_history`よりも新しいレジャーは埋め戻されます。その間に位置するレジャーは、使用可能な場合は保持されますが、埋め戻しは行われません")
 
 - **`advisory_delete`** - 有効な場合、オンライン削除は自動的にスケジュールされません。代わりに管理者が手動でオンライン削除をトリガーする必要があります。無効にするには値`0`を使用し、有効にするには`1`を使用します。
 
@@ -93,7 +93,7 @@ labels:
 
     次の図は、fetch_depthの仕組みを示します。
 
-    ![fetch_depthよりも古いレジャーバージョンはピアに提供されません](/docs/img/fetch_depth.ja.png)
+    [{% inline-svg file="/docs/img/fetch_depth.ja.svg" /%}](/docs/img/fetch_depth.ja.svg "fetch_depthよりも古いレジャーバージョンはピアに提供されません")
 
 さまざまな量の履歴の保管に必要なディスク容量の見積もりについては、[容量の計画](../../installation/capacity-planning.md#ディスク容量)を参照してください。
 
@@ -114,7 +114,8 @@ labels:
 
 オンライン削除を実行する場合、サーバーはまず、最も古いレジャーバージョンの中から保持するものを確認し、そのレジャーバージョンのすべてのオブジェクトを読み取り専用の「古い」データベースから「現行」データベースにコピーします。これにより、「現行」データベースには、選択したレジャーバージョンとそれ以降のすべての新しいバージョンで使用されるオブジェクトがすべて含まれることになります。次に、サーバーは「古い」データベースを削除し、既存の「現行」データベースを「古い」読み取り専用データベースにします。これ以降、サーバーは新しい「現行」データベースを始動し、新たな変更をすべてこのデータベースに保存します。
 
-![オンライン削除で2つのデータベースがどのように使用されるかを示す図](/docs/img/online-deletion-process.ja.png)
+[{% inline-svg file="/docs/img/online-deletion-process.ja.svg" /%}](/docs/img/online-deletion-process.ja.svg 'オンライン削除で2つのデータベースがどのように使用されるかを示す図')
+
 
 ## 関連項目
 
