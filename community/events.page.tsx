@@ -751,7 +751,7 @@ export default function Events() {
                   "XRP Ledger Apex 2024 is the official global community summit that unites developers, innovators, businesses, and investors who are building the future of finance on the XRP Ledger blockchain."
                 )}
               </p>
-              <div className="py-2 my-3 event-small-gray">
+              <div className=" my-3 event-small-gray">
                 Location: Amsterdam
               </div>
               <div className="py-2 my-3 event-small-gray">
@@ -761,7 +761,7 @@ export default function Events() {
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="http://xrpledgerapex.com/"
+                  href="https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=events"
                 >
                   {translate("Learn More")}
                 </a>
