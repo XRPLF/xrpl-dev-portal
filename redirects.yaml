@@ -488,7 +488,7 @@ get-started-using-python.html:
     to: /docs/tutorials/python/get-started
     type: 301
 modular-tutorials-in-python.html:
-    to: /docs/tutorials/python/modular-tutorials-in-python/
+    to: /docs/tutorials/python/
     type: 301
 send-payments-using-python.html:
     to: /docs/tutorials/python/modular-tutorials/send-payments
@@ -533,7 +533,7 @@ get-started-with-rippleapi-for-javascript.html:
     to: /docs/tutorials/javascript/get-started
     type: 301
 modular-tutorials-in-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/
+    to: /docs/tutorials/javascript/
     type: 301
 send-payments-using-javascript.html:
     to: /docs/tutorials/javascript/modular-tutorials/send-payments
