@@ -10,7 +10,13 @@ export const frontmatter = {
       "Find the XRPL Community around the world and join these events to see what's happening.",
   },
 };
-
+export const sortEvents = (arr, asc = true) => {
+  return arr.sort((a, b) => {
+    const dateA = moment(a.end_date, "MMMM D, YYYY");
+    const dateB = moment(b.end_date, "MMMM D, YYYY");
+    return asc ? dateB.diff(dateA) : dateA.diff(dateB); // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
+  });
+};
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];
@@ -27,7 +33,7 @@ function categorizeDates(arr) {
     }
   });
 
-  return { past, upcoming };
+  return { past: sortEvents(past), upcoming: sortEvents(upcoming, false) };
 }
 
 const events = [
@@ -584,19 +590,19 @@ const events = [
   {
     name: "XRPL Toronto Meetup Community - Celebrate with Us!",
     description:
-      "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
+      "To connect the blockchain community, showcase campus ambassador projects, and celebrate the new year.",
     type: "meetup",
     link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
     location: "Downtown, Toronto",
     date: "TBD",
     image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
-    end_date: "January 31, 2024",
+    end_date: "January 31, 2025", // putting a far future date so it remains in upcoming events until a date is confirmed
   },
 
   {
     name: "XRP Ledger Zone ETHDenver",
     description:
-      "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+      "Smart Contracts, Smarter XRP Ledger! Be the first to learn and build on the upcoming XRP Ledger integration with EVM at ETHDenver!",
     type: "zone",
     link: "http://xrplzone-ethdenver.splashthat.com",
     location: "Denver, Colorado",
@@ -616,7 +622,7 @@ const events = [
     image: require("../static/img/events/Conference.png"),
     end_date: "April 12, 2024",
   },
-  
+
   {
     name: "EasyA Hackathon",
     description:
@@ -736,13 +742,13 @@ export default function Events() {
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("The XRPL Developer Summit")}
+                  {translate("XRP Ledger Apex")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "Apex is back and headed to Amsterdam. Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger."
+                  "XRP Ledger Apex 2024 is the official global community summit that unites developers, innovators, businesses, and investors who are building the future of finance on the XRP Ledger blockchain."
                 )}
               </p>
               <div className="py-2 my-3 event-small-gray">
@@ -755,7 +761,7 @@ export default function Events() {
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="http://apexdevsummit.com/"
+                  href="http://xrpledgerapex.com/"
                 >
                   {translate("Learn More")}
                 </a>
