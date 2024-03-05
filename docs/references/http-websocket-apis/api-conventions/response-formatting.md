@@ -130,7 +130,7 @@ Example warning:
 
 This warning indicates that the one or more [amendments](../../../concepts/networks-and-servers/amendments.md) to the XRP Ledger protocol are scheduled to become enabled, but the current server does not have an implementation for those amendments. If those amendments become enabled, the current server will become [amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked-servers), so you should [upgrade to the latest `rippled` version](../../../infrastructure/installation/index.md) as soon as possible. <!-- STYLE_OVERRIDE: will -->
 
-The server only sends this warning if the client is [connected as an admin](../../../tutorials/http-websocket-apis/get-started.md#admin-access).
+The server only sends this warning if the client is [connected as an admin](../../../tutorials/http-websocket-apis/build-apps/get-started.md#admin-access).
 
 This warning includes a `details` field with the following fields:
 
@@ -190,7 +190,7 @@ It is generally safe to ignore this warning.
     - [Amendments](../../../concepts/networks-and-servers/amendments.md)
         - [Known Amendments](/resources/known-amendments.md)
 - **Tutorials:**
-    - [Get Started with XRP Ledger APIs](../../../tutorials/http-websocket-apis/get-started.md)
+    - [Get Started with XRP Ledger APIs](../../../tutorials/http-websocket-apis/build-apps/get-started.md)
     - [Install and Update `rippled`](../../../infrastructure/installation/index.md)
 - **References:**
     - [feature method][]

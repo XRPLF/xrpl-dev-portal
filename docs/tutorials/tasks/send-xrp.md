@@ -26,8 +26,8 @@ To interact with the XRP Ledger, you need to set up a dev environment with the n
 
 - **JavaScript** with the [xrpl.js library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../javascript/build-apps/get-started.md) for setup steps.
 - **Python** with the [`xrpl-py` library](https://xrpl-py.readthedocs.io/). See [Get Started using Python](../python/build-apps/get-started.md) for setup steps.
-- **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../java/get-started.md) for setup steps.
-- **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../php/get-started.md) for setup steps.
+- **Java** with the [xrpl4j library](https://github.com/XRPLF/xrpl4j). See [Get Started Using Java](../java/build-apps/get-started.md) for setup steps.
+- **PHP** with the [XRPL_PHP library](https://github.com/AlexanderBuzz/xrpl-php). See [Get Started Using PHP](../php/build-apps/get-started.md) for setup steps.
 
 
 ## Send a Payment on the Test Net

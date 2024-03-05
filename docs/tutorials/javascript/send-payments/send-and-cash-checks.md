@@ -1,7 +1,6 @@
 ---
 html: send-and-cash-checks.html
 parent: send-payments-using-javascript.html
-blurb: Send checks to facilitate a two-step payment.
 labels:
   - Accounts
   - Quickstart

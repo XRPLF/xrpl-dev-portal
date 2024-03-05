@@ -35,11 +35,11 @@ Current wallet options on XRPL: This is a good opportunity for XRPL to highlight
 
 ### NFTの取引
 
-NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
+NFTの取引は、売りオファーの作成または買いオファーの承諾によって行われます。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
 
 NFTをオークション形式で販売することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
-あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md)をご覧ください。
+あなたはブローカーとして、売り手と入札者をつなぎ、取引を完了させ、購入価格の何パーセントかを保持することができます。[NFTokenの取引を仲介する](../../tutorials/javascript/nfts/broker-an-nft-sale.md)をご覧ください。
 
 
 ### 準備金要件
@@ -61,11 +61,11 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 トークン取引手数料については、[取引手数料](../../concepts/tokens/transfer-fees.md)で詳しく解説しています。
 
-[NFToken Saleの仲介](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md)の手順に従って、ブローカー販売市場の構築を開始することができます。
+[NFToken Saleの仲介](../../tutorials/javascript/nfts/broker-an-nft-sale.md)の手順に従って、ブローカー販売市場の構築を開始することができます。
 
 #### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
 
 他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 

@@ -209,7 +209,7 @@ Report success
   standbyResultField.value = results    
 ```
       
-This transaction blob is the same as the one used for the previous [`mintToken()` function](mint-and-burn-nfts.md#mint-token), with the addition of the `Issuer` field.
+This transaction blob is the same as the one used for the previous [`mintToken()` function](./mint-and-burn-nfts.md#mint-token), with the addition of the `Issuer` field.
 
 ```javascript
   const tx_json = {

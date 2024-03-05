@@ -10,7 +10,7 @@ labels:
 ---
 # Monitor Incoming Payments with WebSocket
 
-This tutorial shows how to monitor for incoming [payments](../../concepts/payment-types/index.md) using the [WebSocket API](../../references/http-websocket-apis/index.md). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
+This tutorial shows how to monitor for incoming [payments](../../../concepts/payment-types/index.md) using the [WebSocket API](../../../references/http-websocket-apis/index.md). Since all XRP Ledger transactions are public, anyone can monitor incoming payments to any address.
 
 WebSocket follows a model where the client and server open one connection, then send messages both ways through the same connection, which stays open until explicitly closed (or until the connection fails). This is in contrast to the HTTP-based API model (including JSON-RPC and RESTful APIs), where the client opens and closes a new connection for each request.[¹](#footnote-1)<a id="from-footnote-1"></a>
 
@@ -19,8 +19,8 @@ WebSocket follows a model where the client and server open one connection, then 
 ## Prerequisites
 
 - The examples in this page use JavaScript and the WebSocket protocol, which are available in all major modern browsers. If you have some JavaScript knowledge and expertise in another programming language with a WebSocket client, you can follow along while adapting the instructions to the language of your choice.
-- You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` or Clio server](../../infrastructure/installation/index.md), you can also connect to that server locally.
-- To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](../../concepts/tokens/index.md), you need even more precision. For more information, see [Currency Precision](../../references/protocol/data-types/currency-formats.md#xrp-precision).
+- You need a stable internet connection and access to an XRP Ledger server. The embedded examples connect to Ripple's pool of public servers. If you [run your own `rippled` or Clio server](../../../infrastructure/installation/index.md), you can also connect to that server locally.
+- To properly handle XRP values without rounding errors, you need access to a number type that can do math on 64-bit unsigned integers. The examples in this tutorial use [big.js](https://github.com/MikeMcl/big.js/). If you are working with [tokens](../../../concepts/tokens/index.md), you need even more precision. For more information, see [Currency Precision](../../../references/protocol/data-types/currency-formats.md#xrp-precision).
 
 
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
@@ -71,7 +71,7 @@ The above example opens a secure connection (`wss://`) to one of Ripple's public
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](../../references/http-websocket-apis/admin-api-methods/index.md) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](../../references/http-websocket-apis/public-api-methods/index.md) that are available when you connect to public servers over the internet.
+**Tip:** By default, connecting to a local `rippled` server gives you access to the full set of [admin methods](../../../references/http-websocket-apis/admin-api-methods/index.md) and admin-only data in some responses such as [server_info][server_info method], plus the [public methods](../../../references/http-websocket-apis/public-api-methods/index.md) that are available when you connect to public servers over the internet.
 
 Example:
 
@@ -123,11 +123,11 @@ Since WebSocket connections can have several messages going each way and there i
 
     - An `id` field that matches the `id` provided in the request this is a response for. (This is important because responses may arrive out of order.)
 
-    - A `status` field that indicates whether the API successfully processed your request. The string value `success` indicates [a successful response](../../references/http-websocket-apis/api-conventions/response-formatting.md). The string value `error` indicates [an error](../../references/http-websocket-apis/api-conventions/error-formatting.md).
+    - A `status` field that indicates whether the API successfully processed your request. The string value `success` indicates [a successful response](../../../references/http-websocket-apis/api-conventions/response-formatting.md). The string value `error` indicates [an error](../../../references/http-websocket-apis/api-conventions/error-formatting.md).
 
-        **Warning:** When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md).
+        **Warning:** When submitting transactions, a `status` of `success` at the top level of the WebSocket message does not mean that the transaction itself succeeded. It only indicates that the server understood your request. For looking up a transaction's actual outcome, see [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md).
 
-- For follow-up messages from [subscriptions](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md), the `type` indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md). Your client only receives these messages if it subscribes to them.
+- For follow-up messages from [subscriptions](../../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md), the `type` indicates the type of follow-up message it is, such as the notification of a new transaction, ledger, or validation; or a follow-up to an ongoing [pathfinding request](../../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md). Your client only receives these messages if it subscribes to them.
 
 **Tip:** The [xrpl.js library for JavaScript](https://js.xrpl.org/) handles this step by default. All asynchronous API requests use Promises to provide the response, and you can listen to streams using the `.on(event, callback)` method of the `Client`.
 
@@ -341,27 +341,27 @@ WS_HANDLERS["transaction"] = log_tx
 
 ## 4. Read Incoming Payments
 
-When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [tokens](../../concepts/tokens/index.md). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
+When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [tokens](../../../concepts/tokens/index.md). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
 
-- The **`validated` field** indicates that the transaction's outcome is [final](../../concepts/transactions/finality-of-results/index.md). This should always be the case when you subscribe to `accounts`, but if you _also_ subscribe to `accounts_proposed` or the `transactions_proposed` stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the `validated` field.
-- The **`meta.TransactionResult` field** is the [transaction result](../../references/protocol/transactions/transaction-results/transaction-results.md). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
+- The **`validated` field** indicates that the transaction's outcome is [final](../../../concepts/transactions/finality-of-results/index.md). This should always be the case when you subscribe to `accounts`, but if you _also_ subscribe to `accounts_proposed` or the `transactions_proposed` stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the `validated` field.
+- The **`meta.TransactionResult` field** is the [transaction result](../../../references/protocol/transactions/transaction-results/transaction-results.md). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
 - The **`transaction.Account`** field is the sender of the transaction. If you are only looking for transactions sent by others, you can ignore any transactions where this field matches your account's address. (Keep in mind, it _is_ possible to make a cross-currency payment to yourself.)
 - The **`transaction.TransactionType` field** is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:
-    - **[Payment transactions][]** can deliver XRP or [tokens](../../concepts/tokens/index.md). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
+    - **[Payment transactions][]** can deliver XRP or [tokens](../../../concepts/tokens/index.md). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
 
-        **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](../../concepts/payment-types/partial-payments.md#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.
+        **Warning:** If you use the `transaction.Amount` field instead, you may be vulnerable to the [partial payments exploit](../../../concepts/payment-types/partial-payments.md#partial-payments-exploit). Malicious users can use this exploit to trick you into allowing the malicious user to trade or withdraw more money than they paid you.
 
     - **[CheckCash transactions][]** allow an account to receive money authorized by a different account's [CheckCreate transaction][]. Look at the metadata of a **CheckCash transaction** to see how much currency the account received.
 
-    - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](../../concepts/payment-types/escrow.md) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
+    - **[EscrowFinish transactions][]** can deliver XRP by finishing an [Escrow](../../../concepts/payment-types/escrow.md) created by a previous [EscrowCreate transaction][]. Look at the metadata of the **EscrowFinish transaction** to see which account received XRP from the escrow and how much.
 
-    - **[OfferCreate transactions][]** can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's [decentralized exchange](../../concepts/tokens/decentralized-exchange/index.md). If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
+    - **[OfferCreate transactions][]** can deliver XRP or tokens by consuming offers your account has previously placed in the XRP Ledger's [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). If you never place offers, you cannot receive money this way. Look at the metadata to see what currency the account received, if any, and how much.
 
-    - **[PaymentChannelClaim transactions][]** can deliver XRP from a [payment channel](../../concepts/payment-types/payment-channels.md). Look at the metadata to see which accounts, if any, received XRP from the transaction.
+    - **[PaymentChannelClaim transactions][]** can deliver XRP from a [payment channel](../../../concepts/payment-types/payment-channels.md). Look at the metadata to see which accounts, if any, received XRP from the transaction.
 
     - **[PaymentChannelFund transactions][]** can return XRP from a closed (expired) payment channel to the sender.
 
-- The **`meta` field** contains [transaction metadata](../../references/protocol/transactions/metadata.md), including exactly how much of which currency or currencies was delivered where. See [Look Up transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md) for more information on how to understand transaction metadata.
+- The **`meta` field** contains [transaction metadata](../../../references/protocol/transactions/metadata.md), including exactly how much of which currency or currencies was delivered where. See [Look Up transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md) for more information on how to understand transaction metadata.
 
 The following sample code looks at transaction metadata of all the above transaction types to report how much XRP an account received:
 
@@ -472,9 +472,9 @@ $("#tx_read").click((event) => {
 
 ## Next Steps
 
-- [Look Up Transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md) to see exactly what a transaction did, and build your software to react appropriately.
-- Try [Sending XRP](../tasks/send-xrp.md) from your own address.
-- Try monitoring for transactions of advanced types like [Escrows](../../concepts/payment-types/escrow.md), [Checks](../../concepts/payment-types/checks.md), or [Payment Channels](../../concepts/payment-types/payment-channels.md), and responding to incoming notifications.
+- [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md) to see exactly what a transaction did, and build your software to react appropriately.
+- Try [Sending XRP](../../tasks/send-xrp.md) from your own address.
+- Try monitoring for transactions of advanced types like [Escrows](../../../concepts/payment-types/escrow.md), [Checks](../../../concepts/payment-types/checks.md), or [Payment Channels](../../../concepts/payment-types/payment-channels.md), and responding to incoming notifications.
 <!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 
 ## Other Programming Languages
@@ -503,14 +503,14 @@ Many programming languages have libraries for sending and receiving data over a 
 ## See Also
 
 - **Concepts:**
-    - [Transactions](../../concepts/transactions/index.md)
-    - [Finality of Results](../../concepts/transactions/finality-of-results/index.md) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
+    - [Transactions](../../../concepts/transactions/index.md)
+    - [Finality of Results](../../../concepts/transactions/finality-of-results/index.md) - How to know when a transaction's success or failure is final. (Short version: if a transaction is in a validated ledger, its outcome and metadata are final.)
 - **Tutorials:**
-    - [Reliable Transaction Submission](../../concepts/transactions/reliable-transaction-submission.md)
-    - [Look Up Transaction Results](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
+    - [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md)
+    - [Look Up Transaction Results](../../../concepts/transactions/finality-of-results/look-up-transaction-results.md)
 - **References:**
-    - [Transaction Types](../../references/protocol/transactions/types/index.md)
-    - [Transaction Metadata](../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
-    - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.
+    - [Transaction Types](../../../references/protocol/transactions/types/index.md)
+    - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
+    - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

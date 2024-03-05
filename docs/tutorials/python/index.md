@@ -2,6 +2,8 @@
 html: python.html
 parent: tutorials.html
 top_nav_grouping: Article Types
+metadata:
+  indexPage: true
 ---
 # Python
 
@@ -29,24 +31,6 @@ To get started:
 **Note**: Without the sample modules, you won't be able to try the examples that follow.
 
 ## Tutorial Modules
-
-- **Send Payments on the XRPL**
-
-   - [Create Accounts and Send XRP](./modular-tutorials/send-payments/create-accounts-send-xrp/)
-   - [Create TrustLine and Send Currency](./modular-tutorials/send-payments/create-trust-line-send-currency/)
-   - [Create Time-based Escrows](./modular-tutorials/send-payments/create-time-based-escrows/)
-   - [Create Conditional Escrows](./modular-tutorials/send-payments/create-conditional-escrows/)
-   - [Send and Cash Checks](./modular-tutorials/send-payments/send-and-cash-checks/)
-
-- **Mint and Trade NFTs on the XRPL**
-   - [Mint and Burn NFTs](./modular-tutorials/nfts/mint-and-burn-nfts/)
-   - [Transfer NFTs](./modular-tutorials/nfts/transfer-nfts/)
-   - [Broker an NFT Sale](./modular-tutorials/nfts/broker-an-nft-sale/)
-   - [Assign an Authorized Minter](./modular-tutorials/nfts/assign-an-authorized-minter/)
-   - [Batch Mint NFTs](./modular-tutorials/nfts/batch-mint-nfts)
-
-- **Build Applications with Python**
-   - [Get Started Using Python](./build-apps/get-started/)
-   - [Build a Desktop Wallet in Python](./build-apps/build-a-desktop-wallet-in-python/)
  
- 
+{% child-pages /%}
+

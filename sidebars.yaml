@@ -158,22 +158,22 @@
         - page: docs/tutorials/javascript/index.md
           expanded: false
           items:
-            - page: docs/tutorials/javascript/modular-tutorials/send-payments/index.md
+            - page: docs/tutorials/javascript/send-payments/index.md
               expanded: false
               items:
-                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-accounts-send-xrp.md
-                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-trust-line-send-currency.md
-                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-time-based-escrows.md
-                - page: docs/tutorials/javascript/modular-tutorials/send-payments/create-conditional-escrows.md
-                - page: docs/tutorials/javascript/modular-tutorials/send-payments/send-and-cash-checks.md
-            - page: docs/tutorials/javascript/modular-tutorials/nfts/index.md
+                - page: docs/tutorials/javascript/send-payments/create-accounts-send-xrp.md
+                - page: docs/tutorials/javascript/send-payments/create-trust-line-send-currency.md
+                - page: docs/tutorials/javascript/send-payments/create-time-based-escrows.md
+                - page: docs/tutorials/javascript/send-payments/create-conditional-escrows.md
+                - page: docs/tutorials/javascript/send-payments/send-and-cash-checks.md
+            - page: docs/tutorials/javascript/nfts/index.md
               expanded: false
               items:
-                - page: docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md
-                - page: docs/tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md
-                - page: docs/tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md
-                - page: docs/tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter.md
-                - page: docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts.md
+                - page: docs/tutorials/javascript/nfts/mint-and-burn-nfts.md
+                - page: docs/tutorials/javascript/nfts/transfer-nfts.md
+                - page: docs/tutorials/javascript/nfts/broker-an-nft-sale.md
+                - page: docs/tutorials/javascript/nfts/assign-an-authorized-minter.md
+                - page: docs/tutorials/javascript/nfts/batch-mint-nfts.md
             - page: docs/tutorials/javascript/build-apps/index.md
               expanded: false
               items:
@@ -183,22 +183,22 @@
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
-            - page: docs/tutorials/python/modular-tutorials/send-payments/index.md
+            - page: docs/tutorials/python/send-payments/index.md
               expanded: false
               items:
-                - page: docs/tutorials/python/modular-tutorials/send-payments/create-accounts-send-xrp.md
-                - page: docs/tutorials/python/modular-tutorials/send-payments/create-trust-line-send-currency.md
-                - page: docs/tutorials/python/modular-tutorials/send-payments/create-time-based-escrows.md
-                - page: docs/tutorials/python/modular-tutorials/send-payments/create-conditional-escrows.md
-                - page: docs/tutorials/python/modular-tutorials/send-payments/send-and-cash-checks.md
-            - page: docs/tutorials/python/modular-tutorials/nfts/index.md
+                - page: docs/tutorials/python/send-payments/create-accounts-send-xrp.md
+                - page: docs/tutorials/python/send-payments/create-trust-line-send-currency.md
+                - page: docs/tutorials/python/send-payments/create-time-based-escrows.md
+                - page: docs/tutorials/python/send-payments/create-conditional-escrows.md
+                - page: docs/tutorials/python/send-payments/send-and-cash-checks.md
+            - page: docs/tutorials/python/nfts/index.md
               expanded: false
               items:
-                - page: docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts.md
-                - page: docs/tutorials/python/modular-tutorials/nfts/transfer-nfts.md
-                - page: docs/tutorials/python/modular-tutorials/nfts/broker-an-nft-sale.md
-                - page: docs/tutorials/python/modular-tutorials/nfts/assign-an-authorized-minter.md
-                - page: docs/tutorials/python/modular-tutorials/nfts/batch-mint-nfts.md
+                - page: docs/tutorials/python/nfts/mint-and-burn-nfts.md
+                - page: docs/tutorials/python/nfts/transfer-nfts.md
+                - page: docs/tutorials/python/nfts/broker-an-nft-sale.md
+                - page: docs/tutorials/python/nfts/assign-an-authorized-minter.md
+                - page: docs/tutorials/python/nfts/batch-mint-nfts.md
             - page: docs/tutorials/python/build-apps/index.md
               expanded: false
               items:
@@ -207,16 +207,25 @@
         - page: docs/tutorials/java/index.md
           expanded: false
           items:
-            - page: docs/tutorials/java/get-started.md
+            - page: docs/tutorials/java/build-apps/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/java/build-apps/get-started.md
         - page: docs/tutorials/php/index.md
           expanded: false
           items:
-            - page: docs/tutorials/php/get-started.md
+            - page: docs/tutorials/php/build-apps/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/php/build-apps/get-started.md 
         - page: docs/tutorials/http-websocket-apis/index.md
           expanded: false
           items:
-            - page: docs/tutorials/http-websocket-apis/get-started.md
-            - page: docs/tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md
+            - page: docs/tutorials/http-websocket-apis/build-apps/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/http-websocket-apis/build-apps/get-started.md
+                - page: docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md
         - page: docs/tutorials/tasks/index.md
           expanded: false
           items:
