@@ -129,7 +129,7 @@ Loading: "/etc/rippled.cfg"
 
 `reservations`配列の各メンバーは、1つの[ピアリザベーション][]を表すJSONオブジェクトです。このオブジェクトのフィールドを次に示します。
 
-{% partial file="/docs/_snippets/peer_reservation_object.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/peer_reservation_object.md" /%}
 
 
 ### 考えられるエラー

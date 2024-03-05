@@ -126,7 +126,7 @@ Connecting to 127.0.0.1:5005
 
 `previous`フィールドが指定されている場合は、このピアリザベーションの以前のステータスが次のフィールドとともに表示されます。
 
-{% partial file="/docs/_snippets/peer_reservation_object.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/peer_reservation_object.md" /%}
 
 
 ### 考えられるエラー

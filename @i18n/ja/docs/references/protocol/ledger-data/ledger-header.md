@@ -27,7 +27,7 @@ labels:
 
 
 ## レジャーインデックス
-{% partial file="/docs/_snippets/data_types/ledger_index.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/data_types/ledger_index.md" /%}
 
 
 

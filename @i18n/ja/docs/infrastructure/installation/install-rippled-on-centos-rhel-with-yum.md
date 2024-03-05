@@ -69,7 +69,7 @@ labels:
 
 ## 次のステップ
 
-{% partial file="/docs/_snippets/post-rippled-install.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/post-rippled-install.md" /%}
 
 
 ## 関連項目

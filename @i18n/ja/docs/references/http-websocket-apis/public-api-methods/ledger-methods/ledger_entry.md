@@ -16,7 +16,7 @@ label:
 
 このメソッドは複数の異なる種類のデータを取得することができます。以下に記載されている一般的なフィールドと特定のタイプのフィールドで構成される適切なパラメータを渡し、標準の[リクエストのフォーマット](../../api-conventions/request-formatting.md)に従うことで、取得するアイテムの種類を選択できます。(例えば、WebSocketリクエストは常に`command`フィールドとオプションで`id`フィールドを持ち、JSON-RPCリクエストは`method`フィールドと`params`フィールドを使います)。
 
-{% raw-partial file="/docs/_snippets/no-cli-syntax.md" /%}
+{% raw-partial file="/@i18n/ja/docs/_snippets/no-cli-syntax.md" /%}
 
 ### 一般的なフィールド
 

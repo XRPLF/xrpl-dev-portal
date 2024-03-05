@@ -19,7 +19,7 @@ Checkから可能な限りの額を受領したい場合には、変動金額で
 
 ## 前提条件
 
-{% partial file="/docs/_snippets/checkcash-prereqs.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/checkcash-prereqs.md" /%}
 
 ## 1. CheckCashトランザクションの準備
 
@@ -57,7 +57,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## 2. CheckCashトランザクションの署名
 
-{% partial file="/docs/_snippets/tutorial-sign-step.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-sign-step.md" /%} 
 
 ### リクエストの例
 
@@ -83,7 +83,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## 3. 署名済みCheckCashトランザクションの送信
 
-{% partial file="/docs/_snippets/tutorial-submit-step.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tutorial-submit-step.md" /%} 
 
 ### リクエストの例
 
@@ -108,7 +108,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ## 4. 検証の待機
 
-{% partial file="/docs/_snippets/wait-for-validation.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/wait-for-validation.md" /%} 
 
 ## 5. 最終結果の確認
 

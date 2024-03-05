@@ -14,7 +14,7 @@ labels:
 
 以下に、トランザクションのメタデータに含まれる可能性があるフィールドをいくつか示します。
 
-{% partial file="/docs/_snippets/tx-metadata-field-table.md" /%} 
+{% partial file="/@i18n/ja/docs/_snippets/tx-metadata-field-table.md" /%} 
 
 ## メタデータの例
 

@@ -8,7 +8,7 @@ labels:
 ---
 # トークンの回収
 
-{% partial file="/docs/_snippets/clawback-disclaimer.md" /%}
+{% partial file="/@i18n/ja/docs/_snippets/clawback-disclaimer.md" /%}
 
 規制上の目的から、トークンがアカウントに送信された後にトークンを回収する機能を必要とする発行者が存在します。例えば、トークンが違法行為で制裁を受けたアカウントに送られたことが発覚した場合、発行者はその資金を「回収」することができます。
 
