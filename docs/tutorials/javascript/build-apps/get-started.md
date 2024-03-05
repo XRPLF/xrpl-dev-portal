@@ -1,5 +1,5 @@
 ---
-html: get-started-using-javascript.html
+html: get-started-using-javascript-library.html
 parent: javascript.html
 seo:
     description: Build an entry-level JavaScript application for querying the XRP Ledger.
@@ -9,7 +9,7 @@ labels:
   - Development
 showcase_icon: assets/img/logos/javascript.svg
 ---
-# Get Started Using JavaScript
+# Get Started Using JavaScript Library
 
 This tutorial guides you through the basics of building an XRP Ledger-connected application in JavaScript or TypeScript using the [`xrpl.js`](https://github.com/XRPLF/xrpl.js/) client library in either Node.js or web browsers.
 

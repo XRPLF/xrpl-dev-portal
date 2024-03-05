@@ -80,7 +80,7 @@ labels:
 - **チュートリアル:**
     - [rippledの構成](../configuration/index.md)
     - [rippledのトラブルシューティング](../troubleshooting/index.md)
-    - [rippled APIの使用開始](../../tutorials/http-websocket-apis/get-started.md)
+    - [rippled APIの使用開始](../../tutorials/http-websocket-apis/build-apps/get-started.md)
 - **リファレンス:**
     - [rippled APIリファレンス](../../references/http-websocket-apis/index.md)
       - [`rippled`コマンドラインの使用](../commandline-usage.md)

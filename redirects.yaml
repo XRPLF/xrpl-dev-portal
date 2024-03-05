@@ -491,31 +491,31 @@ modular-tutorials-in-python.html:
     to: /docs/tutorials/python/
     type: 301
 send-payments-using-python.html:
-    to: /docs/tutorials/python/modular-tutorials/send-payments
+    to: /docs/tutorials/python/send-payments
     type: 301
 py-create-accounts-send-xrp.html:
-    to: /docs/tutorials/python/modular-tutorials/send-payments/create-accounts-send-xrp
+    to: /docs/tutorials/python/send-payments/create-accounts-send-xrp
     type: 301
 py-create-trustline-send-currency.html:
-    to: /docs/tutorials/python/modular-tutorials/send-payments/create-trustline-send-currency
+    to: /docs/tutorials/python/send-payments/create-trustline-send-currency
     type: 301
 py-create-time-based-escrows.html:
-    to: /docs/tutorials/python/modular-tutorials/send-payments/create-time-based-escrows
+    to: /docs/tutorials/python/send-payments/create-time-based-escrows
     type: 301
 py-mint-and-burn-nfts.html:
-    to: /docs/tutorials/python/modular-tutorials/nfts/mint-and-burn-nfts
+    to: /docs/tutorials/python/nfts/mint-and-burn-nfts
     type: 301
 py-transfer-nfts.html:
-    to: /docs/tutorials/python/modular-tutorials/nfts/transfer-nfts
+    to: /docs/tutorials/python/nfts/transfer-nfts
     type: 301
 py-broker-sale.html:
-    to: /docs/tutorials/python/modular-tutorials/nfts/broker-sale
+    to: /docs/tutorials/python/nfts/broker-sale
     type: 301
 py-authorize-minter.html:
-    to: /docs/tutorials/python/modular-tutorials/nfts/authorize-minter
+    to: /docs/tutorials/python/nfts/authorize-minter
     type: 301
 py-batch-minting.html:
-    to: /docs/tutorials/python/modular-tutorials/nfts/batch-minting
+    to: /docs/tutorials/python/nfts/batch-minting
     type: 301
 build-a-desktop-wallet-in-python.html:
     to: /docs/tutorials/python/build-apps/build-a-desktop-wallet-in-python
@@ -524,52 +524,52 @@ javascript.html:
     to: /docs/tutorials/javascript/
     type: 301
 get-started-using-javascript.html:
-    to: /docs/tutorials/javascript/get-started
+    to: /docs/tutorials/javascript/build-apps/get-started
     type: 301
 get-started-using-node-js.html:
-    to: /docs/tutorials/javascript/get-started
+    to: /docs/tutorials/javascript/build-apps/get-started
     type: 301
 get-started-with-rippleapi-for-javascript.html:
-    to: /docs/tutorials/javascript/get-started
+    to: /docs/tutorials/javascript/build-apps/get-started
     type: 301
 modular-tutorials-in-javascript.html:
     to: /docs/tutorials/javascript/
     type: 301
 send-payments-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/send-payments
+    to: /docs/tutorials/javascript/send-payments
     type: 301
 create-accounts-send-xrp-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-accounts-send-xrp
+    to: /docs/tutorials/javascript/send-payments/create-accounts-send-xrp
     type: 301
 create-trustline-send-currency-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-trustline-send-currency
+    to: /docs/tutorials/javascript/send-payments/create-trustline-send-currency
     type: 301
 create-time-based-escrows-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-time-based-escrows
+    to: /docs/tutorials/javascript/send-payments/create-time-based-escrows
     type: 301
 create-conditional-escrows-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/send-payments/create-conditional-escrows
+    to: /docs/tutorials/javascript/send-payments/create-conditional-escrows
     type: 301
 nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/nfts-using-javascript/
+    to: /docs/tutorials/javascript/nfts-using-javascript/
     type: 301
 nfts-using-python.html:
-    to: /docs/tutorials/python/modular-tutorials/nfts
+    to: /docs/tutorials/python/nfts
     type: 301
 mint-and-burn-nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts
+    to: /docs/tutorials/javascript/nfts/mint-and-burn-nfts
     type: 301
 transfer-nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/nfts/transfer-nfts
+    to: /docs/tutorials/javascript/nfts/transfer-nfts
     type: 301
 broker-an-nft-sale-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale
+    to: /docs/tutorials/javascript/nfts/broker-an-nft-sale
     type: 301
 assign-an-authorized-minter-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/nfts/assign-an-authorized-minter
+    to: /docs/tutorials/javascript/nfts/assign-an-authorized-minter
     type: 301
 batch-mint-nfts-using-javascript.html:
-    to: /docs/tutorials/javascript/modular-tutorials/nfts/batch-mint-nfts
+    to: /docs/tutorials/javascript/nfts/batch-mint-nfts
     type: 301
 build-a-browser-wallet-in-javascript.html:
     to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript
@@ -584,25 +584,25 @@ java.html:
     to: /docs/tutorials/java/
     type: 301
 get-started-using-java.html:
-    to: /docs/tutorials/java/get-started
+    to: /docs/tutorials/java/build-apps/get-started
     type: 301
 php.html:
     to: /docs/tutorials/php
     type: 301
 get-started-using-php.html:
-    to: /docs/tutorials/php/get-started
+    to: /docs/tutorials/php/build-apps/get-started
     type: 301
 http-websocket-apis-tutorials.html:
     to: /docs/tutorials/http-websocket-apis/
     type: 301
 get-started-with-the-rippled-api.html:
-    to: /docs/tutorials/http-websocket-apis/get-started
+    to: /docs/tutorials/http-websocket-apis/build-apps/get-started
     type: 301
 get-started-using-http-websocket-apis.html:
-    to: /docs/tutorials/http-websocket-apis/get-started
+    to: /docs/tutorials/http-websocket-apis/build-apps/get-started
     type: 301
 monitor-incoming-payments-with-websocket.html:
-    to: /docs/tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket
+    to: /docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket
     type: 301
 tasks.html:
     to: /docs/tutorials/tasks/

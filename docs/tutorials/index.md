@@ -19,10 +19,10 @@ These tutorials walk you through the basics of building a very simple XRP Ledger
 
 <br/>
 
-{% xrpl-card title="Java" body="Using xrpl4j, a pure Java library." href="/docs/tutorials/java/get-started/" image="/img/logos/java.svg" imageAlt="Java logo" /%}
+{% xrpl-card title="Java" body="Using xrpl4j, a pure Java library." href="/docs/tutorials/java/" image="/img/logos/java.svg" imageAlt="Java logo" /%}
 
-{% xrpl-card title="PHP" body="Using the XRPL_PHP client library." href="/docs/tutorials/php/get-started/" image="/img/logos/php.svg" imageAlt="PHP logo" /%}
+{% xrpl-card title="PHP" body="Using the XRPL_PHP client library." href="/docs/tutorials/php/" image="/img/logos/php.svg" imageAlt="PHP logo" /%}
 
-{% xrpl-card title="HTTP & WebSocket APIs" body="Access the XRP Ledger directly through the APIs of its core server." href="/docs/tutorials/http-websocket-apis/get-started/" image="/img/logos/globe.svg" imageAlt="globe icon" /%}
+{% xrpl-card title="HTTP & WebSocket APIs" body="Access the XRP Ledger directly through the APIs of its core server." href="/docs/tutorials/http-websocket-apis/" image="/img/logos/globe.svg" imageAlt="globe icon" /%}
 
 {% /card-grid %}

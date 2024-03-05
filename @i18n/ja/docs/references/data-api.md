@@ -14,6 +14,6 @@ nav_omit: true
 
 ## Alternatives
 
-アカウント残高や取引履歴のリクエストなど、ほとんどの一般的な操作では、[WebSocket接続](../tutorials/http-websocket-apis/get-started.md#websocket-api)または[JSON-RPC（HTTP POST）](../tutorials/http-websocket-apis/get-started.md#json-rpc)を使用して、セルフホストまたは[公開XRP Ledgerサーバー](../tutorials/public-servers.md)にリクエストすることとができます。
+アカウント残高や取引履歴のリクエストなど、ほとんどの一般的な操作では、[WebSocket接続](../tutorials/http-websocket-apis/get-started.md#websocket-api)または[JSON-RPC（HTTP POST）](../tutorials/http-websocket-apis/build-apps/get-started.md#json-rpc)を使用して、セルフホストまたは[公開XRP Ledgerサーバー](../tutorials/public-servers.md)にリクエストすることとができます。
 
-詳細については、[HTTP / WebSocket APIsの使用を開始する](../tutorials/http-websocket-apis/get-started.md)ページをご覧ください。
+詳細については、[HTTP / WebSocket APIsの使用を開始する](../tutorials/http-websocket-apis/build-apps/get-started.md)ページをご覧ください。

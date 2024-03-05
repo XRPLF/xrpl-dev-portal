@@ -112,7 +112,7 @@ Before you install `rippled`, you must meet the [System Requirements](system-req
 - **Tutorials:**
     - [Configure rippled](../configuration/index.md)
     - [Troubleshoot rippled](../troubleshooting/index.md)
-    - [Get Started with the rippled API](../../tutorials/http-websocket-apis/get-started.md)
+    - [Get Started with the rippled API](../../tutorials/http-websocket-apis/build-apps/get-started.md)
 - **References:**
     - [rippled API Reference](../../references/http-websocket-apis/index.md)
         - [`rippled` Commandline Usage](../commandline-usage.md)

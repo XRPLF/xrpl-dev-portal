@@ -446,7 +446,7 @@ Most other transactions create a specific type of ledger entry and [adjust the s
     - [Finality of Results](index.md)
     - [Reliable Transaction Submission](../reliable-transaction-submission.md)
 - **Tutorials:**
-    - [Monitor Incoming Payments with WebSocket](../../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
+    - [Monitor Incoming Payments with WebSocket](../../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
 - **References:**
     - [Ledger Entry Types Reference](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - All possible fields of all types of ledger entries
     - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
