@@ -21,11 +21,11 @@ Ripplingは、支払[パス](paths.md)でのみ発生します。[XRP間の直�
 
 「Rippling」は、支払いを行うために複数のトラストラインが調整されたときに発生します。たとえば、AliceがCharlieにお金を借りており、さらにAliceはBobからもお金を借りている場合、XRP Ledgerではトラストラインは次のようになります:
 
-![Charlie --（$10）-- Alice -- （$20） -- Bob](/docs/img/noripple-01.png)
+[{% inline-svg file="/docs/img/noripple-01.svg" /%}](/docs/img/noripple-01.svg "Charlie --($10)-- Alice -- ($20) -- Bob")
 
 BobがCharlieに$3を支払いたい場合、BobはAliceに対して「Alice、君に貸しているお金の中から$3をCharlieに支払ってくれ。」と言えます。AliceはBobに借りているお金の一部をCharlieに送金します。最終的にはトラストラインは次のようになります。
 
-![Charlie --（$13）-- Alice --（$17）-- Bob](/docs/img/noripple-02.png)
+[{% inline-svg file="/docs/img/noripple-02.svg" /%}](/docs/img/noripple-02.svg "Charlie --($13)-- Alice --($17)-- Bob")
 
 2つのアドレスが、アドレス間のトラストライン上の残高を調整することで相互に支払うこのプロセスを「Rippling」と呼びます。これはXRP Ledgerの有用で重要な機能です。Ripplingは、同一の[通貨コード][]を使用するトラストラインによってアドレスがリンクされている場合に起こります。イシュアーが同一でなくてもかまいません。実際、大規模なチェーンでは常にイシュアーが変更されます。
 
@@ -39,17 +39,17 @@ BobがCharlieに$3を支払いたい場合、BobはAliceに対して「Alice、�
 
 たとえば、Emilyが2つの異なる金融機関から発行されたお金を保有しているとします。
 
-![Charlie --（$10）-- 金融機関A --（$1）-- Emily --（$100）-- 金融機関B --（$2）-- Daniel](/docs/img/noripple-03.png)
+[{% inline-svg file="/docs/img/noripple-03.svg" /%}](/docs/img/noripple-03.svg "Charlie --（$10）-- 金融機関A --（$1）-- Emily --（$100）-- 金融機関B --（$2）-- Daniel")
 
 CharlieはDanielに支払うため、Emilyのアドレスを通じてRipplingします。たとえば、CharlieがDanielに$10を支払うとします:
 
-![Charlie --（$0）-- 金融機関A --（$11）-- Emily --（$90）-- 金融機関B --（$12）-- Daniel](/docs/img/noripple-04.png)
+[{% inline-svg file="/docs/img/noripple-04.svg" /%}](/docs/img/noripple-04.svg "Charlie --（$0）-- 金融機関A --（$11）-- Emily --（$90）-- 金融機関B --（$12）-- Daniel")
 
 この場合、CharlieやDanielと面識のないEmilyは驚く可能性があります。さらに、金融機関Aが金融機関Bよりも高い出金手数料をEmilyに請求した場合、Emilyがコストを負担することになる可能性があります。NoRippleフラグはこの状況を回避するためのフラグです。Emilyが両方のトラストラインでNoRippleフラグを設定していれば、この2つのトラストラインを使用しているEmilyのアドレスを通じて、支払がRipplingされることはありません。
 
 例:
 
-![Charlie --（$10）-- 金融機関A --（$1、NoRipple）-- Emily --（$100、NoRipple）-- 金融機関B --（$2）-- Daniel](/docs/img/noripple-05.png)
+[{% inline-svg file="/docs/img/noripple-05.svg" /%}](/docs/img/noripple-05.svg "Charlie --（$10）-- 金融機関A --（$1、NoRipple）-- Emily --（$100、NoRipple）-- 金融機関B --（$2）-- Daniel")
 
 このように、CharlieがEmilyのアドレスを通じてRipplingし、Danielに支払うという上記のシナリオは、不可能になります。
 
@@ -57,7 +57,7 @@ CharlieはDanielに支払うため、Emilyのアドレスを通じてRipplingし
 
 NoRippleフラグにより特定のパスが無効になり、無効になったパスは支払に使用できなくなります。パスが無効であると見なされるのは、パスが、あるアドレスに対してNoRippleが有効となっているトラストラインを通じて、そのアドレスノードに入り**かつ**そのノードから出た場合に限られます。
 
-![処理を行うためには同一アドレスによって両方のトラストラインにNoRippleが設定されている必要があることを示す図](/docs/img/noripple-06.png)
+[{% inline-svg file="/docs/img/noripple-06.ja.svg" /%}](/docs/img/noripple-06.ja.svg "処理を行うためには同一アドレスによって両方のトラストラインにNoRippleが設定されている必要があることを示す図")
 
 
 ## DefaultRippleフラグ
