@@ -1570,6 +1570,21 @@ report-a-scam.html:
 wallets.html:
     to: /docs/introduction/crypto-wallets
     type: 301
+blog/2024/rippled-2.1.0.html:
+    to: /blog/2024/rippled-2.1.0
+    type: 301
+blog/2024/rippled-2.0.0.html:
+    to: /blog/2024/rippled-2.0.0
+    type: 301
+blog/2024/clio-2.1.0.html:
+    to: /blog/2024/clio-2.1.0
+    type: 301
+blog/2024/rippled-2.0.1.html:
+    to: /blog/2024/rippled-2.0.1
+    type: 301
+blog/2024/web3auth.html:
+    to: /blog/2024/web3auth
+    type: 301
 blog/2024/rippled-2.0.0.html:
     to: /blog/2024/rippled-2.0.0
     type: 301
