@@ -68,7 +68,8 @@ APIは、現在の進行中のレジャーにトランザクション候補を�
 
 次の図は、トランザクションの送信と結果の判断に推奨されるフローを示します。
 
-[![信頼できるトランザクションの送信フローチャート](/docs/img/reliable-tx-submission.svg)](/docs/img/reliable-tx-submission.svg)
+<!-- TODO: translate -->
+[{% inline-svg file="/docs/img/reliable-tx-submission.svg" /%}](/docs/img/reliable-tx-submission.svg "信頼できるトランザクションの送信フローチャート")
 
 ### 信頼できるトランザクションの送信
 

@@ -32,11 +32,11 @@ XRP Ledgerのチケットは、取引をすぐに送信せずに、その取引�
 
 チケットには、チケット作成時に設定されたシーケンス番号が使用されます。例えば、あなたのアカウントの現在のシーケンス番号が101で、3枚のチケットを作成した場合、それらのチケットにはチケットシーケンス番号102、103、104が付けられます。これにより、あなたのアカウントのシーケンス番号は105になります。
 
-[{% inline-svg file="/docs/img/ticket-creation.svg" /%}](/docs/img/ticket-creation.svg "Diagram: Creating three Tickets")
+[{% inline-svg file="/docs/img/ticket-creation.ja.svg" /%}](/docs/img/ticket-creation.ja.svg "図: 3つのTicketの作成")
 
 後から、シーケンス番号の代わりに特定のチケットを使用してトランザクションを送信することができます。これにより、元帳の状態データから対応するチケットが削除され、アカウントの通常のシーケンス番号は変更されません。また、チケットを使用せずに、通常のシーケンス番号を使用してトランザクションを送信することもできます。利用可能なチケットは、いつでもどのような順番でも使用できますが、各チケットは1回しか使用できません。
 
-[{% inline-svg file="/docs/img/ticket-usage.svg" /%}](/docs/img/ticket-usage.svg "Diagram: Using Ticket 103.")
+[{% inline-svg file="/docs/img/ticket-usage.ja.svg" /%}](/docs/img/ticket-usage.ja.svg "図: 103のTicketを利用")
 
 上記の例では、シーケンス番号105または作成した3つのチケットのいずれかを使用してトランザクションを送信できます。チケット103を使ってトランザクションを送信すると、それによってチケット103は元帳から削除されます。その後の次のトランザクションでは、シーケンス番号105、チケット102、またはチケット104を使用できます。
 

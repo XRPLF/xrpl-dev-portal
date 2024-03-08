@@ -236,7 +236,7 @@ You can tell which of the two sub-types it is based on the first bit: `0` for XR
 
 The following diagram shows the serialization formats for both XRP amounts and token amounts:
 
-{{ include_svg("img/serialization-amount.svg", 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).') }}
+[{% inline-svg file="/docs/img/serialization-amount.svg" /%}](/docs/img/serialization-amount.svg 'XRP amounts have a "not XRP" bit, a sign bit, and 62 bits of precision. Token amounts consist of a "not XRP" bit, a sign bit, an exponent (8 bits), significant digits (54 bits), currency code (160 bits), and issuer (160 bits).')
 
 #### Token Amount Format
 [[Source]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "Source")
@@ -283,7 +283,7 @@ In the binary format, each member of the array has a Field ID prefix (based on t
 
 The following example shows the serialization format for an array (the `SignerEntries` field):
 
-{{ include_svg("img/serialization-array.svg", 'Array field ID, followed by the Field ID and contents of each array element, followed by the "Array end" field ID') }}
+[{% inline-svg file="/docs/img/serialization-array.svg" /%}](/docs/img/serialization-array.svg 'Array field ID, followed by the Field ID and contents of each array element, followed by the "Array end" field ID')
 
 
 ### Blob Fields
@@ -322,7 +322,7 @@ The [canonical field order](#canonical-field-order) of object fields is the same
 
 The following example shows the serialization format for an object (a single `Memo` object in the `Memos` array).
 
-{{ include_svg("img/serialization-object.svg", 'Object field ID, followed by the Object ID and contents of each object member in canonical order, followed by the "Object end" field ID') }}
+[{% inline-svg file="/docs/img/serialization-object.svg" /%}](/docs/img/serialization-object.svg 'Object field ID, followed by the Object ID and contents of each object member in canonical order, followed by the "Object end" field ID')
 
 
 ### PathSet Fields

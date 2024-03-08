@@ -114,7 +114,7 @@ Online deletion works by creating two databases: at any given time, there is an 
 
 When it comes time for online deletion, the server first walks through the oldest ledger version to keep, and copies all objects in that ledger version from the read-only "old" database into the "current" database. This guarantees that the "current" database now contains all objects used in the chosen ledger version and all newer versions. Then, the server deletes the "old" database, and changes the existing "current" database to become "old" and read-only. The server starts a new "current" database to contain any newer changes after this point.
 
-{{ include_svg('img/online-deletion-process.svg', "Diagram showing how online deletion uses two databases") }}
+[{% inline-svg file="/docs/img/online-deletion-process.svg" /%}](/docs/img/online-deletion-process.svg 'Diagram showing how online deletion uses two databases')
 
 ## See Also
 

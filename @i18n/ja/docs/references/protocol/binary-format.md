@@ -236,7 +236,7 @@ curated_anchors:
 
 以下の図に、XRPの額とトークン額のシリアル化フォーマットを示します。
 
-![「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。](/docs/img/serialization-amount.ja.svg)
+[{% inline-svg file="/docs/img/serialization-amount.ja.svg" /%}](/docs/img/serialization-amount.ja.svg "「非XRP」ビット、符号ビット、および62ビットの精度で構成されるXRPの額。「非XRP」ビット、符号ビット、指数（8ビット）、仮数（54ビット）、通貨コード（160ビット）、イシュアー（160ビット）で構成されるトークンの額。")
 
 #### トークンの数量フォーマット
 [[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/STAmount.cpp "ソース")
@@ -283,7 +283,7 @@ XRP Ledgerは64ビットを使って(代替可能な)トークンの金額をシ
 
 以下の例は、配列のシリアル化フォーマットを示します（`SignerEntries`フィールド）。
 
-![配列フィールドID、各配列要素のフィールドIDと内容、および「配列の終わり」を示すフィールドID](/docs/img/serialization-array.ja.png)
+[{% inline-svg file="/docs/img/serialization-array.ja.svg" /%}](/docs/img/serialization-array.ja.svg "配列フィールドID、各配列要素のフィールドIDと内容、および「配列の終わり」を示すフィールドID")
 
 
 ### Blobフィールド
@@ -320,7 +320,7 @@ XRP LedgerのハッシュタイプにはHash128、Hash160、Hash256がありま�
 
 以下の例は、オブジェクトのシリアル化フォーマットを示します（`Memos`配列内の1つの`Memo`オブジェクト）。
 
-![オブジェクトフィールドID、各オブジェクトメンバーのオブジェクトIDと内容（正規順序）、および「オブジェクトの終わり」を示すフィールドID](/docs/img/serialization-object.ja.png)
+[{% inline-svg file="/docs/img/serialization-object.ja.svg" /%}](/docs/img/serialization-object.ja.svg "オブジェクトフィールドID、各オブジェクトメンバーのオブジェクトIDと内容（正規順序）、および「オブジェクトの終わり」を示すフィールドID")
 
 
 ### PathSetフィールド
@@ -353,7 +353,7 @@ PathSetは、**1～6**の個別パスとして順序どおりにシリアル化�
 
 以下の例は、PathSetのシリアル化フォーマットを示します。
 
-![PathSetは複数のパスからなり、各パスの後に継続または終了を示すバイトが続きます。各パスは複数のパスステップからなり、各パスステップはタイプバイトと、タイプバイトに基づく1つ以上の160ビットフィールドで構成されます。](/docs/img/serialization-pathset.ja.png)
+[{% inline-svg file="/docs/img/serialization-pathset.ja.svg" /%}](/docs/img/serialization-pathset.ja.svg "PathSetは複数のパスからなり、各パスの後に継続または終了を示すバイトが続きます。各パスは複数のパスステップからなり、各パスステップはタイプバイトと、タイプバイトに基づく1つ以上の160ビットフィールドで構成されます。")
 
 
 ### UIntフィールド

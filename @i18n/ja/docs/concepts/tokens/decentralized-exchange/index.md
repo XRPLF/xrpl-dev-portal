@@ -26,7 +26,7 @@ XRP Ledgerのすべての変更がそうであるように、取引を行うに�
 
 ### 取引の例
 
-[{% inline-svg file="/docs/img/decentralized-exchange-example-trade.svg" /%}](/docs/img/decentralized-exchange-example-trade.svg "図: XRPでトークンを購入する注文が一部約定する。")
+[{% inline-svg file="/docs/img/decentralized-exchange-example-trade.ja.svg" /%}](/docs/img/decentralized-exchange-example-trade.ja.svg "図: XRPでトークンを購入する注文が一部約定する。")
 
 上の図は、分散型取引所での取引例です。この例では、Tranというトレーダーが、WayGateという架空の企業が発行するFOOという通貨コードのトークン100個の購入オファーを出しています。(簡潔にするため、「FOO.WayGate」はこれらのトークンを指します。)Tranは、合計で最大1000XRPまで支払う意思があることを明記しています。Tranのトランザクションが処理されると、次のようなことが起こります。
 
