@@ -1,7 +1,7 @@
 ---
 seo:
     title: Crypto Wallet and Blockchain Development Tutorials
-    description: Learn the basics on how to get started building on the XRP Ledger with these helpful crypto wallet and blockchain tutorials for developers.
+    description: Learn how to get started building on the XRP Ledger with these helpful crypto wallet and blockchain tutorials for developers.
 ---
 # Tutorials
 
