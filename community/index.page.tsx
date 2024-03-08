@@ -149,6 +149,7 @@ const events = [
     location: "XRPL Developers Discord",
     date: "March 13, 2024 13:00 EST",
     image: amaImage,
+    start_date: "March 13, 2024",
     end_date: "March 13, 2024",
   },
 ];
