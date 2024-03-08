@@ -9,7 +9,10 @@ export const frontmatter = {
       "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
   },
 };
-
+const amaImage = require("../static/img/events/AMAs.png")
+const hackathon = require("../static/img/events/Hackathons.png")
+const conference = require("../static/img/events/Conference.png")
+const zone = require("../static/img/events/XRPLZone.png")
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -37,7 +40,7 @@ const events = [
     link: "https://newhorizon.devpost.com/",
     location: "Virtual",
     date: "October 19, 2023 - December 22, 2023",
-    image: require("../static/img/events/Hackathons.png"),
+    image: hackathon,
     end_date: "December 22, 2023",
     start_date: "October 19, 2023",
   },
@@ -85,7 +88,7 @@ const events = [
     link: "http://apexdevsummit.com",
     location: "Amsterdam",
     date: "June 11 - 13, 2024",
-    image: require("../static/img/events/Conference.png"),
+    image: conference,
     end_date: "June 13, 2024",
     start_date: "June 11, 2024",
   },
@@ -97,7 +100,7 @@ const events = [
     link: "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
     location: "Virtual - Reddit",
     date: "October 17, 2023",
-    image: require("../static/img/events/AMAs.png"),
+    image: amaImage,
     end_date: "October 17, 2023",
     start_date: "October 17, 2023",
   },
@@ -109,7 +112,7 @@ const events = [
     link: "https://www.parisblockchainweek.com/",
     location: "Paris, France",
     date: "April 9 - 12, 2024",
-    image: require("../static/img/events/Conference.png"),
+    image: conference,
     end_date: "April 12, 2024",
     start_date: "April 12, 2024",
   },
@@ -121,7 +124,7 @@ const events = [
     link: "https://consensus2024.coindesk.com/sponsors/",
     location: "Austin, Texas",
     date: "May 29 - June 1, 2024",
-    image: require("../static/img/events/Conference.png"),
+    image: conference,
     end_date: "June 1, 2024",
     start_date: "June 1, 2024",
   },
@@ -133,9 +136,20 @@ const events = [
     link: "http://xrplzone-ethdenver.splashthat.com",
     location: "Denver, Colorado",
     date: "February 27, 2024",
-    image: require("../static/img/events/XRPLZone.png"),
+    image: zone,
     end_date: "February 27, 2024",
     start_date: "February 27, 2024",
+  },
+  {
+    name: "XRPL Developers Discord AMA: Apex 2024",
+    description:
+      "Join the DevRel team at Ripple to learn more about APEX 2024.",
+    type: "ama",
+    link: "https://discord.gg/gszzRTxV?event=1215341725825110089",
+    location: "XRPL Developers Discord",
+    date: "March 13, 2024 13:00 EST",
+    image: amaImage,
+    end_date: "March 13, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
