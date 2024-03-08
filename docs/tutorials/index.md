@@ -1,6 +1,7 @@
 ---
 seo:
-    description: The XRP Ledger tutorials walk you through the steps to learn and get started with the XRP Ledger and to use the ledger for advanced use cases.
+    title: Crypto Wallet and Blockchain Development Tutorials
+    description: Learn how to get started building on the XRP Ledger with these helpful crypto wallet and blockchain tutorials for developers.
 ---
 # Tutorials
 

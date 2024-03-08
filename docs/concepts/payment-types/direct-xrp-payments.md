@@ -2,7 +2,8 @@
 html: direct-xrp-payments.html
 parent: payment-types.html
 seo:
-    description: Direct XRP payments are the simplest way to send value in the XRP Ledger.
+    title: Direct XRP Payments
+    description: Direct XRP payments are the quickest and simplest way to send value on the XRP Ledger. Learn the basics of the direct XRP payment lifecycle now.
 labels:
   - XRP
   - Payments
