@@ -1573,9 +1573,6 @@ wallets.html:
 blog/2024/rippled-2.1.0.html:
     to: /blog/2024/rippled-2.1.0
     type: 301
-blog/2024/rippled-2.0.0.html:
-    to: /blog/2024/rippled-2.0.0
-    type: 301
 blog/2024/clio-2.1.0.html:
     to: /blog/2024/clio-2.1.0
     type: 301
