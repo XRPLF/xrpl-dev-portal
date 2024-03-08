@@ -7,7 +7,9 @@ targets: [devblog]
 ---
 # How to Mint an NFT on the XRP Ledger: A Step-by-Step Guide
 
-Navigating the exciting realm of Non-fungible Tokens (NFTs) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear guide on how to create, view, and destroy NFTs on this innovative platform.
+The first in a broader series dedicated to making your XRP Ledger building journey an altogether smoother experience is here! In this piece we cover how you can begin to shape your very own NFT collection on the XRP Ledger today. 
+
+Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear guide on how to create, view, and destroy NFTs on this innovative platform.
 
 <!-- BREAK -->
 
@@ -39,6 +41,8 @@ Before diving into NFT minting, ensure you have access to test accounts on the X
 2. Obtain test accounts:
   - If you already possess Testnet account seeds, input them into the Seeds field and click **Get Accounts from Seeds**.
   - Otherwise, click **Get New Standby Account** and **Get New Operational Account** to generate new accounts.
+
+![Screenshot: Token Test Harness to mint and burn NFTs](/blog/img/devblog-how-to-mint-nfts-token-test-harness.png)
 
 ## What does it mean to mint an NFT?
 
