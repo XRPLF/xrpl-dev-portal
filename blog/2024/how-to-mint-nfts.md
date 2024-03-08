@@ -12,14 +12,14 @@ targets: [devblog]
 
 The first in a broader series dedicated to making your XRP Ledger building journey an altogether smoother experience is here! In this piece we cover how you can begin to shape your very own NFT collection on the XRP Ledger today. 
 
-Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear guide on how to create, view, and destroy NFTs on this innovative platform.
+Navigating the exciting realm of [Non-fungible Tokens (NFTs)](https://xrpl.org/docs/concepts/tokens/nfts/) on the XRP Ledger can seem daunting at first. However, with the right tools and a bit of JavaScript or Python, minting, managing, and burning NFTs becomes a straightforward process. This blog demystifies the process, providing a clear guide on how to create, view, and destroy NFTs on this innovative platform.
 
 <!-- BREAK -->
 
 
 ## How Much Does it Cost to Mint an NFT?
 
-Minting, holding, and offering NFTs for sale require XRP held in reserve. The reserve charges can add up quickly. Understanding the reserve requirements can help you choose the best approach for your business case.
+Minting, holding, and offering NFTs for sale requires XRP held in reserve. The reserve charges can add up quickly, so understanding the reserve requirements can help you choose the best approach for your business case.
 
 For each object you own on the XRP Ledger, there is an owner reserve, currently 2 XRP. This is to discourage users from spamming the ledger with unnecessary data, and to encourage them to clean up any data that is no longer necessary. The owner reserve amount is subject to change. See Base Reserve and Owner Reserve. 
 
@@ -38,7 +38,7 @@ The following table provides examples of how much the total owner reserve might 
 
 ## Getting Started
 
-Before diving into NFT minting, ensure you have access to test accounts on the XRP Ledger's Testnet or Devnet. This is crucial for experimenting without risking real assets. You can easily acquire test accounts by downloading the [Quickstart Samples archive](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) and following these steps:
+Before diving into NFT minting, ensure you have access to test accounts on the XRP Ledger's Testnet or Devnet. This is crucial for experimenting without risking real assets. You can easily acquire test accounts by downloading the Quickstart Samples archive, available in [JavaScript] (https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/js/) and [Python](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py), and following these steps:
 
 1. Open the `3.mint-nfts.html` file in a browser to initiate.
 2. Obtain test accounts:
