@@ -1,6 +1,9 @@
 ---
 category: 2024
 date: 2024-03-08
+seo:
+    title: How to Mint an NFT on XRP Ledger
+    description:  Learn the basics of minting an NFT on XRP Ledger and how you can get started quickly and easily today.
 labels:
     - Development
 targets: [devblog]
