@@ -2,7 +2,7 @@
 html: what-is-xrp.html
 parent: introduction.html
 seo:
-    title: What is XRP and Why Is It Valuable? | XRPL.org
+    title: What is XRP and Why Is It Valuable?
     description: XRP, the cryptocurrency supported by the XRP Ledger (XRPL), allows faster cost-effective transactions. See how XRP operates on an open-source blockchain.
 labels:
   - Blockchain
