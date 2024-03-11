@@ -442,7 +442,7 @@ const CommunityPage: React.FC = () => {
         <a
           target="_blank"
           className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn"
-          href="developer-funding"
+          href="/community/developer-funding/"
         >
           {translate("Get Funding")}
         </a>
@@ -494,7 +494,7 @@ const CommunityPage: React.FC = () => {
           <a
             className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
             target="_blank"
-            href="developer-funding"
+            href="/community/developer-funding/"
           >
             {translate("Get Funding")}
           </a>
