@@ -350,9 +350,9 @@ export function NavItem(props) {
 export function LogoBlock(props) {
   const { to, img, altText } = props;
   return (
-    <Link className="navbar-brand" to={to}>
+    <a className="navbar-brand" href="/">
       <img className="logo" alt={altText} height="40" src="data:," />
-    </Link>
+    </a>
   );
 }
 
