@@ -32,7 +32,7 @@ export default function Impact() {
       <div className="overflow-hidden">
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="purple waves"
             src={require("../static/img/backgrounds/community-purple.svg")}
             className="landing-bg"
             id="impact-purple"
@@ -52,7 +52,7 @@ export default function Impact() {
         </section>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="green waves"
             src={require("../static/img/backgrounds/home-green.svg")}
             id="impact-green"
           />
@@ -136,12 +136,12 @@ export default function Impact() {
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
-              alt="default-alt-text"
+              alt="purple waves"
               src={require("../static/img/backgrounds/cta-community-purple.svg")}
               className="cta cta-top-left"
             />
             <img
-              alt="default-alt-text"
+              alt="green waves"
               src={require("../static/img/backgrounds/cta-calculator-green.svg")}
               className="cta cta-bottom-right"
             />
@@ -195,7 +195,7 @@ export default function Impact() {
                 {/* connect list */}
                 <div className="col-12 col-lg-6 p-0 pr-3">
                   <div className="px-lg-3 pb-3">
-                    <img alt="default-alt-text" id="connect-01" />
+                    <img alt="piece of paper" id="connect-01" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Blog")}</h6>
                       <p>
@@ -211,7 +211,7 @@ export default function Impact() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="connect-02" />
+                    <img alt="piece of paper" id="connect-02" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Events")}</h6>
                       <p>
@@ -226,7 +226,7 @@ export default function Impact() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-lg-5">
-                    <img alt="default-alt-text" id="connect-03" />
+                    <img alt="github" id="connect-03" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Code")}</h6>
                       <p>
@@ -245,7 +245,7 @@ export default function Impact() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="connect-04" />
+                    <img alt="chat bubbles" id="connect-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Connect")}</h6>
                       <p>
@@ -261,7 +261,7 @@ export default function Impact() {
                 <div className="col-12 col-lg-6 p-0  pr-3 d-none d-lg-block">
                   <div className="px-lg-3 pb-3 pt-5 mt-5">
                     <div className="pt-1 mt-3">
-                      <img alt="default-alt-text" id="connect-02" />
+                      <img alt="calendar" id="connect-02" />
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Events")}</h6>
                         <p>
@@ -277,7 +277,7 @@ export default function Impact() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-5">
-                    <img alt="default-alt-text" id="connect-04" />
+                    <img alt="chat bubbles" id="connect-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Connect")}</h6>
                       <p>

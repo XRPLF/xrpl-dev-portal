@@ -80,7 +80,7 @@ export default function Index() {
             {/* Banner Image */}
             <div className="image-container">
               <img
-                alt="default-alt-text"
+                alt="blog hero"
                 src={require("../static/img/blog/blog-hero.svg")}
                 className="w-100"
               />
@@ -200,7 +200,7 @@ export default function Index() {
                 >
                   <div className="mb-4" id="category-list">
                     <img
-                      alt="default-alt-text"
+                      alt="card block"
                       id={`${card.category_id}`}
                       className="mb-4"
                     />

@@ -115,7 +115,7 @@ export default function XrpOverview() {
       <div>
         <div className="position-relative">
           <img
-            alt="default-alt-text"
+            alt="blue waves"
             src={require("../static/img/backgrounds/xrp-overview-blue.svg")}
             className="landing-bg"
             id="xrp-overview-blue"
@@ -228,7 +228,7 @@ export default function XrpOverview() {
                 <div className="card-grid card-grid-2xN mb-10">
                   <div>
                     <img
-                      alt="default-alt-text"
+                      alt="briefcase"
                       className="mw-100 mb-2 invertible-img"
                       src={briefcaseIcon}
                     />
@@ -243,7 +243,7 @@ export default function XrpOverview() {
                   </div>
                   <div>
                     <img
-                      alt="default-alt-text"
+                      alt="user"
                       className="mw-100 mb-2 invertible-img"
                       src={userIcon}
                     />
@@ -259,7 +259,7 @@ export default function XrpOverview() {
                 </div>
                 <div className="mt-10 p-10 br-8 cta-card position-relative">
                   <img
-                    alt="default-alt-text"
+                    alt="magenta waves"
                     src={require("../static/img/backgrounds/cta-xrp-overview-magenta.svg")}
                     className="cta cta-bottom-right"
                   />
@@ -332,7 +332,7 @@ export default function XrpOverview() {
                 </p>
                 <div className="mt-10 p-10 br-8 cta-card position-relative">
                   <img
-                    alt="default-alt-text"
+                    alt="green waves"
                     src={require("../static/img/backgrounds/cta-xrp-overview-green-2.svg")}
                     className="landing-bg cta cta-bottom-right"
                   />
