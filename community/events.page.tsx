@@ -731,7 +731,7 @@ export default function Events() {
       <div>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="orange waves"
             src={require("../static/img/backgrounds/events-orange.svg")}
             id="events-orange"
           />
@@ -750,7 +750,7 @@ export default function Events() {
           <div className="event-hero card-grid card-grid-2xN">
             <div className="pr-2 col">
               <img
-                alt="default-alt-text"
+                alt="xrp ledger apex hero"
                 src={require("../static/img/events/event-hero3@2x.png")}
                 className="w-100"
               />

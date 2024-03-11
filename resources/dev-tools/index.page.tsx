@@ -277,12 +277,12 @@ export default function DevTools() {
         <section className="container-new py-10 px-0">
           <div className="col-lg-12 p-6-sm p-10-until-sm br-8 cta-card">
             <img
-              alt="default-alt-text"
+              alt="purple waves"
               src={require("../../static/img/backgrounds/cta-home-purple.svg")}
               className="d-none-sm cta cta-top-left"
             />
             <img
-              alt="default-alt-text"
+              alt="green waves"
               src={require("../../static/img/backgrounds/cta-home-green.svg")}
               className="cta cta-bottom-right"
             />

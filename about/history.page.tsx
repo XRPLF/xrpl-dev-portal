@@ -24,7 +24,7 @@ export default function History() {
       <div className="overflow-hidden">
         <div className="position-relative">
           <img
-            alt="default-alt-text"
+            alt="background orange waves"
             src={require("../static/img/backgrounds/history-orange.svg")}
             className="landing-bg"
             id="history-orange"
@@ -61,7 +61,7 @@ export default function History() {
         </section>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="background purple waves"
             src={require("../static/img/backgrounds/history-purple.svg")}
             id="history-purple"
           />

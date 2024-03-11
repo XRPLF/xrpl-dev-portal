@@ -78,7 +78,7 @@ export default function XrplOverview() {
         </div>
         <div className="position-relative">
           <img
-            alt="default-alt-text"
+            alt="purple waves"
             src={require("../static/img/backgrounds/xrpl-overview-purple.svg")}
             className="landing-bg"
             id="xrpl-overview-purple"
@@ -100,7 +100,7 @@ export default function XrplOverview() {
         </section>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="orange waves"
             src={require("../static/img/backgrounds/xrpl-overview-orange.svg")}
             id="xrpl-overview-orange"
           />
@@ -218,7 +218,7 @@ export default function XrplOverview() {
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
-              alt="default-alt-text"
+              alt="green waves"
               src={require("../static/img/backgrounds/cta-xrpl-overview-green.svg")}
               className="cta cta-bottom-right"
             />
@@ -372,7 +372,7 @@ export default function XrplOverview() {
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
-              alt="default-alt-text"
+              alt="orange waves"
               src={require("../static/img/backgrounds/cta-xrpl-overview-orange.svg")}
               className="cta cta-bottom-right"
             />

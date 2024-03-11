@@ -20,7 +20,7 @@ export default function Funding() {
       <div>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="purple waves"
             src={require("../static/img/backgrounds/funding-purple.svg")}
             className="position-absolute"
             style={{ top: 0, right: 0 }}
@@ -81,7 +81,7 @@ export default function Funding() {
                 {/* funding list */}
                 <div className="col-12 col-lg-6 p-0">
                   <div className="px-lg-3 pb-3">
-                    <img alt="default-alt-text" id="funding-01" />
+                    <img alt="user" id="funding-01" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Best for")}</h6>
                       <p>
@@ -93,14 +93,14 @@ export default function Funding() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="funding-02" />
+                    <img alt="book" id="funding-02" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Required")}</h6>
                       <p>{translate("Some coding experience")}</p>
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-lg-5">
-                    <img alt="default-alt-text" id="funding-03" />
+                    <img alt="arrow" id="funding-03" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Level")}</h6>
                       <p>{translate("XRPL beginner to advanced developers")}</p>
@@ -108,7 +108,7 @@ export default function Funding() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="funding-04" />
+                    <img alt="dollar sign" id="funding-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Funding Levels")}</h6>
                       <p>{translate("Prize money and awards")}</p>
@@ -120,7 +120,7 @@ export default function Funding() {
                 <div className="col-12 col-lg-6 p-0 d-none d-lg-block">
                   <div className="px-lg-3 pb-3 pt-5 mt-5">
                     <div className="pt-1 mt-3">
-                      <img alt="default-alt-text" id="funding-02" />
+                      <img alt="book" id="funding-02" />
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Required")}</h6>
                         <p>{translate("Some coding experience")}</p>
@@ -128,7 +128,7 @@ export default function Funding() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-5">
-                    <img alt="default-alt-text" id="funding-04" />
+                    <img alt="dollar sign" id="funding-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Funding Levels")}</h6>
                       <p>{translate("Prize money and awards")}</p>
@@ -182,7 +182,7 @@ export default function Funding() {
                 {/* funding list */}
                 <div className="col-12 col-lg-6 p-0">
                   <div className="px-lg-3 pb-3">
-                    <img alt="default-alt-text" id="funding-01" />
+                    <img alt="user" id="funding-01" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Best for")}</h6>
                       <p>
@@ -194,7 +194,7 @@ export default function Funding() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="funding-02" />
+                    <img alt="book" id="funding-02" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Required")}</h6>
                       <p>
@@ -211,7 +211,7 @@ export default function Funding() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-lg-5">
-                    <img alt="default-alt-text" id="funding-03" />
+                    <img alt="arrow" id="funding-03" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Level")}</h6>
                       <p>
@@ -221,7 +221,7 @@ export default function Funding() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="funding-04" />
+                    <img alt="dollar sign" id="funding-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Funding Levels")}</h6>
                       <p>{translate("$10,000 - $200,000")}</p>
@@ -233,7 +233,7 @@ export default function Funding() {
                 <div className="col-12 col-lg-6 p-0 d-none d-lg-block">
                   <div className="px-lg-3 pb-3 pt-5 mt-5">
                     <div className="pt-1 mt-3">
-                      <img alt="default-alt-text" id="funding-02" />
+                      <img alt="book" id="funding-02" />
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Required")}</h6>
                         <p>
@@ -253,7 +253,7 @@ export default function Funding() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-5">
-                    <img alt="default-alt-text" id="funding-04" />
+                    <img alt="dollar sign" id="funding-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Funding Levels")}</h6>
                       <p>{translate("$10,000 - $200,000")}</p>
@@ -307,7 +307,7 @@ export default function Funding() {
                 {/* funding list */}
                 <div className="col-12 col-lg-6 p-0">
                   <div className="px-lg-3 pb-3">
-                    <img alt="default-alt-text" id="funding-01" />
+                    <img alt="user" id="funding-01" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Best for")}</h6>
                       <p>
@@ -319,7 +319,7 @@ export default function Funding() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="funding-02" />
+                    <img alt="book" id="funding-02" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Required")}</h6>
                       <p>
@@ -335,7 +335,7 @@ export default function Funding() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-lg-5">
-                    <img alt="default-alt-text" id="funding-03" />
+                    <img alt="arrow" id="funding-03" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Level")}</h6>
                       <p>
@@ -349,7 +349,7 @@ export default function Funding() {
                   </div>
                   {/* Hide on large */}
                   <div className="px-lg-3 pb-3 d-lg-none">
-                    <img alt="default-alt-text" id="funding-04" />
+                    <img alt="dollar sign" id="funding-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Funding Levels")}</h6>
                       <p>
@@ -365,7 +365,7 @@ export default function Funding() {
                 <div className="col-12 col-lg-6 p-0 d-none d-lg-block">
                   <div className="px-lg-3 pb-3 pt-5 mt-5">
                     <div className="pt-1 mt-3">
-                      <img alt="default-alt-text" id="funding-02" />
+                      <img alt="book" id="funding-02" />
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Required")}</h6>
                         <p>
@@ -384,7 +384,7 @@ export default function Funding() {
                     </div>
                   </div>
                   <div className="px-lg-3 pb-3 pt-5">
-                    <img alt="default-alt-text" id="funding-04" />
+                    <img alt="dollar sign" id="funding-04" />
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Funding Levels")}</h6>
                       <p>
@@ -410,7 +410,7 @@ export default function Funding() {
         </section>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="orange waves"
             src={require("../static/img/backgrounds/funding-orange.svg")}
             id="funding-orange"
           />
