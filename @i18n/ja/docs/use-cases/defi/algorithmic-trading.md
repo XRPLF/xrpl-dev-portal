@@ -89,7 +89,7 @@ XRP Ledgerのトレード活動に関する情報源は数多くあります。�
 Ripple社はXRP Ledger プロトコルを拡張し、既存の中央指値注文ベース(CLOB)の分散型取引所と連携するネイティブな自動マーケットメーカー(AMM)の機能を追加することを提案しました。この提案が受け入れられ、[amendments](../../concepts/networks-and-servers/amendments.md)として有効になれば、AMMはXRP Ledger上のトレードにおいて重要な要素となるでしょう。詳しくは以下のリンクをご覧ください。
 
 - [XLS-30d: Automated Market Maker 規格草案](https://github.com/XRPLF/XRPL-Standards/discussions/78)
-- [AMMドキュメント (Ripple社のオープンソースのサイト)](https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/)
+- [AMMドキュメント](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
 
 ## さらに詳しく
 

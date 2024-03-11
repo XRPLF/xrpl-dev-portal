@@ -86,10 +86,10 @@ To give yourself as much time as possible to react to profit-taking opportunitie
 
 ### Future Developments
 
-Ripple has proposed extending the XRP Ledger protocol with a native Automated Market Maker (AMM) design that would work alongside the existing central limit order based (CLOB) decentralized exchange. If this proposal is accepted and becomes enabled as an [amendment](../../concepts/networks-and-servers/amendments.md), AMMs will become an important factor in trading on the XRP Ledger. You can read more at the following links:
+Ripple has proposed extending the XRP Ledger protocol with a native Automated Market Maker (AMM) design ([XLS-30](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0030-automated-market-maker/README.md)) that would work alongside the existing central limit order based (CLOB) decentralized exchange. If this proposal is accepted and becomes enabled as an [amendment](../../concepts/networks-and-servers/amendments.md), AMMs will become an important factor in trading on the XRP Ledger. You can read more at the following links:
 
 - [XLS-30d: Automated Market Maker standards proposal](https://github.com/XRPLF/XRPL-Standards/discussions/78)
-- [AMM documentation (Ripple Open Source site)](https://opensource.ripple.com/docs/xls-30d-amm/automated-market-makers/)
+- [AMM documentation](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
 
 ## Further Reading
 
