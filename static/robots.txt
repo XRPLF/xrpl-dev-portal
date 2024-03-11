@@ -2,4 +2,4 @@ User-agent: *
 
 Disallow: 
 
-Sitemap: http://www.xrpl.org/sitemap.txt
+Sitemap: https://www.xrpl.org/sitemap.xml
