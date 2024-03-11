@@ -14,7 +14,7 @@ i18n:
 redirects:
   $ref: redirects.yaml
 seo:
-  siteUrl: https://xrpl-dev-portal.redocly.app/
+  siteUrl: https://xrpl.org/
 rbac:
   cms:
     xrpl-org-editors: maintain
