@@ -127,7 +127,7 @@ export default function XrplOverview() {
                 )}
               </p>
               <div className="d-none d-lg-block">
-                <a className="btn btn-primary btn-arrow" href="docs">
+                <a className="btn btn-primary btn-arrow" href="/docs">
                   {translate("Read Technical Docs")}
                 </a>{" "}
                 <a
@@ -189,7 +189,7 @@ export default function XrplOverview() {
                 {`${translate(
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <a href="run-a-rippled-validator">{translate("validators")}</a>
+                <a href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("validators")}</a>
                 {`${translate(
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."
                 )}`}

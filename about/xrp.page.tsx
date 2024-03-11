@@ -274,7 +274,7 @@ export default function XrpOverview() {
                         "Explore the impact of the world's first major, global, public carbon-neutral blockchain."
                       )}
                     </p>
-                    <a className="btn btn-primary btn-arrow" href="impact">
+                    <a className="btn btn-primary btn-arrow" href="/about/impact">
                       {translate("Impact")}
                     </a>
                   </div>
