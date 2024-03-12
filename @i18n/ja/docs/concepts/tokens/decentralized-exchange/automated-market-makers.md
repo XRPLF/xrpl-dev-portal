@@ -40,7 +40,7 @@ XRP Ledgerの実装は、重みパラメータを0.5とした _幾何平均_ AMM
 
 - 他のAMMのLPTokenをAMMの資産として利用することはできません。
 - 資産が、発行者が[認可トラストライン](../fungible-tokens/authorized-trust-lines.md)を使用しているトークンである場合、AMMの作成者はそれらのトークンを保有する権限がなければなりません。トラストラインが認可されているユーザだけが、そのトークンをAMMに預けたり引き出したりすることができます。
-- [Clawback Amendment][] {% not-enabled /%} が有効な場合、Clawbackが有効なトークンでAMMを作成することはできません。
+- [Clawback Amendment][] が有効な場合、Clawbackが有効なトークンでAMMを作成することはできません。
 
 ## LPトークン
 <!-- TODO: add diagrams showcasing flow of funds -->

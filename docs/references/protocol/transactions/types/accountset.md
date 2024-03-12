@@ -116,7 +116,7 @@ You can protect against unwanted incoming payments for non-XRP currencies by not
 
 If you want to block _all_ incoming payments, you can enable [Deposit Authorization](../../../../concepts/accounts/depositauth.md). This prevents any transaction from sending money to you, even XRP, unless your account is below the [reserve requirement](../../../../concepts/accounts/reserves.md).
 
-If the [DisallowIncoming amendment][] {% not-enabled /%} is enabled, you also have the option to block all incoming Checks, NFTokenOffers, Payment Channels, and trust lines. It is generally harmless to be on the receiving end of these objects, but they can block you from deleting your account and it can be confusing to have objects you didn't expect mixed in with the list of objects you created. To block incoming objects, use one or more of these account flags:
+If the [DisallowIncoming amendment][] is enabled, you also have the option to block all incoming Checks, NFTokenOffers, Payment Channels, and trust lines. It is generally harmless to be on the receiving end of these objects, but they can block you from deleting your account and it can be confusing to have objects you didn't expect mixed in with the list of objects you created. To block incoming objects, use one or more of these account flags:
 
 - `asfDisallowIncomingCheck` - for Check objects
 - `asfDisallowIncomingNFTOffer` - for NFTokenOffer objects

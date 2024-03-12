@@ -65,7 +65,7 @@ NFTokenCreateOfferタイプのトランザクションは、以下のように[`
 | `tecNO_ENTRY`                    | `NFToken`フィールドで指定したアカウントは所有していません。 |
 | `tecNO_ISSUER`                   | `Amount`フィールドで指定した発行者が存在しません。 |
 | `tecNO_LINE`                     | `Amount`フィールドはトークンですが、`NFToken`の発行者はそのトークンのトラストラインを持っておらず、`NFToken`は[`lsfTrustLine`フラグ](../../data-types/nftoken.md#nftoken-フラグ)が有効ではありません。 |
-| `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment][] {% not-enabled /%} が必要です。)_
+| `tecNO_PERMISSION`               | `Destination`アカウントが着信する NFTokenOffer をブロックします。 _([DisallowIncoming amendment][] が必要です。)_
 | `tecUNFUNDED_OFFER`              | 購入オファーの場合、送信者は`Amount`フィールドで指定された通貨を利用可能です。もし`Amount`がXRPである場合、これは準備不足によるものかもしれません。もし`Amount`がトークンである場合、これは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されている可能性があります。 |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | `NFToken`は[`lsfTransferable`フラグ](../../data-types/nftoken.md#nftoken-flags)が無効になっており、このトランザクションでは`NFToken`を発行者に転送したり発行者から転送したりすることはできません。 |
 

@@ -42,7 +42,7 @@ To prevent misuse, some restrictions apply to the assets used in an AMM. If you 
 
 - The asset must not be an LP Token from another AMM.
 - If the asset is a token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
-- If the [Clawback amendment][] {% not-enabled /%} is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
+- If the [Clawback amendment][] is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
 
 
 ## LP Tokens
