@@ -159,7 +159,7 @@ See [Enact Global Freeze](../../tutorials/tasks/use-tokens/enact-global-freeze.m
 
 ### Clawback
 
-_(Requires the [Clawback amendment][] {% not-enabled /%})_
+_(Requires the [Clawback amendment][] )_
 
 Clawback is an optional setting that you can choose before you begin to distribute your stablecoin. For regulatory purposes, some issuers _must_ have the ability to recover issued tokens after they are distributed to accounts. For example, if an issuer were to discover that tokens were sent to an account sanctioned for illegal activity, the issuer could recover, or _claw back_, the funds.
 

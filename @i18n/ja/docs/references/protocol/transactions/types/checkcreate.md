@@ -41,7 +41,7 @@ _（[Checks Amendment][]が必要です）_
 
 ## エラーケース
 
-- `Destination`アカウントがCheckの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION`で失敗します。 _([DisallowIncoming amendment][] {% not-enabled /%} が必要です。)_
+- `Destination`アカウントがCheckの着信をブロックしている場合、トランザクションは結果コード`tecNO_PERMISSION`で失敗します。 _([DisallowIncoming amendment][] が必要です。)_
 - `Destination`がトランザクションの送信者である場合、トランザクションは結果コード`temREDUNDANT`で失敗します。
 - `Destination`[アカウント](../../../../concepts/accounts/index.md)がレジャーに存在していない場合、トランザクションは結果コード`tecNO_DST`で失敗します。
 - `Destination`アカウントでRequireDestフラグが有効であるが、トランザクションに`DestinationTag`フィールドが含まれていない場合、トランザクションは結果コード`tecDST_TAG_NEEDED`で失敗します。
