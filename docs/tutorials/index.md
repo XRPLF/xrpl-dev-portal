@@ -7,9 +7,9 @@ seo:
 
 The XRP Ledger tutorials walk you through the steps to learn and get started with the XRP Ledger and to use the ledger for advanced use cases.
 
-## Get Started with Your Favorite Programming Language
+## Get Started with SDKs
 
-These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using SDKs.
+These tutorials walk you through the basics of building a very simple XRP Ledger-connected application using your favorite programming language.
 
 {% card-grid %}
 
@@ -24,5 +24,13 @@ These tutorials walk you through the basics of building a very simple XRP Ledger
 {% xrpl-card title="PHP" body="Using the XRPL_PHP client library." href="/docs/tutorials/php/" image="/img/logos/php.svg" imageAlt="PHP logo" /%}
 
 {% xrpl-card title="HTTP & WebSocket APIs" body="Access the XRP Ledger directly through the APIs of its core server." href="/docs/tutorials/http-websocket-apis/" image="/img/logos/globe.svg" imageAlt="globe icon" /%}
+
+{% /card-grid %}
+
+## How-to's
+
+{% card-grid %}
+
+{% xrpl-card title="Tasks" body="How to perform common tasks on the XRPL." href="/docs/tutorials/tasks/" /%}
 
 {% /card-grid %}
