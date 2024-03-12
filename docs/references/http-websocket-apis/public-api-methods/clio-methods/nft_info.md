@@ -73,7 +73,7 @@ An example of a successful response:
     "transfer_fee": 0,
     "issuer": "rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ",
     "nft_taxon": 0,
-    "nft_sequence": 0,
+    "nft_serial": 0,
     "validated": true
   },
   "status": "success",
@@ -104,7 +104,7 @@ An example of a successful response:
     "transfer_fee": 0,
     "issuer": "rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ",
     "nft_taxon": 0,
-    "nft_sequence": 0,
+    "nft_serial": 0,
     "uri": "https://xrpl.org",
     "validated": true,
     "status": "success"
