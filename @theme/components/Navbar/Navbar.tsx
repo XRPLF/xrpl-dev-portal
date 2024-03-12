@@ -351,7 +351,7 @@ export function LogoBlock(props) {
   const { to, img, altText } = props;
   return (
     <a className="navbar-brand" href="/">
-      <img className="logo" alt={altText} height="40" src="data:," />
+      <img className="logo" alt={"XRP LEDGER"} height="40" src="data:," />
     </a>
   );
 }
