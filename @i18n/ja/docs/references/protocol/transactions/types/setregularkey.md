@@ -37,7 +37,7 @@ labels:
 
 レギュラーキーペアとマスターキーペアの詳細は、[暗号鍵](../../../../concepts/accounts/cryptographic-keys.md)を参照してください。
 
-アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](../../../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md)を参照してください。
+アカウントへのレギュラーキーペアの割り当てについてのチュートリアルは、[レギュラーキーペアの操作](../../../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)を参照してください。
 
 セキュリティを強化するために[マルチシグ](../../../../concepts/accounts/multi-signing.md)を使用できますが、マルチシグを使用する場合には[トランザクションコスト][]および[準備金](../../../../concepts/accounts/reserves.md)に追加のXRPが必要となります。
 

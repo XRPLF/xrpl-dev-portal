@@ -170,7 +170,7 @@ The difference between the two transaction failure cases (labeled (1) and (2) in
 
         **Tip:** The [`AccountTxnID` field](../../references/protocol/transactions/common-fields.md#accounttxnid) can help prevent redundant transactions from succeeding in this situation.
 
-    - A malicious actor may have used your secret key to send a transaction. If this is the case, [rotate your key pair](../../tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair.md) if you can, and check for other transactions sent. You should also audit your network to determine if the secret key was part of a larger intrusion or security leak. When you successfully rotate your key pair and are certain that the malicious actor no longer has access to your accounts and systems, you can resume normal activities.
+    - A malicious actor may have used your secret key to send a transaction. If this is the case, [rotate your key pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md) if you can, and check for other transactions sent. You should also audit your network to determine if the secret key was part of a larger intrusion or security leak. When you successfully rotate your key pair and are certain that the malicious actor no longer has access to your accounts and systems, you can resume normal activities.
 
 
 #### Ledger Gaps

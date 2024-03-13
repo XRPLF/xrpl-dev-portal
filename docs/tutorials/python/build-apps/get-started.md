@@ -204,7 +204,7 @@ For a detailed description of every response field, see [account_info](../../../
 
 Now that you know how to use `xrpl-py` to connect to the XRP Ledger, get an account, and look up information about it, you can also use `xrpl-py` to:
 
-* [Send XRP](../../tasks/send-xrp.md).
+* [Send XRP](../../how-tos/send-xrp.md).
 * [Set up secure signing](../../../concepts/transactions/secure-signing.md) for your account.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

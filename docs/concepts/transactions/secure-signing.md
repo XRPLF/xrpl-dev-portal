@@ -140,7 +140,7 @@ To use this configuration, follow the steps for [running `rippled` on a private 
     - [Multi-Signing](../accounts/multi-signing.md)
 - **Tutorials:**
     - [Install rippled](../../infrastructure/installation/index.md)
-    - [Assign a Regular Key Pair](../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md)
+    - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
     - [Reliable Transaction Submission](reliable-transaction-submission.md)
     - [Enable Public Signing](../../infrastructure/configuration/enable-public-signing.md)
 - **References:**

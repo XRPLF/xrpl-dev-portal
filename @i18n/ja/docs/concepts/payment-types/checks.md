@@ -16,7 +16,7 @@ XRP LedgerのChecks機能を使用すると、指定の受取人による取消�
 
 XRP Ledger Checksには有効期限があり、この期限を過ぎると換金できなくなります。受取人が有効期限までにCheckを換金できなかった場合、Checkオブジェクトは誰かに取り消されるまでXRP Ledgerに残ります。有効期限切れになったCheckは誰でも取り消すことができます。有効期限前、あるいはChecksが換金されるまでは、送金元と受取人のみがCheckを取り消すことができます。Checkオブジェクトは、送金元がそのCheckを換金できた時点または誰かが取り消した時点でLedgerから削除されます。
 
-Checksは[Escrow](escrow.md)と[Payment Channel](../../tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md)に似ていますが、Checksとこれらの機能の間には重要な相違がいくつかあります。
+Checksは[Escrow](escrow.md)と[Payment Channel](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md)に似ていますが、Checksとこれらの機能の間には重要な相違がいくつかあります。
 
 * Checksではトークンを送金できます。Payment ChannelとEscrowで送金できるのはXRPのみです。
 
@@ -97,19 +97,19 @@ XRP LedgerのChecksの詳細は、以下を参照してください。
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- [Checksのチュートリアル](../../tutorials/tasks/use-specialized-payment-types/use-checks/use-checks.md)
-    - [Checkの送信](../../tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check.md)
-    - [送金元アドレスに基づくChecksの検索](../../tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md)
-    - [受取人アドレスに基づくChecksの検索](../../tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md)
-    - [Checkの指定された金額での換金](../../tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
-    - [Checkの変動金額での換金](../../tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
-    - [Checkの取消し](../../tutorials/tasks/use-specialized-payment-types/use-checks/cancel-a-check.md)
+- [Checksのチュートリアル](../../tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md)
+    - [Checkの送信](../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md)
+    - [送金元アドレスに基づくChecksの検索](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md)
+    - [受取人アドレスに基づくChecksの検索](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md)
+    - [Checkの指定された金額での換金](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
+    - [Checkの変動金額での換金](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
+    - [Checkの取消し](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md)
 - [Checks Amendment][]
 
 関連機能の詳細については、以下を参照してください。
 
 * [Deposit Authorization](../accounts/depositauth.md)
 * [Escrow](escrow.md)
-* [Payment Channelチュートリアル](../../tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md)
+* [Payment Channelチュートリアル](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,13 +1,13 @@
 ---
-html: tasks.html
+html: how-tos.html
 parent: tutorials.html
 top_nav_grouping: Article Types
 metadata:
   indexPage: true
 ---
-# Tasks
+# How To's
 
-Common tasks on the XRP Ledger.
+These examples provide step-by-step instructions for administrative tasks.
 
 
 {% child-pages /%}

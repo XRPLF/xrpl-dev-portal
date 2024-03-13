@@ -129,7 +129,7 @@ Using [the `delivered_amount` field](#the-delivered_amount-field) when processin
 - **Tutorials:**
     - [Look Up Transaction Results](../transactions/finality-of-results/look-up-transaction-results.md)
     - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
-    - [Use Specialized Payment Types](../../tutorials/tasks/use-specialized-payment-types/index.md)
+    - [Use Specialized Payment Types](../../tutorials/how-tos/use-specialized-payment-types/index.md)
     - [List XRP as an Exchange](../../use-cases/defi/list-xrp-as-an-exchange.md)
 - **References:**
     - [Payment transaction][]

@@ -151,8 +151,8 @@ You can set up handlers for various types of events in `xrpl.js`, such as whenev
 
 Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an account, and look up information about it, you can also:
 
-* [Send XRP](../../tasks/send-xrp.md).
-* [Issue a Fungible Token](../../tasks/use-tokens/issue-a-fungible-token.md)
+* [Send XRP](../../how-tos/send-xrp.md).
+* [Issue a Fungible Token](../../how-tos/use-tokens/issue-a-fungible-token.md)
 * [Set up secure signing](../../../concepts/transactions/secure-signing.md) for your account.
 
 
@@ -162,7 +162,7 @@ Now that you know how to use `xrpl.js` to connect to the XRP Ledger, get an acco
     - [XRP Ledger Overview](/about/)
     - [Client Libraries](../../../references/client-libraries.md)
 - **Tutorials:**
-    - [Send XRP](../../tasks/send-xrp.md)
+    - [Send XRP](../../how-tos/send-xrp.md)
 - **References:**
     - [`xrpl.js` Reference](https://js.xrpl.org/)
     - [Public API Methods](../../../references/http-websocket-apis/public-api-methods/index.md)

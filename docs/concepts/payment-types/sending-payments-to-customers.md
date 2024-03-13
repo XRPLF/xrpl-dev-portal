@@ -19,6 +19,6 @@ Generally, when sending stablecoins, you use a [Payment transaction][]. Some of 
 - Omit the `Paths` field. This field is unnecessary when sending directly from the issuer, or from a hot wallet as long as the tokens being sent and the tokens being received have the same currency code and issuer—that is, they're the same stablecoin. The `Paths` field is intended for [Cross-Currency Payments](cross-currency-payments.md) and longer multi-hop (rippling) payments. If you naively perform pathfinding and attach the paths to your transaction, your payment may take a more expensive indirect route rather than failing if the direct path is not available; malicious users can even set this up to.
 - If you get a `tecPATH_DRY` result code, this usually indicates that either the customer doesn't have the necessary trust line set up already, or your issuer's rippling settings aren't configured correctly.
 
-For a detailed tutorial on issuing a token on the XRP Ledger, whether a stablecoin or otherwise, see [Issue a Fungible Token](../../tutorials/tasks/use-tokens/issue-a-fungible-token.md).
+For a detailed tutorial on issuing a token on the XRP Ledger, whether a stablecoin or otherwise, see [Issue a Fungible Token](../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

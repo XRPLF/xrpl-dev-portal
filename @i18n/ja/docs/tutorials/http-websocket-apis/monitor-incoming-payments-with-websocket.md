@@ -475,7 +475,7 @@ $("#tx_read").click((event) => {
 ## 次のステップ
 
 - [トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)で、トランザクションの実行内容を確認し、適切に対応するソフトウェアを構築します。
-- あなた自身のアドレスから[XRPの送金](../tasks/send-xrp.md)を試します。
+- あなた自身のアドレスから[XRPの送金](../how-tos/send-xrp.md)を試します。
 - [Escrow](../../concepts/payment-types/escrow.md)、[Checks](../../concepts/payment-types/checks.md)または[Payment Channel](../../concepts/payment-types/payment-channels.md)のような高度なタイプのトランザクションの監視と着信通知へのレスポンスを試します。
 <!--{# TODO: uncomment when it's ready. - To more robustly handle internet instability, [Follow a Transaction Chain](follow-a-transaction-chain.html) to detect if you missed a notification. #}-->
 

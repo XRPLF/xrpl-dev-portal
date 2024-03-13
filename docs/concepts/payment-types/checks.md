@@ -48,19 +48,19 @@ For more information about Checks in the XRP Ledger, see:
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- [Checks Tutorials](../../tutorials/tasks/use-specialized-payment-types/use-checks/use-checks.md)
-    - [Send a Check](../../tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check.md)
-    - [Look up Checks by sender address](../../tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md)
-    - [Look up Checks by recipient address](../../tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md)
-    - [Cash a Check for an exact amount](../../tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
-    - [Cash a Check for a flexible amount](../../tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
-    - [Cancel a Check](../../tutorials/tasks/use-specialized-payment-types/use-checks/cancel-a-check.md)
+- [Checks Tutorials](../../tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md)
+    - [Send a Check](../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md)
+    - [Look up Checks by sender address](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md)
+    - [Look up Checks by recipient address](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md)
+    - [Cash a Check for an exact amount](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
+    - [Cash a Check for a flexible amount](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
+    - [Cancel a Check](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md)
 - [Checks amendment][]
 
 For more information about related features, see:
 
 * [Deposit Authorization](../accounts/depositauth.md)
 * [Escrow](escrow.md)
-* [Payment Channels Tutorial](../../tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md)
+* [Payment Channels Tutorial](../../tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
