@@ -41,7 +41,7 @@ export default function CodeSamples() {
         </section>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="orange waves"
             src={require('../static/img/backgrounds/xrpl-overview-orange.svg')}
             id="xrpl-overview-orange"
           />

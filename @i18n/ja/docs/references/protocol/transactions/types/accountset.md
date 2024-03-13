@@ -77,10 +77,10 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | `asfDefaultRipple`                | 8     | `lsfDefaultRipple`                | このアカウントのトラストラインでの[リップリング](../../../../concepts/tokens/fungible-tokens/rippling.md)をデフォルトで有効にします。 |
 | `asfDepositAuth`                  | 9     | `lsfDepositAuth`                  | このアカウントに対して[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にします _（[DepositAuth Amendment][]により追加されました）。_  |
 | `asfDisableMaster`                | 4     | `lsfDisableMaster`                | マスターキーペアの使用を禁止します。[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)や[署名者リスト](../../../../concepts/accounts/multi-signing.md)など、トランザクションに署名するための別の手段がアカウントで設定されている場合のみ有効にできます。 |
-| `asfDisallowIncomingCheck`        | 13    | `lsfDisallowIncomingCheck`        | チェックの着信をブロックします。_([DisallowIncoming amendment][] {% not-enabled /%} が必要です。)_ |
-| `asfDisallowIncomingNFTokenOffer` | 12    | `lsfDisallowIncomingNFTokenOffer` | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] {% not-enabled /%} が必要です)_。 |
-| `asfDisallowIncomingPayChan`      | 14    | `lsfDisallowIncomingPayChan`      | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] {% not-enabled /%} が必要です)_。 |
-| `asfDisallowIncomingTrustline`    | 15    | `lsfDisallowIncomingTrustline`    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] {% not-enabled /%} が必要です)_。 |
+| `asfDisallowIncomingCheck`        | 13    | `lsfDisallowIncomingCheck`        | チェックの着信をブロックします。_([DisallowIncoming amendment][] が必要です。)_ |
+| `asfDisallowIncomingNFTokenOffer` | 12    | `lsfDisallowIncomingNFTokenOffer` | NFTokenOffersの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowIncomingPayChan`      | 14    | `lsfDisallowIncomingPayChan`      | ペイメントチャネルの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
+| `asfDisallowIncomingTrustline`    | 15    | `lsfDisallowIncomingTrustline`    | トラストラインの着信をブロックします。_([DisallowIncoming amendment][] が必要です)_。 |
 | `asfDisallowXRP`                  | 3     | `lsfDisallowXRP`                  | XRPがこのアカウントに送信されないようにします（勧告的なもので、XRP Ledgerのプロトコルでは強制されません）。 |
 | `asfGlobalFreeze`                 | 7     | `lsfGlobalFreeze`                 | このアカウントによって発行されたすべての資産を[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)します。 |
 | `asfNoFreeze`                     | 6     | `lsfNoFreeze`                     | [個々のトラストラインの凍結またはGlobal Freezeの無効化](../../../../concepts/tokens/fungible-tokens/freezes.md)の機能を永続的に放棄します。このフラグは、有効にした後は無効にできません。 |
@@ -113,7 +113,7 @@ XRP以外の通貨に関しては、それらの通貨のトラストライン�
 
 _すべての_ 支払いの着信をブロックしたい場合、[Deposit Authorization](../../../../concepts/accounts/depositauth.md)を有効にすることができます。これは、あなたのアカウントが[準備金要件](../../../../concepts/accounts/reserves.md)を下回らない限り、たとえXRPであっても、あらゆるトランザクションからの送金をブロックします。
 
-[DisallowIncoming amendment][] {% not-enabled /%} が有効化されている場合、着信するすべてのチェック、NFTokenOffer、ペイメントチャネル、およびトラストラインをブロックするオプションもあります。これらのオブジェクトを着信することは一般的に無害ですが、アカウントを削除することができなくなる場合があり、自分が作成したオブジェクトのリストに予期しないオブジェクトが混ざり混乱することがあります。オブジェクトの着信をブロックするには、次のアカウントフラグのいずれかを使用します。
+[DisallowIncoming amendment][] が有効化されている場合、着信するすべてのチェック、NFTokenOffer、ペイメントチャネル、およびトラストラインをブロックするオプションもあります。これらのオブジェクトを着信することは一般的に無害ですが、アカウントを削除することができなくなる場合があり、自分が作成したオブジェクトのリストに予期しないオブジェクトが混ざり混乱することがあります。オブジェクトの着信をブロックするには、次のアカウントフラグのいずれかを使用します。
 
 - `asfDisallowIncomingCheck` - チェックオブジェクト用
 - `asfDisallowIncomingNFTOffer` - NFTokenOfferオブジェクト用

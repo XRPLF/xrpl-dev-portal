@@ -73,7 +73,7 @@ An example of a successful response:
     "transfer_fee": 0,
     "issuer": "rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ",
     "nft_taxon": 0,
-    "nft_sequence": 0,
+    "nft_serial": 0,
     "validated": true
   },
   "status": "success",
@@ -104,7 +104,7 @@ An example of a successful response:
     "transfer_fee": 0,
     "issuer": "rHVokeuSnjPjz718qdb47bGXBBHNMP3KDQ",
     "nft_taxon": 0,
-    "nft_sequence": 0,
+    "nft_serial": 0,
     "uri": "https://xrpl.org",
     "validated": true,
     "status": "success"
@@ -137,8 +137,8 @@ The response follows the [standard format][], with a successful result containin
 | `transfer_fee`                    | Integer         | The transfer fee of this NFT. See [NFTokenMint Fields](../../../protocol/transactions/types/nftokenmint.md#nftokenmint-fields) for more information on transfer fees. |
 | `issuer`                          | String          | The account ID which denotes the issuer of this NFT. |
 | `nft_taxon`                       | Integer         | The NFT’s taxon. |
-| `nft_sequence`                    | Integer         | The NFT’s sequence number. |
-| `uri`                             | String or `null` | _(Omitted if the NFT is burned at this ledger.)_. This field is `null` if the NFT is not burned at this ledger but does not have a URI.  If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the decoded URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request `nft_info` for this token, specifying the `ledger_index` as the one previous to the index where this token was burned ({_ledger-index-where-token-was-burned_} - 1). |
+| `nft_serial`                      | Integer         | The NFT’s sequence number. |
+| `uri`                             | String          | _(Omitted if the NFT is burned at this ledger.)_. This field is an empty string if the NFT is not burned at this ledger but does not have a URI. If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request `nft_info` for this token, specifying the `ledger_index` as the one previous to the index where this token was burned ({_ledger-index-where-token-was-burned_} - 1). |
 
 
 ## Possible Errors
@@ -146,3 +146,4 @@ The response follows the [standard format][], with a successful result containin
 * Any of the [universal error types][].
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
+

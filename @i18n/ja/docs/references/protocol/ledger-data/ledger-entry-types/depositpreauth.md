@@ -13,35 +13,42 @@ labels:
 
 これは、事前承認を付与したアカウントに[Deposit Authorization](../../../../concepts/accounts/depositauth.md)が不要な場合は、トランザクションの処理に影響しません。その場合、事前承認されたアカウントから、事前承認を付与したアカウントに対して、支払やその他のトランザクションを直接送信できます。事前認証は一方向であり、反対方向の支払には影響しません。
 
-## {% $frontmatter.seo.title %} JSONの例
+## {% $frontmatter.seo.title %}のJSONの例
 
 ```json
 {
- "LedgerEntryType" : "DepositPreauth",
- "Account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
- "Authorize" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
- "Flags" : 0,
- "OwnerNode" : "0000000000000000",
- "PreviousTxnID" : "3E8964D5A86B3CD6B9ECB33310D4E073D64C865A5B866200AD2B7E29F8326702",
- "PreviousTxnLgrSeq" : 7,
- "index" : "4A255038CC3ADCC1A9C91509279B59908251728D0DAADB248FFE297D0F7E068C"
+  "LedgerEntryType" : "DepositPreauth",
+  "Account" : "rsUiUMpnrgxQp24dJYZDhmV4bE3aBtQyt8",
+  "Authorize" : "rEhxGqkqPPSxQ3P25J66ft5TwpzV14k2de",
+  "Flags" : 0,
+  "OwnerNode" : "0000000000000000",
+  "PreviousTxnID" : "3E8964D5A86B3CD6B9ECB33310D4E073D64C865A5B866200AD2B7E29F8326702",
+  "PreviousTxnLgrSeq" : 7,
+  "index" : "4A255038CC3ADCC1A9C91509279B59908251728D0DAADB248FFE297D0F7E068C"
 }
 ```
 
-## {% $frontmatter.seo.title %}フィールド
+## {% $frontmatter.seo.title %}のフィールド
 
-`DepositPreauth`オブジェクトのフィールドは次のとおりです。
+[共通フィールド][]に加えて、{% $frontmatter.seo.title %}エントリは以下のフィールドを使用します。
 
-| フィールド               | JSONの型        | [内部の型][] | 説明     |
-|:--------------------|:-----------------|:------------------|:----------------|
-| `LedgerEntryType`   | 文字列           | UInt16            | 値`0x0070`が文字列`DepositPreauth`にマッピングされている場合は、これがDepositPreauthオブジェクトであることを示します。 |
-| `Account` | 文字列           | Account           | 事前承認を付与したアカウント。（事前認証支払の宛先。） |
-| `Authorize` | 文字列 | Account | 事前承認を受けたアカウント。（事前認証支払の送金元。） |
-| `Flags`             | 数値           | UInt32            |  ブールフラグのビットマップ。DepositPreauthオブジェクトにはフラグが定義されていないため、この値は常に`0`です。 |
-| `OwnerNode`         | 文字列           | UInt64            | 送金元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。**注記:** このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
-| `PreviousTxnID`     | 文字列           | Hash256           | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
-| `PreviousTxnLgrSeq` | 数値           | UInt32            | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
+| フィールド            | JSONの型 | [内部の型][] | 必須? | 説明     |
+|:--------------------|:---------|:-----------|:------|:---------|
+| `Account`           | 文字列    | Account    | はい  | 事前承認を付与したアカウント。（事前承認支払の宛先。） |
+| `Authorize`         | 文字列    | Account    | はい  | 事前承認を受けたアカウント。（事前承認支払の送金元。） |
+| `LedgerEntryType`   | 文字列    | UInt16     | はい  | 値`0x0070`が文字列`DepositPreauth`にマッピングされている場合は、これがDepositPreauthオブジェクトであることを示します。 |
+| `OwnerNode`         | 文字列    | UInt64     | はい  | 送金元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。**注記:** このオブジェクトには、オブジェクトを含む所有者ディレクトリへの直接リンクは含まれていません。これは、その値を`Account`から取得できるためです。 |
+| `PreviousTxnID`     | 文字列    | Hash256    | はい  | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |
+| `PreviousTxnLgrSeq` | 数値      | UInt32     | はい  | 最後にこのオブジェクトを変更したトランザクションが記録された[レジャーインデックス][]。 |
 
+
+## {% $frontmatter.seo.title %}のフラグ
+
+{% code-page-name /%}エントリに定義されているフラグはありません。
+
+## {% $frontmatter.seo.title %}の準備金
+
+{% code-page-name /%}エントリは、そのエントリが台帳上にある限り、事前認可を行なったアカウントの所有者準備金の1つとしてカウントされます。この準備金は事前認可の設定を取り消すことで解放されます。
 
 ## DepositPreauth IDのフォーマット
 

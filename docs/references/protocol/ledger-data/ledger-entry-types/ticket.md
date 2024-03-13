@@ -32,7 +32,7 @@ A `Ticket` entry type represents a [Ticket](../../../../concepts/accounts/ticket
 
 In addition to the [common fields](../common-fields.md), {% code-page-name /%} entries have the following fields:
 
-| Name                | JSON Type | Internal Type | Required? | Description                |
+| Name                | JSON Type | [Internal Type][] | Required? | Description                |
 |:--------------------|:----------|:--------------|:----------|:---------------------------|
 | `Account`           | String    | AccountID     | Yes       | The [account](../../../../concepts/accounts/index.md) that owns this Ticket. |
 | `LedgerEntryType`   | String    | UInt16        | Yes       | The value `0x0054`, mapped to the string `Ticket`, indicates that this is a {% $frontmatter.seo.title %} entry. |

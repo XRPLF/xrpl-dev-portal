@@ -78,7 +78,7 @@ export default function XrplOverview() {
         </div>
         <div className="position-relative">
           <img
-            alt="default-alt-text"
+            alt="purple waves"
             src={require("../static/img/backgrounds/xrpl-overview-purple.svg")}
             className="landing-bg"
             id="xrpl-overview-purple"
@@ -100,7 +100,7 @@ export default function XrplOverview() {
         </section>
         <div className="position-relative d-none-sm">
           <img
-            alt="default-alt-text"
+            alt="orange waves"
             src={require("../static/img/backgrounds/xrpl-overview-orange.svg")}
             id="xrpl-overview-orange"
           />
@@ -127,7 +127,7 @@ export default function XrplOverview() {
                 )}
               </p>
               <div className="d-none d-lg-block">
-                <a className="btn btn-primary btn-arrow" href="docs">
+                <a className="btn btn-primary btn-arrow" href="/docs">
                   {translate("Read Technical Docs")}
                 </a>{" "}
                 <a
@@ -189,7 +189,7 @@ export default function XrplOverview() {
                 {`${translate(
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <a href="run-a-rippled-validator">{translate("validators")}</a>
+                <a href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("validators")}</a>
                 {`${translate(
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."
                 )}`}
@@ -218,7 +218,7 @@ export default function XrplOverview() {
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
-              alt="default-alt-text"
+              alt="green waves"
               src={require("../static/img/backgrounds/cta-xrpl-overview-green.svg")}
               className="cta cta-bottom-right"
             />
@@ -372,7 +372,7 @@ export default function XrplOverview() {
         <section className="container-new py-26">
           <div className="col-md-6 offset-md-3 p-6-sm p-10-until-sm br-8 cta-card">
             <img
-              alt="default-alt-text"
+              alt="orange waves"
               src={require("../static/img/backgrounds/cta-xrpl-overview-orange.svg")}
               className="cta cta-bottom-right"
             />

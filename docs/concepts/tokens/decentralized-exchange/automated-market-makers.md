@@ -2,8 +2,8 @@
 html: automated-market-makers.html
 parent: decentralized-exchange.html
 seo:
-    title: What Is an Automated Market Maker (AMM) | XRPL.org
-    description: Discover how Automated Market Makers (AMMs) provide liquidity between asset pairs in the decentralized exchange while providing passive income.
+    title: What Is an Automated Market Maker (AMM)?
+    description: Automated Market Makers (AMMs) are an essential part of cryptocurrency, providing liquidity between asset pairs. Learn more about AMMs and the XRP Ledger.
 status: not_enabled
 labels:
   - XRP
@@ -42,7 +42,7 @@ To prevent misuse, some restrictions apply to the assets used in an AMM. If you 
 
 - The asset must not be an LP Token from another AMM.
 - If the asset is a token whose issuer uses [Authorized Trust Lines](../fungible-tokens/authorized-trust-lines.md), the creator of the AMM must be authorized to hold those tokens. Only users whose trust lines are authorized can deposit that token into the AMM or withdraw it; however, users can still deposit or withdraw the other asset.
-- If the [Clawback amendment][] {% not-enabled /%} is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
+- If the [Clawback amendment][] is enabled, the issuer of the token must not have enabled the ability to claw back their tokens.
 
 
 ## LP Tokens

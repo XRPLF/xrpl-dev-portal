@@ -31,7 +31,6 @@ export default function Index() {
 
   const heroPost = blogPosts[0];
   const otherPosts = blogPosts.slice(1);
-
   const defaultSelectedCategories = new Set(Object.keys(categories));
 
   const [selectedCategories, setSelectedCategories] = useState(
@@ -81,7 +80,7 @@ export default function Index() {
             {/* Banner Image */}
             <div className="image-container">
               <img
-                alt="default-alt-text"
+                alt="blog hero"
                 src={require("../static/img/blog/blog-hero.svg")}
                 className="w-100"
               />
@@ -110,7 +109,7 @@ export default function Index() {
                 <div className="d-lg-block">
                   <a
                     className="btn btn-primary btn-arrow"
-                    href={`${heroPost.link}`}
+                    href={`/blog/${heroPost.link}`}
                   >
                     {translate("Read More")}
                   </a>
@@ -201,7 +200,7 @@ export default function Index() {
                 >
                   <div className="mb-4" id="category-list">
                     <img
-                      alt="default-alt-text"
+                      alt="card block"
                       id={`${card.category_id}`}
                       className="mb-4"
                     />
@@ -224,7 +223,7 @@ export default function Index() {
                   <div className="d-lg-block">
                     <a
                       className="btn btn-primary btn-arrow"
-                      href={`${card.link}`}
+                      href={`/blog/${card.link}`}
                     >
                       {translate("Read More")}
                     </a>

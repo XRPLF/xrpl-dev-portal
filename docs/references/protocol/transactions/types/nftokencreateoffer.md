@@ -66,7 +66,7 @@ Besides errors that can occur for all transactions, {% $frontmatter.seo.title %}
 | `tecNO_ENTRY`                    | The `NFToken` is not owned by the expected account. |
 | `tecNO_ISSUER`                   | The issuer specified in the `Amount` field does not exist. |
 | `tecNO_LINE`                     | The `Amount` field is denominated in fungible tokens, but the `NFToken`'s issuer does not have a trust line for those tokens and the `NFToken` does not have the [`lsfTrustLine` flag](../../data-types/nftoken.md#nftoken-flags) enabled. |
-| `tecNO_PERMISSION`               | The `Destination` account blocks incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][] {% not-enabled /%})_
+| `tecNO_PERMISSION`               | The `Destination` account blocks incoming NFTokenOffers. _(Requires the [DisallowIncoming amendment][] )_
 | `tecUNFUNDED_OFFER`              | For a buy offer, the sender does have the funds specified in the `Amount` field available. If the `Amount` is XRP, this could be due to the reserve requirement; if the `Amount` is denominated in fungible tokens, this could be because they are [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 | `tefNFTOKEN_IS_NOT_TRANSFERABLE` | The `NFToken` has the [`lsfTransferable` flag](../../data-types/nftoken.md#nftoken-flags) disabled and this transaction would not transfer the `NFToken` to or from the issuer. |
 
