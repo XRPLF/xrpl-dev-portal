@@ -16,7 +16,7 @@ labels:
 1. `AccountSet`を使用して、自分の運用するウォレットを発行者の認可Minterとして割り当てます。[代理Mint](authorizing-another-minter.md)を参照してください。
 1. 運用アカウントで`NFTokenMint`を使ってトークンをミントします。運用中のウォレットには、発行者のためにMintされたすべてのトークンが保管されます。[Mintのバッチ処理](batch-minting.md)をご覧ください
 1. 発行者の認可Minterである自分の運用するウォレットを削除するために、`AccountSet`を使用します。
-1. 発行者アカウントを"ブラックホール化"する。[マスターキーペアの無効化](../../../tutorials/tasks/manage-account-settings/disable-master-key-pair.md)をご覧ください。
+1. 発行者アカウントを"ブラックホール化"する。[マスターキーペアの無効化](../../../tutorials/how-tos/manage-account-settings/disable-master-key-pair.md)をご覧ください。
 
 この時点で、発行者のアドレスを発行アカウントとする新たなトークンのミントは不可能となります。
 

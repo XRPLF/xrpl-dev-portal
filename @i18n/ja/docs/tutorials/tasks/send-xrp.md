@@ -327,7 +327,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 - 本番システム向けに[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を構築する
 - [xrpl.jsリファレンス](https://js.xrpl.org/)を参照して、XRP Ledgerの全機能を確認する
-- [アカウント設定](../tasks/manage-account-settings/index.md)をカスタマイズする
+- [アカウント設定](../how-tos/manage-account-settings/index.md)をカスタマイズする
 - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)にトランザクションの結果の詳細がどのように記述されているかを知る
 - escrowやPayment Channelなどの[複雑な支払いタイプ](../../concepts/payment-types/index.md)について調べる
 

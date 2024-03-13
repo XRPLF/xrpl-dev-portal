@@ -16,7 +16,7 @@ To guarantee a fixed number of NFTs:
 1. Use `AccountSet` to assign your operational wallet as an authorized minter for the issuer. See [Authorizing Another Account to Mint Your NFTs](authorizing-another-minter.md).
 1. Use your operational account to mint the tokens using `NFTokenMint`. The operational wallet holds all of the tokens minted for the Issuer. See [Batch Minting](batch-minting.md).
 1.  Use `AccountSet` to remove your operational wallet as an authorized minter for the Issuer.
-1. “Blackhole” the Issuer account. See [Disable Master Key Pair](../../../tutorials/tasks/manage-account-settings/disable-master-key-pair.md).
+1. “Blackhole” the Issuer account. See [Disable Master Key Pair](../../../tutorials/how-tos/manage-account-settings/disable-master-key-pair.md).
 
 At this point, it is impossible for any new tokens to be minted with the issuer’s address as the issuing account.
 

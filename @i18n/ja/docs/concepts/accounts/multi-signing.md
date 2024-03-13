@@ -58,7 +58,7 @@ CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人の�
 
 マルチシグトランザクションを正常に送信するには、以下のすべての条件を満たす必要があります。
 
-* トランザクションを送信するアドレス（`Account`に指定されるアドレス）は、[レジャーに`SignerList`](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)を所有する必要があります。この方法については、[マルチシグを設定する](../../tutorials/tasks/manage-account-settings/set-up-multi-signing.md)を参照してください。
+* トランザクションを送信するアドレス（`Account`に指定されるアドレス）は、[レジャーに`SignerList`](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md)を所有する必要があります。この方法については、[マルチシグを設定する](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)を参照してください。
 * トランザクションに`SigningPubKey`フィールドを空の文字列として含める必要があります。
 * トランザクションに、署名の配列が指定されている[`Signers`フィールド](../../references/protocol/transactions/common-fields.md#signersフィールド)を含める必要があります。
 * `Signers`配列に含まれている署名は、`SignerList`で定義されている署名と一致している必要があります。
@@ -67,13 +67,13 @@ CEOのウェイトを3、副社長3人のウェイトを各2、取締役3人の�
 * トランザクションのすべてのフィールドは、署名収集前に定義する必要があります。フィールドの[自動入力](../../references/protocol/transactions/common-fields.md#自動入力可能なフィールド)は実行できません。
 * `Signers`配列がバイナリ形式で指定される場合、この配列は署名者アドレスの数値に基づいて、低い値から順にソートされている必要があります。（JSONとして提出される場合は、[submit_multisignedメソッド][]がこの処理を自動的に実行します。）
 
-詳細は、[マルチシグの設定](../../tutorials/tasks/manage-account-settings/set-up-multi-signing.md)を参照してください。
+詳細は、[マルチシグの設定](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)を参照してください。
 
 ## 関連項目
 
 - **チュートリアル:**
-    - [マルチシグを設定する](../../tutorials/tasks/manage-account-settings/set-up-multi-signing.md)
-    - [マルチシグトランザクションを送信する](../../tutorials/tasks/manage-account-settings/send-a-multi-signed-transaction.md)
+    - [マルチシグを設定する](../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)
+    - [マルチシグトランザクションを送信する](../../tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md)
 - **コンセプト:**
     - [暗号鍵](cryptographic-keys.md)
     - [マルチシグトランザクションの特別なトランザクションコスト](../transactions/transaction-cost.md#特別なトランザクションコスト)

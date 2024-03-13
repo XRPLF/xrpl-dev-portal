@@ -226,60 +226,60 @@
               items:
                 - page: docs/tutorials/http-websocket-apis/build-apps/get-started.md
                 - page: docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md
-        - page: docs/tutorials/tasks/index.md
+        - page: docs/tutorials/how-tos/index.md
           expanded: false
           items:
-            - page: docs/tutorials/tasks/send-xrp.md
-            - page: docs/tutorials/tasks/manage-account-settings/index.md
+            - page: docs/tutorials/how-tos/send-xrp.md
+            - page: docs/tutorials/how-tos/manage-account-settings/index.md
               expanded: false
               items:
-                - page: docs/tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md
-                - page: docs/tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair.md
-                - page: docs/tutorials/tasks/manage-account-settings/disable-master-key-pair.md
-                - page: docs/tutorials/tasks/manage-account-settings/set-up-multi-signing.md
-                - page: docs/tutorials/tasks/manage-account-settings/send-a-multi-signed-transaction.md
-                - page: docs/tutorials/tasks/manage-account-settings/require-destination-tags.md
-                - page: docs/tutorials/tasks/manage-account-settings/offline-account-setup.md
-                - page: docs/tutorials/tasks/manage-account-settings/use-tickets.md
-            - page: docs/tutorials/tasks/use-specialized-payment-types/index.md
+                - page: docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md
+                - page: docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md
+                - page: docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair.md
+                - page: docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing.md
+                - page: docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction.md
+                - page: docs/tutorials/how-tos/manage-account-settings/require-destination-tags.md
+                - page: docs/tutorials/how-tos/manage-account-settings/offline-account-setup.md
+                - page: docs/tutorials/how-tos/manage-account-settings/use-tickets.md
+            - page: docs/tutorials/how-tos/use-specialized-payment-types/index.md
               expanded: false
               items:
-                - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/index.md
+                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/look-up-escrows.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
-                - page: docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels/index.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract.md
+                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/index.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md
-                - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/use-checks.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels/open-a-payment-channel-to-enable-an-inter-exchange-network.md
+                - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md
                   expanded: false
                   items:
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/cancel-a-check.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
-                    - page: docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
-            - page: docs/tutorials/tasks/use-tokens/index.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md
+                    - page: docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md
+            - page: docs/tutorials/how-tos/use-tokens/index.md
               expanded: false
               items:
-                - page: docs/tutorials/tasks/use-tokens/issue-a-fungible-token.md
-                - page: docs/tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md
-                - page: docs/tutorials/tasks/use-tokens/enable-no-freeze.md
-                - page: docs/tutorials/tasks/use-tokens/enact-global-freeze.md
-                - page: docs/tutorials/tasks/use-tokens/freeze-a-trust-line.md
-                - page: docs/tutorials/tasks/use-tokens/create-an-automated-market-maker.md
-            - page: docs/tutorials/tasks/use-xrpl-sidechains/index.md
+                - page: docs/tutorials/how-tos/use-tokens/issue-a-fungible-token.md
+                - page: docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md
+                - page: docs/tutorials/how-tos/use-tokens/enable-no-freeze.md
+                - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
+                - page: docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md
+                - page: docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker.md
+            - page: docs/tutorials/how-tos/use-xrpl-sidechains/index.md
               expanded: false
               items:
-                - page: docs/tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
-                - page: docs/tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge.md
-                - page: docs/tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction.md
+                - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
+                - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge.md
+                - page: docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction.md
     - page: docs/references/index.md
       expanded: false
       items:

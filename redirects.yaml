@@ -605,112 +605,112 @@ monitor-incoming-payments-with-websocket.html:
     to: /docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket
     type: 301
 tasks.html:
-    to: /docs/tutorials/tasks/
+    to: /docs/tutorials/how-tos/
     type: 301
 manage-account-settings.html:
-    to: /docs/tutorials/tasks/manage-account-settings/
+    to: /docs/tutorials/how-tos/manage-account-settings/
     type: 301
 assign-a-regular-key-pair.html:
-    to: /docs/tutorials/tasks/manage-account-settings/assign-a-regular-key-pair
+    to: /docs/tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair
     type: 301
 change-or-remove-a-regular-key-pair.html:
-    to: /docs/tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair
+    to: /docs/tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair
     type: 301
 disable-master-key-pair.html:
-    to: /docs/tutorials/tasks/manage-account-settings/disable-master-key-pair
+    to: /docs/tutorials/how-tos/manage-account-settings/disable-master-key-pair
     type: 301
 set-up-multi-signing.html:
-    to: /docs/tutorials/tasks/manage-account-settings/set-up-multi-signing
+    to: /docs/tutorials/how-tos/manage-account-settings/set-up-multi-signing
     type: 301
 send-a-multi-signed-transaction.html:
-    to: /docs/tutorials/tasks/manage-account-settings/send-a-multi-signed-transaction
+    to: /docs/tutorials/how-tos/manage-account-settings/send-a-multi-signed-transaction
     type: 301
 require-destination-tags.html:
-    to: /docs/tutorials/tasks/manage-account-settings/require-destination-tags
+    to: /docs/tutorials/how-tos/manage-account-settings/require-destination-tags
     type: 301
 offline-account-setup.html:
-    to: /docs/tutorials/tasks/manage-account-settings/offline-account-setup
+    to: /docs/tutorials/how-tos/manage-account-settings/offline-account-setup
     type: 301
 use-tickets.html:
-    to: /docs/tutorials/tasks/manage-account-settings/use-tickets
+    to: /docs/tutorials/how-tos/manage-account-settings/use-tickets
     type: 301
 send-xrp.html:
-    to: /docs/tutorials/tasks/send-xrp
+    to: /docs/tutorials/how-tos/send-xrp
     type: 301
 use-specialized-payment-types.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/
     type: 301
 use-complex-payment-types.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/
     type: 301
 use-escrows.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/
     type: 301
 send-a-time-held-escrow.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-time-held-escrow
     type: 301
 send-a-conditionally-held-escrow.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/send-a-conditionally-held-escrow
     type: 301
 cancel-an-expired-escrow.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/cancel-an-expired-escrow
     type: 301
 look-up-escrows.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/look-up-escrows
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/look-up-escrows
     type: 301
 use-an-escrow-as-a-smart-contract.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-escrows/use-an-escrow-as-a-smart-contract
     type: 301
 use-payment-channels.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-payment-channels
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-payment-channels
     type: 301
 open-a-payment-channel-to-enable-an-inter-exchange-network.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/open-a-payment-channel-to-enable-an-inter-exchange-network
     type: 301
 use-checks.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/use-checks
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks
     type: 301
 send-a-check.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check
     type: 301
 cash-a-check-for-an-exact-amount.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount
     type: 301
 cash-a-check-for-a-flexible-amount.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount
     type: 301
 cancel-a-check.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/cancel-a-check
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check
     type: 301
 look-up-checks-by-sender.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-sender
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender
     type: 301
 look-up-checks-by-recipient.html:
-    to: /docs/tutorials/tasks/use-specialized-payment-types/use-checks/look-up-checks-by-recipient
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient
     type: 301
 use-tokens.html:
-    to: /docs/tutorials/tasks/use-tokens/
+    to: /docs/tutorials/how-tos/use-tokens/
     type: 301
 issue-a-fungible-token.html:
-    to: /docs/tutorials/tasks/use-tokens/issue-a-fungible-token
+    to: /docs/tutorials/how-tos/use-tokens/issue-a-fungible-token
     type: 301
 trade-in-the-decentralized-exchange.html:
-    to: /docs/tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange
+    to: /docs/tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange
     type: 301
 enable-no-freeze.html:
-    to: /docs/tutorials/tasks/use-tokens/enable-no-freeze
+    to: /docs/tutorials/how-tos/use-tokens/enable-no-freeze
     type: 301
 enact-global-freeze.html:
-    to: /docs/tutorials/tasks/use-tokens/enact-global-freeze
+    to: /docs/tutorials/how-tos/use-tokens/enact-global-freeze
     type: 301
 freeze-a-trust-line.html:
-    to: /docs/tutorials/tasks/use-tokens/freeze-a-trust-line
+    to: /docs/tutorials/how-tos/use-tokens/freeze-a-trust-line
     type: 301
 create-an-automated-market-maker.html:
-    to: /docs/tutorials/tasks/use-tokens/create-an-automated-market-maker
+    to: /docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker
     type: 301
 use-simple-xrp-payments.html:
-    to: /docs/tutorials/tasks/send-xrp
+    to: /docs/tutorials/how-tos/send-xrp
     type: 301
 cancel-or-skip-a-transaction.html:
     to: /docs/concepts/transactions/finality-of-results/canceling-a-transaction
@@ -734,16 +734,16 @@ evm-sidechain-run-a-validator-node.html:
     to: https://opensource.ripple.com/docs/evm-sidechain/evm-sidechain-run-a-validator-node/
     type: 301
 use-xrpl-sidechains.html:
-    to: /docs/tutorials/tasks/use-xrpl-sidechains/
+    to: /docs/tutorials/how-tos/use-xrpl-sidechains/
     type: 301
 set-up-xrp-xrp-bridge.html:
-    to: /docs/tutorials/tasks/use-xrpl-sidechains/set-up-xrp-xrp-bridge
+    to: /docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge
     type: 301
 set-up-iou-iou-bridge.html:
-    to: /docs/tutorials/tasks/use-xrpl-sidechains/set-up-iou-iou-bridge
+    to: /docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge
     type: 301
 submit-cross-chain-transactions.html:
-    to: /docs/tutorials/tasks/use-xrpl-sidechains/submit-cross-chain-transaction
+    to: /docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction
     type: 301
 references.html:
     to: /docs/references/

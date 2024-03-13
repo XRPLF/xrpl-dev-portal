@@ -139,7 +139,7 @@ labels:
     - [マルチシグ](../accounts/multi-signing.md)
 - **チュートリアル:**
     - [rippledのインストール](../../infrastructure/installation/index.md)
-    - [レギュラーキーペアの割り当て](../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md)
+    - [レギュラーキーペアの割り当て](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
     - [信頼できるトランザクションの送信](reliable-transaction-submission.md)
     - [パブリック署名の有効化](../../infrastructure/configuration/enable-public-signing.md)
 - **リファレンス:**

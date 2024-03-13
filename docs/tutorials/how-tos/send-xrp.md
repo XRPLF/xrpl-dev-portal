@@ -477,11 +477,11 @@ $client = new JsonRpcClient("http://localhost:5005");
 
 After completing this tutorial, you may want to try the following:
 
-- [Issue a token](../tasks/use-tokens/issue-a-fungible-token.md) on the XRP Ledger Testnet.
-- [Trade in the Decentralized Exchange](../tasks/use-tokens/trade-in-the-decentralized-exchange.md).
+- [Issue a token](../how-tos/use-tokens/issue-a-fungible-token.md) on the XRP Ledger Testnet.
+- [Trade in the Decentralized Exchange](../how-tos/use-tokens/trade-in-the-decentralized-exchange.md).
 - Build [Reliable transaction submission](../../concepts/transactions/reliable-transaction-submission.md) for production systems.
 - Check your [client library](../../references/client-libraries.md)'s API reference for the full range of XRP Ledger functionality.
-- Customize your [Account Settings](../tasks/manage-account-settings/index.md).
+- Customize your [Account Settings](../how-tos/manage-account-settings/index.md).
 - Learn how [Transaction Metadata](../../references/protocol/transactions/metadata.md) describes the outcome of a transaction in detail.
 - Explore more [Payment Types](../../concepts/payment-types/index.md) such as Escrows and Payment Channels.
 

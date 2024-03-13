@@ -42,14 +42,14 @@ Checks are a straightforward, familiar, and flexible way to transfer funds when 
 
 While this method is the simplest, it doesn't guarantee the funds. Checks are deferred payments, meaning funds aren't moved until the moment you try to cash the check. It's possible for the sending account to not have the necessary funds at the time the check is cashed, which can cause delays or other headaches, depending on your business.
 
-See: [Use Checks](../../tutorials/tasks/use-specialized-payment-types/use-checks/use-checks.md).
+See: [Use Checks](../../tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md).
 
 
 ### Escrow
 
 If you require a guarantee of funds at the time of deposit, another option is to have deposits made with an escrow. Like regular escrows, a sender sets aside funds on the ledger, effectively locking them up until certain conditions are met. This guarantees the funds will be available when you close the escrow to release the funds.
 
-See: [Use Escrows](../../tutorials/tasks/use-specialized-payment-types/use-escrows/index.md).
+See: [Use Escrows](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md).
 
 
 <!-- Need a better understanding of Payment Channels use cases.

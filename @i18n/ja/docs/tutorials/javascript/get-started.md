@@ -152,8 +152,8 @@ XRP Ledgerの[コンセンサス プロセス](../../concepts/consensus-protocol
 これで、`xrpl.js`を使って、XRP Ledgerに接続したり、ウォレットを生成したり、アカウントの情報を調べたりする方法がわかりました。
 次のようなことも可能です。
 
-* [XRPの送信](../tasks/send-xrp.md).
-* [代替可能トークンの発行](../tasks/use-tokens/issue-a-fungible-token.md)
+* [XRPの送信](../how-tos/send-xrp.md).
+* [代替可能トークンの発行](../how-tos/use-tokens/issue-a-fungible-token.md)
 * アカウントに[安全な署名](../../concepts/transactions/secure-signing.md) を設定する。
 
 
@@ -163,7 +163,7 @@ XRP Ledgerの[コンセンサス プロセス](../../concepts/consensus-protocol
     - [XRP Ledger Overview](/about/)
     - [クライアントライブラリ](../../references/client-libraries.md)
 - **Tutorials:**
-    - [XRPの送信](../tasks/send-xrp.md)
+    - [XRPの送信](../how-tos/send-xrp.md)
 - **References:**
     - [`xrpl.js` リファレンス](https://js.xrpl.org/)
     - [Public API Methods](../../references/http-websocket-apis/public-api-methods/index.md)

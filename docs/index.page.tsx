@@ -333,7 +333,7 @@ export default function Docs() {
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/java/get-started/">
+                  <a href="/docs/tutorials/java/build-apps/get-started/">
                     <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
                   </a>
