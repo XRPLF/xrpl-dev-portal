@@ -7,13 +7,6 @@ ul.nav.navbar-nav {
   width: 100%;
 }
 
-@media (min-width: 992px) and (min-width: 1200px) {
-  .top-nav .topnav-search {
-    margin-left: 3.5rem;
-    margin-right: 0.5rem;
-  }
-}
-
 .top-nav .topnav-search {
   flex-grow: 1;
 }
@@ -223,6 +216,9 @@ ul.nav.navbar-nav {
   --footer-title-font-weight: 600;
   --footer-title-font-size: 1rem;
   --footer-title-text-color: #A2A2A4;
+
+  --sidebar-margin-horizontal: 32px;
+  --sidebar-item-padding-horizontal: 0;
 }
 
 :root.light {

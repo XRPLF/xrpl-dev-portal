@@ -1,5 +1,12 @@
 button.MarkpromptFloatingTrigger {
   bottom: 4.5rem;
+  border-radius: $border-radius-sm;
+  right: 16px;
+  border: 1px solid transparent;
+
+  @include media-breakpoint-up(lg) {
+    right: 32px;
+  }
 }
 
 html.light .MarkpromptContentDialog a {

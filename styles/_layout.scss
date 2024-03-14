@@ -346,3 +346,9 @@ section {
     --line-height-multiplier: 1.2;
   }
 }
+
+@include media-breakpoint-up(lg) {
+  [data-component-name="TableOfContent/TableOfContent"] {
+    margin-right: 32px;
+  }
+}
