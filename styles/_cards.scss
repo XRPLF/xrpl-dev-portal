@@ -1,5 +1,7 @@
 .card, .cta-card, .q-wrapper {
-  box-shadow: $dropdown-box-shadow;
+  @include media-breakpoint-up(lg) {
+    box-shadow: $dropdown-box-shadow;
+  }
 }
 #code-samples-deck  {
   .card {
