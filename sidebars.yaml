@@ -471,6 +471,7 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/ledger-clio.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
                 - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/index.md
                   expanded: false
                   items:
