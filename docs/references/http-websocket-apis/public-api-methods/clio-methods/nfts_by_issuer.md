@@ -67,5 +67,7 @@ The response follows the [standard format][], with a successful result containin
 
 For definitions of the fields returned in the `tx` object, see [Transaction Metadata](../../../protocol/transactions/metadata.md).
 
+Note:You might get back a response where the `nfts` field is empty but a marker is defined. You need to repeatedly request with the new markers until you receive a response that no longer has a marker. This can happen if you specify a specific ledger and there are tokens that were minted by the account after the specified ledger.
+
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
 
