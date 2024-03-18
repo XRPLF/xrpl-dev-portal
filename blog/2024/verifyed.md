@@ -12,7 +12,7 @@ Welcome to the latest edition of Developer Reflections, where we delve into the 
 
 <!-- BREAK -->
 
-![Screenshot: VerifyEd](/blog/img/dev-reflections-verifyed-logo.png)
+<!-- ![Screenshot: VerifyEd](/blog/img/dev-reflections-verifyed-logo.png) -->
 
 Since its inception in 2019, VerifyEd has been dedicated to creating a trusted ecosystem for digital credentials and achievements across educational and professional sectors worldwide. By partnering with universities, professional bodies, and organizations, VerifyEd digitizes credentials, ensuring their authenticity and value on a global scale. 
 
