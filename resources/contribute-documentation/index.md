@@ -51,7 +51,7 @@ Before being considered for review or merging, each pull request must:
 
 - Pass continuous integration tests.
 - Be [marked as drafts](https://github.blog/2019-02-14-introducing-draft-pull-requests/) until they are ready for review.
-- Adhere to the [code of conduct](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md) for this repository.
+- Adhere to the [code of conduct](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.md) for this repository.
 
 ## Redocly Setup
 

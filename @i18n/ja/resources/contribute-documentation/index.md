@@ -51,7 +51,7 @@ XRPL Dev Portalでは、開発者が開発を開始するためのサンプル�
 レビューやマージが承認される前に、それぞれのプルリクエストは以下の条件を満たしていなければなりません。
 - インテグレーションテストに合格すること。
 - レビューの準備が整うまで、[Draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/)としてください。
-- このリポジトリの[コード規約](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.ja.md)を遵守してください。
+- このリポジトリの[コード規約](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.ja.md)を遵守してください。
 
 ## Dactylのセットアップ
 
