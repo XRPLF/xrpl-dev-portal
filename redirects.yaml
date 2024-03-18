@@ -19,6 +19,9 @@ xrp-test-net-faucet.html:
 tx-sender.html:
     to: /resources/dev-tools/tx-sender
     type: 301
+index.html:
+    to: /
+    type: 301
 uses.html:
     to: /about/uses
     type: 301
