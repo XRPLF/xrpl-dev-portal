@@ -70,15 +70,15 @@ async function createTrustline() {
   const currency_code = standbyCurrencyField.value
   const trustSet_tx = {
     "TransactionType": "TrustSet",
-    "Account": standbyDestinationField.value,
+    "Account": standbyAccountField.value,
     "LimitAmount": {
       "currency": standbyCurrencyField.value,
-      "issuer": standby_wallet.address,
+      "issuer": standbyDestinationField.value,
       "value": standbyAmountField.value
     }
   }
   const ts_prepared = await client.autofill(trustSet_tx)
-  const ts_signed = operational_wallet.sign(ts_prepared)
+  const ts_signed = standby_wallet.sign(ts_prepared)
   results += '\nCreating trust line from operational account to standby account...'
   standbyResultField.value = results
   const ts_result = await client.submitAndWait(ts_signed.tx_blob)
@@ -164,12 +164,11 @@ async function getBalances() {
     command: "gateway_balances",
     account: standby_wallet.address,
     ledger_index: "validated",
-    hotwallet: [operational_wallet.address]
   })
   results += JSON.stringify(standby_balances.result, null, 2)
   standbyResultField.value = results
       
-  results += "\nGetting operational account balances...\n"
+  results = "\nGetting operational account balances...\n"
   const operational_balances = await client.request({
     command: "gateway_balances",
     account: operational_wallet.address,
@@ -178,7 +177,6 @@ async function getBalances() {
   results += JSON.stringify(operational_balances.result, null, 2)
   operationalResultField.value = results
   operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
-  standbyResultField.value = results
   standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
 
   client.disconnect()
@@ -206,15 +204,15 @@ async function oPcreateTrustline() {
   const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
   const trustSet_tx = {
     "TransactionType": "TrustSet",
-    "Account": operationalDestinationField.value,
+    "Account": operationalAccountField.value,
     "LimitAmount": {
       "currency": operationalCurrencyField.value,
-      "issuer": operational_wallet.address,
+      "issuer": operationalDestinationField.value,
       "value": operationalAmountField.value
     }
   }
   const ts_prepared = await client.autofill(trustSet_tx)
-  const ts_signed = standby_wallet.sign(ts_prepared)
+  const ts_signed = operational_wallet.sign(ts_prepared)
   results += '\nCreating trust line from operational account to ' +
    operationalDestinationField.value + ' account...'
   operationalResultField.value = results

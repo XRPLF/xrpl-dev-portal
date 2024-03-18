@@ -1,6 +1,6 @@
 import xrpl
 
-testnet_url = "https://s.altnet.rippletest.net:51234/"
+testnet_url = "https://s.devnet.rippletest.net:51234/"
 
 def get_account(seed):
     """get_account"""
@@ -33,4 +33,5 @@ def send_xrp(seed, amount, destination):
         response = xrpl.transaction.submit_and_wait(payment, client, sending_wallet)	
     except xrpl.transaction.XRPLReliableSubmissionException as e:	
         response = f"Submit failed: {e}"
+
     return response

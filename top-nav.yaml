@@ -47,16 +47,11 @@
         - page: ./docs/use-cases/defi/index.md
     - group: Get Started
       items:
-        - page: ./docs/tutorials/javascript/get-started.md
-          label: JavaScript
-        - page: ./docs/tutorials/python/get-started.md
-          label: Python
-        - page: ./docs/tutorials/java/get-started.md
-          label: Java
-        - page: ./docs/tutorials/php/get-started.md
-          label: PHP
-        - page: ./docs/tutorials/http-websocket-apis/get-started.md
-          label: HTTP / WebSocket
+        - page: ./docs/tutorials/javascript/index.md
+        - page: ./docs/tutorials/python/index.md
+        - page: ./docs/tutorials/java/index.md
+        - page: ./docs/tutorials/php/index.md
+        - page: ./docs/tutorials/http-websocket-apis/index.md
 
 - group: Resources
   groupTranslationKey: theme.navbar.resources

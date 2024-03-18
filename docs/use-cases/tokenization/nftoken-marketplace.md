@@ -32,13 +32,13 @@ Base reserve requirements See [Reserves](../../concepts/accounts/reserves.md#bas
 
 ### Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](../../tutorials/javascript/nfts/transfer-nfts.md).
 
 ![Transferring NFTs](/docs/img/uc-nft-transferring-nfts.png)
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](../../tutorials/javascript/nfts/broker-an-nft-sale.md).
 
 
 ### Reserve requirements
@@ -61,15 +61,15 @@ You can learn more about brokered sales in the topic [Trading Tokens on the XRP 
 
 Learn more about token transfer fees in the topic [Transfer Fees](../../concepts/tokens/transfer-fees.md).
 
-You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md).
+You can get started building a brokered sales marketplace by following the steps in the [Broker a NFToken Sale](../../tutorials/javascript/nfts/broker-an-nft-sale.md).
 
 ### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/javascript/nfts/transfer-nfts.md).
 
 ![Checkout](/docs/img/uc-nft-checkout.png)
 
-For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
+For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
 ## Indexing NFTs
 

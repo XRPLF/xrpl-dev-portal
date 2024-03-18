@@ -18,7 +18,7 @@ NFTokenを作成すると、実際の物理的またはデジタル資産の実�
 
 [Xumm](https://xumm.app)などのアプリを使用してNFTokenを作成することができます。
 
-より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](../../tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md)をご覧ください。
+より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](../../tutorials/javascript/nfts/mint-and-burn-nfts.md)をご覧ください。
 
 [![デジタルアーティストのフロー](/docs/img/nft-mkt-digital-artist.png "デジタルアーティストのフロー")](/docs/img/nft-mkt-digital-artist.png)
 
@@ -38,13 +38,13 @@ NFTをミントして販売することで、マーケットプレイスを構�
 * `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](../../concepts/tokens/nfts/collections.md)をご覧ください。
 * 発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)および[Transferableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)をご覧ください。
 
-[NFTokenのミントとバーン](../../tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md)をご覧ください。
+[NFTokenのミントとバーン](../../tutorials/javascript/nfts/mint-and-burn-nfts.md)をご覧ください。
 
 ## NFTの販売
 
-NFTを売却する場合は、売却オファーを作成する必要があります。[NFTokensの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
+NFTを売却する場合は、売却オファーを作成する必要があります。[NFTokensの取引](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
 
-NFTをオークション形式で販売することができます。[NFTオークションの実行](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md)をご覧ください。
+NFTをオークション形式で販売することができます。[NFTオークションの実行](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
 
 ### 準備金要件
 
@@ -62,9 +62,9 @@ NFTをオークション形式で販売することができます。[NFTオー�
 
 ### 支払い
 
-XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md))をご覧ください。
+XRPL NFTの最もシンプルな支払い方法はXRPです。XRPを使ったNFTの売り買いの例については、[NFTokenの取引](../../tutorials/javascript/nfts/transfer-nfts.md))をご覧ください。
 
-他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
+他の通貨での取引は、DEXを活用してあらゆる種類の発行通貨を受け入れ、取引することができます。[分散型取引所での取引](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange)をご覧ください。
 
 ## NFTのインデックス化
 

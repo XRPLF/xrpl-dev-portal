@@ -52,7 +52,7 @@ See also:
 
 You can begin to build your marketplace by minting some NFTs to sell.
 
-To create your first NFTs, follow the instructions in the tutorial _Mint and Burn NFTokens_. See [Mint and Burn NFTokens](../../tutorials/javascript/modular-tutorials/nfts/mint-and-burn-nfts.md).
+To create your first NFTs, follow the instructions in the tutorial _Mint and Burn NFTokens_. See [Mint and Burn NFTokens](../../tutorials/javascript/nfts/mint-and-burn-nfts.md).
 
 The NFToken URL is a link to the location where the content of the NFT is stored. One option is create an IPFS account and store the NFToken content at a persistent URL. See [Best Practices for Storing NFT Data](https://docs.ipfs.io/how-to/best-practices-for-nft-data).
 
@@ -83,13 +83,13 @@ When you set up your account, keep in mind that there is a base reserve requirem
 
 ### Transferring NFTs
 
-You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md).
+You transfer NFTs by creating a sell offer or accepting a buy offer. See [Transfer NFTokens](../../tutorials/javascript/nfts/transfer-nfts.md).
 
 ![Transferring NFTs](/docs/img/uc-nft-transferring-nfts.png)
 
 You can sell your NFTs in an auction format. See [Running an NFT Auction](../../concepts/tokens/nfts/running-an-nft-auction.md).
 
-You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](../../tutorials/javascript/modular-tutorials/nfts/broker-an-nft-sale.md).
+You can act as a broker, connecting sellers with bidders, completing the transfer and keeping a percentage of the purchase price. See [Broker a NFToken sale](../../tutorials/javascript/nfts/broker-an-nft-sale.md).
 
 #### Reserve requirements
 
@@ -109,11 +109,11 @@ See:
 
 #### Checkout
 
-The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/javascript/modular-tutorials/nfts/transfer-nfts.md).
+The most straightforward payment for XRPL NFTs is XRP. For examples of selling and buying NFTs using XRP, see [Transfer NFTokens](../../tutorials/javascript/nfts/transfer-nfts.md).
 
 ![Checkout](/docs/img/uc-nft-checkout.png)
 
-For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/tasks/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
+For trade in other currencies, you can leverage the DEX to accept and convert issued currencies of all kinds. See [Trade in the Decentralized Exchange](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md#trade-in-the-decentralized-exchange).
 
 <!--
 

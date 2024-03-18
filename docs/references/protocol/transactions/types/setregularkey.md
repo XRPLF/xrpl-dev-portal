@@ -39,7 +39,7 @@ You can protect your account by assigning a regular key pair to it and using it 
 
 For more information about regular and master key pairs, see [Cryptographic Keys](../../../../concepts/accounts/cryptographic-keys.md).
 
-For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](../../../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md).
+For a tutorial on assigning a regular key pair to an account, see [Working with a Regular Key Pair](../../../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md).
 
 For even greater security, you can use [multi-signing](../../../../concepts/accounts/multi-signing.md), but multi-signing requires additional XRP for the [transaction cost][] and [reserve](../../../../concepts/accounts/reserves.md).
 

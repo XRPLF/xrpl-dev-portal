@@ -74,8 +74,8 @@ If a standby address is compromised, the consequences are like an operational ad
     - [Accounts](index.md)
     - [Cryptographic Keys](cryptographic-keys.md)
 - **Tutorials:**
-    - [Assign a Regular Key Pair](../../tutorials/tasks/manage-account-settings/assign-a-regular-key-pair.md)
-    - [Change or Remove a Regular Key Pair](../../tutorials/tasks/manage-account-settings/change-or-remove-a-regular-key-pair.md)
+    - [Assign a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
+    - [Change or Remove a Regular Key Pair](../../tutorials/how-tos/manage-account-settings/change-or-remove-a-regular-key-pair.md)
 - **References:**
     - [account_info method][]
     - [SetRegularKey transaction][]

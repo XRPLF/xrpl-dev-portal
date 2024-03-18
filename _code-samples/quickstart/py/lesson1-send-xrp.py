@@ -60,9 +60,9 @@ def operational_send_xrp():
     get_operational_account_info()
 
 
-# Create a new window with the title "Quickstart Module 1"
+# Create a new window with the title "Send and Receive XRP"
 window = tk.Tk()
-window.title("Quickstart Module 1")
+window.title("Send and Receive XRP")
 
 # Form frame
 frm_form = tk.Frame(relief=tk.SUNKEN, borderwidth=3)

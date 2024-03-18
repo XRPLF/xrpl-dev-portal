@@ -14,10 +14,6 @@ const recommendedPages = [
     link: '/docs/references/http-websocket-apis/public-api-methods/',
   },
   {
-    description: 'Getting Started with Python',
-    link: '/docs/tutorials/get-started/get-started-using-python/',
-  },
-  {
     description: 'Run a Validator',
     link: '/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/',
   },
@@ -291,11 +287,11 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Getting Started')}</h4>
           <div className="card-grid card-grid-2xN quickstart-card">
             <div className="col">
-              <a href="/docs/tutorials/javascript/modular-tutorials/send-payments" className="card float-up-on-hover">
-                <h5 className="mt-7">{translate('Quickstart to XRP Ledger')}</h5>
+              <a href="/docs/introduction/" className="card float-up-on-hover">
+                <h5 className="mt-7">{translate('Introduction to the XRP Ledger')}</h5>
                 <p className="mb-8 mt-4">{translate('An introduction to fundamental aspects of the XRP Ledger.')}</p>
                 <div className="dg-lg-block mb-3">
-                  <div className="btn btn-primary btn-arrow get-started-button">{translate('Get Started')}</div>
+                  <div className="btn btn-primary btn-arrow get-started-button">{translate('Introduction')}</div>
                 </div>
                 <img alt="quick-start" id="quick-start-img" className="quickstart-image" />
               </a>
@@ -325,19 +321,19 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
                 <div className="col langs">
-                  <a href="/docs/tutorials/javascript/get-started/">
+                  <a href="/docs/tutorials/javascript/">
                     <img alt="Javascript Logo" src={require('../static/img/logos/javascript.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Javascript')}</h5>
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/python/get-started/">
+                  <a href="/docs/tutorials/python/">
                     <img alt="Python Logo" src={require('../static/img/logos/python.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Python')}</h5>
                   </a>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/java/get-started/">
+                  <a href="/docs/tutorials/java/build-apps/get-started/">
                     <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
                   </a>

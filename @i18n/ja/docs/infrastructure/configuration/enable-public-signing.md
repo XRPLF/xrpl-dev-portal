@@ -11,7 +11,7 @@ labels:
 
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}新規: rippled 1.1.0{% /badge %}デフォルトでは、`rippled`の署名メソッドは管理者接続に限定されています。v1.1.0以前のバージョンの`rippled`のように、署名メソッドをパブリックAPIメソッドとして使用できるようにするには、構成を変更することで、これを使用できるようにします。
 
-これにより、サーバーが「パブリック」[JSON-RPC接続およびWebSocket接続](../../tutorials/http-websocket-apis/get-started.md)を受け入れる場合は、これらのパブリック接続で以下のメソッドが使用できるようになります。
+これにより、サーバーが「パブリック」[JSON-RPC接続およびWebSocket接続](../../tutorials/http-websocket-apis/build-apps/get-started.md)を受け入れる場合は、これらのパブリック接続で以下のメソッドが使用できるようになります。
 
 - [sign][signメソッド]
 - [sign_for][sign_forメソッド]

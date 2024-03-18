@@ -23,7 +23,7 @@ steps: ['Generate', 'Connect', 'Prepare', 'Sign', 'Submit', 'Wait', 'Check']
 <script type="application/javascript" src="/js/interactive-tutorial.js"></script>
 <script type="application/javascript" src="/js/tutorials/send-xrp.js"></script>
 
-- このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](../javascript/get-started.md)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
+- このページでは、xrpl.jsライブラリーを使用するJavaScriptの例を紹介します。[xrpl.js入門ガイド](../javascript/build-apps/get-started.md)に、xrpl.jsを使用してJavaScriptからXRP Ledgerデータにアクセスする方法の説明があります。
 
 - XRP Ledgerでトランザクションを送信するには、まずアドレスと秘密鍵、そしていくらかのXRPが必要となります。次のインターフェイスを使用して、XRP Test NetにあるアドレスとTestnet XRPを入手できます。
 
@@ -327,7 +327,7 @@ XrplClient xrplClient = new XrplClient(rippledUrl);
 
 - 本番システム向けに[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を構築する
 - [xrpl.jsリファレンス](https://js.xrpl.org/)を参照して、XRP Ledgerの全機能を確認する
-- [アカウント設定](../tasks/manage-account-settings/index.md)をカスタマイズする
+- [アカウント設定](../how-tos/manage-account-settings/index.md)をカスタマイズする
 - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)にトランザクションの結果の詳細がどのように記述されているかを知る
 - escrowやPayment Channelなどの[複雑な支払いタイプ](../../concepts/payment-types/index.md)について調べる
 

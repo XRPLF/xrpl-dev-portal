@@ -75,6 +75,6 @@ The ID of a `Check` entry is the [SHA-512Half][] of the following values, concat
 * The `Sequence` number of the [CheckCreate transaction][] that created the `Check`.
     If the CheckCreate transaction used a [Ticket](../../../../concepts/accounts/tickets.md), use the `TicketSequence` value instead.
 
-See the tutorial showing how to [Send a Check](../../../../tutorials/tasks/use-specialized-payment-types/use-checks/send-a-check.md).
+See the tutorial showing how to [Send a Check](../../../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
