@@ -655,7 +655,7 @@
       expanded: false
       items:
         - label: Contributor Code of Conduct
-          href: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE_OF_CONDUCT.md
+          href: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.md
           external: true
         - page: resources/contribute-documentation/documentation-translations.md
         - page: resources/contribute-documentation/creating-diagrams.md

@@ -26,7 +26,7 @@ To build the site locally:
 
         npm start
 
-For more details, see the [contribution guidelines (EN)](CONTRIBUTING.md) ([日本語](CONTRIBUTING.ja.md)) and the [contributor Code of Conduct (EN)](CODE_OF_CONDUCT.md) ([日本語](CODE_OF_CONDUCT.ja.md)).
+For more details, see the [contribution guidelines (EN)](CONTRIBUTING.md) ([日本語](CONTRIBUTING.ja.md)) and the [contributor Code of Conduct (EN)](CODE-OF-CONDUCT.md) ([日本語](CODE-OF-CONDUCT.ja.md)).
 
 ## Domain Verification Checker
 
