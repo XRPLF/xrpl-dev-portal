@@ -8,6 +8,7 @@
       items:
         - page: docs/introduction/what-is-the-xrp-ledger.md
         - page: docs/introduction/what-is-xrp.md
+          label: What is XRP?
         - page: docs/introduction/crypto-wallets.md
         - page: docs/introduction/transactions-and-requests.md
         - page: docs/introduction/software-ecosystem.md
@@ -81,6 +82,7 @@
                 - page: docs/concepts/transactions/finality-of-results/transaction-malleability.md
                 - page: docs/concepts/transactions/finality-of-results/canceling-a-transaction.md
         - page: docs/concepts/payment-types/index.md
+          label: Ledger Payment Types
           expanded: false
           items:
             - page: docs/concepts/payment-types/direct-xrp-payments.md
@@ -152,6 +154,7 @@
             - page: docs/concepts/xrpl-sidechains/cross-chain-bridges.md
             - page: docs/concepts/xrpl-sidechains/witness-servers.md
     - page: docs/tutorials/index.md
+      label: Tutorials
       expanded: false
       items:
         - page: docs/tutorials/public-servers.md
