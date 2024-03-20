@@ -6,6 +6,7 @@ labels:
   - Decentralized Exchange
 ---
 # Integrate with the XRPL Decentralized Exchange
+**TODO: Update links to redocly syntax.**
 
 Integrating with the XRP Ledger gives you access to one of the world's oldest decentralized exchanges (DEX), operating continuously since 2012. Users can trade [tokens](tokens.html) and XRP with minimal [fees](fees.html) to the network itself.
 
@@ -14,7 +15,7 @@ To learn more about the XRPL DEX structure and limitations, see: [Decentralized 
 
 ## Set Up Node Services
 
-For lighter use cases, you can often rely on free public servers. However, more serious use of the XRP Ledger requires your own infrastructure.
+For less complex applications, you can often rely on free public servers. However, more critical use cases of the XRP Ledger require your own infrastructure.
 
 There are many reasons you might want to run your own servers, but most of them can be summarized as: you can trust your own server, you have control over its workload, and you're not at the mercy of others to decide when and how you can access it. See [Reasons to Run Your Own Server](networks-and-servers.html#reasons-to-run-your-own-server).
 
@@ -23,12 +24,14 @@ There are two types of server software for the XRP Ledger:
 - [`rippled`](https://github.com/XRPLF/rippled): The core server that runs the peer-to-peer network, processing transactions and reaching consensus on their outcomes.
 - [`Clio`](https://github.com/XRPLF/clio): An API server optimized for RPC calls on the validated historical ledger.
 
+We recommend running a `Clio` server along with your own `rippled` server for large-scale operations.
+
 
 ## Set Up an Account
 
-XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](deleting-accounts.html). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that can't be sent to others. For these reasons, Ripple recommends that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
+XRP is held in _accounts_ (also referred to as _wallets_ or _addresses_  ) on the XRP Ledger. Accounts on the XRP Ledger are different than accounts on other blockchain ledgers, such as Bitcoin, where accounts incur little to no overhead. In the XRP Ledger, account state is stored per ledger and accounts are [not easy to delete](deleting-accounts.html). To offset the costs associated with storing accounts, each account must hold a separate [reserve of XRP](reserves.html) that can't be sent to others. For these reasons, it is recommended that institutions not create excessive or needless accounts. <!-- STYLE_OVERRIDE: hot wallet, warm wallet, cold wallet, wallet, easy -->
 
-To follow Ripple's recommended best practices, you should create at least two new accounts on the XRP Ledger. To minimize the risks associated with a compromised secret key, Ripple recommends creating [_cold_, _hot_, and _warm_ accounts](account-types.html) (these are sometimes referred to, respectively, as cold, hot, and warm wallets). The hot/warm/cold model is intended to balance security and convenience. Exchanges listing XRP should create the following accounts:
+When integrating with the XRP Ledger, the best practice is to maintain separate [_cold_, _hot_, and _warm_ wallets](account-types.html) to minimize the risks of compromised secret keys:
 
 * A [_cold wallet_](account-types.html#issuing-address) to securely hold the majority of XRP and customers' funds. For exchanges, this is also the address to which its users send [deposits](#deposit-xrp-into-exchange).   To provide optimal security, this account's secret key should be offline.
 
@@ -36,14 +39,14 @@ To follow Ripple's recommended best practices, you should create at least two ne
 
 * Optionally, one or more warm wallets to provide an additional layer of security between the cold and hot wallets. Unlike a hot wallet, the secret key of a warm wallet doesn't need to be online. Additionally, you can distribute the secret keys for the warm wallet to several different people and implement [multi-signing](multi-signing.html) to increase security.
 
-There isn't a dedicated "create account" transaction. The [Payment](payment.html) transaction automatically creates a new account if the payment sends enough XRP to a mathematically-valid address that doesn't already have an account. This is called funding an account, and creates an `AccountRoot` entry in the ledger. No other transaction can create an account. To learn how to set up accounts, see: [Creating Accounts](accounts.html#creating-accounts).
+To create a new account in the XRP Ledger, you use a `Payment` transaction to deliver enough XRP to a mathematically-valid address that doesn't already have an account. This is called funding an account, and creates an `AccountRoot` entry in the ledger. The minimum amount of XRP to create a new account is the [account base reserve](reserves.html#owner-reserves) amount, currently {% $env.PUBLIC_BASE_RESERVE %}. For more information on setting up accounts, see: [Creating Accounts](payment.html#creating-accounts).
 
 
 ## Managing Off-Ledger Assets (Optional)
 
-If you are setting up an exchange to hold custody of user funds, you must manage your own balance sheet to track customers' holdings. In this situation, the exchange's accounts are represented _on-chain_ and can be queried. All users of that exchange are handled _off-chain_ by the exchange's accounting system.
+If you are setting up an exchange to hold custody of user funds, you must manage your own balance sheet to track customers' holdings _off-chain_. An XRPL account can hold funds for multiple users, but it can't determine how to allocate those funds _on-chain_.
 
-XRP are represented on the XRP Ledger as an unsigned integer count of _drops_, where one XRP is 1,000,000 drops. Ripple recommends that your accounting software handles XRP balances in _drops_, but displays to users their balance in units of XRP.
+XRP are represented on the XRP Ledger as an unsigned integer count of _drops_, where one XRP is 1,000,000 drops. It is recommends that your accounting software handles XRP balances in _drops_, but displays to users their balance in units of XRP.
 
 One drop (.000001 XRP) can't be further subdivided. Keep this in mind when calculating and displaying rates between XRP and other assets.
 
@@ -68,13 +71,15 @@ See: [`book_offers`](book_offers.html).
 
 ### Submitting Offers
 
-To creat ean offer, send an `OfferCreate` transaction.
+To create an offer, send an `OfferCreate` transaction.
 
 An `OfferCreate` transaction is an instruction to conduct a trade, either between two tokens, or a token and XRP. Each transaction contains a buy amount (`TakerPays`) and a sell amount (`TakerGets`). When the transaction is processed, it automatically consumes matching or crossing Offers to the extent possible. If that doesn't completely fill the new Offer, then the rest becomes an Offer object in the ledger.
 
 The Offer object waits in the ledger until other Offers or cross-currency payments fully consume it. The account that placed the Offer is called the Offer's _owner_. You can cancel your own Offers at any time, using the dedicated `OfferCancel` transaction, or as an option of the `OfferCreate` transaction.
 
-**Note:** Any Offer in the DEX that would exchange two tokens can use XRP as an intermediary currency in a synthetic order book. The XRPL DEX automatically uses this bridging technique to improve exchange rates and liquidity when doing so is cheaper than trading token-to-token. To learn more, see: [auto-bridging](autobridging.html).
+{% admonition type="info" name="Note" %}  
+Any Offer in the DEX that would exchange two tokens can use XRP as an intermediary currency in a synthetic order book. The XRPL DEX automatically uses this bridging technique to improve exchange rates and liquidity when doing so is cheaper than trading token-to-token. To learn more, see: [auto-bridging](autobridging.html).  
+{% /admonition %}
 
 While you have an Offer in the ledger, it sets aside some of your XRP toward the owner [reserve](reserves.html). When the Offer gets removed, for any reason, that XRP is freed up again.
 
