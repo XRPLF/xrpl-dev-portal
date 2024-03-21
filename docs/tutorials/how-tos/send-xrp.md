@@ -247,7 +247,7 @@ If you see any other result, you should check the following:
 - Do you have enough Test XRP to send the transaction? The amount of XRP you can send is limited by the [reserve requirement](../../concepts/accounts/reserves.md), which is currently 10 XRP with an additional 2 XRP for each "object" you own in the ledger. (If you generated a new address with the Testnet Faucet, you don't own any objects.)
 - Are you connected to a server on the test network?
 
-See the full list of [transaction results](../../references/protocol/transactions/transaction-results/transaction-results.md) for more possibilities.
+See the full list of [transaction results](../../references/protocol/transactions/transaction-results/index.md) for more possibilities.
 
 {% interactive-block label="Submit" steps=$frontmatter.steps %}
 

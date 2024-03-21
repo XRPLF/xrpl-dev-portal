@@ -49,8 +49,8 @@ OfferCreate型のトランザクションについては、[`Flags`フィール�
 | フラグ名               | 16進数        | 10進数         | 説明               |
 |:----------------------|:-------------|:--------------|:-------------------|
 | `tfPassive`           | `0x00010000` | 65536         | 有効な場合、オファーはオファーが完全に約定するオファーを消費せず、代わりにレジャーのOfferオブジェクトになります。それはまだクロスしたオファーを消費します。 |
-| `tfImmediateOrCancel` | `0x00020000` | 131072        | オファーを[IOC注文](http://en.wikipedia.org/wiki/Immediate_or_cancel)として扱います。有効な場合、オファーはレジャーオブジェクトにはなりません。レジャー内の既存のオファーと約定させようとするだけです。即時にオファーがどのオファーとも約定しない場合、どの通貨とも取引せずに「正常に」実行します。この場合、トランザクションは`tesSUCCESS`の[結果コード](../transaction-results/transaction-results.md)を返しますが、レジャー内には、[Offerオブジェクト](../../ledger-data/ledger-entry-types/offer.md)を作成しません。 |
-| `tfFillOrKill`        | `0x00040000` | 262144        | オファーを[FOK注文](http://en.wikipedia.org/wiki/Fill_or_kill)として扱います。レジャー内の既存のオファーのみを約定しようとします。またこれは、全`TakerPays`の数量が取得できる場合に限られます。[fix1578 amendment][]が有効な場合でオファーを配置した時に実行できない場合、トランザクションは`tecKILLED`の[結果コード](../transaction-results/transaction-results.md)を返します。そうでない場合は、トランザクションは、どの通貨とも取り引きせずにキャンセルされた場合でも`tesSUCCESS`の結果コードを返します。 |
+| `tfImmediateOrCancel` | `0x00020000` | 131072        | オファーを[IOC注文](http://en.wikipedia.org/wiki/Immediate_or_cancel)として扱います。有効な場合、オファーはレジャーオブジェクトにはなりません。レジャー内の既存のオファーと約定させようとするだけです。即時にオファーがどのオファーとも約定しない場合、どの通貨とも取引せずに「正常に」実行します。この場合、トランザクションは`tesSUCCESS`の[結果コード](../transaction-results/index.md)を返しますが、レジャー内には、[Offerオブジェクト](../../ledger-data/ledger-entry-types/offer.md)を作成しません。 |
+| `tfFillOrKill`        | `0x00040000` | 262144        | オファーを[FOK注文](http://en.wikipedia.org/wiki/Fill_or_kill)として扱います。レジャー内の既存のオファーのみを約定しようとします。またこれは、全`TakerPays`の数量が取得できる場合に限られます。[fix1578 amendment][]が有効な場合でオファーを配置した時に実行できない場合、トランザクションは`tecKILLED`の[結果コード](../transaction-results/index.md)を返します。そうでない場合は、トランザクションは、どの通貨とも取り引きせずにキャンセルされた場合でも`tesSUCCESS`の結果コードを返します。 |
 | `tfSell`              | `0x00080000` | 524288        | 取引所で`TakerPays`Amountよりも多く取得することになっても、`TakerGets` Amountを交換します。 |
 
 ## エラーケース

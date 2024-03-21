@@ -27,7 +27,7 @@ labels:
 
 ## 未確定の結果はどのように変更できますか?
 
-最初にトランザクションを送信すると、`rippled`サーバーはそのトランザクションを現在のオープンレジャーに暫定的に適用し、その結果から暫定的な[トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)を返します。ただし、トランザクションの最終結果は、暫定的な結果とは大きく異なる場合があります。考えられる理由を以下に示します。
+最初にトランザクションを送信すると、`rippled`サーバーはそのトランザクションを現在のオープンレジャーに暫定的に適用し、その結果から暫定的な[トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md)を返します。ただし、トランザクションの最終結果は、暫定的な結果とは大きく異なる場合があります。考えられる理由を以下に示します。
 
 - トランザクションは、後のレジャーバージョンまで延期されるか、検証済みレジャーに取り込まれない場合があります。ほとんどの場合、XRP Ledgerでは、すべての有効なトランザクションをできるだけ早く処理するという原則に従います。ただし、次のような例外があります。
 
@@ -55,6 +55,6 @@ labels:
 ## 関連項目
 
 - [トランザクションの結果の確認](look-up-transaction-results.md)
-- [トランザクション結果のリファレンス](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+- [トランザクション結果のリファレンス](../../../references/protocol/transactions/transaction-results/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

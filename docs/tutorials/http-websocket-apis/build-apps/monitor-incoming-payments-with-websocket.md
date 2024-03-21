@@ -344,7 +344,7 @@ WS_HANDLERS["transaction"] = log_tx
 When you subscribe to an account, you get messages for _all transactions to or from the account_, as well as _transactions that affect the account indirectly_, such as trading its [tokens](../../../concepts/tokens/index.md). If your goal is to recognize when the account has received incoming payments, you must filter the transactions stream and process the payments based on the amount they actually delivered. Look for the following information:
 
 - The **`validated` field** indicates that the transaction's outcome is [final](../../../concepts/transactions/finality-of-results/index.md). This should always be the case when you subscribe to `accounts`, but if you _also_ subscribe to `accounts_proposed` or the `transactions_proposed` stream then the server sends similar messages on the same connection for unconfirmed transactions. As a precaution, it's best to always check the `validated` field.
-- The **`meta.TransactionResult` field** is the [transaction result](../../../references/protocol/transactions/transaction-results/transaction-results.md). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
+- The **`meta.TransactionResult` field** is the [transaction result](../../../references/protocol/transactions/transaction-results/index.md). If the result is not `tesSUCCESS`, the transaction failed and cannot have delivered any value.
 - The **`transaction.Account`** field is the sender of the transaction. If you are only looking for transactions sent by others, you can ignore any transactions where this field matches your account's address. (Keep in mind, it _is_ possible to make a cross-currency payment to yourself.)
 - The **`transaction.TransactionType` field** is the type of transaction. The transaction types that can possibly deliver currency to an account are as follows:
     - **[Payment transactions][]** can deliver XRP or [tokens](../../../concepts/tokens/index.md). Filter these by the `transaction.Destination` field, which contains the address of the recipient, and always use the `meta.delivered_amount` to see how much the payment actually delivered. XRP amounts are [formatted as strings](../../../references/protocol/data-types/basic-data-types.md#specifying-currency-amounts).
@@ -511,6 +511,6 @@ Many programming languages have libraries for sending and receiving data over a 
 - **References:**
     - [Transaction Types](../../../references/protocol/transactions/types/index.md)
     - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
-    - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.
+    - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md) - Tables of all possible result codes for transactions.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

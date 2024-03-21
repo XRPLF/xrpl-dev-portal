@@ -143,7 +143,7 @@ The process to exploit a vulnerable system follows a series of steps like the fo
 - **References:**
     - [Basic Data Types - Hashes](../../../references/protocol/data-types/basic-data-types.md#hashes)
     - [Transaction Common Fields - Global Flags](../../../references/protocol/transactions/common-fields.md#global-flags)
-    - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md)
     - [Serialization Format](../../../references/protocol/binary-format.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

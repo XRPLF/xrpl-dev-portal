@@ -609,7 +609,7 @@
 [random method]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
 [random メソッド]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
 [randomメソッド]: /docs/references/http-websocket-apis/public-api-methods/utility-methods/random.md
-[result code]: /docs/references/protocol/transactions/transaction-results/transaction-results.md
+[result code]: /docs/references/protocol/transactions/transaction-results/index.md
 [ripple-lib]: https://github.com/XRPLF/xrpl.js
 [ripple_path_find command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md
 [ripple_path_find method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find.md

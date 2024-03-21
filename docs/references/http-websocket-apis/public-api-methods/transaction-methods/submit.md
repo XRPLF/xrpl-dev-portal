@@ -293,8 +293,8 @@ The response follows the [standard format][], with a successful result containin
 
 | `Field`                 | Type    | Description                              |
 |:------------------------|:--------|:-----------------------------------------|
-| `engine_result`         | String  | Text [result code](../../../protocol/transactions/transaction-results/transaction-results.md) indicating the preliminary result of the transaction, for example `tesSUCCESS` |
-| `engine_result_code`    | Integer | Numeric version of the [result code](../../../protocol/transactions/transaction-results/transaction-results.md). **Not recommended.** |
+| `engine_result`         | String  | Text [result code](../../../protocol/transactions/transaction-results/index.md) indicating the preliminary result of the transaction, for example `tesSUCCESS` |
+| `engine_result_code`    | Integer | Numeric version of the [result code](../../../protocol/transactions/transaction-results/index.md). **Not recommended.** |
 | `engine_result_message` | String  | Human-readable explanation of the transaction's preliminary result |
 | `tx_blob`               | String  | The complete transaction in hex string format |
 | `tx_json`               | Object  | The complete transaction in JSON format  |
@@ -308,7 +308,7 @@ The response follows the [standard format][], with a successful result containin
 | `open_ledger_cost`      | String  | _(Omitted in sign-and-submit mode)_ The current [open ledger cost](../../../../concepts/transactions/transaction-cost.md#open-ledger-cost) before processing this transaction. Transactions with a lower cost are likely to be [queued](../../../../concepts/transactions/transaction-queue.md). |
 | `validated_ledger_index` | Integer  | _(Omitted in sign-and-submit mode)_ The [ledger index][] of the newest validated ledger at the time of submission. This provides a lower bound on the ledger versions that the transaction can appear in as a result of this request. (The transaction could only have been validated in this ledger version or earlier if it had already been submitted before.) |
 
-**Warning:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](../../../protocol/transactions/transaction-results/transaction-results.md) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
+**Warning:** Even if the WebSocket response has `"status":"success"`, indicating that the command was successfully received, that does _not_ indicate that the transaction executed successfully. Many situations can prevent a transaction from processing successfully, such as a lack of trust lines connecting the two accounts in a payment, or changes in the state of the ledger since the time the transaction was constructed. Even if nothing is wrong, it may take several seconds to close and validate the ledger version that includes the transaction. See the [full list of transaction responses](../../../protocol/transactions/transaction-results/index.md) for details, and do not consider the transaction's results final until they appear in a validated ledger version.
 
 **Caution:** If this command results in an error message, the message can contain the secret key from the request. (This can only happen in sign-and-submit mode.) Make sure that these errors are not visible to others.
 

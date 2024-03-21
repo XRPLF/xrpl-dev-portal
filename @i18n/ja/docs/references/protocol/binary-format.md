@@ -82,7 +82,7 @@ curated_anchors:
 | `TYPES` | フィールドIDの作成と正規順序でのフィールドのソートのためのデータタイプからその[「タイプコード」](#タイプコード)へのマップ。1未満のコードは実際のデータには含まれません。10000を超えるコードは、他のオブジェクト内部ではシリアル化できない「トランザクション」などの特殊な「上位」オブジェクトタイプを表します。各タイプのシリアル化方法についての詳細は、[タイプリスト](#タイプリスト)を参照してください。 |
 | `LEDGER_ENTRY_TYPES` | [レジャーオブジェクト](ledger-data/ledger-entry-types/index.md)から対応するデータタイプへのマップ。これはレジャー状態データと、処理されたトランザクションの[メタデータ](transactions/metadata.md)の「affected nodes」セクションに含まれます。 |
 | `FIELDS` | トランザクション、レジャーオブジェクト、あるいはその他のデータに含まれる可能性があるすべてのフィールドを表すタプルからなるソート済み配列。各タプルの1番目のメンバーはフィールドの文字列名であり、2番目のメンバーはそのフィールドのプロパティーが含まれているオブジェクトです。（これらのフィールドの定義については、以下の「フィールドプロパティー」の表を参照してください。） |
-| `TRANSACTION_RESULTS` | [トランザクション結果コード](transactions/transaction-results/transaction-results.md)から対応する数値へのマップ。レジャーに含まれない結果タイプにはマイナスの値が含まれています。`tesSUCCESS`に数値0が含まれています。[`tec`クラスコード](transactions/transaction-results/tec-codes.md)は、レジャーに含まれている失敗を示しています。 |
+| `TRANSACTION_RESULTS` | [トランザクション結果コード](transactions/transaction-results/index.md)から対応する数値へのマップ。レジャーに含まれない結果タイプにはマイナスの値が含まれています。`tesSUCCESS`に数値0が含まれています。[`tec`クラスコード](transactions/transaction-results/tec-codes.md)は、レジャーに含まれている失敗を示しています。 |
 | `TRANSACTION_TYPES` | [トランザクションのタイプ](transactions/types/index.md)から対応する数値へのマップ。 |
 
 署名と送信のためにトランザクションをシリアル化するという目的から、`FIELDS`、`TYPES`、および`TRANSACTION_TYPES`フィールドが必要です。

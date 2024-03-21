@@ -63,7 +63,7 @@ The following example shows a successful transaction, as returned by the [tx met
 }
 ```
 
-This example shows an [AccountSet transaction][] sent by the [account](../../accounts/index.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/transaction-results.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
+This example shows an [AccountSet transaction][] sent by the [account](../../accounts/index.md) with address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn`, using [Sequence number][] 376. The transaction's [identifying hash][] is `017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567` and its [result](../../../references/protocol/transactions/transaction-results/index.md) is `tesSUCCESS`. The transaction was included in ledger version 46447423, which has been validated, so these results are final.
 
 
 ### Case: Not Included in a Validated Ledger
@@ -75,7 +75,7 @@ If the transaction's failure is not final, it may still become included in a _fu
 
 ### Case: Included in a Validated Ledger
 
-If the transaction _is_ included in a validated ledger, then the [transaction metadata](../../../references/protocol/transactions/metadata.md) contains a full report of all changes that were made to the ledger state as a result of processing the transaction. The metadata's `TransactionResult` field contains a [transaction result code](../../../references/protocol/transactions/transaction-results/transaction-results.md) that summarizes the outcome:
+If the transaction _is_ included in a validated ledger, then the [transaction metadata](../../../references/protocol/transactions/metadata.md) contains a full report of all changes that were made to the ledger state as a result of processing the transaction. The metadata's `TransactionResult` field contains a [transaction result code](../../../references/protocol/transactions/transaction-results/index.md) that summarizes the outcome:
 
 - The code `tesSUCCESS` indicates that the transaction was, more or less, successful.
 - A `tec`-class code indicates that the transaction failed, and its only effects on the ledger state are to destroy the XRP [transaction cost](../transaction-cost.md) and possibly perform some bookkeeping like removing [expired Offers](../../tokens/decentralized-exchange/offers.md#offer-expiration) and [closed payment channels](../../payment-types/payment-channels.md#payment-channel-lifecycle).
@@ -450,6 +450,6 @@ Most other transactions create a specific type of ledger entry and [adjust the s
 - **References:**
     - [Ledger Entry Types Reference](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - All possible fields of all types of ledger entries
     - [Transaction Metadata](../../../references/protocol/transactions/metadata.md) - Summary of the metadata format and fields that appear in metadata
-    - [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md) - Tables of all possible result codes for transactions.
+    - [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md) - Tables of all possible result codes for transactions.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

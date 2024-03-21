@@ -51,7 +51,7 @@ The transaction fails with an error if one of the IDs points to an object that d
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code         | Description                                             |
 |:-------------------|:--------------------------------------------------------|

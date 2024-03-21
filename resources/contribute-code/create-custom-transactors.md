@@ -81,7 +81,7 @@ The `preflight` function checks for errors in the transaction itself before acce
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
     - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
-- `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../docs/references/protocol/transactions/transaction-results/transaction-results.md)
+- `rippled` summarizes transaction results with result codes. See: [Transaction Results](../../docs/references/protocol/transactions/transaction-results/index.md)
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)

@@ -131,7 +131,7 @@ The `Fee` field is one of the things that can be [auto-filled](../../references/
 
 ## Transaction Costs and Failed Transactions
 
-Since the purpose of the transaction cost is to protect the XRP Ledger peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, `rippled` servers try to include failed transactions in ledgers, with [`tec` status codes](../../references/protocol/transactions/transaction-results/transaction-results.md) ("tec" stands for "Transaction Engine - Claimed fee only").
+Since the purpose of the transaction cost is to protect the XRP Ledger peer-to-peer network from excessive load, it should apply to any transaction that gets distributed to the network, regardless of whether or not that transaction succeeds. However, to affect the shared global ledger, a transaction must be included in a validated ledger. Thus, `rippled` servers try to include failed transactions in ledgers, with [`tec` status codes](../../references/protocol/transactions/transaction-results/index.md) ("tec" stands for "Transaction Engine - Claimed fee only").
 
 The transaction cost is only debited from the sender's XRP balance when the transaction actually becomes included in a validated ledger. This is true whether the transaction is considered successful or fails with a `tec` code.
 

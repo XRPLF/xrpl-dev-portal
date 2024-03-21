@@ -135,7 +135,7 @@ Use the [tx method][] with the CheckCash transaction's identifying hash to check
 
 ### Handling Errors
 
-If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](../../../../references/protocol/transactions/transaction-results/transaction-results.md) and respond accordingly. Some common possibilities for CheckCash transactions:
+If cashing the Check failed with a `tec`-class code, look up the code in the [Full Transaction Response List](../../../../references/protocol/transactions/transaction-results/index.md) and respond accordingly. Some common possibilities for CheckCash transactions:
 
 | Result Code | Meaning | How to Respond |
 |-------------|---------|----------------|

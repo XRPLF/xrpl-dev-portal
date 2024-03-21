@@ -1,4 +1,4 @@
-Accounts in the XRP Ledger are identified by an address in the XRP Ledger's [base58][] format. The address is derived from the account's master [public key](https://en.wikipedia.org/wiki/Public-key_cryptography), which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:
+Accounts in the XRP Ledger are identified by an address in the XRP Ledger's [base58](../../references/protocol/data-types/base58-encodings.md) format. The address is derived from the account's master [public key](https://en.wikipedia.org/wiki/Public-key_cryptography), which is in turn derived from a secret key. An address is represented as a string in JSON and has the following characteristics:
 
 * Between 25 and 35 characters in length
 * Starts with the character `r`

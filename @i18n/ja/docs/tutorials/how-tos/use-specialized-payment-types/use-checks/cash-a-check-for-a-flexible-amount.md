@@ -137,7 +137,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 ### エラー処理
 
-[](../../../../references/protocol/transactions/transaction-results/transaction-results.md)Checkの換金が`tec`クラスコードで失敗した場合は、[すべてのトランザクションレスポンスのリスト](../../../../references/protocol/transactions/transaction-results/transaction-results.md)でコードを確認し、適切に対処してください。CheckCashトランザクションでよく返される結果コードの一部を次に示します。
+[](../../../../references/protocol/transactions/transaction-results/index.md)Checkの換金が`tec`クラスコードで失敗した場合は、[すべてのトランザクションレスポンスのリスト](../../../../references/protocol/transactions/transaction-results/index.md)でコードを確認し、適切に対処してください。CheckCashトランザクションでよく返される結果コードの一部を次に示します。
 
 | 結果コード | 意味 | 対処 |
 |-------------|---------|----------------|
