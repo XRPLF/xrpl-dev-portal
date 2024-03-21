@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { useThemeConfig } from '@theme/hooks/useThemeConfig';
 import { LanguagePicker } from '@theme/i18n/LanguagePicker';
 import { useI18n, useTranslate } from '@portal/hooks';
-
 import { slugify } from '../../helpers';
-
 import { Link } from '@portal/Link';
 import { ColorModeSwitcher } from '@theme/components/ColorModeSwitcher/ColorModeSwitcher';
 import { Search } from '@theme/components/Search/Search';
@@ -15,12 +13,12 @@ import { useLocation } from 'react-router-dom';
 // @ts-ignore
 // import navbar from '../../../top-nav.yaml';
 
-// const alertBanner = {
-//   show: true,
-//   message: 'This is the draft Redocly version of the site!',
-//   button: 'Cool',
-//   link: 'https://github.com/ripple/xrpl-org-dev-portal',
-// };
+const alertBanner = {
+  show: true,
+  message: 'XRP Ledger Apex is back in Amsterdam',
+  button: 'Register Now',
+  link: 'https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=banner',
+};
 
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
@@ -109,12 +107,7 @@ export function Navbar(props) {
   if (pathname.includes("blog")) {
     return (
       <>
-        {/* <AlertBanner
-        show={alertBanner.show}
-        message={alertBanner.message}
-        button={alertBanner.button}
-        link={alertBanner.link}
-      /> */}
+      <div>Hello World</div>
         <NavWrapper>
           <LogoBlock to={href} img={logo} alt={altText} />
           <NavControls>
@@ -143,13 +136,13 @@ export function Navbar(props) {
   } else {
     return (
       <>
-        {/* <AlertBanner
+        <AlertBanner
         show={alertBanner.show}
         message={alertBanner.message}
         button={alertBanner.button}
         link={alertBanner.link}
-      /> */}
-        <NavWrapper>
+      />
+        <NavWrapper belowAlertBanner={true}>
           <LogoBlock to={href} img={logo} alt={altText} />
           <NavControls>
             <MobileMenuIcon />
@@ -179,16 +172,15 @@ const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
 `;
 
 export function AlertBanner(props) {
-  const { show, message, button, link } = props;
-
+  const { message, button, link } = props;
   return (
     <div className="top-banner fixed-top">
-      <div className="d-flex justify-content-center">
+      <div className="inner-apex">
         <span>
-          <p className="mb-0">{message}</p>
+          <p className="mb-0 apex-banner-text">{message}</p>
         </span>
         <span>
-          <a href={link} target="_blank" className="btn btn-outline-secondary">
+          <a href={link} target="_blank" className="apex-btn">
             {button}
           </a>
         </span>

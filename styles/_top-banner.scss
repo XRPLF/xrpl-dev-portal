@@ -1,88 +1,84 @@
-/* "pencil banner" style, currently unused */
 .top-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 46px;
   background: url(../img/backgrounds/bg-apex-banner.svg);
-  background-position: left;
+  background-position: center !important;
   background-size: cover;
   background-color: $blue-purple-500;
-  // padding: 2px 0;
   color: $white;
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 24px;
 
-  .btn {
-    margin-left: 4px;
-    font-size: 12px;
-    color: $white;
+  .inner-apex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .apex-banner-text {
+    color: #FFF;
+    font-family: "Work Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .apex-btn {
+    margin-left: 16px;
+    color: var(--Gray-100, #000);
+    font-family: "Work Sans";
+    font-size: 16px;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    align-items: center;
+    line-height: 100%;
+    letter-spacing: -0.16px;
     padding: 2px 4px;
-    border: 1px solid $white;
-    border-radius: 2px;
+    border-radius: 100px !important;
+    background: #18FF83;
+    width: 135px;
+    height: 28px;
+  }
 
-    @include media-breakpoint-up(md) {
-      margin-top: 9px;
-      margin-left: 16px;
-      font-size: 16px;
-      padding: 4px 8px;
-      border: 1.5px solid $white;
-      border-radius: 4px;
+  @media (max-width: 1024px) {
+    background: url(../img/backgrounds/bg-apex-banner-md.svg);
+
+    .apex-banner-text {
+      font-size: 18px;
+    }
+
+    .apex-btn {
+      width: 122px;
+      height: 26px;
+      font-size: 14px;
+      letter-spacing: -0.14px;
     }
   }
 
-  .btn-outline-secondary {
-    &:not(:disabled):not(.disabled):hover {
-      color: $gray-900;
-      background-color: $white;
+  @media (max-width: 535px) {
+    background: url(../img/backgrounds/bg-apex-banner-sm.svg);
+
+    .apex-btn {
+      margin-left: 0;
+      width: 85px;
+      height: 16px;
+      font-size: 10px;
+      line-height: 100%;
+      letter-spacing: -0.1px;
     }
-  }
 
-  p {
-    font-size: 12px;
-    line-height: 20px;
-    text-align: center;
-    margin: auto;
-
-    @include media-breakpoint-up(md) {
-      padding-top: 11px;
-      font-size: 16px;
-      width: initial;
-      line-height: 24px;
+    .apex-banner-text {
+      font-size: 12px;
+      line-height: 12px;
     }
-  }
-}
 
-$banner-top-offset: 108px;
-
-.floating-nav {
-  top: $banner-top-offset;
-}
-
-article h1:before,
-article h2:before,
-article h3:before,
-article h4:before,
-article h5:before,
-article h6:before,
-.interactive-block:before {
-  margin-top: -$banner-top-offset;
-  height: $banner-top-offset;
-}
-
-article h1:first-child:before {
-  margin-top: -$banner-top-offset;
-}
-
-html.light {
-  .top-banner {
-    .btn-outline-secondary {
-      color: $white;
-      border-color: $white;
-      &:not(:disabled):not(.disabled):hover {
-        color: $gray-900;
-        background-color: $white;
-        border-color: $white;
-      }
+    .inner-apex {
+      flex-direction: column;
+      gap: 8px;
     }
   }
 }
