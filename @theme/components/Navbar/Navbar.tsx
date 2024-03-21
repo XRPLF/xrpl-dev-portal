@@ -122,7 +122,7 @@ export function Navbar(props) {
           button={alertBanner.button}
           link={alertBanner.link}
         />
-        <NavWrapper>
+        <NavWrapper belowAlertBanner={true}>
           <LogoBlock to={href} img={logo} alt={altText} />
           <NavControls>
             <MobileMenuIcon />
