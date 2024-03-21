@@ -43,6 +43,14 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
                       <i className="fa fa-flask"></i>
                     </span>
                   )}
+                  {method.clio_only && (
+                    <span
+                      className="status clio_only"
+                      title="This method is only available from the Clio server."
+                    >
+                      <i className=" fa fa-exclamation-circle"></i>
+                    </span>
+                  )}
                 </Link>
               </li>
             ))}

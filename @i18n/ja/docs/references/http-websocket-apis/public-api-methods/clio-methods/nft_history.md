@@ -44,8 +44,7 @@ labels:
 
 {% /tabs %}
 
-<!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
-[試してみる >](websocket-api-tool.html#nft_history)-->
+[試してみる >](/resources/dev-tools/websocket-api-tool#nft_history)
 
 リクエストには以下のパラメーターが含まれます。
 

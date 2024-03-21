@@ -41,8 +41,7 @@ An example of the request format:
 
 {% /tabs %}
 
-<!-- To DO: Add an example command to the assets/js/apitool-methods-ws.js file. The WebSocket Tool requires access to a publicly available Clio server.
-[Try it! >](websocket-api-tool.html#nft_info)-->
+[Try it! >](/resources/dev-tools/websocket-api-tool#nft_info)
 
 The request contains the following parameters:
 
