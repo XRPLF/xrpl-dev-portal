@@ -51,7 +51,7 @@ _Figure 3: Transactions Applied to Ledger Version_
 
 The set of transactions included in a ledger instance are recorded in that ledger and allow audits of the XRP Ledger history. If an account balance is different in ledger N+1 than it was in ledger N, then ledger N+1 contains the transaction(s) responsible for the change.
 
-Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the **`tesSUCCESS`** [result code](../../references/protocol/transactions/transaction-results/transaction-results.md) which indicates the requested changes are applied to the ledger. Failed transactions in the ledger have **`tec`** class result codes.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
+Transactions that appear in a validated ledger may have succeeded in changing the ledger, or may have been processed without doing the requested action. Successful transactions have the **`tesSUCCESS`** [result code](../../references/protocol/transactions/transaction-results/index.md) which indicates the requested changes are applied to the ledger. Failed transactions in the ledger have **`tec`** class result codes.<a href="#footnote_1" id="from_footnote_1"><sup>1</sup></a>
 
 All transactions included in a ledger destroy some XRP as a [transaction cost](../transactions/transaction-cost.md), regardless of whether they had a **`tes`** or **`tec`** code. The exact amount of XRP to destroy is defined by the signed transaction instructions.
 

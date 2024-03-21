@@ -374,7 +374,7 @@
                     - page: docs/references/protocol/transactions/pseudo-transaction-types/enableamendment.md
                     - page: docs/references/protocol/transactions/pseudo-transaction-types/setfee.md
                     - page: docs/references/protocol/transactions/pseudo-transaction-types/unlmodify.md
-                - page: docs/references/protocol/transactions/transaction-results/transaction-results.md
+                - page: docs/references/protocol/transactions/transaction-results/index.md
                   expanded: false
                   items:
                     - page: docs/references/protocol/transactions/transaction-results/tec-codes.md

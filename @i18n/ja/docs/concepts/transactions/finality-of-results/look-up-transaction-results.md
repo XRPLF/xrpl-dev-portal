@@ -63,7 +63,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 }
 ```
 
-この例では、rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnというアドレスを持つ[アカウント](../../accounts/index.md)が、[シーケンス番号][] 376を使用して、[AccountSetトランザクション][]を送信したことを示しています。トランザクションの[識別用ハッシュ][]は`017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567`で、その[結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)は`tesSUCCESS`です。トランザクションは、検証済みのレジャーバージョン46447423に記録されたため、結果は最終的なものです。
+この例では、rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnというアドレスを持つ[アカウント](../../accounts/index.md)が、[シーケンス番号][] 376を使用して、[AccountSetトランザクション][]を送信したことを示しています。トランザクションの[識別用ハッシュ][]は`017DED8F5E20F0335C6F56E3D5EE7EF5F7E83FB81D2904072E665EEA69402567`で、その[結果](../../../references/protocol/transactions/transaction-results/index.md)は`tesSUCCESS`です。トランザクションは、検証済みのレジャーバージョン46447423に記録されたため、結果は最終的なものです。
 
 
 ### ケース: 検証済みレジャーに記録されていない
@@ -75,7 +75,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
 ### ケース: 検証済みレジャーに記録されている
 
-トランザクションが検証済みレジャーに記録 _されている_ 場合、[トランザクションメタデータ](../../../references/protocol/transactions/metadata.md)にはトランザクションの処理結果として、レジャーの状態に対して行われたすべての変更を網羅したレポートが含まれます。メタデータの`TransactionResult`フィールドには、以下のような、結果を要約した[トランザクション結果コード](../../../references/protocol/transactions/transaction-results/transaction-results.md)が含まれます。
+トランザクションが検証済みレジャーに記録 _されている_ 場合、[トランザクションメタデータ](../../../references/protocol/transactions/metadata.md)にはトランザクションの処理結果として、レジャーの状態に対して行われたすべての変更を網羅したレポートが含まれます。メタデータの`TransactionResult`フィールドには、以下のような、結果を要約した[トランザクション結果コード](../../../references/protocol/transactions/transaction-results/index.md)が含まれます。
 
 - コード`tesSUCCESS`は、トランザクションが、おおよそ成功したことを示します。
 - `tec`-クラスコードは、トランザクションが失敗したことを示します。このことがレジャーの状態に及ぼす影響は、XRP[トランザクションコスト](../transaction-cost.md)を消却し、場合によっては[有効期限切れのオファー](../../tokens/decentralized-exchange/offers.md#オファーの有効期限)の削除および[Payment Channelの閉鎖](../../payment-types/payment-channels.md#payment-channelのライフサイクル)などのブックキーピングを行うことだけです。
@@ -450,6 +450,6 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
 - **リファレンス:**
   - [レジャーオブジェクトタイプのリファレンス](../../../references/protocol/ledger-data/ledger-entry-types/index.md) - レジャーオブジェクトの使用可能なすべてのタイプのフィールド
   - [トランザクションのメタデータ](../../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要
-  - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md) - トランザクションのすべての結果コードを掲載した表一覧
+  - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md) - トランザクションのすべての結果コードを掲載した表一覧
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

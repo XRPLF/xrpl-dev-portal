@@ -343,7 +343,7 @@ WS_HANDLERS["transaction"] = log_tx
 
 - **`validated`フィールド**は、トランザクションの結果が[最終的である](../../concepts/transactions/finality-of-results/index.md)ことを示します。これは、`accounts`をサブスクライブする場合に常に当てはまりますが、`accounts_proposed`または`transactions_proposed`ストリーム _も_ サブスクライブしている場合は、サーバーは未確認のトランザクションに関して同様のメッセージを同じ接続で送信します。予防策として、`validated`フィールドを常に確認することをお勧めします。
 
-- **`meta.TransactionResult`フィールド**は、[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)です。結果が`tesSUCCESS`でない場合は、トランザクションは失敗したため、値を送信できません。
+- **`meta.TransactionResult`フィールド**は、[トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)です。結果が`tesSUCCESS`でない場合は、トランザクションは失敗したため、値を送信できません。
 
 - **`transaction.Account`** フィールドはトランザクションの送信元です。他の人が送信したトランザクションのみを探している場合は、このフィールドがあなたのアドレスと一致するトランザクションを無視できます（自身に対するクロスカレンシー支払いが _可能である_ 点に注意してください）。
 
@@ -508,6 +508,6 @@ $("#tx_read").click((event) => {
 - **リファレンス:**
   - [トランザクションのタイプ](../../references/protocol/transactions/types/index.md)
   - [トランザクションのメタデータ](../../references/protocol/transactions/metadata.md) - メタデータフォーマットとメタデータに表示されるフィールドの概要
-  - [トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md) - トランザクションのすべての結果コードを掲載した表一覧
+  - [トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md) - トランザクションのすべての結果コードを掲載した表一覧
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

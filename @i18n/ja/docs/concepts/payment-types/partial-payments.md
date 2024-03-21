@@ -51,7 +51,7 @@ Partial Paymentには次の制限事項があります。
 - Partial Paymentでは、XRP間の直接決済はできません。この場合、[結果コード][]`temBAD_SEND_XRP_PARTIAL`が返されます。
     - ただし、イシュアンスからXRPへの支払またはXRPからイシュアンスへの支払は、Partial Paymentが可能です。
 
-[結果コード]: ../../references/protocol/transactions/transaction-results/transaction-results.md
+[結果コード]: ../../references/protocol/transactions/transaction-results/index.md
 
 ### `delivered_amount`フィールド
 

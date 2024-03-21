@@ -27,7 +27,7 @@ Any other transaction result is potentially not final. In that case, the transac
 
 ## How can non-final results change?
 
-When you initially submit a transaction, the `rippled` server tentatively applies that transaction to its current open ledger, then returns the tentative [transaction results](../../../references/protocol/transactions/transaction-results/transaction-results.md) from doing so. However, the transaction's final result may be very different than its tentative results, for several reasons:
+When you initially submit a transaction, the `rippled` server tentatively applies that transaction to its current open ledger, then returns the tentative [transaction results](../../../references/protocol/transactions/transaction-results/index.md) from doing so. However, the transaction's final result may be very different than its tentative results, for several reasons:
 
 - The transaction may be delayed until a later ledger version, or may never be included in a validated ledger. For the most part, the XRP Ledger follows a principle that all valid transactions should be processed as soon as possible. However, there are exceptions, including:
 
@@ -55,6 +55,6 @@ When you initially submit a transaction, the `rippled` server tentatively applie
 ## See Also
 
 - [Look up Transaction Results](look-up-transaction-results.md)
-- [Transaction Results Reference](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+- [Transaction Results Reference](../../../references/protocol/transactions/transaction-results/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

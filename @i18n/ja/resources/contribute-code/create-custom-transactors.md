@@ -81,7 +81,7 @@ public:
     - [`LedgerFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/LedgerFormats.cpp)
     - [`TxFormats.cpp`](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TxFormats.cpp)
 
--` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/transaction-results.md)をご覧ください。
+-` rippled` はトランザクションの結果を結果コードで表します。[トランザクションの結果](../../docs/references/protocol/transactions/transaction-results/index.md)をご覧ください。
 
 ```c++
 CreateCheck::preflight(PreflightContext const& ctx)

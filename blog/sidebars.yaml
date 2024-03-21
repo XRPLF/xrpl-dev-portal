@@ -5,6 +5,7 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/get-ready-for-amm.md
         - page: 2024/verifyed.md
         - page: 2024/how-to-mint-nfts.md
         - page: 2024/rippled-2.1.0.md

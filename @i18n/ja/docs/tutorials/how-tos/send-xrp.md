@@ -177,7 +177,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 - トランザクションの送信に必要なTest Net XRPが十分にあるか。送金できるXRPの額は、[必要準備金](../../concepts/accounts/reserves.md)によって制限されています。現時点では、20XRPに加えて、レジャー内に保有している各「オブジェクト」につき5XRPずつ追加となります。（Test Net Faucetを使用して新しいアドレスを生成した場合は、保有するオブジェクトはありません。）
 - テストネットワークのサーバーに接続しているか。
 
-他の可能性については、[トランザクション結果](../../references/protocol/transactions/transaction-results/transaction-results.md)の完全なリストを参照してください。
+他の可能性については、[トランザクション結果](../../references/protocol/transactions/transaction-results/index.md)の完全なリストを参照してください。
 
 {% interactive-block label="Submit" steps=$frontmatter.steps %}
 

@@ -63,7 +63,7 @@ XRP Ledgerにトランザクションを送信するには、いくつかの手�
 3. `rippled`サーバーにトランザクションを送信します。トランザクションが適切に作成されている場合、サーバーはそのトランザクションを現行バージョンのレジャーに暫定的に適用し、そのトランザクションをピアツーピアネットワークの他のメンバーに中継します。
 4. [コンセンサスプロセス](../consensus-protocol/index.md)によって、次の検証済みレジャーに含まれる暫定的なトランザクションが決定されます。
 5. `rippled`サーバーはそれらのトランザクションを正規順序で前のレジャーに適用し、それらの結果を共有します。
-6. 十分に[信頼できるバリデータ](../networks-and-servers/rippled-server-modes.md#バリデータ)がまったく同じレジャーを作成した場合、そのレジャーは _検証済み_ であると宣言され、そのレジャーの[トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)は不変となります。
+6. 十分に[信頼できるバリデータ](../networks-and-servers/rippled-server-modes.md#バリデータ)がまったく同じレジャーを作成した場合、そのレジャーは _検証済み_ であると宣言され、そのレジャーの[トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)は不変となります。
 
 XRP決済の送信に関する対話型チュートリアルについては、[Send XRP](../../tutorials/how-tos/send-xrp.md)を参照してください。
 

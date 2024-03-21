@@ -497,6 +497,6 @@ This operation has only two possible outcomes:
 - A nonzero result, equal to the `lsfDisableMaster` value, indicates **the master key has been successfully disabled**.
 - A zero result indicates the account's master key is not disabled.
 
-If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method][]) and it should have the result code `tesSUCCESS`. If you see any other [result code](../../../references/protocol/transactions/transaction-results/transaction-results.md), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.
+If the result does not match your expectations, check whether the transaction you sent in the previous steps has executed successfully. It should be the most recent entry in the account's transaction history ([account_tx method][]) and it should have the result code `tesSUCCESS`. If you see any other [result code](../../../references/protocol/transactions/transaction-results/index.md), the transaction was not executed successfully. Depending on the cause of the error, you may want to restart these steps from the beginning.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

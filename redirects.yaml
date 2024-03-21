@@ -1,3 +1,6 @@
+'/docs/references/protocol/transactions/transaction-results/transaction-results/':
+    to: /docs/references/protocol/transactions/transaction-results/
+    type: 301
 xrp-ledger-rpc-tool.html:
     to: /resources/dev-tools/rpc-tool
     type: 301

@@ -74,6 +74,6 @@ Here are some scenarios that could cause the detector to issue false positive me
     - [Reliable Transaction Submission](../transactions/reliable-transaction-submission.md)
     - [Understanding Log Messages](../../infrastructure/troubleshooting/understanding-log-messages.md)
 - **References:**
-    - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [Transaction Results](../../references/protocol/transactions/transaction-results/index.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

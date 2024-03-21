@@ -43,7 +43,7 @@ The basis of any financial system is transferring value. The quickest and simple
     - [Monitor Incoming Payments with WebSocket](../../tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket.md)
 - **References:**
     - [Payment transaction][]
-    - [Transaction Results](../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [Transaction Results](../../references/protocol/transactions/transaction-results/index.md)
     - [account_info method][] - for checking XRP balances
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

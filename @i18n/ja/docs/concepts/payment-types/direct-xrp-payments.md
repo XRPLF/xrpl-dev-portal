@@ -84,7 +84,7 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
     - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 - **リファレンス:**
     - [Paymentトランザクション][]
-    - [トランザクションの結果](../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)
     - [account_infoメソッド][] - XRP残高を確認します。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

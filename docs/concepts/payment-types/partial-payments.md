@@ -53,7 +53,7 @@ Partial Payments have the following limitations:
 - Direct XRP-to-XRP payments cannot be partial payments; this case returns the [result code][] `temBAD_SEND_XRP_PARTIAL`.
     - However, cross-currency payments that involve XRP as one of the currencies _can_ be partial payments.
 
-[result code]: ../../references/protocol/transactions/transaction-results/transaction-results.md
+[result code]: ../../references/protocol/transactions/transaction-results/index.md
 
 ### The `delivered_amount` Field
 

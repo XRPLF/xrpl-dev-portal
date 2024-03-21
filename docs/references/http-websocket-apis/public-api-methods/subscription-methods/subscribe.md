@@ -86,7 +86,7 @@ The `streams` parameter provides access to the following default streams of info
 - `peer_status` - **(Admin only)** Information about connected peer `rippled` servers, especially with regards to the consensus process.
 - `transactions` - Sends a message whenever a transaction is included in a closed ledger.
 - `transactions_proposed` - Sends a message whenever a transaction is included in a closed ledger, as well as some transactions that have not yet been included in a validated ledger and may never be. Not all proposed transactions appear before validation.
-    **Note:** [Even some transactions that don't succeed are included](../../../protocol/transactions/transaction-results/transaction-results.md) in validated ledgers, because they take the anti-spam transaction fee.
+    **Note:** [Even some transactions that don't succeed are included](../../../protocol/transactions/transaction-results/index.md) in validated ledgers, because they take the anti-spam transaction fee.
 - `server` - Sends a message whenever the status of the `rippled` server (for example, network connectivity) changes.
 - `validations` - Sends a message whenever the server receives a validation message, regardless of if the server trusts the validator. (An individual `rippled` declares a ledger validated when the server receives validation messages from at least a quorum of trusted validators.)
 
@@ -361,8 +361,8 @@ Transaction stream messages have the following fields:
 | `Field`                 | Type                      | Description            |
 |:------------------------|:--------------------------|:-----------------------|
 | `type`                  | String                    | `transaction` indicates this is the notification of a transaction, which could come from several possible streams. |
-| `engine_result`         | String                    | String [Transaction result code](../../../protocol/transactions/transaction-results/transaction-results.md) |
-| `engine_result_code`    | Number                    | Numeric [transaction response code](../../../protocol/transactions/transaction-results/transaction-results.md), if applicable. |
+| `engine_result`         | String                    | String [Transaction result code](../../../protocol/transactions/transaction-results/index.md) |
+| `engine_result_code`    | Number                    | Numeric [transaction response code](../../../protocol/transactions/transaction-results/index.md), if applicable. |
 | `engine_result_message` | String                    | Human-readable explanation for the transaction response |
 | `ledger_current_index`  | Number - [Ledger Index][] | _(Unvalidated transactions only)_ The ledger index of the current in-progress [ledger version](../../../../concepts/ledgers/index.md) for which this transaction is currently proposed. |
 | `ledger_hash`           | String - [Hash][]         | _(Validated transactions only)_ The identifying hash of the ledger version that includes this transaction |

@@ -46,7 +46,7 @@ Normally, an [AMMWithdraw transaction][] automatically deletes an AMM and all as
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, AMMCreate transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
+Besides errors that can occur for all transactions, AMMCreate transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|

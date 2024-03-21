@@ -143,7 +143,7 @@ XRP Ledgerとのインフターフェイスに使用するソフトウェアか�
 - **リファレンス:**
     - [基本的なデータ型 - ハッシュ](../../../references/protocol/data-types/basic-data-types.md#ハッシュ)
     - [トランザクションの共通フィールド](../../../references/protocol/transactions/common-fields.md#グローバルフラグ)
-    - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/transaction-results.md)
+    - [トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md)
     - [シリアル化フォーマット](../../../references/protocol/binary-format.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

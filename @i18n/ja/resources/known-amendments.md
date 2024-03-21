@@ -1111,7 +1111,7 @@ XRP Ledgerの分散型取引所において、オファーの掛け合わせの�
 
 署名者は資金供給のあるアドレスでも資金供給のないアドレスでも可能です。署名者リストのうち資金供給のあるアドレスは、レギュラーキー（定義済みの場合）またはマスターキー（無効でない場合）を使用して署名できます。資金供給のないアドレスは、マスターキーを使用して署名できます。マルチシグトランザクションは、レギュラーキーで署名されたトランザクションと同じ権限を持ちます。
 
-SignerListを持つアドレスは、レギュラーキーが定義されていなくてもマスターキーを無効にすることができます。また、SignerListを持つアドレスは、マスターキーが無効な場合でもレギュラーキーを削除することができます。`tecMASTER_DISABLED`トランザクション結果コードは`tecNO_ALTERNATIVE_KEY`に名前が変更されます。`tecNO_REGULAR_KEY`トランザクション結果コードは廃止となり、`tecNO_ALTERNATIVE_KEY`に代わります。さらに、この修正は以下の新しい[トランザクション結果コード](../docs/references/protocol/transactions/transaction-results/transaction-results.md)を追加します。
+SignerListを持つアドレスは、レギュラーキーが定義されていなくてもマスターキーを無効にすることができます。また、SignerListを持つアドレスは、マスターキーが無効な場合でもレギュラーキーを削除することができます。`tecMASTER_DISABLED`トランザクション結果コードは`tecNO_ALTERNATIVE_KEY`に名前が変更されます。`tecNO_REGULAR_KEY`トランザクション結果コードは廃止となり、`tecNO_ALTERNATIVE_KEY`に代わります。さらに、この修正は以下の新しい[トランザクション結果コード](../docs/references/protocol/transactions/transaction-results/index.md)を追加します。
 
 * `temBAD_SIGNER`
 * `temBAD_QUORUM`

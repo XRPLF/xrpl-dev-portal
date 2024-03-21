@@ -53,7 +53,7 @@ Since each AMM instance involves an AccountRoot ledger entry, an AMM ledger entr
 
 ## Error Cases
 
-Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/transaction-results.md):
+Besides errors that can occur for all transactions, {% $frontmatter.seo.title %} transactions can result in the following [transaction result codes](../transaction-results/index.md):
 
 | Error Code          | Description                                  |
 |:--------------------|:---------------------------------------------|

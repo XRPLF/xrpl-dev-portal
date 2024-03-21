@@ -678,12 +678,12 @@ An example of a successful response:
 
 {% /tabs %}
 
-If the transaction fails with the following [result codes](../../../references/protocol/transactions/transaction-results/transaction-results.md), here are some things to check:
+If the transaction fails with the following [result codes](../../../references/protocol/transactions/transaction-results/index.md), here are some things to check:
 
 - **`tefBAD_AUTH`**: The regular key you signed your test transaction with doesn't match the regular key you set in the previous step. Check that the secret and address for your regular key pair match and double-check which values you used in each step.
 - **`tefBAD_AUTH_MASTER`** or **`temBAD_AUTH_MASTER`**: Your account doesn't have a regular key assigned. Check that the SetRegularKey transaction executed successfully. You can also use the [account_info method][] to confirm that your regular key is set in the `RegularKey` field as expected.
 
-For possible causes of other result codes, see [Transaction Results](../../../references/protocol/transactions/transaction-results/transaction-results.md).
+For possible causes of other result codes, see [Transaction Results](../../../references/protocol/transactions/transaction-results/index.md).
 
 
 ## See Also
