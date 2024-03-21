@@ -100,7 +100,9 @@ export function Badge(props: {
       "廃止": "red", // ja: obsolete
       "撤回": "red", // ja: withdrawn/removed/vetoed
       "new in": "blue",
-      "新規": "blue", // ja: new in"
+      "新規": "blue", // ja: new in
+      "updated in": "blue",
+      "更新": "blue", // ja: updated in
       "in development": "lightgrey",
       "開発中": "lightgrey", // ja: in development
     }
