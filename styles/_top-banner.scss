@@ -27,7 +27,7 @@
 
   .apex-btn {
     margin-left: 16px;
-    color: var(--Gray-100, #000);
+    color: var(--Gray-100, #000) !important;
     font-family: "Work Sans";
     font-size: 16px;
     font-style: normal;
@@ -39,7 +39,8 @@
     letter-spacing: -0.16px;
     padding: 2px 4px;
     border-radius: 100px !important;
-    background: #18FF83;
+    background: #18FF83 !important;
+    text-decoration: none !important;
     width: 135px;
     height: 28px;
   }
