@@ -1,23 +1,23 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { useThemeConfig } from '@theme/hooks/useThemeConfig';
-import { LanguagePicker } from '@theme/i18n/LanguagePicker';
-import { useI18n, useTranslate } from '@portal/hooks';
-import { slugify } from '../../helpers';
-import { Link } from '@portal/Link';
-import { ColorModeSwitcher } from '@theme/components/ColorModeSwitcher/ColorModeSwitcher';
-import { Search } from '@theme/components/Search/Search';
+import * as React from "react";
+import styled from "styled-components";
+import { useThemeConfig } from "@theme/hooks/useThemeConfig";
+import { LanguagePicker } from "@theme/i18n/LanguagePicker";
+import { useI18n, useTranslate } from "@portal/hooks";
+import { slugify } from "../../helpers";
+import { Link } from "@portal/Link";
+import { ColorModeSwitcher } from "@theme/components/ColorModeSwitcher/ColorModeSwitcher";
+import { Search } from "@theme/components/Search/Search";
 
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from "react-router-dom";
 
 // @ts-ignore
 // import navbar from '../../../top-nav.yaml';
 
 const alertBanner = {
   show: true,
-  message: 'XRP Ledger Apex is back in Amsterdam',
-  button: 'Register Now',
-  link: 'https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=banner',
+  message: "XRP Ledger Apex is back in Amsterdam",
+  button: "Register Now",
+  link: "https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=banner",
 };
 
 export function Navbar(props) {
@@ -28,11 +28,19 @@ export function Navbar(props) {
   const logo = themeConfig.logo;
 
   const { href, altText, items } = props;
-  const pathPrefix = '';
+  const pathPrefix = "";
 
   const navItems = menu.map((item, index) => {
-    if (item.type === 'group') {
-      return <NavDropdown key={index} label={item.label} labelTranslationKey={item.labelTranslationKey} items={item.items} pathPrefix={pathPrefix} />;
+    if (item.type === "group") {
+      return (
+        <NavDropdown
+          key={index}
+          label={item.label}
+          labelTranslationKey={item.labelTranslationKey}
+          items={item.items}
+          pathPrefix={pathPrefix}
+        />
+      );
     } else {
       return (
         <NavItem key={index}>
@@ -44,70 +52,76 @@ export function Navbar(props) {
     }
   });
 
- const { pathname } = useLocation();
- const blogNavs = getBlogNavigationConfig();
+  const { pathname } = useLocation();
+  const blogNavs = getBlogNavigationConfig();
 
- const blogNavItems = [];
- for (const blogNav of blogNavs) {
-   if (blogNav.type === "group") {
-     blogNavItems.push(
-       <NavDropdown
-         key={blogNav.index}
-         label={blogNav.label}
-         items={blogNav.items}
-         pathPrefix={pathPrefix}
-       />
-     );
-   } else {
-     blogNavItems.push(
-       <NavItem key={blogNav.index}>
-         <Link to={blogNav.link} className="nav-link">
-           {blogNav.label}
-         </Link>
-       </NavItem>
-     );
-   }
- }
+  const blogNavItems = [];
+  for (const blogNav of blogNavs) {
+    if (blogNav.type === "group") {
+      blogNavItems.push(
+        <NavDropdown
+          key={blogNav.index}
+          label={blogNav.label}
+          items={blogNav.items}
+          pathPrefix={pathPrefix}
+        />
+      );
+    } else {
+      blogNavItems.push(
+        <NavItem key={blogNav.index}>
+          <Link to={blogNav.link} className="nav-link">
+            {blogNav.label}
+          </Link>
+        </NavItem>
+      );
+    }
+  }
 
   React.useEffect(() => {
     // Turns out jQuery is necessary for firing events on Bootstrap v4
     // dropdowns. These events set classes so that the search bar and other
     // submenus collapse on mobile when you expand one submenu.
-    const dds = $('#topnav-pages .dropdown');
-    const top_main_nav = document.querySelector('#top-main-nav');
-    dds.on('show.bs.dropdown', evt => {
-      top_main_nav.classList.add('submenu-expanded');
+    const dds = $("#topnav-pages .dropdown");
+    const top_main_nav = document.querySelector("#top-main-nav");
+    dds.on("show.bs.dropdown", (evt) => {
+      top_main_nav.classList.add("submenu-expanded");
     });
-    dds.on('hidden.bs.dropdown', evt => {
-      top_main_nav.classList.remove('submenu-expanded');
+    dds.on("hidden.bs.dropdown", (evt) => {
+      top_main_nav.classList.remove("submenu-expanded");
     });
     // Close navbar on .dropdown-item click
-  const toggleNavbar = () => {
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const isNavbarCollapsed = navbarToggler.getAttribute('aria-expanded') === 'true';
-    if (isNavbarCollapsed) {
-      navbarToggler.click(); // Simulate click to toggle navbar
-    }
-  };
+    const toggleNavbar = () => {
+      const navbarToggler = document.querySelector(".navbar-toggler");
+      const isNavbarCollapsed =
+        navbarToggler.getAttribute("aria-expanded") === "true";
+      if (isNavbarCollapsed) {
+        navbarToggler.click(); // Simulate click to toggle navbar
+      }
+    };
 
-  const dropdownItems = document.querySelectorAll('.dropdown-item');
-  dropdownItems.forEach(item => {
-    item.addEventListener('click', toggleNavbar);
-  });
-
-  // Cleanup function to remove event listeners
-  return () => {
-    dropdownItems.forEach(item => {
-      item.removeEventListener('click', toggleNavbar);
+    const dropdownItems = document.querySelectorAll(".dropdown-item");
+    dropdownItems.forEach((item) => {
+      item.addEventListener("click", toggleNavbar);
     });
-  };
-  },[]);
+
+    // Cleanup function to remove event listeners
+    return () => {
+      dropdownItems.forEach((item) => {
+        item.removeEventListener("click", toggleNavbar);
+      });
+    };
+  }, []);
 
   // Render a different top nav for the Blog site.
   if (pathname.includes("blog")) {
     return (
       <>
-      <div>Hello World</div>
+        <AlertBanner
+          show={alertBanner.show}
+          message={alertBanner.message}
+          button={alertBanner.button}
+          link={alertBanner.link}
+        />
         <NavWrapper>
           <LogoBlock to={href} img={logo} alt={altText} />
           <NavControls>
@@ -137,11 +151,11 @@ export function Navbar(props) {
     return (
       <>
         <AlertBanner
-        show={alertBanner.show}
-        message={alertBanner.message}
-        button={alertBanner.button}
-        link={alertBanner.link}
-      />
+          show={alertBanner.show}
+          message={alertBanner.message}
+          button={alertBanner.button}
+          link={alertBanner.link}
+        />
         <NavWrapper belowAlertBanner={true}>
           <LogoBlock to={href} img={logo} alt={altText} />
           <NavControls>
@@ -191,7 +205,10 @@ export function AlertBanner(props) {
 
 export function TopNavCollapsible(props) {
   return (
-    <div className="collapse navbar-collapse justify-content-between" id="top-main-nav">
+    <div
+      className="collapse navbar-collapse justify-content-between"
+      id="top-main-nav"
+    >
       {props.children}
     </div>
   );
@@ -204,7 +221,9 @@ export function NavDropdown(props) {
   const dropdownGroups = items.map((item, index) => {
     if (item.items) {
       const groupLinks = item.items.map((item2, index2) => {
-        const cls2 = item2.external ? 'dropdown-item external-link' : 'dropdown-item';
+        const cls2 = item2.external
+          ? "dropdown-item external-link"
+          : "dropdown-item";
         let item2_href = item2.link;
         if (item2_href && !item2_href.match(/^https?:/)) {
           item2_href = pathPrefix + item2_href;
@@ -216,7 +235,7 @@ export function NavDropdown(props) {
         );
       });
 
-      const clnm = 'navcol col-for-' + slugify(item.label);
+      const clnm = "navcol col-for-" + slugify(item.label);
 
       return (
         <div key={index} className={clnm}>
@@ -225,19 +244,24 @@ export function NavDropdown(props) {
         </div>
       );
     } else if (item.icon) {
-      const hero_id = 'dropdown-hero-for-' + slugify(label);
-      const img_alt = item.label + ' icon';
+      const hero_id = "dropdown-hero-for-" + slugify(label);
+      const img_alt = item.label + " icon";
 
       let hero_href = item.link;
       if (hero_href && !hero_href.match(/^https?:/)) {
         hero_href = pathPrefix + hero_href;
       }
-      const splitlabel = item.label.split(" || ")
-      const newlabel = splitlabel[0]
-      const description = splitlabel[1] // might be undefined, that's ok
+      const splitlabel = item.label.split(" || ");
+      const newlabel = splitlabel[0];
+      const description = splitlabel[1]; // might be undefined, that's ok
 
       return (
-        <a key={index} className="dropdown-item dropdown-hero" id={hero_id} href={hero_href}>
+        <a
+          key={index}
+          className="dropdown-item dropdown-hero"
+          id={hero_id}
+          href={hero_href}
+        >
           <img id={item.hero} alt={img_alt} src={item.icon} />
           <div className="dropdown-hero-text">
             <h4>{newlabel}</h4>
@@ -246,7 +270,9 @@ export function NavDropdown(props) {
         </a>
       );
     } else {
-      const cls = item.external ? 'dropdown-item ungrouped external-link' : 'dropdown-item ungrouped';
+      const cls = item.external
+        ? "dropdown-item ungrouped external-link"
+        : "dropdown-item ungrouped";
       let item_href = item.link;
       if (item_href && !item_href.match(/^https?:/)) {
         item_href = pathPrefix + item_href;
@@ -259,8 +285,8 @@ export function NavDropdown(props) {
     }
   });
 
-  const toggler_id = 'topnav_' + slugify(label);
-  const dd_id = 'topnav_dd_' + slugify(label);
+  const toggler_id = "topnav_" + slugify(label);
+  const dd_id = "topnav_dd_" + slugify(label);
 
   return (
     <li className="nav-item dropdown">
@@ -286,7 +312,7 @@ export function NavWrapper(props) {
   return (
     <nav
       className="top-nav navbar navbar-expand-lg navbar-dark fixed-top"
-      style={props.belowAlertBanner ? { marginTop: '46px' } : {}}
+      style={props.belowAlertBanner ? { marginTop: "46px" } : {}}
     >
       {props.children}
     </nav>
@@ -321,7 +347,11 @@ export function GetStartedButton() {
   const { translate } = useTranslate();
 
   return (
-    <a className="btn btn-primary" href={"/docs/tutorials"} style={{ height: "38px", paddingTop: "11px"}}>
+    <a
+      className="btn btn-primary"
+      href={"/docs/tutorials"}
+      style={{ height: "38px", paddingTop: "11px" }}
+    >
       {translate("Get Started")}
     </a>
   );
@@ -350,28 +380,33 @@ export function LogoBlock(props) {
 
 export class ThemeToggle extends React.Component {
   auto_update_theme() {
-    const upc = window.localStorage.getItem('user-prefers-color');
-    let theme = 'dark'; // Default to dark theme
+    const upc = window.localStorage.getItem("user-prefers-color");
+    let theme = "dark"; // Default to dark theme
     if (!upc) {
       // User hasn't saved a preference specifically for this site; check
       // the browser-level preferences.
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-        theme = 'light';
+      if (
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: light)").matches
+      ) {
+        theme = "light";
       }
     } else {
       // Follow user's saved setting.
-      theme = upc == 'light' ? 'light' : 'dark';
+      theme = upc == "light" ? "light" : "dark";
     }
-    const disable_theme = theme == 'dark' ? 'light' : 'dark';
+    const disable_theme = theme == "dark" ? "light" : "dark";
     document.documentElement.classList.add(theme);
     document.documentElement.classList.remove(disable_theme);
   }
 
   user_choose_theme() {
-    const new_theme = document.documentElement.classList.contains('dark') ? 'light' : 'dark';
-    window.localStorage.setItem('user-prefers-color', new_theme);
-    document.body.style.transition = 'background-color .2s ease';
-    const disable_theme = new_theme == 'dark' ? 'light' : 'dark';
+    const new_theme = document.documentElement.classList.contains("dark")
+      ? "light"
+      : "dark";
+    window.localStorage.setItem("user-prefers-color", new_theme);
+    document.body.style.transition = "background-color .2s ease";
+    const disable_theme = new_theme == "dark" ? "light" : "dark";
     document.documentElement.classList.add(new_theme);
     document.documentElement.classList.remove(disable_theme);
   }
