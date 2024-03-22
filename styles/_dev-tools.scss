@@ -1,5 +1,14 @@
 /* Dev Tool styles stuff ---------------------------------------------------- */
 
+.command-list-wrapper {
+  // WebSocket Tool right sidebar
+  position: sticky;
+  top: calc(var(--navbar-height) + var(--toc-offset-top));
+  max-height: calc(100vh - var(--navbar-height) - var(--toc-offset-top));
+  overflow-y: auto;
+  width: var(--toc-width);
+}
+
 #tx-sender-history .list-group-item {
   font-size: small;
   color: $gray-600;

@@ -4,7 +4,8 @@ export interface CommandMethod {
   link: string
   body: any
   ws_only?: boolean,
-  status?: 'not_enabled'
+  status?: 'not_enabled',
+  clio_only?: boolean
 }
 
 export interface CommandGroup {
