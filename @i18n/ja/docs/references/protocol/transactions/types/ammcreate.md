@@ -5,12 +5,11 @@ seo:
     description: 指定された資産ペアを取引するための新しい自動マーケットメーカーを作成します。
 labels:
   - AMM
-status: not_enabled
 ---
 # AMMCreate
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMCreate.cpp "Source")
 
-_([AMM amendment][] {% not-enabled /%}が必要です。)_
+_([AMM amendment][])_
 
 資産（[代替可能トークン](../../../../concepts/tokens/index.md)または[XRP](../../../../introduction/what-is-xrp.md)）のペアを取引するための新しい[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを作成します。
 

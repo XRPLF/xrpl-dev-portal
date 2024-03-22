@@ -5,12 +5,11 @@ seo:
     description: Return LPTokens into an Automated Market Maker in exchange for a share of the assets the pool holds.
 labels:
   - AMM
-status: not_enabled
 ---
 # AMMWithdraw
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 
-_(Requires the [AMM amendment][] {% not-enabled /%})_
+_(Requires the [AMM amendment][])_
 
 Withdraw assets from an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance by returning the AMM's liquidity provider tokens (LP Tokens).
 

@@ -4,7 +4,6 @@ parent: decentralized-exchange.html
 seo:
     title: What Is an Automated Market Maker (AMM)?
     description: Automated Market Makers (AMMs) are an essential part of cryptocurrency, providing liquidity between asset pairs. Learn more about AMMs and the XRP Ledger.
-status: not_enabled
 labels:
   - XRP
   - Decentralized Exchange
@@ -12,7 +11,7 @@ labels:
 ---
 # What Is an Automated Market Maker (AMM)?
 
-_(Requires the XLS-30 [AMM amendment][] {% not-enabled /%})_
+_(Requires the XLS-30 [AMM amendment][])_
 
 Automated Market Makers (AMMs) are smart contracts that provide liquidity in the XRP Ledger's decentralized exchange. Each AMM holds a pool of two assets and enables users to swap between them at an exchange rate set by a formula.
 

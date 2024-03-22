@@ -3,14 +3,13 @@ html: automated-market-makers.html
 parent: decentralized-exchange.html
 seo:
     description: 自動マーケットメーカー（AMM）は、資産ペア間の流動性を提供し、分散型取引所のオーダーブックを補完すると同時に、流動性提供者に利益を提供します。
-status: not_enabled
 labels:
   - XRP
   - 分散型取引所
   - AMM
 ---
 # 自動マーケットメーカー
-_([AMM amendment][] {% not-enabled /%}が必要です。)_
+_([AMM amendment][])_
 
 自動マーケットメーカー(AMM)は、XRP Ledgerの分散型取引所において流動性を提供するスマートコントラクトです。個々のAMMは2つの資産のプールを保有し、数式で定められた取引レートでユーザーがその2つの資産間でスワップを可能とします。
 
