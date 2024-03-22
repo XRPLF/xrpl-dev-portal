@@ -137,7 +137,7 @@ The response follows the [standard format][], with a successful result containin
 | `issuer`                          | String          | The account ID which denotes the issuer of this NFT. |
 | `nft_taxon`                       | Integer         | The NFT’s taxon. |
 | `nft_serial`                      | Integer         | The NFT’s sequence number. |
-| `uri`                             | String          | _(Omitted if the NFT is burned at this ledger.)_. This field is an empty string if the NFT is not burned at this ledger but does not have a URI. If the NFT is not burned at this ledger and it does have a URI, this field is a string containing the URI of the NFT. NOTE: If you need to retrieve the URI of a burnt token, re-request `nft_info` for this token, specifying the `ledger_index` as the one previous to the index where this token was burned ({_ledger-index-where-token-was-burned_} - 1). |
+| `uri`                             | String          | The NFT's URI, or an empty string if the NFT does not have a URI. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" %}Updated in: Clio v2.0.0{% /badge %} |
 
 
 ## Possible Errors
