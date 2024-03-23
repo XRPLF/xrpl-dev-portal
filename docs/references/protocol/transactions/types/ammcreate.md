@@ -5,12 +5,11 @@ seo:
     description: Create a new Automated Market Maker for trading a given pair of assets.
 labels:
   - AMM
-status: not_enabled
 ---
 # AMMCreate
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMCreate.cpp "Source")
 
-_(Requires the [AMM amendment][] {% not-enabled /%})_
+_(Requires the [AMM amendment][])_
 
 Create a new [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) (AMM) instance for trading a pair of assets ([fungible tokens](../../../../concepts/tokens/index.md) or [XRP](../../../../introduction/what-is-xrp.md)).
 

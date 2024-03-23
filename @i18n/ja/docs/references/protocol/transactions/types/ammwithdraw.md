@@ -5,12 +5,11 @@ seo:
     description: LPトークを自動マーケットメーカーに返却し、プールが保有する資産の一部と引き換えマス。
 labels:
   - AMM
-status: not_enabled
 ---
 # AMMWithdraw
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMWithdraw.cpp "Source")
 
-_([AMM amendment][] {% not-enabled /%}が必要です。)_
+_([AMM amendment][])_
 
 AMMの流動性プロバイダトークン（LPトークン）を返却することで、[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスから資産を引き出します。
 

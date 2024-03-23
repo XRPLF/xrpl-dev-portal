@@ -56,7 +56,7 @@ XRP Ledgerのアカウントとは、XRPの保有者と取引の送信者を意�
 
 パスは、支払いが送信者から受信者に届くまでに中間ステップでたどる道筋を定義します。パスは、送信者と受信者をオーダーブックを介してつなぐことで、クロスカレンシー支払いを可能にします。パスと他のオーダーブックに関しては、以下のメソッドを使用します。
 
-* **[`amm_info`](path-and-order-book-methods/amm_info.md)** {% not-enabled /%} - 自動マーケットメイカー(AMM)についての情報を取得します。
+* **[`amm_info`](path-and-order-book-methods/amm_info.md)** - 自動マーケットメイカー(AMM)についての情報を取得します。
 * **[`book_offers`](path-and-order-book-methods/book_offers.md)** - 2つの通貨を交換するオファーに関する情報を取得します。
 * **[`deposit_authorized`](path-and-order-book-methods/deposit_authorized.md)** - あるアカウントが別のアカウントへの支払いの直接送信について承認されているかどうかを調べます。
 * **[`nft_buy_offers`](path-and-order-book-methods/nft_buy_offers.md)** - Retrieve a list of buy offers for a specified NFToken object.

@@ -5,12 +5,11 @@ seo:
     description: 空のプールを持つ自動マーケットメーカーのインスタンスを削除します。
 labels:
   - AMM
-status: not_enabled
 ---
 # AMMDelete
 [[ソース]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/app/tx/impl/AMMDelete.cpp "Source")
 
-_([AMM amendment][] {% not-enabled /%} が必要です)_
+_([AMM amendment][])_
 
 自動で削除しきれなかった空の[自動マーケットメーカー](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)(AMM)インスタンスを削除します。
 

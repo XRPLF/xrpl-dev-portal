@@ -3,7 +3,6 @@ html: amm_info.html
 parent: path-and-order-book-methods.html
 seo:
     description: Get info about an Automated Market Maker (AMM) instance.
-status: not_enabled
 labels:
   - Decentralized Exchange
   - Cross-Currency
@@ -14,7 +13,7 @@ labels:
 
 The {% code-page-name /%} method gets information about an Automated Market Maker (AMM) instance.
 
-_(Requires the [AMM amendment][] {% not-enabled /%})_
+_(Requires the [AMM amendment][])_
 
 
 ### Request Format

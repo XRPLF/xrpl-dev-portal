@@ -60,7 +60,7 @@ By default, the following methods are [admin-only](../admin-api-methods/index.md
 
 Paths define a way for payments to flow through intermediary steps on their way from sender to receiver. Paths enable cross-currency payments by connecting sender and receiver through order books. Use these methods to work with paths and other books.
 
-* **[`amm_info`](path-and-order-book-methods/amm_info.md)** {% not-enabled /%} - Get info about an Automated Market Maker (AMM).
+* **[`amm_info`](path-and-order-book-methods/amm_info.md)** - Get info about an Automated Market Maker (AMM).
 * **[`book_offers`](path-and-order-book-methods/book_offers.md)** - Get info about offers to exchange two currencies.
 * **[`deposit_authorized`](path-and-order-book-methods/deposit_authorized.md)** - Look up whether one account is authorized to send payments directly to another. <!-- STYLE_OVERRIDE: is authorized to -->
 * **[`nft_buy_offers`](path-and-order-book-methods/nft_buy_offers.md)** - Retrieve a list of buy offers for a specified NFToken object.
