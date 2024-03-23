@@ -2191,3 +2191,15 @@ blog/2014/curves-with-a-twist.html:
 blog/2014/introducing-ripple-names.html:
     to: /blog/2014/introducing-ripple-names
     type: 301
+code_of_conduct/:
+    to: /code-of-conduct
+    type: 301
+code_of_conduct:
+    to: /code-of-conduct
+    type: 301
+code_of_conduct.ja/:
+    to: /ja/code-of-conduct
+    type: 301
+code_of_conduct.ja:
+    to: /ja/code-of-conduct
+    type: 301
