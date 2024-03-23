@@ -44,7 +44,7 @@ AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](../../ledge
 | `Amount2`    | [通貨額][] | Amount     | はい   | このAMMの最初の資金となる2つの資産のうち、2つ目の資産です。これは正数である必要があります。 |
 | `TradingFee` | 数値       | UInt16     | はい  | このAMMインスタンスに対する取引に課される手数料を1/100,000単位で指定します（値1は0.001%に相当）。最大値は`1000`で、1%の手数料を意味します。最小値は `0`です。 |
 
-`Amount`と`Amount2`の一方または両方は[トークン](../../../../concepts/tokens/index.md)であり、最大でどちらか一方を[XRP](../../../../introduction/what-is-xrp.md)にすることが可能です。通貨コードと発行者が同じものは使用できません。AMMのLPトークンは、別のAMMの資産の1つとして使用することができます。トークンの発行者は[Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#defaultrippleフラグ)を有効にしていなければなりません。[Clawback Amendment][] {% not-enabled /%} が有効になっている場合、それらの発行者はAllow Clawbackフラグを有効にしていてはいけません。AMMのLPトークンは、別のAMMの資産の一つとして使用することはできません。
+`Amount`と`Amount2`の一方または両方は[トークン](../../../../concepts/tokens/index.md)であり、最大でどちらか一方を[XRP](../../../../introduction/what-is-xrp.md)にすることが可能です。通貨コードと発行者が同じものは使用できません。AMMのLPトークンは、別のAMMの資産の1つとして使用することができます。トークンの発行者は[Default Ripple](../../../../concepts/tokens/fungible-tokens/rippling.md#defaultrippleフラグ)を有効にしていなければなりません。[Clawback Amendment][] が有効になっている場合、それらの発行者はAllow Clawbackフラグを有効にしていてはいけません。AMMのLPトークンは、別のAMMの資産の一つとして使用することはできません。
 
 ## 特殊なトランザクションコスト
 
@@ -56,7 +56,7 @@ AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](../../ledge
 
 | エラーコード          | 説明                                          |
 |:--------------------|:---------------------------------------------|
-| `temDISABLED`       | このネットワークでは、AMM機能 {% not-enabled /%} は有効ではありません。 |
+| `temDISABLED`       | このネットワークでは、AMM機能 |
 | `temINVALID_FLAG`   | トランザクションに無効な`Flags`値が指定されています。現在、このトランザクションタイプに定義されたフラグはないので、[グローバルフラグ](../common-fields.md#グローバルフラグ)のみが許可されます。 |
 | `temBAD_AMM_TOKENS` | `Amount`と`Amount2`値が正しくありません。例えば、両方とも同じトークンを参照している場合です。 |
 | `temBAD_FEE`        | `TradingFee`の値が不正です。ゼロまたは正の整数でなければならず、1000を超えることはできません。 |

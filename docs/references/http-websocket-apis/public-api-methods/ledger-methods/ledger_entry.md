@@ -32,7 +32,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
 
 - [`index`](#get-ledger-object-by-id)
 - [`account_root`](#get-accountroot-object)
-- [`amm`](#get-amm-object) {% not-enabled /%}
+- [`amm`](#get-amm-object)
 - [`directory`](#get-directorynode-object)
 - [`offer`](#get-offer-object)
 - [`ripple_state`](#get-ripplestate-object)
@@ -150,7 +150,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 ### Get AMM Object
 
-_(Requires the [AMM amendment][] {% not-enabled /%})_
+_(Requires the [AMM amendment][])_
 
 Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar to [amm_info method][], but the `ledger_entry` version returns only the ledger entry as stored.
 

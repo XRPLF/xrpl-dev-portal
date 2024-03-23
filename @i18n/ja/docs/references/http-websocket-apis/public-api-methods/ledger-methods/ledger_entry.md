@@ -33,7 +33,7 @@ label:
 - [`index`](#idからレジャーオブジェクトを取得する)
 - [`account_root`](#accountrootオブジェクトを取得する)
 - [`directory`](#directorynodeオブジェクトを取得する)
-- [`amm`](#ammオブジェクトを取得する) {% not-enabled /%}
+- [`amm`](#ammオブジェクトを取得する)
 - [`offer`](#offerオブジェクトを取得する)
 - [`ripple_state`](#ripplestateオブジェクトを取得する)
 - [`check`](#checkオブジェクトを取得する)
@@ -150,7 +150,7 @@ rippled json ledger_entry '{ "account_root": "r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59
 
 ### AMMオブジェクトを取得する
 
-_([AMM amendment][] {% not-enabled /%}が必要です。)_
+_([AMM amendment][])_
 
 レジャーからAutomated Market-Maker(AMM)オブジェクトを取得します。これは[amm_infoメソッド][]と似ていますが、`ledger_entry`は保存されているレジャーエントリのみを返します。
 
