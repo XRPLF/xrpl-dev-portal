@@ -58,7 +58,7 @@ An example of the request format:
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#amm_info)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.altnet.rippletest.net%3A51233%2F#amm_info)
 
 The request includes the following parameters:
 
