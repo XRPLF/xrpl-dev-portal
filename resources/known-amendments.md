@@ -211,7 +211,7 @@ Adds several new transaction result codes.
 |:-------------|:----|
 | Amendment ID | 8CC0774A3BF66D1D22E76BBDA8E8A232E6B6313834301B3B23E8601196AE6455 |
 | Status       | Enabled |
-| Default Vote (Latest stable release) | Yes |
+| Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
 Adds Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.
