@@ -2,7 +2,7 @@
 html: negativeunl.html
 parent: ledger-entry-types.html
 seo:
-    description: 現在オフラインと思われるバリデーターの一覧を表します。
+    description: 現在オフラインと思われるバリデータの一覧を表します。
 labels:
   - ブロックチェーン
 ---
@@ -41,7 +41,7 @@ _([NegativeUNL amendment][]により追加されました。)_
 | `Flags`               | 数値     | UInt32      | はい  | 真偽値フラグのビットマップ。NegativeUNLオブジェクトタイプにはフラグが定義されていないため、この値は常に`0`となります。 |
 | `LedgerEntryType`     | 文字列    | UInt16     | はい  | `0x004E`は文字列`NegativeUNL`に対応し、このオブジェクトがNegativeUNLであることを意味します。 |
 | `ValidatorToDisable`  | 文字列    | Blob       | いいえ | 次回のフラグレジャーで無効化される予定の信頼できるバリデータの公開鍵を表します。 |
-| `ValidatorToReEnable` | 文字列    | Blob       | いいえ | 次回のフラグレジャーで再有効化される予定のネガティブUNLの信頼できるバリデーターの公開鍵を表します。 |
+| `ValidatorToReEnable` | 文字列    | Blob       | いいえ | 次回のフラグレジャーで再有効化される予定のネガティブUNLの信頼できるバリデータの公開鍵を表します。 |
 
 ## DisabledValidatorオブジェクト
 
