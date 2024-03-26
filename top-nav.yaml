@@ -38,6 +38,7 @@
       items:
         - page: ./docs/concepts/index.md
         - page: ./docs/tutorials/index.md
+          label: Tutorials
         - page: ./docs/references/index.md
         - page: ./docs/infrastructure/index.md
     - group: Use Cases
