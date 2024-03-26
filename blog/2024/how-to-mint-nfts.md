@@ -6,7 +6,10 @@ seo:
     description:  Learn the basics of minting an NFT on XRP Ledger and how you can get started quickly and easily today.
 labels:
     - Development
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # How to Mint an NFT on the XRP Ledger: A Step-by-Step Guide
 

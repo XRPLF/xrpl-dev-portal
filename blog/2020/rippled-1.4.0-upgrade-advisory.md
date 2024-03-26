@@ -1,3 +1,14 @@
+---
+category: 2020
+date: 2020-01-13
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
+
 # XRP Ledger version 1.4.0 Upgrade Advisory
 
 Version 1.4.0 of the XRP Ledger core server (`rippled`) contains a change that can cause upgrades to take much longer than usual.
@@ -18,20 +29,26 @@ If needed, a workaround is possible. However, we do not recommend this procedure
 
 The following workaround can reduce `rippled`'s initial startup time after upgrading to version 1.4.0. It requires making changes to one of the SQL databases maintained by the server. Instead of deleting the unneeded data, this workaround renames the table. The old data continues to take up disk space on the server.
 
-**WARNING:** We do not recommend this procedure to anyone not familiar with sqlite3.
+{% admonition type="danger" name="WARNING" %}
+We do not recommend this procedure to anyone not familiar with sqlite3.
+{% /admonition %}
 
 1. Install the required tool: `sqlite3`. This is operating-system dependent.
     
     On Ubuntu you can use the following commands:
 
-        sudo apt-get update
-        sudo apt-get install sqlite3
+    ```sh
+    sudo apt-get update
+    sudo apt-get install sqlite3
+    ```
 
 2. Stop your `rippled` instance.
 
     This is operating-system dependent. On Linux, you can use the following commands:
 
-        sudo systemctl stop rippled.service
+    ```sh
+    sudo systemctl stop rippled.service
+    ```
 
 3. Read your configuration file and find the `[database_path]` stanza.
 
@@ -45,19 +62,27 @@ The following workaround can reduce `rippled`'s initial startup time after upgra
     
 5. Open the `ledger.db` file using the SQLite commandline:
     
-        sqlite3 ledger.db
+    ```sh
+    sqlite3 ledger.db
+    ```
     
 6. Execute the following command (the trailing semicolon is required):
 
-        ALTER TABLE Validations RENAME TO OldValidations;
+    ```sql
+    ALTER TABLE Validations RENAME TO OldValidations;
+    ```
     
 7. Execute the following command (the leading period is required):
 
-        .quit
+    ```text
+    .quit
+    ```
 
 8. You should now be able to start `rippled` without experiencing any delay.
 
-        sudo systemctl start rippled.service
+    ```sh
+    sudo systemctl start rippled.service
+    ```
 
 For general instructions on upgrading `rippled` on supported platforms, see [Install `rippled`](https://xrpl.org/install-rippled.html).
 

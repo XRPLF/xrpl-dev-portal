@@ -3,7 +3,10 @@ category: 2023
 date: 2023-07-25
 labels:
     - Features
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Summarizing the Information Architecture v3 Updates (PR#1934)
 

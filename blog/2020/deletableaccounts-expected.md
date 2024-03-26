@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-04-28
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # DeletableAccounts and Two Other Amendments Expected Soon
 
 Three amendments to the XRP Ledger protocol currently hold support of a majority of trusted validators, and are expected to become enabled on the following dates (in UTC):

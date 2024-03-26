@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-04-10
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing XRP Ledger version 1.5.0
 
 **XRP Ledger (`rippled` server) version 1.5.0** has been released. The `rippled` 1.5.0 release introduces several improvements and new features, including support for gRPC API, API versioning, UNL propagation via the peer network, new RPC methods `validator_info` and `manifest`, augmented `submit` method, improved `tx` method, improved CLI parsing, improved protocol-level handshaking protocol, improved package building and various other minor bug fixes and improvements.

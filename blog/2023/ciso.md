@@ -3,7 +3,10 @@ category: 2023
 date: 2023-06-07
 labels:
     - Developer Reflections
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Developer Reflections: CISO Integration for the XRP Ledger
 

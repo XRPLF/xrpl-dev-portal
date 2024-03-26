@@ -3,7 +3,10 @@ category: 2022
 date: 2022-06-29
 labels:
     - Clio Release Notes
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Introducing Clio version 1.0.0
 

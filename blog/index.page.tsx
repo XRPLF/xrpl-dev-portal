@@ -103,7 +103,9 @@ export default function Index() {
                   </p>
                 </div>
                 <h4 className="mb-8 h2-sm font-weight-bold">
-                  {translate(`${heroPost.title}`)}
+                  <a href={`/blog/${heroPost.link}`}>
+                    {translate(`${heroPost.title}`)}
+                  </a>
                 </h4>
                 <p className="mb-4">{translate(`${heroPost.description}`)}</p>
                 <div className="d-lg-block">
@@ -215,7 +217,11 @@ export default function Index() {
                     <p id="card-date" className="mb-0">
                       {moment(translate(card.date)).format("MMM DD, YYYY")}
                     </p>
-                    <h5 className="mb-2-sm h3-sm">{translate(card.title)}</h5>
+                    <h5 className="mb-2-sm h3-sm">
+                      <a href={`/blog/${card.link}`}>
+                      {translate(card.title)}
+                      </a>
+                    </h5>
                   </div>
                   <div className="d-lg-block">
                     <p className="line-clamp">{translate(card.description)}</p>

@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-08-04
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # RequireFullyCanonicalSig, fixQualityUpperBound, and FlowCross are Now Available
 
 [As previously announced](https://xrpl.org/blog/2020/requirefullycanonicalsig-expected.html), the **RequireFullyCanonicalSig** amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/94D8B158E948148B949CC3C35DD5DC4791D799E1FD5D3CE0E570160EDEF947D3) on 2020-07-03. Additionally, the **fixQualityUpperBound** amendment [became enabled](https://xrpcharts.ripple.com/#/transactions/5F8E9E9B175BB7B95F529BEFE3C84253E78DAF6076078EC450A480C861F6889E) on 2020-07-09 and the **FlowCross** amendment [became enabled](https://xrpcharts.ripple.com/#/transactions/44C4B040448D89B6C5A5DEC97C17FEDC2E590BA094BC7DB63B7FDC888B9ED78F) on 2020-08-04.

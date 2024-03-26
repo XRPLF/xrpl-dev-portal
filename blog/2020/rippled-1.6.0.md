@@ -3,6 +3,10 @@ category: 2020
 date: 2020-08-19
 labels:
     - rippled Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Introducing XRP Ledger version 1.6.0
 

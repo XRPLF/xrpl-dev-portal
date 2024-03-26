@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-05-06
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Get Ready for Deletable Accounts
 
 The XRP Ledger is currently [expected to enable](https://xrpl.org/blog/2020/deletableaccounts-expected.html) the deletion of on-ledger accounts for the first time, through the [DeletableAccounts Amendment](https://xrpl.org/known-amendments.html#deletableaccounts), on **2020-05-08 (UTC)**. This amendment comes with changes to some fairly fundamental details of the XRP Ledger protocol. If you use the XRP Ledger for your business, this is a good time to do a last check to make sure you're ready.

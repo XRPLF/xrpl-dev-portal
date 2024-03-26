@@ -3,7 +3,10 @@ category: 2023
 date: 2023-10-31
 labels:
     - Clio Release Notes
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Introducing Clio version 2.0.0
 

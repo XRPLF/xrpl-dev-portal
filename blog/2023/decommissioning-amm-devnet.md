@@ -3,7 +3,10 @@ category: 2023
 date: 2023-12-05
 labels:
     - Advisories
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Decommissioning AMM-Devnet
 

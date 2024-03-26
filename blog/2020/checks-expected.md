@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-06-11
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The Checks Amendment is Expected 2020-06-18
 
 The Checks amendment to the XRP Ledger, introduced all the way back in [`rippled` v0.90.0](https://github.com/ripple/rippled/releases/tag/0.90.0), has [gained support from a majority of trusted validators](https://xrpcharts.ripple.com/#/transactions/F2CACEB0680626E8A4DE7EDA02DEC7438E1FB0D7C8736DD327074F85877E6D8E). Currently, it is expected to become enabled on 2020-06-18. As long as the Checks amendment continues to have the support of at least 80% of trusted validators continuously, it will become enabled on the scheduled date.

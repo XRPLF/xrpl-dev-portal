@@ -3,7 +3,10 @@ category: 2023
 date: 2022-01-27
 labels:
     - Advisories
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # The NFT-Devnet Decommissioned on January 31, 2023
 

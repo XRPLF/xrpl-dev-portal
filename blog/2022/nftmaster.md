@@ -3,7 +3,10 @@ category: 2022
 date: 2022-12-14
 labels:
     - Developer Reflections
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Developer Reflections: NFTMASTER
 

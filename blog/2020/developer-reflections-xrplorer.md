@@ -3,6 +3,10 @@ category: 2020
 date: 2020-05-30
 labels:
     - Developer Reflections
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Developer Reflections: Xrplorer
 

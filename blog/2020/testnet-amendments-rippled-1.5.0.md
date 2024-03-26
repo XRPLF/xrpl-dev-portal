@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-04-10
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Postmortem: Testnet Amendments from rippled 1.5.0
 
 Like most new releases, version 1.5.0 of the XRP Ledger core server (`rippled`) contains new amendments which are not understood by earlier versions of the software.
