@@ -157,7 +157,7 @@ XRP Ledgerは共有システムとなっていて、すべてのデータが公�
 
   **注記:** メタデータには明示的に示されませんが、トランザクションがレジャーオブジェクトを変更すると、必ずそのオブジェクトの`PreviousTxnID`および`PreviousTxnLgrSeq`フィールドが現在のトランザクションの情報で更新されます。同じ送金元の複数のトランザクションが1つのレジャーバージョンに含まれている場合、最初のトランザクション以降の各トランザクションは、これらすべてのトランザクションを記録するレジャーバージョンの[レジャーインデックス](../../../references/protocol/data-types/basic-data-types.md#レジャーインデックス)を値とする`PreviousTxnLgrSeq`を提供します。
 
-rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnのアカウントの`ModifiedNode`エントリーが`AffectedNodes`配列の唯一のオブジェクトであるため、このトランザクションの結果として、このレジャーに対してその他の変更は行われませんでした。
+rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnのアカウントの`ModifiedNode`エントリが`AffectedNodes`配列の唯一のオブジェクトであるため、このトランザクションの結果として、このレジャーに対してその他の変更は行われませんでした。
 
 **ヒント:** トランザクションによってXRPが送信または受信される場合、送金元の残高の変動額はトランザクションコストと合算され、`Balance`フィールドの正味金額は1回で変更されます。例えば、1XRP（1,000,000drop）を送信し、トランザクションコストで10drop消却した場合、メタデータには`Balance`が1,000,010（XRPのdrop数）減少したと示されます。
 
@@ -194,7 +194,7 @@ rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpnのアカウントの`ModifiedNode`エント�
 }
 ```
 
-多くのトランザクションのタイプで、[DirectoryNodeオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)が作成または変更されます。これらのオブジェクトは、ブックキーピングに使用します。アカウントが所有するすべてのオブジェクト、またはすべてのオファーを追跡して、同じ為替レートで通貨を交換します。トランザクションがレジャーに新しいオブジェクトを作成した場合、トランザクションは既存のDirectoryNodeオブジェクトにエントリーを追加するか、別のDirectoryNodeオブジェクトを追加してディレクトリーの別のページを表さなければならないことがあります。トランザクションがレジャーからオブジェクトを削除した場合、トランザクションは不要となった1つ以上のDirectoryNodeオブジェクトを削除しなければならないことがあります。
+多くのトランザクションのタイプで、[DirectoryNodeオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)が作成または変更されます。これらのオブジェクトは、ブックキーピングに使用します。アカウントが所有するすべてのオブジェクト、またはすべてのオファーを追跡して、同じ為替レートで通貨を交換します。トランザクションがレジャーに新しいオブジェクトを作成した場合、トランザクションは既存のDirectoryNodeオブジェクトにエントリを追加するか、別のDirectoryNodeオブジェクトを追加してディレクトリーの別のページを表さなければならないことがあります。トランザクションがレジャーからオブジェクトを削除した場合、トランザクションは不要となった1つ以上のDirectoryNodeオブジェクトを削除しなければならないことがあります。
 
 新しいオファーディクトリーを表すCreatedNodeの例:
 
@@ -245,7 +245,7 @@ XRPの額は、`AccountRoot`オブジェクトの`Balance`フィールドで追�
 
 ### オファー
 
-[OfferCreateトランザクション][]では、成立した額や、トランザクションが`tfImmediateOrCancel`などのフラグを使用したかどうかによって、レジャーにオブジェクトが作成される場合と作成されない場合があります。トランザクションがレジャーのオーダーブックに新しいオファーを追加したどうかを確認するには、LedgerEntryTypeが`Offer`の`CreatedNode`エントリーを探します。例:
+[OfferCreateトランザクション][]では、成立した額や、トランザクションが`tfImmediateOrCancel`などのフラグを使用したかどうかによって、レジャーにオブジェクトが作成される場合と作成されない場合があります。トランザクションがレジャーのオーダーブックに新しいオファーを追加したどうかを確認するには、LedgerEntryTypeが`Offer`の`CreatedNode`エントリを探します。例:
 
 ```json
 {
@@ -308,7 +308,7 @@ OfferCreateトランザクションが、タイプが`RippleState`の`CreatedNod
 
 ### Escrow
 
-成功した[EscrowCreateトランザクション][]は、レジャーに[Escrowオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)を作成します。LedgerEntryTypeが`Escrow`の`CreatedNode`エントリーを探します。`NewFields`には、escrowに預託されたXRPと同じ`Amount`と、指定したその他のプロパティが示されます。
+成功した[EscrowCreateトランザクション][]は、レジャーに[Escrowオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/escrow.md)を作成します。LedgerEntryTypeが`Escrow`の`CreatedNode`エントリを探します。`NewFields`には、escrowに預託されたXRPと同じ`Amount`と、指定したその他のプロパティが示されます。
 
 成功したEscrowCreateトランザクションは、送金元から同じ額のXRPを引き出します。最終的なフィールドの`Account`がトランザクションの指示にある`Account`のアドレスと一致する、LedgerEntryTypeが`AccountRoot`の`ModifiedNode`を探します。XRPの`Balance`は、（トランザクションコストの支払いのためにXRPが消却されたのに加えて）XRPがescrowに預託されたため減少します。
 
@@ -364,7 +364,7 @@ Payment Channelの作成時に、LedgerEntryTypeが`PayChannel`の`CreatedNode`�
 
 [fixPayChanRecipientOwnerDir Amendment](/resources/known-amendments.md#fixpaychanrecipientownerdir)が有効な場合は、メタデータは宛先のアカウントの[所有者ディレクトリー](../../../references/protocol/ledger-data/ledger-entry-types/directorynode.md)を変更して、新しく作成されるPayment Channelをリストで示す必要もあります。これにより、アカウントがオープンPayment Channelの受取人である場合に、そのアカウントが[削除される](../../accounts/deleting-accounts.md)ことを防ぎます。（fixPayChanRecipientOwnerDir Amendmentが有効になる前にPayment Channelが作成された場合は、アカウントを削除できます。）
 
-Payment Channelの閉鎖を要求する方法は、Payment Channelの不変の`CancelAfter`時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが`PayChannel`の`ModifiedNode`エントリーがあり、`FinalFields`の`Expiration`フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するよう要求した場合に`PayChannel`に対して行われる変更を示します。
+Payment Channelの閉鎖を要求する方法は、Payment Channelの不変の`CancelAfter`時刻（作成時にのみ設定されます）以外にもいくつかあります。トランザクションでChannelの閉鎖をスケジュールする場合は、そのChannel用にLedgerEntryTypeが`PayChannel`の`ModifiedNode`エントリがあり、`FinalFields`の`Expiration`フィールドには閉鎖時刻が新たに追加されています。以下の例は、送金元がクレームを清算せずにChannelを閉鎖するよう要求した場合に`PayChannel`に対して行われる変更を示します。
 
 ```json
 {
@@ -426,7 +426,7 @@ TrustSetトランザクションは、[`RippleState`オブジェクト](../../..
 
 ### その他のトランザクション
 
-その他のほとんどのトランザクションは、特定のタイプのレジャーエントリーを作成し、[送金元の所有者準備金と所有者ディレクトリーの調整](#汎用的なブックキーピング)を行います。
+その他のほとんどのトランザクションは、特定のタイプのレジャーエントリを作成し、[送金元の所有者準備金と所有者ディレクトリーの調整](#汎用的なブックキーピング)を行います。
 
 - [AccountSetトランザクション][]は、送金元の既存の[AccountRoot object][]を変更し、指定されたとおりに設定とフラグを変更します。
 - [DepositPreauthトランザクション][]は、特定の送金元の[DepositPreauthオブジェクト](../../../references/protocol/ledger-data/ledger-entry-types/depositpreauth.md)を追加または削除します。

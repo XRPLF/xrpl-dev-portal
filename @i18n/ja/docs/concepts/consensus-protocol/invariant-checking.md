@@ -121,7 +121,7 @@ XRP Ledgerは、各トランザクションについて、以下のすべての�
 ### 0のエスクローでない
 
 - **不変条件:**
-    - [エスクロー](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)エントリーは、0XRP以上1000億XRP未満を保有している必要があります。
+    - [エスクロー](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)エントリは、0XRP以上1000億XRP未満を保有している必要があります。
 
 
 ### 有効な新規アカウントルート

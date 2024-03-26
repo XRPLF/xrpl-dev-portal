@@ -2,7 +2,7 @@
 html: get-started-using-javascript.html
 parent: javascript.html
 seo:
-    description: XRP Ledgerを参照するためのエントリーレベルのJavaScriptアプリケーションを構築します。
+    description: XRP Ledgerを参照するためのエントリレベルのJavaScriptアプリケーションを構築します。
 top_nav_name: JavaScript
 top_nav_grouping: 始めましょう
 labels:

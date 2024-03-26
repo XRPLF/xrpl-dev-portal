@@ -132,7 +132,7 @@ labels:
 * `noPermission` - リクエストに`url`フィールドが指定されていますが、管理者として接続していません。
 * `unknownStream` - リクエストの`streams`フィールドの1つ以上の要素が有効なストリーム名ではありません。
 * `malformedStream` - リクエストの`streams`フィールドのフォーマットが適切ではありません。
-* `malformedAccount` - リクエストの`accounts`または`accounts_proposed`フィールドのアドレスのいずれか1つが、適切なフォーマットのXRP Ledgerアドレスではありません。（**注記:** グローバルレジャーにまだエントリーのないアドレスのストリームをサブスクライブして、そのアドレスに資金が供給されたらメッセージを受け取るように _できます_ 。）
+* `malformedAccount` - リクエストの`accounts`または`accounts_proposed`フィールドのアドレスのいずれか1つが、適切なフォーマットのXRP Ledgerアドレスではありません。（**注記:** グローバルレジャーにまだエントリのないアドレスのストリームをサブスクライブして、そのアドレスに資金が供給されたらメッセージを受け取るように _できます_ 。）
 * `srcCurMalformed` - リクエストの`books`フィールドの1つ以上の`taker_pays`サブフィールドのフォーマットが適切ではありません。
 * `dstAmtMalformed` - リクエストの`books`フィールドの1つ以上の`taker_gets`サブフィールドのフォーマットが適切ではありません。
 * `srcIsrMalformed` - リクエストの`books`フィールドの1つ以上の`taker_pays`サブフィールドの`issuer`フィールドが無効です。

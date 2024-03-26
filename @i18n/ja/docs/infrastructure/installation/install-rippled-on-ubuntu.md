@@ -46,7 +46,7 @@ labels:
     gpg /usr/local/share/keyrings/ripple-key.gpg
     ```
 
-   出力に、次のようなRipple用のエントリーが含まれていることを確認してください。
+   出力に、次のようなRipple用のエントリが含まれていることを確認してください。
 
     ```
     gpg: WARNING: no command supplied.  Trying to guess what you mean ...

@@ -22,7 +22,7 @@ XRP Ledgerでは、特別な意味や歴史的な役割を持つアドレスが�
 | アドレス                       | 名称 | 意味 | ブラック ホール? |
 |-------------------------------|-----|-----|----------------|
 | `rrrrrrrrrrrrrrrrrrrrrhoLvTp` | ACCOUNT\_ZERO | 値0を[base58][]形式にエンコードしたXRP Ledgerのアドレス。ピアツーピア通信では、このアドレスは、XRPの発行者として`rippled`で使用されます。 | はい |
-| `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | 値1を[base58][]形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleStateエントリー](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
+| `rrrrrrrrrrrrrrrrrrrrBZbvji`  | ACCOUNT\_ONE | 値1を[base58][]形式にエンコードしたXRP Ledgerのアドレス。レジャーの[RippleStateエントリ](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md)では、このアドレスは、トラストライン残高の発行者のプレースホルダーとして使用されます。 | はい |
 | `rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh` | ジェネシスアカウント | `rippled`で(スタンドアロンモードなど)新しいジェネシスレジャーが一から開始される場合、このアカウントはすべてのXRPを保持します。このアドレスは、シード値`masterpassphrase`から生成されており、この値は[ハードコーディング](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。 | いいえ |
 | `rrrrrrrrrrrrrrrrrNAMEtxvNvQ` | Ripple Namesの登録用ブラックホール | 以前、Ripple社は、Ripple Namesを登録するために、このアカウントにXRPを送金するようユーザに求めていました。| はい |
 | `rrrrrrrrrrrrrrrrrrrn5RM1rHd` | NaNアドレス | 以前のバージョンの[ripple-lib](https://github.com/XRPLF/xrpl.js)では、XRP Ledgerの[base58][]文字列エンコード形式を使用して、値[NaN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN)をエンコードするときにこのアドレスを生成しました。 | はい |
