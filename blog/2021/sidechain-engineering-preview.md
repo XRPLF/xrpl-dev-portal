@@ -1,5 +1,9 @@
 ---
 category: 2021
+theme:
+    markdown:
+        editPage:
+            hide: true
 date: 2021-09-30
 labels:
     - Development

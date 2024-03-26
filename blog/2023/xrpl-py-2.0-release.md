@@ -3,7 +3,10 @@ category: 2023
 date: 2023-07-05
 labels:
     - xrpl-py Release Notes
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Migration Guide: Upgrading to xrpl-py Version 2.0.0
 _by Team RippleX_

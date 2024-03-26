@@ -3,7 +3,10 @@ category: 2022
 date: 2022-09-01
 labels:
     - Amendments
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Get Ready for NFTs
 

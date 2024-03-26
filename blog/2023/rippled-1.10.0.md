@@ -4,7 +4,10 @@ date: 2023-03-14
 labels:
     - rippled Release Notes
     - Amendments
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Introducing XRP Ledger version 1.10.0
 

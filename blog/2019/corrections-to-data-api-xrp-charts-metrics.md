@@ -1,3 +1,10 @@
+---
+category: 2020
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Corrections to Data API / XRP Charts Metrics for 2019-03-23
 
 The [Data API][], an open API that provides data to [XRP Charts][] and third-party tools, suffered gaps in data ingestion on 2019-03-23. As a result, several [metrics on XRP Charts](https://xrpcharts.ripple.com/#/metrics), including the number of ledgers closed per day, were overcounted. **During this time, the XRP Ledger did not experience any outages.** However, the Data API's ingestion service was unable to process ledgers with transactions containing the `tecKILLED` transaction response code. `tecKILLED` is a new response code added to the XRP Ledger by amendment [fix1578](https://developers.ripple.com/known-amendments.html#fix1578) on 2019-03-23. This necessitated changes to the [ripple-binary-codec library](https://github.com/ripple/ripple-binary-codec) used by the ingestion service, but [those changes](https://github.com/ripple/ripple-binary-codec/pull/27) were only partially deployed to the ingestion service. We have since reprocessed and corrected the metrics that were affected by this problem.

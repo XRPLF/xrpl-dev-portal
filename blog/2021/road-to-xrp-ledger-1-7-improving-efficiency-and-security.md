@@ -1,5 +1,9 @@
 ---
 category: 2021
+theme:
+    markdown:
+        editPage:
+            hide: true
 date: 2021-02-24
 labels:
     - rippled Release Notes

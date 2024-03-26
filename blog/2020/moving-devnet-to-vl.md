@@ -3,6 +3,10 @@ category: 2020
 date: 2020-08-10
 labels:
     - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Moving Devnet to a Validator List
 

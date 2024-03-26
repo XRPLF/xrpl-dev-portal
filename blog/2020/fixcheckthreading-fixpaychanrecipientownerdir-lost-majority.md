@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-01-13
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # fixCheckThreading and fixPayChanRecipientOwnerDir Amendments Lost Majority
 
 On 2019-01-11, the fixCheckThreading and fixPayChanRecipientOwnerDir amendments lost the support of several validators, causing those amendments' support to fall below the 80% threshold for approval. (EnableAmendment LostMajority transactions: [fixCheckThreading](https://xrpcharts.ripple.com/#/transactions/3D10E846B1DA4BA07FA79BA1C13F802DD587F842F3810D997224C3693B120F51), [fixPayChanRecipientOwnerDir](https://xrpcharts.ripple.com/#/transactions/C848F96FDB815623753F27E8B5C83F4E38CFC8F50B28307142A6DFAC946EF070).) As a result, these amendments are no longer expected to become enabled on 2020-01-18, and their status depends on more validators to resume voting in favor of the amendments.

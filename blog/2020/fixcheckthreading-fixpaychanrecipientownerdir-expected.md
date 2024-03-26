@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-01-08
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Two Fix Amendments are Expected 2020-01-18
 
 On 2020-01-03, the [fixCheckThreading](https://xrpcharts.ripple.com/#/transactions/71460CE2DB7594C25A649C042D18BC3C027910CF02C60EC7F1E77660C9CAE1D2) and [fixPayChanRecipientOwnerDir](https://xrpcharts.ripple.com/#/transactions/4F5C639512B14BC6986026A2871CBF348C6092B1D4BE2DE9EE64D0F04E1EA5F7) amendments to the XRP Ledger gained support from a majority of trusted validators. These amendments were introduced in [`rippled` v1.4.0](https://github.com/ripple/rippled/releases/tag/1.4.0). Currently, they are expected to become enabled on 2020-01-18. Each amendment that continues to have the support of at least 80% of trusted validators continuously will become enabled on the scheduled date.

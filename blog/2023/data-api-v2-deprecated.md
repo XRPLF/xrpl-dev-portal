@@ -4,7 +4,10 @@ date: 2023-10-05
 labels:
     - Advisories
     - Data API
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Data API v2 Shutdown
 

@@ -3,7 +3,8 @@ category: 2022
 date: 2022-12-13
 labels:
     - xrpl-py Release Notes
-targets: [devblog]
+editPage:
+    hide: true
 ---
 # Introducing xrpl-py version 2.0.0-beta.0
 _by Team RippleX_

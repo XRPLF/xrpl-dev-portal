@@ -1,3 +1,13 @@
+---
+category: 2020
+date: 2020-05-01
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Two Fix Amendments Are Now Enabled
 
 As [previously announced](https://xrpl.org/blog/2020/deletableaccounts-expected.html), the [fixCheckThreading](https://xrpcharts.ripple.com/#/transactions/74AFEA8C17D25CA883D40F998757CA3B0DB1AC86794335BAA25FF20E00C2C30A) and [fixPayChanRecipientOwnerDir](https://xrpcharts.ripple.com/#/transactions/D2F8E457D08ACB185CDE3BB9BB1989A9052344678566785BACFB9DFDBDEDCF09) amendments became enabled on 2020-05-01.

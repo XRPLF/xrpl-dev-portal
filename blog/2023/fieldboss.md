@@ -3,7 +3,10 @@ category: 2023
 date: 2023-06-28
 labels:
     - Developer Reflections
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Developer Reflections: FieldBoss
 

@@ -3,7 +3,10 @@ category: 2023
 date: 2023-09-06
 labels:
     - Advisories
-targets: [devblog]
+theme:
+    markdown:
+        editPage:
+            hide: true
 ---
 # Upcoming Devnet Reset
 _by Team RippleX_
