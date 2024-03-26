@@ -130,5 +130,6 @@ Each member of the `offers` array represents one [NFTokenOffer object][] to buy 
 * `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
 * `actNotFound` - The [Address][] specified in the `account` field of the request does not correspond to an account in the ledger.
 * `lgrNotFound` - The ledger specified by the `ledger_hash` or `ledger_index` does not exist, or it does exist but the server does not have it.
+* `objectNotFound` - The NFT does not have any sell offers (note that _object_ refers to the sell offer rather than the NFT itself).
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
