@@ -12,7 +12,7 @@ labels:
 
 {% code-page-name /%}メソッドは、特定の[ピアリザベーション][]を削除します（存在する場合）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
-_{% code-page-name /%}メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_{% code-page-name /%}メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 **注記:** ピアリザベーションを削除しても、対応するピアが接続されている場合、そのピアは自動的に切断されません。
 

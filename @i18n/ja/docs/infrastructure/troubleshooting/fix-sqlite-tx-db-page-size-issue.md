@@ -85,7 +85,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
         rippled --version
         ```
 
-- `rippled`ユーザーが書き込めるディレクトリーに、トランザクションデータベースの2つめのコピーを一時的に保管するのに十分な空き容量が必要です。この空き容量は、既存のトランザクションデータベースと同じファイルシステムに設ける必要はありません。
+- `rippled`ユーザが書き込めるディレクトリーに、トランザクションデータベースの2つめのコピーを一時的に保管するのに十分な空き容量が必要です。この空き容量は、既存のトランザクションデータベースと同じファイルシステムに設ける必要はありません。
 
     トランザクションデータベースは、構成の`[database_path]`設定で指定されるフォルダーの`transaction.db`ファイルに保管されます。このファイルのサイズを調べ、必要な空き容量を確認できます。次に例を示します。
 
@@ -105,7 +105,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
     mkdir /tmp/rippled_txdb_migration
     ```
 
-3. `rippled`ユーザーに、一時フォルダーの所有権を付与します。これにより、ユーザーは一時フォルダー内のファイルに書き込みできるようになります。（`rippled`ユーザーがすでにアクセス権限を持つ場所に一時フォルダーがある場合は、この操作は不要です。）
+3. `rippled`ユーザに、一時フォルダーの所有権を付与します。これにより、ユーザは一時フォルダー内のファイルに書き込みできるようになります。（`rippled`ユーザがすでにアクセス権限を持つ場所に一時フォルダーがある場合は、この操作は不要です。）
 
     ```
     chown rippled /tmp/rippled_txdb_migration
@@ -134,7 +134,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
     screen
     ```
 
-7. `rippled`ユーザーになります。
+7. `rippled`ユーザになります。
 
     ```
     sudo su - rippled
@@ -172,7 +172,7 @@ Terminating thread doJob:AcquisitionDone: unhandled
     exit
     ```
 
-    `screen`コマンドについての詳細は、[公式Screenユーザーマニュアル](https://www.gnu.org/software/screen/manual/screen.html)またはオンラインで使用可能なその他の多数のリソースを参照してください。
+    `screen`コマンドについての詳細は、[公式Screenユーザマニュアル](https://www.gnu.org/software/screen/manual/screen.html)またはオンラインで使用可能なその他の多数のリソースを参照してください。
 
 10. `rippled`サービスを再起動します。
 

@@ -11,7 +11,7 @@ labels:
 
 {% code-page-name /%}メソッドは、[ピアリザベーション][]を一覧表示します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
-_{% code-page-name /%}メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_{% code-page-name /%}メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 
 ### リクエストのフォーマット

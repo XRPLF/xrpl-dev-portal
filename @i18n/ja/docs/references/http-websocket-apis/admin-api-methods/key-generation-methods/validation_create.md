@@ -12,7 +12,7 @@ labels:
 
 `validation_create`コマンドキーを使用して、[`rippled`サーバがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバ構成は変更されません。
 
-_`validation_create`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_`validation_create`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 サーバを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（[ノードキーペア](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)）に使用するかを指定できます。
 

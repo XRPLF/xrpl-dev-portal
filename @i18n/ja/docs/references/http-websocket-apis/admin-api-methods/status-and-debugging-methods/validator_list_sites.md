@@ -12,7 +12,7 @@ labels:
 
 `validator_list_sites`コマンドは、バリデータリストを処理するサイトのステータス情報を返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" %}新規: rippled 0.80.1{% /badge %}
 
-*`validator_list_sites`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
+*`validator_list_sites`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:

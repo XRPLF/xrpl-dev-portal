@@ -12,7 +12,7 @@ labels:
 
 `validators`コマンドは、サーバが使用する公開済みの信頼できるバリデータの最新リストに関する情報を、人間が読み取れる形式で返します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.80.1" %}新規: rippled 0.80.1{% /badge %}
 
-*`validators`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
+*`validators`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:

@@ -30,7 +30,7 @@ XRP Ledgerでは、特別な意味や歴史的な役割を持つアドレスが�
 
 ## アドレスのエンコード
 
-**ヒント:** これらの技術的な詳細は、XRP Ledgerとの互換性を保つために低レベルのライブラリソフトウェアを構築しているユーザーのみを対象としています!
+**ヒント:** これらの技術的な詳細は、XRP Ledgerとの互換性を保つために低レベルのライブラリソフトウェアを構築しているユーザのみを対象としています!
 
 [[ソース]](https://github.com/XRPLF/rippled/blob/35fa20a110e3d43ffc1e9e664fc9017b6f2747ae/src/ripple/protocol/impl/AccountID.cpp#L109-L140 "ソース")
 

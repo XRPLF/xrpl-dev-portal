@@ -11,7 +11,7 @@ labels:
 
 この{% code-page-name /%}メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバの予約済みスロットを追加または更新します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
-_{% code-page-name /%}メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_{% code-page-name /%}メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 
 ### リクエストのフォーマット

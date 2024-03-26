@@ -121,7 +121,7 @@ XRP Ledgerのコンセンサスメカニズムが不利な状況でどのよう�
 
 #### XRPはどのような目的で利用されますか？
 
-XRPはXRP Ledgerのネイティブ資産として、これまでのどのデジタルアセットよりも速く、環境に優しく、安価な次世代の決済を実現するために作られました。XRPはまた、スパムから台帳を保護し、XRP Ledgerの分散型取引所で[通貨のブリッジ](../docs/concepts/tokens/decentralized-exchange/autobridging.md)を行うことがユーザーにとって有益である場合に、その役割を果たします。時間とともに、XRP Ledgerコミュニティは、XRPの新しい[ユースケース](/about/uses)やXRP Ledgerそのものを発展させてきました。
+XRPはXRP Ledgerのネイティブ資産として、これまでのどのデジタルアセットよりも速く、環境に優しく、安価な次世代の決済を実現するために作られました。XRPはまた、スパムから台帳を保護し、XRP Ledgerの分散型取引所で[通貨のブリッジ](../docs/concepts/tokens/decentralized-exchange/autobridging.md)を行うことがユーザにとって有益である場合に、その役割を果たします。時間とともに、XRP Ledgerコミュニティは、XRPの新しい[ユースケース](/about/uses)やXRP Ledgerそのものを発展させてきました。
 
 
 #### XRP Ledgerにおいて大量のトランザクションに対してはどのように対応しますか?
@@ -158,6 +158,6 @@ Rippleは、コアとなるXRP Ledgerサーバ（[`rippled`](https://github.com/
 いくつかの団体が推奨バリデータリスト（UNL）を公開しています。2023年7月現在、RippleはデフォルトのUNLにある35のバリデータのうち1つのみを実行しています。
 
 
-#### Rippleは検証用のコードベースとユーザーソフトウェア用のコードベースを区別していますか?
+#### Rippleは検証用のコードベースとユーザソフトウェア用のコードベースを区別していますか?
 
 XRP Ledgerの[クライアントライブラリ](../docs/references/client-libraries.md)は、ソフトウェア開発者向けのものです。これらのライブラリは、ネットワークを支え、トランザクションを検証する[XRP Ledgerのコアサーバ](../docs/concepts/networks-and-servers/index.md)とは異なるコードベースとリポジトリを持っています。

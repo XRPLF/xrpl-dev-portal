@@ -140,12 +140,12 @@ Loading: "/etc/opt/ripple/rippled.cfg"
 オフラインマシンで、アカウントの設定用のトランザクションを準備して署名します。詳細は、アカウントを使用する目的によって異なります。例えば次のようなことができます。
 
 - 定期的なローテーションで使用できる[レギュラーキーペアを割り当てる](assign-a-regular-key-pair.md)。
-- ユーザーが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグを要求する](require-destination-tags.md)。
+- ユーザが送金理由や送金相手をタグ付けせずに送金できないようにするために、[宛先タグを要求する](require-destination-tags.md)。
 - アカウントセキュリティを強化するために、[マルチシグを設定する](set-up-multi-signing.md)。
 - 明示的に承認した送金、または事前に承認した相手からの送金のみを受け取れるようにするために、[DepositAuthを有効にする](../../../concepts/accounts/depositauth.md)。
-- ユーザーがあなたの許可なくあなたへの[トラストライン](../../../concepts/tokens/fungible-tokens/index.md)を開けないようにするために、[RequireAuthを有効にする](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#requireauthの有効化)。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
+- ユーザがあなたの許可なくあなたへの[トラストライン](../../../concepts/tokens/fungible-tokens/index.md)を開けないようにするために、[RequireAuthを有効にする](../../../concepts/tokens/fungible-tokens/authorized-trust-lines.md#requireauthの有効化)。XRP Ledgerの分散型取引所やトークン機能を使用する予定がない場合は、これを対策として行うことをお勧めします。
 - [トークン発行者](../../../use-cases/tokenization/stablecoin-issuer.md)には次のような追加の設定がある場合があります。
-  - トークンを送金するユーザーに対してTransferRateを設定する。
+  - トークンを送金するユーザに対してTransferRateを設定する。
   - このアドレスをトークンのみに使用する予定の場合は、XRPペイメントを禁止する。
 
 この段階では、トランザクションに署名をするだけで、まだ送信しません。各トランザクションに対して、`Fee`（[トランザクションコスト](../../../concepts/transactions/transaction-cost.md)）や`Sequence`（[シーケンス番号][]）など、通常は自動入力可能なフィールドを含めて、すべてのフィールドに入力する必要があります。一度に複数のトランザクションを準備する場合は、トランザクションの実行順にシーケンシャルに増やした`Sequence`番号を使用する必要があります。

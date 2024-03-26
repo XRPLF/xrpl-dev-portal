@@ -58,8 +58,8 @@ labels:
 | `Sequence`                    | 数値      | UInt32            | はい   | このアカウントの有効な次のトランザクションの[シーケンス番号](../../data-types/basic-data-types.md#アカウントシーケンス) を表します。 |
 | `TicketCount`                 | 数値      | UInt32            | いいえ | このアカウントが台帳に保有する[チケット](../../../../concepts/accounts/tickets.md)の数です。これは、アカウントが一度に250 チケットという上限以内に留まることを保証するために自動的に更新されます。このフィールドは、チケットの数がゼロの場合は省略されます。 _([TicketBatch amendment][]により追加されました)_ |
 | `TickSize`                    | 数値      | UInt8             | いいえ | このアドレスが発行した通貨が関わるオファーの為替レートに使用する有効桁数。有効な値は`3`以上`15`以下です。_（[TickSize Amendment][]により追加されました。）_ |
-| `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザーが相互に送金する際に、これらのユーザーに請求する[送金手数料](../../../../concepts/tokens/transfer-fees.md)。 |
-| `WalletLocator`               | 文字列    | Hash256           | いいえ | ユーザーが設定できる任意の256bit値。 |
+| `TransferRate`                | 数値      | UInt32            | いいえ | このアカウントが発行した通貨を他のユーザが相互に送金する際に、これらのユーザに請求する[送金手数料](../../../../concepts/tokens/transfer-fees.md)。 |
+| `WalletLocator`               | 文字列    | Hash256           | いいえ | ユーザが設定できる任意の256bit値。 |
 | `WalletSize`                  | 数値      | UInt32            | いいえ | 未使用。(コード上ではこのフィールドをサポートしていますが、設定する方法はありません)。 |
 
 ## AMMの特殊なAccountRootエントリ
@@ -101,7 +101,7 @@ AccountRootオブジェクトは`Flags`フィールドに以下のフラグを�
 | `lsfGlobalFreeze`                 | `0x00400000` | 4194304    | `asfGlobalFreeze`                 | このアドレスが発行するすべての資産が凍結されます。 |
 | `lsfNoFreeze`                     | `0x00200000` | 2097152    | `asfNoFreeze`                     | このアドレスは、このアドレスに接続しているトラストラインを凍結できません。一度有効にすると、無効にできません。 |
 | `lsfPasswordSpent`                | `0x00010000` | 65536      | （なし）                           | このアカウントは無料のSetRegularKeyトランザクションを使用しています。 |
-| `lsfRequireAuth`                  | `0x00040000` | 262144     | `asfRequireAuth`                  | このアカウントは、他のユーザーがこのアカウントのトークンを保有することを個別に承認する必要があります。 |
+| `lsfRequireAuth`                  | `0x00040000` | 262144     | `asfRequireAuth`                  | このアカウントは、他のユーザがこのアカウントのトークンを保有することを個別に承認する必要があります。 |
 | `lsfRequireDestTag`               | `0x00020000` | 131072     | `asfRequireDest`                  | 受信ペイメントには宛先タグの指定が必要です。 |
 
 ## {% $frontmatter.seo.title %}の準備金

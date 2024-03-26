@@ -12,7 +12,7 @@ labels:
 
 `consensus_info`メソッドは、デバッグのための[コンセンサスプロセス](../../../../concepts/consensus-protocol/index.md)に関する情報を返します。
 
-_`consensus_info`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_`consensus_info`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:

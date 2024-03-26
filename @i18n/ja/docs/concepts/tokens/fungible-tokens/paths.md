@@ -2,7 +2,7 @@
 html: paths.html
 parent: trust-lines-and-issuing.html
 seo:
-    description: トークンによる支払いは、接続されているユーザーのパスとオーダーブックを通す必要があります。
+    description: トークンによる支払いは、接続されているユーザのパスとオーダーブックを通す必要があります。
 labels:
   - 支払い
   - クロスカレンシー

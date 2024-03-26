@@ -12,7 +12,7 @@ labels:
 
 使用可能な[履歴レジャーデータのシャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)に関するピアサーバからの情報をリクエストします。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}新規: rippled 1.2.0{% /badge %}
 
-_`crawl_shards`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_`crawl_shards`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 

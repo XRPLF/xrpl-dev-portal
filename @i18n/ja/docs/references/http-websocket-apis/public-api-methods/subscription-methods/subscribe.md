@@ -73,7 +73,7 @@ labels:
 | `accounts_proposed` | 配列 | _（省略可）_ `accounts`と同様ですが、まだファイナライズされていないトランザクションを含みます。 |
 | `books` | 配列 | _（省略可）_ 以下に説明するとおり、更新の監視のために[オーダーブック](http://www.investopedia.com/terms/o/order-book.asp)を定義するオブジェクトの配列。 |
 | `url` | 文字列 | （Websocketでは省略可、それ以外では必須）サーバが各イベントのJSON-RPCコールバックを送信するURL。*管理者専用。* |
-| `url_username` | 文字列 | _（省略可）_ コールバックURLで基本認証を行うためのユーザー名。 |
+| `url_username` | 文字列 | _（省略可）_ コールバックURLで基本認証を行うためのユーザ名。 |
 | `url_password` | 文字列 | _（省略可）_ コールバックURLで基本認証を行うためのパスワード。 |
 
 以下のパラメーターは廃止予定で、今後予告なしに削除される可能性があります。`user`、`password`、`rt_accounts`。

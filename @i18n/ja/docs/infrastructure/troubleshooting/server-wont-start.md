@@ -64,9 +64,9 @@ Aborted (core dumped)
 
 考えられる解決策:
 
-- 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/rippled.cfg`）が存在しており、`rippled`プロセスを実行するユーザー（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
+- 構成ファイル（デフォルトのロケーションは`/etc/opt/ripple/rippled.cfg`）が存在しており、`rippled`プロセスを実行するユーザ（通常は`rippled`）にこのファイルの読み取り権限があることを確認します。
 
-- `rippled`ユーザーが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザーのホームディレクトリを指しています）。
+- `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
 
     **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
@@ -84,7 +84,7 @@ Aborted (core dumped)
 
 考えられる解決策:
 
-- `[validators.txt]`ファイルが存在し、`rippled`ユーザーにこのファイルの読み取り権限があることを確認します。
+- `[validators.txt]`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
 
     **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
 
@@ -115,11 +115,11 @@ Aborted (core dumped)
 
 考えられる解決策:
 
-- エラーメッセージに出力されているデータベースパスへの書き込み権限を持つ別のユーザーとして`rippled`を実行します。
+- エラーメッセージに出力されているデータベースパスへの書き込み権限を持つ別のユーザとして`rippled`を実行します。
 
-- `rippled.cfg`ファイルを編集し、`[database_path]`設定を変更して、`rippled`ユーザーに書き込み権限があるパスを使用します。
+- `rippled.cfg`ファイルを編集し、`[database_path]`設定を変更して、`rippled`ユーザに書き込み権限があるパスを使用します。
 
-- `rippled`ユーザーに対し、設定されているデータベースパスへの書き込み権限を付与します。
+- `rippled`ユーザに対し、設定されているデータベースパスへの書き込み権限を付与します。
 
 
 ## 状態DBエラー

@@ -11,7 +11,7 @@ labels:
 
 サーバに対し、外部ソースから特定の[履歴レジャーデータのシャード](../../../../infrastructure/configuration/data-retention/history-sharding.md)をダウンロードするように指示します。`rippled`サーバで[履歴シャードが保管されるように設定する](../../../../infrastructure/configuration/data-retention/configure-history-sharding.md)必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.1.0" %}新規: rippled 1.1.0{% /badge %}
 
-_`download_shard`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_`download_shard`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 外部ソースからHTTPSを使用してシャードが[lz4圧縮](https://lz4.github.io/lz4/) [tarアーカイブ](https://en.wikipedia.org/wiki/Tar_(computing))として提供される必要があります。アーカイブには、NuDB形式のシャードディレクトリとデータファイルが含まれている必要があります。
 

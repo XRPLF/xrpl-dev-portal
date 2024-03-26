@@ -48,7 +48,7 @@ labels:
 
     [構成ファイルの例](https://github.com/XRPLF/rippled/blob/8429dd67e60ba360da591bfa905b58a35638fda1/cfg/rippled-example.cfg#L1050-L1073)では、ローカルループバックネットワーク上（127.0.0.1）のポート5005でJSON-RPC（HTTP）、ポート6006でWebSocket（WS）の接続をリッスンし、接続されるすべてのクライアントを管理者として扱っています。
 
-    **注意:** 署名に[コマンドラインAPI](../../references/http-websocket-apis/api-conventions/request-formatting.md#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](../../tutorials/http-websocket-apis/build-apps/get-started.md)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザーに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
+    **注意:** 署名に[コマンドラインAPI](../../references/http-websocket-apis/api-conventions/request-formatting.md#コマンドライン形式)を使用する場合は、コマンドラインでないクライアントで[Websocket APIやJSON-RPC APIを使用](../../tutorials/http-websocket-apis/build-apps/get-started.md)する場合よりもセキュリティが弱くなります。コマンドライン構文を使用すると、秘密鍵がシステムのプロセスリストで他のユーザに見える可能性があり、シェル履歴にプレーンテキスト形式でキーが保存される可能性があります。
 
 3. サーバの使用中は、稼働状態と最新状態を維持して、ネットワークと同期されるようにしておく必要があります。
 
@@ -65,7 +65,7 @@ labels:
 
 <!--{# TODO: link api-over-lan.html with the detailed instructions when those are ready #}-->
 
-必ず、マシンのセキュリティ保護に関する業界標準のプラクティスに従ってください。例えば、ファイアウォール、ウイルス対策、適切なユーザー権限を使用するなどです。
+必ず、マシンのセキュリティ保護に関する業界標準のプラクティスに従ってください。例えば、ファイアウォール、ウイルス対策、適切なユーザ権限を使用するなどです。
 
 
 ## ローカル署名機能のあるクライアントライブラリを使用する

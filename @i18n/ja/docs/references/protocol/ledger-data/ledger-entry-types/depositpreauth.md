@@ -55,7 +55,7 @@ labels:
 `DepositPreauth`オブジェクトのIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * DepositPreauthスペースキー（`0x0070`）
-* このオブジェクトの所有者（このオブジェクトを作成した[DepositPreauthトランザクション][]の送信者、つまり事前承認を付与したユーザー）のAccountID。
-* 事前承認されたアカウント（このオブジェクトを作成した[DepositPreauthトランザクション][]の`Authorized`フィールド、つまり事前承認を受けたユーザー）のAccountID。
+* このオブジェクトの所有者（このオブジェクトを作成した[DepositPreauthトランザクション][]の送信者、つまり事前承認を付与したユーザ）のAccountID。
+* 事前承認されたアカウント（このオブジェクトを作成した[DepositPreauthトランザクション][]の`Authorized`フィールド、つまり事前承認を受けたユーザ）のAccountID。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
