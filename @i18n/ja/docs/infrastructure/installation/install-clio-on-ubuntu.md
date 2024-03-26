@@ -71,7 +71,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
     gpg /usr/local/share/keyrings/ripple-key.gpg
     ```
 
-    出力に、次のようなRipple用のエントリーが含まれていることを確認してください。
+    出力に、次のようなRipple用のエントリが含まれていることを確認してください。
 
     ```
     gpg: WARNING: no command supplied.  Trying to guess what you mean ...
@@ -101,7 +101,7 @@ Clioをインストールする前に、以下の条件を満たしている必�
 
 6. Clioソフトウェアパッケージをインストールします。オプションは2つあります。
 
-    - 同じマシン上で`rippled`を実行するには、両方のサーバーをセットアップする`clio`パッケージをインストールしてください：
+    - 同じマシン上で`rippled`を実行するには、両方のサーバをセットアップする`clio`パッケージをインストールしてください：
 
         ```
         sudo apt -y install clio

@@ -12,7 +12,7 @@ XRP以外のすべての資産は、XRP Ledgerでは **トークン** として�
 
 **注記:** XRP Ledger上のトークンは、過去に「IOUs」（[I-owe-you](https://en.wikipedia.org/wiki/IOU)の略）および「発行済み通貨」とも呼ばれてきました。しかし、これらの呼称は、XRP Ledgerのトークンが表すことのできるデジタル資産の全範囲をカバーしていないため、望ましくないとされています。<!-- STYLE_OVERRIDE: ious -->
 
-通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、[非代替トークン(NFT)](nfts/index.md)を参照してください。
+通常のトークンは代替可能です。つまり、同じトークンはすべて代替可能であり、区別がつきません。非代替トークン(NFT)も可能です。XRP Ledgerでのネイティブ対応の詳細については、[非代替トークン(NFT)](nfts/index.md)をご覧ください。
 
 トークンは[クロスカレンシー支払い](../payment-types/cross-currency-payments.md)に使用でき、[分散型取引所(DEX)](decentralized-exchange/index.md)で取引することができます。
 
@@ -34,7 +34,7 @@ XRP Ledgerのもう一つの利用方法として、「コミュニティクレ�
 
 例えば、AsheeshがMarcusに20ドル、MarcusがBharathに50ドルの借金がある場合、BharathはAsheeshのMarcusに対する借金を帳消しにする代わりに、その分のMarcusに対する借金を帳消しすることによってAsheeshに20ドルを「支払う」ことができる。逆もまた可能である。AsheeshはMarcusを通してBharathに支払うことで、それぞれの負債を減らすことができるのです。XRP Ledgerは、このように複雑な連鎖的な取引を、中間にいるアカウントが何もせずとも、単一の取引で決済することができるのです。
 
-このタイプの使用法については、[paths](fungible-tokens/paths.md)を参照してください。<!--{# TODO: コミュニティクレジットのもっと例示的なページへのリンクができるといいですね。#}-->
+このタイプの使用法については、[paths](fungible-tokens/paths.md)をご覧ください。<!--{# TODO: コミュニティクレジットのもっと例示的なページへのリンクができるといいですね。#}-->
 
 ## その他のトークン
 
@@ -54,7 +54,7 @@ XRP Ledgerにおけるトークンは、[XRPと異なる性質](../../references
 
 発行者は、ユーザがトークンを送金する際に自動で差し引かれる「送金手数料」(transfer-fees.html)を設定することができます。発行者は、自分のトークンを含む取引レートの[ティックサイズ](decentralized-exchange/ticksize.md)を定義することもできます。発行者と一般アカウントのどちらも、トラストラインを[凍結](fungible-tokens/freezes.md)することができ、トラストライン内のトークンの使用方法を制限することができます。( XRPにはこのいずれも適用されません。)
 
-トークン発行の技術的な手順については、[代替可能トークンの発行](../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) を参照してください。
+トークン発行の技術的な手順については、[代替可能トークンの発行](../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) をご覧ください。
 
 ## 関連項目
 

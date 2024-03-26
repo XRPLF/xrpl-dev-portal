@@ -4,7 +4,7 @@ parent: server-info-methods.html
 seo:
     description: サーバについての各種情報を、人間が読めるフォーマットでサーバにリクエストします。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # server_info (rippled)
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")
@@ -103,7 +103,7 @@ rippled server_info
 | `reporting.etl_sources`             | 配列        | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_ このレポートモードがデータを取得するP2Pモードサーバのリスト。この配列の各エントリは[ETLソースオブジェクト](#etlソースオブジェクト)です。 |
 | `reporting.is_writer`               | 真偽値      | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_  `true`の場合、このサーバは外部データベースにレジャーデータを書き込んでいます。`false`の場合、他のレポートモードサーバが共有データベースにデータを書き込んでいるか、読み取り専用に設定されているため、現在は書き込んでいません。 |
 | `reporting.last_publish_time`       | 文字列      | _([レポートモード](../../../../concepts/networks-and-servers/rippled-server-modes.md)サーバのみ)_このサーバが最後に有効なレジャーを[サブスクリプションストリーム](../subscription-methods/subscribe.md)に公開した日時を示すISO 8601タイムスタンプ。 |
-| `server_state`                      | 文字列      | サーバのネットワークへの参加の度合いを示す文字列。詳細は、[考えられるサーバの状態](../../api-conventions/rippled-server-states.md)を参照してください。 |
+| `server_state`                      | 文字列      | サーバのネットワークへの参加の度合いを示す文字列。詳細は、[考えられるサーバの状態](../../api-conventions/rippled-server-states.md)をご覧ください。 |
 | `server_state_duration_us`          | 数値        | サーバが現在の状態になってから経過したマイクロ秒数。 |
 | `state_accounting`                  | オブジェクト | 各種[サーバ状態](../../api-conventions/rippled-server-states.md)のマップと、サーバが各状態に費やした時間についての情報。これは、サーバのネットワーク接続について長期的な健全性を追跡するのに便利です。 |
 | `state_accounting.*.duration_us`    | 文字列      | サーバがこの状態になってから費やしたマイクロ秒数。（サーバが別の状態に移行するたびに更新されます。） |

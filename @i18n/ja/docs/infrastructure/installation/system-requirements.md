@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: rippledのハードウェアやソフトウェアのシステム要件
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # システム要件
 

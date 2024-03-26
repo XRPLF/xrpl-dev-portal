@@ -4,7 +4,7 @@ parent: utility-methods.html
 seo:
     description: 確認レスポンスを返します。これにより、接続のステータスと遅延をテストできます。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # ping
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Ping.cpp "Source")

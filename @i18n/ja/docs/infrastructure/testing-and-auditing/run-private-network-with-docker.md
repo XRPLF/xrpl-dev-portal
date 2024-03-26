@@ -5,7 +5,7 @@ parent: use-stand-alone-mode.html
 seo:
     description: DockerとDocker Composeを使って独自のXRPプライベートレジャーネットワークを構築する方法を紹介します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 
 # プライベートネットワークをDockerで構築する

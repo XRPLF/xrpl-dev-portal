@@ -46,7 +46,7 @@ seo:
 
 強調すべき重要なことは、XRPLとのやりとりはすべてトランザクションかリクエストであり、すべてのトランザクションとリクエストは本質的に同じであるということです。私たちが提供するサンプルコードは、トランザクションやリクエストを準備する方法と、返された結果を処理する方法を示しています。1つのトランザクションやリクエストをどのように送信しどのようなレスポンスを返すかを知ることは、他のトランザクションやリクエストの処理について非常に良いヒントとなります。
 
-(技術的には、リクエストに似た第3のカテゴリーがあります。[Subscriptionメソッド](../../docs/references/http-websocket-apis/public-api-methods/subscription-methods/index.md)をご覧ください)。
+(技術的には、リクエストに似た第3のカテゴリがあります。[Subscriptionメソッド](../../docs/references/http-websocket-apis/public-api-methods/subscription-methods/index.md)をご覧ください)。
 
 ## 関連項目
 

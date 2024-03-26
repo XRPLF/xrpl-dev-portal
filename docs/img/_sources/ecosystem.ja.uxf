@@ -11,7 +11,7 @@
     </coordinates>
     <panel_attributes>halign=left
 
-rippledサーバー</panel_attributes>
+rippledサーバ</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -252,7 +252,7 @@ drawArc(0,height*3/5,width,height*2/5,180,180,true) fg=black bg=white //Paramete
       <w>220</w>
       <h>77</h>
     </coordinates>
-    <panel_attributes>rippledサーバー
+    <panel_attributes>rippledサーバ
 (直接ピアおよび間接ピア)
 halign=left</panel_attributes>
     <additional_attributes/>

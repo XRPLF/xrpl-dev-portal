@@ -17,7 +17,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました。)_
 
 ## XRP Ledger上のNFT
 
-XRP Ledger上では、non-fungible tokenは[NFToken][]オブジェクトとして表されます。NFTokenはユニークで分割できない単位で、決済には使用できません。ユーザーはこのようなトークンを発行（作成）、保有、購入、売却、焼却（破棄）することができます。
+XRP Ledger上では、non-fungible tokenは[NFToken][]オブジェクトとして表されます。NFTokenはユニークで分割できない単位で、決済には使用できません。ユーザはこのようなトークンを発行（作成）、保有、購入、売却、焼却（破棄）することができます。
 
 XRP Ledgerでは、容量を節約するために、一つのアカウントで最大32個の`NFToken`オブジェクトを一つの[NFTokenPageオブジェクト][]に格納します。その結果、所有者の`NFToken`オブジェクトに対する[準備金](../../accounts/reserves.md)は、追加のトークンを格納するためにレジャーが新しいページを作成する場合にのみ増加します。
 

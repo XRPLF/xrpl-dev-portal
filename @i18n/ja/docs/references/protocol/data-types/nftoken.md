@@ -112,7 +112,7 @@ URIフィールドは、`NFToken`に関連するデータまたはメタデー�
 
 機能を犠牲にしたり不必要な制限を課したりすることなく`NFTokens`の容量を最小にするために、XRPL NFTは任意のデータフィールドを持ちません。その代わり、データは別に管理され、`NFToken`によって参照されます。URIは`Hash`に対して不変のコンテンツへの参照を提供し、`NFToken`オブジェクトに対しては任意の変更可能なデータを提供します。
 
-`URI`フィールドは、従来とは異なるピアツーピア(P2P)URLを参照する際に特に有用です。例えば、惑星間ファイルシステム(IPFS)を使用して`NFToken`データやメタデータを保存する発行者は、`URI`フィールドを使用してIPFS上のデータを様々な方法で参照することができ、それぞれが異なるユースケースに適しています。NFTデータの保存に使用できるIPFSリンクの種類については、[Best Practices for Storing NFT Data using IPFS](https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them)を参照してください。
+`URI`フィールドは、従来とは異なるピアツーピア(P2P)URLを参照する際に特に有用です。例えば、惑星間ファイルシステム(IPFS)を使用して`NFToken`データやメタデータを保存する発行者は、`URI`フィールドを使用してIPFS上のデータを様々な方法で参照することができ、それぞれが異なるユースケースに適しています。NFTデータの保存に使用できるIPFSリンクの種類については、[Best Practices for Storing NFT Data using IPFS](https://docs.ipfs.io/how-to/best-practices-for-nft-data/#types-of-ipfs-links-and-when-to-use-them)をご覧ください。
 
 ## TXTレコードの形式
 

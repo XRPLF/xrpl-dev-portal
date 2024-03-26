@@ -8,7 +8,7 @@ seo:
 
 ## WebSocketフォーマット  
 
-`rippled`サーバーへのWebSocketを開いた後、以下の属性を使用して、コマンドを[JSON](https://en.wikipedia.org/wiki/JSON)オブジェクトとして送信できます。
+`rippled`サーバへのWebSocketを開いた後、以下の属性を使用して、コマンドを[JSON](https://en.wikipedia.org/wiki/JSON)オブジェクトとして送信できます。
 
 * コマンド名を最上位の`"command"`フィールドに指定します。
 * このコマンドのすべての関連パラメーターも最上位に指定します。
@@ -18,7 +18,7 @@ seo:
 
 ## JSON-RPCフォーマット
 
-JSON-RPCリクエストを実行するには、`rippled`サーバーがJSON-RPC接続をリッスンしているポートおよびIPで、HTTP **POST**リクエストをルートパス（`/`）に送信します。HTTP/1.0またはHTTP/1.1を使用できます。HTTPSを使用する場合は、TLS v1.2を使用してください。セキュリティ上の理由から、`rippled`ではSSL v3以前を _サポートしていません_ 。
+JSON-RPCリクエストを実行するには、`rippled`サーバがJSON-RPC接続をリッスンしているポートおよびIPで、HTTP **POST**リクエストをルートパス（`/`）に送信します。HTTP/1.0またはHTTP/1.1を使用できます。HTTPSを使用する場合は、TLS v1.2を使用してください。セキュリティ上の理由から、`rippled`ではSSL v3以前を _サポートしていません_ 。
 
 常に`Content-Type`ヘッダー（値`application/json`）を指定してください。
 

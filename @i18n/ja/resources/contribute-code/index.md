@@ -20,7 +20,7 @@ XRP Ledgerを動かすソフトウェアはオープンソースです。コミ�
 | ライセンス               | [Multiple; ISC (permissive)](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md) |
 | プログラム言語            | C++                                                 |
 
-何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバー(`rippled`)のコア実装の仕組みや機能を説明した、詳細かつ充実した[**ソースコード・ガイド**](https://xrpintel.com/source)を提供しています。
+何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバ(`rippled`)のコア実装の仕組みや機能を説明した、詳細かつ充実した[**ソースコード・ガイド**](https://xrpintel.com/source)を提供しています。
 
 
 ## XRP Ledgerの規格
@@ -81,7 +81,7 @@ XLSドラフトを作成した後、その変更にAmendmentが必要かどう�
 
 年に4回、`develop`で承認されたPRからリリース候補がビルドされます。このパッケージはTestnetとMainnet上のいくつかのノードにデプロイされます。リリース候補に問題がなければ、コードは`master`にマージされ、メインネット上のノードはこのビルドにアップグレードできます。
 
-6. 新しいAmendmentは合意形成プロセスを経て、バリデーターがそのAmendmentを有効にするかどうかを投票します。
+6. 新しいAmendmentは合意形成プロセスを経て、バリデータがそのAmendmentを有効にするかどうかを投票します。
 
 
 ## コードのフローチャート

@@ -9,7 +9,7 @@ labels:
 # account_currencies
 [[ソース]](https://github.com/XRPLF/rippled/blob/df966a9ac6dd986585ecccb206aff24452e41a30/src/ripple/rpc/handlers/AccountCurrencies.cpp "Source")
 
-`account_currencies`コマンドは、アカウントのトラストラインに基づいてそのアカウントが送金または受領できる通貨のリストを返します。（このリストは完全に確認されたリストではありませんが、ユーザーインターフェイスへの入力に使用できます。）
+`account_currencies`コマンドは、アカウントのトラストラインに基づいてそのアカウントが送金または受領できる通貨のリストを返します。（このリストは完全に確認されたリストではありませんが、ユーザインターフェイスへの入力に使用できます。）
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -153,6 +153,6 @@ labels:
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

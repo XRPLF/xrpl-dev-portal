@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: Ubuntu Linuxでrippledを手動更新します。
 labels:
-  - コアサーバー
+  - コアサーバ
   - セキュリティ
 ---
 # UbuntuまたはDebianでの手動更新
@@ -13,7 +13,7 @@ labels:
 
 **注意:** Ubuntu Linuxで`rippled` 1.2.xから1.3.1以降にアップグレードするには、[1.3.1への移行手順](rippled-1-3-migration-instructions.md)に従う必要があります。以下の手順は、バージョン1.3.1以降で提供されているネイティブAPTパッケージがインストール済みであることを前提としています。
 
-**ヒント:** これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。`rippled`バージョン1.3.1以降、このスクリプトはUbuntuおよびDebianと互換性があります。このスクリプトは`sudo`ユーザーとして実行する必要があります。
+**ヒント:** これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。`rippled`バージョン1.3.1以降、このスクリプトはUbuntuおよびDebianと互換性があります。このスクリプトは`sudo`ユーザとして実行する必要があります。
 
 手動で更新するには、以下の手順を実行します。
 
@@ -45,7 +45,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->

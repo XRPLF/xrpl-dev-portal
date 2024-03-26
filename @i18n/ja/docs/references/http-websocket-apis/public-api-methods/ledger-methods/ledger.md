@@ -144,8 +144,8 @@ rippled ledger current
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
-* `noPermission` - `full`または`accounts`をtrueとして指定したが、管理者としてサーバーに接続していない場合（通常、管理者はローカルポートで接続する必要があります）。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
+* `noPermission` - `full`または`accounts`をtrueとして指定したが、管理者としてサーバに接続していない場合（通常、管理者はローカルポートで接続する必要があります）。
 
 
 <!-- TODO: we should add this fee levels link to rippled-api-links.md. server_state.md is also including this as a one-off.-->

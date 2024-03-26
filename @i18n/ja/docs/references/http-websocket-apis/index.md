@@ -6,7 +6,7 @@ metadata:
 ---
 # HTTP / WebSocket API リファレンス
 
-XRP Ledgerを管理するコアのピアツーピアサーバーであるrippledと直接通信します。
+XRP Ledgerを管理するコアのピアツーピアサーバであるrippledと直接通信します。
 
 
 {% child-pages /%}

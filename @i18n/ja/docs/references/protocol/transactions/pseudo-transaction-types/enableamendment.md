@@ -14,7 +14,7 @@ labels:
 
 | フィールド          | JSONの型 | [内部の型][] | 説明                 |
 |:---------------|:----------|:------------------|:----------------------------|
-| Amendment      | 文字列    | Hash256           | Amendmentの一意のID。人間が読み取れる形式の名前ではありません。既知のAmendmentのリストについては、[Amendment](../../../../concepts/networks-and-servers/amendments.md)を参照してください。 |
+| Amendment      | 文字列    | Hash256           | Amendmentの一意のID。人間が読み取れる形式の名前ではありません。既知のAmendmentのリストについては、[Amendment](../../../../concepts/networks-and-servers/amendments.md)をご覧ください。 |
 | LedgerSequence | 数値    | UInt32            | Amendmentが含まれているレジャーバージョンのインデックス。これにより、この疑似トランザクションと別途発生する同様の変更が区別されます。 |
 
 ## EnableAmendment Flags

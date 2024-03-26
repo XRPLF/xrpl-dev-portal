@@ -11,7 +11,7 @@ labels:
 
 {% code-page-name /%}メソッドは、レジャーストアから[シャードストア](../../../../infrastructure/configuration/data-retention/history-sharding.md)へのデータコピーを管理します。データコピーの開始、停止、状態チェックが可能です。
 
-_{% code-page-name /%}メソッドは、権限のないユーザーには実行できない[管理メソッド](../index.md)です。_
+_{% code-page-name /%}メソッドは、権限のないユーザには実行できない[管理メソッド](../index.md)です。_
 
 
 ### リクエストのフォーマット

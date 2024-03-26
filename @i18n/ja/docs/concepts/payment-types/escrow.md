@@ -80,7 +80,7 @@ reference_fee * (signer_count + 33 + (fulfillment_bytes / 16))
 
 ## 参考情報
 
-XRP LedgerのEscrowの詳細は、以下を参照してください:
+XRP LedgerのEscrowの詳細は、以下をご覧ください:
 
 - [Escrowチュートリアル](../../tutorials/how-tos/use-specialized-payment-types/use-escrows/index.md)
 - [トランザクションのリファレンス](../../references/protocol/transactions/index.md)
@@ -91,6 +91,6 @@ XRP LedgerのEscrowの詳細は、以下を参照してください:
     - [Escrowオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/escrow.md)
 
 
-Rippleによる550億XRPのロックアップについては、[Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)を参照してください。
+Rippleによる550億XRPのロックアップについては、[Ripple's Insights Blog](https://ripple.com/insights/ripple-to-place-55-billion-xrp-in-escrow-to-ensure-certainty-into-total-xrp-supply/)をご覧ください。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -2,16 +2,16 @@
 html: connect.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアrippledサーバーに強制的に接続します。
+    description: 特定のピアrippledサーバに強制的に接続します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # connect
 [[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/Connect.cpp "Source")
 
-`connect`コマンドは、`rippled`サーバーを特定のピア`rippled`サーバーに強制的に接続します。
+`connect`コマンドは、`rippled`サーバを特定のピア`rippled`サーバに強制的に接続します。
 
-*`connect`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
+*`connect`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -55,7 +55,7 @@ rippled connect 192.170.145.88 51235
 
 | `Field` | 型   | 説明                                               |
 |:--------|:-------|:----------------------------------------------------------|
-| `ip`    | 文字列 | 接続するサーバーのIPアドレス。                    |
+| `ip`    | 文字列 | 接続するサーバのIPアドレス。                    |
 | `port`  | 数値 | _（省略可）_ 接続時に使用するポート番号。デフォルトでは**2459**です。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.6.0" %}新規: rippled 1.6.0{% /badge %} |
 
 ### レスポンスのフォーマット

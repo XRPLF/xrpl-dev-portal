@@ -11,7 +11,7 @@ labels:
 
 `fee`コマンドは、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)に関するオープンレジャーの要件の現在の状態を報告します。このコマンドを使用するには、[FeeEscalation Amendment][]が有効になっている必要があります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %}
 
-これは権限のないユーザーが使用できるパブリックコマンドです。[更新: rippled 0.32.0][新規: rippled 0.32.0]
+これは権限のないユーザが使用できるパブリックコマンドです。[更新: rippled 0.32.0][新規: rippled 0.32.0]
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:

@@ -26,6 +26,6 @@ XRP Ledgerでは、1つ以上のトークンとXRP、またはその両方を交
 
 2種類のトークンを自動的に交換するクロスカレンシー支払いでは、XRPの使用により支払いコストを抑えられる場合には自動的にXRPが使用されます。この場合、オーダーブックを接続して流動性プールが拡大されます。たとえば、USDからMXNに送金する支払いの場合、USDからXRP、XRPからMXNへの交換にかかるコストが、USDからMXNへの直接交換にかかるコストよりも低い場合には、前者の交換が自動的に実行されます。
 
-詳細は、[オートブリッジング](../tokens/decentralized-exchange/autobridging.md)を参照してください。
+詳細は、[オートブリッジング](../tokens/decentralized-exchange/autobridging.md)をご覧ください。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

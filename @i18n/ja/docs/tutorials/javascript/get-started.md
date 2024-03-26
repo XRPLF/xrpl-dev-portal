@@ -2,7 +2,7 @@
 html: get-started-using-javascript.html
 parent: javascript.html
 seo:
-    description: XRP Ledgerを参照するためのエントリーレベルのJavaScriptアプリケーションを構築します。
+    description: XRP Ledgerを参照するためのエントリレベルのJavaScriptアプリケーションを構築します。
 top_nav_name: JavaScript
 top_nav_grouping: 始めましょう
 labels:
@@ -96,7 +96,7 @@ const xrpl = require("xrpl")
 
 前節のサンプルコードでは、利用可能な[並列ネットワーク](../../concepts/networks-and-servers/parallel-networks.md)の1つであるTestnetに接続する方法を紹介しました。本番環境に移行するには、XRP Ledger Mainnetに接続する必要があります。それには2つの方法があります。
 
-* [コアサーバをインストール](../../infrastructure/installation/index.md) (`rippled`)して、自分でノードを動かしてみましょう。コアサーバーはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。[独自のコアサーバーを運用するのには良い理由があります](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server)。独自のサーバーを走らせた場合、次のようにして接続することができます。
+* [コアサーバをインストール](../../infrastructure/installation/index.md) (`rippled`)して、自分でノードを動かしてみましょう。コアサーバはデフォルトではMainnetに接続しますが、設定を変更してTestnetやDevnetを使うこともできます](connect-your-rippled-to-thexrp-test-net.html)。[独自のコアサーバを運用するのには良い理由があります](../../concepts/networks-and-servers/index.md#reasons-to-run-your-own-server)。独自のサーバを走らせた場合、次のようにして接続することができます。
 
     ```
     const MY_SERVER = "ws://localhost:6006/"
@@ -104,9 +104,9 @@ const xrpl = require("xrpl")
     await client.connect()
     ```
 
-    デフォルト値の詳細については、[コアサーバー設定ファイル](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例を参照してください。
+    デフォルト値の詳細については、[コアサーバ設定ファイル](https://github.com/XRPLF/rippled/blob/c0a0b79d2d483b318ce1d82e526bd53df83a4a2c/cfg/rippled-example.cfg#L1562)の例をご覧ください。
 
-* 利用可能な[公開サーバー][]を利用する:
+* 利用可能な[公開サーバ][]を利用する:
 
     ```
     const PUBLIC_SERVER = "wss://xrplcluster.com/"

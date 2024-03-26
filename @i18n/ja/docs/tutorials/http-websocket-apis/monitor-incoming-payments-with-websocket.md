@@ -12,15 +12,15 @@ labels:
 
 このチュートリアルでは、[WebSocket `rippled` API](../../references/http-websocket-apis/index.md)を使用して、着信[ペイメント](../../concepts/payment-types/index.md)を監視する方法を説明します。すべてのXRP Ledgerトランザクションは公開されているため、誰もが任意のアドレスへの着信ペイメントを監視できます。
 
-WebSocketは、クライアントとサーバーが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、リクエストごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
+WebSocketは、クライアントとサーバが1つの接続を確立し、その接続を経由して両方向にメッセージを送信するモデルに従います。この接続は、明示的に閉じる（または接続に障害が発生する）まで続きます。これは、リクエストごとにクライアントが新しい接続を開いて閉じるHTTPベースのAPIモデル（JSON-RPCやRESTful APIなど）とは対照的です[¹](#footnote-1)<a id="from-footnote-1"></a>。
 
 **ヒント:** このページの例はJavaScriptを使用しているため、Webブラウザーでネイティブに実行できます。JavaScriptで開発している場合は、[JavaScript向けxrpl.jsライブラリ](https://js.xrpl.org/)も利用すると、一部の作業を簡素化できます。このチュートリアルでは、xrpl.jsを使用できないその他のプログラミング言語にステップを適合できるよう、xrpl.jsを使用 _しない_ でトランザクションを監視する方法を説明します。
 
 ## 前提条件
 
 - このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。
-- 安定したインターネット接続と`rippled`サーバーへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバーのプールに接続します。[独自の`rippled`サーバーを運用](../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバーに接続することもできます。
-- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)を参照してください。
+- 安定したインターネット接続と`rippled`サーバへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバのプールに接続します。[独自の`rippled`サーバを運用](../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバに接続することもできます。
+- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)をご覧ください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="/vendor/big.min.js"></script>
@@ -39,9 +39,9 @@ function writeToConsole(console_selector, message) {
 
 ## 1. XRP Ledgerへの接続
 
-着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり`rippled`サーバーに接続します。
+着信ペイメントを監視する最初のステップとして、XRP Ledger、つまり`rippled`サーバに接続します。
 
-以下のJavaScriptコードでは、Rippleの公開サーバーのクラスターの1つに接続します。その後、コンソールにメッセージを記録し、[pingメソッド][]を使用してリクエストを送信します。次に、サーバー側からのメッセージを受信するときに、ハンドラーを設定してコンソールに再度メッセージを記録します。
+以下のJavaScriptコードでは、Rippleの公開サーバのクラスターの1つに接続します。その後、コンソールにメッセージを記録し、[pingメソッド][]を使用してリクエストを送信します。次に、サーバ側からのメッセージを受信するときに、ハンドラーを設定してコンソールに再度メッセージを記録します。
 
 ```js
 const socket = new WebSocket('wss://s.altnet.rippletest.net:51233')
@@ -64,13 +64,13 @@ socket.addEventListener('close', (event) => {
 })
 ```
 
-上記の例では、[Test Net](/resources/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバーの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバーに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
+上記の例では、[Test Net](/resources/dev-tools/xrp-faucets)上にあるRippleの公開APIサーバの1つに対して、安全な接続（`wss://`）を開きます。代わりにデフォルトの構成を使用してローカルで運用している`rippled`サーバに接続するには、最初の行に以下を使用して、ローカルのポート**6006**で _安全ではない_ 接続（`ws://`）を開きます。
 
 ```js
 const socket = new WebSocket('ws://localhost:6006')
 ```
 
-**ヒント:** デフォルトでは、ローカル`rippled`サーバーに接続することで、インターネット上の公開サーバーに接続する際に使用できる[パブリックメソッド](../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。
+**ヒント:** デフォルトでは、ローカル`rippled`サーバに接続することで、インターネット上の公開サーバに接続する際に使用できる[パブリックメソッド](../../references/http-websocket-apis/public-api-methods/index.md)以外に、すべての[管理メソッド](../../references/http-websocket-apis/admin-api-methods/index.md)と、[server_info][server_infoメソッド]などの一部のレスポンスに含まれる管理者専用データを利用できます。
 
 例:
 
@@ -116,15 +116,15 @@ $("#connect-socket-button").click((event) => {
 
 ## 2. ハンドラーへの着信メッセージのディスパッチ
 
-WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバーでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
+WebSocket接続では、複数のメッセージをどちらの方向にも送信することが可能で、リクエストとレスポンスの間に厳密な1:1の相互関係がないため、各着信メッセージに対応する処理を識別する必要があります。この処理をコーディングする際の優れたモデルとして、「ディスパッチャー」関数の設定が挙げられます。この関数は着信メッセージを読み取り、各メッセージを正しいコードのパスに中継して処理します。メッセージを適切にディスパッチできるように、`rippled`サーバでは、すべてのWebSocketメッセージで`type`フィールドを使用できます。
 
-- クライアント側からのリクエストへの直接のレスポンスとなるメッセージの場合、`type`は文字列の`response`です。この場合、サーバーは以下も提供します。
+- クライアント側からのリクエストへの直接のレスポンスとなるメッセージの場合、`type`は文字列の`response`です。この場合、サーバは以下も提供します。
 
   - このレスポンスに対するリクエストで指定された`id`に一致する`id`フィールド（レスポンスが順序どおりに到着しない可能性があるため、これは重要です）。
 
   - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](../../references/http-websocket-apis/api-conventions/response-formatting.md)を示します。文字列値`error`は、[エラー](../../references/http-websocket-apis/api-conventions/error-formatting.md)を示します。
 
-    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバーによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)を参照してください。
+    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。
 
 - [サブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfindingリクエスト](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
 
@@ -266,7 +266,7 @@ $("#dispatch_ping").click((event) => {
 
 トランザクションがアカウントに影響を及ぼすたびに即座に通知を取得するには、[subscribeメソッド][]を使用してアカウントをサブスクライブします。実際には、このアカウントはあなた自身のアカウントでなくてもかまいません。すべてのトランザクションは公開されているため、任意のアカウントで、または複数のアカウントでもサブスクライブできます。
 
-1つ以上のアカウントをサブスクライブした場合、指定したアカウントのいずれかに何らかの影響を及ぼす各検証済みトランザクションについて、`"type": "transaction"`が含まれるメッセージがサーバーから送信されます。これを確認するには、トランザクションメッセージで`"validated": true`を探します。
+1つ以上のアカウントをサブスクライブした場合、指定したアカウントのいずれかに何らかの影響を及ぼす各検証済みトランザクションについて、`"type": "transaction"`が含まれるメッセージがサーバから送信されます。これを確認するには、トランザクションメッセージで`"validated": true`を探します。
 
 以下のコードサンプルは、Test Net Faucetの送信側アドレスをサブスクライブします。このコードサンプルでは、前のステップのディスパッチャーにハンドラーを追加することで、該当する各トランザクションのメッセージを記録します。
 
@@ -341,7 +341,7 @@ WS_HANDLERS["transaction"] = log_tx
 
 アカウントをサブスクライブすると、 _アカウントへのすべてのトランザクションとアカウントからのすべてのトランザクション_ 、および _アカウントに間接的に影響を及ぼすトランザクション_ に関するメッセージが表示されます。この例として、[トークン](../../concepts/tokens/index.md)の取引があります。アカウントが着信ペイメントを受け取った日時を認識することを目的とする場合、トランザクションストリームを絞り込んで、実際に支払われた額に基づいて支払いを処理する必要があります。以下の情報を探します。
 
-- **`validated`フィールド**は、トランザクションの結果が[最終的である](../../concepts/transactions/finality-of-results/index.md)ことを示します。これは、`accounts`をサブスクライブする場合に常に当てはまりますが、`accounts_proposed`または`transactions_proposed`ストリーム _も_ サブスクライブしている場合は、サーバーは未確認のトランザクションに関して同様のメッセージを同じ接続で送信します。予防策として、`validated`フィールドを常に確認することをお勧めします。
+- **`validated`フィールド**は、トランザクションの結果が[最終的である](../../concepts/transactions/finality-of-results/index.md)ことを示します。これは、`accounts`をサブスクライブする場合に常に当てはまりますが、`accounts_proposed`または`transactions_proposed`ストリーム _も_ サブスクライブしている場合は、サーバは未確認のトランザクションに関して同様のメッセージを同じ接続で送信します。予防策として、`validated`フィールドを常に確認することをお勧めします。
 
 - **`meta.TransactionResult`フィールド**は、[トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)です。結果が`tesSUCCESS`でない場合は、トランザクションは失敗したため、値を送信できません。
 
@@ -363,7 +363,7 @@ WS_HANDLERS["transaction"] = log_tx
 
   - **[PaymentChannelFundトランザクション][]** は、閉鎖された（期限切れの）Payment Channelから送金元にXRPを返金することができます。
 
-- **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](../../references/protocol/transactions/metadata.md)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)を参照してください。
+- **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](../../references/protocol/transactions/metadata.md)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。
 
 以下のサンプルコードは、上に示したすべてのトランザクションのタイプのトランザクションメタデータを確認し、アカウントが受け取ったXRPの金額をレポートします。
 
@@ -495,7 +495,7 @@ $("#tx_read").click((event) => {
 
 ## 脚注
 
-[1.](#from-footnote-1)<a id="footnote-1"></a>実際には、HTTPベースのAPIを何度も呼び出す場合、クライアントとサーバーは複数のリクエストとレスポンスを処理する際に同じ接続を再利用できます。この方法は、[HTTP永続接続、またはキープアライブ](https://en.wikipedia.org/wiki/HTTP_persistent_connection)と呼ばれます。開発の観点から見ると、基本となる接続が新しい場合でも、再利用される場合でも、HTTPベースのAPIを使用するコードは同じです。
+[1.](#from-footnote-1)<a id="footnote-1"></a>実際には、HTTPベースのAPIを何度も呼び出す場合、クライアントとサーバは複数のリクエストとレスポンスを処理する際に同じ接続を再利用できます。この方法は、[HTTP永続接続、またはキープアライブ](https://en.wikipedia.org/wiki/HTTP_persistent_connection)と呼ばれます。開発の観点から見ると、基本となる接続が新しい場合でも、再利用される場合でも、HTTPベースのAPIを使用するコードは同じです。
 
 ## 関連項目
 

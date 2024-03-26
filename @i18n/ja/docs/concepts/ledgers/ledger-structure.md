@@ -49,7 +49,7 @@ _レジャーヘッダー_ は、レジャーバージョンの概略を示す�
 - [{% inline-svg file="/docs/img/ledger-tx-set-hash-icon.svg" /%}](/docs/img/ledger-tx-set-hash-icon.svg "") このレジャーのトランザクションセットのデータのチェックサムとして機能する _トランザクションセットのハッシュ_。
 - [{% inline-svg file="/docs/img/ledger-notes-icon.svg" /%}](/docs/img/ledger-notes-icon.svg "") その他、存在するXRPの総量や、閉鎖時刻が四捨五入された値など、いくつかのメモがあります。
 
-レジャーのトランザクションセットと状態データのサイズは無制限ですが、レジャーヘッダーは常に固定サイズです。レジャーヘッダーの正確なデータとバイナリ形式については、[レジャーヘッダー](../../references/protocol/ledger-data/ledger-header.md)を参照してください。
+レジャーのトランザクションセットと状態データのサイズは無制限ですが、レジャーヘッダーは常に固定サイズです。レジャーヘッダーの正確なデータとバイナリ形式については、[レジャーヘッダー](../../references/protocol/ledger-data/ledger-header.md)をご覧ください。
 
 
 ## バリデーションの状況

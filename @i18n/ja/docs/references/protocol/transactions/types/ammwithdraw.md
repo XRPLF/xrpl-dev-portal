@@ -117,7 +117,7 @@ AMMWithdrawトランザクションは、以下のように[`Flags`フィール�
 | `tecFROZEN`              | トランザクションは[凍結](../../../../concepts/tokens/fungible-tokens/freezes.md)されたトークンを引き出そうとしました。 |
 | `tecINSUF_RESERVE_LINE`  | トランザクションの送信者は、このトランザクションを処理するための[準備金要件](../../../../concepts/accounts/reserves.md)の増加に対応できません。おそらく、引き出される資産の1つを保持するために少なくとも1つの新しいトラストラインが必要ですが、新しいトラストラインのための追加の所有者準備金分のXRPを持っていないためでしょう。 |
 | `tecNO_AUTH`             | 送信者は、引き出し資産のいずれかを保有する権限を有していません。 |
-| `temMALFORMED`     | トランザクションで無効なフィールドの組み合わせが指定されました。[AMMWithdrawモード](#ammwithdrawモード)を参照してください。 |
+| `temMALFORMED`     | トランザクションで無効なフィールドの組み合わせが指定されました。[AMMWithdrawモード](#ammwithdrawモード)をご覧ください。 |
 | `temBAD_AMM_TOKENS`      | 例えば、`issuer`がAMMの関連するAccountRootアドレスでない、`currency`がこのAMMのLPトークンの通貨コードでない、またはトランザクションがこのAMMのLPトークンをAssetフィールドの1つに指定した、などです。 |
 | `terNO_AMM`              | トランザクションで指定した資産ペアの自動マーケットメーカーインスタンスが存在しません。 |
 

@@ -2,16 +2,16 @@
 html: peer_reservations_list.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアサーバー用の予約済みスロットをリスト表示します。
+    description: 特定のピアサーバ用の予約済みスロットをリスト表示します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # peer_reservations_list
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L116 "Source")
 
 {% code-page-name /%}メソッドは、[ピアリザベーション][]を一覧表示します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
-_{% code-page-name /%}メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_{% code-page-name /%}メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 
 ### リクエストのフォーマット

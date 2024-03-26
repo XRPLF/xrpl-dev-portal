@@ -13,14 +13,14 @@ seo:
 - [CentOSまたはRed Hat Enterprise Linux（RHEL）](#centosまたはred-hat-enterprise-linuxrhelでの移行)
 - [Ubuntu Linux](#ubuntu-linuxでの移行)
 
-その他のプラットフォームについては、ソースからコンパイルするためのアップデート手順を参照してください。（[Ubuntu](build-on-linux-mac-windows.md)、[macOS](build-on-linux-mac-windows.md)、または[Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017)）
+その他のプラットフォームについては、ソースからコンパイルするためのアップデート手順をご覧ください。（[Ubuntu](build-on-linux-mac-windows.md)、[macOS](build-on-linux-mac-windows.md)、または[Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017)）
 
 
 ## CentOSまたはRed Hat Enterprise Linux（RHEL）での移行
 
 Rippleの公式RPMリポジトリとそれを使用するための手順が変更されました。[自動更新](update-rippled-automatically-on-linux.md)を有効にしている場合は、システムで移行が自動的に実行されます。以前のリポジトリから新しいリポジトリに手動で移行するには、以下の手順を実行します。
 
-1. `rippled`サーバーを停止します。
+1. `rippled`サーバを停止します。
 
     ```
     $ sudo systemctl stop rippled.service
@@ -108,13 +108,13 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 
 ### 自動更新
 
-`rippled` v1.3パッケージには、UbuntuおよびDebian Linuxで動作する最新のauto-updateスクリプトが含まれています。詳細は、[Linuxでの`rippled`の自動更新](update-rippled-automatically-on-linux.md)を参照してください。
+`rippled` v1.3パッケージには、UbuntuおよびDebian Linuxで動作する最新のauto-updateスクリプトが含まれています。詳細は、[Linuxでの`rippled`の自動更新](update-rippled-automatically-on-linux.md)をご覧ください。
 
 ## 関連項目
 
 - **[`rippled` v1.3.1リリースノート](https://github.com/XRPLF/rippled/releases/1.3.1)**
 - **コンセプト:**
-  - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
   - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
   - [Linuxでの自動更新](update-rippled-automatically-on-linux.md)

@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: CentOSまたはRed Hat Enterprise Linuxでrippledを手動更新します。
 labels:
-  - コアサーバー
+  - コアサーバ
   - セキュリティ
 ---
 # CentOS/Red Hatでの手動更新
@@ -13,7 +13,7 @@ labels:
 
 以下の手順は、[`rippled`がすでに`yum`リポジトリからインストール](install-rippled-on-centos-rhel-with-yum.md)されていることを前提としています。
 
-**ヒント:** これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。このスクリプトは`sudo`ユーザーとして実行する必要があります。
+**ヒント:** これらの手順をすべて一度に実行するには、`rippled`パッケージに含まれている`/opt/ripple/bin/update-rippled.sh`スクリプトを実行します。このスクリプトは`sudo`ユーザとして実行する必要があります。
 
 手動で更新するには、以下の手順を実行します。
 
@@ -53,7 +53,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->

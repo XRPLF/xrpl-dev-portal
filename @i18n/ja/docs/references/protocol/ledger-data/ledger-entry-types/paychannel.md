@@ -51,7 +51,7 @@ _（[PayChan Amendment][]により追加されました。）_
 | `Destination`       | 文字列    | AccountID   | はい   | このPayment Channelの宛先アドレス。Payment Channelが開いている場合、このアドレスは、このChannelからXRPを受領できる唯一のアドレスです。これは、Channelを作成したトランザクションの`Destination`フィールドから取得されます。 |
 | `DestinationTag`    | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの宛先（宛先アドレスのホスティングされている受取人など） を詳しく指定するための任意のタグ。 |
 | `DestinationNode`   | 文字列    | UInt64      | いいえ | _（省略可）_ 宛先の所有者ディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。[fixPayChanRecipientOwnerDir Amendment][]を有効にする前に作成されたPayment Channelでは省略されています。 |
-| `Expiration`        | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)を参照してください。 |
+| `Expiration`        | 数値      | UInt32      | いいえ | _（省略可）_ このPayment Channelの変更可能な有効期限（[Rippleエポック以降の経過秒数][]）。この値が指定されており、前のレジャーの[`close_time`フィールド](../ledger-header.md)よりも小さい場合、Channelは有効期限切れです。詳細は、[Channel有効期限の設定](#channel有効期限の設定)をご覧ください。 |
 | `LedgerEntryType`   | 文字列    | UInt16      | はい   | 値`0x0078`が文字列`PayChannel`にマッピングされている場合は、このオブジェクトがPayment Channelオブジェクトであることを示します。 |
 | `OwnerNode`         | 文字列    | UInt64      | はい   | 支払元アドレスの所有者のディレクトリが複数ページで構成されている場合に、このオブジェクトにリンクしているページを示すヒントです。 |
 | `PreviousTxnID`     | 文字列    | Hash256     | はい   | 最後にこのオブジェクトを変更したトランザクションの識別用ハッシュ。 |

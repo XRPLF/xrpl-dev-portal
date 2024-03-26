@@ -39,7 +39,7 @@ _([NonFungibleTokensV1_1 amendment][]により追加されました)_
 
 | フィールド          | JSONの型  | [内部の型][]        | 説明                     |
 |:------------------|:----------|:------------------|:-------------------------|
-| `NFTokenOffers`     |  配列     | VECTOR256         | キャンセルする`NFTokenOffer`オブジェクトのIDの配列(`NFToken`オブジェクトのIDではなく、`NFTokenOffer`オブジェクトのID)です。各エントリーは[NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md)オブジェクトの異なる[オブジェクトID](../../ledger-data/common-fields.md)である必要があり、配列に重複した項目がある場合、トランザクションはエラーとなります。 |
+| `NFTokenOffers`     |  配列     | VECTOR256         | キャンセルする`NFTokenOffer`オブジェクトのIDの配列(`NFToken`オブジェクトのIDではなく、`NFTokenOffer`オブジェクトのID)です。各エントリは[NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md)オブジェクトの異なる[オブジェクトID](../../ledger-data/common-fields.md)である必要があり、配列に重複した項目がある場合、トランザクションはエラーとなります。 |
 
 `NFTokenOffers`フィールドのIDの1つ以上が、レジャーに現在存在するオブジェクトを参照していない場合でも、トランザクションは成功します（たとえば、それらのオファーはすでに削除されている可能性があります）。IDの1つが存在するオブジェクトを指していても、[NFTokenOffer](../../ledger-data/ledger-entry-types/nftokenoffer.md)オブジェクトでない場合は、エラーでトランザクションが失敗します。
 

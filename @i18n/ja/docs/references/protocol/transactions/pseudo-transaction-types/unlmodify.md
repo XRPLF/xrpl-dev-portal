@@ -2,7 +2,7 @@
 html: unlmodify.html
 parent: pseudo-transaction-types.html
 seo:
-    description: 現在オフラインとみなされている信頼できるバリデーターのリストを変更します。
+    description: 現在オフラインとみなされている信頼できるバリデータのリストを変更します。
 labels:
   - ブロックチェーン
 ---
@@ -36,7 +36,7 @@ _([NegativeUNL amendment][]により追加されました)_
 |:---------------------|:--------|:------------------|:----------------------|
 | `TransactionType`    | 文字列   | UInt16      | `0x0066`は文字列`UNLModify`にマッピングされ、このオブジェクトが`UNLModify`擬似トランザクションであることを表します。 |
 | `LedgerSequence`     | 数値     | UInt32      | この擬似トランザクションが出現する[レジャーインデックス][]です。これは、この擬似トランザクションを、同じ変更の他の出現と区別するものです。 |
-| `UNLModifyDisabling` | 数値     | UInt8       | `1`の場合、この変更はネガティブUNLにバリデーターを追加することを意味します。0` の場合、この変更はネガティブ UNL からバリデータを削除することを意味します。(これらの値以外は使用できません) |
+| `UNLModifyDisabling` | 数値     | UInt8       | `1`の場合、この変更はネガティブUNLにバリデータを追加することを意味します。0` の場合、この変更はネガティブ UNL からバリデータを削除することを意味します。(これらの値以外は使用できません) |
 | `UNLModifyValidator` | 文字列   | Blob        | 追加または削除するバリデータであり、そのマスター公開鍵で識別されます。 |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

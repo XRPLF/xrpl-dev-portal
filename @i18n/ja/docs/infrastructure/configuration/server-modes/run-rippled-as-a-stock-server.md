@@ -4,14 +4,14 @@ parent: server-modes.html
 seo:
     description: XRPを統合する人のための汎用的な構成。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
-# ウォレットサーバーとしてのrippledの実行
+# ウォレットサーバとしてのrippledの実行
 
 ストックサーバは`rippled`用の汎用的な設定です。ストックサーバを利用することで、XRP Ledgerにトランザクションを送信したり、レジャーの履歴にアクセスしたり、XRPやXRP Ledgerと統合するための最新の[ツール](../../../introduction/software-ecosystem.md)を利用したりすることができます。このサーバを使って、クライアントアプリケーションをXRP Ledgerに接続することができます。
 
 
-ウォレットサーバーは、次のすべてのことを行います。
+ウォレットサーバは、次のすべてのことを行います。
 
 - [ピアネットワーク](../../../concepts/networks-and-servers/peer-protocol.md)に接続
 
@@ -25,9 +25,9 @@ labels:
 
 ## `rippled`のインストールと実行
 
-デフォルトのパッケージインストールでは、取引履歴の少ないストックサーバーがインストールされます。インストール手順については、[`rippled`のインストール](../../installation/index.md)をご覧ください。
+デフォルトのパッケージインストールでは、取引履歴の少ないストックサーバがインストールされます。インストール手順については、[`rippled`のインストール](../../installation/index.md)をご覧ください。
 
-インストール後、サーバーが一度に保存する履歴の量を調整することができます。この方法については、[オンライン削除の設定](../data-retention/configure-online-deletion.md)をご覧ください。
+インストール後、サーバが一度に保存する履歴の量を調整することができます。この方法については、[オンライン削除の設定](../data-retention/configure-online-deletion.md)をご覧ください。
 
 ## トラブルシューティング
 

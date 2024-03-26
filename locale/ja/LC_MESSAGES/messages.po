@@ -2043,7 +2043,7 @@ msgid ""
 "Bithomp is an XRPL explorer and toolkit, used by many cryptocurrency "
 "exchanges. Bithomp was launched in 2015 with a mission to build the most "
 "user-friendly XRPL explorer."
-msgstr "Bithompは、多くの暗号通貨取引所で使用されているXRPLエクスプローラーおよびツールキットです。Bithompは、最もユーザーフレンドリーなXRPLエクスプローラーを構築することをミッションに、2015年に立ち上げられました。"
+msgstr "Bithompは、多くの暗号通貨取引所で使用されているXRPLエクスプローラーおよびツールキットです。Bithompは、最もユーザフレンドリーなXRPLエクスプローラーを構築することをミッションに、2015年に立ち上げられました。"
 
 #: template/page-uses.html.jinja:58 template/page-uses.html.jinja:114
 #: template/page-uses.html.jinja:154 template/page-uses.html.jinja:210
@@ -2942,7 +2942,7 @@ msgstr "カストディアル取引所"
 msgid ""
 "Custodial exchanges manage a user’s private keys, and publish centralized"
 " order books of buyers and sellers."
-msgstr "カストディアル取引所は、ユーザーの秘密鍵を管理し、買い手と売り手の集中的なオーダーブックを作成します。"
+msgstr "カストディアル取引所は、ユーザの秘密鍵を管理し、買い手と売り手の集中的なオーダーブックを作成します。"
 
 #: template/page-xrp-overview.html.jinja:227
 msgid "Non-Custodial Exchanges"
@@ -2954,7 +2954,7 @@ msgid ""
 "Non-custodial exchanges, also known as decentralized exchanges, do not "
 "manage a user’s private keys, and publish decentralized order books of "
 "buyers and sellers on a blockchain."
-msgstr "ノンカストディアル取引所は、分散型取引所とも呼ばれ、ユーザーの秘密鍵を管理せず、ブロックチェーン上で売り手と買い手の分散型オーダーブックを公開します。"
+msgstr "ノンカストディアル取引所は、分散型取引所とも呼ばれ、ユーザの秘密鍵を管理せず、ブロックチェーン上で売り手と買い手の分散型オーダーブックを公開します。"
 
 #: template/page-xrp-overview.html.jinja:231
 #, fuzzy
@@ -3236,7 +3236,7 @@ msgid ""
 "FAQ) — Ripple runs 6 of these nodes."
 msgstr ""
 "いいえ、XRP "
-"Ledgerは分散型のパブリックブロックチェーンです。取引処理やコンセンサスに影響を与えるような変更は、ネットワークの少なくとも80％の承認が必要です。Ripple社はネットワークへの貢献者ですが、その権利は他の貢献者と同じです。バリデーションの面では、ネットワーク上に150人以上のバリデーターが存在し、35人以上がユニークノードリスト（FAQ全文の「ユニークノードリスト（UNL）とは何ですか」参照）に登録されており、Ripple社はこれらのノードのうち1つを運営しています。"
+"Ledgerは分散型のパブリックブロックチェーンです。取引処理やコンセンサスに影響を与えるような変更は、ネットワークの少なくとも80％の承認が必要です。Ripple社はネットワークへの貢献者ですが、その権利は他の貢献者と同じです。バリデーションの面では、ネットワーク上に150人以上のバリデータが存在し、35人以上がユニークノードリスト（FAQ全文の「ユニークノードリスト（UNL）とは何ですか」参照）に登録されており、Ripple社はこれらのノードのうち1つを運営しています。"
 
 #: template/page-xrpl-overview.html.jinja:179
 msgid "Isn’t Proof of Work the best validation mechanism?"
@@ -3430,7 +3430,7 @@ msgstr "目次"
 #~ msgstr ""
 #~ "Coilは、現在の有料広告に代わる新たなウェブ収益化の方法を提供しています。Coilのウェブ収益化では、Interledger "
 #~ "Protocol "
-#~ "(ILP)を使用して、ユーザーがコンテンツを視聴するときにマイクロペイメントをストリーミングします。そのようなマイクロペイメントを高速かつ低コストで決済する理想的なシステムを、XRP"
+#~ "(ILP)を使用して、ユーザがコンテンツを視聴するときにマイクロペイメントをストリーミングします。そのようなマイクロペイメントを高速かつ低コストで決済する理想的なシステムを、XRP"
 #~ " LedgerのPayment Channelで実現しています。"
 
 #~ msgid ""
@@ -3468,7 +3468,7 @@ msgstr "目次"
 #~ " is up to the user to manage,"
 #~ " and therefore cannot send cryptocurrency"
 #~ " on the user's behalf."
-#~ msgstr "カストディ型ウォレットは、ユーザーの秘密鍵を管理しているため、ユーザーの代わりにウォレットが暗号資産を引き出すことができます。非カストディ型ウォレットは秘密鍵を管理せず、秘密鍵の管理はユーザー自身が行います。そのため、ユーザーの代わりにウォレットが暗号資産を送金することはできません。"
+#~ msgstr "カストディ型ウォレットは、ユーザの秘密鍵を管理しているため、ユーザの代わりにウォレットが暗号資産を引き出すことができます。非カストディ型ウォレットは秘密鍵を管理せず、秘密鍵の管理はユーザ自身が行います。そのため、ユーザの代わりにウォレットが暗号資産を送金することはできません。"
 
 #~ msgid "XRP Ledger Software Wallets:"
 #~ msgstr "XRP Ledgerソフトウェアウォレット:"
@@ -3858,7 +3858,7 @@ msgstr "目次"
 #~ "engineers, server operators and <a "
 #~ "href=\"run-a-rippled-validator.html\">validators</a>."
 #~ msgstr ""
-#~ "XRP Ledgerは、誰でも構築が可能なオープンソース技術です。ソフトウェアエンジニア、サーバーオペレーター、<a "
+#~ "XRP Ledgerは、誰でも構築が可能なオープンソース技術です。ソフトウェアエンジニア、サーバオペレーター、<a "
 #~ "href=\"run-a-rippled-"
 #~ "validator.html\">バリデータ</a>など多様な参加者で構成されるグローバルな「XRPコミュニティ」が、XRP "
 #~ "Ledgerを管理しています。"

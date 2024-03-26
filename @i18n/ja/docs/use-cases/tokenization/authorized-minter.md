@@ -24,13 +24,13 @@ _私は認可Minterとして、トークン発行者のために合意された�
 
 NFTを自分で設計するのではなく、NFTクリエイターと連携して認可Minterとなり、NFTの生成を代行することができます。これにより、NFTクリエイターは新しいNFTの生成に専念でき、あなたはNFTのミントと販売を担当することができます。[認可Minter](../../concepts/tokens/nfts/authorizing-another-minter.md)をご覧ください。
 
-NFTの作成を終了すると、作成者は認可Minterの権限を取り消し、NFTに対する権限を取り戻すことができます。また、NFTの販売を行うマーケットプレイスにトークンを譲渡することもできます。あなたは、売りオファーと買いオファーのマッチングを行うブローカーとして機能することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)を参照してください。
+NFTの作成を終了すると、作成者は認可Minterの権限を取り消し、NFTに対する権限を取り戻すことができます。また、NFTの販売を行うマーケットプレイスにトークンを譲渡することもできます。あなたは、売りオファーと買いオファーのマッチングを行うブローカーとして機能することができます。[NFTオークションの実行](../../concepts/tokens/nfts/running-an-nft-auction.md)をご覧ください。
 
 他のアカウントに代わって最初のNFTをミントする場合は、[他アカウントからのNFTミントを許可する](../../tutorials/javascript/nfts/assign-an-authorized-minter.md)をご覧ください。
 
-発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)および[Transferableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)を参照してください。
+発行者として将来的にトークンをバーンできるようにしたい場合は、`Flags`フィールドを _1_ に設定します。NFTを譲渡可能にするには、`Flags`フィールドを _8_ に設定します。NFTをバーン可能かつ譲渡可能にするには、`Flags`フィールドを _9_ に設定します。[Burnableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)および[Transferableフラグ](../../references/protocol/data-types/nftoken.md#nftoken-flags)をご覧ください。
 
-<code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](../../references/protocol/data-types/nftoken.md#transferfee)を参照してください。
+<code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](../../references/protocol/data-types/nftoken.md#transferfee)をご覧ください。
 
 NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 

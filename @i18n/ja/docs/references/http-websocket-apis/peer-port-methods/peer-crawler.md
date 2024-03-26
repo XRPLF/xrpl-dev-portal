@@ -35,7 +35,7 @@ JSONオブジェクトは次のフィールドを含んでいます。
 |:-----------------|:-----------|:-------------------------------------------------|
 | `counts`         | オブジェクト | _(省略可)_ [get_countsメソッド][]のレスポンスと同じように、このサーバの状態に関する統計情報を返します。デフォルトの設定では、このフィールドは報告されません。報告される情報には、レジャーデータベースとトランザクションデータベースのサイズ、アプリケーション内キャッシュのキャッシュヒット率、さまざまな種類のオブジェクトがメモリにキャッシュされている数などがあります。メモリに保存されるオブジェクトの種類には、レジャー(`Ledger`)、トランザクション(`STTx`)、検証メッセージ (`STValidation`)などがあります。 |
 | `overlay`        | オブジェクト | _(省略可)_ [peersメソッド][]のレスポンスに似ています。`active`というフィールドがあり、これはオブジェクトの配列です(下記参照)。 |
-| `server`         | オブジェクト | _(省略可)_ このサーバに関する情報。[server_stateメソッド][]の公開フィールドを含みます。どの`rippled`バージョン(`build_version`)か、どの[レジャーバージョン](../../../concepts/networks-and-servers/ledger-history.md)が利用可能か(`complete_ledgers`)、サーバーの負荷量などです。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}更新: rippled 1.2.1{% /badge %}. |
+| `server`         | オブジェクト | _(省略可)_ このサーバに関する情報。[server_stateメソッド][]の公開フィールドを含みます。どの`rippled`バージョン(`build_version`)か、どの[レジャーバージョン](../../../concepts/networks-and-servers/ledger-history.md)が利用可能か(`complete_ledgers`)、サーバの負荷量などです。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}更新: rippled 1.2.1{% /badge %}. |
 | `unl`            | オブジェクト | _(省略可)_ [validatorsメソッド][]や[validator_list_sitesメソッド][]のレスポンスと同様です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}更新: rippled 1.2.1{% /badge %}. |
 | `version`        | 数値        | このピアクローラのレスポンスのフォーマットのバージョンを示します。現在のピアクローラのバージョン番号は`2`です。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.1" %}更新: rippled 1.2.1{% /badge %}. |
 

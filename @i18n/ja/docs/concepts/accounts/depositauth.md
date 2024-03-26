@@ -23,7 +23,7 @@ Deposit Authorizationは、XRP Ledgerの[アカウント](index.md)のオプシ�
 
 金融サービスの規制やライセンスによっては、企業や組織に対して、受領するすべてのトランザクションの送信者を把握するよう義務付けています。これは、自由に生成できる偽名で参加者を識別し、デフォルトですべてのアドレスからあらゆる宛先への支払いを可能とするXRP Ledgerのような分散型システムとっては課題となります。
 
-Deposit Authorizationフラグにより、XRP Ledgerを使用するユーザーが分散型レジャーの基本的な特性を変えずにこのような規制に準拠するためのオプションを採用しました。Deposit Authorizationが有効な場合、アカウントはトランザクションを送信することで明示的に承認した資金のみを受領できます。Deposit Authorizationを使用するアカウントの所有者は、アカウントに資金を入金するトランザクションを送信する _前に_ 、資金の送金元の確認に必要なデューディリジェンス（確認調査）を実施できます。
+Deposit Authorizationフラグにより、XRP Ledgerを使用するユーザが分散型レジャーの基本的な特性を変えずにこのような規制に準拠するためのオプションを採用しました。Deposit Authorizationが有効な場合、アカウントはトランザクションを送信することで明示的に承認した資金のみを受領できます。Deposit Authorizationを使用するアカウントの所有者は、アカウントに資金を入金するトランザクションを送信する _前に_ 、資金の送金元の確認に必要なデューディリジェンス（確認調査）を実施できます。
 
 Deposit Authorizationを有効にすると、[Checks](/resources/known-amendments.md#checks)、[Escrow](../payment-types/escrow.md)、および[Payment Channel](/resources/known-amendments.md#paychan)から資金を受領できます。このような「二段階」トランザクションモデルでは、最初に送金元は資金の送金を承認するトランザクションを送信し、次に送金先は資金受領を承認するトランザクションを送信します。
 
@@ -70,7 +70,7 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 ## Deposit Authorizationの有効化または無効化
 
-アカウントのDeposit Authorizationを有効にするには、`SetFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。アカウントのDeposit Authorizationを無効にするには、`ClearFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。AccountSetフラグについての詳細は、[AccountSetフラグ](../../references/protocol/transactions/types/accountset.md)を参照してください。
+アカウントのDeposit Authorizationを有効にするには、`SetFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。アカウントのDeposit Authorizationを無効にするには、`ClearFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。AccountSetフラグについての詳細は、[AccountSetフラグ](../../references/protocol/transactions/types/accountset.md)をご覧ください。
 
 ## AccountのDepositAuthの有効化の確認
 
@@ -96,7 +96,7 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - [EscrowFinish][]
 - [PaymentChannelClaim][]
 
-事前承認は、DepositAuthが有効なアカウントへのその他の送金方法には影響しません。詳しいルールについては、[詳細なセマンティクス](#詳細なセマンティクス)を参照してください。
+事前承認は、DepositAuthが有効なアカウントへのその他の送金方法には影響しません。詳しいルールについては、[詳細なセマンティクス](#詳細なセマンティクス)をご覧ください。
 
 ### 承認の確認
 
@@ -113,7 +113,7 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - [`rippled` API](../../references/http-websocket-apis/index.md)の[deposit_authorizedメソッド][]。
 - [Authorized Trust Lines](../tokens/fungible-tokens/authorized-trust-lines.md)機能（`RequireAuth`フラグ）により、アカウントが発行したXRP以外の通貨を保有できる取引相手が制限されます。
 - `DisallowXRP`フラグは、アカウントがXRPを受領してはならないことを示します。これはDeposit Authorizationよりもソフトな保護機能であり、XRP Ledgerにより強制されません。（クライアントアプリケーションはこのフラグに従うか、または少なくともこのフラグについて警告します。）
-- 送信トランザクションが[Destinationタグ](../transactions/source-and-destination-tags.md)を指定している場合には、`RequireDest`フラグは、アカウントが通貨額のみを受領できることを示します。これにより、ユーザーが支払の目的を指定し忘れることがなくなりますが、恣意的な送金先タグを作成できる不明な送金元から受取人が保護されるわけではありません。
+- 送信トランザクションが[Destinationタグ](../transactions/source-and-destination-tags.md)を指定している場合には、`RequireDest`フラグは、アカウントが通貨額のみを受領できることを示します。これにより、ユーザが支払の目的を指定し忘れることがなくなりますが、恣意的な送金先タグを作成できる不明な送金元から受取人が保護されるわけではありません。
 - [Partial Payment](../payment-types/partial-payments.md)により、アカウントは不要な支払を返金できます。この際、[送金手数料](../tokens/transfer-fees.md)と為替レートは送金額には追加されず、送金された金額から差し引かれます。
 <!--{# TODO: Add link to "check for authorization" tutorial DOC-1684 #}-->
 

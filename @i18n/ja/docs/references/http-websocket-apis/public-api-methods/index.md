@@ -2,15 +2,15 @@
 html: public-api-methods.html
 parent: http-websocket-apis.html
 seo:
-    description: パブリックAPIメソッドを使用して、rippledサーバーと直接通信します。
+    description: パブリックAPIメソッドを使用して、rippledサーバと直接通信します。
 labels:
-  - コアサーバー
+  - コアサーバ
 top_nav_grouping: 人気ページ
 top_nav_name: APIのメソッド
 ---
 # rippledのパブリックメソッド
 
-以下のパブリックAPIメソッドを使用して、[XRP Ledgerサーバー](../../../concepts/networks-and-servers/index.md)と直接通信します。パブリックメソッドは必ずしも一般大衆向けに設計されたのではありませんが、サーバーに接続されたあらゆるクライアントが使用します。パブリックメソッドは、サーバーを運用している組織のメンバーまたは顧客向けのものと考えてください。
+以下のパブリックAPIメソッドを使用して、[XRP Ledgerサーバ](../../../concepts/networks-and-servers/index.md)と直接通信します。パブリックメソッドは必ずしも一般大衆向けに設計されたのではありませんが、サーバに接続されたあらゆるクライアントが使用します。パブリックメソッドは、サーバを運用している組織のメンバーまたは顧客向けのものと考えてください。
 
 
 ## [アカウントメソッド](account-methods/index.md)
@@ -75,19 +75,19 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 
 ## [サブスクリプションメソッド](subscription-methods/index.md)
 
-以下のメソッドにより、各種イベントの発生時にサーバーからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。_WebSocket APIのみ。_
+以下のメソッドにより、各種イベントの発生時にサーバからクライアントに更新が通知されるように設定できます。これにより、イベントを即座に把握し、対処することができます。_WebSocket APIのみ。_
 
 * **[`subscribe`](subscription-methods/subscribe.md)** - 特定の対象について更新の通知を受けます。
 * **[`unsubscribe`](subscription-methods/unsubscribe.md)** - 特定の対象についての更新の通知を停止します。
 
 
-## [サーバー情報メソッド](server-info-methods/index.md)
+## [サーバ情報メソッド](server-info-methods/index.md)
 
-以下のメソッドを使用して、`rippled`サーバーの現在の状態についての情報を取得します。
+以下のメソッドを使用して、`rippled`サーバの現在の状態についての情報を取得します。
 
 * **[`fee`](server-info-methods/fee.md)** - トランザクションコストについての情報を取得します。
-* **[`server_info`](server-info-methods/server_info.md)** - サーバーのステータスを人間が読めるフォーマットで取得します。
-* **[`server_state`](server-info-methods/server_state.md)** - サーバーのステータスを機械が読み取れるフォーマットで取得します。
+* **[`server_info`](server-info-methods/server_info.md)** - サーバのステータスを人間が読めるフォーマットで取得します。
+* **[`server_state`](server-info-methods/server_state.md)** - サーバのステータスを機械が読み取れるフォーマットで取得します。
 
 
 ## [ユーティリティメソッド](utility-methods/index.md)
@@ -95,7 +95,7 @@ Payment Channel は、2名の当事者間での一方向の繰り返しの支払
 以下のメソッドを使用して、pingや乱数生成などの便利なタスクを実行します。
 
 * **[`json`](utility-methods/json.md)** - プロキシとして使用して、他のコマンドを実行します。コマンドのパラメーターをJSON値として受け入れます。_コマンドラインのみ。_
-* **[`ping`](utility-methods/ping.md)** - サーバーとの接続を確認します。
+* **[`ping`](utility-methods/ping.md)** - サーバとの接続を確認します。
 * **[`random`](utility-methods/random.md)** - 乱数を生成します。
 
 

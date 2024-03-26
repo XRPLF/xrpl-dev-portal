@@ -5,14 +5,14 @@ seo:
     description: 無効。rippledが検証の署名に使用するシークレット値を一時的に設定します。
 status: removed
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # validation_seed
 [[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/ValidationSeed.cpp "Source")
 
-`validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバーを再起動すると、この値は構成ファイルに基づいてリセットされます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1" %}rippled 0.29.1 以降では無効{% /badge %}
+`validation_seed`コマンドは、rippledが検証の署名に使用するシークレット値を一時的に設定します。サーバを再起動すると、この値は構成ファイルに基づいてリセットされます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.1-rc1" %}rippled 0.29.1 以降では無効{% /badge %}
 
-*`validation_seed`リクエストは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
+*`validation_seed`リクエストは、権限のないユーザは実行できない[管理メソッド](../index.md)です。*
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:

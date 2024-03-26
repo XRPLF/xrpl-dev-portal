@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: Linuxでrippledの自動更新を設定します。
 labels:
-  - コアサーバー
+  - コアサーバ
   - セキュリティ
 ---
 # Linuxでの自動更新
@@ -23,7 +23,7 @@ Linuxでは、`rippled`が1回限りの`cron`構成を使用して最新バー�
     $ sudo ln -s /opt/ripple/etc/update-rippled-cron /etc/cron.d/
     ```
 
-   このcron構成は、インストール済みの`rippled`パッケージを新版のリリース後1時間以内に更新するためのスクリプトを実行します。同時に更新を実行しているすべてのサーバーが停止する可能性を抑えるため、このスクリプトは`rippled`サービスを再起動しません。手動再起動しますまで、以前のバージョンを実行し続けます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}新規: rippled 1.8.1{% /badge %}
+   このcron構成は、インストール済みの`rippled`パッケージを新版のリリース後1時間以内に更新するためのスクリプトを実行します。同時に更新を実行しているすべてのサーバが停止する可能性を抑えるため、このスクリプトは`rippled`サービスを再起動しません。手動再起動しますまで、以前のバージョンを実行し続けます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.8.1" %}新規: rippled 1.8.1{% /badge %}
 
 3. 新しいリリースが公開された後、`rippled`サービスを手動再起動する。
 
@@ -39,7 +39,7 @@ Linuxでは、`rippled`が1回限りの`cron`構成を使用して最新バー�
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [容量の計画](capacity-planning.md)

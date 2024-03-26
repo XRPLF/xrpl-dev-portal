@@ -34,7 +34,7 @@ XRP Ledgerの「アカウント」は、XRPの所有者と[トランザクショ
 
 ### アカウントの作成
 
-「アカウント作成」専用のトランザクションはありません。Paymentトランザクションでまだアカウントを所有していない数学的に有効なアドレスに[アカウントの準備金](reserves.md)以上のXRPが送信されると、[Paymentトランザクション][]で自動的に新しいアカウントが作成されます。これはアカウントへの _資金提供_ と呼ばれ、レジャーに[AccountRootエントリー](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)が作成されます。それ以外のトランザクションでアカウントを作成することはできません。
+「アカウント作成」専用のトランザクションはありません。Paymentトランザクションでまだアカウントを所有していない数学的に有効なアドレスに[アカウントの準備金](reserves.md)以上のXRPが送信されると、[Paymentトランザクション][]で自動的に新しいアカウントが作成されます。これはアカウントへの _資金提供_ と呼ばれ、レジャーに[AccountRootエントリ](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)が作成されます。それ以外のトランザクションでアカウントを作成することはできません。
 
 **注意:** アカウントへ資金提供をすることは、そのアカウントに対して特別な権限を持つことには**なりません**。アカウントのアドレスに対応する秘密鍵を持っている人なら誰でも、アカウントとそれに含まれるすべてのXRPの完全制御権を持っています。一部のアドレスでは、誰も秘密鍵を持っていない場合があります。その場合、アカウントは[ブラックホール](addresses.md#特別なアドレス)になり、XRPは永久に失われます。
 
@@ -42,7 +42,7 @@ XRP Ledgerでアカウントを取得する一般的な方法は次のとおり�
 
 1. ランダム性の強いソースからキーペアを生成し、そのキーペアのアドレスを計算します。（例えば、[wallet_proposeメソッド][]を使用して計算することができます。）
 
-2. XRP Ledgerにアカウントをすでに持っているユーザーに、生成したアドレスにXRPを送信してもらいます。
+2. XRP Ledgerにアカウントをすでに持っているユーザに、生成したアドレスにXRPを送信してもらいます。
 
     - 例えば、一般的な取引所でXRPを購入し、その取引所から、指定したアドレスにXRPを出金することができます。
 
@@ -63,7 +63,7 @@ XRP Ledgerでアカウントを取得する一般的な方法は次のとおり�
     - [Paymentトランザクション][]
   - [AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)
 - **チュートリアル:**
-    - [アカウント設定の管理（カテゴリー）](../../tutorials/how-tos/manage-account-settings/index.md)
+    - [アカウント設定の管理（カテゴリ）](../../tutorials/how-tos/manage-account-settings/index.md)
     - [WebSocketを使用した着信ペイメントの監視](../../tutorials/http-websocket-apis/monitor-incoming-payments-with-websocket.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

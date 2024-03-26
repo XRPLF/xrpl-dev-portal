@@ -795,7 +795,7 @@ rippled json ledger_entry '{ "nft_page": "255DD86DDF59D778081A06D02701E9B2C9F4F0
 * `deprecatedFeature` - 削除されたフィールド（`generator`など）がリクエストに指定されていました。
 * `entryNotFound` - リクエストされたレジャーオブジェクトはレジャーに存在しません。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 * `malformedAddress` - リクエストの[アドレス][]フィールドが誤って指定されています。
 * `malformedCurrency` - リクエストの[通貨コード][]フィールドが誤って指定されています。
 * `malformedOwner` - リクエストの`escrow.owner`サブフィールドが誤って指定されています。

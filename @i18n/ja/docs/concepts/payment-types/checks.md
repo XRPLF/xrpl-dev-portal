@@ -25,14 +25,14 @@ Checksは[Escrow](escrow.md)と[Payment Channel](../../tutorials/how-tos/use-spe
 * EscrowではXRPを自分自身に送金できます。ChecksではXRPを自身に送金することはできません。
 
 
-**注記:** [Checks Amendment][] により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](../tokens/decentralized-exchange/offers.md#オファーの有効期限)を参照してください。
+**注記:** [Checks Amendment][] により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](../tokens/decentralized-exchange/offers.md#オファーの有効期限)をご覧ください。
 
 
 ## Checksを利用する理由
 
 従来の紙の小切手では、実際の通貨を即座にやり取りすることなく残高を送金できます。XRP Ledger Checksを使用すると、銀行業界でよく利用され受け入れられている方法で資金を非同期にやり取りすることができます。
 
-XRP Ledger Checksは、XRP Ledgerに固有の問題も解決できます。たとえば、ユーザーが不審な支払いを拒否したり、支払いの一部のみを受領することを可能にします。これは、コンプライアンス上の理由から支払いの受け入れに慎重に対応する必要がある機関にとっては有用です。
+XRP Ledger Checksは、XRP Ledgerに固有の問題も解決できます。たとえば、ユーザが不審な支払いを拒否したり、支払いの一部のみを受領することを可能にします。これは、コンプライアンス上の理由から支払いの受け入れに慎重に対応する必要がある機関にとっては有用です。
 
 
 ### ユースケース: 支払いの承認
@@ -84,14 +84,14 @@ Checksはすべて同じ方法で開始されるため、**ステップ1と2**�
 
 ## Checksの利用可能性
 
-[Checks amendment][]は2020年6月18日にメインネットで有効化されました。Amendmentがどのように有効化され、投票されるかについては、[Amendmentsプロセス](../networks-and-servers/amendments.md#amendmentプロセス)を参照してください。
+[Checks amendment][]は2020年6月18日にメインネットで有効化されました。Amendmentがどのように有効化され、投票されるかについては、[Amendmentsプロセス](../networks-and-servers/amendments.md#amendmentプロセス)をご覧ください。
 
 Test NetまたはプライベートXRP LedgerネットワークでのAmendmentの状況を確認するには、[featureメソッド][]を使用してください。
 
 
 ## 参考情報
 
-XRP LedgerのChecksの詳細は、以下を参照してください。
+XRP LedgerのChecksの詳細は、以下をご覧ください。
 
 - [トランザクションのリファレンス](../../references/protocol/transactions/types/index.md)
     - [CheckCreate][]
@@ -106,7 +106,7 @@ XRP LedgerのChecksの詳細は、以下を参照してください。
     - [Checkの取消し](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md)
 - [Checks Amendment][]
 
-関連機能の詳細については、以下を参照してください。
+関連機能の詳細については、以下をご覧ください。
 
 * [Deposit Authorization](../accounts/depositauth.md)
 * [Escrow](escrow.md)

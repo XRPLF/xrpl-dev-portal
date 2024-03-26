@@ -11,7 +11,7 @@ labels:
 
 `ledger_cleaner`コマンドは[レジャークリーナー](https://github.com/XRPLF/rippled/blob/f313caaa73b0ac89e793195dcc2a5001786f916f/src/ripple/app/ledger/README.md#the-ledger-cleaner)を制御します。レジャークリーナーは、`rippled`のレジャーデータベースの破損を検出して修復できる非同期メンテナンスプロセスです。
 
-_`ledger_cleaner`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_`ledger_cleaner`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:

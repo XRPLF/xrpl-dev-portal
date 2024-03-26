@@ -5,7 +5,7 @@ seo:
     description: Amendmentに関してこのサーバが認識している情報を返します。
 labels:
   - ブロックチェーン
-  - コアサーバー
+  - コアサーバ
 ---
 # feature
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")
@@ -14,7 +14,7 @@ labels:
 
 `feature`コマンドを使用して、Amendmentへの賛成票または反対票を投じるようにサーバを一時的に設定できます。この変更は、サーバの再起動後も保持されます。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.7.0" %}更新: rippled 1.7.0{% /badge %}
 
-_`feature`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
+_`feature`メソッドは、権限のないユーザは実行できない[管理メソッド](../index.md)です。_
 
 ### リクエストのフォーマット
 リクエストのフォーマットの例:

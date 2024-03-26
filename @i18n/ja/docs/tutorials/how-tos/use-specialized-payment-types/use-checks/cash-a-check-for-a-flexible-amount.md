@@ -30,7 +30,7 @@ Checkから可能な限りの額を受領したい場合には、変動金額で
 | `TransactionType` | 文字列                    | 値が`CheckCash`の場合、これはCheckCashトランザクションです。 |
 | `Account`         | 文字列（アドレス）          | Checkを換金する送信者のアドレス。（あなたのアドレスです。） |
 | `CheckID`         | 文字列                    | レジャーで換金するCheckオブジェクトのID。この情報を確認するには、[txメソッド][]を使用してCheckCreateトランザクションのメタデータを調べるか、または[account_objectsメソッド][]を使用してCheckを探します。 |
-| `DeliverMin`      | 文字列またはオブジェクト（額） | Checkから受領する最小額。この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。XRPの場合、XRPのdrop数を示す文字列でなければなりません。トークンの場合、これは`currency`、`issuer`、および`value` フィールドを持つオブジェクトです。`currency`フィールドと`issuer`フィールドは、Checkオブジェクトの対応するフィールドに一致しており、`value`はCheckオブジェクトの額以下でなければなりません。詳細は、[通貨額の指定][]を参照してください。 |
+| `DeliverMin`      | 文字列またはオブジェクト（額） | Checkから受領する最小額。この額を受領できない場合はCheckの換金が失敗し、Checkがレジャーに残るので、後で換金を再試行できます。XRPの場合、XRPのdrop数を示す文字列でなければなりません。トークンの場合、これは`currency`、`issuer`、および`value` フィールドを持つオブジェクトです。`currency`フィールドと`issuer`フィールドは、Checkオブジェクトの対応するフィールドに一致しており、`value`はCheckオブジェクトの額以下でなければなりません。詳細は、[通貨額の指定][]をご覧ください。 |
 
 ### 変動金額で換金するCheckCashトランザクションの準備の例
 
@@ -153,7 +153,7 @@ Checkを変動金額で換金するためのトランザクションを準備す
 
 Checkが変動する`DeliverMin`の額で換金された場合は、Checkは少なくとも`DeliverMin`の額で換金されたと想定できます。送金された額を正確に得るには、トランザクションメタデータを調べます。<!--{# TODO: Update if RIPD-1623 adds a delivered_amount field. #}-->メタデータの`AffectedNodes`配列には、通貨のタイプに応じて、Checkの換金による残高の変更を反映した1～2つのオブジェクトが含まれています。
 
-- XRPの場合、Checkの送金元の`AccountRoot`オブジェクトのXRP `Balance` フィールドから引き落しが行われます。Checkの受取人（CheckCashトランザクションを送信したユーザー）の`AccountRoot`オブジェクトでは、最低でもCheckCashトランザクションの`DeliverMin`から、トランザクションの送信にかかる[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)を差し引いた額が、XRP `Balance`に入金されます。
+- XRPの場合、Checkの送金元の`AccountRoot`オブジェクトのXRP `Balance` フィールドから引き落しが行われます。Checkの受取人（CheckCashトランザクションを送信したユーザ）の`AccountRoot`オブジェクトでは、最低でもCheckCashトランザクションの`DeliverMin`から、トランザクションの送信にかかる[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)を差し引いた額が、XRP `Balance`に入金されます。
 
     たとえば以下の`ModifiedNode`は、アカウントrGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis（Checkの受取人でありこのCheckCashトランザクションの送信者）のXRP残高が`9999999970` dropから`10099999960` dropに変更されています。つまり、このトランザクションを処理した結果として、受取人に対し _正味_ 99.99999 XRPが入金されています。
 
