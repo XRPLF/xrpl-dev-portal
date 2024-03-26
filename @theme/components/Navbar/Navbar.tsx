@@ -230,7 +230,7 @@ export function NavDropdown(props) {
         }
         return (
           <a key={index2} className={cls2} href={item2_href}>
-            {item2.label}
+            {translate(item2.labelTranslationKey, item2.label)}
           </a>
         );
       });
@@ -239,7 +239,7 @@ export function NavDropdown(props) {
 
       return (
         <div key={index} className={clnm}>
-          <h5 className="dropdown-item">{item.label}</h5>
+          <h5 className="dropdown-item">{translate(item.labelTranslationKey, item.label)}</h5>
           {groupLinks}
         </div>
       );
@@ -252,8 +252,12 @@ export function NavDropdown(props) {
         hero_href = pathPrefix + hero_href;
       }
       const splitlabel = item.label.split(" || ");
-      const newlabel = splitlabel[0];
-      const description = splitlabel[1]; // might be undefined, that's ok
+      let splittranslationkey = ["",""]
+      if (item.labelTranslationKey) {
+        splittranslationkey = item.labelTranslationKey.split(" || ");
+      }
+      const newlabel = translate(splittranslationkey[0], splitlabel[0]);
+      const description = translate(splittranslationkey[1], splitlabel[1]); // splitlabel[1] might be undefined, that's ok
 
       return (
         <a
@@ -279,7 +283,7 @@ export function NavDropdown(props) {
       }
       return (
         <a key={index} className={cls} href={item_href}>
-          {item.label}
+          {translate(item.labelTranslationKey, item.label)}
         </a>
       );
     }

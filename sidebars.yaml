@@ -155,6 +155,7 @@
             - page: docs/concepts/xrpl-sidechains/witness-servers.md
     - page: docs/tutorials/index.md
       label: Tutorials
+      labelTranslationKey: sidebar.docs.tutorials
       expanded: false
       items:
         - page: docs/tutorials/public-servers.md
@@ -284,6 +285,7 @@
                 - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge.md
                 - page: docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction.md
     - page: docs/references/index.md
+      labelTranslationKey: sidebar.docs.references
       expanded: false
       items:
         - page: docs/references/protocol/index.md

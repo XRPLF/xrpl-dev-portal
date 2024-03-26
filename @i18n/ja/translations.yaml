@@ -11,6 +11,12 @@ sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
 sidebars.resources: リソース
 sidebar.resources.codesamples: コードサンプル
+topnav.docs.title: ドキュメント
+topnav.docs.description: XRPL技術に掘り下げて組み込めましょう。
+topnav.resources.current-status: 現在のステータス
+topnav.resources.explorer: エクスプローラ
+topnav.community.title: コミュニティ
+topnav.community.description: 話題に加わろう。
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
