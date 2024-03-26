@@ -2,7 +2,7 @@
 html: configure-the-peer-crawler.html
 parent: configure-peering.html
 seo:
-    description: rippledサーバーがステータスとピアについてどの程度の情報を公表するか設定します。
+    description: rippledサーバがステータスとピアについてどの程度の情報を公表するか設定します。
 labels:
   - Core Server
   - Security

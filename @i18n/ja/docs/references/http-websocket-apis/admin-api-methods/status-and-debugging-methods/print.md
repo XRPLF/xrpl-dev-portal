@@ -4,7 +4,7 @@ parent: status-and-debugging-methods.html
 seo:
     description: さまざまな内部サブシステムの現在の状況を返します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # print
 [[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/Print.cpp "Source")
@@ -233,7 +233,7 @@ Connecting to 127.0.0.1:5005
 
 {% /tabs %}
 
-レスポンスは[標準フォーマット][]に従っています。結果に含まれる追加フィールドは、`rippled`サーバーの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
+レスポンスは[標準フォーマット][]に従っています。結果に含まれる追加フィールドは、`rippled`サーバの内部状態に応じて異なります。このコマンドの実行結果は、予告なく変更されることがあります。
 
 ### 考えられるエラー
 

@@ -4,7 +4,7 @@ parent: status-and-debugging-methods.html
 seo:
     description: バリデータとして設定されている場合、サーバのバリデーション設定を取得します。
 labels:
-  - コアサーバー
+  - コアサーバ
   - ブロックチェーン
 ---
 # validator_info

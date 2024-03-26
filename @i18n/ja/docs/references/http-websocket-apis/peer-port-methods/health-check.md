@@ -4,7 +4,7 @@ parent: peer-port-methods.html
 seo:
     description: サーバの状態を報告するための特別なAPIメソッドです。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # ヘルスチェック
 [[ソース]](https://github.com/XRPLF/rippled/blob/de0c52738785de8bf837f9124da65c7905e7bb5a/src/ripple/overlay/impl/OverlayImpl.cpp#L1084-L1168 "ソース")

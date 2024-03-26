@@ -2,14 +2,14 @@
 html: ledger_accept.html
 parent: server-control-methods.html
 seo:
-    description: スタンドアロンモードでサーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
+    description: スタンドアロンモードでサーバが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # ledger_accept
 [[ソース]](https://github.com/XRPLF/rippled/blob/a61ffab3f9010d8accfaa98aa3cacc7d38e74121/src/ripple/rpc/handlers/LedgerAccept.cpp "Source")
 
-`ledger_accept`メソッドは、サーバーが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。このメソッドはテスト専用であり、`rippled`サーバーがスタンドアロンモードで実行されている場合にのみ使用できます。
+`ledger_accept`メソッドは、サーバが現在処理中のレジャーを強制的に終了し、次のレジャー番号に進むようにします。このメソッドはテスト専用であり、`rippled`サーバがスタンドアロンモードで実行されている場合にのみ使用できます。
 
 *`ledger_accept`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。*
 
@@ -64,6 +64,6 @@ rippled ledger_accept
 ### 考えられるエラー
 
 * [汎用エラータイプ][]のすべて。
-* `notStandAlone` - `rippled`サーバーが現在スタンドアロンモードで実行されていない場合。
+* `notStandAlone` - `rippled`サーバが現在スタンドアロンモードで実行されていない場合。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

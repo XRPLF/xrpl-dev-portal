@@ -12,7 +12,7 @@ labels:
 # unsubscribe
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Unsubscribe.cpp "Source")
 
-`unsubscribe`コマンドはサーバーに対して、特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
+`unsubscribe`コマンドはサーバに対して、特定のサブスクリプションまたは一連のサブスクリプションへのメッセージ送信の停止を指示します。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:

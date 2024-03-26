@@ -2,7 +2,7 @@
 html: subscribe.html
 parent: subscription-methods.html
 seo:
-    description: 特定のイベントが発生した場合に、定期的に通知するようサーバーにリクエストします。
+    description: 特定のイベントが発生した場合に、定期的に通知するようサーバにリクエストします。
 labels:
   - 支払い
   - アカウント
@@ -12,7 +12,7 @@ labels:
 # subscribe
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Subscribe.cpp "Source")
 
-`subscribe`メソッドは、特定のイベントが発生した場合に、定期的に通知するようサーバーにリクエストします。
+`subscribe`メソッドは、特定のイベントが発生した場合に、定期的に通知するようサーバにリクエストします。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
@@ -69,10 +69,10 @@ labels:
 | `Field`             | 型     | 説明                                          |
 |:--------------------|:-------|:----------------------------------------------|
 | `streams` | 配列 | _（省略可）_ 以下に説明する、サブスクライブする汎用ストリームの文字列名の配列。 |
-| `accounts` | 配列 | _（省略可）_ 検証済みトランザクションを監視するアカウントの一意のアドレスを持つ配列。これらのアドレスはXRP Ledgerの[base58][]フォーマットで記述されている必要があります。サーバーは、1つ以上のアカウントに影響するすべてのトランザクションについて通知を送信します。 |
+| `accounts` | 配列 | _（省略可）_ 検証済みトランザクションを監視するアカウントの一意のアドレスを持つ配列。これらのアドレスはXRP Ledgerの[base58][]フォーマットで記述されている必要があります。サーバは、1つ以上のアカウントに影響するすべてのトランザクションについて通知を送信します。 |
 | `accounts_proposed` | 配列 | _（省略可）_ `accounts`と同様ですが、まだファイナライズされていないトランザクションを含みます。 |
 | `books` | 配列 | _（省略可）_ 以下に説明するとおり、更新の監視のために[オーダーブック](http://www.investopedia.com/terms/o/order-book.asp)を定義するオブジェクトの配列。 |
-| `url` | 文字列 | （Websocketでは省略可、それ以外では必須）サーバーが各イベントのJSON-RPCコールバックを送信するURL。*管理者専用。* |
+| `url` | 文字列 | （Websocketでは省略可、それ以外では必須）サーバが各イベントのJSON-RPCコールバックを送信するURL。*管理者専用。* |
 | `url_username` | 文字列 | _（省略可）_ コールバックURLで基本認証を行うためのユーザー名。 |
 | `url_password` | 文字列 | _（省略可）_ コールバックURLで基本認証を行うためのパスワード。 |
 
@@ -80,13 +80,13 @@ labels:
 
 `streams`パラメーターは、以下のデフォルトの情報ストリームへのアクセスを可能にします。
 
-* `server` - `rippled`サーバーのステータス（ネットワーク接続など）が変更されるたびにメッセージを送信します。
+* `server` - `rippled`サーバのステータス（ネットワーク接続など）が変更されるたびにメッセージを送信します。
 * `ledger` - コンセンサスプロセスで新しい検証済みレジャーが宣言されるたびにメッセージを送信します。
 * `transactions` - 決済済みレジャーにトランザクションが追加されるたびにメッセージを送信します。
 * `transactions_proposed` - 決済済みレジャーにトランザクションが追加される場合や、検証済みレジャーにまだ追加されておらず、今後も追加される見込みのない一部のトランザクションが決済済みレジャーに追加される場合に、メッセージを送信します。提案されたすべてのトランザクションが検証前に表示されるわけではありません。**注記:** 検証済みレジャーには[失敗したトランザクションも記録されます](../../../protocol/transactions/transaction-results/index.md)。これは、このようなトランザクションにはスパム対策のトランザクション手数料が課されるためです。
-* `validations` - サーバーがバリデータを信頼しているか否かにかかわらず、サーバーが検証メッセージを受信するたびに、メッセージを送信します。（個々の`rippled`は、サーバーが少なくとも定数の信頼できるバリデータから検証メッセージを受信した時点で、レジャーが検証済みであると宣言します。）
-* `consensus` - サーバーがコンセンサスサイクルのフェーズ（open、establish、acceptedなど）を変更するたびにメッセージを送信します。
-* `peer_status` - **（管理者専用）** 接続しているピア`rippled`サーバーに関する情報（特にコンセンサスプロセスに関する情報）。
+* `validations` - サーバがバリデータを信頼しているか否かにかかわらず、サーバが検証メッセージを受信するたびに、メッセージを送信します。（個々の`rippled`は、サーバが少なくとも定数の信頼できるバリデータから検証メッセージを受信した時点で、レジャーが検証済みであると宣言します。）
+* `consensus` - サーバがコンセンサスサイクルのフェーズ（open、establish、acceptedなど）を変更するたびにメッセージを送信します。
+* `peer_status` - **（管理者専用）** 接続しているピア`rippled`サーバに関する情報（特にコンセンサスプロセスに関する情報）。
 
 `books`配列が指定されている場合、この配列の各要素は、以下のフィールドを持つオブジェクトです。
 
@@ -120,7 +120,7 @@ labels:
 レスポンスは[標準フォーマット][]に従っています。レスポンスに含まれるフィールドは、リクエストに指定されたサブスクリプションに応じて異なります。
 
 * `accounts`および`accounts_proposed` - フィールドが返されません。
-* *Stream: server* - `load_base`（サーバーの現在の読み込みレベル）、`random`（ランダムに生成された値）などのサーバーのステータスに関する情報。これらの情報は変更される可能性があります。
+* *Stream: server* - `load_base`（サーバの現在の読み込みレベル）、`random`（ランダムに生成された値）などのサーバのステータスに関する情報。これらの情報は変更される可能性があります。
 * *Stream: transactions*、*Stream: transactions_proposed*、*Stream: validations*、および*Stream: consensus* - フィールドは返されません。
 * *Stream: ledger* - 手元にあるレジャーと現在の手数料体系に関する情報。`fee_base`（XRP単位のトランザクションの現行基本手数料）、`fee_ref`（手数料単位のトランザクションの現行基本手数料）、`ledger_hash`（最新の検証済みレジャーのハッシュ）、`reserve_base`（アカウントの最低必要準備金）などがあります。
 * `books` - フィールドはデフォルトで返されません。リクエストが`"snapshot": true`に設定されている場合、`offers`（オーダーブックを定義するオファー定義オブジェクトの配列）を返します。
@@ -173,7 +173,7 @@ labels:
 | `reserve_base` | 数値 | アカウントの最低必要[準備金](../../../../concepts/accounts/reserves.md)（[XRPのdrop数][]）。このレジャーバージョンに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が含まれる場合は、次のレジャーバージョンから新しい基本準備金が適用されます。 |
 | `reserve_inc` | 数値 | アカウントがレジャーに所有しているオブジェクトごとの[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)（[XRPのdrop数][]）。レジャーに[SetFee疑似トランザクション](../../../protocol/transactions/pseudo-transaction-types/setfee.md)が記録されている場合、このレジャー以降は新しい所有者準備金が適用されます。 |
 | `txn_count` | 数値 | このレジャーバージョンに含まれる新規トランザクションの数。 |
-| `validated_ledgers` | 文字列 | _（省略される場合があります）_ サーバーで使用可能なレジャーの範囲。これは連続的ではない可能性があります。サーバーがネットワークに接続されていない場合や、サーバーが接続されていてもネットワークからレジャーをまだ取得していない場合は、このフィールドは返されません。 |
+| `validated_ledgers` | 文字列 | _（省略される場合があります）_ サーバで使用可能なレジャーの範囲。これは連続的ではない可能性があります。サーバがネットワークに接続されていない場合や、サーバが接続されていてもネットワークからレジャーをまだ取得していない場合は、このフィールドは返されません。 |
 
 
 ## 検証ストリーム
@@ -212,14 +212,14 @@ labels:
 | `Field`　　　　　　　　　| 型　　　　　　　　| 説明　　　　                     |
 |:------------------------|:-----------------|:--------------------------------|
 | `type` | 文字列 | 値`validationReceived`は、このメッセージが検証ストリームからであることを示します。 |
-| `amendments` | 文字列の配列 | （省略される場合があります）このサーバーがプロトコルへの追加を求める[Amendment](../../../../concepts/networks-and-servers/amendments.md)。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
-| `base_fee` | 整数 | （省略される場合があります）サーバーが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望するスケーリングされていないトランザクションコスト（`reference_fee`値）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
+| `amendments` | 文字列の配列 | （省略される場合があります）このサーバがプロトコルへの追加を求める[Amendment](../../../../concepts/networks-and-servers/amendments.md)。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
+| `base_fee` | 整数 | （省略される場合があります）サーバが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望するスケーリングされていないトランザクションコスト（`reference_fee`値）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
 | `flags` | 数値 | この検証メッセージに追加されるフラグのビットマスク。フラグ0x80000000は、検証の署名が完全に正規であることを示します。フラグ0x00000001は、完全な検証であることを示します。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
 | `full` | ブール値 | `true`の場合は、完全な検証です。それ以外の場合は部分検証です。部分検証とは、特定のレジャーに対する投票ではありません。部分検証は、バリデータがオンラインであるがコンセンサスにまだ同意していないことを示します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
 | `ledger_hash` | 文字列 | 提案されたレジャーの識別ハッシュを検証中です。 |
 | `ledger_index` | 文字列 - 整数 | 提案されたレジャーの[レジャーインデックス][]。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.31.0" %}新規: rippled 0.31.0{% /badge %} |
 | `load_fee` | 整数 | （省略される場合があります）このバリデータにより現在施行されているローカルの負荷スケーリングされたトランザクションコスト（手数料単位）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
-| `master_key` | 文字列 | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58][]フォーマットのバリデータトークンを使用している場合）。（関連項目: [`rippled`サーバーで検証を有効化](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-rippledサーバーで検証を有効化)。）{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
+| `master_key` | 文字列 | _（省略される場合があります）_ バリデータのマスター公開鍵（バリデータがXRP Ledgerの[base58][]フォーマットのバリデータトークンを使用している場合）。（関連項目: [`rippled`サーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-rippledサーバで検証を有効化)。）{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %} |
 | `reserve_base` | 整数 | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する最低必要準備金（`account_reserve`値）。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
 | `reserve_inc` | 整数 | （省略される場合があります）このバリデータが[手数料投票](../../../../concepts/consensus-protocol/fee-voting.md)による設定を希望する必要準備金（`owner_reserve`値）の増分。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.32.0" %}新規: rippled 0.32.0{% /badge %} |
 | `signature` | 文字列 | バリデータがこのレジャーへの投票に署名するときに使用する署名。 |
@@ -367,7 +367,7 @@ labels:
 
 ## ピアステータスストリーム
 
-管理者専用の`peer_status`ストリームは、このサーバーが接続している他の`rippled`サーバーの活動に関する大量の情報、特にコンセンサスプロセスでのサーバーのステータスを報告します。
+管理者専用の`peer_status`ストリームは、このサーバが接続している他の`rippled`サーバの活動に関する大量の情報、特にコンセンサスプロセスでのサーバのステータスを報告します。
 
 ピアステータスストリームメッセージの例:
 
@@ -383,7 +383,7 @@ labels:
 }
 ```
 
-ピアステータスストリームメッセージは、ピア`rippled`サーバーのステータスが変化したイベントを表します。これらのメッセージは、次のフィールドを持つJSONオブジェクトです。
+ピアステータスストリームメッセージは、ピア`rippled`サーバのステータスが変化したイベントを表します。これらのメッセージは、次のフィールドを持つJSONオブジェクトです。
 
 | `Field`　　　　　　| 値　　　| 説明 　　　　                                   |
 |:-------------------|:-------|:-----------------------------------------------|
@@ -549,7 +549,7 @@ labels:
 
 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
-`consensus`ストリームは、[コンセンサスプロセス](../../../../concepts/consensus-protocol/index.md)でフェーズが変更されると、`consensusPhase`メッセージを送信します。このメッセージには、サーバーで実行されているコンセンサスの新しいフェーズが含まれます。
+`consensus`ストリームは、[コンセンサスプロセス](../../../../concepts/consensus-protocol/index.md)でフェーズが変更されると、`consensusPhase`メッセージを送信します。このメッセージには、サーバで実行されているコンセンサスの新しいフェーズが含まれます。
 
 ```json
 {
@@ -563,6 +563,6 @@ labels:
 | `Field`　　　　　　　| 型　　　　　　　　　　　　　| 説明        　　　　　　     |
 |:--------------------|:--------------------------|:---------------------------|
 | `type` | 文字列 | `consensusPhase`は、このメッセージがコンセンサスストリームからのものであることを示します。 |
-| `consensus` | 文字列 | サーバーで実行されている新しいコンセンサスフェーズ。値には、open、establish、acceptedなどがあります。 |
+| `consensus` | 文字列 | サーバで実行されている新しいコンセンサスフェーズ。値には、open、establish、acceptedなどがあります。 |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

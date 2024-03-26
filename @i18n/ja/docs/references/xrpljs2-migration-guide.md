@@ -54,7 +54,7 @@ const xrpl = require("xrpl");
 
 ## バリデーション結果
 
-デフォルトでは、ripple-lib 1.xにおけるほとんどのメソッドは、[コンセンサスプロセス](../concepts/consensus-protocol/index.md)によって検証された最終結果をリターンするのみでした。xrpl.jsと同等の多くのメソッドは、WebSocket APIをコールするために[`Client.request()`メソッド](https://js.xrpl.org/classes/Client.html#request)を使用します。WebSocket APIにおいて、XRP Ledgerサーバーのデフォルト設定では、検証済みデータだけはなく未検証のデータを含むことがあります。
+デフォルトでは、ripple-lib 1.xにおけるほとんどのメソッドは、[コンセンサスプロセス](../concepts/consensus-protocol/index.md)によって検証された最終結果をリターンするのみでした。xrpl.jsと同等の多くのメソッドは、WebSocket APIをコールするために[`Client.request()`メソッド](https://js.xrpl.org/classes/Client.html#request)を使用します。WebSocket APIにおいて、XRP Ledgerサーバのデフォルト設定では、検証済みデータだけはなく未検証のデータを含むことがあります。
 
 [分散型取引所](../concepts/tokens/decentralized-exchange/index.md)の状態を調べる時のように、完了見込みの多数のトランザクション結果が保留中であるため、現時点のオープンレジャーを使用したい場合があります。また、完了したトランザクション結果を取り込んだ検証済みのレジャーを使用したい場合もあります。
 
@@ -83,8 +83,8 @@ console.log(trustlines.result)
 
 xrpl.jsには、トランザクションの署名および送信のための、また、XRP Ledgerブロックチェーンのトランザクション最終結果の確認を待機するための特有の補助機能があります:
 
-- トランザクション送信および[最終結果](../concepts/transactions/finality-of-results/index.md)の待機のために`submitAndWait()`を使用します。トランザクションが検証された場合、これは[txメソッド][]レスポンスにリゾルブし、そうでない場合、例外処理(exception)となります。例外処理(exception)は、トランザクションが検証されなかったことを保証しません。例えば、サーバーに[より大きなギャップ](../concepts/transactions/reliable-transaction-submission.md#ledger-gaps)がある場合、トランザクションは、そのギャップの中で検証される可能性があります。
-- 即時の送信およびリターンのために`submit()`を使用します。これは[submitメソッド][]レスポンスにリゾルブし、仮の(最終ではない)結果を表示します。もしXRP Ledgerサーバーへのトランザクション送信に問題があった場合、このメソッドは例外処理(exception)のみとなります。
+- トランザクション送信および[最終結果](../concepts/transactions/finality-of-results/index.md)の待機のために`submitAndWait()`を使用します。トランザクションが検証された場合、これは[txメソッド][]レスポンスにリゾルブし、そうでない場合、例外処理(exception)となります。例外処理(exception)は、トランザクションが検証されなかったことを保証しません。例えば、サーバに[より大きなギャップ](../concepts/transactions/reliable-transaction-submission.md#ledger-gaps)がある場合、トランザクションは、そのギャップの中で検証される可能性があります。
+- 即時の送信およびリターンのために`submit()`を使用します。これは[submitメソッド][]レスポンスにリゾルブし、仮の(最終ではない)結果を表示します。もしXRP Ledgerサーバへのトランザクション送信に問題があった場合、このメソッドは例外処理(exception)のみとなります。
 
 どちらのメソッドに関しても、準備済みトランザクション説明と[`Wallet`インスタンス](#キーおよびウォレット)をパスすることによって、署名済みトランザクションをメソッドに直接パス、もしくは、送信直前にトランザクションに署名することができます。
 
@@ -210,7 +210,7 @@ const signed = wallet.sign(tx_json)
 
 ## イベントおよびサブスクリプション
 
-1.xでは、`RippleAPI`クラスの`.on()`メソッドを使用してレジャーイベントとAPIエラーにサブスクリプションできました。もしくは、`.connection.on()`を使用して特定のWebSocketメッセージタイプにサブスクリプションできました。これらは、[`Client.on()`メソッド](https://js.xrpl.org/classes/Client.html#on)に統合されました。さらに、XRP Ledgerサーバーに接続する際、クライアントライブラリは、自動的にレジャークローズイベントにサブスクリプションしなくなったため、ハンドラを追加するだけでなく、レジャークローズイベントを取得するために **明確に台帳ストリームにサブスクリプションする必要があります** 。
+1.xでは、`RippleAPI`クラスの`.on()`メソッドを使用してレジャーイベントとAPIエラーにサブスクリプションできました。もしくは、`.connection.on()`を使用して特定のWebSocketメッセージタイプにサブスクリプションできました。これらは、[`Client.on()`メソッド](https://js.xrpl.org/classes/Client.html#on)に統合されました。さらに、XRP Ledgerサーバに接続する際、クライアントライブラリは、自動的にレジャークローズイベントにサブスクリプションしなくなったため、ハンドラを追加するだけでなく、レジャークローズイベントを取得するために **明確に台帳ストリームにサブスクリプションする必要があります** 。
 
 レジャークローズイベントにサブスクリプションするには、`Client.(method)`を使用し、`"streams": ["ledger"]`で[subscribeメソッド][]をコールします。イベントハンドラを追加するには、`Client.on(event_type, callback)`を使用します。これらのコールは任意の順で実行可能です。
 

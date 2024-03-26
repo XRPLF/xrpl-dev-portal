@@ -4,11 +4,12 @@ parent: concepts.html
 metadata:
   indexPage: true
 seo:
-    description: XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門的な支払いタイプをサポートしています。
+    title: ポイント・ツー・ポイント & 特別な支払いの種類
+    description: XRP Ledgerはポイント・ツー・ポイントのXRPペイメントのほかに、特別な支払いタイプをサポートしています。XRP Ledgerの支払い方法については、こちらをご覧ください。
 ---
 # 支払いのタイプ
 
-XRP LedgerはポイントツーポイントのXRPペイメントのほかに、より専門的な支払いタイプをサポートしています。
+XRP Ledgerはポイント・ツー・ポイントのXRPペイメントのほかに、特別な支払いタイプをサポートしています。
 
 
 {% child-pages /%}

@@ -255,7 +255,7 @@ rippled account_info rG1QQv2nh2gr7RCZ1P8YYcBUKCCN633jCn validated
 * いずれかの[汎用エラータイプ][]。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。例えば、リクエストで`queue`を`true`と指定したが、現在開いているレジャーではない`ledger_index`を指定した場合です。
 * `actNotFound` - リクエストの`account`フィールドに指定したアドレスが、レジャー内のアカウントに対応していません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 
 [手数料レベル]: ../../../../concepts/transactions/transaction-cost.md#手数料レベル
 

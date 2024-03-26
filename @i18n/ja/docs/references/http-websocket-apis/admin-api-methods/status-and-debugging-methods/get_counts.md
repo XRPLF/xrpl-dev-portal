@@ -2,14 +2,14 @@
 html: get_counts.html
 parent: status-and-debugging-methods.html
 seo:
-    description: サーバーの健全性に関するさまざまな統計情報を提供します。
+    description: サーバの健全性に関するさまざまな統計情報を提供します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # get_counts
 [[ソース]](https://github.com/XRPLF/rippled/blob/c7118a183a660648aa88a3546a6b2c5bce858440/src/ripple/rpc/handlers/GetCounts.cpp "Source")
 
-`get_counts`コマンドは、サーバーの健全性に関するさまざまな統計情報を提供します。そのほとんどは、現在メモリーに格納されている各種オブジェクトの数です。
+`get_counts`コマンドは、サーバの健全性に関するさまざまな統計情報を提供します。そのほとんどは、現在メモリーに格納されている各種オブジェクトの数です。
 
 _`get_counts`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
@@ -147,7 +147,7 @@ Connecting to 127.0.0.1:5005
 |:--------------|:-------|:----------------------------------------------------|
 | `Transaction` | 数値 | メモリー内の`Transaction`オブジェクトの数       |
 | `Ledger`      | 数値 | メモリー内のレジャーの数                     |
-| `uptime`      | 文字列 | このサーバーの連続稼働時間。 |
+| `uptime`      | 文字列 | このサーバの連続稼働時間。 |
 
 その他のほとんどのエントリーでは、値はメモリー内に現在保持されている当該タイプのオブジェクトの数を示します。
 

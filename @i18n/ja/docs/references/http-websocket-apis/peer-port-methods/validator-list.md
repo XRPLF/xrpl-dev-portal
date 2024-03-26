@@ -4,7 +4,7 @@ parent: peer-port-methods.html
 seo:
     description: 推奨バリデータリストを共有するための特別なAPIメソッド。
 labels:
-  - コアサーバー
+  - コアサーバ
   - ブロックチェーン
 ---
 # バリデータリストメソッド

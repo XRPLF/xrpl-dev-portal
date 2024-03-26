@@ -4,7 +4,7 @@ parent: use-stand-alone-mode.html
 seo:
     description: レジャーを手動で閉鎖して、スタンドアロンモードでの処理を進めます。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # スタンドアロンモードでレジャーを進める
 

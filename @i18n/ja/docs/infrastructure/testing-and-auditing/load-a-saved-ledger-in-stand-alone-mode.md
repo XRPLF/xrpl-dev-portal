@@ -4,11 +4,11 @@ parent: use-stand-alone-mode.html
 seo:
     description: 特定の保存済みレジャーからスタンドアロンモードで開始して、トランザクションのテストやリプレイを行います。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # スタンドアロンモードでの保存済みレジャーの読み込み
 
-以前にディスクに保存していた[履歴レジャーバージョン](../../concepts/ledgers/index.md)を使用して、`rippled`サーバーを[スタンドアロンモード](../../concepts/networks-and-servers/rippled-server-modes.md)で起動できます。例えば、以前に`rippled`サーバーをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](../../concepts/networks-and-servers/parallel-networks.md)）と同期していた場合は、過去にサーバーで使用できていた任意のレジャーバージョンを読み込むことができます。
+以前にディスクに保存していた[履歴レジャーバージョン](../../concepts/ledgers/index.md)を使用して、`rippled`サーバを[スタンドアロンモード](../../concepts/networks-and-servers/rippled-server-modes.md)で起動できます。例えば、以前に`rippled`サーバをXRP Ledgerのピアツーピアネットワーク（[本番Mainnet、Testnet、Devnetなど](../../concepts/networks-and-servers/parallel-networks.md)）と同期していた場合は、過去にサーバで使用できていた任意のレジャーバージョンを読み込むことができます。
 
 履歴レジャーバージョンを読み込むことにより、レジャーを「リプレイ」して、トランザクションがネットワークのルールに従って処理されていたか検証したり、異なる[Amendment](../../concepts/networks-and-servers/amendments.md)を有効にした場合のトランザクションセットの処理の結果を比較したりすることができます。万が一、[XRP Ledgerのコンセンサスメカニズムに対する攻撃](../../concepts/consensus-protocol/consensus-protections.md)が発生して共有レジャーの状態に悪影響が及んでも、このプロセスを始めることで、バリデータのコンセンサスを以前の良好だったネットワークの状態に「ロールバック」できる可能性があります。
 
@@ -22,13 +22,13 @@ rippled --conf=/path/to/rippled.cfg
 
 ## 2. `rippled`が同期されるまで待ちます。
 
-[server_infoメソッド][]を使用して、ネットワークに対するサーバーの状態を確認します。`server_state`に以下のいずれかの値が示される場合は、サーバーは同期しています。
+[server_infoメソッド][]を使用して、ネットワークに対するサーバの状態を確認します。`server_state`に以下のいずれかの値が示される場合は、サーバは同期しています。
 
 * `full`
 * `proposing`
 * `validating`
 
-詳細は、[考えられるサーバーの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)を参照してください。
+詳細は、[考えられるサーバの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)を参照してください。
 
 ## 3. （省略可）特定のレジャーバージョンを取得します。
 
@@ -48,13 +48,13 @@ rippled stop --conf=/path/to/rippled.cfg
 
 ## 5. スタンドアロンモードで`rippled`を起動します。
 
-最新のレジャーバージョンを読み込むには、`-a`オプションと`--load`オプションを指定してサーバーを起動します。
+最新のレジャーバージョンを読み込むには、`-a`オプションと`--load`オプションを指定してサーバを起動します。
 
 ```
 rippled -a --load --conf=/path/to/rippled.cfg
 ```
 
-特定の履歴レジャーを読み込むには、`--load`パラメーターと`--ledger`パラメーターを使用し、読み込むレジャーバージョンのレジャーインデックスまたは識別用ハッシュを指定してサーバーを起動します。
+特定の履歴レジャーを読み込むには、`--load`パラメーターと`--ledger`パラメーターを使用し、読み込むレジャーバージョンのレジャーインデックスまたは識別用ハッシュを指定してサーバを起動します。
 
 ```
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
@@ -73,8 +73,8 @@ rippled ledger_accept --conf=/path/to/rippled.cfg
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
-      - [`rippled`サーバーのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
+      - [`rippled`サーバのモード](../../concepts/networks-and-servers/rippled-server-modes.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
     - [Amendment](../../concepts/networks-and-servers/amendments.md)
 - **リファレンス:**

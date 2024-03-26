@@ -4,11 +4,11 @@ parent: infrastructure.html
 metadata:
   indexPage: true
 seo:
-    description: rippledサーバーの構成をカスタマイズします。
+    description: rippledサーバの構成をカスタマイズします。
 ---
 # rippledの設定
 
-rippledサーバーの構成をカスタマイズします。
+rippledサーバの構成をカスタマイズします。
 
 
 {% child-pages /%}

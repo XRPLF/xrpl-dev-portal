@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: プリコンパイル済みのrippledバイナリーをCentOSまたはRed Hat Enterprise Linuxにインストールします。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # yumを使用したCentOS/Red Hatへのインストール
 
@@ -75,7 +75,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [rippledの構成](../configuration/index.md)

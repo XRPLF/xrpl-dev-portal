@@ -20,7 +20,7 @@ seo:
 
 Rippleの公式RPMリポジトリとそれを使用するための手順が変更されました。[自動更新](update-rippled-automatically-on-linux.md)を有効にしている場合は、システムで移行が自動的に実行されます。以前のリポジトリから新しいリポジトリに手動で移行するには、以下の手順を実行します。
 
-1. `rippled`サーバーを停止します。
+1. `rippled`サーバを停止します。
 
     ```
     $ sudo systemctl stop rippled.service
@@ -114,7 +114,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 
 - **[`rippled` v1.3.1リリースノート](https://github.com/XRPLF/rippled/releases/1.3.1)**
 - **コンセプト:**
-  - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+  - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
   - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
   - [Linuxでの自動更新](update-rippled-automatically-on-linux.md)

@@ -2,14 +2,14 @@
 html: use-payment-channels.html
 parent: use-specialized-payment-types.html
 seo:
-    description: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバーのJSON-RPC APIを使用する例を使って説明します。
+    description: Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的なPayment Channelの使用方法を、ローカルのrippledサーバのJSON-RPC APIを使用する例を使って説明します。
 labels:
   - Payment Channel
   - スマートコントラクト
 ---
 # Payment Channelの使用
 
-Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](../../../../concepts/payment-types/payment-channels.md)の使用方法を、ローカル`rippled`サーバーの[JSON-RPC API](../../../../references/http-websocket-apis/index.md)を使用する例を使って説明します。
+Payment Channelは、少額の単位に分割可能な「非同期」のXRPペイメントを送信し、後日決済する高度な機能です。このチュートリアルでは、全体的な[Payment Channel](../../../../concepts/payment-types/payment-channels.md)の使用方法を、ローカル`rippled`サーバの[JSON-RPC API](../../../../references/http-websocket-apis/index.md)を使用する例を使って説明します。
 
 このチュートリアルを進めるにあたって[資金供給されているXRP Ledgerアカウント](../../../../concepts/accounts/index.md)を所有するユーザーが2名いれば理想的です。ただし、2つのXRP Ledgerアドレスを管理する1名のユーザーとしてこのチュートリアルを進めることもできます。
 
@@ -26,9 +26,9 @@ Payment Channelは、少額の単位に分割可能な「非同期」のXRPペ�
 
 **ヒント:** この例では、Channelの公開鍵は支払人のマスターキーペアの公開鍵です。これは完全に安全であり有効です。また、支払人のみが異なるキーペアの公開鍵と秘密鍵を把握している場合に限り、そのキーペアを使用することも完全に安全であり有効です。 <!-- Editor's note: We don't have a good page to link to explain key pairs as of time of this writing. -->
 
-また、トランザクションの送信先`rippled`サーバーも必要です。このチュートリアルの例では、`rippled`サーバーがテストマシン（`localhost`）で稼働しており、このテストマシンはポート**5005**で非暗号化JSON-RPC APIエンドポイントに接続しています。
+また、トランザクションの送信先`rippled`サーバも必要です。このチュートリアルの例では、`rippled`サーバがテストマシン（`localhost`）で稼働しており、このテストマシンはポート**5005**で非暗号化JSON-RPC APIエンドポイントに接続しています。
 
-実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する[XRP Ledger Testnet](/resources/dev-tools/xrp-faucets)のアドレスを使用できます。XRP Ledger Test Netを使用する場合、`http://localhost:5005/`ではなく`https://api.altnet.rippletest.net:51234`に接続することで、Test NetサーバーのJSON-RPC APIを使用できます。
+実際のXRPを送金せずにテストを実施するには、Test Net XRPを保有する[XRP Ledger Testnet](/resources/dev-tools/xrp-faucets)のアドレスを使用できます。XRP Ledger Test Netを使用する場合、`http://localhost:5005/`ではなく`https://api.altnet.rippletest.net:51234`に接続することで、Test NetサーバのJSON-RPC APIを使用できます。
 
 Payment Channelに使用できるXRPの額に制限はありません。このチュートリアルで使用されているサンプルの値では、Payment Channelで100 XRP（`100000000` drop）が少なくとも1日間は確保されます。
 
@@ -58,7 +58,7 @@ Payment Channelに使用できるXRPの額に制限はありません。この�
 
 **ヒント:** 「決済遅延」の設定だけが決済を遅延するわけでわありません。レジャーバージョンが閉鎖すると即時に決済が遅延されます（3～5秒）。「決済遅延」とは、Channel閉鎖の強制的な遅延です。これにより、受取人が決済を完了できるようになります。
 
-以下の例は、JSON-RPC APIを使用してローカル`rippled`サーバーへ[送信](../../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#署名と送信モード)することでPayment Channelを作成する方法を示しています。Payment Channelは、決済を1日遅らせて[サンプルの支払人](#サンプルの値)（rN7n7...）から[サンプルの受取人](#サンプルの値)（rf1Bi...）に100 XRPを割り当てます。公開鍵はサンプルの支払人のマスター公開鍵（16進数）です。
+以下の例は、JSON-RPC APIを使用してローカル`rippled`サーバへ[送信](../../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#署名と送信モード)することでPayment Channelを作成する方法を示しています。Payment Channelは、決済を1日遅らせて[サンプルの支払人](#サンプルの値)（rN7n7...）から[サンプルの受取人](#サンプルの値)（rf1Bi...）に100 XRPを割り当てます。公開鍵はサンプルの支払人のマスター公開鍵（16進数）です。
 
 **注記:** Payment Channelは1つのオブジェクトとして支払人の[所有者準備金](../../../../concepts/accounts/reserves.md#所有者準備金)に反映されます。所有者は少なくとも、Payment Channelに割り当てられたXRPを差引き後に、準備金を維持するのに十分なXRPを保有している必要があります。
 
@@ -369,7 +369,7 @@ Content-Type: application/json
     - `account_channels`リクエストに正しいレジャーバージョンが指定されていなかった。（最新の検証済みバージョンを確認するには、`"ledger_index":"validated”`を使用します）
     - 受取人は以前にXRPを清算したものの、記録し忘れていた。
     - 受取人がXRPの清算を試行し、暫定的な結果を記録したが、トランザクションの最終的な検証済みの結果がこれとは異なり、受取人はこの最終検証済み結果を記録し忘れていた。
-    - 受取人が照会した`rippled`サーバーが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバーの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/XRPLF/rippled/issues/)。）
+    - 受取人が照会した`rippled`サーバが、ネットワークの他の部分と同期していない状態であったか、または不明なバグが発生した。サーバの状態を確認するには、[server_infoメソッド][]を使用します。（この状況を再現できる場合は、[問題を報告してください](https://github.com/XRPLF/rippled/issues/)。）
 
 受取人がPayment Channelの署名と現行状態の両方を確認した後で、XRPをまだ受領していない場合、XRPを清算するトランザクションがChannelの有効期限より前に処理される限り、XRPを確実に清算 _できます_ 。
 

@@ -63,7 +63,7 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 | `destination_account` | 文字列                                     | _（省略可）_ アカウントの一意のID。通常はアカウントの[アドレス][]です。指定されている場合、フィルタリングによりこのアカウントを送金先とするPayment Channelに絞り込まれます。 |
 | `ledger_hash`         | 文字列                                     | _（省略可）_ 使用するレジャーバージョンの20バイトの16進文字列。（[レジャーの指定][]を参照してください） |
 | `ledger_index`        | 文字列または符号なし整数                 | _（省略可）_ 使用する[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]を参照してください） |
-| `limit`               | 整数                                    | _（省略可）_ 取得するトランザクション数を制限します。サーバーはこの値に従う必要はありません。10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |
+| `limit`               | 整数                                    | _（省略可）_ 取得するトランザクション数を制限します。サーバはこの値に従う必要はありません。10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |
 | `marker`              | [マーカー][] | _（省略可）_ 以前にページネーションされたレスポンスの値。そのレスポンスを停止した箇所からデータの取得を再開します。 |
 
 ## レスポンスのフォーマット
@@ -168,7 +168,7 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 | `ledger_index` | 数値                                 | このレスポンスの生成に使用されたレジャーバージョンの[レジャーインデックス][]。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}新規: rippled 0.90.0{% /badge %} |
 | `validated` | ブール値                                   | _（省略される場合があります）_`true`の場合、このレスポンスの情報は検証済みレジャーバージョンから取り込まれます。trueでない場合、情報は変更されることがあります。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.90.0" %}新規: rippled 0.90.0{% /badge %} |
 | `limit`    | 数値                                     | _（省略される場合があります）_ このリクエストから実際に返されるchannelオブジェクトの数の制限。 |
-| `marker`   | [マーカー][] | _（省略される場合があります）_ ページネーションのサーバー定義の値。この値を次のコールに渡して、このコールで終わった箇所から結果の取得を再開します。この後に追加のページがない場合は省略されます。 |
+| `marker`   | [マーカー][] | _（省略される場合があります）_ ページネーションのサーバ定義の値。この値を次のコールに渡して、このコールで終わった箇所から結果の取得を再開します。この後に追加のページがない場合は省略されます。 |
 
 各Channelオブジェクトのフィールドは次のとおりです。
 
@@ -192,6 +192,6 @@ rippled account_channels rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn ra5nK24KXen9AHvsdFTK
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - リクエストの`account`フィールドに指定されているアドレスが、レジャーのアカウントに対応していません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

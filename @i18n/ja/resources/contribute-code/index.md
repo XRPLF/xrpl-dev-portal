@@ -20,7 +20,7 @@ XRP Ledgerを動かすソフトウェアはオープンソースです。コミ�
 | ライセンス               | [Multiple; ISC (permissive)](https://github.com/XRPLF/rippled/blob/develop/LICENSE.md) |
 | プログラム言語            | C++                                                 |
 
-何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバー(`rippled`)のコア実装の仕組みや機能を説明した、詳細かつ充実した[**ソースコード・ガイド**](https://xrpintel.com/source)を提供しています。
+何から始めたらいいか分からないという方のために、Dev Null Productionsは、XRP Ledgerサーバ(`rippled`)のコア実装の仕組みや機能を説明した、詳細かつ充実した[**ソースコード・ガイド**](https://xrpintel.com/source)を提供しています。
 
 
 ## XRP Ledgerの規格

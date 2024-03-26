@@ -2,14 +2,14 @@
 html: stop.html
 parent: server-control-methods.html
 seo:
-    description: サーバーのグレースフルシャットダウンを行います。
+    description: サーバのグレースフルシャットダウンを行います。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # stop
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Stop.cpp "Source")
 
-サーバーのグレースフルシャットダウンを行います。
+サーバのグレースフルシャットダウンを行います。
 
 _`stop`リクエストは、権限のないユーザーは実行できない*[管理メソッド](../index.md)です。_
 

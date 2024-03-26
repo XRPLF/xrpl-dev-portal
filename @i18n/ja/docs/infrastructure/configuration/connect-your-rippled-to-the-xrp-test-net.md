@@ -2,9 +2,9 @@
 html: connect-your-rippled-to-the-xrp-test-net.html
 parent: configure-rippled.html
 seo:
-    description: rippledサーバーをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
+    description: rippledサーバをTest Netに接続して、模造の資金を使って新しい機能を試したり、機能をテストしたりします。
 labels:
-  - コアサーバー
+  - コアサーバ
   - ブロックチェーン
   - 開発
 ---
@@ -193,7 +193,7 @@ XChainBridge
 
 **警告:** メインネットまたはテストネットに接続するときは、`[features]`を使用しないでください。他のネットワークと異なる機能を強制的に有効にすると、サーバがネットワークから分断される可能性があります。
 
-## 4. サーバーを再起動する
+## 4. サーバを再起動する
 
 ```sh
 $ sudo systemctl restart rippled
@@ -203,9 +203,9 @@ $ sudo systemctl restart rippled
 
 再起動後、ネットワークに同期するのに約5分から15分かかります。サーバの同期が完了すると、[server_infoメソッド][]は接続しているネットワークに基づいた`validated_ledger`オブジェクトを表示します。
 
-自分の`rippled`が正しいネットワークに接続されていることを確認するには、自分のサーバの結果をTestnetまたはDevnet上の[公開サーバ][public servers]と比較してください。`validated_ledger`オブジェクトの`seq`フィールドはどちらのサーバーでも同じはずです（チェックしている間に変更された場合は、1つか2つずれている可能性があります）。
+自分の`rippled`が正しいネットワークに接続されていることを確認するには、自分のサーバの結果をTestnetまたはDevnet上の[公開サーバ][public servers]と比較してください。`validated_ledger`オブジェクトの`seq`フィールドはどちらのサーバでも同じはずです（チェックしている間に変更された場合は、1つか2つずれている可能性があります）。
 
-次の例は、コマンドラインからサーバーの最新の検証済みレジャーをチェックする方法を示しています。
+次の例は、コマンドラインからサーバの最新の検証済みレジャーをチェックする方法を示しています。
 
 ```sh
 rippled server_info | grep seq

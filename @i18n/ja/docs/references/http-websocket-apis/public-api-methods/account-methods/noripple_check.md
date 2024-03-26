@@ -186,6 +186,6 @@ labels:
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actNotFound` - リクエストの`account`フィールドに指定されている[アドレス][]が、レジャーのアカウントに対応していません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`に指定されているレジャーが存在しないか、存在しているがサーバーにはありません。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`に指定されているレジャーが存在しないか、存在しているがサーバにはありません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

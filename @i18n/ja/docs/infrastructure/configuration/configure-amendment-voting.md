@@ -2,14 +2,14 @@
 html: configure-amendment-voting.html
 parent: configure-rippled.html
 seo:
-    description: プロトコル修正に伴うサーバーの投票を設定する。
+    description: プロトコル修正に伴うサーバの投票を設定する。
 labels:
-  - コアサーバー
+  - コアサーバ
   - ブロックチェーン
 ---
 # Amendment投票機能の設定
 
-バリデーターとして設定されたサーバーは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)が必要です).
+バリデーターとして設定されたサーバは、[feature メソッド][]を使ってXRP Ledgerプロトコルの[Amendment](../../concepts/networks-and-servers/amendments.md)に投票することができます。(この方法には[管理者アクセス](../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)が必要です).
 
 例えば、「SHAMapV2」Amendmentに反対票を投じるには、以下のコマンドを実行します。
 
@@ -59,7 +59,7 @@ rippled feature SHAMapV2 reject
 { "command": "feature", "feature": "SHAMapV2", "vetoed": true }
 ```
 
-変更を有効にするには、必ずサーバーを再起動してください。
+変更を有効にするには、必ずサーバを再起動してください。
 
 **注意事項:** `[rpc_startup]` 節にあるコマンドは、サーバが起動するたびに実行され、サーバが動作している間に構成された投票設定を上書きすることができます。
 

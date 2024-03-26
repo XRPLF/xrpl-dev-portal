@@ -5,7 +5,7 @@ seo:
     description: バリデータリストを処理するサイトのステータス情報を返します。
 labels:
   - ブロックチェーン
-  - コアサーバー
+  - コアサーバ
 ---
 # validator_list_sites
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ValidatorListSites.cpp "Source")

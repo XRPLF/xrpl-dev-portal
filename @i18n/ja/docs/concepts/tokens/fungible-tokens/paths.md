@@ -36,7 +36,7 @@ XRPは任意のアドレスに直接送金できるため、[XRP間のトラン�
 
 ## Pathfinding
 
-`rippled` APIではPathfindingに使用できるメソッドが2つあります。[ripple_path_findメソッド][]は、1回限りのパスセットの検索を実行します。[path_findメソッド][]（WebSocketのみ）は、レジャーが閉鎖するか、またはサーバーがより適切なパスを検出するたびに、フォローアップレスポンスによって検索を拡大します。
+`rippled` APIではPathfindingに使用できるメソッドが2つあります。[ripple_path_findメソッド][]は、1回限りのパスセットの検索を実行します。[path_findメソッド][]（WebSocketのみ）は、レジャーが閉鎖するか、またはサーバがより適切なパスを検出するたびに、フォローアップレスポンスによって検索を拡大します。
 
 署名時に`rippled`によりパスが自動的に入力されるようにするには、[signメソッド][]または[`submit`コマンド（署名と送信モード）](../../../references/http-websocket-apis/public-api-methods/transaction-methods/submit.md#署名と送信モード)へのリクエストに`build_path`フィールドを指定します。ただし、トラブルを回避するために、署名前にPathfindingを個別に実行し、結果を確認することが推奨されます。
 

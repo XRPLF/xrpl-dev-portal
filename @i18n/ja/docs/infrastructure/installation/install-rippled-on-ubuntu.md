@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: プリコンパイル済みのrippledバイナリーをUbuntu Linuxにインストールします。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # UbuntuまたはDebian Linuxへのインストール
 
@@ -77,7 +77,7 @@ labels:
    - `unstable` - プレインストールビルド（[`release`ブランチ](https://github.com/XRPLF/rippled/tree/release)）
    - `nightly` - 実験/開発ビルド（[`develop`ブランチ](https://github.com/XRPLF/rippled/tree/develop)）
 
-   **警告:** 安定版ではないナイトリービルドはいつの時点でも壊れる可能性があります。これらのビルドを本番環境のサーバーに使用しないでください。
+   **警告:** 安定版ではないナイトリービルドはいつの時点でも壊れる可能性があります。これらのビルドを本番環境のサーバに使用しないでください。
 
 6. Rippleリポジトリを取得します。
 
@@ -112,7 +112,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [rippledの構成](../configuration/index.md)

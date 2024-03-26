@@ -144,7 +144,7 @@ Loading: "/etc/rippled.cfg"
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
 * `actMalformed` - リクエストの`source_account`フィールドまたは`destination_account`フィールドに指定されている[アドレス][]のフォーマットが適切ではありません。（入力ミスが含まれていたり、長さが正しくない場合は、チェックサムは失敗します。）
 * `dstActNotFound` - リクエストの`destination_account`フィールドがレジャーのアカウントに対応していません。
-* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバーが保有していません。
+* `lgrNotFound` - `ledger_hash`または`ledger_index`で指定したレジャーが存在しないか、存在してはいるもののサーバが保有していません。
 * `srcActNotFound` - リクエストの`source_account`フィールドがレジャーのアカウントに対応していません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -4,7 +4,7 @@ parent: utility-methods.html
 seo:
     description: コマンドのパラメーターをJSON値として受け入れ、他のコマンドを実行します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # json
 

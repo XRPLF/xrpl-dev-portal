@@ -2,14 +2,14 @@
 html: peer_reservations_add.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアサーバー用の予約済みスロットを追加します。
+    description: 特定のピアサーバ用の予約済みスロットを追加します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # peer_reservations_add
 [[ソース]](https://github.com/XRPLF/rippled/blob/4a1148eb2849513dd1e7ae080288fd47ab57a376/src/ripple/rpc/handlers/Reservations.cpp#L36 "Source")
 
-この{% code-page-name /%}メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバーの予約済みスロットを追加または更新します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
+この{% code-page-name /%}メソッドは、XRP Ledger[ピアツーピアネットワーク](../../../../concepts/networks-and-servers/peer-protocol.md)内の特定のピアサーバの予約済みスロットを追加または更新します。{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}新規: rippled 1.4.0{% /badge %}
 
 _{% code-page-name /%}メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
@@ -57,7 +57,7 @@ rippled {% $frontmatter.seo.title %} n9Jt8awsPzWLjBCNKVEEDQnw4bQEPjezfcQ4gttD1Uz
 | `Field`       | 型     | 説明                                                |
 |:--------------|:-------|:----------------------------------------------------|
 | `public_key` | 文字列 | [base58][]での予約を追加するピアリザベーションの[ノード公開鍵][] 。 |
-| `description` | 文字列 | _(省略可)_ ピアリザベーションに関するカスタムの説明。64文字を超える部分は、再起動時にサーバーによって切り捨てられます。 |
+| `description` | 文字列 | _(省略可)_ ピアリザベーションに関するカスタムの説明。64文字を超える部分は、再起動時にサーバによって切り捨てられます。 |
 
 
 

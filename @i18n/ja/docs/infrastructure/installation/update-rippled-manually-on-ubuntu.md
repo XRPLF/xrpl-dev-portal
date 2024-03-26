@@ -4,7 +4,7 @@ parent: install-rippled.html
 seo:
     description: Ubuntu Linuxでrippledを手動更新します。
 labels:
-  - コアサーバー
+  - コアサーバ
   - セキュリティ
 ---
 # UbuntuまたはDebianでの手動更新
@@ -45,7 +45,7 @@ labels:
 ## 関連項目
 
 - **コンセプト:**
-    - [`rippled`サーバー](../../concepts/networks-and-servers/index.md)
+    - [`rippled`サーバ](../../concepts/networks-and-servers/index.md)
     - [コンセンサスについて](../../concepts/consensus-protocol/index.md)
 - **チュートリアル:**
     - [`rippled` v1.3.xへの移行手順](rippled-1-3-migration-instructions.md) <!-- Note: remove when versions older than v1.3 are basically extinct -->

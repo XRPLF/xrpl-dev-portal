@@ -701,7 +701,7 @@
 [レジャーインデックス]: /docs/references/protocol/data-types/basic-data-types.md#レジャーインデックス
 [レジャーフォーマット]: /docs/references/protocol/ledger-data/index.md
 [レポートモード]: /docs/concepts/networks-and-servers/rippled-server-modes.md#レポートモード
-[公開サーバー]: /docs/tutorials/public-servers.md
+[公開サーバ]: /docs/tutorials/public-servers.md
 [共通フィールド]: /docs/references/protocol/transactions/common-fields.md
 [内部の型]: /docs/references/protocol/binary-format.md
 [手数料レベル]: /docs/concepts/transactions/transaction-cost.md#手数料レベル

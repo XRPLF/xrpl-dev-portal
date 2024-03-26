@@ -4,7 +4,7 @@ parent: status-and-debugging-methods.html
 seo:
     description: Get the server's validation settings, if configured as a validator.
 labels:
-  - コアサーバー
+  - コアサーバ
   - ブロックチェーン
 ---
 # validator_info

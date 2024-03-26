@@ -2,9 +2,9 @@
 html: server-is-amendment-blocked.html
 parent: troubleshoot-the-rippled-server.html
 seo:
-    description: Amendmentによる変更を実行できないサーバーのトラブルシューティング
+    description: Amendmentによる変更を実行できないサーバのトラブルシューティング
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # rippledサーバがAmendmentブロックされた
 
@@ -27,7 +27,7 @@ Amendmentブロックされたサーバは、レジャーの有効性を判断�
 }
 ```
 
-次の`rippled`ログメッセージは、サーバーがAmendmentブロックされていることを示しています。
+次の`rippled`ログメッセージは、サーバがAmendmentブロックされていることを示しています。
 
 ```
 2018-Feb-12 19:38:30 LedgerMaster:ERR One or more unsupported amendments activated: server blocked.

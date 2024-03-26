@@ -45,7 +45,7 @@ labels:
 | `tecNO_PERMISSION` | 139 | 送信者にはこの操作を実行する権限がありません。たとえば[EscrowFinishトランザクション][]が`FinishAfter`時刻に達する前に保留中の支払をリリースしようとしたか、送信者が所有していないChannelで誰かが[PaymentChannelFund][]を使用しようとしたか、または[Payment][]が「DepositAuth」フラグが有効になっているアカウントに資金の送金を試みました。 |
 | `tecNO_REGULAR_KEY` | 131 | [AccountSetトランザクション][]がマスターキーを無効にしようとしましたが、アカウントにはマスターキー以外で[トランザクションを承認する](../../../../concepts/transactions/index.md#トランザクションの承認)方法がありません。[マルチシグ](../../../../concepts/accounts/multi-signing.md)が有効な場合、このコードは廃止予定であり、代わりに`tecNO_ALTERNATIVE_KEY`が使用されます。 |
 | `tecNO_TARGET` | 138 | トランザクションが参照するEscrowレジャーオブジェクトまたはPayChannelレジャーオブジェクトが存在していません。これらのオブジェクトは、これまでに存在したことがないか、すでに削除されています。（たとえば、別の[EscrowFinishトランザクション][]で保留中の支払がすでに実行されている場合などです。）あるいは、支払先アカウントで`asfDisallowXRP`が設定されているため、このアカウントは[PaymentChannelCreate][]トランザクションまたは[EscrowCreate][]トランザクションの宛先に指定できません。 |
-| `tecOVERSIZE` | 145 | サーバーがこのトランザクションの適用時に大量のメタデータを作成したため、このトランザクションを処理できませんでした。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1" %}新規: rippled 0.29.0-hf1{% /badge %} |
+| `tecOVERSIZE` | 145 | サーバがこのトランザクションの適用時に大量のメタデータを作成したため、このトランザクションを処理できませんでした。{% badge href="https://github.com/XRPLF/rippled/releases/tag/0.29.0-hf1" %}新規: rippled 0.29.0-hf1{% /badge %} |
 | `tecOWNERS` | 132 | トランザクションでは、トランザクションを送信するアカウントの「所有者カウント」はゼロ以外である必要があります。このためトランザクションを正常に完了できません。たとえば、トラストラインや使用可能なオファーがあるアカウントでは、[`lsfRequireAuth`](../types/accountset.md#accountsetのフラグ)フラグを有効にできません。 |
 | `tecPATH_DRY` | 128 | トランザクションが失敗しました。指定されたパスに、送信の実行に十分な流動性がありませんでした。つまり、支払元アカウントと支払先アカウントはトラストラインにより関連付けされていません。 |
 | `tecPATH_PARTIAL` | 101 | トランザクションが失敗しました。指定されたパスに、全額を送金するのに十分な流動性がありませんでした。 |

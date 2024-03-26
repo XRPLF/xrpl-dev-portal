@@ -9,7 +9,7 @@ labels:
 # log_level
 [[ソース]](https://github.com/XRPLF/rippled/blob/155fcdbcd0b4927152892c8c8be01d9cf62bed68/src/ripple/rpc/handlers/LogLevel.cpp "Source")
 
-`log_level`コマンドは`rippled`サーバーのログ詳細レベルを変更するか、各ログメッセージカテゴリー（_パーティション_）の現在のログレベルを返します。
+`log_level`コマンドは`rippled`サーバのログ詳細レベルを変更するか、各ログメッセージカテゴリー（_パーティション_）の現在のログレベルを返します。
 
 _`log_level`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 

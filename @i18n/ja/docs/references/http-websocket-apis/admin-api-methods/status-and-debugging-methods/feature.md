@@ -5,7 +5,7 @@ seo:
     description: Amendmentに関してこのサーバが認識している情報を返します。
 labels:
   - ブロックチェーン
-  - コアサーバー
+  - コアサーバ
 ---
 # feature
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/Feature1.cpp "Source")

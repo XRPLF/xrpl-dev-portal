@@ -2,21 +2,21 @@
 html: validation_create.html
 parent: key-generation-methods.html
 seo:
-    description: rippledサーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
+    description: rippledサーバがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵を生成します。
 labels:
   - セキュリティ
-  - コアサーバー
+  - コアサーバ
 ---
 # validation_create
 [[ソース]](https://github.com/XRPLF/rippled/blob/315a8b6b602798a4cff4d8e1911936011e12abdb/src/ripple/rpc/handlers/ValidationCreate.cpp "Source")
 
-`validation_create`コマンドキーを使用して、[`rippled`サーバーがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバー構成は変更されません。
+`validation_create`コマンドキーを使用して、[`rippled`サーバがネットワークに対して自身の身元を識別させるのに使用できる暗号鍵](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)を生成します。[wallet_proposeメソッド][]と同様に、このメソッドでは適切なフォーマットで一連のキーが単に生成されるだけです。XRP Ledgerのデータやサーバ構成は変更されません。
 
 _`validation_create`メソッドは、権限のないユーザーは実行できない[管理メソッド](../index.md)です。_
 
-サーバーを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（[ノードキーペア](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)）に使用するかを指定できます。
+サーバを設定することにより、生成されたキーペアを検証の署名（検証キーペア）に使用するか、または通常のピアツーピア通信の署名（[ノードキーペア](../../../../concepts/networks-and-servers/peer-protocol.md#ノードキーペア)）に使用するかを指定できます。
 
-**ヒント:**　堅牢なバリデータを設定するには、`validator-keys`ツール（`rippled` RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、[rippledサーバーで検証を有効化](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-rippledサーバーで検証を有効化)を参照してください。
+**ヒント:**　堅牢なバリデータを設定するには、`validator-keys`ツール（`rippled` RPMに付属）を使用してバリデータトークン（ローテーション可能）とオフラインマスターキーを生成してください。詳細は、[rippledサーバで検証を有効化](../../../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md#3-rippledサーバで検証を有効化)を参照してください。
 
 
 ### リクエストのフォーマット

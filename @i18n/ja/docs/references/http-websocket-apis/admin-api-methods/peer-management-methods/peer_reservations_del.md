@@ -2,9 +2,9 @@
 html: peer_reservations_del.html
 parent: peer-management-methods.html
 seo:
-    description: 特定のピアサーバー用の予約済みスロットを削除します。
+    description: 特定のピアサーバ用の予約済みスロットを削除します。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # peer_reservations_del
 

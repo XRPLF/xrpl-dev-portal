@@ -898,6 +898,6 @@ rippled tx_history 0
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `noPermission` - `start`フィールドに指定されている値が10000を超えていますが、サーバーに管理者として接続していません。
+* `noPermission` - `start`フィールドに指定されている値が10000を超えていますが、サーバに管理者として接続していません。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

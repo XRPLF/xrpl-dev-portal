@@ -4,7 +4,7 @@ parent: server-info-methods.html
 seo:
     description: サーバについての各種情報を、人間が読めるフォーマットでサーバにリクエストします。
 labels:
-  - コアサーバー
+  - コアサーバ
 ---
 # server_info (rippled)
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/ServerInfo.cpp "Source")

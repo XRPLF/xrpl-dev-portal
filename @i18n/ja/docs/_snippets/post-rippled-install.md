@@ -2,17 +2,17 @@
 
 `rippled`ログメッセージの詳細は、[ログメッセージについて](../infrastructure/troubleshooting/understanding-log-messages.md)を参照してください。
 
-`rippled`が残りのネットワークと同期されたら、ストック`rippled`サーバーが完全に機能するようになります。このサーバーを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`rippled`サーバーがネットワークと同期されているかどうかを判別するには、[`rippled`サーバーの状況](../references/http-websocket-apis/api-conventions/rippled-server-states.md)を使用します。[`rippled`のコマンドラインインターフェイス](../tutorials/http-websocket-apis/build-apps/get-started.md#コマンドライン)を使用すれば、これを迅速にテストできます。
+`rippled`が残りのネットワークと同期されたら、ストック`rippled`サーバが完全に機能するようになります。このサーバを、ローカル署名やXRP LedgerへのAPIアクセスに使用できます。`rippled`サーバがネットワークと同期されているかどうかを判別するには、[`rippled`サーバの状況](../references/http-websocket-apis/api-conventions/rippled-server-states.md)を使用します。[`rippled`のコマンドラインインターフェイス](../tutorials/http-websocket-apis/build-apps/get-started.md#コマンドライン)を使用すれば、これを迅速にテストできます。
 
 ```sh
 rippled server_info
 ```
 
-rippled APIを使用した`rippled`サーバーとの通信について詳しくは、[rippled API reference](../references/http-websocket-apis/index.md)を参照してください。
+rippled APIを使用した`rippled`サーバとの通信について詳しくは、[rippled API reference](../references/http-websocket-apis/index.md)を参照してください。
 
-ストック`rippled`サーバーを実行できたら、次に検証サーバーとして実行してみましょう。検証サーバーについて、そして検証サーバーを実行する理由については、[バリデータとしてのrippledの実行](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)を参照してください。
+ストック`rippled`サーバを実行できたら、次に検証サーバとして実行してみましょう。検証サーバについて、そして検証サーバを実行する理由については、[バリデータとしてのrippledの実行](../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)を参照してください。
 
-`rippled`サーバーの起動でお困りですか? [rippledサーバーが起動しない](../infrastructure/troubleshooting/server-wont-start.md)を参照してください。
+`rippled`サーバの起動でお困りですか? [rippledサーバが起動しない](../infrastructure/troubleshooting/server-wont-start.md)を参照してください。
 
 ### その他の構成
 
