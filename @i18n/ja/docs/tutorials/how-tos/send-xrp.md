@@ -177,7 +177,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 - トランザクションの送信に必要なTest Net XRPが十分にあるか。送金できるXRPの額は、[必要準備金](../../concepts/accounts/reserves.md)によって制限されています。現時点では、20XRPに加えて、レジャー内に保有している各「オブジェクト」につき5XRPずつ追加となります。（Test Net Faucetを使用して新しいアドレスを生成した場合は、保有するオブジェクトはありません。）
 - テストネットワークのサーバに接続しているか。
 
-他の可能性については、[トランザクション結果](../../references/protocol/transactions/transaction-results/index.md)の完全なリストを参照してください。
+他の可能性については、[トランザクション結果](../../references/protocol/transactions/transaction-results/index.md)の完全なリストをご覧ください。
 
 {% interactive-block label="Submit" steps=$frontmatter.steps %}
 
@@ -191,7 +191,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 
 ### 5. 検証の待機
 
-ほとんどのトランザクションは送信後の次のレジャーバージョンに承認されます。つまり、4～7秒でトランザクションの結果が最終的なものになる可能性があります。XRP Ledgerがビジーになっているか、ネットワーク接続の品質が悪いためにトランザクションをネットワーク内で中継する処理が遅延した場合は、トランザクション確定までにもう少し時間がかかることがあります。（トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)を参照してください。）
+ほとんどのトランザクションは送信後の次のレジャーバージョンに承認されます。つまり、4～7秒でトランザクションの結果が最終的なものになる可能性があります。XRP Ledgerがビジーになっているか、ネットワーク接続の品質が悪いためにトランザクションをネットワーク内で中継する処理が遅延した場合は、トランザクション確定までにもう少し時間がかかることがあります。（トランザクションの有効期限を設定する方法については、[信頼できるトランザクションの送信](../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。）
 
 {% tabs %}
 
@@ -233,7 +233,7 @@ xrpl.jsの[Wallet.sign()メソッド](https://js.xrpl.org/classes/Wallet.html#si
 {% /tabs %}
 
 
-**注意:** APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)を参照してください。
+**注意:** APIは、まだ検証されていないレジャーバージョンからの暫定的な結果を返す場合があります。例えば、`rippled` APIの[txメソッド][]を使用した場合は、レスポンス内の`"validated": true`を探して、データが検証済みレジャーバージョンからのものであることを確認してください。検証済みレジャーバージョンからのものではないトランザクション結果は、変わる可能性があります。詳細は、[結果のファイナリティー](../../concepts/transactions/finality-of-results/index.md)をご覧ください。
 
 {% interactive-block label="Check" steps=$frontmatter.steps %}
 
@@ -287,7 +287,7 @@ System.out.println(generationResult.seed()); // Example: sp6JS7f14BuwFY8Mw6bTtLK
 
 **警告:** ローカルマシンで安全な方法で生成したアドレスとシークレットのみを使用してください。別のコンピュータでアドレスとシークレットを生成して、ネットワーク経由でそれらを自分に送信した場合は、ネットワーク上の他の人がその情報を見ることができる可能性があります。その情報見ることができる人は、あなたと同じようにあなたのXRPを操作できます。また、Test Netと本番で同じアドレスを使用しないことも推奨します。指定したパラメーターによっては、一方のネットワークに向けて作成したトランザクションが、もう一方のネットワークでも実行可能になるおそれがあるためです。
 
-アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って[アカウントに資金供給](../../concepts/accounts/index.md#アカウントの作成)する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、[XRP Overview](/about/xrp)を参照してください。
+アドレスとシークレットを生成しても、直接XRPを入手できるわけではありません。単に乱数を選択しているだけです。また、そのアドレスでXRPを受け取って[アカウントに資金供給](../../concepts/accounts/index.md#アカウントの作成)する必要があります。XRPを取得する方法として最も一般的なのは、取引所から購入し、所有しているアドレスに入れる方法です。詳細は、[XRP Overview](/about/xrp)をご覧ください。
 
 ### 本番XRP Ledgerへの接続
 

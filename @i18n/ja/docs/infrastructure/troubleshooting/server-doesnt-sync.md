@@ -8,7 +8,7 @@ labels:
 ---
 # rippledサーバが同期しない
 
-このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)を参照してください。）
+このページでは、[`rippled`サーバ](../../concepts/networks-and-servers/index.md)が正常に起動したのに、ネットワークに完全に接続できずに[「connected」状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)のままになっている場合の原因について説明します。（サーバが起動中または起動直後にクラッシュした場合は、[サーバが起動しない](server-wont-start.md)をご覧ください。）
 
 以下の手順では、サポートされているプラットフォームに[`rippled`がインストール](../installation/index.md)されていることを前提としています。
 

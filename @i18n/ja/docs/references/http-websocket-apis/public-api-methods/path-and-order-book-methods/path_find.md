@@ -10,7 +10,7 @@ labels:
 # path_find
 [[ソース]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/PathFind.cpp "Source")
 
-*WebSocket APIのみ。*`path_find`メソッドは、トランザクションが実行される可能性のある[パス](../../../../concepts/tokens/fungible-tokens/paths.md)を探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。JSON-RPCでサポートされているシンプルなバージョンについては、[ripple_path_findメソッド][]を参照してください。完全にXRPで行われる支払いの場合、XRPはどのアカウントにも直接送金できるためパスを探索する必要はありません。
+*WebSocket APIのみ。*`path_find`メソッドは、トランザクションが実行される可能性のある[パス](../../../../concepts/tokens/fungible-tokens/paths.md)を探索し、時間の経過とともにパスが変化する場合に更新を定期的に送信します。JSON-RPCでサポートされているシンプルなバージョンについては、[ripple_path_findメソッド][]をご覧ください。完全にXRPで行われる支払いの場合、XRPはどのアカウントにも直接送金できるためパスを探索する必要はありません。
 
 path_findコマンドには3種類のモード（サブコマンド）があります。使用するモードを`subcommand`パラメーターに指定します。
 
@@ -464,7 +464,7 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]を参照してください。）
+* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 
 ### 非同期フォローアップ
 
@@ -539,7 +539,7 @@ Pathfindingリクエストが正常にクローズされた場合、レスポン
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - フィールドの指定が正しくないか、必須フィールドが指定されていません。
-* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）でこのメソッドを使用しようとしました。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]を参照してください。）
+* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）でこのメソッドを使用しようとしました。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 * `noPathRequest` - Pathfindingリクエストをクローズしようとしましたが、実行中のリクエストがありませんでした。
 
 ## path_find status
@@ -584,7 +584,7 @@ Pathfindingリクエストが実行中の場合、レスポンスは[`path_find 
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]を参照してください。）
+* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 * `noPathRequest` - Pathfindingリクエストのステータスを確認しようとしましたが、処理中のリクエストがありませんでした。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

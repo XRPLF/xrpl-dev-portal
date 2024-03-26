@@ -23,7 +23,7 @@ seo:
 
 上記のトランザクション指示によって、以下のように実行されます。rf1Bi ...からra5nK... にPaymentを送信することで、ちょうど13 XRPが送金されます。トランザクションが正常に処理されると、その内容が正確に実行されます。新しいレジャーバージョンが[検証済み](../consensus-protocol/index.md)になるまでに、通常約4秒かかるため、現在処理中のレジャーの後にレジャーバージョンのキューに入れられても、正常なトランザクションを作成、送信、実行後、8秒以内に最終結果を出すことができます。
 
-**注意:** [Paymentトランザクションタイプ][Payment]は、[通貨間の支払い](cross-currency-payments.md)や[Partial Payment](partial-payments.md)を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが`Amount`に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、[Partial Paymentの悪用](partial-payments.md#partial-paymentの悪用)を参照してください。
+**注意:** [Paymentトランザクションタイプ][Payment]は、[通貨間の支払い](cross-currency-payments.md)や[Partial Payment](partial-payments.md)を含む、より特殊な支払いにも使用できます。Partial Paymentの場合、トランザクションで非常に少ない金額しか送金しなかった場合でも、多額のXRPが`Amount`に表示される可能性があります。誤った金額を顧客に入金しないようにする方法については、[Partial Paymentの悪用](partial-payments.md#partial-paymentの悪用)をご覧ください。
 
 XRP間の直接支払いではPartial Paymentは使用できませんが、Partial Paymentでは複数の送金元通貨から変換後にXRPを送金できます。
 
@@ -32,7 +32,7 @@ XRP間の直接支払いではPartial Paymentは使用できませんが、Parti
 
 XRP Ledgerにそのアドレスの記録が事前に存在していなくても、支払いで[口座準備金](../accounts/reserves.md)の最少額を満たすのに十分なXRPが送金されれば、数学的に有効なアドレスで支払いを受け取ることができます。支払いで十分なXRPを送金できない場合は失敗します。
 
-詳細は、[アカウント](../accounts/index.md#アカウントの作成)を参照してください。
+詳細は、[アカウント](../accounts/index.md#アカウントの作成)をご覧ください。
 
 
 ## アドレスの再利用
@@ -65,7 +65,7 @@ XRP Ledgerでは、支払いを受け取ることができるアドレスは永�
 
    必要に応じて、受取アドレス用に新規アカウント([AccountRootオブジェクト](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md)) を作成します。新規アカウントの開始残高は、支払いの`Amount`と同額になります。
 
-   エンジンは、[トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)に`delivered_amount`フィールドを追加して、送金金額を示します。正しい金額のXRPを受け取ったことを確認できるように、必ず`delivered_amount`を使用する必要があります。`Amount`フィールドでは**ありません**。（通貨間の支払「Partial Payment」では、`Amount`フィールドに記載されているよりも少額のXRPが送金される場合があります。）詳細は、[Partial Payments](partial-payments.md)を参照してください。
+   エンジンは、[トランザクションのメタデータ](../../references/protocol/transactions/metadata.md)に`delivered_amount`フィールドを追加して、送金金額を示します。正しい金額のXRPを受け取ったことを確認できるように、必ず`delivered_amount`を使用する必要があります。`Amount`フィールドでは**ありません**。（通貨間の支払「Partial Payment」では、`Amount`フィールドに記載されているよりも少額のXRPが送金される場合があります。）詳細は、[Partial Payments](partial-payments.md)をご覧ください。
 
 
 ## 他の支払いタイプとの比較

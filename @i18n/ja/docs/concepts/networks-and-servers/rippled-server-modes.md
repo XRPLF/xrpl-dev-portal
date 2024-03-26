@@ -19,7 +19,7 @@ labels:
 
 また、[`rippled` API](../../references/http-websocket-apis/index.md)にローカルでアクセスするためのクライアントアプリケーションとして、`rippled`実行可能ファイルを実行できます。（この場合同じバイナリの2つのインスタンスを並列して実行できます。1つのインスタンスをサーバとして実行し、もう1つのインスタンスをクライアントとして一時的に実行して終了します。）
 
-各モードで`rippled`を実行するためのコマンドについては、[rippledコマンドライン使用リファレンス](../../infrastructure/commandline-usage.md)を参照してください。
+各モードで`rippled`を実行するためのコマンドについては、[rippledコマンドライン使用リファレンス](../../infrastructure/commandline-usage.md)をご覧ください。
 
 
 ## P2Pモード
@@ -62,7 +62,7 @@ XRP Ledgerの堅牢性は、他のバリデータが共謀しないことをそ�
 
 他の目的にも使用されているサーバで、安全にバリデーションを有効にすることができます。このような構成は _汎用サーバ_ と呼ばれます。あるいは、他のタスクを実行しない _専用バリデータ_ を、P2Pモードの他の`rippled`サーバと一緒に[クラスタ](clustering.md)で実行することもできます。
 
-バリデータの実行についての詳細は、[バリデータとしての`rippled`の実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)を参照してください。
+バリデータの実行についての詳細は、[バリデータとしての`rippled`の実行](../../infrastructure/configuration/server-modes/run-rippled-as-a-validator.md)をご覧ください。
 
 
 

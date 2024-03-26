@@ -31,6 +31,6 @@ seo:
 図を作成する際には、再カラーリングが正しく適用されるように注意する必要があります。そうしないと、もう一方のテーマ用に再カラーリングしたときに、一部の要素が見えなくなる可能性があります(例えば、白地に白や黒地に黒など)。テーマを考慮したダイアグラムのコードは、[Umlet](https://www.umlet.com/)または[Google Draw](https://docs.google.com/drawings/)のいずれかを使用して作成され、SVGとしてエクスポートされた図をサポートしています。また、図を作成する際には、以下のガイドラインに従ってください。
 
 - デフォルトでライトモード用の図を作成します。透明な背景色を使用してください。
-- テーマ対応ダイアグラムのコードがマッピングしている色のみを使用します。色の完全なリストを含む、このためのコードは[`styles/_diagrams.scss`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/styles/_diagrams.scss)にあります。必要であれば、SCSSコードを拡張することで、新しい色を追加することができます。(作業が終わったら、CSSを再エクスポートすることを忘れないでください。[style README](https://github.com/XRPLF/xrpl-dev-portal/blob/master/styles/README.md)を参照してください)。
+- テーマ対応ダイアグラムのコードがマッピングしている色のみを使用します。色の完全なリストを含む、このためのコードは[`styles/_diagrams.scss`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/styles/_diagrams.scss)にあります。必要であれば、SCSSコードを拡張することで、新しい色を追加することができます。(作業が終わったら、CSSを再エクスポートすることを忘れないでください。[style README](https://github.com/XRPLF/xrpl-dev-portal/blob/master/styles/README.md)をご覧ください)。
 - 可能な限り、埋め込みアイコン/画像の代わりにベクター図形を使用してください。画像の上にテキストを配置する必要がある場合は、テキスト要素に無地の背景を追加し、テーマがマッピングしている色のいずれかを使用してください。
 - テキストを含む透明な要素を、異なる背景色を持つ要素の上に重ねないでください。テキストを含む要素に直接背景色を適用してください。

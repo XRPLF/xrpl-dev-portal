@@ -18,7 +18,7 @@ XRP Ledgerのサーバは、XRP Ledgerピアプロトコル（RTXP）を使用�
 - 履歴レジャーへのレジャーデータのリクエスト、またはレジャーデータの提供。
 - コンセンサスのための一連のトランザクションの提示、またはコンセンサストランザクションセットの適用に関する算出結果の共有。
 
-ピアツーピア接続を確立するには、サーバどうしをHTTPSで接続し、一方のサーバはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)をリクエストします。（詳細は、[`rippled`リポジトリ](https://github.com/ripple/rippled)の[Overlay Network](https://github.com/XRPLF/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake)を参照してください。）
+ピアツーピア接続を確立するには、サーバどうしをHTTPSで接続し、一方のサーバはRTXPへの切り替えのために[HTTPアップグレード](https://tools.ietf.org/html/rfc7230#section-6.7)をリクエストします。（詳細は、[`rippled`リポジトリ](https://github.com/ripple/rippled)の[Overlay Network](https://github.com/XRPLF/rippled/blob/906ef761bab95f80b0a7e0cab3b4c594b226cf57/src/ripple/overlay/README.md#handshake)をご覧ください。）
 
 ## ピアの検出
 
@@ -56,7 +56,7 @@ protocol = peer
 
 ノードキーペアはデータベースに保存され、サーバの再起動時に再利用されます。サーバのデータベースを削除すると、新しいノードキーペアが作成され、異なるアイデンティティでオンラインになります。データベースが削除されても同じキーペアを再利用するには、`[node_seed]`スタンザを使用してサーバを設定できます。`[node_seed]`スタンザでの使用に適した値を生成するには、[validation_createメソッド][]を使用します。
 
-また、ノードキーペアは、[ピアスロットの](#固定ピアとピアリザベーション)[クラスタリング](clustering.md)または[確保](#固定ピアとピアリザベーション)のために他のサーバも識別します。サーバクラスターを使用している場合、一意の`[node_seed]`設定を使用してクラスター内の各サーバを構成する必要があります。クラスターの設定についての詳細は、[`rippled`サーバのクラスター化](../../infrastructure/configuration/peering/cluster-rippled-servers.md)を参照してください。
+また、ノードキーペアは、[ピアスロットの](#固定ピアとピアリザベーション)[クラスタリング](clustering.md)または[確保](#固定ピアとピアリザベーション)のために他のサーバも識別します。サーバクラスターを使用している場合、一意の`[node_seed]`設定を使用してクラスター内の各サーバを構成する必要があります。クラスターの設定についての詳細は、[`rippled`サーバのクラスター化](../../infrastructure/configuration/peering/cluster-rippled-servers.md)をご覧ください。
 
 
 ## 固定ピアとピアリザベーション
@@ -146,7 +146,7 @@ XRP Ledgerで使用できるように、`rippled`サーバをピアツーピア�
 
 ### プライベートサーバの設定
 
-サーバをプライベートサーバとして設定するには、設定ファイルの`[peer_private]`を`1`に設定します。詳細な手順については、[プライベートサーバの設定](../../infrastructure/configuration/peering/configure-a-private-server.md)を参照してください。
+サーバをプライベートサーバとして設定するには、設定ファイルの`[peer_private]`を`1`に設定します。詳細な手順については、[プライベートサーバの設定](../../infrastructure/configuration/peering/configure-a-private-server.md)をご覧ください。
 
 
 ## 関連項目

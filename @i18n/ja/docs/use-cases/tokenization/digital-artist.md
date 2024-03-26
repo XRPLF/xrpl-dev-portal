@@ -32,7 +32,7 @@ NFTをミントして販売することで、マーケットプレイスを構�
 
 初めてNFTを作成する場合は、チュートリアル _NFTokenのミントとバーン_ の手順に従ってください。NFTを作成する際には、以下の点にも留意してください。
 
-* <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](../../references/protocol/data-types/nftoken.md#transferfee)を参照してください。
+* <code>transfer fee</code>を設定することで、将来の取引からロイヤリティを徴収することができます。これは販売価格の0～50%を表す0～50000の値です。[NFTの取引手数料](../../references/protocol/data-types/nftoken.md#transferfee)をご覧ください。
 * NFTokenのURLは、NFTのコンテンツが保存されている場所へのリンクです。IPFSアカウントを作成し、永続的なURLにNFTokenのコンテンツを保存するのも1つの方法です。[NFTデータ保存のベストプラクティス](https://docs.ipfs.io/how-to/best-practices-for-nft-data)をご覧ください。
 <!--[Add link to blog post about alternative NFT cache options.] -->
 * `TokenTaxon`フィールドを使用すると、NFTを論理的なコレクションとしてミントすることができます。[NFTをコレクションとしてミントする](../../concepts/tokens/nfts/collections.md)をご覧ください。

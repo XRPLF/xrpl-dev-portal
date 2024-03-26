@@ -20,7 +20,7 @@ WebSocketは、クライアントとサーバが1つの接続を確立し、そ�
 
 - このページの例では、すべての主要な最新ブラウザーで使用できるJavaScriptおよびWebSocketプロトコルを使用しています。JavaScriptにある程度習熟し、WebSocketクライアントを使用する他のプログラミング言語の専門知識があれば、選択する言語に手順を適合させながら進めていくことができます。
 - 安定したインターネット接続と`rippled`サーバへアクセスが必要です。埋め込まれている例では、Rippleの公開サーバのプールに接続します。[独自の`rippled`サーバを運用](../../infrastructure/installation/index.md)する場合は、ローカルでそのサーバに接続することもできます。
-- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)を参照してください。
+- 丸め方によるエラーを発生させることなくXRPの価値を適切に処理するには、64ビット符号なし整数で計算できる数値タイプを使用できる必要があります。このチュートリアルの例では、[big.js](https://github.com/MikeMcl/big.js/)を使用しています。[トークン](../../concepts/tokens/index.md)を使用する場合は、さらに高い精度が求められます。詳細は、[通貨の精度](../../references/protocol/data-types/currency-formats.md#xrpの精度)をご覧ください。
 
 <!-- Helper for interactive tutorial breadcrumbs -->
 <script type="application/javascript" src="/vendor/big.min.js"></script>
@@ -124,7 +124,7 @@ WebSocket接続では、複数のメッセージをどちらの方向にも送�
 
   - APIがリクエストの処理に成功したかどうかを示す`status`フィールド。文字列値`success`は、[成功したレスポンス](../../references/http-websocket-apis/api-conventions/response-formatting.md)を示します。文字列値`error`は、[エラー](../../references/http-websocket-apis/api-conventions/error-formatting.md)を示します。
 
-    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)を参照してください。
+    **警告:** トランザクションを送信する際、WebSocketメッセージの先頭にある`success`の`status`は、必ずしもトランザクション自体が成功したことを意味しません。これは、サーバによってリクエストが理解されたということのみを示します。トランザクションの実際の結果を確認するには、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。
 
 - [サブスクリプション](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md)からのフォローアップメッセージの場合、`type`は、新しいトランザクション、レジャーまたは検証の通知など、フォローアップメッセージのタイプを示します。または継続している[pathfindingリクエスト](../../references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find.md)のフォローアップを示します。クライアントがこれらのメッセージを受信するのは、それらをサブスクライブしている場合のみです。
 
@@ -363,7 +363,7 @@ WS_HANDLERS["transaction"] = log_tx
 
   - **[PaymentChannelFundトランザクション][]** は、閉鎖された（期限切れの）Payment Channelから送金元にXRPを返金することができます。
 
-- **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](../../references/protocol/transactions/metadata.md)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)を参照してください。
+- **`meta`フィールド**には、1つまたは複数の通貨の種類とその正確な金額、その送金先などを示す[トランザクションメタデータ](../../references/protocol/transactions/metadata.md)が示されています。トランザクションメタデータを理解する方法の詳細は、[トランザクションの結果の確認](../../concepts/transactions/finality-of-results/look-up-transaction-results.md)をご覧ください。
 
 以下のサンプルコードは、上に示したすべてのトランザクションのタイプのトランザクションメタデータを確認し、アカウントが受け取ったXRPの金額をレポートします。
 

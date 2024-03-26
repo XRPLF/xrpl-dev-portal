@@ -16,7 +16,7 @@ labels:
 |:-----------------------------|:----------------------------------------------|
 | `temBAD_AMOUNT`               | トランザクションにより指定された額（宛先への[Payment][]の`Amount`または`SendMax`の金額など）が無効でした。マイナスの金額が指定された可能性があります。 |
 | `temBAD_AUTH_MASTER`         | このトランザクションの署名に使用されたキーが、トランザクションの送信元アカウントのマスターキーと一致していません。また、アカウントに[レギュラーキー](../../../../concepts/accounts/cryptographic-keys.md)セットがありません。 |
-| `temBAD_CURRENCY`             | トランザクションの通貨フィールドが誤って指定されています。正しいフォーマットについては、[通貨額の指定][通貨額]を参照してください。 |
+| `temBAD_CURRENCY`             | トランザクションの通貨フィールドが誤って指定されています。正しいフォーマットについては、[通貨額の指定][通貨額]をご覧ください。 |
 | `temBAD_EXPIRATION`           | トランザクションの有効期限の値が誤って指定されています（[OfferCreateトランザクション][]など）。あるいは、トランザクションに必須の有効期限値が指定されていません（例えば、[EscrowCreateトランザクション][]の作成過程などで）。 |
 | `temBAD_FEE`                  | トランザクションで`Fee`の値が誤って指定されています（例えば、XRP以外の通貨やマイナスの額のXRPを指定するなど）。 |
 | `temBAD_ISSUER`               | リクエストに指定されている通貨の`issuer`フィールドが、トランザクションにて誤って指定されています。 |
@@ -30,7 +30,7 @@ labels:
 | `temBAD_SEND_XRP_PARTIAL`   | [Paymentトランザクション][]で、XRP間の直接支払いに [tfPartialPayment](../../../../concepts/payment-types/partial-payments.md)フラグが使用されていますが、XRP間の直接支払いでは常に全額が送金されます。 |
 | `temBAD_SEND_XRP_PATHS`     | [Paymentトランザクション][]で、XRP送金時の`Paths`が指定されていますが、XRP間の支払いは常に直接行われます。 |
 | `temBAD_SEQUENCE`             | トランザクションは、トランザクション自体の`Sequence`番号よりも大きいシーケンス番号を参照します。例えば、取り消したいオファーは、そのオファーを取り消すトランザクションよりも後に置く必要があります。 |
-| `temBAD_SIGNATURE`            | このトランザクションを承認するための署名がないか、または署名の形式が適切ではありません。（適切な形式の署名がアカウントで承認されない場合は、[tecNO_PERMISSION](tec-codes.md)を参照してください。） |
+| `temBAD_SIGNATURE`            | このトランザクションを承認するための署名がないか、または署名の形式が適切ではありません。（適切な形式の署名がアカウントで承認されない場合は、[tecNO_PERMISSION](tec-codes.md)をご覧ください。） |
 | `temBAD_SRC_ACCOUNT`         | このトランザクションの送信元の`Account`（「支払元アカウント」）の[アカウント](../../../../concepts/accounts/index.md)アドレスは適切な形式ではありません。 |
 | `temBAD_TRANSFER_RATE`       | [AccountSetトランザクションの`TransferRate`フィールド](../types/accountset.md#transferrate)のフォーマットが適切ではないか、または許容範囲外です。 |
 | `temCANNOT_PREAUTH_SELF`     | [DepositPreauthトランザクション][]の送信者は、事前承認対象のアカウントとしても指定されていました。自分自身を事前承認することはできません。 |

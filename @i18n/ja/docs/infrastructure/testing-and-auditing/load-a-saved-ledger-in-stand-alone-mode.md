@@ -28,7 +28,7 @@ rippled --conf=/path/to/rippled.cfg
 * `proposing`
 * `validating`
 
-詳細は、[考えられるサーバの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)を参照してください。
+詳細は、[考えられるサーバの状態](../../references/http-websocket-apis/api-conventions/rippled-server-states.md)をご覧ください。
 
 ## 3. （省略可）特定のレジャーバージョンを取得します。
 
@@ -60,7 +60,7 @@ rippled -a --load --conf=/path/to/rippled.cfg
 rippled -a --load --ledger 19860944 --conf=/path/to/rippled.cfg
 ```
 
-スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](../commandline-usage.md#スタンドアロンモードのオプション)を参照してください。
+スタンドアロンモードで`rippled`を起動するときに使用可能なオプションについての詳細は、[コマンドラインの使用: スタンドアロンモードのオプション ](../commandline-usage.md#スタンドアロンモードのオプション)をご覧ください。
 
 ## 6. レジャーを手動で進めます。
 

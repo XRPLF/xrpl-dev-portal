@@ -82,7 +82,7 @@ Paymentトランザクションタイプは、いくつかの異なるタイプ�
 
 Payment型のトランザクションでは、資金供給のないアドレスに対して十分なXRPを送金することで、XRP Ledgerに新規のアカウントを作成できます。資金供給のないアドレスに対するその他のトランザクションは、常に失敗します。
 
-詳細は、[アカウント](../../../../concepts/accounts/index.md#アカウントの作成)を参照してください。
+詳細は、[アカウント](../../../../concepts/accounts/index.md#アカウントの作成)をご覧ください。
 
 ## パス
 
@@ -97,7 +97,7 @@ Payment型のトランザクションでは、資金供給のないアドレス�
 
 `Paths`フィールドを、空の配列としたり、メンバーがすべて空の配列あるような配列としたりすることはできません。
 
-詳細は、[Paths](../../../../concepts/tokens/fungible-tokens/paths.md)を参照してください。
+詳細は、[Paths](../../../../concepts/tokens/fungible-tokens/paths.md)をご覧ください。
 
 ## Paymentのフラグ
 
@@ -106,8 +106,8 @@ Payment型のトランザクションについては、[`Flags`フィールド](
 | フラグの名前         | 16進値        | 10進値        | 説明                  |
 |:-------------------|:-------------|:--------------|:-----------------------------|
 | `tfNoDirectRipple` | `0x00010000` | 65536         | デフォルトパスを使用せず、`Paths`フィールドに含まれているパスのみ使用します。これによりトランザクションは強制的に裁定機会を活用することになります。ほとんどのクライアントでは、これは必要ありません。 |
-| `tfPartialPayment` | `0x00020000` | 131072        | `SendMax`を超えていないのに指定された`Amount`を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)を参照してください。 |
-| `tfLimitQuality`   | `0x00040000` | 262144        | すべての変換で、入力と出力との比率が`Amount`と`SendMax`との比率と同一であるか、さらに有利となるパスのみを採用します。詳細は、[クオリティの制限](#クオリティの制限)を参照してください。 |
+| `tfPartialPayment` | `0x00020000` | 131072        | `SendMax`を超えていないのに指定された`Amount`を送金できない場合、即座に失敗とするのではなく、受取られる額を減額します。詳細は、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)をご覧ください。 |
+| `tfLimitQuality`   | `0x00040000` | 262144        | すべての変換で、入力と出力との比率が`Amount`と`SendMax`との比率と同一であるか、さらに有利となるパスのみを採用します。詳細は、[クオリティの制限](#クオリティの制限)をご覧ください。 |
 
 ## Partial Payments
 
@@ -117,7 +117,7 @@ Partial Paymentsとは、**tfPartialPayment**フラグが有効になってい�
 
 支払いのメタデータにある[`delivered_amount`](../metadata.md#delivered_amount)フィールドは、宛先アカウントが実際に受け取る通貨の金額を示しています。
 
-詳細は、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の全文を参照してください。
+詳細は、[Partial Payments](../../../../concepts/payment-types/partial-payments.md)の全文をご覧ください。
 
 
 ## クオリティの制限

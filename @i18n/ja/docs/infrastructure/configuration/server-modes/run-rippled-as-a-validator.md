@@ -57,7 +57,7 @@ top_nav_name: UNLに参加しよう
 
 ## 2. `rippled`サーバのインストール
 
-詳細は、[`rippled`のインストール](../../installation/index.md)を参照してください。
+詳細は、[`rippled`のインストール](../../installation/index.md)をご覧ください。
 
 
 
@@ -69,7 +69,7 @@ top_nav_name: UNLに参加しよう
 
 1. `validator-keys`ツールを`rippled` RPMを通じてまだインストールしていない場合は、手動でビルドして実行します。
 
-   `validator-keys`ツールを手動でビルドして実行する方法については、[validator-keys-tool](https://github.com/ripple/validator-keys-tool)を参照してください。
+   `validator-keys`ツールを手動でビルドして実行する方法については、[validator-keys-tool](https://github.com/ripple/validator-keys-tool)をご覧ください。
 
 2. `create_keys`コマンドを使用して、バリデータキーペアを生成します。
 
@@ -95,7 +95,7 @@ top_nav_name: UNLに参加しよう
 
    **警告:** 生成した`validator-keys.json`キーファイルは、暗号化されたUSBフラッシュドライブなど、安全かつ回復可能なオフラインの場所に保管してください。内容には修正を加えないでください。特に、キーの使用場所となるバリデータにキーファイルを保存しないようにします。バリデータの`secret_key`が悪用された場合は、ただちに[キーを破棄](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation)します。
 
-   `validator-keys`ツールおよびツールで生成されるキーペアの詳細は、[Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)を参照してください。
+   `validator-keys`ツールおよびツールで生成されるキーペアの詳細は、[Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md)をご覧ください。
 
 3. `create_token`コマンドを使用して、バリデータトークンを生成します。
 
@@ -155,7 +155,7 @@ top_nav_name: UNLに参加しよう
 
 - [公開ハブ](#公開ハブを使用した接続): 評価の高い特定の公開サーバにのみ接続します。
 
-これらのアプローチの違いについては、[ピア接続設定のメリットとデメリット](../../../concepts/networks-and-servers/peer-protocol.md#ピア接続設定のメリットとデメリット)を参照してください。
+これらのアプローチの違いについては、[ピア接続設定のメリットとデメリット](../../../concepts/networks-and-servers/peer-protocol.md#ピア接続設定のメリットとデメリット)をご覧ください。
 
 
 ### 検出されたピアを使用した接続
@@ -171,11 +171,11 @@ _**検出されたピアを使用してバリデータをXRP Ledgerネットワ�
 
 _**プロキシを使用してバリデータをXRP Ledgerネットワークに接続するには、次の手順を実行します。**_
 
-1. ストック`rippled`サーバを設置します。詳細は、[rippledのインストール](../../installation/index.md)を参照してください。
+1. ストック`rippled`サーバを設置します。詳細は、[rippledのインストール](../../installation/index.md)をご覧ください。
 
 2. バリデータとストック`rippled`サーバを設定して、[クラスター](../peering/cluster-rippled-servers.md)内で実行します。
 
-3. バリデータの`rippled.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)を参照してください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバ以外のサーバに、バリデータが接続しないようになります。
+3. バリデータの`rippled.cfg`ファイルで、`[peer_private]`を`1`に設定します。そうすることで、バリデータのIPアドレスが転送されないようにします。詳細は、[プライベートピア](../../../concepts/networks-and-servers/peer-protocol.md#プライベートピア)をご覧ください。また、これによりクラスター内でバリデータを実行するよう`[ips_fixed]`スタンザで定義したサーバ以外のサーバに、バリデータが接続しないようになります。
 
    **警告:** バリデータのIPアドレスを、その他の方法で公開していないことを確認してください。
 
@@ -251,11 +251,11 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
   公開ハブを`[ips_fixed]`スタンザに記述した場合、そのハブがビジーになっているときは、バリデータの接続が拒否されることがあります。この場合、接続の数は、`[ips_fixed]`スタンザで設定した数よりも最終的に少なくなることがあります。初めて拒否された場合、バリデータは接続を再試行します。
 
-  ネットワークへの安全かつ信頼できる接続を維持することが困難であり、公開ハブまたはプロキシを使用して接続を設定していない場合、[4. ネットワークへの接続](#4-ネットワークへの接続)を参照してください。このセクションで説明されているいずれかの方法は、バリデータがネットワークへの健全な接続を維持する上で有用となる可能性があります。
+  ネットワークへの安全かつ信頼できる接続を維持することが困難であり、公開ハブまたはプロキシを使用して接続を設定していない場合、[4. ネットワークへの接続](#4-ネットワークへの接続)をご覧ください。このセクションで説明されているいずれかの方法は、バリデータがネットワークへの健全な接続を維持する上で有用となる可能性があります。
 
 - [`server_info`](../../../references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md)コマンドを使用して、バリデータに関するいくつかの基本情報を取得します。`server_state`は、`proposing`に設定されているはずです。`full`または`validating`に設定されている場合もありますが、`proposing`に移行するまでの数分間に限られます。
 
-  `server_state`が`proposing`に設定されている時間が大部分を占めていない場合、XRP Ledgerネットワークにバリデータが完全に参加できていないことを示している可能性があります。サーバの状態および`server_info`エンドポイントを使用してバリデータの問題を診断する方法の詳細は、[`rippled`サーバの状態](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md)および[`server_info`の取得](../../troubleshooting/diagnosing-problems.md#server_infoの取得)を参照してください。
+  `server_state`が`proposing`に設定されている時間が大部分を占めていない場合、XRP Ledgerネットワークにバリデータが完全に参加できていないことを示している可能性があります。サーバの状態および`server_info`エンドポイントを使用してバリデータの問題を診断する方法の詳細は、[`rippled`サーバの状態](../../../references/http-websocket-apis/api-conventions/rippled-server-states.md)および[`server_info`の取得](../../troubleshooting/diagnosing-problems.md#server_infoの取得)をご覧ください。
 
 - [`validators`](../../../references/http-websocket-apis/admin-api-methods/status-and-debugging-methods/validators.md)コマンドを使用して、バリデータによって使用される、公開済みかつ信頼できるバリデータの最新リストを取得します。`validator_list_expires`の値が、`never`（無期限）、期限が切れていない、または期限切れ間近のいずれかであることを確認してください。
 
@@ -321,7 +321,7 @@ _**公開ハブを使用してバリデータをネットワークに接続す�
 
 バリデータのマスター秘密鍵が漏えいした場合は、ただちに永続的に破棄する必要があります。
 
-`validator-keys`ツールでバリデータ用に生成したマスターキーペアを破棄する方法については、[Key Revocation](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation)を参照してください。
+`validator-keys`ツールでバリデータ用に生成したマスターキーペアを破棄する方法については、[Key Revocation](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#key-revocation)をご覧ください。
 
 
 ## 関連項目

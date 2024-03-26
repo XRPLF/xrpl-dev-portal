@@ -43,7 +43,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | `WalletLocator`    | 文字列           | Hash256           |  _（省略可）_ 任意の256ビット値です。指定された場合、この値はアカウントの設定の一部として保存さ れますが、固有の定義や要件を持ちません。 |
 | `WalletSize`       | 数値           | UInt32            |  _（省略可）_ 使用されません。このフィールドはAccountSetトランザクションで有効ですが、何の機能もありません |
 
-これらのオプションがいずれも指定されていない場合、AccountSetトランザクションは（取引コストの消却以外に）意味がありません。詳細は、[トランザクションのキャンセルまたはスキップ](../../../../concepts/transactions/finality-of-results/canceling-a-transaction.md)を参照してください。
+これらのオプションがいずれも指定されていない場合、AccountSetトランザクションは（取引コストの消却以外に）意味がありません。詳細は、[トランザクションのキャンセルまたはスキップ](../../../../concepts/transactions/finality-of-results/canceling-a-transaction.md)をご覧ください。
 
 ## Domain
 
@@ -100,7 +100,7 @@ AccountSetトランザクションは、[XRP Ledgerのアカウント](../../led
 | `tfDisallowXRP`     | `0x00100000` | 1048576       | asfDisallowXRP（SetFlag）    |
 | `tfAllowXRP`        | `0x00200000` | 2097152       | asfDisallowXRP（ClearFlag）  |
 
-**注意:** トランザクションに含まれている`tf`フラグと`asf`フラグの数値は、レジャーに含まれている静的なアカウントに設定された値と合致しません。レジャーに含まれているアカウントのフラグを読み取るには、[`AccountRoot`フラグ](../../ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)を参照してください。
+**注意:** トランザクションに含まれている`tf`フラグと`asf`フラグの数値は、レジャーに含まれている静的なアカウントに設定された値と合致しません。レジャーに含まれているアカウントのフラグを読み取るには、[`AccountRoot`フラグ](../../ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)をご覧ください。
 
 
 ### 着信トランザクションのブロック
@@ -128,6 +128,6 @@ TransferRateフィールドは、ユーザの発行する通貨を相手方が�
 
 HTTPおよびWebSocketのAPIでは、TransferRate（相手方に10億単位の通貨を送金するのに必要な金額）は整数で表現します。例えば、送金手数料が20%である場合、値を`1200000000`と表現します。  値を1000000000未満にすることはできません（この値未満にした場合、トランザクションの送信について金銭の引き渡しが発生することになり、攻撃に利用されるおそれがあります）。`1000000000`の短縮形として、手数料なしを意味する`0`を指定できます。
 
-詳細は、[送金手数料](../../../../concepts/tokens/transfer-fees.md)を参照してください。
+詳細は、[送金手数料](../../../../concepts/tokens/transfer-fees.md)をご覧ください。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

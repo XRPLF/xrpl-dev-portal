@@ -16,7 +16,7 @@ labels:
 rippled -a --start --conf=/path/to/rippled.cfg
 ```
 
-スタンドアロンモードで`rippled`を起動時に使用できるオプションについての詳細は、[コマンドラインの使用リファレンスのスタンドアロンモードのオプション](../commandline-usage.md#スタンドアロンモードのオプション)を参照してください。
+スタンドアロンモードで`rippled`を起動時に使用できるオプションについての詳細は、[コマンドラインの使用リファレンスのスタンドアロンモードのオプション](../commandline-usage.md#スタンドアロンモードのオプション)をご覧ください。
 
 ジェネシスレジャーの[ジェネシスアドレス](../../concepts/accounts/addresses.md#特別なアドレス)は1,000億XRPすべてを保有しています。ジェネシスアドレスのキーは以下のように[ハードコーディング](https://github.com/XRPLF/rippled/blob/94ed5b3a53077d815ad0dd65d490c8d37a147361/src/ripple/app/ledger/Ledger.cpp#L184)されています。
 

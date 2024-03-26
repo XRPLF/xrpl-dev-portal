@@ -24,7 +24,7 @@ Throw<std::runtime_error>
 Terminating thread rippled: main: unhandled St13runtime_error
 ```
 
-サーバが起動時に常にクラッシュする場合は、[サーバが起動しない](server-wont-start.md)で考えられる原因を参照してください。
+サーバが起動時に常にクラッシュする場合は、[サーバが起動しない](server-wont-start.md)で考えられる原因をご覧ください。
 
 サーバが稼働中にランダムにクラッシュする場合、または特定のコマンドを実行するとクラッシュする場合は、`rippled`が最新バージョンに[更新](../installation/index.md)されていることを確認してください。最新バージョンに更新済で、サーバがクラッシュする場合は、以下の点を確認してください。
 
@@ -32,7 +32,7 @@ Terminating thread rippled: main: unhandled St13runtime_error
 - サーバが共有環境で稼働している場合、他のユーザや管理者によってマシンまたはサービスが再起動されますか。たとえば、一部のホステッドプロバイダーは、長期にわたって共有マシンのリソースを大量に消費するサービスを自動的に終了します。
 - サーバは`rippled`を実行するための[最小要件](../installation/system-requirements.md)を満たしていますか。[本番環境サーバに関する推奨事項](../installation/system-requirements.md#推奨される仕様)を適用していますか。
 
-上記のいずれにも該当しない場合は、その問題をセキュリティ上重要なバグとしてRippleに報告してください。Rippleでクラッシュを再現できる場合は、報奨を受領できる可能性があります。詳細は<https://ripple.com/bug-bounty/>を参照してください。
+上記のいずれにも該当しない場合は、その問題をセキュリティ上重要なバグとしてRippleに報告してください。Rippleでクラッシュを再現できる場合は、報奨を受領できる可能性があります。詳細は<https://ripple.com/bug-bounty/>をご覧ください。
 
 
 ## Already validated sequence at or past
@@ -141,7 +141,7 @@ type=RocksDB
 
 ## Potential Censorship
 
-XRP Ledgerが取引検閲の可能性を検出すると、以下のようなログメッセージが出力されます。ログメッセージと取引検閲検出機能の詳細は、[取引検閲の検知](../../concepts/networks-and-servers/transaction-censorship-detection.md)を参照してください。
+XRP Ledgerが取引検閲の可能性を検出すると、以下のようなログメッセージが出力されます。ログメッセージと取引検閲検出機能の詳細は、[取引検閲の検知](../../concepts/networks-and-servers/transaction-censorship-detection.md)をご覧ください。
 
 **警告メッセージ**
 

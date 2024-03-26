@@ -13,7 +13,7 @@ seo:
 - [CentOSまたはRed Hat Enterprise Linux（RHEL）](#centosまたはred-hat-enterprise-linuxrhelでの移行)
 - [Ubuntu Linux](#ubuntu-linuxでの移行)
 
-その他のプラットフォームについては、ソースからコンパイルするためのアップデート手順を参照してください。（[Ubuntu](build-on-linux-mac-windows.md)、[macOS](build-on-linux-mac-windows.md)、または[Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017)）
+その他のプラットフォームについては、ソースからコンパイルするためのアップデート手順をご覧ください。（[Ubuntu](build-on-linux-mac-windows.md)、[macOS](build-on-linux-mac-windows.md)、または[Windows](https://github.com/XRPLF/rippled/tree/develop/Builds/VisualStudio2017)）
 
 
 ## CentOSまたはRed Hat Enterprise Linux（RHEL）での移行
@@ -108,7 +108,7 @@ Rippleの公式RPMリポジトリとそれを使用するための手順が変�
 
 ### 自動更新
 
-`rippled` v1.3パッケージには、UbuntuおよびDebian Linuxで動作する最新のauto-updateスクリプトが含まれています。詳細は、[Linuxでの`rippled`の自動更新](update-rippled-automatically-on-linux.md)を参照してください。
+`rippled` v1.3パッケージには、UbuntuおよびDebian Linuxで動作する最新のauto-updateスクリプトが含まれています。詳細は、[Linuxでの`rippled`の自動更新](update-rippled-automatically-on-linux.md)をご覧ください。
 
 ## 関連項目
 

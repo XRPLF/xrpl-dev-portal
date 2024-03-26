@@ -190,9 +190,9 @@ Connecting to 127.0.0.1:5005
 
 レギュラーキーペアとして使用するほかに、マルチシグのリスト（SignerList）のメンバーとして使用することもできます。
 
-マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](../../../../concepts/accounts/cryptographic-keys.md)を参照してください。
+マスターキーペアとレギュラーキーペアの詳細は、[暗号鍵](../../../../concepts/accounts/cryptographic-keys.md)をご覧ください。
 
-マルチシグの詳細は、[マルチシグ](../../../../concepts/accounts/multi-signing.md)を参照してください。
+マルチシグの詳細は、[マルチシグ](../../../../concepts/accounts/multi-signing.md)をご覧ください。
 
 
 ### 考えられるエラー

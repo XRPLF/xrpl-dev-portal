@@ -12,7 +12,7 @@ labels:
 
 _[DeletableAccounts Amendment](/resources/known-amendments.md#deletableaccounts)が必要です_
 
-AccountDeleteトランザクションは、XRP Ledgerで[アカウント](../../ledger-data/ledger-entry-types/accountroot.md)と、アカウントが所有するオブジェクトを削除し、可能であれば、アカウントの残りのXRPを指定された送金先アカウントに送信します。アカウントを削除する要件については、[アカウントの削除](../../../../concepts/accounts/deleting-accounts.md)を参照してください。
+AccountDeleteトランザクションは、XRP Ledgerで[アカウント](../../ledger-data/ledger-entry-types/accountroot.md)と、アカウントが所有するオブジェクトを削除し、可能であれば、アカウントの残りのXRPを指定された送金先アカウントに送信します。アカウントを削除する要件については、[アカウントの削除](../../../../concepts/accounts/deleting-accounts.md)をご覧ください。
 
 ## {% $frontmatter.seo.title %} JSONの例
 

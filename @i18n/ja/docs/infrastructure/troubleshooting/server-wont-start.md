@@ -183,7 +183,7 @@ Terminating thread rippled: main: unhandled St13runtime_error 'online_delete mus
 Terminating thread rippled: main: unhandled N5beast14BadLexicalCastE 'std::bad_cast'
 ```
 
-`node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../installation/capacity-planning.md#ノードサイズ)を参照してください。
+`node_size`フィールドの有効なパラメーターは`tiny`、`small`、`medium`、`large`、`huge`です。詳細は、[ノードサイズ](../installation/capacity-planning.md#ノードサイズ)をご覧ください。
 
 
 ## シャードパスが欠落している

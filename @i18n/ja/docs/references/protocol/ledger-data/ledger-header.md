@@ -40,6 +40,6 @@ labels:
 
 ## 関連項目
 
-レジャーの基本的な説明については、[レジャー](../../../concepts/ledgers/index.md)を参照してください。
+レジャーの基本的な説明については、[レジャー](../../../concepts/ledgers/index.md)をご覧ください。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

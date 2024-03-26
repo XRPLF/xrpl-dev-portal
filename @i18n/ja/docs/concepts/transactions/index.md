@@ -11,7 +11,7 @@ labels:
 
 _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の方法です。[コンセンサスプロセス](../consensus-protocol/index.md)に従って署名され、送信され、検証済みのレジャーバージョンに承認された場合にのみ、トランザクションは最終的なものになります。レジャーのルールによっては、_[疑似トランザクション](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md)_ も生成されます。このトランザクションは署名も送信もされませんが、コンセンサスによって承認されなければならないことは同様です。失敗したトランザクションであっても、スパム対策の[トランザクションコスト][]を支払のためXRPの残高が変わるため、レジャーに記録されます。
 
-トランザクションで行えることは、送金だけではありません。XRP Ledgerのトランザクションは、さまざまな[支払いタイプ](../payment-types/index.md)に対応しているだけでなく、[暗号鍵](../accounts/cryptographic-keys.md)のローテーション、その他の設定の管理、およびXRP Ledgerの[分散型取引所](../tokens/decentralized-exchange/index.md)での取引にも使用されます。[トランザクションタイプの詳細なリスト](../../references/protocol/transactions/types/index.md)については、[`rippled` APIリファレンス](../../references/http-websocket-apis/index.md)を参照してください。
+トランザクションで行えることは、送金だけではありません。XRP Ledgerのトランザクションは、さまざまな[支払いタイプ](../payment-types/index.md)に対応しているだけでなく、[暗号鍵](../accounts/cryptographic-keys.md)のローテーション、その他の設定の管理、およびXRP Ledgerの[分散型取引所](../tokens/decentralized-exchange/index.md)での取引にも使用されます。[トランザクションタイプの詳細なリスト](../../references/protocol/transactions/types/index.md)については、[`rippled` APIリファレンス](../../references/http-websocket-apis/index.md)をご覧ください。
 
 
 ### トランザクションの識別 <a id="identifying-transactions"></a>
@@ -49,7 +49,7 @@ _トランザクション（取引）_ は、XRP Ledgerを変更する唯一の�
 * マスター秘密鍵だけが[凍結機能を永続的に放棄](../tokens/fungible-tokens/freezes.md#no-freeze)できます。
 * アドレスからトランザクションに署名する最後の方法を削除することはできません。
 
-マスターキーとレギュラーキーペアについて詳しくは、[暗号鍵](../accounts/cryptographic-keys.md)を参照してください。
+マスターキーとレギュラーキーペアについて詳しくは、[暗号鍵](../accounts/cryptographic-keys.md)をご覧ください。
 
 <!--{# Add this reference after signatures concept doc is published. For more information about signatures, see [Understanding Signatures](concept-signatures.html). #}-->
 
@@ -65,7 +65,7 @@ XRP Ledgerにトランザクションを送信するには、いくつかの手�
 5. `rippled`サーバはそれらのトランザクションを正規順序で前のレジャーに適用し、それらの結果を共有します。
 6. 十分に[信頼できるバリデータ](../networks-and-servers/rippled-server-modes.md#バリデータ)がまったく同じレジャーを作成した場合、そのレジャーは _検証済み_ であると宣言され、そのレジャーの[トランザクションの結果](../../references/protocol/transactions/transaction-results/index.md)は不変となります。
 
-XRP決済の送信に関する対話型チュートリアルについては、[Send XRP](../../tutorials/how-tos/send-xrp.md)を参照してください。
+XRP決済の送信に関する対話型チュートリアルについては、[Send XRP](../../tutorials/how-tos/send-xrp.md)をご覧ください。
 
 
 ### 未署名のトランザクションの例
@@ -88,7 +88,7 @@ JSON形式の未署名の[Paymentトランザクション][]の例を次に示�
 }
 ```
 
-XRP Ledgerは、トランザクションオブジェクトが送信元アドレス（`Account`内）フィールドによって承認されている場合にのみ、トランザクションを中継して実行します。これを安全に行う方法については、[安全な署名の設定](secure-signing.md)を参照してください。
+XRP Ledgerは、トランザクションオブジェクトが送信元アドレス（`Account`内）フィールドによって承認されている場合にのみ、トランザクションを中継して実行します。これを安全に行う方法については、[安全な署名の設定](secure-signing.md)をご覧ください。
 
 ## 署名付きトランザクションBlobの例
 

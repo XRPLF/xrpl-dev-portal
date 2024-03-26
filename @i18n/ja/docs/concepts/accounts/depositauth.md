@@ -70,7 +70,7 @@ Deposit Authorizationが有効化されているアカウントの特徴は次�
 
 ## Deposit Authorizationの有効化または無効化
 
-アカウントのDeposit Authorizationを有効にするには、`SetFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。アカウントのDeposit Authorizationを無効にするには、`ClearFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。AccountSetフラグについての詳細は、[AccountSetフラグ](../../references/protocol/transactions/types/accountset.md)を参照してください。
+アカウントのDeposit Authorizationを有効にするには、`SetFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。アカウントのDeposit Authorizationを無効にするには、`ClearFlag`フィールドに`asfDepositAuth`の値（9）を設定した[AccountSetトランザクション][]を送信します。AccountSetフラグについての詳細は、[AccountSetフラグ](../../references/protocol/transactions/types/accountset.md)をご覧ください。
 
 ## AccountのDepositAuthの有効化の確認
 
@@ -96,7 +96,7 @@ DepositPreauthトランザクションの処理が完了すると、承認済み
 - [EscrowFinish][]
 - [PaymentChannelClaim][]
 
-事前承認は、DepositAuthが有効なアカウントへのその他の送金方法には影響しません。詳しいルールについては、[詳細なセマンティクス](#詳細なセマンティクス)を参照してください。
+事前承認は、DepositAuthが有効なアカウントへのその他の送金方法には影響しません。詳しいルールについては、[詳細なセマンティクス](#詳細なセマンティクス)をご覧ください。
 
 ### 承認の確認
 

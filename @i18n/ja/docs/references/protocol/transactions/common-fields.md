@@ -14,11 +14,11 @@ labels:
 |:-------------------|:-----------------|:------------------|:-----------------|
 | Account            | 文字列           | AccountID          | _（必須）_ トランザクションを開始した[アカウント](../../../concepts/accounts/index.md)の一意アドレス。 |
 | TransactionType    | 文字列           | UInt16            | _（必須）_ トランザクションのタイプ。有効なタイプは、`Payment`、`OfferCreate`、`OfferCancel`、`TrustSet`、`AccountSet`、`SetRegularKey`、`SignerListSet`、`EscrowCreate`、`EscrowFinish`、`EscrowCancel`、`PaymentChannelCreate`、`PaymentChannelFund`、`PaymentChannelClaim`、`DepositPreauth`です。 |
-| Fee                | 文字列           | Amount            | _（必須。[自動入力可能][]）_ 整数で表したXRPの額（drop単位）。このトランザクションをネットワークに送信するためのコストとして消却されます。トランザクションのタイプによっては、最小要件が異なります。詳細は、[トランザクションコスト][]を参照してください。 |
-| Sequence           | 符号なし整数 | UInt32            | _（必須。[自動入力可能][]）_ トランザクションを開始したアカウントに関連付けられた、トランザクションのシーケンス番号。トランザクションが有効とみなされるのは、その`Sequence`番号が、同一のアカウントの直前トランザクションよりも1大きい場合のみです。保留中のトランザクションを`Sequence`番号を使用して無効にする方法については、[トランザクションのキャンセルまたはスキップ](../../../concepts/transactions/finality-of-results/canceling-a-transaction.md)を参照してください。 |
+| Fee                | 文字列           | Amount            | _（必須。[自動入力可能][]）_ 整数で表したXRPの額（drop単位）。このトランザクションをネットワークに送信するためのコストとして消却されます。トランザクションのタイプによっては、最小要件が異なります。詳細は、[トランザクションコスト][]をご覧ください。 |
+| Sequence           | 符号なし整数 | UInt32            | _（必須。[自動入力可能][]）_ トランザクションを開始したアカウントに関連付けられた、トランザクションのシーケンス番号。トランザクションが有効とみなされるのは、その`Sequence`番号が、同一のアカウントの直前トランザクションよりも1大きい場合のみです。保留中のトランザクションを`Sequence`番号を使用して無効にする方法については、[トランザクションのキャンセルまたはスキップ](../../../concepts/transactions/finality-of-results/canceling-a-transaction.md)をご覧ください。 |
 | [AccountTxnID][]   | 文字列           | Hash256           | _（省略可）_ 別のトランザクションを識別するためのハッシュ値。このハッシュがある場合、このトランザクションが有効になるのは、送信側のアカウントの直前送信トランザクションがこのハッシュと一致しているときのみです。 |
 | [Flags][]          | 符号なし整数 | UInt32            | _（省略可）_ このトランザクションのビットフラグのセット。 |
-| LastLedgerSequence | 数値           | UInt32            | _（省略可。使用を強く推奨）_ このトランザクションを登録できるレジャーインデックスの最大値。このフィールドを指定することにより、トランザクションが検証または拒否されるのを待たなければならない期間の上限を設定することができます。詳細は、[信頼できるトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)を参照してください。 |
+| LastLedgerSequence | 数値           | UInt32            | _（省略可。使用を強く推奨）_ このトランザクションを登録できるレジャーインデックスの最大値。このフィールドを指定することにより、トランザクションが検証または拒否されるのを待たなければならない期間の上限を設定することができます。詳細は、[信頼できるトランザクションの送信](../../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。 |
 | [`NetworkID`](#networkidフィールド) | Number | UInt32           | _(Network-specific)_ The network ID of the chain this transaction is intended for. **MUST BE OMITTED** for Mainnet and some test networks. **REQUIRED** on chains whose network ID is 1025 or higher. |
 | [Memos][]          | オブジェクトの配列 | 配列             | _（省略可）_ このトランザクションの識別に使用される任意の追加情報。 |
 | [Signers][]        | 配列            | 配列             | _（省略可）_ このトランザクションを承認するための[マルチシグ](../../../concepts/accounts/multi-signing.md)を表すオブジェクトの配列。 |

@@ -85,7 +85,7 @@ D = A × ( e ^ (t ÷ τ) )
 
 デマレージは ripple-lib のバージョン **0.7.37** から **0.12.9** まででサポートされていました。デマレージは、最近のほとんどのライブラリでは***サポートされていません***。
 
-以下のコードサンプルは、互換性のあるバージョンのripple-libを使用して、レジャー値と表示値の変換を行う方法を示しています。また、[Ripple Demurrage Calculator](https://ripple.github.io/ripple-demurrage-tool/)も参照してください。
+以下のコードサンプルは、互換性のあるバージョンのripple-libを使用して、レジャー値と表示値の変換を行う方法を示しています。また、[Ripple Demurrage Calculator](https://ripple.github.io/ripple-demurrage-tool/)もご覧ください。
 
 表示値からレジャー値に変換するには、`Amount.from_human()`を使用する。
 

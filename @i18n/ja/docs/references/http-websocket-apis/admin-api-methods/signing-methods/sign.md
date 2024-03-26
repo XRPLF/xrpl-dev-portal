@@ -14,7 +14,7 @@ labels:
 {% partial file="/@i18n/ja/docs/_snippets/public-signing-note.md" /%}
 
 
-**注意:** 独自の`rippled`サーバを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](../../../client-libraries.md)を実行してください。詳細については[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)を参照してください。
+**注意:** 独自の`rippled`サーバを運用している場合を除き、このコマンドを使用するのではなく、[クライアントライブラリ](../../../client-libraries.md)を実行してください。詳細については[安全な署名の設定](../../../../concepts/transactions/secure-signing.md)をご覧ください。
 
 ## リクエストのフォーマット
 リクエストのフォーマットの例:

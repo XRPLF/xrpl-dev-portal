@@ -172,7 +172,7 @@ Content-Type: application/json
 - トランザクションの`meta`フィールドで、`TransactionResult`が`tesSUCCESS`であることを確認します。
 - データが検証済みレジャーのデータであることを示す`"validated":true`がレスポンスに含まれていることを確認します。（結果`tesSUCCESS`は、検証済みレジャーバージョンに記録されている場合にのみ[最終的な](../../../../concepts/transactions/finality-of-results/index.md)結果です。）
 - トランザクションの`meta`フィールドの`AffectedNodes`配列で、`LedgerEntryType`が`PayChannel`である`CreatedNode`オブジェクトを検索します。`CreatedNode`オブジェクトの`LedgerIndex`フィールドはChannel IDを示します。（上記の例では、これは「5DB0...」で始まる16進文字列です。）Channel IDは、後でクレームに署名する際に必要です。
-    PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)を参照してください。
+    PayChannelレジャーオブジェクトタイプの詳細については、[PayChannelレジャーオブジェクト](../../../../references/protocol/ledger-data/ledger-entry-types/paychannel.md)をご覧ください。
 
 
 ## 2. 受取人がPayment Channelの特性を確認します。
@@ -455,7 +455,7 @@ Content-Type: application/json
 }
 ```
 
-受取人は検証済みレジャーでこのトランザクションが正常に処理されたことを確認します。詳細は、[確実なトランザクションの送信](../../../../concepts/transactions/reliable-transaction-submission.md)を参照してください。
+受取人は検証済みレジャーでこのトランザクションが正常に処理されたことを確認します。詳細は、[確実なトランザクションの送信](../../../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。
 
 ## 9. 支払人と受取人の取引完了後、支払人はChannelの閉鎖を要求します。
 
