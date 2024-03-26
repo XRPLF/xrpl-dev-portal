@@ -9,7 +9,7 @@ labels:
 # nft_info
 [[Source]](https://github.com/XRPLF/clio/blob/4a5cb962b6971872d150777881801ce27ae9ed1a/src/rpc/handlers/NFTInfo.cpp "Source")
 
-The `nft_info` command asks the Clio server for information about the [NFT](../../../../concepts/tokens/nfts/index.md) being queried. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}New in: Clio v1.1.0{% /badge %}
+The `nft_info` command asks the Clio server for information about the [NFT](../../../../concepts/tokens/nfts/index.md) being queried. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.0.4" %}New in: Clio v1.0,4{% /badge %}
 
 ## Request Format
 An example of the request format:
