@@ -645,7 +645,7 @@ const events = [
     description:
       "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
     type: "conference",
-    link: "https://consensus2024.coindesk.com/sponsors/",
+    link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
     location: "Austin, Texas",
     date: "May 29 - June 1, 2024",
     image: conference,
