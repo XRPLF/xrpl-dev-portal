@@ -124,7 +124,7 @@ export default function Index() {
         {/* Other Blog Posts*/}
         <section className="container-new py-26">
           <div className="row w-100 mx-auto px-2">
-            <div className="row-cols-lg-2 m-0 p-0 mt-2">
+            <div className="col-lg-4 m-0 p-0 mt-2">
               {/* Filters Desktop*/}
               <div className="p-3 category_sidebar d-none d-lg-block">
                 <p className="mb-2 category-header">Filter by Category:</p>
