@@ -85,7 +85,7 @@ When you're building production-ready software, you should use an existing accou
 
 {% /tabs %}
 
-### 7. Look Up Offers
+### 3. Look Up Offers
 
 Before you buy or sell a token, you usually want to look up what others are buying and selling for, to get a sense of how others value it. In the XRP Ledger, you can look up existing offers for any currency pair using the [book_offers method][].
 
@@ -156,7 +156,7 @@ The following block demonstrates these calculations in action:
 
 {% /interactive-block %}
 
-### 3. Send OfferCreate Transaction
+### 4. Send OfferCreate Transaction
 
 To actually make a trade, send an [OfferCreate transaction][]. In this case, you want to buy TST using XRP, so you should set the parameters as follows:
 
@@ -191,14 +191,14 @@ You can use this interface to send the transaction specified by the amounts in t
 
 {% /interactive-block %}
 
-### 4. Wait for Validation
+### 5. Wait for Validation
 
 Most transactions are accepted into the next ledger version after they're submitted, which means it may take 4-7 seconds for a transaction's outcome to be final. If the XRP Ledger is busy or poor network connectivity delays a transaction from being relayed throughout the network, a transaction may take longer to be confirmed. (For information on how to set an expiration for transactions, see [Reliable Transaction Submission](../../../concepts/transactions/reliable-transaction-submission.md).)
 
 {% partial file="/docs/_snippets/interactive-tutorials/wait-step.md" /%}
 
 
-### 5. Check Metadata
+### 6. Check Metadata
 
 You can use the validated transaction's [metadata](../../../references/protocol/transactions/metadata.md) to determine exactly what it did. (Don't use metadata from tentative transaction results, because it may be different from the [final result](../../../concepts/transactions/finality-of-results/index.md), especially when using the decentralized exchange.) In case of an OfferCreate transaction, likely results include:
 
@@ -233,7 +233,7 @@ You can use this interface to test it out:
 {% /interactive-block %}
 
 
-### 6. Check Balances and Offers
+### 7. Check Balances and Offers
 
 This is also a good time to look up the balances and outstanding Offers owned by your account as of the latest validated ledger. This shows any changes caused by your transaction as well as any others that executed in the same ledger version.
 
