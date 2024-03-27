@@ -139,6 +139,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index`         | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the ledger that was used to generate this response. |
 | `ledger_current_index` | Number - [Ledger Index][] | _(May be omitted)_ The ledger index of the current in-progress ledger version, which was used to generate this response. |
 | `validated`            | Boolean                   | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
+| `marker`       |  [Marker][]               |  _(May be omitted)_ Server-defined value indicating the response is paginated. Pass this to the next call to resume where this call left off. Omitted when there are no additional pages after this one. |
 
 ### NFT Objects
 
@@ -152,6 +153,7 @@ Each object in the `account_nfts` array represents one [NFToken][] and has the f
 | `NFTokenTaxon` | Number               | The unscrambled version of this token's [taxon](../../../protocol/data-types/nftoken.md#nftokentaxon). Several tokens with the same taxon might represent instances of a limited series. |
 | `URI`          | String               | The URI data associated with this NFToken, in hexadecimal. |
 | `nft_serial`   | Number               | The token sequence number of this NFToken, which is unique for its issuer. |
+
 
 ## Possible Errors
 
