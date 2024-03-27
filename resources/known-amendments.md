@@ -17,6 +17,7 @@ The following is a comprehensive list of all known [amendments](../docs/concepts
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
+| [fixAMMOverflowOffer][]           | v2.1.1     | [Open for Voting: 2024-03-27](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_80d0e0") |
 | [fixInnerObjTemplate][]           | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [fixNFTokenReserve][]             | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
@@ -110,6 +111,19 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 
 ## Details about Known Amendments
+
+### fixAMMOverflowOffer
+
+[fixAMMOverflowOffer]: #fixammoverflowoffer
+
+| Amendment    | fixAMMOverflowOffer |
+|:-------------|:--------------|
+| Amendment ID |  TBD |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes the improper handling of large synthetic AMM offers in the payment engine. Due to the importance of this fix, the default vote in the source code has been set to YES.
 
 ### fixInnerObjTemplate
 
