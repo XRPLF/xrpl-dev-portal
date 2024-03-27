@@ -33,12 +33,14 @@
     - icon: ./static/img/icons/docs.svg
     # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
       label: Documentation || Dive into XRP Ledger technology and start integrating.
+      labelTranslationKey: topnav.docs.title || topnav.docs.description
       page: ./docs/index.page.tsx
     - group: Article Types
       items:
         - page: ./docs/concepts/index.md
         - page: ./docs/tutorials/index.md
           label: Tutorials
+          labelTranslationKey: sidebar.docs.tutorials
         - page: ./docs/references/index.md
         - page: ./docs/infrastructure/index.md
     - group: Use Cases
@@ -68,8 +70,10 @@
         - label: XRPL Brand Kit
           href: /XRPL_Brand_Kit.zip
     - group: Current Status
+      groupTranslationKey: topnav.resources.current-status
       items:
         - label: Ledger Explorer
+          labelTranslationKey: topnav.resources.explorer
           href: https://livenet.xrpl.org/
           external: true
         - label: Known Amendments
@@ -86,6 +90,7 @@
   items:
     - icon: ./static/img/icons/contribute.svg
       label: Contribute to the XRPL Community || Join the conversation
+      labelTranslationKey: topnav.community.title || topnav.community.description
       href: /community/
     - group: Get Involved
       items:
