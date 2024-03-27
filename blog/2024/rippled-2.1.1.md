@@ -28,14 +28,18 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.1.1-1.el7.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.1.1-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.1.1-1.el7.x86_64.rpm) | `65f1e69171907f912b458f256c623f2e59d83846424a00ba52a2d151228fe391` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.1.1-1_amd64.deb) | `dee7759d8562c8cc1f98fef4645c3e9c29030b0f1eb4adc4346bcb44e11b22de` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
 
 ```text
-TODO
+commit 2d1854f354ff8bb2b5671fd51252c5acd837c433
+Author: seelabs <scott.determan@yahoo.com>
+Date:   Tue Mar 26 18:13:57 2024 -0400
+
+    Set version to 2.1.1
 ```
 
 
