@@ -17,6 +17,7 @@ labels:
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
+| [fixAMMOverflowOffer][]           | v2.1.1     | [投票中: 2024-03-27](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_80d0e0") |
 | [fixInnerObjTemplate][]           | v2.1.0     | [投票中: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [fixNFTokenReserve][]             | v2.1.0     | [投票中: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [DID][]                           | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
@@ -110,6 +111,19 @@ labels:
 
 
 ## 既知のAmendmentsの詳細
+
+### fixAMMOverflowOffer
+
+[fixAMMOverflowOffer]: #fixammoverflowoffer
+
+| Amendment    | fixAMMOverflowOffer |
+|:-------------|:--------------|
+| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
+
+このAmendmentにより、決済エンジンにおけるAMMの大規模な合成オファーの不適切な処理が修正されます。このAmendmentは重大な修正であるため、ソースコードのデフォルトの投票はYESに設定されています。
 
 ### fixInnerObjTemplate
 
