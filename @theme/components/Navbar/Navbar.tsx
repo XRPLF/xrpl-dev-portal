@@ -8,10 +8,7 @@ import { Link } from "@portal/Link";
 import { ColorModeSwitcher } from "@theme/components/ColorModeSwitcher/ColorModeSwitcher";
 import { Search } from "@theme/components/Search/Search";
 
-import { useLocation } from "react-router-dom";
-
 // @ts-ignore
-// import navbar from '../../../top-nav.yaml';
 
 const alertBanner = {
   show: true,
@@ -52,31 +49,6 @@ export function Navbar(props) {
     }
   });
 
-  const { pathname } = useLocation();
-  const blogNavs = getBlogNavigationConfig();
-
-  const blogNavItems = [];
-  for (const blogNav of blogNavs) {
-    if (blogNav.type === "group") {
-      blogNavItems.push(
-        <NavDropdown
-          key={blogNav.index}
-          label={blogNav.label}
-          items={blogNav.items}
-          pathPrefix={pathPrefix}
-        />
-      );
-    } else {
-      blogNavItems.push(
-        <NavItem key={blogNav.index}>
-          <Link to={blogNav.link} className="nav-link">
-            {blogNav.label}
-          </Link>
-        </NavItem>
-      );
-    }
-  }
-
   React.useEffect(() => {
     // Turns out jQuery is necessary for firing events on Bootstrap v4
     // dropdowns. These events set classes so that the search bar and other
@@ -112,73 +84,36 @@ export function Navbar(props) {
     };
   }, []);
 
-  // Render a different top nav for the Blog site.
-  if (pathname.includes("blog")) {
-    return (
-      <>
-        <AlertBanner
-          show={alertBanner.show}
-          message={alertBanner.message}
-          button={alertBanner.button}
-          link={alertBanner.link}
-        />
-        <NavWrapper belowAlertBanner={true}>
-          <LogoBlock to={href} img={logo} alt={altText} />
-          <NavControls>
-            <MobileMenuIcon />
-          </NavControls>
-          <TopNavCollapsible>
-            <NavItems>
-              {blogNavItems}
-              <div id="topnav-search" className="nav-item search">
-                <Search className="topnav-search" />
-              </div>
-              <div id="topnav-button" className="nav-item">
-                <GetStartedButton />
-              </div>
-              <div id="topnav-language" className="nav-item">
-                <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
-              </div>
-              <div id="topnav-theme" className="nav-item">
-                <StyledColorModeSwitcher />
-              </div>
-            </NavItems>
-          </TopNavCollapsible>
-        </NavWrapper>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <AlertBanner
-          show={alertBanner.show}
-          message={alertBanner.message}
-          button={alertBanner.button}
-          link={alertBanner.link}
-        />
-        <NavWrapper belowAlertBanner={true}>
-          <LogoBlock to={href} img={logo} alt={altText} />
-          <NavControls>
-            <MobileMenuIcon />
-          </NavControls>
-          <TopNavCollapsible>
-            <NavItems>
-              {navItems}
-              <div id="topnav-search" className="nav-item search">
-                <Search className="topnav-search" />
-              </div>
-              <div id="topnav-language" className="nav-item">
-                <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
-              </div>
-              <div id="topnav-theme" className="nav-item">
-                <StyledColorModeSwitcher />
-              </div>
-            </NavItems>
-          </TopNavCollapsible>
-        </NavWrapper>
-      </>
-    );
-  }
+  return (
+    <>
+      <AlertBanner
+        show={alertBanner.show}
+        message={alertBanner.message}
+        button={alertBanner.button}
+        link={alertBanner.link}
+      />
+      <NavWrapper belowAlertBanner={true}>
+        <LogoBlock to={href} img={logo} alt={altText} />
+        <NavControls>
+          <MobileMenuIcon />
+        </NavControls>
+        <TopNavCollapsible>
+          <NavItems>
+            {navItems}
+            <div id="topnav-search" className="nav-item search">
+              <Search className="topnav-search" />
+            </div>
+            <div id="topnav-language" className="nav-item">
+              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
+            </div>
+            <div id="topnav-theme" className="nav-item">
+              <StyledColorModeSwitcher />
+            </div>
+          </NavItems>
+        </TopNavCollapsible>
+      </NavWrapper>
+    </>
+  );
 }
 
 const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
@@ -440,132 +375,4 @@ export class ThemeToggle extends React.Component {
   componentDidMount() {
     this.auto_update_theme();
   }
-}
-
-function getBlogNavigationConfig() {
-  const { translate } = useTranslate();
-
-  return [
-    {
-      index: "0",
-      label: translate("Learn"),
-      type: "group",
-      items: [
-        {
-          type: "group",
-          label: translate("XRP Ledger"),
-          items: [
-            {
-              type: "link",
-              fsPath: "about/index.page.tsx",
-              label: translate("Overview"),
-              link: "/about/",
-            },
-            {
-              type: "link",
-              fsPath: "about/uses.page.tsx",
-              label: translate("Uses"),
-              link: "/about/uses",
-            },
-            {
-              type: "link",
-              fsPath: "about/history.page.tsx",
-              label: translate("History"),
-              link: "/about/history",
-            },
-            {
-              type: "link",
-              fsPath: "about/impact.page.tsx",
-              label: translate("Impact"),
-              link: "/about/impact",
-            },
-            {
-              type: "link",
-              fsPath: "about/impact.page.tsx",
-              label: translate("Carbon Calculator"),
-              link: "/about/impact",
-            },
-          ],
-        },
-      ],
-      pathPrefix: "",
-    },
-    {
-      index: "1",
-      label: translate("Explore"),
-      type: "group",
-      items: [
-        {
-          type: "group",
-          label: translate("Explore the XRP Ledger"),
-          items: [
-            {
-              type: "link",
-              fsPath: "/docs/introduction/crypto-wallets.md",
-              label: translate("Wallets"),
-              link: "/docs/introduction/crypto-wallets",
-            },
-            {
-              type: "link",
-              fsPath: "about/xrp.page.tsx",
-              label: translate("Exchanges"),
-              link: "/about/xrp",
-            },
-            {
-              type: "link",
-              fsPath: "about/uses.page.tsx",
-              label: translate("Businesses"),
-              link: "/about/uses",
-            },
-            {
-              type: "link",
-              fsPath: "",
-              label: translate("Ledger Explorer"),
-              link: "https://livenet.xrpl.org/",
-            },
-          ],
-        },
-      ],
-      pathPrefix: "",
-    },
-    {
-      index: "2",
-      label: translate("Build"),
-      type: "group",
-      items: [
-        {
-          type: "group",
-          label: translate("Build with XRPL"),
-          items: [
-            {
-              type: "link",
-              fsPath: "/docs/index.page.tsx",
-              label: translate("Docs"),
-              link: "/docs/",
-            },
-            {
-              type: "link",
-              fsPath: "/resources/dev-tools/index.page.tsx",
-              label: translate("Dev Tools"),
-              link: "/resources/dev-tools/",
-            },
-            {
-              type: "link",
-              fsPath: "/blog/index.page.tsx",
-              label: translate("Dev Blog"),
-              link: "/blog/",
-            },
-          ],
-        },
-      ],
-      pathPrefix: "",
-    },
-    {
-      index: "3",
-      type: "link",
-      fsPath: "community/index.page.tsx",
-      label: translate("Contribute"),
-      link: "/community",
-    },
-  ];
 }
