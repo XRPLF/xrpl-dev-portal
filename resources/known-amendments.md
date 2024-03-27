@@ -118,7 +118,7 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 | Amendment    | fixAMMOverflowOffer |
 |:-------------|:--------------|
-| Amendment ID |  TBD |
+| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
 | Status       | Open for Voting |
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
