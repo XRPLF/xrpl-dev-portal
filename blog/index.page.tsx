@@ -19,7 +19,6 @@ const categories = {
   amendments: "Amendments",
   development: "Development",
   developer_reflections: "Developer Reflections",
-  gateway_bulletins: "Gateway Bulletins",
   features: "Features",
   security: "Security",
 };
@@ -213,6 +212,7 @@ export default function Index() {
                   <div>
                     <p id="card-date" className="mb-0">
                       {moment(translate(card.date)).format("MMM DD, YYYY")}
+                      { card.author ? ` by ${card.author}` : ""}
                     </p>
                     <h5 className="mb-2-sm h3-sm">
                       <a href={`/blog/${card.link}`}>

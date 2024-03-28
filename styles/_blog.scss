@@ -59,7 +59,7 @@
 
   .category_sidebar {
     position: sticky;
-    top: 10px;
+    top: $nav-height + $banner-height;
   }
 
   .category-checkbox {
