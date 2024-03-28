@@ -214,10 +214,10 @@
 
     html.light & {
       background-color: $yellow-200;
-      color: $yellow-800;
+      color: $yellow-900;
       .badge-pill {
         color: $yellow-200;
-        background-color: $yellow-800;
+        background-color: $yellow-900;
       }
       &:hover {
         background-color: $yellow-300;
@@ -339,6 +339,7 @@
   &.label-payment-channel,
   &.label-use-infrastructure,
   &.label-use-security,
+  &.blog-category-development,
   &.chip-indigo {
     @include chip-indigo;
   }
@@ -348,6 +349,8 @@
   &.label-ブロックチェーン,
   &.label-non-fungible-tokens-nfts,
   &.label-use-nfts,
+  &.blog-category-release_notes,
+  &.blog-category-features,
   &.chip-green {
     @include chip-green;
   }
@@ -357,6 +360,7 @@
   &.label-コアサーバ,
   &.label-use-interoperability,
   &.label-use-web_monetization,
+  &.blog-category-gateway_bulletins,
   &.chip-purple  {
     @include chip-purple;
   }
@@ -367,6 +371,7 @@
   &.label-セキュリティ,
   &.label-use-gaming,
   &.label-use-defi,
+  &.blog-category-amendments,
   &.chip-yellow {
     @include chip-yellow;
   }
@@ -379,6 +384,7 @@
   &.label-トランザクション送信,
   &.label-use-developer_tooling,
   &.label-use-payments,
+  &.blog-category-developer_reflections,
   &.chip-blue {
     @include chip-blue;
   }
@@ -390,6 +396,7 @@
   &.label-開発,
   &.label-use-wallet,
   &.label-use-sustainability,
+  &.blog-category-advisories,
   &.chip-orange {
     @include chip-orange;
   }
@@ -402,6 +409,7 @@
   &.label-データ保持,
   &.label-use-exchanges,
   &.label-use-custody,
+  &.blog-category-security,
   &.chip-magenta {
     @include chip-magenta;
   }
