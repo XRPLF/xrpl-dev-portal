@@ -1,3 +1,13 @@
+---
+date: 2018-04-09
+category: 2018
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The DepositAuth & fix1513 Amendments are Now Available
 
 The [DepositAuth](https://ripple.com/build/deposit-authorization/) & fix1513 Amendments became available on the XRP Ledger in ledger sequence number 37,753,345 [(2018-04-06T01:44:42Z)](https://xrpcharts.ripple.com/#/transactions/902C51270B918B40CD23A622E18D48B4ABB86F0FF4E84D72D9E1907BF3BD4B25).

@@ -1,3 +1,13 @@
+---
+date: 2016-06-27
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Multi-Signing Now Available #
 
 As [predicted previously](https://developers.ripple.com/blog/2016/multisign-reminder.html), multi-signing became available on the Ripple Consensus Ledger this afternoon in Pacific time ([2016-06-27T11:34:41Z](https://xrpcharts.ripple.com/#/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7), to be exact).

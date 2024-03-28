@@ -1,3 +1,13 @@
+---
+labels:
+    - Features
+category: 2019
+date: 2019-04-03
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Interledger Check-in
 
 Here at Ripple, we've been eagerly following and contributing to the progress of [Interledger](https://interledger.org), a neutral standard for connecting all money systems into an Internet-like network of networks. Since finalizing the core protocol suite in late 2017, contributors from a variety of companies and backgrounds have been working hard on growing the ecosystem with implementations and infrastructure. Progress has been rapid and wild, so we thought we'd help make sense of it by checking in to see where Interledger stands today.

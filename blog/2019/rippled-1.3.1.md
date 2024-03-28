@@ -1,3 +1,13 @@
+---
+labels:
+    - Release Notes
+category: 2019
+date: 2019-07-25
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing XRP Ledger (rippled) version 1.3.1
 
 Ripple has released **version 1.3.1 of `rippled`**, the reference implementation of the core XRP Ledger protocol. To learn more about how to build and run a `rippled` server, see [Manage the Rippled Server](https://xrpl.org/manage-the-rippled-server.html).

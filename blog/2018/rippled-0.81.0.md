@@ -1,3 +1,13 @@
+---
+date: 2018-01-08
+category: 2018
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Version 0.81.0
 
 Ripple has released `rippled` version 0.81.0, which introduces changes that improve the scalability of the XRP Ledger and transitions the recommended validator configuration to a new hosted site, as described in [Ripple's Decentralization Strategy Update](https://developers.ripple.com/blog/2017/decent-strategy-update.html) post.

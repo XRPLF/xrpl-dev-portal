@@ -1,3 +1,13 @@
+---
+date: 2016-12-20
+labels:
+    - Release Notes
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.40.0
 
 Ripple has released `rippled` version 0.40.0, which introduces several enhancements that improve the reliability and scalability of the Ripple Consensus Ledger (RCL). Ripple recommends that all server operators upgrade to version 0.40.0 by Tuesday, 2017-01-17, for service continuity.

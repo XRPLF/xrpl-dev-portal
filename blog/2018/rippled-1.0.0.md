@@ -1,3 +1,13 @@
+---
+date: 2018-05-31
+category: 2018
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Version 1.0.0
 
 Today, after almost 6 years of hard work, Ripple is very pleased to announce the release of `rippled` version 1.0.0.

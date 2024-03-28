@@ -7,9 +7,9 @@ theme:
 date: 2021-04-14
 labels:
     - Development
+author: Javier Romero
 ---
 # XRP Ledger Node Configurator
-_by Javier Romero of Ripple_
 
 The XRP Ledger is open to anyone: all you need is a computer. For many people, using one of the many available client applications, user interfaces or portals is sufficient. But if you want to go beyond [exploring the ledger](https://livenet.xrpl.org/) or sending a payment, you need to run a server to participate as a node in the peer-to-peer network that manages the Ledger.
 

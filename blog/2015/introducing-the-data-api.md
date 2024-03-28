@@ -1,3 +1,13 @@
+---
+date: 2015-08-05
+category: 2015
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing the Data API
 
 Ripple Labs data is moving under one roof, the Data API – a version two of the Historical Database API – and one infrastructure, Hadoop. We are building a much more robust and reliable way to import, parse, and house data that is not taxing on the Ripple network. Housing all of our endpoints together will allow us to scale much faster and with more confidence as the ledger and our data needs grow.

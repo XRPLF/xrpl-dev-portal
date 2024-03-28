@@ -1,3 +1,13 @@
+---
+date: 2018-06-20
+category: 2018
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # fix1571 is Now Available
 
 As previously announced, the fix1571 amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/920AA493E57D991414B614FB3C1D1E2F863211B48129D09BC8CB74C9813C38FC) on 2018-06-19. Furthermore, the fix1623 amendment is expected to become enabled on 2018-06-20, followed by the fix1543 amendment on 2018-06-21.

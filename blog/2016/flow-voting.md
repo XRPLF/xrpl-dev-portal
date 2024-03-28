@@ -1,3 +1,13 @@
+---
+date: 2016-10-07
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The Flow Amendment is Open for Voting
 
 Originally introduced in `rippled` [version 0.32.1](https://developers.ripple.com/blog/2016/rippled-0.32.1.html), but later [vetoed](https://developers.ripple.com/blog/2016/flowv2-vetoed.html) after a flaw was discovered in the code while testing, the new [Flow Amendment](https://ripple.com/build/amendments/#flow) is now open for voting. This amendment replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new payments engine adds no new features, but improves efficiency and robustness in payment handling.

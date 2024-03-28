@@ -1,3 +1,13 @@
+---
+category: 2014
+date: 2014-11-04
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # ripple-rest 1.3 release
 
 Last Friday we did a master release of ripple-rest version 1.3.0. We’ve done a few changes externally but the substantial additions in 1.3.0 have been stability and verbose error handling. If you’ve been following the commits on [github](https://github.com/ripple/ripple-rest), we’ve also vastly improved test coverage and introduced simplicity by removing the need for Postgres.

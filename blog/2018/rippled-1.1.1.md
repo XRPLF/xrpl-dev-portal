@@ -1,3 +1,13 @@
+---
+date: 2018-10-23
+category: 2018
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Version 1.1.1
 
 Ripple has released `rippled` version 1.1.1, which improves handling of validator list sites. These changes improve retrieval of Ripple's recommended UNL for servers in restrictive network environments, and prevent incorrect behavior in cases where a server is unable to fetch a validator list update before the previous list expires.
@@ -22,11 +32,13 @@ For other platforms, please compile v1.1.1 from source. See the [`rippled` sourc
 
 The first log entry should be the change setting the version:
 
-    commit 72e6005f562a8f0818bc94803d222ac9345e1e40
-    Author: seelabs <scott.determan@yahoo.com>
-    Date:   Fri Oct 19 13:12:40 2018 -0400
+```text
+commit 72e6005f562a8f0818bc94803d222ac9345e1e40
+Author: seelabs <scott.determan@yahoo.com>
+Date:   Fri Oct 19 13:12:40 2018 -0400
 
-        Set version to 1.1.1
+    Set version to 1.1.1
+```
 
 ## Network Update
 

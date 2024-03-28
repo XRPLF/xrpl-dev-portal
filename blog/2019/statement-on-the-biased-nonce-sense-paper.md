@@ -1,3 +1,13 @@
+---
+labels:
+    - Security
+category: 2019
+date: 2019-01-14
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Statement on the “Biased Nonce Sense” Paper
 
 In the cryptography industry, it is well known that using repeated or insufficiently random "nonces" (also called "k" values) in ECDSA digital signatures carries security risks. A new [research paper](https://eprint.iacr.org/2019/023.pdf) authored by Joachim Breitner and Nadia Heninger discloses a more serious attack than was previously known on signatures with imperfect nonces.

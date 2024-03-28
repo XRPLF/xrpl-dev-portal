@@ -1,3 +1,13 @@
+---
+date: 2017-09-21
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.70.2
 
 The `rippled` team has released `rippled` version 0.70.2, which corrects an emergent behavior that resulted in high transaction costs and fewer transactions in validated ledgers over the past few days. The problematic behavior involved large numbers of transactions being stuck in different `rippled` instances' open ledgers without being consistently relayed to validators. The large number of "stuck" transactions filled the transaction queue and caused a dramatic increase in the open ledger cost.

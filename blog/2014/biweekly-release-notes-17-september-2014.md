@@ -1,3 +1,13 @@
+---
+date: 2014-07-17
+category: 2014
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Biweekly release notes (17 September 2014)
 
 *Curated release notes will be posted on this blog and will include updates from every active project. Specifically we will post and link to any new release notes, open bounties, and upcoming features.*

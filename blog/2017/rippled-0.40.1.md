@@ -1,3 +1,13 @@
+---
+date: 2017-01-11
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.40.1
 
 The `rippled` team has released version 0.40.1, which increases SQLite database limits in all `rippled` full-history servers. Ripple recommends upgrading to 0.40.1 only if server operators are running `rippled` servers with full-history of the ledger. There are no new or updated features in the 0.40.1 release.

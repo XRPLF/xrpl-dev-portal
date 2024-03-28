@@ -1,6 +1,16 @@
+---
+labels:
+    - Amendments
+category: 2019
+date: 2019-04-02
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # fixTakerDryOfferRemoval is Now Available
 
-[As previously announced](https://developers.ripple.com/blog/2019/fix1578-expected.html), the fixTakerDryOfferRemoval amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF) on 2019-04-02.
+[As previously announced](./fix1578-expected.md), the fixTakerDryOfferRemoval amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/C42335E95F1BD2009A2C090EA57BD7FB026AD285B4B85BE15F669BA4F70D11AF) on 2019-04-02.
 
 ## Action Required
 

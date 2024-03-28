@@ -1,3 +1,13 @@
+---
+labels:
+    - Amendments
+category: 2019
+date: 2019-03-19
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The fix1578 and fixTakerDryOfferRemoval Amendments are Expected
 
 The fix1578 amendment to the XRP Ledger, introduced in [`rippled` v1.2.0](https://github.com/ripple/rippled/releases/tag/1.2.0), has [gained support from a majority of trusted validators](https://xrpcharts.ripple.com/#/transactions/147C93F2D60CB7A3FEC16957B6BD64A6D5C4411DD00D82B51189B5DE9A6FC438). Currently, it is expected to become enabled on 2019-03-23.

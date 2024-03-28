@@ -1,6 +1,15 @@
+---
+category: 2014
+date: 2014-08-01
+labels:
+    - Development
+theme:
+    markdown:
+        editPage:
+            hide: true
+author: Rome Reginelli
+---
 # Dev Portal Adds rippled APIs
-
-_By Rome Reginelli, technical writer_
 
 Today, the [Ripple Dev Portal](https://developers.ripple.com/) gets a big boost of content and usability. The new additions to our development portal include thorough and tested documentation of all the public API methods for our core server software, ‘rippled’, alongside a host of improvements in styling and formatting, as well as new introductory material to give you direction in navigating the sea of Ripple technology.
 

@@ -1,3 +1,13 @@
+---
+date: 2017-06-15
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Version 0.70.0
 
 Ripple has released `rippled` version 0.70.0, which introduces several enhancements that improve the reliability, scalability and security of the Ripple Consensus Ledger. Ripple recommends that all `rippled` server operators upgrade to version 0.70.0 by Thursday, 2017-06-29, for service continuity.

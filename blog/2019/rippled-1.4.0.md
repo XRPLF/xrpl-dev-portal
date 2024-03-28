@@ -1,3 +1,13 @@
+---
+labels:
+    - Release Notes
+category: 2019
+date: 2019-12-02
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing XRP Ledger version 1.4.0
 
 **XRP Ledger (`rippled` server) version 1.4.0** has been released. The XRP Ledger version 1.4.0 introduces several new features and overall improvements to the codebase, including the **DeletableAccounts** Amendment, which allows users to delete XRP Ledger accounts and recover some of their account base [reserve](https://xrpl.org/reserves.html) in the process.

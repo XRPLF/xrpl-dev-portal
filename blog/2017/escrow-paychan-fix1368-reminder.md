@@ -1,3 +1,13 @@
+---
+date: 2017-03-27
+category: 2017
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Escrow, PayChan, and fix1368 Will Be Available in 3 Days
 
 A majority of `rippled` validators voted to enable the [Escrow](https://ripple.com/build/amendments/#escrow), [PayChan](https://ripple.com/build/amendments/#paychan), and [fix1368](https://ripple.com/build/amendments/#fix1368) Amendments, which are scheduled to become enabled on the network on Thursday, 2017-03-30.

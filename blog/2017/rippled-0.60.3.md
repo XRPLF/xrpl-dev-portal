@@ -1,3 +1,13 @@
+---
+date: 2017-05-11
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.60.3
 
 The `rippled` team has released `rippled` version 0.60.3, which helps to increase the stability of the overlay network under increased load. Ripple recommends server operators upgrade to `rippled` version 0.60.3 immediately. There are no new features in the 0.60.3 release.

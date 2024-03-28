@@ -1,3 +1,13 @@
+---
+labels:
+    - Features
+category: 2019
+date: 2019-06-24
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # WebSocket Tool Update
 
 As part of [the recent site relaunch](/blog/2019/welcome-to-xrpl-org), the XRP Ledger Dev Portal has an updated version of the [WebSocket API Tool](/resources/dev-tools/websocket-api-tool). This tool lets you communicate directly with `rippled` servers, which power the XRP Ledger network. Among several of the improvements in this new version of the tool is that you can choose which servers to connect to, including the public servers Ripple runs, servers in the XRP Test Net, or your own server running locally on your own computer.

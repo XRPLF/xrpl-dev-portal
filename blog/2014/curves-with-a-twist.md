@@ -1,3 +1,13 @@
+---
+date: 2014-06-26
+category: 2014
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Curves with a Twist
 
 Ripple Labs is considering the addition of a new elliptic curve implementation to the Ripple protocol to complement the existing cryptographic system. The addition of a Schnorr-based cryptosystem will produce more optimal and secure design schemes and provides a platform for robust and sophisticated functionality while preserving existing network structure and efficiency.

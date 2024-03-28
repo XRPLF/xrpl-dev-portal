@@ -1,5 +1,14 @@
-TrustSetAuth Will Soon Be Available
-===================================
+---
+date: 2016-07-12
+category: 2016
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
+# TrustSetAuth Will Soon Be Available
 
 This notice is for all validator operators, and may be useful for gateways that utilize the Authorized Accounts feature.
 

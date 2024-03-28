@@ -1,3 +1,13 @@
+---
+date: 2017-10-23
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Version 0.80.0
 
 Ripple has released `rippled` version 0.80.0, which introduces several enhancements that improve the reliability, scalability and security of the XRP Ledger. Ripple recommends that all `rippled` server operators upgrade to version 0.80.0 by Tuesday, 2017-11-07, for service continuity.

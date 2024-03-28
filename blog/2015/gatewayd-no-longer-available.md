@@ -1,3 +1,13 @@
+---
+date: 2015-07-01
+labels:
+    - Advisories
+category: 2015
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Gatewayd No Longer Available
 
 In the interest of focusing our resources on other projects, starting today, Gatewayd will no longer be available on Github.

@@ -1,3 +1,13 @@
+---
+date: 2018-11-07
+category: 2018
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing History Sharding
 
 As `rippled` servers operate, they continually witness data appended onto an ever-growing blockchain. This data becomes the history that the network agrees upon and that constitutes everything about the XRP Ledger.

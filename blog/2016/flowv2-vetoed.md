@@ -1,12 +1,16 @@
+---
+date: 2016-08-18
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The FlowV2 Amendment Was Vetoed
 
-## Background
-
-[Originally](https://developers.ripple.com/blog/2016/rippled-0.32.1.html), the [FlowV2 amendment](https://ripple.com/build/amendments/#flowv2) was planned to replace `rippled`’s payment processing engine with a more robust and efficient implementation. It was previously expected to become active on Wednesday, 2016-08-24.
-
-## FlowV2 Was Vetoed
-
-The `rippled` team found a flaw in FlowV2 while testing. As a result, the Ripple network has [vetoed](https://ripple.com/build/amendments/#amendment-voting) the new payment engine amendment.
+The `rippled` team found a flaw in FlowV2 while testing. As a result, the Ripple network has [vetoed](https://ripple.com/build/amendments/#amendment-voting) the new payment engine amendment. [Originally](https://developers.ripple.com/blog/2016/rippled-0.32.1.html), the [FlowV2 amendment](https://ripple.com/build/amendments/#flowv2) was planned to replace `rippled`’s payment processing engine with a more robust and efficient implementation. It was previously expected to become active on Wednesday, 2016-08-24.
 
 A corrected version of the payment processing engine has been created and is now undergoing further testing. It is scheduled to be included in a future version of `rippled` as an amendment called [Flow](https://github.com/seelabs/rippled/blob/6466629f935821583eeddadbd06fabd9ea0875d0/src/ripple/app/main/Amendments.cpp#L50-L51).
 

@@ -1,6 +1,15 @@
+---
+date: 2014-08-19
+category: 2014
+labels:
+    - Development
+theme:
+    markdown:
+        editPage:
+            hide: true
+author: Howard Hinnant
+---
 # Use of C++14 in rippled
-
-_Posted by Howard Hinnant_
 
 C++ is a language under constant development, resulting in alternating minor and major releases. The last major release of C++ was C++11.  [A minor release](https://isocpp.org/blog/2014/08/we-have-cpp14) has just been approved by all participating national bodies (zero negative votes). This will be C++14. C++17 is the next planned major release and is currently under development by the committee.
 

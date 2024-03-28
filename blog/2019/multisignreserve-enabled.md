@@ -1,3 +1,13 @@
+---
+labels:
+    - Amendments
+category: 2019
+date: 2019-04-17
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # MultiSignReserve is Now Available
 
 [As previously announced](https://developers.ripple.com/blog/2019/multisignreserve-expected.html), the MultiSignReserve amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/C421E1D08EFD78E6B8D06B085F52A34A681D0B51AE62A018527E1B8F54C108FB) on 2019-04-17.

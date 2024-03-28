@@ -1,3 +1,13 @@
+---
+date: 2018-10-09
+category: 2018
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # DepositPreauth is Now Available
 
 The [DepositPreauth](https://xrpcharts.ripple.com/#/transactions/AD27403CB840AE67CADDB084BC54249D7BD1B403885819B39CCF723DC671F927) and [fix1515](https://xrpcharts.ripple.com/#/transactions/6DF60D9EC8AF3C39B173840F4D1C57F8A8AB51E7C6571483B4A5F1AA0A9AAEBF) amendments, [added in `rippled` v1.1.0](https://developers.ripple.com/blog/2018/rippled-1.1.0.html), became enabled on the XRP Ledger today, 2018-10-09.

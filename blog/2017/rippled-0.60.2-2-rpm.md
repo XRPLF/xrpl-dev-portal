@@ -1,3 +1,13 @@
+---
+date: 2017-05-03
+category: 2017
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled RPM version 0.60.2-2
 
 Ripple has released a new `rippled` 0.60.2-2 RPM that contains an update to the [validator-keys](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#validator-keys) key generation and management tool. The latest version of validator-keys allows validator operators to [sign data with their validator key](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md#signing).

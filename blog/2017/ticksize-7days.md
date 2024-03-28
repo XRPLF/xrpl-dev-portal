@@ -1,3 +1,13 @@
+---
+date: 2017-02-14
+category: 2017
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # TickSize Will Be Available in 7 Days
 
 This notice is for all validator operators, and may be useful for gateways that intend to use tick sizes.

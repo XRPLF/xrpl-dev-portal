@@ -1,3 +1,13 @@
+---
+date: 2017-02-22
+category: 2017
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # TickSize is Now Available
 
 As [predicted previously](https://developers.ripple.com/blog/2017/ticksize-3days.html), the TickSize amendment became available on the Ripple Consensus Ledger yesterday afternoon (PST) in ledger 27841793 ([2017-02-21T23:02:52Z](https://xrpcharts.ripple.com/#/transactions/A12430E470BE5C846759EAE3C442FF03374D5D73ECE5815CF4906894B769565E)).

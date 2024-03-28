@@ -1,3 +1,13 @@
+---
+date: 2016-10-17
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The Flow Amendment Will Soon Be Available
 
 A majority of `rippled` validators voted to enable the [Flow Amendment](https://ripple.com/build/amendments/#flow), which is scheduled to become active on the protocol on Thursday, 2016-10-20. This amendment replaces the payment processing engine with a more robust and efficient rewrite called the Flow engine. The new payments engine adds no new features, but improves efficiency and robustness in payment handling.

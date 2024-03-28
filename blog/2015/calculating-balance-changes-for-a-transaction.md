@@ -1,3 +1,14 @@
+---
+date: 2015-02-19
+category: 2015
+labels:
+    - Development
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Calculating Balance Changes for a Transaction
 
 ## Introduction

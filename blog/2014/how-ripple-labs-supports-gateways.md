@@ -1,8 +1,18 @@
+---
+category: 2014
+date: 2014-09-22
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # How Ripple Labs supports gateways
 
-<div class="alert alert-danger">This program is no longer active.</div>
-
 _To help accelerate the creation of strong, reliable, and compliant gateways, Ripple Labs will be providing XRP incentives and extended technical support for gateways that meet criteria considered to be critical for the success of a gateway._
+
+{% admonition type="danger" %}
+This program is no longer active.
+{% /admonition %}
 
 Ripple Labs wants every gateway to achieve a gold standard in business planning, technical reliability and stability, regulatory compliance, and liquidity. The Ripple protocol enables the federation and interoperability of many independent payment systems.
 

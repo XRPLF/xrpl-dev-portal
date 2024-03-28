@@ -1,3 +1,13 @@
+---
+labels:
+    - Amendments
+date: 2019-10-02
+category: 2019
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # fixMasterKeyAsRegularKey is Now Available
 
 [As previously announced](https://xrpl.org/blog/2019/fixmasterkeyasregularkey-expected.html), the fixMasterKeyAsRegularKey amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/61096F8B5AFDD8F5BAF7FC7221BA4D1849C4E21B1BA79733E44B12FC8DA6EA20) on 2019-10-02.
