@@ -1,3 +1,13 @@
+---
+date: 2015-08-18
+category: 2015
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Validator Registry
 
 At Ripple Labs, our goal is to expand the size and diversity of the Ripple consensus network by enabling people to easily run rippled validators and understand how those validators perform. We aim to create a network where validating participants are well known and respected by gathering and publicizing identity information of validators in addition to performance statistics.

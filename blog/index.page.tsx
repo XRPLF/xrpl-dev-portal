@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState, useRef, useEffect } from "react";
 import { useTranslate, usePageSharedData } from "@portal/hooks";
 import moment from "moment";
-import { BlogFooter } from "@theme/components/Footer/BlogFooter";
 
 export const frontmatter = {
   seo: {
@@ -20,7 +19,6 @@ const categories = {
   amendments: "Amendments",
   development: "Development",
   developer_reflections: "Developer Reflections",
-  gateway_bulletins: "Gateway Bulletins",
   features: "Features",
   security: "Security",
 };
@@ -95,12 +93,11 @@ export default function Index() {
                   {translate(` ${moment(heroPost.date).format("DD YYYY")}`)}
                 </h4>
                 <div className="pb-8">
-                  <p
-                    id={`${heroPost.category_id}-badge`}
-                    className="category-badge"
+                  <div
+                    className={`d-inline-block mb-2 label blog-category-${heroPost.category_id}`}
                   >
                     {translate(`${heroPost.category}`)}
-                  </p>
+                  </div>
                 </div>
                 <h4 className="mb-8 h2-sm font-weight-bold">
                   <a href={`/blog/${heroPost.link}`}>
@@ -206,16 +203,16 @@ export default function Index() {
                       id={`${card.category_id}`}
                       className="mb-4"
                     />
-                    <p
-                      id={`${card.category_id}-badge`}
-                      className="category-badge"
+                    <div
+                      className={`d-inline-block label blog-category-${card.category_id}`}
                     >
                       {translate(card.category)}
-                    </p>
+                    </div>
                   </div>
                   <div>
                     <p id="card-date" className="mb-0">
                       {moment(translate(card.date)).format("MMM DD, YYYY")}
+                      { card.author ? ` by ${card.author}` : ""}
                     </p>
                     <h5 className="mb-2-sm h3-sm">
                       <a href={`/blog/${card.link}`}>
@@ -240,7 +237,6 @@ export default function Index() {
           </div>
         </section>
       </div>
-      <BlogFooter />
     </div>
   );
 }

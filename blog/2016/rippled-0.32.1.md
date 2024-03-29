@@ -1,3 +1,13 @@
+---
+date: 2016-07-29
+labels:
+    - Release Notes
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.32.1
 
 Ripple is proud to announce the release of `rippled` version 0.32.1, which introduces several enhancements that improve the reliability and scalability of the Ripple Consensus Ledger. Ripple recommends that all server operators upgrade to version 0.32.1 by Wednesday, 2016-08-24, for the best performance.

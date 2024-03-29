@@ -1,3 +1,13 @@
+---
+date: 2017-03-29
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.60.1
 
 The `rippled` team has released `rippled` version 0.60.1, which corrects a technical flaw that resulted from using 32-bit space identifiers instead of the protocol-defined 16-bit values for Escrow and Payment Channel ledger entries. `rippled` version 0.60.1 also fixes a problem where the websocket timeout timer would not be cancelled when certain errors occurred during subscription streams. **Ripple strongly recommends upgrading to `rippled` version 0.60.1 immediately.**

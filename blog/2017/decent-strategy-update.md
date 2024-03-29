@@ -1,3 +1,13 @@
+---
+date: 2017-10-17
+category: 2017
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Decentralization Strategy Update
 
 As Ripple progresses towards further decentralizing the XRP Ledger, we want to make server operators and members of the XRP Ledger community aware of a few upcoming changes to help ensure the reliability and stability of the network as it transitions to a distributed architecture with fully decentralized validators.

@@ -2,7 +2,7 @@
 category: 2020
 date: 2020-04-10
 labels:
-    - Advisories
+    - rippled Release Notes
 theme:
     markdown:
         editPage:

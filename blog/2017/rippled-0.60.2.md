@@ -1,3 +1,13 @@
+---
+date: 2017-03-30
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.60.2
 
 The `rippled` team has released `rippled` version 0.60.2, which further strengthens handling of cases associated with a [previously patched exploit](https://developers.ripple.com/blog/2017/rippled-0.50.3.html), in which `NoRipple` flags were being bypassed by using offers. Ripple requires upgrading to `rippled` version 0.60.2 immediately. There are no new features in the 0.60.2 release. **Note**: This does not affect XRP transactions.

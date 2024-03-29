@@ -1,3 +1,13 @@
+---
+labels:
+    - Release Notes
+category: 2019
+date: 2019-02-13
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing XRP Ledger (rippled) version 1.2.0
 
 Ripple is pleased to announce the release of **XRP Ledger (`rippled`) version 1.2.0.**

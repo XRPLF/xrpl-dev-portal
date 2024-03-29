@@ -1,3 +1,11 @@
+---
+category: 2014
+date: 2014-12-18
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Turn your exchange into a Ripple Gateway
 
 Throughout 2014 we've talked to businesses all over the world, both big and small, who are interested in tapping into Ripple's increasing liquidity and settlement capabilities. For exchanges dealing in bitcoins and other assets, the value proposition is clear - deeper orderbooks and the ability for customers to hop between different assets instantly is a major boon to their service. The natural follow-up question is how to get started.

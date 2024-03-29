@@ -1,4 +1,14 @@
-# Multi-Signing Will Soon Be Available #
+---
+date: 2016-06-21
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
+# Multi-Signing Will Soon Be Available
 
 The multi-signing amendment is currently supported by the majority of voting validators on Ripple, and is scheduled to become active on the protocol on Monday, **2016-06-27**. For more information, please see the multi-signing documentation in the Ripple Developer Portal:
 

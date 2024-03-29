@@ -1,3 +1,13 @@
+---
+date: 2018-03-22
+category: 2018
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.90.1
 
 Ripple has released `rippled` version 0.90.1, which includes fixes for issues reported by external security researchers. These issues, when exploited, could cause a `rippled` instance to restart or, in some circumstances, stop executing.

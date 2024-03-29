@@ -7,9 +7,9 @@ theme:
     markdown:
         editPage:
             hide: true
+author: Mayur Bhandary
 ---
 # Running an XRP Ledger Validator
-_by Mayur Bhandary, Software Engineer at Ripple_
 
 Validators are the lifeblood of the XRP Ledger. This post seeks to explain the function and importance of validators on the XRP Ledger network.
 

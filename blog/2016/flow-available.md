@@ -1,3 +1,13 @@
+---
+date: 2016-10-24
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The Flow Amendment is Now Available
 
 The Flow Amendment became available on the Ripple Consensus Ledger in ledger 24,970,753 [(2016-10-21T19:47:22Z)](https://xrpcharts.ripple.com/#/transactions/C06CE3CABA3907389E4DD296C5F31C73B1548CC20BD7B83416C78CD7D4CD38FC).

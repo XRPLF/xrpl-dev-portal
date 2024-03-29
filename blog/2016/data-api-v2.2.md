@@ -1,3 +1,13 @@
+---
+date: 2016-06-15
+category: 2016
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Data API v2.2 Released
 
 The Data team is proud to announce the release of the [Ripple Data API v2.2](https://github.com/ripple/rippled-historical-database/releases/tag/v2.2.0)! This release includes lots of new features, including a total of 15 new methods, improvements in data quality, and documentation.

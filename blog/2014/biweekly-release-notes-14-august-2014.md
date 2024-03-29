@@ -1,3 +1,13 @@
+---
+date: 2014-08-14
+category: 2014
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Biweekly Release Notes (14 August 2014)
 
 _Release notes are part of a larger overhaul of our developer resources, which we are continually adding to. Curated release notes will be posted on this blog and will include updates from every active project. Specifically we will post and link to any new release notes, open bounties, and upcoming features. We hope you find these useful! Please let us know if you have feedback in the comments._

@@ -1,3 +1,13 @@
+---
+date: 2017-03-14
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.50.3
 
 The `rippled` team has released version 0.50.3, which patches a reported exploit that would allow a combination of trust lines and order books in a payment path to bypass the blocking effect of the `NoRipple` flag. Ripple recommends that all `rippled` server operators immediately upgrade to version 0.50.3, which contains a patch that fixes the exploit. There are no new or updated features in the 0.50.3 release.

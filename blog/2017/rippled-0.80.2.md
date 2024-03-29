@@ -1,3 +1,13 @@
+---
+date: 2017-12-15
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Version 0.80.2
 
 Ripple has released `rippled` version 0.80.2, which improves the transaction dispatch logic of `rippled`, allows for more transactions to be in flight at any one time and reduces the overall resource usage of `rippled`. The improved transaction dispatch logic ensures that a transaction is dispatched at most once every 10 seconds, even if it received from multiple peers during that interval.

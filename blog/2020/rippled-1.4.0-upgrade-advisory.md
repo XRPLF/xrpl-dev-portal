@@ -8,7 +8,6 @@ theme:
         editPage:
             hide: true
 ---
-
 # XRP Ledger version 1.4.0 Upgrade Advisory
 
 Version 1.4.0 of the XRP Ledger core server (`rippled`) contains a change that can cause upgrades to take much longer than usual.

@@ -1,3 +1,13 @@
+---
+labels:
+    - Amendments
+date: 2019-09-18
+category: 2019
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The fixMasterKeyAsRegularKey Amendment is Expected 2019-10-02
 
 The fixMasterKeyAsRegularKey amendment to the XRP Ledger, introduced in [`rippled` v1.3.1](https://github.com/ripple/rippled/releases/tag/1.3.1), has [gained support from a majority of trusted validators](https://xrpcharts.ripple.com/#/transactions/EE38E5927605FAB1BD8CFE44C9BE5118B4FD558F846E3DA717C23DA2ADB65991). Currently, it is expected to become enabled on 2019-10-02. As long as the fixMasterKeyAsRegularKey amendment continues to have the support of at least 80% of trusted validators continuously, it will become enabled on the scheduled date.

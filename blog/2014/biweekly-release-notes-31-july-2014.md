@@ -1,3 +1,13 @@
+---
+date: 2014-07-31
+category: 2014
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Biweekly release notes (31 July 2014)
 
 Starting today, Ripple Labs will release curated release notes on a bi-weekly basis to ensure better communication with the developer community about ongoing projects.

@@ -1,3 +1,13 @@
+---
+category: 2014
+date: 2014-10-29
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Release Notes (29 October 2014)
 
 *Curated release notes will be posted on this blog and will include updates from every active project. Specifically we will post and link to any new release notes, open bounties, and upcoming features.*

@@ -1,3 +1,13 @@
+---
+date: 2017-02-10
+category: 2017
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # TickSize Amendment Open for Voting
 
 Previously [introduced](https://developers.ripple.com/blog/2017/rippled-0.50.0.html) in `rippled` version 0.50.0, the [TickSize amendment](https://ripple.com/build/amendments/#ticksize) to the Ripple Consensus Ledger is now open for voting. The amendment changes the way offers are ranked in the RCL's order books, so that currency issuers can configure how many significant digits are taken into account when ranking offers by exchange rate.

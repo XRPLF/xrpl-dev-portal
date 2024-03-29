@@ -1,3 +1,13 @@
+---
+date: 2018-06-08
+category: 2018
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # fix1543, fix1571 & fix1623 Amendments Open for Voting
 
 Previously [introduced in `rippled` version 1.0.0](https://developers.ripple.com/blog/2018/rippled-1.0.0.html), the [fix1543](https://developers.ripple.com/known-amendments.html#fix1543), [fix1571](https://developers.ripple.com/known-amendments.html#fix1571) and [fix1623](https://developers.ripple.com/known-amendments.html#fix1623) amendments are now open for voting.

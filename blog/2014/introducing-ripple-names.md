@@ -1,3 +1,13 @@
+---
+date: 2014-04-28
+category: 2014
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Introducing Ripple Names
 
 Ripple names work in conjunction with Ripple addresses as a destination to receive funds, as an identifier for the sender, and as a handle to set trustlines.

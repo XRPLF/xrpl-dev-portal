@@ -7,9 +7,9 @@ theme:
 date: 2021-04-06
 labels:
     - xrpl-py Release Notes
+author: Team RippleX
 ---
 # Introducing xrpl-py for Pythonistas
-_by Team RippleX_
 
 Today, [RippleX](https://ripple.com/) and the [XRP Ledger Foundation (XRPLF)](https://xrplf.org/) are excited to announce the launch of [`xrpl-py`](https://github.com/XRPLF/xrpl-py), a pure Python implementation for interacting with the XRP Ledger. The `xrpl-py` library simplifies the hardest parts of XRP Ledger interaction—like serialization and transaction signing—by providing native Python methods and models for [XRP Ledger transactions](https://xrpl.org/transaction-formats.html) and [core server API](https://xrpl.org/api-conventions.html) ([rippled](https://github.com/ripple/rippled)) objects.
 

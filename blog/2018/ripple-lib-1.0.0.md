@@ -1,4 +1,14 @@
-# ﻿ripple-lib version 1.0.0
+---
+date: 2018-09-10
+category: 2018
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
+# ripple-lib version 1.0.0
 
 We are pleased to announce the release of **[ripple-lib version 1.0.0](https://github.com/ripple/ripple-lib/releases/tag/1.0.0)**!
 

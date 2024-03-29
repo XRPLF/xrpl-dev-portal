@@ -1,3 +1,13 @@
+---
+date: 2015-06-10
+labels:
+    - Advisories
+category: 2015
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Ripple Charts Update: Payment Volume and Issued Value
 
 Starting today, we are rolling out a small update to Ripple Charts that may seem minor but hopefully will have a big impact in the way we look at Ripple in the future.

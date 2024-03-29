@@ -1,3 +1,11 @@
+---
+category: 2015
+date: 2015-03-18
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Do You Have What It Takes to Be a Gateway?
 
 We're proud to announce the first release of [our new Gateway Guide](https://developers.ripple.com/become-an-xrp-ledger-gateway.html), a comprehensive manual to operating a gateway in the Ripple network. Whether you're trying to understand [how a gateway makes revenue](https://developers.ripple.com/become-an-xrp-ledger-gateway.html#fees-and-revenue-sources), or how to use the [authorized accounts](https://developers.ripple.com/become-an-xrp-ledger-gateway.html#authorized-trust-lines) feature, or even just [what a warm wallet is](https://developers.ripple.com/issuing-and-operational-addresses.html), the gateway guide has you covered.

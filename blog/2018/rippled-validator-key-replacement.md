@@ -1,5 +1,14 @@
+---
+date: 2018-01-17
+category: 2018
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled Validator Key Replacement
-
 
 On Wednesday, January 18, 2018, as described in the [0.81.0 release notes](https://github.com/ripple/rippled/blob/develop/RELEASENOTES.md), the current validator keys on all five Ripple-operated `rippled` validator servers will be replaced. **If you have been using the previous recommended default configuration** and do not reconfigure your `rippled` server to the new recommended default configuration before that time, then your `rippled` server will stop seeing validated ledgers.
 
@@ -19,28 +28,31 @@ Ripple recommends that you:
 
 * After starting your `rippled` server, confirm that it is configured to use the new defaults by executing:
 
-        /opt/ripple/bin/rippled validators
+    ```sh
+    /opt/ripple/bin/rippled validators
+    ```
 
 The result should include the following:
 
-        "local_static_keys" : [],
-        "publisher_lists" : [
-            {
-                "available" : true,
-                "expiration" : "2018-Jan-23 00:00:00",
-                "list" : [
-                    "nHB1FqfBpNg7UTpiqEUkKcAiWqC2PFuoGY7FPWtCcXAxSkhpqDkm",
-                    "nHUpwrafS45zmi6eT72XS5ijpkW5JwfL5mLdPhEibrqUvtRcMAjU",
-                    "nHUBGitjsiaiMJBWKYsJBHU2shmYt9m29hRqoh8AS5bSAjXoHmdd",
-                    "nHUXh1ELizQ5QLLqtNaVEbbbfMdq3wMkh14aJo5xi83xzzaatWWP",
-                    "nHUgoJvpqXZMZwxh8ZoFseFJEVF8ryup9r2mFYchX7ftMdNn3jLT"
-                    ],
-                "pubkey_publisher" : "ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734",
-                "seq" : 2,
-                "version" : 1
-            }
-        ],
-
+    ```json
+    "local_static_keys" : [],
+    "publisher_lists" : [
+        {
+            "available" : true,
+            "expiration" : "2018-Jan-23 00:00:00",
+            "list" : [
+                "nHB1FqfBpNg7UTpiqEUkKcAiWqC2PFuoGY7FPWtCcXAxSkhpqDkm",
+                "nHUpwrafS45zmi6eT72XS5ijpkW5JwfL5mLdPhEibrqUvtRcMAjU",
+                "nHUBGitjsiaiMJBWKYsJBHU2shmYt9m29hRqoh8AS5bSAjXoHmdd",
+                "nHUXh1ELizQ5QLLqtNaVEbbbfMdq3wMkh14aJo5xi83xzzaatWWP",
+                "nHUgoJvpqXZMZwxh8ZoFseFJEVF8ryup9r2mFYchX7ftMdNn3jLT"
+                ],
+            "pubkey_publisher" : "ED2677ABFFD1B33AC6FBC3062B71F1E8397C1505E1C42C64D11AD1B28FF73F4734",
+            "seq" : 2,
+            "version" : 1
+        }
+    ],
+    ```
 
 ## Impact of Not Upgrading
 
@@ -59,7 +71,7 @@ For other platforms, please [compile version 0.81.0 from source](https://github.
 The first log entry should be the change setting the version:
 
 
-```
+```text
 commit 4e8c8deeaac83d18eb62c95b7425d96e11847a41
 Author: Nikolaos D. Bougalis <nikb@bougalis.net>
 Date:   Wed Jan 3 14:43:42 2018 -0800

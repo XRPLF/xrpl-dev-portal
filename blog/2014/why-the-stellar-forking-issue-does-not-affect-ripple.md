@@ -1,3 +1,14 @@
+---
+date: 2014-12-07
+category: 2014
+labels:
+    - Advisories
+    - Security
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Why the Stellar Forking Issue Does Not Affect Ripple
 
 The Stellar Development Foundation (SDF) which maintains Stellar, a network built on a modified version of the Ripple code base, recently published a post claiming flaws in the Ripple consensus algorithm. We take any reports about possible security issues very seriously and after reviewing the information conclude that there is no threat to the continued operation of the Ripple network. We'd like to share our thoughts.

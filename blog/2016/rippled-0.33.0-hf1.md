@@ -1,3 +1,13 @@
+---
+date: 2016-10-16
+labels:
+    - Release Notes
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.33.0-hf1
 
 Ripple has released `rippled` version 0.33.0-hf1, which fixes a JSON parsing issue in all `rippled` servers. Ripple recommends upgrading to 0.33.0-hf1 only if server operators are experiencing a `jsonInvalid` error response to client requests. There are no new or updated features in the 0.33.0-hf1 release.

@@ -1,3 +1,13 @@
+---
+date: 2018-10-23
+category: 2018
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Updates Coming to Data API
 
 The [Data API](https://developers.ripple.com/data-api.html), which provides data to [XRP Charts](https://xrpcharts.ripple.com/) and third-party tools, is scheduled to update to **version 2.4.0** in approximately two weeks, on **2018-11-07**. This version improves the way the Data API imports and summarizes data on XRP Ledger validators.

@@ -1,3 +1,14 @@
+---
+date: 2017-01-30
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
+
 # rippled version 0.50.2
 
 The `rippled` team has released 0.50.2, which adjusts the default TLS cipher list and corrects a flaw that would not allow an SSL handshake to properly complete if the port was configured using the wss keyword. Ripple recommends upgrading to 0.50.2 only if server operators are running `rippled` servers that accept client connections over TLS. There are no new or updated features in the 0.50.2 release.

@@ -1,3 +1,13 @@
+---
+date: 2016-08-10
+labels:
+    - Amendments
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The FlowV2 Amendment is Open for Voting
 
 The [FlowV2 Amendment](https://ripple.com/build/amendments/#flowv2) is now open for voting. This amendment replaces the payment processing engine with a more robust and efficient rewrite called the FlowV2 engine. The new version of the payment processing engine is intended to follow the same rules as the old engine. However, the new engine occasionally produces different results due to floating point rounding.

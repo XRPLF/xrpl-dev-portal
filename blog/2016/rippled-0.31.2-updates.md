@@ -1,3 +1,13 @@
+---
+date: 2016-06-10
+labels:
+    - Release Notes
+category: 2016
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled 0.31.2 and Other Updates
 
 The `rippled` team is proud to announce a bundle of related news items:

@@ -1,6 +1,15 @@
+---
+category: 2014
+date: 2014-07-07
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+author: Daniel Radding
+---
 # Ripple Labs Bounty Program Moves To Bountysource
-
-_Posted by Daniel Radding_
 
 The Ripple Labs Bounty Program is moving to its [new home at Bountysource](https://www.bountysource.com/teams/ripple/bounties), a vibrant and robust bounty marketplace that will make paid contributions to the Ripple source code more effective and efficient.
 

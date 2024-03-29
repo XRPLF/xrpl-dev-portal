@@ -1,6 +1,14 @@
+---
+date: 2016-09-01
+category: 2016
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Ripple Test Network Ledger Will Be Reset
-
-## Summary
 
 On 2016-09-02, Ripple will be resetting the [test network](https://xrpl.org/xrp-test-net-faucet.html) ledger and balances. This means that all test net order books will be deleted and all account balances will be depleted.
 

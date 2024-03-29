@@ -3,11 +3,13 @@ category: 2022
 date: 2022-12-13
 labels:
     - xrpl-py Release Notes
-editPage:
-    hide: true
+theme:
+    markdown:
+        editPage:
+            hide: true
+author: Team RippleX
 ---
 # Introducing xrpl-py version 2.0.0-beta.0
-_by Team RippleX_
 
 Today, [RippleX](https://ripple.com/ripplex/) and the [XRP Ledger Foundation (XRPLF)](https://foundation.xrpl.org/) are proud to present **xrpl-py version 2.0.0-beta.0**. This beta version introduces three new ways to generate wallets, regular key support, and some breaking changes to the `Wallet` class.
 

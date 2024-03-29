@@ -1,10 +1,22 @@
+---
+date: 2017-07-10
+category: 2017
+labels:
+    - Release Notes
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # rippled version 0.70.1
-
-**UPDATE 7-12-2017:** This announcement now contains corrected SHA-256 values for the `RPM` and source `RPM`.
 
 The `rippled` team has released `rippled` version 0.70.1, which corrects a technical flaw in the newly [refactored](https://github.com/ripple/rippled/commit/00c60d408a887d8a986db81afbb5ead121e8310c#diff-dab2766c14d0ef8e760dc5e353fa7b9dR1389) consensus code that could, in rare cases, cause a node to get stuck in consensus due to stale votes from a peer. **Ripple requires upgrading to `rippled` version 0.70.1 immediately.**
 
 There are no new features in the 0.70.1 release.
+
+{% admonition type="danger" name="UPDATE 7-12-2017" %}
+This announcement now contains corrected SHA-256 values for the RPM and source RPM.
+{% /admonition %}
 
 ## Action Required
 

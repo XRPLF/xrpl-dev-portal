@@ -1,6 +1,15 @@
+---
+date: 2014-07-02
+category: 2014
+labels:
+    - Features
+theme:
+    markdown:
+        editPage:
+            hide: true
+author: Nikolaos D. Bougalis
+---
 # Introducing: Offer Autobridging
-
-_By Nikolaos D. Bougalis_
 
 Ripple’s powerful system allows payments between any source and destination currency to be made easily. Pathfinding considers multiple conversions between currencies to find the best rate for a payment.
 

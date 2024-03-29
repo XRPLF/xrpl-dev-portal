@@ -1,3 +1,13 @@
+---
+date: 2016-07-19
+category: 2016
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # TrustSetAuth is Now Available
 
 As [predicted previously](https://developers.ripple.com/blog/2016/trustsetauth-reminder.html), TrustSetAuth became available on the Ripple Consensus Ledger this afternoon (PDT) in ledger 22,721,281 ([2016-07-19T15:10](https://xrpcharts.ripple.com/#/transactions/0E589DE43C38AED63B64FF3DA87D349A038F1821212D370E403EB304C76D70DF)).

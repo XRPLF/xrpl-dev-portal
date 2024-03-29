@@ -1,3 +1,13 @@
+---
+category: 2017
+labels:
+    - Features
+date: 2017-02-28
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Ripple Consensus Ledger Can Sustain 1000 Transactions per Second
 
 2016 was an [important year for Ripple](https://ripple.com/insights/ripple-2016-year-review/). Banks were added to our [growing network](http://www.ibtimes.co.uk/seven-banks-kick-off-ripples-blockchain-network-including-santander-ubs-unicredit-90-more-1566894), we completed a successful [Series B investment round](https://ripple.com/insights/ripple-raises-55-million-in-series-b-funding/) and formed the [Global Payments Steering Group](https://ripple.com/insights/announcing-ripples-global-payments-steering-group/). Underlying all those milestones was the Ripple Consensus Ledger (RCL), which runs 24 hours a day, 7 days a week and recently celebrated its 4th birthday on February 17, 2017. In 2016 alone, RCL closed over 8 million ledgers, processing more than 225 million transactions and handling more than $1 Billion dollars in payment volume throughout the year.

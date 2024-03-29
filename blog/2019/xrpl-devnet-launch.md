@@ -1,3 +1,13 @@
+---
+labels:
+    - Features
+date: 2019-10-02
+category: 2019
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Discover Upcoming XRP Ledger Amendments and Features with Devnet!
 
 A new XRP Ledger Devnet is now available for developers to access upcoming features of XRPL on beta build versions of `rippled`, the C++ reference implementation of the XRP Ledger.

@@ -8,7 +8,6 @@ theme:
         editPage:
             hide: true
 ---
-
 # The RequireFullyCanonicalSig Amendment is Expected 2020-07-03
 
 The RequireFullyCanonicalSig amendment to the XRP Ledger, introduced in [`rippled` v1.5.0](https://github.com/ripple/rippled/releases/tag/1.5.0), has [gained support from a majority of trusted validators](https://xrpcharts.ripple.com/#/transactions/4DF3E28D6920D917CE0A0A9E341BC5F792B3584E2DD5E679BD7679FE0875AEE6). Currently, it is expected to become enabled on 2020-07-03 (UTC). As long as the RequireFullyCanonicalSig amendment continues to have the support of at least 80% of trusted validators continuously, it will become enabled on the scheduled date.

@@ -1,3 +1,13 @@
+---
+labels:
+    - Amendments
+category: 2019
+date: 2019-03-23
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # fix1578 is Now Available
 
 [As previously announced](https://developers.ripple.com/blog/2019/fix1578-expected.html), the fix1578 amendment [became enabled on the XRP Ledger](https://xrpcharts.ripple.com/#/transactions/7A80C87F59BCE6973CBDCA91E4DBDB0FC5461D3599A8BC8EAD02FA590A50005D) on 2019-03-23.

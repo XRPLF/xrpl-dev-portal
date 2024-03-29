@@ -1,3 +1,13 @@
+---
+date: 2017-01-18
+category: 2017
+labels:
+    - Advisories
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Load Testing Data API
 
 The Ripple Data team will be running load balancing tests on Ripple Data API starting Wednesday, 2017-01-18, at 2pm PST, which will last approximately 15 minutes. The Ripple Data API is an open and free resource that provides access to information about changes in the Ripple Consensus Ledger, including transaction history and processed analytical data.

@@ -7,10 +7,9 @@ theme:
 date: 2021-03-16
 labels:
     - Development
+author: Gregory Tsipenyuk and Nikolaos D. Bougalis
 ---
 # Message Routing Optimizations, Pt. 1: Proposal & Validation Relaying
-
-_by Gregory Tsipenyuk and Nikolaos D. Bougalis of Ripple_
 
 Like all peer-to-peer networks, the XRP Ledger needs a strategy to ensure that messages are propagated across the network. Of course, some types of messages are more important or more time-sensitive than others, so the XRP Ledger uses different strategies for relaying different types of messages.
 

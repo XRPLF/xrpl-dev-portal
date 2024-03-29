@@ -1,6 +1,14 @@
+---
+date: 2017-03-16
+category: 2017
+labels:
+    - Security
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Gateway Bulletin: Setting Trust Line Quality with SendMax
-
-## Summary
 
 When you build an automated system to send payments into the Ripple Consensus Ledger (RCL) for your customers, you must make sure that it constructs payments carefully. Malicious actors are constantly trying to find flaws in a system implementation that pays them more money than it should.
 

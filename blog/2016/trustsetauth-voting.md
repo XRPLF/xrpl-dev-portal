@@ -1,3 +1,13 @@
+---
+date: 2016-07-05
+category: 2016
+labels:
+    - Amendments
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # The TrustSetAuth Amendment Is Open For Voting #
 
 This notice is for all validator operators, and may be relevant to gateways that utilize the Authorized Account feature.

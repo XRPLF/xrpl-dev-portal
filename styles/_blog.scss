@@ -40,64 +40,8 @@
     color: $gray-400;
   }
 
-  .category-badge {
-    max-width: 180px;
-    border-radius: 30px;
-    border: solid 2px;
-    padding: 1px;
-    text-align: center;
-    word-wrap: break-word;
-    font-size: 13px;
-    font-weight: bold;
-  }
-
   .post-date {
     text-decoration: overline solid #32E685 10%;
-  }
-
-  #general-badge {
-    background-color: #343437;
-    color: #FFFFFF;
-  }
-
-  #release_notes-badge {
-    background-color: #145C35;
-    color: #32E685;
-  }
-
-  #advisories-badge {
-    background-color: #4C1A00;
-    color: #FF6719;
-  }
-
-  #amendments-badge {
-    background-color: #4B4C00;
-    color: #FAFF19;
-  }
-
-  #development-badge {
-    background-color: #20004C;
-    color: #7919FF;
-  }
-
-  #developer_reflections-badge {
-    background-color: #002E4C;
-    color: #19A3FF;
-  }
-
-  #gateway_bulletins-badge {
-    background-color: #40004C;
-    color: #D919FF;
-  }
-
-  #features-badge {
-    background-color: #145C35;
-    color: #32E685;
-  }
-
-  #security-badge {
-    background-color: #4C0026;
-    color: #FF198B;
   }
 
   #category-list {
@@ -115,7 +59,7 @@
 
   .category_sidebar {
     position: sticky;
-    top: 10px;
+    top: $nav-height + $banner-height;
   }
 
   .category-checkbox {

@@ -1,3 +1,13 @@
+---
+labels:
+    - Features
+category: 2019
+date: 2019-07-03
+theme:
+    markdown:
+        editPage:
+            hide: true
+---
 # Discover the XRP Ledger with Explorer!
 
 Today, a new XRP Ledger explorer is available for both test net and production at [explorer.xrpl.org](https://explorer.xrpl.org/).

@@ -1,6 +1,11 @@
+---
+labels:
+    - Features
+category: 2019
+date: 2019-07-12
+author: Rome Reginelli
+---
 # Labeling the Internet of Value
-
-_By Rome Reginelli, Documentation Engineer at [Ripple](https://ripple.com/)_
 
 Blockchain technology raises new questions about the roles of privacy and anonymity in the function of money. While all transactions are a matter of public record, the parties involved in the transactions are represented by pseudonyms, and information about who those parties are may be hard to come by. Even more obscure is information about those whose computing power and maintenance efforts underpin the blockchain. While there are lots of good reasons to maintain privacy around some entities and events, there are also situations that call for publicly establishing one's identity and reputation. The [`xrp-ledger.toml` specification](/docs/references/xrp-ledger-toml/) provides a flexible standard for voluntarily publishing information about who you are and what you're doing with the XRP Ledger.
 
