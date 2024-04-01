@@ -301,6 +301,7 @@
               expanded: false
               items:
                 - page: docs/references/protocol/ledger-data/ledger-header.md
+                - page: docs/references/protocol/ledger-data/common-fields.md
                 - page: docs/references/protocol/ledger-data/ledger-entry-types/index.md
                   expanded: false
                   items:
