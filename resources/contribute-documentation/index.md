@@ -177,10 +177,6 @@ theme:
 ---
 ```
 
-### 
-
-
-
 ## Markdoc Components
 
 The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags defined in `/@theme/markdoc/`.
