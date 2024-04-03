@@ -5,6 +5,7 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/xrp-transfers-python.md
         - page: 2024/rippled-2.1.1.md
         - page: 2024/amm-status-update.md
         - page: 2024/get-ready-for-amm.md
