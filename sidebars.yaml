@@ -221,7 +221,7 @@
             - page: docs/tutorials/php/build-apps/index.md
               expanded: false
               items:
-                - page: docs/tutorials/php/build-apps/get-started.md 
+                - page: docs/tutorials/php/build-apps/get-started.md
         - page: docs/tutorials/http-websocket-apis/index.md
           expanded: false
           items:
@@ -284,6 +284,7 @@
                 - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-xrp-xrp-bridge.md
                 - page: docs/tutorials/how-tos/use-xrpl-sidechains/set-up-iou-iou-bridge.md
                 - page: docs/tutorials/how-tos/use-xrpl-sidechains/submit-cross-chain-transaction.md
+            - page: docs/tutorials/how-tos/testing-devnet-features.md
     - page: docs/references/index.md
       labelTranslationKey: sidebar.docs.references
       expanded: false
