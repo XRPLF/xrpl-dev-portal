@@ -1,5 +1,5 @@
 ---
-html: testing-prerelease-devnet-features.html
+html: testing-devnet-features.html
 parent: how-tos.html
 seo:
     description: Guide on using pre-release transaction types on the XRP Ledger for developers.
