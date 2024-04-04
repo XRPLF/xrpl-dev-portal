@@ -102,7 +102,7 @@ Copy the generated `definitions.json` to your XRPL library installation.
 
 ```bash
 // Locate your ripple-binary-codec installation in node_modules and replace the definitions.json file.
-// <your project directory>/node_modules/ripple-binary-codec/dist/definitions.json
+// <_your project directory_>/node_modules/ripple-binary-codec/dist/definitions.json
 ```
 
 {% /tab %}
