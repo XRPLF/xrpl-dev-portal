@@ -162,6 +162,21 @@ seo:
 
 Some pages in the site have leftover metadata from the previous (Dactyl) toolchain, such as `html`, `parent`, or `targets` fields. These fields have no effect and can be omitted from new pages.
 
+### Next and Previous Buttons
+
+The documentation and blog pages have "Next" and "Previous" buttons at the bottom of the page. 
+
+If these buttons don't make sense as a proper reading order in context you can disable them by updating the frontmatter of the page. 
+
+```yaml
+---
+theme:
+  navigation:
+    nextButton:
+      hide: true
+---
+```
+
 ## Markdoc Components
 
 The files are processed with [Markdoc](https://markdoc.dev/), which means they can contain special tags in `{% ... %}` syntax. In addition to Redocly's built-in tags, this repository has some custom tags defined in `/@theme/markdoc/`.
