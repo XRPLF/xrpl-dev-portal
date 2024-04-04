@@ -71,7 +71,7 @@ Si una dirección de reserva se ve comprometida, las consecuencias son similares
 ## Ver también
 
 - **Conceptos:**
-    - [Cuentas](accounts.md)
+    - [Cuentas](index.md)
     - [Claves criptográficas](cryptographic-keys.md)
 - **Tutoriales:**
     - [Asignar par de claves regulares](../../tutorials/how-tos/manage-account-settings/assign-a-regular-key-pair.md)
