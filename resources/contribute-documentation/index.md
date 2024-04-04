@@ -178,14 +178,14 @@ For example, `![XRPL Foundation Logo](/docs/img/xrplf-logo.png)` renders as foll
 
 ### Videos
 
-Videos are stored on the [XRPL Ledger Foundation YouTube channel](https://www.youtube.com/channel/UC6zTJdNCBI-TKMt5ubNc_Gg). Contact [Dennis Dawson](mailto:ddawson@ripple.com) for assistance with uploading your video. Once uploaded, you can copy the embed instructions and paste them into your document.
+Videos are stored on YouTube. Once uploaded, you can copy the embed instructions and paste them into your document.
 
 To embed a YouTube video in your topic:
 
 1. Locate your video on YouTube.
 2. Under the video, click **Share**.
 3. Click **Embed**.
-4. Click **Copy** in the lower right corner.
+4. Click **Copy** in the lower right corner of the pop-up.
 5. Paste the `<iframe>` element in your topic.
 
 For example, here is the code to embed the _Send Checks_ video.
@@ -235,7 +235,7 @@ The cells do not have to be the same width. The renderer aligns the columns and 
 | Genre | Science Fiction |
 | Hyperbole | The greatest story ever told! No one has ever written anything more important than this Victorian era classic. Oh, how swells the heart to ponder the heady philosophies introduced therein! |
 
-Use colons in the heading lines to align columns left (:--), middle, or right.
+Use colons in the heading lines to align columns left (:--), middle (:-:), or right (--:).
 
 ```
 | Model | Color | Price |
