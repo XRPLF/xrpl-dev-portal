@@ -41,7 +41,7 @@ El siguiente diagrama muestra la relación entre las claves y las direcciones:
 
 [{% inline-svg file="/docs/img/address-encoding.svg" /%}](/docs/img/address-encoding.svg "Clave pública maestra + Prefijo Tipo →  ID de cuenta + Checksum → Dirección")
 
-La fórmula para calcular direcciones XRP Ledger desde una clave pública es la siguiente. Para ver el código de ejemplo completo, consulta [`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js). Para el proceso de derivar la clave pública desde una passphrase a un valor semilla, consulta [Derivación de clave](cryptographic-keys.html#key-derivation).
+La fórmula para calcular direcciones XRP Ledger desde una clave pública es la siguiente. Para ver el código de ejemplo completo, consulta [`encode_address.js`](https://github.com/XRPLF/xrpl-dev-portal/blob/master/content/_code-samples/address_encoding/js/encode_address.js). Para el proceso de derivar la clave pública desde una passphrase a un valor semilla, consulta [Derivación de clave](cryptographic-keys.md#key-derivation).
 
 1. Importa los algoritmos necesarios: SHA-256, RIPEMD160, y base58. Configura el diccionario para base58.
 
