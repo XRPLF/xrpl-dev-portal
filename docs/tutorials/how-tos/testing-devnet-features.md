@@ -8,7 +8,7 @@ labels:
   - Customization
   - Devnet
 ---
-# Test a Pre-Release Transaction Type on the XRP Ledger
+# Test a Pre-Release Transaction Types
 
 _(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../references/protocol/binary-format.md))_
 
