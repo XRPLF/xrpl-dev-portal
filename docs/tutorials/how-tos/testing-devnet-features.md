@@ -10,7 +10,7 @@ labels:
 ---
 # Test Pre-Release Transaction Types
 
-_(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../references/protocol/binary-format.md))_
+_(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../references/protocol/binary-format.md))._
 
 Pre-release transactions are [amendments](../../concepts/networks-and-servers/amendments.md) that represent new features or other changes to transaction processing. Features are typically released to the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md) for early testing.
 
