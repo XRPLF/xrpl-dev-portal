@@ -22,6 +22,7 @@ This guide walks through using either JavaScript with `xrpl.js` or Python with `
 
 - Basic understanding of XRPL transactions.
 - Development environment setup for JavaScript or Python.
+- Docker installed and configured.
 
 ## Steps
 
