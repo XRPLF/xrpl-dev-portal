@@ -32,7 +32,7 @@ Para ser eliminada, una cuenta debe cumplir los siguientes requisitos:
 
 A diferencia de Bitcoin y muchas otras criptomonedas, cada nueva versión de la cadena del ledger público de XRP Ledger contiene el estado completo del ledger, lo cual incrementa en tamaño con cada cuenta nueva. Por esa razón, no deberías crear nuevas cuentas XRP Ledger si no tienes necesidad. Puedes recuperar parte de los 10 XRP de la cuenta [reserva](reserves.md) eliminado la cuenta, pero destruirás por lo menos 2 XRP haciéndolo.
 
-Instituciones que reciben y envían valor en nombre de muchos usuarios pueden utilizar [**Source Tags** y **Destination Tags**](source-and-destination-tags.md) para distinguir pagos desde y para sus clientes usando una (o un puñado) de cuentas en el XRP Ledger.
+Instituciones que reciben y envían valor en nombre de muchos usuarios pueden utilizar [**Source Tags** y **Destination Tags**](../transactions/source-and-destination-tags.md) para distinguir pagos desde y para sus clientes usando una (o un puñado) de cuentas en el XRP Ledger.
 
 <!--{# common link defs #}-->
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
