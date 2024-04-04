@@ -14,7 +14,7 @@ _(Requires cloning and modifying XRPL core repositories and understanding of XRP
 
 Pre-release transactions are [amendments](../../concepts/networks-and-servers/amendments.md) that represent new features or other changes to transaction processing. Features are typically released to the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md) for early testing.
 
-This guide walks through using either JavaScript with `xrpl.js` or Python with `xrpl-py`. This approach is typically only necessary for early pre-release amendments on the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md).
+This guide walks through the steps to test transaction types in development using either JavaScript with `xrpl.js` or Python with `xrpl-py`. This approach is typically only necessary for pre-release amendments that are available on the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md) for early testing.
 
 **Note**: The code samples below illustrate how to prepare your development environment and modify the XRPL to support custom transaction types, using the respective [client library](../../references/client-libraries.md).
 
