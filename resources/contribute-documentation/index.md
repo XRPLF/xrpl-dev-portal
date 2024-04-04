@@ -286,7 +286,7 @@ Use these basic tables whenever possible. If you genuinely require special forma
 
 ### Links
 
-Links use the syntax [<link text>](<url>).
+Links use the syntax `[<link text>](<url>)`.
 
 For example, the sentence:
 
@@ -338,7 +338,7 @@ renders as
 
 If you have text that you use frequently, or  text that requires periodic update in a number of places in the documentation, you can create a &#95;snippet file for reuse. 
 
-Store your file in the `_snippet` directory. To insert the partial file, use the syntax
+Store your file in the `_snippet` directory. To insert the partial file, use the syntax `{% partial file="<file url>" /%}`.
 
 For example, here is the snippet `/docs/_snippets/secret-key-warning.md`.
 
