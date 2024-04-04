@@ -110,7 +110,7 @@ Copy the generated `definitions.json` to your XRPL library installation.
 {% tab label="Python" %}
 
 ```bash
-// Use `pip show xrpl-py` to find the installation location and navigate to `<output of pip show>/xrpl/core/binarycodec/definitions/definitions.json` to replace the `definitions.json` file.
+// Use `pip show xrpl-py` to find the installation location and navigate to `<_output of pip show_>/xrpl/core/binarycodec/definitions/definitions.json` to replace the `definitions.json` file.
 ```
 
 {% /tab %}
