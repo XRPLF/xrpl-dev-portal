@@ -49,41 +49,49 @@ pip install xrpl-py
 
 {% /tabs %}
 
-### 2. Clone XRPL Core Repositories
+### 2. Generate Definitions File
 
-Clone the `rippled` source code and the `xrpl-codec-gen` tool from GitHub:
-```bash
-git clone https://github.com/XRPLF/rippled
-git clone https://github.com/RichardAH/xrpl-codec-gen
-```
+Utilize the [server_definitions](../../references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md) command to retrieve the definitions.json content.
 
-### 3. Generate Definitions File
-
-Ensure you're on the `develop` branch of `rippled` to get the latest changes. The `develop` branch is kept in sync with the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md).
-
-Use `xrpl-codec-gen` to create a `definitions.json` file based on the XRPL source code. There is no difference between using Python or JavaScript to generate the `definitions.json`.
+**Note:** Any [parallel network](../../concepts/networks-and-servers/parallel-networks.md) may be used instead of Devnet.
 
 {% tabs %}
 
-{% tab label="JavaScript" %}
+{% tab label="Linux" %}
 
 ```bash
-node gen.js /path/to/rippled/src/ripple/ > definitions.json
+curl -X POST https://s.devnet.rippletest.net:51234/ -H 'Content-Type: application/json' -d '{"method": "server_definitions"}' > definitions.json
 ```
 
 {% /tab %}
 
-{% tab label="Python" %}
+{% tab label="Mac" %}
 
 ```bash
-python gen.py /path/to/rippled/src/ripple/ > definitions.json
+curl -X POST https://s.devnet.rippletest.net:51234/ -H 'Content-Type: application/json' -d '{"method": "server_definitions"}' > definitions.json
+```
+
+{% /tab %}
+
+{% tab label="Windows (Cmd)" %}
+
+```cmd
+curl -X POST https://s.devnet.rippletest.net:51234/ -H "Content-Type: application/json" -d "{\"method\": \"server_definitions\"}" > definitions.json
+```
+
+{% /tab %}
+
+{% tab label="Windows (PowerShell)" %}
+
+```cmd
+curl -Method Post -Uri https://s.devnet.rippletest.net:51234/ -Headers @{"Content-Type"="application/json"} -Body '{"method": "server_definitions"}' | Out-File -FilePath definitions.json
 ```
 
 {% /tab %}
 
 {% /tabs %}
 
-### 4. Update XRPL Library Definitions
+### 3. Update XRPL Library Definitions
 
 Copy the generated `definitions.json` to your XRPL library installation.
 
@@ -108,7 +116,7 @@ Copy the generated `definitions.json` to your XRPL library installation.
 
 {% /tabs %}
 
-### 5. Create and Submit Custom Transaction
+### 4. Create and Submit Custom Transaction
 
 {% tabs %}
 

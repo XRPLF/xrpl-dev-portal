@@ -27,6 +27,14 @@ An example of the request format:
 ```
 {% /tab %}
 
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "server_definitions"
+}
+```
+{% /tab %}
+
 {% /tabs %}
 
 [Try it! >](/resources/dev-tools/websocket-api-tool#server_definitions)
