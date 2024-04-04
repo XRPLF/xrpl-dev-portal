@@ -10,7 +10,7 @@ labels:
 ---
 # Test a Pre-Release Transaction Type on the XRP Ledger
 
-_(Requires cloning and modifying XRPL core repositories and understanding of XRPL transaction serialization)_
+_(Requires cloning and modifying XRPL core repositories and understanding of XRPL [transaction serialization](../../references/protocol/binary-format.md))_
 
 Pre-release transactions are [amendments](../../concepts/networks-and-servers/amendments.md) that represent new features or other changes to transaction processing. Features are typically released to the [XRPL Devnet](../../concepts/networks-and-servers/parallel-networks.md) for early testing.
 
@@ -27,17 +27,27 @@ This guide walks through using either JavaScript with `xrpl.js` or Python with `
 
 ### 1. Set Up Your Development Environment
 
-#### JavaScript:
-Ensure Node.js and npm are installed. Use npm to install `xrpl.js` in your project:
+Ensure the proper dependencies are installed for Node.js or Python.
+
+{% tabs %}
+
+{% tab label="JavaScript" %}
+
 ```javascript
 npm install xrpl
 ```
 
-#### Python:
-Ensure Python and pip are installed. Use pip to install `xrpl-py`:
+{% /tab %}
+
+{% tab label="Python" %}
+
 ```bash
 pip install xrpl-py
 ```
+
+{% /tab %}
+
+{% /tabs %}
 
 ### 2. Clone XRPL Core Repositories
 
@@ -53,34 +63,57 @@ Ensure you're on the `develop` branch of `rippled` to get the latest changes. Th
 
 Use `xrpl-codec-gen` to create a `definitions.json` file based on the XRPL source code. There is no difference between using Python or JavaScript to generate the `definitions.json`.
 
-#### JavaScript:
+{% tabs %}
+
+{% tab label="JavaScript" %}
+
 ```bash
 node gen.js /path/to/rippled/src/ripple/ > definitions.json
 ```
 
-#### Python:
+{% /tab %}
+
+{% tab label="Python" %}
+
 ```bash
 python gen.py /path/to/rippled/src/ripple/ > definitions.json
 ```
+
+{% /tab %}
+
+{% /tabs %}
 
 ### 4. Update XRPL Library Definitions
 
 Copy the generated `definitions.json` to your XRPL library installation.
 
-#### JavaScript:
+{% tabs %}
+
+{% tab label="JavaScript" %}
+
 ```bash
 // Locate your ripple-binary-codec installation in node_modules and replace the definitions.json file.
 // <your project directory>/node_modules/ripple-binary-codec/dist/definitions.json
 ```
 
-#### Python:
+{% /tab %}
+
+{% tab label="Python" %}
+
 ```bash
 // Use `pip show xrpl-py` to find the installation location and navigate to `<output of pip show>/xrpl/core/binarycodec/definitions/definitions.json` to replace the `definitions.json` file.
 ```
 
+{% /tab %}
+
+{% /tabs %}
+
 ### 5. Create and Submit Custom Transaction
 
-#### JavaScript:
+{% tabs %}
+
+{% tab label="JavaScript" %}
+
 ```javascript
 const { Client, Wallet } = require('xrpl');
 const { encode } = require('ripple-binary-codec');
@@ -111,7 +144,10 @@ main();
 // Or call await main(); if your nodejs versions supports top level await
 ```
 
-#### Python:
+{% /tab %}
+
+{% tab label="Python" %}
+
 ```python
 from xrpl.clients import JsonRpcClient
 from xrpl.models.transactions import Transaction
@@ -142,6 +178,10 @@ send_reliable_submission(custom_tx, client, wallet)
 # Or disable type checking for the line
 # send_reliable_submission(custom_tx, client, wallet) # type: ignore
 ```
+
+{% /tab %}
+
+{% /tabs %}
 
 ### Final Considerations
 
