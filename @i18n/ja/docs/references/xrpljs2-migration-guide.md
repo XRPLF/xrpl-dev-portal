@@ -58,7 +58,7 @@ const xrpl = require("xrpl");
 
 [分散型取引所](../concepts/tokens/decentralized-exchange/index.md)の状態を調べる時のように、完了見込みの多数のトランザクション結果が保留中であるため、現時点のオープンレジャーを使用したい場合があります。また、完了したトランザクション結果を取り込んだ検証済みのレジャーを使用したい場合もあります。
 
-xrpl.js 2.0が`Client.request()`を使用してAPIリクエストをする際、明確に[使用するレジャー番号を指定する](protocol/data-types/basic-data-types.md#specifying-ledgers)必要があります。例えば、最新の_検証済みレジャー_を使用してトラストラインを調べるためには:
+xrpl.js 2.0が`Client.request()`を使用してAPIリクエストをする際、明確に[使用するレジャー番号を指定する](protocol/data-types/basic-data-types.md#specifying-ledgers)必要があります。例えば、最新の _検証済みレジャー_ を使用してトラストラインを調べるためには:
 
 **ripple-lib 1.x:**
 
