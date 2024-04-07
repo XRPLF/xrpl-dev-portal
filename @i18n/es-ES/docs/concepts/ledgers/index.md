@@ -29,7 +29,7 @@ Una versión del ledger consta de varias partes:
 
 ## Ver también
 
-- Para más información sobre las cabeceras de ledger, IDs de objetos del ledger, y tipos de objetos del ledger, cer [Formatos de datos del ledger](../../references/protocol/ledger-data/index.md)
+- Para más información sobre las cabeceras de ledger, IDs de objetos del ledger, y tipos de objetos del ledger, ver [Formatos de datos del ledger](../../references/protocol/ledger-data/index.md)
 - Para información de cómo los servidores rastrean el historial de cambios del estado del ledger, ver [Historia del ledger](../networks-and-servers/ledger-history.md)
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
