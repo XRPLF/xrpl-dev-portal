@@ -1,6 +1,4 @@
 ---
-html: directorynode.html
-parent: ledger-entry-types.html
 seo:
     description: Contains links to other objects.
 labels:
@@ -12,10 +10,11 @@ labels:
 
 The `DirectoryNode` ledger entry type provides a list of links to other entries in the ledger's state data. A single conceptual _Directory_　takes the form of a doubly linked list, with one or more DirectoryNode entries each containing up to 32 [IDs of other entries](../common-fields.md). The first DirectoryNode entry is called the root of the directory, and all entries other than the root can be added or deleted as necessary.
 
-There are two kinds of Directories:
+There are three kinds of directory:
 
-* **Owner directories** list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.md) or [`Offer`](offer.md) entries.
-* **Offer directories** list the offers available in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
+* _Owner directories_ list other entries owned by an account, such as [`RippleState` (trust line)](ripplestate.md) or [`Offer`](offer.md) entries.
+* _Offer directories_ list the offers available in the [decentralized exchange](../../../../concepts/tokens/decentralized-exchange/index.md). A single Offer directory contains all the offers that have the same exchange rate for the same token (currency code and issuer).
+* _NFT Offer directories_ list buy and sell offers for NFTs. Each NFT has up to two directories, one for buy offers, the other for sell offers.
 
 ## Example {% $frontmatter.seo.title %} JSON
 
@@ -52,6 +51,26 @@ There are two kinds of Directories:
     "Owner": "rpR95n1iFkTqpoy1e878f4Z1pVHVtWKMNQ",
     "RootIndex": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94",
     "index": "193C591BF62482468422313F9D3274B5927CA80B4DD3707E42015DD609E39C94"
+}
+```
+{% /tab %}
+
+{% tab label="NFT Offer Directory" %}
+```json
+{
+  "index": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3",
+  "ledger_current_index": 46860264,
+  "node": {
+    "Flags": 0,
+    "Indexes": [
+        "91E23C060E8D46CBE436382659CF9E31DE3AEB630927D1657D88D033E330F085"
+    ],
+    "LedgerEntryType": "DirectoryNode",
+    "Owner": "rGSte5MQe6smA8ep5rPtKnVJG3JoySzKgs",
+    "RootIndex": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3",
+    "index": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3"
+  },
+  "validated": false
 }
 ```
 {% /tab %}
@@ -94,12 +113,12 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 * The first page of an Offer Directory
 * Later pages of either type
 
-**The first page of an Owner Directory** has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
+The first page of an Owner directory or NFT Offer directory has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Owner Directory space key (`0x004F`)
 * The AccountID from the `Owner` field.
 
-**The first page of an Offer Directory** has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the [SHA-512Half][] of the following values, concatenated in order:
+The first page of an Offer Directory has a special ID: the higher 192 bits define the order book, and the remaining 64 bits define the exchange rate of the offers in that directory. (The ID is big-endian, so the book is in the more significant bits, which come first, and the quality is in the less significant bits which come last.) This provides a way to iterate through an order book from best offers to worst. Specifically: the first 192 bits are the first 192 bits of the [SHA-512Half][] of the following values, concatenated in order:
 
 * The Book Directory space key (`0x0042`)
 * The 160-bit currency code from the `TakerPaysCurrency`
@@ -109,7 +128,7 @@ There are three different formulas for creating the ID of a DirectoryNode, depen
 
 The lower 64 bits of an Offer Directory's ID represent the `TakerPays` amount divided by `TakerGets` amount from the offer(s) in that directory as a 64-bit number in the XRP Ledger's internal amount format.
 
-**If the DirectoryNode is not the first page in the Directory** (regardless of whether it is an Owner Directory or an Offer Directory), then it has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
+If the DirectoryNode is not the first page in the directory, it has an ID that is the [SHA-512Half][] of the following values, concatenated in order:
 
 * The DirectoryNode space key (`0x0064`)
 * The ID of the root DirectoryNode
