@@ -58,9 +58,6 @@ There are three kinds of directory:
 {% tab label="NFT Offer Directory" %}
 ```json
 {
-  "index": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3",
-  "ledger_current_index": 46860264,
-  "node": {
     "Flags": 0,
     "Indexes": [
         "91E23C060E8D46CBE436382659CF9E31DE3AEB630927D1657D88D033E330F085"
@@ -69,8 +66,6 @@ There are three kinds of directory:
     "Owner": "rGSte5MQe6smA8ep5rPtKnVJG3JoySzKgs",
     "RootIndex": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3",
     "index": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3"
-  },
-  "validated": false
 }
 ```
 {% /tab %}
