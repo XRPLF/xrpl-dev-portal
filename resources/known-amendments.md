@@ -17,12 +17,12 @@ The following is a comprehensive list of all known [amendments](../docs/concepts
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixAMMOverflowOffer][]           | v2.1.1     | [Open for Voting: 2024-03-27](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_80d0e0") |
+| [fixAMMOverflowOffer][]           | v2.1.1     | [Enabled: 2024-04-11](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_GREEN") |
 | [fixInnerObjTemplate][]           | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [fixNFTokenReserve][]             | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
 | [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixDisallowIncomingV1][]         | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixFillOrKill][]                 | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [fixDisallowIncomingV1][]         | v2.0.0     | [Enabled: 2024-04-11](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_GREEN") |
+| [fixFillOrKill][]                 | v2.0.0     | [Enabled: 2024-04-11](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_GREEN") |
 | [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [Enabled: 2024-03-22](https://livenet.xrpl.org/transactions/75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99 "BADGE_GREEN") |
 | [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
@@ -119,7 +119,7 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 | Amendment    | fixAMMOverflowOffer |
 |:-------------|:--------------|
 | Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | Yes |
 | Pre-amendment functionality retired? | No |
 
@@ -161,7 +161,7 @@ This amendment adds a check to the `NFTokenAcceptOffer` transactor to see if the
 | Amendment    | fixDisallowIncomingV1 |
 |:-------------|:--------------|
 | Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
@@ -185,7 +185,7 @@ This amendment has no effect unless the [DisallowIncoming][] amendment is enable
 | Amendment    | fixFillOrKill |
 |:-------------|:--------------|
 | Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
