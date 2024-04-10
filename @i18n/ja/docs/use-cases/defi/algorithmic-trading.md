@@ -72,7 +72,7 @@ XRP Ledgerの分散型取引所(DEX)には、「アルゴリズムトレード�
 
 ### トレードの発注
 
-XRP Ledgerの分散型取引所で_代替可能_トークンとXRPを売買するには、通常[OfferCreateトランザクション](../../references/protocol/transactions/types/offercreate.md)を送信します。この方法でトレードを行うためのコードと技術的ステップの詳細なウォークスルーについては、[分散型取引所でのトレード](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md)をご覧ください。[Paymentトランザクション](../../references/protocol/transactions/types/payment.md)を使用して通貨を両替することも可能です。[クロスカレンしー支払い](../../concepts/payment-types/cross-currency-payments.md)を他のユーザに送ったり、長い[パス](../../concepts/tokens/fungible-tokens/paths.md)を使って裁定取引の機会を1つの操作にまとめることで、自分自身に送り返すこともできます。
+XRP Ledgerの分散型取引所で _代替可能_ トークンとXRPを売買するには、通常[OfferCreateトランザクション](../../references/protocol/transactions/types/offercreate.md)を送信します。この方法でトレードを行うためのコードと技術的ステップの詳細なウォークスルーについては、[分散型取引所でのトレード](../../tutorials/how-tos/use-tokens/trade-in-the-decentralized-exchange.md)をご覧ください。[Paymentトランザクション](../../references/protocol/transactions/types/payment.md)を使用して通貨を両替することも可能です。[クロスカレンしー支払い](../../concepts/payment-types/cross-currency-payments.md)を他のユーザに送ったり、長い[パス](../../concepts/tokens/fungible-tokens/paths.md)を使って裁定取引の機会を1つの操作にまとめることで、自分自身に送り返すこともできます。
 
 NFTをトレードするためのコードと技術的な手順については、[JavaScriptを使用したNFTokenの送信](../../tutorials/javascript/nfts/transfer-nfts.md)をご覧ください。
 
