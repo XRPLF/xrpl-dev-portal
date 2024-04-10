@@ -15,9 +15,9 @@ A Decentralized Identifier (DID) is a new type of identifier defined by the Worl
 
 The key principles of a DID are:
 
-- **Decentralization:** No central issuing agency controls the DID, enabling the owner to update, resolve, or deactivate it.
+- **Decentralization:** No central issuing agency controls the DID, enabling the owner to update, resolve, or deactivate it. This also makes your identity highly-available, since DIDs are usually stored on a blockchain and always available for verification.
 
-- **Cryptographically Verifiable:** DIDs are verified through cryptographic proofs, making them tamper-evident and secure.
+- **Verifiable Credentials:** Anyone can create a DID and falsify the information on it. To prove the authenticity of a DID, a user must provide a verifiable credential (VC). In the DID ecosystem, there are three parties: _user_, _issuer_, and _verifier_. The _user_ controls the DID, but needs a trusted _issuer_ to verify the information offline. The issuer provides a verfiable credential, which the user gives to _verifiers_ that need to confirm the user's identity. Verifiable credentials are cryptographically secure and tamper-evident.
 
 - **Interoperability:** DIDs are open to any solution that recognizes the W3C DID standard. This means a DID can be used to authenticate and establish trust in various digital transactions and interactions.
 
@@ -28,11 +28,8 @@ The key principles of a DID are:
 
 1. An XRPL account holder generates a DID that is controlled by the account.
 2. The DID is associated with a DID document as defined by W3C specifications.
-3. The DID is used for digital tasks such as:
-    - Signing digital documents.
-    - Making secure online transactions.
-    - Logging into websites.
-4. The verifier resolves the DID to its document to verify the subject's identity.
+3. A user provides their DID and VC to a verifier for a digital task.
+4. The verifier resolves the DID to its document and uses the VC to verify its authenticity.
 
 
 ## DID Documents
@@ -73,7 +70,61 @@ To learn more about the core properties of a DID document, see: [Decentralized I
 ## Privacy and Security Concerns
 
 - Whoever controls the private keys of an XRPL account, controls the DID and reference to the DID document it resolves to. Take care to ensure your private keys aren't compromised.
-- You can include any content in a DID document, but should limit it to verification methods and service points. Since DIDs on XRPL can be resolved by anyone, you shouldn't include any personal information.
+- You can include any content in a DID document, but should limit it to verification methods and service points. Since DIDs on XRPL are publicly available, you shouldn't include any personal information.
 - IPFS allows anyone to store content on the nodes in a distributed network. A common misconception is that anyone can edit that content; however, the content-addressability of IPFS means any edited content will have a different address from the original. While any entity can copy a DID document anchored with an XRPL account's `DIDDocument` or `URI` fields, they can't change the document itself unless they control the private key that created the corresponding `DID` object.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
+
+
+## Use Cases
+
+DIDs enable many use cases, such as:
+
+- Meeting Know Your Client (KYC) and Anti-money Laundering (AML) standards.
+- User identity management across the XRP Ledger.
+- Differentiated access to DeFi apps.
+- Signing digital documents.
+- Making secure online transactions.
+- Logging into websites.
+
+
+## FAQs
+
+### How are DIDs different from authorized trust lines?
+
+A solution of issuing tokens using authorized trust lines doesn’t scale well regarding the resale of these issued tokens. Issuers must create a new trust line with any new party interested in acquiring the asset. The responsibility of setting up the authorized trust line is on the original issuer or the current asset holder.
+If applications use DIDs, they could provide access to the application only to certain users with a specific verifiable credential that is shared off-chain.
+
+### How did DIDs benefit a DeFi or institutional finance developer?
+
+Build on XRPL - having a protocol native DiD means you can more easily onboard users by simply integrating with the DID, building your application, or adopting another application.
+Create your own DID and verifiable credential (VC)focused application
+Other developers throughout the XRPL ecosystem can integrate into your application; end users can onboard and interact with your application
+Compliance when/where needed
+
+### What is the DID ecosystem of issuers, holders, and verifiers?
+
+For developers to successfully adopt the DID feature, the XRPL needs a healthy ecosystem of identity issuers, holders, and verifiers. 
+Issuers
+Issuers do offline verification and issue a verified credential to a holder. This credential is sent to the user off-chain via a peer-to-peer (P2P) message through the application. For the identity ecosystem to work, the XRPL needs high-quality identity issuers to participate and provide verified credentials.    
+
+Holders
+The user holds verified credentials issued by the identity issuer in their wallet. 
+
+Verifiers 
+These applications consume verifiable credentials issued by identity issuers and allow holders access to their applications based on the credentials provided.
+Source: https://www.w3.org/TR/vc-data-model/#ecosystem-overview
+
+
+### What has been built as part of XLS-40?
+
+Built
+A ledger object DID that goes on the XRPL 
+A DIDSet transaction to create/update the object
+A DIDDelete transaction to delete the object
+XRPL-JS, XRPL-PY and XRPL-Java SDK
+In progress
+DID Resolver library for XRPL
+DID registry for XRPL
+Recommended open-source library for verifiable credentials by the application
+https://www.npmjs.com/package/@digitalcredentials/vc
