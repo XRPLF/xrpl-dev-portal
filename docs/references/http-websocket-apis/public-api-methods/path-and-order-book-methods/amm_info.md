@@ -66,7 +66,7 @@ The request includes the following parameters:
 |:--------------|:-----------------|:----------|-------------|
 | `account`     | String - [Address][] | No    | Show only LP Tokens held by this liquidity provider. |
 | `amm_account` | String - [Address][] | No    | The address of the AMM's special AccountRoot. (This is the `issuer` of the AMM's LP Tokens.) |
-| `asset`       | Object or String | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. For XRP, you can specify as the string `XRP` instead of as an object. |
+| `asset`       | Object or String | No        | One of the assets of the AMM to look up, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
 | `asset2`      | Object or String | No        | The other of the assets of the AMM, as an object with `currency` and `issuer` fields (omit `issuer` for XRP), like [currency amounts][Currency Amount]. |
 
 You must specify _either_ `amm_account` or both `asset` and `asset2`.
