@@ -586,10 +586,8 @@ article h6:before,
   visibility: hidden;
   pointer-events: none;
 }
-
-// Fix so links aren't unclickable underneath the header anchor-fix
-a {
-  z-index: 1;
+article h1:first-of-type:before {
+  margin-top: -60px; // Don't add extra space to page title
 }
 
 // Animated chevron (e.g. for language dropdown) -------------------------------
