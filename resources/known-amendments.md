@@ -132,7 +132,7 @@ This amendment fixes the improper handling of large synthetic AMM offers in the 
 | Amendment    | fixInnerObjTemplate |
 |:-------------|:--------------|
 | Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
