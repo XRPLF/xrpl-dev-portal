@@ -19,7 +19,7 @@ The following is a comprehensive list of all known [amendments](../docs/concepts
 |:----------------------------------|:-----------|:------------------------------|
 | [fixAMMOverflowOffer][]           | v2.1.1     | [Enabled: 2024-04-11](https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC "BADGE_GREEN") |
 | [fixInnerObjTemplate][]           | v2.1.0     | [Enabled: 2024-04-08](https://livenet.xrpl.org/transactions/EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235 "BADGE_GREEN") |
-| [fixNFTokenReserve][]             | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
+| [fixNFTokenReserve][]             | v2.1.0     | [Enabled: 2024-04-12](https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4 "BADGE_GREEN") |
 | [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [fixDisallowIncomingV1][]         | v2.0.0     | [Enabled: 2024-04-11](https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB "BADGE_GREEN") |
 | [fixFillOrKill][]                 | v2.0.0     | [Enabled: 2024-04-11](https://livenet.xrpl.org/transactions/3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B "BADGE_GREEN") |
@@ -148,7 +148,7 @@ Currently, the inner object template isn't set upon object creation. If the obje
 | Amendment    | fixNFTokenReserve |
 |:-------------|:--------------|
 | Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
