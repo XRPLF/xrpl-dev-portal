@@ -1355,7 +1355,7 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds cross-chain bridges, enabling the transfer of digital assets between networks, such as Mainnet and a sidechain.
+Adds cross-chain bridges, enabling the transfer of digital assets between networks (for example, between Mainnet and a sidechain).
 Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
 
 Adds new transactions:
