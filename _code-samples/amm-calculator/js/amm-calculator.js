@@ -11,6 +11,17 @@ const BigNumber = require('bignumber.js')
 function feeMult(tFee) {
     return BigNumber(1).minus( feeDecimal(tFee) )
 }
+
+/*
+ * Same as feeMult, but with half the trading fee.
+ * @param tFee int {0, 1000}
+ *             such that 1 = 1/100,000 and 1000 = 1% fee
+ * @returns BigNumber (1 - (fee/2)) as a decimal
+ */
+function feeMultHalf(tFee) {
+    return BigNumber(1).minus( feeDecimal(tFee).dividedBy(2) )
+}
+
 /*
  * Convert a trading fee to a decimal BigNumber value,
  * for example 1000 becomes 0.01
@@ -50,6 +61,43 @@ function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
 }
 
 /*
+ * Computes the quadratic formula. Helper function for ammAssetIn.
+ * Params and return value are BigNumber instances.
+ */
+function solveQuadraticEq(a,b,c) {
+    const b2minus4ac = b.multipliedBy(b).minus( a.multipliedBy(c).multipliedBy(4) )
+    return ( b.negated().plus(b2minus4ac.sqrt()) ).dividedBy(a.multipliedBy(2));
+}
+
+/*
+ * Implements the AMM single-asset deposit formula to calculate how much to
+ * put in so that you receive a specific number of LP Tokens back.
+ * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/impl/AMMHelpers.cpp#L55-L83
+ * @param pool_in string - Quantity of input asset the pool already has
+ * @param lpt_balance string - Quantity of LP Tokens already issued by the AMM
+ * @param desired_lpt string - Quantity of new LP Tokens you want to receive
+ * @param trading_fee int - The trading fee as an integer {0,1000} where 1000
+ *                          represents a 1% fee.
+ */
+function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
+    // TODO: refactor to take pool_in as a BigNumber so precision can be set based on XRP/drops?
+    // convert inputs to BigNumber
+    const lpTokens = BigNumber(desired_lpt)
+    const lptAMMBalance = BigNumber(lpt_balance)
+    const asset1Balance = BigNumber(pool_in)
+
+    const f1 = feeMult(trading_fee)
+    const f2 = feeMultHalf(trading_fee).dividedBy(f1)
+    const t1 = lpTokens.dividedBy(lptAMMBalance)
+    const t2 = t1.plus(1)
+    const d = f2.minus( t1.dividedBy(t2) )
+    const a = BigNumber(1).dividedBy( t2.multipliedBy(t2))
+    const b = BigNumber(2).multipliedBy(d).dividedBy(t2).minus( BigNumber(1).dividedBy(f1) )
+    const c = d.multipliedBy(d).minus( f2.multipliedBy(f2) )
+    return asset1Balance.multipliedBy(solveQuadraticEq(a,b,c))
+}
+
+/*
  * Calculates the necessary bid to win the AMM Auction slot, per the pricing
  * algorithm defined in XLS-30 section 4.1.1.
  * @returns BigNumber - the minimum amount of LP tokens to win the auction slot
@@ -60,26 +108,27 @@ function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
     const b = BigNumber(old_bid)
     if (time_interval >= 20) {
         return min_bid
-    }
 
-    if (time_interval <= 1) {
+    } else if (time_interval > 1) {
+        const t60 = BigNumber("0.05").multipliedBy(time_interval).exponentiatedBy(60)
+        return b.multipliedBy("1.05").multipliedBy(BigNumber(1).minus(t60)).plus(min_bid)
+
+    } else { // time_interval <= 1
         return b.multipliedBy(BigNumber("1.05")).plus(min_bid)
     }
 
-    const t60 = BigNumber("0.05").multipliedBy(time_interval).exponentiatedBy(60)
-    return b.multipliedBy("1.05").multipliedBy(BigNumber(1).minus(t60)).plus(min_bid)
 }
 
 async function main() {
     // Connect ----------------------------------------------------------------
-    const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+    const client = new xrpl.Client('wss://s.devnet.rippletest.net:51233')
     console.log("Connecting to Testnet...")
     await client.connect()
   
     // Get credentials from the Testnet Faucet --------------------------------
-    // console.log("Requesting address from the Testnet faucet...")
-    // const wallet = (await client.fundWallet()).wallet
-    // console.log(`Got address ${wallet.address}.`)
+    console.log("Requesting address from the Testnet faucet...")
+    const wallet = (await client.fundWallet()).wallet
+    console.log(`Got address ${wallet.address}.`)
 
     // Look up the AMM
     const from_asset = {
@@ -98,6 +147,8 @@ async function main() {
     const pool_tst = amm_info.result.amm.amount2
     const full_trading_fee = amm_info.result.amm.trading_fee
     const discounted_trading_fee = amm_info.result.amm.auction_slot.discounted_fee
+    const old_bid = amm_info.result.amm.auction_slot.price.value
+    const time_interval = amm_info.result.amm.auction_slot.time_interval
 
     // Calculate price in XRP to get 10 TST from the AMM ----------------------
     // TODO: first calculate how much will be fulfilled by the order book before getting to the AMM.
@@ -132,11 +183,50 @@ async function main() {
     const potential_savings = from_amount - discounted_from_amount
     console.log(`Potential savings: ${xrpl.dropsToXrp(potential_savings)} XRP`)
     
-    // Calculate the cost of winning the auction slot, then convert it to XRP
-    const auction_price = auctionPrice(old_bid, time_interval, full_trading_fee, lpt.value)
+    // Calculate the cost of winning the auction slot, in LP Tokens
+    const auction_price = auctionPrice(old_bid, time_interval, full_trading_fee, lpt.value).precision(15)
     console.log(`Auction price: ${auction_price} LP Tokens`)
-    // @@TODO: figure out how to convert auction_price from LPT to input asset.
+    // Figure out how much XRP we need to deposit to receive the auction price
+    const deposit_for_bid = ammAssetIn(pool_in_bn, lpt.value, auction_price, full_trading_fee).dp(0, BigNumber.ROUND_CEIL)
+    console.log(`Auction price as XRP single-asset deposit amount: ${xrpl.dropsToXrp(deposit_for_bid)} XRP`)
 
+    const SLIPPAGE_MULT = BigNumber(1.01) // allow up to 1% more than estimated amounts. TODO: also allow slippage on auction price?
+    const deposit_max = deposit_for_bid.multipliedBy(SLIPPAGE_MULT).dp(0).toString()
+
+    // TODO: compare price of deposit+bid with potential savings. Don't forget XRP burned as transaction costs
+
+    const auction_bid = {
+        "currency": lpt.currency,
+        "issuer": lpt.issuer,
+        "value": auction_price.toString()
+    }
+    // Do a single-asset deposit to get LP Tokens to bid on the auction slot
+    const deposit_result = await client.submitAndWait({
+    // const deposit_autofill = await client.autofill({
+        "TransactionType": "AMMDeposit",
+        "Account": wallet.address,
+        "Asset": from_asset,
+        "Asset2": to_asset,
+        "Amount": deposit_max,
+        "LPTokenOut": auction_bid,
+        "Flags": xrpl.AMMDepositFlags.tfOneAssetLPToken
+      }, {autofill: true, wallet: wallet}
+    )
+    console.log("Deposit result:")
+    console.dir(deposit_result, {depth: null})
+
+
+    // Bid on the auction slot
+    const bid_result = await client.submitAndWait({
+        "TransactionType": "AMMBid",
+        "Account": wallet.address,
+        "Asset": from_asset,
+        "Asset2": to_asset,
+        "BidMax": auction_bid // TODO: try w/ BidMin + BidMax w/ slippage
+      }, {autofill: true, wallet: wallet}
+    )
+    console.log("Bid result:")
+    console.dir(bid_result, {depth: null})
 
     // Done.
     client.disconnect()
