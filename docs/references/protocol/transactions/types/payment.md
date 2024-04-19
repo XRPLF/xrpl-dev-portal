@@ -107,7 +107,7 @@ Transactions of the Payment type support additional values in the [`Flags` field
 
 | Flag Name          | Hex Value    | Decimal Value | Description                  |
 |:-------------------|:-------------|:--------------|:-----------------------------|
-| `tfNoDirectRipple` | `0x00010000` | 65536         | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
+| `tfNoRippleDirect` | `0x00010000` | 65536         | Do not use the default path; only use paths included in the `Paths` field. This is intended to force the transaction to take arbitrage opportunities. Most clients do not need this. |
 | `tfPartialPayment` | `0x00020000` | 131072        | If the specified `Amount` cannot be sent without spending more than `SendMax`, reduce the received amount instead of failing outright. See [Partial Payments](../../../../concepts/payment-types/partial-payments.md) for more details. |
 | `tfLimitQuality`   | `0x00040000` | 262144        | Only take paths where all the conversions have an input:output ratio that is equal or better than the ratio of `Amount`:`SendMax`. See [Limit Quality](#limit-quality) for details. |
 
