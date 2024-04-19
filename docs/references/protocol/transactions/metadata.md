@@ -214,7 +214,7 @@ A `CreatedNode` object contains the following fields:
 | :---------------- | :---------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `LedgerEntryType` | String            | The [type of ledger entry](../ledger-data/ledger-entry-types/index.md) that was created.                                                                                                                                                                                             |
 | `LedgerIndex`     | String - [Hash][] | The [ID of this ledger entry](../ledger-data/common-fields.md) in the ledger's [state tree](../../../concepts/ledgers/index.md). **Note:** This is **not the same** as a [ledger index](../data-types/basic-data-types.md#ledger-index), even though the field name is very similar. |
-| `NewFields`       | Object            | The content fields of the newly-created ledger entry. Which fields are present depends on what type of ledger entry was created.                                                                                                                                                     |
+| `NewFields`       | Object            | The content fields of the newly created ledger entry. Which fields are present depends on what type of ledger entry was created.                                                                                                                                                     |
 
 
 ### DeletedNode Fields
