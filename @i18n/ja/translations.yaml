@@ -17,6 +17,66 @@ topnav.resources.current-status: 現在のステータス
 topnav.resources.explorer: エクスプローラ
 topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
+
+# index.page.tsx
+The Blockchain: ビジネスのための
+Built for Business: ブロックチェーン
+XRPL | XRP Ledger: XRPL | XRP Ledger
+Start Building: 始めよう
+'The XRP Ledger: The Blockchain Built for Business': 'XRP Ledger: ビジネスに最適なブロックチェーン'
+The XRP Ledger (XRPL) is a decentralized, public blockchain led by a global community of businesses and developers looking to solve problems and create value.: XRP Ledger(XRPL)は課題の解決と価値の創造を目指す企業と開発者のグローバルコミュニティが主導する、分散型のパブリックブロックチェーンです。
+Proven reliable over more than a decade of error-free functioning, the XRPL offers streamlined development, low transaction costs, high performance, and sustainability. So you can build with confidence–and move your most critical projects forward.: 10年以上にわたって稼働し、高い信頼性が実証されているXRPLは、合理化された開発、低い取引コスト、高いパフォーマンス、そして持続可能性を提供します。これにより、我々は安心して開発し、プロジェクトに専念することができます。
+Why developers choose the XRP Ledger: 開発者がXRP Ledgerを選択する理由
+Public and Decentralized: パブリック＆分散型
+Open source, open to anyone to build on, maintained by the community: オープンソースで、誰でも構築でき、コミュニティによって維持されています
+Streamlined Development: 効率的な開発
+Intentional innovations, tools and documentation reduce time to market: 開発のスピードアップと市場投入までの時間短縮を実現するツールとドキュメントがあります
+High Performance: 高パフォーマンス
+Thousands of transactions settled in seconds: 数千件のトランザクションを数秒で決済することが可能です
+Low Cost: 低コスト
+Motivated Community: 活発なコミュニティ
+Companies, developers, validators, and users work together to make the XRP Ledger better every day: 開発者、バリデータ、ユーザ、そして企業によって、XRP Ledgerは日々進化しています
+Proven Reliability: 確かな信頼性
+10+ years of error-free, uninterrupted performance over more than 63 million ledgers: 10年以上、6,300万件以上のレジャーで安定したパフォーマンスを実現しています
+Powerful Features: パワフルな機能
+Activate the proven potential of the XRP Ledger and find a trusted foundation for your next innovation: XRP Ledgerを活用し、次のイノベーションのための信頼できるプラットフォームを見つけましょう。
+A high-performance decentralized peer-to-peer multi-currency exchange built directly into the blockchain: ブロックチェーンに直接組み込まれた高性能な分散型P2P多通貨取引所
+Cross-Currency Payments: クロスカレンシー決済
+Atomically settle multi-hop payments that cross currency or national boundaries with ease: 通貨や国境を越えたマルチホップ決済をアトミックに簡単に実現
+Payment Channels: ペイメントチャネル
+Batched micropayments with unlimited speed, secured with XRP: XRPによる安全かつ無制限のスピードでのバッチ式マイクロペイメント
+Multi-Signing: マルチシグ
+Flexible options for custody and security of on-ledger accounts: オンレジャーアカウントの保護とセキュリティのための柔軟なオプション
+All currencies other than XRP can be represented in the XRP Ledger as tokens: XRP以外のすべての通貨は、XRP Ledger内でトークンとして表現されます
+Choose a path, and bring your project to life on the XRP Ledger: XRP Ledger上でプロジェクトをスタートしましょう。
+Where to Start: 最初の一歩
+Documentation: ドキュメント
+Access everything you need to get started working with the XRPL: XRPLを使うためのあらゆる情報にアクセスできます
+Guided Tutorials: チュートリアルガイド
+Follow step-by-step guides for frequent tasks: ステップバイステップのガイドを使って頻出の作業をサポートします
+XRPL Fundamentals: XRPLの基礎知識
+Read about the XRPL’s foundational concepts: XRPLの基本概念について学びましょう
+Choose a Language: 開発言語の選択
+Find tools, documentation, and sample code in Python, Java, Javascript, or use HTTP APIs: Python、Java、Javascriptのツール、ドキュメント、サンプルコードを検索したり、HTTP APIを使用することができます
+Get Inspired: インスピレーション
+See what your peers have built on the XRPL: 他のユーザがXRPLで構築したものを見てみましょう
+Our Shared Vision for XRPL’s Future: XRPLの未来に対する私たちの共有のビジョン
+Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life.: 私たちは、開発者コミュニティのビジョンを実現するために、実用性や性能を犠牲にすることなく、ブロックチェーンのイノベーションを推進する最も環境に配慮したインフラストラクチャを共に構築しています
+Preview New Features: 新機能のプレビュー
+Explore what the community is building to enable new features and use cases on XRPL: コミュニティがどのような新機能やユースケースを構築しているのかを見てみましょう
+In Development: 開発中
+Smart Contracts: スマートコントラクト
+Open for Voting: 投票中
+Automated Market Makers: 自動マーケットメイカー
+Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.: XRPLに組み込み済みのオーダーブックDEXと相互に補完する、流動性を提供し、通貨交換を促進することで受動的な収入を得るためのスマートコントラクト。
+Enabled: 利用可能
+Non-Fungible Tokens: 非代替性トークン
+# Join the Community: XRPL.orgの
+# at XRPL.org: コミュニティに参加
+'Connect at XRPL.org, a community by and for the developers ': XRPL.orgは、XRPLを利用する開発者と
+' and entrepeneurs who rely on the XRPL.': 起業家のためのコミュニティです。
+Get Involved: 参加する
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -103,7 +163,6 @@ Open a pull Request: プルリクエストを作成する
 Full documentation index: 全ドキュメントの目次
 See Everything: 全てを見る
 XRP Ledger Developer Resources: XRP Ledger 開発者向けリソース
-Documentation: XRP Ledger ドキュメント
 rippled API Reference: rippled APIリファレンス
 XRP Faucet: XRP Faucet
 Getting Started with Python: Pythonを使ってみよう
@@ -192,44 +251,6 @@ XRPL's Origin: XRPLの原点
 XRPL Launches its Native Currency, XRP: XRPL、ネイティブ通貨「XRP」がローンチ
 OpenCoin Rebranded to Ripple Labs: 2013年、OpenCoinからRipple Labsにブランド変更
 XRPL Foundation Launched: XRPL財団の創設
-The Blockchain<br class=\until-sm\/> Built for Business: ビジネスのための<br class=\until-sm\/>ブロックチェーン
-XRPL | XRP Ledger: 
-Start Building: 始める
-Why developers choose the XRP Ledger: 開発者がXRP Ledgerを選択する理由
-Public and Decentralized: パブリック＆分散型
-Open source, open to anyone to build on, maintained by the community: オープンソースで、誰でも構築でき、コミュニティによって維持されています
-Streamlined Development: 効率的な開発
-Intentional innovations, tools and documentation reduce time to market: 開発のスピードアップと市場投入までの時間短縮を実現するツールとドキュメントがあります
-High Performance: 高パフォーマンス
-Thousands of transactions settled in seconds: 数千件のトランザクションを数秒で決済することが可能です
-Low Cost: 低コスト
-Motivated Community: 活発なコミュニティ
-Proven Reliability: 確かな信頼性
-Powerful Features: パワフルな機能
-Cross-Currency Payments: クロスカレンシー決済
-Payment <br class='until-sm'/>Channels: ペイメント<br class='until-sm'/>チャネル
-Batched micropayments with unlimited speed, secured with XRP: XRPを利用した無制限のスピードでの小額決済が可能です
-Multi-Signing: マルチシグ
-Flexible options for custody and security of on-ledger accounts: オンレジャーのアカウントの保護とセキュリティのための柔軟なオプションがあります
-Choose a path, and bring your project to life on the XRP Ledger: あなたのプロジェクトをXRP Ledger上でスタートさせましょう。
-Where to Start: 始めましょう
-Quickstart: クイックスタート
-Access everything you need to get started working with the XRPL: XRPLを使うためのあらゆる情報にアクセスできます
-Guided Tutorials: ガイド付きチュートリアル
-Follow step-by-step guides for frequent tasks: ステップバイステップのガイドを使って頻出の作業をサポートします
-XRPL Fundamentals: XRPLの基礎知識
-Read about the XRPL’s foundational concepts: XRPLの基本概念について学びましょう
-Choose a Language: 開発言語の選択
-Get Inspired: インスピレーションを得る
-See what your peers have built on the XRPL: 他のユーザがXRPLで構築したものを見てみましょう
-Our Shared Vision for XRPL’s Future: XRPLの未来に対する私たちの共有のビジョン
-Preview New Features: 新機能のプレビュー
-In Development: 開発中
-Smart Contracts: スマートコントラクト
-Enabled: 利用可能
-Non-Fungible Tokens: 非代替性トークン
-Join the Community <br class=\until-sm\/> at XRPL.org: XRPL.orgの<br class=\until-sm\/>コミュニティに参加
-Get Involved: 参加する
 Today’s Value, Tomorrow’s Vision: 現在の価値、将来のビジョン
 XRPL Today, XRPL Tomorrow: 現在のXRPL、未来のXRPL
 Building for the Future: 未来を見据えた開発
