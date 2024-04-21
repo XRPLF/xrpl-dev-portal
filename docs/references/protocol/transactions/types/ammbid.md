@@ -11,7 +11,7 @@ labels:
 
 _(Requires the [AMM amendment][])_
 
-Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.
+Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains. A Bid on AMM pool without trading fee set may result in sucessful transaction but will have no effect.
 
 You bid using the AMM's LP Tokens; the amount of a winning bid is returned to the AMM, decreasing the outstanding balance of LP Tokens.
 
