@@ -19,10 +19,10 @@ Al crear aplicaciones en el XRP Ledger, es importante entender el proceso, para 
 
 La red peer-to-peer XRP Ledger proporciona un libro de contabilidad (ledger) compartido a nivel mundial, que brinda información autorizada a aplicaciones sobre el estado de su contenido. Este estado de la información incluye:
 
-- configuración de cada [cuenta](../accounts/index.md)
-- balances de XRP y [tokens](../tokens/index.md)
-- ofertas en el exchange distribuido
-- configuraciones de red, como los [costes de transacción](../transactions/transaction-cost.md) y las cantidades de [reserva](../accounts/reserves.md)
+- Configuración de cada [cuenta](../accounts/index.md)
+- Balances de XRP y [tokens](../tokens/index.md)
+- Ofertas en el exchange distribuido
+- Configuraciones de red, como los [costes de transacción](../transactions/transaction-cost.md) y las cantidades de [reserva](../accounts/reserves.md)
 - Una marca de tiempo (timestamp)
 
 Para una descripción técnica completa de todos los datos que se incluyen en una versión de un ledger, ver la [Referencia de formato de ledger](../../references/protocol/ledger-data/index.md).
