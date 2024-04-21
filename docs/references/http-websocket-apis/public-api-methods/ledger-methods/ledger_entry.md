@@ -30,18 +30,24 @@ The `generator` and `ledger` parameters are deprecated and may be removed withou
 
 In addition to the general fields above, you must specify *exactly 1* of the following fields to indicate what type of entry to retrieve, along with its sub-fields as appropriate. The valid fields are:
 
-- [`index`](#get-ledger-object-by-id)
-- [`account_root`](#get-accountroot-object)
-- [`amm`](#get-amm-object)
-- [`directory`](#get-directorynode-object)
-- [`offer`](#get-offer-object)
-- [`ripple_state`](#get-ripplestate-object)
-- [`check`](#get-check-object)
-- [`escrow`](#get-escrow-object)
-- [`payment_channel`](#get-paychannel-object)
-- [`deposit_preauth`](#get-depositpreauth-object)
-- [`ticket`](#get-ticket-object)
-- [`nft_page`](#get-nft-page)
+- [ledger\_entry](#ledger_entry)
+  - [Request Format](#request-format)
+    - [General Fields](#general-fields)
+    - [Get Ledger Object by ID](#get-ledger-object-by-id)
+    - [Get AccountRoot Object](#get-accountroot-object)
+    - [Get AMM Object](#get-amm-object)
+    - [Get Bridge Object](#get-bridge-object)
+    - [Get DirectoryNode Object](#get-directorynode-object)
+    - [Get Offer Object](#get-offer-object)
+    - [Get RippleState Object](#get-ripplestate-object)
+    - [Get Check Object](#get-check-object)
+    - [Get Escrow Object](#get-escrow-object)
+    - [Get PayChannel Object](#get-paychannel-object)
+    - [Get DepositPreauth Object](#get-depositpreauth-object)
+    - [Get Ticket Object](#get-ticket-object)
+    - [Get NFT Page](#get-nft-page)
+  - [Response Format](#response-format)
+  - [Possible Errors](#possible-errors)
 
 **Caution:** If you specify more than 1 of these type-specific fields in a request, the server retrieves results for only 1 of them. It is not defined which one the server chooses, so you should avoid doing this.
 
@@ -175,7 +181,7 @@ Retrieve an Automated Market-Maker (AMM) object from the ledger. This is similar
       "currency" : "TST",
       "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
     }
-  }
+  },
   "ledger_index": "validated"
 }
 ```
@@ -211,8 +217,77 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
 
+
+### Get Bridge Object
+
+_(Requires the [XChainBridge amendment][] {% not-enabled /%})_
+
+Retrieve a [Bridge entry](../../../protocol/ledger-data/ledger-entry-types/bridge.md), which represents a single cross-chain bridge that connects the XRP Ledger with another blockchain.
+
+| Field            | Type   | Description           |
+|:-----------------|:-------|:----------------------|
+| `bridge_account` | String | The account that submitted the `XChainCreateBridge` transaction on the blockchain. |
+| `bridge`         | Object | The [Bridge](../../../protocol/ledger-data/ledger-entry-types/bridge.md) to retrieve. Includes the door accounts and assets on the issuing and locking chain. |
+
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_bridge",
+  "command": "ledger_entry",
+  "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+  "bridge": {
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    },
+    "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    }
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+            "bridge": {
+                "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                "IssuingChainIssue": {
+                    "currency": "XRP"
+                },
+                "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+                "LockingChainIssue": {
+                    "currency": "XRP"
+                }
+            },
+            "ledger_index": "validated"
+        }
+    ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
 
 
 ### Get DirectoryNode Object

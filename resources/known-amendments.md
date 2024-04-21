@@ -17,15 +17,15 @@ The following is a comprehensive list of all known [amendments](../docs/concepts
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixAMMOverflowOffer][]           | v2.1.1     | [Open for Voting: 2024-03-27](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_80d0e0") |
-| [fixInnerObjTemplate][]           | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
-| [fixNFTokenReserve][]             | v2.1.0     | [Open for Voting: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
+| [fixAMMOverflowOffer][]           | v2.1.1     | [Enabled: 2024-04-11](https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC "BADGE_GREEN") |
+| [fixInnerObjTemplate][]           | v2.1.0     | [Enabled: 2024-04-08](https://livenet.xrpl.org/transactions/EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235 "BADGE_GREEN") |
+| [fixNFTokenReserve][]             | v2.1.0     | [Enabled: 2024-04-12](https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4 "BADGE_GREEN") |
 | [DID][]                           | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixDisallowIncomingV1][]         | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixFillOrKill][]                 | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [fixDisallowIncomingV1][]         | v2.0.0     | [Enabled: 2024-04-11](https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB "BADGE_GREEN") |
+| [fixFillOrKill][]                 | v2.0.0     | [Enabled: 2024-04-11](https://livenet.xrpl.org/transactions/3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B "BADGE_GREEN") |
 | [XChainBridge][]                  | v2.0.0     | [Open for Voting: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [Enabled: 2024-03-22](https://livenet.xrpl.org/transactions/75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99 "BADGE_GREEN") |
-| [XRPFees][]                       | v1.10.0    | [Open for Voting: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
+| [XRPFees][]                       | v1.10.0    | [Enabled: 2024-03-25](https://livenet.xrpl.org/transactions/4B6047F84B959B64FDD10E22D9E7CCC1EA0D228387462E8FF975B17F7C779021 "BADGE_GREEN") |
 | [Clawback][]                      | v1.12.0    | [Enabled: 2024-02-08](https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11 "BADGE_GREEN") |
 | [fixReducedOffersV1][]            | v1.12.0    | [Enabled: 2023-11-24](https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1 "BADGE_GREEN") |
 | [fixNFTokenRemint][]              | v1.11.0    | [Enabled: 2023-11-27](https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF "BADGE_GREEN") |
@@ -112,111 +112,6 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 
 ## Details about Known Amendments
 
-### fixAMMOverflowOffer
-
-[fixAMMOverflowOffer]: #fixammoverflowoffer
-
-| Amendment    | fixAMMOverflowOffer |
-|:-------------|:--------------|
-| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | Yes |
-| Pre-amendment functionality retired? | No |
-
-This amendment fixes the improper handling of large synthetic AMM offers in the payment engine. Due to the importance of this fix, the default vote in the source code has been set to YES.
-
-### fixInnerObjTemplate
-
-[fixInnerObjTemplate]: #fixinnerobjtemplate
-
-| Amendment    | fixInnerObjTemplate |
-|:-------------|:--------------|
-| Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-This amendment fixes an issue with accessing the AMM `sfTradingFee` and `sfDiscountedFee` fields in the inner objects of `sfVoteEntry` and `sfAuctionSlot`.
-
-Currently, the inner object template isn't set upon object creation. If the object contains an `soeDEFAULT` field and is initially set to the default value, accessing the field results in a `tefEXCEPTION` error in some circumstances. This amendment adds an `STObject` constructor overload that includes an additional boolean argument to set the inner object template.
-
-
-### fixNFTokenReserve
-
-[fixNFTokenReserve]: #fixnftokenreserve
-
-| Amendment    | fixNFTokenReserve |
-|:-------------|:--------------|
-| Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-This amendment adds a check to the `NFTokenAcceptOffer` transactor to see if the `OwnerCount` changes. If it does, it makes an additional check that the reserve requirement is met for the updated owner count.
-
-
-### fixDisallowIncomingV1
-[fixDisallowIncomingV1]: #fixdisallowincomingv1
-
-| Amendment    | fixDisallowIncomingV1 |
-|:-------------|:--------------|
-| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
-
-To recreate this issue:
-
-1. An issuer sets `asfRequireAuth` on their account.
-2. The user sets `asfDisallowIncomingTrustline` on their account.
-3. The user submits a `SetTrust` transaction to the issuer.
-4. The issuer is unable to authorize the trustline.
-
-With this amendment, the issuer can now authorize the trustline.
-
-This amendment has no effect unless the [DisallowIncoming][] amendment is enabled.
-
-
-### fixFillOrKill
-[fixFillOrKill]: #fixfillorkill
-
-| Amendment    | fixFillOrKill |
-|:-------------|:--------------|
-| Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-This amendment fixes an issue introduced in the `FlowCross` amendment. Offers with the `tfFillOrKill` flag set and `tfSell` not set will fail if the exchange rate on the offer is better than, but doesn't exactly match, the order book rate.
-
-This amendment enables the payment engine to properly handle this scenario and allow offers to cross.
-
-This amendment has no effect unless the [FlowCross][] amendment is enabled.
-
-
-### DID
-[DID]: #did
-
-| Amendment    | DID |
-|:-------------|:----|
-| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-Adds to the ledger Decentralized Identifier (DID) functionality that conforms to the [World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/) standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.
-
-Adds new transactions:
-
-- DIDDelete - Delete the DID associated with your XRPL account.
-- DIDSet - Create a new DID or update an existing one.
-
-Adds a new `DID` ledger entry type.
-
-Adds several new transaction result codes.
-
 
 ### AMM
 [AMM]: #amm
@@ -300,38 +195,6 @@ Clawback is disabled by default. To use clawback, you must set the `lsfAllowTrus
 See [Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md) for details on this amendment.
 
 
-### XChainBridge
-[XChainBridge]: #xchainbridge
-
-| Amendment    | XChainBridge |
-|:-------------|:-----------------|
-| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | Open for Voting |
-| Default Vote (Latest stable release) | No |
-| Pre-amendment functionality retired? | No |
-
-Adds cross-chain bridges, enabling the transfer of digital assets between networks, such as Mainnet and a sidechain.
-
-Adds new transactions:
-
-- XChainAccountCreateCommit - Create a new account for a witness server to submit transactions on an issuing chain..
-- XChainAddAccountCreateAttestation - Provide an attestation that an account was created for a witness server to use.
-- XChainAddClaimAttestation - Provide an attestation that assets were locked on a locking chain.
-- XChainClaim - Claim assets on the destination chain.
-- XChainCommit - Locks assets on the locking chain.
-- XChainCreateBridge - Create a bridge ledger object.
-- XChainCreateClaimID - Create a new cross-chain claim ID that is used for a cross-chain transfer.
-- XChainModifyBridge - Modify the parameters of a bridge.
-
-Adds new ledger entry types:
-
-- Bridge - A single cross-chain bridge that connects the XRP Ledger with another blockchain.
-- XChainOwnedClaimID - A cross-chain transfer of value that includes information of the account on the source chain that locks or burns the funds on the source chain.
-- XChainOwnedCreateAccountClaimID - Collects attestations for creating an account via a cross-chain transfer.
-
-Adds several new transaction result codes.
-
-
 ### CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
@@ -358,6 +221,28 @@ Although this amendment is enabled, it has no effect unless the [SusPay](#suspay
 This amendment was intended to add support for several types of crypto-conditions from the official [crypto-conditions specification](https://tools.ietf.org/html/draft-thomas-crypto-conditions-03) for use in [EscrowCreate][] and [EscrowFinish][] transactions.
 
 However, the amendment was added to `rippled` v0.60.0 before implementation was complete. As a result, this amendment ID refers to incomplete code which does almost nothing. Modifying the existing amendment to add support for other crypto-conditions would cause a conflict with old versions of the amendment already in released software. If a future release adds support for additional crypto-conditions, it must use a new and different amendment ID.
+
+
+### DID
+[DID]: #did
+
+| Amendment    | DID |
+|:-------------|:----|
+| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+Adds to the ledger Decentralized Identifier (DID) functionality that conforms to the [World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/) standard. DIDs provide a digital identity, not dependent on a centralized authority and controlled by the DID subject.
+
+Adds new transactions:
+
+- DIDDelete - Delete the DID associated with your XRPL account.
+- DIDSet - Create a new DID or update an existing one.
+
+Adds a new `DID` ledger entry type.
+
+Adds several new transaction result codes.
 
 
 ### DeletableAccounts
@@ -725,6 +610,20 @@ Without this amendment, it is possible to have a [payment path](../docs/concepts
 With this amendment, those payments fail with the [`temBAD_PATH_LOOP` result code](../docs/references/protocol/transactions/transaction-results/tem-codes.md) instead.
 
 
+### fixAMMOverflowOffer
+
+[fixAMMOverflowOffer]: #fixammoverflowoffer
+
+| Amendment    | fixAMMOverflowOffer |
+|:-------------|:--------------|
+| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | Yes |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes the improper handling of large synthetic AMM offers in the payment engine. Due to the importance of this fix, the default vote in the source code has been set to YES.
+
+
 ### fixAmendmentMajorityCalc
 [fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
 
@@ -753,6 +652,63 @@ Without this amendment, the minimum threshold for amendment activation is any va
 Changes the way Checks transactions affect account metadata, so that Checks are properly added to the [account](../docs/concepts/accounts/index.md) history of the receiving account. (Specifically, they update the `PreviousTxnID` and `PreviousTxnLedgerSeq` fields of the receiving account's [AccountRoot object](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md), which can be used to trace the "thread" of transactions that affected the account and the objects it owns.)
 
 Without this amendment, Checks transactions ([CheckCreate][], [CheckCash][], and [CheckCancel][]) only update the account history of the sender. With this amendment, those transactions affect both the sending and receiving accounts. This amendment has no effect unless the [Checks amendment](#checks) is also enabled.
+
+
+### fixDisallowIncomingV1
+[fixDisallowIncomingV1]: #fixdisallowincomingv1
+
+| Amendment    | fixDisallowIncomingV1 |
+|:-------------|:--------------|
+| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue with approving trustlines after a user enables the `lsfDisallowIncomingTrustline` flag on their account.
+
+To recreate this issue:
+
+1. An issuer sets `asfRequireAuth` on their account.
+2. The user sets `asfDisallowIncomingTrustline` on their account.
+3. The user submits a `SetTrust` transaction to the issuer.
+4. The issuer is unable to authorize the trustline.
+
+With this amendment, the issuer can now authorize the trustline.
+
+This amendment has no effect unless the [DisallowIncoming][] amendment is enabled.
+
+
+### fixFillOrKill
+[fixFillOrKill]: #fixfillorkill
+
+| Amendment    | fixFillOrKill |
+|:-------------|:--------------|
+| Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue introduced in the `FlowCross` amendment. Offers with the `tfFillOrKill` flag set and `tfSell` not set will fail if the exchange rate on the offer is better than, but doesn't exactly match, the order book rate.
+
+This amendment enables the payment engine to properly handle this scenario and allow offers to cross.
+
+This amendment has no effect unless the [FlowCross][] amendment is enabled.
+
+
+### fixInnerObjTemplate
+
+[fixInnerObjTemplate]: #fixinnerobjtemplate
+
+| Amendment    | fixInnerObjTemplate |
+|:-------------|:--------------|
+| Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
+| Status       | Enabled |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment fixes an issue with accessing the AMM `sfTradingFee` and `sfDiscountedFee` fields in the inner objects of `sfVoteEntry` and `sfAuctionSlot`.
+
+Currently, the inner object template isn't set upon object creation. If the object contains an `soeDEFAULT` field and is initially set to the default value, accessing the field results in a `tefEXCEPTION` error in some circumstances. This amendment adds an `STObject` constructor overload that includes an additional boolean argument to set the inner object template.
 
 
 ### fixMasterKeyAsRegularKey
@@ -821,6 +777,20 @@ Amendment `fixNFTokenRemint` would change the way NFT sequence numbers are const
 The amendment also introduces a new account deletion restriction. An account can only be deleted if `FirstNFTSequence` + `MintedNFTokens` + 256 is less than the current ledger sequence (256 was chosen as a heuristic restriction for account deletion and already exists in the account deletion constraint). Without this restriction, an NFT could still be re-minted under certain conditions.
 
 **Warning:** This is a **breaking change** for projects & tools relying on their own locally computed NFTokenID for minted tokens. If you have code to calculate NFTokenIDs, you must update it to match the new fomula. For an example of how to do so with backwards compatibility, see this [well known reference implementation in JavaScript](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).
+
+
+### fixNFTokenReserve
+
+[fixNFTokenReserve]: #fixnftokenreserve
+
+| Amendment    | fixNFTokenReserve |
+|:-------------|:--------------|
+| Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
+| Status       | Open for Voting |
+| Default Vote (Latest stable release) | No |
+| Pre-amendment functionality retired? | No |
+
+This amendment adds a check to the `NFTokenAcceptOffer` transactor to see if the `OwnerCount` changes. If it does, it makes an additional check that the reserve requirement is met for the updated owner count.
 
 
 ### fixNonFungibleTokensV1_2
@@ -1379,13 +1349,33 @@ With this amendment enabled, a `TrustSet` transaction with [`tfSetfAuth` enabled
 [XChainBridge]: #xchainbridge
 
 | Amendment    | XChainBridge |
-|:-------------|:-------------|
+|:-------------|:-----------------|
 | Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | In Development |
+| Status       | Open for Voting |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds "cross-chain bridges" for synchronizing assets between different networks, such as Mainnet and a sidechain. Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
+Adds cross-chain bridges, enabling the transfer of digital assets between networks (for example, between Mainnet and a sidechain).
+Standards draft: [XLS-38d Cross-Chain Bridge](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-38d-XChainBridge/README.md).
+
+Adds new transactions:
+
+- XChainAccountCreateCommit - Create a new account for a witness server to submit transactions on an issuing chain..
+- XChainAddAccountCreateAttestation - Provide an attestation that an account was created for a witness server to use.
+- XChainAddClaimAttestation - Provide an attestation that assets were locked on a locking chain.
+- XChainClaim - Claim assets on the destination chain.
+- XChainCommit - Locks assets on the locking chain.
+- XChainCreateBridge - Create a bridge ledger object.
+- XChainCreateClaimID - Create a new cross-chain claim ID that is used for a cross-chain transfer.
+- XChainModifyBridge - Modify the parameters of a bridge.
+
+Adds new ledger entry types:
+
+- Bridge - A single cross-chain bridge that connects the XRP Ledger with another blockchain.
+- XChainOwnedClaimID - A cross-chain transfer of value that includes information of the account on the source chain that locks or burns the funds on the source chain.
+- XChainOwnedCreateAccountClaimID - Collects attestations for creating an account via a cross-chain transfer.
+
+Adds several new transaction result codes.
 
 
 ### XRPFees
@@ -1394,7 +1384,7 @@ Adds "cross-chain bridges" for synchronizing assets between different networks, 
 | Amendment    | XRPFees |
 |:-------------|:--------|
 | Amendment ID | 93E516234E35E08CA689FA33A6D38E103881F8DCB53023F728C307AA89D515A7 |
-| Status       | Open for Voting |
+| Status       | Enabled |
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 

@@ -464,7 +464,7 @@ path_findコマンドには3種類のモード（サブコマンド）があり�
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
+* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が _ある_ Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 
 ### 非同期フォローアップ
 
@@ -539,7 +539,7 @@ Pathfindingリクエストが正常にクローズされた場合、レスポン
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - フィールドの指定が正しくないか、必須フィールドが指定されていません。
-* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）でこのメソッドを使用しようとしました。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
+* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）でこのメソッドを使用しようとしました。（JSON-RPCと互換性が _ある_ Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 * `noPathRequest` - Pathfindingリクエストをクローズしようとしましたが、実行中のリクエストがありませんでした。
 
 ## path_find status
@@ -584,7 +584,7 @@ Pathfindingリクエストが実行中の場合、レスポンスは[`path_find 
 
 * [汎用エラータイプ][]のすべて。
 * `invalidParams` - 1つ以上のフィールドの指定が正しくないか、1つ以上の必須フィールドが指定されていません。
-* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が_ある_Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
+* `noEvents` - 非同期コールバックをサポートしていないプロトコル（JSON-RPCなど）を使用しています。（JSON-RPCと互換性が _ある_ Pathfindingメソッドについては、[ripple_path_findメソッド][]をご覧ください。）
 * `noPathRequest` - Pathfindingリクエストのステータスを確認しようとしましたが、処理中のリクエストがありませんでした。
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
