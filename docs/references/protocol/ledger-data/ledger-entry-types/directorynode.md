@@ -58,16 +58,23 @@ There are three kinds of directory:
 {% tab label="NFT Offer Directory" %}
 ```json
 {
-    "Flags": 0,
-    "Indexes": [
-        "91E23C060E8D46CBE436382659CF9E31DE3AEB630927D1657D88D033E330F085"
-    ],
-    "LedgerEntryType": "DirectoryNode",
-    "Owner": "rGSte5MQe6smA8ep5rPtKnVJG3JoySzKgs",
-    "RootIndex": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3",
-    "index": "8696AF0E701716A471303F26F6671AF146ACD1ED34597FF10A3874EF2631DCC3"
-}
-```
+   "result": {
+      "index": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A",
+      "ledger_current_index": 310,
+      "node": {
+         "Flags": 2,
+         "Indexes": [
+            "83C81AC39F9771DDBCD66F6C225FC76EFC0971384EC6148BAFA5BD18019FC495"
+         ],
+         "LedgerEntryType": "DirectoryNode",
+         "NFTokenID": "000800009988C43C563A7BB35AF34D642990CDF089F11B445EB3DCCD00000132",
+         "RootIndex": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A",
+         "index": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A"
+      },
+      "status": "success",
+      "validated": false
+   }
+}```
 {% /tab %}
 
 {% /tabs %}
@@ -82,6 +89,7 @@ There are three kinds of directory:
 | `IndexNext`         | Number    | UInt64            | No        | If this directory consists of multiple pages, this ID links to the next object in the chain, wrapping around at the end. |
 | `IndexPrevious`     | Number    | UInt64            | No        | If this directory consists of multiple pages, this ID links to the previous object in the chain, wrapping around at the beginning. |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0064`, mapped to the string `DirectoryNode`, indicates that this object is part of a directory. |
+| `NFTokenID`         | String    | Hash25            | Yes       | ID of the NFT in a buy or sell offer. |
 | `Owner`             | String    | AccountID         | No        | (Owner and NFT Offer Directories only) The address of the account that owns the objects in this directory. |
 | `RootIndex`         | String    | Hash256           | Yes       | The ID of root object for this directory. |
 | `TakerGetsCurrency` | String    | Hash160           | No        | (Offer Directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
