@@ -74,7 +74,8 @@ There are three kinds of directory:
       "status": "success",
       "validated": false
    }
-}```
+}
+```
 {% /tab %}
 
 {% /tabs %}
