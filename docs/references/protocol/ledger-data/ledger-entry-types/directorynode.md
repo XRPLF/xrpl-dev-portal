@@ -89,13 +89,13 @@ There are three kinds of directory:
 | `IndexNext`         | Number    | UInt64            | No        | If this directory consists of multiple pages, this ID links to the next object in the chain, wrapping around at the end. |
 | `IndexPrevious`     | Number    | UInt64            | No        | If this directory consists of multiple pages, this ID links to the previous object in the chain, wrapping around at the beginning. |
 | `LedgerEntryType`   | String    | UInt16            | Yes       | The value `0x0064`, mapped to the string `DirectoryNode`, indicates that this object is part of a directory. |
-| `NFTokenID`         | String    | Hash25            | Yes       | ID of the NFT in a buy or sell offer. |
-| `Owner`             | String    | AccountID         | No        | (Owner and NFT Offer Directories only) The address of the account that owns the objects in this directory. |
+| `NFTokenID`         | String    | Hash25            | No       |(NFT offer directories only) ID of the NFT in a buy or sell offer. |
+| `Owner`             | String    | AccountID         | No        | (Owner directories only) The address of the account that owns the objects in this directory. |
 | `RootIndex`         | String    | Hash256           | Yes       | The ID of root object for this directory. |
-| `TakerGetsCurrency` | String    | Hash160           | No        | (Offer Directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
-| `TakerGetsIssuer`   | String    | Hash160           | No        | (Offer Directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
-| `TakerPaysCurrency` | String    | Hash160           | No        |(Offer Directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
-| `TakerPaysIssuer`   | String    | Hash160           | No        | (Offer Directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
+| `TakerGetsCurrency` | String    | Hash160           | No        | (Offer directories only) The currency code of the `TakerGets` amount from the offers in this directory. |
+| `TakerGetsIssuer`   | String    | Hash160           | No        | (Offer directories only) The issuer of the `TakerGets` amount from the offers in this directory. |
+| `TakerPaysCurrency` | String    | Hash160           | No        |(Offer directories only) The currency code of the `TakerPays` amount from the offers in this directory. |
+| `TakerPaysIssuer`   | String    | Hash160           | No        | (Offer directories only) The issuer of the `TakerPays` amount from the offers in this directory. |
 
 
 ## {% $frontmatter.seo.title %} Flags
