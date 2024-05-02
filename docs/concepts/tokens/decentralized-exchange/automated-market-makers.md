@@ -31,7 +31,7 @@ When users want to trade in the decentralized exchange, their [Offers](offers.md
 
 {% admonition type="info" name="Note" %}
 
-You can determine if a `Payment` interacted with an AMM by checking for a [`RippleState`](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) ledger entry in the transaction metadata. A flag value of `16777216` indicates AMM liquidity was consumed.
+You can determine if a `Payment` or `OfferCreate` transaction interacted with an AMM by checking for a [`RippleState`](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) ledger entry in the transaction metadata. A `Flags` value of `16777216` indicates AMM liquidity was consumed.
 
 {% /admonition %}
 
