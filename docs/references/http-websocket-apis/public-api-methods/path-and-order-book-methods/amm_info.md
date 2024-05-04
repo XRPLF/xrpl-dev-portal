@@ -13,7 +13,7 @@ labels:
 
 The {% code-page-name /%} method gets information about an Automated Market Maker (AMM) instance.
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 
 ### Request Format
