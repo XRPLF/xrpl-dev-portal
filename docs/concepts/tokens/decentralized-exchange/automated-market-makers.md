@@ -29,6 +29,12 @@ An AMM holds two different assets: at most one of these can be XRP, and one or b
 
 When users want to trade in the decentralized exchange, their [Offers](offers.md) and [Cross-Currency Payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching Offers, AMMs, or a mix of both, depending on what's cheaper.
 
+{% admonition type="info" name="Note" %}
+
+You can determine if a `Payment` or `OfferCreate` transaction interacted with an AMM by checking for a [`RippleState`](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) ledger entry in the transaction metadata. A `Flags` value of `16777216` indicates AMM liquidity was consumed.
+
+{% /admonition %}
+
 An AMM sets its exchange rate based on the balance of assets in the pool. When you trade against an AMM, the exchange rate adjusts based on how much your trade shifts the balance of assets the AMM holds. As its supply of one asset goes down, the price of that asset goes up; as its supply of an asset goes up, the price of that asset goes down. An AMM gives generally better exchange rates when it has larger overall amounts in its pool. This is because any given trade causes a smaller shift in the balance of the AMM's assets. The more a trade unbalances the AMM's supply of the two assets, the more extreme the exchange rate becomes.
 
 The AMM also charges a percentage trading fee on top of the exchange rate.
