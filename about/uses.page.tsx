@@ -680,7 +680,7 @@ export default function Uses() {
             <div className="p-3 col-lg-8 mx-lg-auto">
               <div className="d-flex flex-column-reverse">
                 <h1 className="mb-0">
-                  {translate("Powering Innovative Use Cases and Projects.")}
+                  {translate("Powering Innovative Use Cases and Projects")}
                 </h1>
                 <h6 className="eyebrow mb-3">{translate("XRPL Ecosystem")}</h6>
               </div>

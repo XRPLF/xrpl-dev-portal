@@ -12,7 +12,9 @@ theme:
 
 This week, the faucets on both Testnet and Devnet faucets had their supply of test XRP depleted. Team RippleX, which operates the test networks, has been periodically moving funds back to the Testnet faucet to keep it running temporarily. Additionally, both faucets have had their default funding amount reduced to 100 XRP and the maximum amount from one request reduced. Both networks will be completely reset on Saturday, 2024-04-20. Until then, you may encounter times when the faucets are empty and cannot provide test XRP.
 
-This post will be updated following the successful completion of the resets.
+{% admonition type="success" name="Update" %}
+The resets have completed successfully. Testnet and Devnet networks and faucets are online and fully operational.
+{% /admonition %}
 
 ## Background
 
