@@ -1,8 +1,7 @@
 const xrpl = require('xrpl')
 const BigNumber = require('bignumber.js')
 
-/*
- * Convert a trading fee to a value that can be multiplied
+/* Convert a trading fee to a value that can be multiplied
  * by a total to "subtract" the fee from the total.
  * @param tFee int {0, 1000}
  *             such that 1 = 1/100,000 and 1000 = 1% fee
@@ -12,8 +11,7 @@ function feeMult(tFee) {
     return BigNumber(1).minus( feeDecimal(tFee) )
 }
 
-/*
- * Same as feeMult, but with half the trading fee.
+/* Same as feeMult, but with half the trading fee.
  * @param tFee int {0, 1000}
  *             such that 1 = 1/100,000 and 1000 = 1% fee
  * @returns BigNumber (1 - (fee/2)) as a decimal
@@ -22,8 +20,7 @@ function feeMultHalf(tFee) {
     return BigNumber(1).minus( feeDecimal(tFee).dividedBy(2) )
 }
 
-/*
- * Convert a trading fee to a decimal BigNumber value,
+/* Convert a trading fee to a decimal BigNumber value,
  * for example 1000 becomes 0.01
  * @param tFee int {0, 1000}
  *             such that 1 = 1/100,000 and 1000 = 1% fee
@@ -34,8 +31,7 @@ function feeDecimal(tFee) {
     return BigNumber(tFee).dividedBy(AUCTION_SLOT_FEE_SCALE_FACTOR)
 }
 
-/*
- * Implements the AMM SwapOut formula, as defined in XLS-30 section 2.4 AMM 
+/* Implement the AMM SwapOut formula, as defined in XLS-30 section 2.4 AMM 
  * Swap, formula 10. The asset weights WA/WB are currently always 1/1 so 
  * they're canceled out.
  * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/AMMHelpers.h#L253-L258
@@ -60,8 +56,7 @@ function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
            ).dividedBy(feeMult(trading_fee))
 }
 
-/*
- * Computes the quadratic formula. Helper function for ammAssetIn.
+/* Compute the quadratic formula. Helper function for ammAssetIn.
  * Params and return value are BigNumber instances.
  */
 function solveQuadraticEq(a,b,c) {
@@ -71,8 +66,7 @@ function solveQuadraticEq(a,b,c) {
     return ( b.negated().plus(b2minus4ac.sqrt()) ).dividedBy(a.multipliedBy(2))
 }
 
-/*
- * Implements the AMM single-asset deposit formula to calculate how much to
+/* Implement the AMM single-asset deposit formula to calculate how much to
  * put in so that you receive a specific number of LP Tokens back.
  * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/impl/AMMHelpers.cpp#L55-L83
  * @param pool_in string - Quantity of input asset the pool already has
@@ -100,38 +94,7 @@ function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
     return asset1Balance.multipliedBy(solveQuadraticEq(a,b,c))
 }
 
-/*
- * Calculates the necessary bid to win the AMM Auction slot, per the pricing
- * algorithm defined in XLS-30 section 4.1.1, if you already hold LP Tokens.
- * Not useful in the case where you need to make a deposit to get LP Tokens,
- * because doing so causes more LP Tokens to be issued, changing the min bid.
- * @returns BigNumber - the minimum amount of LP tokens to win the auction slot
- */
-function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
-    const tfee_decimal = feeDecimal(trading_fee)
-    const lptokens = BigNumber(lpt_balance)
-    const min_bid = lptokens.multipliedBy(tfee_decimal).dividedBy(25)
-    const b = BigNumber(old_bid)
-    let new_bid = min_bid
-    
-    if (time_interval == 0) {
-        new_bid = b.multipliedBy("1.05").plus(min_bid)
-    } else if (time_interval <= 19) {
-        const t60 = BigNumber(time_interval).multipliedBy("0.05"
-                    ).exponentiatedBy(60)
-        new_bid = b.multipliedBy("1.05").multipliedBy(
-                      BigNumber(1).minus(t60)
-                  ).plus(min_bid)
-    }
-
-    const rounded_bid = new_bid.plus(lptokens).precision(15, BigNumber.CEILING
-                              ).minus(lptokens).precision(15, BigNumber.FLOOR)
-    return rounded_bid
-}
-
-
-/*
- * Calculates how much to deposit, in terms of LP Tokens out, to be able to win
+/* Calculate how much to deposit, in terms of LP Tokens out, to be able to win
  * the auction slot. This is based on the slot pricing algorithm defined in 
  * XLS-30 section 4.1.1, but factors in the increase in the minimum bid as a 
  * result of having new LP Tokens issued to you from your deposit.
@@ -173,7 +136,7 @@ async function main() {
     const wallet = (await client.fundWallet()).wallet
     console.log(`Got address ${wallet.address} / seed ${wallet.seed}.`)
 
-    // Look up the AMM
+    // Look up AMM status -----------------------------------------------------
     const from_asset = {
         "currency": "XRP"
     }
@@ -242,21 +205,12 @@ async function main() {
     console.log(`Potential savings: ${xrpl.dropsToXrp(potential_savings)} XRP`)
 
     // Calculate the cost of winning the auction slot, in LP Tokens -----------
-    
-    // The price is slightly different if you already hold LP Tokens vs if you 
-    // have to make a deposit, because the deposit causes more LP Tokens to be
-    // issued, which increases the minimum bid.
-    const lp_auction_price = auctionPrice(old_bid, time_interval, 
-                                          full_trading_fee, lpt.value
-                                          ).precision(15)
-    console.log(`Auction price for current LPs: ${lp_auction_price} LP Tokens`)
-
     const auction_price = auctionDeposit(old_bid, time_interval, 
                                          full_trading_fee, lpt.value
                                          ).precision(15)
     console.log(`Auction price after deposit: ${auction_price} LP Tokens`)
     
-    // Calculate how much XRP to deposit to receive that many LP Tokens
+    // Calculate how much XRP to deposit to receive that many LP Tokens -------
     const deposit_for_bid = ammAssetIn(pool_in_bn, lpt.value, auction_price, 
                                        full_trading_fee
                                        ).dp(0, BigNumber.ROUND_CEIL)
@@ -337,3 +291,42 @@ async function main() {
 } // End of main()
 
 main()
+
+/// TODO: move everything below here to a separate code sample with minimal setup to make it work:
+
+// /* Calculate the necessary bid to win the AMM Auction slot, per the pricing
+//  * algorithm defined in XLS-30 section 4.1.1, if you already hold LP Tokens.
+//  * Not useful in the case where you need to make a deposit to get LP Tokens,
+//  * because doing so causes more LP Tokens to be issued, changing the min bid.
+//  * @returns BigNumber - the minimum amount of LP tokens to win the auction slot
+//  */
+// function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
+//     const tfee_decimal = feeDecimal(trading_fee)
+//     const lptokens = BigNumber(lpt_balance)
+//     const min_bid = lptokens.multipliedBy(tfee_decimal).dividedBy(25)
+//     const b = BigNumber(old_bid)
+//     let new_bid = min_bid
+    
+//     if (time_interval == 0) {
+//         new_bid = b.multipliedBy("1.05").plus(min_bid)
+//     } else if (time_interval <= 19) {
+//         const t60 = BigNumber(time_interval).multipliedBy("0.05"
+//                     ).exponentiatedBy(60)
+//         new_bid = b.multipliedBy("1.05").multipliedBy(
+//                       BigNumber(1).minus(t60)
+//                   ).plus(min_bid)
+//     }
+
+//     const rounded_bid = new_bid.plus(lptokens).precision(15, BigNumber.CEILING
+//                               ).minus(lptokens).precision(15, BigNumber.FLOOR)
+//     return rounded_bid
+// }
+// 
+// 
+//     // The price is slightly different if you already hold LP Tokens vs if you 
+//     // have to make a deposit, because the deposit causes more LP Tokens to be
+//     // issued, which increases the minimum bid.
+//     const lp_auction_price = auctionPrice(old_bid, time_interval, 
+//         full_trading_fee, lpt.value
+//         ).precision(15)
+// console.log(`Auction price for current LPs: ${lp_auction_price} LP Tokens`)
