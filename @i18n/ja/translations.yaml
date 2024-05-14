@@ -19,8 +19,8 @@ topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
 
 # index.page.tsx
-The Blockchain: ビジネスのための
-Built for Business: ブロックチェーン
+home.hero.h1part1: ビジネスのための
+home.hero.h1part2: ブロックチェーン
 XRPL | XRP Ledger: XRPL | XRP Ledger
 Start Building: 始めよう
 'The XRP Ledger: The Blockchain Built for Business': 'XRP Ledger: ビジネスに最適なブロックチェーン'
