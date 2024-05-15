@@ -578,6 +578,28 @@
         }
       },
       {
+        "name": "ledger_entry - Bridge",
+        "description": "Returns a single Bridge object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-bridge-object",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_bridge",
+          "command": "ledger_entry",
+          "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+          "bridge": {
+            "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+            "IssuingChainIssue": {
+              "currency": "XRP"
+            },
+            "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+            "LockingChainIssue": {
+              "currency": "XRP"
+            }
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
         "name": "ledger_entry - DirectoryNode",
         "description": "Returns a directory object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-directorynode-object",

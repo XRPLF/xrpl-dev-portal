@@ -9,7 +9,7 @@ labels:
 # AMMBid
 [[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/app/tx/impl/AMMBid.cpp "Source")
 
-_(Requires the [AMM amendment][])_
+_(Added by the [AMM amendment][])_
 
 Bid on an [Automated Market Maker](../../../../concepts/tokens/decentralized-exchange/automated-market-makers.md)'s (AMM's) auction slot. If you win, you can trade against the AMM at a discounted fee until you are outbid or 24 hours have passed. If you are outbid before 24 hours have passed, you are refunded part of the cost of your bid based on how much time remains.
 
@@ -62,8 +62,6 @@ You bid using the AMM's LP Tokens; the amount of a winning bid is returned to th
 | `BidMax`       | [Currency Amount][] | Amount            | No        | Pay at most this amount for the slot. If the cost to win the bid is higher than this amount, the transaction fails. If omitted, pay as much as necessary to win the bid. |
 | `AuthAccounts` | Array               | STArray           | No        | A list of up to 4 additional accounts that you allow to trade at the discounted fee. This cannot include the address of the transaction sender. Each of these objects should be an [Auth Account object](#auth-account-objects). |
 
-You cannot specify both `BidMin` and `BidMax`.
-
 ### Auth Account Objects
 
 Each member of the `AuthAccounts` array must be an object with the following field:
@@ -76,16 +74,22 @@ Like other "inner objects" that can appear in arrays, the JSON representation of
 
 ## Auction Slot Price
 
-If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's `BidMax` value, the transaction fails with a `tecAMM_FAILED_BID` result.
+If successful, the transaction automatically outbids the previous slot owner and debits the bid price from the sender's LP Tokens. The price to win the auction decreases over time, divided into 20 intervals of 72 minutes each. If the sender does not have enough LP Tokens to win the bid, or the price of the bid is higher than the transaction's `BidMax` value, the transaction fails with a `tecAMM_INVALID_TOKENS` result.
 
-- If the auction slot is currently empty, expired, or in its last interval, the **minimum bid** is **0.001% of the AMM's total LP Tokens balance**.
+- If the auction slot is currently empty, expired, or in its last interval, the **minimum bid** is defined by the following formula:
 
-    **Caution:** This minimum value is a placeholder and may change before the AMM feature becomes finalized.
+    ```text
+    M = L * F / 25
+    ```
+
+    - `M` is the minimum bid.
+    - `L` is the total number of LP Tokens currently issued by the AMM
+    - `F` is the trading fee, as a decimal
 
 - Otherwise, the price to outbid the current holder is calculated using the following formula:
 
-    ```
-    P = B × 1.05 × (1 - t⁶⁰) + M
+    ```text
+    P = B * 1.05 * (1 - t^60) + M
     ```
 
     - `P` is the price to outbid, in LP Tokens.
@@ -95,24 +99,24 @@ If successful, the transaction automatically outbids the previous slot owner and
 
     There are two special cases for the cost to outbid someone. In the **first interval** after someone wins the bid, the price to outbid them is the minimum bid plus 5% more than the existing bid:
 
-    ```
-    P = B × 1.05 + M
+    ```text
+    P = B * 1.05 + M
     ```
 
     In the **last interval** of someone's slot, the cost to outbid someone is only the minimum bid:
 
-    ```
+    ```text
     P = M
     ```
 
-**Note:** To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](../../../../concepts/ledgers/ledger-close-times.md) of the previous ledger, which is approximate.
+{% admonition type="info" name="Note"%}To make sure all servers in the network reach the same results when building a ledger, time measurements are based on the [official close time](../../../../concepts/ledgers/ledger-close-times.md) of the previous ledger, which is approximate.{% /admonition %}
 
 ## Bid Refunds
 
 When you outbid an active auction slot, the AMM refunds the previous holder part of the price, using this formula:
 
 ```text
-R = B × (1 - t)
+R = B * (1 - t)
 ```
 
 - `R` is the amount to refund, in LP Tokens.
@@ -121,7 +125,7 @@ R = B × (1 - t)
 
 As a special case, during the final (20th) interval of the auction slot, the refunded amount is zero.
 
-**Note:** As with all XRP Ledger times, transaction processing uses the [official close time](../../../../concepts/ledgers/ledger-close-times.md) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.
+{% admonition type="info" name="Note"%}As with all XRP Ledger times, transaction processing uses the [official close time](../../../../concepts/ledgers/ledger-close-times.md) of the _previous_ ledger, which can result in a difference of up to about 10 seconds from real time.{% /admonition %}
 
 
 ## Error Cases

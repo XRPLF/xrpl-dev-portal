@@ -14,7 +14,7 @@ const alertBanner = {
   show: true,
   message: "XRP Ledger Apex is back in Amsterdam",
   button: "Register Now",
-  link: "https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=banner",
+  link: "https://www.xrpledgerapex.com/?utm_source=email&utm_medium=email_marketing&utm_campaign=EVENTS_XRPL_Apex_2024_Q2&utm_term=events_page_cta_button",
 };
 
 export function Navbar(props) {

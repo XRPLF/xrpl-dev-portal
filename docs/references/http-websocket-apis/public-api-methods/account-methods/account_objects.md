@@ -14,16 +14,17 @@ The `account_objects` command returns the raw [ledger format][] for all ledger e
 
 The types of objects that may appear in the `account_objects` response include:
 
-- [Offer entries](../../../protocol/ledger-data/ledger-entry-types/offer.md) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) for more information.)
-- [RippleState entries](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md) for trust lines where this account's side is not in the default state.
-- The account's [SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md), if the account has [multi-signing](../../../../concepts/accounts/multi-signing.md) enabled.
-- [Escrow entries](../../../../concepts/payment-types/escrow.md) for held payments that have not yet been executed or canceled.
-- [PayChannel entries](../../../protocol/ledger-data/ledger-entry-types/paychannel.md) for open payment channels.
+- [Bridge entries](../../../protocol/ledger-data/ledger-entry-types/bridge.md) for cross-chain bridges. _(Requires the [XChainBridge amendment][] {% not-enabled /%})_
 - [Check entries](../../../protocol/ledger-data/ledger-entry-types/check.md) for pending Checks.
 - [DepositPreauth entries](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md) for deposit preauthorizations.
-- [Ticket entries](../../../../concepts/accounts/tickets.md) for Tickets.
+- [Escrow entries](../../../../concepts/payment-types/escrow.md) for held payments that have not yet been executed or canceled.
 - [NFTokenOffer entries](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md) for offers to buy or sell an NFT.
 - [NFTokenPage entries](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md) for collections of NFTs. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}New in: rippled 1.11.0{% /badge %}
+- [Offer entries](../../../protocol/ledger-data/ledger-entry-types/offer.md) for orders that are currently live, unfunded, or expired but not yet removed. (See [Lifecycle of an Offer](../../../../concepts/tokens/decentralized-exchange/offers.md#lifecycle-of-an-offer) for more information.)
+- [PayChannel entries](../../../protocol/ledger-data/ledger-entry-types/paychannel.md) for open payment channels.
+- [RippleState entries](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md) for trust lines where this account's side is not in the default state.
+- The account's [SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md), if the account has [multi-signing](../../../../concepts/accounts/multi-signing.md) enabled.
+- [Ticket entries](../../../../concepts/accounts/tickets.md) for Tickets.
 
 
 ## Request Format
@@ -81,7 +82,7 @@ The request includes the following parameters:
 | `ledger_index`           | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 | `limit`                  | Number           | No        | The maximum number of objects to include in the results. Must be within the inclusive range `10` to `400` on non-admin connections. The default is `200`. |
 | `marker`                 | [Marker][]       | No        | Value from a previous paginated response. Resume retrieving data where that response left off. |
-| `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `check`, `deposit_preauth`, `escrow`, `nft_offer`, `nft_page`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
+| `type`                   | String           | No        | Filter results by a ledger entry type. The valid types are: `bridge`, `check`, `deposit_preauth`, `escrow`, `nft_offer`, `nft_page`, `offer`, `payment_channel`, `signer_list`, `state` (trust line), and `ticket`. <!-- Author's note: Omitted types that can't be owned by an account --> |
 
 **Note:** The commandline interface to the `account_objects` command doesn't accept the `type` field. Use the [json method][] to send the JSON-RPC format request on the commandline instead.
 
