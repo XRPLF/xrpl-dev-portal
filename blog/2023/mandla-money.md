@@ -14,7 +14,7 @@ This week on Developer Reflections, we’re proud to highlight [Mandla Money](ht
 
 <!-- BREAK -->
 
-Designed to enable better financial inclusion for the unbanked, Mandla SMS Wallet provides a mechanism for transparent, traceable and low-cost distribution of value via text message in emerging economies. Users can send assets to one another using their cell phone numbers or Mandla IDs as XRP Ledger destination tags, for example `send#asset#MandlaID#amount`. The use cases include quick and inexpensive distribution of social welfare, remittances (both domestic and cross-border payments) and unlike the XRP Ledger, offline payment capabilties in Mandla. 
+Designed to enable better financial inclusion for the unbanked, Mandla SMS Wallet provides a mechanism for transparent, traceable, and low-cost distribution of value via text message in emerging economies. Users can send assets to one another using their cell phone numbers or Mandla IDs as XRP Ledger destination tags, for example, `send#asset#MandlaID#amount`. The use cases include quick and inexpensive distribution of social welfare, remittances (both domestic and cross-border payments), and unlike the XRP Ledger, offline payment capabilities in Mandla.
 
 In short, the way the Mandla SMS wallet works is akin to sending a payment using ApplePay over text message with the XRP Ledger as the payment rail.
 
