@@ -17,15 +17,15 @@ labels:
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
-| [fixAMMOverflowOffer][]           | v2.1.1     | [投票中: 2024-03-27](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_80d0e0") |
-| [fixInnerObjTemplate][]           | v2.1.0     | [投票中: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
-| [fixNFTokenReserve][]             | v2.1.0     | [投票中: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
+| [fixAMMOverflowOffer][]           | v2.1.1     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC "BADGE_GREEN") |
+| [fixInnerObjTemplate][]           | v2.1.0     | [有効: 2024-04-08](https://livenet.xrpl.org/transactions/EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235 "BADGE_GREEN") |
+| [fixNFTokenReserve][]             | v2.1.0     | [有効: 2024-04-12](https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4 "BADGE_GREEN") |
 | [DID][]                           | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixDisallowIncomingV1][]         | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixFillOrKill][]                 | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [fixDisallowIncomingV1][]         | v2.0.0     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB "BADGE_GREEN") |
+| [fixFillOrKill][]                 | v2.0.0     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B "BADGE_GREEN") |
 | [XChainBridge][]                  | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [有効: 2024-03-22](https://livenet.xrpl.org/transactions/75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99 "BADGE_GREEN") |
-| [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
+| [XRPFees][]                       | v1.10.0    | [有効: 2023-03-25](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [有効: 2024-02-08](https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11 "BADGE_GREEN") |
 | [fixReducedOffersV1][]            | v1.12.0    | [有効: 2023-11-24](https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1 "BADGE_GREEN") |
 | [fixNFTokenRemint][]              | v1.11.0    | [有効: 2023-11-27](https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF "BADGE_GREEN") |
@@ -119,7 +119,7 @@ labels:
 | Amendment    | fixAMMOverflowOffer |
 |:-------------|:--------------|
 | Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | はい |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -132,7 +132,7 @@ labels:
 | Amendment    | fixInnerObjTemplate |
 |:-------------|:--------------|
 | Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -148,7 +148,7 @@ labels:
 | Amendment    | fixNFTokenReserve |
 |:-------------|:--------------|
 | Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -161,7 +161,7 @@ labels:
 | Amendment    | fixDisallowIncomingV1 |
 |:-------------|:--------------|
 | Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
@@ -185,7 +185,7 @@ labels:
 | Amendment    | fixFillOrKill |
 |:-------------|:--------------|
 | Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
-| ステータス     | 投票中 |
+| ステータス     | 有効 |
 | デフォルトの投票(最新の安定版) | いいえ |
 | Amendment前の機能は廃止? | いいえ |
 
