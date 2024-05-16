@@ -11,7 +11,6 @@ i18n:
       name: English
     - code: ja
       name: 日本語
-      name: Español
 redirects:
   $ref: redirects.yaml
 seo:
