@@ -878,7 +878,7 @@ export default function Uses() {
               </div>
               {/* cards */}
               <div
-                className="right row col row-cols-lg-2 m-0 p-0"
+                className="right row col row-cols-lg-2 m-2 p-0"
                 id="use_case_companies_list"
               >
                 {filteredCards.map((card) => (
