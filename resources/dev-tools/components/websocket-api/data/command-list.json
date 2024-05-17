@@ -500,6 +500,14 @@
         }
       },
       {
+        "name": "version",
+        "description": "Retrieves the API version information.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/version",
+        "body": {
+          "command": "version"
+        }
+      },
+      {
         "name": "server_state",
         "description": "Reports a machine-readable version of various information about the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state",
