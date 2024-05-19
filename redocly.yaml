@@ -71,58 +71,111 @@ theme:
         groupTranslationKey: theme.footer.about
         items:
           - page: about/index.page.tsx
+            label: XRPL Overview
+            labelTranslationKey: footer.about.xrpl-overview
           - label: Use Cases & Projects
             page: about/uses.page.tsx
+            labelTranslationKey: footer.about.use-cases-projects
           - page: about/history.page.tsx
+            label: History
+            labelTranslationKey: footer.about.history
           - page: about/impact.page.tsx
+            label: Impact
+            labelTranslationKey: footer.about.impact
           - label: XRPL Foundation
+            labelTranslationKey: footer.about.xrpl-foundation
             href: https://foundation.xrpl.org/
             external: true
           - page: about/faq.md
+            label: FAQ
+            labelTranslationKey: footer.about.faq
           - page: about/privacy-policy.md
+            label: Privacy Policy
+            labelTranslationKey: footer.about.privacy-policy
       - group: Docs
         groupTranslationKey: theme.footer.docs
         items:
           - label: XRPL Documentation
             page: docs/index.page.tsx
+            labelTranslationKey: footer.docs.xrpl-documentation
           - page: docs/introduction/index.md
+            label: Introduction
+            labelTranslationKey: footer.docs.introduction
           - page: docs/use-cases/index.md
+            label: Use Cases
+            labelTranslationKey: footer.docs.use-cases
           - page: docs/concepts/index.md
+            label: Concepts
+            labelTranslationKey: footer.docs.concepts
           - page: docs/tutorials/index.md
+            label: Tutorials
+            labelTranslationKey: footer.docs.tutorials
           - page: docs/references/index.md
+            label: References
+            labelTranslationKey: footer.docs.references
           - page: docs/infrastructure/index.md
+            label: Infrastructure
+            labelTranslationKey: footer.docs.infrastructure
       - group: Resources
         groupTranslationKey: theme.footer.resources
         items:
           - page: resources/code-samples.page.tsx
+            label: Code Samples
+            labelTranslationKey: footer.resources.code-samples
           - page: resources/dev-tools/index.page.tsx
+            label: Dev Tools
+            labelTranslationKey: footer.resources.dev-tools
           - label: XRPL Learning Portal
+            labelTranslationKey: footer.resources.xrpl-learning-portal
             href: https://learn.xrpl.org/
             external: true
           - label: XRPL Brand Kit
+            labelTranslationKey: footer.resources.xrpl-brand-kit
             href: /XRPL_Brand_Kit.zip
             external: true
           - label: Ledger Explorer
+            labelTranslationKey: footer.resources.explorer
             href: https://livenet.xrpl.org/
             external: true
           - page: resources/known-amendments.md
+            label: Known Amendments
+            labelTranslationKey: footer.resources.known-amendments
           - page: resources/contribute-code/index.md
+            label: Contribute Code
+            labelTranslationKey: footer.resources.contribute-code
           - page: resources/contribute-documentation/index.md
+            label: Contribute Documentation
+            labelTranslationKey: footer.resources.contribute-documentation
       - group: Community
         groupTranslationKey: theme.footer.community
         items:
           - page: community/index.page.tsx
+            label: Community
+            labelTranslationKey: footer.community.community
           - page: community/events.page.tsx
+            label: Events
+            labelTranslationKey: footer.community.events
           - page: community/ambassadors.page.tsx
+            label: Ambassadors
+            labelTranslationKey: footer.community.ambassadors
           - page: community/developer-funding.page.tsx
+            label: Developer Funding
+            labelTranslationKey: footer.community.developer-funding
           - label: XRPL Jobs
+            labelTranslationKey: footer.community.xrpl-jobs
             href: https://jobs.xrpl.org/
             external: true
           - page: blog/index.page.tsx
+            label: XRP Ledger Community Blog
+            labelTranslationKey: footer.community.dev-blog
           - label: XRPL Grants
+            labelTranslationKey: footer.community.xrpl-grants
             href: https://xrplgrants.org/
             external: true
           - label: GitHub
+            labelTranslationKey: footer.community.github
             href: https://github.com/XRPLF/
             external: true
           - page: community/report-a-scam.md
+            label: Report a Scam
+            labelTranslationKey: footer.community.report-a-scam
