@@ -6,7 +6,7 @@ labels:
 ---
 # version
 
-[[Source]](https://github.com/XRPLF/clio/blob/master/src/ripple/beast/core/SemanticVersion.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/beast/core/SemanticVersion.cpp "Source")
 
 The `version` command asks the server for API version information. For `clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 
