@@ -5,7 +5,7 @@ labels:
   - Core Server
 ---
 # version
-[[Source]](https://github.com/XRPLF/clio/blob/master/src/ripple/beast/core/SemanticVersion.cpp "Source")
+[[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/VersionHandler.hpp "Source")
 
 The `version` command asks the [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md) for API version information. For `rippled` servers, see [`version` (`rippled`)](../server-info-methods/version.md) instead. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.0.0" %}New in: Clio v2.0.0{% /badge %}
 
