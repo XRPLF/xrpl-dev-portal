@@ -52,6 +52,8 @@ See: [Generate a condition and fulfillment](../../tutorials/how-tos/use-speciali
 Smart contracts have a wide range of uses, but some uses include:
 
 1. Handling payments on large-value items you would otherwise need lawyers for, such as mortgages.
+![Real Estate and Supply Chain](/docs/img/uc-smart-contract-real-estate-supplies.png)
 2. Supply-chain management to ensure funds are delivered upon receipt of goods.
 3. Automating certain kinds of insurance claims that can be verified by software.
+![Insurance and Payments](/docs/img/uc-smart-contract-insurance.png)
 4. Ensuring payments are given for services rendered.
