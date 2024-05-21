@@ -56,18 +56,6 @@ const events = [
     end_date: "November 28, 2023",
     start_date: "November 28, 2023",
   },
-  // {
-  //   name: "XRPL Toronto Meetup Community - Celebrate with Us!",
-  //   description:
-  //     "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
-  //   type: "meetup",
-  //   link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
-  //   location: "Downtown, Toronto",
-  //   date: "December 7th, 6pm - 9pm",
-  //   image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
-  //   end_date: "December 7, 2023",
-  //   start_date: "December 7, 2023",
-  // },
   {
     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
     description:
@@ -180,7 +168,7 @@ const events = [
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(7);
+  const [currentIndex, setCurrentIndex] = useState(6);
 
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
