@@ -416,7 +416,7 @@ const events = [
   {
     name: "XRPL Toronto Meetup",
     description:
-      "Prepare for an evening of XRPL Toronto Meetup – a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.",
+      "Prepare for an evening of XRPL Toronto Meetup - a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.",
     type: "meetup",
     link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
     location: "Downtown Toronto",
@@ -591,19 +591,6 @@ const events = [
     image: require("../static/img/events/paris.png"),
     end_date: "January 26, 2024",
   },
-
-  {
-    name: "XRPL Toronto Meetup Community - Celebrate with Us!",
-    description:
-      "To connect the blockchain community, showcase campus ambassador projects, and celebrate the new year.",
-    type: "meetup",
-    link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
-    location: "Downtown, Toronto",
-    date: "TBD",
-    image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
-    end_date: "January 31, 2025", // putting a far future date so it remains in upcoming events until a date is confirmed
-  },
-
   {
     name: "XRP Ledger Zone ETHDenver",
     description:
