@@ -5,6 +5,8 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/testnet-reset.md
+        - page: 2024/how-to-master-xrp-transfers.md
         - page: 2024/rippled-2.1.1.md
         - page: 2024/amm-status-update.md
         - page: 2024/get-ready-for-amm.md

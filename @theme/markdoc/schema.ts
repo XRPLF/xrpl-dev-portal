@@ -122,6 +122,10 @@ export const badge: Schema & { tagName: string } = {
     href: {
       type: 'String',
       required: false
+    },
+    date: { // Not displayed, but useful for knowing how old an 'updated' badge is
+      type: 'String',
+      required: false
     }
   },
   render: 'Badge'

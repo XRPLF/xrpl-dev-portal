@@ -9,10 +9,10 @@ export const frontmatter = {
       "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
   },
 };
-const amaImage = require("../static/img/events/AMAs.png")
-const hackathon = require("../static/img/events/Hackathons.png")
-const conference = require("../static/img/events/Conference.png")
-const zone = require("../static/img/events/XRPLZone.png")
+const amaImage = require("../static/img/events/AMAs.png");
+const hackathon = require("../static/img/events/Hackathons.png");
+const conference = require("../static/img/events/Conference.png");
+const zone = require("../static/img/events/XRPLZone.png");
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -81,18 +81,6 @@ const events = [
     start_date: "September 06, 2023",
   },
   {
-    name: "APEX 2024: The XRPL Developer Summit",
-    description:
-      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
-    type: "conference",
-    link: "http://apexdevsummit.com",
-    location: "Amsterdam",
-    date: "June 11 - 13, 2024",
-    image: conference,
-    end_date: "June 13, 2024",
-    start_date: "June 11, 2024",
-  },
-  {
     name: "XRPL Developers Reddit AMA: Real World Assets",
     description:
       "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
@@ -103,30 +91,6 @@ const events = [
     image: amaImage,
     end_date: "October 17, 2023",
     start_date: "October 17, 2023",
-  },
-  {
-    name: "Paris Blockchain Week",
-    description:
-      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
-    type: "conference",
-    link: "https://www.parisblockchainweek.com/",
-    location: "Paris, France",
-    date: "April 9 - 12, 2024",
-    image: conference,
-    end_date: "April 12, 2024",
-    start_date: "April 12, 2024",
-  },
-  {
-    name: "Consensus",
-    description:
-      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
-    type: "conference",
-    link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
-    location: "Austin, Texas",
-    date: "May 29 - June 1, 2024",
-    image: conference,
-    end_date: "June 1, 2024",
-    start_date: "June 1, 2024",
   },
   {
     name: "XRP Ledger Zone ETHDenver",
@@ -152,11 +116,71 @@ const events = [
     start_date: "March 13, 2024",
     end_date: "March 13, 2024",
   },
+  {
+    name: "Paris Blockchain Week",
+    description:
+      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+    type: "conference",
+    link: "https://www.parisblockchainweek.com/",
+    location: "Paris, France",
+    date: "April 9 - 12, 2024",
+    image: conference,
+    end_date: "April 12, 2024",
+    start_date: "April 9, 2024",
+  },
+  {
+    name: "Consensus",
+    description:
+      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+    type: "conference",
+    link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
+    location: "Austin, Texas",
+    date: "May 29 - June 1, 2024",
+    image: conference,
+    end_date: "June 1, 2024",
+    start_date: "May 29, 2024",
+  },
+  {
+    name: "EasyA Ripple Hackathon",
+    description:
+      "Join the XRPL community at the Ripple x EasyA Hackathon in Amsterdam, where startups can compete for a $20,000 prize and a chance to present at the prestigious APEX Conference alongside industry leaders. Secure your spot now! ",
+    type: "hackathon",
+    link: "https://www.eventbrite.co.uk/e/easya-x-ripple-apex-hackathon-win-20000-tickets-882724261027?aff=oddtdtcreator",
+    location: "Amsterdam",
+    date: "June 8 - 9, 2024",
+    image: hackathon,
+    start_date: "June 8, 2024",
+    end_date: "June 9, 2024",
+  },
+  {
+    name: "APEX 2024: The XRPL Developer Summit",
+    description:
+      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
+    type: "conference",
+    link: "http://apexdevsummit.com",
+    location: "Amsterdam",
+    date: "June 11 - 13, 2024",
+    image: conference,
+    end_date: "June 13, 2024",
+    start_date: "June 11, 2024",
+  },
+  {
+    name: "SwissHacks",
+    description:
+      "Transform Fintech with XRPL at SwissHacks 2024! Prototype and collaborate with fellow builders to reinvent finance for a brighter future",
+    type: "hackathon",
+    link: "https://airtable.com/app61tk91vkuwKhGx/pagCN29Br8RdxTvp7/form",
+    location: "Zurich",
+    date: "June 28 - 30, 2024",
+    image: hackathon,
+    start_date: "June 28, 2024",
+    end_date: "June 30, 2024",
+  },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(7);
 
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;

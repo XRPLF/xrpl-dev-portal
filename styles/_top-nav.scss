@@ -587,7 +587,7 @@ article h6:before,
   pointer-events: none;
 }
 article h1:first-of-type:before {
-  margin-top: -60px; // Don't add extra space to page title
+  margin-top: -40px; // Add less space to page title (but don't overlap Edit button)
 }
 
 // Animated chevron (e.g. for language dropdown) -------------------------------

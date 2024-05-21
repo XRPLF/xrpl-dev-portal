@@ -29,6 +29,12 @@ An AMM holds two different assets: at most one of these can be XRP, and one or b
 
 When users want to trade in the decentralized exchange, their [Offers](offers.md) and [Cross-Currency Payments](../../payment-types/cross-currency-payments.md) can automatically use AMMs to complete the trade. A single transaction might execute by matching Offers, AMMs, or a mix of both, depending on what's cheaper.
 
+{% admonition type="info" name="Note" %}
+
+You can determine if a `Payment` or `OfferCreate` transaction interacted with an AMM by checking for a [`RippleState`](../../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md) ledger entry in the transaction metadata. A `Flags` value of `16777216` indicates AMM liquidity was consumed.
+
+{% /admonition %}
+
 An AMM sets its exchange rate based on the balance of assets in the pool. When you trade against an AMM, the exchange rate adjusts based on how much your trade shifts the balance of assets the AMM holds. As its supply of one asset goes down, the price of that asset goes up; as its supply of an asset goes up, the price of that asset goes down. An AMM gives generally better exchange rates when it has larger overall amounts in its pool. This is because any given trade causes a smaller shift in the balance of the AMM's assets. The more a trade unbalances the AMM's supply of the two assets, the more extreme the exchange rate becomes.
 
 The AMM also charges a percentage trading fee on top of the exchange rate.
@@ -71,9 +77,11 @@ To vote, a liquidity provider sends an [AMMVote transaction][]. Whenever anyone 
 
 ### Auction Slot
 
-Unlike any previous Automated Market Makers, the XRP Ledger's AMM design has an _auction slot_ that a liquidity provider can bid on to get a discount on the trading fee for a 24-hour period. The bid must be paid in LP Tokens, which are returned to the AMM. No more than one account can hold the auction slot at a time, but the bidder can name up to 4 more accounts to also receive the discount. There is no minimum bid, but if the slot is currently occupied then you must outbid the current slot holder to displace them. If someone displaces you, you get part of your bid back depending on how much time remains. As long as you hold an active auction slot, you pay a discounted trading fee equal to 1/10 (one tenth) of the normal trading fee when making trades against that AMM.
+Unlike any previous Automated Market Makers, the XRP Ledger's AMM design has an _auction slot_ that a liquidity provider can bid on to get a discount on the trading fee for a 24-hour period. The bid must be paid in LP Tokens, which are returned to the AMM. In most blockchains, when the price of an AMM's assets shifts significantly in external markets, traders can use arbitrage to profit off an AMM, which results in a loss for liquidity providers. The auction mechanism is intended to return more of that value to liquidity providers and more quickly bring the AMM's prices back into balance with external markets.
 
-With any AMM, when the price of its assets shifts significantly in external markets, traders can use arbitrage to profit off the AMM, which results in a loss for liquidity providers. The auction mechanism is intended to return more of that value to liquidity providers and more quickly bring the AMM's prices back into balance with external markets.
+No more than one account can hold the auction slot at a time, but the bidder can name up to 4 more accounts to also receive the discount. If the slot is currently occupied then you must outbid the current slot holder to displace them. If someone displaces you, you get part of your bid back depending on how much time remains. As long as you hold an active auction slot, you pay a discounted trading fee equal to 1/10 (one tenth) of the normal trading fee when making trades against that AMM.
+
+The minimum bid to win the auction slot, if it is empty or expired, is equal to the current total number of LP Tokens outstanding multiplied by the trading fee, divided by 25. (In pseudocode, `MinBid = LPTokens * TradingFee / 25`.) If the auction slot is occupied, you must bid at least the minimum _plus_ up to 105% of what the current slot holder paid, discounted by how much time they have remaining.
 
 
 ## Representation in the Ledger

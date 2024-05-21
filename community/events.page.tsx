@@ -674,6 +674,28 @@ const events = [
     image: amaImage,
     end_date: "March 13, 2024",
   },
+  {
+    name: "EasyA Ripple Hackathon",
+    description:
+      "Join the XRPL community at the Ripple x EasyA Hackathon in Amsterdam, where startups can compete for a $20,000 prize and a chance to present at the prestigious APEX Conference alongside industry leaders. Secure your spot now! ",
+    type: "hackathon",
+    link: "https://www.eventbrite.co.uk/e/easya-x-ripple-apex-hackathon-win-20000-tickets-882724261027?aff=oddtdtcreator",
+    location: "Amsterdam",
+    date: "June 8 - 9, 2024",
+    image: hackathon,
+    end_date: "June 9, 2024",
+  },
+  {
+    name: "SwissHacks",
+    description:
+      "Transform Fintech with XRPL at SwissHacks 2024! Prototype and collaborate with fellow builders to reinvent finance for a brighter future",
+    type: "hackathon",
+    link: "https://airtable.com/app61tk91vkuwKhGx/pagCN29Br8RdxTvp7/form",
+    location: "Zurich",
+    date: "June 28 - 30, 2024",
+    image: hackathon,
+    end_date: "June 30, 2024",
+  },
 ];
 
 export default function Events() {
@@ -777,9 +799,9 @@ export default function Events() {
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=events"
+                  href="https://register.xrpledgerapex.com/2024/?utm_source=xrplorg&utm_medium=web&utm_campaign=events"
                 >
-                  {translate("Learn More")}
+                  {translate("Register Now")}
                 </a>
               </div>
             </div>

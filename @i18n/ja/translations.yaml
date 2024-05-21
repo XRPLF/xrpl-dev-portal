@@ -11,12 +11,84 @@ sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
 sidebars.resources: リソース
 sidebar.resources.codesamples: コードサンプル
+topnav.about.xrp-ledger: XRP Ledger
+topnav.about.xrpl-overview: XRPLの概要
+topnav.about.use-cases-featured-projects: ユースケースと注目プロジェクト
+topnav.about.history: 歴史
+topnav.about.xrp: XRP
+topnav.about.xrp-overview: XRPの概要
+topnav.about.sustainability: 持続可能性
+topnav.about.impact: 環境への影響
+topnav.about.about: 概要
+topnav.about.xrpl-foundation: XRPL財団
+topnav.about.faq: よくある質問
+topnav.about.privacy-policy: プライバシーポリシー
 topnav.docs.title: ドキュメント
-topnav.docs.description: XRPL技術に掘り下げて組み込めましょう。
+topnav.docs.description: XRP Ledgerの世界に飛び込み、開発を始めましょう。
+topnav.docs.article-types: コンテンツの種類
+topnav.docs.concepts: 基本概念
+topnav.docs.tutorials: チュートリアル
+topnav.docs.references: リファレンス
+topnav.docs.infrastructure: インフラ
+topnav.docs.use-cases: ユースケース
+topnav.docs.payments: 支払い
+topnav.docs.tokenization: トークン化
+topnav.docs.defi: DeFi(分散型金融)
+topnav.docs.get-started: はじめよう
+topnav.resources.development: 開発
+topnav.resources.code-samples: サンプルコード
+topnav.resources.dev-tools: 開発者ツール
+topnav.resources.xrpl-learning-portal: XRPL学習ポータル
+topnav.resources.xrpl-brand-kit: XRPLブランドキット
 topnav.resources.current-status: 現在のステータス
+topnav.resources.join-in: 参加しよう
 topnav.resources.explorer: エクスプローラ
+topnav.resources.known-amendments: 既知のAmendment
+topnav.resources.contribute-code: コードへの貢献
+topnav.resources.contribute-documentation: ドキュメントへの貢献
 topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
+
+topnav.community.get-involved: 参加する
+topnav.community.events: イベント
+topnav.community.ambassadors: アンバサダー
+topnav.community.developer-funding: 開発者向け資金提供
+topnav.community.xrpl-jobs: XRPLの仕事
+topnav.community.dev-blog: 開発者ブログ
+topnav.community.xrpl-grants: XRPL Grants
+topnav.community.github: GitHub
+topnav.community.report-a-scam: 詐欺の報告
+footer.about.xrpl-overview: XRPLの概要
+footer.about.use-cases-projects: ユースケースとプロジェクト
+footer.about.history: 歴史
+footer.about.impact: 環境への影響
+footer.about.xrpl-foundation: XRPL財団
+footer.about.faq: よくある質問
+footer.about.privacy-policy: プライバシーポリシー
+footer.docs.xrpl-documentation: XRPLドキュメント
+footer.docs.introduction: はじめに
+footer.docs.use-cases: ユースケース
+footer.docs.concepts: 基本概念
+footer.docs.tutorials: チュートリアル
+footer.docs.references: リファレンス
+footer.docs.infrastructure: インフラ
+footer.resources.code-samples: サンプルコード
+footer.resources.dev-tools: 開発者ツール
+footer.resources.xrpl-learning-portal: XRPL学習ポータル
+footer.resources.xrpl-brand-kit: XRPLブランドキット
+footer.resources.explorer: エクスプローラ
+footer.resources.known-amendments: 既知のAmendment
+footer.resources.contribute-code: コードへの貢献
+footer.resources.contribute-documentation: ドキュメントへの貢献
+footer.community.community: コミュニティ
+footer.community.events: イベント
+footer.community.ambassadors: アンバサダー
+footer.community.developer-funding: 開発者向け資金提供
+footer.community.xrpl-jobs: XRPLの仕事
+footer.community.dev-blog: 開発者ブログ
+footer.community.xrpl-grants: XRPL Grants
+footer.community.github: GitHub
+footer.community.report-a-scam: 詐欺の報告
 
 # index.page.tsx
 home.hero.h1part1: ビジネスのための
@@ -174,7 +246,7 @@ Federated Sidechains: 連合サイドチェーン
 On-Chain Finance: オンチェーン金融
 Trade on the decentralized exchange: 分散型取引所でトレード
 Make payments: 支払いを実行
-Use specialized payment types: 専門的な種類の支払いを行う
+Use specialized payment types: 高度な支払い機能
 Tokens: トークン
 Non-fungible Tokens: 非代替性トークン
 Issue a stablecoin: ステーブルコインを発行

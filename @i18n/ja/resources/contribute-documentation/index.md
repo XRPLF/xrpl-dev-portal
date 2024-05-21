@@ -19,117 +19,107 @@ XRPL Dev Portalでは、開発者が開発を開始するためのサンプル�
 
 本プロジェクトの公式リポジトリは<https://github.com/XRPLF/xrpl-dev-portal>となっています。投稿の著作権はそれぞれの投稿者に帰属しますが、MIT[ライセンス](https://github.com/XRPLF/xrpl-dev-portal/blob/master/LICENSE)の下で提供されなければなりません。
 
-
-
 ## リポジトリの構成
 
-***TODO: Update this translation***
+- `_api-examples/` - APIリクエストやレスポンスのサンプル(特にドキュメントで使用されているもの)
+- `_code-samples/` - ドキュメントで使用されているサンプルコード(可能な限り完全に動作するスクリプト)
+- `@i18n` - 英語以外の翻訳コンテンツ
+- `@theme` - MarkdocのコンテンツやReactのカスタムページで使用されるコンポーネントのオーバーライドやカスタムコンポーネント
+- `about/` - 概要セクションのソースファイル
+- `blog/` - XRPL開発者ブログのソースファイル
+- `community/` - コミュニティセクションのソースファイル
+- `docs/` - ドキュメントをビルドするためのソースファイル(ほとんどがMarkdownファイル)
+    - `docs/_snippets/` - ドキュメント内で再利用可能なテキスト
+    - `docs/img/` - ドキュメント内で利用する図やその他の画像
+    - `docs/img/_sources/` - ドキュメント内で利用する画像のソースファイル(存在する場合)
+- `locale/` - **廃止** 以前利用されていた翻訳用のファイル
+- `resources/` - リソースセクションのソースファイル
+- `shared/` - CodeMirrorなどの依存関係の設定ファイル
+- `static/` - Webサイトのテンプレートやテーマで使用される静的ファイル
+- `styles/` - カスタムCSS用のSCSSのソースファイル
+- `redirects.yaml` - 以前利用されていたパスから現在のコンテンツへのリダイレクトの定義
+- `redocly.yaml` - Webサイトにの主要な設定ファイル
+- `sidebars.yaml` - ドキュメントおよびリソースセクションのサイドバーの定義
+- `top-nav.yaml` - ナビゲーションバーの定義
 
-- `_api-examples/` - Sample API requests and responses, especially ones used in the documentation.
-- `_code-samples/` - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
-- `@i18n` - Translations into languages other than English. Currently, only Japanese.
-- `@theme` - Overrides and custom components used in Markdoc contents as well as custom React pages.
-- `about/` - Source files for the About section's pages.
-- `blog/` - Source files for the XRPL Dev Blog.
-- `community/` - Source files for the Community section's pages.
-- `docs/` - Source files used to build the documentation. Mostly in Markdown.
-    - `docs/_snippets/` - Reusable pieces of text used in the documentation.
-    - `docs/img/` - Diagrams and other images used in the documentation.
-    - `docs/img/_sources/` - Source files for images used in the documentation, where available.
-- `locale/` - **DEPRECATED** Old localization files.
-- `resources/` - Source files for the Resources section's pages.
-- `shared/` - Configuration files for some dependencies like CodeMirror.
-- `static/` - Static files used by the site's templates and theme.
-- `styles/` - SCSS source files for custom CSS.
-- `redirects.yaml` - Definitions of redirects from old site URLs to current paths.
-- `redocly.yaml` - Main config file for the site.
-- `sidebars.yaml` - Defines sidebars for the Documentation and Resources sections.
-- `top-nav.yaml` - Defines the main top nav elements.
 
 ## プルリクエストが承認されるための条件
 
 レビューやマージが承認される前に、それぞれのプルリクエストは以下の条件を満たしていなければなりません。
+
 - インテグレーションテストに合格すること。
 - レビューの準備が整うまで、[Draft](https://github.blog/2019-02-14-introducing-draft-pull-requests/)としてください。
 - このリポジトリの[コード規約](https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.ja.md)を遵守してください。
 
-## Dactylのセットアップ
+## Redoclyのセットアップ
 
-ポータルは[Dactyl](https://github.com/ripple/dactyl)を使用して構築されています。
+このポータルはRecokly Realmを使用して構築されています。Realmは現在クローズドベータ版です。ローカル開発環境にインストールするには、Node.js(バージョン20が推奨)とNPMが必要です。
 
-Dactylには[Python 3](https://python.org/)が必要です。[pip](https://pip.pypa.io/en/stable/)を使ってインストールしてください：
+次のコマンドを実行して、Realmとその他の必要な依存関係をインストールできます。
 
-```
-pip3 install dactyl
+```sh
+npm i
 ```
 
 ## サイトの構築
 
-このリポジトリでは、[**Dactyl**](https://github.com/ripple/dactyl)を使用して、すべてのドキュメントのHTMLをビルドしています。[Dactylのセットアップ](#dactylのセットアップ)を行った後、プロジェクトのルートディレクトリからサイトをビルドすることができます。
+依存関係のインストール後、次のコマンドを実行してローカル開発サーバを起動できます。
 
-```
-dactyl_build
-```
-
-生成されたコンテンツは`out/`ディレクトリに出力されます。これらのコンテンツはウェブブラウザでファイルとして開いたり、ウェブサーバで静的コンテンツとして扱うことができます。
-
-ルートディレクトリからリンクチェックやスタイルチェックを実行することもできます。
-
-リンクチェックは出力フォルダを空にしてからビルドしてください。
-
-```
-dactyl_link_checker
+```sh
+npm run start
 ```
 
-スタイルチェックは実験的なものです。
+ブラウザでhttp://localhost:4000/にアクセスしてプレビューを表示できます。
 
-```
-dactyl_style_checker
-```
 
 ## 設定ファイルのフォーマット
 
-このリポジトリでは、`dactyl-config.yml`ファイルのメタデータとページの[frontmatter](https://dactyl.link/frontmatter.html)を使って、ヘッダー、フッター、サイドバー、パンくずリストなどのナビゲーション要素を生成します。
+Realmの設定ファイルは、サイト内のナビゲーション要素を生成するために使用されます。これには、ヘッダー、フッター、サイドバー、パンくずリストが含まれます。
 
-新しいページを追加する場合、`dactyl-config.yml`ファイルのpages配列の適切な位置に追加する必要があります。追加例は次のようになります。
-
-```yaml
-    -   md: concepts/the-rippled-server/the-rippled-server.md
-        targets:
-            - en
-            - ja # 翻訳コンテンツがない場合、全てのターゲットを対象とします。
-```
-
-Markdownファイル自体は、以下のようなfrontmatterで始まる必要があります。
+新しいページを追加する場合、そのページを`sidebars.yaml`ファイルに追加する必要があります。ドキュメントとブログ用のサイドバーのファイルがあります。以下は、ネストされた子ページがないページの項目の例です。
 
 ```yaml
----
-html: the-rippled-server.html
-parent: concepts.html
-metadata:
-  indexPage: true
-seo:
-    description: rippled is the core peer-to-peer server that manages the XRP Ledger. This section covers concepts that help you learn the "what" and "why" behind fundamental aspects of the rippled server.
----
+- page: concepts/consensus-protocol/index.md
 ```
 
-少なくとも、ほとんどのページには `html`、`parent`、`blurb` フィールドが必要です(さらに、設定ファイルでは`md`フィールドと`targets`フィールドも必要です)。ここに、またはページの設定ファイルのエントリに任意のキーと値のペアを記述することができますが、以下のものが関係しています。
+Markdownファイルのページは、[frontmatterスタンザ](#frontmatterのフィールド)で始まる必要があります。
 
 ### 規約
 
 ページを作成する際には、以下の規約に従ってください。
 
-- HTMLのファイル名とMDのファイル名は、拡張子を除いて完全に一致していなければなりません。
-- ファイル名は"and"や"the"のような単語を含め、ページのタイトルと密接に一致する必要がありますが、スペースや句読点の代わりにハイフンを使用し、すべて小文字にする必要があります。例えば、`cash-a-check-for-an-exact-amount.md`のようにします。ページのタイトルを変更した場合は、ファイル名も変更する必要があります。(すでに別のURLで公開されている場合は、古いURLからのリダイレクトを残してください)
+- HTMLのファイル名とMDのファイル名は、拡張子を除いて完全に一致していなければなりません。ファイル名は"and"や"the"のような単語を含め、ページのタイトルと密接に一致する必要がありますが、スペースや句読点の代わりにハイフンを使用し、すべて小文字にする必要があります。例えば、`cash-a-check-for-an-exact-amount.md`のようにします。ページのタイトルを変更した場合は、ファイル名も変更する必要があります。(すでに別のURLで公開されている場合は、古いURLからのリダイレクトを残してください)
+    - カテゴリ内のページは、そのカテゴリの名前のサブフォルダに配置されるべきですが、親ディレクトリにも同じ単語が含まれている場合は、より簡潔にすることができます。ファイル名は`index.md`で、タイトルはフォルダ名に似ている必要があります。例えば、"Protocol Reference"のインデックスページは`references/protocol/index.md`にあります。
 - 常にh1ヘッダーでページを始めます。
 - ページの一番上のh1アンカーにはリンクせず、アンカーなしでページ自体にリンクしてください。これは翻訳時のリンク切れを防ぐのに役立ちます。以降のヘッダーへのリンクは問題ありません。
-- ページのタイトルに書式( _italics_ や`code font`など)を使わないでください。
+- ページのタイトルに書式( _斜体_ や`コード`など)を使わないでください。
 - Markdownファイルのテキストを折り返さないでください。
-- コードサンプルの場合、行は80文字以下になるようにしてください。
+- コードサンプルの場合、1行は80文字以下になるようにしてください。
 - 迷ったら、[Ciro SantilliのMarkdownスタイルガイド (Writability Profile)](https://cirosantilli.com/markdown-style-guide/)に従ってください。
-- カテゴリ内のページはそのカテゴリの名前のサブフォルダにあるべきですが、（特にページのタイトルが親ディレクトリにもある単語を含んでいる場合は）あまり冗長でなく、ファイル名`index.md`とフォルダ名に似たタイトルを持つべきです。例えば、「プロトコルリファレンス」のインデックスページは`references/protocol/index.md`です。
-
 - Markdownやコードサンプルでは、インデントにタブ文字を使用しないでください。**JavaScript**のコードサンプルでは、1字下げにつき2個のスペースを使用してください。
+- テキストファイルは改行文字で終わるようにしてください。(一部のテキストエディタはこれを自動的に処理します。)ファイルはBOMなしのUTF-8でエンコードしてください。
+
+### 新機能
+
+新機能を文書化する場合、その機能が導入されたプログラムのバージョンを示すバッジを含めてください。バッジタグは以下の構造です。
+
+`{badge href="myurl" date="<リリース日>"}新規: <プログラム> <バージョン番号>{% /badge%}`
+
+例えば次のようなバッジ定義になります。
+
+`{% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}新規: Clio v2.0.0{% /badge %}`
+
+次のように表示されます。 {% badge href="https://github.com/XRPLF/clio/releases/tag/2.0.0" date="February 18, 2024" %}新規: Clio v2.0.0{% /badge %}
+
+When updating a feature, replace _New in:_ with _Updated in:_. For example, the following badge definition:
+
+機能の更新の場合、_新規:_ を _更新:_ に置き換えてください。例えば、次のバッジ定義となります。
+
+`{% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" date="May 4, 2024" %} 更新: Clio v2.1.0{% /badge %}`
+
+次のように表示されます。 {% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" date="May 4, 2024" %} 更新: Clio v2.1.0{% /badge %}
+
+2年以上前の新規/更新バッジは削除するのがベストプラクティスです。
 
 ### 技術用語
 
@@ -156,29 +146,230 @@ seo:
 
 ## Frontmatterのフィールド
 
-このリポジトリのMarkdownファイルのfronmatterは任意のキーと値のペアを含むことができます。以下のフィールドは特定の用途や意味を持ちます。
+***Note: Realmのfrontmatter仕様の詳細は完全には文書化されていません。Realmがクローズドベータを終了したら、リンクを更新する必要があります。***
 
-| フィールド             | 型               | 内容                                |
-|:---------------------|:-----------------|:-----------------------------------|
-| `html`               | String           | ページの出力ファイル名。`.html`で終わり、ターゲット内で一意でなければなりません。翻訳版のページでは、ファイル名は英語版のページと同じにしてください。 |
-| `parent`             | String           | ページの「親」ページの`html`の値。このページがナビゲーションのどこに表示されるかを示します。 |
-| `blurb`              | String           | ページの要約文(プレーンテキストのみ)。ランディングページやソーシャルメディア上でリンクを展開する際のメタデータなど、さまざまな場所に表示されます。 |
-| `name`               | String           | ページ名(プレーンテキストのみ)。 Markdownコンテンツのあるファイルでは、Dactylがコンテンツの最初の行のヘッダーから自動的に検出できるため、これを省略する必要があります。これは通常、Markdownファイルを持たないランディングページやその他の特別なページでのみ提供されます。 |
-| `template`           | String           | このページで使用するテンプレートファイルのファイル名(`template/`ディレクトリ内)。ほとんどのページはデフォルトのテンプレートを使用します。`pagetype-category.html.jinja`テンプレートは最後に子ページのリストを表示します。特別な、あるいは特にユニークなレイアウトを持つページには、個別のテンプレートが必要になることがあります(通常、`page-`で始まります)。 |
-| `status`             | String           | XRP Ledgerメインネットでまだ有効になっていない修正に関連するページでは、`not_enabled`を使用します。これにより、ナビゲーションのページの横にツールチップ付きの"フラスコ"バッジが表示されます。 |
-| `nav_omit`           | Boolean          | ナビゲーション要素にこのページを表示しないようにするには`true`を使用します。 |
-| `top_nav_omit`       | Boolean          | ページトップのドロップダウンナビゲーションに表示しないようにするには、`true`を使用します。 |
-| `top_nav_level`      | Number           | トップナビのドロップダウンでページのインデントレベルを調整します。レベル`2`は、ドロップダウン内でその上のページの子のように表示されるようにインデントされます。 |
-| `sidebar`            | String           | U左右のサイドバーを非表示にするには、`disabled`を使用します(ページがベーステンプレートから派生したテンプレートを使用している場合)。 |
-| `fb_card`            | String           | Facebookでこのページへのリンクを展開する際に使用する画像のファイル名（`assets/img/`内）。 |
-| `twitter_card`       | String           | Twitterでこのページへのリンクを展開する際に使用する画像のファイル名（`assets/img/`内）。 |
-| `redirect_url`       | String           | `template: pagetype-redirect.html.jinja`でのみ使用します。ユーザがこのページに移動したときに、指定されたURLに自動的にリダイレクトします。 |
-| `cta_text`           | String           | このページにリンクする「call to action」ボタンに表示されるテキスト(特別なランディングページにて表示されます)。 |
-| `curated_anchors`    | Array of Objects | 子ページと同様に、ランディングページに表示するためのアンカーです。配列の各オブジェクトは、人間が読める`name`フィールド(`"Available Modes"`など) と、リンク先のHTML IDを持つ`anchor`フィールド(`"#available-modes"`など)を持つ必要があります。 |
-| `skip_spell_checker` | Boolean          | `true`を使用すると、Dactylのスタイルチェッカーがこのページのスペルチェックをスキップします。 |
-| `filters`            | Array of Strings | このページで使用する追加フィルタのリストです。[フィルタ](https://github.com/ripple/dactyl/blob/master/README.md#filters)はPythonスクリプトで、ページ内容の事前または事後の追加処理を行います。 |
-| `canonical_url`      | String           | クエリパラメータを受け取るページの正規URLを提供します。検索エンジンやその他のツールは、ページにリンクする際にこれを使用する可能性があります。 |
-| `embed_xrpl_js`      | Boolean          | 最新版の[xrpl.js](https://js.xrpl.org)をこのページで読み込むには`true`を使用してください。 |
+MarkdownファイルのFrontmatterには、以下のような内容が含まれます。
+
+```yaml
+---
+metadata:
+  indexPage: true # 自動生成された子ページのリストを含めたい場合、追加してください。
+seo:
+  description: rippledはXRP Ledgerを管理するコアとなるピアツーピアサーバです。このセクションでは、rippledサーバの基本的な機能の背景にある「要素」と「その理由」を学ぶのに役立つ概念について説明します。
+---
+```
+
+サイト内の一部のページには、以前の(Dactyl)ツールチェーンからのメタデータが残っている場合があります。これらのフィールドは効果がないため、新しいページから省略することができます。
+
+### 次へと前へのボタン
+
+ドキュメントとブログページには、ページの下部に「次へ」ボタンと「前へ」ボタンがあります。
+
+これらのボタンが不要な場合は、ページのfrontmatterを更新して無効にすることができます。
+
+```yaml
+---
+theme:
+  navigation:
+    nextButton:
+      hide: true
+---
+```
+
+## Markdocのコンポーネント
+
+これらのファイルは[Markdoc](https://markdoc.dev/)で処理されるため、`{% ... %}`構文で特別なタグを含めることができます。Redoclyの組み込みタグに加えて、このリポジトリには`/@theme/markdoc/`に定義されたいくつかのカスタムタグがあります。
+
+### グラフィック
+
+`/docs/img`ディレクトリにグラフィックを保存します。グラフィックを埋め込むには、次の構文を使用します。
+
+`![image_description](/docs/img/my_image.png)`
+
+例えば、`![XRPL財団のロゴ](/docs/img/xrplf-logo.png)`は次のように表示されます。
+
+![XRPL財団のロゴ](/docs/img/xrplf-logo.png)
+
+### ビデオ
+
+ビデオはYouTubeに保存されます。アップロード後、埋め込み手順をコピーしてドキュメントに貼り付けることができます。
+
+コンテンツにYouTubeビデオを埋め込むには、次の手順に従います。
+
+1. YouTubeにビデオをアップロードします。
+2. ビデオページの**共有**ボタンをクリックします。
+3. **埋め込む**をクリックします。
+4. ポップアップ右下の**コピー**をクリックします。
+5. コンテンツに`<iframe>`要素を貼り付けます。
+
+例えば、_Send Checks_ ビデオを埋め込むためのコードは次の通りです。
+
+```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5zRBC7dGSaM?
+si=Mbi8diaFTDR2fc20" title="YouTube video player" frameborder="0" allow="accelerometer;
+autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+```
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5zRBC7dGSaM?
+si=Mbi8diaFTDR2fc20" title="YouTube video player" frameborder="0" allow="accelerometer;
+autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### テーブル
+
+Markdocは、テーブルを生成するための3つの異なる構文スタイルを提供します。
+
+ほとんどの場合、列を区切るためにパイプ文字(|)を使用し、ハイフン3つ以上(---)を使用して列ヘッダを作成します。
+
+```
+|          | Head 1 |
+| -------  | ------ |
+| Label 1  | Val 1  |
+```
+
+次のように表示されます。
+
+|          | Head 1 |
+| -------  | ------ |
+| Label 1  | Val 1  |
+
+セルの幅は同じである必要はありません。自動的に列を整列し、必要に応じてテキストを折り返します。
+
+```
+| Key | Value |
+| --- | ----- |
+| Name | H. G. Wells |
+| Genre | Science Fiction |
+| Hyperbole | The greatest story ever told! No one has ever written anything more important than this Victorian era classic. Oh, how swells the heart to ponder the heady philosophies introduced therein! |
+```
+
+| Key | Value |
+| --- | ----- |
+| Name | H. G. Wells |
+| Genre | Science Fiction |
+| Hyperbole | The greatest story ever told! No one has ever written anything more important than this Victorian era classic. Oh, how swells the heart to ponder the heady philosophies introduced therein! |
+
+ヘッダ行にコロンを使用して、列を左寄せ(:--)、中央寄せ(:-:)、または右寄せ(--:)に配置します。
+
+```
+| Model | Color | Price |
+| :-: | :--  | --:  |
+| Protexra | Electric Blue | 50,000 XRP |
+| Joatic | Hot Pink | 165,000 XRP |
+| Zhanu | Neon Green | 234,000 XRP |
+```
+
+| Model | Color | Price |
+| :-: | :--  | --:  |
+| Protexra | Electric Blue | 50,000 XRP |
+| Joatic | Hot Pink | 165,000 XRP |
+| Zhanu | Impetuous Green | 1,728,000 XRP |
+
+左の列はデフォルトで太字になります。左の列に太字のラベルを表示したくない場合は、左の列を空にして、テーブルを1列目から始めてください。
+
+```
+|     | French | English | German |
+| --- | ---    | ---     | ---    |
+|     | Fromage | Cheese | Käse |
+|     | Maux d'estomac | Stomach ache | Magenschmerzen |
+|     | Cornichon | Pickle | Essiggurke |
+```
+
+|     | French | English | German |
+| --- | ---    | ---     | ---    |
+|     | Fromage | Cheese | Käse |
+|     | Maux d'estomac | Stomach ache | Magenschmerzen |
+|     | Cornichon | Pickle | Essiggurke |
+
+可能な限り、これらの基本的なテーブルを使用してください。上記の例で提供されていない特別なフォーマットが本当に必要な場合は、HTML構文を使用してテーブルを作成できます。
+
+### リンク
+
+リンクは`[<リンクテキスト>](<URL>)`の構文を使用します。
+
+例えば、次のように書きます。
+
+`[XRPL.org](http://xrpl.org)で世界のあらゆる問題の解決策をご覧ください。`
+
+次のように表示されます。
+
+[XRPL.org](http://xrpl.org)で世界のあらゆる問題の解決策をご覧ください。
+
+### 共通のリンク
+
+共通的に引用されるページへのリンクを作成するには、`{% raw-partial file="/docs/_snippets/common-links.md /%}`タグをMarkdownファイルに追加し、`[account_infoメソッド][]`や`[Paymentトランザクション][]`などの参照スタイルのリンクを使用できます。common-linksファイルの内容はアルファベット順になっています。(以前はスクリプトで生成されていましたが、現在は手動で管理されています。)
+
+### サンプルコード
+
+サンプルコードを挿入する場合は、バッククォート(&#96;)文字でコードを囲みます。例えば:
+
+&nbsp;&nbsp;&nbsp;&nbsp;私のお気に入りのメソッドは&#96;nft_info&#96;です。
+
+次のように表示されます。
+
+&nbsp;&nbsp;&nbsp;&nbsp;私のお気に入りのメソッドは`nft_info`です。
+
+長いコードブロックの場合は、言語名に続いて3つのバッククォート(&#96;&#96;&#96;)を使用します。改行を入力し、サンプルコードを入力します。コードサンプルの最後に改行を入力し、3つのバッククォート(&#96;&#96;&#96;)でブロックを閉じます。
+
+例えば、
+
+&#96;&#96;&#96;javascript<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;const prepared = await client.autofill({<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"TransactionType": "Payment",<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Account": standby_wallet.address,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Amount": xrpl.xrpToDrops(sendAmount),<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"Destination": standbyDestinationField.value<br/>
+&nbsp;&nbsp;})
+&#96;&#96;&#96;
+
+次のように表示されます。
+
+```javascript
+  const prepared = await client.autofill({
+    "TransactionType": "Payment",
+    "Account": standby_wallet.address,
+    "Amount": xrpl.xrpToDrops(sendAmount),
+    "Destination": standbyDestinationField.value
+  })
+```
+
+### 部分的なコンテンツ
+
+頻繁に使用するテキストや、ドキュメント内の複数の場所で定期的に更新が必要なテキストがある場合は、再利用のために&#95;snippetファイルを作成できます。
+
+`_snippet`ディレクトリにファイルを保存します。部分的なコンテンツを挿入するには、`{% partial file="<file url>" /%}`構文を使用します。
+
+例えば、次のようなスニペット`/docs/_snippets/secret-key-warning.md`があります。
+
+<blockquote>
+{&#37; admonition type="warning" name="Caution" &#37;}<br/>
+Never submit a secret key to a server you do not control. Do not send a secret key unencrypted over the network.<br/>
+{% /admonition %}
+</blockquote>
+
+テキストを埋め込むには、`{% partial file="/docs/_snippets/secret-key-warning.md" /%}`タグを使用します。
+
+例えば、
+
+<blockquote>
+There I was, happy as a lark, skipping through the daisies, when I shyly handed my secret
+ key to my one true love.
+
+{&#37; partial file="/docs/_snippets/secret-key-warning.md" /&#37;}
+
+Alas, if only I had heeded that sage advice, I would not rue the day as I do today.
+</blockquote>
+
+次のように表示されます。
+
+<blockquote>
+There I was, happy as a lark, skipping through the daisies, when I shyly handed my secret key to my one true love.
+
+{% partial file="/docs/_snippets/secret-key-warning.md" /%}
+
+Alas, if only I had heeded that sage advice, I would not rue the day as I do today.
+</blockquote>
 
 
 {% child-pages /%}
