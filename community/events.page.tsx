@@ -414,6 +414,17 @@ const events = [
     end_date: "July 13, 2023",
   },
   {
+    name: "XRPL Toronto Meetup",
+    description:
+      "Prepare for an evening of XRPL Toronto Meetup - a celebration of discovery and connection. Join enthusiasts, innovators, and developers for inspiring talks, conversations, and learning. All are welcome, from seasoned developers to curious newcomers.",
+    type: "meetup",
+    link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
+    location: "Downtown Toronto",
+    date: "August 14, 2023",
+    image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
+    end_date: "August 14, 2023",
+  },
+  {
     name: "XRPL London Meetup (Accelerator Edition)",
     description:
       "Join us for a Happy Hour hosted by the XRPL Accelerator Team! Connect with fellow start-ups in the blockchain space and gain insights into cutting-edge projects and founders.",

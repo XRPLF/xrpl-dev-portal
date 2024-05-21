@@ -168,7 +168,7 @@ const events = [
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(6);
+  const [currentIndex, setCurrentIndex] = useState(7);
 
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
