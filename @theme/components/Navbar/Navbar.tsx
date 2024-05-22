@@ -129,9 +129,9 @@ export function AlertBanner(props) {
           <p className="mb-0 apex-banner-text">{message}</p>
         </span>
         <span>
-          <a href={link} target="_blank" className="apex-btn">
+          <Link to={link} target="_blank" className="apex-btn">
             {button}
-          </a>
+          </Link>
         </span>
       </div>
     </div>
@@ -164,9 +164,9 @@ export function NavDropdown(props) {
           item2_href = pathPrefix + item2_href;
         }
         return (
-          <a key={index2} className={cls2} href={item2_href}>
+          <Link key={index2} className={cls2} to={item2_href}>
             {translate(item2.labelTranslationKey, item2.label)}
-          </a>
+          </Link>
         );
       });
 
@@ -195,18 +195,18 @@ export function NavDropdown(props) {
       const description = translate(splittranslationkey[1], splitlabel[1]); // splitlabel[1] might be undefined, that's ok
 
       return (
-        <a
+        <Link
           key={index}
           className="dropdown-item dropdown-hero"
           id={hero_id}
-          href={hero_href}
+          to={hero_href}
         >
           <img id={item.hero} alt={img_alt} src={item.icon} />
           <div className="dropdown-hero-text">
             <h4>{newlabel}</h4>
             <p>{description}</p>
           </div>
-        </a>
+        </Link>
       );
     } else {
       const cls = item.external
@@ -217,9 +217,9 @@ export function NavDropdown(props) {
         item_href = pathPrefix + item_href;
       }
       return (
-        <a key={index} className={cls} href={item_href}>
+        <Link key={index} className={cls} to={item_href}>
           {translate(item.labelTranslationKey, item.label)}
-        </a>
+        </Link>
       );
     }
   });
@@ -231,7 +231,7 @@ export function NavDropdown(props) {
     <li className="nav-item dropdown">
       <a
         className="nav-link dropdown-toggle"
-        href="#"
+        to="#"
         id={toggler_id}
         role="button"
         data-toggle="dropdown"
@@ -286,13 +286,13 @@ export function GetStartedButton() {
   const { translate } = useTranslate();
 
   return (
-    <a
+    <Link
       className="btn btn-primary"
-      href={"/docs/tutorials"}
+      to={"/docs/tutorials"}
       style={{ height: "38px", paddingTop: "11px" }}
     >
       {translate("Get Started")}
-    </a>
+    </Link>
   );
 }
 
@@ -311,9 +311,9 @@ export function NavItem(props) {
 export function LogoBlock(props) {
   const { to, img, altText } = props;
   return (
-    <a className="navbar-brand" href="/">
+    <Link className="navbar-brand" to="/">
       <img className="logo" alt={"XRP LEDGER"} height="40" src="data:," />
-    </a>
+    </Link>
   );
 }
 
