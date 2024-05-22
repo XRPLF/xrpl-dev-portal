@@ -483,6 +483,8 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/version.md
+
                 - page: docs/references/http-websocket-apis/public-api-methods/clio-server/index.md
                   expanded: false
                   items:
@@ -491,6 +493,7 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/version.md
                 - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/index.md
                   expanded: false
                   items:

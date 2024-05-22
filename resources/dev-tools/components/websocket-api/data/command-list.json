@@ -500,6 +500,14 @@
         }
       },
       {
+        "name": "version",
+        "description": "Retrieves the API version information. When you connect to a cluster that includes a Clio server, the Clio method is used.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/version",
+        "body": {
+          "command": "version"
+        }
+      },
+      {
         "name": "server_state",
         "description": "Reports a machine-readable version of various information about the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state",
