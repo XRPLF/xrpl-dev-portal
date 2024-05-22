@@ -8,7 +8,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/rippled/blob/develop/src/ripple/beast/core/SemanticVersion.cpp "Source")
 
-The `version` command asks the server for API version information. For `clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
+The `version` command retrieves the API version information for the rippled server. For `Clio` servers, see [`version` (`clio`)](../clio-methods/version.md) instead.
 
 
 ## Request Format
