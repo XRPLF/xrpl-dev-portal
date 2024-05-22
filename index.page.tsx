@@ -95,7 +95,7 @@ const features = [
     href: 'https://hooks-testnet.xrpl-labs.com/',
   },
   {
-    chip: 'Open for Voting',
+    chip: 'Enabled',
     title: 'Automated Market Makers',
     description: "Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.",
     href: '/concepts/tokens/decentralized-exchange/automated-market-makers/',
@@ -115,9 +115,9 @@ export default function Index() {
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
               <h1 className="mb-10">
-                {translate('The Blockchain')}
+                {translate('home.hero.h1part1', 'The Blockchain')}
                 <br className="until-sm" />
-                {translate('Built for Business')}
+                {translate('home.hero.h1part2', 'Built for Business')}
               </h1>
               <h6 className="eyebrow mb-3">{translate('XRPL | XRP Ledger')}</h6>
             </div>
@@ -154,8 +154,10 @@ export default function Index() {
             {cards.map(card => (
               <li className="col ls-none" key={card.id}>
                 <img id={card.id} alt={card.title + ' Icon'} />
-                <h4 className="mt-3 mb-0 h5">{card.title}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">{card.description}</p>
+                <h4 className="mt-3 mb-0 h5">{translate(card.title)}</h4>
+                <p className="mt-6-until-sm mt-3 mb-0">
+                  {typeof card.description === 'string' ? translate(card.description) : card.description}
+                </p>
               </li>
             ))}
           </ul>
@@ -173,8 +175,8 @@ export default function Index() {
             {cards2.map((card, idx) => (
               <a className="card" href={card.href} key={card.href + idx}>
                 <div className="card-body">
-                  <h4 className="card-title h5">{card.title}</h4>
-                  <p className="card-text">{card.description}</p>
+                  <h4 className="card-title h5">{translate(card.title)}</h4>
+                  <p className="card-text">{translate(card.description)}</p>
                 </div>
                 <div className="card-footer">&nbsp;</div>
               </a>
@@ -190,8 +192,8 @@ export default function Index() {
             {cards3.map((card, idx) => (
               <a className="card" href={card.href} key={card.href + idx}>
                 <div className="card-body">
-                  <h4 className="card-title h5">{card.title}</h4>
-                  <p className="card-text">{card.description}</p>
+                  <h4 className="card-title h5">{translate(card.title)}</h4>
+                  <p className="card-text">{translate(card.description)}</p>
                 </div>
                 <div className="card-footer">&nbsp;</div>
               </a>
@@ -226,10 +228,12 @@ export default function Index() {
             {features.map(feat => (
               <li className="col ls-none pt-2" key={feat.href}>
                 <a className="label chip-green" href={feat.href}>
-                  {feat.chip}
+                  {translate(feat.chip)}
                 </a>
-                <h4 className="mt-3 mb-0 h5">{feat.title}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">{feat.description}</p>
+                <h4 className="mt-3 mb-0 h5">{translate(feat.title)}</h4>
+                <p className="mt-6-until-sm mt-3 mb-0">
+                  {typeof feat.description === 'string' ? translate(feat.description) : feat.description}
+                </p>
               </li>
             ))}
           </ul>
