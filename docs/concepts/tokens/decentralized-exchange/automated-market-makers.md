@@ -97,11 +97,11 @@ To vote, a liquidity provider sends an [AMMVote][] transaction. Whenever anyone 
 
 The XRP Ledger's AMM design includes an _auction slot_. A liquidity provider can bid LP Tokens to claim the auction slot to receive a discount on the trading fee for a 24-hour period. The LP tokens that were bid are returned to the AMM.
 
-No more than one account can hold the auction slot at a time, but the successful bidder can name up to 4 additonal accounts to receive the discount.
-
-There is no minimum bid. If the slot is currently occupied, you must outbid the current slot holder to displace them. If someone displaces you, you get a percentage of your bid back based on how much time remains. As long as you hold an active auction slot, you pay a discounted trading fee equal to 1/10 (one tenth) of the normal trading fee when making trades against that AMM.
-
 With any AMM, when the price of its assets shifts significantly in external markets, traders can use arbitrage to profit off the AMM. That can result in a loss for liquidity providers. The auction mechanism is intended to return more of that value to liquidity providers, and more quickly bring the AMM's prices back into balance with external markets.
+
+No more than one account can hold the auction slot at a time, but as the successful bidder you can name up to 4 additional accounts to receive the discount. If the slot is currently occupied, you must outbid the current slot holder to displace them. If someone displaces you, you get a percentage of your bid back, based on how much time remains. As long as you hold an active auction slot, you pay a discounted trading fee equal to 1/10 (one tenth) of the normal trading fee when making trades against that AMM.
+
+The minimum bid to win the auction slot, if it is empty or expired, is equal to the current total number of LP Tokens outstanding multiplied by the trading fee, divided by 25. (In pseudocode, `MinBid = LPTokens * TradingFee / 25`.) If the auction slot is occupied, you must bid at least the minimum plus up to 105% of what the current slot holder paid, discounted by how much time they have remaining.
 
 ## Representation in the Ledger
 
