@@ -247,6 +247,11 @@ ul.nav.navbar-nav {
   --button-content-color-link: #000;
 }
 
+:root.dark {
+  --link-color-primary: #fff;
+  --link-color-primary-hover: #9a52ff;
+}
+
 :root .form-control-plaintext {
   color: var(--text-color);
 }
