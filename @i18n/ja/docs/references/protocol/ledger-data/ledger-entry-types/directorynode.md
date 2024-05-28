@@ -1,21 +1,20 @@
 ---
-html: directorynode.html
-parent: ledger-entry-types.html
 seo:
-    description: 他のオブジェクトへのリンクを含みます。
+    description: 他のオブジェクトへのリンクを保持します。
 labels:
-  - 分散型取引所
   - データ保持
+  - 分散型取引所
 ---
 # DirectoryNode
 [[ソース]](https://github.com/XRPLF/rippled/blob/5d2d88209f1732a0f8d592012094e345cbe3e675/src/ripple/protocol/impl/LedgerFormats.cpp#L44 "Source")
 
 `DirectoryNode`オブジェクトタイプは、レジャーの状態ツリー内の他オブジェクトへのリンクのリストを提供します。概念上の1つの _ディレクトリ_ は、1つ以上の各DirectoryNodeオブジェクトが含まれる二重リンクリストの形式になっています。各DirectoryNodeオブジェクトには、他オブジェクトの[ID](../common-fields.md)が最大32個まで含まれています。1番目のオブジェクトはディレクトリのルートと呼ばれ、ルートオブジェクト以外のオブジェクトはすべて必要に応じて自由に追加または削除できます。
 
-2種類のディレクトリがあります。
+ディレクトリには3種類があります。
 
-* **所有者ディレクトリ**は、アカウントが所有するその他のオブジェクト（`RippleState`オブジェクトや`Offer`オブジェクトなど）をリストします。
-* **オファーディレクトリ**は、分散型取引所で利用可能なオファーをリストします。1つのオファーディレクトリには、同一イシュアンスに同一為替レートが設定されているすべてのオファーが含まれます。
+* _所有者ディレクトリ_ は、[`RippleState`(トラストライン)](ripplestate.md)エントリや[`Offer`](offer.md)エントリなどアカウントが所有するその他のエントリの一覧です。
+* _オファーディレクトリ_ は、[分散型取引所(DEX)](../../../../concepts/tokens/decentralized-exchange/index.md)で利用可能なオファーの一覧です。1つのオファーディレクトリには、同一トークン(通貨コードと発行者)に同一の取引レートが設定されているすべてのオファーが含まれます。
+* _NFTオファーディレクトリ_ は、NFTの買いオファーと売りオファーの一覧です。各NFTには、買いオファー用と売りオファー用の2つのディレクトリがあります。
 
 ## {% $frontmatter.seo.title %}のJSONの例
 
@@ -56,6 +55,29 @@ labels:
 ```
 {% /tab %}
 
+{% tab label="NFTオファーディレクトリ" %}
+```json
+{
+   "result": {
+      "index": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A",
+      "ledger_current_index": 310,
+      "node": {
+         "Flags": 2,
+         "Indexes": [
+            "83C81AC39F9771DDBCD66F6C225FC76EFC0971384EC6148BAFA5BD18019FC495"
+         ],
+         "LedgerEntryType": "DirectoryNode",
+         "NFTokenID": "000800009988C43C563A7BB35AF34D642990CDF089F11B445EB3DCCD00000132",
+         "RootIndex": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A",
+         "index": "CC45A27DAF06BFA45E8AFC92801AD06A06B7004DAD0F7022E439B3A2F6FA5B5A"
+      },
+      "status": "success",
+      "validated": false
+   }
+}
+```
+{% /tab %}
+
 {% /tabs %}
 
 ## {% $frontmatter.seo.title %}のフィールド
@@ -68,6 +90,7 @@ labels:
 | `IndexNext`         | 数値      | UInt64      | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の次のオブジェクトにリンクし、末尾でラップアラウンドします。 |
 | `IndexPrevious`     | 数値      | UInt64      | いいえ | （省略可）このディレクトリに複数のページが含まれている場合、このIDはチェーン内の前のオブジェクトにリンクし、先頭でラップアラウンドします。 |
 | `LedgerEntryType`   | 文字列    | UInt16      | はい  | 値が`0x0064`（文字列`DirectoryNode`にマッピング）の場合は、このオブジェクトがディレクトリの一部であることを示します。 |
+| `NFTokenID`         | 文字列    | Hash25      | No       |(NFTオファーディレクトリのみ) 購入または売却オファーに紐づくNFTのID。. |
 | `Owner`             | 文字列    | AccountID   | いいえ | （所有者ディレクトリのみ）このディレクトリ内のオブジェクトを所有するアカウントのアドレス。 |
 | `RootIndex`         | 文字列    | Hash256     | はい  | このディレクトリのルートオブジェクトのID。 |
 | `TakerGetsCurrency` | 文字列    | Hash160     | いいえ | （オファーディレクトリのみ）このディレクトリのオファーのTakerGetsの額の通貨コード。 |
@@ -90,11 +113,11 @@ labels:
 
 DirectoryNodeのIDを作成するときには、DirectoryNodeが以下のどのページを表しているかに応じて3種類の方式があります。
 
-* 所有者ディレクトリの1番目のページ（ルートとも呼ばれます）
+* 所有者ディレクトリまたはNFTオファーディレクトリの1番目のページ（ルートとも呼ばれます）
 * オファーディレクトリの1番目のページ
 * いずれかのディレクトリの以降のページ
 
-**所有者ディレクトリの1番目のページ**のIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
+**所有者ディレクトリまたはNFTオファーディレクトリの1番目のページ**のIDは、以下の値がこの順序で連結されている[SHA-512ハーフ][]です。
 
 * 所有者ディレクトリのスペースキー（`0x004F`）
 * `Owner`フィールドのAccountID。
@@ -109,7 +132,7 @@ DirectoryNodeのIDを作成するときには、DirectoryNodeが以下のどの�
 
 オファーディレクトリのIDの下位64ビットは、そのディレクトリ内のオファーのTakerPaysの額をTakerGetsの額で割った結果を、XRP Ledgerの内部金額フォーマットの64ビット数値で表したものです。
 
-**DirectoryNodeがディレクトリの1番目のページではない場合**（所有者ディレクトリ、オファーディレクトリのいずれの場合でも）、DirectoryNodeのIDは、以下の値をこの順序で連結した[SHA-512ハーフ][]です。
+**DirectoryNodeがディレクトリの1番目のページではない場合**、DirectoryNodeのIDは、以下の値をこの順序で連結した[SHA-512ハーフ][]です。
 
 * DirectoryNodeスペースキー（`0x0064`）
 * ルートDirectoryNodeのID
