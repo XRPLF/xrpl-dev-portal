@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react'
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { clsx } from 'clsx'
 
 import { type Transaction, type Wallet } from 'xrpl'
@@ -65,6 +65,7 @@ export function TransactionButton({
     checkBox,
     customOnClick
 }: TransactionButtonProps ) {
+    const { useTranslate } = useThemeHooks()
     const { translate } = useTranslate()
 
     const [waitingForTransaction, setWaitingForTransaction] = useState(false)

@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
   
 const alertStyle = {
   position: "relative",
@@ -30,6 +30,7 @@ interface AlertTemplateProps {
 }
   
 export default function AlertTemplate ({ message, options, style, close }: AlertTemplateProps): React.JSX.Element {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate()
   return(
     <div className={clsx("bootstrap-growl alert alert-dismissible", typeToClass(options.type))} style={{ ...alertStyle, ...style }}>

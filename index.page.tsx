@@ -1,4 +1,4 @@
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 export const frontmatter = {
   seo: {
@@ -103,6 +103,7 @@ const features = [
 ];
 
 export default function Index() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (

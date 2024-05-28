@@ -1,6 +1,6 @@
 import * as React from 'react';
 import dynamicReact from '@markdoc/markdoc/dist/react';
-import { Link } from '@portal/Link';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export interface XRPLCardProps {
     title: string,

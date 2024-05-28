@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useLocation } from 'react-router-dom';
 // @ts-ignore
 import dynamicReact from '@markdoc/markdoc/dist/react';
-import { usePageSharedData, useTranslate } from '@portal/hooks';
-import { Link } from '@portal/Link';
+import { Link } from '@redocly/theme/components/Link/Link';
+import { useThemeHooks } from '@redocly/theme/core/hooks'
 import { idify } from '../helpers';
 
 export {default as XRPLoader} from '../components/XRPLoader';
@@ -11,6 +11,7 @@ export { XRPLCard, CardGrid } from '../components/XRPLCard';
 
 
 export function IndexPageItems() {
+    const { usePageSharedData } = useThemeHooks();
     const data = usePageSharedData('index-page-items') as any[];
     return (
         <div className="children-display">
@@ -148,6 +149,7 @@ function shieldsIoEscape(s: string) {
 }
 
 export function NotEnabled() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
     <span className="status not_enabled" title={translate("This feature is not currently enabled on the production XRP Ledger.")}><i className="fa fa-flask"></i></span>

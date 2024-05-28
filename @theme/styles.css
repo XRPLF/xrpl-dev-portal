@@ -163,29 +163,26 @@ ul.nav.navbar-nav {
   --color-primary-text: #161087;
   --color-primary-text-active: #0d086e;*/
   
-  --link-text-color: #fff;
+  --link-color-primary: #fff;
   --link-decoration: underline;
   --link-font-weight: var(--font-weight-regular);
 
-  --link-hover-text-color: #9a52ff;
-  --link-hover-decoration: underline;
+  --link-color-primary-hover: #9a52ff;
+  --link-decoration-hover: underline;
 
-  --link-active-decoration: underline;
-  --link-active-text-color: var(--color-blue-7);
-
-  --link-visited-text-color: #fff;
+  --link-color-visited: #fff;
   --link-visited-decoration: underline;
 
-  --bg-base: var(--color-gray-10);
-  --bg-raised: var(--color-gray-8);
-  --background-color: var(--bg-base);
+  --bg-color: var(--color-gray-10);
+  --bg-color-raised: var(--color-gray-8);
+  --background-color: var(--bg-color);
 
   --font-family-base: 'Work Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   --heading-font-family: var(--font-family-base);
 
   --inline-code-font-family: "Space Mono", monospace;
   --inline-code-text-color: #5beb9d; /* $green-400 */
-  --inline-code-background-color: #0a2e1b; /* $green-1000 */
+  --inline-code-bg-color: #0a2e1b; /* $green-1000 */
   --inline-code-border-radius: 0;
 
   --heading-anchor-color: #9a52ff;
@@ -197,65 +194,64 @@ ul.nav.navbar-nav {
   --h5-font-size: 1.25rem;
 
   --sidebar-border-color: transparent;
-  --sidebar-background-color: transparent;
-
-  --search-item-active-text-color: #E8E9E7;
+  --sidebar-bg-color: transparent;
+  --sidebar-margin-horizontal: 32px;
 
   --border-radius-md: 4px;
 
-  --code-block-background-color: #232325;
-  --code-block-controls-background-color: #232325;
+  --code-block-bg-color: #232325;
+  --code-block-controls-bg-color: #232325;
   --code-block-controls-border: none;
-  --code-block-border-color: #232325;
   --code-block-padding: 0 2rem 1.5rem 2rem;
-  --code-block-border-radius: 4px;
 
   --breadcrumbs-margin-bottom: 0.5rem;
   --breadcrumbs-text-color: var(--color-gray-4);
   --breadcrumbs-gap: 0 8px;
   --breadcrumbs-font-size: 0.833em;
 
-  --language-picker-min-height: 38px;
-
-  --footer-background-color: transparent;
-  --footer-dividing-border-color: transparent;
+  --footer-bg-color: transparent;
+  --footer-column-divider-color: transparent;
   --footer-border-color: transparent;
   --footer-title-font-weight: 600;
   --footer-title-font-size: 1rem;
   --footer-title-text-color: #A2A2A4;
 
-  --sidebar-margin-horizontal: 32px;
-  --sidebar-item-padding-horizontal: 0;
+  --menu-item-padding-horizontal: 0px;
 }
 
 :root.light {
-  --link-hover-text-color: #4A00B2;
-  --link-visited-text-color: #000;
-  --text-secondary: #000;
-  --code-block-background-color: #E0E0E1;
-  --code-block-controls-background-color: #E0E0E1;
+  --link-color-primary-hover: #4A00B2;
+  --link-color-visited: #000;
+  --text-color-secondary: #000;
+  --code-block-bg-color: #E0E0E1;
+  --code-block-controls-bg-color: #E0E0E1;
   --code-block-controls-border: none;
-  --code-block-border-color: #E0E0E1;
-  --md-tabs-active-tab-background-color: #C1C1C2;
+  --md-tabs-active-tab-bg-color: #C1C1C2;
   
   --code-block-tokens-function-color: #B23C00;
   --code-block-tokens-operator-color: #000;
   --code-block-tokens-comment-color: #343437;
   --code-block-tokens-string-color: #145C35;
-  --inline-code-background-color: #E0E0E1;
+  --inline-code-bg-color: #E0E0E1;
 
-  --search-trigger-background-color: #E0E0E1;
-  --search-trigger-text-color: #838386;
+  --search-trigger-bg-color: #E0E0E1;
+  --search-trigger-color: #838386;
+
   --language-picker-border-color: #C1C1C2;
   --language-picker-background-color: #E0E0E1;
-  --select-list-background-color: #E0E0E1;
+  --select-list-bg-color: #E0E0E1;
 
   --footer-title-text-color: #000;
-  --bg-base: var(--color-gray-1);
-  --bg-raised: var(--color-gray-2);
-  --button-background-color: var(--color-gray-2);
+  --bg-color: var(--color-gray-1);
+  --bg-color-raised: var(--color-gray-2);
+  --button-content-color-link: #000;
 }
 
 :root .form-control-plaintext {
   color: var(--text-color);
+}
+
+[data-component-name="Search/SearchTrigger"] > div {
+  justify-content: start;
+  width: 100%;
 }

@@ -3,6 +3,8 @@ button.MarkpromptFloatingTrigger {
   border-radius: $border-radius-sm;
   right: 16px;
   border: 1px solid transparent;
+  color: var(--markprompt-primaryForeground);
+  background-color: var(--markprompt-primary);
 
   @include media-breakpoint-up(lg) {
     right: 32px;

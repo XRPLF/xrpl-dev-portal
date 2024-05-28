@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 export const frontmatter = {
   seo: {
@@ -208,6 +208,7 @@ function VideoCard(props: { url: string; title: string; src: string }) {
 }
 
 function DevToolCard(props: { link: string; title: string; description: string }) {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const { link, title, description } = props;
   return (
@@ -228,6 +229,7 @@ function PrimaryButton(props: { href: string; text: string; isArrowUp: boolean }
 }
 
 export default function Docs() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (

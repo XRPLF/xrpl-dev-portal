@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { useState } from 'react';
 import { Client, dropsToXrp, Wallet } from 'xrpl'; 
 import * as faucetData from './faucets.json'
@@ -43,6 +43,7 @@ async function waitForSequence(client: Client, address: string):
 }
 
 function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: string}) {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (<div key={givenKey}>
@@ -68,6 +69,7 @@ function FaucetSidebar({ faucets }: { faucets: FaucetInfo[] }): React.JSX.Elemen
 }
 
 export default function XRPFaucets(): React.JSX.Element {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   const faucets: FaucetInfo[] = faucetData.knownFaucets
@@ -124,6 +126,7 @@ async function generateFaucetCredentialsAndUpdateUI(
   setSecret("")
   setBalance("")
   setSequence("")
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
 
@@ -150,6 +153,7 @@ async function generateFaucetCredentialsAndUpdateUI(
 }
 
 function TestCredentials({selectedFaucet}) {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   const [generatedCredentialsFaucet, setGeneratedCredentialsFaucet] = useState("")

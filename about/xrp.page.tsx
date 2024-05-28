@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import briefcaseIcon from "../static/img/icons/briefcase.svg";
 import userIcon from "../static/img/icons/user.svg";
 export const frontmatter = {
@@ -72,6 +72,7 @@ const exchanges = [
 ];
 
 export default function XrpOverview() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [activeSection, setActiveSection] = React.useState(null);
 

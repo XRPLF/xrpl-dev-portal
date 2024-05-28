@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 export const frontmatter = {
   seo: {
@@ -13,6 +13,7 @@ false
 const target= {prefix: ''}; // TODO: fixme
 
 export default function Ambassadors() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 export const frontmatter = {
   seo: {
@@ -119,6 +119,7 @@ const other = [
 ];
 
 export default function DevTools() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import numLight from "../static/js/ecosystem/numbers-animation-light.json";
 import numDark from "../static/js/ecosystem/numbers-animation.json";
 import arrow from "../static/js/ecosystem/arrow-animation.json";
@@ -473,6 +473,7 @@ const uses = [
 
 export default function Uses() {
   const theme = useThemeFromClassList(["dark", "light"]);
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [displayModal, setDisplayModal] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
