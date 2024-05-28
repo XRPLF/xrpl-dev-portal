@@ -12,6 +12,8 @@ labels:
 
 `server_state`コマンドは、サーバに対し`rippled`サーバの現在の状態に関するさまざまな機械可読の情報を問い合わせます。レスポンスは[server_infoメソッド][]の場合とほぼ同じですが、読み取りやすい単位ではなく処理しやすい単位を使用します。（たとえば、XRP値は科学的記数法や10進数値の代わりに整数のdrop数で示され、時刻は秒単位ではなくミリ秒単位で示されます。）
 
+The [Clio server](../../../../concepts/networks-and-servers/the-clio-server.md) does not support `server_state` directly, but you can ask for the `server_state` of the `rippled` server that Clio is connected to. Specify `"ledger_index": "current"` (WebSocket) or `"params": [{"ledger_index": "current"}]` (JSON-RPC).
+
 ## リクエストのフォーマット
 リクエストのフォーマットの例:
 
@@ -20,8 +22,9 @@ labels:
 {% tab label="WebSocket" %}
 ```json
 {
- "id": 2,
- "command": "server_state"
+  "id": 2,
+  "command": "server_state",
+  "ledger_index": "current"
 }
 ```
 {% /tab %}
@@ -29,10 +32,10 @@ labels:
 {% tab label="JSON-RPC" %}
 ```json
 {
-   "method": "server_state",
-   "params": [
-       {}
-   ]
+  "method": "server_state",
+  "params": [
+    {"ledger_index": "current"}
+  ]
 }
 ```
 {% /tab %}
@@ -312,6 +315,8 @@ Headers
 | `validated_ledger.seq`           | 符号なし整数 | このレジャーの一意のシーケンス番号 |
 | `validation_quorum`              | 数値        | 1つのレジャーバージョンの検証に最低限必要となる信頼できる検証の数。状況によっては、サーバがさらに検証をリクエストする場合があります。 |
 | `validator_list_expires`         | 数値        | _（管理者専用）_ 現在のバリデータリストが期限切れになる時点（[Rippleエポック以降の経過秒数][]）。サーバが発行済みのバリデータリストをロードしていない場合は0。 |
+
+[レポートモード]: ../../../../concepts/networks-and-servers/rippled-server-modes.md
 
 {% partial file="/@i18n/ja/docs/_snippets/etl-source-object.md" /%}
 
