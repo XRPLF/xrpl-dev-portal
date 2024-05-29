@@ -18,7 +18,7 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 | Ripple[¹][]   | **Mainnet** | `https://s1.ripple.com:51234/` | `wss://s1.ripple.com/` | General purpose server cluster |
 | Ripple[¹][]   | **Mainnet** | `https://s2.ripple.com:51234/` | `wss://s2.ripple.com/` | [Full-history server](../concepts/networks-and-servers/ledger-history.md#full-history) cluster |
 
-## Other Networks
+## Test Networks
 
 | Operator  | [Network][] | JSON-RPC URL | WebSocket URL | Notes                |
 |:----------|:------------|:-------------|:--------------|:---------------------|
