@@ -260,3 +260,15 @@ ul.nav.navbar-nav {
   justify-content: start;
   width: 100%;
 }
+
+@media screen and (min-width: 990px) {
+  [data-component-name="LanguagePicker/LanguagePicker"] {
+    display: block;
+  }
+  [data-component-name="Search/SearchTrigger"] > button {
+    display: none;
+  }
+  [data-component-name="Search/SearchTrigger"] > div {
+    display: inline-flex;
+  }
+}
