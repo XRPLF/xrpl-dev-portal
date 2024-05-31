@@ -396,7 +396,7 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
       #topnav-search {
         background-color: $gray-900;
 
-        [data-component-name="Search/MobileSearchTrigger"] {
+        [data-component-name="Search/SearchTrigger"] {
           padding: 2rem;
           cursor: pointer;
         }
