@@ -459,6 +459,7 @@
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_changes.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md

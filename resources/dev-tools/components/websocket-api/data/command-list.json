@@ -7,7 +7,6 @@
         "description": "Returns information about an account's <a href='/docs/concepts/payment-types/payment-channels/'>payment channels</a>.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_channels",
         "body": {
-          "id": 1,
           "command": "account_channels",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
@@ -29,7 +28,6 @@
         "description": "Retrieves information about an account, its activity, and its XRP balance.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_info",
         "body": {
-          "id": 2,
           "command": "account_info",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "ledger_index": "current",
@@ -41,7 +39,6 @@
         "description": "Retrieves information about an account's trust lines, including balances for all non-XRP currencies and assets.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_lines",
         "body": {
-          "id": 2,
           "command": "account_lines",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "ledger_index": "validated"
@@ -62,7 +59,6 @@
         "description": "Returns the raw ledger format for all objects owned by an account.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects",
         "body": {
-          "id": 1,
           "command": "account_objects",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "ledger_index": "validated",
@@ -75,7 +71,6 @@
         "description": "Retrieves a list of offers made by a given account that are outstanding as of a particular ledger version.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_offers",
         "body": {
-          "id": 2,
           "command": "account_offers",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn"
         }
@@ -85,7 +80,6 @@
         "description": "Retrieves a list of transactions that affected the specified account.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/account_tx",
         "body": {
-          "id": 2,
           "command": "account_tx",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "ledger_index_min": -1,
@@ -115,7 +109,6 @@
         "description": "Compares an account's Default Ripple and No Ripple flags to the recommended settings.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/account-methods/noripple_check",
         "body": {
-          "id": 0,
           "command": "noripple_check",
           "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "role": "gateway",
@@ -134,7 +127,6 @@
         "description": "Retrieves information about the public ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger",
         "body": {
-          "id": 14,
           "command": "ledger",
           "ledger_index": "validated",
           "full": false,
@@ -149,7 +141,6 @@
         "description": "Returns the unique identifiers of the most recently closed ledger. (This ledger is not necessarily validated and immutable yet.)",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_closed",
         "body": {
-          "id": 2,
           "command": "ledger_closed"
         }
       },
@@ -158,7 +149,6 @@
         "description": "Returns the unique identifiers of the current in-progress ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_current",
         "body": {
-          "id": 2,
           "command": "ledger_current"
         }
       },
@@ -167,7 +157,6 @@
         "description": "Retrieves contents of the specified ledger.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_data",
         "body": {
-          "id": 2,
           "ledger_hash": "842B57C1CC0613299A686D3E9F310EC0422C84D3911E5056389AA7E5808A93C8",
           "command": "ledger_data",
           "limit": 5,
@@ -233,7 +222,6 @@
         "description": "Retrieves information on a single transaction from a specific ledger version.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/transaction_entry",
         "body": {
-          "id": 4,
           "command": "transaction_entry",
           "tx_hash": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
           "ledger_index": 348734
@@ -244,7 +232,6 @@
         "description": "Retrieves information on a single transaction.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/transaction-methods/tx",
         "body": {
-          "id": 1,
           "command": "tx",
           "transaction": "E08D6E9754025BA2534A78707605E0601F03ACE063687A0CA1BDDACFCD1698C7",
           "binary": false
@@ -259,7 +246,6 @@
         "name": "amm_info",
         "description": "Looks up info on an Automated Market Maker instance.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info",
-        "status": "not_enabled",
         "body": {
           "command": "amm_info",
           "asset": {
@@ -272,11 +258,19 @@
         }
       },
       {
+        "name": "book_changes",
+        "description": "Reports changes to the order books that occurred in a specific ledger version.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_changes/",
+        "body": {
+          "command": "book_changes",
+          "ledger_index": 88530953
+        }
+      },
+      {
         "name": "book_offers",
         "description": "Retrieves a list of offers, also known as the order book, between two currencies.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers/",
         "body": {
-          "id": 4,
           "command": "book_offers",
           "taker": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "taker_gets": {
@@ -294,7 +288,6 @@
         "description": "Checks whether one account is authorized to send payments directly to another.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized",
         "body": {
-          "id": 1,
           "command": "deposit_authorized",
           "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "destination_account": "ra5nK24KXen9AHvsdFTKHSANinZseWnPcX",
@@ -327,7 +320,6 @@
         "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/path_find",
         "ws_only": true,
         "body": {
-          "id": 8,
           "command": "path_find",
           "subcommand": "create",
           "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
@@ -344,7 +336,6 @@
         "description": "Searches one time for a payment path.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/ripple_path_find",
         "body": {
-          "id": 8,
           "command": "ripple_path_find",
           "source_account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
           "source_currencies": [
@@ -424,7 +415,6 @@
         "description": "Checks the validity of a signature that can be used to redeem a specific amount of XRP from a payment channel.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/payment-channel-methods/channel_verify",
         "body": {
-          "id": 1,
           "command": "channel_verify",
           "channel_id": "5DB01B7FFED6B67E6B0414DED11E051D2EE2B7619CE0EAA6286D67A3A4D5BDB3",
           "signature": "304402204EF0AFB78AC23ED1C472E74F4299C0C21F1B21D07EFC0A3838A420F76D783A400220154FB11B6F54320666E4C36CA7F686C16A3A0456800BBC43746F34AF50290064",
@@ -486,7 +476,6 @@
         "description": "Returns an SDK-compatible definitions.json, generated from the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions",
         "body": {
-          "id": 1,
           "command": "server_definitions"
         }
       },
@@ -495,7 +484,6 @@
         "description": "Reports a human-readable version of various information about the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info",
         "body": {
-          "id": 1,
           "command": "server_info"
         }
       },
@@ -512,7 +500,6 @@
         "description": "Reports a machine-readable version of various information about the rippled server being queried.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state",
         "body": {
-          "id": 1,
           "command": "server_state"
         }
       }
@@ -526,7 +513,6 @@
         "description": "Checks that the connection is working.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/utility-methods/ping",
         "body": {
-          "id": 1,
           "command": "ping"
         }
       },
@@ -535,7 +521,6 @@
         "description": "Provides a random number, which may be a useful source of entropy for clients.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/utility-methods/random",
         "body": {
-          "id": 1,
           "command": "random"
         }
       }
