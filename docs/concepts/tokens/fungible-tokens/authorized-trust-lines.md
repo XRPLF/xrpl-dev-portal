@@ -21,7 +21,7 @@ The transaction to authorize a trust line must be signed by the issuing address,
 
 ## Reserves
 
-Trust lines are ledger objects that require a reserve of 2 XRP each. To help new users get started, the reserve amoutns are waived for the first 2 trust lines you create for a new account. Fund your new account with 10 XRP and create your new trust lines. If you have more than 10 XRP in your account, up to 4 XRP are reserved for your first 2 trust lines. If you later remove the trust line, the reserves are freed up for future use.
+Trust lines are ledger objects that require a reserve of 2 XRP each. To help new users get started, the reserve amounts are waived for the first 2 trust lines you create for a new account. Fund your new account with 10 XRP and create your new trust lines. If you have more than 10 XRP in your account, up to 4 XRP are reserved for your first 2 trust lines. If you remove the trust line later, the reserves are freed up for future use.
 
 ## With Stablecoin Issuing
 
