@@ -14,6 +14,8 @@ The XRP Ledger applies _reserve requirements_, in XRP, to protect the shared glo
 
 To have an account, an address must hold a minimum amount of XRP in the shared global ledger. To fund a new address, you must receive enough XRP at that address to meet the reserve requirement. You cannot send the reserved XRP to others, but you can recover some of the XRP by [deleting the account](deleting-accounts.md).
 
+The XRP reserve is not dormant, however. You can use your reserves to pay transaction fees. Another way to look at your reserves is that you are pre-funding your account to handle your transaction fees.
+
 The reserve requirement changes from time to time due to the [Fee Voting](../consensus-protocol/fee-voting.md) process, where validators can agree to new reserve settings.
 
 ## Base Reserve and Owner Reserve
@@ -29,6 +31,8 @@ The current reserve requirements on Mainnet are:
 - Owner reserve: **2 XRP** per item
 
 Reserves on other networks may vary.
+
+An exception to the owner reserve is that you can create your first two trust lines on the XRPL without the required reserves of 2 XRP per trust line. Create your new account with the 10 XRP base reserve, then create your 2 trust lines and the reserves are not required. If you fund your account with more than 10 XRP, your account will be charged the normal reserve fees for your first two trust lines.
 
 ## Owner Reserves
 
