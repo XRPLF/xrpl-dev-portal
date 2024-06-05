@@ -30,8 +30,8 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.0-1.el7.x86_64.rpm) | `TODO` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.0-1_amd64.deb) | `TODO` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.0-1.el7.x86_64.rpm) | `aeee54f2cafb651c42d12791ea62ebd20786b94165723ae5f405a089f7eec80a` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.0-1_amd64.deb) | `1bd26cea8e289e40368542eb370cec95b42905855f9ada8ece361a43134834c9` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
