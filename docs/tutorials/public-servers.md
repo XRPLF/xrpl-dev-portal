@@ -35,7 +35,7 @@ If you don't [run your own `rippled` server](../infrastructure/installation/inde
 [¹]: #footnote-1
 [²]: #footnote-2
 
-<a id="footnote-1"></a>¹ Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should [run your own `rippled` server](../concepts/networks-and-servers/) or contract someone you trust to do so. Ripple includes [Clio servers](../concepts/networks-and-servers/the-clio-server/) (the successor to [Reporting Mode][]) in its public clusters.
+<a id="footnote-1"></a>¹ Ripple's public servers are not for sustained or business use, and they may become unavailable at any time. For regular use, you should [run your own `rippled` server](../concepts/networks-and-servers/index.md) or contract someone you trust to do so. Ripple includes [Clio servers](../concepts/networks-and-servers/the-clio-server.md) (the successor to [Reporting Mode][]) in its public clusters.
 
 <a id="footnote-2"></a>² `xrpl.ws` is an alias for `xrplcluster.com`. However, the `.ws` top-level domain's reliability may be unsuitable for production uses.
 
