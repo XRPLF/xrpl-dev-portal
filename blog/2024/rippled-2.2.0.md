@@ -10,7 +10,7 @@ theme:
 ---
 # Introducing XRP Ledger version 2.2.0
 
-Version 2.0.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds performance optimizations, several bug fixes, and introduces the `featurePriceOracle`, `fixEmptyDID`, `fixXChainRewardRounding`, `fixPreviousTxnID`, and `fixAMMv1_1` amendments.
+Version 2.2.0 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release adds performance optimizations, several bug fixes, and introduces the `featurePriceOracle`, `fixEmptyDID`, `fixXChainRewardRounding`, `fixPreviousTxnID`, and `fixAMMv1_1` amendments.
 
 [Sign Up for Future Release Announcements](https://groups.google.com/g/ripple-server)
 
