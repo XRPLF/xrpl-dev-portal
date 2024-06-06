@@ -69,9 +69,9 @@ To prevent misuse, some restrictions apply to the assets used in an AMM. If you 
 
 Whoever creates the AMM becomes the first liquidity provider, and receives LP tokens that represent 100% ownership of assets in the AMM's pool. They can redeem some or all of those LP tokens to withdraw assets from the AMM in proportion to the amounts currently there. (The proportions shift over time as people trade against the AMM.) The AMM does not charge a fee when withdrawing both assets.
 
-![Example AMM exchange and LP Token withdrawal](/docs/img/cpt-amm-lp-tokens.png)
-
 For example, if you created an AMM with 5 ETH and 5 USD, and then someone exchanged 1.26 USD for 1 ETH, the pool now has 4 ETH and 6.26 USD in it. You can spend half your LP tokens to withdraw 2 ETH and 3.13 USD.
+
+![Example AMM exchange and LP Token withdrawal](/docs/img/cpt-amm-lp-tokens.png)
 
 Anyone can deposit assets to an existing AMM. When they do, they receive new LP tokens based on how much they deposited. The amount that a liquidity provider can withdraw from an AMM is based on the proportion of the AMM's LP tokens they hold compared to the total number of LP tokens outstanding.
 
@@ -90,8 +90,7 @@ Trading fees are a source of passive income for liquidity providers. They offset
 
 Liquidity providers can vote to set the fee from 0% to 1%, in increments of 0.001%. Liquidity providers have an incentive to set trading fees at an appropriate rate: if fees are too high, trades will use order books to get a better rate instead; if fees are too low, liquidity providers don't get any benefit for contributing to the pool. <!-- STYLE_OVERRIDE: will --> 
 
-Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the number of LP tokens they hold.
-To vote, a liquidity provider sends an [AMMVote][] transaction. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes, weighted by how many LP tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote, then only the top 8 votes (by most LP tokens held) are counted. Even though liquidity providers' share of LP tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.md)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
+Each AMM gives its liquidity providers the power to vote on its fees, in proportion to the number of LP tokens they hold. To vote, a liquidity provider sends an [AMMVote][] transaction. Whenever anyone places a new vote, the AMM recalculates its fee to be an average of the latest votes, weighted by how many LP tokens those voters hold. Up to 8 liquidity providers' votes can be counted this way; if more liquidity providers try to vote, then only the top 8 votes (by most LP tokens held) are counted. Even though liquidity providers' share of LP tokens can shift rapidly for many reasons (such as trading those tokens using [Offers](offers.md)), the trading fees are only recalculated whenever someone places a new vote (even if that vote is not one of the top 8).
 
 ### Auction Slot
 
