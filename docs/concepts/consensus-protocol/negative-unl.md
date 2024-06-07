@@ -16,11 +16,11 @@ The Negative UNL has no impact on how the network processes transactions or what
 
 ## Background
 
-Each server in the XRP Ledger protocol has its own UNL (Unique Node List), a list of validators it trusts not to collude, and each server independently decides when a ledger version is validated based on the consensus when enough of its trusted validators agree on a new ledger version. (The default configuration uses a recommended UNL, signed by Ripple, consisting of validators Ripple considers to be sufficiently unique, reliable, and independent.) The standard quorum requirement is at least 80% of trusted validators must agree.
+Each server in the XRP Ledger protocol has its own UNL (Unique Node List), a list of validators it trusts not to collude, and each server independently decides when a ledger version is validated based on the consensus when enough of its trusted validators agree on a new ledger version. The standard quorum requirement is at least 80% of trusted validators must agree. By default, servers are configured to download two lists, one UNL published by the XRP Ledger Foundation and one UNL published by Ripple, and to use the union of those two lists as their UNL. (In other words, by default a server listens to the votes of any validator that is on at least one of those lists.)
 
 If more than 20% of trusted validators go offline or become unable to communicate with the rest of the network, the network stops validating new ledgers because it cannot reach a quorum. This is a design choice to ensure that no transactions' outcomes can be changed after they are declared final. During such a situation, the remaining servers would still be online and could provide past and tentative transaction data, but could not confirm the final, immutable outcome of new transactions.
 
-However, this means that the network could stop making forward progress if a few widely-trusted validators went offline. As of 2020-10-06, there are 34 validators in Ripple's recommended UNL, so the network would stop making forward progress if 7 or more of them were offline. Furthermore, if one or two validators are out for an extended period of time, the network has less room for disagreement between the remaining validators, which can make it take longer to achieve a consensus.
+However, this means that the network could stop making forward progress if a few widely-trusted validators went offline. As of 2024-06-07, there are a total of 35 validators on the default UNLs, so the network would stop making forward progress if 8 or more of them were offline. Furthermore, if one or two validators are out for an extended period of time, the network has less room for disagreement between the remaining validators, which can make it take longer to achieve a consensus.
 
 ## Summary
 
@@ -62,7 +62,7 @@ If a validator's reliability is **less than 50%**, it is a candidate to be added
 
 Each server, including validators, independently calculates reliability scores for all of its trusted validators. Different servers may reach different conclusions about a validator's reliability, either because that validator's votes reached one server and not the other, or because they happened to disagree about specific ledgers more or less often. To add or remove a validator from the Negative UNL, a consensus of trusted validators must agree that a particular validator is above or below the reliability threshold.
 
-**Tip:** Validators track their own reliability, but do not propose adding themselves to the Negative UNL. A validator's measure of its own reliability cannot take into account how successfully its validation votes propagate through the network, so it is less dependable than measurements from outside servers.
+{% admonition type="success" name="Tip" %}Validators track their own reliability, but do not propose adding themselves to the Negative UNL. A validator's measure of its own reliability cannot take into account how successfully its validation votes propagate through the network, so it is less dependable than measurements from outside servers.{% /admonition %}
 
 
 
@@ -74,7 +74,7 @@ Each flag ledger, all of the following changes apply:
 
 1. Changes to the Negative UNL that were scheduled in the previous flag ledger go into effect for the following ledger version. The consensus process for validating this flag ledger itself does not use the scheduled change.
 
-    **Note:** This is one of the only times a ledger's state data is modified without a [transaction](../transactions/index.md) or [pseudo-transaction](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md).
+    {% admonition type="info" name="Note" %} This is one of the only times a ledger's state data is modified without a [transaction](../transactions/index.md) or [pseudo-transaction](../../references/protocol/transactions/pseudo-transaction-types/pseudo-transaction-types.md).{% /admonition %}
 
 2. If the Negative UNL is not full, each server proposes adding **up to 1** validator to the Negative UNL from among its trusted validators with less than 50% reliability.
 3. If the Negative UNL is not empty, each server proposes removing **up to 1** validator from the Negative UNL. A server can propose removing a validator from the Negative UNL for two reasons:
