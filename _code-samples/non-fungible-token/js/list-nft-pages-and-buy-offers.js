@@ -5,7 +5,7 @@
 const xrpl = require('xrpl')
 
 async function main() {
-    account = "rP7aApVAyf3bjtRVVTixVSHBbU4kpd742k"
+    const account = "rP7aApVAyf3bjtRVVTixVSHBbU4kpd742k"
 
     // Connect to a testnet node
     console.log("Connecting to testnet...")
@@ -19,14 +19,14 @@ async function main() {
     })
 
     // Only append the NFTs' NFT ID onto the nft_keylets list, other fields aren't needed
-    var nft_keylets = []
-    for (var i = 0; i < response.result.account_nfts.length; i++) {
+    const nft_keylets = []
+    for (let i = 0; i < response.result.account_nfts.length; i++) {
         nft_keylets.push(response.result.account_nfts[i].NFTokenID)
     }
 
     // Query through the NFTs' buy Offers
     // For each NFT owned by the account (on nft_keylets[]), go through all their respective buy Offers on the DEX
-    for (var i = 0; i < nft_keylets.length ; i++) {
+    for (let i = 0; i < nft_keylets.length; i++) {
         let response_1;
         try {
             response_1 = await client.request({
@@ -34,21 +34,20 @@ async function main() {
                 "nft_id": nft_keylets[i],
                 "ledger_index": "validated"
             })
-        } catch(e) {
+        } catch (e) {
             console.log(`Couldn't get buy offers for NFT ${nft_keylets[i]}. Maybe there aren't any.`)
             continue
         }
-        
+
         console.log(`\nBuy Offers for NFT ${nft_keylets[i]}:`)
-        for (var i = 0; i < response_1.result.offers.length; i++) {
-            console.log(`\n${i+1}.`)
-            console.log(` NFT Offer Index: ${response_1.result.offers[i].nft_offer_index}`)
-            console.log(`    Offer Amount: ${response_1.result.offers[i].amount} drops`)
-            console.log(`     Offer Owner: ${response_1.result.offers[i].owner}`)
+        for (let j = 0; j < response_1.result.offers.length; j++) {
+            console.log(`\n${j + 1}.`)
+            console.log(` NFT Offer Index: ${response_1.result.offers[j].nft_offer_index}`)
+            console.log(`    Offer Amount: ${response_1.result.offers[j].amount} drops`)
+            console.log(`     Offer Owner: ${response_1.result.offers[j].owner}`)
         }
-        
     }
-    client.disconnect()
+    await client.disconnect()
     // End main()
 }
 
