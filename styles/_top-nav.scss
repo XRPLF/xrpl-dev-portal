@@ -517,6 +517,7 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
 
     // Move search to top of mobile menu ---------------------------------------
     #top-main-nav {
+      background-color: $gray-800;
       padding-top: 32px;
       position: relative;
 
@@ -529,7 +530,9 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
           display: none;
         }
 
-        #topnav-search {
+        #topnav-search, 
+        #topnav-language,
+        #topnav-theme {
           // display: none;
           height: 0;
           overflow: clip;
