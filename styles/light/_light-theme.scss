@@ -350,10 +350,6 @@ article a.button,
 .top-nav {
   background: $light-bg;
 
-  #top-main-nav {
-    background-color: $gray-300;
-  }
-
   #topnav-pages .nav-link {
     color: $light-fg;
   }
@@ -428,6 +424,10 @@ article a.button,
     .navbar-nav .nav-link,
     .navbar-collapse>.nav-item {
       background: $gray-200;
+    }
+
+    #top-main-nav {
+      background-color: $gray-300;
     }
   }
 }
