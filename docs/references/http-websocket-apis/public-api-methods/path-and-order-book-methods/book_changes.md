@@ -6,7 +6,7 @@ labels:
   - Cross-Currency
 ---
 # book_changes
-[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/handlers/AMMInfo.cpp "Source")
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/rpc/BookChanges.h "Source")
 
 The {% code-page-name /%} method reports information about changes to the order books in the [decentralized exchange (DEX)](../../../../concepts/tokens/decentralized-exchange/index.md) compared with the previous ledger version. This may be useful for building "candlestick" charts.
 
@@ -52,7 +52,7 @@ The request includes the following parameters:
 
 | Field          | Type             | Required? | Description |
 |:---------------|:-----------------|:----------|-------------|
-| `ledger_hash`  | [Hash][]         | No        | A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
+| `ledger_hash`  | [Hash][]         | No        | A 32-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index` | [Ledger Index][] | No        | The [ledger index][] of the ledger to use, or a shortcut string to choose a ledger automatically. (See [Specifying Ledgers][]) |
 
 {% admonition type="warning" name="Known Issues" %}
