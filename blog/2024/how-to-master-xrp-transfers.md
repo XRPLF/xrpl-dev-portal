@@ -44,7 +44,7 @@ python3 lesson1-send-xrp.py
 
 ## Transferring XRP: A Hands-on Experience
 
-With your accounts at the ready, it's time to send XRP back and forth. Experience the thrill of moving digital currency with just a few clicks:
+With your accounts at the ready, it's time to [send XRP payments using Python](./../../docs/tutorials/python/send-payments/index.md) back and forth. Experience the thrill of moving digital currency with just a few clicks:
 
 - **From Standby to Operational**: Enter the XRP amount, paste the operational account's address into the destination field, and watch the magic happen.
 - **Back to Standby**: Reverse the roles and transfer XRP from the operational account back to the standby account, completing the circle.
