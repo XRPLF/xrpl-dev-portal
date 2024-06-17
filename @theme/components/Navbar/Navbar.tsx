@@ -120,8 +120,7 @@ const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
   padding: 10px;
 `;
 
-export function AlertBanner(props) {
-  const { message, button, link, show } = props;
+export function AlertBanner({ message, button, link, show }) {
   if (show) {
     return (
       <div className="top-banner fixed-top">
@@ -141,13 +140,13 @@ export function AlertBanner(props) {
   return null;
 }
 
-export function TopNavCollapsible(props) {
+export function TopNavCollapsible({children}) {
   return (
     <div
       className="collapse navbar-collapse justify-content-between"
       id="top-main-nav"
     >
-      {props.children}
+      {children}
     </div>
   );
 }
