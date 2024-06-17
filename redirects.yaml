@@ -109,6 +109,9 @@ faq.html:
 privacy-policy.html:
     to: /about/privacy-policy
     type: 301
+privacy-policy/:
+    to: /about/privacy-policy
+    type: 301
 technical-faq.html:
     to: /faq
     type: 301
