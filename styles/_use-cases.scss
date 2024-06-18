@@ -1,15 +1,13 @@
 /* Use Cases ---------------------------------------------------------------- */
 
 // Define each category's logos
-$infrastructure-logos: "xrp-ledger", "gatehub", "towolabs", "xrpscan",
-  "xrp-toolkit", "bithomp", "onthedex";
+$infrastructure-logos: "xrp-ledger", "gatehub", "towolabs", "xrpscan", "xrp-toolkit", "bithomp", "onthedex";
 $developer-tooling-logos: "cryptum", "evernode", "threezy", "tokenize";
 $interoperability-logos: "multichain";
 $wallet-logos: "crossmark", "edge", "gem-wallet", "xumm";
-$nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex",
-  "xrp-cafe", "xrp-oval";
-$exchanges-logos: "sologenic_dex", "xpmarket";
-$gaming-logos: "forte", "ledger-city";
+$nfts-logos: "aesthetes", "audiotarky", "nftmaster", "peerkat", "sologenic_dex", "xrp-cafe", "xrp-oval";
+$exchanges-logos: "sologenic_dex", "xpmarket", "orchestra-finance", "moai-finance", "first-ledger-bot";
+$gaming-logos: "forte", "ledger-city", "futureverse", "zerpmon";
 $security-logos: "anchain";
 $payments-logos: "ripple", "supermojo";
 $cbdc-logos: "ripple";
@@ -30,6 +28,40 @@ $custody-logos: "gatehub", "bitgo";
     }
   }
 }
+
+.modal-content-uses {
+  .first-ledger-bot{
+    min-height: 80px !important;
+    position: relative;
+    bottom: 20px;
+    content: url("../img/uses/first-ledger-bot.svg");
+  }
+  .orchestra-finance{
+    content: url("../img/uses/orchestra-finance.svg");
+  }
+  .moai-finance{
+    min-height: 80px !important;
+    position: relative;
+    bottom: 20px;
+    content: url("../img/uses/moai-finance.svg");
+  }
+  .ledger-city{
+    margin: 0px !important;
+    position: relative;
+    bottom: 4px;
+    left: 6px;
+    max-height: 47px !important;
+  }
+  .zerpmon {
+    margin: 0px;
+    min-width: 80px;
+    min-height: 84px;
+    position: relative;
+    bottom: 13px;
+    content: url("../img/uses/zerpmon.png") !important;
+  }
+}
+
 #use_case_companies_list {
   #threezy {
     .biz-logo {
@@ -37,7 +69,9 @@ $custody-logos: "gatehub", "bitgo";
       content: url("../img/uses/modallogos/threezy.png");
     }
   }
+
 }
+
 html.light {
   .cryptum {
     content: url(../img/uses/lightmode/cryptum.jpg) !important;
@@ -49,6 +83,7 @@ html.light {
     padding-bottom: 10px;
   }
 }
+
 // Use the mixin for each category
 @include create-logo-classes($infrastructure-logos);
 @include create-logo-classes($developer-tooling-logos);
@@ -105,6 +140,7 @@ html.light {
   display: flex;
   justify-content: space-between;
   z-index: 10;
+
   @media only screen and (max-width: 768px) {
     top: 30px;
   }
@@ -123,6 +159,7 @@ html.light {
 
 .left-arrow {
   margin-left: 40px;
+
   @media only screen and (max-width: 768px) {
     margin-left: 0px;
   }
@@ -130,6 +167,7 @@ html.light {
 
 .right-arrow {
   margin-right: 40px;
+
   @media only screen and (max-width: 768px) {
     margin-right: 0px;
   }
@@ -287,6 +325,7 @@ html.light {
 .bottom-row {
   display: flex;
   justify-content: center;
+
   @media only screen and (max-width: 768px) {
     flex-wrap: wrap;
   }
@@ -312,6 +351,20 @@ html.light {
   text-decoration: none;
   cursor: pointer;
 }
+
+#use-case-card-grid {
+  grid-template-columns: repeat(2, 1fr);
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
 
 .use-case-circle {
   display: flex;

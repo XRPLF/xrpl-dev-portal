@@ -643,11 +643,15 @@ pre code, pre {
   @each $company, $type in ('bitgo': 'svg',
     'sologenic-nft': 'svg',
     'carbonland-trust': 'svg',
+    'futureverse': 'png',
+    "moai-finance": "svg",
+    "orchestra-finance": "svg",
     'x-tokenize': 'svg',
     'casino-coin': 'svg',
     'xrp-cafe': 'svg',
     'coil': 'svg',
     'xrp-toolkit': 'svg',
+    'first-ledger-bot': 'svg',
     'cryptum': 'svg',
     'xrpl-org-ledger-explorer': 'svg',
     'evernode': 'svg',
@@ -677,8 +681,19 @@ pre code, pre {
       }
     }
   }
-
-
+.modal-content-uses{
+  .first-ledger-bot{
+    content: url("../img/uses/lightmode/first-ledger-bot.svg");
+  }
+  .moai-finance{
+    content: url("../img/uses/lightmode/moai-finance.svg");  
+  }
+  .orchestra-finance{
+    max-height: 52px ;
+    margin: 0;
+    content: url("../img/uses/lightmode/orchestra-finance.svg");  
+  }
+}
 
   // Monochrome logos; invert.
   #bitpay,

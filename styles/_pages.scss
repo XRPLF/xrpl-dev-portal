@@ -365,6 +365,10 @@
     "xp-market": "svg",
     "ledger-city": "svg",
     "forte": "svg",
+    "futureverse": "svg",
+    'first-ledger-bot': 'svg',
+    "moai-finance": "svg",
+    "orchestra-finance": "svg",
     "anchain-ai": "svg",
     "coil": "svg",
     "carbonland-trust": "svg",
@@ -374,6 +378,7 @@
     "ripples-on-demand-liquidity": "svg",
     "ripples-cbdc-platform": "svg",
     "momento": "svg",
+    "zerpmon": "png",
     "Crossmark": "png",
     "Edge": "png"
 
@@ -384,6 +389,22 @@
           max-height: 40px;
           content: url("../img/uses/#{$company}.#{$type}");
         }
+      }
+    }
+  }
+  .orchestra-finance{
+    max-height: 52px !important;
+    margin: 0 !important;
+  }
+  #use_case_companies_list {
+    #first-ledger-bot {
+      .biz-logo {
+        max-height: 81px !important;
+      }
+    }
+    #zerpmon {
+      .biz-logo {
+        max-height: 81px !important;
       }
     }
   }

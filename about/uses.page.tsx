@@ -36,8 +36,8 @@ const logos = {
     "xrp-cafe",
     "xrp-oval",
   ],
-  exchanges: ["sologenic_dex", "xpmarket"],
-  gaming: ["forte", "ledger-city"],
+  exchanges: ["sologenic_dex", "xpmarket", 'orchestra-finance','moai-finance', 'first-ledger-bot'],
+  gaming: ["forte", "ledger-city", "futureverse", 'zerpmon'],
   security: ["anchain"],
   payments: ["ripple", "supermojo"],
   cbdc: ["ripple"],
@@ -89,6 +89,24 @@ const cardsData = [
     category_id: "gaming",
     category_name: "Gaming",
     link: "https://forte.io",
+  },
+  {
+    id: "futureverse",
+    title: "Futureverse",
+    description:
+      "Revolutionary AI + metaverse technologies that enable open, scalable, and interoperable apps, games, and experiences.",
+    category_id: "gaming",
+    category_name: "Gaming",
+    link: "https://www.futureverse.com/",
+  },
+  {
+    id: "zerpmon",
+    title: "Zerpmon",
+    description:
+      "Zerpmon is an original collection of digital collectible creatures that live on the XRPL, with each Zerpmon being a completely unique 1/1. Train and level-up your Zerpmon by taking them on Missions, then Battle other Trainers for XRP, NFTs, massive Tournament prizes, and the glory that comes with becoming the very best.",
+    category_id: "gaming",
+    category_name: "Gaming",
+    link: "https://www.zerpmon.world/",
   },
   {
     id: "gatehub",
@@ -262,6 +280,33 @@ const cardsData = [
     link: "https://sologenic.org/",
   },
   {
+    id: "orchestra-finance",
+    title: "Orchestra Finance",
+    description:
+      "Orchestra Finance is a first-in-class AMM DEX on the XRP Ledger(XRPL). We provide the quintessential AMM experience, with low fees, speedy transactions, and a user-friendly interface.",
+    category_id: "exchanges",
+    category_name: "Exchanges",
+    link: "https://orchestra.finance/",
+  },
+  {
+    id: "moai-finance",
+    title: "Moai Finance",
+    description:
+      "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRPL ecosystem to harness its untapped liquidity across various side-chains. ",
+    category_id: "exchanges",
+    category_name: "Exchanges",
+    link: "https://moai-finance.xyz/",
+  },
+  {
+    id: "first-ledger-bot",
+    title: "First Ledger Bot",
+    description:
+      "First Ledger is the fastest way to trade on the xrpl. This tool allows you to trade with speed within a couple of clicks.",
+    category_id: "exchanges",
+    category_name: "Exchanges",
+    link: "https://firstledger.net/",
+  },
+  {
     id: "sologenic-nft",
     title: "Sologenic NFT",
     description: "Sologenic NFT is an NFT marketplace designed by Sologenic.",
@@ -419,14 +464,14 @@ const uses = [
   {
     id: "exchanges",
     title: "Exchanges",
-    number: 2,
+    number: 5,
     description:
       "Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.",
   },
   {
     id: "gaming",
     title: "Gaming",
-    number: 2,
+    number: 4,
     description:
       "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.",
   },
@@ -717,7 +762,6 @@ export default function Uses() {
               </div>
             </div>
             <ul
-              style={{ gridTemplateColumns: "repeat(4,1fr)" }}
               className="card-grid use-cases-grid ls-none mt-4 pt-lg-2"
               id="use-case-card-grid"
             >
