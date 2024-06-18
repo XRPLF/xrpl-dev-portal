@@ -11,7 +11,7 @@ import { Search } from "@theme/components/Search/Search";
 // @ts-ignore
 
 const alertBanner = {
-  show: true,
+  show: false,
   message: "XRP Ledger Apex is back in Amsterdam",
   button: "Register Now",
   link: "https://www.xrpledgerapex.com/?utm_source=email&utm_medium=email_marketing&utm_campaign=EVENTS_XRPL_Apex_2024_Q2&utm_term=events_page_cta_button",
@@ -92,7 +92,7 @@ export function Navbar(props) {
         button={alertBanner.button}
         link={alertBanner.link}
       />
-      <NavWrapper belowAlertBanner={true}>
+      <NavWrapper belowAlertBanner={alertBanner.show}>
         <LogoBlock to={href} img={logo} alt={altText} />
         <NavControls>
           <MobileMenuIcon />
@@ -120,31 +120,33 @@ const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
   padding: 10px;
 `;
 
-export function AlertBanner(props) {
-  const { message, button, link } = props;
-  return (
-    <div className="top-banner fixed-top">
-      <div className="inner-apex">
-        <span>
-          <p className="mb-0 apex-banner-text">{message}</p>
-        </span>
-        <span>
-          <Link to={link} target="_blank" className="apex-btn">
-            {button}
-          </Link>
-        </span>
+export function AlertBanner({ message, button, link, show }) {
+  if (show) {
+    return (
+      <div className="top-banner fixed-top">
+        <div className="inner-apex">
+          <span>
+            <p className="mb-0 apex-banner-text">{message}</p>
+          </span>
+          <span>
+            <Link to={link} target="_blank" className="apex-btn">
+              {button}
+            </Link>
+          </span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return null;
 }
 
-export function TopNavCollapsible(props) {
+export function TopNavCollapsible({children}) {
   return (
     <div
       className="collapse navbar-collapse justify-content-between"
       id="top-main-nav"
     >
-      {props.children}
+      {children}
     </div>
   );
 }
@@ -174,7 +176,9 @@ export function NavDropdown(props) {
 
       return (
         <div key={index} className={clnm}>
-          <h5 className="dropdown-item">{translate(item.labelTranslationKey, item.label)}</h5>
+          <h5 className="dropdown-item">
+            {translate(item.labelTranslationKey, item.label)}
+          </h5>
           {groupLinks}
         </div>
       );
@@ -187,7 +191,7 @@ export function NavDropdown(props) {
         hero_href = pathPrefix + hero_href;
       }
       const splitlabel = item.label.split(" || ");
-      let splittranslationkey = ["",""]
+      let splittranslationkey = ["", ""];
       if (item.labelTranslationKey) {
         splittranslationkey = item.labelTranslationKey.split(" || ");
       }
