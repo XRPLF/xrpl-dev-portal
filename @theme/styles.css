@@ -217,6 +217,10 @@ ul.nav.navbar-nav {
   --footer-title-text-color: #A2A2A4;
 
   --menu-item-padding-horizontal: 0px;
+  
+  --md-list-left-padding: 40px;
+  --md-table-header-bg-color: #32343E;
+  --md-table-border-color: #32343E;
 }
 
 :root.light {
@@ -245,10 +249,14 @@ ul.nav.navbar-nav {
   --bg-color: var(--color-gray-1);
   --bg-color-raised: var(--color-gray-2);
   --button-content-color-link: #000;
+
+  --md-table-header-bg-color: var(--color-gray-2);
+  --md-table-border-color: var(--color-gray-2);
 }
 
 :root.dark {
   --link-color-primary: #fff;
+  --link-color-visited: #fff;
   --link-color-primary-hover: #9a52ff;
 }
 
@@ -259,6 +267,10 @@ ul.nav.navbar-nav {
 [data-component-name="Search/SearchTrigger"] > div {
   justify-content: start;
   width: 100%;
+}
+
+[data-component-name="Markdown/Markdown"] {
+  --md-table-font-size: 14px;
 }
 
 @media screen and (min-width: 990px) {
