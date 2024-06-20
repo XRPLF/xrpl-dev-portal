@@ -4,6 +4,7 @@ import mapDark from "../static/js/impact/mapDark.json";
 import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
+import { Link } from '@portal/Link';
 
 export const frontmatter = {
   seo: {
@@ -76,7 +77,7 @@ export default function Impact() {
                 "about.impact.feature.ppart1",
                 "Open and decentralized, blockchain and crypto are seeing an increase in adoption across the financial services industry, from retail and institutional investment to "
               )}`}
-              <a href="/about/uses">{translate("about.impact.feature.ppart2", "commercial use cases ")}</a>
+              <Link to="/about/uses">{translate("about.impact.feature.ppart2", "commercial use cases ")}</Link>
               {`${translate("about.impact.feature.ppart3", "like CBDCs, NFTs, and cross-border payments.")}`}
             </p>
           </div>
@@ -162,9 +163,9 @@ export default function Impact() {
                   "Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably."
                 )}
               </p>
-              <a href="/about/uses" className="btn btn-primary btn-arrow">
+              <Link to="/about/uses" className="btn btn-primary btn-arrow">
                 {translate("See More")}
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -186,9 +187,9 @@ export default function Impact() {
                 )}
               </p>
               <div className="d-none d-lg-block py-lg-3">
-                <a className="btn btn-primary btn-arrow" href="/resources/contribute-code">
+                <Link className="btn btn-primary btn-arrow" to="/resources/contribute-code">
                   {translate("Join the Community")}
-                </a>
+                </Link>
               </div>
             </div>
             <div className="order-2 col-lg-6 px-0 pl-lg-3">
@@ -201,9 +202,9 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Blog")}</h6>
                       <p>
                         {`${translate("about.impact.blog.ppart1", "Check out the ")}`}
-                        <a href="/blog">
+                        <Link to="/blog">
                           {translate("about.impact.blog.ppart2", "XRPL dev blog ")}
-                        </a>
+                        </Link>
                         {`${translate(
                           "about.impact.blog.ppart3", 
                           "to stay up-to-date on the latest innovations and developments in the XRPL community."
@@ -218,9 +219,9 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Events")}</h6>
                       <p>
                         {`${translate("about.impact.events.ppart1", "Attend ")}`}
-                        <a href="/community/events">
+                        <Link to="/community/events">
                           {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
-                        </a>
+                        </Link>
                         {`${translate(
                           "about.impact.events.ppart3",
                           "to meet other members of the community."
@@ -271,9 +272,9 @@ export default function Impact() {
                         <h6 className="mb-3">{translate("Events")}</h6>
                         <p>
                           {`${translate("about.impact.events.ppart1", "Attend ")}`}
-                          <a href="/community/events">
+                          <Link to="/community/events">
                             {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
-                          </a>
+                          </Link>
                           {`${translate(
                             "about.impact.events.ppart3",
                             "to meet other members of the community."
@@ -299,13 +300,13 @@ export default function Impact() {
               </div>
             </div>
             <div className="d-lg-none order-3 mt-4 pt-3">
-              <a
+              <Link
                 className="btn btn-primary btn-arrow"
                 target="_blank"
-                href="/resources/contribute-code"
+                to="/resources/contribute-code"
               >
                 {translate("Join the Community")}
-              </a>
+              </Link>
             </div>
           </div>
         </section>

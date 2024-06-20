@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+import { Link } from '@portal/Link';
 
 export const frontmatter = {
   seo: {
@@ -238,13 +239,13 @@ export default function History() {
                       "about.history.xrplf.part3",
                       " September 24, 2020, the XRPL Foundation is an independent and nonprofit entity with a mission to accelerate the development and adoption of the decentralized XRP Ledger. The Foundation received an initial donation of over $6.5M from Coil, Ripple, and Gatehub to fund the Foundation’s work in service of the growing number of developers and other "
                     )}
-                    <a
-                      href="/community"
+                    <Link
+                      to="/community"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {translate("about.history.xrplf.part4", "global blockchain community")}
-                    </a>
+                    </Link>
                     {translate("about.history.xrplf.part5", " members building on the XRP Ledger.")}
                   </p>
                 </div>
