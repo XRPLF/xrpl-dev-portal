@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+import { Link } from '@portal/Link';
 
 export const frontmatter = {
   seo: {
@@ -190,7 +191,7 @@ export default function XrplOverview() {
                   "about.index.consensus.h5part1",
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <a href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</a>
+                <Link to="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</Link>
                 {`${translate(
                   "about.index.consensus.h5part3",
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."
@@ -387,9 +388,9 @@ export default function XrplOverview() {
                   "about.index.tomorrow.ppart1",
                   "XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for funding on your next"
                 )}`}
-                <a href="developer-funding">
+                <Link to="/community/developer-funding">
                   {translate("about.index.tomorrow.ppart2", " blockchain project")}
-                </a>
+                </Link>
                 {translate("about.index.tomorrow.ppart3", ".")}
               </p>
 
