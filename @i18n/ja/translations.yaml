@@ -243,6 +243,35 @@ Featured Categories: 注目のカテゴリ
 Other Categories: 他のカテゴリ
 # TODO: Add projects' details
 
+# about/history.page.tsx
+Provide a Better Alternative to Bitcoin: Bitcoinに代わる選択肢
+XRPL's Origin: XRPLの原点
+In 2011, three engineers—David Schwartz, Jed McCaleb, and Arthur Britto—began developing the XRP Ledger (XRPL). Fascinated by Bitcoin, they set out to create a better version that improved upon its limitations—with the goal of creating a digital asset that was more sustainable and built specifically for payments.: 2011年、David Schwartz、Jed McCaleb、Arthur Brittoの3人のエンジニアがXRP Ledger（XRPL）の開発を開始しました。Bitcoinに魅了されていた3人は、Bitcoinが持つ制約を改善したより優れたバージョンを作ることを目指し、さらに持続可能で決済に特化したデジタルアセットを構築するという目標を掲げました。
+The XRP Ledger first launched in June 2012. Shortly thereafter, they were joined by Chris Larsen, and the group started the Company NewCoin in September 2012 (quickly renamed OpenCoin and now named Ripple).: XRP Ledgerが初めてローンチされたのは2012年6月のことです。開発チームにはその後すぐにChris Larsenが加わり、2012年9月にOpenCoinという会社を創設しました（その後社名はOpenCoinに変わり、現在はRippleという名前になっています）。
+The XRPL founders gifted 80 billion XRP, the platform’s native currency, to the company. Ripple has since put the majority in escrow.: XRPLの創設者達は、このプラットフォームのネイティブ通貨である800億XRPを同社に贈与しました。その後、Ripple社はその大半をエスクローに預けています。
+XRP Ledger Development: XRP Ledgerの開発
+about.history.2011.part1: 2011年初頭、David Schwartz、Jed McCaleb、Arthur Brittの3人の開発者は、Bitcoinに魅了されながらも、Bitcoinに潜む問題を考えていました。彼らは、より持続可能な価値の送信システムを作ろうとしました。（このアイデアは、
+about.history.2011.part2: 2011年5月のフォーラムへの投稿「Bitcoin without mining」
+about.history.2011.part3: で概説されています）。
+Read More: 詳細を読む
+Their initial observations about the high energy consumption and scalability issues that would plague Bitcoin proved prescient. In 2019, estimates suggest Bitcoin mining used more energy than the entire country of Portugal. Moreover, their initial read indicated that significant problems could arise if any miner obtained (or miners colluded to obtain) greater than 50% of the mining power. That risk persists with Bitcoin (and Ethereum) today as mining power has consolidated in China.: 莫大なエネルギー消費量とスケーラビリティの問題が将来的にBitcoinを悩ませるだろうという最初の気付きには先見の明があったことが実証されました。（2019年には、Bitcoinのマイニングに使用されたエネルギー量はポルトガルの国全体のエネルギー消費量を上回ったと推定されています）。また、3人は当初から、もしいずれかのマイナー（または共謀したマイナー集団）がマイニングパワーの51%以上を獲得した場合、深刻な問題が発生するであろうと考えていました。Bitcoin（とEthereum）のマイニングパワーは中国に集中しているため、現在もなおそのリスクを抱えています。
+XRPL Launches its Native Currency, XRP: XRPL、ネイティブ通貨「XRP」がローンチ
+The trio of developers continued the work to build a distributed ledger that improved upon these fundamental limitations of Bitcoin, originally naming the code Ripple. The ledger included a digital asset that would originally be called “ripples” (XRP as the currency code) to follow the same naming convention as Bitcoin (BTC). At the time, the name Ripple stood for the open-source project, the unique consensus ledger (Ripple Consensus Ledger), transaction protocol (Ripple Transaction Protocol or RTXP), the network (Ripple network), and the digital asset (known as “ripples”).: 3人の開発者は、このようなBitcoinの基本的な限界を改善した分散型台帳を構築する作業を続け、当初そのコードを「Ripple」と命名しました。この台帳には、Bitcoin（BTC）と同じ命名規則に従って、当初は「ripples」（通貨コードとしてはXRP）と呼ばれるデジタル資産が含まれていました。当時、Rippleはオープンソースプロジェクト、独自のコンセンサスレジャー（Ripple Consensus Ledger）、トランザクションプロトコル（Ripple Transaction ProtocolまたはRTXP）、ネットワーク（Ripple network）、デジタルアセット（「ripples」と呼称）を表す名称でした。
+In practice, this approach led to many broad uses of “Ripple.” For clarity, the community simply started calling the digital asset by its currency code, “XRP.”: このアプローチでは「Ripple」という言葉が幅広い意味でよく使われるため、コミュニティでは明確にするためにデジタルアセットを「XRP」と呼び始めました。
+By June 2012, Schwartz, McCaleb, and Britto finished code development, and the Ledger was complete.: 2012年6月には、Schwartz、McCaleb、Brittoがコードの開発を完了し、XRP Ledgerが完全に機能するようになっていました。
+Once the XRP Ledger was live, 80% of the XRP was gifted to a new company that set out to build use cases for the digital asset—initially called NewCoin and renamed quickly to OpenCoin.: XRP Ledgerが完全に機能するようになると、XRPの80%が彼らによって設立された会社に贈与されました。当初その会社の名称はNewCoinでしたが、すぐにOpenCoinという名前に変更されました。
+Chris Larsen was the CEO of OpenCoin, and at the company's founding, Jed was co-founder and CTO, David Schwartz was the Chief Cryptography Officer, and Arthur Britto an advisor.: Chris LarsenがOpenCoinのCEOになり、創業時点では、Jed McCalebが共同創業者兼CTO、David Schwartzが最高暗号技術責任者、Arthur Brittoが相談役でした。
+OpenCoin Rebranded to Ripple Labs: OpenCoinからRipple Labsにブランド変更
+Since the early days, OpenCoin set out to revolutionize the global financial system. Despite the revolutionary ideals of many of Bitcoin’s early believers, Larsen never thought blockchain technology should be used to overthrow the existing financial system. He believed that history’s most transformative innovations have always relied on the great ideas that came before them—not displacing them.: OpenCoinはその初期から、世界の金融システムに革命を起こすことを目標としていました。Bitcoinの初期の賛同者の多くが革命的な理想を抱いていたにもかかわらず、Larsenはブロックチェーン技術が既存の金融システムを転覆させるために使用さわれるべきではないと考えていました。彼は、歴史上最も革新的なイノベーションは、常にその前に現れた偉大なアイデアに依存しており、それらを置き換えるものではないと信じていました。
+In early conversations with potential customers, the team was asked about the differences between the Ripple project and OpenCoin company. With the community starting to refer to the digital asset as XRP, company leaders decided to rebrand the company to Ripple Labs, which has been shortened over time to “Ripple.”: 創立して間もないころ、見込み顧客との商談のなかで、Rippleプロジェクトと会社であるOpenCoinとの違いについて尋ねられました。コミュニティではデジタルアセットを通貨コードである「XRP」と広く呼ぶようになっていたことから、経営陣は会社をRipple Labsというブランドに変更することを決めました。それが次第に短縮して「Ripple」と呼ばれるようになりました。
+Today, Ripple has created a use case leveraging the XRP Ledger and XRP for liquidity management in its cross-border payments business. Ripple also remains a stakeholder and contributor to the broader XRPL community.: 現在、この会社は自社の国際送金事業でXRPとXRP Ledgerを流動性管理に使用しています。Ripple社は今でも、広範なXRPLコミュニティのステークホルダーでありコントリビューターです。
+XRPL Foundation Launched: XRPL財団の創設
+about.history.xrplf.part1: 2020年9月24日に
+about.history.xrplf.part2: 設立
+about.history.xrplf.part3: されたXRPL財団は、分散化されたXRP Ledgerの開発と採用を加速させることをミッションとする独立した非営利団体です。財団は、XRP Ledgerを構築する開発者やその他の
+about.history.xrplf.part4: グローバルなコミュニティメンバー
+about.history.xrplf.part5: の増加に対応するための財団の活動資金として、Coil、Ripple、Gatehubから650万ドルを超える初期寄付金の提供を受けています。
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -411,11 +440,6 @@ XRPL Accelerator: XRPLアクセラレータ
 Advance your project: プロジェクトの推進
 View XRPL Accelerator: XRPLアクセラレータを見る
 $50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
-Provide a Better Alternative to Bitcoin: Bitcoinに代わる選択肢
-XRPL's Origin: XRPLの原点
-XRPL Launches its Native Currency, XRP: XRPL、ネイティブ通貨「XRP」がローンチ
-OpenCoin Rebranded to Ripple Labs: 2013年、OpenCoinからRipple Labsにブランド変更
-XRPL Foundation Launched: XRPL財団の創設
 Today’s Value, Tomorrow’s Vision: 現在の価値、将来のビジョン
 Building for the Future: 未来を見据えた開発
 Consensus protocol is efficient and sustainable: 効率的で持続可能なコンセンサスプロトコル

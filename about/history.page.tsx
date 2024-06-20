@@ -74,12 +74,13 @@ export default function History() {
                 <div className="timeline-content text-sm-left text-md-right">
                   <div className="d-flex flex-column-reverse">
                     <h2 className="mb-6 h5 h2-sm">
-                      {translate("2011 XRP Ledger Development")}
+                      {translate("XRP Ledger Development")}
                     </h2>
                     <h6 className="h1 mb-3">2011</h6>
                   </div>
                   <p>
                     {translate(
+                      "about.history.2011.part1",
                       "In early 2011, three developers—David Schwartz, Jed McCaleb, and Arthur Britto—were fascinated with Bitcoin but observed the waste inherent in mining. They sought to create a more sustainable system for sending value (an idea outlined in a "
                     )}
                     <a
@@ -88,10 +89,11 @@ export default function History() {
                       rel="noopener noreferrer"
                     >
                       {translate(
+                        "about.history.2011.part2",
                         "May 2011 forum post: “Bitcoin without mining”"
                       )}
                     </a>
-                    {")."}
+                    {translate("about.history.2011.part3", ").")}
                   </p>
                   <a
                     className={`btn btn-primary read-more mt-10 ${
@@ -99,7 +101,7 @@ export default function History() {
                     }`}
                     onClick={() => toggleSection("section-1")}
                   >
-                    Read More
+                    {translate("Read More")}
                   </a>
                   <div
                     className={`hidden-section ${
@@ -136,7 +138,7 @@ export default function History() {
                     data-target="section-2"
                     onClick={() => toggleSection("section-2")}
                   >
-                    Read More
+                    {translate("Read More")}
                   </a>
                   <div
                     className={`hidden-section ${
@@ -193,7 +195,7 @@ export default function History() {
                     }}
                     onClick={() => toggleSection("section-3")}
                   >
-                    Read More
+                    {translate("Read More")}
                   </a>
                   <div
                     className={`hidden-section ${
@@ -224,14 +226,16 @@ export default function History() {
                     <h6 className="h1 mb-3">2020</h6>
                   </div>
                   <p>
+                    {translate("about.history.xrplf.part1", "")}
                     <a
                       href="https://foundation.xrpl.org/2020/09/24/xrp-ledger-foundation-launches-to-drive-growth-and-development-of-the-core-xrp-ledger-and-community/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {translate("Founded")}
+                      {translate("about.history.xrplf.part2", "Founded")}
                     </a>
                     {translate(
+                      "about.history.xrplf.part3",
                       " September 24, 2020, the XRPL Foundation is an independent and nonprofit entity with a mission to accelerate the development and adoption of the decentralized XRP Ledger. The Foundation received an initial donation of over $6.5M from Coil, Ripple, and Gatehub to fund the Foundation’s work in service of the growing number of developers and other "
                     )}
                     <a
@@ -239,9 +243,9 @@ export default function History() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {translate("global blockchain community")}
+                      {translate("about.history.xrplf.part4", "global blockchain community")}
                     </a>
-                    {translate(" members building on the XRP Ledger.")}
+                    {translate("about.history.xrplf.part5", " members building on the XRP Ledger.")}
                   </p>
                 </div>
               </div>
