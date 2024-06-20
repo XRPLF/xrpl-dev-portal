@@ -278,6 +278,7 @@
                 - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
                 - page: docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md
                 - page: docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker.md
+                - page: docs/tutorials/how-tos/use-tokens/earn-passive-income-as-a-liquidity-provider.md
             - page: docs/tutorials/how-tos/use-xrpl-sidechains/index.md
               expanded: false
               items:

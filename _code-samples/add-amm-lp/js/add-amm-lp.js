@@ -109,9 +109,9 @@ if (response_vote.result.meta.TransactionResult == "tesSUCCESS") {
   console.error("Error sending transaction:", response_vote)
 }
 
+// Withdraw by redeeming LP tokens
 console.log("------- Pull some money out of AMM -------")
   
-// Withdraw by redeeming LP tokens
 const ammwithdraw = {
   "TransactionType": "AMMWithdraw",
   "Asset": {
