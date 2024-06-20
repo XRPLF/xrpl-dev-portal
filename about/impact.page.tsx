@@ -73,10 +73,11 @@ export default function Impact() {
             </h5>
             <p className="mb-6">
               {`${translate(
+                "about.impact.feature.ppart1",
                 "Open and decentralized, blockchain and crypto are seeing an increase in adoption across the financial services industry, from retail and institutional investment to "
-              )} `}
-              <a href="/about/uses">{translate("commercial use cases")}</a>
-              {` ${translate("like CBDCs, NFTs, and cross-border payments.")}`}
+              )}`}
+              <a href="/about/uses">{translate("about.impact.feature.ppart2", "commercial use cases ")}</a>
+              {`${translate("about.impact.feature.ppart3", "like CBDCs, NFTs, and cross-border payments.")}`}
             </p>
           </div>
           <div>
@@ -199,11 +200,12 @@ export default function Impact() {
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Blog")}</h6>
                       <p>
-                        {`${translate("Check out the ")} `}
+                        {`${translate("about.impact.blog.ppart1", "Check out the ")}`}
                         <a href="/blog">
-                          {translate("XRPL dev blog")}
+                          {translate("about.impact.blog.ppart2", "XRPL dev blog ")}
                         </a>
-                        {` ${translate(
+                        {`${translate(
+                          "about.impact.blog.ppart3", 
                           "to stay up-to-date on the latest innovations and developments in the XRPL community."
                         )}`}
                       </p>
@@ -215,11 +217,12 @@ export default function Impact() {
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Events")}</h6>
                       <p>
-                        {`${translate("Attend ")} `}
+                        {`${translate("about.impact.events.ppart1", "Attend ")}`}
                         <a href="/community/events">
-                          {translate("meetups, hackathons, and conferences")}
+                          {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
                         </a>
-                        {` ${translate(
+                        {`${translate(
+                          "about.impact.events.ppart3",
                           "to meet other members of the community."
                         )}`}
                       </p>
@@ -230,14 +233,15 @@ export default function Impact() {
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Code")}</h6>
                       <p>
-                        {`${translate("View the")} `}
+                        {`${translate("about.impact.code.ppart1", "View the ")}`}
                         <a
                           href="https://github.com/XRPLF/xrpl-dev-portal/"
                           target="_blank"
                         >
-                          {translate("Github repositories")}
+                          {translate("about.impact.code.ppart2", "Github repositories ")}
                         </a>
-                        {` ${translate(
+                        {`${translate(
+                          "about.impact.code.ppart3",
                           "to find blockchain projects to see how you can contribute."
                         )}`}
                       </p>
@@ -250,6 +254,7 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Connect")}</h6>
                       <p>
                         {translate(
+                          "about.impact.connect.ppart1",
                           "Join the conversation on social media using #XRPLCommunity."
                         )}
                       </p>
@@ -265,11 +270,12 @@ export default function Impact() {
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Events")}</h6>
                         <p>
-                          {`${translate("Attend ")} `}
+                          {`${translate("about.impact.events.ppart1", "Attend ")}`}
                           <a href="/community/events">
-                            {translate("meetups, hackathons, and conferences")}
+                            {translate("about.impact.events.ppart2", "meetups, hackathons, and conferences ")}
                           </a>
-                          {` ${translate(
+                          {`${translate(
+                            "about.impact.events.ppart3",
                             "to meet other members of the community."
                           )}`}
                         </p>
@@ -282,6 +288,7 @@ export default function Impact() {
                       <h6 className="mb-3">{translate("Connect")}</h6>
                       <p>
                         {translate(
+                          "about.impact.connect.ppart1",
                           "Join the conversation on social media using #XRPLCommunity."
                         )}
                       </p>

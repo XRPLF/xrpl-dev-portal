@@ -152,7 +152,7 @@ Get Involved: 参加する
 # about/index.page.tsx
 about.index.h1part1: ビジネスに衝撃を
 about.index.h1part2: ' '
-XRPL Today, XRPL Tomorrow: XRPLの今、XRPLの未来
+XRPL Today, XRPL Tomorrow: 現在のXRPL、未来のXRPL
 How the XRP Ledger works: XRP Ledgerの仕組み
 XRP Ledger Basics: XRP Ledgerの基本
 The XRP Ledger is a decentralized public blockchain built for business.: XRP Ledgerは、エンタープライズレベルの分散型パブリックブロックチェーンです。
@@ -272,6 +272,40 @@ about.history.xrplf.part3: されたXRPL財団は、分散化されたXRP Ledger
 about.history.xrplf.part4: グローバルなコミュニティメンバー
 about.history.xrplf.part5: の増加に対応するための財団の活動資金として、Coil、Ripple、Gatehubから650万ドルを超える初期寄付金の提供を受けています。
 
+# about/impact.page.tsx
+Today’s Value, Tomorrow’s Vision: 現在の価値、将来のビジョン
+Building for the Future: 未来を見据えた開発
+Consensus protocol is efficient and sustainable: 効率的で持続可能なコンセンサスプロトコル
+For more than 272 million migrants worldwide, sending and receiving money across borders is expensive, unreliable and complex.: 世界で2億7,200万人を超える移民にとって、国境を越えた送金は高額で不確実かつ複雑です。
+about.impact.feature.ppart1: オープンで分散型のブロックチェーンと暗号資産は、リテールや機関投資家からCBDC、NFT、クロスボーダー決済などの
+about.impact.feature.ppart2: 商業ユースケース 
+about.impact.feature.ppart3: まで、金融サービス業界全体で導入が進んでいます。
+A Sustainable Future: 持続可能な未来
+What makes the XRPL sustainable?: XRPLが持続可能な理由は？
+XRPL’s unique consensus mechanism is eco-friendly—it does not require mining to settle transactions. This results in efficiency without sacrificing security, decentralization, or scalability.: XRPLの独自のコンセンサスメカニズムは環境に優しく、トランザクションを処理するためにマイニングを必要としません。このため、セキュリティ、分散性、スケーラビリティを犠牲にすることなく、効率化を実現することができます。
+The trivial amount of energy it does consume is then neutralized with carbon credits through EW Zero, an open-source blockchain decarbonization tool.:  そして、消費するわずかなエネルギーは、オープンソースのブロックチェーンによる脱炭素ツール「EW Zero」を通じて、カーボンクレジットで相殺されます。
+Featured companies & projects running on the XRP Ledger.: XRP Ledgerで活動する注目の企業とプロジェクト
+Sustainable Projects: 持続可能なプロジェクト
+Learn more about companies and developers who are using the XRP Ledger to solve interesting problems efficiently and sustainably.: XRP Ledgerを利用して興味深い問題を効率的かつ持続的に解決している企業や開発者について、詳しくご紹介します。
+See More: 利用例を見る
+How can businesses and developers connect and contribute?: 開発者はどのように繋がり、貢献できるのでしょうか？
+"If you want to advance business with sustainable solutions to real-world problems, you’re invited to join the global, growing XRPL community. Here are some ways to get involved:": 現実世界の問題に対する持続可能なソリューションでビジネスを発展させたいと考える方は、グローバルに成長するXRPLコミュニティに参加しましょう。
+Join the Community: コミュニティに参加
+Blog: ブログ
+about.impact.blog.ppart1: " "
+about.impact.blog.ppart2: XRPL開発者ブログ
+about.impact.blog.ppart3: をチェックして、XRPLコミュニティのイノベーションと開発について最新情報を入手しましょう。
+Events: イベント
+about.impact.events.ppart1: " "
+about.impact.events.ppart2: ミートアップ、ハッカソン、カンファレンス
+about.impact.events.ppart3: に参加して、コミュニティの他のメンバーと交流しましょう。
+Code: コード
+about.impact.code.ppart1: " "
+about.impact.code.ppart2: Githubリポジトリ
+about.impact.code.ppart3: からブロックチェーンプロジェクトを見つけ、どのように貢献できるか見てみましょう。
+Connect: 繋がる
+about.impact.connect.ppart1: SNSで#XRPLCommunityを使って話題に加わりましょう。
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -314,7 +348,6 @@ Apply for Fall 2023: 2023年秋の申し込み
 Join a global cohort of Student Ambassadors: 学生アンバサダーのグローバルなコミュニティに参加する
 Global Community: グローバルコミュニティ
 Stay connected to the XRPL Campus Ambassadors: XRPL キャンパスアンバサダーとの繋がりを持つ
-Connect: 繋がる
 MeetUp: ミートアップ
 Attend an XRPL Meetup in your local area: 地域のXRPLミートアップに参加しましょう。
 Dev.to Blog: Dev.to ブログ
@@ -409,7 +442,6 @@ Get Free Test XRP: テスト用XRPを入手
 Generate Testnet Credentials: テストネットのアカウントを作成 
 See full documentation index: 全ドキュメントの目次
 Find the XRPL Community Around the World: 世界中のXRPLコミュニティを見つけよう
-Events: イベント
 The XRPL Developer Summit: XRPL開発者サミット
 Save the Date: 日程を確認
 Upcoming Events: 今後のイベント情報
@@ -440,18 +472,6 @@ XRPL Accelerator: XRPLアクセラレータ
 Advance your project: プロジェクトの推進
 View XRPL Accelerator: XRPLアクセラレータを見る
 $50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
-Today’s Value, Tomorrow’s Vision: 現在の価値、将来のビジョン
-Building for the Future: 未来を見据えた開発
-Consensus protocol is efficient and sustainable: 効率的で持続可能なコンセンサスプロトコル
-A Sustainable Future: 持続可能な未来
-What makes the XRPL sustainable?: XRPLが持続可能な理由は？
-Featured companies & projects running on the XRP Ledger.: XRP Ledgerで活動する注目の企業とプロジェクト
-Sustainable Projects: 持続可能なプロジェクト
-See More: 利用例を見る
-How can businesses and developers connect and contribute?: 開発者はどのように繋がり、貢献できるのでしょうか？
-Join the Community: コミュニティに参加
-Blog: ブログ
-Code: コード
 References and APIs: リファレンスとAPI
 Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
