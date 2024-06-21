@@ -128,6 +128,7 @@
                 - page: docs/concepts/tokens/nfts/collections.md
                 - page: docs/concepts/tokens/nfts/guaranteeing-a-fixed-supply.md
                 - page: docs/concepts/tokens/nfts/nft-apis.md
+                - page: docs/concepts/tokens/nfts/non-transferable-tokens.md
             - page: docs/concepts/tokens/transfer-fees.md
             - page: docs/concepts/tokens/decentralized-exchange/index.md
               expanded: false
