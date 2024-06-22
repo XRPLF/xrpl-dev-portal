@@ -4,40 +4,39 @@ When trading on the XRP Ledger's decentralized exchange (DEX), you can sometimes
 
 For a simpler example of trading currencies in the XRP Ledger's DEX, see [Trade in the Decentralized Exchange](../../how-tos/use-tokens/trade-in-the-decentralized-exchange.md).
 
+{% admonition type="warning" name="Caution" %}
 This tutorial does not exhaustively cover all possible market conditions and circumstances. Always exercise caution and trade at your own risk.
+{% /admonition %}
 
 ## Prerequisites
 
 - You need a connection to the XRP Ledger network. As shown in this tutorial, you can use public servers for testing.
 - You should be familiar with basic usage of the [xrpl.js client library](https://github.com/XRPLF/xrpl.js/). See [Get Started Using JavaScript](../build-apps/get-started.md) for setup steps.
-- The AMM for the asset pair you want to trade must already exist in the ledger. This tutorial uses an AMM on Testnet which has been set up in advance. For instructions on creating an AMM for a different currency pair, see [Create an Automated Market Maker](../../how-tos/use-tokens/create-an-automated-market-maker.md).
+- The AMM for the asset pair you want to trade must already exist in the ledger. This tutorial uses an AMM instance that has been set up on the XRP Ledger Testnet in advance, connecting the following assets:
 
+    | Currency Code | Issuer | Notes |
+    |---|---|---|
+    | XRP | N/A | Testnet XRP is functionally similar to XRP, but holds no real-world value. You can get it for free from a [faucet](/resources/dev-tools/xrp-faucets).
+    | TST | `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd` | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens. This token has no [transfer fee](../../../concepts/tokens/transfer-fees.md) or [Tick Size](../../../concepts/tokens/decentralized-exchange/ticksize.md) set. |
 
-## Background
+    For instructions on creating an AMM for a different currency pair, see [Create an Automated Market Maker](../../how-tos/use-tokens/create-an-automated-market-maker.md).
 
-This tutorial uses an AMM instance that has been set up on the XRP Ledger Testnet in advance, connecting the following assets:
+## Source Code
 
-| Currency Code | Issuer | Notes |
-|---|---|---|
-| XRP | N/A | Testnet XRP is functionally similar to XRP, but holds no real-world value. You can get it for free from a [faucet](/resources/dev-tools/xrp-faucets).
-| TST | `rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd` | A test token pegged to XRP at a rate of approximately 10 XRP per 1 TST. The issuer has existing Offers on the XRP Ledger Testnet to buy and sell these tokens. This token has no [transfer fee](../../../concepts/tokens/transfer-fees.md) or [Tick Size](../../../concepts/tokens/decentralized-exchange/ticksize.md) set. |
+See {% repo-link path="_code-samples/auction-slot/js/" %}Code Samples: Auction Slot{% /repo-link %} for the full source code for this tutorial.
 
 
 ## Steps
 
 At a high level, the steps involved in using an AMM auction slot to save money on trading are as follows:
 
-1. Check the current XRP Ledger state to estimate how much your desired trade would cost in AMM trading fees.
-2. Compare against the cost to win the current auction slot.
-3. If winning the auction slot is cheaper, use AMMDeposit to acquire some LPTokens and then use AMMBid to spend those tokens on winning the auction slot.
-4. Make the intended trade using an OfferCreate transaction.
+- **Step 1:** Connect to the ledger so can query the current state.
+- **Steps 2-4:** Estimate how much your desired trade would cost in AMM trading fees.
+- **Step 5:** Compare against the cost to win the current auction slot.
+- **Steps 6-7:** If winning the auction slot is cheaper, use AMMDeposit to acquire some LPTokens and then use AMMBid to spend those tokens on winning the auction slot.
+- **Step 8:** Make the intended trade using an OfferCreate transaction.
 
 For simplicity, this tutorial assumes that you have XRP, you want to acquire a fixed amount of TST in a single trade, and that the entire trade will execute using the AMM. Real-life situations are more complicated. For example, part of your trade may execute by consuming Offers rather than using the AMM, or you may want to do a series of trades over a period of time. If one or both of the assets you are trading has a transfer fee or tick size set, those details can also affect the calculations.
-
-### Source Code
-
-See {% repo-link path="_code-samples/auction-slot/js/" %}Code Samples: Auction Slot{% /repo-link %} for the full source code for this tutorial.
-
 
 ### 1. Setup
 
@@ -81,7 +80,7 @@ First, define the target amount of TST and check that the AMM can even fulfill t
 
 Then, you use the AMM _SwapOut_ formula to calculate how much XRP you need to pay to receive the target amount of TST out. See [SwapOut in the Appendix](#swapout) for the implementation of this formula.
 
-To estimate the cost of trading fees, call SwapOut twice: once with the full fee, and once with the discounted fee of the auction slot. The difference between the two represents the maximum possible savings from the auction slot for this trade, not including the costs of winning the auction slot.
+To estimate the cost of trading fees, call SwapOut twice: once with the full fee, and once with the discounted fee of the auction slot. The difference between the two represents the maximum possible savings from the auction slot for this trade. The actual savings will be less because of the costs of winning the auction slot.
 
 {% code-snippet file="/_code-samples/auction-slot/js/auction-slot.js" language="js" from="// Use AMM's SwapOut formula" before="// Calculate the cost of winning" /%}
 
@@ -96,7 +95,7 @@ The price of winning the auction slot is defined in XLS-0030 section 4.1.1. Howe
 
 This is similar to cases where you want to deliver exactly $100 after subtracting a 3% fee. If you calculate $100 + (0.03 * $100) = $103, only $99.91 will arrive because the extra $3 is also subject to the fee. Instead, you divide 100 ÷ 0.97 ≈ $103.10 (rounding up to make sure).
 
-The _AuctionDeposit_ formula represents the inverted form of the auction price formula such so that you can calulate how much to deposit to match the auction price. See [Appendix: AuctionDeposit](#auctiondeposit) for the implementation.
+The _AuctionDeposit_ formula represents the inverted form of the auction price formula so that you can calulate how much to deposit to match the auction price. See [Appendix: AuctionDeposit](#auctiondeposit) for the implementation.
 
 You use the function like this:
 
@@ -202,9 +201,7 @@ The AssetIn and SwapOut functions depend on these helper functions.
 
 ### solveQuadraticEq
 
-This helper function is solves the quadratic equation, which you may remember from high-school mathematics.
-
-The following function implements the quadratic equation in JavaScript:
+This helper function implements the quadratic equation in JavaScript:
 
 {% code-snippet file="/_code-samples/auction-slot/js/amm-formulas.js" language="js" from="/* Compute the quadratic formula." before="/* Implement the AMM single-asset deposit" /%}
 
