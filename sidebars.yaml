@@ -21,7 +21,8 @@
             - page: docs/use-cases/payments/peer-to-peer-payments-uc.md
             - page: docs/use-cases/payments/restricting-deposits-uc.md
             - page: docs/use-cases/payments/smart-contracts-uc.md
-        - page: docs/use-cases/tokenization/index.md
+        - page: docs/use-cases/tokenization/index.page.tsx
+          label: Tokenization
           expanded: false
           items:
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
@@ -36,6 +37,7 @@
           items:
             - page: docs/use-cases/defi/algorithmic-trading.md
             - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
+        
     - page: docs/concepts/index.md
       expanded: false
       items:
