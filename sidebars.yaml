@@ -187,6 +187,10 @@
                 - page: docs/tutorials/javascript/build-apps/get-started.md
                 - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
+            - page: docs/tutorials/javascript/trade-on-ledger/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
