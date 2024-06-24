@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useTranslate } from "@portal/hooks";
+import { Link } from '@portal/Link';
 
 export const frontmatter = {
   seo: {
@@ -71,9 +72,9 @@ export default function Funding() {
                 )}
               </p>
               <div className="d-none d-lg-block p-lg-3">
-                <a className="btn btn-primary btn-arrow" href="events">
+                <Link className="btn btn-primary btn-arrow" to="/community/events">
                   {translate("See Upcoming Events")}
-                </a>
+                </Link>
               </div>
             </div>
             <div className="order-2 order-lg-1 col-lg-6 px-0">
@@ -139,9 +140,9 @@ export default function Funding() {
               </div>
             </div>
             <div className="d-lg-none order-3 mt-4 pt-3">
-              <a className="btn btn-primary btn-arrow" href="events">
+              <Link className="btn btn-primary btn-arrow" to="/community/events">
                 {translate("See Upcoming Events")}
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -198,15 +199,20 @@ export default function Funding() {
                     <div className="pt-3">
                       <h6 className="mb-3">{translate("Required")}</h6>
                       <p>
-                        {translate("Coding experience")}
-                        <span style={{ color: "#7919FF" }}>•</span>
-                        {translate(" Github repository ")}
-                        <span style={{ color: "#7919FF" }}>•</span>
-                        {translate(" Project narrative/description ")}
-                        <span style={{ color: "#7919FF" }}>•</span>
-                        {translate(" At least one developer on the core team ")}
-                        <span style={{ color: "#7919FF" }}>•</span>
-                        {translate(" Budget and milestones")}
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Coding experience")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Github repository")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Project narrative/description")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("At least one developer on the core team")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Budget and milestones")}
                       </p>
                     </div>
                   </div>
@@ -237,16 +243,19 @@ export default function Funding() {
                       <div className="pt-3">
                         <h6 className="mb-3">{translate("Required")}</h6>
                         <p>
-                          {translate("Coding experience")}{" "}
-                          <span style={{ color: "#7919FF" }}>•</span>
-                          {translate("Github repository")}{" "}
-                          <span style={{ color: "#7919FF" }}>•</span>
-                          {translate("Project narrative/description")}{" "}
-                          <span style={{ color: "#7919FF" }}>•</span>
-                          {translate(
-                            "At least one developer on the core team"
-                          )}{" "}
-                          <span style={{ color: "#7919FF" }}>•</span>
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Coding experience")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Github repository")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("Project narrative/description")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
+                          {translate("At least one developer on the core team")}
+                          <br />
+                          <span style={{ color: "#7919FF" }}>•</span>{" "}
                           {translate("Budget and milestones")}
                         </p>
                       </div>

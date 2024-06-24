@@ -425,6 +425,49 @@ Dev.to Blog: Dev.to ブログ
 Read more about the activity of the XRPL Ambassadors: XRPLアンバサダーの活動についてもっと知る
 Join the conversation on the XRPL Developer Discord: XRPL開発者Discordで意見交換しましょう
 
+# community/developer-funding.tsx
+XRPL Developer Funding Programs: XRPL開発者向け資金提供プログラム
+Project Resources: プロジェクト資金
+Explore funding opportunities for developers and teams: 開発者やチームのための資金調達の方法を見つけましょう
+Funding Overview: 資金調達の概要
+"If you’re a software developer or team looking to build your next project or venture on the XRP Ledger (XRPL), there are a number of opportunities to fund your next innovation.": "XRP Ledger(XRPL)上に次のプロジェクトやベンチャーを構築しようとしているソフトウェア開発者やチーム向けの資金を提供されるチャンスは数多く存在します。"
+XRPL Hackathons: XRPLハッカソン
+Join an Event: イベントに参加
+Hackathons are open to all developers to explore and invent a project on the XRP Ledger. Visit the events page for updates on upcoming hackathons.: XRP Ledgerのハッカソンはプロジェクトを調査・考案するために、すべての開発者に開放されています。今後のハッカソンに関する最新情報は、イベントページでご確認ください。
+See Upcoming Events: 今後のイベントを見る
+Best for: こんな方に最適
+Software developers and teams building directly on the XRP Ledger: XRP Ledger上のソフトウェア開発者やXRP Ledger上で直接開発を行うチーム
+Required: 必須要件
+Some coding experience: コーディング経験
+Level: レベル
+XRPL beginner to advanced developers: XRPLの初級開発者から上級開発者まで
+Funding Levels: 資金調達の規模
+Prize money and awards: 賞金および賞品
+XRPL Grants: XRPL Grants
+Fund Your Project: プロジェクトの資金調達
+Developer grants for projects that contribute to the growing XRP Ledger community.: 成長するXRP Ledgerコミュニティに貢献するプロジェクトに開発者向けの助成金を提供します。
+"Past awardees include:": "過去の受賞者:"
+Visit XRPL Grants: XRPL Grantsを見る
+Software developers, teams, and start-ups building directly on the XRP Ledger: XRP Ledger上で直接開発を行うソフトウェア開発者やチーム、スタートアップ企業
+Coding experience: コーディング経験
+Github repository: Githubリポジトリ
+Project narrative/description: プロジェクトの説明
+At least one developer on the core team: 少なくとも1人のコアチーム開発者
+Budget and milestones: 予算とマイルストーン
+XRPL intermediate to advanced developers: XRPLの中級開発者から上級開発者
+$10,000 - $200,000: $10,000 ~ $200,000
+XRPL Accelerator: XRPLアクセラレータ
+Advance your project: プロジェクトの推進
+12-week program for entrepreneurs building on the XRP Ledger to scale their projects into thriving businesses.: XRP Ledgerをベースとする起業家向けの12週間のプログラムで、プロジェクトを繁栄するビジネスへとスケールアップさせることができます。
+Start-ups building scalable products on XRPL that can capture a large market opportunity: XRPL上でスケーラブルなプロダクトを構築し、大きな市場機会を獲得できるスタートアップ企業
+Strong founding team: 強力な創業チーム
+Bold, ambitious vision: 大胆で野心的なビジョン
+Ideally an MVP and monetization strategy: 理想的にはMVPと収益化戦略
+XRPL advanced developers: XRPLの上級開発者
+Business acumen: ビジネス知識
+View XRPL Accelerator: XRPLアクセラレータを見る
+$50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -514,30 +557,6 @@ The XRPL Developer Summit: XRPL開発者サミット
 Save the Date: 日程を確認
 Upcoming Events: 今後のイベント情報
 Sorry, this page is not available in your language.: 申し訳ありませんが、このページはお使いの言語では提供されていません。
-XRPL Developer Funding Programs: XRPL開発者向け資金提供プログラム
-Project Resources: プロジェクト資金
-Explore funding opportunities for developers and teams: 開発者やチームのための資金調達の方法を見つけましょう
-Funding Overview: 資金調達の概要
-XRPL Hackathons: XRPLハッカソン
-Join an Event: イベントに参加
-See Upcoming Events: 今後のイベントを見る
-Best for: こんな方に最適
-Software developers and teams building directly on the XRP Ledger: XRP Ledger上のソフトウェア開発者やXRP Ledger上で直接開発を行うチーム
-Required: 必須要件
-Some coding experience: コーディング経験
-Level: レベル
-XRPL beginner to advanced developers: XRPLの初級開発者から上級開発者まで
-Funding Levels: 資金調達の規模
-Prize money and awards: 賞金および賞品
-Fund Your Project: プロジェクトの資金調達
-Past awardees include: 過去の受賞者は次の通り
-Visit XRPL Grants: XRPL Grantsを見る
-XRPL intermediate to advanced developers: XRPLの中級開発者から上級開発者
-$10,000 - $200,000: $10,000 ~ $200,000
-XRPL Accelerator: XRPLアクセラレータ
-Advance your project: プロジェクトの推進
-View XRPL Accelerator: XRPLアクセラレータを見る
-$50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
 References and APIs: リファレンスとAPI
 Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
