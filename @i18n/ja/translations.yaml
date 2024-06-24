@@ -306,6 +306,50 @@ about.impact.code.ppart3: からブロックチェーンプロジェクトを見
 Connect: 繋がる
 about.impact.connect.ppart1: SNSで#XRPLCommunityを使って話題に加わりましょう。
 
+# community/index.page.tsx
+XRPL Community: XRPLコミュニティ
+community.index.h1part1: 開発者とイノベーターによる
+community.index.h1part2: グローバルな
+community.index.h1part3: " "
+community.index.h1part4: ブロックチェーンコミュニティ
+Join the Conversation: 参加する
+Hot Topics Happening Now: 今話題のトピック
+community.index.event.h4part1: XRPLコミュニティ主催の
+community.index.event.h4part2: グローバルイベントをチェック
+Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions.: グローバルな地域で開催されるミートアップ、ハッカソン、ブロックチェーンカンファレンスなどで、XRPLコミュニティと出会いましょう。
+View All Events: 全てのイベントを見る
+UPCOMING EVENT: 次のイベント
+days: 日後
+# TODO: translate "XRPL Events Carousel Section"
+Get Funding: 資金を獲得
+funding been awarded: 受賞総額
+teams awarded globally: 受賞チーム数
+countries represented: 参加国数
+XRPL Developer Funding: XRPL開発者向けの資金提供
+Funding Opportunities for Blockchain Businesses: ブロックチェーンビジネスのための資金獲得の機会
+If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation.: あなたがXRP Ledger(XRPL)上で次のブロックチェーンビジネスを構築しようとしているソフトウェア開発者やチームであれば、助成金やハッカソンなど数多くの資金調達の機会があなたをお待ちしています。
+XRPL Community Spotlight: XRPLコミュニティの紹介
+Showcase your blockchain project, application, or product: あなたのブロックチェーンプロジェクト、アプリケーション、製品を紹介しましょう
+Get featured on the Developer Reflections blog or Ecosystem page, and amplify your innovation within the blockchain community.: 開発者向けブログやエコシステムのページで紹介され、ブロックチェーンコミュニティ内でのイノベーションを広めましょう。
+Submit Your Projects: プロジェクトを登録
+# TODO: translate project-cards
+View Projects: プロジェクトを見る
+Contribute to Consensus: コンセンサスへの貢献
+Run an XRP Ledger network node: XRP Ledgerのノードを実行する
+Thank you for your interest in contributing to XRP Ledger.: XRP Ledgerへの貢献に興味がありますか？
+Networks and Servers: ネットワークとサーバ
+Join UNL: UNLに参加
+Install & Configure: インストールと設定
+Troubleshooting: トラブルシューティング
+XRPL Careers: XRPLキャリア
+Discover your next career opportunity in the XRPL community: XRPLコミュニティで次のキャリアを見つけましょう
+Teams across the XRPL community are looking for talented individuals to help build their next innovation.: XRPLコミュニティ全体が、次のイノベーションを構築するために才能ある人物を探しています。
+View Open Roles: 募集中の職種を見る
+Contribute to XRPL.org: XRPL.orgに貢献する
+A Community-Driven Resource for All Things XRP Ledger: XRP Ledgerに関する情報を提供するコミュニティ主導のリソース
+Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes.: XRP LedgerのためのリソースであるXRPL.orgに貢献しましょう。このオープンソースポータルでは、皆様からの変更や提案を歓迎します。
+Read Contributor Guidelines: ガイドラインを読む
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -360,28 +404,19 @@ Contribute Code Samples: コードサンプルへの貢献
 Help the XRPL community by submitting your<br> own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
 The XRPL Community: XRPL コミュニティ
 Find the community on the platforms below: 以下のプラットフォームでコミュニティにアクセスできます。
-Join the Conversation: 参加する
-Run an XRP Ledger network node: XRP Ledgerのネットワークノードを実行する
-Contribute to Consensus: コンセンサスへの貢献
 Apply for funding to build your XRPL project: 将来のXRPLプロジェクトのための資金調達に応募する
 Awarded in a single grant: 1回のGrantでの助成金
 Distributed to grant recipients: 助成対象者への配布
 Open-source projects funded : オープンソースプロジェクトへの資金提供
 Learn More: もっと知る
 Showcase your XRPL project, application or product: XRPLプロジェクト、アプリケーション、製品の紹介
-XRPL Community Spotlight: XRPL コミュニティの紹介
-Submit Your Projects: プロジェクトを登録する
 Read the Blog: ブログを読む
 Check out global events across the XRPL community: XRPLコミュニティで開催されるグローバルなイベントをチェック
 XRPL Events: XRPLイベント
-View All Events: 全てのイベントを見る
-Discover your next career opportunity in the XRPL community: XRPLコミュニティであなたの次のキャリアを見つけましょう
 Review guidelines for using XRPL design assets: XRPLのデザインアセットを使用するためのガイドラインを確認
 XRPL Assets: XRPLのアセット
 Download the PDF and Assets: PDFとアセットをダウンロード
 A community-driven resource for all things XRPL.org: XRPとXRP Ledgerのあらゆるものを提供する、コミュニティ主体のリソース
-Contribute to XRPL.org: XRPL.orgに貢献する
-Read Contributor Guidelines: コントリビュータガイドラインを読む
 Dev Tools: 開発者ツール
 Explorers: エクスプローラ
 API Access: APIアクセス
