@@ -350,6 +350,24 @@ A Community-Driven Resource for All Things XRP Ledger: XRP Ledgerに関する情
 Contribute to XRPL.org, the go-to resource for XRP Ledger. This open-source portal welcomes contributions from anyone for suggested changes.: XRP LedgerのためのリソースであるXRPL.orgに貢献しましょう。このオープンソースポータルでは、皆様からの変更や提案を歓迎します。
 Read Contributor Guidelines: ガイドラインを読む
 
+# community/events.page.tsx
+Find the XRPL Community Around the World: 世界中のXRPLコミュニティを見つけよう
+# TODO: translate event details
+Register Now: いますぐ登録
+Check out meetups, hackathons, and other events hosted by the XRPL Community: XRPLコミュニティが主催するミートアップ、ハッカソン、その他のイベントをチェックしましょう
+"Filter By:": "絞り込み:"
+Conference: カンファレンス
+Meetups: ミートアップ
+Hackathons: ハッカソン
+AMAs: AMA
+Community Calls: コミュニティコール
+XRPL Zone: XRPL Zone
+Info Session: セッション
+# TODO: translate feature events
+Explore past community-hosted events: 過去のコミュニティ主催のイベントを見る
+Past Events: 過去のイベント
+# TODO: translate past events
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -476,12 +494,9 @@ Browse By Recommended Pages: おすすめのページを見る
 Get Free Test XRP: テスト用XRPを入手
 Generate Testnet Credentials: テストネットのアカウントを作成 
 See full documentation index: 全ドキュメントの目次
-Find the XRPL Community Around the World: 世界中のXRPLコミュニティを見つけよう
 The XRPL Developer Summit: XRPL開発者サミット
 Save the Date: 日程を確認
 Upcoming Events: 今後のイベント情報
-Explore past community-hosted events: 過去のコミュニティ主催のイベントを見る
-Past Events: 過去のイベント
 Sorry, this page is not available in your language.: 申し訳ありませんが、このページはお使いの言語では提供されていません。
 XRPL Developer Funding Programs: XRPL開発者向け資金提供プログラム
 Project Resources: プロジェクト資金

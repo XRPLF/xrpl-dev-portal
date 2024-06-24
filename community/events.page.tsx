@@ -1,5 +1,4 @@
-import { useState, useMemo } from "react";
-import * as React from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslate } from "@portal/hooks";
 const moment = require("moment");
 const amaImage = require("../static/img/events/AMAs.png")
@@ -838,7 +837,7 @@ export default function Events() {
             <h6 className="mb-3 eyebrow">{translate("Upcoming Events")}</h6>
           </div>
           <div className="filter row col-12 mt-lg-5 d-flex flex-column">
-            <h6 className="mb-3">Filter By:</h6>
+            <h6 className="mb-3">{translate("Filter By:")}</h6>
             <div>
               <div className="form-check form-check-inline">
                 <input
@@ -850,7 +849,7 @@ export default function Events() {
                   checked={upcomingFilters.conference}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="conference-upcoming">Conference</label>
+                <label htmlFor="conference-upcoming">{translate("Conference")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -862,7 +861,7 @@ export default function Events() {
                   checked={upcomingFilters.meetup}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="meetup-upcoming">Meetups</label>
+                <label htmlFor="meetup-upcoming">{translate("Meetups")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -874,7 +873,7 @@ export default function Events() {
                   checked={upcomingFilters.hackathon}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="hackathon-upcoming">Hackathons</label>
+                <label htmlFor="hackathon-upcoming">{translate("Hackathons")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -886,7 +885,7 @@ export default function Events() {
                   checked={upcomingFilters.ama}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="ama-upcoming">AMAs</label>
+                <label htmlFor="ama-upcoming">{translate("AMAs")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -898,7 +897,7 @@ export default function Events() {
                   checked={upcomingFilters.cc}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="cc-upcoming">Community Calls</label>
+                <label htmlFor="cc-upcoming">{translate("Community Calls")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -910,7 +909,7 @@ export default function Events() {
                   checked={upcomingFilters.zone}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="zone-upcoming">XRPL Zone</label>
+                <label htmlFor="zone-upcoming">{translate("XRPL Zone")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -922,7 +921,7 @@ export default function Events() {
                   checked={upcomingFilters["info-session"]}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="info-session-upcoming">Info Session</label>
+                <label htmlFor="info-session-upcoming">{translate("Info Session")}</label>
               </div>
             </div>
           </div>
@@ -942,10 +941,10 @@ export default function Events() {
                     background: `url(${event.image}) no-repeat`,
                   }}
                 >
-                  <div className="event-card-title">{event.name}</div>
+                  <div className="event-card-title">{translate(event.name)}</div>
                 </div>
                 <div className="event-card-body">
-                  <p>{event.description}</p>
+                  <p>{translate(event.description)}</p>
                 </div>
                 <div className="mt-lg-auto event-card-footer d-flex flex-column">
                   <span className="mb-2 d-flex icon icon-location">
@@ -966,7 +965,7 @@ export default function Events() {
             <h6 className="mb-3 eyebrow">{translate("Past Events")}</h6>
           </div>
           <div className="filter row col-12 mt-lg-5 d-flex flex-column">
-            <h6 className="mb-3">Filter By:</h6>
+            <h6 className="mb-3">{translate("Filter By:")}</h6>
             <div>
               <div className="form-check form-check-inline">
                 <input
@@ -978,7 +977,7 @@ export default function Events() {
                   checked={pastFilters.conference}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="conference-past">Conference</label>
+                <label htmlFor="conference-past">{translate("Conference")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -990,7 +989,7 @@ export default function Events() {
                   checked={pastFilters.meetup}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="meetup-past">Meetups</label>
+                <label htmlFor="meetup-past">{translate("Meetups")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1002,7 +1001,7 @@ export default function Events() {
                   checked={pastFilters.hackathon}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="hackathon-past">Hackathons</label>
+                <label htmlFor="hackathon-past">{translate("Hackathons")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1014,7 +1013,7 @@ export default function Events() {
                   checked={pastFilters.ama}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="ama-past">AMAs</label>
+                <label htmlFor="ama-past">{translate("AMAs")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1026,7 +1025,7 @@ export default function Events() {
                   checked={pastFilters.cc}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="cc-past">Community Calls</label>
+                <label htmlFor="cc-past">{translate("Community Calls")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1038,7 +1037,7 @@ export default function Events() {
                   checked={pastFilters.zone}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="zone-past">XRPL Zone</label>
+                <label htmlFor="zone-past">{translate("XRPL Zone")}</label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1050,7 +1049,7 @@ export default function Events() {
                   checked={pastFilters["info-session"]}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="info-session-past">Info Session</label>
+                <label htmlFor="info-session-past">{translate("Info Session")}</label>
               </div>
             </div>
           </div>
@@ -1068,10 +1067,10 @@ export default function Events() {
                     background: `url(${event.image}) no-repeat`,
                   }}
                 >
-                  <div className="event-card-title">{event.name}</div>
+                  <div className="event-card-title">{translate(event.name)}</div>
                 </div>
                 <div className="event-card-body">
-                  <p>{event.description}</p>
+                  <p>{translate(event.description)}</p>
                 </div>
                 <div className="mt-lg-auto event-card-footer d-flex flex-column">
                   <span className="mb-2 d-flex icon icon-location">
