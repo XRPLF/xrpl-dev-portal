@@ -1,0 +1,9 @@
+theme.page.previousButton: "Previous: {{label}}"
+theme.page.nextButton: "Next: {{label}}"
+theme.page.lastUpdated.timeago: Last updated
+theme.markdown.editPage.text: Edit
+theme.toc.header: On this page
+theme.search.navbar.label: Search
+theme.search.recent: Recent searches
+theme.feedback.settings.label: Was this helpful?
+theme.footer.copyrightText: © 2024 XRP Ledger. Open Source.

@@ -1,3 +1,13 @@
+theme.page.previousButton: "前のページ: {{label}}"
+theme.page.nextButton: "次のページ: {{label}}"
+theme.page.lastUpdated.timeago: "最終更新: "
+theme.markdown.editPage.text: 編集
+theme.toc.header: 目次
+theme.search.navbar.label: 検索
+theme.search.recent: 直近の検索
+theme.feedback.settings.label: 参考になりましたか?
+theme.footer.copyrightText: © 2024 XRP Ledger. オープンソース.
+
 theme.navbar.about: 概要
 theme.navbar.docs: ドキュメント
 theme.navbar.resources: リソース
