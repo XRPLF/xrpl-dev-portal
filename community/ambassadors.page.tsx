@@ -28,7 +28,7 @@ export default function Ambassadors() {
                 <h6 className="eyebrow mb-3">{translate("Join the Student Cohort")}</h6>
             </div>
             <p className="mt-3 py-3 col-lg-8 mx-lg-auto p-0">{translate("The XRPL Campus Ambassador program engages, supports, connects, and recognizes a group of student champions of the XRPL and empowers them to further advance engagement on the ledger.")}</p>
-            <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">Apply for Fall 2023</button>
+            <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">{translate("Apply for Fall 2023")}</button>
         </div>
     </section>
     {/* Current Students */}
@@ -41,7 +41,7 @@ export default function Ambassadors() {
                 </div>
                 <p className="p-lg-3 mb-2 longform">{translate("The XRPL Campus Ambassador program aims to elevate the impact of college students who are passionate about blockchain technology. In their role, Campus Ambassadors help educate other students about crypto and how to start building on the XRPL.")}</p>
                 <div className="d-none d-lg-block p-lg-3">
-                    <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">Apply for Fall 2023</button>
+                <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">{translate("Apply for Fall 2023")}</button>
                 </div>
             </div>
             <div className="order-lg-1 col-lg-6 px-0 mr-lg-4">
@@ -50,7 +50,7 @@ export default function Ambassadors() {
                 </div>
             </div>
             <div className="d-lg-none order-3 mt-4 pt-3 p-lg-3">
-                <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">Apply for Fall 2023</button>
+              <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">{translate("Apply for Fall 2023")}</button>
             </div>
         </div>  
     </section>
@@ -73,7 +73,7 @@ export default function Ambassadors() {
                             <img alt="Smiley face" id="benefits-01" className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Exclusive Opportunities")}</h6>
-                                <p>{translate(" Get access and invitations to Ambassador-only events, conferences, and opportunities")}</p>
+                                <p>{translate("Get access and invitations to Ambassador-only events, conferences, and opportunities")}</p>
                             </div>
                         </div>
                         {/* Hide on large */}
@@ -278,7 +278,7 @@ export default function Ambassadors() {
                 </div>
                 <p className="p-lg-3 mb-2 longform">{translate("Apply now to become an XRPL Campus Ambassador.")}</p>
                 <div className="d-none d-lg-block p-lg-3">
-                    <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">Apply for Fall 2023</button>
+                <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">{translate("Apply for Fall 2023")}</button>
                 </div>
             </div>
             <div className="order-2 col-lg-6 px-0 ml-lg-2">
@@ -377,7 +377,7 @@ export default function Ambassadors() {
                 </div>
                 <p className="p-lg-3 mb-2 longform">{translate("To stay up-to-date on the latest activity, meetups, and events of the XRPL Campus Ambassadors be sure to follow these channels:")}</p>
                 <div className="d-none d-lg-block p-lg-3">
-                    <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">Apply for Fall 2023</button>
+                    <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">{translate("Apply for Fall 2023")}</button>
                 </div>
             </div>
             <div className="order-2 col-lg-6 px-0 ml-lg-5">
@@ -410,7 +410,7 @@ export default function Ambassadors() {
                 </div>
             </div>
             <div className="d-lg-none order-3 mt-4 pt-3">
-                <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">Apply for Fall 2023</button>
+              <button data-tf-popup="rTioxhMY" data-tf-iframe-props="title=XRPL Campus Ambassador" data-tf-medium="snippet" className="btn btn-primary btn-arrow-out" data-tf-hidden="utm_source=xxxxx,utm_medium=xxxxx,utm_campaign=xxxxx,utm_term=xxxxx,utm_content=xxxxx">{translate("Apply for Fall 2023")}</button>
             </div>
         </div>
     </section>
