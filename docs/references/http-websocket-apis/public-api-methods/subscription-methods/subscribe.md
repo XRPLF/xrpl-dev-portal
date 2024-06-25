@@ -684,7 +684,7 @@ The fields from a Book Changes stream message are as follows:
 
 | Field          | Value            | Description                             |
 |:---------------|:-----------------|:----------------------------------------|
-| `type`         | String           | The value `bookChanges` this is from the Book Changes stream. |
+| `type`         | String           | The value `bookChanges` indicates this is from the Book Changes stream. |
 | `ledger_index` | [Ledger Index][] | The ledger index of the ledger with these changes. |
 | `ledger_hash`  | [Hash][]         | The identifying hash of the ledger with these changes. |
 | `ledger_time`  | Number           | The official close time of the ledger with these changes, in [seconds since the Ripple Epoch][]. |
@@ -706,7 +706,7 @@ The fields from a consensus stream message are as follows:
 
 | Field       | Type   | Description                |
 |:------------|:-------|:---------------------------|
-| `type`      | String | `consensusPhase` indicates this is from the consensus stream |
+| `type`      | String | The value `consensusPhase` indicates this is from the consensus stream |
 | `consensus` | String | The new consensus phase the server is in. Possible values are `open`, `establish`, and `accepted`. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
