@@ -1196,3 +1196,34 @@ main article .card-grid {
     background-color: $gray-200;
   }
 }
+
+.page-tokenization {
+  .project-cards .project-logo {
+    filter: invert(100%);
+  }
+
+  .article-card {
+    background-color: $white;
+  }
+
+  .article-card-background {
+    filter: drop-shadow(0px 1px 18px rgba(24, 24, 24, 0.50));
+  }
+
+  .evernode {
+    content: url("../img/logos/evernode.svg");
+  }
+
+  .prev img {
+    content: url("../img/icons/prev_light.svg"); 
+  }
+
+  .next img {
+    content: url("../img/icons/prev_light.svg");
+    transform: scaleX(-1);
+  }
+
+  .arrow-button {
+    background-color: $gray-200;
+  }
+}

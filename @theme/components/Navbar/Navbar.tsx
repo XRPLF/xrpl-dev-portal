@@ -235,7 +235,7 @@ export function NavDropdown(props) {
     <li className="nav-item dropdown">
       <a
         className="nav-link dropdown-toggle"
-        to="#"
+        href="#"
         id={toggler_id}
         role="button"
         data-toggle="dropdown"

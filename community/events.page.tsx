@@ -673,6 +673,28 @@ const events = [
     end_date: "June 9, 2024",
   },
   {
+    name: "Building on the XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who are curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/building-on-the-xrp-ledger-tickets-912086745007",
+    location: "Paris, France",
+    date: "June 24 - 25, 2024",
+    image: require("../static/img/events/LedgerEvent.png"),
+    end_date: "June 25, 2024",
+  },
+  {
+    name: "Aquarium Residency Demo Day #3",
+    description:
+      "The Aquarium Residency is a 12-week program for entrepreneurs & developers building on the XRP Ledger blockchain. Join us at our Paris HQ to connect with our 10 residents, discover their projects focused on DiD (Decentralized Identity), and engage with the XRPL community.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/aquarium-residency-demo-day-3-tickets-916183147457",
+    location: "Paris, France",
+    date: "June 26, 2024",
+    image: require("../static/img/events/DemoDay.png"),
+    end_date: "June 26, 2024",
+  },
+  {
     name: "SwissHacks",
     description:
       "Transform Fintech with XRPL at SwissHacks 2024! Prototype and collaborate with fellow builders to reinvent finance for a brighter future",
@@ -682,6 +704,17 @@ const events = [
     date: "June 28 - 30, 2024",
     image: hackathon,
     end_date: "June 30, 2024",
+  },
+  {
+    name: "XRPL Meetup in Luxembourg",
+    description:
+      "Calling all Luxembourg blockchain enthusiasts! Join XRPL Meetups to share knowledge, build real-life connections, and foster communities centered around blockchain and XRP Ledger. We're establishing local “XRPL Hubs” across Europe, and we want you to be a part of it!",
+    type: "meetup",
+    link: "https://lxm-xrpl-meetup.eventbrite.fr/",
+    location: "Luxembourg",
+    date: "July 2, 2024",
+    image: require("../static/img/events/Luxemberg.png"),
+    end_date: "July 2, 2024",
   },
 ];
 

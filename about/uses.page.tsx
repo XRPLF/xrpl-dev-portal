@@ -703,10 +703,10 @@ export default function Uses() {
           />
         </div>
         <div className="content-section">
-          <p className="section-text-title">{title}</p>
+          <p className="section-text-title">{translate(title)}</p>
         </div>
         <div className="content-section">
-          <p className="section-text-description">{description}</p>
+          <p className="section-text-description">{translate(description)}</p>
         </div>
         <div className="content-section">
           <hr className="section-separator" />
@@ -739,7 +739,7 @@ export default function Uses() {
                     {arrowAnimation}
                   </div>
                   <span className="explore-projects">
-                    Explore Featured Projects{" "}
+                    {translate('Explore Featured Projects')}
                   </span>
                 </div>
                 <p className="text-sm">
@@ -755,7 +755,9 @@ export default function Uses() {
             <div className="col-lg-5 offset-lg-2 p-5 d-flex">
               <div className="mb-4 pb-3 numbers-animation">{View}</div>
               <div className="apps-built">
-                Apps/exchanges <br /> built on the <br /> XRPL{" "}
+                {translate('about.uses.apps-build-1', 'Apps/exchanges ')}<br />
+                {translate('about.uses.apps-build-2', 'built on the ')}<br />
+                {translate('about.uses.apps-build-3', 'XRPL')}
               </div>
             </div>
             <ul
@@ -778,7 +780,7 @@ export default function Uses() {
                 >
                   <div className="circle-content">
                     <img className="circle-img" id={use.id} alt="use-logos" />
-                    <p className="circle-text">{use.title}</p>
+                    <p className="circle-text">{translate(use.title)}</p>
                     <div className="pill-box">
                       <span className="pill-number">{use.number}</span>
                     </div>
@@ -806,10 +808,7 @@ export default function Uses() {
           <section className="join-xrpl-section py-26">
             <div className="colorful-join-text-wrapper">
               <span className="colorful-join-text">
-                {" "}
-                Join the XRPL Ecosystem and showcase your XRPL project,
-                application, or product. Get featured on the Developer
-                Reflections blog or Ecosystem page.{" "}
+                {translate('Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page.')}
               </span>
               <div className="mt-10">
                 <a
@@ -826,9 +825,9 @@ export default function Uses() {
             <div className="col-12 col-lg-8 col-xl-6 p-3 mb-5">
               <div className="d-flex flex-column-reverse">
                 <h3 className="h4 h2-sm">
-                  {translate("Businesses and developers")}
+                  {translate("about.uses.businesses.h3part1","Businesses and developers")}
                   <br className="until-sm" />
-                  {translate(" rely on the XRP Ledger")}
+                  {translate("about.uses.businesses.h3part2", "rely on the XRP Ledger")}
                 </h3>
                 <h6 className="eyebrow mb-3">
                   {translate("Solving Real-World Problems")}
@@ -841,7 +840,7 @@ export default function Uses() {
               </p>
             </div>
             <a
-              className="btn  d-block d-lg-none"
+              className="btn d-block d-lg-none"
               data-toggle="modal"
               data-target="#categoryFilterModal"
             >
@@ -887,7 +886,7 @@ export default function Uses() {
                           className="font-weight-bold"
                           htmlFor={`input_${item}`}
                         >
-                          {featured_categories[item]}
+                          {translate(featured_categories[item])}
                         </label>
                       </div>
                     ))}
@@ -913,7 +912,7 @@ export default function Uses() {
                           onChange={() => toggleCategory(item)}
                         />
                         <label htmlFor={`input_${item}`}>
-                          {other_categories[item]}
+                          {translate(other_categories[item])}
                         </label>
                       </div>
                     ))}
@@ -923,7 +922,7 @@ export default function Uses() {
               </div>
               {/* cards */}
               <div
-                className="right row col row-cols-lg-2 m-0 p-0"
+                className="right row col row-cols-lg-2 m-2 p-0"
                 id="use_case_companies_list"
               >
                 {filteredCards.map((card) => (
@@ -942,10 +941,10 @@ export default function Uses() {
                         />
                       </span>
                       <h4 className="card-title h6">{card.title}</h4>
-                      <p className="card-text">{card.description}</p>
+                      <p className="card-text">{translate(card.description)}</p>
                       <div className="align-self-end">
                         <span className={`label label-use-${card.category_id}`}>
-                          {card.category_name}
+                          {translate(card.category_name)}
                         </span>
                       </div>
                     </div>

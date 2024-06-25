@@ -75,7 +75,7 @@
         - page: ./docs/use-cases/payments/index.md
           label: Payments
           labelTranslationKey: topnav.docs.payments
-        - page: ./docs/use-cases/tokenization/index.md
+        - page: ./docs/use-cases/tokenization/index.page.tsx
           label: Tokenization
           labelTranslationKey: topnav.docs.tokenization
         - page: ./docs/use-cases/defi/index.md
