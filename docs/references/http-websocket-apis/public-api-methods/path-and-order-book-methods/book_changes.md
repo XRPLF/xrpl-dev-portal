@@ -59,7 +59,7 @@ The request includes the following parameters:
 There are several known issue with this method in `rippled`.
 
 - You must specify the `ledger_index` or `ledger_hash` explicitly instead of using a default or a shortcut string. ([Issue #5034](https://github.com/XRPLF/rippled/issues/5034))
-- The response may be missing the `validated` field even when querying validated ledgers. ([#5035](https://github.com/XRPLF/rippled/issues/5035))
+- JSON-RPC API responses may be missing the `validated` field even when querying validated ledgers. ([#5035](https://github.com/XRPLF/rippled/issues/5035))
 - When querying a recently-closed ledger, a successful response may sometimes return a Ledger Request Object instead of the intended data. ([#5033](https://github.com/XRPLF/rippled/issues/5033))
 - When querying data from older ledgers, the server may take a long time (over 30 seconds) to respond. ([#5036](https://github.com/XRPLF/rippled/issues/5036))
 
