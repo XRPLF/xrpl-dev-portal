@@ -681,15 +681,15 @@ pre code, pre {
   }
 .modal-content-uses{
   .first-ledger-bot{
-    content: url("../img/uses/lightmode/first-ledger-bot.svg") !important;
+    content: url("../img/uses/lightmode/first-ledger-bot.svg");
   }
   .moai-finance{
-    content: url("../img/uses/lightmode/moai-finance.svg") !important;  
+    content: url("../img/uses/lightmode/moai-finance.svg");  
   }
   .orchestra-finance{
-    max-height: 52px !important;
-    margin: 0 !important;
-    content: url("../img/uses/lightmode/orchestra-finance.svg") !important;  
+    max-height: 52px ;
+    margin: 0;
+    content: url("../img/uses/lightmode/orchestra-finance.svg");  
   }
 }
 
