@@ -30,18 +30,24 @@ label:
 
 上記の一般的なフィールドに加えて、オブジェクトを取得するタイプを示すために、以下のフィールドのうち *正確に1つ* を指定する必要があります。有効なフィールドは以下のとおりです。
 
-- [`index`](#idからレジャーオブジェクトを取得する)
-- [`account_root`](#accountrootオブジェクトを取得する)
-- [`directory`](#directorynodeオブジェクトを取得する)
-- [`amm`](#ammオブジェクトを取得する)
-- [`offer`](#offerオブジェクトを取得する)
-- [`ripple_state`](#ripplestateオブジェクトを取得する)
-- [`check`](#checkオブジェクトを取得する)
-- [`escrow`](#escrowオブジェクトを取得する)
-- [`payment_channel`](#paychannelオブジェクトを取得する)
-- [`deposit_preauth`](#depositpreauthオブジェクトを取得する)
-- [`ticket`](#ticketオブジェクトを取得する)
-- [`nft_page`](#nft-pageを取得する)
+- [ledger\_entry](#ledger_entry)
+  - [リクエストのフォーマット](#リクエストのフォーマット)
+    - [一般的なフィールド](#一般的なフィールド)
+    - [IDからレジャーオブジェクトを取得する](#idからレジャーオブジェクトを取得する)
+    - [AccountRootオブジェクトを取得する](#accountrootオブジェクトを取得する)
+    - [AMMオブジェクトを取得する](#ammオブジェクトを取得する)
+    - [Bridgeオブジェクトを取得する](#bridgeオブジェクトを取得する)
+    - [Directorynodeオブジェクトを取得する](#directorynodeオブジェクトを取得する)
+    - [Offerオブジェクトを取得する](#offerオブジェクトを取得する)
+    - [RippleStateオブジェクトを取得する](#ripplestateオブジェクトを取得する)
+    - [Checkオブジェクトを取得する](#checkオブジェクトを取得する)
+    - [Escrowオブジェクトを取得する](#escrowオブジェクトを取得する)
+    - [Paychannelオブジェクトを取得する](#paychannelオブジェクトを取得する)
+    - [DepositPreauthオブジェクトを取得する](#depositpreauthオブジェクトを取得する)
+    - [Ticketオブジェクトを取得する](#ticketオブジェクトを取得する)
+    - [Nft Pageを取得する](#nft-pageを取得する)
+  - [レスポンスのフォーマット](#レスポンスのフォーマット)
+  - [考えられるエラー](#考えられるエラー)
 
 **注意:** リクエストでこれらの型固有のフィールドを1つ以上指定した場合、サーバはそのうちの1つだけの結果を取得します。サーバがどれを選択するかは定義されていないため、こうした指定方法は避けるべきです。
 
@@ -95,7 +101,7 @@ rippled json ledger_entry '{ "index": "7DB0788C020F02780A673DC74757F23823FA3014C
 
 - [`Amendments`](../../../protocol/ledger-data/ledger-entry-types/amendments.md) - `7DB0788C020F02780A673DC74757F23823FA3014C1866E72CC4CD8B226CD6EF4`
 - [`FeeSettings`](../../../protocol/ledger-data/ledger-entry-types/feesettings.md) - `4BC50C9B0D8515D3EAAE1E74B29A95804346C491EE1A95BF25E4AAB854A6A651`
-- [Recent History `LedgerHashes`](../../../protocol/ledger-data/ledger-entry-types/ledgerhashes.md) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
+- [直近の`LedgerHashes`](../../../protocol/ledger-data/ledger-entry-types/ledgerhashes.md) - `B4979A36CDC7F3D3D5C31A4EAE2AC7D7209DDA877588B9AFC66799692AB0D66B`
 - [`NegativeUNL`](../../../protocol/ledger-data/ledger-entry-types/negativeunl.md) - `2E8A59AA9D3B5B186B0B9E0F62E6C02587CA74A4D778938E957B6357D364B244`
 {% /admonition %}
 
@@ -175,7 +181,7 @@ _([AMM amendment][])_
       "currency" : "TST",
       "issuer" : "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
     }
-  }
+  },
   "ledger_index": "validated"
 }
 ```
@@ -211,7 +217,77 @@ rippled json ledger_entry '{ "amm": { "asset": { "currency": "XRP" }, "asset2": 
 
 {% /tabs %}
 
-[試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Famm.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+[試してみる >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-amm)
+
+
+### Bridgeオブジェクトを取得する
+
+_([XChainBridge amendment][]が必要です　{% not-enabled /%})_
+
+XRP Ledgerを他のブロックチェーンに接続する1つのクロスチェーンブリッジを表す[Bridgeエントリ](../../../protocol/ledger-data/ledger-entry-types/bridge.md)を取得します。
+
+| フィールド    　   | 型         | 説明                   |
+|:-----------------|:-----------|:----------------------|
+| `bridge_account` | 文字列      | ブロックチェーン上で`XChainCreateBridge`トランザクションを送信したアカウント。 |
+| `bridge`         | オブジェクト | 取得する[ブリッジ](../../../protocol/ledger-data/ledger-entry-types/bridge.md)。ドアアカウントと発行・ロックチェーンの資産の情報を含みます。 |
+
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_bridge",
+  "command": "ledger_entry",
+  "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+  "bridge": {
+    "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+    "IssuingChainIssue": {
+      "currency": "XRP"
+    },
+    "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+    "LockingChainIssue": {
+      "currency": "XRP"
+    }
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+    "method": "ledger_entry",
+    "params": [
+        {
+            "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+            "bridge": {
+                "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh",
+                "IssuingChainIssue": {
+                    "currency": "XRP"
+                },
+                "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ",
+                "LockingChainIssue": {
+                    "currency": "XRP"
+                }
+            },
+            "ledger_index": "validated"
+        }
+    ]
+}
+```
+{% /tab %}
+
+{% tab label="コマンドライン" %}
+```sh
+rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "bridge": { "IssuingChainDoor": "rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh", "IssuingChainIssue": { "currency": "XRP" }, "LockingChainDoor": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuqFJ", "LockingChainIssue": { "currency": "XRP" } }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+[試してみよう! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
 
 
 

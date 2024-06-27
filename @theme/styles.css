@@ -191,7 +191,9 @@ ul.nav.navbar-nav {
   --h3-font-size: 2.125rem;
   --h3-font-weight: 600;
   --h4-font-size: 1.75rem;
+  --h4-line-height: 2rem;
   --h5-font-size: 1.25rem;
+  --h5-line-height: 1.5rem;
 
   --sidebar-border-color: transparent;
   --sidebar-bg-color: transparent;

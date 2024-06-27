@@ -14,16 +14,17 @@ labels:
 
 アカウントの`account_objects`レスポンスに含まれる可能性のあるオブジェクトのタイプには以下のものがあります。
 
-- [Offerエントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md): 現在処理中であり、資金化されていない、または有効期限切れで削除されていない注文情報。（詳細は、[オファーのライフサイクル](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)をご覧ください。）
-- [RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md): このアカウント側がデフォルト状態にないトラストライン。
-- アカウントの[SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md): アカウントで[マルチシグ](../../../../concepts/accounts/multi-signing.md)が有効な場合。
-- [Escrowエントリ](../../../../concepts/payment-types/escrow.md): 実行されていないかまたはキャンセルされていない保留中の支払い。
-- [PayChannelエントリ](../../../protocol/ledger-data/ledger-entry-types/paychannel.md): 現在開いているペイメントチャネル。
+- [Bridgeエントリ](../../../protocol/ledger-data/ledger-entry-types/bridge.md): クロスチェーンブリッジ向けs. _([XChainBridge amendment][]が必要です {% not-enabled /%})_
 - [Checkエントリ](../../../protocol/ledger-data/ledger-entry-types/check.md): 保留中のCheck。
 - [DepositPreauthエントリ](../../../protocol/ledger-data/ledger-entry-types/depositpreauth.md): 入金の事前承認。
-- [Ticketエントリ](../../../../concepts/accounts/tickets.md): Ticket情報。
+- [Escrowエントリ](../../../../concepts/payment-types/escrow.md): 実行されていないかまたはキャンセルされていない保留中の支払い。
 - [NFTokenOfferエントリ](../../../protocol/ledger-data/ledger-entry-types/nftokenoffer.md): NFTを購入・売却するためのオファー。
 - [NFTokenPageエントリ](../../../protocol/ledger-data/ledger-entry-types/nftokenpage.md): NFTの集合。 {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.11.0" %}新規: rippled 1.11.0{% /badge %}
+- [Offerエントリ](../../../protocol/ledger-data/ledger-entry-types/offer.md): 現在処理中であり、資金化されていない、または有効期限切れで削除されていない注文情報。（詳細は、[オファーのライフサイクル](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)をご覧ください。）
+- [PayChannelエントリ](../../../protocol/ledger-data/ledger-entry-types/paychannel.md): 現在開いているペイメントチャネル。
+- [RippleStateエントリ](../../../protocol/ledger-data/ledger-entry-types/ripplestate.md): このアカウント側がデフォルト状態にないトラストライン。
+- アカウントの[SignerList](../../../protocol/ledger-data/ledger-entry-types/signerlist.md): アカウントで[マルチシグ](../../../../concepts/accounts/multi-signing.md)が有効な場合。
+- [Ticketエントリ](../../../../concepts/accounts/tickets.md): Ticket情報。
 
 
 ## リクエストのフォーマット
@@ -81,7 +82,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 | `ledger_index`           | [レジャーインデックス][] | いいえ | 使用するレジャーの[レジャーインデックス][]、またはレジャーを自動的に選択するためのショートカット文字列。（[レジャーの指定][]ををご覧ください） |
 | `limit`                  | 符号なし整数            | いいえ | 結果に含めることができるオブジェクトの最大数。非管理者接続では10以上400以下の範囲で値を指定する必要があります。デフォルトでは200です。 |
 | `marker`                 | [マーカー][]           | いいえ | 以前にページネーションされたレスポンスの値。そのレスポンスを停止した箇所からデータの取得を再開します。 |
-| `type`                   | 文字列                 | いいえ | 指定されている場合、結果をフィルタリングしてこのタイプのレジャーオブジェクトのみが含まれるようにします。有効なタイプは`check`、`deposit_preauth`、`escrow`、`offer`、`payment_channel`、`signer_list`、`state`（トラストライン）そして`ticket`です。 |
+| `type`                   | 文字列                 | いいえ | 指定されている場合、結果をフィルタリングしてこのタイプのレジャーオブジェクトのみが含まれるようにします。有効なタイプは`bridge`, `check`、`deposit_preauth`、`escrow`、`nft_offer`, `nft_page`, `offer`、`payment_channel`、`signer_list`、`state`（トラストライン）そして`ticket`です。 |
 
 **注記:** `account_objects`コマンドのコマンドラインインタフェースは`type`フィールドを受け付けません。代わりにコマンドラインでJSON-RPC形式のリクエストを送信するには[jsonメソッド][]を使用してください。
 

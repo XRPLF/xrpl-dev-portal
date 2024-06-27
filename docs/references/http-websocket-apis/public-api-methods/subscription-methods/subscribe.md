@@ -80,6 +80,7 @@ The following parameters are deprecated and may be removed without further notic
 
 The `streams` parameter provides access to the following default streams of information:
 
+- `book_changes` - Sends a message with order book changes whenever the consensus process declares a new validated ledger.
 - `consensus` - Sends a message whenever the server changes phase in the consensus cycle.
 - `ledger` - Sends a message whenever the consensus process declares a new validated ledger.
 - `manifests` - Sends a message whenever the server receives an update to a validator's ephemeral signing key.
@@ -547,14 +548,150 @@ Example order book stream message:
 
 The format of an order book stream message is the same as that of [transaction stream messages](#transaction-streams), except that `OfferCreate` transactions also contain the following field:
 
-| `Field`                   | Value  | Description                             |
+| Field                     | Value  | Description                             |
 |:--------------------------|:-------|:----------------------------------------|
 | `transaction.owner_funds` | String | Numeric amount of the `TakerGets` currency that the `Account` sending this OfferCreate transaction has after executing this transaction. This does not check whether the currency amount is [frozen](../../../../concepts/tokens/fungible-tokens/freezes.md). |
 
 
-## Consensus Stream
+## Book Changes Stream
 
-{% badge href="https://github.com/XRPLF/rippled/releases/tag/1.4.0" %}New in: rippled 1.4.0{% /badge %}
+The `book_changes` stream sends `bookChanges` messages whenever a new ledger is validated. This message contains a summary of all changes to order books in the decentralized exchange that occurred in that ledger.
+
+Example `bookChanges` message:
+
+```json
+{
+  "type": "bookChanges",
+  "ledger_index": 88530525,
+  "ledger_hash": "E2F24290E1714C842D34A1057E6D6B7327C7DDD310263AFBC67CA8EFED7A331B",
+  "ledger_time": 771099232,
+  "changes": [
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/USD",
+      "volume_a": "23020993",
+      "volume_b": "11.51049687275246",
+      "high": "1999999.935232603",
+      "low": "1999999.935232603",
+      "open": "1999999.935232603",
+      "close": "1999999.935232603"
+    },
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rRbiKwcueo6MchUpMFDce9XpDwHhRLPFo/43525950544F0000000000000000000000000000",
+      "volume_a": "28062",
+      "volume_b": "0.000643919229004",
+      "high": "43580000.00000882",
+      "low": "43580000.00000882",
+      "open": "43580000.00000882",
+      "close": "43580000.00000882"
+    },
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rcEGREd8NmkKRE8GE424sksyt1tJVFZwu/5553444300000000000000000000000000000000",
+      "volume_a": "147797392",
+      "volume_b": "70.41143840513008",
+      "high": "2099053.724049922",
+      "low": "2099053.724049922",
+      "open": "2099053.724049922",
+      "close": "2099053.724049922"
+    },
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rcRzGWq6Ng3jeYhqnmM4zcWcUh69hrQ8V/LTC",
+      "volume_a": "350547165",
+      "volume_b": "2.165759976556748",
+      "high": "162573356.3100158",
+      "low": "160134763.7403094",
+      "open": "162573356.3100158",
+      "close": "160134763.7403094"
+    },
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rchGBxcD1A1C2tdxF6papQYZ8kjRKMYcL/BTC",
+      "volume_a": "352373535",
+      "volume_b": "0.00249291478138912",
+      "high": "1413500174054660e-4",
+      "low": "1413499999999996e-4",
+      "open": "1413500174054660e-4",
+      "close": "1413499999999996e-4"
+    },
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rcvxE9PS9YBwxtGg1qNeewV6ZB3wGubZq/5553445400000000000000000000000000000000",
+      "volume_a": "8768045",
+      "volume_b": "4.193604075536",
+      "high": "2090813.734932601",
+      "low": "2090813.734932601",
+      "open": "2090813.734932601",
+      "close": "2090813.734932601"
+    },
+    {
+      "currency_a": "XRP_drops",
+      "currency_b": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq/USD",
+      "volume_a": "28113",
+      "volume_b": "0.013405652999",
+      "high": "2097100.380123005",
+      "low": "2097100.380123005",
+      "open": "2097100.380123005",
+      "close": "2097100.380123005"
+    },
+    {
+      "currency_a": "r3dVizzUAS3U29WKaaSALqkieytA2LCoRe/58434F5245000000000000000000000000000000",
+      "currency_b": "rcoreNywaoz2ZCQ8Lg2EbSLnGuRBmun6D/434F524500000000000000000000000000000000",
+      "volume_a": "75.626516003375",
+      "volume_b": "63.022096669479",
+      "high": "1.200000000000003",
+      "low": "1.200000000000003",
+      "open": "1.200000000000003",
+      "close": "1.200000000000003"
+    },
+    {
+      "currency_a": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/CNY",
+      "currency_b": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/USD",
+      "volume_a": "83.9115222024",
+      "volume_b": "11.51049687275",
+      "high": "7.290000000004561",
+      "low": "7.290000000004561",
+      "open": "7.290000000004561",
+      "close": "7.290000000004561"
+    },
+    {
+      "currency_a": "rcRzGWq6Ng3jeYhqnmM4zcWcUh69hrQ8V/LTC",
+      "currency_b": "rchGBxcD1A1C2tdxF6papQYZ8kjRKMYcL/BTC",
+      "volume_a": "0.64167647147626",
+      "volume_b": "0.00073047551165797",
+      "high": "878.4366638381051",
+      "low": "878.4366638381051",
+      "open": "878.4366638381051",
+      "close": "878.4366638381051"
+    },
+    {
+      "currency_a": "rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq/USD",
+      "currency_b": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/USD",
+      "volume_a": "0.013432464305",
+      "volume_b": "0.013566788948",
+      "high": "0.9900990099046391",
+      "low": "0.9900990099046391",
+      "open": "0.9900990099046391",
+      "close": "0.9900990099046391"
+    }
+  ]
+}
+```
+
+The fields from a Book Changes stream message are as follows:
+
+| Field          | Value            | Description                             |
+|:---------------|:-----------------|:----------------------------------------|
+| `type`         | String           | The value `bookChanges` indicates this is from the Book Changes stream. |
+| `ledger_index` | [Ledger Index][] | The ledger index of the ledger with these changes. |
+| `ledger_hash`  | [Hash][]         | The identifying hash of the ledger with these changes. |
+| `ledger_time`  | Number           | The official close time of the ledger with these changes, in [seconds since the Ripple Epoch][]. |
+| `changes`      | Array            | List of [Book Update Objects](../path-and-order-book-methods/book_changes.md#book-update-objects), containing one entry for each order book that was updated in this ledger version. The array is empty if no order books were updated. |
+
+
+## Consensus Stream
 
 The `consensus` stream sends `consensusPhase` messages when [the consensus process](../../../../concepts/consensus-protocol/index.md) changes phase. The message contains the new phase of consensus the server is in.
 
@@ -567,9 +704,9 @@ The `consensus` stream sends `consensusPhase` messages when [the consensus proce
 
 The fields from a consensus stream message are as follows:
 
-| `Field`             | Type                      | Description                |
-|:--------------------|:--------------------------|:---------------------------|
-| `type`              | String                    | `consensusPhase` indicates this is from the consensus stream |
-| `consensus`         | String                    | The new consensus phase the server is in. Possible values are `open`, `establish`, and `accepted`. |
+| Field       | Type   | Description                |
+|:------------|:-------|:---------------------------|
+| `type`      | String | The value `consensusPhase` indicates this is from the consensus stream |
+| `consensus` | String | The new consensus phase the server is in. Possible values are `open`, `establish`, and `accepted`. |
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
 import moment from "moment";
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -204,9 +205,9 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <div className="header">
             <h6 className="events-text">{translate("XRPL Events")}</h6>
             <h4 className="events-text">
-              {translate("Check out global events hosted")}{" "}
+              {translate("community.index.event.h4part1", "Check out global events hosted ")}
               <br className="d-none-sm" />
-              {translate("by the XRPL community")}
+              {translate("community.index.event.h4part2", "by the XRPL community")}
             </h4>
           </div>
           <p className="description">
@@ -214,13 +215,13 @@ const XrplEventsAndCarouselSection = ({ events }) => {
               "Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions."
             )}
           </p>
-          <a
+          <Link
             className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
             target="_blank"
-            href="/community/events"
+            to="/community/events"
           >
             {translate("View All Events")}
-          </a>
+          </Link>
         </div>
         <div className="upcoming-event" id="upcoming-events-section">
           <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
@@ -241,13 +242,13 @@ const XrplEventsAndCarouselSection = ({ events }) => {
             <span id="location-tag">{nearestEvent.location}</span>
           </p>
         </div>
-        <a
+        <Link
           target="_blank"
           className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn"
-          href="/community/events"
+          to="/community/events"
         >
           {translate("View All Events")}
-        </a>
+        </Link>
       </section>
 
       <section className="carousel">
@@ -353,12 +354,12 @@ const CommunityPage: React.FC = () => {
               alt="Down Arrow"
             />
             <h1 className="mb-0 main-title">
-              {translate("A Global Blockchain")}
+              {translate("community.index.h1part1", "A Global Blockchain")}
               <br className="until-sm" />
-              {translate("Community of ")}
-              <span className="builders-wrap">Builders</span>
+              {translate("community.index.h1part2", "Community of ")}
+              <span className="builders-wrap">{translate("community.index.h1part3", "Builders")}</span>
               <br className="until-sm" />
-              {translate("and Innovators")}
+              {translate("community.index.h1part4", "and Innovators")}
             </h1>
             <h6 className="mb-3 eyebrow">{translate("XRPL Community")}</h6>
           </div>
@@ -453,13 +454,13 @@ const CommunityPage: React.FC = () => {
       <XrplEventsAndCarouselSection events={events} />
       {/* Community Funding Section */}
       <section className="community-funding">
-        <a
+        <Link
           target="_blank"
           className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn"
-          href="/community/developer-funding/"
+          to="/community/developer-funding/"
         >
           {translate("Get Funding")}
-        </a>
+        </Link>
         <div className="stats">
           <div className="stacked-stats">
             <div className="stat">
@@ -505,13 +506,13 @@ const CommunityPage: React.FC = () => {
               "If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation."
             )}
           </p>
-          <a
+          <Link
             className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
             target="_blank"
-            href="/community/developer-funding/"
+            to="/community/developer-funding/"
           >
             {translate("Get Funding")}
-          </a>
+          </Link>
         </div>
       </section>
       {/* Community Spotlight Wrapper */}
@@ -606,38 +607,38 @@ const CommunityPage: React.FC = () => {
             </h6>
             <p className="card-description">
               {translate(
-                "Thank you for your interest in contributing to XRPL.org."
+                "Thank you for your interest in contributing to XRP Ledger."
               )}
             </p>
             <div className="card-links">
-              <a
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/docs/concepts/networks-and-servers/"
+                to="/docs/concepts/networks-and-servers/"
               >
                 {translate("Networks and Servers")}
-              </a>
-              <a
+              </Link>
+              <Link
                 className="com-card-link"
-                href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
                 target="_blank"
+                to="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
               >
                 {translate("Join UNL")}
-              </a>
-              <a
+              </Link>
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/docs/infrastructure/installation/"
+                to="/docs/infrastructure/installation/"
               >
                 {translate("Install & Configure")}
-              </a>
-              <a
+              </Link>
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/docs/infrastructure/troubleshooting/"
+                to="/docs/infrastructure/troubleshooting/"
               >
                 {translate("Troubleshooting")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -673,7 +674,7 @@ const CommunityPage: React.FC = () => {
               {translate("Contribute to XRPL.org")}
             </h6>
             <h6 className="card-subtitle">
-              {translate("A Community-Driven Resource for All Things XRPL.org")}
+              {translate("A Community-Driven Resource for All Things XRP Ledger")}
             </h6>
             <p className="card-description">
               {translate(
@@ -681,13 +682,13 @@ const CommunityPage: React.FC = () => {
               )}
             </p>
             <div className="card-links">
-              <a
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/resources/contribute-documentation/"
+                to="/resources/contribute-documentation/"
               >
                 {translate("Read Contributor Guidelines")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

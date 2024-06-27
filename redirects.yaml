@@ -107,7 +107,10 @@ faq.html:
     to: /faq
     type: 301
 privacy-policy.html:
-    to: /privacy-policy
+    to: /about/privacy-policy
+    type: 301
+privacy-policy/:
+    to: /about/privacy-policy
     type: 301
 technical-faq.html:
     to: /faq
@@ -1611,6 +1614,9 @@ report-a-scam.html:
     type: 301
 wallets.html:
     to: /docs/introduction/crypto-wallets
+    type: 301
+blog/2024/rippled-2.2.0.html:
+    to: /blog/2024/rippled-2.2.0
     type: 301
 blog/2024/rippled-2.1.0.html:
     to: /blog/2024/rippled-2.1.0

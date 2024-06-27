@@ -8,7 +8,7 @@ from xrpl.clients import JsonRpcClient
 # https://xrpl.org/nftokenpage.html#nftokenpage
 # https://xrpl.org/nft_buy_offers.html#nft_buy_offers
 
-# Testnet example: r3CJF73Ugs5cT4G58CDBp6RAmycGdnTAFN
+# Testnet example: rP7aApVAyf3bjtRVVTixVSHBbU4kpd742k
 account = input("Enter wallet address: ")
 
 # Connect to a testnet node

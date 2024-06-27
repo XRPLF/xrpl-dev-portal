@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { NavList } from "shared/components/nav-list";
 
 export const frontmatter = {
   seo: {
@@ -164,15 +165,7 @@ function UseCasesCard(props: {
     <div className="col">
       <img className={'use-cases-img img-fluid mb-2 shadow ' + useCase.imgClass} alt={useCase.title} id={useCase.id} />
       <h5 className="mt-4">{useCase.title}</h5>
-      <ul className="nav flex-column">
-        {useCase.subItems.map(item => (
-          <li key={item.link} className="nav-item">
-            <a href={item.link} className="nav-link">
-              {item.description}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <NavList pages={useCase.subItems} />
     </div>
   );
 }
@@ -388,15 +381,7 @@ export default function Docs() {
           <div className="row card-grid card-grid-2xN">
             <div className="col" id="popular-topics">
               <h2 className="h4">{translate('Browse By Recommended Pages')}</h2>
-              <ul className="nav flex-column">
-                {recommendedPages.map(page => (
-                  <li className="nav-item" key={page.link}>
-                    <a href={page.link} className="nav-link">
-                      {translate(page.description)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <NavList pages={recommendedPages} />
             </div>
             <div className="col">
               <div className="card cta-card p-8-sm p-10-until-sm br-8">

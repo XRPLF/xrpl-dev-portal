@@ -443,7 +443,7 @@ You can now use your wallet to send XRP! You can even fund an entirely new accou
 
 **Full code for this step:** {% repo-link path="_code-samples/build-a-desktop-wallet/py/6_verification_and_polish.py" %}`6_verification_and_polish.py`{% /repo-link %}
 
-One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and scams. These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
+One of the biggest shortcomings of the wallet app from the previous step is that it doesn't provide a lot of protections or feedback for users to save them from human error and [DeFi scams](https://learn.xrpl.org/safeguarding-your-crypto-wallet-your-essential-checklist-against-defi-scams/). These sorts of protections are extra important when dealing with the cryptocurrency space, because decentralized systems like the XRP Ledger don't have an admin or support team you can ask to cancel or refund a payment if you made a mistake such as sending it to the wrong address. This step shows how to add some checks on destination addresses to warn the user before sending.
 
 One type of check you can make is to verify the domain name associated with an XRP Ledger address; this is called [account domain verification](../../../references/xrp-ledger-toml.md#account-verification). When an account's domain is verified, you could show it like this:
 

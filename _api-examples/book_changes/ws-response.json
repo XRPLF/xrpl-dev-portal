@@ -1,0 +1,80 @@
+{
+    "result": {
+      "type": "bookChanges",
+      "ledger_hash": "7AB08A2415C10E07201521F3260F77ADFF4902A528EA66378E259A07767A24B9",
+      "ledger_index": 88530953,
+      "ledger_time": 771100891,
+      "validated": true,
+      "changes": [
+        {
+          "currency_a": "XRP_drops",
+          "currency_b": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/CNY",
+          "volume_a": "44082741",
+          "volume_b": "158.6978676",
+          "high": "277777.7777777778",
+          "low": "277777.7777777778",
+          "open": "277777.7777777778",
+          "close": "277777.7777777778"
+        },
+        {
+          "currency_a": "XRP_drops",
+          "currency_b": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/XLM",
+          "volume_a": "44191586",
+          "volume_b": "217.6925474337355",
+          "high": "202999.9948135647",
+          "low": "202999.9948135647",
+          "open": "202999.9948135647",
+          "close": "202999.9948135647"
+        },
+        {
+          "currency_a": "XRP_drops",
+          "currency_b": "rf5YPb9y9P3fTjhxNaZqmrwaj5ar8PG1gM/47414C4100000000000000000000000000000000",
+          "volume_a": "100000000",
+          "volume_b": "1242.61659179386",
+          "high": "80475.34586323083",
+          "low": "80475.34586323083",
+          "open": "80475.34586323083",
+          "close": "80475.34586323083"
+        },
+        {
+          "currency_a": "XRP_drops",
+          "currency_b": "rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz/534F4C4F00000000000000000000000000000000",
+          "volume_a": "33734",
+          "volume_b": "0.1454210006367",
+          "high": "231974.7481608686",
+          "low": "231974.7481608686",
+          "open": "231974.7481608686",
+          "close": "231974.7481608686"
+        },
+        {
+          "currency_a": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/CNY",
+          "currency_b": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/USD",
+          "volume_a": "158.6978670792",
+          "volume_b": "21.76925474337",
+          "high": "7.290000000001503",
+          "low": "7.290000000001503",
+          "open": "7.290000000001503",
+          "close": "7.290000000001503"
+        },
+        {
+          "currency_a": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/USD",
+          "currency_b": "rKiCet8SdvWxPXnAgYarFUXMh1zCPz432Y/XLM",
+          "volume_a": "21.76925474337355",
+          "volume_b": "217.6925474337355",
+          "high": "0.1",
+          "low": "0.1",
+          "open": "0.1",
+          "close": "0.1"
+        }
+      ]
+    },
+    "id": "example_book_changes",
+    "status": "success",
+    "type": "response",
+    "warnings": [
+      {
+        "id": 2001,
+        "message": "This is a clio server. clio only serves validated data. If you want to talk to rippled, include 'ledger_index':'current' in your request"
+      }
+    ]
+  }

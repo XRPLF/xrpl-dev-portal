@@ -1,6 +1,6 @@
 /* Top navigation ----------------------------------------------------------- */
 $nav-height: 80px;
-$banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
+$banner-height: 0; // Apex 2024 banner was 46px. 0 for no pencil banner.
 
 [data-component-name="layouts/RootLayout"] {
   padding-top: $nav-height + $banner-height;
