@@ -167,7 +167,6 @@ const events = [
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
-console.log({ nearestDateDiff, nearestEvent });
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
