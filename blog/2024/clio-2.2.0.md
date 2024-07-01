@@ -8,21 +8,22 @@ theme:
         editPage:
             hide: true
 ---
-
 # Introducing Clio version 2.2.0
 
 Version 2.2.0 of Clio, an XRP Ledger API server optimized for HTTP and WebSocket API calls, is now available. This release adds new features and bug fixes.
 
 ## Notable New Features
+
 * Price Oracle support, including `get_aggregate_price` API
-* Forwarding to rippled for `feature` API
-  * Clio-native implementation of `feature` API is planned for future implementation
+* Forwarding the `feature` API method to `rippled` (A non-admin version of this method was added in `rippled` 2.2.0)
+    * A Clio-native implementation of the `feature` API is planned for the future
 * Improved doxygen documentation
 * TLS 1.3 support
 * C++23 compilers
 
 ## Amendment Support
-The following amendments have been introduced since Clio 2.1.2 and have transaction model changes.  Clio 2.2.0 is built with `libxrpl` 2.2.0, which supports these amendments.
+
+The following amendments have been introduced since Clio 2.1.2 and have transaction model changes. Clio 2.2.0 is built with `libxrpl` 2.2.0, which supports these amendments.
 
 * [PriceOracle](https://xrpl.org/known-amendments.html#priceoracle)
 
@@ -31,7 +32,8 @@ If these amendments are enabled and you have not upgraded Clio to 2.2.0 or newer
 To check the current voting status of these amendments on Mainnet, see the [XRPL Amendments Dashboard](https://livenet.xrpl.org/amendments).
 
 ## Database Migration
-If you are currently running Clio 1.0.4 or earlier and upgrading, you must perform a database migration to properly support NFT data.  Instructions for the migration are described https://github.com/XRPLF/clio/tree/clio_migrator%402.0.0
+
+If you are currently running Clio 1.0.4 or earlier and upgrading, you must perform a database migration to properly support NFT data. See the [`clio_migrator` branch](https://github.com/XRPLF/clio/tree/clio_migrator%402.0.0) and its README for instructions.
 
 ## Install / Upgrade
 
@@ -54,6 +56,8 @@ Date:   Fri Jun 21 11:54:53 2024 +0100
 See the [Full Changelog on GitHub](https://github.com/XRPLF/clio/compare/2.1.2...2.2.0).
 
 ## Feedback
+
 The Clio open-source project is seeking feedback and engagement from the XRPL community.
-To provide feedback, please [fill out this survey](https://forms.gle/fnGPTUCAdmEzkFy57).
-To report an issue or propose a new idea, please [open an issue](https://github.com/XRPLF/clio/issues).
+
+- To provide feedback, please [fill out this survey](https://forms.gle/fnGPTUCAdmEzkFy57).
+- To report an issue or propose a new idea, please [open an issue](https://github.com/XRPLF/clio/issues).
