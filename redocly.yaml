@@ -32,6 +32,8 @@ theme:
       - src: ./static/js/xrpl-2.11.0.min.js
       - src: ./static/vendor/jquery-3.7.1.min.js
       - src: ./static/vendor/bootstrap.min.js
+      - src: ./static/js/osano.js
+        type: text/javascript
     body:
       - src: ./static/js/xrplai-config.js
         id: xrplai-options
