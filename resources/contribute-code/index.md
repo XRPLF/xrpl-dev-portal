@@ -86,7 +86,7 @@ The general development path breaks down as follows:
 
 ## Code Flowchart
 
-![Code Flowchart](../../docs/img/contribute-code-flowchart.png)
+![Code Flowchart](/docs/img/contribute-code-flowchart.png)
 
 
 ## See Also
