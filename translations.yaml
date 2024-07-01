@@ -1,6 +1,6 @@
 # Samples for @i18n/[lang]/translations.yaml
-# theme.page.previousButton: "Previous: {{label}}"
-# theme.page.nextButton: "Next: {{label}}"
+# theme.page.previousButton: "Previous page"
+# theme.page.nextButton: "Next page"
 # theme.page.lastUpdated.timeago: Last updated
 # theme.markdown.editPage.text: Edit
 # theme.toc.header: On this page

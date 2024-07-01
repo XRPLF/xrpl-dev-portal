@@ -1,5 +1,5 @@
-theme.page.previousButton: "前のページ: {{label}}"
-theme.page.nextButton: "次のページ: {{label}}"
+theme.page.previousButton: "前のページ"
+theme.page.nextButton: "次のページ"
 theme.page.lastUpdated.timeago: "最終更新: "
 theme.markdown.editPage.text: 編集
 theme.toc.header: 目次
