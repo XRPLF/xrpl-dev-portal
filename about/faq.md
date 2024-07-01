@@ -106,7 +106,7 @@ However, if your UNL does not have enough overlap with the UNLs used by others, 
 
 #### What purpose does XRP serve?
 
-XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](../docs/concepts/tokens/decentralized-exchange/autobridging.md) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](/about/uses) for XRP as well was the XRP Ledger itself.
+XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to [bridge currencies](../docs/concepts/tokens/decentralized-exchange/autobridging.md) in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new [use cases](/about/uses) for XRP as well as the XRP Ledger itself.
 
 
 #### How does the XRP Ledger respond to transaction floods?
