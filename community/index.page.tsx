@@ -163,7 +163,7 @@ const events = [
     date: "June 28 - 30, 2024",
     image: hackathon,
     start_date: "June 28, 2024",
-    end_date: "August 30, 2024",
+    end_date: "June 30, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
