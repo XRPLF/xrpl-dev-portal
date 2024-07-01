@@ -3,8 +3,12 @@ theme.page.nextButton: "次のページ: {{label}}"
 theme.page.lastUpdated.timeago: "最終更新: "
 theme.markdown.editPage.text: 編集
 theme.toc.header: 目次
+theme.search.label: ドキュメントの検索
 theme.search.navbar.label: 検索
 theme.search.recent: 直近の検索
+theme.search.keys.navigate: 選択
+theme.search.keys.select: 決定
+theme.search.keys.exit: 閉じる
 theme.feedback.settings.label: 参考になりましたか?
 theme.footer.copyrightText: © 2024 XRP Ledger. オープンソース.
 
