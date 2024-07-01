@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import moment from "moment";
-import { Link } from '@portal/Link';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -168,6 +168,7 @@ const events = [
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [currentIndex, setCurrentIndex] = useState(7);
 
@@ -303,6 +304,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
 };
 
 const CommunityPage: React.FC = () => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
     <div className="no-sidebar landing page-community">

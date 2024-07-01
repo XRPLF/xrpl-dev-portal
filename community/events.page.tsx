@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 const moment = require("moment");
 const amaImage = require("../static/img/events/AMAs.png")
 const hackathon = require("../static/img/events/Hackathons.png")
@@ -718,6 +718,7 @@ const events = [
 ];
 
 export default function Events() {
+  const { useTranslate} = useThemeHooks();
   const { translate } = useTranslate();
   const { past, upcoming } = useMemo(() => categorizeDates(events), []);
 

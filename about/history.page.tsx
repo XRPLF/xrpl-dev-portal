@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
-import { Link } from '@portal/Link';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -10,6 +10,7 @@ export const frontmatter = {
 };
 
 export default function History() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [openSections, setOpenSections] = React.useState({});
 

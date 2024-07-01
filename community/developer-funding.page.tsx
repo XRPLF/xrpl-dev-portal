@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
-import { Link } from '@portal/Link';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -14,6 +14,7 @@ false;
 const target = { prefix: "" }; // TODO: fixme
 
 export default function Funding() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (

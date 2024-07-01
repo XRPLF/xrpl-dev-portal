@@ -1,4 +1,4 @@
-import { useTranslate } from '@portal/hooks'
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { ReactElement, useState } from 'react';
 import JsonView from 'react18-json-view'
 
@@ -26,6 +26,7 @@ export const RPCResponseGroup = ({ response, anchor, customExpanded, customExpan
 }
 
 const RPCResponseGroupExpanders = ({ customExpanded, customExpandedText, setExpanded }) => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return <ul className="nav nav-pills">

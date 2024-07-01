@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router-dom";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import {
   JsonParam,
   StringParam,
@@ -38,6 +38,7 @@ export function WebsocketApiTool() {
   })
 
   const { hash: slug } = useLocation();
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [isConnectionModalVisible, setIsConnectionModalVisible] =
     useState(false);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { clsx } from 'clsx'
 import { isValidAddress } from 'xrpl'
 
@@ -27,6 +27,7 @@ export function DestinationAddressInput(
         setDestinationAddress, 
     } : DestinationAddressInputProps
 ): React.JSX.Element {
+    const { useTranslate } = useThemeHooks();
     const { translate } = useTranslate()
     const [ isValidDestinationAddress, setIsValidDestinationAddress ] = useState(true)
     

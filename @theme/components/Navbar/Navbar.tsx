@@ -1,12 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useThemeConfig } from "@theme/hooks/useThemeConfig";
-import { LanguagePicker } from "@theme/i18n/LanguagePicker";
-import { useI18n, useTranslate } from "@portal/hooks";
+import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
+import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/LanguagePicker";
 import { slugify } from "../../helpers";
-import { Link } from "@portal/Link";
-import { ColorModeSwitcher } from "@theme/components/ColorModeSwitcher/ColorModeSwitcher";
-import { Search } from "@theme/components/Search/Search";
+import { Link } from "@redocly/theme/components/Link/Link";
+import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
+import { Search } from "@redocly/theme/components/Search/Search";
 
 // @ts-ignore
 
@@ -20,6 +19,7 @@ const alertBanner = {
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
   const themeConfig = useThemeConfig();
+  const { useI18n } = useThemeHooks();
   const { changeLanguage } = useI18n();
   const menu = themeConfig.navbar?.items;
   const logo = themeConfig.logo;
@@ -104,10 +104,10 @@ export function Navbar(props) {
               <Search className="topnav-search" />
             </div>
             <div id="topnav-language" className="nav-item">
-              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
+              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon alignment="end" />
             </div>
             <div id="topnav-theme" className="nav-item">
-              <StyledColorModeSwitcher />
+              <ColorModeSwitcher />
             </div>
           </NavItems>
         </TopNavCollapsible>
@@ -153,6 +153,7 @@ export function TopNavCollapsible({children}) {
 
 export function NavDropdown(props) {
   const { label, items, pathPrefix, labelTranslationKey } = props;
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   const dropdownGroups = items.map((item, index) => {
@@ -287,6 +288,7 @@ export function MobileMenuIcon() {
 }
 
 export function GetStartedButton() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { decode } from "ripple-binary-codec";
 import addressCodec, { encodeNodePublic } from "ripple-address-codec";
 import { verify as keyCodecVerify } from "ripple-keypairs";
@@ -19,6 +19,7 @@ const TIPS =
   <p>Check if the xrp-ledger.toml file is actually hosted in the /.well-known/ location at the domain in your manifest. Check your server\'s HTTPS settings and certificate, and make sure your server provides the required <a href="xrp-ledger-toml.html#cors-setup">CORS header.</a></p>;
 
 const DomainVerificationPage = () => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const TOML_PATH = "/.well-known/xrp-ledger.toml";
   let query_param = 0;

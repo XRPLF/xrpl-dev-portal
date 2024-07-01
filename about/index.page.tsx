@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
-import { Link } from '@portal/Link';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -28,6 +28,7 @@ const faqs = [
 ];
 
 export default function XrplOverview() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [videoOne, setVideoOne] = React.useState(false);
   const [currentVideoUrl, setCurrentVideoUrl] = React.useState("");

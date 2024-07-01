@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import mapDark from "../static/js/impact/mapDark.json";
 import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
@@ -17,6 +17,7 @@ export const frontmatter = {
 export default function Impact() {
   const theme = useThemeFromClassList(["dark", "light"]);
   const [videoVisible, setVideoVisible] = useState(false); // State to control visibility
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const handleVideoClick = () => {
     setVideoVisible(true); // Show the iframe

@@ -264,10 +264,12 @@ article a.button,
     }
 
     .navbar-nav .nav-link,
-    .navbar-collapse>.nav-item,
-    .navbar-nav #topnav-theme,
-    .navbar-nav #topnav-search {
+    .navbar-collapse>.nav-item {
       background: $gray-200;
+    }
+
+    #top-main-nav {
+      background-color: $gray-300;
     }
   }
 }

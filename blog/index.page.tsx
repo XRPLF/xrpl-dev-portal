@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useRef, useEffect } from "react";
-import { useTranslate, usePageSharedData } from "@portal/hooks";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import moment from "moment";
 
 export const frontmatter = {
@@ -24,6 +24,7 @@ const categories = {
 };
 
 export default function Index() {
+  const { useTranslate, usePageSharedData } = useThemeHooks();
   const { translate } = useTranslate();
   const { blogPosts } = usePageSharedData<any>("blog-posts");
 

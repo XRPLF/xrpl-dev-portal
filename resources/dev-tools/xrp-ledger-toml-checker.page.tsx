@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { TextLookupForm, type TextLookupFormProps } from './components/TextLookupForm';
 import { fetchFile, fetchWallet } from './toml-checker/ValidateTomlSteps';
 import { LogEntryItem } from './components/LogEntry';
@@ -45,6 +45,7 @@ function handleSubmitDomain(
 }
 
 export default function TomlChecker() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   const domainButtonProps: TextLookupFormProps = {

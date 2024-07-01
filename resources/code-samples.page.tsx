@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { usePageSharedData, useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 export const frontmatter = {
   seo: {
@@ -24,6 +24,7 @@ const target = {
 };
 
 export default function CodeSamples() {
+  const { useTranslate, usePageSharedData } = useThemeHooks();
   const { translate } = useTranslate();
   const { codeSamples, langs } = usePageSharedData<any>('code-samples');
 

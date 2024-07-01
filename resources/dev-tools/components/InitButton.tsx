@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { clsx } from 'clsx'
 
 import { Client, type Wallet, type TxResponse, dropsToXrp } from 'xrpl'
@@ -176,6 +176,7 @@ export function InitButton({
     isInitEnabled: boolean,
     toInit: InitializationProps
 }): React.JSX.Element {
+    const { useTranslate } = useThemeHooks();
     const { translate } = useTranslate()
 
     return (<div className="form-group">
