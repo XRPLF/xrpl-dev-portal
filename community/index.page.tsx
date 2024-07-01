@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import moment from "moment";
-import { Link } from '@redocly/theme/components/Link/Link';
+import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
@@ -163,10 +163,11 @@ const events = [
     date: "June 28 - 30, 2024",
     image: hackathon,
     start_date: "June 28, 2024",
-    end_date: "June 30, 2024",
+    end_date: "August 30, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
+console.log({ nearestDateDiff, nearestEvent });
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
@@ -197,7 +198,6 @@ const XrplEventsAndCarouselSection = ({ events }) => {
   };
 
   const { prevEvent, currentEvent, nextEvent } = updateCarousel();
-
   return (
     <>
       <section className="xrpl-events-section">
@@ -205,9 +205,15 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <div className="header">
             <h6 className="events-text">{translate("XRPL Events")}</h6>
             <h4 className="events-text">
-              {translate("community.index.event.h4part1", "Check out global events hosted ")}
+              {translate(
+                "community.index.event.h4part1",
+                "Check out global events hosted "
+              )}
               <br className="d-none-sm" />
-              {translate("community.index.event.h4part2", "by the XRPL community")}
+              {translate(
+                "community.index.event.h4part2",
+                "by the XRPL community"
+              )}
             </h4>
           </div>
           <p className="description">
@@ -223,25 +229,27 @@ const XrplEventsAndCarouselSection = ({ events }) => {
             {translate("View All Events")}
           </Link>
         </div>
-        <div className="upcoming-event" id="upcoming-events-section">
-          <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
-          <div id="days-count" className="days-count">
-            {nearestDateDiff}
+        {!!nearestEvent && (
+          <div className="upcoming-event" id="upcoming-events-section">
+            <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
+            <div id="days-count" className="days-count">
+              {nearestDateDiff}
+            </div>
+            <div className="days-word">{translate("days")}</div>
+            <div className="num-separator"></div>
+            <h5 id="upcoming-event-name" className="event-name">
+              {translate(nearestEvent?.name)}
+            </h5>
+            <p className="mb-2 event-details d-flex icon">
+              <span className="icon-location"></span>
+              <span id="upcoming-event-date">{nearestEvent?.date}</span>
+            </p>
+            <p className="event-location d-flex icon">
+              <span className="icon-date" id="upcoming-event-location"></span>
+              <span id="location-tag">{nearestEvent?.location}</span>
+            </p>
           </div>
-          <div className="days-word">{translate("days")}</div>
-          <div className="num-separator"></div>
-          <h5 id="upcoming-event-name" className="event-name">
-            {translate(nearestEvent.name)}
-          </h5>
-          <p className="mb-2 event-details d-flex icon">
-            <span className="icon-location"></span>
-            <span id="upcoming-event-date">{nearestEvent.date}</span>
-          </p>
-          <p className="event-location d-flex icon">
-            <span className="icon-date" id="upcoming-event-location"></span>
-            <span id="location-tag">{nearestEvent.location}</span>
-          </p>
-        </div>
+        )}
         <Link
           target="_blank"
           className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn"
@@ -357,7 +365,9 @@ const CommunityPage: React.FC = () => {
               {translate("community.index.h1part1", "A Global Blockchain")}
               <br className="until-sm" />
               {translate("community.index.h1part2", "Community of ")}
-              <span className="builders-wrap">{translate("community.index.h1part3", "Builders")}</span>
+              <span className="builders-wrap">
+                {translate("community.index.h1part3", "Builders")}
+              </span>
               <br className="until-sm" />
               {translate("community.index.h1part4", "and Innovators")}
             </h1>
@@ -674,7 +684,9 @@ const CommunityPage: React.FC = () => {
               {translate("Contribute to XRPL.org")}
             </h6>
             <h6 className="card-subtitle">
-              {translate("A Community-Driven Resource for All Things XRP Ledger")}
+              {translate(
+                "A Community-Driven Resource for All Things XRP Ledger"
+              )}
             </h6>
             <p className="card-description">
               {translate(
