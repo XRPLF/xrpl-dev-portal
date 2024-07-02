@@ -320,6 +320,64 @@ about.impact.code.ppart3: からブロックチェーンプロジェクトを見
 Connect: 繋がる
 about.impact.connect.ppart1: SNSで#XRPLCommunityを使って話題に加わりましょう。
 
+# docs/index.page.tsx
+XRP Ledger Developer Resources: XRP Ledger 開発者向けリソース
+Concepts: コンセプト
+'Learn the "what" and the "why" behind fundamental aspects of the XRP Ledger.': XRP Ledgerの基本的な機能の背景を学びましょう。
+Read the Docs: ドキュメントを読む
+Tutorials: チュートリアル
+Get step-by-step guidance to perform common tasks with the XRP Ledger.: XRP Ledgerで頻出するタスクのガイドラインをご覧ください。
+View Tutorials: チュートリアルを見る
+References: リファレンス
+Look up reference documentation for the XRP Ledger protocol, API methods, and more.: XRP LedgerプロトコルやAPIメソッドなどのリファレンスドキュメントをご覧ください。
+View References: リファレンスを見る
+Use Cases: ユースケース
+On-Chain Finance: オンチェーン金融
+Algorithmic Trading: アルゴリズム取引
+List XRP as an Exchange: 取引所へのXRPのリスト
+Payment Types: 多様なPayment
+Tokens: トークン
+Stablecoin Issuer: ステーブルコインの発行者
+NFT Marketplace: NFTマーケットプレイス
+Digital Artist: デジタルアーティスト
+Peer-to-Peer Payments: 個人間の直接決済
+Cross-currency payments: クロスカレンシー決済
+Getting Started: 始めましょう
+Introduction to the XRP Ledger: XRP Ledgerのご紹介
+An introduction to fundamental aspects of the XRP Ledger.: XRP Ledgerの基本的な機能の紹介
+Introduction: XRP Ledgerの基本
+Intro to XRP Ledger: XRP Ledger クイックスタート
+Accounts: アカウント
+Decentralized Exchange: 分散型取引所
+Tokenization: トークン化
+Watch Full Series: 全てのシリーズを見る
+Interact with the XRP Ledger in a language of your choice: お好みの言語でXRP Ledgerへアクセスできます
+Explore SDKs: SDKを探す
+Intermediate Learning Sources: 次の学習教材
+Advanced Payment Features: 高度な支払い機能
+Governance and the Amendment Process: ガバナンスとAmendmentプロセス
+Federated Sidechains: 連合サイドチェーン
+Explore, Test, Verify: 探索、テスト、検証
+Explore Dev Tools: 開発者ツールを探す
+Use these web-based tools to assist during all stages of development, from getting your first payment to testing your implementation for best practices.: 次のWebベースのツールを使用して、最初の支払いからベストプラクティスのための実装テストまで、開発のすべてのステージにわたりサポートします。
+Faucets: XRP Faucet
+Get credentials and test-XRP for XRP Ledger Testnet or Devnet.: XRP Ledger TestnetまたはDevnetでアカウントとテスト用XRPを取得しましょう。
+WebSocket Tool: Websocketツール
+Send sample requests and get responses from the rippled API.: サンプルリクエストを送信し、rippled APIからレスポンスを取得しましょう。
+XRP Ledger Explorer: XRP Ledgerエクスプローラ
+View validations of new ledger versions in real-time, chart the location of servers in the XRP Ledger.: 新しいレジャーバージョンの検証結果をリアルタイムで表示したり、XRP Ledgerサーバの位置をチャートで表示します。
+Transaction Sender: トランザクション送信ツール
+Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.: コードが様々なXRP Ledgerのトランザクションをどのように処理するか、テストネットを通じてテストしましょう。
+View All tools: 全てのツールを見る
+Browse By Recommended Pages: おすすめのページを見る
+Public API Methods: 公開APIメソッド
+Run a Validator: バリデータを運用
+Reserves: 準備金
+Transaction Types: トランザクションの種類
+Get Free Test XRP: テスト用XRPを入手
+Generate Testnet Credentials: テストネットのアカウントを作成 
+Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.: XRP Ledger Testnetに接続することで、現実の資産やMainnetユーザに影響を与えることなくXRP Ledger上に構築するアプリを開発・テストすることができます。
+
 # community/index.page.tsx
 XRPL Community: XRPLコミュニティ
 community.index.h1part1: 開発者とイノベーターによる
@@ -516,56 +574,19 @@ Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
 Open a pull Request: プルリクエストを作成する
 Full documentation index: 全ドキュメントの目次
 See Everything: 全てを見る
-XRP Ledger Developer Resources: XRP Ledger 開発者向けリソース
 rippled API Reference: rippled APIリファレンス
 XRP Faucet: XRP Faucet
 Getting Started with Python: Pythonを使ってみよう
 Websocket API Tool: Websocket APIツール
-XRP Ledger Explorer: XRP Ledgerエクスプローラ
-Advanced Payment Features: 高度な支払い機能
-Governance and the Amendment Process: ガバナンスとAmendmentプロセス
-Federated Sidechains: 連合サイドチェーン
-On-Chain Finance: オンチェーン金融
 Trade on the decentralized exchange: 分散型取引所でトレード
 Make payments: 支払いを実行
 Use specialized payment types: 高度な支払い機能
-Tokens: トークン
 Non-fungible Tokens: 非代替性トークン
 Issue a stablecoin: ステーブルコインを発行
 Assign an authorized minter: 認可Minterの割り当て
 Peer to peer payments: 直接支払い
-Cross-currency payments: クロスカレンシー決済
 Escrows: エスクロー
-Intro to XRP Ledger: XRP Ledger クイックスタート
-Accounts: アカウント
-Decentralized Exchange: 分散型取引所
-Tokenization: Tokenization
-Faucets: XRP Faucet
-Get credentials and test-XRP for XRP Ledger Testnet or Devnet.: XRP Ledger TestnetまたはDevnetでアカウントとテスト用XRPを取得しましょう
-WebSocket Tool: Websocketツール
-Send sample requests and get responses from the rippled API.: サンプルリクエストを送信し、rippled APIからレスポンスを取得します。
-Transaction Sender: トランザクション送信ツール
-Concepts: コンセプト
-Read the Docs: ドキュメントを読む
-Tutorials: チュートリアル
-Get step-by-step guidance to perform common tasks with the XRP Ledger.: XRP Ledgerで一般的な作業の手順をご覧ください。
-View Tutorials: チュートリアルを見る
-References: リファレンス
-View References: リファレンスを見る
-Use Cases: ユースケース
-Getting Started: 始めましょう
-Quickstart to XRP Ledger: XRP Ledger クイックスタート
-An introduction to fundamental aspects of the XRP Ledger.: XRP Ledgerの基本的な機能の紹介
 Get Started: 始めましょう
-Watch Full Series: 全てのシリーズを見る
-Interact with the XRP Ledger in a language of your choice: お好みの言語でXRP Ledgerへアクセスできます
-Explore SDKs: SDKを探す
-Intermediate Learning Sources: 次の学習教材
-Explore, Test, Verify: 探索、テスト、検証
-Explore Dev Tools: 開発者ツールを探索
-Browse By Recommended Pages: おすすめのページを見る
-Get Free Test XRP: テスト用XRPを入手
-Generate Testnet Credentials: テストネットのアカウントを作成 
 See full documentation index: 全ドキュメントの目次
 The XRPL Developer Summit: XRPL開発者サミット
 Save the Date: 日程を確認
