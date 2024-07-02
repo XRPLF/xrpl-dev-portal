@@ -4,7 +4,7 @@ import mapDark from "../static/js/impact/mapDark.json";
 import mapLight from "../static/js/impact/mapLight.json";
 import { useLottie } from "lottie-react";
 import { useThemeFromClassList } from "../@theme/helpers";
-import { Link } from '@portal/Link';
+import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
