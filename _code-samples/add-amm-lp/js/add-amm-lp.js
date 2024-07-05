@@ -109,6 +109,40 @@ if (response_vote.result.meta.TransactionResult == "tesSUCCESS") {
   console.error("Error sending transaction:", response_vote)
 }
 
+// OPTIONAL: Get LP tokens value
+console.log("------- Calculate value of my LP tokens -------")
+
+const lp_deposit_data = lp_deposit.result.meta.AffectedNodes
+
+let LPTokens = null;
+
+for (const node of lp_deposit_data) {
+  if (node.CreatedNode) {
+    LPTokens = Math.abs(node.CreatedNode.NewFields.Balance.value);
+    break;
+  }
+}
+
+const amm_info = (await client.request({
+  "command": "amm_info", 
+  "asset": {
+    "currency": "XRP"
+  },
+  "asset2": {
+    "currency": "TST",
+    "issuer": "rP9jPyP5kyvFRb6ZiRghAGw5u8SGAmU4bd"
+  }
+}))
+
+const my_share = LPTokens / amm_info.result.amm.lp_token.value
+
+const my_asset1 = (amm_info.result.amm.amount * my_share) / 1000000
+const my_asset2 = amm_info.result.amm.amount2.value * my_share
+
+console.log(`My ${LPTokens} LP tokens are worth:
+  XRP: ${my_asset1}
+  ${amm_info.result.amm.amount2.currency}: ${my_asset2}`)
+
 // Withdraw by redeeming LP tokens
 console.log("------- Pull some money out of AMM -------")
   
