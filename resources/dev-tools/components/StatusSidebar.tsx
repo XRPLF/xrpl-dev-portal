@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { clsx } from 'clsx'
 
 import { type Wallet } from 'xrpl'
@@ -16,6 +16,7 @@ export function StatusSidebar({
     connectionReady: boolean,
     txHistory: React.JSX.Element[],
 }) {
+    const { useTranslate } = useThemeHooks();
     const { translate } = useTranslate();
 
     return (<aside className="right-sidebar col-lg-6 order-lg-4">

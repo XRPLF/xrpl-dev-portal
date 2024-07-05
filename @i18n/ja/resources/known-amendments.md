@@ -17,15 +17,15 @@ labels:
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
-| [fixAMMOverflowOffer][]           | v2.1.1     | [投票中: 2024-03-27](https://xrpl.org/blog/2024/rippled-2.1.1.html "BADGE_80d0e0") |
-| [fixInnerObjTemplate][]           | v2.1.0     | [投票中: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
-| [fixNFTokenReserve][]             | v2.1.0     | [投票中: 2024-02-20](https://xrpl.org/blog/2024/rippled-2.1.0.html "BADGE_80d0e0") |
+| [fixAMMOverflowOffer][]           | v2.1.1     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/64144409D991726D108B89D79F9305438D61928A322EF1CD14DC3A5F24CE64BC "BADGE_GREEN") |
+| [fixInnerObjTemplate][]           | v2.1.0     | [有効: 2024-04-08](https://livenet.xrpl.org/transactions/EC67D9DF8D06067A76E8F8F43BC036B5E0267568F8D92624A658AC01A8186235 "BADGE_GREEN") |
+| [fixNFTokenReserve][]             | v2.1.0     | [有効: 2024-04-12](https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4 "BADGE_GREEN") |
 | [DID][]                           | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixDisallowIncomingV1][]         | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
-| [fixFillOrKill][]                 | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
+| [fixDisallowIncomingV1][]         | v2.0.0     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/50286B4B9C95331A48D3AD517E1FD3299308C6B696C85E096A73A445E9EB1BFB "BADGE_GREEN") |
+| [fixFillOrKill][]                 | v2.0.0     | [有効: 2024-04-11](https://livenet.xrpl.org/transactions/3209D6B66D375C23EEBE7C3DD3058B361427148D80C570B8E791D4C76555FA7B "BADGE_GREEN") |
 | [XChainBridge][]                  | v2.0.0     | [投票中: 2024-01-09](https://xrpl.org/blog/2024/rippled-2.0.0.html "BADGE_80d0e0") |
 | [AMM][]                           | v1.12.0    | [有効: 2024-03-22](https://livenet.xrpl.org/transactions/75F52BB86416717288999523063D54E24290EFEA2E99DF78E80A12BD1C8FAC99 "BADGE_GREEN") |
-| [XRPFees][]                       | v1.10.0    | [投票中: 2023-03-14](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
+| [XRPFees][]                       | v1.10.0    | [有効: 2023-03-25](https://xrpl.org/blog/2023/rippled-1.10.0.html "BADGE_80d0e0") |
 | [Clawback][]                      | v1.12.0    | [有効: 2024-02-08](https://livenet.xrpl.org/transactions/C6BCCE60DFA4430A1F9097D774EA49E6FEFB1B535BA0EF9170DA0F2D08CDDB11 "BADGE_GREEN") |
 | [fixReducedOffersV1][]            | v1.12.0    | [有効: 2023-11-24](https://livenet.xrpl.org/transactions/87723D9D01AFAD8E55C944D7D1598969A8FBD852FCACAE361A40CBF5D4CB3BB1 "BADGE_GREEN") |
 | [fixNFTokenRemint][]              | v1.11.0    | [有効: 2023-11-27](https://livenet.xrpl.org/transactions/CA4562711E4679FE9317DD767871E90A404C7A8B84FAFD35EC2CF0231F1F6DAF "BADGE_GREEN") |
@@ -112,110 +112,6 @@ labels:
 
 ## 既知のAmendmentsの詳細
 
-### fixAMMOverflowOffer
-
-[fixAMMOverflowOffer]: #fixammoverflowoffer
-
-| Amendment    | fixAMMOverflowOffer |
-|:-------------|:--------------|
-| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | はい |
-| Amendment前の機能は廃止? | いいえ |
-
-このAmendmentにより、決済エンジンにおけるAMMの大規模な合成オファーの不適切な処理が修正されます。このAmendmentは重大な修正であるため、ソースコードのデフォルトの投票はYESに設定されています。
-
-### fixInnerObjTemplate
-
-[fixInnerObjTemplate]: #fixinnerobjtemplate
-
-| Amendment    | fixInnerObjTemplate |
-|:-------------|:--------------|
-| Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-このamendmentにより、AMMの`sfVoteEntry`と`sfAuctionSlot`の内部オブジェクトの`sfTradingFee`フィールドと`sfDiscountedFee`フィールドにアクセスする際の問題が修正されました。
-
-現在、内部オブジェクトのテンプレートはオブジェクトの生成時に設定されません。オブジェクトに`soeDEFAULT`フィールドがあり、初期値にデフォルト値が設定されている場合、そのフィールドにアクセスすると、状況によっては`tefEXCEPTION`エラーが発生します。このamendmentにより、内部オブジェクトテンプレートを設定するための追加の真偽値引数を含む`STObject`コンストラクタのオーバーロードが追加されます。
-
-
-### fixNFTokenReserve
-
-[fixNFTokenReserve]: #fixnftokenreserve
-
-| Amendment    | fixNFTokenReserve |
-|:-------------|:--------------|
-| Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-このamendmentにより、`NFTokenAcceptOffer`トランザクタに`OwnerCount`が変更されたかどうかのチェックが追加されます。変更された場合、更新されたオブジェクト数に対して準備金要件が満たされているかどうかを追加でチェックします。
-
-
-### fixDisallowIncomingV1
-[fixDisallowIncomingV1]: #fixdisallowincomingv1
-
-| Amendment    | fixDisallowIncomingV1 |
-|:-------------|:--------------|
-| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-このamendmentにより、ユーザが自分のアカウントで`lsfDisallowIncomingTrustline`フラグを有効にした後にトラストラインを承認する際の問題が修正されます。
-
-この問題を再現するには
-
-1. 発行者が自分のアカウントに`asfRequireAuth`を設定します。
-2. ユーザが自分のアカウントに`asfDisallowIncomingTrustline`を設定します。
-3. ユーザは`SetTrust`トランザクションを発行者に送信します。
-
-4. 発行者はトラストラインを承認できません。
-
-このamendmentにより、発行者はトラストラインを認可できるようになりました。
-
-このamendmentは、[DisallowIncoming][] amendmentが有効でない場合、影響はありません。
-
-
-### fixFillOrKill
-[fixFillOrKill]: #fixfillorkill
-| Amendment    | fixFillOrKill |
-|:-------------|:--------------|
-| Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-このamendmentは`FlowCross`amendmentで導入された問題を修正します。`tfFillOrKill`フラグが設定され、`tfSell`フラグが設定されていないオファーは、オファーの取引レートがオーダーブックのレートよりも良いが、完全に一致しない場合に失敗します。
-
-このamendmentにより、決済エンジンはこのシナリオを適切に処理できるようになり、オファーの交差が可能になります。
-
-このamendmentは、[FlowCross][] amendmentが有効でない場合、影響はありません。
-
-### DID
-[DID]: #did
-
-| Amendment    | DID |
-|:-------------|:----|
-| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
-| ステータス     | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-[World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/)標準に準拠した分散アイデンティティ(DID)機能を追加します。DIDは、中央集権的な機関に依存せず、DID主体によって管理されるデジタルIDを提供します。
-
-次の新しいトランザクションを追加します。
-
-- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
-- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
-
-新しい`DID`レジャーエントリタイプを追加します。
-
-いくつかの新しいトランザクション結果コードを追加します。
-
 
 ### AMM
 [AMM]: #amm
@@ -299,38 +195,6 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 この修正の詳細については、[Clawback](../docs/concepts/tokens/fungible-tokens/clawing-back-tokens.md)をご覧ください。
 
 
-### XChainBridge
-[XChainBridge]: #xchainbridge
-
-| Amendment    | XChainBridge |
-|:-------------|:-----------------|
-| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
-| Status       | 投票中 |
-| デフォルトの投票(最新の安定版) | いいえ |
-| Amendment前の機能は廃止? | いいえ |
-
-クロスチェーンブリッジを追加し、メインネットとサイドチェーンなどのネットワーク間でのデジタル資産の移動を可能にします。
-
-次の新しいトランザクションを追加します
-
-- XChainAccountCreateCommit - 発行チェーン上でトランザクションを提出するために、Witnessサーバ用の新しいアカウントを作成します。
-- XChainAddAccountCreateAttestation - Witnessサーバが使用するアカウントが作成されたことを証明します。
-- XChainAddClaimAttestation - ロックチェーンで資産がロックされた証明書を提出します。
-- XChainClaim - 送信先チェーンで資産を請求します。
-- XChainCommit - ロックチェーン上の資産をロックします。
-- XChainCreateBridge - Bridgeレジャーオブジェクトを作成します。
-- XChainCreateClaimID - クロスチェーン送金に使用される新しいクロスチェーン請求IDを作成します。
-- XChainModifyBridge - ブリッジのパラメータを変更します。
-
-次の新しいレジャーエントリタイプを追加します
-
-- Bridge - XRP Ledgerを別のブロックチェーンと接続する単一のクロスチェーンブリッジ。
-- XChainOwnedClaimID - 送信元チェーン上の資金をロックまたはバーンする送信元チェーン上のアカウントの情報を含むクロスチェーン送金の値(ID)。
-- XChainOwnedCreateAccountClaimID - クロスチェーン送金でアカウントを作成する際の証明書。
-
-いくつかの新しいトランザクション結果コードを追加します。
-
-
 ### CryptoConditions
 [CryptoConditions]: #cryptoconditions
 
@@ -342,6 +206,28 @@ Clawbackはデフォルトでは無効になっています。Clawbackを使用�
 | Amendment前の機能は廃止? | はい |
 
 この修正は有効ですが、[SusPay](#suspay) Amendmentも有効でない限り、何の影響も及ぼしません。SusPayの修正は、[Escrow](#escrow)の修正に置き換えられたため、CryptoConditionsの修正は効力を持ちません。
+
+
+### DID
+[DID]: #did
+
+| Amendment    | DID |
+|:-------------|:----|
+| Amendment ID | DB432C3A09D9D5DFC7859F39AE5FF767ABC59AED0A9FB441E83B814D8946C109 |
+| ステータス     | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+[World Wide Web Consortium](https://www.w3.org/press-releases/2022/did-rec/)標準に準拠した分散アイデンティティ(DID)機能を追加します。DIDは、中央集権的な機関に依存せず、DID主体によって管理されるデジタルIDを提供します。
+
+次の新しいトランザクションを追加します。
+
+- DIDDelete - XRPLアカウントに関連付けられたDIDを削除します。
+- DIDSet - 新しいDIDを作成するか、既存のDIDを更新します。
+
+新しい`DID`レジャーエントリタイプを追加します。
+
+いくつかの新しいトランザクション結果コードを追加します。
 
 
 ## CryptoConditionsSuite
@@ -724,6 +610,20 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 この修正が適用された場合、これらの支払いは、代わりに[結果コード`temBAD_PATH_LOOP`](../docs/references/protocol/transactions/transaction-results/tem-codes.md)で失敗します。
 
 
+### fixAMMOverflowOffer
+
+[fixAMMOverflowOffer]: #fixammoverflowoffer
+
+| Amendment    | fixAMMOverflowOffer |
+|:-------------|:--------------|
+| Amendment ID |  12523DF04B553A0B1AD74F42DDB741DE8DC06A03FC089A0EF197E2A87F1D8107 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | はい |
+| Amendment前の機能は廃止? | いいえ |
+
+このAmendmentにより、決済エンジンにおけるAMMの大規模な合成オファーの不適切な処理が修正されます。このAmendmentは重大な修正であるため、ソースコードのデフォルトの投票はYESに設定されています。
+
+
 ### fixAmendmentMajorityCalc
 [fixAmendmentMajorityCalc]: #fixamendmentmajoritycalc
 
@@ -752,6 +652,63 @@ fix1623 Amendmentは、固定金額の[CheckCashトランザクション][]（`A
 Checksトランザクションがアカウントのメタデータに影響を及ぼす方法を変更し、Checksが受信アカウントの[アカウント](../docs/concepts/accounts/index.md)履歴に適切に追加されるようにします。（具体的には、受信アカウントの[AccountRootオブジェクト](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md)の`PreviousTxnID`フィールドと`PreviousTxnLedgerSeq`フィールドを更新します。これは、アカウントと、アカウントが所有するオブジェクトに影響を及ぼしたトランザクションの「スレッド」を追跡するために使用できます。）
 
 この修正を適用しない場合、Checksトランザクション（[CheckCreate][]、[CheckCash][]、および[CheckCancel][]）は送信者のアカウント履歴のみを更新します。この修正を適用した場合、これらのトランザクションは、送信アカウントにも受信アカウントにも影響します。この修正は、[Checks Amendment](#checks)も有効でないかぎり効果がありません。
+
+
+### fixDisallowIncomingV1
+[fixDisallowIncomingV1]: #fixdisallowincomingv1
+
+| Amendment    | fixDisallowIncomingV1 |
+|:-------------|:--------------|
+| Amendment ID | 15D61F0C6DB6A2F86BCF96F1E2444FEC54E705923339EC175BD3E517C8B3FF91 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+このamendmentにより、ユーザが自分のアカウントで`lsfDisallowIncomingTrustline`フラグを有効にした後にトラストラインを承認する際の問題が修正されます。
+
+この問題を再現するには
+
+1. 発行者が自分のアカウントに`asfRequireAuth`を設定します。
+2. ユーザが自分のアカウントに`asfDisallowIncomingTrustline`を設定します。
+3. ユーザは`SetTrust`トランザクションを発行者に送信します。
+
+4. 発行者はトラストラインを承認できません。
+
+このamendmentにより、発行者はトラストラインを認可できるようになりました。
+
+このamendmentは、[DisallowIncoming][] amendmentが有効でない場合、影響はありません。
+
+
+### fixFillOrKill
+[fixFillOrKill]: #fixfillorkill
+| Amendment    | fixFillOrKill |
+|:-------------|:--------------|
+| Amendment ID | 3318EA0CF0755AF15DAC19F2B5C5BCBFF4B78BDD57609ACCAABE2C41309B051A |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+このamendmentは`FlowCross`amendmentで導入された問題を修正します。`tfFillOrKill`フラグが設定され、`tfSell`フラグが設定されていないオファーは、オファーの取引レートがオーダーブックのレートよりも良いが、完全に一致しない場合に失敗します。
+
+このamendmentにより、決済エンジンはこのシナリオを適切に処理できるようになり、オファーの交差が可能になります。
+
+このamendmentは、[FlowCross][] amendmentが有効でない場合、影響はありません。
+
+
+### fixInnerObjTemplate
+
+[fixInnerObjTemplate]: #fixinnerobjtemplate
+
+| Amendment    | fixInnerObjTemplate |
+|:-------------|:--------------|
+| Amendment ID | C393B3AEEBF575E475F0C60D5E4241B2070CC4D0EB6C4846B1A07508FAEFC485 |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+このamendmentにより、AMMの`sfVoteEntry`と`sfAuctionSlot`の内部オブジェクトの`sfTradingFee`フィールドと`sfDiscountedFee`フィールドにアクセスする際の問題が修正されました。
+
+現在、内部オブジェクトのテンプレートはオブジェクトの生成時に設定されません。オブジェクトに`soeDEFAULT`フィールドがあり、初期値にデフォルト値が設定されている場合、そのフィールドにアクセスすると、状況によっては`tefEXCEPTION`エラーが発生します。このamendmentにより、内部オブジェクトテンプレートを設定するための追加の真偽値引数を含む`STObject`コンストラクタのオーバーロードが追加されます。
 
 
 ### fixMasterKeyAsRegularKey
@@ -818,6 +775,22 @@ Checksトランザクションがアカウントのメタデータに影響を�
 - `FirstNFTSequence`+`MintedNFTokens`（その後、`MintedNFTokens`は1ずつ増加）として、新しく作成されたNFTのシーケンスを計算します。
 
 このamendmentにより、アカウント削除の制限も導入されます。アカウントは、`FirstNFTSequence` + `MintedNFTokens` + 256が現在のレジャーシーケンスより小さい場合にのみ削除できます（256はアカウント削除のヒューリスティックな制限として選択されたもので、アカウント削除制約にすでに存在します）。この制約がなければ、特定の条件下で同一のNFTが再ミントされる可能性があります。
+
+**注意:** これは、トークンをミントするためにローカルでNFTokenIDを計算しているプロジェクトやツールにとっては **破壊的な変更** です。NFTokenIDを計算するコードがある場合は、新しい計算式に合わせて更新する必要があります。後方互換性を保ちながらこれを行う方法の例については、こちらをご覧ください。[JavaScriptでのよく知られたリファレンス実装](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).
+
+
+### fixNFTokenReserve
+
+[fixNFTokenReserve]: #fixnftokenreserve
+
+| Amendment    | fixNFTokenReserve |
+|:-------------|:--------------|
+| Amendment ID | 03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C |
+| ステータス     | 有効 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+このamendmentにより、`NFTokenAcceptOffer`トランザクタに`OwnerCount`が変更されたかどうかのチェックが追加されます。変更された場合、更新されたオブジェクト数に対して準備金要件が満たされているかどうかを追加でチェックします。
 
 
 ### fixNonFungibleTokensV1_2
@@ -1370,6 +1343,38 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 [承認されたトラストライン](../docs/concepts/tokens/fungible-tokens/authorized-trust-lines.md)を使用する場合に、会計関係の事前承認（ゼロバランストラストライン）を許可します。
 
 この修正が適用されれば、[`tfSetfAuth`を有効にした](../docs/references/protocol/transactions/types/trustset.md#trustsetのフラグ)`TrustSet`トランザクションにおいて、`RippleState`ノードの他のすべての値をデフォルト状態にしたままでも、新しい[`RippleState`レジャーオブジェクト](../docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md)を作成できます。新しい`RippleState`ノードでは、トランザクションの送信者が低いノードと見なされるか高いノードと見なされるかに応じて、[`lsfLowAuth`フラグまたは`lsfHighAuth`フラグ](../docs/references/protocol/ledger-data/ledger-entry-types/ripplestate.md#ripplestateのフラグ)が有効になります。トランザクションの送信者は、[asfRequireAuthフラグを有効](../docs/references/protocol/transactions/types/accountset.md#accountsetのフラグ)にして[AccountSetトランザクション](../docs/references/protocol/transactions/types/accountset.md)を送信することで、事前に[`lsfRequireAuth`](../docs/references/protocol/ledger-data/ledger-entry-types/accountroot.md#accountrootのフラグ)を有効にしておく必要があります。
+
+
+### XChainBridge
+[XChainBridge]: #xchainbridge
+
+| Amendment    | XChainBridge |
+|:-------------|:-----------------|
+| Amendment ID | C98D98EE9616ACD36E81FDEB8D41D349BF5F1B41DD64A0ABC1FE9AA5EA267E9C |
+| Status       | 投票中 |
+| デフォルトの投票(最新の安定版) | いいえ |
+| Amendment前の機能は廃止? | いいえ |
+
+クロスチェーンブリッジを追加し、メインネットとサイドチェーンなどのネットワーク間でのデジタル資産の移動を可能にします。
+
+次の新しいトランザクションを追加します
+
+- XChainAccountCreateCommit - 発行チェーン上でトランザクションを提出するために、Witnessサーバ用の新しいアカウントを作成します。
+- XChainAddAccountCreateAttestation - Witnessサーバが使用するアカウントが作成されたことを証明します。
+- XChainAddClaimAttestation - ロックチェーンで資産がロックされた証明書を提出します。
+- XChainClaim - 送信先チェーンで資産を請求します。
+- XChainCommit - ロックチェーン上の資産をロックします。
+- XChainCreateBridge - Bridgeレジャーオブジェクトを作成します。
+- XChainCreateClaimID - クロスチェーン送金に使用される新しいクロスチェーン請求IDを作成します。
+- XChainModifyBridge - ブリッジのパラメータを変更します。
+
+次の新しいレジャーエントリタイプを追加します
+
+- Bridge - XRP Ledgerを別のブロックチェーンと接続する単一のクロスチェーンブリッジ。
+- XChainOwnedClaimID - 送信元チェーン上の資金をロックまたはバーンする送信元チェーン上のアカウントの情報を含むクロスチェーン送金の値(ID)。
+- XChainOwnedCreateAccountClaimID - クロスチェーン送金でアカウントを作成する際の証明書。
+
+いくつかの新しいトランザクション結果コードを追加します。
 
 
 ### XChainBridge

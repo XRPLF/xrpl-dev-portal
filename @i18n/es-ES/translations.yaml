@@ -1,0 +1,306 @@
+theme.navbar.about: Acerca de
+theme.navbar.docs: Docs
+theme.navbar.resources: Recursos
+theme.navbar.community: Comunidad
+theme.footer.about: Acerca de
+theme.footer.docs: Docs
+theme.footer.resources: Recursos
+theme.footer.community: Comunidad
+sidebar.docs: Docs
+sidebar.docs.tutorials: Tutoriales
+sidebar.docs.references: Referencias
+sidebars.resources: Recursos
+sidebar.resources.codesamples: Ejemplos de código
+topnav.docs.title: Documentación
+topnav.docs.description: Sumérgete en la tecnología XRP Ledger y empieza a integrar
+topnav.resources.current-status: Estado actual
+topnav.resources.explorer: Explorador del ledger
+topnav.community.title: Contribuye a la comunidad XRPL
+topnav.community.description: Únete a la conversación
+Open Source.: Código abierto
+Jump to top of page: Saltar arriba
+Edit page: Editar página
+Search: Buscar
+Search site...: Buscar sitio...
+Search for articles, training, and code samples...: Buscar artículos, entrenamientos, ejemplos de código...
+Become an XRP Ledger Campus Ambassador: Conviertete en un Embajador de Campus XRP Ledger
+Join the Student Cohort: Únete al grupo de estudiantes
+XRPL Campus Ambassadors: Embajadores de Campus XRPL
+Current Students: Estudiantes actuales
+Why become an XRPL Campus Ambassador?: ¿Por qué convertirse en un Embajador de Campus?
+Benefits: Beneficios
+Join a global cohort of students empowering others to build on the XRPL.: Únete al grupo global de estudiantes animando a otros a construir en el XRPL.
+Exclusive Opportunities: Oportunidades exclusivasa
+Education: Educación
+Tutorials and workshops from leading XRPL and blockchain developers: Tutoriales y workshops de desarrolladores líderes de la blockchain XRPL
+Swag: Estilo
+New XRPL swag for Ambassadors and swag to share with other students: Nuevo estilo XRPL para embajadores y estilo para compartir con otros estudiantes
+Mentorship: Mentorías
+Career Acceleration: Aceleración de tu carrera
+Stipend: Paga
+Should You Apply?: ¿Debería aplicar?
+Eligibility for XRPL Campus Ambassadors: Requisitos para embajadores de campus XRPL
+A Leader: Un lider
+Active: Activo
+Curious: Curioso
+Eager to learn more about technical blockchain topics and the XRPL: Con ganas de aprender más sobre los temas técnicos de blockchain y XRPL
+Passionate: Apasionado
+Creative: Creativo
+Ability to think outside the box to grow the XRPL student community: Habilidad para pensar de forma distinta para hacer crecer la comunidad de estudiantes del XRPL
+Process to become a Campus Ambassador: Proceso para convertirse en embajador de campus
+How it Works: Cómo funciona
+Apply now to become an XRPL Campus Ambassador.: Aplica ahora para convertirte en embajador de campus XRPL
+Apply: Aplicar
+Submit an application to be considered for the Campus Ambassador program.: Envía una aplicación para ser considerado por el programa de embajador del campus.
+Interview: Entrevista
+Join: Únete
+Learn: Aprender
+Apply for Fall 2023: Aplicar para otoño de 2023
+Join a global cohort of Student Ambassadors: Únete al grupo global de estudiantes embajadores
+Global Community: Comunidad global
+Stay connected to the XRPL Campus Ambassadors: Mantente en contacto con embajadores de campus XRPL
+Connect: Conecta
+MeetUp: Quedadas
+Attend an XRPL Meetup in your local area: Acude a quedadas XRPL en tu zona
+Dev.to Blog: Blog Dev.to
+Read more about the activity of the XRPL Ambassadors: Lee más sobre la actividad de embajadores XRPL
+Join the conversation on the XRPL Developer Discord: Únete a la conversación del Discord de desarrolladores XRPL
+Start Building with Example Code: Empiza a construir con ejemplos de código
+Code Samples: Ejemplos de código
+Browse sample code for building common use cases on the XRP Ledger: Navega entre los códigos de ejemplo para construir casos de uso comunes en el XRP Ledger
+Contribute Code Samples: Contribuye con ejemplos de código
+Help the XRPL community by submitting your<br> own code samples: Ayuda a la comunidad XRPL añadiendo tus propios ejemplos de código
+The XRPL Community: La comunidad XRPL
+Find the community on the platforms below: Encuentra a la comunidad en la plataforma de abajo.
+Join the Conversation: Entra en la conversación
+Run an XRP Ledger network node: Ejecuta un nodo de la red XRP Ledger
+Contribute to Consensus: Contribuye al consenso
+Apply for funding to build your XRPL project: Aplica para financiar la construcción de tu proyecto XRPL
+Awarded in a single grant: Premiado en una financiación
+Distributed to grant recipients: Distribuido entre los recibidores de la financiación
+Open-source projects funded : Proyectos de código abierto financiados
+Learn More: Leer más
+Showcase your XRPL project, application or product: Muestra tu proyecto XRPL, aplicación o producto
+XRPL Community Spotlight: Destacado en la comunidad XRPL
+Submit Your Projects: Envía tus proyectos
+Read the Blog: Leer el blog
+Check out global events across the XRPL community: Consulta eventos globales alrededor de la comunidad XRPL
+XRPL Events: Eventos XRPL
+View All Events: Ver todos los eventos
+Discover your next career opportunity in the XRPL community: Descrube tu próxima oportunidad de carrera en la comunidad XRPL
+Review guidelines for using XRPL design assets: Revisa las guías para usar los activos de diseño XRPL
+XRPL Assets: Activos XRPL
+Download the PDF and Assets: Descargar el PDF y los activos
+A community-driven resource for all things XRPL.org: XRPとXRP Un recurso para todas las cosas dirigido por la comunidad XRPL.org
+Contribute to XRPL.org: Contribuye con XRPL.org
+Read Contributor Guidelines: Leer la guía de contribución
+Dev Tools: Herramientas de desarrollo
+Explorers: Exploradores
+API Access: Acceso a APIs
+Other: Otro
+Have an Idea For a Tool?: ¿Tienes una idea para una herramienta?
+Open a pull Request: Abre un pull request
+Full documentation index: Índice completo de la documentación
+See Everything: Ver todo
+XRP Ledger Developer Resources: Recursos para desarrolladores XRPL
+Documentation: Documentación
+rippled API Reference: API rippled de referencia
+XRP Faucet: Grifo XRP
+Getting Started with Python: Comienza con Python
+Websocket API Tool: Herramienta API Websocket
+XRP Ledger Explorer: Explorador XRP Ledger
+Advanced Payment Features: Características de pago avanzadas
+Governance and the Amendment Process: Gobierno y proceso de enmiendas
+Federated Sidechains: Sidechains federadas
+On-Chain Finance: Finanzas On-Chain
+Trade on the decentralized exchange: Comercia en el exchange descentralizado
+Make payments: Haz pagos
+Use specialized payment types: Utiliza tipos de pago especializados
+Tokens: Tokens
+Non-fungible Tokens: Tokens No Fungibles
+Issue a stablecoin: Emitir una stablecoin
+Assign an authorized minter: Asignar un acuñador autorizado
+Payments: Pagos
+Peer to peer payments: Pagos Peer to peer
+Cross-currency payments: Pagos entre divisas
+Escrows: Escrows
+Intro to XRP Ledger: Intro to XRP Ledger
+Accounts: Cuentas
+Decentralized Exchange: Exchange descentralizado
+Tokenization: Tokenización
+Faucets: Grifo XRP
+Get credentials and test-XRP for XRP Ledger Testnet or Devnet.: Consigue credenciales y XRP de prueba para la Testnet o Devnet de XRP Ledger
+WebSocket Tool: Herramienta Websocket
+Send sample requests and get responses from the rippled API.: Envía peticiones de ejemplo y recibe respuestas desde la API rippled
+Transaction Sender: Enviador de transacciones
+Concepts: Conceptos
+Read the Docs: Leer los documentos
+Tutorials: Tutoriales
+Get step-by-step guidance to perform common tasks with the XRP Ledger.: Consigue guías paso a paso para tareas comunes con el XRP Ledger
+View Tutorials: Ver tutoriales
+References: Referencias
+View References: Ver referencias
+Use Cases: Casos de uso
+Getting Started: Empezar
+Quickstart to XRP Ledger: Inicio rápido de XRP Ledger
+An introduction to fundamental aspects of the XRP Ledger.: Una introducción a los aspectos fundamentales del XRP Ledger
+Get Started: Empieza
+Watch Full Series: Ver serie completa
+Interact with the XRP Ledger in a language of your choice: Interactua con el XRP Ledger en un lenguaje de tu elección
+Explore SDKs: Explora SDKs
+Intermediate Learning Sources: Fuentes de aprendizaje intermedio
+Explore, Test, Verify: Explora, prueba, verifica
+Explore Dev Tools: Explora las herramientas de desarrollo
+Browse By Recommended Pages: Explora entre las páginas recomendadas
+Get Free Test XRP: Consigue XRP de prueba gratis
+Generate Testnet Credentials: Genera credenciales de Testnet 
+See full documentation index: Consulta el índice de la documentación completa
+Find the XRPL Community Around the World: Encuentra a la comunidad XRPL alrededor del mundo
+Events: Eventos
+The XRPL Developer Summit: El encuentro de desarrolladores XRPL
+Save the Date: Guarda la fecha
+Upcoming Events: Eventos próximos
+Explore past community-hosted events: Explora eventos pasados organizados por la comunidad
+Past Events: Eventos anteriores
+Sorry, this page is not available in your language.: Lo siento, esta página no está disponible en tu idioma
+XRPL Developer Funding Programs: Programas de financiación de desarrolladores XRPL
+Project Resources: Recursos para proyectos
+Explore funding opportunities for developers and teams: Explora oportunidades de financiación para desarrolladores y equipos
+Funding Overview: Vistazo de financiaciones
+XRPL Hackathons: Hackatones XRPL
+Join an Event: Únete a un evento
+See Upcoming Events: Consulta eventos próximos
+Best for: Lo mejor para
+Software developers and teams building directly on the XRP Ledger: Desarrolladores y equipos de software construyen directamente en el XRP Ledger
+Required: Necesario
+Some coding experience: Algo de experiencia
+Level: Nivel
+XRPL beginner to advanced developers: Desarrolladores de iniciados a avanzados
+Funding Levels: Niveles de financiación
+Prize money and awards: Dinero y premios
+Fund Your Project: Financia tu proyecto
+Past awardees include: Los premios pasados incluyen
+Visit XRPL Grants: Visita las financiaciones de XRPL
+XRPL intermediate to advanced developers: Desarrolladores de nivel intermedio a avanzados
+$10,000 - $200,000: 10.000$ ~ 200.000$
+XRPL Accelerator: Acelerador XRPL
+Advance your project: Avanza tu proyecto
+View XRPL Accelerator: Consulta el acelerador XRPL
+$50,000 (grant) + pitch for venture funding: 50.000$(premio) más pitch para venture funding
+Provide a Better Alternative to Bitcoin: Ofrece una mejor alternativa a Bitcoin
+XRPL's Origin: Origen de XRPL
+XRPL Launches its Native Currency, XRP: XRPL lanza su divisa nativa, XRP
+OpenCoin Rebranded to Ripple Labs: OpenCoin renombrada como Ripple Labs
+XRPL Foundation Launched: Se lanza XRPL Foundation
+The Blockchain<br class=\until-sm\/> Built for Business: La blockchain<br class=\until-sm\/> construida para negocios
+XRPL | XRP Ledger:
+Start Building: Empieza a construir
+Why developers choose the XRP Ledger: ¿Por qué los desarrolladores eligen el XRP Ledger?
+Public and Decentralized: Público y descentralizado
+Open source, open to anyone to build on, maintained by the community: Código abierto, abierto a cualquiera que quiera construir, mantenido por la comunidad
+Streamlined Development: Desarrollo simplificado
+Intentional innovations, tools and documentation reduce time to market: Las innovaciones, herramientas y documentación intencionales reducen el tiempo de comercialización
+High Performance: Alto rendimiento
+Thousands of transactions settled in seconds: Miles de transacciones realizadas en segundos
+Low Cost: Bajo coste
+Motivated Community: Comunidad motivada
+Proven Reliability: Fiabilidad probada
+Powerful Features: Funcionalidades potentes
+Cross-Currency Payments: Pagos entre divisas
+Payment <br class='until-sm'/>Channels: Canales de<br class='until-sm'/>Pago
+Batched micropayments with unlimited speed, secured with XRP: Micropagos en lotes con velocidad ilimitada, segurados con XRP
+Multi-Signing: Multi-firma
+Flexible options for custody and security of on-ledger accounts: Opciones flexibles para la custodia y seguridad de cuentas en el ledger
+Choose a path, and bring your project to life on the XRP Ledger: Elige un camino, y haz tu proyecto realidad en el XRP Ledger
+Where to Start: Dónde empezar
+Quickstart: Inicio rápido
+Access everything you need to get started working with the XRPL: Accede a todo lo que necesitas para empezar a trabajar con XRPL
+Guided Tutorials: Tutoriales guiados
+Follow step-by-step guides for frequent tasks: Sigue las guías paso a paso para tareas frecuentes
+XRPL Fundamentals: Fundamentos del XRPL
+Read about the XRPL’s foundational concepts: Lee sobre los conceptos fundamentales del XRPL
+Choose a Language: Elige un idioma
+Get Inspired: Inspírate
+See what your peers have built on the XRPL: Observa lo que otros compañeros han construido en el XRPL
+Our Shared Vision for XRPL’s Future: Nuestra visión compartida del futuro del XRPL
+Preview New Features: Previsualiza nuevas funcionalidades
+In Development: En desarrollo
+Smart Contracts: Smart Contracts
+Enabled: Activado
+Non-Fungible Tokens: Tokens no fungibles
+Join the Community <br class=\until-sm\/> at XRPL.org: Únete a la comunidad<br class=\until-sm\/> en XRPL.org
+Get Involved: Únete
+Today’s Value, Tomorrow’s Vision: El valor de hoy, la visión del mañana
+XRPL Today, XRPL Tomorrow: XRPL hoy, XRPL mañana
+Building for the Future: Construyendo por el futuro
+Consensus protocol is efficient and sustainable: El protocolo de consenso es eficiente y sostenible
+A Sustainable Future: Un futuro sostenible
+What makes the XRPL sustainable?: ¿Qué hace al XRPL sostenible?
+Featured companies & projects running on the XRP Ledger.: Compañías y proyectos destacados en el XRP Ledger
+Sustainable Projects: Proyectos sostenibles
+See More: Ver más
+How can businesses and developers connect and contribute?: ¿Cómo pueden los negocios y desarrolladores conectar y contribuir?
+Join the Community: Únete a la comunidad
+Blog: Blog
+Code: Código
+References and APIs: Referencia y APIs
+Everything You Need to Know: Todo lo que necesitas saber
+XRP Ledger address, transaction ID, or ledger index: Dirección XRP Ledger, ID de transacción, o índice del ledger
+Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>.: Prueba una cuenta como <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>
+Get info: Consigue información
+Result: Resultado
+Permalink: Permalink
+Explorer: Explorador
+expand all: Ampliar todo
+collapse all: Reducir todo
+(last 20): (últimos 20)
+expand tx: Ampliar tx
+next 20: Siguientes 20
+prev 20: Previos 20
+Status: Estado
+Not Connected: No conectado
+Transaction History: Historial de transacciones
+Initialize: Inicializar
+Set up the necessary Testnet XRP addresses to send test payments.: Prepara lo necesario para direcciones XRP de Testnet y enviar pagos de prueba
+Destination Address: Dirección de destino
+Send transactions to this XRP Testnet address: Envía transacciones a esta dirección XRP Testnet
+Send Transaction: Envía una transacción
+(loading): (Cargando)
+Send XRP Payment: Envía un pago XRP
+drops of XRP: XRP drops
+Send a <a href=\send-xrp.html\>simple XRP-to-XRP payment</a>.: Envía un <a href=\send-xrp.html\>pago XRP-XRP sencillo</a>.
+(Getting ready to send partial payments): (Preparando para enviar pagos parciales)
+Send Partial Payment: Envía pago parcial
+Create Escrow: Crear un Escrow
+seconds: segundos
+Finish automatically: Finalizar automáticamente
+(Waiting to release Escrow when it's ready): （Esperando a la liberación del Escrow cuando esté listo)
+Create Payment Channel: Crear canal de pago
+Send Issued Currency: Envia divisas emitidas
+Trust for: Confianza para
+Security: Seguridad
+Release Notes: Notas de la versión
+Custody: Custodia
+Infrastructure: Infraestructura 
+Carbon Markets/Sustainability: Mercados de Carbono/Sostenibilidad
+Developer Tooling: Herramientas de desarrollo
+Gaming: Gaming
+Wallet: Cartera
+Ledger City is a crypto real estate game powered by the XRP Ledger.: Ledger City es un juego inmobiliario el XRP Ledger
+Interoperability: Interoperabilidad
+Ripple's CBDC Platform: CBDC Platform de Ripple
+Ripple's On-Demand Liquidity: On-Demand Liquidity de Ripple
+Exchanges: Exchanges
+XRPL Rosetta explores fiat data on XRPL through visualization.: XRPL Rosetta explora datos de dinero fiat en el XRPL a través de la visualización
+XRPL.org's Ledger Explorer is a block explorer of the XRP Ledger.: El explorador de ledgers de XRPL.org es el explorador de bloques para el XRP Ledger
+Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger.: Xumm Wallet es una cartera sin custodia con superpoderes para el XRP Ledger
+Web Monetization: Monetización web
+Sustainability: Sostenibilidad
+CBDCs: CBDC
+Cancel: Cancelar
+Featured Categories: Categorías destacadas
+Other Categories: Otras categorías
+Proven Powerful for Innovation: Comprobadamente potente para la innovación
+XRPL Use Cases: Casos de uso XRPL
+Building businesses and creating new value: Construyendo negocios y nuevo valor
+XRPL Ecosystem: Ecosistema XRPL

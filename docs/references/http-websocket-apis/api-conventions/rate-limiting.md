@@ -14,7 +14,7 @@ The `rippled` server limits the rate at which API clients can make requests on p
 
 When a client is approaching the rate limit, the server adds the field `"warning": "load"` at the top level of an [API response](response-formatting.md). This warning is not added to every response, but the server may send several such warnings before it disconnects a client.
 
-If a client goes past the rate limit, the server disconnects that client and does not serve further requests from the client's API address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.
+If a client exceeds the rate limit, the server disconnects that client and does not serve further requests from the client's IP address for a while. The WebSocket and JSON-RPC APIs use different disconnect messages.
 
 ## WebSocket API Disconnect Message
 

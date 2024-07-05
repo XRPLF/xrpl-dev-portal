@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import axios, { AxiosError } from "axios";
 import { parse } from "smol-toml";
 import { getListEntries } from "./ListTomlFields";
@@ -25,7 +25,8 @@ async function validateAndDisplayFields(
     domainToVerify?: string,
     filterDisplayedFieldsTo?: Function): Promise<boolean> {
 
-    const { translate } = useTranslate()
+    const { useTranslate } = useThemeHooks();
+    const { translate } = useTranslate();
 
     // If there's no data, do nothing
     if(!fields) {

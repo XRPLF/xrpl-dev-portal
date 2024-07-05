@@ -3,6 +3,8 @@ html: error-formatting.html
 parent: api-conventions.html
 seo:
     description: WebSocket、JSON-RPC、コマンドラインインターフェイスのエラーフォーマットと汎用エラーコードです。
+labels:
+  - 開発
 ---
 # エラーのフォーマット
 
@@ -16,7 +18,7 @@ seo:
 {% tabs %}
 
 {% tab label="WebSocket" %}
-```
+```json
 {
   "id": 3,
   "status": "error",
@@ -34,8 +36,9 @@ seo:
 {% /tab %}
 
 {% tab label="JSON-RPC" %}
-```
+```json
 HTTP Status: 200 OK
+
 {
     "result": {
         "error": "ledgerIndexMalformed",
@@ -52,7 +55,7 @@ HTTP Status: 200 OK
 {% /tab %}
 
 {% tab label="コマンドライン" %}
-```
+```json
 {
     "result": {
         "error": "ledgerIndexMalformed",
@@ -73,18 +76,19 @@ HTTP Status: 200 OK
 
 ## WebSocketフォーマット
 
-| `Field`   | 型       | 説明                                                  |
-|:----------|:---------|:------------------------------------------------------|
-| `id` | （場合により異なる） | このレスポンスのリクエスト元となったWeb Socketリクエストに指定されていたID |
-| `status` | 文字列 | `"error"`: リクエストが原因でエラーが発生した場合 |
-| `type` | 文字列 | 通常は`"response"`。これは、コマンドに対し正常にレスポンスしたことを示します。 |
-| `error` | 文字列 | 発生したエラータイプの一意のコード。 |
-| `request` | オブジェクト | このエラーが発生したリクエストのコピー（JSONフォーマット）。**注意:** リクエストにアカウントの機密情報が含まれている場合、ここにコピーされます。 |
+| `Field`       | 型    | 説明                                                  |
+|:--------------|:------|:------------------------------------------------------|
+| `id`          | (多様) | このレスポンスのリクエスト元となったWeb Socketリクエストに指定されていたID |
+| `status`      | 文字列 | `"error"`: リクエストが原因でエラーが発生した場合 |
+| `type`        | 文字列 | 通常は`"response"`。これは、コマンドに対し正常にレスポンスしたことを示します。 |
+| `error`       | 文字列 | 発生したエラータイプの一意のコード。 |
+| `request`     | オブジェクト | このエラーが発生したリクエストのコピー（JSONフォーマット）。**注意:** リクエストにアカウントの機密情報が含まれている場合、ここにコピーされます。 |
+| `api_version` | 数値   | _(省略可)_ リクエストで`api_version`を指定していた場合は、その値。 |
 
 
 ## JSON-RPCフォーマット
 
-一部のJSON-RPCリクエストは、HTTPレイヤーでエラーコードでレスポンスします。この場合、レスポンスはレスポンス本文にプレーンテキストで記述されます。たとえば`method`パラメーターでコマンドを指定し忘れた場合、レスポンスは次のようになります。
+一部のJSON-RPCリクエストは、HTTPレイヤーでエラーコードでレスポンスします。この場合、レスポンスはレスポンス本文にプレーンテキストで記述されます。たとえば`method`パラメータでコマンドを指定し忘れた場合、レスポンスは次のようになります。
 
 ```
 HTTP Status: 400 Bad Request
@@ -105,14 +109,19 @@ HTTPステータスコード200 OKが返されるその他のエラーの場合�
 
 すべてのメソッドは、以下のいずれかの値の`error`コードを返す可能性があります。
 
-* `unknownCmd` - リクエストに、`rippled`サーバが認識する[コマンド](../index.md)が含まれていません。
-* `jsonInvalid` -（WebSocketのみ）リクエストは適切なJSONオブジェクトではありません。
-  * この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
-* `missingCommand` -（WebSocketのみ）リクエストに`command`フィールドが指定されていませんでした。
-  * この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
-* `tooBusy` - サーバの負荷が高すぎるため、現在このコマンドを実行できません。管理者として接続している場合は、通常このエラーが返されることはありません。
-* `noNetwork` - サーバとXRP Ledgerピアツーピアネットワークのその他の部分との接続で問題が発生しています（サーバがスタンドアロンモードで実行されていません）。
-* `noCurrent` - 高い負荷、ネットワークの問題、バリデータ障害、誤った構成、またはその他の問題が原因で、サーバが現行のレジャーを認識できません。
-* `noClosed` - サーバに決済済みレジャーがありません。通常、このエラーは起動が完了していないことが原因で発生します。
-* `wsTextRequired` -（WebSocketのみ）リクエストの[opcode](https://tools.ietf.org/html/rfc6455#section-5.2)がテキストではありません。
-* `amendmentBlocked` - サーバの状態が[Amendment blocked](../../../concepts/networks-and-servers/amendments.md#amendment-blocked)であるため、XRP Ledgerネットワークとの同期を維持するために最新バージョンに更新する必要があります。
+- `amendmentBlocked` - サーバの状態が[Amendmentブロック](../../../concepts/networks-and-servers/amendments.md#amendment-blocked)されたであるため、XRP Ledgerネットワークとの同期を維持するために最新バージョンに更新する必要があります。
+- `failedToForward` - ([レポートモード][]のサーバのみ)サーバはこのリクエストをP2Pモードサーバに転送しようとしましたが、接続に失敗しました。
+- `invalid_API_version` - サーバはリクエストの[APIバージョン番号](request-formatting.md#apiのバージョン管理)をサポートしていません。
+- `jsonInvalid` -（WebSocketのみ）リクエストは適切なJSONオブジェクトではありません。
+  - この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
+- `missingCommand` -（WebSocketのみ）リクエストに`command`フィールドが指定されていませんでした。
+  - この場合JSON-RPCは、代わりに400 Bad Request HTTPエラーを返します。
+- `noClosed` - サーバに閉鎖済みレジャーがありません。通常、このエラーは起動が完了していないことが原因で発生します。
+- `noCurrent` - 高い負荷、ネットワークの問題、バリデータ障害、誤った構成、またはその他の問題が原因で、サーバが現行のレジャーを認識できません。
+- `noNetwork` - サーバとXRP Ledgerピアツーピアネットワークのその他の部分との接続で問題が発生しています（サーバがスタンドアロンモードで実行されていません）。
+- `unknownCmd` - リクエストに、`rippled`サーバが認識する[コマンド](../index.md)が含まれていません。
+- `tooBusy` - サーバの負荷が高すぎるため、現在このコマンドを実行できません。管理者として接続している場合は、通常このエラーが返されることはありません。
+- `wsTextRequired` -（WebSocketのみ）リクエストの[opcode](https://tools.ietf.org/html/rfc6455#section-5.2)がテキストではありません。
+
+
+{% raw-partial file="/docs/_snippets/common-links.md" /%}

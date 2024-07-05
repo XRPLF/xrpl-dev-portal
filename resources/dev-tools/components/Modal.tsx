@@ -1,5 +1,5 @@
 import React, { JSX, ReactElement, ReactNode } from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 interface ModalProps {
   id: string // used for targeting animations
@@ -48,6 +48,7 @@ export const Modal = ({title, footer, children, onClose, id}: ModalProps) => {
 }
 
 export const ModalCloseBtn = ({onClick}) => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return <button
@@ -61,6 +62,7 @@ export const ModalCloseBtn = ({onClick}) => {
 }
 
 export const ModalClipboardBtn = ({textareaRef}) => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return <button

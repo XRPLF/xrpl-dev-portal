@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react'
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 
 import AlertTemplate from './components/AlertTemplate';
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
@@ -104,6 +104,7 @@ async function onClickCreateEscrow(
 }
 
 function TxSenderBody(): React.JSX.Element {
+    const { useTranslate } = useThemeHooks();
     const { translate } = useTranslate();
 
     const [client, setClient] = useState<Client | undefined>(undefined)

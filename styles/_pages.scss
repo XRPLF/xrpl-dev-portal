@@ -94,8 +94,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
     // background-image set on the page-* classes
     background-repeat: no-repeat;
     background-position-x: left;
@@ -367,6 +365,10 @@
     "xp-market": "svg",
     "ledger-city": "svg",
     "forte": "svg",
+    "futureverse": "svg",
+    'first-ledger-bot': 'svg',
+    "moai-finance": "svg",
+    "orchestra-finance": "svg",
     "anchain-ai": "svg",
     "coil": "svg",
     "carbonland-trust": "svg",
@@ -376,6 +378,7 @@
     "ripples-on-demand-liquidity": "svg",
     "ripples-cbdc-platform": "svg",
     "momento": "svg",
+    "zerpmon": "png",
     "Crossmark": "png",
     "Edge": "png"
 
@@ -386,6 +389,22 @@
           max-height: 40px;
           content: url("../img/uses/#{$company}.#{$type}");
         }
+      }
+    }
+  }
+  .orchestra-finance{
+    max-height: 52px !important;
+    margin: 0 !important;
+  }
+  #use_case_companies_list {
+    #first-ledger-bot {
+      .biz-logo {
+        max-height: 81px !important;
+      }
+    }
+    #zerpmon {
+      .biz-logo {
+        max-height: 81px !important;
       }
     }
   }
@@ -967,8 +986,8 @@
     border-radius: $border-radius-sm;
     padding: 2rem;
     padding-right: 3rem; // don't overlap chevron
-    // margin-bottom: 1.5rem; // this is enough space when a banner isn't active
-    margin-bottom: 3.5rem; // give space so anchor-fix doesn't block clicks
+    margin-bottom: 1.5rem; // this is enough space when a banner isn't active
+    // margin-bottom: 3.5rem; // give space so anchor-fix doesn't block clicks
     position: relative;
     z-index: 5;
     width: 100%;

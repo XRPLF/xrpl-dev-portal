@@ -4,7 +4,7 @@ parent: tasks.html
 metadata:
   indexPage: true
 ---
-# 専門的な支払いタイプの使用
+# 高度な支払い機能の利用
 
 EscrowやPayment Channelなどの高度な機能を使用して、XRP Ledgerでスマートアプリケーションを構築しましょう。
 

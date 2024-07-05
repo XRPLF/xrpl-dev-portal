@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
 
@@ -17,6 +17,7 @@ const PermalinkModal: React.FC<PermaLinkProps> = ({
                                                     currentBody,
                                                     selectedConnection
 }) => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const permalinkRef = useRef(null);
 

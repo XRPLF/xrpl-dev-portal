@@ -1,4 +1,5 @@
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -90,19 +91,20 @@ const features = [
     title: 'Smart Contracts',
     description:
     <>
-      Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.,
+      Hooks are small, efficient WebAssembly modules designed specifically for the XRPL. Check out the <a href='https://hooks-testnet.xrpl-labs.com/' target='_blank'>hooks amendment and public testnet</a> that enable smart contract functionality.
     </>,
     href: 'https://hooks-testnet.xrpl-labs.com/',
   },
   {
-    chip: 'Open for Voting',
+    chip: 'Enabled',
     title: 'Automated Market Makers',
     description: "Smart contracts to provide liquidity and earn passive income from facilitating currency exchange, complementary with the order-book DEX already built into the XRPL.",
-    href: '/concepts/tokens/decentralized-exchange/automated-market-makers/',
+    href: '/docs/concepts/tokens/decentralized-exchange/automated-market-makers/',
   },
 ];
 
 export default function Index() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (
@@ -110,20 +112,20 @@ export default function Index() {
       <div className="overflow-hidden">
         <section className="container-new pb-26-until-sm mt-10 mb-10-sm text-center">
           <div className="w-100">
-            <img id="home-hero-graphic" alt="X" />
+            <img id="home-hero-graphic" alt="(stylized X graphic surrounded by a diverse mix of people)" width="856" height="469" />
           </div>
           <div className="col-lg-6 mx-auto text-center pl-0 pr-0">
             <div className="d-flex flex-column-reverse">
               <h1 className="mb-10">
-                {translate('The Blockchain')}
+                {translate('home.hero.h1part1', 'The Blockchain')}
                 <br className="until-sm" />
-                {translate('Built for Business')}
+                {translate('home.hero.h1part2', 'Built for Business')}
               </h1>
               <h6 className="eyebrow mb-3">{translate('XRPL | XRP Ledger')}</h6>
             </div>
-            <a href="/docs" className="btn btn-primary btn-arrow">
+            <Link to="/docs" className="btn btn-primary btn-arrow">
               {translate('Start Building')}
-            </a>
+            </Link>
           </div>
         </section>
         <div className="position-relative d-none-sm">
@@ -154,8 +156,10 @@ export default function Index() {
             {cards.map(card => (
               <li className="col ls-none" key={card.id}>
                 <img id={card.id} alt={card.title + ' Icon'} />
-                <h4 className="mt-3 mb-0 h5">{card.title}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">{card.description}</p>
+                <h4 className="mt-3 mb-0 h5">{translate(card.title)}</h4>
+                <p className="mt-6-until-sm mt-3 mb-0">
+                  {typeof card.description === 'string' ? translate(card.description) : card.description}
+                </p>
               </li>
             ))}
           </ul>
@@ -171,13 +175,13 @@ export default function Index() {
           </div>
           <div className="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="advanced-features">
             {cards2.map((card, idx) => (
-              <a className="card" href={card.href} key={card.href + idx}>
+              <Link className="card" to={card.href} key={card.href + idx}>
                 <div className="card-body">
-                  <h4 className="card-title h5">{card.title}</h4>
-                  <p className="card-text">{card.description}</p>
+                  <h4 className="card-title h5">{translate(card.title)}</h4>
+                  <p className="card-text">{translate(card.description)}</p>
                 </div>
                 <div className="card-footer">&nbsp;</div>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -188,13 +192,13 @@ export default function Index() {
           </div>
           <div className="row row-cols-1 row-cols-lg-3 card-deck mt-10" id="get-started">
             {cards3.map((card, idx) => (
-              <a className="card" href={card.href} key={card.href + idx}>
+              <Link className="card" to={card.href} key={card.href + idx}>
                 <div className="card-body">
-                  <h4 className="card-title h5">{card.title}</h4>
-                  <p className="card-text">{card.description}</p>
+                  <h4 className="card-title h5">{translate(card.title)}</h4>
+                  <p className="card-text">{translate(card.description)}</p>
                 </div>
                 <div className="card-footer">&nbsp;</div>
-              </a>
+              </Link>
             ))}
           </div>
         </section>
@@ -209,9 +213,9 @@ export default function Index() {
                   "Together, we're building the greenest infrastructure to drive blockchain innovation that doesn't sacrifice utility or performance, to bring the developer community's vision to life."
                 )}
               </p>
-              <a className="btn btn-primary btn-arrow" href="/about/">
+              <Link className="btn btn-primary btn-arrow" to="/about/">
                 {translate('Learn More')}
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -225,11 +229,13 @@ export default function Index() {
           <ul className="mt-10 card-grid card-grid-3xN">
             {features.map(feat => (
               <li className="col ls-none pt-2" key={feat.href}>
-                <a className="label chip-green" href={feat.href}>
-                  {feat.chip}
-                </a>
-                <h4 className="mt-3 mb-0 h5">{feat.title}</h4>
-                <p className="mt-6-until-sm mt-3 mb-0">{feat.description}</p>
+                <Link className="label chip-green" to={feat.href}>
+                  {translate(feat.chip)}
+                </Link>
+                <h4 className="mt-3 mb-0 h5">{translate(feat.title)}</h4>
+                <p className="mt-6-until-sm mt-3 mb-0">
+                  {typeof feat.description === 'string' ? translate(feat.description) : feat.description}
+                </p>
               </li>
             ))}
           </ul>
@@ -250,9 +256,9 @@ export default function Index() {
                 <br className="until-sm" />
                 {translate(' and entrepeneurs who rely on the XRPL.')}
               </p>
-              <a className="btn btn-primary btn-arrow" href="/community">
+              <Link className="btn btn-primary btn-arrow" to="/community">
                 {translate('Get Involved')}
-              </a>
+              </Link>
             </div>
           </div>
         </section>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { useState } from 'react';
 import { Client, dropsToXrp, Wallet } from 'xrpl'; 
 import * as faucetData from './faucets.json'
@@ -43,6 +43,7 @@ async function waitForSequence(client: Client, address: string):
 }
 
 function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: string}) {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (<div key={givenKey}>
@@ -68,6 +69,7 @@ function FaucetSidebar({ faucets }: { faucets: FaucetInfo[] }): React.JSX.Elemen
 }
 
 export default function XRPFaucets(): React.JSX.Element {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   const faucets: FaucetInfo[] = faucetData.knownFaucets
@@ -98,7 +100,7 @@ export default function XRPFaucets(): React.JSX.Element {
                 )) }
 
                 <br/>
-                <TestCredentials selectedFaucet={selectedFaucet}/>
+                <TestCredentials selectedFaucet={selectedFaucet} translate={translate}/>
             </div>
           </section>
         </main>
@@ -114,7 +116,8 @@ async function generateFaucetCredentialsAndUpdateUI(
   setAddress: React.Dispatch<React.SetStateAction<string>>, 
   setSecret: React.Dispatch<React.SetStateAction<string>>, 
   setBalance: React.Dispatch<React.SetStateAction<string>>, 
-  setSequence: React.Dispatch<React.SetStateAction<string>>): Promise<void> {
+  setSequence: React.Dispatch<React.SetStateAction<string>>,
+  translate: (key: string) => string): Promise<void> {
 
   setButtonClicked(true)
 
@@ -124,7 +127,6 @@ async function generateFaucetCredentialsAndUpdateUI(
   setSecret("")
   setBalance("")
   setSequence("")
-  const { translate } = useTranslate();
 
 
   const wallet = Wallet.generate()
@@ -149,8 +151,7 @@ async function generateFaucetCredentialsAndUpdateUI(
   setButtonClicked(false)
 }
 
-function TestCredentials({selectedFaucet}) {
-  const { translate } = useTranslate();
+function TestCredentials({selectedFaucet, translate}) {
 
   const [generatedCredentialsFaucet, setGeneratedCredentialsFaucet] = useState("")
   const [address, setAddress] = useState("")
@@ -170,7 +171,8 @@ function TestCredentials({selectedFaucet}) {
                 setAddress, 
                 setSecret, 
                 setBalance, 
-                setSequence)
+                setSequence,
+                translate)
             } className="btn btn-primary mr-2 mb-2">
               {translate(`Generate ${selectedFaucet.shortName} credentials`)}
           </button>

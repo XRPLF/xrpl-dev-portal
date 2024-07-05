@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import { useTranslate } from "@portal/hooks";
-import { Link } from "@portal/Link";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from "@redocly/theme/components/Link/Link";
 import { slugify } from "./slugify";
 import { CommandGroup, CommandMethod } from './types';
 
@@ -15,6 +15,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
                                                             currentMethod,
                                                             setCurrentMethod,
                                                           }) => {
+  const { useTranslate } = useThemeHooks();                                                          
   const { translate } = useTranslate();
   return (
     <div className="command-list-wrapper">

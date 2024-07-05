@@ -1,4 +1,4 @@
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { ChangeEvent } from 'react';
 import { Modal } from '../Modal';
@@ -19,6 +19,7 @@ export const ConnectionModal: React.FC<ConnectionProps> = ({
                                                              closeConnectionModal,
                                                              connections,
                                                            }) => {
+  const { useTranslate } = useThemeHooks();                                                  
   const { translate } = useTranslate();
   const handleConnectionChange = (event: ChangeEvent<HTMLInputElement>) => {
     const selectedValue = event.target.value;
