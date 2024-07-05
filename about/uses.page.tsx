@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import numLight from "../static/js/ecosystem/numbers-animation-light.json";
 import numDark from "../static/js/ecosystem/numbers-animation.json";
 import arrow from "../static/js/ecosystem/arrow-animation.json";
@@ -36,8 +36,8 @@ const logos = {
     "xrp-cafe",
     "xrp-oval",
   ],
-  exchanges: ["sologenic_dex", "xpmarket"],
-  gaming: ["forte", "ledger-city"],
+  exchanges: ["sologenic_dex", "xpmarket", 'orchestra-finance','moai-finance', 'first-ledger-bot'],
+  gaming: ["forte", "ledger-city", "futureverse", 'zerpmon'],
   security: ["anchain"],
   payments: ["ripple", "supermojo"],
   cbdc: ["ripple"],
@@ -89,6 +89,24 @@ const cardsData = [
     category_id: "gaming",
     category_name: "Gaming",
     link: "https://forte.io",
+  },
+  {
+    id: "futureverse",
+    title: "Futureverse",
+    description:
+      "Revolutionary AI + metaverse technologies that enable open, scalable, and interoperable apps, games, and experiences.",
+    category_id: "gaming",
+    category_name: "Gaming",
+    link: "https://www.futureverse.com/",
+  },
+  {
+    id: "zerpmon",
+    title: "Zerpmon",
+    description:
+      "Zerpmon is an original collection of digital collectible creatures that live on the XRPL, with each Zerpmon being a completely unique 1/1. Train and level-up your Zerpmon by taking them on Missions, then Battle other Trainers for XRP, NFTs, massive Tournament prizes, and the glory that comes with becoming the very best.",
+    category_id: "gaming",
+    category_name: "Gaming",
+    link: "https://www.zerpmon.world/",
   },
   {
     id: "gatehub",
@@ -262,6 +280,33 @@ const cardsData = [
     link: "https://sologenic.org/",
   },
   {
+    id: "orchestra-finance",
+    title: "Orchestra Finance",
+    description:
+      "Orchestra Finance is a first-in-class AMM DEX on the XRP Ledger(XRPL). We provide the quintessential AMM experience, with low fees, speedy transactions, and a user-friendly interface.",
+    category_id: "exchanges",
+    category_name: "Exchanges",
+    link: "https://orchestra.finance/",
+  },
+  {
+    id: "moai-finance",
+    title: "Moai Finance",
+    description:
+      "Moai Finance is an innovative multi-chain DEX and cross-chain DEX aggregator, strategically positioned within the XRPL ecosystem to harness its untapped liquidity across various side-chains. ",
+    category_id: "exchanges",
+    category_name: "Exchanges",
+    link: "https://moai-finance.xyz/",
+  },
+  {
+    id: "first-ledger-bot",
+    title: "First Ledger Bot",
+    description:
+      "First Ledger is the fastest way to trade on the xrpl. This tool allows you to trade with speed within a couple of clicks.",
+    category_id: "exchanges",
+    category_name: "Exchanges",
+    link: "https://firstledger.net/",
+  },
+  {
     id: "sologenic-nft",
     title: "Sologenic NFT",
     description: "Sologenic NFT is an NFT marketplace designed by Sologenic.",
@@ -419,14 +464,14 @@ const uses = [
   {
     id: "exchanges",
     title: "Exchanges",
-    number: 2,
+    number: 5,
     description:
       "Build sophisticated exchanges where users can invest and trade crypto and assets such as stocks, ETFs, and commodities.",
   },
   {
     id: "gaming",
     title: "Gaming",
-    number: 2,
+    number: 4,
     description:
       "The XRPL supports gaming at high speed given its reliable throughput, low fees, and sidechain interoperability.",
   },
@@ -473,6 +518,7 @@ const uses = [
 
 export default function Uses() {
   const theme = useThemeFromClassList(["dark", "light"]);
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [displayModal, setDisplayModal] = React.useState(false);
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -658,10 +704,10 @@ export default function Uses() {
           />
         </div>
         <div className="content-section">
-          <p className="section-text-title">{title}</p>
+          <p className="section-text-title">{translate(title)}</p>
         </div>
         <div className="content-section">
-          <p className="section-text-description">{description}</p>
+          <p className="section-text-description">{translate(description)}</p>
         </div>
         <div className="content-section">
           <hr className="section-separator" />
@@ -680,7 +726,7 @@ export default function Uses() {
             <div className="p-3 col-lg-8 mx-lg-auto">
               <div className="d-flex flex-column-reverse">
                 <h1 className="mb-0">
-                  {translate("Powering Innovative Use Cases and Projects.")}
+                  {translate("Powering Innovative Use Cases and Projects")}
                 </h1>
                 <h6 className="eyebrow mb-3">{translate("XRPL Ecosystem")}</h6>
               </div>
@@ -694,7 +740,7 @@ export default function Uses() {
                     {arrowAnimation}
                   </div>
                   <span className="explore-projects">
-                    Explore Featured Projects{" "}
+                    {translate('Explore Featured Projects')}
                   </span>
                 </div>
                 <p className="text-sm">
@@ -710,11 +756,12 @@ export default function Uses() {
             <div className="col-lg-5 offset-lg-2 p-5 d-flex">
               <div className="mb-4 pb-3 numbers-animation">{View}</div>
               <div className="apps-built">
-                Apps/exchanges <br /> built on the <br /> XRPL{" "}
+                {translate('about.uses.apps-build-1', 'Apps/exchanges ')}<br />
+                {translate('about.uses.apps-build-2', 'built on the ')}<br />
+                {translate('about.uses.apps-build-3', 'XRPL')}
               </div>
             </div>
             <ul
-              style={{ gridTemplateColumns: "repeat(4,1fr)" }}
               className="card-grid use-cases-grid ls-none mt-4 pt-lg-2"
               id="use-case-card-grid"
             >
@@ -734,7 +781,7 @@ export default function Uses() {
                 >
                   <div className="circle-content">
                     <img className="circle-img" id={use.id} alt="use-logos" />
-                    <p className="circle-text">{use.title}</p>
+                    <p className="circle-text">{translate(use.title)}</p>
                     <div className="pill-box">
                       <span className="pill-number">{use.number}</span>
                     </div>
@@ -762,10 +809,7 @@ export default function Uses() {
           <section className="join-xrpl-section py-26">
             <div className="colorful-join-text-wrapper">
               <span className="colorful-join-text">
-                {" "}
-                Join the XRPL Ecosystem and showcase your XRPL project,
-                application, or product. Get featured on the Developer
-                Reflections blog or Ecosystem page.{" "}
+                {translate('Join the XRPL Ecosystem and showcase your XRPL project, application, or product. Get featured on the Developer Reflections blog or Ecosystem page.')}
               </span>
               <div className="mt-10">
                 <a
@@ -782,9 +826,9 @@ export default function Uses() {
             <div className="col-12 col-lg-8 col-xl-6 p-3 mb-5">
               <div className="d-flex flex-column-reverse">
                 <h3 className="h4 h2-sm">
-                  {translate("Businesses and developers")}
+                  {translate("about.uses.businesses.h3part1","Businesses and developers")}
                   <br className="until-sm" />
-                  {translate(" rely on the XRP Ledger")}
+                  {translate("about.uses.businesses.h3part2", "rely on the XRP Ledger")}
                 </h3>
                 <h6 className="eyebrow mb-3">
                   {translate("Solving Real-World Problems")}
@@ -797,7 +841,7 @@ export default function Uses() {
               </p>
             </div>
             <a
-              className="btn  d-block d-lg-none"
+              className="btn d-block d-lg-none"
               data-toggle="modal"
               data-target="#categoryFilterModal"
             >
@@ -843,7 +887,7 @@ export default function Uses() {
                           className="font-weight-bold"
                           htmlFor={`input_${item}`}
                         >
-                          {featured_categories[item]}
+                          {translate(featured_categories[item])}
                         </label>
                       </div>
                     ))}
@@ -869,7 +913,7 @@ export default function Uses() {
                           onChange={() => toggleCategory(item)}
                         />
                         <label htmlFor={`input_${item}`}>
-                          {other_categories[item]}
+                          {translate(other_categories[item])}
                         </label>
                       </div>
                     ))}
@@ -879,7 +923,7 @@ export default function Uses() {
               </div>
               {/* cards */}
               <div
-                className="right row col row-cols-lg-2 m-0 p-0"
+                className="right row col row-cols-lg-2 m-2 p-0"
                 id="use_case_companies_list"
               >
                 {filteredCards.map((card) => (
@@ -898,10 +942,10 @@ export default function Uses() {
                         />
                       </span>
                       <h4 className="card-title h6">{card.title}</h4>
-                      <p className="card-text">{card.description}</p>
+                      <p className="card-text">{translate(card.description)}</p>
                       <div className="align-self-end">
                         <span className={`label label-use-${card.category_id}`}>
-                          {card.category_name}
+                          {translate(card.category_name)}
                         </span>
                       </div>
                     </div>

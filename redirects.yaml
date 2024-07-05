@@ -107,7 +107,10 @@ faq.html:
     to: /faq
     type: 301
 privacy-policy.html:
-    to: /privacy-policy
+    to: /about/privacy-policy
+    type: 301
+privacy-policy/:
+    to: /about/privacy-policy
     type: 301
 technical-faq.html:
     to: /faq
@@ -398,7 +401,7 @@ automated-market-makers.html:
     to: /docs/concepts/tokens/decentralized-exchange/automated-market-makers
     type: 301
 accounts.html:
-    to: /docs/concepts/accounts/accounts
+    to: /docs/concepts/accounts/
     type: 301
 account-types.html:
     to: /docs/concepts/accounts/account-types
@@ -493,6 +496,9 @@ python.html:
 get-started-using-python.html:
     to: /docs/tutorials/python/get-started
     type: 301
+docs/tutorials/python/get-started/:
+    to: docs/tutorials/python/build-apps/get-started/
+    type: 301
 modular-tutorials-in-python.html:
     to: /docs/tutorials/python/
     type: 301
@@ -531,6 +537,12 @@ javascript.html:
     type: 301
 get-started-using-javascript.html:
     to: /docs/tutorials/javascript/build-apps/get-started
+    type: 301
+docs/tutorials/javascript/get-started:
+    to: docs/tutorials/javascript/build-apps/get-started/
+    type: 301
+docs/tutorials/javascript/get-started/:
+    to: docs/tutorials/javascript/build-apps/get-started/
     type: 301
 get-started-using-node-js.html:
     to: /docs/tutorials/javascript/build-apps/get-started
@@ -578,18 +590,36 @@ batch-mint-nfts-using-javascript.html:
     to: /docs/tutorials/javascript/nfts/batch-mint-nfts
     type: 301
 build-a-browser-wallet-in-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
     type: 301
 build-a-browser-wallet-using-javascript.html:
-    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript
+    to: /docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
+    type: 301
+docs/tutorials/javascript/build-a-browser-wallet-in-javascript:
+    to: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
+    type: 301
+docs/tutorials/javascript/build-a-browser-wallet-in-javascript/:
+    to: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript/
     type: 301
 build-a-desktop-wallet-in-javascript.html:
+    to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
+    type: 301
+docs/tutorials/javascript/build-a-desktop-wallet-in-javascript:
+    to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
+    type: 301
+docs/tutorials/javascript/build-a-desktop-wallet-in-javascript/:
     to: /docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript
     type: 301
 java.html:
     to: /docs/tutorials/java/
     type: 301
 get-started-using-java.html:
+    to: /docs/tutorials/java/build-apps/get-started
+    type: 301
+docs/tutorials/java/get-started:
+    to: /docs/tutorials/java/build-apps/get-started
+    type: 301
+docs/tutorials/java/get-started/:
     to: /docs/tutorials/java/build-apps/get-started
     type: 301
 php.html:
@@ -605,8 +635,14 @@ get-started-with-the-rippled-api.html:
     to: /docs/tutorials/http-websocket-apis/build-apps/get-started
     type: 301
 get-started-using-http-websocket-apis.html:
-    to: /docs/tutorials/http-websocket-apis/build-apps/get-started
+    to: /docs/tutorials/http-websocket-apis/build-apps/get-started/
     type: 301
+docs/tutorials/http-websocket-apis/get-started:
+    to: /docs/tutorials/http-websocket-apis/build-apps/get-started/
+    type: 301
+docs/tutorials/http-websocket-apis/get-started/:
+    to: /docs/tutorials/http-websocket-apis/build-apps/get-started/
+    type: 301         
 monitor-incoming-payments-with-websocket.html:
     to: /docs/tutorials/http-websocket-apis/build-apps/monitor-incoming-payments-with-websocket
     type: 301
@@ -1086,6 +1122,9 @@ account_lines.html:
     type: 301
 account_nfts.html:
     to: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_nfts
+    type: 301
+/ja/account_nfts.html:
+    to: /ja/docs/references/http-websocket-apis/public-api-methods/account-methods/account_nfts/
     type: 301
 account_objects.html:
     to: /docs/references/http-websocket-apis/public-api-methods/account-methods/account_objects
@@ -1575,6 +1614,9 @@ report-a-scam.html:
     type: 301
 wallets.html:
     to: /docs/introduction/crypto-wallets
+    type: 301
+blog/2024/rippled-2.2.0.html:
+    to: /blog/2024/rippled-2.2.0
     type: 301
 blog/2024/rippled-2.1.0.html:
     to: /blog/2024/rippled-2.1.0

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { clsx } from 'clsx'
 
 export const CLASS_GOOD = "badge badge-success"
@@ -60,6 +60,7 @@ export function LogEntry({
     status
 }: LogEntryItem)
 {
+    const { useTranslate } = useThemeHooks();
     const {translate} = useTranslate()
     let icon = undefined
     if(!!(status?.icon)) {

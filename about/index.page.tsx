@@ -1,5 +1,6 @@
 import * as React from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 
 export const frontmatter = {
   seo: {
@@ -12,7 +13,7 @@ const faqs = [
   {
     question: "Is XRPL a private blockchain, owned by Ripple?",
     answer:
-      "No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” in the Full FAQ) — Ripple runs 6 of these nodes.",
+      "No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80%% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the Unique Node List (see “What are Unique Node Lists (UNLs)?” in the Full FAQ) — Ripple runs 1 of these nodes.",
   },
   {
     question: "Isn’t Proof of Work the best validation mechanism?",
@@ -27,6 +28,7 @@ const faqs = [
 ];
 
 export default function XrplOverview() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [videoOne, setVideoOne] = React.useState(false);
   const [currentVideoUrl, setCurrentVideoUrl] = React.useState("");
@@ -88,9 +90,9 @@ export default function XrplOverview() {
           <div className="col-lg-5 mx-auto text-center">
             <div className="d-flex flex-column-reverse">
               <h1 className="mb-0">
-                {translate("The Business ")}
+                {translate("about.index.h1part1", "The Business ")}
                 <br className="until-sm" />
-                {translate(" of Impact")}
+                {translate("about.index.h1part2", " of Impact")}
               </h1>
               <h6 className="eyebrow mb-3">
                 {translate("XRPL Today, XRPL Tomorrow")}
@@ -118,7 +120,7 @@ export default function XrplOverview() {
               </div>
               <h5 className="longform mb-10">
                 {translate(
-                  "The XRP Ledger is a decentralized public blockchain built for business. "
+                  "The XRP Ledger is a decentralized public blockchain built for business."
                 )}
               </h5>
               <p className="mb-4">
@@ -135,7 +137,7 @@ export default function XrplOverview() {
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
-                  {translate("Watch Explainer Videos ")}
+                  {translate("Watch Explainer Videos")}
                 </a>
               </div>
             </div>
@@ -170,7 +172,7 @@ export default function XrplOverview() {
                   target="_blank"
                   href="https://www.youtube.com/playlist?list=PLJQ55Tj1hIVZtJ_JdTvSum2qMTsedWkNi"
                 >
-                  {translate("Watch Explainer Videos ")}
+                  {translate("Watch Explainer Videos")}
                 </a>
               </div>
             </div>
@@ -187,10 +189,12 @@ export default function XrplOverview() {
               </div>
               <h5 className="longform mb-10">
                 {`${translate(
+                  "about.index.consensus.h5part1",
                   "To uphold performance, XRPL uses a consensus protocol. Designated servers called "
                 )}`}
-                <a href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("validators")}</a>
+                <Link to="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator">{translate("about.index.consensus.h5part2", "validators")}</Link>
                 {`${translate(
+                  "about.index.consensus.h5part3",
                   ", which anyone can operate, come to an agreement on the order and outcome of XRP transactions every three to five seconds."
                 )}`}
               </h5>
@@ -201,9 +205,9 @@ export default function XrplOverview() {
                 )}
               </p>
               <p className="mb-0">
-                {translate('Currently, over 120')}
-                   <a href="https://livenet.xrpl.org/network/validators" target="_blank"> validators</a>
-                   {translate(' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
+                {translate('about.index.consensus.ppart1', 'Currently, over 120 ')}
+                <a href="https://livenet.xrpl.org/network/validators" target="_blank">{translate('about.index.consensus.ppart2', 'validators')}</a>
+                   {translate('about.index.consensus.ppart3', ' are active on the ledger, operated by universities, exchanges, businesses, and individuals. As the validator pool grows, the consensus protocol ensures decentralization of the blockchain over time.')}
               </p>
             </div>
             <div className="col mb-16-sm">
@@ -244,7 +248,7 @@ export default function XrplOverview() {
                 <h4 className="h4 h2-sm mb-8">
                   {translate("Building with confidence on ")}
                   <br className="until-sm" />
-                  {translate(" proven technology")}
+                  {translate("proven technology")}
                 </h4>
                 <h6 className="eyebrow mb-3">{translate("XRPL Today")}</h6>
               </div>
@@ -382,12 +386,13 @@ export default function XrplOverview() {
               </h4>
               <p className="mb-10">
                 {`${translate(
+                  "about.index.tomorrow.ppart1",
                   "XRP Ledger’s innovation relies on the shared community experience of builders like you. If you’re ready to start your next big blockchain project, explore the XRPL now and consider applying for funding on your next"
                 )}`}
-                <a href="developer-funding">
-                  {translate(" blockchain project")}
-                </a>
-                {"."}
+                <Link to="/community/developer-funding">
+                  {translate("about.index.tomorrow.ppart2", " blockchain project")}
+                </Link>
+                {translate("about.index.tomorrow.ppart3", ".")}
               </p>
 
               <a
@@ -416,7 +421,7 @@ export default function XrplOverview() {
                   aria-controls={`answer${index + 1}`}
                 >
                   <h4 id={`heading${index + 1}`}>
-                    {faq.question}
+                    {translate(faq.question)}
                     <span className="chevron">
                       <span />
                       <span />
@@ -428,7 +433,7 @@ export default function XrplOverview() {
                   className="answer-wrapper collapse"
                   aria-labelledby={`heading${index + 1}`}
                 >
-                  <p dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                  <p dangerouslySetInnerHTML={{ __html: translate(faq.answer) }} />
                 </div>
               </div>
             ))}

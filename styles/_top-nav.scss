@@ -1,8 +1,8 @@
 /* Top navigation ----------------------------------------------------------- */
 $nav-height: 80px;
-$banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
+$banner-height: 0; // Apex 2024 banner was 46px. 0 for no pencil banner.
 
-[data-component-name="Layout/RootLayout"] {
+[data-component-name="layouts/RootLayout"] {
   padding-top: $nav-height + $banner-height;
 }
 
@@ -383,21 +383,13 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
     .navbar-nav {
       align-items: unset !important; // Undo "browser-entry.css" rule
 
-      #topnav-theme {
-        background-color: $gray-900;
-        padding: 1rem;
-      }
-
       #topnav-button {
         background-color: $gray-900;
         padding: 1rem 1.5rem;
       }
 
       #topnav-search {
-        background-color: $gray-900;
-
-        [data-component-name="Search/MobileSearchTrigger"] {
-          padding: 2rem;
+        [data-component-name="Search/SearchTrigger"] {
           cursor: pointer;
         }
       }
@@ -525,9 +517,9 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
 
     // Move search to top of mobile menu ---------------------------------------
     #top-main-nav {
-      padding-top: 72px;
+      background-color: $gray-800;
+      padding-top: 32px;
       position: relative;
-      transition: padding-top 0.2s ease;
 
       // Hide search and other sub-menus when one sub-menu is expanded
       // (js required to add the class on the dropdown event)
@@ -538,7 +530,9 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
           display: none;
         }
 
-        #topnav-search {
+        #topnav-search, 
+        #topnav-language,
+        #topnav-theme {
           // display: none;
           height: 0;
           overflow: clip;
@@ -550,9 +544,7 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
     #topnav-search {
       position: absolute;
       top: 0;
-      width: 100%;
-      height: 72px;
-      transition: all 0.2s ease;
+      right: 105px;
 
       .input-group {
         flex-wrap: nowrap; // Fix search bar splitting into two lines on iPhone 5
@@ -560,12 +552,22 @@ $banner-height: 46px; // Apex 2024 banner size. Set to 0 if no pencil banner.
     }
 
     #topnav-language {
+      position: absolute;
+      top: 0;
+      right: 65px;
+
       hr {
         border-top: 1px solid $gray-800;
         margin-top: 0.25rem;
         margin-bottom: 0.25rem;
         display: static;
       }
+    }
+
+    #topnav-theme {
+      position: absolute;
+      top: 0;
+      right: 26px;
     }
   } // end mobile specific styles ----------------------------------------------
 
@@ -587,7 +589,7 @@ article h6:before,
   pointer-events: none;
 }
 article h1:first-of-type:before {
-  margin-top: -60px; // Don't add extra space to page title
+  margin-top: -40px; // Add less space to page title (but don't overlap Edit button)
 }
 
 // Animated chevron (e.g. for language dropdown) -------------------------------

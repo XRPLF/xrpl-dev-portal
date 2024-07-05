@@ -43,6 +43,7 @@ export function codeSamples() {
 
         actions.createSharedData('code-samples', { codeSamples: sortedSamples, langs: Array.from(allLands) });
         actions.addRouteSharedData('/resources/code-samples/', 'code-samples', 'code-samples');
+        actions.addRouteSharedData('/ja/resources/code-samples/', 'code-samples', 'code-samples');
       } catch (e) {
         console.log(e);
       }

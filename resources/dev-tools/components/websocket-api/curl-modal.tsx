@@ -1,4 +1,4 @@
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { Connection } from './types';
 import { useRef, useState } from 'react';
 import { Modal, ModalClipboardBtn, ModalCloseBtn } from '../Modal';
@@ -37,6 +37,7 @@ export const CurlModal: React.FC<CurlProps> = ({
                                                  selectedConnection,
                                                }) => {
   const curlRef = useRef(null);
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const footer = <>
     <ModalClipboardBtn textareaRef={curlRef} />

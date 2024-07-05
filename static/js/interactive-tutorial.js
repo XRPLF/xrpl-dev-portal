@@ -10,7 +10,7 @@ LOCALES = {
     "Secret:": "シード：",
     "Balance:": "残高：",
     "Complete all previous steps first": "前の手順をすべて完了して下さい",
-    "Conection to the XRP Ledger required": "XRP Ledgerの接続が必要です",
+    "Connection to the XRP Ledger required": "XRP Ledgerの接続が必要です",
     "Error:": "エラー：",
     "Populated this page's examples with these credentials.": "このページの例にこのアドレスとシードを入力しました。",
     "There was an error connecting to the Faucet. Please try again.": "テストネットワークFaucetにエラーが発生しました。もう一度試してください。",
@@ -235,7 +235,7 @@ function setup_generate_step() {
 /**
  * Get the address from the Generate step (snippet), or display an error in
  * the relevant interactive block if it fails—usually because the user hasn't
- * cliked the "Get Credentials" button yet.
+ * clicked the "Get Credentials" button yet.
  * @return {String, undefined} The address, if available, or undefined if not
  */
 function get_address(event) {
@@ -251,7 +251,7 @@ function get_address(event) {
 /**
  * Get the Wallet from the Generate step (snippet), or display an error in
  * the relevant interactive block if it fails—usually because the user hasn't
- * cliked the "Get Credentials" button yet.
+ * clicked the "Get Credentials" button yet.
  * @return {Wallet, undefined} The Wallet instance, if available, or undefined if not
  */
 function get_wallet(event) {
@@ -274,7 +274,7 @@ function get_wallet(event) {
  * Helper for calling the Testnet/Devnet faucet.
  * @param {String} faucet_url The URL of the faucet to call, for example:
  *                            https://faucet.altnet.rippletest.net/accounts
- * @param {String} destination The account to fund, if undefined, the facuet will create one
+ * @param {String} destination The account to fund, if undefined, the faucet will create one
  * @param {Object} event The event object to get memo data from
  * */
 async function call_faucet(faucet_url, destination, event) {
@@ -533,7 +533,7 @@ function add_memo(event, tx_json) {
  * transaction's final results. Gets important information from data
  * attributes defined on the button that triggers the event:
  * data-tx-blob-from="{jQuery selector}" A selector for an element whose .text()
- *                                       is the blob to submt.
+ *                                       is the blob to submit.
  * data-wait-step-name="{String}" The exact name of the wait step where this
  *                                transaction's results should be reported, as
  *                                defined in start_step(step_name) as the MD

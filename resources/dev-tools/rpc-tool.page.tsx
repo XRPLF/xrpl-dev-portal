@@ -1,5 +1,5 @@
-import { useTranslate } from "@portal/hooks";
-import { Link } from '@portal/Link';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from '@redocly/theme/components/Link/Link';
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import JsonView from 'react18-json-view'
@@ -25,6 +25,7 @@ export default function RpcTool() {
   const [ledgerResponse, setLedgerResponse] = useState(null);
   const [inputText, setInputText] = useState(slug ? slug.slice(1) : "");
   const [errorText, setErrorText] = useState(null);
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [inputType, setInputType] = useState("");
   const [showResult, setShowResult] = useState(false);

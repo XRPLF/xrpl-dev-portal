@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { NavList } from "shared/components/nav-list";
+import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
@@ -160,19 +162,13 @@ function UseCasesCard(props: {
   };
 }) {
   const { useCase } = props;
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
   return (
     <div className="col">
       <img className={'use-cases-img img-fluid mb-2 shadow ' + useCase.imgClass} alt={useCase.title} id={useCase.id} />
-      <h5 className="mt-4">{useCase.title}</h5>
-      <ul className="nav flex-column">
-        {useCase.subItems.map(item => (
-          <li key={item.link} className="nav-item">
-            <a href={item.link} className="nav-link">
-              {item.description}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <h5 className="mt-4">{translate(useCase.title)}</h5>
+      <NavList pages={useCase.subItems} />
     </div>
   );
 }
@@ -180,7 +176,7 @@ function UseCasesCard(props: {
 function FlatCard(props: { href: string; title: string; description: string; linkText: string; imgClass }) {
   const { title, description, linkText, href, imgClass } = props;
   return (
-    <a href={href} className="card flat-card float-up-on-hover">
+    <Link to={href} className="card flat-card float-up-on-hover">
       <img className={'mb-2 ' + imgClass} alt={title} />
       <h5 className="row">
         <div className="nav-link">{title}</div>
@@ -191,7 +187,7 @@ function FlatCard(props: { href: string; title: string; description: string; lin
           {linkText}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -208,26 +204,26 @@ function VideoCard(props: { url: string; title: string; src: string }) {
 }
 
 function DevToolCard(props: { link: string; title: string; description: string }) {
-  const { translate } = useTranslate();
   const { link, title, description } = props;
   return (
-    <a href={link} className="col dev-tools-link">
-      <h6 className="btn-arrow">{translate(title)}</h6>
-      <p> {translate(description)}</p>
-    </a>
+    <Link to={link} className="col dev-tools-link">
+      <h6 className="btn-arrow">{title}</h6>
+      <p> {description}</p>
+    </Link>
   );
 }
 
 function PrimaryButton(props: { href: string; text: string; isArrowUp: boolean }) {
   const { href, text, isArrowUp } = props;
   return (
-    <a className={`btn btn-primary ${isArrowUp ? 'btn-arrow-out' : 'btn-arrow'}`} id={href + '-button'} href={href}>
+    <Link className={`btn btn-primary ${isArrowUp ? 'btn-arrow-out' : 'btn-arrow'}`} id={href + '-button'} to={href}>
       {text}
-    </a>
+    </Link>
   );
 }
 
 export default function Docs() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (
@@ -287,14 +283,14 @@ export default function Docs() {
           <h4 className="pb-4">{translate('Getting Started')}</h4>
           <div className="card-grid card-grid-2xN quickstart-card">
             <div className="col">
-              <a href="/docs/introduction/" className="card float-up-on-hover">
+              <Link to="/docs/introduction/" className="card float-up-on-hover">
                 <h5 className="mt-7">{translate('Introduction to the XRP Ledger')}</h5>
                 <p className="mb-8 mt-4">{translate('An introduction to fundamental aspects of the XRP Ledger.')}</p>
                 <div className="dg-lg-block mb-3">
                   <div className="btn btn-primary btn-arrow get-started-button">{translate('Introduction')}</div>
                 </div>
                 <img alt="quick-start" id="quick-start-img" className="quickstart-image" />
-              </a>
+              </Link>
             </div>
             <div className="col">
               <div className="card-grid card-grid-2xN video-grid">
@@ -321,22 +317,22 @@ export default function Docs() {
             <div className="col">
               <div className="card-grid langs-cards card-grid-2xN mt-10" id="langs-cards">
                 <div className="col langs">
-                  <a href="/docs/tutorials/javascript/">
+                  <Link to="/docs/tutorials/javascript/">
                     <img alt="Javascript Logo" src={require('../static/img/logos/javascript.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Javascript')}</h5>
-                  </a>
+                  </Link>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/python/">
+                  <Link to="/docs/tutorials/python/">
                     <img alt="Python Logo" src={require('../static/img/logos/python.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Python')}</h5>
-                  </a>
+                  </Link>
                 </div>
                 <div className="col langs">
-                  <a href="/docs/tutorials/java/build-apps/get-started/">
+                  <Link to="/docs/tutorials/java/build-apps/get-started/">
                     <img alt="Java Logo" src={require('../static/img/logos/java.svg')} className="circled-logo" />
                     <h5 className="btn-arrow">{translate('Java')}</h5>
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -386,15 +382,7 @@ export default function Docs() {
           <div className="row card-grid card-grid-2xN">
             <div className="col" id="popular-topics">
               <h2 className="h4">{translate('Browse By Recommended Pages')}</h2>
-              <ul className="nav flex-column">
-                {recommendedPages.map(page => (
-                  <li className="nav-item" key={page.link}>
-                    <a href={page.link} className="nav-link">
-                      {translate(page.description)}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <NavList pages={recommendedPages} />
             </div>
             <div className="col">
               <div className="card cta-card p-8-sm p-10-until-sm br-8">
@@ -407,9 +395,9 @@ export default function Docs() {
                       'Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.'
                     )}
                   </p>
-                  <a className="btn btn-primary btn-arrow" href="/resources/dev-tools/xrp-faucets/">
+                  <Link className="btn btn-primary btn-arrow" to="/resources/dev-tools/xrp-faucets/">
                     {translate('Generate Testnet Credentials')}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

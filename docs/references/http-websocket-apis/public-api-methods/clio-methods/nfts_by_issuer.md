@@ -10,7 +10,7 @@ labels:
 
 [[Source]](https://github.com/XRPLF/clio/blob/develop/src/rpc/handlers/NFTsByIssuer.cpp "Source")
 
-`nfts_by_issuer` returns a list of NFTokens that are issued by the specified account. It can optionally filter by taxon. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}New in: Clio v2.1.0{% /badge %}
+`nfts_by_issuer` returns a list of NFTokens that are issued by the specified account. It can optionally filter by taxon. {% badge href="https://github.com/XRPLF/clio/releases/tag/2.1.0" %}New in: Clio v2.1.0{% /badge %}
 
 ## Request Format
 An example of the request format:

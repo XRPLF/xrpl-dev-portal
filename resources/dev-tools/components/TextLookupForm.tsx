@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react'
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { LogEntry, LogEntryItem } from './LogEntry';
 
 /**
@@ -42,6 +42,7 @@ export interface TextLookupFormProps {
  * @returns A single-entry form which displays logs after submitting.
  */
 export function TextLookupForm(props: TextLookupFormProps) {
+    const { useTranslate } = useThemeHooks()
     const { translate } = useTranslate()
 
     const { title, description, buttonDescription, formPlaceholder, handleSubmit } = props

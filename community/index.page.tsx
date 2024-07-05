@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useTranslate } from "@portal/hooks";
+import React, { useState } from "react";
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 import moment from "moment";
+import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
@@ -9,10 +10,10 @@ export const frontmatter = {
       "The XRP Ledger (XRPL) is a community-driven public blockchain. Here’s how you can get involved.",
   },
 };
-const amaImage = require("../static/img/events/AMAs.png")
-const hackathon = require("../static/img/events/Hackathons.png")
-const conference = require("../static/img/events/Conference.png")
-const zone = require("../static/img/events/XRPLZone.png")
+const amaImage = require("../static/img/events/AMAs.png");
+const hackathon = require("../static/img/events/Hackathons.png");
+const conference = require("../static/img/events/Conference.png");
+const zone = require("../static/img/events/XRPLZone.png");
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -56,18 +57,6 @@ const events = [
     end_date: "November 28, 2023",
     start_date: "November 28, 2023",
   },
-  // {
-  //   name: "XRPL Toronto Meetup Community - Celebrate with Us!",
-  //   description:
-  //     "To connect the blockchain community, showcase campus ambassador projects, and celebrate the year's progress with a holiday theme.",
-  //   type: "meetup",
-  //   link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/294766059",
-  //   location: "Downtown, Toronto",
-  //   date: "December 7th, 6pm - 9pm",
-  //   image: require("../static/img/events/event-meetup-toronto@2x.jpg"),
-  //   end_date: "December 7, 2023",
-  //   start_date: "December 7, 2023",
-  // },
   {
     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
     description:
@@ -81,18 +70,6 @@ const events = [
     start_date: "September 06, 2023",
   },
   {
-    name: "APEX 2024: The XRPL Developer Summit",
-    description:
-      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
-    type: "conference",
-    link: "http://apexdevsummit.com",
-    location: "Amsterdam",
-    date: "June 11 - 13, 2024",
-    image: conference,
-    end_date: "June 13, 2024",
-    start_date: "June 11, 2024",
-  },
-  {
     name: "XRPL Developers Reddit AMA: Real World Assets",
     description:
       "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
@@ -103,30 +80,6 @@ const events = [
     image: amaImage,
     end_date: "October 17, 2023",
     start_date: "October 17, 2023",
-  },
-  {
-    name: "Paris Blockchain Week",
-    description:
-      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
-    type: "conference",
-    link: "https://www.parisblockchainweek.com/",
-    location: "Paris, France",
-    date: "April 9 - 12, 2024",
-    image: conference,
-    end_date: "April 12, 2024",
-    start_date: "April 12, 2024",
-  },
-  {
-    name: "Consensus",
-    description:
-      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
-    type: "conference",
-    link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
-    location: "Austin, Texas",
-    date: "May 29 - June 1, 2024",
-    image: conference,
-    end_date: "June 1, 2024",
-    start_date: "June 1, 2024",
   },
   {
     name: "XRP Ledger Zone ETHDenver",
@@ -152,11 +105,72 @@ const events = [
     start_date: "March 13, 2024",
     end_date: "March 13, 2024",
   },
+  {
+    name: "Paris Blockchain Week",
+    description:
+      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+    type: "conference",
+    link: "https://www.parisblockchainweek.com/",
+    location: "Paris, France",
+    date: "April 9 - 12, 2024",
+    image: conference,
+    end_date: "April 12, 2024",
+    start_date: "April 9, 2024",
+  },
+  {
+    name: "Consensus",
+    description:
+      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+    type: "conference",
+    link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
+    location: "Austin, Texas",
+    date: "May 29 - June 1, 2024",
+    image: conference,
+    end_date: "June 1, 2024",
+    start_date: "May 29, 2024",
+  },
+  {
+    name: "EasyA Ripple Hackathon",
+    description:
+      "Join the XRPL community at the Ripple x EasyA Hackathon in Amsterdam, where startups can compete for a $20,000 prize and a chance to present at the prestigious APEX Conference alongside industry leaders. Secure your spot now! ",
+    type: "hackathon",
+    link: "https://www.eventbrite.co.uk/e/easya-x-ripple-apex-hackathon-win-20000-tickets-882724261027?aff=oddtdtcreator",
+    location: "Amsterdam",
+    date: "June 8 - 9, 2024",
+    image: hackathon,
+    start_date: "June 8, 2024",
+    end_date: "June 9, 2024",
+  },
+  {
+    name: "APEX 2024: The XRPL Developer Summit",
+    description:
+      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
+    type: "conference",
+    link: "http://apexdevsummit.com",
+    location: "Amsterdam",
+    date: "June 11 - 13, 2024",
+    image: conference,
+    end_date: "June 13, 2024",
+    start_date: "June 11, 2024",
+  },
+  {
+    name: "SwissHacks",
+    description:
+      "Transform Fintech with XRPL at SwissHacks 2024! Prototype and collaborate with fellow builders to reinvent finance for a brighter future",
+    type: "hackathon",
+    link: "https://airtable.com/app61tk91vkuwKhGx/pagCN29Br8RdxTvp7/form",
+    location: "Zurich",
+    date: "June 28 - 30, 2024",
+    image: hackathon,
+    start_date: "June 28, 2024",
+    end_date: "June 30, 2024",
+  },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(7);
 
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
@@ -183,7 +197,6 @@ const XrplEventsAndCarouselSection = ({ events }) => {
   };
 
   const { prevEvent, currentEvent, nextEvent } = updateCarousel();
-
   return (
     <>
       <section className="xrpl-events-section">
@@ -191,9 +204,15 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <div className="header">
             <h6 className="events-text">{translate("XRPL Events")}</h6>
             <h4 className="events-text">
-              {translate("Check out global events hosted")}{" "}
+              {translate(
+                "community.index.event.h4part1",
+                "Check out global events hosted "
+              )}
               <br className="d-none-sm" />
-              {translate("by the XRPL community")}
+              {translate(
+                "community.index.event.h4part2",
+                "by the XRPL community"
+              )}
             </h4>
           </div>
           <p className="description">
@@ -201,40 +220,42 @@ const XrplEventsAndCarouselSection = ({ events }) => {
               "Meet the XRPL community at meetups, hackathons, blockchain conferences, and more across global regions."
             )}
           </p>
-          <a
+          <Link
             className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
             target="_blank"
-            href="/community/events"
+            to="/community/events"
           >
             {translate("View All Events")}
-          </a>
+          </Link>
         </div>
-        <div className="upcoming-event" id="upcoming-events-section">
-          <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
-          <div id="days-count" className="days-count">
-            {nearestDateDiff}
+        {!!nearestEvent && (
+          <div className="upcoming-event" id="upcoming-events-section">
+            <p className="upcoming-label">{translate("UPCOMING EVENT")}</p>
+            <div id="days-count" className="days-count">
+              {nearestDateDiff}
+            </div>
+            <div className="days-word">{translate("days")}</div>
+            <div className="num-separator"></div>
+            <h5 id="upcoming-event-name" className="event-name">
+              {translate(nearestEvent?.name)}
+            </h5>
+            <p className="mb-2 event-details d-flex icon">
+              <span className="icon-location"></span>
+              <span id="upcoming-event-date">{nearestEvent?.date}</span>
+            </p>
+            <p className="event-location d-flex icon">
+              <span className="icon-date" id="upcoming-event-location"></span>
+              <span id="location-tag">{nearestEvent?.location}</span>
+            </p>
           </div>
-          <div className="days-word">{translate("days")}</div>
-          <div className="num-separator"></div>
-          <h5 id="upcoming-event-name" className="event-name">
-            {translate(nearestEvent.name)}
-          </h5>
-          <p className="mb-2 event-details d-flex icon">
-            <span className="icon-location"></span>
-            <span id="upcoming-event-date">{nearestEvent.date}</span>
-          </p>
-          <p className="event-location d-flex icon">
-            <span className="icon-date" id="upcoming-event-location"></span>
-            <span id="location-tag">{nearestEvent.location}</span>
-          </p>
-        </div>
-        <a
+        )}
+        <Link
           target="_blank"
           className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn"
-          href="/community/events"
+          to="/community/events"
         >
           {translate("View All Events")}
-        </a>
+        </Link>
       </section>
 
       <section className="carousel">
@@ -290,6 +311,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
 };
 
 const CommunityPage: React.FC = () => {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
     <div className="no-sidebar landing page-community">
@@ -339,12 +361,14 @@ const CommunityPage: React.FC = () => {
               alt="Down Arrow"
             />
             <h1 className="mb-0 main-title">
-              {translate("A Global Blockchain")}
+              {translate("community.index.h1part1", "A Global Blockchain")}
               <br className="until-sm" />
-              {translate("Community of ")}
-              <span className="builders-wrap">Builders</span>
+              {translate("community.index.h1part2", "Community of ")}
+              <span className="builders-wrap">
+                {translate("community.index.h1part3", "Builders")}
+              </span>
               <br className="until-sm" />
-              {translate("and Innovators")}
+              {translate("community.index.h1part4", "and Innovators")}
             </h1>
             <h6 className="mb-3 eyebrow">{translate("XRPL Community")}</h6>
           </div>
@@ -439,13 +463,13 @@ const CommunityPage: React.FC = () => {
       <XrplEventsAndCarouselSection events={events} />
       {/* Community Funding Section */}
       <section className="community-funding">
-        <a
+        <Link
           target="_blank"
           className="cd-none-lg btn btn-primary btn-arrow view-all-events-btn get-funding-btn"
-          href="/community/developer-funding/"
+          to="/community/developer-funding/"
         >
           {translate("Get Funding")}
-        </a>
+        </Link>
         <div className="stats">
           <div className="stacked-stats">
             <div className="stat">
@@ -491,13 +515,13 @@ const CommunityPage: React.FC = () => {
               "If you're a software developer or team looking to build your next blockchain business on the XRP Ledger (XRPL), numerous funding opportunities like grants and hackathons await your innovation."
             )}
           </p>
-          <a
+          <Link
             className="cd-none-sm btn btn-primary btn-arrow view-all-events-btn"
             target="_blank"
-            href="/community/developer-funding/"
+            to="/community/developer-funding/"
           >
             {translate("Get Funding")}
-          </a>
+          </Link>
         </div>
       </section>
       {/* Community Spotlight Wrapper */}
@@ -592,38 +616,38 @@ const CommunityPage: React.FC = () => {
             </h6>
             <p className="card-description">
               {translate(
-                "Thank you for your interest in contributing to XRPL.org."
+                "Thank you for your interest in contributing to XRP Ledger."
               )}
             </p>
             <div className="card-links">
-              <a
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/docs/concepts/networks-and-servers/"
+                to="/docs/concepts/networks-and-servers/"
               >
                 {translate("Networks and Servers")}
-              </a>
-              <a
+              </Link>
+              <Link
                 className="com-card-link"
-                href="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
                 target="_blank"
+                to="/docs/infrastructure/configuration/server-modes/run-rippled-as-a-validator/"
               >
                 {translate("Join UNL")}
-              </a>
-              <a
+              </Link>
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/docs/infrastructure/installation/"
+                to="/docs/infrastructure/installation/"
               >
                 {translate("Install & Configure")}
-              </a>
-              <a
+              </Link>
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/docs/infrastructure/troubleshooting/"
+                to="/docs/infrastructure/troubleshooting/"
               >
                 {translate("Troubleshooting")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -659,7 +683,9 @@ const CommunityPage: React.FC = () => {
               {translate("Contribute to XRPL.org")}
             </h6>
             <h6 className="card-subtitle">
-              {translate("A Community-Driven Resource for All Things XRPL.org")}
+              {translate(
+                "A Community-Driven Resource for All Things XRP Ledger"
+              )}
             </h6>
             <p className="card-description">
               {translate(
@@ -667,13 +693,13 @@ const CommunityPage: React.FC = () => {
               )}
             </p>
             <div className="card-links">
-              <a
+              <Link
                 className="com-card-link"
                 target="_blank"
-                href="/resources/contribute-documentation/"
+                to="/resources/contribute-documentation/"
               >
                 {translate("Read Contributor Guidelines")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

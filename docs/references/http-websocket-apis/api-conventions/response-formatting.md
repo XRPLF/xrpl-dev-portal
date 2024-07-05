@@ -103,7 +103,7 @@ HTTP Status: 200 OK
 
 When the response contains a `warnings` array, each member of the array represents a separate warning from the server. Each such **Warning Object** contains the following fields:
 
-| `Field`   | Type   | Description                                             |
+| Field     | Type   | Description                                             |
 |:----------|:-------|:--------------------------------------------------------|
 | `id`      | Number | A unique numeric code for this warning message.         |
 | `message` | String | A human-readable string describing the cause of this message. Do not write software that relies the contents of this message; use the `id` (and `details`, if applicable) to identify the warning instead. |
@@ -134,7 +134,7 @@ The server only sends this warning if the client is [connected as an admin](../.
 
 This warning includes a `details` field with the following fields:
 
-| Field               | Value  | Description                                   |
+| Field               | Type   | Description                                   |
 |:--------------------|:-------|:----------------------------------------------|
 | `expected_date`     | Number | The time that the first unsupported amendment is expected to become enabled, in [seconds since the Ripple Epoch][]. |
 | `expected_date_UTC` | String | The timestamp, in UTC, when the first unsupported amendment is expected to become enabled. |
@@ -160,7 +160,6 @@ This warning indicates that the server is [amendment blocked](../../../concepts/
 The server administrator must [upgrade `rippled`](../../../infrastructure/installation/index.md) to a version that supports the activated amendments.
 
 ### 1003. This is a reporting server
-
 
 Example warning:
 

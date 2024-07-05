@@ -4,14 +4,7 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "resolveJsonModule": true,
-    "paths": {
-      "@theme/*": [
-        "./@theme/*",
-        "./node_modules/@redocly/theme/src/*"
-      ],
-      "@portal/*": [
-        "./node_modules/@redocly/realm/dist/client/app/*"
-      ]
-    },
+    "module": "es2015",
+    "moduleResolution": "bundler"
   }
 }

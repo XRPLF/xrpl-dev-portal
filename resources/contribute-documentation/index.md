@@ -222,6 +222,7 @@ referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 Markdoc provides three different syntax styles for generating tables.
 
 In most cases, create tables using the pipe character (|) to separate columns and three or more hyphens (---) to create the column headers.
+
 ```
 |          | Head 1 |
 | -------  | ------ |

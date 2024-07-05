@@ -1,25 +1,25 @@
 import * as React from "react";
 import styled from "styled-components";
-import { useThemeConfig } from "@theme/hooks/useThemeConfig";
-import { LanguagePicker } from "@theme/i18n/LanguagePicker";
-import { useI18n, useTranslate } from "@portal/hooks";
+import { useThemeConfig, useThemeHooks } from "@redocly/theme/core/hooks";
+import { LanguagePicker } from "@redocly/theme/components/LanguagePicker/LanguagePicker";
 import { slugify } from "../../helpers";
-import { Link } from "@portal/Link";
-import { ColorModeSwitcher } from "@theme/components/ColorModeSwitcher/ColorModeSwitcher";
-import { Search } from "@theme/components/Search/Search";
+import { Link } from "@redocly/theme/components/Link/Link";
+import { ColorModeSwitcher } from "@redocly/theme/components/ColorModeSwitcher/ColorModeSwitcher";
+import { Search } from "@redocly/theme/components/Search/Search";
 
 // @ts-ignore
 
 const alertBanner = {
-  show: true,
+  show: false,
   message: "XRP Ledger Apex is back in Amsterdam",
   button: "Register Now",
-  link: "https://www.xrpledgerapex.com/?utm_source=xrplorg&utm_medium=web&utm_campaign=banner",
+  link: "https://www.xrpledgerapex.com/?utm_source=email&utm_medium=email_marketing&utm_campaign=EVENTS_XRPL_Apex_2024_Q2&utm_term=events_page_cta_button",
 };
 
 export function Navbar(props) {
   // const [isOpen, setIsOpen] = useMobileMenu(false);
   const themeConfig = useThemeConfig();
+  const { useI18n } = useThemeHooks();
   const { changeLanguage } = useI18n();
   const menu = themeConfig.navbar?.items;
   const logo = themeConfig.logo;
@@ -92,7 +92,7 @@ export function Navbar(props) {
         button={alertBanner.button}
         link={alertBanner.link}
       />
-      <NavWrapper belowAlertBanner={true}>
+      <NavWrapper belowAlertBanner={alertBanner.show}>
         <LogoBlock to={href} img={logo} alt={altText} />
         <NavControls>
           <MobileMenuIcon />
@@ -104,10 +104,10 @@ export function Navbar(props) {
               <Search className="topnav-search" />
             </div>
             <div id="topnav-language" className="nav-item">
-              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon />
+              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon alignment="end" />
             </div>
             <div id="topnav-theme" className="nav-item">
-              <StyledColorModeSwitcher />
+              <ColorModeSwitcher />
             </div>
           </NavItems>
         </TopNavCollapsible>
@@ -120,37 +120,40 @@ const StyledColorModeSwitcher = styled(ColorModeSwitcher)`
   padding: 10px;
 `;
 
-export function AlertBanner(props) {
-  const { message, button, link } = props;
-  return (
-    <div className="top-banner fixed-top">
-      <div className="inner-apex">
-        <span>
-          <p className="mb-0 apex-banner-text">{message}</p>
-        </span>
-        <span>
-          <a href={link} target="_blank" className="apex-btn">
-            {button}
-          </a>
-        </span>
+export function AlertBanner({ message, button, link, show }) {
+  if (show) {
+    return (
+      <div className="top-banner fixed-top">
+        <div className="inner-apex">
+          <span>
+            <p className="mb-0 apex-banner-text">{message}</p>
+          </span>
+          <span>
+            <Link to={link} target="_blank" className="apex-btn">
+              {button}
+            </Link>
+          </span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return null;
 }
 
-export function TopNavCollapsible(props) {
+export function TopNavCollapsible({children}) {
   return (
     <div
       className="collapse navbar-collapse justify-content-between"
       id="top-main-nav"
     >
-      {props.children}
+      {children}
     </div>
   );
 }
 
 export function NavDropdown(props) {
   const { label, items, pathPrefix, labelTranslationKey } = props;
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   const dropdownGroups = items.map((item, index) => {
@@ -164,9 +167,9 @@ export function NavDropdown(props) {
           item2_href = pathPrefix + item2_href;
         }
         return (
-          <a key={index2} className={cls2} href={item2_href}>
+          <Link key={index2} className={cls2} to={item2_href}>
             {translate(item2.labelTranslationKey, item2.label)}
-          </a>
+          </Link>
         );
       });
 
@@ -174,7 +177,9 @@ export function NavDropdown(props) {
 
       return (
         <div key={index} className={clnm}>
-          <h5 className="dropdown-item">{translate(item.labelTranslationKey, item.label)}</h5>
+          <h5 className="dropdown-item">
+            {translate(item.labelTranslationKey, item.label)}
+          </h5>
           {groupLinks}
         </div>
       );
@@ -187,7 +192,7 @@ export function NavDropdown(props) {
         hero_href = pathPrefix + hero_href;
       }
       const splitlabel = item.label.split(" || ");
-      let splittranslationkey = ["",""]
+      let splittranslationkey = ["", ""];
       if (item.labelTranslationKey) {
         splittranslationkey = item.labelTranslationKey.split(" || ");
       }
@@ -195,18 +200,18 @@ export function NavDropdown(props) {
       const description = translate(splittranslationkey[1], splitlabel[1]); // splitlabel[1] might be undefined, that's ok
 
       return (
-        <a
+        <Link
           key={index}
           className="dropdown-item dropdown-hero"
           id={hero_id}
-          href={hero_href}
+          to={hero_href}
         >
           <img id={item.hero} alt={img_alt} src={item.icon} />
           <div className="dropdown-hero-text">
             <h4>{newlabel}</h4>
             <p>{description}</p>
           </div>
-        </a>
+        </Link>
       );
     } else {
       const cls = item.external
@@ -217,9 +222,9 @@ export function NavDropdown(props) {
         item_href = pathPrefix + item_href;
       }
       return (
-        <a key={index} className={cls} href={item_href}>
+        <Link key={index} className={cls} to={item_href}>
           {translate(item.labelTranslationKey, item.label)}
-        </a>
+        </Link>
       );
     }
   });
@@ -283,16 +288,17 @@ export function MobileMenuIcon() {
 }
 
 export function GetStartedButton() {
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
 
   return (
-    <a
+    <Link
       className="btn btn-primary"
-      href={"/docs/tutorials"}
+      to={"/docs/tutorials"}
       style={{ height: "38px", paddingTop: "11px" }}
     >
       {translate("Get Started")}
-    </a>
+    </Link>
   );
 }
 
@@ -311,9 +317,9 @@ export function NavItem(props) {
 export function LogoBlock(props) {
   const { to, img, altText } = props;
   return (
-    <a className="navbar-brand" href="/">
+    <Link className="navbar-brand" to="/">
       <img className="logo" alt={"XRP LEDGER"} height="40" src="data:," />
-    </a>
+    </Link>
   );
 }
 

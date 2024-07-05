@@ -19,6 +19,10 @@ The transaction to authorize a trust line must be signed by the issuing address,
 
 **Caution:** You can only enable Require Auth if your account has no trust lines and no Offers in the XRP Ledger, so you must decide whether or not to use it _before_ you start issuing tokens.
 
+## Reserves
+
+Trust lines are ledger objects that require a reserve of 2 XRP each. To help new users get started, the reserve amounts are waived for the first 2 trust lines you create for a new account. Fund your new account with 10 XRP and create your new trust lines. If you have more than 10 XRP in your account, up to 4 XRP are reserved for your first 2 trust lines. If you remove the trust line later, the reserves are freed up for future use.
+
 ## With Stablecoin Issuing
 
 With a stablecoin on the XRP Ledger and use Authorized Trust Lines, the process of onboarding a new customer might look something like the following:
@@ -36,11 +40,10 @@ Even if you don't intend to use Authorized Trust Lines, you can enable the Requi
 
 
 ## Technical Details
-<!--{# TODO: split these off into one or more tutorials on using authorized trust lines, preferably with both JavaScript and Python code samples. #}-->
 
 ### Enabling Require Auth
 
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send an [AccountSet transaction][] that enables Require Auth using the `asfRequireAuth` flag. (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
+The following is an example of using a locally hosted `rippled`'s [submit method][] to send an [AccountSet transaction][] that enables Require Auth using the `asfRequireAuth` flag. (This method works the same way regardless of whether the address is an issuing address, operational address, or standby address.)
 
 Request:
 
@@ -78,7 +81,7 @@ If you are using the Authorized Trust Lines feature, others cannot hold balances
 
 To authorize a trust line, submit a [TrustSet transaction][] from your issuing address, with the user to trust as the `issuer` of the `LimitAmount`. Leave the `value` (the amount to trust them for) as **0**, and enable the [`tfSetfAuth`](../../../references/protocol/transactions/types/trustset.md#trustset-flags) flag for the transaction.
 
-The following is an example of using a locally-hosted `rippled`'s [submit method][] to send a TrustSet transaction authorizing the customer address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to hold USD issued by the address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`:
+The following is an example of using a locally hosted `rippled`'s [submit method][] to send a TrustSet transaction authorizing the customer address `rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn` to hold USD issued by the address `rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW`:
 
 Request:
 

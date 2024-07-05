@@ -73,6 +73,7 @@ In addition to the [common fields](../common-fields.md), {% code-page-name /%} e
 
 | Flag Name         | Hex Value    | Decimal Value | Corresponding [TrustSet Flag](../../transactions/types/trustset.md#trustset-flags) | Description |
 |-------------------|--------------|---------------|-----------------|---------|
+| `lsfAMMNode`      | `0x01000000` | 16777216      | (None)          | This entry consumed AMM liquidity to complete a [`Payment`](../../transactions/types/payment.md) transaction. |
 | `lsfLowReserve`   | `0x00010000` | 65536         | (None)          | This entry [contributes to the low account's owner reserve](#ripplestate-reserve). |
 | `lsfHighReserve`  | `0x00020000` | 131072        | (None)          | This entry [contributes to the high account's owner reserve](#ripplestate-reserve). |
 | `lsfLowAuth`      | `0x00040000` | 262144        | `tfSetAuth`     | The low account has authorized the high account to hold tokens issued by the low account. |

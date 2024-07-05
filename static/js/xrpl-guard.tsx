@@ -1,4 +1,4 @@
-import { useTranslate } from '@portal/hooks';
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { isFunction } from './type-helpers'
 import { FC } from 'react'
 import { useEffect, useState } from 'react'
@@ -63,7 +63,7 @@ export const XRPLGuard: FC<{ testCheck?: () => boolean, children }> = ({
   testCheck,
   children,
 }) => {
-
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const isXRPLLoaded = useThrottledCheck(
       testCheck ?? (() => typeof xrpl === 'object'),

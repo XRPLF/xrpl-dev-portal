@@ -39,7 +39,7 @@ C) 160ビットの発行者のアカウント識別子
 
 D) 32ビットの発行者が指定する[`NFTokenTaxon`](https://www.merriam-webster.com/dictionary/taxon)
 
-E) 32ビットの（自動生成される）単調増加するのシーケンス番号
+E) 32ビットの（自動生成される）単調増加するシーケンス番号
 
 ![トークンIDの内訳](/docs/img/nftoken1.png "トークンIDの内訳")
 
