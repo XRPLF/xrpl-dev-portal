@@ -21,7 +21,8 @@
             - page: docs/use-cases/payments/peer-to-peer-payments-uc.md
             - page: docs/use-cases/payments/restricting-deposits-uc.md
             - page: docs/use-cases/payments/smart-contracts-uc.md
-        - page: docs/use-cases/tokenization/index.md
+        - page: docs/use-cases/tokenization/index.page.tsx
+          label: Tokenization
           expanded: false
           items:
             - page: docs/use-cases/tokenization/stablecoin-issuer.md
@@ -36,6 +37,7 @@
           items:
             - page: docs/use-cases/defi/algorithmic-trading.md
             - page: docs/use-cases/defi/list-xrp-as-an-exchange.md
+        
     - page: docs/concepts/index.md
       expanded: false
       items:
@@ -128,6 +130,7 @@
                 - page: docs/concepts/tokens/nfts/collections.md
                 - page: docs/concepts/tokens/nfts/guaranteeing-a-fixed-supply.md
                 - page: docs/concepts/tokens/nfts/nft-apis.md
+                - page: docs/concepts/tokens/nfts/non-transferable-tokens.md
             - page: docs/concepts/tokens/transfer-fees.md
             - page: docs/concepts/tokens/decentralized-exchange/index.md
               expanded: false
@@ -184,6 +187,11 @@
                 - page: docs/tutorials/javascript/build-apps/get-started.md
                 - page: docs/tutorials/javascript/build-apps/build-a-browser-wallet-in-javascript.md
                 - page: docs/tutorials/javascript/build-apps/build-a-desktop-wallet-in-javascript.md
+            - page: docs/tutorials/javascript/trade-on-ledger/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees.md
+                - page: docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
@@ -278,7 +286,6 @@
                 - page: docs/tutorials/how-tos/use-tokens/enact-global-freeze.md
                 - page: docs/tutorials/how-tos/use-tokens/freeze-a-trust-line.md
                 - page: docs/tutorials/how-tos/use-tokens/create-an-automated-market-maker.md
-                - page: docs/tutorials/how-tos/use-tokens/earn-passive-income-as-a-liquidity-provider.md
             - page: docs/tutorials/how-tos/use-xrpl-sidechains/index.md
               expanded: false
               items:
@@ -460,6 +467,7 @@
                   expanded: false
                   items:
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/amm_info.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_changes.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/book_offers.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/deposit_authorized.md
                     - page: docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers.md
@@ -484,6 +492,8 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_definitions.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/server_state.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/server-info-methods/version.md
+
                 - page: docs/references/http-websocket-apis/public-api-methods/clio-server/index.md
                   expanded: false
                   items:
@@ -492,6 +502,7 @@
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_history.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nft_info.md
                     - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/nfts_by_issuer.md
+                    - page: docs/references/http-websocket-apis/public-api-methods/clio-methods/version.md
                 - page: docs/references/http-websocket-apis/public-api-methods/utility-methods/index.md
                   expanded: false
                   items:
