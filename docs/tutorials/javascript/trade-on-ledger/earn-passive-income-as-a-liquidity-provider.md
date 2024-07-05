@@ -50,12 +50,18 @@ You can contribute either one or both assets to an AMM pool. Contributing just o
 
 ### 4. Vote on trading fees
 
-This step isn't required, but you're encouraged to submit a vote for a fee structure you believe makes sense.
+This step is optional, but you're encouraged to submit a vote for a fee structure you believe makes sense.
 
-{% code-snippet file="/_code-samples/add-amm-lp/js/add-amm-lp.js" language="js" from="// Vote on fees" before="// Withdraw by redeeming LP tokens" /%}
+{% code-snippet file="/_code-samples/add-amm-lp/js/add-amm-lp.js" language="js" from="// Vote on fees" before="// Get LP tokens value" /%}
 
 
-### 5. Withdraw assets from the AMM
+### 5. Check the value of your LP tokens
+
+This step is optional, but is useful for checking on your LP token values without withdrawing the assets.
+
+{% code-snippet file="/_code-samples/add-amm-lp/js/add-amm-lp.js" language="js" from="// Get LP tokens value" before="// Withdraw by redeeming LP tokens" /%}
+
+### 6. Withdraw assets from the AMM
 
 Similar to depositing assets, you can withdraw either one or both assets from the AMM pool. Withdrawing a single asset incurs a fee, while withdrawing both does not. When you withdraw by redeeming LP Tokens, you are paid out in both assets.
 

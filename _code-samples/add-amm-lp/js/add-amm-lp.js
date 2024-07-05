@@ -109,7 +109,7 @@ if (response_vote.result.meta.TransactionResult == "tesSUCCESS") {
   console.error("Error sending transaction:", response_vote)
 }
 
-// OPTIONAL: Get LP tokens value
+// Get LP tokens value
 console.log("------- Calculate value of my LP tokens -------")
 
 const lp_deposit_data = lp_deposit.result.meta.AffectedNodes
