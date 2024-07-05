@@ -1,17 +1,12 @@
 ---
-html: earn-passive-income-as-a-liquidity-provider.html
 seo:
     description: Provide liquidity for an Automated Market Maker (AMM) and earn income from trading fees.
-status: not_enabled
 labels:
   - Decentralized Exchange
   - Tokens
   - AMM
-steps: ['Connect', 'Generate', 'Acquire tokens', 'Deposit to the AMM', 'Vote on fees', 'Withdraw from the AMM']
 ---
 # Earn Passive Income as a Liquidity Provider
-
-_(Requires the [AMM amendment][])_
 
 Providing liquidity for an [Automated Market Maker (AMM)](../../../concepts/tokens/decentralized-exchange/automated-market-makers.md) can be a great way to earn passive income. By depositing assets into an AMM pool, you'll earn a percentage of the trading fees generated. This tutorial shows how to deposit assets, vote on fees, and withdraw assets.
 
