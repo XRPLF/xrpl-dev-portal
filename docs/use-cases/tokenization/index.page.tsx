@@ -113,8 +113,8 @@ const stats = [
   },
   {
     id: "network-speed",
-    stat: "0.4",
-    description: "Network speed (sec)",
+    stat: "4",
+    description: "Seconds to confirmation",
   },
   {
     id: "fee-per-tx",
@@ -173,20 +173,11 @@ const projects = [
 
 const articles = [
   {
-    time: "JAN 2024",
-    title: "XRP Price Prediction: Will Ripple Make Waves in 2024?",
-    url: "https://www.forbes.com/advisor/au/investing/cryptocurrency/xrp-price-prediction",
-  },
-  {
-    time: "JAN 2024",
-    title: "XRP Could Surge Massively in 2024",
-    url: "https://u.today/xrp-could-surge-massively-at-beginning-of-2024-heres-why",
-  },
-  {
     time: "NOV 2023",
     title: "NFTs and the XRPL: A Marriage of Art and Technology",
     url: "https://medium.com/@MariaSolorzano/title-nfts-and-the-xrpl-a-marriage-of-art-and-technology-cf76a0432693",
   },
+  // TODO: Add more articles that aren't focused on price speculation
 ];
 
 const FeaturedProjects = () => {
