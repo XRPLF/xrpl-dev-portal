@@ -1,9 +1,7 @@
 import React, { useRef, useState } from "react";
-import { useTranslate } from "@portal/hooks";
+import { useThemeHooks } from '@redocly/theme/core/hooks';
 import { NavList } from "shared/components/nav-list";
-import { Link } from '@portal/Link';
-
-const { translate } = useTranslate();
+import { Link } from "@redocly/theme/components/Link/Link";
 
 export const frontmatter = {
   seo: {
@@ -32,69 +30,73 @@ const useCases = [
   },
 ];
 
+const SecurityAdvantageCard = (securityAdvantageContents) => {
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
+  return securityAdvantageContents.map((content) => (
+    <div key={content.subtitle}>
+      <Link to={content.href}><h5 className="card-subhead">{translate(content.subtitle)}:</h5></Link>
+      <div className="card-text">
+        {translate(content.description)}
+      </div>
+    </div>
+  ))
+}
+
 const securityAdvantages = [
   {
     id: "trustlines",
     title: "Trust Lines & Authorized Trust Lines",
-    description: (
-      <>
-        <Link to="/docs/concepts/tokens/fungible-tokens/"><h5 className="card-subhead">{translate("Trust Lines:")}</h5></Link>
-        <div className="card-text">
-          {translate("No spamming of wallets without permission.")}
-        </div>
-        <Link to="/docs/concepts/tokens/fungible-tokens/authorized-trust-lines/"><h5 className="card-subhead">{translate("Authorized Trustlines:")}</h5></Link>
-        <div className="card-text">
-          {translate(
-            "Control who can hold your tokens with allowlisting."
-          )}
-        </div>
-      </>
-    ),
+    contents: [
+      {
+        href: "/docs/concepts/tokens/fungible-tokens/",
+        subtitle: "Trust Lines",
+        description: "No spamming of wallets without permission.",
+      },
+      {
+        href: "/docs/concepts/tokens/fungible-tokens/authorized-trust-lines/",
+        subtitle: "Authorized Trustlines",
+        description: "Control who can hold your tokens with allowlisting.",
+      },
+    ],
   },
   {
     id: "freeze-clawbacks",
     title: "Freeze & Clawbacks",
-    description: (
-      <>
-        <Link to="/docs/concepts/tokens/fungible-tokens/"><h5 className="card-subhead">{translate("Freeze:")}</h5></Link>
-        <div className="card-text">
-          {translate(
-            "If you see signs of suspicious activity, you can suspend trading of your token while investigating the issue."
-          )}
-        </div>
-        <Link to="/docs/concepts/tokens/fungible-tokens/clawing-back-tokens/"><h5 className="card-subhead">{translate("Clawback:")}</h5></Link>
-        <div className="card-text">
-          {translate(
-            "Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity."
-          )}
-        </div>
-      </>
-    ),
+    contents: [
+      {
+        href: "/docs/concepts/tokens/fungible-tokens/",
+        subtitle: "Freeze",
+        description: "If you see signs of suspicious activity, you can suspend trading of your token while investigating the issue.",
+      },
+      {
+        href: "/docs/concepts/tokens/fungible-tokens/clawing-back-tokens/",
+        subtitle: "Clawback",
+        description: "Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity.",
+      },
+    ],
   },
   {
     id: "ntf-tokens",
     title: "Non-transferable Tokens",
-    description: (
-      <>
-        <Link to="/docs/concepts/tokens/nfts/non-transferable-tokens/"><h5 className="card-subhead">{translate("Transferable flag:")}</h5></Link>
-        {translate(
-          "Native support for nontransferable items such as identity tokens, airline credits, and consumer rewards, honored by all on-chain participants."
-        )}
-      </>
-    ),
+    contents: [
+      {
+        href: "/docs/concepts/tokens/nfts/non-transferable-tokens/",
+        subtitle: "Transferable flag",
+        description: "Native support for nontransferable items such as identity tokens, airline credits, and consumer rewards, honored by all on-chain participants.",
+      },
+    ],
   },
   {
     id: "royalties",
     title: "Royalties",
-    subtitle: "Secures Creator Compensation:",
-    description: (
-      <>
-        <Link to="/docs/references/protocol/data-types/nftoken/#transferfee"><h5 className="card-subhead">{translate("NFT Transfer Fees:")}</h5></Link>
-        {translate(
-          "Reliably collect your percentage of the sale price of your tokens."
-        )}
-      </>
-    ),
+    contents: [
+      {
+        href: "/docs/references/protocol/data-types/nftoken/#transferfee",
+        subtitle: "NFT Transfer Fees",
+        description: "Reliably collect your percentage of the sale price of your tokens.",
+      },
+    ],
   },
 ];
 
@@ -135,7 +137,7 @@ const projects = [
   {
     id: "xaman",
     label: "Xaman labs",
-    url: "https://github.com/XRPL-Labs/Xaman-App",
+    url: "https://xumm.app",
   },
   {
     id: "amy",
@@ -245,6 +247,8 @@ const FeaturedProjects = () => {
 
 export default function Tokenization() {
   const modalRef = useRef(null);
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
 
   return (
     <div className="landing page-tokenization">
@@ -277,12 +281,12 @@ export default function Tokenization() {
               <NavList pages={useCases} bottomBorder={false} />
             </div>
             <div className="d-flex">
-              <a
+              <Link
                 className="btn btn-primary d-inline-flex align-items-center"
-                href="/docs"
+                to="/docs"
               >
                 {translate("Quick Start")}
-              </a>{" "}
+              </Link>{" "}
               <a
                 className="ml-4 video-external-link btn-none"
                 target="_blank"
@@ -312,7 +316,7 @@ export default function Tokenization() {
             <div className="security-card" key={advantage.id}>
               <div className="card-body p-6">
                 <h4 className="card-title h6">{translate(advantage.title)}</h4>
-                <div>{advantage.description}</div>
+                {SecurityAdvantageCard(advantage.contents)}
               </div>
             </div>
           ))}

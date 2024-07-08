@@ -378,6 +378,39 @@ Get Free Test XRP: テスト用XRPを入手
 Generate Testnet Credentials: テストネットのアカウントを作成 
 Connect to the XRP Ledger Testnet network to develop and test your apps built on the XRP Ledger, without risking real money or impacting production XRP Ledger users.: XRP Ledger Testnetに接続することで、現実の資産やMainnetユーザに影響を与えることなくXRP Ledger上に構築するアプリを開発・テストすることができます。
 
+# docs/use-cases/tokenization/index.page.tsx
+Work with a variety of tokens supported by the XRP Ledger.: XRP Ledgerでサポートされている様々なトークンを扱いましょう。
+Explore the possibilities of tokenization on the XRP Ledger, revolutionizing ownership, transactions, and value exchange with unparalleled efficiency and security.: XRP Ledgerでのトークン化の可能性を探り、効率とセキュリティに優れた所有権、トランザクション、価値の交換に革命をもたらします。
+Authorized Minter: 認可Minter
+Quick Start: クイックスタート
+Learn more: もっと詳しく
+Check out the security features you can tap into right from the chain without the hassle of piecing together smart contracts.: スマートコントラクトを組み合わせる手間をかけずに、チェーンから直接利用できるセキュリティ機能をご覧ください
+Security advantages: セキュリティ上の利点
+Trust Lines & Authorized Trust Lines: トラストラインと認可トラストライン
+Trust Lines: トラストライン
+No spamming of wallets without permission.: 許可なくウォレットにスパムを送信することはありません。
+Authorized Trustlines: 認可トラストライン
+Control who can hold your tokens with allowlisting.: ホワイトリスト形式で誰がトークンを保持できるかを制御します。
+Freeze & Clawbacks: 凍結とクローバック
+Freeze: 凍結
+If you see signs of suspicious activity, you can suspend trading of your token while investigating the issue.: 不審な活動の兆候が見られた場合は、問題を調査する間、トークンの取引を停止することができます。
+Clawback: クローバック
+"Recover tokens distributed to accounts in error: for example, reclaim funds sent to an account sanctioned for illegal activity.": 誤ってアカウントに送信されたトークンを回収することができます。たとえば、違法行為に対して制裁を受けたアカウントに送金された資金を回収します。
+Non-transferable Tokens: 譲渡不可トークン
+Transferable flag: 譲渡可能フラグ
+Native support for nontransferable items such as identity tokens, airline credits, and consumer rewards, honored by all on-chain participants.: 譲渡不可のアイテム（IDトークン、航空会社のクレジット、消費者向けリワードなど）に対するネイティブサポートがあり、すべてのオンチェーン参加者によって認識されます。
+Royalties: ロイヤリティ
+NFT Transfer Fees: NFTの売買手数料
+Reliably collect your percentage of the sale price of your tokens.: トークンの売却価格の一部を確実に収集します。
+Stats: 統計
+NFTs minted: 作成されたNFT
+NFT trading volume: NFTの取引量
+Seconds to confirmation: トランザクション承認までの秒数
+Avg fee per NFT tx: NFTトランザクションごとの平均手数料
+Featured real world projects: 注目の実世界プロジェクト
+Related Articles: 関連記事
+More related articles: 追加の関連記事
+
 # community/index.page.tsx
 XRPL Community: XRPLコミュニティ
 community.index.h1part1: 開発者とイノベーターによる
