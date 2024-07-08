@@ -89,31 +89,36 @@ export default function CodeSamples() {
             <div className="row pl-4">
               <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_1">
                 <span className="dot" />
-                <h5 className="pb-4 pt-md-5">Fork and clone</h5>
+                <h5 className="pb-4 pt-md-5">{translate('Fork and clone')}</h5>
                 <p className="pb-4">
-                  Fork the <a href="https://github.com/XRPLF/xrpl-dev-portal">xrpl-dev-portal repo</a>. Using git, clone
-                  the fork to your computer.
+                  {translate('resources.contribute.1.part1', 'Fork the ')}
+                  <a href="https://github.com/XRPLF/xrpl-dev-portal">
+                    {translate('resources.contribute.1.part2', 'xrpl-dev-portal repo')}
+                  </a>
+                  {translate('resources.contribute.1.part3', '. Using git, clone the fork to your computer.')}
                 </p>
               </div>
               <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_2">
                 <span className="dot" />
-                <h5 className="pb-4 pt-md-5">Add to folder</h5>
+                <h5 className="pb-4 pt-md-5">{translate('Add to folder')}</h5>
                 <p className="pb-4">
-                  Add your sample code to the <code>content/_code-samples/</code> folder. Be sure to include a{' '}
-                  <code>README.md</code> that summarizes what it does and anything else people should know about it.
+                  {translate('resources.contribute.2.part1', 'Add your sample code to the ')}
+                  <code>content/_code-samples/</code>
+                  {translate('resources.contribute.2.part2', ' folder. Be sure to include a ')}
+                  <code>README.md</code>
+                  {translate('resources.contribute.2.part3', 'that summarizes what it does and anything else people should know about it.')}
                 </p>
               </div>
               <div className=" col-lg-3 pl-4 pl-lg-0 pr-4 contribute  dot contribute_3">
                 <span className="dot" />
-                <h5 className="pb-4 pt-md-5">Commit and push</h5>
-                <p className="pb-4">Commit your changes and push them to your fork on GitHub.</p>
+                <h5 className="pb-4 pt-md-5">{translate('Commit and push')}</h5>
+                <p className="pb-4">{translate('resources.contribute.3.part1', 'Commit your changes and push them to your fork on GitHub.')}</p>
               </div>
               <div className=" col-lg-3 pl-4 pl-lg-0 pr-2 contribute  dot contribute_4 mb-4">
                 <span className="dot" />
-                <h5 className="pb-4 pt-md-5">Open a pull request</h5>
+                <h5 className="pb-4 pt-md-5">{translate('Open a pull request')}</h5>
                 <p className="pb-0 mb-0">
-                  Open a pull request to the original repo. Maintainers will review your submission and suggest changes
-                  if necessary. If the code sample is helpful, it'll be merged and added to XRPL.org!
+                  {translate('resources.contribute.4.part1', "Open a pull request to the original repo. Maintainers will review your submission and suggest changes if necessary. If the code sample is helpful, it'll be merged and added to XRPL.org!")}
                 </p>
               </div>
             </div>

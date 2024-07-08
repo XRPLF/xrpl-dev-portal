@@ -540,16 +540,31 @@ Business acumen: ビジネス知識
 View XRPL Accelerator: XRPLアクセラレータを見る
 $50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
 
+# resources/code-samples.page.tsx
+Start Building with Example Code: コードサンプルから開発を始める
+Code Samples: コードサンプル
+Browse sample code for building common use cases on the XRP Ledger: XRP Ledger上で一般的なユースケースを構築するためのコードサンプルを見ることができます
+Contribute Code Samples: コードサンプルへの貢献
+Help the XRPL community by submitting your own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
+Fork and clone: フォークしてクローン
+resources.contribute.1.part1: 'gitを使い'
+resources.contribute.1.part2: 'xrpl-dev-portalリポジトリ'
+resources.contribute.1.part3: 'をフォークし、自分のデバイスにクローンしましょう'
+Add to folder: フォルダに追加
+resources.contribute.2.part1: ' '
+resources.contribute.2.part2: 'に作成したサンプルコードを追加し、そのコードが何をするのか、そして必要となる事前知識を要約した'
+resources.contribute.2.part3: 'ファイルがあることを確認してください。'
+Commit and push: コミットしてプッシュ
+resources.contribute.3.part1: 変更内容をコミットし、リモートリポジトリにプッシュします
+Open a pull request: プルリクエストを作成
+resources.contribute.4.part1: '元のリポジトリにプルリクエストを提出してください。メンテナーがあなたの提出内容をレビューし、必要であれば変更を提案します。コードサンプルが有益であれば、マージされてXRPL.orgに追加されます！'
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
 Search: 検索
 Search site...: サイトを検索
 Search for articles, training, and code samples...: 記事、トレーニング、コードサンプルを検索...
-Start Building with Example Code: コードサンプルから開発を始める
-Code Samples: コードサンプル
-Browse sample code for building common use cases on the XRP Ledger: XRP Ledger上で一般的なユースケースを構築するためのコードサンプルを見ることができます
-Contribute Code Samples: コードサンプルへの貢献
 Help the XRPL community by submitting your<br> own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
 The XRPL Community: XRPL コミュニティ
 Find the community on the platforms below: 以下のプラットフォームでコミュニティにアクセスできます。
