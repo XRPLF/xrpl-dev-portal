@@ -17,11 +17,11 @@ This list is updated manually. For a live view of amendment voting, see the [XRP
 
 | Name                              | Introduced | Status                        |
 |:----------------------------------|:-----------|:------------------------------|
-| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: TBD{% /badge %} |
-| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: TBD{% /badge %} |
-| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: TBD{% /badge %} |
-| [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: TBD{% /badge %} |
-| [PriceOracle][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: TBD{% /badge %} |
+| [fixAMMv1_1][]                    | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
+| [fixEmptyDID][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
+| [fixPreviousTxnID][]              | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
+| [fixXChainRewardRounding][]       | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
+| [PriceOracle][]                   | v2.2.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.2.0" %}Open for Voting: 2024-06-04{% /badge %} |
 | [DID][]                           | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [XChainBridge][]                  | v2.0.0     | {% badge href="https://xrpl.org/blog/2024/rippled-2.0.0.html" %}Open for Voting: 2024-01-09{% /badge %} |
 | [fixNFTokenReserve][]             | v2.1.0     | {% badge href="https://livenet.xrpl.org/transactions/D708CF1799A27CB982F16FCE4762DD12738737A61E5850480BA51400280E06C4" %}Enabled: 2024-04-12{% /badge %} |
@@ -1052,11 +1052,11 @@ Without this amendment, the code continues to use separate calculations for `STA
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-This amendment ensures that reward shares for cross-chain transactions are always rounded down.
+This amendment ensures that reward shares for cross-chain transactions are always rounded down. This preserves the original intended behavior.
 
-Without this amendment, if the `fixUniversalNumber` amendment is enabled, reward amounts could be rounded up in ways that cause problems.
+Without this amendment, the [XChainBridge][] amendment has an incompatibility with the [fixUniversalNumber][] amendment. When those two amendments are both enabled, the `Number` type may be used for some intermediate calculations of token amounts. In some cases, values that used to round down instead are rounded to nearest, which alters the intended rounding behavior for reward shares in cross-chain transactions.
 
-This amendment has no effect unless the [XChainBridge][] amendment is also enabled.
+This amendment restores the intended rounding behavior. It has no effect unless both the [XChainBridge][] and [fixUniversalNumber][] amendments are also enabled.
 
 
 ### Flow
