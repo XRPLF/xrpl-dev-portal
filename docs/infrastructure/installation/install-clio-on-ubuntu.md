@@ -10,7 +10,10 @@ labels:
 
 This page describes the recommended instructions for installing the latest stable version of Clio on **Ubuntu Linux 20.04 or higher** using the [`apt`](https://ubuntu.com/server/docs) utility.
 
-These instructions install a binary that has been compiled by Ripple. For instructions on how to build Clio from source, see the [Clio source code repository](https://github.com/XRPLF/clio).
+These instructions install an Ubuntu package that has been compiled and published by Ripple. You can also:
+
+- Download binaries, including for nightly and preview builds, from the [Clio releases page on GitHub](https://github.com/XRPLF/clio/releases/). (Expand the **Assets** section and choose the appropriate version for your OS.)
+- [Build Clio from source](https://github.com/XRPLF/clio/blob/develop/docs/build-clio.md).
 
 
 ## Prerequisites
@@ -19,7 +22,9 @@ Before you install Clio, you must meet the following requirements.
 
 - Ensure that your system meets the [system requirements](system-requirements.md).
 
-    **Note:** Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
+    {% admonition type="info" name="Note" %}
+    Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
+    {% /admonition %}
 
 -  You need compatible versions of CMake and Boost. Clio requires C++20 and Boost 1.75.0 or higher.
 
@@ -49,7 +54,9 @@ Before you install Clio, you must meet the following requirements.
     sudo apt -y update
     ```
 
-    **Tip:** If you have already installed an up-to-date version of `rippled` on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the `rippled` install process. Resume from step 5, "Fetch the Ripple repository."
+    {% admonition type="success" name="Tip" %}
+    If you have already installed an up-to-date version of `rippled` on the same machine, you can skip the following steps for adding Ripple's package repository and signing key, which are the same as in the `rippled` install process. Resume from step 6, "Fetch the Ripple repository."
+    {% /admonition %}
 
 2. Install utilities:
 
@@ -84,7 +91,7 @@ Before you install Clio, you must meet the following requirements.
 
     In particular, make sure that the fingerprint matches. (In the above example, the fingerprint is on the third line, starting with `C001`.)
 
-4. Add the appropriate Ripple repository for your operating system version:
+5. Add the appropriate Ripple repository for your operating system version:
 
     ```
     echo "deb [signed-by=/usr/local/share/keyrings/ripple-key.gpg] https://repos.ripple.com/repos/rippled-deb focal stable" | \
@@ -93,29 +100,24 @@ Before you install Clio, you must meet the following requirements.
 
     The above example is appropriate for **Ubuntu 20.04 Focal Fossa**.
 
-5. Fetch the Ripple repository.
+    If you want access to development or pre-release versions, use one of the following instead of `stable`:
+
+    - `unstable` - Pre-release builds such as betas or release candidates
+    - `nightly` - Nightly development builds based on the [`develop` branch](https://github.com/XRPLF/Clio/tree/develop))
+
+6. Fetch the Ripple repository.
 
     ```
     sudo apt -y update
     ```
 
-6. Install the Clio software package. There are two options:
+7. Install the Clio software package.
 
-    - To run `rippled` on the same machine, install the `clio` package, which sets up both servers:
+    ```
+    sudo apt -y install clio
+    ```
 
-        ```
-        sudo apt -y install clio
-        ```
-
-    - To run Clio on a separate machine from `rippled`, install the `clio-server` package, which sets up Clio only:
-
-        ```
-        sudo apt -y install clio-server
-        ```
-
-7. If you are running `rippled` on a separate machine, modify your Clio config file to point to it. You can skip this step if you used the `clio` package to install both on the same machine.
-
-
+8. Modify your config files so that Clio can connect to your `rippled` server(s).
 
     1. Edit the Clio server's config file to modify the connection information for the `rippled` server. The package installs this file at `/opt/clio/etc/config.json`.
 
@@ -130,15 +132,19 @@ Before you install Clio, you must meet the following requirements.
         ]
         ```
 
-        This includes:
+        Each entry in the `etl_sources` JSON array should contain the following fields:
 
-        - The IP of `rippled` server.
-        - The port where `rippled` accepts unencrypted WebSocket connections.
-        - The port where `rippled` accepts gRPC requests.
+        | Field       | Type   | Description |
+        |-------------|--------|-------------|
+        | `ip`        | String | The IP address of the `rippled` server. |
+        | `ws_port`   | String | The port where `rippled` accepts unencrypted (non-admin) WebSocket connections. The Clio server forwards some types of API requests to this port. |
+        | `grpc_port` | String | The port where `rippled` accepts gRPC requests. |
 
-        **Note** You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
+        {% admonition type="info" name="Note" %}
+        You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
+        {% /admonition %}
 
-        The [example config file](https://github.com/XRPLF/clio/blob/develop/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
+        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
 
     2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/rippled.cfg`.
 
@@ -160,15 +166,17 @@ Before you install Clio, you must meet the following requirements.
             secure_gateway = 127.0.0.1
             ```
 
-            **Tip:** If you are not running Clio on the same machine as `rippled`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
+            {% admonition type="warning" name="Caution" %}
+            If you are not running Clio on the same machine as `rippled`, change the `secure_gateway` in the example stanza to use the IP address of the Clio server.
+            {% /admonition %}
 
-8. Enable and start the Clio systemd service.
+9. Enable and start the Clio systemd service.
 
     ```
     sudo systemctl enable clio
     ```
 
-9. Start the `rippled` and Clio servers.
+10. Start the `rippled` and Clio servers.
 
     ```
     sudo systemctl start rippled
