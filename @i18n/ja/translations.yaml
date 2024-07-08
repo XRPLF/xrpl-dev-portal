@@ -652,6 +652,27 @@ resources.dev-tools.toml-checker.account.description.part1: XRP Ledgerのアド�
 Check account: アカウントをチェック
 Wallet Address to check: チェックするウォレットアドレス
 
+# resources/dev-tools/domain-verifier.page.tsx
+This tool allows you to verify that domain verification is properly configured.: このツールを使用すると、ドメイン検証が正しく設定されているかどうかを確認できます。
+Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.: validator-keys.jsonファイルにあるマニフェストを入力してください。これはバリデータの秘密鍵とは異なるものです。
+"To do this with the validator-keys-tool use the following command:": これをvalidator-keys-toolで行うには、次のコマンドを使用します。
+Verify: 検証
+Your Manifest Here: マニフェスト情報を入力してください
+Parsing TOML data...: TOMLデータを解析中...
+Validators: バリデータ
+Success: 成功
+Wrong type - should be table-array: 間違ったタイプ - テーブル配列である必要があります
+Domain Verification Succeeded: ドメイン検証に成功しました
+Domain Verification Failed: ドメイン検証に失敗しました
+The validator key for this manifest was not found in the TOML file: このマニフェストのバリデータキーがTOMLファイルに見つかりませんでした
+No Validators Found: バリデータが見つかりません
+"Error decoding manifest:": マニフェストのデコードエラー
+Domain not found in manifest: マニフェストにドメインが見つかりません
+Checking: 確認中
+resources.dev-tools.domain-verifier.checking.part1: ' '
+resources.dev-tools.domain-verifier.checking.part2: を確認中
+Found: 見つかりました
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
