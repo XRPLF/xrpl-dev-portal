@@ -55,7 +55,7 @@ This step is optional, but you're encouraged to submit a vote for a fee structur
 {% code-snippet file="/_code-samples/add-amm-lp/js/add-amm-lp.js" language="js" from="// Vote on fees" before="// Get LP tokens value" /%}
 
 
-### 5. Check the value of your LP tokens
+### 5. Wait for your LP Tokens to accrue value
 
 This step is optional, but is useful for checking on your LP token values without withdrawing the assets.
 
