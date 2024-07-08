@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router-dom";
 import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { Link } from "@redocly/theme/components/Link/Link";
 import {
   JsonParam,
   StringParam,
@@ -213,12 +214,12 @@ export function WebsocketApiTool() {
                 />
               )}
               {currentMethod.link && (
-                <a
+                <Link
                   className="btn btn-outline-secondary api-readmore"
-                  href={currentMethod.link}
+                  to={currentMethod.link}
                 >
                   {translate("Read more")}
-                </a>
+                </Link>
               )}
             </div>
 
@@ -259,8 +260,8 @@ export function WebsocketApiTool() {
                     data-target="#wstool-1-connection-settings"
                   >
                     {`${selectedConnection.shortname}${
-                      connected ? " (Connected)" : " (Not Connected)"
-                    }${connectionError ? " (Failed to Connect)" : ""}`}
+                      connected ? ` (${translate('Connected')})` : ` (${translate('Not Connected')})`
+                    }${connectionError ? ` (${translate('Failed to Connect')})` : ""}`}
                   </button>
                   {isConnectionModalVisible && (
                     <ConnectionModal

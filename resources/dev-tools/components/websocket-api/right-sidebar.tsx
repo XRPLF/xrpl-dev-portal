@@ -25,14 +25,22 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
       <ul className="command-list" id="command_list">
         {commandList.map((list, index) => (
           <Fragment key={index}>
-            <li className="separator">{list.group}</li>
+            <li className="separator">
+              {
+                list.group.endsWith("Methods") ?
+                `${list.group.replace('Methods', '')}${translate('Methods')}` :
+                list.group.endsWith("Examples") ?
+                  `${list.group.replace('Examples', '')}${translate('Examples')}` :
+                  translate(list.group)
+              }
+            </li>
             {list.methods.map((method) => (
               <li
                 className={`method${method === currentMethod ? " active" : ""}`}
                 key={method.name}
               >
                 <Link
-                  to={`resources/dev-tools/websocket-api-tool#${slugify(method.name)}`}
+                  to={`/resources/dev-tools/websocket-api-tool#${slugify(method.name)}`}
                   onClick={() => setCurrentMethod(method)}
                 >
                   {method.name}&nbsp;
@@ -49,7 +57,7 @@ export const RightSideBar: React.FC<RightSideBarProps> = ({
                       className="status clio_only"
                       title="This method is only available from the Clio server."
                     >
-                      <i className=" fa fa-exclamation-circle"></i>
+                      <i className="fa fa-exclamation-circle"></i>
                     </span>
                   )}
                 </Link>

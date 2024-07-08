@@ -616,6 +616,28 @@ expand tx: txを展開
 expand all: すべて展開
 collapse all: すべて閉じる
 
+# resources/dev-tools/websocket-api-tool.page.tsx
+# TODO: translate currentMethod.description
+Read more: 詳細を見る
+Request: リクエスト
+Send request: リクエストを送信
+Connected: 接続済み
+Not Connected: 未接続
+Failed to Connect: 接続に失敗
+Responses: レスポンス
+"Keep last:": 表示数
+# resources/dev-tools/websocket-api/connection-modal.tsx
+Connection Settings: 接続先設定
+Close: 閉じる
+# resources/dev-tools/websocket-api/curl-modal.tsx
+cURL Syntax: cURL構文
+resources.dev-tools.websocket-api.curl.modal.desc.part1: コマンドラインインターフェースから
+resources.dev-tools.websocket-api.curl.modal.desc.part2: を使用してこれと同等のJSON-RPCリクエストを行うには、以下の構文を使用します。
+# resources/dev-tools/websocket-api/right-sidebar.tsx
+API Methods: APIメソッド
+Methods: メソッド
+Examples: の例
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -662,7 +684,6 @@ References and APIs: リファレンスとAPI
 Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
 Status: ステータス
-Not Connected: 接続されていません
 Transaction History: トランザクション履歴
 Initialize: 初期化
 Set up the necessary Testnet XRP addresses to send test payments.: テスト支払いに必要なTestnet XRPアドレスを設定する。
