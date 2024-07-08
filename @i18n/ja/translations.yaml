@@ -700,6 +700,40 @@ Balance: 残高
 Sequence Number: シーケンス番号
 Waiting...: お待ちください...
 
+# resources/dev-tools/tx-sender.page.tsx
+resources.dev-tool.tx-sender.content.part1: あなたが選択した
+resources.dev-tool.tx-sender.content.part2: アドレスにトランザクションを送信し、どのように受信トランザクションを管理し、レスポンスを行っているかをテストすることができます。
+Initialize: 初期化
+Set up the necessary Testnet XRP addresses to send test payments.: テスト支払いに必要なTestnet XRPアドレスを設定する。
+Destination Address: 送金先のアドレス
+Send transactions to this XRP Testnet address: このXRP Testnetアドレスに送信
+Send Transaction: トランザクション送信
+Send XRP Payment: XRPを送信
+drops of XRP: XRPのdrop数
+resources.dev-tool.tx-sender.send-xrp-desc.part1: ' '
+resources.dev-tool.tx-sender.send-xrp-desc.part2: シンプルなXRP同士の支払い
+resources.dev-tool.tx-sender.send-xrp-desc.part3: を送信します。
+(Getting ready to send partial payments): （Partial Paymentの準備中）
+Send Partial Payment: Partial Paymentを送信する
+# TODO: translate following content desctiptions
+# Deliver a small amount of XRP with a large Amount value, to test your handling of partial payments.
+# Create a time-based escrow of 1 XRP for the specified number of seconds.
+# Create a payment channel and fund it with the specified amount of XRP.
+# Your destination address needs a trust line to (the test sender) for the currency in question. Otherwise, you'll get tecPATH_DRY.
+# The test sender creates a trust line to your account for the given currency.
+Create Escrow: Escrowを作成
+seconds: 秒
+Finish automatically: 自動的に終了
+(Waiting to release Escrow when it's ready): （Escrowの解放を待っています。）
+Create Payment Channel: Payment Channelを作成
+Send Issued Currency: トークンを送信
+Trust for: トラストラインの設定
+# resources/dev-tools/components/StatusSidebar.tsx
+"Sending Address:": 送信元アドレス
+(None): (なし)
+"Testnet XRP Available:": 利用可能なTestnet XRP
+Transaction History: トランザクション履歴
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -746,25 +780,7 @@ References and APIs: リファレンスとAPI
 Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
 Status: ステータス
-Transaction History: トランザクション履歴
-Initialize: 初期化
-Set up the necessary Testnet XRP addresses to send test payments.: テスト支払いに必要なTestnet XRPアドレスを設定する。
-Destination Address: 送金先のアドレス
-Send transactions to this XRP Testnet address: このXRP Testnetのアドレスに送信
-Send Transaction: トランザクション送信
 (loading): （ローディング中）
-Send XRP Payment: XRPを送信する
-drops of XRP: XRPのdrop数
-Send a <a href=\send-xrp.html\>simple XRP-to-XRP payment</a>.: XRP-to-XRPのシンプルな支払いを送信する
-(Getting ready to send partial payments): （Partial Paymentの準備中）
-Send Partial Payment: Partial Paymentを送信する
-Create Escrow: Escrowを作成
-seconds: 秒
-Finish automatically: 自動的に終了
-(Waiting to release Escrow when it's ready): （Escrowの解放を待っています。）
-Create Payment Channel: Payment Channelを作成
-Send Issued Currency: トークンを送信
-Trust for: トラストラインの設定
 Release Notes: リリースノート
 Carbon Markets/Sustainability: 持続可能性
 Ledger City is a crypto real estate game powered by the XRP Ledger.: Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。

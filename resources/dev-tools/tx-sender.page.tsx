@@ -181,9 +181,9 @@ function TxSenderBody(): React.JSX.Element {
                 <section className="container-fluid pt-3 p-md-3">
                     <h1>{translate("Transaction Sender")}</h1>
                     <div className="content">
-                        <p>{translate("This tool sends transactions to the ")}
-                            <a href="dev-tools/xrp-faucets">{translate("XRP Testnet")}</a>
-                            {translate(" address of your choice so you can test how you monitor and respond to incoming transactions.")}
+                        <p>{translate("resources.dev-tool.tx-sender.content.part1", "This tool sends transactions to the ")}
+                            <a href="../xrp-faucets">{translate("XRP Testnet")}</a>
+                            {translate("resources.dev-tool.tx-sender.content.part2", " address of your choice so you can test how you monitor and respond to incoming transactions.")}
                         </p>
                         <form>
                             <InitButton 
@@ -223,7 +223,7 @@ function TxSenderBody(): React.JSX.Element {
                                 {{
                                     buttonText: "Send XRP Payment",
                                     units: "drops of XRP",
-                                    longerDescription: (<div>{translate("Send a ")}<a href="send-xrp.html">{translate("simple XRP-to-XRP payment")}</a>{translate(".")}</div>),
+                                    longerDescription: (<div>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part1", "Send a ")}<a href="send-xrp.html">{translate("resources.dev-tool.tx-sender.send-xrp-desc.part2", "simple XRP-to-XRP payment")}</a>{translate("resources.dev-tool.tx-sender.send-xrp-desc.part3", ".")}</div>),
                                 }}
                                 inputSettings={
                                 {
