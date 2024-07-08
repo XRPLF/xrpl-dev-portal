@@ -640,28 +640,38 @@
       labelTranslationKey: sidebar.resources.codesamples
       page: resources/code-samples.page.tsx
     - group: Dev Tools
+      labelTranslationKey: sidebar.resources.dev-tools
       page: resources/dev-tools/index.page.tsx
       expanded: false
       items:
         - label: RPC Tool
+          labelTranslationKey: sidebar.resources.dev-tools.rpc-tool
           page: resources/dev-tools/rpc-tool.page.tsx
         - label: WebSocket API Tool
+          labelTranslationKey: sidebar.resources.dev-tools.websocket-api-tool
           page: resources/dev-tools/websocket-api-tool.page.tsx
         - label: xrp-ledger.toml Checker
+          labelTranslationKey: sidebar.resources.dev-tools.xrp-ledger-toml-checker
           page: resources/dev-tools/xrp-ledger-toml-checker.page.tsx
         - label: Domain Verifier
+          labelTranslationKey: sidebar.resources.dev-tools.domain-verifier
           page: resources/dev-tools/domain-verifier.page.tsx
         - label: XRP Faucets
+          labelTranslationKey: sidebar.resources.dev-tools.xrp-faucets
           page: resources/dev-tools/xrp-faucets.page.tsx
         - label: Transaction Sender
+          labelTranslationKey: sidebar.resources.dev-tools.tx-sender
           page: resources/dev-tools/tx-sender.page.tsx
     - label: XRPL Learning Portal
+      labelTranslationKey: sidebar.resources.xrpl-learning-portal
       href: https://learn.xrpl.org/
       external: true
     - label: XRPL Brand Kit
+      labelTranslationKey: sidebar.resources.xrpl-brand-kit
       href: /XRPL_Brand_Kit.zip
       external: true
     - label: Ledger Explorer
+      labelTranslationKey: sidebar.resources.ledger-explorer
       href: https://livenet.xrpl.org/
       external: true
     - page: resources/known-amendments.md
@@ -673,6 +683,7 @@
       expanded: false
       items:
         - label: Contributor Code of Conduct
+          labelTranslationKey: sidebar.resources.contribute-documentation.contributor-code-of-conduct
           href: https://github.com/XRPLF/xrpl-dev-portal/blob/master/CODE-OF-CONDUCT.md
           external: true
         - page: resources/contribute-documentation/documentation-translations.md

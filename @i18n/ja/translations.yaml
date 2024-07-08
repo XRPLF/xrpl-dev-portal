@@ -20,11 +20,24 @@ theme.footer.about: 概要
 theme.footer.docs: ドキュメント
 theme.footer.resources: リソース
 theme.footer.community: コミュニティ
+
 sidebar.docs: ドキュメント
 sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
 sidebars.resources: リソース
 sidebar.resources.codesamples: コードサンプル
+sidebar.resources.dev-tools: 開発者ツール
+sidebar.resources.dev-tools.rpc-tool: RPCツール
+sidebar.resources.dev-tools.websocket-api-tool: WebSocket APIツール
+sidebar.resources.dev-tools.xrp-ledger-toml-checker: xrp-ledger.tomlチェッカー
+sidebar.resources.dev-tools.domain-verifier: ドメイン検証ツール
+sidebar.resources.dev-tools.xrp-faucets: XRP Faucets
+sidebar.resources.dev-tools.tx-sender: トランザクション送信ツール
+sidebar.resources.xrpl-learning-portal: XRPL学習ポータル
+sidebar.resources.xrpl-brand-kit: XRPLブランドキット
+sidebar.resources.ledger-explorer: エクスプローラ
+sidebar.resources.contribute-documentation.contributor-code-of-conduct: 行動規範
+
 topnav.about.xrp-ledger: XRP Ledger
 topnav.about.xrpl-overview: XRPLの概要
 topnav.about.use-cases-featured-projects: ユースケースと注目プロジェクト
@@ -62,7 +75,6 @@ topnav.resources.contribute-code: コードへの貢献
 topnav.resources.contribute-documentation: ドキュメントへの貢献
 topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
-
 topnav.community.get-involved: 参加する
 topnav.community.events: イベント
 topnav.community.ambassadors: アンバサダー
@@ -72,6 +84,7 @@ topnav.community.dev-blog: 開発者ブログ
 topnav.community.xrpl-grants: XRPL Grants
 topnav.community.github: GitHub
 topnav.community.report-a-scam: 詐欺の報告
+
 footer.about.xrpl-overview: XRPLの概要
 footer.about.use-cases-projects: ユースケースとプロジェクト
 footer.about.history: 歴史
