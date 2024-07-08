@@ -673,6 +673,33 @@ resources.dev-tools.domain-verifier.checking.part1: ' '
 resources.dev-tools.domain-verifier.checking.part2: を確認中
 Found: 見つかりました
 
+# resources/dev-tools/xrp-faucets.page.tsx
+Servers: サーバ
+resources.dev-tool.faucet.content.part1: これらのは、
+resources.dev-tool.faucet.content.part2: XRP Ledger並列テストネットワーク
+resources.dev-tool.faucet.content.part3: はXRP Ledgerやその上に構築されたソフトウェアへの変更を、実際の資金を使わずにテストするためのプラットフォームを提供します。
+resources.dev-tool.faucet.content.part4: これらの資金は
+resources.dev-tool.faucet.content.part5: テストのみ
+resources.dev-tool.faucet.content.part6: を目的としています。テストネットワークの履歴と残高は必要に応じてリセットされます。Devnetは警告なしにリセットされることがあります。
+resources.dev-tool.faucet.content.part7: これらのネットワーク上のすべての残高とXRPは、メインネットとは別のものです。安全のため、テストネットやDevnetの認証情報をメインネットで使用しないでください。
+"Choose Network:": "ネットワークを選択:"
+Mainnet-like network for testing applications.: アプリケーションのテスト用のメインネットに似たネットワーク。
+Preview of upcoming amendments.: 今後のAmendmentのプレビューネットワーク。
+Hooks (L1 smart contracts) enabled Xahau testnet.: Hooks（L1スマートコントラクト）が有効化されたXahau Networkのテストネット。
+resources.dev-tools.faucet.cred-btn.part1: ' '
+resources.dev-tools.faucet.cred-btn.part2: のアカウントを生成
+resources.dev-tools.faucet.your-cred.part1: 生成した
+resources.dev-tools.faucet.your-cred.part2: のアカウント情報
+resources.dev-tools.faucet.error.part1: ' '
+resources.dev-tools.faucet.error.part2: のFaucetでエラーが発生しました。再度お試しください。
+Generating keys..: キーを生成中...
+Address: アドレス
+Secret: シークレット
+Funding account...: アカウントに資金を供給中...
+Balance: 残高
+Sequence Number: シーケンス番号
+Waiting...: お待ちください...
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
