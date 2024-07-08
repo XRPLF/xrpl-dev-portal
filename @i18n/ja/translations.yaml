@@ -638,6 +638,20 @@ API Methods: APIメソッド
 Methods: メソッド
 Examples: の例
 
+# resources/dev-tools/xrp-ledger-toml-checker.page.tsx
+resources.dev-tools.toml-checker.p.part1: もしあなたがXRP Ledgerバリデータを運営していたり、XRP Ledgerをビジネスで利用しているのであれば、XRP Ledgerの利用状況に関する情報を、機械読み取り可能な
+resources.dev-tools.toml-checker.p.part2: ファイル
+resources.dev-tools.toml-checker.p.part3: で世界中に提供することができます。
+Look Up By Domain: ドメインで検索
+resources.dev-tools.toml-checker.domain.description.part1: ' '
+resources.dev-tools.toml-checker.domain.description.part2: が構文的に正しく、正しくデプロイされているかどうかを確認することができます。
+Check toml file: tomlファイルをチェック
+example.com (Domain name to check): example.com (チェックするドメイン名)
+Look Up By Account: アカウントで検索
+resources.dev-tools.toml-checker.account.description.part1: XRP Ledgerのアドレスを入力し、そのアカウントがドメインによって所有されているかどうかを確認します。
+Check account: アカウントをチェック
+Wallet Address to check: チェックするウォレットアドレス
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
