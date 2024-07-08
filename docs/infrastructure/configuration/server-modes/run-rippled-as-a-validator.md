@@ -67,7 +67,7 @@ Enabling validation on your `rippled` server means providing a validator token i
 
 In a secure location **not** on your validator:
 
-1. Generate a validator key pair using the `create_keys` command. You can find it in the rippled package:
+1. Generate a validator key pair using the `validator-keys` tool, which is included in the `rippled` package:
 
     ```
     $ cd /opt/ripple/bin/
