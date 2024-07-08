@@ -559,6 +559,36 @@ resources.contribute.3.part1: 変更内容をコミットし、リモートリ�
 Open a pull request: プルリクエストを作成
 resources.contribute.4.part1: '元のリポジトリにプルリクエストを提出してください。メンテナーがあなたの提出内容をレビューし、必要であれば変更を提案します。コードサンプルが有益であれば、マージされてXRPL.orgに追加されます！'
 
+# resources/dev-tools/index.page.tsx
+Use the developer tools to test, explore, and validate XRP Ledger API requests and behavior.: 開発者ツールを使用して、XRP Ledger APIのリクエストと動作をテスト、調査、検証しましょう。
+Dev Tools: 開発者ツール
+Explorers: エクスプローラ
+API Access: APIアクセス
+Other: その他
+XRPL Explorer: XRPLエクスプローラ
+View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.: 新しいレジャーバージョンの検証結果をリアルタイムで表示したり、XRP Ledgerサーバの位置をチャートで表示します。
+Bithomp Explorer: Bithompエクスプローラ
+Explore public ledger data including accounts' transaction history and known names.: アカウントのトランザクション履歴や既知のアカウント名など、公開されたレジャーデータを調査します。
+XRPScan: XRPScan
+Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.: レジャーのアクティビティを調査し、リアルタイムでAmendmentの投票を表示したり、アカウント情報を取得します。APIアクセスも可能です。
+Token List: トークン一覧
+See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.: XRP Ledgerで発行されたすべてのトークンを見ることができます。また、ボタンをクリックするだけでカスタムトークンを発行するためのプリセットツールを使用できます。
+RPC Tool: RPCツール
+Print raw information about an XRP Ledger account, transaction, or ledger.: XRP Ledgerのアカウント、トランザクション、またはレジャーに関する生データを表示します。
+Technical Explorers: Technicalエクスプローラ
+Browse API objects from the ledger with real-time updates.: リアルタイムで更新されるレジャーからのAPIオブジェクトを確認します。
+Domain Verification Checker: ドメイン検証チェッカー
+Verify your validator's domain.: バリデータのドメインを検証します。
+xrp-ledger.toml Checker: xrp-ledger.tomlチェッカー
+Verify that your xrp-ledger.toml file is set up properly.: xrp-ledger.tomlファイルが正しく設定されているかを確認します。
+Binary Visualizer: バイナリビジュアライザ
+Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.: XRP Ledgerのネイティブバイナリ形式を解析し、生の構造を部品に分解したビジュアル表現を提供します。
+Token Metadata Lookup: トークンメタデータ検索
+Query known information about any token issued on the XRP Ledger.: XRP Ledgerで発行されたトークンに関する既知の情報を問い合わせます。
+Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
+Open a pull Request: プルリクエストを作成する
+Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool.: ツールのアイデアを提出したり、ツールを開発した場合はプルリクエストを開いて、XRP Ledgerコミュニティに貢献しましょう。
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -581,12 +611,6 @@ Review guidelines for using XRPL design assets: XRPLのデザインアセット�
 XRPL Assets: XRPLのアセット
 Download the PDF and Assets: PDFとアセットをダウンロード
 A community-driven resource for all things XRPL.org: XRPとXRP Ledgerのあらゆるものを提供する、コミュニティ主体のリソース
-Dev Tools: 開発者ツール
-Explorers: エクスプローラ
-API Access: APIアクセス
-Other: その他
-Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
-Open a pull Request: プルリクエストを作成する
 Full documentation index: 全ドキュメントの目次
 See Everything: 全てを見る
 rippled API Reference: rippled APIリファレンス

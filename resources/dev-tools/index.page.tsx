@@ -38,7 +38,7 @@ const explorers_tools = [
     title: "Token List",
     description:
       "See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.",
-    href: "https://xumm.community/tokens",
+    href: "https://xrpl.services/tokens",
     img: require("../../static/img/dev-tools/tokenlist.png"),
   },
 ];
@@ -48,7 +48,7 @@ const api_access_tools = [
     id: "websocket",
     title: "WebSocket Tool",
     description:
-      "Send sample requests and get responses from the rippled API. ",
+      "Send sample requests and get responses from the rippled API.",
     href: "websocket-api-tool",
     img: require("../../static/img/dev-tools/websocket-tool.png"),
   },
@@ -63,7 +63,7 @@ const api_access_tools = [
   {
     id: "technical-explorer",
     title: "Technical Explorer",
-    description: "Browse API objects from the ledger with real-time updates. ",
+    description: "Browse API objects from the ledger with real-time updates.",
     href: "https://explorer.xrplf.org/",
     img: require("../../static/img/dev-tools/technical-explorer.png"),
   },
@@ -130,7 +130,7 @@ export default function DevTools() {
             <div className="d-flex flex-column-reverse">
               <p className="mb-0">
                 {translate(
-                  "Use the developer tools to test, explore, and validate XRP Ledger\n                    API requests and behavior."
+                  "Use the developer tools to test, explore, and validate XRP Ledger API requests and behavior."
                 )}
               </p>
               <h3 className="eyebrow mb-3"> {translate("Dev Tools")}</h3>
@@ -204,8 +204,8 @@ export default function DevTools() {
                         <img src={card.img} alt={`${card.title} Screenshot`} />
                       )}
                       <div className="card-body">
-                        <h4 className="card-title h5">{card.title}</h4>
-                        <p className="card-text">{card.description}</p>
+                        <h4 className="card-title h5">{translate(card.title)}</h4>
+                        <p className="card-text">{translate(card.description)}</p>
                       </div>
                       <div className="card-footer">&nbsp;</div>
                     </a>
@@ -234,8 +234,8 @@ export default function DevTools() {
                         )
                       }
                       <div className="card-body">
-                        <h4 className="card-title h5">{card.title}</h4>
-                        <p className="card-text">{card.description}</p>
+                        <h4 className="card-title h5">{translate(card.title)}</h4>
+                        <p className="card-text">{translate(card.description)}</p>
                       </div>
                       <div className="card-footer">&nbsp;</div>
                     </a>
@@ -264,8 +264,8 @@ export default function DevTools() {
                         )
                       }
                       <div className="card-body">
-                        <h4 className="card-title h5">{card.title}</h4>
-                        <p className="card-text">{card.description}</p>
+                        <h4 className="card-title h5">{translate(card.title)}</h4>
+                        <p className="card-text">{translate(card.description)}</p>
                       </div>
                       <div className="card-footer">&nbsp;</div>
                     </a>
