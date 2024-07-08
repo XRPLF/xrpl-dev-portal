@@ -602,6 +602,20 @@ Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
 Open a pull Request: プルリクエストを作成する
 Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool.: ツールのアイデアを提出したり、ツールを開発した場合はプルリクエストを開いて、XRP Ledgerコミュニティに貢献しましょう。
 
+# resources/dev-tools/rpc-tool.page.tsx
+This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).: これは、アカウント(クラシックアドレス)、トランザクション(ハッシュ)、またはレジャー(シーケンス番号)に関する実際の情報を表示するためのデバッグツールです。
+resourses.rpc-tool.help-block.part1: ' '
+resourses.rpc-tool.help-block.part2: ' のようなアカウントで試してみましょう。'
+Get info: 情報を見る
+Input is not a valid address or transaction hash: 入力値が有効なアドレスまたはトランザクションハッシュではありません
+Result: 結果
+Permalink: パーマリンク
+Explorer: エクスプローラ
+expand tx: txを展開
+(last 20): (直近20件)
+expand all: すべて展開
+collapse all: すべて閉じる
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -647,17 +661,6 @@ Sorry, this page is not available in your language.: 申し訳ありませんが
 References and APIs: リファレンスとAPI
 Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
-Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>.: <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>のようなアカウントで試してみてください。
-Get info: 情報を見る
-Result: 結果
-Permalink: パーマリンク
-Explorer: エクスプローラ
-expand all: すべて展開
-collapse all: すべて閉じる
-(last 20): (直近20件)
-expand tx: txを展開
-next 20: 次の20件
-prev 20: 前の20件
 Status: ステータス
 Not Connected: 接続されていません
 Transaction History: トランザクション履歴
