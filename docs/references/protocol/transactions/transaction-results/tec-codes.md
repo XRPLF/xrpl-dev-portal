@@ -7,6 +7,7 @@ labels:
   - Transaction Sending
 ---
 # tec Codes
+[[Source]](https://github.com/XRPLF/rippled/blob/master/src/ripple/protocol/impl/TER.cpp "Source")
 
 These codes indicate that the transaction failed, but it was applied to a ledger to apply the [transaction cost](../../../../concepts/transactions/transaction-cost.md). They have numerical values in the range 100 to 199. It is recommended to use the text code, not the numeric value.
 
@@ -16,19 +17,20 @@ Transactions with `tec` codes destroy the XRP paid as a [transaction cost](../..
 
 | Code                       | Value | Explanation                             |
 |:---------------------------|:------|:----------------------------------------|
-| `tecAMM_ACCOUNT`           | 168   | The transaction failed because the operation is not allowed on Automated Market Maker (AMM) accounts. _(Requires the [AMM amendment][])_  |
-| `tecAMM_UNFUNDED`        | 162   | The [AMMCreate transaction][] failed because the sender does not have enough of the specified assets to fund it. _(Requires the [AMM amendment][])_  |
-| `tecAMM_BALANCE`         | 163   | The [AMMDeposit][] or [AMMWithdraw][] transaction failed because either the AMM or the user does not hold enough of one of the specified assets. (For example, you tried to withdraw more than the AMM holds.) _(Requires the [AMM amendment][])_  |
-| `tecAMM_EMPTY`           | 166   | The AMM-related transaction failed because the AMM has no assets in its pool. In this state, you can only delete the AMM or fund it with a new deposit. _(Requires the [AMM amendment][])_  |
-| `tecAMM_FAILED`          | 164   | The AMM-related transaction failed. For [AMMDeposit][] or [AMMWithdraw][] this could be because the sender does not have enough of the specified assets, or the transaction requested an effective price that isn't possible with the available amounts. For [AMMBid][] this could be because the account does not have enough to win the bid or needs more than their specified maximum bid. For [AMMVote][], this could be because there are already too many votes from other accounts that hold more of this AMM's LP Tokens. _(Requires the [AMM amendment][])_  |
-| `tecAMM_INVALID_TOKENS`  | 165   | The AMM-related transaction failed due to insufficient LP Tokens or problems with rounding; for example, depositing a very small amount of assets could fail if the amount of LP Tokens to be returned rounds down to zero. _(Requires the [AMM amendment][])_  |
-| `tecAMM_NOT_EMPTY`       | 167   | The transaction was meant to operate on an AMM with empty asset pools, but the specified AMM currently holds assets. _(Requires the [AMM amendment][])_  |
+| `tecAMM_ACCOUNT`           | 168   | The transaction failed because the operation is not allowed on Automated Market Maker (AMM) accounts. _(Added by the [AMM amendment][])_  |
+| `tecAMM_UNFUNDED`          | 162   | The [AMMCreate transaction][] failed because the sender does not have enough of the specified assets to fund it. _(Added by the [AMM amendment][])_  |
+| `tecAMM_BALANCE`           | 163   | The [AMMDeposit][] or [AMMWithdraw][] transaction failed because either the AMM or the user does not hold enough of one of the specified assets. (For example, you tried to withdraw more than the AMM holds.) _(Added by the [AMM amendment][])_  |
+| `tecAMM_EMPTY`             | 166   | The AMM-related transaction failed because the AMM has no assets in its pool. In this state, you can only delete the AMM or fund it with a new deposit. _(Added by the [AMM amendment][])_  |
+| `tecAMM_FAILED`            | 164   | The AMM-related transaction failed. For [AMMDeposit][] or [AMMWithdraw][] this could be because the sender does not have enough of the specified assets, or the transaction requested an effective price that isn't possible with the available amounts. For [AMMBid][] this could be because the account does not have enough to win the bid or needs more than their specified maximum bid. For [AMMVote][], this could be because there are already too many votes from other accounts that hold more of this AMM's LP Tokens. _(Added by the [AMM amendment][])_  |
+| `tecAMM_INVALID_TOKENS`    | 165   | The AMM-related transaction failed due to insufficient LP Tokens or problems with rounding; for example, depositing a very small amount of assets could fail if the amount of LP Tokens to be returned rounds down to zero. _(Added by the [AMM amendment][])_  |
+| `tecAMM_NOT_EMPTY`         | 167   | The transaction was meant to operate on an AMM with empty asset pools, but the specified AMM currently holds assets. _(Added by the [AMM amendment][])_  |
 | `tecCANT_ACCEPT_OWN_NFTOKEN_OFFER` | 157 | The transaction tried to accept an offer that was placed by the same account to buy or sell a [non-fungible token](../../../../concepts/tokens/nfts/index.md). _(Added by the [NonFungibleTokensV1_1 amendment][].)_ |
 | `tecCLAIM`                 | 100   | Unspecified failure, with transaction cost destroyed. |
 | `tecCRYPTOCONDITION_ERROR` | 146   | This [EscrowCreate][] or [EscrowFinish][] transaction contained a malformed or mismatched crypto-condition. |
 | `tecDIR_FULL`              | 121   | The transaction tried to add an object (such as a trust line, Check, Escrow, or Payment Channel) to an account's owner directory, but that account cannot own any more objects in the ledger. |
 | `tecDUPLICATE`             | 149   | The transaction tried to create an object (such as a [DepositPreauth][] authorization) that already exists. |
 | `tecDST_TAG_NEEDED`        | 143   | The [Payment transaction][] omitted a [destination tag](../../../../concepts/transactions/source-and-destination-tags.md), but the destination account has the `lsfRequireDestTag` flag enabled. |
+| `tecEMPTY_DID`             | 187   | The transaction tried to create a [DID entry][] with no contents. A DID must not be empty. _(Added by the [DID amendment][] {% not-enabled /%})_ |
 | `tecEXPIRED`               | 148   | The transaction tried to create an object (such as an Offer or a Check) whose provided Expiration time has already passed. |
 | `tecFAILED_PROCESSING`     | 105   | An unspecified error occurred when processing the transaction. |
 | `tecFROZEN`                | 137   | The [OfferCreate transaction][] failed because one or both of the assets involved are subject to a [global freeze](../../../../concepts/tokens/fungible-tokens/freezes.md). |
