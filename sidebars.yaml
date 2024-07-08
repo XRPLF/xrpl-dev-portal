@@ -191,6 +191,7 @@
               expanded: false
               items:
                 - page: docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees.md
+                - page: docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider.md
         - page: docs/tutorials/python/index.md
           expanded: false
           items:
