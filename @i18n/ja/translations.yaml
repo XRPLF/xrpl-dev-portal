@@ -626,6 +626,9 @@ Not Connected: 未接続
 Failed to Connect: 接続に失敗
 Responses: レスポンス
 "Keep last:": 表示数
+Pause Subscriptions: サブスクリプション停止
+Unpause Subscriptions: サブスクリプション停止を解除
+Delete All Responses: 全レスポンスを削除
 # resources/dev-tools/websocket-api/connection-modal.tsx
 Connection Settings: 接続先設定
 Close: 閉じる

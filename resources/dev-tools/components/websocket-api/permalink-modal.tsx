@@ -62,13 +62,15 @@ export const PermalinkButton = ({currentBody, selectedConnection}: PermaLinkButt
   const closePermalinkModal = () => {
     setIsPermalinkModalVisible(false);
   };
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
 
   return <>
     <button
       className="btn btn-outline-secondary permalink"
       data-toggle="modal"
       data-target="#wstool-1-permalink"
-      title="Permalink"
+      title={translate("Permalink")}
       onClick={openPermalinkModal}
     >
       <i className="fa fa-link"></i>

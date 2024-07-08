@@ -74,13 +74,15 @@ export const CurlModal: React.FC<CurlProps> = ({
 
 export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) => {
   const [showCurlModal, setShowCurlModal] = useState(false);
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
 
   return <>
       <button
         className="btn btn-outline-secondary curl"
         data-toggle="modal"
         data-target="#wstool-1-curl"
-        title="cURL syntax"
+        title={translate("cURL Syntax")}
         onClick={() => setShowCurlModal(true)}
       >
         <i className="fa fa-terminal"></i>

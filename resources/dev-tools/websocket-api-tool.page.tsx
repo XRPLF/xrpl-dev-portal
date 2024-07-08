@@ -320,7 +320,7 @@ export function WebsocketApiTool() {
                   {!streamPaused && (
                     <button
                       className="btn btn-outline-secondary stream-pause"
-                      title="Pause Subscriptions"
+                      title={translate("Pause Subscriptions")}
                       onClick={() => setStreamPaused(true)}
                     >
                       <i className="fa fa-pause"></i>
@@ -329,7 +329,7 @@ export function WebsocketApiTool() {
                   {streamPaused && (
                     <button
                       className="btn btn-outline-secondary stream-unpause"
-                      title="Unpause Subscriptions"
+                      title={translate("Unpause Subscriptions")}
                       onClick={() => setStreamPaused(false)}
                     >
                       <i className="fa fa-play"></i>
@@ -337,7 +337,7 @@ export function WebsocketApiTool() {
                   )}
                   <button
                     className="btn btn-outline-secondary wipe-responses"
-                    title="Delete All Responses"
+                    title={translate("Delete All Responses")}
                     onClick={() => setResponses([])}
                   >
                     <i className="fa fa-trash"></i>
