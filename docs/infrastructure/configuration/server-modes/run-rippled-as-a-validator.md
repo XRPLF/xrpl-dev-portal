@@ -67,14 +67,15 @@ Enabling validation on your `rippled` server means providing a validator token i
 
 In a secure location **not** on your validator:
 
-1. Manually build and run the `validator-keys` tool, if you don't already have it installed via a `rippled` RPM.
-
-    For information about manually building and running the `validator-keys` tool, see [validator-keys-tool](https://github.com/ripple/validator-keys-tool).
-
-2. Generate a validator key pair using the `create_keys` command.
+1. Generate a validator key pair using the `create_keys` command. You can find it in the rippled package:
 
     ```
-    $ validator-keys create_keys
+    $ cd /opt/ripple/bin/
+    ```
+    Then run:
+
+    ```
+    $ ./validator-keys create_keys
     ```
 
       Sample output on Ubuntu:
@@ -97,10 +98,10 @@ In a secure location **not** on your validator:
 
       For more information about the `validator-keys` tool and the key pairs it generates, see the [Validator Keys Tool Guide](https://github.com/ripple/validator-keys-tool/blob/master/doc/validator-keys-tool-guide.md).
 
-3. Generate a validator token using the `create_token` command.
+2. Generate a validator token using the `create_token` command. [Make sure you are at `/opt/ripple/bin/`]
 
     ```
-    $ validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
+    $ ./validator-keys create_token --keyfile /PATH/TO/YOUR/validator-keys.json
     ```
 
     Sample output:
