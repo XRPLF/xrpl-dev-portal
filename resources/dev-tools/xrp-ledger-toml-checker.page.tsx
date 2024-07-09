@@ -50,8 +50,8 @@ export default function TomlChecker() {
 
   const domainButtonProps: TextLookupFormProps = {
     title: `Look Up By Domain`,
-    description: <p>{translate(`This tool allows you to verify that your `)}<code>{translate(`xrp-ledger.toml`)}</code>
-    {translate(` file is syntactically correct and deployed properly.`)}</p>,
+    description: <p>{translate('resources.dev-tools.toml-checker.domain.description.part1', `This tool allows you to verify that your `)}<code>{translate(`xrp-ledger.toml`)}</code>
+    {translate('resources.dev-tools.toml-checker.domain.description.part2', ` file is syntactically correct and deployed properly.`)}</p>,
     buttonDescription: `Check toml file`,
     formPlaceholder: "example.com (Domain name to check)",
     handleSubmit: handleSubmitDomain,
@@ -59,7 +59,7 @@ export default function TomlChecker() {
 
   const addressButtonProps: TextLookupFormProps = {
     title: `Look Up By Account`,
-    description: <p>{translate(`Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.`)}</p>,
+    description: <p>{translate('resources.dev-tools.toml-checker.account.description.part1', `Enter an XRP Ledger address to see if that account is claimed by the domain it says owns it.`)}</p>,
     buttonDescription: `Check account`,
     formPlaceholder: `r... (${translate("Wallet Address to check")})`,
     handleSubmit: handleSubmitWallet
@@ -74,9 +74,9 @@ export default function TomlChecker() {
             <section className="container-fluid">
                 <div className="p-3">
                     <h1>{translate(`xrp-ledger.toml Checker`)}</h1>
-                    <p>{translate(`If you run an XRP Ledger validator or use the XRP Ledger for your business,
+                    <p>{translate('resources.dev-tools.toml-checker.p.part1', `If you run an XRP Ledger validator or use the XRP Ledger for your business,
                     you can provide information about your usage of the XRP Ledger to the world in a machine-readable `)}
-                    <a href="https://xrpl.org/xrp-ledger-toml.html"><code>{translate(`xrp-ledger.toml`)}</code>{translate(` file`)}</a>.</p>
+                    <a href="https://xrpl.org/xrp-ledger-toml.html"><code>{translate(`xrp-ledger.toml`)}</code>{translate('resources.dev-tools.toml-checker.p.part2', ` file`)}</a>{translate('resources.dev-tools.toml-checker.p.part3', `.`)}</p>
                 </div>
 
                 <TextLookupForm {...domainButtonProps} />

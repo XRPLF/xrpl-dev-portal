@@ -198,7 +198,7 @@ export default function RpcTool() {
           id="main_content_body"
         >
           <section className="container-fluid pt-3 p-md-3">
-            <h1>RPC Tool</h1>
+            <h1>{translate('RPC Tool')}</h1>
             <div className="content">
               <p>
                 {translate(
@@ -218,8 +218,9 @@ export default function RpcTool() {
               />
               <span className="help-block">
                 <small>
-                  {translate("Try an account like ")}
-                  <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>.
+                  {translate("resourses.rpc-tool.help-block.part1", "Try an account like ")}
+                  <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>
+                  {translate("resourses.rpc-tool.help-block.part2", ".")}
                 </small>
               </span>&nbsp;
               <button className="btn btn-primary" onClick={getInfo}>

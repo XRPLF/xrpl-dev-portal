@@ -20,11 +20,24 @@ theme.footer.about: 概要
 theme.footer.docs: ドキュメント
 theme.footer.resources: リソース
 theme.footer.community: コミュニティ
+
 sidebar.docs: ドキュメント
 sidebar.docs.tutorials: チュートリアル
 sidebar.docs.references: リファレンス
 sidebars.resources: リソース
 sidebar.resources.codesamples: コードサンプル
+sidebar.resources.dev-tools: 開発者ツール
+sidebar.resources.dev-tools.rpc-tool: RPCツール
+sidebar.resources.dev-tools.websocket-api-tool: WebSocket APIツール
+sidebar.resources.dev-tools.xrp-ledger-toml-checker: xrp-ledger.tomlチェッカー
+sidebar.resources.dev-tools.domain-verifier: ドメイン検証ツール
+sidebar.resources.dev-tools.xrp-faucets: XRP Faucets
+sidebar.resources.dev-tools.tx-sender: トランザクション送信ツール
+sidebar.resources.xrpl-learning-portal: XRPL学習ポータル
+sidebar.resources.xrpl-brand-kit: XRPLブランドキット
+sidebar.resources.ledger-explorer: エクスプローラ
+sidebar.resources.contribute-documentation.contributor-code-of-conduct: 行動規範
+
 topnav.about.xrp-ledger: XRP Ledger
 topnav.about.xrpl-overview: XRPLの概要
 topnav.about.use-cases-featured-projects: ユースケースと注目プロジェクト
@@ -62,7 +75,6 @@ topnav.resources.contribute-code: コードへの貢献
 topnav.resources.contribute-documentation: ドキュメントへの貢献
 topnav.community.title: コミュニティ
 topnav.community.description: 話題に加わろう。
-
 topnav.community.get-involved: 参加する
 topnav.community.events: イベント
 topnav.community.ambassadors: アンバサダー
@@ -72,6 +84,7 @@ topnav.community.dev-blog: 開発者ブログ
 topnav.community.xrpl-grants: XRPL Grants
 topnav.community.github: GitHub
 topnav.community.report-a-scam: 詐欺の報告
+
 footer.about.xrpl-overview: XRPLの概要
 footer.about.use-cases-projects: ユースケースとプロジェクト
 footer.about.history: 歴史
@@ -573,16 +586,196 @@ Business acumen: ビジネス知識
 View XRPL Accelerator: XRPLアクセラレータを見る
 $50,000 (grant) + pitch for venture funding: $50,000(助成金)＋ベンチャー資金へのピッチ
 
+# resources/code-samples.page.tsx
+Start Building with Example Code: コードサンプルから開発を始める
+Code Samples: コードサンプル
+Browse sample code for building common use cases on the XRP Ledger: XRP Ledger上で一般的なユースケースを構築するためのコードサンプルを見ることができます
+Contribute Code Samples: コードサンプルへの貢献
+Help the XRPL community by submitting your own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
+Fork and clone: フォークしてクローン
+resources.contribute.1.part1: 'gitを使い'
+resources.contribute.1.part2: 'xrpl-dev-portalリポジトリ'
+resources.contribute.1.part3: 'をフォークし、自分のデバイスにクローンしましょう'
+Add to folder: フォルダに追加
+resources.contribute.2.part1: ' '
+resources.contribute.2.part2: 'に作成したサンプルコードを追加し、そのコードが何をするのか、そして必要となる事前知識を要約した'
+resources.contribute.2.part3: 'ファイルがあることを確認してください。'
+Commit and push: コミットしてプッシュ
+resources.contribute.3.part1: 変更内容をコミットし、リモートリポジトリにプッシュします
+Open a pull request: プルリクエストを作成
+resources.contribute.4.part1: '元のリポジトリにプルリクエストを提出してください。メンテナーがあなたの提出内容をレビューし、必要であれば変更を提案します。コードサンプルが有益であれば、マージされてXRPL.orgに追加されます！'
+
+# resources/dev-tools/index.page.tsx
+Use the developer tools to test, explore, and validate XRP Ledger API requests and behavior.: 開発者ツールを使用して、XRP Ledger APIのリクエストと動作をテスト、調査、検証しましょう。
+Dev Tools: 開発者ツール
+Explorers: エクスプローラ
+API Access: APIアクセス
+Other: その他
+XRPL Explorer: XRPLエクスプローラ
+View validations of new ledger versions in real-time, or chart the location of servers in the XRP Ledger.: 新しいレジャーバージョンの検証結果をリアルタイムで表示したり、XRP Ledgerサーバの位置をチャートで表示します。
+Bithomp Explorer: Bithompエクスプローラ
+Explore public ledger data including accounts' transaction history and known names.: アカウントのトランザクション履歴や既知のアカウント名など、公開されたレジャーデータを調査します。
+XRPScan: XRPScan
+Explore ledger activity, view amendment voting in real-time, and get account information. API access is also available.: レジャーのアクティビティを調査し、リアルタイムでAmendmentの投票を表示したり、アカウント情報を取得します。APIアクセスも可能です。
+Token List: トークン一覧
+See all tokens issued in the XRP Ledger and use preset tools to issue custom tokens at the click of a button.: XRP Ledgerで発行されたすべてのトークンを見ることができます。また、ボタンをクリックするだけでカスタムトークンを発行するためのプリセットツールを使用できます。
+RPC Tool: RPCツール
+Print raw information about an XRP Ledger account, transaction, or ledger.: XRP Ledgerのアカウント、トランザクション、またはレジャーに関する生データを表示します。
+Technical Explorers: Technicalエクスプローラ
+Browse API objects from the ledger with real-time updates.: リアルタイムで更新されるレジャーからのAPIオブジェクトを確認します。
+Domain Verification Checker: ドメイン検証チェッカー
+Verify your validator's domain.: バリデータのドメインを検証します。
+xrp-ledger.toml Checker: xrp-ledger.tomlチェッカー
+Verify that your xrp-ledger.toml file is set up properly.: xrp-ledger.tomlファイルが正しく設定されているかを確認します。
+Binary Visualizer: バイナリビジュアライザ
+Parse the XRP Ledger's native binary format with a visual representation breaking down the raw structure into its parts.: XRP Ledgerのネイティブバイナリ形式を解析し、生の構造を部品に分解したビジュアル表現を提供します。
+Token Metadata Lookup: トークンメタデータ検索
+Query known information about any token issued on the XRP Ledger.: XRP Ledgerで発行されたトークンに関する既知の情報を問い合わせます。
+Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
+Open a pull Request: プルリクエストを作成する
+Contribute to the XRP Ledger community by submitting your idea for a tool or open a pull request if you've developed a tool.: ツールのアイデアを提出したり、ツールを開発した場合はプルリクエストを開いて、XRP Ledgerコミュニティに貢献しましょう。
+
+# resources/dev-tools/rpc-tool.page.tsx
+This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number).: これは、アカウント(クラシックアドレス)、トランザクション(ハッシュ)、またはレジャー(シーケンス番号)に関する実際の情報を表示するためのデバッグツールです。
+resourses.rpc-tool.help-block.part1: ' '
+resourses.rpc-tool.help-block.part2: ' のようなアカウントで試してみましょう。'
+Get info: 情報を見る
+Input is not a valid address or transaction hash: 入力値が有効なアドレスまたはトランザクションハッシュではありません
+Result: 結果
+Permalink: パーマリンク
+Explorer: エクスプローラ
+expand tx: txを展開
+(last 20): (直近20件)
+expand all: すべて展開
+collapse all: すべて閉じる
+
+# resources/dev-tools/websocket-api-tool.page.tsx
+# TODO: translate currentMethod.description
+Read more: 詳細を見る
+Request: リクエスト
+Send request: リクエストを送信
+Connected: 接続済み
+Not Connected: 未接続
+Failed to Connect: 接続に失敗
+Responses: レスポンス
+"Keep last:": 表示数
+Pause Subscriptions: サブスクリプション停止
+Unpause Subscriptions: サブスクリプション停止を解除
+Delete All Responses: 全レスポンスを削除
+# resources/dev-tools/websocket-api/connection-modal.tsx
+Connection Settings: 接続先設定
+Close: 閉じる
+# resources/dev-tools/websocket-api/curl-modal.tsx
+cURL Syntax: cURL構文
+resources.dev-tools.websocket-api.curl.modal.desc.part1: コマンドラインインターフェースから
+resources.dev-tools.websocket-api.curl.modal.desc.part2: を使用してこれと同等のJSON-RPCリクエストを行うには、以下の構文を使用します。
+# resources/dev-tools/websocket-api/right-sidebar.tsx
+API Methods: APIメソッド
+Methods: メソッド
+Examples: の例
+
+# resources/dev-tools/xrp-ledger-toml-checker.page.tsx
+resources.dev-tools.toml-checker.p.part1: もしあなたがXRP Ledgerバリデータを運営していたり、XRP Ledgerをビジネスで利用しているのであれば、XRP Ledgerの利用状況に関する情報を、機械読み取り可能な
+resources.dev-tools.toml-checker.p.part2: ファイル
+resources.dev-tools.toml-checker.p.part3: で世界中に提供することができます。
+Look Up By Domain: ドメインで検索
+resources.dev-tools.toml-checker.domain.description.part1: ' '
+resources.dev-tools.toml-checker.domain.description.part2: が構文的に正しく、正しくデプロイされているかどうかを確認することができます。
+Check toml file: tomlファイルをチェック
+example.com (Domain name to check): example.com (チェックするドメイン名)
+Look Up By Account: アカウントで検索
+resources.dev-tools.toml-checker.account.description.part1: XRP Ledgerのアドレスを入力し、そのアカウントがドメインによって所有されているかどうかを確認します。
+Check account: アカウントをチェック
+Wallet Address to check: チェックするウォレットアドレス
+
+# resources/dev-tools/domain-verifier.page.tsx
+This tool allows you to verify that domain verification is properly configured.: このツールを使用すると、ドメイン検証が正しく設定されているかどうかを確認できます。
+Enter the manifest found in your validator-keys.json file. Do not confuse this with your validator's secret key.: validator-keys.jsonファイルにあるマニフェストを入力してください。これはバリデータの秘密鍵とは異なるものです。
+"To do this with the validator-keys-tool use the following command:": これをvalidator-keys-toolで行うには、次のコマンドを使用します。
+Verify: 検証
+Your Manifest Here: マニフェスト情報を入力してください
+Parsing TOML data...: TOMLデータを解析中...
+Validators: バリデータ
+Success: 成功
+Wrong type - should be table-array: 間違ったタイプ - テーブル配列である必要があります
+Domain Verification Succeeded: ドメイン検証に成功しました
+Domain Verification Failed: ドメイン検証に失敗しました
+The validator key for this manifest was not found in the TOML file: このマニフェストのバリデータキーがTOMLファイルに見つかりませんでした
+No Validators Found: バリデータが見つかりません
+"Error decoding manifest:": マニフェストのデコードエラー
+Domain not found in manifest: マニフェストにドメインが見つかりません
+Checking: 確認中
+resources.dev-tools.domain-verifier.checking.part1: ' '
+resources.dev-tools.domain-verifier.checking.part2: を確認中
+Found: 見つかりました
+
+# resources/dev-tools/xrp-faucets.page.tsx
+Servers: サーバ
+resources.dev-tool.faucet.content.part1: これらのは、
+resources.dev-tool.faucet.content.part2: XRP Ledger並列テストネットワーク
+resources.dev-tool.faucet.content.part3: はXRP Ledgerやその上に構築されたソフトウェアへの変更を、実際の資金を使わずにテストするためのプラットフォームを提供します。
+resources.dev-tool.faucet.content.part4: これらの資金は
+resources.dev-tool.faucet.content.part5: テストのみ
+resources.dev-tool.faucet.content.part6: を目的としています。テストネットワークの履歴と残高は必要に応じてリセットされます。Devnetは警告なしにリセットされることがあります。
+resources.dev-tool.faucet.content.part7: これらのネットワーク上のすべての残高とXRPは、メインネットとは別のものです。安全のため、テストネットやDevnetの認証情報をメインネットで使用しないでください。
+"Choose Network:": "ネットワークを選択:"
+Mainnet-like network for testing applications.: アプリケーションのテスト用のメインネットに似たネットワーク。
+Preview of upcoming amendments.: 今後のAmendmentのプレビューネットワーク。
+Hooks (L1 smart contracts) enabled Xahau testnet.: Hooks（L1スマートコントラクト）が有効化されたXahau Networkのテストネット。
+resources.dev-tools.faucet.cred-btn.part1: ' '
+resources.dev-tools.faucet.cred-btn.part2: のアカウントを生成
+resources.dev-tools.faucet.your-cred.part1: 生成した
+resources.dev-tools.faucet.your-cred.part2: のアカウント情報
+resources.dev-tools.faucet.error.part1: ' '
+resources.dev-tools.faucet.error.part2: のFaucetでエラーが発生しました。再度お試しください。
+Generating keys..: キーを生成中...
+Address: アドレス
+Secret: シークレット
+Funding account...: アカウントに資金を供給中...
+Balance: 残高
+Sequence Number: シーケンス番号
+Waiting...: お待ちください...
+
+# resources/dev-tools/tx-sender.page.tsx
+resources.dev-tool.tx-sender.content.part1: あなたが選択した
+resources.dev-tool.tx-sender.content.part2: アドレスにトランザクションを送信し、どのように受信トランザクションを管理し、レスポンスを行っているかをテストすることができます。
+Initialize: 初期化
+Set up the necessary Testnet XRP addresses to send test payments.: テスト支払いに必要なTestnet XRPアドレスを設定する。
+Destination Address: 送金先のアドレス
+Send transactions to this XRP Testnet address: このXRP Testnetアドレスに送信
+Send Transaction: トランザクション送信
+Send XRP Payment: XRPを送信
+drops of XRP: XRPのdrop数
+resources.dev-tool.tx-sender.send-xrp-desc.part1: ' '
+resources.dev-tool.tx-sender.send-xrp-desc.part2: シンプルなXRP同士の支払い
+resources.dev-tool.tx-sender.send-xrp-desc.part3: を送信します。
+(Getting ready to send partial payments): （Partial Paymentの準備中）
+Send Partial Payment: Partial Paymentを送信する
+# TODO: translate following content desctiptions
+# Deliver a small amount of XRP with a large Amount value, to test your handling of partial payments.
+# Create a time-based escrow of 1 XRP for the specified number of seconds.
+# Create a payment channel and fund it with the specified amount of XRP.
+# Your destination address needs a trust line to (the test sender) for the currency in question. Otherwise, you'll get tecPATH_DRY.
+# The test sender creates a trust line to your account for the given currency.
+Create Escrow: Escrowを作成
+seconds: 秒
+Finish automatically: 自動的に終了
+(Waiting to release Escrow when it's ready): （Escrowの解放を待っています。）
+Create Payment Channel: Payment Channelを作成
+Send Issued Currency: トークンを送信
+Trust for: トラストラインの設定
+# resources/dev-tools/components/StatusSidebar.tsx
+"Sending Address:": 送信元アドレス
+(None): (なし)
+"Testnet XRP Available:": 利用可能なTestnet XRP
+Transaction History: トランザクション履歴
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
 Search: 検索
 Search site...: サイトを検索
 Search for articles, training, and code samples...: 記事、トレーニング、コードサンプルを検索...
-Start Building with Example Code: コードサンプルから開発を始める
-Code Samples: コードサンプル
-Browse sample code for building common use cases on the XRP Ledger: XRP Ledger上で一般的なユースケースを構築するためのコードサンプルを見ることができます
-Contribute Code Samples: コードサンプルへの貢献
 Help the XRPL community by submitting your<br> own code samples: コードサンプルを投稿して、XRPLコミュニティに貢献しましょう
 The XRPL Community: XRPL コミュニティ
 Find the community on the platforms below: 以下のプラットフォームでコミュニティにアクセスできます。
@@ -599,12 +792,6 @@ Review guidelines for using XRPL design assets: XRPLのデザインアセット�
 XRPL Assets: XRPLのアセット
 Download the PDF and Assets: PDFとアセットをダウンロード
 A community-driven resource for all things XRPL.org: XRPとXRP Ledgerのあらゆるものを提供する、コミュニティ主体のリソース
-Dev Tools: 開発者ツール
-Explorers: エクスプローラ
-API Access: APIアクセス
-Other: その他
-Have an Idea For a Tool?: ツールのアイデアをお持ちですか？
-Open a pull Request: プルリクエストを作成する
 Full documentation index: 全ドキュメントの目次
 See Everything: 全てを見る
 rippled API Reference: rippled APIリファレンス
@@ -628,38 +815,8 @@ Sorry, this page is not available in your language.: 申し訳ありませんが
 References and APIs: リファレンスとAPI
 Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
-Try an account like <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>.: <em>rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn</em>のようなアカウントで試してみてください。
-Get info: 情報を見る
-Result: 結果
-Permalink: パーマリンク
-Explorer: エクスプローラ
-expand all: すべて展開
-collapse all: すべて閉じる
-(last 20): (直近20件)
-expand tx: txを展開
-next 20: 次の20件
-prev 20: 前の20件
 Status: ステータス
-Not Connected: 接続されていません
-Transaction History: トランザクション履歴
-Initialize: 初期化
-Set up the necessary Testnet XRP addresses to send test payments.: テスト支払いに必要なTestnet XRPアドレスを設定する。
-Destination Address: 送金先のアドレス
-Send transactions to this XRP Testnet address: このXRP Testnetのアドレスに送信
-Send Transaction: トランザクション送信
 (loading): （ローディング中）
-Send XRP Payment: XRPを送信する
-drops of XRP: XRPのdrop数
-Send a <a href=\send-xrp.html\>simple XRP-to-XRP payment</a>.: XRP-to-XRPのシンプルな支払いを送信する
-(Getting ready to send partial payments): （Partial Paymentの準備中）
-Send Partial Payment: Partial Paymentを送信する
-Create Escrow: Escrowを作成
-seconds: 秒
-Finish automatically: 自動的に終了
-(Waiting to release Escrow when it's ready): （Escrowの解放を待っています。）
-Create Payment Channel: Payment Channelを作成
-Send Issued Currency: トークンを送信
-Trust for: トラストラインの設定
 Release Notes: リリースノート
 Carbon Markets/Sustainability: 持続可能性
 Ledger City is a crypto real estate game powered by the XRP Ledger.: Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。

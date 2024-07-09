@@ -54,9 +54,9 @@ export const CurlModal: React.FC<CurlProps> = ({
       <form>
         <div className="form-group">
           <label htmlFor="curl-box-1">
-            Use the following syntax to make the equivalent JSON-RPC
-            request using <a href="https://curl.se/">cURL</a> from a
-            commandline interface:
+            {translate('resources.dev-tools.websocket-api.curl.modal.desc.part1', 'Use the following syntax to make the equivalent JSON-RPC request using ')}
+            <a href="https://curl.se/">cURL</a>
+            {translate('resources.dev-tools.websocket-api.curl.modal.desc.part2',' from a commandline interface:')}
           </label>
           <textarea
             id="curl-box-1"
@@ -74,13 +74,15 @@ export const CurlModal: React.FC<CurlProps> = ({
 
 export const CurlButton = ({selectedConnection, currentBody}: CurlButtonProps) => {
   const [showCurlModal, setShowCurlModal] = useState(false);
+  const { useTranslate } = useThemeHooks();
+  const { translate } = useTranslate();
 
   return <>
       <button
         className="btn btn-outline-secondary curl"
         data-toggle="modal"
         data-target="#wstool-1-curl"
-        title="cURL syntax"
+        title={translate("cURL Syntax")}
         onClick={() => setShowCurlModal(true)}
       >
         <i className="fa fa-terminal"></i>

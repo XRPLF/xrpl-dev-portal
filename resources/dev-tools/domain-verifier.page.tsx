@@ -154,7 +154,7 @@ const DomainVerificationPage = () => {
       domain = hexToString(decodedManifest.Domain as string);
     } catch {
       addNewLogEntry(setLogEntries, {
-        message: translate(`"Domain not found in manifest"`),
+        message: translate(`Domain not found in manifest`),
         id: "no-domain",
       });
 
@@ -175,7 +175,7 @@ const DomainVerificationPage = () => {
     const url = `https://${domain}${TOML_PATH}?v=${query_param++}`;
     const baseCheckingToml = {
       id: 'checking-toml',
-      message: translate(`${translate('Checking ')} ${url}`)
+      message: `${translate('resources.dev-tools.domain-verifier.checking.part1','Checking ')}${url}${translate('resources.dev-tools.domain-verifier.checking.part2','Checking')}}`
     }
     addNewLogEntry(setLogEntries, baseCheckingToml)
 

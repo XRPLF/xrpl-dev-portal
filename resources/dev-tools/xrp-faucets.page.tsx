@@ -47,7 +47,7 @@ function FaucetEndpoints({ faucet, givenKey } : { faucet: FaucetInfo, givenKey: 
   const { translate } = useTranslate();
 
   return (<div key={givenKey}>
-    <h4>{translate(`${faucet.shortName} Servers`)}</h4>
+    <h4>{faucet.shortName} {translate(`Servers`)}</h4>
     <pre>
       <code>
         // WebSocket<br/>
@@ -84,9 +84,9 @@ export default function XRPFaucets(): React.JSX.Element {
           <section className="container-fluid pt-3 p-md-3">
             <h1>{translate("XRP Faucets")}</h1>
             <div className="content">
-                <p>{translate("These ")}<a href="parallel-networks.html">{translate("parallel XRP Ledger test networks")}</a> {translate("provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
-                <p>{translate("These funds are intended for")} <strong>{translate("testing")}</strong> {translate("only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
-                <p>{translate("All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
+                <p>{translate("resources.dev-tool.faucet.content.part1", "These ")}<a href="parallel-networks.html">{translate("resources.dev-tool.faucet.content.part2", "parallel XRP Ledger test networks")}</a> {translate("resources.dev-tool.faucet.content.part3", "provide platforms for testing changes to the XRP Ledger and software built on it, without using real funds.")}</p>
+                <p>{translate("resources.dev-tool.faucet.content.part4", "These funds are intended for")} <strong>{translate("resources.dev-tool.faucet.content.part5", "testing")}</strong> {translate("resources.dev-tool.faucet.content.part6", "only. Test networks' ledger history and balances are reset as necessary. Devnets may be reset without warning.")}</p>
+                <p>{translate("resources.dev-tool.faucet.content.part7", "All balances and XRP on these networks are separate from Mainnet. As a precaution, do not use the Testnet or Devnet credentials on the Mainnet.")}</p>
 
                 <h3>{translate("Choose Network:")}</h3>
                 { faucets.map((net) => (
@@ -117,7 +117,7 @@ async function generateFaucetCredentialsAndUpdateUI(
   setSecret: React.Dispatch<React.SetStateAction<string>>, 
   setBalance: React.Dispatch<React.SetStateAction<string>>, 
   setSequence: React.Dispatch<React.SetStateAction<string>>,
-  translate: (key: string) => string): Promise<void> {
+  translate: (key: string, options?: string) => string): Promise<void> {
 
   setButtonClicked(true)
 
@@ -146,7 +146,7 @@ async function generateFaucetCredentialsAndUpdateUI(
     setBalance(response.balance)
 
   } catch (e) {
-    alert(translate(`There was an error with the ${selectedFaucet.shortName} faucet. Please try again.`))
+    alert(`${translate('resources.dev-tools.faucet.error.part1', 'There was an error with the ')}${selectedFaucet.shortName}${translate('resources.dev-tools.faucet.error.part2', ' faucet. Please try again.')}`)
   }
   setButtonClicked(false)
 }
@@ -174,14 +174,14 @@ function TestCredentials({selectedFaucet, translate}) {
                 setSequence,
                 translate)
             } className="btn btn-primary mr-2 mb-2">
-              {translate(`Generate ${selectedFaucet.shortName} credentials`)}
+              {`${translate('resources.dev-tools.faucet.cred-btn.part1', 'Generate ')}${selectedFaucet.shortName}${translate('resources.dev-tools.faucet.cred-btn.part2', ' credentials')}`}
           </button>
         </div>
       {/* </XRPLGuard> */}
 
 
       {generatedCredentialsFaucet && <div id="your-credentials">
-        <h2>{translate(`Your ${generatedCredentialsFaucet} Credentials`)}</h2>
+        <h2>{`${translate('resources.dev-tools.faucet.your-cred.part1', 'Your ')}${generatedCredentialsFaucet}${translate('resources.dev-tools.faucet.your-cred.part2', ' Credentials')}`}</h2>
       </div>}
 
       {(buttonClicked && address === "") && <XRPLoader message={translate("Generating keys..")}/>}

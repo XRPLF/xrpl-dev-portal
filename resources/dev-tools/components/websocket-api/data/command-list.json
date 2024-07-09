@@ -554,7 +554,6 @@
         "name": "ledger_entry - AMM",
         "description": "Returns a single Automated Market Maker object in its raw ledger format.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-amm-object",
-        "status": "not_enabled",
         "body": {
           "id": "example_get_amm",
           "command": "ledger_entry",
