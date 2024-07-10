@@ -37,6 +37,7 @@ sidebar.resources.xrpl-learning-portal: XRPL学習ポータル
 sidebar.resources.xrpl-brand-kit: XRPLブランドキット
 sidebar.resources.ledger-explorer: エクスプローラ
 sidebar.resources.contribute-documentation.contributor-code-of-conduct: 行動規範
+sidebar.blog: ブログ
 
 topnav.about.xrp-ledger: XRP Ledger
 topnav.about.xrpl-overview: XRPLの概要
@@ -770,6 +771,24 @@ Trust for: トラストラインの設定
 "Testnet XRP Available:": 利用可能なTestnet XRP
 Transaction History: トランザクション履歴
 
+# blob/index.page.tsx
+XRPL Blog: XRPLブログ
+blog.banner.date.part1: YYYY
+blog.banner.date.part2: /
+blog.banner.date.part3: MM/DD
+blog.card.date: YYYY/MM/DD
+"Filter by Category:": カテゴリで絞り込む
+"Filter by:": 絞り込む
+Category: カテゴリ
+General: 一般
+Release Notes: リリースノート
+Advisories: お知らせ
+Amendments: Amendment
+Development: 開発
+Developer Reflections: 開発者の声
+Features: 機能
+# Security: セキュリティ
+
 Open Source.: オープンソース
 Jump to top of page: ページの先頭へ
 Edit page: ページを編集
@@ -817,7 +836,6 @@ Everything You Need to Know: 全てはここに
 XRP Ledger address, transaction ID, or ledger index: XRP Ledgerアドレス、トランザクションID、またはレジャーインデックス
 Status: ステータス
 (loading): （ローディング中）
-Release Notes: リリースノート
 Carbon Markets/Sustainability: 持続可能性
 Ledger City is a crypto real estate game powered by the XRP Ledger.: Ledger Cityは、XRP Ledgerを利用した暗号不動産ゲームです。
 Ripple's CBDC Platform: Ripple社のCBDC Platform\
