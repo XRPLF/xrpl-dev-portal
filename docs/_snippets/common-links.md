@@ -96,6 +96,8 @@
 [Currency Amount]: /docs/references/protocol/data-types/basic-data-types.md#specifying-currency-amounts
 [Currency Code]: /docs/references/protocol/data-types/currency-formats.md#currency-codes
 [DID amendment]: /resources/known-amendments.md#did
+[DID entry]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
+[DIDエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/did.md
 [DIDの修正]: /resources/known-amendments.md#did
 [DeletableAccounts amendment]: /resources/known-amendments.md#deletableaccounts
 [DeletableAccountsの修正]: /resources/known-amendments.md#deletableaccounts
