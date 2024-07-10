@@ -1,4 +1,5 @@
 - group: Blog
+  groupTranslationKey: sidebar.blog
   page: blog/index.page.tsx
   expanded: true
   items:

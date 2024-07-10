@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useRef, useEffect } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+import { Link } from "@redocly/theme/components/Link/Link";
 import moment from "moment";
 
 export const frontmatter = {
@@ -89,9 +90,10 @@ export default function Index() {
               <div className="text-bg">
                 <h4 className="mb-3 eyebrow text-uppercase font-weight-light">
                   <span className="post-date pb-2">
-                    {translate(`${moment(heroPost.date).format("MMM")}`)}
+                    {moment(heroPost.date).format(translate("blog.banner.date.part1","MMM"))}
                   </span>
-                  {translate(` ${moment(heroPost.date).format("DD YYYY")}`)}
+                  {translate("blog.banner.date.part2", " ")}
+                  {moment(heroPost.date).format(translate("blog.banner.date.part3","DD YYYY"))}
                 </h4>
                 <div className="pb-8">
                   <div
@@ -101,18 +103,18 @@ export default function Index() {
                   </div>
                 </div>
                 <h4 className="mb-8 h2-sm font-weight-bold">
-                  <a href={`/blog/${heroPost.link}`}>
+                  <Link to={`/blog/${heroPost.link}`}>
                     {translate(`${heroPost.title}`)}
-                  </a>
+                  </Link>
                 </h4>
                 <p className="mb-4">{translate(`${heroPost.description}`)}</p>
                 <div className="d-lg-block">
-                  <a
+                  <Link
                     className="btn btn-primary btn-arrow"
-                    href={`/blog/${heroPost.link}`}
+                    to={`/blog/${heroPost.link}`}
                   >
                     {translate("Read More")}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -125,7 +127,7 @@ export default function Index() {
             <div className="col-lg-4 m-0 p-0 mt-2">
               {/* Filters Desktop*/}
               <div className="p-3 category_sidebar d-none d-lg-block">
-                <p className="mb-2 category-header">Filter by Category:</p>
+                <p className="mb-2 category-header">{translate("Filter by Category:")}</p>
                 <div className="d-flex flex-column p-3">
                   {Object.keys(categories).map((item) => (
                     <div key={item} className="category-checkbox pb-2">
@@ -151,13 +153,13 @@ export default function Index() {
               {/* End Desktop Filters */}
               {/* Filters Mobile */}
               <div className="col d-flex flex-column p-0 d-lg-none mb-4">
-                <p className="mb-2 category-header">Filter by:</p>
+                <p className="mb-2 category-header">{translate("Filter by:")}</p>
                 <div className="dropdown">
                   <button
                     className="dropdown-btn"
                     onClick={() => setOpen((open) => !open)}
                   >
-                    Category
+                    {translate("Category")}
                     <img alt="dropdown arrow" />
                   </button>
                   {open && (
@@ -212,25 +214,25 @@ export default function Index() {
                   </div>
                   <div>
                     <p id="card-date" className="mb-0">
-                      {moment(translate(card.date)).format("MMM DD, YYYY")}
+                      {moment(card.date).format(translate("blog.card.date","MMM DD, YYYY"))}
                       { card.author ? ` by ${card.author}` : ""}
                     </p>
                     <h5 className="mb-2-sm h3-sm">
-                      <a href={`/blog/${card.link}`}>
+                      <Link to={`/blog/${card.link}`}>
                       {translate(card.title)}
-                      </a>
+                      </Link>
                     </h5>
                   </div>
                   <div className="d-lg-block">
                     <p className="line-clamp">{translate(card.description)}</p>
                   </div>
                   <div className="d-lg-block">
-                    <a
+                    <Link
                       className="btn btn-primary btn-arrow"
-                      href={`/blog/${card.link}`}
+                      to={`/blog/${card.link}`}
                     >
                       {translate("Read More")}
-                    </a>
+                    </Link>
                   </div>
                 </div>
               ))}
