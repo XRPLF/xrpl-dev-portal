@@ -14,6 +14,7 @@ These instructions install an Ubuntu package that has been compiled and publishe
 
 - Download binaries, including for nightly and preview builds, from the [Clio releases page on GitHub](https://github.com/XRPLF/clio/releases/). (Expand the **Assets** section and choose the appropriate version for your OS.)
 - [Build Clio from source](https://github.com/XRPLF/clio/blob/develop/docs/build-clio.md).
+- Use a [Clio Docker Image](https://hub.docker.com/r/rippleci/clio).
 
 
 ## Prerequisites
@@ -26,7 +27,7 @@ Before you install Clio, you must meet the following requirements.
     Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
     {% /admonition %}
 
--  You need compatible versions of CMake and Boost. Clio requires C++20 and Boost 1.75.0 or higher.
+-  You need compatible versions of CMake and Boost. Clio requires C++23 and Boost 1.83.0 or higher.
 
 - Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the [Cassandra installation instructions](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html), or run Cassandra on a Docker container using one of the following commands.
 
