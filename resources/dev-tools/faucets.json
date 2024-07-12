@@ -31,6 +31,6 @@
             "faucetUrl": "faucet.devnet.mpt-test.net",
             "shortName": "MPT-Devnet",
             "desc": "Preview of MPT amendment."
-        },
+        }
     ]
 }
