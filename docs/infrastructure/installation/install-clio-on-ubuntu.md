@@ -27,7 +27,7 @@ Before you install Clio, you must meet the following requirements.
     Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
     {% /admonition %}
 
--  You need compatible versions of CMake and Boost. Clio requires C++23 and Boost 1.83.0 or higher.
+-  Clio requires C++23 and Boost 1.83.0 or higher.
 
 - Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the [Cassandra installation instructions](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html), or run Cassandra on a Docker container using one of the following commands.
 
@@ -142,7 +142,7 @@ Before you install Clio, you must meet the following requirements.
         | `grpc_port` | String | The port where `rippled` accepts gRPC requests. |
 
         {% admonition type="info" name="Note" %}
-        You can use multiple `rippled` servers as a data source by add more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
+        You can use multiple `rippled` servers as a data source by adding more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
         {% /admonition %}
 
         The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
