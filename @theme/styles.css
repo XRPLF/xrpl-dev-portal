@@ -260,6 +260,8 @@ ul.nav.navbar-nav {
   --link-color-primary: #fff;
   --link-color-visited: #fff;
   --link-color-primary-hover: #9a52ff;
+  
+  --search-highlight-text-color: var(--color-blue-4);
 }
 
 :root .form-control-plaintext {

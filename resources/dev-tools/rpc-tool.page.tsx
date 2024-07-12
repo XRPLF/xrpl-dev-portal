@@ -205,17 +205,19 @@ export default function RpcTool() {
                   "This is a debug tool for printing raw information about an account (by classic address), a transaction (by hash) or a ledger (by sequence number)."
                 )}
               </p>
-              <input
-                onChange={(event) => setInputText(event.target.value)}
-                value={inputText}
-                id="target"
-                className="form-control"
-                required
-                type="text"
-                placeholder={translate(
-                  "XRP Ledger address, transaction ID, or ledger index"
-                )}
-              />
+              <div className="input-group">
+                <input
+                  onChange={(event) => setInputText(event.target.value)}
+                  value={inputText}
+                  id="target"
+                  className="form-control"
+                  required
+                  type="text"
+                  placeholder={translate(
+                    "XRP Ledger address, transaction ID, or ledger index"
+                  )}
+                />
+              </div>
               <span className="help-block">
                 <small>
                   {translate("resourses.rpc-tool.help-block.part1", "Try an account like ")}
