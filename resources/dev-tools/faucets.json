@@ -27,7 +27,7 @@
         {
             "id": "faucet-select-mpt-devnet",
             "wsUrl": "wss://mpt.devnet.rippletest.net:51233/",
-            "jsonRpcUrl": "https://wss://mpt.devnet.rippletest.net:51234/",
+            "jsonRpcUrl": "https://mpt.devnet.rippletest.net:51234/",
             "faucetUrl": "mptfaucet.devnet.rippletest.net",
             "shortName": "MPT-Devnet",
             "desc": "Preview of MPT amendment."
