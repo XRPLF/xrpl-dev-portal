@@ -30,7 +30,7 @@
             "jsonRpcUrl": "https://mpt.devnet.rippletest.net:51234/",
             "faucetUrl": "mptfaucet.devnet.rippletest.net",
             "shortName": "MPT-Devnet",
-            "desc": "Preview of MPT amendment."
+            "desc": "Preview of XLS-33d Multi-Purpose Tokens amendment."
         }
     ]
 }
