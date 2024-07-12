@@ -27,8 +27,6 @@ Before you install Clio, you must meet the following requirements.
     Clio has the same system requirements as the `rippled` server, except Clio needs less disk space to store the same amount of ledger history.
     {% /admonition %}
 
--  Clio requires C++23 and Boost 1.83.0 or higher.
-
 - Access to a Cassandra cluster that is running locally or remote. You can choose to install and configure a Cassandra cluster manually by following the [Cassandra installation instructions](https://cassandra.apache.org/doc/latest/cassandra/getting_started/installing.html), or run Cassandra on a Docker container using one of the following commands.
 
     -  If you choose to persist Clio data, run Cassandra in a Docker container and specify an empty directory to store Clio data:
@@ -127,7 +125,7 @@ Before you install Clio, you must meet the following requirements.
         [
             {
                 "ip":"127.0.0.1",
-                "ws_port":"6006",
+                "ws_port":"6005",
                 "grpc_port":"50051"
             }
         ]
@@ -145,11 +143,11 @@ Before you install Clio, you must meet the following requirements.
         You can use multiple `rippled` servers as a data source by adding more entries to the `etl_sources` section. If you do, Clio load balances requests across all the servers in the list, and can keep up with the network as long as at least one of the `rippled` servers is synced.
         {% /admonition %}
 
-        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6006 and gRPC on port 50051.
+        The [example config file](https://github.com/XRPLF/clio/blob/develop/docs/examples/config/example-config.json) accesses the `rippled` server running on the local loopback network (127.0.0.1), with the WebSocket (WS) on port 6005 and gRPC on port 50051.
 
     2. Update the `rippled` server's config file to allow the Clio server to connect to it. The package installs this file at `/etc/opt/ripple/rippled.cfg`.
 
-        * Open a port to accept unencrypted WebSocket connections.
+        * Open a port to accept unencrypted, non-admin WebSocket connections.
 
             ```
             [port_ws_public]
@@ -157,6 +155,10 @@ Before you install Clio, you must meet the following requirements.
             ip = 0.0.0.0
             protocol = ws
             ```
+
+            {% admonition type="warning" name="Caution" %}
+            Make sure your network firewall is configured not to forward outside requests on this port to your `rippled` server unless you intend to serve API requests to the general public.
+            {% /admonition %}
 
         * Open a port to handle gRPC requests and specify the IP(s) of Clio server(s) in the `secure_gateway` entry.
 
