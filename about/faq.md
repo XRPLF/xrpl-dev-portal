@@ -1,10 +1,121 @@
 ---
 seo:
-    description: Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community.
-subtitle: Answers to Your XRPL Questions
+  title: "FAQ"
+  description: "Answers to frequently asked questions about the XRP Ledger, the XRPL ecosystem and the community."
+schema:
+  "@context": "https://schema.org"
+  "@type": "FAQPage"
+  mainEntity:
+    - "@type": "Question"
+      name: "Is XRPL a private blockchain, owned by Ripple?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No, the XRP Ledger is a decentralized, public blockchain. Any changes that would impact transaction processing or consensus need to be approved by at least 80% of the network. Ripple is a contributor to the network, but its rights are the same as those of other contributors. In terms of validation, there are 150+ validators on the network with 35+ on the default Unique Node List (see 'What are Unique Node Lists (UNLs)?' below) — Ripple runs only 1 of these nodes."
+    - "@type": "Question"
+      name: "Isn’t Proof of Work the best validation mechanism?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Proof of Work (PoW) was the first mechanism to solve the double spend problem without requiring a trusted 3rd party. The XRP Ledger’s consensus mechanism solves the same problem in a far faster, cheaper and more energy efficient way."
+    - "@type": "Question"
+      name: "How can a blockchain be sustainable?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "It’s been widely reported that Bitcoin’s energy consumption, as of 2021, is equivalent to that used by Argentina, with much of the electricity Bitcoin miners use coming from polluting sources. The XRP Ledger confirms transactions through a 'consensus' mechanism - which does not waste energy like proof of work does - and leverages carbon offsets to be one of the first truly carbon neutral blockchains."
+    - "@type": "Question"
+      name: "Can currencies other than XRP be traded through XRPL?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes, the XRP Ledger was built specifically to be able to tokenize arbitrary assets, such as USD, EUR, Oil, Gold, reward points, and more. Any currency can be issued on the XRP Ledger. This is illustrated by XRPL’s growing community that backs a variety of fiat and crypto tokens."
+    - "@type": "Question"
+      name: "Isn’t XRPL only for payments?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Although XRPL was initially developed for payment use cases, both the ledger and its native digital asset XRP are increasingly popular for a range of innovative blockchain use cases such as NFTs. New standards proposals for an automated market maker (AMM), hooks amendment for smart contract functionality, and cross-chain bridges are all currently works in progress."
+    - "@type": "Question"
+      name: "What service do transaction validators provide?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "All nodes ensure that transactions meet protocol requirements, and are therefore “valid.” The service that validators uniquely provide is administratively grouping transactions into ordered units, agreeing on one such ordering specifically to prevent double spending."
+    - "@type": "Question"
+      name: "How much does it cost to run a validator?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Running a validator does not require any fees or XRP. It is comparable in cost to running an email server in terms of its electricity use."
+    - "@type": "Question"
+      name: "What are Unique Node Lists (UNLs)?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "UNLs are the lists of validators a given participant believes will not conspire to defraud them. Each server operator can choose their own UNL, usually based on a default set provided by a trusted publisher. (A default set from a publisher is sometimes called a default UNL, or dUNL.)"
+    - "@type": "Question"
+      name: "Which UNL should I select?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Since anybody can run a validator, the burden is on the network participants to choose a reliable set. Currently, the XRP Ledger Foundation and Ripple are known to publish recommended default lists of high quality validators, based on past performance, proven identities, and responsible IT policies. However, every network participant can choose which validators it chooses as reliable and need not follow one of the publishers noted above."
+    - "@type": "Question"
+      name: "If Ripple recommends adoption of its UNL, doesn't that create a centralized system?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No. The XRP Ledger network is opt-in. Each participant directly or indirectly chooses its UNL. If Ripple stops operating or acts maliciously, participants can change their UNLs to use a list from a different publisher."
+    - "@type": "Question"
+      name: "What is the incentive structure for validators?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "The primary incentive to run a validator is to preserve and protect the stable operation and sensible evolution of the network. It is the validators who decide the evolution of the XRP Ledger, so any business that uses or depends on the XRP Ledger has an inherent incentive to ensure the reliability, and stability of the network. Validators also earn the respect and goodwill of the community by contributing this way."
+    - "@type": "Question"
+      name: "Can financial institutions set up transaction validators to help them meet specific institutional standards and requirements?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No, institutions cannot set up customized validator policies for choosing to allow some transactions and reject others. Validators either follow the protocol, or they do not. If software does not follow protocol rules, it does not function. Thus, it is not recommended that institutions seek out custom implementations without in-house expertise."
+    - "@type": "Question"
+      name: "What happens if more than 20% of nodes within the network do not agree with the majority? How is the final version of the ledger chosen?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Normally, if there is a dispute about the validity of one transaction, that transaction gets pushed back until the majority can come to an agreement. But if more than 20% of the network did not follow the same protocol rules as the majority, the network would temporarily halt. It could resume when participants reconfigure their UNLs based on those who want to reach consensus with each other. This temporary processing delay is desired rather than double spending."
+    - "@type": "Question"
+      name: "Does the XRP Ledger have a formal process for adding validators?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No, a formal process for adding validators is not compatible with the XRP Ledger, because it is a system with no central authority. Publishers of individual default UNLs set their own policies for when to add or remove validators from their lists of recommendations."
+    - "@type": "Question"
+      name: "If the dUNL has the most influence on the network, then is the XRPL centralized?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Validators can choose to not use the dUNL, or any widely-used UNL for that matter. Anyone can create a new UNL at any time. There can be multiple UNLs in use on the same network. Each operator can customize their server's own UNL or choose to follow a different recommended list. All these servers can still run the same chain and reach consensus with one another."
+    - "@type": "Question"
+      name: "What purpose does XRP serve?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "XRP was created as the XRP Ledger's native asset to empower a new generation of digital payments—faster, greener, and cheaper than any previous digital asset. It also serves to protect the ledger from spam, and to bridge currencies in the XRP Ledger's decentralized exchange, when doing so is beneficial to users. Over time, the XRP Ledger community has pioneered new use cases for XRP as well as the XRP Ledger itself."
+    - "@type": "Question"
+      name: "How does the XRP Ledger respond to transaction floods?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "The XRP Ledger is designed to set the transaction cost dynamically based on demand as an anti-spam measure. The impact of any potential XRP manipulation is minimized by increases in network size as the market cap and transaction volume increase."
+    - "@type": "Question"
+      name: "What about money laundering and suspicious economic activity?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "The XRP Ledger network is an open network, and all transactions are publicly visible. Ripple is committed to monitoring and reporting any AML flags across the XRP Ledger network, as well as reporting suspicious activity to FinCEN as applicable. XRP Forensics / xrplorer maintains an advisory list to track and minimize money laundering, scams, fraud, and illicit use of the XRP Ledger. Exchanges and other service providers can use this service to prevent and react to financial crimes."
+    - "@type": "Question"
+      name: "What is the process for reviewing third-party code contributions?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "The code contribution process starts with a developer opening a pull request to a source code repository such as the rippled repository, which contains Ripple's reference implementation of the core XRP Ledger server and protocol. This pull request triggers automated unit and integration tests, as well as code reviews by several developers who, typically, have significant expertise in the area of code that the pull request affects."
+    - "@type": "Question"
+      name: "Does Ripple own or control the XRP Ledger or XRP Ledger network?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "No, Ripple does not own or control the XRP Ledger or XRP Ledger network. Ripple contributes to a reference implementation of the core XRP Ledger server (rippled) and employs a team of engineers who contribute to the open-source codebase. Ripple periodically publishes pre-compiled binary packages of the software for convenience. Anyone can download and compile the software from source. Several entities publish recommended validator lists (UNLs). As of July 2023, Ripple runs only 1 of the 35 validators in the default UNL."
+    - "@type": "Question"
+      name: "Does the XRP Ledger distinguish between the codebase for validation and the one for user software?"
+      acceptedAnswer:
+        "@type": "Answer"
+        text: "Yes. There are several XRP Ledger client libraries which are intended for user software developers. These libraries have different codebases and repositories from the core XRP Ledger server which powers the network and validates transactions."
+subtitle: "Answers to Your XRPL Questions"
 labels:
   - Blockchain
 ---
+
 ###### FAQ
 # Answers to Your XRPL Questions
 

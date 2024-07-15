@@ -15,6 +15,9 @@ redirects:
   $ref: redirects.yaml
 seo:
   siteUrl: https://xrpl.org/
+  type: Organization
+  url: https://xrpl.org/
+  name: XRP Ledger
 rbac:
   cms:
     xrpl-org-editors: maintain
