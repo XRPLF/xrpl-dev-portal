@@ -23,6 +23,14 @@
             "faucetUrl": "xahau-test.net",
             "shortName": "Xahau-Testnet",
             "desc": "Hooks (L1 smart contracts) enabled Xahau testnet."
+        },
+        {
+            "id": "faucet-select-mpt-devnet",
+            "wsUrl": "wss://mpt.devnet.rippletest.net:51233/",
+            "jsonRpcUrl": "https://mpt.devnet.rippletest.net:51234/",
+            "faucetUrl": "mptfaucet.devnet.rippletest.net",
+            "shortName": "MPT-Devnet",
+            "desc": "Preview of XLS-33d Multi-Purpose Tokens amendment."
         }
     ]
 }
