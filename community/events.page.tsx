@@ -8,6 +8,7 @@ const miami = require("../static/img/events/event-meetup-miami@2x.jpg")
 const conference = require("../static/img/events/Conference.png")
 const zone = require("../static/img/events/XRPLZone.png")
 const calls = require("../static/img/events/CommunityCalls.png")
+const brazil = require("../static/img/events/event-meetup-brazil.png")
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -714,6 +715,17 @@ const events = [
     date: "July 2, 2024",
     image: require("../static/img/events/Luxemberg.png"),
     end_date: "July 2, 2024",
+  },
+  {
+    name: "XRPL Meetup Blockchain Rio",
+    description:
+      "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
+    type: "meetup",
+    link: "https://lu.ma/4uxpkd11",
+    location: "Rio de Janeiro",
+    date: "July 23, 2024",
+    image: brazil,
+    end_date: "July 23, 2024",
   },
 ];
 

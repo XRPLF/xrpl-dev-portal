@@ -14,6 +14,7 @@ const amaImage = require("../static/img/events/AMAs.png");
 const hackathon = require("../static/img/events/Hackathons.png");
 const conference = require("../static/img/events/Conference.png");
 const zone = require("../static/img/events/XRPLZone.png");
+const brazil = require("../static/img/events/event-meetup-brazil.png");
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -164,6 +165,18 @@ const events = [
     image: hackathon,
     start_date: "June 28, 2024",
     end_date: "June 30, 2024",
+  },
+  {
+    name: "XRPL Meetup Blockchain Rio",
+    description:
+      "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
+    type: "meetup",
+    link: "https://lu.ma/4uxpkd11",
+    location: "Rio de Janeiro",
+    date: "July 23, 2024",
+    image: brazil,
+    start_date: "July 23, 2024",
+    end_date: "July 23, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
