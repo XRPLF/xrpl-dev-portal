@@ -16,7 +16,7 @@ redirects:
 seo:
   siteUrl: https://xrpl.org/
 rbac:
-  cms:
+  reunite:
     xrpl-org-editors: maintain
 theme:
   analytics:
