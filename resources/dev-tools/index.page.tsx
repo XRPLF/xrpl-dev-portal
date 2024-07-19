@@ -49,7 +49,7 @@ const api_access_tools = [
     title: "WebSocket Tool",
     description:
       "Send sample requests and get responses from the rippled API.",
-    href: "websocket-api-tool",
+    href: "/resources/dev-tools/websocket-api-tool",
     img: require("../../static/img/dev-tools/websocket-tool.png"),
   },
   {
@@ -57,7 +57,7 @@ const api_access_tools = [
     title: "RPC Tool",
     description:
       "Print raw information about an XRP Ledger account, transaction, or ledger.",
-    href: "xrp-ledger-rpc-tool",
+    href: "/resources/dev-tools/rpc-tool",
     img: require("../../static/img/dev-tools/rpc-tool.png"),
   },
   {
@@ -72,7 +72,7 @@ const api_access_tools = [
     title: "Faucets",
     description:
       "Get credentials and test-XRP for XRP Ledger Testnet or Devnet.",
-    href: "xrp-testnet-faucet",
+    href: "/resources/dev-tools/xrp-faucets",
     img: require("../../static/img/dev-tools/faucets.png"),
   },
   {
@@ -80,7 +80,7 @@ const api_access_tools = [
     title: "Transaction Sender",
     description:
       "Test how your code handles various XRP Ledger transactions by sending them over the Testnet to the address.",
-    href: "tx-sender",
+    href: "/resources/dev-tools/tx-sender",
     img: require("../../static/img/dev-tools/transaction-sender.png"),
   },
 ];
@@ -90,14 +90,14 @@ const other = [
     id: "domain",
     title: "Domain Verification Checker",
     description: "Verify your validator's domain.",
-    href: "validator-domain-verifier",
+    href: "/resources/dev-tools/domain-verifier",
     img: require("../../static/img/dev-tools/domain-checker.png"),
   },
   {
     id: "xrp-ledger",
     title: "xrp-ledger.toml Checker",
     description: "Verify that your xrp-ledger.toml file is set up properly.",
-    href: "xrp-ledger-toml-checker",
+    href: "/resources/dev-tools/xrp-ledger-toml-checker",
     img: require("../../static/img/dev-tools/toml-checker.png"),
   },
   {
