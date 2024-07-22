@@ -129,9 +129,9 @@ export default function XrplOverview() {
                 )}
               </p>
               <div className="d-none d-lg-block">
-                <a className="btn btn-primary btn-arrow" href="/docs">
+                <Link className="btn btn-primary btn-arrow" to="/docs">
                   {translate("Read Technical Docs")}
-                </a>{" "}
+                </Link>{" "}
                 <a
                   className="ml-4 video-external-link"
                   target="_blank"
@@ -164,9 +164,9 @@ export default function XrplOverview() {
                 </a>
               )}
               <div className="text-center d-lg-none">
-                <a className="btn btn-primary btn-arrow mt-5 mb-4" href="docs">
+                <Link className="btn btn-primary btn-arrow mt-5 mb-4" to="docs">
                   {translate("Read Technical Docs")}
-                </a>{" "}
+                </Link>{" "}
                 <a
                   className="ml-4 video-external-link"
                   target="_blank"
