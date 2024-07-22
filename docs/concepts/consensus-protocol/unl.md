@@ -26,7 +26,7 @@ Publishers aren't involved in day-to-day validation of new transactions, but the
 
 ## How to Get Your Validator on a Recommended List
 
-Each publisher can define their own criteria for being listed. However, the criteria for having your validator added to the default UNL typically include the following:
+Each publisher can define their own criteria for being listed. However, the criteria for having your validator added to their lists typically include the following:
 
 - Run a validator with high uptime for at least a year and high agreement with the rest of the network.
 - Set up [domain verification](/docs/references/xrp-ledger-toml/#domain-verification) for your validator.
