@@ -66,6 +66,11 @@ Technically, if you run a server, you can configure your own list site or explic
 
 Research is ongoing to design an improved consensus protocol that allows more heterogeneous validator lists. For more information, see the [Consensus Research](consensus-research.md) page.
 
+## Dropping Proposals From Untrusted Validators
+
+For reasons beyond the scope of discussion here, if a server no longer trusts a validator in the network, the server can update the configuration to drop proposals or validations from the untrusted validator instead of relaying (gossiping) them to the network. 
+
+For more information, see `relay_proposals` and `relay_validations` in the [rippled.cfg](https://github.com/XRPLF/rippled/blob/develop/cfg/rippled-example.cfg) file.
 
 ## See Also
 
