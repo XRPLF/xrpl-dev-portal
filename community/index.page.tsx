@@ -15,6 +15,7 @@ const hackathon = require("../static/img/events/Hackathons.png");
 const conference = require("../static/img/events/Conference.png");
 const zone = require("../static/img/events/XRPLZone.png");
 const brazil = require("../static/img/events/event-meetup-brazil.png");
+const korea = require("../static/img/events/SouthKoreaMeetup.png")
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -178,12 +179,36 @@ const events = [
     start_date: "July 23, 2024",
     end_date: "July 23, 2024",
   },
+  {
+    name: "XRPL Zone Seoul",
+    description:
+      "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!",
+    type: "zone",
+    link: "https://ripple.swoogo.com/xrpl-zone-seoul",
+    location: "Seongdong-su, Seoul",
+    date: "September 4, 2024",
+    image: zone,
+    start_date: "September 4, 2024",
+    end_date: "September 4, 2024",
+  },
+  {
+    name: "XRP Community After Hours",
+    description:
+      "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
+    type: "meetup",
+    link: "https://lu.ma/mbg067j3",
+    location: "Seongdong-su, Seoul",
+    date: "September 4, 2024",
+    image: korea,
+    start_date: "September 4, 2024",
+    end_date: "September 4, 2024",
+  },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(7);
+  const [currentIndex, setCurrentIndex] = useState(11);
 
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
