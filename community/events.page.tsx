@@ -9,6 +9,7 @@ const conference = require("../static/img/events/Conference.png")
 const zone = require("../static/img/events/XRPLZone.png")
 const calls = require("../static/img/events/CommunityCalls.png")
 const brazil = require("../static/img/events/event-meetup-brazil.png")
+const korea = require("../static/img/events/SouthKoreaMeetup.png")
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -476,7 +477,7 @@ const events = [
     link: "https://lu.ma/xrplxccess",
     location: "South Korea - JBK Tower",
     date: "September 06, 2023",
-    image: require("../static/img/events/SouthKoreaMeetup.png"),
+    image: korea,
     end_date: "September 06, 2023",
   },
   {
@@ -719,13 +720,35 @@ const events = [
   {
     name: "XRPL Meetup Blockchain Rio",
     description:
-      "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
+      "Kick off Blockchain Rio with the XRP Ledger Dev Meetup, a warm-up event hosted by the XRP Ledger community. Join fellow developers and builders for a night of great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro. Don't miss this fantastic opportunity to network and have a blast with fellow tech enthusiasts!",
     type: "meetup",
     link: "https://lu.ma/4uxpkd11",
     location: "Rio de Janeiro",
     date: "July 23, 2024",
     image: brazil,
     end_date: "July 23, 2024",
+  },
+  {
+    name: "XRPL Zone Seoul",
+    description:
+      "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!",
+    type: "zone",
+    link: "https://ripple.swoogo.com/xrpl-zone-seoul",
+    location: "Seongdong-su, Seoul",
+    date: "September 4, 2024",
+    image: zone,
+    end_date: "September 4, 2024",
+  },
+  {
+    name: "XRP Community After Hours",
+    description:
+      "Celebrate with the XRP Community during Korea Blockchain Week! Don’t miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
+    type: "meetup",
+    link: "https://lu.ma/mbg067j3",
+    location: "Seongdong-su, Seoul",
+    date: "September 4, 2024",
+    image: korea,
+    end_date: "September 4, 2024",
   },
 ];
 
@@ -756,30 +779,30 @@ export default function Events() {
 
   const filteredUpcoming = useMemo(() => {
     return upcoming.filter(
-      (event) => upcomingFilters[event.type.split("-")[0]]
+      (event) => upcomingFilters[event.type.split("-")[0]] !== false
     );
   }, [upcoming, upcomingFilters]);
-
+  
   const filteredPast = useMemo(() => {
-    return past.filter((event) => pastFilters[event.type.split("-")[0]]);
+    return past.filter((event) => pastFilters[event.type.split("-")[0]] !== false);
   }, [past, pastFilters]);
-
+  
   const handleUpcomingFilterChange = (event) => {
     const { name, checked } = event.target;
     setUpcomingFilters((prevFilters) => ({
       ...prevFilters,
-      [name.replace("-upcoming", "")]: checked,
+      [name.split("-")[0]]: checked,
     }));
   };
-
+  
   const handlePastFilterChange = (event) => {
     const { name, checked } = event.target;
     setPastFilters((prevFilters) => ({
       ...prevFilters,
-      [name.replace("-past", "")]: checked,
+      [name.split("-")[0]]: checked,
     }));
   };
-
+  
   return (
     <div className="landing page-events">
       <div>
