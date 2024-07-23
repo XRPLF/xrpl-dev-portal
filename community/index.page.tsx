@@ -169,7 +169,7 @@ const events = [
   {
     name: "XRPL Meetup Blockchain Rio",
     description:
-      "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
+      "Kick off Blockchain Rio with the XRP Ledger Dev Meetup, a warm-up event hosted by the XRP Ledger community. Join fellow developers and builders for a night of great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro. Don't miss this fantastic opportunity to network and have a blast with fellow tech enthusiasts!",
     type: "meetup",
     link: "https://lu.ma/4uxpkd11",
     location: "Rio de Janeiro",

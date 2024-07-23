@@ -719,7 +719,7 @@ const events = [
   {
     name: "XRPL Meetup Blockchain Rio",
     description:
-      "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
+      "Kick off Blockchain Rio with the XRP Ledger Dev Meetup, a warm-up event hosted by the XRP Ledger community. Join fellow developers and builders for a night of great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro. Don't miss this fantastic opportunity to network and have a blast with fellow tech enthusiasts!",
     type: "meetup",
     link: "https://lu.ma/4uxpkd11",
     location: "Rio de Janeiro",
@@ -797,45 +797,6 @@ export default function Events() {
                 {translate("Find the XRPL Community Around the World")}
               </h1>
               <h6 className="mb-3 eyebrow">{translate("Events")}</h6>
-            </div>
-          </div>
-        </section>
-        <section className="container-new py-26">
-          <div className="event-hero card-grid card-grid-2xN">
-            <div className="pr-2 col">
-              <img
-                alt="xrp ledger apex hero"
-                src={require("../static/img/events/event-hero3@2x.png")}
-                className="w-100"
-              />
-            </div>
-            <div className="pt-5 pr-2 col">
-              <div className="d-flex flex-column-reverse">
-                <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRP Ledger Apex")}
-                </h2>
-                <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
-              </div>
-              <p className="mb-4">
-                {translate(
-                  "XRP Ledger Apex 2024 is the official global community summit that unites developers, innovators, businesses, and investors who are building the future of finance on the XRP Ledger blockchain."
-                )}
-              </p>
-              <div className=" my-3 event-small-gray">
-                Location: Amsterdam
-              </div>
-              <div className="py-2 my-3 event-small-gray">
-                Date: June 11-13, 2024
-              </div>
-              <div className="d-lg-block">
-                <a
-                  className="btn btn-primary btn-arrow-out"
-                  target="_blank"
-                  href="https://register.xrpledgerapex.com/2024/?utm_source=xrplorg&utm_medium=web&utm_campaign=events"
-                >
-                  {translate("Register Now")}
-                </a>
-              </div>
             </div>
           </div>
         </section>
