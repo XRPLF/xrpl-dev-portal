@@ -9,30 +9,32 @@ import moment from "moment";
 export function blogPosts() {
   /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
   const instance = {
-    processContent: async (contentProvider, actions) => {
+    processContent: async (actions, { fs, cache }) => {
       try {
         const posts = [];
-        const allBlogFiles = Array.from(contentProvider.fsFilesList.values());
 
-        const markdownFiles = allBlogFiles.filter(file => file.match(/blog[\/\\]([^\\\/]*)[\/\\].*\.md$/));
+        const allFiles = await fs.scan()
+        const markdownFiles = allFiles
+          .filter(file => file.relativePath
+          .match(/^blog[\/\\]([^\\\/]*)[\/\\].*\.md$/));
 
-        for (const relativePath of markdownFiles) {
-          const record = contentProvider.loadContent(relativePath, 'frontmatter');
-          const ast = markdoc.parse(record.content);
+        for (const { relativePath } of markdownFiles) {
+          const { data: { ast } } = await cache.load(relativePath, 'markdown-ast');
+          const { data: { frontmatter } } = await cache.load(relativePath, 'markdown-frontmatter');
 
           const dirPath = dirname(relativePath);
           const title = extractFirstHeading(ast) || '';
-          const category = extractCategory(record.parsed.data.labels);
+          const category = extractCategory(frontmatter.labels);
           const year = `${relativePath.split("/")[1]}`
 
           posts.push({
             path: dirPath,
-            author: record.parsed.data.author || "",
+            author: frontmatter.author || "",
             title: title || toTitleCase(dirname(dirPath)),
             description: getInnerText([ast.children[1]]).replace(title, '').trim(),
             year: year,
-            date: record.parsed.data.date
-                    ? moment(record.parsed.data.date).format("YYYY-MM-DD")
+            date: frontmatter.date
+                    ? moment(frontmatter.date).format("YYYY-MM-DD")
                     : moment(year).format("YYYY-MM-DD"),
             category: category || "General",
             category_id: category ? category.toLowerCase().replace(/ /g, "_") : "general",

@@ -6,9 +6,11 @@ export function indexPages() {
   /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
   const instance = {
     // hook that gets executed after all routes were created
-    async afterRoutesCreated(contentProvider, actions) {
+    async afterRoutesCreated(actions, { cache }) {
       // get all the routes that are ind pages
-      const indexRoutes = actions.getAllRoutes().filter(route => route.metadata?.indexPage);
+      const indexRoutes = actions
+        .getAllRoutes()
+        .filter((route) => route.metadata?.indexPage);
 
       for (const route of indexRoutes) {
         // @ts-ignore this uses some internals, we will expose them in nicer way in the future releases
@@ -22,27 +24,38 @@ export function indexPages() {
         }
 
         const item = findItemDeep(sidebar.items, route.fsPath);
-        const childrenPaths = (item.items || []).map(item => item.fsPath).filter(Boolean);
+        const childrenPaths = (item.items || [])
+          .map((item) => item.fsPath)
+          .filter(Boolean);
 
-        const childRoutes = childrenPaths.map(fsPath => actions.getRouteByFsPath(fsPath));
+        const childRoutes = childrenPaths.map((fsPath) =>
+          actions.getRouteByFsPath(fsPath),
+        );
         const childRoutesData = await Promise.all(
-          childRoutes.map(async route => {
-            const { parsed } = contentProvider.loadContent(route.fsPath, 'frontmatter');
+          childRoutes.map(async (route) => {
+            const { data } = await cache.load(
+              route.fsPath,
+              'markdown-frontmatter',
+            );
             const slug = route.slug;
             const title = await route.getNavText();
             return {
-              ...parsed?.data,
+              ...data?.frontmatter,
               slug,
               title,
             };
-          })
+          }),
         );
 
         const sharedDataId = await actions.createSharedData(
           route.slug + '_' + INDEX_PAGE_INFO_DATA_KEY,
-          childRoutesData
+          childRoutesData,
         );
-        actions.addRouteSharedData(route.slug, INDEX_PAGE_INFO_DATA_KEY, sharedDataId);
+        actions.addRouteSharedData(
+          route.slug,
+          INDEX_PAGE_INFO_DATA_KEY,
+          sharedDataId,
+        );
       }
     },
   };
