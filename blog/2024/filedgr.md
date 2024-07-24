@@ -11,7 +11,7 @@ theme:
 # Developer Reflections: Filedgr – Transforming Data Control with XRPL Integration
  
 
-Welcome to another edition of Developer Reflections. Today, we’ll discuss [Filedgr](https://filedgr.com), a cutting-edge platform that empowers users with robust Web3 solutions for secure data control and transparency. Filedgr stands out by offering unique features like Digital Certificates and the Digital Twin Data Hub, revolutionizing industries with authenticated data and fostering trust in product information. Let's explore how Filedgr uses the [XRP Ledger (XRPL)](https://xrpl.org/) to enhance its offerings and drive innovation in data management.
+Welcome to another edition of Developer Reflections. Today, we’ll discuss [Filedgr](https://filedgr.com), a platform that empowers users with Web3 solutions for secure data control and transparency. Filedgr stands out by offering unique features like Digital Certificates and the Digital Twin Data Hub, revolutionizing industries with authenticated data and fostering trust in product information. Let's explore how Filedgr uses the [XRP Ledger (XRPL)](https://xrpl.org/) to enhance its offerings and drive innovation in data management.
 
 <!-- BREAK -->
 
@@ -28,7 +28,7 @@ The promise of Web3 is a decentralized internet where users have greater control
 
 ## Data Authentication and AI
 
-Data authentication is critical in bolstering trust in AI systems. Filedgr ensures data integrity through robust authentication processes, enhancing user confidence in AI-driven insights. This authentication not only safeguards against tampering but also builds a transparent and accountable AI ecosystem.
+Data authentication is critical in bolstering trust in AI systems. Filedgr looks to ensure data integrity through robust authentication processes, enhancing user confidence in AI-driven insights. This authentication not only safeguards against tampering but also builds a transparent and accountable AI ecosystem.
 
 ![Screenshot: Filedgr Core](/blog/img/dev-reflections-filedgr-core.png)
 
@@ -51,6 +51,8 @@ Access control in Filedgr is implemented via token gating. Digital certificates 
 
 Filedgr integrates with the XRP Ledger to enhance transparency and efficiency in data management. XRPL's fast transaction speeds and low costs make it an ideal choice for Filedgr's needs, particularly for managing the lifecycle information of products without incurring high costs.
 
+By integrating with the XRP Ledger, Filedgr enhances its capabilities, providing secure, transparent, and efficient data management solutions.
+
 **Why XRPL?** 
 
 * **Efficiency**: XRPL offers high transaction speeds and low fees, crucial for Filedgr's extensive data transactions.
@@ -61,8 +63,6 @@ Filedgr's integration with XRPL was recognized with a developer grant, underscor
 
 ## Future Goals: DAO and Venture Builder Model
 
-Filedgr aims to evolve into a decentralized autonomous organization (DAO), promoting transparency and community-driven governance. The Filedgr Foundation will oversee the DAO, ensuring smooth and efficient operations. Additionally, Filedgr plans to develop industry-specific spin-offs, tailoring its technology to various sectors like farming and mobility.
-
-Filedgr is at the forefront of revolutionizing data control and transparency in the Web3 era. By integrating with the XRP Ledger, Filedgr enhances its capabilities, providing secure, transparent, and efficient data management solutions. Join Filedgr today and be part of the movement towards data ownership and environmental responsibility.
+Filedgr aims to evolve into a decentralized autonomous organization (DAO), promoting transparency and community-driven governance. The Filedgr Foundation will oversee the DAO, ensuring efficient operations. Additionally, Filedgr plans to develop industry-specific spin-offs, tailoring its technology to various sectors like farming and mobility.
 
 Want to be featured in the Developer Reflections series? [Submit your project](https://xrpl.org/contribute.html#xrpl-blog) today, and join the [developer Discord channel](https://discord.gg/sfX3ERAMjH) to connect with other members of the XRP Ledger community.
