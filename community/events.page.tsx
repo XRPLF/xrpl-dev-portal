@@ -10,6 +10,7 @@ const zone = require("../static/img/events/XRPLZone.png")
 const calls = require("../static/img/events/CommunityCalls.png")
 const brazil = require("../static/img/events/event-meetup-brazil.png")
 const korea = require("../static/img/events/SouthKoreaMeetup.png")
+const infoSession = require("../static/img/events/InfoSessions.png");
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -466,7 +467,7 @@ const events = [
     link: "https://www.youtube.com/watch?v=TgLaAXTZY7Q",
     location: "Virtual - Zoom",
     date: "September 05, 2023",
-    image: require("../static/img/events/InfoSessions.png"),
+    image: infoSession,
     end_date: "September 05, 2023",
   },
   {
@@ -488,7 +489,7 @@ const events = [
     link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
     location: "Virtual - Zoom",
     date: "September 06, 2023",
-    image: require("../static/img/events/InfoSessions.png"),
+    image: infoSession,
     end_date: "September 06, 2023",
   },
   {
@@ -749,6 +750,17 @@ const events = [
     date: "September 4, 2024",
     image: korea,
     end_date: "September 4, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info-session",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
+    location: "Virtual - Zoom",
+    date: "August 23, 2024",
+    image: infoSession,
+    end_date: "August 23, 2024",
   },
 ];
 
