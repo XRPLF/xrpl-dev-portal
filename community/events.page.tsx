@@ -463,7 +463,7 @@ const events = [
     name: "XRPL Grants Info Session: Financial Inclusion Focused",
     description:
       "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.",
-    type: "info-session",
+    type: "info",
     link: "https://www.youtube.com/watch?v=TgLaAXTZY7Q",
     location: "Virtual - Zoom",
     date: "September 05, 2023",
@@ -485,7 +485,7 @@ const events = [
     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
     description:
       "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
-    type: "info-session",
+    type: "info",
     link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
     location: "Virtual - Zoom",
     date: "September 06, 2023",
@@ -754,7 +754,7 @@ const events = [
     name: "XRPL Builder Office Hours",
     description:
       "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
-    type: "info-session",
+    type: "info",
     link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
     location: "Virtual - Zoom",
     date: "August 23, 2024",
@@ -786,7 +786,7 @@ export default function Events() {
     ama: true,
     cc: true,
     zone: true,  
-    "info-session": true,
+    "info": true,
   });
 
   const [pastFilters, setPastFilters] = useState({
@@ -796,7 +796,7 @@ export default function Events() {
     ama: true,
     cc: true,
     zone: true,
-    "info-session": true,
+    "info": true,
   });
 
   const filteredUpcoming = useMemo(() => {
@@ -979,21 +979,21 @@ export default function Events() {
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  defaultValue="info-session"
-                  id="info-session-upcoming"
-                  name="info-session-upcoming"
+                  defaultValue="info"
+                  id="info-upcoming"
+                  name="info-upcoming"
                   type="checkbox"
                   className="events-filter"
-                  checked={upcomingFilters["info-session"]}
+                  checked={upcomingFilters["info"]}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="info-session-upcoming">
+                <label htmlFor="info-upcoming">
                   {translate("Info Session")}
                 </label>
               </div>
             </div>
           </div>
-          {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info-session  */}
+          {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info  */}
           <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
             {filteredUpcoming.map((event, i) => (
               <a
@@ -1115,15 +1115,15 @@ export default function Events() {
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  defaultValue="info-session"
-                  id="info-session-past"
-                  name="info-session-past"
+                  defaultValue="info"
+                  id="info-past"
+                  name="info-past"
                   type="checkbox"
                   className="events-filter"
-                  checked={pastFilters["info-session"]}
+                  checked={pastFilters["info"]}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="info-session-past">
+                <label htmlFor="info-past">
                   {translate("Info Session")}
                 </label>
               </div>
