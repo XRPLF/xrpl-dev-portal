@@ -742,7 +742,7 @@ const events = [
   {
     name: "XRP Community After Hours",
     description:
-      "Celebrate with the XRP Community during Korea Blockchain Week! Don’t miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
+      "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
     link: "https://lu.ma/mbg067j3",
     location: "Seongdong-su, Seoul",
