@@ -785,7 +785,7 @@ export default function Events() {
     hackathon: true,
     ama: true,
     cc: true,
-    zone: true,
+    zone: true,  
     "info-session": true,
   });
 
@@ -815,18 +815,18 @@ export default function Events() {
     const { name, checked } = event.target;
     setUpcomingFilters((prevFilters) => ({
       ...prevFilters,
-      [name.split("-")[0]]: checked,
+      [name.replace("-upcoming", "")]: checked,
     }));
   };
-
+  
   const handlePastFilterChange = (event) => {
     const { name, checked } = event.target;
     setPastFilters((prevFilters) => ({
       ...prevFilters,
-      [name.split("-")[0]]: checked,
+      [name.replace("-past", "")]: checked,
     }));
   };
-
+  
   return (
     <div className="landing page-events">
       <div>
