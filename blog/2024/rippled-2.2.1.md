@@ -18,11 +18,9 @@ Version 2.2.1 of `rippled`, the reference server implementation of the XRP Ledge
 
 Five amendments introduced in version 2.2.0 are open for voting according to the XRP Ledger's [amendment process](https://xrpl.org/amendments.html), which enables protocol changes following two weeks of >80% support from trusted validators.
 
-If you operate an XRP Ledger server version 2.2.0, upgrade to version
-2.2.1 as soon as possible to ensure service continuity.
+If you operate an XRP Ledger server version 2.2.0, upgrade to version 2.2.1 as soon as possible to ensure service continuity.
 
-If you operate an XRP Ledger server older than version 2.2.0, upgrade to
-version 2.2.1 by August 14, 2024 to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
+If you operate an XRP Ledger server older than version 2.2.0, upgrade to version 2.2.1 by August 14, 2024 to ensure service continuity. The exact time that protocol changes take effect depends on the voting decisions of the decentralized network.
 
 ## Install / Upgrade
 
