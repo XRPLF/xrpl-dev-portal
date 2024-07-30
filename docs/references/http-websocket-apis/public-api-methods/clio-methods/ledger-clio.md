@@ -45,13 +45,13 @@ The request can contain the following parameters:
 The `ledger` field is deprecated and may be removed without further notice.
 
 {% admonition type="info" name="Note" %}
-The `ledger` command in Clio does not support the following fields that are supported by [ledger command in rippled](../ledger-methods/ledger.md):
+The `ledger` command in Clio does not support the following fields:
 
 * `accounts`
 * `full`
 * `queue`
 
-Clio will **always** forward the request to `rippled` when any of the above fields is set to `true`.
+Clio returns an error when any of the above fields is set to `true`. (It is OK to include the fields in the request as long as the provided value is `false`.) {% badge href="https://github.com/XRPLF/clio/releases/tag/2.2.2" %}Updated in: Clio 2.2.2{% /badge %}
 {% /admonition %}
 
 ## Response Format
