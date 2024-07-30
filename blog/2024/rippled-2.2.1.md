@@ -10,10 +10,7 @@ theme:
 ---
 # Introducing XRP Ledger version 2.2.1
 
-Version 2.2.1 of `rippled`, the reference server implementation of the
-XRP Ledger protocol, is now available. This release fixes a critical
-bug, introduced in 2.2.0, when handling some types of RPC requests. It
-does not introduce any new amendments.
+Version 2.2.1 of `rippled`, the reference server implementation of the XRP Ledger protocol, is now available. This release fixes a critical bug, introduced in 2.2.0, when handling some types of RPC requests. It does not introduce any new amendments.
 
 <!-- BREAK -->
 
