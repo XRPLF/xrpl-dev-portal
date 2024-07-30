@@ -68,6 +68,10 @@ An example of a successful response:
 {% code-snippet file="/_api-examples/ledger-clio/jsonrpc-response.json" language="json" prefix="200 OK\n\n" /%}
 {% /tab %}
 
+{% tab label="JSON-RPC (with diff)" %}
+{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" /%}
+{% /tab %}
+
 {% /tabs %}
 
 The response follows the [standard format][], with a successful result containing information about the ledger, including the following fields:
@@ -107,10 +111,6 @@ If the request specified `"diff": true`, the response has an object `diff`. The 
 | `object_id` | String | The object identifier. |
 | `Hashes` | Object or Hex String | Depending on whether the request set `binary` to true or false, this field returns the contents of the object that was created, the new value of an object that was modified, or an empty string if the object was deleted. |
 
-### Response When `diff` is `true`
-
-
-`{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" /%}`
 
 ## Possible Errors
 
