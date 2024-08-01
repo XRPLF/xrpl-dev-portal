@@ -19,6 +19,8 @@ rbac:
   reunite:
     xrpl-org-editors: maintain
 theme:
+  imports:
+    - '@redocly/portal-plugin-async-api'
   analytics:
     gtm:
       includeInDevelopment: true
