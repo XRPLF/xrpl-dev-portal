@@ -1,15 +1,16 @@
 import React, { useState, useMemo } from "react";
-import { useThemeHooks } from '@redocly/theme/core/hooks';
+import { useThemeHooks } from "@redocly/theme/core/hooks";
 const moment = require("moment");
-const amaImage = require("../static/img/events/AMAs.png")
-const hackathon = require("../static/img/events/Hackathons.png")
-const sanDiego = require("../static/img/events/event-meetup-san-diego@2x.jpg")
-const miami = require("../static/img/events/event-meetup-miami@2x.jpg")
-const conference = require("../static/img/events/Conference.png")
-const zone = require("../static/img/events/XRPLZone.png")
-const calls = require("../static/img/events/CommunityCalls.png")
-const brazil = require("../static/img/events/event-meetup-brazil.png")
-const korea = require("../static/img/events/SouthKoreaMeetup.png")
+const amaImage = require("../static/img/events/AMAs.png");
+const hackathon = require("../static/img/events/Hackathons.png");
+const sanDiego = require("../static/img/events/event-meetup-san-diego@2x.jpg");
+const miami = require("../static/img/events/event-meetup-miami@2x.jpg");
+const conference = require("../static/img/events/Conference.png");
+const zone = require("../static/img/events/XRPLZone.png");
+const calls = require("../static/img/events/CommunityCalls.png");
+const brazil = require("../static/img/events/event-meetup-brazil.png");
+const korea = require("../static/img/events/SouthKoreaMeetup.png");
+const infoSession = require("../static/img/events/InfoSessions.png");
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -462,11 +463,11 @@ const events = [
     name: "XRPL Grants Info Session: Financial Inclusion Focused",
     description:
       "Join us for a live information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Financial Inclusion projects.",
-    type: "info-session",
+    type: "info",
     link: "https://www.youtube.com/watch?v=TgLaAXTZY7Q",
     location: "Virtual - Zoom",
     date: "September 05, 2023",
-    image: require("../static/img/events/InfoSessions.png"),
+    image: infoSession,
     end_date: "September 05, 2023",
   },
   {
@@ -484,11 +485,11 @@ const events = [
     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
     description:
       "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
-    type: "info-session",
+    type: "info",
     link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
     location: "Virtual - Zoom",
     date: "September 06, 2023",
-    image: require("../static/img/events/InfoSessions.png"),
+    image: infoSession,
     end_date: "September 06, 2023",
   },
   {
@@ -639,7 +640,6 @@ const events = [
     image: conference,
     end_date: "June 1, 2024",
   },
-
   {
     name: "Permissionless",
     description:
@@ -742,7 +742,7 @@ const events = [
   {
     name: "XRP Community After Hours",
     description:
-      "Celebrate with the XRP Community during Korea Blockchain Week! Don’t miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
+      "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
     link: "https://lu.ma/mbg067j3",
     location: "Seongdong-su, Seoul",
@@ -750,10 +750,32 @@ const events = [
     image: korea,
     end_date: "September 4, 2024",
   },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
+    location: "Virtual - Zoom",
+    date: "August 23, 2024",
+    image: infoSession,
+    end_date: "August 23, 2024",
+  },
+  {
+    name: "APEX 2024: The XRPL Developer Summit",
+    description:
+      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
+    type: "conference",
+    link: "https://www.youtube.com/playlist?list=PLl-QsmXvjodqeHPgq1UrKVcRPoNJe12Wv",
+    location: "Amsterdam",
+    date: "June 11 - 13, 2024",
+    image: conference,
+    end_date: "June 13, 2024",
+  },
 ];
 
 export default function Events() {
-  const { useTranslate} = useThemeHooks();
+  const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const { past, upcoming } = useMemo(() => categorizeDates(events), []);
 
@@ -763,8 +785,8 @@ export default function Events() {
     hackathon: true,
     ama: true,
     cc: true,
-    zone: true,
-    "info-session": true,
+    zone: true,  
+    "info": true,
   });
 
   const [pastFilters, setPastFilters] = useState({
@@ -774,7 +796,7 @@ export default function Events() {
     ama: true,
     cc: true,
     zone: true,
-    "info-session": true,
+    "info": true,
   });
 
   const filteredUpcoming = useMemo(() => {
@@ -782,16 +804,18 @@ export default function Events() {
       (event) => upcomingFilters[event.type.split("-")[0]] !== false
     );
   }, [upcoming, upcomingFilters]);
-  
+
   const filteredPast = useMemo(() => {
-    return past.filter((event) => pastFilters[event.type.split("-")[0]] !== false);
+    return past.filter(
+      (event) => pastFilters[event.type.split("-")[0]] !== false
+    );
   }, [past, pastFilters]);
-  
+
   const handleUpcomingFilterChange = (event) => {
     const { name, checked } = event.target;
     setUpcomingFilters((prevFilters) => ({
       ...prevFilters,
-      [name.split("-")[0]]: checked,
+      [name.replace("-upcoming", "")]: checked,
     }));
   };
   
@@ -799,7 +823,7 @@ export default function Events() {
     const { name, checked } = event.target;
     setPastFilters((prevFilters) => ({
       ...prevFilters,
-      [name.split("-")[0]]: checked,
+      [name.replace("-past", "")]: checked,
     }));
   };
   
@@ -835,26 +859,26 @@ export default function Events() {
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRP Ledger Apex")}
+                  {translate("XRPL Zone Seoul")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "XRP Ledger Apex 2024 is the official global community summit that unites developers, innovators, businesses, and investors who are building the future of finance on the XRP Ledger blockchain."
+                  "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!"
                 )}
               </p>
               <div className=" my-3 event-small-gray">
-                Location: Amsterdam
+                Location: Seongdong-su, Seoul
               </div>
               <div className="py-2 my-3 event-small-gray">
-                Date: June 11-13, 2024
+                September 4th, 2024
               </div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://register.xrpledgerapex.com/2024/?utm_source=xrplorg&utm_medium=web&utm_campaign=events"
+                  href="https://ripple.swoogo.com/xrpl-zone-seoul"
                 >
                   {translate("Register Now")}
                 </a>
@@ -885,7 +909,9 @@ export default function Events() {
                   checked={upcomingFilters.conference}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="conference-upcoming">{translate("Conference")}</label>
+                <label htmlFor="conference-upcoming">
+                  {translate("Conference")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -909,7 +935,9 @@ export default function Events() {
                   checked={upcomingFilters.hackathon}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="hackathon-upcoming">{translate("Hackathons")}</label>
+                <label htmlFor="hackathon-upcoming">
+                  {translate("Hackathons")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -933,7 +961,9 @@ export default function Events() {
                   checked={upcomingFilters.cc}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="cc-upcoming">{translate("Community Calls")}</label>
+                <label htmlFor="cc-upcoming">
+                  {translate("Community Calls")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -949,19 +979,21 @@ export default function Events() {
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  defaultValue="info-session"
-                  id="info-session-upcoming"
-                  name="info-session-upcoming"
+                  defaultValue="info"
+                  id="info-upcoming"
+                  name="info-upcoming"
                   type="checkbox"
                   className="events-filter"
-                  checked={upcomingFilters["info-session"]}
+                  checked={upcomingFilters["info"]}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="info-session-upcoming">{translate("Info Session")}</label>
+                <label htmlFor="info-upcoming">
+                  {translate("Info Session")}
+                </label>
               </div>
             </div>
           </div>
-          {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info-session  */}
+          {/* # Available Types - conference, hackathon, ama, cc, zone, meetup, info  */}
           <div className="mt-2 row row-cols-1 row-cols-lg-3 card-deck">
             {filteredUpcoming.map((event, i) => (
               <a
@@ -977,7 +1009,9 @@ export default function Events() {
                     background: `url(${event.image}) no-repeat`,
                   }}
                 >
-                  <div className="event-card-title">{translate(event.name)}</div>
+                  <div className="event-card-title">
+                    {translate(event.name)}
+                  </div>
                 </div>
                 <div className="event-card-body">
                   <p>{translate(event.description)}</p>
@@ -1013,7 +1047,9 @@ export default function Events() {
                   checked={pastFilters.conference}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="conference-past">{translate("Conference")}</label>
+                <label htmlFor="conference-past">
+                  {translate("Conference")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1037,7 +1073,9 @@ export default function Events() {
                   checked={pastFilters.hackathon}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="hackathon-past">{translate("Hackathons")}</label>
+                <label htmlFor="hackathon-past">
+                  {translate("Hackathons")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1077,15 +1115,17 @@ export default function Events() {
               </div>
               <div className="form-check form-check-inline">
                 <input
-                  defaultValue="info-session"
-                  id="info-session-past"
-                  name="info-session-past"
+                  defaultValue="info"
+                  id="info-past"
+                  name="info-past"
                   type="checkbox"
                   className="events-filter"
-                  checked={pastFilters["info-session"]}
+                  checked={pastFilters["info"]}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="info-session-past">{translate("Info Session")}</label>
+                <label htmlFor="info-past">
+                  {translate("Info Session")}
+                </label>
               </div>
             </div>
           </div>
@@ -1103,7 +1143,9 @@ export default function Events() {
                     background: `url(${event.image}) no-repeat`,
                   }}
                 >
-                  <div className="event-card-title">{translate(event.name)}</div>
+                  <div className="event-card-title">
+                    {translate(event.name)}
+                  </div>
                 </div>
                 <div className="event-card-body">
                   <p>{translate(event.description)}</p>

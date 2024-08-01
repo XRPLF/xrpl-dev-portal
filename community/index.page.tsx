@@ -3,6 +3,8 @@ import { useThemeHooks } from "@redocly/theme/core/hooks";
 import moment from "moment";
 import { Link } from "@redocly/theme/components/Link/Link";
 
+const infoSession = require("../static/img/events/InfoSessions.png");
+
 export const frontmatter = {
   seo: {
     title: "Community",
@@ -67,7 +69,7 @@ const events = [
     link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
     location: "Virtual - Zoom",
     date: "September 06, 2023",
-    image: require("../static/img/events/InfoSessions.png"),
+    image: infoSession,
     end_date: "September 06, 2023",
     start_date: "September 06, 2023",
   },
@@ -202,6 +204,18 @@ const events = [
     image: korea,
     start_date: "September 4, 2024",
     end_date: "September 4, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info-session",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
+    location: "Virtual - Zoom",
+    date: "August 23, 2024",
+    image: infoSession,
+    start_date: "August 23, 2024",
+    end_date: "August 23, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);

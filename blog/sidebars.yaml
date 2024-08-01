@@ -6,6 +6,8 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/clio-2.2.2.md
+        - page: 2024/rippled-2.2.1.md
         - page: 2024/filedgr.md
         - page: 2024/clio-2.2.1.md
         - page: 2024/clio-2.2.0.md
