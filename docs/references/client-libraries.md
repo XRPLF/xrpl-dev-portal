@@ -20,3 +20,4 @@ For other programming languages, you can access the XRP Ledger through the [HTTP
 | **Java**                        | `xrpl4j`                  | [Get Started Using Java](../tutorials/java/build-apps/get-started.md) | [API Reference](https://javadoc.io/doc/org.xrpl/) | [Repo](https://github.com/XRPLF/xrpl4j) |
 | **PHP**                         | `XRPL_PHP`                | [Get Started Using PHP](../tutorials/php/build-apps/get-started.md) | [XRPL_PHP Docs](https://alexanderbuzz.github.io/xrpl-php-docs/) | [Repo](https://github.com/AlexanderBuzz/xrpl-php) |
 | **Ruby**                         | `XRPB`                |  | [XRPB Docs](https://www.rubydoc.info/gems/xrbp) | [Repo](https://github.com/DevNullProd/XRBP) |
+| **Dart**                         | `xrpl_dart`                |  | [xrpl_dart Docs](https://pub.dev/packages/xrp_dart#xrpl-dart-package) | [Repo](https://github.com/mrtnetwork/xrpl_dart) |
