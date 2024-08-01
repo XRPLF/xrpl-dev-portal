@@ -946,6 +946,14 @@
             height: 442px;
         }
     }
+    .pr-bt16{
+        position: relative;
+        bottom: 16px;
+    }
+    .pr-bt28{
+        position: relative;
+        bottom: 28px;
+    }
     .bottom-cards-section {
         display: flex;
         flex-direction: row;
@@ -1088,6 +1096,14 @@
 
     /* Media query for mobile view */
     @media (max-width: 768px) {
+        .pr-bt28{
+            position: relative;
+            bottom: 0px;
+        }
+        .pr-bt16{
+            position: relative;
+            bottom: 0px;
+        }
         .bottom-cards-section {
             flex-direction: column;
             align-items: center;

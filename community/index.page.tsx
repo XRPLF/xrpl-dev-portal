@@ -658,8 +658,13 @@ const CommunityPage: React.FC = () => {
             </h6>
             <p className="card-description">
               {translate(
-                "RippleX's Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem. Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to bugs@ripple.com and use the bugs@ripple.com Public Key."
+                "RippleX's Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem."
               )}
+              <p className="card-description">
+                {
+                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to bugs@ripple.com and use the bugs@ripple.com Public Key.")
+                }
+              </p>
             </p>
             <div className="card-links">
               <Link
@@ -676,7 +681,7 @@ const CommunityPage: React.FC = () => {
           <img className="bottom-right-img bug-bounty-card-bg-2" alt="Bottom Right Image" />
           <div className="card-content">
             <h6 className="card-title">{translate("Report a Scam")}</h6>
-            <h6 className="card-subtitle">
+            <h6 className="card-subtitle pr-bt28">
               {translate(
                 "Report Scams to Safeguard Our Community"
               )}
@@ -750,7 +755,7 @@ const CommunityPage: React.FC = () => {
           <img className="bottom-right-img" alt="Bottom Right Image" />
           <div className="card-content">
             <h6 className="card-title">{translate("XRPL Careers")}</h6>
-            <h6 className="card-subtitle">
+            <h6 className="card-subtitle pr-bt16">
               {translate(
                 "Discover your next career opportunity in the XRPL community"
               )}
