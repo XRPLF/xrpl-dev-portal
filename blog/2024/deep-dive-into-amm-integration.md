@@ -43,7 +43,7 @@ The AMM model on the XRPL is designed to facilitate automatic trading and liquid
 
 **Protocol Native:**
 
-* As a core primitive of the XRPL, developers can utilize AMM functionality without the need to create their own smart contracts and face associated risks.
+* As a core primitive of the XRPL, developers can use AMM functionality without the need to create their own smart contracts and face associated risks.
 
 **Aggregated Liquidity:**
 
@@ -52,7 +52,7 @@ The AMM model on the XRPL is designed to facilitate automatic trading and liquid
 **Continuous Auction Mechanism:**
 
 * The implementation of a continuous auction mechanism allows arbitrageurs to bid to capture price discrepancies at a discount.
-* The AMM continuously auctions trading advantages for 24-hour periods at near zero trading fees. This results in immediate arb trading and maintains stable volatility.
+* The AMM continuously auctions trading advantages for 24-hour periods at near zero trading fees. This results in immediate arbitrage trading and maintains stable volatility.
 * Proceeds from each auction are partially refunded to the prior arbitrage slot holder and partially burnt, effectively reducing impermanent loss for liquidity providers.
 
 **Single-sided Liquidity Provision:**
@@ -61,24 +61,24 @@ The AMM model on the XRPL is designed to facilitate automatic trading and liquid
 
 **No Miner Extractable Value (MEV):**
 
-* The XRPL uses federated consensus, meaning that each ledger (equivalent to a “block”) is determined by a consensus of participants whereby no single party can dictate which transactions or ledgers are valid. There are no miners to prioritize only certain transactions (namely higher gas fee orders) to the Ledger.
+* The XRPL uses federated consensus, meaning that each ledger (equivalent to a “block”) is determined by a consensus of participants whereby no single party can dictate which transactions or ledgers are valid. There are no miners to prioritize only certain transactions (namely higher gas fee orders) to the XRP Ledger.
 * The AMM’s (and existing DEX) orders inherit the core ledger’s deterministic-random transaction ordering secured by the distributed network of validators. While it does not eliminate the ability to front run transactions, it does become more difficult compared to an open mem pool.
 
 **CLOB DEX Integration:**
 
-* The AMM is integrated with the central limit order book (CLOB)-based DEX and enables price optimization to determine whether swapping within a liquidity pool, through the order book, or both provides the best rate and executes accordingly. This ensures that transactions can automatically use the most efficient path for trades, whether through offers on the DEX or through AMM pools, optimizing for the best possible exchange rates thereby enhancing DEX liquidity.
+* The AMM is integrated with the central limit order book (CLOB)-based DEX and enables price optimization to determine whether swapping within a liquidity pool, through the order book, or both, provides the best rate and executes accordingly. This ensures that transactions can automatically use the most efficient path for trades, whether through offers on the DEX or through AMM pools, optimizing for the best possible exchange rates, thereby enhancing DEX liquidity.
 
 ## Core Transactions of XRPL AMM Protocol
 
 * **AMMCreate:** Enables the creation of a new AMM instance, initializing it with funding and defining the asset pair.
-* **AMMDeposit:** Allows users to add liquidity to an existing AMM, receiving LP (Liquidity Provider) Tokens in proportion to their contribution.
-* **AMMWithdraw:** Crypto Liquidity Providers (LPs) can withdraw their funds from the AMM, surrendering their LP Tokens and receiving their share of the assets back.
+* **AMMDeposit:** Allows users to add liquidity to an existing AMM, receiving Liquidity Provider (LP) tokens in proportion to their contribution.
+* **AMMWithdraw:** Crypto LPs can withdraw their funds from the AMM, surrendering their LP tokens and receiving their share of the assets back.
 * **AMMBid:** Users bid on the AMM’s auction slot, aiming for discounted trading fees.
 * **AMMVote:** Enables LPs to vote on the trading fee percentage, influencing the economics of the AMM pool.
 
 ### LP Tokens and Governance
 
-LP Tokens play a central role in the AMM ecosystem, representing the liquidity provider's share in the pool. These tokens are not just pool ownership shares but also grant holders a say on key parameters of the AMM, such as trading fees. This feature introduces a layer of decentralized governance, allowing for a dynamic and community-driven approach to managing the pools.
+LP tokens play a central role in the AMM ecosystem, representing the liquidity provider's share in the pool. These tokens not only pool ownership shares but also grant holders a say on key parameters of the AMM, such as trading fees. This feature introduces a layer of decentralized governance, allowing for a dynamic and community-driven approach to managing the pools.
 
 ## Building with AMM on XRPL: A Step by Step Guide
 
@@ -100,7 +100,7 @@ The integration of the AMM on XRPL opens up exciting possibilities for financial
 
 **Financial Applications**
 
-Developers can create DeFi services like trading platforms, yield farming applications, and more that leverage the efficiency and liquidity of AMM pools. The ability to easily swap assets and provide liquidity directly on the ledger enhances user experiences and can drive adoption of a variety of services.
+Developers can create DeFi services like trading platforms, yield farming applications, and more, that leverage the efficiency and liquidity of AMM pools. The ability to easily swap assets and provide liquidity directly on the ledger enhances user experiences and can drive adoption of a variety of services.
 
 **Non-Financial Integrations**
 
