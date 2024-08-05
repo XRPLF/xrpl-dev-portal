@@ -45,13 +45,13 @@ The request can contain the following parameters:
 The `ledger` field is deprecated and may be removed without further notice.
 
 {% admonition type="info" name="Note" %}
-The `ledger` command in Clio does not support the following fields that are supported by [ledger command in rippled](../ledger-methods/ledger.md):
+The `ledger` command in Clio does not support the following fields:
 
 * `accounts`
 * `full`
 * `queue`
 
-Clio will **always** forward the request to `rippled` when any of the above fields is set to `true`.
+Clio returns an error when any of the above fields is set to `true`. (It is OK to include the fields in the request as long as the provided value is `false`.) {% badge href="https://github.com/XRPLF/clio/releases/tag/2.2.2" %}Updated in: Clio 2.2.2{% /badge %}
 {% /admonition %}
 
 ## Response Format
@@ -66,6 +66,10 @@ An example of a successful response:
 
 {% tab label="JSON-RPC" %}
 {% code-snippet file="/_api-examples/ledger-clio/jsonrpc-response.json" language="json" prefix="200 OK\n\n" /%}
+{% /tab %}
+
+{% tab label="JSON-RPC (with diff)" %}
+{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -107,10 +111,6 @@ If the request specified `"diff": true`, the response has an object `diff`. The 
 | `object_id` | String | The object identifier. |
 | `Hashes` | Object or Hex String | Depending on whether the request set `binary` to true or false, this field returns the contents of the object that was created, the new value of an object that was modified, or an empty string if the object was deleted. |
 
-### Response When `diff` is `true`
-
-
-`{% code-snippet file="/_api-examples/ledger-clio/jsonrpc-diff-response.json" language="json" /%}`
 
 ## Possible Errors
 
