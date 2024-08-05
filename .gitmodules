@@ -1,0 +1,3 @@
+[submodule "rippled-api-spec"]
+	path = rippled-api-spec
+	url = https://github.com/ripple/rippled-api-spec.git
