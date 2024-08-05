@@ -25,6 +25,7 @@ This method can retrieve several different types of data. You can select which t
 | `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `include_deleted` | Boolean | _(Optional)_ Include links to deleted objects. |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
