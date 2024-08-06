@@ -25,6 +25,7 @@ This method can retrieve several different types of data. You can select which t
 | `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `include_deleted` | Boolean  | _(Optional, Clio servers only)_ If set to _true_ and the queried object has been deleted, return its complete data as it was prior to its deletion. If set to _false_ or not provided, and the queried object has been deleted, return `objectNotFound` (current behavior). |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
@@ -759,6 +760,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that was used when retrieving this data. |
 | `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format][]. |
 | `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
+| `deleted_ledger_index` | String   | _(Clio server only, returned if `include_deleted` parameter is set.)_ The [ledger index][] where the ledger entry object was deleted. |
 
 An example of a successful response:
 
