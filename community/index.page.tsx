@@ -672,21 +672,26 @@ const CommunityPage: React.FC = () => {
             </h6>
             <p className="card-description">
               {translate(
-                "RippleX's Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem."
+                "RippleX’s Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem."
               )}
               <p className="card-description">
                 {
-                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to bugs@ripple.com and use the bugs@ripple.com Public Key.")
+                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to ")
                 }
+              <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
+              {
+                translate(" and use the ")
+              }
+              <a href="https://ripple.com/files/bug-bounty.asc">Public Key.</a>
               </p>
             </p>
             <div className="card-links">
               <Link
                 className="com-card-link"
                 target="_blank"
-                to="https://docs.google.com/document/d/1TXAQULPBCbj6e5SZItR8ZNGTav4e4L948fGZQ1SBBWM/edit#heading=h.760ha1x1h65"
+                to="https://medium.com/ripplexdev/highlighting-the-ripplex-bug-bounty-program-545ea787f900"
               >
-                {translate("Learn more about the program")}
+                {translate("Learn more")}
               </Link>
             </div>
           </div>
