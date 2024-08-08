@@ -166,6 +166,11 @@
         - page: docs/tutorials/javascript/index.md
           expanded: false
           items:
+            - page: docs/tutorials/javascript/amm/index.md
+              expanded: false
+              items:
+                - page: docs/tutorials/javascript/amm/create-an-amm.md
+                - page: docs/tutorials/javascript/amm/add-assets-to-amm.md
             - page: docs/tutorials/javascript/send-payments/index.md
               expanded: false
               items:

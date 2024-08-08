@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AMM Test Harness</title>
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <style>
+       body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
+       h1{font-weight: bold;}
+       input, button {padding: 6px;margin-bottom: 8px;}
+       button{font-weight: bold;font-family: "Work Sans", sans-serif;}
+       td{vertical-align: middle;}
+       .locked-textarea {
+        resize: none;
+       }
+    </style>
+    <script src='https://unpkg.com/xrpl@4.0.0/build/xrpl-latest-min.js'></script>
+    <script src='2.add-assets-to-amm.js'></script>
+    <script>
+      if (typeof module !== "undefined") {
+        const xrpl = require('xrpl')
+      }
+    </script>
+  </head>
+  
+<!-- ************************************************************** -->
+<!-- ********************** The Form ****************************** -->
+<!-- ************************************************************** -->
+
+  <body>
+    <h1>AMM Test Harness</h1>
+    <form id="theForm">
+      <table>
+        <tr valign="top">
+          <td>
+            <table>
+              <tr valign="top">
+                <td style="border: 1px solid #000000; padding: 10px; vertical-align: top;">
+                  <button type="button" onClick="getAccount()">Get New Devnet Account</button>
+                  <table>
+                    <tr valign="top">
+                      <td>
+                        <label for="accountField">Account:</label>
+                        <br>
+                        <textarea readonly id="accountField" cols="40" class="locked-textarea"></textarea>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="seedField">Seed:</label>
+                        <br>
+                        <textarea readonly id="seedField" cols="40" class="locked-textarea"></textarea>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <label for="balanceField">XRP Balance:</label>
+                        <br>
+                        <textarea readonly id="balanceField" cols="40" class="locked-textarea"></textarea>
+                        <br>
+                      </td>
+                    </tr>     
+                  </table>
+                  <br>
+                  <button type="button" onClick="issueFOO()">Issue FOO Tokens</button>
+                  <table>
+                    <tr valign="top">
+                      <td>
+                        <label for="fooField">FOO Balance:</label>
+                        <br>
+                        <textarea readonly id="fooField" cols="40" class="locked-textarea"></textarea>
+                      </td>
+                    </tr>
+                  </table>
+                  <br>
+                  <button type="button" onClick="checkAMM()">Check for AMM</button>
+                  <button type="button" onClick="createAMM()">Create AMM</button>
+                </td>
+                <td style="border: 1px solid #000000; padding: 10px; vertical-align: top;">
+                    <button type="button" onClick="getAccount2()">Get Second Devnet Account</button>
+                    <table>
+                      <tr valign="top">
+                        <td>
+                          <label for="accountField2">Account:</label>
+                          <br>
+                          <textarea readonly id="accountField2" cols="40" class="locked-textarea"></textarea>
+                          <br>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label for="seedField2">Seed:</label>
+                          <br>
+                          <textarea readonly id="seedField2" cols="40" class="locked-textarea"></textarea>
+                          <br>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label for="balanceField2">XRP Balance:</label>
+                          <br>
+                          <textarea readonly id="balanceField2" cols="40" class="locked-textarea"></textarea>
+                          <br>
+                        </td>
+                      </tr>     
+                    </table>
+                    <br>
+                    <button type="button" onClick="buyFOO()">Buy FOO Tokens</button>                    
+                    <table>
+                      <tr valign="top">
+                        <td>
+                          <label for="fooField2">FOO Balance:</label>
+                          <br>
+                          <textarea readonly id="fooField2" cols="40" class="locked-textarea"></textarea>
+                          <br>
+                        </td>
+                      </tr>
+                    </table>
+                    <br>
+                    <table>
+                      <tr valign="top">
+                        <td>
+                          <label for="addXRPField">XRP: </label><input type="text" id="addXRPField" size="3"></input>
+                          <label for="addFOOField">FOO: </label><input type="text" id="addFOOField" size="3"></input>
+                          <button type="button" onClick="addAssets()">Add Assets</button>
+                          <br>
+                          <label for="voteFeeField">Fee: </label><input type="text" id="voteFeeField" size="3"></input>
+                          <button type="button" onClick="voteFees()">Add Vote</button>                          
+                        </td>
+                      </tr>
+                    </table>
+                    <table>
+                        <tr valign="top">
+                          <td>                            
+                            <label for="lpField2">LP Balance:</label>
+                            <br>
+                            <textarea readonly id="lpField2" cols="40" class="locked-textarea"></textarea>
+                            <br>
+                            <button type="button" onClick="calculateLP()">Calculate LP Value</button>
+                            <button type="button" onClick="withdrawLP()">Withdraw LP</button>
+                          </td>
+                        </tr>
+                      </table>
+                  </td>
+                  <td style="border: 1px solid #000000; padding: 10px; vertical-align: top;">
+                    <label for="resultField">Log</label>
+                    <p align="right">
+                      <textarea readonly id="resultField" cols="70" rows="25" class="locked-textarea"></textarea>
+                    </p>
+                    <label for="ammField">AMM Info</label>
+                    <p align="right">
+                      <textarea readonly id="ammInfoField" cols="70" rows="25" class="locked-textarea"></textarea>
+                    </p>
+                  </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
