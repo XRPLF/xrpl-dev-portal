@@ -196,7 +196,7 @@ const events = [
   {
     name: "XRP Ledger Hackathon Seoul 2024",
     description:
-      "Calling all developers in Korea or attending Korea Blockchain Week! Join us just before the main KBW event to work and collaborate with other builders leveraging the XRPL Ledger. Don't miss the chance to connect with peers and learn about local funding initiatives. This event will take place in Gangnam, Seoul.",
+      "Calling all developers in Korea or attending Korea Blockchain Week! Join us for an exclusive pre-KBW meetup in Gangnam, Seoul! Be part of an exciting opportunity to collaborate with fellow builders leveraging the XRP Ledger. Don’t miss this chance to connect with industry peers, explore local funding initiatives, and fuel your projects with new insights just before the main KBW event!",
     type: "hackathon",
     link: "https://lu.ma/1viq6evg",
     location: "Seoul, South Korea",
