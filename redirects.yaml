@@ -1,3 +1,6 @@
+'/docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider/':
+    to: /docs/tutorials/javascript/amm/add-assets-to-amm/
+    type: 301
 '/docs/references/protocol/transactions/transaction-results/transaction-results/':
     to: /docs/references/protocol/transactions/transaction-results/
     type: 301
