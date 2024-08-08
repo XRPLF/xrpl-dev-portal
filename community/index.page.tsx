@@ -182,6 +182,30 @@ const events = [
     end_date: "July 23, 2024",
   },
   {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info-session",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
+    location: "Virtual - Zoom",
+    date: "August 23, 2024",
+    image: infoSession,
+    start_date: "August 23, 2024",
+    end_date: "August 23, 2024",
+  },
+  {
+    name: "XRP Ledger Hackathon Seoul 2024",
+    description:
+      "Calling all developers in Korea or attending Korea Blockchain Week! Join us for an exclusive pre-KBW meetup in Gangnam, Seoul! Be part of an exciting opportunity to collaborate with fellow builders leveraging the XRP Ledger. Don’t miss this chance to connect with industry peers, explore local funding initiatives, and fuel your projects with new insights just before the main KBW event!",
+    type: "hackathon",
+    link: "https://lu.ma/1viq6evg",
+    location: "Seoul, South Korea",
+    date: "August 31 - September 1, 2024",
+    image: hackathon,
+    start_date: "August 31, 2024",
+    end_date: "September 1, 2024",
+  },
+  {
     name: "XRPL Zone Seoul",
     description:
       "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!",
@@ -205,24 +229,12 @@ const events = [
     start_date: "September 4, 2024",
     end_date: "September 4, 2024",
   },
-  {
-    name: "XRPL Builder Office Hours",
-    description:
-      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
-    type: "info-session",
-    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
-    location: "Virtual - Zoom",
-    date: "August 23, 2024",
-    image: infoSession,
-    start_date: "August 23, 2024",
-    end_date: "August 23, 2024",
-  },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const [currentIndex, setCurrentIndex] = useState(11);
+  const [currentIndex, setCurrentIndex] = useState(12);
 
   const updateCarousel = () => {
     const prevEvent = events[currentIndex - 1] || null;
