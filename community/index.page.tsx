@@ -17,7 +17,7 @@ const hackathon = require("../static/img/events/Hackathons.png");
 const conference = require("../static/img/events/Conference.png");
 const zone = require("../static/img/events/XRPLZone.png");
 const brazil = require("../static/img/events/event-meetup-brazil.png");
-const korea = require("../static/img/events/SouthKoreaMeetup.png")
+const korea = require("../static/img/events/SouthKoreaMeetup.png");
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -667,6 +667,73 @@ const CommunityPage: React.FC = () => {
           </div>
         </div>
       </section>
+      {/* Bottom Cards Section 2 cards */}
+      <section className="bottom-cards-section bug-bounty">
+        <div className="com-card">
+          <img className="top-right-img bug-bounty-card-bg" alt="Top Right Image" />
+          <div className="card-content">
+            <h6 className="card-title">
+              {translate("RippleX Bug Bounty Program")}
+            </h6>
+            <h6 className="card-subtitle">
+              {translate(
+                "Contribute to the XRP Ledger's"
+              )}
+              <br/>
+              Security
+            </h6>
+            <p className="card-description">
+              {translate(
+                "RippleX’s Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem."
+              )}
+              <p className="card-description">
+                {
+                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to ")
+                }
+              <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
+              {
+                translate(" and use the ")
+              }
+              <a href="https://ripple.com/files/bug-bounty.asc">Public Key.</a>
+              </p>
+            </p>
+            <div className="card-links">
+              <Link
+                className="com-card-link"
+                target="_blank"
+                to="https://medium.com/ripplexdev/highlighting-the-ripplex-bug-bounty-program-545ea787f900"
+              >
+                {translate("Learn more")}
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="com-card">
+          <img className="bottom-right-img bug-bounty-card-bg-2" alt="Bottom Right Image" />
+          <div className="card-content">
+            <h6 className="card-title">{translate("Report a Scam")}</h6>
+            <h6 className="card-subtitle pr-bt28">
+              {translate(
+                "Report Scams to Safeguard Our Community"
+              )}
+            </h6>
+            <p className="card-description">
+              {translate(
+                "In an evolving industry where trust and security are critical, scams continue to impede progress in crypto and blockchain. Help mitigate scammers by reporting scams."
+              )}
+            </p>
+            <div className="card-links">
+              <Link
+                target="_blank"
+                className="com-card-link"
+                to="/community/report-a-scam/"
+              >
+                {translate("Report a Scam")}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>{" "}
       {/* Bottom Cards Section */}
       <section className="bottom-cards-section">
         <div className="com-card">
@@ -719,7 +786,7 @@ const CommunityPage: React.FC = () => {
           <img className="bottom-right-img" alt="Bottom Right Image" />
           <div className="card-content">
             <h6 className="card-title">{translate("XRPL Careers")}</h6>
-            <h6 className="card-subtitle">
+            <h6 className="card-subtitle pr-bt16">
               {translate(
                 "Discover your next career opportunity in the XRPL community"
               )}
