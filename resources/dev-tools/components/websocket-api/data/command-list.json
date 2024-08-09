@@ -295,6 +295,40 @@
         }
       },
       {
+        "name": "get_aggregate_price",
+        "description": "Retrieves the aggregate price of specified Oracle objects, returning three price statistics: mean, median, and trimmed mean.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price",
+        "body": {
+          "command": "get_aggregate_price",
+          "ledger_index": "current",
+          "base_asset": "XRP",
+          "quote_asset": "USD",
+          "trim": 20,
+          "oracles": [
+            {
+              "account": "rp047ow9WcPmnNpVHMQV5A4BF6vaL9Abm6",
+              "oracle_document_id": 34
+            },
+            {
+              "account": "rp147ow9WcPmnNpVHMQV5A4BF6vaL9Abm7",
+              "oracle_document_id": 56
+            },
+            {
+              "account": "rp247ow9WcPmnNpVHMQV5A4BF6vaL9Abm8",
+              "oracle_document_id": 2
+            },
+            {
+              "account": "rp347ow9WcPmnNpVHMQV5A4BF6vaL9Abm9",
+              "oracle_document_id": 7
+            },
+            {
+              "account": "rp447ow9WcPmnNpVHMQV5A4BF6vaL9Abm0",
+              "oracle_document_id": 109
+            }
+          ]
+        }
+      },
+      {
         "name": "nft_buy_offers",
         "description": "Retrieves offers to buy a given NFT.",
         "link": "/docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/nft_buy_offers",
@@ -626,6 +660,21 @@
           "offer": {
             "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJYfV2Jpn",
             "seq": 359
+          },
+          "ledger_index": "validated"
+        }
+      },
+      {
+        "name": "ledger_entry - Oracle",
+        "description": "Returns a single Oracle object in its raw ledger format.",
+        "link": "/docs/references/http-websocket-apis/public-api-methods/ledger-methods/ledger_entry#get-oracle-object",
+        "status": "not_enabled",
+        "body": {
+          "id": "example_get_oracle",
+          "command": "ledger_entry",
+          "oracle" : {
+            "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+            "oracle_document_id":  34
           },
           "ledger_index": "validated"
         }

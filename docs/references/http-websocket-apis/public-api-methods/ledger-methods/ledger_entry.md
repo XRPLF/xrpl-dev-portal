@@ -40,6 +40,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
     - [Get Bridge Object](#get-bridge-object)
     - [Get DirectoryNode Object](#get-directorynode-object)
     - [Get Offer Object](#get-offer-object)
+    - [Get Oracle Object](#get-oracle-object)
     - [Get RippleState Object](#get-ripplestate-object)
     - [Get Check Object](#get-check-object)
     - [Get Escrow Object](#get-escrow-object)
@@ -288,7 +289,7 @@ rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuq
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-bridge)
 
 
 ### Get DirectoryNode Object
@@ -400,6 +401,61 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
 
+
+### Get Oracle Object
+
+_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+
+Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/oracle.md), which represents a single price oracle that can store token prices.
+
+| Field                       | Type   | Required? | Description |
+|-----------------------------|--------|-----------|-------------|
+| `oracle`                    | Object | Yes       | The oracle identifier. |
+| `oracle.account`            | String | Yes       | The XRPL account that controls the `Oracle` object. |
+| `oracle.oracle_document_id` | Number | Yes       | A unique identifier of the price oracle for the `Account` |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_oracle",
+  "command": "ledger_entry",
+  "oracle" : {
+    "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "oracle_document_id":  34
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [
+    {
+      "oracle" : {
+        "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "oracle_document_id":  34
+      },
+      "ledger_index": "validated"
+    }
+  ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "oracle": { "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-oracle)
 
 
 ### Get RippleState Object
