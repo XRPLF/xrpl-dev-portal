@@ -218,7 +218,7 @@ const events = [
     end_date: "September 4, 2024",
   },
   {
-    name: "XRP Community After Hours",
+    name: "XRPL Community After Hours",
     description:
       "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
@@ -228,6 +228,30 @@ const events = [
     image: korea,
     start_date: "September 4, 2024",
     end_date: "September 4, 2024",
+  },
+  {
+    name: "XRP Community Day Tokyo",
+    description:
+      "Join senior execs from Ripple, prominent Japanese institutions, and the XRP community for a day of inspiration, networking and insights.",
+    type: "conference",
+    link: "https://events.xrplresources.org/toyko-community-2024",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: conference,
+    start_date: "September 6, 2024",
+    end_date: "September 6, 2024",
+  },
+  {
+    name: "XRP Community Night Tokyo",
+    description:
+      "​Celebrate with the XRP Community in Tokyo! Don't miss this opportunity to mingle with the vibrant XRP community, visionary developers, trailblazing innovators, and influential VCs.",
+    type: "conference",
+    link: "https://lu.ma/84do37p7",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: conference,
+    start_date: "September 6, 2024",
+    end_date: "September 6, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent } = findNearestUpcomingEvent(events);

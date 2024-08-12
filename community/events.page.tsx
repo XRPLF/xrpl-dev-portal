@@ -740,7 +740,7 @@ const events = [
     end_date: "September 4, 2024",
   },
   {
-    name: "XRP Community After Hours",
+    name: "XRPL Community After Hours",
     description:
       "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
@@ -782,6 +782,17 @@ const events = [
     date: "August 31 - September 1, 2024",
     image: hackathon,
     end_date: "September 1, 2024",
+  },
+  {
+    name: "XRP Community Night Tokyo",
+    description:
+      "​Celebrate with the XRP Community in Tokyo! Don’t miss this opportunity to mingle with the vibrant XRP community, visionary developers, trailblazing innovators, and influential VCs.",
+    type: "conference",
+    link: "https://lu.ma/84do37p7",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: conference,
+    end_date: "September 6, 2024",
   },
 ];
 
