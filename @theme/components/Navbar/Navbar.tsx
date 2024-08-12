@@ -104,7 +104,11 @@ export function Navbar(props) {
               <Search className="topnav-search" />
             </div>
             <div id="topnav-language" className="nav-item">
-              <LanguagePicker onChangeLanguage={changeLanguage} onlyIcon alignment="end" />
+              <LanguagePicker
+                onChangeLanguage={changeLanguage}
+                onlyIcon
+                alignment="end"
+              />
             </div>
             <div id="topnav-theme" className="nav-item">
               <ColorModeSwitcher />
@@ -140,7 +144,7 @@ export function AlertBanner({ message, button, link, show }) {
   return null;
 }
 
-export function TopNavCollapsible({children}) {
+export function TopNavCollapsible({ children }) {
   return (
     <div
       className="collapse navbar-collapse justify-content-between"
@@ -165,6 +169,14 @@ export function NavDropdown(props) {
         let item2_href = item2.link;
         if (item2_href && !item2_href.match(/^https?:/)) {
           item2_href = pathPrefix + item2_href;
+        }
+        //conditional specific for brand kit
+        if (item2.link === "/XRPL_Brand_Kit.zip") {
+          return (
+            <a key={index2} href="/XRPL_Brand_Kit.zip" className={cls2}>
+              {translate(item2.labelTranslationKey, item2.label)}
+            </a>
+          );
         }
         return (
           <Link key={index2} className={cls2} to={item2_href}>

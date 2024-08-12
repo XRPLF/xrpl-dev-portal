@@ -109,6 +109,7 @@
         - label: XRPL Brand Kit
           labelTranslationKey: topnav.resources.xrpl-brand-kit
           href: /XRPL_Brand_Kit.zip
+          external: true
     - group: Current Status
       groupTranslationKey: topnav.resources.current-status
       items:
