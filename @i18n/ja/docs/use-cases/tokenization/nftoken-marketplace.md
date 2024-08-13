@@ -26,7 +26,7 @@ NFTokenマーケットプレイスは、NFTokenクリエイターとコレクタ
 
 ### ウォレットのセットアップ
 
-新しいウォレットをセットアップします。[Xumm](https://xumm.app/)をご覧ください。
+新しいウォレットをセットアップします。[Xaman](https://xaman.app/)をご覧ください。
 
 基本準備金については[準備金](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve)をご覧ください。
 
