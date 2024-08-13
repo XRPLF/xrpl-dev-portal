@@ -36,7 +36,7 @@
             "id": "faucet-select-batch-devnet",
             "wsUrl": "wss://batch.nerdnest.xyz",
             "jsonRpcUrl": "https://batch.rpc.nerdnest.xyz",
-            "faucetUrl": "https://batch.faucet.nerdnest.xyz/accounts",
+            "faucetUrl": "batch.faucet.nerdnest.xyz/accounts",
             "shortName": "Batch-Devnet",
             "desc": "Preview of XLS-56d Batch transactions."
         }   
