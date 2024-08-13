@@ -14,7 +14,7 @@ theme:
 
 > ![Screenshot: trade tab](../img/xrp-toolkit/trade-tab.png)
 
-XRP Toolkit is used by thousands of Xumm App and Ledger hardware wallet users to access advanced XRP Ledger features, such as limit orders, cross-currency payments, escrows, checks, and account settings.
+XRP Toolkit is used by thousands of Xaman App and Ledger hardware wallet users to access advanced XRP Ledger features, such as limit orders, cross-currency payments, escrows, checks, and account settings.
 
 > ![Screenshot: account tab](../img/xrp-toolkit/account-tab.png)
 

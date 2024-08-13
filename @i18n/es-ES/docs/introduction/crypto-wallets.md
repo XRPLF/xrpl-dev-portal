@@ -21,7 +21,7 @@ Para los pagos del día a día, esto puede ser preferible, ya que este tipo de c
 
 ![Carteras con custodia vs carteras sin custodia](/docs/img/introduction15-custodial-non-custodial.png)
 
-Una cartera sin custodia, como [XUMM](https://xumm.app/), es aquella donde tienes las claves secretas (secret keys) de tu cuenta. Esto significa que eres el último reponsable de la administración de la seguridad de tu cuenta.
+Una cartera sin custodia, como [Xaman](https://Xaman.app/), es aquella donde tienes las claves secretas (secret keys) de tu cuenta. Esto significa que eres el último reponsable de la administración de la seguridad de tu cuenta.
 
 **Atención:** Si pierdes tus claves, perderás el acceso a tu cuenta del XRP Ledger y no hay opciones de recupereación.
 

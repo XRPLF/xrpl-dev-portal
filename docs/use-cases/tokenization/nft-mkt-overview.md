@@ -77,7 +77,7 @@ Each `NFTokenPage` holds 16-32 NFTs. Minting a large number of NFTs can tie up a
 
 ### Setting up a wallet
 
-Set up a new wallet. See [Xumm](https://xumm.app/).
+Set up a new wallet. See [Xaman](https://xaman.app/).
 
 When you set up your account, keep in mind that there is a base reserve requirement of 10 XRP. See [Reserves](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve).
 

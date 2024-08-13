@@ -145,7 +145,7 @@ const events = [
     name: "XRPL Community Meetup: Toronto",
     id: "upcoming-xrpl-toronto",
     description:
-      "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
+      "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the Xaman Wallet and ARK PLATES teams!",
     type: "meetup",
     link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
     location: "Toronto",
