@@ -791,7 +791,7 @@ const events = [
     link: "https://events.xrplresources.org/toyko-community-2024",
     location: "Shinagawa, Tokyo",
     date: "September 6, 2024",
-    image: require('../static/img/events/event-meetup-tokyo-night.png'),
+    image: require('../static/img/events/event-meetup-tokyo-day.png'),
     end_date: "September 6, 2024",
   },
   {
