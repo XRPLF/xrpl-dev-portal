@@ -736,7 +736,7 @@ const events = [
     link: "https://ripple.swoogo.com/xrpl-zone-seoul",
     location: "Seongdong-su, Seoul",
     date: "September 4, 2024",
-    image: zone,
+    image: require('../static/img/events/event-meetup-zone-day.png'),
     end_date: "September 4, 2024",
   },
   {
@@ -747,7 +747,7 @@ const events = [
     link: "https://lu.ma/mbg067j3",
     location: "Seongdong-su, Seoul",
     date: "September 4, 2024",
-    image: korea,
+    image: require('../static/img/events/event-meetup-zone-night.png'),
     end_date: "September 4, 2024",
   },
   {
