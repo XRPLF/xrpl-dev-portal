@@ -21,7 +21,7 @@ For day-to-day payments, this may be preferable, since these types of wallets ar
 
 ![Custodial vs. Non-custodial Wallets](/docs/img/introduction15-custodial-non-custodial.png)
 
-A non-custodial wallet, such as [XUMM](https://xumm.app/), is one where you have the secret keys to your account. This means you're ultimately responsible for managing the security of your account.
+A non-custodial wallet, such as [Xaman](https://Xaman.app/), is one where you have the secret keys to your account. This means you're ultimately responsible for managing the security of your account.
 
 **Caution:** If you lose your keys, you are locked out of your XRP Ledger account and there are no recovery options.
 

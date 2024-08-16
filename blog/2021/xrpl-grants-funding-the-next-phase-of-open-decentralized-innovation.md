@@ -63,7 +63,7 @@ The focus area for the first round relates to the development of NFTs on the XRP
 
 The XRP Ledger is ideally suited to deliver a superior user experience for NFTs and tokenization more broadly. When combined with a robust suite of tools and resources, the innate performance advantages of the XRPL and its native digital asset [XRP](https://xrpl.org/xrp-overview.html) enable developers a seamless experience for NFTs, without the environmental implications inherent in other blockchains.
 
-The developer community around the XRP Ledger is already hard at work proposing features and providing tools and documentation to make XRPL the go-to chain for NFTs. XRPL Labs(https://xrpl-labs.com/), for example, proposed a [standard](https://github.com/XRPLF/XRPL-Standards/discussions/30) for using existing functionality to issue NFTs on the XRP Ledger and started working on an embedded xApp in XRP wallet XUMM for minting NFTs on the XRPL.
+The developer community around the XRP Ledger is already hard at work proposing features and providing tools and documentation to make XRPL the go-to chain for NFTs. XRPL Labs(https://xrpl-labs.com/), for example, proposed a [standard](https://github.com/XRPLF/XRPL-Standards/discussions/30) for using existing functionality to issue NFTs on the XRP Ledger and started working on an embedded xApp in XRP wallet Xaman for minting NFTs on the XRPL.
 
 Inspired by XRPL Labs’ standard, the RippleX team also [proposed](https://github.com/XRPLF/XRPL-Standards/discussions/46) additional functionality that would provide enhanced NFT support on the XRP Ledger.
 

@@ -31,6 +31,14 @@
             "faucetUrl": "mptfaucet.devnet.rippletest.net",
             "shortName": "MPT-Devnet",
             "desc": "Preview of XLS-33d Multi-Purpose Tokens amendment."
-        }
+        },
+        {
+            "id": "faucet-select-batch-devnet",
+            "wsUrl": "wss://batch.nerdnest.xyz",
+            "jsonRpcUrl": "https://batch.rpc.nerdnest.xyz",
+            "faucetUrl": "batch.faucet.nerdnest.xyz",
+            "shortName": "Batch-Devnet",
+            "desc": "Preview of XLS-56d Batch transactions."
+        }   
     ]
 }

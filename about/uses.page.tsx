@@ -397,12 +397,12 @@ const cardsData = [
   },
   {
     id: "xumm-wallet",
-    title: "Xumm Wallet",
+    title: "Xaman",
     description:
-      "Xumm Wallet is a non custodial wallet with superpower for the XRP Ledger.",
+      "Xaman is a non custodial wallet with superpower for the XRP Ledger.",
     category_id: "wallet",
     category_name: "Wallet",
-    link: "https://xumm.app/#team",
+    link: "https://xaman.app/#team",
   },
 ];
 
