@@ -219,7 +219,7 @@ const events = [
     end_date: "September 4, 2024",
   },
   {
-    name: "XRPL Community After Hours",
+    name: "XRPL Zone Seoul After Hours",
     description:
       "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
