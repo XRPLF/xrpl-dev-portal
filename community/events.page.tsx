@@ -740,7 +740,7 @@ const events = [
     end_date: "September 4, 2024",
   },
   {
-    name: "XRP Community After Hours",
+    name: "XRPL Zone Seoul After Hours",
     description:
       "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
@@ -782,6 +782,39 @@ const events = [
     date: "August 31 - September 1, 2024",
     image: hackathon,
     end_date: "September 1, 2024",
+  },
+  {
+    name: "XRP Community Day Tokyo",
+    description:
+      "​Join senior execs from Ripple, prominent Japanese institutions, and the XRP community for a day of inspiration, networking and insights.",
+    type: "meetup",
+    link: "https://events.xrplresources.org/toyko-community-2024",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: require('../static/img/events/event-meetup-tokyo-day.png'),
+    end_date: "September 6, 2024",
+  },
+  {
+    name: "XRP Community Night Tokyo",
+    description:
+      "​Celebrate with the XRP Community in Tokyo! Don't miss this opportunity to mingle with the vibrant XRP community, visionary developers, trailblazing innovators, and influential VCs.",
+    type: "meetup",
+    link: "https://lu.ma/84do37p7",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: require('../static/img/events/event-meetup-tokyo-night.png'),
+    end_date: "September 6, 2024",
+  },
+  {
+    name: "Chicago XRP Ledger Meet Up",
+    description:
+      "Hey Chicago XRP Ledger community! We're hosting a meetup soon—come hang out, share ideas, and talk all things XRPL. Would love to see you there!",
+    type: "meetup",
+    link: "https://lu.ma/74dulzff",
+    location: "Chicago, IL",
+    date: "September 12, 2024",
+    image: require('../static/img/events/chicago-meetup.png'),
+    end_date: "September 12, 2024",
   },
 ];
 
