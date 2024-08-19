@@ -1,4 +1,5 @@
 "use strict";
+require('dotenv').config()
 import {
   ApolloClient,
   InMemoryCache,
