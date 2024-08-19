@@ -1,5 +1,4 @@
 "use strict";
-require('dotenv').config()
 import {
   ApolloClient,
   InMemoryCache,
@@ -10,10 +9,10 @@ import {
 import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 const client = new ApolloClient({
-  uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+  uri: `https://graphql.contentful.com/content/v1/spaces/${process.env.PUBLIC_CONTENTFUL_SPACE_ID}`,
   cache: new InMemoryCache(),
   headers: {
-    Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+    Authorization: `Bearer ${process.env.PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
   },
 });
 const moment = require("moment");
