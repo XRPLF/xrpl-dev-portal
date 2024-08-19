@@ -10,7 +10,11 @@ theme:
 ---
 # Upcoming Testnet Reset
 
-Testnet is scheduled for a reset on **Monday, August 19, 2024** to improve stability and reduce the cost of running a Testnet node. This post will be updated following the successful completion of the reset.
+Testnet is scheduled for a reset on **Monday, August 19, 2024** to improve stability and reduce the cost of running a Testnet node. 
+
+{% admonition type="success" name="Update" %}
+The reset has completed successfully. Testnet network and faucet are online and fully operational.
+{% /admonition %}
 
 ## Background
 
