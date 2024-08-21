@@ -12,7 +12,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@redocly/portal-plugin-async-api": "^1.0.230",
+    "@redocly/portal-plugin-async-api": "^1.0.239",
     "@codemirror/state": "6.4.1",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
