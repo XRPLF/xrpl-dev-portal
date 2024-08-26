@@ -298,6 +298,8 @@
       labelTranslationKey: sidebar.docs.references
       expanded: false
       items:
+        - page: rippled-api-spec/open_api/json_api.yaml
+          label: 'JSON RPC API'
         - page: docs/references/protocol/index.md
           expanded: false
           items:
