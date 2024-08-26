@@ -12,11 +12,10 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@apollo/client": "^3.11.4",
     "@codemirror/state": "6.4.1",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "0.91.3",
+    "@redocly/realm": "0.96.0",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
@@ -37,7 +36,6 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@esbuild/darwin-arm64": "^0.23.0",
     "bootstrap": "^4.6.2",
     "htmltojsx": "^0.3.0",
     "sass": "1.26.10"
