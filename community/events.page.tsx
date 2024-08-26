@@ -13,7 +13,7 @@ const brazil = require("../static/img/events/event-meetup-brazil.png");
 const korea = require("../static/img/events/SouthKoreaMeetup.png");
 const infoSession = require("../static/img/events/InfoSessions.png");
 
-const imageLookup = {
+export const imageLookup = {
   hackathon: require("../static/img/events/Hackathons.png"),
   meetup: require("../static/img/events/event-meetup-san-diego@2x.jpg"), // Assuming this represents a meetup
   AMA: require("../static/img/events/AMAs.png"),

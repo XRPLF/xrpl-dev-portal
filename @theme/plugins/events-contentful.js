@@ -10,11 +10,16 @@ export function eventsContentful() {
       actions.registerServerPropsGetter(EVENTS_SERVER_PROPS_ID, path.join(fs.cwd, 'community/events.server.ts'));
     },
     afterRoutesCreated: async (actions, context) => {
-      const route = actions.getRouteByFsPath('community/events.page.tsx');
-      if (route) {
-        route.serverPropsGetterIds = [...(route.serverPropsGetterIds || []), EVENTS_SERVER_PROPS_ID];
-        console.log('worked!!!');
-      }
+      const routes = [
+        actions.getRouteByFsPath('community/events.page.tsx'),
+        actions.getRouteByFsPath('community/index.page.tsx')
+      ];
+      routes.forEach(route => {
+        if (route) {
+          route.serverPropsGetterIds = [...(route.serverPropsGetterIds || []), EVENTS_SERVER_PROPS_ID];
+          console.log('worked for route:', route.fsPath);
+        }
+      });
     },
   };
   return instance;

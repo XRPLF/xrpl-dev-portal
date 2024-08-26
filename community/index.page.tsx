@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
 import moment from "moment";
 import { Link } from "@redocly/theme/components/Link/Link";
+import { imageLookup } from "./events.page";
 
 const infoSession = require("../static/img/events/InfoSessions.png");
 
@@ -22,253 +23,271 @@ const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
   let index;
-  events.forEach((event, i) => {
-    const eventStartDate = moment(event.start_date, "MMMM DD, YYYY");
+  let eventsClone = [];
+  events?.forEach((event, i) => {
+    const startDate = moment(event.startDate); // Use the updated key `startDate`
+    const endDate = moment(event.endDate); // Parse the 'endDate' string into a moment object
     const currentDate = moment();
-    const diff = eventStartDate.diff(currentDate, "days");
-
-    if (diff >= 0 && diff < nearestDateDiff) {
-      nearestEvent = event;
-      nearestDateDiff = diff;
-      index = i
+    const diff = startDate.diff(currentDate, "days");
+    let clone = { ...event };
+    // Determine the date format based on whether startDate and endDate are the same or in the same month
+    if (startDate.isSame(endDate, "day")) {
+      clone.date = startDate.format("MMMM D, YYYY");
+    } else if (startDate.isSame(endDate, "month")) {
+      clone.date = `${startDate.format("MMMM D")} - ${endDate.format(
+        "D, YYYY"
+      )}`;
+    } else {
+      clone.date = `${startDate.format("MMMM D, YYYY")} - ${endDate.format(
+        "MMMM D, YYYY"
+      )}`;
     }
+    if (diff >= 0 && diff < nearestDateDiff) {
+      nearestEvent = clone;
+      nearestDateDiff = diff;
+      index = i;
+    }
+    eventsClone.push(clone);
   });
 
-  return { nearestEvent, nearestDateDiff, index };
+  return { nearestEvent, nearestDateDiff, index, events: eventsClone };
 };
 
-const events = [
-  {
-    name: "New Horizon: Innovate Without Limits: New Horizons Await",
-    description:
-      "Join our EVM-compatible chain launch for a chance to win $50,000 in prizes! Unleash your creativity in DeFi and NFTs, with judging criteria focused on novelty, impact, and community engagement.",
-    type: "hackathon",
-    link: "https://newhorizon.devpost.com/",
-    location: "Virtual",
-    date: "October 19, 2023 - December 22, 2023",
-    image: hackathon,
-    end_date: "December 22, 2023",
-    start_date: "October 19, 2023",
-  },
-  {
-    name: "XRPL Community Report Launch Party",
-    description:
-      "Celebrate the XRPL Community Report launch at 7pm! Join blockchain enthusiasts, connect with experts, and discover opportunities in the XRP Ledger ecosystem. Limited space available, so register now for a night of celebration and networking!",
-    type: "meetup",
-    link: "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
-    location: "Paris, France",
-    date: "November 28, 7pm - 9pm",
-    image: require("../static/img/events/paris.png"),
-    end_date: "November 28, 2023",
-    start_date: "November 28, 2023",
-  },
-  {
-    name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
-    description:
-      "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
-    type: "info-session",
-    link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
-    location: "Virtual - Zoom",
-    date: "September 06, 2023",
-    image: infoSession,
-    end_date: "September 06, 2023",
-    start_date: "September 06, 2023",
-  },
-  {
-    name: "XRPL Developers Reddit AMA: Real World Assets",
-    description:
-      "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
-    type: "ama",
-    link: "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
-    location: "Virtual - Reddit",
-    date: "October 17, 2023",
-    image: amaImage,
-    end_date: "October 17, 2023",
-    start_date: "October 17, 2023",
-  },
-  {
-    name: "XRP Ledger Zone ETHDenver",
-    description:
-      "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
-    type: "zone",
-    link: "http://xrplzone-ethdenver.splashthat.com",
-    location: "Denver, Colorado",
-    date: "February 27, 2024",
-    image: zone,
-    end_date: "February 27, 2024",
-    start_date: "February 27, 2024",
-  },
-  {
-    name: "XRPL Developers Discord AMA: Apex 2024",
-    description:
-      "Join the DevRel team at Ripple to learn more about APEX 2024.",
-    type: "ama",
-    link: "https://discord.gg/gszzRTxV?event=1215341725825110089",
-    location: "XRPL Developers Discord",
-    date: "March 13, 2024 13:00 EST",
-    image: amaImage,
-    start_date: "March 13, 2024",
-    end_date: "March 13, 2024",
-  },
-  {
-    name: "Paris Blockchain Week",
-    description:
-      "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
-    type: "conference",
-    link: "https://www.parisblockchainweek.com/",
-    location: "Paris, France",
-    date: "April 9 - 12, 2024",
-    image: conference,
-    end_date: "April 12, 2024",
-    start_date: "April 9, 2024",
-  },
-  {
-    name: "Consensus",
-    description:
-      "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
-    type: "conference",
-    link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
-    location: "Austin, Texas",
-    date: "May 29 - June 1, 2024",
-    image: conference,
-    end_date: "June 1, 2024",
-    start_date: "May 29, 2024",
-  },
-  {
-    name: "EasyA Ripple Hackathon",
-    description:
-      "Join the XRPL community at the Ripple x EasyA Hackathon in Amsterdam, where startups can compete for a $20,000 prize and a chance to present at the prestigious APEX Conference alongside industry leaders. Secure your spot now! ",
-    type: "hackathon",
-    link: "https://www.eventbrite.co.uk/e/easya-x-ripple-apex-hackathon-win-20000-tickets-882724261027?aff=oddtdtcreator",
-    location: "Amsterdam",
-    date: "June 8 - 9, 2024",
-    image: hackathon,
-    start_date: "June 8, 2024",
-    end_date: "June 9, 2024",
-  },
-  {
-    name: "APEX 2024: The XRPL Developer Summit",
-    description:
-      "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
-    type: "conference",
-    link: "http://apexdevsummit.com",
-    location: "Amsterdam",
-    date: "June 11 - 13, 2024",
-    image: conference,
-    end_date: "June 13, 2024",
-    start_date: "June 11, 2024",
-  },
-  {
-    name: "SwissHacks",
-    description:
-      "Transform Fintech with XRPL at SwissHacks 2024! Prototype and collaborate with fellow builders to reinvent finance for a brighter future",
-    type: "hackathon",
-    link: "https://airtable.com/app61tk91vkuwKhGx/pagCN29Br8RdxTvp7/form",
-    location: "Zurich",
-    date: "June 28 - 30, 2024",
-    image: hackathon,
-    start_date: "June 28, 2024",
-    end_date: "June 30, 2024",
-  },
-  {
-    name: "XRPL Meetup Blockchain Rio",
-    description:
-      "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
-    type: "meetup",
-    link: "https://lu.ma/4uxpkd11",
-    location: "Rio de Janeiro",
-    date: "July 23, 2024",
-    image: brazil,
-    start_date: "July 23, 2024",
-    end_date: "July 23, 2024",
-  },
-  {
-    name: "XRPL Builder Office Hours",
-    description:
-      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
-    type: "info-session",
-    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
-    location: "Virtual - Zoom",
-    date: "August 23, 2024",
-    image: infoSession,
-    start_date: "August 23, 2024",
-    end_date: "August 23, 2024",
-  },
-  {
-    name: "XRP Ledger Hackathon Seoul 2024",
-    description:
-      "Calling all developers in Korea or attending Korea Blockchain Week! Join us for an exclusive pre-KBW meetup in Gangnam, Seoul! Be part of an exciting opportunity to collaborate with fellow builders leveraging the XRP Ledger. Don’t miss this chance to connect with industry peers, explore local funding initiatives, and fuel your projects with new insights just before the main KBW event!",
-    type: "hackathon",
-    link: "https://lu.ma/1viq6evg",
-    location: "Seoul, South Korea",
-    date: "August 31 - September 1, 2024",
-    image: hackathon,
-    start_date: "August 31, 2024",
-    end_date: "September 1, 2024",
-  },
-  {
-    name: "XRPL Zone Seoul",
-    description:
-      "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!",
-    type: "zone",
-    link: "https://ripple.swoogo.com/xrpl-zone-seoul",
-    location: "Seongdong-su, Seoul",
-    date: "September 4, 2024",
-    image: require('../static/img/events/event-meetup-zone-day.png'),
-    start_date: "September 4, 2024",
-    end_date: "September 4, 2024",
-  },
-  {
-    name: "XRPL Zone Seoul After Hours",
-    description:
-      "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
-    type: "meetup",
-    link: "https://lu.ma/mbg067j3",
-    location: "Seongdong-su, Seoul",
-    date: "September 4, 2024",
-    image: require('../static/img/events/event-meetup-zone-night.png'),
-    start_date: "September 4, 2024",
-    end_date: "September 4, 2024",
-  },
-  {
-    name: "XRP Community Day Tokyo",
-    description:
-      "Join senior execs from Ripple, prominent Japanese institutions, and the XRP community for a day of inspiration, networking and insights.",
-    type: "meetup",
-    link: "https://events.xrplresources.org/toyko-community-2024",
-    location: "Shinagawa, Tokyo",
-    date: "September 6, 2024",
-    image: require('../static/img/events/event-meetup-tokyo-day.png'),
-    start_date: "September 6, 2024",
-    end_date: "September 6, 2024",
-  },
-  {
-    name: "XRP Community Night Tokyo",
-    description:
-      "​Celebrate with the XRP Community in Tokyo! Don't miss this opportunity to mingle with the vibrant XRP community, visionary developers, trailblazing innovators, and influential VCs.",
-    type: "meetup",
-    link: "https://lu.ma/84do37p7",
-    location: "Shinagawa, Tokyo",
-    date: "September 6, 2024",
-    image: require('../static/img/events/event-meetup-tokyo-night.png'),
-    start_date: "September 6, 2024",
-    end_date: "September 6, 2024",
-  },
-  {
-    name: "Chicago XRP Ledger Meet Up",
-    description:
-      "Hey Chicago XRP Ledger community! We’re hosting a meetup soon—come hang out, share ideas, and talk all things XRPL. Would love to see you there!",
-    type: "meetup",
-    link: "https://lu.ma/74dulzff",
-    location: "Chicago, IL",
-    date: "September 12, 2024",
-    image: require('../static/img/events/chicago-meetup.png'),
-    start_date: "September 12, 2024",
-    end_date: "September 12, 2024",
-  },
-];
-const { nearestDateDiff, nearestEvent, index } = findNearestUpcomingEvent(events);
-const XrplEventsAndCarouselSection = ({ events }) => {
+// const events = [
+//   {
+//     name: "New Horizon: Innovate Without Limits: New Horizons Await",
+//     description:
+//       "Join our EVM-compatible chain launch for a chance to win $50,000 in prizes! Unleash your creativity in DeFi and NFTs, with judging criteria focused on novelty, impact, and community engagement.",
+//     type: "hackathon",
+//     link: "https://newhorizon.devpost.com/",
+//     location: "Virtual",
+//     date: "October 19, 2023 - December 22, 2023",
+//     image: hackathon,
+//     end_date: "December 22, 2023",
+//     start_date: "October 19, 2023",
+//   },
+//   {
+//     name: "XRPL Community Report Launch Party",
+//     description:
+//       "Celebrate the XRPL Community Report launch at 7pm! Join blockchain enthusiasts, connect with experts, and discover opportunities in the XRP Ledger ecosystem. Limited space available, so register now for a night of celebration and networking!",
+//     type: "meetup",
+//     link: "https://www.eventbrite.fr/e/billets-xrpl-community-report-launch-party-753788370307",
+//     location: "Paris, France",
+//     date: "November 28, 7pm - 9pm",
+//     image: require("../static/img/events/paris.png"),
+//     end_date: "November 28, 2023",
+//     start_date: "November 28, 2023",
+//   },
+//   {
+//     name: "XRPL Grants Info Session: Decentralized Exchange (DEX) Focused",
+//     description:
+//       "Watch the recorded information session and Q&A on applying to XRPL Grants Wave 7. This session will provide a general overview of the XRPL Grants application for Wave 7, with a focus on Decentralized Exchange (DEX) projects.",
+//     type: "info-session",
+//     link: "https://www.youtube.com/watch?v=BbGu0QC5WEE",
+//     location: "Virtual - Zoom",
+//     date: "September 06, 2023",
+//     image: infoSession,
+//     end_date: "September 06, 2023",
+//     start_date: "September 06, 2023",
+//   },
+//   {
+//     name: "XRPL Developers Reddit AMA: Real World Assets",
+//     description:
+//       "Join us for a live chat on Reddit and learn more about how developers are building real world assets with confidence on the XRP Ledger.",
+//     type: "ama",
+//     link: "https://xrplresources.org/rwa-ama?utm_source=web&utm_medium=web&utm_campaign=bwc",
+//     location: "Virtual - Reddit",
+//     date: "October 17, 2023",
+//     image: amaImage,
+//     end_date: "October 17, 2023",
+//     start_date: "October 17, 2023",
+//   },
+//   {
+//     name: "XRP Ledger Zone ETHDenver",
+//     description:
+//       "XRPL Zone: your all-in-one location for creating and collaborating on XRP Ledger (XRPL) projects. Details coming soon!",
+//     type: "zone",
+//     link: "http://xrplzone-ethdenver.splashthat.com",
+//     location: "Denver, Colorado",
+//     date: "February 27, 2024",
+//     image: zone,
+//     end_date: "February 27, 2024",
+//     start_date: "February 27, 2024",
+//   },
+//   {
+//     name: "XRPL Developers Discord AMA: Apex 2024",
+//     description:
+//       "Join the DevRel team at Ripple to learn more about APEX 2024.",
+//     type: "ama",
+//     link: "https://discord.gg/gszzRTxV?event=1215341725825110089",
+//     location: "XRPL Developers Discord",
+//     date: "March 13, 2024 13:00 EST",
+//     image: amaImage,
+//     start_date: "March 13, 2024",
+//     end_date: "March 13, 2024",
+//   },
+//   {
+//     name: "Paris Blockchain Week",
+//     description:
+//       "Paris Blockchain Week is Europe's biggest blockchain & digital assets event that covers all aspects of blockchain technology.",
+//     type: "conference",
+//     link: "https://www.parisblockchainweek.com/",
+//     location: "Paris, France",
+//     date: "April 9 - 12, 2024",
+//     image: conference,
+//     end_date: "April 12, 2024",
+//     start_date: "April 9, 2024",
+//   },
+//   {
+//     name: "Consensus",
+//     description:
+//       "Join us at Consensus! This event is the world's largest, longest-running and most influential gathering that brings together all sides of the cryptocurrency, blockchain and Web3 community.",
+//     type: "conference",
+//     link: "https://consensus.coindesk.com/?utm_campaign=&utm_content=c24&utm_medium=sponsored&utm_source=XRPLEventsPage%20&utm_term=organic",
+//     location: "Austin, Texas",
+//     date: "May 29 - June 1, 2024",
+//     image: conference,
+//     end_date: "June 1, 2024",
+//     start_date: "May 29, 2024",
+//   },
+//   {
+//     name: "EasyA Ripple Hackathon",
+//     description:
+//       "Join the XRPL community at the Ripple x EasyA Hackathon in Amsterdam, where startups can compete for a $20,000 prize and a chance to present at the prestigious APEX Conference alongside industry leaders. Secure your spot now! ",
+//     type: "hackathon",
+//     link: "https://www.eventbrite.co.uk/e/easya-x-ripple-apex-hackathon-win-20000-tickets-882724261027?aff=oddtdtcreator",
+//     location: "Amsterdam",
+//     date: "June 8 - 9, 2024",
+//     image: hackathon,
+//     start_date: "June 8, 2024",
+//     end_date: "June 9, 2024",
+//   },
+//   {
+//     name: "APEX 2024: The XRPL Developer Summit",
+//     description:
+//       "Apex XRPL Developer Summit is the annual event where developers, contributors, and thought leaders come together to learn, build, share, network, and celebrate all things XRP Ledger.",
+//     type: "conference",
+//     link: "http://apexdevsummit.com",
+//     location: "Amsterdam",
+//     date: "June 11 - 13, 2024",
+//     image: conference,
+//     end_date: "June 13, 2024",
+//     start_date: "June 11, 2024",
+//   },
+//   {
+//     name: "SwissHacks",
+//     description:
+//       "Transform Fintech with XRPL at SwissHacks 2024! Prototype and collaborate with fellow builders to reinvent finance for a brighter future",
+//     type: "hackathon",
+//     link: "https://airtable.com/app61tk91vkuwKhGx/pagCN29Br8RdxTvp7/form",
+//     location: "Zurich",
+//     date: "June 28 - 30, 2024",
+//     image: hackathon,
+//     start_date: "June 28, 2024",
+//     end_date: "June 30, 2024",
+//   },
+//   {
+//     name: "XRPL Meetup Blockchain Rio",
+//     description:
+//       "Get ready to kick off Blockchain Rio with a bang at the XRP Ledger Dev Meetup!  ​Hosted by the the XRP Ledger team, this warm-up event is the perfect chance for devs and builders to connect, share ideas, and get hyped for the main event. Expect a night filled with great conversations, delicious drinks, and the vibrant energy of Rio de Janeiro.  ​Don't miss out on this fantastic opportunity to network and have a blast with fellow tech enthusiasts. See you there!",
+//     type: "meetup",
+//     link: "https://lu.ma/4uxpkd11",
+//     location: "Rio de Janeiro",
+//     date: "July 23, 2024",
+//     image: brazil,
+//     start_date: "July 23, 2024",
+//     end_date: "July 23, 2024",
+//   },
+//   {
+//     name: "XRPL Builder Office Hours",
+//     description:
+//       "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+//     type: "info-session",
+//     link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA#/registration",
+//     location: "Virtual - Zoom",
+//     date: "August 23, 2024",
+//     image: infoSession,
+//     start_date: "August 23, 2024",
+//     end_date: "August 23, 2024",
+//   },
+//   {
+//     name: "XRP Ledger Hackathon Seoul 2024",
+//     description:
+//       "Calling all developers in Korea or attending Korea Blockchain Week! Join us for an exclusive pre-KBW meetup in Gangnam, Seoul! Be part of an exciting opportunity to collaborate with fellow builders leveraging the XRP Ledger. Don’t miss this chance to connect with industry peers, explore local funding initiatives, and fuel your projects with new insights just before the main KBW event!",
+//     type: "hackathon",
+//     link: "https://lu.ma/1viq6evg",
+//     location: "Seoul, South Korea",
+//     date: "August 31 - September 1, 2024",
+//     image: hackathon,
+//     start_date: "August 31, 2024",
+//     end_date: "September 1, 2024",
+//   },
+//   {
+//     name: "XRPL Zone Seoul",
+//     description:
+//       "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!",
+//     type: "zone",
+//     link: "https://ripple.swoogo.com/xrpl-zone-seoul",
+//     location: "Seongdong-su, Seoul",
+//     date: "September 4, 2024",
+//     image: require("../static/img/events/event-meetup-zone-day.png"),
+//     start_date: "September 4, 2024",
+//     end_date: "September 4, 2024",
+//   },
+//   {
+//     name: "XRPL Zone Seoul After Hours",
+//     description:
+//       "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
+//     type: "meetup",
+//     link: "https://lu.ma/mbg067j3",
+//     location: "Seongdong-su, Seoul",
+//     date: "September 4, 2024",
+//     image: require("../static/img/events/event-meetup-zone-night.png"),
+//     start_date: "September 4, 2024",
+//     end_date: "September 4, 2024",
+//   },
+//   {
+//     name: "XRP Community Day Tokyo",
+//     description:
+//       "Join senior execs from Ripple, prominent Japanese institutions, and the XRP community for a day of inspiration, networking and insights.",
+//     type: "meetup",
+//     link: "https://events.xrplresources.org/toyko-community-2024",
+//     location: "Shinagawa, Tokyo",
+//     date: "September 6, 2024",
+//     image: require("../static/img/events/event-meetup-tokyo-day.png"),
+//     start_date: "September 6, 2024",
+//     end_date: "September 6, 2024",
+//   },
+//   {
+//     name: "XRP Community Night Tokyo",
+//     description:
+//       "​Celebrate with the XRP Community in Tokyo! Don't miss this opportunity to mingle with the vibrant XRP community, visionary developers, trailblazing innovators, and influential VCs.",
+//     type: "meetup",
+//     link: "https://lu.ma/84do37p7",
+//     location: "Shinagawa, Tokyo",
+//     date: "September 6, 2024",
+//     image: require("../static/img/events/event-meetup-tokyo-night.png"),
+//     start_date: "September 6, 2024",
+//     end_date: "September 6, 2024",
+//   },
+//   {
+//     name: "Chicago XRP Ledger Meet Up",
+//     description:
+//       "Hey Chicago XRP Ledger community! We’re hosting a meetup soon—come hang out, share ideas, and talk all things XRPL. Would love to see you there!",
+//     type: "meetup",
+//     link: "https://lu.ma/74dulzff",
+//     location: "Chicago, IL",
+//     date: "September 12, 2024",
+//     image: require("../static/img/events/chicago-meetup.png"),
+//     start_date: "September 12, 2024",
+//     end_date: "September 12, 2024",
+//   },
+// ];
+
+const XrplEventsAndCarouselSection = ({ eventsData}) => {
+  const { nearestDateDiff, nearestEvent, index, events } =
+    findNearestUpcomingEvent(eventsData);
+
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   const [currentIndex, setCurrentIndex] = useState(index); // use nearest event's index as init state
@@ -297,6 +316,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
   };
 
   const { prevEvent, currentEvent, nextEvent } = updateCarousel();
+  console.log({prevEvent, currentEvent, nextEvent})
   return (
     <>
       <section className="xrpl-events-section">
@@ -363,14 +383,14 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <img
             id="left-image"
             alt="Left Event Image"
-            src={prevEvent ? prevEvent.image : ""}
+            src={!!prevEvent?.image ? prevEvent?.image?.url : imageLookup[prevEvent?.category[0]] }
             style={{ visibility: prevEvent ? "visible" : "hidden" }}
           />
           <div className="center-image-wrapper">
             <img
               id="center-image"
               alt="Featured Event Image"
-              src={currentEvent ? currentEvent.image : ""}
+              src={!!currentEvent?.image ? currentEvent?.image?.url : imageLookup[currentEvent?.category[0]] }
               onClick={() =>
                 currentEvent && window.open(currentEvent.link, "_blank")
               }
@@ -392,7 +412,7 @@ const XrplEventsAndCarouselSection = ({ events }) => {
           <img
             id="right-image"
             alt="Right Event Image"
-            src={nextEvent ? nextEvent.image : ""}
+            src={!!nextEvent?.image ? nextEvent?.image?.url : imageLookup[nextEvent?.category[0]] }
             style={{ visibility: nextEvent ? "visible" : "hidden" }}
           />
         </div>
@@ -410,7 +430,9 @@ const XrplEventsAndCarouselSection = ({ events }) => {
   );
 };
 
-const CommunityPage: React.FC = () => {
+const CommunityPage = ({ pageProps }) => {
+  const { data, errors } = pageProps?.contentfulEvents
+  const eventsData =  data?.eventsCollection?.items || []
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
@@ -560,7 +582,7 @@ const CommunityPage: React.FC = () => {
         </table>
       </section>
       {/* XRPL Events Carousel Section */}
-      <XrplEventsAndCarouselSection events={events} />
+      <XrplEventsAndCarouselSection eventsData={eventsData} />
       {/* Community Funding Section */}
       <section className="community-funding">
         <Link
@@ -706,16 +728,17 @@ const CommunityPage: React.FC = () => {
       {/* Bottom Cards Section 2 cards */}
       <section className="bottom-cards-section bug-bounty">
         <div className="com-card">
-          <img className="top-right-img bug-bounty-card-bg" alt="Top Right Image" />
+          <img
+            className="top-right-img bug-bounty-card-bg"
+            alt="Top Right Image"
+          />
           <div className="card-content">
             <h6 className="card-title">
               {translate("RippleX Bug Bounty Program")}
             </h6>
             <h6 className="card-subtitle">
-              {translate(
-                "Contribute to the XRP Ledger's"
-              )}
-              <br/>
+              {translate("Contribute to the XRP Ledger's")}
+              <br />
               Security
             </h6>
             <p className="card-description">
@@ -723,14 +746,14 @@ const CommunityPage: React.FC = () => {
                 "RippleX’s Bug Bounty, part of Ripple's 1 Billion XRP pledge, strengthens XRP Ledger security and supports its ecosystem."
               )}
               <p className="card-description">
-                {
-                  translate("Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to ")
-                }
-              <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
-              {
-                translate(" and use the ")
-              }
-              <a href="https://ripple.com/files/bug-bounty.asc">Public Key.</a>
+                {translate(
+                  "Use this program to report bugs in RippleX/rippled. Send a detailed report of a qualifying bug to "
+                )}
+                <a href="mailto:bugs@ripple.com">bugs@ripple.com</a>
+                {translate(" and use the ")}
+                <a href="https://ripple.com/files/bug-bounty.asc">
+                  Public Key.
+                </a>
               </p>
             </p>
             <div className="card-links">
@@ -745,13 +768,14 @@ const CommunityPage: React.FC = () => {
           </div>
         </div>
         <div className="com-card">
-          <img className="bottom-right-img bug-bounty-card-bg-2" alt="Bottom Right Image" />
+          <img
+            className="bottom-right-img bug-bounty-card-bg-2"
+            alt="Bottom Right Image"
+          />
           <div className="card-content">
             <h6 className="card-title">{translate("Report a Scam")}</h6>
             <h6 className="card-subtitle pr-bt28">
-              {translate(
-                "Report Scams to Safeguard Our Community"
-              )}
+              {translate("Report Scams to Safeguard Our Community")}
             </h6>
             <p className="card-description">
               {translate(
