@@ -42,7 +42,7 @@ export default async function getServerProps(route: PageRouteDetails, data: { pr
   try {
     if (cache.expiresAt <= Date.now()) {
       cache.response = await fetchGql(GET_EVENTS);
-      cache.expiresAt = Date.now() + 1000 * 60 * 5; // 5 minutes naive cache
+      cache.expiresAt = Date.now() + 1000 * 60 * 1; // 5 minutes naive cache
     }
   } catch (e) {
     console.error('Failed to fetch events', e);
