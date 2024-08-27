@@ -25,8 +25,8 @@ const findNearestUpcomingEvent = (events) => {
   let index;
   let eventsClone = [];
   events?.forEach((event, i) => {
-    const startDate = moment(event.startDate); // Use the updated key `startDate`
-    const endDate = moment(event.endDate); // Parse the 'endDate' string into a moment object
+    const startDate = moment.utc(event.startDate); // Use the updated key `startDate`
+    const endDate = moment.utc(event.endDate); // Parse the 'endDate' string into a moment object
     const currentDate = moment();
     const diff = startDate.diff(currentDate, "days");
     let clone = { ...event };

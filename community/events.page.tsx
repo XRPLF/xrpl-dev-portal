@@ -42,8 +42,8 @@ function categorizeDates(arr) {
   const upcoming = [];
   const today = moment().startOf("day"); // Set the time to midnight
   arr.forEach((obj) => {
-    const startDate = moment(obj.startDate); // Parse the 'startDate' string into a moment object
-    const endDate = moment(obj.endDate); // Parse the 'endDate' string into a moment object
+    const startDate = moment.utc(obj.startDate); // Parse the 'startDate' string into a moment object
+    const endDate = moment.utc(obj.endDate); // Parse the 'endDate' string into a moment object
     let clone = { ...obj };
     // Determine the date format based on whether startDate and endDate are the same or in the same month
     if (startDate.isSame(endDate, 'day')) {
