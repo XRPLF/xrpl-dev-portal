@@ -316,7 +316,6 @@ const XrplEventsAndCarouselSection = ({ eventsData}) => {
   };
 
   const { prevEvent, currentEvent, nextEvent } = updateCarousel();
-  console.log({prevEvent, currentEvent, nextEvent})
   return (
     <>
       <section className="xrpl-events-section">
@@ -432,7 +431,7 @@ const XrplEventsAndCarouselSection = ({ eventsData}) => {
 
 const CommunityPage = ({ pageProps }) => {
   const { data, errors } = pageProps?.contentfulEvents
-  const eventsData =  data?.eventsCollection?.items || []
+  const eventsData =  data?.eventsCollection?.items.filter((item) => item.community) || []
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
   return (
