@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useThemeHooks } from "@redocly/theme/core/hooks";
+
 const moment = require("moment");
 const amaImage = require("../static/img/events/AMAs.png");
 const hackathon = require("../static/img/events/Hackathons.png");
@@ -11,6 +12,17 @@ const calls = require("../static/img/events/CommunityCalls.png");
 const brazil = require("../static/img/events/event-meetup-brazil.png");
 const korea = require("../static/img/events/SouthKoreaMeetup.png");
 const infoSession = require("../static/img/events/InfoSessions.png");
+
+export const imageLookup = {
+  hackathon: require("../static/img/events/Hackathons.png"),
+  meetup: require("../static/img/events/event-meetup-san-diego@2x.jpg"), // Assuming this represents a meetup
+  AMA: require("../static/img/events/AMAs.png"),
+  conference: require("../static/img/events/Conference.png"),
+  "community-call": require("../static/img/events/CommunityCalls.png"),
+  "xrpl-zone": require("../static/img/events/XRPLZone.png"),
+  "info-session": require("../static/img/events/InfoSessions.png"),
+};
+
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -20,29 +32,40 @@ export const frontmatter = {
 };
 export const sortEvents = (arr, asc = true) => {
   return arr.sort((a, b) => {
-    const dateA = moment(a.end_date, "MMMM D, YYYY");
-    const dateB = moment(b.end_date, "MMMM D, YYYY");
-    return asc ? dateB.diff(dateA) : dateA.diff(dateB); // Returns a negative value if dateA is before dateB, positive if after, and 0 if the same
+    const dateA = moment(a.endDate);
+    const dateB = moment(b.endDate);
+    return asc ? dateA.diff(dateB) : dateB.diff(dateA); // Sorting in ascending or descending order
   });
 };
 function categorizeDates(arr) {
   const past = [];
   const upcoming = [];
-  const today = moment().startOf("day"); // set the time to midnight
-
+  const today = moment().startOf("day"); // Set the time to midnight
   arr.forEach((obj) => {
-    const endDate = moment(obj.end_date, "MMMM D, YYYY"); // parse the 'end_date' string into a moment object
-    if (endDate.isBefore(today)) {
-      obj.type = `${obj.type}-past`;
-      past.push(obj);
+    const startDate = moment.utc(obj.startDate); // Parse the 'startDate' string into a moment object
+    const endDate = moment.utc(obj.endDate); // Parse the 'endDate' string into a moment object
+    let clone = { ...obj };
+    // Determine the date format based on whether startDate and endDate are the same or in the same month
+    if (startDate.isSame(endDate, 'day')) {
+      clone.date = startDate.format("MMMM D, YYYY");
+    } else if (startDate.isSame(endDate, 'month')) {
+      clone.date = `${startDate.format("MMMM D")} - ${endDate.format("D, YYYY")}`;
     } else {
-      obj.type = `${obj.type}-upcoming`;
-      upcoming.push(obj);
+      clone.date = `${startDate.format("MMMM D, YYYY")} - ${endDate.format("MMMM D, YYYY")}`;
+    }
+    if (endDate.isBefore(today)) {
+      clone.type = obj.category;
+      clone.category = obj.category.map((cat) => `${cat}-past`);
+      past.push(clone);
+    } else {
+      clone.type = obj.category;
+      clone.category = obj.category.map((cat) => `${cat}-upcoming`);
+      upcoming.push(clone);
     }
   });
-
   return { past: sortEvents(past), upcoming: sortEvents(upcoming, false) };
 }
+
 
 const events = [
   {
@@ -736,7 +759,7 @@ const events = [
     link: "https://ripple.swoogo.com/xrpl-zone-seoul",
     location: "Seongdong-su, Seoul",
     date: "September 4, 2024",
-    image: require('../static/img/events/event-meetup-zone-day.png'),
+    image: require("../static/img/events/event-meetup-zone-day.png"),
     end_date: "September 4, 2024",
   },
   {
@@ -747,7 +770,7 @@ const events = [
     link: "https://lu.ma/mbg067j3",
     location: "Seongdong-su, Seoul",
     date: "September 4, 2024",
-    image: require('../static/img/events/event-meetup-zone-night.png'),
+    image: require("../static/img/events/event-meetup-zone-night.png"),
     end_date: "September 4, 2024",
   },
   {
@@ -791,7 +814,7 @@ const events = [
     link: "https://events.xrplresources.org/toyko-community-2024",
     location: "Shinagawa, Tokyo",
     date: "September 6, 2024",
-    image: require('../static/img/events/event-meetup-tokyo-day.png'),
+    image: require("../static/img/events/event-meetup-tokyo-day.png"),
     end_date: "September 6, 2024",
   },
   {
@@ -802,7 +825,7 @@ const events = [
     link: "https://lu.ma/84do37p7",
     location: "Shinagawa, Tokyo",
     date: "September 6, 2024",
-    image: require('../static/img/events/event-meetup-tokyo-night.png'),
+    image: require("../static/img/events/event-meetup-tokyo-night.png"),
     end_date: "September 6, 2024",
   },
   {
@@ -813,24 +836,24 @@ const events = [
     link: "https://lu.ma/74dulzff",
     location: "Chicago, IL",
     date: "September 12, 2024",
-    image: require('../static/img/events/chicago-meetup.png'),
+    image: require("../static/img/events/chicago-meetup.png"),
     end_date: "September 12, 2024",
   },
 ];
 
-export default function Events() {
+export default function Events({pageProps}) {
+  const {data, errors} = pageProps.contentfulEvents;
   const { useTranslate } = useThemeHooks();
   const { translate } = useTranslate();
-  const { past, upcoming } = useMemo(() => categorizeDates(events), []);
-
+  const { past, upcoming } = useMemo(() => categorizeDates(data?.eventsCollection?.items || []), [data]);
   const [upcomingFilters, setUpcomingFilters] = useState({
     conference: true,
     meetup: true,
     hackathon: true,
     ama: true,
     cc: true,
-    zone: true,  
-    "info": true,
+    zone: true,
+    info: true,
   });
 
   const [pastFilters, setPastFilters] = useState({
@@ -840,18 +863,18 @@ export default function Events() {
     ama: true,
     cc: true,
     zone: true,
-    "info": true,
+    info: true,
   });
 
   const filteredUpcoming = useMemo(() => {
     return upcoming.filter(
-      (event) => upcomingFilters[event.type.split("-")[0]] !== false
+      (event) => upcomingFilters[event.category[0].split("-")[0]] !== false
     );
   }, [upcoming, upcomingFilters]);
 
   const filteredPast = useMemo(() => {
     return past.filter(
-      (event) => pastFilters[event.type.split("-")[0]] !== false
+      (event) => pastFilters[event.category[0].split("-")[0]] !== false
     );
   }, [past, pastFilters]);
 
@@ -862,7 +885,7 @@ export default function Events() {
       [name.replace("-upcoming", "")]: checked,
     }));
   };
-  
+
   const handlePastFilterChange = (event) => {
     const { name, checked } = event.target;
     setPastFilters((prevFilters) => ({
@@ -870,7 +893,11 @@ export default function Events() {
       [name.replace("-past", "")]: checked,
     }));
   };
-  
+
+  if (errors) {
+    return <div style={{color: 'red', padding: '20px'}}>{errors[0]?.message}</div>
+  }
+
   return (
     <div className="landing page-events">
       <div>
@@ -967,7 +994,9 @@ export default function Events() {
                   checked={upcomingFilters.meetup}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="meetup-upcoming">{translate("Meetups")}</label>
+                <label htmlFor="meetup-upcoming">
+                  {translate("Meetups")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1019,7 +1048,9 @@ export default function Events() {
                   checked={upcomingFilters.zone}
                   onChange={handleUpcomingFilterChange}
                 />
-                <label htmlFor="zone-upcoming">{translate("XRPL Zone")}</label>
+                <label htmlFor="zone-upcoming">
+                  {translate("XRPL Zone")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1042,7 +1073,7 @@ export default function Events() {
             {filteredUpcoming.map((event, i) => (
               <a
                 key={event.name + i}
-                className={`event-card ${event.type}`}
+                className={`event-card ${event.category[0]}`}
                 href={event.link}
                 style={{}}
                 target="_blank"
@@ -1050,7 +1081,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    background: `url(${event.image}) no-repeat`,
+                    background: `url(${event.type.includes('meetup') ? event?.image?.url || imageLookup['meetup'] : imageLookup[event.type[0]]}) no-repeat`,
                   }}
                 >
                   <div className="event-card-title">
@@ -1143,7 +1174,9 @@ export default function Events() {
                   checked={pastFilters.cc}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="cc-past">{translate("Community Calls")}</label>
+                <label htmlFor="cc-past">
+                  {translate("Community Calls")}
+                </label>
               </div>
               <div className="form-check form-check-inline">
                 <input
@@ -1167,9 +1200,7 @@ export default function Events() {
                   checked={pastFilters["info"]}
                   onChange={handlePastFilterChange}
                 />
-                <label htmlFor="info-past">
-                  {translate("Info Session")}
-                </label>
+                <label htmlFor="info-past">{translate("Info Session")}</label>
               </div>
             </div>
           </div>
@@ -1184,7 +1215,7 @@ export default function Events() {
                 <div
                   className="event-card-header"
                   style={{
-                    background: `url(${event.image}) no-repeat`,
+                    background: `url(${event.type.includes('meetup') ? event?.image?.url || imageLookup['meetup'] : imageLookup[event.type[0]]}) no-repeat`,
                   }}
                 >
                   <div className="event-card-title">
@@ -1208,3 +1239,4 @@ export default function Events() {
     </div>
   );
 }
+
