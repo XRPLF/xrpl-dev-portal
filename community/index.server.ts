@@ -17,24 +17,24 @@ async function fetchGql(query: string) {
 }
 
 const GET_EVENTS = `
-  query GetEvents {
-    eventsCollection(order: startDate_ASC) {
-      items {
-        _id
-        name
-        description
-        category
-        link
-        location
-        startDate
-        endDate
-        community
-        image {
-          url
-        }
+query GetEvents {
+  eventsCollection(order: startDate_ASC, where: {community: true}) {
+    items {
+      _id
+      name
+      description
+      category
+      link
+      location
+      startDate
+      endDate
+      community
+      image {
+        url
       }
     }
   }
+}
 `;
 
 
