@@ -21,7 +21,7 @@ An example of the request format:
 {
     "id": "example_ledger_index",
     "command": "ledger_index",
-    "date": "2024-06-20T09:00:42.000Z"
+    "date": "2024-08-28T22:59:00Z"
 }
 ```
 {% /tab %}
@@ -29,10 +29,10 @@ An example of the request format:
 {% tab label="JSON-RPC" %}
 ```json
 {
-    "method": "ledger",
+    "method": "ledger_index",
     "params": [
         {
-            "date": "2024-06-20T09:00:42.000Z"
+            "date": "2024-08-28T22:59:00Z"
         }
     ]
 }
@@ -47,13 +47,11 @@ The request can contain the following parameters:
 
 | `Field` | Type   | Required? | Description |
 |:--------|:-------|:----------|-------------|
-| `date`  | String | No        | An ISO 8601 timestamp of the time to look up. If omitted, use the current time. ***TODO: restrictions on the ISO format. Resolution? Time zones? etc.*** |
+| `date`  | String | No        | An ISO 8601 timestamp of the time to look up, precise to whole seconds. If omitted, use the current time. ***TODO: restrictions on the ISO format. Time zones? etc.*** |
 
 ## Response Format
 
 An example of a successful response:
-
-***TODO: populate these example response files with real server responses***
 
 {% tabs %}
 
@@ -73,10 +71,17 @@ The response follows the [standard format][], with a successful result containin
 |:---------------|:-------|:------------------------------------|
 | `ledger_index` | Number | The [Ledger Index][] of the most recently closed ledger at the specified time. |
 | `ledger_hash`  | String | The identifying [Hash][] of the most recently closed ledger at the specified time. |
-| `closed`       | String | ***TODO is this the official close time or the requested time?*** |
+| `closed`       | String | The official close time of the most recently closed ledger at the specified time. |
 
 {% admonition type="info" name="Note" %}
 Due to the rounding on ledger close times, there may be a difference of up to 10 seconds between the "official" close time of a ledger and the real-world clock time when the ledger was closed. For more details, see [Ledger Close Times](../../../../concepts/ledgers/ledger-close-times.md).
 {% /admonition %}
+
+## Possible Errors
+
+* Any of the [universal error types][].
+* `invalidParams` - One or more fields are specified incorrectly, or one or more required fields are missing.
+    * For example, this can occur if the specified `date` included a microseconds component.
+* `lgrNotFound` - The server does not have ledger history for the specified point in time.
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
