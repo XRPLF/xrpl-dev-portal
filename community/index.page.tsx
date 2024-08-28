@@ -18,6 +18,9 @@ const conference = require("../static/img/events/Conference.png");
 const zone = require("../static/img/events/XRPLZone.png");
 const brazil = require("../static/img/events/event-meetup-brazil.png");
 const korea = require("../static/img/events/SouthKoreaMeetup.png");
+const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.png");
+const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
+const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
 const findNearestUpcomingEvent = (events) => {
   let nearestEvent = null;
   let nearestDateDiff = Infinity;
@@ -265,6 +268,42 @@ const events = [
     image: require('../static/img/events/chicago-meetup.png'),
     start_date: "September 12, 2024",
     end_date: "September 12, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA",
+    location: "Virtual - Zoom",
+    date: "September 27, 2024",
+    image: infoSession2,
+    start_date: "September 27, 2024",
+    end_date: "September 27, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA",
+    location: "Virtual - Zoom",
+    date: "October 25, 2024",
+    image: infoSession3,
+    start_date: "October 25, 2024",
+    end_date: "October 25, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA",
+    location: "Virtual - Zoom",
+    date: "November 22, 2024",
+    image: infoSession4,
+    start_date: "November 22, 2024",
+    end_date: "November 22, 2024",
   },
 ];
 const { nearestDateDiff, nearestEvent, index } = findNearestUpcomingEvent(events);
