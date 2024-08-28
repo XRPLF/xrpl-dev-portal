@@ -306,24 +306,16 @@
           "trim": 20,
           "oracles": [
             {
-              "account": "rp047ow9WcPmnNpVHMQV5A4BF6vaL9Abm6",
+              "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
               "oracle_document_id": 34
             },
             {
-              "account": "rp147ow9WcPmnNpVHMQV5A4BF6vaL9Abm7",
-              "oracle_document_id": 56
+              "account": "rMVKq8zrVsJZQFEiTARyC6WfZznhhLMcNi",
+              "oracle_document_id": 100
             },
             {
-              "account": "rp247ow9WcPmnNpVHMQV5A4BF6vaL9Abm8",
+              "account": "r92kJTnUbUUq15t2BBZYGYxY79RnNc7rLQ",
               "oracle_document_id": 2
-            },
-            {
-              "account": "rp347ow9WcPmnNpVHMQV5A4BF6vaL9Abm9",
-              "oracle_document_id": 7
-            },
-            {
-              "account": "rp447ow9WcPmnNpVHMQV5A4BF6vaL9Abm0",
-              "oracle_document_id": 109
             }
           ]
         }
@@ -673,7 +665,7 @@
           "id": "example_get_oracle",
           "command": "ledger_entry",
           "oracle" : {
-            "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+            "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
             "oracle_document_id":  34
           },
           "ledger_index": "validated"

@@ -289,7 +289,7 @@ rippled json ledger_entry '{ "bridge_account": "rnQAXXWoFNN6PEqwqsdTngCtFPCrmfuq
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-bridge)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-bridge)
 
 
 ### Get DirectoryNode Object
@@ -408,11 +408,11 @@ _(Requires the [PriceOracle amendment][] {% not-enabled /%})_
 
 Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/oracle.md), which represents a single price oracle that can store token prices.
 
-| Field                       | Type   | Required? | Description |
-|-----------------------------|--------|-----------|-------------|
-| `oracle`                    | Object | Yes       | The oracle identifier. |
-| `oracle.account`            | String | Yes       | The XRPL account that controls the `Oracle` object. |
-| `oracle.oracle_document_id` | Number | Yes       | A unique identifier of the price oracle for the `Account` |
+| Field                       | Type                 | Required? | Description |
+|-----------------------------|----------------------|-----------|-------------|
+| `oracle`                    | Object               | Yes       | The oracle identifier. |
+| `oracle.account`            | String - [Address][] | Yes       | The account that controls the `Oracle` object. |
+| `oracle.oracle_document_id` | Number               | Yes       | A unique identifier of the price oracle for the `Account` |
 
 {% tabs %}
 
@@ -422,7 +422,7 @@ Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/orac
   "id": "example_get_oracle",
   "command": "ledger_entry",
   "oracle" : {
-    "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+    "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
     "oracle_document_id":  34
   },
   "ledger_index": "validated"
@@ -437,7 +437,7 @@ Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/orac
   "params" : [
     {
       "oracle" : {
-        "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW",
+        "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
         "oracle_document_id":  34
       },
       "ledger_index": "validated"
@@ -449,13 +449,13 @@ Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/orac
 
 {% tab label="Commandline" %}
 ```sh
-rippled json ledger_entry '{ "oracle": { "account": "rsA2LpzuawewSBQXkiju3YQTMzW13pAAdW", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
 ```
 {% /tab %}
 
 {% /tabs %}
 
-[Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-oracle)
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
 
 
 ### Get RippleState Object

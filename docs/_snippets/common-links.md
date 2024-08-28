@@ -252,6 +252,12 @@
 [OfferCreateトランザクション]: /docs/references/protocol/transactions/types/offercreate.md
 [Offerエントリ]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
 [Offerオブジェクト]: /docs/references/protocol/ledger-data/ledger-entry-types/offer.md
+[OracleDelete transaction]: /docs/references/protocol/transactions/types/oracledelete.md
+[OracleDelete transactions]: /docs/references/protocol/transactions/types/oracledelete.md
+[Oracle entry]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+[Oracle object]: /docs/references/protocol/ledger-data/ledger-entry-types/oracle.md
+[OracleSet transaction]: /docs/references/protocol/transactions/types/oracleset.md
+[OracleSet transactions]: /docs/references/protocol/transactions/types/oracleset.md
 [OwnerPaysFee amendment]: /resources/known-amendments.md#ownerpaysfee
 [OwnerPaysFeeの修正]: /resources/known-amendments.md#ownerpaysfee
 [PayChan amendment]: /resources/known-amendments.md#paychan
@@ -499,6 +505,8 @@
 [fixTakerDryOfferRemovalの修正]: /resources/known-amendments.md#fixtakerdryofferremoval
 [fixTrustLinesToSelf amendment]: /resources/known-amendments.md#fixtrustlinestoself
 [fixTrustLinesToSelfの修正]: /resources/known-amendments.md#fixtrustlinestoself
+[get_aggregate_price command]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
+[get_aggregate_price method]: /docs/references/http-websocket-apis/public-api-methods/path-and-order-book-methods/get_aggregate_price.md
 [gateway_balances command]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [gateway_balances method]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
 [gateway_balances メソッド]: /docs/references/http-websocket-apis/public-api-methods/account-methods/gateway_balances.md
