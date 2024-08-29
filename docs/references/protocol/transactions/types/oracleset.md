@@ -68,7 +68,7 @@ Creates a new `Oracle` ledger entry or updates the fields of an existing one, us
 - Token pairs that only appear in the object have `AssetPrice` and `Scale` removed to signify that the price is outdated.
 
 {% admonition type="info" name="Note" %}
-The order of token pairs in the transaction aren't important because each token pair uniquely identifies the location of the `PriceData` object in the `PriceDataSeries`.
+The order of token pairs in the transaction isn't important because each token pair uniquely identifies the location of the `PriceData` object in the `PriceDataSeries`.
 {% /admonition %}
 
 

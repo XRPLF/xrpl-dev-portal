@@ -46,7 +46,7 @@ Some special cases:
 - Trust lines (`RippleState` entries) are shared between two accounts. The owner reserve can apply to one or both of them. Most often, the token holder owes a reserve and the issuer does not. See also: [RippleState: Contributing to the Owner Reserve](../../references/protocol/ledger-data/ledger-entry-types/ripplestate.md#contributing-to-the-owner-reserve).
 - Signer lists created before the [MultiSignReserve amendment][] activated in April 2019 count as multiple objects. See also: [Signer Lists and Reserves](../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signer-lists-and-reserves).
 - An [Owner Directory](../../references/protocol/ledger-data/ledger-entry-types/directorynode.md) is a ledger entry that lists all objects related to an account, including all objects the account owns. However, the owner directory itself does not count towards the reserve.
-- Oracles count as one item for the owner reserve if it contains one to five `PriceData` objects, or two items if it contains six to ten `PriceData` objects.
+- Oracles count as one item for the owner reserve if they contain one to five `PriceData` objects, or two items if they contain six to ten `PriceData` objects.
 
 ### Looking Up Reserves
 
