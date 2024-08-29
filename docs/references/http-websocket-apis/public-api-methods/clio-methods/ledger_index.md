@@ -47,7 +47,7 @@ The request can contain the following parameters:
 
 | `Field` | Type   | Required? | Description |
 |:--------|:-------|:----------|-------------|
-| `date`  | String | No        | An ISO 8601 timestamp of the time to look up, precise to whole seconds. If omitted, use the current time. ***TODO: restrictions on the ISO format. Time zones? etc.*** |
+| `date`  | String | No        | An ISO 8601 timestamp of the time to look up. Must be formatted without microseconds, and using `Z` as the time zone marker. For example, `2024-08-28T22:59:00Z`. If omitted, use the current time. |
 
 ## Response Format
 
@@ -67,11 +67,12 @@ An example of a successful response:
 
 The response follows the [standard format][], with a successful result containing information about the most recently closed ledger at the requested time, including the following fields:
 
-| Field          | Type   | Description                         |
-|:---------------|:-------|:------------------------------------|
-| `ledger_index` | Number | The [Ledger Index][] of the most recently closed ledger at the specified time. |
-| `ledger_hash`  | String | The identifying [Hash][] of the most recently closed ledger at the specified time. |
-| `closed`       | String | The official close time of the most recently closed ledger at the specified time. |
+| Field          | Type    | Description                         |
+|:---------------|:--------|:------------------------------------|
+| `ledger_index` | Number  | The [Ledger Index][] of the most recently closed ledger at the specified time. |
+| `ledger_hash`  | String  | The identifying [Hash][] of the most recently closed ledger at the specified time. |
+| `closed`       | String  | The official close time of the most recently closed ledger at the specified time. |
+| `validated`    | Boolean | If `true`, the ledger has been validated by the consensus process and is immutable. Otherwise, the contents of the ledger are not final and may change. |
 
 {% admonition type="info" name="Note" %}
 Due to the rounding on ledger close times, there may be a difference of up to 10 seconds between the "official" close time of a ledger and the real-world clock time when the ledger was closed. For more details, see [Ledger Close Times](../../../../concepts/ledgers/ledger-close-times.md).
