@@ -6,6 +6,7 @@
     - group: '2024'
       expanded: false
       items:
+        - page: 2024/rippled-2.2.2.md
         - page: 2024/testnet-reset-notification.md
         - page: 2024/evolving-the-xrp-ledger.md
         - page: 2024/deep-dive-into-amm-integration.md
