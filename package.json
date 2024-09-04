@@ -12,11 +12,11 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
-    "@redocly/portal-plugin-async-api": "^1.0.230",
+    "@redocly/portal-plugin-async-api": "^1.0.255",
     "@codemirror/state": "6.4.1",
     "@codemirror/view": "^6.22.2",
     "@lezer/highlight": "^1.2.0",
-    "@redocly/realm": "^0.97.6",
+    "@redocly/realm": "^0.98.1",
     "@uiw/codemirror-themes": "4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
     "@xrplf/isomorphic": "^1.0.0-beta.1",
