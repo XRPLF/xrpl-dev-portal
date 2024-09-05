@@ -172,6 +172,7 @@
               items:
                 - page: docs/tutorials/javascript/send-payments/create-accounts-send-xrp.md
                 - page: docs/tutorials/javascript/send-payments/create-trust-line-send-currency.md
+                - page: docs/tutorials/javascript/send-payments/create-offers.md
                 - page: docs/tutorials/javascript/send-payments/create-time-based-escrows.md
                 - page: docs/tutorials/javascript/send-payments/create-conditional-escrows.md
                 - page: docs/tutorials/javascript/send-payments/send-and-cash-checks.md
