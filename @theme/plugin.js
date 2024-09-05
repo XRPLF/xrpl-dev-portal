@@ -11,6 +11,7 @@ export default function customPlugin() {
 
   /** @type {import("@redocly/realm/dist/server/plugins/types").PluginInstance } */
   const pluginInstance = {
+    id: 'xrpl',
     processContent: async (content, actions) => {
       await indexPagesInst.processContent?.(content, actions);
       await codeSamplesInst.processContent?.(content, actions);
