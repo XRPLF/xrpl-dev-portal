@@ -1,6 +1,6 @@
 - group: Blog
   groupTranslationKey: sidebar.blog
-  page: blog/index.page.tsx
+  page: index.page.tsx
   expanded: true
   items:
     - group: '2024'
