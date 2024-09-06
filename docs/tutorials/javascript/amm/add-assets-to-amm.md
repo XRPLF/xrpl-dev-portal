@@ -10,10 +10,10 @@ labels:
 
 This example shows how to:
 
-1. Deposit `XRP` and issued tokens to an AMM and receive LP tokens.
+1. Deposit assets to an existing AMM and receive LP tokens.
 2. Vote on AMM trading fees.
 3. Check the value of your LP tokens.
-4. Redeem LP Tokens for assets.
+4. Redeem LP tokens for assets in the AMM pair.
 
 [![Add assets to AMM test harness](/docs/img/quickstart-add-to-amm1.png)](/docs/img/quickstart-add-to-amm1.png)
 
@@ -41,13 +41,31 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 [![Get account results](/docs/img/quickstart-add-to-amm2.png)](/docs/img/quickstart-add-to-amm2.png)
 
 
-### Add Assets to an Existing AMM
+### Get the AMM
 
-Choose the amount of assets to add to the AMM. You can deposit either one or both assets, but deposting only one asset reduces the amount of LP tokens you receive. In the standby account fields:
+1. Enter a [currency code](/docs/references/protocol/data-types/currency-formats.md#currency-codes) in the **Asset 1 Currency** field. For example, `TST`.
+2. (Optional) If you entered a currency code other than `XRP`, also enter the token issuer in the **Asset 1 Issuer** field.
+3. Enter a second currency code in the **Asset 2 Currency** field.
+4. (Optional) If you entered a second currency code other than `XRP`, also enter the token issuer in the **Asset 2 Issuer** field.
+5. Click **Check AMM**.
 
-1. Enter how much XRP to add in the **XRP Balance** field.
-2. Enter how many issued tokens to add in the **Amount** field.
-3. Enter the token issuer address in the **Destination** field.
+[![Add assets to AMM results](/docs/img/quickstart-add-to-amm3.png)](/docs/img/quickstart-add-to-amm3.png)
+
+
+### (Optional) Acquire More Assets
+
+If you need more assets, you can:
+
+- Fund a new wallet with `XRP` by clicking **Get New Standby Account**.
+- Get more tokens from the token issuer in the AMM pair. See: [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm) 
+
+### Add Assets to the AMM
+
+Choose the amount of assets to add to the AMM. You can deposit either one or both assets, but deposting only one reduces the amount of LP tokens you receive.
+
+1. Click **Get Balances** to verify how many tokens you have.
+2. Enter a value in the **Asset 1 Amount** field.
+3. (Optional) Enter a value in the **Asset 2 Amount** field.
 4. Click **Add to AMM**.
 
 [![Add assets to AMM results](/docs/img/quickstart-add-to-amm3.png)](/docs/img/quickstart-add-to-amm3.png)
@@ -61,20 +79,13 @@ Choose the amount of assets to add to the AMM. You can deposit either one or bot
 [![Vote on trading fees results](/docs/img/quickstart-add-to-amm4.png)](/docs/img/quickstart-add-to-amm4.png)
 
 
-### Check LP Token Value
-
-1. Enter a value in the **LP Tokens** field.
-2. Click **Get LP Value**.
-
-[![Get LP token value results](/docs/img/quickstart-add-to-amm5.png)](/docs/img/quickstart-add-to-amm5.png)
-
-
 ### Redeem Your LP Tokens
 
-1. Enter a value in the **LP Tokens** field.
-2. Click **Redeem LP**.
+1. Click **Get LP Value**.
+2. Enter a value in the **LP Tokens** field.
+3. Click **Redeem LP**.
 
-[![Get LP token value results](/docs/img/quickstart-add-to-amm6.png)](/docs/img/quickstart-add-to-amm6.png)
+[![Get LP token value results](/docs/img/quickstart-add-to-amm5.png)](/docs/img/quickstart-add-to-amm5.png)
 
 
 ## Code Walkthrough
@@ -86,27 +97,20 @@ You can open `ripplex12-add-to-amm.js` from the [Quickstart Samples](https://git
 
 This code checks if you're trying to add one or both assets, and then modifies the `AMMDeposit` transaction to be either a single or double-asset deposit.
 
-The function to update LP balance checks the AMM to get the unique AMM account, which acts as its own issuer of LP tokens. It then checks your wallet balance and gets the LP token value by matching it with the AMM issuer.
-
 {% code-snippet file="/_code-samples/quickstart/js/ripplex12-add-to-amm.js" from="// Deposit assets to existing AMM." before="// Vote on AMM trading fees" language="js" /%}
 
 
 ### Vote on Trading Fees
 
-Trading fees are applied to any transaction that interacts with the AMM. The act of voting is straightforward and only requires you to hold the AMM LP tokens before submitting a vote.
+Trading fees are applied to any transaction that interacts with the AMM. As with the `addAssets()` function, this one checks the combination of assets provided to modifty the `ammVote` transaction.
 
 {% code-snippet file="/_code-samples/quickstart/js/ripplex12-add-to-amm.js" from="// Vote on AMM trading fees" before="// Calculate the value of your LP tokens." language="js" /%}
 
 
-### Calculate Value of LP Tokens
-
-There isn't a dedicated method to calculate how much you can redeem your LP tokens for, but the math isn't too complicated. The percentage of the total LP tokens in circulation that you own qualifies you for the same percentage of the total assets in the AMM.
-
-{% code-snippet file="/_code-samples/quickstart/js/ripplex12-add-to-amm.js" from="// Calculate the value of your LP tokens." before="// Withdraw by redeeming LP tokens." language="js" /%}
-
-
 ### Redeem Your LP Tokens
 
-Redeeming your LP tokens requires you to get the LP token issuer and currency code, both of which you can check using the `amm_info` method.
+The `calculateLP()` function gets the AMM account, which acts as its own issuer of LP tokens. It then checks your wallet balance and gets your LP token balance by matching it with the AMM issuer. Although there isn't a dedicated method to calculate what you can redeem your LP tokens for, the math to do so is simple. The function checks the percentage of LP tokens in circulation that you own, and then applies that same percentage to the total assets in the AMM to give you their redemption value.
 
-{% code-snippet file="/_code-samples/quickstart/js/ripplex12-add-to-amm.js" from="// Withdraw by redeeming LP tokens." language="js" /%}
+The code to redeem the LP tokens checks how many tokens you want to redeem, as well as the combination of assets to format `amm_info` and `AMMWithdraw`.
+
+{% code-snippet file="/_code-samples/quickstart/js/ripplex12-add-to-amm.js" from="// Calculate the value of your LP tokens." language="js" /%}

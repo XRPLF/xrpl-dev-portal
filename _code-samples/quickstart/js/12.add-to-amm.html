@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Add Assets to AMM Test Harness</title>
+    <title>Add to AMM Test Harness</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <style>
        body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
@@ -26,7 +26,7 @@
 <!-- ************************************************************** -->
 
   <body>
-    <h1>Add Assets to AMM Test Harness</h1>
+    <h1>Add to AMM Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
       &nbsp;&nbsp;
@@ -45,7 +45,7 @@
       <table>
         <tr valign="top">
           <td>
-            <table>
+            <table style="padding-bottom: 400px;">
               <tr valign="top">
                 <td>
                 <td>
@@ -108,7 +108,76 @@
                         Currency
                       </td>
                       <td>
-                        <input type="text" id="standbyCurrencyField" size="40" value="USD"></input>
+                        <input type="text" id="standbyCurrencyField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>                    
+                  </table>
+                  <p align="left">
+                    <textarea id="standbyResultField" cols="60" rows="20" style="resize: none;"></textarea>
+                  </p>
+                  <table>
+                    <tr valign="top">
+                      <td align="right">
+                        Asset 1 Currency
+                      </td>
+                      <td>
+                        <input type="text" id="asset1CurrencyField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Asset 1 Issuer
+                      </td>
+                      <td>
+                        <input type="text" id="asset1IssuerField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Asset 1 Amount
+                      </td>
+                      <td>
+                        <input type="text" id="asset1AmountField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Asset 2 Currency
+                      </td>
+                      <td>
+                        <input type="text" id="asset2CurrencyField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Asset 2 Issuer
+                      </td>
+                      <td>
+                        <input type="text" id="asset2IssuerField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right">
+                        Asset 2 Amount
+                      </td>
+                      <td>
+                        <input type="text" id="asset2AmountField" size="40"></input>
+                        <br>
+                      </td>
+                    </tr>                    
+                    <tr>
+                      <td align="right">
+                        Trading Fee
+                      </td>
+                      <td>
+                        <input type="text" id="standbyFeeField" size="40"></input>
+                        <br>
                       </td>
                     </tr>
                     <tr>
@@ -120,25 +189,13 @@
                         <br>
                       </td>
                     </tr>
-                    <tr>
-                      <td align="right">
-                        Trading Fee
-                      </td>
-                      <td>
-                        <input type="text" id="standbyFeeField" size="40"></input>
-                        <br>
-                      </td>
-                    </tr>
                   </table>
-                  <p align="left">
-                    <textarea id="standbyResultField" cols="80" rows="20" ></textarea>
-                  </p>
                 </td>
                 </td>
                 <td>
                   <table>
                     <tr valign="top">
-                      <td align="center" valign="top" style="padding-top: 270px;">
+                      <td align="center" valign="top"  style="padding-top: 240px;">
                         <br>
                         <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
                         <br/><br/>
@@ -146,11 +203,11 @@
                         <br/>
                         <button type="button" onClick="sendCurrency()">Send Currency</button>
                         <br/>
-                        <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br/><br/>
+                        <button type="button" onClick="getBalances()" style="margin-bottom: 160px;">Get Balances</button>
+                        <br/>
                         <button type="button" onClick="checkAMM()">Check AMM</button>
                         <br/>
-                        <button type="button" onClick="createAMM()">Create AMM</button>                        
+                        <button type="button" onClick="createAMM()">Create AMM</button>
                         <br/>
                         <button type="button" onClick="addAssets()">Add to AMM</button>
                         <br/>
@@ -169,14 +226,13 @@
             </table>
           </td>
           <td>
-            <table>
+            <table style="padding-bottom: 430px;">
               <tr>
                 <td>
                 <td>
                   <table>
                     <tr>
-                      <td align="center" valign="top" style="padding-top: 15px;">
-                        <br/>
+                      <td align="center" valign="top" style="padding-bottom: 100px;">
                         <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
                         <br/><br/>
                         <button type="button" onClick="oPcreateTrustline()">Create TrustLine</button>
@@ -184,7 +240,6 @@
                         <button type="button" onClick="oPsendCurrency()">Send Currency</button>
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
-                        <br>
                       </td>
                       <td valign="top" align="right">
                         <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
@@ -244,16 +299,18 @@
                             </td>
                           </tr>
                           <tr>
-                            <td align="right" style="padding-bottom: 60px;">
+                            <td align="right">
                               Currency
                             </td>
                             <td>
-                              <input type="text" id="operationalCurrencyField" size="40" value="USD"></input>
+                              <input type="text" id="operationalCurrencyField" size="40"></input>
                             </td>
                           </tr>
-                        </table><br><br>
+                        </table>
                         <p align="right">
-                          <textarea id="operationalResultField" cols="80" rows="20" ></textarea>
+                          <textarea id="operationalResultField" cols="60" rows="20" style="resize: none;"></textarea>
+                          <br><br>
+                          <textarea id="ammInfoField" cols="60" rows="20" style="resize: none;"></textarea>
                         </p>
                       </td>
                       </td>

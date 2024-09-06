@@ -13,10 +13,16 @@ async function createAMM() {
   standbyResultField.value = results
           
   const standby_wallet = xrpl.Wallet.fromSeed(standbySeedField.value)
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const xrp_value = standbyBalanceField.value
-  const currency_code = standbyCurrencyField.value
-  const currency_value = standbyAmountField.value
+
+  const asset1_currency = asset1CurrencyField.value
+  const asset1_issuer = asset1IssuerField.value
+  const asset1_amount = asset1AmountField.value
+
+  const asset2_currency = asset2CurrencyField.value
+  const asset2_issuer = asset2IssuerField.value
+  const asset2_amount = asset2AmountField.value
+
+  let ammCreate = null
   
   results += '\n\nCreating AMM ...'
   standbyResultField.value = results
@@ -25,19 +31,84 @@ async function createAMM() {
   // (in drops) on the current network using server_state:
   const ss = await client.request({"command": "server_state"})
   const amm_fee_drops = ss.result.state.validated_ledger.reserve_inc.toString()
+
+  if (asset1_currency == 'XRP') {
+
+    ammCreate = {
+      "TransactionType": "AMMCreate",
+      "Account": standby_wallet.address,
+      "Amount": JSON.stringify(asset1_amount * 1000000), // convert XRP to drops
+      "Amount2": {
+        "currency": asset2_currency,
+        "issuer": asset2_issuer,
+        "value": asset2_amount
+      },
+      "TradingFee": 500, // 500 = 0.5%
+      "Fee": amm_fee_drops
+    }
+
+  } else if (asset2_currency =='XRP') {
+
+    ammCreate = {
+      "TransactionType": "AMMCreate",
+      "Account": standby_wallet.address,
+      "Amount": {
+        "currency": asset1_currency,
+        "issuer": asset1_issuer,
+        "value": asset1_amount
+      },
+      "Amount2": JSON.stringify(asset2_amount * 1000000), // convert XRP to drops
+      "TradingFee": 500, // 500 = 0.5%
+      "Fee": amm_fee_drops
+    }
+
+  } else {
+
+    ammCreate = {
+      "TransactionType": "AMMCreate",
+      "Account": standby_wallet.address,
+      "Amount": {
+        "currency": asset1_currency,
+        "issuer": asset1_issuer,
+        "value": asset1_amount
+      },
+      "Amount2": {
+        "currency": asset2_currency,
+        "issuer": asset2_issuer,
+        "value": asset2_amount
+      },
+      "TradingFee": 500, // 500 = 0.5%
+      "Fee": amm_fee_drops
+    }
+    
+  }
+
+  try {
+ 
+    const prepared_create = await client.autofill(ammCreate)
+    results += `\n\nPrepared transaction:\n${JSON.stringify(prepared_create, null, 2)}`
+    standbyResultField.value = results
+    standbyResultField.scrollTop = standbyResultField.scrollHeight  
   
-  const ammcreate_result = await client.submitAndWait({
-    "TransactionType": "AMMCreate",
-    "Account": standby_wallet.address,
-    "Amount": {
-      "currency": currency_code,
-      "issuer": operational_wallet.address,
-      "value": currency_value
-    },
-    "Amount2": JSON.stringify(xrp_value * 1000000), // convert XRP to drops
-    "TradingFee": 500, // 500 = 0.5%
-    "Fee": amm_fee_drops,
-  }, {autofill: true, wallet: standby_wallet, fail_hard: true}) // Use fail_hard so you don't waste the tx cost if you mess up
+    const signed_create = standby_wallet.sign(prepared_create)
+    results += `\n\nSending AMMCreate transaction ...`
+    standbyResultField.value = results
+    standbyResultField.scrollTop = standbyResultField.scrollHeight
+    
+    const amm_create = await client.submitAndWait(signed_create.tx_blob)
+    
+    if (amm_create.result.meta.TransactionResult == "tesSUCCESS") {
+      results += `\n\nTransaction succeeded.`
+    } else {
+      results += `\n\nError sending transaction: ${JSON.stringify(amm_create.result.meta.TransactionResult, null, 2)}`
+    }
+  
+  } catch (error) {
+    results += `\n\n${error.message}`
+  }
+  
+  standbyResultField.value = results
+  standbyResultField.scrollTop = standbyResultField.scrollHeight
 
   checkAMM()
       
@@ -50,46 +121,73 @@ async function createAMM() {
 async function checkAMM() {
 
   let net = getNet()
-
   const client = new xrpl.Client(net)
-  results = `\n\nConnecting to ${getNet()} ...`
-  standbyResultField.value = results
-
   await client.connect()
-  results += '\n\nConnected.'
-  standbyResultField.value = results
   
   // Gets the issuer and currency code
-  const operational_wallet = xrpl.Wallet.fromSeed(operationalSeedField.value)
-  const currency_code = standbyCurrencyField.value
-  
-  results += '\n\nChecking AMM ...'
-  standbyResultField.value = results
+  const asset1_currency = asset1CurrencyField.value
+  const asset1_issuer = asset1IssuerField.value
+
+  const asset2_currency = asset2CurrencyField.value
+  const asset2_issuer = asset2IssuerField.value
+
+  let amm_info_request = null
 
   // Get AMM info transaction
-  const amm_info_request = {
-    "command": "amm_info",
-    "asset": {
-      "currency": "XRP"
-    },
-    "asset2": {
-      "currency": currency_code,
-      "issuer": operational_wallet.address
-    },
-    "ledger_index": "validated"
+
+  if (asset1_currency == 'XRP') {
+
+    amm_info_request = {
+      "command": "amm_info",
+      "asset": {
+        "currency": "XRP"
+      },
+      "asset2": {
+        "currency": asset2_currency,
+        "issuer": asset2_issuer
+      },
+      "ledger_index": "validated"
+    }
+
+  } else if (asset2_currency =='XRP') {
+
+    amm_info_request = {
+      "command": "amm_info",
+      "asset": {
+        "currency": asset1_currency,
+        "issuer": asset1_issuer
+      },
+      "asset2": {
+        "currency": "XRP"
+      },
+      "ledger_index": "validated"
+    }
+
+  } else {
+
+    amm_info_request = {
+      "command": "amm_info",
+      "asset": {
+        "currency": asset1_currency,
+        "issuer": asset1_issuer
+      },
+      "asset2": {
+        "currency": asset2_currency,
+        "issuer": asset2_issuer
+      },
+      "ledger_index": "validated"
+    }
+    
   }
+
   try {
     const amm_info_result = await client.request(amm_info_request)
-    results += `\n\nAMM Info:\n${JSON.stringify(amm_info_result.result.amm, null, 2)}`
-  } catch(err) {
-    if (err.data.error === 'actNotFound') {
-      results += `\n\nNo AMM exists for the pair ${currency_code} / XRP.`
-    } else {
-      results += `\n\n${err}`
-    }
+    ammInfo = `${JSON.stringify(amm_info_result.result.amm, null, 2)}`
+  } catch(error) {
+    ammInfo = `${error}`
   }
   
-  standbyResultField.value = results
+  ammInfoField.value = ammInfo
       
   client.disconnect()
   

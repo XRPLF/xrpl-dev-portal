@@ -34,11 +34,13 @@ Without the Quickstart Samples, you will not be able to try the examples that fo
 
 ### Check AMM
 
-In the standby account fields:
+Check if an AMM pair already exists. An AMM holds two different assets: at most one of these can be XRP, and one or both of them can be [tokens](/docs/concepts/tokens).
 
-1. Enter a [currency code](/docs/references/protocol/data-types/currency-formats.md#currency-codes) in the **Currency** field.
-2. Enter a token issuer in the **Destination** field.
-3. Click **Check AMM**.
+1. Enter a [currency code](/docs/references/protocol/data-types/currency-formats.md#currency-codes) in the **Asset 1 Currency** field. For example, `TST`.
+2. (Optional) If you entered a currency code other than `XRP`, also enter the token issuer in the **Asset 1 Issuer** field.
+3. Enter a second currency code in the **Asset 2 Currency** field.
+4. (Optional) If you entered a second currency code other than `XRP`, also enter the token issuer in the **Asset 2 Issuer** field.
+5. Click **Check AMM**.
 
 [![Check AMM results](/docs/img/quickstart-create-amm3.png)](/docs/img/quickstart-create-amm3.png)
 
@@ -47,9 +49,9 @@ In the standby account fields:
 
 Create a trustline from the operational account to the standby account. In the standby account fields:
 
-1. Enter a currency code in the **Currency** field.
-2. Enter the maximum transfer limit in the **Amount** field.
-3. Enter the operational account address in the **Destination** field.
+1. Enter the maximum transfer limit in the **Amount** field.
+2. Enter the operational account address in the **Destination** field.
+3. Enter a currency code in the **Currency** field.
 4. Click **Create Trustline**.
 
 [![Create trustline results](/docs/img/quickstart-create-amm4.png)](/docs/img/quickstart-create-amm4.png)
@@ -67,17 +69,18 @@ Send issued tokens from the operational account to the standby account. In the o
 
 [![Issue token results](/docs/img/quickstart-create-amm5.png)](/docs/img/quickstart-create-amm5.png)
 
+{% admonition type="note" name="Note" %}
+If you want to create an AMM with two test tokens, repeat the _Create Trustline_ and _Issue Tokens_ steps, using a different currency code.
+{% /admonition %}
 
 ### Create an AMM
 
-In the standby account fields:
+Create a new AMM pool.
 
 1. Click **Get Balances** to verify how many tokens you have.
-2. Enter how much XRP to add in the **XRP Balance** field.
-3. Enter the operational account address in the **Destination** field.
-4. Enter the currency code in the **Currency** field.
-5. Enter how many issued tokens to add in the **Amount** field.
-6. Click **Create AMM**.
+2. Enter a value in the **Asset 1 Amount** field.
+3. Enter a value in the **Asset 2 Amount** field.
+4. Click **Create AMM**.
 
 [![Create AMM results](/docs/img/quickstart-create-amm6.png)](/docs/img/quickstart-create-amm6.png)
 
@@ -96,6 +99,6 @@ This checks if an AMM already exists. While multiple tokens can share the same c
 
 ### Create AMM
 
-This sends the `AMMCreate` transaction and creates a new AMM, using the initial assets provided.
+This sends the `AMMCreate` transaction and creates a new AMM, using the initial assets provided. The code checks the token currency fields and formats the `AMMCreate` transaction based on the combination of `XRP` and custom tokens.
 
 {% code-snippet file="/_code-samples/quickstart/js/ripplex11-create-amm.js" from="// Create AMM function" before="// Check AMM function" language="js" /%}
