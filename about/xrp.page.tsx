@@ -27,6 +27,7 @@ const softwallets = [
     alt: "Gatehub",
     imgclasses: "invertible-img",
   },
+  { href: "https://gemwallet.com/", id: "wallet-gem", alt: "Gem Wallet" },
   { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
 ];
 
