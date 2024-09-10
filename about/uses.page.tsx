@@ -815,7 +815,7 @@ export default function Uses() {
                 <a
                   target="_blank"
                   className="btn btn-primary btn-arrow"
-                  href="https://xrpl.typeform.com/dev-spotlight"
+                  href="https://xrplresources.org/developer-spotlight"
                 >
                   {translate("Submit Your Project")}
                 </a>
