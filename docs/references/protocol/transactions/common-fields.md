@@ -139,9 +139,6 @@ The `NetworkID` field is a protection against "cross-chain" transaction replay a
 | Mainnet                         | 0     | Disallowed                                           |
 | Testnet                         | 1     | Disallowed                                           |
 | Devnet                          | 2     | Disallowed                                           |
-| AMM Devnet                      | 25    | Disallowed                                           |
-| Sidechains Devnet Locking Chain | 2551  | Disallowed, but will become required after an update |
-| Sidechains Devnet Issuing Chain | 2552  | Disallowed, but will become required after an update |
 | Batch Testnet                   | 21336 | Required                                             |
 | Xahau Mainnet                   | 21337 | Required                                             |
 | Xahau Testnet                   | 21338 | Required                                             |
