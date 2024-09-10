@@ -2,7 +2,7 @@
 
 _(Requires the [PriceOracle amendment][] {% not-enabled /%})_
 
-Blockchains can't inherintly interact with and "know" what's happening off the network, but many of its use cases in decentralized finance require this information.
+Blockchains can't inherently interact with and "know" what's happening off the network, but many of its use cases in decentralized finance require this information.
 
 Price oracles solve this problem. An oracle is a service or technology that gathers real-world information, such as market prices, exchange rates, or interest rates, and relays it to the blockchain. Like blockchains, most oracles are also decentralized and validate data through multiple nodes.
 
