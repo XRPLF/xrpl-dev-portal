@@ -131,15 +131,18 @@ MemoTypeフィールドとMemoFormatフィールドには、以下の文字の�
 
 `NetworkID`フィールドは「クロスチェーン」トランザクションのリプレイ攻撃に対する保護であり、同じトランザクションがコピーされ、意図していない[ネットワーク](../../../concepts/networks-and-servers/parallel-networks.md)で実行されることを防ぎます。既存のチェーンとの互換性のため、ネットワークIDが1024以下のネットワークでは`NetworkID`フィールドを省略する必要がありますが、ネットワークIDが1025以上のネットワークでは`NetworkID`フィールドを含める必要があります。以下の表は、さまざまな既知のネットワークのステータスと値を示しています。
 
-| ネットワーク    | ID | `NetworkID`フィールド |
-|---------------|----|---------------------|
-| Mainnet       | 0  | 使用不可             |
-| Testnet       | 1  | 使用不可             |
-| Devnet        | 2  | 使用不可             |
-| AMM Devnet    | 25 | 使用不可             |
-| Sidechains Devnet Locking Chain | 2551 | 使用不可, ただし、アップデート後に必要となる予定です。 |
-| Sidechains Devnet Issuing Chain | 2552 | 使用不可, ただし、アップデート後に必要となる予定です。 |
-| Hooks V3 Testnet | 21338 | 必須    |
+| ネットワーク                      | ID    | `NetworkID`フィールド                                  |
+| ------------------------------- | ----- | ----------------------------------------------------- |
+| Mainnet                         | 0     | 使用不可                                               |
+| Testnet                         | 1     | 使用不可                                               |
+| Devnet                          | 2     | 使用不可                                               |
+| AMM Devnet                      | 25    | 使用不可                                               |
+| Sidechains Devnet Locking Chain | 2551  | 使用不可, ただし、アップデート後に必要となる予定です。         |
+| Sidechains Devnet Issuing Chain | 2552  | 使用不可, ただし、アップデート後に必要となる予定です。         |
+| Batch Testnet                   | 21336 | 必須                                                   |
+| Xahau Mainnet                   | 21337 | 必須                                                   |
+| Xahau Testnet                   | 21338 | 必須                                                   |
+| JS Hooks Testnet                | 31338 | 必須                                                   |
 
 トランザクションのリプレイ攻撃は理論的には可能ですが、2つ目のネットワークに特定の条件が必要です。次のすべてが真でなければなりません。
 
