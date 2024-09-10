@@ -853,7 +853,52 @@ const events = [
     image: infoSession4,
     end_date: "November 22, 2024",
   },
+  {
+    name: "XRPL Meetup in Munich",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in Munich! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you  to be a part of it!",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/xrpl-meetup-in-munich-tickets-957654278727",
+    location: "Munich, Germany",
+    date: "September 12, 2024",
+    image: require('../static/img/events/germany-meetup.png'),
+    end_date: "September 12, 2024",
+  },
+  {
+    name: "XRPL Town Hall Meeting",
+    description:
+      "Our first virtual Town Hall Meeting is on September 16 at 5 PM.  These recurring meetings are designed to bring our community together,  provide updates, and offer a platform to address  your most pressing questions.",
+    type: "info",
+    link: "https://www.eventbrite.fr/e/xrpl-town-hall-meeting-tickets-959615815737",
+    location: "Virtual",
+    date: "September 16, 2024",
+    image: require('../static/img/events/germany-meetup.png'),
+    end_date: "September 16, 2024",
+  },
+  {
+    name: "Building on the XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who  are curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/building-on-the-xrp-ledger-tickets-945486885727",
+    location: "Paris, France",
+    date: "September 25 - 26, 2024",
+    image: require('../static/img/events/building-meetup.png'),
+    end_date: "September 26, 2024",
+  },
+  {
+    name: "XRPL Community Magazine #3 Launch Party",
+    description:
+      "Join us on the 9th of October for a night of celebration and discussion! Connect with experts, mingle with fellow blockchain enthusiasts, and hear more about opportunities in the XRP Ledger ecosystem.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/xrpl-community-magazine-3-launch-party-tickets-967649013247",
+    location: "Paris, France",
+    date: "October 9, 2024",
+    image: require('../static/img/events/mag-meetup.png'),
+    end_date: "October 9, 2024",
+  },
 ];
+
 
 export default function Events() {
   const { useTranslate } = useThemeHooks();
