@@ -50,6 +50,7 @@ If successful, this transaction creates a [trust line](../../../../concepts/toke
 | `Amount2`     | [Currency Amount][] | Amount            | No        | The amount of another asset to add to the AMM. If present, this must match the type of the other asset in the AMM's pool and cannot be the same asset as `Amount`. |
 | `EPrice`      | [Currency Amount][] | Amount            | No        | The maximum effective price, in the deposit asset, to pay for each LP Token received. |
 | `LPTokenOut`  | [Currency Amount][] | Amount            | No        | How many of the AMM's LP Tokens to buy. |
+| `TradingFee`  | Number              | UInt16            | No        | Submit a vote for the AMM's trading fee, in units of 1/100,000; a value of 1 is equivalent to 0.001%. The maximum value is 1000, indicating a 1% fee. |
 
 
 ### AMMDeposit Modes
