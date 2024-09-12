@@ -872,7 +872,7 @@ const events = [
     link: "https://www.eventbrite.fr/e/xrpl-town-hall-meeting-tickets-959615815737",
     location: "Virtual",
     date: "September 16, 2024",
-    image: require('../static/img/events/germany-meetup.png'),
+    image: require('../static/img/events/town-hall-meetup.png'),
     end_date: "September 16, 2024",
   },
   {
