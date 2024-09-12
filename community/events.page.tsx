@@ -867,7 +867,7 @@ const events = [
   {
     name: "XRPL Town Hall Meeting",
     description:
-      "Our first virtual Town Hall Meeting is on September 16 at 5 PM.  These recurring meetings are designed to bring our community together,  provide updates, and offer a platform to address  your most pressing questions.",
+      "Our first virtual Town Hall Meeting is on September 16 at 5 PM CEST.  These recurring meetings are designed to bring our community together,  provide updates, and offer a platform to address  your most pressing questions.",
     type: "info",
     link: "https://www.eventbrite.fr/e/xrpl-town-hall-meeting-tickets-959615815737",
     location: "Virtual",
