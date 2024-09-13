@@ -44,7 +44,7 @@ async function configureAccount(type, defaultRippleSetting) {
     results += '\nAccount setting succeeded.'
     document.getElementById(resultField).value = results
   } else {
-    throw 'Error sending transaction: ${result}'
+    throw `Error sending transaction: ${result}`
     results += '\nAccount setting failed.'
     resultField.value = results
   }     
@@ -89,7 +89,7 @@ async function createTrustline() {
   } else {
     results += '\nTrustLine failed. See JavaScript console for details.'
     document.getElementById('standbyResultField').value = results     
-    throw 'Error sending transaction: ${ts_result.result.meta.TransactionResult}'
+    throw `Error sending transaction: ${ts_result.result.meta.TransactionResult}`
   }
 } //End of createTrustline()
       
@@ -130,12 +130,12 @@ async function sendCurrency() {
   standbyResultField.value = results
   const pay_result = await client.submitAndWait(pay_signed.tx_blob)
   if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}'
+    results += `Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}`
     standbyResultField.value = results
   } else {
     results += 'Transaction failed: See JavaScript console for details.'
     standbyResultField.value = results
-    throw 'Error sending transaction: ${pay_result.result.meta.TransactionResult}'
+    throw `Error sending transaction: ${pay_result.result.meta.TransactionResult}`
   }
   standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
   operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))
@@ -223,7 +223,7 @@ async function oPcreateTrustline() {
   } else {
     results += '\nTrustLine failed. See JavaScript console for details.'
     operationalResultField.value = results     
-    throw 'Error sending transaction: ${ts_result.result.meta.TransactionResult}'
+    throw `Error sending transaction: ${ts_result.result.meta.TransactionResult}`
   }
 } //End of oPcreateTrustline
       
@@ -263,12 +263,12 @@ async function oPsendCurrency() {
   operationalResultField.value = results
   const pay_result = await client.submitAndWait(pay_signed.tx_blob)
   if (pay_result.result.meta.TransactionResult == "tesSUCCESS") {
-    results += 'Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}'
+    results += `Transaction succeeded: https://testnet.xrpl.org/transactions/${pay_signed.hash}`
     operationalResultField.value = results
   } else {
     results += 'Transaction failed: See JavaScript console for details.'
     operationalResultField.value = results
-    throw 'Error sending transaction: ${pay_result.result.meta.TransactionResult}'
+    throw `Error sending transaction: ${pay_result.result.meta.TransactionResult}`
   }
   standbyBalanceField.value = (await client.getXrpBalance(standby_wallet.address))
   operationalBalanceField.value = (await client.getXrpBalance(operational_wallet.address))

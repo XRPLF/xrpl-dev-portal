@@ -182,9 +182,9 @@ async function checkAMM() {
 
   try {
     const amm_info_result = await client.request(amm_info_request)
-    ammInfo = `${JSON.stringify(amm_info_result.result.amm, null, 2)}`
+    ammInfo = `AMM Info:\n\n${JSON.stringify(amm_info_result.result.amm, null, 2)}`
   } catch(error) {
-    ammInfo = `${error}`
+    ammInfo = `AMM Info:\n\n${error}`
   }
   
   ammInfoField.value = ammInfo
