@@ -14,6 +14,8 @@ Version 2.2.3 of `rippled`, the reference server implementation of the XRP Ledge
 
 <!-- BREAK -->
 
+[Sign Up for Future Release Announcements](https://groups.google.com/g/ripple-server)
+
 ## Background
 
 The `rippled` server uses a SQLite database for tracking transactions, in addition to the main data store (usually NuDB) for ledger data. In servers keeping a large amount of history, this database can run out of space based on the configured number and size of database pages, even if the machine has disk space available. Based on the size of full history on Mainnet, servers with the default SQLite page size of 4096 may now run out of space if they store full history. In this case, your server may shut down with an error such as the following:
@@ -86,3 +88,17 @@ For other platforms, please [build from source](https://github.com/ripple/ripple
 ### Bug fixes
 
 - Update SQLite3 max_page_count to match current defaults ([#5114](https://github.com/XRPLF/rippled/pull/5114))
+
+
+## Credits
+
+The following people contributed directly to this release:
+
+J. Scott Branson <the@rabbitkick.club>
+
+
+## Bug Bounties and Responsible Disclosures
+
+We welcome reviews of the `rippled` code and urge researchers to responsibly disclose any issues they may find.
+
+To report a bug, please send a detailed report to: <bugs@xrpl.org>
