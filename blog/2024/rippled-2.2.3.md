@@ -35,7 +35,7 @@ Clio servers providing full history are not affected by this issue.
 
 If you run a full-history XRP Ledger Mainnet server, upgrade to version 2.2.3 as soon as possible to ensure service continuity. Other servers may not need to update immediately, but the update is safe regardless.
 
-Additionally, three amendments from version 2.2.0 currently have support from a supermajority of trusted validators and are expected to become enabled in less than two weeks The following table shows when the amendments are expected to become enabled if they maintain support continuously:
+Additionally, three amendments from version 2.2.0 currently have support from a supermajority of trusted validators and are expected to become enabled in less than two weeks. The following table shows when the amendments are expected to become enabled if they maintain support continuously:
 
 | Amendment | Expected on | Amendment Summary |
 |---|---|---|
@@ -67,8 +67,8 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.0-1.el7.x86_64.rpm) | `` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.0-1_amd64.deb) | `` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.3-1.el7.x86_64.rpm) | `` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.3-1_amd64.deb) | `` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
