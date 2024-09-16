@@ -28,7 +28,7 @@ Free SQLite space for transaction db is less than 512MB. To fix this, rippled
 
 The exact timing of when a server runs out of space can vary based on a few factors. Server operators who encountered a similar problem in 2018 and followed steps to [increase the SQLite transaction database page size issue](../../../docs/infrastructure/troubleshooting/fix-sqlite-tx-db-page-size-issue) may not encounter this problem at all. The `--vacuum` commandline option to `rippled` from that time may work to free up space in the database, but requires extended downtime.
 
-Version 2.2.3 of `rippled` reconfigures the maximum number of SQLite pages so that the issue does not occur.
+Version 2.2.3 of `rippled` reconfigures the maximum number of SQLite pages so that the database capacity is doubled. With the default page size or 4096, the database capacity is roughly 17.5 TB.
 
 Clio servers providing full history are not affected by this issue.
 
@@ -69,14 +69,18 @@ On supported platforms, see the [instructions on installing or updating `rippled
 
 | Package | SHA-256 |
 |:--------|:--------|
-| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.3-1.el7.x86_64.rpm) | `` |
-| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.3-1_amd64.deb) | `` |
+| [RPM for Red Hat / CentOS (x86-64)](https://repos.ripple.com/repos/rippled-rpm/stable/rippled-2.2.3-1.el7.x86_64.rpm) | `fb90f8f78799c24dd1f6286e96aa31afd0586bf21d32bc711ccc3dc868977da5` |
+| [DEB for Ubuntu / Debian (x86-64)](https://repos.ripple.com/repos/rippled-deb/pool/stable/rippled_2.2.3-1_amd64.deb) | `e6a77cbe32228f9d68a8545c3b4e9a25d098ab30ea01852658ee5efe3371b9f1` |
 | [Portable Builds (Linux x86-64)](https://github.com/XRPLF/rippled-portable-builds) | (Use signature verification) |
 
 For other platforms, please [build from source](https://github.com/ripple/rippled/tree/master/Builds). The most recent commit in the git log should be the change setting the version:
 
 ```text
+commit 68e1be3cf544bc8f50283b0bfecba60f8370dbf2
+Author: Elliot Lee <github.public@intelliot.com>
+Date:   Sat Sep 14 13:08:18 2024 -0700
 
+    Set version to 2.2.3
 ```
 
 ## Full Changelog
