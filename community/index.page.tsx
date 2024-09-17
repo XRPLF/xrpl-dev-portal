@@ -270,6 +270,18 @@ const events = [
     end_date: "September 12, 2024",
   },
   {
+    name: "San Francisco XRP Ledger Meet Up",
+    description:
+      "Hello San Francisco XRP Ledger community! We're hosting a meetup soon with a focus on ZK research. Excited to see you soon!",
+    type: "meetup",
+    link: "https://lu.ma/evdklm4r",
+    location: "San Fransisco, California",
+    date: "September 26, 2024",
+    image: require('../static/img/events/sf-meetup.jpg'),
+    start_date: "September 26, 2024",
+    end_date: "September 26, 2024",
+  },
+  {
     name: "XRPL Builder Office Hours",
     description:
       "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
@@ -280,6 +292,18 @@ const events = [
     image: infoSession2,
     start_date: "September 27, 2024",
     end_date: "September 27, 2024",
+  },
+  {
+    name: "AI Fund - XRPL Grants Info Session",
+    description:
+      "Join our info session to learn about our new XRPL Grants' AI Fund, designed to support innovative projects that leverage artificial intelligence in the XRPL ecosystem.",
+    type: "info",
+    link: "https://ripple.zoom.us/webinar/register/WN__SNDW7LTSM29h5NIpvXFvg#/registration",
+    location: "Virtual - Zoom",
+    date: "October 2, 2024",
+    image: infoSession,
+    start_date: "October 2, 2024",
+    end_date: "October 2, 2024",
   },
   {
     name: "XRPL Builder Office Hours",
@@ -304,7 +328,7 @@ const events = [
     image: infoSession4,
     start_date: "November 22, 2024",
     end_date: "November 22, 2024",
-  },
+  }
 ];
 const { nearestDateDiff, nearestEvent, index } = findNearestUpcomingEvent(events);
 const XrplEventsAndCarouselSection = ({ events }) => {
