@@ -121,7 +121,7 @@
 }
 
 #wallets {
-  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "towo", "keystone", "dcent", "coin" {
+  @each $wallet in "ledger", "secalot", "trezor", "xumm", "trust", "gatehub", "towo", "keystone", "dcent", "coin", "gem" {
     #wallet-#{$wallet} {
       content: url("../img/wallets/#{$wallet}.svg");
     }
