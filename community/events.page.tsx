@@ -903,7 +903,7 @@ const events = [
       "Hello San Francisco XRP Ledger community! We're hosting a meetup soon with a focus on ZK research. Excited to see you soon!",
     type: "meetup",
     link: "https://lu.ma/evdklm4r",
-    location: "San Fransisco, California",
+    location: "San Francisco, California",
     date: "September 26, 2024",
     image: require('../static/img/events/sf-meetup.jpg'),
     end_date: "September 26, 2024",
