@@ -132,16 +132,16 @@ The following is a list of known [amendments](../docs/concepts/networks-and-serv
 | Default Vote (Latest stable release) | No |
 | Pre-amendment functionality retired? | No |
 
-Adds Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.
+Adds [XLS-30](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme) Automated Market Maker (AMM) functionality to the ledger in a way that is integrated with the existing decentralized exchange. Each pair of assets (tokens or XRP) can have up to one AMM in the ledger, which anyone can contribute liquidity to for a proportional share in the earnings and exchange risk. Each AMM instance has a special account to hold its assets and issue "LP Tokens" to liquidity providers in proportion to their deposits. Liquidity providers can vote on the AMM's trading fee based on their share of LP Tokens. Users can bid LP Tokens on the right to trade with a discounted trading fee for a limited period of time.
 
 Adds new transactions:
 
-- AMMBid - Bid on the AMM's auction slot, which offers discounted fees.
-- AMMCreate - Create a new AMM instance and provide initial funding.
-- AMMDelete - Remove an empty AMM instance from the ledger.
-- AMMDeposit - Add funds to an existing AMM and receive LP Tokens.
-- AMMWithdraw - Return LP Tokens to an AMM to remove funds.
-- AMMVote - Vote on the AMM's trading fee.
+- [AMMBid](../docs/references/protocol/transactions/types/ammbid) - Bid on the AMM's auction slot, which offers discounted fees.
+- [AMMCreate](../docs/references/protocol/transactions/types/ammcreate) - Create a new AMM instance and provide initial funding.
+- [AMMDelete](../docs/references/protocol/transactions/types/ammdelete) - Remove an empty AMM instance from the ledger.
+- [AMMDeposit](../docs/references/protocol/transactions/types/ammdeposit) - Add funds to an existing AMM and receive LP Tokens.
+- [AMMWithdraw](../docs/references/protocol/transactions/types/ammwithdraw) - Return LP Tokens to an AMM to remove funds.
+- [AMMVote](../docs/references/protocol/transactions/types/ammvote) - Vote on the AMM's trading fee.
 
 Updates existing transactions with new functionality:
 
