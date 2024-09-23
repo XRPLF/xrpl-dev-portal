@@ -3,10 +3,9 @@ category: 2020
 date: 2020-04-10
 labels:
     - rippled Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 1.5.0
 

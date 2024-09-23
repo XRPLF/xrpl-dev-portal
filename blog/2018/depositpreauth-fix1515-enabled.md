@@ -3,10 +3,9 @@ date: 2018-10-09
 category: 2018
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # DepositPreauth is Now Available
 

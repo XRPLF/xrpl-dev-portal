@@ -3,10 +3,9 @@ category: 2020
 date: 2020-01-13
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # XRP Ledger version 1.4.0 Upgrade Advisory
 

@@ -3,10 +3,9 @@ category: 2022
 date: 2022-12-13
 labels:
     - xrpl-py Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Team RippleX
 ---
 # Introducing xrpl-py version 2.0.0-beta.0

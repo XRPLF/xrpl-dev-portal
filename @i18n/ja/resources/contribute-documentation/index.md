@@ -169,10 +169,9 @@ seo:
 
 ```yaml
 ---
-theme:
-  navigation:
-    nextButton:
-      hide: true
+navigation:
+  nextButton:
+    hide: true
 ---
 ```
 

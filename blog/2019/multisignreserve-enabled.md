@@ -3,10 +3,9 @@ labels:
     - Amendments
 category: 2019
 date: 2019-04-17
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # MultiSignReserve is Now Available
 

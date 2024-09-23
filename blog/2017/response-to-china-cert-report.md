@@ -3,10 +3,9 @@ category: 2017
 labels:
     - Security
 date: 2017-01-12
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Response to China CERT Report
 

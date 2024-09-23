@@ -3,10 +3,9 @@ date: 2014-07-28
 category: 2014
 labels:
     - Development
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # XRP Giveaway for Developers
 

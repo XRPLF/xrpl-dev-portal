@@ -3,10 +3,9 @@ date: 2017-03-16
 category: 2017
 labels:
     - Security
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Gateway Bulletin: Setting Trust Line Quality with SendMax
 

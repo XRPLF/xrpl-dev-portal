@@ -1,10 +1,9 @@
 ---
 category: 2015
 date: 2015-03-18
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Do You Have What It Takes to Be a Gateway?
 

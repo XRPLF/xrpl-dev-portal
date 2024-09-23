@@ -3,10 +3,9 @@ category: 2023
 date: 2023-08-07
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # DisallowIncoming and Others Expected 2023-08-21
 
