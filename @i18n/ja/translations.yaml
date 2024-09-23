@@ -1,25 +1,25 @@
-theme.page.previousButton: "前のページ"
-theme.page.nextButton: "次のページ"
-theme.page.lastUpdated.timeago: "最終更新: "
-theme.markdown.editPage.text: 編集
-theme.toc.header: 目次
-theme.search.label: ドキュメントの検索
-theme.search.navbar.label: 検索
-theme.search.recent: 直近の検索
-theme.search.keys.navigate: 選択
-theme.search.keys.select: 決定
-theme.search.keys.exit: 閉じる
-theme.feedback.settings.label: 参考になりましたか?
-theme.footer.copyrightText: © 2024 XRP Ledger. オープンソース.
+page.previousButton: "前のページ"
+page.nextButton: "次のページ"
+page.lastUpdated.timeago: "最終更新: "
+markdown.editPage.text: 編集
+toc.header: 目次
+search.label: ドキュメントの検索
+search.navbar.label: 検索
+search.recent: 直近の検索
+search.keys.navigate: 選択
+search.keys.select: 決定
+search.keys.exit: 閉じる
+feedback.settings.label: 参考になりましたか?
+footer.copyrightText: © 2024 XRP Ledger. オープンソース.
 
-theme.navbar.about: 概要
-theme.navbar.docs: ドキュメント
-theme.navbar.resources: リソース
-theme.navbar.community: コミュニティ
-theme.footer.about: 概要
-theme.footer.docs: ドキュメント
-theme.footer.resources: リソース
-theme.footer.community: コミュニティ
+navbar.about: 概要
+navbar.docs: ドキュメント
+navbar.resources: リソース
+navbar.community: コミュニティ
+footer.about: 概要
+footer.docs: ドキュメント
+footer.resources: リソース
+footer.community: コミュニティ
 
 sidebar.docs: ドキュメント
 sidebar.docs.tutorials: チュートリアル

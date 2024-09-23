@@ -1,14 +1,14 @@
 # Samples for @i18n/[lang]/translations.yaml
-# theme.page.previousButton: "Previous page"
-# theme.page.nextButton: "Next page"
-# theme.page.lastUpdated.timeago: Last updated
-# theme.markdown.editPage.text: Edit
-# theme.toc.header: On this page
-# theme.search.label: "Search docs"
-# theme.search.navbar.label: Search
-# theme.search.recent: Recent searches
-# theme.search.keys.navigate: "to navigate"
-# theme.search.keys.select: "to select"
-# theme.search.keys.exit: "to exit"
-# theme.feedback.settings.label: Was this helpful?
-# theme.footer.copyrightText: © 2024 XRP Ledger. Open Source.
+# page.previousButton: "Previous page"
+# page.nextButton: "Next page"
+# page.lastUpdated.timeago: Last updated
+# markdown.editPage.text: Edit
+# toc.header: On this page
+# search.label: "Search docs"
+# search.navbar.label: Search
+# search.recent: Recent searches
+# search.keys.navigate: "to navigate"
+# search.keys.select: "to select"
+# search.keys.exit: "to exit"
+# feedback.settings.label: Was this helpful?
+# footer.copyrightText: © 2024 XRP Ledger. Open Source.

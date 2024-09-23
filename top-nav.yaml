@@ -6,7 +6,7 @@
 
 # nav:
 - group: About
-  groupTranslationKey: theme.navbar.about
+  groupTranslationKey: navbar.about
   items:
     - group: XRP Ledger
       groupTranslationKey: topnav.about.xrp-ledger
@@ -47,7 +47,7 @@
           labelTranslationKey: topnav.about.privacy-policy
 
 - group: Docs
-  groupTranslationKey: theme.navbar.docs
+  groupTranslationKey: navbar.docs
   items:
     - icon: ./static/img/icons/docs.svg
     # Note: arbitrary keys are dropped from these items, so the label & description are split on " || "
@@ -91,7 +91,7 @@
         - page: ./docs/tutorials/http-websocket-apis/index.md
 
 - group: Resources
-  groupTranslationKey: theme.navbar.resources
+  groupTranslationKey: navbar.resources
   items:
     - group: Development
       groupTranslationKey: topnav.resources.development
@@ -131,7 +131,7 @@
           href: /resources/contribute-documentation
 
 - group: Community
-  groupTranslationKey: theme.navbar.community
+  groupTranslationKey: navbar.community
   items:
     - icon: ./static/img/icons/contribute.svg
       label: Contribute to the XRPL Community || Join the conversation
