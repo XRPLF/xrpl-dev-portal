@@ -4,7 +4,7 @@ ignore:
   - _code-samples/*/README.md
   - _code-samples/**/README.md
   - _code-samples/create-amm/ts/tsconfig.json
-i18n:
+l10n:
   defaultLocale: en-US
   locales:
     - code: en-US
