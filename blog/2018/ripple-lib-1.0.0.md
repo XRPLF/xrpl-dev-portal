@@ -3,10 +3,9 @@ date: 2018-09-10
 category: 2018
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # ripple-lib version 1.0.0
 

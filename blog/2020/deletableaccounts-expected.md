@@ -3,10 +3,9 @@ category: 2020
 date: 2020-04-28
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # DeletableAccounts and Two Other Amendments Expected Soon
 

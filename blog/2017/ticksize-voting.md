@@ -3,10 +3,9 @@ date: 2017-02-10
 category: 2017
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # TickSize Amendment Open for Voting
 

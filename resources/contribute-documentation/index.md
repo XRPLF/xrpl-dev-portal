@@ -170,10 +170,9 @@ If these buttons don't make sense as a proper reading order in context you can d
 
 ```yaml
 ---
-theme:
-  navigation:
-    nextButton:
-      hide: true
+navigation:
+  nextButton:
+    hide: true
 ---
 ```
 

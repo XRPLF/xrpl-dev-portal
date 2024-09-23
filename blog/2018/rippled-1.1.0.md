@@ -3,10 +3,9 @@ date: 2018-09-17
 category: 2018
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger (rippled) version 1.1.0
 

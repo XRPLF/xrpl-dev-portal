@@ -3,10 +3,9 @@ date: 2018-06-08
 category: 2018
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # fix1543, fix1571 & fix1623 Amendments Open for Voting
 

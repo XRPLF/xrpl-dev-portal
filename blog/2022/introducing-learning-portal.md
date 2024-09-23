@@ -3,10 +3,9 @@ category: 2022
 date: 2022-10-03
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing the XRP Ledger Learning Portal
 

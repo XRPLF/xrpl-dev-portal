@@ -8,10 +8,9 @@ seo:
 
 labels:
     - General
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Evolving the XRP Ledger Foundation
 

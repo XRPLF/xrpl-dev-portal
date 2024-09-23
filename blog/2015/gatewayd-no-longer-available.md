@@ -3,10 +3,9 @@ date: 2015-07-01
 labels:
     - Advisories
 category: 2015
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Gatewayd No Longer Available
 

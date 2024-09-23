@@ -3,10 +3,9 @@ date: 2018-05-31
 category: 2018
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # rippled Version 1.0.0
 

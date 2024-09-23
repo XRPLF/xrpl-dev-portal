@@ -3,10 +3,9 @@ date: 2014-07-02
 category: 2014
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Nikolaos D. Bougalis
 ---
 # Introducing: Offer Autobridging

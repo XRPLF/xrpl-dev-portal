@@ -3,10 +3,9 @@ labels:
     - Amendments
 category: 2019
 date: 2019-03-23
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # fix1578 is Now Available
 
