@@ -1,11 +1,11 @@
-theme.navbar.about: Acerca de
-theme.navbar.docs: Docs
-theme.navbar.resources: Recursos
-theme.navbar.community: Comunidad
-theme.footer.about: Acerca de
-theme.footer.docs: Docs
-theme.footer.resources: Recursos
-theme.footer.community: Comunidad
+navbar.about: Acerca de
+navbar.docs: Docs
+navbar.resources: Recursos
+navbar.community: Comunidad
+footer.about: Acerca de
+footer.docs: Docs
+footer.resources: Recursos
+footer.community: Comunidad
 sidebar.docs: Docs
 sidebar.docs.tutorials: Tutoriales
 sidebar.docs.references: Referencias
