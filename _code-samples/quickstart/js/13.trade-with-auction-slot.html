@@ -197,7 +197,7 @@
                 <td>
                   <table>
                     <tr valign="top">
-                      <td align="center" valign="top"  style="padding-top: 240px;">
+                      <td align="center" valign="top"  style="padding-top: 235px;">
                         <br>
                         <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
                         <br/><br/>
@@ -205,7 +205,11 @@
                         <br/>
                         <button type="button" onClick="sendCurrency()">Send Currency</button>
                         <br/>
-                        <button type="button" onClick="getBalances()" style="margin-bottom: 160px;">Get Balances</button>
+                        <button type="button" onClick="getBalances()">Get Balances</button>
+                        <br/><br/>
+                        <button type="button" onClick="estimateCost()">Estimate Cost</button>
+                        <br/>
+                        <button type="button" onClick="swapToken()" style="margin-bottom: 60px;">Swap Tokens</button>
                         <br/>
                         <button type="button" onClick="checkAMM()">Check AMM</button>
                         <br/>
@@ -218,6 +222,8 @@
                         <button type="button" onClick="calculateLP()">Get LP Value</button>
                         <br/>
                         <button type="button" onClick="redeemLP()">Redeem LP</button>
+                        <br/>
+                        <button type="button" onClick="bidAuction()">Bid Auction Slot</button>
                       </td>
                     </tr>
                     </td>
