@@ -1,24 +1,21 @@
 'use strict'
-if (typeof module !== "undefined") {
-  // Use var here because const/let are block-scoped to the if statement.
-  var xrpl = require('xrpl')
-}
+const xrpl = require('xrpl');
 
 // Preqrequisites:
 // 1. Create an escrow using the create-escrow.js snippet
 // 2. Replace the OfferSequence with the sequence number of the escrow you created
 // 3. Paste the seed of the account that created the escrow
-// 4. Run the snippet
+// 4. Run this snippet
 
-const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy";
-const sequenceNumber = null;
+const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy"; // replace with your seed
+const sequenceNumber = 0; // replace with the sequence number of your escrow
 
-const main = async () => {
+async function main() {
   try {
     // Connect -------------------------------------------------------------------
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
-    
+
     // Prepare wallet to sign the transaction -------------------------------------
     const wallet = await xrpl.Wallet.fromSeed(seed);
     console.log("Wallet Address: ", wallet.address);
@@ -45,7 +42,7 @@ const main = async () => {
     console.log(`Finished submitting! \n${JSON.stringify(response.result, null, "\t")}`);
 
     await client.disconnect();
-    
+
   } catch (error) {
     console.log(error);
   }
