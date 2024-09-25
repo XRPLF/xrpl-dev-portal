@@ -90,6 +90,7 @@ The XRP Ledger natively supports Automated Market Makers (AMM) that work alongsi
 
 - [Automated Market Makers](/docs/concepts/tokens/decentralized-exchange/automated-market-makers)
 - [Use the AMM Auction Slot for Lower Fees](/docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees)
+- [XLS-30 Specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme)
 
 ## Further Reading
 
