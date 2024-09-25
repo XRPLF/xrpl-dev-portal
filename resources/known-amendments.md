@@ -136,12 +136,12 @@ Adds [XLS-30](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-autom
 
 Adds new transactions:
 
-- [AMMBid](../docs/references/protocol/transactions/types/ammbid) - Bid on the AMM's auction slot, which offers discounted fees.
-- [AMMCreate](../docs/references/protocol/transactions/types/ammcreate) - Create a new AMM instance and provide initial funding.
-- [AMMDelete](../docs/references/protocol/transactions/types/ammdelete) - Remove an empty AMM instance from the ledger.
-- [AMMDeposit](../docs/references/protocol/transactions/types/ammdeposit) - Add funds to an existing AMM and receive LP Tokens.
-- [AMMWithdraw](../docs/references/protocol/transactions/types/ammwithdraw) - Return LP Tokens to an AMM to remove funds.
-- [AMMVote](../docs/references/protocol/transactions/types/ammvote) - Vote on the AMM's trading fee.
+- [AMMBid](../docs/references/protocol/transactions/types/ammbid.md) - Bid on the AMM's auction slot, which offers discounted fees.
+- [AMMCreate](../docs/references/protocol/transactions/types/ammcreate.md) - Create a new AMM instance and provide initial funding.
+- [AMMDelete](../docs/references/protocol/transactions/types/ammdelete.md) - Remove an empty AMM instance from the ledger.
+- [AMMDeposit](../docs/references/protocol/transactions/types/ammdeposit.md) - Add funds to an existing AMM and receive LP Tokens.
+- [AMMWithdraw](../docs/references/protocol/transactions/types/ammwithdraw.md) - Return LP Tokens to an AMM to remove funds.
+- [AMMVote](../docs/references/protocol/transactions/types/ammvote.md) - Vote on the AMM's trading fee.
 
 Updates existing transactions with new functionality:
 
