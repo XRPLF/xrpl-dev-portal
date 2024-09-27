@@ -3,10 +3,9 @@ labels:
     - Amendments
 date: 2019-09-30
 category: 2019
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # fixMasterKeyAsRegularKey is Expected Tomorrow
 

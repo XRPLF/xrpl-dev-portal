@@ -3,10 +3,9 @@ date: 2014-06-26
 category: 2014
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Curves with a Twist
 

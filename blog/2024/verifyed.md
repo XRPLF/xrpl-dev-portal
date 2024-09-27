@@ -3,10 +3,9 @@ category: 2024
 date: 2024-03-14
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: VerifyEd - Empowering Credential Verification on XRP Ledger 
 

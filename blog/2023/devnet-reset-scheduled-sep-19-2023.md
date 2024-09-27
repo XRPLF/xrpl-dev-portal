@@ -3,10 +3,9 @@ category: 2023
 date: 2023-09-11
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Devnet Reset Scheduled for Tue, Sep 19, 2023
 _by Team RippleX_

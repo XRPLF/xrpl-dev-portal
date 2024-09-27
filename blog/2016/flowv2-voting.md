@@ -3,10 +3,9 @@ date: 2016-08-10
 labels:
     - Amendments
 category: 2016
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The FlowV2 Amendment is Open for Voting
 

@@ -3,10 +3,9 @@ category: 2022
 date: 2022-02-08
 labels:
     - rippled Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 1.8.5
 

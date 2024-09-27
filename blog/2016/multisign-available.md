@@ -3,10 +3,9 @@ date: 2016-06-27
 labels:
     - Amendments
 category: 2016
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Multi-Signing Now Available #
 

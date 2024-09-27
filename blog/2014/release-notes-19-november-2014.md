@@ -3,10 +3,9 @@ category: 2014
 date: 2014-11-19
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Release Notes (19 November 2014)
 

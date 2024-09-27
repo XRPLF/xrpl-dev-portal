@@ -3,10 +3,9 @@ category: 2024
 date: 2024-03-21
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Get Ready for AMM
 

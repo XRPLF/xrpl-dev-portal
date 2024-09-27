@@ -3,10 +3,9 @@ date: 2016-07-19
 category: 2016
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # TrustSetAuth is Now Available
 

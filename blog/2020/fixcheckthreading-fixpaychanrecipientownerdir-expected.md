@@ -3,10 +3,9 @@ category: 2020
 date: 2020-01-08
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Two Fix Amendments are Expected 2020-01-18
 

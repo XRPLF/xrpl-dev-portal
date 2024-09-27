@@ -3,10 +3,9 @@ category: 2020
 date: 2020-08-04
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # RequireFullyCanonicalSig, fixQualityUpperBound, and FlowCross are Now Available
 

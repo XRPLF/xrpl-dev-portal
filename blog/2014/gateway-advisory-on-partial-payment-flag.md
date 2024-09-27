@@ -3,10 +3,9 @@ date: 2014-10-22
 category: 2014
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Gateway Advisory On Partial Payment Flag
 

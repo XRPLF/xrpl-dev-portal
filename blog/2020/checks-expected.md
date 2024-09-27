@@ -3,10 +3,9 @@ category: 2020
 date: 2020-06-11
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The Checks Amendment is Expected 2020-06-18
 

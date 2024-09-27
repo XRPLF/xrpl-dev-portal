@@ -3,10 +3,9 @@ labels:
     - Features
 category: 2017
 date: 2017-10-02
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The Most (Demonstrably) Scalable Blockchain
 

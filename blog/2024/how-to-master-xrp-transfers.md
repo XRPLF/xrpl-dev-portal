@@ -6,10 +6,9 @@ seo:
     description:  Discover how to create and manage accounts on the XRPL Testnet and master the art of transferring XRP using Python.
 labels:
     - Development
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # How to Master XRP Transfers using Python: A Beginner’s Guide
 

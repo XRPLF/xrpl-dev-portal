@@ -3,10 +3,9 @@ date: 2017-02-14
 category: 2017
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # TickSize Will Be Available in 7 Days
 

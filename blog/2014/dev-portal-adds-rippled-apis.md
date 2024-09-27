@@ -3,10 +3,9 @@ category: 2014
 date: 2014-08-01
 labels:
     - Development
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Rome Reginelli
 ---
 # Dev Portal Adds rippled APIs

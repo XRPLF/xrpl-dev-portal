@@ -3,10 +3,9 @@ category: 2024
 date: 2024-07-24
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: Filedgr – Transforming Data Control with XRPL Integration
  

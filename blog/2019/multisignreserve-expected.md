@@ -3,10 +3,9 @@ labels:
     - Amendments
 category: 2019
 date: 2019-04-04
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The MultiSignReserve Amendment is Expected 2019-04-17
 

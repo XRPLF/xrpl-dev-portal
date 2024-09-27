@@ -3,10 +3,9 @@ date: 2017-10-17
 category: 2017
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Decentralization Strategy Update
 

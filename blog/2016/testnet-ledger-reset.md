@@ -3,10 +3,9 @@ date: 2016-09-01
 category: 2016
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Ripple Test Network Ledger Will Be Reset
 

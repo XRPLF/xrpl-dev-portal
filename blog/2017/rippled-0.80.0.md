@@ -3,10 +3,9 @@ date: 2017-10-23
 category: 2017
 labels:
     - Release Notes
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # rippled Version 0.80.0
 

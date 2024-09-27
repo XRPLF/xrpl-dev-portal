@@ -1,9 +1,8 @@
 ---
 category: 2021
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 date: 2021-04-06
 labels:
     - xrpl-py Release Notes
