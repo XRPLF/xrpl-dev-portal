@@ -14,7 +14,7 @@ const infoSession = require("../static/img/events/InfoSessions.png");
 const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.png");
 const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
 const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
-
+const decarb = require('../static/img/events/xrpl-decarb.png')
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -918,6 +918,28 @@ const events = [
     date: "October 2, 2024",
     image: infoSession,
     end_date: "October 2, 2024",
+  },
+  {
+    name: "XRPL Decarbonization Strategy",
+    description:
+      "Join us for the 3rd webinar in our Sustainability series. This time, Mélanie Damour and CCRI will dive into how Sustainability  Disclosure under MiCA for CASPs and Token Issuers.",
+    type: "info",
+    link: "https://decarb3.eventbrite.fr",
+    location: "Virtual",
+    date: "October 7, 2024",
+    image: decarb,
+    end_date: "October 7, 2024",
+  },
+  {
+    name: "The Future with Blockchain",
+    description:
+      "Join us for an exciting side event held by Axiology, SUPER HOW?,  XPMarket, and XRPL Commons during the biggest startup festival  in Lithuania, StartupFair.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/the-future-with-blockchain-tickets-1013765398597",
+    location: "Vilnius, Lithuania",
+    date: "October 3, 2024",
+    image: require('../static/img/events/xrpl-future.png'),
+    end_date: "October 3, 2024",
   },
 ];
 
