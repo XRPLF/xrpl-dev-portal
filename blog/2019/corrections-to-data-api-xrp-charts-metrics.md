@@ -4,10 +4,9 @@ labels:
     - Data API
 category: 2019
 date: 2019-04-04
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Corrections to Data API / XRP Charts Metrics for 2019-03-23
 

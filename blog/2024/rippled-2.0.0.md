@@ -4,10 +4,9 @@ date: 2024-01-09
 labels:
     - rippled Release Notes
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 2.0.0
 

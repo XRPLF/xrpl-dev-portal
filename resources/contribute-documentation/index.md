@@ -23,7 +23,7 @@ The official source repository for the site is at <https://github.com/XRPLF/xrpl
 
 - `_api-examples/` - Sample API requests and responses, especially ones used in the documentation.
 - `_code-samples/` - Code samples used or referenced by the documentation. Where possible, these are fully functional / executable scripts.
-- `@i18n` - Translations into languages other than English. Currently, only Japanese.
+- `@l10n` - Translations into languages other than English. Currently, only Japanese.
 - `@theme` - Overrides and custom components used in Markdoc contents as well as custom React pages.
 - `about/` - Source files for the About section's pages.
 - `blog/` - Source files for the XRPL Dev Blog.
@@ -170,10 +170,9 @@ If these buttons don't make sense as a proper reading order in context you can d
 
 ```yaml
 ---
-theme:
-  navigation:
-    nextButton:
-      hide: true
+navigation:
+  nextButton:
+    hide: true
 ---
 ```
 

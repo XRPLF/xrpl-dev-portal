@@ -3,10 +3,9 @@ date: 2016-10-17
 labels:
     - Amendments
 category: 2016
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The Flow Amendment Will Soon Be Available
 

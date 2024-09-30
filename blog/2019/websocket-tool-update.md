@@ -3,10 +3,9 @@ labels:
     - Features
 category: 2019
 date: 2019-06-24
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # WebSocket Tool Update
 

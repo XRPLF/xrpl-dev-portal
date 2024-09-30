@@ -3,10 +3,9 @@ date: 2016-08-18
 labels:
     - Amendments
 category: 2016
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The FlowV2 Amendment Was Vetoed
 

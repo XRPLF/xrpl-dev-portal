@@ -3,10 +3,9 @@ labels:
     - Amendments
 category: 2019
 date: 2019-03-19
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # The fix1578 and fixTakerDryOfferRemoval Amendments are Expected
 

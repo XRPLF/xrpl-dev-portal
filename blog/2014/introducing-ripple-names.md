@@ -3,10 +3,9 @@ date: 2014-04-28
 category: 2014
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing Ripple Names
 

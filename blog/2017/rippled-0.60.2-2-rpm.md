@@ -3,10 +3,9 @@ date: 2017-05-03
 category: 2017
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # rippled RPM version 0.60.2-2
 

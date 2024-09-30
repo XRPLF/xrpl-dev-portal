@@ -3,10 +3,9 @@ category: 2020
 date: 2020-01-13
 labels:
     - Amendments
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # fixCheckThreading and fixPayChanRecipientOwnerDir Amendments Lost Majority
 

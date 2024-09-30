@@ -3,10 +3,9 @@ category: 2024
 date: 2024-01-23
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: Web3Auth
 

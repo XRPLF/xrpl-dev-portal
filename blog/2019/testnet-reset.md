@@ -3,10 +3,9 @@ labels:
     - Advisories
 date: 2019-08-30
 category: 2019
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # XRP Testnet Has Been Reset
 

@@ -3,10 +3,9 @@ category: 2017
 labels:
     - Features
 date: 2017-07-19
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 author: Nik Bougalis
 ---
 # Protecting the Ledger: Invariant Checking

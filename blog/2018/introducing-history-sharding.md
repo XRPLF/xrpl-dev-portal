@@ -3,10 +3,9 @@ date: 2018-11-07
 category: 2018
 labels:
     - Features
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing History Sharding
 

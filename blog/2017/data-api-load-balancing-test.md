@@ -3,10 +3,9 @@ date: 2017-01-18
 category: 2017
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Load Testing Data API
 

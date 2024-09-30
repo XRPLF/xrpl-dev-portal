@@ -3,10 +3,9 @@ labels:
     - Features
 date: 2019-10-02
 category: 2019
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Discover Upcoming XRP Ledger Amendments and Features with Devnet!
 

@@ -3,10 +3,9 @@ category: 2023
 date: 2023-04-05
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: ChiSpend
 

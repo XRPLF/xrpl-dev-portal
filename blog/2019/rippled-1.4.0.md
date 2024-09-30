@@ -3,10 +3,9 @@ labels:
     - Release Notes
 category: 2019
 date: 2019-12-02
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Introducing XRP Ledger version 1.4.0
 

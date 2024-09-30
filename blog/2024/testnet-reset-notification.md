@@ -6,10 +6,9 @@ seo:
     description: The Testnet reset was completed successfully on Monday, August 19, 2024 to improve stability and reduce the cost of running a Testnet node. Learn more.
 labels:
     - Advisories
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Upcoming Testnet Reset
 

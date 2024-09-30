@@ -3,10 +3,9 @@ category: 2022
 date: 2022-12-07
 labels:
     - Developer Reflections
-theme:
-    markdown:
-        editPage:
-            hide: true
+markdown:
+    editPage:
+        hide: true
 ---
 # Developer Reflections: XPmarket
 
