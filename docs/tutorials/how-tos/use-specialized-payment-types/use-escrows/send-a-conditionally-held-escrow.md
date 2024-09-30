@@ -101,7 +101,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -111,7 +111,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -129,7 +129,7 @@ Request:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -139,7 +139,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -157,7 +157,7 @@ If the escrow has expired, you can only [cancel the escrow](cancel-an-expired-es
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -167,7 +167,7 @@ Response:
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -184,11 +184,11 @@ Use the [tx method][] with the EscrowFinish transaction's identifying hash to ch
 
 Request:
 
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowfinish-condition.json" language="json" /%}
 
 Response:
 
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
 
 
 
