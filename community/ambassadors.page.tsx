@@ -28,8 +28,8 @@ export default function Ambassadors() {
                 <h1 className="mb-0">{translate("Become an XRP Ledger Campus Ambassador")}</h1>
                 <h6 className="eyebrow mb-3">{translate("Join the Student Cohort")}</h6>
             </div>
-            <p className="mt-3 py-3 col-lg-8 mx-lg-auto p-0">{translate("This fall, we are launching a 3-week XRPL Student Builder Residency for exceptional students in technical disciplines interested in building on the XRP Ledger. Selected students will build their own XRPL projects with support and mentorship from expert XRPL core contributors, developers, and community members.")}</p>
-            <p className=" col-lg-8 mx-lg-auto p-0">{translate("This program will run from October 21 - November 13 and will be conducted entirely online. ")}</p>
+            <p className="mt-3 pt-3 col-lg-8 mx-lg-auto p-0">{translate("This fall, we are launching a 3-week XRPL Student Builder Residency for exceptional students in technical disciplines interested in building on the XRP Ledger. Selected students will build their own XRPL projects with support and mentorship from expert XRPL core contributors, developers, and community members.")}</p>
+            <p className=" col-lg-8 mx-lg-auto p-0">{translate("This program will run from October 21 - November 13 and will be conducted entirely online.")}</p>
             <p className="pb-3 col-lg-8 mx-lg-auto p-0">{translate("Applications due October 14, 2024 @ 11:59pm PDT")}</p>
             <button className="btn btn-primary btn-arrow-out" onClick={() => window.open('https://share.hsforms.com/1k47bfuX2SL2DKZtZoJzArg4vgrs', "_blank")} >{translate("Apply for Fall 2024")}</button>
         </div>
@@ -132,14 +132,14 @@ export default function Ambassadors() {
                             <img alt="Medallion" id="benefits-04" className="pl-lg-3" />
                             <div className="p-lg-3 pt-3">
                                 <h6 className="mb-3">{translate("Mentorship")}</h6>
-                                <p>{translate("Serve as an advocate and receive support from notable members of the community")}</p>
+                                <p>{translate("Meet with and learn from influential builders and leaders across the XRPL community")}</p>
                             </div>
                         </div>
                         <div className="px-lg-3 pb-3">
                             <img alt="Dollar Sign" id="benefits-06" className="pl-lg-3" />
                             <div className="p-lg-3 pt-3 pb-lg-0">
                                 <h6 className="mb-3">{translate("Stipend")}</h6>
-                                <p className="pb-lg-0">{translate("Receive a stipend to fund your ideas and initiatives that fuel XRPL growth on your campus")}</p>
+                                <p className="pb-lg-0">{translate("Receive a stipend to fund your ideas and initiatives that fuel XRPL growth in your community")}</p>
                             </div>
                         </div>
                     </div>
