@@ -1021,7 +1021,7 @@ export default function Events() {
           <div className="event-hero card-grid card-grid-2xN">
             <div className="pr-2 col">
               <img
-                alt="xrp ledger apex hero"
+                alt="xrp ledger events hero"
                 src={require("../static/img/events/event-hero3@2x.png")}
                 className="w-100"
               />
@@ -1029,26 +1029,26 @@ export default function Events() {
             <div className="pt-5 pr-2 col">
               <div className="d-flex flex-column-reverse">
                 <h2 className="mb-8 h4 h2-sm">
-                  {translate("XRPL Zone Seoul")}
+                  {translate("XRPL Builder Office Hours")}
                 </h2>
                 <h6 className="mb-3 eyebrow">{translate("Save the Date")}</h6>
               </div>
               <p className="mb-4">
                 {translate(
-                  "Join us at XRPL Zone Seoul where developers, corporates, fintechs, banks, VCs, academia, and the XRP community come together under one roof for the biggest XRPL event in South Korea!"
+                  "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members."
                 )}
               </p>
               <div className=" my-3 event-small-gray">
-                Location: Seongdong-su, Seoul
+                Location: Virtual - Zoom
               </div>
               <div className="py-2 my-3 event-small-gray">
-                September 4th, 2024
+                October 25th, 2024
               </div>
               <div className="d-lg-block">
                 <a
                   className="btn btn-primary btn-arrow-out"
                   target="_blank"
-                  href="https://ripple.swoogo.com/xrpl-zone-seoul"
+                  href="https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA"
                 >
                   {translate("Register Now")}
                 </a>
