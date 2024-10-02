@@ -28,9 +28,9 @@ export default function Ambassadors() {
                 <h1 className="mb-0">{translate("Become an XRP Ledger Campus Ambassador")}</h1>
                 <h6 className="eyebrow mb-3">{translate("Join the Student Cohort")}</h6>
             </div>
-            <p className="mt-3 pt-3 col-lg-8 mx-lg-auto p-0">{translate("This fall, we are launching a 3-week XRPL Student Builder Residency for exceptional students in technical disciplines interested in building on the XRP Ledger. Selected students will build their own XRPL projects with support and mentorship from expert XRPL core contributors, developers, and community members.")}</p>
-            <p className=" col-lg-8 mx-lg-auto p-0">{translate("This program will run from October 21 - November 13 and will be conducted entirely online.")}</p>
-            <p className="pb-3 col-lg-8 mx-lg-auto p-0">{translate("Applications due October 14, 2024 @ 11:59pm PDT")}</p>
+            <p className="mt-3 pt-3 col-lg-8 mx-lg-auto p-0">{translate("This fall, we are launching a 3-week")} <b>{translate("XRPL Student Builder Residency")}</b> {translate("for exceptional students in technical disciplines interested in building on the XRP Ledger. Selected students will build their own XRPL projects with support and mentorship from expert XRPL core contributors, developers, and community members.")}</p>
+            <p className=" col-lg-8 mx-lg-auto p-0">{translate("This program will run from October 21 - November 13 and will be conducted entirely online. ")}</p>
+            <p className="pb-3 col-lg-8 mx-lg-auto p-0"><b>{translate("Applications due October 14, 2024")}</b>{translate(" @ 11:59pm PDT")}</p>
             <button className="btn btn-primary btn-arrow-out" onClick={() => window.open('https://share.hsforms.com/1k47bfuX2SL2DKZtZoJzArg4vgrs', "_blank")} >{translate("Apply for Fall 2024")}</button>
         </div>
     </section>
@@ -42,7 +42,7 @@ export default function Ambassadors() {
                     <h3 className="h4 h2-sm">{translate("XRPL Campus Ambassadors")}</h3>
                     <h6 className="eyebrow mb-3">{translate("Empowering Students")}</h6>
                 </div>
-                <p className="p-lg-3 mb-2 longform">{translate("The XRPL Campus Ambassador program aims to elevate the impact of college students who are passionate about blockchain technology. In their role, Campus Ambassadors help educate other students about crypto and how to start building on the XRPL.")}</p>
+                <p className="p-lg-3 mb-2 longform">{translate("The XRPL Campus Ambassador program aims to elevate the impact of college students who are passionate about blockchain technology.")}</p>
                 <div className="d-none d-lg-block p-lg-3">
                 <button className="btn btn-primary btn-arrow-out" onClick={() => window.open('https://share.hsforms.com/1k47bfuX2SL2DKZtZoJzArg4vgrs', "_blank")} >{translate("Apply for Fall 2024")}</button>
                 </div>
