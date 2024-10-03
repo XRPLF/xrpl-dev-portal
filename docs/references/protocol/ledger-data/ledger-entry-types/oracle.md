@@ -42,7 +42,7 @@ A price oracle object can store information for up to 10 token pairs.
 
 | Field               | JSON Type | Internal Type | Required? | Description |
 |---------------------|-----------|---------------|-----------|-------------|
-| `Owner`             | String    | AccountID     | Yes       | The XRPL account with update and delete privileges for the oracle. It's recommended to set up [multi-signing](../../../../tutorials/how-tos/manage-account-settings/set-up-multi-signing) on this account. |
+| `Owner`             | String    | AccountID     | Yes       | The XRPL account with update and delete privileges for the oracle. It's recommended to set up [multi-signing](../../../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md) on this account. |
 | `Provider`          | String    | Blob          | Yes       | An arbitrary value that identifies an oracle provider, such as Chainlink, Band, or DIA. This field is a string, up to 256 ASCII hex encoded characters (0x20-0x7E). |
 | `PriceDataSeries`   | Array     | Array         | Yes       | An array of up to 10 `PriceData` objects, each representing the price information for a token pair. More than five `PriceData` objects require two owner reserves. |
 | `LastUpdateTime`    | Number    | UInt32        | Yes       | The time the data was last updated, represented in Unix time. |
