@@ -42,7 +42,7 @@ Oracleのレジャーエントリには、単一資産の価格オラクルオ�
 
 | フィールド          | JSONの型  | 内部の型      | 必須?     | 説明        |
 |---------------------|-----------|---------------|-----------|-------------|
-| `Owner`             | 文字列    | AccountID     | はい      | オラクルの更新および削除権限を持つXRPLアカウント。このアカウントで[マルチシグ](../../../../tutorials/how-tos/manage-account-settings/set-up-multi-signing)を設定することをお勧めします。 |
+| `Owner`             | 文字列    | AccountID     | はい      | オラクルの更新および削除権限を持つXRPLアカウント。このアカウントで[マルチシグ](../../../../tutorials/how-tos/manage-account-settings/set-up-multi-signing.md)を設定することをお勧めします。 |
 | `Provider`          | 文字列    | Blob          | はい      | オラクルプロバイダーを識別する任意の値、例えば、Chainlink、Band、またはDIAなど。このフィールドは、最大256文字のASCII 16進エンコード文字(0x20-0x7E)の文字列です。 |
 | `PriceDataSeries`   | 配列      | Array         | はい      | トークンペアの価格情報を表す、最大10個の`PriceData`オブジェクトの配列。`PriceData`オブジェクトが5個を超える場合、2つの所有者準備金が必要です。 |
 | `LastUpdateTime`    | 数値      | UInt32        | はい      | Unix時間で表現された、データの最終更新時刻。 |
