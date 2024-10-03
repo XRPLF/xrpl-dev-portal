@@ -1,5 +1,3 @@
-// AMM Formulas
-
 /* Convert a trading fee to a value that can be multiplied
  * by a total to "subtract" the fee from the total.
  * @param tFee int {0, 1000}
@@ -154,6 +152,3 @@ function auctionPrice(old_bid, time_interval, trading_fee, lpt_balance) {
                               ).minus(lptokens).precision(15, BigNumber.FLOOR)
     return rounded_bid
 }
-
-
-// 

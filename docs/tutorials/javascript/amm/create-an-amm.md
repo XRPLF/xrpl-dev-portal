@@ -82,7 +82,7 @@ Create a new AMM pool with XRP and the issued tokens.
 6. Click **Create AMM**.
 
 {% admonition type="note" name="Note" %}
-Save the seed values of the standby and operational accounts for the next tutorial: [Add Assets to an AMM](/docs/tutorials/javascript/amm/add-assets-to-amm/)
+Save the seed values of the standby and operational accounts for subsequent AMM tutorials.
 {% /admonition %}
 
 [![Create AMM results](/docs/img/quickstart-create-amm6.png)](/docs/img/quickstart-create-amm6.png)

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Add to AMM Test Harness</title>
+    <title>Trade with Auction Slot Test Harness</title>
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <style>
        body{font-family: "Work Sans", sans-serif;padding: 20px;background: #fafafa;}
@@ -15,7 +15,8 @@
     <script src='ripplex2-send-currency.js'></script>
     <script src='ripplex11-create-amm.js'></script>
     <script src='ripplex12-add-to-amm.js'></script>
-    <script src='ripplex13-trade-with-auction-slot.js'></script>
+    <script src='ripplex13a-trade-with-auction-slot.js'></script>
+    <script src='ripplex13b-amm-formulas.js'></script>
     <script>
       if (typeof module !== "undefined") {
         const xrpl = require('xrpl')
@@ -28,7 +29,7 @@
 <!-- ************************************************************** -->
 
   <body>
-    <h1>Add to AMM Test Harness</h1>
+    <h1>Trade with Auction Slot Test Harness</h1>
     <form id="theForm">
       Choose your ledger instance:  
       &nbsp;&nbsp;
@@ -113,7 +114,23 @@
                         <input type="text" id="standbyCurrencyField" size="40"></input>
                         <br>
                       </td>
-                    </tr>                    
+                    </tr>               
+                  </table>
+                  <table>
+                    <tr>
+                      <td align="right">
+                        Taker Pays<br/><br/>
+                        Currency <input type="text" id="standbyTakerPaysCurrencyField" size="15"></input><br/>
+                        Issuer <input type="text" id="standbyTakerPaysIssuerField" size="15"></input><br/>
+                        Amount <input type="text" id="standbyTakerPaysAmountField" size="15"></input>
+                      </td>
+                      <td align="right">
+                        Taker Gets<br/><br/>
+                        Currency <input type="text" id="standbyTakerGetsCurrencyField" size="15"></input><br/>
+                        Issuer <input type="text" id="standbyTakerGetsIssuerField" size="15"></input><br/>
+                        Amount <input type="text" id="standbyTakerGetsAmountField" size="15"></input><br/>
+                      </td>
+                    </tr>
                   </table>
                   <p align="left">
                     <textarea id="standbyResultField" cols="60" rows="20" style="resize: none;"></textarea>
@@ -197,7 +214,7 @@
                 <td>
                   <table>
                     <tr valign="top">
-                      <td align="center" valign="top"  style="padding-top: 235px;">
+                      <td align="center" valign="top"  style="padding-top: 450px;">
                         <br>
                         <button type="button" onClick="sendXRP()">Send XRP&#62;</button>
                         <br/><br/>
@@ -209,8 +226,8 @@
                         <br/><br/>
                         <button type="button" onClick="estimateCost()">Estimate Cost</button>
                         <br/>
-                        <button type="button" onClick="swapToken()" style="margin-bottom: 60px;">Swap Tokens</button>
-                        <br/>
+                        <button type="button" onClick="swapTokens()" style="margin-bottom: 40px;">Swap Tokens</button>
+                        <br/><br/>
                         <button type="button" onClick="checkAMM()">Check AMM</button>
                         <br/>
                         <button type="button" onClick="createAMM()">Create AMM</button>
@@ -218,7 +235,7 @@
                         <button type="button" onClick="addAssets()">Add to AMM</button>
                         <br/>
                         <button type="button" onClick="voteFees()">Vote on Fee</button>
-                        <br/>
+                        <br/><br/>
                         <button type="button" onClick="calculateLP()">Get LP Value</button>
                         <br/>
                         <button type="button" onClick="redeemLP()">Redeem LP</button>
@@ -240,7 +257,7 @@
                 <td>
                   <table>
                     <tr>
-                      <td align="center" valign="top" style="padding-bottom: 100px;">
+                      <td align="center" valign="top" style="padding-top: 60px;">
                         <button type="button" onClick="oPsendXRP()">&#60; Send XRP</button>
                         <br/><br/>
                         <button type="button" onClick="oPcreateTrustline()">Create TrustLine</button>
@@ -249,7 +266,7 @@
                         <br/>
                         <button type="button" onClick="getBalances()">Get Balances</button>
                       </td>
-                      <td valign="top" align="right">
+                      <td valign="top" align="right" style="padding-bottom: 15px;">
                         <button type="button" onClick="getAccount('operational')">Get New Operational Account</button>
                         <table>
                           <tr valign="top">
@@ -315,7 +332,7 @@
                             </td>
                           </tr>
                         </table>
-                        <p align="right">
+                        <p align="right"  style="padding-top: 170px;">
                           <textarea id="operationalResultField" cols="60" rows="20" style="resize: none;"></textarea>
                           <br><br>
                           <textarea id="ammInfoField" cols="60" rows="20" style="resize: none;"></textarea>

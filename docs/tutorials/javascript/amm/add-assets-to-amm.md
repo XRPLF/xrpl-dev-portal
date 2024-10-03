@@ -1,14 +1,6 @@
----
-seo:
-    description: Provide liquidity for an Automated Market Maker (AMM) and earn income from trading fees.
-labels:
-  - Decentralized Exchange
-  - Tokens
-  - AMM
----
 # Add Assets to an AMM
 
-Follow the steps from the previous tutorial to [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/) before proceeding.
+Follow the steps from the [Create an AMM](/docs/tutorials/javascript/amm/create-an-amm/) tutorial before proceeding.
 
 This example shows how to:
 
@@ -52,7 +44,7 @@ Use the information from either the XRP/Token or Token/Token AMM you created in 
 3. Enter the operational account address in the **Asset 2 Issuer** field.
 4. Click **Check AMM**.
 
-[![Add assets to AMM results](/docs/img/quickstart-add-to-amm3.png)](/docs/img/quickstart-add-to-amm3.png)
+[![Get AMM results](/docs/img/quickstart-add-to-amm3.png)](/docs/img/quickstart-add-to-amm3.png)
 
 
 ### Deposit a Single Asset to the AMM
