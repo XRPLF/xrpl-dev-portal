@@ -29,7 +29,7 @@ This tutorial demonstrates how to enable multi-signing for an address.
 
 ## 1. Design Your Configuration
 
-Decide how many signers you want to include (up to 8). Choose a quorum number for your signer list and weights for your signers based on how many signatures you want to require for a given transaction. For a straightforward "M-of-N" signing setup, assign each signer weight **`1`** and set your list's quorum to be "M", the number of signatures to require.
+Decide how many signers you want to include (up to 32). Choose a quorum number for your signer list and weights for your signers based on how many signatures you want to require for a given transaction. For a straightforward "M-of-N" signing setup, assign each signer weight **`1`** and set your list's quorum to be "M", the number of signatures to require.
 
 
 ## 2. Prepare member keys

@@ -16,7 +16,7 @@ NFTokenを作成すると、実際の物理的またはデジタル資産の実�
 
 デジタルアーティストとして、あなたはNFTの作成に専念しており、おそらくXRP Ledgerで販売するためでしょう（自分の作品の実績を証明する方法としてNFTを作成する可能性もありますね）。
 
-[Xumm](https://xumm.app)などのアプリを使用してNFTokenを作成することができます。
+[Xaman](https://xaman.app)などのアプリを使用してNFTokenを作成することができます。
 
 より実践的な体験をしたい方は、[クイックスタート・チュートリアル3 - NFTokenのミントとバーン](../../tutorials/javascript/nfts/mint-and-burn-nfts.md)をご覧ください。
 

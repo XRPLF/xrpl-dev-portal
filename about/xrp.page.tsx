@@ -19,7 +19,7 @@ const links = [
 
 const softwallets = [
   { href: "https://towolabs.com/", id: "wallet-towo", alt: "Towo" },
-  { href: "https://xumm.app/", id: "wallet-xumm", alt: "Xumm" },
+  { href: "https://xaman.app/", id: "wallet-xumm", alt: "Xaman" },
   { href: "https://trustwallet.com/", id: "wallet-trust", alt: "Trust Wallet" },
   {
     href: "https://gatehub.net/",
@@ -27,6 +27,7 @@ const softwallets = [
     alt: "Gatehub",
     imgclasses: "invertible-img",
   },
+  { href: "https://gemwallet.com/", id: "wallet-gem", alt: "Gem Wallet" },
   { href: "https://coin.space/", id: "wallet-coin", alt: "Coin Space" },
 ];
 

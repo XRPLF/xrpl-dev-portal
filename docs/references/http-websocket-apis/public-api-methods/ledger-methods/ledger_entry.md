@@ -25,6 +25,7 @@ This method can retrieve several different types of data. You can select which t
 | `binary`                | Boolean                    | _(Optional)_ If `true`, return the requested ledger entry's contents as a hex string in the XRP Ledger's [binary format](../../../protocol/binary-format.md). Otherwise, return data in JSON format. The default is `false`. {% badge href="https://github.com/XRPLF/rippled/releases/tag/1.2.0" %}Updated in: rippled 1.2.0{% /badge %} |
 | `ledger_hash`           | String                     | _(Optional)_ A 20-byte hex string for the ledger version to use. (See [Specifying Ledgers][]) |
 | `ledger_index`          | String or Unsigned Integer | _(Optional)_ The [ledger index][] of the ledger to use, or a shortcut string (e.g. "validated" or "closed" or "current") to choose a ledger automatically. (See [Specifying Ledgers][]) |
+| `include_deleted` | Boolean  | _(Optional, Clio servers only)_ If set to _true_ and the queried object has been deleted, return its complete data as it was prior to its deletion. If set to _false_ or not provided, and the queried object has been deleted, return `objectNotFound` (current behavior). |
 
 The `generator` and `ledger` parameters are deprecated and may be removed without further notice.
 
@@ -39,6 +40,7 @@ In addition to the general fields above, you must specify *exactly 1* of the fol
     - [Get Bridge Object](#get-bridge-object)
     - [Get DirectoryNode Object](#get-directorynode-object)
     - [Get Offer Object](#get-offer-object)
+    - [Get Oracle Object](#get-oracle-object)
     - [Get RippleState Object](#get-ripplestate-object)
     - [Get Check Object](#get-check-object)
     - [Get Escrow Object](#get-escrow-object)
@@ -400,6 +402,61 @@ rippled json ledger_entry '{ "offer": { "account": "rf1BiGeXwwQoi8Z2ueFYTEXSwuJY
 [Try it! >](/resources/dev-tools/websocket-api-tool#ledger_entry-offer)
 
 
+### Get Oracle Object
+
+_(Requires the [PriceOracle amendment][] {% not-enabled /%})_
+
+Retrieve an [Oracle entry](../../../protocol/ledger-data/ledger-entry-types/oracle.md), which represents a single price oracle that can store token prices.
+
+| Field                       | Type                 | Required? | Description |
+|-----------------------------|----------------------|-----------|-------------|
+| `oracle`                    | Object               | Yes       | The oracle identifier. |
+| `oracle.account`            | String - [Address][] | Yes       | The account that controls the `Oracle` object. |
+| `oracle.oracle_document_id` | Number               | Yes       | A unique identifier of the price oracle for the `Account` |
+
+{% tabs %}
+
+{% tab label="WebSocket" %}
+```json
+{
+  "id": "example_get_oracle",
+  "command": "ledger_entry",
+  "oracle" : {
+    "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+    "oracle_document_id":  34
+  },
+  "ledger_index": "validated"
+}
+```
+{% /tab %}
+
+{% tab label="JSON-RPC" %}
+```json
+{
+  "method": "ledger_entry",
+  "params" : [
+    {
+      "oracle" : {
+        "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds",
+        "oracle_document_id":  34
+      },
+      "ledger_index": "validated"
+    }
+  ]
+}
+```
+{% /tab %}
+
+{% tab label="Commandline" %}
+```sh
+rippled json ledger_entry '{ "oracle": { "account": "rNZ9m6AP9K7z3EVg6GhPMx36V4QmZKeWds", "oracle_document_id": 34 }, "ledger_index": "validated" }'
+```
+{% /tab %}
+
+{% /tabs %}
+
+[Try it! >](/resources/dev-tools/websocket-api-tool?server=wss%3A%2F%2Fs.devnet.rippletest.net%3A51233%2F#ledger_entry-oracle)
+
 
 ### Get RippleState Object
 
@@ -759,6 +816,7 @@ The response follows the [standard format][], with a successful result containin
 | `ledger_index` | Unsigned Integer | The [ledger index][] of the ledger that was used when retrieving this data. |
 | `node`         | Object           | _(Omitted if `"binary": true` specified.)_ Object containing the data of this ledger entry, according to the [ledger format][]. |
 | `node_binary`  | String           | _(Omitted unless `"binary":true` specified)_ The [binary representation](../../../protocol/binary-format.md) of the ledger object, as hexadecimal. |
+| `deleted_ledger_index` | String   | _(Clio server only, returned if `include_deleted` parameter is set.)_ The [ledger index][] where the ledger entry object was deleted. |
 
 An example of a successful response:
 

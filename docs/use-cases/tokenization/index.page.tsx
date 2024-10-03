@@ -137,7 +137,7 @@ const projects = [
   {
     id: "xaman",
     label: "Xaman labs",
-    url: "https://xumm.app",
+    url: "https://Xaman.app",
   },
   {
     id: "amy",

@@ -134,15 +134,15 @@ Example of a transaction with a Memos field:
 
 The `NetworkID` field is a protection against "cross-chain" transaction replay attacks, preventing the same transaction from being copied over and executing on a [parallel network](../../../concepts/networks-and-servers/parallel-networks.md) that it wasn't intended for. For compatibility with existing chains, the `NetworkID` field must be omitted on any network with a Network ID of 1024 or less, but must be included on any network with a Network ID of 1025 or greater. The following table shows the status and values for various known networks:
 
-| Network       | ID | `NetworkID` Field |
-|---------------|----|-------------------|
-| Mainnet       | 0  | Disallowed        |
-| Testnet       | 1  | Disallowed        |
-| Devnet        | 2  | Disallowed        |
-| AMM Devnet    | 25 | Disallowed        |
-| Sidechains Devnet Locking Chain | 2551 | Disallowed, but will become required after an update |
-| Sidechains Devnet Issuing Chain | 2552 | Disallowed, but will become required after an update |
-| Hooks V3 Testnet | 21338 | Required    |
+| Network                         | ID    | `NetworkID` Field                                    |
+| ------------------------------- | ----- | ---------------------------------------------------- |
+| Mainnet                         | 0     | Disallowed                                           |
+| Testnet                         | 1     | Disallowed                                           |
+| Devnet                          | 2     | Disallowed                                           |
+| Batch Testnet                   | 21336 | Required                                             |
+| Xahau Mainnet                   | 21337 | Required                                             |
+| Xahau Testnet                   | 21338 | Required                                             |
+| JS Hooks Testnet                | 31338 | Required                                             |
 
 Transaction replay attacks are theoretically possible, but require specific conditions on the second network. All of the following must be true:
 

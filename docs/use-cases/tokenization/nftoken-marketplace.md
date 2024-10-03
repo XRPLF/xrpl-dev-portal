@@ -26,7 +26,7 @@ When you set up a serious marketplace site with high volume, it justifies the de
 
 ### Setting up a wallet
 
-Set up a new wallet. See [Xumm](https://xumm.app/).
+Set up a new wallet. See [Xaman](https://xaman.app/).
 
 Base reserve requirements See [Reserves](../../concepts/accounts/reserves.md#base-reserve-and-owner-reserve).
 

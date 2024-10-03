@@ -11,6 +11,10 @@ const calls = require("../static/img/events/CommunityCalls.png");
 const brazil = require("../static/img/events/event-meetup-brazil.png");
 const korea = require("../static/img/events/SouthKoreaMeetup.png");
 const infoSession = require("../static/img/events/InfoSessions.png");
+const infoSession2 = require("../static/img/events/xrpl-builder-office-hours-02.png");
+const infoSession3 = require("../static/img/events/xrpl-builder-office-hours-03.png");
+const infoSession4 = require("../static/img/events/xrpl-builder-office-hours-04.png");
+const decarb = require('../static/img/events/xrpl-decarb.png')
 export const frontmatter = {
   seo: {
     title: "Events",
@@ -52,7 +56,7 @@ const events = [
     type: "hackathon",
     link: "https://xrpl-hackathon-2021.devpost.com/project-gallery",
     location: "Virtual",
-    date: "September 13-October 6, 2021",
+    date: "September 13 - October 6, 2021",
     image: hackathon,
     end_date: "October 6, 2021",
   },
@@ -63,7 +67,7 @@ const events = [
     type: "meetup",
     link: "https://www.meetup.com/xrpl-community/events/281806645/",
     location: "San Diego, CA",
-    date: "Saturday, November 20, 2021",
+    date: "November 20, 2021",
     image: sanDiego,
     end_date: "November 20, 2021",
   },
@@ -75,7 +79,7 @@ const events = [
     type: "meetup",
     link: "https://www.meetup.com/xrpl-community/events/281980446/",
     location: "Atlanta, GA",
-    date: "Saturday, November 27, 2021",
+    date: "November 27, 2021",
     image: require("../static/img/events/event-meetup-alanta@2x.jpg"),
     end_date: "November 27, 2021",
   },
@@ -86,7 +90,7 @@ const events = [
     type: "meetup",
     link: "https://www.meetup.com/xrpl-community/events/281806676/",
     location: "San Francisco, CA",
-    date: "Monday, November 29, 2021",
+    date: "November 29, 2021",
     image: require("../static/img/events/event-meetup-san-francisco@2x.jpg"),
     end_date: "November 29, 2021",
   },
@@ -98,7 +102,7 @@ const events = [
     type: "meetup",
     link: "https://www.meetup.com/xrpl-community/events/281829463/",
     location: "Miami, FL ",
-    date: "Thursday, December 9, 2021",
+    date: "December 9, 2021",
     image: miami,
     end_date: "December 8, 2022",
   },
@@ -145,7 +149,7 @@ const events = [
     name: "XRPL Community Meetup: Toronto",
     id: "upcoming-xrpl-toronto",
     description:
-      "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the XUMM Wallet and ARK PLATES teams!",
+      "Join us for our first Toronto meetup with an evening of programming and networking with other members of the XRP Ledger Community with special guests from the Xaman Wallet and ARK PLATES teams!",
     type: "meetup",
     link: "https://www.meetup.com/xrpl-toronto-community-meetup/events/284177188/",
     location: "Toronto",
@@ -736,18 +740,18 @@ const events = [
     link: "https://ripple.swoogo.com/xrpl-zone-seoul",
     location: "Seongdong-su, Seoul",
     date: "September 4, 2024",
-    image: zone,
+    image: require('../static/img/events/event-meetup-zone-day.png'),
     end_date: "September 4, 2024",
   },
   {
-    name: "XRP Community After Hours",
+    name: "XRPL Zone Seoul After Hours",
     description:
       "Celebrate with the XRP Community during Korea Blockchain Week! Don't miss this opportunity to mingle with the vibrant XRP community, visionary XRPL developers, trailblazing innovators, and influential investors.",
     type: "meetup",
     link: "https://lu.ma/mbg067j3",
     location: "Seongdong-su, Seoul",
     date: "September 4, 2024",
-    image: korea,
+    image: require('../static/img/events/event-meetup-zone-night.png'),
     end_date: "September 4, 2024",
   },
   {
@@ -772,7 +776,173 @@ const events = [
     image: conference,
     end_date: "June 13, 2024",
   },
+  {
+    name: "XRP Ledger Hackathon Seoul 2024",
+    description:
+      "Calling all developers in Korea or attending Korea Blockchain Week! Join us for an exclusive pre-KBW meetup in Gangnam, Seoul! Be part of an exciting opportunity to collaborate with fellow builders leveraging the XRP Ledger. Don’t miss this chance to connect with industry peers, explore local funding initiatives, and fuel your projects with new insights just before the main KBW event!",
+    type: "hackathon",
+    link: "https://lu.ma/1viq6evg",
+    location: "Seoul, South Korea",
+    date: "August 31 - September 1, 2024",
+    image: hackathon,
+    end_date: "September 1, 2024",
+  },
+  {
+    name: "XRP Community Day Tokyo",
+    description:
+      "​Join senior execs from Ripple, prominent Japanese institutions, and the XRP community for a day of inspiration, networking and insights.",
+    type: "meetup",
+    link: "https://events.xrplresources.org/toyko-community-2024",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: require('../static/img/events/event-meetup-tokyo-day.png'),
+    end_date: "September 6, 2024",
+  },
+  {
+    name: "XRP Community Night Tokyo",
+    description:
+      "​Celebrate with the XRP Community in Tokyo! Don't miss this opportunity to mingle with the vibrant XRP community, visionary developers, trailblazing innovators, and influential VCs.",
+    type: "meetup",
+    link: "https://lu.ma/84do37p7",
+    location: "Shinagawa, Tokyo",
+    date: "September 6, 2024",
+    image: require('../static/img/events/event-meetup-tokyo-night.png'),
+    end_date: "September 6, 2024",
+  },
+  {
+    name: "Chicago XRP Ledger Meet Up",
+    description:
+      "Hey Chicago XRP Ledger community! We're hosting a meetup soon—come hang out, share ideas, and talk all things XRPL. Would love to see you there!",
+    type: "meetup",
+    link: "https://lu.ma/74dulzff",
+    location: "Chicago, IL",
+    date: "September 12, 2024",
+    image: require('../static/img/events/chicago-meetup.png'),
+    end_date: "September 12, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA",
+    location: "Virtual - Zoom",
+    date: "September 27, 2024",
+    image: infoSession2,
+    end_date: "September 27, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA",
+    location: "Virtual - Zoom",
+    date: "October 25, 2024",
+    image: infoSession3,
+    end_date: "October 25, 2024",
+  },
+  {
+    name: "XRPL Builder Office Hours",
+    description:
+      "XRPL Builder Office Hours is an open forum hosted monthly by Developer Advocates to answer technical and business questions from community members.",
+    type: "info",
+    link: "https://ripple.zoom.us/meeting/register/tJMscOCsrDoiHNUN6hZLpFVR69OcfG9rXtIA",
+    location: "Virtual - Zoom",
+    date: "November 22, 2024",
+    image: infoSession4,
+    end_date: "November 22, 2024",
+  },
+  {
+    name: "XRPL Meetup in Munich",
+    description:
+      "Calling all blockchain and XRP Ledger enthusiasts in Munich! Join XRPL  Meetups to share knowledge, build real-life connections, and foster  communities centered around blockchain and XRP Ledger.  We're establishing local “XRPL Hubs” across Europe, and we want you  to be a part of it!",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/xrpl-meetup-in-munich-tickets-957654278727",
+    location: "Munich, Germany",
+    date: "September 12, 2024",
+    image: require('../static/img/events/germany-meetup.png'),
+    end_date: "September 12, 2024",
+  },
+  {
+    name: "XRPL Town Hall Meeting",
+    description:
+      "Our first virtual Town Hall Meeting is on September 16 at 5 PM CEST.  These recurring meetings are designed to bring our community together,  provide updates, and offer a platform to address  your most pressing questions.",
+    type: "info",
+    link: "https://www.eventbrite.fr/e/xrpl-town-hall-meeting-tickets-959615815737",
+    location: "Virtual",
+    date: "September 16, 2024",
+    image: require('../static/img/events/town-hall-meetup.png'),
+    end_date: "September 16, 2024",
+  },
+  {
+    name: "Building on the XRP Ledger",
+    description:
+      "This 2-day intensive hands-on training is designed for developers who  are curious to learn about XRP Ledger. Meet your peers, share insights, and join a community of builders.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/building-on-the-xrp-ledger-tickets-945486885727",
+    location: "Paris, France",
+    date: "September 25 - 26, 2024",
+    image: require('../static/img/events/building-meetup.png'),
+    end_date: "September 26, 2024",
+  },
+  {
+    name: "XRPL Community Magazine #3 Launch Party",
+    description:
+      "Join us on the 9th of October for a night of celebration and discussion! Connect with experts, mingle with fellow blockchain enthusiasts, and hear more about opportunities in the XRP Ledger ecosystem.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/xrpl-community-magazine-3-launch-party-tickets-967649013247",
+    location: "Paris, France",
+    date: "October 9, 2024",
+    image: require('../static/img/events/mag-meetup.png'),
+    end_date: "October 9, 2024",
+  },
+  {
+    name: "San Francisco XRP Ledger Meet Up",
+    description:
+      "Hello San Francisco XRP Ledger community! We're hosting a meetup soon with a focus on ZK research. Excited to see you soon!",
+    type: "meetup",
+    link: "https://lu.ma/evdklm4r",
+    location: "San Francisco, California",
+    date: "September 26, 2024",
+    image: require('../static/img/events/sf-meetup.jpg'),
+    end_date: "September 26, 2024",
+  },
+  {
+    name: "AI Fund - XRPL Grants Info Session",
+    description:
+      "Join our info session to learn about our new XRPL Grants' AI Fund, designed to support innovative projects that leverage artificial intelligence in the XRPL ecosystem.",
+    type: "info",
+    link: "https://ripple.zoom.us/webinar/register/WN__SNDW7LTSM29h5NIpvXFvg#/registration",
+    location: "Virtual - Zoom",
+    date: "October 2, 2024",
+    image: infoSession,
+    end_date: "October 2, 2024",
+  },
+  {
+    name: "XRPL Decarbonization Strategy",
+    description:
+      "Join us for the 3rd webinar in our Sustainability series. This time, Mélanie Damour and CCRI will dive into how Sustainability  Disclosure under MiCA for CASPs and Token Issuers.",
+    type: "info",
+    link: "https://decarb3.eventbrite.fr",
+    location: "Virtual",
+    date: "October 7, 2024",
+    image: decarb,
+    end_date: "October 7, 2024",
+  },
+  {
+    name: "The Future with Blockchain",
+    description:
+      "Join us for an exciting side event held by Axiology, SUPER HOW?,  XPMarket, and XRPL Commons during the biggest startup festival  in Lithuania, StartupFair.",
+    type: "meetup",
+    link: "https://www.eventbrite.fr/e/the-future-with-blockchain-tickets-1013765398597",
+    location: "Vilnius, Lithuania",
+    date: "October 3, 2024",
+    image: require('../static/img/events/xrpl-future.png'),
+    end_date: "October 3, 2024",
+  },
 ];
+
 
 export default function Events() {
   const { useTranslate } = useThemeHooks();
