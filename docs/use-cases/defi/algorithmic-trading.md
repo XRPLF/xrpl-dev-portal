@@ -84,12 +84,13 @@ If your approach involves following other transaction activity, you may need to 
 
 To give yourself as much time as possible to react to profit-taking opportunities, you may also want to look at pending data from the [Open Ledger](../../concepts/ledgers/open-closed-validated-ledgers.md), or even monitor for proposed transactions. If you're connected to WebSocket, you can use the [subscribe method](../../references/http-websocket-apis/public-api-methods/subscription-methods/subscribe.md) with the `transactions_proposed` stream to see transactions before they're validated by consensus; you can also limit this to a subset of transactions that affect a particular account (for example, the issuer of a token you're interested in trading) by subscribing using the `accounts_proposed` parameter.
 
-### Future Developments
+### Automated Market Makers
 
-Ripple has proposed extending the XRP Ledger protocol with a native Automated Market Maker (AMM) design ([XLS-30](https://github.com/XRPLF/XRPL-Standards/blob/master/XLS-0030-automated-market-maker/README.md)) that would work alongside the existing central limit order based (CLOB) decentralized exchange. If this proposal is accepted and becomes enabled as an [amendment](../../concepts/networks-and-servers/amendments.md), AMMs will become an important factor in trading on the XRP Ledger. You can read more at the following links:
+The XRP Ledger natively supports Automated Market Makers (AMMs) that work alongside the existing central limit order based (CLOB) decentralized exchange. AMMs are an important factor in trading on the XRP Ledger. You can read more at the following links:
 
-- [XLS-30d: Automated Market Maker standards proposal](https://github.com/XRPLF/XRPL-Standards/discussions/78)
-- [AMM documentation](../../concepts/tokens/decentralized-exchange/automated-market-makers.md)
+- [Automated Market Makers](/docs/concepts/tokens/decentralized-exchange/automated-market-makers)
+- [Use the AMM Auction Slot for Lower Fees](/docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees)
+- [XLS-30 Specification](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#readme)
 
 ## Further Reading
 
