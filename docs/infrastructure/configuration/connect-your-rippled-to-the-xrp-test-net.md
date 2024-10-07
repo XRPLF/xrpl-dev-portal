@@ -55,7 +55,6 @@ Edit your `rippled.cfg` file.
     ```
     # [ips]
     # r.ripple.com 51235
-    # zaphod.alloy.ee 51235
     # sahyadri.isrdc.in 51235
     ```
 
