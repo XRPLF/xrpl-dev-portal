@@ -24,7 +24,7 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-request.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-request.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -39,7 +39,7 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-response.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-response.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -57,7 +57,7 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-request.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-request.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -72,7 +72,7 @@ Escrowオブジェクトを検索するには、[account_objectsメソッド][]�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-response.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-response.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}

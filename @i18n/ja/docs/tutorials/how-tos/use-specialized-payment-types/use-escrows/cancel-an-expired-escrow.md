@@ -18,7 +18,7 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-request-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-request-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -28,7 +28,7 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/ledger-response-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/ledger-response-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -41,7 +41,7 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-request-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-request-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -51,7 +51,7 @@ XRP LedgerのEscrowが有効期限切れとなるのは、その`CancelAfter`の
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/account_objects-response-expiration.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/account_objects-response-expiration.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -67,7 +67,7 @@ XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -77,7 +77,7 @@ XRP Ledgerでは、[EscrowCancelトランザクション][]に[署名して送�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -97,7 +97,7 @@ EscrowCancelトランザクションの識別用ハッシュを指定した[tx�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -107,7 +107,7 @@ EscrowCancelトランザクションの識別用ハッシュを指定した[tx�
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcancel.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcancel.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}

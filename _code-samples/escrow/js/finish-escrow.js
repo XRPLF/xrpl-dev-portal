@@ -1,8 +1,5 @@
 'use strict'
-if (typeof module !== "undefined") {
-  // Use var here because const/let are block-scoped to the if statement.
-  var xrpl = require('xrpl')
-}
+const  xrpl = require('xrpl')
 
 // Preqrequisites:
 // 1. Create an escrow using the create-escrow.js snippet
@@ -11,18 +8,18 @@ if (typeof module !== "undefined") {
 // 4. Paste the seed of the account that created the escrow
 // 5. Run the snippet
 
-const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy";
+const seed = "sEd7jfWyNG6J71dEojB3W9YdHp2KCjy"; // Test seed. Don't use
 const offerSequence = null;
 const condition = "";
 const fulfillment = "";
 
 const main = async () => {
   try {
-    // Connect -------------------------------------------------------------------
+    // Connect ----------------------------------------------------------------
     const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
     await client.connect();
-    
-    // Prepare wallet to sign the transaction -------------------------------------
+
+    // Prepare wallet to sign the transaction ---------------------------------
     const wallet = await xrpl.Wallet.fromSeed(seed);
     console.log("Wallet Address: ", wallet.address);
     console.log("Seed: ", seed);
@@ -38,20 +35,20 @@ const main = async () => {
         // This should equal the sequence number of the escrow transaction
         "OfferSequence": offerSequence,
         // Crypto condition that must be met before escrow can be completed, passed on escrow creation
-        "Condition": condition, 
+        "Condition": condition,
         // Fulfillment of the condition, passed on escrow creation
         "Fulfillment": fulfillment,
     };
 
     xrpl.validate(escrowFinishTransaction);
 
-    // Sign and submit the transaction --------------------------------------------
+    // Sign and submit the transaction ----------------------------------------
     console.log('Signing and submitting the transaction:', JSON.stringify(escrowFinishTransaction, null,  "\t"));
     const response  = await client.submitAndWait(escrowFinishTransaction, { wallet });
     console.log(`Finished submitting! ${JSON.stringify(response.result, null,  "\t")}`);
 
     await client.disconnect();
-    
+
   } catch (error) {
     console.log(error);
   }

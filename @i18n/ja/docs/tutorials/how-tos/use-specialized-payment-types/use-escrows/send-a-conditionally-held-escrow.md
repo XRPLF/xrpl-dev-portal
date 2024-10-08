@@ -81,7 +81,7 @@ print(cancel_after)
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -91,7 +91,7 @@ print(cancel_after)
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -109,7 +109,7 @@ print(cancel_after)
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -119,7 +119,7 @@ print(cancel_after)
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowcreate-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowcreate-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -137,7 +137,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-request-escrowfinish-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -147,7 +147,7 @@ Escrowが有効期限切れの場合は、[Escrowの取消し](cancel-an-expired
 {% tabs %}
 
 {% tab label="Websocket" %}
-{% code-snippet file="/_code-samples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/submit-response-escrowfinish-condition.json" language="json" /%}
 {% /tab %}
 
 {% /tabs %}
@@ -164,10 +164,10 @@ EscrowFinishトランザクションの識別用ハッシュを指定した[tx�
 
 リクエスト:
 
-{% code-snippet file="/_code-samples/escrow/websocket/tx-request-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-request-escrowfinish-condition.json" language="json" /%}
 
 レスポンス:
 
-{% code-snippet file="/_code-samples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
+{% code-snippet file="/_api-examples/escrow/websocket/tx-response-escrowfinish-condition.json" language="json" /%}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}
