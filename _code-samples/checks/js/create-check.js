@@ -1,57 +1,65 @@
 'use strict'
-const xrpl = require('xrpl');
-const crypto = require('crypto');
-const hash = crypto.createHash('sha512');
+const xrpl = require('xrpl')
 
-// Destination address for the check
-const destination = "rP2BPdQ9ANSK7kVWT9jkjjDxCxL7xrC7oD";
-// Amount of XRP in drops to send
-const amount = "10000000";
-
-const main = async () => {
+async function main() {
     try {
         // Connect to the XRP Ledger Test Net -------------------------------------
-        console.log("Connecting to Test Net...");
-        const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233');
-        await client.connect();
-        console.log("Connected to Test Net");
+        console.log("Connecting to Testnet...")
+        const client = new xrpl.Client('wss://s.altnet.rippletest.net:51233')
+        await client.connect()
+        console.log("Connected.")
 
-        // Generating new wallet --------------------------------------------------
-        console.log("Generating new wallet...");
-        const { wallet } = await client.fundWallet();
-        console.log("Wallet Address:", wallet.address);
-        console.log("Wallet Seed:", wallet.seed);
+        // Get a new wallet ---------------------------------------------------
+        console.log("Generating new wallet...")
+        const wallet = (await client.fundWallet()).wallet
+        console.log("  Address:", wallet.address)
+        console.log("  Seed:", wallet.seed)
 
-        // Prepare the transaction ------------------------------------------------
-        const request = {
+        // Prepare the transaction --------------------------------------------
+        const checkcreate = {
             "TransactionType": "CheckCreate",
             "Account": wallet.address,
-            "Destination": destination,
-            "SendMax": amount,
-            "DestinationTag": 1,
-            "Fee": "12"
-        };
+            "Destination": "rGPnRH1EBpHeTF2QG8DCAgM7z5pb75LAis",
+            "SendMax": xrpl.xrpToDrops(120), // Can be more than you have
+            "InvoiceID": "46060241FABCF692D4D934BA2A6C4427CD4279083E38C77CBE642243E43BE291"
+        }
 
-        // Submit the transaction -------------------------------------------------
-        console.log("Submitting transaction...");
-        const tx = await client.submitAndWait(request, { wallet });
+        // Submit the transaction ---------------------------------------------
+        console.log("Submitting transaction...")
+        const tx = await client.submitAndWait(
+            checkcreate, 
+            { autofill: true, 
+                wallet: wallet }
+        )
 
-        // Get the check ID and transaction result --------------------------------
-        const checkID = tx.result.meta.AffectedNodes.reduce((prevOutput, node) => {
-            if (node?.CreatedNode && node.CreatedNode?.LedgerEntryType == "Check") {
-                return node.CreatedNode.LedgerIndex;
-            } else {
-                return prevOutput;
+        // Get transaction result and Check ID---------------------------------
+        console.log(`Transaction: ${JSON.stringify(tx, null, 2)}`)
+
+        if (tx.result.meta.TransactionResult === "tesSUCCESS") {
+            let checkID = null
+            for (const node of tx.result.meta.AffectedNodes) {
+                if (node?.CreatedNode && 
+                    node.CreatedNode?.LedgerEntryType == "Check") {
+                    checkID = node.CreatedNode.LedgerIndex
+                    break
+                }
             }
-        }, null);
+    
+            if (checkID) {
+                console.log(`Check ID: ${checkID}`)
+            } else {
+                console.log("Unable to find the CheckID from parsing the metadata. Look for the LedgerIndex of the 'Check' object within 'meta'.")
+            }
+        } else {
+            console.log("Transaction failed with result code "+
+                        tx.result.meta.TransactionResult)
+        }
 
-        console.log(checkID ? `Check ID: ${checkID}` : "Unable to find the CheckID from parsing the metadata. Look for the LedgerIndex of the 'Check' object within 'meta'.");
-        console.log(`Transaction: ${JSON.stringify(tx, null, "\t")}`);
-
-        // Disconnect -------------------------------------------------------------
-        await client.disconnect();
+        // Disconnect ---------------------------------------------------------
+        await client.disconnect()
     } catch (error) {
         console.error(`Error: ${error}`)
     }
-};
-main();
+}
+
+main()

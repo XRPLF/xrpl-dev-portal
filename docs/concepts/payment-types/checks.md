@@ -48,10 +48,9 @@ For more information about Checks in the XRP Ledger, see:
     - [CheckCreate][]
     - [CheckCash][]
     - [CheckCancel][]
-- [Checks Tutorials](../../tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md)
+- [Checks Tutorials](../../tutorials/how-tos/use-specialized-payment-types/use-checks/index.md)
     - [Send a Check](../../tutorials/how-tos/use-specialized-payment-types/use-checks/send-a-check.md)
-    - [Look up Checks by sender address](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender.md)
-    - [Look up Checks by recipient address](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient.md)
+    - [Look up Checks](../../tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks.md)
     - [Cash a Check for an exact amount](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-an-exact-amount.md)
     - [Cash a Check for a flexible amount](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cash-a-check-for-a-flexible-amount.md)
     - [Cancel a Check](../../tutorials/how-tos/use-specialized-payment-types/use-checks/cancel-a-check.md)

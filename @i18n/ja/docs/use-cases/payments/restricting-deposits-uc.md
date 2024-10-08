@@ -42,7 +42,7 @@ Checkは、デポジット認可が有効な場合、シンプルで親しみや
 
 この方法は最もシンプルですが、資金が保証されるわけではありません。Checkは後払いであり、Checkを現金化しようとする瞬間まで資金は動きません。Checkを現金化するときに、送金側のアカウントに必要な資金がない可能性があり、ビジネスによっては遅延やその他の問題を引き起こす可能性があります。
 
-[Checkの利用](../../tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks.md)をご覧ください。
+[Checkの利用](../../tutorials/how-tos/use-specialized-payment-types/use-checks/index.md)をご覧ください。
 
 
 ### Escrow

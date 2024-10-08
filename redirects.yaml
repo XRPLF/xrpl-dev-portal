@@ -1,3 +1,12 @@
+'/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-recipient':
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks/
+    type: 301
+'/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks-by-sender':
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/look-up-checks/
+    type: 301
+'/docs/tutorials/how-tos/use-specialized-payment-types/use-checks/use-checks':
+    to: /docs/tutorials/how-tos/use-specialized-payment-types/use-checks/
+    type: 301
 '/docs/references/protocol/transactions/transaction-results/transaction-results/':
     to: /docs/references/protocol/transactions/transaction-results/
     type: 301
