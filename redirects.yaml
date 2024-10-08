@@ -1,3 +1,6 @@
+'/docs/references/http-websocket-apis/public-api-methods/clio-server':
+    to: /docs/references/http-websocket-apis/public-api-methods/clio-methods
+    type: 301
 '/docs/references/protocol/transactions/transaction-results/transaction-results/':
     to: /docs/references/protocol/transactions/transaction-results/
     type: 301
