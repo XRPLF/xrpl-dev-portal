@@ -15,7 +15,7 @@ _([AMM amendment][])_
 
 AMMを表す[AMMエントリ][]と[特殊なAccountRootエントリ](../../ledger-data/ledger-entry-types/accountroot.md#ammの特殊なaccountrootエントリ)を作成します。また、両資産の開始残高の所有権を送信者から、作成された`AccountRoot`に移し、初期残高の流動性プロバイダトークン（LPトークン）をAMMアカウントから送信者に発行します。
 
-**注意:** AMMを作成する際には、各資産を（ほぼ）同額ずつ投入する必要があります。そうしないと、他のユーザがこのAMMを使った取引で利益を得ることができ、あなたがその損失を被ることとなります（[アービトラージの実行](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage)。流動性プロバイダが負う通貨リスクは、資産ペアのボラティリティ（不均衡の可能性）が高ければ高いほど、大きくなります。取引手数料が高いほど、このリスクを相殺することになりますので、資産ペアのボラティリティに応じて取引手数料を設定するとよいでしょう。
+{% admonition type="warning" name="注意" %}AMMを作成する際には、各資産を（ほぼ）同額ずつ投入する必要があります。そうしないと、他のユーザがこのAMMを使った取引で利益を得ることができ、あなたがその損失を被ることとなります（[アービトラージの実行](https://www.machow.ski/posts/an_introduction_to_automated_market_makers/#price-arbitrage)。流動性プロバイダが負う通貨リスクは、資産ペアのボラティリティ（不均衡の可能性）が高ければ高いほど、大きくなります。取引手数料が高いほど、このリスクを相殺することになりますので、資産ペアのボラティリティに応じて取引手数料を設定するとよいでしょう。{% /admonition %}
 
 ## {% $frontmatter.seo.title %} JSONの例
 

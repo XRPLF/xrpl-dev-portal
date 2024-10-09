@@ -8,7 +8,7 @@ nav_omit: true
 ---
 # Ripple Data API v2
 
-**警告:** Ripple Data API v2は非推奨となりました。代わりに[HTTP / WebSocket API](http-websocket-apis/index.md)を使って下さい。
+{% admonition type="danger" name="警告" %}Ripple Data API v2は非推奨となりました。代わりに[HTTP / WebSocket API](http-websocket-apis/index.md)を使って下さい。{% /admonition %}
 
 古いData APIについては[rippled-historical-database リポジトリ](https://github.com/ripple/rippled-historical-database)をご覧ください.
 

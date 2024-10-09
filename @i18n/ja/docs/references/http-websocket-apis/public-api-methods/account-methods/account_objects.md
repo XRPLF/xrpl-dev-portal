@@ -84,7 +84,7 @@ rippled account_objects r9cZA1mLK5R5Am25ArfXFmqgNwjZgnfk59 validated
 | `marker`                 | [マーカー][]           | いいえ | 以前にページネーションされたレスポンスの値。そのレスポンスを停止した箇所からデータの取得を再開します。 |
 | `type`                   | 文字列                 | いいえ | 指定されている場合、結果をフィルタリングしてこのタイプのレジャーオブジェクトのみが含まれるようにします。有効なタイプは`bridge`, `check`、`deposit_preauth`、`escrow`、`nft_offer`, `nft_page`, `offer`、`payment_channel`、`signer_list`、`state`（トラストライン）そして`ticket`です。 |
 
-**注記:** `account_objects`コマンドのコマンドラインインタフェースは`type`フィールドを受け付けません。代わりにコマンドラインでJSON-RPC形式のリクエストを送信するには[jsonメソッド][]を使用してください。
+{% admonition type="info" name="注記" %}`account_objects`コマンドのコマンドラインインタフェースは`type`フィールドを受け付けません。代わりにコマンドラインでJSON-RPC形式のリクエストを送信するには[jsonメソッド][]を使用してください。{% /admonition %}
 
 ## レスポンスのフォーマット
 

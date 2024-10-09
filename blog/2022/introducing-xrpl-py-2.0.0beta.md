@@ -76,7 +76,7 @@ OfferCancel(
 ),
 ```
 
-**Tip:** You can also omit the `sequence` field and use `autofill` before signing your transaction.
+{% admonition type="success" name="Tip" %}You can also omit the `sequence` field and use `autofill` before signing your transaction.{% /admonition %}
 
 ### Core Keypairs Seed Generation
 
@@ -93,7 +93,7 @@ DUMMY_BYTES = b"\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10"
 seed = generate_seed(DUMMY_BYTES.hex())
 ```
 
-**Note:** If your string is longer than 16 bytes, you must truncate it before passing it into `generate_seed()`
+{% admonition type="info" name="Note" %}If your string is longer than 16 bytes, you must truncate it before passing it into `generate_seed()`{% /admonition %}
 
 ### Wallet Constructor
 
@@ -111,7 +111,7 @@ wallet = Wallet.from_seed("snoPBrXtMeMyMHUVTgbuqAfg1SUTb", algorithm="secp256k1"
 // wallet.address: rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh
 ```
 
-**Note:** If your seed previously used the secp256k1 algorithm to decode, and you don't specify it explicitly, `Wallet.from_seed()` returns a different classic address and public / private keys.
+{% admonition type="info" name="Note" %}If your seed previously used the secp256k1 algorithm to decode, and you don't specify it explicitly, `Wallet.from_seed()` returns a different classic address and public / private keys.{% /admonition %}
 
 ## Start Building
 
@@ -121,7 +121,7 @@ You can install this beta version using pip:
 pip install xrpl-py==2.0.0b0
 ```
 
-**Note:** This beta does not include Automated Market-Maker (AMM) or Sidechains functionality. This is only for testing Wallet changes.
+{% admonition type="info" name="Note" %}This beta does not include Automated Market-Maker (AMM) or Sidechains functionality. This is only for testing Wallet changes.{% /admonition %}
 
 If you're just getting started using xrpl-py, see [Get Started Using Python](https://xrpl.org/get-started-using-python.html), the [xrpl-py source code repository](https://github.com/XRPLF/xrpl-py/tree/xrpl-py-2.0), or [reference documentation](https://xrpl-py.readthedocs.io/en/stable/).
 

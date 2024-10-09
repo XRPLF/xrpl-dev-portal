@@ -16,7 +16,7 @@ Xrplorer was built by [Thomas Silkjaer](https://twitter.com/Silkjaer), a Danish 
 
 <!-- BREAK -->
 
-**Note:** The Xrplorer project as described in this post has been deprecated, as forensics and other data are being combined with related efforts within the XRP Ledger Foundation. _(Updated October 2022)_
+{% admonition type="info" name="Note" %}The Xrplorer project as described in this post has been deprecated, as forensics and other data are being combined with related efforts within the XRP Ledger Foundation. _(Updated October 2022)_{% /admonition %}
 
 A primary benefit of the graph database is that the ledgers are not stored in their original binary form or JSON representations, which makes it easier to do more complex relational queries, apply graph algorithms, run fraud detection algorithms and integrate XRP Ledger data with machine learning.
 

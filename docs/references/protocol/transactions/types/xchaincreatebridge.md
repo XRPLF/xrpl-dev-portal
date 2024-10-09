@@ -18,7 +18,7 @@ The transaction must be submitted first by the locking chain door account. To se
 
 The complete production-grade setup would also include a `SignerListSet` transaction on the two door accounts for the witnesses’ signing keys, as well as disabling the door accounts’ master key. This ensures that the witness servers are truly in control of the funds.
 
-**Note:** Each door account can only have one bridge. This prevents the creation of duplicate bridges for the same asset, which can cause asset imbalances on either chain.
+{% admonition type="info" name="Note" %}Each door account can only have one bridge. This prevents the creation of duplicate bridges for the same asset, which can cause asset imbalances on either chain.{% /admonition %}
 
 
 ## Example XChainCreateBridge JSON

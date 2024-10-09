@@ -48,7 +48,7 @@ rippled feature SHAMapV2 reject
 
 {% /tabs %}
 
-**注記:** Amendmentの省略名は大文字と小文字が区別されます。また、AmendmentのIDを16進数で指定することもできますが、この場合は大文字と小文字が区別されません。
+{% admonition type="info" name="注記" %}Amendmentの省略名は大文字と小文字が区別されます。また、AmendmentのIDを16進数で指定することもできますが、この場合は大文字と小文字が区別されません。{% /admonition %}
 
 ## 設定ファイルを使用する
 

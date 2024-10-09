@@ -12,7 +12,7 @@ targets:
 
 The XRP Ledger has possibly the world's oldest _decentralized exchange_ (sometimes abbreviated "DEX"), operating continuously since the XRP Ledger's launch in 2012. The exchange allows users to buy and sell [tokens](../index.md) for XRP or other tokens, with minimal [fees](../../transactions/fees.md) charged to the network itself (not paid out to any party).
 
-**Caution:** Anyone can [issue a token](../../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.
+{% admonition type="warning" name="Caution" %}Anyone can [issue a token](../../../tutorials/how-tos/use-tokens/issue-a-fungible-token.md) with any currency code or ticker symbol they want and sell it in the decentralized exchange. Always perform due diligence before buying a token, and pay attention to the issuer. Otherwise, you might give up something of value and receive worthless tokens in exchange.{% /admonition %}
 
 ## Structure
 
@@ -42,7 +42,7 @@ The above diagram shows an example trade in the decentralized exchange. In this 
 
 Later transactions, including ones executed immediately after Tran's in the _same_ ledger, use the updated order books for their trades, so they can consume part or all of Tran's Offer until it's fully filled or Tran cancels it.
 
-**Note:** The canonical order transactions execute in when a ledger is closed and validated is not the same as the order those transactions were sent. When multiple transactions affect the same order book in the same ledger, the final results of those transactions may be very different than the tentative results calculated at the time of transaction submission. For more details on when transactions' results are or are not final, see [Finality of Results](../../transactions/finality-of-results/index.md).
+{% admonition type="info" name="Note" %}The canonical order transactions execute in when a ledger is closed and validated is not the same as the order those transactions were sent. When multiple transactions affect the same order book in the same ledger, the final results of those transactions may be very different than the tentative results calculated at the time of transaction submission. For more details on when transactions' results are or are not final, see [Finality of Results](../../transactions/finality-of-results/index.md).{% /admonition %}
 
 
 ## Limitations

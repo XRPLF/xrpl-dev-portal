@@ -57,6 +57,6 @@ You must specify one of the following combinations of fields:
 
 It is not possible to create a conditional escrow with no expiration, but you can specify an expiration that is very far in the future.
 
-**Note:** Before the [fix1571 amendment][] became enabled on 2018-06-19, it was possible to create an escrow with `CancelAfter` only. These escrows could be finished by anyone at any time before the specified expiration.
+{% admonition type="info" name="Note" %}Before the [fix1571 amendment][] became enabled on 2018-06-19, it was possible to create an escrow with `CancelAfter` only. These escrows could be finished by anyone at any time before the specified expiration.{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

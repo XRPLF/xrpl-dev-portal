@@ -10,7 +10,7 @@ labels:
 
 `rippled`サーバはAPIクライアントが公開APIにリクエストできるレートを制限できます。レート制限はクライアントのIPアドレスに基づいて行われるため、[ネットワークアドレス変換](https://ja.wikipedia.org/wiki/ネットワークアドレス変換)の背後にいるクライアントは公開IPアドレスに基づく制限を共有します。
 
-**ヒント:** レート制限は、クライアントが[管理者](../../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)として接続されているときには適用されません
+{% admonition type="success" name="ヒント" %}レート制限は、クライアントが[管理者](../../../tutorials/http-websocket-apis/build-apps/get-started.md#管理者アクセス権限)として接続されているときには適用されません{% /admonition %}
 
 クライアントがレート制限に近づいている場合、サーバは[APIレスポンス](response-formatting.md)のトップレベルにフィールド`"warning"： "load"`というフィールドを[APIレスポンス](response-formatting.md)のトップレベルに追加します。この警告はすべてのレスポンスに追加されるわけではありませんが、サーバはクライアントを切断する前に何度かこのような警告を送ることがあります。
 

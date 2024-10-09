@@ -92,7 +92,7 @@ To configure advisory deletion with a daily schedule, perform the following step
 
     Be sure that you schedule the command to run based on your server's configured time zone.
 
-    **Tip:** You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the difference between the server's oldest and current validated ledger versions is at least the value of `online_delete`.
+    {% admonition type="success" name="Tip" %}You do not need to schedule a `cron` job to run online deletion if you have `advisory_delete` disabled. In that case, `rippled` runs online deletion automatically when the difference between the server's oldest and current validated ledger versions is at least the value of `online_delete`.{% /admonition %}
 
 4. Start (or restart) the `rippled` service.
 

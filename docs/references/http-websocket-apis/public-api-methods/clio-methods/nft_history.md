@@ -12,7 +12,7 @@ labels:
 
 The `nft_history` command asks the Clio server for past transaction metadata for the [NFT](../../../../concepts/tokens/nfts/index.md) being queried. {% badge href="https://github.com/XRPLF/clio/releases/tag/1.1.0" %}New in: Clio v1.1.0{% /badge %}
 
-**Note** `nft_history` returns only _successful_ transactions associated with the NFT.
+{% admonition type="info" name="Note" %}`nft_history` returns only _successful_ transactions associated with the NFT.{% /admonition %}
 
 ## Request Format
 An example of the request format:
@@ -60,7 +60,7 @@ The request contains the following parameters:
 | `limit`        | UInt32 | _(Optional)_ Limit the number of NFTs to retrieve. The server is not required to honor this value. |
 | `marker`       | Marker | Value from a previous paginated response. Resume retrieving data where that response left off. This value is NOT stable if there is a change in the server's range of available ledgers. If you are querying the “validated” ledger, it is possible that new NFTs are created during your paging. |
 
-**Note** If you do not specify a ledger version, Clio uses the latest validated ledger.
+{% admonition type="info" name="Note" %}If you do not specify a ledger version, Clio uses the latest validated ledger.{% /admonition %}
 
 ## Response Format
 
@@ -315,7 +315,7 @@ The response follows the [standard format][], with a successful result containin
 | `transactions`     | Array                      | Array of transactions matching the request's criteria, as explained below. |
 | `validated`        | Boolean                    | If included and set to `true`, the information in this response comes from a validated ledger version. Otherwise, the information is subject to change. |
 
-**Note:** The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.
+{% admonition type="info" name="Note" %}The server may respond with different values of `ledger_index_min` and `ledger_index_max` than you provided in the request, for example if it did not have the versions you specified on hand.{% /admonition %}
 
 Each transaction object includes the following fields, depending on whether it was requested in JSON or hex string (`"binary":true`) format.
 

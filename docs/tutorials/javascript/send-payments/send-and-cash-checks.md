@@ -29,7 +29,7 @@ Checks offer another option for transferring funds between accounts. Checks have
 
 Clone or download the [Modular Tutorial Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/content/_code-samples/quickstart/js/){.github-code-download}.
 
-**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
+{% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
 ## Usage
 

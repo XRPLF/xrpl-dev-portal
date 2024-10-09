@@ -108,7 +108,7 @@ The **`lsfLowAuth`** and **`lsfHighAuth`** flags do not count against the defaul
 
 The default state of the two No Ripple flags depends on the state of the [`lsfDefaultRipple` flag](accountroot.md#accountroot-flags) in their corresponding AccountRoot entries. If Default Ripple is disabled (the default), then the default state of the `lsfNoRipple` flag is _enabled_ for all of an account's trust lines. If an account enables Default Ripple, then the `lsfNoRipple` flag is _disabled_ (rippling is enabled) for an account's trust lines by default.
 
-**Note:** Prior to the introduction of the Default Ripple flag in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with both No Ripple flags disabled (rippling enabled).
+{% admonition type="info" name="Note" %}Prior to the introduction of the Default Ripple flag in `rippled` version 0.27.3 (March 10, 2015), the default state for all trust lines was with both No Ripple flags disabled (rippling enabled).{% /admonition %}
 
 The XRP Ledger uses lazy evaluation to calculate the owner reserve. This means that even if an account changes the default state of all its trust lines by changing the Default Ripple flag, that account's reserve stays the same initially. When an account modifies a trust line, the protocol re-evaluates whether that individual trust line is in its default state and should contribute to the owner reserve.
 

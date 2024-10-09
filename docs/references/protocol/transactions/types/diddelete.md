@@ -15,7 +15,7 @@ _(Requires the [DID amendment][] {% not-enabled /%})_
 
 Delete the [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) associated with the specified `Account` field.
 
-**Note:** This transaction only uses the [common fields][].
+{% admonition type="info" name="Note" %}This transaction only uses the [common fields][].{% /admonition %}
 
 
 ## Example {% $frontmatter.seo.title %} JSON

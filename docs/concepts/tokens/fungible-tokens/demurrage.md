@@ -7,7 +7,7 @@ status: removed
 ---
 # Demurrage
 
-**Warning:** Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of XRP Ledger software.
+{% admonition type="danger" name="Warning" %}Demurrage is a deprecated feature with no ongoing support. This page describes historical behavior of older versions of XRP Ledger software.{% /admonition %}
 
 [Demurrage](http://en.wikipedia.org/wiki/Demurrage_%28currency%29) is a negative interest rate on assets held that represents the cost of holding those assets. To represent the demurrage on a token in the XRP Ledger, you can track it using a custom [currency code](../../../references/protocol/data-types/currency-formats.md#currency-codes) that indicates the demurrage rate. This effectively creates separate versions of the token for each varying amount of demurrage. Client applications can support this by representing the demurraging currency code with an annual percentage rate alongside the currency code. For example: "XAU (-0.5%pa)".
 
@@ -15,7 +15,7 @@ status: removed
 
 Rather than continuously update all amounts in the XRP Ledger, this approach divides amounts of interest-bearing or demurraging tokens into two types of amount: "ledger values" recorded in the XRP Ledger, and "display values" shown to people. The "ledger values" represent the value of the currency at a fixed point, namely the "Ripple Epoch" of midnight January 1, 2000. The "display values" represent the amount at a later point in time (usually the current time) after calculating continuous interest or demurrage from the Ripple Epoch until that time.
 
-**Tip:** You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not show actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.
+{% admonition type="success" name="Tip" %}You can think of demurrage as similar to inflation, where the value of all assets affected by it decreases over time, but the ledger always holds amounts in year-2000 values. This does not show actual real-world inflation; demurrage is more like hypothetical inflation at a constant rate.{% /admonition %}
 
 Thus, client software must apply two conversions:
 
@@ -69,7 +69,7 @@ To calculate an e-folding time for a given rate of annual percent interest:
 3. Take the natural log of that number. For example, **ln(0.995) = -0.005012541823544286**. (This number is positive if the initial interest rate was positive, and negative if the interest rate was negative.)
 4. Take the number of seconds in one year (31536000) and divide by the natural log result from the previous step. For example, **31536000 ÷ -0.005012541823544286 = -6291418827.045599**. This result is the e-folding time in seconds.
 
-**Note:** By convention, the XRP Ledger's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds.
+{% admonition type="info" name="Note" %}By convention, the XRP Ledger's interest/demurrage rules use a fixed number of seconds per year (31536000), which is not adjusted for leap days or leap seconds.{% /admonition %}
 
 ## Client Support
 

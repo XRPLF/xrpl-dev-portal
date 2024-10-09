@@ -14,7 +14,7 @@ Every entry in a [ledger](../../../concepts/ledgers/index.md)'s state data has t
 | `LedgerEntryType`        | String    | UInt16            | Yes       | The type of ledger entry. Valid [ledger entry types](ledger-entry-types/index.md) include `AccountRoot`, `Offer`, `RippleState`, and others. |
 | `Flags`                  | Number    | UInt32            | Yes       | Set of bit-flags for this ledger entry. |
 
-**Caution:** In JSON, the ledger entry ID is in the `index` or `LedgerIndex` field. This is not the same as a [ledger index][] in the `ledger_index` field.
+{% admonition type="warning" name="Caution" %}In JSON, the ledger entry ID is in the `index` or `LedgerIndex` field. This is not the same as a [ledger index][] in the `ledger_index` field.{% /admonition %}
 
 
 ## Ledger Entry ID

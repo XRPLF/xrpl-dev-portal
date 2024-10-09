@@ -22,7 +22,7 @@ labels:
 
 ## 最小仕様
 
-**注意:** この仕様では、確実に[メインネットとの同期を保つ](../troubleshooting/server-doesnt-sync.md)には不十分です。本番環境で使用する場合は、上記の推奨仕様に従ってください。
+{% admonition type="warning" name="注意" %}この仕様では、確実に[メインネットとの同期を保つ](../troubleshooting/server-doesnt-sync.md)には不十分です。本番環境で使用する場合は、上記の推奨仕様に従ってください。{% /admonition %}
 
 テスト目的の場合、次の最小使用で一般的なハードウェア上でXRP Ledgerサーバを稼働させることができます。
 

@@ -29,14 +29,14 @@ An account consists of an address, an XRP balance, a sequence number, and a hist
 
 An account's core data is stored in an [AccountRoot](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) ledger entry. An account can also be the owner (or partial owner) of several other types of ledger entry.
 
-**Tip:** An "Account" in the XRP Ledger is somewhere between the financial usage (like "bank account") and the computing usage (like "UNIX account"). Non-XRP currencies and assets aren't stored in an XRP Ledger Account itself; each such asset is stored in an accounting relationship called a "Trust Line" that connects two parties.
+{% admonition type="success" name="Tip" %}An "Account" in the XRP Ledger is somewhere between the financial usage (like "bank account") and the computing usage (like "UNIX account"). Non-XRP currencies and assets aren't stored in an XRP Ledger Account itself; each such asset is stored in an accounting relationship called a "Trust Line" that connects two parties.{% /admonition %}
 
 
 ## Creating Accounts
 
 There is not a dedicated "create account" transaction. The [Payment transaction][] automatically creates a new account if the payment sends enough XRP to a mathematically-valid address that does not already have an account. This is called _funding_ an account, and creates an [AccountRoot entry](../../references/protocol/ledger-data/ledger-entry-types/accountroot.md) in the ledger. No other transaction can create an account.
 
-**Caution:** Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](addresses.md#special-addresses) and the XRP is lost forever.
+{% admonition type="warning" name="Caution" %}Funding an account **does not** give you any special privileges over that account. Whoever has the secret key corresponding to the account's address has full control over the account and all XRP it contains. For some addresses, it's possible that no one has the secret key, in which case the account is a [black hole](addresses.md#special-addresses) and the XRP is lost forever.{% /admonition %}
 
 The typical way to get an account in the XRP Ledger is as follows:
 
@@ -46,7 +46,7 @@ The typical way to get an account in the XRP Ledger is as follows:
 
     - For example, you can buy XRP in a private exchange, then withdraw XRP from the exchange to the address you specified.
 
-        **Caution:** The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](reserves.md) (currently 10 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.
+        {% admonition type="warning" name="Caution" %}The first time you receive XRP at your own XRP Ledger address, you must pay the [account reserve](reserves.md) (currently 10 XRP), which locks up that amount of XRP indefinitely. In contrast, private exchanges usually hold all their customers' XRP in a few shared XRP Ledger accounts, so customers don't have to pay the reserve for individual accounts at the exchange. Before withdrawing, consider whether having your own account directly on the XRP Ledger is worth the price.{% /admonition %}
 
 
 

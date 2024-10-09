@@ -12,7 +12,7 @@ labels:
 
 ほとんどの場合、`tec`コード付きのトランザクションは、[トランザクションコスト](../../../../concepts/transactions/transaction-cost.md)として支払われた分のXRPを消却する以外の操作は実行しませんが、いくつかの例外があります。例外として、`tecOVERSIZE`となったトランザクションは、一部の[資金供給のないオファー](../../../../concepts/tokens/decentralized-exchange/offers.md#オファーのライフサイクル)を引き続きクリーンアップします。[トランザクションメタデータ](../metadata.md)を常に確認し、トランザクションの実行内容を正確に把握してください。
 
-**注意:** 暫定的に`tec`コードで失敗したトランザクションは、再適用後に成功するか、または別のコードで失敗する可能性があります。検証済みレジャーバージョンに記録される結果が最終結果となります。詳細は、[結果のファイナリティー](../../../../concepts/transactions/finality-of-results/index.md)と[信頼できるトランザクションの送信](../../../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。
+{% admonition type="warning" name="注意" %}暫定的に`tec`コードで失敗したトランザクションは、再適用後に成功するか、または別のコードで失敗する可能性があります。検証済みレジャーバージョンに記録される結果が最終結果となります。詳細は、[結果のファイナリティー](../../../../concepts/transactions/finality-of-results/index.md)と[信頼できるトランザクションの送信](../../../../concepts/transactions/reliable-transaction-submission.md)をご覧ください。{% /admonition %}
 
 | コード                     | 値     | 説明                                   |
 |:---------------------------|:------|:----------------------------------------|

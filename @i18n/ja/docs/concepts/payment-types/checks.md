@@ -25,7 +25,7 @@ Checksは[Escrow](escrow.md)と[Payment Channel](../../tutorials/how-tos/use-spe
 * EscrowではXRPを自分自身に送金できます。ChecksではXRPを自身に送金することはできません。
 
 
-**注記:** [Checks Amendment][] により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](../tokens/decentralized-exchange/offers.md#オファーの有効期限)をご覧ください。
+{% admonition type="info" name="注記" %}[Checks Amendment][] により、[OfferCreate][]トランザクションの有効期限が変更されます。詳細は[オファーの有効期限](../tokens/decentralized-exchange/offers.md#オファーの有効期限)をご覧ください。{% /admonition %}
 
 
 ## Checksを利用する理由

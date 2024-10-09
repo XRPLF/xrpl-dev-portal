@@ -15,7 +15,7 @@ steps: ['Generate', 'Connect', 'Send AccountSet (Start Freeze)', 'Wait', 'Confir
 
 If you [issue tokens](../../../concepts/tokens/index.md) in the XRP Ledger, can enact a [Global Freeze](../../../concepts/tokens/fungible-tokens/freezes.md#global-freeze) to prevent users from sending your tokens to each other and trading your token in the [decentralized exchange](../../../concepts/tokens/decentralized-exchange/index.md). This tutorial shows how to enact and end a Global Freeze. You might want to do this, for example, if you see signs of suspicious activity related to your issuing address in the ledger, or to off-ledger systems you use to manage your token. (For example, if your token is a stablecoin and you process withdrawals and deposits from the ledger, you may want to freeze your token while you investigate if you suspect your systems have been hacked.) You can later disable the Global Freeze setting unless you have also enabled the [No Freeze setting](../../../concepts/tokens/fungible-tokens/freezes.md#no-freeze).
 
-**Tip:** As a reminder, freezes only apply to issued tokens, not XRP, and do not prevent users from sending the tokens _directly_ back to the issuer.
+{% admonition type="success" name="Tip" %}As a reminder, freezes only apply to issued tokens, not XRP, and do not prevent users from sending the tokens _directly_ back to the issuer.{% /admonition %}
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ Complete sample code for all of the steps of this tutorial is available under th
 
 To transact on the XRP Ledger, you need an address and secret key, and some XRP. If you use the best practice of having separate ["cold" and "hot" addresses](../../../concepts/accounts/account-types.md), you need the keys to the _cold address_, which is the **issuer** of the token. Only the issuer's Global Freeze setting has any effect on a token.
 
-**Tip:** Unlike the No Freeze setting, you _can_ enable and disable a Global Freeze using a [regular key pair](../../../concepts/accounts/cryptographic-keys.md) or [multi-signing](../../../concepts/accounts/multi-signing.md).
+{% admonition type="success" name="Tip" %}Unlike the No Freeze setting, you _can_ enable and disable a Global Freeze using a [regular key pair](../../../concepts/accounts/cryptographic-keys.md) or [multi-signing](../../../concepts/accounts/multi-signing.md).{% /admonition %}
 
 For this tutorial, you can get credentials from the following interface:
 
@@ -70,7 +70,7 @@ For this tutorial, click the following button to connect:
 
 To enable the Global Freeze setting, send an [AccountSet transaction][] with a `SetFlag` field containing the [`asfGlobalFreeze` value (`7`)](../../../references/protocol/transactions/types/accountset.md#accountset-flags). To send the transaction, you first _prepare_ it to fill out all the necessary fields, then _sign_ it with your account's secret key, and finally _submit_ it to the network.
 
-**Caution:** Enacting a global freeze affects _all tokens issued by the address._ Furthermore, if you use the No Freeze setting, you cannot undo this action.
+{% admonition type="warning" name="Caution" %}Enacting a global freeze affects _all tokens issued by the address._ Furthermore, if you use the No Freeze setting, you cannot undo this action.{% /admonition %}
 
 For example:
 

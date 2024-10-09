@@ -13,7 +13,7 @@ labels:
 
 以下に示すのは、本番環境のXRP Ledgerに関する既知のAmendmentのすべてとそのステータスをまとめた総合リストです。
 
-**ヒント:** このリストは手動で更新されています。最新のステータスは[XRPScan Amendmentダッシュボード](https://xrpscan.com/amendments)をご覧下さい。
+{% admonition type="success" name="ヒント" %}このリストは手動で更新されています。最新のステータスは[XRPScan Amendmentダッシュボード](https://xrpscan.com/amendments)をご覧下さい。{% /admonition %}
 
 | 名前                               | 登場       | ステータス                              |
 |:----------------------------------|:-----------|:------------------------------------|
@@ -81,7 +81,7 @@ labels:
 | [MultiSign][]                     | v0.31.0    | [有効: 2016-06-27](https://livenet.xrpl.org/transactions/168F8B15F643395E59B9977FC99D6310E8708111C85659A9BAF8B9222EEAC5A7 "BADGE_GREEN") |
 | [FeeEscalation][]                 | v0.31.0    | [有効: 2016-05-19](https://livenet.xrpl.org/transactions/5B1F1E8E791A9C243DD728680F108FEF1F28F21BA3B202B8F66E7833CA71D3C3 "BADGE_GREEN") |
 
-**注記:** 多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。
+{% admonition type="info" name="注記" %}多くの場合、旧バージョンのソフトウェアには不完全バージョンの修正用コードが存在します。上の表内の「導入済み」バージョンは最初の安定バージョンです。「未定」は、修正がまだ安定していないと見なされていることを示します。{% /admonition %}
 
 ## 開発中のAmendment
 
@@ -92,7 +92,7 @@ labels:
 | [Hooks][]                         | {% badge %}開発中: 未定{% /badge %} | [XRPL Hooks](https://hooks.xrpl.org/) |
 | [OwnerPaysFee][]                  | {% badge %}開発中: 未定{% /badge %} | |
 
-**注記:** このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)をご覧ください。
+{% admonition type="info" name="注記" %}このリストは手動で更新されています。もしあなたがAmendmentに取り組んでいて、その変更をテストするためのテストネットワークを持っているなら、このページを編集して開発中のamendmentをこのリストに追加することができます。XRP Ledgerへの貢献についての詳細は、[XRP Ledgerのコードへの貢献](contribute-code/index.md)をご覧ください。{% /admonition %}
 
 ## 撤回または廃止されたAmendment
 
@@ -776,7 +776,7 @@ Checksトランザクションがアカウントのメタデータに影響を�
 
 このamendmentにより、アカウント削除の制限も導入されます。アカウントは、`FirstNFTSequence` + `MintedNFTokens` + 256が現在のレジャーシーケンスより小さい場合にのみ削除できます（256はアカウント削除のヒューリスティックな制限として選択されたもので、アカウント削除制約にすでに存在します）。この制約がなければ、特定の条件下で同一のNFTが再ミントされる可能性があります。
 
-**注意:** これは、トークンをミントするためにローカルでNFTokenIDを計算しているプロジェクトやツールにとっては **破壊的な変更** です。NFTokenIDを計算するコードがある場合は、新しい計算式に合わせて更新する必要があります。後方互換性を保ちながらこれを行う方法の例については、こちらをご覧ください。[JavaScriptでのよく知られたリファレンス実装](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).
+{% admonition type="warning" name="注意" %}これは、トークンをミントするためにローカルでNFTokenIDを計算しているプロジェクトやツールにとっては **破壊的な変更** です。NFTokenIDを計算するコードがある場合は、新しい計算式に合わせて更新する必要があります。後方互換性を保ちながらこれを行う方法の例については、こちらをご覧ください。[JavaScriptでのよく知られたリファレンス実装](https://gist.github.com/N3TC4T/a20fb528931ed009ebdd708be4938748?permalink_comment_id=4738760#gistcomment-4738760).{% /admonition %}
 
 
 ### fixNFTokenReserve
@@ -1151,7 +1151,7 @@ XRP Ledgerアカウントが[マルチシグ](../docs/concepts/accounts/multi-si
 
 非代替性トークンのネイティブサポートを追加します。標準規格案: [XLS-20d](https://github.com/XRPLF/XRPL-Standards/discussions/46)。
 
-**注意:** この修正には、台帳に`tecINVARIANT_FAILED`エラーが表示される問題を含む、いくつかの既知の問題が存在します。これは[NonFungibleTokensV1_1 Amendment][]に置き換えられました。
+{% admonition type="warning" name="注意" %}この修正には、台帳に`tecINVARIANT_FAILED`エラーが表示される問題を含む、いくつかの既知の問題が存在します。これは[NonFungibleTokensV1_1 Amendment][]に置き換えられました。{% /admonition %}
 
 この修正では、新たに5種類のトランザクションが追加されます。
 
@@ -1191,7 +1191,7 @@ XRP Ledgerアカウントが[マルチシグ](../docs/concepts/accounts/multi-si
 
 それ以外の影響はありません。
 
-**注意:** [fixRemoveNFTokenAutoTrustLine][]は、このAmendmentの既知の問題を修正します。新しいテストネットワークを作成する場合、これらの修正を一緒に有効にするか、またはAmendmentの修正を先に有効にする必要があります。
+{% admonition type="warning" name="注意" %}[fixRemoveNFTokenAutoTrustLine][]は、このAmendmentの既知の問題を修正します。新しいテストネットワークを作成する場合、これらの修正を一緒に有効にするか、またはAmendmentの修正を先に有効にする必要があります。{% /admonition %}
 
 
 ### OwnerPaysFee
@@ -1208,7 +1208,7 @@ XRP Ledgerアカウントが[マルチシグ](../docs/concepts/accounts/multi-si
 
 この修正については、[Flow Amendment](#flow)を有効にする必要があります。
 
-**注記:** 不完全なバージョンのこのAmendmentについては、v0.33.0で導入され、v0.80.0で削除されました（有効となったことはありません）。
+{% admonition type="info" name="注記" %}不完全なバージョンのこのAmendmentについては、v0.33.0で導入され、v0.80.0で削除されました（有効となったことはありません）。{% /admonition %}
 
 
 ### PayChan
@@ -1273,7 +1273,7 @@ XRP Ledgerプロトコルの署名要件を変更し、いかなる場合にも�
 
 [DirectoryNodeレジャーオブジェクト](../docs/references/protocol/ledger-data/ledger-entry-types/directorynode.md)内の項目をソートして、削除されるべき所有者ディレクトリのページが場合によっては削除されないというバグを修正します。
 
-**警告:** このが適用されていない旧バージョンの`rippled`は、新しいルールでソートされたDirectoryNodeによって機能が停止するおそれがあります。この問題を回避するには、`rippled`バージョン0.80.0以降に[アップグレード](../docs/infrastructure/installation/index.md)してください。
+{% admonition type="danger" name="警告" %}このが適用されていない旧バージョンの`rippled`は、新しいルールでソートされたDirectoryNodeによって機能が停止するおそれがあります。この問題を回避するには、`rippled`バージョン0.80.0以降に[アップグレード](../docs/infrastructure/installation/index.md)してください。{% /admonition %}
 
 
 ### SusPay

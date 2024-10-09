@@ -68,7 +68,7 @@ Aborted (core dumped)
 
 - `rippled`ユーザが読み取ることができる構成ファイルを`$HOME/.config/ripple/rippled.cfg`に作成します（`$HOME`は`rippled`ユーザのホームディレクトリを指しています）。
 
-    **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`rippled.cfg`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `--conf`[コマンドラインオプション](../commandline-usage.md)を使用して、使用する構成ファイルのパスを指定します。
 
@@ -86,7 +86,7 @@ Aborted (core dumped)
 
 - `[validators.txt]`ファイルが存在し、`rippled`ユーザにこのファイルの読み取り権限があることを確認します。
 
-    **ヒント:** `rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。
+    {% admonition type="success" name="ヒント" %}`rippled`リポジトリには、RPMのインストール時にデフォルトの構成として提供される[`validators.txt`サンプルファイル](https://github.com/XRPLF/rippled/blob/master/cfg/validators-example.txt)が含まれています。このファイルがない場合は、上記のリンク先からコピーできます。{% /admonition %}
 
 - `rippled.cfg`ファイルを編集し、`[validators_file]`設定を変更して、`validators.txt`ファイル（またはこれに相当するファイル）の正しいパスを指定します。ファイル名の前後に余分な空白があるかどうかを確認します。
 
@@ -148,7 +148,7 @@ mv /var/lib/rippled/db /var/lib/rippled/db-bak
 rm -r /var/lib/rippled/db
 ```
 
-**ヒント:** 一般に`rippled`データベースは安全に削除できます。これは、個々のサーバはXRP Ledgerネットワーク内の他のサーバからレジャー履歴を再ダウンロードできるためです。
+{% admonition type="success" name="ヒント" %}一般に`rippled`データベースは安全に削除できます。これは、個々のサーバはXRP Ledgerネットワーク内の他のサーバからレジャー履歴を再ダウンロードできるためです。{% /admonition %}
 
 あるいは、構成ファイルでデータベースのパスを変更できます。例:
 

@@ -20,6 +20,6 @@ labels:
 | `validating`   | サーバは現在、レジャーの検証に参加しています。 |
 | `proposing`    | サーバはレジャーの検証に参加しており、現在、自身のバージョンを提案中です。 |
 
-**注記:** `full`、`validating`、`proposing`の区別は、グローバルネットワークの他者との同期の状況に基づいていますが、通常サーバの上記の状態は一般的なオペレーションの中で変動します。
+{% admonition type="info" name="注記" %}`full`、`validating`、`proposing`の区別は、グローバルネットワークの他者との同期の状況に基づいていますが、通常サーバの上記の状態は一般的なオペレーションの中で変動します。{% /admonition %}
 
 {% raw-partial file="/docs/_snippets/common-links.md" /%}

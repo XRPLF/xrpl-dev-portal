@@ -40,7 +40,7 @@ Creates a new [DID ledger entry](../../ledger-data/ledger-entry-types/did.md) or
 
 You must include either `Data`, `DIDDocument`, or `URI` when you submit the `DIDSet` transaction. If all three fields are missing, the transaction fails.
 
-**Note:** To delete the `Data`, `DIDDocument`, or `URI` field from an existing DID ledger entry, add the field as an empty string.
+{% admonition type="info" name="Note" %}To delete the `Data`, `DIDDocument`, or `URI` field from an existing DID ledger entry, add the field as an empty string.{% /admonition %}
 
 
 ## Error Cases

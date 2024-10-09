@@ -36,7 +36,7 @@ The administrator of the stock server completes this step.
 
 If you have already configured your server with a permanent node key pair value, you can skip ahead to [step 2: Communicate your node public key to the peer's admin](#2-communicate-the-stock-servers-node-public-key). (For example, setting up a permanent node key pair for each server is part of the process of [setting up a server cluster](cluster-rippled-servers.md).)
 
-**Tip:** Setting up a permanent node key pair is optional, but makes it easier to keep the peer reservation set up if you need to erase your server's databases or move to a new machine. If you don't want to set up a permanent node key pair, you can use your server's automatically-generated node public key as reported in the `pubkey_node` field of the [server_info method][] response.
+{% admonition type="success" name="Tip" %}Setting up a permanent node key pair is optional, but makes it easier to keep the peer reservation set up if you need to erase your server's databases or move to a new machine. If you don't want to set up a permanent node key pair, you can use your server's automatically-generated node public key as reported in the `pubkey_node` field of the [server_info method][] response.{% /admonition %}
 
 1. Generate a new, random key pair using the [validation_create method][]. (Omit the `secret` value.)
 
@@ -76,7 +76,7 @@ If you have already configured your server with a permanent node key pair value,
     ssZkdwURFMBXenJPbrpE14b6noJSu
     ```
 
-    **Warning:** All servers should have unique `[node_seed]` values. If you copy your config file to another server, be sure to remove or change the `[node_seed]` value. Keep your `[node_seed]` secret; if a malicious actor gains access to this value, they could use it to impersonate your server in XRP Ledger peer-to-peer communications.
+    {% admonition type="danger" name="Warning" %}All servers should have unique `[node_seed]` values. If you copy your config file to another server, be sure to remove or change the `[node_seed]` value. Keep your `[node_seed]` secret; if a malicious actor gains access to this value, they could use it to impersonate your server in XRP Ledger peer-to-peer communications.{% /admonition %}
 
 4. Restart your `rippled` server:
 
@@ -107,7 +107,7 @@ Connecting to 127.0.0.1:5005
 }
 ```
 
-**Tip:** The description is an optional field that you can provide to add a human-readable note about who this reservation is for.
+{% admonition type="success" name="Tip" %}The description is an optional field that you can provide to add a human-readable note about who this reservation is for.{% /admonition %}
 
 ### 4. Communicate the hub server's current IP address and peer port
 
@@ -165,7 +165,7 @@ As a server administrator, you can manage the reservations your server has for o
 - Remove one of your reservations using the [peer_reservations_del method][].
 - Check which peers are currently connected and how much bandwidth they have used, using the [peers method][].
 
-**Tip:** Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as `firewalld` to block an unwanted peer from connecting to your server. For examples, see the community-contributed [rbh script](https://github.com/gnanderson/rbh). <!-- SPELLING_IGNORE: rbh -->
+{% admonition type="success" name="Tip" %}Although there is no API method to immediately disconnect from an unwanted peer, you can use a software firewall such as `firewalld` to block an unwanted peer from connecting to your server. For examples, see the community-contributed [rbh script](https://github.com/gnanderson/rbh). <!-- SPELLING_IGNORE: rbh -->{% /admonition %}
 
 
 ## See Also

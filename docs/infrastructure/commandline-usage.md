@@ -111,7 +111,7 @@ Besides the individual commands, client mode accepts the [Generic Options](#gene
 | `--rpc_ip {IP_ADDRESS}` | Connect to the `rippled` server at the specified IP Address, optionally including a port number. |
 | `--rpc_port {PORT}`     | **DEPRECATED** Connect to the `rippled` server on the specified port. Specify the port alongside the IP address using `--rpc_ip` instead. |
 
-**Tip:** Some arguments accept negative numbers as values. To ensure that arguments to API commands are not interpreted as options instead, pass the `--` argument before the command name.
+{% admonition type="success" name="Tip" %}Some arguments accept negative numbers as values. To ensure that arguments to API commands are not interpreted as options instead, pass the `--` argument before the command name.{% /admonition %}
 
 Example usage (get account transaction history from the earliest available to latest available ledger versions):
 

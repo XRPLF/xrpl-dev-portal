@@ -33,7 +33,7 @@ The basis of any financial system is transferring value. The quickest and simple
 
 4. The ledger debits and credits the corresponding accounts.
     
-    **Note:** The sender is also debited the XRP [transaction cost](../transactions/transaction-cost.md).
+    {% admonition type="info" name="Note" %}The sender is also debited the XRP [transaction cost](../transactions/transaction-cost.md).{% /admonition %}
     
 
 ## See Also

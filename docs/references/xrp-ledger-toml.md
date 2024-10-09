@@ -174,7 +174,7 @@ The metadata section provides information about the `xrp-ledger.toml` file itsel
 
 The specification does not define a `domain` field; the field should be determined from the site serving the file.
 
-**Tip:** For Offset Date-Time values, Ripple RECOMMENDS that you use the offset `Z` and provide precision up to milliseconds. (For example, `2019-01-22T22:26:58.027Z`) If you edit the file by hand, you MAY approximate the time by providing zeroes for the hours, minutes, seconds, and milliseconds. (For example, `2019-01-22T00:00:00.000Z`)
+{% admonition type="success" name="Tip" %}For Offset Date-Time values, Ripple RECOMMENDS that you use the offset `Z` and provide precision up to milliseconds. (For example, `2019-01-22T22:26:58.027Z`) If you edit the file by hand, you MAY approximate the time by providing zeroes for the hours, minutes, seconds, and milliseconds. (For example, `2019-01-22T00:00:00.000Z`){% /admonition %}
 
 ### Validators
 
@@ -204,7 +204,7 @@ The accounts list provides information about XRP Ledger accounts you own. If pre
 | `network` | String | The network chain where this account is primarily used. If omitted, clients SHOULD assume that the account is claimed on the production XRP Ledger _and_ possibly other network chains. Use `main` for the production XRP Ledger. Use `testnet` for Ripple's XRP Ledger Test Net. You MAY provide other values to describe other test nets or non-standard network chains. |
 | `desc`    | String | A human-readable description of this account's purpose or how you use it. |
 
-**Caution:** Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](protocol/transactions/types/accountset.md#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.
+{% admonition type="warning" name="Caution" %}Anyone could claim ownership of any account by hosting an `xrp-ledger.toml` file, so the presence of an account here SHOULD NOT be considered authoritative unless the [`Domain` field for these accounts in the XRP Ledger](protocol/transactions/types/accountset.md#domain) also matches the domain that this `xrp-ledger.toml` file was served from. See [Account Verification](#account-verification) for details.{% /admonition %}
 
 
 ### Principals
@@ -319,7 +319,7 @@ Domain verification requires establishing a two-way link between the domain oper
         $./validator-keys set_domain example.com
         ```
 
-**Warning:** This command updates your validator-keys.json file. Please be sure to store the `validator-keys.json` file in a secure location.
+{% admonition type="danger" name="Warning" %}This command updates your validator-keys.json file. Please be sure to store the `validator-keys.json` file in a secure location.{% /admonition %}
 
 Sample Output:
 
@@ -357,7 +357,7 @@ Update [the contents of your `xrp-ledger.toml` file](#contents) with the `attest
 
 
 
-**Warning:** Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else.
+{% admonition type="danger" name="Warning" %}Your validator token is meant to be kept secret. Do not share it on your `xrp-ledger.toml` file or anywhere else.{% /admonition %}
 
 ## Account Verification
 

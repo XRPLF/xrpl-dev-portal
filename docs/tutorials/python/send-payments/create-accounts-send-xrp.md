@@ -31,7 +31,7 @@ pip3 install xrpl-py
 
 Download and expand the [Quickstart Samples](https://github.com/XRPLF/xrpl-dev-portal/tree/master/_code-samples/quickstart/py/)<!-- {.github-code-download} --> archive.
 
-**Note:** Without the Quickstart Samples, you will not be able to try the examples that follow. 
+{% admonition type="info" name="Note" %}Without the Quickstart Samples, you will not be able to try the examples that follow. {% /admonition %}
 
 ## Usage
 <div align="center">

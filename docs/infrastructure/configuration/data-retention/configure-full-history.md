@@ -45,7 +45,7 @@ To configure your server to acquire and store full history, complete the followi
 
     On a full-history server, you should use NuDB for the ledger store, because RocksDB requires too much RAM when the database is that large. For more information, see [Capacity Planning](../../installation/capacity-planning.md). You can remove the following performance-related configuration options from the default `[node_db]` stanza, because they only apply to RocksDB: `open_files`, `filter_bits`, `cache_mb`, `file_size_mb`, and `file_size_mult.`
 
-    **Caution:** If you have any history already downloaded with RocksDB, you must either delete that data or change the paths to the databases in the config file when you switch to NuDB. You must change both the `path` field of the `[node_db]` stanza **and** the `[database_path]` (SQLite database) setting. Otherwise, the server may [fail to start](../../troubleshooting/server-wont-start.md#state-db-error).
+    {% admonition type="warning" name="Caution" %}If you have any history already downloaded with RocksDB, you must either delete that data or change the paths to the databases in the config file when you switch to NuDB. You must change both the `path` field of the `[node_db]` stanza **and** the `[database_path]` (SQLite database) setting. Otherwise, the server may [fail to start](../../troubleshooting/server-wont-start.md#state-db-error).{% /admonition %}
 
     {% partial file="/docs/_snippets/conf-file-location.md" /%}
 
@@ -66,7 +66,7 @@ To configure your server to acquire and store full history, complete the followi
 
     Your server can only download historical data from the peer-to-peer network if one its direct peers has the data available. The easiest way to ensure you can download full history is to peer with a server that already has full history.
 
-    **Tip:** Ripple makes a pool of full history servers publicly available. You can resolve the domain `s2.ripple.com` a few times to get the IP addresses of these servers. Ripple offers these servers as a public service, so be aware that their availability to peer with other servers is limited and you may be blocked if you abuse them.
+    {% admonition type="success" name="Tip" %}Ripple makes a pool of full history servers publicly available. You can resolve the domain `s2.ripple.com` a few times to get the IP addresses of these servers. Ripple offers these servers as a public service, so be aware that their availability to peer with other servers is limited and you may be blocked if you abuse them.{% /admonition %}
 
 0. If you have a database dump from another full-history server to use as a basis, set the `[import_db]` stanza of your server's config file to point to the data to be imported. (Otherwise, skip this step.)
 
@@ -84,7 +84,7 @@ To configure your server to acquire and store full history, complete the followi
     rm -r /var/lib/rippled/db/*
     ```
 
-    **Warning:** Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of a `rippled` server's database files, but you should only do this if the configured database folder is not used for anything other than `rippled`'s databases.
+    {% admonition type="danger" name="Warning" %}Be sure that you have not put any files you want to keep in the folder before you delete it. It is generally safe to delete all of a `rippled` server's database files, but you should only do this if the configured database folder is not used for anything other than `rippled`'s databases.{% /admonition %}
 
 0. Start the `rippled` server, importing the database dump if you have one available:
 

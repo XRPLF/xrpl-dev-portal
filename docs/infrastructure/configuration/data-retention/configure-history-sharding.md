@@ -11,7 +11,7 @@ labels:
 
 [History Sharding](history-sharding.md) lets servers contribute to preserving historical XRP Ledger data without each server needing to store the full history. By default, `rippled` servers do not store history shards.
 
-**Tip:** While both validator and tracking (or stock) `rippled` servers can be configured to store history shards, Ripple recommends _not_ configuring validator `rippled` servers to store shards, to reduce overhead on those servers. If you run a validator and want to contribute to storing XRP Ledger history, Ripple recommends you run a separate `rippled` server with history sharding enabled.
+{% admonition type="success" name="Tip" %}While both validator and tracking (or stock) `rippled` servers can be configured to store history shards, Ripple recommends _not_ configuring validator `rippled` servers to store shards, to reduce overhead on those servers. If you run a validator and want to contribute to storing XRP Ledger history, Ripple recommends you run a separate `rippled` server with history sharding enabled.{% /admonition %}
 
 To configure your `rippled` to store shards of ledger history, complete the following steps:
 
@@ -51,7 +51,7 @@ max_historical_shards=12
 
 The `type` field of `[shard_db]` can be omitted. If present, it _MUST_ be `NuDB`.
 
-**Caution:** If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](../../troubleshooting/server-wont-start.md). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.
+{% admonition type="warning" name="Caution" %}If `rippled` detects the wrong type of data in the shard store path, it may [fail to start](../../troubleshooting/server-wont-start.md). You should use a new folder for the shard store. If you previously used a RocksDB shard store (`rippled` 1.2.x and lower), use a different path or delete the RocksDB shard data.{% /admonition %}
 
 For more information, reference the `[shard_db]` example in the [rippled.cfg configuration example](https://github.com/XRPLF/rippled/blob/master/cfg/rippled-example.cfg).
 

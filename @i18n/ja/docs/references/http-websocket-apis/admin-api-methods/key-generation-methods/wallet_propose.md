@@ -88,7 +88,7 @@ rippled wallet_propose masterpassphrase
 
 以下のフィールドのうち**1つ**を指定する必要があります。`passphrase`、`seed`、または`seed_hex`。3つすべてを省略すると、`rippled`によってランダムシードが使用されます。
 
-**注記:** このコマンドのコマンドラインバージョンでは[Ed25519](https://ed25519.cr.yp.to/)キーを生成できません。
+{% admonition type="info" name="注記" %}このコマンドのコマンドラインバージョンでは[Ed25519](https://ed25519.cr.yp.to/)キーを生成できません。{% /admonition %}
 
 #### シードの指定
 

@@ -77,7 +77,7 @@ labels:
    - `unstable` - プレインストールビルド（[`release`ブランチ](https://github.com/XRPLF/rippled/tree/release)）
    - `nightly` - 実験/開発ビルド（[`develop`ブランチ](https://github.com/XRPLF/rippled/tree/develop)）
 
-   **警告:** 安定版ではないナイトリービルドはいつの時点でも壊れる可能性があります。これらのビルドを本番環境のサーバに使用しないでください。
+   {% admonition type="danger" name="警告" %}安定版ではないナイトリービルドはいつの時点でも壊れる可能性があります。これらのビルドを本番環境のサーバに使用しないでください。{% /admonition %}
 
 6. Rippleリポジトリを取得します。
 

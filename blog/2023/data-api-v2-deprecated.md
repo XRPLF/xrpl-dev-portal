@@ -13,7 +13,7 @@ theme:
 
 The Ripple Data API v2 was deprecated in 2021 with no additional support; it will be shut down on October 15, 2023.
 
-**Note:** The [XRP Distribution endpoint](https://data.ripple.com/v2/network/xrp_distribution) will remain.
+{% admonition type="info" name="Note" %}The [XRP Distribution endpoint](https://data.ripple.com/v2/network/xrp_distribution) will remain.{% /admonition %}
 
 If you need information on the old Data API, see the [rippled-historical-database repository](https://github.com/ripple/rippled-historical-database).
 

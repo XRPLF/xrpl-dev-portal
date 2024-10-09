@@ -142,7 +142,7 @@ Connecting to 127.0.0.1:5005
 
 [トランザクションの結果](../../../references/protocol/transactions/transaction-results/index.md)が[**tesSUCCESS**](../../../references/protocol/transactions/transaction-results/tes-success.md)であることを確認します。それ以外の場合、トランザクションは失敗しています。スタンドアロンモードまたは本番環境以外のネットワークで問題が発生した場合は、[マルチシグが有効であること](../../../infrastructure/testing-and-auditing/start-a-new-genesis-ledger-in-stand-alone-mode.md#新しいジェネシスレジャーの設定)を確認してください。
 
-**注記:** [MultiSignReserve Amendment][]が有効ではない場合は、SignerListのメンバーの増加に応じて、アドレスの[所有者準備金](../../../concepts/accounts/reserves.md#所有者準備金)のXRP額を増加する必要があります。アドレスに十分なXRPがないと、トランザクションは[tecINSUFFICIENT_RESERVE](../../../references/protocol/transactions/transaction-results/tec-codes.md)で失敗します。[MultiSignReserve Amendment][]が有効な場合は、SignerListの署名者の数に関係なく[所有者準備金](../../../concepts/accounts/reserves.md#所有者準備金)として必要なXRPは5 XRPです。関連項目: [SignerListと準備金](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signerlistと準備金)
+{% admonition type="info" name="注記" %}[MultiSignReserve Amendment][]が有効ではない場合は、SignerListのメンバーの増加に応じて、アドレスの[所有者準備金](../../../concepts/accounts/reserves.md#所有者準備金)のXRP額を増加する必要があります。アドレスに十分なXRPがないと、トランザクションは[tecINSUFFICIENT_RESERVE](../../../references/protocol/transactions/transaction-results/tec-codes.md)で失敗します。[MultiSignReserve Amendment][]が有効な場合は、SignerListの署名者の数に関係なく[所有者準備金](../../../concepts/accounts/reserves.md#所有者準備金)として必要なXRPは5 XRPです。関連項目: [SignerListと準備金](../../../references/protocol/ledger-data/ledger-entry-types/signerlist.md#signerlistと準備金){% /admonition %}
 
 
 ## 4. 検証の待機
