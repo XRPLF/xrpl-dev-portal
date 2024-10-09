@@ -541,25 +541,20 @@ You can open `ripplex13b-amm-formulas.js` from the [Quickstart Samples](https://
 
 The `swapOut()` function calculates how much of an asset you must deposit into an AMM to receive a specified amount of the paired asset. The input asset is what you're adding to the pool (paying), and the output asset is what you're receiving from the pool (buying).
 
+The formula used is based on [AMM Swap](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#25-amm-swap), defined in XLS-30.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| asset_out_bn | BigNumber | The target amount to receive from the AMM. |
+| pool_in_bn | BigNumber | The amount of the input asset in the AMM's pool before the swap. |
+| pool_out_bn | BigNumber | The amount of the output asset in the AMM's pool before the swap. |
+| trading_fee | int | The trading fee as an integer {0, 1000} where 1000 represents a 1% fee. |
+
+| Returns | Type | Description |
+|---------|------|-------------|
+| Return Value | BigNumber | The amount of the input asset that must be swapped in to receive the target output amount. Unrounded, because the number of decimals depends on if this is drops of XRP or a decimal amount of a token; since this is a theoretical input to the pool, it should be rounded up (ceiling) to preserve the pool's constant product. |
+
 ```javascript
-/* Implement the AMM SwapOut formula, as defined in XLS-30 section 2.4 AMM 
- * Swap, formula 10. The asset weights WA/WB are currently always 1/1 so 
- * they're canceled out.
- * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/AMMHelpers.h#L253-L258
- * @param asset_out_bn BigNumber - The target amount to receive from the AMM.
- * @param pool_in_bn BigNumber - The amount of the input asset in the AMM's 
- *                               pool before the swap.
- * @param pool_out_bn BigNumber - The amount of the output asset in the AMM's
- *                                pool before the swap.
- * @param trading_fee int - The trading fee as an integer {0, 1000} where 1000 
- *                          represents a 1% fee.
- * @returns BigNumber - The amount of the input asset that must be swapped in 
- *                      to receive the target output amount. Unrounded, because
- *                      the number of decimals depends on if this is drops of 
- *                      XRP or a decimal amount of a token; since this is a
- *                      theoretical input to the pool, it should be rounded 
- *                      up (ceiling) to preserve the pool's constant product.
- */
 function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
     return ( ( pool_in_bn.multipliedBy(pool_out_bn) ).dividedBy(
                 pool_out_bn.minus(asset_out_bn)
@@ -572,12 +567,9 @@ function swapOut(asset_out_bn, pool_in_bn, pool_out_bn, trading_fee) {
 
 The `auctionDeposit()` calculates how many LP tokens you need to spend to win the auction slot. The formula assumes you don't have any LP tokens and factors in the increase in LP tokens issued when you deposit assets. If you already have LP tokens, you can use the `auctionPrice()` function instead.
 
+The formula used is based on the [slot pricing algorithm](https://github.com/XRPLF/XRPL-Standards/tree/master/XLS-0030-automated-market-maker#411-slot-pricing) defined in XLS-30.
+
 ```javascript
-/* Calculate how much to deposit, in terms of LP Tokens out, to be able to win
- * the auction slot. This is based on the slot pricing algorithm defined in 
- * XLS-30 section 4.1.1, but factors in the increase in the minimum bid as a 
- * result of having new LP Tokens issued to you from your deposit.
- */
 function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
     const tfee_decimal = feeDecimal(trading_fee)
     const lptokens = BigNumber(lpt_balance)
@@ -606,28 +598,16 @@ function auctionDeposit(old_bid, time_interval, trading_fee, lpt_balance) {
 
 ### ammAssetIn()
 
-The `ammAssinIn()` function calculates how much to add in a single-asset deposit to receive a specified amount of LP tokens. This function requires the helper quadratic equation.
+The `ammAssetIn()` function calculates how much to add in a single-asset deposit to receive a specified amount of LP tokens.
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| pool_in | string | The quantity of the input asset the pool already has. |
+| lpt_balance | string | The quantity of LP tokens already issued by the AMM. |
+| desired_lpt | string | The quantity of new LP tokens you want to receive. |
+| trading_fee | int | The trading fee as an integer {0, 1000} where 1000 represents a 1% fee. |
 
 ```javascript
-/* Compute the quadratic formula. Helper function for ammAssetIn.
- * Params and return value are BigNumber instances.
- */
-function solveQuadraticEq(a,b,c) {
-    const b2minus4ac = b.multipliedBy(b).minus( 
-                            a.multipliedBy(c).multipliedBy(4) 
-                       )
-    return ( b.negated().plus(b2minus4ac.sqrt()) ).dividedBy(a.multipliedBy(2))
-}
-
-/* Implement the AMM single-asset deposit formula to calculate how much to
- * put in so that you receive a specific number of LP Tokens back.
- * C++ source: https://github.com/XRPLF/rippled/blob/2d1854f354ff8bb2b5671fd51252c5acd837c433/src/ripple/app/misc/impl/AMMHelpers.cpp#L55-L83
- * @param pool_in string - Quantity of input asset the pool already has
- * @param lpt_balance string - Quantity of LP Tokens already issued by the AMM
- * @param desired_lpt string - Quantity of new LP Tokens you want to receive
- * @param trading_fee int - The trading fee as an integer {0,1000} where 1000
- *                          represents a 1% fee.
- */
 function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
     // convert inputs to BigNumber
     const lpTokens = BigNumber(desired_lpt)
@@ -645,5 +625,16 @@ function ammAssetIn(pool_in, lpt_balance, desired_lpt, trading_fee) {
               )
     const c = d.multipliedBy(d).minus( f2.multipliedBy(f2) )
     return asset1Balance.multipliedBy(solveQuadraticEq(a,b,c))
+}
+```
+
+Compute the quadratic formula. This is a helper function for `ammAssetIn()`. Parameters and return value are `BigNumber` instances.
+
+```javascript
+function solveQuadraticEq(a,b,c) {
+    const b2minus4ac = b.multipliedBy(b).minus( 
+                            a.multipliedBy(c).multipliedBy(4) 
+                       )
+    return ( b.negated().plus(b2minus4ac.sqrt()) ).dividedBy(a.multipliedBy(2))
 }
 ```

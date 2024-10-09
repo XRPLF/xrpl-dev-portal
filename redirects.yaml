@@ -1,7 +1,10 @@
-'/docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider/':
+/docs/tutorials/javascript/trade-on-ledger/earn-passive-income-as-a-liquidity-provider/:
     to: /docs/tutorials/javascript/amm/add-assets-to-amm/
     type: 301
-'/docs/references/protocol/transactions/transaction-results/transaction-results/':
+/docs/tutorials/javascript/trade-on-ledger/use-amm-auction-slot-for-lower-fees/:
+    to: /docs/tutorials/javascript/amm/trade-with-auction-slot/
+    type: 301
+/docs/references/protocol/transactions/transaction-results/transaction-results/:
     to: /docs/references/protocol/transactions/transaction-results/
     type: 301
 xrp-ledger-rpc-tool.html:
